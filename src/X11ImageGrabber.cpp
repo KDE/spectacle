@@ -1,9 +1,5 @@
 #include "X11ImageGrabber.h"
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/extensions/Xfixes.h>
-
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent),
     co(nullptr)
@@ -14,34 +10,31 @@ X11ImageGrabber::~X11ImageGrabber()
 
 // image conversion routines
 
-QPixmap X11ImageGrabber::processXImage30Bit(void *ximage_d)
+QPixmap X11ImageGrabber::processXImage30Bit(xcb_image_t *xcbImage)
 {
-    XImage *ximage = (XImage *)ximage_d;
-    quint8 *imageData = new quint8[(ximage->height * ximage->width) * 4];
+    quint8 *imageData = new quint8[(xcbImage->height * xcbImage->width) * 4];
 
-    for (qint64 x = 0; x < ximage->width; x++) {
-        for (qint64 y = 0; y < ximage->height; y++) {
-            quint32 pixel = XGetPixel(ximage, x, y);
+    for (qint32 x = 0; x < xcbImage->width; x++) {
+        for (qint32 y = 0; y < xcbImage->height; y++) {
+            quint32 pixel = xcb_image_get_pixel(xcbImage, x, y);
 
-            imageData[((x + ximage->width * y) * 4)]     = (pixel >> 22) & 0xff;
-            imageData[((x + ximage->width * y) * 4) + 1] = (pixel >> 12) & 0xff;
-            imageData[((x + ximage->width * y) * 4) + 2] = (pixel >>  2) & 0xff;
-            imageData[((x + ximage->width * y) * 4) + 3] = 0xff;
+            imageData[((x + xcbImage->width * y) * 4)]     = (pixel >> 22) & 0xff;
+            imageData[((x + xcbImage->width * y) * 4) + 1] = (pixel >> 12) & 0xff;
+            imageData[((x + xcbImage->width * y) * 4) + 2] = (pixel >>  2) & 0xff;
+            imageData[((x + xcbImage->width * y) * 4) + 3] = 0xff;
         }
     }
 
-    QImage image((quint8 *)imageData, ximage->width, ximage->height, QImage::Format_RGBA8888);
+    QImage image(imageData, xcbImage->width, xcbImage->height, QImage::Format_RGBA8888);
     QPixmap pixmap = QPixmap::fromImage(image);
 
     delete imageData;
     return pixmap;
 }
 
-QPixmap X11ImageGrabber::processXImage32Bit(void *ximage_d)
+QPixmap X11ImageGrabber::processXImage32Bit(xcb_image_t *xcbImage)
 {
-    XImage *ximage = (XImage *)ximage_d;
-
-    QImage image((quint8 *)ximage->data, ximage->width, ximage->height, QImage::Format_ARGB32_Premultiplied);
+    QImage image(xcbImage->data, xcbImage->width, xcbImage->height, QImage::Format_ARGB32_Premultiplied);
     return QPixmap::fromImage(image);
 }
 
@@ -49,9 +42,6 @@ QPixmap X11ImageGrabber::processXImage32Bit(void *ximage_d)
 
 void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
 {
-    // credit for how to do this goes here
-    // https://msnkambule.wordpress.com/2010/04/09/capturing-a-screenshot-showing-mouse-cursor-in-kde/
-
     // first we get the cursor position, compute the co-ordinates of the region
     // of the screen we're grabbing, and see if the cursor is actually visible in
     // the region
@@ -65,31 +55,16 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
 
     // now we can get the image and start processing
 
-    XFixesCursorImage *xfCursorImage = XFixesGetCursorImage(QX11Info::display());
+    xcb_connection_t *xcbConn = QX11Info::connection();
+    xcb_xfixes_get_cursor_image_cookie_t  cursorCookie = xcb_xfixes_get_cursor_image(xcbConn);
 
-    // turns out we have a slight problem. xfCursorImage->pixels is an array of
-    // unsigned longs, which is not portable. An unsigned long is 32 bits on a 32bit
-    // system, and 64 bits on *some* 64 bit systems. What we'll do is attempt to
-    // convert the 64 bit unsigned longs into a 32 bit pixel values only on 64-bit systems
-
-    quint32 * pixelData;
-
-#if defined(__x86_64__) || defined(_M_X64)
-    quint64 totalPixels = xfCursorImage->height * xfCursorImage->width;
-    pixelData = new quint32[totalPixels];
-
-    for (quint64 counter = 0; counter < totalPixels; counter++) {
-        pixelData[counter] = xfCursorImage->pixels[counter];
-    }
-#elif defined(__i386) || defined(_M_IX86)
-    pixelData = xfCursorImage->pixels;
-#endif
-
-    QImage cursorImage = QImage((quint8*)pixelData, xfCursorImage->width, xfCursorImage->height, QImage::Format_ARGB32_Premultiplied);
+    xcb_xfixes_get_cursor_image_reply_t  *cursorReply  = xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, NULL);
+    quint32 *pixelData = xcb_xfixes_get_cursor_image_cursor_image(cursorReply);
+    QImage cursorImage = QImage((quint8 *)pixelData, cursorReply->width, cursorReply->height, QImage::Format_ARGB32_Premultiplied);
 
     // a small fix for the cursor position for fancier cursors
 
-    cursorPos -= QPoint(xfCursorImage->xhot, xfCursorImage->yhot);
+    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot);
 
     // now we translate the cursor point to our screen rectangle
 
@@ -100,42 +75,39 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
     QPainter painter(&mPixmap);
     painter.drawImage(cursorPos, cursorImage);
 
-    XFree(xfCursorImage);
-#if defined(__x86_64__) || defined(_M_X64)
-    delete pixelData;
-#endif
+    // and done
 }
 
-QPixmap X11ImageGrabber::getWindowPixmap(quint64 winId)
+QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
 {
-    Window window = (Window)winId;
-    Display *display = QX11Info::display();
-    X11GeometryInfo info;
+    xcb_connection_t *xcbConn = QX11Info::connection();
 
-    XGetGeometry(display, window, &(info.root), &(info.x), &(info.y), &(info.width), &(info.height), &(info.border_width), &(info.depth));
-    XImage *ximage = XGetImage(display, window, info.x, info.y, info.width, info.height, AllPlanes, ZPixmap);
+    // first get geometry information for our drawable
 
-    // convert the image into an rgba8888 format. this may not work properly for every
-    // possible format of XImage, but 24bpp/32bits seems to be the most common format.
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
+    xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+
+    // then proceed to get an image
+
+    xcb_image_t *xcbImage = xcb_image_get(xcbConn, window, geomReply->x, geomReply->y, geomReply->width, geomReply->height, ~0, XCB_IMAGE_FORMAT_Z_PIXMAP);
+
+    // now process the image
 
     QPixmap pixmap;
 
-    switch (ximage->depth) {
+    switch (xcbImage->depth) {
     case 30:
-        pixmap = processXImage30Bit(ximage);
+        pixmap = processXImage30Bit(xcbImage);
         break;
     case 24:
     case 32:
-        pixmap = processXImage32Bit(ximage);
+        pixmap = processXImage32Bit(xcbImage);
         break;
     default:
         pixmap = QPixmap();
         break;
     }
 
-    // we're done
-
-    XFree(ximage);
     return pixmap;
 }
 
@@ -151,9 +123,9 @@ bool X11ImageGrabber::KWinDBusScreenshotAvailable()
     return false;
 }
 
-void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 winId)
+void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 window)
 {
-    mPixmap = getWindowPixmap(winId);
+    mPixmap = getWindowPixmap((xcb_window_t)window);
     emit pixmapChanged(mPixmap);
 }
 
@@ -212,15 +184,17 @@ void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOpera
 
 void X11ImageGrabber::grabFullScreen()
 {
-    Window win = DefaultRootWindow(QX11Info::display());
-    mPixmap = getWindowPixmap(win);
+    xcb_window_t window = QX11Info::appRootWindow();
+    mPixmap = getWindowPixmap(window);
 
     // if we have to blend in the cursor image, do that now
 
     if (mCapturePointer) {
-        XWindowAttributes xwa;
-        XGetWindowAttributes(QX11Info::display(), win, &xwa);
-        blendCursorImage(xwa.x, xwa.y, xwa.width, xwa.height);
+        xcb_connection_t *xcbConn = QX11Info::connection();
+        xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
+        xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+
+        blendCursorImage(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
     }
 
     emit pixmapChanged(mPixmap);
@@ -228,22 +202,26 @@ void X11ImageGrabber::grabFullScreen()
 
 void X11ImageGrabber::grabActiveWindow()
 {
-    Window win = KWindowSystem::activeWindow();
+    xcb_window_t window = KWindowSystem::activeWindow();
+    xcb_connection_t * xcbConn = QX11Info::connection();
 
     // if the user doesn't want decorations captured, we're in luck. This is
     // the easiest bit
 
     if (!mCaptureDecorations) {
-        mPixmap = getWindowPixmap(win);
+        mPixmap = getWindowPixmap(window);
 
         if (mCapturePointer) {
-            X11GeometryInfo info;
-            Window child;
+            xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
+            xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
 
-            XGetGeometry(QX11Info::display(), win, &(info.root), &(info.x), &(info.y), &(info.width), &(info.height), &(info.border_width), &(info.depth));
-            XTranslateCoordinates(QX11Info::display(), win, info.root, 0, 0, &(info.x), &(info.y), &child);
+            xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry(xcbConn, geomReply->root);
+            xcb_get_geometry_reply_t *geomRootReply = xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL);
 
-            blendCursorImage(info.x, info.y, info.width, info.height);
+            xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
+            xcb_translate_coordinates_reply_t *translateReply = xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL);
+
+            blendCursorImage(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
         }
 
         emit pixmapChanged(mPixmap);
@@ -267,7 +245,7 @@ void X11ImageGrabber::grabActiveWindow()
             mask |= 1 << 1;
         }
 
-        interface.call("screenshotForWindow", (quint64)win, mask);
+        interface.call("screenshotForWindow", (quint64)window, mask);
         return;
     }
 
@@ -289,41 +267,37 @@ void X11ImageGrabber::grabActiveWindow()
     // xwininfo code. Copyright notices aren't merged because this is not a
     // "substantial portion"
 
-    while (True) {
-        Window root;
-        Window parent;
-        Window *childList;
-        unsigned int nChildren;
+    while (1) {
+        xcb_query_tree_cookie_t queryCookie = xcb_query_tree(xcbConn, window);
+        xcb_query_tree_reply_t *queryReply = xcb_query_tree_reply(xcbConn, queryCookie, NULL);
 
-        Status status = XQueryTree(QX11Info::display(), win, &root, &parent, &childList, &nChildren);
-
-        if ((parent == root) || !(parent) || !(status)) {
+        if ((queryReply->parent == queryReply->root) || !(queryReply->parent)) {
             break;
         }
 
-        if (status && childList) {
-            XFree((char *)childList);
-        }
-
-        win = parent;
+        window = queryReply->parent;
     }
 
     // now it's just a matter of grabbing...
 
-    X11GeometryInfo info;
-    XGetGeometry(QX11Info::display(), win, &(info.root), &(info.x), &(info.y), &(info.width), &(info.height), &(info.border_width), &(info.depth));
-    mPixmap = getWindowPixmap(info.root);
+
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
+    xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+    mPixmap = getWindowPixmap(geomReply->root);
 
     // ...translating co-ordinates...
 
-    Window child;
-    XTranslateCoordinates(QX11Info::display(), win, info.root, 0, 0, &(info.x), &(info.y), &child);
+    xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry(xcbConn, geomReply->root);
+    xcb_get_geometry_reply_t *geomRootReply = xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL);
+
+    xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
+    xcb_translate_coordinates_reply_t *translateReply = xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL);
 
     // ...and cropping
 
-    mPixmap = mPixmap.copy(info.x, info.y, info.width, info.height);
+    mPixmap = mPixmap.copy(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
     if (mCapturePointer) {
-        blendCursorImage(info.x, info.y, info.width, info.height);
+        blendCursorImage(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
     }
     emit pixmapChanged(mPixmap);
 }

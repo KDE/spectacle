@@ -62,12 +62,11 @@ if (KF5Kipi_FOUND)
     set(KIPI_FOUND 1)
 endif ()
 
-find_package(X11)
-if (X11_FOUND)
-    set(HAVE_X11 1)
+find_package(XCB COMPONENTS XFIXES IMAGE)
+if (XCB_FOUND)
     find_package(Qt5X11Extras ${QT_MIN_VERSION} REQUIRED)
     find_package(KF5Screen ${PLASMA_MIN_VERSION} REQUIRED)
-endif(X11_FOUND)
+endif()
 
 # hand off to subdirectories
 

@@ -3,13 +3,6 @@
 set(KSNAPVERSION ${KSG_VERSION})
 #configure_file(config-ksnapshot.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksnapshot.h)
 
-#if(XCB_XCB_FOUND AND X11_XCB_FOUND)
-#    set(
-#        KSnapshot_SRCS_XCB
-#            platforms/xcb/pixmaphelper.cpp
-#    )
-#endif(XCB_XCB_FOUND AND X11_XCB_FOUND)
-
 # target
 
 set(
@@ -23,7 +16,7 @@ set(
 )
 qt5_add_resources (KSG_SRCS_RESOURCES QmlResources/QmlResources.qrc)
 
-if(X11_FOUND)
+if(XCB_FOUND)
     set(
         KSG_SRCS_X11
             X11ImageGrabber.cpp
@@ -67,48 +60,14 @@ target_link_libraries(
         ${X11_Xfixes_LIB}
 )
 
-if(X11_FOUND)
+if(XCB_FOUND)
     target_link_libraries(
         kscreengenie
+            XCB::XFIXES
+            XCB::IMAGE
             Qt5::X11Extras
             KF5::Screen
     )
 endif()
 
-#if (X11_XCB_FOUND)
-#    target_link_libraries(
-#        ksnapshot
-#            ${X11_XCB_LIBRARIES}
-#    )
-#endif ()
-
-#if (XCB_XCB_FOUND)
-#    target_link_libraries(
-#        ksnapshot
-#            ${XCB_XCB_LIBRARY}
-#    )
-#endif ()
-
-#if (XCB_SHAPE_FOUND)
-#    target_link_libraries(
-#        ksnapshot
-#            ${XCB_SHAPE_LIBRARY}
-#    )
-#endif ()
-
-#if (XCB_XFIXES_FOUND)
-#    target_link_libraries(
-#        ksnapshot
-#            ${XCB_XFIXES_LIBRARY}
-#    )
-#endif ()
-
-#if (KF5Kipi_FOUND)
-#    target_link_libraries(
-#        ksnapshot
-#            KF5::Kipi
-#    )
-#endif ()
-
 install(TARGETS kscreengenie ${INSTALL_TARGETS_DEFAULT_ARGS})
-#install(FILES org.kde.ksnapshot.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})

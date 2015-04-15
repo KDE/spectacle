@@ -96,52 +96,13 @@ void ImageGrabber::doImageGrab()
     case ActiveWindow:
         return grabActiveWindow();
     case RectangularRegion:
-        return grabCurrentScreen();
+        return grabRectangularRegion();
     }
 }
 
 // Grab Functions
 
-void ImageGrabber::grabFullScreen()
+void ImageGrabber::grabRectangularRegion()
 {
-    const QList<QScreen *> screens = QGuiApplication::screens();
-    if (screens.isEmpty()) {
-        emit imageGrabFailed();
-        return;
-    }
 
-    const QDesktopWidget *desktop = QApplication::desktop();
-    mPixmap = screens.first()->grabWindow(desktop->winId());
-
-
-
-    emit pixmapChanged(mPixmap);
-}
-
-void ImageGrabber::grabCurrentScreen()
-{
-    const QList<QScreen *> screens = QGuiApplication::screens();
-    const QDesktopWidget *desktop = QApplication::desktop();
-    const int screenId = desktop->screenNumber(QCursor::pos());
-    const QRect geom = desktop->screenGeometry(screenId);
-
-    if (screenId >= screens.count()) {
-        emit imageGrabFailed();
-        return;
-    }
-
-    mPixmap = screens[screenId]->grabWindow(desktop->winId(),
-                                            geom.x(),
-                                            geom.y(),
-                                            geom.width(),
-                                            geom.height());
-
-
-
-    emit pixmapChanged(mPixmap);
-}
-
-void ImageGrabber::grabActiveWindow()
-{
-    return grabFullScreen();
 }

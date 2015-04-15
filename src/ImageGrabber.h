@@ -53,9 +53,10 @@ class ImageGrabber : public QObject
 
     protected:
 
-    virtual void grabFullScreen();
-    virtual void grabCurrentScreen();
-    virtual void grabActiveWindow();
+    virtual void grabFullScreen() = 0;
+    virtual void grabCurrentScreen() = 0;
+    virtual void grabActiveWindow() = 0;
+    virtual void grabRectangularRegion();
     virtual void blendCursorImage(int x, int y, int width, int height) = 0;
 
     bool     mCapturePointer;

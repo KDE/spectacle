@@ -21,6 +21,11 @@
 #include <KScreen/Screen>
 #include <KScreen/Output>
 
+#include <xcb/xcb.h>
+#include <xcb/xcb_image.h>
+#include <xcb/xcb_util.h>
+#include <xcb/xfixes.h>
+
 #include "ImageGrabber.h"
 
 struct X11GeometryInfo
@@ -52,17 +57,16 @@ class X11ImageGrabber : public ImageGrabber
 
     private slots:
 
-    void KWinDBusScreenshotHelper(quint64 winId);
+    void KWinDBusScreenshotHelper(quint64 window);
     void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
 
     private:
 
     bool KWinDBusScreenshotAvailable();
 
-    QPixmap processXImage24Bit(void *ximage_d);
-    QPixmap processXImage30Bit(void *ximage_d);
-    QPixmap processXImage32Bit(void *ximage_d);
-    QPixmap getWindowPixmap(quint64 winId);
+    QPixmap processXImage30Bit(xcb_image_t *xcbImage);
+    QPixmap processXImage32Bit(xcb_image_t *xcbImage);
+    QPixmap getWindowPixmap(xcb_window_t window);
 
     KScreen::GetConfigOperation *co;
 };
