@@ -1,0 +1,70 @@
+
+        KScreenGenie - The (new) KDE Screenshot Utility
+                            README
+
+
+1) What is KScreenGenie
+
+KScreenGenie is a screenshooter utility for KDE. It is written
+using the very latest KDE and Qt technologies (KDE Frameworks 5,
+Qt 5 and QtQuick 2.0), and aims for a cleaner and more modular
+codebase than KSnapshot (the previous screenshooter utility for
+KDE) than adding features. KScreenGenie is designed specifically
+so that it can be easily ported over to Wayland when the platform
+becomes available.
+
+2) What am I giving up over KSnapshot?
+
+  * The ability to grab freeform areas of your screen
+  * The ability to select and grab specific widgets in a window
+  * No Win32 or Mac OS support yet
+  * No KIPI integration yet (adding that is a priority right now)
+  * The ability to take screenshots on platforms where OpenGL
+    is not available (QtQuick 2.0 requires OpenGL)
+
+The last point might be a major blocker for a lot of people,
+but if you're running Plasma 5, you already have OpenGL (since
+Plasma 5 is built using the same QtQuick 2.0 technologies as
+this). If you're running KDE apps on a platform where OpenGL
+is unavailable, KSnapshot continues to be available.
+
+Note that KScreenGenie will work even if you use KWin without
+compositing, or if you use another window manager (like OpenBox).
+All you need is to have the 3D drivers installed.
+
+2) What's cooler?
+
+  * More robust multimonitor screenshot support.
+
+    All the image capture code now resides in the platform backend
+    (currently only X11) and uses native methods (xcb_image_get_image()
+    for X11) rather than Qt's image capture code. This allows us fine
+    grained control over multimonitor setups.
+
+    The X11 backend currently captures images using xcb, and uses
+    KScreen (which on X11 uses a native XRanR backend) to determine
+    multimonitor configuration.
+
+    KScreenGenie does NOT support taking multi-screen screenshots
+    when every monitor is assigned a different X screen. It only
+    supports RandR or Xinerama based virtual destops spanning
+    multiple monitors. Adding support for traditional X11 multi
+    screen is not a priority (KWindowSystem does not even support
+    this scenario), but the modularity of the codebase means adding
+    support for this is easy enough.
+
+  * Live preview when grabbing rectangular regions of the screen.
+
+    Traditionally, KSnapshot would take a fullscreen screenshot
+    first and show you an interface to crop the image. With
+    KScreenGenie, things are different. If you're running with
+    compositing enabled, we render a transparent fullscreen window
+    over your desktop on which you draw the crop rectangle. You
+    get to see exactly what's happenning in the screen below the
+    region selector, and the actual screenshot is taken AFTER you
+    confirm the crop rectangle.
+
+    If compositing is disabled, KScreenGenie falls back to the
+    traditional behaviour. You can also force the old behaviour
+    by setting the KSCREENGENIE_FORCE_CROP_NONLIVE environment
+    variable.
