@@ -7,6 +7,8 @@
 #include <QDesktopWidget>
 #include <QApplication>
 
+#include "CropScreenshotGrabber.h"
+
 class ImageGrabber : public QObject
 {
     Q_OBJECT
@@ -51,11 +53,17 @@ class ImageGrabber : public QObject
 
     void doImageGrab();
 
+    private slots:
+
+    virtual void rectangleSelectionConfirmed(int x, int y, int width, int height);
+    virtual void rectangleSelectionCancelled();
+
     protected:
 
     virtual void grabFullScreen() = 0;
     virtual void grabCurrentScreen() = 0;
     virtual void grabActiveWindow() = 0;
+    virtual void grabGivenRectangularRegion(int x, int y, int width, int height) = 0;
     virtual void grabRectangularRegion();
     virtual void blendCursorImage(int x, int y, int width, int height) = 0;
 

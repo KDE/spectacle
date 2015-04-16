@@ -2,118 +2,13 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.3
 
-import "HoverBar"
-import "HighlightRectangle"
+import "qml:///HighlightRectangle"
 
-Canvas {
-    id: canvas
+Item {
+    id: rootItem;
 
-    property string imagefile : "image://screenshot/image"
-    property string selectmode : ""
-
-    Component.onCompleted: loadImage(canvas.imagefile)
-    onImageLoaded: reset()
-
-    onPaint: {
-    }
-
-    function init() {
-    }
-
-    function setMode(mode) {
-        canvas.reset();
-        canvas.selectmode = mode;
-
-        selectArea.reset();
-        selectArea.selectmode = mode;
-
-        if (mode == "rectangle") {
-            // do something
-        } else if (mode == "polygon") {
-            // do something else
-        } else if (mode == "brush") {
-            // do what you want to
-        }
-    }
-
-    function reset() {
-        var context = canvas.getContext("2d");
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(canvas.imagefile, 0, 0);
-        canvas.requestPaint();
-    }
-
-    function done() {
-        if (selectArea.highlightItem === null) {
-            return;
-        }
-
-        var x = selectArea.highlightItem.x;
-        var y = selectArea.highlightItem.y;
-        var w = selectArea.highlightItem.width;
-        var h = selectArea.highlightItem.height;
-        selectArea.highlightItem.destroy();
-
-        var context = canvas.getContext("2d");
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.save();
-        context.beginPath();
-        context.rect(x, y, w, h);
-        context.clip();
-        context.drawImage(canvas.imagefile, 0, 0);
-        context.restore();
-
-        canvas.requestPaint();
-    }
-
-    function crop() {
-        var x = selectArea.highlightItem.x;
-        var y = selectArea.highlightItem.y;
-        var w = selectArea.highlightItem.width;
-        var h = selectArea.highlightItem.height;
-    }
-
-    /*
-    Canvas {
-        anchors.fill: parent;
-        id: drawCanvas;
-
-        Component.onCompleted: requestPaint()
-
-        onPaint: {
-            drawCanvas.paintSelectionRectangle(0, 0, 150, 150);
-
-        }
-
-        function paintSelectionRectangle(x, y, w, h) {
-            var context = drawCanvas.getContext("2d");
-            context.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
-
-            context.beginPath();
-            context.rect(x, y, w, h);
-            context.strokeStyle = "yellow";
-            context.fillStyle = "yellow";
-            context.globalAlpha = 0.5;
-            context.stroke();
-            context.globalAlpha = 0.35;
-            context.fill();
-        }
-
-        MouseArea {
-            id: selectArea
-            anchors.fill: parent
-            cursorShape: Qt.CrossCursor
-
-            property int initialX : 0
-            property int initialY : 0
-
-            onPressed: {
-
-
-        }
-    }
-    */
+    signal selectionCancelled;
+    signal selectionConfirmed(int x, int y, int width, int height);
 
     MouseArea {
         id: selectArea
@@ -121,7 +16,6 @@ Canvas {
         cursorShape: Qt.CrossCursor
 
         property variant highlightItem : null;
-        property string selectmode : null
 
         property int initialX : 0
         property int initialY : 0
@@ -160,23 +54,12 @@ Canvas {
         }
 
         Component {
-            id: highlightBrush
+            id: highlightRectangle
 
-            Rectangle {
-                color: "yellow"
-                opacity: 0.35
-
-                width: (canvas.width / 100)
-                height: width
-                radius: (width / 2)
+            HighlightRectangle {
+                onSelectionCancelled: rootItem.selectionCancelled();
+                onSelectionConfirmed: rootItem.selectionConfirmed(x, y, width, height);
             }
         }
-
-        Component {
-            id: highlightRectangle
-            HighlightRectangle {}
-        }
     }
-
-    HoverBar { canvas: canvas }
 }

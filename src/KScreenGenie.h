@@ -71,6 +71,7 @@ class KScreenGenie : public QObject
     void takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void showErrorMessage(const QString err_string);
     void screenshotUpdated(const QPixmap pixmap);
+    void screenshotFailed();
     void doGuiSaveAs();
     void doAutoSave();
     void doSendToService(KService::Ptr service);

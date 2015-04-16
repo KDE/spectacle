@@ -13,6 +13,7 @@
 #include <QDBusInterface>
 #include <QDBusConnectionInterface>
 #include <QDBusReply>
+#include <QTimer>
 #include <QXmlStreamReader>
 
 #include <KWindowSystem>
@@ -54,6 +55,7 @@ class X11ImageGrabber : public ImageGrabber
     void grabFullScreen();
     void grabCurrentScreen();
     void grabActiveWindow();
+    void grabGivenRectangularRegion(int x, int y, int width, int height);
 
     private slots:
 
@@ -63,7 +65,7 @@ class X11ImageGrabber : public ImageGrabber
     private:
 
     bool KWinDBusScreenshotAvailable();
-
+    void grabGivenRectangularRegionActual(int x, int y, int width, int height);
     QPixmap processXImage30Bit(xcb_image_t *xcbImage);
     QPixmap processXImage32Bit(xcb_image_t *xcbImage);
     QPixmap getWindowPixmap(xcb_window_t window);

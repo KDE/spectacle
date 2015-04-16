@@ -18,6 +18,7 @@ KScreenGenie::KScreenGenie(bool background, bool startEditor, ImageGrabber::Grab
 
     connect(this, &KScreenGenie::errorMessage, this, &KScreenGenie::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KScreenGenie::screenshotUpdated);
+    connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KScreenGenie::screenshotFailed);
 
     const int msec = KWindowSystem::compositingActive() ? 200 : 50;
     QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
@@ -138,6 +139,11 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
     } else {
         mScreenGenieGUI->setScreenshotAndShow(pixmap);
     }
+}
+
+void KScreenGenie::screenshotFailed()
+{
+    screenshotUpdated(QPixmap());
 }
 
 void KScreenGenie::doAutoSave()

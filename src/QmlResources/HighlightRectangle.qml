@@ -1,8 +1,21 @@
 import QtQuick 2.4
+import QtQuick.Controls 1.3
 
-Rectangle {
-    color: "yellow"
-    opacity: 0.35
+Item {
+    id: selectionContainer;
+
+    signal selectionCancelled;
+    signal selectionConfirmed(int x, int y, int width, int height);
+
+    Rectangle {
+        id: selectionRectangle;
+
+        color: "yellow";
+        opacity: 0.5;
+
+        anchors.centerIn: parent;
+        anchors.fill: parent;
+    }
 
     MouseArea {
         id: moveArea
@@ -31,73 +44,29 @@ Rectangle {
         }
     }
 
-    MouseArea {
-        id: resizeNArea
+    Row {
+        id: buttonStore;
+        anchors.centerIn: selectionRectangle;
 
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.leftMargin: 5
-        anchors.rightMargin: 5
-        height: 5
+        opacity: 0.9;
 
-        cursorShape: Qt.SizeVerCursor
-
-        property int initialY : 0
-        property int initialH : 0
-
-        onPressed: {
-            initialY = parent.y;
-            initialH = parent.height;
-        }
-
-        onPositionChanged: {
-            parent.y = mouse.y;
-            if (initialY < mouse.y) {
-                if (mouse.y < (initialY + parent.height)) {
-                    parent.y = mouse.y;
-                    parent.height = initialH - Math.abs(initialY - mouse.y);
-                }
-            }
-        }
+        Button { action: exitAction; }
+        Button { action: doneAction; }
     }
 
-    MouseArea {
-        id: resizeSArea
-
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.leftMargin: 5
-        anchors.rightMargin: 5
-        height: 5
-
-        cursorShape: Qt.SizeVerCursor
+    Action {
+        id: exitAction;
+        text: i18n("Cancel");
+        iconName: "dialog-close";
+        enabled: true;
+        onTriggered: selectionCancelled();
     }
 
-    MouseArea {
-        id: resizeEArea
-
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.topMargin: 5
-        anchors.bottomMargin: 5
-        width: 5
-
-        cursorShape: Qt.SizeHorCursor
-    }
-
-    MouseArea {
-        id: resizeWArea
-
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.topMargin: 5
-        anchors.bottomMargin: 5
-        width: 5
-
-        cursorShape: Qt.SizeHorCursor
+    Action {
+        id: doneAction;
+        text: i18n("Confirm");
+        iconName: "dialog-ok";
+        enabled: true;
+        onTriggered: selectionConfirmed(selectionContainer.x, selectionContainer.y, selectionContainer.width, selectionContainer.height);
     }
 }

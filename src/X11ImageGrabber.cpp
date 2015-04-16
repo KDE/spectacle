@@ -307,3 +307,18 @@ void X11ImageGrabber::grabCurrentScreen()
     co = new KScreen::GetConfigOperation;
     connect(co, &KScreen::GetConfigOperation::finished, this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
 }
+
+void X11ImageGrabber::grabGivenRectangularRegion(int x, int y, int width, int height)
+{
+    const int msec = KWindowSystem::compositingActive() ? 200 : 50;
+    auto func = [this, x, y, width, height]() mutable { grabGivenRectangularRegionActual(x, y, width, height); };
+    QTimer::singleShot(msec, func);
+}
+
+void X11ImageGrabber::grabGivenRectangularRegionActual(int x, int y, int width, int height)
+{
+    xcb_window_t window = QX11Info::appRootWindow();
+    mPixmap = getWindowPixmap(window).copy(x, y, width, height);
+
+    emit pixmapChanged(mPixmap);
+}
