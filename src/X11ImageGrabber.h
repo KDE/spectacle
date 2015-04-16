@@ -14,7 +14,7 @@
 #include <QDBusConnectionInterface>
 #include <QDBusReply>
 #include <QTimer>
-#include <QXmlStreamReader>
+#include <QProcessEnvironment>
 
 #include <KWindowSystem>
 #include <KScreen/Config>
@@ -55,16 +55,20 @@ class X11ImageGrabber : public ImageGrabber
     void grabFullScreen();
     void grabCurrentScreen();
     void grabActiveWindow();
-    void grabGivenRectangularRegion(int x, int y, int width, int height);
+    void grabRectangularRegion();
 
     private slots:
 
     void KWinDBusScreenshotHelper(quint64 window);
     void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
+    void rectangleSelectionConfirmed(int x, int y, int width, int height);
+    void rectangleSelectionCancelled();
 
     private:
 
+    bool liveModeAvailable();
     bool KWinDBusScreenshotAvailable();
+    void grabGivenRectangularRegion(int x, int y, int width, int height);
     void grabGivenRectangularRegionActual(int x, int y, int width, int height);
     QPixmap processXImage30Bit(xcb_image_t *xcbImage);
     QPixmap processXImage32Bit(xcb_image_t *xcbImage);

@@ -10,6 +10,15 @@ Item {
     signal selectionCancelled;
     signal selectionConfirmed(int x, int y, int width, int height);
 
+    function loadScreenshot() {
+        var rstring = Math.random().toString().substring(4);
+        nonLiveScreenshotImage.source = "image://screenshot/" + rstring;
+    }
+
+    Image {
+        id: nonLiveScreenshotImage;
+    }
+
     MouseArea {
         id: selectArea
         anchors.fill: parent

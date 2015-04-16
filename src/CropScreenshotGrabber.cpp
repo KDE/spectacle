@@ -1,9 +1,11 @@
 #include "CropScreenshotGrabber.h"
 
-CropScreenshotGrabber::CropScreenshotGrabber(QObject *parent) :
+CropScreenshotGrabber::CropScreenshotGrabber(bool liveMode, QObject *parent) :
     QObject(parent),
     mQuickView(nullptr),
-    mKQmlObject(new KDeclarative::QmlObject)
+    mKQmlObject(new KDeclarative::QmlObject),
+    mImageProvider(nullptr),
+    mLiveMode(liveMode)
 {}
 
 CropScreenshotGrabber::~CropScreenshotGrabber()
@@ -18,9 +20,15 @@ CropScreenshotGrabber::~CropScreenshotGrabber()
     delete mKQmlObject;
 }
 
-void CropScreenshotGrabber::init()
+void CropScreenshotGrabber::init(QPixmap pixmap)
 {
     mQuickView = new QQuickView(mKQmlObject->engine(), 0);
+
+    if (!(mLiveMode)) {
+        mImageProvider = new KSGImageProvider;
+        mImageProvider->setPixmap(pixmap);
+        mQuickView->engine()->addImageProvider("screenshot", mImageProvider);
+    }
 
     mQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     mQuickView->setFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::Tool);
@@ -37,6 +45,11 @@ void CropScreenshotGrabber::waitForViewReady(QQuickView::Status status)
     switch(status) {
     case QQuickView::Ready: {
         QQuickItem *rootItem = mQuickView->rootObject();
+
+        if (!(mLiveMode)) {
+            QMetaObject::invokeMethod(rootItem, "loadScreenshot");
+        }
+
         connect(rootItem, SIGNAL(selectionCancelled()), this, SIGNAL(selectionCancelled()));
         connect(rootItem, SIGNAL(selectionConfirmed(int,int,int,int)), this, SLOT(selectConfirmedHandler(int,int,int,int)));
 

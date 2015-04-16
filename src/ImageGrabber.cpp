@@ -99,33 +99,3 @@ void ImageGrabber::doImageGrab()
         return grabRectangularRegion();
     }
 }
-
-void ImageGrabber::rectangleSelectionCancelled()
-{
-    QObject *sender = QObject::sender();
-    sender->disconnect();
-    sender->deleteLater();
-
-    emit imageGrabFailed();
-}
-
-void ImageGrabber::rectangleSelectionConfirmed(int x, int y, int width, int height)
-{
-    QObject *sender = QObject::sender();
-    sender->disconnect();
-    sender->deleteLater();
-
-    grabGivenRectangularRegion(x, y, width, height);
-}
-
-// Grab Functions
-
-void ImageGrabber::grabRectangularRegion()
-{
-    CropScreenshotGrabber *grabber = new CropScreenshotGrabber;
-
-    connect(grabber, &CropScreenshotGrabber::selectionCancelled, this, &ImageGrabber::rectangleSelectionCancelled);
-    connect(grabber, &CropScreenshotGrabber::selectionConfirmed, this, &ImageGrabber::rectangleSelectionConfirmed);
-
-    grabber->init();
-}

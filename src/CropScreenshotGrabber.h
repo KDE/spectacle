@@ -6,8 +6,12 @@
 #include <QQuickItem>
 #include <QQmlEngine>
 #include <QUrl>
+#include <QPixmap>
+#include <QMetaObject>
 
 #include <KDeclarative/QmlObject>
+
+#include "KSGImageProvider.h"
 
 class CropScreenshotGrabber : public QObject
 {
@@ -15,10 +19,10 @@ class CropScreenshotGrabber : public QObject
 
     public:
 
-    explicit CropScreenshotGrabber(QObject *parent = 0);
+    explicit CropScreenshotGrabber(bool liveMode = true, QObject *parent = 0);
     ~CropScreenshotGrabber();
 
-    void init();
+    void init(QPixmap pixmap = QPixmap());
 
     signals:
 
@@ -34,6 +38,8 @@ class CropScreenshotGrabber : public QObject
 
     QQuickView              *mQuickView;
     KDeclarative::QmlObject *mKQmlObject;
+    KSGImageProvider        *mImageProvider;
+    bool                    mLiveMode;
 };
 
 #endif // CROPSCREENSHOTGRABBER_H

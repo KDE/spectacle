@@ -180,6 +180,37 @@ void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOpera
     return grabFullScreen();
 }
 
+void X11ImageGrabber::rectangleSelectionCancelled()
+{
+    QObject *sender = QObject::sender();
+    sender->disconnect();
+    sender->deleteLater();
+
+    emit imageGrabFailed();
+}
+
+void X11ImageGrabber::rectangleSelectionConfirmed(int x, int y, int width, int height)
+{
+    QObject *sender = QObject::sender();
+    sender->disconnect();
+    sender->deleteLater();
+
+    grabGivenRectangularRegion(x, y, width, height);
+}
+
+bool X11ImageGrabber::liveModeAvailable()
+{
+    // if force non-live mode is set, return false
+
+    if (QProcessEnvironment::systemEnvironment().contains("KSCREENGENIE_FORCE_CROP_NONLIVE")) {
+        return false;
+    }
+
+    // if compositing is active, live mode is available, and the reverse
+
+    return KWindowSystem::compositingActive();
+}
+
 // grabber methods
 
 void X11ImageGrabber::grabFullScreen()
@@ -308,17 +339,38 @@ void X11ImageGrabber::grabCurrentScreen()
     connect(co, &KScreen::GetConfigOperation::finished, this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
 }
 
+void X11ImageGrabber::grabRectangularRegion()
+{
+    bool liveMode = liveModeAvailable();
+    CropScreenshotGrabber *grabber = new CropScreenshotGrabber(liveMode);
+
+    connect(grabber, &CropScreenshotGrabber::selectionCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
+    connect(grabber, &CropScreenshotGrabber::selectionConfirmed, this, &X11ImageGrabber::rectangleSelectionConfirmed);
+
+    if (!(liveMode)) {
+        mPixmap = getWindowPixmap(QX11Info::appRootWindow());
+        grabber->init(mPixmap);
+        return;
+    }
+    grabber->init();
+}
+
 void X11ImageGrabber::grabGivenRectangularRegion(int x, int y, int width, int height)
 {
-    const int msec = KWindowSystem::compositingActive() ? 200 : 50;
-    auto func = [this, x, y, width, height]() mutable { grabGivenRectangularRegionActual(x, y, width, height); };
-    QTimer::singleShot(msec, func);
+    bool liveMode = liveModeAvailable();
+
+    if (liveMode) {
+        auto func = [this, x, y, width, height]() mutable { grabGivenRectangularRegionActual(x, y, width, height); };
+        QTimer::singleShot(200, func);
+        return;
+    }
+
+    mPixmap = mPixmap.copy(x, y, width, height);
+    emit pixmapChanged(mPixmap);
 }
 
 void X11ImageGrabber::grabGivenRectangularRegionActual(int x, int y, int width, int height)
 {
-    xcb_window_t window = QX11Info::appRootWindow();
-    mPixmap = getWindowPixmap(window).copy(x, y, width, height);
-
+    mPixmap = getWindowPixmap(QX11Info::appRootWindow()).copy(x, y, width, height);
     emit pixmapChanged(mPixmap);
 }
