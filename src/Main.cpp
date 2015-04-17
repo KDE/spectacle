@@ -40,11 +40,14 @@ int main(int argc, char **argv)
     aboutData.setupCommandLine(&parser);
 
     parser.addOptions({
-        {{"c", "current"},      i18n("Capture the window under the cursor at startup")},
         {{"f", "fullscreen"},   i18n("Capture the entire desktop (default)")},
+        {{"m", "current"},      i18n("Capture the current monitor")},
         {{"a", "activewindow"}, i18n("Capture the active window")},
-        {{"e", "edit"},         i18n("Edit the screenshot after taking it (crop, mask, etc)")},
-        {{"b", "background"},   i18n("Take a screenshot and exit without showing the GUI")}
+        {{"r", "region"},       i18n("Capture a rectangular region of the screen")},
+        {{"b", "background"},   i18n("Take a screenshot and exit without showing the GUI")},
+        {{"c", "clipboard"},    i18n("In background mode, send image to clipboard without saving to file")},
+        {{"o", "output"},       i18n("In background mode, save image to specified file"), "fileName"},
+        {{"d", "delay"},        i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"}
     });
 
     parser.process(app);
@@ -57,25 +60,40 @@ int main(int argc, char **argv)
         grabMode = ImageGrabber::CurrentScreen;
     } else if (parser.isSet("activewindow")) {
         grabMode = ImageGrabber::ActiveWindow;
-    }
-
-    // extract the editor mode (do we want to manipulate the image post capture?)
-
-    bool startEditor = false;
-    if (parser.isSet("edit")) {
-        startEditor = true;
+    } else if (parser.isSet("region")) {
+        grabMode = ImageGrabber::RectangularRegion;
     }
 
     // are we running in background mode?
 
     bool backgroundMode = false;
+    bool sendToClipboard = false;
+    quint64 delayMsec = 0;
+    QString fileName = QString();
+
     if (parser.isSet("background")) {
         backgroundMode = true;
+
+        if (parser.isSet("output")) {
+            fileName = parser.value("output");
+        }
+
+        if (parser.isSet("delay")) {
+            bool ok = false;
+            quint64 delayValue = parser.value("delay").toULongLong(&ok);
+            if (ok) {
+                delayMsec = delayValue;
+            }
+        }
+
+        if (parser.isSet("clipboard")) {
+            sendToClipboard = true;
+        }
     }
 
     // release the kraken
 
-    KScreenGenie genie(backgroundMode, startEditor, grabMode);
+    KScreenGenie genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard);
     QObject::connect(&genie, &KScreenGenie::allDone, qApp, &QApplication::quit);
 
     return app.exec();

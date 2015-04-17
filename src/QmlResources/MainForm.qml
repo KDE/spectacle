@@ -29,7 +29,6 @@ ColumnLayout {
     signal newScreenshotRequest(string captureType, real captureDelay, bool includePointer, bool includeDecorations);
     signal saveCheckboxStates(bool includePointer, bool includeDecorations);
     signal saveCaptureMode(int captureModeIndex);
-    signal editScreenshotRequest;
 
     function reloadScreenshot() {
         screenshotImage.refreshImage();
@@ -94,6 +93,8 @@ ColumnLayout {
         ColumnLayout {
             id: rightColumn
             spacing: 20;
+
+            Layout.preferredWidth: 400;
 
             Label {
                 text: i18n("Capture Mode");
@@ -188,37 +189,23 @@ ColumnLayout {
                     text: i18n("Include window titlebar and borders");
                 }
             }
-        }
-    }
 
-    RowLayout {
-        id: bottomLayout;
+            Button {
+                id: takeNewScreenshot;
+                text: i18n("Take New Screenshot");
+                focus: true;
 
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop;
-        Layout.preferredHeight: 50;
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop;
 
-        Button {
-            id: takeNewScreenshot;
-            text: i18n("Take New Screenshot");
-            focus: true;
+                onClicked: {
+                    var capturemode = captureModeModel.get(captureMode.currentIndex)["type"];
+                    var capturedelay = captureDelay.value;
+                    var includepointer = optionMousePointer.checked;
+                    var includedecor = optionWindowDecorations.checked;
 
-            onClicked: requestNew();
-
-            function requestNew() {
-                var capturemode = captureModeModel.get(captureMode.currentIndex)["type"];
-                var capturedelay = captureDelay.value;
-                var includepointer = optionMousePointer.checked;
-                var includedecor = optionWindowDecorations.checked;
-
-                newScreenshotRequest(capturemode, capturedelay, includepointer, includedecor);
+                    newScreenshotRequest(capturemode, capturedelay, includepointer, includedecor);
+                }
             }
-        }
-
-        Button {
-            id: editCurrentImage;
-            text: i18n("Edit Image");
-
-            onClicked: editScreenshotRequest();
         }
     }
 

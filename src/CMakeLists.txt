@@ -57,8 +57,7 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
-        ${X11_LIBRARIES}
-        ${X11_Xfixes_LIB}
+        KF5::WidgetsAddons
 )
 
 if(XCB_FOUND)

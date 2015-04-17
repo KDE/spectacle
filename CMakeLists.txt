@@ -52,6 +52,7 @@ find_package(
         I18n
         KIO
         XmlGui
+        WidgetsAddons
         WindowSystem
 )
 

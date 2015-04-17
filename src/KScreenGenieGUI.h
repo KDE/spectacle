@@ -68,7 +68,6 @@ class KScreenGenieGUI : public QWidget
     void addSendToAction(const QIcon icon, const QString name, const QVariant data);
     void addSendToSeperator();
     void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
-    void editScreenshot();
     void sendToRequest();
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
     void saveCaptureModeConfig(int modeIndex);

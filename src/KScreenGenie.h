@@ -28,7 +28,6 @@
 #include <QByteArray>
 #include <QDateTime>
 #include <QImageWriter>
-#include <QErrorMessage>
 #include <QMimeDatabase>
 #include <QMimeType>
 #include <QStandardPaths>
@@ -45,6 +44,7 @@
 #include <KConfigGroup>
 #include <KSharedConfig>
 #include <KWindowSystem>
+#include <KMessageBox>
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
@@ -63,7 +63,7 @@ class KScreenGenie : public QObject
 
     public:
 
-    explicit KScreenGenie(bool background, bool startEditor, ImageGrabber::GrabMode grabMode, QObject *parent = 0);
+    explicit KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, quint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
     ~KScreenGenie();
 
     QString filename() const;
@@ -111,7 +111,7 @@ class KScreenGenie : public QObject
 
     bool             mBackgroundMode;
     bool             mOverwriteOnSave;
-    bool             mStartEditor;
+    bool             mBackgroundSendToClipboard;
     QPixmap          mLocalPixmap;
     QString          mFileNameString;
     QUrl             mFileNameUrl;

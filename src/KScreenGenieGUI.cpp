@@ -68,7 +68,6 @@ void KScreenGenieGUI::init()
 
     QQuickItem *rootItem = mQuickWidget->rootObject();
     connect(rootItem, SIGNAL(newScreenshotRequest(QString,double,bool,bool)), this, SLOT(captureScreenshot(QString,double,bool,bool)));
-    connect(rootItem, SIGNAL(editScreenshotRequest()), this, SLOT(editScreenshot()));
     connect(rootItem, SIGNAL(saveCheckboxStates(bool, bool)), this, SLOT(saveCheckboxStatesConfig(bool, bool)));
     connect(rootItem, SIGNAL(saveCaptureMode(int)), this, SLOT(saveCaptureModeConfig(int)));
 
@@ -178,11 +177,6 @@ void KScreenGenieGUI::captureScreenshot(QString captureMode, double captureDelay
     }
 
     emit newScreenshotRequest(mode, msec, includePointer, includeDecorations);
-}
-
-void KScreenGenieGUI::editScreenshot()
-{
-    qDebug() << "Edit called";
 }
 
 void KScreenGenieGUI::setScreenshotAndShow(const QPixmap &pixmap)

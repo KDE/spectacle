@@ -31,16 +31,21 @@
 
 #include "KScreenGenie.h"
 
-KScreenGenie::KScreenGenie(bool background, bool startEditor, ImageGrabber::GrabMode grabMode, QObject *parent) :
+KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, quint64 delayMsec, bool sendToClipboard, QObject *parent) :
     QObject(parent),
-    mBackgroundMode(background),
+    mBackgroundMode(backgroundMode),
     mOverwriteOnSave(true),
-    mStartEditor(startEditor),
+    mBackgroundSendToClipboard(sendToClipboard),
     mLocalPixmap(QPixmap()),
     mScreenGenieGUI(nullptr)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup guiConfig(config, "GuiConfig");
+
+    if (QDir::isRelativePath(saveFileName)) {
+        saveFileName = QDir::current().absoluteFilePath(saveFileName);
+    }
+    setFilename(saveFileName);
 
     mImageGrabber = new X11ImageGrabber();
     mImageGrabber->setGrabMode(grabMode);
@@ -51,13 +56,16 @@ KScreenGenie::KScreenGenie(bool background, bool startEditor, ImageGrabber::Grab
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KScreenGenie::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KScreenGenie::screenshotFailed);
 
-    const int msec = KWindowSystem::compositingActive() ? 200 : 50;
+    int msec = KWindowSystem::compositingActive() ? 200 : 50;
+    if (backgroundMode) {
+        msec += delayMsec;
+    }
     QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
 
     // if we aren't in background mode, this would be a good time to
     // init the gui
 
-    if (!(background)) {
+    if (!(backgroundMode)) {
         mScreenGenieGUI = new KScreenGenieGUI;
 
         connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
@@ -154,8 +162,7 @@ void KScreenGenie::showErrorMessage(const QString err_string)
     qDebug() << "ERROR: " << err_string;
 
     if (!mBackgroundMode) {
-        QErrorMessage messageDialog;
-        messageDialog.showMessage(err_string);
+        KMessageBox::error(0, err_string);
     }
 }
 
@@ -164,7 +171,12 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
     mLocalPixmap = pixmap;
 
     if (mBackgroundMode) {
-        doAutoSave();
+        if (mBackgroundSendToClipboard) {
+            qApp->clipboard()->setPixmap(pixmap);
+            qDebug() << i18n("Copied image to clipboard");
+        } else {
+            doAutoSave();
+        }
         emit allDone();
         return;
     } else {
@@ -174,6 +186,11 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
 
 void KScreenGenie::screenshotFailed()
 {
+    if (mBackgroundMode) {
+        qDebug() << i18n("Screenshot capture cancelled or failed");
+        emit allDone();
+        return;
+    }
     screenshotUpdated(QPixmap());
 }
 
@@ -184,7 +201,13 @@ void KScreenGenie::doAutoSave()
         return;
     }
 
-    const QUrl savePath = getAutoSaveFilename();
+    QUrl savePath;
+
+    if (mBackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
+        savePath = mFileNameUrl;
+    } else {
+        savePath = getAutoSaveFilename();
+    }
 
     if (doSave(savePath)) {
         setSaveLocation(saveLocation());
