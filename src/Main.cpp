@@ -9,6 +9,7 @@
 
 #include "KScreenGenie.h"
 #include "ImageGrabber.h"
+#include "Config.h"
 
 int main(int argc, char **argv)
 {
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
     KLocalizedString::setApplicationDomain("kscreengenie");
     KAboutData aboutData("kscreengenie",
                          i18n("KScreenGenie"),
-                         "0.0.95",
+                         KSG_VERSION,
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::LGPL,
                          i18n("(C) 2015 Boudhayan Gupta"));

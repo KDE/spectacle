@@ -72,6 +72,7 @@ endif()
 # hand off to subdirectories
 
 add_subdirectory(src)
+add_subdirectory(desktop)
 
 # summaries
 

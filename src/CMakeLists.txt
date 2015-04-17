@@ -1,7 +1,6 @@
 # common - configure file and version definitions
 
-set(KSNAPVERSION ${KSG_VERSION})
-#configure_file(config-ksnapshot.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksnapshot.h)
+configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 
 # target
 

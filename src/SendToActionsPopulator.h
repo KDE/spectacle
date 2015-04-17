@@ -28,6 +28,8 @@
 #include <QVariant>
 #include <QMenu>
 
+#include "Config.h"
+
 #include <KLocalizedString>
 #include <KService>
 #include <KMimeTypeTrader>
