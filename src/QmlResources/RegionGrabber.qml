@@ -29,6 +29,9 @@ Item {
     signal selectionCancelled;
     signal selectionConfirmed(int x, int y, int width, int height);
 
+    focus: true;
+    Keys.onEscapePressed: selectionCancelled();
+
     function loadScreenshot() {
         var rstring = Math.random().toString().substring(4);
         nonLiveScreenshotImage.source = "image://screenshot/" + rstring;
@@ -43,13 +46,10 @@ Item {
         anchors.fill: parent
         cursorShape: Qt.CrossCursor
 
-        property variant highlightItem : null;
+        property variant highlightItem : defaultRectangle.createObject(selectArea, {"x": 0, "y": 0});
 
         property int initialX : 0
         property int initialY : 0
-
-        function reset() {
-        }
 
         onPressed: {
             if (highlightItem !== null) {
@@ -78,6 +78,44 @@ Item {
                 highlightItem.height = (initialY - mouse.y);
             } else {
                 highlightItem.height = (Math.abs (mouse.y - highlightItem.y));
+            }
+        }
+
+        Component {
+            id: defaultRectangle
+
+            Item {
+                anchors.fill: parent;
+
+                Rectangle {
+                    id: helpRectangle;
+                    anchors.fill: parent;
+
+                    color: "black";
+                    opacity: 0.2;
+                }
+
+                Rectangle {
+                    id: helpLabelRectangle
+
+                    height: helpLabel.height + 32;
+                    width:  helpLabel.width  + 32;
+                    radius: 10;
+
+                    color: "white"
+                    opacity: 0.8;
+
+                    anchors.centerIn: parent;
+                }
+
+                Label {
+                    id: helpLabel;
+                    anchors.centerIn: helpLabelRectangle;
+
+                    text: i18n("Click anywhere on the screen (including on this text) to start drawing a selection rectangle, or press Esc to quit");
+                    font.bold: true;
+                }
+
             }
         }
 

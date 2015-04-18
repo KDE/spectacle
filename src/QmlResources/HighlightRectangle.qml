@@ -26,11 +26,64 @@ Item {
     signal selectionCancelled;
     signal selectionConfirmed(int x, int y, int width, int height);
 
+    // resize helper functions
+
+    property int initialTop;
+    property int initialLeft;
+    property int initialWidth;
+    property int initialHeight;
+
+    function saveInitials() {
+        selectionContainer.initialHeight = selectionContainer.height;
+        selectionContainer.initialWidth  = selectionContainer.width;
+        selectionContainer.initialTop    = selectionContainer.y;
+        selectionContainer.initialLeft   = selectionContainer.x;
+    }
+
+    function resizeFromTop(curMouseY, oldMouseY) {
+        var newY = selectionContainer.y + (curMouseY - oldMouseY);
+        var newHeight = selectionContainer.initialHeight - (newY - selectionContainer.initialTop);
+
+        if ((newY >= 0) && (newHeight > 0)) {
+            selectionContainer.y = newY;
+            selectionContainer.height = newHeight;
+        }
+    }
+
+    function resizeFromLeft(curMouseX, oldMouseX) {
+        var newX = selectionContainer.x + (curMouseX - oldMouseX);
+        var newWidth = selectionContainer.initialWidth - (newX - selectionContainer.initialLeft);
+
+        if ((newX >= 0) && (newWidth > 0)) {
+            selectionContainer.x = newX;
+            selectionContainer.width = newWidth;
+        }
+    }
+
+    function resizeFromBottom(curMouseY, oldMouseY) {
+        var newHeight = selectionContainer.height + (curMouseY - oldMouseY);
+        if (newHeight > 0) {
+            selectionContainer.height = newHeight;
+        }
+    }
+
+    function resizeFromRight(curMouseX, oldMouseX) {
+        var newWidth = selectionContainer.width + (curMouseX - oldMouseX);
+        if (newWidth > 0) {
+            selectionContainer.width = newWidth;
+        }
+    }
+
+    // the selection rectangle and its mouse area
+
     Rectangle {
         id: selectionRectangle;
 
-        color: "yellow";
-        opacity: 0.5;
+        property int sizeGripBorderWidth: 8;
+
+        color: Qt.rgba(1, 0.9, 0, 0.5);
+        border.color: Qt.rgba(1, 0.9, 0, 0.7);
+        border.width: 3;
 
         anchors.centerIn: parent;
         anchors.fill: parent;
@@ -39,11 +92,9 @@ Item {
     MouseArea {
         id: moveArea
 
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.margins: 5
+        anchors.centerIn: parent;
+        height: parent.height - (2 * selectionRectangle.sizeGripBorderWidth);
+        width:  parent.width - (2 * selectionRectangle.sizeGripBorderWidth);
 
         cursorShape: Qt.OpenHandCursor
 
@@ -62,6 +113,211 @@ Item {
             cursorShape = Qt.OpenHandCursor;
         }
     }
+
+    // resize grips
+
+    MouseArea {
+        id: sizeGripTopMouseArea;
+        cursorShape: Qt.SizeVerCursor;
+
+        anchors.top: parent.top;
+        anchors.horizontalCenter: parent.horizontalCenter;
+
+        height: selectionRectangle.sizeGripBorderWidth;
+        width:  parent.width - (2 * selectionRectangle.sizeGripBorderWidth);
+
+        property int oldMouseY;
+
+        onPressed: {
+            oldMouseY = mouseY;
+            saveInitials();
+        }
+
+        onPositionChanged: {
+            resizeFromTop(mouseY, oldMouseY);
+        }
+    }
+
+    MouseArea {
+        id: sizeGripLeftMouseArea;
+        cursorShape: Qt.SizeHorCursor;
+
+        anchors.left: parent.left;
+        anchors.verticalCenter: parent.verticalCenter;
+
+        height: parent.height - (2 * selectionRectangle.sizeGripBorderWidth);
+        width:  selectionRectangle.sizeGripBorderWidth;
+
+        property int oldMouseX;
+
+        onPressed: {
+            oldMouseX = mouseX;
+            saveInitials();
+        }
+
+        onPositionChanged: {
+            resizeFromLeft(mouseX, oldMouseX);
+        }
+    }
+
+    MouseArea {
+        id: sizeGripRightMouseArea;
+        cursorShape: Qt.SizeHorCursor;
+
+        anchors.right: parent.right;
+        anchors.verticalCenter: parent.verticalCenter;
+
+        height: parent.height - (2 * selectionRectangle.sizeGripBorderWidth);
+        width:  selectionRectangle.sizeGripBorderWidth;
+
+        property int oldMouseX;
+
+        onPressed: {
+            oldMouseX = mouseX;
+        }
+
+        onPositionChanged: {
+            resizeFromRight(mouseX, oldMouseX);
+        }
+    }
+
+    MouseArea {
+        id: sizeGripBottomMouseArea;
+        cursorShape: Qt.SizeVerCursor;
+
+        anchors.bottom: parent.bottom;
+        anchors.horizontalCenter: parent.horizontalCenter;
+
+        height: selectionRectangle.sizeGripBorderWidth;
+        width:  parent.width - (2 * selectionRectangle.sizeGripBorderWidth);
+
+        property int oldMouseY;
+
+        onPressed: {
+            oldMouseY = mouseY;
+        }
+
+        onPositionChanged: {
+            resizeFromBottom(mouseY, oldMouseY);
+        }
+    }
+
+    Rectangle {
+        height: 20;
+        width:  20;
+        color:  "transparent";
+
+        anchors.horizontalCenter: parent.left;
+        anchors.verticalCenter:   parent.top;
+
+        MouseArea {
+            id: sizeGripTopLeftMouseArea
+            anchors.fill: parent;
+            cursorShape: Qt.SizeFDiagCursor;
+
+            property int oldMouseX;
+            property int oldMouseY;
+
+            onPressed: {
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+                saveInitials();
+            }
+
+            onPositionChanged: {
+                resizeFromLeft(mouseX, oldMouseX);
+                resizeFromTop(mouseY, oldMouseY);
+            }
+        }
+    }
+
+    Rectangle {
+        height: 20;
+        width:  20;
+        color:  "transparent";
+
+        anchors.horizontalCenter: parent.right;
+        anchors.verticalCenter:   parent.top;
+
+        MouseArea {
+            id: sizeGripTopRightMouseArea
+            anchors.fill: parent;
+            cursorShape: Qt.SizeBDiagCursor;
+
+            property int oldMouseX;
+            property int oldMouseY;
+
+            onPressed: {
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+                saveInitials();
+            }
+
+            onPositionChanged: {
+                resizeFromRight(mouseX, oldMouseX);
+                resizeFromTop(mouseY, oldMouseY);
+            }
+        }
+    }
+
+    Rectangle {
+        height: 20;
+        width:  20;
+        color:  "transparent";
+
+        anchors.horizontalCenter: parent.left;
+        anchors.verticalCenter:   parent.bottom;
+
+        MouseArea {
+            id: sizeGripBottomLeftMouseArea
+            anchors.fill: parent;
+            cursorShape: Qt.SizeBDiagCursor;
+
+            property int oldMouseX;
+            property int oldMouseY;
+
+            onPressed: {
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+                saveInitials();
+            }
+
+            onPositionChanged: {
+                resizeFromLeft(mouseX, oldMouseX);
+                resizeFromBottom(mouseY, oldMouseY);
+            }
+        }
+    }
+
+    Rectangle {
+        height: 20;
+        width:  20;
+        color:  "transparent";
+
+        anchors.horizontalCenter: parent.right;
+        anchors.verticalCenter:   parent.bottom;
+
+        MouseArea {
+            id: sizeGripBottomRightMouseArea
+            anchors.fill: parent;
+            cursorShape: Qt.SizeFDiagCursor;
+
+            property int oldMouseX;
+            property int oldMouseY;
+
+            onPressed: {
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+            }
+
+            onPositionChanged: {
+                resizeFromRight(mouseX, oldMouseX);
+                resizeFromBottom(mouseY, oldMouseY);
+            }
+        }
+    }
+
+    // the buttons inside the rectangle
 
     Row {
         id: buttonStore;
