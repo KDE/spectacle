@@ -103,21 +103,22 @@ void KScreenGenieGUI::init()
 
     // start a thread to populate our send-to actions
 
-    QThread *thread = new QThread;
+    //QThread *thread = new QThread;
     SendToActionsPopulator *populator = new SendToActionsPopulator;
 #ifdef KIPI_FOUND
-    populator->setKScreenGenieForKipi(QSharedPointer<QObject>(mScreenGenie));
+    populator->setKScreenGenieForKipi(QSharedPointer<QObject>(mScreenGenie), QSharedPointer<QWidget>(this));
 #endif
 
-    populator->moveToThread(thread);
-    connect(thread, &QThread::started, populator, &SendToActionsPopulator::process);
+    //populator->moveToThread(thread);
+    //connect(thread, &QThread::started, populator, &SendToActionsPopulator::process);
     connect(populator, &SendToActionsPopulator::haveAction, this, &KScreenGenieGUI::addSendToAction);
     connect(populator, &SendToActionsPopulator::haveSeperator, this, &KScreenGenieGUI::addSendToSeperator);
+    connect(this, &KScreenGenieGUI::sendToKipiRequest, populator, &SendToActionsPopulator::handleSendToKipi);
     //connect(populator, &SendToActionsPopulator::allDone, thread, &QThread::quit);
     //connect(populator, &SendToActionsPopulator::allDone, thread, &QThread::deleteLater);
 
     mSendToButton->setMenu(mSendToMenu);
-    thread->start();
+    populator->process();
 
     // read in the checkbox states and capture mode index
 
@@ -218,6 +219,7 @@ void KScreenGenieGUI::sendToRequest()
         return;
     case SendToActionsPopulator::KipiAction:
         qDebug() << "KIPI";
+        emit sendToKipiRequest(data.second.toLongLong());
         return;
     }
 }

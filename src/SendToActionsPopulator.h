@@ -21,6 +21,7 @@
 #define SENDTOACTIONSPOPULATOR_H
 
 #include <QObject>
+#include <QWidget>
 #include <QString>
 #include <QAction>
 #include <QList>
@@ -61,7 +62,7 @@ class SendToActionsPopulator : public QObject
     ~SendToActionsPopulator();
 
 #ifdef KIPI_FOUND
-    void setKScreenGenieForKipi(QObject *ksg);
+    void setKScreenGenieForKipi(QSharedPointer<QObject> ksg, QSharedPointer<QWidget> ksg_gui);
 #endif
 
     signals:
@@ -73,6 +74,7 @@ class SendToActionsPopulator : public QObject
     public slots:
 
     void process();
+    void handleSendToKipi(qint64 index);
 
     private:
 
@@ -80,6 +82,11 @@ class SendToActionsPopulator : public QObject
     void sendKServiceSendToActions();
 #ifdef KIPI_FOUND
     void sendKipiSendToActions();
+
+    QSharedPointer<QObject> mScreenGenie;
+    QSharedPointer<QWidget> mScreenGenieGUI;
+    KSGKipiInterface       *mKipiInterface;
+    QList<QAction *>        mKipiActions;
 #endif
 
 

@@ -27,7 +27,6 @@
 
 SendToActionsPopulator::SendToActionsPopulator(QObject *parent) : QObject(parent)
 {
-
 }
 
 SendToActionsPopulator::~SendToActionsPopulator()
@@ -45,6 +44,12 @@ void SendToActionsPopulator::process()
     sendKipiSendToActions();
 #endif
     emit allDone();
+}
+
+void SendToActionsPopulator::handleSendToKipi(qint64 index)
+{
+    qDebug() << "Got" << index;
+    mKipiActions.at(index)->trigger();
 }
 
 void SendToActionsPopulator::sendHardcodedSendToActions()
@@ -69,9 +74,24 @@ void SendToActionsPopulator::sendKServiceSendToActions()
 }
 
 #ifdef KIPI_FOUND
+void SendToActionsPopulator::setKScreenGenieForKipi(QSharedPointer<QObject> ksg, QSharedPointer<QWidget> ksg_gui)
+{
+    mScreenGenie = ksg;
+    mScreenGenieGUI = ksg_gui;
+}
+
 void SendToActionsPopulator::sendKipiSendToActions()
 {
+    mKipiInterface = new KSGKipiInterface(mScreenGenie.data());
     KIPI::PluginLoader *loader = new KIPI::PluginLoader;
+
+    qDebug() << "Starting load";
+
+    loader->setInterface(mKipiInterface);
+    loader->init();
+
+    qDebug() << "Ended load";
+
     KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
 
     for (auto pluginInfo: pluginList) {
@@ -86,7 +106,7 @@ void SendToActionsPopulator::sendKipiSendToActions()
             continue;
         }
 
-        plugin->setup(0);
+        plugin->setup(mScreenGenieGUI.data());
 
         QList<QAction *> actions = plugin->actions();
         QSet<QAction *> exportActions;
@@ -104,8 +124,9 @@ void SendToActionsPopulator::sendKipiSendToActions()
             }
         }
 
-        for (QAction *action: exportActions) {
-            emit haveAction(action->icon(), action->text(), QVariant::fromValue(ActionData(KipiAction, "some")));
+        for (auto action: exportActions) {
+            mKipiActions.append(action);
+            emit haveAction(action->icon(), action->text(), QVariant::fromValue(ActionData(KipiAction, QString::number(mKipiActions.size() - 1))));
         }
 
     }

@@ -79,6 +79,7 @@ class KScreenGenieGUI : public QWidget
     void saveAndExit();
     void saveAsClicked();
     void sendToServiceRequest(KService::Ptr servicePointer);
+    void sendToKipiRequest(qint64 index);
     void sendToClipboardRequest();
     void sendToOpenWithRequest();
 

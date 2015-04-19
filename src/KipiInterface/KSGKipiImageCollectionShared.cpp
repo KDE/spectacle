@@ -31,18 +31,9 @@ KSGKipiImageCollectionShared::KSGKipiImageCollectionShared(QObject *ksg) :
 KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared()
 {}
 
-QString KSGKipiImageCollectionShared::name()           { return "KScreenGenie"; }
-QString KSGKipiImageCollectionShared::comment()        { return QString(); }
-QString KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
-QUrl    KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
-bool    KSGKipiImageCollectionShared::isDirectory()    { return false; }
-
-QList<QUrl> KSGKipiImageCollectionShared::images()
-{
-    KScreenGenie *genie = qobject_cast<KScreenGenie *>(mScreenGenie);
-    QUrl url = genie->doTempSaveForKipi();
-    if (url.isValid()) {
-        return QList<QUrl>({ url });
-    }
-    return QList<QUrl>();
-}
+QString     KSGKipiImageCollectionShared::name()           { return "KScreenGenie"; }
+QString     KSGKipiImageCollectionShared::comment()        { return QString(); }
+QString     KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
+QUrl        KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
+bool        KSGKipiImageCollectionShared::isDirectory()    { return false; }
+QList<QUrl> KSGKipiImageCollectionShared::images()         { return QList<QUrl>(); }
