@@ -191,7 +191,7 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
 void KScreenGenie::screenshotFailed()
 {
     if (mBackgroundMode) {
-        qDebug() << i18n("Screenshot capture cancelled or failed");
+        qDebug() << i18n("Screenshot capture canceled or failed");
         emit allDone();
         return;
     }
@@ -387,7 +387,7 @@ QUrl KScreenGenie::tempFileSave(const QString mimetype)
 bool KScreenGenie::doSave(const QUrl url)
 {
     if (!(url.isValid())) {
-        emit errorMessage(i18n("Canot save screenshot. The save filename is invalid."));
+        emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
         return false;
     }
 

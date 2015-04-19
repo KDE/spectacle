@@ -65,7 +65,7 @@ void KScreenGenieGUI::init()
     mQuickWidget->setClearColor(QWidget::palette().color(QWidget::backgroundRole()));
     mQuickWidget->setSource(QUrl("qrc:///MainForm.qml"));
 
-    // connect the the qml signals
+    // connect the qml signals
 
     QQuickItem *rootItem = mQuickWidget->rootObject();
     connect(rootItem, SIGNAL(newScreenshotRequest(QString,double,bool,bool)), this, SLOT(captureScreenshot(QString,double,bool,bool)));
