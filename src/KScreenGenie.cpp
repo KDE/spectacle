@@ -258,7 +258,7 @@ void KScreenGenie::doPrint(QPrinter *printer)
 
 void KScreenGenie::doGuiSaveAs()
 {
-    QString *selectedFilter;
+    QString selectedFilter;
     QStringList supportedFilters;
     QMimeDatabase db;
 
@@ -268,22 +268,30 @@ void KScreenGenie::doGuiSaveAs()
     for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
         QMimeType mimetype = db.mimeTypeForName(mimeTypeName);
 
-        if (mimetype.filterString() != "") {
-            supportedFilters.append(mimetype.filterString());
+        if (mimetype.preferredSuffix() != "") {
+            QString filterString = mimetype.comment() + " (*." + mimetype.preferredSuffix() + ")";
+            qDebug() << filterString;
+            supportedFilters.append(filterString);
             if (mimetype == mimeTypeForFilename) {
-                selectedFilter = &supportedFilters.last();
+                selectedFilter = supportedFilters.last();
             }
         }
     }
 
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(
-                mScreenGenieGUI, i18n("Save Screenshot As"), autoSavePath, supportedFilters.join(";;"), selectedFilter);
-    if (!saveUrl.isValid()) {
-        return;
-    }
+    QFileDialog dialog(mScreenGenieGUI);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilters(supportedFilters);
+    dialog.selectNameFilter(selectedFilter);
+    dialog.setDirectoryUrl(autoSavePath);
 
-    if (doSave(saveUrl)) {
-        emit imageSaved();
+    if (dialog.exec() == QFileDialog::Accepted) {
+        const QUrl saveUrl = dialog.selectedUrls().first();
+        if (saveUrl.isValid()) {
+            if (doSave(saveUrl)) {
+                emit imageSaved();
+            }
+        }
     }
 }
 
