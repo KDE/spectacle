@@ -53,6 +53,7 @@ target_link_libraries(
         Qt5::Quick
         Qt5::QuickWidgets
         Qt5::DBus
+        Qt5::PrintSupport
         KF5::CoreAddons
         KF5::Declarative
         KF5::ConfigGui

@@ -26,6 +26,7 @@ KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
     mQuickWidget(nullptr),
     mDialogButtonBox(nullptr),
     mSendToButton(nullptr),
+    mPrintButton(nullptr),
     mSendToMenu(new KSGSendToMenu),
     mKQmlObject(new KDeclarative::QmlObject),
     mScreenshotImageProvider(new KSGImageProvider)
@@ -83,6 +84,11 @@ void KScreenGenieGUI::init()
     mSendToButton = new QPushButton;
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Send To...")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
+
+    mPrintButton = new QPushButton;
+    KGuiItem::assign(mPrintButton, KStandardGuiItem::print());
+    connect(mPrintButton, &QPushButton::clicked, this, &KScreenGenieGUI::showPrintDialog);
+    mDialogButtonBox->addButton(mPrintButton, QDialogButtonBox::ActionRole);
 
     connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
     connect(mDialogButtonBox->button(QDialogButtonBox::Save), &QPushButton::clicked, this, &KScreenGenieGUI::saveAsClicked);
@@ -185,6 +191,17 @@ void KScreenGenieGUI::ungrabMouseWorkaround()
     if (widgetPrivate && widgetPrivate->offscreenWindow && widgetPrivate->offscreenWindow->mouseGrabberItem()) {
         widgetPrivate->offscreenWindow->mouseGrabberItem()->ungrabMouse();
     }
+}
+
+void KScreenGenieGUI::showPrintDialog()
+{
+    QPrinter *printer = new QPrinter(QPrinter::HighResolution);
+    QPrintDialog printDialog(printer, this);
+    if (printDialog.exec() == QDialog::Accepted) {
+        emit printRequest(printer);
+        return;
+    }
+    delete printer;
 }
 
 void KScreenGenieGUI::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations)

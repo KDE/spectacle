@@ -25,6 +25,8 @@
 #include <QVariant>
 #include <QList>
 #include <QWidget>
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QQuickItem>
 #include <QQuickWidget>
 #include <QVBoxLayout>
@@ -32,7 +34,6 @@
 #include <QMoveEvent>
 #include <QPushButton>
 #include <QDialogButtonBox>
-#include <QSharedPointer>
 #include <QMenu>
 #include <QPoint>
 #include <QTimer>
@@ -69,6 +70,7 @@ class KScreenGenieGUI : public QWidget
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
     void saveCaptureModeConfig(int modeIndex);
     void ungrabMouseWorkaround();
+    void showPrintDialog();
 
     signals:
 
@@ -79,6 +81,7 @@ class KScreenGenieGUI : public QWidget
     void sendToKServiceRequest(KService::Ptr servicePointer);
     void sendToClipboardRequest();
     void sendToOpenWithRequest();
+    void printRequest(QPrinter *);
 
     protected:
 
@@ -92,6 +95,7 @@ class KScreenGenieGUI : public QWidget
     QQuickWidget            *mQuickWidget;
     QDialogButtonBox        *mDialogButtonBox;
     QPushButton             *mSendToButton;
+    QPushButton             *mPrintButton;
     KSGSendToMenu           *mSendToMenu;
     KDeclarative::QmlObject *mKQmlObject;
     KSGImageProvider        *mScreenshotImageProvider;

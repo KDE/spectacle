@@ -42,6 +42,7 @@ find_package(
         Widgets
         QuickWidgets
         DBus
+        PrintSupport
 )
 include_directories(${Qt5QuickWidgets_PRIVATE_INCLUDE_DIRS})
 

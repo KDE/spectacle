@@ -75,6 +75,7 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
         connect(mScreenGenieGUI, &KScreenGenieGUI::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
         connect(mScreenGenieGUI, &KScreenGenieGUI::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
         connect(mScreenGenieGUI, &KScreenGenieGUI::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
+        connect(mScreenGenieGUI, &KScreenGenieGUI::printRequest, this, &KScreenGenie::doPrint);
     }
 }
 
@@ -231,6 +232,28 @@ void KScreenGenie::doStartDragAndDrop()
     dragHandler->setMimeData(mimeData);
     dragHandler->setPixmap(mLocalPixmap.scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     dragHandler->start();
+}
+
+void KScreenGenie::doPrint(QPrinter *printer)
+{
+    QPainter painter;
+
+    if (!(painter.begin(printer))) {
+        emit errorMessage(i18n("Printring failed. The printer failed to initialize"));
+        delete printer;
+        return;
+    }
+
+    QRect devRect(0, 0, printer->width(), printer->height());
+    QPixmap pixmap = mLocalPixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QRect srcRect = pixmap.rect();
+    srcRect.moveCenter(devRect.center());
+
+    painter.drawPixmap(srcRect.topLeft(), pixmap);
+    painter.end();
+
+    delete printer;
+    return;
 }
 
 void KScreenGenie::doGuiSaveAs()

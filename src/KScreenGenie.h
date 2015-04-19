@@ -32,6 +32,9 @@
 #include <QMimeType>
 #include <QStandardPaths>
 #include <QFileDialog>
+#include <QPrinter>
+#include <QPainter>
+#include <QRect>
 #include <QDir>
 #include <QDrag>
 #include <QMimeData>
@@ -95,6 +98,7 @@ class KScreenGenie : public QObject
     void screenshotUpdated(const QPixmap pixmap);
     void screenshotFailed();
     void doStartDragAndDrop();
+    void doPrint(QPrinter *printer);
     void doGuiSaveAs();
     void doAutoSave();
     void doSendToService(KService::Ptr service);
