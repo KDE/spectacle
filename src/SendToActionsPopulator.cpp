@@ -40,7 +40,7 @@ void SendToActionsPopulator::process()
     sendHardcodedSendToActions();
     emit haveSeperator();
     sendKServiceSendToActions();
-#ifdef HAVE_KIPI
+#ifdef KIPI_FOUND
     emit haveSeperator();
     sendKipiSendToActions();
 #endif
@@ -68,9 +68,46 @@ void SendToActionsPopulator::sendKServiceSendToActions()
     }
 }
 
-#ifdef HAVE_KIPI
+#ifdef KIPI_FOUND
 void SendToActionsPopulator::sendKipiSendToActions()
 {
-    ;;
+    KIPI::PluginLoader *loader = new KIPI::PluginLoader;
+    KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
+
+    for (auto pluginInfo: pluginList) {
+        qDebug() << "Here";
+        if (!(pluginInfo->shouldLoad())) {
+            continue;
+        }
+
+        KIPI::Plugin *plugin = pluginInfo->plugin();
+        if (!(plugin)) {
+            qWarning() << i18n("KIPI plugin from library %1 failed to load", pluginInfo->library());
+            continue;
+        }
+
+        plugin->setup(0);
+
+        QList<QAction *> actions = plugin->actions();
+        QSet<QAction *> exportActions;
+
+        for (auto action: actions) {
+            KIPI::Category category = plugin->category(action);
+            if (category == KIPI::ExportPlugin) {
+                exportActions += action;
+            } else if (category == KIPI::ImagesPlugin) {
+                // Horrible hack. Why are the print images and the e-mail images plugins in the same category as rotate and edit metadata!?
+                // 2014-10-30: please file kipi bug and reference it here
+                if (pluginInfo->library().contains("kipiplugin_printimages") || pluginInfo->library().contains("kipiplugin_sendimages")) {
+                    exportActions += action;
+                }
+            }
+        }
+
+        for (QAction *action: exportActions) {
+            emit haveAction(action->icon(), action->text(), QVariant::fromValue(ActionData(KipiAction, "some")));
+        }
+
+    }
 }
 #endif

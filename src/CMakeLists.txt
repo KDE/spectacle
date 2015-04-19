@@ -23,16 +23,20 @@ if(XCB_FOUND)
     )
 endif()
 
-#if(KF5Kipi_FOUND)
-#    set(
-#        KSG_SRCS_KIPI
-#            KIPI.cpp
-#    )
-#endif()
+if(KF5Kipi_FOUND)
+    set(
+        KSG_SRCS_KIPI
+            KipiInterface/KSGKipiInterface.cpp
+            KipiInterface/KSGKipiInfoShared.cpp
+            KipiInterface/KSGKipiImageCollectionShared.cpp
+            KipiInterface/KSGKipiImageCollectionSelector.cpp
+    )
+endif()
 
 set(
     KSG_SRCS_ALL
         ${KSG_SRCS_DEFAULT}
+        ${KSG_SRCS_KIPI}
         ${KSG_SRCS_X11}
         ${KSG_SRCS_RESOURCES}
 )
@@ -66,6 +70,13 @@ if(XCB_FOUND)
             XCB::IMAGE
             Qt5::X11Extras
             KF5::Screen
+    )
+endif()
+
+if(KF5Kipi_FOUND)
+    target_link_libraries (
+        kscreengenie
+            KF5::Kipi
     )
 endif()
 

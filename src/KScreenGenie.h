@@ -51,6 +51,7 @@
 #include "ImageGrabber.h"
 #include "X11ImageGrabber.h"
 #include "KScreenGenieGUI.h"
+#include "Config.h"
 
 class KScreenGenie : public QObject
 {
@@ -74,6 +75,10 @@ class KScreenGenie : public QObject
     void setOverwriteOnSave(const bool overwrite);
     QString saveLocation() const;
     void setSaveLocation(const QString &savePath);
+
+#ifdef KIPI_FOUND
+    QUrl doTempSaveForKipi();
+#endif
 
     signals:
 

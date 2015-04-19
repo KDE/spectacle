@@ -32,6 +32,7 @@
 #include <QMoveEvent>
 #include <QPushButton>
 #include <QDialogButtonBox>
+#include <QSharedPointer>
 #include <QMenu>
 #include <QPoint>
 #include <QTimer>
@@ -58,7 +59,7 @@ class KScreenGenieGUI : public QWidget
 
     public:
 
-    explicit KScreenGenieGUI(QWidget *parent = 0);
+    explicit KScreenGenieGUI(QObject *genie, QWidget *parent = 0);
     ~KScreenGenieGUI();
 
     void setScreenshotAndShow(const QPixmap &pixmap);
@@ -89,13 +90,14 @@ class KScreenGenieGUI : public QWidget
 
     void init();
 
+    QObject                 *mScreenGenie;
     QQuickWidget            *mQuickWidget;
     QDialogButtonBox        *mDialogButtonBox;
     QPushButton             *mSendToButton;
     QMenu                   *mSendToMenu;
     KDeclarative::QmlObject *mKQmlObject;
     KSGImageProvider        *mScreenshotImageProvider;
-    QList<QAction *>        mMenuActions;
+    QList<QAction *>         mMenuActions;
 };
 
 #endif // KSCREENGENIEGUI_H

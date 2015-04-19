@@ -66,7 +66,7 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     // init the gui
 
     if (!(backgroundMode)) {
-        mScreenGenieGUI = new KScreenGenieGUI;
+        mScreenGenieGUI = new KScreenGenieGUI(this);
 
         connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
         connect(mScreenGenieGUI, &KScreenGenieGUI::saveAndExit, this, &KScreenGenie::doAutoSave);
@@ -144,6 +144,18 @@ void KScreenGenie::setSaveLocation(const QString &savePath)
 
     generalConfig.writePathEntry("last-saved-to", savePath);
 }
+
+// For Kipi
+
+#ifdef KIPI_FOUND
+QUrl KScreenGenie::doTempSaveForKipi()
+{
+    if (!(mLocalPixmap.isNull())) {
+        return tempFileSave();
+    }
+    return QUrl();
+}
+#endif
 
 // Slots
 

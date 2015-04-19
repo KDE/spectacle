@@ -24,15 +24,25 @@
 #include <QString>
 #include <QAction>
 #include <QList>
+#include <QMenu>
 #include <QPair>
 #include <QVariant>
 #include <QMenu>
-
-#include "Config.h"
+#include <QDebug>
 
 #include <KLocalizedString>
 #include <KService>
 #include <KMimeTypeTrader>
+
+#include "Config.h"
+
+#ifdef KIPI_FOUND
+#include <KIPI/Interface>
+#include <KIPI/PluginLoader>
+#include <KIPI/Plugin>
+
+#include "KipiInterface/KSGKipiInterface.h"
+#endif
 
 class SendToActionsPopulator : public QObject
 {
@@ -50,6 +60,10 @@ class SendToActionsPopulator : public QObject
     explicit SendToActionsPopulator(QObject *parent = 0);
     ~SendToActionsPopulator();
 
+#ifdef KIPI_FOUND
+    void setKScreenGenieForKipi(QObject *ksg);
+#endif
+
     signals:
 
     void haveAction(const QIcon, const QString, const QVariant);
@@ -64,9 +78,11 @@ class SendToActionsPopulator : public QObject
 
     void sendHardcodedSendToActions();
     void sendKServiceSendToActions();
-#ifdef HAVE_KIPI
+#ifdef KIPI_FOUND
     void sendKipiSendToActions();
 #endif
+
+
 };
 
 typedef QPair<SendToActionsPopulator::SendToActionType, QString> ActionData;

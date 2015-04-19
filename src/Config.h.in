@@ -2,10 +2,10 @@
 #define KSG_CONFIG_H
 
 /* Define to 1 if we are building with XCB */
-#cmakedefine HAVE_XCB 1
+#cmakedefine XCB_FOUND 1
 
 /* Define to 1 if we have KIPI */
-#cmakedefine HAVE_KIPI 1
+#cmakedefine KIPI_FOUND 1
 
 /* Set the KScreenGenie version from CMake */
 #cmakedefine KSG_VERSION "@KSG_VERSION@"

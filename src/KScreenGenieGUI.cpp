@@ -19,8 +19,9 @@
 
 #include "KScreenGenieGUI.h"
 
-KScreenGenieGUI::KScreenGenieGUI(QWidget *parent) :
+KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
     QWidget(parent),
+    mScreenGenie(genie),
     mQuickWidget(nullptr),
     mDialogButtonBox(nullptr),
     mSendToButton(nullptr),
@@ -104,6 +105,9 @@ void KScreenGenieGUI::init()
 
     QThread *thread = new QThread;
     SendToActionsPopulator *populator = new SendToActionsPopulator;
+#ifdef KIPI_FOUND
+    populator->setKScreenGenieForKipi(QSharedPointer<QObject>(mScreenGenie));
+#endif
 
     populator->moveToThread(thread);
     connect(thread, &QThread::started, populator, &SendToActionsPopulator::process);
