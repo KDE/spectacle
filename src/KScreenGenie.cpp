@@ -145,18 +145,6 @@ void KScreenGenie::setSaveLocation(const QString &savePath)
     generalConfig.writePathEntry("last-saved-to", savePath);
 }
 
-// For Kipi
-
-#ifdef KIPI_FOUND
-QUrl KScreenGenie::doTempSaveForKipi()
-{
-    if (!(mLocalPixmap.isNull())) {
-        return tempFileSave();
-    }
-    return QUrl();
-}
-#endif
-
 // Slots
 
 void KScreenGenie::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
@@ -192,6 +180,10 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
         emit allDone();
         return;
     } else {
+#ifdef KIPI_FOUND
+        doTempSaveForKipi();
+        qDebug() << "KipiSave";
+#endif
         mScreenGenieGUI->setScreenshotAndShow(pixmap);
     }
 }
@@ -422,3 +414,17 @@ bool KScreenGenie::isFileExists(const QUrl url)
 
     return (existsJob->error() == KJob::NoError);
 }
+
+// For Kipi
+
+#ifdef KIPI_FOUND
+void KScreenGenie::doTempSaveForKipi()
+{
+    if (!(mLocalPixmap.isNull())) {
+        QDir tempDir = QDir::temp();
+        QString tempFile = tempDir.absoluteFilePath("kscreengenie_kipi.png");
+
+        localSave(QUrl::fromLocalFile(tempFile), "png");
+    }
+}
+#endif

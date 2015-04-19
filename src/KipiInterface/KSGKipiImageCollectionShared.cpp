@@ -22,18 +22,19 @@
 */
 
 #include "KSGKipiImageCollectionShared.h"
-#include "KScreenGenie.h"
 
-KSGKipiImageCollectionShared::KSGKipiImageCollectionShared(QObject *ksg) :
-    mScreenGenie(ksg)
-{}
+KSGKipiImageCollectionShared::KSGKipiImageCollectionShared()  {}
+KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared() {}
 
-KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared()
-{}
+QString KSGKipiImageCollectionShared::name()           { return "KScreenGenie"; }
+QString KSGKipiImageCollectionShared::comment()        { return QString(); }
+QString KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
+QUrl    KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
+bool    KSGKipiImageCollectionShared::isDirectory()    { return false; }
 
-QString     KSGKipiImageCollectionShared::name()           { return "KScreenGenie"; }
-QString     KSGKipiImageCollectionShared::comment()        { return QString(); }
-QString     KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
-QUrl        KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
-bool        KSGKipiImageCollectionShared::isDirectory()    { return false; }
-QList<QUrl> KSGKipiImageCollectionShared::images()         { return QList<QUrl>(); }
+QList<QUrl> KSGKipiImageCollectionShared::images()
+{
+    QDir tempDir = QDir::temp();
+    QString tempFile = tempDir.absoluteFilePath("kscreengenie_kipi.png");
+    return QList<QUrl>({ QUrl::fromLocalFile(tempFile) });
+}

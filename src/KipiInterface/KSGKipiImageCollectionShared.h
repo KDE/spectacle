@@ -25,6 +25,7 @@
 #define KSGKIPIIMAGECOLLECTIONSHARED_H
 
 #include <QObject>
+#include <QDir>
 #include <QUrl>
 
 #include <KIPI/ImageCollectionShared>
@@ -33,7 +34,7 @@ class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
 {
     public:
 
-    explicit KSGKipiImageCollectionShared(QObject *ksg);
+    explicit KSGKipiImageCollectionShared();
     ~KSGKipiImageCollectionShared();
 
     QString name();
@@ -46,7 +47,6 @@ class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
     private:
 
     QList<QUrl> mImages;
-    QObject *mScreenGenie;
 };
 
 #endif

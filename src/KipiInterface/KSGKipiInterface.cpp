@@ -43,7 +43,7 @@ void KSGKipiInterface::refreshImages(const QList<QUrl> &) {}
 
 KIPI::ImageCollection KSGKipiInterface::currentAlbum()
 {
-    return KIPI::ImageCollection(new KSGKipiImageCollectionShared(mScreenGenie));
+    return KIPI::ImageCollection(new KSGKipiImageCollectionShared);
 }
 
 KIPI::ImageCollection KSGKipiInterface::currentSelection()

@@ -76,10 +76,6 @@ class KScreenGenie : public QObject
     QString saveLocation() const;
     void setSaveLocation(const QString &savePath);
 
-#ifdef KIPI_FOUND
-    QUrl doTempSaveForKipi();
-#endif
-
     signals:
 
     void errorMessage(const QString err_string);
@@ -113,6 +109,10 @@ class KScreenGenie : public QObject
     QUrl tempFileSave(const QString mimetype = "png");
     bool doSave(const QUrl url);
     bool isFileExists(const QUrl url);
+
+#ifdef KIPI_FOUND
+    void doTempSaveForKipi();
+#endif
 
     bool             mBackgroundMode;
     bool             mOverwriteOnSave;
