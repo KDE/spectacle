@@ -28,7 +28,7 @@ int main(int argc, char **argv)
                          i18n("KScreenGenie"),
                          KSG_VERSION,
                          i18n("KDE Screenshot Utility"),
-                         KAboutLicense::LGPL,
+                         KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
     aboutData.addAuthor("Boudhayan Gupta", QString(), "me@BaloneyGeek.com");
     KAboutData::setApplicationData(aboutData);

@@ -12,7 +12,7 @@ set(
         KScreenGenieGUI.cpp
         KSGImageProvider.cpp
         CropScreenshotGrabber.cpp
-        SendToActionsPopulator.cpp
+        KSGSendToMenu.cpp
 )
 qt5_add_resources (KSG_SRCS_RESOURCES QmlResources/QmlResources.qrc)
 

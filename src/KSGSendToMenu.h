@@ -17,8 +17,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef SENDTOACTIONSPOPULATOR_H
-#define SENDTOACTIONSPOPULATOR_H
+#ifndef KSGSENDTOMENU_H
+#define KSGSENDTOMENU_H
 
 #include <QObject>
 #include <QWidget>
@@ -45,54 +45,44 @@
 #include "KipiInterface/KSGKipiInterface.h"
 #endif
 
-class SendToActionsPopulator : public QObject
+class KSGSendToMenu : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(SendToActionType)
 
     public:
 
-    enum SendToActionType {
-        HardcodedAction,
-        KServiceAction,
-        KipiAction
-    };
+    explicit KSGSendToMenu(QObject *parent = 0);
+    ~KSGSendToMenu();
 
-    explicit SendToActionsPopulator(QObject *parent = 0);
-    ~SendToActionsPopulator();
-
-#ifdef KIPI_FOUND
-    void setKScreenGenieForKipi(QSharedPointer<QObject> ksg, QSharedPointer<QWidget> ksg_gui);
-#endif
+    QMenu *menu();
 
     signals:
 
-    void haveAction(const QIcon, const QString, const QVariant);
-    void haveSeperator();
-    void allDone();
+    void sendToServiceRequest(KService::Ptr servicePointer);
+    void sendToClipboardRequest();
+    void sendToOpenWithRequest();
 
     public slots:
 
-    void process();
-    void handleSendToKipi(qint64 index);
+    void populateMenu();
+
+    private slots:
+
+    void handleSendToKService();
 
     private:
 
-    void sendHardcodedSendToActions();
-    void sendKServiceSendToActions();
+    void populateHardcodedSendToActions();
+    void populateKServiceSendToActions();
 #ifdef KIPI_FOUND
-    void sendKipiSendToActions();
+    void populateKipiSendToActions();
 
-    QSharedPointer<QObject> mScreenGenie;
-    QSharedPointer<QWidget> mScreenGenieGUI;
-    KSGKipiInterface       *mKipiInterface;
-    QList<QAction *>        mKipiActions;
+    KSGKipiInterface *mKipiInterface;
+    QWidget           mDummyWidget;
 #endif
-
-
+    QMenu            *mMenu;
 };
 
-typedef QPair<SendToActionsPopulator::SendToActionType, QString> ActionData;
-Q_DECLARE_METATYPE(ActionData)
+Q_DECLARE_METATYPE(KService::Ptr)
 
-#endif // SENDTOACTIONSPOPULATOR_H
+#endif // KSGSENDTOMENU_H

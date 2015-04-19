@@ -8,7 +8,7 @@
 KScreenGenie is a screenshooter utility for KDE. It is written
 using the very latest KDE and Qt technologies (KDE Frameworks 5,
 Qt 5 and QtQuick 2.0), and aims for a cleaner and more modular
-codebase than KSnapshot (the previous screenshooter utility for
+codebase over KSnapshot (the previous screenshooter utility for
 KDE) rather than adding features. KScreenGenie's codebase is
 designed specifically so that it's easy to add Wayland support
 once an API becomes available for it.
@@ -20,7 +20,6 @@ once an API becomes available for it.
   * No "wait for a click before taking a shot" mode (we have a
     millisecond accuracy timer)
   * No Win32 or Mac OS support yet
-  * No KIPI integration yet (adding that is a priority right now)
   * The ability to take screenshots on platforms where OpenGL
     is not available (QtQuick 2.0 requires OpenGL)
 

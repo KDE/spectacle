@@ -25,7 +25,7 @@ KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
     mQuickWidget(nullptr),
     mDialogButtonBox(nullptr),
     mSendToButton(nullptr),
-    mSendToMenu(new QMenu),
+    mSendToMenu(new KSGSendToMenu),
     mKQmlObject(new KDeclarative::QmlObject),
     mScreenshotImageProvider(new KSGImageProvider)
 {
@@ -103,22 +103,11 @@ void KScreenGenieGUI::init()
 
     // start a thread to populate our send-to actions
 
-    //QThread *thread = new QThread;
-    SendToActionsPopulator *populator = new SendToActionsPopulator;
-#ifdef KIPI_FOUND
-    populator->setKScreenGenieForKipi(QSharedPointer<QObject>(mScreenGenie), QSharedPointer<QWidget>(this));
-#endif
+    connect(mSendToMenu, &KSGSendToMenu::sendToServiceRequest, this, &KScreenGenieGUI::sendToKServiceRequest);
+    connect(mSendToMenu, &KSGSendToMenu::sendToClipboardRequest, this, &KScreenGenieGUI::sendToClipboardRequest);
+    connect(mSendToMenu, &KSGSendToMenu::sendToOpenWithRequest, this, &KScreenGenieGUI::sendToOpenWithRequest);
 
-    //populator->moveToThread(thread);
-    //connect(thread, &QThread::started, populator, &SendToActionsPopulator::process);
-    connect(populator, &SendToActionsPopulator::haveAction, this, &KScreenGenieGUI::addSendToAction);
-    connect(populator, &SendToActionsPopulator::haveSeperator, this, &KScreenGenieGUI::addSendToSeperator);
-    connect(this, &KScreenGenieGUI::sendToKipiRequest, populator, &SendToActionsPopulator::handleSendToKipi);
-    //connect(populator, &SendToActionsPopulator::allDone, thread, &QThread::quit);
-    //connect(populator, &SendToActionsPopulator::allDone, thread, &QThread::deleteLater);
-
-    mSendToButton->setMenu(mSendToMenu);
-    populator->process();
+    mSendToButton->setMenu(mSendToMenu->menu());
 
     // read in the checkbox states and capture mode index
 
@@ -136,29 +125,16 @@ void KScreenGenieGUI::init()
 
 void KScreenGenieGUI::moveEvent(QMoveEvent *event)
 {
+    Q_UNUSED(event);
+
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
-    guiConfig.writeEntry("window-position", event->pos());
+    guiConfig.writeEntry("window-position", pos());
     guiConfig.sync();
 }
 
 // slots
-
-void KScreenGenieGUI::addSendToAction(const QIcon icon, const QString name, const QVariant data)
-{
-    QAction *action = new QAction(icon, name, nullptr);
-    action->setData(data);
-    connect(action, &QAction::triggered, this, &KScreenGenieGUI::sendToRequest);
-
-    mMenuActions.append(action);
-    mSendToMenu->addAction(action);
-}
-
-void KScreenGenieGUI::addSendToSeperator()
-{
-    mSendToMenu->addSeparator();
-}
 
 void KScreenGenieGUI::captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations)
 {
@@ -192,35 +168,8 @@ void KScreenGenieGUI::setScreenshotAndShow(const QPixmap &pixmap)
     QMetaObject::invokeMethod(rootItem, "reloadScreenshot");
 
     show();
-}
-
-void KScreenGenieGUI::sendToRequest()
-{
-    QAction *action = qobject_cast<QAction *>(QObject::sender());
-    if (!(action)) {
-        qWarning() << "Internal qobject_cast error. This is a bug.";
-        return;
-    }
-
-    KService::Ptr servicePointer;
-
-    const ActionData data = action->data().value<ActionData>();
-    switch(data.first) {
-    case SendToActionsPopulator::HardcodedAction:
-        if (data.second == "clipboard") {
-            emit sendToClipboardRequest();
-        } else if (data.second == "application") {
-            emit sendToOpenWithRequest();
-        }
-        return;
-    case SendToActionsPopulator::KServiceAction:
-        servicePointer = KService::serviceByMenuId(data.second);
-        emit sendToServiceRequest(servicePointer);
-        return;
-    case SendToActionsPopulator::KipiAction:
-        qDebug() << "KIPI";
-        emit sendToKipiRequest(data.second.toLongLong());
-        return;
+    if (mSendToMenu->menu()->isEmpty()) {
+        mSendToMenu->populateMenu();
     }
 }
 

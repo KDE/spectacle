@@ -23,79 +23,81 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "SendToActionsPopulator.h"
+#include "KSGSendToMenu.h"
 
-SendToActionsPopulator::SendToActionsPopulator(QObject *parent) : QObject(parent)
+KSGSendToMenu::KSGSendToMenu(QObject *parent) :
+    QObject(parent),
+    mMenu(new QMenu)
+{}
+
+KSGSendToMenu::~KSGSendToMenu()
+{}
+
+void KSGSendToMenu::populateMenu()
 {
-}
-
-SendToActionsPopulator::~SendToActionsPopulator()
-{
-
-}
-
-void SendToActionsPopulator::process()
-{
-    sendHardcodedSendToActions();
-    emit haveSeperator();
-    sendKServiceSendToActions();
+    populateHardcodedSendToActions();
+    mMenu->addSeparator();
+    populateKServiceSendToActions();
 #ifdef KIPI_FOUND
-    emit haveSeperator();
-    sendKipiSendToActions();
+    mMenu->addSeparator();
+    populateKipiSendToActions();
 #endif
-    emit allDone();
 }
 
-void SendToActionsPopulator::handleSendToKipi(qint64 index)
+// return menu
+
+QMenu *KSGSendToMenu::menu()
 {
-    qDebug() << "Got" << index;
-    mKipiActions.at(index)->trigger();
+    return mMenu;
 }
 
-void SendToActionsPopulator::sendHardcodedSendToActions()
+// send-to handlers
+
+void KSGSendToMenu::handleSendToKService()
 {
-    const QVariant data_clip = QVariant::fromValue(ActionData(HardcodedAction, "clipboard"));
-    const QVariant data_app = QVariant::fromValue(ActionData(HardcodedAction, "application"));
+    QAction *action = qobject_cast<QAction *>(QObject::sender());
+    if (!(action)) {
+        qWarning() << "Internal qobject_cast error. This is a bug.";
+        return;
+    }
 
-    emit haveAction(QIcon::fromTheme("edit-copy"), i18n("Copy To Clipboard"), data_clip);
-    emit haveAction(QIcon(), i18n("Other Application"), data_app);
+    auto data = action->data().value<KService::Ptr>();
+    emit sendToServiceRequest(data);
 }
 
-void SendToActionsPopulator::sendKServiceSendToActions()
+void KSGSendToMenu::populateHardcodedSendToActions()
+{
+    mMenu->addAction(QIcon::fromTheme("edit-copy"), i18n("Copy To Clipboard"), this, SIGNAL(sendToClipboardRequest()));
+    mMenu->addAction(i18n("Other Application"), this, SIGNAL(sendToOpenWithRequest()));
+}
+
+void KSGSendToMenu::populateKServiceSendToActions()
 {
     const KService::List services = KMimeTypeTrader::self()->query("image/png");
 
     for (auto service: services) {
         QString name = service->name().replace('&', "&&");
-        const QVariant data = QVariant::fromValue(ActionData(KServiceAction, service->menuId()));
 
-        emit haveAction(QIcon::fromTheme(service->icon()), name, data);
+        QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, nullptr);
+        action->setData(QVariant::fromValue(service));
+        connect(action, &QAction::triggered, this, &KSGSendToMenu::handleSendToKService);
+
+        mMenu->addAction(action);
     }
 }
 
 #ifdef KIPI_FOUND
-void SendToActionsPopulator::setKScreenGenieForKipi(QSharedPointer<QObject> ksg, QSharedPointer<QWidget> ksg_gui)
+void KSGSendToMenu::populateKipiSendToActions()
 {
-    mScreenGenie = ksg;
-    mScreenGenieGUI = ksg_gui;
-}
-
-void SendToActionsPopulator::sendKipiSendToActions()
-{
-    mKipiInterface = new KSGKipiInterface(mScreenGenie.data());
+    mKipiInterface = new KSGKipiInterface(this);
     KIPI::PluginLoader *loader = new KIPI::PluginLoader;
-
-    qDebug() << "Starting load";
 
     loader->setInterface(mKipiInterface);
     loader->init();
 
-    qDebug() << "Ended load";
-
     KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
 
     for (auto pluginInfo: pluginList) {
-        qDebug() << "Here";
         if (!(pluginInfo->shouldLoad())) {
             continue;
         }
@@ -106,7 +108,7 @@ void SendToActionsPopulator::sendKipiSendToActions()
             continue;
         }
 
-        plugin->setup(mScreenGenieGUI.data());
+        plugin->setup(&mDummyWidget);
 
         QList<QAction *> actions = plugin->actions();
         QSet<QAction *> exportActions;
@@ -115,20 +117,14 @@ void SendToActionsPopulator::sendKipiSendToActions()
             KIPI::Category category = plugin->category(action);
             if (category == KIPI::ExportPlugin) {
                 exportActions += action;
-            } else if (category == KIPI::ImagesPlugin) {
-                // Horrible hack. Why are the print images and the e-mail images plugins in the same category as rotate and edit metadata!?
-                // 2014-10-30: please file kipi bug and reference it here
-                if (pluginInfo->library().contains("kipiplugin_printimages") || pluginInfo->library().contains("kipiplugin_sendimages")) {
+            } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains("kipiplugin_sendimages")) {
                     exportActions += action;
-                }
             }
         }
 
         for (auto action: exportActions) {
-            mKipiActions.append(action);
-            emit haveAction(action->icon(), action->text(), QVariant::fromValue(ActionData(KipiAction, QString::number(mKipiActions.size() - 1))));
+            mMenu->addAction(action);
         }
-
     }
 }
 #endif

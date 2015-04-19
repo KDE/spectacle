@@ -40,7 +40,7 @@ class KSGKipiInterface : public KIPI::Interface
 
     public:
 
-    explicit KSGKipiInterface(QObject *ksg);
+    explicit KSGKipiInterface(QObject *parent = 0);
     ~KSGKipiInterface();
 
     bool addImage(const QUrl &, QString &err);

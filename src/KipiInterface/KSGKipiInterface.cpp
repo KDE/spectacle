@@ -26,8 +26,8 @@
 #include "KSGKipiImageCollectionShared.h"
 #include "KSGKipiImageCollectionSelector.h"
 
-KSGKipiInterface::KSGKipiInterface(QObject *ksg)
-    : KIPI::Interface(ksg)
+KSGKipiInterface::KSGKipiInterface(QObject *parent)
+    : KIPI::Interface(parent)
 {}
 
 KSGKipiInterface::~KSGKipiInterface()
@@ -77,7 +77,7 @@ KIPI::ImageCollectionSelector *KSGKipiInterface::imageCollectionSelector(QWidget
 
 KIPI::UploadWidget *KSGKipiInterface::uploadWidget(QWidget *parent)
 {
-    return (new KIPI::UploadWidget(parent));
+    return new KIPI::UploadWidget(parent);
 }
 
 

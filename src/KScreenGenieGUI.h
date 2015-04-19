@@ -38,7 +38,6 @@
 #include <QTimer>
 #include <QDebug>
 #include <QAction>
-#include <QThread>
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -50,7 +49,7 @@
 #include <KDeclarative/QmlObject>
 
 #include "ImageGrabber.h"
-#include "SendToActionsPopulator.h"
+#include "KSGSendToMenu.h"
 #include "KSGImageProvider.h"
 
 class KScreenGenieGUI : public QWidget
@@ -66,10 +65,7 @@ class KScreenGenieGUI : public QWidget
 
     private slots:
 
-    void addSendToAction(const QIcon icon, const QString name, const QVariant data);
-    void addSendToSeperator();
     void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
-    void sendToRequest();
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
     void saveCaptureModeConfig(int modeIndex);
 
@@ -78,8 +74,7 @@ class KScreenGenieGUI : public QWidget
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void saveAndExit();
     void saveAsClicked();
-    void sendToServiceRequest(KService::Ptr servicePointer);
-    void sendToKipiRequest(qint64 index);
+    void sendToKServiceRequest(KService::Ptr servicePointer);
     void sendToClipboardRequest();
     void sendToOpenWithRequest();
 
@@ -95,7 +90,7 @@ class KScreenGenieGUI : public QWidget
     QQuickWidget            *mQuickWidget;
     QDialogButtonBox        *mDialogButtonBox;
     QPushButton             *mSendToButton;
-    QMenu                   *mSendToMenu;
+    KSGSendToMenu           *mSendToMenu;
     KDeclarative::QmlObject *mKQmlObject;
     KSGImageProvider        *mScreenshotImageProvider;
     QList<QAction *>         mMenuActions;
