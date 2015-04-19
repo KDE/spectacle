@@ -18,6 +18,7 @@
  */
 
 #include "KScreenGenieGUI.h"
+#include <private/qquickwidget_p.h>
 
 KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
     QWidget(parent),
@@ -71,6 +72,8 @@ void KScreenGenieGUI::init()
     connect(rootItem, SIGNAL(newScreenshotRequest(QString,double,bool,bool)), this, SLOT(captureScreenshot(QString,double,bool,bool)));
     connect(rootItem, SIGNAL(saveCheckboxStates(bool, bool)), this, SLOT(saveCheckboxStatesConfig(bool, bool)));
     connect(rootItem, SIGNAL(saveCaptureMode(int)), this, SLOT(saveCaptureModeConfig(int)));
+    connect(rootItem, SIGNAL(startDragAndDrop()), this, SIGNAL(dragAndDropRequest()));
+    connect(rootItem, SIGNAL(startDragAndDrop()), this, SLOT(ungrabMouseWorkaround()));
 
     // the Button Bar
 
@@ -170,6 +173,17 @@ void KScreenGenieGUI::setScreenshotAndShow(const QPixmap &pixmap)
     show();
     if (mSendToMenu->menu()->isEmpty()) {
         mSendToMenu->populateMenu();
+    }
+}
+
+void KScreenGenieGUI::ungrabMouseWorkaround()
+{
+    // courtesy of the QtCreator sources (plugins/qmldesigner/components/itemlibrary/itemlibrarywidget.cpp).
+    // Fixes ungrab mouse when the mouse from QtQuickWidget is taken over by a QDrag
+
+    const QQuickWidgetPrivate *widgetPrivate = QQuickWidgetPrivate::get(mQuickWidget);
+    if (widgetPrivate && widgetPrivate->offscreenWindow && widgetPrivate->offscreenWindow->mouseGrabberItem()) {
+        widgetPrivate->offscreenWindow->mouseGrabberItem()->ungrabMouse();
     }
 }
 

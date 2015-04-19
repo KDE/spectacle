@@ -33,6 +33,8 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QDir>
+#include <QDrag>
+#include <QMimeData>
 #include <QClipboard>
 #include <QTimer>
 #include <QDebug>
@@ -92,6 +94,7 @@ class KScreenGenie : public QObject
     void showErrorMessage(const QString err_string);
     void screenshotUpdated(const QPixmap pixmap);
     void screenshotFailed();
+    void doStartDragAndDrop();
     void doGuiSaveAs();
     void doAutoSave();
     void doSendToService(KService::Ptr service);

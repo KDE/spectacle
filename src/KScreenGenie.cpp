@@ -74,6 +74,7 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
         connect(mScreenGenieGUI, &KScreenGenieGUI::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
         connect(mScreenGenieGUI, &KScreenGenieGUI::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
         connect(mScreenGenieGUI, &KScreenGenieGUI::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
+        connect(mScreenGenieGUI, &KScreenGenieGUI::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
     }
 }
 
@@ -218,6 +219,18 @@ void KScreenGenie::doAutoSave()
         emit allDone();
         return;
     }
+}
+
+void KScreenGenie::doStartDragAndDrop()
+{
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setImageData(mLocalPixmap);
+    mimeData->setData("application/x-kde-suggestedfilename", QFile::encodeName(makeTimestampFilename() + ".png"));
+
+    QDrag *dragHandler = new QDrag(this);
+    dragHandler->setMimeData(mimeData);
+    dragHandler->setPixmap(mLocalPixmap.scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    dragHandler->start();
 }
 
 void KScreenGenie::doGuiSaveAs()

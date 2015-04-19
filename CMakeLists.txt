@@ -43,6 +43,7 @@ find_package(
         QuickWidgets
         DBus
 )
+include_directories(${Qt5QuickWidgets_PRIVATE_INCLUDE_DIRS})
 
 find_package(
     KF5 ${KF5_MIN_VERSION} REQUIRED

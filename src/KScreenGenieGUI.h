@@ -68,10 +68,12 @@ class KScreenGenieGUI : public QWidget
     void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
     void saveCaptureModeConfig(int modeIndex);
+    void ungrabMouseWorkaround();
 
     signals:
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
+    void dragAndDropRequest();
     void saveAndExit();
     void saveAsClicked();
     void sendToKServiceRequest(KService::Ptr servicePointer);

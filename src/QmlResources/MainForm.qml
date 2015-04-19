@@ -29,6 +29,7 @@ ColumnLayout {
     signal newScreenshotRequest(string captureType, real captureDelay, bool includePointer, bool includeDecorations);
     signal saveCheckboxStates(bool includePointer, bool includeDecorations);
     signal saveCaptureMode(int captureModeIndex);
+    signal startDragAndDrop;
 
     function reloadScreenshot() {
         screenshotImage.refreshImage();
@@ -86,6 +87,39 @@ ColumnLayout {
                     radius: 5;
                     samples: 32;
                     color: "black";
+                }
+
+                MouseArea {
+                    anchors.fill: screenshotContainer;
+                    cursorShape: Qt.OpenHandCursor;
+
+                    property int oldMouseX;
+                    property int oldMouseY;
+                    property bool dragEmitted: false;
+
+                    onPressed: {
+                        oldMouseX = mouseX;
+                        oldMouseY = mouseY;
+                        dragEmitted = false;
+
+                        cursorShape = Qt.ClosedHandCursor;
+                    }
+
+                    onReleased: {
+                        cursorShape = Qt.OpenHandCursor;
+
+                    }
+
+                    onPositionChanged: {
+                        if ( mouseX < (oldMouseX - 5) || mouseX > (oldMouseX + 5) ||
+                             mouseY < (oldMouseY - 5) || mouseY > (oldMouseY + 5) ) {
+
+                            if (!dragEmitted) {
+                                startDragAndDrop();
+                                dragEmitted = true;
+                            }
+                        }
+                    }
                 }
             }
         }
