@@ -42,10 +42,12 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
-    if (QDir::isRelativePath(saveFileName)) {
-        saveFileName = QDir::current().absoluteFilePath(saveFileName);
+    if (!(saveFileName.isEmpty() || saveFileName.isNull())) {
+        if (QDir::isRelativePath(saveFileName)) {
+            saveFileName = QDir::current().absoluteFilePath(saveFileName);
+        }
+        setFilename(saveFileName);
     }
-    setFilename(saveFileName);
 
     mImageGrabber = new X11ImageGrabber();
     mImageGrabber->setGrabMode(grabMode);
