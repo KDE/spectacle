@@ -73,10 +73,6 @@ class KScreenGenieGUI : public QWidget
     void showPrintDialog();
     void ungrabMouseWorkaround();
 
-    public slots:
-
-
-
     signals:
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
