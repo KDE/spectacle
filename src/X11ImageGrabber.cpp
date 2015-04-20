@@ -1,6 +1,12 @@
 /*
  *  Copyright (C) 2015 Boudhayan Gupta <me@BaloneyGeek.com>
  *
+ *  Contains code from kxutils.cpp, part of KWindowSystem. Copyright
+ *  notices reproduced below:
+ *
+ *  Copyright (C) 2008 Lubos Lunak (l.lunak@kde.org)
+ *  Copyright (C) 2013 Martin Gräßlin <mgraesslin@kde.org>
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -21,39 +27,63 @@
 
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent),
-    co(nullptr)
+    mScreenConfigOperation(nullptr)
 {}
 
 X11ImageGrabber::~X11ImageGrabber()
 {}
 
-// image conversion routines
+// image conversion routine
 
-QPixmap X11ImageGrabber::processXImage30Bit(xcb_image_t *xcbImage)
+QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
 {
-    quint8 *imageData = new quint8[(xcbImage->height * xcbImage->width) * 4];
+    QImage::Format format = QImage::Format_Invalid;
 
-    for (qint32 x = 0; x < xcbImage->width; x++) {
-        for (qint32 y = 0; y < xcbImage->height; y++) {
-            quint32 pixel = xcb_image_get_pixel(xcbImage, x, y);
+    switch (xcbImage->depth) {
+    case 1:
+        format = QImage::Format_MonoLSB;
+        break;
+    case 16:
+        format = QImage::Format_RGB16;
+        break;
+    case 24:
+        format = QImage::Format_RGB32;
+        break;
+    case 30: {
+        // Qt doesn't have a matching image format. We need to convert manually
+        quint32 *pixels = reinterpret_cast<quint32 *>(xcbImage->data);
+        for (uint i = 0; i < (xcbImage->size / 4); i++) {
+            int r = (pixels[i] >> 22) & 0xff;
+            int g = (pixels[i] >> 12) & 0xff;
+            int b = (pixels[i] >>  2) & 0xff;
 
-            imageData[((x + xcbImage->width * y) * 4)]     = (pixel >> 22) & 0xff;
-            imageData[((x + xcbImage->width * y) * 4) + 1] = (pixel >> 12) & 0xff;
-            imageData[((x + xcbImage->width * y) * 4) + 2] = (pixel >>  2) & 0xff;
-            imageData[((x + xcbImage->width * y) * 4) + 3] = 0xff;
+            pixels[i] = qRgba(r, g, b, 0xff);
         }
+        // fall through, Qt format is still Format_ARGB32_Premultiplied
+    }
+    case 32:
+        format = QImage::Format_ARGB32_Premultiplied;
+        break;
+    default:
+        return QPixmap(); // we don't know
     }
 
-    QImage image(imageData, xcbImage->width, xcbImage->height, QImage::Format_RGBA8888);
-    QPixmap pixmap = QPixmap::fromImage(image);
+    QImage image(xcbImage->data, xcbImage->width, xcbImage->height, format);
 
-    delete imageData;
-    return pixmap;
-}
+    if (image.isNull()) {
+        return QPixmap();
+    }
 
-QPixmap X11ImageGrabber::processXImage32Bit(xcb_image_t *xcbImage)
-{
-    QImage image(xcbImage->data, xcbImage->width, xcbImage->height, QImage::Format_ARGB32_Premultiplied);
+    // work around an abort in QImage::color
+
+    if (image.format() == QImage::Format_MonoLSB) {
+        image.setColorCount(2);
+        image.setColor(0, QColor(Qt::white).rgb());
+        image.setColor(1, QColor(Qt::black).rgb());
+    }
+
+    // done
+
     return QPixmap::fromImage(image);
 }
 
@@ -112,22 +142,7 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
 
     // now process the image
 
-    QPixmap pixmap;
-
-    switch (xcbImage->depth) {
-    case 30:
-        pixmap = processXImage30Bit(xcbImage);
-        break;
-    case 24:
-    case 32:
-        pixmap = processXImage32Bit(xcbImage);
-        break;
-    default:
-        pixmap = QPixmap();
-        break;
-    }
-
-    return pixmap;
+    return convertFromNative(xcbImage);
 }
 
 bool X11ImageGrabber::KWinDBusScreenshotAvailable()
@@ -185,16 +200,16 @@ void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOpera
         }
         emit pixmapChanged(mPixmap);
 
-        co->disconnect();
-        co->deleteLater();
-        co = nullptr;
+        mScreenConfigOperation->disconnect();
+        mScreenConfigOperation->deleteLater();
+        mScreenConfigOperation = nullptr;
 
         return;
     }
 
-    co->disconnect();
-    co->deleteLater();
-    co = nullptr;
+    mScreenConfigOperation->disconnect();
+    mScreenConfigOperation->deleteLater();
+    mScreenConfigOperation = nullptr;
 
     return grabFullScreen();
 }
@@ -354,8 +369,8 @@ void X11ImageGrabber::grabActiveWindow()
 
 void X11ImageGrabber::grabCurrentScreen()
 {
-    co = new KScreen::GetConfigOperation;
-    connect(co, &KScreen::GetConfigOperation::finished, this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
+    mScreenConfigOperation = new KScreen::GetConfigOperation;
+    connect(mScreenConfigOperation, &KScreen::GetConfigOperation::finished, this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
 }
 
 void X11ImageGrabber::grabRectangularRegion()

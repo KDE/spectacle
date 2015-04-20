@@ -48,17 +48,6 @@
 
 #include "ImageGrabber.h"
 
-struct X11GeometryInfo
-{
-    long unsigned int root;
-    int               x;
-    int               y;
-    unsigned int      height;
-    unsigned int      width;
-    unsigned int      border_width;
-    unsigned int      depth;
-};
-
 class X11ImageGrabber : public ImageGrabber
 {
     Q_OBJECT
@@ -89,11 +78,10 @@ class X11ImageGrabber : public ImageGrabber
     bool KWinDBusScreenshotAvailable();
     void grabGivenRectangularRegion(int x, int y, int width, int height);
     void grabGivenRectangularRegionActual(int x, int y, int width, int height);
-    QPixmap processXImage30Bit(xcb_image_t *xcbImage);
-    QPixmap processXImage32Bit(xcb_image_t *xcbImage);
+    QPixmap convertFromNative(xcb_image_t *xcbImage);
     QPixmap getWindowPixmap(xcb_window_t window);
 
-    KScreen::GetConfigOperation *co;
+    KScreen::GetConfigOperation *mScreenConfigOperation;
 };
 
 #endif // X11IMAGEGRABBER_H
