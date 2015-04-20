@@ -321,7 +321,7 @@ void X11ImageGrabber::grabActiveWindow()
     // further up. That's a handle to the Window Manager frame. But we
     // can't just grab it, because some compositing window managers (yes,
     // KWin included) do not render the window onto the frame but keep it
-    // in a seperate OpenGL buffer. So grabbing this window is going to
+    // in a separate OpenGL buffer. So grabbing this window is going to
     // just give us a transparent image with the frame and titlebar.
 
     // All is not lost. What we need to do is grab the image of the root
