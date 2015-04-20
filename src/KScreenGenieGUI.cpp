@@ -18,7 +18,6 @@
  */
 
 #include "KScreenGenieGUI.h"
-#include <private/qquickwidget_p.h>
 
 KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
     QWidget(parent),
@@ -184,13 +183,10 @@ void KScreenGenieGUI::setScreenshotAndShow(const QPixmap &pixmap)
 
 void KScreenGenieGUI::ungrabMouseWorkaround()
 {
-    // courtesy of the QtCreator sources (plugins/qmldesigner/components/itemlibrary/itemlibrarywidget.cpp).
-    // Fixes ungrab mouse when the mouse from QtQuickWidget is taken over by a QDrag
-
-    const QQuickWidgetPrivate *widgetPrivate = QQuickWidgetPrivate::get(mQuickWidget);
-    if (widgetPrivate && widgetPrivate->offscreenWindow && widgetPrivate->offscreenWindow->mouseGrabberItem()) {
-        widgetPrivate->offscreenWindow->mouseGrabberItem()->ungrabMouse();
-    }
+    QQuickItem *dragMouseArea = mQuickWidget->rootObject()->findChild<QQuickItem *>("screenshotDragMouseArea");
+    QMouseEvent releaseEvent(QMouseEvent::MouseButtonRelease, QPoint(100, 100), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    qApp->sendEvent(mQuickWidget, &releaseEvent);
+    dragMouseArea->ungrabMouse();
 }
 
 void KScreenGenieGUI::showPrintDialog()

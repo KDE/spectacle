@@ -31,6 +31,7 @@
 #include <QQuickWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QMouseEvent>
 #include <QMoveEvent>
 #include <QPushButton>
 #include <QDialogButtonBox>
@@ -69,8 +70,12 @@ class KScreenGenieGUI : public QWidget
     void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
     void saveCaptureModeConfig(int modeIndex);
-    void ungrabMouseWorkaround();
     void showPrintDialog();
+    void ungrabMouseWorkaround();
+
+    public slots:
+
+
 
     signals:
 

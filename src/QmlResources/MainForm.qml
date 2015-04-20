@@ -90,6 +90,8 @@ ColumnLayout {
                 }
 
                 MouseArea {
+                    objectName: "screenshotDragMouseArea";
+
                     anchors.fill: screenshotContainer;
                     cursorShape: Qt.OpenHandCursor;
 
@@ -106,6 +108,7 @@ ColumnLayout {
                     }
 
                     onReleased: {
+                        dragEmitted = false;
                         cursorShape = Qt.OpenHandCursor;
 
                     }

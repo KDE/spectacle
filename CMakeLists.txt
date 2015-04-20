@@ -44,7 +44,6 @@ find_package(
         DBus
         PrintSupport
 )
-include_directories(${Qt5QuickWidgets_PRIVATE_INCLUDE_DIRS})
 
 find_package(
     KF5 ${KF5_MIN_VERSION} REQUIRED

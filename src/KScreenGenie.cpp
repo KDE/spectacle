@@ -234,6 +234,7 @@ void KScreenGenie::doStartDragAndDrop()
     dragHandler->setMimeData(mimeData);
     dragHandler->setPixmap(mLocalPixmap.scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     dragHandler->start();
+    dragHandler->deleteLater();
 }
 
 void KScreenGenie::doPrint(QPrinter *printer)
