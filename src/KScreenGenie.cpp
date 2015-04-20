@@ -241,7 +241,7 @@ void KScreenGenie::doPrint(QPrinter *printer)
     QPainter painter;
 
     if (!(painter.begin(printer))) {
-        emit errorMessage(i18n("Printring failed. The printer failed to initialize"));
+        emit errorMessage(i18n("Printing failed. The printer failed to initialize."));
         delete printer;
         return;
     }
