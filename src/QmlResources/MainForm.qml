@@ -230,6 +230,7 @@ ColumnLayout {
             Button {
                 id: takeNewScreenshot;
                 text: i18n("Take New Screenshot");
+                iconName: "ksnapshot"
                 focus: true;
 
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop;

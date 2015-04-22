@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QIcon>
 #include <QObject>
 #include <QString>
 #include <QCommandLineParser>
@@ -19,6 +20,9 @@ int main(int argc, char **argv)
 
     app.setOrganizationDomain("kde.org");
     app.setApplicationName("kscreengenie");
+    app.setWindowIcon(QIcon::fromTheme("ksnapshot"));
+
+    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     // set up the about data

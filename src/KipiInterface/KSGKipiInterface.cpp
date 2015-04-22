@@ -65,7 +65,7 @@ KIPI::ImageInfo KSGKipiInterface::info(const QUrl &url)
 
 int KSGKipiInterface::features() const
 {
-    return 0;
+    return KIPI::ImagesHasTime;
 }
 
 // widgets and selectors

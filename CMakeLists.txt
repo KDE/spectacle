@@ -1,8 +1,8 @@
 # KScreenGenie project
 
 project(KScreenGenie)
-set(KSG_VERSION_MAJOR 0)
-set(KSG_VERSION_MINOR 0)
+set(KSG_VERSION_MAJOR 1)
+set(KSG_VERSION_MINOR 9)
 set(KSG_VERSION_PATCH 95)
 set(KSG_VERSION "${KSG_VERSION_MAJOR}.${KSG_VERSION_MINOR}.${KSG_VERSION_PATCH}")
 
@@ -74,6 +74,7 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(desktop)
+add_subdirectory(icons)
 
 # summaries
 
