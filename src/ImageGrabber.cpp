@@ -71,6 +71,11 @@ void ImageGrabber::setGrabMode(const GrabMode newGrabMode)
 
 // Slots
 
+void ImageGrabber::doOnClickGrab()
+{
+    return doImageGrab();
+}
+
 void ImageGrabber::doImageGrab()
 {
     switch(mGrabMode) {

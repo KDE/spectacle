@@ -21,6 +21,8 @@
 #define KSCREENGENIEGUI_H
 
 #include <QApplication>
+#include <QDesktopWidget>
+#include <QCursor>
 #include <QMetaObject>
 #include <QVariant>
 #include <QList>
@@ -68,7 +70,7 @@ class KScreenGenieGUI : public QWidget
     private slots:
 
     void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
-    void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations);
+    void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick);
     void saveCaptureModeConfig(int modeIndex);
     void showPrintDialog();
     void ungrabMouseWorkaround();

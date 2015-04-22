@@ -33,6 +33,18 @@ X11ImageGrabber::X11ImageGrabber(QObject *parent) :
 X11ImageGrabber::~X11ImageGrabber()
 {}
 
+// for onClick grab
+
+bool X11ImageGrabber::onClickGrabSupported() const
+{
+    return true;
+}
+
+void X11ImageGrabber::doOnClickGrab()
+{
+    doImageGrab();
+}
+
 // image conversion routine
 
 QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
@@ -105,10 +117,20 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
     // now we can get the image and start processing
 
     xcb_connection_t *xcbConn = QX11Info::connection();
-    xcb_xfixes_get_cursor_image_cookie_t  cursorCookie = xcb_xfixes_get_cursor_image(xcbConn);
 
-    xcb_xfixes_get_cursor_image_reply_t  *cursorReply  = xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, NULL);
-    quint32 *pixelData = xcb_xfixes_get_cursor_image_cursor_image(cursorReply);
+    xcb_xfixes_get_cursor_image_cookie_t  cursorCookie = xcb_xfixes_get_cursor_image_unchecked(xcbConn);
+    CScopedPointer<xcb_xfixes_get_cursor_image_reply_t>  cursorReply(xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, NULL));
+    if (cursorReply.isNull()) {
+        return;
+    }
+
+    quint32 *pixelData = xcb_xfixes_get_cursor_image_cursor_image(cursorReply.data());
+    if (!pixelData) {
+        return;
+    }
+
+    // process the image into a QImage
+
     QImage cursorImage = QImage((quint8 *)pixelData, cursorReply->width, cursorReply->height, QImage::Format_ARGB32_Premultiplied);
 
     // a small fix for the cursor position for fancier cursors
@@ -133,22 +155,22 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
 
     // first get geometry information for our drawable
 
-    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
-    xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
 
     // then proceed to get an image
 
-    xcb_image_t *xcbImage = xcb_image_get(xcbConn, window, geomReply->x, geomReply->y, geomReply->width, geomReply->height, ~0, XCB_IMAGE_FORMAT_Z_PIXMAP);
+    CScopedPointer<xcb_image_t> xcbImage(xcb_image_get(xcbConn, window, geomReply->x, geomReply->y, geomReply->width, geomReply->height, ~0, XCB_IMAGE_FORMAT_Z_PIXMAP));
 
     // now process the image
 
-    return convertFromNative(xcbImage);
+    return convertFromNative(xcbImage.data());
 }
 
 bool X11ImageGrabber::KWinDBusScreenshotAvailable()
 {
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kwin")) {
-        QDBusInterface interface("org.kde.kwin", "/Effects", "org.kde.kwin.Effects");
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.KWin")) {
+        QDBusInterface interface("org.kde.KWin", "/Effects", "org.kde.KWin.Effects");
         QDBusReply<bool> reply = interface.call("isEffectLoaded", "screenshot");
 
         return reply.value();
@@ -256,8 +278,8 @@ void X11ImageGrabber::grabFullScreen()
 
     if (mCapturePointer) {
         xcb_connection_t *xcbConn = QX11Info::connection();
-        xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
-        xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+        xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+        CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
 
         blendCursorImage(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
     }
@@ -277,14 +299,14 @@ void X11ImageGrabber::grabActiveWindow()
         mPixmap = getWindowPixmap(window);
 
         if (mCapturePointer) {
-            xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
-            xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+            xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+            CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
 
-            xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry(xcbConn, geomReply->root);
-            xcb_get_geometry_reply_t *geomRootReply = xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL);
+            xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
+            CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
 
-            xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
-            xcb_translate_coordinates_reply_t *translateReply = xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL);
+            xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
+            CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
 
             blendCursorImage(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
         }
@@ -302,7 +324,7 @@ void X11ImageGrabber::grabActiveWindow()
 
     if (KWinDBusScreenshotAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect("org.kde.kwin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated", this, SLOT(KWinDBusScreenshotHelper(quint64)));
+        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.KWin.Screenshot", "screenshotCreated", this, SLOT(KWinDBusScreenshotHelper(quint64)));
         QDBusInterface interface("org.kde.kwin", "/Screenshot", "org.kde.kwin.Screenshot");
 
         int mask = 1;
@@ -333,8 +355,8 @@ void X11ImageGrabber::grabActiveWindow()
     // "substantial portion"
 
     while (1) {
-        xcb_query_tree_cookie_t queryCookie = xcb_query_tree(xcbConn, window);
-        xcb_query_tree_reply_t *queryReply = xcb_query_tree_reply(xcbConn, queryCookie, NULL);
+        xcb_query_tree_cookie_t queryCookie = xcb_query_tree_unchecked(xcbConn, window);
+        CScopedPointer<xcb_query_tree_reply_t> queryReply(xcb_query_tree_reply(xcbConn, queryCookie, NULL));
 
         if ((queryReply->parent == queryReply->root) || !(queryReply->parent)) {
             break;
@@ -346,17 +368,17 @@ void X11ImageGrabber::grabActiveWindow()
     // now it's just a matter of grabbing...
 
 
-    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry(xcbConn, window);
-    xcb_get_geometry_reply_t *geomReply = xcb_get_geometry_reply(xcbConn, geomCookie, NULL);
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
     mPixmap = getWindowPixmap(geomReply->root);
 
     // ...translating co-ordinates...
 
-    xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry(xcbConn, geomReply->root);
-    xcb_get_geometry_reply_t *geomRootReply = xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL);
+    xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
+    CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
 
-    xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
-    xcb_translate_coordinates_reply_t *translateReply = xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL);
+    xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
+    CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
 
     // ...and cropping
 

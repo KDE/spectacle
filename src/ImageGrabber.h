@@ -70,7 +70,8 @@ class ImageGrabber : public QObject
 
     public slots:
 
-    void doImageGrab();
+    virtual void doImageGrab();
+    virtual void doOnClickGrab();
 
     protected:
 

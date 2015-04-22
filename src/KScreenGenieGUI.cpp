@@ -70,7 +70,7 @@ void KScreenGenieGUI::init()
 
     QQuickItem *rootItem = mQuickWidget->rootObject();
     connect(rootItem, SIGNAL(newScreenshotRequest(QString,double,bool,bool)), this, SLOT(captureScreenshot(QString,double,bool,bool)));
-    connect(rootItem, SIGNAL(saveCheckboxStates(bool, bool)), this, SLOT(saveCheckboxStatesConfig(bool, bool)));
+    connect(rootItem, SIGNAL(saveCheckboxStates(bool,bool,bool)), this, SLOT(saveCheckboxStatesConfig(bool,bool,bool)));
     connect(rootItem, SIGNAL(saveCaptureMode(int)), this, SLOT(saveCaptureModeConfig(int)));
     connect(rootItem, SIGNAL(startDragAndDrop()), this, SIGNAL(dragAndDropRequest()));
     connect(rootItem, SIGNAL(startDragAndDrop()), this, SLOT(ungrabMouseWorkaround()));
@@ -121,7 +121,12 @@ void KScreenGenieGUI::init()
 
     bool includePointer = guiConfig.readEntry("includePointer", true);
     bool includeDecorations = guiConfig.readEntry("includeDecorations", true);
-    QMetaObject::invokeMethod(rootItem, "loadCheckboxStates", Q_ARG(QVariant, includePointer), Q_ARG(QVariant, includeDecorations));
+    bool waitCaptureOnClick = guiConfig.readEntry("waitCaptureOnClick", false);
+    QMetaObject::invokeMethod(rootItem, "loadCheckboxStates",
+                              Q_ARG(QVariant, includePointer),
+                              Q_ARG(QVariant, includeDecorations),
+                              Q_ARG(QVariant, waitCaptureOnClick)
+    );
 
     int captureModeIndex = guiConfig.readEntry("captureModeIndex", 0);
     QMetaObject::invokeMethod(rootItem, "loadCaptureMode", Q_ARG(QVariant, captureModeIndex));
@@ -129,7 +134,7 @@ void KScreenGenieGUI::init()
     // done with the init
 }
 
-// gui events
+// overrides
 
 void KScreenGenieGUI::moveEvent(QMoveEvent *event)
 {
@@ -200,13 +205,14 @@ void KScreenGenieGUI::showPrintDialog()
     delete printer;
 }
 
-void KScreenGenieGUI::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations)
+void KScreenGenieGUI::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("includePointer", includePointer);
     guiConfig.writeEntry("includeDecorations", includeDecorations);
+    guiConfig.writeEntry("waitCaptureOnClick", waitCaptureOnClick);
     guiConfig.sync();
 }
 

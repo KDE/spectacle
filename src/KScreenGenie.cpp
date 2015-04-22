@@ -157,6 +157,11 @@ void KScreenGenie::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, b
     mImageGrabber->setCapturePointer(includePointer);
     mImageGrabber->setCaptureDecorations(includeDecorations);
 
+    if (timeout < 0) {
+        mImageGrabber->doOnClickGrab();
+        return;
+    }
+
     const int msec = KWindowSystem::compositingActive() ? 200 : 50;
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }

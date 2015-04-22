@@ -27,17 +27,22 @@ ColumnLayout {
     spacing: 10;
 
     signal newScreenshotRequest(string captureType, real captureDelay, bool includePointer, bool includeDecorations);
-    signal saveCheckboxStates(bool includePointer, bool includeDecorations);
+    signal saveCheckboxStates(bool includePointer, bool includeDecorations, bool waitCaptureOnClick);
     signal saveCaptureMode(int captureModeIndex);
     signal startDragAndDrop;
+
+    function saveCheckboxes() {
+        saveCheckboxStates(optionMousePointer.checked, optionWindowDecorations.checked, captureOnClick.checked);
+    }
 
     function reloadScreenshot() {
         screenshotImage.refreshImage();
     }
 
-    function loadCheckboxStates(includePointer, includeDecorations) {
+    function loadCheckboxStates(includePointer, includeDecorations, waitCaptureOnClick) {
         optionMousePointer.checked = includePointer;
         optionWindowDecorations.checked = includeDecorations;
+        captureOnClick.checked = waitCaptureOnClick;
     }
 
     function loadCaptureMode(captureModeIndex) {
@@ -148,7 +153,11 @@ ColumnLayout {
                     anchors.left: parent.left;
                     anchors.leftMargin: 32;
 
-                    Label { text: i18n("Capture Area"); }
+                    Label {
+                        id: captureAreaLabel;
+                        text: i18n("Capture Area");
+                    }
+
                     ComboBox {
                         id: captureMode;
                         model: captureModeModel;
@@ -180,17 +189,40 @@ ColumnLayout {
                     id: captureDelayLayout;
                     anchors.right: captureAreaLayout.right;
 
-                    Label { text: i18n("Capture Delay"); }
+                    Label {
+                        id: captureDelayLabel;
+                        text: i18n("Capture Delay");
+                    }
+
                     SpinBox {
                         id: captureDelay;
 
-                        minimumValue: 0.0;
+                        minimumValue: -0.1;
                         maximumValue: 999.9;
                         decimals: 1;
                         stepSize: 0.1;
                         suffix: i18n(" seconds");
 
-                        Layout.preferredWidth: 200;
+                        Layout.preferredWidth: 120;
+                    }
+
+                    CheckBox {
+                        id: captureOnClick;
+
+                        checked: false;
+                        text: i18n("On Click");
+
+                        onCheckedChanged: {
+                            if (checked) {
+                                captureDelay.enabled = false;
+                            } else {
+                                captureDelay.enabled = true;
+                            }
+
+                            mainLayout.saveCheckboxes();
+                        }
+
+                        Layout.preferredWidth: 75;
                     }
                 }
             }
@@ -211,7 +243,7 @@ ColumnLayout {
                     anchors.left: parent.left;
                     anchors.leftMargin: 32;
 
-                    onCheckedChanged: saveCheckboxStates(optionMousePointer.checked, optionWindowDecorations.checked);
+                    onCheckedChanged: mainLayout.saveCheckboxes();
 
                     text: i18n("Include mouse pointer");
                 }
@@ -221,7 +253,7 @@ ColumnLayout {
                     anchors.left: parent.left;
                     anchors.leftMargin: 32;
 
-                    onCheckedChanged: saveCheckboxStates(optionMousePointer.checked, optionWindowDecorations.checked);
+                    onCheckedChanged: mainLayout.saveCheckboxes();
 
                     text: i18n("Include window titlebar and borders");
                 }
@@ -237,7 +269,7 @@ ColumnLayout {
 
                 onClicked: {
                     var capturemode = captureModeModel.get(captureMode.currentIndex)["type"];
-                    var capturedelay = captureDelay.value;
+                    var capturedelay = captureOnClick.checked ? -1 : captureDelay.value;
                     var includepointer = optionMousePointer.checked;
                     var includedecor = optionWindowDecorations.checked;
 

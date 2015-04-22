@@ -34,6 +34,8 @@
 #include <QDBusReply>
 #include <QTimer>
 #include <QProcessEnvironment>
+#include <QScopedPointer>
+#include <QScopedPointerPodDeleter>
 
 #include <KWindowSystem>
 #include <KScreen/Config>
@@ -57,6 +59,8 @@ class X11ImageGrabber : public ImageGrabber
     explicit X11ImageGrabber(QObject * parent = 0);
     ~X11ImageGrabber();
 
+    bool onClickGrabSupported() const;
+
     protected:
 
     void blendCursorImage(int x, int y, int width, int height);
@@ -72,6 +76,10 @@ class X11ImageGrabber : public ImageGrabber
     void rectangleSelectionConfirmed(int x, int y, int width, int height);
     void rectangleSelectionCancelled();
 
+    public slots:
+
+    void doOnClickGrab();
+
     private:
 
     bool liveModeAvailable();
@@ -83,5 +91,7 @@ class X11ImageGrabber : public ImageGrabber
 
     KScreen::GetConfigOperation *mScreenConfigOperation;
 };
+
+template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPodDeleter>;
 
 #endif // X11IMAGEGRABBER_H
