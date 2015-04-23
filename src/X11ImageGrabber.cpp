@@ -125,7 +125,7 @@ void X11ImageGrabber::doOnClickGrab()
         return doImageGrab();
     }
 
-    // now block for the mouse press event
+    // fix things if our pointer grab causes a lockup
 
     xcb_allow_events(QX11Info::connection(), XCB_ALLOW_SYNC_POINTER, XCB_TIME_CURRENT_TIME);
 
@@ -264,7 +264,7 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
 bool X11ImageGrabber::KWinDBusScreenshotAvailable()
 {
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.KWin")) {
-        QDBusInterface interface("org.kde.KWin", "/Effects", "org.kde.KWin.Effects");
+        QDBusInterface interface("org.kde.KWin", "/Effects", "org.kde.kwin.Effects");
         QDBusReply<bool> reply = interface.call("isEffectLoaded", "screenshot");
 
         return reply.value();
@@ -418,8 +418,8 @@ void X11ImageGrabber::grabActiveWindow()
 
     if (KWinDBusScreenshotAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.KWin.Screenshot", "screenshotCreated", this, SLOT(KWinDBusScreenshotHelper(quint64)));
-        QDBusInterface interface("org.kde.kwin", "/Screenshot", "org.kde.kwin.Screenshot");
+        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated", this, SLOT(KWinDBusScreenshotHelper(quint64)));
+        QDBusInterface interface("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot");
 
         int mask = 1;
         if (mCapturePointer) {
