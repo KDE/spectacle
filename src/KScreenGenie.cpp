@@ -31,7 +31,7 @@
 
 #include "KScreenGenie.h"
 
-KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, quint64 delayMsec, bool sendToClipboard, QObject *parent) :
+KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent) :
     QObject(parent),
     mBackgroundMode(backgroundMode),
     mOverwriteOnSave(true),
@@ -54,6 +54,10 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     mImageGrabber->setCapturePointer(guiConfig.readEntry("includePointer", true));
     mImageGrabber->setCaptureDecorations(guiConfig.readEntry("includeDecorations", true));
 
+    if ((!(mImageGrabber->onClickGrabSupported())) && (delayMsec < 0)) {
+        delayMsec = 0;
+    }
+
     connect(this, &KScreenGenie::errorMessage, this, &KScreenGenie::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KScreenGenie::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KScreenGenie::screenshotFailed);
@@ -68,7 +72,7 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     // init the gui
 
     if (!(backgroundMode)) {
-        mScreenGenieGUI = new KScreenGenieGUI(this);
+        mScreenGenieGUI = new KScreenGenieGUI(mImageGrabber->onClickGrabSupported());
 
         connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
         connect(mScreenGenieGUI, &KScreenGenieGUI::saveAndExit, this, &KScreenGenie::doAutoSave);

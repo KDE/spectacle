@@ -17,8 +17,6 @@ once an API becomes available for it.
 
   * The ability to grab freeform areas of your screen
   * The ability to select and grab specific widgets in a window
-  * No "wait for a click before taking a shot" mode (we have a
-    millisecond accuracy timer)
   * No Win32 or Mac OS support yet
   * The ability to take screenshots on platforms where OpenGL
     is not available (QtQuick 2.0 requires OpenGL)
@@ -32,6 +30,8 @@ is unavailable, KSnapshot continues to be available.
 Note that KScreenGenie will work even if you use KWin without
 compositing, or if you use another window manager (like OpenBox).
 All you need is to have the 3D drivers installed.
+
+Also note that Qt5Gui currently mandates OpenGL.
 
 3) What's cooler?
 

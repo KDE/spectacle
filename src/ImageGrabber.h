@@ -56,6 +56,8 @@ class ImageGrabber : public QObject
     bool captureDecorations() const;
     GrabMode grabMode() const;
 
+    virtual bool onClickGrabSupported() const;
+
     void setCapturePointer(const bool newCapturePointer);
     void setCaptureDecorations(const bool newCaptureDecorations);
     void setGrabMode(const GrabMode newGrabMode);

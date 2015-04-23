@@ -69,6 +69,8 @@ if(XCB_FOUND)
         kscreengenie
             XCB::XFIXES
             XCB::IMAGE
+            XCB::CURSOR
+            XCB::UTIL
             Qt5::X11Extras
             KF5::Screen
     )

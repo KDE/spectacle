@@ -52,7 +52,8 @@ int main(int argc, char **argv)
         {{"b", "background"},   i18n("Take a screenshot and exit without showing the GUI")},
         {{"c", "clipboard"},    i18n("In background mode, send image to clipboard without saving to file")},
         {{"o", "output"},       i18n("In background mode, save image to specified file"), "fileName"},
-        {{"d", "delay"},        i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"}
+        {{"d", "delay"},        i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
+        {{"w", "onclick"},      i18n("Wait for a click before taking screenshot. Invalidates delay")}
     });
 
     parser.process(app);
@@ -73,7 +74,7 @@ int main(int argc, char **argv)
 
     bool backgroundMode = false;
     bool sendToClipboard = false;
-    quint64 delayMsec = 0;
+    qint64 delayMsec = 0;
     QString fileName = QString();
 
     if (parser.isSet("background")) {
@@ -85,10 +86,14 @@ int main(int argc, char **argv)
 
         if (parser.isSet("delay")) {
             bool ok = false;
-            quint64 delayValue = parser.value("delay").toULongLong(&ok);
+            qint64 delayValue = parser.value("delay").toLongLong(&ok);
             if (ok) {
                 delayMsec = delayValue;
             }
+        }
+
+        if (parser.isSet("onclick")) {
+            delayMsec = -1;
         }
 
         if (parser.isSet("clipboard")) {

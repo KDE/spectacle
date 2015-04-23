@@ -19,18 +19,18 @@
 
 #include "KScreenGenieGUI.h"
 
-KScreenGenieGUI::KScreenGenieGUI(QObject *genie, QWidget *parent) :
+KScreenGenieGUI::KScreenGenieGUI(bool onClickAvailable, QWidget *parent) :
     QWidget(parent),
-    mScreenGenie(genie),
     mQuickWidget(nullptr),
     mDialogButtonBox(nullptr),
     mSendToButton(nullptr),
     mPrintButton(nullptr),
     mSendToMenu(new KSGSendToMenu),
     mKQmlObject(new KDeclarative::QmlObject),
-    mScreenshotImageProvider(new KSGImageProvider)
+    mScreenshotImageProvider(new KSGImageProvider),
+    mOnClickAvailable(onClickAvailable)
 {
-    QTimer::singleShot(10, this, &KScreenGenieGUI::init);
+    QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
 
 KScreenGenieGUI::~KScreenGenieGUI()
@@ -109,7 +109,7 @@ void KScreenGenieGUI::init()
     setLayout(layout);
     mQuickWidget->setFocus();
 
-    // start a thread to populate our send-to actions
+    // populate our send-to actions
 
     connect(mSendToMenu, &KSGSendToMenu::sendToServiceRequest, this, &KScreenGenieGUI::sendToKServiceRequest);
     connect(mSendToMenu, &KSGSendToMenu::sendToClipboardRequest, this, &KScreenGenieGUI::sendToClipboardRequest);
@@ -130,6 +130,12 @@ void KScreenGenieGUI::init()
 
     int captureModeIndex = guiConfig.readEntry("captureModeIndex", 0);
     QMetaObject::invokeMethod(rootItem, "loadCaptureMode", Q_ARG(QVariant, captureModeIndex));
+
+    // disable onClick mode if not available on the platform
+
+    if (!mOnClickAvailable) {
+        QMetaObject::invokeMethod(rootItem, "disableOnClick");
+    }
 
     // done with the init
 }

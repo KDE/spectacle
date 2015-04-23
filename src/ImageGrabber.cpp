@@ -32,6 +32,13 @@ ImageGrabber::~ImageGrabber()
 {
 }
 
+//
+
+bool ImageGrabber::onClickGrabSupported() const
+{
+    return false;
+}
+
 // Q_PROPERTY Stuff
 
 QPixmap ImageGrabber::pixmap() const

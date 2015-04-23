@@ -33,9 +33,13 @@
 #include <QDBusConnectionInterface>
 #include <QDBusReply>
 #include <QTimer>
+#include <QVector>
+#include <QByteArray>
 #include <QProcessEnvironment>
 #include <QScopedPointer>
 #include <QScopedPointerPodDeleter>
+#include <QAbstractNativeEventFilter>
+#include <QMetaObject>
 
 #include <KWindowSystem>
 #include <KScreen/Config>
@@ -44,11 +48,26 @@
 #include <KScreen/Output>
 
 #include <xcb/xcb.h>
+#include <xcb/xcb_cursor.h>
 #include <xcb/xcb_image.h>
 #include <xcb/xcb_util.h>
 #include <xcb/xfixes.h>
 
 #include "ImageGrabber.h"
+
+class X11ImageGrabber;
+
+class OnClickEventFilter : public QAbstractNativeEventFilter
+{
+    public:
+
+    explicit OnClickEventFilter(X11ImageGrabber *grabber);
+    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result);
+
+    private:
+
+    X11ImageGrabber *mImageGrabber;
+};
 
 class X11ImageGrabber : public ImageGrabber
 {
@@ -89,6 +108,7 @@ class X11ImageGrabber : public ImageGrabber
     QPixmap convertFromNative(xcb_image_t *xcbImage);
     QPixmap getWindowPixmap(xcb_window_t window);
 
+    OnClickEventFilter          *mNativeEventFilter;
     KScreen::GetConfigOperation *mScreenConfigOperation;
 };
 

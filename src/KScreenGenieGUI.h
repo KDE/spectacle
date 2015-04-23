@@ -62,7 +62,7 @@ class KScreenGenieGUI : public QWidget
 
     public:
 
-    explicit KScreenGenieGUI(QObject *genie, QWidget *parent = 0);
+    explicit KScreenGenieGUI(bool onClickAvailable, QWidget *parent = 0);
     ~KScreenGenieGUI();
 
     void setScreenshotAndShow(const QPixmap &pixmap);
@@ -74,6 +74,7 @@ class KScreenGenieGUI : public QWidget
     void saveCaptureModeConfig(int modeIndex);
     void showPrintDialog();
     void ungrabMouseWorkaround();
+    void init();
 
     signals:
 
@@ -92,9 +93,6 @@ class KScreenGenieGUI : public QWidget
 
     private:
 
-    void init();
-
-    QObject                 *mScreenGenie;
     QQuickWidget            *mQuickWidget;
     QDialogButtonBox        *mDialogButtonBox;
     QPushButton             *mSendToButton;
@@ -102,7 +100,7 @@ class KScreenGenieGUI : public QWidget
     KSGSendToMenu           *mSendToMenu;
     KDeclarative::QmlObject *mKQmlObject;
     KSGImageProvider        *mScreenshotImageProvider;
-    QList<QAction *>         mMenuActions;
+    bool                     mOnClickAvailable;
 };
 
 #endif // KSCREENGENIEGUI_H

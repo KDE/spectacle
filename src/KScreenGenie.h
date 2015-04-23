@@ -69,7 +69,7 @@ class KScreenGenie : public QObject
 
     public:
 
-    explicit KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, quint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
+    explicit KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
     ~KScreenGenie();
 
     QString filename() const;

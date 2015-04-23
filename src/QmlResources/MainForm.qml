@@ -49,6 +49,11 @@ ColumnLayout {
         captureMode.currentIndex = captureModeIndex;
     }
 
+    function disableOnClick() {
+        captureOnClick.checked = false;
+        captureOnClick.enabled = false;
+    }
+
     RowLayout {
         id: topLayout
 

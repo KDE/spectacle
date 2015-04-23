@@ -28,12 +28,49 @@
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent),
     mScreenConfigOperation(nullptr)
-{}
+{
+    mNativeEventFilter = new OnClickEventFilter(this);
+}
 
 X11ImageGrabber::~X11ImageGrabber()
-{}
+{
+    delete mNativeEventFilter;
+}
 
 // for onClick grab
+
+OnClickEventFilter::OnClickEventFilter(X11ImageGrabber *grabber) :
+    QAbstractNativeEventFilter(),
+    mImageGrabber(grabber)
+{}
+
+bool OnClickEventFilter::nativeEventFilter(const QByteArray &eventType, void *message, long *result)
+{
+    Q_UNUSED(result);
+
+    if (eventType == "xcb_generic_event_t") {
+        xcb_generic_event_t *ev = static_cast<xcb_generic_event_t *>(message);
+
+        switch (ev->response_type & ~0x80) {
+        case XCB_BUTTON_RELEASE:
+
+            // uninstall the event filter first
+            qApp->removeNativeEventFilter(this);
+
+            // ungrab the mouse
+            xcb_ungrab_pointer(QX11Info::connection(), XCB_TIME_CURRENT_TIME);
+
+            // grab the image
+            QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
+
+            // done
+            return true;
+        default:
+            return false;
+        }
+    }
+    return false;
+}
 
 bool X11ImageGrabber::onClickGrabSupported() const
 {
@@ -42,7 +79,64 @@ bool X11ImageGrabber::onClickGrabSupported() const
 
 void X11ImageGrabber::doOnClickGrab()
 {
-    doImageGrab();
+    // get the cursor image
+
+    xcb_cursor_t xcbCursor = XCB_CURSOR_NONE;
+
+    xcb_cursor_context_t *xcbCursorCtx;
+    xcb_screen_t *xcbAppScreen = xcb_aux_get_screen(QX11Info::connection(), QX11Info::appScreen());
+
+    if (xcb_cursor_context_new(QX11Info::connection(), xcbAppScreen, &xcbCursorCtx) >= 0) {
+
+        QVector<QByteArray> cursorNames = {
+            QByteArrayLiteral("cross"),
+            QByteArrayLiteral("crosshair"),
+            QByteArrayLiteral("diamond-cross"),
+            QByteArrayLiteral("cross-reverse")
+        };
+
+        for (auto cursorName: cursorNames) {
+            xcb_cursor_t cursor = xcb_cursor_load_cursor(xcbCursorCtx, cursorName.constData());
+            if (cursor != XCB_CURSOR_NONE) {
+                xcbCursor = cursor;
+                break;
+            }
+        }
+    }
+
+    // grab the cursor
+
+    xcb_grab_pointer_cookie_t grabPointerCookie = xcb_grab_pointer_unchecked(
+        QX11Info::connection(),        // xcb connection
+        0,                             // deliver events to owner? nope
+        QX11Info::appRootWindow(),     // window to grab pointer for (root)
+        XCB_EVENT_MASK_BUTTON_RELEASE, // which events do I want
+        XCB_GRAB_MODE_SYNC,            // pointer grab mode
+        XCB_GRAB_MODE_ASYNC,           // keyboard grab mode (why is this even here)
+        XCB_NONE,                      // confine pointer to which window (none)
+        xcbCursor,                     // cursor to change to for the duration of grab
+        XCB_TIME_CURRENT_TIME          // do this right now
+    );
+    CScopedPointer<xcb_grab_pointer_reply_t> grabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, NULL));
+
+    // if the grab failed, take the screenshot right away
+
+    if (grabPointerReply->status != XCB_GRAB_STATUS_SUCCESS) {
+        return doImageGrab();
+    }
+
+    // now block for the mouse press event
+
+    xcb_allow_events(QX11Info::connection(), XCB_ALLOW_SYNC_POINTER, XCB_TIME_CURRENT_TIME);
+
+    // and install our event filter
+
+    qApp->installNativeEventFilter(mNativeEventFilter);
+
+    // done. clean stuff up
+
+    xcb_cursor_context_free(xcbCursorCtx);
+    xcb_free_cursor(QX11Info::connection(), xcbCursor);
 }
 
 // image conversion routine
