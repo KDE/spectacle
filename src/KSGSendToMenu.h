@@ -28,7 +28,6 @@
 #include <QMenu>
 #include <QPair>
 #include <QVariant>
-#include <QMenu>
 #include <QDebug>
 
 #include <KLocalizedString>
