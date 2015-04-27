@@ -40,6 +40,7 @@
 #include <QMimeData>
 #include <QClipboard>
 #include <QTimer>
+#include <QMetaObject>
 #include <QDebug>
 
 #include <KLocalizedString>

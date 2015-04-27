@@ -62,27 +62,27 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KScreenGenie::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KScreenGenie::screenshotFailed);
 
-    int msec = KWindowSystem::compositingActive() ? 200 : 50;
     if (backgroundMode) {
-        msec += delayMsec;
+        int msec = (KWindowSystem::compositingActive() ? 200 : 50) + delayMsec;
+        QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
+        return;
     }
-    QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
 
     // if we aren't in background mode, this would be a good time to
     // init the gui
 
-    if (!(backgroundMode)) {
-        mScreenGenieGUI = new KScreenGenieGUI(mImageGrabber->onClickGrabSupported());
+    mScreenGenieGUI = new KScreenGenieGUI(mImageGrabber->onClickGrabSupported());
 
-        connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::saveAndExit, this, &KScreenGenie::doAutoSave);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::saveAsClicked, this, &KScreenGenie::doGuiSaveAs);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
-        connect(mScreenGenieGUI, &KScreenGenieGUI::printRequest, this, &KScreenGenie::doPrint);
-    }
+    connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::saveAndExit, this, &KScreenGenie::doAutoSave);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::saveAsClicked, this, &KScreenGenie::doGuiSaveAs);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
+    connect(mScreenGenieGUI, &KScreenGenieGUI::printRequest, this, &KScreenGenie::doPrint);
+
+    QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
 }
 
 KScreenGenie::~KScreenGenie()
