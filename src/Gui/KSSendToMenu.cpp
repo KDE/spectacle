@@ -23,17 +23,17 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "KSGSendToMenu.h"
+#include "KSSendToMenu.h"
 
-KSGSendToMenu::KSGSendToMenu(QObject *parent) :
+KSSendToMenu::KSSendToMenu(QObject *parent) :
     QObject(parent),
     mMenu(new QMenu)
 {}
 
-KSGSendToMenu::~KSGSendToMenu()
+KSSendToMenu::~KSSendToMenu()
 {}
 
-void KSGSendToMenu::populateMenu()
+void KSSendToMenu::populateMenu()
 {
     populateHardcodedSendToActions();
     mMenu->addSeparator();
@@ -46,14 +46,14 @@ void KSGSendToMenu::populateMenu()
 
 // return menu
 
-QMenu *KSGSendToMenu::menu()
+QMenu *KSSendToMenu::menu()
 {
     return mMenu;
 }
 
 // send-to handlers
 
-void KSGSendToMenu::handleSendToKService()
+void KSSendToMenu::handleSendToKService()
 {
     QAction *action = qobject_cast<QAction *>(QObject::sender());
     if (!(action)) {
@@ -65,13 +65,15 @@ void KSGSendToMenu::handleSendToKService()
     emit sendToServiceRequest(data);
 }
 
-void KSGSendToMenu::populateHardcodedSendToActions()
+// populators
+
+void KSSendToMenu::populateHardcodedSendToActions()
 {
     mMenu->addAction(QIcon::fromTheme("edit-copy"), i18n("Copy To Clipboard"), this, SIGNAL(sendToClipboardRequest()));
     mMenu->addAction(i18n("Other Application"), this, SIGNAL(sendToOpenWithRequest()));
 }
 
-void KSGSendToMenu::populateKServiceSendToActions()
+void KSSendToMenu::populateKServiceSendToActions()
 {
     const KService::List services = KMimeTypeTrader::self()->query("image/png");
 
@@ -80,14 +82,14 @@ void KSGSendToMenu::populateKServiceSendToActions()
 
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, nullptr);
         action->setData(QVariant::fromValue(service));
-        connect(action, &QAction::triggered, this, &KSGSendToMenu::handleSendToKService);
+        connect(action, &QAction::triggered, this, &KSSendToMenu::handleSendToKService);
 
         mMenu->addAction(action);
     }
 }
 
 #ifdef KIPI_FOUND
-void KSGSendToMenu::populateKipiSendToActions()
+void KSSendToMenu::populateKipiSendToActions()
 {
     mKipiInterface = new KSGKipiInterface(this);
     KIPI::PluginLoader *loader = new KIPI::PluginLoader;
@@ -118,7 +120,7 @@ void KSGSendToMenu::populateKipiSendToActions()
             if (category == KIPI::ExportPlugin) {
                 exportActions += action;
             } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains("kipiplugin_sendimages")) {
-                    exportActions += action;
+                exportActions += action;
             }
         }
 

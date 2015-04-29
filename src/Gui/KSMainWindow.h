@@ -17,30 +17,20 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KSCREENGENIEGUI_H
-#define KSCREENGENIEGUI_H
+#ifndef KSMAINWINDOW_H
+#define KSMAINWINDOW_H
 
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QCursor>
-#include <QMetaObject>
-#include <QVariant>
-#include <QList>
 #include <QWidget>
 #include <QPrintDialog>
 #include <QPrinter>
-#include <QQuickItem>
-#include <QQuickWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QMoveEvent>
 #include <QPushButton>
 #include <QDialogButtonBox>
-#include <QMenu>
 #include <QPoint>
-#include <QTimer>
-#include <QDebug>
+#include <QFrame>
 #include <QAction>
 
 #include <KLocalizedString>
@@ -50,30 +40,28 @@
 #include <KHelpMenu>
 #include <KGuiItem>
 #include <KStandardGuiItem>
-#include <KDeclarative/QmlObject>
 
 #include "ImageGrabber.h"
-#include "KSGSendToMenu.h"
-#include "KSGImageProvider.h"
+#include "KSWidget.h"
+#include "KSSendToMenu.h"
 
-class KScreenGenieGUI : public QWidget
+class KSMainWindow : public QWidget
 {
     Q_OBJECT
 
     public:
 
-    explicit KScreenGenieGUI(bool onClickAvailable, QWidget *parent = 0);
-    ~KScreenGenieGUI();
+    explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
+    ~KSMainWindow();
 
     void setScreenshotAndShow(const QPixmap &pixmap);
 
     private slots:
 
-    void captureScreenshot(QString captureMode, double captureDelay, bool includePointer, bool includeDecorations);
+    void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick);
     void saveCaptureModeConfig(int modeIndex);
     void showPrintDialog();
-    void ungrabMouseWorkaround();
     void init();
 
     signals:
@@ -93,14 +81,13 @@ class KScreenGenieGUI : public QWidget
 
     private:
 
-    QQuickWidget            *mQuickWidget;
-    QDialogButtonBox        *mDialogButtonBox;
-    QPushButton             *mSendToButton;
-    QPushButton             *mPrintButton;
-    KSGSendToMenu           *mSendToMenu;
-    KDeclarative::QmlObject *mKQmlObject;
-    KSGImageProvider        *mScreenshotImageProvider;
-    bool                     mOnClickAvailable;
+    KSWidget         *mKSWidget;
+    QFrame           *mDivider;
+    QDialogButtonBox *mDialogButtonBox;
+    QPushButton      *mSendToButton;
+    QPushButton      *mPrintButton;
+    KSSendToMenu     *mSendToMenu;
+    bool              mOnClickAvailable;
 };
 
-#endif // KSCREENGENIEGUI_H
+#endif // KSMAINWINDOW_H

@@ -17,8 +17,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KSGSENDTOMENU_H
-#define KSGSENDTOMENU_H
+#ifndef KSSENDTOMENU_H
+#define KSSENDTOMENU_H
 
 #include <QObject>
 #include <QWidget>
@@ -44,14 +44,14 @@
 #include "KipiInterface/KSGKipiInterface.h"
 #endif
 
-class KSGSendToMenu : public QObject
+class KSSendToMenu : public QObject
 {
     Q_OBJECT
 
     public:
 
-    explicit KSGSendToMenu(QObject *parent = 0);
-    ~KSGSendToMenu();
+    explicit KSSendToMenu(QObject *parent = 0);
+    ~KSSendToMenu();
 
     QMenu *menu();
 
@@ -84,4 +84,4 @@ class KSGSendToMenu : public QObject
 
 Q_DECLARE_METATYPE(KService::Ptr)
 
-#endif // KSGSENDTOMENU_H
+#endif // KSSENDTOMENU_H

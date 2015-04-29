@@ -56,7 +56,7 @@
 
 #include "ImageGrabber.h"
 #include "X11ImageGrabber.h"
-#include "KScreenGenieGUI.h"
+#include "Gui/KSMainWindow.h"
 #include "Config.h"
 
 class KScreenGenie : public QObject
@@ -117,10 +117,7 @@ class KScreenGenie : public QObject
     QUrl tempFileSave(const QString mimetype = "png");
     bool doSave(const QUrl url);
     bool isFileExists(const QUrl url);
-
-#ifdef KIPI_FOUND
     void doTempSaveForKipi();
-#endif
 
     bool             mBackgroundMode;
     bool             mOverwriteOnSave;
@@ -129,7 +126,7 @@ class KScreenGenie : public QObject
     QString          mFileNameString;
     QUrl             mFileNameUrl;
     ImageGrabber    *mImageGrabber;
-    KScreenGenieGUI *mScreenGenieGUI;
+    KSMainWindow    *mMainWindow;
 };
 
 #endif // KSCREENGENIE_H

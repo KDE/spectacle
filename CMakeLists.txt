@@ -40,7 +40,6 @@ find_package(
         Core
         Quick
         Widgets
-        QuickWidgets
         DBus
         PrintSupport
 )
@@ -68,6 +67,12 @@ find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR)
 if (XCB_FOUND)
     find_package(Qt5X11Extras ${QT_MIN_VERSION} REQUIRED)
     find_package(KF5Screen ${PLASMA_MIN_VERSION} REQUIRED)
+endif()
+
+# fail build if none of the platform backends can be found
+
+if (!XCB_FOUND)
+    message(FATAL_ERROR "No suitable backend platform was found. Currenty supported platforms are: XCB")
 endif()
 
 # hand off to subdirectories

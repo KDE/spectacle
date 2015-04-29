@@ -9,10 +9,12 @@ set(
         Main.cpp
         ImageGrabber.cpp
         KScreenGenie.cpp
-        KScreenGenieGUI.cpp
         KSGImageProvider.cpp
         CropScreenshotGrabber.cpp
-        KSGSendToMenu.cpp
+        Gui/KSMainWindow.cpp
+        Gui/KSWidget.cpp
+        Gui/KSImageWidget.cpp
+        Gui/KSSendToMenu.cpp
 )
 qt5_add_resources (KSG_SRCS_RESOURCES QmlResources/QmlResources.qrc)
 
@@ -51,7 +53,6 @@ add_executable(
 target_link_libraries(
     kscreengenie
         Qt5::Quick
-        Qt5::QuickWidgets
         Qt5::DBus
         Qt5::PrintSupport
         KF5::CoreAddons

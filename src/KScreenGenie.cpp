@@ -37,7 +37,7 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
     mLocalPixmap(QPixmap()),
-    mScreenGenieGUI(nullptr)
+    mMainWindow(nullptr)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup guiConfig(config, "GuiConfig");
@@ -71,24 +71,24 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
     // if we aren't in background mode, this would be a good time to
     // init the gui
 
-    mScreenGenieGUI = new KScreenGenieGUI(mImageGrabber->onClickGrabSupported());
+    mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
 
-    connect(mScreenGenieGUI, &KScreenGenieGUI::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::saveAndExit, this, &KScreenGenie::doAutoSave);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::saveAsClicked, this, &KScreenGenie::doGuiSaveAs);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
-    connect(mScreenGenieGUI, &KScreenGenieGUI::printRequest, this, &KScreenGenie::doPrint);
+    connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
+    connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KScreenGenie::doAutoSave);
+    connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KScreenGenie::doGuiSaveAs);
+    connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
+    connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
+    connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
+    connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
+    connect(mMainWindow, &KSMainWindow::printRequest, this, &KScreenGenie::doPrint);
 
     QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
 }
 
 KScreenGenie::~KScreenGenie()
 {
-    if (mScreenGenieGUI) {
-        delete mScreenGenieGUI;
+    if (mMainWindow) {
+        delete mMainWindow;
     }
 }
 
@@ -197,7 +197,7 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
         doTempSaveForKipi();
         qDebug() << "KipiSave";
 #endif
-        mScreenGenieGUI->setScreenshotAndShow(pixmap);
+        mMainWindow->setScreenshotAndShow(pixmap);
     }
 }
 
@@ -290,7 +290,7 @@ void KScreenGenie::doGuiSaveAs()
         }
     }
 
-    QFileDialog dialog(mScreenGenieGUI);
+    QFileDialog dialog(mMainWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
     dialog.setNameFilters(supportedFilters);
@@ -319,7 +319,7 @@ void KScreenGenie::doSendToService(KService::Ptr service)
     }
 
     tempFileList.append(tempFile);
-    KRun::runService(*service, tempFileList, mScreenGenieGUI, true);
+    KRun::runService(*service, tempFileList, mMainWindow, true);
 }
 
 void KScreenGenie::doSendToOpenWith()
@@ -334,7 +334,7 @@ void KScreenGenie::doSendToOpenWith()
     }
 
     tempFileList.append(tempFile);
-    KRun::displayOpenWithDialog(tempFileList, mScreenGenieGUI, true);
+    KRun::displayOpenWithDialog(tempFileList, mMainWindow, true);
 }
 
 void KScreenGenie::doSendToClipboard()
