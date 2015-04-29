@@ -86,6 +86,7 @@ KSWidget::KSWidget(QWidget *parent) :
     mWindowDecorations = new QCheckBox(this);
     mWindowDecorations->setText(i18n("Include window titlebar and borders"));
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
+    mWindowDecorations->setEnabled(false);
     connect(mWindowDecorations, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChangedHandler);
 
     mCaptureOptionsForm = new QVBoxLayout;
