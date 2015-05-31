@@ -339,26 +339,14 @@ void X11ImageGrabber::rectangleSelectionCancelled()
     emit imageGrabFailed();
 }
 
-void X11ImageGrabber::rectangleSelectionConfirmed(int x, int y, int width, int height)
+void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap)
 {
     QObject *sender = QObject::sender();
     sender->disconnect();
     sender->deleteLater();
 
-    grabGivenRectangularRegion(x, y, width, height);
-}
-
-bool X11ImageGrabber::liveModeAvailable()
-{
-    // if force non-live mode is set, return false
-
-    if (QProcessEnvironment::systemEnvironment().contains("KSCREENGENIE_FORCE_CROP_NONLIVE")) {
-        return false;
-    }
-
-    // if compositing is active, live mode is available, and the reverse
-
-    return KWindowSystem::compositingActive();
+    mPixmap = pixmap;
+    emit pixmapChanged(mPixmap);
 }
 
 // grabber methods
@@ -491,36 +479,8 @@ void X11ImageGrabber::grabCurrentScreen()
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    bool liveMode = liveModeAvailable();
-    CropScreenshotGrabber *grabber = new CropScreenshotGrabber(liveMode);
+    ScreenClipper *clipper = new ScreenClipper(getWindowPixmap(QX11Info::appRootWindow()));
 
-    connect(grabber, &CropScreenshotGrabber::selectionCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
-    connect(grabber, &CropScreenshotGrabber::selectionConfirmed, this, &X11ImageGrabber::rectangleSelectionConfirmed);
-
-    if (!(liveMode)) {
-        mPixmap = getWindowPixmap(QX11Info::appRootWindow());
-        grabber->init(mPixmap);
-        return;
-    }
-    grabber->init();
-}
-
-void X11ImageGrabber::grabGivenRectangularRegion(int x, int y, int width, int height)
-{
-    bool liveMode = liveModeAvailable();
-
-    if (liveMode) {
-        auto func = [this, x, y, width, height]() mutable { grabGivenRectangularRegionActual(x, y, width, height); };
-        QTimer::singleShot(200, func);
-        return;
-    }
-
-    mPixmap = mPixmap.copy(x, y, width, height);
-    emit pixmapChanged(mPixmap);
-}
-
-void X11ImageGrabber::grabGivenRectangularRegionActual(int x, int y, int width, int height)
-{
-    mPixmap = getWindowPixmap(QX11Info::appRootWindow()).copy(x, y, width, height);
-    emit pixmapChanged(mPixmap);
+    connect(clipper, &ScreenClipper::regionGrabbed, this, &X11ImageGrabber::rectangleSelectionConfirmed);
+    connect(clipper, &ScreenClipper::regionCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
 }

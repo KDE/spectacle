@@ -32,6 +32,8 @@
 #include <QPoint>
 #include <QFrame>
 #include <QAction>
+#include <QMetaObject>
+#include <QTimer>
 
 #include <KLocalizedString>
 #include <KSharedConfig>

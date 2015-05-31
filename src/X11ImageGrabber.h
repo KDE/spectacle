@@ -92,7 +92,7 @@ class X11ImageGrabber : public ImageGrabber
 
     void KWinDBusScreenshotHelper(quint64 window);
     void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
-    void rectangleSelectionConfirmed(int x, int y, int width, int height);
+    void rectangleSelectionConfirmed(const QPixmap &pixmap);
     void rectangleSelectionCancelled();
 
     public slots:
@@ -101,10 +101,7 @@ class X11ImageGrabber : public ImageGrabber
 
     private:
 
-    bool liveModeAvailable();
     bool KWinDBusScreenshotAvailable();
-    void grabGivenRectangularRegion(int x, int y, int width, int height);
-    void grabGivenRectangularRegionActual(int x, int y, int width, int height);
     QPixmap convertFromNative(xcb_image_t *xcbImage);
     QPixmap getWindowPixmap(xcb_window_t window);
 

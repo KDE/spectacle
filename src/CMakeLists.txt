@@ -10,13 +10,12 @@ set(
         ImageGrabber.cpp
         KScreenGenie.cpp
         KSGImageProvider.cpp
-        CropScreenshotGrabber.cpp
+        ScreenClipper.cpp
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
         Gui/KSSendToMenu.cpp
 )
-qt5_add_resources (KSG_SRCS_RESOURCES QmlResources/QmlResources.qrc)
 
 if(XCB_FOUND)
     set(
@@ -40,7 +39,6 @@ set(
         ${KSG_SRCS_DEFAULT}
         ${KSG_SRCS_KIPI}
         ${KSG_SRCS_X11}
-        ${KSG_SRCS_RESOURCES}
 )
 
 add_executable(

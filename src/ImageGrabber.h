@@ -26,7 +26,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 
-#include "CropScreenshotGrabber.h"
+#include "ScreenClipper.h"
 
 class ImageGrabber : public QObject
 {

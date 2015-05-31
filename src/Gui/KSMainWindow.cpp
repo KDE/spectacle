@@ -148,7 +148,7 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     mKSWidget->setScreenshotPixmap(pixmap);
 
     if (mSendToMenu->menu()->isEmpty()) {
-        mSendToMenu->populateMenu();
+        QTimer::singleShot(50, mSendToMenu, &KSSendToMenu::populateMenu);
     }
 }
 
