@@ -170,12 +170,12 @@ void KScreenGenie::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, b
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }
 
-void KScreenGenie::showErrorMessage(const QString err_string)
+void KScreenGenie::showErrorMessage(const QString errString)
 {
-    qDebug() << "ERROR: " << err_string;
+    qDebug() << "ERROR: " << errString;
 
     if (!mBackgroundMode) {
-        KMessageBox::error(0, err_string);
+        KMessageBox::error(0, errString);
     }
 }
 

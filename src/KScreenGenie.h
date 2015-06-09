@@ -84,7 +84,7 @@ class KScreenGenie : public QObject
 
     signals:
 
-    void errorMessage(const QString err_string);
+    void errorMessage(const QString errString);
     void allDone();
     void filenameChanged(QString filename);
     void grabModeChanged(ImageGrabber::GrabMode mode);
@@ -95,7 +95,7 @@ class KScreenGenie : public QObject
     public slots:
 
     void takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
-    void showErrorMessage(const QString err_string);
+    void showErrorMessage(const QString errString);
     void screenshotUpdated(const QPixmap pixmap);
     void screenshotFailed();
     void doStartDragAndDrop();

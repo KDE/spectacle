@@ -9,7 +9,6 @@ set(
         Main.cpp
         ImageGrabber.cpp
         KScreenGenie.cpp
-        KSGImageProvider.cpp
         ScreenClipper.cpp
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
