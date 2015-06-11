@@ -92,7 +92,7 @@ class X11ImageGrabber : public ImageGrabber
 
     void KWinDBusScreenshotHelper(quint64 window);
     void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
-    void rectangleSelectionConfirmed(const QPixmap &pixmap);
+    void rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region);
     void rectangleSelectionCancelled();
 
     public slots:

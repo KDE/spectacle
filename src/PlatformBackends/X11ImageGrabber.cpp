@@ -339,13 +339,16 @@ void X11ImageGrabber::rectangleSelectionCancelled()
     emit imageGrabFailed();
 }
 
-void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap)
+void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region)
 {
     QObject *sender = QObject::sender();
     sender->disconnect();
     sender->deleteLater();
 
     mPixmap = pixmap;
+    if (mCapturePointer) {
+        blendCursorImage(region.x(), region.y(), region.width(), region.height());
+    }
     emit pixmapChanged(mPixmap);
 }
 
