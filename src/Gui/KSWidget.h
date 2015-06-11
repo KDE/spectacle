@@ -36,7 +36,7 @@
 
 #include <KLocalizedString>
 
-#include "ImageGrabber.h"
+#include "PlatformBackends/ImageGrabber.h"
 #include "KSImageWidget.h"
 
 class KSWidget : public QWidget

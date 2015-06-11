@@ -43,7 +43,7 @@
 #include <KGuiItem>
 #include <KStandardGuiItem>
 
-#include "ImageGrabber.h"
+#include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
 #include "KSSendToMenu.h"
 

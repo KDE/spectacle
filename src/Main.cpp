@@ -9,7 +9,6 @@
 #include <KLocalizedString>
 
 #include "KSCore.h"
-#include "ImageGrabber.h"
 #include "Config.h"
 
 int main(int argc, char **argv)

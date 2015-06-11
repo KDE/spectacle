@@ -14,6 +14,10 @@ bool DummyImageGrabber::onClickGrabSupported() const
 
 void DummyImageGrabber::blendCursorImage(int x, int y, int width, int height)
 {
+    Q_UNUSED(x);
+    Q_UNUSED(y);
+    Q_UNUSED(width);
+    Q_UNUSED(height);
     return;
 }
 

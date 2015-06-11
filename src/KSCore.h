@@ -54,9 +54,9 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
-#include "ImageGrabber.h"
-#include "X11ImageGrabber.h"
-#include "DummyImageGrabber.h"
+#include "PlatformBackends/ImageGrabber.h"
+#include "PlatformBackends/X11ImageGrabber.h"
+#include "PlatformBackends/DummyImageGrabber.h"
 
 #include "Gui/KSMainWindow.h"
 #include "Config.h"

@@ -239,6 +239,7 @@ void KSCore::doAutoSave()
 void KSCore::doStartDragAndDrop()
 {
     QMimeData *mimeData = new QMimeData;
+    mimeData->setUrls(QList<QUrl> { getTempSaveFilename() });
     mimeData->setImageData(mLocalPixmap);
     mimeData->setData("application/x-kde-suggestedfilename", QFile::encodeName(makeTimestampFilename() + ".png"));
 

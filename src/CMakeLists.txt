@@ -7,10 +7,10 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 set(
     KSG_SRCS_DEFAULT
         Main.cpp
-        ImageGrabber.cpp
-        DummyImageGrabber.cpp
         KSCore.cpp
         ScreenClipper.cpp
+        PlatformBackends/ImageGrabber.cpp
+        PlatformBackends/DummyImageGrabber.cpp
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
@@ -20,7 +20,7 @@ set(
 if(XCB_FOUND)
     set(
         KSG_SRCS_X11
-            X11ImageGrabber.cpp
+            PlatformBackends/X11ImageGrabber.cpp
     )
 endif()
 

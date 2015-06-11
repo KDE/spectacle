@@ -35,6 +35,6 @@ bool    KSGKipiImageCollectionShared::isDirectory()    { return false; }
 QList<QUrl> KSGKipiImageCollectionShared::images()
 {
     QDir tempDir = QDir::temp();
-    QString tempFile = tempDir.absoluteFilePath("kscreengenie_kipi.png");
+    QString tempFile = tempDir.absoluteFilePath("KSTempScreenshot.png");
     return QList<QUrl>({ QUrl::fromLocalFile(tempFile) });
 }
