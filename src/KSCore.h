@@ -17,8 +17,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KSCREENGENIE_H
-#define KSCREENGENIE_H
+#ifndef KSCORE_H
+#define KSCORE_H
 
 #include <QUrl>
 #include <QFile>
@@ -56,10 +56,12 @@
 
 #include "ImageGrabber.h"
 #include "X11ImageGrabber.h"
+#include "DummyImageGrabber.h"
+
 #include "Gui/KSMainWindow.h"
 #include "Config.h"
 
-class KScreenGenie : public QObject
+class KSCore : public QObject
 {
     Q_OBJECT
 
@@ -70,8 +72,8 @@ class KScreenGenie : public QObject
 
     public:
 
-    explicit KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
-    ~KScreenGenie();
+    explicit KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
+    ~KSCore();
 
     QString filename() const;
     void setFilename(const QString &filename);
@@ -90,7 +92,7 @@ class KScreenGenie : public QObject
     void grabModeChanged(ImageGrabber::GrabMode mode);
     void overwriteOnSaveChanged(bool overwriteOnSave);
     void saveLocationChanged(QString savePath);
-    void imageSaved();
+    void imageSaved(QUrl location);
 
     public slots:
 
@@ -114,10 +116,11 @@ class KScreenGenie : public QObject
     bool writeImage(QIODevice *device, const QByteArray &format);
     bool localSave(const QUrl url, const QString mimetype);
     bool remoteSave(const QUrl url, const QString mimetype);
-    QUrl tempFileSave(const QString mimetype = "png");
+    bool tempFileSave();
+    QUrl tempFileSave(const QString mimetype);
     bool doSave(const QUrl url);
     bool isFileExists(const QUrl url);
-    void doTempSaveForKipi();
+    QUrl getTempSaveFilename() const;
 
     bool             mBackgroundMode;
     bool             mOverwriteOnSave;
@@ -129,4 +132,4 @@ class KScreenGenie : public QObject
     KSMainWindow    *mMainWindow;
 };
 
-#endif // KSCREENGENIE_H
+#endif // KSCORE_H

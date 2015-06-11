@@ -8,7 +8,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 
-#include "KScreenGenie.h"
+#include "KSCore.h"
 #include "ImageGrabber.h"
 #include "Config.h"
 
@@ -103,8 +103,8 @@ int main(int argc, char **argv)
 
     // release the kraken
 
-    KScreenGenie genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard);
-    QObject::connect(&genie, &KScreenGenie::allDone, qApp, &QApplication::quit);
+    KSCore genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard);
+    QObject::connect(&genie, &KSCore::allDone, qApp, &QApplication::quit);
 
     return app.exec();
 }

@@ -66,6 +66,10 @@ class KSMainWindow : public QWidget
     void showPrintDialog();
     void init();
 
+    public slots:
+
+    void setScreenshotWindowTitle(QUrl location);
+
     signals:
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);

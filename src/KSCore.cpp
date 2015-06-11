@@ -29,9 +29,9 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "KScreenGenie.h"
+#include "KSCore.h"
 
-KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent) :
+KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent) :
     QObject(parent),
     mBackgroundMode(backgroundMode),
     mOverwriteOnSave(true),
@@ -49,7 +49,12 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
         setFilename(saveFileName);
     }
 
-    mImageGrabber = new X11ImageGrabber();
+    if (qApp->platformName() == QStringLiteral("xcb")) {
+        mImageGrabber = new X11ImageGrabber;
+    } else {
+        mImageGrabber = new DummyImageGrabber;
+    }
+
     mImageGrabber->setGrabMode(grabMode);
     mImageGrabber->setCapturePointer(guiConfig.readEntry("includePointer", true));
     mImageGrabber->setCaptureDecorations(guiConfig.readEntry("includeDecorations", true));
@@ -58,9 +63,9 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
         delayMsec = 0;
     }
 
-    connect(this, &KScreenGenie::errorMessage, this, &KScreenGenie::showErrorMessage);
-    connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KScreenGenie::screenshotUpdated);
-    connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KScreenGenie::screenshotFailed);
+    connect(this, &KSCore::errorMessage, this, &KSCore::showErrorMessage);
+    connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KSCore::screenshotUpdated);
+    connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KSCore::screenshotFailed);
 
     if (backgroundMode) {
         int msec = (KWindowSystem::compositingActive() ? 200 : 50) + delayMsec;
@@ -73,19 +78,20 @@ KScreenGenie::KScreenGenie(bool backgroundMode, ImageGrabber::GrabMode grabMode,
 
     mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
 
-    connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KScreenGenie::takeNewScreenshot);
-    connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KScreenGenie::doAutoSave);
-    connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KScreenGenie::doGuiSaveAs);
-    connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KScreenGenie::doSendToService);
-    connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KScreenGenie::doSendToOpenWith);
-    connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KScreenGenie::doSendToClipboard);
-    connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KScreenGenie::doStartDragAndDrop);
-    connect(mMainWindow, &KSMainWindow::printRequest, this, &KScreenGenie::doPrint);
+    connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KSCore::takeNewScreenshot);
+    connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KSCore::doAutoSave);
+    connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KSCore::doGuiSaveAs);
+    connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KSCore::doSendToService);
+    connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KSCore::doSendToOpenWith);
+    connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KSCore::doSendToClipboard);
+    connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KSCore::doStartDragAndDrop);
+    connect(mMainWindow, &KSMainWindow::printRequest, this, &KSCore::doPrint);
 
+    connect(this, &KSCore::imageSaved, mMainWindow, &KSMainWindow::setScreenshotWindowTitle);
     QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
 }
 
-KScreenGenie::~KScreenGenie()
+KSCore::~KSCore()
 {
     if (mMainWindow) {
         delete mMainWindow;
@@ -94,38 +100,38 @@ KScreenGenie::~KScreenGenie()
 
 // Q_PROPERTY stuff
 
-QString KScreenGenie::filename() const
+QString KSCore::filename() const
 {
     return mFileNameString;
 }
 
-void KScreenGenie::setFilename(const QString &filename)
+void KSCore::setFilename(const QString &filename)
 {
     mFileNameString = filename;
     mFileNameUrl = QUrl::fromUserInput(filename);
 }
 
-ImageGrabber::GrabMode KScreenGenie::grabMode() const
+ImageGrabber::GrabMode KSCore::grabMode() const
 {
     return mImageGrabber->grabMode();
 }
 
-void KScreenGenie::setGrabMode(const ImageGrabber::GrabMode grabMode)
+void KSCore::setGrabMode(const ImageGrabber::GrabMode grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
 }
 
-bool KScreenGenie::overwriteOnSave() const
+bool KSCore::overwriteOnSave() const
 {
     return mOverwriteOnSave;
 }
 
-void KScreenGenie::setOverwriteOnSave(const bool overwrite)
+void KSCore::setOverwriteOnSave(const bool overwrite)
 {
     mOverwriteOnSave = overwrite;
 }
 
-QString KScreenGenie::saveLocation() const
+QString KSCore::saveLocation() const
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
@@ -145,7 +151,7 @@ QString KScreenGenie::saveLocation() const
     return savePath;
 }
 
-void KScreenGenie::setSaveLocation(const QString &savePath)
+void KSCore::setSaveLocation(const QString &savePath)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
@@ -155,7 +161,7 @@ void KScreenGenie::setSaveLocation(const QString &savePath)
 
 // Slots
 
-void KScreenGenie::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
+void KSCore::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
 {
     mImageGrabber->setGrabMode(mode);
     mImageGrabber->setCapturePointer(includePointer);
@@ -170,7 +176,7 @@ void KScreenGenie::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, b
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }
 
-void KScreenGenie::showErrorMessage(const QString errString)
+void KSCore::showErrorMessage(const QString errString)
 {
     qDebug() << "ERROR: " << errString;
 
@@ -179,7 +185,7 @@ void KScreenGenie::showErrorMessage(const QString errString)
     }
 }
 
-void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
+void KSCore::screenshotUpdated(const QPixmap pixmap)
 {
     mLocalPixmap = pixmap;
 
@@ -193,15 +199,12 @@ void KScreenGenie::screenshotUpdated(const QPixmap pixmap)
         emit allDone();
         return;
     } else {
-#ifdef KIPI_FOUND
-        doTempSaveForKipi();
-        qDebug() << "KipiSave";
-#endif
         mMainWindow->setScreenshotAndShow(pixmap);
+        tempFileSave();
     }
 }
 
-void KScreenGenie::screenshotFailed()
+void KSCore::screenshotFailed()
 {
     if (mBackgroundMode) {
         qDebug() << i18n("Screenshot capture canceled or failed");
@@ -211,7 +214,7 @@ void KScreenGenie::screenshotFailed()
     screenshotUpdated(QPixmap());
 }
 
-void KScreenGenie::doAutoSave()
+void KSCore::doAutoSave()
 {
     if (mLocalPixmap.isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
@@ -233,7 +236,7 @@ void KScreenGenie::doAutoSave()
     }
 }
 
-void KScreenGenie::doStartDragAndDrop()
+void KSCore::doStartDragAndDrop()
 {
     QMimeData *mimeData = new QMimeData;
     mimeData->setImageData(mLocalPixmap);
@@ -246,7 +249,7 @@ void KScreenGenie::doStartDragAndDrop()
     dragHandler->deleteLater();
 }
 
-void KScreenGenie::doPrint(QPrinter *printer)
+void KSCore::doPrint(QPrinter *printer)
 {
     QPainter painter;
 
@@ -268,7 +271,7 @@ void KScreenGenie::doPrint(QPrinter *printer)
     return;
 }
 
-void KScreenGenie::doGuiSaveAs()
+void KSCore::doGuiSaveAs()
 {
     QString selectedFilter;
     QStringList supportedFilters;
@@ -301,18 +304,18 @@ void KScreenGenie::doGuiSaveAs()
         const QUrl saveUrl = dialog.selectedUrls().first();
         if (saveUrl.isValid()) {
             if (doSave(saveUrl)) {
-                emit imageSaved();
+                emit imageSaved(saveUrl);
             }
         }
     }
 }
 
-void KScreenGenie::doSendToService(KService::Ptr service)
+void KSCore::doSendToService(KService::Ptr service)
 {
     QUrl tempFile;
     QList<QUrl> tempFileList;
 
-    tempFile = tempFileSave();
+    tempFile = getTempSaveFilename();
     if (!tempFile.isValid()) {
         emit errorMessage(i18n("Cannot send screenshot to the application"));
         return;
@@ -322,12 +325,12 @@ void KScreenGenie::doSendToService(KService::Ptr service)
     KRun::runService(*service, tempFileList, mMainWindow, true);
 }
 
-void KScreenGenie::doSendToOpenWith()
+void KSCore::doSendToOpenWith()
 {
     QUrl tempFile;
     QList<QUrl> tempFileList;
 
-    tempFile = tempFileSave();
+    tempFile = getTempSaveFilename();
     if (!tempFile.isValid()) {
         emit errorMessage(i18n("Cannot send screenshot to the application"));
         return;
@@ -337,14 +340,14 @@ void KScreenGenie::doSendToOpenWith()
     KRun::displayOpenWithDialog(tempFileList, mMainWindow, true);
 }
 
-void KScreenGenie::doSendToClipboard()
+void KSCore::doSendToClipboard()
 {
     QApplication::clipboard()->setPixmap(mLocalPixmap);
 }
 
 // Private
 
-QUrl KScreenGenie::getAutoSaveFilename()
+QUrl KSCore::getAutoSaveFilename()
 {
     QString baseDir = saveLocation();
     QDir baseDirPath(baseDir);
@@ -359,7 +362,7 @@ QUrl KScreenGenie::getAutoSaveFilename()
     }
 }
 
-QString KScreenGenie::makeTimestampFilename()
+QString KSCore::makeTimestampFilename()
 {
     QString baseTime = QDateTime::currentDateTime().toString(QStringLiteral("yyyyMMdd_hhmmss"));
     QString baseName("Screenshot_");
@@ -367,7 +370,7 @@ QString KScreenGenie::makeTimestampFilename()
     return (baseName + baseTime);
 }
 
-QString KScreenGenie::makeSaveMimetype(const QUrl url)
+QString KSCore::makeSaveMimetype(const QUrl url)
 {
     QMimeDatabase mimedb;
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
@@ -378,7 +381,7 @@ QString KScreenGenie::makeSaveMimetype(const QUrl url)
     return type;
 }
 
-bool KScreenGenie::writeImage(QIODevice *device, const QByteArray &format)
+bool KSCore::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
     if (!(imageWriter.canWrite())) {
@@ -389,7 +392,7 @@ bool KScreenGenie::writeImage(QIODevice *device, const QByteArray &format)
     return imageWriter.write(mLocalPixmap.toImage());
 }
 
-bool KScreenGenie::localSave(const QUrl url, const QString mimetype)
+bool KSCore::localSave(const QUrl url, const QString mimetype)
 {
     QFile outputFile(url.toLocalFile());
 
@@ -401,7 +404,7 @@ bool KScreenGenie::localSave(const QUrl url, const QString mimetype)
     return true;
 }
 
-bool KScreenGenie::remoteSave(const QUrl url, const QString mimetype)
+bool KSCore::remoteSave(const QUrl url, const QString mimetype)
 {
     QTemporaryFile tmpFile;
 
@@ -424,7 +427,21 @@ bool KScreenGenie::remoteSave(const QUrl url, const QString mimetype)
     return false;
 }
 
-QUrl KScreenGenie::tempFileSave(const QString mimetype)
+QUrl KSCore::getTempSaveFilename() const
+{
+    QDir tempDir = QDir::temp();
+    return QUrl::fromLocalFile(tempDir.absoluteFilePath("KSTempScreenshot.png"));
+}
+
+bool KSCore::tempFileSave()
+{
+    if (!(mLocalPixmap.isNull())) {
+        return localSave(getTempSaveFilename(), "png");
+    }
+    return false;
+}
+
+QUrl KSCore::tempFileSave(const QString mimetype)
 {
     QTemporaryFile tmpFile;
     tmpFile.setAutoRemove(false);
@@ -440,7 +457,7 @@ QUrl KScreenGenie::tempFileSave(const QString mimetype)
     return QUrl();
 }
 
-bool KScreenGenie::doSave(const QUrl url)
+bool KSCore::doSave(const QUrl url)
 {
     if (!(url.isValid())) {
         emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
@@ -459,7 +476,7 @@ bool KScreenGenie::doSave(const QUrl url)
     return remoteSave(url, mimetype);
 }
 
-bool KScreenGenie::isFileExists(const QUrl url)
+bool KSCore::isFileExists(const QUrl url)
 {
     if (!(url.isValid())) {
         return false;
@@ -470,17 +487,3 @@ bool KScreenGenie::isFileExists(const QUrl url)
 
     return (existsJob->error() == KJob::NoError);
 }
-
-// For Kipi
-
-#ifdef KIPI_FOUND
-void KScreenGenie::doTempSaveForKipi()
-{
-    if (!(mLocalPixmap.isNull())) {
-        QDir tempDir = QDir::temp();
-        QString tempFile = tempDir.absoluteFilePath("kscreengenie_kipi.png");
-
-        localSave(QUrl::fromLocalFile(tempFile), "png");
-    }
-}
-#endif

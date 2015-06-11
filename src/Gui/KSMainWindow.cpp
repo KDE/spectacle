@@ -42,7 +42,7 @@ void KSMainWindow::init()
 
     // window properties
 
-    setWindowTitle(i18nc("Untitled Screenshot", "Untitled"));
+    setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved"));
     setFixedSize(800, 370);
 
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
@@ -161,6 +161,11 @@ void KSMainWindow::showPrintDialog()
         return;
     }
     delete printer;
+}
+
+void KSMainWindow::setScreenshotWindowTitle(QUrl location)
+{
+    setWindowTitle(location.fileName());
 }
 
 void KSMainWindow::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick)

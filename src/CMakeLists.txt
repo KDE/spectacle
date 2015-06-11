@@ -8,7 +8,8 @@ set(
     KSG_SRCS_DEFAULT
         Main.cpp
         ImageGrabber.cpp
-        KScreenGenie.cpp
+        DummyImageGrabber.cpp
+        KSCore.cpp
         ScreenClipper.cpp
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp

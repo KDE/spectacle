@@ -78,15 +78,15 @@ class X11ImageGrabber : public ImageGrabber
     explicit X11ImageGrabber(QObject * parent = 0);
     ~X11ImageGrabber();
 
-    bool onClickGrabSupported() const;
+    bool onClickGrabSupported() const Q_DECL_OVERRIDE;
 
     protected:
 
-    void blendCursorImage(int x, int y, int width, int height);
-    void grabFullScreen();
-    void grabCurrentScreen();
-    void grabActiveWindow();
-    void grabRectangularRegion();
+    void blendCursorImage(int x, int y, int width, int height) Q_DECL_OVERRIDE;
+    void grabFullScreen() Q_DECL_OVERRIDE;
+    void grabCurrentScreen() Q_DECL_OVERRIDE;
+    void grabActiveWindow() Q_DECL_OVERRIDE;
+    void grabRectangularRegion() Q_DECL_OVERRIDE;
 
     private slots:
 
