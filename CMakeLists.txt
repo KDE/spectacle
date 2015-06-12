@@ -54,6 +54,7 @@ find_package(
         XmlGui
         WidgetsAddons
         WindowSystem
+        DocTools
 )
 
 # optional components
