@@ -68,7 +68,7 @@
 				<para>In the application launcher menu, &kscreengenie; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &kscreengenie;</guimenuitem></menuchoice></para>
 			</listitem>
 			<listitem>
-				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &kscreengenie;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Alt;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default Pictures folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in youre default Pictures folder without showing the GUI.</para>
+				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &kscreengenie;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Alt;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default Pictures folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI.</para>
 			</listitem>
 			<listitem>
 				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &kscreengenie;.</para>
@@ -130,7 +130,7 @@
 						<para>The <guilabel>Full Screen (All Monitors)</guilabel> option takes a screenshot of your entire desktop, spread across all the outputs, including all the monitors, projectors etc.</para>
 					</listitem>
 					<listitem>
-						<para>The <guilabel>Current Screen</guilabel> option takes a screenshot of the output that currently contains the mouse curosr.</para>
+						<para>The <guilabel>Current Screen</guilabel> option takes a screenshot of the output that currently contains the mouse pointer.</para>
 					</listitem>
 					<listitem>
 						<para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
@@ -142,7 +142,7 @@
 					</listitem>
 				</itemizedlist>
 
-				<para>The <guilabel>Capture Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 miliseconds.</para>
+				<para>The <guilabel>Capture Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 milliseconds.</para>
 
 				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &kscreengenie; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
 			</sect2>
