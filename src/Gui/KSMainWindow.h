@@ -28,6 +28,7 @@
 #include <QMouseEvent>
 #include <QMoveEvent>
 #include <QPushButton>
+#include <QKeySequence>
 #include <QDialogButtonBox>
 #include <QPoint>
 #include <QFrame>

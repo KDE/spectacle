@@ -70,15 +70,26 @@ void KSMainWindow::init()
     KGuiItem::assign(mPrintButton, KStandardGuiItem::print());
     connect(mPrintButton, &QPushButton::clicked, this, &KSMainWindow::showPrintDialog);
     mDialogButtonBox->addButton(mPrintButton, QDialogButtonBox::ActionRole);
+    mPrintButton->setShortcut(QKeySequence(QKeySequence::Print));
 
     connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
     connect(mDialogButtonBox->button(QDialogButtonBox::Save), &QPushButton::clicked, this, &KSMainWindow::saveAsClicked);
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Save), KStandardGuiItem::saveAs());
+    mDialogButtonBox->button(QDialogButtonBox::Save)->setShortcut(QKeySequence(QKeySequence::Save));
 
     connect(mDialogButtonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &KSMainWindow::saveAndExit);
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Apply), KStandardGuiItem::save());
     mDialogButtonBox->button(QDialogButtonBox::Apply)->setText(i18n("Save && Exit"));
     mDialogButtonBox->button(QDialogButtonBox::Apply)->setToolTip(i18n("Quicksave screenshot in your Pictures directory and exit"));
+
+    QShortcut *shortcut = new QShortcut(QKeySequence(QKeySequence::Quit), mDialogButtonBox->button(QDialogButtonBox::Apply));
+    auto clickFunc = [&]() {
+        mDialogButtonBox->button(QDialogButtonBox::Apply)->animateClick();
+        QTimer::singleShot(100, mDialogButtonBox->button(QDialogButtonBox::Apply), &QPushButton::click);
+    };
+    connect(shortcut, &QShortcut::activated, clickFunc);
+
+    mDialogButtonBox->button(QDialogButtonBox::Discard)->setShortcut(QKeySequence(Qt::Key_Escape));
 
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());

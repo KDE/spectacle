@@ -28,6 +28,9 @@
 #include <QLabel>
 #include <QFont>
 #include <QPushButton>
+#include <QKeySequence>
+#include <QShortcut>
+#include <QTimer>
 #include <QCheckBox>
 #include <QDoubleSpinBox>
 #include <QComboBox>

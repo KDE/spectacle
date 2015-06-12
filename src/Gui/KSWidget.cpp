@@ -104,6 +104,13 @@ KSWidget::KSWidget(QWidget *parent) :
     mTakeScreenshotButton->setFocus();
     connect(mTakeScreenshotButton, &QPushButton::clicked, this, &KSWidget::newScreenshotClicked);
 
+    QShortcut *shortcut = new QShortcut(QKeySequence(QKeySequence::New), mTakeScreenshotButton);
+    auto clickFunc = [&]() {
+        mTakeScreenshotButton->animateClick(100);
+        QTimer::singleShot(100, mTakeScreenshotButton, &QPushButton::click);
+    };
+    connect(shortcut, &QShortcut::activated, clickFunc);
+
     // finally, finish up the layouts
 
     mRightLayout = new QVBoxLayout;
