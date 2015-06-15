@@ -31,9 +31,10 @@
 
 #include "KSCore.h"
 
-KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent) :
+KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
     mBackgroundMode(backgroundMode),
+    mNotify(notifyOnGrab),
     mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
     mLocalPixmap(QPixmap()),
@@ -172,6 +173,12 @@ void KSCore::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool in
         return;
     }
 
+    // when compositing is enabled, we need to give it enough time for the window
+    // to disappear and all the effects are complete before we take the shot. there's
+    // no way of knowing how long the disappearing effects take, but as per default
+    // settings (and unless the user has set an extremely slow effect), 200
+    // milliseconds is a good amount of wait time.
+
     const int msec = KWindowSystem::compositingActive() ? 200 : 50;
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }
@@ -196,8 +203,6 @@ void KSCore::screenshotUpdated(const QPixmap pixmap)
         } else {
             doAutoSave();
         }
-        emit allDone();
-        return;
     } else {
         mMainWindow->setScreenshotAndShow(pixmap);
         tempFileSave();
@@ -230,8 +235,27 @@ void KSCore::doAutoSave()
     }
 
     if (doSave(savePath)) {
-        setSaveLocation(saveLocation());
-        emit allDone();
+        QDir dir(savePath.path());
+        dir.cdUp();
+        setSaveLocation(dir.absolutePath());
+        qDebug() << dir.absolutePath();
+
+        if (mBackgroundMode && mNotify) {
+            KNotification *notify = new KNotification("newScreenshotSaved");
+
+            notify->setText(i18n("A new screenshot was captured and saved to %1", savePath.toLocalFile()));
+            notify->setPixmap(QIcon::fromTheme("ksnapshot").pixmap(QSize(32, 32)));
+            notify->sendEvent();
+
+            // unfortunately we can't quit just yet, emitting allDone right away
+            // quits the application before the notification DBus message gets sent.
+            // a token timeout seems to fix this though. Any better ideas?
+
+            QTimer::singleShot(50, this, &KSCore::allDone);
+        } else {
+            emit allDone();
+        }
+
         return;
     }
 }

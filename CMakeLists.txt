@@ -47,7 +47,7 @@ find_package(
 find_package(
     KF5 ${KF5_MIN_VERSION} REQUIRED
         CoreAddons
-        Declarative
+        Notifications
         Config
         I18n
         KIO

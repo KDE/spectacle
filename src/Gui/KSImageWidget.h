@@ -20,6 +20,8 @@
 #ifndef KSIMAGEWIDGET_H
 #define KSIMAGEWIDGET_H
 
+#include <QGuiApplication>
+#include <QStyleHints>
 #include <QLabel>
 #include <QColor>
 #include <QMouseEvent>

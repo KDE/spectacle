@@ -49,6 +49,7 @@ int main(int argc, char **argv)
         {{"a", "activewindow"}, i18n("Capture the active window")},
         {{"r", "region"},       i18n("Capture a rectangular region of the screen")},
         {{"b", "background"},   i18n("Take a screenshot and exit without showing the GUI")},
+        {{"n", "notify"},       i18n("In background mode, pop up a notification when the screenshot is taken")},
         {{"c", "clipboard"},    i18n("In background mode, send image to clipboard without saving to file")},
         {{"o", "output"},       i18n("In background mode, save image to specified file"), "fileName"},
         {{"d", "delay"},        i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
@@ -73,11 +74,17 @@ int main(int argc, char **argv)
 
     bool backgroundMode = false;
     bool sendToClipboard = false;
+    bool notify = false;
     qint64 delayMsec = 0;
     QString fileName = QString();
 
     if (parser.isSet("background")) {
         backgroundMode = true;
+        app.setQuitOnLastWindowClosed(false);
+
+        if (parser.isSet("notify")) {
+            notify = true;
+        }
 
         if (parser.isSet("output")) {
             fileName = parser.value("output");
@@ -102,7 +109,7 @@ int main(int argc, char **argv)
 
     // release the kraken
 
-    KSCore genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard);
+    KSCore genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
     QObject::connect(&genie, &KSCore::allDone, qApp, &QApplication::quit);
 
     return app.exec();

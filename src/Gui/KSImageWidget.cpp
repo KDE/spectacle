@@ -62,7 +62,7 @@ void KSImageWidget::mouseMoveEvent(QMouseEvent *event)
         return;
     }
 
-    if ((event->pos() - mDragStartPosition).manhattanLength() < 10) {
+    if ((event->pos() - mDragStartPosition).manhattanLength() < QGuiApplication::styleHints()->startDragDistance()) {
         return;
     }
 

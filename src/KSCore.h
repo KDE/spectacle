@@ -35,6 +35,7 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QRect>
+#include <QIcon>
 #include <QDir>
 #include <QDrag>
 #include <QMimeData>
@@ -51,6 +52,7 @@
 #include <KSharedConfig>
 #include <KWindowSystem>
 #include <KMessageBox>
+#include <KNotification>
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
@@ -72,7 +74,7 @@ class KSCore : public QObject
 
     public:
 
-    explicit KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, QObject *parent = 0);
+    explicit KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent = 0);
     ~KSCore();
 
     QString filename() const;
@@ -123,6 +125,7 @@ class KSCore : public QObject
     QUrl getTempSaveFilename() const;
 
     bool             mBackgroundMode;
+    bool             mNotify;
     bool             mOverwriteOnSave;
     bool             mBackgroundSendToClipboard;
     QPixmap          mLocalPixmap;
