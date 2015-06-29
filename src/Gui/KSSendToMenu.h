@@ -29,10 +29,12 @@
 #include <QPair>
 #include <QVariant>
 #include <QDebug>
+#include <QIcon>
 
 #include <KLocalizedString>
 #include <KService>
 #include <KMimeTypeTrader>
+#include <KStandardShortcut>
 
 #include "Config.h"
 
@@ -71,7 +73,6 @@ class KSSendToMenu : public QObject
 
     private:
 
-    void populateHardcodedSendToActions();
     void populateKServiceSendToActions();
 #ifdef KIPI_FOUND
     void populateKipiSendToActions();

@@ -20,7 +20,8 @@
 #include "KSImageWidget.h"
 
 KSImageWidget::KSImageWidget(QWidget *parent):
-    QLabel(parent)
+    QLabel(parent),
+    mPixmap(QPixmap())
 {
     mDSEffect = new QGraphicsDropShadowEffect(this);
 
@@ -35,8 +36,8 @@ KSImageWidget::KSImageWidget(QWidget *parent):
 
 void KSImageWidget::setScreenshot(const QPixmap &pixmap)
 {
-    QPixmap pix = pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    setPixmap(pix);
+    mPixmap = pixmap;
+    setPixmap(mPixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
 // drag handlers
@@ -68,5 +69,13 @@ void KSImageWidget::mouseMoveEvent(QMouseEvent *event)
 
     setCursor(Qt::OpenHandCursor);
     emit dragInitiated();
+}
+
+// resize handler
+
+void KSImageWidget::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    setPixmap(mPixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 

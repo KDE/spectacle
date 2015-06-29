@@ -25,6 +25,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSendToButton(nullptr),
     mPrintButton(nullptr),
     mSendToMenu(new KSSendToMenu),
+    mActionCollection(new KActionCollection(this, "KSStandardActions")),
     mOnClickAvailable(onClickAvailable)
 {
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
@@ -43,10 +44,20 @@ void KSMainWindow::init()
     // window properties
 
     setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved"));
-    setFixedSize(800, 370);
+    setMinimumSize(800, 370);
+    resize(minimumSize());
 
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
     move(location);
+
+    // the actions
+
+    QAction *copyAction = KStandardAction::copy(this);
+    connect(copyAction, &QAction::triggered, this, &KSMainWindow::sendToClipboardRequest);
+
+    QAction *printAction = new QAction(this);
+    printAction->setShortcuts(KStandardShortcut::print());
+    connect(printAction, &QAction::triggered, this, &KSMainWindow::showPrintDialog);
 
     // the KSGWidget
 
@@ -63,14 +74,15 @@ void KSMainWindow::init()
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard | QDialogButtonBox::Apply | QDialogButtonBox::Save);
 
     mSendToButton = new QPushButton;
-    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Send To...")));
+    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Open With...")));
+    mSendToButton->setIcon(QIcon::fromTheme("application-x-executable"));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
     mPrintButton = new QPushButton;
     KGuiItem::assign(mPrintButton, KStandardGuiItem::print());
-    connect(mPrintButton, &QPushButton::clicked, this, &KSMainWindow::showPrintDialog);
+    connect(mPrintButton, &QPushButton::clicked, printAction, &QAction::trigger);
     mDialogButtonBox->addButton(mPrintButton, QDialogButtonBox::ActionRole);
-    mPrintButton->setShortcut(QKeySequence(QKeySequence::Print));
+    //mPrintButton->setShortcut(QKeySequence(QKeySequence::Print));
 
     connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
     connect(mDialogButtonBox->button(QDialogButtonBox::Save), &QPushButton::clicked, this, &KSMainWindow::saveAsClicked);
@@ -93,6 +105,11 @@ void KSMainWindow::init()
 
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
+
+    // copy-to-clipboard shortcut
+
+    //QShortcut *copyShortcut = new QShortcut(QKeySequence(QKeySequence::Copy), this);
+    //connect(copyShortcut, &QShortcut::activated, this, &KSMainWindow::sendToClipboardRequest);
 
     // layouts
 
@@ -177,6 +194,7 @@ void KSMainWindow::showPrintDialog()
 void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 {
     setWindowTitle(location.fileName());
+    KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::quit());
 }
 
 void KSMainWindow::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick)

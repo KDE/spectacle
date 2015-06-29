@@ -44,13 +44,15 @@ class KSImageWidget : public QLabel
 
     protected:
 
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event)   Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *event)    Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event)      Q_DECL_OVERRIDE;
 
     private:
 
     QGraphicsDropShadowEffect *mDSEffect;
+    QPixmap                    mPixmap;
     QPoint                     mDragStartPosition;
 };
 

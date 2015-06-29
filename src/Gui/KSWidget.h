@@ -77,7 +77,7 @@ class KSWidget : public QWidget
     QHBoxLayout    *mDelayLayout;
     QVBoxLayout    *mRightLayout;
     QFormLayout    *mCaptureModeForm;
-    QVBoxLayout    *mCaptureOptionsForm;
+    QVBoxLayout    *mContentOptionsForm;
     KSImageWidget  *mImageWidget;
     QPushButton    *mTakeScreenshotButton;
     QComboBox      *mCaptureArea;
@@ -86,7 +86,7 @@ class KSWidget : public QWidget
     QCheckBox      *mMousePointer;
     QCheckBox      *mWindowDecorations;
     QLabel         *mCaptureModeLabel;
-    QLabel         *mCaptureOptionsLabel;
+    QLabel         *mContentOptionsLabel;
 };
 
 #endif // KSWIDGET_H

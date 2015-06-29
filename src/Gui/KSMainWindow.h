@@ -43,6 +43,8 @@
 #include <KHelpMenu>
 #include <KGuiItem>
 #include <KStandardGuiItem>
+#include <KActionCollection>
+#include <KStandardAction>
 
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
@@ -88,13 +90,14 @@ class KSMainWindow : public QWidget
 
     private:
 
-    KSWidget         *mKSWidget;
-    QFrame           *mDivider;
-    QDialogButtonBox *mDialogButtonBox;
-    QPushButton      *mSendToButton;
-    QPushButton      *mPrintButton;
-    KSSendToMenu     *mSendToMenu;
-    bool              mOnClickAvailable;
+    KSWidget          *mKSWidget;
+    QFrame            *mDivider;
+    QDialogButtonBox  *mDialogButtonBox;
+    QPushButton       *mSendToButton;
+    QPushButton       *mPrintButton;
+    KSSendToMenu      *mSendToMenu;
+    KActionCollection *mActionCollection;
+    bool               mOnClickAvailable;
 };
 
 #endif // KSMAINWINDOW_H

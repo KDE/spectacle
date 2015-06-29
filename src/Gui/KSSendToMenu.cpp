@@ -35,13 +35,20 @@ KSSendToMenu::~KSSendToMenu()
 
 void KSSendToMenu::populateMenu()
 {
-    populateHardcodedSendToActions();
-    mMenu->addSeparator();
     populateKServiceSendToActions();
 #ifdef KIPI_FOUND
     mMenu->addSeparator();
     populateKipiSendToActions();
 #endif
+    mMenu->addSeparator();
+
+    QAction *sendToAction = new QAction(this);
+    sendToAction->setText(i18n("Other Application"));
+    sendToAction->setIcon(QIcon::fromTheme("application-x-executable"));
+    sendToAction->setShortcuts(KStandardShortcut::open());
+
+    connect(sendToAction, &QAction::triggered, this, &KSSendToMenu::sendToOpenWithRequest);
+    mMenu->addAction(sendToAction);
 }
 
 // return menu
@@ -66,12 +73,6 @@ void KSSendToMenu::handleSendToKService()
 }
 
 // populators
-
-void KSSendToMenu::populateHardcodedSendToActions()
-{
-    mMenu->addAction(QIcon::fromTheme("edit-copy"), i18n("Copy To Clipboard"), this, SIGNAL(sendToClipboardRequest()));
-    mMenu->addAction(i18n("Other Application"), this, SIGNAL(sendToOpenWithRequest()));
-}
 
 void KSSendToMenu::populateKServiceSendToActions()
 {
