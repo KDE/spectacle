@@ -14,6 +14,7 @@ set(
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
+        Gui/KSSaveConfigDialog.cpp
         Gui/KSSendToMenu.cpp
 )
 

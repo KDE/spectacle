@@ -117,7 +117,7 @@ ImageGrabber::GrabMode KSCore::grabMode() const
     return mImageGrabber->grabMode();
 }
 
-void KSCore::setGrabMode(const ImageGrabber::GrabMode grabMode)
+void KSCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
 }
@@ -127,7 +127,7 @@ bool KSCore::overwriteOnSave() const
     return mOverwriteOnSave;
 }
 
-void KSCore::setOverwriteOnSave(const bool overwrite)
+void KSCore::setOverwriteOnSave(const bool &overwrite)
 {
     mOverwriteOnSave = overwrite;
 }
@@ -138,7 +138,7 @@ QString KSCore::saveLocation() const
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     QString savePath = generalConfig.readPathEntry(
-                "last-saved-to", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+                "default-save-location", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
     if (savePath.isEmpty() || savePath.isNull()) {
         savePath = QDir::homePath();
     }
@@ -147,6 +147,7 @@ QString KSCore::saveLocation() const
     QDir savePathDir(savePath);
     if (!(savePathDir.exists())) {
         savePathDir.mkpath(".");
+        generalConfig.writePathEntry("last-saved-to", savePath);
     }
 
     return savePath;
@@ -162,7 +163,7 @@ void KSCore::setSaveLocation(const QString &savePath)
 
 // Slots
 
-void KSCore::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
+void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode, const int &timeout, const bool &includePointer, const bool &includeDecorations)
 {
     mImageGrabber->setGrabMode(mode);
     mImageGrabber->setCapturePointer(includePointer);
@@ -183,7 +184,7 @@ void KSCore::takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool in
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }
 
-void KSCore::showErrorMessage(const QString errString)
+void KSCore::showErrorMessage(const QString &errString)
 {
     qDebug() << "ERROR: " << errString;
 
@@ -192,7 +193,7 @@ void KSCore::showErrorMessage(const QString errString)
     }
 }
 
-void KSCore::screenshotUpdated(const QPixmap pixmap)
+void KSCore::screenshotUpdated(const QPixmap &pixmap)
 {
     mLocalPixmap = pixmap;
 
@@ -231,14 +232,13 @@ void KSCore::doAutoSave()
     if (mBackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
         savePath = mFileNameUrl;
     } else {
-        savePath = getAutoSaveFilename();
+        savePath = getAutosaveFilename();
     }
 
     if (doSave(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
         setSaveLocation(dir.absolutePath());
-        qDebug() << dir.absolutePath();
 
         if (mBackgroundMode && mNotify) {
             KNotification *notify = new KNotification("newScreenshotSaved");
@@ -265,7 +265,7 @@ void KSCore::doStartDragAndDrop()
     QMimeData *mimeData = new QMimeData;
     mimeData->setUrls(QList<QUrl> { getTempSaveFilename() });
     mimeData->setImageData(mLocalPixmap);
-    mimeData->setData("application/x-kde-suggestedfilename", QFile::encodeName(makeTimestampFilename() + ".png"));
+    mimeData->setData("application/x-kde-suggestedfilename", QFile::encodeName(makeAutosaveFilename() + ".png"));
 
     QDrag *dragHandler = new QDrag(this);
     dragHandler->setMimeData(mimeData);
@@ -302,7 +302,7 @@ void KSCore::doGuiSaveAs()
     QStringList supportedFilters;
     QMimeDatabase db;
 
-    const QUrl autoSavePath = getAutoSaveFilename();
+    const QUrl autoSavePath = getAutosaveFilename();
     const QMimeType mimeTypeForFilename = db.mimeTypeForUrl(autoSavePath);
 
     for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
@@ -372,14 +372,14 @@ void KSCore::doSendToClipboard()
 
 // Private
 
-QUrl KSCore::getAutoSaveFilename()
+QUrl KSCore::getAutosaveFilename()
 {
-    QString baseDir = saveLocation();
-    QDir baseDirPath(baseDir);
-    QString filename = makeTimestampFilename() + ".png";
-    QString fullpath = baseDirPath.filePath(filename);
+    const QString baseDir = saveLocation();
+    const QDir baseDirPath(baseDir);
+    const QString filename = makeAutosaveFilename();
+    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), "png");
 
-    QUrl fileNameUrl = QUrl::fromLocalFile(fullpath);
+    const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
         return fileNameUrl;
     } else {
@@ -387,15 +387,43 @@ QUrl KSCore::getAutoSaveFilename()
     }
 }
 
-QString KSCore::makeTimestampFilename()
+QString KSCore::makeAutosaveFilename()
 {
-    QString baseTime = QDateTime::currentDateTime().toString(QStringLiteral("yyyyMMdd_hhmmss"));
-    QString baseName("Screenshot_");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KConfigGroup generalConfig = KConfigGroup(config, "General");
 
-    return (baseName + baseTime);
+    const QDateTime timestamp = QDateTime::currentDateTime();
+    QString baseName = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
+
+    return baseName.replace("%Y", timestamp.toString("yyyy"))
+                   .replace("%y", timestamp.toString("yy"))
+                   .replace("%M", timestamp.toString("MM"))
+                   .replace("%D", timestamp.toString("dd"))
+                   .replace("%H", timestamp.toString("hh"))
+                   .replace("%m", timestamp.toString("mm"))
+                   .replace("%S", timestamp.toString("ss"));
 }
 
-QString KSCore::makeSaveMimetype(const QUrl url)
+QString KSCore::autoIncrementFilename(const QString &baseName, const QString &extension)
+{
+    if (!(isFileExists(QUrl::fromUserInput(baseName + '.' + extension)))) {
+        return baseName + '.' + extension;
+    }
+
+    QString fileNameFmt(baseName + "-%1." + extension);
+    for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
+        if (!(isFileExists(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
+            return fileNameFmt.arg(i);
+        }
+    }
+
+    // unlikely this will ever happen, but just in case we've run
+    // out of numbers
+
+    return fileNameFmt.arg("OVERFLOW-" + (qrand() % 10000));
+}
+
+QString KSCore::makeSaveMimetype(const QUrl &url)
 {
     QMimeDatabase mimedb;
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
@@ -417,7 +445,7 @@ bool KSCore::writeImage(QIODevice *device, const QByteArray &format)
     return imageWriter.write(mLocalPixmap.toImage());
 }
 
-bool KSCore::localSave(const QUrl url, const QString mimetype)
+bool KSCore::localSave(const QUrl &url, const QString &mimetype)
 {
     QFile outputFile(url.toLocalFile());
 
@@ -429,7 +457,7 @@ bool KSCore::localSave(const QUrl url, const QString mimetype)
     return true;
 }
 
-bool KSCore::remoteSave(const QUrl url, const QString mimetype)
+bool KSCore::remoteSave(const QUrl &url, const QString &mimetype)
 {
     QTemporaryFile tmpFile;
 
@@ -466,7 +494,7 @@ bool KSCore::tempFileSave()
     return false;
 }
 
-QUrl KSCore::tempFileSave(const QString mimetype)
+QUrl KSCore::tempFileSave(const QString &mimetype)
 {
     QTemporaryFile tmpFile;
     tmpFile.setAutoRemove(false);
@@ -482,7 +510,7 @@ QUrl KSCore::tempFileSave(const QString mimetype)
     return QUrl();
 }
 
-bool KSCore::doSave(const QUrl url)
+bool KSCore::doSave(const QUrl &url)
 {
     if (!(url.isValid())) {
         emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
@@ -501,7 +529,7 @@ bool KSCore::doSave(const QUrl url)
     return remoteSave(url, mimetype);
 }
 
-bool KSCore::isFileExists(const QUrl url)
+bool KSCore::isFileExists(const QUrl &url)
 {
     if (!(url.isValid())) {
         return false;

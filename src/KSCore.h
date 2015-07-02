@@ -20,6 +20,8 @@
 #ifndef KSCORE_H
 #define KSCORE_H
 
+#include <limits>
+
 #include <QUrl>
 #include <QFile>
 #include <QTemporaryFile>
@@ -80,9 +82,9 @@ class KSCore : public QObject
     QString filename() const;
     void setFilename(const QString &filename);
     ImageGrabber::GrabMode grabMode() const;
-    void setGrabMode(const ImageGrabber::GrabMode grabMode);
+    void setGrabMode(const ImageGrabber::GrabMode &grabMode);
     bool overwriteOnSave() const;
-    void setOverwriteOnSave(const bool overwrite);
+    void setOverwriteOnSave(const bool &overwrite);
     QString saveLocation() const;
     void setSaveLocation(const QString &savePath);
 
@@ -98,9 +100,9 @@ class KSCore : public QObject
 
     public slots:
 
-    void takeNewScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
-    void showErrorMessage(const QString errString);
-    void screenshotUpdated(const QPixmap pixmap);
+    void takeNewScreenshot(const ImageGrabber::GrabMode &mode, const int &timeout, const bool &includePointer, const bool &includeDecorations);
+    void showErrorMessage(const QString &errString);
+    void screenshotUpdated(const QPixmap &pixmap);
     void screenshotFailed();
     void doStartDragAndDrop();
     void doPrint(QPrinter *printer);
@@ -112,16 +114,17 @@ class KSCore : public QObject
 
     private:
 
-    QUrl getAutoSaveFilename();
-    QString makeTimestampFilename();
-    QString makeSaveMimetype(const QUrl url);
+    QUrl getAutosaveFilename();
+    QString makeAutosaveFilename();
+    QString autoIncrementFilename(const QString &baseName, const QString &extension);
+    QString makeSaveMimetype(const QUrl &url);
     bool writeImage(QIODevice *device, const QByteArray &format);
-    bool localSave(const QUrl url, const QString mimetype);
-    bool remoteSave(const QUrl url, const QString mimetype);
+    bool localSave(const QUrl &url, const QString &mimetype);
+    bool remoteSave(const QUrl &url, const QString &mimetype);
     bool tempFileSave();
-    QUrl tempFileSave(const QString mimetype);
-    bool doSave(const QUrl url);
-    bool isFileExists(const QUrl url);
+    QUrl tempFileSave(const QString &mimetype);
+    bool doSave(const QUrl &url);
+    bool isFileExists(const QUrl &url);
     QUrl getTempSaveFilename() const;
 
     bool             mBackgroundMode;

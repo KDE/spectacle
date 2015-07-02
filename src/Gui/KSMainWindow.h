@@ -28,6 +28,8 @@
 #include <QMouseEvent>
 #include <QMoveEvent>
 #include <QPushButton>
+#include <QToolButton>
+#include <QMenu>
 #include <QKeySequence>
 #include <QDialogButtonBox>
 #include <QPoint>
@@ -39,6 +41,7 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KConfigGroup>
+#include <KMessageWidget>
 #include <KAboutData>
 #include <KHelpMenu>
 #include <KGuiItem>
@@ -48,6 +51,7 @@
 
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
+#include "KSSaveConfigDialog.h"
 #include "KSSendToMenu.h"
 
 class KSMainWindow : public QWidget
@@ -67,6 +71,8 @@ class KSMainWindow : public QWidget
     void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick);
     void saveCaptureModeConfig(int modeIndex);
     void showPrintDialog();
+    void showSaveConfigDialog();
+    void sendToClipboard();
     void init();
 
     public slots:
@@ -94,7 +100,10 @@ class KSMainWindow : public QWidget
     QFrame            *mDivider;
     QDialogButtonBox  *mDialogButtonBox;
     QPushButton       *mSendToButton;
-    QPushButton       *mPrintButton;
+    QToolButton       *mClipboardButton;
+    QToolButton       *mSaveButton;
+    QMenu             *mSaveMenu;
+    KMessageWidget    *mCopyMessage;
     KSSendToMenu      *mSendToMenu;
     KActionCollection *mActionCollection;
     bool               mOnClickAvailable;
