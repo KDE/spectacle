@@ -48,7 +48,6 @@ void KSMainWindow::init()
 
     // window properties
 
-    setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved"));
     setMinimumSize(800, 385);
     resize(minimumSize());
 
@@ -166,11 +165,13 @@ void KSMainWindow::captureScreenshot(ImageGrabber::GrabMode mode, int timeout, b
 
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 {
-    show();
     mKSWidget->setScreenshotPixmap(pixmap);
+    setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
+    setWindowModified(true);
+    show();
 
     if (mSendToMenu->menu()->isEmpty()) {
-        QTimer::singleShot(50, mSendToMenu, &KSSendToMenu::populateMenu);
+        QTimer::singleShot(100, mSendToMenu, &KSSendToMenu::populateMenu);
     }
 }
 
@@ -201,6 +202,7 @@ void KSMainWindow::showSaveConfigDialog()
 void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 {
     setWindowTitle(location.fileName());
+    setWindowModified(false);
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::quit());
 }
 

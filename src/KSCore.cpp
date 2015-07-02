@@ -217,7 +217,8 @@ void KSCore::screenshotFailed()
         emit allDone();
         return;
     }
-    screenshotUpdated(QPixmap());
+
+    mMainWindow->show();
 }
 
 void KSCore::doAutoSave()
