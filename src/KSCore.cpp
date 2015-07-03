@@ -472,7 +472,7 @@ bool KSCore::remoteSave(const QUrl &url, const QString &mimetype)
         uploadJob->exec();
 
         if (uploadJob->error() != KJob::NoError) {
-            emit errorMessage("Unable to save image. Could not upload file to remote location.");
+            emit errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
             return false;
         }
         return true;
