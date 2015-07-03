@@ -20,10 +20,14 @@
 #ifndef X11IMAGEGRABBER_H
 #define X11IMAGEGRABBER_H
 
+#include <QStack>
 #include <QX11Info>
 #include <QString>
 #include <QPixmap>
 #include <QImage>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsDropShadowEffect>
 #include <QPainter>
 #include <QCursor>
 #include <QPoint>
@@ -42,6 +46,7 @@
 #include <QMetaObject>
 
 #include <KWindowSystem>
+#include <KWindowInfo>
 #include <KScreen/Config>
 #include <KScreen/GetConfigOperation>
 #include <KScreen/Screen>
@@ -82,11 +87,13 @@ class X11ImageGrabber : public ImageGrabber
 
     protected:
 
-    void blendCursorImage(int x, int y, int width, int height) Q_DECL_OVERRIDE;
-    void grabFullScreen() Q_DECL_OVERRIDE;
-    void grabCurrentScreen() Q_DECL_OVERRIDE;
-    void grabActiveWindow() Q_DECL_OVERRIDE;
-    void grabRectangularRegion() Q_DECL_OVERRIDE;
+    void grabFullScreen()          Q_DECL_OVERRIDE;
+    void grabCurrentScreen()       Q_DECL_OVERRIDE;
+    void grabActiveWindow()        Q_DECL_OVERRIDE;
+    void grabRectangularRegion()   Q_DECL_OVERRIDE;
+    void grabWindowUnderCursor()   Q_DECL_OVERRIDE;
+    void grabTransientWithParent() Q_DECL_OVERRIDE;
+    QPixmap blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height) Q_DECL_OVERRIDE;
 
     private slots:
 
@@ -101,9 +108,14 @@ class X11ImageGrabber : public ImageGrabber
 
     private:
 
-    bool KWinDBusScreenshotAvailable();
-    QPixmap convertFromNative(xcb_image_t *xcbImage);
-    QPixmap getWindowPixmap(xcb_window_t window);
+    bool                 isKWinAvailable();
+    xcb_window_t         getRealWindowUnderCursor();
+    void                 grabApplicationWindowHelper(xcb_window_t window);
+    QRect                getApplicationWindowGeometry(xcb_window_t window);
+    QStack<xcb_window_t> findAllChildren(xcb_window_t window);
+    xcb_window_t         findParent(xcb_window_t window);
+    QPixmap              getWindowPixmap(xcb_window_t window, bool blendPointer);
+    QPixmap              convertFromNative(xcb_image_t *xcbImage);
 
     OnClickEventFilter          *mNativeEventFilter;
     KScreen::GetConfigOperation *mScreenConfigOperation;

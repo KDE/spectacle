@@ -41,11 +41,13 @@ class ImageGrabber : public QObject
     public:
 
     enum GrabMode {
-        InvalidChoice     = -1,
-        FullScreen        = 0,
-        CurrentScreen     = 1,
-        ActiveWindow      = 2,
-        RectangularRegion = 3
+        InvalidChoice       = -1,
+        FullScreen          = 0,
+        CurrentScreen       = 1,
+        ActiveWindow        = 2,
+        WindowUnderCursor   = 3,
+        TransientWithParent = 4,
+        RectangularRegion   = 5
     };
 
     explicit ImageGrabber(QObject *parent = 0);
@@ -81,7 +83,9 @@ class ImageGrabber : public QObject
     virtual void grabCurrentScreen() = 0;
     virtual void grabActiveWindow() = 0;
     virtual void grabRectangularRegion() = 0;
-    virtual void blendCursorImage(int x, int y, int width, int height) = 0;
+    virtual void grabWindowUnderCursor() = 0;
+    virtual void grabTransientWithParent() = 0;
+    virtual QPixmap blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height) = 0;
 
     bool     mCapturePointer;
     bool     mCaptureDecorations;

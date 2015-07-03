@@ -39,10 +39,12 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureModeLabel->setFont(tempFont);
 
     mCaptureArea = new QComboBox(this);
-    mCaptureArea->insertItem(0, i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
-    mCaptureArea->insertItem(1, i18n("Current Screen"), ImageGrabber::CurrentScreen);
-    mCaptureArea->insertItem(2, i18n("Window Under Cursor"), ImageGrabber::ActiveWindow);
-    mCaptureArea->insertItem(3, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
+    mCaptureArea->insertItem(ImageGrabber::FullScreen,        i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
+    mCaptureArea->insertItem(ImageGrabber::CurrentScreen,     i18n("Current Screen"), ImageGrabber::CurrentScreen);
+    mCaptureArea->insertItem(ImageGrabber::ActiveWindow,      i18n("Active Window"), ImageGrabber::ActiveWindow);
+    mCaptureArea->insertItem(ImageGrabber::WindowUnderCursor, i18n("Window Or Popup Under Cursor"), ImageGrabber::WindowUnderCursor);
+    mCaptureArea->insertItem(ImageGrabber::TransientWithParent,  i18n("Popup With Parent Window"), ImageGrabber::TransientWithParent);
+    mCaptureArea->insertItem(ImageGrabber::RectangularRegion, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
     mCaptureArea->setMinimumWidth(240);
     connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeManage);
 
@@ -188,6 +190,8 @@ void KSWidget::captureModeManage(int index)
     ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->itemData(index).toInt());
     switch (mode) {
     case ImageGrabber::ActiveWindow:
+    case ImageGrabber::WindowUnderCursor:
+    case ImageGrabber::TransientWithParent:
         mWindowDecorations->setEnabled(true);
         break;
     default:

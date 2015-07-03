@@ -12,13 +12,14 @@ bool DummyImageGrabber::onClickGrabSupported() const
     return false;
 }
 
-void DummyImageGrabber::blendCursorImage(int x, int y, int width, int height)
+QPixmap DummyImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height)
 {
+    Q_UNUSED(pixmap);
     Q_UNUSED(x);
     Q_UNUSED(y);
     Q_UNUSED(width);
     Q_UNUSED(height);
-    return;
+    return QPixmap();
 }
 
 void DummyImageGrabber::grabFullScreen()
@@ -37,6 +38,16 @@ void DummyImageGrabber::grabActiveWindow()
 }
 
 void DummyImageGrabber::grabRectangularRegion()
+{
+    emit pixmapChanged(QPixmap());
+}
+
+void DummyImageGrabber::grabWindowUnderCursor()
+{
+    emit pixmapChanged(QPixmap());
+}
+
+void DummyImageGrabber::grabTransientWithParent()
 {
     emit pixmapChanged(QPixmap());
 }

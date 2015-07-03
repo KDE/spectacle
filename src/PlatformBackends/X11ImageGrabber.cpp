@@ -195,7 +195,7 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
 
 // utility functions
 
-void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
+QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height)
 {
     // first we get the cursor position, compute the co-ordinates of the region
     // of the screen we're grabbing, and see if the cursor is actually visible in
@@ -205,7 +205,7 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
     QRect screenRect(x, y, width, height);
 
     if (!(screenRect.contains(cursorPos))) {
-        return;
+        return pixmap;
     }
 
     // now we can get the image and start processing
@@ -215,12 +215,12 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
     xcb_xfixes_get_cursor_image_cookie_t  cursorCookie = xcb_xfixes_get_cursor_image_unchecked(xcbConn);
     CScopedPointer<xcb_xfixes_get_cursor_image_reply_t>  cursorReply(xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, NULL));
     if (cursorReply.isNull()) {
-        return;
+        return pixmap;
     }
 
     quint32 *pixelData = xcb_xfixes_get_cursor_image_cursor_image(cursorReply.data());
     if (!pixelData) {
-        return;
+        return pixmap;
     }
 
     // process the image into a QImage
@@ -237,13 +237,16 @@ void X11ImageGrabber::blendCursorImage(int x, int y, int width, int height)
 
     // and do the painting
 
-    QPainter painter(&mPixmap);
+    QPixmap blendedPixmap = pixmap;
+    QPainter painter(&blendedPixmap);
     painter.drawImage(cursorPos, cursorImage);
 
     // and done
+
+    return blendedPixmap;
 }
 
-QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
+QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
 {
     xcb_connection_t *xcbConn = QX11Info::connection();
 
@@ -254,14 +257,48 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window)
 
     // then proceed to get an image
 
-    CScopedPointer<xcb_image_t> xcbImage(xcb_image_get(xcbConn, window, geomReply->x, geomReply->y, geomReply->width, geomReply->height, ~0, XCB_IMAGE_FORMAT_Z_PIXMAP));
+    CScopedPointer<xcb_image_t> xcbImage(
+        xcb_image_get(
+            xcbConn,
+            window,
+            geomReply->x,
+            geomReply->y,
+            geomReply->width,
+            geomReply->height,
+            ~0,
+            XCB_IMAGE_FORMAT_Z_PIXMAP
+        )
+    );
+
+    // if the image is null, this means we need to get the root image window
+    // and run a crop
+
+    if (xcbImage.isNull()) {
+        return getWindowPixmap(QX11Info::appRootWindow(), blendPointer)
+                .copy(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
+    }
 
     // now process the image
 
-    return convertFromNative(xcbImage.data());
+    QPixmap nativePixmap = convertFromNative(xcbImage.data());
+    if (!(blendPointer)) {
+        return nativePixmap;
+    }
+
+    // now we blend in a pointer image
+
+    xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
+    CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
+
+    xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(
+        xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
+    CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(
+        xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
+
+    return blendCursorImage(nativePixmap, translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
 }
 
-bool X11ImageGrabber::KWinDBusScreenshotAvailable()
+bool X11ImageGrabber::isKWinAvailable()
 {
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.KWin")) {
         QDBusInterface interface("org.kde.KWin", "/Effects", "org.kde.kwin.Effects");
@@ -275,7 +312,7 @@ bool X11ImageGrabber::KWinDBusScreenshotAvailable()
 
 void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 window)
 {
-    mPixmap = getWindowPixmap((xcb_window_t)window);
+    mPixmap = getWindowPixmap((xcb_window_t)window, false);
     emit pixmapChanged(mPixmap);
 }
 
@@ -308,12 +345,8 @@ void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOpera
         // bingo, we've found an output that contains the cursor. Now
         // to take a shot
 
-        mPixmap = getWindowPixmap(QX11Info::appRootWindow());
+        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
         mPixmap = mPixmap.copy(screenPosition.x(), screenPosition.y(), screenSize.width(), screenSize.height());
-
-        if (mCapturePointer) {
-            blendCursorImage(screenPosition.x(), screenPosition.y(), screenSize.width(), screenSize.height());
-        }
         emit pixmapChanged(mPixmap);
 
         mScreenConfigOperation->disconnect();
@@ -345,9 +378,10 @@ void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const Q
     sender->disconnect();
     sender->deleteLater();
 
-    mPixmap = pixmap;
     if (mCapturePointer) {
-        blendCursorImage(region.x(), region.y(), region.width(), region.height());
+        mPixmap = blendCursorImage(pixmap, region.x(), region.y(), region.width(), region.height());
+    } else {
+        mPixmap = pixmap;
     }
     emit pixmapChanged(mPixmap);
 }
@@ -356,60 +390,107 @@ void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const Q
 
 void X11ImageGrabber::grabFullScreen()
 {
-    xcb_window_t window = QX11Info::appRootWindow();
-    mPixmap = getWindowPixmap(window);
+    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
+    emit pixmapChanged(mPixmap);
+}
 
-    // if we have to blend in the cursor image, do that now
+void X11ImageGrabber::grabTransientWithParent()
+{
+    xcb_window_t curWin = getRealWindowUnderCursor();
 
-    if (mCapturePointer) {
-        xcb_connection_t *xcbConn = QX11Info::connection();
-        xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
-        CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
+    // do we have a top-level or a transient window?
 
-        blendCursorImage(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
+    KWindowInfo info(curWin, NET::WMName, NET::WM2TransientFor);
+    if (!(info.valid(true) && (info.transientFor() != XCB_WINDOW_NONE))) {
+        return grabWindowUnderCursor();
     }
 
+    // grab the image early
+
+    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
+
+    // now that we know we have a transient window, let's
+    // see if the parent has any other transient windows who's
+    // transient for the same app
+
+    QRegion clipRegion;
+    QStack<xcb_window_t> childrenStack = findAllChildren(findParent(curWin));
+
+    while (!(childrenStack.isEmpty())) {
+        xcb_window_t winId = childrenStack.pop();
+        KWindowInfo tempInfo(winId, 0, NET::WM2TransientFor);
+
+        if (info.transientFor() == tempInfo.transientFor()) {
+            clipRegion += getApplicationWindowGeometry(winId);
+        }
+    }
+
+    // now we have a list of all the transient windows for the
+    // parent, time to find the parent
+
+    QList<WId> winList = KWindowSystem::stackingOrder();
+    for (int i = winList.size() - 1; i >= 0; i--) {
+        KWindowInfo tempInfo(winList[i], NET::WMGeometry | NET::WMFrameExtents, NET::WM2WindowClass);
+
+        QString winClass(tempInfo.windowClassClass());
+        QString winName(tempInfo.windowClassName());
+
+        if (winClass.contains(info.name(), Qt::CaseInsensitive) || winName.contains(info.name(), Qt::CaseInsensitive)) {
+            if (mCaptureDecorations) {
+                clipRegion += tempInfo.frameGeometry();
+            } else {
+                clipRegion += tempInfo.geometry();
+            }
+            break;
+        }
+    }
+
+    // we can probably go ahead and generate the image now
+
+    QImage tempImage(mPixmap.size(), QImage::Format_ARGB32);
+    tempImage.fill(Qt::transparent);
+
+    QPainter tempPainter(&tempImage);
+    tempPainter.setClipRegion(clipRegion);
+    tempPainter.drawPixmap(0, 0, mPixmap);
+    tempPainter.end();
+    mPixmap = QPixmap::fromImage(tempImage).copy(clipRegion.boundingRect());
+
+    // why stop here, when we can render a 20px drop shadow all around it
+
+    QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
+    effect->setOffset(0);
+    effect->setBlurRadius(20);
+
+    QGraphicsPixmapItem *item = new QGraphicsPixmapItem;
+    item->setPixmap(mPixmap);
+    item->setGraphicsEffect(effect);
+
+    QImage shadowImage(mPixmap.size() + QSize(40, 40), QImage::Format_ARGB32);
+    shadowImage.fill(Qt::transparent);
+    QPainter shadowPainter(&shadowImage);
+
+    QGraphicsScene scene;
+    scene.addItem(item);
+    scene.render(&shadowPainter, QRectF(), QRectF(-20, -20, mPixmap.width() + 40, mPixmap.height() + 40));
+    shadowPainter.end();
+
+    // we can finish up now
+
+    mPixmap = QPixmap::fromImage(shadowImage);
     emit pixmapChanged(mPixmap);
 }
 
 void X11ImageGrabber::grabActiveWindow()
 {
-    xcb_window_t window = KWindowSystem::activeWindow();
-    xcb_connection_t * xcbConn = QX11Info::connection();
+    xcb_window_t activeWindow = KWindowSystem::activeWindow();
 
-    // if the user doesn't want decorations captured, we're in luck. This is
-    // the easiest bit
+    // if KWin is available, use the KWin DBus interfaces
 
-    if (!mCaptureDecorations) {
-        mPixmap = getWindowPixmap(window);
-
-        if (mCapturePointer) {
-            xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
-            CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
-
-            xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
-            CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
-
-            xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
-            CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
-
-            blendCursorImage(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
-        }
-
-        emit pixmapChanged(mPixmap);
-        return;
-    }
-
-    // This is a KDE app after all, so it's reasonable we find ourselves
-    // running under KWin. If we *are* running under KWin, we are in luck,
-    // because KWin can take the screenshot for us much more efficiently
-    // than we can. It can capture rounded corners, drop shadows, the whole
-    // shebang. We'll try to use the kwin dbus interface, if available, to
-    // do the job for us
-
-    if (KWinDBusScreenshotAvailable()) {
+    if (mCaptureDecorations && isKWinAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated", this, SLOT(KWinDBusScreenshotHelper(quint64)));
+        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated",
+                    this, SLOT(KWinDBusScreenshotHelper(quint64)));
         QDBusInterface interface("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot");
 
         int mask = 1;
@@ -417,73 +498,171 @@ void X11ImageGrabber::grabActiveWindow()
             mask |= 1 << 1;
         }
 
-        interface.call("screenshotForWindow", (quint64)window, mask);
+        interface.call("screenshotForWindow", (quint64)activeWindow, mask);
         return;
     }
 
-    // Right, so we're here, which means the KWin screenshot interface is
-    // not available to us. So we'll have to drop to native X11 methods.
-    // What we're about to do works only for re-parenting window managers.
-    // We keep on querying the parent of the window until we can go no
-    // further up. That's a handle to the Window Manager frame. But we
-    // can't just grab it, because some compositing window managers (yes,
-    // KWin included) do not render the window onto the frame but keep it
-    // in a separate OpenGL buffer. So grabbing this window is going to
-    // just give us a transparent image with the frame and titlebar.
+    // otherwise, use the native functionality
 
-    // All is not lost. What we need to do is grab the image of the root
-    // of the WM frame, find the co-ordinates and geometry of the WM frame
-    // in that root, and crop the root image accordingly.
+    return grabApplicationWindowHelper(activeWindow);
+}
 
-    // I have no clue *why* the next loop works, but it was adapted from the
-    // xwininfo code. Copyright notices aren't merged because this is not a
-    // "substantial portion"
+void X11ImageGrabber::grabWindowUnderCursor()
+{
+    // if KWin is available, use the KWin DBus interfaces
 
-    while (1) {
-        xcb_query_tree_cookie_t queryCookie = xcb_query_tree_unchecked(xcbConn, window);
-        CScopedPointer<xcb_query_tree_reply_t> queryReply(xcb_query_tree_reply(xcbConn, queryCookie, NULL));
+    if (mCaptureDecorations && isKWinAvailable()) {
+        QDBusConnection bus = QDBusConnection::sessionBus();
+        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated",
+                    this, SLOT(KWinDBusScreenshotHelper(quint64)));
+        QDBusInterface interface("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot");
 
-        if ((queryReply->parent == queryReply->root) || !(queryReply->parent)) {
-            break;
+        int mask = 1;
+        if (mCapturePointer) {
+            mask |= 1 << 1;
         }
 
-        window = queryReply->parent;
+        interface.call("screenshotWindowUnderCursor", mask);
+        return;
     }
 
-    // now it's just a matter of grabbing...
+    // else, go native
 
+    return grabApplicationWindowHelper(getRealWindowUnderCursor());
+}
+
+void X11ImageGrabber::grabApplicationWindowHelper(xcb_window_t window)
+{
+    // if the user doesn't want decorations captured, we're in luck. This is
+    // the easiest bit
+
+    mPixmap = getWindowPixmap(window, mCapturePointer);
+    if (!mCaptureDecorations || window == QX11Info::appRootWindow()) {
+        emit pixmapChanged(mPixmap);
+        return;
+    }
+
+    // if the user wants the window decorations, things get a little tricky.
+    // we can't simply get a handle to the window manager frame window and
+    // just grab it, because some compositing window managers (yes, kwin
+    // included) do not render the window onto the frame but keep it in a
+    // separate opengl buffer, so grabbing this window is going to simply
+    // give us a transparent image with the frame and titlebar.
+
+    // all is not lost. what we need to do is grab the image of the entire
+    // desktop, find the geometry of the window including its frame, and
+    // crop the root image accordingly.
+
+    KWindowInfo info(window, NET::WMFrameExtents);
+    if (info.valid()) {
+        QRect frameGeom = info.frameGeometry();
+        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer).copy(frameGeom);
+    }
+
+    // fallback is window without the frame
+
+    emit pixmapChanged(mPixmap);
+}
+
+QRect X11ImageGrabber::getApplicationWindowGeometry(xcb_window_t window)
+{
+    xcb_connection_t *xcbConn = QX11Info::connection();
 
     xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
     CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
-    mPixmap = getWindowPixmap(geomReply->root);
 
-    // ...translating co-ordinates...
-
-    xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
-    CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
-
-    xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
-    CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
-
-    // ...and cropping
-
-    mPixmap = mPixmap.copy(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
-    if (mCapturePointer) {
-        blendCursorImage(translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
-    }
-    emit pixmapChanged(mPixmap);
+    return QRect(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
 }
 
 void X11ImageGrabber::grabCurrentScreen()
 {
     mScreenConfigOperation = new KScreen::GetConfigOperation;
-    connect(mScreenConfigOperation, &KScreen::GetConfigOperation::finished, this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
+    connect(mScreenConfigOperation, &KScreen::GetConfigOperation::finished,
+            this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
 }
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    ScreenClipper *clipper = new ScreenClipper(getWindowPixmap(QX11Info::appRootWindow()));
+    ScreenClipper *clipper = new ScreenClipper(getWindowPixmap(QX11Info::appRootWindow(), false));
 
     connect(clipper, &ScreenClipper::regionGrabbed, this, &X11ImageGrabber::rectangleSelectionConfirmed);
     connect(clipper, &ScreenClipper::regionCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
+}
+
+xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
+{
+    xcb_connection_t *xcbConn = QX11Info::connection();
+    xcb_window_t curWin = QX11Info::appRootWindow();
+
+    const QByteArray atomName("WM_STATE");
+    xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, 0, atomName.length(), atomName.constData());
+    xcb_query_pointer_cookie_t pointerCookie = xcb_query_pointer_unchecked(xcbConn, curWin);
+    CScopedPointer<xcb_intern_atom_reply_t> atomReply(xcb_intern_atom_reply(xcbConn, atomCookie, NULL));
+    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, NULL));
+
+    if (atomReply->atom == XCB_ATOM_NONE) {
+        return QX11Info::appRootWindow();
+    }
+
+    // now start testing
+
+    QStack<xcb_window_t> windowStack;
+    windowStack.push(pointerReply->child);
+
+    while (!windowStack.isEmpty()) {
+        curWin = windowStack.pop();
+
+        // next, check if our window has the WM_STATE peoperty set on
+        // the window. if yes, return the window - we have found it
+
+        xcb_get_property_cookie_t propertyCookie = xcb_get_property_unchecked(xcbConn, 0, curWin, atomReply->atom, XCB_ATOM_ANY, 0, 0);
+        CScopedPointer<xcb_get_property_reply_t> propertyReply(xcb_get_property_reply(xcbConn, propertyCookie, NULL));
+
+        if (propertyReply->type != XCB_ATOM_NONE) {
+            return curWin;
+        }
+
+        // if we're here, this means the window is not the real window
+        // we should start looking at its children
+
+        xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, curWin);
+        CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
+        xcb_window_t *winChildren = xcb_query_tree_children(treeReply.data());
+        int winChildrenLength = xcb_query_tree_children_length(treeReply.data());
+
+        for (int i = winChildrenLength - 1; i >= 0; i--) {
+            windowStack.push(winChildren[i]);
+        }
+    }
+
+    // return the window. it has geometry information for a crop
+
+    return pointerReply->child;
+}
+
+QStack<xcb_window_t> X11ImageGrabber::findAllChildren(xcb_window_t window)
+{
+    QStack<xcb_window_t> winStack;
+    xcb_connection_t *xcbConn = QX11Info::connection();
+
+    xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, window);
+    CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
+    xcb_window_t *winChildren = xcb_query_tree_children(treeReply.data());
+    int winChildrenLength = xcb_query_tree_children_length(treeReply.data());
+
+    for (int i = winChildrenLength - 1; i >= 0; i--) {
+        winStack.push(winChildren[i]);
+    }
+
+    return winStack;
+}
+
+xcb_window_t X11ImageGrabber::findParent(xcb_window_t window)
+{
+    xcb_connection_t *xcbConn = QX11Info::connection();
+
+    xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, window);
+    CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
+
+    return treeReply->parent;
 }
