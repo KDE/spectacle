@@ -58,8 +58,11 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
-#include "PlatformBackends/ImageGrabber.h"
+// #ifdef XCB_FOUND
 #include "PlatformBackends/X11ImageGrabber.h"
+// #endif // XCB_FOUND
+
+#include "PlatformBackends/ImageGrabber.h"
 #include "PlatformBackends/DummyImageGrabber.h"
 
 #include "Gui/KSMainWindow.h"
