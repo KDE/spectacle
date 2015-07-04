@@ -407,7 +407,7 @@ void X11ImageGrabber::grabTransientWithParent()
 
     // grab the image early
 
-    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
+    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), false);
 
     // now that we know we have a transient window, let's
     // see if the parent has any other transient windows who's
@@ -478,6 +478,11 @@ void X11ImageGrabber::grabTransientWithParent()
     // we can finish up now
 
     mPixmap = QPixmap::fromImage(shadowImage);
+    if (mCapturePointer) {
+        QPoint topLeft = clipRegion.boundingRect().topLeft() - QPoint(20, 20);
+        mPixmap = blendCursorImage(mPixmap, topLeft.x(), topLeft.y(), mPixmap.width(), mPixmap.height());
+    }
+
     emit pixmapChanged(mPixmap);
 }
 
