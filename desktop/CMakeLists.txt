@@ -6,6 +6,6 @@ install(
 )
 
 install(
-	FILES kscreengenie.notifyrc
-	DESTINATION  ${KNOTIFYRC_INSTALL_DIR}
+    FILES kscreengenie.notifyrc
+    DESTINATION  ${KNOTIFYRC_INSTALL_DIR}
 )
