@@ -29,6 +29,8 @@
 #include <QPixmap>
 #include <QGraphicsDropShadowEffect>
 
+#include <KLocalizedString>
+
 class KSImageWidget : public QLabel
 {
     Q_OBJECT
