@@ -58,6 +58,8 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
+#include "Config.h"
+
 #include "PlatformBackends/ImageGrabber.h"
 #include "PlatformBackends/DummyImageGrabber.h"
 #ifdef XCB_FOUND
@@ -65,7 +67,6 @@
 #endif
 
 #include "Gui/KSMainWindow.h"
-#include "Config.h"
 
 class KSCore : public QObject
 {
