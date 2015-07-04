@@ -22,8 +22,6 @@
 KSWidget::KSWidget(QWidget *parent) :
     QWidget(parent)
 {
-    QFont tempFont;
-
     // we'll init the widget that holds the image first
 
     mImageWidget = new KSImageWidget(this);
@@ -33,20 +31,16 @@ KSWidget::KSWidget(QWidget *parent) :
     // the capture mode options first
 
     mCaptureModeLabel = new QLabel(this);
-    mCaptureModeLabel->setText(i18n("Capture Mode"));
-    tempFont = mCaptureModeLabel->font();
-    tempFont.setBold(true);
-    mCaptureModeLabel->setFont(tempFont);
+    mCaptureModeLabel->setText(i18n("<b>Capture Mode</b>"));
 
     mCaptureArea = new QComboBox(this);
-    mCaptureArea->insertItem(ImageGrabber::FullScreen,        i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
-    mCaptureArea->insertItem(ImageGrabber::CurrentScreen,     i18n("Current Screen"), ImageGrabber::CurrentScreen);
-    mCaptureArea->insertItem(ImageGrabber::ActiveWindow,      i18n("Active Window"), ImageGrabber::ActiveWindow);
-    mCaptureArea->insertItem(ImageGrabber::WindowUnderCursor, i18n("Window Or Popup Under Cursor"), ImageGrabber::WindowUnderCursor);
-    mCaptureArea->insertItem(ImageGrabber::TransientWithParent,  i18n("Popup With Parent Window"), ImageGrabber::TransientWithParent);
-    mCaptureArea->insertItem(ImageGrabber::RectangularRegion, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
+    mCaptureArea->insertItem(1, i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
+    mCaptureArea->insertItem(2, i18n("Current Screen"), ImageGrabber::CurrentScreen);
+    mCaptureArea->insertItem(3, i18n("Active Window"), ImageGrabber::ActiveWindow);
+    mCaptureArea->insertItem(4, i18n("Window Under Cursor"), ImageGrabber::WindowUnderCursor);
+    mCaptureArea->insertItem(5, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
     mCaptureArea->setMinimumWidth(240);
-    connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeManage);
+    connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
     mDelayMsec = new QDoubleSpinBox(this);
     mDelayMsec->setDecimals(1);
@@ -55,12 +49,13 @@ KSWidget::KSWidget(QWidget *parent) :
     mDelayMsec->setMaximum(999.9);
     mDelayMsec->setSuffix(i18n(" seconds"));
     mDelayMsec->setMinimumWidth(160);
+    connect(mDelayMsec, static_cast<void (QDoubleSpinBox::*)(qreal)>(&QDoubleSpinBox::valueChanged), this, &KSWidget::captureDelayChanged);
 
     mCaptureOnClick = new QCheckBox(this);
     mCaptureOnClick->setText(i18n("On Click"));
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
-    connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChangedHandler);
+    connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
 
     mDelayLayout = new QHBoxLayout;
     mDelayLayout->addWidget(mDelayMsec);
@@ -71,28 +66,33 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureModeForm->addRow(i18n("Delay:"), mDelayLayout);
     mCaptureModeForm->setContentsMargins(24, 0, 0, 0);
 
-    // the capture options (mouse pointer, window decorations)
+    // the content options (mouse pointer, window decorations)
 
     mContentOptionsLabel = new QLabel(this);
-    mContentOptionsLabel->setText(i18n("Content Options"));
-    tempFont = mContentOptionsLabel->font();
-    tempFont.setBold(true);
-    mContentOptionsLabel->setFont(tempFont);
+    mContentOptionsLabel->setText(i18n("<b>Content Options</b>"));
 
     mMousePointer = new QCheckBox(this);
     mMousePointer->setText(i18n("Include mouse pointer"));
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screeenshot image"));
-    connect(mMousePointer, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChangedHandler);
+    connect(mMousePointer, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
 
     mWindowDecorations = new QCheckBox(this);
     mWindowDecorations->setText(i18n("Include window titlebar and borders"));
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
-    connect(mWindowDecorations, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChangedHandler);
+    connect(mWindowDecorations, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
+
+    mCaptureTransientOnly = new QCheckBox(this);
+    mCaptureTransientOnly->setText(i18n("Capture the current pop-up only"));
+    mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc). "
+                                           "If this is not enabled, the pop-up is captured along with the parent window"));
+    mCaptureTransientOnly->setEnabled(false);
+    connect(mCaptureTransientOnly, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
 
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);
     mContentOptionsForm->addWidget(mWindowDecorations);
+    mContentOptionsForm->addWidget(mCaptureTransientOnly);
     mContentOptionsForm->setSpacing(16);
     mContentOptionsForm->setContentsMargins(24, 0, 0, 0);
 
@@ -132,6 +132,20 @@ KSWidget::KSWidget(QWidget *parent) :
     mMainLayout->addLayout(mRightLayout, 0, 1, 1, 1);
     mMainLayout->setColumnMinimumWidth(0, 400);
     mMainLayout->setColumnMinimumWidth(1, 400);
+
+    // and read in the saved checkbox states and capture mode indices
+
+    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KConfigGroup guiConfig(config, "GuiConfig");
+
+    mMousePointer->setChecked(guiConfig.readEntry("includePointer", true));
+    mWindowDecorations->setChecked(guiConfig.readEntry("includeDecorations", true));
+    mCaptureOnClick->setChecked(guiConfig.readEntry("waitCaptureOnClick", false));
+    mCaptureTransientOnly->setChecked(guiConfig.readEntry("transientOnly", false));
+    mCaptureArea->setCurrentIndex(guiConfig.readEntry("captureModeIndex", 0));
+    mDelayMsec->setValue(guiConfig.readEntry("captureDelay", (qreal)0));
+
+    // done
 }
 
 // public slots
@@ -139,18 +153,6 @@ KSWidget::KSWidget(QWidget *parent) :
 void KSWidget::setScreenshotPixmap(const QPixmap &pixmap)
 {
     mImageWidget->setScreenshot(pixmap);
-}
-
-void KSWidget::setCheckboxStates(bool capturePointer, bool captureDecorations, bool captureOnClick)
-{
-    mMousePointer->setChecked(capturePointer);
-    mWindowDecorations->setChecked(captureDecorations);
-    mCaptureOnClick->setChecked(captureOnClick);
-}
-
-void KSWidget::setCaptureModeIndex(int index)
-{
-    mCaptureArea->setCurrentIndex(index);
 }
 
 void KSWidget::disableOnClick()
@@ -165,13 +167,25 @@ void KSWidget::newScreenshotClicked()
 {
     int delay = mCaptureOnClick->isChecked() ? -1 : (mDelayMsec->value() * 1000);
     ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->currentData().toInt());
+    if (mode == ImageGrabber::WindowUnderCursor && !(mCaptureTransientOnly->isChecked())) {
+        mode = ImageGrabber::TransientWithParent;
+    }
+
     emit newScreenshotRequest(mode, delay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
 }
 
-void KSWidget::checkboxStatesChangedHandler(int state)
+void KSWidget::checkboxStatesChanged(int state)
 {
     Q_UNUSED(state);
-    emit checkboxStatesChanged(mMousePointer->isChecked(), mWindowDecorations->isChecked(), mCaptureOnClick->isChecked());
+
+    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KConfigGroup guiConfig(config, "GuiConfig");
+
+    guiConfig.writeEntry("includePointer",     mMousePointer->isChecked());
+    guiConfig.writeEntry("includeDecorations", mWindowDecorations->isChecked());
+    guiConfig.writeEntry("waitCaptureOnClick", mCaptureOnClick->isChecked());
+    guiConfig.writeEntry("transientOnly",      mCaptureTransientOnly->isChecked());
+    guiConfig.sync();
 }
 
 void KSWidget::onClickStateChanged(int state)
@@ -183,18 +197,35 @@ void KSWidget::onClickStateChanged(int state)
     }
 }
 
-void KSWidget::captureModeManage(int index)
+void KSWidget::captureModeChanged(int index)
 {
-    emit captureModeChanged(index);
+    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KConfigGroup guiConfig(config, "GuiConfig");
+
+    guiConfig.writeEntry("captureModeIndex", index);
+    guiConfig.sync();
 
     ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->itemData(index).toInt());
     switch (mode) {
-    case ImageGrabber::ActiveWindow:
     case ImageGrabber::WindowUnderCursor:
-    case ImageGrabber::TransientWithParent:
         mWindowDecorations->setEnabled(true);
+        mCaptureTransientOnly->setEnabled(true);
+        break;
+    case ImageGrabber::ActiveWindow:
+        mWindowDecorations->setEnabled(true);
+        mCaptureTransientOnly->setEnabled(false);
         break;
     default:
         mWindowDecorations->setEnabled(false);
+        mCaptureTransientOnly->setEnabled(false);
     }
+}
+
+void KSWidget::captureDelayChanged(qreal value)
+{
+    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KConfigGroup guiConfig(config, "GuiConfig");
+
+    guiConfig.writeEntry("captureDelay", value);
+    guiConfig.sync();
 }

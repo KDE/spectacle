@@ -26,7 +26,6 @@
 #include <QGridLayout>
 #include <QFormLayout>
 #include <QLabel>
-#include <QFont>
 #include <QPushButton>
 #include <QKeySequence>
 #include <QShortcut>
@@ -38,6 +37,8 @@
 #include <QIcon>
 
 #include <KLocalizedString>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSImageWidget.h"
@@ -53,23 +54,20 @@ class KSWidget : public QWidget
 	signals:
 
     void dragInitiated();
-    void captureModeChanged(int index);
-    void checkboxStatesChanged(bool capturePointer, bool captureDecorations, bool captureOnClick);
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int captureDelay, bool capturePointer, bool captureDecorations);
 
 	public slots:
 
     void setScreenshotPixmap(const QPixmap &pixmap);
-    void setCheckboxStates(bool capturePointer, bool captureDecorations, bool captureOnClick);
-    void setCaptureModeIndex(int index);
     void disableOnClick();
 
     private slots:
 
     void newScreenshotClicked();
-    void checkboxStatesChangedHandler(int state);
+    void checkboxStatesChanged(int state);
     void onClickStateChanged(int state);
-    void captureModeManage(int index);
+    void captureModeChanged(int index);
+    void captureDelayChanged(qreal value);
 
 	private:
     
@@ -85,6 +83,7 @@ class KSWidget : public QWidget
     QCheckBox      *mCaptureOnClick;
     QCheckBox      *mMousePointer;
     QCheckBox      *mWindowDecorations;
+    QCheckBox      *mCaptureTransientOnly;
     QLabel         *mCaptureModeLabel;
     QLabel         *mContentOptionsLabel;
 };

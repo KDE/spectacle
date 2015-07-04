@@ -63,16 +63,18 @@ int main(int argc, char **argv)
     aboutData.setupCommandLine(&parser);
 
     parser.addOptions({
-        {{"f", "fullscreen"},   i18n("Capture the entire desktop (default)")},
-        {{"m", "current"},      i18n("Capture the current monitor")},
-        {{"a", "activewindow"}, i18n("Capture the active window")},
-        {{"r", "region"},       i18n("Capture a rectangular region of the screen")},
-        {{"b", "background"},   i18n("Take a screenshot and exit without showing the GUI")},
-        {{"n", "notify"},       i18n("In background mode, pop up a notification when the screenshot is taken")},
-        {{"c", "clipboard"},    i18n("In background mode, send image to clipboard without saving to file")},
-        {{"o", "output"},       i18n("In background mode, save image to specified file"), "fileName"},
-        {{"d", "delay"},        i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
-        {{"w", "onclick"},      i18n("Wait for a click before taking screenshot. Invalidates delay")}
+        {{"f", "fullscreen"},        i18n("Capture the entire desktop (default)")},
+        {{"m", "current"},           i18n("Capture the current monitor")},
+        {{"a", "activewindow"},      i18n("Capture the active window")},
+        {{"u", "windowundercursor"}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
+        {{"t", "transientonly"},     i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
+        {{"r", "region"},            i18n("Capture a rectangular region of the screen")},
+        {{"b", "background"},        i18n("Take a screenshot and exit without showing the GUI")},
+        {{"n", "notify"},            i18n("In background mode, pop up a notification when the screenshot is taken")},
+        {{"c", "clipboard"},         i18n("In background mode, send image to clipboard without saving to file")},
+        {{"o", "output"},            i18n("In background mode, save image to specified file"), "fileName"},
+        {{"d", "delay"},             i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
+        {{"w", "onclick"},           i18n("Wait for a click before taking screenshot. Invalidates delay")}
     });
 
     parser.process(app);
@@ -87,6 +89,10 @@ int main(int argc, char **argv)
         grabMode = ImageGrabber::ActiveWindow;
     } else if (parser.isSet("region")) {
         grabMode = ImageGrabber::RectangularRegion;
+    } else if (parser.isSet("windowundercursor")) {
+        grabMode = ImageGrabber::TransientWithParent;
+    } else if (parser.isSet("transientonly")) {
+        grabMode = ImageGrabber::WindowUnderCursor;
     }
 
     // are we running in background mode?

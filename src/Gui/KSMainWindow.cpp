@@ -48,7 +48,7 @@ void KSMainWindow::init()
 
     // window properties
 
-    setMinimumSize(800, 385);
+    setMinimumSize(840, 420);
     resize(minimumSize());
 
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
@@ -57,8 +57,6 @@ void KSMainWindow::init()
     // the KSGWidget
 
     connect(mKSWidget, &KSWidget::newScreenshotRequest, this, &KSMainWindow::captureScreenshot);
-    connect(mKSWidget, &KSWidget::checkboxStatesChanged, this, &KSMainWindow::saveCheckboxStatesConfig);
-    connect(mKSWidget, &KSWidget::captureModeChanged, this, &KSMainWindow::saveCaptureModeConfig);
     connect(mKSWidget, &KSWidget::dragInitiated, this, &KSMainWindow::dragAndDropRequest);
 
     // the Button Bar
@@ -122,16 +120,6 @@ void KSMainWindow::init()
     connect(mSendToMenu, &KSSendToMenu::sendToOpenWithRequest, this, &KSMainWindow::sendToOpenWithRequest);
 
     mSendToButton->setMenu(mSendToMenu->menu());
-
-    // read in the checkbox states and capture mode index
-
-    bool capturePointer = guiConfig.readEntry("includePointer", true);
-    bool captureDecorations = guiConfig.readEntry("includeDecorations", true);
-    bool captureOnClick = guiConfig.readEntry("waitCaptureOnClick", false);
-    mKSWidget->setCheckboxStates(capturePointer, captureDecorations, captureOnClick);
-
-    int captureModeIndex = guiConfig.readEntry("captureModeIndex", 0);
-    mKSWidget->setCaptureModeIndex(captureModeIndex);
 
     // disable onClick mode if not available on the platform
 
@@ -204,24 +192,4 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
     setWindowTitle(location.fileName());
     setWindowModified(false);
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::quit());
-}
-
-void KSMainWindow::saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick)
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
-    KConfigGroup guiConfig(config, "GuiConfig");
-
-    guiConfig.writeEntry("includePointer", includePointer);
-    guiConfig.writeEntry("includeDecorations", includeDecorations);
-    guiConfig.writeEntry("waitCaptureOnClick", waitCaptureOnClick);
-    guiConfig.sync();
-}
-
-void KSMainWindow::saveCaptureModeConfig(int modeIndex)
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
-    KConfigGroup guiConfig(config, "GuiConfig");
-
-    guiConfig.writeEntry("captureModeIndex", modeIndex);
-    guiConfig.sync();
 }

@@ -63,13 +63,9 @@ class KSMainWindow : public QWidget
     explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
     ~KSMainWindow();
 
-    void setScreenshotAndShow(const QPixmap &pixmap);
-
     private slots:
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
-    void saveCheckboxStatesConfig(bool includePointer, bool includeDecorations, bool waitCaptureOnClick);
-    void saveCaptureModeConfig(int modeIndex);
     void showPrintDialog();
     void showSaveConfigDialog();
     void sendToClipboard();
@@ -77,12 +73,14 @@ class KSMainWindow : public QWidget
 
     public slots:
 
+    void setScreenshotAndShow(const QPixmap &pixmap);
     void setScreenshotWindowTitle(QUrl location);
 
     signals:
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void dragAndDropRequest();
+    void save();
     void saveAndExit();
     void saveAsClicked();
     void sendToKServiceRequest(KService::Ptr servicePointer);
