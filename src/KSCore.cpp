@@ -55,7 +55,7 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     if (qApp->platformName() == QStringLiteral("xcb")) {
         mImageGrabber = new X11ImageGrabber;
     }
-#endif // XCB_FOUND
+#endif
 
     if (!mImageGrabber) {
         mImageGrabber = new DummyImageGrabber;

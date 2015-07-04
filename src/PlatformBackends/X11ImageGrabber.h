@@ -43,9 +43,13 @@
 #include <QScopedPointerPodDeleter>
 #include <QAbstractNativeEventFilter>
 #include <QMetaObject>
+#include <QX11Info>
 
 #include <KWindowSystem>
 #include <KWindowInfo>
+#include <KScreen/Config>
+#include <KScreen/GetConfigOperation>
+#include <KScreen/Output>
 
 #include <xcb/xcb.h>
 #include <xcb/xcb_cursor.h>
@@ -56,12 +60,6 @@
 #include "ImageGrabber.h"
 
 class X11ImageGrabber;
-
-namespace KScreen
-{
-    class ConfigOperation;
-    class GetConfigOperation;
-}
 
 class OnClickEventFilter : public QAbstractNativeEventFilter
 {

@@ -25,12 +25,6 @@
 
 #include "X11ImageGrabber.h"
 
-#include <KScreen/Config>
-#include <KScreen/GetConfigOperation>
-#include <KScreen/Output>
-
-#include <QX11Info>
-
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent),
     mScreenConfigOperation(nullptr)
