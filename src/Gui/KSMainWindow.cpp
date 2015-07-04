@@ -74,13 +74,17 @@ void KSMainWindow::init()
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
+    mSaveMenu->addAction(KStandardAction::save(this, SIGNAL(save()), this));
     mSaveMenu->addAction(KStandardAction::saveAs(this, SIGNAL(saveAsClicked()), this));
     mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
     mSaveMenu->addAction(QIcon::fromTheme("applications-system"), i18n("Configure Save Options"), this, SLOT(showSaveConfigDialog()));
 
-    mSaveButton->setDefaultAction(KStandardAction::save(this, SIGNAL(saveAndExit()), this));
-    mSaveButton->setText(i18n("Save && Exit"));
-    mSaveButton->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
+    QAction *saveAndExitAction = new QAction(QIcon::fromTheme("document-save"), i18n("Save &&& Exit"), this);
+    saveAndExitAction->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
+    saveAndExitAction->setShortcut(QKeySequence(QKeySequence::Quit));
+    connect(saveAndExitAction, &QAction::triggered, this, &KSMainWindow::saveAndExit);
+
+    mSaveButton->setDefaultAction(saveAndExitAction);
     mSaveButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mSaveButton->setMenu(mSaveMenu);
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
@@ -156,6 +160,8 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     mKSWidget->setScreenshotPixmap(pixmap);
     setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
     setWindowModified(true);
+
+    KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::discard());
     show();
 
     if (mSendToMenu->menu()->isEmpty()) {

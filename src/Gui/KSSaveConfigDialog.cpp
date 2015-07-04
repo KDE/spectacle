@@ -42,8 +42,8 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
 
     QLabel *dirHelpText = new QLabel;
     dirHelpText->setWordWrap(true);
-    dirHelpText->setText(i18n("Set the directory where you'd like to save your screenshots when you use the "
-                              "<b>Save & Exit</b> button."));
+    dirHelpText->setText(i18n("Set the directory where you'd like to save your screenshots when you press "
+                              "<b>Save</b> or <b>Save & Exit</b>."));
     dirLayout->addWidget(dirHelpText);
 
     QHBoxLayout *urlRequesterLayout = new QHBoxLayout;

@@ -85,6 +85,7 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
 
     connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KSCore::takeNewScreenshot);
+    connect(mMainWindow, &KSMainWindow::save, this, &KSCore::doGuiSave);
     connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KSCore::doAutoSave);
     connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KSCore::doGuiSaveAs);
     connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KSCore::doSendToService);
@@ -224,6 +225,19 @@ void KSCore::screenshotFailed()
     }
 
     mMainWindow->show();
+}
+
+void KSCore::doGuiSave()
+{
+    if (mLocalPixmap.isNull()) {
+        emit errorMessage(i18n("Cannot save an empty screenshot image."));
+        return;
+    }
+
+    QUrl savePath = getAutosaveFilename();
+    if (doSave(savePath)) {
+        emit imageSaved(savePath);
+    }
 }
 
 void KSCore::doAutoSave()

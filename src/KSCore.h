@@ -110,6 +110,7 @@ class KSCore : public QObject
     void doStartDragAndDrop();
     void doPrint(QPrinter *printer);
     void doGuiSaveAs();
+    void doGuiSave();
     void doAutoSave();
     void doSendToService(KService::Ptr service);
     void doSendToOpenWith();
