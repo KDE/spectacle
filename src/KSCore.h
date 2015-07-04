@@ -23,50 +23,17 @@
 #include <limits>
 
 #include <QUrl>
-#include <QFile>
-#include <QTemporaryFile>
 #include <QString>
-#include <QStringList>
 #include <QByteArray>
-#include <QDateTime>
-#include <QImageWriter>
-#include <QMimeDatabase>
-#include <QMimeType>
-#include <QStandardPaths>
-#include <QFileDialog>
-#include <QPrinter>
-#include <QPainter>
-#include <QRect>
-#include <QIcon>
-#include <QDir>
-#include <QDrag>
-#include <QMimeData>
-#include <QClipboard>
-#include <QTimer>
-#include <QMetaObject>
-#include <QDebug>
 
-#include <KLocalizedString>
-#include <KJob>
-#include <KRun>
 #include <KService>
-#include <KConfigGroup>
-#include <KSharedConfig>
-#include <KWindowSystem>
-#include <KMessageBox>
-#include <KNotification>
-#include <KIO/FileCopyJob>
-#include <KIO/StatJob>
-
-#ifdef XCB_FOUND
-#include "PlatformBackends/X11ImageGrabber.h"
-#endif // XCB_FOUND
 
 #include "PlatformBackends/ImageGrabber.h"
-#include "PlatformBackends/DummyImageGrabber.h"
 
 #include "Gui/KSMainWindow.h"
 #include "Config.h"
+
+class QPrinter;
 
 class KSCore : public QObject
 {

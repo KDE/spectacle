@@ -31,6 +31,43 @@
 
 #include "KSCore.h"
 
+#ifdef XCB_FOUND
+#include "PlatformBackends/X11ImageGrabber.h"
+#endif // XCB_FOUND
+
+#include "PlatformBackends/DummyImageGrabber.h"
+
+#include <KLocalizedString>
+#include <KJob>
+#include <KRun>
+#include <KConfigGroup>
+#include <KSharedConfig>
+#include <KWindowSystem>
+#include <KMessageBox>
+#include <KNotification>
+#include <KIO/FileCopyJob>
+#include <KIO/StatJob>
+
+#include <QFile>
+#include <QTemporaryFile>
+#include <QStringList>
+#include <QDateTime>
+#include <QImageWriter>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <QStandardPaths>
+#include <QFileDialog>
+#include <QPainter>
+#include <QRect>
+#include <QIcon>
+#include <QDir>
+#include <QDrag>
+#include <QMimeData>
+#include <QTimer>
+#include <QMetaObject>
+#include <QClipboard>
+#include <QDebug>
+
 KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
     mBackgroundMode(backgroundMode),
