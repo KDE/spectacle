@@ -38,6 +38,7 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
     mLocalPixmap(QPixmap()),
+    mImageGrabber(nullptr),
     mMainWindow(nullptr)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
@@ -50,9 +51,13 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
         setFilename(saveFileName);
     }
 
+#ifdef XCB_FOUND
     if (qApp->platformName() == QStringLiteral("xcb")) {
         mImageGrabber = new X11ImageGrabber;
-    } else {
+    }
+#endif // XCB_FOUND
+
+    if (!mImageGrabber) {
         mImageGrabber = new DummyImageGrabber;
     }
 
