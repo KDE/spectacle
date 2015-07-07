@@ -37,7 +37,7 @@
 		<releaseinfo>1.9.96</releaseinfo>
 
 		<abstract>
-			<para>&kscreengenie; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+			<para>&kscreengenie; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 		</abstract>
 
 		<keywordset>
@@ -53,7 +53,7 @@
 	<chapter id="introduction">
 	    <title>Introduction</title>
 
-	    <para>&kscreengenie; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+	    <para>&kscreengenie; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
 	    <para>Please report any problems or feature requests to the <ulink url="http://bugs.kde.org/">&kde; Bug Tracking System</ulink>.</para>
 	</chapter>
@@ -107,9 +107,9 @@
 
 		<para>The snapshot taken by &kscreengenie; is displayed in the preview window, which is located on the left-hand side of the &kscreengenie; application window.</para>
 
-		<para>To quickly save the image and quit &kscreengenie; press the <guibutton>Save &amp; Exit</guibutton> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) button. This saves the image as a PNG file in your default Pictures folder, and exits the application immediately.</para>
+		<para>To quickly save the image and quit &kscreengenie; press the <guibutton>Save &amp; Exit</guibutton> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) button. By default, this saves the image as a PNG file in your default Pictures folder, and exits the application immediately. The default save location and filename can be configured, as described later.</para>
 
-		<para>The image can be saved by clicking on the <guibutton>Save As...</guibutton> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) button. This opens the standard &kde; save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot.</para>
+		<para>The image can be saved by clicking on the arrow portion of the <guibutton>Save &amp; Exit</guibutton> button, and choosing <guimenuitem>Save As...</guimenuitem> (<keycombo action="simul">&Ctrl;&Shift;<keycap>S</keycap></keycombo>) option. This opens the standard &kde; save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot. You may also select the <guimenuitem>Save...</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) option, which will save the image to its default location and with the default filename.</para>
 
 		<sect1 id="taking-screenshot">
 			<title>Taking A Screenshot</title>
@@ -121,9 +121,9 @@
 			<sect2>
 				<title>Capture Mode</title>
 
-				<para>The capture mode settings allow you to set the area of the screen that should be captured, and whether there should be a delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot.</para>
+				<para>The capture mode settings allow you to set the area of the screen that should be captured, and whether there should be a delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. You may also enable the <guilabel>On Click</guilabel> checkbox, which disables the delay function and only takes the screenshot after you click anywhere on the screen after clicking the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
 
-				<para>The <guilabel>Capture Area</guilabel> combo-box allows you to set the area of the screen that should be captured. There are four options to select from, as described below.</para>
+				<para>The <guilabel>Area</guilabel> combo-box allows you to set the area of the screen that should be captured. There are five options to select from, as described below.</para>
 
 				<itemizedlist>
 					<listitem>
@@ -136,28 +136,36 @@
 						<para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
 					</listitem>
 					<listitem>
+						<para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a pop-up menu, &kscreengenie; tries to take a screenshot of the menu as well as its parent window.</para>
+
+						<para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &kscreengenie; falls back to old way of capturing the image automatically, and captures an image of only the pop-up menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Content Options</guilabel></para>
+					</listitem>
+					<listitem>
 						<para>The <guilabel>Rectangular Region</guilabel> option allows you to select a rectangular region of your desktop with your mouse. This region may be spread across different outputs.</para>
 
 						<para>This mode does not immediately take a screenshot but allows you to draw a rectangle on your screen, which can be moved and resized as needed. Once the desired selection rectangle has been drawn, double-clicking anywhere on the screen, or pressing the &Enter; button on the keyboard will capture the screenshot.</para>
 					</listitem>
 				</itemizedlist>
 
-				<para>The <guilabel>Capture Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 milliseconds.</para>
+				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 milliseconds.</para>
 
 				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &kscreengenie; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
 			</sect2>
 
 			<sect2>
-				<title>Capture Options</title>
+				<title>Content Options</title>
 
-				<para>The capture options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window</para>
+				<para>The content options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &kscreengenie; shall only capture the image of the current pop-up menu under the cursor, or also include the parent window.</para>
 
 				<itemizedlist>
 					<listitem>
 						<para>Enabling the <guilabel>Include mouse pointer</guilabel> checkbox includes an image of the mouse pointer in the screenshot.</para>
 					</listitem>
 					<listitem>
-						<para>The <guilabel>Include window titlebar and borders</guilabel> option is only enabled when the <guilabel>Active Window</guilabel> mode is selected in the <guilabel>Capture Area</guilabel> combo-box. Checking this option includes the window borders and decoration in the screenshot, while unchecking it gives an image of only the window contents.</para>
+						<para>The <guilabel>Include window titlebar and borders</guilabel> option is only enabled when either the <guilabel>Active Window</guilabel> mode or the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Capture Area</guilabel> combo-box. Checking this option includes the window borders and decoration in the screenshot, while unchecking it gives an image of only the window contents.</para>
+					</listitem>
+					<listitem>
+						<para>The <guilabel>Capture the current pop-up only</guilabel> option is only enabled when the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option captures only the pop-up menu under the cursor, without its parent window.</para>
 					</listitem>
 				</itemizedlist>
 			</sect2>
@@ -170,39 +178,35 @@
 		<sect1>
 			<title>Buttons</title>
 
-			<para>There are six buttons located at the bottom of the &kscreengenie; window. Their functions are described below:</para>
+			<para>There are five buttons located at the bottom of the &kscreengenie; window. Their functions are described below:</para>
 
 			<variablelist>
 				<varlistentry>
 					<term><guibutton>Help</guibutton></term>
 					<listitem>
-						<para>Gives you a menu where you can open the <guimenuitem>&kscreengenie; Handbook</guimenuitem>, report a bug, switch the language for &kscreengenie; or get some more information <guimenuitem>About &kscreengenie;</guimenuitem> and <guimenuitem>About &kde;</guimenuitem>.</para>
+						<para>This button gives you a menu where you can open the <guimenuitem>&kscreengenie; Handbook</guimenuitem>, report a bug, switch the language for &kscreengenie; or get some more information <guimenuitem>About &kscreengenie;</guimenuitem> and <guimenuitem>About &kde;</guimenuitem>.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guibutton>Send To...</guibutton></term>
+					<term><guibutton>Open With...</guibutton></term>
 					<listitem>
-						<para>This drop-down menu will allow you to copy the screenshot to the clipboard, or directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) MIME type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
+						<para>This drop-down menu will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) MIME type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
 
-						<para>Furthermore, if you have the <application>KIPI Plugins</application> installed, you will be able to print your snapshots, e-mail them and export directly to some social networks and websites.</para>
+						<para>Furthermore, if you have the <application>KIPI Plugins</application> installed, you will be able to e-mail your screenshots and export them directly to some social networks and websites.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guibutton>Print</guibutton></term>
+					<term><guibutton>Copy To Clipboard</guibutton></term>
 					<listitem>
-						<para>This button opens the standard &kde; print dialog and allows you to quickly print out the screenshot.</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry>
-					<term><guibutton>Save As...</guibutton></term>
-					<listitem>
-						<para>Saves the screenshot to a file in the selected format.</para>
+						<para>This button copies the current screenshot to the clipboard. You can also use the <keycombo action="simul">&Ctrl;<keycap>C</keycap></keycombo> keyboard shortcut for this.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
 					<term><guibutton>Save &amp; Exit</guibutton></term>
 					<listitem>
-						<para>Saves the screenshot as a PNG image in your default Pictures directory and immediately exits the application.</para>
+						<para>Clicking this button saves the screenshot as a PNG image in your default Pictures directory and immediately exits the application.</para>
+
+						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default save options, such as where to save the image by default and what filename to save it as.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -212,6 +216,22 @@
 					</listitem>
 				</varlistentry>
 			</variablelist>
+		</sect1>
+
+		<sect1>
+			<title>Configure Save Options</title>
+			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &kscreengenie; saves the image with a default filename, in your Pictures folder under your home directory. The default filename includes the date and time when the image was taken.</para>
+
+			<para>The <guilabel>Configure Save Options</guilabel> option allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="SaveOptions.png" format="PNG"/>
+					</imageobject>
+					<textobject>
+						<phrase>Configure Save Options</phrase>
+					</textobject>
+				</mediaobject>
+			The dialog box includes appropriate help text on how to configure the save options.</para>
 		</sect1>
 
 		<sect1>

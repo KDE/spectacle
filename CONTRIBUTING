@@ -36,9 +36,9 @@ KScreenGenie follows the KDELibs coding style, with a few execptions:
        }
 
        The access modifier ordering is: public, signals, public slots,
-       private slots, private. Member variables come at the end, after
-       all member functions. This is not strictly enforced, but is a
-       good rule to follow.
+       protected slots, protected, private slots, private. Member variables
+       come at the end, after all member functions. This is not strictly
+       enforced, but is a good rule to follow.
 
     2. Headers are cumulative, i.e., all headers that a particular class
        requires, are #include-ed in the class's header file, not the .cpp
