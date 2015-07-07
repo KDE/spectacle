@@ -55,15 +55,23 @@ bool OnClickEventFilter::nativeEventFilter(const QByteArray &eventType, void *me
         case XCB_BUTTON_RELEASE:
 
             // uninstall the event filter first
+
             qApp->removeNativeEventFilter(this);
 
             // ungrab the mouse
+
             xcb_ungrab_pointer(QX11Info::connection(), XCB_TIME_CURRENT_TIME);
 
-            // grab the image
-            QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
+            // decide whether to grab or abort
 
-            // done
+            {
+                xcb_button_release_event_t *ev2 = static_cast<xcb_button_release_event_t *>(message);
+                if (ev2->state == XCB_BUTTON_MASK_1) {
+                    QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
+                } else {
+                    emit mImageGrabber->imageGrabFailed();
+                }
+            }
             return true;
         default:
             return false;
