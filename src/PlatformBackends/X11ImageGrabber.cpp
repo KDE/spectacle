@@ -409,8 +409,9 @@ void X11ImageGrabber::grabTransientWithParent()
 
     // do we have a top-level or a transient window?
 
-    KWindowInfo info(curWin, NET::WMName, NET::WM2TransientFor);
-    if (!(info.valid(true) && (info.transientFor() != XCB_WINDOW_NONE))) {
+    KWindowInfo info(curWin, NET::WMName, NET::WM2TransientFor | NET::WM2WindowClass);
+    if (!(info.valid(true) && (info.transientFor() != XCB_WINDOW_NONE)) ||
+          info.windowClassClass().isEmpty() || info.windowClassName().isEmpty()) {
         return grabWindowUnderCursor();
     }
 
