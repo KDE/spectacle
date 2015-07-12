@@ -38,7 +38,6 @@ include(FeatureSummary)
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
-        Quick
         Widgets
         DBus
         PrintSupport

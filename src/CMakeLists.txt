@@ -51,7 +51,6 @@ add_executable(
 
 target_link_libraries(
     kscreengenie
-        Qt5::Quick
         Qt5::DBus
         Qt5::PrintSupport
         KF5::CoreAddons
