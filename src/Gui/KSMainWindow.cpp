@@ -20,7 +20,7 @@
 #include "KSMainWindow.h"
 
 KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     mKSWidget(new KSWidget),
     mDivider(new QFrame),
     mDialogButtonBox(new QDialogButtonBox),
@@ -49,6 +49,7 @@ void KSMainWindow::init()
     // window properties
 
     setMinimumSize(840, 420);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     resize(minimumSize());
 
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));

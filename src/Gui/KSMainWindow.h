@@ -20,7 +20,7 @@
 #ifndef KSMAINWINDOW_H
 #define KSMAINWINDOW_H
 
-#include <QWidget>
+#include <QDialog>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QVBoxLayout>
@@ -54,7 +54,7 @@
 #include "KSSaveConfigDialog.h"
 #include "KSSendToMenu.h"
 
-class KSMainWindow : public QWidget
+class KSMainWindow : public QDialog
 {
     Q_OBJECT
 
