@@ -49,6 +49,12 @@
 #include <KActionCollection>
 #include <KStandardAction>
 
+#include "Config.h"
+#ifdef XCB_FOUND
+#include <QX11Info>
+#include <xcb/xcb.h>
+#endif
+
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
 #include "KSSaveConfigDialog.h"

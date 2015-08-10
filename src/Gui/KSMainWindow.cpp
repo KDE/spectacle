@@ -33,6 +33,40 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mActionCollection(new KActionCollection(this, "KSStandardActions")),
     mOnClickAvailable(onClickAvailable)
 {
+    // before we do anything, we need to set a window property
+    // that skips the close/hide window animation on kwin. this
+    // fixes a ghost image of the kscreengenie window that appears
+    // on subsequent screenshots taken with the take new screenshot
+    // button
+    //
+    // credits for this goes to Thomas Lübking <thomas.luebking@gmail.com>
+
+#ifdef XCB_FOUND
+    if (qApp->platformName() == QStringLiteral("xcb")) {
+        // create a window if we haven't already. note that the QWidget constructor
+        // should already have done this
+
+        if (winId() == 0) {
+            create(0, true, true);
+        }
+
+        // do the xcb shenanigans
+
+        xcb_connection_t *xcbConn = QX11Info::connection();
+        const QByteArray effectName = QByteArrayLiteral("_KDE_NET_WM_SKIP_CLOSE_ANIMATION");
+
+        xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, false, effectName.length(), effectName.constData());
+        QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
+        if (atom.isNull()) {
+          goto done;
+        }
+
+        uint32_t value = 1;
+        xcb_change_property(xcbConn, XCB_PROP_MODE_REPLACE, winId(), atom->atom, XCB_ATOM_CARDINAL, 32, 1, &value);
+    }
+#endif
+
+    done:
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
 
