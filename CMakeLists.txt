@@ -1,9 +1,9 @@
 # KScreenGenie project
 
 project(KScreenGenie)
-set(KSG_VERSION_MAJOR 1)
-set(KSG_VERSION_MINOR 9)
-set(KSG_VERSION_PATCH 97.1)
+set(KSG_VERSION_MAJOR 2)
+set(KSG_VERSION_MINOR 0)
+set(KSG_VERSION_PATCH 0)
 set(KSG_VERSION "${KSG_VERSION_MAJOR}.${KSG_VERSION_MINOR}.${KSG_VERSION_PATCH}")
 
 # minimum requirements
