@@ -37,7 +37,7 @@ KSImageWidget::KSImageWidget(QWidget *parent):
 void KSImageWidget::setScreenshot(const QPixmap &pixmap)
 {
     mPixmap = pixmap;
-    setToolTip(i18n("Image Size: %1x%2 pixels").arg(mPixmap.width()).arg(mPixmap.height()));
+    setToolTip(i18n("Image Size: %1x%2 pixels", mPixmap.width(), mPixmap.height()));
     setPixmap(mPixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
