@@ -75,7 +75,7 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
             "<b>%Y</b>: Year (4 digit)<br />"
             "<b>%y</b>: Year (2 digit)<br />"
             "<b>%M</b>: Month<br />"
-            "<b>%D</b>: Date<br />"
+            "<b>%D</b>: Day<br />"
             "<b>%H</b>: Hour<br />"
             "<b>%m</b>: Minute<br />"
             "<b>%S</b>: Second"
