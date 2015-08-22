@@ -31,7 +31,8 @@
 
 #include "KSCore.h"
 
-KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
+KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
+               qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
     mBackgroundMode(backgroundMode),
     mNotify(notifyOnGrab),
@@ -169,7 +170,8 @@ void KSCore::setSaveLocation(const QString &savePath)
 
 // Slots
 
-void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode, const int &timeout, const bool &includePointer, const bool &includeDecorations)
+void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
+                               const int &timeout, const bool &includePointer, const bool &includeDecorations)
 {
     mImageGrabber->setGrabMode(mode);
     mImageGrabber->setCapturePointer(includePointer);
@@ -509,8 +511,13 @@ QUrl KSCore::getTempSaveFilename() const
 bool KSCore::tempFileSave()
 {
     if (!(mLocalPixmap.isNull())) {
-        return localSave(getTempSaveFilename(), "png");
+        const QUrl savePath = getTempSaveFilename();
+
+        if (localSave(savePath, "png")) {
+            return QFile::setPermissions(savePath.toLocalFile(), QFile::ReadUser | QFile::WriteUser);
+        }
     }
+
     return false;
 }
 
