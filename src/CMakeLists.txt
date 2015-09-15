@@ -5,7 +5,7 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 # target
 
 set(
-    KSG_SRCS_DEFAULT
+    KAPTURE_SRCS_DEFAULT
         Main.cpp
         KSCore.cpp
         ScreenClipper.cpp
@@ -20,14 +20,14 @@ set(
 
 if(XCB_FOUND)
     set(
-        KSG_SRCS_X11
+        KAPTURE_SRCS_X11
             PlatformBackends/X11ImageGrabber.cpp
     )
 endif()
 
 if(KF5Kipi_FOUND)
     set(
-        KSG_SRCS_KIPI
+        KAPTURE_SRCS_KIPI
             KipiInterface/KSGKipiInterface.cpp
             KipiInterface/KSGKipiInfoShared.cpp
             KipiInterface/KSGKipiImageCollectionShared.cpp
@@ -36,21 +36,21 @@ if(KF5Kipi_FOUND)
 endif()
 
 set(
-    KSG_SRCS_ALL
-        ${KSG_SRCS_DEFAULT}
-        ${KSG_SRCS_KIPI}
-        ${KSG_SRCS_X11}
+    KAPTURE_SRCS_ALL
+        ${KAPTURE_SRCS_DEFAULT}
+        ${KAPTURE_SRCS_KIPI}
+        ${KAPTURE_SRCS_X11}
 )
 
 add_executable(
-    kscreengenie
-        ${KSG_SRCS_ALL}
+    kapture
+        ${KAPTURE_SRCS_ALL}
 )
 
 # link libraries
 
 target_link_libraries(
-    kscreengenie
+    kapture
         Qt5::DBus
         Qt5::PrintSupport
         KF5::CoreAddons
@@ -65,7 +65,7 @@ target_link_libraries(
 
 if(XCB_FOUND)
     target_link_libraries(
-        kscreengenie
+        kapture
             XCB::XFIXES
             XCB::IMAGE
             XCB::CURSOR
@@ -77,9 +77,9 @@ endif()
 
 if(KF5Kipi_FOUND)
     target_link_libraries (
-        kscreengenie
+        kapture
             KF5::Kipi
     )
 endif()
 
-install(TARGETS kscreengenie ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS kapture ${INSTALL_TARGETS_DEFAULT_ARGS})

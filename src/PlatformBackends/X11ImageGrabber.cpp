@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015 Boudhayan Gupta <me@BaloneyGeek.com>
+ *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  Contains code from kxutils.cpp, part of KWindowSystem. Copyright
  *  notices reproduced below:

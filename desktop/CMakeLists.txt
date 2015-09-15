@@ -1,11 +1,11 @@
 # install the .desktop and rc files in the correct place
 
 install(
-    PROGRAMS org.kde.kscreengenie.desktop
+    PROGRAMS org.kde.kapture.desktop
     DESTINATION ${XDG_APPS_INSTALL_DIR}
 )
 
 install(
-    FILES kscreengenie.notifyrc
-    DESTINATION  ${KNOTIFYRC_INSTALL_DIR}
+    FILES kapture.notifyrc
+    DESTINATION ${KNOTIFYRC_INSTALL_DIR}
 )

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015 Boudhayan Gupta <me@BaloneyGeek.com>
+ *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     app.setOrganizationDomain("kde.org");
-    app.setApplicationName("kscreengenie");
+    app.setApplicationName("kapture");
     app.setWindowIcon(QIcon::fromTheme("ksnapshot"));
 
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
@@ -45,14 +45,14 @@ int main(int argc, char **argv)
 
     // set up the about data
 
-    KLocalizedString::setApplicationDomain("kscreengenie");
-    KAboutData aboutData("kscreengenie",
-                         i18n("KScreenGenie"),
-                         KSG_VERSION,
+    KLocalizedString::setApplicationDomain("kapture");
+    KAboutData aboutData("kapture",
+                         i18n("Kapture"),
+                         KAPTURE_VERSION,
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
-    aboutData.addAuthor("Boudhayan Gupta", QString(), "me@BaloneyGeek.com");
+    aboutData.addAuthor("Boudhayan Gupta", QString(), "bgupta@kde.org");
     KAboutData::setApplicationData(aboutData);
 
     // set up the command line options parser

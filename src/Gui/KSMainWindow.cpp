@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015 Boudhayan Gupta <me@BaloneyGeek.com>
+ *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by

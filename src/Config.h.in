@@ -1,5 +1,5 @@
-#ifndef KSG_CONFIG_H
-#define KSG_CONFIG_H
+#ifndef KAPTURE_CONFIG_H
+#define KAPTURE_CONFIG_H
 
 /* Define to 1 if we are building with XCB */
 #cmakedefine XCB_FOUND 1
@@ -7,7 +7,7 @@
 /* Define to 1 if we have KIPI */
 #cmakedefine KIPI_FOUND 1
 
-/* Set the KScreenGenie version from CMake */
-#cmakedefine KSG_VERSION "@KSG_VERSION@"
+/* Set the Kapture version from CMake */
+#cmakedefine KAPTURE_VERSION "@KAPTURE_VERSION@"
 
 #endif
