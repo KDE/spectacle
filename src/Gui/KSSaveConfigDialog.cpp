@@ -30,7 +30,7 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
 
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     // set up the layout. start with the directory
@@ -127,7 +127,7 @@ void KSSaveConfigDialog::accept()
 {
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     // save the data

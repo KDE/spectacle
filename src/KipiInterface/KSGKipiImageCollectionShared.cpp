@@ -26,7 +26,7 @@
 KSGKipiImageCollectionShared::KSGKipiImageCollectionShared()  {}
 KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared() {}
 
-QString KSGKipiImageCollectionShared::name()           { return "KScreenGenie"; }
+QString KSGKipiImageCollectionShared::name()           { return "Kapture"; }
 QString KSGKipiImageCollectionShared::comment()        { return QString(); }
 QString KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
 QUrl    KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }

@@ -135,7 +135,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     // and read in the saved checkbox states and capture mode indices
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     mMousePointer->setChecked(guiConfig.readEntry("includePointer", true));
@@ -178,7 +178,7 @@ void KSWidget::checkboxStatesChanged(int state)
 {
     Q_UNUSED(state);
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("includePointer",     mMousePointer->isChecked());
@@ -199,7 +199,7 @@ void KSWidget::onClickStateChanged(int state)
 
 void KSWidget::captureModeChanged(int index)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("captureModeIndex", index);
@@ -223,7 +223,7 @@ void KSWidget::captureModeChanged(int index)
 
 void KSWidget::captureDelayChanged(qreal value)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("captureDelay", value);

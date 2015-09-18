@@ -42,7 +42,7 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     mImageGrabber(nullptr),
     mMainWindow(nullptr)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     if (!(saveFileName.isEmpty() || saveFileName.isNull())) {
@@ -141,7 +141,7 @@ void KSCore::setOverwriteOnSave(const bool &overwrite)
 
 QString KSCore::saveLocation() const
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     QString savePath = generalConfig.readPathEntry(
@@ -162,7 +162,7 @@ QString KSCore::saveLocation() const
 
 void KSCore::setSaveLocation(const QString &savePath)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     generalConfig.writePathEntry("last-saved-to", savePath);
@@ -411,7 +411,7 @@ QUrl KSCore::getAutosaveFilename()
 
 QString KSCore::makeAutosaveFilename()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kscreengenierc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     const QDateTime timestamp = QDateTime::currentDateTime();
