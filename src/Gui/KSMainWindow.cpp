@@ -35,7 +35,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
 {
     // before we do anything, we need to set a window property
     // that skips the close/hide window animation on kwin. this
-    // fixes a ghost image of the kapture window that appears
+    // fixes a ghost image of the spectacle window that appears
     // on subsequent screenshots taken with the take new screenshot
     // button
     //
@@ -77,7 +77,7 @@ KSMainWindow::~KSMainWindow()
 
 void KSMainWindow::init()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     // window properties
@@ -175,7 +175,7 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 {
     Q_UNUSED(event);
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("window-position", pos());

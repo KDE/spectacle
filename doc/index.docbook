@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kapture "Kapture">
-  <!ENTITY kappname "&kapture;">
+  <!ENTITY spectacle "Spectacle">
+  <!ENTITY kappname "&spectacle;">
   <!ENTITY package "kdegraphics">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
@@ -9,9 +9,9 @@
   <!ENTITY Boudhayan.Gupta.mail "<email>bgupta@kde.org</email>">
 ]>
 
-<book id="kapture" lang="&language;">
+<book id="spectacle" lang="&language;">
 	<bookinfo>
-		<title>The &kapture; Handbook</title>
+		<title>The &spectacle; Handbook</title>
 
 		<authorgroup>
 			<author>
@@ -37,12 +37,12 @@
 		<releaseinfo>1.9.96</releaseinfo>
 
 		<abstract>
-			<para>&kapture; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+			<para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 		</abstract>
 
 		<keywordset>
 			<keyword>KDE</keyword>
-			<keyword>&kapture;</keyword>
+			<keyword>&spectacle;</keyword>
 			<keyword>kdegraphics</keyword>
 			<keyword>screenshot</keyword>
 			<keyword>screen capture</keyword>
@@ -53,61 +53,61 @@
 	<chapter id="introduction">
 	    <title>Introduction</title>
 
-	    <para>&kapture; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+	    <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
 	    <para>Please report any problems or feature requests to the <ulink url="http://bugs.kde.org/">&kde; Bug Tracking System</ulink>.</para>
 	</chapter>
 
 	<chapter id="starting">
-		<title>Starting &kapture;</title>
+		<title>Starting &spectacle;</title>
 
-		<para>&kapture; can be started in a variety of ways, as described below:</para>
+		<para>&spectacle; can be started in a variety of ways, as described below:</para>
 
 		<itemizedlist>
 			<listitem>
-				<para>In the application launcher menu, &kapture; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &kapture;</guimenuitem></menuchoice></para>
+				<para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
 			</listitem>
 			<listitem>
-				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &kapture;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Alt;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI.</para>
+				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Alt;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI.</para>
 			</listitem>
 			<listitem>
-				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &kapture;.</para>
+				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &spectacle;.</para>
 			</listitem>
 			<listitem>
-				<para> &kapture; can be started from the command-line. &kapture; has an extensive set of command-line options, including a background mode which can be used to script the capture of screenshots without showing the GUI or requiring user interaction.</para>
+				<para> &spectacle; can be started from the command-line. &spectacle; has an extensive set of command-line options, including a background mode which can be used to script the capture of screenshots without showing the GUI or requiring user interaction.</para>
 
-				<para>To start &kapture; from the command prompt, type in:</para>
+				<para>To start &spectacle; from the command prompt, type in:</para>
 				<screen width="40">
-					<prompt>%</prompt> <command>kapture &amp;</command>
+					<prompt>%</prompt> <command>spectacle &amp;</command>
 				</screen>
 
 				<para>To view the full list of command-line options and their explanation, type in:</para>
 				<screen width="40">
-					<prompt>%</prompt> <command>kapture --help</command>
+					<prompt>%</prompt> <command>spectacle --help</command>
 				</screen>
 			</listitem>
 		</itemizedlist>
 	</chapter>
 
 	<chapter id="using">
-		<title>Using &kapture;</title>
+		<title>Using &spectacle;</title>
 
-		<para>Once &kapture; starts, you will see a window like the following:
+		<para>Once &spectacle; starts, you will see a window like the following:
 			<mediaobject>
 				<imageobject>
 					<imagedata fileref="MainWindow.png" format="PNG"/>
 				</imageobject>
 				<textobject>
-					<phrase>&kapture; Main Window</phrase>
+					<phrase>&spectacle; Main Window</phrase>
 				</textobject>
 			</mediaobject>
 		</para>
 
-		<para>&kapture; grabs an image of your entire desktop immediately after it is started, but before it displays itself on screen. This allows you to quickly create full-desktop screenshot images.</para>
+		<para>&spectacle; grabs an image of your entire desktop immediately after it is started, but before it displays itself on screen. This allows you to quickly create full-desktop screenshot images.</para>
 
-		<para>The snapshot taken by &kapture; is displayed in the preview window, which is located on the left-hand side of the &kapture; application window.</para>
+		<para>The snapshot taken by &spectacle; is displayed in the preview window, which is located on the left-hand side of the &spectacle; application window.</para>
 
-		<para>To quickly save the image and quit &kapture; press the <guibutton>Save &amp; Exit</guibutton> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) button. By default, this saves the image as a PNG file in your default Pictures folder, and exits the application immediately. The default save location and filename can be configured, as described later.</para>
+		<para>To quickly save the image and quit &spectacle; press the <guibutton>Save &amp; Exit</guibutton> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) button. By default, this saves the image as a PNG file in your default Pictures folder, and exits the application immediately. The default save location and filename can be configured, as described later.</para>
 
 		<para>The image can be saved by clicking on the arrow portion of the <guibutton>Save &amp; Exit</guibutton> button, and choosing <guimenuitem>Save As...</guimenuitem> (<keycombo action="simul">&Ctrl;&Shift;<keycap>S</keycap></keycombo>) option. This opens the standard &kde; save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot. You may also select the <guimenuitem>Save...</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) option, which will save the image to its default location and with the default filename.</para>
 
@@ -136,9 +136,9 @@
 						<para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
 					</listitem>
 					<listitem>
-						<para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a pop-up menu, &kapture; tries to take a screenshot of the menu as well as its parent window.</para>
+						<para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a pop-up menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
 
-						<para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &kapture; falls back to old way of capturing the image automatically, and captures an image of only the pop-up menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Content Options</guilabel></para>
+						<para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the pop-up menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Content Options</guilabel></para>
 					</listitem>
 					<listitem>
 						<para>The <guilabel>Rectangular Region</guilabel> option allows you to select a rectangular region of your desktop with your mouse. This region may be spread across different outputs.</para>
@@ -149,13 +149,13 @@
 
 				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 milliseconds.</para>
 
-				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &kapture; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
+				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &spectacle; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
 			</sect2>
 
 			<sect2>
 				<title>Content Options</title>
 
-				<para>The content options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &kapture; shall only capture the image of the current pop-up menu under the cursor, or also include the parent window.</para>
+				<para>The content options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &spectacle; shall only capture the image of the current pop-up menu under the cursor, or also include the parent window.</para>
 
 				<itemizedlist>
 					<listitem>
@@ -178,13 +178,13 @@
 		<sect1>
 			<title>Buttons</title>
 
-			<para>There are five buttons located at the bottom of the &kapture; window. Their functions are described below:</para>
+			<para>There are five buttons located at the bottom of the &spectacle; window. Their functions are described below:</para>
 
 			<variablelist>
 				<varlistentry>
 					<term><guibutton>Help</guibutton></term>
 					<listitem>
-						<para>This button gives you a menu where you can open the <guimenuitem>&kapture; Handbook</guimenuitem>, report a bug, switch the language for &kapture; or get some more information <guimenuitem>About &kapture;</guimenuitem> and <guimenuitem>About &kde;</guimenuitem>.</para>
+						<para>This button gives you a menu where you can open the <guimenuitem>&spectacle; Handbook</guimenuitem>, report a bug, switch the language for &spectacle; or get some more information <guimenuitem>About &spectacle;</guimenuitem> and <guimenuitem>About &kde;</guimenuitem>.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -220,7 +220,7 @@
 
 		<sect1>
 			<title>Configure Save Options</title>
-			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &kapture; saves the image with a default filename, in your Pictures folder under your home directory. The default filename includes the date and time when the image was taken.</para>
+			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &spectacle; saves the image with a default filename, in your Pictures folder under your home directory. The default filename includes the date and time when the image was taken.</para>
 
 			<para>The <guilabel>Configure Save Options</guilabel> option allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
 				<mediaobject>

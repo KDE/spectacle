@@ -13,6 +13,4 @@ if [ -f "data/tips" ] ; then
 fi
 
 # Run xgettext to extract strings from all source files.
-$XGETTEXT `find . -name \*.cpp -o -name \*.h -o -name \*.qml` -o $podir/kapture.pot
-
-
+$XGETTEXT `find . -name \*.cpp -o -name \*.h -o -name \*.qml` -o $podir/spectacle.pot

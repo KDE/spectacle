@@ -42,7 +42,7 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     mImageGrabber(nullptr),
     mMainWindow(nullptr)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     if (!(saveFileName.isEmpty() || saveFileName.isNull())) {
@@ -141,7 +141,7 @@ void KSCore::setOverwriteOnSave(const bool &overwrite)
 
 QString KSCore::saveLocation() const
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     QString savePath = generalConfig.readPathEntry(
@@ -162,7 +162,7 @@ QString KSCore::saveLocation() const
 
 void KSCore::setSaveLocation(const QString &savePath)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     generalConfig.writePathEntry("last-saved-to", savePath);
@@ -266,7 +266,7 @@ void KSCore::doAutoSave()
             KNotification *notify = new KNotification("newScreenshotSaved");
 
             notify->setText(i18n("A new screenshot was captured and saved to %1", savePath.toLocalFile()));
-            notify->setPixmap(QIcon::fromTheme("ksnapshot").pixmap(QSize(32, 32)));
+            notify->setPixmap(QIcon::fromTheme("spectacle").pixmap(QSize(32, 32)));
             notify->sendEvent();
 
             // unfortunately we can't quit just yet, emitting allDone right away
@@ -411,7 +411,7 @@ QUrl KSCore::getAutosaveFilename()
 
 QString KSCore::makeAutosaveFilename()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     const QDateTime timestamp = QDateTime::currentDateTime();

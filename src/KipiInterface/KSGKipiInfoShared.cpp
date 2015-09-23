@@ -36,4 +36,4 @@ void KSGKipiInfoShared::addAttributes(const QMap< QString, QVariant > &) {}
 void KSGKipiInfoShared::clearAttributes() {}
 QMap<QString, QVariant> KSGKipiInfoShared::attributes() { return QMap<QString, QVariant>(); }
 void KSGKipiInfoShared::setDescription(const QString &) {}
-QString KSGKipiInfoShared::description() { return i18n("Taken with Kapture"); }
+QString KSGKipiInfoShared::description() { return i18n("Taken with Spectacle"); }

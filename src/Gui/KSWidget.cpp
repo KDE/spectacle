@@ -100,7 +100,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     mTakeScreenshotButton = new QPushButton(this);
     mTakeScreenshotButton->setText(i18n("Take New Screenshot"));
-    mTakeScreenshotButton->setIcon(QIcon::fromTheme("ksnapshot"));
+    mTakeScreenshotButton->setIcon(QIcon::fromTheme("spectacle"));
     mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     mTakeScreenshotButton->setFocus();
     connect(mTakeScreenshotButton, &QPushButton::clicked, this, &KSWidget::newScreenshotClicked);
@@ -135,7 +135,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     // and read in the saved checkbox states and capture mode indices
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     mMousePointer->setChecked(guiConfig.readEntry("includePointer", true));
@@ -178,7 +178,7 @@ void KSWidget::checkboxStatesChanged(int state)
 {
     Q_UNUSED(state);
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("includePointer",     mMousePointer->isChecked());
@@ -199,7 +199,7 @@ void KSWidget::onClickStateChanged(int state)
 
 void KSWidget::captureModeChanged(int index)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("captureModeIndex", index);
@@ -223,7 +223,7 @@ void KSWidget::captureModeChanged(int index)
 
 void KSWidget::captureDelayChanged(qreal value)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("kapturerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("captureDelay", value);

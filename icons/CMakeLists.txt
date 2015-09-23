@@ -3,11 +3,11 @@
 
 ecm_install_icons(
     ICONS
-        16-apps-ksnapshot.png
-        22-apps-ksnapshot.png
-        32-apps-ksnapshot.png
-        48-apps-ksnapshot.png
-        sc-apps-ksnapshot.svgz
+        16-apps-spectacle.png
+        22-apps-spectacle.png
+        32-apps-spectacle.png
+        48-apps-spectacle.png
+        sc-apps-spectacle.svgz
     DESTINATION ${ICON_INSTALL_DIR}
     THEME hicolor
 )
