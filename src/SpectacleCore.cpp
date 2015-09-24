@@ -29,9 +29,9 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "KSCore.h"
+#include "SpectacleCore.h"
 
-KSCore::KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
+SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
     mStartMode(startMode),
@@ -71,9 +71,9 @@ KSCore::KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &sa
         delayMsec = 0;
     }
 
-    connect(this, &KSCore::errorMessage, this, &KSCore::showErrorMessage);
-    connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KSCore::screenshotUpdated);
-    connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KSCore::screenshotFailed);
+    connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
+    connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
+    connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
 
     switch (startMode) {
     case DBusMode:
@@ -89,7 +89,7 @@ KSCore::KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &sa
     }
 }
 
-KSCore::~KSCore()
+SpectacleCore::~SpectacleCore()
 {
     if (mMainWindow) {
         delete mMainWindow;
@@ -98,38 +98,38 @@ KSCore::~KSCore()
 
 // Q_PROPERTY stuff
 
-QString KSCore::filename() const
+QString SpectacleCore::filename() const
 {
     return mFileNameString;
 }
 
-void KSCore::setFilename(const QString &filename)
+void SpectacleCore::setFilename(const QString &filename)
 {
     mFileNameString = filename;
     mFileNameUrl = QUrl::fromUserInput(filename);
 }
 
-ImageGrabber::GrabMode KSCore::grabMode() const
+ImageGrabber::GrabMode SpectacleCore::grabMode() const
 {
     return mImageGrabber->grabMode();
 }
 
-void KSCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
+void SpectacleCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
 }
 
-bool KSCore::overwriteOnSave() const
+bool SpectacleCore::overwriteOnSave() const
 {
     return mOverwriteOnSave;
 }
 
-void KSCore::setOverwriteOnSave(const bool &overwrite)
+void SpectacleCore::setOverwriteOnSave(const bool &overwrite)
 {
     mOverwriteOnSave = overwrite;
 }
 
-QString KSCore::saveLocation() const
+QString SpectacleCore::saveLocation() const
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
@@ -150,7 +150,7 @@ QString KSCore::saveLocation() const
     return savePath;
 }
 
-void KSCore::setSaveLocation(const QString &savePath)
+void SpectacleCore::setSaveLocation(const QString &savePath)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
@@ -160,7 +160,7 @@ void KSCore::setSaveLocation(const QString &savePath)
 
 // Slots
 
-void KSCore::dbusStartAgent()
+void SpectacleCore::dbusStartAgent()
 {
     if (!(mStartMode == GuiMode)) {
         mStartMode = GuiMode;
@@ -168,7 +168,7 @@ void KSCore::dbusStartAgent()
     }
 }
 
-void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
+void SpectacleCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
                                const int &timeout, const bool &includePointer, const bool &includeDecorations)
 {
     mImageGrabber->setGrabMode(mode);
@@ -190,7 +190,7 @@ void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
     QTimer::singleShot(timeout + msec, mImageGrabber, &ImageGrabber::doImageGrab);
 }
 
-void KSCore::showErrorMessage(const QString &errString)
+void SpectacleCore::showErrorMessage(const QString &errString)
 {
     qDebug() << "ERROR: " << errString;
 
@@ -199,7 +199,7 @@ void KSCore::showErrorMessage(const QString &errString)
     }
 }
 
-void KSCore::screenshotUpdated(const QPixmap &pixmap)
+void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
 {
     mLocalPixmap = pixmap;
 
@@ -218,7 +218,7 @@ void KSCore::screenshotUpdated(const QPixmap &pixmap)
     }
 }
 
-void KSCore::screenshotFailed()
+void SpectacleCore::screenshotFailed()
 {
     switch (mStartMode) {
     case BackgroundMode:
@@ -232,7 +232,7 @@ void KSCore::screenshotFailed()
     }
 }
 
-void KSCore::doGuiSave()
+void SpectacleCore::doGuiSave()
 {
     if (mLocalPixmap.isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
@@ -246,7 +246,7 @@ void KSCore::doGuiSave()
     }
 }
 
-void KSCore::doAutoSave()
+void SpectacleCore::doAutoSave()
 {
     if (mLocalPixmap.isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
@@ -277,7 +277,7 @@ void KSCore::doAutoSave()
             // quits the application before the notification DBus message gets sent.
             // a token timeout seems to fix this though. Any better ideas?
 
-            QTimer::singleShot(50, this, &KSCore::allDone);
+            QTimer::singleShot(50, this, &SpectacleCore::allDone);
         } else {
             emit allDone();
         }
@@ -286,7 +286,7 @@ void KSCore::doAutoSave()
     }
 }
 
-void KSCore::doStartDragAndDrop()
+void SpectacleCore::doStartDragAndDrop()
 {
     QMimeData *mimeData = new QMimeData;
     mimeData->setUrls(QList<QUrl> { getTempSaveFilename() });
@@ -300,7 +300,7 @@ void KSCore::doStartDragAndDrop()
     dragHandler->deleteLater();
 }
 
-void KSCore::doPrint(QPrinter *printer)
+void SpectacleCore::doPrint(QPrinter *printer)
 {
     QPainter painter;
 
@@ -322,7 +322,7 @@ void KSCore::doPrint(QPrinter *printer)
     return;
 }
 
-void KSCore::doGuiSaveAs()
+void SpectacleCore::doGuiSaveAs()
 {
     QString selectedFilter;
     QStringList supportedFilters;
@@ -362,7 +362,7 @@ void KSCore::doGuiSaveAs()
     }
 }
 
-void KSCore::doSendToService(KService::Ptr service)
+void SpectacleCore::doSendToService(KService::Ptr service)
 {
     QUrl tempFile;
     QList<QUrl> tempFileList;
@@ -377,7 +377,7 @@ void KSCore::doSendToService(KService::Ptr service)
     KRun::runService(*service, tempFileList, mMainWindow, true);
 }
 
-void KSCore::doSendToOpenWith()
+void SpectacleCore::doSendToOpenWith()
 {
     QUrl tempFile;
     QList<QUrl> tempFileList;
@@ -392,29 +392,29 @@ void KSCore::doSendToOpenWith()
     KRun::displayOpenWithDialog(tempFileList, mMainWindow, true);
 }
 
-void KSCore::doSendToClipboard()
+void SpectacleCore::doSendToClipboard()
 {
     QApplication::clipboard()->setPixmap(mLocalPixmap);
 }
 
 // Private
 
-void KSCore::initGui()
+void SpectacleCore::initGui()
 {
     if (!isGuiInited) {
         mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
 
-        connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KSCore::takeNewScreenshot);
-        connect(mMainWindow, &KSMainWindow::save, this, &KSCore::doGuiSave);
-        connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KSCore::doAutoSave);
-        connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KSCore::doGuiSaveAs);
-        connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KSCore::doSendToService);
-        connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KSCore::doSendToOpenWith);
-        connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KSCore::doSendToClipboard);
-        connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KSCore::doStartDragAndDrop);
-        connect(mMainWindow, &KSMainWindow::printRequest, this, &KSCore::doPrint);
+        connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &SpectacleCore::takeNewScreenshot);
+        connect(mMainWindow, &KSMainWindow::save, this, &SpectacleCore::doGuiSave);
+        connect(mMainWindow, &KSMainWindow::saveAndExit, this, &SpectacleCore::doAutoSave);
+        connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &SpectacleCore::doGuiSaveAs);
+        connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &SpectacleCore::doSendToService);
+        connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &SpectacleCore::doSendToOpenWith);
+        connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &SpectacleCore::doSendToClipboard);
+        connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &SpectacleCore::doStartDragAndDrop);
+        connect(mMainWindow, &KSMainWindow::printRequest, this, &SpectacleCore::doPrint);
 
-        connect(this, static_cast<void (KSCore::*)(QUrl)>(&KSCore::imageSaved),
+        connect(this, static_cast<void (SpectacleCore::*)(QUrl)>(&SpectacleCore::imageSaved),
                 mMainWindow, &KSMainWindow::setScreenshotWindowTitle);
 
         isGuiInited = true;
@@ -422,7 +422,7 @@ void KSCore::initGui()
     }
 }
 
-QUrl KSCore::getAutosaveFilename()
+QUrl SpectacleCore::getAutosaveFilename()
 {
     const QString baseDir = saveLocation();
     const QDir baseDirPath(baseDir);
@@ -437,7 +437,7 @@ QUrl KSCore::getAutosaveFilename()
     }
 }
 
-QString KSCore::makeAutosaveFilename()
+QString SpectacleCore::makeAutosaveFilename()
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup generalConfig = KConfigGroup(config, "General");
@@ -454,7 +454,7 @@ QString KSCore::makeAutosaveFilename()
                    .replace("%S", timestamp.toString("ss"));
 }
 
-QString KSCore::autoIncrementFilename(const QString &baseName, const QString &extension)
+QString SpectacleCore::autoIncrementFilename(const QString &baseName, const QString &extension)
 {
     if (!(isFileExists(QUrl::fromUserInput(baseName + '.' + extension)))) {
         return baseName + '.' + extension;
@@ -473,7 +473,7 @@ QString KSCore::autoIncrementFilename(const QString &baseName, const QString &ex
     return fileNameFmt.arg("OVERFLOW-" + (qrand() % 10000));
 }
 
-QString KSCore::makeSaveMimetype(const QUrl &url)
+QString SpectacleCore::makeSaveMimetype(const QUrl &url)
 {
     QMimeDatabase mimedb;
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
@@ -484,7 +484,7 @@ QString KSCore::makeSaveMimetype(const QUrl &url)
     return type;
 }
 
-bool KSCore::writeImage(QIODevice *device, const QByteArray &format)
+bool SpectacleCore::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
     if (!(imageWriter.canWrite())) {
@@ -495,7 +495,7 @@ bool KSCore::writeImage(QIODevice *device, const QByteArray &format)
     return imageWriter.write(mLocalPixmap.toImage());
 }
 
-bool KSCore::localSave(const QUrl &url, const QString &mimetype)
+bool SpectacleCore::localSave(const QUrl &url, const QString &mimetype)
 {
     QFile outputFile(url.toLocalFile());
 
@@ -507,7 +507,7 @@ bool KSCore::localSave(const QUrl &url, const QString &mimetype)
     return true;
 }
 
-bool KSCore::remoteSave(const QUrl &url, const QString &mimetype)
+bool SpectacleCore::remoteSave(const QUrl &url, const QString &mimetype)
 {
     QTemporaryFile tmpFile;
 
@@ -530,13 +530,13 @@ bool KSCore::remoteSave(const QUrl &url, const QString &mimetype)
     return false;
 }
 
-QUrl KSCore::getTempSaveFilename() const
+QUrl SpectacleCore::getTempSaveFilename() const
 {
     QDir tempDir = QDir::temp();
     return QUrl::fromLocalFile(tempDir.absoluteFilePath("KSTempScreenshot.png"));
 }
 
-bool KSCore::tempFileSave()
+bool SpectacleCore::tempFileSave()
 {
     if (!(mLocalPixmap.isNull())) {
         const QUrl savePath = getTempSaveFilename();
@@ -549,7 +549,7 @@ bool KSCore::tempFileSave()
     return false;
 }
 
-QUrl KSCore::tempFileSave(const QString &mimetype)
+QUrl SpectacleCore::tempFileSave(const QString &mimetype)
 {
     QTemporaryFile tmpFile;
     tmpFile.setAutoRemove(false);
@@ -565,7 +565,7 @@ QUrl KSCore::tempFileSave(const QString &mimetype)
     return QUrl();
 }
 
-bool KSCore::doSave(const QUrl &url)
+bool SpectacleCore::doSave(const QUrl &url)
 {
     if (!(url.isValid())) {
         emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
@@ -584,7 +584,7 @@ bool KSCore::doSave(const QUrl &url)
     return remoteSave(url, mimetype);
 }
 
-bool KSCore::isFileExists(const QUrl &url)
+bool SpectacleCore::isFileExists(const QUrl &url)
 {
     if (!(url.isValid())) {
         return false;

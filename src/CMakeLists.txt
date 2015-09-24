@@ -7,9 +7,8 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 set(
     SPECTACLE_SRCS_DEFAULT
         Main.cpp
-        KSCore.cpp
+        SpectacleCore.cpp
         SpectacleDBusAdapter.cpp
-        ScreenClipper.cpp
         PlatformBackends/ImageGrabber.cpp
         PlatformBackends/DummyImageGrabber.cpp
         Gui/KSMainWindow.cpp
@@ -17,6 +16,7 @@ set(
         Gui/KSImageWidget.cpp
         Gui/KSSaveConfigDialog.cpp
         Gui/KSSendToMenu.cpp
+        Gui/ScreenClipper.cpp
 )
 
 if(XCB_FOUND)

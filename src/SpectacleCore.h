@@ -66,7 +66,7 @@
 
 #include "Gui/KSMainWindow.h"
 
-class KSCore : public QObject
+class SpectacleCore : public QObject
 {
     Q_OBJECT
 
@@ -83,9 +83,9 @@ class KSCore : public QObject
         BackgroundMode = 2
     };
 
-    explicit KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
+    explicit SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                     qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent = 0);
-    ~KSCore();
+    ~SpectacleCore();
 
     QString filename() const;
     void setFilename(const QString &filename);

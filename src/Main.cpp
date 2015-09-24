@@ -29,7 +29,7 @@
 #include <KLocalizedString>
 #include <KDBusService>
 
-#include "KSCore.h"
+#include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
 #include "Config.h"
 
@@ -102,20 +102,20 @@ int main(int argc, char **argv)
 
     // are we running in background or dbus mode?
 
-    KSCore::StartMode startMode = KSCore::GuiMode;
+    SpectacleCore::StartMode startMode = SpectacleCore::GuiMode;
     bool sendToClipboard = false;
     bool notify = true;
     qint64 delayMsec = 0;
     QString fileName = QString();
 
     if (parser.isSet("background")) {
-        startMode = KSCore::BackgroundMode;
+        startMode = SpectacleCore::BackgroundMode;
     } else if (parser.isSet("dbus")) {
-        startMode = KSCore::DBusMode;
+        startMode = SpectacleCore::DBusMode;
     }
 
     switch (startMode) {
-    case KSCore::BackgroundMode:
+    case SpectacleCore::BackgroundMode:
         if (parser.isSet("nonotify")) {
             notify = false;
         }
@@ -139,26 +139,26 @@ int main(int argc, char **argv)
         if (parser.isSet("clipboard")) {
             sendToClipboard = true;
         }
-    case KSCore::DBusMode:
+    case SpectacleCore::DBusMode:
         app.setQuitOnLastWindowClosed(false);
-    case KSCore::GuiMode:
+    case SpectacleCore::GuiMode:
         break;
     }
 
     // release the kraken
 
-    KSCore genie(startMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
-    QObject::connect(&genie, &KSCore::allDone, qApp, &QApplication::quit);
+    SpectacleCore core(startMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
+    QObject::connect(&core, &SpectacleCore::allDone, qApp, &QApplication::quit);
 
     // create the dbus connections
 
-    new KDBusService(KDBusService::Multiple, &genie);
+    new KDBusService(KDBusService::Multiple, &core);
 
-    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&genie);
-    QObject::connect(&genie, static_cast<void (KSCore::*)(QString)>(&KSCore::imageSaved), dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
-    QObject::connect(&genie, &KSCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&core);
+    QObject::connect(&core, static_cast<void (SpectacleCore::*)(QString)>(&SpectacleCore::imageSaved), dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
+    QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
 
-    QDBusConnection::sessionBus().registerObject("/", &genie);
+    QDBusConnection::sessionBus().registerObject("/", &core);
     QDBusConnection::sessionBus().registerService("org.freedesktop.Screenshot");
 
     // fire it up

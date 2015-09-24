@@ -21,7 +21,7 @@
 #define SPECTACLEDBUSADAPTER_H
 
 #include <QDBusAbstractAdaptor>
-#include "KSCore.h"
+#include "SpectacleCore.h"
 
 class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 {
@@ -56,10 +56,10 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 
     public:
 
-    SpectacleDBusAdapter(KSCore *parent);
+    SpectacleDBusAdapter(SpectacleCore *parent);
     virtual ~SpectacleDBusAdapter();
 
-    inline KSCore *parent() const;
+    inline SpectacleCore *parent() const;
 
     public slots:
 

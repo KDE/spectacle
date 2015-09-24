@@ -19,7 +19,7 @@
 
 #include "SpectacleDBusAdapter.h"
 
-SpectacleDBusAdapter::SpectacleDBusAdapter(KSCore *parent)
+SpectacleDBusAdapter::SpectacleDBusAdapter(SpectacleCore *parent)
     : QDBusAbstractAdaptor(parent)
 {
     setAutoRelaySignals(false);
@@ -28,9 +28,9 @@ SpectacleDBusAdapter::SpectacleDBusAdapter(KSCore *parent)
 SpectacleDBusAdapter::~SpectacleDBusAdapter()
 {}
 
-inline KSCore * SpectacleDBusAdapter::parent() const
+inline SpectacleCore *SpectacleDBusAdapter::parent() const
 {
-    return static_cast<KSCore *>(QObject::parent());
+    return static_cast<SpectacleCore *>(QObject::parent());
 }
 
 Q_NOREPLY void SpectacleDBusAdapter::StartAgent()
