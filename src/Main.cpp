@@ -22,12 +22,15 @@
 #include <QObject>
 #include <QString>
 #include <QCommandLineParser>
+#include <QDBusConnection>
 #include <QDebug>
 
 #include <KAboutData>
 #include <KLocalizedString>
+#include <KDBusService>
 
 #include "KSCore.h"
+#include "SpectacleDBusAdapter.h"
 #include "Config.h"
 
 int main(int argc, char **argv)
@@ -69,8 +72,10 @@ int main(int argc, char **argv)
         {{"u", "windowundercursor"}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
         {{"t", "transientonly"},     i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
         {{"r", "region"},            i18n("Capture a rectangular region of the screen")},
+        {{"g", "gui"},               i18n("Start in GUI mode (default)")},
         {{"b", "background"},        i18n("Take a screenshot and exit without showing the GUI")},
-        {{"n", "notify"},            i18n("In background mode, pop up a notification when the screenshot is taken")},
+        {{"s", "dbus"},              i18n("Start in DBus-Activation mode")},
+        {{"n", "nonotify"},          i18n("In background mode, do not pop up a notification when the screenshot is taken")},
         {{"c", "clipboard"},         i18n("In background mode, send image to clipboard without saving to file")},
         {{"o", "output"},            i18n("In background mode, save image to specified file"), "fileName"},
         {{"d", "delay"},             i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
@@ -95,20 +100,24 @@ int main(int argc, char **argv)
         grabMode = ImageGrabber::WindowUnderCursor;
     }
 
-    // are we running in background mode?
+    // are we running in background or dbus mode?
 
-    bool backgroundMode = false;
+    KSCore::StartMode startMode = KSCore::GuiMode;
     bool sendToClipboard = false;
-    bool notify = false;
+    bool notify = true;
     qint64 delayMsec = 0;
     QString fileName = QString();
 
     if (parser.isSet("background")) {
-        backgroundMode = true;
-        app.setQuitOnLastWindowClosed(false);
+        startMode = KSCore::BackgroundMode;
+    } else if (parser.isSet("dbus")) {
+        startMode = KSCore::DBusMode;
+    }
 
-        if (parser.isSet("notify")) {
-            notify = true;
+    switch (startMode) {
+    case KSCore::BackgroundMode:
+        if (parser.isSet("nonotify")) {
+            notify = false;
         }
 
         if (parser.isSet("output")) {
@@ -130,12 +139,29 @@ int main(int argc, char **argv)
         if (parser.isSet("clipboard")) {
             sendToClipboard = true;
         }
+    case KSCore::DBusMode:
+        app.setQuitOnLastWindowClosed(false);
+    case KSCore::GuiMode:
+        break;
     }
 
     // release the kraken
 
-    KSCore genie(backgroundMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
+    KSCore genie(startMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
     QObject::connect(&genie, &KSCore::allDone, qApp, &QApplication::quit);
+
+    // create the dbus connections
+
+    new KDBusService(KDBusService::Multiple, &genie);
+
+    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&genie);
+    QObject::connect(&genie, static_cast<void (KSCore::*)(QString)>(&KSCore::imageSaved), dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
+    QObject::connect(&genie, &KSCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+
+    QDBusConnection::sessionBus().registerObject("/", &genie);
+    QDBusConnection::sessionBus().registerService("org.freedesktop.Screenshot");
+
+    // fire it up
 
     return app.exec();
 }

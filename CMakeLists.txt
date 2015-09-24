@@ -45,12 +45,13 @@ find_package(
 find_package(
     KF5 ${KF5_MIN_VERSION} REQUIRED
         CoreAddons
+        WidgetsAddons
+        DBusAddons
         Notifications
         Config
         I18n
         KIO
         XmlGui
-        WidgetsAddons
         WindowSystem
         DocTools
 )
@@ -77,6 +78,7 @@ endif()
 # hand off to subdirectories
 
 add_subdirectory(src)
+add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(doc)

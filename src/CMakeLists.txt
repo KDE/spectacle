@@ -8,6 +8,7 @@ set(
     SPECTACLE_SRCS_DEFAULT
         Main.cpp
         KSCore.cpp
+        SpectacleDBusAdapter.cpp
         ScreenClipper.cpp
         PlatformBackends/ImageGrabber.cpp
         PlatformBackends/DummyImageGrabber.cpp
@@ -54,13 +55,14 @@ target_link_libraries(
         Qt5::DBus
         Qt5::PrintSupport
         KF5::CoreAddons
+        KF5::DBusAddons
+        KF5::WidgetsAddons
         KF5::Notifications
-        KF5::ConfigGui
+        KF5::ConfigCore
         KF5::I18n
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
-        KF5::WidgetsAddons
 )
 
 if(XCB_FOUND)

@@ -20,8 +20,6 @@
 #ifndef KSCORE_H
 #define KSCORE_H
 
-#include <limits>
-
 #include <QUrl>
 #include <QFile>
 #include <QTemporaryFile>
@@ -79,7 +77,14 @@ class KSCore : public QObject
 
     public:
 
-    explicit KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName, qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent = 0);
+    enum StartMode {
+        GuiMode = 0,
+        DBusMode = 1,
+        BackgroundMode = 2
+    };
+
+    explicit KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
+                    qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent = 0);
     ~KSCore();
 
     QString filename() const;
@@ -100,6 +105,8 @@ class KSCore : public QObject
     void overwriteOnSaveChanged(bool overwriteOnSave);
     void saveLocationChanged(QString savePath);
     void imageSaved(QUrl location);
+    void imageSaved(QString location);
+    void grabFailed();
 
     public slots:
 
@@ -107,6 +114,7 @@ class KSCore : public QObject
     void showErrorMessage(const QString &errString);
     void screenshotUpdated(const QPixmap &pixmap);
     void screenshotFailed();
+    void dbusStartAgent();
     void doStartDragAndDrop();
     void doPrint(QPrinter *printer);
     void doGuiSaveAs();
@@ -118,6 +126,7 @@ class KSCore : public QObject
 
     private:
 
+    void initGui();
     QUrl getAutosaveFilename();
     QString makeAutosaveFilename();
     QString autoIncrementFilename(const QString &baseName, const QString &extension);
@@ -131,15 +140,16 @@ class KSCore : public QObject
     bool isFileExists(const QUrl &url);
     QUrl getTempSaveFilename() const;
 
-    bool             mBackgroundMode;
-    bool             mNotify;
-    bool             mOverwriteOnSave;
-    bool             mBackgroundSendToClipboard;
-    QPixmap          mLocalPixmap;
-    QString          mFileNameString;
-    QUrl             mFileNameUrl;
-    ImageGrabber    *mImageGrabber;
-    KSMainWindow    *mMainWindow;
+    StartMode     mStartMode;
+    bool          mNotify;
+    bool          mOverwriteOnSave;
+    bool          mBackgroundSendToClipboard;
+    QPixmap       mLocalPixmap;
+    QString       mFileNameString;
+    QUrl          mFileNameUrl;
+    ImageGrabber *mImageGrabber;
+    KSMainWindow *mMainWindow;
+    bool          isGuiInited;
 };
 
 #endif // KSCORE_H

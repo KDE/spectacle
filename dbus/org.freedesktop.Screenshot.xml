@@ -1,0 +1,107 @@
+<!DOCTYPE node PUBLIC
+    "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+    "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<!--
+    This file contains the definition for the org.freedesktop.Screenshot D-Bus interface.
+    Originally written by Boudhayan Gupta <bgupta@kde.org>. It may be copied freely and
+    modified as needed.
+-->
+
+<node xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
+    <interface name="org.freedesktop.Screenshot">
+        <method name="StartAgent">
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Starts the screenshot agent (the application for taking screenshots).</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="FullScreen">
+            <arg name="includeMousePointer" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include an image of the mouse pointer.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a full-screen screenshot.</doc:para>
+                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="CurrentScreen">
+            <arg name="includeMousePointer" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include an image of the mouse pointer.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a screenshot of the current screen.</doc:para>
+                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="ActiveWindow">
+            <arg name="includeWindowDecorations" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include the window titlebars and frames.</doc:summary>
+                </doc:doc>
+            </arg>
+            <arg name="includeMousePointer" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include an image of the mouse pointer.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a screenshot of the window that currently has window focus.</doc:para>
+                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="WindowUnderCursor">
+            <arg name="includeWindowDecorations" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include the window titlebars and frames.</doc:summary>
+                </doc:doc>
+            </arg>
+            <arg name="includeMousePointer" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include an image of the mouse pointer.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a screenshot of the window that is currently under the mouse cursor.</doc:para>
+                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <signal name="ScreenshotTaken">
+            <arg name="fileName" direction="out" type="s">
+                <doc:doc>
+                    <doc:summary>The file name with which the screenshot was saved.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Emitted if the screenshot was successfully taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </signal>
+        <signal name="ScreenshotFailed">
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Emitted if the screenshot capture failed.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </signal>
+    </interface>
+</node>

@@ -31,16 +31,17 @@
 
 #include "KSCore.h"
 
-KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
+KSCore::KSCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
-    mBackgroundMode(backgroundMode),
+    mStartMode(startMode),
     mNotify(notifyOnGrab),
     mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
     mLocalPixmap(QPixmap()),
     mImageGrabber(nullptr),
-    mMainWindow(nullptr)
+    mMainWindow(nullptr),
+    isGuiInited(false)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
     KConfigGroup guiConfig(config, "GuiConfig");
@@ -74,29 +75,18 @@ KSCore::KSCore(bool backgroundMode, ImageGrabber::GrabMode grabMode, QString &sa
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &KSCore::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &KSCore::screenshotFailed);
 
-    if (backgroundMode) {
-        int msec = (KWindowSystem::compositingActive() ? 200 : 50) + delayMsec;
-        QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
-        return;
+    switch (startMode) {
+    case DBusMode:
+        break;
+    case BackgroundMode: {
+            int msec = (KWindowSystem::compositingActive() ? 200 : 50) + delayMsec;
+            QTimer::singleShot(msec, mImageGrabber, &ImageGrabber::doImageGrab);
+        }
+        break;
+    case GuiMode:
+        initGui();
+        break;
     }
-
-    // if we aren't in background mode, this would be a good time to
-    // init the gui
-
-    mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
-
-    connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KSCore::takeNewScreenshot);
-    connect(mMainWindow, &KSMainWindow::save, this, &KSCore::doGuiSave);
-    connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KSCore::doAutoSave);
-    connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KSCore::doGuiSaveAs);
-    connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KSCore::doSendToService);
-    connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KSCore::doSendToOpenWith);
-    connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KSCore::doSendToClipboard);
-    connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KSCore::doStartDragAndDrop);
-    connect(mMainWindow, &KSMainWindow::printRequest, this, &KSCore::doPrint);
-
-    connect(this, &KSCore::imageSaved, mMainWindow, &KSMainWindow::setScreenshotWindowTitle);
-    QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
 }
 
 KSCore::~KSCore()
@@ -170,6 +160,14 @@ void KSCore::setSaveLocation(const QString &savePath)
 
 // Slots
 
+void KSCore::dbusStartAgent()
+{
+    if (!(mStartMode == GuiMode)) {
+        mStartMode = GuiMode;
+        return initGui();
+    }
+}
+
 void KSCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
                                const int &timeout, const bool &includePointer, const bool &includeDecorations)
 {
@@ -196,7 +194,7 @@ void KSCore::showErrorMessage(const QString &errString)
 {
     qDebug() << "ERROR: " << errString;
 
-    if (!mBackgroundMode) {
+    if (mStartMode == GuiMode) {
         KMessageBox::error(0, errString);
     }
 }
@@ -205,14 +203,16 @@ void KSCore::screenshotUpdated(const QPixmap &pixmap)
 {
     mLocalPixmap = pixmap;
 
-    if (mBackgroundMode) {
+    switch (mStartMode) {
+    case BackgroundMode:
         if (mBackgroundSendToClipboard) {
             qApp->clipboard()->setPixmap(pixmap);
             qDebug() << i18n("Copied image to clipboard");
-        } else {
-            doAutoSave();
         }
-    } else {
+    case DBusMode:
+        doAutoSave();
+        break;
+    case GuiMode:
         mMainWindow->setScreenshotAndShow(pixmap);
         tempFileSave();
     }
@@ -220,13 +220,16 @@ void KSCore::screenshotUpdated(const QPixmap &pixmap)
 
 void KSCore::screenshotFailed()
 {
-    if (mBackgroundMode) {
-        qDebug() << i18n("Screenshot capture canceled or failed");
+    switch (mStartMode) {
+    case BackgroundMode:
+        showErrorMessage(i18n("Screenshot capture canceled or failed"));
+    case DBusMode:
+        emit grabFailed();
         emit allDone();
         return;
+    case GuiMode:
+        mMainWindow->show();
     }
-
-    mMainWindow->show();
 }
 
 void KSCore::doGuiSave()
@@ -239,6 +242,7 @@ void KSCore::doGuiSave()
     QUrl savePath = getAutosaveFilename();
     if (doSave(savePath)) {
         emit imageSaved(savePath);
+        emit imageSaved(savePath.toLocalFile());
     }
 }
 
@@ -251,7 +255,7 @@ void KSCore::doAutoSave()
 
     QUrl savePath;
 
-    if (mBackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
+    if (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
         savePath = mFileNameUrl;
     } else {
         savePath = getAutosaveFilename();
@@ -262,7 +266,7 @@ void KSCore::doAutoSave()
         dir.cdUp();
         setSaveLocation(dir.absolutePath());
 
-        if (mBackgroundMode && mNotify) {
+        if ((mStartMode == BackgroundMode || mStartMode == DBusMode) && mNotify) {
             KNotification *notify = new KNotification("newScreenshotSaved");
 
             notify->setText(i18n("A new screenshot was captured and saved to %1", savePath.toLocalFile()));
@@ -352,6 +356,7 @@ void KSCore::doGuiSaveAs()
         if (saveUrl.isValid()) {
             if (doSave(saveUrl)) {
                 emit imageSaved(saveUrl);
+                emit imageSaved(saveUrl.toLocalFile());
             }
         }
     }
@@ -393,6 +398,29 @@ void KSCore::doSendToClipboard()
 }
 
 // Private
+
+void KSCore::initGui()
+{
+    if (!isGuiInited) {
+        mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
+
+        connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &KSCore::takeNewScreenshot);
+        connect(mMainWindow, &KSMainWindow::save, this, &KSCore::doGuiSave);
+        connect(mMainWindow, &KSMainWindow::saveAndExit, this, &KSCore::doAutoSave);
+        connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &KSCore::doGuiSaveAs);
+        connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &KSCore::doSendToService);
+        connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &KSCore::doSendToOpenWith);
+        connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &KSCore::doSendToClipboard);
+        connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &KSCore::doStartDragAndDrop);
+        connect(mMainWindow, &KSMainWindow::printRequest, this, &KSCore::doPrint);
+
+        connect(this, static_cast<void (KSCore::*)(QUrl)>(&KSCore::imageSaved),
+                mMainWindow, &KSMainWindow::setScreenshotWindowTitle);
+
+        isGuiInited = true;
+        QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
+    }
+}
 
 QUrl KSCore::getAutosaveFilename()
 {
