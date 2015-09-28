@@ -42,14 +42,14 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureArea->setMinimumWidth(240);
     connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
-    mDelayMsec = new QDoubleSpinBox(this);
+    mDelayMsec = new SmartSpinBox(this);
     mDelayMsec->setDecimals(1);
     mDelayMsec->setSingleStep(1.0);
     mDelayMsec->setMinimum(0.0);
     mDelayMsec->setMaximum(999.9);
     mDelayMsec->setSuffix(i18n(" seconds"));
     mDelayMsec->setMinimumWidth(160);
-    connect(mDelayMsec, static_cast<void (QDoubleSpinBox::*)(qreal)>(&QDoubleSpinBox::valueChanged), this, &KSWidget::captureDelayChanged);
+    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged), this, &KSWidget::captureDelayChanged);
 
     mCaptureOnClick = new QCheckBox(this);
     mCaptureOnClick->setText(i18n("On Click"));

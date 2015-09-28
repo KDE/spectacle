@@ -31,7 +31,6 @@
 #include <QShortcut>
 #include <QTimer>
 #include <QCheckBox>
-#include <QDoubleSpinBox>
 #include <QComboBox>
 #include <QVariant>
 #include <QIcon>
@@ -42,6 +41,7 @@
 
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSImageWidget.h"
+#include "SmartSpinBox.h"
 
 class KSWidget : public QWidget
 {
@@ -71,21 +71,21 @@ class KSWidget : public QWidget
 
 	private:
     
-    QGridLayout    *mMainLayout;
-    QHBoxLayout    *mDelayLayout;
-    QVBoxLayout    *mRightLayout;
-    QFormLayout    *mCaptureModeForm;
-    QVBoxLayout    *mContentOptionsForm;
-    KSImageWidget  *mImageWidget;
-    QPushButton    *mTakeScreenshotButton;
-    QComboBox      *mCaptureArea;
-    QDoubleSpinBox *mDelayMsec;
-    QCheckBox      *mCaptureOnClick;
-    QCheckBox      *mMousePointer;
-    QCheckBox      *mWindowDecorations;
-    QCheckBox      *mCaptureTransientOnly;
-    QLabel         *mCaptureModeLabel;
-    QLabel         *mContentOptionsLabel;
+    QGridLayout   *mMainLayout;
+    QHBoxLayout   *mDelayLayout;
+    QVBoxLayout   *mRightLayout;
+    QFormLayout   *mCaptureModeForm;
+    QVBoxLayout   *mContentOptionsForm;
+    KSImageWidget *mImageWidget;
+    QPushButton   *mTakeScreenshotButton;
+    QComboBox     *mCaptureArea;
+    SmartSpinBox  *mDelayMsec;
+    QCheckBox     *mCaptureOnClick;
+    QCheckBox     *mMousePointer;
+    QCheckBox     *mWindowDecorations;
+    QCheckBox     *mCaptureTransientOnly;
+    QLabel        *mCaptureModeLabel;
+    QLabel        *mContentOptionsLabel;
 };
 
 #endif // KSWIDGET_H

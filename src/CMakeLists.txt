@@ -17,6 +17,7 @@ set(
         Gui/KSSaveConfigDialog.cpp
         Gui/KSSendToMenu.cpp
         Gui/ScreenClipper.cpp
+        Gui/SmartSpinBox.cpp
 )
 
 if(XCB_FOUND)
