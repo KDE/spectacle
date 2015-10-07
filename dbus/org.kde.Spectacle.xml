@@ -3,17 +3,17 @@
     "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 
 <!--
-    This file contains the definition for the org.freedesktop.Screenshot D-Bus interface.
-    Originally written by Boudhayan Gupta <bgupta@kde.org>. It may be copied freely and
-    modified as needed.
+    This file contains the definition for the org.kde.Spectacle D-Bus interface.
+    Originally written by Boudhayan Gupta <bgupta@kde.org>. It may be copied
+    freely and modified as needed.
 -->
 
 <node xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
-    <interface name="org.freedesktop.Screenshot">
+    <interface name="org.kde.Spectacle">
         <method name="StartAgent">
             <doc:doc>
                 <doc:description>
-                    <doc:para>Starts the screenshot agent (the application for taking screenshots).</doc:para>
+                    <doc:para>Starts Spectacle and shows the GUI</doc:para>
                 </doc:description>
             </doc:doc>
         </method>
@@ -27,7 +27,7 @@
             <doc:doc>
                 <doc:description>
                     <doc:para>Takes a full-screen screenshot.</doc:para>
-                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                    <doc:para>If Spectacle was started via D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
                 </doc:description>
             </doc:doc>
         </method>
@@ -41,7 +41,7 @@
             <doc:doc>
                 <doc:description>
                     <doc:para>Takes a screenshot of the current screen.</doc:para>
-                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                    <doc:para>If Spectacle was started via D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
                 </doc:description>
             </doc:doc>
         </method>
@@ -60,7 +60,7 @@
             <doc:doc>
                 <doc:description>
                     <doc:para>Takes a screenshot of the window that currently has window focus.</doc:para>
-                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                    <doc:para>If Spectacle was started via D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
                 </doc:description>
             </doc:doc>
         </method>
@@ -79,7 +79,7 @@
             <doc:doc>
                 <doc:description>
                     <doc:para>Takes a screenshot of the window that is currently under the mouse cursor.</doc:para>
-                    <doc:para>If the agent was activated using D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
+                    <doc:para>If Spectacle was started via D-Bus, it takes a screenshot in the background without spawning the GUI and exits after the shot has been taken.</doc:para>
                 </doc:description>
             </doc:doc>
         </method>

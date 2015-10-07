@@ -159,7 +159,7 @@ int main(int argc, char **argv)
     QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
 
     QDBusConnection::sessionBus().registerObject("/", &core);
-    QDBusConnection::sessionBus().registerService("org.freedesktop.Screenshot");
+    QDBusConnection::sessionBus().registerService("org.kde.Spectacle");
 
     // fire it up
 

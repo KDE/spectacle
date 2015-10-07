@@ -26,9 +26,9 @@
 class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.Screenshot")
+    Q_CLASSINFO("D-Bus Interface", "org.kde.Spectacle")
     Q_CLASSINFO("D-Bus Introspection", ""
-        "  <interface name=\"org.freedesktop.Screenshot\">\n"
+        "  <interface name=\"org.kde.Spectacle\">\n"
         "    <method name=\"StartAgent\">\n"
         "    </method>\n"
         "    <method name=\"FullScreen\">\n"
