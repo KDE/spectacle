@@ -155,7 +155,8 @@ int main(int argc, char **argv)
     new KDBusService(KDBusService::Multiple, &core);
 
     SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&core);
-    QObject::connect(&core, static_cast<void (SpectacleCore::*)(QString)>(&SpectacleCore::imageSaved), dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
+    QObject::connect(&core, static_cast<void (SpectacleCore::*)(QString)>(&SpectacleCore::imageSaved),
+                     dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
     QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
 
     QDBusConnection::sessionBus().registerObject("/", &core);

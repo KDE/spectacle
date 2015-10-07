@@ -162,6 +162,7 @@ void SpectacleCore::setSaveLocation(const QString &savePath)
 
 void SpectacleCore::dbusStartAgent()
 {
+    qApp->setQuitOnLastWindowClosed(true);
     if (!(mStartMode == GuiMode)) {
         mStartMode = GuiMode;
         return initGui();
