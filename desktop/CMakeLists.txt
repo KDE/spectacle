@@ -9,3 +9,8 @@ install(
     FILES spectacle.notifyrc
     DESTINATION ${KNOTIFYRC_INSTALL_DIR}
 )
+
+install(
+    FILES spectacle.khotkeys
+    DESTINATION ${DATA_INSTALL_DIR}/khotkeys
+)

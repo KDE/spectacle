@@ -33,8 +33,8 @@
 
 		<legalnotice>&FDLNotice;</legalnotice>
 
-		<date>2015-06-12</date>
-		<releaseinfo>1.9.96</releaseinfo>
+		<date>2015-10-17</date>
+		<releaseinfo>15.12.0</releaseinfo>
 
 		<abstract>
 			<para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -68,7 +68,9 @@
 				<para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
 			</listitem>
 			<listitem>
-				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Alt;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default <filename class="directory">Pictures</filename> folder without showing the GUI.</para>
+				<para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul">&Ctrl;<keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default save directory without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default save directory without showing the GUI.</para>
+
+                <para>You can configure the default save location and filename by starting &spectacle; normally, clicking the downward arrow beside the <guibutton>Save &amp; Exit</guibutton> button, and selecting <guimenuitem>Configure Save Options</guimenuitem> from the menu.</para>
 			</listitem>
 			<listitem>
 				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &spectacle;.</para>
@@ -254,7 +256,7 @@
 		<para>Portions of the code are based directly on code from the &ksnapshot; project. Copyright &copy; 1997-2011 The &ksnapshot; Developers. Detailed copyright assignment notices are available in the headers in the source code.</para>
 
 		<para>Portions of the code are based directly on code from the &kwin; project. Copyright &copy; 2008, 2013 The &kwin; Developers. Detailed copyright assignment notices are available in the headers in the source code.</para>
-		
+
 		<para>Documentation based on the original &ksnapshot; documentation:</para>
 
 		<itemizedlist>
