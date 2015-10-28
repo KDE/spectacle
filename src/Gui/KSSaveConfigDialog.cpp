@@ -30,7 +30,7 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
 
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     // set up the layout. start with the directory
@@ -38,7 +38,7 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
     QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Directory"));
     QVBoxLayout *dirLayout = new QVBoxLayout;
     dirGroup->setLayout(dirLayout);
-    dirGroup->setStyleSheet("QGroupBox { font-weight: bold; }");
+    dirGroup->setStyleSheet(QStringLiteral("QGroupBox { font-weight: bold; }"));
 
     QLabel *dirHelpText = new QLabel;
     dirHelpText->setWordWrap(true);
@@ -63,7 +63,7 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
     QGroupBox *fmtGroup = new QGroupBox(i18n("Default Save Filename"));
     QVBoxLayout *fmtLayout = new QVBoxLayout;
     fmtGroup->setLayout(fmtLayout);
-    fmtGroup->setStyleSheet("QGroupBox { font-weight: bold; }");
+    fmtGroup->setStyleSheet(QStringLiteral("QGroupBox { font-weight: bold; }"));
 
     const QString helpText = i18n(
         "<p>Set a default filename for saved screenshots.</p>"
@@ -127,7 +127,7 @@ void KSSaveConfigDialog::accept()
 {
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     // save the data

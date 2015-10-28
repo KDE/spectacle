@@ -43,7 +43,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     mMainWindow(nullptr),
     isGuiInited(false)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
 
     if (!(saveFileName.isEmpty() || saveFileName.isNull())) {
@@ -131,7 +131,7 @@ void SpectacleCore::setOverwriteOnSave(const bool &overwrite)
 
 QString SpectacleCore::saveLocation() const
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     QString savePath = generalConfig.readPathEntry(
@@ -143,7 +143,7 @@ QString SpectacleCore::saveLocation() const
 
     QDir savePathDir(savePath);
     if (!(savePathDir.exists())) {
-        savePathDir.mkpath(".");
+        savePathDir.mkpath(QStringLiteral("."));
         generalConfig.writePathEntry("last-saved-to", savePath);
     }
 
@@ -152,7 +152,7 @@ QString SpectacleCore::saveLocation() const
 
 void SpectacleCore::setSaveLocation(const QString &savePath)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     generalConfig.writePathEntry("last-saved-to", savePath);
@@ -268,10 +268,10 @@ void SpectacleCore::doAutoSave()
         setSaveLocation(dir.absolutePath());
 
         if ((mStartMode == BackgroundMode || mStartMode == DBusMode) && mNotify) {
-            KNotification *notify = new KNotification("newScreenshotSaved");
+            KNotification *notify = new KNotification(QStringLiteral("newScreenshotSaved"));
 
             notify->setText(i18n("A new screenshot was captured and saved to %1", savePath.toLocalFile()));
-            notify->setPixmap(QIcon::fromTheme("spectacle").pixmap(QSize(32, 32)));
+            notify->setPixmap(QIcon::fromTheme(QStringLiteral("spectacle")).pixmap(QSize(32, 32)));
             notify->sendEvent();
 
             // unfortunately we can't quit just yet, emitting allDone right away
@@ -292,7 +292,7 @@ void SpectacleCore::doStartDragAndDrop()
     QMimeData *mimeData = new QMimeData;
     mimeData->setUrls(QList<QUrl> { getTempSaveFilename() });
     mimeData->setImageData(mLocalPixmap);
-    mimeData->setData("application/x-kde-suggestedfilename", QFile::encodeName(makeAutosaveFilename() + ".png"));
+    mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(makeAutosaveFilename() + ".png"));
 
     QDrag *dragHandler = new QDrag(this);
     dragHandler->setMimeData(mimeData);
@@ -335,7 +335,7 @@ void SpectacleCore::doGuiSaveAs()
     for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
         QMimeType mimetype = db.mimeTypeForName(mimeTypeName);
 
-        if (mimetype.preferredSuffix() != "") {
+        if (mimetype.preferredSuffix() != QLatin1String("")) {
             QString filterString = mimetype.comment() + " (*." + mimetype.preferredSuffix() + ")";
             qDebug() << filterString;
             supportedFilters.append(filterString);
@@ -428,7 +428,7 @@ QUrl SpectacleCore::getAutosaveFilename()
     const QString baseDir = saveLocation();
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), "png");
+    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), QStringLiteral("png"));
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -440,19 +440,19 @@ QUrl SpectacleCore::getAutosaveFilename()
 
 QString SpectacleCore::makeAutosaveFilename()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup generalConfig = KConfigGroup(config, "General");
 
     const QDateTime timestamp = QDateTime::currentDateTime();
     QString baseName = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
 
-    return baseName.replace("%Y", timestamp.toString("yyyy"))
-                   .replace("%y", timestamp.toString("yy"))
-                   .replace("%M", timestamp.toString("MM"))
-                   .replace("%D", timestamp.toString("dd"))
-                   .replace("%H", timestamp.toString("hh"))
-                   .replace("%m", timestamp.toString("mm"))
-                   .replace("%S", timestamp.toString("ss"));
+    return baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
+                   .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
+                   .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
+                   .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
+                   .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
+                   .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
+                   .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")));
 }
 
 QString SpectacleCore::autoIncrementFilename(const QString &baseName, const QString &extension)
@@ -480,7 +480,7 @@ QString SpectacleCore::makeSaveMimetype(const QUrl &url)
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
-        return QString("png");
+        return QStringLiteral("png");
     }
     return type;
 }
@@ -534,7 +534,7 @@ bool SpectacleCore::remoteSave(const QUrl &url, const QString &mimetype)
 QUrl SpectacleCore::getTempSaveFilename() const
 {
     QDir tempDir = QDir::temp();
-    return QUrl::fromLocalFile(tempDir.absoluteFilePath("KSTempScreenshot.png"));
+    return QUrl::fromLocalFile(tempDir.absoluteFilePath(QStringLiteral("KSTempScreenshot.png")));
 }
 
 bool SpectacleCore::tempFileSave()
@@ -542,7 +542,7 @@ bool SpectacleCore::tempFileSave()
     if (!(mLocalPixmap.isNull())) {
         const QUrl savePath = getTempSaveFilename();
 
-        if (localSave(savePath, "png")) {
+        if (localSave(savePath, QStringLiteral("png"))) {
             return QFile::setPermissions(savePath.toLocalFile(), QFile::ReadUser | QFile::WriteUser);
         }
     }

@@ -30,7 +30,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSaveMenu(new QMenu),
     mCopyMessage(new KMessageWidget),
     mSendToMenu(new KSSendToMenu),
-    mActionCollection(new KActionCollection(this, "KSStandardActions")),
+    mActionCollection(new KActionCollection(this, QStringLiteral("KSStandardActions"))),
     mOnClickAvailable(onClickAvailable)
 {
     // before we do anything, we need to set a window property
@@ -77,7 +77,7 @@ KSMainWindow::~KSMainWindow()
 
 void KSMainWindow::init()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
 
     // window properties
@@ -99,22 +99,22 @@ void KSMainWindow::init()
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Open With...")));
-    mSendToButton->setIcon(QIcon::fromTheme("application-x-executable"));
+    mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
     mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
     mClipboardButton->setText(i18n("Copy To Clipboard"));
     mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
-    mClipboardButton->setIcon(QIcon::fromTheme("edit-copy"));
+    mClipboardButton->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
     mSaveMenu->addAction(KStandardAction::save(this, SIGNAL(save()), this));
     mSaveMenu->addAction(KStandardAction::saveAs(this, SIGNAL(saveAsClicked()), this));
     mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
-    mSaveMenu->addAction(QIcon::fromTheme("applications-system"), i18n("Configure Save Options"), this, SLOT(showSaveConfigDialog()));
+    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Configure Save Options"), this, SLOT(showSaveConfigDialog()));
 
-    QAction *saveAndExitAction = new QAction(QIcon::fromTheme("document-save"), i18n("Save &&& Exit"), this);
+    QAction *saveAndExitAction = new QAction(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save &&& Exit"), this);
     saveAndExitAction->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
     saveAndExitAction->setShortcut(QKeySequence(QKeySequence::Quit));
     connect(saveAndExitAction, &QAction::triggered, this, &KSMainWindow::saveAndExit);
@@ -138,7 +138,7 @@ void KSMainWindow::init()
 
     mCopyMessage->setText(i18n("The screenshot has been copied to the clipboard."));
     mCopyMessage->setMessageType(KMessageWidget::Information);
-    mCopyMessage->setIcon(QIcon::fromTheme("dialog-information"));
+    mCopyMessage->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
 
     // layouts
 
@@ -175,7 +175,7 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 {
     Q_UNUSED(event);
 
-    KSharedConfigPtr config = KSharedConfig::openConfig("spectaclerc");
+    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
 
     guiConfig.writeEntry("window-position", pos());

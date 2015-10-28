@@ -44,7 +44,7 @@ void KSSendToMenu::populateMenu()
 
     QAction *sendToAction = new QAction(this);
     sendToAction->setText(i18n("Other Application"));
-    sendToAction->setIcon(QIcon::fromTheme("application-x-executable"));
+    sendToAction->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
     sendToAction->setShortcuts(KStandardShortcut::open());
 
     connect(sendToAction, &QAction::triggered, this, &KSSendToMenu::sendToOpenWithRequest);
@@ -76,10 +76,10 @@ void KSSendToMenu::handleSendToKService()
 
 void KSSendToMenu::populateKServiceSendToActions()
 {
-    const KService::List services = KMimeTypeTrader::self()->query("image/png");
+    const KService::List services = KMimeTypeTrader::self()->query(QStringLiteral("image/png"));
 
     for (auto service: services) {
-        QString name = service->name().replace('&', "&&");
+        QString name = service->name().replace('&', QLatin1String("&&"));
 
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, nullptr);
         action->setData(QVariant::fromValue(service));

@@ -309,9 +309,9 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
 
 bool X11ImageGrabber::isKWinAvailable()
 {
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.KWin")) {
-        QDBusInterface interface("org.kde.KWin", "/Effects", "org.kde.kwin.Effects");
-        QDBusReply<bool> reply = interface.call("isEffectLoaded", "screenshot");
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.KWin"))) {
+        QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Effects"), QStringLiteral("org.kde.kwin.Effects"));
+        QDBusReply<bool> reply = interface.call(QStringLiteral("isEffectLoaded"), "screenshot");
 
         return reply.value();
     }
@@ -504,16 +504,16 @@ void X11ImageGrabber::grabActiveWindow()
 
     if (mCaptureDecorations && isKWinAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated",
+        bus.connect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
                     this, SLOT(KWinDBusScreenshotHelper(quint64)));
-        QDBusInterface interface("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot");
+        QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
         int mask = 1;
         if (mCapturePointer) {
             mask |= 1 << 1;
         }
 
-        interface.call("screenshotForWindow", (quint64)activeWindow, mask);
+        interface.call(QStringLiteral("screenshotForWindow"), (quint64)activeWindow, mask);
         return;
     }
 
@@ -528,16 +528,16 @@ void X11ImageGrabber::grabWindowUnderCursor()
 
     if (mCaptureDecorations && isKWinAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot", "screenshotCreated",
+        bus.connect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
                     this, SLOT(KWinDBusScreenshotHelper(quint64)));
-        QDBusInterface interface("org.kde.KWin", "/Screenshot", "org.kde.kwin.Screenshot");
+        QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
         int mask = 1;
         if (mCapturePointer) {
             mask |= 1 << 1;
         }
 
-        interface.call("screenshotWindowUnderCursor", mask);
+        interface.call(QStringLiteral("screenshotWindowUnderCursor"), mask);
         return;
     }
 
