@@ -297,8 +297,7 @@ void SpectacleCore::doStartDragAndDrop()
     QDrag *dragHandler = new QDrag(this);
     dragHandler->setMimeData(mimeData);
     dragHandler->setPixmap(mLocalPixmap.scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
-    dragHandler->start();
-    dragHandler->deleteLater();
+    dragHandler->exec();
 }
 
 void SpectacleCore::doPrint(QPrinter *printer)
