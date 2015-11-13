@@ -29,7 +29,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSaveButton(new QToolButton),
     mSaveMenu(new QMenu),
     mCopyMessage(new KMessageWidget),
-    mSendToMenu(new KSSendToMenu),
+    mExportMenu(new ExportMenu(this)),
     mActionCollection(new KActionCollection(this, QStringLiteral("KSStandardActions"))),
     mOnClickAvailable(onClickAvailable)
 {
@@ -98,7 +98,7 @@ void KSMainWindow::init()
 
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard);
 
-    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Open With...")));
+    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export To...")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
@@ -154,11 +154,7 @@ void KSMainWindow::init()
 
     // populate our send-to actions
 
-    connect(mSendToMenu, &KSSendToMenu::sendToServiceRequest, this, &KSMainWindow::sendToKServiceRequest);
-    connect(mSendToMenu, &KSSendToMenu::sendToClipboardRequest, this, &KSMainWindow::sendToClipboardRequest);
-    connect(mSendToMenu, &KSSendToMenu::sendToOpenWithRequest, this, &KSMainWindow::sendToOpenWithRequest);
-
-    mSendToButton->setMenu(mSendToMenu->menu());
+    mSendToButton->setMenu(mExportMenu);
 
     // disable onClick mode if not available on the platform
 
@@ -198,10 +194,6 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::discard());
     show();
-
-    if (mSendToMenu->menu()->isEmpty()) {
-        QTimer::singleShot(100, mSendToMenu, &KSSendToMenu::populateMenu);
-    }
 }
 
 void KSMainWindow::showPrintDialog()

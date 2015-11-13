@@ -17,58 +17,28 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KSSENDTOMENU_H
-#define KSSENDTOMENU_H
+#ifndef EXPORTMENU_H
+#define EXPORTMENU_H
 
-#include <QObject>
-#include <QWidget>
-#include <QString>
-#include <QAction>
-#include <QList>
 #include <QMenu>
-#include <QPair>
-#include <QVariant>
-#include <QDebug>
-#include <QIcon>
+#include "ExportManager.h"
 
-#include <KLocalizedString>
-#include <KService>
-#include <KMimeTypeTrader>
-#include <KStandardShortcut>
-
-#include "Config.h"
-
-class KSSendToMenu : public QObject
+class ExportMenu : public QMenu
 {
-    Q_OBJECT
-
     public:
 
-    explicit KSSendToMenu(QObject *parent = 0);
-    ~KSSendToMenu();
-
-    QMenu *menu();
-
-    signals:
-
-    void sendToServiceRequest(KService::Ptr servicePointer);
-    void sendToClipboardRequest();
-    void sendToOpenWithRequest();
-
-    public slots:
-
-    void populateMenu();
+    explicit ExportMenu(QWidget *parent = 0);
 
     private slots:
 
-    void handleSendToKService();
+    void populateMenu();
 
     private:
 
-    void populateKServiceSendToActions();
-    QMenu            *mMenu;
+    void getKServiceItems();
+    void getStaticItems();
+
+    ExportManager *mExportManager;
 };
 
-Q_DECLARE_METATYPE(KService::Ptr)
-
-#endif // KSSENDTOMENU_H
+#endif // EXPORTMENU_H

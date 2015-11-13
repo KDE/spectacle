@@ -16,7 +16,7 @@ set(
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
         Gui/KSSaveConfigDialog.cpp
-        Gui/KSSendToMenu.cpp
+        Gui/ExportMenu.cpp
         Gui/ScreenClipper.cpp
         Gui/SmartSpinBox.cpp
 )

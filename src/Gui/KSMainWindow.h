@@ -48,6 +48,7 @@
 #include <KStandardGuiItem>
 #include <KActionCollection>
 #include <KStandardAction>
+#include <KService>
 
 #include "Config.h"
 #ifdef XCB_FOUND
@@ -58,7 +59,7 @@
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
 #include "KSSaveConfigDialog.h"
-#include "KSSendToMenu.h"
+#include "ExportMenu.h"
 
 class KSMainWindow : public QDialog
 {
@@ -89,9 +90,7 @@ class KSMainWindow : public QDialog
     void save();
     void saveAndExit();
     void saveAsClicked();
-    void sendToKServiceRequest(KService::Ptr servicePointer);
     void sendToClipboardRequest();
-    void sendToOpenWithRequest();
     void printRequest(QPrinter *);
 
     protected:
@@ -108,7 +107,7 @@ class KSMainWindow : public QDialog
     QToolButton       *mSaveButton;
     QMenu             *mSaveMenu;
     KMessageWidget    *mCopyMessage;
-    KSSendToMenu      *mSendToMenu;
+    ExportMenu        *mExportMenu;
     KActionCollection *mActionCollection;
     bool               mOnClickAvailable;
 };

@@ -118,8 +118,6 @@ class SpectacleCore : public QObject
     void doGuiSaveAs();
     void doGuiSave();
     void doAutoSave();
-    void doSendToService(KService::Ptr service);
-    void doSendToOpenWith();
     void doSendToClipboard();
 
     private:

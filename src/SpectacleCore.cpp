@@ -337,36 +337,6 @@ void SpectacleCore::doGuiSaveAs()
     }
 }
 
-void SpectacleCore::doSendToService(KService::Ptr service)
-{
-    QUrl tempFile;
-    QList<QUrl> tempFileList;
-
-    tempFile = mExportManager->tempSave();
-    if (!tempFile.isValid()) {
-        emit errorMessage(i18n("Cannot send screenshot to the application"));
-        return;
-    }
-
-    tempFileList.append(tempFile);
-    KRun::runService(*service, tempFileList, mMainWindow, true);
-}
-
-void SpectacleCore::doSendToOpenWith()
-{
-    QUrl tempFile;
-    QList<QUrl> tempFileList;
-
-    tempFile = mExportManager->tempSave();
-    if (!tempFile.isValid()) {
-        emit errorMessage(i18n("Cannot send screenshot to the application"));
-        return;
-    }
-
-    tempFileList.append(tempFile);
-    KRun::displayOpenWithDialog(tempFileList, mMainWindow, true);
-}
-
 void SpectacleCore::doSendToClipboard()
 {
     QApplication::clipboard()->setPixmap(mExportManager->pixmap());
@@ -383,8 +353,6 @@ void SpectacleCore::initGui()
         connect(mMainWindow, &KSMainWindow::save, this, &SpectacleCore::doGuiSave);
         connect(mMainWindow, &KSMainWindow::saveAndExit, this, &SpectacleCore::doAutoSave);
         connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &SpectacleCore::doGuiSaveAs);
-        connect(mMainWindow, &KSMainWindow::sendToKServiceRequest, this, &SpectacleCore::doSendToService);
-        connect(mMainWindow, &KSMainWindow::sendToOpenWithRequest, this, &SpectacleCore::doSendToOpenWith);
         connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &SpectacleCore::doSendToClipboard);
         connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &SpectacleCore::doStartDragAndDrop);
         connect(mMainWindow, &KSMainWindow::printRequest, this, &SpectacleCore::doPrint);
