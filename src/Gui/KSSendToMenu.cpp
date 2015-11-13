@@ -36,10 +36,6 @@ KSSendToMenu::~KSSendToMenu()
 void KSSendToMenu::populateMenu()
 {
     populateKServiceSendToActions();
-#ifdef KIPI_FOUND
-    mMenu->addSeparator();
-    populateKipiSendToActions();
-#endif
     mMenu->addSeparator();
 
     QAction *sendToAction = new QAction(this);
@@ -88,46 +84,3 @@ void KSSendToMenu::populateKServiceSendToActions()
         mMenu->addAction(action);
     }
 }
-
-#ifdef KIPI_FOUND
-void KSSendToMenu::populateKipiSendToActions()
-{
-    mKipiInterface = new KSGKipiInterface(this);
-    KIPI::PluginLoader *loader = new KIPI::PluginLoader;
-
-    loader->setInterface(mKipiInterface);
-    loader->init();
-
-    KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
-
-    for (auto pluginInfo: pluginList) {
-        if (!(pluginInfo->shouldLoad())) {
-            continue;
-        }
-
-        KIPI::Plugin *plugin = pluginInfo->plugin();
-        if (!(plugin)) {
-            qWarning() << i18n("KIPI plugin from library %1 failed to load", pluginInfo->library());
-            continue;
-        }
-
-        plugin->setup(&mDummyWidget);
-
-        QList<QAction *> actions = plugin->actions();
-        QSet<QAction *> exportActions;
-
-        for (auto action: actions) {
-            KIPI::Category category = plugin->category(action);
-            if (category == KIPI::ExportPlugin) {
-                exportActions += action;
-            } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains("kipiplugin_sendimages")) {
-                exportActions += action;
-            }
-        }
-
-        for (auto action: exportActions) {
-            mMenu->addAction(action);
-        }
-    }
-}
-#endif

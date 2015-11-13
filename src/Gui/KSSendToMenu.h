@@ -38,14 +38,6 @@
 
 #include "Config.h"
 
-#ifdef KIPI_FOUND
-#include <KIPI/Interface>
-#include <KIPI/PluginLoader>
-#include <KIPI/Plugin>
-
-#include "KipiInterface/KSGKipiInterface.h"
-#endif
-
 class KSSendToMenu : public QObject
 {
     Q_OBJECT
@@ -74,12 +66,6 @@ class KSSendToMenu : public QObject
     private:
 
     void populateKServiceSendToActions();
-#ifdef KIPI_FOUND
-    void populateKipiSendToActions();
-
-    KSGKipiInterface *mKipiInterface;
-    QWidget           mDummyWidget;
-#endif
     QMenu            *mMenu;
 };
 

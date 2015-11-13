@@ -62,11 +62,6 @@ find_package(
 
 # optional components
 
-find_package(KF5Kipi)
-if (KF5Kipi_FOUND)
-    set(KIPI_FOUND 1)
-endif ()
-
 find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR)
 if (XCB_FOUND)
     find_package(Qt5X11Extras ${QT_MIN_VERSION} REQUIRED)
