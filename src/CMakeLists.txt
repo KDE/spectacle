@@ -53,6 +53,7 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
+        KDEExperimental::PurposeWidgets
 )
 
 if(XCB_FOUND)

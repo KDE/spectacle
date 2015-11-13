@@ -60,6 +60,8 @@ find_package(
         DocTools
 )
 
+find_package(KDEExperimentalPurpose 1.0 REQUIRED)
+
 # optional components
 
 find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR)
