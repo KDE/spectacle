@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QIODevice>
+#include <QPrinter>
 #include <QPixmap>
 #include <QUrl>
 
@@ -60,12 +61,17 @@ class ExportManager : public QObject
     void errorMessage(const QString &str);
     void saveLocationChanged(const QString &location);
     void pixmapChanged(const QPixmap &pixmap);
+    void imageSaved(const QUrl &savedAt);
 
     public slots:
 
     QUrl getAutosaveFilename();
     QUrl tempSave(const QString &mimetype = "png");
-    bool doSave(const QUrl &url);
+
+    void doSave(const QUrl &url = QUrl());
+    void doSaveAs(QWidget *parentWindow = 0);
+    void doCopyToClipboard();
+    void doPrint(QPrinter *printer);
 
     private:
 
@@ -73,6 +79,7 @@ class ExportManager : public QObject
     QString autoIncrementFilename(const QString &baseName, const QString &extension);
     QString makeSaveMimetype(const QUrl &url);
     bool writeImage(QIODevice *device, const QByteArray &format);
+    bool save(const QUrl &url);
     bool localSave(const QUrl &url, const QString &mimetype);
     bool remoteSave(const QUrl &url, const QString &mimetype);
     bool isFileExists(const QUrl &url);

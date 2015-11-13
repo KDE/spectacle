@@ -18,6 +18,23 @@
  */
 
 #include "KSMainWindow.h"
+#include "Config.h"
+
+#include <QPrintDialog>
+#ifdef XCB_FOUND
+#include <QX11Info>
+#include <xcb/xcb.h>
+#endif
+
+#include <KGuiItem>
+#include <KStandardAction>
+#include <KStandardGuiItem>
+#include <KHelpMenu>
+#include <KAboutData>
+
+#include "KSSaveConfigDialog.h"
+#include "ExportMenu.h"
+#include "ExportManager.h"
 
 KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     QDialog(parent),
@@ -30,7 +47,6 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSaveMenu(new QMenu),
     mCopyMessage(new KMessageWidget),
     mExportMenu(new ExportMenu(this)),
-    mActionCollection(new KActionCollection(this, QStringLiteral("KSStandardActions"))),
     mOnClickAvailable(onClickAvailable)
 {
     // before we do anything, we need to set a window property
@@ -89,6 +105,10 @@ void KSMainWindow::init()
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
     move(location);
 
+    // change window title on save
+
+    connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::setScreenshotWindowTitle);
+
     // the KSGWidget
 
     connect(mKSWidget, &KSWidget::newScreenshotRequest, this, &KSMainWindow::captureScreenshot);
@@ -109,8 +129,8 @@ void KSMainWindow::init()
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
-    mSaveMenu->addAction(KStandardAction::save(this, SIGNAL(save()), this));
-    mSaveMenu->addAction(KStandardAction::saveAs(this, SIGNAL(saveAsClicked()), this));
+    mSaveMenu->addAction(KStandardAction::save(this, SLOT(save()), this));
+    mSaveMenu->addAction(KStandardAction::saveAs(this, SLOT(saveAs()), this));
     mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
     mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Configure Save Options"), this, SLOT(showSaveConfigDialog()));
 
@@ -201,7 +221,7 @@ void KSMainWindow::showPrintDialog()
     QPrinter *printer = new QPrinter(QPrinter::HighResolution);
     QPrintDialog printDialog(printer, this);
     if (printDialog.exec() == QDialog::Accepted) {
-        emit printRequest(printer);
+        ExportManager::instance()->doPrint(printer);
         return;
     }
     delete printer;
@@ -209,7 +229,7 @@ void KSMainWindow::showPrintDialog()
 
 void KSMainWindow::sendToClipboard()
 {
-    emit sendToClipboardRequest();
+    ExportManager::instance()->doCopyToClipboard();
     mCopyMessage->animatedShow();
     QTimer::singleShot(5000, mCopyMessage, &KMessageWidget::animatedHide);
 }
@@ -225,4 +245,20 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
     setWindowTitle(location.fileName());
     setWindowModified(false);
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::quit());
+}
+
+void KSMainWindow::save()
+{
+    ExportManager::instance()->doSave();
+}
+
+void KSMainWindow::saveAs()
+{
+    ExportManager::instance()->doSaveAs(this);
+}
+
+void KSMainWindow::saveAndExit()
+{
+    ExportManager::instance()->doSave();
+    QApplication::quit();
 }

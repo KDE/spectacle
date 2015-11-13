@@ -72,7 +72,6 @@ class SpectacleCore : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString filename READ filename WRITE setFilename NOTIFY filenameChanged)
-    Q_PROPERTY(bool overwriteOnSave READ overwriteOnSave WRITE setOverwriteOnSave NOTIFY overwriteOnSaveChanged)
     Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode NOTIFY grabModeChanged)
 
     public:
@@ -91,8 +90,6 @@ class SpectacleCore : public QObject
     void setFilename(const QString &filename);
     ImageGrabber::GrabMode grabMode() const;
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
-    bool overwriteOnSave() const;
-    void setOverwriteOnSave(const bool &overwrite);
 
     signals:
 
@@ -100,11 +97,8 @@ class SpectacleCore : public QObject
     void allDone();
     void filenameChanged(QString filename);
     void grabModeChanged(ImageGrabber::GrabMode mode);
-    void overwriteOnSaveChanged(bool overwriteOnSave);
-    void saveLocationChanged(QString savePath);
-    void imageSaved(QUrl location);
-    void imageSaved(QString location);
     void grabFailed();
+    void imageSaved(const QString &savedAt);
 
     public slots:
 
@@ -114,11 +108,7 @@ class SpectacleCore : public QObject
     void screenshotFailed();
     void dbusStartAgent();
     void doStartDragAndDrop();
-    void doPrint(QPrinter *printer);
-    void doGuiSaveAs();
-    void doGuiSave();
-    void doAutoSave();
-    void doSendToClipboard();
+    void doNotify(const QUrl &savedAt);
 
     private:
 
@@ -127,7 +117,6 @@ class SpectacleCore : public QObject
     ExportManager *mExportManager;
     StartMode     mStartMode;
     bool          mNotify;
-    bool          mOverwriteOnSave;
     bool          mBackgroundSendToClipboard;
     QString       mFileNameString;
     QUrl          mFileNameUrl;

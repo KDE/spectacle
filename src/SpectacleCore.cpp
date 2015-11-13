@@ -1,18 +1,6 @@
 /*
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
- *  Includes code from ksnapshot.cpp, part of KSnapshot. Copyright notices
- *  reproduced below:
- *
- *  Copyright (C) 1997-2008 Richard J. Moore <rich@kde.org>
- *  Copyright (C) 2000 Matthias Ettrich <ettrich@troll.no>
- *  Copyright (C) 2002 Aaron J. Seigo <aseigo@kde.org>
- *  Copyright (C) 2003 Nadeem Hasan <nhasan@kde.org>
- *  Copyright (C) 2004 Bernd Brandstetter <bbrand@freenet.de>
- *  Copyright (C) 2006 Urs Wolfer <uwolfer @ kde.org>
- *  Copyright (C) 2010 Martin Gräßlin <kde@martin-graesslin.com>
- *  Copyright (C) 2010, 2011 Pau Garcia i Quiles <pgquiles@elpauer.org>
- *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -37,7 +25,6 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     mExportManager(ExportManager::instance()),
     mStartMode(startMode),
     mNotify(notifyOnGrab),
-    mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
     mImageGrabber(nullptr),
     mMainWindow(nullptr),
@@ -71,9 +58,13 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
         delayMsec = 0;
     }
 
+    connect(mExportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
+    connect(mExportManager, &ExportManager::imageSaved, [&](const QUrl &savedAt) {
+        emit imageSaved(savedAt.toLocalFile());
+    });
 
     switch (startMode) {
     case DBusMode:
@@ -117,16 +108,6 @@ ImageGrabber::GrabMode SpectacleCore::grabMode() const
 void SpectacleCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
-}
-
-bool SpectacleCore::overwriteOnSave() const
-{
-    return mOverwriteOnSave;
-}
-
-void SpectacleCore::setOverwriteOnSave(const bool &overwrite)
-{
-    mOverwriteOnSave = overwrite;
 }
 
 // Slots
@@ -182,7 +163,21 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
             qDebug() << i18n("Copied image to clipboard");
         }
     case DBusMode:
-        doAutoSave();
+        {
+            if (mNotify) {
+                connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
+            }
+
+            QUrl savePath = (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
+                    mFileNameUrl : QUrl();
+            mExportManager->doSave(savePath);
+
+            if (mNotify) {
+                QTimer::singleShot(250, this, &SpectacleCore::allDone);
+            } else {
+                emit allDone();
+            }
+        }
         break;
     case GuiMode:
         mMainWindow->setScreenshotAndShow(pixmap);
@@ -203,58 +198,13 @@ void SpectacleCore::screenshotFailed()
     }
 }
 
-void SpectacleCore::doGuiSave()
+void SpectacleCore::doNotify(const QUrl &savedAt)
 {
-    if (mExportManager->pixmap().isNull()) {
-        emit errorMessage(i18n("Cannot save an empty screenshot image."));
-        return;
-    }
+    KNotification *notify = new KNotification(QStringLiteral("newScreenshotSaved"));
 
-    QUrl savePath = mExportManager->getAutosaveFilename();
-    if (mExportManager->doSave(savePath)) {
-        emit imageSaved(savePath);
-        emit imageSaved(savePath.toLocalFile());
-    }
-}
-
-void SpectacleCore::doAutoSave()
-{
-    if (mExportManager->pixmap().isNull()) {
-        emit errorMessage(i18n("Cannot save an empty screenshot image."));
-        return;
-    }
-
-    QUrl savePath;
-
-    if (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
-        savePath = mFileNameUrl;
-    } else {
-        savePath = mExportManager->getAutosaveFilename();
-    }
-
-    if (mExportManager->doSave(savePath)) {
-        QDir dir(savePath.path());
-        dir.cdUp();
-        mExportManager->setSaveLocation(dir.absolutePath());
-
-        if ((mStartMode == BackgroundMode || mStartMode == DBusMode) && mNotify) {
-            KNotification *notify = new KNotification(QStringLiteral("newScreenshotSaved"));
-
-            notify->setText(i18n("A new screenshot was captured and saved to %1", savePath.toLocalFile()));
-            notify->setPixmap(QIcon::fromTheme(QStringLiteral("spectacle")).pixmap(QSize(32, 32)));
-            notify->sendEvent();
-
-            // unfortunately we can't quit just yet, emitting allDone right away
-            // quits the application before the notification DBus message gets sent.
-            // a token timeout seems to fix this though. Any better ideas?
-
-            QTimer::singleShot(50, this, &SpectacleCore::allDone);
-        } else {
-            emit allDone();
-        }
-
-        return;
-    }
+    notify->setText(i18n("A new screenshot was captured and saved to %1", savedAt.toLocalFile()));
+    notify->setPixmap(QIcon::fromTheme(QStringLiteral("spectacle")).pixmap(QSize(32, 32)));
+    notify->sendEvent();
 }
 
 void SpectacleCore::doStartDragAndDrop()
@@ -275,73 +225,6 @@ void SpectacleCore::doStartDragAndDrop()
     dragHandler->exec();
 }
 
-void SpectacleCore::doPrint(QPrinter *printer)
-{
-    QPainter painter;
-
-    if (!(painter.begin(printer))) {
-        emit errorMessage(i18n("Printing failed. The printer failed to initialize."));
-        delete printer;
-        return;
-    }
-
-    QRect devRect(0, 0, printer->width(), printer->height());
-    QPixmap pixmap = mExportManager->pixmap().scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    QRect srcRect = pixmap.rect();
-    srcRect.moveCenter(devRect.center());
-
-    painter.drawPixmap(srcRect.topLeft(), pixmap);
-    painter.end();
-
-    delete printer;
-    return;
-}
-
-void SpectacleCore::doGuiSaveAs()
-{
-    QString selectedFilter;
-    QStringList supportedFilters;
-    QMimeDatabase db;
-
-    const QUrl autoSavePath = mExportManager->getAutosaveFilename();
-    const QMimeType mimeTypeForFilename = db.mimeTypeForUrl(autoSavePath);
-
-    for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
-        QMimeType mimetype = db.mimeTypeForName(mimeTypeName);
-
-        if (mimetype.preferredSuffix() != QLatin1String("")) {
-            QString filterString = mimetype.comment() + " (*." + mimetype.preferredSuffix() + ")";
-            qDebug() << filterString;
-            supportedFilters.append(filterString);
-            if (mimetype == mimeTypeForFilename) {
-                selectedFilter = supportedFilters.last();
-            }
-        }
-    }
-
-    QFileDialog dialog(mMainWindow);
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setNameFilters(supportedFilters);
-    dialog.selectNameFilter(selectedFilter);
-    dialog.setDirectoryUrl(autoSavePath);
-
-    if (dialog.exec() == QFileDialog::Accepted) {
-        const QUrl saveUrl = dialog.selectedUrls().first();
-        if (saveUrl.isValid()) {
-            if (mExportManager->doSave(saveUrl)) {
-                emit imageSaved(saveUrl);
-                emit imageSaved(saveUrl.toLocalFile());
-            }
-        }
-    }
-}
-
-void SpectacleCore::doSendToClipboard()
-{
-    QApplication::clipboard()->setPixmap(mExportManager->pixmap());
-}
-
 // Private
 
 void SpectacleCore::initGui()
@@ -350,15 +233,7 @@ void SpectacleCore::initGui()
         mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
 
         connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &SpectacleCore::takeNewScreenshot);
-        connect(mMainWindow, &KSMainWindow::save, this, &SpectacleCore::doGuiSave);
-        connect(mMainWindow, &KSMainWindow::saveAndExit, this, &SpectacleCore::doAutoSave);
-        connect(mMainWindow, &KSMainWindow::saveAsClicked, this, &SpectacleCore::doGuiSaveAs);
-        connect(mMainWindow, &KSMainWindow::sendToClipboardRequest, this, &SpectacleCore::doSendToClipboard);
         connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &SpectacleCore::doStartDragAndDrop);
-        connect(mMainWindow, &KSMainWindow::printRequest, this, &SpectacleCore::doPrint);
-
-        connect(this, static_cast<void (SpectacleCore::*)(QUrl)>(&SpectacleCore::imageSaved),
-                mMainWindow, &KSMainWindow::setScreenshotWindowTitle);
 
         isGuiInited = true;
         QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);

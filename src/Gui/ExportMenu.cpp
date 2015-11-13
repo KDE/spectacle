@@ -22,6 +22,9 @@
 #include <QTimer>
 #include <QList>
 #include <QUrl>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QDebug>
 
 #include <KLocalizedString>
 #include <KStandardShortcut>
@@ -38,13 +41,11 @@ ExportMenu::ExportMenu(QWidget *parent) :
 
 void ExportMenu::populateMenu()
 {
-    return getKServiceItems();
+    getKServiceItems();
 }
 
 void ExportMenu::getKServiceItems()
 {
-    //addSection(i18n("Local Applications"));
-
     // populate all locally installed applications and services
     // which can handle images first
 
@@ -63,6 +64,8 @@ void ExportMenu::getKServiceItems()
 
     // now let the user manually chose an application to open the
     // image with
+
+    addSeparator();
 
     QAction *openWith = new QAction(this);
     openWith->setText(i18n("Other Application"));

@@ -23,6 +23,10 @@
 #include <QMimeDatabase>
 #include <QImageWriter>
 #include <QTemporaryFile>
+#include <QApplication>
+#include <QClipboard>
+#include <QPainter>
+#include <QFileDialog>
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -228,7 +232,7 @@ QUrl ExportManager::tempSave(const QString &mimetype)
     return QUrl();
 }
 
-bool ExportManager::doSave(const QUrl &url)
+bool ExportManager::save(const QUrl &url)
 {
     if (!(url.isValid())) {
         emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
@@ -252,4 +256,90 @@ bool ExportManager::isFileExists(const QUrl &url)
     existsJob->exec();
 
     return (existsJob->error() == KJob::NoError);
+}
+
+// save slots
+
+void ExportManager::doSave(const QUrl &url)
+{
+    if (mSavePixmap.isNull()) {
+        emit errorMessage(i18n("Cannot save an empty screenshot image."));
+        return;
+    }
+
+    QUrl savePath = url.isValid() ? url : getAutosaveFilename();
+    if (save(savePath)) {
+        QDir dir(savePath.path());
+        dir.cdUp();
+        setSaveLocation(dir.absolutePath());
+
+        emit imageSaved(savePath);
+    }
+}
+
+void ExportManager::doSaveAs(QWidget *parentWindow)
+{
+    QString selectedFilter;
+    QStringList supportedFilters;
+    QMimeDatabase db;
+
+    const QUrl autoSavePath = getAutosaveFilename();
+    const QMimeType mimeTypeForFilename = db.mimeTypeForUrl(autoSavePath);
+
+    for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
+        QMimeType mimetype = db.mimeTypeForName(mimeTypeName);
+
+        if (mimetype.preferredSuffix() != QStringLiteral("")) {
+            QString filterString = mimetype.comment() + " (*." + mimetype.preferredSuffix() + ")";
+            supportedFilters.append(filterString);
+            if (mimetype == mimeTypeForFilename) {
+                selectedFilter = supportedFilters.last();
+            }
+        }
+    }
+
+    QFileDialog dialog(parentWindow);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilters(supportedFilters);
+    dialog.selectNameFilter(selectedFilter);
+    dialog.setDirectoryUrl(autoSavePath);
+
+    if (dialog.exec() == QFileDialog::Accepted) {
+        const QUrl saveUrl = dialog.selectedUrls().first();
+        if (saveUrl.isValid()) {
+            if (save(saveUrl)) {
+                emit imageSaved(saveUrl);
+            }
+        }
+    }
+}
+
+// misc helpers
+
+void ExportManager::doCopyToClipboard()
+{
+    QApplication::clipboard()->setPixmap(mSavePixmap, QClipboard::Clipboard);
+}
+
+void ExportManager::doPrint(QPrinter *printer)
+{
+    QPainter painter;
+
+    if (!(painter.begin(printer))) {
+        emit errorMessage(i18n("Printing failed. The printer failed to initialize."));
+        delete printer;
+        return;
+    }
+
+    QRect devRect(0, 0, printer->width(), printer->height());
+    QPixmap pixmap = mSavePixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QRect srcRect = pixmap.rect();
+    srcRect.moveCenter(devRect.center());
+
+    painter.drawPixmap(srcRect.topLeft(), pixmap);
+    painter.end();
+
+    delete printer;
+    return;
 }

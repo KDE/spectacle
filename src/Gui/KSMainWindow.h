@@ -21,45 +21,15 @@
 #define KSMAINWINDOW_H
 
 #include <QDialog>
-#include <QPrintDialog>
-#include <QPrinter>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QMouseEvent>
-#include <QMoveEvent>
-#include <QPushButton>
-#include <QToolButton>
 #include <QMenu>
-#include <QKeySequence>
-#include <QDialogButtonBox>
-#include <QPoint>
 #include <QFrame>
-#include <QAction>
-#include <QMetaObject>
-#include <QTimer>
+#include <QToolButton>
+#include <QDialogButtonBox>
 
-#include <KLocalizedString>
-#include <KSharedConfig>
-#include <KConfigGroup>
 #include <KMessageWidget>
-#include <KAboutData>
-#include <KHelpMenu>
-#include <KGuiItem>
-#include <KStandardGuiItem>
-#include <KActionCollection>
-#include <KStandardAction>
-#include <KService>
-
-#include "Config.h"
-#ifdef XCB_FOUND
-#include <QX11Info>
-#include <xcb/xcb.h>
-#endif
 
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
-#include "KSSaveConfigDialog.h"
-#include "ExportMenu.h"
 
 class KSMainWindow : public QDialog
 {
@@ -77,6 +47,9 @@ class KSMainWindow : public QDialog
     void showSaveConfigDialog();
     void sendToClipboard();
     void init();
+    void save();
+    void saveAs();
+    void saveAndExit();
 
     public slots:
 
@@ -87,11 +60,6 @@ class KSMainWindow : public QDialog
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void dragAndDropRequest();
-    void save();
-    void saveAndExit();
-    void saveAsClicked();
-    void sendToClipboardRequest();
-    void printRequest(QPrinter *);
 
     protected:
 
@@ -99,17 +67,16 @@ class KSMainWindow : public QDialog
 
     private:
 
-    KSWidget          *mKSWidget;
-    QFrame            *mDivider;
-    QDialogButtonBox  *mDialogButtonBox;
-    QPushButton       *mSendToButton;
-    QToolButton       *mClipboardButton;
-    QToolButton       *mSaveButton;
-    QMenu             *mSaveMenu;
-    KMessageWidget    *mCopyMessage;
-    ExportMenu        *mExportMenu;
-    KActionCollection *mActionCollection;
-    bool               mOnClickAvailable;
+    KSWidget         *mKSWidget;
+    QFrame           *mDivider;
+    QDialogButtonBox *mDialogButtonBox;
+    QPushButton      *mSendToButton;
+    QToolButton      *mClipboardButton;
+    QToolButton      *mSaveButton;
+    QMenu            *mSaveMenu;
+    KMessageWidget   *mCopyMessage;
+    QMenu            *mExportMenu;
+    bool              mOnClickAvailable;
 };
 
 #endif // KSMAINWINDOW_H

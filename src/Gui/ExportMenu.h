@@ -36,7 +36,6 @@ class ExportMenu : public QMenu
     private:
 
     void getKServiceItems();
-    void getStaticItems();
 
     ExportManager *mExportManager;
 };

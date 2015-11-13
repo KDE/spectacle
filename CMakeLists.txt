@@ -60,7 +60,7 @@ find_package(
         DocTools
 )
 
-find_package(KDEExperimentalPurpose 1.0 REQUIRED)
+#find_package(KDEExperimentalPurpose 1.0 REQUIRED)
 
 # optional components
 
