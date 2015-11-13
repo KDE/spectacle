@@ -34,11 +34,11 @@
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
+    mExportManager(ExportManager::instance()),
     mStartMode(startMode),
     mNotify(notifyOnGrab),
     mOverwriteOnSave(true),
     mBackgroundSendToClipboard(sendToClipboard),
-    mLocalPixmap(QPixmap()),
     mImageGrabber(nullptr),
     mMainWindow(nullptr),
     isGuiInited(false)
@@ -129,35 +129,6 @@ void SpectacleCore::setOverwriteOnSave(const bool &overwrite)
     mOverwriteOnSave = overwrite;
 }
 
-QString SpectacleCore::saveLocation() const
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
-    QString savePath = generalConfig.readPathEntry(
-                "default-save-location", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-    if (savePath.isEmpty() || savePath.isNull()) {
-        savePath = QDir::homePath();
-    }
-    savePath = QDir::cleanPath(savePath);
-
-    QDir savePathDir(savePath);
-    if (!(savePathDir.exists())) {
-        savePathDir.mkpath(QStringLiteral("."));
-        generalConfig.writePathEntry("last-saved-to", savePath);
-    }
-
-    return savePath;
-}
-
-void SpectacleCore::setSaveLocation(const QString &savePath)
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
-    generalConfig.writePathEntry("last-saved-to", savePath);
-}
-
 // Slots
 
 void SpectacleCore::dbusStartAgent()
@@ -202,7 +173,7 @@ void SpectacleCore::showErrorMessage(const QString &errString)
 
 void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
 {
-    mLocalPixmap = pixmap;
+    mExportManager->setPixmap(pixmap);
 
     switch (mStartMode) {
     case BackgroundMode:
@@ -215,7 +186,6 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
         break;
     case GuiMode:
         mMainWindow->setScreenshotAndShow(pixmap);
-        tempFileSave();
     }
 }
 
@@ -235,13 +205,13 @@ void SpectacleCore::screenshotFailed()
 
 void SpectacleCore::doGuiSave()
 {
-    if (mLocalPixmap.isNull()) {
+    if (mExportManager->pixmap().isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
 
-    QUrl savePath = getAutosaveFilename();
-    if (doSave(savePath)) {
+    QUrl savePath = mExportManager->getAutosaveFilename();
+    if (mExportManager->doSave(savePath)) {
         emit imageSaved(savePath);
         emit imageSaved(savePath.toLocalFile());
     }
@@ -249,7 +219,7 @@ void SpectacleCore::doGuiSave()
 
 void SpectacleCore::doAutoSave()
 {
-    if (mLocalPixmap.isNull()) {
+    if (mExportManager->pixmap().isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -259,13 +229,13 @@ void SpectacleCore::doAutoSave()
     if (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) {
         savePath = mFileNameUrl;
     } else {
-        savePath = getAutosaveFilename();
+        savePath = mExportManager->getAutosaveFilename();
     }
 
-    if (doSave(savePath)) {
+    if (mExportManager->doSave(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
-        setSaveLocation(dir.absolutePath());
+        mExportManager->setSaveLocation(dir.absolutePath());
 
         if ((mStartMode == BackgroundMode || mStartMode == DBusMode) && mNotify) {
             KNotification *notify = new KNotification(QStringLiteral("newScreenshotSaved"));
@@ -289,14 +259,19 @@ void SpectacleCore::doAutoSave()
 
 void SpectacleCore::doStartDragAndDrop()
 {
+    QUrl tempFile = mExportManager->tempSave();
+    if (!tempFile.isValid()) {
+        return;
+    }
+
     QMimeData *mimeData = new QMimeData;
-    mimeData->setUrls(QList<QUrl> { getTempSaveFilename() });
-    mimeData->setImageData(mLocalPixmap);
-    mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(makeAutosaveFilename() + ".png"));
+    mimeData->setUrls(QList<QUrl> { tempFile });
+    mimeData->setImageData(mExportManager->pixmap());
+    mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(tempFile.fileName()));
 
     QDrag *dragHandler = new QDrag(this);
     dragHandler->setMimeData(mimeData);
-    dragHandler->setPixmap(mLocalPixmap.scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    dragHandler->setPixmap(mExportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     dragHandler->exec();
 }
 
@@ -311,7 +286,7 @@ void SpectacleCore::doPrint(QPrinter *printer)
     }
 
     QRect devRect(0, 0, printer->width(), printer->height());
-    QPixmap pixmap = mLocalPixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QPixmap pixmap = mExportManager->pixmap().scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     QRect srcRect = pixmap.rect();
     srcRect.moveCenter(devRect.center());
 
@@ -328,7 +303,7 @@ void SpectacleCore::doGuiSaveAs()
     QStringList supportedFilters;
     QMimeDatabase db;
 
-    const QUrl autoSavePath = getAutosaveFilename();
+    const QUrl autoSavePath = mExportManager->getAutosaveFilename();
     const QMimeType mimeTypeForFilename = db.mimeTypeForUrl(autoSavePath);
 
     for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
@@ -354,7 +329,7 @@ void SpectacleCore::doGuiSaveAs()
     if (dialog.exec() == QFileDialog::Accepted) {
         const QUrl saveUrl = dialog.selectedUrls().first();
         if (saveUrl.isValid()) {
-            if (doSave(saveUrl)) {
+            if (mExportManager->doSave(saveUrl)) {
                 emit imageSaved(saveUrl);
                 emit imageSaved(saveUrl.toLocalFile());
             }
@@ -367,7 +342,7 @@ void SpectacleCore::doSendToService(KService::Ptr service)
     QUrl tempFile;
     QList<QUrl> tempFileList;
 
-    tempFile = getTempSaveFilename();
+    tempFile = mExportManager->tempSave();
     if (!tempFile.isValid()) {
         emit errorMessage(i18n("Cannot send screenshot to the application"));
         return;
@@ -382,7 +357,7 @@ void SpectacleCore::doSendToOpenWith()
     QUrl tempFile;
     QList<QUrl> tempFileList;
 
-    tempFile = getTempSaveFilename();
+    tempFile = mExportManager->tempSave();
     if (!tempFile.isValid()) {
         emit errorMessage(i18n("Cannot send screenshot to the application"));
         return;
@@ -394,7 +369,7 @@ void SpectacleCore::doSendToOpenWith()
 
 void SpectacleCore::doSendToClipboard()
 {
-    QApplication::clipboard()->setPixmap(mLocalPixmap);
+    QApplication::clipboard()->setPixmap(mExportManager->pixmap());
 }
 
 // Private
@@ -420,178 +395,4 @@ void SpectacleCore::initGui()
         isGuiInited = true;
         QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
     }
-}
-
-QUrl SpectacleCore::getAutosaveFilename()
-{
-    const QString baseDir = saveLocation();
-    const QDir baseDirPath(baseDir);
-    const QString filename = makeAutosaveFilename();
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), QStringLiteral("png"));
-
-    const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
-    if (fileNameUrl.isValid()) {
-        return fileNameUrl;
-    } else {
-        return QUrl();
-    }
-}
-
-QString SpectacleCore::makeAutosaveFilename()
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
-    const QDateTime timestamp = QDateTime::currentDateTime();
-    QString baseName = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
-
-    return baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
-                   .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
-                   .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
-                   .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
-                   .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
-                   .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
-                   .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")));
-}
-
-QString SpectacleCore::autoIncrementFilename(const QString &baseName, const QString &extension)
-{
-    if (!(isFileExists(QUrl::fromUserInput(baseName + '.' + extension)))) {
-        return baseName + '.' + extension;
-    }
-
-    QString fileNameFmt(baseName + "-%1." + extension);
-    for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
-        if (!(isFileExists(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
-            return fileNameFmt.arg(i);
-        }
-    }
-
-    // unlikely this will ever happen, but just in case we've run
-    // out of numbers
-
-    return fileNameFmt.arg("OVERFLOW-" + (qrand() % 10000));
-}
-
-QString SpectacleCore::makeSaveMimetype(const QUrl &url)
-{
-    QMimeDatabase mimedb;
-    QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
-
-    if (type.isEmpty()) {
-        return QStringLiteral("png");
-    }
-    return type;
-}
-
-bool SpectacleCore::writeImage(QIODevice *device, const QByteArray &format)
-{
-    QImageWriter imageWriter(device, format);
-    if (!(imageWriter.canWrite())) {
-        emit errorMessage(i18n("QImageWriter cannot write image: ") + imageWriter.errorString());
-        return false;
-    }
-
-    return imageWriter.write(mLocalPixmap.toImage());
-}
-
-bool SpectacleCore::localSave(const QUrl &url, const QString &mimetype)
-{
-    QFile outputFile(url.toLocalFile());
-
-    outputFile.open(QFile::WriteOnly);
-    if(!writeImage(&outputFile, mimetype.toLatin1())) {
-        emit errorMessage(i18n("Cannot save screenshot. Error while writing file."));
-        return false;
-    }
-    return true;
-}
-
-bool SpectacleCore::remoteSave(const QUrl &url, const QString &mimetype)
-{
-    QTemporaryFile tmpFile;
-
-    if (tmpFile.open()) {
-        if(!writeImage(&tmpFile, mimetype.toLatin1())) {
-            emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
-            return false;
-        }
-
-        KIO::FileCopyJob *uploadJob = KIO::file_copy(QUrl::fromLocalFile(tmpFile.fileName()), url);
-        uploadJob->exec();
-
-        if (uploadJob->error() != KJob::NoError) {
-            emit errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
-            return false;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-QUrl SpectacleCore::getTempSaveFilename() const
-{
-    QDir tempDir = QDir::temp();
-    return QUrl::fromLocalFile(tempDir.absoluteFilePath(QStringLiteral("KSTempScreenshot.png")));
-}
-
-bool SpectacleCore::tempFileSave()
-{
-    if (!(mLocalPixmap.isNull())) {
-        const QUrl savePath = getTempSaveFilename();
-
-        if (localSave(savePath, QStringLiteral("png"))) {
-            return QFile::setPermissions(savePath.toLocalFile(), QFile::ReadUser | QFile::WriteUser);
-        }
-    }
-
-    return false;
-}
-
-QUrl SpectacleCore::tempFileSave(const QString &mimetype)
-{
-    QTemporaryFile tmpFile;
-    tmpFile.setAutoRemove(false);
-
-    if (tmpFile.open()) {
-        if(!writeImage(&tmpFile, mimetype.toLatin1())) {
-            emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
-            return QUrl();
-        }
-        return QUrl::fromLocalFile(tmpFile.fileName());
-    }
-
-    return QUrl();
-}
-
-bool SpectacleCore::doSave(const QUrl &url)
-{
-    if (!(url.isValid())) {
-        emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
-        return false;
-    }
-
-    if (isFileExists(url) && (mOverwriteOnSave == false)) {
-        emit errorMessage((i18n("Cannot save screenshot. The file already exists.")));
-        return false;
-    }
-
-    QString mimetype = makeSaveMimetype(url);
-    if (url.isLocalFile()) {
-        return localSave(url, mimetype);
-    }
-    return remoteSave(url, mimetype);
-}
-
-bool SpectacleCore::isFileExists(const QUrl &url)
-{
-    if (!(url.isValid())) {
-        return false;
-    }
-
-    KIO::StatJob * existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, 0);
-    existsJob->exec();
-
-    return (existsJob->error() == KJob::NoError);
 }

@@ -58,6 +58,7 @@
 
 #include "Config.h"
 
+#include "ExportManager.h"
 #include "PlatformBackends/ImageGrabber.h"
 #include "PlatformBackends/DummyImageGrabber.h"
 #ifdef XCB_FOUND
@@ -73,7 +74,6 @@ class SpectacleCore : public QObject
     Q_PROPERTY(QString filename READ filename WRITE setFilename NOTIFY filenameChanged)
     Q_PROPERTY(bool overwriteOnSave READ overwriteOnSave WRITE setOverwriteOnSave NOTIFY overwriteOnSaveChanged)
     Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode NOTIFY grabModeChanged)
-    Q_PROPERTY(QString saveLocation READ saveLocation WRITE setSaveLocation NOTIFY saveLocationChanged)
 
     public:
 
@@ -93,8 +93,6 @@ class SpectacleCore : public QObject
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
     bool overwriteOnSave() const;
     void setOverwriteOnSave(const bool &overwrite);
-    QString saveLocation() const;
-    void setSaveLocation(const QString &savePath);
 
     signals:
 
@@ -127,24 +125,12 @@ class SpectacleCore : public QObject
     private:
 
     void initGui();
-    QUrl getAutosaveFilename();
-    QString makeAutosaveFilename();
-    QString autoIncrementFilename(const QString &baseName, const QString &extension);
-    QString makeSaveMimetype(const QUrl &url);
-    bool writeImage(QIODevice *device, const QByteArray &format);
-    bool localSave(const QUrl &url, const QString &mimetype);
-    bool remoteSave(const QUrl &url, const QString &mimetype);
-    bool tempFileSave();
-    QUrl tempFileSave(const QString &mimetype);
-    bool doSave(const QUrl &url);
-    bool isFileExists(const QUrl &url);
-    QUrl getTempSaveFilename() const;
 
+    ExportManager *mExportManager;
     StartMode     mStartMode;
     bool          mNotify;
     bool          mOverwriteOnSave;
     bool          mBackgroundSendToClipboard;
-    QPixmap       mLocalPixmap;
     QString       mFileNameString;
     QUrl          mFileNameUrl;
     ImageGrabber *mImageGrabber;

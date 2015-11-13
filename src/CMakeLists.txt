@@ -7,6 +7,7 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 set(
     SPECTACLE_SRCS_DEFAULT
         Main.cpp
+        ExportManager.cpp
         SpectacleCore.cpp
         SpectacleDBusAdapter.cpp
         PlatformBackends/ImageGrabber.cpp
