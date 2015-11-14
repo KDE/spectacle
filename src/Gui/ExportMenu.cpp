@@ -49,10 +49,11 @@ ExportMenu::ExportMenu(QWidget *parent) :
 void ExportMenu::populateMenu()
 {
 #ifdef KIPI_FOUND
-    QMenu *kipiMenu = addMenu(QIcon::fromTheme(QStringLiteral("applications-internet")), i18n("Online Services"));
-    kipiMenu->addAction(i18n("Please wait..."));
-    QTimer::singleShot(750, [=]() { getKipiItems(kipiMenu); });
+    mKipiMenu = addMenu(QIcon::fromTheme(QStringLiteral("applications-internet")), i18n("Online Services"));
+    mKipiMenu->addAction(i18n("Please wait..."));
+    mKipiMenuLoaded = false;
 
+    connect(mKipiMenu, &QMenu::aboutToShow, this, &ExportMenu::loadKipiItems);
     addSeparator();
 #endif
     getKServiceItems();
@@ -94,9 +95,16 @@ void ExportMenu::getKServiceItems()
 }
 
 #ifdef KIPI_FOUND
-void ExportMenu::getKipiItems(QMenu *menu)
+void ExportMenu::loadKipiItems()
 {
-    menu->clear();
+    if (!mKipiMenuLoaded) {
+        QTimer::singleShot(500, this, &ExportMenu::getKipiItems);
+    }
+}
+
+void ExportMenu::getKipiItems()
+{
+    mKipiMenu->clear();
 
     mKipiInterface = new KSGKipiInterface(this);
     KIPI::PluginLoader *loader = new KIPI::PluginLoader;
@@ -132,8 +140,10 @@ void ExportMenu::getKipiItems(QMenu *menu)
         }
 
         for (auto action: exportActions) {
-            menu->addAction(action);
+            mKipiMenu->addAction(action);
         }
     }
+
+    mKipiMenuLoaded = true;
 }
 #endif

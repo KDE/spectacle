@@ -43,8 +43,11 @@ class ExportMenu : public QMenu
 
     void getKServiceItems();
 #ifdef KIPI_FOUND
-    void getKipiItems(QMenu *menu);
+    void getKipiItems();
+    void loadKipiItems();
 
+    bool mKipiMenuLoaded;
+    QMenu *mKipiMenu;
     KSGKipiInterface *mKipiInterface;
     QWidget mDummyWidget;
 #endif
