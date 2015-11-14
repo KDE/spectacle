@@ -32,6 +32,13 @@
 #include <KMimeTypeTrader>
 #include <KRun>
 
+#include "Config.h"
+#ifdef KIPI_FOUND
+#include <KIPI/Plugin>
+#include <KIPI/PluginLoader>
+#include "KipiInterface/KSGKipiInterface.h"
+#endif
+
 ExportMenu::ExportMenu(QWidget *parent) :
     QMenu(parent),
     mExportManager(ExportManager::instance())
@@ -41,6 +48,13 @@ ExportMenu::ExportMenu(QWidget *parent) :
 
 void ExportMenu::populateMenu()
 {
+#ifdef KIPI_FOUND
+    QMenu *kipiMenu = addMenu(QIcon::fromTheme(QStringLiteral("applications-internet")), i18n("Online Services"));
+    kipiMenu->addAction(i18n("Please wait..."));
+    QTimer::singleShot(750, [=]() { getKipiItems(kipiMenu); });
+
+    addSeparator();
+#endif
     getKServiceItems();
 }
 
@@ -78,3 +92,48 @@ void ExportMenu::getKServiceItems()
     });
     addAction(openWith);
 }
+
+#ifdef KIPI_FOUND
+void ExportMenu::getKipiItems(QMenu *menu)
+{
+    menu->clear();
+
+    mKipiInterface = new KSGKipiInterface(this);
+    KIPI::PluginLoader *loader = new KIPI::PluginLoader;
+
+    loader->setInterface(mKipiInterface);
+    loader->init();
+
+    KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
+
+    for (auto pluginInfo: pluginList) {
+        if (!(pluginInfo->shouldLoad())) {
+            continue;
+        }
+
+        KIPI::Plugin *plugin = pluginInfo->plugin();
+        if (!(plugin)) {
+            qWarning() << i18n("KIPI plugin from library %1 failed to load", pluginInfo->library());
+            continue;
+        }
+
+        plugin->setup(&mDummyWidget);
+
+        QList<QAction *> actions = plugin->actions();
+        QSet<QAction *> exportActions;
+
+        for (auto action: actions) {
+            KIPI::Category category = plugin->category(action);
+            if (category == KIPI::ExportPlugin) {
+                exportActions += action;
+            } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains("kipiplugin_sendimages")) {
+                exportActions += action;
+            }
+        }
+
+        for (auto action: exportActions) {
+            menu->addAction(action);
+        }
+    }
+}
+#endif

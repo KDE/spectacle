@@ -60,9 +60,12 @@ find_package(
         DocTools
 )
 
-#find_package(KDEExperimentalPurpose 1.0 REQUIRED)
-
 # optional components
+
+find_package(KF5Kipi)
+if (KF5Kipi_FOUND)
+    set(KIPI_FOUND 1)
+endif ()
 
 find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR)
 if (XCB_FOUND)

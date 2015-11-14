@@ -1,5 +1,9 @@
 /*
- *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
+ *  Copyright (C) 2015 Boudhayan Gupta <me@BaloneyGeek.com>
+ *  Copyright (C) 2010 Pau Garcia i Quiles <pgquiles@elpauer.org>
+ *  Essentially a rip-off of code for Kamoso by:
+ *  Copyright (C) 2008-2009 by Aleix Pol <aleixpol@kde.org>
+ *  Copyright (C) 2008-2009 by Alex Fiestas <alex@eyeos.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -15,41 +19,36 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
- */
+*/
 
-#ifndef EXPORTMENU_H
-#define EXPORTMENU_H
+#ifndef KSGKIPIIMAGECOLLECTIONSHARED_H
+#define KSGKIPIIMAGECOLLECTIONSHARED_H
 
-#include <QMenu>
+#include <QObject>
+#include <QDir>
+#include <QUrl>
 
-#include "Config.h"
-#include "ExportManager.h"
+#include <KIPI/ImageCollectionShared>
 
-#ifdef KIPI_FOUND
-#include "KipiInterface/KSGKipiInterface.h"
-#endif
-
-class ExportMenu : public QMenu
+class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
 {
     public:
 
-    explicit ExportMenu(QWidget *parent = 0);
+    explicit KSGKipiImageCollectionShared();
+    ~KSGKipiImageCollectionShared();
 
-    private slots:
-
-    void populateMenu();
+    QString name();
+    QString comment();
+    QList<QUrl> images();
+    QUrl uploadRoot();
+    QString uploadRootName();
+    bool isDirectory();
 
     private:
 
-    void getKServiceItems();
-#ifdef KIPI_FOUND
-    void getKipiItems(QMenu *menu);
-
-    KSGKipiInterface *mKipiInterface;
-    QWidget mDummyWidget;
-#endif
-
-    ExportManager *mExportManager;
+    QList<QUrl> mImages;
 };
 
-#endif // EXPORTMENU_H
+#endif
+
+

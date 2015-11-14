@@ -28,9 +28,20 @@ if(XCB_FOUND)
     )
 endif()
 
+if(KF5Kipi_FOUND)
+    set(
+        SPECTACLE_SRCS_KIPI
+            KipiInterface/KSGKipiInterface.cpp
+            KipiInterface/KSGKipiInfoShared.cpp
+            KipiInterface/KSGKipiImageCollectionShared.cpp
+            KipiInterface/KSGKipiImageCollectionSelector.cpp
+    )
+endif()
+
 set(
     SPECTACLE_SRCS_ALL
         ${SPECTACLE_SRCS_DEFAULT}
+        ${SPECTACLE_SRCS_KIPI}
         ${SPECTACLE_SRCS_X11}
 )
 
@@ -54,7 +65,6 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
-#        KDEExperimental::PurposeWidgets
 )
 
 if(XCB_FOUND)
@@ -66,6 +76,13 @@ if(XCB_FOUND)
             XCB::UTIL
             Qt5::X11Extras
             KF5::Screen
+    )
+endif()
+
+if(KF5Kipi_FOUND)
+    target_link_libraries (
+        spectacle
+            KF5::Kipi
     )
 endif()
 
