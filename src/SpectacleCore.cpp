@@ -20,12 +20,11 @@
 #include "SpectacleCore.h"
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
-               qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent) :
+               qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
     mExportManager(ExportManager::instance()),
     mStartMode(startMode),
     mNotify(notifyOnGrab),
-    mBackgroundSendToClipboard(sendToClipboard),
     mImageGrabber(nullptr),
     mMainWindow(nullptr),
     isGuiInited(false)
@@ -158,10 +157,6 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
 
     switch (mStartMode) {
     case BackgroundMode:
-        if (mBackgroundSendToClipboard) {
-            qApp->clipboard()->setPixmap(pixmap);
-            qDebug() << i18n("Copied image to clipboard");
-        }
     case DBusMode:
         {
             if (mNotify) {

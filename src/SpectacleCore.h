@@ -83,7 +83,7 @@ class SpectacleCore : public QObject
     };
 
     explicit SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
-                    qint64 delayMsec, bool sendToClipboard, bool notifyOnGrab, QObject *parent = 0);
+                    qint64 delayMsec, bool notifyOnGrab, QObject *parent = 0);
     ~SpectacleCore();
 
     QString filename() const;
@@ -117,7 +117,6 @@ class SpectacleCore : public QObject
     ExportManager *mExportManager;
     StartMode     mStartMode;
     bool          mNotify;
-    bool          mBackgroundSendToClipboard;
     QString       mFileNameString;
     QUrl          mFileNameUrl;
     ImageGrabber *mImageGrabber;

@@ -76,7 +76,6 @@ int main(int argc, char **argv)
         {{"b", "background"},        i18n("Take a screenshot and exit without showing the GUI")},
         {{"s", "dbus"},              i18n("Start in DBus-Activation mode")},
         {{"n", "nonotify"},          i18n("In background mode, do not pop up a notification when the screenshot is taken")},
-        {{"c", "clipboard"},         i18n("In background mode, send image to clipboard without saving to file")},
         {{"o", "output"},            i18n("In background mode, save image to specified file"), "fileName"},
         {{"d", "delay"},             i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
         {{"w", "onclick"},           i18n("Wait for a click before taking screenshot. Invalidates delay")}
@@ -103,7 +102,6 @@ int main(int argc, char **argv)
     // are we running in background or dbus mode?
 
     SpectacleCore::StartMode startMode = SpectacleCore::GuiMode;
-    bool sendToClipboard = false;
     bool notify = true;
     qint64 delayMsec = 0;
     QString fileName = QString();
@@ -135,10 +133,6 @@ int main(int argc, char **argv)
         if (parser.isSet("onclick")) {
             delayMsec = -1;
         }
-
-        if (parser.isSet("clipboard")) {
-            sendToClipboard = true;
-        }
     case SpectacleCore::DBusMode:
         app.setQuitOnLastWindowClosed(false);
     case SpectacleCore::GuiMode:
@@ -147,7 +141,7 @@ int main(int argc, char **argv)
 
     // release the kraken
 
-    SpectacleCore core(startMode, grabMode, fileName, delayMsec, sendToClipboard, notify);
+    SpectacleCore core(startMode, grabMode, fileName, delayMsec, notify);
     QObject::connect(&core, &SpectacleCore::allDone, qApp, &QApplication::quit);
 
     // create the dbus connections
