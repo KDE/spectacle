@@ -43,23 +43,23 @@ class KSGKipiInterface : public KIPI::Interface
     explicit KSGKipiInterface(QObject *parent = 0);
     ~KSGKipiInterface();
 
-    bool addImage(const QUrl &, QString &err);
-    void delImage(const QUrl &);
-    void refreshImages(const QList<QUrl> &urls);
+    bool addImage(const QUrl &, QString &err) Q_DECL_OVERRIDE;
+    void delImage(const QUrl &) Q_DECL_OVERRIDE;
+    void refreshImages(const QList<QUrl> &urls) Q_DECL_OVERRIDE;
 
     KIPI::FileReadWriteLock *createReadWriteLock(const QUrl &url) const Q_DECL_OVERRIDE;
     KIPI::RawProcessor *createRawProcessor() const Q_DECL_OVERRIDE;
     KIPI::MetadataProcessor *createMetadataProcessor() const Q_DECL_OVERRIDE;
 
-    KIPI::ImageCollection currentAlbum();
-    KIPI::ImageCollection currentSelection();
-    QList<KIPI::ImageCollection> allAlbums();
+    KIPI::ImageCollection currentAlbum() Q_DECL_OVERRIDE;
+    KIPI::ImageCollection currentSelection() Q_DECL_OVERRIDE;
+    QList<KIPI::ImageCollection> allAlbums() Q_DECL_OVERRIDE;
 
-    KIPI::ImageCollectionSelector *imageCollectionSelector(QWidget *parent);
-    KIPI::UploadWidget *uploadWidget(QWidget *parent);
+    KIPI::ImageCollectionSelector *imageCollectionSelector(QWidget *parent) Q_DECL_OVERRIDE;
+    KIPI::UploadWidget *uploadWidget(QWidget *parent) Q_DECL_OVERRIDE;
 
-    int features() const;
-    KIPI::ImageInfo info(const QUrl &);
+    int features() const Q_DECL_OVERRIDE;
+    KIPI::ImageInfo info(const QUrl &) Q_DECL_OVERRIDE;
 
     private:
 

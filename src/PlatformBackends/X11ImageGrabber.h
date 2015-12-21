@@ -103,7 +103,7 @@ class X11ImageGrabber : public ImageGrabber
 
     public slots:
 
-    void doOnClickGrab();
+    void doOnClickGrab() Q_DECL_OVERRIDE;
 
     private:
 
