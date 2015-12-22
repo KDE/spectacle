@@ -60,6 +60,8 @@ find_package(
         DocTools
 )
 
+find_package(KDEExperimentalPurpose REQUIRED)
+
 # optional components
 
 find_package(KF5Kipi)

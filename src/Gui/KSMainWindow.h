@@ -31,6 +31,10 @@
 #include "PlatformBackends/ImageGrabber.h"
 #include "KSWidget.h"
 
+namespace Purpose {
+    class Menu;
+}
+
 class KSMainWindow : public QDialog
 {
     Q_OBJECT
@@ -76,6 +80,7 @@ class KSMainWindow : public QDialog
     QMenu            *mSaveMenu;
     KMessageWidget   *mCopyMessage;
     QMenu            *mExportMenu;
+    Purpose::Menu    *mShareMenu;
     bool              mOnClickAvailable;
 };
 

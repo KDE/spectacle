@@ -27,6 +27,7 @@
 #include <QClipboard>
 #include <QPainter>
 #include <QFileDialog>
+#include <QBuffer>
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -50,6 +51,22 @@ ExportManager* ExportManager::instance()
 }
 
 // screenshot pixmap setter and getter
+static QByteArray imageToBase64(const QImage& img)
+{
+    QByteArray bytes;
+    {
+        QBuffer buffer(&bytes);
+        buffer.open(QIODevice::WriteOnly);
+        bool b = img.save(&buffer, "PNG");
+        Q_ASSERT(b);
+    }
+    return bytes.toBase64();
+}
+
+QString ExportManager::pixmapUrl() const
+{
+    return "data:image/png;base64,"+QString::fromLatin1(imageToBase64(mSavePixmap.toImage()));
+}
 
 QPixmap ExportManager::pixmap() const
 {

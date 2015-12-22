@@ -20,6 +20,7 @@
 #include "KSMainWindow.h"
 #include "Config.h"
 
+#include <QJsonArray>
 #include <QPrintDialog>
 #ifdef XCB_FOUND
 #include <QX11Info>
@@ -31,6 +32,8 @@
 #include <KStandardGuiItem>
 #include <KHelpMenu>
 #include <KAboutData>
+#include <Purpose/AlternativesModel>
+#include <PurposeWidgets/Menu>
 
 #include "KSSaveConfigDialog.h"
 #include "ExportMenu.h"
@@ -47,6 +50,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSaveMenu(new QMenu),
     mCopyMessage(new KMessageWidget),
     mExportMenu(new ExportMenu(this)),
+    mShareMenu(new Purpose::Menu(this)),
     mOnClickAvailable(onClickAvailable)
 {
     // before we do anything, we need to set a window property
@@ -145,6 +149,27 @@ void KSMainWindow::init()
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
     mDialogButtonBox->addButton(mSaveButton, QDialogButtonBox::ActionRole);
 
+    connect(mShareMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
+        mCopyMessage->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
+        if (error==0) {
+            mCopyMessage->setMessageType(KMessageWidget::Information);
+            mCopyMessage->setText(i18n("<qt>You can find the share picture at:<br /><a href='%1'>%1</a> </qt>", output["url"].toString()));
+        } else {
+            mCopyMessage->setMessageType(KMessageWidget::Error);
+            mCopyMessage->setText(i18n("Couldn't export the patch.\n%1", message));
+        }
+        mCopyMessage->animatedShow();
+    });
+    mShareMenu->model()->setInputData(QJsonObject {
+        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
+        { QStringLiteral("urls"), {} }
+    });
+    mShareMenu->model()->setPluginType("Export");
+
+    QPushButton* shareButton = new QPushButton(i18n("Share..."));
+    shareButton->setMenu(mShareMenu);
+    mDialogButtonBox->addButton(shareButton, QDialogButtonBox::ActionRole);
+
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), mDialogButtonBox->button(QDialogButtonBox::Discard));
     connect(shortcut, &QShortcut::activated, qApp, &QApplication::quit);
     connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
@@ -214,6 +239,11 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::discard());
     show();
+
+    mShareMenu->model()->setInputData(QJsonObject {
+        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
+        { QStringLiteral("urls"), QJsonArray{ExportManager::instance()->pixmapUrl()} }
+    });
 }
 
 void KSMainWindow::showPrintDialog()
