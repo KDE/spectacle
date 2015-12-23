@@ -40,6 +40,7 @@ ScreenClipper::~ScreenClipper()
 
 void ScreenClipper::init()
 {
+    mPixmap.setDevicePixelRatio(devicePixelRatio());
     setGeometry(0, 0, mPixmap.width(), mPixmap.height());
     setCursor(Qt::CrossCursor);
     showFullScreen();
@@ -94,18 +95,23 @@ void ScreenClipper::paintEvent(QPaintEvent *e)
     // if we don't have a selection yet, just draw a semitransparent
     // black rectangle over the whole screen, and render the help text
 
+    const QRect normalizedWindowGeometry = QRect(geometry().x() / devicePixelRatio(),
+                                                 geometry().y() / devicePixelRatio(),
+                                                 geometry().width() / devicePixelRatio(),
+                                                 geometry().height() / devicePixelRatio());
+
     if (mSelection.isNull() || mSelection.isEmpty()) {
-        painter.setClipRegion(QRegion(geometry()));
+        painter.setClipRegion(QRegion(normalizedWindowGeometry));
         painter.setPen(Qt::NoPen);
         painter.setBrush(overlayColor);
-        painter.drawRect(geometry());
+        painter.drawRect(normalizedWindowGeometry);
 
         painter.setPen(textColor);
         painter.setBrush(textBackgroundColor);
 
         QString helpText = i18n("Click anywhere on the screen (including on this text) to start drawing a selection rectangle, or press Esc to quit");
-        QRect helpTextBoundingBox = painter.boundingRect(geometry(), Qt::TextWordWrap, helpText);
-        helpTextBoundingBox.moveCenter(geometry().center());
+        QRect helpTextBoundingBox = painter.boundingRect(normalizedWindowGeometry, Qt::TextWordWrap, helpText);
+        helpTextBoundingBox.moveCenter(normalizedWindowGeometry.center());
         QRect helpTextRect = helpTextBoundingBox.adjusted(-20, -20, 20, 20);
 
         painter.setPen(textColor);
@@ -119,11 +125,11 @@ void ScreenClipper::paintEvent(QPaintEvent *e)
     // if we're here, this means we have a valid selection. let's draw
     // the overlay first
 
-    QRegion region = QRegion(geometry()).subtracted(mSelection);
+    QRegion region = QRegion(normalizedWindowGeometry).subtracted(mSelection);
     painter.setClipRegion(region);
     painter.setPen(Qt::NoPen);
     painter.setBrush(overlayColor);
-    painter.drawRect(geometry());
+    painter.drawRect(normalizedWindowGeometry);
 
     // and the selection rectangle border
 
@@ -131,7 +137,7 @@ void ScreenClipper::paintEvent(QPaintEvent *e)
     painter.setBrush(handleColor);
     painter.setClipRegion(region);
     painter.drawRect(mSelection);
-    painter.setClipRect(geometry());
+    painter.setClipRect(normalizedWindowGeometry);
 
     // draw the handles
 
@@ -146,9 +152,9 @@ void ScreenClipper::paintEvent(QPaintEvent *e)
     painter.setBrush(textBackgroundColor);
 
     QString helpText = i18n("To take the screenshot, double-click or press Enter. Right-click to reset the selection, or press Esc to quit.");
-    QRect helpTextBoundingBox = painter.boundingRect(geometry(), Qt::TextWordWrap, helpText);
-    helpTextBoundingBox.moveCenter(geometry().center());
-    helpTextBoundingBox.moveTop(geometry().top());
+    QRect helpTextBoundingBox = painter.boundingRect(normalizedWindowGeometry, Qt::TextWordWrap, helpText);
+    helpTextBoundingBox.moveCenter(normalizedWindowGeometry.center());
+    helpTextBoundingBox.moveTop(normalizedWindowGeometry.top());
     QRect helpTextRect = helpTextBoundingBox.adjusted(-5, 0, 5, 10);
     helpTextBoundingBox.moveCenter(helpTextRect.center());
 
@@ -406,7 +412,13 @@ inline void ScreenClipper::grabRect()
 {
     if (!mSelection.isNull() && mSelection.isValid()) {
         grabbing = true;
-        emit regionGrabbed(mPixmap.copy(mSelection), mSelection);
+
+        const QRect normalizedSelection = QRect(mSelection.x() * devicePixelRatio(),
+                                                mSelection.y() * devicePixelRatio(),
+                                                mSelection.width() * devicePixelRatio(),
+                                                mSelection.height() * devicePixelRatio());
+
+        emit regionGrabbed(mPixmap.copy(normalizedSelection), normalizedSelection);
         return;
     }
 
