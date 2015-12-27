@@ -29,19 +29,32 @@
 #include "KipiInterface/KSGKipiInterface.h"
 #endif
 
+#ifdef PURPOSE_FOUND
+#include <Purpose/AlternativesModel>
+#include <PurposeWidgets/Menu>
+#endif
+
 class ExportMenu : public QMenu
 {
+    Q_OBJECT
+
     public:
 
     explicit ExportMenu(QWidget *parent = 0);
+    void imageUpdated(const QString &dataUri);
 
     private slots:
 
     void populateMenu();
 
+    signals:
+
+    void imageShared(bool error, const QString &message);
+
     private:
 
     void getKServiceItems();
+
 #ifdef KIPI_FOUND
     void getKipiItems();
     void loadKipiItems();
@@ -50,6 +63,12 @@ class ExportMenu : public QMenu
     QMenu *mKipiMenu;
     KSGKipiInterface *mKipiInterface;
     QWidget mDummyWidget;
+#endif
+
+#ifdef PURPOSE_FOUND
+    void loadPurposeMenu();
+
+    Purpose::Menu *mPurposeMenu;
 #endif
 
     ExportManager *mExportManager;
