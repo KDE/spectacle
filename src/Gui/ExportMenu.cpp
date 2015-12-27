@@ -41,6 +41,9 @@
 
 ExportMenu::ExportMenu(QWidget *parent) :
     QMenu(parent),
+#ifdef PURPOSE_FOUND
+    mPurposeMenu(new Purpose::Menu(this)),
+#endif
     mExportManager(ExportManager::instance())
 {
     QTimer::singleShot(300, this, &ExportMenu::populateMenu);
@@ -48,16 +51,37 @@ ExportMenu::ExportMenu(QWidget *parent) :
 
 void ExportMenu::populateMenu()
 {
+#ifdef PURPOSE_FOUND
+    loadPurposeMenu();
+#endif
+
 #ifdef KIPI_FOUND
-    mKipiMenu = addMenu(QIcon::fromTheme(QStringLiteral("applications-internet")), i18n("Online Services"));
+    mKipiMenu = addMenu(i18n("More Online Services"));
     mKipiMenu->addAction(i18n("Please wait..."));
     mKipiMenuLoaded = false;
 
     connect(mKipiMenu, &QMenu::aboutToShow, this, &ExportMenu::loadKipiItems);
-    addSeparator();
 #endif
+
+    addSeparator();
     getKServiceItems();
 }
+
+
+void ExportMenu::imageUpdated(const QString &dataUri)
+{
+#ifdef PURPOSE_FOUND
+    mPurposeMenu->model()->setInputData(QJsonObject {
+        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
+        { QStringLiteral("urls"), QJsonArray({ dataUri }) }
+    });
+    mPurposeMenu->model()->setPluginType("Export");
+    mPurposeMenu->reload();
+#else
+    Q_UNUSED(dataUri);
+#endif
+}
+
 
 void ExportMenu::getKServiceItems()
 {
@@ -145,5 +169,23 @@ void ExportMenu::getKipiItems()
     }
 
     mKipiMenuLoaded = true;
+}
+#endif
+
+#ifdef PURPOSE_FOUND
+void ExportMenu::loadPurposeMenu()
+{
+    // attach the menu
+    QAction *purposeMenu = addMenu(mPurposeMenu);
+    purposeMenu->setText(i18n("Share"));
+
+    // set up the callback signal
+    connect(mPurposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
+        if (error) {
+            emit imageShared(true, message);
+        } else {
+            emit imageShared(false, output["url"].toString());
+        }
+    });
 }
 #endif

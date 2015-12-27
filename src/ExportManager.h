@@ -55,7 +55,7 @@ class ExportManager : public QObject
     QString saveLocation() const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
-    QString pixmapUrl() const;
+    QString pixmapDataUri() const;
 
     signals:
 

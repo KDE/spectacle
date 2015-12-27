@@ -51,26 +51,29 @@ ExportManager* ExportManager::instance()
 }
 
 // screenshot pixmap setter and getter
-static QByteArray imageToBase64(const QImage& img)
-{
-    QByteArray bytes;
-    {
-        QBuffer buffer(&bytes);
-        buffer.open(QIODevice::WriteOnly);
-        bool b = img.save(&buffer, "PNG");
-        Q_ASSERT(b);
-    }
-    return bytes.toBase64();
-}
-
-QString ExportManager::pixmapUrl() const
-{
-    return "data:image/png;base64,"+QString::fromLatin1(imageToBase64(mSavePixmap.toImage()));
-}
 
 QPixmap ExportManager::pixmap() const
 {
     return mSavePixmap;
+}
+
+QString ExportManager::pixmapDataUri() const
+{
+    QImage image = mSavePixmap.toImage();
+    QByteArray imageData;
+
+    // write the image into the QByteArray using a QBuffer
+
+    {
+        QBuffer dataBuf(&imageData);
+        dataBuf.open(QBuffer::WriteOnly);
+        image.save(&dataBuf, "PNG");
+    }
+
+    // compose the data uri and return it
+
+    QString uri = QStringLiteral("data:image/png;base64,") + QString::fromLatin1(imageData.toBase64());
+    return uri;
 }
 
 void ExportManager::setPixmap(const QPixmap &pixmap)

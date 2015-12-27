@@ -32,8 +32,6 @@
 #include <KStandardGuiItem>
 #include <KHelpMenu>
 #include <KAboutData>
-#include <Purpose/AlternativesModel>
-#include <PurposeWidgets/Menu>
 
 #include "KSSaveConfigDialog.h"
 #include "ExportMenu.h"
@@ -48,9 +46,8 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mClipboardButton(new QToolButton),
     mSaveButton(new QToolButton),
     mSaveMenu(new QMenu),
-    mCopyMessage(new KMessageWidget),
+    mMessageWidget(new KMessageWidget),
     mExportMenu(new ExportMenu(this)),
-    mShareMenu(new Purpose::Menu(this)),
     mOnClickAvailable(onClickAvailable)
 {
     // before we do anything, we need to set a window property
@@ -122,7 +119,7 @@ void KSMainWindow::init()
 
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard);
 
-    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export To...")));
+    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export Image...")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
@@ -149,27 +146,6 @@ void KSMainWindow::init()
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
     mDialogButtonBox->addButton(mSaveButton, QDialogButtonBox::ActionRole);
 
-    connect(mShareMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
-        mCopyMessage->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
-        if (error==0) {
-            mCopyMessage->setMessageType(KMessageWidget::Information);
-            mCopyMessage->setText(i18n("<qt>You can find the share picture at:<br /><a href='%1'>%1</a> </qt>", output["url"].toString()));
-        } else {
-            mCopyMessage->setMessageType(KMessageWidget::Error);
-            mCopyMessage->setText(i18n("Couldn't export the patch.\n%1", message));
-        }
-        mCopyMessage->animatedShow();
-    });
-    mShareMenu->model()->setInputData(QJsonObject {
-        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
-        { QStringLiteral("urls"), {} }
-    });
-    mShareMenu->model()->setPluginType("Export");
-
-    QPushButton* shareButton = new QPushButton(i18n("Share..."));
-    shareButton->setMenu(mShareMenu);
-    mDialogButtonBox->addButton(shareButton, QDialogButtonBox::ActionRole);
-
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), mDialogButtonBox->button(QDialogButtonBox::Discard));
     connect(shortcut, &QShortcut::activated, qApp, &QApplication::quit);
     connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
@@ -179,12 +155,6 @@ void KSMainWindow::init()
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
 
-    // copy-to-clipboard message
-
-    mCopyMessage->setText(i18n("The screenshot has been copied to the clipboard."));
-    mCopyMessage->setMessageType(KMessageWidget::Information);
-    mCopyMessage->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
-
     // layouts
 
     mDivider->setFrameShape(QFrame::HLine);
@@ -192,14 +162,15 @@ void KSMainWindow::init()
 
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(mKSWidget);
-    layout->addWidget(mCopyMessage);
+    layout->addWidget(mMessageWidget);
     layout->addWidget(mDivider);
     layout->addWidget(mDialogButtonBox);
-    mCopyMessage->hide();
+    mMessageWidget->hide();
 
     // populate our send-to actions
 
     mSendToButton->setMenu(mExportMenu);
+    connect(mExportMenu, &ExportMenu::imageShared, this, &KSMainWindow::showImageSharedFeedback);
 
     // disable onClick mode if not available on the platform
 
@@ -234,16 +205,13 @@ void KSMainWindow::captureScreenshot(ImageGrabber::GrabMode mode, int timeout, b
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 {
     mKSWidget->setScreenshotPixmap(pixmap);
+    mExportMenu->imageUpdated(ExportManager::instance()->pixmapDataUri());
+
     setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
     setWindowModified(true);
 
     KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::discard());
     show();
-
-    mShareMenu->model()->setInputData(QJsonObject {
-        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
-        { QStringLiteral("urls"), QJsonArray{ExportManager::instance()->pixmapUrl()} }
-    });
 }
 
 void KSMainWindow::showPrintDialog()
@@ -257,11 +225,32 @@ void KSMainWindow::showPrintDialog()
     delete printer;
 }
 
+void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
+{
+    if (error) {
+        mMessageWidget->setMessageType(KMessageWidget::Error);
+        mMessageWidget->setText(i18n("There was a problem sharing the image: %1", message));
+        mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")));
+    } else {
+        mMessageWidget->setMessageType(KMessageWidget::Positive);
+        mMessageWidget->setText(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message));
+        mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
+    }
+
+    mMessageWidget->animatedShow();
+    QTimer::singleShot(20000, mMessageWidget, &KMessageWidget::animatedHide);
+}
+
 void KSMainWindow::sendToClipboard()
 {
     ExportManager::instance()->doCopyToClipboard();
-    mCopyMessage->animatedShow();
-    QTimer::singleShot(5000, mCopyMessage, &KMessageWidget::animatedHide);
+
+    mMessageWidget->setMessageType(KMessageWidget::Information);
+    mMessageWidget->setText(i18n("The screenshot has been copied to the clipboard."));
+    mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
+
+    mMessageWidget->animatedShow();
+    QTimer::singleShot(10000, mMessageWidget, &KMessageWidget::animatedHide);
 }
 
 void KSMainWindow::showSaveConfigDialog()

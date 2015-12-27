@@ -29,11 +29,8 @@
 #include <KMessageWidget>
 
 #include "PlatformBackends/ImageGrabber.h"
+#include "ExportMenu.h"
 #include "KSWidget.h"
-
-namespace Purpose {
-    class Menu;
-}
 
 class KSMainWindow : public QDialog
 {
@@ -49,6 +46,7 @@ class KSMainWindow : public QDialog
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void showPrintDialog();
     void showSaveConfigDialog();
+    void showImageSharedFeedback(bool error, const QString &message);
     void sendToClipboard();
     void init();
     void save();
@@ -78,9 +76,8 @@ class KSMainWindow : public QDialog
     QToolButton      *mClipboardButton;
     QToolButton      *mSaveButton;
     QMenu            *mSaveMenu;
-    KMessageWidget   *mCopyMessage;
-    QMenu            *mExportMenu;
-    Purpose::Menu    *mShareMenu;
+    KMessageWidget   *mMessageWidget;
+    ExportMenu       *mExportMenu;
     bool              mOnClickAvailable;
 };
 
