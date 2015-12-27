@@ -19,6 +19,8 @@
 
 #include "SpectacleCore.h"
 
+#include <KRun>
+
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
@@ -167,9 +169,9 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
                     mFileNameUrl : QUrl();
             mExportManager->doSave(savePath);
 
-            if (mNotify) {
-                QTimer::singleShot(250, this, &SpectacleCore::allDone);
-            } else {
+            // if we notify, we emit allDone only if the user either dismissed the notification or pressed
+            // the "Open" button, otherwise the app closes before it can react to it.
+            if (!mNotify) {
                 emit allDone();
             }
         }
@@ -197,8 +199,44 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
 {
     KNotification *notify = new KNotification(QStringLiteral("newScreenshotSaved"));
 
-    notify->setText(i18n("A new screenshot was captured and saved to %1", savedAt.toLocalFile()));
-    notify->setPixmap(QIcon::fromTheme(QStringLiteral("spectacle")).pixmap(QSize(32, 32)));
+    switch(mImageGrabber->grabMode()) {
+    case ImageGrabber::GrabMode::FullScreen:
+        notify->setTitle(i18nc("The entire screen area was captured, heading", "Full Screen Captured"));
+        break;
+    case ImageGrabber::GrabMode::CurrentScreen:
+        notify->setTitle(i18nc("The current screen was captured, heading", "Current Screen Captured"));
+        break;
+    case ImageGrabber::GrabMode::ActiveWindow:
+        notify->setTitle(i18nc("The active window was captured, heading", "Active Window Captured"));
+        break;
+    case ImageGrabber::GrabMode::WindowUnderCursor:
+        notify->setTitle(i18nc("The window under the mouse was captured, heading", "Window Under Cursor Captured"));
+        break;
+    case ImageGrabber::GrabMode::RectangularRegion:
+        notify->setTitle(i18nc("A rectangular region was captured, heading", "Rectangular Region Captured"));
+        break;
+    default:
+        break;
+    }
+
+    const QString &path = savedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
+
+    // a speaking message is prettier than a URL, special case for the default pictures location
+    if (path == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+        notify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", savedAt.fileName()));
+    } else {
+        notify->setText(i18n("A screenshot was saved as '%1' to '%2'.", savedAt.fileName(), path));
+    }
+
+    notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
+
+    connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
+        new KRun(savedAt, nullptr);
+
+        QTimer::singleShot(250, this, &SpectacleCore::allDone);
+    });
+    connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
+
     notify->sendEvent();
 }
 
