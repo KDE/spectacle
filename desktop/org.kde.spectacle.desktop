@@ -51,5 +51,22 @@ Icon=spectacle
 Type=Application
 Terminal=false
 StartupNotify=false
+Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;
 X-DBUS-StartupType=Multi
 X-DBUS-ServiceName=org.kde.Spectacle
+
+[Desktop Action FullScreenScreenShot]
+Name=Capture Whole Screen
+Exec=spectacle -f
+
+[Desktop Action CurrentMonitorScreenShot]
+Name=Capture Current Monitor
+Exec=spectacle -m
+
+[Desktop Action ActiveWindowScreenShot]
+Name=Capture Current Window
+Exec=spectacle -a
+
+[Desktop Action RectangularRegionScreenShot]
+Name=Capture Rectangular Region
+Exec=spectacle -r
