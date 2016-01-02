@@ -65,7 +65,6 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
-        KDEExperimental::PurposeWidgets
 )
 
 if(XCB_FOUND)
@@ -84,6 +83,13 @@ if(KF5Kipi_FOUND)
     target_link_libraries (
         spectacle
             KF5::Kipi
+    )
+endif()
+
+if(KDEExperimentalPurpose_FOUND)
+    target_link_libraries (
+        spectacle
+            KDEExperimental::PurposeWidgets
     )
 endif()
 
