@@ -56,6 +56,7 @@ int main(int argc, char **argv)
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
     aboutData.addAuthor("Boudhayan Gupta", QString(), "bgupta@kde.org");
+    aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
 
     // set up the command line options parser
