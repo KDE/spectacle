@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QUrl>
+#include <QRect>
 
 #include <KSharedConfig>
 #include <KConfigGroup>
@@ -48,8 +49,11 @@ class SpectacleConfig : public QObject
 
     public:
 
-    QUrl lastSaveAsLocation();
+    QUrl lastSaveAsLocation() const;
     void setLastSaveAsLocation(const QUrl &location);
+
+    QRect cropRegion() const;
+    void setCropRegion(const QRect &region);
 
     private:
 

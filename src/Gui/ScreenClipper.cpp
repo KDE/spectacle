@@ -18,11 +18,12 @@
  */
 
 #include "ScreenClipper.h"
+#include "SpectacleConfig.h"
 
 ScreenClipper::ScreenClipper(const QPixmap &pixmap) :
     QRasterWindow(0),
     grabbing(false),
-    mSelection(QRect()),
+    mSelection(SpectacleConfig::instance()->cropRegion()),
     mMouseOverHandle(0),
     mPixmap(pixmap)
 {
@@ -412,6 +413,7 @@ inline void ScreenClipper::grabRect()
 {
     if (!mSelection.isNull() && mSelection.isValid()) {
         grabbing = true;
+        SpectacleConfig::instance()->setCropRegion(mSelection);
 
         const QRect normalizedSelection = QRect(mSelection.x() * devicePixelRatio(),
                                                 mSelection.y() * devicePixelRatio(),

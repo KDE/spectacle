@@ -40,7 +40,7 @@ SpectacleConfig* SpectacleConfig::instance()
 
 // lastSaveAsLocation
 
-QUrl SpectacleConfig::lastSaveAsLocation()
+QUrl SpectacleConfig::lastSaveAsLocation() const
 {
     return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsLocation"),
                                     QUrl::fromUserInput(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)));
@@ -50,4 +50,17 @@ void SpectacleConfig::setLastSaveAsLocation(const QUrl &location)
 {
     mGeneralConfig.writeEntry(QStringLiteral("lastSaveAsLocation"), location);
     mGeneralConfig.sync();
+}
+
+// cropRegion
+
+QRect SpectacleConfig::cropRegion() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("cropRegion"), QRect());
+}
+
+void SpectacleConfig::setCropRegion(const QRect &region)
+{
+    mGuiConfig.writeEntry(QStringLiteral("cropRegion"), region);
+    mGuiConfig.sync();
 }
