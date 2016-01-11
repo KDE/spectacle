@@ -35,6 +35,8 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
+#include "SpectacleConfig.h"
+
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
     mSavePixmap(QPixmap()),
@@ -299,37 +301,33 @@ void ExportManager::doSave(const QUrl &url)
 
 void ExportManager::doSaveAs(QWidget *parentWindow)
 {
-    QString selectedFilter;
     QStringList supportedFilters;
     QMimeDatabase db;
+    SpectacleConfig *config = SpectacleConfig::instance();
 
-    const QUrl autoSavePath = getAutosaveFilename();
-    const QMimeType mimeTypeForFilename = db.mimeTypeForUrl(autoSavePath);
-
-    for (auto mimeTypeName: QImageWriter::supportedMimeTypes()) {
-        QMimeType mimetype = db.mimeTypeForName(mimeTypeName);
-
-        if (mimetype.preferredSuffix() != QStringLiteral("")) {
-            QString filterString = mimetype.comment() + " (*." + mimetype.preferredSuffix() + ")";
-            supportedFilters.append(filterString);
-            if (mimetype == mimeTypeForFilename) {
-                selectedFilter = supportedFilters.last();
-            }
-        }
+    // construct the supported mimetype list
+    Q_FOREACH (auto mimeType, QImageWriter::supportedMimeTypes()) {
+        supportedFilters.append(QString::fromUtf8(mimeType).trimmed());
     }
 
+    // construct the file name
     QFileDialog dialog(parentWindow);
+    dialog.setOption(QFileDialog::DontUseNativeDialog);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setNameFilters(supportedFilters);
-    dialog.selectNameFilter(selectedFilter);
-    dialog.setDirectoryUrl(autoSavePath);
+    dialog.setDirectoryUrl(config->lastSaveAsLocation());
+    dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".png"));
+    dialog.setDefaultSuffix(QStringLiteral(".png"));
+    dialog.setMimeTypeFilters(supportedFilters);
+    dialog.selectMimeTypeFilter(QStringLiteral("image/png"));
 
+    // launch the dialog
     if (dialog.exec() == QFileDialog::Accepted) {
         const QUrl saveUrl = dialog.selectedUrls().first();
         if (saveUrl.isValid()) {
             if (save(saveUrl)) {
                 emit imageSaved(saveUrl);
+                config->setLastSaveAsLocation(saveUrl.adjusted(QUrl::RemoveFilename));
             }
         }
     }

@@ -9,6 +9,7 @@ set(
         Main.cpp
         ExportManager.cpp
         SpectacleCore.cpp
+        SpectacleConfig.cpp
         SpectacleDBusAdapter.cpp
         PlatformBackends/ImageGrabber.cpp
         PlatformBackends/DummyImageGrabber.cpp
