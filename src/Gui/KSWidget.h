@@ -64,7 +64,6 @@ class KSWidget : public QWidget
     private slots:
 
     void newScreenshotClicked();
-    void checkboxStatesChanged(int state);
     void onClickStateChanged(int state);
     void captureModeChanged(int index);
     void captureDelayChanged(qreal value);

@@ -64,3 +64,55 @@ void SpectacleConfig::setCropRegion(const QRect &region)
     mGuiConfig.writeEntry(QStringLiteral("cropRegion"), region);
     mGuiConfig.sync();
 }
+
+// onclick
+
+bool SpectacleConfig::onClickChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("onClickChecked"), false);
+}
+
+void SpectacleConfig::setOnClickChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("onClickChecked"), enabled);
+    mGuiConfig.sync();
+}
+
+// include pointer
+
+bool SpectacleConfig::includePointerChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("includePointer"), true);
+}
+
+void SpectacleConfig::setIncludePointerChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("includePointer"), enabled);
+    mGuiConfig.sync();
+}
+
+// include decorations
+
+bool SpectacleConfig::includeDecorationsChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("includeDecorations"), true);
+}
+
+void SpectacleConfig::setIncludeDecorationsChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("includeDecorations"), enabled);
+    mGuiConfig.sync();
+}
+
+// capture transient window only
+
+bool SpectacleConfig::captureTransientWindowOnlyChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("transientOnly"), false);
+}
+
+void SpectacleConfig::setCaptureTransientWindowOnlyChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("transientOnly"), enabled);
+    mGuiConfig.sync();
+}

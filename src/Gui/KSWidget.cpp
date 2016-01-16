@@ -18,10 +18,15 @@
  */
 
 #include "KSWidget.h"
+#include "SpectacleConfig.h"
 
 KSWidget::KSWidget(QWidget *parent) :
     QWidget(parent)
 {
+    // get a handle to the configuration manager
+
+    SpectacleConfig *configManager = SpectacleConfig::instance();
+
     // we'll init the widget that holds the image first
 
     mImageWidget = new KSImageWidget(this);
@@ -55,7 +60,7 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureOnClick->setText(i18n("On Click"));
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
-    connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
+    connect(mCaptureOnClick, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setOnClickChecked);
 
     mDelayLayout = new QHBoxLayout;
     mDelayLayout->addWidget(mDelayMsec);
@@ -74,20 +79,20 @@ KSWidget::KSWidget(QWidget *parent) :
     mMousePointer = new QCheckBox(this);
     mMousePointer->setText(i18n("Include mouse pointer"));
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screeenshot image"));
-    connect(mMousePointer, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
+    connect(mMousePointer, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludePointerChecked);
 
     mWindowDecorations = new QCheckBox(this);
     mWindowDecorations->setText(i18n("Include window titlebar and borders"));
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
-    connect(mWindowDecorations, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
+    connect(mWindowDecorations, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
 
     mCaptureTransientOnly = new QCheckBox(this);
     mCaptureTransientOnly->setText(i18n("Capture the current pop-up only"));
     mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc). "
                                            "If this is not enabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
-    connect(mCaptureTransientOnly, &QCheckBox::stateChanged, this, &KSWidget::checkboxStatesChanged);
+    connect(mCaptureTransientOnly, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);
@@ -138,12 +143,12 @@ KSWidget::KSWidget(QWidget *parent) :
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
 
-    mMousePointer->setChecked(guiConfig.readEntry("includePointer", true));
-    mWindowDecorations->setChecked(guiConfig.readEntry("includeDecorations", true));
-    mCaptureOnClick->setChecked(guiConfig.readEntry("waitCaptureOnClick", false));
-    mCaptureTransientOnly->setChecked(guiConfig.readEntry("transientOnly", false));
-    mCaptureArea->setCurrentIndex(guiConfig.readEntry("captureModeIndex", 0));
-    mDelayMsec->setValue(guiConfig.readEntry("captureDelay", (qreal)0));
+    mMousePointer->setChecked         (configManager->includePointerChecked());
+    mWindowDecorations->setChecked    (configManager->includeDecorationsChecked());
+    mCaptureOnClick->setChecked       (configManager->onClickChecked());
+    mCaptureTransientOnly->setChecked (configManager->captureTransientWindowOnlyChecked());
+    mCaptureArea->setCurrentIndex(     guiConfig.readEntry("captureModeIndex", 0));
+    mDelayMsec->setValue(              guiConfig.readEntry("captureDelay", (qreal)0));
 
     // done
 }
@@ -172,20 +177,6 @@ void KSWidget::newScreenshotClicked()
     }
 
     emit newScreenshotRequest(mode, delay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
-}
-
-void KSWidget::checkboxStatesChanged(int state)
-{
-    Q_UNUSED(state);
-
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup guiConfig(config, "GuiConfig");
-
-    guiConfig.writeEntry("includePointer",     mMousePointer->isChecked());
-    guiConfig.writeEntry("includeDecorations", mWindowDecorations->isChecked());
-    guiConfig.writeEntry("waitCaptureOnClick", mCaptureOnClick->isChecked());
-    guiConfig.writeEntry("transientOnly",      mCaptureTransientOnly->isChecked());
-    guiConfig.sync();
 }
 
 void KSWidget::onClickStateChanged(int state)

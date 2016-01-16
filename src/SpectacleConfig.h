@@ -47,13 +47,25 @@ class SpectacleConfig : public QObject
 
     // everything else
 
-    public:
+    public slots:
 
     QUrl lastSaveAsLocation() const;
     void setLastSaveAsLocation(const QUrl &location);
 
     QRect cropRegion() const;
     void setCropRegion(const QRect &region);
+
+    bool onClickChecked() const;
+    void setOnClickChecked(bool enabled);
+
+    bool includePointerChecked() const;
+    void setIncludePointerChecked(bool enabled);
+
+    bool includeDecorationsChecked() const;
+    void setIncludeDecorationsChecked(bool enabled);
+
+    bool captureTransientWindowOnlyChecked() const;
+    void setCaptureTransientWindowOnlyChecked(bool enabled);
 
     private:
 
