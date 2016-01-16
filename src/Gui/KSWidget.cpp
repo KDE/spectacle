@@ -18,6 +18,23 @@
  */
 
 #include "KSWidget.h"
+
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QFormLayout>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QShortcut>
+#include <QTimer>
+
+#include <KLocalizedString>
+
+#include "KSImageWidget.h"
+#include "SmartSpinBox.h"
+
 #include "SpectacleConfig.h"
 
 KSWidget::KSWidget(QWidget *parent) :

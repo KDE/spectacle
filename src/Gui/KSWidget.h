@@ -21,27 +21,21 @@
 #define KSWIDGET_H
 
 #include <QWidget>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QGridLayout>
-#include <QFormLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QKeySequence>
-#include <QShortcut>
-#include <QTimer>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QVariant>
-#include <QIcon>
-
-#include <KLocalizedString>
-#include <KSharedConfig>
-#include <KConfigGroup>
+#include <QPixmap>
 
 #include "PlatformBackends/ImageGrabber.h"
-#include "KSImageWidget.h"
-#include "SmartSpinBox.h"
+
+class QGridLayout;
+class QHBoxLayout;
+class QVBoxLayout;
+class QFormLayout;
+class QComboBox;
+class QCheckBox;
+class QLabel;
+class QPushButton;
+
+class KSImageWidget;
+class SmartSpinBox;
 
 class KSWidget : public QWidget
 {

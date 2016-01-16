@@ -22,6 +22,8 @@
 
 #include <QJsonArray>
 #include <QPrintDialog>
+#include <QShortcut>
+#include <QTimer>
 #ifdef XCB_FOUND
 #include <QX11Info>
 #include <xcb/xcb.h>
