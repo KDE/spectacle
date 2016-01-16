@@ -54,7 +54,7 @@ KSWidget::KSWidget(QWidget *parent) :
     mDelayMsec->setMaximum(999.9);
     mDelayMsec->setSuffix(i18n(" seconds"));
     mDelayMsec->setMinimumWidth(160);
-    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged), this, &KSWidget::captureDelayChanged);
+    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged), configManager, &SpectacleConfig::setCaptureDelay);
 
     mCaptureOnClick = new QCheckBox(this);
     mCaptureOnClick->setText(i18n("On Click"));
@@ -140,15 +140,12 @@ KSWidget::KSWidget(QWidget *parent) :
 
     // and read in the saved checkbox states and capture mode indices
 
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup guiConfig(config, "GuiConfig");
-
     mMousePointer->setChecked         (configManager->includePointerChecked());
     mWindowDecorations->setChecked    (configManager->includeDecorationsChecked());
     mCaptureOnClick->setChecked       (configManager->onClickChecked());
     mCaptureTransientOnly->setChecked (configManager->captureTransientWindowOnlyChecked());
-    mCaptureArea->setCurrentIndex(     guiConfig.readEntry("captureModeIndex", 0));
-    mDelayMsec->setValue(              guiConfig.readEntry("captureDelay", (qreal)0));
+    mCaptureArea->setCurrentIndex     (configManager->captureMode());
+    mDelayMsec->setValue              (configManager->captureDelay());
 
     // done
 }
@@ -190,11 +187,7 @@ void KSWidget::onClickStateChanged(int state)
 
 void KSWidget::captureModeChanged(int index)
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup guiConfig(config, "GuiConfig");
-
-    guiConfig.writeEntry("captureModeIndex", index);
-    guiConfig.sync();
+    SpectacleConfig::instance()->setCaptureMode(index);
 
     ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->itemData(index).toInt());
     switch (mode) {
@@ -210,13 +203,4 @@ void KSWidget::captureModeChanged(int index)
         mWindowDecorations->setEnabled(false);
         mCaptureTransientOnly->setEnabled(false);
     }
-}
-
-void KSWidget::captureDelayChanged(qreal value)
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup guiConfig(config, "GuiConfig");
-
-    guiConfig.writeEntry("captureDelay", value);
-    guiConfig.sync();
 }

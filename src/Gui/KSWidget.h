@@ -66,7 +66,6 @@ class KSWidget : public QWidget
     void newScreenshotClicked();
     void onClickStateChanged(int state);
     void captureModeChanged(int index);
-    void captureDelayChanged(qreal value);
 
 	private:
     

@@ -116,3 +116,29 @@ void SpectacleConfig::setCaptureTransientWindowOnlyChecked(bool enabled)
     mGuiConfig.writeEntry(QStringLiteral("transientOnly"), enabled);
     mGuiConfig.sync();
 }
+
+// capture delay
+
+qreal SpectacleConfig::captureDelay() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("captureDelay"), 0.0);
+}
+
+void SpectacleConfig::setCaptureDelay(qreal delay)
+{
+    mGuiConfig.writeEntry(QStringLiteral("captureDelay"), delay);
+    mGuiConfig.sync();
+}
+
+// capture mode
+
+int SpectacleConfig::captureMode() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("captureModeIndex"), 0);
+}
+
+void SpectacleConfig::setCaptureMode(int index)
+{
+    mGuiConfig.writeEntry(QStringLiteral("captureModeIndex"), index);
+    mGuiConfig.sync();
+}

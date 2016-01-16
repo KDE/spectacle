@@ -67,6 +67,12 @@ class SpectacleConfig : public QObject
     bool captureTransientWindowOnlyChecked() const;
     void setCaptureTransientWindowOnlyChecked(bool enabled);
 
+    qreal captureDelay() const;
+    void setCaptureDelay(qreal delay);
+
+    int captureMode() const;
+    void setCaptureMode(int index);
+
     private:
 
     KSharedConfigPtr mConfig;
