@@ -49,6 +49,7 @@ class KSMainWindow : public QDialog
     void showImageSharedFeedback(bool error, const QString &message);
     void sendToClipboard();
     void init();
+    void buildSaveMenu();
     void save();
     void saveAs();
     void saveAndExit();

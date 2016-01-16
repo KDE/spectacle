@@ -73,6 +73,9 @@ class SpectacleConfig : public QObject
     int captureMode() const;
     void setCaptureMode(int index);
 
+    int lastUsedSaveMode() const;
+    void setLastUsedSaveMode(int index);
+
     private:
 
     KSharedConfigPtr mConfig;

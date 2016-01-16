@@ -142,3 +142,16 @@ void SpectacleConfig::setCaptureMode(int index)
     mGuiConfig.writeEntry(QStringLiteral("captureModeIndex"), index);
     mGuiConfig.sync();
 }
+
+// last used save mode
+
+int SpectacleConfig::lastUsedSaveMode() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("lastUsedSaveMode"), 0);
+}
+
+void SpectacleConfig::setLastUsedSaveMode(int index)
+{
+    mGuiConfig.writeEntry(QStringLiteral("lastUsedSaveMode"), index);
+    mGuiConfig.sync();
+}

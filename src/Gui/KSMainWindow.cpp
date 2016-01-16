@@ -38,6 +38,7 @@
 #include "KSSaveConfigDialog.h"
 #include "ExportMenu.h"
 #include "ExportManager.h"
+#include "SpectacleConfig.h"
 
 KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     QDialog(parent),
@@ -132,20 +133,10 @@ void KSMainWindow::init()
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
-    mSaveMenu->addAction(KStandardAction::save(this, SLOT(save()), this));
-    mSaveMenu->addAction(KStandardAction::saveAs(this, SLOT(saveAs()), this));
-    mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
-    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Configure Save Options"), this, SLOT(showSaveConfigDialog()));
-
-    QAction *saveAndExitAction = new QAction(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save &&& Exit"), this);
-    saveAndExitAction->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
-    saveAndExitAction->setShortcut(QKeySequence(QKeySequence::Quit));
-    connect(saveAndExitAction, &QAction::triggered, this, &KSMainWindow::saveAndExit);
-
-    mSaveButton->setDefaultAction(saveAndExitAction);
     mSaveButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mSaveButton->setMenu(mSaveMenu);
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
+    buildSaveMenu();
     mDialogButtonBox->addButton(mSaveButton, QDialogButtonBox::ActionRole);
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), mDialogButtonBox->button(QDialogButtonBox::Discard));
@@ -181,6 +172,46 @@ void KSMainWindow::init()
     }
 
     // done with the init
+}
+
+void KSMainWindow::buildSaveMenu()
+{
+    // first clear the menu
+    mSaveMenu->clear();
+
+    // get our actions in order
+    QAction *actionSave = KStandardAction::save(this, SLOT(save()), this);
+    QAction *actionSaveAs = KStandardAction::saveAs(this, SLOT(saveAs()), this);
+    QAction *actionSaveExit = new QAction(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save &&& Exit"), this);
+    actionSaveExit->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
+    actionSaveExit->setShortcut(QKeySequence(QKeySequence::Quit));
+    connect(actionSaveExit, &QAction::triggered, this, &KSMainWindow::saveAndExit);
+
+    // put the actions in order
+    switch (SpectacleConfig::instance()->lastUsedSaveMode()) {
+    case 1:
+        mSaveButton->setDefaultAction(actionSave);
+        mSaveMenu->addAction(actionSaveExit);
+        mSaveMenu->addAction(actionSaveAs);
+        break;
+    case 2:
+        mSaveButton->setDefaultAction(actionSaveAs);
+        mSaveMenu->addAction(actionSaveExit);
+        mSaveMenu->addAction(actionSave);
+        break;
+    case 0:
+    default:
+        mSaveButton->setDefaultAction(actionSaveExit);
+        mSaveMenu->addAction(actionSave);
+        mSaveMenu->addAction(actionSaveAs);
+        break;
+    }
+
+    // finish off building the menu
+    mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
+    mSaveMenu->addSeparator();
+    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Configure Save Options"),
+                         this, SLOT(showSaveConfigDialog()));
 }
 
 // overrides
@@ -270,16 +301,21 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 
 void KSMainWindow::save()
 {
+    SpectacleConfig::instance()->setLastUsedSaveMode(1);
+    buildSaveMenu();
     ExportManager::instance()->doSave();
 }
 
 void KSMainWindow::saveAs()
 {
+    SpectacleConfig::instance()->setLastUsedSaveMode(2);
+    buildSaveMenu();
     ExportManager::instance()->doSaveAs(this);
 }
 
 void KSMainWindow::saveAndExit()
 {
+    SpectacleConfig::instance()->setLastUsedSaveMode(0);
     ExportManager::instance()->doSave();
     QApplication::quit();
 }
