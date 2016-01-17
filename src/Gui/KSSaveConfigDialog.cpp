@@ -26,7 +26,8 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
 
     setWindowTitle(i18n("Configure Save Options"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    setFixedSize(500, 600);
+    setMinimumSize(500, 600);
+    resize(500, 600);
 
     // bring up the configuration reader
 
