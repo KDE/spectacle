@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     KLocalizedString::setApplicationDomain("spectacle");
     KAboutData aboutData("spectacle",
                          i18n("Spectacle"),
-                         SPECTACLE_VERSION,
+                         QStringLiteral(SPECTACLE_VERSION) + QStringLiteral(" - ") + QStringLiteral(SPECTACLE_CODENAME),
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
