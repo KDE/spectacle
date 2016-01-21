@@ -12,15 +12,12 @@ set(SPECTACLE_VERSION ${KDE_APPLICATIONS_VERSION})
 # minimum requirements
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
-if (POLICY CMP0063)
-   cmake_policy(SET CMP0063 NEW)
-endif()
 
 set(QT_MIN_VERSION     "5.4.0")
-set(KF5_MIN_VERSION    "5.6.0")
-set(PLASMA_MIN_VERSION "5.2.0")
+set(KF5_MIN_VERSION    "5.18.0")
+set(PLASMA_MIN_VERSION "5.4.0")
 
-find_package(ECM 1.2.0 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(
     CMAKE_MODULE_PATH
         ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
@@ -33,7 +30,7 @@ set(
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDECompilerSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(FeatureSummary)
