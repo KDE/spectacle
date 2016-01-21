@@ -85,6 +85,12 @@ class SpectacleConfig : public QObject
     int lastUsedSaveMode() const;
     void setLastUsedSaveMode(int index);
 
+    QString autoSaveFilenameFormat() const;
+    void setAutoSaveFilenameFormat(const QString &format);
+
+    QString autoSaveLocation() const;
+    void setAutoSaveLocation(const QString &location);
+
     private:
 
     KSharedConfigPtr mConfig;

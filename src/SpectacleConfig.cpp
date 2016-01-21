@@ -194,3 +194,31 @@ void SpectacleConfig::setLastUsedSaveMode(int index)
     mGuiConfig.writeEntry(QStringLiteral("lastUsedSaveMode"), index);
     mGuiConfig.sync();
 }
+
+// autosave filename format
+
+QString SpectacleConfig::autoSaveFilenameFormat() const
+{
+    return mGeneralConfig.readEntry(QStringLiteral("save-filename-format"),
+                          QStringLiteral("Screenshot_%Y%M%D_%H%m%S"));
+}
+
+void SpectacleConfig::setAutoSaveFilenameFormat(const QString &format)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("save-filename-format"), format);
+    mGeneralConfig.sync();
+}
+
+// autosave location
+
+QString SpectacleConfig::autoSaveLocation() const
+{
+    return mGeneralConfig.readPathEntry(QStringLiteral("default-save-location"),
+                          QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+}
+
+void SpectacleConfig::setAutoSaveLocation(const QString &location)
+{
+    mGeneralConfig.writePathEntry(QStringLiteral("default-save-location"), location);
+    mGeneralConfig.sync();
+}

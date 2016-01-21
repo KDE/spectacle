@@ -27,17 +27,16 @@
 #include <QStandardPaths>
 
 #include <KLocalizedString>
-#include <KConfigGroup>
-#include <KSharedConfig>
 #include <KIOWidgets/KUrlRequester>
+
+#include "SpectacleConfig.h"
 
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     SettingsPage(parent)
 {
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
     // set up the layout. start with the directory
 
@@ -57,9 +56,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     mUrlRequester = new KUrlRequester;
     mUrlRequester->setMode(KFile::Directory);
-    const QString path = generalConfig.readPathEntry("default-save-location",
-                                                     QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-    mUrlRequester->setUrl(QUrl::fromUserInput(path));
+    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
+    connect(mUrlRequester, &KUrlRequester::textChanged, this, &SaveOptionsPage::markDirty);
     urlRequesterLayout->addWidget(mUrlRequester);
 
     dirLayout->addLayout(urlRequesterLayout);
@@ -105,8 +103,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     saveNameLayout->addWidget(new QLabel(i18n("Filename:")));
 
     mSaveNameFormat = new QLineEdit;
-    const QString saveFmt = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
-    mSaveNameFormat->setText(saveFmt);
+    mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
+    connect(mSaveNameFormat, &QLineEdit::textChanged, this, &SaveOptionsPage::markDirty);
     saveNameLayout->addWidget(mSaveNameFormat);
 
     fmtLayout->addLayout(saveNameLayout);
@@ -124,17 +122,24 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 SaveOptionsPage::~SaveOptionsPage()
 {}
 
+void SaveOptionsPage::markDirty(const QString &text)
+{
+    Q_UNUSED(text);
+    mChangesMade = true;
+}
+
 void SaveOptionsPage::saveChanges()
 {
     // bring up the configuration reader
 
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
     // save the data
 
-    generalConfig.writePathEntry("default-save-location", mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
-    generalConfig.writeEntry("save-filename-format", mSaveNameFormat->text());
+    cfgManager->setAutoSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
+    cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
 
     // done
+
+    mChangesMade = false;
 }

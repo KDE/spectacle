@@ -39,6 +39,10 @@ class SaveOptionsPage : public SettingsPage
 
     void saveChanges() Q_DECL_OVERRIDE;
 
+    private slots:
+
+    void markDirty(const QString &text);
+
     private:
 
     QDialogButtonBox *mDialogButtonBox;
