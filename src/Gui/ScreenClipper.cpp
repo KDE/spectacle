@@ -23,10 +23,14 @@
 ScreenClipper::ScreenClipper(const QPixmap &pixmap) :
     QRasterWindow(0),
     grabbing(false),
-    mSelection(SpectacleConfig::instance()->cropRegion()),
+    mSelection(QRect()),
     mMouseOverHandle(0),
     mPixmap(pixmap)
 {
+    if (SpectacleConfig::instance()->rememberLastRectangularRegion()) {
+        mSelection = SpectacleConfig::instance()->cropRegion();
+    }
+
     mTLHandle = mTRHandle = mBLHandle = mBRHandle = QRect(0, 0, 15, 15);
     mLHandle = mRHandle = QRect(0, 0, 10, 20);
     mTHandle = mBHandle = QRect(0, 0, 20, 10);
@@ -83,7 +87,8 @@ void ScreenClipper::paintEvent(QPaintEvent *e)
     QColor textColor = palette.color(QPalette::Active, QPalette::Text);
     QColor textBackgroundColor = palette.color(QPalette::Active, QPalette::Base);
     QColor handleColor = palette.color(QPalette::Active, QPalette::Highlight);
-    QColor overlayColor(0, 0, 0);
+    QColor overlayColor = SpectacleConfig::instance()->useLightRegionMaskColour()
+            ? QColor(200, 200, 200) : QColor(0, 0, 0);
 
     overlayColor.setAlphaF(0.5);
     textBackgroundColor.setAlphaF(0.85);

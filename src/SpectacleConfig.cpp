@@ -143,6 +143,45 @@ void SpectacleConfig::setCaptureMode(int index)
     mGuiConfig.sync();
 }
 
+// dynamic save button
+
+bool SpectacleConfig::useDynamicSaveButton() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("dynamicSaveButton"), false);
+}
+
+void SpectacleConfig::setUseDynamicSaveButton(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("dynamicSaveButton"), enabled);
+    mGuiConfig.sync();
+}
+
+// remember last rectangular region
+
+bool SpectacleConfig::rememberLastRectangularRegion() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("rememberLastRectangularRegion"), false);
+}
+
+void SpectacleConfig::setRememberLastRectangularRegion(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("rememberLastRectangularRegion"), enabled);
+    mGuiConfig.sync();
+}
+
+// use light region mask colour
+
+bool SpectacleConfig::useLightRegionMaskColour() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("useLightMaskColour"), false);
+}
+
+void SpectacleConfig::setUseLightRegionMaskColour(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("useLightMaskColour"), enabled);
+    mGuiConfig.sync();
+}
+
 // last used save mode
 
 int SpectacleConfig::lastUsedSaveMode() const

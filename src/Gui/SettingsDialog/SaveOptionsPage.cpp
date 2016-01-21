@@ -17,17 +17,23 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "KSSaveConfigDialog.h"
+#include "SaveOptionsPage.h"
 
-KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
-    QDialog(parent)
+#include <QLineEdit>
+#include <QLabel>
+#include <QGroupBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QStandardPaths>
+
+#include <KLocalizedString>
+#include <KConfigGroup>
+#include <KSharedConfig>
+#include <KIOWidgets/KUrlRequester>
+
+SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
+    SettingsPage(parent)
 {
-    // set the window properties first
-
-    setWindowTitle(i18n("Configure Save Options"));
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    setFixedSize(500, 600);
-
     // bring up the configuration reader
 
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
@@ -112,18 +118,13 @@ KSSaveConfigDialog::KSSaveConfigDialog(QWidget *parent) :
     mainLayout->addWidget(dirGroup);
     mainLayout->addWidget(fmtGroup);
 
-    mDialogButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-    connect(mDialogButtonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KSSaveConfigDialog::accept);
-    connect(mDialogButtonBox->button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &KSSaveConfigDialog::reject);
-    mainLayout->addWidget(mDialogButtonBox);
-
     setLayout(mainLayout);
 }
 
-KSSaveConfigDialog::~KSSaveConfigDialog()
+SaveOptionsPage::~SaveOptionsPage()
 {}
 
-void KSSaveConfigDialog::accept()
+void SaveOptionsPage::saveChanges()
 {
     // bring up the configuration reader
 
@@ -136,6 +137,4 @@ void KSSaveConfigDialog::accept()
     generalConfig.writeEntry("save-filename-format", mSaveNameFormat->text());
 
     // done
-
-    emit done(QDialog::Accepted);
 }

@@ -16,10 +16,13 @@ set(
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
-        Gui/KSSaveConfigDialog.cpp
         Gui/ExportMenu.cpp
         Gui/ScreenClipper.cpp
         Gui/SmartSpinBox.cpp
+        Gui/SettingsDialog/SettingsDialog.cpp
+        Gui/SettingsDialog/SettingsPage.cpp
+        Gui/SettingsDialog/SaveOptionsPage.cpp
+        Gui/SettingsDialog/GeneralOptionsPage.cpp
 )
 
 if(XCB_FOUND)

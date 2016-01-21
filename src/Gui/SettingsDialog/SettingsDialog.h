@@ -17,43 +17,34 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KSSAVECONFIGDIALOG_H
-#define KSSAVECONFIGDIALOG_H
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#include <QDialog>
-#include <QDialogButtonBox>
-#include <QLineEdit>
-#include <QLabel>
-#include <QFont>
-#include <QGroupBox>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QStandardPaths>
+#include <QSet>
+#include <KPageDialog>
 
-#include <KLocalizedString>
-#include <KConfigGroup>
-#include <KSharedConfig>
-#include <KIOWidgets/KUrlRequester>
+class KPageWidgetItem;
 
-
-class KSSaveConfigDialog : public QDialog
+class SettingsDialog : public KPageDialog
 {
     Q_OBJECT
 
     public:
 
-    explicit KSSaveConfigDialog(QWidget *parent = 0);
-    ~KSSaveConfigDialog();
+    explicit SettingsDialog(QWidget *parent = 0);
+    virtual ~SettingsDialog();
 
     public slots:
 
     void accept() Q_DECL_OVERRIDE;
 
+    private slots:
+
+    void initPages();
+
     private:
 
-    QDialogButtonBox *mDialogButtonBox;
-    KUrlRequester    *mUrlRequester;
-    QLineEdit        *mSaveNameFormat;
+    QSet<KPageWidgetItem *> mPages;
 };
 
-#endif // KSSAVECONFIGDIALOG_H
+#endif // SETTINGSDIALOG_H

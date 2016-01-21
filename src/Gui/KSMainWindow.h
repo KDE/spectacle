@@ -45,7 +45,7 @@ class KSMainWindow : public QDialog
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void showPrintDialog();
-    void showSaveConfigDialog();
+    void showPreferencesDialog();
     void showImageSharedFeedback(bool error, const QString &message);
     void sendToClipboard();
     void init();

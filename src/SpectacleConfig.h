@@ -73,6 +73,15 @@ class SpectacleConfig : public QObject
     int captureMode() const;
     void setCaptureMode(int index);
 
+    bool useDynamicSaveButton() const;
+    void setUseDynamicSaveButton(bool enabled);
+
+    bool rememberLastRectangularRegion() const;
+    void setRememberLastRectangularRegion(bool enabled);
+
+    bool useLightRegionMaskColour() const;
+    void setUseLightRegionMaskColour(bool enabled);
+
     int lastUsedSaveMode() const;
     void setLastUsedSaveMode(int index);
 

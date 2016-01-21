@@ -24,6 +24,9 @@
 #include <QPrintDialog>
 #include <QShortcut>
 #include <QTimer>
+#include <QPushButton>
+#include <QVBoxLayout>
+
 #ifdef XCB_FOUND
 #include <QX11Info>
 #include <xcb/xcb.h>
@@ -35,7 +38,7 @@
 #include <KHelpMenu>
 #include <KAboutData>
 
-#include "KSSaveConfigDialog.h"
+#include "SettingsDialog/SettingsDialog.h"
 #include "ExportMenu.h"
 #include "ExportManager.h"
 #include "SpectacleConfig.h"
@@ -187,8 +190,12 @@ void KSMainWindow::buildSaveMenu()
     actionSaveExit->setShortcut(QKeySequence(QKeySequence::Quit));
     connect(actionSaveExit, &QAction::triggered, this, &KSMainWindow::saveAndExit);
 
+    // static or dynamic
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
+    int switchState = cfgManager->useDynamicSaveButton() ? cfgManager->lastUsedSaveMode() : 0;
+
     // put the actions in order
-    switch (SpectacleConfig::instance()->lastUsedSaveMode()) {
+    switch (switchState) {
     case 1:
         mSaveButton->setDefaultAction(actionSave);
         mSaveMenu->addAction(actionSaveExit);
@@ -210,8 +217,8 @@ void KSMainWindow::buildSaveMenu()
     // finish off building the menu
     mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
     mSaveMenu->addSeparator();
-    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Configure Save Options"),
-                         this, SLOT(showSaveConfigDialog()));
+    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Preferences"),
+                         this, SLOT(showPreferencesDialog()));
 }
 
 // overrides
@@ -286,10 +293,10 @@ void KSMainWindow::sendToClipboard()
     QTimer::singleShot(10000, mMessageWidget, &KMessageWidget::animatedHide);
 }
 
-void KSMainWindow::showSaveConfigDialog()
+void KSMainWindow::showPreferencesDialog()
 {
-    KSSaveConfigDialog saveDialog(this);
-    saveDialog.exec();
+    SettingsDialog prefDialog(this);
+    prefDialog.exec();
 }
 
 void KSMainWindow::setScreenshotWindowTitle(QUrl location)
