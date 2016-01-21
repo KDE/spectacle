@@ -33,7 +33,6 @@ class SaveOptionsPage : public SettingsPage
     public:
 
     explicit SaveOptionsPage(QWidget *parent = 0);
-    ~SaveOptionsPage();
 
     public slots:
 

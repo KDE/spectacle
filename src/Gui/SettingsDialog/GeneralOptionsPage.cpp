@@ -72,7 +72,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     QLabel *lbHelpText = new QLabel;
     lbHelpText->setWordWrap(true);
     lbHelpText->setText(i18n("Use a light background color to mask the cropped-out area in the rectangular "
-                             "region selector. This may be useful with dark cursors."));
+                             "region selector. This may make dark cursors easier to see."));
     lbLayout->addWidget(lbHelpText);
 
     mUseLightBackground = new QCheckBox;
@@ -95,9 +95,9 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     QLabel *rrHelpText = new QLabel;
     rrHelpText->setWordWrap(true);
-    rrHelpText->setText(i18n("By default, Spectacle does not show an initial selection when you take a"
-                             "screenshot of a rectangular region. Enable this option to remember the last"
-                             "selected region of the screen, and set it as the initial selection when you"
+    rrHelpText->setText(i18n("By default, Spectacle does not show an initial selection when you take a "
+                             "screenshot of a rectangular region. Enable this option to remember the last "
+                             "selected region of the screen, and set it as the initial selection when you "
                              "use the rectangular region selector the next time."));
     rrLayout->addWidget(rrHelpText);
 
@@ -131,4 +131,6 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setUseDynamicSaveButton(mUseLastSaveAction->checkState() == Qt::Checked);
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
+
+    mChangesMade = false;
 }

@@ -119,9 +119,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     setLayout(mainLayout);
 }
 
-SaveOptionsPage::~SaveOptionsPage()
-{}
-
 void SaveOptionsPage::markDirty(const QString &text)
 {
     Q_UNUSED(text);
