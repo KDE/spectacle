@@ -118,10 +118,10 @@ KSWidget::KSWidget(QWidget *parent) :
     mContentOptionsForm->setSpacing(16);
     mContentOptionsForm->setContentsMargins(24, 0, 0, 0);
 
-    // the take new screenshot button
+    // the take a new screenshot button
 
     mTakeScreenshotButton = new QPushButton(this);
-    mTakeScreenshotButton->setText(i18n("Take New Screenshot"));
+    mTakeScreenshotButton->setText(i18n("Take a New Screenshot"));
     mTakeScreenshotButton->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
     mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     mTakeScreenshotButton->setFocus();
