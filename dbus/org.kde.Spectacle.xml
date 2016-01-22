@@ -84,6 +84,20 @@
             </doc:doc>
         </method>
 
+        <method name="RectangularRegion">
+            <arg name="includeMousePointer" direction="in" type="b">
+                <doc:doc>
+                    <doc:summary>Whether to include an image of the mouse pointer.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a screenshot of a rectangular region.</doc:para>
+                    <doc:para>The user is prompted to select the region to capture. If Spectacle was started via D-Bus, it exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
         <signal name="ScreenshotTaken">
             <arg name="fileName" direction="out" type="s">
                 <doc:doc>

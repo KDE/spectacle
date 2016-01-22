@@ -45,6 +45,9 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
         "      <arg direction=\"in\" type=\"b\" name=\"includeWindowDecorations\"/>\n"
         "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
         "    </method>\n"
+        "    <method name=\"RectangularRegion\">\n"
+        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
+        "    </method>\n"
         "    <signal name=\"ScreenshotTaken\">\n"
         "      <arg direction=\"out\" type=\"s\" name=\"fileName\"/>\n"
         "    </signal>\n"
@@ -68,6 +71,7 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
     Q_NOREPLY void CurrentScreen(bool includeMousePointer);
     Q_NOREPLY void ActiveWindow(bool includeWindowDecorations, bool includeMousePointer);
     Q_NOREPLY void WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer);
+    Q_NOREPLY void RectangularRegion(bool includeMousePointer);
 
     signals:
 

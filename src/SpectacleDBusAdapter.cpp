@@ -58,3 +58,7 @@ Q_NOREPLY void SpectacleDBusAdapter::WindowUnderCursor(bool includeWindowDecorat
     parent()->takeNewScreenshot(ImageGrabber::WindowUnderCursor, 0, includeMousePointer, includeWindowDecorations);
 }
 
+Q_NOREPLY void SpectacleDBusAdapter::RectangularRegion(bool includeMousePointer)
+{
+    parent()->takeNewScreenshot(ImageGrabber::RectangularRegion, 0, includeMousePointer, false);
+}

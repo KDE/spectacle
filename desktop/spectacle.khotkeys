@@ -1,13 +1,13 @@
 [Main]
 ImportId=spectacle
-Version=2
+Version=3
 
 [Data]
 DataCount=1
 
 [Data_1]
 Comment=Shortcuts for taking screenshots
-DataCount=3
+DataCount=4
 Enabled=true
 Name=Screenshots
 SystemGroup=0
@@ -99,4 +99,32 @@ TriggersCount=1
 
 [Data_1_3Triggers0]
 Key=Meta+Print
+Type=SHORTCUT
+
+[Data_1_4]
+Comment=Take a screenshot of a rectangular region you specify and save it
+Enabled=true
+Name=Take Rectangular Region Screenshot
+Type=SIMPLE_ACTION_DATA
+
+[Data_1_4Actions]
+ActionsCount=1
+
+[Data_1_4Actions0]
+Arguments=true
+Call=RectangularRegion
+RemoteApp=org.kde.Spectacle
+RemoteObj=/
+Type=DBUS
+
+[Data_1_4Conditions]
+Comment=
+ConditionsCount=0
+
+[Data_1_4Triggers]
+Comment=Simple_action
+TriggersCount=1
+
+[Data_1_4Triggers0]
+Key=Meta+Shift+Print
 Type=SHORTCUT
