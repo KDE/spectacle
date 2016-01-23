@@ -27,7 +27,7 @@ SettingsPage::SettingsPage(QWidget *parent) :
 SettingsPage::~SettingsPage()
 {}
 
-bool SettingsPage::anyChanges()
+bool SettingsPage::changesMade()
 {
     return mChangesMade;
 }

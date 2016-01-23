@@ -21,6 +21,7 @@
 
 #include <QMetaObject>
 #include <QIcon>
+#include <QMessageBox>
 
 #include <KLocalizedString>
 #include <KPageWidgetModel>
@@ -40,22 +41,21 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     QMetaObject::invokeMethod(this, "initPages", Qt::QueuedConnection);
 }
 
-SettingsDialog::~SettingsDialog()
-{}
-
 void SettingsDialog::initPages()
 {
     KPageWidgetItem *generalOptions = new KPageWidgetItem(new GeneralOptionsPage(this), i18n("General"));
-    generalOptions->setHeader(i18n("General application preferences"));
+    generalOptions->setHeader(i18n("Application Preferences"));
     generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("applications-system")));
     addPage(generalOptions);
     mPages.insert(generalOptions);
 
     KPageWidgetItem *saveOptions = new KPageWidgetItem(new SaveOptionsPage(this), i18n("Save Options"));
-    saveOptions->setHeader(i18n("Default save settings"));
+    saveOptions->setHeader(i18n("Default Save Settings"));
     saveOptions->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
     addPage(saveOptions);
     mPages.insert(saveOptions);
+
+    connect(this, &SettingsDialog::currentPageChanged, this, &SettingsDialog::onPageChanged);
 }
 
 void SettingsDialog::accept()
@@ -68,4 +68,21 @@ void SettingsDialog::accept()
     }
 
     emit done(QDialog::Accepted);
+}
+
+void SettingsDialog::onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before)
+{
+    Q_UNUSED(current);
+
+    SettingsPage *pageWidget = dynamic_cast<SettingsPage *>(before->widget());
+    if (pageWidget && (pageWidget->changesMade())) {
+        QMessageBox::StandardButton response = QMessageBox::question(this, i18n("Apply Unsaved Changes"),
+                     i18n("You have made changes to the settings in this tab. Do you want to apply those changes?"));
+
+        if (response == QMessageBox::Yes) {
+            pageWidget->saveChanges();
+        } else {
+            pageWidget->resetChanges();
+        }
+    }
 }

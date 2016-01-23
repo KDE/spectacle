@@ -33,7 +33,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 {
     // preamble and stuff
 
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     // dynamic save button
@@ -52,7 +51,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     dsLayout->addWidget(dsHelpText);
 
     mUseLastSaveAction = new QCheckBox;
-    mUseLastSaveAction->setChecked(cfgManager->useDynamicSaveButton());
     mUseLastSaveAction->setText(i18n("Set save button action to last used save method"));
     connect(mUseLastSaveAction, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
@@ -76,7 +74,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     lbLayout->addWidget(lbHelpText);
 
     mUseLightBackground = new QCheckBox;
-    mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
     mUseLightBackground->setText(i18n("Use light background color"));
     connect(mUseLightBackground, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
@@ -102,7 +99,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     rrLayout->addWidget(rrHelpText);
 
     mRememberRect = new QCheckBox;
-    mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
     mRememberRect->setText(i18n("Remember rectangular region"));
     connect(mRememberRect, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
@@ -111,6 +107,10 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     rrCLayout->addWidget(mRememberRect);
     rrLayout->addLayout(rrCLayout);
     mainLayout->addWidget(rrGroup, 1);
+
+    // read in the data
+
+    resetChanges();
 
     // finish up with the main layout
 
@@ -131,6 +131,17 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setUseDynamicSaveButton(mUseLastSaveAction->checkState() == Qt::Checked);
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
+
+    mChangesMade = false;
+}
+
+void GeneralOptionsPage::resetChanges()
+{
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
+
+    mUseLastSaveAction->setChecked(cfgManager->useDynamicSaveButton());
+    mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
+    mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
 
     mChangesMade = false;
 }

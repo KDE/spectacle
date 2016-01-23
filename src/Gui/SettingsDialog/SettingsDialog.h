@@ -32,7 +32,6 @@ class SettingsDialog : public KPageDialog
     public:
 
     explicit SettingsDialog(QWidget *parent = 0);
-    virtual ~SettingsDialog();
 
     public slots:
 
@@ -41,6 +40,7 @@ class SettingsDialog : public KPageDialog
     private slots:
 
     void initPages();
+    void onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before);
 
     private:
 

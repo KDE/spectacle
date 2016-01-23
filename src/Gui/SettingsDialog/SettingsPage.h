@@ -34,7 +34,8 @@ class SettingsPage : public QWidget
     public slots:
 
     virtual void saveChanges() = 0;
-    bool anyChanges();
+    virtual void resetChanges() = 0;
+    bool changesMade();
 
     protected:
 

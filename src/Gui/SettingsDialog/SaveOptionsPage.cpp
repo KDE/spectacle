@@ -34,10 +34,6 @@
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     SettingsPage(parent)
 {
-    // bring up the configuration reader
-
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-
     // set up the layout. start with the directory
 
     QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Directory"));
@@ -56,7 +52,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     mUrlRequester = new KUrlRequester;
     mUrlRequester->setMode(KFile::Directory);
-    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
     connect(mUrlRequester, &KUrlRequester::textChanged, this, &SaveOptionsPage::markDirty);
     urlRequesterLayout->addWidget(mUrlRequester);
 
@@ -103,11 +98,14 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     saveNameLayout->addWidget(new QLabel(i18n("Filename:")));
 
     mSaveNameFormat = new QLineEdit;
-    mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
     connect(mSaveNameFormat, &QLineEdit::textChanged, this, &SaveOptionsPage::markDirty);
     saveNameLayout->addWidget(mSaveNameFormat);
 
     fmtLayout->addLayout(saveNameLayout);
+
+    // read in the data
+
+    resetChanges();
 
     // finish up with the main layout
 
@@ -135,6 +133,22 @@ void SaveOptionsPage::saveChanges()
 
     cfgManager->setAutoSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
+
+    // done
+
+    mChangesMade = false;
+}
+
+void SaveOptionsPage::resetChanges()
+{
+    // bring up the configuration reader
+
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
+
+    // read in the data
+
+    mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
+    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
 
     // done
 
