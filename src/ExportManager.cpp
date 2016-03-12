@@ -169,7 +169,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    return fileNameFmt.arg("OVERFLOW-" + (qrand() % 10000));
+    return fileNameFmt.arg("OVERFLOW-" + QString::number(qrand() % 10000));
 }
 
 QString ExportManager::makeSaveMimetype(const QUrl &url)
