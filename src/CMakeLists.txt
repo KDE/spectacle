@@ -1,6 +1,7 @@
 # common - configure file and version definitions
 
 configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
+set(CMAKE_AUTORCC 1)
 
 # target
 
@@ -17,12 +18,13 @@ set(
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
         Gui/ExportMenu.cpp
-        Gui/ScreenClipper.cpp
         Gui/SmartSpinBox.cpp
         Gui/SettingsDialog/SettingsDialog.cpp
         Gui/SettingsDialog/SettingsPage.cpp
         Gui/SettingsDialog/SaveOptionsPage.cpp
         Gui/SettingsDialog/GeneralOptionsPage.cpp
+        QuickEditor/QuickEditor.cpp
+        QuickEditor/QmlResources.qrc
 )
 
 if(XCB_FOUND)
@@ -60,6 +62,7 @@ target_link_libraries(
     spectacle
         Qt5::DBus
         Qt5::PrintSupport
+        Qt5::Quick
         KF5::CoreAddons
         KF5::DBusAddons
         KF5::WidgetsAddons
@@ -69,6 +72,7 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::XmlGui
+        KF5::Declarative
 )
 
 if(XCB_FOUND)

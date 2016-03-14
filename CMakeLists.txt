@@ -41,6 +41,7 @@ find_package(
         Widgets
         DBus
         PrintSupport
+        Quick
 )
 
 find_package(
@@ -55,6 +56,7 @@ find_package(
         XmlGui
         WindowSystem
         DocTools
+        Declarative
 )
 
 # optional components
