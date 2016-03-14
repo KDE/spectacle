@@ -25,6 +25,27 @@
 
 #include "X11ImageGrabber.h"
 
+#include <QX11Info>
+#include <QStack>
+#include <QDBusConnection>
+#include <QDBusInterface>
+#include <QDBusConnectionInterface>
+#include <QDBusReply>
+#include <QPainter>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsDropShadowEffect>
+
+#include <KWindowSystem>
+#include <KWindowInfo>
+#include <KScreen/Config>
+#include <KScreen/GetConfigOperation>
+#include <KScreen/Output>
+
+#include <xcb/xcb_cursor.h>
+#include <xcb/xcb_util.h>
+#include <xcb/xfixes.h>
+
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent),
     mScreenConfigOperation(nullptr)
@@ -504,7 +525,10 @@ void X11ImageGrabber::grabActiveWindow()
 
     if (mCaptureDecorations && isKWinAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
+        bus.connect(QStringLiteral("org.kde.KWin"),
+                    QStringLiteral("/Screenshot"),
+                    QStringLiteral("org.kde.kwin.Screenshot"),
+                    QStringLiteral("screenshotCreated"),
                     this, SLOT(KWinDBusScreenshotHelper(quint64)));
         QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
@@ -528,7 +552,10 @@ void X11ImageGrabber::grabWindowUnderCursor()
 
     if (mCaptureDecorations && isKWinAvailable()) {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        bus.connect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
+        bus.connect(QStringLiteral("org.kde.KWin"),
+                    QStringLiteral("/Screenshot"),
+                    QStringLiteral("org.kde.kwin.Screenshot"),
+                    QStringLiteral("screenshotCreated"),
                     this, SLOT(KWinDBusScreenshotHelper(quint64)));
         QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
@@ -598,10 +625,10 @@ void X11ImageGrabber::grabCurrentScreen()
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    ScreenClipper *clipper = new ScreenClipper(getWindowPixmap(QX11Info::appRootWindow(), false));
+    QuickEditor *editor = new QuickEditor(getWindowPixmap(QX11Info::appRootWindow(), false));
 
-    connect(clipper, &ScreenClipper::regionGrabbed, this, &X11ImageGrabber::rectangleSelectionConfirmed);
-    connect(clipper, &ScreenClipper::regionCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
+    connect(editor, &QuickEditor::grabDone, this, &X11ImageGrabber::rectangleSelectionConfirmed);
+    connect(editor, &QuickEditor::grabCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
 }
 
 xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()

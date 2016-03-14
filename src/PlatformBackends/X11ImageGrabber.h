@@ -20,46 +20,19 @@
 #ifndef X11IMAGEGRABBER_H
 #define X11IMAGEGRABBER_H
 
-#include <QStack>
-#include <QString>
-#include <QPixmap>
-#include <QImage>
-#include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsDropShadowEffect>
-#include <QPainter>
-#include <QCursor>
-#include <QPoint>
-#include <QRect>
-#include <QDBusConnection>
-#include <QDBusInterface>
-#include <QDBusConnectionInterface>
-#include <QDBusReply>
-#include <QTimer>
-#include <QVector>
-#include <QByteArray>
-#include <QProcessEnvironment>
-#include <QScopedPointer>
-#include <QScopedPointerPodDeleter>
 #include <QAbstractNativeEventFilter>
-#include <QMetaObject>
-#include <QX11Info>
-
-#include <KWindowSystem>
-#include <KWindowInfo>
-#include <KScreen/Config>
-#include <KScreen/GetConfigOperation>
-#include <KScreen/Output>
 
 #include <xcb/xcb.h>
-#include <xcb/xcb_cursor.h>
 #include <xcb/xcb_image.h>
-#include <xcb/xcb_util.h>
-#include <xcb/xfixes.h>
 
 #include "ImageGrabber.h"
 
 class X11ImageGrabber;
+namespace KScreen
+{
+    class GetConfigOperation;
+    class ConfigOperation;
+}
 
 class OnClickEventFilter : public QAbstractNativeEventFilter
 {

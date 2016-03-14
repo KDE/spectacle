@@ -32,6 +32,7 @@
 #include <xcb/xcb.h>
 #endif
 
+#include <KLocalizedString>
 #include <KGuiItem>
 #include <KStandardAction>
 #include <KStandardGuiItem>
