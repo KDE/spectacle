@@ -24,6 +24,8 @@ Item {
     id: editorRoot;
     objectName: "editorRoot";
 
+    // properties and setters
+
     property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.75);
     property color strokeColour: Qt.rgba(0, 0, 0, 1);
@@ -42,6 +44,24 @@ Item {
 
         cropDisplayCanvas.requestPaint();
     }
+
+    // key handlers
+
+    focus: true;
+
+    Keys.onReturnPressed: {
+        if (selection) {
+            acceptImage(selection.x, selection.y, selection.width, selection.height);
+        } else {
+            acceptImage(-1, -1, -1, -1);
+        }
+    }
+
+    Keys.onEscapePressed: {
+        cancelImage();
+    }
+
+    // signals
 
     signal acceptImage(int x, int y, int width, int height);
     signal cancelImage();
@@ -78,66 +98,107 @@ Item {
             // draw a sheet over the whole screen
             ctx.fillRect(0, 0, cropDisplayCanvas.width, cropDisplayCanvas.height);
 
-            // if we have a selection polygon, cut it out
             if (selection) {
-                ctx.clearRect(selection.x, selection.y, selection.width, selection.height);
-                ctx.strokeRect(selection.x, selection.y, selection.width, selection.height);
+                midHelpText.visible = false;
+                bottomHelpText.visible = true;
+
+                // if we have a selection polygon, cut it out
+                ctx.fillStyle = strokeColour;
+                ctx.fillRect(selection.x, selection.y, selection.width, selection.height);
+                ctx.clearRect(selection.x + 1, selection.y + 1, selection.width - 2, selection.height - 2);
 
                 if ((selection.width > 20) && (selection.height > 20)) {
-                    ctx.fillStyle = strokeColour;
-
                     // top-left handle
                     ctx.beginPath();
                     ctx.arc(selection.x, selection.y, 8, 0, 0.5 * Math.PI);
                     ctx.lineTo(selection.x, selection.y);
                     ctx.fill();
-                    ctx.stroke();
 
                     // top-right handle
                     ctx.beginPath();
                     ctx.arc(selection.x + selection.width, selection.y, 8, 0.5 * Math.PI, Math.PI);
                     ctx.lineTo(selection.x + selection.width, selection.y);
                     ctx.fill();
-                    ctx.stroke();
 
                     // bottom-left handle
                     ctx.beginPath();
                     ctx.arc(selection.x + selection.width, selection.y + selection.height, 8, Math.PI, 1.5 * Math.PI);
                     ctx.lineTo(selection.x + selection.width, selection.y + selection.height);
                     ctx.fill();
-                    ctx.stroke();
 
                     // bottom-right handle
                     ctx.beginPath();
                     ctx.arc(selection.x, selection.y + selection.height, 8, 1.5 * Math.PI, 2 * Math.PI);
                     ctx.lineTo(selection.x, selection.y + selection.height);
                     ctx.fill();
-                    ctx.stroke();
 
                     // top-center handle
                     ctx.beginPath();
                     ctx.arc(selection.x + selection.width / 2, selection.y, 5, 0, Math.PI);
                     ctx.fill();
-                    ctx.stroke();
 
                     // right-center handle
                     ctx.beginPath();
                     ctx.arc(selection.x + selection.width, selection.y + selection.height / 2, 5, 0.5 * Math.PI, 1.5 * Math.PI);
                     ctx.fill();
-                    ctx.stroke();
 
                     // bottom-center handle
                     ctx.beginPath();
                     ctx.arc(selection.x + selection.width / 2, selection.y + selection.height, 5, Math.PI, 2 * Math.PI);
                     ctx.fill();
-                    ctx.stroke();
 
                     // left-center handle
                     ctx.beginPath();
                     ctx.arc(selection.x, selection.y + selection.height / 2, 5, 1.5 * Math.PI, 0.5 * Math.PI);
                     ctx.fill();
-                    ctx.stroke();
                 }
+            } else {
+                midHelpText.visible = true;
+                bottomHelpText.visible = false;
+            }
+        }
+
+        Rectangle {
+            id: midHelpText;
+            objectName: "midHelpText";
+
+            height: midHelpTextElement.height + 40;
+            width: midHelpTextElement.width + 40;
+            radius: 10;
+            border.width: 2;
+            border.color: Qt.rgba(0, 0, 0, 1);
+            color: Qt.rgba(1, 1, 1, 0.85);
+
+            anchors.centerIn: parent;
+
+            Text {
+                id: midHelpTextElement;
+                text: i18n("Click anywhere on the screen (including here) to start drawing a selection rectangle, or press Esc to quit");
+                font.pointSize: 12;
+
+                anchors.centerIn: parent;
+            }
+        }
+
+        Rectangle {
+            id: bottomHelpText;
+            objectName: "bottomHelpText";
+
+            height: bottomHelpTextElement.height + 16;
+            width: bottomHelpTextElement.width + 24;
+            border.width: 1;
+            border.color: Qt.rgba(0, 0, 0, 1);
+            color: Qt.rgba(1, 1, 1, 0.85);
+
+            anchors.bottom: parent.bottom;
+            anchors.horizontalCenter: parent.horizontalCenter;
+
+            Text {
+                id: bottomHelpTextElement;
+                text: i18n("To take the screenshot, double-click or press Enter. Right-click to reset the selection, or press Esc to quit");
+                font.pointSize: 9;
+
+                anchors.centerIn: parent;
             }
         }
     }
@@ -149,6 +210,7 @@ Item {
         property int starty: 0;
 
         cursorShape: Qt.CrossCursor;
+        acceptedButtons: Qt.LeftButton | Qt.RightButton;
 
         onPressed: {
             if (selection) {
@@ -173,6 +235,13 @@ Item {
             selection.height = Math.abs(starty - mouse.y);
 
             cropDisplayCanvas.requestPaint();
+        }
+
+        onClicked: {
+            if ((mouse.button == Qt.RightButton) && (selection)) {
+                selection.destroy();
+                cropDisplayCanvas.requestPaint();
+            }
         }
     }
 

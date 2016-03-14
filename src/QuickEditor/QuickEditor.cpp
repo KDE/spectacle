@@ -95,13 +95,15 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     SpectacleConfig *config = SpectacleConfig::instance();
     if (config->rememberLastRectangularRegion()) {
         QRect cropRegion = config->cropRegion();
-        QMetaObject::invokeMethod(
-            rootItem, "setInitialSelection",
-            Q_ARG(QVariant, cropRegion.x()),
-            Q_ARG(QVariant, cropRegion.y()),
-            Q_ARG(QVariant, cropRegion.width()),
-            Q_ARG(QVariant, cropRegion.height())
-        );
+        if (!cropRegion.isEmpty()) {
+            QMetaObject::invokeMethod(
+                rootItem, "setInitialSelection",
+                Q_ARG(QVariant, cropRegion.x()),
+                Q_ARG(QVariant, cropRegion.y()),
+                Q_ARG(QVariant, cropRegion.width()),
+                Q_ARG(QVariant, cropRegion.height())
+            );
+        }
     }
 
     if (config->useLightRegionMaskColour()) {
@@ -123,6 +125,12 @@ QuickEditor::~QuickEditor()
 void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
 {
     Q_D(QuickEditor);
+
+    if ((x == -1) && (y == -1) && (width == -1) && (height == -1)) {
+        SpectacleConfig::instance()->setCropRegion(QRect());
+        emit grabCancelled();
+        return;
+    }
 
     d->mGrabRect = QRect(x, y, width, height);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
