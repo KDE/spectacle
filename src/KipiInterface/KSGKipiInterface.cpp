@@ -88,11 +88,6 @@ KIPI::FileReadWriteLock *KSGKipiInterface::createReadWriteLock(const QUrl &url) 
     return NULL;
 }
 
-KIPI::RawProcessor *KSGKipiInterface::createRawProcessor() const
-{
-    return NULL;
-}
-
 KIPI::MetadataProcessor *KSGKipiInterface::createMetadataProcessor() const
 {
     return NULL;

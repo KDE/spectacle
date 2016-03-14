@@ -48,7 +48,6 @@ class KSGKipiInterface : public KIPI::Interface
     void refreshImages(const QList<QUrl> &urls) Q_DECL_OVERRIDE;
 
     KIPI::FileReadWriteLock *createReadWriteLock(const QUrl &url) const Q_DECL_OVERRIDE;
-    KIPI::RawProcessor *createRawProcessor() const Q_DECL_OVERRIDE;
     KIPI::MetadataProcessor *createMetadataProcessor() const Q_DECL_OVERRIDE;
 
     KIPI::ImageCollection currentAlbum() Q_DECL_OVERRIDE;
