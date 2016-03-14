@@ -22,7 +22,7 @@
 #include <QSize>
 #include <QPixmap>
 #include <QSharedPointer>
-#include <QDebug>
+#include <QMetaObject>
 
 #include <QQuickImageProvider>
 #include <QQuickItem>
@@ -32,6 +32,8 @@
 
 #include <KLocalizedString>
 #include <KDeclarative/KDeclarative>
+
+#include "SpectacleConfig.h"
 
 struct QuickEditor::ImageStore : public QQuickImageProvider
 {
@@ -85,9 +87,27 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     d->mQuickView->showFullScreen();
 
     // connect up the signals
-    QObject *rootItem = qobject_cast<QObject *>(d->mQuickView->rootObject());
+    QQuickItem *rootItem = d->mQuickView->rootObject();
     connect(rootItem, SIGNAL(acceptImage(int, int, int, int)), this, SLOT(acceptImageHandler(int, int, int, int)));
     connect(rootItem, SIGNAL(cancelImage()), this, SIGNAL(grabCancelled()));
+
+    // set up initial config
+    SpectacleConfig *config = SpectacleConfig::instance();
+    if (config->rememberLastRectangularRegion()) {
+        QRect cropRegion = config->cropRegion();
+        QMetaObject::invokeMethod(
+            rootItem, "setInitialSelection",
+            Q_ARG(QVariant, cropRegion.x()),
+            Q_ARG(QVariant, cropRegion.y()),
+            Q_ARG(QVariant, cropRegion.width()),
+            Q_ARG(QVariant, cropRegion.height())
+        );
+    }
+
+    if (config->useLightRegionMaskColour()) {
+        rootItem->setProperty("maskColour", QColor(255, 255, 255, 192));
+        rootItem->setProperty("strokeColour", QColor(96, 96, 96, 255));
+    }
 }
 
 QuickEditor::~QuickEditor()
@@ -103,7 +123,9 @@ QuickEditor::~QuickEditor()
 void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
 {
     Q_D(QuickEditor);
+
     d->mGrabRect = QRect(x, y, width, height);
+    SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
 
     QQuickItem *target = d->mQuickView->rootObject()->findChild<QQuickItem *>(QStringLiteral("imageBackground"));
     d->mCurrentGrabResult = target->grabToImage();

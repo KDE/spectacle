@@ -25,6 +25,23 @@ Item {
     objectName: "editorRoot";
 
     property var selection: undefined;
+    property color maskColour: Qt.rgba(0, 0, 0, 0.75);
+    property color strokeColour: Qt.rgba(0, 0, 0, 1);
+
+    function setInitialSelection(xx, yy, ww, hh) {
+        if (selection) {
+            selection.destroy();
+        }
+
+        selection = cropRectangle.createObject(parent, {
+             "x": xx,
+             "y": yy,
+             "height": hh,
+             "width": ww
+        });
+
+        cropDisplayCanvas.requestPaint();
+    }
 
     signal acceptImage(int x, int y, int width, int height);
     signal cancelImage();
@@ -55,8 +72,8 @@ Item {
             ctx.clearRect(0, 0, cropDisplayCanvas.width, cropDisplayCanvas.height);
 
             // set up the colours
-            ctx.strokeStyle = Qt.rgba(0, 0, 0, 1);
-            ctx.fillStyle = Qt.rgba(0, 0, 0, 0.75);
+            ctx.strokeStyle = strokeColour;
+            ctx.fillStyle = maskColour;
 
             // draw a sheet over the whole screen
             ctx.fillRect(0, 0, cropDisplayCanvas.width, cropDisplayCanvas.height);
@@ -67,7 +84,7 @@ Item {
                 ctx.strokeRect(selection.x, selection.y, selection.width, selection.height);
 
                 if ((selection.width > 20) && (selection.height > 20)) {
-                    ctx.fillStyle = Qt.rgba(0, 0, 0, 1);
+                    ctx.fillStyle = strokeColour;
 
                     // top-left handle
                     ctx.beginPath();
