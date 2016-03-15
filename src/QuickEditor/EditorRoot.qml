@@ -28,7 +28,7 @@ Item {
 
     property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.75);
-    property color strokeColour: Qt.rgba(0, 0, 0, 1);
+    property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
 
     function setInitialSelection(xx, yy, ww, hh) {
         if (selection) {
