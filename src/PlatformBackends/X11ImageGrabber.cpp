@@ -125,7 +125,7 @@ void X11ImageGrabber::doOnClickGrab()
             QByteArrayLiteral("cross-reverse")
         };
 
-        for (auto cursorName: cursorNames) {
+        Q_FOREACH (const QByteArray &cursorName, cursorNames) {
             xcb_cursor_t cursor = xcb_cursor_load_cursor(xcbCursorCtx, cursorName.constData());
             if (cursor != XCB_CURSOR_NONE) {
                 xcbCursor = cursor;

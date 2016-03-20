@@ -138,7 +138,7 @@ void ExportMenu::getKipiItems()
 
     KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
 
-    for (auto pluginInfo: pluginList) {
+    Q_FOREACH (const auto &pluginInfo, pluginList) {
         if (!(pluginInfo->shouldLoad())) {
             continue;
         }
@@ -154,7 +154,7 @@ void ExportMenu::getKipiItems()
         QList<QAction *> actions = plugin->actions();
         QSet<QAction *> exportActions;
 
-        for (auto action: actions) {
+        Q_FOREACH (auto action, actions) {
             KIPI::Category category = plugin->category(action);
             if (category == KIPI::ExportPlugin) {
                 exportActions += action;
@@ -163,7 +163,7 @@ void ExportMenu::getKipiItems()
             }
         }
 
-        for (auto action: exportActions) {
+        Q_FOREACH (auto action, exportActions) {
             mKipiMenu->addAction(action);
         }
     }
