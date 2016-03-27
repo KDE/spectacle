@@ -73,8 +73,8 @@ Item {
         source: "image://snapshot/rawimage";
         cache: false;
 
-        height: Screen.height;
-        width: Screen.width;
+        height: Window.height;
+        width: Window.width;
         fillMode: Image.PreserveAspectFit;
     }
 
