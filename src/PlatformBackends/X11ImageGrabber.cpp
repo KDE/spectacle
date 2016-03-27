@@ -185,18 +185,9 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
     case 24:
         format = QImage::Format_RGB32;
         break;
-    case 30: {
-        // Qt doesn't have a matching image format. We need to convert manually
-        quint32 *pixels = reinterpret_cast<quint32 *>(xcbImage->data);
-        for (uint i = 0; i < (xcbImage->size / 4); i++) {
-            int r = (pixels[i] >> 22) & 0xff;
-            int g = (pixels[i] >> 12) & 0xff;
-            int b = (pixels[i] >>  2) & 0xff;
-
-            pixels[i] = qRgba(r, g, b, 0xff);
-        }
-        // fall through, Qt format is still Format_ARGB32_Premultiplied
-    }
+    case 30:
+        format = QImage::Format_BGR30;
+        break;
     case 32:
         format = QImage::Format_ARGB32_Premultiplied;
         break;
