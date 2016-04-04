@@ -222,10 +222,13 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     // of the screen we're grabbing, and see if the cursor is actually visible in
     // the region
 
-    QPoint cursorPos = QCursor::pos();
-    QRect screenRect(x, y, width, height);
+    const qreal dpr = pixmap.devicePixelRatio();
 
-    if (!(screenRect.contains(cursorPos))) {
+    // cursor position operates on application's device pixel ratio, not the pixmap!
+    QPoint cursorPos = QCursor::pos() / dpr * qApp->devicePixelRatio();
+    QRect screenRect(x / dpr, y / dpr, width / dpr, height / dpr);
+
+    if (!screenRect.contains(cursorPos)) {
         return pixmap;
     }
 
@@ -247,14 +250,15 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     // process the image into a QImage
 
     QImage cursorImage = QImage((quint8 *)pixelData, cursorReply->width, cursorReply->height, QImage::Format_ARGB32_Premultiplied);
+    cursorImage.setDevicePixelRatio(dpr);
 
     // a small fix for the cursor position for fancier cursors
 
-    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot);
+    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot) / dpr;
 
     // now we translate the cursor point to our screen rectangle
 
-    cursorPos -= QPoint(x, y);
+    cursorPos -= QPoint(x, y) / dpr;
 
     // and do the painting
 
