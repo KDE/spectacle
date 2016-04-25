@@ -138,23 +138,6 @@ void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
     d->mGrabRect = QRect(x, y, width, height);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
 
-    QQuickItem *target = d->mQuickView->rootObject()->findChild<QQuickItem *>(QStringLiteral("imageBackground"));
-    d->mCurrentGrabResult = target->grabToImage();
-    if (d->mCurrentGrabResult.isNull()) {
-        emit grabCancelled();
-        return;
-    }
-
-    connect(d->mCurrentGrabResult.data(), &QQuickItemGrabResult::ready, this, &QuickEditor::grabReadyHandler);
-}
-
-void QuickEditor::grabReadyHandler()
-{
-    Q_D(QuickEditor);
-
-    QImage croppedImage = d->mCurrentGrabResult->image().copy(d->mGrabRect);
-    QPixmap croppedPixmap = QPixmap::fromImage(croppedImage);
-
     d->mQuickView->hide();
-    emit grabDone(croppedPixmap, d->mGrabRect);
+    emit grabDone(mImageStore->mPixmap.copy(d->mGrabRect), d->mGrabRect);
 }
