@@ -36,10 +36,10 @@ Item {
         }
 
         selection = cropRectangle.createObject(parent, {
-             "x": xx,
-             "y": yy,
+             "x":      xx,
+             "y":      yy,
              "height": hh,
-             "width": ww
+             "width":  ww
         });
 
         cropDisplayCanvas.requestPaint();
@@ -73,8 +73,8 @@ Item {
         source: "image://snapshot/rawimage";
         cache: false;
 
-        height: Window.height;
-        width: Window.width;
+        height: Window.height / Screen.devicePixelRatio;
+        width: Window.width / Screen.devicePixelRatio;
         fillMode: Image.PreserveAspectFit;
     }
 
