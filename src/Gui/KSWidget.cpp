@@ -69,9 +69,10 @@ KSWidget::KSWidget(QWidget *parent) :
     mDelayMsec->setSingleStep(1.0);
     mDelayMsec->setMinimum(0.0);
     mDelayMsec->setMaximum(999.9);
-    mDelayMsec->setSuffix(i18n(" seconds"));
+    mDelayMsec->setSpecialValueText(i18n("No Delay"));
     mDelayMsec->setMinimumWidth(160);
-    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged), configManager, &SpectacleConfig::setCaptureDelay);
+    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
+            configManager, &SpectacleConfig::setCaptureDelay);
 
     mCaptureOnClick = new QCheckBox(this);
     mCaptureOnClick->setText(i18n("On Click"));

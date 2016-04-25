@@ -18,11 +18,16 @@
  */
 
 #include <QtMath>
+#include <KLocalizedString>
+
 #include "SmartSpinBox.h"
 
 SmartSpinBox::SmartSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent)
-{}
+{
+    connect(this, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
+            this, &SmartSpinBox::suffixChangeHandler);
+}
 
 QString SmartSpinBox::textFromValue(double val) const
 {
@@ -30,4 +35,13 @@ QString SmartSpinBox::textFromValue(double val) const
         return QWidget::locale().toString(qint64(val));
     }
     return QWidget::locale().toString(val, 'f', decimals());
+}
+
+void SmartSpinBox::suffixChangeHandler(double val)
+{
+    if (val <= 1.0) {
+        setSuffix(i18n(" second"));
+    } else {
+        setSuffix(i18n(" seconds"));
+    }
 }
