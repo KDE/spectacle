@@ -39,7 +39,6 @@ class QuickEditor : public QObject
     private slots:
 
     void acceptImageHandler(int x, int y, int width, int height);
-    void grabReadyHandler();
 
     private:
 
