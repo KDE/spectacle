@@ -60,6 +60,31 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     dsLayout->addLayout(dsCLayout);
     mainLayout->addWidget(dsGroup, 1);
 
+    // copy save path to clipboard
+
+    QGroupBox *cpGroup = new QGroupBox(i18n("Copy Save Location to Clipboard"));
+    QVBoxLayout *cpLayout = new QVBoxLayout;
+    cpGroup->setLayout(cpLayout);
+    cpGroup->setStyleSheet(QStringLiteral("QGroupBox { font-weight: bold; }"));
+
+    QLabel *cpHelpText = new QLabel;
+    cpHelpText->setWordWrap(true);
+    cpHelpText->setText(i18n("When a screenshot is saved, copy the location at which the file was saved "
+                             "to the clipboard. You can then paste it anywhere that accepts text input. "
+                             "Note that you must be running a clipboard manager in order to keep the path "
+                             "in the clipboard after Spectacle quits."));
+    cpLayout->addWidget(cpHelpText);
+
+    mCopyPathToClipboard = new QCheckBox;
+    mCopyPathToClipboard->setText(i18n("Copy save location to the clipboard"));
+    connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+
+    QVBoxLayout *cpCLayout = new QVBoxLayout;
+    cpCLayout->setContentsMargins(15, 10, 0, 10);
+    cpCLayout->addWidget(mCopyPathToClipboard);
+    cpLayout->addLayout(cpCLayout);
+    mainLayout->addWidget(cpGroup, 1);
+
     // use a light background for the rectangular region grabber
 
     QGroupBox *lbGroup = new QGroupBox(i18n("Light Background For Rectangular Region"));
@@ -131,6 +156,7 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setUseDynamicSaveButton(mUseLastSaveAction->checkState() == Qt::Checked);
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
+    cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
 
     mChangesMade = false;
 }
@@ -142,6 +168,7 @@ void GeneralOptionsPage::resetChanges()
     mUseLastSaveAction->setChecked(cfgManager->useDynamicSaveButton());
     mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
     mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
+    mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
 
     mChangesMade = false;
 }

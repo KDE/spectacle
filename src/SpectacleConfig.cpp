@@ -222,3 +222,16 @@ void SpectacleConfig::setAutoSaveLocation(const QString &location)
     mGeneralConfig.writePathEntry(QStringLiteral("default-save-location"), location);
     mGeneralConfig.sync();
 }
+
+// copy save location to clipboard
+
+bool SpectacleConfig::copySaveLocationToClipboard() const
+{
+    return mGeneralConfig.readEntry(QStringLiteral("copySaveLocation"), false);
+}
+
+void SpectacleConfig::setCopySaveLocationToClipboard(bool enabled)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("copySaveLocation"), enabled);
+    mGeneralConfig.sync();
+}

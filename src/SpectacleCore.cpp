@@ -18,6 +18,7 @@
  */
 
 #include "SpectacleCore.h"
+#include "SpectacleConfig.h"
 
 #include <KRun>
 
@@ -63,9 +64,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
-    connect(mExportManager, &ExportManager::imageSaved, [&](const QUrl &savedAt) {
-        emit imageSaved(savedAt.toLocalFile());
-    });
+    connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doCopyPath);
 
     switch (startMode) {
     case DBusMode:
@@ -238,6 +237,13 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
     connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
 
     notify->sendEvent();
+}
+
+void SpectacleCore::doCopyPath(const QUrl &savedAt)
+{
+    if (SpectacleConfig::instance()->copySaveLocationToClipboard()) {
+        qApp->clipboard()->setText(savedAt.toLocalFile());
+    }
 }
 
 void SpectacleCore::doStartDragAndDrop()

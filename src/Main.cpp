@@ -31,6 +31,7 @@
 
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
+#include "ExportManager.h"
 #include "Config.h"
 
 int main(int argc, char **argv)
@@ -150,8 +151,10 @@ int main(int argc, char **argv)
     new KDBusService(KDBusService::Multiple, &core);
 
     SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&core);
-    QObject::connect(&core, &SpectacleCore::imageSaved, dbusAdapter, &SpectacleDBusAdapter::ScreenshotTaken);
     QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, [&](const QUrl savedAt) {
+        emit dbusAdapter->ScreenshotTaken(savedAt.toLocalFile());
+    });
 
     QDBusConnection::sessionBus().registerObject("/", &core);
     QDBusConnection::sessionBus().registerService("org.kde.Spectacle");

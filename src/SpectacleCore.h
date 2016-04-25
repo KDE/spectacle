@@ -98,7 +98,6 @@ class SpectacleCore : public QObject
     void filenameChanged(QString filename);
     void grabModeChanged(ImageGrabber::GrabMode mode);
     void grabFailed();
-    void imageSaved(const QString &savedAt);
 
     public slots:
 
@@ -109,6 +108,7 @@ class SpectacleCore : public QObject
     void dbusStartAgent();
     void doStartDragAndDrop();
     void doNotify(const QUrl &savedAt);
+    void doCopyPath(const QUrl &savedAt);
 
     private:
 
