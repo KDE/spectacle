@@ -65,6 +65,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
     connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doCopyPath);
+    connect(mExportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
 
     switch (startMode) {
     case DBusMode:
@@ -231,7 +232,6 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);
-
         QTimer::singleShot(250, this, &SpectacleCore::allDone);
     });
     connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
