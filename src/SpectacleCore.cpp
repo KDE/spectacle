@@ -20,7 +20,25 @@
 #include "SpectacleCore.h"
 #include "SpectacleConfig.h"
 
+#include <QDir>
+#include <QTimer>
+#include <QDebug>
+#include <QMimeData>
+#include <QDrag>
+
+#include <KMessageBox>
+#include <KNotification>
+#include <KWindowSystem>
+#include <KLocalizedString>
 #include <KRun>
+#include <KConfigGroup>
+#include <KSharedConfig>
+
+#include "Config.h"
+#include "PlatformBackends/DummyImageGrabber.h"
+#ifdef XCB_FOUND
+#include "PlatformBackends/X11ImageGrabber.h"
+#endif
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
