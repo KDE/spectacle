@@ -20,6 +20,7 @@
 #include "SpectacleCore.h"
 #include "SpectacleConfig.h"
 
+#include <QClipboard>
 #include <QDir>
 #include <QTimer>
 #include <QDebug>
