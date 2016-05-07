@@ -84,6 +84,9 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
 
     d->mQuickView = new QQuickView(d->mQmlEngine, 0);
     d->mQuickView->setSource(QUrl("qrc:///QuickEditor/EditorRoot.qml"));
+
+    d->mQuickView->setFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::Tool);
+    d->mQuickView->setGeometry(0, 0, pixmap.width(), pixmap.height());
     d->mQuickView->showFullScreen();
 
     // connect up the signals
@@ -135,23 +138,6 @@ void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
     d->mGrabRect = QRect(x, y, width, height);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
 
-    QQuickItem *target = d->mQuickView->rootObject()->findChild<QQuickItem *>(QStringLiteral("imageBackground"));
-    d->mCurrentGrabResult = target->grabToImage();
-    if (d->mCurrentGrabResult.isNull()) {
-        emit grabCancelled();
-        return;
-    }
-
-    connect(d->mCurrentGrabResult.data(), &QQuickItemGrabResult::ready, this, &QuickEditor::grabReadyHandler);
-}
-
-void QuickEditor::grabReadyHandler()
-{
-    Q_D(QuickEditor);
-
-    QImage croppedImage = d->mCurrentGrabResult->image().copy(d->mGrabRect);
-    QPixmap croppedPixmap = QPixmap::fromImage(croppedImage);
-
     d->mQuickView->hide();
-    emit grabDone(croppedPixmap, d->mGrabRect);
+    emit grabDone(mImageStore->mPixmap.copy(d->mGrabRect), d->mGrabRect);
 }

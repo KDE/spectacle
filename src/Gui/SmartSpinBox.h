@@ -30,6 +30,10 @@ class SmartSpinBox : public QDoubleSpinBox
 
     explicit SmartSpinBox(QWidget *parent = 0);
     QString textFromValue(double val) const Q_DECL_OVERRIDE;
+
+    private slots:
+
+    void suffixChangeHandler(double val);
 };
 
 #endif // SMARTSPINBOX_H

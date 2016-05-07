@@ -18,8 +18,28 @@
  */
 
 #include "SpectacleCore.h"
+#include "SpectacleConfig.h"
 
+#include <QClipboard>
+#include <QDir>
+#include <QTimer>
+#include <QDebug>
+#include <QMimeData>
+#include <QDrag>
+
+#include <KMessageBox>
+#include <KNotification>
+#include <KWindowSystem>
+#include <KLocalizedString>
 #include <KRun>
+#include <KConfigGroup>
+#include <KSharedConfig>
+
+#include "Config.h"
+#include "PlatformBackends/DummyImageGrabber.h"
+#ifdef XCB_FOUND
+#include "PlatformBackends/X11ImageGrabber.h"
+#endif
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
@@ -63,9 +83,8 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
-    connect(mExportManager, &ExportManager::imageSaved, [&](const QUrl &savedAt) {
-        emit imageSaved(savedAt.toLocalFile());
-    });
+    connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doCopyPath);
+    connect(mExportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
 
     switch (startMode) {
     case DBusMode:
@@ -232,12 +251,18 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);
-
         QTimer::singleShot(250, this, &SpectacleCore::allDone);
     });
     connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
 
     notify->sendEvent();
+}
+
+void SpectacleCore::doCopyPath(const QUrl &savedAt)
+{
+    if (SpectacleConfig::instance()->copySaveLocationToClipboard()) {
+        qApp->clipboard()->setText(savedAt.toLocalFile());
+    }
 }
 
 void SpectacleCore::doStartDragAndDrop()

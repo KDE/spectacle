@@ -20,52 +20,11 @@
 #ifndef KSCORE_H
 #define KSCORE_H
 
-#include <QUrl>
-#include <QFile>
-#include <QTemporaryFile>
-#include <QString>
-#include <QStringList>
-#include <QByteArray>
-#include <QDateTime>
-#include <QImageWriter>
-#include <QMimeDatabase>
-#include <QMimeType>
-#include <QStandardPaths>
-#include <QFileDialog>
-#include <QPrinter>
-#include <QPainter>
-#include <QRect>
-#include <QIcon>
-#include <QDir>
-#include <QDrag>
-#include <QMimeData>
-#include <QClipboard>
-#include <QTimer>
-#include <QMetaObject>
-#include <QDebug>
-
-#include <KLocalizedString>
-#include <KJob>
-#include <KRun>
-#include <KService>
-#include <KConfigGroup>
-#include <KSharedConfig>
-#include <KWindowSystem>
-#include <KMessageBox>
-#include <KNotification>
-#include <KIO/FileCopyJob>
-#include <KIO/StatJob>
-
-#include "Config.h"
+#include <QObject>
 
 #include "ExportManager.h"
-#include "PlatformBackends/ImageGrabber.h"
-#include "PlatformBackends/DummyImageGrabber.h"
-#ifdef XCB_FOUND
-#include "PlatformBackends/X11ImageGrabber.h"
-#endif
-
 #include "Gui/KSMainWindow.h"
+#include "PlatformBackends/ImageGrabber.h"
 
 class SpectacleCore : public QObject
 {
@@ -98,7 +57,6 @@ class SpectacleCore : public QObject
     void filenameChanged(QString filename);
     void grabModeChanged(ImageGrabber::GrabMode mode);
     void grabFailed();
-    void imageSaved(const QString &savedAt);
 
     public slots:
 
@@ -109,6 +67,7 @@ class SpectacleCore : public QObject
     void dbusStartAgent();
     void doStartDragAndDrop();
     void doNotify(const QUrl &savedAt);
+    void doCopyPath(const QUrl &savedAt);
 
     private:
 

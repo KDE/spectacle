@@ -282,7 +282,7 @@ bool ExportManager::isFileExists(const QUrl &url)
 
 // save slots
 
-void ExportManager::doSave(const QUrl &url)
+void ExportManager::doSave(const QUrl &url, bool notify)
 {
     if (mSavePixmap.isNull()) {
         emit errorMessage(i18n("Cannot save an empty screenshot image."));
@@ -296,6 +296,9 @@ void ExportManager::doSave(const QUrl &url)
         setSaveLocation(dir.absolutePath());
 
         emit imageSaved(savePath);
+        if (notify) {
+            emit forceNotify(savePath);
+        }
     }
 }
 

@@ -125,7 +125,7 @@ void X11ImageGrabber::doOnClickGrab()
             QByteArrayLiteral("cross-reverse")
         };
 
-        for (auto cursorName: cursorNames) {
+        Q_FOREACH (const QByteArray &cursorName, cursorNames) {
             xcb_cursor_t cursor = xcb_cursor_load_cursor(xcbCursorCtx, cursorName.constData());
             if (cursor != XCB_CURSOR_NONE) {
                 xcbCursor = cursor;
@@ -185,18 +185,9 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
     case 24:
         format = QImage::Format_RGB32;
         break;
-    case 30: {
-        // Qt doesn't have a matching image format. We need to convert manually
-        quint32 *pixels = reinterpret_cast<quint32 *>(xcbImage->data);
-        for (uint i = 0; i < (xcbImage->size / 4); i++) {
-            int r = (pixels[i] >> 22) & 0xff;
-            int g = (pixels[i] >> 12) & 0xff;
-            int b = (pixels[i] >>  2) & 0xff;
-
-            pixels[i] = qRgba(r, g, b, 0xff);
-        }
-        // fall through, Qt format is still Format_ARGB32_Premultiplied
-    }
+    case 30:
+        format = QImage::Format_BGR30;
+        break;
     case 32:
         format = QImage::Format_ARGB32_Premultiplied;
         break;
@@ -231,10 +222,13 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     // of the screen we're grabbing, and see if the cursor is actually visible in
     // the region
 
-    QPoint cursorPos = QCursor::pos();
-    QRect screenRect(x, y, width, height);
+    const qreal dpr = pixmap.devicePixelRatio();
 
-    if (!(screenRect.contains(cursorPos))) {
+    // cursor position operates on application's device pixel ratio, not the pixmap!
+    QPoint cursorPos = QCursor::pos() / dpr * qApp->devicePixelRatio();
+    QRect screenRect(x / dpr, y / dpr, width / dpr, height / dpr);
+
+    if (!screenRect.contains(cursorPos)) {
         return pixmap;
     }
 
@@ -256,14 +250,15 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     // process the image into a QImage
 
     QImage cursorImage = QImage((quint8 *)pixelData, cursorReply->width, cursorReply->height, QImage::Format_ARGB32_Premultiplied);
+    cursorImage.setDevicePixelRatio(dpr);
 
     // a small fix for the cursor position for fancier cursors
 
-    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot);
+    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot) / dpr;
 
     // now we translate the cursor point to our screen rectangle
 
-    cursorPos -= QPoint(x, y);
+    cursorPos -= QPoint(x, y) / dpr;
 
     // and do the painting
 

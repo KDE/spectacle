@@ -324,6 +324,7 @@ void KSMainWindow::saveAs()
 void KSMainWindow::saveAndExit()
 {
     SpectacleConfig::instance()->setLastUsedSaveMode(0);
-    ExportManager::instance()->doSave();
-    QApplication::quit();
+    qApp->setQuitOnLastWindowClosed(false);
+    ExportManager::instance()->doSave(QUrl(), true);
+    hide();
 }

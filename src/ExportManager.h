@@ -63,13 +63,14 @@ class ExportManager : public QObject
     void saveLocationChanged(const QString &location);
     void pixmapChanged(const QPixmap &pixmap);
     void imageSaved(const QUrl &savedAt);
+    void forceNotify(const QUrl &savedAt);
 
     public slots:
 
     QUrl getAutosaveFilename();
     QUrl tempSave(const QString &mimetype = "png");
 
-    void doSave(const QUrl &url = QUrl());
+    void doSave(const QUrl &url = QUrl(), bool notify = false);
     void doSaveAs(QWidget *parentWindow = 0);
     void doCopyToClipboard();
     void doPrint(QPrinter *printer);

@@ -91,6 +91,9 @@ class SpectacleConfig : public QObject
     QString autoSaveLocation() const;
     void setAutoSaveLocation(const QString &location);
 
+    bool copySaveLocationToClipboard() const;
+    void setCopySaveLocationToClipboard(bool enabled);
+
     private:
 
     KSharedConfigPtr mConfig;
