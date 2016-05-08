@@ -51,7 +51,10 @@ Item {
 
     Keys.onReturnPressed: {
         if (selection) {
-            acceptImage(selection.x, selection.y, selection.width, selection.height);
+            acceptImage(selection.x * Screen.devicePixelRatio,
+                        selection.y * Screen.devicePixelRatio,
+                        selection.width * Screen.devicePixelRatio,
+                        selection.height * Screen.devicePixelRatio);
         } else {
             acceptImage(-1, -1, -1, -1);
         }
@@ -253,7 +256,10 @@ Item {
             imageElement: imageBackground;
 
             onDoubleClicked: {
-                editorRoot.acceptImage(selection.x, selection.y, selection.width, selection.height);
+                editorRoot.acceptImage(selection.x * Screen.devicePixelRatio,
+                                       selection.y * Screen.devicePixelRatio,
+                                       selection.width * Screen.devicePixelRatio,
+                                       selection.height * Screen.devicePixelRatio);
             }
         }
     }
