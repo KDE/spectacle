@@ -34,7 +34,7 @@ Item {
         if (selection) {
             selection.destroy();
         }
-
+/*
         selection = cropRectangle.createObject(parent, {
              "x":      xx,
              "y":      yy,
@@ -42,7 +42,7 @@ Item {
              "width":  ww
         });
 
-        cropDisplayCanvas.requestPaint();
+        cropDisplayCanvas.requestPaint();*/
     }
 
     // key handlers
@@ -77,7 +77,7 @@ Item {
         width: Window.width / Screen.devicePixelRatio;
         fillMode: Image.PreserveAspectFit;
     }
-
+/*
     Canvas {
         id: cropDisplayCanvas;
         objectName: "cropDisplayCanvas";
@@ -256,5 +256,9 @@ Item {
                 editorRoot.acceptImage(selection.x, selection.y, selection.width, selection.height);
             }
         }
+    }
+*/
+    DrawSurface {
+        anchors.fill: imageBackground;
     }
 }
