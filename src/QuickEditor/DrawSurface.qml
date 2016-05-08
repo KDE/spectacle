@@ -18,7 +18,6 @@
  */
 
 import QtQuick 2.5
-
 import "Shapes/Shapes.Rectangle.js" as SRectangle
 
 Item {
@@ -44,7 +43,11 @@ Item {
 
     // convenience functions
     function deleteSelectedShape() {
-
+        if (mCurrentSelection != null) {
+            mDrawQueue.splice(mCurrentSelection, 1);
+            mCurrentSelection = null;
+            drawSurfaceCanvas.requestPaint();
+        }
     }
 
     Component.onCompleted: {

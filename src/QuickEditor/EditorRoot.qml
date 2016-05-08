@@ -26,23 +26,20 @@ Item {
 
     // properties and setters
 
-    property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.75);
     property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
 
     function setInitialSelection(xx, yy, ww, hh) {
-        if (selection) {
-            selection.destroy();
-        }
-/*
-        selection = cropRectangle.createObject(parent, {
-             "x":      xx,
-             "y":      yy,
-             "height": hh,
-             "width":  ww
-        });
+        cropSurface.setInitialSelection(xx, yy, ww, hh);
+    }
 
-        cropDisplayCanvas.requestPaint();*/
+    function grabImage() {
+        var xx = cropSurface.getSelectionX() * Screen.devicePixelRatio;
+        var yy = cropSurface.getSelectionY() * Screen.devicePixelRatio;
+        var ww = cropSurface.getSelectionW() * Screen.devicePixelRatio;
+        var hh = cropSurface.getSelectionH() * Screen.devicePixelRatio;
+
+        acceptImage(xx, yy, ww, hh);
     }
 
     // key handlers
@@ -50,21 +47,35 @@ Item {
     focus: true;
 
     Keys.onReturnPressed: {
-        if (selection) {
-            acceptImage(selection.x, selection.y, selection.width, selection.height);
-        } else {
-            acceptImage(-1, -1, -1, -1);
-        }
+        grabImage();
     }
 
     Keys.onEscapePressed: {
         cancelImage();
     }
 
+    Keys.onDeletePressed:  {
+        editorSurface.deleteSelectedShape();
+    }
+
     // signals
 
     signal acceptImage(int x, int y, int width, int height);
     signal cancelImage();
+
+    // states
+
+    /*state: "CropState";
+    states: [
+        State {
+            name: "CropState";
+            PropertyChanges {}
+        },
+        State {
+            name: "EditState";
+            PropertyChanges {}
+        },
+    ];*/
 
     Image {
         id: imageBackground;
@@ -259,6 +270,22 @@ Item {
     }
 */
     DrawSurface {
+        id: editorSurface;
+        objectName: "editorSurface";
         anchors.fill: imageBackground;
+    }
+
+    CropSurface {
+        id: cropSurface;
+        objectName: "cropSurface";
+        anchors.fill: imageBackground;
+
+        interactionActive: true;
+        maskColour: editorRoot.maskColour;
+        strokeColour: editorRoot.strokeColour;
+
+        onAcceptImage: {
+            grabImage();
+        }
     }
 }
