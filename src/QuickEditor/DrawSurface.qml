@@ -38,8 +38,8 @@ Item {
     property color mFillColor: Qt.rgba(1, 0, 0, 1);
     property int mLineWidth: 1;
 
-    // access to the canvas
-    property var drawCanvas: drawSurfaceCanvas;
+    // control properties
+    property bool interactionActive: false;
 
     // convenience functions
     function deleteSelectedShape() {
@@ -87,6 +87,7 @@ Item {
     MouseArea {
         id: drawSurfaceInteractionArea;
         objectName: "drawSurfaceInteractionArea";
+        enabled: interactionActive;
 
         anchors.fill: parent;
         cursorShape: Qt.CrossCursor;

@@ -19,8 +19,8 @@
 
 import QtQuick 2.5
 
-import "Shapes/ShapeContainer.Rectangle.js" as RectContainer;
-import "Shapes/Shape.CropRectangle.js" as CropRectangle;
+import "Shapes/ShapeContainer.Rectangle.js" as RectContainer
+import "Shapes/Shape.CropRectangle.js" as CropRectangle
 
 Item {
     id: cropSurface;
