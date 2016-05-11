@@ -15,7 +15,7 @@ GenericName[gl]=Utilidade para facer capturas de pantalla
 GenericName[it]=Accessorio per catturare schermate
 GenericName[ko]=화면 캡처 유틸리티
 GenericName[lt]=KDE ekranvaizdžių paveikslavimas
-GenericName[nl]=Hulpmiddel voor het maken van een schermafdruk
+GenericName[nl]=Hulpmiddel voor het vangen van een schermafdruk
 GenericName[nn]=Verktøy for å lagra skjermbilete
 GenericName[pl]=Narzędzie do przechwytywania ekranu
 GenericName[pt]=Utilitário de Captura de Imagens
@@ -28,7 +28,6 @@ GenericName[sv]=Verktyg för att ta skärmbilder
 GenericName[uk]=Програма для створення знімків екрана
 GenericName[x-test]=xxScreenshot Capture Utilityxx
 GenericName[zh_CN]=屏幕截图工具
-GenericName[zh_TW]=畫面擷取工具
 Name=Spectacle
 Name[ast]=Spectacle
 Name[ca]=Spectacle
@@ -55,8 +54,8 @@ Name[sv]=Spectacle
 Name[uk]=Spectacle
 Name[x-test]=xxSpectaclexx
 Name[zh_CN]=Spectacle
-Name[zh_TW]=Spectacle
 Categories=Qt;KDE;Utility;
+MimeType=
 Exec=spectacle
 Icon=spectacle
 Type=Application
@@ -92,7 +91,6 @@ Name[sv]=Ta en bild av hela skrivbordet
 Name[uk]=Захопити зображення усієї стільниці
 Name[x-test]=xxCapture Entire Desktopxx
 Name[zh_CN]=捕获整个桌面
-Name[zh_TW]=擷取整個桌面
 Exec=spectacle -f
 
 [Desktop Action CurrentMonitorScreenShot]
@@ -121,7 +119,6 @@ Name[sv]=Ta en bild av aktuell bildskärm
 Name[uk]=Захопити зображення на моніторі
 Name[x-test]=xxCapture Current Monitorxx
 Name[zh_CN]=捕获当前屏幕
-Name[zh_TW]=擷取目前螢幕
 Exec=spectacle -m
 
 [Desktop Action ActiveWindowScreenShot]
@@ -150,7 +147,6 @@ Name[sv]=Ta en bild av aktivt fönster
 Name[uk]=Захопити зображення активного вікна
 Name[x-test]=xxCapture Active Windowxx
 Name[zh_CN]=捕获活动窗口
-Name[zh_TW]=擷取作用中的視窗
 Exec=spectacle -a
 
 [Desktop Action RectangularRegionScreenShot]
@@ -179,5 +175,4 @@ Name[sv]=Ta en bild av ett rektangulärt område
 Name[uk]=Захопити прямокутну область екрана
 Name[x-test]=xxCapture Rectangular Regionxx
 Name[zh_CN]=捕获矩形区域
-Name[zh_TW]=擷取矩形區域
 Exec=spectacle -r
