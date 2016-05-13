@@ -20,6 +20,7 @@
 #include "KSMainWindow.h"
 #include "Config.h"
 
+#include <QDesktopServices>
 #include <QJsonArray>
 #include <QPrintDialog>
 #include <QShortcut>
@@ -151,6 +152,9 @@ void KSMainWindow::init()
 
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
+
+    // message widget
+    connect(mMessageWidget, &KMessageWidget::linkActivated, &QDesktopServices::openUrl);
 
     // layouts
 
