@@ -135,7 +135,8 @@ void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
         return;
     }
 
-    d->mGrabRect = QRect(x, y, width, height);
+    auto pixelRatio = d->mQuickView->devicePixelRatio();
+    d->mGrabRect = QRect(x * pixelRatio, y * pixelRatio, width * pixelRatio, height * pixelRatio);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
 
     d->mQuickView->hide();
