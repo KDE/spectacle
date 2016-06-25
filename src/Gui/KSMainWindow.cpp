@@ -154,7 +154,7 @@ void KSMainWindow::init()
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
 
     // message widget
-    connect(mMessageWidget, &KMessageWidget::linkActivated, &QDesktopServices::openUrl);
+    connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) { QDesktopServices::openUrl(QUrl(str)); } );
 
     // layouts
 
