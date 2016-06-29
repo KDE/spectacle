@@ -14,3 +14,8 @@ install(
     FILES spectacle.khotkeys
     DESTINATION ${DATA_INSTALL_DIR}/khotkeys
 )
+
+install(
+    FILES org.kde.spectacle.appdata.xml
+    DESTINATION ${KDE_INSTALL_METAINFODIR}
+)
