@@ -45,17 +45,20 @@ Item {
         cropDisplayCanvas.requestPaint();
     }
 
-    // key handlers
-
-    focus: true;
-
-    Keys.onReturnPressed: {
+    function accept() {
         if (selection) {
             acceptImage(selection.x, selection.y, selection.width, selection.height);
         } else {
             acceptImage(-1, -1, -1, -1);
         }
     }
+
+    // key handlers
+
+    focus: true;
+
+    Keys.onReturnPressed: accept()
+    Keys.onEnterPressed: accept()
 
     Keys.onEscapePressed: {
         cancelImage();
@@ -252,9 +255,7 @@ Item {
             drawCanvas: cropDisplayCanvas;
             imageElement: imageBackground;
 
-            onDoubleClicked: {
-                editorRoot.acceptImage(selection.x, selection.y, selection.width, selection.height);
-            }
+            onDoubleClicked: editorRoot.accept()
         }
     }
 }
