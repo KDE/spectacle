@@ -21,6 +21,7 @@
 #define QUICKEDITOR_H
 
 #include <QObject>
+#include <QVariant>
 
 class QuickEditor : public QObject
 {
@@ -38,15 +39,18 @@ class QuickEditor : public QObject
 
     private slots:
 
-    void acceptImageHandler(int x, int y, int width, int height);
+    void acceptImageHandler(int x, int y, int width, int height,
+                            QVariant canvasdata, int canvaswidth, int canvasheight);
 
     private:
+
+    static QImage imageFromCanvasData(QList<QVariant> data, int width, int height);
 
     struct ImageStore;
     ImageStore *mImageStore;
 
     struct QuickEditorPrivate;
-    Q_DECLARE_PRIVATE(QuickEditor);
+    Q_DECLARE_PRIVATE(QuickEditor)
     QuickEditorPrivate *d_ptr;
 };
 

@@ -50,6 +50,16 @@ Item {
         }
     }
 
+    // get image data from draw canvas
+    function getImageData() {
+        mCurrentSelection = null;
+        mCurrentDrawing = null;
+        drawSurfaceCanvas.requestPaint();
+
+        var ctx = drawSurfaceCanvas.getContext("2d");
+        return ctx.getImageData(0, 0, drawSurfaceCanvas.width, drawSurfaceCanvas.height);
+    }
+
     Component.onCompleted: {
         mCurrentTool = SRectangle;
     }

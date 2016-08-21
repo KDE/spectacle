@@ -39,7 +39,9 @@ Item {
         var ww = cropSurface.getSelectionW() * Screen.devicePixelRatio;
         var hh = cropSurface.getSelectionH() * Screen.devicePixelRatio;
 
-        acceptImage(xx, yy, ww, hh);
+        var drawn = editorSurface.getImageData();
+        var imgdata = Array.prototype.slice.call(drawn.data);
+        acceptImage(xx, yy, ww, hh, imgdata, drawn.width, drawn.height);
     }
 
     // key handlers
@@ -64,7 +66,7 @@ Item {
 
     // signals
 
-    signal acceptImage(int x, int y, int width, int height);
+    signal acceptImage(int x, int y, int width, int height, var canvasimg, int cw, int ch);
     signal cancelImage();
 
     // states

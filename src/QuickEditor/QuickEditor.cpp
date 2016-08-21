@@ -21,12 +21,13 @@
 
 #include <QSize>
 #include <QPixmap>
+#include <QImage>
+#include <QPainter>
 #include <QSharedPointer>
 #include <QMetaObject>
 
 #include <QQuickImageProvider>
 #include <QQuickItem>
-#include <QQuickItemGrabResult>
 #include <QQuickView>
 #include <QQmlEngine>
 
@@ -91,7 +92,8 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
 
     // connect up the signals
     QQuickItem *rootItem = d->mQuickView->rootObject();
-    connect(rootItem, SIGNAL(acceptImage(int, int, int, int)), this, SLOT(acceptImageHandler(int, int, int, int)));
+    connect(rootItem, SIGNAL(acceptImage(int, int, int, int, QVariant, int, int)),
+            this, SLOT(acceptImageHandler(int, int, int, int, QVariant, int, int)));
     connect(rootItem, SIGNAL(cancelImage()), this, SIGNAL(grabCancelled()));
 
     // set up initial config
@@ -125,7 +127,8 @@ QuickEditor::~QuickEditor()
     delete d_ptr;
 }
 
-void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
+void QuickEditor::acceptImageHandler(int x, int y, int width, int height,
+                                     QVariant canvasdata, int canvaswidth, int canvasheight)
 {
     Q_D(QuickEditor);
 
@@ -135,9 +138,32 @@ void QuickEditor::acceptImageHandler(int x, int y, int width, int height)
         return;
     }
 
+    QImage canvasImg = imageFromCanvasData(canvasdata.toList(), canvaswidth, canvasheight);
+
     d->mGrabRect = QRect(x, y, width, height);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
 
     d->mQuickView->hide();
-    emit grabDone(mImageStore->mPixmap.copy(d->mGrabRect), d->mGrabRect);
+    //emit grabDone(mImageStore->mPixmap.copy(d->mGrabRect), d->mGrabRect);
+
+    QImage surface(mImageStore->mPixmap.size(), QImage::Format_ARGB32_Premultiplied);
+    {
+        QPainter painter(&surface);
+        painter.eraseRect(0, 0, mImageStore->mPixmap.width(), mImageStore->mPixmap.height());
+        painter.drawImage(QPoint(0, 0), mImageStore->mPixmap.toImage());
+        painter.drawImage(QPoint(0,0), canvasImg);
+    }
+    emit grabDone(QPixmap::fromImage(surface).copy(d->mGrabRect), d->mGrabRect);
+}
+
+QImage QuickEditor::imageFromCanvasData(QList<QVariant> data, int width, int height)
+{
+    QByteArray imgBuf;
+    {
+        QDataStream writer(&imgBuf, QIODevice::WriteOnly);
+        Q_FOREACH(auto item, data) {
+            writer << item.value<quint8>();
+        }
+    }
+    return QImage((quint8*)imgBuf.constData(), width, height, QImage::Format_RGBA8888).copy(0, 0, width, height);
 }
