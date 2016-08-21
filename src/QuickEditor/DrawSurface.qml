@@ -40,6 +40,10 @@ Item {
 
     // control properties
     property bool interactionActive: false;
+    property bool captureActive: false;
+
+    // control signal
+    signal canvasCaptured(var imageData);
 
     // convenience functions
     function deleteSelectedShape() {
@@ -51,13 +55,11 @@ Item {
     }
 
     // get image data from draw canvas
-    function getImageData() {
+    function captureCanvasImage() {
         mCurrentSelection = null;
         mCurrentDrawing = null;
+        captureActive = true;
         drawSurfaceCanvas.requestPaint();
-
-        var ctx = drawSurfaceCanvas.getContext("2d");
-        return ctx.getImageData(0, 0, drawSurfaceCanvas.width, drawSurfaceCanvas.height);
     }
 
     Component.onCompleted: {
@@ -87,6 +89,11 @@ Item {
 
             if (mCurrentSelection != null) {
                 mDrawQueue[mCurrentSelection].drawHandles(ctx);
+            }
+
+            if (captureActive) {
+                canvasCaptured(ctx.getImageData(0, 0, drawSurfaceCanvas.width, drawSurfaceCanvas.height));
+                captureActive = false;
             }
         }
     }

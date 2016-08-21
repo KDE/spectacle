@@ -33,13 +33,15 @@ Item {
         cropSurface.setInitialSelection(xx, yy, ww, hh);
     }
 
-    function grabImage() {
+    function grabImageStart() {
+        editorSurface.captureCanvasImage();
+    }
+
+    function grabImageDone(drawn) {
         var xx = cropSurface.getSelectionX() * Screen.devicePixelRatio;
         var yy = cropSurface.getSelectionY() * Screen.devicePixelRatio;
         var ww = cropSurface.getSelectionW() * Screen.devicePixelRatio;
         var hh = cropSurface.getSelectionH() * Screen.devicePixelRatio;
-
-        var drawn = editorSurface.getImageData();
         var imgdata = Array.prototype.slice.call(drawn.data);
         acceptImage(xx, yy, ww, hh, imgdata, drawn.width, drawn.height);
     }
@@ -49,11 +51,11 @@ Item {
     focus: true;
 
     Keys.onReturnPressed: {
-        grabImage();
+        grabImageStart();
     }
 
     Keys.onEnterPressed: {
-        grabImage();
+        grabImageStart();
     }
 
     Keys.onEscapePressed: {
@@ -105,6 +107,9 @@ Item {
         anchors.fill: imageBackground;
 
         interactionActive: false;
+        onCanvasCaptured: {
+            grabImageDone(imageData);
+        }
     }
 
     CropSurface {
@@ -117,7 +122,7 @@ Item {
         strokeColour: editorRoot.strokeColour;
 
         onAcceptImage: {
-            grabImage();
+            grabImageStart();
         }
     }
 
