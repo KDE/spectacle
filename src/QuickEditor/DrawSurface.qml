@@ -52,8 +52,6 @@ Item {
 
     Component.onCompleted: {
         mCurrentTool = SRectangle;
-        //mDrawQueue.push(new SRectangle.Shape(20, 20, 150, 150, "black", "blue"));
-        //mDrawQueue.push(new SRectangle.Shape(600, 500, 150, 150, "black", "blue"));
     }
 
     // the draw canvas

@@ -153,13 +153,13 @@ Item {
                 }
                 cropSurfaceCanvas.requestPaint();
             } else {
-                if (mSelection.withinShapeBounds(mouse.x, mouse.y) || (mSelection.withinHandleBounds(mouse.x, mouse.y) >= 0)) {
+                if (mSelection && (mSelection.withinShapeBounds(mouse.x, mouse.y)
+                    || (mSelection.withinHandleBounds(mouse.x, mouse.y) >= 0))) {
                     cursorShape = Qt.OpenHandCursor;
                 } else {
                     cursorShape = Qt.CrossCursor;
                 }
             }
-
         }
 
         onReleased: {

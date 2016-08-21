@@ -50,6 +50,10 @@ Item {
         grabImage();
     }
 
+    Keys.onEnterPressed: {
+        grabImage();
+    }
+
     Keys.onEscapePressed: {
         cancelImage();
     }
@@ -78,6 +82,8 @@ Item {
         }
     ]
     state: "CropState";
+
+    // surfaces
 
     Image {
         id: imageBackground;
@@ -112,6 +118,8 @@ Item {
             grabImage();
         }
     }
+
+    // manipulation and controls
 
     ControlBar {
         id: toolSelector;
