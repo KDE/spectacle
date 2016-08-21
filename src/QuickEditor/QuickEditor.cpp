@@ -138,14 +138,11 @@ void QuickEditor::acceptImageHandler(int x, int y, int width, int height,
         return;
     }
 
-    QImage canvasImg = imageFromCanvasData(canvasdata.toList(), canvaswidth, canvasheight);
-
     d->mGrabRect = QRect(x, y, width, height);
     SpectacleConfig::instance()->setCropRegion(d->mGrabRect);
-
     d->mQuickView->hide();
-    //emit grabDone(mImageStore->mPixmap.copy(d->mGrabRect), d->mGrabRect);
 
+    QImage canvasImg = imageFromCanvasData(canvasdata.toList(), canvaswidth, canvasheight);
     QImage surface(mImageStore->mPixmap.size(), QImage::Format_ARGB32_Premultiplied);
     {
         QPainter painter(&surface);
