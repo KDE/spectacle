@@ -96,7 +96,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     mMousePointer = new QCheckBox(this);
     mMousePointer->setText(i18n("Include mouse pointer"));
-    mMousePointer->setToolTip(i18n("Show the mouse cursor in the screeenshot image"));
+    mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
     connect(mMousePointer, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludePointerChecked);
 
     mWindowDecorations = new QCheckBox(this);
