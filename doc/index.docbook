@@ -31,8 +31,8 @@
 
 		<legalnotice>&FDLNotice;</legalnotice>
 
-		<date>2015-10-17</date>
-		<releaseinfo>Applications 15.12</releaseinfo>
+		<date>2016-09-18</date>
+		<releaseinfo>Applications 16.12</releaseinfo>
 
 		<abstract>
 			<para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -66,15 +66,15 @@
 				<para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
 			</listitem>
 			<listitem>
-                <para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul"><keycap>Meta</keycap><keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default save directory without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default save directory without showing the GUI.</para>
+                <para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul"><keycap>Meta</keycap><keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default save folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default save folder without showing the GUI.</para>
 
-                <para>You can configure the default save location and filename by starting &spectacle; normally, clicking the downward arrow beside the <guibutton>Save &amp; Exit</guibutton> button, and selecting <guimenuitem>Configure Save Options</guimenuitem> from the menu.</para>
+                <para>You can configure the default save location and filename by starting &spectacle; normally, clicking the downward arrow beside the <guibutton>Save &amp; Exit</guibutton> button, and selecting <guimenuitem>Preferences</guimenuitem> from the menu.</para>
 			</listitem>
 			<listitem>
 				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &spectacle;.</para>
 			</listitem>
 			<listitem>
-				<para> &spectacle; can be started from the command-line. &spectacle; has an extensive set of command-line options, including a background mode which can be used to script the capture of screenshots without showing the GUI or requiring user interaction.</para>
+				<para> &spectacle; can be started from the command-line. &spectacle; has an extensive set of command-line options, including a background mode which can be used to script the capture of screenshots without showing the &GUI; or requiring user interaction.</para>
 
 				<para>To start &spectacle; from the command prompt, type in:</para>
 				<screen width="40">
@@ -136,9 +136,9 @@
 						<para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
 					</listitem>
 					<listitem>
-						<para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a pop-up menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
+						<para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a popup menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
 
-						<para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the pop-up menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Content Options</guilabel></para>
+						<para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the popup menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Content Options</guilabel></para>
 					</listitem>
 					<listitem>
 						<para>The <guilabel>Rectangular Region</guilabel> option allows you to select a rectangular region of your desktop with your mouse. This region may be spread across different outputs.</para>
@@ -147,7 +147,7 @@
 					</listitem>
 				</itemizedlist>
 
-				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 0.1 seconds, or 100 milliseconds.</para>
+				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 1 seconds using the spinbox buttons or to 0.1 seconds using the keyboard.</para>
 
 				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &spectacle; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
 			</sect2>
@@ -155,7 +155,7 @@
 			<sect2>
 				<title>Content Options</title>
 
-				<para>The content options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &spectacle; shall only capture the image of the current pop-up menu under the cursor, or also include the parent window.</para>
+				<para>The content options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &spectacle; shall only capture the image of the current popup menu under the cursor, or also include the parent window.</para>
 
 				<itemizedlist>
 					<listitem>
@@ -165,7 +165,7 @@
 						<para>The <guilabel>Include window titlebar and borders</guilabel> option is only enabled when either the <guilabel>Active Window</guilabel> mode or the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option includes the window borders and decoration in the screenshot, while unchecking it gives an image of only the window contents.</para>
 					</listitem>
 					<listitem>
-						<para>The <guilabel>Capture the current pop-up only</guilabel> option is only enabled when the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option captures only the pop-up menu under the cursor, without its parent window.</para>
+						<para>The <guilabel>Capture the current pop-up only</guilabel> option is only enabled when the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option captures only the popup menu under the cursor, without its parent window.</para>
 					</listitem>
 				</itemizedlist>
 			</sect2>
@@ -184,15 +184,15 @@
 				<varlistentry>
 					<term><guibutton>Help</guibutton></term>
 					<listitem>
-						<para>This button gives you a menu where you can open the <guimenuitem>&spectacle; Handbook</guimenuitem>, report a bug, switch the language for &spectacle; or get some more information <guimenuitem>About &spectacle;</guimenuitem> and <guimenuitem>About &kde;</guimenuitem>.</para>
+                                            <para>This button gives you the common menu items described in the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guibutton>Open With...</guibutton></term>
+					<term><guibutton>Export Image...</guibutton></term>
 					<listitem>
-						<para>This drop-down menu will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) MIME type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
+						<para>This drop-down menu will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) &MIME; type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
 
-						<para>Furthermore, if you have the <application>KIPI Plugins</application> installed, you will be able to e-mail your screenshots and export them directly to some social networks and websites.</para>
+						<para>Furthermore, if you have the <application>KIPI Plugins</application> installed, you will be able to email your screenshots and export them directly to some social networks and websites.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -204,9 +204,9 @@
 				<varlistentry>
 					<term><guibutton>Save &amp; Exit</guibutton></term>
 					<listitem>
-						<para>Clicking this button saves the screenshot as a PNG image in your default Pictures directory and immediately exits the application.</para>
+						<para>Clicking this button saves the screenshot as a PNG image in your default Pictures folder and immediately exits the application.</para>
 
-						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default save options, such as where to save the image by default and what filename to save it as.</para>
+						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default preferences, such as where to save the image by default and what filename to save it as.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -219,8 +219,41 @@
 		</sect1>
 
 		<sect1>
+			<title>Configure Options</title>
+			<sect2>
+			<title>Application Preferences</title>
+			<variablelist>
+				<varlistentry>
+					<term>Set save button action to last used save method</term>
+					<listitem>
+                                            <para>The default behavior of the dynamic save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to change the save button to either <guibutton>Save</guibutton>, <guibutton>Save As</guibutton> or <guibutton>Save &amp; Exit</guibutton>, according to the save action you perform, every time you save an image.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Copy Save Location to Clipboard</term>
+					<listitem>
+						<para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
+                                                    text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Use light background color</term>
+					<listitem>
+						<para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Remember Rectangular Region</term>
+					<listitem>
+						<para>By default, &spectacle; does not show an initial selection when you take a screenshot of a rectangular region. Enable this option to remember the
+                                                    last selected region of the screen, and set it as the initial selection when you use the rectangular region selector the next time.</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+			</sect2>
+			<sect2>
 			<title>Configure Save Options</title>
-			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &spectacle; saves the image with a default filename, in your Pictures folder under your home directory. The default filename includes the date and time when the image was taken.</para>
+			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &spectacle; saves the image with a default filename, in your Pictures folder under your home folder. The default filename includes the date and time when the image was taken.</para>
 
 			<para>The <guilabel>Configure Save Options</guilabel> option allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
 				<mediaobject>
@@ -232,6 +265,7 @@
 					</textobject>
 				</mediaobject>
 			The dialog box includes appropriate help text on how to configure the save options.</para>
+			</sect2>
 		</sect1>
 
 		<sect1>
