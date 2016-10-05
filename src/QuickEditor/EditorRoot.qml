@@ -29,6 +29,9 @@ Item {
     property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.75);
     property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
+    SystemPalette {
+        id: systemPalette;
+    }
 
     function setInitialSelection(xx, yy, ww, hh) {
         if (selection) {
@@ -155,10 +158,43 @@ Item {
                     ctx.arc(selection.x, selection.y + selection.height / 2, 5, 1.5 * Math.PI, 0.5 * Math.PI);
                     ctx.fill();
                 }
+
+                // Set the selection size and finds the most appropriate position:
+                // - vertically centered inside the selection if the box is not covering the a large part of selection
+                // - on top of the selection if the selection x position fits the box height plus some margin
+                // - at the bottom otherwise
+                // Note that text is drawn starting from the left bottom!
+                var selectionText = selection.width + "x" + selection.height;
+                selectionTextMetrics.font = ctx.font;
+                selectionTextMetrics.text = selectionText;
+                var selectionTextRect = selectionTextMetrics.boundingRect;
+                var selectionBoxX = Math.max(0, selection.x + (selection.width - selectionTextRect.width) / 2);
+                var selectionBoxY;
+                if ((selection.width > 100) && (selection.height > 100)) {
+                    // show inside the box
+                    selectionBoxY = selection.y + (selection.height + selectionTextRect.height) / 2;
+                } else if (selection.y >= selectionTextRect.height + 8) {
+                    // show on top
+                    selectionBoxY = selection.y - 8;
+                } else {
+                    // show at the bottom
+                    selectionBoxY = selection.y + selection.height + selectionTextRect.height + 4;
+                }
+                // Now do the actual box, border and text drawing
+                ctx.fillStyle = systemPalette.window;
+                ctx.strokeStyle = systemPalette.windowText;
+                ctx.fillRect(selectionBoxX - 4, selectionBoxY - selectionTextRect.height - 2, selectionTextRect.width + 10, selectionTextRect.height + 8);
+                ctx.strokeRect(selectionBoxX - 4, selectionBoxY - selectionTextRect.height - 2, selectionTextRect.width + 10, selectionTextRect.height + 8);
+                ctx.fillStyle = systemPalette.windowText;
+                ctx.fillText(selectionText, selectionBoxX, selectionBoxY);
             } else {
                 midHelpText.visible = true;
                 bottomHelpText.visible = false;
             }
+        }
+
+        TextMetrics {
+            id: selectionTextMetrics
         }
 
         Rectangle {
