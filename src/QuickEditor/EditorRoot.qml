@@ -106,7 +106,8 @@ Item {
 
             if (selection) {
                 midHelpText.visible = false;
-                bottomHelpText.visible = true;
+                // display bottom help text only if it does not intersect with the selection
+                bottomHelpText.visible = (selection.y + selection.height < bottomHelpText.y) || (selection.x > bottomHelpText.x + bottomHelpText.width) || (selection.x + selection.width < bottomHelpText.x);
 
                 // if we have a selection polygon, cut it out
                 ctx.fillStyle = strokeColour;
