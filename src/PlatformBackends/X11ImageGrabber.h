@@ -95,4 +95,11 @@ class X11ImageGrabber : public ImageGrabber
 
 template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPodDeleter>;
 
+struct ScopedPointerXcbImageDeleter
+{
+    static inline void cleanup(xcb_image_t *xcbImage) {
+        xcb_image_destroy(xcbImage);
+    }
+};
+
 #endif // X11IMAGEGRABBER_H

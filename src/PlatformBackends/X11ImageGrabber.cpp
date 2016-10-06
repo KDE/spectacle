@@ -217,9 +217,9 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
         image.setColor(1, QColor(Qt::black).rgb());
     }
 
-    // done
-
-    return QPixmap::fromImage(image);
+    // Image is ready. Since the backing data from xcbImage could be freed
+    // before the QPixmap goes away, a deep copy is necessary.
+    return QPixmap::fromImage(image).copy();
 }
 
 // utility functions
@@ -290,7 +290,7 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
 
     // then proceed to get an image
 
-    CScopedPointer<xcb_image_t> xcbImage(
+    QScopedPointer<xcb_image_t, ScopedPointerXcbImageDeleter> xcbImage(
         xcb_image_get(
             xcbConn,
             window,
