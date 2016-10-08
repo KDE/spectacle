@@ -28,11 +28,6 @@
 #include "ImageGrabber.h"
 
 class X11ImageGrabber;
-namespace KScreen
-{
-    class GetConfigOperation;
-    class ConfigOperation;
-}
 
 class OnClickEventFilter : public QAbstractNativeEventFilter
 {
@@ -70,7 +65,6 @@ class X11ImageGrabber : public ImageGrabber
     private slots:
 
     void KWinDBusScreenshotHelper(quint64 window);
-    void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
     void rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region);
     void rectangleSelectionCancelled();
 
@@ -90,7 +84,6 @@ class X11ImageGrabber : public ImageGrabber
     QPixmap              convertFromNative(xcb_image_t *xcbImage);
 
     OnClickEventFilter          *mNativeEventFilter;
-    KScreen::GetConfigOperation *mScreenConfigOperation;
 };
 
 template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPodDeleter>;

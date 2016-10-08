@@ -38,17 +38,13 @@
 
 #include <KWindowSystem>
 #include <KWindowInfo>
-#include <KScreen/Config>
-#include <KScreen/GetConfigOperation>
-#include <KScreen/Output>
 
 #include <xcb/xcb_cursor.h>
 #include <xcb/xcb_util.h>
 #include <xcb/xfixes.h>
 
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
-    ImageGrabber(parent),
-    mScreenConfigOperation(nullptr)
+    ImageGrabber(parent)
 {
     mNativeEventFilter = new OnClickEventFilter(this);
 }
@@ -85,7 +81,6 @@ bool OnClickEventFilter::nativeEventFilter(const QByteArray &eventType, void *me
 
             {
                 xcb_button_release_event_t *ev2 = static_cast<xcb_button_release_event_t *>(message);
-                qDebug() << ev2->detail;
                 if (ev2->detail == 1) {
                     QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
                 } else if (ev2->detail < 4) {
@@ -349,53 +344,6 @@ void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 window)
     emit pixmapChanged(mPixmap);
 }
 
-void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op)
-{
-    KScreen::ConfigPtr config = qobject_cast<KScreen::GetConfigOperation *>(op)->config();
-
-    if (!config)           { return grabFullScreen(); }
-    if (!config->screen()) { return grabFullScreen(); }
-
-    // we'll store the cursor position first
-
-    QPoint cursorPosition = QCursor::pos();
-
-    // next, we'll get all our outputs and figure out which one has the cursor
-
-    const KScreen::OutputList outputs = config->outputs();
-    for (auto output: outputs) {
-        if (!(output->isConnected())) { continue; }
-        if (!(output->currentMode())) { continue; }
-
-        QPoint screenPosition = output->pos();
-        QSize  screenSize     = output->currentMode()->size();
-        QRect  screenRect     = QRect(screenPosition, screenSize);
-
-        if (!(screenRect.contains(cursorPosition))) {
-            continue;
-        }
-
-        // bingo, we've found an output that contains the cursor. Now
-        // to take a shot
-
-        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
-        mPixmap = mPixmap.copy(screenPosition.x(), screenPosition.y(), screenSize.width(), screenSize.height());
-        emit pixmapChanged(mPixmap);
-
-        mScreenConfigOperation->disconnect();
-        mScreenConfigOperation->deleteLater();
-        mScreenConfigOperation = nullptr;
-
-        return;
-    }
-
-    mScreenConfigOperation->disconnect();
-    mScreenConfigOperation->deleteLater();
-    mScreenConfigOperation = nullptr;
-
-    return grabFullScreen();
-}
-
 void X11ImageGrabber::rectangleSelectionCancelled()
 {
     QObject *sender = QObject::sender();
@@ -621,9 +569,20 @@ QRect X11ImageGrabber::getApplicationWindowGeometry(xcb_window_t window)
 
 void X11ImageGrabber::grabCurrentScreen()
 {
-    mScreenConfigOperation = new KScreen::GetConfigOperation;
-    connect(mScreenConfigOperation, &KScreen::GetConfigOperation::finished,
-            this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
+    QPoint cursorPosition = QCursor::pos();
+    for (auto screen : QGuiApplication::screens()) {
+        const QRect screenRect = screen->geometry();
+        if (!screenRect.contains(cursorPosition)) {
+            continue;
+        }
+
+        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer).copy(screenRect);
+        emit pixmapChanged(mPixmap);
+        return;
+    }
+
+    // No screen found with our cursor, fallback to capturing full screen
+    grabFullScreen();
 }
 
 void X11ImageGrabber::grabRectangularRegion()

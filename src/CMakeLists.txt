@@ -83,7 +83,6 @@ if(XCB_FOUND)
             XCB::CURSOR
             XCB::UTIL
             Qt5::X11Extras
-            KF5::Screen
     )
 endif()
 
