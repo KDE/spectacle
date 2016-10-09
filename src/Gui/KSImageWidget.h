@@ -53,6 +53,8 @@ class KSImageWidget : public QLabel
 
     private:
 
+    void setScaledPixmap();
+
     QGraphicsDropShadowEffect *mDSEffect;
     QPixmap                    mPixmap;
     QPoint                     mDragStartPosition;

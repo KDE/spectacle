@@ -38,7 +38,12 @@ void KSImageWidget::setScreenshot(const QPixmap &pixmap)
 {
     mPixmap = pixmap;
     setToolTip(i18n("Image Size: %1x%2 pixels", mPixmap.width(), mPixmap.height()));
-    setPixmap(mPixmap.scaled(size() * pixmap.devicePixelRatio(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    setScaledPixmap();
+}
+
+void KSImageWidget::setScaledPixmap()
+{
+    setPixmap(mPixmap.scaled(size() * mPixmap.devicePixelRatio(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
 // drag handlers
@@ -77,6 +82,6 @@ void KSImageWidget::mouseMoveEvent(QMouseEvent *event)
 void KSImageWidget::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    setPixmap(mPixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    setScaledPixmap();
 }
 
