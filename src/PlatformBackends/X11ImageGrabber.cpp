@@ -195,6 +195,14 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
         return QPixmap(); // we don't know
     }
 
+    // The RGB32 format requires data format 0xffRRGGBB, ensure that this fourth byte really is 0xff
+    if (format == QImage::Format_RGB32) {
+        quint32 *data = reinterpret_cast<quint32 *>(xcbImage->data);
+        for (int i = 0; i < xcbImage->width * xcbImage->height; i++) {
+            data[i] |= 0xff000000;
+        }
+    }
+
     QImage image(xcbImage->data, xcbImage->width, xcbImage->height, format);
 
     if (image.isNull()) {
