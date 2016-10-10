@@ -275,46 +275,75 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     return blendedPixmap;
 }
 
-QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
+QPixmap X11ImageGrabber::getPixmapFromDrawable(xcb_drawable_t drawableId, const QRect &rect)
 {
     xcb_connection_t *xcbConn = QX11Info::connection();
 
-    // first get geometry information for our drawable
-
-    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
-    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
-
-    // then proceed to get an image
+    // proceed to get an image based on the geometry (in device pixels)
 
     QScopedPointer<xcb_image_t, ScopedPointerXcbImageDeleter> xcbImage(
         xcb_image_get(
             xcbConn,
-            window,
-            geomReply->x,
-            geomReply->y,
-            geomReply->width,
-            geomReply->height,
+            drawableId,
+            rect.x(),
+            rect.y(),
+            rect.width(),
+            rect.height(),
             ~0,
             XCB_IMAGE_FORMAT_Z_PIXMAP
         )
     );
 
-    // if the image is null, this means we need to get the root image window
-    // and run a crop
-
+    // too bad, the capture failed.
     if (xcbImage.isNull()) {
-        return getWindowPixmap(QX11Info::appRootWindow(), blendPointer)
-                .copy(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
+        return QPixmap();
     }
 
     // now process the image
 
     QPixmap nativePixmap = convertFromNative(xcbImage.data());
+    return nativePixmap;
+}
+
+// finalize the grabbed pixmap where we know the absolute position
+QPixmap X11ImageGrabber::postProcessPixmap(QPixmap pixmap, QRect rect, bool blendPointer)
+{
     if (!(blendPointer)) {
-        return nativePixmap;
+        // note: this may be the null pixmap if an error occurred.
+        return pixmap;
     }
 
-    // now we blend in a pointer image
+    return blendCursorImage(pixmap, rect.x(), rect.y(), rect.width(), rect.height());
+}
+
+QPixmap X11ImageGrabber::getToplevelPixmap(QRect rect, bool blendPointer)
+{
+    xcb_window_t rootWindow = QX11Info::appRootWindow();
+
+    // Treat a null rect as an alias for capturing fullscreen
+    if (!rect.isValid()) {
+        rect = getDrawableGeometry(rootWindow);
+    }
+
+    QPixmap nativePixmap = getPixmapFromDrawable(rootWindow, rect);
+    return postProcessPixmap(nativePixmap, rect, blendPointer);
+}
+
+QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
+{
+    xcb_connection_t *xcbConn = QX11Info::connection();
+
+    // first get geometry information for our window
+
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
+    QRect rect(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
+
+    // then proceed to get an image
+
+    QPixmap nativePixmap = getPixmapFromDrawable(window, rect);
+
+    // Translate window coordinates to global ones.
 
     xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
     CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
@@ -324,7 +353,16 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
     CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(
         xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
 
-    return blendCursorImage(nativePixmap, translateReply->dst_x,translateReply->dst_y, geomReply->width, geomReply->height);
+    // Adjust local to global coordinates.
+    rect.moveRight(rect.x() + translateReply->dst_x);
+    rect.moveTop(rect.y() + translateReply->dst_y);
+
+    // If the window capture failed, try to obtain one from the full screen.
+    if (nativePixmap.isNull()) {
+        return getToplevelPixmap(rect, blendPointer);
+    }
+
+    return postProcessPixmap(nativePixmap, rect, blendPointer);
 }
 
 bool X11ImageGrabber::isKWinAvailable()
@@ -339,10 +377,20 @@ bool X11ImageGrabber::isKWinAvailable()
     return false;
 }
 
-void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 window)
+void X11ImageGrabber::KWinDBusScreenshotHelper(quint64 pixmapId)
 {
-    mPixmap = getWindowPixmap((xcb_window_t)window, false);
-    emit pixmapChanged(mPixmap);
+    // obtain width and height and grab an image (x and y are always zero for pixmaps)
+    QRect rect = getDrawableGeometry((xcb_drawable_t)pixmapId);
+    mPixmap = getPixmapFromDrawable((xcb_drawable_t)pixmapId, rect);
+    if (!mPixmap.isNull()) {
+        emit pixmapChanged(mPixmap);
+        return;
+    }
+
+    // Cannot retrieve pixmap from KWin, just fallback to fullscreen capture. We
+    // could try to detect the original action (window under cursor or active
+    // window), but that is too complex for this edge case.
+    grabFullScreen();
 }
 
 void X11ImageGrabber::rectangleSelectionCancelled()
@@ -372,7 +420,7 @@ void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const Q
 
 void X11ImageGrabber::grabFullScreen()
 {
-    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
+    mPixmap = getToplevelPixmap(QRect(), mCapturePointer);
     emit pixmapChanged(mPixmap);
 }
 
@@ -382,7 +430,7 @@ void X11ImageGrabber::grabTransientWithParent()
 
     // grab the image early
 
-    mPixmap = getWindowPixmap(QX11Info::appRootWindow(), false);
+    mPixmap = getToplevelPixmap(QRect(), false);
 
     // now that we know we have a transient window, let's
     // find other possible transient windows and the app window itself.
@@ -543,7 +591,7 @@ void X11ImageGrabber::grabApplicationWindowHelper(xcb_window_t window)
     KWindowInfo info(window, NET::WMFrameExtents);
     if (info.valid()) {
         QRect frameGeom = info.frameGeometry();
-        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer).copy(frameGeom);
+        mPixmap = getToplevelPixmap(frameGeom, mCapturePointer);
     }
 
     // fallback is window without the frame
@@ -551,11 +599,11 @@ void X11ImageGrabber::grabApplicationWindowHelper(xcb_window_t window)
     emit pixmapChanged(mPixmap);
 }
 
-QRect X11ImageGrabber::getApplicationWindowGeometry(xcb_window_t window)
+QRect X11ImageGrabber::getDrawableGeometry(xcb_drawable_t drawable)
 {
     xcb_connection_t *xcbConn = QX11Info::connection();
 
-    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
+    xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, drawable);
     CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
 
     return QRect(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
@@ -570,7 +618,7 @@ void X11ImageGrabber::grabCurrentScreen()
             continue;
         }
 
-        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer).copy(screenRect);
+        mPixmap = getToplevelPixmap(screenRect, mCapturePointer);
         emit pixmapChanged(mPixmap);
         return;
     }
@@ -581,7 +629,7 @@ void X11ImageGrabber::grabCurrentScreen()
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    QuickEditor *editor = new QuickEditor(getWindowPixmap(QX11Info::appRootWindow(), false));
+    QuickEditor *editor = new QuickEditor(getToplevelPixmap(QRect(), false));
 
     connect(editor, &QuickEditor::grabDone, this, &X11ImageGrabber::rectangleSelectionConfirmed);
     connect(editor, &QuickEditor::grabCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);

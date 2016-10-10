@@ -77,7 +77,10 @@ class X11ImageGrabber : public ImageGrabber
     bool                 isKWinAvailable();
     xcb_window_t         getRealWindowUnderCursor();
     void                 grabApplicationWindowHelper(xcb_window_t window);
-    QRect                getApplicationWindowGeometry(xcb_window_t window);
+    QRect                getDrawableGeometry(xcb_drawable_t drawable);
+    QPixmap              postProcessPixmap(QPixmap pixmap, QRect rect, bool blendPointer);
+    QPixmap              getPixmapFromDrawable(xcb_drawable_t drawableId, const QRect &rect);
+    QPixmap              getToplevelPixmap(QRect rect, bool blendPointer);
     QPixmap              getWindowPixmap(xcb_window_t window, bool blendPointer);
     QPixmap              convertFromNative(xcb_image_t *xcbImage);
     xcb_window_t         getTransientWindowParent(xcb_window_t winId, QRect &outRect);
@@ -90,7 +93,9 @@ template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPod
 struct ScopedPointerXcbImageDeleter
 {
     static inline void cleanup(xcb_image_t *xcbImage) {
-        xcb_image_destroy(xcbImage);
+        if (xcbImage) {
+            xcb_image_destroy(xcbImage);
+        }
     }
 };
 
