@@ -315,7 +315,6 @@ void ExportManager::doSaveAs(QWidget *parentWindow)
 
     // construct the file name
     QFileDialog dialog(parentWindow);
-    dialog.setOption(QFileDialog::DontUseNativeDialog);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
     dialog.setDirectoryUrl(config->lastSaveAsLocation());
