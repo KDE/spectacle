@@ -78,10 +78,9 @@ class X11ImageGrabber : public ImageGrabber
     xcb_window_t         getRealWindowUnderCursor();
     void                 grabApplicationWindowHelper(xcb_window_t window);
     QRect                getApplicationWindowGeometry(xcb_window_t window);
-    QStack<xcb_window_t> findAllChildren(xcb_window_t window);
-    xcb_window_t         findParent(xcb_window_t window);
     QPixmap              getWindowPixmap(xcb_window_t window, bool blendPointer);
     QPixmap              convertFromNative(xcb_image_t *xcbImage);
+    xcb_window_t         getTransientWindowParent(xcb_window_t winId, QRect &outRect);
 
     OnClickEventFilter          *mNativeEventFilter;
 };

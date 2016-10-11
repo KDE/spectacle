@@ -35,6 +35,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsDropShadowEffect>
+#include <QSet>
 
 #include <KWindowSystem>
 #include <KWindowInfo>
@@ -379,51 +380,44 @@ void X11ImageGrabber::grabTransientWithParent()
 {
     xcb_window_t curWin = getRealWindowUnderCursor();
 
-    // do we have a top-level or a transient window?
-
-    KWindowInfo info(curWin, NET::WMName, NET::WM2TransientFor | NET::WM2WindowClass);
-    if (!(info.valid(true) && (info.transientFor() != XCB_WINDOW_NONE)) ||
-          info.windowClassClass().isEmpty() || info.windowClassName().isEmpty()) {
-        return grabWindowUnderCursor();
-    }
-
     // grab the image early
 
     mPixmap = getWindowPixmap(QX11Info::appRootWindow(), false);
 
     // now that we know we have a transient window, let's
-    // see if the parent has any other transient windows who's
-    // transient for the same app
+    // find other possible transient windows and the app window itself.
 
     QRegion clipRegion;
-    QStack<xcb_window_t> childrenStack = findAllChildren(findParent(curWin));
 
-    while (!(childrenStack.isEmpty())) {
-        xcb_window_t winId = childrenStack.pop();
-        KWindowInfo tempInfo(winId, 0, NET::WM2TransientFor);
+    QSet<xcb_window_t> transients;
+    xcb_window_t parentWinId = curWin;
+    do {
+        // find parent window and add the window to the visible region
+        xcb_window_t winId = parentWinId;
+        QRect winRect;
+        parentWinId = getTransientWindowParent(winId, winRect);
+        transients << winId;
+        clipRegion += winRect;
 
-        if (info.transientFor() == tempInfo.transientFor()) {
-            clipRegion += getApplicationWindowGeometry(winId);
-        }
-    }
+        // Continue walking only if this is a transient window (having a parent)
+    } while (parentWinId != XCB_WINDOW_NONE && !transients.contains(parentWinId));
 
-    // now we have a list of all the transient windows for the
-    // parent, time to find the parent
+
+    // All parents are known now, find other transient children.
+    // Assume that the lowest window is behind everything else, then if a new
+    // transient window is discovered, its children can then also be found.
 
     QList<WId> winList = KWindowSystem::stackingOrder();
-    for (int i = winList.size() - 1; i >= 0; i--) {
-        KWindowInfo tempInfo(winList[i], NET::WMGeometry | NET::WMFrameExtents, NET::WM2WindowClass);
+    for (auto winId : winList) {
+        QRect winRect;
+        xcb_window_t parentWinId = getTransientWindowParent(winId, winRect);
 
-        QString winClass(tempInfo.windowClassClass());
-        QString winName(tempInfo.windowClassName());
-
-        if (winClass.contains(info.name(), Qt::CaseInsensitive) || winName.contains(info.name(), Qt::CaseInsensitive)) {
-            if (mCaptureDecorations) {
-                clipRegion += tempInfo.frameGeometry();
-            } else {
-                clipRegion += tempInfo.geometry();
+        // if the parent should be displayed, then show the child too
+        if (transients.contains(parentWinId)) {
+            if (!transients.contains(winId)) {
+                transients << winId;
+                clipRegion += winRect;
             }
-            break;
         }
     }
 
@@ -644,29 +638,18 @@ xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
     return pointerReply->child;
 }
 
-QStack<xcb_window_t> X11ImageGrabber::findAllChildren(xcb_window_t window)
+
+// obtain the size of the given window, returning the window ID of the parent
+xcb_window_t X11ImageGrabber::getTransientWindowParent(xcb_window_t winId, QRect &outRect)
 {
-    QStack<xcb_window_t> winStack;
-    xcb_connection_t *xcbConn = QX11Info::connection();
+    NET::Properties properties = mCaptureDecorations ? NET::WMFrameExtents : NET::WMGeometry;
+    KWindowInfo winInfo(winId, properties, NET::WM2TransientFor);
 
-    xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, window);
-    CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
-    xcb_window_t *winChildren = xcb_query_tree_children(treeReply.data());
-    int winChildrenLength = xcb_query_tree_children_length(treeReply.data());
-
-    for (int i = winChildrenLength - 1; i >= 0; i--) {
-        winStack.push(winChildren[i]);
+    // add the current window to the image
+    if (mCaptureDecorations) {
+        outRect = winInfo.frameGeometry();
+    } else {
+        outRect = winInfo.geometry();
     }
-
-    return winStack;
-}
-
-xcb_window_t X11ImageGrabber::findParent(xcb_window_t window)
-{
-    xcb_connection_t *xcbConn = QX11Info::connection();
-
-    xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, window);
-    CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
-
-    return treeReply->parent;
+    return winInfo.transientFor();
 }
