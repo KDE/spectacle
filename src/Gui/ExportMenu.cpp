@@ -42,6 +42,7 @@
 ExportMenu::ExportMenu(QWidget *parent) :
     QMenu(parent),
 #ifdef PURPOSE_FOUND
+    mUpdatedImageAvailable(false),
     mPurposeMenu(new Purpose::Menu(this)),
 #endif
     mExportManager(ExportManager::instance())
@@ -68,17 +69,12 @@ void ExportMenu::populateMenu()
 }
 
 
-void ExportMenu::imageUpdated(const QString &dataUri)
+void ExportMenu::imageUpdated()
 {
 #ifdef PURPOSE_FOUND
-    mPurposeMenu->model()->setInputData(QJsonObject {
-        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
-        { QStringLiteral("urls"), QJsonArray({ dataUri }) }
-    });
-    mPurposeMenu->model()->setPluginType("Export");
-    mPurposeMenu->reload();
-#else
-    Q_UNUSED(dataUri);
+    // mark cached image as stale
+    mUpdatedImageAvailable = true;
+    mPurposeMenu->clear();
 #endif
 }
 
@@ -187,5 +183,26 @@ void ExportMenu::loadPurposeMenu()
             emit imageShared(false, output["url"].toString());
         }
     });
+
+    // update available options based on the latest picture
+    connect(mPurposeMenu, &QMenu::aboutToShow, this, &ExportMenu::loadPurposeItems);
+}
+
+void ExportMenu::loadPurposeItems()
+{
+    if (!mUpdatedImageAvailable) {
+        return;
+    }
+
+    // updated image available, we lazily load it now
+    QString dataUri = ExportManager::instance()->pixmapDataUri();
+    mUpdatedImageAvailable = false;
+
+    mPurposeMenu->model()->setInputData(QJsonObject {
+        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
+        { QStringLiteral("urls"), QJsonArray({ dataUri }) }
+    });
+    mPurposeMenu->model()->setPluginType("Export");
+    mPurposeMenu->reload();
 }
 #endif

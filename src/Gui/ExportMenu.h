@@ -41,7 +41,7 @@ class ExportMenu : public QMenu
     public:
 
     explicit ExportMenu(QWidget *parent = 0);
-    void imageUpdated(const QString &dataUri);
+    void imageUpdated();
 
     private slots:
 
@@ -67,7 +67,9 @@ class ExportMenu : public QMenu
 
 #ifdef PURPOSE_FOUND
     void loadPurposeMenu();
+    void loadPurposeItems();
 
+    bool mUpdatedImageAvailable;
     Purpose::Menu *mPurposeMenu;
 #endif
 

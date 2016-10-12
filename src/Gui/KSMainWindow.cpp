@@ -250,7 +250,7 @@ void KSMainWindow::captureScreenshot(ImageGrabber::GrabMode mode, int timeout, b
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 {
     mKSWidget->setScreenshotPixmap(pixmap);
-    mExportMenu->imageUpdated(ExportManager::instance()->pixmapDataUri());
+    mExportMenu->imageUpdated();
 
     setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
     setWindowModified(true);
