@@ -119,6 +119,7 @@ void ExportMenu::loadKipiItems()
 {
     if (!mKipiMenuLoaded) {
         QTimer::singleShot(500, this, &ExportMenu::getKipiItems);
+        mKipiMenuLoaded = true;
     }
 }
 
@@ -164,7 +165,10 @@ void ExportMenu::getKipiItems()
         }
     }
 
-    mKipiMenuLoaded = true;
+    // If there are no export actions, then perhaps the kipi-plugins package is not installed.
+    if (mKipiMenu->isEmpty()) {
+        mKipiMenu->addAction(i18n("No KIPI plugins available"))->setEnabled(false);
+    }
 }
 #endif
 
