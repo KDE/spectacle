@@ -43,7 +43,10 @@ void KSImageWidget::setScreenshot(const QPixmap &pixmap)
 
 void KSImageWidget::setScaledPixmap()
 {
-    setPixmap(mPixmap.scaled(size() * mPixmap.devicePixelRatio(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    const qreal scale = qApp->devicePixelRatio();
+    QPixmap scaledPixmap = mPixmap.scaled(size() * scale, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    scaledPixmap.setDevicePixelRatio(scale);
+    setPixmap(scaledPixmap);
 }
 
 // drag handlers

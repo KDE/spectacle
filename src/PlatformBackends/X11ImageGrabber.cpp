@@ -220,17 +220,13 @@ QPixmap X11ImageGrabber::convertFromNative(xcb_image_t *xcbImage)
 
 // utility functions
 
+// Note: x, y, width and height are measured in device pixels
 QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height)
 {
-    // first we get the cursor position, compute the co-ordinates of the region
-    // of the screen we're grabbing, and see if the cursor is actually visible in
-    // the region
+    // If the cursor position lies outside the area, do not bother drawing a cursor.
 
-    const qreal dpr = pixmap.devicePixelRatio();
-
-    // cursor position operates on application's device pixel ratio, not the pixmap!
-    QPoint cursorPos = QCursor::pos() / dpr * qApp->devicePixelRatio();
-    QRect screenRect(x / dpr, y / dpr, width / dpr, height / dpr);
+    QPoint cursorPos = getNativeCursorPosition();
+    QRect screenRect(x, y, width, height);
 
     if (!screenRect.contains(cursorPos)) {
         return pixmap;
@@ -254,15 +250,14 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     // process the image into a QImage
 
     QImage cursorImage = QImage((quint8 *)pixelData, cursorReply->width, cursorReply->height, QImage::Format_ARGB32_Premultiplied);
-    cursorImage.setDevicePixelRatio(dpr);
 
     // a small fix for the cursor position for fancier cursors
 
-    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot) / dpr;
+    cursorPos -= QPoint(cursorReply->xhot, cursorReply->yhot);
 
     // now we translate the cursor point to our screen rectangle
 
-    cursorPos -= QPoint(x, y) / dpr;
+    cursorPos -= QPoint(x, y);
 
     // and do the painting
 
@@ -434,7 +429,6 @@ void X11ImageGrabber::grabTransientWithParent()
 
     // now that we know we have a transient window, let's
     // find other possible transient windows and the app window itself.
-
     QRegion clipRegion;
 
     QSet<xcb_window_t> transients;
@@ -613,12 +607,14 @@ void X11ImageGrabber::grabCurrentScreen()
 {
     QPoint cursorPosition = QCursor::pos();
     for (auto screen : QGuiApplication::screens()) {
-        const QRect screenRect = screen->geometry();
+        QRect screenRect = screen->geometry();
         if (!screenRect.contains(cursorPosition)) {
             continue;
         }
 
-        mPixmap = getToplevelPixmap(screenRect, mCapturePointer);
+        // The screen origin is in native pixels, but the size is device-dependent. Convert these also to native pixels.
+        QRect nativeScreenRect(screenRect.topLeft(), screenRect.size() * screen->devicePixelRatio());
+        mPixmap = getToplevelPixmap(nativeScreenRect, mCapturePointer);
         emit pixmapChanged(mPixmap);
         return;
     }
@@ -700,4 +696,17 @@ xcb_window_t X11ImageGrabber::getTransientWindowParent(xcb_window_t winId, QRect
         outRect = winInfo.geometry();
     }
     return winInfo.transientFor();
+}
+
+QPoint X11ImageGrabber::getNativeCursorPosition()
+{
+    // QCursor::pos() is not used because it requires additional calculations.
+    // Its value is the offset to the origin of the current screen is in
+    // device-independent pixels while the origin itself uses native pixels.
+
+    xcb_connection_t *xcbConn = QX11Info::connection();
+    xcb_query_pointer_cookie_t pointerCookie = xcb_query_pointer_unchecked(xcbConn, QX11Info::appRootWindow());
+    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, NULL));
+
+    return QPoint(pointerReply->root_x, pointerReply->root_y);
 }

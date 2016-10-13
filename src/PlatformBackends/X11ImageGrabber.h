@@ -84,6 +84,7 @@ class X11ImageGrabber : public ImageGrabber
     QPixmap              getWindowPixmap(xcb_window_t window, bool blendPointer);
     QPixmap              convertFromNative(xcb_image_t *xcbImage);
     xcb_window_t         getTransientWindowParent(xcb_window_t winId, QRect &outRect);
+    QPoint               getNativeCursorPosition();
 
     OnClickEventFilter          *mNativeEventFilter;
 };
