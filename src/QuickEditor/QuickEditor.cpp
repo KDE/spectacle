@@ -97,14 +97,15 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     // set up initial config
     SpectacleConfig *config = SpectacleConfig::instance();
     if (config->rememberLastRectangularRegion()) {
+        auto pixelRatio = d->mQuickView->devicePixelRatio();
         QRect cropRegion = config->cropRegion();
         if (!cropRegion.isEmpty()) {
             QMetaObject::invokeMethod(
                 rootItem, "setInitialSelection",
-                Q_ARG(QVariant, cropRegion.x()),
-                Q_ARG(QVariant, cropRegion.y()),
-                Q_ARG(QVariant, cropRegion.width()),
-                Q_ARG(QVariant, cropRegion.height())
+                Q_ARG(QVariant, cropRegion.x() / pixelRatio),
+                Q_ARG(QVariant, cropRegion.y() / pixelRatio),
+                Q_ARG(QVariant, cropRegion.width() / pixelRatio),
+                Q_ARG(QVariant, cropRegion.height() / pixelRatio)
             );
         }
     }

@@ -165,7 +165,7 @@ Item {
                 // - on top of the selection if the selection x position fits the box height plus some margin
                 // - at the bottom otherwise
                 // Note that text is drawn starting from the left bottom!
-                var selectionText = selection.width + "x" + selection.height;
+                var selectionText = (selection.width * Screen.devicePixelRatio) + "x" + (selection.height * Screen.devicePixelRatio);
                 selectionTextMetrics.font = ctx.font;
                 selectionTextMetrics.text = selectionText;
                 var selectionTextRect = selectionTextMetrics.boundingRect;
