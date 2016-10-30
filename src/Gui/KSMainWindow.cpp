@@ -106,10 +106,7 @@ void KSMainWindow::init()
     KConfigGroup guiConfig(config, "GuiConfig");
 
     // window properties
-
-    setMinimumSize(840, 420);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    resize(minimumSize());
 
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
     move(location);
@@ -178,6 +175,8 @@ void KSMainWindow::init()
     if (!mOnClickAvailable) {
         mKSWidget->disableOnClick();
     }
+    resize(QSize(840, 420).expandedTo(minimumSize()));
+
 
     // done with the init
 }
