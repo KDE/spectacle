@@ -39,6 +39,7 @@
 #include <KStandardGuiItem>
 #include <KHelpMenu>
 #include <KAboutData>
+#include <KWindowSystem>
 
 #include "SettingsDialog/SettingsDialog.h"
 #include "ExportMenu.h"
@@ -67,7 +68,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     // credits for this goes to Thomas Lübking <thomas.luebking@gmail.com>
 
 #ifdef XCB_FOUND
-    if (qApp->platformName() == QStringLiteral("xcb")) {
+    if (KWindowSystem::isPlatformX11()) {
         // create a window if we haven't already. note that the QWidget constructor
         // should already have done this
 

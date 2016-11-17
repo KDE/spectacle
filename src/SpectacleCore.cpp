@@ -62,7 +62,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     }
 
 #ifdef XCB_FOUND
-    if (qApp->platformName() == QStringLiteral("xcb")) {
+    if (KWindowSystem::isPlatformX11()) {
         mImageGrabber = new X11ImageGrabber;
     }
 #endif
