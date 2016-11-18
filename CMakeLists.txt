@@ -38,6 +38,7 @@ include(FeatureSummary)
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
+        Concurrent
         Widgets
         DBus
         PrintSupport
