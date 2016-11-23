@@ -29,42 +29,6 @@
 
 #include <errno.h>
 
-KWinWaylandImageGrabber::KWinWaylandImageGrabber(QObject *parent) :
-    ImageGrabber(parent)
-{
-}
-
-KWinWaylandImageGrabber::~KWinWaylandImageGrabber() = default;
-
-bool KWinWaylandImageGrabber::onClickGrabSupported() const
-{
-    return true;
-}
-
-void KWinWaylandImageGrabber::grabFullScreen()
-{
-    // unsupported
-    emit pixmapChanged(QPixmap());
-}
-
-void KWinWaylandImageGrabber::grabCurrentScreen()
-{
-    // unsupported
-    emit pixmapChanged(QPixmap());
-}
-
-void KWinWaylandImageGrabber::grabActiveWindow()
-{
-    // unsupported
-    emit pixmapChanged(QPixmap());
-}
-
-void KWinWaylandImageGrabber::grabRectangularRegion()
-{
-    // unsupported
-    emit pixmapChanged(QPixmap());
-}
-
 static int readData(int fd, QByteArray &data)
 {
     // implementation based on QtWayland file qwaylanddataoffer.cpp
@@ -87,10 +51,56 @@ static int readData(int fd, QByteArray &data)
     return n;
 }
 
+static QImage readImage(int pipeFd)
+{
+    QByteArray content;
+    if (readData(pipeFd, content) != 0) {
+        close(pipeFd);
+        return QImage();
+    }
+    close(pipeFd);
+    QDataStream ds(content);
+    QImage image;
+    ds >> image;
+    return image;
+};
+
+KWinWaylandImageGrabber::KWinWaylandImageGrabber(QObject *parent) :
+    ImageGrabber(parent)
+{
+}
+
+KWinWaylandImageGrabber::~KWinWaylandImageGrabber() = default;
+
+bool KWinWaylandImageGrabber::onClickGrabSupported() const
+{
+    return true;
+}
+
+void KWinWaylandImageGrabber::grabFullScreen()
+{
+    grab(Mode::FullScreen, mCapturePointer);
+}
+
+void KWinWaylandImageGrabber::grabCurrentScreen()
+{
+    grab(Mode::CurrentScreen, mCapturePointer);
+}
+
+void KWinWaylandImageGrabber::grabActiveWindow()
+{
+    // unsupported
+    emit pixmapChanged(QPixmap());
+}
+
+void KWinWaylandImageGrabber::grabRectangularRegion()
+{
+    // unsupported
+    emit pixmapChanged(QPixmap());
+}
+
 void KWinWaylandImageGrabber::grabWindowUnderCursor()
 {
-    QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
-
     int mask = 0;
     if (mCaptureDecorations) {
         mask = 1;
@@ -98,39 +108,7 @@ void KWinWaylandImageGrabber::grabWindowUnderCursor()
     if (mCapturePointer) {
         mask |= 1 << 1;
     }
-
-    int pipeFds[2];
-    if (pipe2(pipeFds, O_CLOEXEC|O_NONBLOCK) != 0) {
-        emit imageGrabFailed();
-        return;
-    }
-    const int pipeFd = pipeFds[0];
-
-    auto call = interface.asyncCall(QStringLiteral("interactive"), QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])),  mask);
-
-    auto readImage = [pipeFd] () -> QImage {
-        QByteArray content;
-        if (readData(pipeFd, content) != 0) {
-            close(pipeFd);
-            return QImage();
-        }
-        close(pipeFd);
-        QDataStream ds(content);
-        QImage image;
-        ds >> image;
-        return image;
-    };
-    QFutureWatcher<QImage> *watcher = new QFutureWatcher<QImage>(this);
-    QObject::connect(watcher, &QFutureWatcher<QImage>::finished, this,
-        [watcher, this] {
-            watcher->deleteLater();
-            const QImage img = watcher->result();
-            emit pixmapChanged(QPixmap::fromImage(img));
-        }
-    );
-    watcher->setFuture(QtConcurrent::run(readImage));
-
-    close(pipeFds[1]);
+    grab(Mode::Window, mask);
 }
 
 void KWinWaylandImageGrabber::grabTransientWithParent()
@@ -146,4 +124,46 @@ QPixmap KWinWaylandImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, 
     Q_UNUSED(width)
     Q_UNUSED(height)
     return pixmap;
+}
+
+void KWinWaylandImageGrabber::startReadImage(int readPipe)
+{
+    QFutureWatcher<QImage> *watcher = new QFutureWatcher<QImage>(this);
+    QObject::connect(watcher, &QFutureWatcher<QImage>::finished, this,
+        [watcher, this] {
+            watcher->deleteLater();
+            const QImage img = watcher->result();
+            emit pixmapChanged(QPixmap::fromImage(img));
+        }
+    );
+    watcher->setFuture(QtConcurrent::run(readImage, readPipe));
+}
+
+template <typename T>
+void KWinWaylandImageGrabber::callDBus(Mode mode, int writeFd, T argument)
+{
+    QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
+    static const QMap<Mode, QString> s_hash = {
+        {Mode::Window, QStringLiteral("interactive")},
+        {Mode::CurrentScreen, QStringLiteral("screenshotScreen")},
+        {Mode::FullScreen, QStringLiteral("screenshotFullscreen")}
+    };
+    auto it = s_hash.find(mode);
+    Q_ASSERT(it != s_hash.end());
+    interface.asyncCall(it.value(), QVariant::fromValue(QDBusUnixFileDescriptor(writeFd)),  argument);
+}
+
+template <typename T>
+void KWinWaylandImageGrabber::grab(Mode mode, T argument)
+{
+    int pipeFds[2];
+    if (pipe2(pipeFds, O_CLOEXEC|O_NONBLOCK) != 0) {
+        emit imageGrabFailed();
+        return;
+    }
+
+    callDBus(mode, pipeFds[1], argument);
+    startReadImage(pipeFds[0]);
+
+    close(pipeFds[1]);
 }

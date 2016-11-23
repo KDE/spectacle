@@ -41,6 +41,19 @@ class KWinWaylandImageGrabber : public ImageGrabber
     void grabWindowUnderCursor()   Q_DECL_OVERRIDE;
     void grabTransientWithParent() Q_DECL_OVERRIDE;
     QPixmap blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height) Q_DECL_OVERRIDE;
+
+    private:
+
+    void startReadImage(int readPipe);
+    enum class Mode {
+        Window,
+        CurrentScreen,
+        FullScreen
+    };
+    template <typename T>
+    void callDBus(Mode mode, int writeFd, T argument);
+    template <typename T>
+    void grab(Mode mode, T argument);
 };
 
 #endif
