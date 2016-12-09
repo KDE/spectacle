@@ -14,7 +14,7 @@ set(SPECTACLE_VERSION ${KDE_APPLICATIONS_VERSION})
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 
 set(QT_MIN_VERSION     "5.4.0")
-set(KF5_MIN_VERSION    "5.18.0")
+set(KF5_MIN_VERSION    "5.25.0")
 set(PLASMA_MIN_VERSION "5.4.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
@@ -38,6 +38,7 @@ include(FeatureSummary)
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
+        Concurrent
         Widgets
         DBus
         PrintSupport

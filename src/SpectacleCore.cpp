@@ -40,6 +40,7 @@
 #ifdef XCB_FOUND
 #include "PlatformBackends/X11ImageGrabber.h"
 #endif
+#include "PlatformBackends/KWinWaylandImageGrabber.h"
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
@@ -62,10 +63,13 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     }
 
 #ifdef XCB_FOUND
-    if (qApp->platformName() == QStringLiteral("xcb")) {
+    if (KWindowSystem::isPlatformX11()) {
         mImageGrabber = new X11ImageGrabber;
     }
 #endif
+    if (!mImageGrabber && KWindowSystem::isPlatformWayland()) {
+        mImageGrabber = new KWinWaylandImageGrabber;
+    }
 
     if (!mImageGrabber) {
         mImageGrabber = new DummyImageGrabber;

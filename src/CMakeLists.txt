@@ -14,6 +14,7 @@ set(
         SpectacleDBusAdapter.cpp
         PlatformBackends/ImageGrabber.cpp
         PlatformBackends/DummyImageGrabber.cpp
+        PlatformBackends/KWinWaylandImageGrabber.cpp
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
@@ -60,6 +61,7 @@ add_executable(
 
 target_link_libraries(
     spectacle
+        Qt5::Concurrent
         Qt5::DBus
         Qt5::PrintSupport
         Qt5::Quick
