@@ -252,6 +252,7 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
     }
 
     notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
+    notify->setUrls({savedAt});
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);
