@@ -42,6 +42,8 @@
 #endif
 #include "PlatformBackends/KWinWaylandImageGrabber.h"
 
+#include <knotifications_version.h>
+
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
     QObject(parent),
@@ -252,6 +254,9 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
     }
 
     notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
+#if KNOTIFICATIONS_VERSION >= QT_VERSION_CHECK(5, 29, 0)
+    notify->setUrls({savedAt});
+#endif
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);
