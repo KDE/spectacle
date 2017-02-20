@@ -126,7 +126,8 @@ QUrl ExportManager::getAutosaveFilename()
     const QString baseDir = saveLocation();
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), QStringLiteral("png"));
+    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
+                                                   SpectacleConfig::instance()->saveImageFormat());
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -178,7 +179,7 @@ QString ExportManager::makeSaveMimetype(const QUrl &url)
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
-        return QStringLiteral("png");
+        return SpectacleConfig::instance()->saveImageFormat();
     }
     return type;
 }

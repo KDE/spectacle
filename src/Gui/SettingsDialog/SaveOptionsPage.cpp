@@ -25,6 +25,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QStandardPaths>
+#include <QComboBox>
+#include <QImageWriter>
 
 #include <KLocalizedString>
 #include <KIOWidgets/KUrlRequester>
@@ -80,12 +82,12 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             "<b>%S</b>: Second"
         "</blockquote>"
 
-        "<p>You don't need to enter a filetype extension. By default, screenshots are always saved "
-        "as a <b>PNG (Portable Network Graphics)</b> image with a <b>.png</b> extension.</p>"
-
         "<p>If a file with this name already exists, a serial number will be appended to the filename. "
         "For example, if the filename is \"Screenshot\", and \"Screenshot.png\" already "
         "exists, the image will be saved as \"Screenshot-1.png\".</p>"
+
+        "<p>Typing an extension into the filename will automatically set the image format correctly "
+        "and remove the extension from the filename field.</p>"
     );
 
     QLabel *fmtHelpText = new QLabel;
@@ -98,8 +100,31 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     saveNameLayout->addWidget(new QLabel(i18n("Filename:")));
 
     mSaveNameFormat = new QLineEdit;
-    connect(mSaveNameFormat, &QLineEdit::textChanged, this, &SaveOptionsPage::markDirty);
+    connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
+    connect(mSaveNameFormat, &QLineEdit::textEdited, [&](const QString &newText) {
+        QString fmt;
+        Q_FOREACH(auto item, QImageWriter::supportedImageFormats()) {
+            fmt = QString::fromLocal8Bit(item);
+            if (newText.endsWith(QStringLiteral(".") + fmt, Qt::CaseInsensitive)) {
+                QString txtCopy = newText;
+                txtCopy.chop(fmt.length() + 1);
+                mSaveNameFormat->setText(txtCopy);
+                mSaveImageFormat->setCurrentIndex(mSaveImageFormat->findText(fmt.toUpper()));
+            }
+        }
+    });
     saveNameLayout->addWidget(mSaveNameFormat);
+
+    mSaveImageFormat = new QComboBox;
+    mSaveImageFormat->addItems([&](){
+        QStringList items;
+        Q_FOREACH(auto fmt, QImageWriter::supportedImageFormats()) {
+            items.append(QString::fromLocal8Bit(fmt).toUpper());
+        }
+        return items;
+    }());
+    connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::markDirty);
+    saveNameLayout->addWidget(mSaveImageFormat);
 
     fmtLayout->addLayout(saveNameLayout);
 
@@ -133,6 +158,7 @@ void SaveOptionsPage::saveChanges()
 
     cfgManager->setAutoSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
+    cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
 
     // done
 
@@ -149,6 +175,15 @@ void SaveOptionsPage::resetChanges()
 
     mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
     mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
+
+    // read in the save image format and calculate its index
+
+    {
+        int index = mSaveImageFormat->findText(cfgManager->saveImageFormat().toUpper());
+        if (index >= 0) {
+            mSaveImageFormat->setCurrentIndex(index);
+        }
+    }
 
     // done
 

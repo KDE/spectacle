@@ -24,6 +24,7 @@
 
 class QDialogButtonBox;
 class QLineEdit;
+class QComboBox;
 class KUrlRequester;
 
 class SaveOptionsPage : public SettingsPage
@@ -48,6 +49,7 @@ class SaveOptionsPage : public SettingsPage
     QDialogButtonBox *mDialogButtonBox;
     QLineEdit        *mSaveNameFormat;
     KUrlRequester    *mUrlRequester;
+    QComboBox        *mSaveImageFormat;
 };
 
 #endif // SAVEOPTIONSPAGE_H

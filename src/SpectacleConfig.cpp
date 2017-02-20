@@ -235,3 +235,17 @@ void SpectacleConfig::setCopySaveLocationToClipboard(bool enabled)
     mGeneralConfig.writeEntry(QStringLiteral("copySaveLocation"), enabled);
     mGeneralConfig.sync();
 }
+
+// autosave image format
+
+QString SpectacleConfig::saveImageFormat() const
+{
+    return mGeneralConfig.readEntry(QStringLiteral("default-save-image-format"),
+                             QStringLiteral("png"));
+}
+
+void SpectacleConfig::setSaveImageFormat(const QString &saveFmt)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("default-save-image-format"), saveFmt);
+    mGeneralConfig.sync();
+}

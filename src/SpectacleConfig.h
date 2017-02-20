@@ -94,6 +94,9 @@ class SpectacleConfig : public QObject
     bool copySaveLocationToClipboard() const;
     void setCopySaveLocationToClipboard(bool enabled);
 
+    QString saveImageFormat() const;
+    void setSaveImageFormat(const QString &saveFmt);
+
     private:
 
     KSharedConfigPtr mConfig;
