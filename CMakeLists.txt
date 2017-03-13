@@ -101,6 +101,9 @@ if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
 endif()
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    add_definitions("-Wno-mismatched-tags")
+endif()
 
 # hand off to subdirectories
 
