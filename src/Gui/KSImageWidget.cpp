@@ -32,6 +32,7 @@ KSImageWidget::KSImageWidget(QWidget *parent):
     setGraphicsEffect(mDSEffect);
     setCursor(Qt::OpenHandCursor);
     setAlignment(Qt::AlignCenter);
+    setMinimumSize(size());
 }
 
 void KSImageWidget::setScreenshot(const QPixmap &pixmap)
