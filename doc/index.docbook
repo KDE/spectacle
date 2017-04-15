@@ -31,8 +31,8 @@
 
 		<legalnotice>&FDLNotice;</legalnotice>
 
-		<date>2016-09-18</date>
-		<releaseinfo>Applications 16.12</releaseinfo>
+		<date>2017-04-13</date>
+		<releaseinfo>Applications 17.04</releaseinfo>
 
 		<abstract>
 			<para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -63,11 +63,15 @@
 
 		<itemizedlist>
 			<listitem>
-				<para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Graphics</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
+				<para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Utilities</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
 			</listitem>
 			<listitem>
-                <para>Pressing the <keycap>Print Screen</keycap> button on the keyboard will immediately launch &spectacle;. Additionally, two more keyboard shortcuts are available. Pressing <keycombo action="simul"><keycap>Meta</keycap><keycap>Print Screen</keycap></keycombo> will take a screenshot of the active window and save it in your default save folder without showing the GUI, while pressing <keycombo action="simul">&Shift;<keycap>Print Screen</keycap></keycombo> will take a screenshot of your entire desktop and save it in your default save folder without showing the GUI.</para>
-
+                <para>Pressing the <keysym>Print</keysym> button on the keyboard will immediately launch &spectacle;. Additionally, three more keyboard shortcuts are available to take screenshots and save them in your default save folder without showing the &GUI;:</para>
+                <itemizedlist>
+                <listitem><para><keycombo action="simul"><keycap>Meta</keycap><keysym>Print</keysym></keycombo> will take a screenshot of the active window</para></listitem>
+                <listitem><para><keycombo action="simul">&Shift;<keysym>Print</keysym></keycombo> will take a screenshot of your entire desktop, &ie; all monitors</para></listitem>
+                <listitem><para><keycombo action="simul"><keycap>Meta</keycap>&Shift;<keysym>Print</keysym></keycombo> will take a rectangular region screenshot</para></listitem>
+                </itemizedlist>
                 <para>You can configure the default save location and filename by starting &spectacle; normally, clicking the downward arrow beside the <guibutton>Save &amp; Exit</guibutton> button, and selecting <guimenuitem>Preferences</guimenuitem> from the menu.</para>
 			</listitem>
 			<listitem>
@@ -147,7 +151,7 @@
 					</listitem>
 				</itemizedlist>
 
-				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 1 seconds using the spinbox buttons or to 0.1 seconds using the keyboard.</para>
+				<para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 1 seconds using the spinbox buttons or the keyboard.</para>
 
 				<para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &spectacle; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
 			</sect2>
@@ -206,7 +210,7 @@
 					<listitem>
 						<para>Clicking this button saves the screenshot as a PNG image in your default Pictures folder and immediately exits the application.</para>
 
-						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default preferences, such as where to save the image by default and what filename to save it as.</para>
+						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default <guimenuitem>Preferences</guimenuitem>, such as application preferences and where to save the image by default and what filename to save it as.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -220,33 +224,44 @@
 
 		<sect1>
 			<title>Configure Options</title>
+				<para>Use <menuchoice><guimenu>Save &amp; Exit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice> to open the configuration dialog.</para>
 			<sect2>
 			<title>Application Preferences</title>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+					</imageobject>
+					<textobject>
+						<phrase>Application Preferences</phrase>
+					</textobject>
+				</mediaobject>
 			<variablelist>
 				<varlistentry>
-					<term>Set save button action to last used save method</term>
+					<term><guilabel>Dynamic Save Button</guilabel></term>
 					<listitem>
-                                            <para>The default behavior of the dynamic save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to change the save button to either <guibutton>Save</guibutton>, <guibutton>Save As</guibutton> or <guibutton>Save &amp; Exit</guibutton>, according to the save action you perform, every time you save an image.</para>
+						<para>The default behavior of the dynamic save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to change the save button to
+						either <guibutton>Save</guibutton>, <guibutton>Save As</guibutton> or <guibutton>Save &amp; Exit</guibutton>, according to the save action you
+						perform, every time you save an image.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term>Copy Save Location to Clipboard</term>
+					<term><guilabel>Copy Save Location to Clipboard</guilabel></term>
 					<listitem>
 						<para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
-                                                    text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+						text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term>Use light background color</term>
+					<term><guilabel>Light Background For Rectangular Region</guilabel></term>
 					<listitem>
 						<para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term>Remember Rectangular Region</term>
+					<term><guilabel>Remember Rectangular Region</guilabel></term>
 					<listitem>
-						<para>By default, &spectacle; does not show an initial selection when you take a screenshot of a rectangular region. Enable this option to remember the
-                                                    last selected region of the screen, and set it as the initial selection when you use the rectangular region selector the next time.</para>
+						<para>By default, &spectacle; does not show an initial selection when you take a screenshot of a rectangular region. Enable this option to remember
+						the last selected region of the screen, and set it as the initial selection when you use the rectangular region selector the next time.</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>
@@ -255,7 +270,7 @@
 			<title>Configure Save Options</title>
 			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &spectacle; saves the image with a default filename, in your Pictures folder under your home folder. The default filename includes the date and time when the image was taken.</para>
 
-			<para>The <guilabel>Configure Save Options</guilabel> option allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
+			<para>The <guilabel>Save Options</guilabel> page allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
 				<mediaobject>
 					<imageobject>
 						<imagedata fileref="SaveOptions.png" format="PNG"/>
@@ -264,7 +279,39 @@
 						<phrase>Configure Save Options</phrase>
 					</textobject>
 				</mediaobject>
-			The dialog box includes appropriate help text on how to configure the save options.</para>
+			</para>
+			<variablelist>
+				<varlistentry>
+					<term><guilabel>Default Save Directory</guilabel></term>
+					<listitem>
+                    <para>In the <guilabel>Location</guilabel> text box set the directory where you'd like to save your screenshots when you press <guibutton>Save</guibutton> or <guibutton>Save &amp; Exit</guibutton>.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term><guilabel>Default Save Filename</guilabel></term>
+					<listitem>
+						<para>Set a default filename for saved screenshots.</para>
+						<para>You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:</para>
+						<itemizedlist>
+						<listitem><para><userinput>%Y</userinput>: Year (4 digit)</para></listitem>
+						<listitem><para><userinput>%y</userinput>: Year (2 digit)</para></listitem>
+						<listitem><para><userinput>%M</userinput>: Month</para></listitem>
+						<listitem><para><userinput>%D</userinput>: Day</para></listitem>
+						<listitem><para><userinput>%H</userinput>: Hour</para></listitem>
+						<listitem><para><userinput>%m</userinput>: Minute</para></listitem>
+						<listitem><para><userinput>%S</userinput>: Second</para></listitem>
+						</itemizedlist>
+						<para>If a file with this name already exists, a serial number will be appended to the filename. For example, if the filename is 						<filename>Screenshot</filename>, and <filename>Screenshot.png</filename> already exists, the image will be saved as <filename>Screenshot-1.png</filename>.</para>
+						<para>Typing an extension into the filename will automatically set the image format correctly and remove the extension from the filename field.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Use light background color</term>
+					<listitem>
+						<para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
 			</sect2>
 		</sect1>
 
