@@ -66,7 +66,7 @@ class KSMainWindow : public QDialog
 
     protected:
 
-    void moveEvent(QMoveEvent *event);
+    void moveEvent(QMoveEvent *event) Q_DECL_OVERRIDE;
 
     private:
 

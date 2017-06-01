@@ -34,7 +34,7 @@ class OnClickEventFilter : public QAbstractNativeEventFilter
     public:
 
     explicit OnClickEventFilter(X11ImageGrabber *grabber);
-    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result);
+    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
 
     private:
 

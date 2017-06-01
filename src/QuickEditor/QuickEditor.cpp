@@ -42,7 +42,7 @@ struct QuickEditor::ImageStore : public QQuickImageProvider
         mPixmap(pixmap)
     {}
 
-    QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize)
+    QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) Q_DECL_OVERRIDE
     {
         Q_UNUSED(id);
 
