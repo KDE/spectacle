@@ -1,6 +1,3 @@
-# Spectacle project
-
-project(Spectacle)
 
 # KDE Application Version, managed by release script
 set(KDE_APPLICATIONS_VERSION_MAJOR "17")
@@ -8,10 +5,11 @@ set(KDE_APPLICATIONS_VERSION_MINOR "11")
 set(KDE_APPLICATIONS_VERSION_MICRO "70")
 set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_MINOR}.${KDE_APPLICATIONS_VERSION_MICRO}")
 set(SPECTACLE_VERSION ${KDE_APPLICATIONS_VERSION})
-
 # minimum requirements
 
-cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.0 FATAL_ERROR)
+# Spectacle project
+project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION     "5.4.0")
 set(KF5_MIN_VERSION    "5.29.0")
