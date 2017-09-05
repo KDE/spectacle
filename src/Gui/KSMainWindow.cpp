@@ -278,7 +278,10 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")));
     } else {
         mMessageWidget->setMessageType(KMessageWidget::Positive);
-        mMessageWidget->setText(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message));
+        if (message.isEmpty())
+            mMessageWidget->setText(i18n("Image shared"));
+        else
+            mMessageWidget->setText(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message));
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
     }
 
