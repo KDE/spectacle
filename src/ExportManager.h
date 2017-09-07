@@ -26,6 +26,8 @@
 #include <QPixmap>
 #include <QUrl>
 
+class QTemporaryDir;
+
 class ExportManager : public QObject
 {
     Q_OBJECT
@@ -78,16 +80,21 @@ class ExportManager : public QObject
     private:
 
     QString makeAutosaveFilename();
-    QString autoIncrementFilename(const QString &baseName, const QString &extension);
+    using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl&) const;
+    QString autoIncrementFilename(const QString &baseName, const QString &extension,
+                                  FileNameAlreadyUsedCheck isFileNameUsed);
     QString makeSaveMimetype(const QUrl &url);
     bool writeImage(QIODevice *device, const QByteArray &format);
     bool save(const QUrl &url);
     bool localSave(const QUrl &url, const QString &mimetype);
     bool remoteSave(const QUrl &url, const QString &mimetype);
-    bool isFileExists(const QUrl &url);
+    bool isFileExists(const QUrl &url) const;
+    bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     QPixmap mSavePixmap;
     QUrl mTempFile;
+    QTemporaryDir *mTempDir;
+    QList<QUrl> mUsedTempFileNames;
 };
 
 #endif // EXPORTMANAGER_H

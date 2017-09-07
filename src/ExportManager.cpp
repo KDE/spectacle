@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QMimeDatabase>
 #include <QImageWriter>
+#include <QTemporaryDir>
 #include <QTemporaryFile>
 #include <QApplication>
 #include <QClipboard>
@@ -40,11 +41,14 @@
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
     mSavePixmap(QPixmap()),
-    mTempFile(QUrl())
+    mTempFile(QUrl()),
+    mTempDir(nullptr)
 {}
 
 ExportManager::~ExportManager()
-{}
+{
+    delete mTempDir;
+}
 
 ExportManager* ExportManager::instance()
 {
@@ -84,6 +88,7 @@ void ExportManager::setPixmap(const QPixmap &pixmap)
 
     // reset our saved tempfile
     if (mTempFile.isValid()) {
+        mUsedTempFileNames.append(mTempFile);
         QFile file(mTempFile.toLocalFile());
         file.remove();
         mTempFile = QUrl();
@@ -127,7 +132,8 @@ QUrl ExportManager::getAutosaveFilename()
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
-                                                   SpectacleConfig::instance()->saveImageFormat());
+                                                   SpectacleConfig::instance()->saveImageFormat(),
+                                                   &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -154,15 +160,16 @@ QString ExportManager::makeAutosaveFilename()
                    .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")));
 }
 
-QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension)
+QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension,
+                                             FileNameAlreadyUsedCheck isFileNameUsed)
 {
-    if (!(isFileExists(QUrl::fromUserInput(baseName + '.' + extension)))) {
+    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(baseName + '.' + extension)))) {
         return baseName + '.' + extension;
     }
 
     QString fileNameFmt(baseName + "-%1." + extension);
     for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
-        if (!(isFileExists(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
+        if (!((this->*isFileNameUsed)(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
             return fileNameFmt.arg(i);
         }
     }
@@ -239,19 +246,30 @@ QUrl ExportManager::tempSave(const QString &mimetype)
         }
     }
 
-    QTemporaryFile tmpFile(QDir::tempPath() + QDir::separator() + "Spectacle.XXXXXX." + mimetype);
-    tmpFile.setAutoRemove(false);
-    tmpFile.setPermissions(QFile::ReadUser | QFile::WriteUser);
-
-    if (tmpFile.open()) {
-        if(!writeImage(&tmpFile, mimetype.toLatin1())) {
-            emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
-            return QUrl();
+    if (!mTempDir) {
+        mTempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + "Spectacle.XXXXXX");
+    }
+    if (mTempDir && mTempDir->isValid()) {
+        // create the temporary file itself with normal file name and also unique one for this session
+        // supports the use-case of creating multiple screenshots in a row
+        // and exporting them to the same destination e.g. via clipboard,
+        // where the temp file name is used as filename suggestion
+        const QString baseFileName = mTempDir->path() + QDir::separator() + makeAutosaveFilename();
+        const QString fileName = autoIncrementFilename(baseFileName, mimetype,
+                                                       &ExportManager::isTempFileAlreadyUsed);
+        QFile tmpFile(fileName);
+        if (tmpFile.open(QFile::WriteOnly)) {
+            if(writeImage(&tmpFile, mimetype.toLatin1())) {
+                mTempFile = QUrl::fromLocalFile(tmpFile.fileName());
+                // try to make sure 3rd-party which gets the url of the temporary file e.g. on export
+                // properly treats this as readonly, also hide from other users
+                tmpFile.setPermissions(QFile::ReadUser);
+                return mTempFile;
+            }
         }
-        mTempFile = QUrl::fromLocalFile(tmpFile.fileName());
-        return mTempFile;
     }
 
+    emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
     return QUrl();
 }
 
@@ -269,7 +287,7 @@ bool ExportManager::save(const QUrl &url)
     return remoteSave(url, mimetype);
 }
 
-bool ExportManager::isFileExists(const QUrl &url)
+bool ExportManager::isFileExists(const QUrl &url) const
 {
     if (!(url.isValid())) {
         return false;
@@ -279,6 +297,11 @@ bool ExportManager::isFileExists(const QUrl &url)
     existsJob->exec();
 
     return (existsJob->error() == KJob::NoError);
+}
+
+bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
+{
+    return mUsedTempFileNames.contains(url);
 }
 
 // save slots
