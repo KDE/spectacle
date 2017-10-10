@@ -40,16 +40,11 @@ int main(int argc, char **argv)
 
     QApplication app(argc, argv);
 
-    app.setOrganizationDomain("kde.org");
-    app.setApplicationName("spectacle");
-    app.setWindowIcon(QIcon::fromTheme("spectacle"));
-
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
-    // set up the about data
-
     KLocalizedString::setApplicationDomain("spectacle");
+
     KAboutData aboutData("spectacle",
                          i18n("Spectacle"),
                          QStringLiteral(SPECTACLE_VERSION) + QStringLiteral(" - ") + QStringLiteral(SPECTACLE_CODENAME),
@@ -59,6 +54,7 @@ int main(int argc, char **argv)
     aboutData.addAuthor("Boudhayan Gupta", QString(), "bgupta@kde.org");
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
 
     // set up the command line options parser
 
