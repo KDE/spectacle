@@ -599,7 +599,9 @@ QRect X11ImageGrabber::getDrawableGeometry(xcb_drawable_t drawable)
 
     xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, drawable);
     CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
-
+    if (geomReply.isNull()) {
+        return QRect();
+    }
     return QRect(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
 }
 
