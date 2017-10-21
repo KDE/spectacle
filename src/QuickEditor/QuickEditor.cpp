@@ -111,7 +111,7 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     }
 
     if (config->useLightRegionMaskColour()) {
-        rootItem->setProperty("maskColour", QColor(255, 255, 255, 192));
+        rootItem->setProperty("maskColour", QColor(255, 255, 255, 100));
         rootItem->setProperty("strokeColour", QColor(96, 96, 96, 255));
     }
 }

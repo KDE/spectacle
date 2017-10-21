@@ -27,7 +27,7 @@ Item {
     // properties and setters
 
     property var selection: undefined;
-    property color maskColour: Qt.rgba(0, 0, 0, 0.75);
+    property color maskColour: Qt.rgba(0, 0, 0, 0.15);
     property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
     SystemPalette {
         id: systemPalette;
