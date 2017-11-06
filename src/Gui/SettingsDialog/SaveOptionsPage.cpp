@@ -38,16 +38,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 {
     // set up the layout. start with the directory
 
-    QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Directory"));
+    QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Location"));
     QVBoxLayout *dirLayout = new QVBoxLayout;
     dirGroup->setLayout(dirLayout);
-    dirGroup->setStyleSheet(QStringLiteral("QGroupBox { font-weight: bold; }"));
-
-    QLabel *dirHelpText = new QLabel;
-    dirHelpText->setWordWrap(true);
-    dirHelpText->setText(i18n("Set the directory where you'd like to save your screenshots when you press "
-                              "<b>Save</b> or <b>Save & Exit</b>."));
-    dirLayout->addWidget(dirHelpText);
 
     QHBoxLayout *urlRequesterLayout = new QHBoxLayout;
     urlRequesterLayout->addWidget(new QLabel(i18n("Location:")));
@@ -59,42 +52,11 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     dirLayout->addLayout(urlRequesterLayout);
 
-    // now the save filename format layout
+    // filename chooser text field
 
     QGroupBox *fmtGroup = new QGroupBox(i18n("Default Save Filename"));
     QVBoxLayout *fmtLayout = new QVBoxLayout;
     fmtGroup->setLayout(fmtLayout);
-    fmtGroup->setStyleSheet(QStringLiteral("QGroupBox { font-weight: bold; }"));
-
-    const QString helpText = i18n(
-        "<p>Set a default filename for saved screenshots.</p>"
-
-        "<p>You can use the following placeholders in the filename, which will be replaced "
-        "with actual text when the file is saved:</p>"
-
-        "<blockquote>"
-            "<b>%Y</b>: Year (4 digit)<br />"
-            "<b>%y</b>: Year (2 digit)<br />"
-            "<b>%M</b>: Month<br />"
-            "<b>%D</b>: Day<br />"
-            "<b>%H</b>: Hour<br />"
-            "<b>%m</b>: Minute<br />"
-            "<b>%S</b>: Second"
-        "</blockquote>"
-
-        "<p>If a file with this name already exists, a serial number will be appended to the filename. "
-        "For example, if the filename is \"Screenshot\", and \"Screenshot.png\" already "
-        "exists, the image will be saved as \"Screenshot-1.png\".</p>"
-
-        "<p>Typing an extension into the filename will automatically set the image format correctly "
-        "and remove the extension from the filename field.</p>"
-    );
-
-    QLabel *fmtHelpText = new QLabel;
-    fmtHelpText->setWordWrap(true);
-    fmtHelpText->setText(helpText);
-    fmtHelpText->setTextFormat(Qt::RichText);
-    fmtLayout->addWidget(fmtHelpText);
 
     QHBoxLayout *saveNameLayout = new QHBoxLayout;
     saveNameLayout->addWidget(new QLabel(i18n("Filename:")));
@@ -128,6 +90,29 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     fmtLayout->addLayout(saveNameLayout);
 
+    // now the save filename format layout
+
+    const QString helpText = i18n(
+        "<p>You can use the following placeholders in the filename, which will be replaced "
+        "with actual text when the file is saved:</p>"
+
+        "<blockquote>"
+            "<b>%Y</b>: Year (4 digit)<br />"
+            "<b>%y</b>: Year (2 digit)<br />"
+            "<b>%M</b>: Month<br />"
+            "<b>%D</b>: Day<br />"
+            "<b>%H</b>: Hour<br />"
+            "<b>%m</b>: Minute<br />"
+            "<b>%S</b>: Second"
+        "</blockquote>"
+    );
+
+    QLabel *fmtHelpText = new QLabel;
+    fmtHelpText->setWordWrap(true);
+    fmtHelpText->setText(helpText);
+    fmtHelpText->setTextFormat(Qt::RichText);
+    fmtLayout->addWidget(fmtHelpText);
+
     // read in the data
 
     resetChanges();
@@ -139,6 +124,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mainLayout->addWidget(dirGroup);
     mainLayout->addWidget(fmtGroup);
 
+    mainLayout->addStretch(4);
     setLayout(mainLayout);
 }
 

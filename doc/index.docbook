@@ -223,42 +223,40 @@
 		</sect1>
 
 		<sect1>
-			<title>Configure Options</title>
+			<title>Configure</title>
 				<para>Use <menuchoice><guimenu>Save &amp; Exit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice> to open the configuration dialog.</para>
 			<sect2>
-			<title>Application Preferences</title>
+			<title>General</title>
 				<mediaobject>
 					<imageobject>
 						<imagedata fileref="ApplicationPreferences.png" format="PNG"/>
 					</imageobject>
 					<textobject>
-						<phrase>Application Preferences</phrase>
+						<phrase>General</phrase>
 					</textobject>
 				</mediaobject>
 			<variablelist>
 				<varlistentry>
-					<term><guilabel>Dynamic Save Button</guilabel></term>
+					<term><guilabel>Remember last used save mode</guilabel></term>
 					<listitem>
-						<para>The default behavior of the dynamic save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to change the save button to
-						either <guibutton>Save</guibutton>, <guibutton>Save As</guibutton> or <guibutton>Save &amp; Exit</guibutton>, according to the save action you
-						perform, every time you save an image.</para>
+						<para>The default behavior of the save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to make the button remember the last used save command so you don't need to open the dropdown menu to access it. This is useful if you want to take multiple screenshots and use Save As to give them unique names or save them to different places.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guilabel>Copy Save Location to Clipboard</guilabel></term>
+					<term><guilabel>Copy save location to clipboard</guilabel></term>
 					<listitem>
 						<para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
 						text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guilabel>Light Background For Rectangular Region</guilabel></term>
+					<term><guilabel>Use light background</guilabel></term>
 					<listitem>
 						<para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
-					<term><guilabel>Remember Rectangular Region</guilabel></term>
+					<term><guilabel>Remember selected area</guilabel></term>
 					<listitem>
 						<para>By default, &spectacle; does not show an initial selection when you take a screenshot of a rectangular region. Enable this option to remember
 						the last selected region of the screen, and set it as the initial selection when you use the rectangular region selector the next time.</para>
@@ -267,7 +265,7 @@
 			</variablelist>
 			</sect2>
 			<sect2>
-			<title>Configure Save Options</title>
+			<title>Save</title>
 			<para>When you use the <guilabel>Save &amp; Exit</guilabel> or the <guilabel>Save</guilabel> functions, &spectacle; saves the image with a default filename, in your Pictures folder under your home folder. The default filename includes the date and time when the image was taken.</para>
 
 			<para>The <guilabel>Save Options</guilabel> page allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
@@ -276,7 +274,7 @@
 						<imagedata fileref="SaveOptions.png" format="PNG"/>
 					</imageobject>
 					<textobject>
-						<phrase>Configure Save Options</phrase>
+						<phrase>Save</phrase>
 					</textobject>
 				</mediaobject>
 			</para>
@@ -303,12 +301,6 @@
 						</itemizedlist>
 						<para>If a file with this name already exists, a serial number will be appended to the filename. For example, if the filename is 						<filename>Screenshot</filename>, and <filename>Screenshot.png</filename> already exists, the image will be saved as <filename>Screenshot-1.png</filename>.</para>
 						<para>Typing an extension into the filename will automatically set the image format correctly and remove the extension from the filename field.</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry>
-					<term>Use light background color</term>
-					<listitem>
-						<para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>

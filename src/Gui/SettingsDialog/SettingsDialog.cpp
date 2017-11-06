@@ -33,9 +33,9 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     KPageDialog(parent)
 {
     // set up window options and geometry
-    setWindowTitle(i18n("Preferences"));
+    setWindowTitle(i18n("Configure"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    resize(500, 700);
+    resize(500, 470);
 
     // init all pages
     QMetaObject::invokeMethod(this, "initPages", Qt::QueuedConnection);
@@ -44,13 +44,13 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 void SettingsDialog::initPages()
 {
     KPageWidgetItem *generalOptions = new KPageWidgetItem(new GeneralOptionsPage(this), i18n("General"));
-    generalOptions->setHeader(i18n("Application Preferences"));
-    generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("applications-system")));
+    generalOptions->setHeader(i18n("General"));
+    generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("view-preview"))); // This is what Dolphin uses for the icon on its General page...
     addPage(generalOptions);
     mPages.insert(generalOptions);
 
-    KPageWidgetItem *saveOptions = new KPageWidgetItem(new SaveOptionsPage(this), i18n("Save Options"));
-    saveOptions->setHeader(i18n("Default Save Settings"));
+    KPageWidgetItem *saveOptions = new KPageWidgetItem(new SaveOptionsPage(this), i18n("Save"));
+    saveOptions->setHeader(i18n("Save"));
     saveOptions->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
     addPage(saveOptions);
     mPages.insert(saveOptions);
