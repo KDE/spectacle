@@ -364,7 +364,7 @@ bool X11ImageGrabber::isKWinAvailable()
 {
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.KWin"))) {
         QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Effects"), QStringLiteral("org.kde.kwin.Effects"));
-        QDBusReply<bool> reply = interface.call(QStringLiteral("isEffectLoaded"), "screenshot");
+        QDBusReply<bool> reply = interface.call(QStringLiteral("isEffectLoaded"), QStringLiteral("screenshot"));
 
         return reply.value();
     }

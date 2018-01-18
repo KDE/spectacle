@@ -45,13 +45,13 @@ int main(int argc, char **argv)
 
     KLocalizedString::setApplicationDomain("spectacle");
 
-    KAboutData aboutData("spectacle",
+    KAboutData aboutData(QStringLiteral("spectacle"),
                          i18n("Spectacle"),
                          QStringLiteral(SPECTACLE_VERSION) + QStringLiteral(" - ") + QStringLiteral(SPECTACLE_CODENAME),
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
-    aboutData.addAuthor("Boudhayan Gupta", QString(), "bgupta@kde.org");
+    aboutData.addAuthor(QStringLiteral("Boudhayan Gupta"), QString(), QStringLiteral("bgupta@kde.org"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
@@ -64,19 +64,19 @@ int main(int argc, char **argv)
     aboutData.setupCommandLine(&parser);
 
     parser.addOptions({
-        {{"f", "fullscreen"},        i18n("Capture the entire desktop (default)")},
-        {{"m", "current"},           i18n("Capture the current monitor")},
-        {{"a", "activewindow"},      i18n("Capture the active window")},
-        {{"u", "windowundercursor"}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
-        {{"t", "transientonly"},     i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
-        {{"r", "region"},            i18n("Capture a rectangular region of the screen")},
-        {{"g", "gui"},               i18n("Start in GUI mode (default)")},
-        {{"b", "background"},        i18n("Take a screenshot and exit without showing the GUI")},
-        {{"s", "dbus"},              i18n("Start in DBus-Activation mode")},
-        {{"n", "nonotify"},          i18n("In background mode, do not pop up a notification when the screenshot is taken")},
-        {{"o", "output"},            i18n("In background mode, save image to specified file"), "fileName"},
-        {{"d", "delay"},             i18n("In background mode, delay before taking the shot (in milliseconds)"), "delayMsec"},
-        {{"w", "onclick"},           i18n("Wait for a click before taking screenshot. Invalidates delay")}
+        {{QStringLiteral("f"), QStringLiteral("fullscreen")},        i18n("Capture the entire desktop (default)")},
+        {{QStringLiteral("m"), QStringLiteral("current")},           i18n("Capture the current monitor")},
+        {{QStringLiteral("a"), QStringLiteral("activewindow")},      i18n("Capture the active window")},
+        {{QStringLiteral("u"), QStringLiteral("windowundercursor")}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
+        {{QStringLiteral("t"), QStringLiteral("transientonly")},     i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
+        {{QStringLiteral("r"), QStringLiteral("region")},            i18n("Capture a rectangular region of the screen")},
+        {{QStringLiteral("g"), QStringLiteral("gui")},               i18n("Start in GUI mode (default)")},
+        {{QStringLiteral("b"), QStringLiteral("background")},        i18n("Take a screenshot and exit without showing the GUI")},
+        {{QStringLiteral("s"), QStringLiteral("dbus")},              i18n("Start in DBus-Activation mode")},
+        {{QStringLiteral("n"), QStringLiteral("nonotify")},          i18n("In background mode, do not pop up a notification when the screenshot is taken")},
+        {{QStringLiteral("o"), QStringLiteral("output")},            i18n("In background mode, save image to specified file"), QStringLiteral("fileName")},
+        {{QStringLiteral("d"), QStringLiteral("delay")},             i18n("In background mode, delay before taking the shot (in milliseconds)"), QStringLiteral("delayMsec")},
+        {{QStringLiteral("w"), QStringLiteral("onclick")},           i18n("Wait for a click before taking screenshot. Invalidates delay")}
     });
 
     parser.process(app);
@@ -85,15 +85,15 @@ int main(int argc, char **argv)
     // extract the capture mode
 
     ImageGrabber::GrabMode grabMode = ImageGrabber::FullScreen;
-    if (parser.isSet("current")) {
+    if (parser.isSet(QStringLiteral("current"))) {
         grabMode = ImageGrabber::CurrentScreen;
-    } else if (parser.isSet("activewindow")) {
+    } else if (parser.isSet(QStringLiteral("activewindow"))) {
         grabMode = ImageGrabber::ActiveWindow;
-    } else if (parser.isSet("region")) {
+    } else if (parser.isSet(QStringLiteral("region"))) {
         grabMode = ImageGrabber::RectangularRegion;
-    } else if (parser.isSet("windowundercursor")) {
+    } else if (parser.isSet(QStringLiteral("windowundercursor"))) {
         grabMode = ImageGrabber::TransientWithParent;
-    } else if (parser.isSet("transientonly")) {
+    } else if (parser.isSet(QStringLiteral("transientonly"))) {
         grabMode = ImageGrabber::WindowUnderCursor;
     }
 
@@ -104,31 +104,31 @@ int main(int argc, char **argv)
     qint64 delayMsec = 0;
     QString fileName = QString();
 
-    if (parser.isSet("background")) {
+    if (parser.isSet(QStringLiteral("background"))) {
         startMode = SpectacleCore::BackgroundMode;
-    } else if (parser.isSet("dbus")) {
+    } else if (parser.isSet(QStringLiteral("dbus"))) {
         startMode = SpectacleCore::DBusMode;
     }
 
     switch (startMode) {
     case SpectacleCore::BackgroundMode:
-        if (parser.isSet("nonotify")) {
+        if (parser.isSet(QStringLiteral("nonotify"))) {
             notify = false;
         }
 
-        if (parser.isSet("output")) {
-            fileName = parser.value("output");
+        if (parser.isSet(QStringLiteral("output"))) {
+            fileName = parser.value(QStringLiteral("output"));
         }
 
-        if (parser.isSet("delay")) {
+        if (parser.isSet(QStringLiteral("delay"))) {
             bool ok = false;
-            qint64 delayValue = parser.value("delay").toLongLong(&ok);
+            qint64 delayValue = parser.value(QStringLiteral("delay")).toLongLong(&ok);
             if (ok) {
                 delayMsec = delayValue;
             }
         }
 
-        if (parser.isSet("onclick")) {
+        if (parser.isSet(QStringLiteral("onclick"))) {
             delayMsec = -1;
         }
     case SpectacleCore::DBusMode:
@@ -152,8 +152,8 @@ int main(int argc, char **argv)
         emit dbusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
 
-    QDBusConnection::sessionBus().registerObject("/", &core);
-    QDBusConnection::sessionBus().registerService("org.kde.Spectacle");
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &core);
+    QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
 

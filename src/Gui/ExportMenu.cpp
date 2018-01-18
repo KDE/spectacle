@@ -87,7 +87,7 @@ void ExportMenu::getKServiceItems()
     const KService::List services = KMimeTypeTrader::self()->query(QStringLiteral("image/png"));
 
     Q_FOREACH (auto service, services) {
-        QString name = service->name().replace('&', QLatin1String("&&"));
+        QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, nullptr);
 
         connect(action, &QAction::triggered, [=]() {
@@ -184,7 +184,7 @@ void ExportMenu::loadPurposeMenu()
         if (error) {
             emit imageShared(true, message);
         } else {
-            emit imageShared(false, output["url"].toString());
+            emit imageShared(false, output[QStringLiteral("url")].toString());
         }
     });
 
@@ -206,7 +206,7 @@ void ExportMenu::loadPurposeItems()
         { QStringLiteral("mimeType"), QStringLiteral("image/png") },
         { QStringLiteral("urls"), QJsonArray({ dataUri }) }
     });
-    mPurposeMenu->model()->setPluginType("Export");
+    mPurposeMenu->model()->setPluginType(QStringLiteral("Export"));
     mPurposeMenu->reload();
 }
 #endif

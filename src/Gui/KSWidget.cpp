@@ -76,7 +76,7 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureOnClick = new QCheckBox(i18n("On Click"), this);
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
-    connect(mCaptureOnClick, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setOnClickChecked);
+    connect(mCaptureOnClick, &QCheckBox::clicked, configManager, &SpectacleConfig::setOnClickChecked);
 
     mDelayLayout = new QHBoxLayout;
     mDelayLayout->addWidget(mDelayMsec);
@@ -94,18 +94,18 @@ KSWidget::KSWidget(QWidget *parent) :
 
     mMousePointer = new QCheckBox(i18n("Include mouse pointer"), this);
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
-    connect(mMousePointer, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludePointerChecked);
+    connect(mMousePointer, &QCheckBox::clicked, configManager, &SpectacleConfig::setIncludePointerChecked);
 
     mWindowDecorations = new QCheckBox(i18n("Include window titlebar and borders"), this);
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
-    connect(mWindowDecorations, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
+    connect(mWindowDecorations, &QCheckBox::clicked, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
 
     mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
     mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc). "
                                            "If this is not enabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
-    connect(mCaptureTransientOnly, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
+    connect(mCaptureTransientOnly, &QCheckBox::clicked, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);

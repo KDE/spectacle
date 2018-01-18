@@ -163,11 +163,11 @@ QString ExportManager::makeAutosaveFilename()
 QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension,
                                              FileNameAlreadyUsedCheck isFileNameUsed)
 {
-    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(baseName + '.' + extension)))) {
-        return baseName + '.' + extension;
+    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(baseName + QLatin1Char('.') + extension)))) {
+        return baseName + QLatin1Char('.') + extension;
     }
 
-    QString fileNameFmt(baseName + "-%1." + extension);
+    QString fileNameFmt(baseName + QStringLiteral("-%1.") + extension);
     for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
         if (!((this->*isFileNameUsed)(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
             return fileNameFmt.arg(i);
@@ -177,7 +177,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    return fileNameFmt.arg("OVERFLOW-" + QString::number(qrand() % 10000));
+    return fileNameFmt.arg(QStringLiteral("OVERFLOW-") + QString::number(qrand() % 10000));
 }
 
 QString ExportManager::makeSaveMimetype(const QUrl &url)
@@ -195,7 +195,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
     if (!(imageWriter.canWrite())) {
-        emit errorMessage(i18n("QImageWriter cannot write image: ") + imageWriter.errorString());
+        emit errorMessage(i18n("QImageWriter cannot write image: %1").arg(imageWriter.errorString()));
         return false;
     }
 
@@ -247,7 +247,7 @@ QUrl ExportManager::tempSave(const QString &mimetype)
     }
 
     if (!mTempDir) {
-        mTempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + "Spectacle.XXXXXX");
+        mTempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + QStringLiteral("Spectacle.XXXXXX"));
     }
     if (mTempDir && mTempDir->isValid()) {
         // create the temporary file itself with normal file name and also unique one for this session
