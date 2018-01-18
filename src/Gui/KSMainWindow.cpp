@@ -188,8 +188,8 @@ void KSMainWindow::buildSaveMenu()
     mSaveMenu->clear();
 
     // get our actions in order
-    QAction *actionSave = KStandardAction::save(this, SLOT(save()), this);
-    QAction *actionSaveAs = KStandardAction::saveAs(this, SLOT(saveAs()), this);
+    QAction *actionSave = KStandardAction::save(this, &KSMainWindow::save, this);
+    QAction *actionSaveAs = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
     QAction *actionSaveExit = new QAction(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save &&& Exit"), this);
     actionSaveExit->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
     actionSaveExit->setShortcut(QKeySequence(QKeySequence::Quit));

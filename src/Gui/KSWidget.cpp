@@ -52,8 +52,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     // the capture mode options first
 
-    mCaptureModeLabel = new QLabel(this);
-    mCaptureModeLabel->setText(i18n("<b>Capture Mode</b>"));
+    mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
 
     mCaptureArea = new QComboBox(this);
     mCaptureArea->insertItem(1, i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
@@ -74,8 +73,7 @@ KSWidget::KSWidget(QWidget *parent) :
     connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
             configManager, &SpectacleConfig::setCaptureDelay);
 
-    mCaptureOnClick = new QCheckBox(this);
-    mCaptureOnClick->setText(i18n("On Click"));
+    mCaptureOnClick = new QCheckBox(i18n("On Click"), this);
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
     connect(mCaptureOnClick, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setOnClickChecked);
@@ -94,19 +92,16 @@ KSWidget::KSWidget(QWidget *parent) :
     mContentOptionsLabel = new QLabel(this);
     mContentOptionsLabel->setText(i18n("<b>Content Options</b>"));
 
-    mMousePointer = new QCheckBox(this);
-    mMousePointer->setText(i18n("Include mouse pointer"));
+    mMousePointer = new QCheckBox(i18n("Include mouse pointer"), this);
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
     connect(mMousePointer, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludePointerChecked);
 
-    mWindowDecorations = new QCheckBox(this);
-    mWindowDecorations->setText(i18n("Include window titlebar and borders"));
+    mWindowDecorations = new QCheckBox(i18n("Include window titlebar and borders"), this);
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
     connect(mWindowDecorations, &QCheckBox::stateChanged, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
 
-    mCaptureTransientOnly = new QCheckBox(this);
-    mCaptureTransientOnly->setText(i18n("Capture the current pop-up only"));
+    mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
     mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc). "
                                            "If this is not enabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
@@ -121,8 +116,7 @@ KSWidget::KSWidget(QWidget *parent) :
 
     // the take a new screenshot button
 
-    mTakeScreenshotButton = new QPushButton(this);
-    mTakeScreenshotButton->setText(i18n("Take a New Screenshot"));
+    mTakeScreenshotButton = new QPushButton(i18n("Take a New Screenshot"), this);
     mTakeScreenshotButton->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
     mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     mTakeScreenshotButton->setFocus();

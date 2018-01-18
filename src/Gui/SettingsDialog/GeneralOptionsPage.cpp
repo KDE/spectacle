@@ -37,15 +37,13 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     // dynamic save button
 
-    mUseLastSaveAction = new QCheckBox;
-    mUseLastSaveAction->setText(i18n("Remember last used Save mode"));
+    mUseLastSaveAction = new QCheckBox(i18n("Remember last used Save mode"), this);
     connect(mUseLastSaveAction, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addWidget(mUseLastSaveAction, 1);
 
     // copy save path to clipboard
 
-    mCopyPathToClipboard = new QCheckBox;
-    mCopyPathToClipboard->setText(i18n("Copy save location to the clipboard"));
+    mCopyPathToClipboard = new QCheckBox(i18n("Copy save location to the clipboard"), this);
     connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addWidget(mCopyPathToClipboard, 1);
 
@@ -58,15 +56,13 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     // use light background
 
-    mUseLightBackground = new QCheckBox;
-    mUseLightBackground->setText(i18n("Use light background"));
+    mUseLightBackground = new QCheckBox(i18n("Use light background"), this);
     connect(mUseLightBackground, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addWidget(mUseLightBackground, 1);
 
     // remember Rectangular Region box
 
-    mRememberRect = new QCheckBox;
-    mRememberRect->setText(i18n("Remember selected area"));
+    mRememberRect = new QCheckBox(i18n("Remember selected area"), this);
     connect(mRememberRect, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
     QVBoxLayout *rrCLayout = new QVBoxLayout;

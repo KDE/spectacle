@@ -38,12 +38,12 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 {
     // set up the layout. start with the directory
 
-    QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Location"));
+    QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Location"), this);
     QVBoxLayout *dirLayout = new QVBoxLayout;
     dirGroup->setLayout(dirLayout);
 
     QHBoxLayout *urlRequesterLayout = new QHBoxLayout;
-    urlRequesterLayout->addWidget(new QLabel(i18n("Location:")));
+    urlRequesterLayout->addWidget(new QLabel(i18n("Location:"), this));
 
     mUrlRequester = new KUrlRequester;
     mUrlRequester->setMode(KFile::Directory);
@@ -59,7 +59,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     fmtGroup->setLayout(fmtLayout);
 
     QHBoxLayout *saveNameLayout = new QHBoxLayout;
-    saveNameLayout->addWidget(new QLabel(i18n("Filename:")));
+    saveNameLayout->addWidget(new QLabel(i18n("Filename:"), this));
 
     mSaveNameFormat = new QLineEdit;
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
@@ -67,7 +67,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         QString fmt;
         Q_FOREACH(auto item, QImageWriter::supportedImageFormats()) {
             fmt = QString::fromLocal8Bit(item);
-            if (newText.endsWith(QStringLiteral(".") + fmt, Qt::CaseInsensitive)) {
+            if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
                 txtCopy.chop(fmt.length() + 1);
                 mSaveNameFormat->setText(txtCopy);
@@ -107,9 +107,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         "</blockquote>"
     );
 
-    QLabel *fmtHelpText = new QLabel;
+    QLabel *fmtHelpText = new QLabel(helpText, this);
     fmtHelpText->setWordWrap(true);
-    fmtHelpText->setText(helpText);
     fmtHelpText->setTextFormat(Qt::RichText);
     fmtLayout->addWidget(fmtHelpText);
 
