@@ -155,7 +155,7 @@ void ExportMenu::getKipiItems()
             KIPI::Category category = plugin->category(action);
             if (category == KIPI::ExportPlugin) {
                 exportActions += action;
-            } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains("kipiplugin_sendimages")) {
+            } else if (category == KIPI::ImagesPlugin && pluginInfo->library().contains(QStringLiteral("kipiplugin_sendimages"))) {
                 exportActions += action;
             }
         }

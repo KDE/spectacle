@@ -27,9 +27,9 @@
 KSGKipiImageCollectionShared::KSGKipiImageCollectionShared()  {}
 KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared() {}
 
-QString KSGKipiImageCollectionShared::name()           { return "Spectacle"; }
+QString KSGKipiImageCollectionShared::name()           { return QStringLiteral("Spectacle"); }
 QString KSGKipiImageCollectionShared::comment()        { return QString(); }
-QString KSGKipiImageCollectionShared::uploadRootName() { return "/"; }
+QString KSGKipiImageCollectionShared::uploadRootName() { return QStringLiteral("/"); }
 QUrl    KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
 bool    KSGKipiImageCollectionShared::isDirectory()    { return false; }
 QList<QUrl> KSGKipiImageCollectionShared::images()     { return QList<QUrl>({ ExportManager::instance()->tempSave() }); }

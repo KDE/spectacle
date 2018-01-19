@@ -32,7 +32,7 @@
 
 class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
 {
-    public:
+public:
 
     explicit KSGKipiImageCollectionShared();
     ~KSGKipiImageCollectionShared();
@@ -44,7 +44,7 @@ class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
     QString uploadRootName();
     bool isDirectory();
 
-    private:
+private:
 
     QList<QUrl> mImages;
 };
