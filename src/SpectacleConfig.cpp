@@ -147,7 +147,7 @@ void SpectacleConfig::setCaptureMode(int index)
 
 bool SpectacleConfig::useDynamicSaveButton() const
 {
-    return mGuiConfig.readEntry(QStringLiteral("dynamicSaveButton"), false);
+    return mGuiConfig.readEntry(QStringLiteral("dynamicSaveButton"), true);
 }
 
 void SpectacleConfig::setUseDynamicSaveButton(bool enabled)
