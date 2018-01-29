@@ -195,7 +195,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
     if (!(imageWriter.canWrite())) {
-        emit errorMessage(i18n("QImageWriter cannot write image: %1").arg(imageWriter.errorString()));
+        emit errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
     }
 
