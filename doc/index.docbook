@@ -111,12 +111,16 @@
 
 		<para>The snapshot taken by &spectacle; is displayed in the preview window, which is located on the left-hand side of the &spectacle; application window.</para>
 
-		<para>To quickly save the image and quit &spectacle; press the <guibutton>Save &amp; Exit</guibutton> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) button. By default, this saves the image as a PNG file in your default Pictures folder, and exits the application immediately. The default save location and filename can be configured, as described later.</para>
+		<para>The image can be saved to a location of your choice by clicking on the <guibutton>Save As</guibutton> button or typing <keycombo action="simul">&Ctrl;&Shift;<keycap>S</keycap></keycombo>. This opens the standard save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot.</para>
 
-		<para>The image can be saved by clicking on the arrow portion of the <guibutton>Save &amp; Exit</guibutton> button, and choosing <guimenuitem>Save As...</guimenuitem> (<keycombo action="simul">&Ctrl;&Shift;<keycap>S</keycap></keycombo>) option. This opens standard save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot. You may also select the <guimenuitem>Save...</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) option, which will save the image to its default location and with the default filename.</para>
+		<para>To save a screenshot to the default location, click on the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save </guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) button. The new save mode will be remembered for next time; this behavior can be configured in Spectacle's settings. The default save location and filename can also be configured there, as described later.</para>
+
+		<para>To quickly save the image and quit &spectacle;, click on the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save &amp; Exit</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>) item. This saves the image as a PNG file in your default Pictures folder, and exits the application immediately. As above, this new save mode will be remembered.</para>
 
 		<sect1 id="taking-screenshot">
 			<title>Taking A Screenshot</title>
+
+			<para>When you open spectacle, it immediately takes a screenshot of the whole screen as a convenience and shows a preview of it in the main window. You can save this screenshot using the buttons on the bottom of the window, or take a new one using the controls to the right of the preview.</para>
 
 			<para>To discard the current screenshot and take another screenshot, press the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
 
@@ -239,7 +243,7 @@
 				<varlistentry>
 					<term><guilabel>Remember last used Save mode</guilabel></term>
 					<listitem>
-						<para>The default behavior of the save button is to <guibutton>Save &amp; Exit</guibutton>. Enable this option to make the button remember the last used save command so you don't need to open the dropdown menu to access it. This is useful if you want to take multiple screenshots and use <guimenuitem>Save As...</guimenuitem> to give them unique names or save them to different places.</para>
+						<para>The default behavior of the save button is to display <guibutton>Save As</guibutton>. Choosing another save mode by clicking on the arrow portion of the button will make that save mode the default one. Disable this option to make the button stop remembering the last used save mode</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
