@@ -201,18 +201,18 @@ void KSMainWindow::buildSaveMenu()
 
     // put the actions in order
     switch (switchState) {
+    case 0:
+    default:
+        mSaveButton->setDefaultAction(actionSaveAs);
+        mSaveMenu->addAction(actionSaveExit);
+        mSaveMenu->addAction(actionSave);
+        break;
     case 1:
         mSaveButton->setDefaultAction(actionSave);
         mSaveMenu->addAction(actionSaveExit);
         mSaveMenu->addAction(actionSaveAs);
         break;
     case 2:
-        mSaveButton->setDefaultAction(actionSaveAs);
-        mSaveMenu->addAction(actionSaveExit);
-        mSaveMenu->addAction(actionSave);
-        break;
-    case 0:
-    default:
         mSaveButton->setDefaultAction(actionSaveExit);
         mSaveMenu->addAction(actionSave);
         mSaveMenu->addAction(actionSaveAs);
@@ -323,14 +323,14 @@ void KSMainWindow::save()
 
 void KSMainWindow::saveAs()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(2);
+    SpectacleConfig::instance()->setLastUsedSaveMode(0);
     buildSaveMenu();
     ExportManager::instance()->doSaveAs(this);
 }
 
 void KSMainWindow::saveAndExit()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(0);
+    SpectacleConfig::instance()->setLastUsedSaveMode(2);
     qApp->setQuitOnLastWindowClosed(false);
     ExportManager::instance()->doSave(QUrl(), true);
     hide();
