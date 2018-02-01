@@ -104,7 +104,7 @@ void ExportMenu::getKServiceItems()
 
     QAction *openWith = new QAction(this);
     openWith->setText(i18n("Other Application"));
-    openWith->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
+    openWith->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
     openWith->setShortcuts(KStandardShortcut::open());
 
     connect(openWith, &QAction::triggered, [=]() {

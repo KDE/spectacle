@@ -126,7 +126,7 @@ void KSMainWindow::init()
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export Image...")));
-    mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("application-x-executable")));
+    mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
     mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
