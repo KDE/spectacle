@@ -123,7 +123,7 @@ void KSMainWindow::init()
 
     // the Button Bar
 
-    mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Discard);
+    mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export Image...")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
@@ -141,10 +141,6 @@ void KSMainWindow::init()
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
     buildSaveMenu();
     mDialogButtonBox->addButton(mSaveButton, QDialogButtonBox::ActionRole);
-
-    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), mDialogButtonBox->button(QDialogButtonBox::Discard));
-    connect(shortcut, &QShortcut::activated, qApp, &QApplication::quit);
-    connect(mDialogButtonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, qApp, &QApplication::quit);
 
     // the help menu
 
@@ -255,7 +251,6 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
     setWindowModified(true);
 
-    KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::discard());
     show();
 }
 
@@ -311,7 +306,6 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
-    KGuiItem::assign(mDialogButtonBox->button(QDialogButtonBox::Discard), KStandardGuiItem::quit());
 }
 
 void KSMainWindow::save()
