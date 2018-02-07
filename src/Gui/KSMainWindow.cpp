@@ -52,6 +52,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mDivider(new QFrame),
     mDialogButtonBox(new QDialogButtonBox),
     mSendToButton(new QPushButton),
+    mConfigureButton(new QToolButton),
     mClipboardButton(new QToolButton),
     mSaveButton(new QToolButton),
     mSaveMenu(new QMenu),
@@ -125,6 +126,12 @@ void KSMainWindow::init()
 
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help);
 
+    mConfigureButton->setDefaultAction(KStandardAction::preferences(this, SLOT(showPreferencesDialog()), this));
+    mConfigureButton->setText(i18n("Configure..."));
+    mConfigureButton->setToolTip(i18n("Change Spectacle's settings."));
+    mConfigureButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    mDialogButtonBox->addButton(mConfigureButton, QDialogButtonBox::ResetRole);
+
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export Image...")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
@@ -132,7 +139,6 @@ void KSMainWindow::init()
     mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
     mClipboardButton->setText(i18n("Copy To Clipboard"));
     mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
-    mClipboardButton->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
@@ -217,9 +223,6 @@ void KSMainWindow::buildSaveMenu()
 
     // finish off building the menu
     mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
-    mSaveMenu->addSeparator();
-    mSaveMenu->addAction(QIcon::fromTheme(QStringLiteral("applications-system")), i18n("Preferences"),
-                         this, SLOT(showPreferencesDialog()));
 }
 
 // overrides

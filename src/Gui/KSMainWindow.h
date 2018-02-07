@@ -74,6 +74,7 @@ class KSMainWindow : public QDialog
     QFrame           *mDivider;
     QDialogButtonBox *mDialogButtonBox;
     QPushButton      *mSendToButton;
+    QToolButton      *mConfigureButton;
     QToolButton      *mClipboardButton;
     QToolButton      *mSaveButton;
     QMenu            *mSaveMenu;

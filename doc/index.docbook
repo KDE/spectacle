@@ -72,7 +72,7 @@
                 <listitem><para><keycombo action="simul">&Shift;<keysym>Print</keysym></keycombo> will take a screenshot of your entire desktop, &ie; all monitors</para></listitem>
                 <listitem><para><keycombo action="simul"><keycap>Meta</keycap>&Shift;<keysym>Print</keysym></keycombo> will take a rectangular region screenshot</para></listitem>
                 </itemizedlist>
-                <para>You can configure the default save location and filename by starting &spectacle; normally, clicking the downward arrow beside the <guibutton>Save &amp; Exit</guibutton> button, and selecting <guimenuitem>Preferences</guimenuitem> from the menu.</para>
+                <para>You can configure the default save location and filename by starting &spectacle; normally and clicking on the <guibutton>Configure...</guibutton> button, then navigating to the Save section.</para>
 			</listitem>
 			<listitem>
 				<para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &spectacle;.</para>
@@ -192,7 +192,13 @@
 				<varlistentry>
 					<term><guibutton>Help</guibutton></term>
 					<listitem>
-                                            <para>This button gives you the common menu items described in the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
+						<para>This button gives you the common menu items described in the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term><guibutton>Configure...</guibutton></term>
+					<listitem>
+						<para>This button gives you access to Spectacle's Configure window where you can change the capture settings and default save location and filename.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
@@ -213,8 +219,6 @@
 					<term><guibutton>Save &amp; Exit</guibutton></term>
 					<listitem>
 						<para>Clicking this button saves the screenshot as a PNG image in your default Pictures folder and immediately exits the application.</para>
-
-						<para>Additionally, if you click the arrow on the right side of the button, a drop-down menu allows you to simply <guilabel>Save</guilabel> the image, save the image with a different filename, location and format (<guilabel>Save As...</guilabel>), <guilabel>Print</guilabel> the image, and configure the default <guimenuitem>Preferences</guimenuitem>, such as application preferences and where to save the image by default and what filename to save it as.</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>
@@ -222,7 +226,7 @@
 
 		<sect1>
 			<title>Configure</title>
-				<para>Use <menuchoice><guimenu>Save &amp; Exit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice> to open the configuration dialog.</para>
+            <para>Use the <guibutton>Configure...</guibutton> button to open the configuration dialog.</para>
 			<sect2>
 			<title>General</title>
 				<mediaobject>
