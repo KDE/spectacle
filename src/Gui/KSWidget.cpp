@@ -102,8 +102,8 @@ KSWidget::KSWidget(QWidget *parent) :
     connect(mWindowDecorations, &QCheckBox::clicked, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
 
     mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
-    mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc). "
-                                           "If this is not enabled, the pop-up is captured along with the parent window"));
+    mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
+                                           "If disabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
     connect(mCaptureTransientOnly, &QCheckBox::clicked, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
