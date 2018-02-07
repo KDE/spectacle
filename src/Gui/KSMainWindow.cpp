@@ -51,12 +51,14 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mKSWidget(new KSWidget),
     mDivider(new QFrame),
     mDialogButtonBox(new QDialogButtonBox),
-    mSendToButton(new QPushButton),
     mConfigureButton(new QToolButton),
+    mToolsButton(new QPushButton),
+    mSendToButton(new QPushButton),
     mClipboardButton(new QToolButton),
     mSaveButton(new QToolButton),
     mSaveMenu(new QMenu),
     mMessageWidget(new KMessageWidget),
+    mToolsMenu(new QMenu),
     mExportMenu(new ExportMenu(this)),
     mOnClickAvailable(onClickAvailable)
 {
@@ -132,7 +134,13 @@ void KSMainWindow::init()
     mConfigureButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mConfigureButton, QDialogButtonBox::ResetRole);
 
-    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export Image...")));
+    KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
+    mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("application-menu")));
+    mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
+    mToolsMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
+    mToolsButton->setMenu(mToolsMenu);
+
+    KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
@@ -220,9 +228,6 @@ void KSMainWindow::buildSaveMenu()
         mSaveMenu->addAction(actionSaveAs);
         break;
     }
-
-    // finish off building the menu
-    mSaveMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
 }
 
 // overrides

@@ -73,12 +73,14 @@ class KSMainWindow : public QDialog
     KSWidget         *mKSWidget;
     QFrame           *mDivider;
     QDialogButtonBox *mDialogButtonBox;
-    QPushButton      *mSendToButton;
     QToolButton      *mConfigureButton;
+    QPushButton      *mToolsButton;
+    QPushButton      *mSendToButton;
     QToolButton      *mClipboardButton;
     QToolButton      *mSaveButton;
     QMenu            *mSaveMenu;
     KMessageWidget   *mMessageWidget;
+    QMenu            *mToolsMenu;
     ExportMenu       *mExportMenu;
     bool              mOnClickAvailable;
 };
