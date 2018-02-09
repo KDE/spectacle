@@ -53,6 +53,7 @@ class KSMainWindow : public QDialog
     void save();
     void saveAs();
     void saveAndExit();
+    int windowWidth(const QPixmap &pixmap) const;
 
     public slots:
 

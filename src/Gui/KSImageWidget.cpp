@@ -25,7 +25,7 @@ KSImageWidget::KSImageWidget(QWidget *parent):
 {
     mDSEffect = new QGraphicsDropShadowEffect(this);
 
-    mDSEffect->setBlurRadius(5);
+    mDSEffect->setBlurRadius(SpectacleImage::SHADOW_RADIUS);
     mDSEffect->setOffset(0);
     mDSEffect->setColor(QColor(Qt::black));
 

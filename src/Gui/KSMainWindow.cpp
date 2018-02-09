@@ -46,6 +46,10 @@
 #include "ExportManager.h"
 #include "SpectacleConfig.h"
 
+static const int DEFAULT_WINDOW_HEIGHT = 420;
+static const int DEFAULT_WINDOW_WIDTH = 840;
+static const int MAXIMUM_WINDOW_WIDTH = 1000;
+
 KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     QDialog(parent),
     mKSWidget(new KSWidget),
@@ -186,10 +190,26 @@ void KSMainWindow::init()
     if (!mOnClickAvailable) {
         mKSWidget->disableOnClick();
     }
-    resize(QSize(840, 420).expandedTo(minimumSize()));
+    resize(QSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT).expandedTo(minimumSize()));
 
 
     // done with the init
+}
+
+int KSMainWindow::windowWidth(const QPixmap &pixmap) const
+{
+    // Calculates what the width of the window should be for the captured image to perfectly fit
+    // the area reserved for the image, with the height already set.
+
+    const float pixmapAspectRatio = (float)pixmap.width() / pixmap.height();
+    const int imageHeight = mKSWidget->height() - 2 * layout()->spacing();
+    const int imageWidth = pixmapAspectRatio * imageHeight;
+
+    int alignedWindowWidth = qMin(mKSWidget->imagePaddingWidth() + imageWidth, MAXIMUM_WINDOW_WIDTH);
+    alignedWindowWidth += layout()->contentsMargins().left() + layout()->contentsMargins().right();
+    alignedWindowWidth += 2; // margins is removing 1 - 1 pixel for some reason
+
+    return alignedWindowWidth;
 }
 
 void KSMainWindow::buildSaveMenu()
@@ -260,6 +280,8 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     setWindowModified(true);
 
     show();
+
+    resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
 }
 
 void KSMainWindow::showPrintDialog()

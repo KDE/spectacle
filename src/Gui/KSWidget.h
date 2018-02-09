@@ -42,8 +42,10 @@ class KSWidget : public QWidget
     Q_OBJECT
 
 	public:
-    
+
     explicit KSWidget(QWidget *parent = 0);
+
+    int imagePaddingWidth() const;
 
 	signals:
 
@@ -62,7 +64,7 @@ class KSWidget : public QWidget
     void captureModeChanged(int index);
 
 	private:
-    
+
     QGridLayout   *mMainLayout;
     QHBoxLayout   *mDelayLayout;
     QVBoxLayout   *mRightLayout;

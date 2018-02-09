@@ -31,9 +31,14 @@
 
 #include <KLocalizedString>
 
+namespace SpectacleImage {
+    static const int SHADOW_RADIUS = 5;
+}
+
 class KSImageWidget : public QLabel
 {
     Q_OBJECT
+
 
     public:
 

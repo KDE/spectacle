@@ -142,13 +142,13 @@ KSWidget::KSWidget(QWidget *parent) :
     mRightLayout->addLayout(mContentOptionsForm);
     mRightLayout->addStretch(10);
     mRightLayout->addWidget(mTakeScreenshotButton, 1, Qt::AlignHCenter);
-    mRightLayout->setContentsMargins(20, 0, 0, 10);
+    mRightLayout->setContentsMargins(10, 0, 0, 10);
 
     mMainLayout = new QGridLayout(this);
     mMainLayout->addWidget(mImageWidget, 0, 0, 1, 1);
     mMainLayout->addLayout(mRightLayout, 0, 1, 1, 1);
-    mMainLayout->setColumnMinimumWidth(0, 400);
-    mMainLayout->setColumnMinimumWidth(1, 400);
+    mMainLayout->setColumnMinimumWidth(0, 320);
+    mMainLayout->setColumnMinimumWidth(1, 320);
 
     // and read in the saved checkbox states and capture mode indices
 
@@ -160,6 +160,22 @@ KSWidget::KSWidget(QWidget *parent) :
     mDelayMsec->setValue              (configManager->captureDelay());
 
     // done
+}
+
+int KSWidget::imagePaddingWidth() const
+{
+    int rightLayoutLeft = 0;
+    int rightLayoutRight = 0;
+    int mainLayoutRight = 0;
+
+    mRightLayout->getContentsMargins(&rightLayoutLeft, nullptr, &rightLayoutRight, nullptr);
+    mMainLayout->getContentsMargins(nullptr, nullptr, &mainLayoutRight, nullptr);
+
+    int paddingWidth = (rightLayoutLeft + rightLayoutRight + mainLayoutRight);
+    paddingWidth += mRightLayout->contentsRect().width();
+    paddingWidth += 2 * SpectacleImage::SHADOW_RADIUS; // image drop shadow
+
+    return paddingWidth;
 }
 
 // public slots
