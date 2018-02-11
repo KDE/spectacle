@@ -61,6 +61,8 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mClipboardButton(new QToolButton),
     mSaveButton(new QToolButton),
     mSaveMenu(new QMenu),
+    mSaveAsAction(new QAction),
+    mSaveAction(new QAction),
     mMessageWidget(new KMessageWidget),
     mToolsMenu(new QMenu),
     mExportMenu(new ExportMenu(this)),
@@ -163,13 +165,18 @@ void KSMainWindow::init()
     mSaveButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mSaveButton->setMenu(mSaveMenu);
     mSaveButton->setPopupMode(QToolButton::MenuButtonPopup);
-    buildSaveMenu();
     mDialogButtonBox->addButton(mSaveButton, QDialogButtonBox::ActionRole);
 
     // the help menu
-
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
+
+    // the save menu
+    mSaveAsAction = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
+    mSaveAction = KStandardAction::save(this, &KSMainWindow::save, this);
+    mSaveMenu->addAction(mSaveAsAction);
+    mSaveMenu->addAction(mSaveAction);
+    setDefaultSaveAction();
 
     // message widget
     connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) { QDesktopServices::openUrl(QUrl(str)); } );
@@ -222,24 +229,14 @@ int KSMainWindow::windowWidth(const QPixmap &pixmap) const
     return alignedWindowWidth;
 }
 
-void KSMainWindow::buildSaveMenu()
+void KSMainWindow::setDefaultSaveAction()
 {
-    // first clear the menu
-    mSaveMenu->clear();
-
-    // get our actions in order
-    QAction *actionSave = KStandardAction::save(this, &KSMainWindow::save, this);
-    QAction *actionSaveAs = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
-    mSaveMenu->addAction(actionSaveAs);
-    mSaveMenu->addAction(actionSave);
-
-    // put the actions in order
     switch (saveButtonMode()) {
     case SaveMode::SaveAs:
-        mSaveButton->setDefaultAction(actionSaveAs);
+        mSaveButton->setDefaultAction(mSaveAsAction);
         break;
     case SaveMode::Save:
-        mSaveButton->setDefaultAction(actionSave);
+        mSaveButton->setDefaultAction(mSaveAction);
         break;
     }
 }
@@ -341,7 +338,7 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 void KSMainWindow::save()
 {
     SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::Save);
-    buildSaveMenu();
+    setDefaultSaveAction();
 
     if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
         ExportManager::instance()->doSave(QUrl(), true);
@@ -356,7 +353,7 @@ void KSMainWindow::save()
 void KSMainWindow::saveAs()
 {
     SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::SaveAs);
-    buildSaveMenu();
+    setDefaultSaveAction();
 
     if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
         if (ExportManager::instance()->doSaveAs(this, true)) {

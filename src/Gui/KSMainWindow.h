@@ -54,7 +54,7 @@ class KSMainWindow : public QDialog
     void showImageSharedFeedback(bool error, const QString &message);
     void sendToClipboard();
     void init();
-    void buildSaveMenu();
+    void setDefaultSaveAction();
     void save();
     void saveAs();
     int windowWidth(const QPixmap &pixmap) const;
@@ -84,6 +84,8 @@ class KSMainWindow : public QDialog
     QToolButton      *mClipboardButton;
     QToolButton      *mSaveButton;
     QMenu            *mSaveMenu;
+    QAction          *mSaveAsAction;
+    QAction          *mSaveAction;
     KMessageWidget   *mMessageWidget;
     QMenu            *mToolsMenu;
     ExportMenu       *mExportMenu;
