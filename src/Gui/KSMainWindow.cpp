@@ -230,16 +230,16 @@ void KSMainWindow::buildSaveMenu()
     // get our actions in order
     QAction *actionSave = KStandardAction::save(this, &KSMainWindow::save, this);
     QAction *actionSaveAs = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
+    mSaveMenu->addAction(actionSaveAs);
+    mSaveMenu->addAction(actionSave);
 
     // put the actions in order
     switch (saveButtonMode()) {
     case SaveMode::SaveAs:
         mSaveButton->setDefaultAction(actionSaveAs);
-        mSaveMenu->addAction(actionSave);
         break;
     case SaveMode::Save:
         mSaveButton->setDefaultAction(actionSave);
-        mSaveMenu->addAction(actionSaveAs);
         break;
     }
 }
