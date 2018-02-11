@@ -117,6 +117,19 @@ void SpectacleConfig::setCaptureTransientWindowOnlyChecked(bool enabled)
     mGuiConfig.sync();
 }
 
+// quit after saving, copying, or exporting the image
+
+bool SpectacleConfig::quitAfterSaveOrCopyChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("quitAfterSaveCopyExport"), false);
+}
+
+void SpectacleConfig::setQuitAfterSaveOrCopyChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("quitAfterSaveCopyExport"), enabled);
+    mGuiConfig.sync();
+}
+
 // capture delay
 
 qreal SpectacleConfig::captureDelay() const

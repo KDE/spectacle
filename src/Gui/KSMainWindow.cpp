@@ -192,6 +192,10 @@ void KSMainWindow::init()
     }
     resize(QSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT).expandedTo(minimumSize()));
 
+    // Allow Ctrl+Q to quit the app
+    QAction *actionQuit = KStandardAction::quit(qApp, &QApplication::quit, this);
+    actionQuit->setShortcut(QKeySequence::Quit);
+    addAction(actionQuit);
 
     // done with the init
 }
@@ -220,10 +224,6 @@ void KSMainWindow::buildSaveMenu()
     // get our actions in order
     QAction *actionSave = KStandardAction::save(this, &KSMainWindow::save, this);
     QAction *actionSaveAs = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
-    QAction *actionSaveExit = new QAction(QIcon::fromTheme(QStringLiteral("document-save")), i18n("Save &&& Exit"), this);
-    actionSaveExit->setToolTip(i18n("Save screenshot in your Pictures directory and exit"));
-    actionSaveExit->setShortcut(QKeySequence(QKeySequence::Quit));
-    connect(actionSaveExit, &QAction::triggered, this, &KSMainWindow::saveAndExit);
 
     // static or dynamic
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
@@ -234,17 +234,10 @@ void KSMainWindow::buildSaveMenu()
     case 0:
     default:
         mSaveButton->setDefaultAction(actionSaveAs);
-        mSaveMenu->addAction(actionSaveExit);
         mSaveMenu->addAction(actionSave);
         break;
     case 1:
         mSaveButton->setDefaultAction(actionSave);
-        mSaveMenu->addAction(actionSaveExit);
-        mSaveMenu->addAction(actionSaveAs);
-        break;
-    case 2:
-        mSaveButton->setDefaultAction(actionSaveExit);
-        mSaveMenu->addAction(actionSave);
         mSaveMenu->addAction(actionSaveAs);
         break;
     }
@@ -318,6 +311,12 @@ void KSMainWindow::sendToClipboard()
 {
     ExportManager::instance()->doCopyToClipboard();
 
+    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
+        qApp->setQuitOnLastWindowClosed(false);
+        hide();
+        QTimer::singleShot(250, qApp, &QApplication::quit);
+    }
+
     mMessageWidget->setMessageType(KMessageWidget::Information);
     mMessageWidget->setText(i18n("The screenshot has been copied to the clipboard."));
     mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
@@ -342,20 +341,29 @@ void KSMainWindow::save()
 {
     SpectacleConfig::instance()->setLastUsedSaveMode(1);
     buildSaveMenu();
-    ExportManager::instance()->doSave();
+
+    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
+        ExportManager::instance()->doSave(QUrl(), true);
+        qApp->setQuitOnLastWindowClosed(false);
+        hide();
+    }
+    else {
+        ExportManager::instance()->doSave();
+    }
 }
 
 void KSMainWindow::saveAs()
 {
     SpectacleConfig::instance()->setLastUsedSaveMode(0);
     buildSaveMenu();
-    ExportManager::instance()->doSaveAs(this);
-}
 
-void KSMainWindow::saveAndExit()
-{
-    SpectacleConfig::instance()->setLastUsedSaveMode(2);
-    qApp->setQuitOnLastWindowClosed(false);
-    ExportManager::instance()->doSave(QUrl(), true);
-    hide();
+    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
+        if (ExportManager::instance()->doSaveAs(this, true)) {
+            qApp->setQuitOnLastWindowClosed(false);
+            hide();
+        }
+    }
+    else {
+        ExportManager::instance()->doSaveAs(this, false);
+    }
 }

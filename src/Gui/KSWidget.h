@@ -78,6 +78,7 @@ class KSWidget : public QWidget
     QCheckBox     *mMousePointer;
     QCheckBox     *mWindowDecorations;
     QCheckBox     *mCaptureTransientOnly;
+    QCheckBox     *mQuitAfterSaveOrCopy;
     QLabel        *mCaptureModeLabel;
     QLabel        *mContentOptionsLabel;
 };

@@ -87,10 +87,10 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureModeForm->addRow(i18n("Delay:"), mDelayLayout);
     mCaptureModeForm->setContentsMargins(24, 0, 0, 0);
 
-    // the content options (mouse pointer, window decorations)
+    // options (mouse pointer, window decorations, quit after saving or copying)
 
     mContentOptionsLabel = new QLabel(this);
-    mContentOptionsLabel->setText(i18n("<b>Content Options</b>"));
+    mContentOptionsLabel->setText(i18n("<b>Options</b>"));
 
     mMousePointer = new QCheckBox(i18n("Include mouse pointer"), this);
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
@@ -107,11 +107,15 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureTransientOnly->setEnabled(false);
     connect(mCaptureTransientOnly, &QCheckBox::clicked, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
+    mQuitAfterSaveOrCopy = new QCheckBox(i18n("Quit after Save or Copy"), this);
+    mQuitAfterSaveOrCopy->setToolTip(i18n("Quit Spectacle after saving or copying the image"));
+    connect(mQuitAfterSaveOrCopy, &QCheckBox::clicked, configManager, &SpectacleConfig::setQuitAfterSaveOrCopyChecked);
+
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);
     mContentOptionsForm->addWidget(mWindowDecorations);
     mContentOptionsForm->addWidget(mCaptureTransientOnly);
-    mContentOptionsForm->setSpacing(16);
+    mContentOptionsForm->addWidget(mQuitAfterSaveOrCopy);
     mContentOptionsForm->setContentsMargins(24, 0, 0, 0);
 
     // the take a new screenshot button
@@ -134,11 +138,9 @@ KSWidget::KSWidget(QWidget *parent) :
     mRightLayout = new QVBoxLayout;
     mRightLayout->addStretch(1);
     mRightLayout->addWidget(mCaptureModeLabel);
-    mRightLayout->addSpacing(10);
     mRightLayout->addLayout(mCaptureModeForm);
     mRightLayout->addStretch(1);
     mRightLayout->addWidget(mContentOptionsLabel);
-    mRightLayout->addSpacing(10);
     mRightLayout->addLayout(mContentOptionsForm);
     mRightLayout->addStretch(10);
     mRightLayout->addWidget(mTakeScreenshotButton, 1, Qt::AlignHCenter);
@@ -156,6 +158,7 @@ KSWidget::KSWidget(QWidget *parent) :
     mWindowDecorations->setChecked    (configManager->includeDecorationsChecked());
     mCaptureOnClick->setChecked       (configManager->onClickChecked());
     mCaptureTransientOnly->setChecked (configManager->captureTransientWindowOnlyChecked());
+    mQuitAfterSaveOrCopy->setChecked  (configManager->quitAfterSaveOrCopyChecked());
     mCaptureArea->setCurrentIndex     (configManager->captureMode());
     mDelayMsec->setValue              (configManager->captureDelay());
 

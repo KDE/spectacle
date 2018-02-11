@@ -67,6 +67,9 @@ class SpectacleConfig : public QObject
     bool captureTransientWindowOnlyChecked() const;
     void setCaptureTransientWindowOnlyChecked(bool enabled);
 
+    bool quitAfterSaveOrCopyChecked() const;
+    void setQuitAfterSaveOrCopyChecked(bool enabled);
+
     qreal captureDelay() const;
     void setCaptureDelay(qreal delay);
 

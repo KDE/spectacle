@@ -326,7 +326,7 @@ void ExportManager::doSave(const QUrl &url, bool notify)
     }
 }
 
-void ExportManager::doSaveAs(QWidget *parentWindow)
+bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 {
     QStringList supportedFilters;
     SpectacleConfig *config = SpectacleConfig::instance();
@@ -353,9 +353,15 @@ void ExportManager::doSaveAs(QWidget *parentWindow)
             if (save(saveUrl)) {
                 emit imageSaved(saveUrl);
                 config->setLastSaveAsLocation(saveUrl.adjusted(QUrl::RemoveFilename));
+
+                if (notify) {
+                    emit forceNotify(saveUrl);
+                }
+                return true;
             }
         }
     }
+    return false;
 }
 
 // misc helpers
