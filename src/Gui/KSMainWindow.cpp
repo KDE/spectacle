@@ -106,6 +106,12 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
 KSMainWindow::~KSMainWindow()
 {}
 
+SaveMode KSMainWindow::saveButtonMode() const
+{
+    const SpectacleConfig *cfgManager = SpectacleConfig::instance();
+    return cfgManager->useDynamicSaveButton() ? cfgManager->lastUsedSaveMode() : SaveMode::SaveAs;
+}
+
 // GUI init
 
 void KSMainWindow::init()
@@ -225,18 +231,13 @@ void KSMainWindow::buildSaveMenu()
     QAction *actionSave = KStandardAction::save(this, &KSMainWindow::save, this);
     QAction *actionSaveAs = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
 
-    // static or dynamic
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-    int switchState = cfgManager->useDynamicSaveButton() ? cfgManager->lastUsedSaveMode() : 0;
-
     // put the actions in order
-    switch (switchState) {
-    case 0:
-    default:
+    switch (saveButtonMode()) {
+    case SaveMode::SaveAs:
         mSaveButton->setDefaultAction(actionSaveAs);
         mSaveMenu->addAction(actionSave);
         break;
-    case 1:
+    case SaveMode::Save:
         mSaveButton->setDefaultAction(actionSave);
         mSaveMenu->addAction(actionSaveAs);
         break;
@@ -339,7 +340,7 @@ void KSMainWindow::setScreenshotWindowTitle(QUrl location)
 
 void KSMainWindow::save()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(1);
+    SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::Save);
     buildSaveMenu();
 
     if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
@@ -354,7 +355,7 @@ void KSMainWindow::save()
 
 void KSMainWindow::saveAs()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(0);
+    SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::SaveAs);
     buildSaveMenu();
 
     if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {

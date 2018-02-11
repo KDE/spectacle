@@ -197,14 +197,14 @@ void SpectacleConfig::setUseLightRegionMaskColour(bool enabled)
 
 // last used save mode
 
-int SpectacleConfig::lastUsedSaveMode() const
+SaveMode SpectacleConfig::lastUsedSaveMode() const
 {
-    return mGuiConfig.readEntry(QStringLiteral("lastUsedSaveMode"), 0);
+    return static_cast<SaveMode>(mGuiConfig.readEntry(QStringLiteral("lastUsedSaveMode"), 0));
 }
 
-void SpectacleConfig::setLastUsedSaveMode(int index)
+void SpectacleConfig::setLastUsedSaveMode(SaveMode mode)
 {
-    mGuiConfig.writeEntry(QStringLiteral("lastUsedSaveMode"), index);
+    mGuiConfig.writeEntry(QStringLiteral("lastUsedSaveMode"), static_cast<int>(mode));
     mGuiConfig.sync();
 }
 

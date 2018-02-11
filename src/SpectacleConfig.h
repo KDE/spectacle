@@ -27,6 +27,11 @@
 #include <KSharedConfig>
 #include <KConfigGroup>
 
+enum SaveMode {
+    SaveAs,
+    Save
+};
+
 class SpectacleConfig : public QObject
 {
     Q_OBJECT
@@ -85,8 +90,8 @@ class SpectacleConfig : public QObject
     bool useLightRegionMaskColour() const;
     void setUseLightRegionMaskColour(bool enabled);
 
-    int lastUsedSaveMode() const;
-    void setLastUsedSaveMode(int index);
+    SaveMode lastUsedSaveMode() const;
+    void setLastUsedSaveMode(SaveMode mode);
 
     QString autoSaveFilenameFormat() const;
     void setAutoSaveFilenameFormat(const QString &format);

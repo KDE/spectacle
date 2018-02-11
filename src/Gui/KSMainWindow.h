@@ -31,6 +31,7 @@
 #include "PlatformBackends/ImageGrabber.h"
 #include "ExportMenu.h"
 #include "KSWidget.h"
+#include "SpectacleConfig.h"
 
 class KSMainWindow : public QDialog
 {
@@ -40,6 +41,10 @@ class KSMainWindow : public QDialog
 
     explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
     ~KSMainWindow();
+
+    private:
+
+    SaveMode saveButtonMode() const;
 
     private slots:
 
