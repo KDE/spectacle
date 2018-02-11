@@ -329,7 +329,6 @@ void ExportManager::doSave(const QUrl &url, bool notify)
 void ExportManager::doSaveAs(QWidget *parentWindow)
 {
     QStringList supportedFilters;
-    QMimeDatabase db;
     SpectacleConfig *config = SpectacleConfig::instance();
 
     // construct the supported mimetype list
