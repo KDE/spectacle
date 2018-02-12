@@ -41,9 +41,14 @@
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
     mSavePixmap(QPixmap()),
+    mLastSavePath(QUrl()),
     mTempFile(QUrl()),
     mTempDir(nullptr)
-{}
+{
+    connect(this, &ExportManager::imageSaved, [this](const QUrl savedAt) {
+        mLastSavePath = savedAt;
+    });
+}
 
 ExportManager::~ExportManager()
 {
@@ -116,6 +121,11 @@ QString ExportManager::saveLocation() const
     }
 
     return savePath;
+}
+
+QUrl ExportManager::lastSavePath() const
+{
+    return isFileExists(mLastSavePath) ? mLastSavePath : QUrl();
 }
 
 void ExportManager::setSaveLocation(const QString &savePath)

@@ -40,6 +40,7 @@
 #include <KHelpMenu>
 #include <KAboutData>
 #include <KWindowSystem>
+#include <KIO/OpenFileManagerWindowJob>
 
 #include "SettingsDialog/SettingsDialog.h"
 #include "ExportMenu.h"
@@ -149,7 +150,6 @@ void KSMainWindow::init()
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
     mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("application-menu")));
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
-    mToolsMenu->addAction(KStandardAction::print(this, SLOT(showPrintDialog()), this));
     mToolsButton->setMenu(mToolsMenu);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export")));
@@ -170,6 +170,13 @@ void KSMainWindow::init()
     // the help menu
     KHelpMenu *helpMenu = new KHelpMenu(this, KAboutData::applicationData(), true);
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
+
+    // the tools menu
+    mToolsMenu->addAction(KStandardAction::print(this, &KSMainWindow::showPrintDialog, this));
+    mToolsMenu->addAction(
+                QIcon::fromTheme(QStringLiteral("document-open-folder")),
+                i18n("Open Screenshots Folder"),
+                this, &KSMainWindow::openScreenshotsFolder);
 
     // the save menu
     mSaveAsAction = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
@@ -284,6 +291,27 @@ void KSMainWindow::showPrintDialog()
         return;
     }
     delete printer;
+}
+
+void KSMainWindow::openScreenshotsFolder()
+{
+    // Highlight last screenshot in file manager if user saved at least once,
+    // or open default directory as determined by save button
+    QUrl location = ExportManager::instance()->lastSavePath();
+    if (!ExportManager::instance()->isFileExists(location)) {
+        switch(saveButtonMode()) {
+        case SaveMode::Save:
+            location = QUrl::fromLocalFile(ExportManager::instance()->saveLocation() + QStringLiteral("/"));
+            break;
+        case SaveMode::SaveAs:
+            location = SpectacleConfig::instance()->lastSaveAsLocation();
+            break;
+        }
+        if (!ExportManager::instance()->isFileExists(location)) {
+            location = QUrl(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + QStringLiteral("/"));
+        }
+    }
+    KIO::highlightInFileManager({location});
 }
 
 void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)

@@ -55,6 +55,8 @@ class ExportManager : public QObject
 
     void setSaveLocation(const QString &location);
     QString saveLocation() const;
+    QUrl lastSavePath() const;
+    bool isFileExists(const QUrl &url) const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
     QString pixmapDataUri() const;
@@ -88,10 +90,10 @@ class ExportManager : public QObject
     bool save(const QUrl &url);
     bool localSave(const QUrl &url, const QString &mimetype);
     bool remoteSave(const QUrl &url, const QString &mimetype);
-    bool isFileExists(const QUrl &url) const;
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     QPixmap mSavePixmap;
+    QUrl mLastSavePath;
     QUrl mTempFile;
     QTemporaryDir *mTempDir;
     QList<QUrl> mUsedTempFileNames;
