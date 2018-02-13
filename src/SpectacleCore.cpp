@@ -279,7 +279,6 @@ void SpectacleCore::doStartDragAndDrop()
 
     QMimeData *mimeData = new QMimeData;
     mimeData->setUrls(QList<QUrl> { tempFile });
-    mimeData->setImageData(mExportManager->pixmap());
     mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(tempFile.fileName()));
 
     QDrag *dragHandler = new QDrag(this);
