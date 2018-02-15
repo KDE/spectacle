@@ -152,13 +152,6 @@ void KSMainWindow::init()
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
     mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("application-menu")));
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
-    mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
-    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, [this]()
-    {
-        mScreenrecorderToolsMenuFactory.reset(new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools")));
-        mScreenRecorderToolsMenu->clear();
-        mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, { QStringLiteral("screenrecorder") });
-    } );
     mToolsButton->setMenu(mToolsMenu);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export")));
@@ -181,11 +174,17 @@ void KSMainWindow::init()
     mDialogButtonBox->button(QDialogButtonBox::Help)->setMenu(helpMenu->menu());
 
     // the tools menu
+    mToolsMenu->addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
+                          i18n("Open Screenshots Folder"),
+                          this, &KSMainWindow::openScreenshotsFolder);
     mToolsMenu->addAction(KStandardAction::print(this, &KSMainWindow::showPrintDialog, this));
-    mToolsMenu->addAction(
-                QIcon::fromTheme(QStringLiteral("document-open-folder")),
-                i18n("Open Screenshots Folder"),
-                this, &KSMainWindow::openScreenshotsFolder);
+    mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
+    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, [this]()
+    {
+        mScreenrecorderToolsMenuFactory.reset(new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools")));
+        mScreenRecorderToolsMenu->clear();
+        mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, { QStringLiteral("screenrecorder") });
+    } );
 
     // the save menu
     mSaveAsAction = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
