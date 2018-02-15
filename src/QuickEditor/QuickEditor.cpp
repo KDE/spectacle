@@ -83,6 +83,7 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     d->mQmlEngine->addImageProvider(QStringLiteral("snapshot"), mImageStore);
 
     d->mQuickView = new QQuickView(d->mQmlEngine, 0);
+    d->mQuickView->setClearBeforeRendering(false);
     d->mQuickView->setSource(QUrl(QStringLiteral("qrc:///QuickEditor/EditorRoot.qml")));
 
     d->mQuickView->setFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::Tool);
