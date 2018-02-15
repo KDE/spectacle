@@ -41,6 +41,7 @@
 #include <KAboutData>
 #include <KWindowSystem>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KNS3/KMoreToolsMenuFactory>
 
 #include "SettingsDialog/SettingsDialog.h"
 #include "ExportMenu.h"
@@ -66,6 +67,7 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     mSaveAction(new QAction),
     mMessageWidget(new KMessageWidget),
     mToolsMenu(new QMenu),
+    mScreenRecorderToolsMenu(new QMenu),
     mExportMenu(new ExportMenu(this)),
     mOnClickAvailable(onClickAvailable)
 {
@@ -150,6 +152,13 @@ void KSMainWindow::init()
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
     mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("application-menu")));
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
+    mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
+    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, [this]()
+    {
+        mScreenrecorderToolsMenuFactory.reset(new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools")));
+        mScreenRecorderToolsMenu->clear();
+        mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, { QStringLiteral("screenrecorder") });
+    } );
     mToolsButton->setMenu(mToolsMenu);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export")));

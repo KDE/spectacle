@@ -189,31 +189,39 @@
 		<sect1>
 			<title>Buttons</title>
 
-			<para>There are six buttons located at the bottom of the &spectacle; window. Their functions are described below:</para>
+			<para>There are some buttons located at the bottom of the &spectacle; window. Their functions are described below:</para>
 
 			<variablelist>
 				<varlistentry>
 					<term><guibutton>Help</guibutton></term>
 					<listitem>
-						<para>This button gives you the common menu items described in the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
+						<para>Gives you the common menu items described in the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
 					<term><guibutton>Configure...</guibutton></term>
 					<listitem>
-						<para>This button gives you access to Spectacle's Configure window where you can change the capture settings and default save location and filename.</para>
+						<para>Gives you access to Spectacle's Configure window where you can change the capture settings and default save location and filename.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
 					<term><guibutton>Tools</guibutton></term>
 					<listitem>
-						<para>Clicking on this button shows a drop-down menu, offering access to various functions. You can open the <guimenuitem>Print</guimenuitem> dialog, and <guimenuitem>Open Screenshots Folder</guimenuitem> is a shortcut to highlight the last saved screenshot in the default file manager.</para>
+                        <para>Opens a drop-down menu which offers various tools:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para>the print dialog</para>
+                            </listitem>
+                            <listitem>
+                                <para>a range of external programs for Screen Recording</para>
+                            </listitem>
+                        </itemizedlist>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
 					<term><guibutton>Export</guibutton></term>
 					<listitem>
-						<para>This drop-down menu will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) &MIME; type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
+						<para>Opens a drop-down menu that will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) &MIME; type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
 
 						<para>Furthermore, if you have the <application>KIPI Plugins</application> installed, you will be able to email your screenshots and export them directly to some social networks and websites.</para>
 					</listitem>
@@ -221,13 +229,13 @@
 				<varlistentry>
 					<term><guibutton>Copy To Clipboard</guibutton></term>
 					<listitem>
-						<para>This button copies the current screenshot to the clipboard. You can also use the <keycombo action="simul">&Ctrl;<keycap>C</keycap></keycombo> keyboard shortcut for this.</para>
+						<para>Copies the current screenshot to the clipboard. You can also use the <keycombo action="simul">&Ctrl;<keycap>C</keycap></keycombo> keyboard shortcut for this.</para>
 					</listitem>
 				</varlistentry>
 				<varlistentry>
 					<term><guibutton>Save As</guibutton></term>
 					<listitem>
-						<para>Clicking this button saves the screenshot as a PNG image to a location of your choosing. Clicking on the arrow on the side will expose the other save mode, <guimenuitem>Save</guimenuitem>, which will save the screenshot as a PNG image to the standard location (which defaults to your Pictures folder). By default, the last-used save mode is remembered for next time.</para>
+						<para>Saves the screenshot as a PNG image in your default Pictures folder and immediately exits the application.</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>

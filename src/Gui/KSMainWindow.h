@@ -33,6 +33,8 @@
 #include "KSWidget.h"
 #include "SpectacleConfig.h"
 
+class KMoreToolsMenuFactory;
+
 class KSMainWindow : public QDialog
 {
     Q_OBJECT
@@ -89,6 +91,8 @@ class KSMainWindow : public QDialog
     QAction          *mSaveAction;
     KMessageWidget   *mMessageWidget;
     QMenu            *mToolsMenu;
+    QMenu            *mScreenRecorderToolsMenu;
+    QScopedPointer<KMoreToolsMenuFactory> mScreenrecorderToolsMenuFactory;
     ExportMenu       *mExportMenu;
     bool              mOnClickAvailable;
 };

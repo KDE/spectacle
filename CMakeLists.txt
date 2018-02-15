@@ -56,6 +56,7 @@ find_package(
         WindowSystem
         DocTools
         Declarative
+        NewStuff
 )
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)

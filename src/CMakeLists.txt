@@ -75,6 +75,7 @@ target_link_libraries(
         KF5::WindowSystem
         KF5::XmlGui
         KF5::Declarative
+        KF5::NewStuff
 )
 
 if(XCB_FOUND)
