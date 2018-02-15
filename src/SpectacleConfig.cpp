@@ -43,7 +43,7 @@ SpectacleConfig* SpectacleConfig::instance()
 QUrl SpectacleConfig::lastSaveAsLocation() const
 {
     return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsLocation"),
-                                    QUrl::fromUserInput(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)));
+                                    QUrl::fromUserInput(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + QStringLiteral("/")));
 }
 
 void SpectacleConfig::setLastSaveAsLocation(const QUrl &location)

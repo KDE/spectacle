@@ -312,7 +312,7 @@ void KSMainWindow::openScreenshotsFolder()
             location = QUrl::fromLocalFile(ExportManager::instance()->saveLocation() + QStringLiteral("/"));
             break;
         case SaveMode::SaveAs:
-            location = SpectacleConfig::instance()->lastSaveAsLocation();
+            location = SpectacleConfig::instance()->lastSaveAsLocation();  // already has a "/" at the end
             break;
         }
         if (!ExportManager::instance()->isFileExists(location)) {
