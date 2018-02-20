@@ -27,7 +27,7 @@
 #include <KSharedConfig>
 #include <KConfigGroup>
 
-enum SaveMode {
+enum class SaveMode {
     SaveAs,
     Save
 };
