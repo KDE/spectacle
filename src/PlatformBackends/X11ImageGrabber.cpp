@@ -433,13 +433,20 @@ void X11ImageGrabber::grabTransientWithParent()
 
     QSet<xcb_window_t> transients;
     xcb_window_t parentWinId = curWin;
+    const QRect desktopRect(0, 0, 1, 1);
     do {
         // find parent window and add the window to the visible region
         xcb_window_t winId = parentWinId;
         QRect winRect;
         parentWinId = getTransientWindowParent(winId, winRect);
         transients << winId;
-        clipRegion += winRect;
+
+        // Don't include the 1x1 pixel sized desktop window in the top left corner that is present
+        // if the window is a QDialog without a parent.
+        // BUG: 376350
+        if (winRect != desktopRect) {
+            clipRegion += winRect;
+        }
 
         // Continue walking only if this is a transient window (having a parent)
     } while (parentWinId != XCB_WINDOW_NONE && !transients.contains(parentWinId));
