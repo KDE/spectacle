@@ -43,7 +43,6 @@ class GeneralOptionsPage : public SettingsPage
 
     private:
 
-    QCheckBox *mUseLastSaveAction;
     QCheckBox *mRememberRect;
     QCheckBox *mUseLightBackground;
     QCheckBox *mCopyPathToClipboard;

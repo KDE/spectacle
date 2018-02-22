@@ -156,19 +156,6 @@ void SpectacleConfig::setCaptureMode(int index)
     mGuiConfig.sync();
 }
 
-// dynamic save button
-
-bool SpectacleConfig::useDynamicSaveButton() const
-{
-    return mGuiConfig.readEntry(QStringLiteral("dynamicSaveButton"), true);
-}
-
-void SpectacleConfig::setUseDynamicSaveButton(bool enabled)
-{
-    mGuiConfig.writeEntry(QStringLiteral("dynamicSaveButton"), enabled);
-    mGuiConfig.sync();
-}
-
 // remember last rectangular region
 
 bool SpectacleConfig::rememberLastRectangularRegion() const

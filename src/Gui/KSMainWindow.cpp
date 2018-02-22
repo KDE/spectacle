@@ -111,12 +111,6 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
 KSMainWindow::~KSMainWindow()
 {}
 
-SaveMode KSMainWindow::saveButtonMode() const
-{
-    const SpectacleConfig *cfgManager = SpectacleConfig::instance();
-    return cfgManager->useDynamicSaveButton() ? cfgManager->lastUsedSaveMode() : SaveMode::SaveAs;
-}
-
 // GUI init
 
 void KSMainWindow::init()
@@ -246,7 +240,7 @@ int KSMainWindow::windowWidth(const QPixmap &pixmap) const
 
 void KSMainWindow::setDefaultSaveAction()
 {
-    switch (saveButtonMode()) {
+    switch (SpectacleConfig::instance()->lastUsedSaveMode()) {
     case SaveMode::SaveAs:
         mSaveButton->setDefaultAction(mSaveAsAction);
         break;
@@ -307,7 +301,7 @@ void KSMainWindow::openScreenshotsFolder()
     // or open default directory as determined by save button
     QUrl location = ExportManager::instance()->lastSavePath();
     if (!ExportManager::instance()->isFileExists(location)) {
-        switch(saveButtonMode()) {
+        switch(SpectacleConfig::instance()->lastUsedSaveMode()) {
         case SaveMode::Save:
             location = QUrl::fromLocalFile(ExportManager::instance()->saveLocation() + QStringLiteral("/"));
             break;

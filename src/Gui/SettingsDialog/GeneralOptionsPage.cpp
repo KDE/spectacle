@@ -35,18 +35,11 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-    // dynamic save button
-
-    mUseLastSaveAction = new QCheckBox(i18n("Remember last used Save mode"), this);
-    connect(mUseLastSaveAction, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addWidget(mUseLastSaveAction, 1);
-
     // copy save path to clipboard
 
     mCopyPathToClipboard = new QCheckBox(i18n("Copy save location to the clipboard"), this);
     connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addWidget(mCopyPathToClipboard, 1);
-
 
     // Rectangular Region settings
 
@@ -92,7 +85,6 @@ void GeneralOptionsPage::saveChanges()
 {
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
-    cfgManager->setUseDynamicSaveButton(mUseLastSaveAction->checkState() == Qt::Checked);
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
     cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
@@ -104,7 +96,6 @@ void GeneralOptionsPage::resetChanges()
 {
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
-    mUseLastSaveAction->setChecked(cfgManager->useDynamicSaveButton());
     mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
     mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
     mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());

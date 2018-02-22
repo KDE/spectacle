@@ -44,10 +44,6 @@ class KSMainWindow : public QDialog
     explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
     ~KSMainWindow();
 
-    private:
-
-    SaveMode saveButtonMode() const;
-
     private slots:
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
