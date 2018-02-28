@@ -36,6 +36,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsDropShadowEffect>
 #include <QSet>
+#include <QtMath>
 
 #include <KWindowSystem>
 #include <KWindowInfo>
@@ -325,7 +326,13 @@ QPixmap X11ImageGrabber::getToplevelPixmap(QRect rect, bool blendPointer)
         QRegion screenRegion;
         for (auto screen : QGuiApplication::screens()) {
             QRect screenRect = screen->geometry();
-            screenRect.setSize(screenRect.size() * screen->devicePixelRatio());
+
+            // Do not use setSize() here, because QSize::operator*=()
+            // performs qRound() which can result in xcb_image_get() failing
+            const qreal dpr = screen->devicePixelRatio();
+            screenRect.setHeight(qFloor(screenRect.height() * dpr));
+            screenRect.setWidth(qFloor(screenRect.width() * dpr));
+
             screenRegion += screenRect;
         }
 
