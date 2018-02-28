@@ -20,6 +20,7 @@
 #ifndef IMAGEGRABBER_H
 #define IMAGEGRABBER_H
 
+#include <QObject>
 #include <QList>
 #include <QPixmap>
 #include <QScreen>
@@ -31,7 +32,6 @@
 class ImageGrabber : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(GrabMode)
 
     Q_PROPERTY(QPixmap pixmap READ pixmap NOTIFY pixmapChanged)
     Q_PROPERTY(bool capturePointer READ capturePointer WRITE setCapturePointer NOTIFY capturePointerChanged)
@@ -49,6 +49,8 @@ class ImageGrabber : public QObject
         TransientWithParent = 4,
         RectangularRegion   = 5
     };
+
+    Q_ENUM(GrabMode);
 
     explicit ImageGrabber(QObject *parent = 0);
     ~ImageGrabber();

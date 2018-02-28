@@ -67,7 +67,7 @@ void SettingsDialog::accept()
         }
     }
 
-    emit done(QDialog::Accepted);
+    done(QDialog::Accepted);
 }
 
 void SettingsDialog::onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before)
