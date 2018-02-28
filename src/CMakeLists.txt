@@ -99,7 +99,7 @@ endif()
 if(KDEExperimentalPurpose_FOUND)
     target_link_libraries (
         spectacle
-            KF5::PurposeWidgets
+            KDEExperimental::PurposeWidgets
     )
 endif()
 
