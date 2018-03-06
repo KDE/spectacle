@@ -321,6 +321,15 @@ QPixmap X11ImageGrabber::getToplevelPixmap(QRect rect, bool blendPointer)
     // Treat a null rect as an alias for capturing fullscreen
     if (!rect.isValid()) {
         rect = getDrawableGeometry(rootWindow);
+    } else {
+        QRegion screenRegion;
+        for (auto screen : QGuiApplication::screens()) {
+            QRect screenRect = screen->geometry();
+            screenRect.setSize(screenRect.size() * screen->devicePixelRatio());
+            screenRegion += screenRect;
+        }
+
+        rect = (screenRegion & rect).boundingRect();
     }
 
     QPixmap nativePixmap = getPixmapFromDrawable(rootWindow, rect);
