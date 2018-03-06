@@ -18,22 +18,6 @@
  */
 
 #include "SpectacleCore.h"
-#include "SpectacleConfig.h"
-
-#include <QClipboard>
-#include <QDir>
-#include <QTimer>
-#include <QDebug>
-#include <QMimeData>
-#include <QDrag>
-
-#include <KMessageBox>
-#include <KNotification>
-#include <KWindowSystem>
-#include <KLocalizedString>
-#include <KRun>
-#include <KConfigGroup>
-#include <KSharedConfig>
 
 #include "Config.h"
 #include "PlatformBackends/DummyImageGrabber.h"
@@ -41,6 +25,19 @@
 #include "PlatformBackends/X11ImageGrabber.h"
 #endif
 #include "PlatformBackends/KWinWaylandImageGrabber.h"
+
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KNotification>
+#include <KRun>
+#include <KWindowSystem>
+
+#include <QClipboard>
+#include <QDebug>
+#include <QDir>
+#include <QDrag>
+#include <QMimeData>
+#include <QTimer>
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
                qint64 delayMsec, bool notifyOnGrab, QObject *parent) :

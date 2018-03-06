@@ -25,17 +25,18 @@
 
 #include "X11ImageGrabber.h"
 
-#include <QX11Info>
-#include <QStack>
+#include <KWindowSystem>
+
 #include <QDBusConnection>
-#include <QDBusInterface>
 #include <QDBusConnectionInterface>
-#include <QDBusReply>
-#include <QPainter>
-#include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
+#include <QDBusInterface>
 #include <QGraphicsDropShadowEffect>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QPainter>
 #include <QSet>
+#include <QStack>
+#include <QX11Info>
 #include <QtMath>
 
 #include <KWindowSystem>

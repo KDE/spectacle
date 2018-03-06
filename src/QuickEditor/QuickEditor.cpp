@@ -19,21 +19,16 @@
 
 #include "QuickEditor.h"
 
-#include <QSize>
-#include <QPixmap>
-#include <QSharedPointer>
-#include <QMetaObject>
+#include "SpectacleConfig.h"
 
+#include <KDeclarative/KDeclarative>
+
+#include <QPixmap>
 #include <QQuickImageProvider>
 #include <QQuickItem>
 #include <QQuickItemGrabResult>
 #include <QQuickView>
-#include <QQmlEngine>
-
-#include <KLocalizedString>
-#include <KDeclarative/KDeclarative>
-
-#include "SpectacleConfig.h"
+#include <QSize>
 
 struct QuickEditor::ImageStore : public QQuickImageProvider
 {

@@ -19,15 +19,13 @@
 
 #include "SettingsDialog.h"
 
-#include <QMetaObject>
-#include <QIcon>
-#include <QMessageBox>
+#include "GeneralOptionsPage.h"
+#include "SaveOptionsPage.h"
 
 #include <KLocalizedString>
-#include <KPageWidgetModel>
 
-#include "SaveOptionsPage.h"
-#include "GeneralOptionsPage.h"
+#include <QIcon>
+#include <QMessageBox>
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
     KPageDialog(parent)

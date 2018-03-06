@@ -19,23 +19,21 @@
 
 #include "KSWidget.h"
 
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QFormLayout>
-#include <QComboBox>
+#include "KSImageWidget.h"
+#include "SmartSpinBox.h"
+#include "SpectacleConfig.h"
+
+#include <KLocalizedString>
+
 #include <QCheckBox>
+#include <QComboBox>
+#include <QFormLayout>
+#include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QShortcut>
 #include <QTimer>
 
-#include <KLocalizedString>
-
-#include "KSImageWidget.h"
-#include "SmartSpinBox.h"
-
-#include "SpectacleConfig.h"
 
 KSWidget::KSWidget(QWidget *parent) :
     QWidget(parent)

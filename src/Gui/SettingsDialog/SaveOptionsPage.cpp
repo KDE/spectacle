@@ -19,19 +19,17 @@
 
 #include "SaveOptionsPage.h"
 
+#include "SpectacleConfig.h"
+
+#include <KIOWidgets/KUrlRequester>
+#include <KLocalizedString>
+
 #include <QLineEdit>
 #include <QLabel>
 #include <QGroupBox>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QStandardPaths>
 #include <QComboBox>
 #include <QImageWriter>
-
-#include <KLocalizedString>
-#include <KIOWidgets/KUrlRequester>
-
-#include "SpectacleConfig.h"
 
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     SettingsPage(parent)

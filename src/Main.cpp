@@ -17,22 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <QApplication>
-#include <QIcon>
-#include <QObject>
-#include <QString>
-#include <QCommandLineParser>
-#include <QDBusConnection>
-#include <QDebug>
-
-#include <KAboutData>
-#include <KLocalizedString>
-#include <KDBusService>
-
+#include "Config.h"
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
-#include "ExportManager.h"
-#include "Config.h"
+
+#include <KAboutData>
+#include <KDBusService>
+#include <KLocalizedString>
+
+#include <QCommandLineParser>
+#include <QDBusConnection>
 
 int main(int argc, char **argv)
 {

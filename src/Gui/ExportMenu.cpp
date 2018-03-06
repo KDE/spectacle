@@ -19,25 +19,19 @@
 
 #include "ExportMenu.h"
 
-#include <QTimer>
-#include <QList>
-#include <QUrl>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QDebug>
+#include "Config.h"
 
 #include <KLocalizedString>
-#include <KStandardShortcut>
-#include <KService>
 #include <KMimeTypeTrader>
 #include <KRun>
-
-#include "Config.h"
+#include <KStandardShortcut>
 #ifdef KIPI_FOUND
 #include <KIPI/Plugin>
-#include <KIPI/PluginLoader>
-#include "KipiInterface/KSGKipiInterface.h"
 #endif
+
+#include <QDebug>
+#include <QJsonArray>
+#include <QTimer>
 
 ExportMenu::ExportMenu(QWidget *parent) :
     QMenu(parent),

@@ -22,12 +22,11 @@
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
 #include <QDBusUnixFileDescriptor>
-
-#include <QtConcurrentRun>
 #include <QFutureWatcher>
+#include <QtConcurrentRun>
 #include <qplatformdefs.h>
 
-#include <errno.h>
+#include <cerrno>
 
 static int readData(int fd, QByteArray &data)
 {

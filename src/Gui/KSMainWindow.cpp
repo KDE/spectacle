@@ -18,35 +18,30 @@
  */
 
 #include "KSMainWindow.h"
+
 #include "Config.h"
+#include "SettingsDialog/SettingsDialog.h"
+
+#include <KAboutData>
+#include <KGuiItem>
+#include <KHelpMenu>
+#include <KIO/OpenFileManagerWindowJob>
+#include <KLocalizedString>
+#include <KNS3/KMoreToolsMenuFactory>
+#include <KStandardAction>
+#include <KStandardGuiItem>
+#include <KWindowSystem>
 
 #include <QDesktopServices>
 #include <QJsonArray>
 #include <QPrintDialog>
-#include <QShortcut>
-#include <QTimer>
 #include <QPushButton>
+#include <QTimer>
 #include <QVBoxLayout>
-
 #ifdef XCB_FOUND
 #include <QX11Info>
-#include <xcb/xcb.h>
 #endif
 
-#include <KLocalizedString>
-#include <KGuiItem>
-#include <KStandardAction>
-#include <KStandardGuiItem>
-#include <KHelpMenu>
-#include <KAboutData>
-#include <KWindowSystem>
-#include <KIO/OpenFileManagerWindowJob>
-#include <KNS3/KMoreToolsMenuFactory>
-
-#include "SettingsDialog/SettingsDialog.h"
-#include "ExportMenu.h"
-#include "ExportManager.h"
-#include "SpectacleConfig.h"
 
 static const int DEFAULT_WINDOW_HEIGHT = 420;
 static const int DEFAULT_WINDOW_WIDTH = 840;

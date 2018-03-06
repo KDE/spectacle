@@ -19,8 +19,6 @@
 
 #include "SpectacleConfig.h"
 
-#include <QStandardPaths>
-
 SpectacleConfig::SpectacleConfig(QObject *parent) :
     QObject(parent)
 {

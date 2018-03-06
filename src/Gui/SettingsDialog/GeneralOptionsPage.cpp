@@ -19,14 +19,13 @@
 
 #include "GeneralOptionsPage.h"
 
-#include <QGroupBox>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QCheckBox>
+#include "SpectacleConfig.h"
 
 #include <KLocalizedString>
 
-#include "SpectacleConfig.h"
+#include <QCheckBox>
+#include <QGroupBox>
+#include <QVBoxLayout>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     SettingsPage(parent)
