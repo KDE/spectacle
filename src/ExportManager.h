@@ -26,6 +26,8 @@
 #include <QPixmap>
 #include <QUrl>
 
+#include "PlatformBackends/ImageGrabber.h"
+
 class QTemporaryDir;
 
 class ExportManager : public QObject
@@ -52,6 +54,8 @@ class ExportManager : public QObject
 
     Q_PROPERTY(QString saveLocation READ saveLocation WRITE setSaveLocation NOTIFY saveLocationChanged)
     Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap NOTIFY pixmapChanged)
+    Q_PROPERTY(QString windowTitle READ windowTitle WRITE setWindowTitle)
+    Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode)
 
     void setSaveLocation(const QString &location);
     QString saveLocation() const;
@@ -60,6 +64,10 @@ class ExportManager : public QObject
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
     QString pixmapDataUri() const;
+    void setWindowTitle(const QString &windowTitle);
+    QString windowTitle() const;
+    ImageGrabber::GrabMode grabMode() const;
+    void setGrabMode(const ImageGrabber::GrabMode &grabMode);
 
     signals:
 
@@ -81,6 +89,7 @@ class ExportManager : public QObject
 
     private:
 
+    QString truncatedFilename(const QString &filename);
     QString makeAutosaveFilename();
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl&) const;
     QString autoIncrementFilename(const QString &baseName, const QString &extension,
@@ -97,6 +106,8 @@ class ExportManager : public QObject
     QUrl mTempFile;
     QTemporaryDir *mTempDir;
     QList<QUrl> mUsedTempFileNames;
+    QString mWindowTitle;
+    ImageGrabber::GrabMode mGrabMode;
 };
 
 #endif // EXPORTMANAGER_H

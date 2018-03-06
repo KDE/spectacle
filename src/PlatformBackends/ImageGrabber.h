@@ -69,6 +69,7 @@ class ImageGrabber : public QObject
     signals:
 
     void pixmapChanged(const QPixmap &pixmap);
+    void windowTitleChanged(const QString &windowTitle);
     void imageGrabFailed();
     void capturePointerChanged(bool capturePointer);
     void captureDecorationsChanged(bool captureDecorations);

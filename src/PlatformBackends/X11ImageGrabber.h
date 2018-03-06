@@ -87,6 +87,7 @@ class X11ImageGrabber : public ImageGrabber
     QPoint               getNativeCursorPosition();
 
     OnClickEventFilter          *mNativeEventFilter;
+    void updateWindowTitle(xcb_window_t window);
 };
 
 template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPodDeleter>;

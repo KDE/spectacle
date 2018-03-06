@@ -29,6 +29,7 @@
 #include <QPainter>
 #include <QFileDialog>
 #include <QBuffer>
+#include <QRegularExpression>
 
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -85,6 +86,26 @@ QString ExportManager::pixmapDataUri() const
 
     QString uri = QStringLiteral("data:image/png;base64,") + QString::fromLatin1(imageData.toBase64());
     return uri;
+}
+
+void ExportManager::setWindowTitle(const QString &windowTitle)
+{
+    mWindowTitle = windowTitle;
+}
+
+QString ExportManager::windowTitle() const
+{
+    return mWindowTitle;
+}
+
+ImageGrabber::GrabMode ExportManager::grabMode() const
+{
+    return mGrabMode;
+}
+
+void ExportManager::setGrabMode(const ImageGrabber::GrabMode &grabMode)
+{
+    mGrabMode = grabMode;
 }
 
 void ExportManager::setPixmap(const QPixmap &pixmap)
@@ -153,6 +174,17 @@ QUrl ExportManager::getAutosaveFilename()
     }
 }
 
+QString ExportManager::truncatedFilename(QString const &filename)
+{
+    QString result = filename;
+    constexpr auto maxFilenameLength = 255;
+    constexpr auto maxExtensionLength = 5;  // For example, ".jpeg"
+    constexpr auto maxCounterLength = 20;  // std::numeric_limits<quint64>::max() == 18446744073709551615
+    constexpr auto maxLength = maxFilenameLength - maxCounterLength - maxExtensionLength;
+    result.truncate(maxLength);
+    return result;
+}
+
 QString ExportManager::makeAutosaveFilename()
 {
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
@@ -161,33 +193,56 @@ QString ExportManager::makeAutosaveFilename()
     const QDateTime timestamp = QDateTime::currentDateTime();
     QString baseName = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
 
-    return baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
-                   .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
-                   .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
-                   .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
-                   .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
-                   .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
-                   .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")));
+    QString title;
+
+    if (mGrabMode == ImageGrabber::GrabMode::ActiveWindow ||
+        mGrabMode == ImageGrabber::GrabMode::TransientWithParent ||
+        mGrabMode == ImageGrabber::GrabMode::WindowUnderCursor) {
+        title = mWindowTitle;
+    } else {
+        // Remove '%T' with separators around it
+        const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");
+        const auto separator = QStringLiteral("([^%1]+)").arg(wordSymbol);
+        const auto re = QRegularExpression(QStringLiteral("(.*?)(%1%T|%T%1)(.*?)").arg(separator));
+        baseName.replace(re, QStringLiteral(R"(\1\5)"));
+    }
+
+    QString result = baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
+                             .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
+                             .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
+                             .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
+                             .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
+                             .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
+                             .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
+                             .replace(QLatin1String("%T"), title)
+                             .replace(QLatin1String("/"), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
+    if (result.isEmpty()) {
+        result = QStringLiteral("Screenshot");
+    }
+    return truncatedFilename(result);
 }
 
 QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension,
                                              FileNameAlreadyUsedCheck isFileNameUsed)
 {
-    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(baseName + QLatin1Char('.') + extension)))) {
-        return baseName + QLatin1Char('.') + extension;
+    QString result = truncatedFilename(baseName) + QLatin1Literal(".") + extension;
+    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
+        return result;
     }
 
-    QString fileNameFmt(baseName + QStringLiteral("-%1.") + extension);
+    QString fileNameFmt = truncatedFilename(baseName) + QStringLiteral("-%1.");
     for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
-        if (!((this->*isFileNameUsed)(QUrl::fromUserInput(fileNameFmt.arg(i))))) {
-            return fileNameFmt.arg(i);
+        result = fileNameFmt.arg(i) + extension;
+        if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
+            return result;
         }
     }
 
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    return fileNameFmt.arg(QStringLiteral("OVERFLOW-") + QString::number(qrand() % 10000));
+    result = fileNameFmt.arg(QStringLiteral("OVERFLOW-") + QString::number(qrand() % 10000));
+    return truncatedFilename(result) + extension;
 }
 
 QString ExportManager::makeSaveMimetype(const QUrl &url)

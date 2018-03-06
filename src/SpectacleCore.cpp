@@ -75,7 +75,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
         mImageGrabber = new DummyImageGrabber;
     }
 
-    mImageGrabber->setGrabMode(grabMode);
+    setGrabMode(grabMode);
     mImageGrabber->setCapturePointer(guiConfig.readEntry("includePointer", true));
     mImageGrabber->setCaptureDecorations(guiConfig.readEntry("includeDecorations", true));
 
@@ -86,6 +86,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
     connect(mExportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);
+    connect(mImageGrabber, &ImageGrabber::windowTitleChanged, mExportManager, &ExportManager::setWindowTitle);
     connect(mImageGrabber, &ImageGrabber::imageGrabFailed, this, &SpectacleCore::screenshotFailed);
     connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doCopyPath);
     connect(mExportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
@@ -132,6 +133,7 @@ ImageGrabber::GrabMode SpectacleCore::grabMode() const
 void SpectacleCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
+    mExportManager->setGrabMode(grabMode);
 }
 
 // Slots
@@ -148,7 +150,7 @@ void SpectacleCore::dbusStartAgent()
 void SpectacleCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
                                const int &timeout, const bool &includePointer, const bool &includeDecorations)
 {
-    mImageGrabber->setGrabMode(mode);
+    setGrabMode(mode);
     mImageGrabber->setCapturePointer(includePointer);
     mImageGrabber->setCaptureDecorations(includeDecorations);
 

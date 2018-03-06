@@ -44,6 +44,9 @@
 #include <xcb/xcb_util.h>
 #include <xcb/xfixes.h>
 
+#include <X11/Xatom.h>
+#include <X11/Xdefs.h>
+
 X11ImageGrabber::X11ImageGrabber(QObject *parent) :
     ImageGrabber(parent)
 {
@@ -413,6 +416,12 @@ void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const Q
 
 // grabber methods
 
+void X11ImageGrabber::updateWindowTitle(xcb_window_t window)
+{
+    QString windowTitle = KWindowSystem::readNameProperty(window, XA_WM_NAME);
+    emit windowTitleChanged(windowTitle);
+}
+
 void X11ImageGrabber::grabFullScreen()
 {
     mPixmap = getToplevelPixmap(QRect(), mCapturePointer);
@@ -421,7 +430,8 @@ void X11ImageGrabber::grabFullScreen()
 
 void X11ImageGrabber::grabTransientWithParent()
 {
-    xcb_window_t curWin = getRealWindowUnderCursor();
+	xcb_window_t curWin = getRealWindowUnderCursor();
+    updateWindowTitle(curWin);
 
     // grab the image early
 
@@ -514,6 +524,7 @@ void X11ImageGrabber::grabTransientWithParent()
 void X11ImageGrabber::grabActiveWindow()
 {
     xcb_window_t activeWindow = KWindowSystem::activeWindow();
+    updateWindowTitle(activeWindow);
 
     // if KWin is available, use the KWin DBus interfaces
 
@@ -542,6 +553,9 @@ void X11ImageGrabber::grabActiveWindow()
 
 void X11ImageGrabber::grabWindowUnderCursor()
 {
+    const xcb_window_t windowUnderCursor = getRealWindowUnderCursor();
+    updateWindowTitle(windowUnderCursor);
+
     // if KWin is available, use the KWin DBus interfaces
 
     if (mCaptureDecorations && isKWinAvailable()) {
@@ -564,7 +578,7 @@ void X11ImageGrabber::grabWindowUnderCursor()
 
     // else, go native
 
-    return grabApplicationWindowHelper(getRealWindowUnderCursor());
+    return grabApplicationWindowHelper(windowUnderCursor);
 }
 
 void X11ImageGrabber::grabApplicationWindowHelper(xcb_window_t window)

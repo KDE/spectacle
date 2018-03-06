@@ -103,13 +103,15 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             "<b>%D</b>: Day<br />"
             "<b>%H</b>: Hour<br />"
             "<b>%m</b>: Minute<br />"
-            "<b>%S</b>: Second"
+            "<b>%S</b>: Second<br />"
+            "<b>%T</b>: Window title"
         "</blockquote>"
     );
 
     QLabel *fmtHelpText = new QLabel(helpText, this);
     fmtHelpText->setWordWrap(true);
     fmtHelpText->setTextFormat(Qt::RichText);
+    fmtHelpText->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     fmtLayout->addWidget(fmtHelpText);
 
     // read in the data
