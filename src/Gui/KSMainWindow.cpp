@@ -40,6 +40,7 @@
 #include <QVBoxLayout>
 #ifdef XCB_FOUND
 #include <QX11Info>
+#include <xcb/xcb.h>
 #endif
 
 
