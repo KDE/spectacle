@@ -3,8 +3,6 @@
   <!ENTITY spectacle "<application>Spectacle</application>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
-  <!ENTITY Boudhayan.Gupta "<personname><firstname>Boudhayan</firstname><surname>Gupta</surname></personname>">
-  <!ENTITY Boudhayan.Gupta.mail "<email>bgupta@kde.org</email>">
 ]>
 
 <book id="spectacle" lang="&language;">
@@ -31,8 +29,8 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2017-11-06</date>
-        <releaseinfo>Applications 17.12</releaseinfo>
+        <date>2018-03-06</date>
+        <releaseinfo>Applications 18.04</releaseinfo>
 
         <abstract>
             <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -210,10 +208,13 @@
                         <para>Opens a drop-down menu which offers various tools:</para>
                         <itemizedlist>
                             <listitem>
-                                <para>the print dialog</para>
+                                <para><guimenuitem>Open Screenshots Folder</guimenuitem> will highlight the last saved screenshot in the default file manager</para>
                             </listitem>
                             <listitem>
-                                <para>a range of external programs for Screen Recording</para>
+                                <para>Access to the <guimenuitem>Print</guimenuitem> dialog</para>
+                            </listitem>
+                            <listitem>
+                                <para>A range of external programs for Screen Recording</para>
                             </listitem>
                         </itemizedlist>
                     </listitem>
