@@ -125,6 +125,10 @@ int main(int argc, char **argv)
         if (parser.isSet(QStringLiteral("onclick"))) {
             delayMsec = -1;
         }
+
+        app.setQuitOnLastWindowClosed(false);
+        break;
+
     case SpectacleCore::DBusMode:
         app.setQuitOnLastWindowClosed(false);
     case SpectacleCore::GuiMode:

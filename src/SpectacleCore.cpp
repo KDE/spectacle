@@ -208,6 +208,8 @@ void SpectacleCore::screenshotFailed()
     switch (mStartMode) {
     case BackgroundMode:
         showErrorMessage(i18n("Screenshot capture canceled or failed"));
+        emit allDone();
+        return;
     case DBusMode:
         emit grabFailed();
         emit allDone();
