@@ -22,6 +22,7 @@
 #include "SpectacleConfig.h"
 
 #include <KDeclarative/KDeclarative>
+#include <kdeclarative_version.h>
 
 #include <QPixmap>
 #include <QQuickImageProvider>
@@ -74,7 +75,14 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
     d->mQmlEngine = new QQmlEngine();
     d->mDecl = new KDeclarative::KDeclarative;
     d->mDecl->setDeclarativeEngine(d->mQmlEngine);
+
+#if KDECLARATIVE_VERSION >= QT_VERSION_CHECK(5, 45, 0)
+    d->mDecl->setupEngine(d->mQmlEngine);
+    d->mDecl->setupContext();
+#else
     d->mDecl->setupBindings();
+#endif
+
     d->mQmlEngine->addImageProvider(QStringLiteral("snapshot"), mImageStore);
 
     d->mQuickView = new QQuickView(d->mQmlEngine, 0);
