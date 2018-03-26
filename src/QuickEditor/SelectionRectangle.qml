@@ -81,13 +81,13 @@ Item {
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -118,8 +118,8 @@ Item {
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -146,8 +146,8 @@ Item {
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             if ((parent.y + parent.height + mouse.y) > bryLimit) {
@@ -206,8 +206,8 @@ Item {
 
         onPositionChanged: {
             if ((parent.y + mouse.y) < limit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -257,8 +257,8 @@ Item {
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < limit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             drawCanvas.requestPaint();
