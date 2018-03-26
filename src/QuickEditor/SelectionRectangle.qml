@@ -25,6 +25,8 @@ Item {
 
     property var drawCanvas: null;
     property var imageElement: null;
+    property int minRectSize: 20;
+    property int mouseAreaSize: 20;
 
     signal doubleClicked();
 
@@ -68,24 +70,24 @@ Item {
         anchors.top: parent.top;
         anchors.left: parent.left;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeFDiagCursor;
 
         onPressed: {
-            brxLimit = (parent.x + parent.width) - 20;
-            bryLimit = (parent.y + parent.height) - 20;
+            brxLimit = (parent.x + parent.width) - minRectSize;
+            bryLimit = (parent.y + parent.height) - minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -101,23 +103,23 @@ Item {
         anchors.top: parent.top;
         anchors.right: parent.right;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeBDiagCursor;
 
         onPressed: {
-            brxLimit = parent.x + 20;
-            bryLimit = (parent.y + parent.height) - 20;
+            brxLimit = parent.x + mouseAreaSize + minRectSize;
+            bryLimit = (parent.y + parent.height) - minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > brxLimit) {
-                parent.width = parent.width + mouse.x;
+                parent.width = parent.width + mouse.x - mouseAreaSize + 1;
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -133,23 +135,23 @@ Item {
         anchors.bottom: parent.bottom;
         anchors.left: parent.left;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeBDiagCursor;
 
         onPressed: {
-            brxLimit = (parent.x + parent.width) - 20;
-            bryLimit = parent.y + 20;
+            brxLimit = (parent.x + parent.width) - minRectSize;
+            bryLimit = parent.y + mouseAreaSize + minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             if ((parent.y + parent.height + mouse.y) > bryLimit) {
-                parent.height = parent.height + mouse.y;
+                parent.height = parent.height + mouse.y - mouseAreaSize + 1;
             }
 
             drawCanvas.requestPaint();
@@ -165,24 +167,23 @@ Item {
         anchors.bottom: parent.bottom;
         anchors.right: parent.right;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeFDiagCursor;
 
         onPressed: {
-            brxLimit = parent.x + 20;
-            bryLimit = parent.y + 20;
+            brxLimit = parent.x + mouseAreaSize + minRectSize;
+            bryLimit = parent.y + mouseAreaSize + minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > brxLimit) {
-                parent.width = parent.width + mouse.x;
+                parent.width = parent.width + mouse.x - mouseAreaSize + 1;
             }
 
             if ((parent.y + parent.height + mouse.y) > bryLimit) {
-                parent.height = parent.height + mouse.y;
+                parent.height = parent.height + mouse.y - mouseAreaSize + 1;
             }
-
             drawCanvas.requestPaint();
         }
     }
@@ -195,18 +196,18 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeVerCursor;
 
         onPressed: {
-            limit = (parent.y + parent.height) - 20;
+            limit = (parent.y + parent.height) - minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.y + mouse.y) < limit) {
-                parent.height = parent.height - mouse.y;
                 parent.y = parent.y + mouse.y;
+                parent.height = parent.height - mouse.y;
             }
 
             drawCanvas.requestPaint();
@@ -221,17 +222,17 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.bottom: parent.bottom;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeVerCursor;
 
         onPressed: {
-            limit = parent.y + 20;
+            limit = parent.y + mouseAreaSize + minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.y + parent.height + mouse.y) > limit) {
-                parent.height = parent.height + mouse.y;
+                parent.height = parent.height + mouse.y - mouseAreaSize + 1;
             }
 
             drawCanvas.requestPaint();
@@ -246,18 +247,18 @@ Item {
         anchors.verticalCenter: parent.verticalCenter;
         anchors.left: parent.left;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeHorCursor;
 
         onPressed: {
-            limit = (parent.x + parent.width) - 20;
+            limit = (parent.x + parent.width) - minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < limit) {
-                parent.width = parent.width - mouse.x;
                 parent.x = parent.x + mouse.x;
+                parent.width = parent.width - mouse.x;
             }
 
             drawCanvas.requestPaint();
@@ -272,17 +273,17 @@ Item {
         anchors.verticalCenter: parent.verticalCenter;
         anchors.right: parent.right;
 
-        width: 20;
-        height: 20;
+        width: mouseAreaSize;
+        height: mouseAreaSize;
         cursorShape: Qt.SizeHorCursor;
 
         onPressed: {
-            limit = parent.x + 20;
+            limit = parent.x + mouseAreaSize + minRectSize;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > limit) {
-                parent.width = parent.width + mouse.x;
+                parent.width = parent.width + mouse.x - mouseAreaSize + 1;
             }
 
             drawCanvas.requestPaint();
