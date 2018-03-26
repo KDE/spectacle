@@ -271,8 +271,8 @@ Item {
         onPositionChanged: {
             selection.x = Math.min(startx, mouse.x);
             selection.y = Math.min(starty, mouse.y);
-            selection.width = Math.abs(startx - mouse.x);
-            selection.height = Math.abs(starty - mouse.y);
+            selection.width = Math.abs(startx - mouse.x) + 1;
+            selection.height = Math.abs(starty - mouse.y) + 1;
 
             cropDisplayCanvas.requestPaint();
         }
