@@ -59,14 +59,17 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
         setFilename(saveFileName);
     }
 
+    // We might be using the XCB platform (with Xwayland) in a wayland session,
+    // but the X11 grabber won't work in that case. So force the Wayland grabber
+    // in Wayland sessions.
+    if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0) {
+        mImageGrabber = new KWinWaylandImageGrabber;
+    }
 #ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
+    if (!mImageGrabber && KWindowSystem::isPlatformX11()) {
         mImageGrabber = new X11ImageGrabber;
     }
 #endif
-    if (!mImageGrabber && KWindowSystem::isPlatformWayland()) {
-        mImageGrabber = new KWinWaylandImageGrabber;
-    }
 
     if (!mImageGrabber) {
         mImageGrabber = new DummyImageGrabber;
