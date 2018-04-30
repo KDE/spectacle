@@ -114,9 +114,12 @@ QuickEditor::QuickEditor(const QPixmap &pixmap, QObject *parent) :
         }
     }
 
+    rootItem->setProperty("showMagnifier", config->showMagnifierChecked());
+
     if (config->useLightRegionMaskColour()) {
         rootItem->setProperty("maskColour", QColor(255, 255, 255, 100));
         rootItem->setProperty("strokeColour", QColor(96, 96, 96, 255));
+        rootItem->setProperty("crossColour", QColor(96, 96, 96, 127));
     }
 }
 

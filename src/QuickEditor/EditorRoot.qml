@@ -29,6 +29,13 @@ Item {
     property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.15);
     property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
+    property color crossColour: Qt.rgba(0.114, 0.6, 0.953, 0.5);
+    property bool showMagnifier: false;
+    property bool toggleMagnifier: false;
+    property int magZoom: 5;
+    property int magPixels: 16;
+    property int magOffset: 32;
+
     SystemPalette {
         id: systemPalette;
     }
@@ -65,6 +72,20 @@ Item {
 
     Keys.onEscapePressed: {
         cancelImage();
+    }
+
+    Keys.onPressed: {
+        if (event.modifiers & Qt.ShiftModifier) {
+            toggleMagnifier = true;
+            cropDisplayCanvas.requestPaint();
+        }
+    }
+
+    Keys.onReleased: {
+        if (toggleMagnifier && !(event.modifiers & Qt.ShiftModifier)) {
+            toggleMagnifier = false;
+            cropDisplayCanvas.requestPaint();
+        }
     }
 
     // signals
@@ -188,9 +209,37 @@ Item {
                 ctx.strokeRect(selectionBoxX - 4, selectionBoxY - selectionTextRect.height - 2, selectionTextRect.width + 10, selectionTextRect.height + 8);
                 ctx.fillStyle = systemPalette.windowText;
                 ctx.fillText(selectionText, selectionBoxX, selectionBoxY);
+                if (selection.zoomCenterX >= 0 && selection.zoomCenterY >= 0 && (showMagnifier ^ toggleMagnifier)) {
+                    var offsetX = magOffset;
+                    var offsetY = magOffset;
+                    var magX = selection.zoomCenterX;
+                    var magY = selection.zoomCenterY;
+                    var magWidth = crossMagnifier.width;
+                    var magHeight = crossMagnifier.height;
+
+                    if (magX + offsetX + magWidth >= Window.width / Screen.devicePixelRatio) {
+                        offsetX -= offsetX * 2 + magWidth;
+                    }
+
+                    if (magY + offsetY + magHeight >= Window.height / Screen.devicePixelRatio) {
+                        offsetY -= offsetY * 2 + magHeight;
+                    }
+
+                    magX += offsetX;
+                    magY += offsetY;
+                    crossMagnifier.visible = true;
+                    crossMagnifier.x = magX;
+                    crossMagnifier.y = magY;
+                    crossBackground.x = -selection.zoomCenterX * Screen.devicePixelRatio * magZoom + magPixels * magZoom;
+                    crossBackground.y = -selection.zoomCenterY * Screen.devicePixelRatio * magZoom + magPixels * magZoom;
+                    ctx.strokeRect(magX, magY, magWidth, magHeight);
+                } else {
+                    crossMagnifier.visible = false;
+                }
             } else {
                 midHelpText.visible = true;
                 bottomHelpText.visible = false;
+                crossMagnifier.visible = false;
             }
         }
 
@@ -241,6 +290,58 @@ Item {
                 anchors.centerIn: parent;
             }
         }
+
+        // Use Rectangle so that the background is white when cursor nearby edge
+        Rectangle {
+            id: crossMagnifier;
+
+            height: (magPixels * 2 + 1) * magZoom;
+            width: height;
+            border.width: 0;
+            visible: false;
+            clip: true
+
+            Image {
+                id: crossBackground;
+                source: "image://snapshot/rawimage";
+                smooth: false;
+                height: Window.height * magZoom;
+                width: Window.width * magZoom;
+            }
+
+            Rectangle {
+                x: magPixels * magZoom;
+                y: 0;
+                width: magZoom;
+                height: magPixels * magZoom;
+                color: crossColour;
+            }
+
+            Rectangle {
+                x: magPixels * magZoom;
+                y: (magPixels + 1) * magZoom;
+                width: magZoom;
+                height: magPixels * magZoom;
+                color: crossColour;
+            }
+
+            Rectangle {
+                x: 0;
+                y: magPixels * magZoom;
+                width: magPixels * magZoom;
+                height: magZoom;
+                color: crossColour;
+            }
+
+            Rectangle {
+                x: (magPixels + 1) * magZoom;
+                y: magPixels * magZoom;
+                width: magPixels * magZoom;
+                height: magZoom;
+                color: crossColour;
+            }
+        }
+
     }
 
     MouseArea {
@@ -273,7 +374,8 @@ Item {
             selection.y = Math.min(starty, mouse.y);
             selection.width = Math.abs(startx - mouse.x) + 1;
             selection.height = Math.abs(starty - mouse.y) + 1;
-
+            selection.zoomCenterX = mouse.x;
+            selection.zoomCenterY = mouse.y;
             cropDisplayCanvas.requestPaint();
         }
 
@@ -282,6 +384,12 @@ Item {
                 selection.destroy();
                 cropDisplayCanvas.requestPaint();
             }
+        }
+
+        onReleased: {
+            selection.zoomCenterX = -1;
+            selection.zoomCenterY = -1;
+            cropDisplayCanvas.requestPaint();
         }
     }
 

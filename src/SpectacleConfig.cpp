@@ -128,6 +128,19 @@ void SpectacleConfig::setQuitAfterSaveOrCopyChecked(bool enabled)
     mGuiConfig.sync();
 }
 
+// show magnifier
+
+bool SpectacleConfig::showMagnifierChecked() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("showMagnifier"), false);
+}
+
+void SpectacleConfig::setShowMagnifierChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("showMagnifier"), enabled);
+    mGuiConfig.sync();
+}
+
 // capture delay
 
 qreal SpectacleConfig::captureDelay() const

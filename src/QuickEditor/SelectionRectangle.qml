@@ -27,6 +27,14 @@ Item {
     property var imageElement: null;
     property int minRectSize: 20;
     property int mouseAreaSize: 20;
+    property double zoomCenterX: -1;
+    property double zoomCenterY: -1;
+
+    function resetZoomCenter() {
+        zoomCenterX = -1;
+        zoomCenterY = -1;
+        drawCanvas.requestPaint();
+    }
 
     signal doubleClicked();
 
@@ -77,20 +85,28 @@ Item {
         onPressed: {
             brxLimit = (parent.x + parent.width) - minRectSize;
             bryLimit = (parent.y + parent.height) - minRectSize;
+            parent.zoomCenterX = parent.x;
+            parent.zoomCenterY = parent.y;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
                 parent.x = parent.x + mouse.x;
                 parent.width = parent.width - mouse.x;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x;
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
                 parent.y = parent.y + mouse.y;
                 parent.height = parent.height - mouse.y;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y;
             }
 
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -110,19 +126,27 @@ Item {
         onPressed: {
             brxLimit = parent.x + mouseAreaSize + minRectSize;
             bryLimit = (parent.y + parent.height) - minRectSize;
+            parent.zoomCenterX = parent.x + parent.width - 1;
+            parent.zoomCenterY = parent.y;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > brxLimit) {
                 parent.width = parent.width + mouse.x - mouseAreaSize + 1;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x - mouseAreaSize + 1;
             }
 
             if ((parent.y + mouse.y) < bryLimit) {
                 parent.y = parent.y + mouse.y;
                 parent.height = parent.height - mouse.y;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y;
             }
 
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -142,19 +166,27 @@ Item {
         onPressed: {
             brxLimit = (parent.x + parent.width) - minRectSize;
             bryLimit = parent.y + mouseAreaSize + minRectSize;
+            parent.zoomCenterX = parent.x;
+            parent.zoomCenterY = parent.y + parent.height - 1;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < brxLimit) {
                 parent.x = parent.x + mouse.x;
                 parent.width = parent.width - mouse.x;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x;
             }
 
             if ((parent.y + parent.height + mouse.y) > bryLimit) {
                 parent.height = parent.height + mouse.y - mouseAreaSize + 1;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y - mouseAreaSize + 1;
             }
 
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -174,17 +206,25 @@ Item {
         onPressed: {
             brxLimit = parent.x + mouseAreaSize + minRectSize;
             bryLimit = parent.y + mouseAreaSize + minRectSize;
+            parent.zoomCenterX = parent.x + parent.width - 1;
+            parent.zoomCenterY = parent.y + parent.height - 1;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > brxLimit) {
                 parent.width = parent.width + mouse.x - mouseAreaSize + 1;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x - mouseAreaSize + 1;
             }
 
             if ((parent.y + parent.height + mouse.y) > bryLimit) {
                 parent.height = parent.height + mouse.y - mouseAreaSize + 1;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y - mouseAreaSize + 1;
             }
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -202,15 +242,22 @@ Item {
 
         onPressed: {
             limit = (parent.y + parent.height) - minRectSize;
+            parent.zoomCenterX = parent.x + (parent.width >> 1) - mouseAreaSize / 2;
+            parent.zoomCenterY = parent.y;
         }
 
         onPositionChanged: {
             if ((parent.y + mouse.y) < limit) {
                 parent.y = parent.y + mouse.y;
                 parent.height = parent.height - mouse.y;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y;
             }
-
+            parent.zoomCenterX = parent.x + (parent.width >> 1) - mouseAreaSize / 2 + mouse.x + 1;
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -228,14 +275,21 @@ Item {
 
         onPressed: {
             limit = parent.y + mouseAreaSize + minRectSize;
+            parent.zoomCenterX = parent.x + (parent.width >> 1) - mouseAreaSize / 2;
+            parent.zoomCenterY = parent.y + parent.height - 1;
         }
 
         onPositionChanged: {
             if ((parent.y + parent.height + mouse.y) > limit) {
                 parent.height = parent.height + mouse.y - mouseAreaSize + 1;
+                parent.zoomCenterY = parent.zoomCenterY + mouse.y - mouseAreaSize + 1;
             }
-
+            parent.zoomCenterX = parent.x + (parent.width >> 1) - mouseAreaSize / 2 + mouse.x + 1;
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -253,15 +307,22 @@ Item {
 
         onPressed: {
             limit = (parent.x + parent.width) - minRectSize;
+            parent.zoomCenterX = parent.x;
+            parent.zoomCenterY = parent.y + (parent.height >> 1) - mouseAreaSize / 2;
         }
 
         onPositionChanged: {
             if ((parent.x + mouse.x) < limit) {
                 parent.x = parent.x + mouse.x;
                 parent.width = parent.width - mouse.x;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x;
             }
-
+            parent.zoomCenterY = parent.y + (parent.height >> 1) - mouseAreaSize / 2 + mouse.y + 1;
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 
@@ -279,14 +340,21 @@ Item {
 
         onPressed: {
             limit = parent.x + mouseAreaSize + minRectSize;
+            parent.zoomCenterX = parent.x + parent.width - 1;
+            parent.zoomCenterY = parent.y + (parent.height >> 1) - mouseAreaSize / 2;
         }
 
         onPositionChanged: {
             if ((parent.x + parent.width + mouse.x) > limit) {
                 parent.width = parent.width + mouse.x - mouseAreaSize + 1;
+                parent.zoomCenterX = parent.zoomCenterX + mouse.x  - mouseAreaSize + 1;
             }
-
+            parent.zoomCenterY = parent.y + (parent.height >> 1) - mouseAreaSize / 2 + mouse.y + 1;
             drawCanvas.requestPaint();
+        }
+
+        onReleased: {
+            resetZoomCenter();
         }
     }
 }

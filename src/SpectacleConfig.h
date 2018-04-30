@@ -75,6 +75,9 @@ class SpectacleConfig : public QObject
     bool quitAfterSaveOrCopyChecked() const;
     void setQuitAfterSaveOrCopyChecked(bool enabled);
 
+    bool showMagnifierChecked() const;
+    void setShowMagnifierChecked(bool enabled);
+
     qreal captureDelay() const;
     void setCaptureDelay(qreal delay);
 

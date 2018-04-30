@@ -57,10 +57,17 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     mRememberRect = new QCheckBox(i18n("Remember selected area"), this);
     connect(mRememberRect, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
+    // show magnifier
+
+    mShowMagnifier = new QCheckBox(i18n("Show magnifier"), this);
+    mShowMagnifier->setToolTip(i18n("Hold the Shift key to temporarily toggle the magnifier when adjusting the selection rectangle."));
+    connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+
     QVBoxLayout *rrCLayout = new QVBoxLayout;
 //     rrCLayout->setContentsMargins(15, 10, 0, 10);
     rrCLayout->addWidget(mUseLightBackground);
     rrCLayout->addWidget(mRememberRect);
+    rrCLayout->addWidget(mShowMagnifier);
     rrLayout->addLayout(rrCLayout);
     mainLayout->addWidget(rrGroup, 1);
 
@@ -86,6 +93,7 @@ void GeneralOptionsPage::saveChanges()
 
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
+    cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
     cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
 
     mChangesMade = false;
@@ -97,6 +105,7 @@ void GeneralOptionsPage::resetChanges()
 
     mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
     mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
+    mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
     mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
 
     mChangesMade = false;
