@@ -60,7 +60,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     // show magnifier
 
     mShowMagnifier = new QCheckBox(i18n("Show magnifier"), this);
-    mShowMagnifier->setToolTip(i18n("Hold the Shift key to temporarily toggle the magnifier when adjusting the selection rectangle."));
     connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
 
     QVBoxLayout *rrCLayout = new QVBoxLayout;

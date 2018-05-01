@@ -19,6 +19,8 @@
 
 import QtQuick 2.5
 import QtQuick.Window 2.2
+import QtQuick.Layouts 1.3
+import QtQuick.Controls 1.4
 
 Item {
     id: editorRoot;
@@ -253,17 +255,18 @@ Item {
 
             height: midHelpTextElement.height + 40;
             width: midHelpTextElement.width + 40;
-            radius: 10;
-            border.width: 2;
+            radius: 4;
             border.color: Qt.rgba(0, 0, 0, 1);
             color: Qt.rgba(1, 1, 1, 0.85);
 
+            visible: false;
             anchors.centerIn: parent;
 
-            Text {
+            Label {
                 id: midHelpTextElement;
-                text: i18n("Click anywhere on the screen (including here) to start drawing a selection rectangle, or press Esc to quit");
-                font.pointSize: 12;
+                text: i18n("Click anywhere to start drawing a selection rectangle,\n" +
+                           "or press Esc to cancel.");
+                font.pixelSize: Qt.application.font.pixelSize * 1.2;
 
                 anchors.centerIn: parent;
             }
@@ -273,21 +276,44 @@ Item {
             id: bottomHelpText;
             objectName: "bottomHelpText";
 
-            height: bottomHelpTextElement.height + 16;
-            width: bottomHelpTextElement.width + 24;
-            border.width: 1;
+            height: bottomHelpTextElement.height + 20;
+            width: bottomHelpTextElement.width + 20;
+            radius: 4;
             border.color: Qt.rgba(0, 0, 0, 1);
             color: Qt.rgba(1, 1, 1, 0.85);
 
+            visible: false;
             anchors.bottom: parent.bottom;
             anchors.horizontalCenter: parent.horizontalCenter;
 
-            Text {
+            GridLayout {
                 id: bottomHelpTextElement;
-                text: i18n("To take the screenshot, double-click or press Enter. Right-click to reset the selection, or press Esc to quit");
-                font.pointSize: 9;
-
+                columns: 2
                 anchors.centerIn: parent;
+
+                Label {
+                    text: i18n("Enter, double-click:");
+                    Layout.alignment: Qt.AlignRight;
+                }
+                Label { text: i18n("Take screenshot"); }
+
+                Label {
+                    text: i18n("Shift:");
+                    Layout.alignment: Qt.AlignRight;
+                }
+                Label { text: i18n("Hold to toggle magnifier"); }
+
+                Label {
+                    text: i18n("Right-click:");
+                    Layout.alignment: Qt.AlignRight;
+                }
+                Label { text: i18n("Reset selection"); }
+
+                Label {
+                    text: i18n("Esc:");
+                    Layout.alignment: Qt.AlignRight;
+                }
+                Label { text: i18n("Cancel"); }
             }
         }
 
