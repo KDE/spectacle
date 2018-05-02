@@ -30,8 +30,9 @@ Item {
 
     property var selection: undefined;
     property color maskColour: Qt.rgba(0, 0, 0, 0.15);
-    property color strokeColour: Qt.rgba(0.114, 0.6, 0.953, 1);
-    property color crossColour: Qt.rgba(0.114, 0.6, 0.953, 0.5);
+    property color strokeColour: systemPalette.highlight;
+    property color crossColour: Qt.rgba(strokeColour.r, strokeColour.g, strokeColour.b, 0.7);
+    property color labelBackgroundColour: Qt.rgba(systemPalette.light.r, systemPalette.light.g, systemPalette.light.b, 0.85);
     property bool showMagnifier: false;
     property bool toggleMagnifier: false;
     property int magZoom: 5;
@@ -256,8 +257,8 @@ Item {
             height: midHelpTextElement.height + 40;
             width: midHelpTextElement.width + 40;
             radius: 4;
-            border.color: Qt.rgba(0, 0, 0, 1);
-            color: Qt.rgba(1, 1, 1, 0.85);
+            border.color: systemPalette.windowText;
+            color: labelBackgroundColour;
 
             visible: false;
             anchors.centerIn: parent;
@@ -279,8 +280,8 @@ Item {
             height: bottomHelpTextElement.height + 20;
             width: bottomHelpTextElement.width + 20;
             radius: 4;
-            border.color: Qt.rgba(0, 0, 0, 1);
-            color: Qt.rgba(1, 1, 1, 0.85);
+            border.color: systemPalette.windowText;
+            color: labelBackgroundColour;
 
             visible: false;
             anchors.bottom: parent.bottom;
