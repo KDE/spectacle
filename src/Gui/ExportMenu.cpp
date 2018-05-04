@@ -82,7 +82,7 @@ void ExportMenu::getKServiceItems()
 
     Q_FOREACH (auto service, services) {
         QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
-        QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, nullptr);
+        QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
         connect(action, &QAction::triggered, [=]() {
             QList<QUrl> whereIs({ mExportManager->tempSave() });
