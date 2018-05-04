@@ -32,7 +32,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QShortcut>
-#include <QTimer>
 
 
 KSWidget::KSWidget(QWidget *parent) :
