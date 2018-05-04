@@ -66,12 +66,12 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
         mImageGrabber = new KWinWaylandImageGrabber;
     }
 #ifdef XCB_FOUND
-    if (!mImageGrabber && KWindowSystem::isPlatformX11()) {
+    else if (KWindowSystem::isPlatformX11()) {
         mImageGrabber = new X11ImageGrabber;
     }
 #endif
 
-    if (!mImageGrabber) {
+    else {
         mImageGrabber = new DummyImageGrabber;
     }
 
@@ -110,6 +110,7 @@ SpectacleCore::~SpectacleCore()
     if (mMainWindow) {
         delete mMainWindow;
     }
+    delete mImageGrabber;
 }
 
 // Q_PROPERTY stuff
