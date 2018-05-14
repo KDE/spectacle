@@ -63,7 +63,6 @@ class ExportManager : public QObject
     bool isFileExists(const QUrl &url) const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
-    QString pixmapDataUri() const;
     void setWindowTitle(const QString &windowTitle);
     QString windowTitle() const;
     ImageGrabber::GrabMode grabMode() const;

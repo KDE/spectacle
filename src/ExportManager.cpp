@@ -71,25 +71,6 @@ QPixmap ExportManager::pixmap() const
     return mSavePixmap;
 }
 
-QString ExportManager::pixmapDataUri() const
-{
-    QImage image = mSavePixmap.toImage();
-    QByteArray imageData;
-
-    // write the image into the QByteArray using a QBuffer
-
-    {
-        QBuffer dataBuf(&imageData);
-        dataBuf.open(QBuffer::WriteOnly);
-        image.save(&dataBuf, "PNG");
-    }
-
-    // compose the data uri and return it
-
-    QString uri = QStringLiteral("data:image/png;base64,") + QString::fromLatin1(imageData.toBase64());
-    return uri;
-}
-
 void ExportManager::setWindowTitle(const QString &windowTitle)
 {
     mWindowTitle = windowTitle;
