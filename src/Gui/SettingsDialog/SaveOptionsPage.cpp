@@ -104,6 +104,12 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             "<b>%S</b>: Second<br />"
             "<b>%T</b>: Window title"
         "</blockquote>"
+
+        "<p>To save to a sub-folder, use slashes to describe the desired path, e.g.:</p>"
+
+        "<blockquote>"
+            "<b>%Y</b>/<b>%M</b>/Screenshot_<b>%Y%M%D</b>_<b>%H%m%S</b>"
+        "</blockquote>"
     );
 
     QLabel *fmtHelpText = new QLabel(helpText, this);
