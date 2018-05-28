@@ -34,8 +34,6 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KConfigGroup>
-#include <KIO/ListJob>
-#include <KIO/MkpathJob>
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
@@ -200,7 +198,7 @@ QString ExportManager::makeAutosaveFilename()
     if (mGrabMode == ImageGrabber::GrabMode::ActiveWindow ||
         mGrabMode == ImageGrabber::GrabMode::TransientWithParent ||
         mGrabMode == ImageGrabber::GrabMode::WindowUnderCursor) {
-        title = mWindowTitle.replace(QLatin1String("/"), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
+        title = mWindowTitle;
     } else {
         // Remove '%T' with separators around it
         const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");
@@ -216,16 +214,8 @@ QString ExportManager::makeAutosaveFilename()
                              .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
                              .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
                              .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
-                             .replace(QLatin1String("%T"), title);
-
-    // Remove leading and trailing '/'
-    while (result.startsWith(QLatin1Char('/'))) {
-        result.remove(0, 1);
-    }
-    while (result.endsWith(QLatin1Char('/'))) {
-        result.chop(1);
-    }
-
+                             .replace(QLatin1String("%T"), title)
+                             .replace(QLatin1String("/"), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
     if (result.isEmpty()) {
         result = QStringLiteral("Screenshot");
     }
@@ -279,18 +269,6 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 
 bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
 {
-    // Create save directory if it doesn't exist
-    const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
-    const QDir dir(dirPath.path());
-
-    if (!dir.mkpath(QLatin1String("."))) {
-        emit errorMessage(xi18nc("@info",
-                                 "Cannot save screenshot because creating "
-                                 "the directory failed:<nl/><filename>%1</filename>",
-                                 dirPath.path()));
-        return false;
-    }
-
     QFile outputFile(url.toLocalFile());
 
     outputFile.open(QFile::WriteOnly);
@@ -303,26 +281,6 @@ bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
 
 bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
 {
-
-    // Check if remote save directory exists
-    const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
-    KIO::ListJob *listJob = KIO::listDir(dirPath);
-    listJob->exec();
-
-    if (listJob->error() != KJob::NoError) {
-        // Create remote save directory
-        KIO::MkpathJob *mkpathJob = KIO::mkpath(dirPath, QUrl(saveLocation()));
-        mkpathJob->exec();
-
-        if (mkpathJob->error() != KJob::NoError) {
-            emit errorMessage(xi18nc("@info",
-                                     "Cannot save screenshot because creating the "
-                                     "remote directory failed:<nl/><filename>%1</filename>",
-                                     dirPath.path()));
-            return false;
-        }
-    }
-
     QTemporaryFile tmpFile;
 
     if (tmpFile.open()) {
