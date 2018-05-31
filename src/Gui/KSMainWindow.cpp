@@ -366,13 +366,11 @@ void KSMainWindow::save()
     SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::Save);
     setDefaultSaveAction();
 
-    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
-        ExportManager::instance()->doSave(QUrl(), true);
+    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    ExportManager::instance()->doSave(QUrl(), /* notify */ quitChecked);
+    if (quitChecked) {
         qApp->setQuitOnLastWindowClosed(false);
         hide();
-    }
-    else {
-        ExportManager::instance()->doSave();
     }
 }
 
@@ -381,13 +379,9 @@ void KSMainWindow::saveAs()
     SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::SaveAs);
     setDefaultSaveAction();
 
-    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
-        if (ExportManager::instance()->doSaveAs(this, true)) {
+    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    if (ExportManager::instance()->doSaveAs(this, /* notify */ quitChecked) && quitChecked) {
             qApp->setQuitOnLastWindowClosed(false);
             hide();
-        }
-    }
-    else {
-        ExportManager::instance()->doSaveAs(this, false);
     }
 }
