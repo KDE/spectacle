@@ -363,7 +363,7 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
             showInlineMessage(i18n("Image shared"), KMessageWidget::Positive);
         } else {
             showInlineMessage(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message),
-                              KMessageWidget::Positive);
+                              KMessageWidget::Positive, MessageDuration::Persistent);
         }
     }
 }
