@@ -312,6 +312,22 @@ void KSMainWindow::openScreenshotsFolder()
     KIO::highlightInFileManager({location});
 }
 
+void KSMainWindow::quit(const QuitBehavior quitBehavior)
+{
+    qApp->setQuitOnLastWindowClosed(false);
+    hide();
+
+    if (quitBehavior == QuitBehavior::QuitImmediately) {
+        // Allow some time for clipboard content to transfer
+        // TODO: Find better solution
+        QTimer::singleShot(250, qApp, &QApplication::quit);
+    }
+    // TODO for else case:
+    // Currently it is expected that you emit forceNotify, and finally quit
+    // via a callback through KNotification::action1Activated. However, that
+    // is not working quite right, see Bug #389694 which needs fixing.
+}
+
 void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
 {
     if (error) {
@@ -336,9 +352,7 @@ void KSMainWindow::sendToClipboard()
     ExportManager::instance()->doCopyToClipboard();
 
     if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
-        qApp->setQuitOnLastWindowClosed(false);
-        hide();
-        QTimer::singleShot(250, qApp, &QApplication::quit);
+        quit();
     }
 
     mMessageWidget->setMessageType(KMessageWidget::Information);
@@ -369,8 +383,7 @@ void KSMainWindow::save()
     const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
     ExportManager::instance()->doSave(QUrl(), /* notify */ quitChecked);
     if (quitChecked) {
-        qApp->setQuitOnLastWindowClosed(false);
-        hide();
+        quit(QuitBehavior::QuitExternally);
     }
 }
 
@@ -381,7 +394,6 @@ void KSMainWindow::saveAs()
 
     const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
     if (ExportManager::instance()->doSaveAs(this, /* notify */ quitChecked) && quitChecked) {
-            qApp->setQuitOnLastWindowClosed(false);
-            hide();
+        quit(QuitBehavior::QuitExternally);
     }
 }

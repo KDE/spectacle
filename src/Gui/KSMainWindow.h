@@ -44,6 +44,14 @@ class KSMainWindow : public QDialog
     explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
     ~KSMainWindow();
 
+    private:
+
+    enum class QuitBehavior {
+        QuitImmediately,
+        QuitExternally
+    };
+    void quit(const QuitBehavior quitBehavior = QuitBehavior::QuitImmediately);
+
     private slots:
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
