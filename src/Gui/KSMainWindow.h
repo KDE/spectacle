@@ -52,6 +52,14 @@ class KSMainWindow : public QDialog
     };
     void quit(const QuitBehavior quitBehavior = QuitBehavior::QuitImmediately);
 
+    enum class MessageDuration {
+        AutoHide,
+        Persistent
+    };
+    void showInlineMessage(const QString& message,
+                           const KMessageWidget::MessageType messageType,
+                           const MessageDuration messageDuration = MessageDuration::AutoHide);
+
     private slots:
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);

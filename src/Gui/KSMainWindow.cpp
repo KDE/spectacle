@@ -328,39 +328,54 @@ void KSMainWindow::quit(const QuitBehavior quitBehavior)
     // is not working quite right, see Bug #389694 which needs fixing.
 }
 
-void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
+void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType, const MessageDuration messageDuration)
 {
-    if (error) {
-        mMessageWidget->setMessageType(KMessageWidget::Error);
-        mMessageWidget->setText(i18n("There was a problem sharing the image: %1", message));
+    mMessageWidget->setText(message);
+    mMessageWidget->setMessageType(messageType);
+
+    switch (messageType) {
+    case KMessageWidget::Error:
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")));
-    } else {
-        mMessageWidget->setMessageType(KMessageWidget::Positive);
-        if (message.isEmpty())
-            mMessageWidget->setText(i18n("Image shared"));
-        else
-            mMessageWidget->setText(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message));
+        break;
+    case KMessageWidget::Positive:
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
+        break;
+    case KMessageWidget::Information:
+        mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
+        break;
+    default:
+        ;
     }
 
     mMessageWidget->animatedShow();
-    QTimer::singleShot(20000, mMessageWidget, &KMessageWidget::animatedHide);
+    if (messageDuration == MessageDuration::AutoHide) {
+        QTimer::singleShot(10000, mMessageWidget, &KMessageWidget::animatedHide);
+    }
+}
+
+void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
+{
+    if (error) {
+        showInlineMessage(i18n("There was a problem sharing the image: %1", message),
+                          KMessageWidget::Error);
+    } else {
+        if (message.isEmpty()) {
+            showInlineMessage(i18n("Image shared"), KMessageWidget::Positive);
+        } else {
+            showInlineMessage(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message),
+                              KMessageWidget::Positive);
+        }
+    }
 }
 
 void KSMainWindow::sendToClipboard()
 {
     ExportManager::instance()->doCopyToClipboard();
 
-    if (SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
-        quit();
-    }
-
-    mMessageWidget->setMessageType(KMessageWidget::Information);
-    mMessageWidget->setText(i18n("The screenshot has been copied to the clipboard."));
-    mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
-
-    mMessageWidget->animatedShow();
-    QTimer::singleShot(10000, mMessageWidget, &KMessageWidget::animatedHide);
+    SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()
+            ? quit()
+            : showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
+                                KMessageWidget::Information);
 }
 
 void KSMainWindow::showPreferencesDialog()
