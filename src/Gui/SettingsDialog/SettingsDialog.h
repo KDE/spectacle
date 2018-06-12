@@ -31,7 +31,7 @@ class SettingsDialog : public KPageDialog
 
     public:
 
-    explicit SettingsDialog(QWidget *parent = 0);
+    explicit SettingsDialog(QWidget *parent = nullptr);
 
     public slots:
 

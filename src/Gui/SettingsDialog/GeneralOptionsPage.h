@@ -30,7 +30,7 @@ class GeneralOptionsPage : public SettingsPage
 
     public:
 
-    explicit GeneralOptionsPage(QWidget *parent = 0);
+    explicit GeneralOptionsPage(QWidget *parent = nullptr);
 
     public slots:
 

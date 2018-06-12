@@ -28,7 +28,7 @@ class QuickEditor : public QObject
 
     public:
 
-    explicit QuickEditor(const QPixmap &pixmap, QObject *parent = 0);
+    explicit QuickEditor(const QPixmap &pixmap, QObject *parent = nullptr);
     virtual ~QuickEditor();
 
     signals:

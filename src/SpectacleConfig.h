@@ -44,7 +44,7 @@ class SpectacleConfig : public QObject
 
     private:
 
-    explicit SpectacleConfig(QObject *parent = 0);
+    explicit SpectacleConfig(QObject *parent = nullptr);
     virtual ~SpectacleConfig();
 
     SpectacleConfig(SpectacleConfig const&) = delete;

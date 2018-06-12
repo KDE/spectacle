@@ -28,7 +28,7 @@ class SettingsPage : public QWidget
 
     public:
 
-    explicit SettingsPage(QWidget *parent = 0);
+    explicit SettingsPage(QWidget *parent = nullptr);
     virtual ~SettingsPage();
 
     public slots:

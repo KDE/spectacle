@@ -52,7 +52,7 @@ class ImageGrabber : public QObject
 
     Q_ENUM(GrabMode);
 
-    explicit ImageGrabber(QObject *parent = 0);
+    explicit ImageGrabber(QObject *parent = nullptr);
     ~ImageGrabber();
 
     QPixmap pixmap() const;

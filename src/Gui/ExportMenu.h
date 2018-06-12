@@ -40,7 +40,7 @@ class ExportMenu : public QMenu
 
     public:
 
-    explicit ExportMenu(QWidget *parent = 0);
+    explicit ExportMenu(QWidget *parent = nullptr);
     void imageUpdated();
 
     private slots:

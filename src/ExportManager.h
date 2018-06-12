@@ -42,7 +42,7 @@ class ExportManager : public QObject
 
     private:
 
-    explicit ExportManager(QObject *parent = 0);
+    explicit ExportManager(QObject *parent = nullptr);
     virtual ~ExportManager();
 
     ExportManager(ExportManager const&) = delete;

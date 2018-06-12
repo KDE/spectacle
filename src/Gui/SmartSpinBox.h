@@ -28,7 +28,7 @@ class SmartSpinBox : public QDoubleSpinBox
 
     public:
 
-    explicit SmartSpinBox(QWidget *parent = 0);
+    explicit SmartSpinBox(QWidget *parent = nullptr);
     QString textFromValue(double val) const Q_DECL_OVERRIDE;
 
     private slots:

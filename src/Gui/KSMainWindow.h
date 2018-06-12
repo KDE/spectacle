@@ -41,8 +41,8 @@ class KSMainWindow : public QDialog
 
     public:
 
-    explicit KSMainWindow(bool onClickAvailable, QWidget *parent = 0);
-    ~KSMainWindow();
+    explicit KSMainWindow(bool onClickAvailable, QWidget *parent = nullptr);
+    ~KSMainWindow() Q_DECL_OVERRIDE;
 
     private:
 

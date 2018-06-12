@@ -43,7 +43,7 @@ class KSWidget : public QWidget
 
 	public:
 
-    explicit KSWidget(QWidget *parent = 0);
+    explicit KSWidget(QWidget *parent = nullptr);
 
     int imagePaddingWidth() const;
 

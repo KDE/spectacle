@@ -175,7 +175,7 @@ void SpectacleCore::showErrorMessage(const QString &errString)
     qDebug() << "ERROR: " << errString;
 
     if (mStartMode == GuiMode) {
-        KMessageBox::error(0, errString);
+        KMessageBox::error(nullptr, errString);
     }
 }
 

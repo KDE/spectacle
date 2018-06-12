@@ -131,6 +131,7 @@ int main(int argc, char **argv)
 
     case SpectacleCore::DBusMode:
         app.setQuitOnLastWindowClosed(false);
+        break;
     case SpectacleCore::GuiMode:
         break;
     }
