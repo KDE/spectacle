@@ -240,7 +240,7 @@ void SpectacleConfig::setAutoSaveLocation(const QString &location)
     mGeneralConfig.sync();
 }
 
-// copy save location to clipboard
+// copy file location to clipboard after saving
 
 bool SpectacleConfig::copySaveLocationToClipboard() const
 {

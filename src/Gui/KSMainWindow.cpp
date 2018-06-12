@@ -32,6 +32,7 @@
 #include <KStandardGuiItem>
 #include <KWindowSystem>
 
+#include <QClipboard>
 #include <QDesktopServices>
 #include <QJsonArray>
 #include <QPrintDialog>
@@ -363,8 +364,9 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
         if (message.isEmpty()) {
             showInlineMessage(i18n("Image shared"), KMessageWidget::Positive);
         } else {
-            showInlineMessage(i18n("You can find the shared image at: <a href=\"%1\">%1</a>", message),
+            showInlineMessage(i18n("The shared image link (<a href=\"%1\">%1</a>) has been copied to the clipboard.", message),
                               KMessageWidget::Positive, MessageDuration::Persistent);
+            QApplication::clipboard()->setText(message);
         }
     }
 }

@@ -34,9 +34,9 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-    // copy save path to clipboard
+    // copy file location to clipboard after saving
 
-    mCopyPathToClipboard = new QCheckBox(i18n("Copy save location to the clipboard"), this);
+    mCopyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
     connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addWidget(mCopyPathToClipboard, 1);
 
