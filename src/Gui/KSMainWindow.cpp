@@ -264,6 +264,7 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 void KSMainWindow::captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
 {
     hide();
+    mMessageWidget->hide();
     emit newScreenshotRequest(mode, timeout, includePointer, includeDecorations);
 }
 
