@@ -53,8 +53,6 @@ int main(int argc, char **argv)
     // set up the command line options parser
 
     QCommandLineParser parser;
-    parser.addVersionOption();
-    parser.addHelpOption();
     aboutData.setupCommandLine(&parser);
 
     parser.addOptions({
