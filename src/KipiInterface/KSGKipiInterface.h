@@ -41,7 +41,7 @@ class KSGKipiInterface : public KIPI::Interface
     public:
 
     explicit KSGKipiInterface(QObject *parent = nullptr);
-    ~KSGKipiInterface();
+    ~KSGKipiInterface() Q_DECL_OVERRIDE;
 
     bool addImage(const QUrl &, QString &err) Q_DECL_OVERRIDE;
     void delImage(const QUrl &) Q_DECL_OVERRIDE;

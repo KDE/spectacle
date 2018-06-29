@@ -27,8 +27,8 @@ class KWinWaylandImageGrabber : public ImageGrabber
 
     public:
 
-    explicit KWinWaylandImageGrabber(QObject * parent = 0);
-    virtual ~KWinWaylandImageGrabber();
+    explicit KWinWaylandImageGrabber(QObject * parent = nullptr);
+    ~KWinWaylandImageGrabber() Q_DECL_OVERRIDE;
 
     bool onClickGrabSupported() const Q_DECL_OVERRIDE;
 

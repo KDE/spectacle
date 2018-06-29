@@ -32,7 +32,7 @@ class DummyImageGrabber : public ImageGrabber
     public:
 
     explicit DummyImageGrabber(QObject *parent = nullptr);
-    ~DummyImageGrabber();
+    ~DummyImageGrabber() Q_DECL_OVERRIDE;
 
     bool onClickGrabSupported() const Q_DECL_OVERRIDE;
 

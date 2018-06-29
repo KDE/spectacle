@@ -82,7 +82,7 @@ class ExportManager : public QObject
     QUrl tempSave(const QString &mimetype = QStringLiteral("png"));
 
     void doSave(const QUrl &url = QUrl(), bool notify = false);
-    bool doSaveAs(QWidget *parentWindow = 0, bool notify = false);
+    bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
     void doCopyToClipboard();
     void doPrint(QPrinter *printer);
 

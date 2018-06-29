@@ -50,7 +50,7 @@ class ImageGrabber : public QObject
         RectangularRegion   = 5
     };
 
-    Q_ENUM(GrabMode);
+    Q_ENUM(GrabMode)
 
     explicit ImageGrabber(QObject *parent = nullptr);
     ~ImageGrabber();

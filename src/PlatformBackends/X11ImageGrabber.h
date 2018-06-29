@@ -47,8 +47,8 @@ class X11ImageGrabber : public ImageGrabber
 
     public:
 
-    explicit X11ImageGrabber(QObject * parent = 0);
-    ~X11ImageGrabber();
+    explicit X11ImageGrabber(QObject * parent = nullptr);
+    ~X11ImageGrabber() Q_DECL_OVERRIDE;
 
     bool onClickGrabSupported() const Q_DECL_OVERRIDE;
 
