@@ -172,6 +172,7 @@ void ExportMenu::loadPurposeMenu()
     // attach the menu
     QAction *purposeMenu = addMenu(mPurposeMenu);
     purposeMenu->setText(i18n("Share"));
+    purposeMenu->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
 
     // set up the callback signal
     connect(mPurposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
