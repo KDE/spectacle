@@ -105,7 +105,6 @@ if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
     message(FATAL_ERROR "No suitable backend platform was found. Currenty supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
 endif()
 
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_definitions("-Wno-mismatched-tags")
 endif()
