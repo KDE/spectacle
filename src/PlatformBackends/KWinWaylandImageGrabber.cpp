@@ -62,7 +62,7 @@ static QImage readImage(int pipeFd)
     QImage image;
     ds >> image;
     return image;
-};
+}
 
 KWinWaylandImageGrabber::KWinWaylandImageGrabber(QObject *parent) :
     ImageGrabber(parent)
