@@ -493,9 +493,10 @@ Item {
 
                 Label {
                     text: i18n("Shift:");
-                    Layout.alignment: Qt.AlignRight;
+                    Layout.alignment: Qt.AlignRight | Qt.AlignTop;
                 }
-                Label { text: i18n("Hold to toggle magnifier"); }
+                Label { text: i18n("Hold to toggle magnifier \n" +
+                                   "while dragging selection handles"); }
 
                 Label {
                     text: i18n("Arrow keys:");
