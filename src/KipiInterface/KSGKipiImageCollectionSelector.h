@@ -41,7 +41,7 @@ class KSGKipiImageCollectionSelector : public KIPI::ImageCollectionSelector
     explicit KSGKipiImageCollectionSelector(KIPI::Interface *interface, QWidget *parent);
     ~KSGKipiImageCollectionSelector() Q_DECL_OVERRIDE;
 
-    QList<KIPI::ImageCollection> selectedImageCollections() const;
+    QList<KIPI::ImageCollection> selectedImageCollections() const Q_DECL_OVERRIDE;
 
     private:
 
