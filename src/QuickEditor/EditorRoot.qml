@@ -38,6 +38,8 @@ Item {
     property int magZoom: 5;
     property int magPixels: 16;
     property int magOffset: 32;
+    property double largeChange: 15;
+    property double smallChange: 1 / Screen.devicePixelRatio;
 
     SystemPalette {
         id: systemPalette;
@@ -78,11 +80,202 @@ Item {
     }
 
     Keys.onPressed: {
+
+        var change;
+
+        // shift key alone = magnifier toggle
         if (event.modifiers & Qt.ShiftModifier) {
             toggleMagnifier = true;
-            cropDisplayCanvas.requestPaint();
         }
-    }
+
+        // nested switches for arrow keys based on modifier keys
+        switch(event.modifiers) {
+
+           case Qt.NoModifier:
+               switch (event.key) {
+
+               case Qt.Key_Left:
+                    change = checkBounds(-largeChange, 0.0, "left");
+                    selection.x += change;
+                    break;
+                case Qt.Key_Right:
+                    change = checkBounds(largeChange, 0.0, "right");
+                    selection.x += change;
+                    break;
+                case Qt.Key_Up:
+                    change = checkBounds(0.0, -largeChange, "up");
+                    selection.y += change;
+                    break;
+                case Qt.Key_Down:
+                    change = checkBounds(0.0, largeChange, "down");
+                    selection.y += change;
+                    break;
+                }
+
+            break; // end no modifier (just arrows)
+
+            case Qt.ShiftModifier:
+                switch (event.key) {
+
+                case Qt.Key_Left:
+                     change = checkBounds(-smallChange, 0.0, "left");
+                     selection.x += change;
+                     break;
+
+                 case Qt.Key_Right:
+                     change = checkBounds(smallChange, 0.0, "right");
+                     selection.x += change;
+                     break;
+
+                 case Qt.Key_Up:
+                     change = checkBounds(0.0, -smallChange, "up");
+                     selection.y += change;
+                     break;
+
+                 case Qt.Key_Down:
+                     change = checkBounds(0.0, smallChange, "down");
+                     selection.y += change;
+                     break;
+                 }
+
+            break; // end Shift + arrows (large move)
+
+            case Qt.AltModifier:
+                switch (event.key) {
+
+                case Qt.Key_Left:
+                     change = checkBounds(-largeChange, 0.0, "left");
+                     if (selection.width + change <= 0.0) {
+                         selection.width = 0.0;
+                     } else {
+                         selection.width += change;
+                     }
+                     break;
+
+                 case Qt.Key_Right:
+                     change = checkBounds(largeChange, 0.0, "right");
+                     selection.width += change;
+                     break;
+
+                 case Qt.Key_Up:
+                     change = checkBounds(0.0, -largeChange, "up");
+                     if (selection.height + change <= 0.0) {
+                         selection.height = 0.0;
+                     } else {
+                         selection.height += change;
+                     }
+                     break;
+
+                 case Qt.Key_Down:
+                     change = checkBounds(0.0, largeChange, "down");
+                     selection.height = selection.height + change;
+                     break;
+                 }
+
+             break; // end ALT + arrows (resize rectangle)
+
+             case (Qt.ShiftModifier + Qt.AltModifier):
+                  switch (event.key) {
+
+                  case Qt.Key_Left:
+                       change = checkBounds(-smallChange, 0.0, "left");
+                       if (selection.width + change <= 0.0) {
+                           selection.width = 0.0;
+                       } else {
+                           selection.width += change;
+                       }
+                       break;
+
+                   case Qt.Key_Right:
+                       change = checkBounds(smallChange, 0.0, "right");
+                       selection.width += change;
+                       break;
+
+                   case Qt.Key_Up:
+                       change = checkBounds(0.0, -smallChange, "up");
+                       if (selection.height + change <= 0.0) {
+                           selection.height = 0.0;
+                       } else {
+                           selection.height += change
+                       }
+                       break;
+
+                   case Qt.Key_Down:
+                       change = checkBounds(0.0, smallChange, "down");
+                       selection.height += change;
+                       break;
+                   }
+
+            break; // end Shift + ALT + arrows (large resize rectangle)
+
+        }
+
+        // all switches done; repaint on any keypress
+        cropDisplayCanvas.requestPaint();
+
+        function checkBounds(changeX, changeY, direction) {
+
+            var leftEdge = selection.x;
+            var rightEdge = selection.x + selection.width;
+            var topEdge = selection.y;
+            var bottomEdge = selection.y + selection.height;
+
+            const screenMaxX = cropDisplayCanvas.width;
+            const screenMaxY = cropDisplayCanvas.height;
+
+            var newX;
+            var newY;
+
+            var overlap;
+
+            newX = selection.x + changeX;
+            newY = selection.y + changeY;
+
+            switch (direction) {
+
+                case "left":
+                   if (leftEdge + changeX > 0.0) {
+                       return changeX;
+                   }
+
+                   if (leftEdge + changeX < 0.0) {
+                       return -leftEdge;
+                   }
+                   break;
+
+                case "right":
+                    newX = newX + selection.width;
+                    if (newX < screenMaxX) {
+                        return changeX;
+                    }
+                    if (newX > screenMaxX) {
+                        overlap = newX - screenMaxX;
+                        return changeX - overlap;
+                    }
+                    break;
+
+               case "up":
+                   if (topEdge + changeY > 0.0) {
+                       return changeY;
+                   } else {
+                       return -topEdge;
+                   }
+
+                case "down":
+                    newY = newY + selection.height;
+                    if (newY < screenMaxY) {
+                        return changeY;
+                    }
+                    if (newY > screenMaxY) {
+                        overlap = newY - screenMaxY;
+                        return changeY - overlap;
+                    }
+                    break;
+
+                }
+            }
+        } // end Keys.onPressed
+
 
     Keys.onReleased: {
         if (toggleMagnifier && !(event.modifiers & Qt.ShiftModifier)) {
@@ -305,6 +498,13 @@ Item {
                 Label { text: i18n("Hold to toggle magnifier"); }
 
                 Label {
+                    text: i18n("Arrow keys:");
+                    Layout.alignment: Qt.AlignRight | Qt.AlignTop;
+                }
+                Label { text: i18n("Move selection rectangle \n" +
+                                   "Hold Alt to resize, Shift to fine-tune"); }
+
+                Label {
                     text: i18n("Right-click:");
                     Layout.alignment: Qt.AlignRight;
                 }
@@ -368,7 +568,6 @@ Item {
                 color: crossColour;
             }
         }
-
     }
 
     MouseArea {
