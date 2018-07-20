@@ -456,7 +456,7 @@ Item {
             visible: false;
             anchors.centerIn: parent;
 
-            Label {
+            TextLabel {
                 id: midHelpTextElement;
                 text: i18n("Click anywhere to start drawing a selection rectangle,\n" +
                            "or press Esc to cancel.");
@@ -485,37 +485,37 @@ Item {
                 columns: 2
                 anchors.centerIn: parent;
 
-                Label {
+                TextLabel {
                     text: i18n("Enter, double-click:");
                     Layout.alignment: Qt.AlignRight;
                 }
-                Label { text: i18n("Take screenshot"); }
+                TextLabel { text: i18n("Take screenshot"); }
 
-                Label {
+                TextLabel {
                     text: i18n("Shift:");
                     Layout.alignment: Qt.AlignRight | Qt.AlignTop;
                 }
-                Label { text: i18n("Hold to toggle magnifier \n" +
-                                   "while dragging selection handles"); }
+                TextLabel { text: i18n("Hold to toggle magnifier \n" +
+                                       "while dragging selection handles"); }
 
-                Label {
+                TextLabel {
                     text: i18n("Arrow keys:");
                     Layout.alignment: Qt.AlignRight | Qt.AlignTop;
                 }
-                Label { text: i18n("Move selection rectangle \n" +
-                                   "Hold Alt to resize, Shift to fine-tune"); }
+                TextLabel { text: i18n("Move selection rectangle \n" +
+                                       "Hold Alt to resize, Shift to fine-tune"); }
 
-                Label {
+                TextLabel {
                     text: i18n("Right-click:");
                     Layout.alignment: Qt.AlignRight;
                 }
-                Label { text: i18n("Reset selection"); }
+                TextLabel { text: i18n("Reset selection"); }
 
-                Label {
+                TextLabel {
                     text: i18n("Esc:");
                     Layout.alignment: Qt.AlignRight;
                 }
-                Label { text: i18n("Cancel"); }
+                TextLabel { text: i18n("Cancel"); }
             }
         }
 
