@@ -40,6 +40,7 @@ Item {
     property int magOffset: 32;
     property double largeChange: 15;
     property double smallChange: 1 / Screen.devicePixelRatio;
+    property bool resize: false;    // toggle for resize versus move actions
 
     SystemPalette {
         id: systemPalette;
@@ -81,7 +82,10 @@ Item {
 
     Keys.onPressed: {
 
-        var change;
+        const screenMaxX = cropDisplayCanvas.width;
+        const screenMaxY = cropDisplayCanvas.height;
+        const minRectHeight = 20;
+        const minRectWidth = 20;
 
         // shift key alone = magnifier toggle
         if (event.modifiers & Qt.ShiftModifier) {
@@ -92,188 +96,169 @@ Item {
         switch(event.modifiers) {
 
            case Qt.NoModifier:
+               resize = false;
                switch (event.key) {
 
                case Qt.Key_Left:
-                    change = checkBounds(-largeChange, 0.0, "left");
-                    selection.x += change;
+                    moveSizeRect(-largeChange, 0.0, "left");
                     break;
                 case Qt.Key_Right:
-                    change = checkBounds(largeChange, 0.0, "right");
-                    selection.x += change;
+                    moveSizeRect(largeChange, 0.0, "right");
                     break;
                 case Qt.Key_Up:
-                    change = checkBounds(0.0, -largeChange, "up");
-                    selection.y += change;
+                    moveSizeRect(0.0, -largeChange, "up");
                     break;
                 case Qt.Key_Down:
-                    change = checkBounds(0.0, largeChange, "down");
-                    selection.y += change;
+                    moveSizeRect(0.0, largeChange, "down");
                     break;
                 }
 
-            break; // end no modifier (just arrows)
+            break; // end no modifier (just arrows - large move)
 
             case Qt.ShiftModifier:
+                resize = false;
                 switch (event.key) {
 
                 case Qt.Key_Left:
-                     change = checkBounds(-smallChange, 0.0, "left");
-                     selection.x += change;
+                     moveSizeRect(-smallChange, 0.0, "left");
                      break;
 
                  case Qt.Key_Right:
-                     change = checkBounds(smallChange, 0.0, "right");
-                     selection.x += change;
+                     moveSizeRect(smallChange, 0.0, "right");
                      break;
 
                  case Qt.Key_Up:
-                     change = checkBounds(0.0, -smallChange, "up");
-                     selection.y += change;
+                     moveSizeRect(0.0, -smallChange, "up");
                      break;
 
                  case Qt.Key_Down:
-                     change = checkBounds(0.0, smallChange, "down");
-                     selection.y += change;
+                     moveSizeRect(0.0, smallChange, "down");
                      break;
                  }
 
-            break; // end Shift + arrows (large move)
+            break; // end Shift + arrows (small move)
 
             case Qt.AltModifier:
+                resize = true;
                 switch (event.key) {
 
                 case Qt.Key_Left:
-                     change = checkBounds(-largeChange, 0.0, "left");
-                     if (selection.width + change <= 0.0) {
-                         selection.width = 0.0;
-                     } else {
-                         selection.width += change;
-                     }
+                    moveSizeRect(-largeChange, 0.0, "left");
                      break;
 
                  case Qt.Key_Right:
-                     change = checkBounds(largeChange, 0.0, "right");
-                     selection.width += change;
+                     moveSizeRect(largeChange, 0.0, "right");
                      break;
 
                  case Qt.Key_Up:
-                     change = checkBounds(0.0, -largeChange, "up");
-                     if (selection.height + change <= 0.0) {
-                         selection.height = 0.0;
-                     } else {
-                         selection.height += change;
-                     }
+                     moveSizeRect(0.0, -largeChange, "up");
                      break;
 
                  case Qt.Key_Down:
-                     change = checkBounds(0.0, largeChange, "down");
-                     selection.height = selection.height + change;
+                     moveSizeRect(0.0, largeChange, "down");
                      break;
                  }
 
-             break; // end ALT + arrows (resize rectangle)
+             break; // end ALT + arrows (resize rectangle - large change)
 
              case (Qt.ShiftModifier + Qt.AltModifier):
+                  resize = true;
                   switch (event.key) {
 
                   case Qt.Key_Left:
-                       change = checkBounds(-smallChange, 0.0, "left");
-                       if (selection.width + change <= 0.0) {
-                           selection.width = 0.0;
-                       } else {
-                           selection.width += change;
-                       }
+                       moveSizeRect(-smallChange, 0.0, "left");
                        break;
 
                    case Qt.Key_Right:
-                       change = checkBounds(smallChange, 0.0, "right");
-                       selection.width += change;
+                       moveSizeRect(smallChange, 0.0, "right");
                        break;
 
                    case Qt.Key_Up:
-                       change = checkBounds(0.0, -smallChange, "up");
-                       if (selection.height + change <= 0.0) {
-                           selection.height = 0.0;
-                       } else {
-                           selection.height += change
-                       }
+                       moveSizeRect(0.0, -smallChange, "up");
                        break;
 
                    case Qt.Key_Down:
-                       change = checkBounds(0.0, smallChange, "down");
-                       selection.height += change;
+                       moveSizeRect(0.0, smallChange, "down");
                        break;
                    }
 
-            break; // end Shift + ALT + arrows (large resize rectangle)
+            break; // end Shift + ALT + arrows (small resize rectangle)
 
         }
 
-        // all switches done; repaint on any keypress
-        cropDisplayCanvas.requestPaint();
 
-        function checkBounds(changeX, changeY, direction) {
+        function moveSizeRect(changeX, changeY, direction) {
 
-            var leftEdge = selection.x;
-            var rightEdge = selection.x + selection.width;
-            var topEdge = selection.y;
-            var bottomEdge = selection.y + selection.height;
-
-            const screenMaxX = cropDisplayCanvas.width;
-            const screenMaxY = cropDisplayCanvas.height;
-
+            var action;
             var newX;
             var newY;
+            var newRight;
+            var newBottom;
 
-            var overlap;
+            switch (resize) {
+                case false:     // move
 
-            newX = selection.x + changeX;
-            newY = selection.y + changeY;
+                    switch (direction) {
+                        case "left":
+                            newX = selection.x += changeX;
+                            action = (newX >= 0.0) ? selection.x = newX : selection.x = 0.0;
+                            break;
+                        case "right":
+                            newRight = (selection.x + selection.width) + changeX;
+                            action = (newRight <= screenMaxX) ? selection.x += changeX : selection.x = screenMaxX - selection.width;
+                            break;
+                        case "up":
+                            newY = selection.y += changeY;
+                            action = (newY >= 0.0) ? selection.y = newY : selection.y = 0.0;
+                            break;
+                        case "down":
+                            newBottom = selection.y + selection.height + changeY;
+                            action = (newBottom <= screenMaxY) ? selection.y = selection.y + changeY : selection.y = screenMaxY - selection.height;
+                            break;
+                        }
 
-            switch (direction) {
-
-                case "left":
-                   if (leftEdge + changeX > 0.0) {
-                       return changeX;
-                   }
-
-                   if (leftEdge + changeX < 0.0) {
-                       return -leftEdge;
-                   }
-                   break;
-
-                case "right":
-                    newX = newX + selection.width;
-                    if (newX < screenMaxX) {
-                        return changeX;
-                    }
-                    if (newX > screenMaxX) {
-                        overlap = newX - screenMaxX;
-                        return changeX - overlap;
-                    }
                     break;
+                    // end of movement switch cases
 
-               case "up":
-                   if (topEdge + changeY > 0.0) {
-                       return changeY;
-                   } else {
-                       return -topEdge;
-                   }
 
-                case "down":
-                    newY = newY + selection.height;
-                    if (newY < screenMaxY) {
-                        return changeY;
+                case true:  // resizing rectangle
+
+                    switch (direction) {
+                        case "left":
+                            newX = selection.width += changeX;
+                                if (newX <= minRectWidth) {
+                                    selection.width = minRectWidth;
+                                    break;
+                                }
+                            action = (newX >= 0.0) ? selection.width + changeX : selection.x = 0.0;
+                            break;
+
+                        case "right":
+                            newX = selection.width += changeX
+                            action = (newX <= screenMaxX) ? selection.width + changeX : selection.width = (selection.x + screenMaxX);
+                            break;
+
+                        case "up":
+                            newY = selection.height += changeY;
+                                if (newY <= minRectHeight) {
+                                    selection.height = minRectHeight;
+                                    break;
+                                }
+                            action = (newY >= 0.0) ? selection.height = newY : selection.y = 0.0;
+                            break;
+
+                        case "down":
+                            newY = selection.height += changeY;
+                            action = (newY <= screenMaxY) ? selection.height + changeY : selection.height = (selection.y + screenMaxY);
+                            break;
                     }
-                    if (newY > screenMaxY) {
-                        overlap = newY - screenMaxY;
-                        return changeY - overlap;
-                    }
-                    break;
 
                 }
             }
+
+            // all switches done; repaint on any keypress
+            cropDisplayCanvas.requestPaint();
+
         } // end Keys.onPressed
 
 
