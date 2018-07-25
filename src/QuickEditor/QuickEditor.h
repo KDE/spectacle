@@ -45,8 +45,8 @@ class QuickEditor : public QObject
     struct ImageStore;
     ImageStore *mImageStore;
 
-    struct QuickEditorPrivate;
-    Q_DECLARE_PRIVATE(QuickEditor);
+    class QuickEditorPrivate;
+    Q_DECLARE_PRIVATE(QuickEditor)
     QuickEditorPrivate *d_ptr;
 };
 

@@ -56,8 +56,9 @@ struct QuickEditor::ImageStore : public QQuickImageProvider
     QPixmap mPixmap;
 };
 
-struct QuickEditor::QuickEditorPrivate
+class QuickEditor::QuickEditorPrivate
 {
+public:
     KDeclarative::KDeclarative *mDecl;
     QQuickView *mQuickView;
     QQmlEngine *mQmlEngine;
