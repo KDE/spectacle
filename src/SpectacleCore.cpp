@@ -243,6 +243,7 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
     case ImageGrabber::GrabMode::RectangularRegion:
         notify->setTitle(i18nc("A rectangular region was captured, heading", "Rectangular Region Captured"));
         break;
+    case ImageGrabber::GrabMode::InvalidChoice:
     default:
         break;
     }

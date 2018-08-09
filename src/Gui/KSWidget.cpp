@@ -27,6 +27,7 @@
 
 #include <QCheckBox>
 #include <QComboBox>
+#include <QDebug>
 #include <QFormLayout>
 #include <QGridLayout>
 #include <QLabel>
@@ -225,8 +226,16 @@ void KSWidget::captureModeChanged(int index)
         mWindowDecorations->setEnabled(true);
         mCaptureTransientOnly->setEnabled(false);
         break;
-    default:
+    case ImageGrabber::FullScreen:
+    case ImageGrabber::CurrentScreen:
+    case ImageGrabber::RectangularRegion:
         mWindowDecorations->setEnabled(false);
         mCaptureTransientOnly->setEnabled(false);
+        break;
+    case ImageGrabber::TransientWithParent:
+    case ImageGrabber::InvalidChoice:
+    default:
+        qWarning() << "Skipping invalid or unreachable enum value";
+        break;
     }
 }

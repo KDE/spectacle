@@ -339,6 +339,9 @@ void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidge
     case KMessageWidget::Error:
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")));
         break;
+    case KMessageWidget::Warning:
+        mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
+        break;
     case KMessageWidget::Positive:
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
         break;
