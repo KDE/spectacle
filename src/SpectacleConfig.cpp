@@ -36,6 +36,17 @@ SpectacleConfig* SpectacleConfig::instance()
     return &instance;
 }
 
+QString SpectacleConfig::defaultFilename() const
+{
+    return QStringLiteral("Screenshot");
+}
+
+QString SpectacleConfig::defaultTimestampTemplate() const
+{
+    // includes separator at the front
+    return QStringLiteral("_%Y%M%D_%H%m%S");
+}
+
 // lastSaveAsLocation
 
 QUrl SpectacleConfig::lastSaveAsLocation() const
@@ -217,7 +228,7 @@ void SpectacleConfig::setLastUsedSaveMode(SaveMode mode)
 QString SpectacleConfig::autoSaveFilenameFormat() const
 {
     return mGeneralConfig.readEntry(QStringLiteral("save-filename-format"),
-                          QStringLiteral("Screenshot_%Y%M%D_%H%m%S"));
+                                    QString(defaultFilename() + defaultTimestampTemplate()));
 }
 
 void SpectacleConfig::setAutoSaveFilenameFormat(const QString &format)

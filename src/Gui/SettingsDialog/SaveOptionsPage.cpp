@@ -90,7 +90,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     // now the save filename format layout
 
-    const QString helpText = i18n(
+    const QString helpText = i18nc("%1 is the default filename of a screenshot",
         "<p>You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:</p>"
 
@@ -108,8 +108,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         "<p>To save to a sub-folder, use slashes to describe the desired path, e.g.:</p>"
 
         "<blockquote>"
-            "<b>%Y</b>/<b>%M</b>/Screenshot_<b>%Y%M%D</b>_<b>%H%m%S</b>"
-        "</blockquote>"
+            "<b>%Y</b>/<b>%M</b>/%1"
+        "</blockquote>",
+        SpectacleConfig::instance()->defaultFilename() + SpectacleConfig::instance()->defaultTimestampTemplate()
     );
 
     QLabel *fmtHelpText = new QLabel(helpText, this);

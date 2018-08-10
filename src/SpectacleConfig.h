@@ -42,6 +42,9 @@ class SpectacleConfig : public QObject
 
     static SpectacleConfig* instance();
 
+    QString defaultFilename() const;
+    QString defaultTimestampTemplate() const;
+
     private:
 
     explicit SpectacleConfig(QObject *parent = nullptr);

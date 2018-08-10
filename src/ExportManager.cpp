@@ -170,11 +170,8 @@ QString ExportManager::truncatedFilename(QString const &filename)
 
 QString ExportManager::makeAutosaveFilename()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
     const QDateTime timestamp = QDateTime::currentDateTime();
-    QString baseName = generalConfig.readEntry("save-filename-format", "Screenshot_%Y%M%D_%H%m%S");
+    QString baseName = SpectacleConfig::instance()->autoSaveFilenameFormat();
 
     QString title;
 
@@ -208,7 +205,7 @@ QString ExportManager::makeAutosaveFilename()
     }
 
     if (result.isEmpty()) {
-        result = QStringLiteral("Screenshot");
+        result = SpectacleConfig::instance()->defaultFilename();
     }
     return truncatedFilename(result);
 }
