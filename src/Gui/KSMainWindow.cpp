@@ -239,6 +239,7 @@ void KSMainWindow::setDefaultSaveAction()
 {
     switch (SpectacleConfig::instance()->lastUsedSaveMode()) {
     case SaveMode::SaveAs:
+    default:
         mSaveButton->setDefaultAction(mSaveAsAction);
         break;
     case SaveMode::Save:
@@ -304,6 +305,7 @@ void KSMainWindow::openScreenshotsFolder()
             location = QUrl::fromLocalFile(ExportManager::instance()->saveLocation() + QStringLiteral("/"));
             break;
         case SaveMode::SaveAs:
+        default:
             location = SpectacleConfig::instance()->lastSaveAsLocation();  // already has a "/" at the end
             break;
         }

@@ -93,6 +93,7 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
 
     switch (startMode) {
     case DBusMode:
+    default:
         break;
     case BackgroundMode: {
             int msec = (KWindowSystem::compositingActive() ? 200 : 50) + delayMsec;
@@ -186,6 +187,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
     switch (mStartMode) {
     case BackgroundMode:
     case DBusMode:
+    default:
         {
             if (mNotify) {
                 connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
@@ -215,6 +217,7 @@ void SpectacleCore::screenshotFailed()
         emit allDone();
         return;
     case DBusMode:
+    default:
         emit grabFailed();
         emit allDone();
         return;
