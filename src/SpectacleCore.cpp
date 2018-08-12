@@ -238,6 +238,7 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
         notify->setTitle(i18nc("The active window was captured, heading", "Active Window Captured"));
         break;
     case ImageGrabber::GrabMode::WindowUnderCursor:
+    case ImageGrabber::GrabMode::TransientWithParent:
         notify->setTitle(i18nc("The window under the mouse was captured, heading", "Window Under Cursor Captured"));
         break;
     case ImageGrabber::GrabMode::RectangularRegion:
