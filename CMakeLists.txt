@@ -102,7 +102,7 @@ endif()
 
 # fail build if none of the platform backends can be found
 if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
-    message(FATAL_ERROR "No suitable backend platform was found. Currenty supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
+    message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
 endif()
 
 # hand off to subdirectories

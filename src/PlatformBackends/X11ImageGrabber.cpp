@@ -39,7 +39,6 @@
 #include <QX11Info>
 #include <QtMath>
 
-#include <KWindowSystem>
 #include <KWindowInfo>
 
 #include <xcb/xcb_cursor.h>
