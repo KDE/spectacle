@@ -443,8 +443,7 @@ Item {
 
             TextLabel {
                 id: midHelpTextElement;
-                text: i18n("Click anywhere to start drawing a selection rectangle,\n" +
-                           "or press Esc to cancel.");
+                text: i18n("Click anywhere to start drawing a selection rectangle,\nor press Esc to cancel.");
                 font.pixelSize: Qt.application.font.pixelSize * 1.2;
 
                 anchors.centerIn: parent;
@@ -480,15 +479,13 @@ Item {
                     text: i18n("Shift:");
                     Layout.alignment: Qt.AlignRight | Qt.AlignTop;
                 }
-                TextLabel { text: i18n("Hold to toggle magnifier \n" +
-                                       "while dragging selection handles"); }
+                TextLabel { text: i18n("Hold to toggle magnifier\nwhile dragging selection handles"); }
 
                 TextLabel {
                     text: i18n("Arrow keys:");
                     Layout.alignment: Qt.AlignRight | Qt.AlignTop;
                 }
-                TextLabel { text: i18n("Move selection rectangle \n" +
-                                       "Hold Alt to resize, Shift to fine-tune"); }
+                TextLabel { text: i18n("Move selection rectangle.\nHold Alt to resize, Shift to fine-tune"); }
 
                 TextLabel {
                     text: i18n("Right-click:");
