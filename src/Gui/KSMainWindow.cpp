@@ -150,7 +150,7 @@ void KSMainWindow::init()
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
     mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
-    mClipboardButton->setText(i18n("Copy To Clipboard"));
+    mClipboardButton->setText(i18n("Copy to Clipboard"));
     mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
