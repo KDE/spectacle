@@ -30,6 +30,7 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 #include <QImageWriter>
+#include <QCheckBox>
 
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     SettingsPage(parent)
@@ -49,6 +50,12 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     urlRequesterLayout->addWidget(mUrlRequester);
 
     dirLayout->addLayout(urlRequesterLayout);
+
+    // copy file location to clipboard after saving
+
+    mCopyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
+    connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &SaveOptionsPage::markDirty);
+    dirLayout->addWidget(mCopyPathToClipboard, 1);
 
     // filename chooser text field
 
@@ -134,9 +141,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     setLayout(mainLayout);
 }
 
-void SaveOptionsPage::markDirty(const QString &text)
+void SaveOptionsPage::markDirty()
 {
-    Q_UNUSED(text);
     mChangesMade = true;
 }
 
@@ -151,6 +157,7 @@ void SaveOptionsPage::saveChanges()
     cfgManager->setAutoSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
     cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
+    cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
 
     // done
 
@@ -167,6 +174,7 @@ void SaveOptionsPage::resetChanges()
 
     mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
     mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
+    mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
 
     // read in the save image format and calculate its index
 

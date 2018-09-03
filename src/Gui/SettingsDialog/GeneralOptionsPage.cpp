@@ -34,12 +34,6 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-    // copy file location to clipboard after saving
-
-    mCopyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
-    connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addWidget(mCopyPathToClipboard, 1);
-
     // Rectangular Region settings
 
     QGroupBox *rrGroup = new QGroupBox(i18n("Rectangular Region"));
@@ -93,7 +87,6 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
     cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
-    cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
 
     mChangesMade = false;
 }
@@ -105,7 +98,6 @@ void GeneralOptionsPage::resetChanges()
     mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
     mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
-    mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
 
     mChangesMade = false;
 }

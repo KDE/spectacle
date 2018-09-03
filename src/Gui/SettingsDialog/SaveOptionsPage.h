@@ -26,6 +26,7 @@ class QDialogButtonBox;
 class QLineEdit;
 class QComboBox;
 class KUrlRequester;
+class QCheckBox;
 
 class SaveOptionsPage : public SettingsPage
 {
@@ -42,7 +43,7 @@ class SaveOptionsPage : public SettingsPage
 
     private slots:
 
-    void markDirty(const QString &text);
+    void markDirty();
 
     private:
 
@@ -50,6 +51,8 @@ class SaveOptionsPage : public SettingsPage
     QLineEdit        *mSaveNameFormat;
     KUrlRequester    *mUrlRequester;
     QComboBox        *mSaveImageFormat;
+    QCheckBox        *mCopyPathToClipboard;
+
 };
 
 #endif // SAVEOPTIONSPAGE_H
