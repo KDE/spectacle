@@ -183,6 +183,7 @@ void SpectacleCore::showErrorMessage(const QString &errString)
 void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
 {
     mExportManager->setPixmap(pixmap);
+    mExportManager->updatePixmapTimestamp();
 
     switch (mStartMode) {
     case BackgroundMode:

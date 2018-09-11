@@ -24,6 +24,7 @@
 #include <QIODevice>
 #include <QPrinter>
 #include <QPixmap>
+#include <QDateTime>
 #include <QUrl>
 
 #include "PlatformBackends/ImageGrabber.h"
@@ -63,6 +64,7 @@ class ExportManager : public QObject
     bool isFileExists(const QUrl &url) const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
+    void updatePixmapTimestamp();
     void setWindowTitle(const QString &windowTitle);
     QString windowTitle() const;
     ImageGrabber::GrabMode grabMode() const;
@@ -101,6 +103,7 @@ class ExportManager : public QObject
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     QPixmap mSavePixmap;
+    QDateTime mPixmapTimestamp;
     QUrl mLastSavePath;
     QUrl mTempFile;
     QTemporaryDir *mTempDir;

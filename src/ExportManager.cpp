@@ -104,6 +104,11 @@ void ExportManager::setPixmap(const QPixmap &pixmap)
     }
 }
 
+void ExportManager::updatePixmapTimestamp()
+{
+	mPixmapTimestamp = QDateTime::currentDateTime();
+}
+
 // native file save helpers
 
 QString ExportManager::saveLocation() const
@@ -170,7 +175,7 @@ QString ExportManager::truncatedFilename(QString const &filename)
 
 QString ExportManager::makeAutosaveFilename()
 {
-    const QDateTime timestamp = QDateTime::currentDateTime();
+    const QDateTime timestamp = mPixmapTimestamp;
     QString baseName = SpectacleConfig::instance()->autoSaveFilenameFormat();
 
     QString title;
