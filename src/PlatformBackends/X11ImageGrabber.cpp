@@ -664,10 +664,15 @@ void X11ImageGrabber::grabCurrentScreen()
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    QuickEditor *editor = new QuickEditor(getToplevelPixmap(QRect(), false));
+    const auto pixmap = getToplevelPixmap(QRect(), false);
+    if (!pixmap.isNull()) {
+        QuickEditor *editor = new QuickEditor(pixmap);
 
-    connect(editor, &QuickEditor::grabDone, this, &X11ImageGrabber::rectangleSelectionConfirmed);
-    connect(editor, &QuickEditor::grabCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
+        connect(editor, &QuickEditor::grabDone, this, &X11ImageGrabber::rectangleSelectionConfirmed);
+        connect(editor, &QuickEditor::grabCancelled, this, &X11ImageGrabber::rectangleSelectionCancelled);
+    } else {
+        emit pixmapChanged(pixmap);
+    }
 }
 
 xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
