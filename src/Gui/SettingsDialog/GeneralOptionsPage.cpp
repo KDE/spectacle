@@ -74,9 +74,8 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     setLayout(mainLayout);
 }
 
-void GeneralOptionsPage::markDirty(bool checked)
+void GeneralOptionsPage::markDirty()
 {
-    Q_UNUSED(checked);
     mChangesMade = true;
 }
 

@@ -39,7 +39,7 @@ class GeneralOptionsPage : public SettingsPage
 
     private slots:
 
-    void markDirty(bool checked);
+    void markDirty();
 
     private:
 
