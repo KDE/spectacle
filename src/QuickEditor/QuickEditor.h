@@ -31,12 +31,12 @@ class QuickEditor : public QObject
     explicit QuickEditor(const QPixmap &pixmap, QObject *parent = nullptr);
     virtual ~QuickEditor();
 
-    signals:
+    Q_SIGNALS:
 
     void grabDone(const QPixmap &pixmap, const QRect &cropRegion);
     void grabCancelled();
 
-    private slots:
+    private Q_SLOTS:
 
     void acceptImageHandler(int x, int y, int width, int height);
 

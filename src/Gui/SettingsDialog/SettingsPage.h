@@ -31,7 +31,7 @@ class SettingsPage : public QWidget
     explicit SettingsPage(QWidget *parent = nullptr);
     virtual ~SettingsPage();
 
-    public slots:
+    public Q_SLOTS:
 
     virtual void saveChanges() = 0;
     virtual void resetChanges() = 0;

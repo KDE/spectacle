@@ -60,7 +60,7 @@ class KSMainWindow : public QDialog
                            const KMessageWidget::MessageType messageType,
                            const MessageDuration messageDuration = MessageDuration::AutoHide);
 
-    private slots:
+    private Q_SLOTS:
 
     void captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void showPrintDialog();
@@ -74,12 +74,12 @@ class KSMainWindow : public QDialog
     void saveAs();
     int windowWidth(const QPixmap &pixmap) const;
 
-    public slots:
+    public Q_SLOTS:
 
     void setScreenshotAndShow(const QPixmap &pixmap);
     void setScreenshotWindowTitle(QUrl location);
 
-    signals:
+    Q_SIGNALS:
 
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations);
     void dragAndDropRequest();

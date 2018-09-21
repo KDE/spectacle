@@ -50,7 +50,7 @@ class SpectacleCore : public QObject
     ImageGrabber::GrabMode grabMode() const;
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
 
-    signals:
+    Q_SIGNALS:
 
     void errorMessage(const QString errString);
     void allDone();
@@ -58,7 +58,7 @@ class SpectacleCore : public QObject
     void grabModeChanged(ImageGrabber::GrabMode mode);
     void grabFailed();
 
-    public slots:
+    public Q_SLOTS:
 
     void takeNewScreenshot(const ImageGrabber::GrabMode &mode, const int &timeout, const bool &includePointer, const bool &includeDecorations);
     void showErrorMessage(const QString &errString);

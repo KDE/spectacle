@@ -62,13 +62,13 @@ class X11ImageGrabber : public ImageGrabber
     void grabTransientWithParent() Q_DECL_OVERRIDE;
     QPixmap blendCursorImage(const QPixmap &pixmap, int x, int y, int width, int height) Q_DECL_OVERRIDE;
 
-    private slots:
+    private Q_SLOTS:
 
     void KWinDBusScreenshotHelper(quint64 window);
     void rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region);
     void rectangleSelectionCancelled();
 
-    public slots:
+    public Q_SLOTS:
 
     void doOnClickGrab() Q_DECL_OVERRIDE;
 

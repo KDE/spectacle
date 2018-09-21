@@ -70,7 +70,7 @@ class ExportManager : public QObject
     ImageGrabber::GrabMode grabMode() const;
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
 
-    signals:
+    Q_SIGNALS:
 
     void errorMessage(const QString &str);
     void saveLocationChanged(const QString &location);
@@ -78,7 +78,7 @@ class ExportManager : public QObject
     void imageSaved(const QUrl &savedAt);
     void forceNotify(const QUrl &savedAt);
 
-    public slots:
+    public Q_SLOTS:
 
     QUrl getAutosaveFilename();
     QUrl tempSave(const QString &mimetype = QStringLiteral("png"));

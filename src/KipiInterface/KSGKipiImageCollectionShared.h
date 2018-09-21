@@ -35,14 +35,14 @@ class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
 public:
 
     explicit KSGKipiImageCollectionShared();
-    ~KSGKipiImageCollectionShared();
+    ~KSGKipiImageCollectionShared() override;
 
-    QString name();
-    QString comment();
-    QList<QUrl> images();
-    QUrl uploadRoot();
-    QString uploadRootName();
-    bool isDirectory();
+    QString name() override;
+    QString comment() override;
+    QList<QUrl> images() override;
+    virtual QUrl uploadRoot();
+    QString uploadRootName() override;
+    bool isDirectory() override;
 
 private:
 

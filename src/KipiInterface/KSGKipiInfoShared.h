@@ -34,12 +34,12 @@ class KSGKipiInfoShared : public KIPI::ImageInfoShared
     public:
 
     explicit KSGKipiInfoShared(KIPI::Interface *interface, const QUrl &url);
-    ~KSGKipiInfoShared();
+    ~KSGKipiInfoShared() override;
 
-    virtual void addAttributes(const QMap< QString, QVariant > &);
-    virtual void delAttributes(const QStringList &);
-    virtual void clearAttributes();
-    virtual QMap< QString, QVariant > attributes();
+    void addAttributes(const QMap< QString, QVariant > &) override;
+    void delAttributes(const QStringList &) override;
+    void clearAttributes() override;
+    QMap< QString, QVariant > attributes() override;
     virtual void setDescription(const QString &);
     virtual QString description();
 };

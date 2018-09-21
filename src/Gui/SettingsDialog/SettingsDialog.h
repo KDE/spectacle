@@ -33,11 +33,11 @@ class SettingsDialog : public KPageDialog
 
     explicit SettingsDialog(QWidget *parent = nullptr);
 
-    public slots:
+    public Q_SLOTS:
 
     void accept() Q_DECL_OVERRIDE;
 
-    private slots:
+    private Q_SLOTS:
 
     void initPages();
     void onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before);

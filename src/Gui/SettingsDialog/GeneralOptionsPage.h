@@ -32,12 +32,12 @@ class GeneralOptionsPage : public SettingsPage
 
     explicit GeneralOptionsPage(QWidget *parent = nullptr);
 
-    public slots:
+    public Q_SLOTS:
 
     void saveChanges() Q_DECL_OVERRIDE;
     void resetChanges() Q_DECL_OVERRIDE;
 
-    private slots:
+    private Q_SLOTS:
 
     void markDirty();
 

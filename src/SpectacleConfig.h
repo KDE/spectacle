@@ -55,7 +55,7 @@ class SpectacleConfig : public QObject
 
     // everything else
 
-    public slots:
+    public Q_SLOTS:
 
     QUrl lastSaveAsLocation() const;
     void setLastSaveAsLocation(const QUrl &location);

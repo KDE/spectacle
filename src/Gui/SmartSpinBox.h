@@ -31,7 +31,7 @@ class SmartSpinBox : public QDoubleSpinBox
     explicit SmartSpinBox(QWidget *parent = nullptr);
     QString textFromValue(double val) const Q_DECL_OVERRIDE;
 
-    private slots:
+    private Q_SLOTS:
 
     void suffixChangeHandler(double val);
 };

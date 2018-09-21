@@ -64,7 +64,7 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 
     inline SpectacleCore *parent() const;
 
-    public slots:
+    public Q_SLOTS:
 
     Q_NOREPLY void StartAgent();
     Q_NOREPLY void FullScreen(bool includeMousePointer);
@@ -73,7 +73,7 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
     Q_NOREPLY void WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer);
     Q_NOREPLY void RectangularRegion(bool includeMousePointer);
 
-    signals:
+    Q_SIGNALS:
 
     void ScreenshotTaken(const QString &fileName);
     void ScreenshotFailed();

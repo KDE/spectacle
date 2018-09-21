@@ -45,7 +45,7 @@ class KSImageWidget : public QLabel
     explicit KSImageWidget(QWidget *parent = nullptr);
     void setScreenshot(const QPixmap &pixmap);
 
-    signals:
+    Q_SIGNALS:
 
     void dragInitiated();
 

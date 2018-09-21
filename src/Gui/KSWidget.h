@@ -47,17 +47,17 @@ class KSWidget : public QWidget
 
     int imagePaddingWidth() const;
 
-	signals:
+	Q_SIGNALS:
 
     void dragInitiated();
     void newScreenshotRequest(ImageGrabber::GrabMode mode, int captureDelay, bool capturePointer, bool captureDecorations);
 
-	public slots:
+	public Q_SLOTS:
 
     void setScreenshotPixmap(const QPixmap &pixmap);
     void disableOnClick();
 
-    private slots:
+    private Q_SLOTS:
 
     void newScreenshotClicked();
     void onClickStateChanged(int state);

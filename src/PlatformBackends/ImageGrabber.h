@@ -66,7 +66,7 @@ class ImageGrabber : public QObject
     void setCaptureDecorations(const bool newCaptureDecorations);
     void setGrabMode(const GrabMode newGrabMode);
 
-    signals:
+    Q_SIGNALS:
 
     void pixmapChanged(const QPixmap &pixmap);
     void windowTitleChanged(const QString &windowTitle);
@@ -75,7 +75,7 @@ class ImageGrabber : public QObject
     void captureDecorationsChanged(bool captureDecorations);
     void grabModeChanged(GrabMode grabMode);
 
-    public slots:
+    public Q_SLOTS:
 
     virtual void doImageGrab();
     virtual void doOnClickGrab();

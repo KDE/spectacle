@@ -43,11 +43,11 @@ class ExportMenu : public QMenu
     explicit ExportMenu(QWidget *parent = nullptr);
     void imageUpdated();
 
-    private slots:
+    private Q_SLOTS:
 
     void populateMenu();
 
-    signals:
+    Q_SIGNALS:
 
     void imageShared(bool error, const QString &message);
 
