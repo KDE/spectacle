@@ -241,6 +241,7 @@ void KSMainWindow::setDefaultSaveAction()
     case SaveMode::SaveAs:
     default:
         mSaveButton->setDefaultAction(mSaveAsAction);
+        mSaveButton->setText(i18n("Save As..."));
         break;
     case SaveMode::Save:
         mSaveButton->setDefaultAction(mSaveAction);
