@@ -275,7 +275,7 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     mKSWidget->setScreenshotPixmap(pixmap);
     mExportMenu->imageUpdated();
 
-    setWindowTitle(i18nc("Unsaved Screenshot", "Unsaved[*]"));
+    setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
     setWindowModified(true);
 
     show();

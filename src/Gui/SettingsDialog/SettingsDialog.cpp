@@ -31,7 +31,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     KPageDialog(parent)
 {
     // set up window options and geometry
-    setWindowTitle(i18n("Configure"));
+    setWindowTitle(i18nc("@title:window", "Configure"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     resize(500, 470);
 
