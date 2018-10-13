@@ -39,9 +39,10 @@ QString SmartSpinBox::textFromValue(double val) const
 
 void SmartSpinBox::suffixChangeHandler(double val)
 {
-    if (val <= 1.0) {
-        setSuffix(i18n(" second"));
+    int integerSeconds = static_cast<int>(val);
+    if (val == integerSeconds) {
+        setSuffix(i18ncp("Integer number of seconds", " second", " seconds", integerSeconds));
     } else {
-        setSuffix(i18n(" seconds"));
+        setSuffix(i18nc("Decimal number of seconds", " seconds"));
     }
 }
