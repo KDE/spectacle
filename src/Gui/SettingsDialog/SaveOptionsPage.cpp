@@ -26,8 +26,9 @@
 
 #include <QLineEdit>
 #include <QLabel>
+#include <QFormLayout>
 #include <QGroupBox>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QComboBox>
 #include <QImageWriter>
 #include <QCheckBox>
@@ -35,37 +36,29 @@
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     SettingsPage(parent)
 {
-    // set up the layout. start with the directory
+    QFormLayout *mainLayout = new QFormLayout;
+    setLayout(mainLayout);
 
-    QGroupBox *dirGroup = new QGroupBox(i18n("Default Save Location"), this);
-    QVBoxLayout *dirLayout = new QVBoxLayout;
-    dirGroup->setLayout(dirLayout);
-
-    QHBoxLayout *urlRequesterLayout = new QHBoxLayout;
-    urlRequesterLayout->addWidget(new QLabel(i18n("Location:"), this));
-
+    // Save location
     mUrlRequester = new KUrlRequester;
     mUrlRequester->setMode(KFile::Directory);
     connect(mUrlRequester, &KUrlRequester::textChanged, this, &SaveOptionsPage::markDirty);
-    urlRequesterLayout->addWidget(mUrlRequester);
-
-    dirLayout->addLayout(urlRequesterLayout);
+    mainLayout->addRow(i18n("Save Location:"), mUrlRequester);
 
     // copy file location to clipboard after saving
-
     mCopyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
     connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &SaveOptionsPage::markDirty);
-    dirLayout->addWidget(mCopyPathToClipboard, 1);
+    mainLayout->addRow(QString(), mCopyPathToClipboard);
+
+
+    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
+
+
+    // filename chooser and instructional text
+    QVBoxLayout *saveNameLayout = new QVBoxLayout;
 
     // filename chooser text field
-
-    QGroupBox *fmtGroup = new QGroupBox(i18n("Default Save Filename"));
-    QVBoxLayout *fmtLayout = new QVBoxLayout;
-    fmtGroup->setLayout(fmtLayout);
-
-    QHBoxLayout *saveNameLayout = new QHBoxLayout;
-    saveNameLayout->addWidget(new QLabel(i18n("Filename:"), this));
-
+    QHBoxLayout *saveFieldLayout = new QHBoxLayout;
     mSaveNameFormat = new QLineEdit;
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
     connect(mSaveNameFormat, &QLineEdit::textEdited, [&](const QString &newText) {
@@ -80,7 +73,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             }
         }
     });
-    saveNameLayout->addWidget(mSaveNameFormat);
+    saveFieldLayout->addWidget(mSaveNameFormat);
 
     mSaveImageFormat = new QComboBox;
     mSaveImageFormat->addItems([&](){
@@ -91,12 +84,10 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         return items;
     }());
     connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::markDirty);
-    saveNameLayout->addWidget(mSaveImageFormat);
-
-    fmtLayout->addLayout(saveNameLayout);
+    saveFieldLayout->addWidget(mSaveImageFormat);
+    saveNameLayout->addLayout(saveFieldLayout);
 
     // now the save filename format layout
-
     const QString helpText = i18nc("%1 is the default filename of a screenshot",
         "<p>You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:</p>"
@@ -112,7 +103,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             "<b>%T</b>: Window title"
         "</blockquote>"
 
-        "<p>To save to a sub-folder, use slashes to describe the desired path, e.g.:</p>"
+        "<p>To save to a sub-folder, use slashes, e.g.:</p>"
 
         "<blockquote>"
             "<b>%Y</b>/<b>%M</b>/%1"
@@ -123,22 +114,13 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     QLabel *fmtHelpText = new QLabel(helpText, this);
     fmtHelpText->setWordWrap(true);
     fmtHelpText->setTextFormat(Qt::RichText);
-    fmtHelpText->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-    fmtLayout->addWidget(fmtHelpText);
+    fmtHelpText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
+    saveNameLayout->addWidget(fmtHelpText);
+    mainLayout->addRow(i18n("Filename:"), saveNameLayout);
+
 
     // read in the data
-
     resetChanges();
-
-    // finish up with the main layout
-
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-
-    mainLayout->addWidget(dirGroup);
-    mainLayout->addWidget(fmtGroup);
-
-    mainLayout->addStretch(4);
-    setLayout(mainLayout);
 }
 
 void SaveOptionsPage::markDirty()

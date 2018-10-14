@@ -24,54 +24,34 @@
 #include <KLocalizedString>
 
 #include <QCheckBox>
+#include <QFormLayout>
 #include <QGroupBox>
-#include <QVBoxLayout>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     SettingsPage(parent)
 {
-    // preamble and stuff
-
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    QFormLayout *mainLayout = new QFormLayout(this);
+    setLayout(mainLayout);
 
     // Rectangular Region settings
 
-    QGroupBox *rrGroup = new QGroupBox(i18n("Rectangular Region"));
-    QVBoxLayout *rrLayout = new QVBoxLayout;
-    rrGroup->setLayout(rrLayout);
-
     // use light background
-
     mUseLightBackground = new QCheckBox(i18n("Use light background"), this);
     connect(mUseLightBackground, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addWidget(mUseLightBackground, 1);
+    mainLayout->addRow(i18n("Rectangular Region:"), mUseLightBackground);
 
     // remember Rectangular Region box
-
     mRememberRect = new QCheckBox(i18n("Remember selected area"), this);
     connect(mRememberRect, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(QString(), mRememberRect);
 
     // show magnifier
-
     mShowMagnifier = new QCheckBox(i18n("Show magnifier"), this);
     connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-
-    QVBoxLayout *rrCLayout = new QVBoxLayout;
-//     rrCLayout->setContentsMargins(15, 10, 0, 10);
-    rrCLayout->addWidget(mUseLightBackground);
-    rrCLayout->addWidget(mRememberRect);
-    rrCLayout->addWidget(mShowMagnifier);
-    rrLayout->addLayout(rrCLayout);
-    mainLayout->addWidget(rrGroup, 1);
+    mainLayout->addRow(QString(), mShowMagnifier);
 
     // read in the data
-
     resetChanges();
-
-    // finish up with the main layout
-
-    mainLayout->addStretch(4);
-    setLayout(mainLayout);
 }
 
 void GeneralOptionsPage::markDirty()
