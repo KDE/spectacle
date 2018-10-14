@@ -409,14 +409,16 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     }
 
     // construct the file name
+    const QString filenameExtension = SpectacleConfig::instance()->saveImageFormat();
+    const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
     QFileDialog dialog(parentWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
     dialog.setDirectoryUrl(config->lastSaveAsLocation());
-    dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".png"));
-    dialog.setDefaultSuffix(QStringLiteral(".png"));
+    dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".") + filenameExtension);
+    dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
     dialog.setMimeTypeFilters(supportedFilters);
-    dialog.selectMimeTypeFilter(QStringLiteral("image/png"));
+    dialog.selectMimeTypeFilter(mimetype);
 
     // launch the dialog
     if (dialog.exec() == QFileDialog::Accepted) {
