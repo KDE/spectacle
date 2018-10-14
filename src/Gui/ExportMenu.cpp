@@ -85,7 +85,9 @@ void ExportMenu::getKServiceItems()
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
         connect(action, &QAction::triggered, [=]() {
-            QList<QUrl> whereIs({ mExportManager->tempSave() });
+            const QUrl filename = mExportManager->getAutosaveFilename();
+            mExportManager->doSave(filename);
+            QList<QUrl> whereIs({ filename });
             KRun::runService(*service, whereIs, parentWidget(), true);
         });
         addAction(action);
@@ -102,7 +104,9 @@ void ExportMenu::getKServiceItems()
     openWith->setShortcuts(KStandardShortcut::open());
 
     connect(openWith, &QAction::triggered, [=]() {
-        QList<QUrl> whereIs({ mExportManager->tempSave() });
+        const QUrl filename = mExportManager->getAutosaveFilename();
+        mExportManager->doSave(filename);
+        QList<QUrl> whereIs({ filename });
         KRun::displayOpenWithDialog(whereIs, parentWidget(), true);
     });
     addAction(openWith);
