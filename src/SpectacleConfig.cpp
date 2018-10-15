@@ -49,16 +49,40 @@ QString SpectacleConfig::defaultTimestampTemplate() const
 
 // lastSaveAsLocation
 
-QUrl SpectacleConfig::lastSaveAsLocation() const
+QUrl SpectacleConfig::lastSaveAsFile() const
 {
-    return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsLocation"),
-                                    QUrl::fromUserInput(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + QStringLiteral("/")));
+    return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsFile"),
+                                    QUrl(this->defaultSaveLocation()));
 }
 
-void SpectacleConfig::setLastSaveAsLocation(const QUrl &location)
+void SpectacleConfig::setLastSaveAsFile(const QUrl &location)
 {
-    mGeneralConfig.writeEntry(QStringLiteral("lastSaveAsLocation"), location);
+    mGeneralConfig.writeEntry(QStringLiteral("lastSaveAsFile"), location);
     mGeneralConfig.sync();
+}
+
+QUrl SpectacleConfig::lastSaveAsLocation() const
+{
+    return this->lastSaveAsFile().adjusted(QUrl::RemoveFilename);
+}
+
+// lastSaveLocation
+
+QUrl SpectacleConfig::lastSaveFile() const
+{
+    return mGeneralConfig.readEntry(QStringLiteral("lastSaveFile"),
+                                    QUrl(this->defaultSaveLocation()));
+}
+
+void SpectacleConfig::setLastSaveFile(const QUrl &location)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("lastSaveFile"), location);
+    mGeneralConfig.sync();
+}
+
+QUrl SpectacleConfig::lastSaveLocation() const 
+{
+    return this->lastSaveFile().adjusted(QUrl::RemoveFilename);
 }
 
 // cropRegion
@@ -239,13 +263,13 @@ void SpectacleConfig::setAutoSaveFilenameFormat(const QString &format)
 
 // autosave location
 
-QString SpectacleConfig::autoSaveLocation() const
+QString SpectacleConfig::defaultSaveLocation() const
 {
     return mGeneralConfig.readPathEntry(QStringLiteral("default-save-location"),
                           QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
 }
 
-void SpectacleConfig::setAutoSaveLocation(const QString &location)
+void SpectacleConfig::setDefaultSaveLocation(const QString &location)
 {
     mGeneralConfig.writePathEntry(QStringLiteral("default-save-location"), location);
     mGeneralConfig.sync();

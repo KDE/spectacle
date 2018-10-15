@@ -53,14 +53,11 @@ class ExportManager : public QObject
 
     public:
 
-    Q_PROPERTY(QString saveLocation READ saveLocation WRITE setSaveLocation NOTIFY saveLocationChanged)
     Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap NOTIFY pixmapChanged)
     Q_PROPERTY(QString windowTitle READ windowTitle WRITE setWindowTitle)
     Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode)
 
-    void setSaveLocation(const QString &location);
-    QString saveLocation() const;
-    QUrl lastSavePath() const;
+    QString defaultSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
@@ -73,7 +70,6 @@ class ExportManager : public QObject
     Q_SIGNALS:
 
     void errorMessage(const QString &str);
-    void saveLocationChanged(const QString &location);
     void pixmapChanged(const QPixmap &pixmap);
     void imageSaved(const QUrl &savedAt);
     void forceNotify(const QUrl &savedAt);
@@ -104,7 +100,6 @@ class ExportManager : public QObject
 
     QPixmap mSavePixmap;
     QDateTime mPixmapTimestamp;
-    QUrl mLastSavePath;
     QUrl mTempFile;
     QTemporaryDir *mTempDir;
     QList<QUrl> mUsedTempFileNames;

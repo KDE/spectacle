@@ -44,12 +44,11 @@
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
     mSavePixmap(QPixmap()),
-    mLastSavePath(QUrl()),
     mTempFile(QUrl()),
     mTempDir(nullptr)
 {
     connect(this, &ExportManager::imageSaved, [this](const QUrl savedAt) {
-        mLastSavePath = savedAt;
+        SpectacleConfig::instance()->setLastSaveFile(savedAt);
     });
 }
 
@@ -111,13 +110,9 @@ void ExportManager::updatePixmapTimestamp()
 
 // native file save helpers
 
-QString ExportManager::saveLocation() const
+QString ExportManager::defaultSaveLocation() const
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
-    QString savePath = generalConfig.readPathEntry(
-                "default-save-location", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+    QString savePath = SpectacleConfig::instance()->defaultSaveLocation();
     if (savePath.isEmpty() || savePath.isNull()) {
         savePath = QDir::homePath();
     }
@@ -126,28 +121,15 @@ QString ExportManager::saveLocation() const
     QDir savePathDir(savePath);
     if (!(savePathDir.exists())) {
         savePathDir.mkpath(QStringLiteral("."));
-        generalConfig.writePathEntry("last-saved-to", savePath);
+        SpectacleConfig::instance()->setDefaultSaveLocation(savePath);
     }
 
     return savePath;
 }
 
-QUrl ExportManager::lastSavePath() const
-{
-    return isFileExists(mLastSavePath) ? mLastSavePath : QUrl();
-}
-
-void ExportManager::setSaveLocation(const QString &savePath)
-{
-    KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup generalConfig = KConfigGroup(config, "General");
-
-    generalConfig.writePathEntry("last-saved-to", savePath);
-}
-
 QUrl ExportManager::getAutosaveFilename()
 {
-    const QString baseDir = saveLocation();
+    const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
@@ -294,7 +276,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
 
     if (listJob->error() != KJob::NoError) {
         // Create remote save directory
-        KIO::MkpathJob *mkpathJob = KIO::mkpath(dirPath, QUrl(saveLocation()));
+        KIO::MkpathJob *mkpathJob = KIO::mkpath(dirPath, QUrl(defaultSaveLocation()));
         mkpathJob->exec();
 
         if (mkpathJob->error() != KJob::NoError) {
@@ -407,7 +389,7 @@ void ExportManager::doSave(const QUrl &url, bool notify)
     if (save(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
-        setSaveLocation(dir.absolutePath());
+        SpectacleConfig::instance()->setLastSaveFile(savePath);
 
         emit imageSaved(savePath);
         if (notify) {
@@ -442,7 +424,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
         if (saveUrl.isValid()) {
             if (save(saveUrl)) {
                 emit imageSaved(saveUrl);
-                config->setLastSaveAsLocation(saveUrl.adjusted(QUrl::RemoveFilename));
+                config->setLastSaveAsFile(saveUrl);
 
                 if (notify) {
                     emit forceNotify(saveUrl);

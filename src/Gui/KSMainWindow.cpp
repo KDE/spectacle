@@ -297,23 +297,30 @@ void KSMainWindow::showPrintDialog()
 
 void KSMainWindow::openScreenshotsFolder()
 {
-    // Highlight last screenshot in file manager if user saved at least once,
-    // or open default directory as determined by save button
-    QUrl location = ExportManager::instance()->lastSavePath();
-    if (!ExportManager::instance()->isFileExists(location)) {
-        switch(SpectacleConfig::instance()->lastUsedSaveMode()) {
-        case SaveMode::Save:
-            location = QUrl::fromLocalFile(ExportManager::instance()->saveLocation() + QStringLiteral("/"));
-            break;
-        case SaveMode::SaveAs:
-        default:
-            location = SpectacleConfig::instance()->lastSaveAsLocation();  // already has a "/" at the end
-            break;
+    // Highlight last screenshot in file manager if user saved at least once ever 
+    // (since last save and saveas file names are stored in spectaclerc), otherwise, 
+    //   if in save mode, open default save location from configure > save > location
+    //   if in save as mode, open last save as files location
+    // failsafe for either option is default save location from configure > save > location
+    SpectacleConfig *cfgManager = SpectacleConfig::instance();
+    ExportManager *exportManager = ExportManager::instance();
+    QUrl location;
+    
+    switch(cfgManager->lastUsedSaveMode()) {
+    case SaveMode::Save:
+        location = cfgManager->lastSaveFile();
+        if (!exportManager->isFileExists(location)) {
+            location = QUrl(cfgManager->defaultSaveLocation());
         }
-        if (!ExportManager::instance()->isFileExists(location)) {
-            location = QUrl(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + QStringLiteral("/"));
+        break;
+    case SaveMode::SaveAs:
+        location = cfgManager->lastSaveAsFile();  // already has a "/" at the end
+        if (!exportManager->isFileExists(location)) {
+            location = cfgManager->lastSaveAsLocation();
         }
+        break;
     }
+
     KIO::highlightInFileManager({location});
 }
 

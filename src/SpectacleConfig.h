@@ -44,7 +44,10 @@ class SpectacleConfig : public QObject
 
     QString defaultFilename() const;
     QString defaultTimestampTemplate() const;
-
+    
+    QUrl lastSaveAsLocation() const;
+    QUrl lastSaveLocation() const;
+    
     private:
 
     explicit SpectacleConfig(QObject *parent = nullptr);
@@ -57,8 +60,11 @@ class SpectacleConfig : public QObject
 
     public Q_SLOTS:
 
-    QUrl lastSaveAsLocation() const;
-    void setLastSaveAsLocation(const QUrl &location);
+    QUrl lastSaveAsFile() const;
+    void setLastSaveAsFile(const QUrl &location);
+
+    QUrl lastSaveFile() const;
+    void setLastSaveFile(const QUrl &location);
 
     QRect cropRegion() const;
     void setCropRegion(const QRect &region);
@@ -99,8 +105,8 @@ class SpectacleConfig : public QObject
     QString autoSaveFilenameFormat() const;
     void setAutoSaveFilenameFormat(const QString &format);
 
-    QString autoSaveLocation() const;
-    void setAutoSaveLocation(const QString &location);
+    QString defaultSaveLocation() const;
+    void setDefaultSaveLocation(const QString &location);
 
     bool copySaveLocationToClipboard() const;
     void setCopySaveLocationToClipboard(bool enabled);

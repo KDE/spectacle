@@ -136,7 +136,7 @@ void SaveOptionsPage::saveChanges()
 
     // save the data
 
-    cfgManager->setAutoSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
+    cfgManager->setDefaultSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
     cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
     cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
@@ -155,7 +155,7 @@ void SaveOptionsPage::resetChanges()
     // read in the data
 
     mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
-    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->autoSaveLocation()));
+    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->defaultSaveLocation()));
     mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
 
     // read in the save image format and calculate its index
