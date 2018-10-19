@@ -251,8 +251,9 @@ void SpectacleConfig::setLastUsedSaveMode(SaveMode mode)
 
 QString SpectacleConfig::autoSaveFilenameFormat() const
 {
-    return mGeneralConfig.readEntry(QStringLiteral("save-filename-format"),
-                                    QString(defaultFilename() + defaultTimestampTemplate()));
+    const QString sff = mGeneralConfig.readEntry(QStringLiteral("save-filename-format"),
+                                           QString(defaultFilename() + defaultTimestampTemplate()));
+    return sff.isEmpty() ? QStringLiteral("%d") : sff;
 }
 
 void SpectacleConfig::setAutoSaveFilenameFormat(const QString &format)

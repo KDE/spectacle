@@ -73,6 +73,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             }
         }
     });
+    mSaveNameFormat->setPlaceholderText(QStringLiteral("%d"));
     saveFieldLayout->addWidget(mSaveNameFormat);
 
     mSaveImageFormat = new QComboBox;
@@ -100,7 +101,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             "<b>%H</b>: Hour<br />"
             "<b>%m</b>: Minute<br />"
             "<b>%S</b>: Second<br />"
-            "<b>%T</b>: Window title"
+            "<b>%T</b>: Window title<br />"
+            "<b>%d</b>: Sequential numbering<br />"
+            "<b>%Nd</b>: Sequential numbering, padded out to N digits"
         "</blockquote>"
 
         "<p>To save to a sub-folder, use slashes, e.g.:</p>"
@@ -117,7 +120,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     fmtHelpText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
     saveNameLayout->addWidget(fmtHelpText);
     mainLayout->addRow(i18n("Filename:"), saveNameLayout);
-
 
     // read in the data
     resetChanges();
