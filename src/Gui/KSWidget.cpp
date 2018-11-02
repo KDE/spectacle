@@ -18,6 +18,7 @@
  */
 
 #include "KSWidget.h"
+#include "spectacle_gui_debug.h"
 
 #include "KSImageWidget.h"
 #include "SmartSpinBox.h"
@@ -235,7 +236,7 @@ void KSWidget::captureModeChanged(int index)
     case ImageGrabber::TransientWithParent:
     case ImageGrabber::InvalidChoice:
     default:
-        qWarning() << "Skipping invalid or unreachable enum value";
+        qCWarning(SPECTACLE_GUI_LOG) << "Skipping invalid or unreachable enum value";
         break;
     }
 }

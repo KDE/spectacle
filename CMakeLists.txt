@@ -32,6 +32,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(FeatureSummary)
+include(ECMQtDeclareLoggingCategory)
 
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
@@ -58,9 +59,6 @@ find_package(
         Declarative
         NewStuff
 )
-
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
-add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
 # optional components
 
@@ -110,6 +108,7 @@ add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(doc)
 
+install( FILES spectacle.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 # summaries
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

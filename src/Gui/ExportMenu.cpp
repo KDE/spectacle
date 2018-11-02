@@ -18,7 +18,7 @@
  */
 
 #include "ExportMenu.h"
-
+#include "spectacle_gui_debug.h"
 #include "Config.h"
 
 #include <KLocalizedString>
@@ -140,7 +140,7 @@ void ExportMenu::getKipiItems()
 
         KIPI::Plugin *plugin = pluginInfo->plugin();
         if (!(plugin)) {
-            qWarning() << i18n("KIPI plugin from library %1 failed to load", pluginInfo->library());
+            qCWarning(SPECTACLE_GUI_LOG) << i18n("KIPI plugin from library %1 failed to load", pluginInfo->library());
             continue;
         }
 

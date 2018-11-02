@@ -18,6 +18,7 @@
  */
 
 #include "SpectacleCore.h"
+#include "spectacle_core_debug.h"
 
 #include "Config.h"
 #include "PlatformBackends/DummyImageGrabber.h"
@@ -173,7 +174,7 @@ void SpectacleCore::takeNewScreenshot(const ImageGrabber::GrabMode &mode,
 
 void SpectacleCore::showErrorMessage(const QString &errString)
 {
-    qDebug() << "ERROR: " << errString;
+    qCDebug(SPECTACLE_CORE_LOG) << "ERROR: " << errString;
 
     if (mStartMode == GuiMode) {
         KMessageBox::error(nullptr, errString);
