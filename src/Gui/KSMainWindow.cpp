@@ -51,20 +51,20 @@ static const int MAXIMUM_WINDOW_WIDTH = 1000;
 
 KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
     QDialog(parent),
-    mKSWidget(new KSWidget),
-    mDivider(new QFrame),
-    mDialogButtonBox(new QDialogButtonBox),
-    mConfigureButton(new QToolButton),
-    mToolsButton(new QPushButton),
-    mSendToButton(new QPushButton),
-    mClipboardButton(new QToolButton),
-    mSaveButton(new QToolButton),
-    mSaveMenu(new QMenu),
+    mKSWidget(new KSWidget(this)),
+    mDivider(new QFrame(this)),
+    mDialogButtonBox(new QDialogButtonBox(this)),
+    mConfigureButton(new QToolButton(this)),
+    mToolsButton(new QPushButton(this)),
+    mSendToButton(new QPushButton(this)),
+    mClipboardButton(new QToolButton(this)),
+    mSaveButton(new QToolButton(this)),
+    mSaveMenu(new QMenu(this)),
     mSaveAsAction(new QAction(this)),
     mSaveAction(new QAction(this)),
-    mMessageWidget(new KMessageWidget),
-    mToolsMenu(new QMenu),
-    mScreenRecorderToolsMenu(new QMenu),
+    mMessageWidget(new KMessageWidget(this)),
+    mToolsMenu(new QMenu(this)),
+    mScreenRecorderToolsMenu(new QMenu(this)),
     mExportMenu(new ExportMenu(this)),
     mOnClickAvailable(onClickAvailable)
 {
@@ -172,7 +172,9 @@ void KSMainWindow::init()
     mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
     connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, [this]()
     {
-        mScreenrecorderToolsMenuFactory.reset(new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools")));
+        KMoreToolsMenuFactory *moreToolsMenuFactory = new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools"));
+        moreToolsMenuFactory->setParentWidget(this);
+        mScreenrecorderToolsMenuFactory.reset(moreToolsMenuFactory);
         mScreenRecorderToolsMenu->clear();
         mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, { QStringLiteral("screenrecorder") });
     } );
