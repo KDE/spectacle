@@ -193,7 +193,7 @@ void SpectacleConfig::setCaptureDelay(qreal delay)
 
 int SpectacleConfig::captureMode() const
 {
-    return mGuiConfig.readEntry(QStringLiteral("captureModeIndex"), 0);
+    return std::max(0, mGuiConfig.readEntry(QStringLiteral("captureModeIndex"), 0));
 }
 
 void SpectacleConfig::setCaptureMode(int index)

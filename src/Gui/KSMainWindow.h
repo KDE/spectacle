@@ -41,7 +41,7 @@ class KSMainWindow : public QDialog
 
     public:
 
-    explicit KSMainWindow(bool onClickAvailable, QWidget *parent = nullptr);
+    explicit KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes, bool onClickAvailable, QWidget *parent = nullptr);
     ~KSMainWindow() Q_DECL_OVERRIDE;
 
     private:

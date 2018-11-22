@@ -36,7 +36,7 @@
 #include <QShortcut>
 
 
-KSWidget::KSWidget(QWidget *parent) :
+KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidget *parent) :
     QWidget(parent)
 {
     // get a handle to the configuration manager
@@ -54,11 +54,16 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
 
     mCaptureArea = new QComboBox(this);
-    mCaptureArea->insertItem(1, i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
-    mCaptureArea->insertItem(2, i18n("Current Screen"), ImageGrabber::CurrentScreen);
-    mCaptureArea->insertItem(3, i18n("Active Window"), ImageGrabber::ActiveWindow);
-    mCaptureArea->insertItem(4, i18n("Window Under Cursor"), ImageGrabber::WindowUnderCursor);
-    mCaptureArea->insertItem(5, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
+    if (supportedModes.contains(ImageGrabber::FullScreen))
+        mCaptureArea->insertItem(1, i18n("Full Screen (All Monitors)"), ImageGrabber::FullScreen);
+    if (supportedModes.contains(ImageGrabber::CurrentScreen))
+        mCaptureArea->insertItem(2, i18n("Current Screen"), ImageGrabber::CurrentScreen);
+    if (supportedModes.contains(ImageGrabber::ActiveWindow))
+        mCaptureArea->insertItem(3, i18n("Active Window"), ImageGrabber::ActiveWindow);
+    if (supportedModes.contains(ImageGrabber::WindowUnderCursor))
+        mCaptureArea->insertItem(4, i18n("Window Under Cursor"), ImageGrabber::WindowUnderCursor);
+    if (supportedModes.contains(ImageGrabber::RectangularRegion))
+        mCaptureArea->insertItem(5, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
     mCaptureArea->setMinimumWidth(240);
     connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
@@ -156,7 +161,8 @@ KSWidget::KSWidget(QWidget *parent) :
     mCaptureOnClick->setChecked       (configManager->onClickChecked());
     mCaptureTransientOnly->setChecked (configManager->captureTransientWindowOnlyChecked());
     mQuitAfterSaveOrCopy->setChecked  (configManager->quitAfterSaveOrCopyChecked());
-    mCaptureArea->setCurrentIndex     (configManager->captureMode());
+    if (configManager->captureMode()>=0)
+        mCaptureArea->setCurrentIndex     (configManager->captureMode());
     mDelayMsec->setValue              (configManager->captureDelay());
 
     // done

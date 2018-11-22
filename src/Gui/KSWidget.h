@@ -43,7 +43,7 @@ class KSWidget : public QWidget
 
 	public:
 
-    explicit KSWidget(QWidget *parent = nullptr);
+    explicit KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidget *parent = nullptr);
 
     int imagePaddingWidth() const;
 

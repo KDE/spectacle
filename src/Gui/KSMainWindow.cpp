@@ -49,9 +49,9 @@ static const int DEFAULT_WINDOW_HEIGHT = 420;
 static const int DEFAULT_WINDOW_WIDTH = 840;
 static const int MAXIMUM_WINDOW_WIDTH = 1000;
 
-KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
+KSMainWindow::KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes, bool onClickAvailable, QWidget *parent) :
     QDialog(parent),
-    mKSWidget(new KSWidget(this)),
+    mKSWidget(new KSWidget(supportedModes, this)),
     mDivider(new QFrame(this)),
     mDialogButtonBox(new QDialogButtonBox(this)),
     mConfigureButton(new QToolButton(this)),
@@ -99,9 +99,9 @@ KSMainWindow::KSMainWindow(bool onClickAvailable, QWidget *parent) :
         uint32_t value = 1;
         xcb_change_property(xcbConn, XCB_PROP_MODE_REPLACE, winId(), atom->atom, XCB_ATOM_CARDINAL, 32, 1, &value);
     }
+    done:
 #endif
 
-    done:
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
 

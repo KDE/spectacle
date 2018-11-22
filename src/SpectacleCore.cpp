@@ -304,7 +304,7 @@ void SpectacleCore::doStartDragAndDrop()
 void SpectacleCore::initGui()
 {
     if (!isGuiInited) {
-        mMainWindow = new KSMainWindow(mImageGrabber->onClickGrabSupported());
+        mMainWindow = new KSMainWindow(mImageGrabber->supportedModes(), mImageGrabber->onClickGrabSupported());
 
         connect(mMainWindow, &KSMainWindow::newScreenshotRequest, this, &SpectacleCore::takeNewScreenshot);
         connect(mMainWindow, &KSMainWindow::dragAndDropRequest, this, &SpectacleCore::doStartDragAndDrop);

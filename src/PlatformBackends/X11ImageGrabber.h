@@ -50,6 +50,7 @@ class X11ImageGrabber : public ImageGrabber
     explicit X11ImageGrabber(QObject * parent = nullptr);
     ~X11ImageGrabber() Q_DECL_OVERRIDE;
 
+    QVector<ImageGrabber::GrabMode> supportedModes() const override { return {FullScreen, CurrentScreen, ActiveWindow, WindowUnderCursor, TransientWithParent, RectangularRegion}; }
     bool onClickGrabSupported() const Q_DECL_OVERRIDE;
 
     protected:
