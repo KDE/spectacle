@@ -25,7 +25,6 @@ set(
         Gui/SettingsDialog/SaveOptionsPage.cpp
         Gui/SettingsDialog/GeneralOptionsPage.cpp
         QuickEditor/QuickEditor.cpp
-        QuickEditor/QmlResources.qrc
 )
 
 ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core)

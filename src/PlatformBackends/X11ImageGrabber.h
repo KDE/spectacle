@@ -66,7 +66,7 @@ class X11ImageGrabber : public ImageGrabber
     private Q_SLOTS:
 
     void KWinDBusScreenshotHelper(quint64 window);
-    void rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region);
+    void rectangleSelectionConfirmed(const QPixmap &pixmap);
     void rectangleSelectionCancelled();
 
     public Q_SLOTS:

@@ -1,5 +1,6 @@
 /*
  *  Copyright (C) 2016 Boudhayan Gupta <bgupta@kde.org>
+ *  Copyright (C) 2018 Ambareesh "Amby" Balaji <ambareeshbalaji@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -20,34 +21,111 @@
 #ifndef QUICKEDITOR_H
 #define QUICKEDITOR_H
 
-#include <QObject>
+#include <QKeyEvent>
+#include <QPainter>
+#include <QStaticText>
+#include <QWidget>
+#include <utility>
+#include <vector>
 
-class QuickEditor : public QObject
+class QMouseEvent;
+
+class QuickEditor : public QWidget
 {
     Q_OBJECT
 
-    public:
+public:
+    explicit QuickEditor(const QPixmap &pixmap);
 
-    explicit QuickEditor(const QPixmap &pixmap, QObject *parent = nullptr);
-    virtual ~QuickEditor();
+private:
+    enum MouseState : short {
+        None = 0, // 0000
+        Inside = 1 << 0, // 0001
+        Outside = 1 << 1, // 0010
+        TopLeft = 5, //101
+        Top = 17, // 10001
+        TopRight = 9, // 1001
+        Right = 33, // 100001
+        BottomRight = 6, // 110
+        Bottom = 18, // 10010
+        BottomLeft = 10, // 1010
+        Left = 34, // 100010
+        TopLeftOrBottomRight = TopLeft & BottomRight, // 100
+        TopRightOrBottomLeft = TopRight & BottomLeft, // 1000
+        TopOrBottom = Top & Bottom, // 10000
+        RightOrLeft = Right & Left, // 100000
+    };
 
-    Q_SIGNALS:
+    void acceptSelection();
+    int boundsLeft(int newTopLeftX, const bool mouse = true);
+    int boundsRight(int newTopLeftX, const bool mouse = true);
+    int boundsUp(int newTopLeftY, const bool mouse = true);
+    int boundsDown(int newTopLeftY, const bool mouse = true);
+    void keyPressEvent(QKeyEvent* event) override;
+    void keyReleaseEvent(QKeyEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
+    void mouseDoubleClickEvent(QMouseEvent* event) override;
+    void paintEvent(QPaintEvent*) override;
+    void drawBottomHelpText(QPainter& painter);
+    void drawDragHandles(QPainter& painter);
+    void drawMagnifier(QPainter& painter);
+    void drawMidHelpText(QPainter& painter);
+    void drawSelectionSizeTooltip(QPainter& painter);
+    void layoutBottomHelpText();
+    void setMouseCursor(const QPointF& pos);
+    MouseState mouseLocation(const QPointF& pos);
 
-    void grabDone(const QPixmap &pixmap, const QRect &cropRegion);
+    static const qreal mouseAreaSize;
+    static const qreal cornerHandleRadius;
+    static const qreal midHandleRadius;
+    static const int selectionSizeThreshold;
+
+    static const int selectionBoxPaddingX;
+    static const int selectionBoxPaddingY;
+    static const int selectionBoxMarginY;
+
+    static const int bottomHelpLength = 5;
+    static std::pair<QStaticText, std::vector<QStaticText>> bottomHelpText[bottomHelpLength];
+    static bool bottomHelpTextPrepared;
+    static const int bottomHelpBoxPaddingX;
+    static const int bottomHelpBoxPaddingY;
+    static const int bottomHelpBoxPairSpacing;
+    static const int bottomHelpBoxMarginBottom;
+    static const int midHelpTextFontSize;
+
+    static const int magnifierLargeStep;
+
+    static const int magZoom;
+    static const int magPixels;
+    static const int magOffset;
+
+    QColor mMaskColor;
+    QColor mStrokeColor;
+    QColor mCrossColor;
+    QColor mLabelBackgroundColor;
+    QColor mLabelForegroundColor;
+    QRectF mSelection;
+    QPointF mStartPos;
+    QPointF mInitialTopLeft;
+    QString mMidHelpText;
+    QFont mMidHelpTextFont;
+    QFont mBottomHelpTextFont;
+    QRect mBottomHelpBorderBox;
+    QPoint mBottomHelpContentPos;
+    int mBottomHelpGridLeftWidth;
+    MouseState mMouseDragState;
+    QPixmap mPixmap;
+    qreal dprI;
+    QPointF mMousePos;
+    bool mMagnifierAllowed;
+    bool mShowMagnifier;
+    bool mToggleMagnifier;
+
+Q_SIGNALS:
+    void grabDone(const QPixmap &pixmap);
     void grabCancelled();
-
-    private Q_SLOTS:
-
-    void acceptImageHandler(int x, int y, int width, int height);
-
-    private:
-
-    struct ImageStore;
-    ImageStore *mImageStore;
-
-    class QuickEditorPrivate;
-    Q_DECLARE_PRIVATE(QuickEditor)
-    QuickEditorPrivate *d_ptr;
 };
 
 #endif // QUICKEDITOR_H

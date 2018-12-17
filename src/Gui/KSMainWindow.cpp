@@ -299,15 +299,15 @@ void KSMainWindow::showPrintDialog()
 
 void KSMainWindow::openScreenshotsFolder()
 {
-    // Highlight last screenshot in file manager if user saved at least once ever 
-    // (since last save and saveas file names are stored in spectaclerc), otherwise, 
+    // Highlight last screenshot in file manager if user saved at least once ever
+    // (since last save and saveas file names are stored in spectaclerc), otherwise,
     //   if in save mode, open default save location from configure > save > location
     //   if in save as mode, open last save as files location
     // failsafe for either option is default save location from configure > save > location
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
     ExportManager *exportManager = ExportManager::instance();
     QUrl location;
-    
+
     switch(cfgManager->lastUsedSaveMode()) {
     case SaveMode::Save:
         location = cfgManager->lastSaveFile();

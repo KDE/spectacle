@@ -416,17 +416,13 @@ void X11ImageGrabber::rectangleSelectionCancelled()
     emit imageGrabFailed();
 }
 
-void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region)
+void X11ImageGrabber::rectangleSelectionConfirmed(const QPixmap &pixmap)
 {
     QObject *sender = QObject::sender();
     sender->disconnect();
     sender->deleteLater();
 
-    if (mCapturePointer) {
-        mPixmap = blendCursorImage(pixmap, region.x(), region.y(), region.width(), region.height());
-    } else {
-        mPixmap = pixmap;
-    }
+    mPixmap = pixmap;
     emit pixmapChanged(mPixmap);
 }
 
@@ -664,7 +660,7 @@ void X11ImageGrabber::grabCurrentScreen()
 
 void X11ImageGrabber::grabRectangularRegion()
 {
-    const auto pixmap = getToplevelPixmap(QRect(), false);
+    const auto pixmap = getToplevelPixmap(QRect(), mCapturePointer);
     if (!pixmap.isNull()) {
         QuickEditor *editor = new QuickEditor(pixmap);
 
