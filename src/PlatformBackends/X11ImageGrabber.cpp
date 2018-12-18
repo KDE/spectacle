@@ -694,7 +694,7 @@ xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
     while (!windowStack.isEmpty()) {
         curWin = windowStack.pop();
 
-        // next, check if our window has the WM_STATE peoperty set on
+        // next, check if our window has the WM_STATE property set on
         // the window. if yes, return the window - we have found it
 
         xcb_get_property_cookie_t propertyCookie = xcb_get_property_unchecked(xcbConn, 0, curWin, atomReply->atom, XCB_ATOM_ANY, 0, 0);

@@ -198,7 +198,7 @@ QString ExportManager::makeAutosaveFilename()
             paddedLength = paddingMatch.captured(1).toInt();
         }
 
-        // seach save directory for files
+        // search save directory for files
         QDir dir(baseDir);
         const QStringList fileNames = dir.entryList(QDir::Files, QDir::Name);
         

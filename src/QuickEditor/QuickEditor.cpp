@@ -39,7 +39,7 @@ std::pair<QStaticText, std::vector<QStaticText>> QuickEditor::bottomHelpText[]{
         QStaticText(i18n("while dragging selection handles"))
     }},
     {QStaticText(i18n("Arrow keys:")), {
-        QStaticText(i18n("Move seletion rectangle")),
+        QStaticText(i18n("Move selection rectangle")),
         QStaticText(i18n("Hold Alt to resize, Shift to fine‑tune"))
     }},
     {QStaticText(i18n("Right-click:")), {QStaticText(i18n("Reset selection"))}},
