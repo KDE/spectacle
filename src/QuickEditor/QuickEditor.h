@@ -87,7 +87,6 @@ private:
     static const int selectionBoxMarginY;
 
     static const int bottomHelpLength = 5;
-    static std::pair<QStaticText, std::vector<QStaticText>> bottomHelpText[bottomHelpLength];
     static bool bottomHelpTextPrepared;
     static const int bottomHelpBoxPaddingX;
     static const int bottomHelpBoxPaddingY;
@@ -111,6 +110,7 @@ private:
     QPointF mInitialTopLeft;
     QString mMidHelpText;
     QFont mMidHelpTextFont;
+    std::pair<QStaticText, std::vector<QStaticText>> mBottomHelpText[bottomHelpLength];
     QFont mBottomHelpTextFont;
     QRect mBottomHelpBorderBox;
     QPoint mBottomHelpContentPos;

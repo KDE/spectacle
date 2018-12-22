@@ -32,19 +32,6 @@ const int QuickEditor::selectionBoxPaddingX = 5;
 const int QuickEditor::selectionBoxPaddingY = 4;
 const int QuickEditor::selectionBoxMarginY = 2;
 
-std::pair<QStaticText, std::vector<QStaticText>> QuickEditor::bottomHelpText[]{
-    {QStaticText(i18n("Enter, double-click:")), {QStaticText(i18n("Take screenshot"))}},
-    {QStaticText(i18n("Shift:")), {
-        QStaticText(i18n("Hold to toggle magnifier")),
-        QStaticText(i18n("while dragging selection handles"))
-    }},
-    {QStaticText(i18n("Arrow keys:")), {
-        QStaticText(i18n("Move selection rectangle")),
-        QStaticText(i18n("Hold Alt to resize, Shift to fine‑tune"))
-    }},
-    {QStaticText(i18n("Right-click:")), {QStaticText(i18n("Reset selection"))}},
-    {QStaticText(i18n("Esc:")), {QStaticText(i18n("Cancel"))}},
-};
 bool QuickEditor::bottomHelpTextPrepared = false;
 const int QuickEditor::bottomHelpBoxPaddingX = 12;
 const int QuickEditor::bottomHelpBoxPaddingY = 8;
@@ -71,6 +58,19 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     mLabelForegroundColor(palette().windowText().color()),
     mMidHelpText(i18n("Click and drag to draw a selection rectangle,\nor press Esc to quit")),
     mMidHelpTextFont(font()),
+    mBottomHelpText{
+        {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")), {QStaticText(i18n("Take screenshot"))}},
+        {QStaticText(i18nc("Keyboard action", "Shift:")), {
+            QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
+            QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
+        }},
+        {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
+            QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
+            QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
+        }},
+        {QStaticText(i18nc("Mouse action", "Right-click:")), {QStaticText(i18n("Reset selection"))}},
+        {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}},
+    },
     mBottomHelpTextFont(font()),
     mBottomHelpGridLeftWidth(0),
     mMouseDragState(MouseState::None),
@@ -114,7 +114,7 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
             item.prepare(QTransform(), mBottomHelpTextFont);
             item.setPerformanceHint(QStaticText::AggressiveCaching);
         };
-        for (auto& pair : bottomHelpText) {
+        for (auto& pair : mBottomHelpText) {
             prepare(pair.first);
             for (auto item : pair.second) {
                 prepare(item);
@@ -478,7 +478,7 @@ void QuickEditor::layoutBottomHelpText()
     int contentHeight = 0;
     mBottomHelpGridLeftWidth = 0;
     int i = 0;
-    for (const auto& item : bottomHelpText) {
+    for (const auto& item : mBottomHelpText) {
         const auto& left = item.first;
         const auto& right = item.second;
         const auto leftSize = left.size().toSize();
@@ -517,7 +517,7 @@ void QuickEditor::drawBottomHelpText(QPainter &painter)
 
     int topOffset = mBottomHelpContentPos.y();
     int i = 0;
-    for (const auto& item : bottomHelpText) {
+    for (const auto& item : mBottomHelpText) {
         const auto& left = item.first;
         const auto& right = item.second;
         const auto leftSize = left.size().toSize();
