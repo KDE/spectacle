@@ -79,7 +79,7 @@ class X11ImageGrabber : public ImageGrabber
     xcb_window_t         getRealWindowUnderCursor();
     void                 grabApplicationWindowHelper(xcb_window_t window);
     QRect                getDrawableGeometry(xcb_drawable_t drawable);
-    QPixmap              postProcessPixmap(QPixmap pixmap, QRect rect, bool blendPointer);
+    QPixmap              postProcessPixmap(const QPixmap &pixmap, QRect rect, bool blendPointer);
     QPixmap              getPixmapFromDrawable(xcb_drawable_t drawableId, const QRect &rect);
     QPixmap              getToplevelPixmap(QRect rect, bool blendPointer);
     QPixmap              getWindowPixmap(xcb_window_t window, bool blendPointer);

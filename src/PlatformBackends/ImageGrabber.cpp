@@ -87,17 +87,23 @@ void ImageGrabber::doImageGrab()
 {
     switch(mGrabMode) {
     case FullScreen:
-        return grabFullScreen();
+        grabFullScreen();
+        break;
     case CurrentScreen:
-        return grabCurrentScreen();
+        grabCurrentScreen();
+        break;
     case ActiveWindow:
-        return grabActiveWindow();
+        grabActiveWindow();
+        break;
     case WindowUnderCursor:
-        return grabWindowUnderCursor();
+        grabWindowUnderCursor();
+        break;
     case TransientWithParent:
-        return grabTransientWithParent();
+        grabTransientWithParent();
+        break;
     case RectangularRegion:
-        return grabRectangularRegion();
+        grabRectangularRegion();
+        break;
     case InvalidChoice:
     default:
         emit imageGrabFailed();

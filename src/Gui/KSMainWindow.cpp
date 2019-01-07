@@ -402,7 +402,7 @@ void KSMainWindow::showPreferencesDialog()
     prefDialog.exec();
 }
 
-void KSMainWindow::setScreenshotWindowTitle(QUrl location)
+void KSMainWindow::setScreenshotWindowTitle(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);

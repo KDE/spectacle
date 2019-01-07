@@ -186,7 +186,7 @@ QString ExportManager::makeAutosaveFilename()
                              
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
-    paddingRE.setPattern(QLatin1String("%(\\d*)d"));
+    paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
     QRegularExpressionMatch paddingMatch;
                              
     if (result.indexOf(paddingRE, 0, &paddingMatch) > -1) {
@@ -206,7 +206,7 @@ QString ExportManager::makeAutosaveFilename()
         if (fileNames.length() > 0) { 
             QString resultCopy = result;
             QRegularExpression fileNumberRE;
-            const QString replacement = QString::fromLatin1("(\\d{").append(QString::number(paddedLength)).append(QString::fromLatin1(",})"));
+            const QString replacement = QStringLiteral("(\\d{").append(QString::number(paddedLength)).append(QLatin1String(",})"));
             const QString fullNameMatch = QStringLiteral("^").append(resultCopy.replace(paddingMatch.captured(),replacement)).append(QStringLiteral("\\..*$"));
             fileNumberRE.setPattern(fullNameMatch);
 
@@ -294,7 +294,7 @@ bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
     const QDir dir(dirPath.path());
 
-    if (!dir.mkpath(QLatin1String("."))) {
+    if (!dir.mkpath(QStringLiteral("."))) {
         emit errorMessage(xi18nc("@info",
                                  "Cannot save screenshot because creating "
                                  "the directory failed:<nl/><filename>%1</filename>",

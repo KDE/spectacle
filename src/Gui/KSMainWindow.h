@@ -77,7 +77,7 @@ class KSMainWindow : public QDialog
     public Q_SLOTS:
 
     void setScreenshotAndShow(const QPixmap &pixmap);
-    void setScreenshotWindowTitle(QUrl location);
+    void setScreenshotWindowTitle(const QUrl &location);
 
     Q_SIGNALS:
 

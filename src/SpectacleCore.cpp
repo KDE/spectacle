@@ -133,7 +133,7 @@ ImageGrabber::GrabMode SpectacleCore::grabMode() const
     return mImageGrabber->grabMode();
 }
 
-void SpectacleCore::setGrabMode(const ImageGrabber::GrabMode &grabMode)
+void SpectacleCore::setGrabMode(ImageGrabber::GrabMode grabMode)
 {
     mImageGrabber->setGrabMode(grabMode);
     mExportManager->setGrabMode(grabMode);
@@ -146,7 +146,7 @@ void SpectacleCore::dbusStartAgent()
     qApp->setQuitOnLastWindowClosed(true);
     if (!(mStartMode == GuiMode)) {
         mStartMode = GuiMode;
-        return initGui();
+        initGui();
     }
 }
 

@@ -146,7 +146,7 @@ int main(int argc, char **argv)
 
     SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&core);
     QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
-    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, [&](const QUrl savedAt) {
+    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, [&](const QUrl &savedAt) {
         emit dbusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
 

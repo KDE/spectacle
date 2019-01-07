@@ -147,12 +147,13 @@ void X11ImageGrabber::doOnClickGrab()
         xcbCursor,                     // cursor to change to for the duration of grab
         XCB_TIME_CURRENT_TIME          // do this right now
     );
-    CScopedPointer<xcb_grab_pointer_reply_t> grabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, NULL));
+    CScopedPointer<xcb_grab_pointer_reply_t> grabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, nullptr));
 
     // if the grab failed, take the screenshot right away
 
     if (grabPointerReply->status != XCB_GRAB_STATUS_SUCCESS) {
-        return doImageGrab();
+        doImageGrab();
+        return;
     }
 
     // fix things if our pointer grab causes a lockup
@@ -241,7 +242,7 @@ QPixmap X11ImageGrabber::blendCursorImage(const QPixmap &pixmap, int x, int y, i
     xcb_connection_t *xcbConn = QX11Info::connection();
 
     xcb_xfixes_get_cursor_image_cookie_t  cursorCookie = xcb_xfixes_get_cursor_image_unchecked(xcbConn);
-    CScopedPointer<xcb_xfixes_get_cursor_image_reply_t>  cursorReply(xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, NULL));
+    CScopedPointer<xcb_xfixes_get_cursor_image_reply_t>  cursorReply(xcb_xfixes_get_cursor_image_reply(xcbConn, cursorCookie, nullptr));
     if (cursorReply.isNull()) {
         return pixmap;
     }
@@ -305,7 +306,7 @@ QPixmap X11ImageGrabber::getPixmapFromDrawable(xcb_drawable_t drawableId, const 
 }
 
 // finalize the grabbed pixmap where we know the absolute position
-QPixmap X11ImageGrabber::postProcessPixmap(QPixmap pixmap, QRect rect, bool blendPointer)
+QPixmap X11ImageGrabber::postProcessPixmap(const QPixmap &pixmap, QRect rect, bool blendPointer)
 {
     if (!(blendPointer)) {
         // note: this may be the null pixmap if an error occurred.
@@ -350,7 +351,7 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
     // first get geometry information for our window
 
     xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, window);
-    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
+    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, nullptr));
     QRect rect(geomReply->x, geomReply->y, geomReply->width, geomReply->height);
 
     // then proceed to get an image
@@ -360,12 +361,12 @@ QPixmap X11ImageGrabber::getWindowPixmap(xcb_window_t window, bool blendPointer)
     // Translate window coordinates to global ones.
 
     xcb_get_geometry_cookie_t geomRootCookie = xcb_get_geometry_unchecked(xcbConn, geomReply->root);
-    CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, NULL));
+    CScopedPointer<xcb_get_geometry_reply_t> geomRootReply(xcb_get_geometry_reply(xcbConn, geomRootCookie, nullptr));
 
     xcb_translate_coordinates_cookie_t translateCookie = xcb_translate_coordinates_unchecked(
         xcbConn, window, geomReply->root, geomRootReply->x, geomRootReply->y);
     CScopedPointer<xcb_translate_coordinates_reply_t> translateReply(
-        xcb_translate_coordinates_reply(xcbConn, translateCookie, NULL));
+        xcb_translate_coordinates_reply(xcbConn, translateCookie, nullptr));
 
     // Adjust local to global coordinates.
     rect.moveRight(rect.x() + translateReply->dst_x);
@@ -631,7 +632,7 @@ QRect X11ImageGrabber::getDrawableGeometry(xcb_drawable_t drawable)
     xcb_connection_t *xcbConn = QX11Info::connection();
 
     xcb_get_geometry_cookie_t geomCookie = xcb_get_geometry_unchecked(xcbConn, drawable);
-    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, NULL));
+    CScopedPointer<xcb_get_geometry_reply_t> geomReply(xcb_get_geometry_reply(xcbConn, geomCookie, nullptr));
     if (geomReply.isNull()) {
         return QRect();
     }
@@ -679,8 +680,8 @@ xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
     const QByteArray atomName("WM_STATE");
     xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, 0, atomName.length(), atomName.constData());
     xcb_query_pointer_cookie_t pointerCookie = xcb_query_pointer_unchecked(xcbConn, curWin);
-    CScopedPointer<xcb_intern_atom_reply_t> atomReply(xcb_intern_atom_reply(xcbConn, atomCookie, NULL));
-    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, NULL));
+    CScopedPointer<xcb_intern_atom_reply_t> atomReply(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
+    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, nullptr));
 
     if (atomReply->atom == XCB_ATOM_NONE) {
         return QX11Info::appRootWindow();
@@ -698,7 +699,7 @@ xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
         // the window. if yes, return the window - we have found it
 
         xcb_get_property_cookie_t propertyCookie = xcb_get_property_unchecked(xcbConn, 0, curWin, atomReply->atom, XCB_ATOM_ANY, 0, 0);
-        CScopedPointer<xcb_get_property_reply_t> propertyReply(xcb_get_property_reply(xcbConn, propertyCookie, NULL));
+        CScopedPointer<xcb_get_property_reply_t> propertyReply(xcb_get_property_reply(xcbConn, propertyCookie, nullptr));
 
         if (propertyReply->type != XCB_ATOM_NONE) {
             return curWin;
@@ -708,7 +709,7 @@ xcb_window_t X11ImageGrabber::getRealWindowUnderCursor()
         // we should start looking at its children
 
         xcb_query_tree_cookie_t treeCookie = xcb_query_tree_unchecked(xcbConn, curWin);
-        CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, NULL));
+        CScopedPointer<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, nullptr));
         xcb_window_t *winChildren = xcb_query_tree_children(treeReply.data());
         int winChildrenLength = xcb_query_tree_children_length(treeReply.data());
 
@@ -746,7 +747,7 @@ QPoint X11ImageGrabber::getNativeCursorPosition()
 
     xcb_connection_t *xcbConn = QX11Info::connection();
     xcb_query_pointer_cookie_t pointerCookie = xcb_query_pointer_unchecked(xcbConn, QX11Info::appRootWindow());
-    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, NULL));
+    CScopedPointer<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, nullptr));
 
     return QPoint(pointerReply->root_x, pointerReply->root_y);
 }

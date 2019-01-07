@@ -85,10 +85,10 @@ KIPI::UploadWidget *KSGKipiInterface::uploadWidget(QWidget *parent)
 KIPI::FileReadWriteLock *KSGKipiInterface::createReadWriteLock(const QUrl &url) const
 {
     Q_UNUSED(url);
-    return NULL;
+    return nullptr;
 }
 
 KIPI::MetadataProcessor *KSGKipiInterface::createMetadataProcessor() const
 {
-    return NULL;
+    return nullptr;
 }

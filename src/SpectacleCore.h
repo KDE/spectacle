@@ -48,13 +48,13 @@ class SpectacleCore : public QObject
     QString filename() const;
     void setFilename(const QString &filename);
     ImageGrabber::GrabMode grabMode() const;
-    void setGrabMode(const ImageGrabber::GrabMode &grabMode);
+    void setGrabMode(ImageGrabber::GrabMode grabMode);
 
     Q_SIGNALS:
 
-    void errorMessage(const QString errString);
+    void errorMessage(const QString &errString);
     void allDone();
-    void filenameChanged(QString filename);
+    void filenameChanged(const QString &filename);
     void grabModeChanged(ImageGrabber::GrabMode mode);
     void grabFailed();
 
