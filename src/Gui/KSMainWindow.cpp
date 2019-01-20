@@ -141,7 +141,8 @@ void KSMainWindow::init()
     mDialogButtonBox->addButton(mConfigureButton, QDialogButtonBox::ResetRole);
 
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
-    mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("application-menu")));
+    mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("tools"),
+                                           QIcon::fromTheme(QStringLiteral("application-menu"))));
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
     mToolsButton->setMenu(mToolsMenu);
 
