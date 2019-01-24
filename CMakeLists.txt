@@ -21,7 +21,6 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
         ${CMAKE_MODULE_PATH}
         ${ECM_MODULE_PATH}
-        ${ECM_KDE_MODULE_DIR}
 )
 
 # set up kf5
