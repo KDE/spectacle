@@ -41,24 +41,24 @@ class KSGKipiInterface : public KIPI::Interface
     public:
 
     explicit KSGKipiInterface(QObject *parent = nullptr);
-    ~KSGKipiInterface() Q_DECL_OVERRIDE;
+    ~KSGKipiInterface() override;
 
-    bool addImage(const QUrl &, QString &err) Q_DECL_OVERRIDE;
-    void delImage(const QUrl &) Q_DECL_OVERRIDE;
-    void refreshImages(const QList<QUrl> &urls) Q_DECL_OVERRIDE;
+    bool addImage(const QUrl &, QString &err) override;
+    void delImage(const QUrl &) override;
+    void refreshImages(const QList<QUrl> &urls) override;
 
-    KIPI::FileReadWriteLock *createReadWriteLock(const QUrl &url) const Q_DECL_OVERRIDE;
-    KIPI::MetadataProcessor *createMetadataProcessor() const Q_DECL_OVERRIDE;
+    KIPI::FileReadWriteLock *createReadWriteLock(const QUrl &url) const override;
+    KIPI::MetadataProcessor *createMetadataProcessor() const override;
 
-    KIPI::ImageCollection currentAlbum() Q_DECL_OVERRIDE;
-    KIPI::ImageCollection currentSelection() Q_DECL_OVERRIDE;
-    QList<KIPI::ImageCollection> allAlbums() Q_DECL_OVERRIDE;
+    KIPI::ImageCollection currentAlbum() override;
+    KIPI::ImageCollection currentSelection() override;
+    QList<KIPI::ImageCollection> allAlbums() override;
 
-    KIPI::ImageCollectionSelector *imageCollectionSelector(QWidget *parent) Q_DECL_OVERRIDE;
-    KIPI::UploadWidget *uploadWidget(QWidget *parent) Q_DECL_OVERRIDE;
+    KIPI::ImageCollectionSelector *imageCollectionSelector(QWidget *parent) override;
+    KIPI::UploadWidget *uploadWidget(QWidget *parent) override;
 
-    int features() const Q_DECL_OVERRIDE;
-    KIPI::ImageInfo info(const QUrl &) Q_DECL_OVERRIDE;
+    int features() const override;
+    KIPI::ImageInfo info(const QUrl &) override;
 
     private:
 

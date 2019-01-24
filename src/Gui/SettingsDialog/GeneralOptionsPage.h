@@ -34,8 +34,8 @@ class GeneralOptionsPage : public SettingsPage
 
     public Q_SLOTS:
 
-    void saveChanges() Q_DECL_OVERRIDE;
-    void resetChanges() Q_DECL_OVERRIDE;
+    void saveChanges() override;
+    void resetChanges() override;
 
     private Q_SLOTS:
 

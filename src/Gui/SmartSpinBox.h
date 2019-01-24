@@ -29,7 +29,7 @@ class SmartSpinBox : public QDoubleSpinBox
     public:
 
     explicit SmartSpinBox(QWidget *parent = nullptr);
-    QString textFromValue(double val) const Q_DECL_OVERRIDE;
+    QString textFromValue(double val) const override;
 
     private Q_SLOTS:
 

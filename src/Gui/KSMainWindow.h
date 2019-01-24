@@ -42,7 +42,7 @@ class KSMainWindow : public QDialog
     public:
 
     explicit KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes, bool onClickAvailable, QWidget *parent = nullptr);
-    ~KSMainWindow() Q_DECL_OVERRIDE;
+    ~KSMainWindow() override;
 
     private:
 
@@ -86,7 +86,7 @@ class KSMainWindow : public QDialog
 
     protected:
 
-    void moveEvent(QMoveEvent *event) Q_DECL_OVERRIDE;
+    void moveEvent(QMoveEvent *event) override;
 
     private:
 
