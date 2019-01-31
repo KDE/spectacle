@@ -30,7 +30,7 @@ class KWinWaylandImageGrabber : public ImageGrabber
     explicit KWinWaylandImageGrabber(QObject * parent = nullptr);
     ~KWinWaylandImageGrabber() override;
 
-    QVector<ImageGrabber::GrabMode> supportedModes() const override { return {FullScreen, CurrentScreen, /*ActiveWindow, */WindowUnderCursor, TransientWithParent/*, RectangularRegion*/}; }
+    QVector<ImageGrabber::GrabMode> supportedModes() const override;
     bool onClickGrabSupported() const override;
 
     protected:

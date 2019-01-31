@@ -166,3 +166,12 @@ void KWinWaylandImageGrabber::grab(Mode mode, T argument)
 
     close(pipeFds[1]);
 }
+
+QVector<ImageGrabber::GrabMode> KWinWaylandImageGrabber::supportedModes() const
+{
+    if (QApplication::screens().count() == 1) {
+        return {FullScreen, WindowUnderCursor, TransientWithParent};
+    }
+
+    return {FullScreen, CurrentScreen, WindowUnderCursor, TransientWithParent};
+}

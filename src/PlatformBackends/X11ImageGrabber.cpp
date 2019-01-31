@@ -751,3 +751,12 @@ QPoint X11ImageGrabber::getNativeCursorPosition()
 
     return QPoint(pointerReply->root_x, pointerReply->root_y);
 }
+
+QVector<ImageGrabber::GrabMode> X11ImageGrabber::supportedModes() const
+{
+    if (QApplication::screens().count() == 1) {
+        return {FullScreen, ActiveWindow, WindowUnderCursor, TransientWithParent, RectangularRegion};
+    }
+
+    return {FullScreen, CurrentScreen, ActiveWindow, WindowUnderCursor, TransientWithParent, RectangularRegion};
+}
