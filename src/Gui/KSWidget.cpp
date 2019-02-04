@@ -54,7 +54,7 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
 
     mCaptureArea = new QComboBox(this);
-    QString fullScreenLabel = QApplication::screens().length() == 1
+    QString fullScreenLabel = QApplication::screens().count() == 1
             ? i18n("Full Screen")
             : i18n("Full Screen (All Monitors)");
 
