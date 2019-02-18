@@ -215,6 +215,18 @@ void SpectacleConfig::setRememberLastRectangularRegion(bool enabled)
     mGuiConfig.sync();
 }
 
+bool SpectacleConfig::alwaysRememberRegion() const
+{
+    // Default Value is for compatibility reasons as the old behavior was always to remember across restarts
+    return mGuiConfig.readEntry(QStringLiteral("alwaysRememberRegion"), rememberLastRectangularRegion());
+}
+
+void SpectacleConfig::setAlwaysRememberRegion (bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("alwaysRememberRegion"), enabled);
+    mGuiConfig.sync();
+}
+
 // use light region mask colour
 
 bool SpectacleConfig::useLightRegionMaskColour() const

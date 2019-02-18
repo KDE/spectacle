@@ -22,10 +22,13 @@
 #include "SpectacleConfig.h"
 
 #include <KLocalizedString>
+#include <KTitleWidget>
 
+#include <QButtonGroup>
 #include <QCheckBox>
 #include <QFormLayout>
-#include <QGroupBox>
+#include <QRadioButton>
+#include <QSpacerItem>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     SettingsPage(parent)
@@ -34,21 +37,37 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     setLayout(mainLayout);
 
     // Rectangular Region settings
+    KTitleWidget *titleWidget = new KTitleWidget(this);
+    titleWidget->setText(i18n("Rectangular Region:"));
+    titleWidget->setLevel(2);
+    mainLayout->addRow(titleWidget);
 
     // use light background
     mUseLightBackground = new QCheckBox(i18n("Use light background"), this);
     connect(mUseLightBackground, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(i18n("Rectangular Region:"), mUseLightBackground);
-
-    // remember Rectangular Region box
-    mRememberRect = new QCheckBox(i18n("Remember selected area"), this);
-    connect(mRememberRect, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(QString(), mRememberRect);
+    mainLayout->addRow(i18n("General:"), mUseLightBackground);
 
     // show magnifier
     mShowMagnifier = new QCheckBox(i18n("Show magnifier"), this);
     connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addRow(QString(), mShowMagnifier);
+
+    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
+
+    // remember Rectangular Region box
+    QButtonGroup* rememberGroup = new QButtonGroup(this);
+    rememberGroup->setExclusive(true);
+    QRadioButton* neverButton = new QRadioButton(i18n("Never"), this);
+    mRememberAlways = new QRadioButton(i18n("Always"), this);
+    mRememberUntilClosed = new QRadioButton(i18n("Until Spectacle is closed"), this);
+    rememberGroup->addButton(neverButton);
+    rememberGroup->addButton(mRememberAlways);
+    rememberGroup->addButton(mRememberUntilClosed);
+    neverButton->setChecked(true);
+    connect(rememberGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *, bool)>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(i18n("Remember selected area:"), neverButton);
+    mainLayout->addRow(QString(), mRememberAlways);
+    mainLayout->addRow(QString(), mRememberUntilClosed );
 
     // read in the data
     resetChanges();
@@ -64,7 +83,8 @@ void GeneralOptionsPage::saveChanges()
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
     cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
-    cfgManager->setRememberLastRectangularRegion(mRememberRect->checkState() == Qt::Checked);
+    cfgManager->setRememberLastRectangularRegion(mRememberUntilClosed->isChecked() || mRememberAlways->isChecked());
+    cfgManager->setAlwaysRememberRegion (mRememberAlways->isChecked());
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
 
     mChangesMade = false;
@@ -75,7 +95,8 @@ void GeneralOptionsPage::resetChanges()
     SpectacleConfig *cfgManager = SpectacleConfig::instance();
 
     mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
-    mRememberRect->setChecked(cfgManager->rememberLastRectangularRegion());
+    mRememberUntilClosed->setChecked(cfgManager->rememberLastRectangularRegion());
+    mRememberAlways->setChecked(cfgManager->alwaysRememberRegion());
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
 
     mChangesMade = false;

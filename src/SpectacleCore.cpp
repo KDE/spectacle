@@ -84,6 +84,12 @@ SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMod
         delayMsec = 0;
     }
 
+    //Reset last region if it should not be remembered across restarts
+    SpectacleConfig* cfg = SpectacleConfig::instance();
+    if(!cfg->alwaysRememberRegion()) {
+        cfg->setCropRegion(QRect());
+    }
+
     connect(mExportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mImageGrabber, &ImageGrabber::pixmapChanged, this, &SpectacleCore::screenshotUpdated);

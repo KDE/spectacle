@@ -96,6 +96,9 @@ class SpectacleConfig : public QObject
     bool rememberLastRectangularRegion() const;
     void setRememberLastRectangularRegion(bool enabled);
 
+    bool alwaysRememberRegion() const;
+    void setAlwaysRememberRegion(bool enabled);
+
     bool useLightRegionMaskColour() const;
     void setUseLightRegionMaskColour(bool enabled);
 

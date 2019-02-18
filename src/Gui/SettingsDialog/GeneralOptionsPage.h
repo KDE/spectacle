@@ -23,6 +23,7 @@
 #include "SettingsPage.h"
 
 class QCheckBox;
+class QRadioButton;
 
 class GeneralOptionsPage : public SettingsPage
 {
@@ -43,7 +44,8 @@ class GeneralOptionsPage : public SettingsPage
 
     private:
 
-    QCheckBox *mRememberRect;
+    QRadioButton* mRememberAlways;
+    QRadioButton* mRememberUntilClosed;
     QCheckBox *mUseLightBackground;
     QCheckBox *mShowMagnifier;
 };
