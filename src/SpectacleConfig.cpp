@@ -206,7 +206,7 @@ void SpectacleConfig::setCaptureMode(int index)
 
 bool SpectacleConfig::rememberLastRectangularRegion() const
 {
-    return mGuiConfig.readEntry(QStringLiteral("rememberLastRectangularRegion"), false);
+    return mGuiConfig.readEntry(QStringLiteral("rememberLastRectangularRegion"), true);
 }
 
 void SpectacleConfig::setRememberLastRectangularRegion(bool enabled)
@@ -218,7 +218,8 @@ void SpectacleConfig::setRememberLastRectangularRegion(bool enabled)
 bool SpectacleConfig::alwaysRememberRegion() const
 {
     // Default Value is for compatibility reasons as the old behavior was always to remember across restarts
-    return mGuiConfig.readEntry(QStringLiteral("alwaysRememberRegion"), rememberLastRectangularRegion());
+    bool useOldBehavior = mGuiConfig.readEntry(QStringLiteral("rememberLastRectangularRegion"), false);
+    return mGuiConfig.readEntry(QStringLiteral("alwaysRememberRegion"), useOldBehavior);
 }
 
 void SpectacleConfig::setAlwaysRememberRegion (bool enabled)
