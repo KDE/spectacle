@@ -38,7 +38,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     // Rectangular Region settings
     KTitleWidget *titleWidget = new KTitleWidget(this);
-    titleWidget->setText(i18n("Rectangular Region:"));
+    titleWidget->setText(i18n("Rectangular Region"));
     titleWidget->setLevel(2);
     mainLayout->addRow(titleWidget);
 
