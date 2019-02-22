@@ -19,6 +19,8 @@
 
 #include "SpectacleConfig.h"
 
+#include <KWindowSystem>
+
 SpectacleConfig::SpectacleConfig(QObject *parent) :
     QObject(parent)
 {
@@ -314,4 +316,22 @@ void SpectacleConfig::setSaveImageFormat(const QString &saveFmt)
 {
     mGeneralConfig.writeEntry(QStringLiteral("default-save-image-format"), saveFmt);
     mGeneralConfig.sync();
+}
+
+SpectacleConfig::PrintKeyActionRunning SpectacleConfig::printKeyActionRunning() const
+{
+    mConfig->reparseConfiguration();
+    int newScreenshotAction = static_cast<int>(SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
+    int readValue = mGuiConfig.readEntry(QStringLiteral("printKeyActionRunning"), newScreenshotAction);
+    if ((KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0 )
+        && readValue == SpectacleConfig::PrintKeyActionRunning::FocusWindow)  {
+        return SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot;
+    }
+    return static_cast<SpectacleConfig::PrintKeyActionRunning>(readValue);
+}
+
+void SpectacleConfig::setPrintKeyActionRunning (SpectacleConfig::PrintKeyActionRunning action)
+{
+    mGuiConfig.writeEntry(QStringLiteral("printKeyActionRunning"), static_cast<int>(action));
+    mGuiConfig.sync();
 }

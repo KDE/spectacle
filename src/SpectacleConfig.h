@@ -47,7 +47,13 @@ class SpectacleConfig : public QObject
     
     QUrl lastSaveAsLocation() const;
     QUrl lastSaveLocation() const;
-    
+
+     enum PrintKeyActionRunning : int {
+        TakeNewScreenshot = 0,
+        StartNewInstance,
+        FocusWindow
+    };
+
     private:
 
     explicit SpectacleConfig(QObject *parent = nullptr);
@@ -116,6 +122,9 @@ class SpectacleConfig : public QObject
 
     QString saveImageFormat() const;
     void setSaveImageFormat(const QString &saveFmt);
+
+    PrintKeyActionRunning printKeyActionRunning() const;
+    void setPrintKeyActionRunning (PrintKeyActionRunning action);
 
     private:
 

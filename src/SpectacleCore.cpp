@@ -38,6 +38,7 @@
 #include <QDir>
 #include <QDrag>
 #include <QMimeData>
+#include <QProcess>
 #include <QTimer>
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
@@ -153,6 +154,21 @@ void SpectacleCore::dbusStartAgent()
     if (!(mStartMode == GuiMode)) {
         mStartMode = GuiMode;
         initGui();
+    } else {
+        using Actions = SpectacleConfig::PrintKeyActionRunning;
+        switch (SpectacleConfig::instance()->printKeyActionRunning()) {
+            case Actions::TakeNewScreenshot:
+                QTimer::singleShot(KWindowSystem::compositingActive() ? 200 : 50, mImageGrabber, &ImageGrabber::doImageGrab);
+                break;
+            case Actions::FocusWindow:
+                KWindowSystem::forceActiveWindow(mMainWindow->winId());;
+                break;
+            case Actions::StartNewInstance:
+                QProcess newInstance;
+                newInstance.setProgram(QStringLiteral("spectacle"));
+                newInstance.startDetached();
+                break;
+        }
     }
 }
 

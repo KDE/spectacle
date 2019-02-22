@@ -23,6 +23,7 @@
 
 #include <KLocalizedString>
 #include <KTitleWidget>
+#include <KWindowSystem>
 
 #include <QButtonGroup>
 #include <QCheckBox>
@@ -35,6 +36,26 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 {
     QFormLayout *mainLayout = new QFormLayout(this);
     setLayout(mainLayout);
+    
+    KTitleWidget* runningTitle = new KTitleWidget(this);
+    runningTitle->setText(i18n("When Spectacle is Running"));
+    runningTitle->setLevel(2);
+    mainLayout->addRow(runningTitle);
+    QRadioButton* takeNew = new QRadioButton(i18n("Take a new screenshot"), this);
+    QRadioButton* startNewInstance = new QRadioButton(i18n("Open a new Spectacle window"), this);
+    mPrintKeyActionGroup = new QButtonGroup(this);
+    mPrintKeyActionGroup->setExclusive(true);
+    mPrintKeyActionGroup->addButton(takeNew, SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
+    mPrintKeyActionGroup->addButton(startNewInstance, SpectacleConfig::PrintKeyActionRunning::StartNewInstance);
+    connect( mPrintKeyActionGroup, static_cast<void(QButtonGroup::*)(int, bool)>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(i18n("Press screenshot key to:"), takeNew);
+    mainLayout->addRow(QString(), startNewInstance);
+    //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
+    if (!(KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0)) {
+        QRadioButton* focusWindow = new QRadioButton(i18n("Return focus to Spectacle"), this);
+        mPrintKeyActionGroup->addButton( focusWindow, SpectacleConfig::PrintKeyActionRunning::FocusWindow);
+        mainLayout->addRow(QString(), focusWindow);
+    }
 
     // Rectangular Region settings
     KTitleWidget *titleWidget = new KTitleWidget(this);
@@ -86,6 +107,7 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setRememberLastRectangularRegion(mRememberUntilClosed->isChecked() || mRememberAlways->isChecked());
     cfgManager->setAlwaysRememberRegion (mRememberAlways->isChecked());
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
+    cfgManager->setPrintKeyActionRunning(static_cast<SpectacleConfig::PrintKeyActionRunning>(mPrintKeyActionGroup->checkedId()));
 
     mChangesMade = false;
 }
@@ -98,6 +120,7 @@ void GeneralOptionsPage::resetChanges()
     mRememberUntilClosed->setChecked(cfgManager->rememberLastRectangularRegion());
     mRememberAlways->setChecked(cfgManager->alwaysRememberRegion());
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
+    mPrintKeyActionGroup->button(cfgManager->printKeyActionRunning())->setChecked(true);
 
     mChangesMade = false;
 }

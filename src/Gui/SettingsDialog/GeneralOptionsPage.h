@@ -22,6 +22,7 @@
 
 #include "SettingsPage.h"
 
+class QButtonGroup;
 class QCheckBox;
 class QRadioButton;
 
@@ -44,6 +45,7 @@ class GeneralOptionsPage : public SettingsPage
 
     private:
 
+    QButtonGroup* mPrintKeyActionGroup;
     QRadioButton* mRememberAlways;
     QRadioButton* mRememberUntilClosed;
     QCheckBox *mUseLightBackground;
