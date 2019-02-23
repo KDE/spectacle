@@ -29,8 +29,8 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2018-07-17</date>
-        <releaseinfo>Applications 18.08</releaseinfo>
+        <date>2019-02-23</date>
+        <releaseinfo>Applications 19.04</releaseinfo>
 
         <abstract>
             <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -260,10 +260,9 @@
                 </mediaobject>
             <variablelist>
                 <varlistentry>
-                    <term><guilabel>Copy file location to clipboard after saving</guilabel></term>
+                    <term><guilabel>Press screenshot key to</guilabel></term>
                     <listitem>
-                        <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
-                        text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+                        <para>When a shortcut to make screenshot is pressed and &spectacle; is already running it is possible to configure the behavior of the screenshoting system. You can choose between taking a new screenshot, opening of a new &spectacle; window, and returning focus to the existing &spectacle; window.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -273,10 +272,16 @@
                     </listitem>
                 </varlistentry>
                 <varlistentry>
+                    <term><guilabel>Show magnifier</guilabel></term>
+                    <listitem>
+                        <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
+                        text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
                     <term><guilabel>Remember selected area</guilabel></term>
                     <listitem>
-                        <para>By default, &spectacle; does not show an initial selection when you take a screenshot of a rectangular region. Enable this option to remember
-                        the last selected region of the screen, and set it as the initial selection when you use the rectangular region selector the next time.</para>
+                        <para>By default, &spectacle; remembers an initial selection when you take a screenshot of a rectangular region until you close the &spectacle; window. You can also choose to make &spectacle; never remember selected area or remember it between the screenshoting sessions.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -297,9 +302,16 @@
             </para>
             <variablelist>
                 <varlistentry>
-                    <term><guilabel>Default Save Location</guilabel></term>
+                    <term><guilabel>Save Location</guilabel></term>
                     <listitem>
                     <para>In the <guilabel>Location</guilabel> text box set the folder where you'd like to save your screenshots when you press <guibutton>Save</guibutton>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>Copy file location to clipboard after saving</guilabel></term>
+                    <listitem>
+                        <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
+                        text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
