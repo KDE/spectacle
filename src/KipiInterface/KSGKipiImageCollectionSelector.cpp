@@ -40,7 +40,7 @@ KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *
 
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(mListWidget);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
 }
 
 KSGKipiImageCollectionSelector::~KSGKipiImageCollectionSelector()
