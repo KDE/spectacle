@@ -77,7 +77,8 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     mPixmap(pixmap),
     mMagnifierAllowed(false),
     mShowMagnifier(SpectacleConfig::instance()->showMagnifierChecked()),
-    mToggleMagnifier(false)
+    mToggleMagnifier(false),
+    mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry())
 {
     SpectacleConfig *config = SpectacleConfig::instance();
     if (config->useLightRegionMaskColour()) {
@@ -491,7 +492,7 @@ void QuickEditor::layoutBottomHelpText()
         contentWidth = qMax(contentWidth, mBottomHelpGridLeftWidth + maxRightWidth + bottomHelpBoxPairSpacing);
         contentHeight += (++i != bottomHelpLength ? bottomHelpBoxMarginBottom : 0);
     }
-    mBottomHelpContentPos.setX((width() - contentWidth) / 2);
+    mBottomHelpContentPos.setX((mPrimaryScreenGeo.width() - contentWidth) / 2 + mPrimaryScreenGeo.x());
     mBottomHelpContentPos.setY(height() - contentHeight - 8);
     mBottomHelpGridLeftWidth += mBottomHelpContentPos.x();
     mBottomHelpBorderBox.setRect(
@@ -653,7 +654,7 @@ void QuickEditor::drawMidHelpText(QPainter &painter)
     painter.fillRect(geometry(), mMaskColor);
     painter.setFont(mMidHelpTextFont);
     QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidHelpText);
-    QPoint pos((width() - textSize.width()) / 2, (height() - textSize.height()) / 2);
+    QPoint pos((mPrimaryScreenGeo.width() - textSize.width()) / 2 + mPrimaryScreenGeo.x(), (height() - textSize.height()) / 2);
 
     painter.setBrush(mLabelBackgroundColor);
     QPen pen(mLabelForegroundColor);

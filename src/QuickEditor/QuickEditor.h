@@ -25,6 +25,8 @@
 #include <QPainter>
 #include <QStaticText>
 #include <QWidget>
+#include <QScreen>
+#include <QGuiApplication>
 #include <utility>
 #include <vector>
 
@@ -122,6 +124,7 @@ private:
     bool mMagnifierAllowed;
     bool mShowMagnifier;
     bool mToggleMagnifier;
+    QRect mPrimaryScreenGeo;
 
 Q_SIGNALS:
     void grabDone(const QPixmap &pixmap);
