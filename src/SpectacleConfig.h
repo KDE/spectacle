@@ -93,6 +93,9 @@ class SpectacleConfig : public QObject
     bool showMagnifierChecked() const;
     void setShowMagnifierChecked(bool enabled);
 
+    bool useReleaseToCapture() const;
+    void setUseReleaseToCaptureChecked(bool enabled);
+
     qreal captureDelay() const;
     void setCaptureDelay(qreal delay);
 

@@ -73,6 +73,11 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
     mainLayout->addRow(QString(), mShowMagnifier);
 
+    // release mouse-button to capture
+    mReleaseToCapture = new QCheckBox(i18n("Accept on click-and-release"), this);
+    connect(mReleaseToCapture, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(QString(), mReleaseToCapture);
+
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // remember Rectangular Region box
@@ -107,6 +112,7 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setRememberLastRectangularRegion(mRememberUntilClosed->isChecked() || mRememberAlways->isChecked());
     cfgManager->setAlwaysRememberRegion (mRememberAlways->isChecked());
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
+    cfgManager->setUseReleaseToCaptureChecked(mReleaseToCapture->checkState() == Qt::Checked);
     cfgManager->setPrintKeyActionRunning(static_cast<SpectacleConfig::PrintKeyActionRunning>(mPrintKeyActionGroup->checkedId()));
 
     mChangesMade = false;
@@ -120,6 +126,7 @@ void GeneralOptionsPage::resetChanges()
     mRememberUntilClosed->setChecked(cfgManager->rememberLastRectangularRegion());
     mRememberAlways->setChecked(cfgManager->alwaysRememberRegion());
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
+    mReleaseToCapture->setChecked(cfgManager->useReleaseToCapture());
     mPrintKeyActionGroup->button(cfgManager->printKeyActionRunning())->setChecked(true);
 
     mChangesMade = false;

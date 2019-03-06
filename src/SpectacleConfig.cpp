@@ -178,6 +178,19 @@ void SpectacleConfig::setShowMagnifierChecked(bool enabled)
     mGuiConfig.sync();
 }
 
+// release mouse-button to capture
+
+bool SpectacleConfig::useReleaseToCapture() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("useReleaseToCapture"), false);
+}
+
+void SpectacleConfig::setUseReleaseToCaptureChecked(bool enabled)
+{
+    mGuiConfig.writeEntry(QStringLiteral("useReleaseToCapture"), enabled);
+    mGuiConfig.sync();
+}
+
 // capture delay
 
 qreal SpectacleConfig::captureDelay() const

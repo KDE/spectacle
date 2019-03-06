@@ -58,19 +58,6 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     mLabelForegroundColor(palette().windowText().color()),
     mMidHelpText(i18n("Click and drag to draw a selection rectangle,\nor press Esc to quit")),
     mMidHelpTextFont(font()),
-    mBottomHelpText{
-        {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")), {QStaticText(i18n("Take screenshot"))}},
-        {QStaticText(i18nc("Keyboard action", "Shift:")), {
-            QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
-            QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
-        }},
-        {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
-            QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
-            QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
-        }},
-        {QStaticText(i18nc("Mouse action", "Right-click:")), {QStaticText(i18n("Reset selection"))}},
-        {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}},
-    },
     mBottomHelpTextFont(font()),
     mBottomHelpGridLeftWidth(0),
     mMouseDragState(MouseState::None),
@@ -78,7 +65,11 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     mMagnifierAllowed(false),
     mShowMagnifier(SpectacleConfig::instance()->showMagnifierChecked()),
     mToggleMagnifier(false),
-    mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry())
+    mReleaseToCapture(SpectacleConfig::instance()->useReleaseToCapture()),
+    mRememberRegion(SpectacleConfig::instance()->alwaysRememberRegion() || SpectacleConfig::instance()->rememberLastRectangularRegion()),
+    mDisableArrowKeys(false),
+    mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry()),
+    mbottomHelpLength(bottomHelpMaxLength)
 {
     SpectacleConfig *config = SpectacleConfig::instance();
     if (config->useLightRegionMaskColour()) {
@@ -108,6 +99,7 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
         setCursor(Qt::CrossCursor);
     }
 
+    setBottomHelpText();
     mMidHelpTextFont.setPointSize(midHelpTextFontSize);
     if (!bottomHelpTextPrepared) {
         bottomHelpTextPrepared = true;
@@ -158,6 +150,10 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
         acceptSelection();
         break;
     case Qt::Key_Up: {
+        if(mDisableArrowKeys) {
+            update();
+            break;
+        }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
         const int newPos = boundsUp(qRound(mSelection.top() * devicePixelRatioF() - step), false);
         if (modifiers & Qt::AltModifier) {
@@ -170,6 +166,10 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
         break;
     }
     case Qt::Key_Right: {
+        if(mDisableArrowKeys) {
+            update();
+            break;
+        }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
         const int newPos = boundsRight(qRound(mSelection.left() * devicePixelRatioF() + step), false);
         if (modifiers & Qt::AltModifier) {
@@ -181,6 +181,10 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
         break;
     }
     case Qt::Key_Down: {
+        if(mDisableArrowKeys) {
+            update();
+            break;
+        }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
         const int newPos = boundsDown(qRound(mSelection.top() * devicePixelRatioF() + step), false);
         if (modifiers & Qt::AltModifier) {
@@ -192,6 +196,10 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
         break;
     }
     case Qt::Key_Left: {
+        if(mDisableArrowKeys) {
+            update();
+            break;
+        }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
         const int newPos = boundsLeft(qRound(mSelection.left() * devicePixelRatioF() - step), false);
         if (modifiers & Qt::AltModifier) {
@@ -283,6 +291,7 @@ void QuickEditor::mousePressEvent(QMouseEvent* event)
         mMousePos = pos;
         mMagnifierAllowed = true;
         mMouseDragState = mouseLocation(pos);
+        mDisableArrowKeys = true;
         switch(mMouseDragState) {
         case MouseState::Outside:
             mStartPos = pos;
@@ -415,8 +424,14 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
 void QuickEditor::mouseReleaseEvent(QMouseEvent* event)
 {
     const auto button = event->button();
-    if (button == Qt::LeftButton && mMouseDragState == MouseState::Inside) {
-        setCursor(Qt::OpenHandCursor);
+    if (button == Qt::LeftButton) {
+        mDisableArrowKeys = false;
+        if(mMouseDragState == MouseState::Inside) {
+            setCursor(Qt::OpenHandCursor);
+        }
+        else if(mMouseDragState == MouseState::Outside && mReleaseToCapture) {
+            acceptSelection();
+        }
     } else if (button == Qt::RightButton) {
         mSelection.setWidth(0);
         mSelection.setHeight(0);
@@ -478,8 +493,8 @@ void QuickEditor::layoutBottomHelpText()
     int contentWidth = 0;
     int contentHeight = 0;
     mBottomHelpGridLeftWidth = 0;
-    int i = 0;
-    for (const auto& item : mBottomHelpText) {
+    for (int i = 0; i < mbottomHelpLength; i++) {
+        const auto& item = mBottomHelpText[i];
         const auto& left = item.first;
         const auto& right = item.second;
         const auto leftSize = left.size().toSize();
@@ -490,7 +505,7 @@ void QuickEditor::layoutBottomHelpText()
             contentHeight += rightItemSize.height();
         }
         contentWidth = qMax(contentWidth, mBottomHelpGridLeftWidth + maxRightWidth + bottomHelpBoxPairSpacing);
-        contentHeight += (++i != bottomHelpLength ? bottomHelpBoxMarginBottom : 0);
+        contentHeight += (i != bottomHelpMaxLength ? bottomHelpBoxMarginBottom : 0);
     }
     mBottomHelpContentPos.setX((mPrimaryScreenGeo.width() - contentWidth) / 2 + mPrimaryScreenGeo.x());
     mBottomHelpContentPos.setY(height() - contentHeight - 8);
@@ -501,6 +516,55 @@ void QuickEditor::layoutBottomHelpText()
         contentWidth + bottomHelpBoxPaddingX * 2,
         contentHeight + bottomHelpBoxPaddingY * 2 - 1
     );
+}
+
+void QuickEditor::setBottomHelpText() {
+    if (mReleaseToCapture) {
+        if(mRememberRegion && !mSelection.size().isEmpty()) {
+            //Release to capture enabled and saved region available
+            mBottomHelpText[0] = {QStaticText(i18nc("Mouse action", "Click and drag,")),{QStaticText(i18n(" "))}};
+            mBottomHelpText[1] = {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")),
+                                  {QStaticText(i18n("Take screenshot"))}};
+            mBottomHelpText[2] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
+                    QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
+                    QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
+            }};
+            mBottomHelpText[3] = {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
+                    QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
+                    QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
+            }};
+            mBottomHelpText[4] = {QStaticText(i18nc("Mouse action", "Right-click:")),
+                                  {QStaticText(i18n("Reset selection"))}};
+            mBottomHelpText[5] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
+
+        } else {
+            //Release to capture enabled and NO saved region available
+            mbottomHelpLength = 4;
+            mBottomHelpText[0] = {QStaticText(i18nc("Keyboard/mouse action", "Release left-click, Enter:")),
+                                  {QStaticText(i18n("Take Screenshot"))}};
+            mBottomHelpText[1] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
+                    QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier"))}};
+            mBottomHelpText[2] = {QStaticText(i18nc("Mouse action", "Right-click:")),
+                                  {QStaticText(i18n("Reset selection"))}};
+            mBottomHelpText[3] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
+        }
+    }else {
+        //Default text, Release to capture option disabled
+        mbottomHelpLength = 5;
+        mBottomHelpText[0] = {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")),
+                              {QStaticText(i18n("Take screenshot"))}};
+        mBottomHelpText[1] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
+                QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
+                QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
+        }};
+        mBottomHelpText[2] = {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
+                QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
+                QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
+        }};
+        mBottomHelpText[3] = {QStaticText(i18nc("Mouse action", "Right-click:")),
+                              {QStaticText(i18n("Reset selection"))}};
+        mBottomHelpText[4] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
+    }
 }
 
 void QuickEditor::drawBottomHelpText(QPainter &painter)
@@ -517,8 +581,8 @@ void QuickEditor::drawBottomHelpText(QPainter &painter)
     painter.setRenderHint(QPainter::Antialiasing, true);
 
     int topOffset = mBottomHelpContentPos.y();
-    int i = 0;
-    for (const auto& item : mBottomHelpText) {
+    for (int i = 0; i < mbottomHelpLength; i++) {
+        const auto& item = mBottomHelpText[i];
         const auto& left = item.first;
         const auto& right = item.second;
         const auto leftSize = left.size().toSize();
@@ -528,7 +592,7 @@ void QuickEditor::drawBottomHelpText(QPainter &painter)
             painter.drawStaticText(mBottomHelpGridLeftWidth + bottomHelpBoxPairSpacing, topOffset, item);
             topOffset += rightItemSize.height();
         }
-        if (++i != bottomHelpLength) {
+        if (i != bottomHelpMaxLength) {
             topOffset += bottomHelpBoxMarginBottom;
         }
     }

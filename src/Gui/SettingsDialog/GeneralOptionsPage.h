@@ -50,6 +50,7 @@ class GeneralOptionsPage : public SettingsPage
     QRadioButton* mRememberUntilClosed;
     QCheckBox *mUseLightBackground;
     QCheckBox *mShowMagnifier;
+    QCheckBox *mReleaseToCapture;
 };
 
 #endif // GENERALOPTIONSPAGE_H

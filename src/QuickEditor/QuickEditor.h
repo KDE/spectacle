@@ -75,6 +75,7 @@ private:
     void drawMagnifier(QPainter& painter);
     void drawMidHelpText(QPainter& painter);
     void drawSelectionSizeTooltip(QPainter& painter);
+    void setBottomHelpText();
     void layoutBottomHelpText();
     void setMouseCursor(const QPointF& pos);
     MouseState mouseLocation(const QPointF& pos);
@@ -88,7 +89,7 @@ private:
     static const int selectionBoxPaddingY;
     static const int selectionBoxMarginY;
 
-    static const int bottomHelpLength = 5;
+    static const int bottomHelpMaxLength = 6;
     static bool bottomHelpTextPrepared;
     static const int bottomHelpBoxPaddingX;
     static const int bottomHelpBoxPaddingY;
@@ -112,7 +113,7 @@ private:
     QPointF mInitialTopLeft;
     QString mMidHelpText;
     QFont mMidHelpTextFont;
-    std::pair<QStaticText, std::vector<QStaticText>> mBottomHelpText[bottomHelpLength];
+    std::pair<QStaticText, std::vector<QStaticText>> mBottomHelpText[bottomHelpMaxLength];
     QFont mBottomHelpTextFont;
     QRect mBottomHelpBorderBox;
     QPoint mBottomHelpContentPos;
@@ -124,7 +125,11 @@ private:
     bool mMagnifierAllowed;
     bool mShowMagnifier;
     bool mToggleMagnifier;
+    bool mReleaseToCapture;
+    bool mRememberRegion;
+    bool mDisableArrowKeys;
     QRect mPrimaryScreenGeo;
+    int mbottomHelpLength;
 
 Q_SIGNALS:
     void grabDone(const QPixmap &pixmap);
