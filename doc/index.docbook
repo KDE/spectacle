@@ -29,7 +29,7 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-02-23</date>
+        <date>2019-03-07</date>
         <releaseinfo>Applications 19.04</releaseinfo>
 
         <abstract>
@@ -276,6 +276,13 @@
                     <listitem>
                         <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
                         text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>Accept on click-and-release</guilabel></term>
+                    <listitem>
+                        <para>If checked, accept the selected region as soon as the mouse button is released in the <guilabel>Rectangular Region</guilabel> mode.</para>
+                        <para>When selecting a new region, without a previously saved region available, clicking, dragging, and releasing the mouse button should immediately capture the selected region. When a previously saved region is shown, the saved region can be manipulated further and saving this region requires manual confirmation (&Enter; or double click with the &LMB;). Clicking and dragging outside of the previously saved region captures the newly selected region immediately.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
