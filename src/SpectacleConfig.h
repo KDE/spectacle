@@ -111,6 +111,9 @@ class SpectacleConfig : public QObject
     bool useLightRegionMaskColour() const;
     void setUseLightRegionMaskColour(bool enabled);
 
+    int compressionQuality() const;
+    void setCompressionQuality(int value);
+
     SaveMode lastUsedSaveMode() const;
     void setLastUsedSaveMode(SaveMode mode);
 

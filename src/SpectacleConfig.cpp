@@ -256,6 +256,19 @@ void SpectacleConfig::setUseLightRegionMaskColour(bool enabled)
     mGuiConfig.sync();
 }
 
+// compression quality setting
+
+int SpectacleConfig::compressionQuality() const
+{
+    return mGuiConfig.readEntry(QStringLiteral("compressionQuality"), 90);
+}
+
+void SpectacleConfig::setCompressionQuality(int value)
+{
+    mGuiConfig.writeEntry(QStringLiteral("compressionQuality"), value);
+    mGuiConfig.sync();
+}
+
 // last used save mode
 
 SaveMode SpectacleConfig::lastUsedSaveMode() const

@@ -27,6 +27,7 @@ class QLineEdit;
 class QComboBox;
 class KUrlRequester;
 class QCheckBox;
+class QSlider;
 
 class SaveOptionsPage : public SettingsPage
 {
@@ -47,12 +48,11 @@ class SaveOptionsPage : public SettingsPage
 
     private:
 
-    QDialogButtonBox *mDialogButtonBox;
     QLineEdit        *mSaveNameFormat;
     KUrlRequester    *mUrlRequester;
     QComboBox        *mSaveImageFormat;
     QCheckBox        *mCopyPathToClipboard;
-
+    QSlider          *mQualitySlider;
 };
 
 #endif // SAVEOPTIONSPAGE_H

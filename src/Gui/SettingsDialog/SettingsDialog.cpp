@@ -33,7 +33,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     // set up window options and geometry
     setWindowTitle(i18nc("@title:window", "Configure"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    resize(530, 470);
+    resize(600, 550);
 
     // init all pages
     QMetaObject::invokeMethod(this, "initPages", Qt::QueuedConnection);

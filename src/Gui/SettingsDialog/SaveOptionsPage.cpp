@@ -53,6 +53,40 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
+    // Compression quality slider and current value display
+    QHBoxLayout *sliderHorizLayout = new QHBoxLayout();
+    QVBoxLayout *sliderVertLayout = new QVBoxLayout();
+
+    // Current value
+    QLabel *qualityValue = new QLabel();
+    qualityValue->setNum(SpectacleConfig::instance()->compressionQuality());
+    qualityValue->setMinimumWidth(qualityValue->fontInfo().pointSize()*3);
+
+    // Slider
+    mQualitySlider = new QSlider(Qt::Horizontal);
+    mQualitySlider->setRange(0, 100);
+    mQualitySlider->setTickInterval(5);
+    mQualitySlider->setSliderPosition(SpectacleConfig::instance()->compressionQuality());
+    mQualitySlider->setTickPosition(QSlider::TicksBelow);
+    mQualitySlider->setTracking(true);
+    connect(mQualitySlider, &QSlider::valueChanged, [=](int value) {
+        qualityValue->setNum(value);
+        markDirty();
+    });
+
+    sliderHorizLayout->addWidget(mQualitySlider);
+    sliderHorizLayout->addWidget(qualityValue);
+
+    sliderVertLayout->addLayout(sliderHorizLayout);
+
+    QLabel *qualitySliderDescription = new QLabel();
+    qualitySliderDescription->setText(i18n("Choose the image quality when saving with lossy image formats like JPEG"));
+
+    sliderVertLayout->addWidget(qualitySliderDescription);
+
+    mainLayout->addRow(i18n("Compression Quality:"), sliderVertLayout);
+
+    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // filename chooser and instructional text
     QVBoxLayout *saveNameLayout = new QVBoxLayout;
@@ -142,6 +176,7 @@ void SaveOptionsPage::saveChanges()
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
     cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
     cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
+    cfgManager->setCompressionQuality(mQualitySlider->value());
 
     // done
 
@@ -159,6 +194,7 @@ void SaveOptionsPage::resetChanges()
     mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
     mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->defaultSaveLocation()));
     mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
+    mQualitySlider->setSliderPosition(cfgManager->compressionQuality());
 
     // read in the save image format and calculate its index
 

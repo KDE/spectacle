@@ -280,6 +280,7 @@ QString ExportManager::makeSaveMimetype(const QUrl &url)
 bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
+    imageWriter.setQuality(SpectacleConfig::instance()->compressionQuality());
     if (!(imageWriter.canWrite())) {
         emit errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
