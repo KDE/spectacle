@@ -29,7 +29,7 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-03-07</date>
+        <date>2019-03-08</date>
         <releaseinfo>Applications 19.04</releaseinfo>
 
         <abstract>
@@ -322,7 +322,13 @@
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><guilabel>Default Save Filename</guilabel></term>
+                    <term><guilabel>Compression Quality</guilabel></term>
+                    <listitem>
+                        <para>Choose the image quality when saving with lossy image formats like JPEG. The higher values give better quality but increase the file size. See <ulink url="https://en.wikipedia.org/wiki/Image_file_formats">Wikipedia page</ulink> for the details on the image formats that are used in &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>Filename</guilabel></term>
                     <listitem>
                         <para>Set a default filename for saved screenshots.</para>
                         <para>You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:</para>
