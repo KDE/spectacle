@@ -42,14 +42,15 @@
 #include <QTimer>
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
-               qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
+               qint64 delayMsec, bool notifyOnGrab, bool copyToClipboard, QObject *parent) :
     QObject(parent),
     mExportManager(ExportManager::instance()),
     mStartMode(startMode),
     mNotify(notifyOnGrab),
     mImageGrabber(nullptr),
     mMainWindow(nullptr),
-    isGuiInited(false)
+    isGuiInited(false),
+    mClipboard(copyToClipboard)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
@@ -217,9 +218,13 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
                 connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
             }
 
-            QUrl savePath = (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
+            if (mClipboard) {
+                mExportManager->doCopyToClipboard();
+            } else {
+                QUrl savePath = (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
                     mFileNameUrl : QUrl();
-            mExportManager->doSave(savePath);
+                mExportManager->doSave(savePath);
+	    }
 
             // if we notify, we emit allDone only if the user either dismissed the notification or pressed
             // the "Open" button, otherwise the app closes before it can react to it.
