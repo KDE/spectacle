@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QIODevice>
+#include <QMap>
 #include <QPrinter>
 #include <QPixmap>
 #include <QDateTime>
@@ -66,6 +67,8 @@ class ExportManager : public QObject
     QString windowTitle() const;
     ImageGrabber::GrabMode grabMode() const;
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
+
+    static const QMap<QString, QString> filenamePlaceholders;
 
     Q_SIGNALS:
 

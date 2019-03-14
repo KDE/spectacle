@@ -20,6 +20,7 @@
 #include "SaveOptionsPage.h"
 
 #include "SpectacleConfig.h"
+#include "ExportManager.h"
 
 #include <KIOWidgets/KUrlRequester>
 #include <KLocalizedString>
@@ -123,35 +124,23 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     saveNameLayout->addLayout(saveFieldLayout);
 
     // now the save filename format layout
-    const QString helpText = i18nc("%1 is the default filename of a screenshot",
-        "<p>You can use the following placeholders in the filename, which will be replaced "
-        "with actual text when the file is saved:</p>"
-
-        "<blockquote>"
-            "<b>%Y</b>: Year (4 digit)<br />"
-            "<b>%y</b>: Year (2 digit)<br />"
-            "<b>%M</b>: Month<br />"
-            "<b>%D</b>: Day<br />"
-            "<b>%H</b>: Hour<br />"
-            "<b>%m</b>: Minute<br />"
-            "<b>%S</b>: Second<br />"
-            "<b>%T</b>: Window title<br />"
-            "<b>%d</b>: Sequential numbering<br />"
-            "<b>%Nd</b>: Sequential numbering, padded out to N digits"
-        "</blockquote>"
-
-        "<p>To save to a sub-folder, use slashes, e.g.:</p>"
-
-        "<blockquote>"
-            "<b>%Y</b>/<b>%M</b>/%1"
-        "</blockquote>",
-        SpectacleConfig::instance()->defaultFilename() + SpectacleConfig::instance()->defaultTimestampTemplate()
+    QString helpText = i18n(
+        "You can use the following placeholders in the filename, which will be replaced "
+        "with actual text when the file is saved:<blockquote>"
     );
-
+    for (auto option = ExportManager::filenamePlaceholders.cbegin();
+         option != ExportManager::filenamePlaceholders.cend(); ++option) {
+        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value());
+    }
+    helpText += QStringLiteral("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
+    helpText += QStringLiteral("</blockquote>");
     QLabel *fmtHelpText = new QLabel(helpText, this);
     fmtHelpText->setWordWrap(true);
     fmtHelpText->setTextFormat(Qt::RichText);
     fmtHelpText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
+    connect(fmtHelpText, &QLabel::linkActivated, [this](const QString& placeholder) {
+        mSaveNameFormat->insert(placeholder);
+    });
     saveNameLayout->addWidget(fmtHelpText);
     mainLayout->addRow(i18n("Filename:"), saveNameLayout);
 
