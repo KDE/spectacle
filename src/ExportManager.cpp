@@ -189,7 +189,7 @@ QString ExportManager::makeAutosaveFilename()
     paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
     QRegularExpressionMatch paddingMatch;
                              
-    if (result.indexOf(paddingRE, 0, &paddingMatch) > -1) {
+    while (result.indexOf(paddingRE, 0, &paddingMatch) > -1) {
         int highestFileNumber = 0;
 
         // determine padding value
