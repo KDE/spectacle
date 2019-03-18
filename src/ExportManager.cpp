@@ -158,8 +158,13 @@ QString ExportManager::truncatedFilename(QString const &filename)
 
 QString ExportManager::makeAutosaveFilename()
 {
+    return formatFilename(SpectacleConfig::instance()->autoSaveFilenameFormat());
+}
+
+QString ExportManager::formatFilename(const QString &nameTemplate)
+{
     const QDateTime timestamp = mPixmapTimestamp;
-    QString baseName = SpectacleConfig::instance()->autoSaveFilenameFormat();
+    QString baseName = nameTemplate;
     const QString baseDir = defaultSaveLocation();
     QString title;
 

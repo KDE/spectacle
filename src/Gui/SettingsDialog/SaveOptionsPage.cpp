@@ -89,9 +89,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-    // filename chooser and instructional text
-    QVBoxLayout *saveNameLayout = new QVBoxLayout;
-
     // filename chooser text field
     QHBoxLayout *saveFieldLayout = new QHBoxLayout;
     mSaveNameFormat = new QLineEdit;
@@ -108,6 +105,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
             }
         }
     });
+    connect(mSaveNameFormat, &QLineEdit::textChanged,this, &SaveOptionsPage::updateFilenamePreview);
     mSaveNameFormat->setPlaceholderText(QStringLiteral("%d"));
     saveFieldLayout->addWidget(mSaveNameFormat);
 
@@ -120,9 +118,12 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         return items;
     }());
     connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::markDirty);
+    connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
     saveFieldLayout->addWidget(mSaveImageFormat);
-    saveNameLayout->addLayout(saveFieldLayout);
+    mainLayout->addRow(i18n("Filename:"), saveFieldLayout);
 
+    mPreviewLabel = new QLabel(this);
+    mainLayout->addRow(i18nc("Preview of the user configured filename", "Preview:"), mPreviewLabel);
     // now the save filename format layout
     QString helpText = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
@@ -141,8 +142,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     connect(fmtHelpText, &QLabel::linkActivated, [this](const QString& placeholder) {
         mSaveNameFormat->insert(placeholder);
     });
-    saveNameLayout->addWidget(fmtHelpText);
-    mainLayout->addRow(i18n("Filename:"), saveNameLayout);
+    mainLayout->addWidget(fmtHelpText);
 
     // read in the data
     resetChanges();
@@ -197,4 +197,24 @@ void SaveOptionsPage::resetChanges()
     // done
 
     mChangesMade = false;
+}
+
+void SaveOptionsPage::updateFilenamePreview()
+{
+    ExportManager *exportManager = ExportManager::instance();
+    exportManager->setWindowTitle(QStringLiteral("Spectacle"));
+    using GrabMode = ImageGrabber::GrabMode;
+    GrabMode oldMode = exportManager->grabMode();
+    /* If the grabMode is not one of those below we need to change it to have the placeholder
+     * replaced by the window title */
+    bool changeAndRestoreGrabMode = !(oldMode == GrabMode::ActiveWindow
+        || oldMode == GrabMode::TransientWithParent || oldMode == GrabMode::WindowUnderCursor);
+    if (changeAndRestoreGrabMode) {
+       exportManager->setGrabMode(GrabMode::ActiveWindow);
+    }
+    const QString filename = exportManager->formatFilename(mSaveNameFormat->text());
+    mPreviewLabel->setText(xi18nc("@info", "<filename>%1.%2</filename>", filename, mSaveImageFormat->currentText().toLower()));
+    if (changeAndRestoreGrabMode) {
+        exportManager->setGrabMode(oldMode);
+    }
 }
