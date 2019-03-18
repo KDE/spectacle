@@ -28,6 +28,7 @@ class QComboBox;
 class KUrlRequester;
 class QCheckBox;
 class QSlider;
+class QLabel;
 
 class SaveOptionsPage : public SettingsPage
 {
@@ -48,11 +49,14 @@ class SaveOptionsPage : public SettingsPage
 
     private:
 
+    void updateFilenamePreview();
+
     QLineEdit        *mSaveNameFormat;
     KUrlRequester    *mUrlRequester;
     QComboBox        *mSaveImageFormat;
     QCheckBox        *mCopyPathToClipboard;
     QSlider          *mQualitySlider;
+    QLabel           *mPreviewLabel;
 };
 
 #endif // SAVEOPTIONSPAGE_H
