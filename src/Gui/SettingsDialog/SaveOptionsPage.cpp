@@ -131,7 +131,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     );
     for (auto option = ExportManager::filenamePlaceholders.cbegin();
          option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value());
+        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(
+                option.key(),
+                i18nc("A placeholder in the user configurable filename will replaced by the specified value", option.value()));
     }
     helpText += QStringLiteral("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
     helpText += QStringLiteral("</blockquote>");
