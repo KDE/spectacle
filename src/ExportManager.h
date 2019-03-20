@@ -68,7 +68,7 @@ class ExportManager : public QObject
     ImageGrabber::GrabMode grabMode() const;
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
 
-    static const QMap<QString, QString> filenamePlaceholders;
+    static const QMap<QString, const char*> filenamePlaceholders;
 
     Q_SIGNALS:
 
