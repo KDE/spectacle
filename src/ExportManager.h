@@ -28,6 +28,8 @@
 #include <QDateTime>
 #include <QUrl>
 
+#include <KLocalizedString>
+
 #include "PlatformBackends/ImageGrabber.h"
 
 class QTemporaryDir;
@@ -69,7 +71,7 @@ class ExportManager : public QObject
     void setGrabMode(const ImageGrabber::GrabMode &grabMode);
     QString formatFilename(const QString &nameTemplate);
 
-    static const QMap<QString, const char*> filenamePlaceholders;
+    static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
     Q_SIGNALS:
 

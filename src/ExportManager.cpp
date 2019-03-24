@@ -32,7 +32,6 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
-#include <KLocalizedString>
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KIO/ListJob>
@@ -519,35 +518,35 @@ void ExportManager::doPrint(QPrinter *printer)
     return;
 }
 
-const QMap<QString, const char*> ExportManager::filenamePlaceholders {
-    {QStringLiteral("%Y"), I18N_NOOP2(
+const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders {
+    {QStringLiteral("%Y"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Year (4 digit)")},
-    {QStringLiteral("%y"), I18N_NOOP2(
+    {QStringLiteral("%y"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Year (2 digit)")},
-    {QStringLiteral("%M"), I18N_NOOP2(
+    {QStringLiteral("%M"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Month")},
-    {QStringLiteral("%D"), I18N_NOOP2(
+    {QStringLiteral("%D"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Day")},
-    {QStringLiteral("%H"), I18N_NOOP2(
+    {QStringLiteral("%H"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Hour")},
-    {QStringLiteral("%m"), I18N_NOOP2(
+    {QStringLiteral("%m"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Minute")},
-    {QStringLiteral("%S"), I18N_NOOP2(
+    {QStringLiteral("%S"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Second")},
-    {QStringLiteral("%T"), I18N_NOOP2(
+    {QStringLiteral("%T"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Window Title")},
-    {QStringLiteral("%d"), I18N_NOOP2(
+    {QStringLiteral("%d"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Sequential numbering")},
-    {QStringLiteral("%Nd"), I18N_NOOP2(
+    {QStringLiteral("%Nd"), ki18nc(
             "A placeholder in the user configurable filename will replaced by the specified value",
             "Sequential numbering, padded out to N digits")},
 };
