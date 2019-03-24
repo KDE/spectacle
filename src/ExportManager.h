@@ -63,6 +63,7 @@ class ExportManager : public QObject
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
     void updatePixmapTimestamp();
+    void setTimestamp(const QDateTime &timestamp);
     void setWindowTitle(const QString &windowTitle);
     QString windowTitle() const;
     ImageGrabber::GrabMode grabMode() const;

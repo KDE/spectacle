@@ -109,6 +109,11 @@ void ExportManager::updatePixmapTimestamp()
 	mPixmapTimestamp = QDateTime::currentDateTime();
 }
 
+void ExportManager::setTimestamp(const QDateTime &timestamp)
+{
+    mPixmapTimestamp = timestamp;
+}
+
 // native file save helpers
 
 QString ExportManager::defaultSaveLocation() const
