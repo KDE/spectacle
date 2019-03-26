@@ -42,14 +42,15 @@
 #include <QTimer>
 
 SpectacleCore::SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
-               qint64 delayMsec, bool notifyOnGrab, QObject *parent) :
+               qint64 delayMsec, bool notifyOnGrab, bool copyToClipboard, QObject *parent) :
     QObject(parent),
     mExportManager(ExportManager::instance()),
     mStartMode(startMode),
     mNotify(notifyOnGrab),
     mImageGrabber(nullptr),
     mMainWindow(nullptr),
-    isGuiInited(false)
+    isGuiInited(false),
+    copyToClipboard(copyToClipboard)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
@@ -217,9 +218,13 @@ void SpectacleCore::screenshotUpdated(const QPixmap &pixmap)
                 connect(mExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
             }
 
-            QUrl savePath = (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
+            if (copyToClipboard) {
+                mExportManager->doCopyToClipboard(mNotify);
+            } else {
+                QUrl savePath = (mStartMode == BackgroundMode && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
                     mFileNameUrl : QUrl();
-            mExportManager->doSave(savePath);
+                mExportManager->doSave(savePath);
+            }
 
             // if we notify, we emit allDone only if the user either dismissed the notification or pressed
             // the "Open" button, otherwise the app closes before it can react to it.
@@ -278,15 +283,19 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
 
     const QString &path = savedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
 
-    // a speaking message is prettier than a URL, special case for the default pictures location
-    if (path == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+    // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
+    if (copyToClipboard) {
+        notify->setText(i18n("A screenshot was saved to your clipboard."));
+    } else if (path == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         notify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", savedAt.fileName()));
     } else {
         notify->setText(i18n("A screenshot was saved as '%1' to '%2'.", savedAt.fileName(), path));
     }
 
-    notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
-    notify->setUrls({savedAt});
+    if (!copyToClipboard) {
+        notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
+        notify->setUrls({savedAt});
+    }
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);

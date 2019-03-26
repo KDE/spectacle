@@ -389,7 +389,8 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
 
 void KSMainWindow::sendToClipboard()
 {
-    ExportManager::instance()->doCopyToClipboard();
+    bool notify = false;
+    ExportManager::instance()->doCopyToClipboard(notify);
 
     SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()
             ? quit()

@@ -31,6 +31,8 @@
 #include <QBuffer>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QMimeData>
+#include <QString>
 
 #include <KSharedConfig>
 #include <KConfigGroup>
@@ -491,9 +493,16 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 
 // misc helpers
 
-void ExportManager::doCopyToClipboard()
+void ExportManager::doCopyToClipboard(bool notify)
 {
-    QApplication::clipboard()->setPixmap(mSavePixmap, QClipboard::Clipboard);
+    auto data = new QMimeData();
+    data->setImageData(mSavePixmap.toImage());
+    data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+    QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
+
+    if (notify) {
+        emit forceNotify(QUrl());
+    }
 }
 
 void ExportManager::doPrint(QPrinter *printer)
