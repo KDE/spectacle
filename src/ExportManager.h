@@ -88,7 +88,7 @@ class ExportManager : public QObject
 
     void doSave(const QUrl &url = QUrl(), bool notify = false);
     bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
-    void doCopyToClipboard();
+    void doCopyToClipboard(bool notify);
     void doPrint(QPrinter *printer);
 
     private:
