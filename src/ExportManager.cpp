@@ -493,7 +493,10 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 
 void ExportManager::doCopyToClipboard()
 {
-    QApplication::clipboard()->setPixmap(mSavePixmap, QClipboard::Clipboard);
+    auto data = new QMimeData();
+    data->setImageData(mSavePixmap.toImage());
+    data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+    QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
 }
 
 void ExportManager::doPrint(QPrinter *printer)
