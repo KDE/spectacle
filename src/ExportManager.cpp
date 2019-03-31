@@ -20,6 +20,7 @@
 #include "ExportManager.h"
 
 #include <QDir>
+#include <QMimeData>
 #include <QMimeDatabase>
 #include <QImageWriter>
 #include <QTemporaryDir>
