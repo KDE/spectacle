@@ -293,14 +293,17 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
     }
 
     if (!copyToClipboard) {
-        notify->setActions({i18nc("Open the screenshot we just saved", "Open")});
         notify->setUrls({savedAt});
+
+        notify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
+        connect(notify, QOverload<uint>::of(&KNotification::activated), this, [this, savedAt](uint index) {
+            if (index == 0) {
+                new KRun(savedAt, nullptr);
+                QTimer::singleShot(250, this, &SpectacleCore::allDone);
+            }
+        });
     }
 
-    connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
-        new KRun(savedAt, nullptr);
-        QTimer::singleShot(250, this, &SpectacleCore::allDone);
-    });
     connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
 
     notify->sendEvent();
