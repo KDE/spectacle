@@ -1,39 +1,21 @@
-# C++ objects and libs
-
-*.slo
-*.lo
-*.o
-*.a
-*.la
-*.lai
-*.so
-*.dll
-*.dylib
-
-# Qt-es
-
-/.qmake.cache
-/.qmake.stash
-*.pro.user
-*.pro.user.*
-*.qbs.user
-*.qbs.user.*
+# Ignore the following files
+*~
+*.[oa]
+*.diff
+*.kate-swp
+*.kdev4
+.kdev_include_paths
+*.kdevelop.pcs
 *.moc
-moc_*.cpp
-qrc_*.cpp
-ui_*.h
-Makefile*
-*-build-*
-
-# QtCreator CMake
-
-*CMakeLists.txt.user
-
-# QtCreator
-
-*.autosave
-
-#QtCtreator Qml
-
-*.qmlproject.user
-*.qmlproject.user.*
+*.moc.cpp
+*.orig
+*.user
+.*.swp
+.swp.*
+Doxyfile
+Makefile
+avail
+random_seed
+/build*/
+CMakeLists.txt.user*
+*.unc-backup*
