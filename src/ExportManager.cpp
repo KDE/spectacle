@@ -50,7 +50,7 @@ ExportManager::ExportManager(QObject *parent) :
     mTempFile(QUrl()),
     mTempDir(nullptr)
 {
-    connect(this, &ExportManager::imageSaved, [this](const QUrl &savedAt) {
+    connect(this, &ExportManager::imageSaved, [](const QUrl &savedAt) {
         SpectacleConfig::instance()->setLastSaveFile(savedAt);
     });
 }
