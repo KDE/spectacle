@@ -80,7 +80,7 @@ void ImageGrabber::setGrabMode(const GrabMode newGrabMode)
 
 void ImageGrabber::doOnClickGrab()
 {
-    return doImageGrab();
+    doImageGrab();
 }
 
 void ImageGrabber::doImageGrab()
