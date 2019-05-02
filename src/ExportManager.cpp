@@ -370,7 +370,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
     return false;
 }
 
-QUrl ExportManager::tempSave(const QString &mimetype)
+QUrl ExportManager::tempSave()
 {
     // if we already have a temp file saved, use that
     if (mTempFile.isValid()) {
@@ -388,6 +388,8 @@ QUrl ExportManager::tempSave(const QString &mimetype)
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
         const QString baseFileName = mTempDir->path() + QDir::separator() + makeAutosaveFilename();
+
+        QString mimetype = makeSaveMimetype(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, mimetype,
                                                        &ExportManager::isTempFileAlreadyUsed);
         QFile tmpFile(fileName);
