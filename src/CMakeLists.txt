@@ -37,7 +37,7 @@ if(XCB_FOUND)
     )
 endif()
 
-if(KF5Kipi_FOUND)
+if(KIPI_FOUND)
     set(
         SPECTACLE_SRCS_KIPI
             KipiInterface/KSGKipiInterface.cpp
@@ -63,10 +63,8 @@ add_executable(
 
 target_link_libraries(
     spectacle
-        Qt5::Concurrent
         Qt5::DBus
         Qt5::PrintSupport
-        Qt5::Quick
         KF5::CoreAddons
         KF5::DBusAddons
         KF5::WidgetsAddons
@@ -75,8 +73,6 @@ target_link_libraries(
         KF5::I18n
         KF5::KIOWidgets
         KF5::WindowSystem
-        KF5::XmlGui
-        KF5::Declarative
         KF5::NewStuff
 )
 
@@ -91,14 +87,14 @@ if(XCB_FOUND)
     )
 endif()
 
-if(KF5Kipi_FOUND)
+if(KIPI_FOUND)
     target_link_libraries (
         spectacle
             KF5::Kipi
     )
 endif()
 
-if(KDEExperimentalPurpose_FOUND)
+if(PURPOSE_FOUND)
     target_link_libraries (
         spectacle
             KF5::PurposeWidgets

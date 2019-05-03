@@ -1,5 +1,4 @@
 /*
- *  Copyright (C) 2016 Boudhayan Gupta <bgupta@kde.org>
  *  Copyright (C) 2018 Ambareesh "Amby" Balaji <ambareeshbalaji@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify

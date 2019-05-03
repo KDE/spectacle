@@ -37,11 +37,9 @@ include(ECMAddTests)
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
-        Concurrent
         Widgets
         DBus
         PrintSupport
-        Quick
         Test
 )
 
@@ -54,10 +52,8 @@ find_package(
         Config
         I18n
         KIO
-        XmlGui
         WindowSystem
         DocTools
-        Declarative
         NewStuff
 )
 
@@ -68,8 +64,8 @@ if (KF5Kipi_FOUND)
     set(KIPI_FOUND 1)
 endif ()
 
-find_package(KDEExperimentalPurpose)
-if (KDEExperimentalPurpose_FOUND)
+find_package(KF5Purpose)
+if (KF5Purpose_FOUND)
     set(PURPOSE_FOUND 1)
 endif()
 
