@@ -110,7 +110,7 @@ add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(doc)
-#add_subdirectory(tests)
+add_subdirectory(tests)
 
 install( FILES spectacle.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 # summaries

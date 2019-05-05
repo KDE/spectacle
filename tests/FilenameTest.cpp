@@ -3,14 +3,19 @@
 #include <QtTest>
 #include <QUuid>
 
+#include "SpectacleCommon.h"
 #include "ExportManager.h"
 
-class FilenameTest : public QObject
+class FilenameTest: public QObject
 {
     Q_OBJECT
-private:
-    ExportManager* em;
-private Q_SLOTS:
+
+    private:
+
+    ExportManager* mExportManager;
+
+    private Q_SLOTS:
+
     void initTestCase();
     void testStrings();
     void testDateTokens();
@@ -21,68 +26,69 @@ private Q_SLOTS:
 
 void FilenameTest::initTestCase()
 {
-    em = ExportManager::instance();
-    em->setTimestamp(QDateTime::fromString(QStringLiteral("2019-03-22T10:43:25"), Qt::ISODate));
-    em->setWindowTitle(QStringLiteral("Spectacle"));
+    mExportManager = ExportManager::instance();
+    mExportManager->setTimestamp(QDateTime::fromString(QStringLiteral("2019-03-22T10:43:25"), Qt::ISODate));
+    mExportManager->setWindowTitle(QStringLiteral("Spectacle"));
 }
 
 void FilenameTest::testStrings()
 {
-    QCOMPARE(em->formatFilename(QStringLiteral("Screenshot")), QStringLiteral("Screenshot"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("Screenshot")), QStringLiteral("Screenshot"));
     // empty string produces Screenshot per default
-    QCOMPARE(em->formatFilename(QStringLiteral("")), QStringLiteral("Screenshot"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("")), QStringLiteral("Screenshot"));
     // not a placeholder
-    QCOMPARE(em->formatFilename(QStringLiteral("%")), QStringLiteral("%"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%K")), QStringLiteral("%K"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%")), QStringLiteral("%"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%K")), QStringLiteral("%K"));
 }
 
 void FilenameTest::testDateTokens()
 {
-    QCOMPARE(em->formatFilename(QStringLiteral("%Y")), QStringLiteral("2019"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%y")), QStringLiteral("19"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%M")), QStringLiteral("03"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%D")), QStringLiteral("22"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%H")), QStringLiteral("10"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%m")), QStringLiteral("43"));
-    QCOMPARE(em->formatFilename(QStringLiteral("%S")), QStringLiteral("25"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%Y")), QStringLiteral("2019"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%y")), QStringLiteral("19"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%M")), QStringLiteral("03"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%D")), QStringLiteral("22"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%H")), QStringLiteral("10"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%m")), QStringLiteral("43"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%S")), QStringLiteral("25"));
 }
 
 void FilenameTest::testWindowTitle()
 {
-    em->setGrabMode(ImageGrabber::ActiveWindow);
-    QCOMPARE(em->formatFilename(QStringLiteral("%T")), QStringLiteral("Spectacle"));
-    QCOMPARE(em->formatFilename(QStringLiteral("Before%TAfter")),
+    mExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%T")), QStringLiteral("Spectacle"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("Before%TAfter")),
              QStringLiteral("BeforeSpectacleAfter"));
-    em->setGrabMode(ImageGrabber::FullScreen);
+    mExportManager->setCaptureMode(Spectacle::CaptureMode::AllScreens);
     //Empty String produces Screenshot
-    QCOMPARE(em->formatFilename(QStringLiteral("%T")), QStringLiteral("Screenshot"));
-    QCOMPARE(em->formatFilename(QStringLiteral("Before%TAfter")), QStringLiteral("BeforeAfter"));
-    QCOMPARE(em->formatFilename(QStringLiteral("Before_%T_After")), QStringLiteral("Before_After"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("%T")), QStringLiteral("Screenshot"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("Before%TAfter")), QStringLiteral("BeforeAfter"));
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("Before_%T_After")), QStringLiteral("Before_After"));
 }
 
 void FilenameTest::testNumbering()
 {
-    QString baseName = QStringLiteral("spectacle_test_")+ QUuid::createUuid().toString();
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%d")), baseName+QStringLiteral("_1"));
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%1d")), baseName+QStringLiteral("_1"));
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%2d")), baseName+QStringLiteral("_01"));
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%3d")), baseName+QStringLiteral("_001"));
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%4d")), baseName+QStringLiteral("_0001"));
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%d_%2d_%3d")),
-             baseName+QStringLiteral("_1_01_001"));
-    QFile file(QDir(em->defaultSaveLocation()).filePath(baseName + QStringLiteral("_1.png")));
-    file.open(QIODevice::WriteOnly);
-    QCOMPARE(em->formatFilename(baseName+QStringLiteral("_%d")), baseName+QStringLiteral("_2"));
-    file.remove();
+    QString lBaseName = QStringLiteral("spectacle_test_")+ QUuid::createUuid().toString();
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%d")),  lBaseName + QStringLiteral("_1"));
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%1d")), lBaseName + QStringLiteral("_1"));
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%2d")), lBaseName + QStringLiteral("_01"));
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%3d")), lBaseName + QStringLiteral("_001"));
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%4d")), lBaseName + QStringLiteral("_0001"));
+    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%d_%2d_%3d")),
+             lBaseName+QStringLiteral("_1_01_001"));
+
+    QFile lFile(QDir(mExportManager->defaultSaveLocation()).filePath(lBaseName + QStringLiteral("_1.png")));
+    lFile.open(QIODevice::WriteOnly);
+    QCOMPARE(mExportManager->formatFilename(lBaseName+QStringLiteral("_%d")), lBaseName+QStringLiteral("_2"));
+    lFile.remove();
 }
 
 void FilenameTest::testCombined()
 {
-    em->setGrabMode(ImageGrabber::ActiveWindow);
-    QCOMPARE(em->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")),
+    mExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")),
              QStringLiteral("App_Spectacle_Date_20190322_Time_10:43:25%F"));
-    em->setGrabMode(ImageGrabber::FullScreen);
-    QCOMPARE(em->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")),
+    mExportManager->setCaptureMode(Spectacle::CaptureMode::AllScreens);
+    QCOMPARE(mExportManager->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")),
              QStringLiteral("App_Date_20190322_Time_10:43:25%F"));
 }
 
