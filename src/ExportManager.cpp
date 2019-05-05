@@ -295,6 +295,15 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
     imageWriter.setQuality(SpectacleConfig::instance()->compressionQuality());
+    /** Set compression 50 if the format is png. Otherwise if no compression value is specified
+     *  it will fallback to using quality (QTBUG-43618) and produce huge files.
+     *  See also qpnghandler.cpp#n1075. The other formats that do compression seem to have it
+     *  enabled by default and only disabled if compression is set to 0, also any value except 0
+     *  has the same effect for them.
+     */
+    if (format == "png") {
+        imageWriter.setCompression(50);
+    }
     if (!(imageWriter.canWrite())) {
         emit errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
@@ -370,7 +379,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
     return false;
 }
 
-QUrl ExportManager::tempSave(const QString &mimetype)
+QUrl ExportManager::tempSave()
 {
     // if we already have a temp file saved, use that
     if (mTempFile.isValid()) {
@@ -388,6 +397,8 @@ QUrl ExportManager::tempSave(const QString &mimetype)
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
         const QString baseFileName = mTempDir->path() + QDir::separator() + makeAutosaveFilename();
+
+        QString mimetype = makeSaveMimetype(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, mimetype,
                                                        &ExportManager::isTempFileAlreadyUsed);
         QFile tmpFile(fileName);

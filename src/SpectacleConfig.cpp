@@ -260,7 +260,7 @@ void SpectacleConfig::setUseLightRegionMaskColour(bool enabled)
 
 int SpectacleConfig::compressionQuality() const
 {
-    return mGuiConfig.readEntry(QStringLiteral("compressionQuality"), 89);
+    return mGuiConfig.readEntry(QStringLiteral("compressionQuality"), 90);
 }
 
 void SpectacleConfig::setCompressionQuality(int value)
