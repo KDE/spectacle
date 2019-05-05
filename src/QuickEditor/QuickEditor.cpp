@@ -44,7 +44,8 @@ const int QuickEditor::magZoom = 5;
 const int QuickEditor::magPixels = 16;
 const int QuickEditor::magOffset = 32;
 
-QuickEditor::QuickEditor(const QPixmap& pixmap) :
+QuickEditor::QuickEditor(const QPixmap& thePixmap, QWidget *parent) :
+    QWidget(parent),
     mMaskColor(QColor::fromRgbF(0, 0, 0, 0.15)),
     mStrokeColor(palette().highlight().color()),
     mCrossColor(QColor::fromRgbF(mStrokeColor.redF(), mStrokeColor.greenF(), mStrokeColor.blueF(), 0.7)),
@@ -60,7 +61,7 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     mBottomHelpTextFont(font()),
     mBottomHelpGridLeftWidth(0),
     mMouseDragState(MouseState::None),
-    mPixmap(pixmap),
+    mPixmap(thePixmap),
     mMagnifierAllowed(false),
     mShowMagnifier(SpectacleConfig::instance()->showMagnifierChecked()),
     mToggleMagnifier(false),
@@ -78,7 +79,6 @@ QuickEditor::QuickEditor(const QPixmap& pixmap) :
     setMouseTracking(true);
     setAttribute(Qt::WA_StaticContents);
     setWindowFlags(Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint);
-    show();
 
     dprI = 1.0 / devicePixelRatioF();
     setGeometry(0, 0, static_cast<int>(mPixmap.width() * dprI), static_cast<int>(mPixmap.height() * dprI));

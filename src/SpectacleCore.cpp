@@ -192,6 +192,23 @@ void SpectacleCore::showErrorMessage(const QString &theErrString)
 void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 {
     auto lExportManager = ExportManager::instance();
+
+    // if we were running in rectangular crop mode, now would be
+    // the time to further process the image
+
+    if (lExportManager->captureMode() == Spectacle::CaptureMode::RectangularRegion) {
+        if(!mQuickEditor) {
+            mQuickEditor = std::make_unique<QuickEditor>(thePixmap);
+            connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
+            connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotFailed);
+            mQuickEditor->showFullScreen();
+            return;
+        } else {
+            mQuickEditor->hide();
+            mQuickEditor.reset(nullptr);
+        }
+    }
+
     lExportManager->setPixmap(thePixmap);
     lExportManager->updatePixmapTimestamp();
 

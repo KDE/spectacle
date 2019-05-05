@@ -25,10 +25,13 @@
 
 #include "ExportManager.h"
 #include "Gui/KSMainWindow.h"
+#include "QuickEditor/QuickEditor.h"
 #include "Platforms/PlatformLoader.h"
 
 #include <memory>
+
 using MainWindowPtr = std::unique_ptr<KSMainWindow>;
+using EditorPtr     = std::unique_ptr<QuickEditor>;
 
 class SpectacleCore: public QObject
 {
@@ -83,6 +86,7 @@ class SpectacleCore: public QObject
     QUrl          mFileNameUrl;
     PlatformPtr   mPlatform;
     MainWindowPtr mMainWindow;
+    EditorPtr     mQuickEditor;
     bool          mIsGuiInited;
     bool          mCopyToClipboard;
 };

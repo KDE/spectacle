@@ -31,14 +31,17 @@
 
 class QMouseEvent;
 
-class QuickEditor : public QWidget
+class QuickEditor: public QWidget
 {
     Q_OBJECT
 
-public:
-    explicit QuickEditor(const QPixmap &pixmap);
+    public:
 
-private:
+    explicit QuickEditor(const QPixmap &thePixmap, QWidget *parent = nullptr);
+    virtual ~QuickEditor() = default;
+
+    private:
+
     enum MouseState : short {
         None = 0, // 0000
         Inside = 1 << 0, // 0001
@@ -130,8 +133,9 @@ private:
     QRect mPrimaryScreenGeo;
     int mbottomHelpLength;
 
-Q_SIGNALS:
-    void grabDone(const QPixmap &pixmap);
+    Q_SIGNALS:
+
+    void grabDone(const QPixmap &thePixmap);
     void grabCancelled();
 };
 
