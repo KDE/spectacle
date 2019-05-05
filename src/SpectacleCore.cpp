@@ -242,6 +242,11 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 
 void SpectacleCore::screenshotFailed()
 {
+    if (ExportManager::instance()->captureMode() == Spectacle::CaptureMode::RectangularRegion && mQuickEditor) {
+        mQuickEditor->hide();
+        mQuickEditor.reset(nullptr);
+    }
+
     switch (mStartMode) {
     case StartMode::Background:
         showErrorMessage(i18n("Screenshot capture canceled or failed"));
