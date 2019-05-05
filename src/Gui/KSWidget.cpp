@@ -24,8 +24,7 @@
 #include "SmartSpinBox.h"
 #include "SpectacleConfig.h"
 
-#include <KLocalizedString>
-
+#include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDebug>
@@ -35,39 +34,38 @@
 #include <QPushButton>
 #include <QShortcut>
 
+#include <KLocalizedString>
 
-KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidget *parent) :
+KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     QWidget(parent)
 {
     // get a handle to the configuration manager
-
-    SpectacleConfig *configManager = SpectacleConfig::instance();
+    SpectacleConfig *lConfigMgr = SpectacleConfig::instance();
 
     // we'll init the widget that holds the image first
-
     mImageWidget = new KSImageWidget(this);
     mImageWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     connect(mImageWidget, &KSImageWidget::dragInitiated, this, &KSWidget::dragInitiated);
 
     // the capture mode options first
-
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
-
     mCaptureArea = new QComboBox(this);
-    QString fullScreenLabel = QApplication::screens().count() == 1
+    QString lFullScreenLabel = QApplication::screens().count() == 1
             ? i18n("Full Screen")
             : i18n("Full Screen (All Monitors)");
 
-    if (supportedModes.contains(ImageGrabber::FullScreen))
-        mCaptureArea->insertItem(1, fullScreenLabel, ImageGrabber::FullScreen);
-    if (supportedModes.contains(ImageGrabber::CurrentScreen))
-        mCaptureArea->insertItem(2, i18n("Current Screen"), ImageGrabber::CurrentScreen);
-    if (supportedModes.contains(ImageGrabber::ActiveWindow))
-        mCaptureArea->insertItem(3, i18n("Active Window"), ImageGrabber::ActiveWindow);
-    if (supportedModes.contains(ImageGrabber::WindowUnderCursor))
-        mCaptureArea->insertItem(4, i18n("Window Under Cursor"), ImageGrabber::WindowUnderCursor);
-    if (supportedModes.contains(ImageGrabber::RectangularRegion))
-        mCaptureArea->insertItem(5, i18n("Rectangular Region"), ImageGrabber::RectangularRegion);
+    if (theGrabModes.testFlag(Platform::GrabMode::AllScreens))
+        mCaptureArea->insertItem(1, lFullScreenLabel, Spectacle::CaptureMode::AllScreens);
+    if (theGrabModes.testFlag(Platform::GrabMode::CurrentScreen))
+        mCaptureArea->insertItem(2, i18n("Current Screen"), Spectacle::CaptureMode::CurrentScreen);
+    if (theGrabModes.testFlag(Platform::GrabMode::ActiveWindow))
+        mCaptureArea->insertItem(3, i18n("Active Window"), Spectacle::CaptureMode::ActiveWindow);
+    if (theGrabModes.testFlag(Platform::GrabMode::WindowUnderCursor))
+        mCaptureArea->insertItem(4, i18n("Window Under Cursor"), Spectacle::CaptureMode::WindowUnderCursor);
+    if (theGrabModes.testFlag(Platform::GrabMode::TransientWithParent)) {
+        mTransientWithParentAvailable = true;
+    }
+    mCaptureArea->insertItem(5, i18n("Rectangular Region"), Spectacle::CaptureMode::RectangularRegion);
     mCaptureArea->setMinimumWidth(240);
     connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
@@ -79,12 +77,12 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     mDelayMsec->setSpecialValueText(i18n("No Delay"));
     mDelayMsec->setMinimumWidth(160);
     connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
-            configManager, &SpectacleConfig::setCaptureDelay);
+            lConfigMgr, &SpectacleConfig::setCaptureDelay);
 
     mCaptureOnClick = new QCheckBox(i18n("On Click"), this);
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
-    connect(mCaptureOnClick, &QCheckBox::clicked, configManager, &SpectacleConfig::setOnClickChecked);
+    connect(mCaptureOnClick, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setOnClickChecked);
 
     mDelayLayout = new QHBoxLayout;
     mDelayLayout->addWidget(mDelayMsec);
@@ -96,28 +94,27 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     mCaptureModeForm->setContentsMargins(24, 0, 0, 0);
 
     // options (mouse pointer, window decorations, quit after saving or copying)
-
     mContentOptionsLabel = new QLabel(this);
     mContentOptionsLabel->setText(i18n("<b>Options</b>"));
 
     mMousePointer = new QCheckBox(i18n("Include mouse pointer"), this);
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
-    connect(mMousePointer, &QCheckBox::clicked, configManager, &SpectacleConfig::setIncludePointerChecked);
+    connect(mMousePointer, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setIncludePointerChecked);
 
     mWindowDecorations = new QCheckBox(i18n("Include window titlebar and borders"), this);
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
-    connect(mWindowDecorations, &QCheckBox::clicked, configManager, &SpectacleConfig::setIncludeDecorationsChecked);
+    connect(mWindowDecorations, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setIncludeDecorationsChecked);
 
     mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
     mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
                                            "If disabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
-    connect(mCaptureTransientOnly, &QCheckBox::clicked, configManager, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
+    connect(mCaptureTransientOnly, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
     mQuitAfterSaveOrCopy = new QCheckBox(i18n("Quit after Save or Copy"), this);
     mQuitAfterSaveOrCopy->setToolTip(i18n("Quit Spectacle after saving or copying the image"));
-    connect(mQuitAfterSaveOrCopy, &QCheckBox::clicked, configManager, &SpectacleConfig::setQuitAfterSaveOrCopyChecked);
+    connect(mQuitAfterSaveOrCopy, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setQuitAfterSaveOrCopyChecked);
 
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);
@@ -127,7 +124,6 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     mContentOptionsForm->setContentsMargins(24, 0, 0, 0);
 
     // the take a new screenshot button
-
     mTakeScreenshotButton = new QPushButton(i18n("Take a New Screenshot"), this);
     mTakeScreenshotButton->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
     mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -140,7 +136,6 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     });
 
     // finally, finish up the layouts
-
     mRightLayout = new QVBoxLayout;
     mRightLayout->addStretch(1);
     mRightLayout->addWidget(mCaptureModeLabel);
@@ -159,44 +154,50 @@ KSWidget::KSWidget(const QVector<ImageGrabber::GrabMode>& supportedModes, QWidge
     mMainLayout->setColumnMinimumWidth(1, 320);
 
     // and read in the saved checkbox states and capture mode indices
-
-    mMousePointer->setChecked         (configManager->includePointerChecked());
-    mWindowDecorations->setChecked    (configManager->includeDecorationsChecked());
-    mCaptureOnClick->setChecked       (configManager->onClickChecked());
-    mCaptureTransientOnly->setChecked (configManager->captureTransientWindowOnlyChecked());
-    mQuitAfterSaveOrCopy->setChecked  (configManager->quitAfterSaveOrCopyChecked());
-    if (configManager->captureMode()>=0)
-        mCaptureArea->setCurrentIndex     (configManager->captureMode());
-    mDelayMsec->setValue              (configManager->captureDelay());
-
-    // done
+    mMousePointer->setChecked         (lConfigMgr->includePointerChecked());
+    mWindowDecorations->setChecked    (lConfigMgr->includeDecorationsChecked());
+    mCaptureOnClick->setChecked       (lConfigMgr->onClickChecked());
+    mCaptureTransientOnly->setChecked (lConfigMgr->captureTransientWindowOnlyChecked());
+    mQuitAfterSaveOrCopy->setChecked  (lConfigMgr->quitAfterSaveOrCopyChecked());
+    if (lConfigMgr->captureMode() >= 0) {
+        mCaptureArea->setCurrentIndex (lConfigMgr->captureMode());
+    }
+    mDelayMsec->setValue              (lConfigMgr->captureDelay());
 }
 
 int KSWidget::imagePaddingWidth() const
 {
-    int rightLayoutLeft = 0;
-    int rightLayoutRight = 0;
-    int mainLayoutRight = 0;
+    int lRightLayoutLeft  = 0;
+    int lRightLayoutRight = 0;
+    int lMainLayoutRight  = 0;
 
-    mRightLayout->getContentsMargins(&rightLayoutLeft, nullptr, &rightLayoutRight, nullptr);
-    mMainLayout->getContentsMargins(nullptr, nullptr, &mainLayoutRight, nullptr);
+    mRightLayout->getContentsMargins(&lRightLayoutLeft, nullptr, &lRightLayoutRight, nullptr);
+    mMainLayout->getContentsMargins(nullptr, nullptr, &lMainLayoutRight, nullptr);
 
-    int paddingWidth = (rightLayoutLeft + rightLayoutRight + mainLayoutRight);
-    paddingWidth += mRightLayout->contentsRect().width();
-    paddingWidth += 2 * SpectacleImage::SHADOW_RADIUS; // image drop shadow
+    int lPaddingWidth = (lRightLayoutLeft + lRightLayoutRight + lMainLayoutRight);
+    lPaddingWidth += mRightLayout->contentsRect().width();
+    lPaddingWidth += 2 * SpectacleImage::SHADOW_RADIUS; // image drop shadow
 
-    return paddingWidth;
+    return lPaddingWidth;
 }
 
 // public slots
 
-void KSWidget::setScreenshotPixmap(const QPixmap &pixmap)
+void KSWidget::setScreenshotPixmap(const QPixmap &thePixmap)
 {
-    mImageWidget->setScreenshot(pixmap);
+    mImageWidget->setScreenshot(thePixmap);
 }
 
-void KSWidget::disableOnClick()
+void KSWidget::lockOnClickEnabled()
 {
+    mCaptureOnClick->setCheckState(Qt::Checked);
+    mCaptureOnClick->setEnabled(false);
+    mDelayMsec->setEnabled(false);
+}
+
+void KSWidget::lockOnClickDisabled()
+{
+    mCaptureOnClick->setCheckState(Qt::Unchecked);
     mCaptureOnClick->setEnabled(false);
     mDelayMsec->setEnabled(true);
 }
@@ -205,46 +206,52 @@ void KSWidget::disableOnClick()
 
 void KSWidget::newScreenshotClicked()
 {
-    int delay = mCaptureOnClick->isChecked() ? -1 : (mDelayMsec->value() * 1000);
-    ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->currentData().toInt());
-    if (mode == ImageGrabber::WindowUnderCursor && !(mCaptureTransientOnly->isChecked())) {
-        mode = ImageGrabber::TransientWithParent;
+    int lDelay = mCaptureOnClick->isChecked() ? -1 : (mDelayMsec->value() * 1000);
+    auto lMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->currentData().toInt());
+    if (mTransientWithParentAvailable &&
+        lMode == Spectacle::CaptureMode::WindowUnderCursor &&
+        !(mCaptureTransientOnly->isChecked())) {
+        lMode = Spectacle::CaptureMode::TransientWithParent;
     }
-
-    emit newScreenshotRequest(mode, delay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
+    emit newScreenshotRequest(lMode, lDelay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
 }
 
-void KSWidget::onClickStateChanged(int state)
+void KSWidget::onClickStateChanged(int theState)
 {
-    if (state == Qt::Checked) {
+    if (theState == Qt::Checked) {
         mDelayMsec->setEnabled(false);
-    } else if (state == Qt::Unchecked) {
+    } else if (theState == Qt::Unchecked) {
         mDelayMsec->setEnabled(true);
     }
 }
 
-void KSWidget::captureModeChanged(int index)
+void KSWidget::captureModeChanged(int theIndex)
 {
-    SpectacleConfig::instance()->setCaptureMode(index);
+    SpectacleConfig::instance()->setCaptureMode(theIndex);
 
-    ImageGrabber::GrabMode mode = static_cast<ImageGrabber::GrabMode>(mCaptureArea->itemData(index).toInt());
-    switch (mode) {
-    case ImageGrabber::WindowUnderCursor:
+
+    Spectacle::CaptureMode lCaptureMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->itemData(theIndex).toInt());
+    switch(lCaptureMode) {
+    case Spectacle::CaptureMode::WindowUnderCursor:
         mWindowDecorations->setEnabled(true);
-        mCaptureTransientOnly->setEnabled(true);
+        if (mTransientWithParentAvailable) {
+            mCaptureTransientOnly->setEnabled(true);
+        } else {
+            mCaptureTransientOnly->setEnabled(false);
+        }
         break;
-    case ImageGrabber::ActiveWindow:
+    case Spectacle::CaptureMode::ActiveWindow:
         mWindowDecorations->setEnabled(true);
         mCaptureTransientOnly->setEnabled(false);
         break;
-    case ImageGrabber::FullScreen:
-    case ImageGrabber::CurrentScreen:
-    case ImageGrabber::RectangularRegion:
+    case Spectacle::CaptureMode::AllScreens:
+    case Spectacle::CaptureMode::CurrentScreen:
+    case Spectacle::CaptureMode::RectangularRegion:
         mWindowDecorations->setEnabled(false);
         mCaptureTransientOnly->setEnabled(false);
         break;
-    case ImageGrabber::TransientWithParent:
-    case ImageGrabber::InvalidChoice:
+    case Spectacle::CaptureMode::TransientWithParent:
+    case Spectacle::CaptureMode::InvalidChoice:
     default:
         qCWarning(SPECTACLE_GUI_LOG) << "Skipping invalid or unreachable enum value";
         break;

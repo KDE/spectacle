@@ -1,37 +1,29 @@
-/*
- *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
+/* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
 #include "KSMainWindow.h"
-
 #include "Config.h"
 #include "SettingsDialog/SettingsDialog.h"
 
-#include <KAboutData>
-#include <KGuiItem>
-#include <KHelpMenu>
-#include <KIO/OpenFileManagerWindowJob>
-#include <KLocalizedString>
-#include <KNS3/KMoreToolsMenuFactory>
-#include <KStandardAction>
-#include <KStandardGuiItem>
-#include <KWindowSystem>
-
+#include <QApplication>
 #include <QClipboard>
 #include <QDesktopServices>
 #include <QJsonArray>
@@ -39,19 +31,28 @@
 #include <QPushButton>
 #include <QTimer>
 #include <QVBoxLayout>
+
 #ifdef XCB_FOUND
 #include <QX11Info>
 #include <xcb/xcb.h>
 #endif
 
+#include <KAboutData>
+#include <KGuiItem>
+#include <KHelpMenu>
+#include <KIO/OpenFileManagerWindowJob>
+#include <KLocalizedString>
+#include <KStandardAction>
+#include <KStandardGuiItem>
+#include <KWindowSystem>
 
 static const int DEFAULT_WINDOW_HEIGHT = 420;
 static const int DEFAULT_WINDOW_WIDTH = 840;
 static const int MAXIMUM_WINDOW_WIDTH = 1000;
 
-KSMainWindow::KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes, bool onClickAvailable, QWidget *parent) :
+KSMainWindow::KSMainWindow(const Platform::GrabModes &theGrabModes, const Platform::ShutterModes &theShutterModes, QWidget *parent) :
     QDialog(parent),
-    mKSWidget(new KSWidget(supportedModes, this)),
+    mKSWidget(new KSWidget(theGrabModes, this)),
     mDivider(new QFrame(this)),
     mDialogButtonBox(new QDialogButtonBox(this)),
     mConfigureButton(new QToolButton(this)),
@@ -66,7 +67,7 @@ KSMainWindow::KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes
     mToolsMenu(new QMenu(this)),
     mScreenRecorderToolsMenu(new QMenu(this)),
     mExportMenu(new ExportMenu(this)),
-    mOnClickAvailable(onClickAvailable)
+    mShutterModes(theShutterModes)
 {
     // before we do anything, we need to set a window property
     // that skips the close/hide window animation on kwin. this
@@ -86,7 +87,6 @@ KSMainWindow::KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes
         }
 
         // do the xcb shenanigans
-
         xcb_connection_t *xcbConn = QX11Info::connection();
         const QByteArray effectName = QByteArrayLiteral("_KDE_NET_WM_SKIP_CLOSE_ANIMATION");
 
@@ -104,9 +104,6 @@ KSMainWindow::KSMainWindow(const QVector<ImageGrabber::GrabMode>& supportedModes
 
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
-
-KSMainWindow::~KSMainWindow()
-{}
 
 // GUI init
 
@@ -191,7 +188,6 @@ void KSMainWindow::init()
     connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) { QDesktopServices::openUrl(QUrl(str)); } );
 
     // layouts
-
     mDivider->setFrameShape(QFrame::HLine);
     mDivider->setLineWidth(2);
 
@@ -203,14 +199,14 @@ void KSMainWindow::init()
     mMessageWidget->hide();
 
     // populate our send-to actions
-
     mSendToButton->setMenu(mExportMenu);
     connect(mExportMenu, &ExportMenu::imageShared, this, &KSMainWindow::showImageSharedFeedback);
 
-    // disable onClick mode if not available on the platform
-
-    if (!mOnClickAvailable) {
-        mKSWidget->disableOnClick();
+    // lock down the onClick mode depending on available shutter modes
+    if (!mShutterModes.testFlag(Platform::ShutterMode::OnClick)) {
+        mKSWidget->lockOnClickDisabled();
+    } else if (!mShutterModes.testFlag(Platform::ShutterMode::Immediate)) {
+        mKSWidget->lockOnClickEnabled();
     }
     resize(QSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT).expandedTo(minimumSize()));
 
@@ -256,7 +252,7 @@ void KSMainWindow::setDefaultSaveAction()
 
 void KSMainWindow::moveEvent(QMoveEvent *event)
 {
-    Q_UNUSED(event);
+    Q_UNUSED(event)
 
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
@@ -267,11 +263,11 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 
 // slots
 
-void KSMainWindow::captureScreenshot(ImageGrabber::GrabMode mode, int timeout, bool includePointer, bool includeDecorations)
+void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations)
 {
     hide();
     mMessageWidget->hide();
-    emit newScreenshotRequest(mode, timeout, includePointer, includeDecorations);
+    emit newScreenshotRequest(theCaptureMode, theTimeout, theIncludePointer, theIncludeDecorations);
 }
 
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
@@ -361,8 +357,6 @@ void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidge
     case KMessageWidget::Information:
         mMessageWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")));
         break;
-    default:
-        ;
     }
 
     mMessageWidget->animatedShow();

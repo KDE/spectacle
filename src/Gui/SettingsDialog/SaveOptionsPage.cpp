@@ -19,6 +19,7 @@
 
 #include "SaveOptionsPage.h"
 
+#include "SpectacleCommon.h"
 #include "SpectacleConfig.h"
 #include "ExportManager.h"
 
@@ -202,20 +203,21 @@ void SaveOptionsPage::resetChanges()
 
 void SaveOptionsPage::updateFilenamePreview()
 {
-    ExportManager *exportManager = ExportManager::instance();
-    exportManager->setWindowTitle(QStringLiteral("Spectacle"));
-    using GrabMode = ImageGrabber::GrabMode;
-    GrabMode oldMode = exportManager->grabMode();
-    /* If the grabMode is not one of those below we need to change it to have the placeholder
-     * replaced by the window title */
-    bool changeAndRestoreGrabMode = !(oldMode == GrabMode::ActiveWindow
-        || oldMode == GrabMode::TransientWithParent || oldMode == GrabMode::WindowUnderCursor);
-    if (changeAndRestoreGrabMode) {
-       exportManager->setGrabMode(GrabMode::ActiveWindow);
+    auto lExportManager = ExportManager::instance();
+    lExportManager->setWindowTitle(QStringLiteral("Spectacle"));
+    Spectacle::CaptureMode lOldMode = lExportManager->captureMode();
+
+    // If the grabMode is not one of those below we need to change it to have the placeholder
+    // replaced by the window title
+    bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow ||
+                                      lOldMode == Spectacle::CaptureMode::TransientWithParent ||
+                                      lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
+    if (lSwitchGrabMode) {
+       lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
     }
-    const QString filename = exportManager->formatFilename(mSaveNameFormat->text());
-    mPreviewLabel->setText(xi18nc("@info", "<filename>%1.%2</filename>", filename, mSaveImageFormat->currentText().toLower()));
-    if (changeAndRestoreGrabMode) {
-        exportManager->setGrabMode(oldMode);
+    const QString lFileName = lExportManager->formatFilename(mSaveNameFormat->text());
+    mPreviewLabel->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, mSaveImageFormat->currentText().toLower()));
+    if (lSwitchGrabMode) {
+        lExportManager->setCaptureMode(lOldMode);
     }
 }

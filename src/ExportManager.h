@@ -1,24 +1,27 @@
-/*
- *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
+/* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef EXPORTMANAGER_H
-#define EXPORTMANAGER_H
+#pragma once
+
+#include <SpectacleCommon.h>
 
 #include <QObject>
 #include <QIODevice>
@@ -27,14 +30,11 @@
 #include <QPixmap>
 #include <QDateTime>
 #include <QUrl>
-
 #include <KLocalizedString>
-
-#include "PlatformBackends/ImageGrabber.h"
 
 class QTemporaryDir;
 
-class ExportManager : public QObject
+class ExportManager: public QObject
 {
     Q_OBJECT
 
@@ -56,20 +56,15 @@ class ExportManager : public QObject
 
     public:
 
-    Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap NOTIFY pixmapChanged)
-    Q_PROPERTY(QString windowTitle READ windowTitle WRITE setWindowTitle)
-    Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode)
-
     QString defaultSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
     void updatePixmapTimestamp();
     void setTimestamp(const QDateTime &timestamp);
-    void setWindowTitle(const QString &windowTitle);
     QString windowTitle() const;
-    ImageGrabber::GrabMode grabMode() const;
-    void setGrabMode(const ImageGrabber::GrabMode &grabMode);
+    Spectacle::CaptureMode captureMode() const;
+    void setCaptureMode(const Spectacle::CaptureMode &theCaptureMode);
     QString formatFilename(const QString &nameTemplate);
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
@@ -86,6 +81,7 @@ class ExportManager : public QObject
     QUrl getAutosaveFilename();
     QUrl tempSave(const QString &mimetype = QStringLiteral("png"));
 
+    void setWindowTitle(const QString &windowTitle);
     void doSave(const QUrl &url = QUrl(), bool notify = false);
     bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
     void doCopyToClipboard(bool notify);
@@ -111,7 +107,5 @@ class ExportManager : public QObject
     QTemporaryDir *mTempDir;
     QList<QUrl> mUsedTempFileNames;
     QString mWindowTitle;
-    ImageGrabber::GrabMode mGrabMode;
+    Spectacle::CaptureMode mCaptureMode { Spectacle::CaptureMode::AllScreens };
 };
-
-#endif // EXPORTMANAGER_H

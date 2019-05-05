@@ -7,7 +7,7 @@ set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIO
 set(SPECTACLE_VERSION ${KDE_APPLICATIONS_VERSION})
 # minimum requirements
 
-cmake_minimum_required (VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
 # Spectacle project
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
@@ -22,6 +22,12 @@ set(
         ${CMAKE_MODULE_PATH}
         ${ECM_MODULE_PATH}
 )
+
+# require c++17
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # set up kf5
 
@@ -104,7 +110,7 @@ add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(doc)
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 install( FILES spectacle.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 # summaries

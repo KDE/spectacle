@@ -1,87 +1,88 @@
-/*
- *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
+/* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright (C) 2019 Boudhayan Gupta <bgupta@kde.org>
  *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef KSCORE_H
-#define KSCORE_H
+#pragma once
 
 #include <QObject>
 
 #include "ExportManager.h"
 #include "Gui/KSMainWindow.h"
-#include "PlatformBackends/ImageGrabber.h"
+#include "Platforms/PlatformLoader.h"
 
-class SpectacleCore : public QObject
+#include <memory>
+using MainWindowPtr = std::unique_ptr<KSMainWindow>;
+
+class SpectacleCore: public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString filename READ filename WRITE setFilename NOTIFY filenameChanged)
-    Q_PROPERTY(ImageGrabber::GrabMode grabMode READ grabMode WRITE setGrabMode NOTIFY grabModeChanged)
-
     public:
 
-    enum StartMode {
-        GuiMode = 0,
-        DBusMode = 1,
-        BackgroundMode = 2
+    enum class StartMode {
+        Gui        = 0,
+        DBus       = 1,
+        Background = 2
     };
 
-    explicit SpectacleCore(StartMode startMode, ImageGrabber::GrabMode grabMode, QString &saveFileName,
-                    qint64 delayMsec, bool notifyOnGrab, bool copyToClipboard, QObject *parent = nullptr);
-    ~SpectacleCore();
+    explicit SpectacleCore(StartMode theStartMode,
+                           Spectacle::CaptureMode theCaptureMode,
+                           QString &theSaveFileName,
+                           qint64 theDelayMsec,
+                           bool theNotifyOnGrab,
+                           bool theCopyToClipboard,
+                           QObject *parent = nullptr);
+    virtual ~SpectacleCore() = default;
 
     QString filename() const;
     void setFilename(const QString &filename);
-    ImageGrabber::GrabMode grabMode() const;
-    void setGrabMode(ImageGrabber::GrabMode grabMode);
 
     Q_SIGNALS:
 
     void errorMessage(const QString &errString);
     void allDone();
     void filenameChanged(const QString &filename);
-    void grabModeChanged(ImageGrabber::GrabMode mode);
     void grabFailed();
 
     public Q_SLOTS:
 
-    void takeNewScreenshot(const ImageGrabber::GrabMode &mode, const int &timeout, const bool &includePointer, const bool &includeDecorations);
-    void showErrorMessage(const QString &errString);
-    void screenshotUpdated(const QPixmap &pixmap);
+    void takeNewScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
+    void showErrorMessage(const QString &theErrString);
+    void screenshotUpdated(const QPixmap &thePixmap);
     void screenshotFailed();
     void dbusStartAgent();
     void doStartDragAndDrop();
-    void doNotify(const QUrl &savedAt);
+    void doNotify(const QUrl &theSavedAt);
     void doCopyPath(const QUrl &savedAt);
 
     private:
 
-    void initGui();
+    void initGui(bool theIncludePointer, bool theIncludeDecorations);
+    Platform::GrabMode toPlatformGrabMode(Spectacle::CaptureMode theCaptureMode);
 
-    ExportManager *mExportManager;
     StartMode     mStartMode;
     bool          mNotify;
     QString       mFileNameString;
     QUrl          mFileNameUrl;
-    ImageGrabber *mImageGrabber;
-    KSMainWindow *mMainWindow;
-    bool          isGuiInited;
-    bool          copyToClipboard;
+    PlatformPtr   mPlatform;
+    MainWindowPtr mMainWindow;
+    bool          mIsGuiInited;
+    bool          mCopyToClipboard;
 };
-
-#endif // KSCORE_H

@@ -1,20 +1,22 @@
-/*
- *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
+/* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
 #include "ExportManager.h"
@@ -83,14 +85,14 @@ QString ExportManager::windowTitle() const
     return mWindowTitle;
 }
 
-ImageGrabber::GrabMode ExportManager::grabMode() const
+Spectacle::CaptureMode ExportManager::captureMode() const
 {
-    return mGrabMode;
+    return mCaptureMode;
 }
 
-void ExportManager::setGrabMode(const ImageGrabber::GrabMode &grabMode)
+void ExportManager::setCaptureMode(const Spectacle::CaptureMode &theCaptureMode)
 {
-    mGrabMode = grabMode;
+    mCaptureMode = theCaptureMode;
 }
 
 void ExportManager::setPixmap(const QPixmap &pixmap)
@@ -175,9 +177,9 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     const QString baseDir = defaultSaveLocation();
     QString title;
 
-    if (mGrabMode == ImageGrabber::GrabMode::ActiveWindow ||
-        mGrabMode == ImageGrabber::GrabMode::TransientWithParent ||
-        mGrabMode == ImageGrabber::GrabMode::WindowUnderCursor) {
+    if (mCaptureMode == Spectacle::CaptureMode::ActiveWindow ||
+        mCaptureMode == Spectacle::CaptureMode::TransientWithParent ||
+        mCaptureMode == Spectacle::CaptureMode::WindowUnderCursor) {
         title = mWindowTitle.replace(QLatin1String("/"), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it

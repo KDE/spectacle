@@ -18,24 +18,26 @@
  */
 
 #include "Config.h"
+#include "SpectacleCommon.h"
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
+
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QDBusConnection>
 
 #include <KAboutData>
 #include <KDBusService>
 #include <KLocalizedString>
 
-#include <QCommandLineParser>
-#include <QDBusConnection>
-
 int main(int argc, char **argv)
 {
     // set up the application
 
-    QApplication app(argc, argv);
+    QApplication lApp(argc, argv);
 
-    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+    lApp.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
+    lApp.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     KLocalizedString::setApplicationDomain("spectacle");
 
@@ -48,14 +50,14 @@ int main(int argc, char **argv)
     aboutData.addAuthor(QStringLiteral("Boudhayan Gupta"), QString(), QStringLiteral("bgupta@kde.org"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
+    lApp.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
 
     // set up the command line options parser
 
-    QCommandLineParser parser;
-    aboutData.setupCommandLine(&parser);
+    QCommandLineParser lCmdLineParser;
+    aboutData.setupCommandLine(&lCmdLineParser);
 
-    parser.addOptions({
+    lCmdLineParser.addOptions({
         {{QStringLiteral("f"), QStringLiteral("fullscreen")},        i18n("Capture the entire desktop (default)")},
         {{QStringLiteral("m"), QStringLiteral("current")},           i18n("Capture the current monitor")},
         {{QStringLiteral("a"), QStringLiteral("activewindow")},      i18n("Capture the active window")},
@@ -72,94 +74,90 @@ int main(int argc, char **argv)
         {{QStringLiteral("w"), QStringLiteral("onclick")},           i18n("Wait for a click before taking screenshot. Invalidates delay")}
     });
 
-    parser.process(app);
-    aboutData.processCommandLine(&parser);
+    lCmdLineParser.process(lApp);
+    aboutData.processCommandLine(&lCmdLineParser);
 
     // extract the capture mode
 
-    ImageGrabber::GrabMode grabMode = ImageGrabber::FullScreen;
-    if (parser.isSet(QStringLiteral("current"))) {
-        grabMode = ImageGrabber::CurrentScreen;
-    } else if (parser.isSet(QStringLiteral("activewindow"))) {
-        grabMode = ImageGrabber::ActiveWindow;
-    } else if (parser.isSet(QStringLiteral("region"))) {
-        grabMode = ImageGrabber::RectangularRegion;
-    } else if (parser.isSet(QStringLiteral("windowundercursor"))) {
-        grabMode = ImageGrabber::TransientWithParent;
-    } else if (parser.isSet(QStringLiteral("transientonly"))) {
-        grabMode = ImageGrabber::WindowUnderCursor;
+    Spectacle::CaptureMode lCaptureMode = Spectacle::CaptureMode::AllScreens;
+    if (lCmdLineParser.isSet(QStringLiteral("current"))) {
+        lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
+    } else if (lCmdLineParser.isSet(QStringLiteral("activewindow"))) {
+        lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
+    } else if (lCmdLineParser.isSet(QStringLiteral("region"))) {
+        lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
+    } else if (lCmdLineParser.isSet(QStringLiteral("windowundercursor"))) {
+        lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
+    } else if (lCmdLineParser.isSet(QStringLiteral("transientonly"))) {
+        lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
     }
 
     // are we running in background or dbus mode?
 
-    SpectacleCore::StartMode startMode = SpectacleCore::GuiMode;
-    bool notify = true;
-    bool copyToClipboard = false;
-    qint64 delayMsec = 0;
-    QString fileName = QString();
+    SpectacleCore::StartMode lStartMode = SpectacleCore::StartMode::Gui;
+    bool lNotify = true;
+    bool lCopyToClipboard = false;
+    qint64 lDelayMsec = 0;
+    QString lFileName = QString();
 
-    if (parser.isSet(QStringLiteral("background"))) {
-        startMode = SpectacleCore::BackgroundMode;
-    } else if (parser.isSet(QStringLiteral("dbus"))) {
-        startMode = SpectacleCore::DBusMode;
+    if (lCmdLineParser.isSet(QStringLiteral("background"))) {
+        lStartMode = SpectacleCore::StartMode::Background;
+    } else if (lCmdLineParser.isSet(QStringLiteral("dbus"))) {
+        lStartMode = SpectacleCore::StartMode::DBus;
     }
 
-    switch (startMode) {
-    case SpectacleCore::BackgroundMode:
-        if (parser.isSet(QStringLiteral("nonotify"))) {
-            notify = false;
+    switch(lStartMode) {
+    case SpectacleCore::StartMode::Background:
+        if (lCmdLineParser.isSet(QStringLiteral("nonotify"))) {
+            lNotify = false;
         }
 
-        if (parser.isSet(QStringLiteral("output"))) {
-            fileName = parser.value(QStringLiteral("output"));
+        if (lCmdLineParser.isSet(QStringLiteral("output"))) {
+            lFileName = lCmdLineParser.value(QStringLiteral("output"));
         }
 
-        if (parser.isSet(QStringLiteral("delay"))) {
-            bool ok = false;
-            qint64 delayValue = parser.value(QStringLiteral("delay")).toLongLong(&ok);
-            if (ok) {
-                delayMsec = delayValue;
+        if (lCmdLineParser.isSet(QStringLiteral("delay"))) {
+            bool lParseOk = false;
+            qint64 lDelayValue = lCmdLineParser.value(QStringLiteral("delay")).toLongLong(&lParseOk);
+            if (lParseOk) {
+                lDelayMsec = lDelayValue;
             }
         }
 
-        if (parser.isSet(QStringLiteral("onclick"))) {
-            delayMsec = -1;
+        if (lCmdLineParser.isSet(QStringLiteral("onclick"))) {
+            lDelayMsec = -1;
         }
 
-        if (parser.isSet(QStringLiteral("clipboard"))) {
-                copyToClipboard = true;
+        if (lCmdLineParser.isSet(QStringLiteral("clipboard"))) {
+                lCopyToClipboard = true;
         }
 
-        app.setQuitOnLastWindowClosed(false);
+        lApp.setQuitOnLastWindowClosed(false);
         break;
-
-    case SpectacleCore::DBusMode:
-        app.setQuitOnLastWindowClosed(false);
+    case SpectacleCore::StartMode::DBus:
+        lApp.setQuitOnLastWindowClosed(false);
         break;
-    case SpectacleCore::GuiMode:
-    default:
+    case SpectacleCore::StartMode::Gui:
         break;
     }
 
     // release the kraken
 
-    SpectacleCore core(startMode, grabMode, fileName, delayMsec, notify, copyToClipboard);
-    QObject::connect(&core, &SpectacleCore::allDone, qApp, &QApplication::quit);
+    SpectacleCore lCore(lStartMode, lCaptureMode, lFileName, lDelayMsec, lNotify, lCopyToClipboard);
+    QObject::connect(&lCore, &SpectacleCore::allDone, qApp, &QApplication::quit);
 
     // create the dbus connections
 
-    new KDBusService(KDBusService::Multiple, &core);
-
-    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&core);
-    QObject::connect(&core, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    new KDBusService(KDBusService::Multiple, &lCore);
+    SpectacleDBusAdapter *lDBusAdapter = new SpectacleDBusAdapter(&lCore);
+    QObject::connect(&lCore, &SpectacleCore::grabFailed, lDBusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
     QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, [&](const QUrl &savedAt) {
-        emit dbusAdapter->ScreenshotTaken(savedAt.toLocalFile());
+        emit lDBusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
-
-    QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &core);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &lCore);
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
 
-    return app.exec();
+    return lApp.exec();
 }

@@ -5,6 +5,22 @@ set(CMAKE_AUTORCC 1)
 
 # target
 
+if(XCB_FOUND)
+    set(
+        SPECTACLE_SRCS_PLATFORM_XCB
+            Platforms/PlatformXcb.cpp
+    )
+endif()
+
+set(
+    SPECTACLE_SRCS_PLATFORM
+        Platforms/PlatformLoader.cpp
+        Platforms/Platform.cpp
+        Platforms/PlatformNull.cpp
+        Platforms/PlatformKWinWayland.cpp
+        ${SPECTACLE_SRCS_PLATFORM_XCB}
+)
+
 set(
     SPECTACLE_SRCS_DEFAULT
         Main.cpp
@@ -12,9 +28,7 @@ set(
         SpectacleCore.cpp
         SpectacleConfig.cpp
         SpectacleDBusAdapter.cpp
-        PlatformBackends/ImageGrabber.cpp
-        PlatformBackends/DummyImageGrabber.cpp
-        PlatformBackends/KWinWaylandImageGrabber.cpp
+        ${SPECTACLE_SRCS_PLATFORM}
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
@@ -30,13 +44,6 @@ set(
 ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core)
 ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_gui_debug.h IDENTIFIER SPECTACLE_GUI_LOG CATEGORY_NAME org.kde.spectacle.gui)
 
-if(XCB_FOUND)
-    set(
-        SPECTACLE_SRCS_X11
-            PlatformBackends/X11ImageGrabber.cpp
-    )
-endif()
-
 if(KIPI_FOUND)
     set(
         SPECTACLE_SRCS_KIPI
@@ -51,7 +58,6 @@ set(
     SPECTACLE_SRCS_ALL
         ${SPECTACLE_SRCS_DEFAULT}
         ${SPECTACLE_SRCS_KIPI}
-        ${SPECTACLE_SRCS_X11}
 )
 
 add_executable(
