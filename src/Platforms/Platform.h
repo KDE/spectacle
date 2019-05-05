@@ -42,8 +42,8 @@ class Platform: public QObject
     Q_FLAG(GrabModes)
 
     enum class ShutterMode {
-        Immediate = 0x00,
-        OnClick   = 0x01
+        Immediate = 0x01,
+        OnClick   = 0x02
     };
     using ShutterModes = QFlags<ShutterMode>;
     Q_FLAG(ShutterModes)
@@ -66,7 +66,5 @@ class Platform: public QObject
     void windowTitleChanged(const QString &theWindowTitle);
 };
 
-Q_DECLARE_METATYPE(Platform::GrabMode)
-Q_DECLARE_METATYPE(Platform::ShutterMode)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Platform::GrabModes)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Platform::ShutterModes)

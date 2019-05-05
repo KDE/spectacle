@@ -33,9 +33,6 @@
 
 PlatformPtr loadPlatform()
 {
-    qRegisterMetaType<Platform::GrabMode>();
-    qRegisterMetaType<Platform::ShutterMode>();
-
     // We might be using the XCB platform (with Xwayland) in a wayland session,
     // but the X11 grabber won't work in that case. So force the Wayland grabber
     // in Wayland sessions.

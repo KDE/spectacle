@@ -165,6 +165,7 @@ void SpectacleCore::takeNewScreenshot(Spectacle::CaptureMode theCaptureMode,
 
     if (theTimeout < 0) {
         mPlatform->doGrab(Platform::ShutterMode::OnClick, lGrabMode, theIncludePointer, theIncludeDecorations);
+        return;
     }
 
     // when compositing is enabled, we need to give it enough time for the window

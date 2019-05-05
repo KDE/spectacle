@@ -374,7 +374,7 @@ QPixmap PlatformXcb::getPixmapFromDrawable(xcb_drawable_t theXcbDrawable, const 
     );
 
     // too bad, the capture failed.
-    if (lXcbImage) {
+    if (!lXcbImage) {
         return QPixmap();
     }
 
