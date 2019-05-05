@@ -84,7 +84,7 @@ class ExportManager : public QObject
     public Q_SLOTS:
 
     QUrl getAutosaveFilename();
-    QUrl tempSave(const QString &mimetype = QStringLiteral("png"));
+    QUrl tempSave();
 
     void doSave(const QUrl &url = QUrl(), bool notify = false);
     bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
