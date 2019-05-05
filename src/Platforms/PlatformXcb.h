@@ -53,6 +53,7 @@ class PlatformXcb final: public Platform
 
     private:
 
+    inline void updateWindowTitle(xcb_window_t theWindow);
     bool isKWinAvailable();
     QPoint getCursorPosition();
     QRect getDrawableGeometry(xcb_drawable_t theDrawable);

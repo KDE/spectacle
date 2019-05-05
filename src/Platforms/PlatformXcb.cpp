@@ -25,6 +25,9 @@
 #include <xcb/xcb_cursor.h>
 #include <xcb/xcb_util.h>
 
+#include <X11/Xdefs.h>
+#include <X11/Xatom.h>
+
 #include <QtMath>
 #include <QApplication>
 #include <QStack>
@@ -161,6 +164,12 @@ void PlatformXcb::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool 
 }
 
 /* -- Platform Utilities ----------------------------------------------------------------------- */
+
+void PlatformXcb::updateWindowTitle(xcb_window_t theWindow)
+{
+    auto lTitle = KWindowSystem::readNameProperty(theWindow, XA_WM_NAME);
+    emit windowTitleChanged(lTitle);
+}
 
 bool PlatformXcb::isKWinAvailable()
 {
@@ -517,7 +526,7 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
 void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecorations)
 {
     auto lActiveWindow = KWindowSystem::activeWindow();
-    //FIXME: updateWindowTitle(activeWindow);
+    updateWindowTitle(lActiveWindow);
 
     // if KWin is available, use the KWin DBus interfaces
     if (theIncludeDecorations && isKWinAvailable()) {
@@ -545,7 +554,7 @@ void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecora
 void PlatformXcb::grabWindowUnderCursor(bool theIncludePointer, bool theIncludeDecorations)
 {
     auto lWindow = getWindowUnderCursor();
-    //FIXME: updateWindowTitle(windowUnderCursor);
+    updateWindowTitle(lWindow);
 
     // if KWin is available, use the KWin DBus interfaces
     if (theIncludeDecorations && isKWinAvailable()) {
@@ -573,7 +582,7 @@ void PlatformXcb::grabWindowUnderCursor(bool theIncludePointer, bool theIncludeD
 void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theIncludeDecorations)
 {
     auto lWindow = getWindowUnderCursor();
-    //FIXME: updateWindowTitle(curWin);
+    updateWindowTitle(lWindow);
 
     // grab the image early
     auto lPixmap = getToplevelPixmap(QRect(), false);
