@@ -23,7 +23,7 @@ set(
         ${ECM_MODULE_PATH}
 )
 
-# require c++17
+# require c++14
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
