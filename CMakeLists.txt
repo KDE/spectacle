@@ -7,7 +7,7 @@ set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIO
 set(SPECTACLE_VERSION ${KDE_APPLICATIONS_VERSION})
 # minimum requirements
 
-cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 # Spectacle project
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
