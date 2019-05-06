@@ -429,7 +429,9 @@ void QuickEditor::mouseReleaseEvent(QMouseEvent* event)
             setCursor(Qt::OpenHandCursor);
         }
         else if(mMouseDragState == MouseState::Outside && mReleaseToCapture) {
-            acceptSelection();
+            event->accept();
+            mMouseDragState = MouseState::None;
+            return acceptSelection();
         }
     } else if (button == Qt::RightButton) {
         mSelection.setWidth(0);
