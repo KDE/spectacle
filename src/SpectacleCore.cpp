@@ -290,9 +290,17 @@ void SpectacleCore::doNotify(const QUrl &savedAt)
 
     connect(notify, &KNotification::action1Activated, this, [this, savedAt] {
         new KRun(savedAt, nullptr);
-        QTimer::singleShot(250, this, &SpectacleCore::allDone);
+        QTimer::singleShot(250, this, [this] {
+            if (mStartMode != GuiMode) {
+                emit allDone();
+            }
+        });
     });
-    connect(notify, &QObject::destroyed, this, &SpectacleCore::allDone);
+    connect(notify, &QObject::destroyed, this, [this] {
+        if (mStartMode != GuiMode) {
+            emit allDone();
+        }
+    });
 
     notify->sendEvent();
 }
