@@ -120,7 +120,7 @@ void KSMainWindow::init()
 
     // change window title on save
 
-    connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::setScreenshotWindowTitle);
+    connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::imageSaved);
 
     // the KSGWidget
 
@@ -339,8 +339,15 @@ void KSMainWindow::quit(const QuitBehavior quitBehavior)
     // is not working quite right, see Bug #389694 which needs fixing.
 }
 
-void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType, const MessageDuration messageDuration)
+void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType,
+                                     const MessageDuration messageDuration, const QList<QAction*>& actions)
 {
+    for (QAction* action: mMessageWidget->actions()) {
+        mMessageWidget->removeAction(action);
+    }
+    for (QAction* action : actions) {
+        mMessageWidget->addAction(action);
+    }
     mMessageWidget->setText(message);
     mMessageWidget->setMessageType(messageType);
 
@@ -398,10 +405,15 @@ void KSMainWindow::showPreferencesDialog()
     prefDialog.exec();
 }
 
-void KSMainWindow::setScreenshotWindowTitle(const QUrl &location)
+void KSMainWindow::imageSaved(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
+    QAction* openContaining = new QAction(i18n("Open Containing Folder"), mMessageWidget);
+    connect(openContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({location});});
+    showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
+                           location.toLocalFile(), location.fileName()), KMessageWidget::Positive,
+                           MessageDuration::AutoHide, {openContaining});
 }
 
 void KSMainWindow::save()

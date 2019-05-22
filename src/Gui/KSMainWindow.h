@@ -61,7 +61,8 @@ class KSMainWindow: public QDialog
     };
     void showInlineMessage(const QString& message,
                            const KMessageWidget::MessageType messageType,
-                           const MessageDuration messageDuration = MessageDuration::AutoHide);
+                           const MessageDuration messageDuration = MessageDuration::AutoHide,
+                           const QList<QAction*>& actions  = {});
 
     private Q_SLOTS:
 
@@ -80,7 +81,7 @@ class KSMainWindow: public QDialog
     public Q_SLOTS:
 
     void setScreenshotAndShow(const QPixmap &pixmap);
-    void setScreenshotWindowTitle(const QUrl &location);
+    void imageSaved(const QUrl &location);
 
     Q_SIGNALS:
 
