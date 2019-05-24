@@ -215,6 +215,9 @@ void KSMainWindow::init()
     actionQuit->setShortcut(QKeySequence::Quit);
     addAction(actionQuit);
 
+    mHideMessageWidgetTimer = new QTimer(this);
+    mHideMessageWidgetTimer->callOnTimeout(mMessageWidget, &KMessageWidget::animatedHide);
+    mHideMessageWidgetTimer->setInterval(10000);
     // done with the init
 }
 
@@ -366,9 +369,10 @@ void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidge
         break;
     }
 
+    mHideMessageWidgetTimer->stop();
     mMessageWidget->animatedShow();
     if (messageDuration == MessageDuration::AutoHide) {
-        QTimer::singleShot(10000, mMessageWidget, &KMessageWidget::animatedHide);
+        mHideMessageWidgetTimer->start();
     }
 }
 

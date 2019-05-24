@@ -111,4 +111,5 @@ class KSMainWindow: public QDialog
     std::unique_ptr<KMoreToolsMenuFactory> mScreenrecorderToolsMenuFactory;
     ExportMenu       *mExportMenu;
     Platform::ShutterModes mShutterModes;
+    QTimer           *mHideMessageWidgetTimer;
 };
