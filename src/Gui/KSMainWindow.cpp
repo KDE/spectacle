@@ -216,7 +216,8 @@ void KSMainWindow::init()
     addAction(actionQuit);
 
     mHideMessageWidgetTimer = new QTimer(this);
-    mHideMessageWidgetTimer->callOnTimeout(mMessageWidget, &KMessageWidget::animatedHide);
+    connect(mHideMessageWidgetTimer, &QTimer::timeout,
+            mMessageWidget, &KMessageWidget::animatedHide);
     mHideMessageWidgetTimer->setInterval(10000);
     // done with the init
 }
