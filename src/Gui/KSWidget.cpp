@@ -67,7 +67,7 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     }
     mCaptureArea->insertItem(5, i18n("Rectangular Region"), Spectacle::CaptureMode::RectangularRegion);
     mCaptureArea->setMinimumWidth(240);
-    connect(mCaptureArea, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
+    connect(mCaptureArea, qOverload<int>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
     mDelayMsec = new SmartSpinBox(this);
     mDelayMsec->setDecimals(1);
@@ -76,8 +76,7 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mDelayMsec->setMaximum(999.9);
     mDelayMsec->setSpecialValueText(i18n("No Delay"));
     mDelayMsec->setMinimumWidth(160);
-    connect(mDelayMsec, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
-            lConfigMgr, &SpectacleConfig::setCaptureDelay);
+    connect(mDelayMsec, qOverload<qreal>(&SmartSpinBox::valueChanged), lConfigMgr, &SpectacleConfig::setCaptureDelay);
 
     mCaptureOnClick = new QCheckBox(i18n("On Click"), this);
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));

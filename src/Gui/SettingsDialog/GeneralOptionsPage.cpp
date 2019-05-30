@@ -47,7 +47,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     mPrintKeyActionGroup->setExclusive(true);
     mPrintKeyActionGroup->addButton(takeNew, SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
     mPrintKeyActionGroup->addButton(startNewInstance, SpectacleConfig::PrintKeyActionRunning::StartNewInstance);
-    connect( mPrintKeyActionGroup, static_cast<void(QButtonGroup::*)(int, bool)>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    connect( mPrintKeyActionGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
     mainLayout->addRow(i18n("Press screenshot key to:"), takeNew);
     mainLayout->addRow(QString(), startNewInstance);
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
@@ -90,7 +90,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     rememberGroup->addButton(mRememberAlways);
     rememberGroup->addButton(mRememberUntilClosed);
     neverButton->setChecked(true);
-    connect(rememberGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *, bool)>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    connect(rememberGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
     mainLayout->addRow(i18n("Remember selected area:"), neverButton);
     mainLayout->addRow(QString(), mRememberAlways);
     mainLayout->addRow(QString(), mRememberUntilClosed );

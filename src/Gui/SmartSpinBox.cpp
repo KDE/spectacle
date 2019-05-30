@@ -25,7 +25,7 @@
 SmartSpinBox::SmartSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent)
 {
-    connect(this, static_cast<void (SmartSpinBox::*)(qreal)>(&SmartSpinBox::valueChanged),
+    connect(this, qOverload<qreal>(&SmartSpinBox::valueChanged),
             this, &SmartSpinBox::suffixChangeHandler);
 }
 
