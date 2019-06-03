@@ -22,7 +22,6 @@
 
 #include "SettingsPage.h"
 
-class QDialogButtonBox;
 class QLineEdit;
 class QComboBox;
 class KUrlRequester;
