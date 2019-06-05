@@ -53,8 +53,7 @@ QString SpectacleConfig::defaultTimestampTemplate() const
 
 QUrl SpectacleConfig::lastSaveAsFile() const
 {
-    return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsFile"),
-                                    QUrl(this->defaultSaveLocation()));
+    return mGeneralConfig.readEntry(QStringLiteral("lastSaveAsFile"), this->defaultSaveLocation());
 }
 
 void SpectacleConfig::setLastSaveAsFile(const QUrl &location)
@@ -72,8 +71,7 @@ QUrl SpectacleConfig::lastSaveAsLocation() const
 
 QUrl SpectacleConfig::lastSaveFile() const
 {
-    return mGeneralConfig.readEntry(QStringLiteral("lastSaveFile"),
-                                    QUrl(this->defaultSaveLocation()));
+    return mGeneralConfig.readEntry(QStringLiteral("lastSaveFile"), this->defaultSaveLocation());
 }
 
 void SpectacleConfig::setLastSaveFile(const QUrl &location)
@@ -305,15 +303,19 @@ void SpectacleConfig::setAutoSaveFilenameFormat(const QString &format)
 
 // autosave location
 
-QString SpectacleConfig::defaultSaveLocation() const
+QUrl SpectacleConfig::defaultSaveLocation() const
 {
-    return mGeneralConfig.readPathEntry(QStringLiteral("default-save-location"),
-                          QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+    QString path = mGeneralConfig.readPathEntry(QStringLiteral("default-save-location"),
+        (QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)));
+    if (! path.endsWith(QLatin1Char('/'))) {
+        path += QLatin1Char('/');
+    }
+    return QUrl::fromUserInput(path);
 }
 
-void SpectacleConfig::setDefaultSaveLocation(const QString &location)
+void SpectacleConfig::setDefaultSaveLocation(const QUrl &location)
 {
-    mGeneralConfig.writePathEntry(QStringLiteral("default-save-location"), location);
+    mGeneralConfig.writePathEntry(QStringLiteral("default-save-location"), location.toString());
     mGeneralConfig.sync();
 }
 

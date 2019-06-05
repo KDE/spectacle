@@ -163,7 +163,7 @@ void SaveOptionsPage::saveChanges()
 
     // save the data
 
-    cfgManager->setDefaultSaveLocation(mUrlRequester->url().toDisplayString(QUrl::PreferLocalFile));
+    cfgManager->setDefaultSaveLocation(mUrlRequester->url());
     cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
     cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
     cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
@@ -183,7 +183,7 @@ void SaveOptionsPage::resetChanges()
     // read in the data
 
     mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
-    mUrlRequester->setUrl(QUrl::fromUserInput(cfgManager->defaultSaveLocation()));
+    mUrlRequester->setUrl(cfgManager->defaultSaveLocation());
     mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
     mQualitySlider->setSliderPosition(cfgManager->compressionQuality());
 

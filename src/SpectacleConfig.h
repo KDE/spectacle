@@ -120,8 +120,8 @@ class SpectacleConfig : public QObject
     QString autoSaveFilenameFormat() const;
     void setAutoSaveFilenameFormat(const QString &format);
 
-    QString defaultSaveLocation() const;
-    void setDefaultSaveLocation(const QString &location);
+    QUrl defaultSaveLocation() const;
+    void setDefaultSaveLocation(const QUrl &location);
 
     bool copySaveLocationToClipboard() const;
     void setCopySaveLocationToClipboard(bool enabled);

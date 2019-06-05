@@ -313,7 +313,7 @@ void KSMainWindow::openScreenshotsFolder()
     case SaveMode::Save:
         location = cfgManager->lastSaveFile();
         if (!exportManager->isFileExists(location)) {
-            location = QUrl(cfgManager->defaultSaveLocation());
+            location = cfgManager->defaultSaveLocation();
         }
         break;
     case SaveMode::SaveAs:
