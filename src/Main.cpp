@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     KAboutData aboutData(QStringLiteral("spectacle"),
                          i18n("Spectacle"),
-                         QStringLiteral(SPECTACLE_VERSION) + QStringLiteral(" - ") + QStringLiteral(SPECTACLE_CODENAME),
+                         QStringLiteral(SPECTACLE_VERSION),
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
