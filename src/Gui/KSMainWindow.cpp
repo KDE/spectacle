@@ -414,7 +414,7 @@ void KSMainWindow::imageSaved(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
-    QAction* openContaining = new QAction(i18n("Open Containing Folder"), mMessageWidget);
+    QAction* openContaining = new QAction(QIcon::fromTheme(QStringLiteral("document-open-folder")), i18n("Open Containing Folder"), mMessageWidget);
     connect(openContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({location});});
     showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
                            location.toLocalFile(), location.fileName()), KMessageWidget::Positive,
