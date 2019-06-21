@@ -1,4 +1,5 @@
 /* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright 2019 David Redondo <kde@david-redondo.de>
  * Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -20,16 +21,20 @@
  */
 
 #include "KSMainWindow.h"
+
 #include "Config.h"
 #include "SettingsDialog/SettingsDialog.h"
 
 #include <QApplication>
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QDBusConnection>
+#include <QDBusMessage>
 #include <QJsonArray>
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
+#include <QVariantAnimation>
 #include <QVBoxLayout>
 
 #ifdef XCB_FOUND
@@ -266,12 +271,37 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 }
 
 // slots
-
 void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations)
 {
-    hide();
+    showMinimized();
     mMessageWidget->hide();
-    emit newScreenshotRequest(theCaptureMode, theTimeout, theIncludePointer, theIncludeDecorations);
+    QTimer* timer = new QTimer;
+    timer->setSingleShot(true);
+    timer->setInterval(theTimeout);
+    auto unityUpdate = [](const QVariantMap &properties) {
+        QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/org/kde/Spectacle"),
+            QStringLiteral("com.canonical.Unity.LauncherEntry"), QStringLiteral("Update"));
+        message.setArguments({QGuiApplication::desktopFileName(), properties});
+        QDBusConnection::sessionBus().send(message);
+    };
+    auto delayAnimation = new QVariantAnimation(timer);
+    delayAnimation->setStartValue(0.0);
+    delayAnimation->setEndValue(1.0);
+    delayAnimation->setDuration(timer->interval());
+    connect(delayAnimation, &QVariantAnimation::valueChanged, this, [=] {
+        unityUpdate({ {QStringLiteral("progress"), delayAnimation->currentValue().toDouble()} });
+    });
+    connect(timer, &QTimer::timeout, this, [=] {
+        this->hide();
+        timer->deleteLater();
+        unityUpdate({ {QStringLiteral("progress-visible"), false} });
+        emit newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
+    });
+
+    unityUpdate({   {QStringLiteral("progress-visible"), true},
+                    {QStringLiteral("progress"), 0 } });
+    timer->start();
+    delayAnimation->start();
 }
 
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
@@ -283,6 +313,7 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     setWindowModified(true);
 
     show();
+    activateWindow();
 
     resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
 }
