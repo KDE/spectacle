@@ -286,6 +286,12 @@ int QuickEditor::boundsDown(int newTopLeftY, const bool mouse)
 void QuickEditor::mousePressEvent(QMouseEvent* event)
 {
     if (event->button() & Qt::LeftButton) {
+        /* NOTE  Workaround for Bug 407843  
+        * If we show the selection Widget when a right click menu is open we lose focus on X.
+        * When the user clicks we get the mouse back. We can only grab the keyboard if we already
+        * have mouse focus. So just grab it undconditionally here.
+        */
+        grabKeyboard();
         const QPointF& pos = event->pos();
         mMousePos = pos;
         mMagnifierAllowed = true;
