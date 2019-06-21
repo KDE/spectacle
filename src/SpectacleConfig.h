@@ -20,10 +20,12 @@
 #ifndef SPECTACLECONFIG_H
 #define SPECTACLECONFIG_H
 
+#include <QAction>
 #include <QObject>
 #include <QUrl>
 #include <QRect>
 
+#include <KActionCollection>
 #include <KSharedConfig>
 #include <KConfigGroup>
 
@@ -53,6 +55,8 @@ class SpectacleConfig : public QObject
         StartNewInstance,
         FocusWindow
     };
+
+    KActionCollection* shortCutActions;
 
     private:
 

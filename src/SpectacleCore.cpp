@@ -22,6 +22,7 @@
 
 #include "Config.h"
 
+#include <KGlobalAccel>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
@@ -33,6 +34,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QDrag>
+#include <QKeySequence>
 #include <QMimeData>
 #include <QProcess>
 #include <QTimer>
@@ -105,6 +107,24 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
         initGui(lGuiConfig.readEntry("includePointer", true), lGuiConfig.readEntry("includeDecorations", true));
         break;
     }
+    setUpShortcuts();
+}
+
+void SpectacleCore::setUpShortcuts()
+{
+    SpectacleConfig* config = SpectacleConfig::instance();
+
+    QAction* openAction = config->shortCutActions->action(QStringLiteral("_launch"));
+    KGlobalAccel::self()->setGlobalShortcut(openAction, Qt::Key_Print);
+
+    QAction* fullScreenAction = config->shortCutActions->action(QStringLiteral("FullScreenScreenShot"));
+    KGlobalAccel::self()->setGlobalShortcut(fullScreenAction, Qt::SHIFT + Qt::Key_Print);
+
+    QAction* activeWindowAction = config->shortCutActions->action(QStringLiteral("ActiveWindowScreenShot"));
+    KGlobalAccel::self()->setGlobalShortcut(activeWindowAction, Qt::META + Qt::Key_Print);
+
+    QAction* regionAction = config->shortCutActions->action(QStringLiteral("RectangularRegionScreenShot"));
+    KGlobalAccel::self()->setGlobalShortcut(regionAction, Qt::META + Qt::SHIFT + Qt::Key_Print);
 }
 
 QString SpectacleCore::filename() const
@@ -144,7 +164,10 @@ void SpectacleCore::dbusStartAgent()
                 break;
             }
             case Actions::FocusWindow:
-                KWindowSystem::forceActiveWindow(mMainWindow->winId());
+                if (mMainWindow->isMinimized()) {
+                    mMainWindow->setWindowState(mMainWindow->windowState() & ~Qt::WindowMinimized);
+                }
+                mMainWindow->activateWindow();
                 break;
             case Actions::StartNewInstance:
                 QProcess newInstance;

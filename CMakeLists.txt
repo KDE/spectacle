@@ -61,6 +61,8 @@ find_package(
         WindowSystem
         DocTools
         NewStuff
+        GlobalAccel
+        XmlGui
 )
 
 # optional components

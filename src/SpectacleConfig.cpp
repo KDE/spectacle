@@ -19,7 +19,12 @@
 
 #include "SpectacleConfig.h"
 
+#include <KLocalizedString>
 #include <KWindowSystem>
+
+#include <KGlobalAccel>
+
+#include <QDebug>
 
 SpectacleConfig::SpectacleConfig(QObject *parent) :
     QObject(parent)
@@ -27,6 +32,42 @@ SpectacleConfig::SpectacleConfig(QObject *parent) :
     mConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     mGeneralConfig = KConfigGroup(mConfig, "General");
     mGuiConfig = KConfigGroup(mConfig, "GuiConfig");
+
+    shortCutActions = new KActionCollection(this);
+
+    //everything here is named to match the jumplist actions in our .desktop file
+    shortCutActions->setComponentName(QStringLiteral("org.kde.spectacle.desktop"));
+    //qdbus org.kde.kglobalaccel /component/org_kde_spectacle_desktop org.kde.kglobalaccel.Component.shortcutNames
+    // ActiveWindowScreenShot
+    // CurrentMonitorScreenShot
+    // RectangularRegionScreenShot
+    // FullScreenScreenShot
+    // _launch
+    {
+        QAction *action = new QAction(i18n("Launch Spectacle"));
+        action->setObjectName(QStringLiteral("_launch"));
+        shortCutActions->addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Capture Entire Desktop"));
+        action->setObjectName(QStringLiteral("FullScreenScreenShot"));
+        shortCutActions->addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Capture Current Monitor"));
+        action->setObjectName(QStringLiteral("CurrentMonitorScreenShot"));
+        shortCutActions->addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Capture Active Window"));
+        action->setObjectName(QStringLiteral("ActiveWindowScreenShot"));
+        shortCutActions->addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Capture Rectangular Region"));
+        action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
+        shortCutActions->addAction(action->objectName(), action);
+    }
 }
 
 SpectacleConfig::~SpectacleConfig()

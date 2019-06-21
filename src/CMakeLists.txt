@@ -38,6 +38,7 @@ set(
         Gui/SettingsDialog/SettingsPage.cpp
         Gui/SettingsDialog/SaveOptionsPage.cpp
         Gui/SettingsDialog/GeneralOptionsPage.cpp
+        Gui/SettingsDialog/ShortcutsOptionsPage.cpp
         QuickEditor/QuickEditor.cpp
 )
 
@@ -80,6 +81,8 @@ target_link_libraries(
         KF5::KIOWidgets
         KF5::WindowSystem
         KF5::NewStuff
+        KF5::GlobalAccel
+        KF5::XmlGui
 )
 
 if(XCB_FOUND)

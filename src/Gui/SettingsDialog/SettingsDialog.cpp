@@ -21,8 +21,10 @@
 
 #include "GeneralOptionsPage.h"
 #include "SaveOptionsPage.h"
+#include "ShortcutsOptionsPage.h"
 
 #include <KLocalizedString>
+#include <KShortcutWidget>
 
 #include <QIcon>
 #include <QMessageBox>
@@ -52,6 +54,12 @@ void SettingsDialog::initPages()
     saveOptions->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
     addPage(saveOptions);
     mPages.insert(saveOptions);
+
+    KPageWidgetItem *shortcutOptions = new KPageWidgetItem(new ShortcutsOptionsPage(this), i18n("Shortcuts"));
+    shortcutOptions->setHeader(i18n("Shortcuts"));
+    shortcutOptions->setIcon(QIcon::fromTheme(QStringLiteral("preferences-desktop-keyboard")));
+    addPage(shortcutOptions);
+    mPages.insert(shortcutOptions);
 
     connect(this, &SettingsDialog::currentPageChanged, this, &SettingsDialog::onPageChanged);
 }

@@ -121,6 +121,7 @@ StartupNotify=false
 Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;
 X-DBUS-StartupType=Multi
 X-DBUS-ServiceName=org.kde.Spectacle
+X-KDE-Shortcuts=Print
 
 [Desktop Action FullScreenScreenShot]
 Name=Capture Entire Desktop
@@ -163,6 +164,7 @@ Name[x-test]=xxCapture Entire Desktopxx
 Name[zh_CN]=抓取整个桌面
 Name[zh_TW]=擷取整個桌面
 Exec=qdbus org.kde.Spectacle / FullScreen false
+X-KDE-Shortcuts=Shift+Print
 
 [Desktop Action CurrentMonitorScreenShot]
 Name=Capture Current Monitor
@@ -206,6 +208,7 @@ Name[zh_CN]=抓取当前显示器
 Name[zh_TW]=擷取目前螢幕
 Exec=qdbus org.kde.Spectacle / CurrentScreen false
 
+
 [Desktop Action ActiveWindowScreenShot]
 Name=Capture Active Window
 Name[ar]=التقط النّافذة النّشطة
@@ -247,6 +250,7 @@ Name[x-test]=xxCapture Active Windowxx
 Name[zh_CN]=抓取当前活动窗口
 Name[zh_TW]=擷取作用中的視窗
 Exec=qdbus org.kde.Spectacle / ActiveWindow true false
+X-KDE-Shortcuts=Meta+Print
 
 [Desktop Action RectangularRegionScreenShot]
 Name=Capture Rectangular Region
@@ -289,3 +293,4 @@ Name[x-test]=xxCapture Rectangular Regionxx
 Name[zh_CN]=抓取方形区域
 Name[zh_TW]=擷取矩形區域
 Exec=qdbus org.kde.Spectacle / RectangularRegion true
+X-KDE-Shortcuts=Meta+Shift+Print
