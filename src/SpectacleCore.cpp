@@ -125,6 +125,9 @@ void SpectacleCore::setUpShortcuts()
 
     QAction* regionAction = config->shortCutActions->action(QStringLiteral("RectangularRegionScreenShot"));
     KGlobalAccel::self()->setGlobalShortcut(regionAction, Qt::META + Qt::SHIFT + Qt::Key_Print);
+
+    QAction* currentScreenAction = config->shortCutActions->action(QStringLiteral("CurrentMonitorScreenShot"));
+    KGlobalAccel::self()->setGlobalShortcut(currentScreenAction, QList<QKeySequence>());
 }
 
 QString SpectacleCore::filename() const
