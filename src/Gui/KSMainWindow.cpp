@@ -411,6 +411,11 @@ void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidge
 
 void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
 {
+    if (error == 1) {
+        // error == 1 means the user cancelled the sharing
+        return;
+    }
+
     if (error) {
         showInlineMessage(i18n("There was a problem sharing the image: %1", message),
                           KMessageWidget::Error);
