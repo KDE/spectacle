@@ -40,6 +40,8 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
 
+add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII)
+
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
