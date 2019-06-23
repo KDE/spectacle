@@ -38,5 +38,5 @@ class PlatformNull final: public Platform
 
     public Q_SLOTS:
 
-    void doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
+    void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 };

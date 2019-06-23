@@ -57,7 +57,7 @@ class Platform: public QObject
 
     public Q_SLOTS:
 
-    virtual void doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) = 0;
+    virtual void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) = 0;
 
     Q_SIGNALS:
 
