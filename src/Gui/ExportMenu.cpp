@@ -80,7 +80,7 @@ void ExportMenu::getKServiceItems()
 
     const KService::List services = KMimeTypeTrader::self()->query(QStringLiteral("image/png"));
 
-    Q_FOREACH (auto service, services) {
+    for (auto service : services) {
         QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
@@ -132,7 +132,7 @@ void ExportMenu::getKipiItems()
 
     KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
 
-    Q_FOREACH (const auto &pluginInfo, pluginList) {
+    for (const auto &pluginInfo : qAsConst(pluginList)) {
         if (!(pluginInfo->shouldLoad())) {
             continue;
         }
@@ -145,10 +145,10 @@ void ExportMenu::getKipiItems()
 
         plugin->setup(&mDummyWidget);
 
-        QList<QAction *> actions = plugin->actions();
+        const QList<QAction *> actions = plugin->actions();
         QSet<QAction *> exportActions;
 
-        Q_FOREACH (auto action, actions) {
+        for (auto action : actions) {
             KIPI::Category category = plugin->category(action);
             if (category == KIPI::ExportPlugin) {
                 exportActions += action;
@@ -157,7 +157,7 @@ void ExportMenu::getKipiItems()
             }
         }
 
-        Q_FOREACH (auto action, exportActions) {
+        for (auto action : qAsConst(exportActions)) {
             mKipiMenu->addAction(action);
         }
     }

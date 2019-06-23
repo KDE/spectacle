@@ -27,7 +27,8 @@ KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *
       mInterface(interface),
       mListWidget(new QListWidget)
 {
-    Q_FOREACH (const auto &collection, interface->allAlbums()) {
+    const auto allAlbums = interface->allAlbums();
+    for (const auto &collection : allAlbums) {
         QListWidgetItem *item = new QListWidgetItem(mListWidget);
         QString name = collection.name();
         int imageCount = collection.images().size();
@@ -53,7 +54,8 @@ QList<KIPI::ImageCollection> KSGKipiImageCollectionSelector::selectedImageCollec
     QList<KIPI::ImageCollection> selectedList;
     if (item) {
         QString name = item->data(Qt::UserRole).toString();
-        Q_FOREACH (const auto &collection, mInterface->allAlbums()) {
+        const auto allAlbums = mInterface->allAlbums();
+        for (const auto &collection : allAlbums) {
             if (collection.name() == name) {
                 selectedList.append(collection);
                 break;

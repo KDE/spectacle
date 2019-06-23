@@ -96,7 +96,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
-        Q_FOREACH(auto item, QImageWriter::supportedImageFormats()) {
+        const auto imageFormats = QImageWriter::supportedImageFormats();
+        for (auto item : imageFormats) {
             fmt = QString::fromLocal8Bit(item);
             if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
@@ -113,7 +114,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mSaveImageFormat = new QComboBox;
     mSaveImageFormat->addItems([&](){
         QStringList items;
-        Q_FOREACH(auto fmt, QImageWriter::supportedImageFormats()) {
+        const auto formats = QImageWriter::supportedImageFormats();
+        for (auto fmt : formats) {
             items.append(QString::fromLocal8Bit(fmt).toUpper());
         }
         return items;

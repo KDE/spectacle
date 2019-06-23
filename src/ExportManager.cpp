@@ -472,7 +472,8 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     SpectacleConfig *config = SpectacleConfig::instance();
 
     // construct the supported mimetype list
-    Q_FOREACH (auto mimeType, QImageWriter::supportedMimeTypes()) {
+    const auto mimeTypes = QImageWriter::supportedMimeTypes();
+    for (auto mimeType : mimeTypes) {
         supportedFilters.append(QString::fromUtf8(mimeType).trimmed());
     }
 

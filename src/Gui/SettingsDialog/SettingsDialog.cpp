@@ -66,7 +66,7 @@ void SettingsDialog::initPages()
 
 void SettingsDialog::accept()
 {
-    Q_FOREACH(auto page, mPages) {
+    for (auto page : qAsConst(mPages)) {
         SettingsPage *pageWidget = dynamic_cast<SettingsPage *>(page->widget());
         if (pageWidget) {
             pageWidget->saveChanges();
