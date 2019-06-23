@@ -151,7 +151,7 @@ int main(int argc, char **argv)
     new KDBusService(KDBusService::Multiple, &lCore);
     SpectacleDBusAdapter *lDBusAdapter = new SpectacleDBusAdapter(&lCore);
     QObject::connect(&lCore, &SpectacleCore::grabFailed, lDBusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
-    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, lCore, [&](const QUrl &savedAt) {
+    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, &lCore, [&](const QUrl &savedAt) {
         emit lDBusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &lCore);
