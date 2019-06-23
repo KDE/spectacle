@@ -490,7 +490,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 
     // launch the dialog
     if (dialog.exec() == QFileDialog::Accepted) {
-        const QUrl saveUrl = dialog.selectedUrls().first();
+        const QUrl saveUrl = dialog.selectedUrls().constFirst();
         if (saveUrl.isValid()) {
             if (save(saveUrl)) {
                 emit imageSaved(saveUrl);
