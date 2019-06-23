@@ -98,7 +98,7 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
             auto lIncludePointer = lGuiConfig.readEntry("includePointer", true);
             auto lIncludeDecorations = lGuiConfig.readEntry("includeDecorations", true);
             const Platform::GrabMode lCaptureMode = toPlatformGrabMode(theCaptureMode);
-            QTimer::singleShot(lMsec, [ this, lCaptureMode, lShutterMode, lIncludePointer, lIncludeDecorations ]() {
+            QTimer::singleShot(lMsec, this, [ this, lCaptureMode, lShutterMode, lIncludePointer, lIncludeDecorations ]() {
                 mPlatform->doGrab(lShutterMode, lCaptureMode, lIncludePointer, lIncludeDecorations);
             });
         }
@@ -161,7 +161,7 @@ void SpectacleCore::dbusStartAgent()
             case Actions::TakeNewScreenshot: {
                 auto lShutterMode = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? Platform::ShutterMode::Immediate : Platform::ShutterMode::OnClick;
                 auto lGrabMode = toPlatformGrabMode(ExportManager::instance()->captureMode());
-                QTimer::singleShot(KWindowSystem::compositingActive() ? 200 : 50, [this, lShutterMode, lGrabMode, lIncludePointer, lIncludeDecorations]() {
+                QTimer::singleShot(KWindowSystem::compositingActive() ? 200 : 50, this, [this, lShutterMode, lGrabMode, lIncludePointer, lIncludeDecorations]() {
                     mPlatform->doGrab(lShutterMode, lGrabMode, lIncludePointer, lIncludeDecorations);
                 });
                 break;
@@ -201,7 +201,7 @@ void SpectacleCore::takeNewScreenshot(Spectacle::CaptureMode theCaptureMode,
     // milliseconds is a good amount of wait time.
 
     auto lMsec = KWindowSystem::compositingActive() ? 200 : 50;
-    QTimer::singleShot(theTimeout + lMsec, [this, lGrabMode, theIncludePointer, theIncludeDecorations]() {
+    QTimer::singleShot(theTimeout + lMsec, this, [this, lGrabMode, theIncludePointer, theIncludeDecorations]() {
         mPlatform->doGrab(Platform::ShutterMode::Immediate, lGrabMode, theIncludePointer, theIncludeDecorations);
     });
 }
@@ -398,7 +398,7 @@ void SpectacleCore::initGui(bool theIncludePointer, bool theIncludeDecorations)
         auto lShutterMode = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? Platform::ShutterMode::Immediate : Platform::ShutterMode::OnClick;
         auto lGrabMode = toPlatformGrabMode(ExportManager::instance()->captureMode());
 
-        QTimer::singleShot(0, [this, lShutterMode, lGrabMode, theIncludePointer, theIncludeDecorations]() {
+        QTimer::singleShot(0, this, [this, lShutterMode, lGrabMode, theIncludePointer, theIncludeDecorations]() {
             mPlatform->doGrab(lShutterMode, lGrabMode, theIncludePointer, theIncludeDecorations);
         });
     }

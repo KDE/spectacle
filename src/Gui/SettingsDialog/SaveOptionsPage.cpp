@@ -71,7 +71,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mQualitySlider->setSliderPosition(SpectacleConfig::instance()->compressionQuality());
     mQualitySlider->setTickPosition(QSlider::TicksBelow);
     mQualitySlider->setTracking(true);
-    connect(mQualitySlider, &QSlider::valueChanged, [=](int value) {
+    connect(mQualitySlider, &QSlider::valueChanged, this, [=](int value) {
         qualityValue->setNum(value);
         markDirty();
     });
@@ -94,7 +94,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     QHBoxLayout *saveFieldLayout = new QHBoxLayout;
     mSaveNameFormat = new QLineEdit;
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
-    connect(mSaveNameFormat, &QLineEdit::textEdited, [&](const QString &newText) {
+    connect(mSaveNameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         Q_FOREACH(auto item, QImageWriter::supportedImageFormats()) {
             fmt = QString::fromLocal8Bit(item);
@@ -141,7 +141,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     fmtHelpText->setWordWrap(true);
     fmtHelpText->setTextFormat(Qt::RichText);
     fmtHelpText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
-    connect(fmtHelpText, &QLabel::linkActivated, [this](const QString& placeholder) {
+    connect(fmtHelpText, &QLabel::linkActivated, this, [this](const QString& placeholder) {
         mSaveNameFormat->insert(placeholder);
     });
     mainLayout->addWidget(fmtHelpText);

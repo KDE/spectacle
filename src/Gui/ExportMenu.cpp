@@ -84,7 +84,7 @@ void ExportMenu::getKServiceItems()
         QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
-        connect(action, &QAction::triggered, [=]() {
+        connect(action, &QAction::triggered, this, [=]() {
             const QUrl filename = mExportManager->getAutosaveFilename();
             mExportManager->doSave(filename);
             QList<QUrl> whereIs({ filename });
@@ -102,7 +102,7 @@ void ExportMenu::getKServiceItems()
     openWith->setText(i18n("Other Application..."));
     openWith->setShortcuts(KStandardShortcut::open());
 
-    connect(openWith, &QAction::triggered, [=]() {
+    connect(openWith, &QAction::triggered, this, [=]() {
         const QUrl filename = mExportManager->getAutosaveFilename();
         mExportManager->doSave(filename);
         QList<QUrl> whereIs({ filename });

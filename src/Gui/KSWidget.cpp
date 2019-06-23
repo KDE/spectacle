@@ -130,7 +130,7 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     connect(mTakeScreenshotButton, &QPushButton::clicked, this, &KSWidget::newScreenshotClicked);
 
     QShortcut *takeScreenshotShortcut = new QShortcut(QKeySequence(QKeySequence::New), mTakeScreenshotButton);
-    connect(takeScreenshotShortcut, &QShortcut::activated, [this]() {
+    connect(takeScreenshotShortcut, &QShortcut::activated, this, [this]() {
         mTakeScreenshotButton->animateClick(100);
     });
 

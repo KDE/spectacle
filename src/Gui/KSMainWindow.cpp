@@ -174,7 +174,7 @@ void KSMainWindow::init()
     mToolsMenu->addAction(KStandardAction::print(this, &KSMainWindow::showPrintDialog, this));
     mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
     mScreenRecorderToolsMenu->setIcon(QIcon::fromTheme(QStringLiteral("media-record")));
-    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, [this]()
+    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, this, [this]()
     {
         KMoreToolsMenuFactory *moreToolsMenuFactory = new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools"));
         moreToolsMenuFactory->setParentWidget(this);
