@@ -122,7 +122,7 @@ void ExportManager::setTimestamp(const QDateTime &timestamp)
 
 QString ExportManager::defaultSaveLocation() const
 {
-    QString savePath = SpectacleConfig::instance()->defaultSaveLocation().toString();
+    QString savePath = SpectacleConfig::instance()->defaultSaveLocation().toLocalFile();
     savePath = QDir::cleanPath(savePath);
 
     QDir savePathDir(savePath);
