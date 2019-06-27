@@ -378,7 +378,8 @@ void KSMainWindow::quit(const QuitBehavior quitBehavior)
 void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType,
                                      const MessageDuration messageDuration, const QList<QAction*>& actions)
 {
-    for (QAction* action: mMessageWidget->actions()) {
+    const auto messageWidgetActions = mMessageWidget->actions();
+    for (QAction* action: messageWidgetActions) {
         mMessageWidget->removeAction(action);
     }
     for (QAction* action : actions) {

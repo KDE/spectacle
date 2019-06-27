@@ -401,7 +401,8 @@ QPixmap PlatformXcb::getToplevelPixmap(QRect theRect, bool theBlendPointer)
         theRect = getDrawableGeometry(lRootWindow);
     } else {
         QRegion lScreenRegion;
-        for (auto lScreen: QGuiApplication::screens()) {
+        const auto lScreens = QGuiApplication::screens();
+        for (auto lScreen: lScreens) {
             auto lScreenRect = lScreen->geometry();
 
             // Do not use setSize() here, because QSize::operator*=()
@@ -473,7 +474,8 @@ void PlatformXcb::grabAllScreens(bool theIncludePointer)
 void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
 {
     auto lCursorPosition = QCursor::pos();
-    for (auto lScreen: QGuiApplication::screens()) {
+    const auto lScreens = QGuiApplication::screens();
+    for (auto lScreen: lScreens) {
         auto lScreenRect = lScreen->geometry();
         if (!lScreenRect.contains(lCursorPosition)) {
             continue;
