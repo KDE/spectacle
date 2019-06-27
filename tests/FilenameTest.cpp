@@ -35,7 +35,7 @@ void FilenameTest::testStrings()
 {
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("Screenshot")), QStringLiteral("Screenshot"));
     // empty string produces Screenshot per default
-    QCOMPARE(mExportManager->formatFilename(QStringLiteral("")), QStringLiteral("Screenshot"));
+    QCOMPARE(mExportManager->formatFilename(QString()), QStringLiteral("Screenshot"));
     // not a placeholder
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("%")), QStringLiteral("%"));
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("%K")), QStringLiteral("%K"));
