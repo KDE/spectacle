@@ -97,7 +97,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
-        for (auto item : imageFormats) {
+        for (const auto &item : imageFormats) {
             fmt = QString::fromLocal8Bit(item);
             if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
@@ -115,7 +115,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mSaveImageFormat->addItems([&](){
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
-        for (auto fmt : formats) {
+        for (const auto &fmt : formats) {
             items.append(QString::fromLocal8Bit(fmt).toUpper());
         }
         return items;

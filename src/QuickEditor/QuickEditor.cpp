@@ -108,7 +108,7 @@ QuickEditor::QuickEditor(const QPixmap& thePixmap, QWidget *parent) :
         };
         for (auto& pair : mBottomHelpText) {
             prepare(pair.first);
-            for (auto item : pair.second) {
+            for (auto &item : pair.second) {
                 prepare(item);
             }
         }

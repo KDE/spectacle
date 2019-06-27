@@ -473,7 +473,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 
     // construct the supported mimetype list
     const auto mimeTypes = QImageWriter::supportedMimeTypes();
-    for (auto mimeType : mimeTypes) {
+    for (const auto &mimeType : mimeTypes) {
         supportedFilters.append(QString::fromUtf8(mimeType).trimmed());
     }
 
