@@ -34,6 +34,7 @@
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
+#include <QtMath>
 #include <QVariantAnimation>
 #include <QVBoxLayout>
 
@@ -290,7 +291,11 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
     delayAnimation->setEndValue(1.0);
     delayAnimation->setDuration(timer->interval());
     connect(delayAnimation, &QVariantAnimation::valueChanged, this, [=] {
-        unityUpdate({ {QStringLiteral("progress"), delayAnimation->currentValue().toDouble()} });
+        const double progress = delayAnimation->currentValue().toDouble();
+        const double timeoutInSeconds = theTimeout / 1000.0;
+        unityUpdate({ {QStringLiteral("progress"), progress} });
+        setWindowTitle(i18ncp("@title:window", "%1 second", "%1 seconds",
+            qMin(int(timeoutInSeconds), qCeil((1 - progress) * timeoutInSeconds))));
     });
     connect(timer, &QTimer::timeout, this, [=] {
         this->hide();
