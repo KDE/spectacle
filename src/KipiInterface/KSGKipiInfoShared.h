@@ -24,7 +24,6 @@
 #ifndef KSGKIPIINFOSHARED_H
 #define KSGKIPIINFOSHARED_H
 
-#include <KLocalizedString>
 
 #include <KIPI/ImageInfoShared>
 #include <KIPI/Interface>

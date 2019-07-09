@@ -30,7 +30,6 @@
 #include <QDesktopServices>
 #include <QDBusConnection>
 #include <QDBusMessage>
-#include <QJsonArray>
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
@@ -49,7 +48,6 @@
 #include <KIO/OpenFileManagerWindowJob>
 #include <KLocalizedString>
 #include <KStandardAction>
-#include <KStandardGuiItem>
 #include <KWindowSystem>
 
 static const int DEFAULT_WINDOW_HEIGHT = 420;

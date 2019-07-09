@@ -31,14 +31,12 @@
 #include <QClipboard>
 #include <QPainter>
 #include <QFileDialog>
-#include <QBuffer>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QMimeData>
 #include <QString>
 
 #include <KSharedConfig>
-#include <KConfigGroup>
 #include <KIO/ListJob>
 #include <KIO/MkpathJob>
 #include <KIO/FileCopyJob>

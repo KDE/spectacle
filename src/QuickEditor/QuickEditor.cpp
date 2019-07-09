@@ -18,6 +18,8 @@
  */
 
 #include <KLocalizedString>
+#include <QGuiApplication>
+#include <QScreen>
 
 #include "QuickEditor.h"
 #include "SpectacleConfig.h"

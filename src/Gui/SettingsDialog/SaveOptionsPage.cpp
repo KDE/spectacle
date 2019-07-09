@@ -29,7 +29,6 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QFormLayout>
-#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QComboBox>
 #include <QImageWriter>

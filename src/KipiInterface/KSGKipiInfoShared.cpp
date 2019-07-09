@@ -21,6 +21,7 @@
 */
 
 #include "KSGKipiInfoShared.h"
+#include <KLocalizedString>
 
 KSGKipiInfoShared::KSGKipiInfoShared(KIPI::Interface *interface, const QUrl &url) :
     KIPI::ImageInfoShared(interface, url)

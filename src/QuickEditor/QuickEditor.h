@@ -24,8 +24,6 @@
 #include <QPainter>
 #include <QStaticText>
 #include <QWidget>
-#include <QScreen>
-#include <QGuiApplication>
 #include <utility>
 #include <vector>
 

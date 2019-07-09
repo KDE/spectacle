@@ -20,6 +20,9 @@
  */
 
 #include "KSImageWidget.h"
+#include <KLocalizedString>
+#include <QGuiApplication>
+#include <QStyleHints>
 
 KSImageWidget::KSImageWidget(QWidget *parent):
     QLabel(parent),

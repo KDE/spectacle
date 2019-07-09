@@ -22,9 +22,7 @@
 #include <KLocalizedString>
 #include <KWindowSystem>
 
-#include <KGlobalAccel>
 
-#include <QDebug>
 
 SpectacleConfig::SpectacleConfig(QObject *parent) :
     QObject(parent)

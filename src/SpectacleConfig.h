@@ -20,7 +20,6 @@
 #ifndef SPECTACLECONFIG_H
 #define SPECTACLECONFIG_H
 
-#include <QAction>
 #include <QObject>
 #include <QUrl>
 #include <QRect>

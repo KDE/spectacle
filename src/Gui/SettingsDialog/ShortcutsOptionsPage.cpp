@@ -2,11 +2,8 @@
 
 #include "SpectacleConfig.h"
 
-#include <KLocalizedString>
 #include <KShortcutsEditor>
 
-#include <QButtonGroup>
-#include <QRadioButton>
 #include <QVBoxLayout>
 
 ShortcutsOptionsPage::ShortcutsOptionsPage(QWidget* parent) : SettingsPage(parent)

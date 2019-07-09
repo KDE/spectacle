@@ -27,7 +27,6 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QDebug>
 #include <QFormLayout>
 #include <QGridLayout>
 #include <QLabel>

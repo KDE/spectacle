@@ -3,7 +3,6 @@
 #include <QCoreApplication>
 #include <QDBusInterface>
 #include <QString>
-#include <QDebug>
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigGroup>

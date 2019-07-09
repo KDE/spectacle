@@ -21,6 +21,8 @@
 */
 
 #include "KSGKipiImageCollectionSelector.h"
+#include <KLocalizedString>
+#include <QVBoxLayout>
 
 KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *interface, QWidget *parent)
     : KIPI::ImageCollectionSelector(parent),

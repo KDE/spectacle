@@ -24,8 +24,6 @@
 #ifndef KSGKIPIIMAGECOLLECTIONSHARED_H
 #define KSGKIPIIMAGECOLLECTIONSHARED_H
 
-#include <QObject>
-#include <QDir>
 #include <QUrl>
 
 #include <KIPI/ImageCollectionShared>

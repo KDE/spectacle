@@ -29,7 +29,6 @@
 #include <KIPI/Plugin>
 #endif
 
-#include <QDebug>
 #include <QJsonArray>
 #include <QTimer>
 

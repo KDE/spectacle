@@ -21,16 +21,12 @@
 
 #pragma once
 
-#include <QGuiApplication>
-#include <QStyleHints>
 #include <QLabel>
-#include <QColor>
 #include <QMouseEvent>
 #include <QPoint>
 #include <QPixmap>
 #include <QGraphicsDropShadowEffect>
 
-#include <KLocalizedString>
 
 namespace SpectacleImage {
     static const int SHADOW_RADIUS = 5;

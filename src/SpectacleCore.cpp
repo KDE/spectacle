@@ -31,7 +31,6 @@
 
 #include <QApplication>
 #include <QClipboard>
-#include <QDebug>
 #include <QDir>
 #include <QDrag>
 #include <QKeySequence>

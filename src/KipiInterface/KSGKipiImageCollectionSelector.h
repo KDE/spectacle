@@ -24,9 +24,7 @@
 #define KSGKIPIIMAGECOLLECTIONSELECTOR_H
 
 #include <QListWidget>
-#include <QVBoxLayout>
 
-#include <KLocalizedString>
 
 #include <KIPI/Interface>
 #include <KIPI/ImageCollection>
