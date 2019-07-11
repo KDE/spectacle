@@ -273,6 +273,12 @@ void KSMainWindow::moveEvent(QMoveEvent *event)
 // slots
 void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations)
 {
+    if (theTimeout < 0) { // OnClick is checked (always the case on Wayland)
+        hide();
+        emit newScreenshotRequest(theCaptureMode, theTimeout, theIncludePointer, theIncludeDecorations);
+        return;
+    }
+
     showMinimized();
     mMessageWidget->hide();
     QTimer* timer = new QTimer;
