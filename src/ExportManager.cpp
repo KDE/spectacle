@@ -33,7 +33,6 @@
 #include <QFileDialog>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
-#include <QMimeData>
 #include <QString>
 
 #include <KSharedConfig>
@@ -221,7 +220,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
             // ... check the file names for string matching token with padding specified in result
             const QStringList filteredFiles = fileNames.filter(fileNumberRE);
 
-            // if there are files in the direcory that look like the file name with sequential numbering
+            // if there are files in the directory that look like the file name with sequential numbering
             if (filteredFiles.length() > 0) {
                 // loop through filtered file names looking for highest number
                 for (const QString &filteredFile: filteredFiles) {
