@@ -308,6 +308,14 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
         emit newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
     });
 
+    connect(mKSWidget, &KSWidget::screenshotCanceled, timer, [=] {
+        timer->stop();
+        timer->deleteLater();
+        restoreWindowTitle();
+        unityUpdate({ {QStringLiteral("progress-visible"), false} });
+    });
+
+
     unityUpdate({   {QStringLiteral("progress-visible"), true},
                     {QStringLiteral("progress"), 0 } });
     timer->start();
@@ -316,16 +324,22 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
 
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 {
-    mKSWidget->setScreenshotPixmap(pixmap);
-    mExportMenu->imageUpdated();
-
-    setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
-    setWindowModified(true);
-
+    if (!pixmap.isNull()) {
+        mKSWidget->setScreenshotPixmap(pixmap);
+        mExportMenu->imageUpdated();
+        setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
+        setWindowModified(true);
+    } else {
+        restoreWindowTitle();
+    }
+    mKSWidget->setButtonState(KSWidget::State::TakeNewScreenshot);
     show();
     activateWindow();
-
-    resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
+    /* NOTE windowWidth only produces the right result if it is called after the window is visible.
+     * Because of this the call is not moved into the if above */
+    if(!pixmap.isNull()) {
+        resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
+    }
 }
 
 void KSMainWindow::showPrintDialog()
@@ -488,5 +502,14 @@ void KSMainWindow::saveAs()
     const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
     if (ExportManager::instance()->doSaveAs(this, /* notify */ quitChecked) && quitChecked) {
         quit(QuitBehavior::QuitExternally);
+    }
+}
+
+void KSMainWindow::restoreWindowTitle()
+{
+    if (isWindowModified()) {
+        setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
+    } else {
+        setWindowTitle(SpectacleConfig::instance()->lastSaveFile().fileName());
     }
 }

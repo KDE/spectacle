@@ -24,14 +24,15 @@
 #include "SmartSpinBox.h"
 #include "SpectacleConfig.h"
 
+#include <QAction>
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFormLayout>
 #include <QGridLayout>
 #include <QLabel>
-#include <QPushButton>
 #include <QShortcut>
+#include <QToolButton>
 
 #include <KLocalizedString>
 
@@ -121,17 +122,23 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mContentOptionsForm->addWidget(mQuitAfterSaveOrCopy);
     mContentOptionsForm->setContentsMargins(24, 0, 0, 0);
 
-    // the take a new screenshot button
-    mTakeScreenshotButton = new QPushButton(i18n("Take a New Screenshot"), this);
-    mTakeScreenshotButton->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
-    mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    mTakeScreenshotButton->setFocus();
-    connect(mTakeScreenshotButton, &QPushButton::clicked, this, &KSWidget::newScreenshotClicked);
+    mTakeNewScreenshotAction = new QAction(QIcon::fromTheme(QStringLiteral("spectacle")), i18n("Take a New Screenshot"), this);
+    mTakeNewScreenshotAction->setShortcut(QKeySequence::New);
+    connect(mTakeNewScreenshotAction, &QAction::triggered, this, &KSWidget::newScreenshotClicked);
 
-    QShortcut *takeScreenshotShortcut = new QShortcut(QKeySequence(QKeySequence::New), mTakeScreenshotButton);
-    connect(takeScreenshotShortcut, &QShortcut::activated, this, [this]() {
-        mTakeScreenshotButton->animateClick(100);
+    mCancelAction = new QAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("Cancel"), this);
+    mCancelAction->setShortcut(QKeySequence::Cancel);
+    connect(mCancelAction, &QAction::triggered, this, [this] {
+        emit screenshotCanceled();
+        setButtonState(State::TakeNewScreenshot);
     });
+
+    // the take a new screenshot button
+    mTakeScreenshotButton = new QToolButton(this);
+    mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    mTakeScreenshotButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    setButtonState(State::TakeNewScreenshot);
+    mTakeScreenshotButton->setFocus();
 
     // finally, finish up the layouts
     mRightLayout = new QVBoxLayout;
@@ -211,6 +218,7 @@ void KSWidget::newScreenshotClicked()
         !(mCaptureTransientOnly->isChecked())) {
         lMode = Spectacle::CaptureMode::TransientWithParent;
     }
+    setButtonState(State::Cancel);
     emit newScreenshotRequest(lMode, lDelay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
 }
 
@@ -252,6 +260,20 @@ void KSWidget::captureModeChanged(int theIndex)
     case Spectacle::CaptureMode::InvalidChoice:
     default:
         qCWarning(SPECTACLE_GUI_LOG) << "Skipping invalid or unreachable enum value";
+        break;
+    }
+}
+
+void KSWidget::setButtonState(State state)
+{
+    switch (state) {
+    case State::TakeNewScreenshot:
+        mTakeScreenshotButton->removeAction(mCancelAction);
+        mTakeScreenshotButton->setDefaultAction(mTakeNewScreenshotAction);
+        break;
+    case State::Cancel:
+        mTakeScreenshotButton->removeAction(mTakeNewScreenshotAction);
+        mTakeScreenshotButton->setDefaultAction(mCancelAction);
         break;
     }
 }
