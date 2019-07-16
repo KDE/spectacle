@@ -27,6 +27,7 @@
 #include "SpectacleCommon.h"
 #include "Platforms/Platform.h"
 
+class QAction;
 class QGridLayout;
 class QHBoxLayout;
 class QVBoxLayout;
@@ -34,7 +35,7 @@ class QFormLayout;
 class QComboBox;
 class QCheckBox;
 class QLabel;
-class QPushButton;
+class QToolButton;
 
 class KSImageWidget;
 class SmartSpinBox;
@@ -48,18 +49,25 @@ class KSWidget : public QWidget
     explicit KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent = nullptr);
     virtual ~KSWidget() = default;
 
+    enum class State {
+        TakeNewScreenshot,
+        Cancel
+    };
+
     int imagePaddingWidth() const;
 
 	Q_SIGNALS:
 
     void dragInitiated();
     void newScreenshotRequest(Spectacle::CaptureMode theCaptureMode, int theCaptureDelat, bool theIncludePointer, bool theIncludeDecorations);
+    void screenshotCanceled();
 
 	public Q_SLOTS:
 
     void setScreenshotPixmap(const QPixmap &thePixmap);
     void lockOnClickDisabled();
     void lockOnClickEnabled();
+    void setButtonState(State state);
 
     private Q_SLOTS:
 
@@ -75,7 +83,7 @@ class KSWidget : public QWidget
     QFormLayout   *mCaptureModeForm              { nullptr };
     QVBoxLayout   *mContentOptionsForm           { nullptr };
     KSImageWidget *mImageWidget                  { nullptr };
-    QPushButton   *mTakeScreenshotButton         { nullptr };
+    QToolButton   *mTakeScreenshotButton;
     QComboBox     *mCaptureArea                  { nullptr };
     SmartSpinBox  *mDelayMsec                    { nullptr };
     QCheckBox     *mCaptureOnClick               { nullptr };
@@ -86,4 +94,6 @@ class KSWidget : public QWidget
     QLabel        *mCaptureModeLabel             { nullptr };
     QLabel        *mContentOptionsLabel          { nullptr };
     bool           mTransientWithParentAvailable { false };
+    QAction       *mTakeNewScreenshotAction;
+    QAction       *mCancelAction;
 };

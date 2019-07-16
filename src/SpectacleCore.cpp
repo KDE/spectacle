@@ -282,8 +282,7 @@ void SpectacleCore::screenshotFailed()
         emit allDone();
         return;
     case StartMode::Gui:
-        mMainWindow->activateWindow();
-        mMainWindow->show();
+        mMainWindow->setScreenshotAndShow(QPixmap());
     }
 }
 

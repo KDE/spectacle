@@ -77,6 +77,7 @@ class KSMainWindow: public QDialog
     void save();
     void saveAs();
     int windowWidth(const QPixmap &pixmap) const;
+    void restoreWindowTitle();
 
     public Q_SLOTS:
 
