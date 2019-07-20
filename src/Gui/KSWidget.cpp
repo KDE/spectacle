@@ -23,6 +23,7 @@
 #include "KSImageWidget.h"
 #include "SmartSpinBox.h"
 #include "SpectacleConfig.h"
+#include "ProgressButton.h"
 
 #include <QAction>
 #include <QApplication>
@@ -134,7 +135,7 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     });
 
     // the take a new screenshot button
-    mTakeScreenshotButton = new QToolButton(this);
+    mTakeScreenshotButton = new ProgressButton(this);
     mTakeScreenshotButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     mTakeScreenshotButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     setButtonState(State::TakeNewScreenshot);
@@ -270,6 +271,7 @@ void KSWidget::setButtonState(State state)
     case State::TakeNewScreenshot:
         mTakeScreenshotButton->removeAction(mCancelAction);
         mTakeScreenshotButton->setDefaultAction(mTakeNewScreenshotAction);
+        mTakeScreenshotButton->setProgress(0);
         break;
     case State::Cancel:
         mTakeScreenshotButton->removeAction(mTakeNewScreenshotAction);
@@ -277,3 +279,9 @@ void KSWidget::setButtonState(State state)
         break;
     }
 }
+
+void KSWidget::setProgress(double progress)
+{
+    mTakeScreenshotButton->setProgress(progress);
+}
+

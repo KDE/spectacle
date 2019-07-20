@@ -33,6 +33,7 @@ set(
         Gui/KSWidget.cpp
         Gui/KSImageWidget.cpp
         Gui/ExportMenu.cpp
+        Gui/ProgressButton.cpp
         Gui/SmartSpinBox.cpp
         Gui/SettingsDialog/SettingsDialog.cpp
         Gui/SettingsDialog/SettingsPage.cpp

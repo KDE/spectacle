@@ -35,9 +35,9 @@ class QFormLayout;
 class QComboBox;
 class QCheckBox;
 class QLabel;
-class QToolButton;
 
 class KSImageWidget;
+class ProgressButton;
 class SmartSpinBox;
 
 class KSWidget : public QWidget
@@ -48,6 +48,7 @@ class KSWidget : public QWidget
 
     explicit KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent = nullptr);
     virtual ~KSWidget() = default;
+
 
     enum class State {
         TakeNewScreenshot,
@@ -68,6 +69,7 @@ class KSWidget : public QWidget
     void lockOnClickDisabled();
     void lockOnClickEnabled();
     void setButtonState(State state);
+    void setProgress(double progress);
 
     private Q_SLOTS:
 
@@ -83,7 +85,7 @@ class KSWidget : public QWidget
     QFormLayout   *mCaptureModeForm              { nullptr };
     QVBoxLayout   *mContentOptionsForm           { nullptr };
     KSImageWidget *mImageWidget                  { nullptr };
-    QToolButton   *mTakeScreenshotButton;
+    ProgressButton*mTakeScreenshotButton;
     QComboBox     *mCaptureArea                  { nullptr };
     SmartSpinBox  *mDelayMsec                    { nullptr };
     QCheckBox     *mCaptureOnClick               { nullptr };

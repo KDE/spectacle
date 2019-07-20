@@ -297,6 +297,7 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
     connect(delayAnimation, &QVariantAnimation::valueChanged, this, [=] {
         const double progress = delayAnimation->currentValue().toDouble();
         const double timeoutInSeconds = theTimeout / 1000.0;
+        mKSWidget->setProgress(progress);
         unityUpdate({ {QStringLiteral("progress"), progress} });
         setWindowTitle(i18ncp("@title:window", "%1 second", "%1 seconds",
             qMin(int(timeoutInSeconds), qCeil((1 - progress) * timeoutInSeconds))));
@@ -304,6 +305,7 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
     connect(timer, &QTimer::timeout, this, [=] {
         this->hide();
         timer->deleteLater();
+        mKSWidget->setProgress(0);
         unityUpdate({ {QStringLiteral("progress-visible"), false} });
         emit newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
     });
