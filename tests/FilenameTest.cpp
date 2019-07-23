@@ -92,6 +92,6 @@ void FilenameTest::testCombined()
              QStringLiteral("App_Date_20190322_Time_10:43:25%F"));
 }
 
-QTEST_MAIN(FilenameTest)
+QTEST_GUILESS_MAIN(FilenameTest)
 
 #include "FilenameTest.moc"
