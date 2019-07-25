@@ -36,6 +36,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     setWindowTitle(i18nc("@title:window", "Configure"));
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     resize(600, 550);
+    setFaceType(List);
 
     // init all pages
     QMetaObject::invokeMethod(this, "initPages", Qt::QueuedConnection);
