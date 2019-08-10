@@ -29,8 +29,8 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-03-20</date>
-        <releaseinfo>Applications 19.04</releaseinfo>
+        <date>2019-08-10</date>
+        <releaseinfo>Applications 19.08</releaseinfo>
 
         <abstract>
             <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -157,6 +157,10 @@
                 </itemizedlist>
 
                 <para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 1 seconds using the spinbox buttons or the keyboard.</para>
+                
+                <para>When taking a time-delayed screenshot, &spectacle; displays the remaining time before the screenshot is taken in its window title, and makes it visible in its Task Manager item. &spectacle;'s Task Manager button also shows a progress bar, so you can keep track of when the snap will be taken.</para>
+                
+                <para>While waiting for the delayed screenshot, you can un-minimize &spectacle; and the <guibutton>Take a New Screenshot</guibutton> button will turn into a <guibutton>Cancel</guibutton> button. The progress bar will also be shown here, giving you the chance to stop the countdown.</para>
 
                 <para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &spectacle; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
             </sect2>
