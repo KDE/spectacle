@@ -40,7 +40,7 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
 
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
+add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII)
 
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
@@ -66,6 +66,10 @@ find_package(
         GlobalAccel
         XmlGui
 )
+
+if(${KF5Config_VERSION} STRGREATER "5.56.0")
+	add_definitions(-DQT_NO_FOREACH)
+endif()
 
 # optional components
 
