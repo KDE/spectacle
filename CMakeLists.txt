@@ -12,7 +12,7 @@ cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION     "5.10.0")
-set(KF5_MIN_VERSION    "5.53.0")
+set(KF5_MIN_VERSION    "5.56.0")
 set(PLASMA_MIN_VERSION "5.12.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
@@ -40,7 +40,7 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
 
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII)
+add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
 
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
@@ -66,10 +66,6 @@ find_package(
         GlobalAccel
         XmlGui
 )
-
-if(${KF5Config_VERSION} STRGREATER "5.56.0")
-	add_definitions(-DQT_NO_FOREACH)
-endif()
 
 # optional components
 
