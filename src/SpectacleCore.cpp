@@ -327,12 +327,20 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {
             if (index == 0) {
                 new KRun(theSavedAt, nullptr);
-                QTimer::singleShot(250, this, &SpectacleCore::allDone);
+                QTimer::singleShot(250, this, [this] {
+                    if (mStartMode != StartMode::Gui) {
+                        emit allDone();
+                    }
+                });
+            }
+        });
+        connect(lNotify, &QObject::destroyed, this, [this] {
+            if (mStartMode != StartMode::Gui) {
+                emit allDone();
             }
         });
     }
 
-    connect(lNotify, &QObject::destroyed, this, &SpectacleCore::allDone);
     lNotify->sendEvent();
 }
 
