@@ -47,6 +47,16 @@ class KSMainWindow: public QDialog
     explicit KSMainWindow(const Platform::GrabModes &theGrabModes, const Platform::ShutterModes &theShutterModes, QWidget *parent = nullptr);
     virtual ~KSMainWindow() = default;
 
+    enum class MessageDuration {
+        AutoHide,
+        Persistent
+    };
+
+    void showInlineMessage(const QString& message,
+                        const KMessageWidget::MessageType messageType,
+                        const MessageDuration messageDuration = MessageDuration::AutoHide,
+                        const QList<QAction*>& actions  = {});
+
     private:
 
     enum class QuitBehavior {
@@ -54,15 +64,6 @@ class KSMainWindow: public QDialog
         QuitExternally
     };
     void quit(const QuitBehavior quitBehavior = QuitBehavior::QuitImmediately);
-
-    enum class MessageDuration {
-        AutoHide,
-        Persistent
-    };
-    void showInlineMessage(const QString& message,
-                           const KMessageWidget::MessageType messageType,
-                           const MessageDuration messageDuration = MessageDuration::AutoHide,
-                           const QList<QAction*>& actions  = {});
 
     private Q_SLOTS:
 

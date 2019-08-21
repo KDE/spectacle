@@ -51,7 +51,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &SaveOptionsPage::markDirty);
     mainLayout->addRow(QString(), mCopyPathToClipboard);
 
-
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // Compression quality slider and current value display

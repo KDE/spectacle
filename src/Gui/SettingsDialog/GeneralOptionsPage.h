@@ -45,9 +45,10 @@ class GeneralOptionsPage : public SettingsPage
 
     private:
 
-    QButtonGroup* mPrintKeyActionGroup;
-    QRadioButton* mRememberAlways;
-    QRadioButton* mRememberUntilClosed;
+    QButtonGroup *mPrintKeyActionGroup;
+    QRadioButton *mRememberAlways;
+    QRadioButton *mRememberUntilClosed;
+    QButtonGroup *mAfterTakingScreenshotGroup;
     QCheckBox *mUseLightBackground;
     QCheckBox *mShowMagnifier;
     QCheckBox *mReleaseToCapture;

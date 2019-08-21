@@ -25,6 +25,7 @@
 #include <KGlobalAccel>
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <KMessageWidget>
 #include <KNotification>
 #include <KRun>
 #include <KWindowSystem>
@@ -51,7 +52,8 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mPlatform(loadPlatform()),
     mMainWindow(nullptr),
     mIsGuiInited(false),
-    mCopyToClipboard(theCopyToClipboard)
+    mCopySaveLocationToClipboard(theCopyToClipboard),
+    mCopyImageToClipboard(false)
 {
     auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup lGuiConfig(lConfig, "GuiConfig");
@@ -245,7 +247,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
                 connect(lExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
             }
 
-            if (mCopyToClipboard) {
+            if (mCopySaveLocationToClipboard) {
                 lExportManager->doCopyToClipboard(mNotify);
             } else {
                 QUrl lSavePath = (mStartMode == StartMode::Background && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
@@ -262,6 +264,20 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         break;
     case StartMode::Gui:
         mMainWindow->setScreenshotAndShow(thePixmap);
+
+        mCopyImageToClipboard = (SpectacleConfig::instance()->afterTakingScreenshotAction() == 1);
+        using Actions = SpectacleConfig::AfterTakingScreenshotAction;
+        switch (SpectacleConfig::instance()->afterTakingScreenshotAction()) {
+        case Actions::DoNothing:
+            break;
+        case Actions::CopyImageToClipboard:
+            {
+                lExportManager->doCopyToClipboard(false);
+                mMainWindow->showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
+                                                KMessageWidget::Information);
+            }
+            break;
+        }
     }
 }
 
@@ -313,7 +329,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
-    if (mCopyToClipboard) {
+    if (mCopySaveLocationToClipboard) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
@@ -321,7 +337,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
     }
 
-    if (!mCopyToClipboard) {
+    if (!mCopySaveLocationToClipboard) {
         lNotify->setUrls({theSavedAt});
         lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {

@@ -57,6 +57,19 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
         mainLayout->addRow(QString(), focusWindow);
     }
 
+    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
+
+    // copy file or file location to clipboard after taking a screenshot
+    QRadioButton *doNothing = new QRadioButton(i18n("Do nothing"), this);
+    QRadioButton *copyImageToClipboard = new QRadioButton(i18n("Copy image to clipboard"), this);
+    mAfterTakingScreenshotGroup = new QButtonGroup(this);
+    mAfterTakingScreenshotGroup->setExclusive(true);
+    mAfterTakingScreenshotGroup->addButton(doNothing, SpectacleConfig::AfterTakingScreenshotAction::DoNothing);
+    mAfterTakingScreenshotGroup->addButton(copyImageToClipboard, SpectacleConfig::AfterTakingScreenshotAction::CopyImageToClipboard);
+    connect(mAfterTakingScreenshotGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(i18n("After taking a screenshot:"), doNothing);
+    mainLayout->addRow(QString(), copyImageToClipboard);
+
     // Rectangular Region settings
     KTitleWidget *titleWidget = new KTitleWidget(this);
     titleWidget->setText(i18n("Rectangular Region"));
@@ -114,6 +127,7 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
     cfgManager->setUseReleaseToCaptureChecked(mReleaseToCapture->checkState() == Qt::Checked);
     cfgManager->setPrintKeyActionRunning(static_cast<SpectacleConfig::PrintKeyActionRunning>(mPrintKeyActionGroup->checkedId()));
+    cfgManager->setAfterTakingScreenshotAction(static_cast<SpectacleConfig::AfterTakingScreenshotAction>(mAfterTakingScreenshotGroup->checkedId()));
 
     mChangesMade = false;
 }
@@ -128,6 +142,7 @@ void GeneralOptionsPage::resetChanges()
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
     mReleaseToCapture->setChecked(cfgManager->useReleaseToCapture());
     mPrintKeyActionGroup->button(cfgManager->printKeyActionRunning())->setChecked(true);
+    mAfterTakingScreenshotGroup->button(cfgManager->afterTakingScreenshotAction())->setChecked(true);
 
     mChangesMade = false;
 }

@@ -45,14 +45,19 @@ class SpectacleConfig : public QObject
 
     QString defaultFilename() const;
     QString defaultTimestampTemplate() const;
-    
+
     QUrl lastSaveAsLocation() const;
     QUrl lastSaveLocation() const;
 
-     enum PrintKeyActionRunning : int {
+    enum PrintKeyActionRunning : int {
         TakeNewScreenshot = 0,
         StartNewInstance,
         FocusWindow
+    };
+
+    enum AfterTakingScreenshotAction : int {
+        DoNothing = 0,
+        CopyImageToClipboard
     };
 
     KActionCollection* shortCutActions;
@@ -125,6 +130,9 @@ class SpectacleConfig : public QObject
 
     QUrl defaultSaveLocation() const;
     void setDefaultSaveLocation(const QUrl &location);
+
+    AfterTakingScreenshotAction afterTakingScreenshotAction() const;
+    void setAfterTakingScreenshotAction(AfterTakingScreenshotAction enabled);
 
     bool copySaveLocationToClipboard() const;
     void setCopySaveLocationToClipboard(bool enabled);

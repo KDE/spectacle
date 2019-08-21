@@ -358,6 +358,20 @@ void SpectacleConfig::setDefaultSaveLocation(const QUrl &location)
     mGeneralConfig.sync();
 }
 
+// copy file to clipboard after the screenshot has been made
+
+SpectacleConfig::AfterTakingScreenshotAction SpectacleConfig::afterTakingScreenshotAction() const
+{
+    int doNothing = static_cast<int>(SpectacleConfig::AfterTakingScreenshotAction::DoNothing);
+    return static_cast<SpectacleConfig::AfterTakingScreenshotAction>(mGeneralConfig.readEntry(QStringLiteral("afterTakingScreenshot"), doNothing));
+}
+
+void SpectacleConfig::setAfterTakingScreenshotAction (SpectacleConfig::AfterTakingScreenshotAction action)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("afterTakingScreenshot"), static_cast<int>(action));
+    mGeneralConfig.sync();
+}
+
 // copy file location to clipboard after saving
 
 bool SpectacleConfig::copySaveLocationToClipboard() const
