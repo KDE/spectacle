@@ -226,7 +226,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             mQuickEditor = std::make_unique<QuickEditor>(thePixmap);
             connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
             connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotFailed);
-            mQuickEditor->showFullScreen();
+            mQuickEditor->show();
             return;
         } else {
             mQuickEditor->hide();
