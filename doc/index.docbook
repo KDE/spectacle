@@ -29,8 +29,8 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-08-10</date>
-        <releaseinfo>Applications 19.08</releaseinfo>
+        <date>2019-08-22</date>
+        <releaseinfo>Applications 19.12</releaseinfo>
 
         <abstract>
             <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
@@ -267,6 +267,12 @@
                     <term><guilabel>Press screenshot key to</guilabel></term>
                     <listitem>
                         <para>When a shortcut to make screenshot is pressed and &spectacle; is already running it is possible to configure the behavior of the screenshoting system. You can choose between taking a new screenshot, opening of a new &spectacle; window, and returning focus to the existing &spectacle; window.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>After taking a screenshot</guilabel></term>
+                    <listitem>
+                        <para>Allows copying image to clipboard. The default action is <guilabel>Do nothing</guilabel>, &ie;, do not copy the image to clipboard.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
