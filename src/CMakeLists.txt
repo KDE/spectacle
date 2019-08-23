@@ -83,6 +83,7 @@ target_link_libraries(
         KF5::NewStuff
         KF5::GlobalAccel
         KF5::XmlGui
+        KF5::WaylandClient
 )
 
 if(XCB_FOUND)

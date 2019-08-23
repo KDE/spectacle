@@ -65,6 +65,7 @@ find_package(
         NewStuff
         GlobalAccel
         XmlGui
+        Wayland
 )
 
 if(${KF5Config_VERSION} STRGREATER "5.56.0")

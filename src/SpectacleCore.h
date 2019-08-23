@@ -30,6 +30,12 @@
 
 #include <memory>
 
+namespace KWayland {
+namespace Client {
+class PlasmaShell;
+}
+}
+
 using MainWindowPtr = std::unique_ptr<KSMainWindow>;
 using EditorPtr     = std::unique_ptr<QuickEditor>;
 
@@ -91,4 +97,5 @@ class SpectacleCore: public QObject
     EditorPtr     mQuickEditor;
     bool          mIsGuiInited;
     bool          mCopyToClipboard;
+    KWayland::Client::PlasmaShell *mWaylandPlasmashell;
 };

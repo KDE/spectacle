@@ -18,6 +18,8 @@
  */
 
 #include <KLocalizedString>
+#include <KWayland/Client/plasmashell.h>
+#include <KWayland/Client/surface.h>
 #include <QGuiApplication>
 #include <QScreen>
 
@@ -46,7 +48,7 @@ const int QuickEditor::magZoom = 5;
 const int QuickEditor::magPixels = 16;
 const int QuickEditor::magOffset = 32;
 
-QuickEditor::QuickEditor(const QPixmap& thePixmap, QWidget *parent) :
+QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent) :
     QWidget(parent),
     mMaskColor(QColor::fromRgbF(0, 0, 0, 0.15)),
     mStrokeColor(palette().highlight().color()),
@@ -84,7 +86,19 @@ QuickEditor::QuickEditor(const QPixmap& thePixmap, QWidget *parent) :
 
     dprI = 1.0 / devicePixelRatioF();
     setGeometry(0, 0, static_cast<int>(mPixmap.width() * dprI), static_cast<int>(mPixmap.height() * dprI));
-
+    // TODO This is a hack until a better interface is available
+    if (plasmashell) {
+        using namespace KWayland::Client;
+        winId();
+        auto surface = Surface::fromWindow(windowHandle());
+        if (!surface) {
+            return;
+        }
+        PlasmaShellSurface *plasmashellSurface = plasmashell->createSurface(surface, this);
+        plasmashellSurface->setRole(PlasmaShellSurface::Role::Panel);
+        plasmashellSurface->setPanelTakesFocus(true);
+        plasmashellSurface->setPosition(geometry().topLeft());
+    }
     if (config->rememberLastRectangularRegion()) {
         QRect cropRegion = config->cropRegion();
         if (!cropRegion.isEmpty()) {

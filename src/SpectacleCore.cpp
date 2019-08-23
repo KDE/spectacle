@@ -27,6 +27,9 @@
 #include <KMessageBox>
 #include <KNotification>
 #include <KRun>
+#include <KWayland/Client/connection_thread.h>
+#include <KWayland/Client/plasmashell.h>
+#include <KWayland/Client/registry.h>
 #include <KWindowSystem>
 
 #include <QApplication>
@@ -51,7 +54,8 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mPlatform(loadPlatform()),
     mMainWindow(nullptr),
     mIsGuiInited(false),
-    mCopyToClipboard(theCopyToClipboard)
+    mCopyToClipboard(theCopyToClipboard),
+    mWaylandPlasmashell(nullptr)
 {
     auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup lGuiConfig(lConfig, "GuiConfig");
@@ -87,6 +91,24 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     connect(lExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doCopyPath);
     connect(lExportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
     connect(mPlatform.get(), &Platform::windowTitleChanged, lExportManager, &ExportManager::setWindowTitle);
+
+    // Needed so the QuickEditor can go fullscreen on wayland
+    if (KWindowSystem::isPlatformWayland()) {
+        using namespace KWayland::Client;
+        ConnectionThread *connection = ConnectionThread::fromApplication(this);
+        if (!connection) {
+            return;
+        }
+        Registry *registry = new Registry(this);
+        registry->create(connection);
+        connect(registry, &Registry::plasmaShellAnnounced, this,
+            [this, registry] (quint32 name, quint32 version) {
+                mWaylandPlasmashell = registry->createPlasmaShell(name, version, this);
+            }
+        );
+        registry->setup();
+        connection->roundtrip();
+    }
 
     switch (theStartMode) {
     case StartMode::DBus:
@@ -223,7 +245,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 
     if (lExportManager->captureMode() == Spectacle::CaptureMode::RectangularRegion) {
         if(!mQuickEditor) {
-            mQuickEditor = std::make_unique<QuickEditor>(thePixmap);
+            mQuickEditor = std::make_unique<QuickEditor>(thePixmap, mWaylandPlasmashell);
             connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
             connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotFailed);
             mQuickEditor->show();
