@@ -65,6 +65,7 @@ find_package(
         NewStuff
         GlobalAccel
         XmlGui
+        Wayland
 )
 
 # optional components

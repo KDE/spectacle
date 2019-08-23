@@ -29,13 +29,19 @@
 
 class QMouseEvent;
 
+namespace KWayland {
+namespace Client {
+class PlasmaShell;
+}
+}
+
 class QuickEditor: public QWidget
 {
     Q_OBJECT
 
     public:
 
-    explicit QuickEditor(const QPixmap &thePixmap, QWidget *parent = nullptr);
+    explicit QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
     virtual ~QuickEditor() = default;
 
     private:
