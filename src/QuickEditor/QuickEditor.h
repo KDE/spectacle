@@ -74,15 +74,18 @@ class QuickEditor: public QWidget
     void drawDragHandles(QPainter& painter);
     void drawMagnifier(QPainter& painter);
     void drawMidHelpText(QPainter& painter);
-    void drawSelectionSizeTooltip(QPainter& painter);
+    void drawSelectionSizeTooltip(QPainter& painter, bool dragHandlesVisible);
     void setBottomHelpText();
     void layoutBottomHelpText();
     void setMouseCursor(const QPointF& pos);
     MouseState mouseLocation(const QPointF& pos);
 
-    static const qreal mouseAreaSize;
-    static const qreal cornerHandleRadius;
-    static const qreal midHandleRadius;
+    static const int handleRadiusMouse;
+    static const int handleRadiusTouch;
+    static const qreal increaseDragAreaFactor;
+    static const int minSpacingBetweenHandles;
+    static const int borderDragAreaSize;
+
     static const int selectionSizeThreshold;
 
     static const int selectionBoxPaddingX;
@@ -131,7 +134,12 @@ class QuickEditor: public QWidget
     QRect mPrimaryScreenGeo;
     int mbottomHelpLength;
 
-    Q_SIGNALS:
+    // Midpoints of handles
+    QVector<QPointF> mHandlePositions = QVector<QPointF> {8};
+    // Radius of handles is either handleRadiusMouse or handleRadiusTouch
+    int mHandleRadius;
+
+Q_SIGNALS:
 
     void grabDone(const QPixmap &thePixmap);
     void grabCancelled();

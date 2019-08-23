@@ -20,18 +20,22 @@
 #include <KLocalizedString>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QtCore/qmath.h>
 
 #include "QuickEditor.h"
 #include "SpectacleConfig.h"
 
-const qreal QuickEditor::mouseAreaSize = 20.0;
-const qreal QuickEditor::cornerHandleRadius = 8.0;
-const qreal QuickEditor::midHandleRadius = 5.0;
+const int QuickEditor::handleRadiusMouse = 9;
+const int QuickEditor::handleRadiusTouch = 12;
+const qreal QuickEditor::increaseDragAreaFactor = 2.0;
+const int QuickEditor::minSpacingBetweenHandles = 20;
+const int QuickEditor::borderDragAreaSize = 10;
+
 const int QuickEditor::selectionSizeThreshold = 100;
 
 const int QuickEditor::selectionBoxPaddingX = 5;
 const int QuickEditor::selectionBoxPaddingY = 4;
-const int QuickEditor::selectionBoxMarginY = 2;
+const int QuickEditor::selectionBoxMarginY = 5;
 
 bool QuickEditor::bottomHelpTextPrepared = false;
 const int QuickEditor::bottomHelpBoxPaddingX = 12;
@@ -71,7 +75,8 @@ QuickEditor::QuickEditor(const QPixmap& thePixmap, QWidget *parent) :
     mRememberRegion(SpectacleConfig::instance()->alwaysRememberRegion() || SpectacleConfig::instance()->rememberLastRectangularRegion()),
     mDisableArrowKeys(false),
     mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry()),
-    mbottomHelpLength(bottomHelpMaxLength)
+    mbottomHelpLength(bottomHelpMaxLength),
+    mHandleRadius(handleRadiusMouse)
 {
     SpectacleConfig *config = SpectacleConfig::instance();
     if (config->useLightRegionMaskColour()) {
@@ -287,8 +292,14 @@ int QuickEditor::boundsDown(int newTopLeftY, const bool mouse)
 
 void QuickEditor::mousePressEvent(QMouseEvent* event)
 {
+    if(event->source() == Qt::MouseEventNotSynthesized) {
+      mHandleRadius = handleRadiusMouse;
+    } else {
+      mHandleRadius = handleRadiusTouch;
+    }
+
     if (event->button() & Qt::LeftButton) {
-        /* NOTE  Workaround for Bug 407843  
+        /* NOTE  Workaround for Bug 407843
         * If we show the selection Widget when a right click menu is open we lose focus on X.
         * When the user clicks we get the mouse back. We can only grab the keyboard if we already
         * have mouse focus. So just grab it undconditionally here.
@@ -481,15 +492,14 @@ void QuickEditor::paintEvent(QPaintEvent*)
             painter.fillRect(rect, mMaskColor);
         }
 
-        drawSelectionSizeTooltip(painter);
-        if (mMouseDragState == MouseState::None) { // mouse is up
-            if ((mSelection.width() > 20) && (mSelection.height() > 20)) {
-                drawDragHandles(painter);
-            }
-
+        bool dragHandlesVisible = false;
+        if (mMouseDragState == MouseState::None) {
+            dragHandlesVisible = true;
+            drawDragHandles(painter);
         } else if (mMagnifierAllowed && (mShowMagnifier ^ mToggleMagnifier)) {
             drawMagnifier(painter);
         }
+        drawSelectionSizeTooltip(painter, dragHandlesVisible);
         drawBottomHelpText(painter);
     } else {
         drawMidHelpText(painter);
@@ -607,63 +617,69 @@ void QuickEditor::drawBottomHelpText(QPainter &painter)
     }
 }
 
-void QuickEditor::drawDragHandles(QPainter& painter)
+void QuickEditor::drawDragHandles(QPainter &painter)
 {
+    // Rectangular region
     const qreal left = mSelection.x();
-    const qreal width = mSelection.width();
-    const qreal centerX = left + width / 2.0;
-    const qreal right = left + width;
-
+    const qreal centerX = left + mSelection.width() / 2.0;
+    const qreal right = left + mSelection.width();
     const qreal top = mSelection.y();
-    const qreal height = mSelection.height();
-    const qreal centerY = top + height / 2.0;
-    const qreal bottom = top + height;
+    const qreal centerY = top + mSelection.height() / 2.0;
+    const qreal bottom = top + mSelection.height();
 
-    // start a path
+    // rectangle too small: make handles free-floating
+    qreal offset = 0;
+    // rectangle too close to screen edges: move handles on that edge inside the rectangle, so they're still visible
+    qreal offsetTop = 0;
+    qreal offsetRight = 0;
+    qreal offsetBottom = 0;
+    qreal offsetLeft = 0;
+
+    const qreal minDragHandleSpace = 4 * mHandleRadius + 2 * minSpacingBetweenHandles;
+    const qreal minEdgeLength = qMin(mSelection.width(), mSelection.height());
+    if (minEdgeLength < minDragHandleSpace) {
+        offset = (minDragHandleSpace - minEdgeLength) / 2.0;
+    } else {
+        QRect virtualScreenGeo = QGuiApplication::primaryScreen()->virtualGeometry();
+        const int penWidth = painter.pen().width();
+
+        offsetTop = top - virtualScreenGeo.top() - mHandleRadius;
+        offsetTop = (offsetTop >= 0) ? 0 : offsetTop;
+
+        offsetRight =  virtualScreenGeo.right() - right - mHandleRadius + penWidth;
+        offsetRight = (offsetRight >= 0) ? 0 : offsetRight;
+
+        offsetBottom = virtualScreenGeo.bottom() - bottom - mHandleRadius + penWidth;
+        offsetBottom = (offsetBottom >= 0) ? 0 : offsetBottom;
+
+        offsetLeft = left - virtualScreenGeo.left() - mHandleRadius;
+        offsetLeft = (offsetLeft >= 0) ? 0 : offsetLeft;
+    }
+
+    //top-left handle
+    this->mHandlePositions[0] = QPointF {left - offset - offsetLeft,  top - offset - offsetTop};
+    //top-right handle
+    this->mHandlePositions[1] = QPointF {right + offset + offsetRight, top - offset - offsetTop};
+    // bottom-right handle
+    this->mHandlePositions[2] = QPointF {right + offset + offsetRight, bottom + offset + offsetBottom};
+    // bottom-left
+    this->mHandlePositions[3] = QPointF {left - offset - offsetLeft, bottom + offset + offsetBottom};
+    // top-center handle
+    this->mHandlePositions[4] = QPointF {centerX, top - offset - offsetTop};
+    // right-center handle
+    this->mHandlePositions[5] = QPointF {right + offset + offsetRight, centerY};
+    // bottom-center handle
+    this->mHandlePositions[6] = QPointF {centerX, bottom + offset + offsetBottom};
+    // left-center handle
+    this->mHandlePositions[7] = QPointF {left - offset - offsetLeft, centerY};
+
+    // start path
     QPainterPath path;
 
-    const qreal cornerHandleDiameter = 2 * cornerHandleRadius;
-
-    // x and y coordinates of handle arcs
-    const qreal leftHandle = left - cornerHandleRadius;
-    const qreal topHandle = top - cornerHandleRadius;
-    const qreal rightHandle = right - cornerHandleRadius;
-    const qreal bottomHandle = bottom - cornerHandleRadius;
-    const qreal centerHandleX = centerX - midHandleRadius;
-    const qreal centerHandleY = centerY - midHandleRadius;
-
-    // top-left handle
-    path.moveTo(left, top);
-    path.arcTo(leftHandle, topHandle, cornerHandleDiameter, cornerHandleDiameter, 0, -90);
-
-    // top-right handle
-    path.moveTo(right, top);
-    path.arcTo(rightHandle, topHandle, cornerHandleDiameter, cornerHandleDiameter, 180, 90);
-
-    // bottom-left handle
-    path.moveTo(left, bottom);
-    path.arcTo(leftHandle, bottomHandle, cornerHandleDiameter, cornerHandleDiameter, 0, 90);
-
-    // bottom-right handle
-    path.moveTo(right, bottom);
-    path.arcTo(rightHandle, bottomHandle, cornerHandleDiameter, cornerHandleDiameter, 180, -90);
-
-    const qreal midHandleDiameter = 2 * midHandleRadius;
-    // top-center handle
-    path.moveTo(centerX, top);
-    path.arcTo(centerHandleX, top - midHandleRadius, midHandleDiameter, midHandleDiameter, 0, -180);
-
-    // right-center handle
-    path.moveTo(right, centerY);
-    path.arcTo(right - midHandleRadius, centerHandleY, midHandleDiameter, midHandleDiameter, 90, 180);
-
-    // bottom-center handle
-    path.moveTo(centerX, bottom);
-    path.arcTo(centerHandleX, bottom - midHandleRadius, midHandleDiameter, midHandleDiameter, 0, 180);
-
-    // left-center handle
-    path.moveTo(left, centerY);
-    path.arcTo(left - midHandleRadius, centerHandleY, midHandleDiameter, midHandleDiameter, 90, -180);
+    // add handles to the path
+    for (const QPointF &handlePosition : this->mHandlePositions) {
+        path.addEllipse(handlePosition, mHandleRadius, mHandleRadius);
+    }
 
     // draw the path
     painter.fillPath(path, mStrokeColor);
@@ -739,7 +755,7 @@ void QuickEditor::drawMidHelpText(QPainter &painter)
     painter.drawText(QRect(pos, textSize.size()), Qt::AlignCenter, mMidHelpText);
 }
 
-void QuickEditor::drawSelectionSizeTooltip(QPainter &painter)
+void QuickEditor::drawSelectionSizeTooltip(QPainter &painter, bool dragHandlesVisible)
 {
     // Set the selection size and finds the most appropriate position:
     // - vertically centered inside the selection if the box is not covering the a large part of selection
@@ -761,11 +777,17 @@ void QuickEditor::drawSelectionSizeTooltip(QPainter &painter)
         // show inside the box
         selectionBoxY = static_cast<int>(mSelection.y() + (mSelection.height() - selectionSizeTextRect.height()) / 2);
     } else {
-        // show on top by default
-        selectionBoxY = static_cast<int>(mSelection.y() - selectionBoxHeight - selectionBoxMarginY);
-        if (selectionBoxY < 0) {
-            // show at the bottom
-            selectionBoxY = static_cast<int>(mSelection.y() + mSelection.height() + selectionBoxMarginY);
+        // show on top by default, above the drag Handles if they're visible
+        if (dragHandlesVisible) {
+            selectionBoxY = static_cast<int>(mHandlePositions[4].y() - mHandleRadius - selectionBoxHeight - selectionBoxMarginY);
+            if (selectionBoxY < 0) {
+                selectionBoxY = static_cast<int>(mHandlePositions[6].y() + mHandleRadius + selectionBoxMarginY);
+            }
+        } else {
+            selectionBoxY = static_cast<int>(mSelection.y() - selectionBoxHeight - selectionBoxMarginY);
+            if (selectionBoxY < 0) {
+                selectionBoxY = static_cast<int>(mSelection.y() + mSelection.height() + selectionBoxMarginY);
+            }
         }
     }
 
@@ -805,42 +827,55 @@ void QuickEditor::setMouseCursor(const QPointF& pos)
 
 QuickEditor::MouseState QuickEditor::mouseLocation(const QPointF& pos)
 {
-    if (mSelection.contains(pos)) {
-        const qreal verSize = qMin(mouseAreaSize, mSelection.height() / 2);
-        const qreal horSize = qMin(mouseAreaSize, mSelection.width() / 2);
+    auto isPointInsideCircle = [](const QPointF & circleCenter, qreal radius, const QPointF & point) {
+        return (qPow(point.x() - circleCenter.x(), 2) + qPow(point.y() - circleCenter.y(), 2) <= qPow(radius, 2)) ? true : false;
+    };
 
-        auto withinThreshold = [](const qreal offset, const qreal size) {
-            return offset <= size && offset >= 0;
-        };
+    if (isPointInsideCircle(mHandlePositions[0], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::TopLeft;
+    } else if (isPointInsideCircle(mHandlePositions[1], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::TopRight;
+    } else if (isPointInsideCircle(mHandlePositions[2], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::BottomRight;
+    } else if (isPointInsideCircle(mHandlePositions[3], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::BottomLeft;
+    } else if (isPointInsideCircle(mHandlePositions[4], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::Top;
+    } else if (isPointInsideCircle(mHandlePositions[5], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::Right;
+    } else if (isPointInsideCircle(mHandlePositions[6], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::Bottom;
+    } else if (isPointInsideCircle(mHandlePositions[7], mHandleRadius * increaseDragAreaFactor, pos)) {
+        return MouseState::Left;
+    }
 
-        const bool withinTopEdge = withinThreshold(pos.y() - mSelection.top(), verSize);
-        const bool withinRightEdge = withinThreshold(mSelection.right() - pos.x(), horSize);
-        const bool withinBottomEdge = !withinTopEdge && withinThreshold(mSelection.bottom() - pos.y(), verSize);
-        const bool withinLeftEdge = !withinRightEdge && withinThreshold(pos.x() - mSelection.left(), horSize);
+    auto inRange = [](qreal low, qreal high, qreal value) {
+      return value >= low && value <= high;
+    };
 
-        if (withinTopEdge) {
-            if (withinRightEdge) {
-                return MouseState::TopRight;
-            } else if (withinLeftEdge) {
-                return MouseState::TopLeft;
-            } else {
-                return MouseState::Top;
-            }
-        } else if (withinBottomEdge) {
-            if (withinRightEdge) {
-                return MouseState::BottomRight;
-            } else if (withinLeftEdge) {
-                return MouseState::BottomLeft;
-            } else {
-                return MouseState::Bottom;
-            }
-        } else if (withinRightEdge) {
-            return MouseState::Right;
-        } else if (withinLeftEdge) {
-            return MouseState::Left;
-        } else {
-            return MouseState::Inside;
+    auto withinThreshold = [](qreal offset, qreal threshold) {
+      return qFabs(offset) <= threshold;
+    };
+
+    //Rectangle can be resized when border is dragged, if it's big enough
+    if(mSelection.width() >= 100 && mSelection.height() >= 100) {
+      if(inRange(mSelection.x(), mSelection.x() + mSelection.width(), pos.x())) {
+        if(withinThreshold(pos.y() - mSelection.y(), borderDragAreaSize)) {
+          return MouseState::Top;
+        } else if(withinThreshold(pos.y() - mSelection.y() - mSelection.height(), borderDragAreaSize)) {
+          return MouseState::Bottom;
         }
+      }
+      if(inRange(mSelection.y(), mSelection.y() + mSelection.height(), pos.y())) {
+        if(withinThreshold(pos.x() - mSelection.x(), borderDragAreaSize)) {
+          return MouseState::Left;
+        } else if(withinThreshold(pos.x() - mSelection.x() - mSelection.width(), borderDragAreaSize)) {
+          return MouseState::Right;
+        }
+      }
+    }
+    if (mSelection.contains(pos)) {
+        return MouseState::Inside;
     } else {
         return MouseState::Outside;
     }
