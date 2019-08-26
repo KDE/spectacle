@@ -52,8 +52,7 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mPlatform(loadPlatform()),
     mMainWindow(nullptr),
     mIsGuiInited(false),
-    mCopySaveLocationToClipboard(theCopyToClipboard),
-    mCopyImageToClipboard(false)
+    mCopySaveLocationToClipboard(theCopyToClipboard)
 {
     auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup lGuiConfig(lConfig, "GuiConfig");
@@ -265,18 +264,17 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
     case StartMode::Gui:
         mMainWindow->setScreenshotAndShow(thePixmap);
 
-        mCopyImageToClipboard = (SpectacleConfig::instance()->afterTakingScreenshotAction() == 1);
-        using Actions = SpectacleConfig::AfterTakingScreenshotAction;
-        switch (SpectacleConfig::instance()->afterTakingScreenshotAction()) {
-        case Actions::DoNothing:
-            break;
-        case Actions::CopyImageToClipboard:
-            {
-                lExportManager->doCopyToClipboard(false);
-                mMainWindow->showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
-                                                KMessageWidget::Information);
-            }
-            break;
+        bool autoSaveImage = SpectacleConfig::instance()->autoSaveImage();
+        bool copyImageToClipboard = SpectacleConfig::instance()->copyImageToClipboard();
+
+        if (autoSaveImage && copyImageToClipboard) {
+            lExportManager->doSaveAndCopy();
+        } else if (autoSaveImage) {
+            lExportManager->doSave();
+        } else if (copyImageToClipboard) {
+            lExportManager->doCopyToClipboard(false);
+            mMainWindow->showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
+                                            KMessageWidget::Information);
         }
     }
 }

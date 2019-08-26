@@ -122,9 +122,10 @@ void KSMainWindow::init()
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
     move(location);
 
-    // change window title on save
+    // change window title on save and on autosave
 
     connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::imageSaved);
+    connect(ExportManager::instance(), &ExportManager::imageSavedAndCopied, this, &KSMainWindow::imageSavedAndCopied);
 
     // the KSGWidget
 
@@ -219,6 +220,10 @@ void KSMainWindow::init()
     QAction *actionQuit = KStandardAction::quit(qApp, &QApplication::quit, this);
     actionQuit->setShortcut(QKeySequence::Quit);
     addAction(actionQuit);
+
+    // message: open containing folder
+    mOpenContaining = new QAction(QIcon::fromTheme(QStringLiteral("document-open-folder")), i18n("Open Containing Folder"), mMessageWidget);
+    connect(mOpenContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({SpectacleConfig::instance()->lastSaveFile()});});
 
     mHideMessageWidgetTimer = new QTimer(this);
     connect(mHideMessageWidgetTimer, &QTimer::timeout,
@@ -477,11 +482,18 @@ void KSMainWindow::imageSaved(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
-    QAction* openContaining = new QAction(QIcon::fromTheme(QStringLiteral("document-open-folder")), i18n("Open Containing Folder"), mMessageWidget);
-    connect(openContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({location});});
     showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
                            location.toString(), location.fileName()), KMessageWidget::Positive,
-                           MessageDuration::AutoHide, {openContaining});
+                           MessageDuration::AutoHide, {mOpenContaining});
+}
+
+void KSMainWindow::imageSavedAndCopied(const QUrl &location)
+{
+    setWindowTitle(location.fileName());
+    setWindowModified(false);
+    showInlineMessage(i18n("The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>",
+                           location.toString(), location.fileName()), KMessageWidget::Positive,
+                           MessageDuration::AutoHide, {mOpenContaining});
 }
 
 void KSMainWindow::save()

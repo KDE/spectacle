@@ -55,11 +55,6 @@ class SpectacleConfig : public QObject
         FocusWindow
     };
 
-    enum AfterTakingScreenshotAction : int {
-        DoNothing = 0,
-        CopyImageToClipboard
-    };
-
     KActionCollection* shortCutActions;
 
     private:
@@ -131,8 +126,11 @@ class SpectacleConfig : public QObject
     QUrl defaultSaveLocation() const;
     void setDefaultSaveLocation(const QUrl &location);
 
-    AfterTakingScreenshotAction afterTakingScreenshotAction() const;
-    void setAfterTakingScreenshotAction(AfterTakingScreenshotAction enabled);
+    bool copyImageToClipboard() const;
+    void setCopyImageToClipboard(bool enabled);
+
+    bool autoSaveImage() const;
+    void setAutoSaveImage(bool enabled);
 
     bool copySaveLocationToClipboard() const;
     void setCopySaveLocationToClipboard(bool enabled);

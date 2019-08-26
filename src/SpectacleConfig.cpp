@@ -360,15 +360,24 @@ void SpectacleConfig::setDefaultSaveLocation(const QUrl &location)
 
 // copy file to clipboard after the screenshot has been made
 
-SpectacleConfig::AfterTakingScreenshotAction SpectacleConfig::afterTakingScreenshotAction() const
+bool SpectacleConfig::copyImageToClipboard() const
 {
-    int doNothing = static_cast<int>(SpectacleConfig::AfterTakingScreenshotAction::DoNothing);
-    return static_cast<SpectacleConfig::AfterTakingScreenshotAction>(mGeneralConfig.readEntry(QStringLiteral("afterTakingScreenshot"), doNothing));
+    return mGeneralConfig.readEntry(QStringLiteral("copyImageToClipboard"), false);
 }
 
-void SpectacleConfig::setAfterTakingScreenshotAction (SpectacleConfig::AfterTakingScreenshotAction action)
+void SpectacleConfig::setCopyImageToClipboard (bool enabled)
 {
-    mGeneralConfig.writeEntry(QStringLiteral("afterTakingScreenshot"), static_cast<int>(action));
+    mGeneralConfig.writeEntry(QStringLiteral("copyImageToClipboard"), enabled);
+    mGeneralConfig.sync();
+}
+
+bool SpectacleConfig::autoSaveImage() const
+{
+    return mGeneralConfig.readEntry(QStringLiteral("autoSaveImage"), false);
+}
+void SpectacleConfig::setAutoSaveImage(bool enabled)
+{
+    mGeneralConfig.writeEntry(QStringLiteral("autoSaveImage"), enabled);
     mGeneralConfig.sync();
 }
 

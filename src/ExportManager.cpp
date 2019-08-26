@@ -504,6 +504,24 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     return false;
 }
 
+void ExportManager::doSaveAndCopy(const QUrl &url)
+{
+    if (mSavePixmap.isNull()) {
+        emit errorMessage(i18n("Cannot save an empty screenshot image."));
+        return;
+    }
+
+    QUrl savePath = url.isValid() ? url : getAutosaveFilename();
+    if (save(savePath)) {
+        QDir dir(savePath.path());
+        dir.cdUp();
+        SpectacleConfig::instance()->setLastSaveFile(savePath);
+
+        doCopyToClipboard(false);
+        emit imageSavedAndCopied(savePath);
+    }
+}
+
 // misc helpers
 
 void ExportManager::doCopyToClipboard(bool notify)

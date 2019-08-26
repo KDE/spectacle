@@ -36,7 +36,8 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 {
     QFormLayout *mainLayout = new QFormLayout(this);
     setLayout(mainLayout);
-    
+
+    // When spectacle is running settings
     KTitleWidget* runningTitle = new KTitleWidget(this);
     runningTitle->setText(i18n("When Spectacle is Running"));
     runningTitle->setLevel(2);
@@ -59,16 +60,16 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-    // copy file or file location to clipboard after taking a screenshot
-    QRadioButton *doNothing = new QRadioButton(i18n("Do nothing"), this);
-    QRadioButton *copyImageToClipboard = new QRadioButton(i18n("Copy image to clipboard"), this);
-    mAfterTakingScreenshotGroup = new QButtonGroup(this);
-    mAfterTakingScreenshotGroup->setExclusive(true);
-    mAfterTakingScreenshotGroup->addButton(doNothing, SpectacleConfig::AfterTakingScreenshotAction::DoNothing);
-    mAfterTakingScreenshotGroup->addButton(copyImageToClipboard, SpectacleConfig::AfterTakingScreenshotAction::CopyImageToClipboard);
-    connect(mAfterTakingScreenshotGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(i18n("After taking a screenshot:"), doNothing);
-    mainLayout->addRow(QString(), copyImageToClipboard);
+    // actions to take after taking a screenshot
+    mCopyImageToClipboard = new QCheckBox(i18n("Copy image to clipboard"), this);
+    connect(mCopyImageToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(i18n("After taking a screenshot:"), mCopyImageToClipboard);
+
+    mAutoSaveImage = new QCheckBox(i18n("Autosave the image to the default location"), this);
+    connect(mAutoSaveImage, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
+    mainLayout->addRow(QString(), mAutoSaveImage);
+
+    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // Rectangular Region settings
     KTitleWidget *titleWidget = new KTitleWidget(this);
@@ -127,7 +128,8 @@ void GeneralOptionsPage::saveChanges()
     cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
     cfgManager->setUseReleaseToCaptureChecked(mReleaseToCapture->checkState() == Qt::Checked);
     cfgManager->setPrintKeyActionRunning(static_cast<SpectacleConfig::PrintKeyActionRunning>(mPrintKeyActionGroup->checkedId()));
-    cfgManager->setAfterTakingScreenshotAction(static_cast<SpectacleConfig::AfterTakingScreenshotAction>(mAfterTakingScreenshotGroup->checkedId()));
+    cfgManager->setCopyImageToClipboard(mCopyImageToClipboard->checkState() == Qt::Checked);
+    cfgManager->setAutoSaveImage(mAutoSaveImage->checkState() == Qt::Checked);
 
     mChangesMade = false;
 }
@@ -142,7 +144,8 @@ void GeneralOptionsPage::resetChanges()
     mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
     mReleaseToCapture->setChecked(cfgManager->useReleaseToCapture());
     mPrintKeyActionGroup->button(cfgManager->printKeyActionRunning())->setChecked(true);
-    mAfterTakingScreenshotGroup->button(cfgManager->afterTakingScreenshotAction())->setChecked(true);
+    mCopyImageToClipboard->setChecked(cfgManager->copyImageToClipboard());
+    mAutoSaveImage->setChecked(cfgManager->autoSaveImage());
 
     mChangesMade = false;
 }

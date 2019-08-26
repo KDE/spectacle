@@ -74,6 +74,7 @@ class ExportManager: public QObject
     void errorMessage(const QString &str);
     void pixmapChanged(const QPixmap &pixmap);
     void imageSaved(const QUrl &savedAt);
+    void imageSavedAndCopied(const QUrl &savedAt);
     void forceNotify(const QUrl &savedAt);
 
     public Q_SLOTS:
@@ -84,6 +85,7 @@ class ExportManager: public QObject
     void setWindowTitle(const QString &windowTitle);
     void doSave(const QUrl &url = QUrl(), bool notify = false);
     bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
+    void doSaveAndCopy(const QUrl &url = QUrl());
     void doCopyToClipboard(bool notify);
     void doPrint(QPrinter *printer);
 

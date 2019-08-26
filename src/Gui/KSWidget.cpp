@@ -112,8 +112,8 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mCaptureTransientOnly->setEnabled(false);
     connect(mCaptureTransientOnly, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setCaptureTransientWindowOnlyChecked);
 
-    mQuitAfterSaveOrCopy = new QCheckBox(i18n("Quit after Save or Copy"), this);
-    mQuitAfterSaveOrCopy->setToolTip(i18n("Quit Spectacle after saving or copying the image"));
+    mQuitAfterSaveOrCopy = new QCheckBox(i18n("Quit after manual Save or Copy"), this);
+    mQuitAfterSaveOrCopy->setToolTip(i18n("Quit Spectacle after manually saving or copying the image"));
     connect(mQuitAfterSaveOrCopy, &QCheckBox::clicked, lConfigMgr, &SpectacleConfig::setQuitAfterSaveOrCopyChecked);
 
     mContentOptionsForm = new QVBoxLayout;

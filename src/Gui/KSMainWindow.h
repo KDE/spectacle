@@ -84,6 +84,7 @@ class KSMainWindow: public QDialog
 
     void setScreenshotAndShow(const QPixmap &pixmap);
     void imageSaved(const QUrl &location);
+    void imageSavedAndCopied(const QUrl &location);
 
     Q_SIGNALS:
 
@@ -107,6 +108,7 @@ class KSMainWindow: public QDialog
     QMenu            *mSaveMenu;
     QAction          *mSaveAsAction;
     QAction          *mSaveAction;
+    QAction          *mOpenContaining;
     KMessageWidget   *mMessageWidget;
     QMenu            *mToolsMenu;
     QMenu            *mScreenRecorderToolsMenu;
