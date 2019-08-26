@@ -62,6 +62,16 @@ struct XcbImagePtrDeleter
 };
 using XcbImagePtr = std::unique_ptr<xcb_image_t, XcbImagePtrDeleter>;
 
+struct CFreeDeleter
+{
+    void operator()(void *ptr) const
+    {
+        free(ptr);
+    }
+};
+template<typename Reply>
+using XcbReplyPtr = std::unique_ptr<Reply, CFreeDeleter>;
+
 /* -- On Click Native Event Filter ------------------------------------------------------------- */
 
 class PlatformXcb::OnClickEventFilter: public QAbstractNativeEventFilter
@@ -191,7 +201,7 @@ QPoint PlatformXcb::getCursorPosition()
 
     auto lXcbConn = QX11Info::connection();
     auto lPointerCookie = xcb_query_pointer_unchecked(lXcbConn, QX11Info::appRootWindow());
-    std::unique_ptr<xcb_query_pointer_reply_t> lPointerReply(xcb_query_pointer_reply(lXcbConn, lPointerCookie, nullptr));
+    XcbReplyPtr<xcb_query_pointer_reply_t> lPointerReply(xcb_query_pointer_reply(lXcbConn, lPointerCookie, nullptr));
 
     return QPoint(lPointerReply->root_x, lPointerReply->root_y);
 }
@@ -200,7 +210,7 @@ QRect PlatformXcb::getDrawableGeometry(xcb_drawable_t theDrawable)
 {
     auto lXcbConn = QX11Info::connection();
     auto lGeoCookie = xcb_get_geometry_unchecked(lXcbConn, theDrawable);
-    std::unique_ptr<xcb_get_geometry_reply_t> lGeoReply(xcb_get_geometry_reply(lXcbConn, lGeoCookie, nullptr));
+    XcbReplyPtr<xcb_get_geometry_reply_t> lGeoReply(xcb_get_geometry_reply(lXcbConn, lGeoCookie, nullptr));
     if (!lGeoReply) {
         return QRect();
     }
@@ -215,8 +225,8 @@ xcb_window_t PlatformXcb::getWindowUnderCursor()
     const QByteArray lAtomName("WM_STATE");
     auto lAtomCookie = xcb_intern_atom_unchecked(lXcbConn, 0, lAtomName.length(), lAtomName.constData());
     auto lPointerCookie = xcb_query_pointer_unchecked(lXcbConn, lAppWin);
-    std::unique_ptr<xcb_intern_atom_reply_t> lAtomReply(xcb_intern_atom_reply(lXcbConn, lAtomCookie, nullptr));
-    std::unique_ptr<xcb_query_pointer_reply_t> lPointerReply(xcb_query_pointer_reply(lXcbConn, lPointerCookie, nullptr));
+    XcbReplyPtr<xcb_intern_atom_reply_t> lAtomReply(xcb_intern_atom_reply(lXcbConn, lAtomCookie, nullptr));
+    XcbReplyPtr<xcb_query_pointer_reply_t> lPointerReply(xcb_query_pointer_reply(lXcbConn, lPointerCookie, nullptr));
 
     if (lAtomReply->atom == XCB_ATOM_NONE) {
         return QX11Info::appRootWindow();
@@ -232,7 +242,7 @@ xcb_window_t PlatformXcb::getWindowUnderCursor()
         // next, check if our window has the WM_STATE property set on
         // the window. if yes, return the window - we have found it
         auto lPropCookie = xcb_get_property_unchecked(lXcbConn, 0, lAppWin, lAtomReply->atom, XCB_ATOM_ANY, 0, 0);
-        std::unique_ptr<xcb_get_property_reply_t> lPropReply(xcb_get_property_reply(lXcbConn, lPropCookie, nullptr));
+        XcbReplyPtr<xcb_get_property_reply_t> lPropReply(xcb_get_property_reply(lXcbConn, lPropCookie, nullptr));
 
         if (lPropReply->type != XCB_ATOM_NONE) {
             return lAppWin;
@@ -241,7 +251,7 @@ xcb_window_t PlatformXcb::getWindowUnderCursor()
         // if we're here, this means the window is not the real window
         // we should start looking at its children
         auto lTreeCookie = xcb_query_tree_unchecked(lXcbConn, lAppWin);
-        std::unique_ptr<xcb_query_tree_reply_t> lTreeReply(xcb_query_tree_reply(lXcbConn, lTreeCookie, nullptr));
+        XcbReplyPtr<xcb_query_tree_reply_t> lTreeReply(xcb_query_tree_reply(lXcbConn, lTreeCookie, nullptr));
         auto lWindowChildren = xcb_query_tree_children(lTreeReply.get());
         auto lWindowChildrenLength = xcb_query_tree_children_length(lTreeReply.get());
 
@@ -331,7 +341,7 @@ QPixmap PlatformXcb::blendCursorImage(QPixmap &thePixmap, const QRect theRect)
     auto lXcbConn = QX11Info::connection();
 
     auto lCursorCookie = xcb_xfixes_get_cursor_image_unchecked(lXcbConn);
-    std::unique_ptr<xcb_xfixes_get_cursor_image_reply_t> lCursorReply(xcb_xfixes_get_cursor_image_reply(lXcbConn, lCursorCookie, nullptr));
+    XcbReplyPtr<xcb_xfixes_get_cursor_image_reply_t> lCursorReply(xcb_xfixes_get_cursor_image_reply(lXcbConn, lCursorCookie, nullptr));
     if (!lCursorReply) {
         return thePixmap;
     }
@@ -426,7 +436,7 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
 
     // first get geometry information for our window
     auto lGeoCookie = xcb_get_geometry_unchecked(lXcbConn, theWindow);
-    std::unique_ptr<xcb_get_geometry_reply_t> lGeoReply(xcb_get_geometry_reply(lXcbConn, lGeoCookie, nullptr));
+    XcbReplyPtr<xcb_get_geometry_reply_t> lGeoReply(xcb_get_geometry_reply(lXcbConn, lGeoCookie, nullptr));
     QRect lWindowRect(lGeoReply->x, lGeoReply->y, lGeoReply->width, lGeoReply->height);
 
     // then proceed to get an image
@@ -434,9 +444,9 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
 
     // translate window coordinates to global ones.
     auto lRootGeoCookie = xcb_get_geometry_unchecked(lXcbConn, lGeoReply->root);
-    std::unique_ptr<xcb_get_geometry_reply_t> lRootGeoReply(xcb_get_geometry_reply(lXcbConn, lRootGeoCookie, nullptr));
+    XcbReplyPtr<xcb_get_geometry_reply_t> lRootGeoReply(xcb_get_geometry_reply(lXcbConn, lRootGeoCookie, nullptr));
     auto lTranslateCookie = xcb_translate_coordinates_unchecked(lXcbConn, theWindow, lGeoReply->root, lRootGeoReply->x, lRootGeoReply->y);
-    std::unique_ptr<xcb_translate_coordinates_reply_t> lTranslateReply(xcb_translate_coordinates_reply(lXcbConn, lTranslateCookie, nullptr));
+    XcbReplyPtr<xcb_translate_coordinates_reply_t> lTranslateReply(xcb_translate_coordinates_reply(lXcbConn, lTranslateCookie, nullptr));
 
     // adjust local to global coordinates.
     lWindowRect.moveRight(lWindowRect.x() + lTranslateReply->dst_x);
@@ -726,7 +736,7 @@ void PlatformXcb::doGrabOnClick(const GrabMode &theGrabMode, bool theIncludePoin
         lXcbCursor,                    // cursor to change to for the duration of grab
         XCB_TIME_CURRENT_TIME          // do this right now
     );
-    std::unique_ptr<xcb_grab_pointer_reply_t> lGrabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, nullptr));
+    XcbReplyPtr<xcb_grab_pointer_reply_t> lGrabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, nullptr));
 
     // if the grab failed, take the screenshot right away
     if (lGrabPointerReply->status != XCB_GRAB_STATUS_SUCCESS) {
