@@ -74,6 +74,7 @@ class ExportManager: public QObject
     void errorMessage(const QString &str);
     void pixmapChanged(const QPixmap &pixmap);
     void imageSaved(const QUrl &savedAt);
+    void imageCopied();
     void imageSavedAndCopied(const QUrl &savedAt);
     void forceNotify(const QUrl &savedAt);
 
@@ -86,7 +87,7 @@ class ExportManager: public QObject
     void doSave(const QUrl &url = QUrl(), bool notify = false);
     bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
     void doSaveAndCopy(const QUrl &url = QUrl());
-    void doCopyToClipboard(bool notify);
+    void doCopyToClipboard(bool notify = false);
     void doPrint(QPrinter *printer);
 
     private:

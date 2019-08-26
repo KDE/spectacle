@@ -530,7 +530,7 @@ void ExportManager::doCopyToClipboard(bool notify)
     data->setImageData(mSavePixmap.toImage());
     data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
     QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
-
+    emit imageCopied();
     if (notify) {
         emit forceNotify(QUrl());
     }

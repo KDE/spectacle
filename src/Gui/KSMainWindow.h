@@ -52,11 +52,6 @@ class KSMainWindow: public QDialog
         Persistent
     };
 
-    void showInlineMessage(const QString& message,
-                        const KMessageWidget::MessageType messageType,
-                        const MessageDuration messageDuration = MessageDuration::AutoHide,
-                        const QList<QAction*>& actions  = {});
-
     private:
 
     enum class QuitBehavior {
@@ -64,6 +59,10 @@ class KSMainWindow: public QDialog
         QuitExternally
     };
     void quit(const QuitBehavior quitBehavior = QuitBehavior::QuitImmediately);
+    void showInlineMessage(const QString& message,
+                        const KMessageWidget::MessageType messageType,
+                        const MessageDuration messageDuration = MessageDuration::AutoHide,
+                        const QList<QAction*>& actions  = {});
 
     private Q_SLOTS:
 
@@ -72,7 +71,7 @@ class KSMainWindow: public QDialog
     void openScreenshotsFolder();
     void showPreferencesDialog();
     void showImageSharedFeedback(bool error, const QString &message);
-    void sendToClipboard();
+    void imageCopied();
     void init();
     void setDefaultSaveAction();
     void save();

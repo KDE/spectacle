@@ -125,6 +125,7 @@ void KSMainWindow::init()
     // change window title on save and on autosave
 
     connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::imageSaved);
+    connect(ExportManager::instance(), &ExportManager::imageCopied, this, &KSMainWindow::imageCopied);
     connect(ExportManager::instance(), &ExportManager::imageSavedAndCopied, this, &KSMainWindow::imageSavedAndCopied);
 
     // the KSGWidget
@@ -152,7 +153,7 @@ void KSMainWindow::init()
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
-    mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
+    mClipboardButton->setDefaultAction(KStandardAction::copy(ExportManager::instance(), &ExportManager::doCopyToClipboard, this));
     mClipboardButton->setText(i18n("Copy to Clipboard"));
     mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -461,11 +462,8 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
     }
 }
 
-void KSMainWindow::sendToClipboard()
+void KSMainWindow::imageCopied()
 {
-    bool notify = false;
-    ExportManager::instance()->doCopyToClipboard(notify);
-
     SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()
             ? quit()
             : showInlineMessage(i18n("The screenshot has been copied to the clipboard."),

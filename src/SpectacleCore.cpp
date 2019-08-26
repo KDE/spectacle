@@ -25,7 +25,6 @@
 #include <KGlobalAccel>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KMessageWidget>
 #include <KNotification>
 #include <KRun>
 #include <KWindowSystem>
@@ -273,8 +272,6 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             lExportManager->doSave();
         } else if (copyImageToClipboard) {
             lExportManager->doCopyToClipboard(false);
-            mMainWindow->showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
-                                            KMessageWidget::Information);
         }
     }
 }
