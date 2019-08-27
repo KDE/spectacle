@@ -233,7 +233,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
         }
         // replace placeholder with next number padded
         const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, QLatin1Char('0'));
-        result = result.replace(paddingMatch.captured(), nextFileNumberPadded);
+        result.replace(paddingMatch.captured(), nextFileNumberPadded);
     }
 
     // Remove leading and trailing '/'

@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     bool found_spectacle = false;
     int spectacleIndex;
     for (int i = 1; i <= dataCount; ++i) {
-        if( KConfigGroup(&khotkeysrc, QStringLiteral("Data_%1").arg(i)).readEntry("ImportId", QString()) == QStringLiteral("spectacle")) {
+        if( KConfigGroup(&khotkeysrc, QStringLiteral("Data_%1").arg(i)).readEntry("ImportId", QString()) == QLatin1String("spectacle")) {
             found_spectacle = true;
             spectacleIndex = i;
             break;
@@ -39,13 +39,13 @@ int main(int argc, char **argv)
             ids.append(id);
             /* Name and Comment field are translated but we can find out which action is which by looking at the called
              *  D-Bus Method */
-            if (method == QStringLiteral("StartAgent")) {
+            if (method == QLatin1String("StartAgent")) {
                 launchKey = shortcut;
-            } else if (method == QStringLiteral("FullScreen")) {
+            } else if (method == QLatin1String("FullScreen")) {
                 fullScreenKey = shortcut;
-            } else if (method == QStringLiteral("ActiveWindow")) {
+            } else if (method == QLatin1String("ActiveWindow")) {
                 activeWindowKey = shortcut;
-            } else if (method == QStringLiteral("RectangularRegion")) {
+            } else if (method == QLatin1String("RectangularRegion")) {
                 regionKey = shortcut;
             }
             // Delete the groups from khotkeysrc
