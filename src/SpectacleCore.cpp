@@ -348,12 +348,13 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
                 });
             }
         });
-        connect(lNotify, &QObject::destroyed, this, [this] {
-            if (mStartMode != StartMode::Gui) {
-                emit allDone();
-            }
-        });
     }
+
+    connect(lNotify, &QObject::destroyed, this, [this] {
+        if (mStartMode != StartMode::Gui) {
+            emit allDone();
+        }
+    });
 
     lNotify->sendEvent();
 }
