@@ -90,6 +90,6 @@ class SpectacleCore: public QObject
     MainWindowPtr mMainWindow;
     EditorPtr     mQuickEditor;
     bool          mIsGuiInited;
-    bool          mCopySaveLocationToClipboard;
+    bool          mCopyToClipboard;
     bool          mCopyImageToClipboard;
 };

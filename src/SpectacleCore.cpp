@@ -52,7 +52,7 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mPlatform(loadPlatform()),
     mMainWindow(nullptr),
     mIsGuiInited(false),
-    mCopySaveLocationToClipboard(theCopyToClipboard)
+    mCopyToClipboard(theCopyToClipboard)
 {
     auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup lGuiConfig(lConfig, "GuiConfig");
@@ -246,7 +246,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
                 connect(lExportManager, &ExportManager::imageSaved, this, &SpectacleCore::doNotify);
             }
 
-            if (mCopySaveLocationToClipboard) {
+            if (mCopyToClipboard) {
                 lExportManager->doCopyToClipboard(mNotify);
             } else {
                 QUrl lSavePath = (mStartMode == StartMode::Background && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
@@ -327,7 +327,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
-    if (mCopySaveLocationToClipboard) {
+    if (mCopyToClipboard) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
@@ -335,7 +335,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
     }
 
-    if (!mCopySaveLocationToClipboard) {
+    if (!mCopyToClipboard) {
         lNotify->setUrls({theSavedAt});
         lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {
