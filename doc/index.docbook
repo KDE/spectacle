@@ -29,7 +29,7 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-08-22</date>
+        <date>2019-08-28</date>
         <releaseinfo>Applications 19.12</releaseinfo>
 
         <abstract>
@@ -113,7 +113,7 @@
 
         <para>To save a screenshot to the default location, click on the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save </guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) button. The new save mode will be remembered for next time. The default save location and filename can be configured, as described later.</para>
 
-        <para>To quickly save the image and quit &spectacle;, click on the checkbox beside <guilabel>Quit after Save or Copy</guilabel>, then click the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) item. This saves the image as a PNG file in your default Pictures folder, and exits the application immediately. As above, this new save mode will be remembered.</para>
+        <para>To quickly save the image and quit &spectacle;, click on the checkbox beside <guilabel>Quit after manual Save or Copy</guilabel>, then click the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) item. This saves the image as a PNG file in your default <filename class="directory">Pictures</filename> folder, and exits the application immediately. As above, this new save mode will be remembered.</para>
 
         <sect1 id="taking-screenshot">
             <title>Taking A Screenshot</title>
@@ -121,6 +121,8 @@
             <para>When you open &spectacle;, it immediately takes a screenshot of the whole screen as a convenience and shows a preview of it in the main window. You can save this screenshot using the buttons on the bottom of the window, or take a new one using the controls to the right of the preview.</para>
 
             <para>To discard the current screenshot and take another screenshot, press the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
+            
+            <para>After capturing a screenshot, &spectacle; will show you an info panel with a link to the screenshot file and propose you to <guibutton>Open Containing Folder</guibutton> of this file.</para>
 
             <para>You may configure certain options on the right hand side of the application window before taking a new screenshot. These options allow you to select the area of the screen that is to be captured, set a delay before capturing the image, and configure whether the mouse cursor and/or the window decorations should be captured along with the screenshot.</para>
 
@@ -272,7 +274,7 @@
                 <varlistentry>
                     <term><guilabel>After taking a screenshot</guilabel></term>
                     <listitem>
-                        <para>Allows copying image to clipboard. The default action is <guilabel>Do nothing</guilabel>, &ie;, do not copy the image to clipboard.</para>
+                        <para>Allows copying image to clipboard or autosave the image to the default location. The default location can be configured using the <link linkend="save-page">Save</link> configuration page.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -303,7 +305,7 @@
                 </varlistentry>
             </variablelist>
             </sect2>
-            <sect2>
+            <sect2 id="save-page">
             <title>Save</title>
             <para>When you use the <guilabel>Save</guilabel> function, &spectacle; saves the image with a default filename, in your Pictures folder (which is inside your home folder). The default filename includes the date and time when the image was taken.</para>
 
@@ -360,6 +362,12 @@
                     </listitem>
                 </varlistentry>
             </variablelist>
+            </sect2>
+            <sect2>
+            <title>Shortcuts</title>
+            <para>
+                This configuration page can be used to change the default shortcuts of &spectacle;. It is possible to configure shortcuts for starting &spectacle; and capturing different parts of your desktop.
+            </para>
             </sect2>
         </sect1>
 
