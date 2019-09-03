@@ -361,7 +361,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
             if (index == 0) {
                 new KRun(theSavedAt, nullptr);
                 QTimer::singleShot(250, this, [this] {
-                    if (mStartMode != StartMode::Gui) {
+                    if (mStartMode != StartMode::Gui || SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
                         emit allDone();
                     }
                 });
@@ -370,7 +370,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     }
 
     connect(lNotify, &QObject::destroyed, this, [this] {
-        if (mStartMode != StartMode::Gui) {
+        if (mStartMode != StartMode::Gui || SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
             emit allDone();
         }
     });
