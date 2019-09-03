@@ -54,7 +54,7 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mPlatform(loadPlatform()),
     mMainWindow(nullptr),
     mIsGuiInited(false),
-    mCopyToClipboard(theCopyToClipboard)
+    mCopyToClipboard(theCopyToClipboard),
     mWaylandPlasmashell(nullptr)
 {
     auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
