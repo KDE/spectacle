@@ -400,10 +400,6 @@ void KSMainWindow::quit(const QuitBehavior quitBehavior)
         // TODO: Find better solution
         QTimer::singleShot(250, qApp, &QApplication::quit);
     }
-    // TODO for else case:
-    // Currently it is expected that you emit forceNotify, and finally quit
-    // via a callback through KNotification::action1Activated. However, that
-    // is not working quite right, see Bug #389694 which needs fixing.
 }
 
 void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType,

@@ -190,12 +190,12 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
                              .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
                              .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
                              .replace(QLatin1String("%T"), title);
-                             
+
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
     paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
     QRegularExpressionMatch paddingMatch;
-                             
+
     while (result.indexOf(paddingRE, 0, &paddingMatch) > -1) {
         int highestFileNumber = 0;
 
@@ -208,7 +208,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
         // search save directory for files
         QDir dir(baseDir);
         const QStringList fileNames = dir.entryList(QDir::Files, QDir::Name);
-        
+
         // if there are files in the directory...
         if (fileNames.length() > 0) { 
             QString resultCopy = result;
