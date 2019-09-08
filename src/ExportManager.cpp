@@ -253,7 +253,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
 QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension,
                                              FileNameAlreadyUsedCheck isFileNameUsed)
 {
-    QString result = truncatedFilename(baseName) + QLatin1Literal(".") + extension;
+    QString result = truncatedFilename(baseName) + QLatin1String(".") + extension;
     if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
         return result;
     }
