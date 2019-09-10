@@ -135,7 +135,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(),
                                                                     option.value().toString());
     }
-    helpText += QStringLiteral("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
+    helpText += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
     helpText += QStringLiteral("</blockquote>");
     QLabel *fmtHelpText = new QLabel(helpText, this);
     fmtHelpText->setWordWrap(true);

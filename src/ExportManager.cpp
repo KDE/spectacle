@@ -173,7 +173,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     if (mCaptureMode == Spectacle::CaptureMode::ActiveWindow ||
         mCaptureMode == Spectacle::CaptureMode::TransientWithParent ||
         mCaptureMode == Spectacle::CaptureMode::WindowUnderCursor) {
-        title = mWindowTitle.replace(QLatin1String("/"), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
+        title = mWindowTitle.replace(QLatin1Char('/'), QLatin1String("_"));  // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it
         const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");
@@ -269,7 +269,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    result = fileNameFmt.arg(QStringLiteral("OVERFLOW-") + QString::number(qrand() % 10000));
+    result = fileNameFmt.arg(QLatin1String("OVERFLOW-") + QString::number(qrand() % 10000));
     return truncatedFilename(result) + extension;
 }
 
@@ -476,7 +476,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 
     // construct the file name
     const QString filenameExtension = SpectacleConfig::instance()->saveImageFormat();
-    const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
+    const QString mimetype = QMimeDatabase().mimeTypeForFile(QLatin1String("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
     QFileDialog dialog(parentWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);

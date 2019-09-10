@@ -67,7 +67,7 @@ void FilenameTest::testWindowTitle()
 
 void FilenameTest::testNumbering()
 {
-    QString lBaseName = QStringLiteral("spectacle_test_")+ QUuid::createUuid().toString();
+    QString lBaseName = QLatin1String("spectacle_test_")+ QUuid::createUuid().toString();
     QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%d")),  lBaseName + QStringLiteral("_1"));
     QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%1d")), lBaseName + QStringLiteral("_1"));
     QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%2d")), lBaseName + QStringLiteral("_01"));
