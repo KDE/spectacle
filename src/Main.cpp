@@ -87,9 +87,9 @@ int main(int argc, char **argv)
     } else if (lCmdLineParser.isSet(QStringLiteral("region"))) {
         lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
     } else if (lCmdLineParser.isSet(QStringLiteral("windowundercursor"))) {
-        lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
-    } else if (lCmdLineParser.isSet(QStringLiteral("transientonly"))) {
         lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
+    } else if (lCmdLineParser.isSet(QStringLiteral("transientonly"))) {
+        lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
     }
 
     // are we running in background or dbus mode?
