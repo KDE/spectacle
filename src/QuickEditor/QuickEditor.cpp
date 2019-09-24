@@ -552,51 +552,20 @@ void QuickEditor::layoutBottomHelpText()
 }
 
 void QuickEditor::setBottomHelpText() {
-    if (mReleaseToCapture) {
-        if(mRememberRegion && !mSelection.size().isEmpty()) {
-            //Release to capture enabled and saved region available
-            mBottomHelpText[0] = {QStaticText(i18nc("Mouse action", "Click and drag,")),{QStaticText(i18n(" "))}};
-            mBottomHelpText[1] = {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")),
-                                  {QStaticText(i18n("Take screenshot"))}};
-            mBottomHelpText[2] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
-                    QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
-                    QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
-            }};
-            mBottomHelpText[3] = {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
-                    QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
-                    QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
-            }};
-            mBottomHelpText[4] = {QStaticText(i18nc("Mouse action", "Right-click:")),
-                                  {QStaticText(i18n("Reset selection"))}};
-            mBottomHelpText[5] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
-
-        } else {
-            //Release to capture enabled and NO saved region available
-            mbottomHelpLength = 4;
-            mBottomHelpText[0] = {QStaticText(i18nc("Keyboard/mouse action", "Release left-click, Enter:")),
-                                  {QStaticText(i18n("Take Screenshot"))}};
-            mBottomHelpText[1] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
-                    QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier"))}};
-            mBottomHelpText[2] = {QStaticText(i18nc("Mouse action", "Right-click:")),
-                                  {QStaticText(i18n("Reset selection"))}};
-            mBottomHelpText[3] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
-        }
-    }else {
+    if (mReleaseToCapture && mSelection.size().isEmpty()) {
+        //Release to capture enabled and NO saved region available
+        mbottomHelpLength = 3;
+        mBottomHelpText[0] = { QStaticText(i18n("Take Screenshot:")), { QStaticText(i18nc("Mouse action", "Release left-click")), QStaticText(i18nc("Keyboard action", "Enter")) } };
+        mBottomHelpText[1] = { QStaticText(i18n("Create new selection rectangle:")), { QStaticText(i18nc("Mouse action", "Drag outside selection rectangle")), QStaticText(i18nc("Keyboard action", "+ Shift: Magnifier"))} };
+        mBottomHelpText[2] = { QStaticText(i18n("Cancel:")), { QStaticText(i18nc("Keyboard action", "Escape")) } };
+    } else {
         //Default text, Release to capture option disabled
-        mbottomHelpLength = 5;
-        mBottomHelpText[0] = {QStaticText(i18nc("Keyboard/mouse action", "Enter, double-click:")),
-                              {QStaticText(i18n("Take screenshot"))}};
-        mBottomHelpText[1] = {QStaticText(i18nc("Keyboard action", "Shift:")), {
-                QStaticText(i18nc("Shift key action first half", "Hold to toggle magnifier")),
-                QStaticText(i18nc("Shift key action second half", "while dragging selection handles"))
-        }};
-        mBottomHelpText[2] = {QStaticText(i18nc("Keyboard action", "Arrow keys:")), {
-                QStaticText(i18nc("Shift key action first line", "Move selection rectangle")),
-                QStaticText(i18nc("Shift key action second line", "Hold Alt to resize, Shift to fine‑tune"))
-        }};
-        mBottomHelpText[3] = {QStaticText(i18nc("Mouse action", "Right-click:")),
-                              {QStaticText(i18n("Reset selection"))}};
-        mBottomHelpText[4] = {QStaticText(i18nc("Keyboard action", "Esc:")), {QStaticText(i18n("Cancel"))}};
+        mBottomHelpText[0] = { QStaticText(i18n("Take Screenshot:")), { QStaticText(i18nc("Mouse action", "Double-click")), QStaticText(i18nc("Keyboard action", "Enter")) } };
+        mBottomHelpText[1] = { QStaticText(i18n("Create new selection rectangle:")), { QStaticText(i18nc("Mouse action", "Drag outside selection rectangle")), QStaticText(i18nc("Keyboard action", "+ Shift: Magnifier"))} };
+        mBottomHelpText[2] = { QStaticText(i18n("Move selection rectangle:")), { QStaticText(i18nc("Mouse action", "Drag inside selection rectangle")), QStaticText(i18nc("Keyboard action", "Arrow keys")), QStaticText(i18nc("Keyboard action", "+ Shift: Move in 1 pixel steps"))} };
+        mBottomHelpText[3] = { QStaticText(i18n("Resize selection rectangle:")), { QStaticText(i18nc("Mouse action", "Drag handles")), QStaticText(i18nc("Keyboard action", "Arrow keys + Alt")), QStaticText(i18nc("Keyboard action", "+ Shift: Resize in 1 pixel steps"))} };
+        mBottomHelpText[4] = { QStaticText(i18n("Reset selection:")), { QStaticText(i18nc("Mouse action", "Right-click")) } };
+        mBottomHelpText[5] = { QStaticText(i18n("Cancel:")), { QStaticText(i18nc("Keyboard action", "Escape")) } };
     }
 }
 
