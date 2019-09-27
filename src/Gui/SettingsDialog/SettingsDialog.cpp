@@ -46,7 +46,7 @@ void SettingsDialog::initPages()
 {
     KPageWidgetItem *generalOptions = new KPageWidgetItem(new GeneralOptionsPage(this), i18n("General"));
     generalOptions->setHeader(i18n("General"));
-    generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("spectacle"))); // This is what Dolphin uses for the icon on its General page...
+    generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
     addPage(generalOptions);
     mPages.insert(generalOptions);
 
