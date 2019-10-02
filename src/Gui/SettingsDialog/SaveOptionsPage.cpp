@@ -28,6 +28,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
+#include <QSpinBox>
 #include <QFormLayout>
 #include <QHBoxLayout>
 #include <QComboBox>
@@ -58,24 +59,24 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     QVBoxLayout *sliderVertLayout = new QVBoxLayout();
 
     // Current value
-    QLabel *qualityValue = new QLabel();
-    qualityValue->setNum(SpectacleConfig::instance()->compressionQuality());
-    qualityValue->setMinimumWidth(qualityValue->fontInfo().pointSize()*3);
+    QSpinBox *mQualitySpinner = new QSpinBox();
+    mQualitySpinner->setSuffix(QString::fromUtf8("%"));
+    mQualitySpinner->setRange(0, 100);
+    mQualitySpinner->setValue(SpectacleConfig::instance()->compressionQuality());
+    connect(mQualitySpinner, QOverload<int>::of(&QSpinBox::valueChanged), this, [=] (int value) {mQualitySlider->setValue(value);});
 
     // Slider
     mQualitySlider = new QSlider(Qt::Horizontal);
     mQualitySlider->setRange(0, 100);
-    mQualitySlider->setTickInterval(5);
     mQualitySlider->setSliderPosition(SpectacleConfig::instance()->compressionQuality());
-    mQualitySlider->setTickPosition(QSlider::TicksBelow);
     mQualitySlider->setTracking(true);
     connect(mQualitySlider, &QSlider::valueChanged, this, [=](int value) {
-        qualityValue->setNum(value);
+        mQualitySpinner->setValue(value);
         markDirty();
     });
 
     sliderHorizLayout->addWidget(mQualitySlider);
-    sliderHorizLayout->addWidget(qualityValue);
+    sliderHorizLayout->addWidget(mQualitySpinner);
 
     sliderVertLayout->addLayout(sliderHorizLayout);
 
