@@ -30,6 +30,7 @@
 #include <QDesktopServices>
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QKeyEvent>
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
@@ -134,6 +135,7 @@ void KSMainWindow::init()
     // the Button Bar
 
     mDialogButtonBox->setStandardButtons(QDialogButtonBox::Help);
+    mDialogButtonBox->button(QDialogButtonBox::Help)->setAutoDefault(false);
 
     mConfigureButton->setDefaultAction(KStandardAction::preferences(this, SLOT(showPreferencesDialog()), this));
     mConfigureButton->setText(i18n("Configure..."));
@@ -144,11 +146,13 @@ void KSMainWindow::init()
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
     mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("tools"),
                                            QIcon::fromTheme(QStringLiteral("application-menu"))));
+    mToolsButton->setAutoDefault(false);
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
     mToolsButton->setMenu(mToolsMenu);
 
     KGuiItem::assign(mSendToButton, KGuiItem(i18n("Export")));
     mSendToButton->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
+    mSendToButton->setAutoDefault(false);
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
     mClipboardButton->setDefaultAction(KStandardAction::copy(this, SLOT(sendToClipboard()), this));
@@ -512,4 +516,24 @@ void KSMainWindow::restoreWindowTitle()
     } else {
         setWindowTitle(SpectacleConfig::instance()->lastSaveFile().fileName());
     }
+}
+
+/* This event handler enables all Buttons to be activated with Enter. Normally only QPushButton can
+ * be activated with Enter but we also use QToolButtons so we handle the event ourselves */
+void KSMainWindow::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Return) {
+        QWidget *fw = focusWidget();
+        auto pb = qobject_cast<QPushButton*>(fw);
+        if (pb) {
+            pb->animateClick();
+            return;
+        }
+        auto tb = qobject_cast<QToolButton*>(fw);
+        if (tb) {
+            tb->animateClick();
+            return;
+        }
+    }
+    QDialog::keyPressEvent(event);
 }
