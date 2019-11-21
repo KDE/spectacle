@@ -16,37 +16,28 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef SHORTCUTSOPTIONSPAGE_H
-#define SHORTCUTSOPTIONSPAGE_H
+#ifndef SHORTCUT_ACTIONS_H
+#define SHORTCUT_ACTIONS_H
 
-#include <QWidget>
+#include <KActionCollection>
 
-class KShortcutsEditor;
+class ShortcutActions {
+public:
+    static ShortcutActions* self();
 
-class ShortcutsOptionsPage : public QWidget
-{
-    Q_OBJECT
+    KActionCollection* shortcutActions();
 
-    public:
+    QString componentName() const;
 
-    explicit ShortcutsOptionsPage (QWidget* parent);
-    ~ShortcutsOptionsPage();
+    QAction* openAction() const;
+    QAction* fullScreenAction() const;
+    QAction* currentScreenAction() const;
+    QAction* activeWindowAction() const;
+    QAction* regionAction() const;
 
-    bool isModified();
-    void defaults();
-
-    Q_SIGNALS:
-    void shortCutsChanged();
-
-    public Q_SLOTS:
-
-    void saveChanges();
-    void resetChanges();
-
-
-    private:
-
-    KShortcutsEditor* mEditor;
+private:
+    ShortcutActions();
+    KActionCollection mActions;
 };
 
-#endif // SHORTCUTSOPTIONSPAGE_H
+#endif

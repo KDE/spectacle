@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+<include>QStandardPaths</include>
+<include>SpectacleCommon.h</include>
+<kcfgfile />
+<group name="General">
+    <entry name="printKeyActionRunning" type="Enum">
+        <label>What should happen if print key is pressed when spectacle is already running</label>
+        <choices>
+        <choice name="TakeNewScreenshot"></choice>
+        <choice name="StartNewInstance"></choice>
+        <choice name="FocusWindow"></choice>
+        </choices>
+        <default>TakeNewScreenshot</default>
+    </entry>
+    <entry name="copyImageToClipboard" type ="Bool">
+        <label>Copy screenshot automatically to the clipboard after it is taken</label>
+        <default>false</default>
+    </entry>
+    <entry name="autoSaveImage" type="Bool">
+        <label>Save screenshot automatically after it is taken</label>
+        <default>false</default>
+    </entry>
+    <entry name="useLightMaskColour" type="Bool">
+        <label>Whether to use a light colour mask in the region selection dialog</label>
+        <default>false</default>
+    </entry>
+    <entry name="showMagnifier" type="Bool">
+        <label>Whether to show a magnifier in the region selection</label>
+        <default>false</default>
+    </entry>
+    <entry name="useReleaseToCapture" type="Bool">
+        <label>Whether the screenshot should be captured after selecting the region and releasing
+            the mouse </label>
+        <default>false</default>
+    </entry>
+     <entry name="rememberLastRectangularRegion" type="Bool">
+        <label>RemeberlastRectangularRegion</label>
+        <default>true</default>
+    </entry>
+     <entry name="alwaysRememberRegion" type="Bool">
+        <label>Remember the region across restarts</label>
+        <default>false</default>
+    </entry>
+</group>
+<group name="GuiConfig">
+    <entry name="cropRegion" type="IntList">
+        <label>The last used region the user selected</label>
+        <default>0,0,0,0</default>
+    </entry>
+    <entry name="onClickChecked" type="Bool">
+        <label>Take screenshot on click</label>
+        <default>false</default>
+    </entry>
+    <entry name="includePointer" type="Bool">
+        <label>Whether the mouse cursor is included in the screenshot</label>
+        <default>true</default>
+    </entry>
+    <entry name="includeDecorations" type="Bool">
+        <label>Whether the window decorations are included in the screenshot</label>
+        <default>true</default>
+    </entry>
+    <entry name="transientOnly" type="Bool">
+        <label>Only capture the current pop up menu</label>
+        <default>false</default>
+    </entry>
+    <entry name="quitAfterSaveCopyExport" type="Bool">
+        <label>Quit after saving or copying an image</label>
+        <default>false</default>
+    </entry>
+    <entry name="captureDelay" type="Double">
+        <label>Delay</label>
+        <default>0</default>
+    </entry>
+    <entry name="captureMode" type="Enum">
+        <choices name="Spectacle::CaptureMode"></choices>
+        <default>Spectacle::CaptureMode::AllScreens</default>
+    </entry>
+</group>
+<group name="Save">
+    <entry name="defaultSaveLocation" type="Url">
+        <label>Default filename</label>
+        <default code="true">
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/')) 
+        </default>
+    </entry>
+    <entry name="copySaveLocation" type="Bool">
+        <label>Whether to copy the file path after saving to the clipboard</label>
+        <default>true</default>
+    </entry>
+     <entry name="compressionQuality" type="UInt">
+        <label>Compression quality for lossy file formats</label>
+        <default>90</default>
+    </entry>
+     <entry name="defaultSaveImageFormat" type="String">
+        <label>Default save image format</label>
+        <default>PNG</default>
+    </entry>
+    <entry name="saveFilenameFormat" type="String">
+        <label>The default filename used when saving</label>
+        <default>Screenshot_%Y%M%D_%H%m%S</default>
+    </entry>
+    <entry name="lastSaveLocation" type="Url">
+        <label>The path of the file saved last</label>
+        <default code="true">defaultSaveLocation()</default>
+    </entry>
+    <entry name="lastSaveAsLocation" type="Url">
+        <label>Last path used for "save as" action</label>
+        <default code="true">defaultSaveLocation()</default>
+    </entry>
+    <entry name="lastUsedSaveMode" type="Enum">
+        <label>The last used save mode</label>
+        <choices>
+        <choice name="SaveAs"></choice>
+        <choice name="Save"></choice>
+        </choices>
+        <default>SaveAs</default>
+    </entry>
+</group>
+</kcfg>

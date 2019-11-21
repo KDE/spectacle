@@ -1,4 +1,5 @@
 /*
+ *  Copyright 2019 David Redondo <kde@david-redondo.de>
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -21,6 +22,8 @@
 #include "spectacle_core_debug.h"
 
 #include "Config.h"
+#include "settings.h"
+#include "ShortcutActions.h"
 
 #include <KGlobalAccel>
 #include <KLocalizedString>
@@ -57,9 +60,6 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     mCopyToClipboard(theCopyToClipboard),
     mWaylandPlasmashell(nullptr)
 {
-    auto lConfig = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
-    KConfigGroup lGuiConfig(lConfig, "GuiConfig");
-
     if (!(theSaveFileName.isEmpty() || theSaveFileName.isNull())) {
         if (QDir::isRelativePath(theSaveFileName)) {
             theSaveFileName = QDir::current().absoluteFilePath(theSaveFileName);
@@ -79,9 +79,8 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     }
 
     // reset last region if it should not be remembered across restarts
-    auto lSpectacleConfig = SpectacleConfig::instance();
-    if(!lSpectacleConfig->alwaysRememberRegion()) {
-        lSpectacleConfig->setCropRegion(QRect());
+    if(!Settings::alwaysRememberRegion()) {
+        Settings::setCropRegion({0, 0, 0, 0});
     }
 
     // set up the export manager
@@ -116,8 +115,8 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
     case StartMode::Background: {
             auto lMsec = (KWindowSystem::compositingActive() ? 200 : 50) + theDelayMsec;
             auto lShutterMode = lImmediateAvailable ? Platform::ShutterMode::Immediate : Platform::ShutterMode::OnClick;
-            auto lIncludePointer = lGuiConfig.readEntry("includePointer", true);
-            auto lIncludeDecorations = lGuiConfig.readEntry("includeDecorations", true);
+            auto lIncludePointer = Settings::includePointer();
+            auto lIncludeDecorations = Settings::includeDecorations();
             const Platform::GrabMode lCaptureMode = toPlatformGrabMode(theCaptureMode);
             QTimer::singleShot(lMsec, this, [ this, lCaptureMode, lShutterMode, lIncludePointer, lIncludeDecorations ]() {
                 mPlatform->doGrab(lShutterMode, lCaptureMode, lIncludePointer, lIncludeDecorations);
@@ -125,7 +124,7 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
         }
         break;
     case StartMode::Gui:
-        initGui(lGuiConfig.readEntry("includePointer", true), lGuiConfig.readEntry("includeDecorations", true));
+        initGui(Settings::includePointer(), Settings::includeDecorations());
         break;
     }
     setUpShortcuts();
@@ -133,22 +132,15 @@ SpectacleCore::SpectacleCore(StartMode theStartMode,
 
 void SpectacleCore::setUpShortcuts()
 {
-    SpectacleConfig* config = SpectacleConfig::instance();
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(), Qt::Key_Print);
 
-    QAction* openAction = config->shortCutActions->action(QStringLiteral("_launch"));
-    KGlobalAccel::self()->setGlobalShortcut(openAction, Qt::Key_Print);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->fullScreenAction(), Qt::SHIFT + Qt::Key_Print);
 
-    QAction* fullScreenAction = config->shortCutActions->action(QStringLiteral("FullScreenScreenShot"));
-    KGlobalAccel::self()->setGlobalShortcut(fullScreenAction, Qt::SHIFT + Qt::Key_Print);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->activeWindowAction(), Qt::META + Qt::Key_Print);
 
-    QAction* activeWindowAction = config->shortCutActions->action(QStringLiteral("ActiveWindowScreenShot"));
-    KGlobalAccel::self()->setGlobalShortcut(activeWindowAction, Qt::META + Qt::Key_Print);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->regionAction(), Qt::META + Qt::SHIFT + Qt::Key_Print);
 
-    QAction* regionAction = config->shortCutActions->action(QStringLiteral("RectangularRegionScreenShot"));
-    KGlobalAccel::self()->setGlobalShortcut(regionAction, Qt::META + Qt::SHIFT + Qt::Key_Print);
-
-    QAction* currentScreenAction = config->shortCutActions->action(QStringLiteral("CurrentMonitorScreenShot"));
-    KGlobalAccel::self()->setGlobalShortcut(currentScreenAction, QList<QKeySequence>());
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->currentScreenAction(), QList<QKeySequence>());
 }
 
 QString SpectacleCore::filename() const
@@ -177,8 +169,8 @@ void SpectacleCore::dbusStartAgent()
         mStartMode = StartMode::Gui;
         initGui(lIncludePointer, lIncludeDecorations);
     } else {
-        using Actions = SpectacleConfig::PrintKeyActionRunning;
-        switch (SpectacleConfig::instance()->printKeyActionRunning()) {
+        using Actions = Settings::EnumPrintKeyActionRunning;
+        switch (Settings::printKeyActionRunning()) {
             case Actions::TakeNewScreenshot: {
                 auto lShutterMode = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? Platform::ShutterMode::Immediate : Platform::ShutterMode::OnClick;
                 auto lGrabMode = toPlatformGrabMode(ExportManager::instance()->captureMode());
@@ -289,8 +281,8 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
     case StartMode::Gui:
         mMainWindow->setScreenshotAndShow(thePixmap);
 
-        bool autoSaveImage = SpectacleConfig::instance()->autoSaveImage();
-        bool copyImageToClipboard = SpectacleConfig::instance()->copyImageToClipboard();
+        bool autoSaveImage = Settings::autoSaveImage();
+        bool copyImageToClipboard = Settings::copyImageToClipboard();
 
         if (autoSaveImage && copyImageToClipboard) {
             lExportManager->doSaveAndCopy();
@@ -365,7 +357,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
             if (index == 0) {
                 new KRun(theSavedAt, nullptr);
                 QTimer::singleShot(250, this, [this] {
-                    if (mStartMode != StartMode::Gui || SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
+                    if (mStartMode != StartMode::Gui || Settings::quitAfterSaveCopyExport()) {
                         emit allDone();
                     }
                 });
@@ -374,7 +366,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     }
 
     connect(lNotify, &QObject::destroyed, this, [this] {
-        if (mStartMode != StartMode::Gui || SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()) {
+        if (mStartMode != StartMode::Gui || Settings::quitAfterSaveCopyExport()) {
             emit allDone();
         }
     });
@@ -384,7 +376,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
 void SpectacleCore::doCopyPath(const QUrl &savedAt)
 {
-    if (SpectacleConfig::instance()->copySaveLocationToClipboard()) {
+    if (Settings::copySaveLocation()) {
         qApp->clipboard()->setText(savedAt.toLocalFile());
     }
 }

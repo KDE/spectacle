@@ -1,4 +1,5 @@
 /*
+ *  Copyright 2019 David Redondo <kde@david-redondo.de>
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -18,6 +19,7 @@
  */
 
 #include "Config.h"
+#include "settings.h"
 #include "SpectacleCommon.h"
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
@@ -145,7 +147,8 @@ int main(int argc, char **argv)
 
     SpectacleCore lCore(lStartMode, lCaptureMode, lFileName, lDelayMsec, lNotify, lCopyToClipboard);
     QObject::connect(&lCore, &SpectacleCore::allDone, qApp, &QApplication::quit);
-
+    QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
+    
     // create the dbus connections
 
     new KDBusService(KDBusService::Multiple, &lCore);

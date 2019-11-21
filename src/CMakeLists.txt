@@ -26,8 +26,8 @@ set(
         Main.cpp
         ExportManager.cpp
         SpectacleCore.cpp
-        SpectacleConfig.cpp
         SpectacleDBusAdapter.cpp
+        ShortcutActions.cpp
         ${SPECTACLE_SRCS_PLATFORM}
         Gui/KSMainWindow.cpp
         Gui/KSWidget.cpp
@@ -35,13 +35,14 @@ set(
         Gui/ExportMenu.cpp
         Gui/ProgressButton.cpp
         Gui/SmartSpinBox.cpp
-        Gui/SettingsDialog/SettingsDialog.cpp
-        Gui/SettingsDialog/SettingsPage.cpp
         Gui/SettingsDialog/SaveOptionsPage.cpp
+        Gui/SettingsDialog/SettingsDialog.cpp
         Gui/SettingsDialog/GeneralOptionsPage.cpp
         Gui/SettingsDialog/ShortcutsOptionsPage.cpp
         QuickEditor/QuickEditor.cpp
 )
+
+kconfig_add_kcfg_files(SPECTACLE_SRCS_DEFAULT Gui/SettingsDialog/settings.kcfgc)
 
 ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core)
 ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_gui_debug.h IDENTIFIER SPECTACLE_GUI_LOG CATEGORY_NAME org.kde.spectacle.gui)

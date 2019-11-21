@@ -31,7 +31,7 @@
 #include <KNS3/KMoreToolsMenuFactory>
 
 #include "SpectacleCommon.h"
-#include "SpectacleConfig.h"
+
 #include "KSWidget.h"
 #include "ExportMenu.h"
 #include "Platforms/Platform.h"

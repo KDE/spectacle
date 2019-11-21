@@ -20,39 +20,15 @@
 #ifndef GENERALOPTIONSPAGE_H
 #define GENERALOPTIONSPAGE_H
 
-#include "SettingsPage.h"
+#include <QWidget>
 
-class QButtonGroup;
-class QCheckBox;
-class QRadioButton;
-
-class GeneralOptionsPage : public SettingsPage
+class GeneralOptionsPage : public QWidget
 {
     Q_OBJECT
 
     public:
 
     explicit GeneralOptionsPage(QWidget *parent = nullptr);
-
-    public Q_SLOTS:
-
-    void saveChanges() override;
-    void resetChanges() override;
-
-    private Q_SLOTS:
-
-    void markDirty();
-
-    private:
-
-    QButtonGroup *mPrintKeyActionGroup;
-    QRadioButton *mRememberAlways;
-    QRadioButton *mRememberUntilClosed;
-    QCheckBox *mCopyImageToClipboard;
-    QCheckBox *mAutoSaveImage;
-    QCheckBox *mUseLightBackground;
-    QCheckBox *mShowMagnifier;
-    QCheckBox *mReleaseToCapture;
 };
 
 #endif // GENERALOPTIONSPAGE_H

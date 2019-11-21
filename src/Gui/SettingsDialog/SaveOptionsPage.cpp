@@ -1,4 +1,5 @@
 /*
+ *  Copyright 2019 David Redondo <kde@david-redondo.de>
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -20,7 +21,6 @@
 #include "SaveOptionsPage.h"
 
 #include "SpectacleCommon.h"
-#include "SpectacleConfig.h"
 #include "ExportManager.h"
 
 #include <KIOWidgets/KUrlRequester>
@@ -35,52 +35,49 @@
 #include <QImageWriter>
 #include <QCheckBox>
 
-SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
-    SettingsPage(parent)
+SaveOptionsPage::SaveOptionsPage(QWidget *parent) : QWidget(parent)
 {
     QFormLayout *mainLayout = new QFormLayout;
     setLayout(mainLayout);
 
     // Save location
-    mUrlRequester = new KUrlRequester;
-    mUrlRequester->setMode(KFile::Directory);
-    connect(mUrlRequester, &KUrlRequester::textChanged, this, &SaveOptionsPage::markDirty);
-    mainLayout->addRow(i18n("Save Location:"), mUrlRequester);
+    auto urlRequester = new KUrlRequester(this);
+    urlRequester->setObjectName(QStringLiteral("kcfg_defaultSaveLocation"));
+    urlRequester->setMode(KFile::Directory);
+    mainLayout->addRow(i18n("Save Location:"), urlRequester);
 
     // copy file location to clipboard after saving
-    mCopyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
-    connect(mCopyPathToClipboard, &QCheckBox::toggled, this, &SaveOptionsPage::markDirty);
-    mainLayout->addRow(QString(), mCopyPathToClipboard);
+    auto copyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
+    copyPathToClipboard->setObjectName(QStringLiteral("kcfg_copySaveLocation"));
+    mainLayout->addRow(QString(), copyPathToClipboard);
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // Compression quality slider and current value display
-    QHBoxLayout *sliderHorizLayout = new QHBoxLayout();
-    QVBoxLayout *sliderVertLayout = new QVBoxLayout();
+    QHBoxLayout *sliderHorizLayout = new QHBoxLayout(this);
+    QVBoxLayout *sliderVertLayout = new QVBoxLayout(this);
 
     // Current value
-    QSpinBox *mQualitySpinner = new QSpinBox();
-    mQualitySpinner->setSuffix(QString::fromUtf8("%"));
-    mQualitySpinner->setRange(0, 100);
-    mQualitySpinner->setValue(SpectacleConfig::instance()->compressionQuality());
-    connect(mQualitySpinner, QOverload<int>::of(&QSpinBox::valueChanged), this, [=] (int value) {mQualitySlider->setValue(value);});
+    auto qualitySpinner = new QSpinBox(this);
+    qualitySpinner->setSuffix(QString::fromUtf8("%"));
+    qualitySpinner->setRange(0, 100);
+    qualitySpinner->setObjectName(QStringLiteral("kcfg_compressionQuality"));
 
     // Slider
-    mQualitySlider = new QSlider(Qt::Horizontal);
-    mQualitySlider->setRange(0, 100);
-    mQualitySlider->setSliderPosition(SpectacleConfig::instance()->compressionQuality());
-    mQualitySlider->setTracking(true);
-    connect(mQualitySlider, &QSlider::valueChanged, this, [=](int value) {
-        mQualitySpinner->setValue(value);
-        markDirty();
+    auto qualitySlider = new QSlider(Qt::Horizontal, this);
+    qualitySlider->setRange(0, 100);
+    qualitySlider->setSliderPosition(qualitySpinner->value());
+    qualitySlider->setTracking(true);
+    connect(qualitySlider, &QSlider::valueChanged, this, [=](int value) {
+        qualitySpinner->setValue(value);
     });
-
-    sliderHorizLayout->addWidget(mQualitySlider);
-    sliderHorizLayout->addWidget(mQualitySpinner);
+    connect(qualitySpinner, QOverload<int>::of(&QSpinBox::valueChanged), this, [=] (int value) {qualitySlider->setValue(value);});
+    sliderHorizLayout->addWidget(qualitySlider);
+    sliderHorizLayout->addWidget(qualitySpinner);
 
     sliderVertLayout->addLayout(sliderHorizLayout);
 
-    QLabel *qualitySliderDescription = new QLabel();
+    QLabel *qualitySliderDescription = new QLabel(this);
     qualitySliderDescription->setText(i18n("Choose the image quality when saving with lossy image formats like JPEG"));
 
     sliderVertLayout->addWidget(qualitySliderDescription);
@@ -90,9 +87,10 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // filename chooser text field
-    QHBoxLayout *saveFieldLayout = new QHBoxLayout;
-    mSaveNameFormat = new QLineEdit;
-    connect(mSaveNameFormat, &QLineEdit::textEdited, this, &SaveOptionsPage::markDirty);
+    QHBoxLayout *saveFieldLayout = new QHBoxLayout(this);
+    mSaveNameFormat = new QLineEdit(this);
+    mSaveNameFormat->setObjectName(QStringLiteral("kcfg_saveFilenameFormat"));
+
     connect(mSaveNameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
@@ -110,7 +108,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
     mSaveNameFormat->setPlaceholderText(QStringLiteral("%d"));
     saveFieldLayout->addWidget(mSaveNameFormat);
 
-    mSaveImageFormat = new QComboBox;
+    mSaveImageFormat = new QComboBox(this);
+    mSaveImageFormat->setObjectName(QStringLiteral("kcfg_defaultSaveImageFormat"));
+    mSaveImageFormat->setProperty("kcfg_property", QByteArray("currentText"));
     mSaveImageFormat->addItems([&](){
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
@@ -119,7 +119,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         }
         return items;
     }());
-    connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::markDirty);
     connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
     saveFieldLayout->addWidget(mSaveImageFormat);
     mainLayout->addRow(i18n("Filename:"), saveFieldLayout);
@@ -146,60 +145,6 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) :
         mSaveNameFormat->insert(placeholder);
     });
     mainLayout->addWidget(fmtHelpText);
-
-    // read in the data
-    resetChanges();
-}
-
-void SaveOptionsPage::markDirty()
-{
-    mChangesMade = true;
-}
-
-void SaveOptionsPage::saveChanges()
-{
-    // bring up the configuration reader
-
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-
-    // save the data
-
-    cfgManager->setDefaultSaveLocation(mUrlRequester->url());
-    cfgManager->setAutoSaveFilenameFormat(mSaveNameFormat->text());
-    cfgManager->setSaveImageFormat(mSaveImageFormat->currentText().toLower());
-    cfgManager->setCopySaveLocationToClipboard(mCopyPathToClipboard->checkState() == Qt::Checked);
-    cfgManager->setCompressionQuality(mQualitySlider->value());
-
-    // done
-
-    mChangesMade = false;
-}
-
-void SaveOptionsPage::resetChanges()
-{
-    // bring up the configuration reader
-
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-
-    // read in the data
-
-    mSaveNameFormat->setText(cfgManager->autoSaveFilenameFormat());
-    mUrlRequester->setUrl(cfgManager->defaultSaveLocation());
-    mCopyPathToClipboard->setChecked(cfgManager->copySaveLocationToClipboard());
-    mQualitySlider->setSliderPosition(cfgManager->compressionQuality());
-
-    // read in the save image format and calculate its index
-
-    {
-        int index = mSaveImageFormat->findText(cfgManager->saveImageFormat().toUpper());
-        if (index >= 0) {
-            mSaveImageFormat->setCurrentIndex(index);
-        }
-    }
-
-    // done
-
-    mChangesMade = false;
 }
 
 void SaveOptionsPage::updateFilenamePreview()

@@ -20,42 +20,27 @@
 #ifndef SAVEOPTIONSPAGE_H
 #define SAVEOPTIONSPAGE_H
 
-#include "SettingsPage.h"
+#include <QWidget>
 
-class QLineEdit;
 class QComboBox;
-class KUrlRequester;
-class QCheckBox;
-class QSlider;
 class QLabel;
+class QLineEdit;
 
-class SaveOptionsPage : public SettingsPage
+class SaveOptionsPage : public QWidget
 {
     Q_OBJECT
 
     public:
 
     explicit SaveOptionsPage(QWidget *parent = nullptr);
-
-    public Q_SLOTS:
-
-    void saveChanges() override;
-    void resetChanges() override;
-
-    private Q_SLOTS:
-
-    void markDirty();
-
+    
     private:
-
+    
+    QLineEdit* mSaveNameFormat;
+    QLabel* mPreviewLabel;
+    QComboBox* mSaveImageFormat;
+        
     void updateFilenamePreview();
-
-    QLineEdit        *mSaveNameFormat;
-    KUrlRequester    *mUrlRequester;
-    QComboBox        *mSaveImageFormat;
-    QCheckBox        *mCopyPathToClipboard;
-    QSlider          *mQualitySlider;
-    QLabel           *mPreviewLabel;
 };
 
 #endif // SAVEOPTIONSPAGE_H

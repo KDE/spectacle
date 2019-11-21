@@ -1,4 +1,5 @@
 /*
+ *  Copyright 2019 David Redondo <kde@david-redondo.de>
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -19,20 +20,20 @@
 
 #include "GeneralOptionsPage.h"
 
-#include "SpectacleConfig.h"
-
 #include <KLocalizedString>
 #include <KTitleWidget>
 #include <KWindowSystem>
 
 #include <QButtonGroup>
 #include <QCheckBox>
+#include <QLineEdit>
 #include <QFormLayout>
 #include <QRadioButton>
 #include <QSpacerItem>
+#include <QTextEdit>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
-    SettingsPage(parent)
+    QWidget{parent}
 {
     QFormLayout *mainLayout = new QFormLayout(this);
     setLayout(mainLayout);
@@ -44,30 +45,49 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     mainLayout->addRow(runningTitle);
     QRadioButton* takeNew = new QRadioButton(i18n("Take a new screenshot"), this);
     QRadioButton* startNewInstance = new QRadioButton(i18n("Open a new Spectacle window"), this);
-    mPrintKeyActionGroup = new QButtonGroup(this);
-    mPrintKeyActionGroup->setExclusive(true);
-    mPrintKeyActionGroup->addButton(takeNew, SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
-    mPrintKeyActionGroup->addButton(startNewInstance, SpectacleConfig::PrintKeyActionRunning::StartNewInstance);
-    connect( mPrintKeyActionGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    QButtonGroup* printKeyActionGroup = new QButtonGroup(this);
+    printKeyActionGroup->setExclusive(true);
+    printKeyActionGroup->addButton(takeNew,0);// SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
+    printKeyActionGroup->addButton(startNewInstance,1);// SpectacleConfig::PrintKeyActionRunning::StartNewInstance);
     mainLayout->addRow(i18n("Press screenshot key to:"), takeNew);
     mainLayout->addRow(QString(), startNewInstance);
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
     if (!(KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0)) {
         QRadioButton* focusWindow = new QRadioButton(i18n("Return focus to Spectacle"), this);
-        mPrintKeyActionGroup->addButton( focusWindow, SpectacleConfig::PrintKeyActionRunning::FocusWindow);
+        printKeyActionGroup->addButton( focusWindow,2);// SpectacleConfig::PrintKeyActionRunning::FocusWindow);
         mainLayout->addRow(QString(), focusWindow);
     }
+
+    //Workaround because KConfigWidgets doesn't support QButtonGroup (Bug 409037)
+    auto workaroundLabel = new QLineEdit(this);
+    workaroundLabel->setHidden(true);
+    workaroundLabel->setObjectName(QStringLiteral("kcfg_printKeyActionRunning"));
+    // Need to check default Button because we get no change event for that
+    takeNew->setChecked(true);
+    connect(workaroundLabel, &QLineEdit::textChanged,
+            printKeyActionGroup, [printKeyActionGroup, takeNew](const QString& text){
+                auto button = printKeyActionGroup->button(text.toInt());
+                // We are missing a button on Wayland
+                button ? button->setChecked(true) : takeNew->setChecked(true);
+    });
+    connect(printKeyActionGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled),
+            workaroundLabel, [workaroundLabel] (int value, bool checked) {
+                if (checked) {
+                    workaroundLabel->setText(QString::number(value));
+                }
+    });
+    // /Workaround
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     // actions to take after taking a screenshot
-    mCopyImageToClipboard = new QCheckBox(i18n("Copy image to clipboard"), this);
-    connect(mCopyImageToClipboard, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(i18n("After taking a screenshot:"), mCopyImageToClipboard);
+    auto copyImageToClipboard = new QCheckBox(i18n("Copy image to clipboard"), this);
+    copyImageToClipboard->setObjectName(QStringLiteral("kcfg_copyImageToClipboard"));
+    mainLayout->addRow(i18n("After taking a screenshot:"), copyImageToClipboard);
 
-    mAutoSaveImage = new QCheckBox(i18n("Autosave the image to the default location"), this);
-    connect(mAutoSaveImage, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(QString(), mAutoSaveImage);
+    auto autoSaveImage = new QCheckBox(i18n("Autosave the image to the default location"), this);
+    autoSaveImage->setObjectName(QStringLiteral("kcfg_autoSaveImage"));
+    mainLayout->addRow(QString(), autoSaveImage);
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
@@ -78,19 +98,19 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     mainLayout->addRow(titleWidget);
 
     // use light background
-    mUseLightBackground = new QCheckBox(i18n("Use light background"), this);
-    connect(mUseLightBackground, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(i18n("General:"), mUseLightBackground);
+    QCheckBox* kcfg_useLightMaskColour = new QCheckBox(i18n("Use light background"), this);
+    kcfg_useLightMaskColour->setObjectName(QStringLiteral("kcfg_useLightMaskColour"));
+    mainLayout->addRow(i18n("General:"), kcfg_useLightMaskColour);
 
     // show magnifier
-    mShowMagnifier = new QCheckBox(i18n("Show magnifier"), this);
-    connect(mShowMagnifier, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(QString(), mShowMagnifier);
+    auto showMagnifier = new QCheckBox(i18n("Show magnifier"), this);
+    showMagnifier->setObjectName(QStringLiteral("kcfg_showMagnifier"));
+    mainLayout->addRow(QString(), showMagnifier);
 
     // release mouse-button to capture
-    mReleaseToCapture = new QCheckBox(i18n("Accept on click-and-release"), this);
-    connect(mReleaseToCapture, &QCheckBox::toggled, this, &GeneralOptionsPage::markDirty);
-    mainLayout->addRow(QString(), mReleaseToCapture);
+    auto releaseToCapture = new QCheckBox(i18n("Accept on click-and-release"), this);
+    releaseToCapture->setObjectName(QStringLiteral("kcfg_useReleaseToCapture"));
+    mainLayout->addRow(QString(), releaseToCapture);
 
     mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
@@ -98,54 +118,15 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     QButtonGroup* rememberGroup = new QButtonGroup(this);
     rememberGroup->setExclusive(true);
     QRadioButton* neverButton = new QRadioButton(i18n("Never"), this);
-    mRememberAlways = new QRadioButton(i18n("Always"), this);
-    mRememberUntilClosed = new QRadioButton(i18n("Until Spectacle is closed"), this);
+    auto rememberAlways = new QRadioButton(i18n("Always"), this);
+    rememberAlways->setObjectName(QStringLiteral("kcfg_alwaysRememberRegion"));
+    auto rememberUntilClosed = new QRadioButton(i18n("Until Spectacle is closed"), this);
+    rememberUntilClosed->setObjectName(QStringLiteral("kcfg_rememberLastRectangularRegion"));
     rememberGroup->addButton(neverButton);
-    rememberGroup->addButton(mRememberAlways);
-    rememberGroup->addButton(mRememberUntilClosed);
-    neverButton->setChecked(true);
-    connect(rememberGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled), this, &GeneralOptionsPage::markDirty);
+    rememberGroup->addButton(rememberAlways);
+    rememberGroup->addButton(rememberUntilClosed);
     mainLayout->addRow(i18n("Remember selected area:"), neverButton);
-    mainLayout->addRow(QString(), mRememberAlways);
-    mainLayout->addRow(QString(), mRememberUntilClosed );
 
-    // read in the data
-    resetChanges();
-}
-
-void GeneralOptionsPage::markDirty()
-{
-    mChangesMade = true;
-}
-
-void GeneralOptionsPage::saveChanges()
-{
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-
-    cfgManager->setUseLightRegionMaskColour(mUseLightBackground->checkState() == Qt::Checked);
-    cfgManager->setRememberLastRectangularRegion(mRememberUntilClosed->isChecked() || mRememberAlways->isChecked());
-    cfgManager->setAlwaysRememberRegion (mRememberAlways->isChecked());
-    cfgManager->setShowMagnifierChecked(mShowMagnifier->checkState() == Qt::Checked);
-    cfgManager->setUseReleaseToCaptureChecked(mReleaseToCapture->checkState() == Qt::Checked);
-    cfgManager->setPrintKeyActionRunning(static_cast<SpectacleConfig::PrintKeyActionRunning>(mPrintKeyActionGroup->checkedId()));
-    cfgManager->setCopyImageToClipboard(mCopyImageToClipboard->checkState() == Qt::Checked);
-    cfgManager->setAutoSaveImage(mAutoSaveImage->checkState() == Qt::Checked);
-
-    mChangesMade = false;
-}
-
-void GeneralOptionsPage::resetChanges()
-{
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-
-    mUseLightBackground->setChecked(cfgManager->useLightRegionMaskColour());
-    mRememberUntilClosed->setChecked(cfgManager->rememberLastRectangularRegion());
-    mRememberAlways->setChecked(cfgManager->alwaysRememberRegion());
-    mShowMagnifier->setChecked(cfgManager->showMagnifierChecked());
-    mReleaseToCapture->setChecked(cfgManager->useReleaseToCapture());
-    mPrintKeyActionGroup->button(cfgManager->printKeyActionRunning())->setChecked(true);
-    mCopyImageToClipboard->setChecked(cfgManager->copyImageToClipboard());
-    mAutoSaveImage->setChecked(cfgManager->autoSaveImage());
-
-    mChangesMade = false;
+    mainLayout->addRow(QString(), rememberAlways);
+    mainLayout->addRow(QString(), rememberUntilClosed);
 }

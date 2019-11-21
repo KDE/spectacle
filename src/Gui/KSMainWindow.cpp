@@ -23,7 +23,11 @@
 #include "KSMainWindow.h"
 
 #include "Config.h"
+#include "settings.h"
 #include "SettingsDialog/SettingsDialog.h"
+#include "SettingsDialog/GeneralOptionsPage.h"
+#include "SettingsDialog/SaveOptionsPage.h"
+#include "SettingsDialog/ShortcutsOptionsPage.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -47,7 +51,10 @@
 #include <KGuiItem>
 #include <KHelpMenu>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KRun>
 #include <KLocalizedString>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <KStandardAction>
 #include <KWindowSystem>
 
@@ -174,7 +181,7 @@ void KSMainWindow::init()
 
     // the tools menu
     mToolsMenu->addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
-                          i18n("Open Screenshots Folder"),
+                          i18n("Open Default Screenshots Folder"),
                           this, &KSMainWindow::openScreenshotsFolder);
     mToolsMenu->addAction(KStandardAction::print(this, &KSMainWindow::showPrintDialog, this));
     mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
@@ -228,11 +235,11 @@ void KSMainWindow::init()
 
     // message: open containing folder
     mOpenContaining = new QAction(QIcon::fromTheme(QStringLiteral("document-open-folder")), i18n("Open Containing Folder"), mMessageWidget);
-    connect(mOpenContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({SpectacleConfig::instance()->lastSaveFile()});});
+    connect(mOpenContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({Settings::lastSaveLocation()});});
 
     mHideMessageWidgetTimer = new QTimer(this);
-    connect(mHideMessageWidgetTimer, &QTimer::timeout,
-            mMessageWidget, &KMessageWidget::animatedHide);
+//     connect(mHideMessageWidgetTimer, &QTimer::timeout,
+//             mMessageWidget, &KMessageWidget::animatedHide);
     mHideMessageWidgetTimer->setInterval(10000);
     // done with the init
 }
@@ -249,19 +256,17 @@ int KSMainWindow::windowWidth(const QPixmap &pixmap) const
     int alignedWindowWidth = qMin(mKSWidget->imagePaddingWidth() + imageWidth, MAXIMUM_WINDOW_WIDTH);
     alignedWindowWidth += layout()->contentsMargins().left() + layout()->contentsMargins().right();
     alignedWindowWidth += 2; // margins is removing 1 - 1 pixel for some reason
-
     return alignedWindowWidth;
 }
 
 void KSMainWindow::setDefaultSaveAction()
 {
-    switch (SpectacleConfig::instance()->lastUsedSaveMode()) {
-    case SaveMode::SaveAs:
-    default:
+    switch (Settings::lastUsedSaveMode()) {
+    case Settings::SaveAs:
         mSaveButton->setDefaultAction(mSaveAsAction);
         mSaveButton->setText(i18n("Save As..."));
         break;
-    case SaveMode::Save:
+    case Settings::Save:
         mSaveButton->setDefaultAction(mSaveAction);
         break;
     }
@@ -367,31 +372,7 @@ void KSMainWindow::showPrintDialog()
 
 void KSMainWindow::openScreenshotsFolder()
 {
-    // Highlight last screenshot in file manager if user saved at least once ever
-    // (since last save and saveas file names are stored in spectaclerc), otherwise,
-    //   if in save mode, open default save location from configure > save > location
-    //   if in save as mode, open last save as files location
-    // failsafe for either option is default save location from configure > save > location
-    SpectacleConfig *cfgManager = SpectacleConfig::instance();
-    ExportManager *exportManager = ExportManager::instance();
-    QUrl location;
-
-    switch(cfgManager->lastUsedSaveMode()) {
-    case SaveMode::Save:
-        location = cfgManager->lastSaveFile();
-        if (!exportManager->isFileExists(location)) {
-            location = cfgManager->defaultSaveLocation();
-        }
-        break;
-    case SaveMode::SaveAs:
-        location = cfgManager->lastSaveAsFile();  // already has a "/" at the end
-        if (!exportManager->isFileExists(location)) {
-            location = cfgManager->lastSaveAsLocation();
-        }
-        break;
-    }
-
-    KIO::highlightInFileManager({location});
+    new KRun(Settings::defaultSaveLocation(), this);
 }
 
 void KSMainWindow::quit(const QuitBehavior quitBehavior)
@@ -464,7 +445,7 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
 
 void KSMainWindow::copy()
 {
-    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    const bool quitChecked = Settings::quitAfterSaveCopyExport();
     ExportManager::instance()->doCopyToClipboard();
     if (quitChecked) {
         quit(QuitBehavior::QuitExternally);
@@ -479,8 +460,10 @@ void KSMainWindow::imageCopied()
 
 void KSMainWindow::showPreferencesDialog()
 {
-    SettingsDialog prefDialog(this);
-    prefDialog.exec();
+    if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
+        return;
+    }
+    (new SettingsDialog(this))->show();
 }
 
 void KSMainWindow::imageSaved(const QUrl &location)
@@ -503,10 +486,10 @@ void KSMainWindow::imageSavedAndCopied(const QUrl &location)
 
 void KSMainWindow::save()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::Save);
+    Settings::setLastUsedSaveMode(Settings::Save);
     setDefaultSaveAction();
 
-    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    const bool quitChecked = Settings::quitAfterSaveCopyExport();
     ExportManager::instance()->doSave(QUrl(), /* notify */ quitChecked);
     if (quitChecked) {
         quit(QuitBehavior::QuitExternally);
@@ -515,10 +498,10 @@ void KSMainWindow::save()
 
 void KSMainWindow::saveAs()
 {
-    SpectacleConfig::instance()->setLastUsedSaveMode(SaveMode::SaveAs);
+    Settings::setLastUsedSaveMode(Settings::SaveAs);
     setDefaultSaveAction();
 
-    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    const bool quitChecked = Settings::quitAfterSaveCopyExport();
     if (ExportManager::instance()->doSaveAs(this, /* notify */ quitChecked) && quitChecked) {
         quit(QuitBehavior::QuitExternally);
     }
@@ -529,7 +512,7 @@ void KSMainWindow::restoreWindowTitle()
     if (isWindowModified()) {
         setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
     } else {
-        setWindowTitle(SpectacleConfig::instance()->lastSaveFile().fileName());
+        setWindowTitle(Settings::lastSaveLocation().fileName());
     }
 }
 

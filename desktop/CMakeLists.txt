@@ -24,6 +24,10 @@ install(
     FILES spectacle_shortcuts.upd
     DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
 )
+install(
+    FILES spectacle_newConfig.upd
+    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
+)
 add_executable(spectacle-migrate-shortcuts MigrateShortcuts.cpp)
 target_link_libraries(spectacle-migrate-shortcuts Qt5::DBus KF5::GlobalAccel KF5::ConfigCore KF5::XmlGui KF5::I18n)
 install(

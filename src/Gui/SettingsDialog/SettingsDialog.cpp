@@ -1,4 +1,5 @@
 /*
+ *  Copyright 2019 David Redondo <kde@david-redondo.de>
  *  Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -21,6 +22,7 @@
 
 #include "GeneralOptionsPage.h"
 #include "SaveOptionsPage.h"
+#include "settings.h"
 #include "ShortcutsOptionsPage.h"
 
 #include <KLocalizedString>
@@ -30,66 +32,50 @@
 #include <QMessageBox>
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
-    KPageDialog(parent)
+    KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
 {
-    // set up window options and geometry
-    setWindowTitle(i18nc("@title:window", "Configure"));
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    resize(600, 550);
-    setFaceType(List);
-
-    // init all pages
-    QMetaObject::invokeMethod(this, "initPages", Qt::QueuedConnection);
+    addPage(new GeneralOptionsPage(this), Settings::self(),
+        i18n("General"),  QStringLiteral("spectacle"));
+    addPage(new SaveOptionsPage(this), Settings::self(),
+        i18n("Save"), QStringLiteral("document-save"));
+    mShortcutsPage = new ShortcutsOptionsPage(this);
+    addPage(mShortcutsPage, i18n("Shortcuts"), QStringLiteral("preferences-desktop-keyboard"));
+    connect(mShortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
+        updateButtons();
+    });
+    resize(600, 590);
+    connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
 }
 
-void SettingsDialog::initPages()
+bool SettingsDialog::hasChanged()
 {
-    KPageWidgetItem *generalOptions = new KPageWidgetItem(new GeneralOptionsPage(this), i18n("General"));
-    generalOptions->setHeader(i18n("General"));
-    generalOptions->setIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
-    addPage(generalOptions);
-    mPages.insert(generalOptions);
-
-    KPageWidgetItem *saveOptions = new KPageWidgetItem(new SaveOptionsPage(this), i18n("Save"));
-    saveOptions->setHeader(i18n("Save"));
-    saveOptions->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
-    addPage(saveOptions);
-    mPages.insert(saveOptions);
-
-    KPageWidgetItem *shortcutOptions = new KPageWidgetItem(new ShortcutsOptionsPage(this), i18n("Shortcuts"));
-    shortcutOptions->setHeader(i18n("Shortcuts"));
-    shortcutOptions->setIcon(QIcon::fromTheme(QStringLiteral("preferences-desktop-keyboard")));
-    addPage(shortcutOptions);
-    mPages.insert(shortcutOptions);
-
-    connect(this, &SettingsDialog::currentPageChanged, this, &SettingsDialog::onPageChanged);
+    return mShortcutsPage->isModified() || KConfigDialog::hasChanged();
 }
 
-void SettingsDialog::accept()
+bool SettingsDialog::isDefault()
 {
-    for (auto page : qAsConst(mPages)) {
-        SettingsPage *pageWidget = dynamic_cast<SettingsPage *>(page->widget());
-        if (pageWidget) {
-            pageWidget->saveChanges();
-        }
-    }
-
-    done(QDialog::Accepted);
+    return currentPage()->name() !=  i18n("Shortcuts") && KConfigDialog::isDefault();
 }
 
-void SettingsDialog::onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before)
+void SettingsDialog::updateSettings()
 {
-    Q_UNUSED(current);
-
-    SettingsPage *pageWidget = dynamic_cast<SettingsPage *>(before->widget());
-    if (pageWidget && (pageWidget->changesMade())) {
-        QMessageBox::StandardButton response = QMessageBox::question(this, i18n("Apply Unsaved Changes"),
-                     i18n("You have made changes to the settings in this tab. Do you want to apply those changes?"));
-
-        if (response == QMessageBox::Yes) {
-            pageWidget->saveChanges();
-        } else {
-            pageWidget->resetChanges();
-        }
-    }
+    KConfigDialog::updateSettings();
+    mShortcutsPage->saveChanges();
 }
+
+void SettingsDialog::updateWidgets()
+{
+    KConfigDialog::updateWidgets();
+    mShortcutsPage->resetChanges();
+}
+
+void SettingsDialog::updateWidgetsDefault()
+{
+    KConfigDialog::updateWidgetsDefault();
+    mShortcutsPage->defaults();
+}
+
+
+
+
+

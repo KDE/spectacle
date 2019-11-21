@@ -1,4 +1,5 @@
 /* This file is part of Spectacle, the KDE screenshot utility
+ * Copyright 2019 David Redondo <kde@david-redondo.de>
  * Copyright (C) 2015 Boudhayan Gupta <bgupta@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,6 +22,8 @@
 
 #include "ExportManager.h"
 
+#include "settings.h"
+
 #include <QDir>
 #include <QMimeData>
 #include <QMimeDatabase>
@@ -42,7 +45,7 @@
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
 
-#include "SpectacleConfig.h"
+
 
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
@@ -50,9 +53,7 @@ ExportManager::ExportManager(QObject *parent) :
     mTempFile(QUrl()),
     mTempDir(nullptr)
 {
-    connect(this, &ExportManager::imageSaved, [](const QUrl &savedAt) {
-        SpectacleConfig::instance()->setLastSaveFile(savedAt);
-    });
+    connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
 }
 
 ExportManager::~ExportManager()
@@ -120,7 +121,7 @@ void ExportManager::setTimestamp(const QDateTime &timestamp)
 
 QString ExportManager::defaultSaveLocation() const
 {
-    QString savePath = SpectacleConfig::instance()->defaultSaveLocation().toLocalFile();
+    QString savePath = Settings::self()->defaultSaveLocation().toLocalFile();
     savePath = QDir::cleanPath(savePath);
 
     QDir savePathDir(savePath);
@@ -137,7 +138,7 @@ QUrl ExportManager::getAutosaveFilename()
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
-                                                   SpectacleConfig::instance()->saveImageFormat(),
+                                                   Settings::self()->defaultSaveImageFormat(),
                                                    &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
@@ -161,7 +162,7 @@ QString ExportManager::truncatedFilename(QString const &filename)
 
 QString ExportManager::makeAutosaveFilename()
 {
-    return formatFilename(SpectacleConfig::instance()->autoSaveFilenameFormat());
+    return formatFilename(Settings::self()->saveFilenameFormat());
 }
 
 QString ExportManager::formatFilename(const QString &nameTemplate)
@@ -246,7 +247,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     }
 
     if (result.isEmpty()) {
-        result = SpectacleConfig::instance()->defaultFilename();
+        result = QStringLiteral("Screenshot");
     }
     return truncatedFilename(result);
 }
@@ -280,7 +281,7 @@ QString ExportManager::makeSaveMimetype(const QUrl &url)
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
-        return SpectacleConfig::instance()->saveImageFormat();
+        return Settings::self()->defaultSaveImageFormat();
     }
     return type;
 }
@@ -288,7 +289,7 @@ QString ExportManager::makeSaveMimetype(const QUrl &url)
 bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
 {
     QImageWriter imageWriter(device, format);
-    imageWriter.setQuality(SpectacleConfig::instance()->compressionQuality());
+    imageWriter.setQuality(Settings::self()->compressionQuality());
     /** Set compression 50 if the format is png. Otherwise if no compression value is specified
      *  it will fallback to using quality (QTBUG-43618) and produce huge files.
      *  See also qpnghandler.cpp#n1075. The other formats that do compression seem to have it
@@ -455,7 +456,6 @@ void ExportManager::doSave(const QUrl &url, bool notify)
     if (save(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
-        SpectacleConfig::instance()->setLastSaveFile(savePath);
 
         emit imageSaved(savePath);
         if (notify) {
@@ -467,7 +467,6 @@ void ExportManager::doSave(const QUrl &url, bool notify)
 bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 {
     QStringList supportedFilters;
-    SpectacleConfig *config = SpectacleConfig::instance();
 
     // construct the supported mimetype list
     const auto mimeTypes = QImageWriter::supportedMimeTypes();
@@ -476,12 +475,12 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     }
 
     // construct the file name
-    const QString filenameExtension = SpectacleConfig::instance()->saveImageFormat();
-    const QString mimetype = QMimeDatabase().mimeTypeForFile(QLatin1String("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
+    const QString filenameExtension = Settings::self()->defaultSaveImageFormat();
+    const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
     QFileDialog dialog(parentWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setDirectoryUrl(config->lastSaveAsLocation());
+    dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation());
     dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".") + filenameExtension);
     dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
     dialog.setMimeTypeFilters(supportedFilters);
@@ -493,8 +492,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
         if (saveUrl.isValid()) {
             if (save(saveUrl)) {
                 emit imageSaved(saveUrl);
-                config->setLastSaveAsFile(saveUrl);
-
+                Settings::setLastSaveAsLocation(saveUrl);
                 if (notify) {
                     emit forceNotify(saveUrl);
                 }
@@ -516,7 +514,7 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
     if (save(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
-        SpectacleConfig::instance()->setLastSaveFile(savePath);
+        Settings::setLastSaveLocation(savePath);
 
         doCopyToClipboard(false);
         emit imageSavedAndCopied(savePath);
@@ -524,7 +522,6 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
 }
 
 // misc helpers
-
 void ExportManager::doCopyToClipboard(bool notify)
 {
     auto data = new QMimeData();

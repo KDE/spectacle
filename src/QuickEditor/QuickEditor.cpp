@@ -25,7 +25,7 @@
 #include <QtCore/qmath.h>
 
 #include "QuickEditor.h"
-#include "SpectacleConfig.h"
+#include "settings.h"
 
 const int QuickEditor::handleRadiusMouse = 9;
 const int QuickEditor::handleRadiusTouch = 12;
@@ -71,17 +71,16 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
     mMouseDragState(MouseState::None),
     mPixmap(thePixmap),
     mMagnifierAllowed(false),
-    mShowMagnifier(SpectacleConfig::instance()->showMagnifierChecked()),
+    mShowMagnifier(Settings::showMagnifier()),
     mToggleMagnifier(false),
-    mReleaseToCapture(SpectacleConfig::instance()->useReleaseToCapture()),
-    mRememberRegion(SpectacleConfig::instance()->alwaysRememberRegion() || SpectacleConfig::instance()->rememberLastRectangularRegion()),
+    mReleaseToCapture(Settings::useReleaseToCapture()),
+    mRememberRegion(Settings::alwaysRememberRegion() || Settings::rememberLastRectangularRegion()),
     mDisableArrowKeys(false),
     mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry()),
     mbottomHelpLength(bottomHelpMaxLength),
     mHandleRadius(handleRadiusMouse)
 {
-    SpectacleConfig *config = SpectacleConfig::instance();
-    if (config->useLightRegionMaskColour()) {
+    if (Settings::useLightMaskColour()) {
         mMaskColor = QColor(255, 255, 255, 100);
     }
 
@@ -104,8 +103,9 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
         plasmashellSurface->setPanelTakesFocus(true);
         plasmashellSurface->setPosition(geometry().topLeft());
     }
-    if (config->rememberLastRectangularRegion()) {
-        QRect cropRegion = config->cropRegion();
+    if (Settings::rememberLastRectangularRegion() || Settings::alwaysRememberRegion()) {
+        auto savedRect = Settings::cropRegion();
+        QRect cropRegion = QRect(savedRect[0], savedRect[1], savedRect[2], savedRect[3]);
         if (!cropRegion.isEmpty()) {
             mSelection = QRectF(
                 cropRegion.x() * dprI,
@@ -149,7 +149,7 @@ void QuickEditor::acceptSelection()
             qRound(mSelection.width() * dpr),
             qRound(mSelection.height() * dpr)
         );
-        SpectacleConfig::instance()->setCropRegion(scaledCropRegion);
+        Settings::setCropRegion({scaledCropRegion.x(), scaledCropRegion.y(), scaledCropRegion.width(), scaledCropRegion.height()});
         emit grabDone(mPixmap.copy(scaledCropRegion));
     }
 }

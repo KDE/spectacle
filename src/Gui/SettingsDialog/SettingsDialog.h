@@ -20,12 +20,11 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
 
-#include <QSet>
-#include <KPageDialog>
+#include <KConfigDialog>
 
-class KPageWidgetItem;
+class ShortcutsOptionsPage;
 
-class SettingsDialog : public KPageDialog
+class SettingsDialog : public KConfigDialog
 {
     Q_OBJECT
 
@@ -33,18 +32,15 @@ class SettingsDialog : public KPageDialog
 
     explicit SettingsDialog(QWidget *parent = nullptr);
 
-    public Q_SLOTS:
-
-    void accept() override;
-
-    private Q_SLOTS:
-
-    void initPages();
-    void onPageChanged(KPageWidgetItem *current, KPageWidgetItem *before);
-
     private:
 
-    QSet<KPageWidgetItem *> mPages;
+    bool hasChanged() override;
+    bool isDefault() override;
+    void updateSettings() override;
+    void updateWidgets() override;
+    void updateWidgetsDefault() override;
+
+    ShortcutsOptionsPage* mShortcutsPage;
 };
 
 #endif // SETTINGSDIALOG_H
