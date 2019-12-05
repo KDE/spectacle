@@ -157,7 +157,7 @@ void KSMainWindow::init()
     mSendToButton->setAutoDefault(false);
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
-    mClipboardButton->setDefaultAction(KStandardAction::copy(ExportManager::instance(), &ExportManager::doCopyToClipboard, this));
+    mClipboardButton->setDefaultAction(KStandardAction::copy(this, &KSMainWindow::copy, this));
     mClipboardButton->setText(i18n("Copy to Clipboard"));
     mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -462,12 +462,19 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
     }
 }
 
+void KSMainWindow::copy()
+{
+    const bool quitChecked = SpectacleConfig::instance()->quitAfterSaveOrCopyChecked();
+    ExportManager::instance()->doCopyToClipboard();
+    if (quitChecked) {
+        quit(QuitBehavior::QuitExternally);
+    }
+}
+
 void KSMainWindow::imageCopied()
 {
-    SpectacleConfig::instance()->quitAfterSaveOrCopyChecked()
-            ? quit()
-            : showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
-                                KMessageWidget::Information);
+    showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
+                      KMessageWidget::Information);
 }
 
 void KSMainWindow::showPreferencesDialog()
