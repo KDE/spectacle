@@ -97,6 +97,7 @@ class KSMainWindow: public QDialog
     private:
 
     void keyPressEvent(QKeyEvent *event) override;
+    void copy();
 
     KSWidget         *mKSWidget;
     QFrame           *mDivider;
