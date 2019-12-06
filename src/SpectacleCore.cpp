@@ -277,7 +277,11 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 
             // if we notify, we emit allDone only if the user either dismissed the notification or pressed
             // the "Open" button, otherwise the app closes before it can react to it.
-            if (!mNotify) {
+            if (!mNotify && mCopyToClipboard) {
+                // Allow some time for clipboard content to transfer if '--nonotify' is used, see Bug #411263
+                // TODO: Find better solution
+                QTimer::singleShot(250, this, &SpectacleCore::allDone);
+            } else if (!mNotify) {
                 emit allDone();
             }
         }
