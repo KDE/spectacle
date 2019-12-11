@@ -137,7 +137,7 @@ Keywords[uk]=знімок;захоплення;друк;знімок вікна;
 Keywords[x-test]=xxsnapshotxx;xxcapturexx;xxprintxx;xxscreenshotxx;xxsnippingxx;xxsnipxx;
 Keywords[zh_CN]=snapshot;capture;print;screenshot;snipping;snip;快照;截图;抓取;屏幕截图;截屏;抓屏;
 Keywords[zh_TW]=snapshot;capture;print;screenshot;snipping;snip;截圖;擷取;截圖程式
-Exec=qdbus org.kde.Spectacle / StartAgent
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / StartAgent
 Icon=spectacle
 Type=Application
 Terminal=false
@@ -187,7 +187,7 @@ Name[uk]=Захопити зображення усієї стільниці
 Name[x-test]=xxCapture Entire Desktopxx
 Name[zh_CN]=截取整个桌面
 Name[zh_TW]=擷取整個桌面
-Exec=qdbus org.kde.Spectacle / FullScreen false
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / FullScreen false
 X-KDE-Shortcuts=Shift+Print
 
 [Desktop Action CurrentMonitorScreenShot]
@@ -230,7 +230,7 @@ Name[uk]=Захопити зображення на моніторі
 Name[x-test]=xxCapture Current Monitorxx
 Name[zh_CN]=截取当前显示器
 Name[zh_TW]=擷取目前螢幕
-Exec=qdbus org.kde.Spectacle / CurrentScreen false
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / CurrentScreen false
 
 
 [Desktop Action ActiveWindowScreenShot]
@@ -273,7 +273,7 @@ Name[uk]=Захопити зображення активного вікна
 Name[x-test]=xxCapture Active Windowxx
 Name[zh_CN]=截取活动窗口
 Name[zh_TW]=擷取作用中的視窗
-Exec=qdbus org.kde.Spectacle / ActiveWindow true false
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / ActiveWindow true false
 X-KDE-Shortcuts=Meta+Print
 
 [Desktop Action RectangularRegionScreenShot]
@@ -316,5 +316,5 @@ Name[uk]=Захопити прямокутну область екрана
 Name[x-test]=xxCapture Rectangular Regionxx
 Name[zh_CN]=截取矩形区域
 Name[zh_TW]=擷取矩形區域
-Exec=qdbus org.kde.Spectacle / RectangularRegion true
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / RectangularRegion true
 X-KDE-Shortcuts=Meta+Shift+Print

@@ -1,7 +1,8 @@
 # install the .desktop and rc files in the correct place
 
+configure_file(org.kde.spectacle.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.spectacle.desktop)
 install(
-    PROGRAMS org.kde.spectacle.desktop
+    PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.spectacle.desktop
     DESTINATION ${XDG_APPS_INSTALL_DIR}
 )
 

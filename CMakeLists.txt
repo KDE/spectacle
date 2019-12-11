@@ -39,6 +39,7 @@ include(ECMSetupVersion)
 include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
+include(ECMQueryQmake)
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
@@ -111,6 +112,9 @@ endif()
 if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
     message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
 endif()
+
+# locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
+query_qmake(QtBinariesDir QT_INSTALL_BINS)
 
 # hand off to subdirectories
 
