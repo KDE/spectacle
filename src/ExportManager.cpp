@@ -34,6 +34,7 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QString>
+#include <QRandomGenerator>
 
 #include <KSharedConfig>
 #include <KIO/ListJob>
@@ -269,7 +270,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    result = fileNameFmt.arg(QLatin1String("OVERFLOW-") + QString::number(qrand() % 10000));
+    result = fileNameFmt.arg(QLatin1String("OVERFLOW-") + QString::number(QRandomGenerator::global()->bounded(10000)));
     return truncatedFilename(result) + extension;
 }
 
