@@ -78,6 +78,7 @@ void FilenameTest::testNumbering()
 
     QFile lFile(QDir(mExportManager->defaultSaveLocation()).filePath(lBaseName + QStringLiteral("_1.png")));
     lFile.open(QIODevice::WriteOnly);
+    lFile.close();
     QCOMPARE(mExportManager->formatFilename(lBaseName+QStringLiteral("_%d")), lBaseName+QStringLiteral("_2"));
     lFile.remove();
 }
