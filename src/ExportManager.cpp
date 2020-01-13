@@ -121,7 +121,8 @@ void ExportManager::setTimestamp(const QDateTime &timestamp)
 
 QString ExportManager::defaultSaveLocation() const
 {
-    QString savePath = Settings::self()->defaultSaveLocation().toLocalFile();
+    const QUrl saveUrl = Settings::self()->defaultSaveLocation();
+    QString savePath = saveUrl.scheme().isEmpty() ? saveUrl.toString() : saveUrl.toLocalFile();
     savePath = QDir::cleanPath(savePath);
 
     QDir savePathDir(savePath);
