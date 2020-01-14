@@ -125,6 +125,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     rememberGroup->addButton(neverButton);
     rememberGroup->addButton(rememberAlways);
     rememberGroup->addButton(rememberUntilClosed);
+    neverButton->setChecked(true);
     mainLayout->addRow(i18n("Remember selected area:"), neverButton);
 
     mainLayout->addRow(QString(), rememberAlways);
