@@ -20,7 +20,10 @@
 #ifndef GENERALOPTIONSPAGE_H
 #define GENERALOPTIONSPAGE_H
 
+#include <QScopedPointer>
 #include <QWidget>
+
+class Ui_GeneralOptions;
 
 class GeneralOptionsPage : public QWidget
 {
@@ -29,6 +32,11 @@ class GeneralOptionsPage : public QWidget
     public:
 
     explicit GeneralOptionsPage(QWidget *parent = nullptr);
+    ~GeneralOptionsPage() override;
+
+    private:
+
+    QScopedPointer<Ui_GeneralOptions> m_ui;
 };
 
 #endif // GENERALOPTIONSPAGE_H

@@ -68,6 +68,8 @@ add_executable(
         ${SPECTACLE_SRCS_ALL}
 )
 
+ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/SaveOptions.ui)
+
 # link libraries
 
 target_link_libraries(

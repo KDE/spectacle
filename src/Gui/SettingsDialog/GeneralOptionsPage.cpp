@@ -20,6 +20,9 @@
 
 #include "GeneralOptionsPage.h"
 
+#include "settings.h"
+#include "ui_GeneralOptions.h"
+
 #include <KLocalizedString>
 #include <KTitleWidget>
 #include <KWindowSystem>
@@ -32,103 +35,39 @@
 #include <QSpacerItem>
 #include <QTextEdit>
 
-GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
-    QWidget{parent}
+GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
+    : QWidget(parent)
+    , m_ui(new Ui_GeneralOptions)
 {
-    QFormLayout *mainLayout = new QFormLayout(this);
-    setLayout(mainLayout);
+    m_ui->setupUi(this);
 
-    // When spectacle is running settings
-    KTitleWidget* runningTitle = new KTitleWidget(this);
-    runningTitle->setText(i18n("When Spectacle is Running"));
-    runningTitle->setLevel(2);
-    mainLayout->addRow(runningTitle);
-    QRadioButton* takeNew = new QRadioButton(i18n("Take a new screenshot"), this);
-    QRadioButton* startNewInstance = new QRadioButton(i18n("Open a new Spectacle window"), this);
-    QButtonGroup* printKeyActionGroup = new QButtonGroup(this);
-    printKeyActionGroup->setExclusive(true);
-    printKeyActionGroup->addButton(takeNew,0);// SpectacleConfig::PrintKeyActionRunning::TakeNewScreenshot);
-    printKeyActionGroup->addButton(startNewInstance,1);// SpectacleConfig::PrintKeyActionRunning::StartNewInstance);
-    mainLayout->addRow(i18n("Press screenshot key to:"), takeNew);
-    mainLayout->addRow(QString(), startNewInstance);
+    m_ui->runningTitle->setLevel(2);
+    m_ui->regionTitle->setLevel(2);
+
+    m_ui->printKeyActionGroup->setId(m_ui->newScreenshotButton, Settings::TakeNewScreenshot);
+    m_ui->printKeyActionGroup->setId(m_ui->newWindowButton, Settings::StartNewInstance);
+    m_ui->printKeyActionGroup->setId(m_ui->activateWindowButton, Settings::FocusWindow);
+
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
-    if (!(KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0)) {
-        QRadioButton* focusWindow = new QRadioButton(i18n("Return focus to Spectacle"), this);
-        printKeyActionGroup->addButton( focusWindow,2);// SpectacleConfig::PrintKeyActionRunning::FocusWindow);
-        mainLayout->addRow(QString(), focusWindow);
+    if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0) {
+        m_ui->formLayout->removeRow(m_ui->activateWindowButton);
     }
-
-    //Workaround because KConfigWidgets doesn't support QButtonGroup (Bug 409037)
-    auto workaroundLabel = new QLineEdit(this);
-    workaroundLabel->setHidden(true);
-    workaroundLabel->setObjectName(QStringLiteral("kcfg_printKeyActionRunning"));
-    // Need to check default Button because we get no change event for that
-    takeNew->setChecked(true);
-    connect(workaroundLabel, &QLineEdit::textChanged,
-            printKeyActionGroup, [printKeyActionGroup, takeNew](const QString& text){
-                auto button = printKeyActionGroup->button(text.toInt());
-                // We are missing a button on Wayland
-                button ? button->setChecked(true) : takeNew->setChecked(true);
+    //Workaround because KConfigDialogManager doesn't support QButtonGroup (Bug 409037)
+    auto workaroundLabel = m_ui->kcfg_printKeyActionRunning;
+    connect(workaroundLabel, &QLineEdit::textChanged, this, [this](const QString& text){
+        auto button = m_ui->printKeyActionGroup->button(text.toInt());
+        // We are missing a button on Wayland
+        button ? button->setChecked(true) : m_ui->newScreenshotButton->setChecked(true);
     });
-    connect(printKeyActionGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled),
-            workaroundLabel, [workaroundLabel, printKeyActionGroup] (QAbstractButton *button, bool checked) {
+    connect(m_ui->printKeyActionGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled),
+            workaroundLabel, [workaroundLabel, this] (QAbstractButton *button, bool checked) {
                 if (checked) {
-                    const int value = printKeyActionGroup->id(button);
+                    const int value = m_ui->printKeyActionGroup->id(button);
                     workaroundLabel->setText(QString::number(value));
                 }
     });
     // /Workaround
 
-    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
-
-    // actions to take after taking a screenshot
-    auto copyImageToClipboard = new QCheckBox(i18n("Copy image to clipboard"), this);
-    copyImageToClipboard->setObjectName(QStringLiteral("kcfg_copyImageToClipboard"));
-    mainLayout->addRow(i18n("After taking a screenshot:"), copyImageToClipboard);
-
-    auto autoSaveImage = new QCheckBox(i18n("Autosave the image to the default location"), this);
-    autoSaveImage->setObjectName(QStringLiteral("kcfg_autoSaveImage"));
-    mainLayout->addRow(QString(), autoSaveImage);
-
-    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
-
-    // Rectangular Region settings
-    KTitleWidget *titleWidget = new KTitleWidget(this);
-    titleWidget->setText(i18n("Rectangular Region"));
-    titleWidget->setLevel(2);
-    mainLayout->addRow(titleWidget);
-
-    // use light background
-    QCheckBox* kcfg_useLightMaskColour = new QCheckBox(i18n("Use light background"), this);
-    kcfg_useLightMaskColour->setObjectName(QStringLiteral("kcfg_useLightMaskColour"));
-    mainLayout->addRow(i18n("General:"), kcfg_useLightMaskColour);
-
-    // show magnifier
-    auto showMagnifier = new QCheckBox(i18n("Show magnifier"), this);
-    showMagnifier->setObjectName(QStringLiteral("kcfg_showMagnifier"));
-    mainLayout->addRow(QString(), showMagnifier);
-
-    // release mouse-button to capture
-    auto releaseToCapture = new QCheckBox(i18n("Accept on click-and-release"), this);
-    releaseToCapture->setObjectName(QStringLiteral("kcfg_useReleaseToCapture"));
-    mainLayout->addRow(QString(), releaseToCapture);
-
-    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
-
-    // remember Rectangular Region box
-    QButtonGroup* rememberGroup = new QButtonGroup(this);
-    rememberGroup->setExclusive(true);
-    QRadioButton* neverButton = new QRadioButton(i18n("Never"), this);
-    auto rememberAlways = new QRadioButton(i18n("Always"), this);
-    rememberAlways->setObjectName(QStringLiteral("kcfg_alwaysRememberRegion"));
-    auto rememberUntilClosed = new QRadioButton(i18n("Until Spectacle is closed"), this);
-    rememberUntilClosed->setObjectName(QStringLiteral("kcfg_rememberLastRectangularRegion"));
-    rememberGroup->addButton(neverButton);
-    rememberGroup->addButton(rememberAlways);
-    rememberGroup->addButton(rememberUntilClosed);
-    neverButton->setChecked(true);
-    mainLayout->addRow(i18n("Remember selected area:"), neverButton);
-
-    mainLayout->addRow(QString(), rememberAlways);
-    mainLayout->addRow(QString(), rememberUntilClosed);
 }
+
+GeneralOptionsPage::~GeneralOptionsPage() = default;

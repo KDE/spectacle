@@ -20,11 +20,10 @@
 #ifndef SAVEOPTIONSPAGE_H
 #define SAVEOPTIONSPAGE_H
 
+#include <QScopedPointer>
 #include <QWidget>
 
-class QComboBox;
-class QLabel;
-class QLineEdit;
+class Ui_SaveOptions;
 
 class SaveOptionsPage : public QWidget
 {
@@ -33,13 +32,12 @@ class SaveOptionsPage : public QWidget
     public:
 
     explicit SaveOptionsPage(QWidget *parent = nullptr);
-    
+    ~SaveOptionsPage() override;
+
     private:
-    
-    QLineEdit* mSaveNameFormat;
-    QLabel* mPreviewLabel;
-    QComboBox* mSaveImageFormat;
-        
+
+    QScopedPointer<Ui_SaveOptions> m_ui;
+
     void updateFilenamePreview();
 };
 

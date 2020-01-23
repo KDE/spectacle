@@ -22,6 +22,7 @@
 
 #include "SpectacleCommon.h"
 #include "ExportManager.h"
+#include "ui_SaveOptions.h"
 
 #include <KIOWidgets/KUrlRequester>
 #include <KLocalizedString>
@@ -35,63 +36,13 @@
 #include <QImageWriter>
 #include <QCheckBox>
 
-SaveOptionsPage::SaveOptionsPage(QWidget *parent) : QWidget(parent)
+SaveOptionsPage::SaveOptionsPage(QWidget *parent) 
+    : QWidget(parent)
+    , m_ui(new Ui_SaveOptions)
 {
-    QFormLayout *mainLayout = new QFormLayout;
-    setLayout(mainLayout);
+    m_ui->setupUi(this);
 
-    // Save location
-    auto urlRequester = new KUrlRequester(this);
-    urlRequester->setObjectName(QStringLiteral("kcfg_defaultSaveLocation"));
-    urlRequester->setMode(KFile::Directory);
-    mainLayout->addRow(i18n("Save Location:"), urlRequester);
-
-    // copy file location to clipboard after saving
-    auto copyPathToClipboard = new QCheckBox(i18n("Copy file location to clipboard after saving"), this);
-    copyPathToClipboard->setObjectName(QStringLiteral("kcfg_copySaveLocation"));
-    mainLayout->addRow(QString(), copyPathToClipboard);
-
-    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
-
-    // Compression quality slider and current value display
-    QHBoxLayout *sliderHorizLayout = new QHBoxLayout(this);
-    QVBoxLayout *sliderVertLayout = new QVBoxLayout(this);
-
-    // Current value
-    auto qualitySpinner = new QSpinBox(this);
-    qualitySpinner->setSuffix(QString::fromUtf8("%"));
-    qualitySpinner->setRange(0, 100);
-    qualitySpinner->setObjectName(QStringLiteral("kcfg_compressionQuality"));
-
-    // Slider
-    auto qualitySlider = new QSlider(Qt::Horizontal, this);
-    qualitySlider->setRange(0, 100);
-    qualitySlider->setSliderPosition(qualitySpinner->value());
-    qualitySlider->setTracking(true);
-    connect(qualitySlider, &QSlider::valueChanged, this, [=](int value) {
-        qualitySpinner->setValue(value);
-    });
-    connect(qualitySpinner, QOverload<int>::of(&QSpinBox::valueChanged), this, [=] (int value) {qualitySlider->setValue(value);});
-    sliderHorizLayout->addWidget(qualitySlider);
-    sliderHorizLayout->addWidget(qualitySpinner);
-
-    sliderVertLayout->addLayout(sliderHorizLayout);
-
-    QLabel *qualitySliderDescription = new QLabel(this);
-    qualitySliderDescription->setText(i18n("Choose the image quality when saving with lossy image formats like JPEG"));
-
-    sliderVertLayout->addWidget(qualitySliderDescription);
-
-    mainLayout->addRow(i18n("Compression Quality:"), sliderVertLayout);
-
-    mainLayout->addItem(new QSpacerItem(0, 18, QSizePolicy::Fixed, QSizePolicy::Fixed));
-
-    // filename chooser text field
-    QHBoxLayout *saveFieldLayout = new QHBoxLayout(this);
-    mSaveNameFormat = new QLineEdit(this);
-    mSaveNameFormat->setObjectName(QStringLiteral("kcfg_saveFilenameFormat"));
-
-    connect(mSaveNameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
+    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
         for (const auto &item : imageFormats) {
@@ -99,19 +50,14 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) : QWidget(parent)
             if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
                 txtCopy.chop(fmt.length() + 1);
-                mSaveNameFormat->setText(txtCopy);
-                mSaveImageFormat->setCurrentIndex(mSaveImageFormat->findText(fmt.toUpper()));
+                m_ui->kcfg_saveFilenameFormat->setText(txtCopy);
+                m_ui->kcfg_defaultSaveImageFormat->setCurrentIndex(m_ui->kcfg_defaultSaveImageFormat->findText(fmt.toUpper()));
             }
         }
     });
-    connect(mSaveNameFormat, &QLineEdit::textChanged,this, &SaveOptionsPage::updateFilenamePreview);
-    mSaveNameFormat->setPlaceholderText(QStringLiteral("%d"));
-    saveFieldLayout->addWidget(mSaveNameFormat);
+    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textChanged,this, &SaveOptionsPage::updateFilenamePreview);
 
-    mSaveImageFormat = new QComboBox(this);
-    mSaveImageFormat->setObjectName(QStringLiteral("kcfg_defaultSaveImageFormat"));
-    mSaveImageFormat->setProperty("kcfg_property", QByteArray("currentText"));
-    mSaveImageFormat->addItems([&](){
+    m_ui->kcfg_defaultSaveImageFormat->addItems([&](){
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
         for (const auto &fmt : formats) {
@@ -119,33 +65,26 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent) : QWidget(parent)
         }
         return items;
     }());
-    connect(mSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
-    saveFieldLayout->addWidget(mSaveImageFormat);
-    mainLayout->addRow(i18n("Filename:"), saveFieldLayout);
+    connect(m_ui->kcfg_defaultSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
 
-    mPreviewLabel = new QLabel(this);
-    mainLayout->addRow(i18nc("Preview of the user configured filename", "Preview:"), mPreviewLabel);
-    // now the save filename format layout
     QString helpText = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:<blockquote>"
     );
     for (auto option = ExportManager::filenamePlaceholders.cbegin();
-         option != ExportManager::filenamePlaceholders.cend(); ++option) {
+        option != ExportManager::filenamePlaceholders.cend(); ++option) {
         helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(),
                                                                     option.value().toString());
     }
     helpText += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
     helpText += QStringLiteral("</blockquote>");
-    QLabel *fmtHelpText = new QLabel(helpText, this);
-    fmtHelpText->setWordWrap(true);
-    fmtHelpText->setTextFormat(Qt::RichText);
-    fmtHelpText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
-    connect(fmtHelpText, &QLabel::linkActivated, this, [this](const QString& placeholder) {
-        mSaveNameFormat->insert(placeholder);
+    m_ui->helpTextLabel->setText(helpText);
+    connect(m_ui->helpTextLabel, &QLabel::linkActivated, this, [this](const QString& placeholder) {
+        m_ui->kcfg_saveFilenameFormat->insert(placeholder);
     });
-    mainLayout->addWidget(fmtHelpText);
 }
+
+SaveOptionsPage::~SaveOptionsPage() = default;
 
 void SaveOptionsPage::updateFilenamePreview()
 {
@@ -161,8 +100,9 @@ void SaveOptionsPage::updateFilenamePreview()
     if (lSwitchGrabMode) {
        lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
     }
-    const QString lFileName = lExportManager->formatFilename(mSaveNameFormat->text());
-    mPreviewLabel->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, mSaveImageFormat->currentText().toLower()));
+    const QString lFileName = lExportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
+    m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>",
+                                  lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
     if (lSwitchGrabMode) {
         lExportManager->setCaptureMode(lOldMode);
     }
