@@ -480,7 +480,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     QFileDialog dialog(parentWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation());
+    dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename));
     dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".") + filenameExtension);
     dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
     dialog.setMimeTypeFilters(supportedFilters);
