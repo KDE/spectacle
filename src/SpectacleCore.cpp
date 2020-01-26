@@ -172,11 +172,9 @@ void SpectacleCore::dbusStartAgent()
         using Actions = Settings::EnumPrintKeyActionRunning;
         switch (Settings::printKeyActionRunning()) {
             case Actions::TakeNewScreenshot: {
-                auto lShutterMode = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? Platform::ShutterMode::Immediate : Platform::ShutterMode::OnClick;
-                auto lGrabMode = toPlatformGrabMode(ExportManager::instance()->captureMode());
-                QTimer::singleShot(KWindowSystem::compositingActive() ? 200 : 50, this, [this, lShutterMode, lGrabMode, lIncludePointer, lIncludeDecorations]() {
-                    mPlatform->doGrab(lShutterMode, lGrabMode, lIncludePointer, lIncludeDecorations);
-                });
+                // 0 means Immediate, -1 onClick
+                int timeout = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? 0 : -1;
+                takeNewScreenshot(Settings::captureMode(), timeout, Settings::includePointer(), Settings::includeDecorations());
                 break;
             }
             case Actions::FocusWindow:
