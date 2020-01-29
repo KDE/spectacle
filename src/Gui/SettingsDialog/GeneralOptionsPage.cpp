@@ -70,9 +70,10 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
                 // We are missing a button on Wayland
                 button ? button->setChecked(true) : takeNew->setChecked(true);
     });
-    connect(printKeyActionGroup, qOverload<int, bool>(&QButtonGroup::buttonToggled),
-            workaroundLabel, [workaroundLabel] (int value, bool checked) {
+    connect(printKeyActionGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled),
+            workaroundLabel, [workaroundLabel, printKeyActionGroup] (QAbstractButton *button, bool checked) {
                 if (checked) {
+                    const int value = printKeyActionGroup->id(button);
                     workaroundLabel->setText(QString::number(value));
                 }
     });
