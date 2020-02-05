@@ -70,8 +70,6 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
         mTransientWithParentAvailable = true;
     }
     mCaptureArea->setMinimumWidth(240);
-    int index = mCaptureArea->findData(Settings::captureMode());
-    mCaptureArea->setCurrentIndex(index >= 0 ? index : 0);
     connect(mCaptureArea, qOverload<int>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 
     mDelayMsec = new SmartSpinBox(this);
@@ -170,6 +168,8 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mCaptureTransientOnly->setChecked(Settings::transientOnly());
     mQuitAfterSaveOrCopy->setChecked(Settings::quitAfterSaveCopyExport());
     mDelayMsec->setValue(Settings::captureDelay());
+    int index = mCaptureArea->findData(Settings::captureMode());
+    mCaptureArea->setCurrentIndex(index >= 0 ? index : 0);
 }
 
 int KSWidget::imagePaddingWidth() const
