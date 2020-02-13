@@ -36,6 +36,8 @@ class QComboBox;
 class QCheckBox;
 class QLabel;
 
+class KConfigDialogManager;
+
 class KSImageWidget;
 class ProgressButton;
 class SmartSpinBox;
@@ -98,4 +100,5 @@ class KSWidget : public QWidget
     bool           mTransientWithParentAvailable { false };
     QAction       *mTakeNewScreenshotAction;
     QAction       *mCancelAction;
+    KConfigDialogManager *mConfigManager;
 };

@@ -36,10 +36,11 @@
 #include <QShortcut>
 #include <QToolButton>
 
+#include <KConfigDialogManager>
 #include <KLocalizedString>
 
-KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
-    QWidget(parent)
+KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent)
+    : QWidget(parent)
 {
     // we'll init the widget that holds the image first
     mImageWidget = new KSImageWidget(this);
@@ -70,11 +71,14 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
         mTransientWithParentAvailable = true;
     }
     mCaptureArea->setMinimumWidth(240);
+    mCaptureArea->setObjectName(QStringLiteral("kcfg_captureMode"));
+    mCaptureArea->setProperty("kcfg_property", QByteArray("currentData"));
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     connect(mCaptureArea, qOverload<int>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 #else
     connect(mCaptureArea, qOverload<int, const QString &>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
 #endif
+
     mDelayMsec = new SmartSpinBox(this);
     mDelayMsec->setDecimals(1);
     mDelayMsec->setSingleStep(1.0);
@@ -82,12 +86,12 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mDelayMsec->setMaximum(999.9);
     mDelayMsec->setSpecialValueText(i18n("No Delay"));
     mDelayMsec->setMinimumWidth(160);
-    connect(mDelayMsec, qOverload<qreal>(&SmartSpinBox::valueChanged), &Settings::setCaptureDelay);
+    mDelayMsec->setObjectName(QStringLiteral("kcfg_captureDelay"));
 
     mCaptureOnClick = new QCheckBox(i18n("On Click"), this);
     mCaptureOnClick->setToolTip(i18n("Wait for a mouse click before capturing the screenshot image"));
     connect(mCaptureOnClick, &QCheckBox::stateChanged, this, &KSWidget::onClickStateChanged);
-    connect(mCaptureOnClick, &QCheckBox::clicked, &Settings::setOnClickChecked);
+    mCaptureOnClick->setObjectName(QStringLiteral("kcfg_onClickChecked"));
 
     mDelayLayout = new QHBoxLayout;
     mDelayLayout->addWidget(mDelayMsec);
@@ -104,22 +108,22 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
 
     mMousePointer = new QCheckBox(i18n("Include mouse pointer"), this);
     mMousePointer->setToolTip(i18n("Show the mouse cursor in the screenshot image"));
-    connect(mMousePointer, &QCheckBox::clicked, &Settings::setIncludePointer);
+    mMousePointer->setObjectName(QStringLiteral("kcfg_includePointer"));
 
     mWindowDecorations = new QCheckBox(i18n("Include window titlebar and borders"), this);
     mWindowDecorations->setToolTip(i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border"));
     mWindowDecorations->setEnabled(false);
-    connect(mWindowDecorations, &QCheckBox::clicked, &Settings::setIncludeDecorations);
+    mWindowDecorations->setObjectName(QStringLiteral("kcfg_includeDecorations"));
 
     mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
     mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
                                            "If disabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
-    connect(mCaptureTransientOnly, &QCheckBox::clicked, &Settings::setTransientOnly);
+    mCaptureTransientOnly->setObjectName(QStringLiteral("kcfg_transientOnly"));
 
     mQuitAfterSaveOrCopy = new QCheckBox(i18n("Quit after manual Save or Copy"), this);
     mQuitAfterSaveOrCopy->setToolTip(i18n("Quit Spectacle after manually saving or copying the image"));
-    connect(mQuitAfterSaveOrCopy, &QCheckBox::clicked, &Settings::setQuitAfterSaveCopyExport);
+    mQuitAfterSaveOrCopy->setObjectName(QStringLiteral("kcfg_quitAfterSaveCopyExport"));
 
     mContentOptionsForm = new QVBoxLayout;
     mContentOptionsForm->addWidget(mMousePointer);
@@ -164,15 +168,10 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent) :
     mMainLayout->setColumnMinimumWidth(0, 320);
     mMainLayout->setColumnMinimumWidth(1, 320);
 
-    // and read in the saved checkbox states and capture mode indices
-    mMousePointer->setChecked(Settings::includePointer());
-    mWindowDecorations->setChecked(Settings::includeDecorations());
-    mCaptureOnClick->setChecked(Settings::onClickChecked());
-    mCaptureTransientOnly->setChecked(Settings::transientOnly());
-    mQuitAfterSaveOrCopy->setChecked(Settings::quitAfterSaveCopyExport());
-    mDelayMsec->setValue(Settings::captureDelay());
     int index = mCaptureArea->findData(Settings::captureMode());
     mCaptureArea->setCurrentIndex(index >= 0 ? index : 0);
+    auto mConfigManager = new KConfigDialogManager(this, Settings::self());
+    connect(mConfigManager, &KConfigDialogManager::widgetModified, mConfigManager, &KConfigDialogManager::updateSettings);
 }
 
 int KSWidget::imagePaddingWidth() const
@@ -239,8 +238,6 @@ void KSWidget::onClickStateChanged(int theState)
 void KSWidget::captureModeChanged(int theIndex)
 {
     Spectacle::CaptureMode captureMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->itemData(theIndex).toInt());
-    Settings::setCaptureMode(captureMode);
-
     switch(captureMode) {
     case Spectacle::CaptureMode::WindowUnderCursor:
         mWindowDecorations->setEnabled(true);
