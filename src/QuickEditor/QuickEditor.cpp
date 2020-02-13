@@ -95,13 +95,12 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
         using namespace KWayland::Client;
         winId();
         auto surface = Surface::fromWindow(windowHandle());
-        if (!surface) {
-            return;
+        if (surface) {
+            PlasmaShellSurface *plasmashellSurface = plasmashell->createSurface(surface, this);
+            plasmashellSurface->setRole(PlasmaShellSurface::Role::Panel);
+            plasmashellSurface->setPanelTakesFocus(true);
+            plasmashellSurface->setPosition(geometry().topLeft());
         }
-        PlasmaShellSurface *plasmashellSurface = plasmashell->createSurface(surface, this);
-        plasmashellSurface->setRole(PlasmaShellSurface::Role::Panel);
-        plasmashellSurface->setPanelTakesFocus(true);
-        plasmashellSurface->setPosition(geometry().topLeft());
     }
     if (Settings::rememberLastRectangularRegion() || Settings::alwaysRememberRegion()) {
         auto savedRect = Settings::cropRegion();
