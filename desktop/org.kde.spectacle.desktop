@@ -81,6 +81,7 @@ Comment=Screenshot capture utility
 Comment[ca]=Utilitat per prendre captures de pantalla
 Comment[ca@valencia]=Utilitat per prendre captures de pantalla
 Comment[cs]=Nástroj na snímání obrazovky
+Comment[da]=Værktøj til skærmbilleder
 Comment[de]=Dienstprogramm für Bildschirmfotos
 Comment[el]=Εργαλείο λήψης στιγμιοτύπων οθόνης
 Comment[en_GB]=Screenshot capture utility
