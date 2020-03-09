@@ -214,10 +214,11 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
 
         // if there are files in the directory...
         if (fileNames.length() > 0) { 
-            QString resultCopy = result;
+            QString resultCopy = QRegularExpression::escape(result);
             QRegularExpression fileNumberRE;
             const QString replacement = QStringLiteral("(\\d{").append(QString::number(paddedLength)).append(QLatin1String(",})"));
-            const QString fullNameMatch = QStringLiteral("^").append(resultCopy.replace(paddingMatch.captured(),replacement)).append(QStringLiteral("\\..*$"));
+            QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
+            const QString fullNameMatch = QStringLiteral("^").append(resultCopy.replace(escapedMatch,replacement)).append(QStringLiteral("\\..*$"));
             fileNumberRE.setPattern(fullNameMatch);
 
             // ... check the file names for string matching token with padding specified in result
