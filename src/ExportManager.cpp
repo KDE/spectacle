@@ -139,7 +139,7 @@ QUrl ExportManager::getAutosaveFilename()
     const QDir baseDirPath(baseDir);
     const QString filename = makeAutosaveFilename();
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
-                                                   Settings::self()->defaultSaveImageFormat(),
+                                                   Settings::self()->defaultSaveImageFormat().toLower(),
                                                    &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
@@ -283,7 +283,7 @@ QString ExportManager::makeSaveMimetype(const QUrl &url)
     QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
-        return Settings::self()->defaultSaveImageFormat();
+        return Settings::self()->defaultSaveImageFormat().toLower();
     }
     return type;
 }
@@ -477,7 +477,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     }
 
     // construct the file name
-    const QString filenameExtension = Settings::self()->defaultSaveImageFormat();
+    const QString filenameExtension = Settings::self()->defaultSaveImageFormat().toLower();
     const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
     QFileDialog dialog(parentWindow);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
