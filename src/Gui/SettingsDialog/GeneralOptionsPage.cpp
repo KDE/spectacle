@@ -44,30 +44,10 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     m_ui->runningTitle->setLevel(2);
     m_ui->regionTitle->setLevel(2);
 
-    m_ui->printKeyActionGroup->setId(m_ui->newScreenshotButton, Settings::TakeNewScreenshot);
-    m_ui->printKeyActionGroup->setId(m_ui->newWindowButton, Settings::StartNewInstance);
-    m_ui->printKeyActionGroup->setId(m_ui->activateWindowButton, Settings::FocusWindow);
-
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0) {
-        m_ui->formLayout->removeRow(m_ui->activateWindowButton);
+       delete m_ui->activateWindowButton;
     }
-    //Workaround because KConfigDialogManager doesn't support QButtonGroup (Bug 409037)
-    auto workaroundLabel = m_ui->kcfg_printKeyActionRunning;
-    connect(workaroundLabel, &QLineEdit::textChanged, this, [this](const QString& text){
-        auto button = m_ui->printKeyActionGroup->button(text.toInt());
-        // We are missing a button on Wayland
-        button ? button->setChecked(true) : m_ui->newScreenshotButton->setChecked(true);
-    });
-    connect(m_ui->printKeyActionGroup, qOverload<QAbstractButton *, bool>(&QButtonGroup::buttonToggled),
-            workaroundLabel, [workaroundLabel, this] (QAbstractButton *button, bool checked) {
-                if (checked) {
-                    const int value = m_ui->printKeyActionGroup->id(button);
-                    workaroundLabel->setText(QString::number(value));
-                }
-    });
-    // /Workaround
-
 }
 
 GeneralOptionsPage::~GeneralOptionsPage() = default;
