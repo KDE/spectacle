@@ -42,10 +42,7 @@ include(ECMAddTests)
 include(ECMQueryQmake)
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
-endif()
+
 
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
