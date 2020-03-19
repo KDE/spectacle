@@ -23,6 +23,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QtCore/qmath.h>
+#include <QPainterPath>
 
 #include "QuickEditor.h"
 #include "settings.h"
