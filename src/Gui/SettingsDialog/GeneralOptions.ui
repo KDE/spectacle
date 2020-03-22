@@ -164,6 +164,9 @@
      <property name="checked">
       <bool>true</bool>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">remeberRegionGroup</string>
+     </attribute>
     </widget>
    </item>
    <item row="11" column="1">
@@ -171,6 +174,9 @@
      <property name="text">
       <string>Always</string>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">remeberRegionGroup</string>
+     </attribute>
     </widget>
    </item>
    <item row="12" column="1">
@@ -178,6 +184,9 @@
      <property name="text">
       <string>Until Spectacle is closed</string>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">remeberRegionGroup</string>
+     </attribute>
     </widget>
    </item>
   </layout>
@@ -191,4 +200,7 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="remeberRegionGroup"/>
+ </buttongroups>
 </ui>
