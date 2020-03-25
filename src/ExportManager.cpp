@@ -214,7 +214,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
         const QStringList fileNames = dir.entryList(QDir::Files, QDir::Name);
 
         // if there are files in the directory...
-        if (fileNames.length() > 0) { 
+        if (fileNames.length() > 0) {
             QString resultCopy = QRegularExpression::escape(result);
             QRegularExpression fileNumberRE;
             const QString replacement = QStringLiteral("(\\d{").append(QString::number(paddedLength)).append(QLatin1String(",})"));
@@ -437,7 +437,7 @@ bool ExportManager::isFileExists(const QUrl &url) const
 #if KIO_VERSION < QT_VERSION_CHECK(5, 69, 0)
     KIO::StatJob * existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, 0);
 #else
-    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatDetail::Basic);
+    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatBasic);
 #endif
 
     existsJob->exec();
