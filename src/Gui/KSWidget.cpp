@@ -73,11 +73,7 @@ KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent)
     mCaptureArea->setMinimumWidth(240);
     mCaptureArea->setObjectName(QStringLiteral("kcfg_captureMode"));
     mCaptureArea->setProperty("kcfg_property", QByteArray("currentData"));
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     connect(mCaptureArea, qOverload<int>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
-#else
-    connect(mCaptureArea, qOverload<int, const QString &>(&QComboBox::currentIndexChanged), this, &KSWidget::captureModeChanged);
-#endif
 
     mDelayMsec = new SmartSpinBox(this);
     mDelayMsec->setDecimals(1);
