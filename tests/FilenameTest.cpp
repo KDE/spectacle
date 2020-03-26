@@ -67,20 +67,24 @@ void FilenameTest::testWindowTitle()
 
 void FilenameTest::testNumbering()
 {
-    QString lBaseName = QLatin1String("spectacle_test_")+ QUuid::createUuid().toString();
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%d")),  lBaseName + QStringLiteral("_1"));
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%1d")), lBaseName + QStringLiteral("_1"));
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%2d")), lBaseName + QStringLiteral("_01"));
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%3d")), lBaseName + QStringLiteral("_001"));
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%4d")), lBaseName + QStringLiteral("_0001"));
-    QCOMPARE(mExportManager->formatFilename(lBaseName + QStringLiteral("_%d_%2d_%3d")),
-             lBaseName+QStringLiteral("_1_01_001"));
+    QString BaseName = QLatin1String("spectacle_test_")+ QUuid::createUuid().toString();
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%d")),  BaseName + QStringLiteral("_1"));
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%1d")), BaseName + QStringLiteral("_1"));
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%2d")), BaseName + QStringLiteral("_01"));
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%3d")), BaseName + QStringLiteral("_001"));
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%4d")), BaseName + QStringLiteral("_0001"));
+    QCOMPARE(mExportManager->formatFilename(BaseName + QStringLiteral("_%d_%2d_%3d")),
+             BaseName+QStringLiteral("_1_01_001"));
 
-    QFile lFile(QDir(mExportManager->defaultSaveLocation()).filePath(lBaseName + QStringLiteral("_1.png")));
-    lFile.open(QIODevice::WriteOnly);
-    lFile.close();
-    QCOMPARE(mExportManager->formatFilename(lBaseName+QStringLiteral("_%d")), lBaseName+QStringLiteral("_2"));
-    lFile.remove();
+    QFile file(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + QStringLiteral("_1.png")));
+    file.open(QIODevice::WriteOnly);
+    file.close();
+    QCOMPARE(mExportManager->formatFilename(BaseName+QStringLiteral("_%d")), BaseName+QStringLiteral("_2"));
+    file.remove();
+    file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName+QStringLiteral("_1_01_001")));
+    file.close();
+    QCOMPARE(mExportManager->formatFilename(BaseName+QStringLiteral("_%d_%2d_%3d")), BaseName+QStringLiteral("_2_02_002"));
+    file.remove();
 }
 
 void FilenameTest::testCombined()

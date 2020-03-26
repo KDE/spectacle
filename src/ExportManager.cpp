@@ -198,33 +198,32 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
     paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
-    QRegularExpressionMatch paddingMatch;
-
-    while (result.indexOf(paddingRE, 0, &paddingMatch) > -1) {
-        int highestFileNumber = 0;
-
-        // determine padding value
-        int paddedLength = 1;
-        if (!paddingMatch.captured(1).isEmpty()) {
-            paddedLength = paddingMatch.captured(1).toInt();
+    QRegularExpressionMatchIterator it = paddingRE.globalMatch(result);
+    if (it.hasNext()) {
+        QString resultCopy = QRegularExpression::escape(result);
+        QVector<QRegularExpressionMatch> matches;
+        while (it.hasNext()) {
+            QRegularExpressionMatch paddingMatch = it.next();
+            matches.push_back(paddingMatch);
+            //determine padding value
+            int paddedLength = 1;
+            if (!paddingMatch.captured(1).isEmpty()) {
+                paddedLength = paddingMatch.captured(1).toInt();
+            }
+            QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
+            resultCopy.replace(escapedMatch, QLatin1String("(\\d{%1,})").arg(QString::number(paddedLength)));
         }
-
         // search save directory for files
         QDir dir(baseDir);
         const QStringList fileNames = dir.entryList(QDir::Files, QDir::Name);
+        int highestFileNumber = 0;
 
         // if there are files in the directory...
         if (fileNames.length() > 0) {
-            QString resultCopy = QRegularExpression::escape(result);
             QRegularExpression fileNumberRE;
-            const QString replacement = QStringLiteral("(\\d{").append(QString::number(paddedLength)).append(QLatin1String(",})"));
-            QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
-            const QString fullNameMatch = QStringLiteral("^").append(resultCopy.replace(escapedMatch,replacement)).append(QStringLiteral("\\..*$"));
-            fileNumberRE.setPattern(fullNameMatch);
-
+            fileNumberRE.setPattern(resultCopy);
             // ... check the file names for string matching token with padding specified in result
             const QStringList filteredFiles = fileNames.filter(fileNumberRE);
-
             // if there are files in the directory that look like the file name with sequential numbering
             if (filteredFiles.length() > 0) {
                 // loop through filtered file names looking for highest number
@@ -237,8 +236,14 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
             }
         }
         // replace placeholder with next number padded
-        const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, QLatin1Char('0'));
-        result.replace(paddingMatch.captured(), nextFileNumberPadded);
+        for (const auto& match : matches) {
+            int paddedLength = 1;
+            if (!match.captured(1).isEmpty()) {
+                paddedLength = match.captured(1).toInt();
+            }
+            const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, QLatin1Char('0'));
+            result.replace(match.captured(), nextFileNumberPadded);
+        }
     }
 
     // Remove leading and trailing '/'
