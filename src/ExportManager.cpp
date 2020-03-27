@@ -437,7 +437,7 @@ bool ExportManager::isFileExists(const QUrl &url) const
 #if KIO_VERSION < QT_VERSION_CHECK(5, 69, 0)
     KIO::StatJob * existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, 0);
 #else
-    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatDetail::Basic);
+    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
 #endif
 
     existsJob->exec();
