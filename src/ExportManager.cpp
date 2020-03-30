@@ -211,7 +211,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
                 paddedLength = paddingMatch.captured(1).toInt();
             }
             QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
-            resultCopy.replace(escapedMatch, QLatin1String("(\\d{%1,})").arg(QString::number(paddedLength)));
+            resultCopy.replace(escapedMatch, QStringLiteral("(\\d{%1,})").arg(QString::number(paddedLength)));
         }
         // search save directory for files
         QDir dir(baseDir);
