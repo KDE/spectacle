@@ -82,6 +82,7 @@ void FilenameTest::testNumbering()
     QCOMPARE(mExportManager->formatFilename(BaseName+QStringLiteral("_%d")), BaseName+QStringLiteral("_2"));
     file.remove();
     file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName+QStringLiteral("_1_01_001")));
+    file.open(QIODevice::WriteOnly);
     file.close();
     QCOMPARE(mExportManager->formatFilename(BaseName+QStringLiteral("_%d_%2d_%3d")), BaseName+QStringLiteral("_2_02_002"));
     file.remove();
