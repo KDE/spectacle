@@ -394,7 +394,8 @@ QUrl ExportManager::tempSave()
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const QString baseFileName = mTempDir->path() + QDir::separator() + makeAutosaveFilename();
+        const QString baseFileName = mTempDir->path() + QLatin1Char('/') +
+                                     QUrl::fromLocalFile(makeAutosaveFilename()).fileName();
 
         QString mimetype = makeSaveMimetype(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, mimetype,
