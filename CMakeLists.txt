@@ -49,6 +49,7 @@ find_package(
         Widgets
         DBus
         PrintSupport
+        Svg
         Test
 )
 
@@ -102,6 +103,13 @@ endif()
 if(NOT XCB_CURSOR_FOUND)
 	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-CURSOR ")
 	set(XCB_COMPONENTS_FOUND FALSE)
+endif()
+
+find_package(kImageAnnotator)
+
+if(kImageAnnotator_FOUND)
+    find_package(kColorPicker ${KCOLORPICKER_MIN_VERSION} REQUIRED)
+    set(KIMAGEANNOTATOR_FOUND 1)
 endif()
 
 # fail build if none of the platform backends can be found

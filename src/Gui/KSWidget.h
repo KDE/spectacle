@@ -26,6 +26,7 @@
 
 #include "SpectacleCommon.h"
 #include "Platforms/Platform.h"
+#include "Config.h"
 
 class QAction;
 class QGridLayout;
@@ -35,12 +36,17 @@ class QFormLayout;
 class QComboBox;
 class QCheckBox;
 class QLabel;
-
 class KConfigDialogManager;
+class QPushButton;
+class QStackedLayout;
 
 class KSImageWidget;
 class ProgressButton;
 class SmartSpinBox;
+
+namespace kImageAnnotator {
+    class KImageAnnotator;
+}
 
 class KSWidget : public QWidget
 {
@@ -73,6 +79,11 @@ class KSWidget : public QWidget
     void setButtonState(KSWidget::State state);
     void setProgress(double progress);
 
+#ifdef KIMAGEANNOTATOR_FOUND
+    void showAnnotator();
+    void hideAnnotator();
+#endif
+
     private Q_SLOTS:
 
     void newScreenshotClicked();
@@ -101,4 +112,9 @@ class KSWidget : public QWidget
     QAction       *mTakeNewScreenshotAction;
     QAction       *mCancelAction;
     KConfigDialogManager *mConfigManager;
+    QStackedLayout *mStack                       { nullptr };
+    QWidget *placeHolder;
+#ifdef KIMAGEANNOTATOR_FOUND
+    kImageAnnotator::KImageAnnotator *mAnnotator { nullptr };
+#endif
 };

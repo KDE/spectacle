@@ -80,6 +80,10 @@ KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterMo
     mScreenRecorderToolsMenu(new QMenu(this)),
     mExportMenu(new ExportMenu(this)),
     mShutterModes(theShutterModes)
+#ifdef KIMAGEANNOTATOR_FOUND
+    ,mAnnotateButton(new QToolButton(this))
+    ,mAnnotatorActive(false)
+#endif
 {
     // before we do anything, we need to set a window property
     // that skips the close/hide window animation on kwin. this
@@ -151,6 +155,31 @@ void KSMainWindow::init()
     mConfigureButton->setToolTip(i18n("Change Spectacle's settings."));
     mConfigureButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mConfigureButton, QDialogButtonBox::ResetRole);
+
+#ifdef KIMAGEANNOTATOR_FOUND
+    mAnnotateButton->setText(i18n("Annotate"));
+    mAnnotateButton->setToolTip(i18n("Add annotation to the screenshot"));
+    mAnnotateButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
+    connect(mAnnotateButton, &QToolButton::pressed, this, [this] {
+
+        if (mAnnotatorActive) {
+            mKSWidget->hideAnnotator();
+            mAnnotateButton->setText(i18n("Annotate"));
+        } else {
+            mKSWidget->showAnnotator();
+            mAnnotateButton->setText(i18n("Annotation done"));
+        }
+        mAnnotatorActive = !mAnnotatorActive;
+
+        mToolsButton->setEnabled(!mAnnotatorActive);
+        mSendToButton->setEnabled(!mAnnotatorActive);
+        mClipboardButton->setEnabled(!mAnnotatorActive);
+        mSaveButton->setEnabled(!mAnnotatorActive);
+    });
+
+    mDialogButtonBox->addButton(mAnnotateButton, QDialogButtonBox::ActionRole);
+#endif
 
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
     mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("tools"),

@@ -115,4 +115,8 @@ if(PURPOSE_FOUND)
     )
 endif()
 
+if(KIMAGEANNOTATOR_FOUND)
+    target_link_libraries(spectacle kImageAnnotator::kImageAnnotator)
+endif()
+
 install(TARGETS spectacle ${INSTALL_TARGETS_DEFAULT_ARGS})

@@ -25,6 +25,8 @@
 #include "settings.h"
 #include "SmartSpinBox.h"
 #include "ProgressButton.h"
+#include "ExportManager.h"
+#include "Config.h"
 
 #include <QAction>
 #include <QApplication>
@@ -34,6 +36,11 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QShortcut>
+#include <QStackedLayout>
+
+#ifdef KIMAGEANNOTATOR_FOUND
+#include <kImageAnnotator/KImageAnnotator.h>
+#endif
 
 #include <KConfigDialogManager>
 #include <KLocalizedString>
@@ -41,10 +48,18 @@
 KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     : QWidget(parent)
 {
+    mStack = new QStackedLayout(this);
+
     // we'll init the widget that holds the image first
     mImageWidget = new KSImageWidget(this);
     mImageWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     connect(mImageWidget, &KSImageWidget::dragInitiated, this, &KSWidget::dragInitiated);
+
+#ifdef KIMAGEANNOTATOR_FOUND
+    mAnnotator = new kImageAnnotator::KImageAnnotator();
+    mAnnotator->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    mStack->addWidget(mAnnotator);
+#endif
 
     // the capture mode options first
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
@@ -157,7 +172,8 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mRightLayout->addWidget(mTakeScreenshotButton, 1, Qt::AlignHCenter);
     mRightLayout->setContentsMargins(10, 0, 0, 10);
 
-    mMainLayout = new QGridLayout(this);
+    mMainLayout = new QGridLayout();
+
     mMainLayout->addWidget(mImageWidget, 0, 0, 1, 1);
     mMainLayout->addLayout(mRightLayout, 0, 1, 1, 1);
     mMainLayout->setColumnMinimumWidth(0, 320);
@@ -167,6 +183,15 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mCaptureArea->setCurrentIndex(index >= 0 ? index : 0);
     auto mConfigManager = new KConfigDialogManager(this, Settings::self());
     connect(mConfigManager, &KConfigDialogManager::widgetModified, mConfigManager, &KConfigDialogManager::updateSettings);
+
+    placeHolder = new QWidget();
+    placeHolder->setLayout(mMainLayout);
+
+    mStack->addWidget(placeHolder);
+
+#ifdef KIMAGEANNOTATOR_FOUND
+    mStack->addWidget(mAnnotator);
+#endif
 }
 
 int KSWidget::imagePaddingWidth() const
@@ -280,3 +305,19 @@ void KSWidget::setProgress(double progress)
     mTakeScreenshotButton->setProgress(progress);
 }
 
+#ifdef KIMAGEANNOTATOR_FOUND
+void KSWidget::showAnnotator()
+{
+    mStack->setCurrentIndex(1);
+    mAnnotator->loadImage(ExportManager::instance()->pixmap());
+}
+
+void KSWidget::hideAnnotator()
+{
+    mStack->setCurrentIndex(0);
+    QImage image = mAnnotator->image();
+    QPixmap px = QPixmap::fromImage(image);
+    setScreenshotPixmap(px);
+    ExportManager::instance()->setPixmap(px);
+}
+#endif
