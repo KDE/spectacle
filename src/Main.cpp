@@ -50,6 +50,7 @@ int main(int argc, char **argv)
                          KAboutLicense::GPL_V2,
                          i18n("(C) 2015 Boudhayan Gupta"));
     aboutData.addAuthor(QStringLiteral("Boudhayan Gupta"), QString(), QStringLiteral("bgupta@kde.org"));
+    aboutData.addAuthor(QStringLiteral("David Redondo"), QString(), QStringLiteral("kde@david-redondo.de"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
     lApp.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
