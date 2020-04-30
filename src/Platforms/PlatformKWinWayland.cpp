@@ -142,7 +142,18 @@ template <typename ArgType>
 void PlatformKWinWayland::callDBus(const QString &theGrabMethod, ArgType theArgument, int theWriteFile)
 {
     QDBusInterface lInterface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
-    lInterface.asyncCall(theGrabMethod, QVariant::fromValue(QDBusUnixFileDescriptor(theWriteFile)), theArgument);
+    QDBusPendingCall pcall = lInterface.asyncCall(theGrabMethod, QVariant::fromValue(QDBusUnixFileDescriptor(theWriteFile)), theArgument);
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+    QObject::connect(watcher, &QDBusPendingCallWatcher::finished,
+                     this, [this](QDBusPendingCallWatcher* watcher) {
+        if (watcher->isError()) {
+            const auto error = watcher->error();
+            qWarning() << "Error calling KWin DBus interface:" << error.name() << error.message();
+            newScreenshotFailed();
+        }
+        watcher->deleteLater();
+    });
 }
 
 template <typename ArgType>
