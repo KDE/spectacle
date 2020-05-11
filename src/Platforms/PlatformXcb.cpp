@@ -461,6 +461,10 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
 
 void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
 {
+    QDBusConnection::sessionBus().disconnect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"),
+        QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
+        this, SLOT(handleKWinScreenshotReply(quint64)));
+
     // obtain width and height and grab an image (x and y are always zero for pixmaps)
     auto lDrawable = static_cast<xcb_drawable_t>(theDrawable);
     auto lRect = getDrawableGeometry(lDrawable);
