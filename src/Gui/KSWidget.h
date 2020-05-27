@@ -48,7 +48,7 @@ class KSWidget : public QWidget
 
 	public:
 
-    explicit KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent = nullptr);
+    explicit KSWidget(Platform::GrabModes theGrabModes, QWidget *parent = nullptr);
     virtual ~KSWidget() = default;
 
 
@@ -70,7 +70,7 @@ class KSWidget : public QWidget
     void setScreenshotPixmap(const QPixmap &thePixmap);
     void lockOnClickDisabled();
     void lockOnClickEnabled();
-    void setButtonState(State state);
+    void setButtonState(KSWidget::State state);
     void setProgress(double progress);
 
     private Q_SLOTS:

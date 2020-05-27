@@ -26,16 +26,17 @@
  */
 class ProgressButton : public  QToolButton
 {
+    Q_OBJECT
 public:
 
-    ProgressButton(QWidget* parent);
+    explicit ProgressButton(QWidget* parent);
 
     void setProgress(double progress);
 
 protected:
     void paintEvent(QPaintEvent* event) override;
 
-    double mProgress;
+    double mProgress = 0.0;
 };
 
 #endif // PROGRESSBUTTON_H

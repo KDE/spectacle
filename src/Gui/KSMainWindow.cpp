@@ -62,7 +62,7 @@ static const int DEFAULT_WINDOW_HEIGHT = 420;
 static const int DEFAULT_WINDOW_WIDTH = 840;
 static const int MAXIMUM_WINDOW_WIDTH = 1000;
 
-KSMainWindow::KSMainWindow(const Platform::GrabModes &theGrabModes, const Platform::ShutterModes &theShutterModes, QWidget *parent) :
+KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent) :
     QDialog(parent),
     mKSWidget(new KSWidget(theGrabModes, this)),
     mDivider(new QFrame(this)),

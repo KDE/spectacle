@@ -82,7 +82,7 @@ class PlatformXcb::OnClickEventFilter: public QAbstractNativeEventFilter
         mPlatformPtr(thePlatformPtr)
     {}
 
-    void setCaptureOptions(const Platform::GrabMode &theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+    void setCaptureOptions(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
     {
         mGrabMode = theGrabMode;
         mIncludePointer = theIncludePointer;
@@ -166,10 +166,14 @@ Platform::ShutterModes PlatformXcb::supportedShutterModes() const
 void PlatformXcb::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
     switch(theShutterMode) {
-    case ShutterMode::Immediate:
-        return doGrabNow(theGrabMode, theIncludePointer, theIncludeDecorations);
-    case ShutterMode::OnClick:
-        return doGrabOnClick(theGrabMode, theIncludePointer, theIncludeDecorations);
+    case ShutterMode::Immediate: {
+        doGrabNow(theGrabMode, theIncludePointer, theIncludeDecorations);
+        return;
+    }
+    case ShutterMode::OnClick: {
+        doGrabOnClick(theGrabMode, theIncludePointer, theIncludeDecorations);
+        return;
+    }
     }
 }
 
@@ -681,7 +685,7 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
     emit newScreenshotTaken(lPixmap);
 }
 
-void PlatformXcb::doGrabNow(const GrabMode &theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
     switch(theGrabMode) {
     case GrabMode::AllScreens:
@@ -704,7 +708,7 @@ void PlatformXcb::doGrabNow(const GrabMode &theGrabMode, bool theIncludePointer,
     }
 }
 
-void PlatformXcb::doGrabOnClick(const GrabMode &theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+void PlatformXcb::doGrabOnClick(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
     // get the cursor image
     xcb_cursor_t lXcbCursor = XCB_CURSOR_NONE;

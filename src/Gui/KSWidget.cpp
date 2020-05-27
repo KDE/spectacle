@@ -39,7 +39,7 @@
 #include <KConfigDialogManager>
 #include <KLocalizedString>
 
-KSWidget::KSWidget(const Platform::GrabModes &theGrabModes, QWidget *parent)
+KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     : QWidget(parent)
 {
     // we'll init the widget that holds the image first

@@ -90,7 +90,7 @@ Spectacle::CaptureMode ExportManager::captureMode() const
     return mCaptureMode;
 }
 
-void ExportManager::setCaptureMode(const Spectacle::CaptureMode &theCaptureMode)
+void ExportManager::setCaptureMode(Spectacle::CaptureMode theCaptureMode)
 {
     mCaptureMode = theCaptureMode;
 }

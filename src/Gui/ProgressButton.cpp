@@ -25,7 +25,6 @@
 
 ProgressButton::ProgressButton(QWidget* parent)
     : QToolButton{parent}
-    , mProgress(0)
 {
 }
 

@@ -104,16 +104,21 @@ void PlatformKWinWayland::doGrab(ShutterMode theShutterMode, GrabMode theGrabMod
     }
 
     switch(theGrabMode) {
-    case GrabMode::AllScreens:
-        return doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer);
-    case GrabMode::CurrentScreen:
-        return doGrabHelper(QStringLiteral("screenshotScreen"), theIncludePointer);
+    case GrabMode::AllScreens: {
+        doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer);
+        return;
+    }
+    case GrabMode::CurrentScreen: {
+        doGrabHelper(QStringLiteral("screenshotScreen"), theIncludePointer);
+        return;
+    }
     case GrabMode::WindowUnderCursor: {
         int lOpMask = theIncludeDecorations ? 1 : 0;
         if (theIncludePointer) {
             lOpMask |= 1 << 1;
         }
-        return doGrabHelper(QStringLiteral("interactive"), lOpMask);
+        doGrabHelper(QStringLiteral("interactive"), lOpMask);
+        return;
     }
     case GrabMode::InvalidChoice:
     case GrabMode::ActiveWindow:

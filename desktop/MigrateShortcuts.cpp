@@ -99,7 +99,7 @@ int main(int argc, char **argv)
     KGlobalAccel::self()->setDefaultShortcut(openAction, {Qt::Key_Print});
     QAction* fullScreenAction = shortCutActions.action(QStringLiteral("FullScreenScreenShot"));
     KGlobalAccel::self()->setDefaultShortcut(fullScreenAction, {Qt::SHIFT + Qt::Key_Print});
-    QAction* currentScreenAction = shortCutActions.action(QStringLiteral("CurrentMonitorScreenShot"));
+    //QAction* currentScreenAction = shortCutActions.action(QStringLiteral("CurrentMonitorScreenShot"));
     QAction* activeWindowAction = shortCutActions.action(QStringLiteral("ActiveWindowScreenShot"));
     KGlobalAccel::self()->setDefaultShortcut(activeWindowAction, {Qt::META + Qt::Key_Print});
     QAction* regionAction = shortCutActions.action(QStringLiteral("RectangularRegionScreenShot"));

@@ -64,7 +64,7 @@ class ExportManager: public QObject
     void setTimestamp(const QDateTime &timestamp);
     QString windowTitle() const;
     Spectacle::CaptureMode captureMode() const;
-    void setCaptureMode(const Spectacle::CaptureMode &theCaptureMode);
+    void setCaptureMode(Spectacle::CaptureMode theCaptureMode);
     QString formatFilename(const QString &nameTemplate);
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;

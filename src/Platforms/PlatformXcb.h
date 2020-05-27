@@ -48,8 +48,8 @@ class PlatformXcb final: public Platform
     private Q_SLOTS:
 
     void handleKWinScreenshotReply(quint64 theDrawable);
-    void doGrabNow(const Platform::GrabMode &theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
-    void doGrabOnClick(const Platform::GrabMode &theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
+    void doGrabNow(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
+    void doGrabOnClick(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
 
     private:
 

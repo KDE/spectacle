@@ -44,7 +44,7 @@ class KSMainWindow: public QDialog
 
     public:
 
-    explicit KSMainWindow(const Platform::GrabModes &theGrabModes, const Platform::ShutterModes &theShutterModes, QWidget *parent = nullptr);
+    explicit KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent = nullptr);
     virtual ~KSMainWindow() = default;
 
     enum class MessageDuration {
@@ -63,6 +63,7 @@ class KSMainWindow: public QDialog
                         const KMessageWidget::MessageType messageType,
                         const MessageDuration messageDuration = MessageDuration::AutoHide,
                         const QList<QAction*>& actions  = {});
+    int windowWidth(const QPixmap &pixmap) const;
 
     private Q_SLOTS:
 
@@ -76,7 +77,6 @@ class KSMainWindow: public QDialog
     void setDefaultSaveAction();
     void save();
     void saveAs();
-    int windowWidth(const QPixmap &pixmap) const;
     void restoreWindowTitle();
 
     public Q_SLOTS:
