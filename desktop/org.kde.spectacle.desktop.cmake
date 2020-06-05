@@ -149,6 +149,7 @@ Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;Rec
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
 X-KDE-Shortcuts=Print
+X-KDE-DBUS-Restricted-Interfaces=org_kde_kwin_effect-screenshot
 
 [Desktop Action FullScreenScreenShot]
 Name=Capture Entire Desktop
