@@ -28,36 +28,6 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.Spectacle")
-    Q_CLASSINFO("D-Bus Introspection", ""
-        "  <interface name=\"org.kde.Spectacle\">\n"
-        "    <method name=\"StartAgent\">\n"
-        "    </method>\n"
-        "    <method name=\"FullScreen\">\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
-        "    </method>\n"
-        "    <method name=\"CurrentScreen\">\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
-        "    </method>\n"
-        "    <method name=\"ActiveWindow\">\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeWindowDecorations\"/>\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
-        "    </method>\n"
-        "    <method name=\"WindowUnderCursor\">\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeWindowDecorations\"/>\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
-        "    </method>\n"
-        "    <method name=\"RectangularRegion\">\n"
-        "      <arg direction=\"in\" type=\"b\" name=\"includeMousePointer\"/>\n"
-        "    </method>\n"
-        "    <signal name=\"ScreenshotTaken\">\n"
-        "      <arg direction=\"out\" type=\"s\" name=\"fileName\"/>\n"
-        "    </signal>\n"
-        "    <signal name=\"ScreenshotFailed\">\n"
-        "    </signal>\n"
-        "  </interface>\n"
-        ""
-    )
-
     public:
 
     SpectacleDBusAdapter(SpectacleCore *parent);
@@ -67,7 +37,6 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
 
     public Q_SLOTS:
 
-    Q_NOREPLY void StartAgent();
     Q_NOREPLY void FullScreen(bool includeMousePointer);
     Q_NOREPLY void CurrentScreen(bool includeMousePointer);
     Q_NOREPLY void ActiveWindow(bool includeWindowDecorations, bool includeMousePointer);

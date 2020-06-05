@@ -33,32 +33,27 @@ inline SpectacleCore *SpectacleDBusAdapter::parent() const
     return static_cast<SpectacleCore *>(QObject::parent());
 }
 
-Q_NOREPLY void SpectacleDBusAdapter::StartAgent()
-{
-    parent()->dbusStartAgent();
-}
-
-Q_NOREPLY void SpectacleDBusAdapter::FullScreen(bool includeMousePointer)
+void SpectacleDBusAdapter::FullScreen(bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, includeMousePointer, true);
 }
 
-Q_NOREPLY void SpectacleDBusAdapter::CurrentScreen(bool includeMousePointer)
+void SpectacleDBusAdapter::CurrentScreen(bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, includeMousePointer, true);
 }
 
-Q_NOREPLY void SpectacleDBusAdapter::ActiveWindow(bool includeWindowDecorations, bool includeMousePointer)
+void SpectacleDBusAdapter::ActiveWindow(bool includeWindowDecorations, bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow, 0, includeMousePointer, includeWindowDecorations);
 }
 
-Q_NOREPLY void SpectacleDBusAdapter::WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer)
+void SpectacleDBusAdapter::WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor, 0, includeMousePointer, includeWindowDecorations);
 }
 
-Q_NOREPLY void SpectacleDBusAdapter::RectangularRegion(bool includeMousePointer)
+void SpectacleDBusAdapter::RectangularRegion(bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, includeMousePointer, false);
 }

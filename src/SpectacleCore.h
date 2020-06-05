@@ -22,6 +22,7 @@
 #pragma once
 
 #include <QObject>
+#include <QCommandLineParser>
 
 #include "ExportManager.h"
 #include "Gui/KSMainWindow.h"
@@ -51,17 +52,14 @@ class SpectacleCore: public QObject
         Background = 2
     };
 
-    explicit SpectacleCore(StartMode theStartMode,
-                           Spectacle::CaptureMode theCaptureMode,
-                           QString &theSaveFileName,
-                           qint64 theDelayMsec,
-                           bool theNotifyOnGrab,
-                           bool theCopyToClipboard,
-                           QObject *parent = nullptr);
+    explicit SpectacleCore(QObject *parent = nullptr);
     virtual ~SpectacleCore() = default;
+    void init();
 
     QString filename() const;
     void setFilename(const QString &filename);
+
+    void populateCommandLineParser(QCommandLineParser *lCmdLineParser);
 
     Q_SIGNALS:
 
@@ -76,15 +74,15 @@ class SpectacleCore: public QObject
     void showErrorMessage(const QString &theErrString);
     void screenshotUpdated(const QPixmap &thePixmap);
     void screenshotFailed();
-    void dbusStartAgent();
     void doStartDragAndDrop();
     void doNotify(const QUrl &theSavedAt);
     void doCopyPath(const QUrl &savedAt);
 
+    void onActivateRequested(QStringList arguments, const QString& /*workingDirectory */);
+
     private:
 
-
-    void initGui(bool theIncludePointer, bool theIncludeDecorations);
+    void initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations);
     Platform::GrabMode toPlatformGrabMode(Spectacle::CaptureMode theCaptureMode);
     void setUpShortcuts();
 

@@ -140,13 +140,13 @@ Keywords[uk]=знімок;захоплення;друк;знімок вікна;
 Keywords[x-test]=xxsnapshotxx;xxcapturexx;xxprintxx;xxscreenshotxx;xxsnippingxx;xxsnipxx;
 Keywords[zh_CN]=snapshot;capture;print;screenshot;snipping;snip;快照;截图;抓取;屏幕截图;截屏;抓屏;截取;
 Keywords[zh_TW]=snapshot;capture;print;screenshot;snipping;snip;截圖;擷取;截圖程式
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / StartAgent
+Exec=${CMAKE_INSTALL_PREFIX}/bin/spectacle
 Icon=spectacle
 Type=Application
 Terminal=false
 StartupNotify=false
 Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;
-X-DBUS-StartupType=Multi
+X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
 X-KDE-Shortcuts=Print
 
