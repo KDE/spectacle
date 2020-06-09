@@ -25,6 +25,10 @@
         <label>Save screenshot automatically after it is taken</label>
         <default>false</default>
     </entry>
+    <entry name="copySaveLocation" type="Bool">
+        <label>Whether to copy the file path after saving to the clipboard</label>
+        <default>true</default>
+    </entry>
     <entry name="useLightMaskColour" type="Bool">
         <label>Whether to use a light color mask in the region selection dialog</label>
         <default>false</default>
@@ -87,11 +91,7 @@
             QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/')) 
         </default>
     </entry>
-    <entry name="copySaveLocation" type="Bool">
-        <label>Whether to copy the file path after saving to the clipboard</label>
-        <default>false</default>
-    </entry>
-     <entry name="compressionQuality" type="UInt">
+    <entry name="compressionQuality" type="UInt">
         <label>Compression quality for lossy file formats</label>
         <default>90</default>
     </entry>
