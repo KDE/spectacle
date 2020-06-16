@@ -91,18 +91,58 @@ Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
     return lSupportedModes;
 }
 
+static QPair<int,int> s_plasmaVersion = {-1, -1};
+QPair<int, int> findPlasmaMinorVersion () {
+    if (s_plasmaVersion == QPair<int, int>(-1, -1)) {
+        auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
+                                       QStringLiteral("/MainApplication"),
+                                       QStringLiteral("org.freedesktop.DBus.Properties"),
+                                       QStringLiteral("Get"));
+
+        message.setArguments({QStringLiteral("org.qtproject.Qt.QCoreApplication"), QStringLiteral("applicationVersion")});
+
+        const auto resultMessage = QDBusConnection::sessionBus().call(message);
+        if (resultMessage.type() != QDBusMessage::ReplyMessage) {
+            qWarning() << "Error querying plasma version" << resultMessage.errorName() << resultMessage .errorMessage();
+            return s_plasmaVersion;
+        }
+        QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
+
+        const QString rawVersion = val.variant().value<QString>();
+        const QVector<QStringRef> splitted = rawVersion.splitRef(QLatin1Char('.'));
+        if (splitted.size() != 3) {
+            qWarning() << "error parsing plasma version";
+            return s_plasmaVersion;
+        }
+        bool ok;
+        int plasmaMajorVersion = splitted[0].toInt(&ok);
+        if (!ok) {
+            qWarning() << "error parsing plasma major version";
+            return s_plasmaVersion;
+        }
+        int plasmaMinorVersion = splitted[1].toInt(&ok);
+        if (!ok) {
+            qWarning() << "error parsing plasma minor version";
+            return s_plasmaVersion;
+        }
+        s_plasmaVersion = {plasmaMajorVersion, plasmaMinorVersion};
+    }
+    return s_plasmaVersion;
+}
+
 Platform::ShutterModes PlatformKWinWayland::supportedShutterModes() const
 {
-    return { ShutterMode::OnClick };
+    // TODO remove sometime after Plasma 5.20 is released
+    auto plasmaVersion = findPlasmaMinorVersion();
+    if (plasmaVersion.first != -1 && (plasmaVersion.first != 5 || plasmaVersion.second >= 20)) {
+        return { ShutterMode::Immediate | ShutterMode::OnClick };
+    } else {
+        return { ShutterMode::OnClick };
+    }
 }
 
 void PlatformKWinWayland::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
-    if (theShutterMode != ShutterMode::OnClick) {
-        emit newScreenshotFailed();
-        return;
-    }
-
     switch(theGrabMode) {
     case GrabMode::AllScreens: {
         doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer);
