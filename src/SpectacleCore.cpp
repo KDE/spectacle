@@ -43,6 +43,7 @@
 #include <QMimeData>
 #include <QProcess>
 #include <QTimer>
+#include <QScopedPointer>
 
 SpectacleCore::SpectacleCore(QObject *parent):
     QObject(parent),
@@ -95,8 +96,8 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     arguments.prepend(qApp->applicationFilePath());
 
     // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
-    auto parser = new QCommandLineParser;
-    populateCommandLineParser(parser);
+    QScopedPointer<QCommandLineParser> parser(new QCommandLineParser);
+    populateCommandLineParser(parser.data());
     parser->parse(arguments);
 
     // extract the capture mode
