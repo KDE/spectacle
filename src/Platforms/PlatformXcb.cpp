@@ -282,7 +282,7 @@ QPixmap PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
         lImageFormat = QImage::Format_RGB32;
         break;
     case 30:
-        lImageFormat = QImage::Format_BGR30;
+        lImageFormat = QImage::Format_RGB30;
         break;
     case 32:
         lImageFormat = QImage::Format_ARGB32_Premultiplied;
