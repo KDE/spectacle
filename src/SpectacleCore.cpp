@@ -118,7 +118,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     mNotify = true;
     mCopyToClipboard = Settings::copyImageToClipboard();
     qint64 lDelayMsec = 0;
-    QString lFileName = QString();
 
     // are we ask to run in background or dbus mode?
     if (parser->isSet(QStringLiteral("background"))) {
@@ -133,13 +132,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     auto lOnClickAvailable = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::OnClick);
     if ((!lOnClickAvailable) && (lDelayMsec < 0)) {
         lDelayMsec = 0;
-    }
-
-    if (!(lFileName.isEmpty() || lFileName.isNull())) {
-        if (QDir::isRelativePath(lFileName)) {
-            lFileName = QDir::current().absoluteFilePath(lFileName);
-        }
-        setFilename(lFileName);
     }
 
     // reset last region if it should not be remembered across restarts
@@ -159,7 +151,13 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
         }
 
         if (parser->isSet(QStringLiteral("output"))) {
-            lFileName = parser->value(QStringLiteral("output"));
+            QString lFileName = parser->value(QStringLiteral("output"));
+            if (!(lFileName.isEmpty() || lFileName.isNull())) {
+                if (QDir::isRelativePath(lFileName)) {
+                    lFileName = QDir::current().absoluteFilePath(lFileName);
+                }
+                setFilename(lFileName);
+            }
         }
 
         if (parser->isSet(QStringLiteral("delay"))) {
