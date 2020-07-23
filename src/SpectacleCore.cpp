@@ -367,7 +367,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     switch(ExportManager::instance()->captureMode()) {
     case Spectacle::CaptureMode::AllScreens:
-        lNotify->setTitle(i18nc("The entire desktop was captured, heading", "Entire Desktop Captured"));
+        lNotify->setTitle(i18nc("The entire screen area was captured, heading", "Full Screen Captured"));
         break;
     case Spectacle::CaptureMode::CurrentScreen:
         lNotify->setTitle(i18nc("The current screen was captured, heading", "Current Screen Captured"));
