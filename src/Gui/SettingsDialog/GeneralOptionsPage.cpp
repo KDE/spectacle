@@ -23,17 +23,9 @@
 #include "settings.h"
 #include "ui_GeneralOptions.h"
 
-#include <KLocalizedString>
-#include <KTitleWidget>
 #include <KWindowSystem>
 
-#include <QButtonGroup>
 #include <QCheckBox>
-#include <QLineEdit>
-#include <QFormLayout>
-#include <QRadioButton>
-#include <QSpacerItem>
-#include <QTextEdit>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     : QWidget(parent)

@@ -29,9 +29,6 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include <QSpinBox>
-#include <QFormLayout>
-#include <QHBoxLayout>
 #include <QComboBox>
 #include <QImageWriter>
 #include <QCheckBox>

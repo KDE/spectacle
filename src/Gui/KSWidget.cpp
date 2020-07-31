@@ -34,7 +34,6 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QShortcut>
-#include <QToolButton>
 
 #include <KConfigDialogManager>
 #include <KLocalizedString>

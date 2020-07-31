@@ -28,8 +28,6 @@
 #include <KLocalizedString>
 #include <KShortcutWidget>
 
-#include <QIcon>
-#include <QMessageBox>
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
     KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
