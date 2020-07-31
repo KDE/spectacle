@@ -165,6 +165,7 @@ void ExportMenu::getKipiItems()
     if (mKipiMenu->isEmpty()) {
         mKipiMenu->addAction(i18n("No KIPI plugins available"))->setEnabled(false);
     }
+    delete loader;
 }
 #endif
 
