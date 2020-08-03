@@ -113,6 +113,7 @@ Categories=Qt;KDE;Utility;
 Keywords=snapshot;capture;print;screenshot;snipping;snip;
 Keywords[ca]=captura de pantalla;captura;imprimeix;impressió;
 Keywords[ca@valencia]=captura de pantalla;captura;imprimeix;impressió;
+Keywords[da]=snapshot;skærmbillede;capture;print;screenshot;snipping;snip;
 Keywords[de]=Schnappschuss;Aufnahme;Drucken;Bildschirmfoto;
 Keywords[el]=στιγμιότυπο;λήψη;εκτύπωση;οθόνη;τμήμα;κώδικα;
 Keywords[en_GB]=snapshot;capture;print;screenshot;snipping;snip;
