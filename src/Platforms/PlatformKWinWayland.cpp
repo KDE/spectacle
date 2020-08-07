@@ -91,9 +91,10 @@ Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
     return lSupportedModes;
 }
 
-static QPair<int,int> s_plasmaVersion = {-1, -1};
-QPair<int, int> findPlasmaMinorVersion () {
-    if (s_plasmaVersion == QPair<int, int>(-1, -1)) {
+static std::array<int, 3> s_plasmaVersion = {-1, -1, -1};
+
+std::array<int, 3> findPlasmaMinorVersion () {
+    if (s_plasmaVersion == std::array<int, 3>{-1, -1, -1}) {
         auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
                                        QStringLiteral("/MainApplication"),
                                        QStringLiteral("org.freedesktop.DBus.Properties"),
@@ -125,7 +126,12 @@ QPair<int, int> findPlasmaMinorVersion () {
             qWarning() << "error parsing plasma minor version";
             return s_plasmaVersion;
         }
-        s_plasmaVersion = {plasmaMajorVersion, plasmaMinorVersion};
+        int plasmaPatchVersion = splitted[2].toInt(&ok);
+        if (!ok) {
+            qWarning() << "error parsing plasma patch version";
+            return s_plasmaVersion;
+        }
+        s_plasmaVersion = {plasmaMajorVersion, plasmaMinorVersion, plasmaPatchVersion};
     }
     return s_plasmaVersion;
 }
@@ -134,7 +140,7 @@ Platform::ShutterModes PlatformKWinWayland::supportedShutterModes() const
 {
     // TODO remove sometime after Plasma 5.20 is released
     auto plasmaVersion = findPlasmaMinorVersion();
-    if (plasmaVersion.first != -1 && (plasmaVersion.first != 5 || plasmaVersion.second >= 20)) {
+    if (plasmaVersion.at(0) != -1 && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20 || (plasmaVersion.at(1) == 19 && plasmaVersion.at(2) >= 80)))) {
         return { ShutterMode::Immediate | ShutterMode::OnClick };
     } else {
         return { ShutterMode::OnClick };
