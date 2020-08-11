@@ -22,7 +22,7 @@
 #include "Config.h"
 
 #include <KLocalizedString>
-#include <KMimeTypeTrader>
+#include <KApplicationTrader>
 #include <KRun>
 #include <KStandardShortcut>
 #ifdef KIPI_FOUND
@@ -77,7 +77,7 @@ void ExportMenu::getKServiceItems()
     // populate all locally installed applications and services
     // which can handle images first
 
-    const KService::List services = KMimeTypeTrader::self()->query(QStringLiteral("image/png"));
+    const KService::List services = KApplicationTrader::queryByMimeType(QStringLiteral("image/png"));
 
     for (auto service : services) {
         QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
