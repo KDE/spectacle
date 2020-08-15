@@ -31,6 +31,8 @@
 #include <QDBusPendingCall>
 #include <QFutureWatcher>
 
+#include <array>
+
 /* -- Static Helpers --------------------------------------------------------------------------- */
 
 static int readData(int theFile, QByteArray &theDataOut)
