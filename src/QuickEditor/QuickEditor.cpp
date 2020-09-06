@@ -20,6 +20,7 @@
 #include <KLocalizedString>
 #include <KWayland/Client/plasmashell.h>
 #include <KWayland/Client/surface.h>
+#include <KWindowSystem>
 #include <QGuiApplication>
 #include <QScreen>
 #include <QtCore/qmath.h>
@@ -52,6 +53,24 @@ const int QuickEditor::magnifierLargeStep = 15;
 const int QuickEditor::magZoom = 5;
 const int QuickEditor::magPixels = 16;
 const int QuickEditor::magOffset = 32;
+
+static QPoint fromNative(const QPoint &point, const QScreen *screen)
+{
+    const QPoint origin = screen->geometry().topLeft();
+    const qreal devicePixelRatio = screen->devicePixelRatio();
+
+    return (point - origin) / devicePixelRatio + origin;
+}
+
+static QSize fromNative(const QSize &size, const QScreen *screen)
+{
+    return size / screen->devicePixelRatio();
+}
+
+static QRect fromNativePixels(const QRect &rect, const QScreen *screen)
+{
+    return QRect(fromNative(rect.topLeft(), screen), fromNative(rect.size(), screen));
+}
 
 QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent) :
     QWidget(parent),
@@ -90,7 +109,24 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
     setWindowFlags(Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint);
 
     dprI = 1.0 / devicePixelRatioF();
-    setGeometry(0, 0, static_cast<int>(mPixmap.width() * dprI), static_cast<int>(mPixmap.height() * dprI));
+
+    if (KWindowSystem::isPlatformX11()) {
+        // Even though we want the quick editor window to be placed at (0, 0) in the native
+        // pixels, we cannot really specify a window position of (0, 0) if HiDPI support is on.
+        //
+        // The main reason for that is that Qt will scale the window position relative to the
+        // upper left corner of the screen where the quick editor is on in order to perform
+        // a conversion from the device-independent coordinates to the native pixels.
+        //
+        // Since (0, 0) in the device-independent pixels may not correspond to (0, 0) in the
+        // native pixels, we have to map (0, 0) from native pixels to dip and use that as
+        // the window position.
+        winId();
+        setGeometry(fromNativePixels(mPixmap.rect(), windowHandle()->screen()));
+    } else {
+        setGeometry(0, 0, static_cast<int>(mPixmap.width() * dprI), static_cast<int>(mPixmap.height() * dprI));
+    }
+
     // TODO This is a hack until a better interface is available
     if (plasmashell) {
         using namespace KWayland::Client;
@@ -112,7 +148,7 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
                 cropRegion.y() * dprI,
                 cropRegion.width() * dprI,
                 cropRegion.height() * dprI
-            ).intersected(geometry());
+            ).intersected(rect());
         }
         setMouseCursor(QCursor::pos());
     } else {
@@ -490,7 +526,7 @@ void QuickEditor::paintEvent(QPaintEvent*)
     QBrush brush(mPixmap);
     brush.setTransform(QTransform().scale(dprI, dprI));
     painter.setBackground(brush);
-    painter.eraseRect(geometry());
+    painter.eraseRect(rect());
     if (!mSelection.size().isEmpty() || mMouseDragState != MouseState::None) {
         painter.fillRect(mSelection, mStrokeColor);
         const QRectF innerRect = mSelection.adjusted(1, 1, -1, -1);
@@ -723,7 +759,7 @@ void QuickEditor::drawMagnifier(QPainter &painter)
 
 void QuickEditor::drawMidHelpText(QPainter &painter)
 {
-    painter.fillRect(geometry(), mMaskColor);
+    painter.fillRect(rect(), mMaskColor);
     painter.setFont(mMidHelpTextFont);
     QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidHelpText);
     QPoint pos((mPrimaryScreenGeo.width() - textSize.width()) / 2 + mPrimaryScreenGeo.x(), (height() - textSize.height()) / 2);
