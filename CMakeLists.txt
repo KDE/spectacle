@@ -108,8 +108,8 @@ endif()
 find_package(kImageAnnotator)
 
 if(kImageAnnotator_FOUND)
-    find_package(kColorPicker ${KCOLORPICKER_MIN_VERSION} REQUIRED)
     find_package(X11 REQUIRED)
+    find_package(kColorPicker REQUIRED)
     set(KIMAGEANNOTATOR_FOUND 1)
 endif()
 
