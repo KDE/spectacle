@@ -182,6 +182,19 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
 
         auto lIncludePointer = Settings::includePointer();
         auto lIncludeDecorations = Settings::includeDecorations();
+
+        if (parser->isSet(QStringLiteral("include-pointer"))) {
+            lIncludePointer = true;
+        } else if (parser->isSet(QStringLiteral("no-include-pointer"))) {
+            lIncludePointer = false;
+        }
+
+        if (parser->isSet(QStringLiteral("include-decorations"))) {
+            lIncludeDecorations = true;
+        } else if (parser->isSet(QStringLiteral("no-include-decorations"))) {
+            lIncludeDecorations = false;
+        }
+
         takeNewScreenshot(lCaptureMode, lDelayMsec, lIncludePointer, lIncludeDecorations);
     }
         break;
@@ -444,7 +457,11 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("d"), QStringLiteral("delay")},             i18n("In background mode, delay before taking the shot (in milliseconds)"), QStringLiteral("delayMsec")},
         {{QStringLiteral("c"), QStringLiteral("clipboard")},         i18n("In background mode, copy screenshot to clipboard")},
         {{QStringLiteral("w"), QStringLiteral("onclick")},           i18n("Wait for a click before taking screenshot. Invalidates delay")},
-        {{QStringLiteral("i"), QStringLiteral("new-instance")},      i18n("Starts a new GUI instance of spectacle without registering to DBus")}
+        {{QStringLiteral("i"), QStringLiteral("new-instance")},      i18n("Starts a new GUI instance of spectacle without registering to DBus")},
+        {{QStringLiteral("include-pointer")},                        i18n("Include pointer in the screenshot")},
+        {{QStringLiteral("include-decorations")},                    i18n("Include window decorations in the screenshot")},
+        {{QStringLiteral("no-include-pointer")},                     i18n("Do not include pointer in the screenshot")},
+        {{QStringLiteral("no-include-decorations")},                 i18n("Do not include window decorations in the screenshot")},
     });
 }
 
