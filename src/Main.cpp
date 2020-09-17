@@ -104,5 +104,17 @@ int main(int argc, char **argv)
     // fire it up
     lCore.onActivateRequested(app.arguments(), QStringLiteral());
 
+    QObject::connect(&service, &KDBusService::activateActionRequested, &lCore, [&lCore] (const QString& actionName, const QVariant &parameters) {
+        if (actionName == QLatin1String("FullScreenScreenShot")) {
+            lCore.takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, false, true);
+        } else if (actionName == QLatin1String("CurrentMonitorScreenShot")) {
+            lCore.takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, false, true);
+        } else if (actionName == QLatin1String("ActiveWindowScreenShot")) {
+            lCore.takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow, 0, false, true);
+        } else if (actionName == QLatin1String("RectangularRegionScreenShot")) {
+            lCore.takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, false, true);
+        }
+    });
+
     return app.exec();
 }

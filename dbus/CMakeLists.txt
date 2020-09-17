@@ -6,7 +6,7 @@ include(ECMConfiguredInstall)
 ecm_install_configured_files(INPUT app-org.kde.spectacle.service.in DESTINATION ${SYSTEMD_USER_UNIT_INSTALL_DIR})
 
 ecm_generate_dbus_service_file(
-   NAME org.kde.Spectacle
+   NAME org.kde.spectacle
    EXECUTABLE "${CMAKE_INSTALL_PREFIX}/bin/spectacle --dbus"
    SYSTEMD_SERVICE app-org.kde.spectacle.service
    DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
