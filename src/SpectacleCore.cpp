@@ -116,7 +116,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
 
     mStartMode = SpectacleCore::StartMode::Gui;
     mNotify = true;
-    mCopyToClipboard = Settings::copyImageToClipboard();
     qint64 lDelayMsec = 0;
 
     // are we ask to run in background or dbus mode?
@@ -142,6 +141,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     switch (mStartMode) {
 
     case StartMode::DBus:
+        mCopyToClipboard = Settings::copyImageToClipboard();
         qApp->setQuitOnLastWindowClosed(false);
         break;
 
@@ -151,6 +151,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
         }
 
         if (parser->isSet(QStringLiteral("output"))) {
+            mSaveToOutput = true;
             QString lFileName = parser->value(QStringLiteral("output"));
             if (!(lFileName.isEmpty() || lFileName.isNull())) {
                 if (QDir::isRelativePath(lFileName)) {
@@ -315,12 +316,15 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
     case StartMode::Background:
     case StartMode::DBus:
         {
-            if (mCopyToClipboard) {
-                lExportManager->doCopyToClipboard(mNotify);
-            } else {
+            if (mSaveToOutput || !mCopyToClipboard || (Settings::autoSaveImage() && !mSaveToOutput)) {
+                mSaveToOutput = Settings::autoSaveImage();
                 QUrl lSavePath = (mStartMode == StartMode::Background && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
                     mFileNameUrl : QUrl();
                 lExportManager->doSave(lSavePath, mNotify);
+            }
+
+            if (mCopyToClipboard) {
+                lExportManager->doCopyToClipboard(mNotify);
             }
 
             // if we don't have a Gui already opened, emit allDone
@@ -402,7 +406,11 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
-    if (mCopyToClipboard) {
+    if (mSaveToOutput) {
+        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
+        // set to false so it won't show the same message twice
+        mSaveToOutput = false;
+    } else if (mCopyToClipboard) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
@@ -410,7 +418,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
     }
 
-    if (!mCopyToClipboard) {
+    if (!theSavedAt.isEmpty()) {
         lNotify->setUrls({theSavedAt});
         lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {

@@ -95,5 +95,6 @@ class SpectacleCore: public QObject
     EditorPtr     mQuickEditor;
     bool          mIsGuiInited;
     bool          mCopyToClipboard;
+    bool          mSaveToOutput;
     KWayland::Client::PlasmaShell *mWaylandPlasmashell;
 };
