@@ -86,6 +86,7 @@ class KSMainWindow: public QDialog
     void setScreenshotAndShow(const QPixmap &pixmap);
     void imageSaved(const QUrl &location);
     void imageSavedAndCopied(const QUrl &location);
+    void screenshotFailed();
 
     Q_SIGNALS:
 
