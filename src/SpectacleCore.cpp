@@ -297,7 +297,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         if(!mQuickEditor) {
             mQuickEditor = std::make_unique<QuickEditor>(thePixmap, mWaylandPlasmashell);
             connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
-            connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotFailed);
+            connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotCanceled);
             mQuickEditor->show();
             return;
         } else {
@@ -352,6 +352,14 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             lExportManager->doCopyToClipboard(false);
         }
     }
+}
+
+void SpectacleCore::screenshotCanceled()
+{
+    mQuickEditor->hide();
+    mQuickEditor.reset(nullptr);
+    mMainWindow->screenshotCanceled();
+    mMainWindow->setScreenshotAndShow(QPixmap());
 }
 
 void SpectacleCore::screenshotFailed()
