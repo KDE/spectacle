@@ -487,11 +487,6 @@ void KSMainWindow::imageCopied()
                       KMessageWidget::Information);
 }
 
-void KSMainWindow::screenshotCanceled()
-{
-    showInlineMessage(i18n("Screenshot capture canceled."), KMessageWidget::Information);
-}
-
 void KSMainWindow::screenshotFailed()
 {
     showInlineMessage(i18n("Could not take a screenshot. Please report this bug here: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"),
