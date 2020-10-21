@@ -358,7 +358,9 @@ void SpectacleCore::screenshotCanceled()
 {
     mQuickEditor->hide();
     mQuickEditor.reset(nullptr);
-    mMainWindow->setScreenshotAndShow(QPixmap());
+    if (mStartMode == StartMode::Gui) {
+        mMainWindow->setScreenshotAndShow(QPixmap());
+    }
 }
 
 void SpectacleCore::screenshotFailed()
