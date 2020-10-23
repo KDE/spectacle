@@ -22,7 +22,6 @@
 
 #include "KSMainWindow.h"
 
-#include "Config.h"
 #include "settings.h"
 #include "SettingsDialog/SettingsDialog.h"
 #include "SettingsDialog/GeneralOptionsPage.h"

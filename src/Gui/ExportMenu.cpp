@@ -19,7 +19,6 @@
 
 #include "ExportMenu.h"
 #include "spectacle_gui_debug.h"
-#include "Config.h"
 
 #include <KLocalizedString>
 #include <KApplicationTrader>

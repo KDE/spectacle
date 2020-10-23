@@ -26,7 +26,6 @@
 #include "SmartSpinBox.h"
 #include "ProgressButton.h"
 #include "ExportManager.h"
-#include "Config.h"
 
 #include <QAction>
 #include <QApplication>
