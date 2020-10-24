@@ -45,6 +45,7 @@
 #include <KIO/MkpathJob>
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
+#include <KRecentDocument>
 
 
 
@@ -429,10 +430,16 @@ bool ExportManager::save(const QUrl &url)
     }
 
     QString mimetype = makeSaveMimetype(url);
+    bool saveSucceded = false;
     if (url.isLocalFile()) {
-        return localSave(url, mimetype);
+         saveSucceded = localSave(url, mimetype);
+    } else {
+        saveSucceded = remoteSave(url, mimetype);
     }
-    return remoteSave(url, mimetype);
+    if (saveSucceded) {
+        KRecentDocument::add(url, QGuiApplication::desktopFileName());
+    }
+    return saveSucceded;
 }
 
 bool ExportManager::isFileExists(const QUrl &url) const
