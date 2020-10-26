@@ -147,6 +147,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
         break;
 
     case StartMode::Background: {
+        mCopyToClipboard = false;
         if (parser->isSet(QStringLiteral("nonotify"))) {
             mNotify = false;
         }
