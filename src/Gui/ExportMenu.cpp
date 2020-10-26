@@ -23,6 +23,8 @@
 #include <KLocalizedString>
 #include <KApplicationTrader>
 #include <KRun>
+#include <KIO/ApplicationLauncherJob>
+#include <KNotificationJobUiDelegate>
 #include <KStandardShortcut>
 #ifdef KIPI_FOUND
 #include <KIPI/Plugin>
@@ -85,8 +87,14 @@ void ExportMenu::getKServiceItems()
         connect(action, &QAction::triggered, this, [=]() {
             const QUrl filename = mExportManager->getAutosaveFilename();
             mExportManager->doSave(filename);
-            QList<QUrl> whereIs({ filename });
-            KRun::runService(*service, whereIs, parentWidget(), true);
+
+            auto *job = new KIO::ApplicationLauncherJob(service);
+            auto *delegate = new KNotificationJobUiDelegate;
+            delegate->setAutoErrorHandlingEnabled(true);
+            job->setUiDelegate(delegate);
+
+            job->setUrls({filename});
+            job->start();
         });
         addAction(action);
     }
