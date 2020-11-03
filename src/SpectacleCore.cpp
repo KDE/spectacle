@@ -211,6 +211,9 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
                     break;
                 }
                 case Actions::FocusWindow:
+                    if (mMainWindow->isHidden()) {
+                        mMainWindow->show();
+                    }
                     if (mMainWindow->isMinimized()) {
                         mMainWindow->setWindowState(mMainWindow->windowState() & ~Qt::WindowMinimized);
                     }
