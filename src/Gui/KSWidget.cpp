@@ -308,7 +308,9 @@ void KSWidget::setProgress(double progress)
 void KSWidget::showAnnotator()
 {
     mStack->setCurrentIndex(1);
-    mAnnotator->loadImage(ExportManager::instance()->pixmap());
+    QPixmap px = ExportManager::instance()->pixmap();
+    px.setDevicePixelRatio(qApp->devicePixelRatio());
+    mAnnotator->loadImage(px);
 }
 
 void KSWidget::hideAnnotator()
