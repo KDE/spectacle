@@ -172,7 +172,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
 {
     const QDateTime timestamp = mPixmapTimestamp;
     QString baseName = nameTemplate;
-    const QString baseDir = defaultSaveLocation();
+    QString baseDir = defaultSaveLocation();
     QString title;
 
     if (mCaptureMode == Spectacle::CaptureMode::ActiveWindow ||
@@ -201,7 +201,9 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
     QRegularExpressionMatchIterator it = paddingRE.globalMatch(result);
     if (it.hasNext()) {
-        QString resultCopy = QRegularExpression::escape(result);
+        // strip any subdirectories from the template to construct the filename matching regex
+        // we are matching filenames only, not paths
+        QString resultCopy = QRegularExpression::escape(result.section(QLatin1Char('/'), -1));
         QVector<QRegularExpressionMatch> matches;
         while (it.hasNext()) {
             QRegularExpressionMatch paddingMatch = it.next();
@@ -213,6 +215,12 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
             }
             QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
             resultCopy.replace(escapedMatch, QStringLiteral("(\\d{%1,})").arg(QString::number(paddedLength)));
+        }
+        if (result.contains(QLatin1Char('/'))) {
+          // In case the filename template contains a subdirectory,
+          // we need to search for files in the subdirectory instead of the baseDir.
+          // so let's add that to baseDir before we search for files.
+          baseDir += QStringLiteral("/%1").arg(result.section(QLatin1Char('/'), 0, -2));
         }
         // search save directory for files
         QDir dir(baseDir);
