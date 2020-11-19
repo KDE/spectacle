@@ -143,7 +143,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     case StartMode::DBus:
         mCopyToClipboard = Settings::copyImageToClipboard();
         qApp->setQuitOnLastWindowClosed(false);
-        mCopyToClipboard = Settings::copyImageToClipboard();
         break;
 
     case StartMode::Background: {
