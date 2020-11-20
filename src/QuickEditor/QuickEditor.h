@@ -27,6 +27,8 @@
 #include <utility>
 #include <vector>
 
+#include "ComparableQPoint.h"
+
 class QMouseEvent;
 
 namespace KWayland {
@@ -41,7 +43,7 @@ class QuickEditor: public QWidget
 
     public:
 
-    explicit QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
+    explicit QuickEditor(const QMap<ComparableQPoint, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
     virtual ~QuickEditor() = default;
 
     private:
@@ -117,7 +119,7 @@ class QuickEditor: public QWidget
     QColor mCrossColor;
     QColor mLabelBackgroundColor;
     QColor mLabelForegroundColor;
-    QRectF mSelection;
+    QRect mSelection;
     QPointF mStartPos;
     QPointF mInitialTopLeft;
     QString mMidHelpText;
@@ -128,8 +130,11 @@ class QuickEditor: public QWidget
     QPoint mBottomHelpContentPos;
     int mBottomHelpGridLeftWidth;
     MouseState mMouseDragState;
+    QMap<ComparableQPoint, QImage> mImages;
+    QVector<QPair<QRect, qreal>> mRectToDpr;
     QPixmap mPixmap;
-    qreal dprI;
+    qreal devicePixelRatio;
+    qreal devicePixelRatioI;
     QPointF mMousePos;
     bool mMagnifierAllowed;
     bool mShowMagnifier;
@@ -139,6 +144,7 @@ class QuickEditor: public QWidget
     bool mDisableArrowKeys;
     QRect mPrimaryScreenGeo;
     int mbottomHelpLength;
+    QRegion mScreenRegion;
 
     // Midpoints of handles
     QVector<QPointF> mHandlePositions = QVector<QPointF> {8};
@@ -149,6 +155,12 @@ Q_SIGNALS:
 
     void grabDone(const QPixmap &thePixmap);
     void grabCancelled();
+
+private:
+
+    QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(QMap<ComparableQPoint, QPair<qreal, QSize>> outputsRect);
+
+    void preparePaint();
 };
 
 #endif // QUICKEDITOR_H

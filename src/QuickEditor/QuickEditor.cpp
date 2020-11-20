@@ -55,7 +55,7 @@ const int QuickEditor::magZoom = 5;
 const int QuickEditor::magPixels = 16;
 const int QuickEditor::magOffset = 32;
 
-QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent) :
+QuickEditor::QuickEditor(const QMap<ComparableQPoint, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent) :
     QWidget(parent),
     mMaskColor(QColor::fromRgbF(0, 0, 0, 0.15)),
     mStrokeColor(palette().highlight().color()),
@@ -72,7 +72,7 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
     mBottomHelpTextFont(font()),
     mBottomHelpGridLeftWidth(0),
     mMouseDragState(MouseState::None),
-    mPixmap(thePixmap),
+    mImages(images),
     mMagnifierAllowed(false),
     mShowMagnifier(Settings::showMagnifier()),
     mToggleMagnifier(false),
@@ -91,8 +91,36 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
     setAttribute(Qt::WA_StaticContents);
     setWindowFlags(Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint);
 
-    dprI = 1.0 / devicePixelRatioF();
-    setGeometry(0, 0, static_cast<int>(mPixmap.width() * dprI), static_cast<int>(mPixmap.height() * dprI));
+    devicePixelRatio = plasmashell ? 1.0 : devicePixelRatioF();
+    devicePixelRatioI = 1.0 / devicePixelRatio;
+
+    int width = 0, height = 0;
+    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
+        width = qMax(width, it.value().width() + it.key().x());
+        height = qMax(height, it.value().height() + it.key().y());
+    }
+
+    mPixmap = QPixmap(width, height);
+    mScreenRegion = QRegion();
+
+    const QList<QScreen*> screens = QGuiApplication::screens();
+    QMap<ComparableQPoint, QPair<qreal, QSize>> input;
+    for (auto it = mImages.begin(); it != mImages.end(); ++it) {
+        const auto pos = it.key();
+        const QImage &screenImage = it.value();
+        auto item = std::find_if(screens.constBegin(), screens.constEnd(),
+                                      [pos] (const QScreen* screen){
+            return screen->geometry().topLeft() == pos;
+        });
+        const QScreen* screen = *item;
+        input.insert(pos, QPair<qreal, QSize>(screenImage.width() / static_cast<qreal>(screen->size().width()), screenImage.size()));
+    }
+    const auto pointsTranslationMap = computeCoordinatesAfterScaling(input);
+    QPainter painter(&mPixmap);
+    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
+        painter.drawImage(pointsTranslationMap.value(it.key()), it.value());
+    }
+    painter.end();
 
     if (KWindowSystem::isPlatformX11()) {
         // Even though we want the quick editor window to be placed at (0, 0) in the native
@@ -116,6 +144,9 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
         };
 
         xcb_configure_window(QX11Info::connection(), winId(), mask, values);
+        resize(width, height);
+    } else {
+        setGeometry(0, 0, width, height);
     }
 
     // TODO This is a hack until a better interface is available
@@ -134,11 +165,11 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
         auto savedRect = Settings::cropRegion();
         QRect cropRegion = QRect(savedRect[0], savedRect[1], savedRect[2], savedRect[3]);
         if (!cropRegion.isEmpty()) {
-            mSelection = QRectF(
-                cropRegion.x() * dprI,
-                cropRegion.y() * dprI,
-                cropRegion.width() * dprI,
-                cropRegion.height() * dprI
+            mSelection = QRect(
+                cropRegion.x() * devicePixelRatioI,
+                cropRegion.y() * devicePixelRatioI,
+                cropRegion.width() * devicePixelRatioI,
+                cropRegion.height() * devicePixelRatioI
             ).intersected(rect());
         }
         setMouseCursor(QCursor::pos());
@@ -163,21 +194,82 @@ QuickEditor::QuickEditor(const QPixmap &thePixmap, KWayland::Client::PlasmaShell
     }
     layoutBottomHelpText();
 
+    preparePaint();
     update();
 }
 
 void QuickEditor::acceptSelection()
 {
     if (!mSelection.isEmpty()) {
-        const qreal dpr = devicePixelRatioF();
+
         QRect scaledCropRegion = QRect(
-            qRound(mSelection.x() * dpr),
-            qRound(mSelection.y() * dpr),
-            qRound(mSelection.width() * dpr),
-            qRound(mSelection.height() * dpr)
+            qRound(mSelection.x() * devicePixelRatio),
+            qRound(mSelection.y() * devicePixelRatio),
+            qRound(mSelection.width() * devicePixelRatio),
+            qRound(mSelection.height() * devicePixelRatio)
         );
         Settings::setCropRegion({scaledCropRegion.x(), scaledCropRegion.y(), scaledCropRegion.width(), scaledCropRegion.height()});
-        emit grabDone(mPixmap.copy(scaledCropRegion));
+
+        if (KWindowSystem::isPlatformX11()) {
+            emit grabDone(mPixmap.copy(scaledCropRegion));
+
+        } else {
+            // Wayland case
+            qreal maxDpr = 1.0;
+            for (const QScreen *screen: QGuiApplication::screens()) {
+                if (screen->devicePixelRatio() > maxDpr) {
+                    maxDpr = screen->devicePixelRatio();
+                }
+            }
+
+            QPixmap output(mSelection.size() * maxDpr);
+            QPainter painter(&output);
+            QRect intersected;
+            QPixmap screenOutput;
+
+            for (auto it = mRectToDpr.constBegin(); it != mRectToDpr.constEnd(); ++it)
+            {
+                const auto screenRect = (*it).first;
+
+                if (mSelection.intersects(screenRect)) {
+                    const auto &pos = screenRect.topLeft();
+                    const qreal &dpr = (*it).second;
+
+                    intersected = screenRect.intersected(mSelection);
+
+                    // converts to screen size & position
+                    QRect pixelOnScreenIntersected;
+                    pixelOnScreenIntersected.moveTopLeft((intersected.topLeft() - pos) * dpr);
+                    pixelOnScreenIntersected.setWidth(intersected.width() * dpr);
+                    pixelOnScreenIntersected.setHeight(intersected.height() * dpr);
+
+                    screenOutput = QPixmap::fromImage(mImages.value(pos).copy(pixelOnScreenIntersected));
+
+                    if (intersected.size() == mSelection.size()) {
+                        painter.end();
+
+                        // short path when single screen
+                        // keep native screen resolution
+                        emit grabDone(screenOutput);
+                        return;
+
+                    } else {
+
+                        // upscale the image according to max screen dpr, to keep the image not distorted
+                        const auto dprI = maxDpr / dpr;
+                        QBrush brush(screenOutput);
+                        brush.setTransform(QTransform().scale(dprI, dprI));
+                        intersected.moveTopLeft((intersected.topLeft() - mSelection.topLeft()) * maxDpr);
+                        intersected.setSize(intersected.size() * maxDpr);
+                        painter.setBrushOrigin(intersected.topLeft());
+                        painter.fillRect(intersected, brush);
+                    }
+                }
+            }
+            painter.end();
+
+            emit grabDone(output);
+        }
     }
 }
 
@@ -202,12 +294,12 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
             break;
         }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsUp(qRound(mSelection.top() * devicePixelRatioF() - step), false);
+        const int newPos = boundsUp(qRound(mSelection.top() * devicePixelRatio - step), false);
         if (modifiers & Qt::AltModifier) {
-            mSelection.setBottom(dprI * newPos + mSelection.height());
+            mSelection.setBottom(devicePixelRatioI * newPos + mSelection.height());
             mSelection = mSelection.normalized();
         } else {
-            mSelection.moveTop(dprI * newPos);
+            mSelection.moveTop(devicePixelRatioI * newPos);
         }
         update();
         break;
@@ -218,11 +310,11 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
             break;
         }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsRight(qRound(mSelection.left() * devicePixelRatioF() + step), false);
+        const int newPos = boundsRight(qRound(mSelection.left() * devicePixelRatio + step), false);
         if (modifiers & Qt::AltModifier) {
-            mSelection.setRight(dprI * newPos + mSelection.width());
+            mSelection.setRight(devicePixelRatioI * newPos + mSelection.width());
         } else {
-            mSelection.moveLeft(dprI * newPos);
+            mSelection.moveLeft(devicePixelRatioI * newPos);
         }
         update();
         break;
@@ -233,11 +325,11 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
             break;
         }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsDown(qRound(mSelection.top() * devicePixelRatioF() + step), false);
+        const int newPos = boundsDown(qRound(mSelection.top() * devicePixelRatio + step), false);
         if (modifiers & Qt::AltModifier) {
-            mSelection.setBottom(dprI * newPos + mSelection.height());
+            mSelection.setBottom(devicePixelRatioI * newPos + mSelection.height());
         } else {
-            mSelection.moveTop(dprI * newPos);
+            mSelection.moveTop(devicePixelRatioI * newPos);
         }
         update();
         break;
@@ -248,12 +340,12 @@ void QuickEditor::keyPressEvent(QKeyEvent* event)
             break;
         }
         const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsLeft(qRound(mSelection.left() * devicePixelRatioF() - step), false);
+        const int newPos = boundsLeft(qRound(mSelection.left() * devicePixelRatio - step), false);
         if (modifiers & Qt::AltModifier) {
-            mSelection.setRight(dprI * newPos + mSelection.width());
+            mSelection.setRight(devicePixelRatioI * newPos + mSelection.width());
             mSelection = mSelection.normalized();
         } else {
-            mSelection.moveLeft(dprI * newPos);
+            mSelection.moveLeft(devicePixelRatioI * newPos);
         }
         update();
         break;
@@ -278,7 +370,7 @@ int QuickEditor::boundsLeft(int newTopLeftX, const bool mouse)
     if (newTopLeftX < 0) {
         if (mouse) {
             // tweak startPos to prevent rectangle from getting stuck
-            mStartPos.setX(mStartPos.x() + newTopLeftX * dprI);
+            mStartPos.setX(mStartPos.x() + newTopLeftX * devicePixelRatioI);
         }
         newTopLeftX = 0;
     }
@@ -293,22 +385,19 @@ int QuickEditor::boundsRight(int newTopLeftX, const bool mouse)
     const int xOffset = newTopLeftX - realMaxX;
     if (xOffset > 0) {
         if (mouse) {
-            mStartPos.setX(mStartPos.x() + xOffset * dprI);
+            mStartPos.setX(mStartPos.x() + xOffset * devicePixelRatioI);
         }
         newTopLeftX = realMaxX;
     }
 
     return newTopLeftX;
-
-
-
 }
 
 int QuickEditor::boundsUp(int newTopLeftY, const bool mouse)
 {
     if (newTopLeftY < 0) {
         if (mouse) {
-            mStartPos.setY(mStartPos.y() + newTopLeftY * dprI);
+            mStartPos.setY(mStartPos.y() + newTopLeftY * devicePixelRatioI);
         }
         newTopLeftY = 0;
     }
@@ -319,11 +408,11 @@ int QuickEditor::boundsUp(int newTopLeftY, const bool mouse)
 int QuickEditor::boundsDown(int newTopLeftY, const bool mouse)
 {
     // the max Y coordinate of the top left point
-    const int realMaxY = qRound((height() - mSelection.height()) * devicePixelRatioF());
+    const int realMaxY = qRound((height() - mSelection.height()) * devicePixelRatio);
     const int yOffset = newTopLeftY - realMaxY;
     if (yOffset > 0) {
         if (mouse) {
-            mStartPos.setY(mStartPos.y() + yOffset * dprI);
+            mStartPos.setY(mStartPos.y() + yOffset * devicePixelRatioI);
         }
         newTopLeftY = realMaxY;
     }
@@ -334,9 +423,9 @@ int QuickEditor::boundsDown(int newTopLeftY, const bool mouse)
 void QuickEditor::mousePressEvent(QMouseEvent* event)
 {
     if(event->source() == Qt::MouseEventNotSynthesized) {
-      mHandleRadius = handleRadiusMouse;
+        mHandleRadius = handleRadiusMouse;
     } else {
-      mHandleRadius = handleRadiusTouch;
+        mHandleRadius = handleRadiusTouch;
     }
 
     if (event->button() & Qt::LeftButton) {
@@ -353,10 +442,10 @@ void QuickEditor::mousePressEvent(QMouseEvent* event)
         mDisableArrowKeys = true;
         switch(mMouseDragState) {
         case MouseState::Outside:
-            mStartPos = pos;
+            mStartPos = mMousePos;
             break;
         case MouseState::Inside:
-            mStartPos = pos;
+            mStartPos = mMousePos;
             mMagnifierAllowed = false;
             mInitialTopLeft = mSelection.topLeft();
             setCursor(Qt::ClosedHandCursor);
@@ -407,8 +496,8 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
         mSelection.setRect(
             afterX ? mStartPos.x() : pos.x(),
             afterY ? mStartPos.y() : pos.y(),
-            qAbs(pos.x() - mStartPos.x()) + (afterX ? dprI : 0),
-            qAbs(pos.y() - mStartPos.y()) + (afterY ? dprI : 0)
+            qAbs(pos.x() - mStartPos.x()) + (afterX ? devicePixelRatioI : 0),
+            qAbs(pos.y() - mStartPos.y()) + (afterY ? devicePixelRatioI : 0)
         );
         update();
         break;
@@ -417,8 +506,8 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
         mSelection.setRect(
             qMin(pos.x(), mStartPos.x()),
             qMin(pos.y(), mStartPos.y()),
-            qAbs(pos.x() - mStartPos.x()) + dprI,
-            qAbs(pos.y() - mStartPos.y()) + dprI
+            qAbs(pos.x() - mStartPos.x()) + devicePixelRatioI,
+            qAbs(pos.y() - mStartPos.y()) + devicePixelRatioI
         );
         update();
         break;
@@ -430,7 +519,7 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
             mSelection.x(),
             afterY ? mStartPos.y() : pos.y(),
             mSelection.width(),
-            qAbs(pos.y() - mStartPos.y()) + (afterY ? dprI : 0)
+            qAbs(pos.y() - mStartPos.y()) + (afterY ? devicePixelRatioI : 0)
         );
         update();
         break;
@@ -441,7 +530,7 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
         mSelection.setRect(
             afterX ? mStartPos.x() : pos.x(),
             mSelection.y(),
-            qAbs(pos.x() - mStartPos.x()) + (afterX ? dprI : 0),
+            qAbs(pos.x() - mStartPos.x()) + (afterX ? devicePixelRatioI : 0),
             mSelection.height()
         );
         update();
@@ -453,22 +542,20 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
         // move the rectangle with moves it out of bounds,
         // in which case we adjust the diff to not let that happen
 
-        const qreal dpr = devicePixelRatioF();
         // new top left point of the rectangle
-        QPoint newTopLeft = ((pos - mStartPos + mInitialTopLeft) * dpr).toPoint();
+        QPoint newTopLeft = ((pos - mStartPos + mInitialTopLeft) * devicePixelRatio).toPoint();
 
-        int newTopLeftX = boundsLeft(newTopLeft.x());
-        if (newTopLeftX != 0) {
-            newTopLeftX = boundsRight(newTopLeftX);
+        auto newRect = QRect(newTopLeft, mSelection.size() * devicePixelRatio);
+
+        auto screenBoundingRect = mScreenRegion.boundingRect();
+        screenBoundingRect = QRect(screenBoundingRect.topLeft(), screenBoundingRect.size());
+        if (!screenBoundingRect.contains(newRect)) {
+            // Keep the item inside the scene screen region bounding rect.
+            newTopLeft.setX(qMin(screenBoundingRect.right() - newRect.width(), qMax(newTopLeft.x(), screenBoundingRect.left())));
+            newTopLeft.setY(qMin(screenBoundingRect.bottom() - newRect.height(), qMax(newTopLeft.y(), screenBoundingRect.top())));
         }
 
-        int newTopLeftY = boundsUp(newTopLeft.y());
-        if (newTopLeftY != 0) {
-            newTopLeftY = boundsDown(newTopLeftY);
-        }
-
-        const auto newTopLeftF = QPointF(newTopLeftX * dprI, newTopLeftY * dprI);
-
+        const auto newTopLeftF = newTopLeft * devicePixelRatioI;
         mSelection.moveTo(newTopLeftF);
         update();
         break;
@@ -485,10 +572,9 @@ void QuickEditor::mouseReleaseEvent(QMouseEvent* event)
     const auto button = event->button();
     if (button == Qt::LeftButton) {
         mDisableArrowKeys = false;
-        if(mMouseDragState == MouseState::Inside) {
+        if (mMouseDragState == MouseState::Inside) {
             setCursor(Qt::OpenHandCursor);
-        }
-        else if(mMouseDragState == MouseState::Outside && mReleaseToCapture) {
+        } else if (mMouseDragState == MouseState::Outside && mReleaseToCapture) {
             event->accept();
             mMouseDragState = MouseState::None;
             return acceptSelection();
@@ -510,24 +596,121 @@ void QuickEditor::mouseDoubleClickEvent(QMouseEvent* event)
     }
 }
 
-void QuickEditor::paintEvent(QPaintEvent*)
+QMap<ComparableQPoint, ComparableQPoint> QuickEditor::computeCoordinatesAfterScaling(QMap<ComparableQPoint, QPair<qreal, QSize>> outputsRect)
 {
+    QMap<ComparableQPoint, ComparableQPoint> translationMap;
+
+    for (auto i = outputsRect.keyBegin(); i != outputsRect.keyEnd(); ++i) {
+        translationMap.insert(*i, *i);
+    }
+
+    for (auto i = outputsRect.constBegin(); i != outputsRect.constEnd(); ++i) {
+        const auto p = i.key();
+        const auto size = i.value().second;
+        const auto dpr = i.value().first;
+        if (!qFuzzyCompare(dpr, 1.0)) {
+            // must update all coordinates of next rects
+            int newWidth = size.width();
+            int newHeight = size.height();
+
+            int deltaX = newWidth - (size.width());
+            int deltaY = newHeight - (size.height());
+
+            // for the next size
+            for (auto i2 = outputsRect.constFind(p); i2 != outputsRect.constEnd(); ++i2) {
+
+                auto point = i2.key();
+                auto finalPoint = translationMap.value(point);
+
+                if (point.x() >= newWidth + p.x() - deltaX) {
+                    finalPoint.setX(finalPoint.x() + deltaX);
+                }
+                if (point.y() >= newHeight + p.y() - deltaY) {
+                    finalPoint.setY(finalPoint.y() + deltaY);
+                }
+                // update final position point with the necessary deltas
+                translationMap.insert(point, finalPoint);
+            }
+        }
+    }
+
+    return translationMap;
+}
+
+
+void QuickEditor::preparePaint()
+{
+    auto screens = QGuiApplication::screens();
+    for (auto i = mImages.constBegin(); i != mImages.constEnd(); ++i) {
+        QImage screenImage = i.value();
+        const auto &pos = i.key();
+
+        auto item = std::find_if(screens.constBegin(), screens.constEnd(),
+                                      [pos] (const QScreen* screen){
+            return screen->geometry().topLeft() == pos;
+        });
+        const QScreen* screen = *item;
+
+        const qreal dpr = screenImage.width() / static_cast<qreal>(screen->geometry().width());
+        mRectToDpr.append( QPair<QRect, qreal>(screen->geometry(), dpr));
+
+        QRect virtualScreenRect;
+        if (KWindowSystem::isPlatformX11()) {
+            virtualScreenRect = QRect(pos, screenImage.size());
+        } else {
+            virtualScreenRect = QRect(pos, screenImage.size() / dpr);
+        }
+        mScreenRegion = mScreenRegion.united(virtualScreenRect);
+    }
+}
+
+void QuickEditor::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing);
-    QBrush brush(mPixmap);
-    brush.setTransform(QTransform().scale(dprI, dprI));
-    painter.setBackground(brush);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.eraseRect(rect());
+
+    auto screens = QGuiApplication::screens();
+    for (auto i = mImages.constBegin(); i != mImages.constEnd(); ++i) {
+        QImage screenImage = i.value();
+        const auto &pos = i.key();
+
+        auto item = std::find_if(screens.constBegin(), screens.constEnd(),
+                                      [pos] (const QScreen* screen){
+            return screen->geometry().topLeft() == pos;
+        });
+        const QScreen* screen = *item;
+
+        const qreal dpr = screenImage.width() / static_cast<qreal>(screen->geometry().width());
+        const qreal dprI = 1.0 / dpr;
+
+        QBrush brush(screenImage);
+
+        brush.setTransform(QTransform().scale(dprI, dprI));
+
+        painter.setBrushOrigin(screen->geometry().topLeft() / devicePixelRatio);
+
+        QRect rectToDraw = screen->geometry();
+        rectToDraw.moveTopLeft(rectToDraw.topLeft() / devicePixelRatio);
+        rectToDraw.setSize(rectToDraw.size() * devicePixelRatio);
+        painter.fillRect(rectToDraw, brush);
+    }
+
     if (!mSelection.size().isEmpty() || mMouseDragState != MouseState::None) {
-        painter.fillRect(mSelection, mStrokeColor);
         const QRectF innerRect = mSelection.adjusted(1, 1, -1, -1);
         if (innerRect.width() > 0 && innerRect.height() > 0) {
-            painter.eraseRect(mSelection.adjusted(1, 1, -1, -1));
+            painter.setPen(mStrokeColor);
+            painter.drawLine(mSelection.topLeft(), mSelection.topRight());
+            painter.drawLine(mSelection.bottomRight(), mSelection.topRight());
+            painter.drawLine(mSelection.bottomRight(), mSelection.bottomLeft());
+            painter.drawLine(mSelection.bottomLeft(), mSelection.topLeft());
         }
 
         QRectF top(0, 0, width(), mSelection.top());
         QRectF right(mSelection.right(), mSelection.top(), width() - mSelection.right(), mSelection.height());
-        QRectF bottom(0, mSelection.bottom(), width(), height() - mSelection.bottom());
+        QRectF bottom(0, mSelection.bottom() + 1, width(), height() - mSelection.bottom());
         QRectF left(0, mSelection.top(), mSelection.left(), mSelection.height());
         for (const auto& rect : { top, right, bottom, left }) {
             painter.fillRect(rect, mMaskColor);
@@ -567,8 +750,8 @@ void QuickEditor::layoutBottomHelpText()
         contentWidth = qMax(contentWidth, mBottomHelpGridLeftWidth + maxRightWidth + bottomHelpBoxPairSpacing);
         contentHeight += (i != bottomHelpMaxLength ? bottomHelpBoxMarginBottom : 0);
     }
-    mBottomHelpContentPos.setX((mPrimaryScreenGeo.width() - contentWidth) / 2 + mPrimaryScreenGeo.x());
-    mBottomHelpContentPos.setY(height() - contentHeight - 8);
+    mBottomHelpContentPos.setX((mPrimaryScreenGeo.width() - contentWidth) / 2 + mPrimaryScreenGeo.x() / devicePixelRatio);
+    mBottomHelpContentPos.setY((mPrimaryScreenGeo.height() + mPrimaryScreenGeo.y() / devicePixelRatio) - contentHeight - 8 );
     mBottomHelpGridLeftWidth += mBottomHelpContentPos.x();
     mBottomHelpBorderBox.setRect(
         mBottomHelpContentPos.x() - bottomHelpBoxPaddingX,
@@ -698,7 +881,7 @@ void QuickEditor::drawDragHandles(QPainter &painter)
 void QuickEditor::drawMagnifier(QPainter &painter)
 {
     const int pixels = 2 * magPixels + 1;
-    int magX = static_cast<int>(mMousePos.x() * devicePixelRatioF() - magPixels);
+    int magX = static_cast<int>(mMousePos.x() * devicePixelRatio - magPixels);
     int offsetX = 0;
     if (magX < 0) {
         offsetX = magX;
@@ -710,7 +893,7 @@ void QuickEditor::drawMagnifier(QPainter &painter)
             magX = maxX;
         }
     }
-    int magY = static_cast<int>(mMousePos.y() * devicePixelRatioF() - magPixels);
+    int magY = static_cast<int>(mMousePos.y() * devicePixelRatio - magPixels);
     int offsetY = 0;
     if (magY < 0) {
         offsetY = magY;
@@ -753,7 +936,8 @@ void QuickEditor::drawMidHelpText(QPainter &painter)
     painter.fillRect(rect(), mMaskColor);
     painter.setFont(mMidHelpTextFont);
     QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidHelpText);
-    QPoint pos((mPrimaryScreenGeo.width() - textSize.width()) / 2 + mPrimaryScreenGeo.x(), (height() - textSize.height()) / 2);
+    QPoint pos((mPrimaryScreenGeo.width() - textSize.width()) / 2 + mPrimaryScreenGeo.x() / devicePixelRatio,
+               (mPrimaryScreenGeo.height() - textSize.height()) / 2 + mPrimaryScreenGeo.y() / devicePixelRatio);
 
     painter.setBrush(mLabelBackgroundColor);
     QPen pen(mLabelForegroundColor);
@@ -771,8 +955,7 @@ void QuickEditor::drawSelectionSizeTooltip(QPainter &painter, bool dragHandlesVi
     // - vertically centered inside the selection if the box is not covering the a large part of selection
     // - on top of the selection if the selection x position fits the box height plus some margin
     // - at the bottom otherwise
-    const qreal dpr = devicePixelRatioF();
-    QString selectionSizeText = ki18n("%1×%2").subs(qRound(mSelection.width() * dpr)).subs(qRound(mSelection.height() * dpr)).toString();
+    QString selectionSizeText = ki18n("%1×%2").subs(qRound(mSelection.width() * devicePixelRatio)).subs(qRound(mSelection.height() * devicePixelRatio)).toString();
     const QRect selectionSizeTextRect = painter.boundingRect(QRect(), 0, selectionSizeText);
 
     const int selectionBoxWidth = selectionSizeTextRect.width() + selectionBoxPaddingX * 2;
@@ -868,23 +1051,23 @@ QuickEditor::MouseState QuickEditor::mouseLocation(const QPointF& pos)
     };
 
     //Rectangle can be resized when border is dragged, if it's big enough
-    if(mSelection.width() >= 100 && mSelection.height() >= 100) {
-      if(inRange(mSelection.x(), mSelection.x() + mSelection.width(), pos.x())) {
-        if(withinThreshold(pos.y() - mSelection.y(), borderDragAreaSize)) {
-          return MouseState::Top;
-        } else if(withinThreshold(pos.y() - mSelection.y() - mSelection.height(), borderDragAreaSize)) {
-          return MouseState::Bottom;
+    if (mSelection.width() >= 100 && mSelection.height() >= 100) {
+        if (inRange(mSelection.x(), mSelection.x() + mSelection.width(), pos.x())) {
+            if (withinThreshold(pos.y() - mSelection.y(), borderDragAreaSize)) {
+                return MouseState::Top;
+            } else if (withinThreshold(pos.y() - mSelection.y() - mSelection.height(), borderDragAreaSize)) {
+                return MouseState::Bottom;
+            }
         }
-      }
-      if(inRange(mSelection.y(), mSelection.y() + mSelection.height(), pos.y())) {
-        if(withinThreshold(pos.x() - mSelection.x(), borderDragAreaSize)) {
-          return MouseState::Left;
-        } else if(withinThreshold(pos.x() - mSelection.x() - mSelection.width(), borderDragAreaSize)) {
-          return MouseState::Right;
+        if (inRange(mSelection.y(), mSelection.y() + mSelection.height(), pos.y())) {
+            if (withinThreshold(pos.x() - mSelection.x(), borderDragAreaSize)) {
+                return MouseState::Left;
+            } else if (withinThreshold(pos.x() - mSelection.x() - mSelection.width(), borderDragAreaSize)) {
+                return MouseState::Right;
+            }
         }
-      }
     }
-    if (mSelection.contains(pos)) {
+    if (mSelection.contains(pos.toPoint())) {
         return MouseState::Inside;
     } else {
         return MouseState::Outside;

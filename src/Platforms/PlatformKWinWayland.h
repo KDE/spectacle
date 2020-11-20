@@ -23,6 +23,8 @@
 
 #include "Platform.h"
 
+class QDBusPendingCall;
+
 class PlatformKWinWayland final: public Platform
 {
     Q_OBJECT
@@ -43,6 +45,13 @@ class PlatformKWinWayland final: public Platform
     private:
 
     void startReadImage(int theReadPipe);
-    template <typename ArgType> void doGrabHelper(const QString &theGrabMethod, ArgType theArgument);
-    template <typename ArgType> void callDBus(const QString &theGrabMethod, ArgType theArgument, int theWriteFile);
+    void startReadImages(int theReadPipe);
+    void checkDbusPendingCall(QDBusPendingCall pcall);
+
+    bool screenshotScreensAvailable() const;
+
+    template <typename ... ArgType> void callDBus(const QString &theGrabMethod, int theWriteFile, ArgType ... arguments);
+
+    template <typename ... ArgType> void doGrabHelper(const QString &theGrabMethod, ArgType ... arguments);
+    template <typename ... ArgType> void doGrabImagesHelper(const QString &theGrabMethod, ArgType ... arguments);
 };
