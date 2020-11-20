@@ -63,22 +63,30 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     // the capture mode options first
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
     mCaptureArea = new QComboBox(this);
-    QString lFullScreenLabel = QApplication::screens().count() == 1
-            ? i18n("Full Screen")
-            : i18n("Full Screen (All Monitors)");
 
     if (theGrabModes.testFlag(Platform::GrabMode::AllScreens)) {
+
+        QString lFullScreenLabel = QApplication::screens().count() == 1
+                ? i18n("Full Screen")
+                : i18n("Full Screen (All Monitors)");
+
         mCaptureArea->insertItem(0, lFullScreenLabel, Spectacle::CaptureMode::AllScreens);
-        mCaptureArea->insertItem(1, i18n("Rectangular Region"), Spectacle::CaptureMode::RectangularRegion);
+    }
+    if (theGrabModes.testFlag(Platform::GrabMode::AllScreensScaled) &&  QApplication::screens().count() > 1) {
+        QString lFullScreenLabel = i18n("Full Screen (All Monitors, scaled)");
+        mCaptureArea->insertItem(1, lFullScreenLabel, Spectacle::CaptureMode::AllScreensScaled);
+    }
+    if (theGrabModes.testFlag(Platform::GrabMode::PerScreenImageNative)) {
+        mCaptureArea->insertItem(2, i18n("Rectangular Region"), Spectacle::CaptureMode::RectangularRegion);
     }
     if (theGrabModes.testFlag(Platform::GrabMode::CurrentScreen)) {
-        mCaptureArea->insertItem(2, i18n("Current Screen"), Spectacle::CaptureMode::CurrentScreen);
+        mCaptureArea->insertItem(3, i18n("Current Screen"), Spectacle::CaptureMode::CurrentScreen);
     }
     if (theGrabModes.testFlag(Platform::GrabMode::ActiveWindow)) {
-        mCaptureArea->insertItem(3, i18n("Active Window"), Spectacle::CaptureMode::ActiveWindow);
+        mCaptureArea->insertItem(4, i18n("Active Window"), Spectacle::CaptureMode::ActiveWindow);
     }
     if (theGrabModes.testFlag(Platform::GrabMode::WindowUnderCursor)) {
-        mCaptureArea->insertItem(4, i18n("Window Under Cursor"), Spectacle::CaptureMode::WindowUnderCursor);
+        mCaptureArea->insertItem(5, i18n("Window Under Cursor"), Spectacle::CaptureMode::WindowUnderCursor);
     }
     if (theGrabModes.testFlag(Platform::GrabMode::TransientWithParent)) {
         mTransientWithParentAvailable = true;
@@ -225,8 +233,7 @@ void KSWidget::lockOnClickEnabled()
 
 void KSWidget::lockOnClickDisabled()
 {
-    mCaptureOnClick->setCheckState(Qt::Unchecked);
-    mCaptureOnClick->setEnabled(false);
+    mCaptureOnClick->hide();
     mDelayMsec->setEnabled(true);
 }
 
@@ -271,6 +278,7 @@ void KSWidget::captureModeChanged(int theIndex)
         mCaptureTransientOnly->setEnabled(false);
         break;
     case Spectacle::CaptureMode::AllScreens:
+    case Spectacle::CaptureMode::AllScreensScaled:
     case Spectacle::CaptureMode::CurrentScreen:
     case Spectacle::CaptureMode::RectangularRegion:
         mWindowDecorations->setEnabled(false);

@@ -73,6 +73,7 @@ class SpectacleCore: public QObject
     void takeNewScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
     void showErrorMessage(const QString &theErrString);
     void screenshotUpdated(const QPixmap &thePixmap);
+    void screenshotsUpdated(const QVector<QImage> &imgs);
     void screenshotCanceled();
     void screenshotFailed();
     void doStartDragAndDrop();

@@ -151,7 +151,7 @@ QString PlatformXcb::platformName() const
 
 Platform::GrabModes PlatformXcb::supportedGrabModes() const
 {
-    Platform::GrabModes lSupportedModes({ GrabMode::AllScreens, GrabMode::ActiveWindow, GrabMode::WindowUnderCursor, GrabMode::TransientWithParent });
+    Platform::GrabModes lSupportedModes({ GrabMode::AllScreens, GrabMode::ActiveWindow, GrabMode::WindowUnderCursor, GrabMode::TransientWithParent, GrabMode::PerScreenImageNative });
     if (QApplication::screens().count() > 1) {
         lSupportedModes |= Platform::GrabMode::CurrentScreen;
     }
@@ -689,8 +689,22 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
 {
     switch(theGrabMode) {
     case GrabMode::AllScreens:
+    case GrabMode::AllScreensScaled:
         grabAllScreens(theIncludePointer);
         break;
+    case GrabMode::PerScreenImageNative:{
+        auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
+        // break thePixmap into list of images
+        const auto screens = QGuiApplication::screens();
+        QVector<QImage> images;
+        for (const auto screen: screens) {
+            QRect geom = screen->geometry();
+            geom.setSize(screen->size() * screen->devicePixelRatio());
+            images << lPixmap.copy(geom).toImage();
+        }
+        emit newScreensScreenshotTaken(images);
+        break;
+    }
     case GrabMode::CurrentScreen:
         grabCurrentScreen(theIncludePointer);
         break;

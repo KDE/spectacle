@@ -44,6 +44,8 @@
 #include <QProcess>
 #include <QTimer>
 #include <QScopedPointer>
+#include <QPainter>
+#include <QScreen>
 
 SpectacleCore::SpectacleCore(QObject *parent):
     QObject(parent),
@@ -60,6 +62,7 @@ void SpectacleCore::init()
     // essential connections
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(mPlatform.get(), &Platform::newScreenshotTaken, this, &SpectacleCore::screenshotUpdated);
+    connect(mPlatform.get(), &Platform::newScreensScreenshotTaken, this, &SpectacleCore::screenshotsUpdated);
     connect(mPlatform.get(), &Platform::newScreenshotFailed, this, &SpectacleCore::screenshotFailed);
 
     // set up the export manager
@@ -290,21 +293,38 @@ void SpectacleCore::showErrorMessage(const QString &theErrString)
     }
 }
 
+void SpectacleCore::screenshotsUpdated(const QVector<QImage> &imgs)
+{
+    QMap<ComparableQPoint, QImage> mapScreens;
+    QList<QScreen *> screens = QGuiApplication::screens();
+
+    if (imgs.length() != screens.size()) {
+        qWarning(SPECTACLE_CORE_LOG()) << "ERROR: images received from KWin do not match, expected:" << imgs.length() << "actual:" << screens.size();
+        return ;
+    }
+
+    // only used by Spectacle::CaptureMode::RectangularRegion
+    auto it = imgs.constBegin();
+    for (const QScreen *screen: screens) {
+        auto pos = screen->geometry().topLeft();
+        auto img = *it;
+        auto dpr = img.width() / static_cast<qreal>(screen->geometry().width());
+        mapScreens.insert(pos, img);
+        ++it;
+    }
+
+    mQuickEditor = std::make_unique<QuickEditor>(mapScreens, mWaylandPlasmashell);
+    connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
+    connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotCanceled);
+    mQuickEditor->show();
+}
+
 void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 {
     auto lExportManager = ExportManager::instance();
 
-    // if we were running in rectangular crop mode, now would be
-    // the time to further process the image
-
     if (lExportManager->captureMode() == Spectacle::CaptureMode::RectangularRegion) {
-        if(!mQuickEditor) {
-            mQuickEditor = std::make_unique<QuickEditor>(thePixmap, mWaylandPlasmashell);
-            connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
-            connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotCanceled);
-            mQuickEditor->show();
-            return;
-        } else {
+        if (mQuickEditor) {
             mQuickEditor->hide();
             mQuickEditor.reset(nullptr);
         }
@@ -395,6 +415,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     switch(ExportManager::instance()->captureMode()) {
     case Spectacle::CaptureMode::AllScreens:
+    case Spectacle::CaptureMode::AllScreensScaled:
         lNotify->setTitle(i18nc("The entire screen area was captured, heading", "Full Screen Captured"));
         break;
     case Spectacle::CaptureMode::CurrentScreen:
@@ -508,8 +529,11 @@ Platform::GrabMode SpectacleCore::toPlatformGrabMode(Spectacle::CaptureMode theC
     case Spectacle::CaptureMode::InvalidChoice:
         return Platform::GrabMode::InvalidChoice;
     case Spectacle::CaptureMode::AllScreens:
-    case Spectacle::CaptureMode::RectangularRegion:
         return Platform::GrabMode::AllScreens;
+    case Spectacle::CaptureMode::AllScreensScaled:
+        return Platform::GrabMode::AllScreensScaled;
+    case Spectacle::CaptureMode::RectangularRegion:
+        return Platform::GrabMode::PerScreenImageNative;
     case Spectacle::CaptureMode::TransientWithParent:
         return Platform::GrabMode::TransientWithParent;
     case Spectacle::CaptureMode::CurrentScreen:

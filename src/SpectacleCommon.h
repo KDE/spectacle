@@ -29,6 +29,7 @@ namespace Spectacle {
         ActiveWindow        = 2,
         WindowUnderCursor   = 3,
         TransientWithParent = 4,
-        RectangularRegion   = 5
+        RectangularRegion   = 5,
+        AllScreensScaled    = 6,
     };
 }

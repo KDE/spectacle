@@ -24,6 +24,8 @@
 #include <QObject>
 #include <QFlags>
 
+#include "QuickEditor/ComparableQPoint.h"
+
 class Platform: public QObject
 {
     Q_OBJECT
@@ -36,7 +38,9 @@ class Platform: public QObject
         CurrentScreen       = 0x02,
         ActiveWindow        = 0x04,
         WindowUnderCursor   = 0x08,
-        TransientWithParent = 0x10
+        TransientWithParent = 0x10,
+        AllScreensScaled    = 0x20,
+        PerScreenImageNative= 0x40,
     };
     using GrabModes = QFlags<GrabMode>;
     Q_FLAG(GrabModes)
@@ -62,6 +66,8 @@ class Platform: public QObject
     Q_SIGNALS:
 
     void newScreenshotTaken(const QPixmap &thePixmap);
+    void newScreensScreenshotTaken(const QVector<QImage> &images);
+
     void newScreenshotFailed();
     void windowTitleChanged(const QString &theWindowTitle);
 };

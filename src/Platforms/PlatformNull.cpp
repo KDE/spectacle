@@ -36,7 +36,7 @@ QString PlatformNull::platformName() const
 
 Platform::GrabModes PlatformNull::supportedGrabModes() const
 {
-    return { GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent };
+    return { GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent | GrabMode::AllScreensScaled };
 }
 
 Platform::ShutterModes PlatformNull::supportedShutterModes() const
