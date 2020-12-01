@@ -37,33 +37,45 @@
 
 /* -- Static Helpers --------------------------------------------------------------------------- */
 
-static int readData(int theFile, QByteArray &theDataOut)
+static bool readData(int fd, QByteArray &data)
 {
-    // implementation based on QtWayland file qwaylanddataoffer.cpp
-    char    lBuffer[4096];
-    int     lRetryCount = 0;
-    ssize_t lBytesRead = 0;
+    fd_set readset;
+    FD_ZERO(&readset);
+    FD_SET(fd, &readset);
+    struct timeval timeout;
+    timeout.tv_sec = 30;
+    timeout.tv_usec = 0;
+    char buf[4096 * 16];
+
     while (true) {
-        lBytesRead = QT_READ(theFile, lBuffer, sizeof lBuffer);
-        // give user 30 sec to click a window, afterwards considered as error
-        if (lBytesRead == -1 && (errno == EAGAIN) && ++lRetryCount < 30000) {
-            usleep(1000);
+        int ready = select(FD_SETSIZE, &readset, nullptr, nullptr, &timeout);
+        if (ready < 0) {
+            qWarning() << "PlatformKWinWayland readData: select() failed" << strerror(errno);
+            return false;
+        } else if (ready == 0) {
+            qWarning("PlatformKWinWayland readData: timeout reading from pipe");
+            return false;
         } else {
-            break;
+            int n = read(fd, buf, sizeof buf);
+
+            if (n < 0) {
+                qWarning() << "PlatformKWinWayland readData: read() failed" << strerror(errno);
+                return false;
+            } else if (n == 0) {
+                return true;
+            } else {
+                data.append(buf, n);
+            }
         }
     }
 
-    if (lBytesRead > 0) {
-        theDataOut.append(lBuffer, lBytesRead);
-        lBytesRead = readData(theFile, theDataOut);
-    }
-    return lBytesRead;
+    Q_UNREACHABLE();
 }
 
 static QImage readImage(int thePipeFd)
 {
     QByteArray lContent;
-    if (readData(thePipeFd, lContent) != 0) {
+    if (!readData(thePipeFd, lContent)) {
         close(thePipeFd);
         return QImage();
     }
@@ -78,7 +90,7 @@ static QImage readImage(int thePipeFd)
 static QVector<QImage> readImages(int thePipeFd)
 {
     QByteArray lContent;
-    if (readData(thePipeFd, lContent) != 0) {
+    if (!readData(thePipeFd, lContent)) {
         close(thePipeFd);
         return QVector<QImage>();
     }
