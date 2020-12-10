@@ -455,7 +455,7 @@ bool ExportManager::isFileExists(const QUrl &url) const
     if (!(url.isValid())) {
         return false;
     }
-    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
+    KIO::StatJob * existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails, KIO::HideProgressInfo);
 
     existsJob->exec();
 
