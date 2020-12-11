@@ -22,7 +22,6 @@
 
 #include <KLocalizedString>
 #include <KApplicationTrader>
-#include <KRun>
 #include <KIO/ApplicationLauncherJob>
 #include <KNotificationJobUiDelegate>
 #include <KStandardShortcut>
@@ -112,7 +111,10 @@ void ExportMenu::getKServiceItems()
         const QUrl filename = mExportManager->getAutosaveFilename();
         mExportManager->doSave(filename);
         QList<QUrl> whereIs({ filename });
-        KRun::displayOpenWithDialog(whereIs, parentWidget(), true);
+        auto job = new KIO::ApplicationLauncherJob;
+        job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+        job->setUrls({filename});
+        job->start();
     });
     addAction(openWith);
 }

@@ -50,7 +50,8 @@
 #include <KGuiItem>
 #include <KHelpMenu>
 #include <KIO/OpenFileManagerWindowJob>
-#include <KRun>
+#include <KIO/OpenUrlJob>
+#include <KIO/JobUiDelegate>
 #include <KLocalizedString>
 #include <KConfigGroup>
 #include <KSharedConfig>
@@ -400,7 +401,9 @@ void KSMainWindow::showPrintDialog()
 
 void KSMainWindow::openScreenshotsFolder()
 {
-    new KRun(Settings::defaultSaveLocation(), this);
+    auto job = new KIO::OpenUrlJob(Settings::defaultSaveLocation());
+    job->setUiDelegate(new KIO::JobUiDelegate(KIO::JobUiDelegate::AutoHandlingEnabled, this));
+    job->start();
 }
 
 void KSMainWindow::quit(const QuitBehavior quitBehavior)

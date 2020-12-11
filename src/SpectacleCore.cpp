@@ -26,10 +26,10 @@
 #include "ShortcutActions.h"
 
 #include <KGlobalAccel>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
-#include <KRun>
 #include <KWayland/Client/connection_thread.h>
 #include <KWayland/Client/plasmashell.h>
 #include <KWayland/Client/registry.h>
@@ -453,7 +453,8 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {
             if (index == 0) {
-                new KRun(theSavedAt, nullptr);
+                auto job = new KIO::OpenUrlJob(theSavedAt);
+                job->start();
                 QTimer::singleShot(250, this, [this] {
                     if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
                         emit allDone();
