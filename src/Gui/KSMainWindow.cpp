@@ -160,7 +160,7 @@ void KSMainWindow::init()
     mAnnotateButton->setToolTip(i18n("Add annotation to the screenshot"));
     mAnnotateButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
-    connect(mAnnotateButton, &QToolButton::pressed, this, [this] {
+    connect(mAnnotateButton, &QToolButton::clicked, this, [this] {
 
         if (mAnnotatorActive) {
             mKSWidget->hideAnnotator();
