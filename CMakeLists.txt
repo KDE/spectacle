@@ -130,7 +130,8 @@ add_subdirectory(icons)
 add_subdirectory(doc)
 add_subdirectory(tests)
 
-install(FILES spectacle.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+ecm_qt_install_logging_categories(EXPORT SPECTACLE FILE spectacle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+
 # summaries
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

@@ -44,8 +44,8 @@ set(
 
 kconfig_add_kcfg_files(SPECTACLE_SRCS_DEFAULT Gui/SettingsDialog/settings.kcfgc)
 
-ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core)
-ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_gui_debug.h IDENTIFIER SPECTACLE_GUI_LOG CATEGORY_NAME org.kde.spectacle.gui)
+ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core DESCRIPTION "spectacle (core)" EXPORT SPECTACLE)
+ecm_qt_declare_logging_category(SPECTACLE_SRCS_DEFAULT HEADER spectacle_gui_debug.h IDENTIFIER SPECTACLE_GUI_LOG CATEGORY_NAME org.kde.spectacle.gui DESCRIPTION "spectacle (gui)" EXPORT SPECTACLE)
 
 if(KIPI_FOUND)
     set(
