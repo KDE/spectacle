@@ -130,11 +130,7 @@ add_subdirectory(icons)
 add_subdirectory(doc)
 add_subdirectory(tests)
 
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES spectacle.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES spectacle.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+install(FILES spectacle.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 # summaries
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
