@@ -72,7 +72,6 @@ class ExportManager: public QObject
     Q_SIGNALS:
 
     void errorMessage(const QString &str);
-    void pixmapChanged(const QPixmap &pixmap);
     void imageSaved(const QUrl &savedAt);
     void imageCopied();
     void imageSavedAndCopied(const QUrl &savedAt);

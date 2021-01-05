@@ -65,7 +65,6 @@ class SpectacleCore: public QObject
 
     void errorMessage(const QString &errString);
     void allDone();
-    void filenameChanged(const QString &filename);
     void grabFailed();
 
     public Q_SLOTS:
