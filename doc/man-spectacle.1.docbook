@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % English "INCLUDE">
+]>
+
+<!--  Please keep this man page content in sync with Command Line Options sections of Spectacle handbook -->
+<refentry lang="&language;">
+<refentryinfo>
+<title>Spectacle User's Manual</title>
+<author><firstname>Yuri</firstname><surname>Chornoivan</surname>
+<contrib>Spectacle man page.</contrib>
+<email>yurchor@ukr.net</email></author>
+<date>2020-09-15</date>
+<releaseinfo>Spectacle 20.12</releaseinfo>
+<productname>KDE Applications</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle><command>spectacle</command></refentrytitle>
+<manvolnum>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname>spectacle</refname>
+<refpurpose>screenshot capture Utility</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis>
+<command>spectacle</command>
+<arg choice="opt"><replaceable>Spectacle options</replaceable></arg>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"><title>Description</title>
+<para><command>spectacle</command> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+
+</refsect1>
+
+<refsect1 id="options"><title>Spectacle options</title>
+<variablelist>
+
+<varlistentry>
+<term><option>-f, --fullscreen</option></term>
+<listitem>
+<para>Capture the entire desktop (default).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-m, --current</option></term>
+<listitem>
+<para>Capture the current monitor.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-a, --activewindow</option></term>
+<listitem>
+<para>Capture the active window.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-u, --windowundercursor</option></term>
+<listitem>
+<para>Capture the window currently under the cursor, including parents of pop-up menus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-t, --transientonly</option></term>
+<listitem>
+<para>Capture the window currently under the cursor, excluding parents of pop-up menus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-r, --region</option></term>
+<listitem>
+<para>Capture a rectangular region of the screen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-g, --gui</option></term>
+<listitem>
+<para>Start in GUI mode (default).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-b, --background</option></term>
+<listitem>
+<para>Take a screenshot and exit without showing the GUI.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-s, --dbus</option></term>
+<listitem>
+<para>Start in DBus-Activation mode.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-n, --nonotify</option></term>
+<listitem>
+<para>In background mode, do not pop up a notification when the screenshot is taken.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option></option></term>
+<listitem>
+<para>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-o, --output <replaceable>fileName</replaceable></option></term>
+<listitem>
+<para>In background mode, save image to specified file <replaceable>fileName</replaceable>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-d, --delay <replaceable>delayMsec</replaceable></option></term>
+<listitem>
+<para>In background mode, delay before taking the shot (in milliseconds).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-c, --clipboard</option></term>
+<listitem>
+<para>In background mode, copy screenshot to clipboard.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-w, --onclick</option></term>
+<listitem>
+<para>Wait for a click before taking screenshot. Invalidates delay..</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-i, --new-instance</option></term>
+<listitem>
+<para>Starts a new GUI instance of spectacle without registering to DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>--include-pointer</option></term>
+<listitem>
+<para>Include pointer in the screenshot.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>--include-decorations</option></term>
+<listitem>
+<para>Include window decorations in the screenshot.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>--no-include-pointer</option></term>
+<listitem>
+<para>Do not include pointer in the screenshot.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>--no-include-decorations</option></term>
+<listitem>
+<para>Do not include window decorations in the screenshot.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"><title>Feedback</title>
+<para>On IRC, irc.freenode.net #kde or via email, kde-graphics-devel@kde.org or on the web, &lt;<ulink url="https://kde.org/applications/spectacle">https://kde.org/applications/spectacle</ulink>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title>See Also</title>
+<simplelist>
+<member>More detailed user documentation is available from <ulink
+url="help:/spectacle">help:/spectacle</ulink>
+(either enter this <acronym>URL</acronym> into &konqueror;, or run
+<userinput><command>khelpcenter</command>
+<parameter>help:/spectacle</parameter></userinput>).</member>
+<member>kf5options(7)</member>
+<member>qt5options(7)</member>
+<member>There is also further information available at
+<ulink url="https://kde.org/applications/spectacle">https://kde.org/applications/spectacle</ulink></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"><title>Copyright</title>
+<para>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para>License: GNU General Public Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html">https://www.gnu.org/licenses/gpl-2.0.html</ulink>&gt;</para>
+</refsect1>
+</refentry>
+
