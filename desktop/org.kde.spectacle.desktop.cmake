@@ -1,6 +1,7 @@
 [Desktop Entry]
 GenericName=Screenshot Capture Utility
 GenericName[ar]=أداة لأخذ اللقطات
+GenericName[az]=Ekran şəkli çəkmə aləti
 GenericName[bg]=Инструмент за заснемане на екрана
 GenericName[ca]=Utilitat per a prendre captures de pantalla
 GenericName[ca@valencia]=Utilitat per a prendre captures de pantalla
@@ -42,6 +43,7 @@ GenericName[x-test]=xxScreenshot Capture Utilityxx
 GenericName[zh_CN]=屏幕截取工具
 GenericName[zh_TW]=畫面擷取工具
 Name=Spectacle
+Name[az]=Spectacle
 Name[ca]=Spectacle
 Name[ca@valencia]=Spectacle
 Name[cs]=Spectacle
@@ -81,6 +83,7 @@ Name[x-test]=xxSpectaclexx
 Name[zh_CN]=Spectacle
 Name[zh_TW]=Spectacle
 Comment=Screenshot capture utility
+Comment[az]=Ekran şəkli çəkmə aləti
 Comment[ca]=Utilitat per a prendre captures de pantalla
 Comment[ca@valencia]=Utilitat per a prendre captures de pantalla
 Comment[cs]=Nástroj na snímání obrazovky
@@ -116,6 +119,7 @@ Comment[zh_CN]=屏幕截取工具
 Comment[zh_TW]=畫面擷取工具
 Categories=Qt;KDE;Utility;
 Keywords=snapshot;capture;print;screenshot;snipping;snip;
+Keywords[az]=snapshot;capture;print;screenshot;snipping;snip;ekran şəkli;çap;kəsmək;kəsik;anlıq görüntü;skrinşot;
 Keywords[ca]=captura de pantalla;captura;imprimeix;impressió;
 Keywords[ca@valencia]=captura de pantalla;captura;imprimeix;impressió;
 Keywords[da]=snapshot;skærmbillede;capture;print;screenshot;snipping;snip;
@@ -162,6 +166,7 @@ X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot
 [Desktop Action FullScreenScreenShot]
 Name=Capture Entire Desktop
 Name[ar]=التقط سطح المكتب بالكامل
+Name[az]=Bütün İş Masalarını çəkmək
 Name[ca]=Captura l'escriptori sencer
 Name[ca@valencia]=Captura l'escriptori sencer
 Name[cs]=Zachytit celou plochu
@@ -207,6 +212,7 @@ X-KDE-Shortcuts=Shift+Print
 [Desktop Action CurrentMonitorScreenShot]
 Name=Capture Current Monitor
 Name[ar]=التقط الشّاشة الحاليّة
+Name[az]=Cari Monitoru Çəkmək
 Name[ca]=Captura el monitor actual
 Name[ca@valencia]=Captura el monitor actual
 Name[cs]=Zachytit současný monitor
@@ -252,6 +258,7 @@ Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / CurrentScreen false
 [Desktop Action ActiveWindowScreenShot]
 Name=Capture Active Window
 Name[ar]=التقط النّافذة النّشطة
+Name[az]=Aktiv Pəncərəni Çəkmək
 Name[ca]=Captura la finestra activa
 Name[ca@valencia]=Captura la finestra activa
 Name[cs]=Zachytit aktivní okno
@@ -297,6 +304,7 @@ X-KDE-Shortcuts=Meta+Print
 [Desktop Action RectangularRegionScreenShot]
 Name=Capture Rectangular Region
 Name[ar]=التقط منطقة مستطيلة
+Name[az]=Düzbucaqlı sahəni çəkmək
 Name[ca]=Captura una regió rectangular
 Name[ca@valencia]=Captura una regió rectangular
 Name[cs]=Zachytit obdélníkový výběr na obrazovce
