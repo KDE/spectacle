@@ -101,7 +101,8 @@
      <item>
       <widget class="QComboBox" name="kcfg_defaultSaveImageFormat">
        <property name="kcfg_property" stdset="0">
-        <string>currentText</string>
+        <!-- This is not a user-visible string but a property name. Don't translate it. -->
+        <string notr="true">currentText</string>
        </property>
       </widget>
      </item>
