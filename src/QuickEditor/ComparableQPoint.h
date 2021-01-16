@@ -34,7 +34,7 @@ public:
 
     // utility class that allows using QMap to sort its keys when they are QPoint
     bool operator<(const ComparableQPoint &other) const {
-        return x() < other.x() || y() < other.y();
+        return x() < other.x() || ( x() == other.x() && y() < other.y() );
     }
 };
 
