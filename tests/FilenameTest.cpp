@@ -1,6 +1,6 @@
 #include <QDir>
 #include <QFile>
-#include <QtTest>
+#include <QTest>
 #include <QUuid>
 
 #include "SpectacleCommon.h"
