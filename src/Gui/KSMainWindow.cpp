@@ -170,12 +170,13 @@ void KSMainWindow::init()
             mKSWidget->showAnnotator();
             mAnnotateButton->setText(i18n("Annotation done"));
         }
-        mAnnotatorActive = !mAnnotatorActive;
 
-        mToolsButton->setEnabled(!mAnnotatorActive);
-        mSendToButton->setEnabled(!mAnnotatorActive);
-        mClipboardButton->setEnabled(!mAnnotatorActive);
-        mSaveButton->setEnabled(!mAnnotatorActive);
+        mToolsButton->setEnabled(mAnnotatorActive);
+        mSendToButton->setEnabled(mAnnotatorActive);
+        mClipboardButton->setEnabled(mAnnotatorActive);
+        mSaveButton->setEnabled(mAnnotatorActive);
+
+        mAnnotatorActive = !mAnnotatorActive;
     });
 
     mDialogButtonBox->addButton(mAnnotateButton, QDialogButtonBox::ActionRole);
