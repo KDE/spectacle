@@ -119,4 +119,4 @@ if(KIMAGEANNOTATOR_FOUND)
     target_link_libraries(spectacle kImageAnnotator::kImageAnnotator)
 endif()
 
-install(TARGETS spectacle ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
