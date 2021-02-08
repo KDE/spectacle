@@ -36,7 +36,7 @@ PlatformPtr loadPlatform()
     // We might be using the XCB platform (with Xwayland) in a wayland session,
     // but the X11 grabber won't work in that case. So force the Wayland grabber
     // in Wayland sessions.
-    if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE"), "wayland") == 0) {
+    if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").data(), "wayland") == 0) {
         return std::make_unique<PlatformKWinWayland>();
     }
 
