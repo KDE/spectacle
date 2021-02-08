@@ -12,4 +12,4 @@ ecm_generate_dbus_service_file(
    DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
 )
 
-install(FILES org.kde.Spectacle.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+install(FILES org.kde.Spectacle.xml DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR})

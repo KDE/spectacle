@@ -3,7 +3,7 @@
 configure_file(org.kde.spectacle.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.spectacle.desktop)
 install(
     PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.spectacle.desktop
-    DESTINATION ${XDG_APPS_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_APPDIR}
 )
 
 install( DIRECTORY DESTINATION "${KDE_INSTALL_FULL_DATAROOTDIR}/kglobalaccel" )
@@ -13,7 +13,7 @@ install(
 
 install(
     FILES spectacle.notifyrc
-    DESTINATION ${KNOTIFYRC_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR}
 )
 
 install(
