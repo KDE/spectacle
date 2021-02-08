@@ -41,7 +41,7 @@ if(XCB_FOUND)
         XCB::IMAGE
         XCB::CURSOR
         XCB::UTIL
-        Qt5::X11Extras
+        Qt::X11Extras
     )
 endif()
 
@@ -68,8 +68,8 @@ ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/
 
 target_link_libraries(
     spectacle
-        Qt5::DBus
-        Qt5::PrintSupport
+        Qt::DBus
+        Qt::PrintSupport
         KF5::CoreAddons
         KF5::DBusAddons
         KF5::WidgetsAddons

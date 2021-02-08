@@ -12,6 +12,6 @@ kconfig_add_kcfg_files(FILENAME_TEST_SRCS ${PROJECT_SOURCE_DIR}/src/Gui/Settings
 ecm_add_test(
     ${FILENAME_TEST_SRCS}
     TEST_NAME "filename_test"
-    LINK_LIBRARIES  Qt5::Test 
-        Qt5::PrintSupport KF5::I18n KF5::ConfigCore KF5::GlobalAccel KF5::KIOCore KF5::WindowSystem KF5::XmlGui
+    LINK_LIBRARIES  Qt::Test
+        Qt::PrintSupport KF5::I18n KF5::ConfigCore KF5::GlobalAccel KF5::KIOCore KF5::WindowSystem KF5::XmlGui
 )
