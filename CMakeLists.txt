@@ -15,12 +15,7 @@ set(QT_MIN_VERSION     "5.12.0")
 set(KF5_MIN_VERSION    "5.73.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
-set(
-    CMAKE_MODULE_PATH
-        ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
-        ${CMAKE_MODULE_PATH}
-        ${ECM_MODULE_PATH}
-)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 # require c++14
 
@@ -41,7 +36,6 @@ include(ECMAddTests)
 include(ECMQueryQmake)
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
-
 
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
