@@ -9,6 +9,7 @@
 
 #include "PlatformNull.h"
 #include "PlatformKWinWayland.h"
+#include "PlatformKWinWayland2.h"
 
 #ifdef XCB_FOUND
 #include "PlatformXcb.h"
@@ -22,6 +23,10 @@ PlatformPtr loadPlatform()
     // but the X11 grabber won't work in that case. So force the Wayland grabber
     // in Wayland sessions.
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").data(), "wayland") == 0) {
+        std::unique_ptr<Platform> platform = PlatformKWinWayland2::create();
+        if (platform) {
+            return platform;
+        }
         return std::make_unique<PlatformKWinWayland>();
     }
 

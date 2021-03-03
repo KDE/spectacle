@@ -31,6 +31,7 @@ add_executable(spectacle
     Platforms/Platform.cpp
     Platforms/PlatformNull.cpp
     Platforms/PlatformKWinWayland.cpp
+    Platforms/PlatformKWinWayland2.cpp
 )
 
 if(XCB_FOUND)
