@@ -7,21 +7,17 @@
 #ifndef QUICKEDITOR_H
 #define QUICKEDITOR_H
 
-#include <QKeyEvent>
-#include <QPainter>
+#include <QMap>
 #include <QStaticText>
 #include <QWidget>
-#include <utility>
-#include <vector>
 
-#include "ComparableQPoint.h"
-
+class ComparableQPoint;
+class QKeyEvent;
 class QMouseEvent;
+class QPainter;
 
-namespace KWayland {
-namespace Client {
+namespace KWayland::Client {
 class PlasmaShell;
-}
 }
 
 class QuickEditor: public QWidget
@@ -30,7 +26,7 @@ class QuickEditor: public QWidget
 
     public:
 
-    explicit QuickEditor(const QMap<ComparableQPoint, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
+    explicit QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
     virtual ~QuickEditor() = default;
 
     private:
@@ -117,8 +113,8 @@ class QuickEditor: public QWidget
     QPoint mBottomHelpContentPos;
     int mBottomHelpGridLeftWidth;
     MouseState mMouseDragState;
-    QMap<ComparableQPoint, QImage> mImages;
-    QVector<QPair<QRect, qreal>> mRectToDpr;
+    QMap<const QScreen *, QImage> mImages;
+    QMap<const QScreen *, qreal> mScreenToDpr;
     QPixmap mPixmap;
     qreal devicePixelRatio;
     qreal devicePixelRatioI;
@@ -145,7 +141,7 @@ Q_SIGNALS:
 
 private:
 
-    QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(QMap<ComparableQPoint, QPair<qreal, QSize>> outputsRect);
+    QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(const QMap<ComparableQPoint, QPair<qreal, QSize>> &outputsRect);
 
     void preparePaint();
 };

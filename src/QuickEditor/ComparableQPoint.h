@@ -4,23 +4,21 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include <QPoint>
-
 #ifndef COMPARABLEQPOINT_H
 #define COMPARABLEQPOINT_H
 
+#include <QPoint>
 
 class ComparableQPoint : public QPoint
 {
 public:
-    ComparableQPoint(const QPoint &point): QPoint(point.x(), point.y())
+    ComparableQPoint(QPoint point): QPoint(point)
     {}
 
-    ComparableQPoint(): QPoint()
-    {}
+    ComparableQPoint() = default;
 
     // utility class that allows using QMap to sort its keys when they are QPoint
-    bool operator<(const ComparableQPoint &other) const {
+    bool operator<(ComparableQPoint other) const {
         return x() < other.x() || ( x() == other.x() && y() < other.y() );
     }
 };

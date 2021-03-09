@@ -281,7 +281,7 @@ void SpectacleCore::showErrorMessage(const QString &theErrString)
 
 void SpectacleCore::screenshotsUpdated(const QVector<QImage> &imgs)
 {
-    QMap<ComparableQPoint, QImage> mapScreens;
+    QMap<const QScreen *, QImage> mapScreens;
     QList<QScreen *> screens = QGuiApplication::screens();
 
     if (imgs.length() != screens.size()) {
@@ -292,10 +292,7 @@ void SpectacleCore::screenshotsUpdated(const QVector<QImage> &imgs)
     // only used by Spectacle::CaptureMode::RectangularRegion
     auto it = imgs.constBegin();
     for (const QScreen *screen: screens) {
-        auto pos = screen->geometry().topLeft();
-        auto img = *it;
-        auto dpr = img.width() / static_cast<qreal>(screen->geometry().width());
-        mapScreens.insert(pos, img);
+        mapScreens.insert(screen, *it);
         ++it;
     }
 
