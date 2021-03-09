@@ -1,3 +1,7 @@
+/*
+ *  SPDX-License-Identifier: GPL-2.0-only OR LGPL-2.0 OR LicenseRef-KDE-Accepted-GPL
+ */
+
 #include <QDir>
 #include <QFile>
 #include <QTest>
