@@ -4,7 +4,7 @@
  *  based on code for Gwenview by
  *  SPDX-FileCopyrightText: 2008 Aurélien Gâteau <agateau@kde.org>
  *
- *  SPDX-License-Identifier: LGPL-2.0-or-later
+ *  SPDX-License-Identifier: GPL-2.0-or-later
  *
 */
 

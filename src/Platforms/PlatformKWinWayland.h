@@ -1,8 +1,6 @@
 /* This file is part of Spectacle, the KDE screenshot utility
  * SPDX-FileCopyrightText: 2016 Martin Graesslin <mgraesslin@kde.org>
- *
- * SPDX-License-Identifier: LGPL-2.0-or-later
- *
+
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 

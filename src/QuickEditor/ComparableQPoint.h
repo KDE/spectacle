@@ -1,7 +1,7 @@
 /*
  *  SPDX-FileCopyrightText: 2020 Méven Car <meven.car@enioka.com>
  *
- *  SPDX-License-Identifier: LGPL-2.0-or-later
+ *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include <QPoint>
