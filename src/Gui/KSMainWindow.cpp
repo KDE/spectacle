@@ -1,9 +1,6 @@
 /* This file is part of Spectacle, the KDE screenshot utility
  * SPDX-FileCopyrightText: 2019 David Redondo <kde@david-redondo.de>
  * SPDX-FileCopyrightText: 2015 Boudhayan Gupta <bgupta@kde.org>
- *
- * SPDX-License-Identifier: LGPL-2.0-or-later
- *
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
