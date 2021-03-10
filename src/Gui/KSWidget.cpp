@@ -220,6 +220,7 @@ void KSWidget::lockOnClickEnabled()
 
 void KSWidget::lockOnClickDisabled()
 {
+    mCaptureOnClick->setCheckState(Qt::Unchecked);
     mCaptureOnClick->hide();
     mDelayMsec->setEnabled(true);
 }
