@@ -1,0 +1,14 @@
+# Suppression file for ASAN/LSAN
+
+leak:libspeechd
+leak:getdelim
+leak:g_malloc
+leak:libfontconfig
+leak:libdbus
+leak:QEasingCurve::
+leak:QtSharedPointer::ExternalRefCountData::getAndRef
+leak:QArrayData::allocate
+leak:QObject::QObject
+leak:QObjectPrivate::addConnection
+leak:QObjectPrivate::connectImpl
+leak:QPropertyAnimation::QPropertyAnimation
