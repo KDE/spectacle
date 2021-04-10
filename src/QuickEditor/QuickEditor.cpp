@@ -71,7 +71,6 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     mReleaseToCapture(Settings::useReleaseToCapture()),
     mRememberRegion(Settings::alwaysRememberRegion() || Settings::rememberLastRectangularRegion()),
     mDisableArrowKeys(false),
-    mPrimaryScreenGeo(QGuiApplication::primaryScreen()->geometry()),
     mbottomHelpLength(bottomHelpMaxLength),
     mHandleRadius(handleRadiusMouse)
 {
@@ -464,12 +463,13 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
         // new top left point of the rectangle
         QPoint newTopLeft = ((mMousePos - mStartPos + mInitialTopLeft) * devicePixelRatio).toPoint();
 
-        auto newRect = QRect(newTopLeft, mSelection.size() * devicePixelRatio);
+        const QRect newRect(newTopLeft, mSelection.size() * devicePixelRatio);
 
-        if (!mScreensRect.contains(newRect)) {
+        const QRect translatedScreensRect = mScreensRect.translated(-mScreensRect.topLeft());
+        if (!translatedScreensRect.contains(newRect)) {
             // Keep the item inside the scene screen region bounding rect.
-            newTopLeft.setX(qMin(mScreensRect.right() - newRect.width(), qMax(newTopLeft.x(), mScreensRect.left())));
-            newTopLeft.setY(qMin(mScreensRect.bottom() - newRect.height(), qMax(newTopLeft.y(), mScreensRect.top())));
+            newTopLeft.setX(qMin(translatedScreensRect.right() - newRect.width(), qMax(newTopLeft.x(), translatedScreensRect.left())));
+            newTopLeft.setY(qMin(translatedScreensRect.bottom() - newRect.height(), qMax(newTopLeft.y(), translatedScreensRect.top())));
         }
 
         mSelection.moveTo(newTopLeft * devicePixelRatioI);
@@ -588,10 +588,11 @@ void QuickEditor::createPixmapFromScreens()
     }
     const auto pointsTranslationMap = computeCoordinatesAfterScaling(input);
 
+    // Geometry can have negative coordinates, so it is necessary to subtract the upper left point, because coordinates on the widget are counted from 0
     mPixmap = QPixmap(mScreensRect.width(), mScreensRect.height());
     QPainter painter(&mPixmap);
-    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
-        painter.drawImage(pointsTranslationMap.value(it.key()->geometry().topLeft()), it.value());
+    for (auto it = mImages.constBegin(); it != mImages.constEnd(); ++it) {
+        painter.drawImage(pointsTranslationMap.value(it.key()->geometry().topLeft()) - mScreensRect.topLeft(), it.value());
     }
 }
 
@@ -650,7 +651,7 @@ void QuickEditor::paintEvent(QPaintEvent *event)
         const QImage &screenImage = i.value();
         const QScreen *screen = i.key();
 
-        QRect rectToDraw = screen->geometry();
+        QRect rectToDraw = screen->geometry().translated(-mScreensRect.topLeft());
         const qreal dpr = screenImage.width() / static_cast<qreal>(rectToDraw.width());
         const qreal dprI = 1.0 / dpr;
 
@@ -716,8 +717,9 @@ void QuickEditor::layoutBottomHelpText()
         contentWidth = qMax(contentWidth, mBottomHelpGridLeftWidth + maxRightWidth + bottomHelpBoxPairSpacing);
         contentHeight += (i != bottomHelpMaxLength ? bottomHelpBoxMarginBottom : 0);
     }
-    mBottomHelpContentPos.setX((mPrimaryScreenGeo.width() - contentWidth) / 2 + mPrimaryScreenGeo.x() / devicePixelRatio);
-    mBottomHelpContentPos.setY((mPrimaryScreenGeo.height() + mPrimaryScreenGeo.y() / devicePixelRatio) - contentHeight - 8 );
+    const QRect primaryGeometry = QGuiApplication::primaryScreen()->geometry().translated(-mScreensRect.topLeft());
+    mBottomHelpContentPos.setX((primaryGeometry.width() - contentWidth) / 2 + primaryGeometry.x() / devicePixelRatio);
+    mBottomHelpContentPos.setY((primaryGeometry.height() + primaryGeometry.y() / devicePixelRatio) - contentHeight - 8 );
     mBottomHelpGridLeftWidth += mBottomHelpContentPos.x();
     mBottomHelpBorderBox.setRect(
         mBottomHelpContentPos.x() - bottomHelpBoxPaddingX,
@@ -799,19 +801,19 @@ void QuickEditor::drawDragHandles(QPainter &painter)
     if (minEdgeLength < minDragHandleSpace) {
         offset = (minDragHandleSpace - minEdgeLength) / 2.0;
     } else {
-        QRect virtualScreenGeo = QGuiApplication::primaryScreen()->virtualGeometry();
+        const QRect translatedScreensRect = mScreensRect.translated(-mScreensRect.topLeft());
         const int penWidth = painter.pen().width();
 
-        offsetTop = top - virtualScreenGeo.top() - mHandleRadius;
+        offsetTop = top - translatedScreensRect.top() - mHandleRadius;
         offsetTop = (offsetTop >= 0) ? 0 : offsetTop;
 
-        offsetRight =  virtualScreenGeo.right() - right - mHandleRadius + penWidth;
+        offsetRight =  translatedScreensRect.right() - right - mHandleRadius + penWidth;
         offsetRight = (offsetRight >= 0) ? 0 : offsetRight;
 
-        offsetBottom = virtualScreenGeo.bottom() - bottom - mHandleRadius + penWidth;
+        offsetBottom = translatedScreensRect.bottom() - bottom - mHandleRadius + penWidth;
         offsetBottom = (offsetBottom >= 0) ? 0 : offsetBottom;
 
-        offsetLeft = left - virtualScreenGeo.left() - mHandleRadius;
+        offsetLeft = left - translatedScreensRect.left() - mHandleRadius;
         offsetLeft = (offsetLeft >= 0) ? 0 : offsetLeft;
     }
 
@@ -902,8 +904,9 @@ void QuickEditor::drawMidHelpText(QPainter &painter)
     painter.fillRect(rect(), mMaskColor);
     painter.setFont(mMidHelpTextFont);
     QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidHelpText);
-    QPoint pos((mPrimaryScreenGeo.width() - textSize.width()) / 2 + mPrimaryScreenGeo.x() / devicePixelRatio,
-               (mPrimaryScreenGeo.height() - textSize.height()) / 2 + mPrimaryScreenGeo.y() / devicePixelRatio);
+    const QRect primaryGeometry = QGuiApplication::primaryScreen()->geometry().translated(-mScreensRect.topLeft());
+    QPoint pos((primaryGeometry.width() - textSize.width()) / 2 + primaryGeometry.x() / devicePixelRatio,
+               (primaryGeometry.height() - textSize.height()) / 2 + primaryGeometry.y() / devicePixelRatio);
 
     painter.setBrush(mLabelBackgroundColor);
     QPen pen(mLabelForegroundColor);

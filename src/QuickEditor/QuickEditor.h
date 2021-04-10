@@ -131,7 +131,6 @@ private:
     bool mReleaseToCapture;
     bool mRememberRegion;
     bool mDisableArrowKeys;
-    QRect mPrimaryScreenGeo;
     int mbottomHelpLength;
     QRect mScreensRect;
 
