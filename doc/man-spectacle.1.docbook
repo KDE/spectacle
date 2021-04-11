@@ -9,8 +9,8 @@
 <author><firstname>Yuri</firstname><surname>Chornoivan</surname>
 <contrib>Spectacle man page.</contrib>
 <email>yurchor@ukr.net</email></author>
-<date>2020-09-15</date>
-<releaseinfo>Spectacle 20.12</releaseinfo>
+<date>2021-04-11</date>
+<releaseinfo>Spectacle 21.08</releaseinfo>
 <productname>KDE Applications</productname>
 </refentryinfo>
 
@@ -146,30 +146,16 @@
 </varlistentry>
 
 <varlistentry>
-<term><option>--include-pointer</option></term>
+<term><option>-i, --pointer</option></term>
 <listitem>
-<para>Include pointer in the screenshot.</para>
+<para>In background mode, include pointer in the screenshot.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><option>--include-decorations</option></term>
+<term><option>-e, --no-decoration</option></term>
 <listitem>
-<para>Include window decorations in the screenshot.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><option>--no-include-pointer</option></term>
-<listitem>
-<para>Do not include pointer in the screenshot.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><option>--no-include-decorations</option></term>
-<listitem>
-<para>Do not include window decorations in the screenshot.</para>
+<para>In background mode, do not include window decorations in the screenshot.</para>
 </listitem>
 </varlistentry>
 </variablelist>

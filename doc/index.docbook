@@ -29,11 +29,11 @@
 
         <legalnotice>&FDLNotice;</legalnotice>
 
-        <date>2019-12-28</date>
-        <releaseinfo>Applications 20.04</releaseinfo>
+        <date>2021-04-11</date>
+        <releaseinfo>Applications 21.08</releaseinfo>
 
         <abstract>
-            <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+            <para>&spectacle; is an application for capturing and editing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
         </abstract>
 
         <keywordset>
@@ -49,7 +49,7 @@
     <chapter id="introduction">
         <title>Introduction</title>
 
-        <para>&spectacle; is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+        <para>&spectacle; is an application for capturing and editing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
         <para>Please report any problems or feature requests to the <ulink url="https://bugs.kde.org/">&kde; Bug Tracking System</ulink>.</para>
     </chapter>
@@ -141,20 +141,20 @@
                         <para>The <guilabel>Current Screen</guilabel> option takes a screenshot of the output that currently contains the mouse pointer.</para>
                     </listitem>
                     <listitem>
-                        <para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
-                    </listitem>
-                    <listitem>
-                        <para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a popup menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
-
-                        <para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the popup menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Options</guilabel></para>
-                    </listitem>
-                    <listitem>
                         <para>The <guilabel>Rectangular Region</guilabel> option allows you to select a rectangular region of your desktop with your mouse. This region may be spread across different outputs.</para>
 
                         <para>This mode does not immediately take a screenshot but allows you to draw a rectangle on your screen, which can be moved and resized as needed. Once the desired selection rectangle has been drawn, double-clicking anywhere on the screen, or pressing the &Enter; button on the keyboard will capture the screenshot.</para>
                         
                         <para>You can use the arrow keys to move and adjust the rectangle. Pressing the arrow keys will move the rectangle. Holding the &Shift; key while pressing the arrow keys will move the rectangle slowly, for fine-tuning your selection. Holding the &Alt; key while pressing the arrow keys will adjust the size of the rectangle.</para>
                                     
+                    </listitem>
+                    <listitem>
+                        <para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
+                    </listitem>
+                    <listitem>
+                        <para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a popup menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
+
+                        <para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the popup menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Options</guilabel></para>
                     </listitem>
                 </itemizedlist>
 
@@ -183,7 +183,7 @@
                         <para>The <guilabel>Capture the current pop-up only</guilabel> option is only enabled when the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option captures only the popup menu under the cursor, without its parent window.</para>
                     </listitem>
                     <listitem>
-                        <para>The <guilabel>Quit after Save or Copy</guilabel> option will quit &spectacle; after any saving or copying operations. Note that a copied screenshot will only be retained if you are running a clipboard manager that accepts images. KDE Klipper can be configured in this manner by right-clicking on its icon, selecting <guilabel>Configure Clipboard...</guilabel>, and unchecking <guilabel>Ignore images</guilabel>.</para>
+                        <para>The <guilabel>Quit after manual Save or Copy</guilabel> option will quit &spectacle; after any saving or copying operations. Note that a copied screenshot will only be retained if you are running a clipboard manager that accepts images. KDE Klipper can be configured in this manner by right-clicking on its icon, selecting <guilabel>Configure Clipboard...</guilabel>, and unchecking <guilabel>Ignore images</guilabel>.</para>
                     </listitem>
                 </itemizedlist>
             </sect2>
@@ -209,6 +209,26 @@
                     <term><guibutton>Configure...</guibutton></term>
                     <listitem>
                         <para>Gives you access to &spectacle;'s Configure window where you can change the capture settings and default save location and filename.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guibutton>Annotate</guibutton></term>
+                    <listitem>
+                        <para>Opens an annotation editor window that offers various annotating tools:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>Annotation editor</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para>
+                            Give a try to the annotating tools. You might find everything that is needed to explain your screenshots there: arrows, pen, markers, text boxes, numbers, even smileys. It is possible to change the tool parameters and add effects (shadow, grayscale, and border).
+                        </para>
+                        <para>
+                            When you think that annotating is finished press the <guibutton>Annotation done</guibutton> button.
+                        </para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -266,15 +286,15 @@
                 </mediaobject>
             <variablelist>
                 <varlistentry>
-                    <term><guilabel>Press screenshot key to</guilabel></term>
+                    <term><guilabel>After taking a screenshot</guilabel></term>
                     <listitem>
-                        <para>When a shortcut to make screenshot is pressed and &spectacle; is already running it is possible to configure the behavior of the screenshoting system. You can choose between taking a new screenshot, opening of a new &spectacle; window, and returning focus to the existing &spectacle; window.</para>
+                        <para>Allows copying image to clipboard or autosave the image to the default location. The default location can be configured using the <link linkend="save-page">Save</link> configuration page. It is possible to <guilabel>Copy file location to clipboard after saving</guilabel>. You can then paste it anywhere that accepts text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><guilabel>After taking a screenshot</guilabel></term>
+                    <term><guilabel>Press screenshot key to</guilabel></term>
                     <listitem>
-                        <para>Allows copying image to clipboard or autosave the image to the default location. The default location can be configured using the <link linkend="save-page">Save</link> configuration page.</para>
+                        <para>When a shortcut to make screenshot is pressed and &spectacle; is already running it is possible to configure the behavior of the screenshoting system. You can choose between taking a new screenshot, opening of a new &spectacle; window, and returning focus to the existing &spectacle; window.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -323,14 +343,7 @@
                 <varlistentry>
                     <term><guilabel>Save Location</guilabel></term>
                     <listitem>
-                    <para>In the <guilabel>Location</guilabel> text box set the folder where you'd like to save your screenshots when you press <guibutton>Save</guibutton>.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term><guilabel>Copy file location to clipboard after saving</guilabel></term>
-                    <listitem>
-                        <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
-                        text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
+                    <para>In the location text box set the folder where you'd like to save your screenshots when you press <guibutton>Save</guibutton>.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -358,7 +371,7 @@
                         </itemizedlist>
                         <para>You can click on placeholders in the reference list below to insert them into the <guilabel>Filename</guilabel> line.</para>
                         <para>If a file with this name already exists, a serial number will be appended to the filename. For example, if the filename is <filename>Screenshot</filename>, and <filename>Screenshot.png</filename> already exists, the image will be saved as <filename>Screenshot-1.png</filename>.</para>
-                        <para>Typing an extension into the filename will automatically set the image format correctly and remove the extension from the filename field.</para>
+                        <para>Use the drop-down box next to the text field to select the default image format for screenshots. See <ulink url="https://en.wikipedia.org/wiki/Image_file_formats">Wikipedia page</ulink> for the details on the image formats that are used in &spectacle;.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
