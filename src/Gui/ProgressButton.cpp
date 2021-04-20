@@ -24,6 +24,7 @@ void ProgressButton::setProgress(double progress)
 
 void ProgressButton::paintEvent(QPaintEvent* event)
 {
+    Q_UNUSED(event)
     //Draw Button without text and icon, note the missing text and icon in options
     QStylePainter painter(this);
     QStyleOption toolbuttonOptions;

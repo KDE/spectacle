@@ -97,7 +97,6 @@ void ExportMenu::getKServiceItems()
     connect(openWith, &QAction::triggered, this, [=]() {
         const QUrl filename = mExportManager->getAutosaveFilename();
         mExportManager->doSave(filename);
-        QList<QUrl> whereIs({ filename });
         auto job = new KIO::ApplicationLauncherJob;
         job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
         job->setUrls({filename});
