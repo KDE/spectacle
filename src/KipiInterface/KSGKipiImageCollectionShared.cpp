@@ -5,7 +5,7 @@
  *  SPDX-FileCopyrightText: 2008-2009 Aleix Pol <aleixpol@kde.org>
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
- *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #include "KSGKipiImageCollectionShared.h"

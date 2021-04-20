@@ -1,7 +1,7 @@
 /*
  *  SPDX-FileCopyrightText: 2015 Boudhayan Gupta <bgupta@kde.org>
  *
- *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
 #ifndef GENERALOPTIONSPAGE_H
