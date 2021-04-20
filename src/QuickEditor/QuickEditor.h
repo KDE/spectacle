@@ -24,13 +24,14 @@ class QuickEditor: public QWidget
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
-    virtual ~QuickEditor() = default;
 
-    private:
+Q_SIGNALS:
+    void grabDone(const QPixmap &thePixmap);
+    void grabCancelled();
 
+private:
     enum MouseState : short {
         None = 0, // 0000
         Inside = 1 << 0, // 0001
@@ -65,11 +66,16 @@ class QuickEditor: public QWidget
     void drawDragHandles(QPainter& painter);
     void drawMagnifier(QPainter& painter);
     void drawMidHelpText(QPainter& painter);
+    void preparePaint();
+    void createPixmapFromScreens();
+    void setGeometryToScreenPixmap(KWayland::Client::PlasmaShell *plasmashell);
     void drawSelectionSizeTooltip(QPainter& painter, bool dragHandlesVisible);
     void setBottomHelpText();
     void layoutBottomHelpText();
     void setMouseCursor(const QPointF& pos);
     MouseState mouseLocation(const QPointF& pos);
+
+    static QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(const QMap<ComparableQPoint, QPair<qreal, QSize>> &outputsRect);
 
     static const int handleRadiusMouse;
     static const int handleRadiusTouch;
@@ -127,23 +133,12 @@ class QuickEditor: public QWidget
     bool mDisableArrowKeys;
     QRect mPrimaryScreenGeo;
     int mbottomHelpLength;
-    QRegion mScreenRegion;
+    QRect mScreensRect;
 
     // Midpoints of handles
     QVector<QPointF> mHandlePositions = QVector<QPointF> {8};
     // Radius of handles is either handleRadiusMouse or handleRadiusTouch
     int mHandleRadius;
-
-Q_SIGNALS:
-
-    void grabDone(const QPixmap &thePixmap);
-    void grabCancelled();
-
-private:
-
-    QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(const QMap<ComparableQPoint, QPair<qreal, QSize>> &outputsRect);
-
-    void preparePaint();
 };
 
 #endif // QUICKEDITOR_H

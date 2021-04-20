@@ -48,7 +48,7 @@ const int QuickEditor::magPixels = 16;
 const int QuickEditor::magOffset = 32;
 
 QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent, Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint),
     mMaskColor(QColor::fromRgbF(0, 0, 0, 0.15)),
     mStrokeColor(palette().highlight().color()),
     mCrossColor(QColor::fromRgbF(mStrokeColor.redF(), mStrokeColor.greenF(), mStrokeColor.blueF(), 0.7)),
@@ -81,73 +81,14 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
 
     setMouseTracking(true);
     setAttribute(Qt::WA_StaticContents);
-    setWindowFlags(Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint);
 
     devicePixelRatio = plasmashell ? 1.0 : devicePixelRatioF();
     devicePixelRatioI = 1.0 / devicePixelRatio;
 
-    int width = 0, height = 0;
-    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
-        const QPoint pos = it.key()->geometry().topLeft();
-        width = qMax(width, it.value().width() + pos.x());
-        height = qMax(height, it.value().height() + pos.y());
-    }
+    preparePaint();
+    createPixmapFromScreens();
+    setGeometryToScreenPixmap(plasmashell);
 
-    mPixmap = QPixmap(width, height);
-    mScreenRegion = QRegion();
-
-    const QList<QScreen*> screens = QGuiApplication::screens();
-    QMap<ComparableQPoint, QPair<qreal, QSize>> input;
-    for (auto it = mImages.constBegin(); it != mImages.constEnd(); ++it) {
-        const QScreen *screen = it.key();
-        const QImage &screenImage = it.value();
-        input.insert(screen->geometry().topLeft(), QPair<qreal, QSize>(screenImage.width() / static_cast<qreal>(screen->size().width()), screenImage.size()));
-    }
-    const auto pointsTranslationMap = computeCoordinatesAfterScaling(input);
-    QPainter painter(&mPixmap);
-    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
-        painter.drawImage(pointsTranslationMap.value(it.key()->geometry().topLeft()), it.value());
-    }
-
-    if (KWindowSystem::isPlatformX11()) {
-        // Even though we want the quick editor window to be placed at (0, 0) in the native
-        // pixels, we cannot really specify a window position of (0, 0) if HiDPI support is on.
-        //
-        // The main reason for that is that Qt will scale the window position relative to the
-        // upper left corner of the screen where the quick editor is on in order to perform
-        // a conversion from the device-independent coordinates to the native pixels.
-        //
-        // Since (0, 0) in the device-independent pixels may not correspond to (0, 0) in the
-        // native pixels, we use XCB API to place the quick editor window at (0, 0).
-
-        uint16_t mask = 0;
-
-        mask |= XCB_CONFIG_WINDOW_X;
-        mask |= XCB_CONFIG_WINDOW_Y;
-
-        const uint32_t values[] = {
-            /* x */ 0,
-            /* y */ 0,
-        };
-
-        xcb_configure_window(QX11Info::connection(), winId(), mask, values);
-        resize(width, height);
-    } else {
-        setGeometry(0, 0, width, height);
-    }
-
-    // TODO This is a hack until a better interface is available
-    if (plasmashell) {
-        using namespace KWayland::Client;
-        winId();
-        auto surface = Surface::fromWindow(windowHandle());
-        if (surface) {
-            PlasmaShellSurface *plasmashellSurface = plasmashell->createSurface(surface, this);
-            plasmashellSurface->setRole(PlasmaShellSurface::Role::Panel);
-            plasmashellSurface->setPanelTakesFocus(true);
-            plasmashellSurface->setPosition(geometry().topLeft());
-        }
-    }
     if (Settings::rememberLastRectangularRegion() || Settings::alwaysRememberRegion()) {
         auto savedRect = Settings::cropRegion();
         QRect cropRegion = QRect(savedRect[0], savedRect[1], savedRect[2], savedRect[3]);
@@ -181,7 +122,6 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     }
     layoutBottomHelpText();
 
-    preparePaint();
     update();
 }
 
@@ -526,12 +466,10 @@ void QuickEditor::mouseMoveEvent(QMouseEvent* event)
 
         auto newRect = QRect(newTopLeft, mSelection.size() * devicePixelRatio);
 
-        auto screenBoundingRect = mScreenRegion.boundingRect();
-        screenBoundingRect = QRect(screenBoundingRect.topLeft(), screenBoundingRect.size());
-        if (!screenBoundingRect.contains(newRect)) {
+        if (!mScreensRect.contains(newRect)) {
             // Keep the item inside the scene screen region bounding rect.
-            newTopLeft.setX(qMin(screenBoundingRect.right() - newRect.width(), qMax(newTopLeft.x(), screenBoundingRect.left())));
-            newTopLeft.setY(qMin(screenBoundingRect.bottom() - newRect.height(), qMax(newTopLeft.y(), screenBoundingRect.top())));
+            newTopLeft.setX(qMin(mScreensRect.right() - newRect.width(), qMax(newTopLeft.x(), mScreensRect.left())));
+            newTopLeft.setY(qMin(mScreensRect.bottom() - newRect.height(), qMax(newTopLeft.y(), mScreensRect.top())));
         }
 
         mSelection.moveTo(newTopLeft * devicePixelRatioI);
@@ -635,7 +573,68 @@ void QuickEditor::preparePaint()
         } else {
             virtualScreenRect = QRect(screen->geometry().topLeft(), screenImage.size() / dpr);
         }
-        mScreenRegion = mScreenRegion.united(virtualScreenRect);
+        mScreensRect = mScreensRect.united(virtualScreenRect);
+    }
+}
+
+void QuickEditor::createPixmapFromScreens()
+{
+    const QList<QScreen*> screens = QGuiApplication::screens();
+    QMap<ComparableQPoint, QPair<qreal, QSize>> input;
+    for (auto it = mImages.constBegin(); it != mImages.constEnd(); ++it) {
+        const QScreen *screen = it.key();
+        const QImage &screenImage = it.value();
+        input.insert(screen->geometry().topLeft(), QPair<qreal, QSize>(screenImage.width() / static_cast<qreal>(screen->size().width()), screenImage.size()));
+    }
+    const auto pointsTranslationMap = computeCoordinatesAfterScaling(input);
+
+    mPixmap = QPixmap(mScreensRect.width(), mScreensRect.height());
+    QPainter painter(&mPixmap);
+    for (auto it = mImages.constBegin(); it != mImages.constEnd(); it ++) {
+        painter.drawImage(pointsTranslationMap.value(it.key()->geometry().topLeft()), it.value());
+    }
+}
+
+void QuickEditor::setGeometryToScreenPixmap(KWayland::Client::PlasmaShell *plasmashell)
+{
+    if (!KWindowSystem::isPlatformX11()) {
+        setGeometry(mScreensRect);
+    } else {
+        // Even though we want the quick editor window to be placed at (0, 0) in the native
+        // pixels, we cannot really specify a window position of (0, 0) if HiDPI support is on.
+        //
+        // The main reason for that is that Qt will scale the window position relative to the
+        // upper left corner of the screen where the quick editor is on in order to perform
+        // a conversion from the device-independent coordinates to the native pixels.
+        //
+        // Since (0, 0) in the device-independent pixels may not correspond to (0, 0) in the
+        // native pixels, we use XCB API to place the quick editor window at (0, 0).
+
+        uint16_t mask = 0;
+
+        mask |= XCB_CONFIG_WINDOW_X;
+        mask |= XCB_CONFIG_WINDOW_Y;
+
+        const uint32_t values[] = {
+            /* x */ 0,
+            /* y */ 0,
+        };
+
+        xcb_configure_window(QX11Info::connection(), winId(), mask, values);
+        resize(mScreensRect.width(), mScreensRect.height());
+    }
+
+    // TODO This is a hack until a better interface is available
+    if (plasmashell) {
+        using namespace KWayland::Client;
+        winId();
+        auto surface = Surface::fromWindow(windowHandle());
+        if (surface) {
+            PlasmaShellSurface *plasmashellSurface = plasmashell->createSurface(surface, this);
+            plasmashellSurface->setRole(PlasmaShellSurface::Role::Panel);
+            plasmashellSurface->setPanelTakesFocus(true);
+            plasmashellSurface->setPosition(geometry().topLeft());
+        }
     }
 }
 
