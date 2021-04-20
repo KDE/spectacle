@@ -120,7 +120,19 @@ void ExportMenu::getKipiItems()
     mKipiMenu->clear();
 
     mKipiInterface = new KSGKipiInterface(this);
-    KIPI::PluginLoader *loader = new KIPI::PluginLoader;
+    
+    KIPI::PluginLoader *loader = KIPI::PluginLoader::instance();
+    if (!loader)
+    {
+        // The loader needs to live at least as long as the plugins
+        // loaded through it, since the plugins use the loader's
+        // interface() call to get the KIPI interface they conform to.
+        //
+        // ASAN may complain about a leak here, because this loader
+        // pointer goes out of scope, but it is kept around in
+        // the PluginLoader's static instance()
+        loader = new KIPI::PluginLoader;
+    }
 
     loader->setInterface(mKipiInterface);
     loader->init();
@@ -161,7 +173,6 @@ void ExportMenu::getKipiItems()
     if (mKipiMenu->isEmpty()) {
         mKipiMenu->addAction(i18n("No KIPI plugins available"))->setEnabled(false);
     }
-    delete loader;
 }
 #endif
 
