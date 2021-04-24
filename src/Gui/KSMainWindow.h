@@ -59,10 +59,14 @@ class KSMainWindow: public QDialog
     void showPreferencesDialog();
     void showImageSharedFeedback(bool error, const QString &message);
     void imageCopied();
+    void imageSavedAndLocationCopied(const QUrl &location);
     void init();
     void setDefaultSaveAction();
+    void setDefaultCopyAction();
     void save();
     void saveAs();
+    void copyImage();
+    void copyLocation();
     void restoreWindowTitle();
 
     public Q_SLOTS:
@@ -84,7 +88,6 @@ class KSMainWindow: public QDialog
     private:
 
     void keyPressEvent(QKeyEvent *event) override;
-    void copy();
 
     KSWidget         *mKSWidget;
     QFrame           *mDivider;
@@ -93,6 +96,9 @@ class KSMainWindow: public QDialog
     QPushButton      *mToolsButton;
     QPushButton      *mSendToButton;
     QToolButton      *mClipboardButton;
+    QMenu            *mClipboardMenu;
+    QAction          *mClipboardLocationAction;
+    QAction          *mClipboardImageAction;
     QToolButton      *mSaveButton;
     QMenu            *mSaveMenu;
     QAction          *mSaveAsAction;

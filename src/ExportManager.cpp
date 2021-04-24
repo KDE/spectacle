@@ -542,6 +542,26 @@ void ExportManager::doCopyToClipboard(bool notify)
     }
 }
 
+
+void ExportManager::doCopyLocationToClipboard(bool notify)
+{
+    QString localFile;
+    if (Settings::self()->autoSaveImage()) {
+        // The auto save has been enabled, we need to choose that file path
+        localFile = Settings::self()->lastSaveLocation().toLocalFile();
+    } else {
+        // use a temporary save path, and copy that to clipboard instead
+        localFile = ExportManager::instance()->tempSave().toLocalFile();
+    }
+
+    QApplication::clipboard()->setText(localFile);
+    Q_EMIT imageLocationCopied(QUrl::fromLocalFile(localFile));
+    if (notify) {
+        Q_EMIT forceNotify(QUrl::fromLocalFile(localFile));
+    }
+
+}
+
 void ExportManager::doPrint(QPrinter *printer)
 {
     QPainter painter;

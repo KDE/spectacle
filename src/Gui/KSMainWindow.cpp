@@ -55,6 +55,9 @@ KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterMo
     mToolsButton(new QPushButton(this)),
     mSendToButton(new QPushButton(this)),
     mClipboardButton(new QToolButton(this)),
+    mClipboardMenu(new QMenu(this)),
+    mClipboardLocationAction(new QAction(this)),
+    mClipboardImageAction(new QAction(this)),
     mSaveButton(new QToolButton(this)),
     mSaveMenu(new QMenu(this)),
     mSaveAsAction(new QAction(this)),
@@ -122,6 +125,7 @@ void KSMainWindow::init()
 
     connect(ExportManager::instance(), &ExportManager::imageSaved, this, &KSMainWindow::imageSaved);
     connect(ExportManager::instance(), &ExportManager::imageCopied, this, &KSMainWindow::imageCopied);
+    connect(ExportManager::instance(), &ExportManager::imageLocationCopied, this, &KSMainWindow::imageSavedAndLocationCopied);
     connect(ExportManager::instance(), &ExportManager::imageSavedAndCopied, this, &KSMainWindow::imageSavedAndCopied);
 
     // the KSGWidget
@@ -178,9 +182,8 @@ void KSMainWindow::init()
     mSendToButton->setAutoDefault(false);
     mDialogButtonBox->addButton(mSendToButton, QDialogButtonBox::ActionRole);
 
-    mClipboardButton->setDefaultAction(KStandardAction::copy(this, &KSMainWindow::copy, this));
-    mClipboardButton->setText(i18n("Copy to Clipboard"));
-    mClipboardButton->setToolTip(i18n("Copy the current screenshot image to the clipboard."));
+    mClipboardButton->setMenu(mClipboardMenu);
+    mClipboardButton->setPopupMode(QToolButton::MenuButtonPopup);
     mClipboardButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mDialogButtonBox->addButton(mClipboardButton, QDialogButtonBox::ActionRole);
 
@@ -215,6 +218,18 @@ void KSMainWindow::init()
     mSaveMenu->addAction(mSaveAsAction);
     mSaveMenu->addAction(mSaveAction);
     setDefaultSaveAction();
+
+    // the clipboard menu
+    mClipboardImageAction = KStandardAction::copy(this, &KSMainWindow::copyImage, this);
+    mClipboardImageAction->setText(i18n("Copy Image to Clipboard"));
+    mClipboardLocationAction = new QAction(
+        QIcon::fromTheme(QStringLiteral("clipboard")),
+        i18n("Copy Location to Clipboard"), this);
+    connect(mClipboardLocationAction, &QAction::triggered, this, &KSMainWindow::copyLocation);
+    mClipboardMenu->addAction(mClipboardImageAction);
+    mClipboardMenu->addAction(mClipboardLocationAction);
+    setDefaultCopyAction();
+
 
     // message widget
     connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) { QDesktopServices::openUrl(QUrl(str)); } );
@@ -282,6 +297,20 @@ void KSMainWindow::setDefaultSaveAction()
         break;
     case Settings::Save:
         mSaveButton->setDefaultAction(mSaveAction);
+        break;
+    }
+}
+
+void KSMainWindow::setDefaultCopyAction()
+{
+    switch (Settings::lastUsedCopyMode()) {
+    case Settings::CopyImage:
+        mClipboardButton->setText(i18n("Copy Image to Clipboard"));
+        mClipboardButton->setDefaultAction(mClipboardImageAction);
+        break;
+    case Settings::CopyLocation:
+        mClipboardButton->setText(i18n("Copy Location to Clipboard"));
+        mClipboardButton->setDefaultAction(mClipboardLocationAction);
         break;
     }
 }
@@ -459,8 +488,23 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
     }
 }
 
-void KSMainWindow::copy()
+void KSMainWindow::copyLocation()
 {
+    Settings::setLastUsedCopyMode(Settings::CopyLocation);
+    setDefaultCopyAction();
+
+    const bool quitChecked = Settings::quitAfterSaveCopyExport();
+    ExportManager::instance()->doCopyLocationToClipboard();
+    if (quitChecked) {
+        quit(QuitBehavior::QuitExternally);
+    }
+}
+
+void KSMainWindow::copyImage()
+{
+    Settings::setLastUsedCopyMode(Settings::CopyImage);
+    setDefaultCopyAction();
+
     const bool quitChecked = Settings::quitAfterSaveCopyExport();
     ExportManager::instance()->doCopyToClipboard();
     if (quitChecked) {
@@ -472,6 +516,13 @@ void KSMainWindow::imageCopied()
 {
     showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
                       KMessageWidget::Information);
+}
+
+void KSMainWindow::imageSavedAndLocationCopied(const QUrl &location)
+{
+    showInlineMessage(i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard",
+                           location.toString(), location.fileName()), KMessageWidget::Positive,
+                           MessageDuration::AutoHide, {mOpenContaining});
 }
 
 void KSMainWindow::screenshotFailed()
