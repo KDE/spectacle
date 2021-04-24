@@ -69,6 +69,7 @@ ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/
 
 target_link_libraries(
     spectacle
+        Qt::Concurrent
         Qt::DBus
         Qt::PrintSupport
         KF5::CoreAddons
