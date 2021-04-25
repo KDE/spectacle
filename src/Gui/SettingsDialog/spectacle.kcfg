@@ -17,17 +17,18 @@
         </choices>
         <default>TakeNewScreenshot</default>
     </entry>
-    <entry name="copyImageToClipboard" type ="Bool">
-        <label>Copy screenshot automatically to the clipboard after it is taken</label>
-        <default>false</default>
-    </entry>
     <entry name="autoSaveImage" type="Bool">
         <label>Save screenshot automatically after it is taken</label>
         <default>false</default>
     </entry>
-    <entry name="copySaveLocation" type="Bool">
-        <label>Whether to copy the file path after saving to the clipboard</label>
-        <default>true</default>
+    <entry name="clipboardGroup" type="Enum">
+        <label>Clipboard action which should be executed after the screenshot is taken</label>
+        <choices>
+        <choice name="PostScreenshotDoNothing"></choice>
+        <choice name="PostScreenshotCopyImage"></choice>
+        <choice name="PostScreenshotCopyLocation"></choice>
+        </choices>
+        <default>PostScreenshotDoNothing</default>
     </entry>
     <entry name="useLightMaskColour" type="Bool">
         <label>Whether to use a light color mask in the region selection dialog</label>

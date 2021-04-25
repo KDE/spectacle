@@ -131,7 +131,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
     switch (mStartMode) {
 
     case StartMode::DBus:
-        mCopyToClipboard = Settings::copyImageToClipboard();
+        mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
         qApp->setQuitOnLastWindowClosed(false);
         break;
 
@@ -349,7 +349,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         mMainWindow->setScreenshotAndShow(thePixmap);
 
         bool autoSaveImage = Settings::autoSaveImage();
-        bool mCopyImageToClipboard = Settings::copyImageToClipboard();
+        bool mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
 
         if (autoSaveImage && mCopyImageToClipboard) {
             lExportManager->doSaveAndCopy();
@@ -461,7 +461,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
 void SpectacleCore::doCopyPath(const QUrl &savedAt)
 {
-    if (Settings::copySaveLocation()) {
+    if (Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation) {
         qApp->clipboard()->setText(savedAt.toLocalFile());
     }
 }

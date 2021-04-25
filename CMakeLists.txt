@@ -108,6 +108,10 @@ if(kImageAnnotator_FOUND)
     set(KIMAGEANNOTATOR_FOUND 1)
 endif()
 
+# add the spectacle.upd file
+install(FILES conf/update/spectacle_clipboard.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
+install(FILES conf/update/50-clipboard_settings_change.py DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
+
 # fail build if none of the platform backends can be found
 if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
     message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
