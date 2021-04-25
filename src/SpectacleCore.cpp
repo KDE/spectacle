@@ -132,11 +132,15 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
 
     case StartMode::DBus:
         mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
+        mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
+
         qApp->setQuitOnLastWindowClosed(false);
         break;
 
     case StartMode::Background: {
-        mCopyToClipboard = false;
+        mCopyImageToClipboard = false;
+        mCopyLocationToClipboard = false;
+
         if (parser->isSet(QStringLiteral("nonotify"))) {
             mNotify = false;
         }
@@ -165,7 +169,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
         }
 
         if (parser->isSet(QStringLiteral("clipboard"))) {
-            mCopyToClipboard = true;
+            mCopyImageToClipboard = true;
         }
 
         if (!mIsGuiInited) {
@@ -320,22 +324,24 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
     case StartMode::Background:
     case StartMode::DBus:
         {
-            if (mSaveToOutput || !mCopyToClipboard || (Settings::autoSaveImage() && !mSaveToOutput)) {
+            if (mSaveToOutput || !mCopyImageToClipboard || (Settings::autoSaveImage() && !mSaveToOutput)) {
                 mSaveToOutput = Settings::autoSaveImage();
                 QUrl lSavePath = (mStartMode == StartMode::Background && mFileNameUrl.isValid() && mFileNameUrl.isLocalFile()) ?
                     mFileNameUrl : QUrl();
                 lExportManager->doSave(lSavePath, mNotify);
             }
 
-            if (mCopyToClipboard) {
+            if (mCopyImageToClipboard) {
                 lExportManager->doCopyToClipboard(mNotify);
+            } else if (mCopyLocationToClipboard) {
+                lExportManager->doCopyLocationToClipboard(mNotify);
             }
 
             // if we don't have a Gui already opened, emit allDone
             if (!this->mIsGuiInited) {
                 // if we notify, we emit allDone only if the user either dismissed the notification or pressed
                 // the "Open" button, otherwise the app closes before it can react to it.
-                if (!mNotify && mCopyToClipboard) {
+                if (!mNotify && mCopyImageToClipboard) {
                     // Allow some time for clipboard content to transfer if '--nonotify' is used, see Bug #411263
                     // TODO: Find better solution
                     QTimer::singleShot(250, this, &SpectacleCore::allDone);
@@ -350,6 +356,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 
         bool autoSaveImage = Settings::autoSaveImage();
         bool mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
+        bool mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
 
         if (autoSaveImage && mCopyImageToClipboard) {
             lExportManager->doSaveAndCopy();
@@ -357,6 +364,8 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             lExportManager->doSave();
         } else if (mCopyImageToClipboard) {
             lExportManager->doCopyToClipboard(false);
+        } else if (mCopyLocationToClipboard) {
+            lExportManager->doCopyLocationToClipboard(false);
         }
     }
 }
@@ -426,7 +435,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
         // set to false so it won't show the same message twice
         mSaveToOutput = false;
-    } else if (mCopyToClipboard) {
+    } else if (mCopyImageToClipboard) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
