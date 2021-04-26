@@ -168,8 +168,10 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString& /*
             lDelayMsec = -1;
         }
 
-        if (parser->isSet(QStringLiteral("clipboard"))) {
+        if (parser->isSet(QStringLiteral("copy-image"))) {
             mCopyImageToClipboard = true;
+        } else if (parser->isSet(QStringLiteral("copy-path"))) {
+            mCopyLocationToClipboard = true;
         }
 
         if (!mIsGuiInited) {
@@ -490,7 +492,8 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("n"), QStringLiteral("nonotify")},          i18n("In background mode, do not pop up a notification when the screenshot is taken")},
         {{QStringLiteral("o"), QStringLiteral("output")},            i18n("In background mode, save image to specified file"), QStringLiteral("fileName")},
         {{QStringLiteral("d"), QStringLiteral("delay")},             i18n("In background mode, delay before taking the shot (in milliseconds)"), QStringLiteral("delayMsec")},
-        {{QStringLiteral("c"), QStringLiteral("clipboard")},         i18n("In background mode, copy screenshot to clipboard")},
+        {{QStringLiteral("c"), QStringLiteral("copy-image")},        i18n("In background mode, copy screenshot image to clipboard")},
+        {{QStringLiteral("C"), QStringLiteral("copy-path")},         i18n("In background mode, copy screenshot file path to clipboard")},
         {{QStringLiteral("w"), QStringLiteral("onclick")},           i18n("Wait for a click before taking screenshot. Invalidates delay")},
         {{QStringLiteral("i"), QStringLiteral("new-instance")},      i18n("Starts a new GUI instance of spectacle without registering to DBus")},
         {{QStringLiteral("p"), QStringLiteral("pointer")},           i18n("In background mode, include pointer in the screenshot")},
