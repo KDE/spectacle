@@ -223,7 +223,7 @@ void KSMainWindow::init()
     mClipboardImageAction = KStandardAction::copy(this, &KSMainWindow::copyImage, this);
     mClipboardImageAction->setText(i18n("Copy Image to Clipboard"));
     mClipboardLocationAction = new QAction(
-        QIcon::fromTheme(QStringLiteral("clipboard")),
+        QIcon::fromTheme(QStringLiteral("edit-copy")),
         i18n("Copy Location to Clipboard"), this);
     connect(mClipboardLocationAction, &QAction::triggered, this, &KSMainWindow::copyLocation);
     mClipboardMenu->addAction(mClipboardImageAction);
