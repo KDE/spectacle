@@ -253,13 +253,13 @@ xcb_window_t PlatformXcb::getWindowUnderCursor()
     return lPointerReply->child;
 }
 
-xcb_window_t PlatformXcb::getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDectorations)
+xcb_window_t PlatformXcb::getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDecorations)
 {
-    NET::Properties lNetProp = theIncludeDectorations ? NET::WMFrameExtents : NET::WMGeometry;
+    NET::Properties lNetProp = theIncludeDecorations ? NET::WMFrameExtents : NET::WMGeometry;
     KWindowInfo lWindowInfo(theChildWindow, lNetProp, NET::WM2TransientFor);
 
     // add the current window to the image
-    if (theIncludeDectorations) {
+    if (theIncludeDecorations) {
         theWindowRectOut = lWindowInfo.frameGeometry();
     } else {
         theWindowRectOut = lWindowInfo.geometry();

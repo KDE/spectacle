@@ -43,7 +43,7 @@ class PlatformXcb final: public Platform
     QPoint getCursorPosition();
     QRect getDrawableGeometry(xcb_drawable_t theDrawable);
     xcb_window_t getWindowUnderCursor();
-    xcb_window_t getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDectorations);
+    xcb_window_t getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDecorations);
     QPixmap convertFromNative(xcb_image_t *theXcbImage);
     QPixmap blendCursorImage(QPixmap &thePixmap, const QRect theRect);
     QPixmap postProcessPixmap(QPixmap &thePixmap, QRect theRect, bool theBlendPointer);
