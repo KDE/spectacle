@@ -255,7 +255,6 @@ void KSMainWindow::init()
     } else if (!mShutterModes.testFlag(Platform::ShutterMode::Immediate)) {
         mKSWidget->lockOnClickEnabled();
     }
-    resize(QSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT).expandedTo(minimumSize()));
 
     // Allow Ctrl+Q to quit the app
     QAction *actionQuit = KStandardAction::quit(qApp, &QApplication::quit, this);
@@ -271,6 +270,11 @@ void KSMainWindow::init()
 //             mMessageWidget, &KMessageWidget::animatedHide);
     mHideMessageWidgetTimer->setInterval(10000);
     // done with the init
+}
+
+QSize KSMainWindow::sizeHint() const
+{
+    return QSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT).expandedTo(minimumSize());
 }
 
 int KSMainWindow::windowWidth(const QPixmap &pixmap) const

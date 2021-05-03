@@ -28,8 +28,12 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     connect(mShortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
         updateButtons();
     });
-    resize(600, 590);
     connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
+}
+
+QSize SettingsDialog::sizeHint() const
+{
+    return QSize(600, 590);
 }
 
 bool SettingsDialog::hasChanged()

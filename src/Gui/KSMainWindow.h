@@ -84,6 +84,7 @@ class KSMainWindow: public QDialog
     protected:
 
     void moveEvent(QMoveEvent *event) override;
+    QSize sizeHint() const override;
 
     private:
 
