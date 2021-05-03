@@ -12,8 +12,11 @@
 #include "settings.h"
 #include "ShortcutsOptionsPage.h"
 
+#include <QFontDatabase>
+
 #include <KLocalizedString>
 #include <KShortcutWidget>
+
 
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
@@ -33,7 +36,9 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
 QSize SettingsDialog::sizeHint() const
 {
-    return QSize(600, 590);
+    // Take the font size into account for the window size, as we do for UI elements
+    const float fontSize = QFontDatabase::systemFont(QFontDatabase::GeneralFont).pointSizeF();
+    return QSize(qRound(60 * fontSize), qRound(59 * fontSize));
 }
 
 bool SettingsDialog::hasChanged()
