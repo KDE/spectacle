@@ -38,7 +38,7 @@ QSize SettingsDialog::sizeHint() const
 {
     // Take the font size into account for the window size, as we do for UI elements
     const float fontSize = QFontDatabase::systemFont(QFontDatabase::GeneralFont).pointSizeF();
-    return QSize(qRound(60 * fontSize), qRound(59 * fontSize));
+    return QSize(qRound(58 * fontSize), qRound(62 * fontSize));
 }
 
 bool SettingsDialog::hasChanged()
