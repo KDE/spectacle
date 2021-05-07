@@ -622,7 +622,7 @@ void QuickEditor::setGeometryToScreenPixmap(KWayland::Client::PlasmaShell *plasm
         };
 
         xcb_configure_window(QX11Info::connection(), winId(), mask, values);
-        resize(mScreensRect.width(), mScreensRect.height());
+        resize(qRound(mScreensRect.width() / devicePixelRatio), qRound(mScreensRect.height() / devicePixelRatio));
     }
 
     // TODO This is a hack until a better interface is available
@@ -659,7 +659,9 @@ void QuickEditor::paintEvent(QPaintEvent *event)
         brush.setTransform(QTransform::fromScale(dprI, dprI));
 
         rectToDraw.moveTopLeft(rectToDraw.topLeft() / devicePixelRatio);
-        rectToDraw.setSize(rectToDraw.size() * devicePixelRatio);
+        if (KWindowSystem::isPlatformWayland()) {
+            rectToDraw.setSize(rectToDraw.size() * devicePixelRatio);
+        }
 
         painter.setBrushOrigin(rectToDraw.topLeft());
         painter.fillRect(rectToDraw, brush);
