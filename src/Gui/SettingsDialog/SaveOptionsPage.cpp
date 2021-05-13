@@ -19,6 +19,7 @@
 #include <QComboBox>
 #include <QImageWriter>
 #include <QCheckBox>
+#include <QFontDatabase>
 
 SaveOptionsPage::SaveOptionsPage(QWidget *parent) 
     : QWidget(parent)
@@ -67,6 +68,8 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
     connect(m_ui->helpTextLabel, &QLabel::linkActivated, this, [this](const QString& placeholder) {
         m_ui->kcfg_saveFilenameFormat->insert(placeholder);
     });
+
+    m_ui->compressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
 }
 
 SaveOptionsPage::~SaveOptionsPage() = default;
