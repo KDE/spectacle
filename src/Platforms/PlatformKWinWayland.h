@@ -31,7 +31,7 @@ class PlatformKWinWayland final: public Platform
 
     void startReadImage(int theReadPipe);
     void startReadImages(int theReadPipe);
-    void checkDbusPendingCall(QDBusPendingCall pcall);
+    void checkDbusPendingCall(const QDBusPendingCall &pcall);
 
     bool screenshotScreensAvailable() const;
 

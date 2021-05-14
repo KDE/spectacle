@@ -211,8 +211,9 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
 
     case GrabMode::PerScreenImageNative:
     {
-        QList<QScreen *> screens = QGuiApplication::screens();
+        const QList<QScreen *> screens = QGuiApplication::screens();
         QStringList screenNames;
+        screenNames.reserve(screens.count());
         for (const auto screen : screens) {
             screenNames << screen->name();
         }
@@ -255,9 +256,9 @@ void PlatformKWinWayland::startReadImage(int theReadPipe)
             lWatcher->deleteLater();
             const QImage lImage = lWatcher->result();
             if (lImage.isNull()) {
-                newScreenshotFailed();
+                Q_EMIT newScreenshotFailed();
             } else {
-                newScreenshotTaken(QPixmap::fromImage(lImage));
+                Q_EMIT newScreenshotTaken(QPixmap::fromImage(lImage));
             }
         }
     );
@@ -272,9 +273,9 @@ void PlatformKWinWayland::startReadImages(int theReadPipe)
             lWatcher->deleteLater();
             auto result = lWatcher->result();
             if (result.isEmpty()) {
-                newScreenshotFailed();
+                Q_EMIT newScreenshotFailed();
             } else {
-                newScreensScreenshotTaken(result);
+                Q_EMIT newScreensScreenshotTaken(result);
             }
         }
     );
@@ -289,7 +290,7 @@ void PlatformKWinWayland::callDBus(const QString &theGrabMethod, int theWriteFil
     checkDbusPendingCall(pcall);
 }
 
-void PlatformKWinWayland::checkDbusPendingCall(QDBusPendingCall pcall)
+void PlatformKWinWayland::checkDbusPendingCall(const QDBusPendingCall &pcall)
 {
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QObject::connect(watcher, &QDBusPendingCallWatcher::finished,
@@ -297,7 +298,7 @@ void PlatformKWinWayland::checkDbusPendingCall(QDBusPendingCall pcall)
         if (watcher->isError()) {
             const auto error = watcher->error();
             qWarning() << "Error calling KWin DBus interface:" << error.name() << error.message();
-            newScreenshotFailed();
+            Q_EMIT newScreenshotFailed();
         }
         watcher->deleteLater();
     });

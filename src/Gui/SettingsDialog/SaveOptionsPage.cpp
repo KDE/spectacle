@@ -44,6 +44,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
     m_ui->kcfg_defaultSaveImageFormat->addItems([&](){
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
+        items.reserve(formats.count());
         for (const auto &fmt : formats) {
             items.append(QString::fromLocal8Bit(fmt).toUpper());
         }
