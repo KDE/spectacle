@@ -22,6 +22,7 @@ public:
     QAction* currentScreenAction() const;
     QAction* activeWindowAction() const;
     QAction* regionAction() const;
+    QAction* windowUnderCursorAction() const;
 
 private:
     ShortcutActions();

@@ -157,7 +157,7 @@ Icon=spectacle
 Type=Application
 Terminal=false
 StartupNotify=false
-Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;
+Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
 X-KDE-Shortcuts=Print
@@ -346,3 +346,8 @@ Name[zh_CN]=截取矩形区域
 Name[zh_TW]=擷取矩形區域
 Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / RectangularRegion true
 X-KDE-Shortcuts=Meta+Shift+Print
+
+[Desktop Action WindowUnderCursorScreenShot]
+Name=Capture Window Under Cursor
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor true false
+X-KDE-Shortcuts=Meta+Ctrl+Print

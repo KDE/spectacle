@@ -22,6 +22,7 @@ ShortcutActions::ShortcutActions() : mActions{nullptr, QString()}
     mActions.setComponentName(componentName());
     //qdbus org.kde.kglobalaccel /component/org_kde_spectacle_desktop org.kde.kglobalaccel.Component.shortcutNames
     // ActiveWindowScreenShot
+    // WindowUnderCursorScreenShot
     // CurrentMonitorScreenShot
     // RectangularRegionScreenShot
     // FullScreenScreenShot
@@ -49,6 +50,11 @@ ShortcutActions::ShortcutActions() : mActions{nullptr, QString()}
     {
         QAction *action = new QAction(i18n("Capture Rectangular Region"));
         action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
+        mActions.addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Capture Window Under Cursor"));
+        action->setObjectName(QStringLiteral("WindowUnderCursorScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
 }
@@ -86,4 +92,9 @@ QAction* ShortcutActions::activeWindowAction() const
 QAction* ShortcutActions::regionAction() const
 {
     return mActions.action(4);
+}
+
+QAction* ShortcutActions::windowUnderCursorAction() const
+{
+    return mActions.action(5);
 }
