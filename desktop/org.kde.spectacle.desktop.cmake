@@ -349,5 +349,12 @@ X-KDE-Shortcuts=Meta+Shift+Print
 
 [Desktop Action WindowUnderCursorScreenShot]
 Name=Capture Window Under Cursor
+Name[az]=Kursor altındakı pəncərəni çəkmək
+Name[ca]=Captura la finestra sota el cursor
+Name[de]=Fenster unter dem Mauszeiger aufnehmen
+Name[es]=Capturar la ventana bajo el cursor
+Name[nl]=Venster onder cursor opnemen
+Name[uk]=Захопити зображення вікна під вказівником миші
+Name[x-test]=xxCapture Window Under Cursorxx
 Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor true false
 X-KDE-Shortcuts=Meta+Ctrl+Print
