@@ -353,6 +353,7 @@ Name[az]=Kursor altındakı pəncərəni çəkmək
 Name[ca]=Captura la finestra sota el cursor
 Name[de]=Fenster unter dem Mauszeiger aufnehmen
 Name[es]=Capturar la ventana bajo el cursor
+Name[ko]=커서 아래 창 캡처
 Name[nl]=Venster onder cursor opnemen
 Name[sl]=Zajemi okno pod kazalko
 Name[sv]=Ta en bild av fönster under markör
