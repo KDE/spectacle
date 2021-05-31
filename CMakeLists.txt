@@ -106,6 +106,9 @@ if(kImageAnnotator_FOUND)
     find_package(X11 REQUIRED)
     find_package(kColorPicker REQUIRED)
     set(KIMAGEANNOTATOR_FOUND 1)
+    if(NOT kImageAnnotator_VERSION VERSION_LESS 0.5.0)
+        set(KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS 1)
+    endif()
 endif()
 
 # add the spectacle.upd file
