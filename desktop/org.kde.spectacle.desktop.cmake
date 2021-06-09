@@ -361,6 +361,7 @@ Name[it]=Cattura finestra sotto il cursore
 Name[ko]=커서 아래 창 캡처
 Name[nl]=Venster onder cursor opnemen
 Name[pl]=Przechwyć okno pod wskaźnikiem
+Name[pt]=Capturar a Janela sob o Cursor
 Name[pt_BR]=Capturar janela sob o cursor
 Name[ru]=Создать снимок окна под курсором мыши
 Name[sl]=Zajemi okno pod kazalko
