@@ -354,6 +354,7 @@ Name[ca]=Captura la finestra sota el cursor
 Name[ca@valencia]=Captura la finestra sota el cursor
 Name[cs]=Zachytit okno pod kurzorem
 Name[de]=Fenster unter dem Mauszeiger aufnehmen
+Name[en_GB]=Capture Window Under Cursor
 Name[es]=Capturar la ventana bajo el cursor
 Name[fr]=Capturer la fenêtre sous le curseur
 Name[ia]=Captura Fenestra sub Cursor
