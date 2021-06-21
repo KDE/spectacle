@@ -356,6 +356,7 @@ Name[cs]=Zachytit okno pod kurzorem
 Name[de]=Fenster unter dem Mauszeiger aufnehmen
 Name[en_GB]=Capture Window Under Cursor
 Name[es]=Capturar la ventana bajo el cursor
+Name[eu]=Atzeman kurtsorearen azpiko leihoa
 Name[fr]=Capturer la fenêtre sous le curseur
 Name[ia]=Captura Fenestra sub Cursor
 Name[it]=Cattura finestra sotto il cursore
