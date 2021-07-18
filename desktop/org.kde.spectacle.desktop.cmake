@@ -381,6 +381,7 @@ Name[pl]=Przechwyć okno pod wskaźnikiem
 Name[pt]=Capturar a Janela sob o Cursor
 Name[pt_BR]=Capturar janela sob o cursor
 Name[ru]=Создать снимок окна под курсором мыши
+Name[sk]=Zaznamenať okno pod kurzorom
 Name[sl]=Zajemi okno pod kazalko
 Name[sv]=Ta en bild av fönster under markör
 Name[ta]=சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடு
