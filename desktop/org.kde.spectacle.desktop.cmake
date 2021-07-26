@@ -380,6 +380,7 @@ Name[pa]=ਕਰਸਰ ਹੇਠਲੀ ਵਿੰਡੋ ਦੀ ਫ਼ੋਟੋ ਖ
 Name[pl]=Przechwyć okno pod wskaźnikiem
 Name[pt]=Capturar a Janela sob o Cursor
 Name[pt_BR]=Capturar janela sob o cursor
+Name[ro]=Capturează fereastra de sub cursor
 Name[ru]=Создать снимок окна под курсором мыши
 Name[sk]=Zaznamenať okno pod kurzorom
 Name[sl]=Zajemi okno pod kazalko
