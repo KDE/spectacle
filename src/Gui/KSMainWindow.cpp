@@ -115,9 +115,6 @@ void KSMainWindow::init()
     KSharedConfigPtr config = KSharedConfig::openConfig(QStringLiteral("spectaclerc"));
     KConfigGroup guiConfig(config, "GuiConfig");
 
-    // window properties
-    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-
     QPoint location = guiConfig.readEntry("window-position", QPoint(50, 50));
     move(location);
 
