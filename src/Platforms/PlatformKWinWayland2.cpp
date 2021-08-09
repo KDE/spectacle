@@ -75,7 +75,12 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
 
         if (reply.isError()) {
             qWarning() << "Screenshot request failed:" << reply.error().message();
-            Q_EMIT errorOccurred();
+            if (reply.error().name() == QStringLiteral("org.kde.KWin.ScreenShot2.Error.Cancelled")) {
+                // don't show error on user cancellation
+                Q_EMIT finished(m_result);
+            } else {
+                Q_EMIT errorOccurred();
+            }
         } else {
             handleMetaDataReceived(reply);
         }
