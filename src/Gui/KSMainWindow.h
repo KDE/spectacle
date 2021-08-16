@@ -90,32 +90,32 @@ class KSMainWindow: public QDialog
 
     void keyPressEvent(QKeyEvent *event) override;
 
-    KSWidget         *mKSWidget;
-    QFrame           *mDivider;
-    QDialogButtonBox *mDialogButtonBox;
-    QToolButton      *mConfigureButton;
-    QPushButton      *mToolsButton;
-    QPushButton      *mSendToButton;
-    QToolButton      *mClipboardButton;
-    QMenu            *mClipboardMenu;
-    QAction          *mClipboardLocationAction;
-    QAction          *mClipboardImageAction;
-    QToolButton      *mSaveButton;
-    QMenu            *mSaveMenu;
-    QAction          *mSaveAsAction;
-    QAction          *mSaveAction;
-    QAction          *mOpenContaining;
-    KMessageWidget   *mMessageWidget;
-    QMenu            *mToolsMenu;
-    QMenu            *mScreenRecorderToolsMenu;
+    KSWidget         *const mKSWidget;
+    QFrame           *const mDivider;
+    QDialogButtonBox *const mDialogButtonBox;
+    QToolButton      *const mConfigureButton;
+    QPushButton      *const mToolsButton;
+    QPushButton      *const mSendToButton;
+    QToolButton      *const mClipboardButton;
+    QMenu            *const mClipboardMenu;
+    QAction          *mClipboardLocationAction = nullptr;
+    QAction          *mClipboardImageAction = nullptr;
+    QToolButton      *const mSaveButton;
+    QMenu            *const mSaveMenu;
+    QAction          *mSaveAsAction = nullptr;
+    QAction          *mSaveAction = nullptr;
+    QAction          *mOpenContaining = nullptr;
+    KMessageWidget   *const mMessageWidget;
+    QMenu            *const mToolsMenu;
+    QMenu            *mScreenRecorderToolsMenu = nullptr;
     std::unique_ptr<KMoreToolsMenuFactory> mScreenrecorderToolsMenuFactory;
-    ExportMenu       *mExportMenu;
+    ExportMenu       *const mExportMenu;
     Platform::ShutterModes mShutterModes;
-    QTimer           *mHideMessageWidgetTimer;
-    QStackedLayout   *mStack;
+    QTimer           *mHideMessageWidgetTimer = nullptr;
+    QStackedLayout   *mStack = nullptr;
 
 #ifdef KIMAGEANNOTATOR_FOUND
-    QToolButton      *mAnnotateButton;
+    QToolButton      *const mAnnotateButton;
     bool             mAnnotatorActive;
 #endif
 };

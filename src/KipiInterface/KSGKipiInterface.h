@@ -49,8 +49,8 @@ class KSGKipiInterface : public KIPI::Interface
 
     private:
 
-    QObject            *mScreenGenie;
-    KIPI::PluginLoader *mPluginLoader;
+    QObject            *mScreenGenie = nullptr;
+    KIPI::PluginLoader *mPluginLoader = nullptr;
 };
 
 #endif // KSGKIPIINTERFACE_H

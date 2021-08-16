@@ -35,10 +35,7 @@
 #include <QScreen>
 
 SpectacleCore::SpectacleCore(QObject *parent):
-    QObject(parent),
-    mMainWindow(nullptr),
-    mIsGuiInited(false),
-    mWaylandPlasmashell(nullptr)
+    QObject(parent)
 {
 }
 

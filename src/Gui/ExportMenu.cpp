@@ -67,7 +67,7 @@ void ExportMenu::getKServiceItems()
     const KService::List services = KApplicationTrader::queryByMimeType(QStringLiteral("image/png"));
 
     for (auto service : services) {
-        QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
+        const QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
         connect(action, &QAction::triggered, this, [=]() {

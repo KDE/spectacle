@@ -92,7 +92,7 @@ class ExportManager: public QObject
     QPixmap mSavePixmap;
     QDateTime mPixmapTimestamp;
     QUrl mTempFile;
-    QTemporaryDir *mTempDir;
+    QTemporaryDir *mTempDir = nullptr;
     QList<QUrl> mUsedTempFileNames;
     QString mWindowTitle;
     Spectacle::CaptureMode mCaptureMode { Spectacle::CaptureMode::AllScreens };

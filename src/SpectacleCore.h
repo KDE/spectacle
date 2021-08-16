@@ -76,11 +76,11 @@ class SpectacleCore: public QObject
     QString       mFileNameString;
     QUrl          mFileNameUrl;
     PlatformPtr   mPlatform;
-    MainWindowPtr mMainWindow;
+    MainWindowPtr mMainWindow = nullptr;
     EditorPtr     mQuickEditor;
-    bool          mIsGuiInited;
+    bool          mIsGuiInited = false;
     bool          mCopyImageToClipboard;
     bool          mCopyLocationToClipboard;
     bool          mSaveToOutput;
-    KWayland::Client::PlasmaShell *mWaylandPlasmashell;
+    KWayland::Client::PlasmaShell *mWaylandPlasmashell = nullptr;
 };

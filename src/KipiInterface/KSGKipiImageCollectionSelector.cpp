@@ -15,7 +15,7 @@
 KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *interface, QWidget *parent)
     : KIPI::ImageCollectionSelector(parent),
       mInterface(interface),
-      mListWidget(new QListWidget)
+    mListWidget(new QListWidget(this))
 {
     const auto allAlbums = interface->allAlbums();
     for (const auto &collection : allAlbums) {

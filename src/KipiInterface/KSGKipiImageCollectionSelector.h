@@ -31,8 +31,8 @@ class KSGKipiImageCollectionSelector : public KIPI::ImageCollectionSelector
 
     private:
 
-    KIPI::Interface *mInterface;
-    QListWidget     *mListWidget;
+    KIPI::Interface *const mInterface;
+    QListWidget     *const mListWidget;
 };
 
 #endif // KSGKIPIIMAGECOLLECTIONSELECTOR_H

@@ -93,11 +93,11 @@ class KSWidget : public QWidget
     QLabel        *mCaptureModeLabel             { nullptr };
     QLabel        *mContentOptionsLabel          { nullptr };
     bool           mTransientWithParentAvailable { false };
-    QAction       *mTakeNewScreenshotAction;
-    QAction       *mCancelAction;
-    KConfigDialogManager *mConfigManager;
+    QAction       *mTakeNewScreenshotAction{ nullptr };
+    QAction       *mCancelAction{ nullptr };
+    KConfigDialogManager *mConfigManager{ nullptr };
     QStackedLayout *mStack                       { nullptr };
-    QWidget *placeHolder;
+    QWidget *placeHolder{ nullptr };
 #ifdef KIMAGEANNOTATOR_FOUND
     kImageAnnotator::KImageAnnotator *mAnnotator { nullptr };
 #endif

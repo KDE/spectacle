@@ -36,8 +36,7 @@
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
     mSavePixmap(QPixmap()),
-    mTempFile(QUrl()),
-    mTempDir(nullptr)
+    mTempFile(QUrl())
 {
     connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
 }
