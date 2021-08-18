@@ -288,7 +288,7 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode,
 
     switch (theGrabMode) {
     case GrabMode::AllScreens:
-        takeScreenShotArea(workArea(), flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
+        takeScreenShotArea(workArea(), flags);
         break;
     case GrabMode::CurrentScreen:
         takeScreenShotInteractive(InteractiveKind::Screen, flags);
@@ -297,7 +297,7 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode,
         takeScreenShotInteractive(InteractiveKind::Window, flags);
         break;
     case GrabMode::AllScreensScaled:
-        takeScreenShotArea(workArea(), flags);
+        takeScreenShotArea(workArea(), flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
         break;
     case GrabMode::PerScreenImageNative:
         takeScreenShotScreens(QGuiApplication::screens(), flags);
