@@ -29,8 +29,9 @@
 #include <KIO/MkpathJob>
 #include <KIO/FileCopyJob>
 #include <KIO/StatJob>
+#include <KWindowSystem>
 #include <KRecentDocument>
-
+#include <QWindow>
 
 
 ExportManager::ExportManager(QObject *parent) :
@@ -532,13 +533,29 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
 // misc helpers
 void ExportManager::doCopyToClipboard(bool notify)
 {
-    auto data = new QMimeData();
-    data->setImageData(mSavePixmap.toImage());
-    data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
-    QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
-    emit imageCopied();
-    if (notify) {
-        emit forceNotify(QUrl());
+    const auto copyToClipboard = [this, notify](){
+        auto data = new QMimeData();
+        data->setImageData(mSavePixmap.toImage());
+        data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+        QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
+        emit imageCopied();
+        if (notify) {
+            emit forceNotify(QUrl());
+        }
+    };
+
+    if (KWindowSystem::isPlatformWayland() && !QGuiApplication::focusWindow()) {
+        // under wayland you can copy to clipboard only from a focused window
+        // delay the copy until after a window has focus
+        QMetaObject::Connection *connection = new QMetaObject::Connection;
+        *connection = connect(qApp, &QGuiApplication::focusWindowChanged, this, [copyToClipboard, connection](const QWindow *){
+            disconnect(*connection);
+            delete  connection;
+
+            copyToClipboard();
+        });
+    } else {
+        copyToClipboard();
     }
 }
 
