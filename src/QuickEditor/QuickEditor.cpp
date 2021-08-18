@@ -840,7 +840,7 @@ void QuickEditor::drawDragHandles(QPainter &painter)
     QPainterPath path;
 
     // add handles to the path
-    for (QPointF handlePosition : qAsConst(mHandlePositions)) {
+    for (QPointF handlePosition : std::as_const(mHandlePositions)) {
         path.addEllipse(handlePosition, mHandleRadius, mHandleRadius);
     }
 

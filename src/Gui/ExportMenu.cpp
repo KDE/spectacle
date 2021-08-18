@@ -138,7 +138,7 @@ void ExportMenu::getKipiItems()
 
     KIPI::PluginLoader::PluginList pluginList = loader->pluginList();
 
-    for (const auto &pluginInfo : qAsConst(pluginList)) {
+    for (const auto &pluginInfo : std::as_const(pluginList)) {
         if (!(pluginInfo->shouldLoad())) {
             continue;
         }
@@ -163,7 +163,7 @@ void ExportMenu::getKipiItems()
             }
         }
 
-        for (auto action : qAsConst(exportActions)) {
+        for (auto action : std::as_const(exportActions)) {
             mKipiMenu->addAction(action);
         }
     }

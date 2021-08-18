@@ -212,7 +212,7 @@ void ScreenShotSourceMeta2::handleSourceFinished()
     QVector<QImage> results;
     results.reserve(m_sources.count());
 
-    for (const ScreenShotSource2 *source : qAsConst(m_sources)) {
+    for (const ScreenShotSource2 *source : std::as_const(m_sources)) {
         results.append(source->result());
     }
 
