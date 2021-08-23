@@ -36,10 +36,12 @@
 
 ExportManager::ExportManager(QObject *parent) :
     QObject(parent),
+    mImageSavedNotInTemp(false),
     mSavePixmap(QPixmap()),
     mTempFile(QUrl())
 {
     connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
+    connect(this, &ExportManager::imageSavedAndCopied, &Settings::setLastSaveLocation);
 }
 
 ExportManager::~ExportManager()
@@ -91,6 +93,9 @@ void ExportManager::setPixmap(const QPixmap &pixmap)
         file.remove();
         mTempFile = QUrl();
     }
+
+    // since the pixmap was modified, we now consider the image unsaved
+    mImageSavedNotInTemp = false;
 }
 
 void ExportManager::updatePixmapTimestamp()
@@ -429,6 +434,7 @@ bool ExportManager::save(const QUrl &url)
         saveSucceded = remoteSave(url, mimetype);
     }
     if (saveSucceded) {
+        mImageSavedNotInTemp = true;
         KRecentDocument::add(url, QGuiApplication::desktopFileName());
     }
     return saveSucceded;
@@ -444,6 +450,10 @@ bool ExportManager::isFileExists(const QUrl &url) const
     existsJob->exec();
 
     return (existsJob->error() == KJob::NoError);
+}
+
+bool ExportManager::isImageSavedNotInTemp() const {
+    return mImageSavedNotInTemp;
 }
 
 bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
@@ -523,7 +533,6 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
     if (save(savePath)) {
         QDir dir(savePath.path());
         dir.cdUp();
-        Settings::setLastSaveLocation(savePath);
 
         doCopyToClipboard(false);
         emit imageSavedAndCopied(savePath);
@@ -563,8 +572,8 @@ void ExportManager::doCopyToClipboard(bool notify)
 void ExportManager::doCopyLocationToClipboard(bool notify)
 {
     QString localFile;
-    if (Settings::self()->autoSaveImage()) {
-        // The auto save has been enabled, we need to choose that file path
+    if (mImageSavedNotInTemp) {
+        // The image has been saved (manually or automatically), we need to choose that file path
         localFile = Settings::self()->lastSaveLocation().toLocalFile();
     } else {
         // use a temporary save path, and copy that to clipboard instead

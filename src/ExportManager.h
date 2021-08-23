@@ -42,6 +42,7 @@ class ExportManager: public QObject
 
     QString defaultSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
+    bool isImageSavedNotInTemp() const;
     void setPixmap(const QPixmap &pixmap);
     QPixmap pixmap() const;
     void updatePixmapTimestamp();
@@ -89,6 +90,7 @@ class ExportManager: public QObject
     bool remoteSave(const QUrl &url, const QString &mimetype);
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
+    bool mImageSavedNotInTemp;
     QPixmap mSavePixmap;
     QDateTime mPixmapTimestamp;
     QUrl mTempFile;

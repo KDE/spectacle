@@ -260,7 +260,16 @@ void KSMainWindow::init()
 
     // message: open containing folder
     mOpenContaining = new QAction(QIcon::fromTheme(QStringLiteral("document-open-folder")), i18n("Open Containing Folder"), mMessageWidget);
-    connect(mOpenContaining, &QAction::triggered, [=] { KIO::highlightInFileManager({Settings::lastSaveLocation()});});
+    connect(mOpenContaining, &QAction::triggered, [=] {
+        QUrl imageUrl;
+        if (ExportManager::instance()->isImageSavedNotInTemp()) {
+            imageUrl = Settings::lastSaveLocation();
+        } else {
+            imageUrl = ExportManager::instance()->tempSave();
+        }
+
+        KIO::highlightInFileManager({imageUrl});
+    });
 
     mHideMessageWidgetTimer = new QTimer(this);
 //     connect(mHideMessageWidgetTimer, &QTimer::timeout,
