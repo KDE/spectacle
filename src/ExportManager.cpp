@@ -9,6 +9,7 @@
 #include "settings.h"
 #include <kio_version.h>
 
+#include <QBuffer>
 #include <QDir>
 #include <QMimeData>
 #include <QMimeDatabase>
@@ -544,8 +545,17 @@ void ExportManager::doCopyToClipboard(bool notify)
 {
     const auto copyToClipboard = [this, notify](){
         auto data = new QMimeData();
-        data->setImageData(mSavePixmap.toImage());
         data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+        if (KWindowSystem::isPlatformWayland()) {
+            QBuffer buf;
+            buf.open(QIODevice::ReadWrite);
+            QByteArray fmt = "PNG";
+            QImageWriter wr(&buf, fmt);
+            wr.write(mSavePixmap.toImage());
+            data->setData(QStringLiteral("image/png"), buf.buffer());
+        } else {
+            data->setImageData(mSavePixmap.toImage());
+        }
         QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
         emit imageCopied();
         if (notify) {
