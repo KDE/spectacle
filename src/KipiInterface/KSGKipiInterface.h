@@ -6,7 +6,7 @@
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
-*/
+ */
 
 #ifndef KSGKIPIINTERFACE_H
 #define KSGKIPIINTERFACE_H
@@ -14,19 +14,18 @@
 #include <QList>
 #include <QWidget>
 
-#include <KIPI/Interface>
-#include <KIPI/UploadWidget>
 #include <KIPI/ImageCollection>
 #include <KIPI/ImageCollectionSelector>
-#include <KIPI/PluginLoader>
 #include <KIPI/ImageInfo>
+#include <KIPI/Interface>
+#include <KIPI/PluginLoader>
+#include <KIPI/UploadWidget>
 
 class KSGKipiInterface : public KIPI::Interface
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit KSGKipiInterface(QObject *parent = nullptr);
     ~KSGKipiInterface() override;
 
@@ -47,12 +46,9 @@ class KSGKipiInterface : public KIPI::Interface
     int features() const override;
     KIPI::ImageInfo info(const QUrl &) override;
 
-    private:
-
-    QObject            *mScreenGenie = nullptr;
+private:
+    QObject *mScreenGenie = nullptr;
     KIPI::PluginLoader *mPluginLoader = nullptr;
 };
 
 #endif // KSGKIPIINTERFACE_H
-
-

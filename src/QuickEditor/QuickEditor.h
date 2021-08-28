@@ -16,11 +16,12 @@ class QKeyEvent;
 class QMouseEvent;
 class QPainter;
 
-namespace KWayland::Client {
+namespace KWayland::Client
+{
 class PlasmaShell;
 }
 
-class QuickEditor: public QWidget
+class QuickEditor : public QWidget
 {
     Q_OBJECT
 
@@ -36,7 +37,7 @@ private:
         None = 0, // 0000
         Inside = 1 << 0, // 0001
         Outside = 1 << 1, // 0010
-        TopLeft = 5, //101
+        TopLeft = 5, // 101
         Top = 17, // 10001
         TopRight = 9, // 1001
         Right = 33, // 100001
@@ -55,25 +56,25 @@ private:
     int boundsRight(int newTopLeftX, const bool mouse = true);
     int boundsUp(int newTopLeftY, const bool mouse = true);
     int boundsDown(int newTopLeftY, const bool mouse = true);
-    void keyPressEvent(QKeyEvent* event) override;
-    void keyReleaseEvent(QKeyEvent* event) override;
-    void mousePressEvent(QMouseEvent* event) override;
-    void mouseMoveEvent(QMouseEvent* event) override;
-    void mouseReleaseEvent(QMouseEvent* event) override;
-    void mouseDoubleClickEvent(QMouseEvent* event) override;
-    void paintEvent(QPaintEvent*) override;
-    void drawBottomHelpText(QPainter& painter);
-    void drawDragHandles(QPainter& painter);
-    void drawMagnifier(QPainter& painter);
-    void drawMidHelpText(QPainter& painter);
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
+    void paintEvent(QPaintEvent *) override;
+    void drawBottomHelpText(QPainter &painter);
+    void drawDragHandles(QPainter &painter);
+    void drawMagnifier(QPainter &painter);
+    void drawMidHelpText(QPainter &painter);
     void preparePaint();
     void createPixmapFromScreens();
     void setGeometryToScreenPixmap(KWayland::Client::PlasmaShell *plasmashell);
-    void drawSelectionSizeTooltip(QPainter& painter, bool dragHandlesVisible);
+    void drawSelectionSizeTooltip(QPainter &painter, bool dragHandlesVisible);
     void setBottomHelpText();
     void layoutBottomHelpText();
-    void setMouseCursor(const QPointF& pos);
-    MouseState mouseLocation(const QPointF& pos);
+    void setMouseCursor(const QPointF &pos);
+    MouseState mouseLocation(const QPointF &pos);
 
     static QMap<ComparableQPoint, ComparableQPoint> computeCoordinatesAfterScaling(const QMap<ComparableQPoint, QPair<qreal, QSize>> &outputsRect);
 
@@ -135,7 +136,7 @@ private:
     QRect mScreensRect;
 
     // Midpoints of handles
-    QVector<QPointF> mHandlePositions = QVector<QPointF> {8};
+    QVector<QPointF> mHandlePositions = QVector<QPointF>{8};
     // Radius of handles is either handleRadiusMouse or handleRadiusTouch
     int mHandleRadius;
 };

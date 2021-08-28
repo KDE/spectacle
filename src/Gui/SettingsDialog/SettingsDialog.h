@@ -15,23 +15,20 @@ class SettingsDialog : public KConfigDialog
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit SettingsDialog(QWidget *parent = nullptr);
 
-    protected:
-
+protected:
     QSize sizeHint() const override;
 
-    private:
-
+private:
     bool hasChanged() override;
     bool isDefault() override;
     void updateSettings() override;
     void updateWidgets() override;
     void updateWidgetsDefault() override;
 
-    ShortcutsOptionsPage* mShortcutsPage;
+    ShortcutsOptionsPage *mShortcutsPage;
 };
 
 #endif // SETTINGSDIALOG_H

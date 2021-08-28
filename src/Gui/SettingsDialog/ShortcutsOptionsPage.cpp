@@ -13,7 +13,8 @@
 
 #include <QVBoxLayout>
 
-ShortcutsOptionsPage::ShortcutsOptionsPage(QWidget* parent) : QWidget(parent)
+ShortcutsOptionsPage::ShortcutsOptionsPage(QWidget *parent)
+    : QWidget(parent)
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     setLayout(mainLayout);
@@ -30,7 +31,6 @@ ShortcutsOptionsPage::~ShortcutsOptionsPage()
     mEditor->undoChanges();
 #endif
 }
-
 
 void ShortcutsOptionsPage::resetChanges()
 {
@@ -55,5 +55,3 @@ void ShortcutsOptionsPage::defaults()
 {
     mEditor->allDefault();
 }
-
-

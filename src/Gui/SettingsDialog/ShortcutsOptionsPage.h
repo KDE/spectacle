@@ -15,26 +15,23 @@ class ShortcutsOptionsPage : public QWidget
 {
     Q_OBJECT
 
-    public:
-
-    explicit ShortcutsOptionsPage (QWidget* parent);
+public:
+    explicit ShortcutsOptionsPage(QWidget *parent);
     ~ShortcutsOptionsPage();
 
     bool isModified();
     void defaults();
 
-    Q_SIGNALS:
+Q_SIGNALS:
     void shortCutsChanged();
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void saveChanges();
     void resetChanges();
 
-
-    private:
-
-    KShortcutsEditor* mEditor;
+private:
+    KShortcutsEditor *mEditor;
 };
 
 #endif // SHORTCUTSOPTIONSPAGE_H

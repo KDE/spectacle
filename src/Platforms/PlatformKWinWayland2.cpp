@@ -43,7 +43,7 @@ static const QString s_screenShotService = QStringLiteral("org.kde.KWin.ScreenSh
 static const QString s_screenShotObjectPath = QStringLiteral("/org/kde/KWin/ScreenShot2");
 static const QString s_screenShotInterface = QStringLiteral("org.kde.KWin.ScreenShot2");
 
-template <typename ...ArgType>
+template<typename... ArgType>
 ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
 {
     // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
@@ -55,10 +55,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
         return;
     }
 
-    QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService,
-                                                          s_screenShotObjectPath,
-                                                          s_screenShotInterface,
-                                                          methodName);
+    QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService, s_screenShotObjectPath, s_screenShotInterface, methodName);
 
     QVariantList dbusArguments{arguments...};
     dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
@@ -164,26 +161,23 @@ void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
     m_pipeFileDescriptor = -1;
 }
 
-ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area,
-                                             PlatformKWinWayland2::ScreenShotFlags flags)
+ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, PlatformKWinWayland2::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureArea"),
-                        qint32(area.x()), qint32(area.y()),
-                        quint32(area.width()), quint32(area.height()),
+                        qint32(area.x()),
+                        qint32(area.y()),
+                        quint32(area.width()),
+                        quint32(area.height()),
                         screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(PlatformKWinWayland2::InteractiveKind kind,
-                                                           PlatformKWinWayland2::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureInteractive"),
-                        quint32(kind), screenShotFlagsToVardict(flags))
+ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(PlatformKWinWayland2::InteractiveKind kind, PlatformKWinWayland2::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureInteractive"), quint32(kind), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen,
-                                                 PlatformKWinWayland2::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureScreen"),
-                        screen->name(), screenShotFlagsToVardict(flags))
+ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, PlatformKWinWayland2::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureScreen"), screen->name(), screenShotFlagsToVardict(flags))
 {
 }
 
@@ -193,10 +187,8 @@ ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> 
     for (ScreenShotSource2 *source : sources) {
         source->setParent(this);
 
-        connect(source, &ScreenShotSource2::finished,
-                this, &ScreenShotSourceMeta2::handleSourceFinished);
-        connect(source, &ScreenShotSource2::errorOccurred,
-                this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
+        connect(source, &ScreenShotSource2::finished, this, &ScreenShotSourceMeta2::handleSourceFinished);
+        connect(source, &ScreenShotSource2::errorOccurred, this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
     }
 }
 
@@ -245,10 +237,7 @@ QString PlatformKWinWayland2::platformName() const
 
 Platform::GrabModes PlatformKWinWayland2::supportedGrabModes() const
 {
-    Platform::GrabModes supportedModes = GrabMode::AllScreens |
-                                         GrabMode::WindowUnderCursor |
-                                         GrabMode::PerScreenImageNative |
-                                         GrabMode::AllScreensScaled;
+    Platform::GrabModes supportedModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative | GrabMode::AllScreensScaled;
 
     const QList<QScreen *> screens = QGuiApplication::screens();
     if (screens.count() > 1) {
@@ -274,8 +263,7 @@ static QRect workArea()
     return std::accumulate(screens.begin(), screens.end(), QRect(), accumulateFunc);
 }
 
-void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode,
-                                  bool theIncludePointer, bool theIncludeDecorations)
+void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
     ScreenShotFlags flags = ScreenShotFlag::NativeSize;
 
@@ -340,14 +328,12 @@ void PlatformKWinWayland2::takeScreenShotArea(const QRect &area, ScreenShotFlags
     trackSource(new ScreenShotSourceArea2(area, flags));
 }
 
-void PlatformKWinWayland2::takeScreenShotInteractive(InteractiveKind kind,
-                                                     ScreenShotFlags flags)
+void PlatformKWinWayland2::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceInteractive2(kind, flags));
 }
 
-void PlatformKWinWayland2::takeScreenShotScreens(const QList<QScreen *> &screens,
-                                                 ScreenShotFlags flags)
+void PlatformKWinWayland2::takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags)
 {
     QVector<ScreenShotSource2 *> sources;
     sources.reserve(screens.count());

@@ -7,12 +7,11 @@
 
 #include "Platform.h"
 
-class PlatformNull final: public Platform
+class PlatformNull final : public Platform
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit PlatformNull(QObject *parent = nullptr);
     virtual ~PlatformNull() = default;
 
@@ -20,7 +19,7 @@ class PlatformNull final: public Platform
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 };

@@ -9,20 +9,21 @@
 
 #include <KActionCollection>
 
-class ShortcutActions {
+class ShortcutActions
+{
 public:
-    static ShortcutActions* self();
+    static ShortcutActions *self();
 
-    KActionCollection* shortcutActions();
+    KActionCollection *shortcutActions();
 
     QString componentName() const;
 
-    QAction* openAction() const;
-    QAction* fullScreenAction() const;
-    QAction* currentScreenAction() const;
-    QAction* activeWindowAction() const;
-    QAction* regionAction() const;
-    QAction* windowUnderCursorAction() const;
+    QAction *openAction() const;
+    QAction *fullScreenAction() const;
+    QAction *currentScreenAction() const;
+    QAction *activeWindowAction() const;
+    QAction *regionAction() const;
+    QAction *windowUnderCursorAction() const;
 
 private:
     ShortcutActions();

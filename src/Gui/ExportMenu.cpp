@@ -7,9 +7,9 @@
 #include "ExportMenu.h"
 #include "spectacle_gui_debug.h"
 
-#include <KLocalizedString>
 #include <KApplicationTrader>
 #include <KIO/ApplicationLauncherJob>
+#include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
 #include <KStandardShortcut>
 #ifdef KIPI_FOUND
@@ -19,13 +19,13 @@
 #include <QJsonArray>
 #include <QTimer>
 
-ExportMenu::ExportMenu(QWidget *parent) :
-    QMenu(parent),
+ExportMenu::ExportMenu(QWidget *parent)
+    : QMenu(parent)
 #ifdef PURPOSE_FOUND
-    mUpdatedImageAvailable(false),
-    mPurposeMenu(new Purpose::Menu(this)),
+    , mUpdatedImageAvailable(false)
+    , mPurposeMenu(new Purpose::Menu(this))
 #endif
-    mExportManager(ExportManager::instance())
+    , mExportManager(ExportManager::instance())
 {
     QTimer::singleShot(300, this, &ExportMenu::populateMenu);
 }
@@ -48,7 +48,6 @@ void ExportMenu::populateMenu()
     getKServiceItems();
 }
 
-
 void ExportMenu::imageUpdated()
 {
 #ifdef PURPOSE_FOUND
@@ -57,7 +56,6 @@ void ExportMenu::imageUpdated()
     mPurposeMenu->clear();
 #endif
 }
-
 
 void ExportMenu::getKServiceItems()
 {
@@ -119,10 +117,9 @@ void ExportMenu::getKipiItems()
     mKipiMenu->clear();
 
     mKipiInterface = new KSGKipiInterface(this);
-    
+
     KIPI::PluginLoader *loader = KIPI::PluginLoader::instance();
-    if (!loader)
-    {
+    if (!loader) {
         // The loader needs to live at least as long as the plugins
         // loaded through it, since the plugins use the loader's
         // interface() call to get the KIPI interface they conform to.
@@ -206,10 +203,8 @@ void ExportMenu::loadPurposeItems()
     QString dataUri = ExportManager::instance()->tempSave().toString();
     mUpdatedImageAvailable = false;
 
-    mPurposeMenu->model()->setInputData(QJsonObject {
-        { QStringLiteral("mimeType"), QStringLiteral("image/png") },
-        { QStringLiteral("urls"), QJsonArray({ dataUri }) }
-    });
+    mPurposeMenu->model()->setInputData(
+        QJsonObject{{QStringLiteral("mimeType"), QStringLiteral("image/png")}, {QStringLiteral("urls"), QJsonArray({dataUri})}});
     mPurposeMenu->model()->setPluginType(QStringLiteral("Export"));
     mPurposeMenu->reload();
 }

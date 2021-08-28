@@ -16,13 +16,11 @@ class SaveOptionsPage : public QWidget
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit SaveOptionsPage(QWidget *parent = nullptr);
     ~SaveOptionsPage() override;
 
-    private:
-
+private:
     QScopedPointer<Ui_SaveOptions> m_ui;
 
     void updateFilenamePreview();

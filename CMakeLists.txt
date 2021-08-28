@@ -34,6 +34,8 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
 include(ECMQueryQmake)
+include(KDEClangFormat)
+include(KDEGitCommitHooks)
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
 
@@ -137,3 +139,8 @@ ecm_qt_install_logging_categories(EXPORT SPECTACLE FILE spectacle.categories DES
 # summaries
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)

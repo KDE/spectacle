@@ -44,8 +44,7 @@ public:
     ShutterModes supportedShutterModes() const override;
 
 public Q_SLOTS:
-    void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode,
-                bool theIncludePointer, bool theIncludeDecorations) override;
+    void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override;
 
 private:
     explicit PlatformKWinWayland2(QObject *parent = nullptr);
@@ -67,7 +66,7 @@ class ScreenShotSource2 : public QObject
     Q_OBJECT
 
 public:
-    template <typename ...ArgType>
+    template<typename... ArgType>
     explicit ScreenShotSource2(const QString &methodName, ArgType... arguments);
     ~ScreenShotSource2() override;
 
@@ -107,8 +106,7 @@ class ScreenShotSourceInteractive2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceInteractive2(PlatformKWinWayland2::InteractiveKind kind,
-                                 PlatformKWinWayland2::ScreenShotFlags flags);
+    ScreenShotSourceInteractive2(PlatformKWinWayland2::InteractiveKind kind, PlatformKWinWayland2::ScreenShotFlags flags);
 };
 
 /**

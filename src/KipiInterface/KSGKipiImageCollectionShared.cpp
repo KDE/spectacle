@@ -6,18 +6,39 @@
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
-*/
+ */
 
 #include "KSGKipiImageCollectionShared.h"
 #include "ExportManager.h"
 
-KSGKipiImageCollectionShared::KSGKipiImageCollectionShared()  {}
-KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared() {}
+KSGKipiImageCollectionShared::KSGKipiImageCollectionShared()
+{
+}
+KSGKipiImageCollectionShared::~KSGKipiImageCollectionShared()
+{
+}
 
-QString KSGKipiImageCollectionShared::name()           { return QStringLiteral("Spectacle"); }
-QString KSGKipiImageCollectionShared::comment()        { return QString(); }
-QString KSGKipiImageCollectionShared::uploadRootName() { return QStringLiteral("/"); }
-QUrl    KSGKipiImageCollectionShared::uploadRoot()     { return QUrl(uploadRootName()); }
-bool    KSGKipiImageCollectionShared::isDirectory()    { return false; }
-QList<QUrl> KSGKipiImageCollectionShared::images()     { return QList<QUrl>({ ExportManager::instance()->tempSave() }); }
-
+QString KSGKipiImageCollectionShared::name()
+{
+    return QStringLiteral("Spectacle");
+}
+QString KSGKipiImageCollectionShared::comment()
+{
+    return QString();
+}
+QString KSGKipiImageCollectionShared::uploadRootName()
+{
+    return QStringLiteral("/");
+}
+QUrl KSGKipiImageCollectionShared::uploadRoot()
+{
+    return QUrl(uploadRootName());
+}
+bool KSGKipiImageCollectionShared::isDirectory()
+{
+    return false;
+}
+QList<QUrl> KSGKipiImageCollectionShared::images()
+{
+    return QList<QUrl>({ExportManager::instance()->tempSave()});
+}

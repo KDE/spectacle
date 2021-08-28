@@ -6,24 +6,24 @@
 
 #include "KSMainWindow.h"
 
-#include "settings.h"
-#include "SettingsDialog/SettingsDialog.h"
 #include "SettingsDialog/GeneralOptionsPage.h"
 #include "SettingsDialog/SaveOptionsPage.h"
+#include "SettingsDialog/SettingsDialog.h"
 #include "SettingsDialog/ShortcutsOptionsPage.h"
+#include "settings.h"
 
 #include <QApplication>
 #include <QClipboard>
-#include <QDesktopServices>
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QDesktopServices>
 #include <QKeyEvent>
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
-#include <QtMath>
-#include <QVariantAnimation>
 #include <QVBoxLayout>
+#include <QVariantAnimation>
+#include <QtMath>
 
 #ifdef XCB_FOUND
 #include <QX11Info>
@@ -31,13 +31,13 @@
 #endif
 
 #include <KAboutData>
+#include <KConfigGroup>
 #include <KGuiItem>
 #include <KHelpMenu>
+#include <KIO/JobUiDelegate>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
-#include <KIO/JobUiDelegate>
 #include <KLocalizedString>
-#include <KConfigGroup>
 #include <KSharedConfig>
 #include <KStandardAction>
 #include <KWindowSystem>
@@ -46,30 +46,30 @@ static const int DEFAULT_WINDOW_HEIGHT = 420;
 static const int DEFAULT_WINDOW_WIDTH = 840;
 static const int MAXIMUM_WINDOW_WIDTH = 1000;
 
-KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent) :
-    QDialog(parent),
-    mKSWidget(new KSWidget(theGrabModes, this)),
-    mDivider(new QFrame(this)),
-    mDialogButtonBox(new QDialogButtonBox(this)),
-    mConfigureButton(new QToolButton(this)),
-    mToolsButton(new QPushButton(this)),
-    mSendToButton(new QPushButton(this)),
-    mClipboardButton(new QToolButton(this)),
-    mClipboardMenu(new QMenu(this)),
-    mClipboardLocationAction(new QAction(this)),
-    mClipboardImageAction(new QAction(this)),
-    mSaveButton(new QToolButton(this)),
-    mSaveMenu(new QMenu(this)),
-    mSaveAsAction(new QAction(this)),
-    mSaveAction(new QAction(this)),
-    mMessageWidget(new KMessageWidget(this)),
-    mToolsMenu(new QMenu(this)),
-    mScreenRecorderToolsMenu(new QMenu(this)),
-    mExportMenu(new ExportMenu(this)),
-    mShutterModes(theShutterModes)
+KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent)
+    : QDialog(parent)
+    , mKSWidget(new KSWidget(theGrabModes, this))
+    , mDivider(new QFrame(this))
+    , mDialogButtonBox(new QDialogButtonBox(this))
+    , mConfigureButton(new QToolButton(this))
+    , mToolsButton(new QPushButton(this))
+    , mSendToButton(new QPushButton(this))
+    , mClipboardButton(new QToolButton(this))
+    , mClipboardMenu(new QMenu(this))
+    , mClipboardLocationAction(new QAction(this))
+    , mClipboardImageAction(new QAction(this))
+    , mSaveButton(new QToolButton(this))
+    , mSaveMenu(new QMenu(this))
+    , mSaveAsAction(new QAction(this))
+    , mSaveAction(new QAction(this))
+    , mMessageWidget(new KMessageWidget(this))
+    , mToolsMenu(new QMenu(this))
+    , mScreenRecorderToolsMenu(new QMenu(this))
+    , mExportMenu(new ExportMenu(this))
+    , mShutterModes(theShutterModes)
 #ifdef KIMAGEANNOTATOR_FOUND
-    ,mAnnotateButton(new QToolButton(this))
-    ,mAnnotatorActive(false)
+    , mAnnotateButton(new QToolButton(this))
+    , mAnnotatorActive(false)
 #endif
 {
     // before we do anything, we need to set a window property
@@ -96,13 +96,13 @@ KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterMo
         xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, false, effectName.length(), effectName.constData());
         QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
         if (atom.isNull()) {
-          goto done;
+            goto done;
         }
 
         uint32_t value = 1;
         xcb_change_property(xcbConn, XCB_PROP_MODE_REPLACE, winId(), atom->atom, XCB_ATOM_CARDINAL, 32, 1, &value);
     }
-    done:
+done:
 #endif
 
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
@@ -147,7 +147,6 @@ void KSMainWindow::init()
     mAnnotateButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
     connect(mAnnotateButton, &QToolButton::clicked, this, [this] {
-
         if (mAnnotatorActive) {
             mKSWidget->hideAnnotator();
             mAnnotateButton->setText(i18n("Annotate"));
@@ -168,8 +167,7 @@ void KSMainWindow::init()
 #endif
 
     KGuiItem::assign(mToolsButton, KGuiItem(i18n("Tools")));
-    mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("tools"),
-                                           QIcon::fromTheme(QStringLiteral("application-menu"))));
+    mToolsButton->setIcon(QIcon::fromTheme(QStringLiteral("tools"), QIcon::fromTheme(QStringLiteral("application-menu"))));
     mToolsButton->setAutoDefault(false);
     mDialogButtonBox->addButton(mToolsButton, QDialogButtonBox::ActionRole);
     mToolsButton->setMenu(mToolsMenu);
@@ -196,18 +194,18 @@ void KSMainWindow::init()
     // the tools menu
     mToolsMenu->addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
                           i18n("Open Default Screenshots Folder"),
-                          this, &KSMainWindow::openScreenshotsFolder);
+                          this,
+                          &KSMainWindow::openScreenshotsFolder);
     mToolsMenu->addAction(KStandardAction::print(this, &KSMainWindow::showPrintDialog, this));
     mScreenRecorderToolsMenu = mToolsMenu->addMenu(i18n("Record Screen"));
     mScreenRecorderToolsMenu->setIcon(QIcon::fromTheme(QStringLiteral("media-record")));
-    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, this, [this]()
-    {
+    connect(mScreenRecorderToolsMenu, &QMenu::aboutToShow, this, [this]() {
         KMoreToolsMenuFactory *moreToolsMenuFactory = new KMoreToolsMenuFactory(QStringLiteral("spectacle/screenrecorder-tools"));
         moreToolsMenuFactory->setParentWidget(this);
         mScreenrecorderToolsMenuFactory.reset(moreToolsMenuFactory);
         mScreenRecorderToolsMenu->clear();
-        mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, { QStringLiteral("screenrecorder") });
-    } );
+        mScreenrecorderToolsMenuFactory->fillMenuFromGroupingNames(mScreenRecorderToolsMenu, {QStringLiteral("screenrecorder")});
+    });
 
     // the save menu
     mSaveAsAction = KStandardAction::saveAs(this, &KSMainWindow::saveAs, this);
@@ -219,17 +217,16 @@ void KSMainWindow::init()
     // the clipboard menu
     mClipboardImageAction = KStandardAction::copy(this, &KSMainWindow::copyImage, this);
     mClipboardImageAction->setText(i18n("Copy Image to Clipboard"));
-    mClipboardLocationAction = new QAction(
-        QIcon::fromTheme(QStringLiteral("edit-copy")),
-        i18n("Copy Location to Clipboard"), this);
+    mClipboardLocationAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Location to Clipboard"), this);
     connect(mClipboardLocationAction, &QAction::triggered, this, &KSMainWindow::copyLocation);
     mClipboardMenu->addAction(mClipboardImageAction);
     mClipboardMenu->addAction(mClipboardLocationAction);
     setDefaultCopyAction();
 
-
     // message widget
-    connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) { QDesktopServices::openUrl(QUrl(str)); } );
+    connect(mMessageWidget, &KMessageWidget::linkActivated, this, [](const QString &str) {
+        QDesktopServices::openUrl(QUrl(str));
+    });
 
     // layouts
     mDivider->setFrameShape(QFrame::HLine);
@@ -272,8 +269,8 @@ void KSMainWindow::init()
     });
 
     mHideMessageWidgetTimer = new QTimer(this);
-//     connect(mHideMessageWidgetTimer, &QTimer::timeout,
-//             mMessageWidget, &KMessageWidget::animatedHide);
+    //     connect(mHideMessageWidgetTimer, &QTimer::timeout,
+    //             mMessageWidget, &KMessageWidget::animatedHide);
     mHideMessageWidgetTimer->setInterval(10000);
     // done with the init
 }
@@ -349,12 +346,12 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
 
     showMinimized();
     mMessageWidget->hide();
-    QTimer* timer = new QTimer;
+    QTimer *timer = new QTimer;
     timer->setSingleShot(true);
     timer->setInterval(theTimeout);
     auto unityUpdate = [](const QVariantMap &properties) {
-        QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/org/kde/Spectacle"),
-            QStringLiteral("com.canonical.Unity.LauncherEntry"), QStringLiteral("Update"));
+        QDBusMessage message =
+            QDBusMessage::createSignal(QStringLiteral("/org/kde/Spectacle"), QStringLiteral("com.canonical.Unity.LauncherEntry"), QStringLiteral("Update"));
         message.setArguments({QGuiApplication::desktopFileName(), properties});
         QDBusConnection::sessionBus().send(message);
     };
@@ -366,15 +363,14 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
         const double progress = delayAnimation->currentValue().toDouble();
         const double timeoutInSeconds = theTimeout / 1000.0;
         mKSWidget->setProgress(progress);
-        unityUpdate({ {QStringLiteral("progress"), progress} });
-        setWindowTitle(i18ncp("@title:window", "%1 second", "%1 seconds",
-            qMin(int(timeoutInSeconds), qCeil((1 - progress) * timeoutInSeconds))));
+        unityUpdate({{QStringLiteral("progress"), progress}});
+        setWindowTitle(i18ncp("@title:window", "%1 second", "%1 seconds", qMin(int(timeoutInSeconds), qCeil((1 - progress) * timeoutInSeconds))));
     });
     connect(timer, &QTimer::timeout, this, [=] {
         this->hide();
         timer->deleteLater();
         mKSWidget->setProgress(0);
-        unityUpdate({ {QStringLiteral("progress-visible"), false} });
+        unityUpdate({{QStringLiteral("progress-visible"), false}});
         emit newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
     });
 
@@ -382,12 +378,10 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
         timer->stop();
         timer->deleteLater();
         restoreWindowTitle();
-        unityUpdate({ {QStringLiteral("progress-visible"), false} });
+        unityUpdate({{QStringLiteral("progress-visible"), false}});
     });
 
-
-    unityUpdate({   {QStringLiteral("progress-visible"), true},
-                    {QStringLiteral("progress"), 0 } });
+    unityUpdate({{QStringLiteral("progress-visible"), true}, {QStringLiteral("progress"), 0}});
     timer->start();
     delayAnimation->start();
 }
@@ -407,7 +401,7 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
     activateWindow();
     /* NOTE windowWidth only produces the right result if it is called after the window is visible.
      * Because of this the call is not moved into the if above */
-    if(!pixmap.isNull()) {
+    if (!pixmap.isNull()) {
         resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
     }
 }
@@ -442,14 +436,16 @@ void KSMainWindow::quit(const QuitBehavior quitBehavior)
     }
 }
 
-void KSMainWindow::showInlineMessage(const QString& message, const KMessageWidget::MessageType messageType,
-                                     const MessageDuration messageDuration, const QList<QAction*>& actions)
+void KSMainWindow::showInlineMessage(const QString &message,
+                                     const KMessageWidget::MessageType messageType,
+                                     const MessageDuration messageDuration,
+                                     const QList<QAction *> &actions)
 {
     const auto messageWidgetActions = mMessageWidget->actions();
-    for (QAction* action: messageWidgetActions) {
+    for (QAction *action : messageWidgetActions) {
         mMessageWidget->removeAction(action);
     }
-    for (QAction* action : actions) {
+    for (QAction *action : actions) {
         mMessageWidget->addAction(action);
     }
     mMessageWidget->setText(message);
@@ -485,14 +481,14 @@ void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
     }
 
     if (error) {
-        showInlineMessage(i18n("There was a problem sharing the image: %1", message),
-                          KMessageWidget::Error);
+        showInlineMessage(i18n("There was a problem sharing the image: %1", message), KMessageWidget::Error);
     } else {
         if (message.isEmpty()) {
             showInlineMessage(i18n("Image shared"), KMessageWidget::Positive);
         } else {
             showInlineMessage(i18n("The shared image link (<a href=\"%1\">%1</a>) has been copied to the clipboard.", message),
-                              KMessageWidget::Positive, MessageDuration::Persistent);
+                              KMessageWidget::Positive,
+                              MessageDuration::Persistent);
             QApplication::clipboard()->setText(message);
         }
     }
@@ -524,20 +520,22 @@ void KSMainWindow::copyImage()
 
 void KSMainWindow::imageCopied()
 {
-    showInlineMessage(i18n("The screenshot has been copied to the clipboard."),
-                      KMessageWidget::Information);
+    showInlineMessage(i18n("The screenshot has been copied to the clipboard."), KMessageWidget::Information);
 }
 
 void KSMainWindow::imageSavedAndLocationCopied(const QUrl &location)
 {
-    showInlineMessage(i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard",
-                           location.toString(), location.fileName()), KMessageWidget::Positive,
-                           MessageDuration::AutoHide, {mOpenContaining});
+    showInlineMessage(
+        i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard", location.toString(), location.fileName()),
+        KMessageWidget::Positive,
+        MessageDuration::AutoHide,
+        {mOpenContaining});
 }
 
 void KSMainWindow::screenshotFailed()
 {
-    showInlineMessage(i18n("Could not take a screenshot. Please report this bug here: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"),
+    showInlineMessage(i18n("Could not take a screenshot. Please report this bug here: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create "
+                           "a spectacle bug</a>"),
                       KMessageWidget::Warning);
 }
 
@@ -553,18 +551,20 @@ void KSMainWindow::imageSaved(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
-    showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
-                           location.toString(), location.fileName()), KMessageWidget::Positive,
-                           MessageDuration::AutoHide, {mOpenContaining});
+    showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>", location.toString(), location.fileName()),
+                      KMessageWidget::Positive,
+                      MessageDuration::AutoHide,
+                      {mOpenContaining});
 }
 
 void KSMainWindow::imageSavedAndCopied(const QUrl &location)
 {
     setWindowTitle(location.fileName());
     setWindowModified(false);
-    showInlineMessage(i18n("The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>",
-                           location.toString(), location.fileName()), KMessageWidget::Positive,
-                           MessageDuration::AutoHide, {mOpenContaining});
+    showInlineMessage(i18n("The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>", location.toString(), location.fileName()),
+                      KMessageWidget::Positive,
+                      MessageDuration::AutoHide,
+                      {mOpenContaining});
 }
 
 void KSMainWindow::save()
@@ -601,16 +601,16 @@ void KSMainWindow::restoreWindowTitle()
 
 /* This event handler enables all Buttons to be activated with Enter. Normally only QPushButton can
  * be activated with Enter but we also use QToolButtons so we handle the event ourselves */
-void KSMainWindow::keyPressEvent(QKeyEvent* event)
+void KSMainWindow::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Return) {
         QWidget *fw = focusWidget();
-        auto pb = qobject_cast<QPushButton*>(fw);
+        auto pb = qobject_cast<QPushButton *>(fw);
         if (pb) {
             pb->animateClick();
             return;
         }
-        auto tb = qobject_cast<QToolButton*>(fw);
+        auto tb = qobject_cast<QToolButton *>(fw);
         if (tb) {
             tb->animateClick();
             return;

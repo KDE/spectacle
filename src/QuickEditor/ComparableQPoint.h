@@ -12,14 +12,17 @@
 class ComparableQPoint : public QPoint
 {
 public:
-    ComparableQPoint(QPoint point): QPoint(point)
-    {}
+    ComparableQPoint(QPoint point)
+        : QPoint(point)
+    {
+    }
 
     ComparableQPoint() = default;
 
     // utility class that allows using QMap to sort its keys when they are QPoint
-    bool operator<(ComparableQPoint other) const {
-        return x() < other.x() || ( x() == other.x() && y() < other.y() );
+    bool operator<(ComparableQPoint other) const
+    {
+        return x() < other.x() || (x() == other.x() && y() < other.y());
     }
 };
 

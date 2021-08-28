@@ -6,38 +6,37 @@
 
 #include "PlatformXcb.h"
 
-#include <xcb/xfixes.h>
 #include <xcb/xcb_cursor.h>
 #include <xcb/xcb_util.h>
+#include <xcb/xfixes.h>
 
-#include <X11/Xdefs.h>
 #include <X11/Xatom.h>
+#include <X11/Xdefs.h>
 
-#include <QtMath>
-#include <QApplication>
-#include <QStack>
-#include <QSet>
-#include <QDBusConnection>
-#include <QDBusInterface>
-#include <QDBusConnectionInterface>
 #include <QAbstractNativeEventFilter>
-#include <QX11Info>
-#include <QTimer>
-#include <QScreen>
-#include <QPainter>
-#include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
+#include <QApplication>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDBusInterface>
 #include <QGraphicsDropShadowEffect>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QPainter>
+#include <QScreen>
+#include <QSet>
+#include <QStack>
+#include <QTimer>
+#include <QX11Info>
+#include <QtMath>
 
-#include <KWindowSystem>
 #include <KWindowInfo>
+#include <KWindowSystem>
 
 #include <memory>
 
 /* -- XCB Image Smart Pointer ------------------------------------------------------------------ */
 
-struct XcbImagePtrDeleter
-{
+struct XcbImagePtrDeleter {
     void operator()(xcb_image_t *theXcbImage) const
     {
         if (theXcbImage) {
@@ -47,8 +46,7 @@ struct XcbImagePtrDeleter
 };
 using XcbImagePtr = std::unique_ptr<xcb_image_t, XcbImagePtrDeleter>;
 
-struct CFreeDeleter
-{
+struct CFreeDeleter {
     void operator()(void *ptr) const
     {
         free(ptr);
@@ -59,13 +57,13 @@ using XcbReplyPtr = std::unique_ptr<Reply, CFreeDeleter>;
 
 /* -- On Click Native Event Filter ------------------------------------------------------------- */
 
-class PlatformXcb::OnClickEventFilter: public QAbstractNativeEventFilter
+class PlatformXcb::OnClickEventFilter : public QAbstractNativeEventFilter
 {
-    public:
-
-    explicit OnClickEventFilter(PlatformXcb *thePlatformPtr) :
-        mPlatformPtr(thePlatformPtr)
-    {}
+public:
+    explicit OnClickEventFilter(PlatformXcb *thePlatformPtr)
+        : mPlatformPtr(thePlatformPtr)
+    {
+    }
 
     void setCaptureOptions(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
     {
@@ -109,20 +107,20 @@ class PlatformXcb::OnClickEventFilter: public QAbstractNativeEventFilter
         return false;
     }
 
-    private:
-
+private:
     PlatformXcb *mPlatformPtr;
-    Platform::GrabMode mGrabMode { GrabMode::AllScreens };
-    bool mIncludePointer { true };
-    bool mIncludeDecorations { true };
+    Platform::GrabMode mGrabMode{GrabMode::AllScreens};
+    bool mIncludePointer{true};
+    bool mIncludeDecorations{true};
 };
 
 /* -- General Plumbing ------------------------------------------------------------------------- */
 
-PlatformXcb::PlatformXcb(QObject *theParent) :
-    Platform(theParent),
-    mNativeEventFilter(new OnClickEventFilter(this))
-{}
+PlatformXcb::PlatformXcb(QObject *theParent)
+    : Platform(theParent)
+    , mNativeEventFilter(new OnClickEventFilter(this))
+{
+}
 
 PlatformXcb::~PlatformXcb()
 {
@@ -136,7 +134,8 @@ QString PlatformXcb::platformName() const
 
 Platform::GrabModes PlatformXcb::supportedGrabModes() const
 {
-    Platform::GrabModes lSupportedModes({ GrabMode::AllScreens, GrabMode::ActiveWindow, GrabMode::WindowUnderCursor, GrabMode::TransientWithParent, GrabMode::PerScreenImageNative });
+    Platform::GrabModes lSupportedModes(
+        {GrabMode::AllScreens, GrabMode::ActiveWindow, GrabMode::WindowUnderCursor, GrabMode::TransientWithParent, GrabMode::PerScreenImageNative});
     if (QApplication::screens().count() > 1) {
         lSupportedModes |= Platform::GrabMode::CurrentScreen;
     }
@@ -145,12 +144,12 @@ Platform::GrabModes PlatformXcb::supportedGrabModes() const
 
 Platform::ShutterModes PlatformXcb::supportedShutterModes() const
 {
-    return { ShutterMode::Immediate | ShutterMode::OnClick };
+    return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
 void PlatformXcb::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
-    switch(theShutterMode) {
+    switch (theShutterMode) {
     case ShutterMode::Immediate: {
         doGrabNow(theGrabMode, theIncludePointer, theIncludeDecorations);
         return;
@@ -368,18 +367,7 @@ QPixmap PlatformXcb::getPixmapFromDrawable(xcb_drawable_t theXcbDrawable, const 
     auto lXcbConn = QX11Info::connection();
 
     // proceed to get an image based on the geometry (in device pixels)
-    XcbImagePtr lXcbImage(
-        xcb_image_get(
-            lXcbConn,
-            theXcbDrawable,
-            theRect.x(),
-            theRect.y(),
-            theRect.width(),
-            theRect.height(),
-            ~0,
-            XCB_IMAGE_FORMAT_Z_PIXMAP
-        )
-    );
+    XcbImagePtr lXcbImage(xcb_image_get(lXcbConn, theXcbDrawable, theRect.x(), theRect.y(), theRect.width(), theRect.height(), ~0, XCB_IMAGE_FORMAT_Z_PIXMAP));
 
     // too bad, the capture failed.
     if (!lXcbImage) {
@@ -401,7 +389,7 @@ QPixmap PlatformXcb::getToplevelPixmap(QRect theRect, bool theBlendPointer)
     } else {
         QRegion lScreenRegion;
         const auto lScreens = QGuiApplication::screens();
-        for (auto lScreen: lScreens) {
+        for (auto lScreen : lScreens) {
             auto lScreenRect = lScreen->geometry();
 
             // Do not use setSize() here, because QSize::operator*=()
@@ -450,9 +438,12 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
 
 void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
 {
-    QDBusConnection::sessionBus().disconnect(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"),
-        QStringLiteral("org.kde.kwin.Screenshot"), QStringLiteral("screenshotCreated"),
-        this, SLOT(handleKWinScreenshotReply(quint64)));
+    QDBusConnection::sessionBus().disconnect(QStringLiteral("org.kde.KWin"),
+                                             QStringLiteral("/Screenshot"),
+                                             QStringLiteral("org.kde.kwin.Screenshot"),
+                                             QStringLiteral("screenshotCreated"),
+                                             this,
+                                             SLOT(handleKWinScreenshotReply(quint64)));
 
     // obtain width and height and grab an image (x and y are always zero for pixmaps)
     auto lDrawable = static_cast<xcb_drawable_t>(theDrawable);
@@ -478,7 +469,7 @@ void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
 {
     auto lCursorPosition = QCursor::pos();
     const auto lScreens = QGuiApplication::screens();
-    for (auto lScreen: lScreens) {
+    for (auto lScreen : lScreens) {
         auto lScreenRect = lScreen->geometry();
         if (!lScreenRect.contains(lCursorPosition)) {
             continue;
@@ -540,7 +531,8 @@ void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecora
                      QStringLiteral("/Screenshot"),
                      QStringLiteral("org.kde.kwin.Screenshot"),
                      QStringLiteral("screenshotCreated"),
-                     this, SLOT(handleKWinScreenshotReply(quint64)));
+                     this,
+                     SLOT(handleKWinScreenshotReply(quint64)));
         QDBusInterface lIface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
         int lOpMask = 1;
@@ -568,7 +560,8 @@ void PlatformXcb::grabWindowUnderCursor(bool theIncludePointer, bool theIncludeD
                      QStringLiteral("/Screenshot"),
                      QStringLiteral("org.kde.kwin.Screenshot"),
                      QStringLiteral("screenshotCreated"),
-                     this, SLOT(handleKWinScreenshotReply(quint64)));
+                     this,
+                     SLOT(handleKWinScreenshotReply(quint64)));
         QDBusInterface lInterface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
 
         int lOpMask = 1;
@@ -615,12 +608,11 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
         // Continue walking only if this is a transient window (having a parent)
     } while (lParentWindow != XCB_WINDOW_NONE && !lTransientWindows.contains(lParentWindow));
 
-
     // All parents are known now, find other transient children.
     // Assume that the lowest window is behind everything else, then if a new
     // transient window is discovered, its children can then also be found.
     auto lWinList = KWindowSystem::stackingOrder();
-    for (auto lWinId: lWinList) {
+    for (auto lWinId : lWinList) {
         QRect lWinRect;
         auto lParentWindow = getTransientWindowParent(lWinId, lWinRect, theIncludeDecorations);
 
@@ -672,17 +664,17 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
 
 void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
-    switch(theGrabMode) {
+    switch (theGrabMode) {
     case GrabMode::AllScreens:
     case GrabMode::AllScreensScaled:
         grabAllScreens(theIncludePointer);
         break;
-    case GrabMode::PerScreenImageNative:{
+    case GrabMode::PerScreenImageNative: {
         auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
         // break thePixmap into list of images
         const auto screens = QGuiApplication::screens();
         QVector<QImage> images;
-        for (const auto screen: screens) {
+        for (const auto screen : screens) {
             QRect geom = screen->geometry();
             geom.setSize(screen->size() * screen->devicePixelRatio());
             images << lPixmap.copy(geom).toImage();
@@ -715,14 +707,12 @@ void PlatformXcb::doGrabOnClick(GrabMode theGrabMode, bool theIncludePointer, bo
     xcb_screen_t *lXcbAppScreen = xcb_aux_get_screen(QX11Info::connection(), QX11Info::appScreen());
 
     if (xcb_cursor_context_new(QX11Info::connection(), lXcbAppScreen, &lXcbCursorCtx) >= 0) {
-        QVector<QByteArray> lCursorNames = {
-            QByteArrayLiteral("cross"),
-            QByteArrayLiteral("crosshair"),
-            QByteArrayLiteral("diamond-cross"),
-            QByteArrayLiteral("cross-reverse")
-        };
+        QVector<QByteArray> lCursorNames = {QByteArrayLiteral("cross"),
+                                            QByteArrayLiteral("crosshair"),
+                                            QByteArrayLiteral("diamond-cross"),
+                                            QByteArrayLiteral("cross-reverse")};
 
-        for(const auto &lCursorName: lCursorNames) {
+        for (const auto &lCursorName : lCursorNames) {
             xcb_cursor_t lCursor = xcb_cursor_load_cursor(lXcbCursorCtx, lCursorName.constData());
             if (lCursor != XCB_CURSOR_NONE) {
                 lXcbCursor = lCursor;
@@ -732,16 +722,15 @@ void PlatformXcb::doGrabOnClick(GrabMode theGrabMode, bool theIncludePointer, bo
     }
 
     // grab the cursor
-    xcb_grab_pointer_cookie_t grabPointerCookie = xcb_grab_pointer_unchecked(
-        QX11Info::connection(),        // xcb connection
-        0,                             // deliver events to owner? nope
-        QX11Info::appRootWindow(),     // window to grab pointer for (root)
-        XCB_EVENT_MASK_BUTTON_RELEASE, // which events do I want
-        XCB_GRAB_MODE_SYNC,            // pointer grab mode
-        XCB_GRAB_MODE_ASYNC,           // keyboard grab mode (why is this even here)
-        XCB_NONE,                      // confine pointer to which window (none)
-        lXcbCursor,                    // cursor to change to for the duration of grab
-        XCB_TIME_CURRENT_TIME          // do this right now
+    xcb_grab_pointer_cookie_t grabPointerCookie = xcb_grab_pointer_unchecked(QX11Info::connection(), // xcb connection
+                                                                             0, // deliver events to owner? nope
+                                                                             QX11Info::appRootWindow(), // window to grab pointer for (root)
+                                                                             XCB_EVENT_MASK_BUTTON_RELEASE, // which events do I want
+                                                                             XCB_GRAB_MODE_SYNC, // pointer grab mode
+                                                                             XCB_GRAB_MODE_ASYNC, // keyboard grab mode (why is this even here)
+                                                                             XCB_NONE, // confine pointer to which window (none)
+                                                                             lXcbCursor, // cursor to change to for the duration of grab
+                                                                             XCB_TIME_CURRENT_TIME // do this right now
     );
     XcbReplyPtr<xcb_grab_pointer_reply_t> lGrabPointerReply(xcb_grab_pointer_reply(QX11Info::connection(), grabPointerCookie, nullptr));
 

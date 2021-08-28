@@ -13,12 +13,11 @@
 
 #include <QPixmap>
 
-class PlatformXcb final: public Platform
+class PlatformXcb final : public Platform
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit PlatformXcb(QObject *parent = nullptr);
     virtual ~PlatformXcb();
 
@@ -26,18 +25,17 @@ class PlatformXcb final: public Platform
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 
-    private Q_SLOTS:
+private Q_SLOTS:
 
     void handleKWinScreenshotReply(quint64 theDrawable);
     void doGrabNow(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
     void doGrabOnClick(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
 
-    private:
-
+private:
     inline void updateWindowTitle(xcb_window_t theWindow);
     bool isKWinAvailable();
     QPoint getCursorPosition();

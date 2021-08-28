@@ -10,17 +10,18 @@
 
 #include <KLocalizedString>
 
-ShortcutActions* ShortcutActions::self()
+ShortcutActions *ShortcutActions::self()
 {
     static ShortcutActions self;
     return &self;
 }
 
-ShortcutActions::ShortcutActions() : mActions{nullptr, QString()}
+ShortcutActions::ShortcutActions()
+    : mActions{nullptr, QString()}
 {
-    //everything here is named to match the jumplist actions in our .desktop file
+    // everything here is named to match the jumplist actions in our .desktop file
     mActions.setComponentName(componentName());
-    //qdbus org.kde.kglobalaccel /component/org_kde_spectacle_desktop org.kde.kglobalaccel.Component.shortcutNames
+    // qdbus org.kde.kglobalaccel /component/org_kde_spectacle_desktop org.kde.kglobalaccel.Component.shortcutNames
     // ActiveWindowScreenShot
     // WindowUnderCursorScreenShot
     // CurrentMonitorScreenShot
@@ -59,7 +60,7 @@ ShortcutActions::ShortcutActions() : mActions{nullptr, QString()}
     }
 }
 
-KActionCollection* ShortcutActions::shortcutActions()
+KActionCollection *ShortcutActions::shortcutActions()
 {
     return &mActions;
 }
@@ -69,32 +70,32 @@ QString ShortcutActions::componentName() const
     return QGuiApplication::desktopFileName().append(QStringLiteral(".desktop"));
 }
 
-QAction* ShortcutActions::openAction() const
+QAction *ShortcutActions::openAction() const
 {
     return mActions.action(0);
 }
 
-QAction* ShortcutActions::fullScreenAction() const
+QAction *ShortcutActions::fullScreenAction() const
 {
     return mActions.action(1);
 }
 
-QAction* ShortcutActions::currentScreenAction() const
+QAction *ShortcutActions::currentScreenAction() const
 {
     return mActions.action(2);
 }
 
-QAction* ShortcutActions::activeWindowAction() const
+QAction *ShortcutActions::activeWindowAction() const
 {
     return mActions.action(3);
 }
 
-QAction* ShortcutActions::regionAction() const
+QAction *ShortcutActions::regionAction() const
 {
     return mActions.action(4);
 }
 
-QAction* ShortcutActions::windowUnderCursorAction() const
+QAction *ShortcutActions::windowUnderCursorAction() const
 {
     return mActions.action(5);
 }

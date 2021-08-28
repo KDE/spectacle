@@ -7,21 +7,21 @@
 
 #include "SaveOptionsPage.h"
 
-#include "SpectacleCommon.h"
 #include "ExportManager.h"
+#include "SpectacleCommon.h"
 #include "ui_SaveOptions.h"
 
 #include <KIOWidgets/KUrlRequester>
 #include <KLocalizedString>
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QComboBox>
-#include <QImageWriter>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QFontDatabase>
+#include <QImageWriter>
+#include <QLabel>
+#include <QLineEdit>
 
-SaveOptionsPage::SaveOptionsPage(QWidget *parent) 
+SaveOptionsPage::SaveOptionsPage(QWidget *parent)
     : QWidget(parent)
     , m_ui(new Ui_SaveOptions)
 {
@@ -40,9 +40,9 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
             }
         }
     });
-    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textChanged,this, &SaveOptionsPage::updateFilenamePreview);
+    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textChanged, this, &SaveOptionsPage::updateFilenamePreview);
 
-    m_ui->kcfg_defaultSaveImageFormat->addItems([&](){
+    m_ui->kcfg_defaultSaveImageFormat->addItems([&]() {
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
         items.reserve(formats.count());
@@ -55,17 +55,14 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
 
     QString helpText = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
-        "with actual text when the file is saved:<blockquote>"
-    );
-    for (auto option = ExportManager::filenamePlaceholders.cbegin();
-        option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(),
-                                                                    option.value().toString());
+        "with actual text when the file is saved:<blockquote>");
+    for (auto option = ExportManager::filenamePlaceholders.cbegin(); option != ExportManager::filenamePlaceholders.cend(); ++option) {
+        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value().toString());
     }
     helpText += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
     helpText += QStringLiteral("</blockquote>");
     m_ui->helpTextLabel->setText(helpText);
-    connect(m_ui->helpTextLabel, &QLabel::linkActivated, this, [this](const QString& placeholder) {
+    connect(m_ui->helpTextLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
         m_ui->kcfg_saveFilenameFormat->insert(placeholder);
     });
 
@@ -82,15 +79,13 @@ void SaveOptionsPage::updateFilenamePreview()
 
     // If the grabMode is not one of those below we need to change it to have the placeholder
     // replaced by the window title
-    bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow ||
-                                      lOldMode == Spectacle::CaptureMode::TransientWithParent ||
-                                      lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
+    bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow || lOldMode == Spectacle::CaptureMode::TransientWithParent
+                             || lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
     if (lSwitchGrabMode) {
-       lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+        lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
     }
     const QString lFileName = lExportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
-    m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>",
-                                  lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
+    m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
     if (lSwitchGrabMode) {
         lExportManager->setCaptureMode(lOldMode);
     }

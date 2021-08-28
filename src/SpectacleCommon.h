@@ -5,15 +5,16 @@
 
 #pragma once
 
-namespace Spectacle {
-    enum CaptureMode {
-        InvalidChoice       = -1,
-        AllScreens          = 0,
-        CurrentScreen       = 1,
-        ActiveWindow        = 2,
-        WindowUnderCursor   = 3,
-        TransientWithParent = 4,
-        RectangularRegion   = 5,
-        AllScreensScaled    = 6,
-    };
+namespace Spectacle
+{
+enum CaptureMode {
+    InvalidChoice = -1,
+    AllScreens = 0,
+    CurrentScreen = 1,
+    ActiveWindow = 2,
+    WindowUnderCursor = 3,
+    TransientWithParent = 4,
+    RectangularRegion = 5,
+    AllScreensScaled = 6,
+};
 }

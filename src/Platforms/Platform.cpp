@@ -5,6 +5,7 @@
 
 #include "Platform.h"
 
-Platform::Platform(QObject *parent) :
-    QObject(parent)
-{}
+Platform::Platform(QObject *parent)
+    : QObject(parent)
+{
+}

@@ -6,24 +6,23 @@
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *
-*/
+ */
 
 #include "KSGKipiImageCollectionSelector.h"
 #include <KLocalizedString>
 #include <QVBoxLayout>
 
 KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *interface, QWidget *parent)
-    : KIPI::ImageCollectionSelector(parent),
-      mInterface(interface),
-    mListWidget(new QListWidget(this))
+    : KIPI::ImageCollectionSelector(parent)
+    , mInterface(interface)
+    , mListWidget(new QListWidget(this))
 {
     const auto allAlbums = interface->allAlbums();
     for (const auto &collection : allAlbums) {
         QListWidgetItem *item = new QListWidgetItem(mListWidget);
         QString name = collection.name();
         int imageCount = collection.images().size();
-        QString title = i18ncp("%1 is collection name, %2 is image count in collection",
-                               "%1 (%2 image)", "%1 (%2 images)", name, imageCount);
+        QString title = i18ncp("%1 is collection name, %2 is image count in collection", "%1 (%2 image)", "%1 (%2 images)", name, imageCount);
         item->setText(title);
         item->setData(Qt::UserRole, name);
     }
@@ -35,7 +34,8 @@ KSGKipiImageCollectionSelector::KSGKipiImageCollectionSelector(KIPI::Interface *
 }
 
 KSGKipiImageCollectionSelector::~KSGKipiImageCollectionSelector()
-{}
+{
+}
 
 QList<KIPI::ImageCollection> KSGKipiImageCollectionSelector::selectedImageCollections() const
 {
@@ -54,5 +54,3 @@ QList<KIPI::ImageCollection> KSGKipiImageCollectionSelector::selectedImageCollec
     }
     return selectedList;
 }
-
-

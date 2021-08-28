@@ -5,35 +5,36 @@
 
 #pragma once
 
-#include <QObject>
 #include <QCommandLineParser>
+#include <QObject>
 
 #include "ExportManager.h"
 #include "Gui/KSMainWindow.h"
-#include "QuickEditor/QuickEditor.h"
 #include "Platforms/PlatformLoader.h"
+#include "QuickEditor/QuickEditor.h"
 
 #include <memory>
 
-namespace KWayland {
-namespace Client {
+namespace KWayland
+{
+namespace Client
+{
 class PlasmaShell;
 }
 }
 
 using MainWindowPtr = std::unique_ptr<KSMainWindow>;
-using EditorPtr     = std::unique_ptr<QuickEditor>;
+using EditorPtr = std::unique_ptr<QuickEditor>;
 
-class SpectacleCore: public QObject
+class SpectacleCore : public QObject
 {
     Q_OBJECT
 
-    public:
-
+public:
     enum class StartMode {
-        Gui        = 0,
-        DBus       = 1,
-        Background = 2
+        Gui = 0,
+        DBus = 1,
+        Background = 2,
     };
 
     explicit SpectacleCore(QObject *parent = nullptr);
@@ -45,13 +46,13 @@ class SpectacleCore: public QObject
 
     void populateCommandLineParser(QCommandLineParser *lCmdLineParser);
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void errorMessage(const QString &errString);
     void allDone();
     void grabFailed();
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void takeNewScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
     void showErrorMessage(const QString &theErrString);
@@ -63,24 +64,23 @@ class SpectacleCore: public QObject
     void doNotify(const QUrl &theSavedAt);
     void doCopyPath(const QUrl &savedAt);
 
-    void onActivateRequested(QStringList arguments, const QString& /*workingDirectory */);
+    void onActivateRequested(QStringList arguments, const QString & /*workingDirectory */);
 
-    private:
-
+private:
     void initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations);
     Platform::GrabMode toPlatformGrabMode(Spectacle::CaptureMode theCaptureMode);
     void setUpShortcuts();
 
-    StartMode     mStartMode;
-    bool          mNotify;
-    QString       mFileNameString;
-    QUrl          mFileNameUrl;
-    PlatformPtr   mPlatform;
+    StartMode mStartMode;
+    bool mNotify;
+    QString mFileNameString;
+    QUrl mFileNameUrl;
+    PlatformPtr mPlatform;
     MainWindowPtr mMainWindow = nullptr;
-    EditorPtr     mQuickEditor;
-    bool          mIsGuiInited = false;
-    bool          mCopyImageToClipboard;
-    bool          mCopyLocationToClipboard;
-    bool          mSaveToOutput;
+    EditorPtr mQuickEditor;
+    bool mIsGuiInited = false;
+    bool mCopyImageToClipboard;
+    bool mCopyLocationToClipboard;
+    bool mSaveToOutput;
     KWayland::Client::PlasmaShell *mWaylandPlasmashell = nullptr;
 };

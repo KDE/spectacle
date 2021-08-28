@@ -25,21 +25,19 @@ class ExportMenu : public QMenu
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit ExportMenu(QWidget *parent = nullptr);
     void imageUpdated();
 
-    private Q_SLOTS:
+private Q_SLOTS:
 
     void populateMenu();
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void imageShared(bool error, const QString &message);
 
-    private:
-
+private:
     void getKServiceItems();
 
 #ifdef KIPI_FOUND

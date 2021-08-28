@@ -10,12 +10,11 @@
 
 class QDBusPendingCall;
 
-class PlatformKWinWayland final: public Platform
+class PlatformKWinWayland final : public Platform
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit PlatformKWinWayland(QObject *parent = nullptr);
     virtual ~PlatformKWinWayland() = default;
 
@@ -23,20 +22,22 @@ class PlatformKWinWayland final: public Platform
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 
-    private:
-
+private:
     void startReadImage(int theReadPipe);
     void startReadImages(int theReadPipe);
     void checkDbusPendingCall(const QDBusPendingCall &pcall);
 
     bool screenshotScreensAvailable() const;
 
-    template <typename ... ArgType> void callDBus(const QString &theGrabMethod, int theWriteFile, ArgType ... arguments);
+    template<typename... ArgType>
+    void callDBus(const QString &theGrabMethod, int theWriteFile, ArgType... arguments);
 
-    template <typename ... ArgType> void doGrabHelper(const QString &theGrabMethod, ArgType ... arguments);
-    template <typename ... ArgType> void doGrabImagesHelper(const QString &theGrabMethod, ArgType ... arguments);
+    template<typename... ArgType>
+    void doGrabHelper(const QString &theGrabMethod, ArgType... arguments);
+    template<typename... ArgType>
+    void doGrabImagesHelper(const QString &theGrabMethod, ArgType... arguments);
 };

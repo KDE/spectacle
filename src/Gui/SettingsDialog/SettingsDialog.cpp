@@ -9,23 +9,19 @@
 
 #include "GeneralOptionsPage.h"
 #include "SaveOptionsPage.h"
-#include "settings.h"
 #include "ShortcutsOptionsPage.h"
+#include "settings.h"
 
 #include <QFontDatabase>
 
 #include <KLocalizedString>
 #include <KShortcutWidget>
 
-
-
-SettingsDialog::SettingsDialog(QWidget *parent) :
-    KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
+SettingsDialog::SettingsDialog(QWidget *parent)
+    : KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
 {
-    addPage(new GeneralOptionsPage(this), Settings::self(),
-        i18n("General"),  QStringLiteral("spectacle"));
-    addPage(new SaveOptionsPage(this), Settings::self(),
-        i18n("Save"), QStringLiteral("document-save"));
+    addPage(new GeneralOptionsPage(this), Settings::self(), i18n("General"), QStringLiteral("spectacle"));
+    addPage(new SaveOptionsPage(this), Settings::self(), i18n("Save"), QStringLiteral("document-save"));
     mShortcutsPage = new ShortcutsOptionsPage(this);
     addPage(mShortcutsPage, i18n("Shortcuts"), QStringLiteral("preferences-desktop-keyboard"));
     connect(mShortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
@@ -48,7 +44,7 @@ bool SettingsDialog::hasChanged()
 
 bool SettingsDialog::isDefault()
 {
-    return currentPage()->name() !=  i18n("Shortcuts") && KConfigDialog::isDefault();
+    return currentPage()->name() != i18n("Shortcuts") && KConfigDialog::isDefault();
 }
 
 void SettingsDialog::updateSettings()
@@ -68,8 +64,3 @@ void SettingsDialog::updateWidgetsDefault()
     KConfigDialog::updateWidgetsDefault();
     mShortcutsPage->defaults();
 }
-
-
-
-
-

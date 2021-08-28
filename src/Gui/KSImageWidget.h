@@ -5,43 +5,39 @@
 
 #pragma once
 
+#include <QGraphicsDropShadowEffect>
 #include <QLabel>
 #include <QMouseEvent>
-#include <QPoint>
 #include <QPixmap>
-#include <QGraphicsDropShadowEffect>
+#include <QPoint>
 
-
-namespace SpectacleImage {
-    static const int SHADOW_RADIUS = 5;
+namespace SpectacleImage
+{
+static const int SHADOW_RADIUS = 5;
 }
 
 class KSImageWidget : public QLabel
 {
     Q_OBJECT
 
-
-    public:
-
+public:
     explicit KSImageWidget(QWidget *parent = nullptr);
     void setScreenshot(const QPixmap &pixmap);
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void dragInitiated();
 
-    protected:
-
-    void mousePressEvent(QMouseEvent *event)   override;
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event)    override;
-    void resizeEvent(QResizeEvent *event)      override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
-    private:
-
+private:
     void setScaledPixmap();
 
     QGraphicsDropShadowEffect *mDSEffect;
-    QPixmap                    mPixmap;
-    QPoint                     mDragStartPosition;
+    QPixmap mPixmap;
+    QPoint mDragStartPosition;
 };

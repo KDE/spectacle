@@ -6,7 +6,7 @@
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
-*/
+ */
 
 #ifndef KSGKIPIIMAGECOLLECTIONSHARED_H
 #define KSGKIPIIMAGECOLLECTIONSHARED_H
@@ -18,7 +18,6 @@
 class KSGKipiImageCollectionShared : public KIPI::ImageCollectionShared
 {
 public:
-
     explicit KSGKipiImageCollectionShared();
     ~KSGKipiImageCollectionShared() override;
 
@@ -30,10 +29,7 @@ public:
     bool isDirectory() override;
 
 private:
-
     QList<QUrl> mImages;
 };
 
 #endif
-
-

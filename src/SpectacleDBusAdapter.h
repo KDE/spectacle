@@ -5,21 +5,20 @@
 
 #pragma once
 
-#include <QDBusAbstractAdaptor>
 #include "SpectacleCore.h"
+#include <QDBusAbstractAdaptor>
 
-class SpectacleDBusAdapter: public QDBusAbstractAdaptor
+class SpectacleDBusAdapter : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.Spectacle")
-    public:
-
+public:
     SpectacleDBusAdapter(SpectacleCore *parent);
     virtual ~SpectacleDBusAdapter() = default;
 
     inline SpectacleCore *parent() const;
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     Q_NOREPLY void FullScreen(bool includeMousePointer);
     Q_NOREPLY void CurrentScreen(bool includeMousePointer);
@@ -27,7 +26,7 @@ class SpectacleDBusAdapter: public QDBusAbstractAdaptor
     Q_NOREPLY void WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer);
     Q_NOREPLY void RectangularRegion(bool includeMousePointer);
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void ScreenshotTaken(const QString &fileName);
     void ScreenshotFailed();

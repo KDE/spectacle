@@ -12,17 +12,16 @@
 /**
  * @todo write docs
  */
-class ProgressButton : public  QToolButton
+class ProgressButton : public QToolButton
 {
     Q_OBJECT
 public:
-
-    explicit ProgressButton(QWidget* parent);
+    explicit ProgressButton(QWidget *parent);
 
     void setProgress(double progress);
 
 protected:
-    void paintEvent(QPaintEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
     double mProgress = 0.0;
 };

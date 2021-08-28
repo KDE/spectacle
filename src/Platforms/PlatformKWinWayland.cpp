@@ -6,17 +6,17 @@
 
 #include "PlatformKWinWayland.h"
 
-#include <qplatformdefs.h>
-#include <QtConcurrent>
 #include <QApplication>
+#include <QDBusInterface>
+#include <QDBusPendingCall>
+#include <QDBusUnixFileDescriptor>
+#include <QFutureWatcher>
+#include <QGuiApplication>
 #include <QImage>
 #include <QPixmap>
-#include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
-#include <QDBusPendingCall>
-#include <QFutureWatcher>
 #include <QScreen>
-#include <QGuiApplication>
+#include <QtConcurrent>
+#include <qplatformdefs.h>
 
 #include <array>
 
@@ -86,7 +86,7 @@ static QVector<QImage> readImages(int thePipeFd)
 
     QImage lImage;
     QVector<QImage> imgs;
-    while (!lDataStream.atEnd()){
+    while (!lDataStream.atEnd()) {
         lDataStream >> lImage;
         if (!lImage.isNull()) {
             imgs << lImage;
@@ -98,9 +98,10 @@ static QVector<QImage> readImages(int thePipeFd)
 
 /* -- General Plumbing ------------------------------------------------------------------------- */
 
-PlatformKWinWayland::PlatformKWinWayland(QObject *parent) :
-    Platform(parent)
-{}
+PlatformKWinWayland::PlatformKWinWayland(QObject *parent)
+    : Platform(parent)
+{
+}
 
 QString PlatformKWinWayland::platformName() const
 {
@@ -109,18 +110,19 @@ QString PlatformKWinWayland::platformName() const
 
 static std::array<int, 3> s_plasmaVersion = {-1, -1, -1};
 
-std::array<int, 3> findPlasmaMinorVersion () {
+std::array<int, 3> findPlasmaMinorVersion()
+{
     if (s_plasmaVersion == std::array<int, 3>{-1, -1, -1}) {
         auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
-                                       QStringLiteral("/MainApplication"),
-                                       QStringLiteral("org.freedesktop.DBus.Properties"),
-                                       QStringLiteral("Get"));
+                                                      QStringLiteral("/MainApplication"),
+                                                      QStringLiteral("org.freedesktop.DBus.Properties"),
+                                                      QStringLiteral("Get"));
 
         message.setArguments({QStringLiteral("org.qtproject.Qt.QCoreApplication"), QStringLiteral("applicationVersion")});
 
         const auto resultMessage = QDBusConnection::sessionBus().call(message);
         if (resultMessage.type() != QDBusMessage::ReplyMessage) {
-            qWarning() << "Error querying plasma version" << resultMessage.errorName() << resultMessage .errorMessage();
+            qWarning() << "Error querying plasma version" << resultMessage.errorName() << resultMessage.errorMessage();
             return s_plasmaVersion;
         }
         QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
@@ -154,7 +156,7 @@ std::array<int, 3> findPlasmaMinorVersion () {
 
 Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
 {
-    Platform::GrabModes lSupportedModes({ Platform::GrabMode::AllScreens, GrabMode::WindowUnderCursor });
+    Platform::GrabModes lSupportedModes({Platform::GrabMode::AllScreens, GrabMode::WindowUnderCursor});
     QList<QScreen *> screens = QApplication::screens();
 
     // TODO remove sometime after Plasma 5.21 is released
@@ -193,15 +195,15 @@ Platform::ShutterModes PlatformKWinWayland::supportedShutterModes() const
     // TODO remove sometime after Plasma 5.20 is released
     auto plasmaVersion = findPlasmaMinorVersion();
     if (plasmaVersion.at(0) != -1 && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20))) {
-        return { ShutterMode::Immediate };
+        return {ShutterMode::Immediate};
     } else {
-        return { ShutterMode::OnClick };
+        return {ShutterMode::OnClick};
     }
 }
 
 void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
-    switch(theGrabMode) {
+    switch (theGrabMode) {
     case GrabMode::AllScreens:
         doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer, true);
         return;
@@ -209,8 +211,7 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
         doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer, false);
         return;
 
-    case GrabMode::PerScreenImageNative:
-    {
+    case GrabMode::PerScreenImageNative: {
         const QList<QScreen *> screens = QGuiApplication::screens();
         QStringList screenNames;
         screenNames.reserve(screens.count());
@@ -251,39 +252,35 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
 void PlatformKWinWayland::startReadImage(int theReadPipe)
 {
     auto lWatcher = new QFutureWatcher<QImage>(this);
-    QObject::connect(lWatcher, &QFutureWatcher<QImage>::finished, this,
-        [lWatcher, this] () {
-            lWatcher->deleteLater();
-            const QImage lImage = lWatcher->result();
-            if (lImage.isNull()) {
-                Q_EMIT newScreenshotFailed();
-            } else {
-                Q_EMIT newScreenshotTaken(QPixmap::fromImage(lImage));
-            }
+    QObject::connect(lWatcher, &QFutureWatcher<QImage>::finished, this, [lWatcher, this]() {
+        lWatcher->deleteLater();
+        const QImage lImage = lWatcher->result();
+        if (lImage.isNull()) {
+            Q_EMIT newScreenshotFailed();
+        } else {
+            Q_EMIT newScreenshotTaken(QPixmap::fromImage(lImage));
         }
-    );
+    });
     lWatcher->setFuture(QtConcurrent::run(readImage, theReadPipe));
 }
 
 void PlatformKWinWayland::startReadImages(int theReadPipe)
 {
     auto lWatcher = new QFutureWatcher<QVector<QImage>>(this);
-    QObject::connect(lWatcher, &QFutureWatcher<QVector<QImage>>::finished, this,
-        [lWatcher, this] () {
-            lWatcher->deleteLater();
-            auto result = lWatcher->result();
-            if (result.isEmpty()) {
-                Q_EMIT newScreenshotFailed();
-            } else {
-                Q_EMIT newScreensScreenshotTaken(result);
-            }
+    QObject::connect(lWatcher, &QFutureWatcher<QVector<QImage>>::finished, this, [lWatcher, this]() {
+        lWatcher->deleteLater();
+        auto result = lWatcher->result();
+        if (result.isEmpty()) {
+            Q_EMIT newScreenshotFailed();
+        } else {
+            Q_EMIT newScreensScreenshotTaken(result);
         }
-    );
+    });
     lWatcher->setFuture(QtConcurrent::run(readImages, theReadPipe));
 }
 
-template <typename ... ArgType>
-void PlatformKWinWayland::callDBus(const QString &theGrabMethod, int theWriteFile, ArgType ... arguments)
+template<typename... ArgType>
+void PlatformKWinWayland::callDBus(const QString &theGrabMethod, int theWriteFile, ArgType... arguments)
 {
     QDBusInterface lInterface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
     QDBusPendingCall pcall = lInterface.asyncCall(theGrabMethod, QVariant::fromValue(QDBusUnixFileDescriptor(theWriteFile)), arguments...);
@@ -293,8 +290,7 @@ void PlatformKWinWayland::callDBus(const QString &theGrabMethod, int theWriteFil
 void PlatformKWinWayland::checkDbusPendingCall(const QDBusPendingCall &pcall)
 {
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished,
-                     this, [this](QDBusPendingCallWatcher* watcher) {
+    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
         if (watcher->isError()) {
             const auto error = watcher->error();
             qWarning() << "Error calling KWin DBus interface:" << error.name() << error.message();
@@ -304,11 +300,11 @@ void PlatformKWinWayland::checkDbusPendingCall(const QDBusPendingCall &pcall)
     });
 }
 
-template <typename ... ArgType>
-void PlatformKWinWayland::doGrabHelper(const QString &theGrabMethod, ArgType ... arguments)
+template<typename... ArgType>
+void PlatformKWinWayland::doGrabHelper(const QString &theGrabMethod, ArgType... arguments)
 {
     int lPipeFds[2];
-    if (pipe2(lPipeFds, O_CLOEXEC|O_NONBLOCK) != 0) {
+    if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
         emit newScreenshotFailed();
         return;
     }
@@ -319,11 +315,11 @@ void PlatformKWinWayland::doGrabHelper(const QString &theGrabMethod, ArgType ...
     close(lPipeFds[1]);
 }
 
-template <typename ... ArgType>
-void PlatformKWinWayland::doGrabImagesHelper(const QString &theGrabMethod, ArgType ... arguments)
+template<typename... ArgType>
+void PlatformKWinWayland::doGrabImagesHelper(const QString &theGrabMethod, ArgType... arguments)
 {
     int lPipeFds[2];
-    if (pipe2(lPipeFds, O_CLOEXEC|O_NONBLOCK) != 0) {
+    if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
         emit newScreenshotFailed();
         return;
     }

@@ -16,13 +16,11 @@ class GeneralOptionsPage : public QWidget
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit GeneralOptionsPage(QWidget *parent = nullptr);
     ~GeneralOptionsPage() override;
 
-    private:
-
+private:
     void updateAutomaticActions();
 
     QScopedPointer<Ui_GeneralOptions> m_ui;

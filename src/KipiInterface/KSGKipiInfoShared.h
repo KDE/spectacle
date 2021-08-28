@@ -6,30 +6,26 @@
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
-*/
+ */
 
 #ifndef KSGKIPIINFOSHARED_H
 #define KSGKIPIINFOSHARED_H
-
 
 #include <KIPI/ImageInfoShared>
 #include <KIPI/Interface>
 
 class KSGKipiInfoShared : public KIPI::ImageInfoShared
 {
-    public:
-
+public:
     explicit KSGKipiInfoShared(KIPI::Interface *interface, const QUrl &url);
     ~KSGKipiInfoShared() override;
 
-    void addAttributes(const QMap< QString, QVariant > &) override;
+    void addAttributes(const QMap<QString, QVariant> &) override;
     void delAttributes(const QStringList &) override;
     void clearAttributes() override;
-    QMap< QString, QVariant > attributes() override;
+    QMap<QString, QVariant> attributes() override;
     virtual void setDescription(const QString &);
     virtual QString description();
 };
 
 #endif
-
-

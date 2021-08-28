@@ -8,11 +8,11 @@
 #include "KSWidget.h"
 #include "spectacle_gui_debug.h"
 
-#include "KSImageWidget.h"
-#include "settings.h"
-#include "SmartSpinBox.h"
-#include "ProgressButton.h"
 #include "ExportManager.h"
+#include "KSImageWidget.h"
+#include "ProgressButton.h"
+#include "SmartSpinBox.h"
+#include "settings.h"
 
 #include <QAction>
 #include <QApplication>
@@ -52,14 +52,11 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mCaptureArea = new QComboBox(this);
 
     if (theGrabModes.testFlag(Platform::GrabMode::AllScreens)) {
-
-        QString lFullScreenLabel = QApplication::screens().count() == 1
-                ? i18n("Full Screen")
-                : i18n("Full Screen (All Monitors)");
+        QString lFullScreenLabel = QApplication::screens().count() == 1 ? i18n("Full Screen") : i18n("Full Screen (All Monitors)");
 
         mCaptureArea->insertItem(0, lFullScreenLabel, Spectacle::CaptureMode::AllScreens);
     }
-    if (theGrabModes.testFlag(Platform::GrabMode::AllScreensScaled) &&  QApplication::screens().count() > 1) {
+    if (theGrabModes.testFlag(Platform::GrabMode::AllScreensScaled) && QApplication::screens().count() > 1) {
         QString lFullScreenLabel = i18n("Full Screen (All Monitors, scaled)");
         mCaptureArea->insertItem(1, lFullScreenLabel, Spectacle::CaptureMode::AllScreensScaled);
     }
@@ -120,8 +117,9 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mWindowDecorations->setObjectName(QStringLiteral("kcfg_includeDecorations"));
 
     mCaptureTransientOnly = new QCheckBox(i18n("Capture the current pop-up only"), this);
-    mCaptureTransientOnly->setToolTip(i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
-                                           "If disabled, the pop-up is captured along with the parent window"));
+    mCaptureTransientOnly->setToolTip(
+        i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
+             "If disabled, the pop-up is captured along with the parent window"));
     mCaptureTransientOnly->setEnabled(false);
     mCaptureTransientOnly->setObjectName(QStringLiteral("kcfg_transientOnly"));
 
@@ -190,9 +188,9 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
 
 int KSWidget::imagePaddingWidth() const
 {
-    int lRightLayoutLeft  = 0;
+    int lRightLayoutLeft = 0;
     int lRightLayoutRight = 0;
-    int lMainLayoutRight  = 0;
+    int lMainLayoutRight = 0;
 
     mRightLayout->getContentsMargins(&lRightLayoutLeft, nullptr, &lRightLayoutRight, nullptr);
     mMainLayout->getContentsMargins(nullptr, nullptr, &lMainLayoutRight, nullptr);
@@ -231,9 +229,7 @@ void KSWidget::newScreenshotClicked()
 {
     int lDelay = mCaptureOnClick->isChecked() ? -1 : (mDelayMsec->value() * 1000);
     auto lMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->currentData().toInt());
-    if (mTransientWithParentAvailable &&
-        lMode == Spectacle::CaptureMode::WindowUnderCursor &&
-        !(mCaptureTransientOnly->isChecked())) {
+    if (mTransientWithParentAvailable && lMode == Spectacle::CaptureMode::WindowUnderCursor && !(mCaptureTransientOnly->isChecked())) {
         lMode = Spectacle::CaptureMode::TransientWithParent;
     }
     setButtonState(State::Cancel);
@@ -252,7 +248,7 @@ void KSWidget::onClickStateChanged(int theState)
 void KSWidget::captureModeChanged(int theIndex)
 {
     Spectacle::CaptureMode captureMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->itemData(theIndex).toInt());
-    switch(captureMode) {
+    switch (captureMode) {
     case Spectacle::CaptureMode::WindowUnderCursor:
         mWindowDecorations->setEnabled(true);
         if (mTransientWithParentAvailable) {

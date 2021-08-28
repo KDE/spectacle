@@ -6,52 +6,44 @@
 #pragma once
 
 #include <QDialog>
-#include <QMenu>
-#include <QFrame>
-#include <QToolButton>
 #include <QDialogButtonBox>
+#include <QFrame>
+#include <QMenu>
 #include <QStackedLayout>
+#include <QToolButton>
 
 #include <KMessageWidget>
 #include <KNS3/KMoreToolsMenuFactory>
 
 #include "SpectacleCommon.h"
 
-#include "KSWidget.h"
-#include "ExportMenu.h"
-#include "Platforms/Platform.h"
 #include "Config.h"
+#include "ExportMenu.h"
+#include "KSWidget.h"
+#include "Platforms/Platform.h"
 
 #include <memory>
 
-class KSMainWindow: public QDialog
+class KSMainWindow : public QDialog
 {
     Q_OBJECT
 
-    public:
-
+public:
     explicit KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent = nullptr);
     virtual ~KSMainWindow() = default;
 
-    enum class MessageDuration {
-        AutoHide,
-        Persistent
-    };
+    enum class MessageDuration { AutoHide, Persistent };
 
-    private:
-
-    enum class QuitBehavior {
-        QuitImmediately,
-        QuitExternally
-    };
+private:
+    enum class QuitBehavior { QuitImmediately, QuitExternally };
     void quit(const QuitBehavior quitBehavior = QuitBehavior::QuitImmediately);
-    void showInlineMessage(const QString& message,
-                        const KMessageWidget::MessageType messageType,
-                        const MessageDuration messageDuration = MessageDuration::AutoHide,
-                        const QList<QAction*>& actions  = {});
+    void showInlineMessage(const QString &message,
+                           const KMessageWidget::MessageType messageType,
+                           const MessageDuration messageDuration = MessageDuration::AutoHide,
+                           const QList<QAction *> &actions = {});
     int windowWidth(const QPixmap &pixmap) const;
 
-    private Q_SLOTS:
+private Q_SLOTS:
 
     void captureScreenshot(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
     void showPrintDialog();
@@ -69,53 +61,51 @@ class KSMainWindow: public QDialog
     void copyLocation();
     void restoreWindowTitle();
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     void setScreenshotAndShow(const QPixmap &pixmap);
     void imageSaved(const QUrl &location);
     void imageSavedAndCopied(const QUrl &location);
     void screenshotFailed();
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void newScreenshotRequest(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
     void dragAndDropRequest();
 
-    protected:
-
+protected:
     void moveEvent(QMoveEvent *event) override;
     QSize sizeHint() const override;
 
-    private:
-
+private:
     void keyPressEvent(QKeyEvent *event) override;
 
-    KSWidget         *const mKSWidget;
-    QFrame           *const mDivider;
+    KSWidget *const mKSWidget;
+    QFrame *const mDivider;
     QDialogButtonBox *const mDialogButtonBox;
-    QToolButton      *const mConfigureButton;
-    QPushButton      *const mToolsButton;
-    QPushButton      *const mSendToButton;
-    QToolButton      *const mClipboardButton;
-    QMenu            *const mClipboardMenu;
-    QAction          *mClipboardLocationAction = nullptr;
-    QAction          *mClipboardImageAction = nullptr;
-    QToolButton      *const mSaveButton;
-    QMenu            *const mSaveMenu;
-    QAction          *mSaveAsAction = nullptr;
-    QAction          *mSaveAction = nullptr;
-    QAction          *mOpenContaining = nullptr;
-    KMessageWidget   *const mMessageWidget;
-    QMenu            *const mToolsMenu;
-    QMenu            *mScreenRecorderToolsMenu = nullptr;
+    QToolButton *const mConfigureButton;
+    QPushButton *const mToolsButton;
+    QPushButton *const mSendToButton;
+    QToolButton *const mClipboardButton;
+    QMenu *const mClipboardMenu;
+    QAction *mClipboardLocationAction = nullptr;
+    QAction *mClipboardImageAction = nullptr;
+    QToolButton *const mSaveButton;
+    QMenu *const mSaveMenu;
+    QAction *mSaveAsAction = nullptr;
+    QAction *mSaveAction = nullptr;
+    QAction *mOpenContaining = nullptr;
+    KMessageWidget *const mMessageWidget;
+    QMenu *const mToolsMenu;
+    QMenu *mScreenRecorderToolsMenu = nullptr;
     std::unique_ptr<KMoreToolsMenuFactory> mScreenrecorderToolsMenuFactory;
-    ExportMenu       *const mExportMenu;
+    ExportMenu *const mExportMenu;
     Platform::ShutterModes mShutterModes;
-    QTimer           *mHideMessageWidgetTimer = nullptr;
-    QStackedLayout   *mStack = nullptr;
+    QTimer *mHideMessageWidgetTimer = nullptr;
+    QStackedLayout *mStack = nullptr;
 
 #ifdef KIMAGEANNOTATOR_FOUND
-    QToolButton      *const mAnnotateButton;
-    bool             mAnnotatorActive;
+    QToolButton *const mAnnotateButton;
+    bool mAnnotatorActive;
 #endif
 };

@@ -11,7 +11,7 @@
 
 #include <KColorScheme>
 
-ProgressButton::ProgressButton(QWidget* parent)
+ProgressButton::ProgressButton(QWidget *parent)
     : QToolButton{parent}
 {
 }
@@ -22,14 +22,14 @@ void ProgressButton::setProgress(double progress)
     repaint();
 }
 
-void ProgressButton::paintEvent(QPaintEvent* event)
+void ProgressButton::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
-    //Draw Button without text and icon, note the missing text and icon in options
+    // Draw Button without text and icon, note the missing text and icon in options
     QStylePainter painter(this);
     QStyleOption toolbuttonOptions;
     toolbuttonOptions.initFrom(this);
-     if (isDown()) {
+    if (isDown()) {
         toolbuttonOptions.state.setFlag(QStyle::State_Sunken);
     } else {
         toolbuttonOptions.state.setFlag(QStyle::State_Raised);
@@ -37,19 +37,18 @@ void ProgressButton::paintEvent(QPaintEvent* event)
     painter.drawPrimitive(QStyle::PE_PanelButtonTool, toolbuttonOptions);
     auto pal = palette();
     if (!qFuzzyIsNull(mProgress)) {
-        //Draw overlay
-        KColorScheme::adjustForeground(pal, KColorScheme::PositiveText, QPalette::Button,  KColorScheme::Button);
+        // Draw overlay
+        KColorScheme::adjustForeground(pal, KColorScheme::PositiveText, QPalette::Button, KColorScheme::Button);
         QStyleOption overlayOption;
-        overlayOption.rect = layoutDirection() == Qt::LeftToRight
-                                ? QRect(0, 0, width() *  mProgress, height())
-                                : QRect(width() * (1-mProgress), 0, width(), height());
+        overlayOption.rect =
+            layoutDirection() == Qt::LeftToRight ? QRect(0, 0, width() * mProgress, height()) : QRect(width() * (1 - mProgress), 0, width(), height());
         overlayOption.palette = pal;
         overlayOption.state.setFlag(QStyle::State_Sunken, isDown());
         painter.setCompositionMode(QPainter::CompositionMode_SourceAtop);
         painter.setOpacity(0.5);
         painter.drawPrimitive(QStyle::PE_PanelButtonTool, overlayOption);
     }
-    //Finally draw text and icon and outline
+    // Finally draw text and icon and outline
     QStyleOptionToolButton labelOptions;
     labelOptions.initFrom(this);
     labelOptions.text = text();

@@ -6,25 +6,34 @@
  *  SPDX-FileCopyrightText: 2008-2009 Alex Fiestas <alex@eyeos.org>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
-*/
+ */
 
 #include "KSGKipiInterface.h"
-#include "KSGKipiInfoShared.h"
-#include "KSGKipiImageCollectionShared.h"
 #include "KSGKipiImageCollectionSelector.h"
+#include "KSGKipiImageCollectionShared.h"
+#include "KSGKipiInfoShared.h"
 
 KSGKipiInterface::KSGKipiInterface(QObject *parent)
     : KIPI::Interface(parent)
-{}
+{
+}
 
 KSGKipiInterface::~KSGKipiInterface()
-{}
+{
+}
 
 // no-op single image handlers
 
-bool KSGKipiInterface::addImage(const QUrl &, QString &)  { return true; }
-void KSGKipiInterface::delImage(const QUrl &)             {}
-void KSGKipiInterface::refreshImages(const QList<QUrl> &) {}
+bool KSGKipiInterface::addImage(const QUrl &, QString &)
+{
+    return true;
+}
+void KSGKipiInterface::delImage(const QUrl &)
+{
+}
+void KSGKipiInterface::refreshImages(const QList<QUrl> &)
+{
+}
 
 // album handlers. mostly no-op
 
@@ -40,7 +49,7 @@ KIPI::ImageCollection KSGKipiInterface::currentSelection()
 
 QList<KIPI::ImageCollection> KSGKipiInterface::allAlbums()
 {
-    return QList<KIPI::ImageCollection>({ currentAlbum() });
+    return QList<KIPI::ImageCollection>({currentAlbum()});
 }
 
 // features and info

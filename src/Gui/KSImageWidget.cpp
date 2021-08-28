@@ -8,9 +8,9 @@
 #include <QGuiApplication>
 #include <QStyleHints>
 
-KSImageWidget::KSImageWidget(QWidget *parent):
-    QLabel(parent),
-    mPixmap(QPixmap())
+KSImageWidget::KSImageWidget(QWidget *parent)
+    : QLabel(parent)
+    , mPixmap(QPixmap())
 {
     mDSEffect = new QGraphicsDropShadowEffect(this);
 
@@ -77,4 +77,3 @@ void KSImageWidget::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event)
     setScaledPixmap();
 }
-

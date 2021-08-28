@@ -4,16 +4,15 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QtMath>
 #include <KLocalizedString>
+#include <QtMath>
 
 #include "SmartSpinBox.h"
 
-SmartSpinBox::SmartSpinBox(QWidget *parent) :
-    QDoubleSpinBox(parent)
+SmartSpinBox::SmartSpinBox(QWidget *parent)
+    : QDoubleSpinBox(parent)
 {
-    connect(this, qOverload<qreal>(&SmartSpinBox::valueChanged),
-            this, &SmartSpinBox::suffixChangeHandler);
+    connect(this, qOverload<qreal>(&SmartSpinBox::valueChanged), this, &SmartSpinBox::suffixChangeHandler);
 }
 
 QString SmartSpinBox::textFromValue(double val) const

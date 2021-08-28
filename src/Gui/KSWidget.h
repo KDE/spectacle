@@ -5,12 +5,12 @@
 
 #pragma once
 
-#include <QWidget>
 #include <QPixmap>
+#include <QWidget>
 
-#include "SpectacleCommon.h"
-#include "Platforms/Platform.h"
 #include "Config.h"
+#include "Platforms/Platform.h"
+#include "SpectacleCommon.h"
 
 class QAction;
 class QGridLayout;
@@ -28,34 +28,30 @@ class KSImageWidget;
 class ProgressButton;
 class SmartSpinBox;
 
-namespace kImageAnnotator {
-    class KImageAnnotator;
+namespace kImageAnnotator
+{
+class KImageAnnotator;
 }
 
 class KSWidget : public QWidget
 {
     Q_OBJECT
 
-	public:
-
+public:
     explicit KSWidget(Platform::GrabModes theGrabModes, QWidget *parent = nullptr);
     virtual ~KSWidget() = default;
 
-
-    enum class State {
-        TakeNewScreenshot,
-        Cancel
-    };
+    enum class State { TakeNewScreenshot, Cancel };
 
     int imagePaddingWidth() const;
 
-	Q_SIGNALS:
+Q_SIGNALS:
 
     void dragInitiated();
     void newScreenshotRequest(Spectacle::CaptureMode theCaptureMode, int theCaptureDelat, bool theIncludePointer, bool theIncludeDecorations);
     void screenshotCanceled();
 
-	public Q_SLOTS:
+public Q_SLOTS:
 
     void setScreenshotPixmap(const QPixmap &thePixmap);
     void lockOnClickDisabled();
@@ -68,37 +64,36 @@ class KSWidget : public QWidget
     void hideAnnotator();
 #endif
 
-    private Q_SLOTS:
+private Q_SLOTS:
 
     void newScreenshotClicked();
     void onClickStateChanged(int theState);
     void captureModeChanged(int theIndex);
 
-	private:
-
-    QGridLayout   *mMainLayout                   { nullptr };
-    QHBoxLayout   *mDelayLayout                  { nullptr };
-    QVBoxLayout   *mRightLayout                  { nullptr };
-    QFormLayout   *mCaptureModeForm              { nullptr };
-    QVBoxLayout   *mContentOptionsForm           { nullptr };
-    KSImageWidget *mImageWidget                  { nullptr };
-    ProgressButton*mTakeScreenshotButton;
-    QComboBox     *mCaptureArea                  { nullptr };
-    SmartSpinBox  *mDelayMsec                    { nullptr };
-    QCheckBox     *mCaptureOnClick               { nullptr };
-    QCheckBox     *mMousePointer                 { nullptr };
-    QCheckBox     *mWindowDecorations            { nullptr };
-    QCheckBox     *mCaptureTransientOnly         { nullptr };
-    QCheckBox     *mQuitAfterSaveOrCopy          { nullptr };
-    QLabel        *mCaptureModeLabel             { nullptr };
-    QLabel        *mContentOptionsLabel          { nullptr };
-    bool           mTransientWithParentAvailable { false };
-    QAction       *mTakeNewScreenshotAction{ nullptr };
-    QAction       *mCancelAction{ nullptr };
-    KConfigDialogManager *mConfigManager{ nullptr };
-    QStackedLayout *mStack                       { nullptr };
-    QWidget *placeHolder{ nullptr };
+private:
+    QGridLayout *mMainLayout{nullptr};
+    QHBoxLayout *mDelayLayout{nullptr};
+    QVBoxLayout *mRightLayout{nullptr};
+    QFormLayout *mCaptureModeForm{nullptr};
+    QVBoxLayout *mContentOptionsForm{nullptr};
+    KSImageWidget *mImageWidget{nullptr};
+    ProgressButton *mTakeScreenshotButton;
+    QComboBox *mCaptureArea{nullptr};
+    SmartSpinBox *mDelayMsec{nullptr};
+    QCheckBox *mCaptureOnClick{nullptr};
+    QCheckBox *mMousePointer{nullptr};
+    QCheckBox *mWindowDecorations{nullptr};
+    QCheckBox *mCaptureTransientOnly{nullptr};
+    QCheckBox *mQuitAfterSaveOrCopy{nullptr};
+    QLabel *mCaptureModeLabel{nullptr};
+    QLabel *mContentOptionsLabel{nullptr};
+    bool mTransientWithParentAvailable{false};
+    QAction *mTakeNewScreenshotAction{nullptr};
+    QAction *mCancelAction{nullptr};
+    KConfigDialogManager *mConfigManager{nullptr};
+    QStackedLayout *mStack{nullptr};
+    QWidget *placeHolder{nullptr};
 #ifdef KIMAGEANNOTATOR_FOUND
-    kImageAnnotator::KImageAnnotator *mAnnotator { nullptr };
+    kImageAnnotator::KImageAnnotator *mAnnotator{nullptr};
 #endif
 };

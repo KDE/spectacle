@@ -4,12 +4,12 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include "Config.h"
 #include "PlatformLoader.h"
+#include "Config.h"
 
-#include "PlatformNull.h"
 #include "PlatformKWinWayland.h"
 #include "PlatformKWinWayland2.h"
+#include "PlatformNull.h"
 
 #ifdef XCB_FOUND
 #include "PlatformXcb.h"

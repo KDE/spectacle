@@ -10,9 +10,10 @@
 
 /* -- Null Platform ---------------------------------------------------------------------------- */
 
-PlatformNull::PlatformNull(QObject *parent) :
-    Platform(parent)
-{}
+PlatformNull::PlatformNull(QObject *parent)
+    : Platform(parent)
+{
+}
 
 QString PlatformNull::platformName() const
 {
@@ -21,12 +22,13 @@ QString PlatformNull::platformName() const
 
 Platform::GrabModes PlatformNull::supportedGrabModes() const
 {
-    return { GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent | GrabMode::AllScreensScaled };
+    return {GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent
+            | GrabMode::AllScreensScaled};
 }
 
 Platform::ShutterModes PlatformNull::supportedShutterModes() const
 {
-    return { ShutterMode::Immediate | ShutterMode::OnClick };
+    return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
 void PlatformNull::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)

@@ -6,10 +6,10 @@
  */
 
 #include "Config.h"
-#include "settings.h"
 #include "SpectacleCommon.h"
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
+#include "settings.h"
 
 #ifdef KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS
 #include <kImageAnnotator/KImageAnnotator.h>
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     aboutData.processCommandLine(&lCmdLineParser);
 
     // and new-instance
-    if (lCmdLineParser.isSet(QStringLiteral("new-instance"))){
+    if (lCmdLineParser.isSet(QStringLiteral("new-instance"))) {
         lCore.init();
 
         QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);

@@ -7,39 +7,36 @@
 
 #include <SpectacleCommon.h>
 
-#include <QObject>
+#include <KLocalizedString>
+#include <QDateTime>
 #include <QIODevice>
 #include <QMap>
-#include <QPrinter>
+#include <QObject>
 #include <QPixmap>
-#include <QDateTime>
+#include <QPrinter>
 #include <QUrl>
-#include <KLocalizedString>
 
 class QTemporaryDir;
 
-class ExportManager: public QObject
+class ExportManager : public QObject
 {
     Q_OBJECT
 
     // singleton-ize the class
 
-    public:
+public:
+    static ExportManager *instance();
 
-    static ExportManager* instance();
-
-    private:
-
+private:
     explicit ExportManager(QObject *parent = nullptr);
     virtual ~ExportManager();
 
-    ExportManager(ExportManager const&) = delete;
-    void operator= (ExportManager const&) = delete;
+    ExportManager(ExportManager const &) = delete;
+    void operator=(ExportManager const &) = delete;
 
     // now the usual stuff
 
-    public:
-
+public:
     QString defaultSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
@@ -54,7 +51,7 @@ class ExportManager: public QObject
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
-    Q_SIGNALS:
+Q_SIGNALS:
 
     void errorMessage(const QString &str);
     void imageSaved(const QUrl &savedAt);
@@ -63,7 +60,7 @@ class ExportManager: public QObject
     void imageSavedAndCopied(const QUrl &savedAt);
     void forceNotify(const QUrl &savedAt);
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     QUrl getAutosaveFilename();
     QUrl tempSave();
@@ -76,13 +73,11 @@ class ExportManager: public QObject
     void doCopyLocationToClipboard(bool notify = false);
     void doPrint(QPrinter *printer);
 
-    private:
-
+private:
     QString truncatedFilename(const QString &filename);
     QString makeAutosaveFilename();
-    using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl&) const;
-    QString autoIncrementFilename(const QString &baseName, const QString &extension,
-                                  FileNameAlreadyUsedCheck isFileNameUsed);
+    using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
+    QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed);
     QString makeSaveMimetype(const QUrl &url);
     bool writeImage(QIODevice *device, const QByteArray &format);
     bool save(const QUrl &url);
@@ -97,5 +92,5 @@ class ExportManager: public QObject
     QTemporaryDir *mTempDir = nullptr;
     QList<QUrl> mUsedTempFileNames;
     QString mWindowTitle;
-    Spectacle::CaptureMode mCaptureMode { Spectacle::CaptureMode::AllScreens };
+    Spectacle::CaptureMode mCaptureMode{Spectacle::CaptureMode::AllScreens};
 };

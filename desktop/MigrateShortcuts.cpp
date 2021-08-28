@@ -1,25 +1,24 @@
 #include <iostream>
 
-#include <QCoreApplication>
-#include <QDBusInterface>
-#include <QString>
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KGlobalAccel>
 #include <KLocalizedString>
+#include <QCoreApplication>
+#include <QDBusInterface>
+#include <QString>
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
-    QDBusInterface khotkeys(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/khotkeys"),
-        QStringLiteral("org.kde.khotkeys"));
+    QDBusInterface khotkeys(QStringLiteral("org.kde.kded5"), QStringLiteral("/modules/khotkeys"), QStringLiteral("org.kde.khotkeys"));
     KConfig khotkeysrc(QStringLiteral("khotkeysrc"), KConfig::SimpleConfig);
     int dataCount = KConfigGroup(&khotkeysrc, "Data").readEntry("DataCount", 0);
     bool found_spectacle = false;
     int spectacleIndex;
     for (int i = 1; i <= dataCount; ++i) {
-        if( KConfigGroup(&khotkeysrc, QStringLiteral("Data_%1").arg(i)).readEntry("ImportId", QString()) == QLatin1String("spectacle")) {
+        if (KConfigGroup(&khotkeysrc, QStringLiteral("Data_%1").arg(i)).readEntry("ImportId", QString()) == QLatin1String("spectacle")) {
             found_spectacle = true;
             spectacleIndex = i;
             break;
@@ -60,16 +59,15 @@ int main(int argc, char **argv)
         khotkeysrc.deleteGroup(QStringLiteral("Data_%1Conditions").arg(spectacleIndex));
         khotkeysrc.sync();
     }
-     QDBusInterface kglobalaccel(QStringLiteral("org.kde.kglobalaccel"), QStringLiteral("/kglobalaccel"),
-        QStringLiteral("org.kde.KGlobalAccel"));
+    QDBusInterface kglobalaccel(QStringLiteral("org.kde.kglobalaccel"), QStringLiteral("/kglobalaccel"), QStringLiteral("org.kde.KGlobalAccel"));
     // Unregister the khotkeysActions from globalAccel, removeAll didn't Work, so using D-Bus
-    for(const QString &action : ids) {
+    for (const QString &action : ids) {
         kglobalaccel.call(QStringLiteral("unregister"), QStringLiteral("khotkeys"), action);
     }
-    //Setup the default Shortcuts
-     KActionCollection shortCutActions(static_cast<QObject*>(nullptr));
-     shortCutActions.setComponentName(QStringLiteral("org.kde.spectacle.desktop"));
-     shortCutActions.setComponentDisplayName(QStringLiteral("Spectacle"));
+    // Setup the default Shortcuts
+    KActionCollection shortCutActions(static_cast<QObject *>(nullptr));
+    shortCutActions.setComponentName(QStringLiteral("org.kde.spectacle.desktop"));
+    shortCutActions.setComponentDisplayName(QStringLiteral("Spectacle"));
     {
         QAction *action = new QAction(i18n("Launch Spectacle"));
         action->setObjectName(QStringLiteral("_launch"));
@@ -95,14 +93,14 @@ int main(int argc, char **argv)
         action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
         shortCutActions.addAction(action->objectName(), action);
     }
-    QAction* openAction = shortCutActions.action(QStringLiteral("_launch"));
+    QAction *openAction = shortCutActions.action(QStringLiteral("_launch"));
     KGlobalAccel::self()->setDefaultShortcut(openAction, {Qt::Key_Print});
-    QAction* fullScreenAction = shortCutActions.action(QStringLiteral("FullScreenScreenShot"));
+    QAction *fullScreenAction = shortCutActions.action(QStringLiteral("FullScreenScreenShot"));
     KGlobalAccel::self()->setDefaultShortcut(fullScreenAction, {Qt::SHIFT | Qt::Key_Print});
-    //QAction* currentScreenAction = shortCutActions.action(QStringLiteral("CurrentMonitorScreenShot"));
-    QAction* activeWindowAction = shortCutActions.action(QStringLiteral("ActiveWindowScreenShot"));
+    // QAction* currentScreenAction = shortCutActions.action(QStringLiteral("CurrentMonitorScreenShot"));
+    QAction *activeWindowAction = shortCutActions.action(QStringLiteral("ActiveWindowScreenShot"));
     KGlobalAccel::self()->setDefaultShortcut(activeWindowAction, {Qt::META | Qt::Key_Print});
-    QAction* regionAction = shortCutActions.action(QStringLiteral("RectangularRegionScreenShot"));
+    QAction *regionAction = shortCutActions.action(QStringLiteral("RectangularRegionScreenShot"));
     KGlobalAccel::self()->setDefaultShortcut(regionAction, {Qt::META | Qt::SHIFT | Qt::Key_Print});
     // Finally reinstate the old shortcuts
     if (found_spectacle) {
