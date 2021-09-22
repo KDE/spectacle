@@ -27,10 +27,10 @@ int main(int argc, char **argv)
 {
     // set up the application
 
-    QApplication app(argc, argv);
+    QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
+    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
-    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+    QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain("spectacle");
     QCoreApplication::setOrganizationDomain(QStringLiteral("org.kde"));
