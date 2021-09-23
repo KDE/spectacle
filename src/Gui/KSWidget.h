@@ -39,7 +39,7 @@ class KSWidget : public QWidget
 
 public:
     explicit KSWidget(Platform::GrabModes theGrabModes, QWidget *parent = nullptr);
-    virtual ~KSWidget() = default;
+    ~KSWidget() override = default;
 
     enum class State { TakeNewScreenshot, Cancel };
 
