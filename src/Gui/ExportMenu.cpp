@@ -18,6 +18,9 @@
 
 #include <QJsonArray>
 #include <QTimer>
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 ExportMenu::ExportMenu(QWidget *parent)
     : QMenu(parent)
@@ -27,7 +30,7 @@ ExportMenu::ExportMenu(QWidget *parent)
 #endif
     , mExportManager(ExportManager::instance())
 {
-    QTimer::singleShot(300, this, &ExportMenu::populateMenu);
+    QTimer::singleShot(300ms, this, &ExportMenu::populateMenu);
 }
 
 void ExportMenu::populateMenu()
