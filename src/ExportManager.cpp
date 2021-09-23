@@ -302,7 +302,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
         imageWriter.setCompression(50);
     }
     if (!(imageWriter.canWrite())) {
-        emit errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
+        Q_EMIT errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
     }
 
@@ -316,10 +316,10 @@ bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
     const QDir dir(dirPath.path());
 
     if (!dir.mkpath(QStringLiteral("."))) {
-        emit errorMessage(xi18nc("@info",
-                                 "Cannot save screenshot because creating "
-                                 "the directory failed:<nl/><filename>%1</filename>",
-                                 dirPath.path()));
+        Q_EMIT errorMessage(xi18nc("@info",
+                                   "Cannot save screenshot because creating "
+                                   "the directory failed:<nl/><filename>%1</filename>",
+                                   dirPath.path()));
         return false;
     }
 
@@ -327,7 +327,7 @@ bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
 
     outputFile.open(QFile::WriteOnly);
     if (!writeImage(&outputFile, mimetype.toLatin1())) {
-        emit errorMessage(i18n("Cannot save screenshot. Error while writing file."));
+        Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing file."));
         return false;
     }
     return true;
@@ -346,10 +346,10 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
         mkpathJob->exec();
 
         if (mkpathJob->error() != KJob::NoError) {
-            emit errorMessage(xi18nc("@info",
-                                     "Cannot save screenshot because creating the "
-                                     "remote directory failed:<nl/><filename>%1</filename>",
-                                     dirPath.path()));
+            Q_EMIT errorMessage(xi18nc("@info",
+                                       "Cannot save screenshot because creating the "
+                                       "remote directory failed:<nl/><filename>%1</filename>",
+                                       dirPath.path()));
             return false;
         }
     }
@@ -358,7 +358,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
 
     if (tmpFile.open()) {
         if (!writeImage(&tmpFile, mimetype.toLatin1())) {
-            emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
+            Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
             return false;
         }
 
@@ -366,7 +366,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
         uploadJob->exec();
 
         if (uploadJob->error() != KJob::NoError) {
-            emit errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
+            Q_EMIT errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
             return false;
         }
         return true;
@@ -408,14 +408,14 @@ QUrl ExportManager::tempSave()
         }
     }
 
-    emit errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
+    Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
     return QUrl();
 }
 
 bool ExportManager::save(const QUrl &url)
 {
     if (!(url.isValid())) {
-        emit errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
+        Q_EMIT errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
         return false;
     }
 
@@ -460,7 +460,7 @@ bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
 void ExportManager::doSave(const QUrl &url, bool notify)
 {
     if (mSavePixmap.isNull()) {
-        emit errorMessage(i18n("Cannot save an empty screenshot image."));
+        Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
 
@@ -469,9 +469,9 @@ void ExportManager::doSave(const QUrl &url, bool notify)
         QDir dir(savePath.path());
         dir.cdUp();
 
-        emit imageSaved(savePath);
+        Q_EMIT imageSaved(savePath);
         if (notify) {
-            emit forceNotify(savePath);
+            Q_EMIT forceNotify(savePath);
         }
     }
 }
@@ -504,10 +504,10 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
         const QUrl saveUrl = dialog.selectedUrls().constFirst();
         if (saveUrl.isValid()) {
             if (save(saveUrl)) {
-                emit imageSaved(saveUrl);
+                Q_EMIT imageSaved(saveUrl);
                 Settings::setLastSaveAsLocation(saveUrl);
                 if (notify) {
-                    emit forceNotify(saveUrl);
+                    Q_EMIT forceNotify(saveUrl);
                 }
                 return true;
             }
@@ -519,7 +519,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
 void ExportManager::doSaveAndCopy(const QUrl &url)
 {
     if (mSavePixmap.isNull()) {
-        emit errorMessage(i18n("Cannot save an empty screenshot image."));
+        Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
 
@@ -529,7 +529,7 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
         dir.cdUp();
 
         doCopyToClipboard(false);
-        emit imageSavedAndCopied(savePath);
+        Q_EMIT imageSavedAndCopied(savePath);
     }
 }
 
@@ -541,9 +541,9 @@ void ExportManager::doCopyToClipboard(bool notify)
         data->setImageData(mSavePixmap.toImage());
         data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
         QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
-        emit imageCopied();
+        Q_EMIT imageCopied();
         if (notify) {
-            emit forceNotify(QUrl());
+            Q_EMIT forceNotify(QUrl());
         }
     };
 
@@ -585,7 +585,7 @@ void ExportManager::doPrint(QPrinter *printer)
     QPainter painter;
 
     if (!(painter.begin(printer))) {
-        emit errorMessage(i18n("Printing failed. The printer failed to initialize."));
+        Q_EMIT errorMessage(i18n("Printing failed. The printer failed to initialize."));
         delete printer;
         return;
     }

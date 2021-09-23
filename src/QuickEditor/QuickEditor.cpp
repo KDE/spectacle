@@ -128,7 +128,7 @@ void QuickEditor::acceptSelection()
         Settings::setCropRegion({scaledCropRegion.x(), scaledCropRegion.y(), scaledCropRegion.width(), scaledCropRegion.height()});
 
         if (KWindowSystem::isPlatformX11()) {
-            emit grabDone(mPixmap.copy(scaledCropRegion));
+            Q_EMIT grabDone(mPixmap.copy(scaledCropRegion));
 
         } else {
             // Wayland case
@@ -163,7 +163,7 @@ void QuickEditor::acceptSelection()
                     if (intersected.size() == mSelection.size()) {
                         // short path when single screen
                         // keep native screen resolution
-                        emit grabDone(screenOutput);
+                        Q_EMIT grabDone(screenOutput);
                         return;
                     }
 
@@ -178,7 +178,7 @@ void QuickEditor::acceptSelection()
                 }
             }
 
-            emit grabDone(output);
+            Q_EMIT grabDone(output);
         }
     }
 }
@@ -192,7 +192,7 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
     }
     switch (event->key()) {
     case Qt::Key_Escape:
-        emit grabCancelled();
+        Q_EMIT grabCancelled();
         break;
     case Qt::Key_Return:
     case Qt::Key_Enter:

@@ -340,7 +340,7 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
 {
     if (theTimeout < 0) { // OnClick is checked (always the case on Wayland)
         hide();
-        emit newScreenshotRequest(theCaptureMode, theTimeout, theIncludePointer, theIncludeDecorations);
+        Q_EMIT newScreenshotRequest(theCaptureMode, theTimeout, theIncludePointer, theIncludeDecorations);
         return;
     }
 
@@ -371,7 +371,7 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
         timer->deleteLater();
         mKSWidget->setProgress(0);
         unityUpdate({{QStringLiteral("progress-visible"), false}});
-        emit newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
+        Q_EMIT newScreenshotRequest(theCaptureMode, 0, theIncludePointer, theIncludeDecorations);
     });
 
     connect(mKSWidget, &KSWidget::screenshotCanceled, timer, [=] {

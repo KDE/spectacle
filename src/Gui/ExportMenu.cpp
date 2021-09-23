@@ -183,9 +183,9 @@ void ExportMenu::loadPurposeMenu()
     // set up the callback signal
     connect(mPurposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
         if (error) {
-            emit imageShared(true, message);
+            Q_EMIT imageShared(true, message);
         } else {
-            emit imageShared(false, output[QStringLiteral("url")].toString());
+            Q_EMIT imageShared(false, output[QStringLiteral("url")].toString());
         }
     });
 

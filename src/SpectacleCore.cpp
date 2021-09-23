@@ -329,16 +329,16 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             lExportManager->doCopyLocationToClipboard(mNotify);
         }
 
-        // if we don't have a Gui already opened, emit allDone
+        // if we don't have a Gui already opened, Q_EMIT allDone
         if (!this->mIsGuiInited) {
-            // if we notify, we emit allDone only if the user either dismissed the notification or pressed
+            // if we notify, we Q_EMIT allDone only if the user either dismissed the notification or pressed
             // the "Open" button, otherwise the app closes before it can react to it.
             if (!mNotify && mCopyImageToClipboard) {
                 // Allow some time for clipboard content to transfer if '--nonotify' is used, see Bug #411263
                 // TODO: Find better solution
                 QTimer::singleShot(250, this, &SpectacleCore::allDone);
             } else if (!mNotify) {
-                emit allDone();
+                Q_EMIT allDone();
             }
         }
     } break;
@@ -368,7 +368,7 @@ void SpectacleCore::screenshotCanceled()
     if (mStartMode == StartMode::Gui) {
         mMainWindow->setScreenshotAndShow(QPixmap());
     } else {
-        emit allDone();
+        Q_EMIT allDone();
     }
 }
 
@@ -382,11 +382,11 @@ void SpectacleCore::screenshotFailed()
     switch (mStartMode) {
     case StartMode::Background:
         showErrorMessage(i18n("Screenshot capture canceled or failed"));
-        emit allDone();
+        Q_EMIT allDone();
         return;
     case StartMode::DBus:
-        emit grabFailed();
-        emit allDone();
+        Q_EMIT grabFailed();
+        Q_EMIT allDone();
         return;
     case StartMode::Gui:
         mMainWindow->screenshotFailed();
@@ -443,7 +443,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
                 job->start();
                 QTimer::singleShot(250, this, [this] {
                     if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
-                        emit allDone();
+                        Q_EMIT allDone();
                     }
                 });
             }
@@ -452,7 +452,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     connect(lNotify, &QObject::destroyed, this, [this] {
         if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
-            emit allDone();
+            Q_EMIT allDone();
         }
     });
 

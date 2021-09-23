@@ -242,7 +242,7 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
     case GrabMode::InvalidChoice:
     case GrabMode::ActiveWindow:
     case GrabMode::TransientWithParent:
-        emit newScreenshotFailed();
+        Q_EMIT newScreenshotFailed();
         return;
     }
 }
@@ -305,7 +305,7 @@ void PlatformKWinWayland::doGrabHelper(const QString &theGrabMethod, ArgType... 
 {
     int lPipeFds[2];
     if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
-        emit newScreenshotFailed();
+        Q_EMIT newScreenshotFailed();
         return;
     }
 
@@ -320,7 +320,7 @@ void PlatformKWinWayland::doGrabImagesHelper(const QString &theGrabMethod, ArgTy
 {
     int lPipeFds[2];
     if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
-        emit newScreenshotFailed();
+        Q_EMIT newScreenshotFailed();
         return;
     }
 

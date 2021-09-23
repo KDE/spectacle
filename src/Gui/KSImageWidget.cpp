@@ -67,7 +67,7 @@ void KSImageWidget::mouseMoveEvent(QMouseEvent *event)
     }
 
     setCursor(Qt::OpenHandCursor);
-    emit dragInitiated();
+    Q_EMIT dragInitiated();
 }
 
 // resize handler

@@ -91,7 +91,7 @@ public:
                             mPlatformPtr->doGrabNow(mGrabMode, mIncludePointer, mIncludeDecorations);
                         });
                     } else if (lSecondEvent->detail < 4) {
-                        emit mPlatformPtr->newScreenshotFailed();
+                        Q_EMIT mPlatformPtr->newScreenshotFailed();
                     } else {
                         QTimer::singleShot(0, [this]() {
                             mPlatformPtr->doGrabOnClick(mGrabMode, mIncludePointer, mIncludeDecorations);
@@ -166,7 +166,7 @@ void PlatformXcb::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool 
 void PlatformXcb::updateWindowTitle(xcb_window_t theWindow)
 {
     auto lTitle = KWindowSystem::readNameProperty(theWindow, XA_WM_NAME);
-    emit windowTitleChanged(lTitle);
+    Q_EMIT windowTitleChanged(lTitle);
 }
 
 bool PlatformXcb::isKWinAvailable()
@@ -451,10 +451,10 @@ void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
     auto lPixmap = getPixmapFromDrawable(lDrawable, lRect);
 
     if (!lPixmap.isNull()) {
-        emit newScreenshotTaken(lPixmap);
+        Q_EMIT newScreenshotTaken(lPixmap);
         return;
     }
-    emit newScreenshotFailed();
+    Q_EMIT newScreenshotFailed();
 }
 
 /* -- Grabber Methods -------------------------------------------------------------------------- */
@@ -462,7 +462,7 @@ void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
 void PlatformXcb::grabAllScreens(bool theIncludePointer)
 {
     auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
-    emit newScreenshotTaken(lPixmap);
+    Q_EMIT newScreenshotTaken(lPixmap);
 }
 
 void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
@@ -479,7 +479,7 @@ void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
         // convert these also to native pixels.
         QRect lNativeScreenRect(lScreenRect.topLeft(), lScreenRect.size() * lScreen->devicePixelRatio());
         auto lPixmap = getToplevelPixmap(lNativeScreenRect, theIncludePointer);
-        emit newScreenshotTaken(lPixmap);
+        Q_EMIT newScreenshotTaken(lPixmap);
         return;
     }
 
@@ -494,7 +494,7 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
 
     auto lPixmap = getWindowPixmap(theWindow, theIncludePointer);
     if (!theIncludeDecorations || theWindow == QX11Info::appRootWindow()) {
-        emit newScreenshotTaken(lPixmap);
+        Q_EMIT newScreenshotTaken(lPixmap);
         return;
     }
 
@@ -516,7 +516,7 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
     }
 
     // fallback is window without the frame
-    emit newScreenshotTaken(lPixmap);
+    Q_EMIT newScreenshotTaken(lPixmap);
 }
 
 void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecorations)
@@ -659,7 +659,7 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
         auto lTopLeft = lClipRegion.boundingRect().topLeft() - QPoint(20, 20);
         lPixmap = blendCursorImage(lPixmap, QRect(lTopLeft, QSize(lPixmap.width(), lPixmap.height())));
     }
-    emit newScreenshotTaken(lPixmap);
+    Q_EMIT newScreenshotTaken(lPixmap);
 }
 
 void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
@@ -679,7 +679,7 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
             geom.setSize(screen->size() * screen->devicePixelRatio());
             images << lPixmap.copy(geom).toImage();
         }
-        emit newScreensScreenshotTaken(images);
+        Q_EMIT newScreensScreenshotTaken(images);
         break;
     }
     case GrabMode::CurrentScreen:
@@ -695,7 +695,7 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
         grabTransientWithParent(theIncludePointer, theIncludeDecorations);
         break;
     case GrabMode::InvalidChoice:
-        emit newScreenshotFailed();
+        Q_EMIT newScreenshotFailed();
     }
 }
 

@@ -141,7 +141,7 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mCancelAction = new QAction(QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18n("Cancel"), this);
     mCancelAction->setShortcut(QKeySequence::Cancel);
     connect(mCancelAction, &QAction::triggered, this, [this] {
-        emit screenshotCanceled();
+        Q_EMIT screenshotCanceled();
         setButtonState(State::TakeNewScreenshot);
     });
 
@@ -233,7 +233,7 @@ void KSWidget::newScreenshotClicked()
         lMode = Spectacle::CaptureMode::TransientWithParent;
     }
     setButtonState(State::Cancel);
-    emit newScreenshotRequest(lMode, lDelay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
+    Q_EMIT newScreenshotRequest(lMode, lDelay, mMousePointer->isChecked(), mWindowDecorations->isChecked());
 }
 
 void KSWidget::onClickStateChanged(int theState)
