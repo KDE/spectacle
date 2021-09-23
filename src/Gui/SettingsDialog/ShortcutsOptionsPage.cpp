@@ -46,12 +46,12 @@ void ShortcutsOptionsPage::saveChanges()
     mEditor->commit();
 }
 
-bool ShortcutsOptionsPage::isModified()
+bool ShortcutsOptionsPage::isModified() const
 {
     return mEditor->isModified();
 }
 
-void ShortcutsOptionsPage::defaults()
+void ShortcutsOptionsPage::defaults() const
 {
     mEditor->allDefault();
 }

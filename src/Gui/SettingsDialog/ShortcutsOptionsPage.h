@@ -19,8 +19,8 @@ public:
     explicit ShortcutsOptionsPage(QWidget *parent);
     ~ShortcutsOptionsPage();
 
-    bool isModified();
-    void defaults();
+    bool isModified() const;
+    void defaults() const;
 
 Q_SIGNALS:
     void shortCutsChanged();
