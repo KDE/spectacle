@@ -18,6 +18,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDBusConnection>
+#include <QSessionManager>
 
 #include <KAboutData>
 #include <KDBusService>
@@ -56,6 +57,14 @@ int main(int argc, char **argv)
     // first parsing for help-about
     lCmdLineParser.process(app.arguments());
     aboutData.processCommandLine(&lCmdLineParser);
+
+    QGuiApplication::setFallbackSessionManagementEnabled(false);
+
+    auto disableSessionManagement = [](QSessionManager &sm) {
+        sm.setRestartHint(QSessionManager::RestartNever);
+    };
+    QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
+    QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
     // and new-instance
     if (lCmdLineParser.isSet(QStringLiteral("new-instance"))) {
