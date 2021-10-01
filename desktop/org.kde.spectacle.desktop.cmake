@@ -376,6 +376,7 @@ Name[ia]=Captura Fenestra sub Cursor
 Name[it]=Cattura finestra sotto il cursore
 Name[ko]=커서 아래 창 캡처
 Name[nl]=Venster onder cursor opnemen
+Name[nn]=Ta bilete av vindauget under peikaren
 Name[pa]=ਕਰਸਰ ਹੇਠਲੀ ਵਿੰਡੋ ਦੀ ਫ਼ੋਟੋ ਖਿੱਚੋ
 Name[pl]=Przechwyć okno pod wskaźnikiem
 Name[pt]=Capturar a Janela sob o Cursor
