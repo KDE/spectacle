@@ -164,8 +164,23 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mRightLayout->addWidget(mTakeScreenshotButton, 1, Qt::AlignHCenter);
     mRightLayout->setContentsMargins(10, 0, 0, 10);
 
+    mPlaceholderLabel = new QLabel;
+
+    QFont placeholderLabelFont;
+    // To match the size of a level 2 Heading/KTitleWidget
+    placeholderLabelFont.setPointSize(qRound(placeholderLabelFont.pointSize() * 1.3));
+    mPlaceholderLabel->setFont(placeholderLabelFont);
+    mPlaceholderLabel->setTextInteractionFlags(Qt::NoTextInteraction);
+    mPlaceholderLabel->setWordWrap(true);
+    mPlaceholderLabel->setAlignment(Qt::AlignCenter);
+    // Match opacity of QML placeholder label component
+    auto *effect = new QGraphicsOpacityEffect(mPlaceholderLabel);
+    effect->setOpacity(0.5);
+    mPlaceholderLabel->setGraphicsEffect(effect);
+
     mMainLayout = new QGridLayout();
 
+    mMainLayout->addWidget(mPlaceholderLabel, 0, 0, 1, 1);
     mMainLayout->addWidget(mImageWidget, 0, 0, 1, 1);
     mMainLayout->addLayout(mRightLayout, 0, 1, 1, 1);
     mMainLayout->setColumnMinimumWidth(0, 320);
@@ -202,10 +217,24 @@ int KSWidget::imagePaddingWidth() const
     return lPaddingWidth;
 }
 
+bool KSWidget::isScreenshotSet()
+{
+    return mImageWidget->isPixmapSet();
+}
+
 // public slots
+
+void KSWidget::showPlaceholderText(const QString &label)
+{
+    mPlaceholderLabel->setText(label);
+    mPlaceholderLabel->show();
+}
 
 void KSWidget::setScreenshotPixmap(const QPixmap &thePixmap)
 {
+    if (mPlaceholderLabel->isVisible()) {
+        mPlaceholderLabel->hide();
+    }
     mImageWidget->setScreenshot(thePixmap);
 }
 

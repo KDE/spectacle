@@ -67,6 +67,7 @@ public Q_SLOTS:
     void imageSaved(const QUrl &location);
     void imageSavedAndCopied(const QUrl &location);
     void screenshotFailed();
+    void setPlaceholderTextOnLaunch();
 
 Q_SIGNALS:
 

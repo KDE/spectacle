@@ -27,6 +27,7 @@ ShortcutActions::ShortcutActions()
     // CurrentMonitorScreenShot
     // RectangularRegionScreenShot
     // FullScreenScreenShot
+    // OpenWithoutScreenshot
     // _launch
     {
         QAction *action = new QAction(i18n("Launch Spectacle"));
@@ -56,6 +57,11 @@ ShortcutActions::ShortcutActions()
     {
         QAction *action = new QAction(i18n("Capture Window Under Cursor"));
         action->setObjectName(QStringLiteral("WindowUnderCursorScreenShot"));
+        mActions.addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Launch Spectacle without capturing"));
+        action->setObjectName(QStringLiteral("OpenWithoutScreenshot"));
         mActions.addAction(action->objectName(), action);
     }
 }
@@ -98,4 +104,9 @@ QAction *ShortcutActions::regionAction() const
 QAction *ShortcutActions::windowUnderCursorAction() const
 {
     return mActions.action(5);
+}
+
+QAction *ShortcutActions::openWithoutScreenshotAction() const
+{
+    return mActions.action(6);
 }

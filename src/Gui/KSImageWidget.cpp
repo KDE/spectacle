@@ -39,6 +39,11 @@ void KSImageWidget::setScaledPixmap()
     setPixmap(scaledPixmap);
 }
 
+bool KSImageWidget::isPixmapSet()
+{
+    return !mPixmap.isNull();
+}
+
 // drag handlers
 
 void KSImageWidget::mousePressEvent(QMouseEvent *event)

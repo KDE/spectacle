@@ -118,7 +118,7 @@
         <sect1 id="taking-screenshot">
             <title>Taking A Screenshot</title>
 
-            <para>When you open &spectacle;, it immediately takes a screenshot of the whole screen as a convenience and shows a preview of it in the main window. You can save this screenshot using the buttons on the bottom of the window, or take a new one using the controls to the right of the preview.</para>
+            <para>When you open &spectacle;, it immediately takes a screenshot, unless otherwise set in the general options, of the whole screen as a convenience and shows a preview of it in the main window. You can save this screenshot using the buttons on the bottom of the window, or take a new one using the controls to the right of the preview.</para>
 
             <para>To discard the current screenshot and take another screenshot, press the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
             
@@ -285,6 +285,12 @@
                     </textobject>
                 </mediaobject>
             <variablelist>
+                <varlistentry>
+                    <term><guilabel>When launching Spectacle</guilabel></term>
+                    <listitem>
+                        <para>Allows to <guilabel>Take full screen screenshot</guilabel>, use last-used capture mode, or do not take a screenshot automatically. The last-used capture mode is the one set in Capture Mode</para>
+                    </listitem>
+                </varlistentry>
                 <varlistentry>
                     <term><guilabel>After taking a screenshot</guilabel></term>
                     <listitem>

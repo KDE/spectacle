@@ -44,6 +44,7 @@ public:
     enum class State { TakeNewScreenshot, Cancel };
 
     int imagePaddingWidth() const;
+    bool isScreenshotSet();
 
 Q_SIGNALS:
 
@@ -53,6 +54,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
 
+    void showPlaceholderText(const QString &label);
     void setScreenshotPixmap(const QPixmap &thePixmap);
     void lockOnClickDisabled();
     void lockOnClickEnabled();
@@ -87,12 +89,14 @@ private:
     QCheckBox *mQuitAfterSaveOrCopy{nullptr};
     QLabel *mCaptureModeLabel{nullptr};
     QLabel *mContentOptionsLabel{nullptr};
+    QLabel *mPlaceholderLabel { nullptr };
     bool mTransientWithParentAvailable{false};
     QAction *mTakeNewScreenshotAction{nullptr};
     QAction *mCancelAction{nullptr};
     KConfigDialogManager *mConfigManager{nullptr};
     QStackedLayout *mStack{nullptr};
     QWidget *placeHolder{nullptr};
+
 #ifdef KIMAGEANNOTATOR_FOUND
     kImageAnnotator::KImageAnnotator *mAnnotator{nullptr};
 #endif

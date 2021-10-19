@@ -168,7 +168,7 @@ Icon=spectacle
 Type=Application
 Terminal=false
 StartupNotify=false
-Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;
+Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;OpenWithoutScreenshot;
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
 X-KDE-Shortcuts=Print
@@ -402,3 +402,11 @@ Name[x-test]=xxCapture Window Under Cursorxx
 Name[zh_CN]=捕获光标所在窗口
 Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor true false
 X-KDE-Shortcuts=Meta+Ctrl+Print
+
+[Desktop Action OpenWithoutScreenshot]
+Name=Launch without taking a screenshot
+Name[de]=Ohne Aufnahme starten
+Name[en_GB]=Launch without taking a screenshot
+Name[sr@ijekavianlatin]=Pokreni bez snimanja
+Name[sr@latin]=Pokreni bez snimanja
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / OpenWithoutScreenshot

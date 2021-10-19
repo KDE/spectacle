@@ -12,20 +12,46 @@
   </property>
   <layout class="QFormLayout">
    <item row="0" column="0">
+    <widget class="QLabel" name="onLaunchSpectacleLabel">
+     <property name="text">
+      <string>When launching Spectacle:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="kcfg_onLaunchAction">
+     <item>
+      <property name="text">
+       <string>Take full screen screenshot</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Use last-used capture mode</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Do not take a screenshot automatically</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <widget class="QLabel" name="afterScreenshotLabel">
      <property name="text">
       <string>After taking a screenshot:</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <widget class="QCheckBox" name="kcfg_autoSaveImage">
      <property name="text">
       <string>Autosave file to default folder</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -41,21 +67,21 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <widget class="KTitleWidget" name="runningTitle">
      <property name="text">
       <string>While Spectacle is running</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="printKeyActionLabel">
      <property name="text">
       <string>Press screenshot key to:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="QGroupBox" name="kcfg_printKeyActionRunning">
      <property name="title">
       <string/>
@@ -94,7 +120,7 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="6" column="0" colspan="2">
     <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -110,42 +136,42 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <widget class="KTitleWidget" name="regionTitle">
      <property name="text">
       <string>Rectangular Region</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="generalLabel">
      <property name="text">
       <string>General:</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="8" column="1">
     <widget class="QCheckBox" name="kcfg_useLightMaskColour">
      <property name="text">
       <string>Use light background</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="9" column="1">
     <widget class="QCheckBox" name="kcfg_showMagnifier">
      <property name="text">
       <string>Show magnifier</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <widget class="QCheckBox" name="kcfg_useReleaseToCapture">
      <property name="text">
       <string>Accept on click-and-release</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="11" column="1">
     <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -161,16 +187,15 @@
      </property>
     </spacer>
    </item>
-   <item row="11" column="0">
+   <item row="12" column="0">
     <widget class="QLabel" name="rememberLabel">
      <property name="text">
       <string>Remember selected area:</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="1">
-    <widget class="QRadioButton" name="
-    ">
+   <item row="12" column="1">
+    <widget class="QRadioButton" name="">
      <property name="text">
       <string>Never</string>
      </property>
@@ -182,7 +207,7 @@
      </attribute>
     </widget>
    </item>
-   <item row="12" column="1">
+   <item row="13" column="1">
     <widget class="QRadioButton" name="kcfg_alwaysRememberRegion">
      <property name="text">
       <string>Always</string>
@@ -192,7 +217,7 @@
      </attribute>
     </widget>
    </item>
-   <item row="13" column="1">
+   <item row="14" column="1">
     <widget class="QRadioButton" name="kcfg_rememberLastRectangularRegion">
      <property name="text">
       <string>Until Spectacle is closed</string>
@@ -202,7 +227,7 @@
      </attribute>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1">
     <widget class="QGroupBox" name="kcfg_clipboardGroup">
      <property name="title">
       <string/>
@@ -210,7 +235,7 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout2">
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -251,6 +276,8 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>defaultOnLaunchButton</tabstop>
+  <tabstop>kcfg_onLaunchAction</tabstop>
   <tabstop>kcfg_autoSaveImage</tabstop>
   <tabstop>newScreenshotButton</tabstop>
   <tabstop>newWindowButton</tabstop>

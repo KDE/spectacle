@@ -45,6 +45,7 @@ public:
     void setFilename(const QString &filename);
 
     void populateCommandLineParser(QCommandLineParser *lCmdLineParser);
+    void initGuiNoScreenshot();
 
 Q_SIGNALS:
 
@@ -67,6 +68,7 @@ public Q_SLOTS:
     void onActivateRequested(QStringList arguments, const QString & /*workingDirectory */);
 
 private:
+    void ensureGuiInitiad();
     void initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations);
     Platform::GrabMode toPlatformGrabMode(Spectacle::CaptureMode theCaptureMode);
     void setUpShortcuts();
@@ -82,5 +84,6 @@ private:
     bool mCopyImageToClipboard;
     bool mCopyLocationToClipboard;
     bool mSaveToOutput;
+
     KWayland::Client::PlasmaShell *mWaylandPlasmashell = nullptr;
 };

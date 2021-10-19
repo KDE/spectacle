@@ -25,6 +25,7 @@ public Q_SLOTS:
     Q_NOREPLY void ActiveWindow(bool includeWindowDecorations, bool includeMousePointer);
     Q_NOREPLY void WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer);
     Q_NOREPLY void RectangularRegion(bool includeMousePointer);
+    Q_NOREPLY void OpenWithoutScreenshot();
 
 Q_SIGNALS:
 

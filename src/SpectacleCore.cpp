@@ -85,20 +85,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     populateCommandLineParser(parser.data());
     parser->parse(arguments);
 
-    // extract the capture mode
-    Spectacle::CaptureMode lCaptureMode = Spectacle::CaptureMode::AllScreens;
-    if (parser->isSet(QStringLiteral("current"))) {
-        lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
-    } else if (parser->isSet(QStringLiteral("activewindow"))) {
-        lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
-    } else if (parser->isSet(QStringLiteral("region"))) {
-        lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
-    } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
-        lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
-    } else if (parser->isSet(QStringLiteral("transientonly"))) {
-        lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
-    }
-
     mStartMode = SpectacleCore::StartMode::Gui;
     mNotify = true;
     qint64 lDelayMsec = 0;
@@ -108,6 +94,39 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         mStartMode = SpectacleCore::StartMode::Background;
     } else if (parser->isSet(QStringLiteral("dbus"))) {
         mStartMode = SpectacleCore::StartMode::DBus;
+    }
+
+    Spectacle::CaptureMode lCaptureMode = Spectacle::CaptureMode::AllScreens;
+    if (!mIsGuiInited && mStartMode == SpectacleCore::StartMode::Gui) {
+        if (parser->isSet(QStringLiteral("launchonly")) || Settings::onLaunchAction() == Settings::EnumOnLaunchAction::DoNotTakeScreenshot) {
+            initGuiNoScreenshot();
+            return;
+        } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode) {
+            lCaptureMode = Settings::captureMode();
+        } else if (parser->isSet(QStringLiteral("current"))) {
+            lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
+        } else if (parser->isSet(QStringLiteral("activewindow"))) {
+            lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
+        } else if (parser->isSet(QStringLiteral("region"))) {
+            lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
+        } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
+            lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
+        } else if (parser->isSet(QStringLiteral("transientonly"))) {
+            lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
+        }
+    } else {
+        // extract the capture mode
+        if (parser->isSet(QStringLiteral("current"))) {
+            lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
+        } else if (parser->isSet(QStringLiteral("activewindow"))) {
+            lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
+        } else if (parser->isSet(QStringLiteral("region"))) {
+            lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
+        } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
+            lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
+        } else if (parser->isSet(QStringLiteral("transientonly"))) {
+            lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
+        }
     }
 
     auto lExportManager = ExportManager::instance();
@@ -233,6 +252,8 @@ void SpectacleCore::setUpShortcuts()
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->regionAction(), Qt::META | Qt::SHIFT | Qt::Key_Print);
 
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->currentScreenAction(), QList<QKeySequence>());
+
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openWithoutScreenshotAction(), QList<QKeySequence>());
 }
 
 QString SpectacleCore::filename() const
@@ -343,6 +364,11 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         }
     } break;
     case StartMode::Gui:
+        if (thePixmap.isNull()) {
+            mMainWindow->setScreenshotAndShow(thePixmap);
+            mMainWindow->setPlaceholderTextOnLaunch();
+            return;
+        }
         mMainWindow->setScreenshotAndShow(thePixmap);
 
         bool autoSaveImage = Settings::autoSaveImage();
@@ -475,6 +501,7 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("u"), QStringLiteral("windowundercursor")}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
         {{QStringLiteral("t"), QStringLiteral("transientonly")}, i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
         {{QStringLiteral("r"), QStringLiteral("region")}, i18n("Capture a rectangular region of the screen")},
+        {{QStringLiteral("l"), QStringLiteral("launchonly")}, i18n("Launch Spectacle without taking a screenshot")},
         {{QStringLiteral("g"), QStringLiteral("gui")}, i18n("Start in GUI mode (default)")},
         {{QStringLiteral("b"), QStringLiteral("background")}, i18n("Take a screenshot and exit without showing the GUI")},
         {{QStringLiteral("s"), QStringLiteral("dbus")}, i18n("Start in DBus-Activation mode")},
@@ -535,7 +562,7 @@ Platform::GrabMode SpectacleCore::toPlatformGrabMode(Spectacle::CaptureMode theC
     return Platform::GrabMode::InvalidChoice;
 }
 
-void SpectacleCore::initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations)
+void SpectacleCore::ensureGuiInitiad()
 {
     if (!mIsGuiInited) {
         mMainWindow = std::make_unique<KSMainWindow>(mPlatform->supportedGrabModes(), mPlatform->supportedShutterModes());
@@ -545,6 +572,17 @@ void SpectacleCore::initGui(int theDelay, bool theIncludePointer, bool theInclud
 
         mIsGuiInited = true;
     }
+}
+
+void SpectacleCore::initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations)
+{
+    ensureGuiInitiad();
 
     takeNewScreenshot(ExportManager::instance()->captureMode(), theDelay, theIncludePointer, theIncludeDecorations);
+}
+
+void SpectacleCore::initGuiNoScreenshot()
+{
+    ensureGuiInitiad();
+    screenshotUpdated(QPixmap());
 }

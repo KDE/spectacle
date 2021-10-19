@@ -13,6 +13,7 @@
 #include <KWindowSystem>
 
 #include <QCheckBox>
+#include <QComboBox>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     : QWidget(parent)
@@ -23,7 +24,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     m_ui->runningTitle->setLevel(2);
     m_ui->regionTitle->setLevel(2);
 
-    // On Wayland  we can't programmatically raise and focus the window so we have to hide the option
+    //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").data(), "wayland") == 0) {
         delete m_ui->activateWindowButton;
     }

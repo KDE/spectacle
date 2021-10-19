@@ -23,6 +23,7 @@ class KSImageWidget : public QLabel
 public:
     explicit KSImageWidget(QWidget *parent = nullptr);
     void setScreenshot(const QPixmap &pixmap);
+    bool isPixmapSet();
 
 Q_SIGNALS:
 

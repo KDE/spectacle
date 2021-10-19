@@ -41,3 +41,8 @@ void SpectacleDBusAdapter::RectangularRegion(bool includeMousePointer)
 {
     parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, includeMousePointer, false);
 }
+
+void SpectacleDBusAdapter::OpenWithoutScreenshot()
+{
+    parent()->initGuiNoScreenshot();
+}

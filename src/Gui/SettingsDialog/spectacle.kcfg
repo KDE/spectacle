@@ -8,6 +8,15 @@
 <include>SpectacleCommon.h</include>
 <kcfgfile />
 <group name="General">
+    <entry name="onLaunchAction" type="Enum">
+        <label>What to do when Spectacle is launched</label>
+        <choices>
+        <choice name="TakeFullscreenScreenshot"></choice>
+        <choice name="UseLastUsedCapturemode"></choice>
+        <choice name="DoNotTakeScreenshot"></choice>
+        </choices>
+        <default>TakeFullscreenScreenshot</default>
+    </entry>
     <entry name="printKeyActionRunning" type="Enum">
         <label>What should happen if print key is pressed when Spectacle is already running</label>
         <choices>

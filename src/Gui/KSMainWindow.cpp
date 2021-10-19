@@ -18,6 +18,7 @@
 #include <QDBusMessage>
 #include <QDesktopServices>
 #include <QKeyEvent>
+#include <QPainter>
 #include <QPrintDialog>
 #include <QPushButton>
 #include <QTimer>
@@ -539,6 +540,13 @@ void KSMainWindow::screenshotFailed()
                       KMessageWidget::Warning);
 }
 
+void KSMainWindow::setPlaceholderTextOnLaunch()
+{
+    QString placeholderText(i18n("Ready to take a screenshot"));
+    mKSWidget->showPlaceholderText(placeholderText);
+    setWindowTitle(placeholderText);
+}
+
 void KSMainWindow::showPreferencesDialog()
 {
     if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
@@ -595,7 +603,13 @@ void KSMainWindow::restoreWindowTitle()
     if (isWindowModified()) {
         setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
     } else {
-        setWindowTitle(Settings::lastSaveLocation().fileName());
+        // if a screenshot is not visible inside of mKSWidget, it means we have launched spectacle
+        // with the last mode set to 'rectangular region' and canceled the screenshot
+        if (mKSWidget->isScreenshotSet()) {
+            setWindowTitle(Settings::lastSaveLocation().fileName());
+        } else {
+            setPlaceholderTextOnLaunch();
+        }
     }
 }
 
