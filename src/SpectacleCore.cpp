@@ -96,42 +96,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         mStartMode = SpectacleCore::StartMode::DBus;
     }
 
-    Spectacle::CaptureMode lCaptureMode = Spectacle::CaptureMode::AllScreens;
-    if (!mIsGuiInited && mStartMode == SpectacleCore::StartMode::Gui) {
-        if (parser->isSet(QStringLiteral("launchonly")) || Settings::onLaunchAction() == Settings::EnumOnLaunchAction::DoNotTakeScreenshot) {
-            initGuiNoScreenshot();
-            return;
-        } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode) {
-            lCaptureMode = Settings::captureMode();
-        } else if (parser->isSet(QStringLiteral("current"))) {
-            lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
-        } else if (parser->isSet(QStringLiteral("activewindow"))) {
-            lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
-        } else if (parser->isSet(QStringLiteral("region"))) {
-            lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
-        } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
-            lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
-        } else if (parser->isSet(QStringLiteral("transientonly"))) {
-            lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
-        }
-    } else {
-        // extract the capture mode
-        if (parser->isSet(QStringLiteral("current"))) {
-            lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
-        } else if (parser->isSet(QStringLiteral("activewindow"))) {
-            lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
-        } else if (parser->isSet(QStringLiteral("region"))) {
-            lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
-        } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
-            lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
-        } else if (parser->isSet(QStringLiteral("transientonly"))) {
-            lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
-        }
-    }
-
-    auto lExportManager = ExportManager::instance();
-    lExportManager->setCaptureMode(lCaptureMode);
-
     auto lOnClickAvailable = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::OnClick);
     if ((!lOnClickAvailable) && (lDelayMsec < 0)) {
         lDelayMsec = 0;
@@ -141,6 +105,31 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     if (!Settings::alwaysRememberRegion()) {
         Settings::setCropRegion({0, 0, 0, 0});
     }
+
+    Spectacle::CaptureMode lCaptureMode = Spectacle::CaptureMode::AllScreens;
+    // extract the capture mode
+    if (parser->isSet(QStringLiteral("fullscreen"))) {
+        lCaptureMode = Spectacle::CaptureMode::AllScreens;
+    } else if (parser->isSet(QStringLiteral("current"))) {
+        lCaptureMode = Spectacle::CaptureMode::CurrentScreen;
+    } else if (parser->isSet(QStringLiteral("activewindow"))) {
+        lCaptureMode = Spectacle::CaptureMode::ActiveWindow;
+    } else if (parser->isSet(QStringLiteral("region"))) {
+        lCaptureMode = Spectacle::CaptureMode::RectangularRegion;
+    } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
+        lCaptureMode = Spectacle::CaptureMode::TransientWithParent;
+    } else if (parser->isSet(QStringLiteral("transientonly"))) {
+        lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
+    } else if (mStartMode == SpectacleCore::StartMode::Gui
+               && (parser->isSet(QStringLiteral("launchonly")) || Settings::onLaunchAction() == Settings::EnumOnLaunchAction::DoNotTakeScreenshot)) {
+        initGuiNoScreenshot();
+        return;
+    } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode) {
+        lCaptureMode = Settings::captureMode();
+    }
+
+    auto lExportManager = ExportManager::instance();
+    lExportManager->setCaptureMode(lCaptureMode);
 
     switch (mStartMode) {
     case StartMode::DBus:
