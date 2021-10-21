@@ -405,4 +405,11 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action OpenWithoutScreenshot]
 Name=Launch without taking a screenshot
+Name[az]=Ekran şəkli çəkmədən başladın
+Name[ca]=Llança sense prendre cap captura de pantalla
+Name[es]=Lanzar sin realizar una captura de pantalla
+Name[nl]=Starten zonder een schermafdruk te maken
+Name[sv]=Starta utan att ta en skärmbild
+Name[uk]=Запустити без створення знімка
+Name[x-test]=xxLaunch without taking a screenshotxx
 Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / OpenWithoutScreenshot
