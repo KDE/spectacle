@@ -408,6 +408,7 @@ Name=Launch without taking a screenshot
 Name[az]=Ekran şəkli çəkmədən başladın
 Name[ca]=Llança sense prendre cap captura de pantalla
 Name[es]=Lanzar sin realizar una captura de pantalla
+Name[fr]=Lancer sans réalisation de copie d'écran
 Name[nl]=Starten zonder een schermafdruk te maken
 Name[sv]=Starta utan att ta en skärmbild
 Name[uk]=Запустити без створення знімка
