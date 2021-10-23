@@ -126,6 +126,10 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         return;
     } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode) {
         lCaptureMode = Settings::captureMode();
+        if (Settings::onClickChecked()) {
+            lDelayMsec = -1;
+            takeNewScreenshot(lCaptureMode, lDelayMsec, Settings::includePointer(), Settings::includeDecorations());
+        }
     }
 
     auto lExportManager = ExportManager::instance();
