@@ -522,7 +522,7 @@ void SpectacleCore::doStartDragAndDrop()
 
     auto lDragHandler = new QDrag(this);
     lDragHandler->setMimeData(lMimeData);
-    lDragHandler->setPixmap(lExportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    lDragHandler->setPixmap(lExportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     lDragHandler->exec(Qt::CopyAction);
 }
 
