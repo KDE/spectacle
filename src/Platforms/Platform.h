@@ -34,7 +34,7 @@ public:
     Q_FLAG(ShutterModes)
 
     explicit Platform(QObject *parent = nullptr);
-    virtual ~Platform() = default;
+    ~Platform() override = default;
 
     virtual QString platformName() const = 0;
     virtual GrabModes supportedGrabModes() const = 0;

@@ -17,7 +17,7 @@ class ShortcutsOptionsPage : public QWidget
 
 public:
     explicit ShortcutsOptionsPage(QWidget *parent);
-    ~ShortcutsOptionsPage();
+    ~ShortcutsOptionsPage() override;
 
     bool isModified() const;
     void defaults() const;

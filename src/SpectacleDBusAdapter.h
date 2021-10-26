@@ -14,7 +14,7 @@ class SpectacleDBusAdapter : public QDBusAbstractAdaptor
     Q_CLASSINFO("D-Bus Interface", "org.kde.Spectacle")
 public:
     SpectacleDBusAdapter(SpectacleCore *parent);
-    virtual ~SpectacleDBusAdapter() = default;
+    ~SpectacleDBusAdapter() override = default;
 
     inline SpectacleCore *parent() const;
 

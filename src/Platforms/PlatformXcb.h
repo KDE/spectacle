@@ -19,7 +19,7 @@ class PlatformXcb final : public Platform
 
 public:
     explicit PlatformXcb(QObject *parent = nullptr);
-    virtual ~PlatformXcb();
+    ~PlatformXcb() override;
 
     QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;

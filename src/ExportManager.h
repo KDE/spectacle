@@ -29,7 +29,7 @@ public:
 
 private:
     explicit ExportManager(QObject *parent = nullptr);
-    virtual ~ExportManager();
+    ~ExportManager() override;
 
     ExportManager(ExportManager const &) = delete;
     void operator=(ExportManager const &) = delete;

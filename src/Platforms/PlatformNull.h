@@ -13,7 +13,7 @@ class PlatformNull final : public Platform
 
 public:
     explicit PlatformNull(QObject *parent = nullptr);
-    virtual ~PlatformNull() = default;
+    ~PlatformNull() override = default;
 
     QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;

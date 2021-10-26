@@ -30,7 +30,7 @@ class KSMainWindow : public QDialog
 
 public:
     explicit KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterModes theShutterModes, QWidget *parent = nullptr);
-    virtual ~KSMainWindow() = default;
+    ~KSMainWindow() override = default;
 
     enum class MessageDuration { AutoHide, Persistent };
 

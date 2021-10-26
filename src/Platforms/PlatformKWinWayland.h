@@ -16,7 +16,7 @@ class PlatformKWinWayland final : public Platform
 
 public:
     explicit PlatformKWinWayland(QObject *parent = nullptr);
-    virtual ~PlatformKWinWayland() = default;
+    ~PlatformKWinWayland() override = default;
 
     QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;

@@ -38,7 +38,7 @@ public:
     };
 
     explicit SpectacleCore(QObject *parent = nullptr);
-    virtual ~SpectacleCore() = default;
+    ~SpectacleCore() override = default;
     void init();
 
     QString filename() const;
