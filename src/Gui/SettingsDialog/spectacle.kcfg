@@ -51,13 +51,14 @@
         <label>Whether the screenshot should be captured after selecting the region and releasing the mouse</label>
         <default>false</default>
     </entry>
-     <entry name="rememberLastRectangularRegion" type="Bool">
+    <entry name="rememberLastRectangularRegion" type="Enum">
         <label>Remember the last rectangular region</label>
-        <default>true</default>
-    </entry>
-     <entry name="alwaysRememberRegion" type="Bool">
-        <label>Remember the region across restarts</label>
-        <default>false</default>
+        <choices>
+        <choice name="Never"></choice>
+        <choice name="Always"></choice>
+        <choice name="UntilSpectacleIsClosed"></choice>
+        </choices>
+        <default>Never</default>
     </entry>
 </group>
 <group name="GuiConfig">

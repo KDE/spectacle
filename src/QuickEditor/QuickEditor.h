@@ -26,7 +26,7 @@ class QuickEditor : public QWidget
     Q_OBJECT
 
 public:
-    explicit QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
+    QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent = nullptr);
 
 Q_SIGNALS:
     void grabDone(const QPixmap &thePixmap);
@@ -130,7 +130,6 @@ private:
     bool mShowMagnifier;
     bool mToggleMagnifier;
     bool mReleaseToCapture;
-    bool mRememberRegion;
     bool mDisableArrowKeys;
     int mbottomHelpLength;
     QRect mScreensRect;

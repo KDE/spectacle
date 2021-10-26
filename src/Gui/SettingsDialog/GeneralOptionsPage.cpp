@@ -26,7 +26,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
 
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").data(), "wayland") == 0) {
-        delete m_ui->activateWindowButton;
+        m_ui->kcfg_printKeyActionRunning->removeItem(2);
     }
 }
 

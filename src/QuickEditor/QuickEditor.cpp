@@ -64,7 +64,6 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     , mShowMagnifier(Settings::showMagnifier())
     , mToggleMagnifier(false)
     , mReleaseToCapture(Settings::useReleaseToCapture())
-    , mRememberRegion(Settings::alwaysRememberRegion() || Settings::rememberLastRectangularRegion())
     , mDisableArrowKeys(false)
     , mbottomHelpLength(bottomHelpMaxLength)
     , mHandleRadius(handleRadiusMouse)
@@ -83,7 +82,7 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     createPixmapFromScreens();
     setGeometryToScreenPixmap(plasmashell);
 
-    if (Settings::rememberLastRectangularRegion() || Settings::alwaysRememberRegion()) {
+    if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Never)) {
         auto savedRect = Settings::cropRegion();
         QRect cropRegion = QRect(savedRect[0], savedRect[1], savedRect[2], savedRect[3]);
         if (!cropRegion.isEmpty()) {

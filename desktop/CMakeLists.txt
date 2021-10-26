@@ -26,12 +26,18 @@ install(
     DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
 )
 install(
+    FILES spectacle_rememberregion.upd
+    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
+)
+install(
     FILES spectacle_newConfig.upd
     DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
 )
 add_executable(spectacle-migrate-shortcuts MigrateShortcuts.cpp)
 target_link_libraries(spectacle-migrate-shortcuts Qt::DBus KF5::GlobalAccel KF5::ConfigCore KF5::XmlGui KF5::I18n)
+add_executable(spectacle-migrate-rememberregion MigrateRememberRegion.cpp)
+target_link_libraries(spectacle-migrate-rememberregion KF5::ConfigCore KF5::XmlGui)
 install(
-    TARGETS spectacle-migrate-shortcuts
+    TARGETS spectacle-migrate-shortcuts spectacle-migrate-rememberregion
     DESTINATION ${KDE_INSTALL_LIBDIR}/kconf_update_bin
 )

@@ -102,7 +102,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     }
 
     // reset last region if it should not be remembered across restarts
-    if (!Settings::alwaysRememberRegion()) {
+    if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
         Settings::setCropRegion({0, 0, 0, 0});
     }
 
