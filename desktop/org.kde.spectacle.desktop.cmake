@@ -410,6 +410,7 @@ Name[ca]=Llança sense prendre cap captura de pantalla
 Name[ca@valencia]=Llança sense prendre cap captura de pantalla
 Name[es]=Lanzar sin realizar una captura de pantalla
 Name[fr]=Lancer sans réalisation de copie d'écran
+Name[hu]=Indítás képernyőkép készítése nélkül
 Name[ia]=Lancea sin prender instantaneo de schermo
 Name[nl]=Starten zonder een schermafdruk te maken
 Name[pl]=Uruchom bez wykonania zrzutu ekranu
