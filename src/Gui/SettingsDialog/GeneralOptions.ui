@@ -63,30 +63,30 @@
    <item row="2" column="1">
     <widget class="QCheckBox" name="kcfg_autoSaveImage">
      <property name="text">
-      <string>Autosave file to default folder</string>
+      <string>Save file to default folder</string>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
     <widget class="QComboBox" name="kcfg_clipboardGroup">
-      <property name="leftMargin">
-       <number>0</number>
+     <property name="leftMargin" stdset="0">
+      <number>0</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Do not copy anything</string>
       </property>
-      <item>
-       <property name="text">
-        <string>Do not copy anything</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Copy image to clipboard</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Copy file location to clipboard</string>
-       </property>
-      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>Copy image to clipboard</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Copy file location to clipboard</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="4" column="0" colspan="2">
@@ -121,21 +121,21 @@
    </item>
    <item row="6" column="1">
     <widget class="QComboBox" name="kcfg_printKeyActionRunning">
-      <item>
-       <property name="text">
-        <string>Take a new Screenshot</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Open a new Spectacle window</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Return focus to Spectacle</string>
-       </property>
-      </item>
+     <item>
+      <property name="text">
+       <string>Take a new Screenshot</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Open a new Spectacle window</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Return focus to Spectacle</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="7" column="0" colspan="2">
@@ -241,12 +241,8 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>defaultOnLaunchButton</tabstop>
   <tabstop>kcfg_onLaunchAction</tabstop>
   <tabstop>kcfg_autoSaveImage</tabstop>
-  <tabstop>newScreenshotButton</tabstop>
-  <tabstop>newWindowButton</tabstop>
-  <tabstop>activateWindowButton</tabstop>
   <tabstop>kcfg_useLightMaskColour</tabstop>
   <tabstop>kcfg_showMagnifier</tabstop>
   <tabstop>kcfg_useReleaseToCapture</tabstop>
