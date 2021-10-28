@@ -340,7 +340,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         }
 
         // if we don't have a Gui already opened, Q_EMIT allDone
-        if (!this->mIsGuiInited) {
+        if (!mIsGuiInited) {
             // if we notify, we Q_EMIT allDone only if the user either dismissed the notification or pressed
             // the "Open" button, otherwise the app closes before it can react to it.
             if (!mNotify && mCopyImageToClipboard) {
@@ -361,8 +361,8 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         mMainWindow->setScreenshotAndShow(thePixmap);
 
         bool autoSaveImage = Settings::autoSaveImage();
-        bool mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
-        bool mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
+        mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
+        mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
 
         if (autoSaveImage && mCopyImageToClipboard) {
             lExportManager->doSaveAndCopy();
