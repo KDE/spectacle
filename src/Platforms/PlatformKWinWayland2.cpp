@@ -181,6 +181,11 @@ ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, Platform
 {
 }
 
+ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(PlatformKWinWayland2::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureActiveWindow"), screenShotFlagsToVardict(flags))
+{
+}
+
 ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
     : m_sources(sources)
 {
@@ -228,6 +233,16 @@ std::unique_ptr<PlatformKWinWayland2> PlatformKWinWayland2::create()
 PlatformKWinWayland2::PlatformKWinWayland2(QObject *parent)
     : Platform(parent)
 {
+    auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin.ScreenShot2"),
+                                                  QStringLiteral("/org/kde/KWin/ScreenShot2"),
+                                                  QStringLiteral("org.freedesktop.DBus.Properties"),
+                                                  QStringLiteral("Get"));
+    message.setArguments({QStringLiteral("org.kde.KWin.ScreenShot2"), QStringLiteral("Version")});
+
+    const QDBusMessage reply = QDBusConnection::sessionBus().call(message);
+    if (reply.type() == QDBusMessage::ReplyMessage) {
+        m_apiVersion = reply.arguments().constFirst().value<QDBusVariant>().variant().toUInt();
+    }
 }
 
 QString PlatformKWinWayland2::platformName() const
@@ -238,6 +253,10 @@ QString PlatformKWinWayland2::platformName() const
 Platform::GrabModes PlatformKWinWayland2::supportedGrabModes() const
 {
     Platform::GrabModes supportedModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative | GrabMode::AllScreensScaled;
+
+    if (m_apiVersion >= 2) {
+        supportedModes |= GrabMode::ActiveWindow;
+    }
 
     const QList<QScreen *> screens = QGuiApplication::screens();
     if (screens.count() > 1) {
@@ -281,6 +300,9 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode, bool theInc
     case GrabMode::CurrentScreen:
         takeScreenShotInteractive(InteractiveKind::Screen, flags);
         break;
+    case GrabMode::ActiveWindow:
+        takeScreenShotActiveWindow(flags);
+        break;
     case GrabMode::WindowUnderCursor:
         takeScreenShotInteractive(InteractiveKind::Window, flags);
         break;
@@ -293,7 +315,6 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode, bool theInc
 
     case GrabMode::InvalidChoice:
     case GrabMode::TransientWithParent:
-    case GrabMode::ActiveWindow:
         Q_EMIT newScreenshotFailed();
         break;
     }
@@ -331,6 +352,11 @@ void PlatformKWinWayland2::takeScreenShotArea(const QRect &area, ScreenShotFlags
 void PlatformKWinWayland2::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceInteractive2(kind, flags));
+}
+
+void PlatformKWinWayland2::takeScreenShotActiveWindow(ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceActiveWindow2(flags));
 }
 
 void PlatformKWinWayland2::takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags)
