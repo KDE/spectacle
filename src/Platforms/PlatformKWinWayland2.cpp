@@ -186,6 +186,11 @@ ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(PlatformKWinWayland
 {
 }
 
+ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(PlatformKWinWayland2::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureActiveScreen"), screenShotFlagsToVardict(flags))
+{
+}
+
 ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
     : m_sources(sources)
 {
@@ -298,7 +303,11 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode, bool theInc
         takeScreenShotArea(workArea(), flags);
         break;
     case GrabMode::CurrentScreen:
-        takeScreenShotInteractive(InteractiveKind::Screen, flags);
+        if (m_apiVersion >= 2) {
+            takeScreenShotActiveScreen(flags);
+        } else {
+            takeScreenShotInteractive(InteractiveKind::Screen, flags);
+        }
         break;
     case GrabMode::ActiveWindow:
         takeScreenShotActiveWindow(flags);
@@ -357,6 +366,11 @@ void PlatformKWinWayland2::takeScreenShotInteractive(InteractiveKind kind, Scree
 void PlatformKWinWayland2::takeScreenShotActiveWindow(ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceActiveWindow2(flags));
+}
+
+void PlatformKWinWayland2::takeScreenShotActiveScreen(ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceActiveScreen2(flags));
 }
 
 void PlatformKWinWayland2::takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags)

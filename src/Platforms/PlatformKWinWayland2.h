@@ -53,6 +53,7 @@ private:
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
     void takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags);
     void takeScreenShotActiveWindow(ScreenShotFlags flags);
+    void takeScreenShotActiveScreen(ScreenShotFlags flags);
 
     void trackSource(ScreenShotSource2 *source);
     void trackSource(ScreenShotSourceMeta2 *source);
@@ -134,6 +135,18 @@ class ScreenShotSourceActiveWindow2 final : public ScreenShotSource2
 
 public:
     ScreenShotSourceActiveWindow2(PlatformKWinWayland2::ScreenShotFlags flags);
+};
+
+/**
+ * The ScreenShotSourceActiveScreen2 class provides a convenient way to take a screenshot
+ * of the active screen. This uses the org.kde.KWin.ScreenShot2 dbus interface.
+ */
+class ScreenShotSourceActiveScreen2 final : public ScreenShotSource2
+{
+    Q_OBJECT
+
+public:
+    ScreenShotSourceActiveScreen2(PlatformKWinWayland2::ScreenShotFlags flags);
 };
 
 /**
