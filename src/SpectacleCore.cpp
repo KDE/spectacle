@@ -441,10 +441,13 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
-    if (mSaveToOutput) {
+
+    static bool isBackgroundMode = (mStartMode == SpectacleCore::StartMode::Background);
+
+    if (mSaveToOutput || isBackgroundMode) {
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
         // set to false so it won't show the same message twice
-        mSaveToOutput = false;
+        isBackgroundMode = false;
     } else if (mCopyImageToClipboard) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
