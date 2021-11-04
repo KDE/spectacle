@@ -71,7 +71,6 @@ private:
     void ensureGuiInitiad();
     void initGui(int theDelay, bool theIncludePointer, bool theIncludeDecorations);
     Platform::GrabMode toPlatformGrabMode(Spectacle::CaptureMode theCaptureMode);
-    void setUpShortcuts();
 
     StartMode mStartMode;
     bool mNotify;
