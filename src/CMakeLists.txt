@@ -32,10 +32,31 @@ add_executable(spectacle
     Platforms/PlatformNull.cpp
     Platforms/PlatformKWinWayland.cpp
     Platforms/PlatformKWinWayland2.cpp
-)
+
+    ExportManager.h
+    SpectacleCore.h
+    SpectacleDBusAdapter.h
+    ShortcutActions.h
+    Gui/KSMainWindow.h
+    Gui/KSWidget.h
+    Gui/KSImageWidget.h
+    Gui/ExportMenu.h
+    Gui/ProgressButton.h
+    Gui/SmartSpinBox.h
+    Gui/SettingsDialog/SaveOptionsPage.h
+    Gui/SettingsDialog/SettingsDialog.h
+    Gui/SettingsDialog/GeneralOptionsPage.h
+    Gui/SettingsDialog/ShortcutsOptionsPage.h
+    QuickEditor/QuickEditor.h
+    Platforms/PlatformLoader.h
+    Platforms/Platform.h
+    Platforms/PlatformNull.h
+    Platforms/PlatformKWinWayland.h
+    Platforms/PlatformKWinWayland2.h
+    )
 
 if(XCB_FOUND)
-    target_sources(spectacle PRIVATE Platforms/PlatformXcb.cpp)
+    target_sources(spectacle PRIVATE Platforms/PlatformXcb.cpp Platforms/PlatformXcb.h)
 
     target_link_libraries(spectacle
         XCB::XFIXES
@@ -52,6 +73,10 @@ if(KIPI_FOUND)
         KipiInterface/KSGKipiImageCollectionShared.cpp
         KipiInterface/KSGKipiInfoShared.cpp
         KipiInterface/KSGKipiImageCollectionSelector.cpp
+        KipiInterface/KSGKipiInterface.h
+        KipiInterface/KSGKipiImageCollectionShared.h
+        KipiInterface/KSGKipiInfoShared.h
+        KipiInterface/KSGKipiImageCollectionSelector.h
     )
 
     target_link_libraries(spectacle KF5::Kipi)
