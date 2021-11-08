@@ -409,6 +409,7 @@ Name[az]=Ekran şəkli çəkmədən başladın
 Name[ca]=Llança sense prendre cap captura de pantalla
 Name[ca@valencia]=Llança sense prendre cap captura de pantalla
 Name[es]=Lanzar sin realizar una captura de pantalla
+Name[fi]=Käynnistä kaappaamatta kuvaa
 Name[fr]=Lancer sans réalisation de copie d'écran
 Name[hu]=Indítás képernyőkép készítése nélkül
 Name[ia]=Lancea sin prender instantaneo de schermo
