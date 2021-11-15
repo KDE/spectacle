@@ -9,6 +9,7 @@
 
 #include <KApplicationTrader>
 #include <KIO/ApplicationLauncherJob>
+#include <KIO/JobUiDelegate>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
 #include <KStandardShortcut>
@@ -99,7 +100,7 @@ void ExportMenu::getKServiceItems()
         const QUrl filename = mExportManager->getAutosaveFilename();
         mExportManager->doSave(filename);
         auto job = new KIO::ApplicationLauncherJob;
-        job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+        job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
         job->setUrls({filename});
         job->start();
     });
