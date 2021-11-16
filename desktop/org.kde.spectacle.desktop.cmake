@@ -418,6 +418,7 @@ Name[nl]=Starten zonder een schermafdruk te maken
 Name[pl]=Uruchom bez wykonania zrzutu ekranu
 Name[pt]=Iniciar sem tirar uma fotografia
 Name[pt_BR]=Iniciar sem fazer uma captura de tela
+Name[sk]=Spustiť bez vytvorenia snímky obrazovky
 Name[sl]=Zaženi brez zajemanja zaslonskih slik
 Name[sv]=Starta utan att ta en skärmbild
 Name[uk]=Запустити без створення знімка
