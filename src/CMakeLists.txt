@@ -94,6 +94,7 @@ target_link_libraries(
         KF5::GlobalAccel
         KF5::XmlGui
         KF5::WaylandClient
+        KF5::GuiAddons
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
