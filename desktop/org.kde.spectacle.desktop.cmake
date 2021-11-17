@@ -405,6 +405,7 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action OpenWithoutScreenshot]
 Name=Launch without taking a screenshot
+Name[ar]=البدء بدون أخذ صورة
 Name[az]=Ekran şəkli çəkmədən başladın
 Name[ca]=Llança sense prendre cap captura de pantalla
 Name[ca@valencia]=Llança sense prendre cap captura de pantalla
