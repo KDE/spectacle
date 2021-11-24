@@ -422,6 +422,7 @@ Name[pt_BR]=Iniciar sem fazer uma captura de tela
 Name[sk]=Spustiť bez vytvorenia snímky obrazovky
 Name[sl]=Zaženi brez zajemanja zaslonskih slik
 Name[sv]=Starta utan att ta en skärmbild
+Name[ta]=துவக்கும்போது திரைப்பிடிப்பை எடுக்காதே
 Name[uk]=Запустити без створення знімка
 Name[x-test]=xxLaunch without taking a screenshotxx
 Name[zh_CN]=启动时不进行截图
