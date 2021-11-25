@@ -414,6 +414,7 @@ Name[fi]=Käynnistä kaappaamatta kuvaa
 Name[fr]=Lancer sans réalisation de copie d'écran
 Name[hu]=Indítás képernyőkép készítése nélkül
 Name[ia]=Lancea sin prender instantaneo de schermo
+Name[it]=Esegui senza acquisire una schermata
 Name[ko]=스크린샷을 찍지 않고 실행
 Name[nl]=Starten zonder een schermafdruk te maken
 Name[pl]=Uruchom bez wykonania zrzutu ekranu
