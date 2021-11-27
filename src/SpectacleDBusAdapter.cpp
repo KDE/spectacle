@@ -5,6 +5,7 @@
 
 #include "SpectacleDBusAdapter.h"
 #include "SpectacleCommon.h"
+#include "settings.h"
 
 SpectacleDBusAdapter::SpectacleDBusAdapter(SpectacleCore *parent)
     : QDBusAbstractAdaptor(parent)
@@ -17,29 +18,29 @@ inline SpectacleCore *SpectacleDBusAdapter::parent() const
     return static_cast<SpectacleCore *>(QObject::parent());
 }
 
-void SpectacleDBusAdapter::FullScreen(bool includeMousePointer)
+void SpectacleDBusAdapter::FullScreen()
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, includeMousePointer, true);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, Settings::includePointer(), true);
 }
 
-void SpectacleDBusAdapter::CurrentScreen(bool includeMousePointer)
+void SpectacleDBusAdapter::CurrentScreen()
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, includeMousePointer, true);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, Settings::includePointer(), true);
 }
 
-void SpectacleDBusAdapter::ActiveWindow(bool includeWindowDecorations, bool includeMousePointer)
+void SpectacleDBusAdapter::ActiveWindow()
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow, 0, includeMousePointer, includeWindowDecorations);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow, 0, Settings::includePointer(), Settings::includeDecorations());
 }
 
-void SpectacleDBusAdapter::WindowUnderCursor(bool includeWindowDecorations, bool includeMousePointer)
+void SpectacleDBusAdapter::WindowUnderCursor()
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor, 0, includeMousePointer, includeWindowDecorations);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor, 0, Settings::includePointer(), Settings::includeDecorations());
 }
 
-void SpectacleDBusAdapter::RectangularRegion(bool includeMousePointer)
+void SpectacleDBusAdapter::RectangularRegion()
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, includeMousePointer, false);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, Settings::includePointer(), false);
 }
 
 void SpectacleDBusAdapter::OpenWithoutScreenshot()
