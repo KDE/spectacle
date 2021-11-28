@@ -153,7 +153,7 @@ void KSMainWindow::init()
             mAnnotateButton->setText(i18n("Annotate"));
         } else {
             mKSWidget->showAnnotator();
-            mAnnotateButton->setText(i18n("Annotation done"));
+            mAnnotateButton->setText(i18n("Annotation Done"));
         }
 
         mToolsButton->setEnabled(mAnnotatorActive);
