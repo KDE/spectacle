@@ -86,6 +86,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     parser->parse(arguments);
 
     mStartMode = SpectacleCore::StartMode::Gui;
+    mExistingLoaded = false;
     mNotify = true;
     qint64 lDelayMsec = 0;
 
@@ -94,6 +95,18 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         mStartMode = SpectacleCore::StartMode::Background;
     } else if (parser->isSet(QStringLiteral("dbus"))) {
         mStartMode = SpectacleCore::StartMode::DBus;
+    }
+
+    mEditExisting = parser->isSet(QStringLiteral("edit-existing"));
+    if (mEditExisting) {
+        QString lExistingFileName = parser->value(QStringLiteral("edit-existing"));
+        if (!(lExistingFileName.isEmpty() || lExistingFileName.isNull())) {
+            if (QDir::isRelativePath(lExistingFileName)) {
+                lExistingFileName = QDir::current().absoluteFilePath(lExistingFileName);
+            }
+            setFilename(lExistingFileName);
+            mSaveToOutput = true;
+        }
     }
 
     auto lOnClickAvailable = mPlatform->supportedShutterModes().testFlag(Platform::ShutterMode::OnClick);
@@ -121,10 +134,11 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     } else if (parser->isSet(QStringLiteral("transientonly"))) {
         lCaptureMode = Spectacle::CaptureMode::WindowUnderCursor;
     } else if (mStartMode == SpectacleCore::StartMode::Gui
-               && (parser->isSet(QStringLiteral("launchonly")) || Settings::onLaunchAction() == Settings::EnumOnLaunchAction::DoNotTakeScreenshot)) {
+               && (parser->isSet(QStringLiteral("launchonly")) || Settings::onLaunchAction() == Settings::EnumOnLaunchAction::DoNotTakeScreenshot)
+               && !mEditExisting) {
         initGuiNoScreenshot();
         return;
-    } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode) {
+    } else if (Settings::onLaunchAction() == Settings::EnumOnLaunchAction::UseLastUsedCapturemode && !mEditExisting) {
         lCaptureMode = Settings::captureMode();
         if (Settings::onClickChecked()) {
             lDelayMsec = -1;
@@ -316,6 +330,12 @@ void SpectacleCore::screenshotsUpdated(const QVector<QImage> &imgs)
 
 void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 {
+    QPixmap existingPixmap;
+    const QPixmap &pixmapUsed = (mEditExisting && !mExistingLoaded) ? existingPixmap : thePixmap;
+    if (mEditExisting && !mExistingLoaded) {
+        existingPixmap.load(filename());
+    }
+
     auto lExportManager = ExportManager::instance();
 
     if (lExportManager->captureMode() == Spectacle::CaptureMode::RectangularRegion) {
@@ -325,7 +345,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         }
     }
 
-    lExportManager->setPixmap(thePixmap);
+    lExportManager->setPixmap(pixmapUsed);
     lExportManager->updatePixmapTimestamp();
 
     switch (mStartMode) {
@@ -357,12 +377,12 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         }
     } break;
     case StartMode::Gui:
-        if (thePixmap.isNull()) {
-            mMainWindow->setScreenshotAndShow(thePixmap);
+        if (pixmapUsed.isNull()) {
+            mMainWindow->setScreenshotAndShow(pixmapUsed, false);
             mMainWindow->setPlaceholderTextOnLaunch();
             return;
         }
-        mMainWindow->setScreenshotAndShow(thePixmap);
+        mMainWindow->setScreenshotAndShow(pixmapUsed, mEditExisting);
 
         bool autoSaveImage = Settings::autoSaveImage();
         mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
@@ -378,6 +398,12 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
             lExportManager->doCopyLocationToClipboard(false);
         }
     }
+
+    if (mEditExisting && !mExistingLoaded) {
+        Settings::setLastSaveLocation(mFileNameUrl);
+        mMainWindow->imageSaved(mFileNameUrl);
+        mExistingLoaded = true;
+    }
 }
 
 void SpectacleCore::screenshotCanceled()
@@ -385,7 +411,7 @@ void SpectacleCore::screenshotCanceled()
     mQuickEditor->hide();
     mQuickEditor.reset(nullptr);
     if (mStartMode == StartMode::Gui) {
-        mMainWindow->setScreenshotAndShow(QPixmap());
+        mMainWindow->setScreenshotAndShow(QPixmap(), false);
     } else {
         Q_EMIT allDone();
     }
@@ -409,7 +435,7 @@ void SpectacleCore::screenshotFailed()
         return;
     case StartMode::Gui:
         mMainWindow->screenshotFailed();
-        mMainWindow->setScreenshotAndShow(QPixmap());
+        mMainWindow->setScreenshotAndShow(QPixmap(), false);
     }
 }
 
@@ -459,16 +485,21 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     if (!theSavedAt.isEmpty()) {
         lNotify->setUrls({theSavedAt});
         lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
-        connect(lNotify, QOverload<uint>::of(&KNotification::activated), this, [this, theSavedAt](uint index) {
-            if (index == 0) {
-                auto job = new KIO::OpenUrlJob(theSavedAt);
-                job->start();
-                QTimer::singleShot(250, this, [this] {
-                    if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
-                        Q_EMIT allDone();
-                    }
-                });
-            }
+        connect(lNotify, &KNotification::defaultActivated, this, [this, theSavedAt]() {
+            auto job = new KIO::OpenUrlJob(theSavedAt);
+            job->start();
+            QTimer::singleShot(250, this, [this] {
+                if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
+                    emit allDone();
+                }
+            });
+        });
+        lNotify->setActions({i18n("Annotate")});
+        connect(lNotify, &KNotification::action1Activated, this, [this, theSavedAt]() {
+            QProcess newInstance;
+            newInstance.setProgram(QStringLiteral("spectacle"));
+            newInstance.setArguments({QStringLiteral("--new-instance"), QStringLiteral("--edit-existing"), theSavedAt.toLocalFile()});
+            newInstance.startDetached();
         });
     }
 
@@ -512,6 +543,7 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("i"), QStringLiteral("new-instance")}, i18n("Starts a new GUI instance of spectacle without registering to DBus")},
         {{QStringLiteral("p"), QStringLiteral("pointer")}, i18n("In background mode, include pointer in the screenshot")},
         {{QStringLiteral("e"), QStringLiteral("no-decoration")}, i18n("In background mode, exclude decorations in the screenshot")},
+        {{QStringLiteral("E"),QStringLiteral("edit-existing")},      i18n("Open and edit existing screenshot file"), QStringLiteral("existingFileName")},
     });
 }
 

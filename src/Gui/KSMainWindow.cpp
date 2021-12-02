@@ -387,7 +387,7 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
     delayAnimation->start();
 }
 
-void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
+void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap, bool showAnnotator)
 {
     if (!pixmap.isNull()) {
         mKSWidget->setScreenshotPixmap(pixmap);
@@ -404,6 +404,9 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
      * Because of this the call is not moved into the if above */
     if (!pixmap.isNull()) {
         resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
+    }
+    if (showAnnotator) {
+        mAnnotateButton->click();
     }
 }
 

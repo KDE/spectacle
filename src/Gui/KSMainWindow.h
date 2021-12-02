@@ -63,7 +63,7 @@ private Q_SLOTS:
 
 public Q_SLOTS:
 
-    void setScreenshotAndShow(const QPixmap &pixmap);
+    void setScreenshotAndShow(const QPixmap &pixmap, bool showAnnotator);
     void imageSaved(const QUrl &location);
     void imageSavedAndCopied(const QUrl &location);
     void screenshotFailed();

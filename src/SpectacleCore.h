@@ -84,6 +84,8 @@ private:
     bool mCopyImageToClipboard;
     bool mCopyLocationToClipboard;
     bool mSaveToOutput;
+    bool mEditExisting;
+    bool mExistingLoaded;
 
     KWayland::Client::PlasmaShell *mWaylandPlasmashell = nullptr;
 };
