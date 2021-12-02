@@ -67,21 +67,6 @@ if(XCB_FOUND)
     )
 endif()
 
-if(KIPI_FOUND)
-    target_sources(spectacle PRIVATE
-        KipiInterface/KSGKipiInterface.cpp
-        KipiInterface/KSGKipiImageCollectionShared.cpp
-        KipiInterface/KSGKipiInfoShared.cpp
-        KipiInterface/KSGKipiImageCollectionSelector.cpp
-        KipiInterface/KSGKipiInterface.h
-        KipiInterface/KSGKipiImageCollectionShared.h
-        KipiInterface/KSGKipiInfoShared.h
-        KipiInterface/KSGKipiImageCollectionSelector.h
-    )
-
-    target_link_libraries(spectacle KF5::Kipi)
-endif()
-
 if(PURPOSE_FOUND)
     target_link_libraries(spectacle KF5::PurposeWidgets)
 endif()

@@ -12,10 +12,6 @@
 #include "Config.h"
 #include "ExportManager.h"
 
-#ifdef KIPI_FOUND
-#include "KipiInterface/KSGKipiInterface.h"
-#endif
-
 #ifdef PURPOSE_FOUND
 #include <Purpose/AlternativesModel>
 #include <PurposeWidgets/Menu>
@@ -39,16 +35,6 @@ Q_SIGNALS:
 
 private:
     void getKServiceItems();
-
-#ifdef KIPI_FOUND
-    void getKipiItems();
-    void loadKipiItems();
-
-    bool mKipiMenuLoaded;
-    QMenu *mKipiMenu;
-    KSGKipiInterface *mKipiInterface;
-    QWidget mDummyWidget;
-#endif
 
 #ifdef PURPOSE_FOUND
     void loadPurposeMenu();

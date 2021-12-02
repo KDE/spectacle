@@ -69,11 +69,6 @@ find_package(
 
 # optional components
 
-find_package(KF5Kipi)
-if (KF5Kipi_FOUND)
-    set(KIPI_FOUND 1)
-endif ()
-
 find_package(KF5Purpose)
 if (KF5Purpose_FOUND)
     set(PURPOSE_FOUND 1)
