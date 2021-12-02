@@ -45,7 +45,9 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mAnnotator = new kImageAnnotator::KImageAnnotator();
     mAnnotator->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     mAnnotator->setCanvasColor(QColor(255, 255, 255, 0));
+#ifdef KIMAGEANNOTATOR_HAS_EXTRA_TOOLS
     mAnnotator->setControlsWidgetVisible(true);
+#endif
     mStack->addWidget(mAnnotator);
 #endif
 
