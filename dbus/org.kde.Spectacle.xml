@@ -19,9 +19,10 @@
         </method>
 
         <method name="FullScreen">
-            <arg name="includeMousePointer" direction="in" type="b">
+            <arg name="includeMousePointer" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer'.</doc:summary>
+                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>
@@ -33,9 +34,10 @@
         </method>
 
         <method name="CurrentScreen">
-            <arg name="includeMousePointer" direction="in" type="b">
+            <arg name="includeMousePointer" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer'.</doc:summary>
+                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>
@@ -47,14 +49,16 @@
         </method>
 
         <method name="ActiveWindow">
-            <arg name="includeWindowDecorations" direction="in" type="b">
+            <arg name="includeWindowDecorations" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include the window titlebars and frames.</doc:summary>
+                    <doc:summary>Whether to include the window titlebars and frames. Depends on the user set option 'include window titlebar and borders' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include window titlebar and borders', 0 - doesn't include window titlebars and frames, 1 - includes window titlebars and frames</doc:para>
                 </doc:doc>
             </arg>
-            <arg name="includeMousePointer" direction="in" type="b">
+            <arg name="includeMousePointer" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer'.</doc:summary>
+                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>
@@ -66,14 +70,16 @@
         </method>
 
         <method name="WindowUnderCursor">
-            <arg name="includeWindowDecorations" direction="in" type="b">
+            <arg name="includeWindowDecorations" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include the window titlebars and frames.</doc:summary>
+                    <doc:summary>Whether to include the window titlebars and frames. Depends on the user set option 'include window titlebar and borders' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include window titlebar and borders', 0 - doesn't include window titlebars and frames, 1 - includes window titlebars and frames</doc:para>
                 </doc:doc>
             </arg>
-            <arg name="includeMousePointer" direction="in" type="b">
+            <arg name="includeMousePointer" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer'.</doc:summary>
+                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>
@@ -85,9 +91,10 @@
         </method>
 
         <method name="RectangularRegion">
-            <arg name="includeMousePointer" direction="in" type="b">
+            <arg name="includeMousePointer" direction="in" type="i">
                 <doc:doc>
-                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer'.</doc:summary>
+                    <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>

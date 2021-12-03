@@ -20,11 +20,11 @@ public:
 
 public Q_SLOTS:
 
-    Q_NOREPLY void FullScreen();
-    Q_NOREPLY void CurrentScreen();
-    Q_NOREPLY void ActiveWindow();
-    Q_NOREPLY void WindowUnderCursor();
-    Q_NOREPLY void RectangularRegion();
+    Q_NOREPLY void FullScreen(int includeMousePointer);
+    Q_NOREPLY void CurrentScreen(int includeMousePointer);
+    Q_NOREPLY void ActiveWindow(int includeWindowDecorations, int includeMousePointer);
+    Q_NOREPLY void WindowUnderCursor(int includeWindowDecorations, int includeMousePointer);
+    Q_NOREPLY void RectangularRegion(int includeMousePointer);
     Q_NOREPLY void OpenWithoutScreenshot();
 
 Q_SIGNALS:

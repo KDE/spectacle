@@ -18,29 +18,38 @@ inline SpectacleCore *SpectacleDBusAdapter::parent() const
     return static_cast<SpectacleCore *>(QObject::parent());
 }
 
-void SpectacleDBusAdapter::FullScreen()
+void SpectacleDBusAdapter::FullScreen(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, Settings::includePointer(), true);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
 }
 
-void SpectacleDBusAdapter::CurrentScreen()
+void SpectacleDBusAdapter::CurrentScreen(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, Settings::includePointer(), true);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
 }
 
-void SpectacleDBusAdapter::ActiveWindow()
+void SpectacleDBusAdapter::ActiveWindow(int includeWindowDecorations, int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow, 0, Settings::includePointer(), Settings::includeDecorations());
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow,
+                                0,
+                                (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
+                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
 }
 
-void SpectacleDBusAdapter::WindowUnderCursor()
+void SpectacleDBusAdapter::WindowUnderCursor(int includeWindowDecorations, int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor, 0, Settings::includePointer(), Settings::includeDecorations());
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor,
+                                0,
+                                (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
+                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
 }
 
-void SpectacleDBusAdapter::RectangularRegion()
+void SpectacleDBusAdapter::RectangularRegion(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion, 0, Settings::includePointer(), false);
+    parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion,
+                                0,
+                                (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
+                                false);
 }
 
 void SpectacleDBusAdapter::OpenWithoutScreenshot()
