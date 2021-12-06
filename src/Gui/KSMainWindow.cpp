@@ -394,6 +394,9 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
         mExportMenu->imageUpdated();
         setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
         setWindowModified(true);
+#ifdef KIMAGEANNOTATOR_FOUND
+        mAnnotateButton->setEnabled(true);
+#endif
     } else {
         restoreWindowTitle();
     }
@@ -538,6 +541,9 @@ void KSMainWindow::screenshotFailed()
     showInlineMessage(i18n("Could not take a screenshot. Please report this bug here: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create "
                            "a spectacle bug</a>"),
                       KMessageWidget::Warning);
+#ifdef KIMAGEANNOTATOR_FOUND
+    mAnnotateButton->setEnabled(false);
+#endif
 }
 
 void KSMainWindow::setPlaceholderTextOnLaunch()
@@ -610,6 +616,9 @@ void KSMainWindow::restoreWindowTitle()
         } else {
             setPlaceholderTextOnLaunch();
         }
+#ifdef KIMAGEANNOTATOR_FOUND
+        mAnnotateButton->setEnabled(mKSWidget->isScreenshotSet());
+#endif
     }
 }
 
