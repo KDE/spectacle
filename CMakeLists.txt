@@ -74,6 +74,17 @@ if (KF5Purpose_FOUND)
     set(PURPOSE_FOUND 1)
 endif()
 
+
+# Tesseract
+find_package( PkgConfig REQUIRED)
+pkg_search_module( TESSERACT REQUIRED tesseract )
+pkg_search_module( LEPTONICA REQUIRED lept )
+include_directories( ${TESSERACT_INCLUDE_DIRS} )
+include_directories( ${LEPTONICA_INCLUDE_DIRS} )
+link_directories( ${TESSERACT_LIBRARY_DIRS} )
+link_directories( ${LEPTONICA_LIBRARY_DIRS} )
+
+
 find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR)
 set(XCB_COMPONENTS_ERRORS FALSE)
 if (XCB_FOUND)

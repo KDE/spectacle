@@ -10,6 +10,7 @@
 #include "SettingsDialog/SaveOptionsPage.h"
 #include "SettingsDialog/SettingsDialog.h"
 #include "SettingsDialog/ShortcutsOptionsPage.h"
+#include "TextExtractor.h"
 #include "settings.h"
 
 #include <QApplication>
@@ -222,6 +223,11 @@ void KSMainWindow::init()
     connect(mClipboardLocationAction, &QAction::triggered, this, &KSMainWindow::copyLocation);
     mClipboardMenu->addAction(mClipboardImageAction);
     mClipboardMenu->addAction(mClipboardLocationAction);
+
+    mTextExtractionAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Extract Text from Image to Clipboard"), this);
+    connect(mTextExtractionAction, &QAction::triggered, this, &KSMainWindow::extractText);
+    mClipboardMenu->addAction(mClipboardImageAction);
+    mClipboardMenu->addAction(mTextExtractionAction);
     setDefaultCopyAction();
 
     // message widget
@@ -508,6 +514,21 @@ void KSMainWindow::copyLocation()
     if (quitChecked) {
         quit(QuitBehavior::QuitExternally);
     }
+}
+
+void KSMainWindow::extractText()
+{
+    QString localFile = ExportManager::instance()->tempSave().toLocalFile();
+
+    auto textExtractor = new TextExtractor;
+    textExtractor->moveToThread(&workerThread);
+    connect(&workerThread, &QThread::finished, textExtractor, &QObject::deleteLater);
+    connect(this, &KSMainWindow::doExtractText, textExtractor, &TextExtractor::doExtract);
+    connect(textExtractor, &TextExtractor::errorOccured, this, [this](const QString error) {
+        showInlineMessage(error, KMessageWidget::Error);
+    });
+    workerThread.start();
+    Q_EMIT doExtractText(localFile);
 }
 
 void KSMainWindow::copyImage()

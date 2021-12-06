@@ -27,6 +27,7 @@ add_executable(spectacle
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
     QuickEditor/QuickEditor.cpp
+    TextExtractor.cpp
     Platforms/PlatformLoader.cpp
     Platforms/Platform.cpp
     Platforms/PlatformNull.cpp
@@ -94,6 +95,8 @@ target_link_libraries(
         KF5::GlobalAccel
         KF5::XmlGui
         KF5::WaylandClient
+        ${TESSERACT_LIBRARIES}
+        ${LEPTONICA_LIBRARIES}
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

@@ -10,6 +10,7 @@
 #include <QFrame>
 #include <QMenu>
 #include <QStackedLayout>
+#include <QThread>
 #include <QToolButton>
 
 #include <KMessageWidget>
@@ -59,6 +60,7 @@ private Q_SLOTS:
     void saveAs();
     void copyImage();
     void copyLocation();
+    void extractText();
     void restoreWindowTitle();
 
 public Q_SLOTS:
@@ -73,6 +75,7 @@ Q_SIGNALS:
 
     void newScreenshotRequest(Spectacle::CaptureMode theCaptureMode, int theTimeout, bool theIncludePointer, bool theIncludeDecorations);
     void dragAndDropRequest();
+    void doExtractText(const QString &location);
 
 protected:
     void moveEvent(QMoveEvent *event) override;
@@ -91,6 +94,7 @@ private:
     QMenu *const mClipboardMenu;
     QAction *mClipboardLocationAction = nullptr;
     QAction *mClipboardImageAction = nullptr;
+    QAction *mTextExtractionAction = nullptr;
     QToolButton *const mSaveButton;
     QMenu *const mSaveMenu;
     QAction *mSaveAsAction = nullptr;
@@ -109,4 +113,6 @@ private:
     QToolButton *const mAnnotateButton;
     bool mAnnotatorActive;
 #endif
+
+    QThread workerThread;
 };
