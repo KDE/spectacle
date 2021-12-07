@@ -226,7 +226,6 @@ void KSMainWindow::init()
 
     mTextExtractionAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Extract Text from Image to Clipboard"), this);
     connect(mTextExtractionAction, &QAction::triggered, this, &KSMainWindow::extractText);
-    mClipboardMenu->addAction(mClipboardImageAction);
     mClipboardMenu->addAction(mTextExtractionAction);
     setDefaultCopyAction();
 
