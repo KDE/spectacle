@@ -543,7 +543,7 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("i"), QStringLiteral("new-instance")}, i18n("Starts a new GUI instance of spectacle without registering to DBus")},
         {{QStringLiteral("p"), QStringLiteral("pointer")}, i18n("In background mode, include pointer in the screenshot")},
         {{QStringLiteral("e"), QStringLiteral("no-decoration")}, i18n("In background mode, exclude decorations in the screenshot")},
-        {{QStringLiteral("E"),QStringLiteral("edit-existing")},      i18n("Open and edit existing screenshot file"), QStringLiteral("existingFileName")},
+        {{QStringLiteral("E"), QStringLiteral("edit-existing")}, i18n("Open and edit existing screenshot file"), QStringLiteral("existingFileName")},
     });
 }
 
