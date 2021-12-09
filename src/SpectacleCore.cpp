@@ -518,6 +518,9 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
 void SpectacleCore::doStartDragAndDrop()
 {
     auto lExportManager = ExportManager::instance();
+    if (lExportManager->pixmap().isNull()) {
+        return;
+    }
     QUrl lTempFile = lExportManager->tempSave();
     if (!lTempFile.isValid()) {
         return;
