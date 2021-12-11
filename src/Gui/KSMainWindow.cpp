@@ -409,7 +409,9 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap, bool showAnnotato
         resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
     }
     if (showAnnotator) {
+#ifdef KIMAGEANNOTATOR_FOUND
         mAnnotateButton->click();
+#endif
     }
 }
 
