@@ -104,6 +104,7 @@ private:
     Platform::ShutterModes mShutterModes;
     QTimer *mHideMessageWidgetTimer = nullptr;
     QStackedLayout *mStack = nullptr;
+    bool mPixmapExists = false;
 
 #ifdef KIMAGEANNOTATOR_FOUND
     QToolButton *const mAnnotateButton;

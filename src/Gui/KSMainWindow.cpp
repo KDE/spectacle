@@ -307,6 +307,7 @@ void KSMainWindow::setDefaultSaveAction()
         mSaveButton->setDefaultAction(mSaveAction);
         break;
     }
+    mSaveButton->setEnabled(mPixmapExists);
 }
 
 void KSMainWindow::setDefaultCopyAction()
@@ -321,6 +322,7 @@ void KSMainWindow::setDefaultCopyAction()
         mClipboardButton->setDefaultAction(mClipboardLocationAction);
         break;
     }
+    mClipboardButton->setEnabled(mPixmapExists);
 }
 
 // overrides
@@ -389,23 +391,30 @@ void KSMainWindow::captureScreenshot(Spectacle::CaptureMode theCaptureMode, int 
 
 void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap, bool showAnnotator)
 {
-    if (!pixmap.isNull()) {
+    mPixmapExists = !pixmap.isNull();
+    if (mPixmapExists) {
         mKSWidget->setScreenshotPixmap(pixmap);
         mExportMenu->imageUpdated();
         setWindowTitle(i18nc("@title:window Unsaved Screenshot", "Unsaved[*]"));
         setWindowModified(true);
-#ifdef KIMAGEANNOTATOR_FOUND
-        mAnnotateButton->setEnabled(true);
-#endif
     } else {
         restoreWindowTitle();
     }
+
+#ifdef KIMAGEANNOTATOR_FOUND
+    mAnnotateButton->setEnabled(mPixmapExists);
+#endif
+    mToolsButton->setEnabled(mPixmapExists);
+    mSendToButton->setEnabled(mPixmapExists);
+    mClipboardButton->setEnabled(mPixmapExists);
+    mSaveButton->setEnabled(mPixmapExists);
+
     mKSWidget->setButtonState(KSWidget::State::TakeNewScreenshot);
     show();
     activateWindow();
     /* NOTE windowWidth only produces the right result if it is called after the window is visible.
      * Because of this the call is not moved into the if above */
-    if (!pixmap.isNull()) {
+    if (mPixmapExists) {
         resize(QSize(windowWidth(pixmap), DEFAULT_WINDOW_HEIGHT));
     }
     if (showAnnotator) {
