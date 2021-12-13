@@ -490,7 +490,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
             job->start();
             QTimer::singleShot(250, this, [this] {
                 if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
-                    emit allDone();
+                    Q_EMIT allDone();
                 }
             });
         });
