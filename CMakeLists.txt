@@ -17,17 +17,14 @@ set(KF5_MIN_VERSION    "5.89.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-# require c++17
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-# set up kf5
+# set up standard kde build settings
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+
+# used cmake macros
+
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(FeatureSummary)
@@ -37,9 +34,8 @@ include(ECMQueryQmake)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOREACH)
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050c00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
+# find dependencies
+
 find_package(
     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
@@ -124,6 +120,15 @@ endif()
 
 # locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
 query_qmake(QtBinariesDir QT_INSTALL_BINS)
+
+# setup handling of deprecated Qt & KF API
+
+add_definitions(
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x050c00
+    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
+    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
+    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+)
 
 # hand off to subdirectories
 
