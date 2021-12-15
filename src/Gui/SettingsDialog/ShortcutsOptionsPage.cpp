@@ -9,7 +9,6 @@
 #include "ShortcutActions.h"
 
 #include <KShortcutsEditor>
-#include <kxmlgui_version.h>
 
 #include <QVBoxLayout>
 
@@ -25,20 +24,12 @@ ShortcutsOptionsPage::ShortcutsOptionsPage(QWidget *parent)
 
 ShortcutsOptionsPage::~ShortcutsOptionsPage()
 {
-#if KXMLGUI_VERSION >= QT_VERSION_CHECK(5, 75, 0)
     mEditor->undo();
-#else
-    mEditor->undoChanges();
-#endif
 }
 
 void ShortcutsOptionsPage::resetChanges()
 {
-#if KXMLGUI_VERSION >= QT_VERSION_CHECK(5, 75, 0)
     mEditor->undo();
-#else
-    mEditor->undoChanges();
-#endif
 }
 
 void ShortcutsOptionsPage::saveChanges()
