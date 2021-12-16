@@ -404,6 +404,7 @@ Name[ia]=Lancea sin prender instantaneo de schermo
 Name[it]=Esegui senza acquisire una schermata
 Name[ko]=스크린샷을 찍지 않고 실행
 Name[nl]=Starten zonder een schermafdruk te maken
+Name[nn]=Køyr utan å ta eit bilete
 Name[pl]=Uruchom bez wykonania zrzutu ekranu
 Name[pt]=Iniciar sem tirar uma fotografia
 Name[pt_BR]=Iniciar sem fazer uma captura de tela
