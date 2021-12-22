@@ -57,16 +57,18 @@ find_package(
         I18n
         KIO
         WindowSystem
-        DocTools
         NewStuff
         GlobalAccel
         XmlGui
         Wayland
         GuiAddons
 )
-
 # optional components
-
+find_package(KF5DocTools ${KF5_MIN_VERSION})
+set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
+    "Tools to generate documentation"
+    TYPE OPTIONAL
+)
 find_package(KF5Purpose)
 if (KF5Purpose_FOUND)
     set(PURPOSE_FOUND 1)
@@ -136,8 +138,11 @@ add_subdirectory(src)
 add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
-add_subdirectory(doc)
 add_subdirectory(tests)
+
+if (KF5DocTools_FOUND)
+    add_subdirectory(doc)
+endif()
 
 ecm_qt_install_logging_categories(EXPORT SPECTACLE FILE spectacle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
