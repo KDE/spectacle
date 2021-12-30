@@ -178,6 +178,7 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mPlaceholderLabel->setTextInteractionFlags(Qt::NoTextInteraction);
     mPlaceholderLabel->setWordWrap(true);
     mPlaceholderLabel->setAlignment(Qt::AlignCenter);
+    mPlaceholderLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     // Match opacity of QML placeholder label component
     auto *effect = new QGraphicsOpacityEffect(mPlaceholderLabel);
     effect->setOpacity(0.5);
@@ -231,6 +232,7 @@ bool KSWidget::isScreenshotSet()
 
 void KSWidget::showPlaceholderText(const QString &label)
 {
+    mImageWidget->hide();
     mPlaceholderLabel->setText(label);
     mPlaceholderLabel->show();
 }
@@ -240,6 +242,7 @@ void KSWidget::setScreenshotPixmap(const QPixmap &thePixmap)
     if (mPlaceholderLabel->isVisible()) {
         mPlaceholderLabel->hide();
     }
+    mImageWidget->show();
     mImageWidget->setScreenshot(thePixmap);
 }
 
