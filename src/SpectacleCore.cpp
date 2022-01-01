@@ -408,9 +408,7 @@ void SpectacleCore::screenshotFailed()
         Q_EMIT allDone();
         return;
     case StartMode::Gui:
-        if (ExportManager::instance()->captureMode() != Spectacle::CaptureMode::RectangularRegion) {
-            mMainWindow->screenshotFailed();
-        }
+        mMainWindow->screenshotFailed();
         mMainWindow->setScreenshotAndShow(QPixmap());
     }
 }

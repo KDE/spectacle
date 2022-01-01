@@ -90,6 +90,9 @@ public:
                         QTimer::singleShot(0, [this]() {
                             mPlatformPtr->doGrabNow(mGrabMode, mIncludePointer, mIncludeDecorations);
                         });
+                    } else if (lSecondEvent->detail == 2 || lSecondEvent->detail == 3) {
+                        // 2: middle click, 3: right click; both cancel
+                        Q_EMIT mPlatformPtr->newScreenshotTaken(QPixmap());
                     } else if (lSecondEvent->detail < 4) {
                         Q_EMIT mPlatformPtr->newScreenshotFailed();
                     } else {
