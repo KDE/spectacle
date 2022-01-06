@@ -404,7 +404,6 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap)
 #ifdef KIMAGEANNOTATOR_FOUND
     mAnnotateButton->setEnabled(mPixmapExists);
 #endif
-    mToolsButton->setEnabled(mPixmapExists);
     mSendToButton->setEnabled(mPixmapExists);
     mClipboardButton->setEnabled(mPixmapExists);
     mSaveButton->setEnabled(mPixmapExists);
