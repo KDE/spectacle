@@ -465,20 +465,18 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         break;
     }
 
-    // a speaking message is prettier than a URL, special case for copy to clipboard and the default pictures location
+    // a speaking message is prettier than a URL, special case for copy image/location to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
 
-    static bool isBackgroundMode = (mStartMode == SpectacleCore::StartMode::Background);
-
-    if (mSaveToOutput || isBackgroundMode) {
-        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
-        // set to false so it won't show the same message twice
-        isBackgroundMode = false;
-    } else if (mCopyImageToClipboard) {
+    if (mCopyImageToClipboard && theSavedAt.fileName().isEmpty()) {
         lNotify->setText(i18n("A screenshot was saved to your clipboard."));
+    } else if (mCopyLocationToClipboard && !theSavedAt.fileName().isEmpty()) {
+        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+                              theSavedAt.fileName(),
+                              lSavePath));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
-    } else {
+    } else if (!theSavedAt.fileName().isEmpty()) {
         lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
     }
 
