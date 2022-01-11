@@ -29,8 +29,9 @@ int main(int argc, char **argv)
     // set up the application
 
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
+#endif
     QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain("spectacle");
