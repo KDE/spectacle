@@ -160,9 +160,17 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     case StartMode::Background: {
         mCopyImageToClipboard = false;
         mCopyLocationToClipboard = false;
+        mSaveToOutput = true;
 
         if (parser->isSet(QStringLiteral("nonotify"))) {
             mNotify = false;
+        }
+
+        if (parser->isSet(QStringLiteral("copy-image"))) {
+            mSaveToOutput = false;
+            mCopyImageToClipboard = true;
+        } else if (parser->isSet(QStringLiteral("copy-path"))) {
+            mCopyLocationToClipboard = true;
         }
 
         if (parser->isSet(QStringLiteral("output"))) {
@@ -186,12 +194,6 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
 
         if (parser->isSet(QStringLiteral("onclick"))) {
             lDelayMsec = -1;
-        }
-
-        if (parser->isSet(QStringLiteral("copy-image"))) {
-            mCopyImageToClipboard = true;
-        } else if (parser->isSet(QStringLiteral("copy-path"))) {
-            mCopyLocationToClipboard = true;
         }
 
         if (!mIsGuiInited) {
@@ -535,7 +537,7 @@ void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser
         {{QStringLiteral("d"), QStringLiteral("delay")},
          i18n("In background mode, delay before taking the shot (in milliseconds)"),
          QStringLiteral("delayMsec")},
-        {{QStringLiteral("c"), QStringLiteral("copy-image")}, i18n("In background mode, copy screenshot image to clipboard")},
+        {{QStringLiteral("c"), QStringLiteral("copy-image")}, i18n("In background mode, copy screenshot image to clipboard, unless -o is also used.")},
         {{QStringLiteral("C"), QStringLiteral("copy-path")}, i18n("In background mode, copy screenshot file path to clipboard")},
         {{QStringLiteral("w"), QStringLiteral("onclick")}, i18n("Wait for a click before taking screenshot. Invalidates delay")},
         {{QStringLiteral("i"), QStringLiteral("new-instance")}, i18n("Starts a new GUI instance of spectacle without registering to DBus")},
