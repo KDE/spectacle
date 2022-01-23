@@ -183,6 +183,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
                          .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
                          .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
                          .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
+                         .replace(QLatin1String("%t"), timestamp.toString(QStringLiteral("t")))
                          .replace(QLatin1String("%T"), title);
 
     // check if basename includes %[N]d token for sequential file numbering
@@ -597,6 +598,7 @@ const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{
     {QStringLiteral("%H"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
     {QStringLiteral("%m"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
     {QStringLiteral("%S"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
+    {QStringLiteral("%t"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
     {QStringLiteral("%T"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
     {QStringLiteral("%d"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering")},
     {QStringLiteral("%Nd"),
