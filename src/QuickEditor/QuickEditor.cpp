@@ -64,6 +64,7 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     , mShowMagnifier(Settings::showMagnifier())
     , mToggleMagnifier(false)
     , mReleaseToCapture(Settings::useReleaseToCapture())
+    , mShowCaptureInstructions(Settings::showCaptureInstructions())
     , mDisableArrowKeys(false)
     , mbottomCaptureInstructionsLength(bottomCaptureInstructionLength)
     , mHandleRadius(handleRadiusMouse)
@@ -674,9 +675,13 @@ void QuickEditor::paintEvent(QPaintEvent *event)
         }
         drawSelectionSizeTooltip(painter, dragHandlesVisible);
 
-        drawBottomCaptureInstructions(painter);
+        if (mShowCaptureInstructions) {
+            drawBottomCaptureInstructions(painter);
+        }
     } else {
-        drawMidCaptureInstructions(painter);
+        if (mShowCaptureInstructions) {
+            drawMidCaptureInstructions(painter);
+        }
     }
 }
 

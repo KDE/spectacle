@@ -130,6 +130,7 @@ private:
     bool mShowMagnifier;
     bool mToggleMagnifier;
     bool mReleaseToCapture;
+    bool mShowCaptureInstructions;
     bool mDisableArrowKeys;
     int mbottomCaptureInstructionsLength;
     QRect mScreensRect;
