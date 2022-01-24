@@ -141,6 +141,7 @@ Keywords[hu]=pillanatkép;rögzítés;nyomtatás;képernyőkép;levágás;vágó
 Keywords[ia]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
 Keywords[it]=schermata;cattura;stampa;screenshot;ritagliare;strumento di ritaglio;ritaglio;
 Keywords[nl]=momentopname;vangen;afdrukken;schermafdruk;bezig met knippen;kniphulpmiddel;knip;
+Keywords[nn]=skjermbilete;skjermskot;utskrift;print;screenshot;utklipp;utklippsverktøy;
 Keywords[pl]=zrzut;migawka;przechwycenie;drukowanie;wycinane;narzędzie wycinków;wycinek;
 Keywords[pt_BR]=snapshot;captura;imprimir;captura de tala;recortar;cortar;ferramenta de corte;
 Keywords[sl]=zajem zaslona;zajem;tisk;slika zaslona;zajemalno orodje;zajemanje;snip;
