@@ -188,6 +188,7 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
     const bool shiftPressed = modifiers & Qt::ShiftModifier;
     if (shiftPressed) {
         mToggleMagnifier = true;
+        update();
     }
     switch (event->key()) {
     case Qt::Key_Escape:
