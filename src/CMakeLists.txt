@@ -26,6 +26,7 @@ add_executable(spectacle
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
+    QuickEditor/AreaSelector.cpp
     QuickEditor/QuickEditor.cpp
     Platforms/PlatformLoader.cpp
     Platforms/Platform.cpp

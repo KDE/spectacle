@@ -327,7 +327,6 @@ void SpectacleCore::screenshotsUpdated(const QVector<QImage> &imgs)
     mQuickEditor = std::make_unique<QuickEditor>(mapScreens, mWaylandPlasmashell);
     connect(mQuickEditor.get(), &QuickEditor::grabDone, this, &SpectacleCore::screenshotUpdated);
     connect(mQuickEditor.get(), &QuickEditor::grabCancelled, this, &SpectacleCore::screenshotCanceled);
-    mQuickEditor->show();
 }
 
 void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
@@ -341,10 +340,7 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
     auto lExportManager = ExportManager::instance();
 
     if (lExportManager->captureMode() == Spectacle::CaptureMode::RectangularRegion) {
-        if (mQuickEditor) {
-            mQuickEditor->hide();
-            mQuickEditor.reset(nullptr);
-        }
+        mQuickEditor.reset(nullptr);
     }
 
     lExportManager->setPixmap(pixmapUsed);
@@ -410,7 +406,6 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
 
 void SpectacleCore::screenshotCanceled()
 {
-    mQuickEditor->hide();
     mQuickEditor.reset(nullptr);
     if (mStartMode == StartMode::Gui) {
         mMainWindow->setScreenshotAndShow(QPixmap(), false);
@@ -422,7 +417,6 @@ void SpectacleCore::screenshotCanceled()
 void SpectacleCore::screenshotFailed()
 {
     if (ExportManager::instance()->captureMode() == Spectacle::CaptureMode::RectangularRegion && mQuickEditor) {
-        mQuickEditor->hide();
         mQuickEditor.reset(nullptr);
     }
 

@@ -9,8 +9,6 @@
 #include <QFlags>
 #include <QObject>
 
-#include "QuickEditor/ComparableQPoint.h"
-
 class Platform : public QObject
 {
     Q_OBJECT
