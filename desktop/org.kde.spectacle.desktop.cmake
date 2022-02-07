@@ -430,6 +430,7 @@ Name[nn]=Køyr utan å ta eit bilete
 Name[pl]=Uruchom bez wykonania zrzutu ekranu
 Name[pt]=Iniciar sem tirar uma fotografia
 Name[pt_BR]=Iniciar sem fazer uma captura de tela
+Name[ro]=Lansează fără a face o captură de ecran
 Name[sk]=Spustiť bez vytvorenia snímky obrazovky
 Name[sl]=Zaženi brez zajemanja zaslonskih slik
 Name[sv]=Starta utan att ta en skärmbild
