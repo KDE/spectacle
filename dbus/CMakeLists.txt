@@ -3,7 +3,7 @@ include(ECMGenerateDBusServiceFile)
 include(ECMConfiguredInstall)
 
 # Generate and install dbus-activated systemd service
-ecm_install_configured_files(INPUT app-org.kde.spectacle.service.in DESTINATION ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+ecm_install_configured_files(INPUT app-org.kde.spectacle.service.in DESTINATION ${KDE_INSTALL_SYSTEMDUSERUNITDIR})
 
 ecm_generate_dbus_service_file(
    NAME org.kde.Spectacle
