@@ -23,7 +23,7 @@ class KSImageWidget : public QLabel
 public:
     explicit KSImageWidget(QWidget *parent = nullptr);
     void setScreenshot(const QPixmap &pixmap);
-    bool isPixmapSet();
+    bool isPixmapSet() const;
 
 Q_SIGNALS:
 
@@ -38,7 +38,7 @@ protected:
 private:
     void setScaledPixmap();
 
-    QGraphicsDropShadowEffect *mDSEffect;
+    QGraphicsDropShadowEffect *mDSEffect = nullptr;
     QPixmap mPixmap;
     QPoint mDragStartPosition;
 };

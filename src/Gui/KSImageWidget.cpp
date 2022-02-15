@@ -39,7 +39,7 @@ void KSImageWidget::setScaledPixmap()
     setPixmap(scaledPixmap);
 }
 
-bool KSImageWidget::isPixmapSet()
+bool KSImageWidget::isPixmapSet() const
 {
     return !mPixmap.isNull();
 }

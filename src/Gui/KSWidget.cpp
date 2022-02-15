@@ -223,7 +223,7 @@ int KSWidget::imagePaddingWidth() const
     return lPaddingWidth;
 }
 
-bool KSWidget::isScreenshotSet()
+bool KSWidget::isScreenshotSet() const
 {
     return mImageWidget->isPixmapSet();
 }

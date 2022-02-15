@@ -31,10 +31,10 @@ int main(int argc, char **argv)
     QStringList ids;
     if (found_spectacle) {
         for (int i = 1; i <= 4; ++i) {
-            QString groupName = QStringLiteral("Data_%1_%2").arg(spectacleIndex).arg(i);
-            QString method = KConfigGroup(&khotkeysrc, groupName + QStringLiteral("Actions0")).readEntry("Call");
-            QString id = KConfigGroup(&khotkeysrc, groupName + QStringLiteral("Triggers0")).readEntry("Uuid");
-            QList<QKeySequence> shortcut = KGlobalAccel::self()->globalShortcut(QStringLiteral("khotkeys"), id);
+            const QString groupName = QStringLiteral("Data_%1_%2").arg(spectacleIndex).arg(i);
+            const QString method = KConfigGroup(&khotkeysrc, groupName + QStringLiteral("Actions0")).readEntry("Call");
+            const QString id = KConfigGroup(&khotkeysrc, groupName + QStringLiteral("Triggers0")).readEntry("Uuid");
+            const QList<QKeySequence> shortcut = KGlobalAccel::self()->globalShortcut(QStringLiteral("khotkeys"), id);
             ids.append(id);
             /* Name and Comment field are translated but we can find out which action is which by looking at the called
              *  D-Bus Method */

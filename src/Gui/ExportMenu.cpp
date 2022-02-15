@@ -124,7 +124,7 @@ void ExportMenu::loadPurposeItems()
     }
 
     // updated image available, we lazily load it now
-    QString dataUri = ExportManager::instance()->tempSave().toString();
+    const QString dataUri = ExportManager::instance()->tempSave().toString();
     mUpdatedImageAvailable = false;
 
     mPurposeMenu->model()->setInputData(

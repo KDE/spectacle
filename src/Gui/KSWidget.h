@@ -44,7 +44,7 @@ public:
     enum class State { TakeNewScreenshot, Cancel };
 
     int imagePaddingWidth() const;
-    bool isScreenshotSet();
+    bool isScreenshotSet() const;
 
 Q_SIGNALS:
 

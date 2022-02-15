@@ -79,8 +79,8 @@ void SaveOptionsPage::updateFilenamePreview()
 
     // If the grabMode is not one of those below we need to change it to have the placeholder
     // replaced by the window title
-    bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow || lOldMode == Spectacle::CaptureMode::TransientWithParent
-                             || lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
+    const bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow || lOldMode == Spectacle::CaptureMode::TransientWithParent
+                                   || lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
     if (lSwitchGrabMode) {
         lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
     }
