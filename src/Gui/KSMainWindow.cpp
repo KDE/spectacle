@@ -61,8 +61,6 @@ KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterMo
     , mClipboardImageAction(new QAction(this))
     , mSaveButton(new QToolButton(this))
     , mSaveMenu(new QMenu(this))
-    , mSaveAsAction(new QAction(this))
-    , mSaveAction(new QAction(this))
     , mMessageWidget(new KMessageWidget(this))
     , mToolsMenu(new QMenu(this))
     , mScreenRecorderToolsMenu(new QMenu(this))
