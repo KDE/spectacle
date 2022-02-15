@@ -31,7 +31,7 @@ public Q_SLOTS:
     void resetChanges();
 
 private:
-    KShortcutsEditor *mEditor;
+    KShortcutsEditor *mEditor = nullptr;
 };
 
 #endif // SHORTCUTSOPTIONSPAGE_H

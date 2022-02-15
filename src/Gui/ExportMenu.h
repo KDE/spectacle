@@ -41,10 +41,10 @@ private:
     void loadPurposeItems();
 
     bool mUpdatedImageAvailable;
-    Purpose::Menu *mPurposeMenu;
+    Purpose::Menu *mPurposeMenu = nullptr;
 #endif
 
-    ExportManager *mExportManager;
+    ExportManager *const mExportManager;
 };
 
 #endif // EXPORTMENU_H
