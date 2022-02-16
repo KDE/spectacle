@@ -9,11 +9,11 @@
 
 #include <KLocalizedString>
 #include <QDateTime>
-#include <QIODevice>
+class QIODevice;
 #include <QMap>
 #include <QObject>
 #include <QPixmap>
-#include <QPrinter>
+class QPrinter;
 #include <QUrl>
 
 class QTemporaryDir;

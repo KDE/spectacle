@@ -15,8 +15,7 @@
 ShortcutsOptionsPage::ShortcutsOptionsPage(QWidget *parent)
     : QWidget(parent)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    setLayout(mainLayout);
+    auto mainLayout = new QVBoxLayout(this);
     mEditor = new KShortcutsEditor(ShortcutActions::self()->shortcutActions(), this, KShortcutsEditor::ActionType::GlobalAction);
     mainLayout->addWidget(mEditor);
     connect(mEditor, &KShortcutsEditor::keyChange, this, &ShortcutsOptionsPage::shortCutsChanged);

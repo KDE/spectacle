@@ -24,6 +24,7 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QCommandLineParser>
 #include <QDir>
 #include <QDrag>
 #include <QKeySequence>

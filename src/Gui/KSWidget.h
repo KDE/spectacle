@@ -78,7 +78,7 @@ private:
     QVBoxLayout *mRightLayout{nullptr};
     QFormLayout *mCaptureModeForm{nullptr};
     QVBoxLayout *mContentOptionsForm{nullptr};
-    KSImageWidget *mImageWidget{nullptr};
+    KSImageWidget *const mImageWidget;
     ProgressButton *mTakeScreenshotButton;
     QComboBox *mCaptureArea{nullptr};
     SmartSpinBox *mDelayMsec{nullptr};

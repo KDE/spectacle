@@ -6,13 +6,13 @@
 #pragma once
 
 #include <QDialog>
-#include <QDialogButtonBox>
-#include <QFrame>
-#include <QMenu>
-#include <QStackedLayout>
-#include <QToolButton>
+class QDialogButtonBox;
+class QFrame;
+class QMenu;
+class QStackedLayout;
+class QToolButton;
 
-#include <KMessageWidget>
+class KMessageWidget;
 #include <KNS3/KMoreToolsMenuFactory>
 
 #include "SpectacleCommon.h"
@@ -22,6 +22,7 @@
 #include "KSWidget.h"
 #include "Platforms/Platform.h"
 
+#include <KMessageWidget>
 #include <memory>
 
 class KSMainWindow : public QDialog

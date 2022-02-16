@@ -5,9 +5,9 @@
 
 #pragma once
 
-#include <QGraphicsDropShadowEffect>
+class QGraphicsDropShadowEffect;
 #include <QLabel>
-#include <QMouseEvent>
+class QMouseEvent;
 #include <QPixmap>
 #include <QPoint>
 
@@ -38,7 +38,7 @@ protected:
 private:
     void setScaledPixmap();
 
-    QGraphicsDropShadowEffect *mDSEffect = nullptr;
+    QGraphicsDropShadowEffect *const mDSEffect;
     QPixmap mPixmap;
     QPoint mDragStartPosition;
 };

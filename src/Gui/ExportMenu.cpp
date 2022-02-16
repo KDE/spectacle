@@ -81,8 +81,7 @@ void ExportMenu::getKServiceItems()
 
     addSeparator();
 
-    QAction *openWith = new QAction(this);
-    openWith->setText(i18n("Other Application..."));
+    QAction *openWith = new QAction(i18n("Other Application..."), this);
     openWith->setShortcuts(KStandardShortcut::open());
 
     connect(openWith, &QAction::triggered, this, [=]() {

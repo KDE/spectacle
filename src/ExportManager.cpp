@@ -17,6 +17,7 @@
 #include <QMimeData>
 #include <QMimeDatabase>
 #include <QPainter>
+#include <QPrinter>
 #include <QRandomGenerator>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
@@ -284,7 +285,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
 QString ExportManager::makeSaveMimetype(const QUrl &url)
 {
     QMimeDatabase mimedb;
-    QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
+    const QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
         return Settings::self()->defaultSaveImageFormat().toLower();
@@ -423,7 +424,7 @@ bool ExportManager::save(const QUrl &url)
         return false;
     }
 
-    QString mimetype = makeSaveMimetype(url);
+    const QString mimetype = makeSaveMimetype(url);
     bool saveSucceded = false;
     if (url.isLocalFile()) {
         saveSucceded = localSave(url, mimetype);

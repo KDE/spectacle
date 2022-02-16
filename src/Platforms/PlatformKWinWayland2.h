@@ -9,7 +9,7 @@
 #include "Platform.h"
 
 #include <QImage>
-#include <QScreen>
+class QScreen;
 
 #include <memory>
 

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <QCommandLineParser>
+class QCommandLineParser;
 #include <QObject>
 
 #include "ExportManager.h"

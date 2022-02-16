@@ -30,14 +30,15 @@
 
 #include <KConfigDialogManager>
 #include <KLocalizedString>
+#include <QGraphicsOpacityEffect>
 
 KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     : QWidget(parent)
+    , mImageWidget(new KSImageWidget(this))
 {
     mStack = new QStackedLayout(this);
 
     // we'll init the widget that holds the image first
-    mImageWidget = new KSImageWidget(this);
     mImageWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     connect(mImageWidget, &KSImageWidget::dragInitiated, this, &KSWidget::dragInitiated);
 

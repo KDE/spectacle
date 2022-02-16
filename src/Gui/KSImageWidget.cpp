@@ -5,14 +5,16 @@
 
 #include "KSImageWidget.h"
 #include <KLocalizedString>
+#include <QGraphicsDropShadowEffect>
 #include <QGuiApplication>
+#include <QMouseEvent>
 #include <QStyleHints>
 
 KSImageWidget::KSImageWidget(QWidget *parent)
     : QLabel(parent)
+    , mDSEffect(new QGraphicsDropShadowEffect(this))
     , mPixmap(QPixmap())
 {
-    mDSEffect = new QGraphicsDropShadowEffect(this);
 
     mDSEffect->setBlurRadius(SpectacleImage::SHADOW_RADIUS);
     mDSEffect->setOffset(0);

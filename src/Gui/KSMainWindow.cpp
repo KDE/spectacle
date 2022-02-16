@@ -20,6 +20,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QPrintDialog>
+#include <QPrinter>
 #include <QPushButton>
 #include <QTimer>
 #include <QVBoxLayout>

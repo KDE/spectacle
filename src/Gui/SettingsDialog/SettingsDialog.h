@@ -28,7 +28,7 @@ private:
     void updateWidgets() override;
     void updateWidgetsDefault() override;
 
-    ShortcutsOptionsPage *mShortcutsPage;
+    ShortcutsOptionsPage *const mShortcutsPage;
 };
 
 #endif // SETTINGSDIALOG_H

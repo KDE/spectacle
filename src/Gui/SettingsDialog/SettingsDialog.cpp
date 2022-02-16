@@ -19,10 +19,10 @@
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
+    , mShortcutsPage(new ShortcutsOptionsPage(this))
 {
     addPage(new GeneralOptionsPage(this), Settings::self(), i18n("General"), QStringLiteral("spectacle"));
     addPage(new SaveOptionsPage(this), Settings::self(), i18n("Save"), QStringLiteral("document-save"));
-    mShortcutsPage = new ShortcutsOptionsPage(this);
     addPage(mShortcutsPage, i18n("Shortcuts"), QStringLiteral("preferences-desktop-keyboard"));
     connect(mShortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
         updateButtons();

@@ -15,6 +15,7 @@
 #include <QFutureWatcher>
 #include <QGuiApplication>
 #include <QPixmap>
+#include <QScreen>
 #include <QtConcurrent>
 
 #include <errno.h>
