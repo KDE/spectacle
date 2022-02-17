@@ -13,7 +13,7 @@ install(
 
 install(
     FILES spectacle.notifyrc
-    DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR}
+    DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR}
 )
 
 install(

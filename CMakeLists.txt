@@ -12,7 +12,7 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION     "5.15.0")
-set(KF5_MIN_VERSION    "5.89.0")
+set(KF5_MIN_VERSION    "5.90.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -37,7 +37,7 @@ include(KDEGitCommitHooks)
 # find dependencies
 
 find_package(
-    Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
+    Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
         Concurrent
         Widgets
@@ -121,8 +121,11 @@ if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
 endif()
 
 # locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
-query_qmake(QtBinariesDir QT_INSTALL_BINS)
-
+if (QT_MAJOR_VERSION EQUAL "5")
+    query_qmake(QtBinariesDir QT_INSTALL_BINS)
+else()
+    MESSAGE(STATUS "need to find QtBinariesDir")
+endif()
 # setup handling of deprecated Qt & KF API
 
 add_definitions(
