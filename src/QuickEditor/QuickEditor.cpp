@@ -49,7 +49,7 @@ const int QuickEditor::magOffset = 32;
 
 QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::Client::PlasmaShell *plasmashell, QWidget *parent)
     : QWidget(parent, Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint)
-    , mMaskColor(QColor::fromRgbF(0, 0, 0, 0.15))
+    , mMaskColor(QColor::fromRgbF(0, 0, 0, 0.5))
     , mStrokeColor(palette().highlight().color())
     , mCrossColor(QColor::fromRgbF(mStrokeColor.redF(), mStrokeColor.greenF(), mStrokeColor.blueF(), 0.7))
     , mLabelBackgroundColor(QColor::fromRgbF(palette().light().color().redF(), palette().light().color().greenF(), palette().light().color().blueF(), 0.85))
@@ -69,7 +69,7 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     , mHandleRadius(handleRadiusMouse)
 {
     if (Settings::useLightMaskColour()) {
-        mMaskColor = QColor(255, 255, 255, 100);
+        mMaskColor = QColor(255, 255, 255, 127);
     }
 
     setMouseTracking(true);
