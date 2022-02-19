@@ -21,7 +21,6 @@ class QComboBox;
 class QCheckBox;
 class QLabel;
 class KConfigDialogManager;
-class QPushButton;
 class QStackedLayout;
 
 class KSImageWidget;
