@@ -140,6 +140,7 @@ Keywords[fr]=instantané ; capture ; impression ; capture d'écran ; découp
 Keywords[hu]=pillanatkép;rögzítés;nyomtatás;képernyőkép;levágás;vágóeszköz;vágás;
 Keywords[ia]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
 Keywords[it]=schermata;cattura;stampa;screenshot;ritagliare;strumento di ritaglio;ritaglio;
+Keywords[ko]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;스냅샷;캡처;인쇄;스크린샷;스냅;
 Keywords[nl]=momentopname;vangen;afdrukken;schermafdruk;bezig met knippen;kniphulpmiddel;knip;
 Keywords[nn]=skjermbilete;skjermskot;utskrift;print;screenshot;utklipp;utklippsverktøy;
 Keywords[pl]=zrzut;migawka;przechwycenie;drukowanie;wycinane;narzędzie wycinków;wycinek;
