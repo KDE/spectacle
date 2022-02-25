@@ -149,6 +149,7 @@ Keywords[ro]=captură;instantaneu;print;decupare;
 Keywords[ru]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;снимок;захват;печать;снимок экрана;скриншот;обрезка;инструмент обрезки;обрезать;
 Keywords[sl]=zajem zaslona;zajem;tisk;slika zaslona;zajemalno orodje;zajemanje;snip;
 Keywords[sv]=ta;skriva ut;skärmbild;klippa ut;klippa;klippverktyg;klipp;
+Keywords[ta]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;திரைப்பிடிப்பு;படமெடு;அச்சு;அச்சிடு;வெட்டு;திரைப்படம்;படம்;பதிவு;
 Keywords[uk]=знімок;захоплення;друк;знімок вікна;вікно;знімок екрана;екран;нарізка;нарізання;snapshot;capture;print;screenshot;snipping;snip;
 Keywords[x-test]=xxsnapshotxx;xxcapturexx;xxprintxx;xxscreenshotxx;xxsnippingxx;xxsnipping toolxx;xxsnipxx;
 Keywords[zh_CN]=snapshot;capture;print;screenshot;snipping;snip;快照;截图;抓取;屏幕截图;截图和批注;截屏;
