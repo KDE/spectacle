@@ -111,5 +111,8 @@ private:
 #ifdef KIMAGEANNOTATOR_FOUND
     QToolButton *const mAnnotateButton;
     bool mAnnotatorActive;
+
+private Q_SLOTS:
+    void updateAnnotatorVisibility();
 #endif
 };

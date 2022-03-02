@@ -330,4 +330,27 @@ void KSWidget::hideAnnotator()
     setScreenshotPixmap(px);
     ExportManager::instance()->setPixmap(px);
 }
+
+QSize KSWidget::sizeHintWhenAnnotating()
+{
+    /*
+     * when using Wayland only maximization shall be used and return value ignored.
+     * We return it anyway for other possible use-cases.
+     * Reason: Wayland doesn't allow moving of the window hence a too big window
+     * of spectacle would 'overflow' outside the display.
+     */
+
+#ifdef KIMAGEANNOTATOR_HAS_FIXED_SIZEHINT
+    return mAnnotator->sizeHint();
+#endif
+
+    if (qApp->devicePixelRatio() == 1) {
+        return mAnnotator->sizeHint();
+    } else {
+        // if scaling is >100%, than `image().size() > sizeHint()` calculates an bigger value
+        // unless KIMAGEANNOTATOR_HAS_FIXED_SIZEHINT is set
+        return mAnnotator->image().size();
+    }
+}
+
 #endif

@@ -112,6 +112,9 @@ if(kImageAnnotator_FOUND)
     if(NOT kImageAnnotator_VERSION VERSION_LESS 0.6.0)
         set(KIMAGEANNOTATOR_HAS_EXTRA_TOOLS 1)
     endif()
+    if(NOT kImageAnnotator_VERSION VERSION_LESS 0.6.1)
+        set(KIMAGEANNOTATOR_HAS_FIXED_SIZEHINT 1)
+    endif()
 endif()
 
 # add the spectacle.upd file

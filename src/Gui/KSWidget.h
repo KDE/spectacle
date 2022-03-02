@@ -64,6 +64,7 @@ public Q_SLOTS:
 #ifdef KIMAGEANNOTATOR_FOUND
     void showAnnotator();
     void hideAnnotator();
+    QSize sizeHintWhenAnnotating();
 #endif
 
 private Q_SLOTS:

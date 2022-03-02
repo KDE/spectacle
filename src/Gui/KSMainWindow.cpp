@@ -21,7 +21,10 @@
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QPropertyAnimation>
 #include <QPushButton>
+#include <QScreen>
+#include <QStyle>
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QVariantAnimation>
@@ -150,23 +153,7 @@ void KSMainWindow::init()
     mAnnotateButton->setToolTip(i18n("Add annotation to the screenshot"));
     mAnnotateButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
-    connect(mAnnotateButton, &QToolButton::clicked, this, [this] {
-        if (mAnnotatorActive) {
-            mKSWidget->hideAnnotator();
-            mAnnotateButton->setText(i18n("Annotate"));
-        } else {
-            mKSWidget->showAnnotator();
-            mAnnotateButton->setText(i18n("Annotation Done"));
-        }
-
-        mToolsButton->setEnabled(mAnnotatorActive);
-        mSendToButton->setEnabled(mAnnotatorActive);
-        mClipboardButton->setEnabled(mAnnotatorActive);
-        mSaveButton->setEnabled(mAnnotatorActive);
-
-        mAnnotatorActive = !mAnnotatorActive;
-    });
-
+    connect(mAnnotateButton, &QToolButton::clicked, this, &KSMainWindow::updateAnnotatorVisibility);
     mDialogButtonBox->addButton(mAnnotateButton, QDialogButtonBox::ActionRole);
 #endif
 
@@ -661,3 +648,48 @@ void KSMainWindow::keyPressEvent(QKeyEvent *event)
     }
     QDialog::keyPressEvent(event);
 }
+
+#ifdef KIMAGEANNOTATOR_FOUND
+void KSMainWindow::updateAnnotatorVisibility()
+{
+    static QSize oldSize = size();
+    QScreen *screen = QGuiApplication::primaryScreen();
+
+    // animation required for non-maximized resizing
+    QPropertyAnimation *resizeAnimation = new QPropertyAnimation(this, "size");
+    auto kdeGlobalsConfig = KConfigGroup(KSharedConfig::openConfig(), QStringLiteral("KDE"));
+    float animationDurationFactor = std::max(0.0, kdeGlobalsConfig.readEntry("AnimationDurationFactor", 1.0));
+
+    resizeAnimation->setDuration(2 * style()->styleHint(QStyle::SH_Widget_Animation_Duration, nullptr, this) * animationDurationFactor);
+
+    if (mAnnotatorActive) {
+        mKSWidget->hideAnnotator();
+        if (windowState() == Qt::WindowMaximized) {
+            showNormal();
+        } else {
+            resizeAnimation->setEndValue(oldSize);
+            resizeAnimation->start();
+        }
+        mAnnotateButton->setText(i18nc("@action:button", "Annotate"));
+    } else {
+        mKSWidget->showAnnotator();
+        const auto sizeWhenAnnotating = mKSWidget->sizeHintWhenAnnotating();
+
+        if (KWindowSystem::isPlatformWayland() || screen->availableSize().height() <= sizeWhenAnnotating.height()
+            || screen->availableSize().width() <= sizeWhenAnnotating.width()) {
+            showMaximized();
+        } else {
+            resizeAnimation->setEndValue(sizeWhenAnnotating);
+            resizeAnimation->start();
+        }
+        mAnnotateButton->setText(i18nc("@action:button", "Annotation Done"));
+    }
+
+    mToolsButton->setEnabled(mAnnotatorActive);
+    mSendToButton->setEnabled(mAnnotatorActive);
+    mClipboardButton->setEnabled(mAnnotatorActive);
+    mSaveButton->setEnabled(mAnnotatorActive);
+
+    mAnnotatorActive = !mAnnotatorActive;
+}
+#endif
