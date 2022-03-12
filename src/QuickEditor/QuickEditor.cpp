@@ -625,7 +625,6 @@ void QuickEditor::paintEvent(QPaintEvent *event)
     Q_UNUSED(event)
 
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.eraseRect(rect());
 
     for (auto i = mImages.constBegin(); i != mImages.constEnd(); ++i) {
