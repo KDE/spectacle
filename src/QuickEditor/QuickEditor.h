@@ -63,16 +63,16 @@ private:
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *) override;
-    void drawBottomHelpText(QPainter &painter);
+    void drawBottomCaptureInstructions(QPainter &painter);
     void drawDragHandles(QPainter &painter);
     void drawMagnifier(QPainter &painter);
-    void drawMidHelpText(QPainter &painter);
+    void drawMidCaptureInstructions(QPainter &painter);
     void preparePaint();
     void createPixmapFromScreens();
     void setGeometryToScreenPixmap(KWayland::Client::PlasmaShell *plasmashell);
     void drawSelectionSizeTooltip(QPainter &painter, bool dragHandlesVisible);
-    void setBottomHelpText();
-    void layoutBottomHelpText();
+    void setBottomCaptureInstructions();
+    void layoutBottomCaptureInstructions();
     void setMouseCursor(const QPointF &pos);
     MouseState mouseLocation(const QPointF &pos);
 
@@ -90,13 +90,13 @@ private:
     static const int selectionBoxPaddingY;
     static const int selectionBoxMarginY;
 
-    static const int bottomHelpMaxLength = 6;
-    static bool bottomHelpTextPrepared;
-    static const int bottomHelpBoxPaddingX;
-    static const int bottomHelpBoxPaddingY;
-    static const int bottomHelpBoxPairSpacing;
-    static const int bottomHelpBoxMarginBottom;
-    static const int midHelpTextFontSize;
+    static const int bottomCaptureInstructionLength = 6;
+    static bool bottomCaptureInstructionPrepared;
+    static const int bottomCaptureInstructionBoxPaddingX;
+    static const int bottomCaptureInstructionBoxPaddingY;
+    static const int bottomCaptureInstructionBoxPairSpacing;
+    static const int bottomCaptureInstructionBoxMarginBottom;
+    static const int midCaptureInstructionFontSize;
 
     static const int magnifierLargeStep;
 
@@ -112,13 +112,13 @@ private:
     QRect mSelection;
     QPointF mStartPos;
     QPointF mInitialTopLeft;
-    QString mMidHelpText;
-    QFont mMidHelpTextFont;
-    std::pair<QStaticText, std::vector<QStaticText>> mBottomHelpText[bottomHelpMaxLength];
-    QFont mBottomHelpTextFont;
-    QRect mBottomHelpBorderBox;
-    QPoint mBottomHelpContentPos;
-    int mBottomHelpGridLeftWidth;
+    QString mMidCaptureInstruction;
+    QFont mMidCaptureInstructionFont;
+    std::pair<QStaticText, std::vector<QStaticText>> mBottomCaptureInstructions[bottomCaptureInstructionLength];
+    QFont mBottomCaptureInstructionFont;
+    QRect mBottomCaptureInstructionBorderBox;
+    QPoint mBottomCaptureInstructionContentPos;
+    int mBottomCaptureInstructionGridLeftWidth;
     MouseState mMouseDragState;
     QMap<const QScreen *, QImage> mImages;
     QMap<const QScreen *, qreal> mScreenToDpr;
@@ -131,7 +131,7 @@ private:
     bool mToggleMagnifier;
     bool mReleaseToCapture;
     bool mDisableArrowKeys;
-    int mbottomHelpLength;
+    int mbottomCaptureInstructionsLength;
     QRect mScreensRect;
 
     // Midpoints of handles

@@ -53,16 +53,16 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
     }());
     connect(m_ui->kcfg_defaultSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
 
-    QString helpText = i18n(
+    QString captureInstruction = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:<blockquote>");
     for (auto option = ExportManager::filenamePlaceholders.cbegin(); option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        helpText += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value().toString());
+        captureInstruction += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value().toString());
     }
-    helpText += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
-    helpText += QStringLiteral("</blockquote>");
-    m_ui->helpTextLabel->setText(helpText);
-    connect(m_ui->helpTextLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
+    captureInstruction += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
+    captureInstruction += QStringLiteral("</blockquote>");
+    m_ui->captureInstructionLabel->setText(captureInstruction);
+    connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
         m_ui->kcfg_saveFilenameFormat->insert(placeholder);
     });
 

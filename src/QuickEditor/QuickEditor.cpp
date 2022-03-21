@@ -34,12 +34,12 @@ const int QuickEditor::selectionBoxPaddingX = 5;
 const int QuickEditor::selectionBoxPaddingY = 4;
 const int QuickEditor::selectionBoxMarginY = 5;
 
-bool QuickEditor::bottomHelpTextPrepared = false;
-const int QuickEditor::bottomHelpBoxPaddingX = 12;
-const int QuickEditor::bottomHelpBoxPaddingY = 8;
-const int QuickEditor::bottomHelpBoxPairSpacing = 6;
-const int QuickEditor::bottomHelpBoxMarginBottom = 5;
-const int QuickEditor::midHelpTextFontSize = 12;
+bool QuickEditor::bottomCaptureInstructionPrepared = false;
+const int QuickEditor::bottomCaptureInstructionBoxPaddingX = 12;
+const int QuickEditor::bottomCaptureInstructionBoxPaddingY = 8;
+const int QuickEditor::bottomCaptureInstructionBoxPairSpacing = 6;
+const int QuickEditor::bottomCaptureInstructionBoxMarginBottom = 5;
+const int QuickEditor::midCaptureInstructionFontSize = 12;
 
 const int QuickEditor::magnifierLargeStep = 15;
 
@@ -54,10 +54,10 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     , mCrossColor(QColor::fromRgbF(mStrokeColor.redF(), mStrokeColor.greenF(), mStrokeColor.blueF(), 0.7))
     , mLabelBackgroundColor(QColor::fromRgbF(palette().light().color().redF(), palette().light().color().greenF(), palette().light().color().blueF(), 0.85))
     , mLabelForegroundColor(palette().windowText().color())
-    , mMidHelpText(i18n("Click and drag to draw a selection rectangle,\nor press Esc to quit"))
-    , mMidHelpTextFont(font())
-    , mBottomHelpTextFont(font())
-    , mBottomHelpGridLeftWidth(0)
+    , mMidCaptureInstruction(i18n("Click and drag to draw a selection rectangle,\nor press Esc to quit"))
+    , mMidCaptureInstructionFont(font())
+    , mBottomCaptureInstructionFont(font())
+    , mBottomCaptureInstructionGridLeftWidth(0)
     , mMouseDragState(MouseState::None)
     , mImages(images)
     , mMagnifierAllowed(false)
@@ -65,7 +65,7 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
     , mToggleMagnifier(false)
     , mReleaseToCapture(Settings::useReleaseToCapture())
     , mDisableArrowKeys(false)
-    , mbottomHelpLength(bottomHelpMaxLength)
+    , mbottomCaptureInstructionsLength(bottomCaptureInstructionLength)
     , mHandleRadius(handleRadiusMouse)
 {
     if (Settings::useLightMaskColour()) {
@@ -97,22 +97,22 @@ QuickEditor::QuickEditor(const QMap<const QScreen *, QImage> &images, KWayland::
         setCursor(Qt::CrossCursor);
     }
 
-    setBottomHelpText();
-    mMidHelpTextFont.setPointSize(midHelpTextFontSize);
-    if (!bottomHelpTextPrepared) {
-        bottomHelpTextPrepared = true;
+    setBottomCaptureInstructions();
+    mMidCaptureInstructionFont.setPointSize(midCaptureInstructionFontSize);
+    if (!bottomCaptureInstructionPrepared) {
+        bottomCaptureInstructionPrepared = true;
         const auto prepare = [this](QStaticText &item) {
-            item.prepare(QTransform(), mBottomHelpTextFont);
+            item.prepare(QTransform(), mBottomCaptureInstructionFont);
             item.setPerformanceHint(QStaticText::AggressiveCaching);
         };
-        for (auto &pair : mBottomHelpText) {
+        for (auto &pair : mBottomCaptureInstructions) {
             prepare(pair.first);
             for (auto &item : pair.second) {
                 prepare(item);
             }
         }
     }
-    layoutBottomHelpText();
+    layoutBottomCaptureInstructions();
 
     update();
 }
@@ -673,100 +673,101 @@ void QuickEditor::paintEvent(QPaintEvent *event)
             drawMagnifier(painter);
         }
         drawSelectionSizeTooltip(painter, dragHandlesVisible);
-        drawBottomHelpText(painter);
+
+        drawBottomCaptureInstructions(painter);
     } else {
-        drawMidHelpText(painter);
+        drawMidCaptureInstructions(painter);
     }
 }
 
-void QuickEditor::layoutBottomHelpText()
+void QuickEditor::layoutBottomCaptureInstructions()
 {
     int maxRightWidth = 0;
     int contentWidth = 0;
     int contentHeight = 0;
-    mBottomHelpGridLeftWidth = 0;
-    for (int i = 0; i < mbottomHelpLength; i++) {
-        const auto &item = mBottomHelpText[i];
+    mBottomCaptureInstructionGridLeftWidth = 0;
+    for (int i = 0; i < mbottomCaptureInstructionsLength; i++) {
+        const auto &item = mBottomCaptureInstructions[i];
         const auto &left = item.first;
         const auto &right = item.second;
         const auto leftSize = left.size().toSize();
-        mBottomHelpGridLeftWidth = qMax(mBottomHelpGridLeftWidth, leftSize.width());
+        mBottomCaptureInstructionGridLeftWidth = qMax(mBottomCaptureInstructionGridLeftWidth, leftSize.width());
         for (const auto &item : right) {
             const auto rightItemSize = item.size().toSize();
             maxRightWidth = qMax(maxRightWidth, rightItemSize.width());
             contentHeight += rightItemSize.height();
         }
-        contentWidth = qMax(contentWidth, mBottomHelpGridLeftWidth + maxRightWidth + bottomHelpBoxPairSpacing);
-        contentHeight += (i != bottomHelpMaxLength ? bottomHelpBoxMarginBottom : 0);
+        contentWidth = qMax(contentWidth, mBottomCaptureInstructionGridLeftWidth + maxRightWidth + bottomCaptureInstructionBoxPairSpacing);
+        contentHeight += (i != bottomCaptureInstructionLength ? bottomCaptureInstructionBoxMarginBottom : 0);
     }
     const QRect primaryGeometry = QGuiApplication::primaryScreen()->geometry().translated(-mScreensRect.topLeft());
-    mBottomHelpContentPos.setX((primaryGeometry.width() - contentWidth) / 2 + primaryGeometry.x() / devicePixelRatio);
-    mBottomHelpContentPos.setY((primaryGeometry.height() + primaryGeometry.y() / devicePixelRatio) - contentHeight - 8);
-    mBottomHelpGridLeftWidth += mBottomHelpContentPos.x();
-    mBottomHelpBorderBox.setRect(mBottomHelpContentPos.x() - bottomHelpBoxPaddingX,
-                                 mBottomHelpContentPos.y() - bottomHelpBoxPaddingY,
-                                 contentWidth + bottomHelpBoxPaddingX * 2,
-                                 contentHeight + bottomHelpBoxPaddingY * 2 - 1);
+    mBottomCaptureInstructionContentPos.setX((primaryGeometry.width() - contentWidth) / 2 + primaryGeometry.x() / devicePixelRatio);
+    mBottomCaptureInstructionContentPos.setY((primaryGeometry.height() + primaryGeometry.y() / devicePixelRatio) - contentHeight - 8);
+    mBottomCaptureInstructionGridLeftWidth += mBottomCaptureInstructionContentPos.x();
+    mBottomCaptureInstructionBorderBox.setRect(mBottomCaptureInstructionContentPos.x() - bottomCaptureInstructionBoxPaddingX,
+                                               mBottomCaptureInstructionContentPos.y() - bottomCaptureInstructionBoxPaddingY,
+                                               contentWidth + bottomCaptureInstructionBoxPaddingX * 2,
+                                               contentHeight + bottomCaptureInstructionBoxPaddingY * 2 - 1);
 }
 
-void QuickEditor::setBottomHelpText()
+void QuickEditor::setBottomCaptureInstructions()
 {
     if (mReleaseToCapture && mSelection.size().isEmpty()) {
         // Release to capture enabled and NO saved region available
-        mbottomHelpLength = 3;
-        mBottomHelpText[0] = {QStaticText(i18n("Take Screenshot:")),
-                              {QStaticText(i18nc("Mouse action", "Release left-click")), QStaticText(i18nc("Keyboard action", "Enter"))}};
-        mBottomHelpText[1] = {
+        mbottomCaptureInstructionsLength = 3;
+        mBottomCaptureInstructions[0] = {QStaticText(i18n("Take Screenshot:")),
+                                         {QStaticText(i18nc("Mouse action", "Release left-click")), QStaticText(i18nc("Keyboard action", "Enter"))}};
+        mBottomCaptureInstructions[1] = {
             QStaticText(i18n("Create new selection rectangle:")),
             {QStaticText(i18nc("Mouse action", "Drag outside selection rectangle")), QStaticText(i18nc("Keyboard action", "+ Shift: Magnifier"))}};
-        mBottomHelpText[2] = {QStaticText(i18n("Cancel:")), {QStaticText(i18nc("Keyboard action", "Escape"))}};
+        mBottomCaptureInstructions[2] = {QStaticText(i18n("Cancel:")), {QStaticText(i18nc("Keyboard action", "Escape"))}};
     } else {
         // Default text, Release to capture option disabled
-        mBottomHelpText[0] = {QStaticText(i18n("Take Screenshot:")),
-                              {QStaticText(i18nc("Mouse action", "Double-click")), QStaticText(i18nc("Keyboard action", "Enter"))}};
-        mBottomHelpText[1] = {
+        mBottomCaptureInstructions[0] = {QStaticText(i18n("Take Screenshot:")),
+                                         {QStaticText(i18nc("Mouse action", "Double-click")), QStaticText(i18nc("Keyboard action", "Enter"))}};
+        mBottomCaptureInstructions[1] = {
             QStaticText(i18n("Create new selection rectangle:")),
             {QStaticText(i18nc("Mouse action", "Drag outside selection rectangle")), QStaticText(i18nc("Keyboard action", "+ Shift: Magnifier"))}};
-        mBottomHelpText[2] = {QStaticText(i18n("Move selection rectangle:")),
-                              {QStaticText(i18nc("Mouse action", "Drag inside selection rectangle")),
-                               QStaticText(i18nc("Keyboard action", "Arrow keys")),
-                               QStaticText(i18nc("Keyboard action", "+ Shift: Move in 1 pixel steps"))}};
-        mBottomHelpText[3] = {QStaticText(i18n("Resize selection rectangle:")),
-                              {QStaticText(i18nc("Mouse action", "Drag handles")),
-                               QStaticText(i18nc("Keyboard action", "Arrow keys + Alt")),
-                               QStaticText(i18nc("Keyboard action", "+ Shift: Resize in 1 pixel steps"))}};
-        mBottomHelpText[4] = {QStaticText(i18n("Reset selection:")), {QStaticText(i18nc("Mouse action", "Right-click"))}};
-        mBottomHelpText[5] = {QStaticText(i18n("Cancel:")), {QStaticText(i18nc("Keyboard action", "Escape"))}};
+        mBottomCaptureInstructions[2] = {QStaticText(i18n("Move selection rectangle:")),
+                                         {QStaticText(i18nc("Mouse action", "Drag inside selection rectangle")),
+                                          QStaticText(i18nc("Keyboard action", "Arrow keys")),
+                                          QStaticText(i18nc("Keyboard action", "+ Shift: Move in 1 pixel steps"))}};
+        mBottomCaptureInstructions[3] = {QStaticText(i18n("Resize selection rectangle:")),
+                                         {QStaticText(i18nc("Mouse action", "Drag handles")),
+                                          QStaticText(i18nc("Keyboard action", "Arrow keys + Alt")),
+                                          QStaticText(i18nc("Keyboard action", "+ Shift: Resize in 1 pixel steps"))}};
+        mBottomCaptureInstructions[4] = {QStaticText(i18n("Reset selection:")), {QStaticText(i18nc("Mouse action", "Right-click"))}};
+        mBottomCaptureInstructions[5] = {QStaticText(i18n("Cancel:")), {QStaticText(i18nc("Keyboard action", "Escape"))}};
     }
 }
 
-void QuickEditor::drawBottomHelpText(QPainter &painter)
+void QuickEditor::drawBottomCaptureInstructions(QPainter &painter)
 {
-    if (mSelection.intersects(mBottomHelpBorderBox)) {
+    if (mSelection.intersects(mBottomCaptureInstructionBorderBox)) {
         return;
     }
 
     painter.setBrush(mLabelBackgroundColor);
     painter.setPen(mLabelForegroundColor);
-    painter.setFont(mBottomHelpTextFont);
+    painter.setFont(mBottomCaptureInstructionFont);
     painter.setRenderHint(QPainter::Antialiasing, false);
-    painter.drawRect(mBottomHelpBorderBox);
+    painter.drawRect(mBottomCaptureInstructionBorderBox);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    int topOffset = mBottomHelpContentPos.y();
-    for (int i = 0; i < mbottomHelpLength; i++) {
-        const auto &item = mBottomHelpText[i];
+    int topOffset = mBottomCaptureInstructionContentPos.y();
+    for (int i = 0; i < mbottomCaptureInstructionsLength; i++) {
+        const auto &item = mBottomCaptureInstructions[i];
         const auto &left = item.first;
         const auto &right = item.second;
         const auto leftSize = left.size().toSize();
-        painter.drawStaticText(mBottomHelpGridLeftWidth - leftSize.width(), topOffset, left);
+        painter.drawStaticText(mBottomCaptureInstructionGridLeftWidth - leftSize.width(), topOffset, left);
         for (const auto &item : right) {
             const auto rightItemSize = item.size().toSize();
-            painter.drawStaticText(mBottomHelpGridLeftWidth + bottomHelpBoxPairSpacing, topOffset, item);
+            painter.drawStaticText(mBottomCaptureInstructionGridLeftWidth + bottomCaptureInstructionBoxPairSpacing, topOffset, item);
             topOffset += rightItemSize.height();
         }
-        if (i != bottomHelpMaxLength) {
-            topOffset += bottomHelpBoxMarginBottom;
+        if (i != bottomCaptureInstructionLength) {
+            topOffset += bottomCaptureInstructionBoxMarginBottom;
         }
     }
 }
@@ -895,11 +896,11 @@ void QuickEditor::drawMagnifier(QPainter &painter)
     }
 }
 
-void QuickEditor::drawMidHelpText(QPainter &painter)
+void QuickEditor::drawMidCaptureInstructions(QPainter &painter)
 {
     painter.fillRect(rect(), mMaskColor);
-    painter.setFont(mMidHelpTextFont);
-    QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidHelpText);
+    painter.setFont(mMidCaptureInstructionFont);
+    QRect textSize = painter.boundingRect(QRect(), Qt::AlignCenter, mMidCaptureInstruction);
     const QRect primaryGeometry = QGuiApplication::primaryScreen()->geometry().translated(-mScreensRect.topLeft());
     QPoint pos((primaryGeometry.width() - textSize.width()) / 2 + primaryGeometry.x() / devicePixelRatio,
                (primaryGeometry.height() - textSize.height()) / 2 + primaryGeometry.y() / devicePixelRatio);
@@ -911,7 +912,7 @@ void QuickEditor::drawMidHelpText(QPainter &painter)
     painter.drawRoundedRect(QRect(pos.x() - 20, pos.y() - 20, textSize.width() + 40, textSize.height() + 40), 4, 4);
 
     painter.setCompositionMode(QPainter::CompositionMode_Source);
-    painter.drawText(QRect(pos, textSize.size()), Qt::AlignCenter, mMidHelpText);
+    painter.drawText(QRect(pos, textSize.size()), Qt::AlignCenter, mMidCaptureInstruction);
 }
 
 void QuickEditor::drawSelectionSizeTooltip(QPainter &painter, bool dragHandlesVisible)
