@@ -187,6 +187,8 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
 {
     const auto modifiers = event->modifiers();
     const bool shiftPressed = modifiers & Qt::ShiftModifier;
+    const bool altPressed = modifiers & Qt::AltModifier;
+    const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
     if (shiftPressed) {
         mToggleMagnifier = true;
         update();
@@ -204,43 +206,13 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             update();
             break;
         }
-        const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsUp(qRound(mSelection.top() * devicePixelRatio - step), false);
-        if (modifiers & Qt::AltModifier) {
-            mSelection.setBottom(devicePixelRatioI * newPos + mSelection.height());
+        if (altPressed) {
+            const qreal newPos = mSelection.bottom() * devicePixelRatio - step;
+            mSelection.setBottom(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
             mSelection = mSelection.normalized();
         } else {
-            mSelection.moveTop(devicePixelRatioI * newPos);
-        }
-        update();
-        break;
-    }
-    case Qt::Key_Right: {
-        if (mDisableArrowKeys) {
-            update();
-            break;
-        }
-        const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsRight(qRound(mSelection.left() * devicePixelRatio + step), false);
-        if (modifiers & Qt::AltModifier) {
-            mSelection.setRight(devicePixelRatioI * newPos + mSelection.width());
-        } else {
-            mSelection.moveLeft(devicePixelRatioI * newPos);
-        }
-        update();
-        break;
-    }
-    case Qt::Key_Down: {
-        if (mDisableArrowKeys) {
-            update();
-            break;
-        }
-        const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsDown(qRound(mSelection.top() * devicePixelRatio + step), false);
-        if (modifiers & Qt::AltModifier) {
-            mSelection.setBottom(devicePixelRatioI * newPos + mSelection.height());
-        } else {
-            mSelection.moveTop(devicePixelRatioI * newPos);
+            const qreal newPos = mSelection.top() * devicePixelRatio - step;
+            mSelection.moveTop(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
         }
         update();
         break;
@@ -250,13 +222,43 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             update();
             break;
         }
-        const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
-        const int newPos = boundsLeft(qRound(mSelection.left() * devicePixelRatio - step), false);
-        if (modifiers & Qt::AltModifier) {
-            mSelection.setRight(devicePixelRatioI * newPos + mSelection.width());
+        if (altPressed) {
+            const qreal newPos = mSelection.right() * devicePixelRatio - step;
+            mSelection.setRight(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
             mSelection = mSelection.normalized();
         } else {
-            mSelection.moveLeft(devicePixelRatioI * newPos);
+            const qreal newPos = mSelection.left() * devicePixelRatio - step;
+            mSelection.moveLeft(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
+        }
+        update();
+        break;
+    }
+    case Qt::Key_Down: {
+        if (mDisableArrowKeys) {
+            update();
+            break;
+        }
+        const qreal realMaxY = height() * devicePixelRatio;
+        const qreal newPos = mSelection.bottom() * devicePixelRatio + step;
+        if (altPressed) {
+            mSelection.setBottom(qRound(devicePixelRatioI * ((realMaxY < newPos) ? realMaxY : newPos)));
+        } else {
+            mSelection.moveBottom(qRound(devicePixelRatioI * ((realMaxY < newPos) ? realMaxY : newPos)));
+        }
+        update();
+        break;
+    }
+    case Qt::Key_Right: {
+        if (mDisableArrowKeys) {
+            update();
+            break;
+        }
+        const qreal realMaxX = width() * devicePixelRatio;
+        const qreal newPos = mSelection.right() * devicePixelRatio + step;
+        if (altPressed) {
+            mSelection.setRight(qRound(devicePixelRatioI * ((realMaxX < newPos) ? realMaxX : newPos)));
+        } else {
+            mSelection.moveRight(qRound(devicePixelRatioI * ((realMaxX < newPos) ? realMaxX : newPos)));
         }
         update();
         break;
@@ -274,61 +276,6 @@ void QuickEditor::keyReleaseEvent(QKeyEvent *event)
         update();
     }
     event->accept();
-}
-
-int QuickEditor::boundsLeft(int newTopLeftX, const bool mouse)
-{
-    if (newTopLeftX < 0) {
-        if (mouse) {
-            // tweak startPos to prevent rectangle from getting stuck
-            mStartPos.setX(mStartPos.x() + newTopLeftX * devicePixelRatioI);
-        }
-        newTopLeftX = 0;
-    }
-
-    return newTopLeftX;
-}
-
-int QuickEditor::boundsRight(int newTopLeftX, const bool mouse)
-{
-    // the max X coordinate of the top left point
-    const int realMaxX = qRound((width() - mSelection.width()) * devicePixelRatioF());
-    const int xOffset = newTopLeftX - realMaxX;
-    if (xOffset > 0) {
-        if (mouse) {
-            mStartPos.setX(mStartPos.x() + xOffset * devicePixelRatioI);
-        }
-        newTopLeftX = realMaxX;
-    }
-
-    return newTopLeftX;
-}
-
-int QuickEditor::boundsUp(int newTopLeftY, const bool mouse)
-{
-    if (newTopLeftY < 0) {
-        if (mouse) {
-            mStartPos.setY(mStartPos.y() + newTopLeftY * devicePixelRatioI);
-        }
-        newTopLeftY = 0;
-    }
-
-    return newTopLeftY;
-}
-
-int QuickEditor::boundsDown(int newTopLeftY, const bool mouse)
-{
-    // the max Y coordinate of the top left point
-    const int realMaxY = qRound((height() - mSelection.height()) * devicePixelRatio);
-    const int yOffset = newTopLeftY - realMaxY;
-    if (yOffset > 0) {
-        if (mouse) {
-            mStartPos.setY(mStartPos.y() + yOffset * devicePixelRatioI);
-        }
-        newTopLeftY = realMaxY;
-    }
-
-    return newTopLeftY;
 }
 
 void QuickEditor::mousePressEvent(QMouseEvent *event)

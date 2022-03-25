@@ -52,10 +52,6 @@ private:
     };
 
     void acceptSelection();
-    int boundsLeft(int newTopLeftX, const bool mouse = true);
-    int boundsRight(int newTopLeftX, const bool mouse = true);
-    int boundsUp(int newTopLeftY, const bool mouse = true);
-    int boundsDown(int newTopLeftY, const bool mouse = true);
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
