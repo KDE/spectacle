@@ -145,6 +145,7 @@ Keywords[ko]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;스�
 Keywords[nl]=momentopname;vangen;afdrukken;schermafdruk;bezig met knippen;kniphulpmiddel;knip;
 Keywords[nn]=skjermbilete;skjermskot;utskrift;print;screenshot;utklipp;utklippsverktøy;
 Keywords[pl]=zrzut;migawka;przechwycenie;drukowanie;wycinane;narzędzie wycinków;wycinek;
+Keywords[pt]=fotografia;captura;imprimir;imagem;fotografia;foto;ferramenta de captura;
 Keywords[pt_BR]=snapshot;captura;imprimir;captura de tala;recortar;cortar;ferramenta de corte;
 Keywords[ro]=captură;instantaneu;print;decupare;
 Keywords[ru]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;снимок;захват;печать;снимок экрана;скриншот;обрезка;инструмент обрезки;обрезать;
