@@ -149,6 +149,7 @@ Keywords[pt]=fotografia;captura;imprimir;imagem;fotografia;foto;ferramenta de ca
 Keywords[pt_BR]=snapshot;captura;imprimir;captura de tala;recortar;cortar;ferramenta de corte;
 Keywords[ro]=captură;instantaneu;print;decupare;
 Keywords[ru]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;снимок;захват;печать;снимок экрана;скриншот;обрезка;инструмент обрезки;обрезать;
+Keywords[sk]=snímka;zachytiť;tlač;snímka obrazovky;strihanie;strihať
 Keywords[sl]=zajem zaslona;zajem;tisk;slika zaslona;zajemalno orodje;zajemanje;snip;
 Keywords[sv]=ta;skriva ut;skärmbild;klippa ut;klippa;klippverktyg;klipp;
 Keywords[ta]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;திரைப்பிடிப்பு;படமெடு;அச்சு;அச்சிடு;வெட்டு;திரைப்படம்;படம்;பதிவு;
