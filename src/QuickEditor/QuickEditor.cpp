@@ -188,7 +188,6 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
     const auto modifiers = event->modifiers();
     const bool shiftPressed = modifiers & Qt::ShiftModifier;
     const bool altPressed = modifiers & Qt::AltModifier;
-    const qreal step = (shiftPressed ? 1 : magnifierLargeStep);
     if (shiftPressed) {
         mToggleMagnifier = true;
         update();
@@ -207,12 +206,22 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             break;
         }
         if (altPressed) {
-            const qreal newPos = mSelection.bottom() * devicePixelRatio - step;
-            mSelection.setBottom(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
+            if (shiftPressed) {
+                const int newBottom = mSelection.bottom() - 1;
+                mSelection.setBottom((newBottom < 0) ? 0 : newBottom);
+            } else {
+                const qreal newScaledBottom = mSelection.bottom() * devicePixelRatio - magnifierLargeStep;
+                mSelection.setBottom(qRound(devicePixelRatioI * ((newScaledBottom < 0) ? 0 : newScaledBottom)));
+            }
             mSelection = mSelection.normalized();
         } else {
-            const qreal newPos = mSelection.top() * devicePixelRatio - step;
-            mSelection.moveTop(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
+            if (shiftPressed) {
+                const int newTop = mSelection.top() - 1;
+                mSelection.moveTop((newTop < 0) ? 0 : newTop);
+            } else {
+                const qreal newScaledTop = mSelection.top() * devicePixelRatio - magnifierLargeStep;
+                mSelection.moveTop(qRound(devicePixelRatioI * ((newScaledTop < 0) ? 0 : newScaledTop)));
+            }
         }
         update();
         break;
@@ -223,12 +232,22 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             break;
         }
         if (altPressed) {
-            const qreal newPos = mSelection.right() * devicePixelRatio - step;
-            mSelection.setRight(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
+            if (shiftPressed) {
+                const int newRight = mSelection.right() - 1;
+                mSelection.setRight((newRight < 0) ? 0 : newRight);
+            } else {
+                const qreal newScaledRight = mSelection.right() * devicePixelRatio - magnifierLargeStep;
+                mSelection.setRight(qRound(devicePixelRatioI * ((newScaledRight < 0) ? 0 : newScaledRight)));
+            }
             mSelection = mSelection.normalized();
         } else {
-            const qreal newPos = mSelection.left() * devicePixelRatio - step;
-            mSelection.moveLeft(qRound(devicePixelRatioI * ((newPos < 0) ? 0 : newPos)));
+            if (shiftPressed) {
+                const int newLeft = mSelection.left() - 1;
+                mSelection.moveLeft((newLeft < 0) ? 0 : newLeft);
+            } else {
+                const qreal newScaledLeft = mSelection.left() * devicePixelRatio - magnifierLargeStep;
+                mSelection.moveLeft(qRound(devicePixelRatioI * ((newScaledLeft < 0) ? 0 : newScaledLeft)));
+            }
         }
         update();
         break;
@@ -238,12 +257,22 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             update();
             break;
         }
-        const qreal realMaxY = height() * devicePixelRatio;
-        const qreal newPos = mSelection.bottom() * devicePixelRatio + step;
+        const int newBottom = mSelection.bottom() + 1;
+        const qreal newScaledBottom = mSelection.bottom() * devicePixelRatio + magnifierLargeStep;
+        const qreal scaledHeight = height() * devicePixelRatio;
         if (altPressed) {
-            mSelection.setBottom(qRound(devicePixelRatioI * ((realMaxY < newPos) ? realMaxY : newPos)));
+            if (shiftPressed) {
+                mSelection.setBottom(qMin(height(), newBottom));
+            } else {
+                mSelection.setBottom(qRound(devicePixelRatioI * qMin(scaledHeight, newScaledBottom)));
+            }
+            mSelection = mSelection.normalized();
         } else {
-            mSelection.moveBottom(qRound(devicePixelRatioI * ((realMaxY < newPos) ? realMaxY : newPos)));
+            if (shiftPressed) {
+                mSelection.moveBottom(qMin(height(), newBottom));
+            } else {
+                mSelection.moveBottom(qRound(devicePixelRatioI * qMin(scaledHeight, newScaledBottom)));
+            }
         }
         update();
         break;
@@ -253,12 +282,22 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
             update();
             break;
         }
-        const qreal realMaxX = width() * devicePixelRatio;
-        const qreal newPos = mSelection.right() * devicePixelRatio + step;
+        const int newRight = mSelection.right() + 1;
+        const qreal newScaledRight = mSelection.right() * devicePixelRatio + magnifierLargeStep;
+        const qreal scaledWidth = width() * devicePixelRatio;
         if (altPressed) {
-            mSelection.setRight(qRound(devicePixelRatioI * ((realMaxX < newPos) ? realMaxX : newPos)));
+            if (shiftPressed) {
+                mSelection.setRight(qMin(width(), newRight));
+            } else {
+                mSelection.setRight(qRound(devicePixelRatioI * qMin(scaledWidth, newScaledRight)));
+            }
+            mSelection = mSelection.normalized();
         } else {
-            mSelection.moveRight(qRound(devicePixelRatioI * ((realMaxX < newPos) ? realMaxX : newPos)));
+            if (shiftPressed) {
+                mSelection.moveRight(qMin(width(), newRight));
+            } else {
+                mSelection.moveRight(qRound(devicePixelRatioI * qMin(scaledWidth, newScaledRight)));
+            }
         }
         update();
         break;
