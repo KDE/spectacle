@@ -207,6 +207,10 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
         }
         if (altPressed) {
             if (shiftPressed) {
+            // When pressing Shift we want the value to change by the minimum amount possible. In the current imperfect implementation, the minimum amount is
+            // dependent on the currently used scaling. This means we change by 1px on 100% scaling, by 2.5px on average at 250% scaling, etc.
+            // This is done by changing the mSelection rectangle by 1 which will later be scaled.
+            // When not pressing Shift, we always try to change by magnifierLargeStep no matter what scaling the user uses.
                 const int newBottom = mSelection.bottom() - 1;
                 mSelection.setBottom((newBottom < 0) ? 0 : newBottom);
             } else {
