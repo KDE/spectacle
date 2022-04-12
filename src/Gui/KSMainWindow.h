@@ -50,7 +50,7 @@ private Q_SLOTS:
     void showPrintDialog();
     void openScreenshotsFolder();
     void showPreferencesDialog();
-    void showImageSharedFeedback(bool error, const QString &message);
+    void showImageSharedFeedback(int error, const QString &message);
     void imageCopied();
     void imageSavedAndLocationCopied(const QUrl &location);
     void init();

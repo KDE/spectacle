@@ -489,7 +489,7 @@ void KSMainWindow::showInlineMessage(const QString &message,
     }
 }
 
-void KSMainWindow::showImageSharedFeedback(bool error, const QString &message)
+void KSMainWindow::showImageSharedFeedback(int error, const QString &message)
 {
     if (error == 1) {
         // error == 1 means the user cancelled the sharing

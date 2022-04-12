@@ -31,7 +31,7 @@ private Q_SLOTS:
 
 Q_SIGNALS:
 
-    void imageShared(bool error, const QString &message);
+    void imageShared(int error, const QString &message);
 
 private:
     void getKServiceItems();
