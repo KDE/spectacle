@@ -398,6 +398,10 @@ void KSMainWindow::setScreenshotAndShow(const QPixmap &pixmap, bool showAnnotato
         setWindowModified(true);
     } else {
         restoreWindowTitle();
+        // check if there is an screenshot already visible, if true, don't disable buttons
+        // this check has to be done after if (mPixmapExists), otherwise it
+        // might set a new empty screenshot, overwriting the previous one
+        mPixmapExists = mKSWidget->isScreenshotSet();
     }
 
 #ifdef KIMAGEANNOTATOR_FOUND
