@@ -63,8 +63,14 @@ if(XCB_FOUND)
         XCB::IMAGE
         XCB::CURSOR
         XCB::UTIL
-        Qt::X11Extras
     )
+
+    if(QT_MAJOR_VERSION STREQUAL "6")
+        target_link_libraries(spectacle Qt::GuiPrivate)
+    else()
+        target_link_libraries(spectacle Qt::X11Extras)
+    endif()
+
 endif()
 
 if(PURPOSE_FOUND)
