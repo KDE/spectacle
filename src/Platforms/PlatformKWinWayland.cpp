@@ -128,7 +128,7 @@ std::array<int, 3> findPlasmaMinorVersion()
         QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
 
         const QString rawVersion = val.variant().value<QString>();
-        const QVector<QStringRef> splitted = rawVersion.splitRef(QLatin1Char('.'));
+        const QList<QStringView> splitted = QStringView(rawVersion).split(QLatin1Char('.'));
         if (splitted.size() != 3) {
             qWarning() << "error parsing plasma version";
             return s_plasmaVersion;
