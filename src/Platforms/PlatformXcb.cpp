@@ -76,7 +76,11 @@ public:
         mIncludeDecorations = theIncludeDecorations;
     }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    bool nativeEventFilter(const QByteArray &theEventType, void *theMessage, qintptr * /* theResult */) override
+#else
     bool nativeEventFilter(const QByteArray &theEventType, void *theMessage, long * /* theResult */) override
+#endif
     {
         if (theEventType == "xcb_generic_event_t") {
             auto lFirstEvent = static_cast<xcb_generic_event_t *>(theMessage);
