@@ -17,6 +17,7 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
+#include <KUrlMimeData>
 #include <KWayland/Client/connection_thread.h>
 #include <KWayland/Client/plasmashell.h>
 #include <KWayland/Client/registry.h>
@@ -564,6 +565,7 @@ void SpectacleCore::doStartDragAndDrop()
     auto lMimeData = new QMimeData;
     lMimeData->setUrls(QList<QUrl>{lTempFile});
     lMimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(lTempFile.fileName()));
+    KUrlMimeData::exportUrlsToPortal(lMimeData);
 
     auto lDragHandler = new QDrag(this);
     lDragHandler->setMimeData(lMimeData);
