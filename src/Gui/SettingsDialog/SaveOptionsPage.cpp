@@ -11,8 +11,8 @@
 #include "SpectacleCommon.h"
 #include "ui_SaveOptions.h"
 
-#include <KIOWidgets/KUrlRequester>
 #include <KLocalizedString>
+#include <KUrlRequester>
 
 #include <QCheckBox>
 #include <QComboBox>

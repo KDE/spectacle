@@ -26,7 +26,11 @@
 #include <QSet>
 #include <QStack>
 #include <QTimer>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QX11Info>
+#else
+#include <private/qtx11extras_p.h>
+#endif
 #include <QtMath>
 
 #include <KWindowInfo>
@@ -72,7 +76,11 @@ public:
         mIncludeDecorations = theIncludeDecorations;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     bool nativeEventFilter(const QByteArray &theEventType, void *theMessage, long * /* theResult */) override
+#else
+    bool nativeEventFilter(const QByteArray &theEventType, void *theMessage, qintptr * /*theResult*/) override
+#endif
     {
         if (theEventType == "xcb_generic_event_t") {
             auto lFirstEvent = static_cast<xcb_generic_event_t *>(theMessage);
