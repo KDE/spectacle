@@ -148,7 +148,9 @@ add_subdirectory(tests)
 
 if (KF5DocTools_FOUND)
     add_subdirectory(doc)
+    kdoctools_install(po)
 endif()
+ki18n_install(po)
 
 ecm_qt_install_logging_categories(EXPORT SPECTACLE FILE spectacle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
