@@ -472,9 +472,9 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
 
     if (mCopyImageToClipboard && theSavedAt.fileName().isEmpty()) {
-        lNotify->setText(i18n("A screenshot was saved to your clipboard."));
+        lNotify->setText(i18n("A screenshot was copied to your clipboard."));
     } else if (mCopyLocationToClipboard && !theSavedAt.fileName().isEmpty()) {
-        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been copied to your clipboard.",
                               theSavedAt.fileName(),
                               lSavePath));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
