@@ -402,7 +402,7 @@ Name[tr]=İmleç Altındaki Pencereyi Yakala
 Name[uk]=Захопити зображення вікна під вказівником миші
 Name[x-test]=xxCapture Window Under Cursorxx
 Name[zh_CN]=捕获光标所在窗口
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor -1
+Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor -1 -1
 X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action OpenWithoutScreenshot]
