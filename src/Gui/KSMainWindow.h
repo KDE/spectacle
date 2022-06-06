@@ -13,7 +13,6 @@ class QStackedLayout;
 class QToolButton;
 
 class KMessageWidget;
-#include <KNS3/KMoreToolsMenuFactory>
 
 #include "SpectacleCommon.h"
 
@@ -23,6 +22,8 @@ class KMessageWidget;
 #include "Platforms/Platform.h"
 
 #include <KMessageWidget>
+#include <KMoreToolsMenuFactory>
+
 #include <memory>
 
 class KSMainWindow : public QDialog
