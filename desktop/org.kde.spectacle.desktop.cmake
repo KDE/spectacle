@@ -141,6 +141,7 @@ Keywords[fi]=kuvakaappaus;kaappaus;kaappaa;tulosta;ruutukaappaus;leike;
 Keywords[fr]=instantané ; capture ; impression ; capture d'écran ; découpage ; découpe ;
 Keywords[hu]=pillanatkép;rögzítés;nyomtatás;képernyőkép;levágás;vágóeszköz;vágás;
 Keywords[ia]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
+Keywords[id]=jepretan;tangkapan;cetak;screenshot;layar;alat;guntingan;snipping;tool;print;snipping tool;
 Keywords[it]=schermata;cattura;stampa;screenshot;ritagliare;strumento di ritaglio;ritaglio;
 Keywords[ko]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;스냅샷;캡처;인쇄;스크린샷;스냅;
 Keywords[nl]=momentopname;vangen;afdrukken;schermafdruk;bezig met knippen;kniphulpmiddel;knip;
