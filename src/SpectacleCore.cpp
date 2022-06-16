@@ -389,13 +389,13 @@ void SpectacleCore::screenshotUpdated(const QPixmap &thePixmap)
         }
         mMainWindow->setScreenshotAndShow(pixmapUsed, mEditExisting);
 
-        bool autoSaveImage = Settings::autoSaveImage();
+        mSaveToOutput = Settings::autoSaveImage();
         mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
         mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
 
-        if (autoSaveImage && mCopyImageToClipboard) {
+        if (mSaveToOutput && mCopyImageToClipboard) {
             lExportManager->doSaveAndCopy();
-        } else if (autoSaveImage) {
+        } else if (mSaveToOutput) {
             lExportManager->doSave();
         } else if (mCopyImageToClipboard) {
             lExportManager->doCopyToClipboard(false);
