@@ -152,8 +152,10 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
 
     switch (mStartMode) {
     case StartMode::DBus:
+        // if both mCopyImageToClipboard and mSaveToOutput are false, image will only be copied to clipboard
         mCopyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
         mCopyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
+        mSaveToOutput = Settings::autoSaveImage();
 
         qApp->setQuitOnLastWindowClosed(false);
         break;
