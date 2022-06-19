@@ -48,10 +48,9 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mAnnotator->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     mAnnotator->setCanvasColor(QColor(255, 255, 255, 0));
     mAnnotator->setSaveToolSelection(true);
+#endif
 #ifdef KIMAGEANNOTATOR_HAS_EXTRA_TOOLS
     mAnnotator->setControlsWidgetVisible(true);
-#endif
-    mStack->addWidget(mAnnotator);
 #endif
 
     // the capture mode options first
