@@ -21,6 +21,7 @@ add_executable(spectacle
     Gui/KSImageWidget.cpp
     Gui/ExportMenu.cpp
     Gui/ProgressButton.cpp
+    Gui/CaptureAreaComboBox.cpp
     Gui/SmartSpinBox.cpp
     Gui/SettingsDialog/SaveOptionsPage.cpp
     Gui/SettingsDialog/SettingsDialog.cpp

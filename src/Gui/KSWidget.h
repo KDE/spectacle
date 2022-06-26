@@ -23,6 +23,7 @@ class QLabel;
 class KConfigDialogManager;
 class QStackedLayout;
 
+class CaptureAreaComboBox;
 class KSImageWidget;
 class ProgressButton;
 class SmartSpinBox;
@@ -79,7 +80,7 @@ private:
     QVBoxLayout *mContentOptionsForm{nullptr};
     KSImageWidget *const mImageWidget;
     ProgressButton *mTakeScreenshotButton;
-    QComboBox *mCaptureArea{nullptr};
+    CaptureAreaComboBox *mCaptureArea{nullptr};
     SmartSpinBox *mDelayMsec{nullptr};
     QCheckBox *mCaptureOnClick{nullptr};
     QCheckBox *mMousePointer{nullptr};

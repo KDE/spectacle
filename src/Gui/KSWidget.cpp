@@ -8,6 +8,7 @@
 #include "KSWidget.h"
 #include "spectacle_gui_debug.h"
 
+#include "CaptureAreaComboBox.h"
 #include "ExportManager.h"
 #include "KSImageWidget.h"
 #include "ProgressButton.h"
@@ -55,29 +56,8 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
 
     // the capture mode options first
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
-    mCaptureArea = new QComboBox(this);
+    mCaptureArea = new CaptureAreaComboBox(theGrabModes, this);
 
-    if (theGrabModes.testFlag(Platform::GrabMode::AllScreens)) {
-        QString lFullScreenLabel = QApplication::screens().count() == 1 ? i18n("Full Screen") : i18n("Full Screen (All Monitors)");
-
-        mCaptureArea->insertItem(0, lFullScreenLabel, Spectacle::CaptureMode::AllScreens);
-    }
-    if (theGrabModes.testFlag(Platform::GrabMode::AllScreensScaled) && QApplication::screens().count() > 1) {
-        QString lFullScreenLabel = i18n("Full Screen (All Monitors, scaled)");
-        mCaptureArea->insertItem(1, lFullScreenLabel, Spectacle::CaptureMode::AllScreensScaled);
-    }
-    if (theGrabModes.testFlag(Platform::GrabMode::PerScreenImageNative)) {
-        mCaptureArea->insertItem(2, i18n("Rectangular Region"), Spectacle::CaptureMode::RectangularRegion);
-    }
-    if (theGrabModes.testFlag(Platform::GrabMode::CurrentScreen)) {
-        mCaptureArea->insertItem(3, i18n("Current Screen"), Spectacle::CaptureMode::CurrentScreen);
-    }
-    if (theGrabModes.testFlag(Platform::GrabMode::ActiveWindow)) {
-        mCaptureArea->insertItem(4, i18n("Active Window"), Spectacle::CaptureMode::ActiveWindow);
-    }
-    if (theGrabModes.testFlag(Platform::GrabMode::WindowUnderCursor)) {
-        mCaptureArea->insertItem(5, i18n("Window Under Cursor"), Spectacle::CaptureMode::WindowUnderCursor);
-    }
     if (theGrabModes.testFlag(Platform::GrabMode::TransientWithParent)) {
         mTransientWithParentAvailable = true;
     }
@@ -266,7 +246,7 @@ void KSWidget::lockOnClickDisabled()
 void KSWidget::newScreenshotClicked()
 {
     int lDelay = mCaptureOnClick->isChecked() ? -1 : (mDelayMsec->value() * 1000);
-    auto lMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->currentData().toInt());
+    auto lMode = mCaptureArea->currentCaptureMode();
     if (mTransientWithParentAvailable && lMode == Spectacle::CaptureMode::WindowUnderCursor && !(mCaptureTransientOnly->isChecked())) {
         lMode = Spectacle::CaptureMode::TransientWithParent;
     }
@@ -285,7 +265,7 @@ void KSWidget::onClickStateChanged(int theState)
 
 void KSWidget::captureModeChanged(int theIndex)
 {
-    Spectacle::CaptureMode captureMode = static_cast<Spectacle::CaptureMode>(mCaptureArea->itemData(theIndex).toInt());
+    auto captureMode = mCaptureArea->captureModeForIndex(theIndex);
     switch (captureMode) {
     case Spectacle::CaptureMode::WindowUnderCursor:
         mWindowDecorations->setEnabled(true);
