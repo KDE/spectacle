@@ -152,7 +152,7 @@ void KSMainWindow::init()
     mAnnotateButton->setText(i18n("Annotate"));
     mAnnotateButton->setToolTip(i18n("Add annotation to the screenshot"));
     mAnnotateButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
+    mAnnotateButton->setIcon(QIcon::fromTheme(QStringLiteral("edit-image"), QIcon::fromTheme(QStringLiteral("document-edit"))));
     connect(mAnnotateButton, &QToolButton::clicked, this, &KSMainWindow::updateAnnotatorVisibility);
     mDialogButtonBox->addButton(mAnnotateButton, QDialogButtonBox::ActionRole);
 #endif
