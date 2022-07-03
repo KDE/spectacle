@@ -51,6 +51,7 @@ Q_SIGNALS:
     void dragInitiated();
     void newScreenshotRequest(Spectacle::CaptureMode theCaptureMode, int theCaptureDelat, bool theIncludePointer, bool theIncludeDecorations);
     void screenshotCanceled();
+    void screenshotPixmapSet();
 
 public Q_SLOTS:
 

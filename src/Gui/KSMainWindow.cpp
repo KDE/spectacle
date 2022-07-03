@@ -260,9 +260,11 @@ void KSMainWindow::init()
     });
 
     mHideMessageWidgetTimer = new QTimer(this);
-    //     connect(mHideMessageWidgetTimer, &QTimer::timeout,
-    //             mMessageWidget, &KMessageWidget::animatedHide);
     mHideMessageWidgetTimer->setInterval(10000);
+    mHideMessageWidgetTimer->setSingleShot(true);
+    connect(mKSWidget, &KSWidget::screenshotPixmapSet, mMessageWidget, &KMessageWidget::animatedHide);
+    connect(mHideMessageWidgetTimer, &QTimer::timeout, mMessageWidget, &KMessageWidget::animatedHide);
+
     // done with the init
 }
 
@@ -539,7 +541,7 @@ void KSMainWindow::imageSavedAndLocationCopied(const QUrl &location)
     showInlineMessage(
         i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard", location.toString(), location.fileName()),
         KMessageWidget::Positive,
-        MessageDuration::AutoHide,
+        MessageDuration::Persistent,
         {mOpenContaining});
 }
 
@@ -574,7 +576,7 @@ void KSMainWindow::imageSaved(const QUrl &location)
     setWindowModified(false);
     showInlineMessage(i18n("The screenshot was saved as <a href=\"%1\">%2</a>", location.toString(), location.fileName()),
                       KMessageWidget::Positive,
-                      MessageDuration::AutoHide,
+                      MessageDuration::Persistent,
                       {mOpenContaining});
 }
 
@@ -584,7 +586,7 @@ void KSMainWindow::imageSavedAndCopied(const QUrl &location)
     setWindowModified(false);
     showInlineMessage(i18n("The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>", location.toString(), location.fileName()),
                       KMessageWidget::Positive,
-                      MessageDuration::AutoHide,
+                      MessageDuration::Persistent,
                       {mOpenContaining});
 }
 

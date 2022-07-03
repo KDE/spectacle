@@ -224,6 +224,7 @@ void KSWidget::setScreenshotPixmap(const QPixmap &thePixmap)
     }
     mImageWidget->show();
     mImageWidget->setScreenshot(thePixmap);
+    Q_EMIT screenshotPixmapSet();
 }
 
 void KSWidget::lockOnClickEnabled()
