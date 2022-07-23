@@ -646,6 +646,14 @@ void KSMainWindow::keyPressEvent(QKeyEvent *event)
             return;
         }
     }
+#ifdef KIMAGEANNOTATOR_FOUND
+    if (event->key() == Qt::Key_Escape) {
+        if (mAnnotatorActive) {
+            updateAnnotatorVisibility();
+            return;
+        }
+    }
+#endif
     QDialog::keyPressEvent(event);
 }
 
