@@ -12,8 +12,6 @@ class QMenu;
 class QStackedLayout;
 class QToolButton;
 
-class KMessageWidget;
-
 #include "SpectacleCommon.h"
 
 #include "Config.h"
