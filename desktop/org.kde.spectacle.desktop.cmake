@@ -168,7 +168,6 @@ Keywords[zh_CN]=snapshot;capture;print;screenshot;snipping;snip;快照;截图;�
 Exec=${CMAKE_INSTALL_PREFIX}/bin/spectacle
 Icon=spectacle
 Type=Application
-Terminal=false
 StartupNotify=false
 Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;OpenWithoutScreenshot;
 X-DBUS-StartupType=Unique
