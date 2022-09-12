@@ -241,7 +241,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
                 break;
             case Actions::StartNewInstance:
                 QProcess newInstance;
-                newInstance.setProgram(QStringLiteral("spectacle"));
+                newInstance.setProgram(QCoreApplication::applicationFilePath());
                 newInstance.setArguments({QStringLiteral("--new-instance")});
                 newInstance.startDetached();
                 break;
@@ -501,7 +501,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         lNotify->setActions({i18n("Annotate")});
         connect(lNotify, &KNotification::action1Activated, this, [this, theSavedAt]() {
             QProcess newInstance;
-            newInstance.setProgram(QStringLiteral("spectacle"));
+            newInstance.setProgram(QCoreApplication::applicationFilePath());
             newInstance.setArguments({QStringLiteral("--new-instance"), QStringLiteral("--edit-existing"), theSavedAt.toLocalFile()});
             newInstance.startDetached();
         });
