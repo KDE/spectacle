@@ -12,7 +12,6 @@
 #include "ui_SaveOptions.h"
 
 #include <KLocalizedString>
-#include <KUrlRequester>
 
 #include <QCheckBox>
 #include <QComboBox>

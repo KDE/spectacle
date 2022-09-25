@@ -24,7 +24,6 @@
 #include <QString>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
-#include <QWindow>
 
 #include <KIO/FileCopyJob>
 #include <KIO/ListJob>
@@ -33,7 +32,6 @@
 #include <KRecentDocument>
 #include <KSharedConfig>
 #include <KSystemClipboard>
-#include <KWindowSystem>
 
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)

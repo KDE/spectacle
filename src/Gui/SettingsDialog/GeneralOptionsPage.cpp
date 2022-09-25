@@ -13,7 +13,6 @@
 #include <KWindowSystem>
 
 #include <QCheckBox>
-#include <QComboBox>
 
 GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     : QWidget(parent)

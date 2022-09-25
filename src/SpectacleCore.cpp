@@ -30,7 +30,6 @@
 #include <QDrag>
 #include <QKeySequence>
 #include <QMimeData>
-#include <QPainter>
 #include <QProcess>
 #include <QScopedPointer>
 #include <QScreen>
