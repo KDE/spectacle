@@ -1,0 +1,848 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>Het handboek van &spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            &Freek.de.Kruijf; 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>Applications 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle; is een toepassing voor het maken en bewerken van schermafbeeldingen van het bureaublad. Het kan afbeeldingen van het gehele bureaublad, een enkele monitor, het nu actieve venster, het venster nu onder de muis of een rechthoekig gebied van het scherm. De afbeelding kan dan van annotaties worden voorzien, afgedrukt worden, naar een andere toepassing voor bewerking worden verzonden of snel worden opgeslagen zoals deze nu is.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>schermafdruk</keyword>
+            <keyword
+>schermafdruk</keyword>
+            <keyword
+>schermafbeelding</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Inleiding</title>
+
+        <para
+>&spectacle; is een toepassing voor het maken en bewerken van schermafbeeldingen van het bureaublad. Het kan afbeeldingen van het gehele bureaublad, een enkele monitor, het nu actieve venster, het venster nu onder de muis of een rechthoekig gebied van het scherm. De afbeelding kan dan van annotaties worden voorzien, afgedrukt worden, naar een andere toepassing voor bewerking worden verzonden of snel worden opgeslagen zoals deze nu is.</para>
+
+        <para
+>Rapporteer problemen of verzoeken aan het <ulink url="https://bugs.kde.org/"
+>&kde;-bug-opsporingssysteem</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>&spectacle; starten</title>
+
+        <para
+>&spectacle; kan opgestart worden op een aantal manieren, zoals onderstaand beschreven:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>In het startmenu van toepassingen is &spectacle; te vinden in <menuchoice
+><guisubmenu
+>Toepassingen</guisubmenu
+><guisubmenu
+>Programma's</guisubmenu
+><guimenuitem
+>Hulpmiddel voor schermafdruk maken &spectacle;</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>Indrukken van de toets <keysym
+>Print Screen</keysym
+> op het toetsenbord (vaak met label <keycap
+>PrtScn</keycap
+> of iets dergelijks) zal &spectacle; onmiddellijk laten starten. Daarnaast zijn er nog drie sneltoetsen beschikbaar om schermafdrukken te maken en ze op te slaan in uw standaard opslagmap zonder de &GUI; te tonen:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Print Screen</keysym
+></keycombo
+> zal een schermafdruk maken van het actieve venster</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> zal een schermafdruk van uw gehele bureaublad maken, &ie; alle monitors</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> zal van een rechthoekig gebied een schermafdruk maken</para
+></listitem>
+                </itemizedlist>
+                <para
+>U kunt de standaard map voor opslag en de bestandsnaam instellen door &spectacle; normaal op te starten en te drukken op de knop <guibutton
+>Configureren...</guibutton
+> en daarna naar de sectie Opslaan te navigeren.</para>
+            </listitem>
+            <listitem>
+                <para
+>De mini-commandoregel &krunner; (aangeroepen met <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) kan ook gebruikt worden om &spectacle; te starten.</para>
+            </listitem>
+            <listitem>
+                <para
+>&spectacle; kan gestart worden vanaf de commandoregel. &spectacle; heeft een uitgebreide set opties voor de commandoregel, inclusief een achtergrondmodus die gebruikt kan worden om met een script schermafdrukken te nemen zonder de &GUI; te tonen of gebruiker-interactie te vragen.</para>
+
+                <para
+>Om &spectacle; te starten vanaf de commandoprompt, typ in:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Om de volledige lijst met commandoregelopties en hun verklaring te bekijken, typ in:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>&spectacle; gebruiken</title>
+
+        <para
+>Nadat &spectacle; start, ziet u een venster zoals het volgende: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>&spectacle; Hoofdvenster</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle; maakt een afbeelding van uw gehele bureaublad onmiddellijk nadat het is gestart, maar voodat het zichzelf op het scherm toont. Dit stelt u in staat om snel volledige schermafdrukken te maken van het bureaublad.</para>
+
+        <para
+>Het door &spectacle; genomen momentopname wordt getoond in het voorbeeldvenster, dat zich bevindt aan de linkerkant van het venster van de toepassing &spectacle;.</para>
+
+        <para
+>De afbeelding kan opgeslagen worden op een locatie van uw keuze door op het pijlgedeelte van de knop <guibutton
+>Opslaan als</guibutton
+> te drukken of <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> te typen. Dit opent de standaard dialoog voor opslaan, waar u de bestandsnaam, de locatie van de map en het format waarin u de schermafdruk wilt opslaan. U kunt de bestandsnaam bewerken naar alles wat u wilt, inclusief de naam van een eerder opgeslagen schermafdruk.</para>
+
+        <para
+>Om snel de afbeelding op te slaan naar de standaard locatie, druk op het pijlgedeelte van de knop <guibutton
+>Opslaan als...</guibutton
+> en druk op de knop <guimenuitem
+>Opslaan</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). De nieuwe opslagmodus zal herinnerd worden voor de volgende keer. De standaard opslaglocatie en bestandsnaam kan geconfigureerd worden, zoals later wordt beschreven.</para>
+
+        <para
+>Om snel de afbeelding op te slaan en &spectacle; te verlaten, druk op het keuzevakje <guilabel
+>Afsluiten na handmatig opslaan of kopiëren</guilabel
+> en druk daarna op het pijltjesgedeelte van knop <guibutton
+>Opslaan als...</guibutton
+> en druk op het item (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Dit slaat de afbeelding op als een PNG-bestand in uw standaard map <filename class="directory"
+>Afbeeldingen</filename
+> en sluit de toepassing onmiddellijk. Zoals boven, zal deze nieuwe opslagmodus herinnerd worden.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Een schermafdruk nemen</title>
+
+            <para
+>Wanneer u &spectacle; opent zal het onmiddellijk een schermafdruk van het gehele scherm maken, tenzij iets anders is ingesteld in de algemene opties, als gemak en toont een voorbeeld ervan in het hoofdvenster. U kunt deze schermafdruk opslaan met de knoppen onderaan het venster of een nieuwe maken met de besturing rechts van het voorbeeld.</para>
+
+            <para
+>Om de huidige schermafdruk weg te gooien en een andere schermafdruk te maken, druk op de knop <guibutton
+>Een nieuwe schermafdruk maken</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Na het vangen van een schermafdruk zal &spectacle; u een informatiepaneel willen tonen met een koppeling naar het bestand met de schermafdruk en u voorstellen om <guibutton
+>Map die bevat openen</guibutton
+> van dit bestand.</para>
+
+            <para
+>U kunt bepaalde opties instellen aan de rechterkant van het venster van de toepassing alvorens een nieuwe schermafdruk te maken. Deze opties stellen u in staat om het gebied op het scherm te selecteren dat gevangen moet worden, stel een vertraging in alvorens de afbeelding te maken en stel in of de muiscursor en/of de vensterversieringen meegenomen moeten worden in de schermafdruk.</para>
+
+            <sect2>
+                <title
+>Opnamemodus</title>
+
+                <para
+>De instellingen van de modus van vangen stellen u in staat om het gebied van het scherm dat gevangen moet worden en of er een vertraging moet zijn tussen indrukken van de knop <guibutton
+>Een nieuwe schermafdruk maken</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) en het nemen van de schermafdruk. U kunt ook also het keuzevakje <guilabel
+>Bij aanklikken</guilabel
+> activeren, die de vertragingsfunctie uitschakelt en alleen de schermafdruk neemt nadat u ergens op het scherm klikt na het klikken op de knop <guibutton
+>Nieuw schermafdruk nemen</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>De keuzelijst <guilabel
+>Gebied</guilabel
+> stelt u in staat om het gebied in te stellen op het scherm dat opgenomen moet worden. Er zijn vijf opties om uit te selecteren, zoals onderstaand beschreven.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Volledig scherm (alle monitoren)</guilabel
+> maakt een schermafdruk van uw gehele bureaublad, gespreid over alle uitvoer, inclusief alle monitoren, projectors etc.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Huidig scherm</guilabel
+> maakt een schermafdruk van de uitvoer die nu contains de muisaanwijzer bevat.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Rechthoekig gebied</guilabel
+> stelt u in staat om een rechthoekig gebied van uw bureaublad te selecteren met uw muis. Dit gebied kan verschillende uitvoergebieden omvatten.</para>
+
+                        <para
+>Deze modus maakt niet onmiddellijk een schermafdruk maar stelt u in staat om een rechthoek op uw scherm te tekenen, die naar behoefte verplaatst en van grootte veranderd kan worden. Nadat de gewenste rechthoek is getekend zorgt ergens op het scherm dubbelklikken of op de knop &Enter; drukken er voor dan de schermafdruk wordt genomen.</para>
+                        
+                        <para
+>U kunt de pijltjestoetsen gebruiken om de rechthoek te verplaatsen en aan te passen. Op de pijltjestoetsen drukken zal de rechthoek verplaatsen. De toets &Shift; ingedrukte houden tijdens indrukken van de pijltjestoetsen zal de rechthoek langzaam verplaatsen, voor fijn afregelen van uw selectie. De toets &Alt; ingedrukt houden tijdens indrukken van de pijltjestoetsen zal de afmeting van de rechthoek aanpassen.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Actieve Venster</guilabel
+> maakt een schermafdruk van het Venster dat nu focus heeft. Het is aangeraden om een vertraging bij deze modus te gebruiken, om u de tijd te geven een venster te activeren alvorens de schermafdruk te maken.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Venster onder cursor</guilabel
+> maakt een schermafdruk van het Venster dat zich onder de muiscursor bevindt. Als de cursor zich op een pop-up-menu bevindt zal &spectacle; proberen een schermafdruk van het menu te maken evenals het bijbehorende venster.</para>
+
+                        <para
+>Hoewel dit meestal werkt, kan het in bepaalde gevallen mislukken om de informatie over het moedervenster te verzamelen. In dat geval valt &spectacle; terug op de oude manier van het automatisch vangen van de afbeelding en vangt alleen een afbeelding van het pop-up-menu. U kunt ook de oude manier van vangen van de afbeelding afdwingen door het keuzevakje <guilabel
+>Alleen de huidige pop-up vangen</guilabel
+> te activeren onder <guilabel
+>Opties</guilabel
+></para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>De draaischakelaar <guilabel
+>Vertraging</guilabel
+> stelt u in staat om de vertraging tussen indrukken van de knop  <guibutton
+>Een nieuwe schermafdruk maken</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) en het nemen van de schermafdruk. Deze vertraging kan met de draaischakelaar ingesteld worden in increments van 1 seconde of met het toetsenbord.</para>
+                
+                <para
+>Bij het namen van een in tijd vertraagd schermafdruk, toont &spectacle; de resterende tijd voordat de schermafdruk is genomen in zijn venstertitel en maakt dit zichtbaar in zijn item Takenbeheerder. De knop van de takenbeheerder van &spectacle; kan ook een voortgangsbalk tonen, zodat u kunt volgen waneern de afdruk genomen zal worden.</para>
+                
+                <para
+>Bij het wachten op de vertraagde schermafdruk, kunt u de geminimaliseerde &spectacle; en de knop <guibutton
+>Neem een nieuwe schermafdruk</guibutton
+> zal op zijn beurt wijzigen in een knop <guibutton
+>Annuleren</guibutton
+>. De voortgangsbalk zal hier ook getoond worden, waarmee u de kans hebt het aftellen te stoppen.</para>
+
+                <para
+>Activeren van het keuzevakje <guilabel
+>Bij aanklikken</guilabel
+> schakelt de vertraging uit. Wanneer dit keuzevakje is geactiveerd zal indrukken van de knop <guibutton
+>Een nieuwe schermafdruk maken</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) het venster van &spectacle; verbergen en de muiscursor wijzigen in een kruisje. De schermafdruk wordt genomen wanneer op de muis links wordt geklikt of geannuleerd als op een van de andere muisknoppen wordt geklikt. Merk op dat u niets met de muis kunt doen op het bureaublad terwijl de cursor een kruisje is, maar u kunt het toetsenbord gebruiken.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Opties</title>
+
+                <para
+>De optie-instellingen stellen u in staat om te selecteren of de muiscursor meegenomen moet worden in de schermafdrukken en of vensterdecoraties samen met de afbeelding van een enkel venster van een toepassing gevangen moet worden. In modus <guilabel
+>Venster onder cursor</guilabel
+>, kunt u ook selecteren of &spectacle; alleen de afbeelding van het huidige pop-upmenu onder de cursor moet vangen of ook het oudervenster. Tenslotte zal <guilabel
+>Afsluiten na opslaan of kopiëren</guilabel
+> &spectacle; afsluiten na een opslag- of kopieerbewerking.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Inschakelen van het keuzevak <guilabel
+>Muisaanwijzer meenemen</guilabel
+> maakt dat een afbeelding van de muisaanwijzer in de schermafdruk wordt meegenomen.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Venstertitelbalk en randen meenemen</guilabel
+> is alleen ingeschakeld wanneer ofwel de modus <guilabel
+>Actieve venster</guilabel
+> of de modus <guilabel
+>Venster onder cursor</guilabel
+> is geselecteerd in de keuzelijst <guilabel
+>Gebied</guilabel
+>. Deze optie activeren voegt de randen van het venster en versieringen in in de schermafdruk, terwijl deactiveren een afbeelding geeft met alleen de inhoud van het venster.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Opname van alleen de huidige pop-up</guilabel
+> is alleen ingeschakeld wanneer de modus <guilabel
+>Venster onder cursor</guilabel
+> is geselecteerd in de keuzelijst <guilabel
+>Gebied</guilabel
+>. Deze optie activeren maakt alleen een afbeelding van het pop-up-menu onder de cursor, zonder zijn onderliggend venster.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>De optie <guilabel
+>Afsluiten na handmatig opslaan of kopiëren</guilabel
+> zal &spectacle; afsluiten na een opslag- of kopieerbewerking. Merk op dat een gekopieerde schermafdruk alleen bewaard zal worden als u een klembordbeheerder actief hebt die afbeeldingen accepteert. KDE Klipper kan geconfigureerd worden op deze manier door rechts te klikken op zijn pictogram, selecteren van <guilabel
+>Klembord configureren...</guilabel
+> en deactiveren van <guilabel
+>Afbeeldingen negeren</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Toegevoegde functionaliteit</title>
+
+        <sect1>
+            <title
+>Knoppen</title>
+
+            <para
+>Er zijn enige knoppen onderaan het venster van &spectacle;. Hun functies worden hieronder beschreven:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Help</guibutton
+></term>
+                    <listitem>
+                        <para
+>Geeft u de gezamenlijke menu-items beschreven in <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde; basisbeginselen.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Configureren...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Geeft u toegang tot het configuratievenster van &spectacle; waar u de opname-instellingen en standaard opslaglocatie en bestandsnaam kunt wijzigen.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Annotatie maken</guibutton
+></term>
+                    <listitem>
+                        <para
+>Opent een een bewerker van annotaties die verschillende hulpmiddelen voor annotaties biedt:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Bewerker voor annotaties</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Probeer de hulpmiddelen voor annotaties. U zou alles kunnen vinden wat nodig is om uw schermafdrukken daar uit te leggen: pijlen, pen, markeringen, tekstvakken, getallen, zelfs smileys. Het is mogelijk de parameters van het hulpmiddel te wijzigen en effecten (schaduw, grijsschaal en rand) toe te voegen. </para>
+                        <para
+>Wanneer u denkt dat de annotatie gereed is druk op de knop <guibutton
+> Annotatie gereed</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Hulpmiddelen</guibutton
+></term>
+                    <listitem>
+                        <para
+>Opent een afrolmenu dat verschillende hulpmiddelen biedt:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Standaard map voor schermafdrukken openen</guimenuitem
+> zal de laatst opgeslagen schermafdruk in de standaard bestandsbeheerder accentueren</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Toegang tot de dialoog <guimenuitem
+>Afdrukken</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Een reeks van externe programma's voor opnemen van het scherm</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Exporteren</guibutton
+></term>
+                    <listitem>
+                        <para
+>Opent een afrolmenu dat u in staat stelt om direct de schermafdruk te open in alle programma's die geassocieerd zijn met het PNG (Portable Network Graphics) &MIME;-type. Afhankelijk van welke programma's zijn geïnstalleerd, kunt u de schermafdruk openen en bewerken in uw grafische toepassingen.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Afbeelding naar klembord/kopieer locatie naar klembord</guibutton
+></term>
+                    <listitem>
+                        <para
+>Kopieert de huidige schermafdruk of zijn locatie naar het klembord. U kunt ook de sneltoets <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> hiervoor gebruiken.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Opslaan als</guibutton
+></term>
+                    <listitem>
+                        <para
+>Slaat de schermafdruk op als een PNG-afbeelding in uw standaard map Afbeeldingen en sluit onmiddellijk de toepassing.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Configureren</title>
+            <para
+>Gebruik de knop <guibutton
+>Configureren...</guibutton
+> om de configuratiedialoog te openen.</para>
+            <sect2>
+            <title
+>Algemeen</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Algemeen</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Bij starten van Spectacle</guilabel
+></term>
+                    <listitem>
+                        <para
+>Staat het <guilabel
+>Maken van een schermafdruk van het volledige scherm</guilabel
+> toe, laatst gebruikte vangstmethode gebruiken of niet automatisch een schermafdruk maken. De laatst gebruikte vangstmodus is die is ingesteld in opnamemodus</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Na het nemen van een schermafdruk</guilabel
+></term>
+                    <listitem>
+                        <para
+>Biedt <guilabel
+>Bestand naar standaard map opslaan</guilabel
+>, waarmee elke klembord actie wordt uitgeschakeld of de afbeelding naar het klembord kopiëren. De standaard locatie kan geconfigureerd worden op de configuratiepagina met <link linkend="save-page"
+>Opslaan</link
+>. Het is mogelijk om <guilabel
+>Bestandslocatie naar het klembord kopiëren</guilabel
+>. U kunt het dan overal plakken waar invoer van tekst wordt geaccepteerd. Merk op dat u een klembordbeheerder actief moet hebben om het pad in het klembord te behouden nadat &spectacle; eindigt.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Schermafdruktoets indrukken om</guilabel
+></term>
+                    <listitem>
+                        <para
+>Wanneer een sneltoets om een schermafdruk te maken wordt ingedrukt en &spectacle; is al actief is het mogelijk om het gedrag van het systeem van maken te configureren. U kunt kiezen tussen het maken van een nieuwe schermafdruk, openen van een nieuw venster van &spectacle; en focus teruggeven aan het bestaande venster van &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Lichte achtergrondkleur gebruiken</guilabel
+></term>
+                    <listitem>
+                        <para
+>Een lichte achtergrondkleur gebruiken om het uitgesneden gebied in het geselecteerde rechthoekige gebied te markeren. Dit maakt het zien van donkere cursors gemakkelijker.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Vergrootglas tonen</guilabel
+></term>
+                    <listitem>
+                        <para
+>Wanneer een schermafdruk wordt opgeslagen, kopieer dan de locatie van het bestand naar het klembord. U kunt het dan overal plakken waar invoer van tekst wordt geaccepteerd. Merk op dat u een klembordbeheerder actief moet hebben om het pad in het klembord te houden nadat &spectacle; eindigt.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Bij indrukken en loslaten accepteren</guilabel
+></term>
+                    <listitem>
+                        <para
+>Indien geactiveerd, het geselecteerd gebied wordt geaccepteerd zodra de muisknop wordt losgelaten in de modus <guilabel
+>Rechthoekig gebied</guilabel
+>.</para>
+                        <para
+>Bij selecteren van een nieuw gebied, zonder te beschikken over een eerder opgeslagen gebied, zou klikken, slepen en loslaten van de muisknop onmiddellijk het geselecteerde gebied moeten vangen. Wanneer een eerder opgeslagen gebied wordt getoond, kan het opgeslagen gebied verder gemanipuleerd worden en opslaan van dit gebied vereist handmatige bevestiging (&Enter; of dubbelklikken met de &LMB;). Klikken en slepen buiten het eerder opgeslagen gebied vangt het nieuw geselecteerde gebied onmiddellijk.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Geselecteerd gebied onthouden</guilabel
+></term>
+                    <listitem>
+                        <para
+>Standaard herinnert &spectacle; een initiële selectie wanneer u een schermafdruk van een rechthoekig gebied maakt totdat u het venster van &spectacle; sluit. U kunt ook kiezen om &spectacle; zo te configureren dat het nooit geselecteerd gebied herinnert of het herinnert tussen de sessies van schermafdruk maken.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Opslaan</title>
+            <para
+>Wanneer u de functie <guilabel
+>Opslaan</guilabel
+> gebruikt zal &spectacle; de afbeelding met een standaard bestandsnaam opslaan in uw map Afbeeldingen onder uw persoonlijke map. De standaard bestandsnaam bevat de datum en tijd van het moment waarop de afbeelding is gemaakt.</para>
+
+            <para
+>De pagina <guilabel
+>Opslaan</guilabel
+> stelt u in staat om de standaard opslaglocatie en bestandsnaam in te stellen Op deze optie klikken laat een dialoogvak verschijnen zoals volgt: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Opslaan</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Opslaglocatie</guilabel
+></term>
+                    <listitem>
+                    <para
+>In het tekstvak voor locatie stelt u de map in waar u uw schermafdrukken wilt opslaan wanneer u de knop <guibutton
+>Opslaan</guibutton
+> indrukt.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Compressiekwaliteit</guilabel
+></term>
+                    <listitem>
+                        <para
+>De kwaliteit van de afbeelding kiezen bij opslaan met afbeeldingsformaten met verlies zoals JPEG. De hogere waarden geven een betere kwaliteit maar verhogen de grootte van het bestand. Zie de <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>Wikipedia pagina</ulink
+> voor de details over de afbeeldingsformaten die in &spectacle; worden gebruikt.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Bestandsnaam</guilabel
+></term>
+                    <listitem>
+                        <para
+>Een standaard bestandsnaam voor opgeslagen schermafdrukken instellen.</para>
+                        <para
+>U kunt de volgende plaatshouders in de bestandsnaam gebruiken, die vervagen zullen worden door actuele tekst wanneer het bestand wordt opgeslagen:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: dag</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: uur</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: maand</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Sequentieel getal aangevuld tot N cijfers</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: seconde</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: venstertitel</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: jaar (4 cijfers)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Sequentieel getal</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: minuut</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: jaar (2 cijfers)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>U kunt op plaatshouders klikken in de onderstaande referentielijst om ze in te voegen in de regel met <guilabel
+>Bestandsnaam</guilabel
+> line.</para>
+                        <para
+>Als een bestand met deze naam al bestaat zal een serienummer worden achtergevoegd aan de bestandsnaam. Als bijvoorbeeld de bestandsnaam <filename
+>Schermafdruk</filename
+> is, en <filename
+>Schermafdruk.png</filename
+> bestaat al, dan zal de afbeelding opgeslagen worden als <filename
+>Schermafdruk-1.png</filename
+>.</para>
+                        <para
+>Het afrolvak naast het tekstvak gebruikt u om het standaard afbeeldingsformaat voor schermafdrukken te selecteren. Zie de <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>Wikipedia pagina</ulink
+> voor de details over de afbeeldingsformaten die in &spectacle; worden gebruikt.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Sneltoetsen</title>
+            <para
+>Deze configuratiepagina kan gebruikt worden om de standaard sneltoetsen van &spectacle; te wijzigen. Het is mogelijk sneltoetsen te configureren om &spectacle; te starten en verschillende delen van uw bureaublad te vangen. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Slepen en loslaten</title>
+            <para
+>Een gevangen afbeelding kan versleept worden naar een andere toepassing of document. Als de toepassing afbeeldingen kan behandelen, dan zal een kopie van de volledige afbeelding daar ingevoegd worden.</para>
+
+            <para
+>Als u een schermafdruk naar een venster van een bestandsbeheerder versleept, zal er een dialoogvenster verschijnen waarin u de bestandsnaam kunt bewerken en het afbeeldingsformat kunt selecteren en het bestand zal ingevoegd worden in de actuele map.</para>
+
+            <para
+>Als u de schermafdruk naar een tekstvak versleept, dan zal het pad naar het tijdelijk opgeslagen bestand ingevoegd worden. Dit is bijvoorbeeld nuttig bij het uploaden van een schermafdruk via webformulieren of om schermafdrukken in bugrapporten bij te voegen in de <ulink url="https://bugs.kde.org/"
+>&kde; bugtracker</ulink
+>.</para>
+
+            <para
+>Dit werkt met alle clients die niet de gegevens van de afbeelding oppakken, maar alleen kijken naar een &URL; in de versleepte mime-gegevens.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Dankbetuigingen en licentie</title>
+
+        <para
+>Programma copyright &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Delen van de code is direct gebaseerd op code uit het project &ksnapshot;. Copyright &copy; , 1997-2011 de ontwikkelaars van &ksnapshot;. Gedetailleerde copyright notities zijn beschikbaar in de headers in de broncode.</para>
+
+        <para
+>Delen van de code is direct gebaseerd op code uit het project &kwin;. Copyright &copy; 2008, 2013 de &kwin; ontwikkelaars. Gedetailleerde copyright notities zijn beschikbaar in de headers in de broncode.</para>
+
+        <para
+>Documentatie is gebaseerd op de originele documentatie van &ksnapshot;:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        &meld.fouten;&vertaling.freek; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

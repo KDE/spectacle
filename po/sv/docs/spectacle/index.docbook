@@ -1,0 +1,870 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>Handbok &spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>Program 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle; är ett program för att ta skärmbilder av skrivbordet och redigera dem. Det kan ta bilder av hela skrivbordet, en enda bildskärm, fönstret som för närvarande är aktivt, fönstret som för närvarande är under musen, eller ett rektangulärt skärmområde. Bilderna kan därefter kommenteras, skrivas ut, skickas till andra program för behandling, eller snabbt sparas som de är.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>skärmbild</keyword>
+            <keyword
+>ta skärmbild</keyword>
+            <keyword
+>skärmlagring</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Inledning</title>
+
+        <para
+>&spectacle; är ett program för att ta skärmbilder av skrivbordet och redigera dem. Det kan ta bilder av hela skrivbordet, en enda bildskärm, fönstret som för närvarande är aktivt, fönstret som för närvarande är under musen, eller ett rektangulärt skärmområde. Bilderna kan därefter kommenteras, skrivas ut, skickas till andra program för behandling, eller snabbt sparas som de är.</para>
+
+        <para
+>Var snäll rapportera eventuella problem eller önskemål till <ulink url="https://bugs.kde.org/"
+>&kde;:s felhanteringssystem</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>Starta &spectacle;</title>
+
+        <para
+>&spectacle; kan startas på ett antal olika sätt, som beskrivs nedan:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>&spectacle; finns under <menuchoice
+><guisubmenu
+>Program</guisubmenu
+><guisubmenu
+>Verktyg</guisubmenu
+><guimenuitem
+>Verktyg för att ta skärmbilder &spectacle;</guimenuitem
+></menuchoice
+> i programstartmenyn.</para>
+            </listitem>
+            <listitem>
+                <para
+>Att trycka på knappen <keysym
+>Print Screen</keysym
+> på tangentbordet (ofta betecknat <keycap
+>PrtSc</keycap
+>, <keycap
+>PrtScr</keycap
+> eller liknande) startar omedelbart &spectacle;. Dessutom är tre ytterligare snabbtangenter tillgängliga för att ta skärmbilder och spara dem i standardkatalogen att spara i utan att visa det grafiska användargränssnittet:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Print Screen</keysym
+></keycombo
+> tar en skärmbild av det aktiva fönstret</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> tar en skärmbild av hela skrivbordet, dvs. alla bildskärmar</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> tar en skärmbild av ett rektangulärt område</para
+></listitem>
+                </itemizedlist>
+                <para
+>Det går att ställa in förvald plats att spara och filnamn genom att starta &spectacle; på normalt sätt, klicka på knappen <guibutton
+>Anpassa...</guibutton
+>, och därefter gå till sektionen Spara.</para>
+            </listitem>
+            <listitem>
+                <para
+>Minikommandoraden (som startas med <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) kan också användas för att starta &spectacle;.</para>
+            </listitem>
+            <listitem>
+                <para
+>&spectacle; kan startas från kommandoraden. &spectacle; har ett stort antal kommandoradsväljare, inklusive bakgrundsläge som kan användas för att skapa skript för att ta skärmbilder utan att visa det grafiska användargränssnittet eller kräva interaktion med användaren.</para>
+
+                <para
+>Skriv in följande för att starta &spectacle; från kommandoraden:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>För att se den fullständiga listan över kommandoradsväljare och deras förklaring, skriv in:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>Använda &spectacle;</title>
+
+        <para
+>När &spectacle; startar, kommer du att se ett fönster som liknar det här: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Huvudfönstret i &spectacle;</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle; tar en bild av hela skrivbordet omedelbart efter den har startat, men innan den visas på skärmen. Det här låter dig snabbt skapa skärmbilder av hela skrivbordet.</para>
+
+        <para
+>Ögonblicksbilden som tas av &spectacle; visas i förhandsgranskningsfönstret, som är placerat på vänster sida i &spectacle;s programfönster.</para>
+
+        <para
+>Bilden kan sparas på en plats du väljer genom att klicka på knappen <guibutton
+>Spara som</guibutton
+> eller trycka på <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+>. Det visar den vanliga dialogrutan för att spara, där det går att välja filnamn, katalogens plats, och formatet som skärmbilden ska sparas med. Du kan redigera filnamnet till vad du vill, inklusive namnet på en tidigare sparad skärmbild.</para>
+
+        <para
+>För att spara en skärmbild på förvald plats, klicka på pilen i knappen <guimenuitem
+>Spara som...</guimenuitem
+> och klicka på alternativet <guimenuitem
+>Spara</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Den nya metoden för att spara blir ihågkommen till nästa gång. Den förvalda platsen att spara och filnamnet kan ställas in, vilket beskrivs senare.</para>
+
+        <para
+>För att snabbt spara bilden och avsluta &spectacle;, klicka på kryssrutan intill <guilabel
+>Avsluta efter Spara eller Kopiera manuellt</guilabel
+>, och klicka därefter på pilen i knappen <guibutton
+>Spara som...</guibutton
+> och välj alternativet <guimenuitem
+>Spara</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Det sparar bilden som en PNG-fil i den förvalda katalogen <filename class="directory"
+>Bilder</filename
+>, och avslutar omedelbart programmet. Liksom ovan blir den nya metoden för att spara ihågkommen.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Ta en skärmbild</title>
+
+            <para
+>När &spectacle; startas, tas omedelbart en skärmbild av hela skärmen av bekvämlighetsskäl, om inte något annat är inställt i de allmänna alternativen, och en förhandsgranskning av den visas i huvudfönstret. Du kan spara skärmbilden genom att använda knapparna längst ner i fönstret, eller ta en ny genom att använda knapparna till höger om förhandsgranskningen.</para>
+
+            <para
+>För att kasta den aktuella skärmbilden och ta en annan skärmbild, klicka på knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Efter att ha tagit en skärmbild, visar &spectacle; en informationsruta med en länk till skärmbildsfilen och föreslår att <guibutton
+>Öppna katalog med innehåll</guibutton
+> där filen finns.</para>
+
+            <para
+>Du kan ställa in vissa alternativ på höger sida i programfönstret innan en ny skärmbild tas. Alternativen låter dig välja område på skärmen som ska lagras, ställa in en fördröjning innan bilden tas, och ställa in om muspekaren och/eller fönsterdekorationer ska lagras tillsammans med skärmbilden.</para>
+
+            <sect2>
+                <title
+>Lagringsinställning</title>
+
+                <para
+>Lagringsinställningen låter dig ställa in området på skärmen som ska lagras, och om det ska vara en fördröjning mellan klicket på knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) och när skärmbilden tas. Du kan också aktivera kryssrutan <guilabel
+>Vid klick</guilabel
+>, som inaktivera fördröjningsfunktionen och bara tar skärmbilden efter att du har klickat någonstans på skärmen efter att ha klickat på knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>Kombinationsrutan <guilabel
+>Område</guilabel
+> låter dig ställa in området på skärmen som ska lagras. Det finns fem alternativ att välja mellan, som beskrivs nedan.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Fullskärm (alla bildskärmar)</guilabel
+> tar en skärmbild av hela skrivbordet, utspritt över alla utgångar, inklusive alla bildskärmar, projektorer, etc.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Aktuell skärm</guilabel
+> tar en skärmbild av utgången som för närvarande innehåller muspekaren.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Rektangulärt område</guilabel
+> låter dig välja ett rektangulärt område på skrivbordet med musen. Området kan täcka flera utgångar.</para>
+
+                        <para
+>Inställningen tar inte omedelbart en skärmbild, utan låter dig rita en rektangel på skärmen, som kan flyttas eller storleksändras efter behov. När den önskade markeringsrektangeln har ritats, tas skärmbilden vid ett dubbelklick var som helst på skärmen eller genom att trycka på tangentbordets returtangent.</para>
+                        
+                        <para
+>Det går att använda piltangenterna för att flytta och justera rektangeln. Att trycka på piltangenterna flyttar rektangeln. Att hålla nere &Shift;-tangenten och trycka på piltangenterna flytta rektangeln långsamt, för att finjustera markeringen. Att hålla nere &Alt;-tangenten och trycka på piltangenterna justerar rektangelns storlek.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Aktivt fönster</guilabel
+> tar en skärmbild av fönstret som för närvarande har fokus. Det rekommenderas att en fördröjning används med inställningen, för att ge tid att välja och aktivera ett fönster innan skärmbilden tas.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Fönster under pekaren</guilabel
+> tar en skärmbild av fönstret som är under muspekaren. Om pekaren är över en menyruta, försöker &spectacle; ta en skärmbild av menyn samt dess tillhörande fönster.</para>
+
+                        <para
+>Även om det fungerar för det mesta, kan det i vissa fall misslyckas hämta information om överliggande fönster. I så fall återgår &spectacle; till det gamla sättet att automatiskt ta bilden, och tar en bild av bara menyn. Det går också att tvinga användning av det gamla sättet att ta bilden genom att markera kryssrutan <guilabel
+>Ta bara en bild av aktuell ruta</guilabel
+> i <guilabel
+>Alternativ</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>Nummerrutan <guilabel
+>Fördröjning</guilabel
+> låter dig ställa in fördröjningen från knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) klickas till skärmbilden tas. Fördröjningen kan ställas in med noggrannheten 1 sekund med nummerrutans knappar eller tangentbordet.</para>
+                
+                <para
+>När en tidsfördröjd skärmbild tas, &spectacle; visar den återstående tiden innan skärmbilden tas i fönstrets namnlist, och gör den synlig i aktivitetshanterarens objekt. Knappen i aktivitetshanteraren för &spectacle; visar också en förloppsindikator, så att du kan hålla reda på när bilden kommer att tas.</para>
+                
+                <para
+>Medan du väntar på den fördröjda skärmbilden kan du maximera &spectacle; så ändras knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> till <guibutton
+>Avbryt</guibutton
+>. Förloppsindikatorn visas också här, vilket ger dig möjlighet att stoppa nedräkningen.</para>
+
+                <para
+>Genom att aktivera kryssrutan <guilabel
+>Vid klick</guilabel
+> överskrids fördröjningen. När kryssrutan är markerad, döljes &spectacle;s fönster och muspekaren ändras till ett hårkors när knappen <guibutton
+>Ta en ny skärmbild</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) klickas. Skärmbilden tas när musens vänsterknapp klickas, eller avbryts om någon annan musknapp klickas. Observera att det inte går att påverka skrivbordet genom att använda musen medan pekaren är ett hårkors, men det går att använda tangentbordet.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Alternativ</title>
+
+                <para
+>Inställningen Alternativ låter dig välja om muspekaren ska ingå på skärmbilderna, och om fönsterdekorationer ska lagras tillsammans med bilden av ett enstaka programfönster. Med <guilabel
+>Fönster under pekaren</guilabel
+>, låter den dig också välja om &spectacle; bara ska ta bilden av aktuell menyruta under pekaren, eller också inkludera tillhörande fönster. Till sist, avslutar <guilabel
+>Avsluta efter Spara eller Kopiera</guilabel
+> &spectacle; efter vilken åtgärd för att spara eller kopiera som helst.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Att markera kryssrutan <guilabel
+>Inkludera muspekare</guilabel
+> gör att en bild av muspekaren inkluderas på skärmbilden.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Inkludera fönstrets namnlist och kanter</guilabel
+> aktiveras bara när antingen inställningen <guilabel
+>Aktivt fönster</guilabel
+> eller <guilabel
+>Fönster under pekaren</guilabel
+> är vald i kombinationsrutan <guilabel
+>Område</guilabel
+>. Markeras alternativet inkluderas fönsterkanter och dekoration på skärmbilden, medan om det avmarkeras får man en bild av enbart fönsterinnehållet.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Ta bara en bild av aktuell ruta</guilabel
+> aktiveras bara när inställningen <guilabel
+>Fönster under pekaren</guilabel
+> är vald i kombinationsrutan <guilabel
+>Område</guilabel
+>. Markeras alternativet tas bara en bild av menyrutan under pekaren, utan dess tillhörande fönster.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Alternativet <guilabel
+>Avsluta efter Spara eller Kopiera manuellt</guilabel
+> avslutar &spectacle; efter vilken åtgärd för att spara eller kopiera som helst. Observera att en kopierad skärmbild bara behålls om en klippbordshanterare som accepterar bilder används. KDE Klipper kan ställas in på detta sätt genom att högerklicka på ikonen, välja <guilabel
+>Anpassa klippbordet...</guilabel
+> och avmarkera <guilabel
+>Ignorera bilder</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Ytterligare funktionalitet</title>
+
+        <sect1>
+            <title
+>Knappar</title>
+
+            <para
+>Det finns några knappar placerade längst ner i fönstret i &spectacle;. Deras funktioner beskrivs nedan:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Hjälp</guibutton
+></term>
+                    <listitem>
+                        <para
+>Ger de vanliga menyalternativen som beskrivs under <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hjälpmeny</ulink
+> i &kde;:s grunder.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Anpassa...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Ger tillgång till &spectacle;s inställningsfönster där det går att ändra tagningsinställningarna samt förvald plats att spara och filnamn.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Kommentera</guibutton
+></term>
+                    <listitem>
+                        <para
+>Visar en redigeringsfönster för kommentering som erbjuder diverse kommentarverktyg:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Kommentareditor</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Prova gärna kommentarverktygen. Du finner kanske allt som behövs för att förklara dina skärmbilder där: pilar, penna, märkpennor, textrutor, nummer, till och med smilisar. Det är möjligt att ändra verktygsparametrar och lägga till effekter (skugga, gråskala, och kant). </para>
+                        <para
+>När du anser att kommentarerna är klar klicka på knappen <guibutton
+>Kommentar tillagd</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Verktyg</guibutton
+></term>
+                    <listitem>
+                        <para
+>Visar en kombinationsmeny som erbjuder diverse verktyg:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Öppna förvald skärmbildskatalog</guimenuitem
+> markerar den senast sparade skärmbilden i förvald filhanterare</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Åtkomst till dialogrutan <guimenuitem
+>Utskrift</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Ett antal externa program för bildskärmsinspelning</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Exportera</guibutton
+></term>
+                    <listitem>
+                        <para
+>Visar en kombinationsmeny som direkt låter dig öppna skärmbilden med alla program som är kopplade till Mime-typen PNG (portabel nätverksgrafik). Beroende på vilka program som är installerade, kommer det att vara möjligt att öppna och redigera skärmbilden i grafikprogram eller visningsprogram.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Kopiera bild till klippbordet / Kopiera plats till klippbordet</guibutton
+></term>
+                    <listitem>
+                        <para
+>Kopierar aktuell skärmbild eller dess plats till klippbordet. Du kan också använda snabbtangenten <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> för att göra det.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Spara som</guibutton
+></term>
+                    <listitem>
+                        <para
+>Sparar skärmbilden som en PNG-bild i den förvalda katalogen Bilder och avslutar omedelbart programmet.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Anpassa</title>
+            <para
+>Använd knappen <guibutton
+>Anpassa...</guibutton
+> för att visa inställningsdialogrutan.</para>
+            <sect2>
+            <title
+>Allmänt</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Allmänt</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>När Spectacle startas</guilabel
+></term>
+                    <listitem>
+                        <para
+>Tillåter att <guilabel
+>Ta fullständig skärmbild</guilabel
+>, använda senaste tagningsmetod, eller inte ta någon skärmbild automatiskt. Den senast använda tagningsmetoden är den som är inställd i Tagningsmetod.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Efter en skärmbild har tagits</guilabel
+></term>
+                    <listitem>
+                        <para
+>Tillåter att <guilabel
+>Spara filen i förvald katalog</guilabel
+>, vilket stänger av alla klippbordsåtgärder, kopierar bilden till klippbordet, eller kopierar skärmbildens sökväg till klippbordet. Förvald plats kan ställas in genom att använda inställningssidan <link linkend="save-page"
+>Spara</link
+>. Det är möjligt att <guilabel
+>Kopiera filplats till klippbordet</guilabel
+>. Du kan sedan klistra in den var som helst där textinmatning accepteras. Observera att klippbordshanteraren måste köra för att behålla sökvägen på klippbordet efter &spectacle; har avslutats.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Tryck på skärmbildsknappen för att</guilabel
+></term>
+                    <listitem>
+                        <para
+>När en genväg för att ta en skärmbild används och &spectacle; redan kör är det möjligt att anpassa beteendet av skärmbildssystemet. Det går att välja mellan att ta en ny skärmbild, öppna ett nytt &spectacle;-fönster, och att ge fokus till det befintliga &spectacle;-fönstret.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Använd ljus bakgrund</guilabel
+></term>
+                    <listitem>
+                        <para
+>Använd en ljus bakgrundsfärg för att maskera det beskurna området för val av rektangulärt område. Det kan göra det enklare att se mörka pekare.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Visa förstoringsglas</guilabel
+></term>
+                    <listitem>
+                        <para
+>När en skärmbild sparas, kopiera platsen där filen sparades till klippbordet. Den kan sedan klistras in var som helst där textinmatning accepteras. Observera att klippbordshanteraren måste köra för att behålla sökvägen på klippbordet efter &spectacle; har avslutats.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Acceptera vid klick och släpp</guilabel
+></term>
+                    <listitem>
+                        <para
+>Om markerat, acceptera det markerade området så snart musknappen släpps i läget <guilabel
+>Rektangulärt område</guilabel
+>.</para>
+                        <para
+>När ett nytt område markeras, utan att ett tidigare sparat område är tillgängligt, ska det markerade området omedelbart sparas när musknappen klickas, musen flyttas och knappen släpps upp. När ett tidigare sparat område visas, kan det sparade området manipuleras ytterligare och att spara området kräver manuell bekräftelse (returtangenten eller dubbelklick med vänster musknapp). Att klicka och dra utanför det tidigare sparade området sparar omedelbart det nya markerade området.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Kom ihåg markerat område</guilabel
+></term>
+                    <listitem>
+                        <para
+>Normalt kommer &spectacle; ihåg en initial markering när en skärmbild av ett rektangulärt område tas tills &spectacle;s fönster stängs. Det går också att välja att &spectacle; aldrig ska komma ihåg markerade områden eller ska komma ihåg det mellan skärmbildssessioner.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Spara</title>
+            <para
+>När funktion <guilabel
+>Spara</guilabel
+> används, sparar &spectacle; bilden med ett förvalt filnamn i katalogen Bilder (som finns i din hemkatalog). Förvalt filnamn inkluderar datum och tid då bilden togs.</para>
+
+            <para
+>Sidan <guilabel
+>Spara</guilabel
+> låter dig ställa in förvald plats att spara och filnamn. Att klicka på alternativet visar en dialogruta som liknar den följande: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Spara</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Plats att spara</guilabel
+></term>
+                    <listitem>
+                    <para
+>Ställ in katalogen där du vill spara dina skärmbilder när du klickar på knappen <guibutton
+>Spara</guibutton
+> i textrutan.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Komprimeringskvalitet</guilabel
+></term>
+                    <listitem>
+                        <para
+>Välj bildkvalitet när du sparar med destruktiva bildformat som JPEG. Ett högre värde ger bättre kvalitet men ökar filstorleken. Se <ulink url="https://sv.wikipedia.org/wiki/Bildfilformat"
+>Wikipediasidan</ulink
+> för detaljerad information om de bildformat som används i &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Filnamn</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ställ in ett förvalt filnamn för sparade skärmbilder.</para>
+                        <para
+>Följande platsmarkörer kan användas i filnamnet, som ersätts med verklig text när filen sparas:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: dag</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: timma</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: månad</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Sekvensnummer utfyllt till N siffror</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: sekund</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: fönsterrubrik</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: år (4 siffor)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Sekvensnummer</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: minut</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: år (2 siffror)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Det går att klicka på platsmarkörerna i referenslistan nedan för att infoga dem på raden <guilabel
+>Filnamn</guilabel
+>.</para>
+                        <para
+>Om en fil med namnet redan finns, läggs ett serienummer till sist i filnamnet. Om filnamnet exempelvis är <filename
+>Skärmbild</filename
+>, och <filename
+>Skärmbild.png</filename
+> redan finns, sparas bilden som <filename
+>Skärmbild-1.png</filename
+>.</para>
+                        <para
+>Använd kombinationsrutan intill textfältet för att välja förvalt bildformat för skärmbilder. Se <ulink url="https://sv.wikipedia.org/wiki/Bildfilformat"
+>Wikipediasidan</ulink
+> för detaljerad information om de bildformat som används i &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Genvägar</title>
+            <para
+>Inställningssidan kan användas för att ändra standardgenvägarna i &spectacle;. Det går att ställa in genvägar för att starta &spectacle; och för att ta bilder av olika delar av skrivbordet. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Drag och släpp</title>
+            <para
+>En tagen bild kan dras till ett annat program eller dokument. Om programmet klarar av att hantera bilder, infogas en kopia av hela bilden där.</para>
+
+            <para
+>Om man drar en skärmbild till ett filhanteringsfönster, dyker en dialogruta upp där det går att kan redigera filnamn och välja bildformat, så infogas filen i själva katalogen.</para>
+
+            <para
+>Om skärmbilden dras till en textruta infogas sökvägen till den tillfälligt sparade filen. Det är exempelvis användbart för att ladda upp en skärmbild via webbformulär eller för att lägga till skärmbilder i felrapporter med <ulink url="https://bugs.kde.org/"
+>&kde;:s felspårare</ulink
+>.</para>
+
+            <para
+>Det fungerar med alla klienter som inte tar hand om bilddata, utan bara tittar efter webbadressen i Mime-data som dras.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Tack till och licens</title>
+
+        <para
+>Program copyright &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Delar av koden är direkt baserat på kod från projektet &ksnapshot;. Copyright &copy; 1997-2011 Utvecklarna av &ksnapshot;. Detaljerade meddelanden om tilldelning av upphovsrätt är tillgänglig i källkodens sidhuvuden.</para>
+
+        <para
+>Delar av koden är direkt baserat på kod från projektet &kwin;. Copyright &copy; 2008, 2013 Utvecklarna av &kwin;. Detaljerade meddelanden om tilldelning av upphovsrätt är tillgänglig i källkodens sidhuvuden.</para>
+
+        <para
+>Dokumentation baserad på den ursprungliga dokumentationen av &ksnapshot;:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

@@ -1,0 +1,848 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>El manual de l'&spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            &traductor.Antoni.Bella; 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>25 d'abril de 2021</date>
+        <releaseinfo
+>Applications 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>L'&spectacle; és una aplicació per a prendre i editar captures de pantalla de l'escriptori. Pot capturar imatges de tot l'escriptori, un sol monitor, la finestra activa, la finestra sota el ratolí o d'una regió rectangular de la pantalla. Les imatges es poden anotar, imprimir, enviar a altres aplicacions per a la seva manipulació o desar-les com estan.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>captura de pantalla</keyword>
+            <keyword
+>captura de pantalla</keyword>
+            <keyword
+>captura la pantalla</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Introducció</title>
+
+        <para
+>L'&spectacle; és una aplicació per a prendre i editar captures de pantalla de l'escriptori. Pot capturar imatges de tot l'escriptori, un sol monitor, la finestra activa, la finestra sota el ratolí o d'una regió rectangular de la pantalla. Les imatges es poden anotar, imprimir, enviar a altres aplicacions per a la seva manipulació o desar-les com estan.</para>
+
+        <para
+>Podeu informar de qualsevol problema o petició de característica al <ulink url="https://bugs.kde.org/"
+>sistema de seguiment d'errors del &kde;</ulink
+> (escriviu-hi en anglès).</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>Començant amb l'&spectacle;</title>
+
+        <para
+>L'&spectacle; es pot iniciar en una varietat de maneres, tal com es descriu a continuació:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Al menú llançador d'aplicacions, l'&spectacle; es troba a <menuchoice
+><guisubmenu
+>Aplicacions</guisubmenu
+><guisubmenu
+>Utilitats</guisubmenu
+><guimenuitem
+>Utilitat de captura de pantalla &spectacle;</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>En prémer el botó <keysym
+>Impr Pant</keysym
+> al teclat (sovint etiquetat com a <keycap
+>PrtSc</keycap
+>, <keycap
+>PrtScn</keycap
+> o similar) es llançarà immediatament l'&spectacle;. A més, hi ha tres dreceres de teclat més per a prendre captures de pantalla i desar-les a la carpeta predeterminada per a desar sense mostrar la &IGU;:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Impr Pant</keysym
+></keycombo
+> prendrà una captura de pantalla de la finestra activa</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Maj;<keysym
+>Impr Pant</keysym
+></keycombo
+> prendrà una captura de pantalla de tot l'escriptori, &ead;, tots els monitors</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Maj;<keysym
+>Impr Pant</keysym
+></keycombo
+> prendrà una captura de pantalla d'una regió rectangular</para
+></listitem>
+                </itemizedlist>
+                <para
+>Podeu configurar la ubicació predeterminada on desar i el nom de fitxer que emprarà habitualment el programa &spectacle; i feu clic al botó <guibutton
+>Configura...</guibutton
+>, després navegueu a la secció Desa.</para>
+            </listitem>
+            <listitem>
+                <para
+>La mini línia d'ordres del &krunner; (invocada amb <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) també es pot utilitzar per a iniciar l'&spectacle;.</para>
+            </listitem>
+            <listitem>
+                <para
+>L'&spectacle; es pot iniciar des de la línia d'ordres. L'&spectacle; té un ampli conjunt d'opcions per a la línia d'ordres, incloent-hi un mode de fons que es pot utilitzar en un script per a la captura de pantalla sense mostrar la &IGU; o requerir la interacció de l'usuari.</para>
+
+                <para
+>Per a iniciar l'&spectacle; des de l'indicador d'ordres, escriviu:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Per veure la llista completa d'opcions per a la línia d'ordres i la seva explicació, escriviu:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>Ús de l'&spectacle;</title>
+
+        <para
+>Una vegada s'inicia l'&spectacle;, veureu una finestra com la següent: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Finestra principal de l'&spectacle;</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>L'&spectacle; pren una imatge de tot l'escriptori immediatament després d'haver-se iniciat, però abans la mostra a la pantalla. Això us permet crear ràpidament imatges amb captures de pantalla de tot l'escriptori.</para>
+
+        <para
+>La captura de pantalla presa per l'&spectacle; es visualitza a la finestra de vista prèvia, la qual es troba a la banda esquerra de la finestra de l'&spectacle;.</para>
+
+        <para
+>La imatge es pot guardar fent clic a la part de la fletxa del botó <guibutton
+>Desa com a</guibutton
+> o prement <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>S</keycap
+></keycombo
+>). Això obrirà el diàleg de desament estàndard, des d'on podreu triar el nom del fitxer, la ubicació de la carpeta i el format en què es desarà la vostra captura de pantalla. Podeu editar el nom del fitxer a qualsevol cosa que desitgeu, incloent-hi el nom d'una captura de pantalla desada amb anterioritat.</para>
+
+        <para
+>Per a desar ràpidament la captura de pantalla i sortir de l'&spectacle;, premeu el botó <guibutton
+>Desa com a...</guibutton
+> i premeu el botó <guimenuitem
+>Desa</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Es recordarà el nou mode de desament per a la pròxima vegada. Es poden configurar la ubicació de desament i el nom de fitxer predeterminats, tal com es descriu més endavant.</para>
+
+        <para
+>Per a desar ràpidament la imatge i sortir de l'&spectacle;, feu clic a la casella de selecció que apareix al costat de <guilabel
+>Surt després de desar o copiar manualment</guilabel
+>, després feu clic a la part de la fletxa del botó <guibutton
+>Desa com a...</guibutton
+> i premeu l'element <guimenuitem
+>Desa</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Això desarà la imatge com un fitxer PNG a la vostra carpeta <filename class="directory"
+>Imatges</filename
+> predeterminada, i se sortirà immediatament de l'aplicació. Com s'ha mostrat anteriorment, es recordarà aquest nou mode de desament.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Prendre una captura de pantalla</title>
+
+            <para
+>Quan obriu l'&spectacle;, immediatament prendrà una captura de pantalla de tota la pantalla i mostrarà una vista prèvia de la mateixa a la finestra principal, llevat que s'hagi establert el contrari a les opcions generals. La podreu desar utilitzant els botons a la part inferior de la finestra, o bé fer-ne una altra amb els controls a la dreta de la vista prèvia.</para>
+
+            <para
+>Per a descartar la captura de pantalla actual i prendre'n una altra, premeu el botó <guibutton
+>Pren una captura de pantalla nova</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Després de capturar una captura de pantalla, l'&spectacle; mostrarà un plafó informatiu amb un enllaç cap al fitxer de la captura de pantalla i us proposarà <guibutton
+>Obre la carpeta contenidora</guibutton
+>.</para>
+
+            <para
+>Podeu configurar certes opcions en el costat dret de la finestra de l'aplicació abans de prendre una captura de pantalla nova. Aquestes opcions us permeten seleccionar l'àrea de la pantalla que s'ha de capturar, establir un retard abans de capturar la imatge i definir si el cursor del ratolí i/o les decoracions de les finestres seran capturats juntament amb la captura de pantalla.</para>
+
+            <sect2>
+                <title
+>Mode de captura</title>
+
+                <para
+>La configuració del mode de captura us permet establir l'àrea de la pantalla que es capturarà, i si hi haurà un retard entre prémer el botó <guibutton
+>Pren una captura de pantalla nova</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) i prendre la captura de pantalla. També podeu habilitar la casella de selecció <guilabel
+>En clicar</guilabel
+>, el qual inhabilitarà la característica de retard i només prendrà la captura de pantalla després que feu clic a qualsevol part de la pantalla.</para>
+
+                <para
+>El quadre combinat <guilabel
+>Àrea</guilabel
+> permet establir l'àrea de la pantalla que es desarà. Hi ha cinc opcions per triar, com es descriu a continuació.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Pantalla completa (tots els monitors)</guilabel
+> prendrà una captura de pantalla de tot l'escriptori, anant a través de totes les sortides, incloent-hi tots els monitors, projectors, &etc;</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Pantalla actual</guilabel
+> prendrà una captura de pantalla de la sortida que actualment conté el punter del ratolí.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Regió rectangular</guilabel
+> permet seleccionar amb el ratolí una regió rectangular de l'escriptori. Aquesta regió es pot propagar a través de diferents sortides.</para>
+
+                        <para
+>Aquest mode no prendrà immediatament una captura de pantalla, però permet dibuixar un rectangle a la pantalla, el qual es pot moure i canviar de mida segons sigui necessari. Una vegada s'ha dibuixat el rectangle de la selecció desitjada, feu doble clic a qualsevol part de la pantalla o premeu el botó &Intro; en el teclat per a prendre la captura de la pantalla.</para>
+                        
+                        <para
+>Podeu utilitzar les tecles de fletxa per a moure i ajustar el rectangle. Prement les tecles de fletxa es mourà el rectangle. Mantenint premuda la tecla &Maj; mentre premeu les tecles de fletxa, moureu el rectangle lentament, per ajustar la vostra selecció. Mantenint premuda la tecla &Alt; mentre premeu les tecles de fletxa, ajustareu la mida del rectangle.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Finestra activa</guilabel
+> prendrà una captura de pantalla de la finestra que conté el focus. És recomanable utilitzar un retard amb aquest mode, per donar-vos temps per a seleccionar i activar una finestra abans de prendre la captura de pantalla.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Finestra sota el cursor</guilabel
+> prendrà una captura de pantalla de la finestra que es troba sota el cursor del ratolí. Si el cursor es troba a la part superior d'un menú emergent, l'&spectacle; mirarà de prendre una captura de pantalla del menú, així com de la seva finestra pare.</para>
+
+                        <para
+>Mentre que això funciona gairebé sempre, en certs casos, pot fallar per a obtenir informació sobre la finestra pare. En aquest cas, l'&spectacle; torna al mode antic de prendre la imatge de forma automàtica, i només captura una imatge del menú emergent. També podeu forçar el mode antic marcant la casella de selecció <guilabel
+>Captura només l'emergent actual</guilabel
+> sota <guilabel
+>Opcions</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>El botó de selecció de valors <guilabel
+>Retard</guilabel
+>, permet establir el retard entre prémer botó <guibutton
+>Pren una captura de pantalla nova</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) i prendre la captura de pantalla. Aquest retard es pot ajustar en increments d'1 segon utilitzant els botons de selecció de valors o el teclat.</para>
+                
+                <para
+>En prendre una captura de pantalla amb retard de temps, l'&spectacle; mostrarà el temps restant abans que es prengui la captura de pantalla en el títol de la seva finestra i la farà visible en el seu element Gestor de tasques. El botó Gestor de tasques també mostra una barra de progrés, de manera que podreu realitzar un seguiment de quan es prendrà la captura.</para>
+                
+                <para
+>Mentre espereu la captura de pantalla retardada, podreu minimitzar l'&spectacle; i el botó <guibutton
+>Pren una captura de pantalla nova</guibutton
+> es convertirà en un botó <guibutton
+>Cancel·la</guibutton
+>. La barra de progrés també es mostrarà, donant-vos l'oportunitat d'aturar el compte enrere.</para>
+
+                <para
+>Habilitant la casella de selecció <guilabel
+>En clicar</guilabel
+> s'anul·larà el retard. Quan s'habilita aquest quadre de selecció, en prémer el botó <guibutton
+>Pren una captura de pantalla nova</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) s'ocultarà la finestra de l'&spectacle; i el cursor del ratolí canviarà a una creu. Es prendrà la captura de pantalla quan feu clic al ratolí. Cal tenir en compte que no podreu interactuar amb l'escriptori utilitzant el ratolí mentre el cursor resti en una creu, però podeu utilitzar el teclat.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Opcions</title>
+
+                <para
+>La configuració de les Opcions permet seleccionar si el cursor del ratolí s'haurà d'incloure a les captures de pantalla, i si s'han de capturar les decoracions de la finestra amb la imatge d'una sola finestra de l'aplicació. En el mode <guilabel
+>Finestra sota el cursor</guilabel
+>, aquest també permet seleccionar si l'&spectacle; només capturarà la imatge del menú emergent actualment sota el cursor o també inclourà la finestra pare. Finalment, <guilabel
+>Surt després de desar o copiar</guilabel
+> sortirà de l'&spectacle; després de qualsevol operació de desar o copiar.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>En habilitar la casella de selecció <guilabel
+>Incloure el punter del ratolí</guilabel
+>, s'inclourà una imatge del punter del ratolí a la captura de pantalla.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Incloure la barra de títol i les vores de la finestra</guilabel
+>, només s'habilita quan se selecciona el mode <guilabel
+>Finestra activa</guilabel
+> o el mode <guilabel
+>Finestra sota el cursor</guilabel
+> en el quadre combinat <guilabel
+>Àrea</guilabel
+>. En marcar aquesta opció s'inclouran les vores de les finestres i la seva decoració a la captura de pantalla, mentre que desmarcant-la donarà una imatge amb només el contingut de la finestra.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Captura només l'emergent actual</guilabel
+> només s'habilita quan se selecciona el mode <guilabel
+>Finestra sota el cursor</guilabel
+> al quadre combinat <guilabel
+>Àrea</guilabel
+>. En marcar aquesta opció, només es capturarà el menú emergent sota el cursor, sense la seva finestra pare.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opció <guilabel
+>Surt després de desar o copiar manualment</guilabel
+> sortirà de l'&spectacle; després de qualsevol operació de desament o de còpia. Cal tenir en compte que una captura de pantalla només es conservarà si esteu executant un gestor del porta-retalls que accepti imatges. El &klipper; del &kde; es pot configurar d'aquesta manera fent clic dret sobre la seva icona, seleccionant <guilabel
+>Configura el porta-retalls...</guilabel
+> i desmarcant <guilabel
+>Ignora les imatges</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Funcionalitats addicionals</title>
+
+        <sect1>
+            <title
+>Botons</title>
+
+            <para
+>Hi ha alguns botons situats a la part inferior de la finestra de l'&spectacle;. Les seves funcions es descriuen a continuació:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Ajuda</guibutton
+></term>
+                    <listitem>
+                        <para
+>Dona la descripció dels elements de menú comuns al <ulink url="help:/fundamentals/menus.html#menus-help"
+>menú Ajuda</ulink
+> en els Fonaments del &kde;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Configura...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Permet accedir a la finestra de Configuració de l'&spectacle;, des d'on podreu canviar la configuració de la captura, la ubicació de desament i el nom de fitxer predeterminat.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Anotació</guibutton
+></term>
+                    <listitem>
+                        <para
+>Obre una finestra de l'editor d'anotacions que ofereix diverses eines d'anotacions:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Editor d'anotacions</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Prova les eines d'anotació. Allà trobareu tot el necessari per a explicar les vostres captures de pantalla: fletxes, bolígraf, marcadors, quadres de text, números, fins i tot emoticones. És possible canviar els paràmetres de l'eina i afegir efectes (ombra, escala de grisos i vora). </para>
+                        <para
+>Quan creieu que l'anotació ha finalitzat, premeu el botó <guibutton
+>S'ha fet l'anotació</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Eines</guibutton
+></term>
+                    <listitem>
+                        <para
+>Obre un menú desplegable que ofereix diverses eines:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Obre la carpeta predeterminada de captures de pantalla</guimenuitem
+> anirà a l'última captura de pantalla al gestor de fitxers predeterminat.</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Accedeix al diàleg <guimenuitem
+>Imprimeix</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Una sèrie de programes externs per a l'enregistrament de la pantalla</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Exporta</guibutton
+></term>
+                    <listitem>
+                        <para
+>Obre un menú desplegable permet obrir directament la captura de pantalla amb tots els programes que estan associats amb el tipus &MIME; PNG (Portable Network Graphics). Depenent dels programes instal·lats, sereu capaç d'obrir i editar la captura de pantalla en les vostres aplicacions gràfiques o visualitzadors.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Copia la imatge al porta-retalls/Copia la ubicació al porta-retalls</guibutton
+></term>
+                    <listitem>
+                        <para
+>Copia la captura de pantalla actual o la seva ubicació al porta-retalls. També podeu utilitzar la drecera <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Desa com a</guibutton
+></term>
+                    <listitem>
+                        <para
+>Desa la captura de pantalla com una imatge PNG a la carpeta Imatges predeterminada i surt immediatament de l'aplicació.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Configurar</title>
+            <para
+>Utilitzeu el botó <guibutton
+>Configura...</guibutton
+> per a obrir el diàleg de configuració.</para>
+            <sect2>
+            <title
+>General</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>General</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>En llançar l'&spectacle;</guilabel
+></term>
+                    <listitem>
+                        <para
+>Permet fer <guilabel
+>Pren una captura de pantalla completa</guilabel
+>, utilitza l'últim mode de captura emprat o no pren automàticament una captura de pantalla. El darrer mode de captura utilitzat és el que s'ha establert en el Mode de captura.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Després de prendre una captura de pantalla</guilabel
+></term>
+                    <listitem>
+                        <para
+>Permet fer <guilabel
+>Fitxer de desament en la carpeta predeterminada</guilabel
+>, per a desactivar qualsevol acció del porta-retalls, copiar la imatge al porta-retalls o copiar el camí de la captura de pantalla al porta-retalls. La ubicació predeterminada es pot configurar mitjançant la pàgina de configuració <link linkend="save-page"
+>Desa</link
+>. És possible fer <guilabel
+>Copia la ubicació del fitxer al porta-retalls</guilabel
+>. Després podreu enganxar-lo a qualsevol lloc que accepti l'entrada de text. Recordeu que haureu d'executar un gestor del porta-retalls per a mantenir el camí al porta-retalls una vegada es tanqui l'&spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Prémer una tecla de captura de pantalla per a</guilabel
+></term>
+                    <listitem>
+                        <para
+>Quan es prem una drecera per a fer una captura de pantalla i el &spectacle; ja s'està executant, és possible configurar el comportament del sistema de captura de pantalla. Podeu triar entre fer una captura de pantalla nova, obrir una nova finestra del &spectacle; i retornar el focus a la finestra del &spectacle; existent.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Usa un fons clar</guilabel
+></term>
+                    <listitem>
+                        <para
+>Utilitza un color de fons clar per a emmascarar l'àrea retallada en el selector de regió rectangular. Això pot facilitar la visualització dels cursors foscos.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Mostra la lupa</guilabel
+></term>
+                    <listitem>
+                        <para
+>En desar una captura de pantalla, copia la ubicació en què s'ha desat el fitxer al porta-retalls. Podeu enganxar-ho a qualsevol lloc que accepti entrada de text. Cal tenir en compte que cal estar executant un gestor de porta-retalls per tal de mantenir el camí en el porta-retalls després de sortir de l'&spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Accepta en fer un clic i deixar anar</guilabel
+></term>
+                    <listitem>
+                        <para
+>Si està marcada, acceptareu la regió seleccionada tan bon punt es deixi anar el botó del ratolí en el mode <guilabel
+>Regió rectangular</guilabel
+>.</para>
+                        <para
+>En seleccionar una regió nova, sense tenir disponible una regió prèviament desada, fer clic, arrossegar i alliberar el botó del ratolí haurà de capturar immediatament la regió seleccionada. Quan es mostri una regió prèviament desada, es podrà manipular aquesta i, si es vol desar aquesta regió, caldrà confirmar-ho manualment (&Intro; o feu doble clic amb el &BER;). En fer clic i arrossegar cap fora de la regió prèviament desada, es capturarà immediatament la regió seleccionada.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Recorda l'àrea seleccionada</guilabel
+></term>
+                    <listitem>
+                        <para
+>De manera predeterminada, l'&spectacle; recordarà la selecció inicial quan preneu una captura de pantalla d'una regió rectangular fins que tanqueu l'&spectacle;. També podeu triar fer que l'&spectacle; no la recordi mai o que la recordi entre sessions.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Desar</title>
+            <para
+>Quan utilitzeu la característica <guilabel
+>Desa</guilabel
+>, l'&spectacle; desarà la imatge amb un nom de fitxer predeterminat, a la carpeta Imatges (sota la vostra carpeta d'inici). El nom de fitxer predeterminat inclou la data i l'hora en què es va prendre la imatge.</para>
+
+            <para
+>L'opció <guilabel
+>Desa</guilabel
+> permet establir la ubicació de desament predeterminada i el nom de fitxer. En fer clic en aquesta opció apareixerà un diàleg com el següent: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Desa</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Ubicació de desament</guilabel
+></term>
+                    <listitem>
+                    <para
+>Al quadre de text <guilabel
+>Ubicació</guilabel
+> establiu la carpeta a on us agradaria desar les captures de pantalla quan premeu <guibutton
+>Desa</guibutton
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Qualitat de compressió</guilabel
+></term>
+                    <listitem>
+                        <para
+>Escolliu la qualitat de la imatge quan deseu amb formats d'imatge amb pèrdua com el JPEG. Els valors més alts donaran una millor qualitat, però augmentaran la mida del fitxer. Vegeu la <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>pàgina de la Wikipedia</ulink
+> per a obtenir informació detallada sobre els formats d'imatge que s'utilitzen amb l'&spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Nom de fitxer</guilabel
+></term>
+                    <listitem>
+                        <para
+>Establiu un nom de fitxer predeterminat per a les captures de pantalla desades.</para>
+                        <para
+>Podeu utilitzar els següents marcadors de posició en el nom de fitxer, els quals seran substituïts amb el text real quan es desi el fitxer:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: Dia</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: Hora</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: Mes</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Número seqüencial emplenat a N dígits</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: Segons</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: Títol de la finestra</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: Any (4 dígits)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Número seqüencial</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: Minut</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: Any (2 dígits)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Podeu fer clic en els marcadors de posició a la llista de referència a sota per a inserir-los a la línia del <guilabel
+>Nom de fitxer</guilabel
+>.</para>
+                        <para
+>Si ja existeix un fitxer amb aquest nom, s'annexarà un número de sèrie al nom del fitxer. Per exemple, si el nom del fitxer és <filename
+>Screenshot</filename
+>, i aquest ja existeix, la imatge serà desada com a <filename
+>Screenshot-1.png</filename
+>.</para>
+                        <para
+>Utilitzeu la llista desplegable que hi ha al costat del camp de text per a seleccionar el format d'imatge predeterminat per a les captures de pantalla. Vegeu la <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>pàgina de la Wikipedia</ulink
+> per a obtenir informació detallada sobre els formats d'imatge que s'utilitzen amb l'&spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Dreceres</title>
+            <para
+>Aquesta pàgina de configuració es pot utilitzar per a canviar les dreceres predeterminades de l'&spectacle;. És possible configurar dreceres per a iniciar l'&spectacle; i capturar diferents parts del vostre escriptori. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Arrossegar i deixar anar</title>
+            <para
+>Una imatge capturada es pot arrossegar a altres aplicacions o documents. Si l'aplicació és capaç de manejar imatges, s'hi inserirà una còpia sencera de la imatge.</para>
+
+            <para
+>Si arrossegueu una captura de pantalla en una finestra del gestor de fitxers, apareixerà un diàleg des d'on podreu editar el nom del fitxer i seleccionar el format de la imatge i el fitxer s'inserirà a la carpeta.</para>
+
+            <para
+>Si arrossegueu la pantalla a un quadre de text, serà introduït el camí d'accés al fitxer temporal. Això és útil per exemple per pujar una captura de pantalla a través de formularis web o per adjuntar imatges als informes d'error al <ulink url="https://bugs.kde.org/"
+>sistema de seguiment d'errors del &kde;</ulink
+>.</para>
+
+            <para
+>Això funciona amb tots els clients que no recullen les dades de la imatge, ja que només cerquen un &URL; en les dades MIME arrossegades.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Crèdits i llicència</title>
+
+        <para
+>Copyright del programa &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Algunes parts del codi es basen directament en el codi del projecte &ksnapshot;. Copyright &copy; 1997-2011, els desenvolupadors del &ksnapshot;. Hi ha disponibles els drets d'autor detallats en les capçaleres del codi font.</para>
+
+        <para
+>Algunes parts del codi es basen directament en el codi del projecte &kwin;. Copyright &copy; 2008-2013, els desenvolupadors del &kwin;. Hi ha disponibles els drets d'autor detallats en les capçaleres del codi font.</para>
+
+        <para
+>Aquesta documentació es basa en la documentació original del &ksnapshot;:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Traductor/Revisor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

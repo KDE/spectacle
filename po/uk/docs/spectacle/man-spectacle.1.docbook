@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Ukrainian "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Інструкція користувача Spectacle</title>
+<author
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+> <contrib
+>Сторінка man Spectacle.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>11 квітня 2021 року</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>Програми KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Програма для створення знімків вікон</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>параметри Spectacle</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Опис</title>
+<para
+><command
+>spectacle</command
+> — проста програма для створення знімків екрана. Вона здатна захоплювати знімки усієї стільниці, окремого монітора, поточного активного вікна, вікна, у якому перебуватиме вказівник миші, чи прямокутної ділянки вікна. Створені зображення можна друкувати, надсилати до інших програм для обробки або швидко зберігати без обробки.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Параметри Spectacle</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Захопити зображення усієї стільниці (типове).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Захопити зображення на моніторі.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Захопити зображення активного вікна.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Захопити поточне вікно під вказівником, включно з батьківськими вікнами контекстних меню.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Захопити поточне вікно під вказівником без батьківського вікна контекстних меню.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Захопити прямокутну область екрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Запустити Spectacle без створення знімка.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Запустити у графічному режимі (типовий режим).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Зробити знімок і вийти без показу графічного інтерфейсу.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Запустити у режимі активації DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>У фоновому режимі, не показувати сповіщення, якщо створено знімок.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>назва_файла</replaceable
+></option
+></term>
+<listitem>
+<para
+>У фоновому режимі, зберегти зображення до вказаного файла <replaceable
+>назва_файла</replaceable
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>затримка_у_мілісекундах</replaceable
+></option
+></term>
+<listitem>
+<para
+>У фоновому режимі, затримка до створення знімка (у мілісекундах).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>У фоновому режимі, копіювати знімок лише до буфера обміну, якщо не використано також -o.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>У фоновому режимі, копіювати шлях до файла знімка до буфера обміну.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Зачекати зі створенням знімка на клацання кнопкою миші. Скасовує затримку.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Запускає екземпляр графічного інтерфейсу Spectacle без реєстрації у DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>У фоновому режимі, включати вказівник миші до знімка.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>У фоновому режимі, не включати обрамлення вікна до знімка.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Зворотний зв'язок</title>
+<para
+>За допомогою IRC: irc.libera.chat канал #kde або за допомогою електронної пошти kde-graphics-devel@kde.org або у мережі — &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Додаткові відомості</title>
+<simplelist>
+<member
+>Докладніша документація для користувачів доступна у <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (або введіть цю адресу у поле адреси &konqueror;, або виконайте команду <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>)</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>Крім того, із докладнішими відомостями можна ознайомитися на сторінці <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Авторські права</title>
+<para
+>&copy; Boudhayan Gupta, 2015</para>
+<para
+>Умови ліцензування: GNU General Public License, версія 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

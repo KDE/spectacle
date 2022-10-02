@@ -1,0 +1,1453 @@
+# Lithuanian translations for trunk-kf package.
+# Copyright (C) 2015 This_file_is_part_of_KDE
+# This file is distributed under the same license as the trunk-kf package.
+#
+# Automatically generated, 2015.
+# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2015, 2016, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: trunk-kf 5\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2021-12-13 13:55+0200\n"
+"Last-Translator: Moo\n"
+"Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
+#, kde-format
+msgid "Launch Spectacle"
+msgstr "Paleisti Spectacle"
+
+#: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:38
+#, kde-format
+msgid "Capture Entire Desktop"
+msgstr "Fotografuoti visą darbalaukį"
+
+#: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:43
+#, kde-format
+msgid "Capture Current Monitor"
+msgstr "Fotografuoti dabartinį monitorių"
+
+#: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:48
+#, kde-format
+msgid "Capture Active Window"
+msgstr "Fotografuoti aktyvų langą"
+
+#: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:53
+#, kde-format
+msgid "Capture Rectangular Region"
+msgstr "Fotografuoti stačiakampę sritį"
+
+#: src/ExportManager.cpp:308
+#, kde-format
+msgid "QImageWriter cannot write image: %1"
+msgstr "QImageWriter negali įrašyti paveikslo: %1"
+
+#: src/ExportManager.cpp:323
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the directory failed:<nl/><filename>"
+"%1</filename>"
+msgstr ""
+"Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti katalogą:<nl/"
+"><filename>%1</filename>"
+
+#: src/ExportManager.cpp:333
+#, kde-format
+msgid "Cannot save screenshot. Error while writing file."
+msgstr "Nepavyksta įrašyti ekrano kopijos. Klaida rašant į failą."
+
+#: src/ExportManager.cpp:353
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the remote directory failed:<nl/"
+"><filename>%1</filename>"
+msgstr ""
+"Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti nuotolinio katalogo:"
+"<nl/><filename>%1</filename>"
+
+#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#, kde-format
+msgid "Cannot save screenshot. Error while writing temporary local file."
+msgstr ""
+"Nepavyksta įrašyti ekrano kopijos. Klaida rašant į laikinąjį vietinį failą."
+
+#: src/ExportManager.cpp:372
+#, kde-format
+msgid "Unable to save image. Could not upload file to remote location."
+msgstr "Nepavyko įrašyti paveikslo. Nepavyko įkelti failo į nuotolinę vietą."
+
+#: src/ExportManager.cpp:421
+#, kde-format
+msgid "Cannot save screenshot. The save filename is invalid."
+msgstr ""
+"Nepavyksta įrašyti ekrano kopijos. Įrašymui netinkamas failo pavadinimas."
+
+#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#, kde-format
+msgid "Cannot save an empty screenshot image."
+msgstr "Nepavyksta įrašyti tuščio ekrano kopijos paveikslo."
+
+#: src/ExportManager.cpp:575
+#, kde-format
+msgid "Printing failed. The printer failed to initialize."
+msgstr "Nepavyko atspausdinti. Nepavyko inicijuoti spausdintuvo."
+
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Metai (4 skaitmenys)"
+
+#: src/ExportManager.cpp:594
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Metai (2 skaitmenys)"
+
+#: src/ExportManager.cpp:595
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Mėnuo"
+
+#: src/ExportManager.cpp:596
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Day"
+msgstr "Diena"
+
+#: src/ExportManager.cpp:597
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Hour"
+msgstr "Valanda"
+
+#: src/ExportManager.cpp:598
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Minute"
+msgstr "Minutė"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Second"
+msgstr "Sekundė"
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Timezone"
+msgstr ""
+
+#: src/ExportManager.cpp:601
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Window Title"
+msgstr "Lango antraštė"
+
+#: src/ExportManager.cpp:602
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering"
+msgstr "Nuoseklus numeravimas"
+
+#: src/ExportManager.cpp:604
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering, padded out to N digits"
+msgstr "Nuoseklus numeravimas, pridedant nulius prie N skaitmenų"
+
+#: src/Gui/CaptureAreaComboBox.cpp:128
+#, kde-format
+msgid "Full Screen"
+msgstr "Visas ekranas"
+
+#: src/Gui/CaptureAreaComboBox.cpp:128
+#, kde-format
+msgid "Full Screen (All Monitors)"
+msgstr "Visas ekranas (Visi monitoriai)"
+
+#: src/Gui/CaptureAreaComboBox.cpp:133
+#, kde-format
+msgid "Full Screen (All Monitors, scaled)"
+msgstr "Visas ekranas (Visi monitoriai, pakeisto mastelio)"
+
+#: src/Gui/CaptureAreaComboBox.cpp:137
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Stačiakampė sritis"
+
+#: src/Gui/CaptureAreaComboBox.cpp:140
+#, kde-format
+msgid "Current Screen"
+msgstr "Dabartinis ekranas"
+
+#: src/Gui/CaptureAreaComboBox.cpp:143
+#, kde-format
+msgid "Active Window"
+msgstr "Aktyvus langas"
+
+#: src/Gui/CaptureAreaComboBox.cpp:146
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Langas po žymekliu"
+
+#: src/Gui/ExportMenu.cpp:89
+#, kde-format
+msgid "Other Application..."
+msgstr "Kita programa..."
+
+#: src/Gui/ExportMenu.cpp:112
+#, kde-format
+msgid "Share"
+msgstr "Bendrinti"
+
+#: src/Gui/KSImageWidget.cpp:32
+#, kde-format
+msgid "Image Size: %1x%2 pixels"
+msgstr "Paveikslo dydis: %1x%2 pikselių"
+
+#: src/Gui/KSMainWindow.cpp:151
+#, kde-format
+msgid "Configure..."
+msgstr "Konfigūruoti..."
+
+#: src/Gui/KSMainWindow.cpp:152
+#, kde-format
+msgid "Change Spectacle's settings."
+msgstr "Keisti programos Spectacle nustatymus."
+
+#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
+#, kde-format
+msgid "Annotate"
+msgstr "Kurti anotacijas"
+
+#: src/Gui/KSMainWindow.cpp:158
+#, kde-format
+msgid "Add annotation to the screenshot"
+msgstr "Pridėti į ekrano kopiją anotacijas"
+
+#: src/Gui/KSMainWindow.cpp:165
+#, kde-format
+msgid "Tools"
+msgstr "Įrankiai"
+
+#: src/Gui/KSMainWindow.cpp:171
+#, kde-format
+msgid "Export"
+msgstr "Eksportuoti"
+
+#: src/Gui/KSMainWindow.cpp:192
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Atverti numatytąjį ekrano kopijų aplanką"
+
+#: src/Gui/KSMainWindow.cpp:196
+#, kde-format
+msgid "Record Screen"
+msgstr "Ekrano filmavimas"
+
+#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
+#, kde-format
+msgid "Copy Image to Clipboard"
+msgstr "Kopijuoti paveikslą į iškarpinę"
+
+#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
+#, kde-format
+msgid "Copy Location to Clipboard"
+msgstr "Kopijuoti vietą į iškarpinę"
+
+#: src/Gui/KSMainWindow.cpp:255
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Atverti vidinį aplanką"
+
+#: src/Gui/KSMainWindow.cpp:301
+#, kde-format
+msgid "Save As..."
+msgstr "Įrašyti kaip..."
+
+#: src/Gui/KSMainWindow.cpp:367
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekundė"
+msgstr[1] "%1 sekundės"
+msgstr[2] "%1 sekundžių"
+msgstr[3] "%1 sekundė"
+
+#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
+#, kde-format
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved[*]"
+msgstr "Neįrašyta[*]"
+
+#: src/Gui/KSMainWindow.cpp:506
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Bendrinant paveikslą, atsirado problemų: %1"
+
+#: src/Gui/KSMainWindow.cpp:509
+#, kde-format
+msgid "Image shared"
+msgstr "Paveikslas pradėtas bendrinti"
+
+#: src/Gui/KSMainWindow.cpp:511
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Bendrinamo paveikslo nuoroda (<a href=\"%1\">%1</a>) nukopijuota į iškarpinę."
+
+#: src/Gui/KSMainWindow.cpp:545
+#, kde-format
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Ekrano kopija nukopijuota į iškarpinę."
+
+#: src/Gui/KSMainWindow.cpp:551
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Ekrano kopija buvo įrašyta kaip <a href=\"%1\">%2</a>, o jos vieta "
+"nukopijuota į iškarpinę"
+
+#: src/Gui/KSMainWindow.cpp:559
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"Nepavyko padaryti ekrano kopijos. Praneškite apie šią klaidą čia: <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">sukurti pranešimą "
+"apie spectacle klaidą</a>"
+
+#: src/Gui/KSMainWindow.cpp:569
+#, kde-format
+msgid "Ready to take a screenshot"
+msgstr "Pasiruošę daryti ekrano kopiją"
+
+#: src/Gui/KSMainWindow.cpp:586
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "Ekrano kopija buvo įrašyta kaip <a href=\"%1\">%2</a>"
+
+#: src/Gui/KSMainWindow.cpp:596
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"Ekrano kopija buvo nukopijuota į iškarpinę ir įrašyta kaip <a href=\"%1\">"
+"%2</a>"
+
+#: src/Gui/KSMainWindow.cpp:692
+#, fuzzy, kde-format
+#| msgid "Annotate"
+msgctxt "@action:button"
+msgid "Annotate"
+msgstr "Kurti anotacijas"
+
+#: src/Gui/KSMainWindow.cpp:704
+#, fuzzy, kde-format
+#| msgid "Annotation done"
+msgctxt "@action:button"
+msgid "Annotation Done"
+msgstr "Anotacijos atliktos"
+
+#: src/Gui/KSWidget.cpp:57
+#, kde-format
+msgid "<b>Capture Mode</b>"
+msgstr "<b>Fotografavimo veiksena</b>"
+
+#: src/Gui/KSWidget.cpp:73
+#, kde-format
+msgid "No Delay"
+msgstr "Jokios delsos"
+
+#: src/Gui/KSWidget.cpp:77
+#, kde-format
+msgid "On Click"
+msgstr "Spustelėjus"
+
+#: src/Gui/KSWidget.cpp:78
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "Prieš fotografuojant ekrano kopiją, laukti pelės mygtuko spustelėjimo"
+
+#: src/Gui/KSWidget.cpp:87
+#, kde-format
+msgid "Area:"
+msgstr "Sritis:"
+
+#: src/Gui/KSWidget.cpp:88
+#, kde-format
+msgid "Delay:"
+msgstr "Delsa:"
+
+#: src/Gui/KSWidget.cpp:93
+#, kde-format
+msgid "<b>Options</b>"
+msgstr "<b>Parinktys</b>"
+
+#: src/Gui/KSWidget.cpp:95
+#, kde-format
+msgid "Include mouse pointer"
+msgstr "Įtraukti pelės rodyklę"
+
+#: src/Gui/KSWidget.cpp:96
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį"
+
+#: src/Gui/KSWidget.cpp:99
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Įtraukti lango antraštę ir rėmelį"
+
+#: src/Gui/KSWidget.cpp:100
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Rodyti lango antraštę su sumažinimo/išdidinimo/užvėrimo mygtukais bei lango "
+"rėmeliu"
+
+#: src/Gui/KSWidget.cpp:104
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Fotografuoti tik esamą iškylantįjį langą"
+
+#: src/Gui/KSWidget.cpp:106
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Fotografuoti tik esamą iškylantįjį langą (tokį kaip meniu, paaiškinimas ir t."
+"t.).\n"
+"Jei išjungta, iškylantieji langai yra fotografuojami kartu su pirminiu langu"
+
+#: src/Gui/KSWidget.cpp:111
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Rankiniu būdu įrašius ar nukopijavus, užverti"
+
+#: src/Gui/KSWidget.cpp:112
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Rankiniu būdu įrašius ar nukopijavus paveikslą, išeiti iš Spectacle"
+
+#: src/Gui/KSWidget.cpp:122
+#, kde-format
+msgid "Take a New Screenshot"
+msgstr "Padaryti naują ekrano kopiją"
+
+#: src/Gui/KSWidget.cpp:126
+#, kde-format
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:17
+#, kde-format
+msgid "When launching Spectacle:"
+msgstr "Paleidžiant Spectacle:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:25
+#, kde-format
+msgid "Take full screen screenshot"
+msgstr "Padaryti viso ekrano kopiją"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:30
+#, kde-format
+msgid "Use last-used capture mode"
+msgstr "Naudoti paskutinę naudotą fotografavimo veikseną"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:35
+#, kde-format
+msgid "Do not take a screenshot automatically"
+msgstr "Nedaryti ekrano kopijos automatiškai"
+
+#. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:59
+#, kde-format
+msgid "After taking a screenshot:"
+msgstr "Padarius ekrano kopiją:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:66
+#, kde-format
+msgid "Save file to default folder"
+msgstr "Įrašyti failą į numatytąjį aplanką"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:77
+#, kde-format
+msgid "Do not copy anything"
+msgstr "Nieko nekopijuoti"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:82
+#, kde-format
+msgid "Copy image to clipboard"
+msgstr "Kopijuoti paveikslą į iškarpinę"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:87
+#, kde-format
+msgid "Copy file location to clipboard"
+msgstr "Kopijuoti failo vietą į iškarpinę"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:111
+#, kde-format
+msgid "While Spectacle is running"
+msgstr "Kol Spectacle yra paleista"
+
+#. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:118
+#, kde-format
+msgid "Press screenshot key to:"
+msgstr "Paspauskite ekrano kopijos klavišą, norėdami:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:126
+#, kde-format
+msgid "Take a new Screenshot"
+msgstr "Padaryti naują ekrano kopiją"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:131
+#, kde-format
+msgid "Open a new Spectacle window"
+msgstr "Atverti naują Spectacle langą"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:136
+#, kde-format
+msgid "Return focus to Spectacle"
+msgstr "Grąžinti fokusavimą į Spectacle"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:160
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangular Region Selection"
+msgstr "Stačiakampė sritis"
+
+#. i18n: ectx: property (text), widget (QLabel, generalLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:167
+#, kde-format
+msgid "General:"
+msgstr "Bendri:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColour)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:174
+#, kde-format
+msgid "Use light background"
+msgstr "Naudoti šviesų foną"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showMagnifier)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:181
+#, kde-format
+msgid "Show magnifier"
+msgstr "Rodyti didintuvą"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#, kde-format
+msgid "Accept on click-and-release"
+msgstr "Priimti spustelėjus ir atleidus"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#, kde-format
+msgid "Show capture instructions"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, rememberLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#, kde-format
+msgid "Remember selected area:"
+msgstr "Įsiminti pažymėtą sritį:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:226
+#, kde-format
+msgid "Never"
+msgstr "Niekada"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:231
+#, kde-format
+msgid "Always"
+msgstr "Visada"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:236
+#, kde-format
+msgid "Until Spectacle is closed"
+msgstr "Kol Spectacle bus užverta"
+
+#. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:17
+#, kde-format
+msgid "Save Location:"
+msgstr "Įrašymo vieta:"
+
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:50
+#, kde-format
+msgid "Compression Quality:"
+msgstr "Glaudinimo kokybė:"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
+#: src/Gui/SettingsDialog/SaveOptions.ui:74
+#, no-c-format, kde-format
+msgid "%"
+msgstr "%"
+
+#. i18n: ectx: property (text), widget (QLabel, filenameLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:88
+#, kde-format
+msgid "Filename:"
+msgstr "Pavadinimas:"
+
+#. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:133
+#, kde-format
+msgctxt "Preview of the user configured filename"
+msgid "Preview:"
+msgstr "Peržiūra:"
+
+#. i18n: ectx: property (text), widget (QLabel, compressionQualityHelpLable)
+#: src/Gui/SettingsDialog/SaveOptions.ui:173
+#, kde-format
+msgid "For lossy image formats like JPEG"
+msgstr "Nuostolingiesiems paveikslų formatams, tokiems kaip JPEG"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:56
+#, kde-format
+msgid ""
+"You can use the following placeholders in the filename, which will be "
+"replaced with actual text when the file is saved:<blockquote>"
+msgstr ""
+"Galite naudoti šiuos pakaitos simbolius, kurie, įrašant failą, bus pakeisti "
+"faktiniu tekstu:<blockquote>"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:61
+#, kde-format
+msgid "To save to a sub-folder"
+msgstr "Norėdami įrašyti į poaplankį"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:87
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<filename>%1.%2</filename>"
+msgstr "<filename>%1.%2</filename>"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#, kde-format
+msgid "General"
+msgstr "Bendri"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
+#, kde-format
+msgid "Save"
+msgstr "Įrašyti"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#, kde-format
+msgid "Shortcuts"
+msgstr "Spartieji klavišai"
+
+#. i18n: ectx: label, entry (onLaunchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#, kde-format
+msgid "What to do when Spectacle is launched"
+msgstr "Ką daryti, kai Spectacle yra paleista"
+
+#. i18n: ectx: label, entry (printKeyActionRunning), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#, kde-format
+msgid ""
+"What should happen if print key is pressed when Spectacle is already running"
+msgstr ""
+"Kas turėtų nutikti, kai paspaudžiamas spausdinimo klavišas, o Spectacle jau "
+"yra paleista"
+
+#. i18n: ectx: label, entry (autoSaveImage), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#, kde-format
+msgid "Save screenshot automatically after it is taken"
+msgstr "Padarius ekrano kopiją, automatiškai ją įrašyti"
+
+#. i18n: ectx: label, entry (clipboardGroup), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#, kde-format
+msgid "Clipboard action which should be executed after the screenshot is taken"
+msgstr "Iškarpinės veiksmas, kurį reikėtų atlikti padarius ekrano kopiją"
+
+#. i18n: ectx: label, entry (useLightMaskColour), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#, kde-format
+msgid "Whether to use a light color mask in the region selection dialog"
+msgstr "Ar srities žymėjimo dialoge naudoti šviesios spalvos kaukę"
+
+#. i18n: ectx: label, entry (showMagnifier), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#, kde-format
+msgid "Whether to show a magnifier in the region selection"
+msgstr "Ar srities žymėjime rodyti didintuvą"
+
+#. i18n: ectx: label, entry (useReleaseToCapture), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#, kde-format
+msgid ""
+"Whether the screenshot should be captured after selecting the region and "
+"releasing the mouse"
+msgstr ""
+"Ar ekrano kopija turėtų būti padaroma pažymėjus sritį ir paleidus pelės "
+"mygtuką"
+
+#. i18n: ectx: label, entry (showCaptureInstructions), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#, fuzzy, kde-format
+#| msgid "Whether to show a magnifier in the region selection"
+msgid "Whether to show capture instructions in the region selection"
+msgstr "Ar srities žymėjime rodyti didintuvą"
+
+#. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#, kde-format
+msgid "Remember the last rectangular region"
+msgstr "Įsiminti paskutinę stačiakampę sritį"
+
+#. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#, kde-format
+msgid "The last used region the user selected"
+msgstr "Paskutinė naudotojo naudota pažymėta sritis"
+
+#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#, kde-format
+msgid "Take screenshot on click"
+msgstr "Padaryti ekrano kopiją spustelėjus"
+
+#. i18n: ectx: label, entry (includePointer), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#, kde-format
+msgid "Whether the mouse cursor is included in the screenshot"
+msgstr "Ar pelės žymeklis bus įtrauktas į ekrano kopiją"
+
+#. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#, kde-format
+msgid "Whether the window decorations are included in the screenshot"
+msgstr "Ar lango dekoracijos bus įtrauktos į ekrano kopiją"
+
+#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#, kde-format
+msgid "Only capture the current pop up menu"
+msgstr "Fotografuoti tik esamą iškylantįjį meniu"
+
+#. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#, kde-format
+msgid "Quit after saving or copying an image"
+msgstr "Įrašius ar nukopijavus paveikslą, išeiti iš Spectacle"
+
+#. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#, kde-format
+msgid "Delay"
+msgstr "Delsa"
+
+#. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#, kde-format
+msgid "Default filename"
+msgstr "Numatytasis failo pavadinimas"
+
+#. i18n: ectx: label, entry (compressionQuality), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#, kde-format
+msgid "Compression quality for lossy file formats"
+msgstr "Nuostolingųjų failo formatų glaudinimo kokybė"
+
+#. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#, kde-format
+msgid "Default save image format"
+msgstr "Numatytasis įrašomo paveikslo formatas"
+
+#. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#, kde-format
+msgid "The default filename used when saving"
+msgstr "Numatytasis failo pavadinimas įrašant"
+
+#. i18n: ectx: label, entry (lastSaveLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#, kde-format
+msgid "The path of the file saved last"
+msgstr "Paskutinio įrašyto failo kelias"
+
+#. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#, kde-format
+msgid "Last path used for \"save as\" action"
+msgstr "Paskutinis \"Įrašyti kaip\" veiksmui naudotas kelias"
+
+#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#, kde-format
+msgid "The last used save mode"
+msgstr "Paskutinė naudota įrašymo veiksena"
+
+#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#, kde-format
+msgid "The last used copy mode"
+msgstr "Paskutinė naudota kopijavimo veiksena"
+
+#: src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " sekundė"
+msgstr[1] " sekundės"
+msgstr[2] " sekundžių"
+msgstr[3] " sekundė"
+
+#: src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " sek."
+
+#: src/Main.cpp:41
+#, kde-format
+msgid "Spectacle"
+msgstr "Spectacle"
+
+#: src/Main.cpp:43
+#, kde-format
+msgid "KDE Screenshot Utility"
+msgstr "KDE ekrano kopijų darymo programa"
+
+#: src/Main.cpp:45
+#, kde-format
+msgid "(C) 2015 Boudhayan Gupta"
+msgstr "(C) 2015 Boudhayan Gupta"
+
+#: src/Main.cpp:48
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Mindaugas Baranauskas, Moo"
+
+#: src/Main.cpp:48
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "opensuse.lietuviu.kalba@gmail.com, <>"
+
+#: src/QuickEditor/QuickEditor.cpp:61
+#, kde-format
+msgid ""
+"Click and drag to draw a selection rectangle,\n"
+"or press Esc to quit"
+msgstr ""
+"Spustelėkite ir tempkite, norėdami piešti žymėjimo stačiakampį,\n"
+"arba paspauskite Gr(įžties) (Esc) klavišą, norėdami išeiti"
+
+#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Padaryti ekrano kopiją:"
+
+#: src/QuickEditor/QuickEditor.cpp:717
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Kairiojo mygtuko atleidimas"
+
+#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Įvedimo (Enter) klavišas"
+
+#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Sukurti naują žymėjimo stačiakampį:"
+
+#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Tempimas už žymėjimo stačiakampio ribų"
+
+#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Lyg2: Didintuvas"
+
+#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
+#, kde-format
+msgid "Cancel:"
+msgstr "Atsisakyti:"
+
+#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Grįžimo (Esc) klavišas"
+
+#: src/QuickEditor/QuickEditor.cpp:725
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Dvikartis spustelėjimas"
+
+#: src/QuickEditor/QuickEditor.cpp:729
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Perkelti žymėjimo stačiakampį:"
+
+#: src/QuickEditor/QuickEditor.cpp:730
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Tempimas žymėjimo stačiakampio viduje"
+
+#: src/QuickEditor/QuickEditor.cpp:731
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Krypties klavišai"
+
+#: src/QuickEditor/QuickEditor.cpp:732
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Lyg2: Keisti dydį 1 pikselio žingsniais"
+
+#: src/QuickEditor/QuickEditor.cpp:733
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Keisti žymėjimo stačiakampio dydį:"
+
+#: src/QuickEditor/QuickEditor.cpp:734
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Rankenėlių tempimas"
+
+#: src/QuickEditor/QuickEditor.cpp:735
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Krypties klavišai + Alt"
+
+#: src/QuickEditor/QuickEditor.cpp:736
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Lyg2: Keisti dydį 1 pikselio žingsniais"
+
+#: src/QuickEditor/QuickEditor.cpp:737
+#, kde-format
+msgid "Reset selection:"
+msgstr "Atstatyti žymėjimą:"
+
+#: src/QuickEditor/QuickEditor.cpp:737
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Dešinysis spustelėjimas"
+
+#: src/QuickEditor/QuickEditor.cpp:923
+#, kde-format
+msgid "%1×%2"
+msgstr "%1×%2"
+
+#: src/ShortcutActions.cpp:58
+#, kde-format
+msgid "Capture Window Under Cursor"
+msgstr "Fotografuoti langą po žymekliu"
+
+#: src/ShortcutActions.cpp:63
+#, kde-format
+msgid "Launch Spectacle without capturing"
+msgstr "Paleisti Spectacle nefotografuojant"
+
+#: src/SpectacleCore.cpp:434
+#, kde-format
+msgid "Screenshot capture canceled or failed"
+msgstr "Ekrano kopijos darymo atsisakyta arba jis patyrė nesėkmę"
+
+#: src/SpectacleCore.cpp:454
+#, kde-format
+msgctxt "The entire screen area was captured, heading"
+msgid "Full Screen Captured"
+msgstr "Nufotografuotas visas ekranas"
+
+#: src/SpectacleCore.cpp:457
+#, kde-format
+msgctxt "The current screen was captured, heading"
+msgid "Current Screen Captured"
+msgstr "Nufotografuotas dabartinis ekranas"
+
+#: src/SpectacleCore.cpp:460
+#, kde-format
+msgctxt "The active window was captured, heading"
+msgid "Active Window Captured"
+msgstr "Nufotografuotas aktyvus langas"
+
+#: src/SpectacleCore.cpp:464
+#, kde-format
+msgctxt "The window under the mouse was captured, heading"
+msgid "Window Under Cursor Captured"
+msgstr "Nufotografuotas langas po žymekliu"
+
+#: src/SpectacleCore.cpp:467
+#, kde-format
+msgctxt "A rectangular region was captured, heading"
+msgid "Rectangular Region Captured"
+msgstr "Nufotografuota stačiakampė ekrano sritis"
+
+#: src/SpectacleCore.cpp:477
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved to your clipboard."
+msgid "A screenshot was copied to your clipboard."
+msgstr "Ekrano kopija įrašyta į jūsų iškaprinę."
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
+"has been copied to your clipboard."
+msgstr ""
+"Ekrano kopija buvo įrašyta kaip <a href=\"%1\">%2</a>, o jos vieta "
+"nukopijuota į iškarpinę"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "Placeholder is filename"
+msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip \"%1\"."
+
+#: src/SpectacleCore.cpp:485
+#, kde-format
+msgid "A screenshot was saved as '%1' to '%2'."
+msgstr "Ekrano kopija buvo įrašyta į \"%2\" kaip \"%1\"."
+
+#: src/SpectacleCore.cpp:490
+#, kde-format
+msgctxt "Open the screenshot we just saved"
+msgid "Open"
+msgstr "Atverti"
+
+#: src/SpectacleCore.cpp:528
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Fotografuoti visą darbalaukį (pagal numatymą)"
+
+#: src/SpectacleCore.cpp:529
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Fotografuoti dabartinį monitorių"
+
+#: src/SpectacleCore.cpp:530
+#, kde-format
+msgid "Capture the active window"
+msgstr "Fotografuoti aktyvų langą"
+
+#: src/SpectacleCore.cpp:531
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Fotografuoti šiuo metu po pele esantį langą, įskaitant iškylančiųjų meniu "
+"pirminius langus"
+
+#: src/SpectacleCore.cpp:532
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Fotografuoti šiuo metu po pele esantį langą, neskaitant iškylančiųjų meniu "
+"pirminius langus"
+
+#: src/SpectacleCore.cpp:533
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Fotografuoti stačiakampę ekrano sritį"
+
+#: src/SpectacleCore.cpp:534
+#, kde-format
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Paleisti Spectacle nedarant ekrano kopijos"
+
+#: src/SpectacleCore.cpp:535
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Paleisti grafinės naudotojo sąsajos veiksenoje (pagal numatymą)"
+
+#: src/SpectacleCore.cpp:536
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Padaryti ekrano kopiją ir išeiti, nerodant grafinės naudotojo sąsajos"
+
+#: src/SpectacleCore.cpp:537
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Paleisti DBus-Activation veiksenoje"
+
+#: src/SpectacleCore.cpp:538
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr "Foninėje veiksenoje nerodyti pranešimo, kai yra padaroma ekrano kopija"
+
+#: src/SpectacleCore.cpp:539
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "Foninėje veiksenoje įrašyti paveikslą į nurodytą failą"
+
+#: src/SpectacleCore.cpp:541
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr "Foninėje veiksenoje delsa prieš darant ekrano kopiją (milisekundėmis)"
+
+#: src/SpectacleCore.cpp:543
+#, fuzzy, kde-format
+#| msgid "In background mode, copy screenshot image to clipboard"
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr "Foninėje veiksenoje kopijuoti ekrano kopijos paveikslą į iškarpinę"
+
+#: src/SpectacleCore.cpp:544
+#, kde-format
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr "Foninėje veiksenoje kopijuoti ekrano kopijos failo kelią į iškarpinę"
+
+#: src/SpectacleCore.cpp:545
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr ""
+"Prieš darant ekrano kopiją, laukti spustelėjimo. Padaro delsos parinktį "
+"negaliojančią"
+
+#: src/SpectacleCore.cpp:546
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr ""
+"Paleidžia naują grafinės naudotojo sąsajos egzempliorių be registracijos su "
+"DBus"
+
+#: src/SpectacleCore.cpp:547
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "Foninėje veiksenoje į ekrano kopiją įtraukti pelės rodyklę"
+
+#: src/SpectacleCore.cpp:548
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "Foninėje veiksenoje į ekrano kopiją neįtraukti langų dekoracijų"
+
+#: src/SpectacleCore.cpp:549
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr "Atverti ir taisyti esamą ekrano kopijos failą"
+
+#~ msgid "More Online Services"
+#~ msgstr "Kitos internetinės paslaugos"
+
+#~ msgid "Please wait..."
+#~ msgstr "Palaukite..."
+
+#~ msgid "KIPI plugin from library %1 failed to load"
+#~ msgstr "Nepavyko įkelti KIPI priedo iš %1 bibliotekos"
+
+#~ msgid "No KIPI plugins available"
+#~ msgstr "Nėra jokių prieinamų KIPI priedų"
+
+#~ msgctxt "%1 is collection name, %2 is image count in collection"
+#~ msgid "%1 (%2 image)"
+#~ msgid_plural "%1 (%2 images)"
+#~ msgstr[0] "%1 (%2 paveikslas)"
+#~ msgstr[1] "%1 (%2 paveikslai)"
+#~ msgstr[2] "%1 (%2 paveikslų)"
+#~ msgstr[3] "%1 (%2 paveikslas)"
+
+#~ msgid "Taken with Spectacle"
+#~ msgstr "Nufotografuota naudojant Spectacle"
+
+#~ msgid "Remember the region across restarts"
+#~ msgstr "Prisiminti sritį tarp paleidimų iš naujo"
+
+#~ msgid ""
+#~ "Choose the image quality when saving with lossy image formats like JPEG"
+#~ msgstr ""
+#~ "Pasirinkite paveikslo kokybę, įrašant į nuostolinguosius formatus, tokius "
+#~ "kaip JPEG"
+
+#~ msgid "Copy file location to clipboard after saving"
+#~ msgstr "Įrašius, kopijuoti failo vietą į iškarpinę"
+
+#~ msgid "Copy screenshot automatically to the clipboard after it is taken"
+#~ msgstr "Padarius ekrano kopiją, automatiškai kopijuoti ją į iškarpinę"
+
+#~ msgid "Whether to copy the file path after saving to the clipboard"
+#~ msgstr "Ar įrašius, kopijuoti failo kelią į iškarpinę"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopijuoti į iškarpinę"
+
+#~ msgid "Copy the current screenshot image to the clipboard."
+#~ msgstr "Kopijuoti dabartinį ekrano kopijos paveikslą į iškarpinę."
+
+#~ msgid "currentText"
+#~ msgstr "Esamas tekstas"
+
+#, fuzzy
+#~| msgid "After taking a screenshot:"
+#~ msgid "Include pointer in the screenshot"
+#~ msgstr "Padarius ekrano kopiją:"
+
+#, fuzzy
+#~| msgid "Whether the window decorations are included in the screenshot"
+#~ msgid "Do not include window decorations in the screenshot"
+#~ msgstr "Ar lango dekoracijos bus įtrauktos į ekrano kopiją"
+
+#, fuzzy
+#~| msgid "Capture Entire Desktop"
+#~ msgctxt "The entire desktop was captured, heading"
+#~ msgid "Entire Desktop Captured"
+#~ msgstr "Fotografuoti visą darbalaukį"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configure"
+#~ msgstr "Konfigūruoti"
+
+#~ msgid "Apply Unsaved Changes"
+#~ msgstr "Taikyti neįrašytus pakeitimus"
+
+#~ msgid ""
+#~ "You have made changes to the settings in this tab. Do you want to apply "
+#~ "those changes?"
+#~ msgstr ""
+#~ "Šioje kortelėje pakeitėte nustatymus. Ar norite taikyti tuos pakeitimus?"
+
+#~ msgctxt "Mouse action"
+#~ msgid "Click and drag,"
+#~ msgstr "Spustelėti ir tempti,"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgctxt "Keyboard action"
+#~ msgid "Shift:"
+#~ msgstr "Lyg2:"
+
+#~ msgctxt "Shift key action first half"
+#~ msgid "Hold to toggle magnifier"
+#~ msgstr "Laikykite, kad būtų perjungtas didintuvas"
+
+#~ msgctxt "Shift key action second half"
+#~ msgid "while dragging selection handles"
+#~ msgstr "tempdami žymėjimo rankenėles"
+
+#~ msgctxt "Shift key action second line"
+#~ msgid "Hold Alt to resize, Shift to fine‑tune"
+#~ msgstr "Laikykite Alt, norėdami keisti dydį, Lyg2, norėdami derinti"
+
+#~ msgctxt "Keyboard action"
+#~ msgid "Esc:"
+#~ msgstr "Grįžties (Esc):"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Set a default filename for saved screenshots.</p><p>You can use the "
+#~| "following placeholders in the filename, which will be replaced with "
+#~| "actual text when the file is saved:</p><blockquote><b>%Y</b>: Year (4 "
+#~| "digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: Month<br /><b>%D</"
+#~| "b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /><b>%S</b>: "
+#~| "Second</blockquote><p>You don't need to enter a filetype extension. By "
+#~| "default, screenshots are always saved as a <b>PNG (Portable Network "
+#~| "Graphics)</b> image with a <b>.png</b> extension.</p><p>If a file with "
+#~| "this name already exists, a serial number will be appended to the "
+#~| "filename. For example, if the filename is \"Screenshot\", and "
+#~| "\"Screenshot.png\" already exists, the image will be saved as "
+#~| "\"Screenshot-1.png\".</p>"
+#~ msgctxt "%1 is the default filename of a screenshot"
+#~ msgid ""
+#~ "<p>You can use the following placeholders in the filename, which will be "
+#~ "replaced with actual text when the file is saved:</p><blockquote><b>%Y</"
+#~ "b>: Year (4 digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: "
+#~ "Month<br /><b>%D</b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /"
+#~ "><b>%S</b>: Second<br /><b>%T</b>: Window title<br /><b>%d</b>: "
+#~ "Sequential numbering<br /><b>%Nd</b>: Sequential numbering, padded out to "
+#~ "N digits</blockquote><p>To save to a sub-folder, use slashes, e.g.:</"
+#~ "p><blockquote><b>%Y</b>/<b>%M</b>/%1</blockquote>"
+#~ msgstr ""
+#~ "<p>Nurodykite numatytąjį ekranvaizdžių pavadinimą.</p><p> Failo "
+#~ "pavadinime galite naudoti pakaitalus, kurie įrašant pakeisimi atitinkamu "
+#~ "tekstu: </p><blockquote><b>%Y</b>: metai (4 skaitmenys) <br /><b>%y</b>: "
+#~ "metai (2 skaitmenys) <br /><b>%M</b>: mėnuo <br /><b>%D</b>: diena <br /"
+#~ "><b>%H</b>: valanda <br /><b>%m</b>: minutė <br /><b>%S</b>: sekundė </"
+#~ "blockquote><p>Paveiksliuko prievardžio nurodyti nereikia. Numatytuoju "
+#~ "atveju ekranvaizdžiai įrašomi <b>PNG</b> formatu su <b>.png</b> "
+#~ "prievardžiu.</p><p> Jei paveiksliukas tokiu pavadinimu jau yra, tuomet "
+#~ "pridėsimas eilinis numeris; pavyzdžiui, jeiprašote sukurti paveiksliuką "
+#~ "pavadinimu „Nuotrauka“, o „Nuotrauka.png“ jau yra, tuomet paveiksliukas "
+#~ "pavadinsimas „Nuotrauka-1.png“.</p>"
+
+#, fuzzy
+#~| msgid "Rectangular Region"
+#~ msgid "Rectangular Region:"
+#~ msgstr "stačiakampė sritis"
+
+#, fuzzy
+#~| msgid "Default Save Settings"
+#~ msgid "Default Save Location"
+#~ msgstr "Numatytosios įrašymo parinktys"
+
+#~ msgid "You can find the shared image at: <a href=\"%1\">%1</a>"
+#~ msgstr "Pasidalintą paveiksliuką rasite <a href=\"%1\">%1</a>"
+
+#~ msgid ""
+#~ "To take the screenshot, double-click or press Enter. Right-click to reset "
+#~ "the selection, or press Esc to quit"
+#~ msgstr ""
+#~ "Norėdami paveiksluoti, spauskite įvesties klavišą arba dukart "
+#~ "spragtelėkite. Dešiniu pelės klavišu galite iš naujo nurodyti "
+#~ "pasirinkimą. Baigsite spustelėję Gr(įžties) (Esc) klavišą"
+
+#~ msgid "Save &&& Exit"
+#~ msgstr "Įrašyti ir išeiti"
+
+#~ msgid "Save screenshot in your Pictures directory and exit"
+#~ msgstr "Ekranvaizdį įrašyti į numatytąjį paveiksliukų katalogą ir išeiti"
+
+#~ msgid "Export Image..."
+#~ msgstr "Paveiksliuko eksportavimas..."
+
+#~ msgid "Preferences"
+#~ msgstr "Parinktys"
+
+#~ msgid "Dynamic Save Button"
+#~ msgstr "Kintantis įrašymo mygtuko veiksmas"
+
+#~ msgid ""
+#~ "The default behavior of the save button is to <b>Save & Exit</b>. Enable "
+#~ "this option to change the save button to either <b>Save</b>, <b>Save As</"
+#~ "b> or <b>Save & Exit</b>, according to the save action you perform, every "
+#~ "time you save an image."
+#~ msgstr ""
+#~ "Numatytasis įrašymo mygtuko veiksmas yra <b>Įrašyti ir išeiti</b>. "
+#~ "Įgalinus šią parinktį, priklausomai nuo paskutinį kartą pasirinkto "
+#~ "įrašymo veiksmo, vėliau numatytuoju įrašymo mygtuko veiksmu taps arba "
+#~ "<b>Įrašyti</b>, arba <b>Įrašyti kaip</b> arba <b>Įrašyti ir išeiti</b>."
+
+#~ msgid "Set save button action to last used save method"
+#~ msgstr "Nustatyti įrašymo mygtuko veiksmą pagal paskutinį pasirinktą"
+
+#~ msgid ""
+#~ "When a screenshot is saved, copy the location at which the file was saved "
+#~ "to the clipboard. You can then paste it anywhere that accepts text input. "
+#~ "Note that you must be running a clipboard manager in order to keep the "
+#~ "path in the clipboard after Spectacle quits."
+#~ msgstr ""
+#~ "Įrašius paveikslėlį, į iškarpinę nukopijuoti kelią iki jo. Tuomet šį "
+#~ "adresą galėsite įterpti kaip tekstą. Užvėrus „Spectacle“, iškarpinėje "
+#~ "turinys liks tik tuomet, jei fone veiks iškarpinės programa."
+
+#~ msgid "Light Background For Rectangular Region"
+#~ msgstr "Šviesus fonas paveiksluojant stačiakampę sritį"
+
+#~ msgid ""
+#~ "Use a light background color to mask the cropped-out area in the "
+#~ "rectangular region selector. This may make dark cursors easier to see."
+#~ msgstr ""
+#~ "Nepažymėtai sričiai suteikti šviesesnį atspalvį. Tai gali padėti lengviau "
+#~ "matyti žymeklį, jei jis tamsus."
+
+#~ msgid ""
+#~ "By default, Spectacle does not show an initial selection when you take a "
+#~ "screenshot of a rectangular region. Enable this option to remember the "
+#~ "last selected region of the screen, and set it as the initial selection "
+#~ "when you use the rectangular region selector the next time."
+#~ msgstr ""
+#~ "Numatytuoju atveju paveiksluojant stačiakampę sritį, Spectacle iš anksto "
+#~ "nepažymi srities. Įgalinus šią parinktį, programa įsimins paskutinę "
+#~ "pažymėtą sritį ir ją siūlys paveiksluoti, jei vėl pasirinksite "
+#~ "stačiakampės srities paveikslavimo veikseną."
+
+#~ msgid ""
+#~ "Set the directory where you'd like to save your screenshots when you "
+#~ "press <b>Save</b> or <b>Save & Exit</b>."
+#~ msgstr ""
+#~ "Nurodykite aplanką, kuriame norėtumėte talpinti ekranvaizdžius, kai "
+#~ "spaudžiate <b>Įrašyti</b> arba <b>Įrašyti ir išeiti</b>."
+
+#~ msgid "Application Preferences"
+#~ msgstr "Programos parinktys"
+
+#~ msgid "Save Options"
+#~ msgstr "Įrašymo parinktys"

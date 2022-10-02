@@ -1,0 +1,868 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>Manuale di &spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+><firstname
+>Luigi</firstname
+><surname
+>Toscano</surname
+><affiliation
+><address
+><email
+>luigi.toscano@tiscali.it</email
+></address
+></affiliation
+><contrib
+>Traduzione italiana</contrib
+></othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>Applications 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle; è un'applicazione per catturare e modificare schermate del desktop. Può acquisire l'immagine dell'intero desktop, di un singolo monitor, della finestra attiva, della finestra dietro al cursore, o di una regione rettangolare dello schermo. L'immagine può quindi essere annotata, stampata, inviata ad altre applicazioni per ulteriori modifiche, o salvata rapidamente così com'è.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>schermata</keyword>
+            <keyword
+>acquisizione dello schermo</keyword>
+            <keyword
+>cattura dello schermo</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Introduzione</title>
+
+        <para
+>&spectacle; è un'applicazione per catturare e modificare schermate del desktop. Può acquisire l'immagine dell'intero desktop, di un singolo monitor, della finestra attiva, della finestra dietro al cursore, o di una regione rettangolare dello schermo. L'immagine può quindi essere annotata, stampata, inviata ad altre applicazioni per ulteriori modifiche, o salvata rapidamente così com'è.</para>
+
+        <para
+>Segnala qualsiasi problema o richiesta di miglioramenti sul <ulink url="https://bugs.kde.org/"
+>Sistema di gestione dei bug di &kde;</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>Esecuzione di &spectacle;</title>
+
+        <para
+>&spectacle; può essere avviato in vari modi, come descritto di seguito:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Nel menu dei programmi, &spectacle; può essere raggiunto da <menuchoice
+><guisubmenu
+>Applicazioni</guisubmenu
+><guisubmenu
+>Accessori</guisubmenu
+><guimenuitem
+>Accessorio per catturare schermate &spectacle;</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>Premendo il pulsante <keysym
+>Stampa</keysym
+> sulla tastiera (spesso chiamato <keysym
+>Stamp</keysym
+>), &spectacle; sarà eseguito immediatamente. Inoltre, altre tre scorciatoie di tastiera sono disponibili per catturare schermate e salvarle nella cartella predefinita di salvataggio senza mostrare la &GUI;:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Stampa</keysym
+></keycombo
+> catturerà una schermata della finestra attiva</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Stampa</keysym
+></keycombo
+> catturerà una schermata dell'intero desktop, &ie; tutti i monitor</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Stampa</keysym
+></keycombo
+> catturerà una regione rettangolare</para
+></listitem>
+                </itemizedlist>
+                <para
+>Puoi configurare la posizione ed il file per il salvataggio predefiniti avviando &spectacle; normalmente, facendo clic sul pulsante <guibutton
+>Configura...</guibutton
+>, quindi accedendo alla sezione Salva.</para>
+            </listitem>
+            <listitem>
+                <para
+>Anche la mini-riga di comando &krunner; (invocata tramite <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) può essere usata per avviare &spectacle;.</para>
+            </listitem>
+            <listitem>
+                <para
+>&spectacle; può essere avviato dalla riga di comando. &spectacle; dispone di un insieme notevole di opzioni da riga di comando, inclusa la modalità in «background» che può essere usata per catturare schermate da script, senza mostrare l'interfaccia grafica o comunque richiedere interazione con l'utente.</para>
+
+                <para
+>Per avviare &spectacle; dalla riga di comando, digita:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Per mostrare l'elenco completo delle opzioni a riga di comando e la relativa spiegazione, digita:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>Utilizzare &spectacle;</title>
+
+        <para
+>All'avvio di &spectacle; apparirà una finestra simile alla seguente: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>Finestra principale di &spectacle;</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle; acquisisce una schermata dell'intero desktop non appena viene eseguito, ma prima di comparire sullo schermo. Questo ti permette di catturare rapidamente immagini dell'intero desktop.</para>
+
+        <para
+>La schermata catturata da &spectacle; viene mostrata nella finestra di anteprima, che è posizionata nella parte sinistra della finestra principale di &spectacle;.</para>
+
+        <para
+>L'immagine può essere salvata facendo clic sul pulsante <guibutton
+>Salva come...</guibutton
+> o digitando <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+>). Questa apre la finestra standard di salvataggio dove puoi scegliere il nome del file, la cartella ed il formato da usare per salvare la schermata. Puoi cambiare il nome del file come preferisci, anche usando il nome di una schermata già salvata.</para>
+
+        <para
+>Per salvare una schermata nella posizione predefinita, fai clic sulla parte con freccia del pulsante <guibutton
+>Salva come...</guibutton
+> e premi il pulsante <guimenuitem
+>Salva</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). La nuova modalità di salvataggio sarà ricordata la volta successiva. La posizione di salvataggio ed il nome di file predefiniti possono essere configurati, come descritto in seguito.</para>
+
+        <para
+>Per salvare rapidamente l'immagine e chiudere &spectacle; premi la casella accanto a <guilabel
+>Esci dopo il salvataggio o la copia manuali</guilabel
+>, quindi fai clic sulla parte con freccia del pulsante <guibutton
+>Salva come...</guibutton
+> e premi la voce <guimenuitem
+>Salva</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Questo salva l'immagine come file PNG nella cartella <filename class="directory"
+>Immagini</filename
+> predefinita e chiude immediatamente il programma. Come per il caso precedente, questa nuova modalità di salvataggio sarà ricordata.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Catturare una schermata</title>
+
+            <para
+>Quando apri &spectacle; viene catturata immediatamente una schermata, a meno di modifiche nelle opzioni generali, dell'intero schermo per comodità e ne viene mostrata l'anteprima nella finestra principale del programma. Puoi salvare questa schermata usando i pulsanti nella parte inferiore della finestra, o catturarne una nuova usando i controlli a destra dell'anteprima.</para>
+
+            <para
+>Per scartare la schermata e catturarne un'altra, premi il pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Dopo aver acquisito una schermata, &spectacle; mostrerà un pannello informativo con un collegamento all'immagine ed il pulsante <guibutton
+>Apri cartella contenitore</guibutton
+>.</para>
+
+            <para
+>Puoi configurare alcune opzioni nella parte destra della finestra dell'applicazione prima di catturare una schermata. Queste opzioni ti permettono di selezionare l'area dello schermo da catturare, impostare un ritardo prima di catturare l'immagine, e configurare se il cursore del mouse o le decorazioni delle finestre debbano essere catturate nell'immagine.</para>
+
+            <sect2>
+                <title
+>Modalità di acquisizione</title>
+
+                <para
+>Le impostazioni della modalità di cattura ti permettono di impostare l'area dello schermo da catturare, e se ci debba essere un ritardo tra la pressione del pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) e l'effettiva acquisizione. Puoi anche abilitare la casella <guilabel
+>Al clic</guilabel
+>, che disabilita il ritardo ed effettua l'acquisizione quando fai clic in un punto qualsiasi dello schermo dopo aver premuto il pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>La casella combinata <guilabel
+>Area</guilabel
+> ti permette di impostare l'area dello schermo da catturare. Ci sono cinque opzioni tra cui scegliere, come descritto di seguito.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Schermo intero (tutti i monitor)</guilabel
+> cattura la schermata dell'intero desktop in tutti i dispositivi di uscita, inclusi tutti i monitor, proiettori, ecc.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Schermo attuale</guilabel
+> cattura la schermata del dispositivo di output che contiene il puntatore del mouse.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Regione rettangolare</guilabel
+> ti permette di selezionare una regione rettangolare del tuo desktop con il mouse. Questa regione può estendersi su varie periferiche di uscita.</para>
+
+                        <para
+>Questa modalità non acquisisce una schermata immediatamente ma ti permette di tracciare sullo schermo un rettangolo che può essere spostato e ridimensionato secondo necessità. Una volta che il rettangolo desiderato è stato disegnato, un doppio clic in un qualsiasi punto dello schermo o la pressione del tasto &Enter; sulla tastiera attiveranno la cattura della schermata.</para>
+                        
+                        <para
+>Puoi usare i tasti freccia per spostare e aggiustare il rettangolo. Premendo i tasti freccia il rettangolo si sposta. Tenendo premuto il tasto &Shift; mentre si premono i tasti freccia il rettangolo si muoverà lentamente, per ritoccare la selezione. Tenendo premuto il tasto &Alt; mentre si premono i tasti freccia la dimensione del rettangolo cambia.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Finestra attiva</guilabel
+> cattura la schermata della finestra che ha il fuoco. È consigliabile impostare un ritardo con questa modalità per darti il tempo di selezionare e attivare la finestra prima dell'acquisizione della schermata.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Finestra sotto il cursore</guilabel
+> cattura la schermata della finestra che è sotto il cursore del mouse. Se il cursore è sopra un menu a comparsa, &spectacle; tenta di catturare sia l'immagine del menu che della finestra che lo contiene.</para>
+
+                        <para
+>Anche se questa procedura funziona la maggior parte delle volte, in alcuni casi potrebbe non riuscire ad ottenere le informazioni sulla finestra che contiene il menu. In questo caso &spectacle; fa ricorso al vecchio metodo di catturare l'immagine automaticamente, e cattura un'immagine del solo menu a comparsa. Puoi anche forzare il vecchio modo di catturare l'immagine selezionando la casella <guilabel
+>Cattura solo la finestra a comparsa attuale</guilabel
+> sotto <guilabel
+>Opzioni</guilabel
+></para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>La casella numerica <guilabel
+>Ritardo</guilabel
+> ti permette di impostare il ritardo tra la pressione del pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) e l'effettiva cattura. Questo ritardo può essere impostato in incrementi di 1 secondo usando la casella numerica o la tastiera.</para>
+                
+                <para
+>Quanto acquisisci una schermata con un ritardo, &spectacle; mostra il tempo rimanente nel titolo della finestra prima di acquisire la schermata, e lo rende visibile nel relativo elemento del gestore dei processi. Anche il pulsante del gestore dei processi di &spectacle; mostra una barra di avanzamento, così puoi tenere traccia del momento della cattura.</para>
+                
+                <para
+>Mentre aspetti una cattura con ritardo puoi ripristinare &spectacle;, ed il pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> cambierà nel pulsante <guibutton
+>Annulla</guibutton
+>. Anche la barra di avanzamento sarà mostrata, permettendoti di cambiare il conto alla rovescia.</para>
+
+                <para
+>Abilitando la casella <guilabel
+>Al clic</guilabel
+> il ritardo viene ignorato. Quando questa casella è abilitata, premendo il pulsante <guibutton
+>Acquisisci una nuova schermata</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) la finestra di &spectacle; viene nascosta e il puntatore del mouse diventa un mirino. La schermata viene catturata quando viene premuto il pulsante sinistro del mouse, o al contrario l'operazione è annullata se viene premuto un qualsiasi altro pulsante del mouse. Nota che non puoi interagire con il desktop usando il mouse mentre il cursore ha la forma del mirino, ma puoi usare la tastiera.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Opzioni</title>
+
+                <para
+>Le impostazioni relative alle opzioni ti permettono di selezionare se il puntatore del mouse debba essere incluso nelle schermate, e se catturare le decorazioni delle finestre con l'immagine di un'applicazione a singola finestra. Nella modalità <guilabel
+>Finestra sotto il cursore</guilabel
+> ti permette inoltre di selezionare se &spectacle; debba catturare solo l'immagine del menu a comparsa sotto il cursore o includere anche la finestra che lo contiene. Infine, <guilabel
+>Esci dopo il salvataggio o la copia</guilabel
+> chiuderà &spectacle; dopo un'operazione di salvataggio o di copia.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Abilitando la casella <guilabel
+>Includi il puntatore del mouse</guilabel
+>, nella schermata sarà inclusa l'immagine del puntatore del mouse.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Includi la barra del titolo ed i bordi della finestra</guilabel
+> è abilitata solo quando una tra le modalità <guilabel
+>Finestra attiva</guilabel
+> e <guilabel
+>Finestra sotto il cursore</guilabel
+> è selezionata nella casella combinata <guilabel
+>Area</guilabel
+>. Selezionando questa opzione i bordi e la decorazione della finestra sono inclusi nella schermata, mentre deselezionandola si ottiene un'immagine con il solo contenuto della finestra.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Cattura solo la finestra a comparsa attuale</guilabel
+> è abilitata solo quando la modalità <guilabel
+>Finestra sotto il cursore</guilabel
+> è selezionata nella casella combinata <guilabel
+>Area</guilabel
+>. Selezionando questa opzione viene catturato solo il menu a comparsa sotto il cursore, senza la finestra che lo contiene.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>L'opzione <guilabel
+>Esci dopo il salvataggio o la copia manuali</guilabel
+> chiuderà &spectacle; dopo un'operazione di salvataggio o di copia. Note come una schermata copiata negli appunti sarà mantenuta solo se è in esecuzione un gestore di appunti che gestisce immagini. Klipper di KDE può essere configurato in questo modo facendo clic col pulsante destro sulla sua icona, selezionando <guilabel
+>Configura gli appunti...</guilabel
+> e deselezionando <guilabel
+>Ignora le immagini</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Ulteriori funzionalità</title>
+
+        <sect1>
+            <title
+>Pulsanti</title>
+
+            <para
+>Ci sono alcuni pulsanti in fondo alla finestra di &spectacle;. La loro funzione è descritta di seguito:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Aiuto</guibutton
+></term>
+                    <listitem>
+                        <para
+>Fornisce le voci di menu comuni descritte nella sezione del <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei Fondamentali di &kde;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Configura...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Ti permette di accedere alla finestra di configurazione di &spectacle; dove puoi cambiare le impostazioni di cattura e la posizione di salvataggio e il nome di file predefiniti.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Annota</guibutton
+></term>
+                    <listitem>
+                        <para
+>Apre una finestra dell'editor delle annotazioni che offre vari strumenti di annotazione:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Editor delle annotazioni</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Prova gli strumenti di annotazione. Potresti trovarci tutto quello che serve per illustrare le tue schermate: frecce, penne, marcatori, caselle di testo, numero, anche faccine. È possible cambiare i parametri degli strumenti e aggiungere effetti (ombre, scale di grigio e bordi). </para>
+                        <para
+>Quando pensi che l'annotazione sia complete premi il pulsante <guibutton
+>Annotazione completa</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Strumenti</guibutton
+></term>
+                    <listitem>
+                        <para
+>Apre un menu a comparsa che offre vari strumenti:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Apri cartella predefinita delle schermate</guimenuitem
+> selezionerà nel gestore di file predefinito l'ultima schermata salvata</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Accesso alla finestra di dialogo <guimenuitem
+>Stampa</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Un insieme di programmi esterni per la registrazione dello schermo</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Esporta</guibutton
+></term>
+                    <listitem>
+                        <para
+>Apre un menu a comparsa che ti permetterà di aprire direttamente l'immagine con tutti i programmi associati al tipo &MIME; PNG (Portable Network Graphics). In base ai programmi installati sarai in grado di aprire e modificare l'immagine catturata nei tuoi programmi o visualizzatori grafici.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Copia l'immagine negli appunti/Copia la posizione negli appunti</guibutton
+></term>
+                    <listitem>
+                        <para
+>Copia la schermata attuale o la sua posizione negli appunti, Puoi anche usare la scorciatoia di tastiera <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> per questo.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Salva come</guibutton
+></term>
+                    <listitem>
+                        <para
+>Salva la schermata come immagine PNG nella tua cartella Immagini predefinita e chiude subito l'applicazione.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Configura</title>
+            <para
+>Usa il pulsante <guibutton
+>Configura...</guibutton
+> per aprire la finestra di configurazione.</para>
+            <sect2>
+            <title
+>Generale</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Generale</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>All'esecuzione di Spectacle</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ti permette di scegliere tra <guilabel
+>Acquisisci la schermata dell'intero schermo</guilabel
+>, usare l'ultima modalità di acquisizione utilizzata, o non acquisire automaticamente una schermata. L'ultima modalità di acquisizione utilizzata è quella impostata in Modalità di acquisizione</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Dopo aver acquisito una schermata</guilabel
+></term>
+                    <listitem>
+                        <para
+>Permette l'esecuzione dell'operazione <guilabel
+>Salva il file nella cartella predefinita</guilabel
+>, disabilitando ogni azione degli appunti, copiando l'immagine negli appunti, o copiando il percorso dell'immagine negli appunti. La posizione predefinita può essere configurata tramite la pagina di configurazione <link linkend="save-page"
+>Salva</link
+>. È possibile usare l'opzione <guilabel
+>Copia l'indirizzo del file negli appunti</guilabel
+>. Puoi quindi incollarla ovunque sia possibile inserire del testo. Nota che deve esserci un gestore di appunti in esecuzione perché il percorso sia mantenuto negli appunti quando &spectacle; termina.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Premi il tasto schermata per</guilabel
+></term>
+                    <listitem>
+                        <para
+>Quando viene premuta una scorciatoia per salvare schermate e &spectacle; è già in esecuzione, è possibile configurare il comportamento del sistema di acquisizione. Puoi scegliere tra l'acquisizione di una schermata, l'apertura di una nuova finestra di &spectacle;, e restituire il fuoco alla finestra di &spectacle; pre-esistente.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Usa un colore di sfondo chiaro</guilabel
+></term>
+                    <listitem>
+                        <para
+>Usa un colore di sfondo chiaro per mascherare l'area ritagliata nel selettore di regione rettangolare. Potrebbe rendere più visibili i cursori scuri.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Mostra lente di ingrandimento</guilabel
+></term>
+                    <listitem>
+                        <para
+>Quando una schermata viene salvata, copia negli appunti la posizione in cui il file è stato salvato. Puoi quindi incollarla ovunque sia possibile inserire del testo. Nota che deve esserci un gestore di appunti in esecuzione perché il percorso sia mantenuto negli appunti quando &spectacle; termina.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Accetta al clic-e-rilascio</guilabel
+></term>
+                    <listitem>
+                        <para
+>Se selezionata, accetta la regione selezionata non appena il mouse viene rilasciato nella modalità <guilabel
+>Regione rettangolare</guilabel
+>.</para>
+                        <para
+>Quando si seleziona una nuova regione ma non è disponibile una regione salvata in precedenza, le operazioni di click, trascinamento e rilascio del pulsante mouse dovrebbero catturare immediatamente la regione selezionata. Quando viene mostrata una regione salvata in precedenza, la regione salvata può essere ulteriormente manipolata e il salvataggio di questa regione richiede una conferma manuale (&Enter; o un doppio clic con il &LMB;). Facendo clic e trascinando al di fuori della regione salvata in precedenza provoca la cattura immediata della regione appena selezionata.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Ricorda l'area selezionata</guilabel
+></term>
+                    <listitem>
+                        <para
+>Come comportamento predefinito &spectacle; ricorda una selezione iniziale quando viene acquisita una regione rettangolare fino alla chiusura della finestra di &spectacle;. Puoi anche scegliere di far sì che &spectacle; non ricordi mai l'area selezionata, o che la ricordi tra diverse sessioni di cattura.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Salva</title>
+            <para
+>Quando usi la funzione <guilabel
+>Salva</guilabel
+> &spectacle; salva l'immagine con un nome di file predefinito nella cartella delle immagini (che si trova nella tua cartella home). Il nome di file predefinito include la data ed ora in cui l'immagine è stata acquisita.</para>
+
+            <para
+>La pagina <guilabel
+>Salva</guilabel
+> ti permette di impostare la posizione ed il nome di file predefiniti per il salvataggio. Facendo clic su questa opzione fa apparire una finestra di dialogo come la seguente: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Salva</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Dove salvare</guilabel
+></term>
+                    <listitem>
+                    <para
+>Nella casella di testo della posizione imposta la cartella dove vuoi salvare le schermate quando premi <guibutton
+>Salva</guibutton
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Qualità di compressione</guilabel
+></term>
+                    <listitem>
+                        <para
+>Scegli la qualità dell'immagine quando salvi con formati d'immagine a perdita di qualità come JPEG. Valori maggiori forniscono una qualità maggiore ma incrementano la dimensione del file. Consulta la <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>pagina di Wikipedia</ulink
+> per maggiori dettagli sui formati d'immagine usati in &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Nome file</guilabel
+></term>
+                    <listitem>
+                        <para
+>Imposta il nome del file predefinito per le schermate salvate.</para>
+                        <para
+>Puoi usare i seguenti segnaposti nel nome di file, che saranno sostituiti con il vero contenuto quando il file viene salvato:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: giorno</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: ora</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: mese</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: numero sequenziale con spaziatura a 4 cifre</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: secondo</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: titolo della finestra</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: anno (4 cifre)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: numero sequenziale</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: minuto</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: anni (2 cifre)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Puoi fare clic sui segnaposti nell'elenco di riferimento in basso per inserirli nella riga <guilabel
+>Nome file</guilabel
+>.</para>
+                        <para
+>Se esiste già un file con questo nome, sarà aggiunto un numero seriale in fondo al nome del file. Ad esempio, se il nome del file è <filename
+>Schermata</filename
+> e <filename
+>Schermata.png</filename
+> esiste già, l'immagine sarà salvata come <filename
+>Schermata-1.png</filename
+>.</para>
+                        <para
+>Usa la casella combinata accanto al campo di testo per selezionare il formato predefinito dell'immagine per le schermate. Consulta la <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>pagina di Wikipedia</ulink
+> per maggiori dettagli sui formati d'immagine usati in &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Scorciatoie</title>
+            <para
+>Questa pagina di configurazione può essere usata per cambiare le scorciatoie predefinite di &spectacle;. È possibile configurare le scorciatoie per avviare &spectacle; e catturare parti diverse del desktop. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Trascinamento</title>
+            <para
+>Un'immagine catturata può essere trascinata su un'altra applicazione o documento. Se l'applicazione è in grado di gestire le immagini, una copia dell'intera immagine viene inserita in essa.</para>
+
+            <para
+>Se trascini una schermata nella finestra di un gestore di file, apparirà una finestra in cui potrai decidere il nome del file ed il formato dell'immagine, e il file verrà inserito nella cartella indicata.</para>
+
+            <para
+>Se trascini la schermata in una casella di testo, verrà inserito il percorso al file temporaneo in cui è salvata la schermata. Questo è utile, per esempio, per caricare una schermata con un modulo Web o per allegare delle schermate a delle segnalazioni di errori sul <ulink url="https://bugs.kde.org/"
+>sistema di tracciamento degli errori di &kde;</ulink
+>.</para>
+
+            <para
+>Questo funziona con tutte le applicazioni che non raccolgono i dati delle immagini, ma cercano solo un &URL; nei dati MIME trascinati.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Riconoscimenti e licenza</title>
+
+        <para
+>Copyright del programma &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Parti di questo codice sono basate direttamente sul codice del progetto &ksnapshot;. Copyright &copy; 1997-2011 gli sviluppatori di &ksnapshot;. Informazioni dettagliate sull'assegnazione del copyright sono disponibile nelle intestazioni del codice sorgente.</para>
+
+        <para
+>Parti di questo codice sono basate direttamente sul codice del progetto &kwin;. Copyright &copy; 2008, 2013 gli sviluppatori di &kwin;. Informazioni dettagliate sull'assegnazione del copyright sono disponibile nelle intestazioni del codice sorgente.</para>
+
+        <para
+>Documentazione basata sulla documentazione originale di &ksnapshot;:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Traduzione italiana di Luigi Toscano <email
+>luigi.toscano@tiscali.it</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

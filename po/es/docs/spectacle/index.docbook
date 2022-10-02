@@ -1,0 +1,869 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Spanish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>Manual de &spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+> <firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>Aplicaciones 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle; es una aplicación para realizar capturas de pantalla del escritorio y editarlas. Puede capturar imágenes de todo el escritorio, de un único monitor, de la ventana activa actual, de la ventana que esté bajo el cursor o de una región rectangular de la pantalla. Estas imágenes pueden contener notas, se pueden imprimir, enviar a otras aplicaciones para que las procesen o guardar rápidamente en disco.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>captura de pantalla</keyword>
+            <keyword
+>capturas de pantalla</keyword>
+            <keyword
+>capturar la pantalla</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Introducción</title>
+
+        <para
+>&spectacle; es una aplicación para realizar capturas de pantalla del escritorio y editarlas. Puede capturar imágenes de todo el escritorio, de un único monitor, de la ventana activa actual, de la ventana que esté bajo el cursor o de una región rectangular de la pantalla. Estas imágenes pueden contener notas, se pueden imprimir, enviar a otras aplicaciones para que las procesen o guardar rápidamente en disco.</para>
+
+        <para
+>Por favor, informe de cualquier fallo o de sus peticiones de funcionalidades en el <ulink url="https://bugs.kde.org/"
+>sistema de seguimiento de fallos de &kde;</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>Inicio de &spectacle;</title>
+
+        <para
+>&spectacle; se puede iniciar de diversos modos, como se describe a continuación:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Puede encontrar &spectacle; en el menú del lanzador de aplicaciones, en <menuchoice
+><guisubmenu
+>Aplicaciones</guisubmenu
+><guisubmenu
+>Utilidades</guisubmenu
+><guimenuitem
+>Utilidad de capturas de pantalla &spectacle;</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>Al pulsar el botón <keysym
+>Imprimir Pantalla</keysym
+> del teclado (normalmente con la etiqueta <keycap
+>ImprPant</keycap
+> o similar) se lanzará &spectacle; de forma inmediata. Además, dispone de tres accesos rápidos de teclado adicionales para realizar capturas de pantalla y guardarlas en la carpeta por omisión para guardar sin necesidad de mostrar la interfaz de usuario:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Imprimir Pantalla</keysym
+></keycombo
+> realizará una captura de la ventana activa</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Imprimir Pantalla</keysym
+></keycombo
+> realizará una captura de todo el escritorio (es decir, de todos los monitores)</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Imprimir Pantalla</keysym
+></keycombo
+> realizará una captura de una región rectangular</para
+></listitem>
+                </itemizedlist>
+                <para
+>Puede definir la ubicación de destino para guardar imágenes y el nombre de archivo por omisión a usar iniciando &spectacle; normalmente, pulsando el botón <guibutton
+>Configurar...</guibutton
+> y yendo a la sección «Guardar».</para>
+            </listitem>
+            <listitem>
+                <para
+>También puede usar la línea de órdenes mínima de &krunner; (invocado con <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) para lanzar &spectacle;.</para>
+            </listitem>
+            <listitem>
+                <para
+>Puede iniciar &spectacle; desde la línea de órdenes. &spectacle; posee un buen juego de opciones para la línea de órdenes, incluido un modo de trabajo en segundo plano que puede usar desde un guion para realizar capturas de pantalla sin necesidad de mostrar la &GUI; ni de necesitar la intervención del usuario.</para>
+
+                <para
+>Para iniciar &spectacle; desde la línea de órdenes, escriba:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Para ver la lista completa de las opciones de la línea de órdenes y su explicación, escriba:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>Uso de &spectacle;</title>
+
+        <para
+>Una vez que se inicia &spectacle;, verá una ventana como la siguiente: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>La ventana principal de &spectacle;</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle; obtiene inmediatamente una imagen de todo su escritorio en cuanto se lanza, justo antes de que se muestre a sí mismo en la pantalla. Esto le permite crear rápidamente imágenes de capturas de todo el escritorio.</para>
+
+        <para
+>La captura obtenida por &spectacle; se muestra en la ventana de vista previa, que está situada en la parte izquierda de la ventana de la aplicación &spectacle;.</para>
+
+        <para
+>Puede guardar la imagen en cualquier lugar de su elección pulsando el botón <guibutton
+>Guardar como...</guibutton
+> o <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+>. Esto abre el diálogo estándar para guardar, donde puede elegir un archivo, la carpeta de destino y el formato en el que se guardará la captura de pantalla. Puede cambiar el nombre del archivo a cualquier cosa que desee, incluso el nombre de una captura guardada anteriormente.</para>
+
+        <para
+>Para guardar una captura de pantalla en el lugar por omisión, pulse la parte de la flecha del botón <guibutton
+>Guardar como...</guibutton
+> y pulse el botón <guimenuitem
+>Guardar</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). El nuevo modo de guardar capturas se recordará para la próxima vez. El lugar donde guardar y el nombre de archivo por omisión se pueden configurar, como se describirá más adelante.</para>
+
+        <para
+>Para guardar de forma inmediata la imagen y salir de &spectacle;, marque la casilla <guilabel
+>Salir tras guardar o copiar manualmente</guilabel
+>, pulse luego la parte de la flecha del botón <guibutton
+>Guardar como...</guibutton
+> y pulse la opción <guimenuitem
+>Guardar</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Esto hará que se guarde la imagen como archivo PNG en la carpeta <filename class="directory"
+>Imágenes</filename
+> y se saldrá de la aplicación inmediatamente. Como antes, este modo nuevo de guardar se usará la próxima vez.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Haciendo una captura de pantalla</title>
+
+            <para
+>Tras abrir &spectacle;, se realizará inmediatamente una captura de toda la pantalla por conveniencia, a menos que se haya indicado otra cosa en las opciones generales, y se mostrará una vista previa de ella en la ventana principal. Puede guardar esta captura usando los botones de la parte inferior de la ventana o realizar una nueva usando los controles que hay a la derecha de la vista previa.</para>
+
+            <para
+>Para descartar la captura de pantalla actual y realizar otra, pulse el botón <guibutton
+>Realizar nueva captura de pantalla</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Tras realizar una captura de pantalla, &spectacle; le mostrará un panel informativo con un enlace al archivo que contiene la captura de pantalla y le ofrece la posibilidad de <guibutton
+>Abrir la carpeta que lo contiene</guibutton
+>.</para>
+
+            <para
+>Puede configurar ciertas opciones en la parte derecha de la ventana de la aplicación antes de realizar una captura. Estas opciones le permiten seleccionar el área de la pantalla que se debe capturar, establecer una demora antes de capturar la imagen y configurar si el cursor del ratón y las decoraciones de la ventana se deben capturar junto a la imagen.</para>
+
+            <sect2>
+                <title
+>Modo de captura</title>
+
+                <para
+>Las preferencias del modo de captura le permiten definir el área de la pantalla que se debe capturar y si debe existir una demora entre la pulsación del botón <guibutton
+>Realizar nueva captura de pantalla</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) y la captura de la pantalla. También puede activar la casilla <guilabel
+>
+>Al pulsar</guilabel
+>, que desactiva la función de demora y realiza la captura en cuanto haga clic en cualquier parte de la pantalla tras pulsar el botón <guibutton
+>Realizar nueva captura de pantalla</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>La lista desplegable <guilabel
+>Área</guilabel
+> le permite definir el área de la pantalla que se debe capturar. Puede elegir cualquiera de las cinco opciones que se describen más adelante.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Pantalla completa (todos los monitores)</guilabel
+> realiza una captura de todo el escritorio, comprendiendo todas las salidas (todos los monitores, proyectores, etc.).</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Pantalla actual</guilabel
+> realiza una captura de pantalla de la salida que contenga el puntero del ratón.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Región rectangular</guilabel
+> le permite seleccionar una región rectangular del escritorio con el ratón. Esta región se puede extender a más de una salida.</para>
+
+                        <para
+>Este modo lo realiza la captura de forma inmediata, sino que le permite dibujar un rectángulo en la pantalla, que puede mover o cambiar de tamaño según sus necesidades. Una vez que haya terminado de dibujar el rectángulo de selección, haga doble clic en cualquier parte de la pantalla o pulse la tecla &Enter; del teclado para realizar la captura.</para>
+                        
+                        <para
+>Puede usar las teclas de las flechas para mover y ajustar el rectángulo. Puede mover el rectángulo pulsando las teclas de las flechas. Si mantiene pulsada la tecla &Shift; mientras pulsa las teclas de las flechas, moverá el rectángulo lentamente para poder ajustar la selección con precisión. Si mantiene pulsada la tecla &Alt; mientras pulsa las teclas de las flechas, podrá ajustar el tamaño del rectángulo.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Ventana actual</guilabel
+> realiza una captura de la ventana actualmente activa (la que contiene el foco). Es recomendable que use una demora en este modo para que le permita seleccionar y activar una determinada ventana antes de realizar la captura.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Ventana bajo el cursor</guilabel
+> realiza una captura de la ventana que esté bajo el cursor del ratón. Si el cursor está encima de un menú emergente, &spectacle; tratará de realizar una captura del menú y de la ventana a la que pertenece.</para>
+
+                        <para
+>Aunque esto funciona bien casi siempre, en algunos casos puede fallar la obtención de información sobre la ventana que contiene el menú. Cuando ocurre esto, &spectacle; recurre al modo antiguo de capturar la imagen automáticamente, realizando solo una captura del menú emergente. También puede forzar este modo antiguo de realizar capturas marcando la casilla <guilabel
+>Capturar solo la ventana emergente actual</guilabel
+>, en <guilabel
+>Opciones</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>El selector numérico <guilabel
+>Demora</guilabel
+> le permite fijar la demora entre la pulsación del botón <guibutton
+>Realizar nueva captura de pantalla</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) y la toma de la captura de pantalla. Puede fijar esta demora en incrementos de 1 segundo usando los botones del control numérico o el teclado.</para>
+                
+                <para
+>Al realizar una captura de pantalla con demora, &spectacle; muestra en el título de la ventana el tiempo que falta antes de realizar la captura y también hace que sea visible en el correspondiente elemento del gestor de tareas. El botón de &spectacle; en el gestor de tareas también muestra una barra de avance para que pueda hacerse una idea de cuándo se realizará la captura de pantalla.</para>
+                
+                <para
+>Mientras espera a que se obtenga la captura de pantalla con demora, puede restaurar la ventana de &spectacle;, donde el botón <guibutton
+>Realizar una nueva captura de pantalla</guibutton
+> se habrá convertido en un botón <guibutton
+>Cancelar</guibutton
+>. Aquí también se mostrará la barra de avance, ofreciéndole la oportunidad de detener la cuenta atrás.</para>
+
+                <para
+>Si marca la casilla <guilabel
+>Al pulsar</guilabel
+> se ignora la demora. Cuando está marcada esta casilla, al pulsar el botón <guibutton
+>Realizar nueva captura de pantalla</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) se oculta la ventana de &spectacle; y el cursor del ratón cambia a una cruceta. La captura de pantalla se realiza al pulsar el botón izquierdo del ratón, o se interrumpe si se pulsa cualquier otro botón del ratón. Tenga en cuenta que no puede interactuar con el escritorio usando el ratón mientras el cursor sea una cruceta, aunque puede usar el teclado.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Opciones</title>
+
+                <para
+>Las opciones le permiten seleccionar si se debe incluir el cursor del ratón en la captura de pantalla y si también se deben capturar las decoraciones de las ventanas de forma conjunta en la imagen de la ventana de la aplicación. En el modo <guilabel
+>Ventana bajo el cursor</guilabel
+>, también le permite seleccionar si &spectacle; debe capturar solo la imagen del menú emergente actual bajo el cursor, o si también se debe incluir la ventana que lo contiene. Finalmente, <guilabel
+>Salir tras guardar o copiar</guilabel
+> saldrá de &spectacle; tras cualquier operación de guardar o copiar.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Si marca la casilla <guilabel
+>Incluir el puntero del ratón</guilabel
+>, se incluye una imagen del puntero del ratón en la captura de pantalla.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Incluir barra de título y bordes de la ventana</guilabel
+> solo está activa cuando se ha seleccionado uno de los modos <guilabel
+>Ventana activa</guilabel
+> o <guilabel
+>Ventana bajo el cursor</guilabel
+> en la lista desplegable <guilabel
+>Área</guilabel
+>. Si marca esta opción, se incluirán los bordes de la ventana y su decoración en la captura de pantalla; por el contrario, si la desmarca, solo se realizará una captura del contenido de la ventana.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Capturar solo la ventana emergente actual</guilabel
+> solo está activa cuando se selecciona el modo <guilabel
+>Ventana bajo el cursor</guilabel
+> en la lista desplegable <guilabel
+>Área</guilabel
+>. Si marca esta opción, solo se capturará el menú emergente situado bajo el cursor, sin la ventana que lo contiene.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>La opción <guilabel
+>Salir tras guardar o copiar de forma manual</guilabel
+> saldrá de &spectacle; tras cualquier operación de guardar o copiar. Tenga en cuenta que una captura de pantalla copiada solo permanecerá activa si está usando un gestor del portapapeles que acepte imágenes. Puede configurar Klipper de KDE para ello haciendo clic con el botón derecho del ratón sobre su icono, seleccionando <guilabel
+>Configurar el portapapeles...</guilabel
+> y desmarcando <guilabel
+>Ignorar imágenes</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Funciones adicionales</title>
+
+        <sect1>
+            <title
+>Botones</title>
+
+            <para
+>Existen varios botones situados en la parte inferior de la ventana de &spectacle;. Sus funciones se describen a continuación:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Ayuda</guibutton
+></term>
+                    <listitem>
+                        <para
+>Le proporciona los elementos de menú comunes que se describen en el <ulink url="help:/fundamentals/menus.html#menus-help"
+>menú de ayuda</ulink
+> de los fundamentos de &kde;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Configurar...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Le proporciona acceso a la ventana de configuración de &spectacle;, donde puede cambiar las preferencias de la captura y el lugar y el nombre de archivo por omisión para guardar las capturas.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Anotar</guibutton
+></term>
+                    <listitem>
+                        <para
+>Abre una ventana de edición de notas que le ofrece varias herramientas de anotación:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Editor de anotaciones</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Pruebe las herramientas de anotaciones. Aquí puede encontrar todo lo necesario para describir sus capturas de pantalla: flechas, lápiz, marcadores, cuadros de texto, números, e incluso emoticonos. Puede cambiar los parámetros de la herramienta y añadir efectos (sombra, escala de grises y borde). </para>
+                        <para
+>Cuando crea que la anotación está terminada, pulse el botón <guibutton
+>Anotación terminada</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Herramientas</guibutton
+></term>
+                    <listitem>
+                        <para
+>Abre un menú desplegable que le ofrece varias herramientas:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Abrir la carpeta predeterminada de capturas</guimenuitem
+> resaltará la última captura guardada en el gestor de archivos por omisión</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Acceso al diálogo <guimenuitem
+>Imprimir</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Un abanico de programas externos para grabar la pantalla</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Exportar</guibutton
+></term>
+                    <listitem>
+                        <para
+>Abre un menú desplegable que le permitirá abrir directamente la captura de pantalla con todos los programas asociados con el tipo &MIME; PNG (gráficos de red portables). Dependiendo de los programas que tenga instalados, podrá abrir y editar la captura de pantalla en una aplicación de gráficos o en un visor.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Copiar imagen en el portapapeles/Copiar ubicación en el portapapeles</guibutton
+></term>
+                    <listitem>
+                        <para
+>Copia la captura de pantalla actual o su ubicación en el portapapeles. También puede usar el acceso rápido de teclado <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> para el mismo fin.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Guardar como</guibutton
+></term>
+                    <listitem>
+                        <para
+>Guarda la captura de pantalla como una imagen PNG en la carpeta «Imágenes» por omisión y se sale inmediatamente de la aplicación.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Configurar</title>
+            <para
+>Use el botón <guibutton
+>Configurar...</guibutton
+> para abrir el diálogo de configuración.</para>
+            <sect2>
+            <title
+>General</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>General</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Al iniciar Spectacle</guilabel
+></term>
+                    <listitem>
+                        <para
+>Permite <guilabel
+>Realizar una captura de la pantalla completa</guilabel
+>, usar el último modo de captura usado o no realizar una captura de forma automática. El último modo de captura usado es el que se indica en «Modo de captura».</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Tras realizar una captura de pantalla</guilabel
+></term>
+                    <listitem>
+                        <para
+>Permite <guilabel
+>guardar el archivo en la carpeta predeterminada</guilabel
+>, desactivar cualquier acción del portapapeles, copiar la imagen en el portapapeles o copiar la ruta de la captura de pantalla en el portapapeles. La ubicación predeterminada se puede configurar usando la página de configuración <link linkend="save-page"
+>Guardar</link
+>. Se puede <guilabel
+>Copiar la ubicación del archivo en el portapapeles</guilabel
+>. Así podrá pegarla en cualquier lugar que acepte una entrada de texto. Tenga en cuenta que debe estar ejecutando un gestor del portapapeles para poder guardar la ruta en el portapapeles tras cerrar &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Pulsar la tecla de captura de pantalla para</guilabel
+></term>
+                    <listitem>
+                        <para
+>Cuando se pulsa un acceso rápido para realizar una captura de pantalla y &spectacle; está todavía en ejecución, es posible configurar el comportamiento del sistema de capturas de pantalla. Puede escoger entre realizar una nueva captura de pantalla, abrir una nueva ventana de &spectacle; o devolver el foco a la ventana de &spectacle; existente.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Usar fondo claro</guilabel
+></term>
+                    <listitem>
+                        <para
+>Usar un color de fondo claro para enmascarar el área remarcada en el sector de región rectangular. Esto facilita la visibilidad de los cursores oscuros.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Mostrar la lupa</guilabel
+></term>
+                    <listitem>
+                        <para
+>Cuando se guarda una captura de pantalla, copiar la ubicación en la que se ha guardado el archivo en el portapapeles. Así podrá pegarla en cualquier lugar que acepte una entrada de texto. Tenga en cuenta que debe estar ejecutando un gestor del portapapeles para poder guardar la ruta en el portapapeles tras cerrar &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Aceptar al hacer clic y soltar</guilabel
+></term>
+                    <listitem>
+                        <para
+>Si se marca, aceptar la región seleccionada en cuanto se libera el botón del ratón en el modo de <guilabel
+>Región rectangular</guilabel
+>.</para>
+                        <para
+>Cuando se selecciona una nueva región sin que se haya guardado previamente una región, pulsar, arrastrar y soltar el botón del ratón debe capturar de forma inmediata la región seleccionada. Si se muestra una región guardada previamente, la región guardada se puede modificar, siendo necesaria confirmación manual para guardar esta región (pulse &Enter; o haga doble clic con el &LMB;). Si pulsa y arrastra fuera de la región anteriormente guardada, se captura la nueva región seleccionada de manera inmediata.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Recordar el área seleccionada</guilabel
+></term>
+                    <listitem>
+                        <para
+>Por omisión, &spectacle; recuerda la selección inicial cuando realice una captura de una región rectangular hasta que cierre la ventana de &spectacle;. También puede hacer que &spectacle; no recuerde el área seleccionada o que la recuerde entre sesiones de captura de pantalla.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Guardar</title>
+            <para
+>Cuando use la función <guilabel
+>Guardar</guilabel
+>, &spectacle; guardará la imagen con un nombre de archivo por omisión en la carpeta «Imágenes» que hay dentro de su carpeta personal. El nombre de archivo por omisión incluye la fecha y la hora en la que se ha realizado la captura.</para>
+
+            <para
+>La página <guilabel
+>Guardar</guilabel
+> le permite definir la ubicación y el nombre de archivo a guardar por omisión. Al pulsar sobre esta opción se le muestra un diálogo como el siguiente: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Guardar</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Ubicación para guardar</guilabel
+></term>
+                    <listitem>
+                    <para
+>En el campo de texto de la ubicación, defina la carpeta en la que desea guardar las capturas de pantalla cuando pulse <guibutton
+>Guardar</guibutton
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Calidad de compresión</guilabel
+></term>
+                    <listitem>
+                        <para
+>Escoger la calidad de la imagen al guardarla con formatos de imagen con pérdida de calidad, como JPEG. Los valores más altos proporcionan mejor calidad, aunque aumentan el tamaño del archivo. Consulte la <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>página de la Wikipedia</ulink
+> para más detalles sobre los formatos de imagen que se usan en &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Nombre de archivo</guilabel
+></term>
+                    <listitem>
+                        <para
+>Definir un nombre de archivo por omisión para las capturas guardadas.</para>
+                        <para
+>Puede usar las siguientes variables en el nombre de archivo, que se sustituirán por su correspondiente texto cuando se guarde el archivo:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: día</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: hora</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: mes</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: número secuencial formado por N dígitos</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: segundos</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: título de la ventana</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: año (4 dígitos)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: número secuencial</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: minutos</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: año (2 dígitos)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Puede pulsar sobre los parámetros de sustitución en la lista de referencia inferior para insertarlos en la línea <guilabel
+>Nombre de archivo</guilabel
+>.</para>
+                        <para
+>Si ya existiera un archivo con este nombre, se añadirá un número de serie al nombre del archivo. Por ejemplo, si el nombre del archivo es <filename
+>Captura</filename
+> y ya existe <filename
+>Captura.png</filename
+>, la imagen se guardará como <filename
+>Captura-1.png</filename
+>.</para>
+                        <para
+>Use la lista desplegable que hay junto al campo de texto para seleccionar el formato de imagen predeterminado para las capturas de pantalla. Consulte la <ulink url="https://es.wikipedia.org/wiki/Formatos_de_archivos_de_imagen"
+>página de la Wikipedia</ulink
+> para más detalles sobre los formatos de imagen que se usan en &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Accesos rápidos</title>
+            <para
+>Puede usar esta página de configuración para cambiar los accesos rápidos predeterminados de &spectacle;. Puede configurar accesos rápidos para iniciar &spectacle; y capturar diferentes partes del escritorio. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Arrastrar y soltar</title>
+            <para
+>Puede arrastrar una imagen capturada a otra aplicación o documento. Si dicha aplicación es capaz de manejar imágenes, se insertará en ella una copia de la imagen arrastrada.</para>
+
+            <para
+>Si arrastra una captura de pantalla hasta una ventana del gestor de archivos, se le mostrará un diálogo donde podrá editar el nombre del archivo y seleccionar el formato de la imagen. El archivo se insertará en la carpeta actual.</para>
+
+            <para
+>Si arrastra la captura de pantalla a un campo de texto, se mostrará en él la ruta del archivo temporal que se ha guardado. Esto resulta útil, por ejemplo, para enviar capturas de pantalla a foros web o para adjuntar capturas de pantalla a informes de errores en el <ulink url="https://bugs.kde.org/"
+>sistema de seguimiento de fallos de &kde;</ulink
+>.</para>
+
+            <para
+>Esto funciona con todos los clientes que no recojan los datos de la imagen, sino que solo buscan un &URL; en los datos MIME de la imagen que haya arrastrado.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Créditos y licencia</title>
+
+        <para
+>Copyright del programa &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Algunas partes del código están basadas directamente en código del proyecto &ksnapshot;, Copyright &copy; 1997-2011 por los desarrolladores de &ksnapshot;. Existen declaraciones de copyright más detalladas en las cabeceras del código fuente.</para>
+
+        <para
+>Algunas partes del código están basadas directamente en código del proyecto &kwin;, Copyright &copy; 2008, 2013 por los desarrolladores de &kwin;. Existen declaraciones de copyright más detalladas en las cabeceras del código fuente.</para>
+
+        <para
+>La documentación está basada en la documentación original de &ksnapshot;:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Traducido por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Catalan  "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Manual d'usuari de l'Spectacle</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Pàgina man de l'Spectacle.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>11 d'abril de 2021</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>Aplicacions KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Utilitat de captura de pantalla</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Opcions de l'Spectacle</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Descripció</title>
+<para
+>L'<command
+>spectacle</command
+> és una senzilla aplicació per a prendre captures de pantalla de l'escriptori. Pot capturar imatges de tot l'escriptori, un sol monitor, la finestra activa, la finestra sota el ratolí o d'una regió rectangular de la pantalla. Les imatges es poden imprimir, enviar a altres aplicacions per a la seva manipulació o desar-les com estan.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Opcions de l'Spectacle</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Captura l'escriptori sencer (predeterminat).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Captura el monitor actual.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Captura la finestra activa.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Captura la finestra actual sota el cursor, inclosos els menús emergents dels pares.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Captura la finestra actual sota el cursor, excloent els menús emergents dels pares.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Captura una regió rectangular de la pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Llança l'&spectacle; sense prendre una captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Inicia en el mode &IGU; (predeterminat).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Pren una captura de pantalla i surt sense mostrar la &IGU;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Inicia en el mode «activació del DBus».</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>En el mode segon pla, no mostra cap notificació emergent quan es pren la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>nomFitxer</replaceable
+></option
+></term>
+<listitem>
+<para
+>En el mode segon pla, desa una imatge a un fitxer especificat (<replaceable
+>nomFitxer</replaceable
+>).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>retardMseg</replaceable
+></option
+></term>
+<listitem>
+<para
+>En el mode segon pla, retard abans d'informar de prendre la captura (en mil·lisegons).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>En el mode segon pla, copia la captura de pantalla només al porta-retalls, a menys que també s'empri «-o».</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>En el mode segon pla, copia al porta-retalls el camí de fitxer de la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Espera un clic abans de prendre la captura de pantalla. Invalida el retard.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Inicia una instància nova de la IGU de l'Spectacle sense registrar al DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>En mode segon pla, inclou el punter a la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>En mode segon pla, no inclou les decoracions de la finestra a la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Comentaris</title>
+<para
+>A l'IRC, irc.libera.chat #kde o mitjançant correu electrònic, kde-graphics-devel@kde.org o al lloc web, &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Vegeu també</title>
+<simplelist>
+<member
+>Hi ha disponible documentació d'usuari més detallada des de <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (podeu emprar aquest &URL; al &konqueror; o bé executar <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>).</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>També hi ha més informació disponible al lloc web <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Drets d'autor</title>
+<para
+>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para
+>Llicència pública general de GNU versió 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

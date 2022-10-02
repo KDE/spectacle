@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Spanish "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Manual del usuario de Spectacle</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Página de man de Spectacle.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2021-04-11</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>Aplicaciones de KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Utilidad de captura de pantalla</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Opciones de Spectacle</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Descripción</title>
+<para
+><command
+>spectacle</command
+> es una aplicación sencilla para realizar capturas del escritorio. Puede capturar imágenes de la totalidad del escritorio, de un único monitor, de la ventana activa, de la ventana que está bajo el cursor o de un área rectangular de la pantalla. Las imágenes se pueden imprimir, enviar a otras aplicaciones o guardar tal cual de forma instantánea.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Opciones de Spectacle</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Capturar todo el escritorio (por omisión).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Capturar el monitor actual.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Capturar la ventana activa.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Capturar la ventana que está bajo el cursor, incluyendo ventanas de nivel superior y menús emergentes.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Capturar la ventana que está bajo el cursor, excluyendo ventanas de nivel superior y menús emergentes.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Capturar una región rectangular de la pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Iniciar Spectacle sin hacer una captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Empezar en el modo con interfaz gráfica de usuario (por omisión).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Realizar una captura de pantalla y salir sin mostrar la interfaz gráfica de usuario.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Empezar en el modo de activación de DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, no mostrar una notificación cuando se realiza una captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>archivo</replaceable
+></option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, guardar la imagen en el <replaceable
+>archivo</replaceable
+> indicado.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>milisegundos</replaceable
+></option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, hacer una pausa antes de realizar la captura (en milisegundos).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, copiar la captura de pantalla solo en el portapapeles, excepto si también se ha usado -o.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, copiar la ruta del archivo de la captura de pantalla en el portapapeles.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Esperar un clic antes de realizar la captura de pantalla. Invalida la demora.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Inicia una nueva instancia gráfica de Spectacle sin registrarla en DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, incluir el puntero en la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>En el modo de segundo plano, no incluir las decoraciones de las ventanas en la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Comentarios</title>
+<para
+>A través de IRC, en irc.libera.chat #kde, por correo electrónico, a kde-graphics-devel@kde.org, o a través de la web, &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Consulte también</title>
+<simplelist>
+<member
+>Dispone de documentación de usuario más detallada en <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (introduzca dicha <acronym
+>URL</acronym
+> en &konqueror; o ejecute <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>).</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>También dispone de más información en <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>.</member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Copyright</title>
+<para
+>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para
+>Licencia: GNU General Public versión 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

@@ -1,0 +1,313 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % German "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Spectacle-Benutzerhandbuch</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Spectacle-Benutzerhandbuch</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2021-04-11</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>KDE-Anwendungen</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Dienstprogramm für Bildschirmfotos</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Spectacle-Optionen</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Beschreibung</title>
+<para
+><command
+>spectacle</command
+> ist eine einfache Anwendung für Aufnahmen des Bildschirms der Arbeitsfläche. Sie können die gesamte Arbeitsfläche, einen einzelnen Bildschirm, das zur Zeit aktive Fenster, das Fenster unter der Maus oder einen rechteckigen Bereich des Bildschirms aufnehmen. Die Aufnahmen können Sie drucken, mit anderen Anwendungen zur Bearbeitung öffnen oder direkt speichern.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Spectacle-Optionen</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Die gesamte Arbeitsfläche aufnehmen (Voreinstellung).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Den aktuellen Bildschirm aufnehmen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Das aktive Fenster aufnehmen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-Elemente (Menüs, Kurzinfos usw.) werden mit dem übergeordneten Fenster aufgenommen..</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-Elemente (Menüs, Kurzinfos usw.) werden ohne das übergeordnete Fenster aufgenommen..</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Einen rechteckigen Bereich aufnehmen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Mit grafischer Oberfläche starten (Standard).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Ein Bildschirmfoto aufnehmen und ohne Anzeige der grafischen Oberfläche beenden.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Im DBus-Aktivierungsmodus starten.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus keine Benachrichtigung anzeigen, wenn das Bildschirmfoto aufgenommen wurde.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>fileName</replaceable
+></option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus das Bild in die angegebene Datei <replaceable
+>fileName</replaceable
+> speichern.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>delayMsec</replaceable
+></option
+></term>
+<listitem>
+<para
+>Verzögerung in Millisekunden vor der Aufnahme im Hintergrundmodus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --clipboard</option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus das Bild in die Zwischenablage kopieren.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Das Bildschirmfoto bei Mausklick aufnehmen. Die Verzögerung wird so nicht beachtet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Startet eine neue GUI-Instanz von Spectacle ohne Registrierung am DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus Mauszeiger im Bildschirmfoto anzeigen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus Fensterdekoration im Bildschirmfoto nicht anzeigen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Rückmeldung</title>
+<para
+>Im IRC-Kanal #kde auf irc.libera.chat, über E-Mails an die Mailingliste kde-graphics-devel@kde.org oder im Internet auf der Seite &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Siehe auch</title>
+<simplelist>
+<member
+>Ausführlichere Informationen finden Sie mit <ulink url="help:/spectacle"
+>help:help:/spectacle</ulink
+>. Sie können diese <acronym
+>URL</acronym
+> in der Adressleiste von &konqueror; eingeben oder führen Sie <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+> aus.</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>Weitere Informationen finden Sie auf der Webseite <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Copyright</title>
+<para
+>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para
+>Lizenz: GNU General Public License Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

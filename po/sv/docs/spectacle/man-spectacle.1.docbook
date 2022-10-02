@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Swedish "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Spectacle användarmanual</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Spectacle manualsida.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2021-04-11</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>KDE-program</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Verktyg för att ta skärmbilder</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Spectacle-väljare</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Beskrivning</title>
+<para
+><command
+>spectacle</command
+> är ett enkelt program för att ta skärmbilder av skrivbordet. Det kan ta bilder av hela skrivbordet, en enda bildskärm, fönstret som för närvarande är aktivt, fönstret som för närvarande är under musen, eller ett rektangulärt skärmområde. Bilderna kan därefter skrivas ut, skickas till andra program för behandling, eller snabbt sparas som de är.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Spectacle-väljare</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Ta en bild av hela skrivbordet (förval).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Ta en bild av aktuell bildskärm.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Ta en bild av det aktiva fönstret.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Ta en bild av aktuellt fönster under pekaren, inklusive tillhörande fönster för menyer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Ta en bild av aktuellt fönster under pekaren, exklusive tillhörande fönster för menyer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Ta en bild av ett rektangulärt område på skärmen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Starta Spectacle utan att ta en skärmbild.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Starta med grafiskt gränssnitt (förval).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Ta en skärmbild och avsluta utan att  visa det grafiska användargränssnittet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Starta med D-Bus aktiveringsläge.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>I bakgrundsläge, visa inte en underrättelse när skärmbilden har tagits.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>filnamn</replaceable
+></option
+></term>
+<listitem>
+<para
+>I bakgrundsläge, spara bilden i angiven fil <replaceable
+>filnamn</replaceable
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>ms-fördröjning</replaceable
+></option
+></term>
+<listitem>
+<para
+>I bakgrundsläge, fördröjning innan skärmbilden tas (i millisekunder).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>I bakgrundsläge, kopiera bara skärmbilden till klippbordet, om inte -o också används.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>I bakgrundsläge, kopiera skärmbilden till klippbordet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Vänta på ett klick innan en skärmbild tas. Gör fördröjning ogiltig.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Starta en ny instans av Spectacles grafiska användargränssnitt utan att registrera med D-Bus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>Inkludera pekare på skärmbilden i bakgrundsläge.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>Inkludera inte fönsterdekorationer på skärmbilden i bakgrundsläge.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Återkoppling</title>
+<para
+>På IRC, irc.libera.chat #kde, via e-post kde-graphics-devel@kde.org, eller på webben &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Se också</title>
+<simplelist>
+<member
+>Mer detaljerad användardokumentation är tillgänglig med <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (skriv antingen in webbadressen i &konqueror;, eller kör <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>)</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>Det finns också ytterligare information tillgänglig på <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Copyright</title>
+<para
+>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para
+>Licens: GNU General Public Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>http://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

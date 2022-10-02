@@ -1,0 +1,555 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "Spectacle">
+  <!ENTITY kappname "&spectacle;">
+  <!ENTITY package "kdegraphics">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY Boudhayan.Gupta "<personname
+><firstname
+>Boudhayan</firstname
+><surname
+>Gupta</surname
+></personname
+>">
+  <!ENTITY Boudhayan.Gupta.mail "<email
+>bgupta@kde.org</email
+>">
+]>
+
+<book id="spectacle" lang="&language;">
+	<bookinfo>
+		<title
+>Manual do &spectacle;</title>
+
+		<authorgroup>
+			<author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+			<othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+			<othercredit role="translator"
+><firstname
+>André Marcelo</firstname
+><surname
+>Alvarenga</surname
+><affiliation
+><address
+><email
+>alvarenga@kde.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+		</authorgroup>
+
+		<copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+		<copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+		<copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+		<legalnotice
+>&FDLNotice;</legalnotice>
+
+		<date
+>17/10/2015</date>
+		<releaseinfo
+>15.12.0</releaseinfo>
+
+		<abstract>
+			<para
+>&spectacle; é um aplicativo simples para capturar imagens da tela. É capaz de capturar imagens da tela inteira, de apenas um monitor, da janela ativa, da janela que estiver sob o ponteiro do mouse ou de uma região retangular. As imagens podem ser impressas, enviadas para outros aplicativos ou salvas em diversos formatos.</para>
+		</abstract>
+
+		<keywordset>
+			<keyword
+>KDE</keyword>
+			<keyword
+>&spectacle;</keyword>
+			<keyword
+>kdegraphics</keyword>
+			<keyword
+>Captura de tela</keyword>
+			<keyword
+>captura da tela</keyword>
+			<keyword
+>imagem da tela</keyword>
+		</keywordset>
+	</bookinfo>
+
+	<chapter id="introduction">
+	    <title
+>Introdução</title>
+
+	    <para
+>&spectacle; é um aplicativo simples para capturar imagens da tela. É capaz de capturar imagens da tela inteira, de apenas um monitor, da janela ativa, da janela que estiver sob o ponteiro do mouse ou de uma região retangular. As imagens podem ser impressas, enviadas para outros aplicativos ou salvas em diversos formatos.</para>
+
+	    <para
+>Comunique quaisquer problemas ou solicitações de novos recursos no <ulink url="http://bugs.kde.org/"
+>Sistema de registro de erros do &kde;</ulink
+>.</para>
+	</chapter>
+
+	<chapter id="starting">
+		<title
+>Iniciando o &spectacle;</title>
+
+		<para
+>O &spectacle; pode ser iniciado por uma das várias maneiras descritas a seguir:</para>
+
+		<itemizedlist>
+			<listitem>
+				<para
+>No menu de lançamento de aplicativos, o &spectacle; pode ser encontrado em <menuchoice
+><guisubmenu
+>Aplicativos</guisubmenu
+><guisubmenu
+>Gráficos</guisubmenu
+><guimenuitem
+>&spectacle; (Programa de captura de tela)</guimenuitem
+></menuchoice
+>.</para>
+			</listitem>
+			<listitem>
+                <para
+>Se pressionar a tecla <keycap
+>Print Screen</keycap
+> no teclado, o &spectacle; será executado imediatamente. Além disso, estão disponíveis mais duas combinações de teclas. Se pressionar <keycombo action="simul"
+><keycap
+>Meta</keycap
+><keycap
+>Print Screen</keycap
+></keycombo
+>, irá capturar uma imagem da janela ativa e salvá-la na sua pasta padrão, enquanto que pressionar <keycombo action="simul"
+>&Shift;<keycap
+>Print Screen</keycap
+></keycombo
+>, irá obter uma imagem da sua área de trabalho inteira e também salvá-la na sua pasta padrão. Nessas duas últimas formas, o programa será executado sem mostrar a interface.</para>
+
+                <para
+>O nome do arquivo e a pasta padrão para salvar as imagens podem ser configurados, iniciando o &spectacle; normalmente, clicar na seta ao lado do botão <guibutton
+>Salvar e sair</guibutton
+> e, então, selecionar a o item <guimenuitem
+>Configurar as opções de gravação</guimenuitem
+> no menu.</para>
+			</listitem>
+			<listitem>
+				<para
+>A mini linha de comandos &krunner; (carregada com a combinação de teclas <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) também pode ser usada para iniciar o &spectacle;.</para>
+			</listitem>
+			<listitem>
+				<para
+>O &spectacle; pode ser iniciado a partir da linha de comando. Ele tem um amplo conjunto de opções para essa forma de execução, incluindo um modo em segundo plano que poderá ser usado para criar um script para capturar imagens sem mostrar a interface ou sem precisar de qualquer interação do usuário.</para>
+
+				<para
+>Para iniciar o &spectacle; a partir da linha de comando, digite:</para>
+				<screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                                </screen>
+
+				<para
+>Para ver a lista completa das opções da linha de comando e uma breve explicação, digite:</para>
+				<screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                                </screen>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+
+	<chapter id="using">
+		<title
+>Como usar o &spectacle;</title>
+
+		<para
+>Assim que o &spectacle; iniciar será apresentada uma janela como esta: <mediaobject>
+				<imageobject>
+					<imagedata fileref="MainWindow.png" format="PNG"/>
+				</imageobject>
+				<textobject>
+					<phrase
+>Janela principal do &spectacle;</phrase>
+				</textobject>
+			</mediaobject>
+		</para>
+
+		<para
+>O &spectacle; captura uma imagem de toda a sua área de trabalho imediatamente após ter sido iniciado, mas antes de aparecer na tela. Isso permite-lhe criar rapidamente imagens da tela inteira.</para>
+
+		<para
+>A imagem capturada pelo &spectacle; é apresentada na janela de visualização que aparece no lado esquerdo da janela do aplicativo.</para>
+
+		<para
+>Para salvar a imagem rapidamente e sair do &spectacle;, clique no botão <guibutton
+>Salvar e sair</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+>). Por padrão, a imagem será salva em um arquivo no formato PNG, na sua pasta de imagens padrão e fechar o aplicativo. A pasta e o nome de arquivo padrão poderão ser configurados, como descrito mais adiante.</para>
+
+		<para
+>A imagem pode ser salva se clicar na seta que exite no botão <guibutton
+>Salvar e sair</guibutton
+> e depois na opção <guimenuitem
+>Salvar como...</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+>). Será aberta a janela padrão para salvar arquivos no &kde;, para que possa escolher o nome do arquivo, a localização da pasta e o formato que escolher para sua imagem. O nome indicado para o arquivo poderá, inclusive, ter o nome de uma imagem salva anteriormente. Também é possível selecionar a opção <guimenuitem
+>Salvar...</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>), que irá salvar a imagem com o nome e na pasta definidos como padrão.</para>
+
+		<sect1 id="taking-screenshot">
+			<title
+>Capturar uma imagem</title>
+
+			<para
+>Para descartar a imagem atual e obter outra, clique no botão <guibutton
+>Capturar uma nova imagem</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+			<para
+>Pode-se configurar determinadas opções no lado direito da janela do aplicativo, antes de capturar uma nova imagem. Essas opções permitem-lhe selecionar a área da tela que será capturada, definir um tempo de espera até a captura da imagem e configurar se o ponteiro do mouse e/ou as decorações da janela deverão ser capturadas em conjunto com a imagem.</para>
+
+			<sect2>
+				<title
+>Modo de captura</title>
+
+				<para
+>A configuração do modo de captura permite-lhe definir a área da tela que deverá ser capturada e se deve existir um tempo de espera entre clicar no botão <guibutton
+>Capturar uma nova imagem</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) e efetuar a captura da imagem. Também poderá ativar a opção <guilabel
+>Ao clicar</guilabel
+>, que irá desativar a função de atraso e efetuar a captura da imagem após o clique em algum local da tela. Nesse caso, é necessário primeiro clicar no botão <guibutton
+>Capturar uma nova imagem</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+				<para
+>A lista da <guilabel
+>Área</guilabel
+> permite-lhe definir a área da tela que deverá ser capturada. Existem cinco opções para escolher, como descrito em baixo.</para>
+
+				<itemizedlist>
+					<listitem>
+						<para
+>A opção <guilabel
+>Tela inteira (todos os monitores)</guilabel
+> captura uma imagem da sua área de trabalho completa, incluindo todas as saídas e monitores, projetores, etc.</para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Tela atual</guilabel
+> captura uma imagem da saída na qual o ponteiro do mouse estiver posicionado.</para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Janela ativa</guilabel
+> captura uma imagem da janela que estiver em primeiro plano. Pode ser uma boa opção inserir um tempo de espera neste modo, de forma a garantir o tempo necessário para selecionar e ativar uma janela antes de capturar a imagem.</para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Janela sob o cursor</guilabel
+> captura uma imagem da janela que estiver sob o ponteiro do mouse. Se o ponteiro estiver sobre um menu, o &spectacle; tenta capturar a imagem do menu, assim como da sua janela-mãe.</para>
+
+						<para
+>Embora isso funcione na maioria das vezes, em algumas poderá não conseguir obter informações sobre a janela-mãe. Nesse caso, o &spectacle; retorna à forma tradicional de captura automática de imagem, capturando apenas uma imagem do menu. Também é possível forçar essa forma tradicional de captura de imagem, assinalando a opção <guilabel
+>Capturar apenas a mensagem atual</guilabel
+> nas <guilabel
+>Opções de conteúdo</guilabel
+></para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Região retangular</guilabel
+> permite-lhe selecionar uma região retangular da sua área de trabalho com o seu mouse. Essa região poderá estar espalhada por saídas diferentes.</para>
+
+						<para
+>Este modo não captura uma imagem imediatamente, mas permite-lhe desenhar um retângulo na sua tela, que poderá ser movido e dimensionado conforme a necessidade. Assim que o retângulo da seleção desejada for desenhado, se usar o clique duplo sobre qualquer ponto da tela ou pressionar a tecla &Enter; no teclado, irá capturar a imagem.</para>
+					</listitem>
+				</itemizedlist>
+
+				<para
+>O campo incremental <guilabel
+>Atraso</guilabel
+> permite-lhe definir o tempo de espera entre clicar no botão <guibutton
+>Capturar uma nova imagem</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) e a captura da imagem. Esse tempo pode ser ajustado com incrementos de 0,1 segundo (100 milissegundos).</para>
+
+				<para
+>Se ativar a opção <guilabel
+>Ao clicar</guilabel
+> irá substituir o atraso. Quando a opção estiver assinalada, ao clicar no botão <guibutton
+>Capturar uma nova imagem</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>), a janela do &spectacle; se ocultará o cursor do mouse será alterado para uma forma de mira. A imagem será capturada ao clicar com o botão esquerdo do mouse ou, se clicar qualquer outro botão, a ação será cancelada. Lembre-se de que não poderá interagir com o ambiente de trabalho com o mouse enquanto o ponteiro estiver em forma de mira, mas poderá usar o teclado.</para>
+			</sect2>
+
+			<sect2>
+				<title
+>Opções de conteúdo</title>
+
+				<para
+>A configuração das opções de conteúdo permite-lhe selecionar se o ponteiro do mouse deverá ser incluído nas imagens capturadas e se deseja incluir as decorações da janela em conjunto com a imagem da janela de um aplicativo. No modo <guilabel
+>Janela sob o cursor</guilabel
+>, também é possível selecionar se o &spectacle; deve apenas capturar a imagem do menu que estiver visível sob o cursor ou incluir a janela-mãe.</para>
+
+				<itemizedlist>
+					<listitem>
+						<para
+>Se ativar a opção <guilabel
+>Incluir ponteiro do mouse</guilabel
+>, a imagem do ponteiro do mouse irá integrar a imagem capturada.</para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Incluir as bordas e a barra de título da janela</guilabel
+> só ficará ativa quando o modo <guilabel
+>Janela ativa</guilabel
+> ou o <guilabel
+>Janela sob o cursor</guilabel
+> estiver selecionado na lista da <guilabel
+>Área de captura</guilabel
+>. Se assinalar esta opção, as bordas e a decoração da janela serão incluídas na imagem capturada, enquanto que desmarcá-la irá gerar uma imagem apenas do conteúdo da janela.</para>
+					</listitem>
+					<listitem>
+						<para
+>A opção <guilabel
+>Capturar apenas a mensagem atual</guilabel
+> só fica ativa quando o modo <guilabel
+>Janela sob o cursor</guilabel
+> estiver selecionado na lista da <guilabel
+>Área</guilabel
+>. Assinalar esta opção irá capturar apenas o menu que estiver sob o cursor, sem sua janela-mãe.</para>
+					</listitem>
+				</itemizedlist>
+			</sect2>
+		</sect1>
+	</chapter>
+
+	<chapter id="additional-functionality">
+		<title
+>Funcionalidades adicionais</title>
+
+		<sect1>
+			<title
+>Botões</title>
+
+			<para
+>Há cinco botões localizados na parte inferior da janela do &spectacle;. Suas funções estão descritas a seguir:</para>
+
+			<variablelist>
+				<varlistentry>
+					<term
+><guibutton
+>Ajuda</guibutton
+></term>
+					<listitem>
+						<para
+>Este botão apresenta-lhe um menu onde poderá abrir o <guimenuitem
+>Manual do &spectacle;</guimenuitem
+>, relatar um erro, mudar o idioma do aplicativo ou obter algumas informações <guimenuitem
+>Sobre o &spectacle;</guimenuitem
+> e <guimenuitem
+>Sobre o &kde;</guimenuitem
+>.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term
+><guibutton
+>Abrir com...</guibutton
+></term>
+					<listitem>
+						<para
+>Este menu permite que a imagem capturada seja aberta diretamente em qualquer um dos programas que estiverem associados ao tipo MIME PNG (Portable Network Graphics). Dependendo de quais programas estiverem instalados, será possível abrir e editar a imagem capturada em seus aplicativos gráficos ou visualizadores preferidos.</para>
+
+						<para
+>Além disso, se tiver os <application
+>plugins do KIPI</application
+> instalados, será capaz de enviar as imagens capturadas por e-mail e também exportá-las diretamente para redes sociais ou páginas Web.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term
+><guibutton
+>Copiar para a área de transferência</guibutton
+></term>
+					<listitem>
+						<para
+>Este botão copia a imagem atual para a área de transferência. Também é possível usar as teclas de atalho <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> para esse fim.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term
+><guibutton
+>Salvar e sair</guibutton
+></term>
+					<listitem>
+						<para
+>Clicar neste botão irá salvar a imagem capturada como uma imagem PNG na sua pasta de imagens padrão e depois fechar do aplicativo.</para>
+
+						<para
+>Além disso, se clicar na seta do lado direito do botão, um menu lhe permitirá <guilabel
+>Salvar</guilabel
+> a imagem, salvá-la com outro nome, localização e formato (<guilabel
+>Salvar como...</guilabel
+>), <guilabel
+>Imprimir</guilabel
+> a imagem e configurar as opções padrão, como o local de gravação padrão e qual o padrão de nomes para usar nos arquivos.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term
+><guibutton
+>Descartar</guibutton
+></term>
+					<listitem>
+						<para
+>Descarta a imagem capturada e sai do aplicativo.</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</sect1>
+
+		<sect1>
+			<title
+>Configurar as opções de gravação</title>
+			<para
+>Quando usar as funções <guilabel
+>Salvar e sair</guilabel
+> ou <guilabel
+>Salvar</guilabel
+>, o &spectacle; salva a imagem com um nome de arquivo padrão, na pasta de imagens da sua pasta pessoal. O nome do arquivo padrão inclui a data e hora em que a imagem foi capturada.</para>
+
+			<para
+>A opção para <guilabel
+>Configurar as opções de gravação</guilabel
+> permite-lhe definir o local e o padrão de nomes dos arquivos a salvar. Se clicar nessa opção, irá abrir uma caixa de diálogo como a seguinte: <mediaobject
+> <imageobject
+> <imagedata fileref="SaveOptions.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Configurar as opções de gravação</phrase
+> </textobject
+> </mediaobject
+> A caixa de diálogo inclui alguma ajuda apropriada sobre a configuração das opções de gravação.</para>
+		</sect1>
+
+		<sect1>
+			<title
+>Arrastar e soltar</title>
+			<para
+>Uma imagem capturada poderá ser arrastada para outro aplicativo ou documento. Se o aplicativo conseguir tratar imagens, será inserida lá uma cópia completa da mesma.</para>
+
+			<para
+>Se arrastar uma imagem para uma janela do gerenciador de arquivos, uma caixa de diálogo irá aparecer para indicação do nome do arquivo e seu formato, de forma a inseri-lo na pasta atual.</para>
+
+			<para
+>Se arrastar a imagem capturada para um campo de texto, será introduzido o caminho do arquivo temporário. Isso é útil, por exemplo, para enviar uma imagem através de formulários na Web ou anexar imagens em relatórios de erros no <ulink url="https://bugs.kde.org/"
+>sistema de registro de erros do &kde;</ulink
+>.</para>
+
+			<para
+>Isso funciona com todos os clientes que não recolhem os dados da imagem, mas apenas procuram por uma &URL; nos dados MIME arrastados.</para>
+		</sect1>
+	</chapter>
+
+	<chapter id="credits">
+		<title
+>Créditos e Licença</title>
+
+		<para
+>Direitos autorais do programa &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+		<para
+>Partes do código são diretamente baseadas no código do projeto &ksnapshot;. Copyright &copy; 1997-2011 dos programadores do &ksnapshot;. Estão disponíveis avisos de copyright detalhados nos cabeçalhos do código-fonte.</para>
+
+		<para
+>Partes do código são diretamente baseadas no código do projeto &kwin;. Copyright &copy; 2008, 2013 dos programadores do &kwin;. Estão disponíveis avisos de copyright detalhados nos cabeçalhos do código-fonte.</para>
+
+		<para
+>Documentação baseada na documentação original do &ksnapshot;:</para>
+
+		<itemizedlist>
+			<listitem>
+				<para
+>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+			</listitem>
+			<listitem>
+				<para
+>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+			</listitem>
+		</itemizedlist>
+
+		<para
+>Tradução de André Marcelo Alvarenga <email
+>alvarenga@kde.org</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

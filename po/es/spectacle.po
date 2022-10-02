@@ -1,0 +1,1483 @@
+# Spanish translations for spectacle.po package.
+# Copyright (C) 2015 This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2015.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: spectacle\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-26 00:43+0000\n"
+"PO-Revision-Date: 2022-07-03 13:24+0200\n"
+"Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.2\n"
+
+#: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
+#, kde-format
+msgid "Launch Spectacle"
+msgstr "Iniciar Spectacle"
+
+#: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:38
+#, kde-format
+msgid "Capture Entire Desktop"
+msgstr "Capturar todo el escritorio"
+
+#: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:43
+#, kde-format
+msgid "Capture Current Monitor"
+msgstr "Capturar el monitor actual"
+
+#: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:48
+#, kde-format
+msgid "Capture Active Window"
+msgstr "Capturar la ventana activa"
+
+#: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:53
+#, kde-format
+msgid "Capture Rectangular Region"
+msgstr "Capturar una región rectangular"
+
+#: src/ExportManager.cpp:308
+#, kde-format
+msgid "QImageWriter cannot write image: %1"
+msgstr "QImageWriter no puede escribir la imagen: %1"
+
+#: src/ExportManager.cpp:323
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the directory failed:<nl/><filename>"
+"%1</filename>"
+msgstr ""
+"No se ha podido guardar la captura de pantalla porque ha fallado la creación "
+"del directorio:<nl/><filename>%1</filename>"
+
+#: src/ExportManager.cpp:333
+#, kde-format
+msgid "Cannot save screenshot. Error while writing file."
+msgstr ""
+"No se puede guardar la captura de pantalla. Ha ocurrido un error al escribir "
+"en el archivo."
+
+#: src/ExportManager.cpp:353
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the remote directory failed:<nl/"
+"><filename>%1</filename>"
+msgstr ""
+"No se ha podido guardar la captura de pantalla porque ha fallado la creación "
+"del directorio remoto:<nl/><filename>%1</filename>"
+
+#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#, kde-format
+msgid "Cannot save screenshot. Error while writing temporary local file."
+msgstr ""
+"No se puede guardar la captura de pantalla. Ha ocurrido un error al escribir "
+"en un archivo local temporal."
+
+#: src/ExportManager.cpp:372
+#, kde-format
+msgid "Unable to save image. Could not upload file to remote location."
+msgstr ""
+"No se ha podido guardar la imagen. No se ha podido enviar el archivo a la "
+"ubicación remota."
+
+#: src/ExportManager.cpp:421
+#, kde-format
+msgid "Cannot save screenshot. The save filename is invalid."
+msgstr ""
+"No se puede guardar la captura de pantalla. El nombre del archivo a guardar "
+"no es válido."
+
+#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#, kde-format
+msgid "Cannot save an empty screenshot image."
+msgstr "No se puede guardar una captura de pantalla vacía."
+
+#: src/ExportManager.cpp:575
+#, kde-format
+msgid "Printing failed. The printer failed to initialize."
+msgstr ""
+"Ha fallado el proceso de impresión. No se ha podido inicializar la impresora."
+
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Año (4 dígitos)"
+
+#: src/ExportManager.cpp:594
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Año (2 dígitos)"
+
+#: src/ExportManager.cpp:595
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Mes"
+
+#: src/ExportManager.cpp:596
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Day"
+msgstr "Día"
+
+#: src/ExportManager.cpp:597
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Hour"
+msgstr "Hora"
+
+#: src/ExportManager.cpp:598
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Minute"
+msgstr "Minuto"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Second"
+msgstr "Segundo"
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#: src/ExportManager.cpp:601
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Window Title"
+msgstr "Título de la ventana"
+
+#: src/ExportManager.cpp:602
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering"
+msgstr "Número secuencial"
+
+#: src/ExportManager.cpp:604
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering, padded out to N digits"
+msgstr "Número secuencial, ajustado a N dígitos"
+
+#: src/Gui/CaptureAreaComboBox.cpp:128
+#, kde-format
+msgid "Full Screen"
+msgstr "Pantalla completa"
+
+#: src/Gui/CaptureAreaComboBox.cpp:128
+#, kde-format
+msgid "Full Screen (All Monitors)"
+msgstr "Pantalla completa (todos los monitores)"
+
+#: src/Gui/CaptureAreaComboBox.cpp:133
+#, kde-format
+msgid "Full Screen (All Monitors, scaled)"
+msgstr "Pantalla completa (todos los monitores, escalada)"
+
+#: src/Gui/CaptureAreaComboBox.cpp:137
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Región rectangular"
+
+#: src/Gui/CaptureAreaComboBox.cpp:140
+#, kde-format
+msgid "Current Screen"
+msgstr "Pantalla actual"
+
+#: src/Gui/CaptureAreaComboBox.cpp:143
+#, kde-format
+msgid "Active Window"
+msgstr "Ventana activa"
+
+#: src/Gui/CaptureAreaComboBox.cpp:146
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Ventana bajo el cursor"
+
+#: src/Gui/ExportMenu.cpp:89
+#, kde-format
+msgid "Other Application..."
+msgstr "Otra aplicación..."
+
+#: src/Gui/ExportMenu.cpp:112
+#, kde-format
+msgid "Share"
+msgstr "Compartir"
+
+#: src/Gui/KSImageWidget.cpp:32
+#, kde-format
+msgid "Image Size: %1x%2 pixels"
+msgstr "Tamaño de la imagen: %1x%2 píxeles"
+
+#: src/Gui/KSMainWindow.cpp:151
+#, kde-format
+msgid "Configure..."
+msgstr "Configurar..."
+
+#: src/Gui/KSMainWindow.cpp:152
+#, kde-format
+msgid "Change Spectacle's settings."
+msgstr "Modificar las preferencias de Spectacle."
+
+#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
+#, kde-format
+msgid "Annotate"
+msgstr "Anotar"
+
+#: src/Gui/KSMainWindow.cpp:158
+#, kde-format
+msgid "Add annotation to the screenshot"
+msgstr "Añadir una anotación a la captura de pantalla"
+
+#: src/Gui/KSMainWindow.cpp:165
+#, kde-format
+msgid "Tools"
+msgstr "Herramientas"
+
+#: src/Gui/KSMainWindow.cpp:171
+#, kde-format
+msgid "Export"
+msgstr "Exportar"
+
+#: src/Gui/KSMainWindow.cpp:192
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Abrir la carpeta de capturas de pantalla predeterminada"
+
+#: src/Gui/KSMainWindow.cpp:196
+#, kde-format
+msgid "Record Screen"
+msgstr "Grabar la pantalla"
+
+#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
+#, kde-format
+msgid "Copy Image to Clipboard"
+msgstr "Copiar imagen en el portapapeles"
+
+#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
+#, kde-format
+msgid "Copy Location to Clipboard"
+msgstr "Copiar la dirección en el portapapeles"
+
+#: src/Gui/KSMainWindow.cpp:255
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Abrir la carpeta contenedora"
+
+#: src/Gui/KSMainWindow.cpp:301
+#, kde-format
+msgid "Save As..."
+msgstr "Guardar como..."
+
+#: src/Gui/KSMainWindow.cpp:367
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 segundo"
+msgstr[1] "%1 segundos"
+
+#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
+#, kde-format
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved[*]"
+msgstr "Sin guardar[*]"
+
+#: src/Gui/KSMainWindow.cpp:506
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Ha habido un problema al compartir la imagen: %1"
+
+#: src/Gui/KSMainWindow.cpp:509
+#, kde-format
+msgid "Image shared"
+msgstr "Imagen compartida"
+
+#: src/Gui/KSMainWindow.cpp:511
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"El enlace de la imagen compartida (<a href=\"%1\">%1</a>) se ha copiado en "
+"el portapapeles."
+
+#: src/Gui/KSMainWindow.cpp:545
+#, kde-format
+msgid "The screenshot has been copied to the clipboard."
+msgstr "La captura de pantalla se ha copiado en el portapapeles."
+
+#: src/Gui/KSMainWindow.cpp:551
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"La captura de pantalla se ha guardado como <a href=\"%1\">%2</a> y su "
+"ubicación se ha copiado en el portapapeles."
+
+#: src/Gui/KSMainWindow.cpp:559
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"No se ha podido hacer una captura de pantalla. Por favor, notifique este "
+"error aquí: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle"
+"\">crear un error de Spectacle</a>."
+
+#: src/Gui/KSMainWindow.cpp:569
+#, kde-format
+msgid "Ready to take a screenshot"
+msgstr "Preparado para hacer una captura de pantalla"
+
+#: src/Gui/KSMainWindow.cpp:586
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "La captura de pantalla se ha guardado como <a href=\"%1\">%2</a>"
+
+#: src/Gui/KSMainWindow.cpp:596
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"La captura de pantalla se ha copiado en el portapapeles y se ha guardado "
+"como <a href=\"%1\">%2</a>"
+
+#: src/Gui/KSMainWindow.cpp:692
+#, kde-format
+msgctxt "@action:button"
+msgid "Annotate"
+msgstr "Anotar"
+
+#: src/Gui/KSMainWindow.cpp:704
+#, kde-format
+msgctxt "@action:button"
+msgid "Annotation Done"
+msgstr "Anotación terminada"
+
+#: src/Gui/KSWidget.cpp:57
+#, kde-format
+msgid "<b>Capture Mode</b>"
+msgstr "<b>Modo de captura</b>"
+
+#: src/Gui/KSWidget.cpp:73
+#, kde-format
+msgid "No Delay"
+msgstr "Sin demora"
+
+#: src/Gui/KSWidget.cpp:77
+#, kde-format
+msgid "On Click"
+msgstr "Al pulsar"
+
+#: src/Gui/KSWidget.cpp:78
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "Esperar un clic de ratón antes de capturar la imagen de la pantalla"
+
+#: src/Gui/KSWidget.cpp:87
+#, kde-format
+msgid "Area:"
+msgstr "Área:"
+
+#: src/Gui/KSWidget.cpp:88
+#, kde-format
+msgid "Delay:"
+msgstr "Demora:"
+
+#: src/Gui/KSWidget.cpp:93
+#, kde-format
+msgid "<b>Options</b>"
+msgstr "<b>Opciones</b>"
+
+#: src/Gui/KSWidget.cpp:95
+#, kde-format
+msgid "Include mouse pointer"
+msgstr "Incluir el puntero del ratón"
+
+#: src/Gui/KSWidget.cpp:96
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Mostrar el cursor del ratón en la captura de pantalla"
+
+#: src/Gui/KSWidget.cpp:99
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Incluir la barra de título y los bordes de la ventana"
+
+#: src/Gui/KSWidget.cpp:100
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Mostrar la barra de título, el borde de la ventana y los botones para "
+"minimizar, maximizar y cerrar"
+
+#: src/Gui/KSWidget.cpp:104
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Capturar solo la ventana emergente actual"
+
+#: src/Gui/KSWidget.cpp:106
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Capturar solo la ventana emergente actual (un menú, una ayuda emergente, "
+"etc.).\n"
+"Si no se activa esta opción, se captura tanto la ventana emergente como la "
+"ventana a la que pertenece."
+
+#: src/Gui/KSWidget.cpp:111
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Salir tras guardar o copiar de forma manual"
+
+#: src/Gui/KSWidget.cpp:112
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Salir de Spectacle tras guardar o copiar la imagen de forma manual"
+
+#: src/Gui/KSWidget.cpp:122
+#, kde-format
+msgid "Take a New Screenshot"
+msgstr "Hacer nueva captura de pantalla"
+
+#: src/Gui/KSWidget.cpp:126
+#, kde-format
+msgid "Cancel"
+msgstr "Cancelar."
+
+#. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:17
+#, kde-format
+msgid "When launching Spectacle:"
+msgstr "Al iniciar Spectacle:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:25
+#, kde-format
+msgid "Take full screen screenshot"
+msgstr "Hacer una captura de toda la pantalla"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:30
+#, kde-format
+msgid "Use last-used capture mode"
+msgstr "Usar el último modo usado para capturar"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:35
+#, kde-format
+msgid "Do not take a screenshot automatically"
+msgstr "No hacer una captura de pantalla automáticamente"
+
+#. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:59
+#, kde-format
+msgid "After taking a screenshot:"
+msgstr "Tras hacer una captura de pantalla:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:66
+#, kde-format
+msgid "Save file to default folder"
+msgstr "Guardar archivo en la carpeta predeterminada"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:77
+#, kde-format
+msgid "Do not copy anything"
+msgstr "No copiar nada"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:82
+#, kde-format
+msgid "Copy image to clipboard"
+msgstr "Copiar imagen en el portapapeles"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:87
+#, kde-format
+msgid "Copy file location to clipboard"
+msgstr "Copiar la dirección del archivo en el portapapeles"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:111
+#, kde-format
+msgid "While Spectacle is running"
+msgstr "Cuando Spectacle está en ejecución"
+
+#. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:118
+#, kde-format
+msgid "Press screenshot key to:"
+msgstr "Pulsar la tecla de captura de pantalla para:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:126
+#, kde-format
+msgid "Take a new Screenshot"
+msgstr "Hacer nueva captura de pantalla"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:131
+#, kde-format
+msgid "Open a new Spectacle window"
+msgstr "Abrir una nueva ventana de Spectacle"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:136
+#, kde-format
+msgid "Return focus to Spectacle"
+msgstr "Devolver el foco a Spectacle"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:160
+#, kde-format
+msgid "Rectangular Region Selection"
+msgstr "Selección de región rectangular"
+
+#. i18n: ectx: property (text), widget (QLabel, generalLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:167
+#, kde-format
+msgid "General:"
+msgstr "General:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColour)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:174
+#, kde-format
+msgid "Use light background"
+msgstr "Usar fondo claro"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showMagnifier)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:181
+#, kde-format
+msgid "Show magnifier"
+msgstr "Mostrar la lupa"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#, kde-format
+msgid "Accept on click-and-release"
+msgstr "Aceptar al hacer clic y soltar"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#, kde-format
+msgid "Show capture instructions"
+msgstr "Mostrar las instrucciones de captura"
+
+#. i18n: ectx: property (text), widget (QLabel, rememberLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#, kde-format
+msgid "Remember selected area:"
+msgstr "Recordar el área seleccionada:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:226
+#, kde-format
+msgid "Never"
+msgstr "Nunca"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:231
+#, kde-format
+msgid "Always"
+msgstr "Siempre"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:236
+#, kde-format
+msgid "Until Spectacle is closed"
+msgstr "Hasta que se cierre Spectacle"
+
+#. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:17
+#, kde-format
+msgid "Save Location:"
+msgstr "Ubicación para guardar:"
+
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:50
+#, kde-format
+msgid "Compression Quality:"
+msgstr "Calidad de la compresión:"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
+#: src/Gui/SettingsDialog/SaveOptions.ui:74
+#, no-c-format, kde-format
+msgid "%"
+msgstr "%"
+
+#. i18n: ectx: property (text), widget (QLabel, filenameLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:88
+#, kde-format
+msgid "Filename:"
+msgstr "Nombre de archivo:"
+
+#. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
+#: src/Gui/SettingsDialog/SaveOptions.ui:133
+#, kde-format
+msgctxt "Preview of the user configured filename"
+msgid "Preview:"
+msgstr "Vista previa:"
+
+#. i18n: ectx: property (text), widget (QLabel, compressionQualityHelpLable)
+#: src/Gui/SettingsDialog/SaveOptions.ui:173
+#, kde-format
+msgid "For lossy image formats like JPEG"
+msgstr "Para los formatos de imagen con pérdidas, como JPEG"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:56
+#, kde-format
+msgid ""
+"You can use the following placeholders in the filename, which will be "
+"replaced with actual text when the file is saved:<blockquote>"
+msgstr ""
+"Puede usar los siguientes parámetros de sustitución en el nombre de archivo, "
+"que se cambiarán por texto real al guardarlo:<blockquote>"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:61
+#, kde-format
+msgid "To save to a sub-folder"
+msgstr "Para guardar en una subcarpeta"
+
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:87
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<filename>%1.%2</filename>"
+msgstr "<filename>%1.%2</filename>"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
+#, kde-format
+msgid "Save"
+msgstr "Guardar"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#, kde-format
+msgid "Shortcuts"
+msgstr "Accesos rápidos"
+
+#. i18n: ectx: label, entry (onLaunchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#, kde-format
+msgid "What to do when Spectacle is launched"
+msgstr "Qué se debe hacer al iniciar Spectacle"
+
+#. i18n: ectx: label, entry (printKeyActionRunning), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#, kde-format
+msgid ""
+"What should happen if print key is pressed when Spectacle is already running"
+msgstr ""
+"Qué debe ocurrir si se pulsa la tecla «Imprimir» cuando Spectacle está "
+"funcionando"
+
+#. i18n: ectx: label, entry (autoSaveImage), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#, kde-format
+msgid "Save screenshot automatically after it is taken"
+msgstr "Guardar automáticamente la captura de pantalla tras hacerla"
+
+#. i18n: ectx: label, entry (clipboardGroup), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#, kde-format
+msgid "Clipboard action which should be executed after the screenshot is taken"
+msgstr "Acción del portapapeles a ejecutar tras hacer una captura de pantalla"
+
+#. i18n: ectx: label, entry (useLightMaskColour), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#, kde-format
+msgid "Whether to use a light color mask in the region selection dialog"
+msgstr ""
+"Si se debe usar una máscara de color claro en el diálogo de selección de "
+"región"
+
+#. i18n: ectx: label, entry (showMagnifier), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#, kde-format
+msgid "Whether to show a magnifier in the region selection"
+msgstr "Si se debe mostrar una lupa en la selección de la región"
+
+#. i18n: ectx: label, entry (useReleaseToCapture), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#, kde-format
+msgid ""
+"Whether the screenshot should be captured after selecting the region and "
+"releasing the mouse"
+msgstr ""
+"Si la captura de pantalla se debe hacer tras seleccionar una región y dejar "
+"de pulsar el botón del ratón"
+
+#. i18n: ectx: label, entry (showCaptureInstructions), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#, kde-format
+msgid "Whether to show capture instructions in the region selection"
+msgstr ""
+"Si se deben mostrar las instrucciones de captura en la selección de la región"
+
+#. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#, kde-format
+msgid "Remember the last rectangular region"
+msgstr "Recordar la última región rectangular"
+
+#. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#, kde-format
+msgid "The last used region the user selected"
+msgstr "La última región seleccionada por el usuario"
+
+#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#, kde-format
+msgid "Take screenshot on click"
+msgstr "Hacer captura de pantalla al pulsar"
+
+#. i18n: ectx: label, entry (includePointer), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#, kde-format
+msgid "Whether the mouse cursor is included in the screenshot"
+msgstr "Si se debe incluir el cursor del ratón en la captura de pantalla"
+
+#. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#, kde-format
+msgid "Whether the window decorations are included in the screenshot"
+msgstr ""
+"Si se deben incluir las decoraciones de las ventanas en la captura de "
+"pantalla"
+
+#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#, kde-format
+msgid "Only capture the current pop up menu"
+msgstr "Capturar solo el menú emergente actual"
+
+#. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#, kde-format
+msgid "Quit after saving or copying an image"
+msgstr "Salir tras guardar o copiar una imagen"
+
+#. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#, kde-format
+msgid "Delay"
+msgstr "Demora"
+
+#. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#, kde-format
+msgid "Default filename"
+msgstr "Nombre de archivo predeterminado"
+
+#. i18n: ectx: label, entry (compressionQuality), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#, kde-format
+msgid "Compression quality for lossy file formats"
+msgstr "Calidad de la compresión para los formatos de archivos con pérdidas"
+
+#. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#, kde-format
+msgid "Default save image format"
+msgstr "Formato predeterminado de la imagen a guardar"
+
+#. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#, kde-format
+msgid "The default filename used when saving"
+msgstr "El nombre de archivo predeterminado a usar al guardar"
+
+#. i18n: ectx: label, entry (lastSaveLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#, kde-format
+msgid "The path of the file saved last"
+msgstr "La ruta del último archivo guardado"
+
+#. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#, kde-format
+msgid "Last path used for \"save as\" action"
+msgstr "Última ruta usada para la acción «Guardar como»"
+
+#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#, kde-format
+msgid "The last used save mode"
+msgstr "El último modo usado para guardar"
+
+#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#, kde-format
+msgid "The last used copy mode"
+msgstr "El último modo usado para copiar"
+
+#: src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " segundo"
+msgstr[1] " segundos"
+
+#: src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " segundos"
+
+#: src/Main.cpp:41
+#, kde-format
+msgid "Spectacle"
+msgstr "Spectacle"
+
+#: src/Main.cpp:43
+#, kde-format
+msgid "KDE Screenshot Utility"
+msgstr "Utilidad de capturas de pantalla para KDE"
+
+#: src/Main.cpp:45
+#, kde-format
+msgid "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
+
+#: src/Main.cpp:48
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Eloy Cuadra"
+
+#: src/Main.cpp:48
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ecuadra@eloihr.net"
+
+#: src/QuickEditor/QuickEditor.cpp:61
+#, kde-format
+msgid ""
+"Click and drag to draw a selection rectangle,\n"
+"or press Esc to quit"
+msgstr ""
+"Haga clic y arrastre para dibujar un rectángulo de selección,\n"
+"o pulse «Esc» para salir"
+
+#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Hacer una captura de pantalla:"
+
+#: src/QuickEditor/QuickEditor.cpp:717
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Liberar clic izquierdo"
+
+#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Intro"
+
+#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Crear nuevo rectángulo de selección:"
+
+#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Arrastrar fuera del rectángulo de selección"
+
+#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Mayúsculas: Lupa"
+
+#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
+#, kde-format
+msgid "Cancel:"
+msgstr "Cancelar:"
+
+#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Escape"
+
+#: src/QuickEditor/QuickEditor.cpp:725
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Doble clic"
+
+#: src/QuickEditor/QuickEditor.cpp:729
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Mover el rectángulo de selección:"
+
+#: src/QuickEditor/QuickEditor.cpp:730
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Arrastrar dentro del rectángulo de selección"
+
+#: src/QuickEditor/QuickEditor.cpp:731
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Teclas de las flechas"
+
+#: src/QuickEditor/QuickEditor.cpp:732
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Mayúsculas: Mover en pasos de 1 píxel"
+
+#: src/QuickEditor/QuickEditor.cpp:733
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Cambiar el tamaño del rectángulo de selección:"
+
+#: src/QuickEditor/QuickEditor.cpp:734
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Arrastrar asas"
+
+#: src/QuickEditor/QuickEditor.cpp:735
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Teclas de las flechas + Alt"
+
+#: src/QuickEditor/QuickEditor.cpp:736
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Mayúsculas: Cambiar tamaño en pasos de 1 píxel"
+
+#: src/QuickEditor/QuickEditor.cpp:737
+#, kde-format
+msgid "Reset selection:"
+msgstr "Reiniciar la selección:"
+
+#: src/QuickEditor/QuickEditor.cpp:737
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Clic derecho"
+
+#: src/QuickEditor/QuickEditor.cpp:923
+#, kde-format
+msgid "%1×%2"
+msgstr "%1×%2"
+
+#: src/ShortcutActions.cpp:58
+#, kde-format
+msgid "Capture Window Under Cursor"
+msgstr "Capturar la ventana bajo el cursor"
+
+#: src/ShortcutActions.cpp:63
+#, kde-format
+msgid "Launch Spectacle without capturing"
+msgstr "Iniciar Spectacle sin capturar"
+
+#: src/SpectacleCore.cpp:434
+#, kde-format
+msgid "Screenshot capture canceled or failed"
+msgstr "Captura de pantalla cancelada o fallida"
+
+#: src/SpectacleCore.cpp:454
+#, kde-format
+msgctxt "The entire screen area was captured, heading"
+msgid "Full Screen Captured"
+msgstr "Pantalla completa capturada"
+
+#: src/SpectacleCore.cpp:457
+#, kde-format
+msgctxt "The current screen was captured, heading"
+msgid "Current Screen Captured"
+msgstr "Pantalla actual capturada"
+
+#: src/SpectacleCore.cpp:460
+#, kde-format
+msgctxt "The active window was captured, heading"
+msgid "Active Window Captured"
+msgstr "Ventana activa capturada"
+
+#: src/SpectacleCore.cpp:464
+#, kde-format
+msgctxt "The window under the mouse was captured, heading"
+msgid "Window Under Cursor Captured"
+msgstr "Ventana bajo el cursor capturada"
+
+#: src/SpectacleCore.cpp:467
+#, kde-format
+msgctxt "A rectangular region was captured, heading"
+msgid "Rectangular Region Captured"
+msgstr "Región rectangular capturada"
+
+#: src/SpectacleCore.cpp:477
+#, kde-format
+msgid "A screenshot was copied to your clipboard."
+msgstr "Se ha copiado una captura de pantalla en el portapapeles."
+
+#: src/SpectacleCore.cpp:479
+#, kde-format
+msgid ""
+"A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
+"has been copied to your clipboard."
+msgstr ""
+"Se ha guardado una captura de pantalla como «%1» en «%2» y su ruta de "
+"archivo se ha copiado en el portapapeles."
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "Placeholder is filename"
+msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgstr "Se ha guardado la captura de pantalla «%1» en la carpeta «Imágenes»."
+
+#: src/SpectacleCore.cpp:485
+#, kde-format
+msgid "A screenshot was saved as '%1' to '%2'."
+msgstr "Se ha guardado la captura de pantalla «%1» en «%2»."
+
+#: src/SpectacleCore.cpp:490
+#, kde-format
+msgctxt "Open the screenshot we just saved"
+msgid "Open"
+msgstr "Abrir"
+
+#: src/SpectacleCore.cpp:528
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Capturar todo el escritorio (predeterminado)"
+
+#: src/SpectacleCore.cpp:529
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Capturar el monitor actual"
+
+#: src/SpectacleCore.cpp:530
+#, kde-format
+msgid "Capture the active window"
+msgstr "Capturar la ventana activa"
+
+#: src/SpectacleCore.cpp:531
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Capturar la ventana que está bajo el cursor, incluyendo las ventanas a las "
+"que pertenecen los menús emergentes"
+
+#: src/SpectacleCore.cpp:532
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Capturar la ventana que está bajo el cursor, excluyendo las ventanas a las "
+"que pertenecen los menús emergentes"
+
+#: src/SpectacleCore.cpp:533
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Capturar una región rectangular de la pantalla"
+
+#: src/SpectacleCore.cpp:534
+#, kde-format
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Iniciar Spectacle sin hacer una captura de pantalla"
+
+#: src/SpectacleCore.cpp:535
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Iniciar en modo de interfaz gráfica (predeterminado)"
+
+#: src/SpectacleCore.cpp:536
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Hacer una captura de pantalla y salir sin mostrar la interfaz gráfica"
+
+#: src/SpectacleCore.cpp:537
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Iniciar en modo de activación DBus"
+
+#: src/SpectacleCore.cpp:538
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"En el modo de segundo plano, no mostrar una notificación emergente al hacer "
+"una captura de pantalla"
+
+#: src/SpectacleCore.cpp:539
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "En el modo de segundo plano, guardar la imagen en el archivo indicado"
+
+#: src/SpectacleCore.cpp:541
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr ""
+"En el modo de segundo plano, demora antes de hacer la captura (en "
+"milisegundos)"
+
+#: src/SpectacleCore.cpp:543
+#, kde-format
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr ""
+"En el modo de segundo plano, copiar la imagen de la captura de pantalla en "
+"el portapapeles, excepto si también se ha usado -o."
+
+#: src/SpectacleCore.cpp:544
+#, kde-format
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr ""
+"En el modo de segundo plano, copiar la ruta del archivo de la captura de "
+"pantalla en el portapapeles"
+
+#: src/SpectacleCore.cpp:545
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr ""
+"Esperar un clic antes de hacer la captura de pantalla. Invalida la demora."
+
+#: src/SpectacleCore.cpp:546
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr ""
+"Inicia una nueva instancia gráfica de Spectacle sin registrarla en DBus"
+
+#: src/SpectacleCore.cpp:547
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr ""
+"En el modo de segundo plano, incluir el puntero en la captura de pantalla"
+
+#: src/SpectacleCore.cpp:548
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr ""
+"En el modo de segundo plano, excluir las decoraciones en la captura de "
+"pantalla"
+
+#: src/SpectacleCore.cpp:549
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr "Abrir y editar un archivo de captura de pantalla existente"
+
+#~ msgid "More Online Services"
+#~ msgstr "Más servicios en línea"
+
+#~ msgid "Please wait..."
+#~ msgstr "Por favor, espere..."
+
+#~ msgid "KIPI plugin from library %1 failed to load"
+#~ msgstr "Ha fallado la carga del complemento KIPI de la biblioteca %1"
+
+#~ msgid "No KIPI plugins available"
+#~ msgstr "Los complementos KIPI no están disponibles"
+
+#~ msgctxt "%1 is collection name, %2 is image count in collection"
+#~ msgid "%1 (%2 image)"
+#~ msgid_plural "%1 (%2 images)"
+#~ msgstr[0] "%1 (%2 imagen)"
+#~ msgstr[1] "%1 (%2 imágenes)"
+
+#~ msgid "Taken with Spectacle"
+#~ msgstr "Capturada con Spectacle"
+
+#~ msgid "Remember the region across restarts"
+#~ msgstr "Recordar la región en futuras sesiones"
+
+#~ msgid ""
+#~ "Choose the image quality when saving with lossy image formats like JPEG"
+#~ msgstr ""
+#~ "Escoger la calidad de la imagen al guardar en formatos con pérdida, como "
+#~ "JPEG"
+
+#~ msgid "Copy file location to clipboard after saving"
+#~ msgstr "Copiar la ubicación del archivo en el portapapeles tras guardarlo"
+
+#~ msgid "Copy screenshot automatically to the clipboard after it is taken"
+#~ msgstr ""
+#~ "Copiar automáticamente la captura de pantalla en el portapapeles tras "
+#~ "realizarla"
+
+#~ msgid "Whether to copy the file path after saving to the clipboard"
+#~ msgstr ""
+#~ "Si se debe copiar la ruta del archivo tras guardar en el portapapeles"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copiar en el portapapeles"
+
+#~ msgid "Copy the current screenshot image to the clipboard."
+#~ msgstr "Copiar la captura de pantalla actual en el portapapeles."
+
+#~ msgid "currentText"
+#~ msgstr "textoActual"
+
+#~ msgid "Include pointer in the screenshot"
+#~ msgstr "Incluir el puntero en la captura de pantalla"
+
+#~ msgid "Do not include window decorations in the screenshot"
+#~ msgstr ""
+#~ "No incluir las decoraciones de las ventanas en la captura de pantalla"
+
+#, fuzzy
+#~| msgid "Capture Entire Desktop"
+#~ msgctxt "The entire desktop was captured, heading"
+#~ msgid "Entire Desktop Captured"
+#~ msgstr "Capturar todo el escritorio"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configure"
+#~ msgstr "Configurar"
+
+#~ msgid "Apply Unsaved Changes"
+#~ msgstr "Aplicar cambios sin guardar"
+
+#~ msgid ""
+#~ "You have made changes to the settings in this tab. Do you want to apply "
+#~ "those changes?"
+#~ msgstr ""
+#~ "Ha hecho cambios en las preferencias de esta pestaña. ¿Desea aplicar "
+#~ "estos cambios?"
+
+#~ msgctxt "Mouse action"
+#~ msgid "Click and drag,"
+#~ msgstr "Clic y arrastrar,"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgctxt "Keyboard action"
+#~ msgid "Shift:"
+#~ msgstr "Mayúsculas:"
+
+#~ msgctxt "Shift key action first half"
+#~ msgid "Hold to toggle magnifier"
+#~ msgstr "Mantenga pulsada para conmutar la lupa"
+
+#~ msgctxt "Shift key action second half"
+#~ msgid "while dragging selection handles"
+#~ msgstr "mientras arrastra las asas de selección."
+
+#~ msgctxt "Shift key action second line"
+#~ msgid "Hold Alt to resize, Shift to fine‑tune"
+#~ msgstr ""
+#~ "Mantenga pulsado «Alt» para cambiar el tamaño, o «Mayúsculas» para afinar"
+
+#~ msgctxt "Keyboard action"
+#~ msgid "Esc:"
+#~ msgstr "Esc:"
+
+#~ msgctxt "%1 is the default filename of a screenshot"
+#~ msgid ""
+#~ "<p>You can use the following placeholders in the filename, which will be "
+#~ "replaced with actual text when the file is saved:</p><blockquote><b>%Y</"
+#~ "b>: Year (4 digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: "
+#~ "Month<br /><b>%D</b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /"
+#~ "><b>%S</b>: Second<br /><b>%T</b>: Window title<br /><b>%d</b>: "
+#~ "Sequential numbering<br /><b>%Nd</b>: Sequential numbering, padded out to "
+#~ "N digits</blockquote><p>To save to a sub-folder, use slashes, e.g.:</"
+#~ "p><blockquote><b>%Y</b>/<b>%M</b>/%1</blockquote>"
+#~ msgstr ""
+#~ "<p>Puede usar los siguiente parámetros de sustitución para el nombre del "
+#~ "archivo, que se sustituirán con el texto real cuando se guarde el archivo:"
+#~ "</p><blockquote><b>%Y</b>: año (4 dígitos)<br /><b>%y</b>: año (2 "
+#~ "dígitos)<br /><b>%M</b>: mes<br /><b>%D</b>: día<br /><b>%H</b>: hora<br /"
+#~ "><b>%m</b>: minutos<br /><b>%S</b>: segundos<br /><b>%T</b>: título de la "
+#~ "ventana<br /><b>%d</b>: número secuencial<br /><b>%Nd</b>: número "
+#~ "secuencial, ajustado a N dígitos</blockquote><p>Para guardar en una "
+#~ "subcarpeta, use barras invertidas. Por ejemplo:</p><blockquote><b>%Y</b>/"
+#~ "<b>%M</b>/%1</blockquote>"
+
+#~ msgid "Rectangular Region:"
+#~ msgstr "Región rectangular:"
+
+#~ msgid "Default Save Location"
+#~ msgstr "Ubicación por omisión para guardar"
+
+#~ msgid "You can find the shared image at: <a href=\"%1\">%1</a>"
+#~ msgstr "Puede encontrar la imagen compartida en: <a href=\"%1\">%1</a>"
+
+#~ msgid ""
+#~ "To take the screenshot, double-click or press Enter. Right-click to reset "
+#~ "the selection, or press Esc to quit"
+#~ msgstr ""
+#~ "Para realizar una captura de pantalla, haga doble clic o pulse Intro. "
+#~ "Haga clic con el botón derecho para reiniciar la selección, o pulse Esc "
+#~ "para salir."
+
+#~ msgid "Save &&& Exit"
+#~ msgstr "Guardar &y salir"
+
+#~ msgid "Save screenshot in your Pictures directory and exit"
+#~ msgstr ""
+#~ "Guardar la captura de pantalla en su directorio de «Imágenes» y salir"
+
+#~ msgid "Export Image..."
+#~ msgstr "Exportar imagen..."
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencias"
+
+#~ msgid "Dynamic Save Button"
+#~ msgstr "Botón «Guardar» dinámico"
+
+#~ msgid ""
+#~ "The default behavior of the save button is to <b>Save & Exit</b>. Enable "
+#~ "this option to change the save button to either <b>Save</b>, <b>Save As</"
+#~ "b> or <b>Save & Exit</b>, according to the save action you perform, every "
+#~ "time you save an image."
+#~ msgstr ""
+#~ "El comportamiento por omisión del botón «Guardar» es <b>Guardar y salir</"
+#~ "b>. Active esta opción para que el botón «Guardar» cambie a <b>Guardar</"
+#~ "b>, <b>Guardar como</b> o <b>Guardar y salir</b> según la acción que use "
+#~ "para guardar cada vez que guarde una imagen."
+
+#~ msgid "Set save button action to last used save method"
+#~ msgstr ""
+#~ "Fijar la acción del botón «Guardar» al último método usado para guardar"
+
+#~ msgid ""
+#~ "When a screenshot is saved, copy the location at which the file was saved "
+#~ "to the clipboard. You can then paste it anywhere that accepts text input. "
+#~ "Note that you must be running a clipboard manager in order to keep the "
+#~ "path in the clipboard after Spectacle quits."
+#~ msgstr ""
+#~ "Cuando se guarda una captura de pantalla, copiar en el portapapeles la "
+#~ "dirección en la que se ha guardado el archivo. De este modo podrá pegarla "
+#~ "en cualquier lugar que acepte entrada de texto. Tenga en cuenta que debe "
+#~ "estar ejecutando un gestor del portapapeles para conservar la ruta en el "
+#~ "portapapeles cuando salga de Spectacle."
+
+#~ msgid "Light Background For Rectangular Region"
+#~ msgstr "Fondo claro para la región rectangular"
+
+#~ msgid ""
+#~ "Use a light background color to mask the cropped-out area in the "
+#~ "rectangular region selector. This may make dark cursors easier to see."
+#~ msgstr ""
+#~ "Usar un color de fondo claro para enmascarar el área recortada en el "
+#~ "selector de región rectangular. Esto permite ver más fácilmente los "
+#~ "cursores oscuros."
+
+#~ msgid ""
+#~ "By default, Spectacle does not show an initial selection when you take a "
+#~ "screenshot of a rectangular region. Enable this option to remember the "
+#~ "last selected region of the screen, and set it as the initial selection "
+#~ "when you use the rectangular region selector the next time."
+#~ msgstr ""
+#~ "Por omisión, Spectacle no muestra una selección inicial cuando realiza la "
+#~ "captura de pantalla de una región rectangular. Active esta opción para "
+#~ "recordar la última región seleccionada en la pantalla y fijarla como "
+#~ "selección inicial la próxima vez que use el selector de regiones "
+#~ "rectangulares."
+
+#~ msgid ""
+#~ "Set the directory where you'd like to save your screenshots when you "
+#~ "press <b>Save</b> or <b>Save & Exit</b>."
+#~ msgstr ""
+#~ "Fijar el directorio donde le gustaría guardar las capturas de pantalla al "
+#~ "pulsar <b>Guardar</b> o <b>Guardar y salir</b>."
+
+#~ msgid ""
+#~ "<p>Set a default filename for saved screenshots.</p><p>You can use the "
+#~ "following placeholders in the filename, which will be replaced with "
+#~ "actual text when the file is saved:</p><blockquote><b>%Y</b>: Year (4 "
+#~ "digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: Month<br /><b>%D</"
+#~ "b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /><b>%S</b>: "
+#~ "Second</blockquote><p>If a file with this name already exists, a serial "
+#~ "number will be appended to the filename. For example, if the filename is "
+#~ "\"Screenshot\", and \"Screenshot.png\" already exists, the image will be "
+#~ "saved as \"Screenshot-1.png\".</p><p>Typing an extension into the "
+#~ "filename will automatically set the image format correctly and remove the "
+#~ "extension from the filename field.</p>"
+#~ msgstr ""
+#~ "<p>Fijar un nombre de archivo por omisión para guardar las capturas.</"
+#~ "p><p>Puede usar los siguientes parámetros de sustitución en el nombre de "
+#~ "archivo (se sustituirán por texto real al guardar el archivo):</"
+#~ "p><blockquote><b>%Y</b>: año (de 4 dígitos)<br /><b>%y</b>: año (de 2 "
+#~ "dígitos)<br /><b>%M</b>: mes<br /><b>%D</b>: día<br /><b>%H</b>: hora<br /"
+#~ "><b>%m</b>: minuto<br /><b>%S</b>: segundo</blockquote><p>Si ya existiera "
+#~ "un archivo con el mismo nombre, se añadirá un número de serie al nombre "
+#~ "del archivo. Por ejemplo, si el nombre del archivo es «Captura» y ya "
+#~ "existe «Captura.png», la imagen se guardará como «Captura-1.png».</"
+#~ "p><p>Si escribe una extensión en el nombre del archivo, el formato de la "
+#~ "imagen se definirá correctamente y se eliminará la extensión del campo "
+#~ "del nombre de archivo.</p>"
+
+#~ msgid "Application Preferences"
+#~ msgstr "Preferencias de la aplicación"
+
+#~ msgid "Save Options"
+#~ msgstr "Opciones de guardar"
+
+#~ msgid "Open With..."
+#~ msgstr "Abrir con..."
+
+#~ msgid "Cannot send screenshot to the application"
+#~ msgstr "No se ha podido enviar una captura de pantalla a la aplicación"
+
+#~ msgid "Cannot save screenshot. The file already exists."
+#~ msgstr "No se puede guardar la captura de pantalla. Ya existe el archivo."

@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Dutch "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Gebruikershandleiding van Spectacle</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Spectacle man page.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2021-04-11</date>
+<releaseinfo
+>Spectacle 21.08</releaseinfo>
+<productname
+>KDE Applications</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>hulpmiddel voor het maken van een schermafdruk</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Opties voor Spectacle</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Beschrijving</title>
+<para
+><command
+>spectacle</command
+> is een eenvoudige toepassing voor het opnemen van schermafbeeldingen van het bureaublad. Het kan afbeeldingen van het gehele bureaublad, een enkele monitor, het nu actieve venster, het venster nu onder de muis of een rechthoekig gebied van het scherm. De afbeelding kan dan afgedrukt worden, naar een andere toepassing voor bewerking worden verzonden of snel worden opgeslagen zoals deze nu is.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Opties voor Spectacle</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Opname van het gehele bureaublad (standaard).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Opname van de huidige monitor.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Opname van het actieve venster.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Opname van het huidige venster onder de cursor, inclusief hoofdvenster van pop-up-menu's.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Opname van het huidige venster onder de cursor, zonder hoofdvenster van pop-up-menu's.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Opname van een rechthoekig gebied op het scherm.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Spectacle starten zonder een schermafdruk te maken.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>In modus GUI beginnen (standaard).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Een schermafdruk nemen en beëindigen zonder de GUI te tonen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>In DBus-activeringsmodus starten.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, laat geen melding zien wanneer de schermafdruk is genomen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>bestandsnaam</replaceable
+></option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, stuur afbeelding naar naar gespecificeerd bestand <replaceable
+>bestandsnaam</replaceable
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>vertragingmsec</replaceable
+></option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, vertragen alvorens de opname te maken (in milliseconden).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, kopieer schermafdruk alleen naar klembord, tenzij -o ook wordt gebruikt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, kopieer bestandspad van schermafdruk naar klembord.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Wacht op een klik alvorens een schermafdruk te nemen. Maakt vertraging ongeldig..</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Begint een nieuw GUI-exemplaar van spectacle zonder registratie bij DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --pointer</option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, aanwijzer meenemen in de schermafdruk.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>In achtergrondmodus, geen vensterdecoraties meenemen in de schermafdruk.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Terugkoppeling</title>
+<para
+>Op IRC, irc.libera.chat #kde of via e-mail, kde-graphics-devel@kdeorg of op het web, &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Zie ook</title>
+<simplelist>
+<member
+>Meer gedetailleerde gebruikersdocumentatie is beschikbaar van <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (voer deze <acronym
+>URL</acronym
+> in in &konqueror; of voer <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+> uit).</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>Er is ook verdere informatie beschikbaar op <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Copyright</title>
+<para
+>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para
+>Licentie: GNU General Public Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+
