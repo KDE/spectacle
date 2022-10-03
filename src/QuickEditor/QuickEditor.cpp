@@ -197,9 +197,6 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
         update();
     }
     switch (event->key()) {
-    case Qt::Key_Escape:
-        Q_EMIT grabCancelled();
-        break;
     case Qt::Key_Return:
     case Qt::Key_Enter:
         acceptSelection();
@@ -318,6 +315,9 @@ void QuickEditor::keyPressEvent(QKeyEvent *event)
 
 void QuickEditor::keyReleaseEvent(QKeyEvent *event)
 {
+    if (event->key() == Qt::Key_Escape) {
+        Q_EMIT grabCancelled();
+    }
     if (mToggleMagnifier && !(event->modifiers() & Qt::ShiftModifier)) {
         mToggleMagnifier = false;
         update();
