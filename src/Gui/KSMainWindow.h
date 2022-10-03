@@ -80,6 +80,7 @@ protected:
 
 private:
     void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 
     KSWidget *const mKSWidget;
     QFrame *const mDivider;

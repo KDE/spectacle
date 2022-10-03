@@ -29,6 +29,8 @@
 #include <QVBoxLayout>
 #include <QVariantAnimation>
 #include <QtMath>
+#include <qdialog.h>
+#include <qnamespace.h>
 
 #ifdef XCB_FOUND
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -665,7 +667,21 @@ void KSMainWindow::keyPressEvent(QKeyEvent *event)
         }
     }
 #endif
+    if (event->key() == Qt::Key_Escape) {
+        // we'll handle it in keyReleaseEvent instead
+        // to avoid passing the Esc release event onto some poor window behind us
+        return;
+    }
     QDialog::keyPressEvent(event);
+}
+
+void KSMainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape) {
+        QDialog::reject();
+        return;
+    }
+    QDialog::keyReleaseEvent(event);
 }
 
 #ifdef KIMAGEANNOTATOR_FOUND
