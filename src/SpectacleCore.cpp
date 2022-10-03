@@ -618,6 +618,9 @@ void SpectacleCore::initGui(int theDelay, bool theIncludePointer, bool theInclud
 
 void SpectacleCore::initGuiNoScreenshot()
 {
+    // in some cases like the openWithoutScreenshot DBus method, the start mode is DBus, but we need to show a GUI
+    // so we should switch the mode appropriately
+    mStartMode = SpectacleCore::StartMode::Gui;
     ensureGuiInitiad();
     screenshotUpdated(QPixmap());
 }
