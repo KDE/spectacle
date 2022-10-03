@@ -71,6 +71,7 @@ int main(int argc, char **argv)
     if (lCmdLineParser.isSet(QStringLiteral("new-instance"))) {
         lCore.init();
 
+        QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
         QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
