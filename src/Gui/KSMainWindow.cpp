@@ -642,9 +642,19 @@ void KSMainWindow::restoreWindowTitle()
     }
 }
 
+void KSMainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape) {
+        // we'll handle it in keyReleaseEvent instead
+        // to avoid passing the Esc release event onto some poor window behind us
+        return;
+    }
+    QDialog::keyPressEvent(event);
+}
+
 /* This event handler enables all Buttons to be activated with Enter. Normally only QPushButton can
  * be activated with Enter but we also use QToolButtons so we handle the event ourselves */
-void KSMainWindow::keyPressEvent(QKeyEvent *event)
+void KSMainWindow::keyReleaseEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Return) {
         QWidget *fw = focusWidget();
@@ -659,25 +669,13 @@ void KSMainWindow::keyPressEvent(QKeyEvent *event)
             return;
         }
     }
-#ifdef KIMAGEANNOTATOR_FOUND
     if (event->key() == Qt::Key_Escape) {
+#ifdef KIMAGEANNOTATOR_FOUND
         if (mAnnotatorActive) {
             updateAnnotatorVisibility();
             return;
         }
-    }
 #endif
-    if (event->key() == Qt::Key_Escape) {
-        // we'll handle it in keyReleaseEvent instead
-        // to avoid passing the Esc release event onto some poor window behind us
-        return;
-    }
-    QDialog::keyPressEvent(event);
-}
-
-void KSMainWindow::keyReleaseEvent(QKeyEvent *event)
-{
-    if (event->key() == Qt::Key_Escape) {
         QDialog::reject();
         return;
     }
