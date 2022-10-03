@@ -507,9 +507,11 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     }
 
     connect(lNotify, &QObject::destroyed, this, [this] {
-        if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
-            Q_EMIT allDone();
-        }
+        QTimer::singleShot(250, this, [this] {
+            if (!mIsGuiInited || Settings::quitAfterSaveCopyExport()) {
+                Q_EMIT allDone();
+            }
+        });
     });
 
     lNotify->sendEvent();
