@@ -86,6 +86,7 @@ private:
     bool mSaveToOutput;
     bool mEditExisting;
     bool mExistingLoaded;
+    bool mEditAfterSave;
 
     KWayland::Client::PlasmaShell *mWaylandPlasmashell = nullptr;
 };

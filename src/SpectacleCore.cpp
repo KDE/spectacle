@@ -34,6 +34,7 @@
 #include <QScopedPointer>
 #include <QScreen>
 #include <QTimer>
+#include <qstringliteral.h>
 
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
@@ -88,6 +89,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
 
     mStartMode = SpectacleCore::StartMode::Gui;
     mExistingLoaded = false;
+    mEditAfterSave = false;
     mNotify = true;
     qint64 lDelayMsec = 0;
 
@@ -164,6 +166,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         mCopyImageToClipboard = false;
         mCopyLocationToClipboard = false;
         mSaveToOutput = true;
+        mEditExisting = false;
 
         if (parser->isSet(QStringLiteral("nonotify"))) {
             mNotify = false;
@@ -182,6 +185,11 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
             if (!(lFileName.isEmpty() || lFileName.isNull())) {
                 if (QDir::isRelativePath(lFileName)) {
                     lFileName = QDir::current().absoluteFilePath(lFileName);
+                }
+                if (parser->isSet(QStringLiteral("edit-existing")) && mFileNameUrl == QUrl::fromUserInput(lFileName)) {
+                    // user wants to save to that file and edit it immediately after
+                    // we handle that as a special case
+                    mEditAfterSave = true;
                 }
                 setFilename(lFileName);
             }
@@ -446,6 +454,15 @@ void SpectacleCore::screenshotFailed()
 
 void SpectacleCore::doNotify(const QUrl &theSavedAt)
 {
+    if (mEditAfterSave) {
+        QProcess newInstance;
+        newInstance.setProgram(QCoreApplication::applicationFilePath());
+        newInstance.setArguments({QStringLiteral("--new-instance"), QStringLiteral("--edit-existing"), theSavedAt.toLocalFile()});
+        newInstance.startDetached();
+        Q_EMIT allDone();
+        return;
+    }
+
     KNotification *lNotify = new KNotification(QStringLiteral("newScreenshotSaved"));
 
     switch (ExportManager::instance()->captureMode()) {
