@@ -560,7 +560,9 @@ void ExportManager::doCopyLocationToClipboard(bool notify)
         localFile = ExportManager::instance()->tempSave().toLocalFile();
     }
 
-    QApplication::clipboard()->setText(localFile);
+    auto data = new QMimeData();
+    data->setText(localFile);
+    KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
     Q_EMIT imageLocationCopied(QUrl::fromLocalFile(localFile));
     if (notify) {
         Q_EMIT forceNotify(QUrl::fromLocalFile(localFile));
