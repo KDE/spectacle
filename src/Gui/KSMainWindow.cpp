@@ -81,6 +81,7 @@ KSMainWindow::KSMainWindow(Platform::GrabModes theGrabModes, Platform::ShutterMo
     , mScreenRecorderToolsMenu(new QMenu(this))
     , mExportMenu(new ExportMenu(this))
     , mShutterModes(theShutterModes)
+    , mEscPressedFlag(false)
 #ifdef KIMAGEANNOTATOR_FOUND
     , mAnnotateButton(new QToolButton(this))
     , mAnnotatorActive(false)
@@ -647,8 +648,10 @@ void KSMainWindow::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_Escape) {
         // we'll handle it in keyReleaseEvent instead
         // to avoid passing the Esc release event onto some poor window behind us
+        mEscPressedFlag = true;
         return;
     }
+    mEscPressedFlag = false;
     QDialog::keyPressEvent(event);
 }
 
@@ -676,8 +679,11 @@ void KSMainWindow::keyReleaseEvent(QKeyEvent *event)
             return;
         }
 #endif
-        QDialog::reject();
-        return;
+        if (mEscPressedFlag) {
+            mEscPressedFlag = false;
+            QDialog::reject();
+            return;
+        }
     }
     QDialog::keyReleaseEvent(event);
 }

@@ -106,6 +106,7 @@ private:
     QTimer *mHideMessageWidgetTimer = nullptr;
     QStackedLayout *mStack = nullptr;
     bool mPixmapExists = false;
+    bool mEscPressedFlag = false;
 
 #ifdef KIMAGEANNOTATOR_FOUND
     QToolButton *const mAnnotateButton;
