@@ -43,16 +43,6 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     mImageWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     connect(mImageWidget, &KSImageWidget::dragInitiated, this, &KSWidget::dragInitiated);
 
-#ifdef KIMAGEANNOTATOR_FOUND
-    mAnnotator = new kImageAnnotator::KImageAnnotator();
-    mAnnotator->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    mAnnotator->setCanvasColor(QColor(255, 255, 255, 0));
-    mAnnotator->setSaveToolSelection(true);
-#endif
-#ifdef KIMAGEANNOTATOR_HAS_EXTRA_TOOLS
-    mAnnotator->setControlsWidgetVisible(true);
-#endif
-
     // the capture mode options first
     mCaptureModeLabel = new QLabel(i18n("<b>Capture Mode</b>"), this);
     mCaptureArea = new CaptureAreaComboBox(theGrabModes, this);
@@ -181,10 +171,6 @@ KSWidget::KSWidget(Platform::GrabModes theGrabModes, QWidget *parent)
     placeHolder->setLayout(mMainLayout);
 
     mStack->addWidget(placeHolder);
-
-#ifdef KIMAGEANNOTATOR_FOUND
-    mStack->addWidget(mAnnotator);
-#endif
 }
 
 int KSWidget::imagePaddingWidth() const
@@ -317,6 +303,18 @@ void KSWidget::setProgress(double progress)
 #ifdef KIMAGEANNOTATOR_FOUND
 void KSWidget::showAnnotator()
 {
+    if (!mAnnotator) {
+        mAnnotator = new kImageAnnotator::KImageAnnotator();
+        mAnnotator->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        mAnnotator->setCanvasColor(QColor(255, 255, 255, 0));
+        mAnnotator->setSaveToolSelection(true);
+#ifdef KIMAGEANNOTATOR_HAS_EXTRA_TOOLS
+        mAnnotator->setControlsWidgetVisible(true);
+#endif
+
+        mStack->addWidget(mAnnotator);
+    }
+
     mStack->setCurrentIndex(1);
     QPixmap px = ExportManager::instance()->pixmap();
     px.setDevicePixelRatio(qApp->devicePixelRatio());
@@ -325,6 +323,10 @@ void KSWidget::showAnnotator()
 
 void KSWidget::hideAnnotator()
 {
+    if (!mAnnotator) {
+        return;
+    }
+
     mStack->setCurrentIndex(0);
     QImage image = mAnnotator->image();
     QPixmap px = QPixmap::fromImage(image);
@@ -334,6 +336,10 @@ void KSWidget::hideAnnotator()
 
 QSize KSWidget::sizeHintWhenAnnotating()
 {
+    if (!mAnnotator) {
+        return QSize();
+    }
+
     /*
      * when using Wayland only maximization shall be used and return value ignored.
      * We return it anyway for other possible use-cases.
