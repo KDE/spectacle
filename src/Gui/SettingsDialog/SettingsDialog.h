@@ -27,6 +27,8 @@ private:
     void updateSettings() override;
     void updateWidgets() override;
     void updateWidgetsDefault() override;
+    void keyPressEvent(QKeyEvent *) override;
+    void keyReleaseEvent(QKeyEvent *) override;
 
     ShortcutsOptionsPage *const mShortcutsPage;
 };

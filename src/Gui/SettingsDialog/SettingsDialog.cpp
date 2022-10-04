@@ -16,6 +16,7 @@
 
 #include <KLocalizedString>
 #include <KShortcutWidget>
+#include <qevent.h>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
@@ -63,4 +64,21 @@ void SettingsDialog::updateWidgetsDefault()
 {
     KConfigDialog::updateWidgetsDefault();
     mShortcutsPage->defaults();
+}
+
+void SettingsDialog::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape) {
+        return;
+    }
+    QDialog::keyPressEvent(event);
+}
+
+void SettingsDialog::keyReleaseEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape) {
+        QDialog::reject();
+        return;
+    }
+    QDialog::keyReleaseEvent(event);
 }
