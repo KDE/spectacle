@@ -1,19 +1,21 @@
 # Burkhard Lück <lueck@hube-lueck.de>, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2015, 2016, 2018, 2020, 2022.
+# Alois Spitzbart <spitz234@hotmail.com>, 2022.
+# Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-12 00:44+0000\n"
-"PO-Revision-Date: 2022-07-23 23:52+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2022-10-13 13:45+0200\n"
+"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 22.08.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -359,10 +361,9 @@ msgstr ""
 "\">hier</a>"
 
 #: src/Gui/KSMainWindow.cpp:569
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgid "Ready to take a screenshot"
-msgstr "Nach der Aufnahme eines Bildschirmfotos:"
+msgstr "Bereit zur Aufnahme eines Bildschirmfotos"
 
 #: src/Gui/KSMainWindow.cpp:586
 #, kde-format
@@ -486,31 +487,27 @@ msgstr "Abbrechen"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle"
+#, kde-format
 msgid "When launching Spectacle:"
-msgstr "Spectacle starten"
+msgstr "Beim Starten von Spectacle:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
-#, fuzzy, kde-format
-#| msgid "Take a new screenshot"
+#, kde-format
 msgid "Take full screen screenshot"
-msgstr "Neues Bildschirmfoto aufnehmen"
+msgstr "Bildschirmfoto von Vollbildansicht aufnehmen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
-#, fuzzy, kde-format
-#| msgid "The last used save mode"
+#, kde-format
 msgid "Use last-used capture mode"
-msgstr "Der zuletzt verwendet Speichermodus"
+msgstr "Der zuletzt verwendete Aufnahmemodus"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
-#, fuzzy, kde-format
-#| msgid "Save screenshot automatically after it is taken"
+#, kde-format
 msgid "Do not take a screenshot automatically"
-msgstr "Bildschirmfoto automatisch nach der Aufnahme speichern"
+msgstr "Bildschirmfoto nicht automatisch aufnehmen"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:59
@@ -520,10 +517,9 @@ msgstr "Nach der Aufnahme eines Bildschirmfotos:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:66
-#, fuzzy, kde-format
-#| msgid "Autosave file to default folder"
+#, kde-format
 msgid "Save file to default folder"
-msgstr "Datei automatisch im Standardort speichern"
+msgstr "Datei in den Standardort speichern"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:77
@@ -575,10 +571,9 @@ msgstr "Spectacle-Fenster aktivieren"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangular Region Selection"
-msgstr "Rechteckiger Bereich"
+msgstr "Rechteck-Auswahl"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:167
@@ -608,7 +603,7 @@ msgstr "Mit Klicken und Loslassen übernehmen"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, kde-format
 msgid "Show capture instructions"
-msgstr ""
+msgstr "Aufnahmeanleitung anzeigen"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:218
@@ -709,10 +704,9 @@ msgstr "Kurzbefehle"
 
 #. i18n: ectx: label, entry (onLaunchAction), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:12
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgid "What to do when Spectacle is launched"
-msgstr "Wenn Spectacle ausgeführt wird"
+msgstr "Was tun, wenn Spectacle gestartet wird"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:21
@@ -758,10 +752,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:55
-#, fuzzy, kde-format
-#| msgid "Whether to show a magnifier in the region selection"
+#, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Anzeige einer Lupe bei der Auswahl eines Bereichs"
+msgstr "Anzeige der Aufnahmeanleitung bei der Auswahl eines Bereichs"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:59
@@ -1028,10 +1021,9 @@ msgid "Capture Window Under Cursor"
 msgstr "Fenster unter dem Mauszeiger aufnehmen"
 
 #: src/ShortcutActions.cpp:63
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle"
+#, kde-format
 msgid "Launch Spectacle without capturing"
-msgstr "Spectacle starten"
+msgstr "Spectacle ohne Aufnahme starten"
 
 #: src/SpectacleCore.cpp:434
 #, kde-format
@@ -1069,22 +1061,18 @@ msgid "Rectangular Region Captured"
 msgstr "Rechteckigen Bereich aufgenommen"
 
 #: src/SpectacleCore.cpp:477
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgid "A screenshot was copied to your clipboard."
 msgstr "Ein Bildschirmfoto wurde in der Zwischenablage gespeichert."
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been copied to your clipboard."
 msgstr ""
-"Das Bildschirmfoto wurde als <a href=\"%1\">%2</a> gespeichert und der Ort "
-"wurde in die Zwischenablage kopiert"
+"Das Bildschirmfoto wurde als „%1“ in „%2“ gespeichert und der Ort wurde in "
+"die Zwischenablage kopiert."
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -1144,10 +1132,9 @@ msgid "Capture a rectangular region of the screen"
 msgstr "Einen rechteckigen Bereich aufnehmen"
 
 #: src/SpectacleCore.cpp:534
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Nach der Aufnahme eines Bildschirmfotos:"
+msgstr "Ohne Aufnahme eines Bildschirmfotos starten"
 
 #: src/SpectacleCore.cpp:535
 #, kde-format
@@ -1185,12 +1172,13 @@ msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Verzögerung in Millisekunden vor der Aufnahme im Hintergrundmodus"
 
 #: src/SpectacleCore.cpp:543
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot image to clipboard"
+#, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
-msgstr "Im Hintergrundmodus das Bildschirmfoto in die Zwischenablage kopieren"
+msgstr ""
+"Im Hintergrundmodus das Bildschirmfoto in die Zwischenablage kopieren, es "
+"sei denn -o wird verwendet."
 
 #: src/SpectacleCore.cpp:544
 #, kde-format
@@ -1224,7 +1212,7 @@ msgstr "Im Hintergrundmodus Mauszeiger im Bildschirmfoto nicht anzeigen"
 #: src/SpectacleCore.cpp:549
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr ""
+msgstr "Ein existierendes Bildschirmfoto öffnen und bearbeiten"
 
 #~ msgid "More Online Services"
 #~ msgstr "Weitere Online-Dienste"
