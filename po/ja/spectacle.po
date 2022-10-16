@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:44+0000\n"
 "PO-Revision-Date: 2022-08-08 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1084,22 +1084,22 @@ msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:528
+#: src/SpectacleCore.cpp:530
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "デスクトップ全体を撮影 (デフォルト)"
 
-#: src/SpectacleCore.cpp:529
+#: src/SpectacleCore.cpp:531
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "現在のモニターを撮影"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:532
 #, kde-format
 msgid "Capture the active window"
 msgstr "アクティブウィンドウを撮影"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:533
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1108,7 +1108,7 @@ msgstr ""
 "現在カーソル下にあるウィンドウを撮影します (ポップアップメニューの親を含みま"
 "す)"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:534
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1117,32 +1117,32 @@ msgstr ""
 "現在カーソル下にあるウィンドウを撮影します (ポップアップメニューの親を含みま"
 "せん)"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "スクリーンの矩形領域を撮影します"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:536
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "スクリーンショットを撮影せずに Spectacle を起動する"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:537
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI モードで起動"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:538
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "新しいスクリーンショットを撮影し GUI を表示せずに終了"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:539
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "D-Bus アクティベーションモードで起動"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:540
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1150,17 +1150,17 @@ msgstr ""
 "バックグラウンドモードで、スクリーンショットが撮影されたときに通知をポップ"
 "アップしません"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:541
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "バックグラウンドモードで、指定されたファイルに画像を保存"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:543
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "バックグラウンドモードで、撮影する前に遅延する (ミリ秒で)"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:545
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1169,34 +1169,34 @@ msgstr ""
 "バックグラウンドモードで、オプション -o が使われていないときスクリーンショッ"
 "トをクリップボードにコピー"
 
-#: src/SpectacleCore.cpp:544
+#: src/SpectacleCore.cpp:546
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "バックグラウンドモードで、スクリーンショットをクリップボードのパスにコピー"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:547
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "クリックされるまでスクリーンショットを待機します。遅延は無効になります"
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:548
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "D-Bus に登録せずに新しい Spectacle の GUI インスタンスを開始する"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:549
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "バックグラウンドモードで、スクリーンショットにポインターを含める"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:550
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "バックグラウンドモードで、ウィンドウの飾りをスクリーンショットに含まない"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:551
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "既存のスクリーンショットファイルを開き、編集する"
