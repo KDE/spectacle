@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:44+0000\n"
-"PO-Revision-Date: 2021-12-13 13:55+0200\n"
-"Last-Translator: Moo\n"
+"PO-Revision-Date: 2022-11-16 22:53+0200\n"
+"Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -164,7 +164,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Timezone"
-msgstr ""
+msgstr "Laiko juosta"
 
 #: src/ExportManager.cpp:603
 #, kde-format
@@ -377,15 +377,13 @@ msgstr ""
 "%2</a>"
 
 #: src/Gui/KSMainWindow.cpp:692
-#, fuzzy, kde-format
-#| msgid "Annotate"
+#, kde-format
 msgctxt "@action:button"
 msgid "Annotate"
 msgstr "Kurti anotacijas"
 
 #: src/Gui/KSMainWindow.cpp:704
-#, fuzzy, kde-format
-#| msgid "Annotation done"
+#, kde-format
 msgctxt "@action:button"
 msgid "Annotation Done"
 msgstr "Anotacijos atliktos"
@@ -570,10 +568,9 @@ msgstr "Grąžinti fokusavimą į Spectacle"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangular Region Selection"
-msgstr "Stačiakampė sritis"
+msgstr "Stačiakampės srities žymėjimas"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:167
@@ -603,7 +600,7 @@ msgstr "Priimti spustelėjus ir atleidus"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, kde-format
 msgid "Show capture instructions"
-msgstr ""
+msgstr "Rodyti ekrano kopijos darymo instrukcijas"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:218
@@ -753,10 +750,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:55
-#, fuzzy, kde-format
-#| msgid "Whether to show a magnifier in the region selection"
+#, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Ar srities žymėjime rodyti didintuvą"
+msgstr "Ar srities žymėjime rodyti ekrano kopijos darymo instrukcijas"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:59
@@ -1065,22 +1061,18 @@ msgid "Rectangular Region Captured"
 msgstr "Nufotografuota stačiakampė ekrano sritis"
 
 #: src/SpectacleCore.cpp:477
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgid "A screenshot was copied to your clipboard."
-msgstr "Ekrano kopija įrašyta į jūsų iškaprinę."
+msgstr "Ekrano kopija nukopijuota į jūsų iškaprinę."
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been copied to your clipboard."
 msgstr ""
-"Ekrano kopija buvo įrašyta kaip <a href=\"%1\">%2</a>, o jos vieta "
-"nukopijuota į iškarpinę"
+"Ekrano kopija buvo įrašyta kaip „%1“ į „%2“, o ekrano kopijos failo kelias "
+"nukopijuotas į iškarpinę."
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -1174,12 +1166,13 @@ msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Foninėje veiksenoje delsa prieš darant ekrano kopiją (milisekundėmis)"
 
 #: src/SpectacleCore.cpp:545
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot image to clipboard"
+#, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
-msgstr "Foninėje veiksenoje kopijuoti ekrano kopijos paveikslą į iškarpinę"
+msgstr ""
+"Foninėje veiksenoje, kopijuoti ekrano kopijos paveikslą į iškarpinę, nebent "
+"taip pat yra naudojamas -o."
 
 #: src/SpectacleCore.cpp:546
 #, kde-format
