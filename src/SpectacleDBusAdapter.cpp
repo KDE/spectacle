@@ -4,7 +4,6 @@
  */
 
 #include "SpectacleDBusAdapter.h"
-#include "SpectacleCommon.h"
 #include "settings.h"
 
 SpectacleDBusAdapter::SpectacleDBusAdapter(SpectacleCore *parent)
@@ -20,17 +19,17 @@ inline SpectacleCore *SpectacleDBusAdapter::parent() const
 
 void SpectacleDBusAdapter::FullScreen(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::AllScreens, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
+    parent()->takeNewScreenshot(CaptureModeModel::AllScreens, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
 }
 
 void SpectacleDBusAdapter::CurrentScreen(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::CurrentScreen, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
+    parent()->takeNewScreenshot(CaptureModeModel::CurrentScreen, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
 }
 
 void SpectacleDBusAdapter::ActiveWindow(int includeWindowDecorations, int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::ActiveWindow,
+    parent()->takeNewScreenshot(CaptureModeModel::ActiveWindow,
                                 0,
                                 (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
                                 includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
@@ -38,7 +37,7 @@ void SpectacleDBusAdapter::ActiveWindow(int includeWindowDecorations, int includ
 
 void SpectacleDBusAdapter::WindowUnderCursor(int includeWindowDecorations, int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::WindowUnderCursor,
+    parent()->takeNewScreenshot(CaptureModeModel::WindowUnderCursor,
                                 0,
                                 (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
                                 includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
@@ -46,7 +45,7 @@ void SpectacleDBusAdapter::WindowUnderCursor(int includeWindowDecorations, int i
 
 void SpectacleDBusAdapter::RectangularRegion(int includeMousePointer)
 {
-    parent()->takeNewScreenshot(Spectacle::CaptureMode::RectangularRegion,
+    parent()->takeNewScreenshot(CaptureModeModel::RectangularRegion,
                                 0,
                                 (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
                                 false);

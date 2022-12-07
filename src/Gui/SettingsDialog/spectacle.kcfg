@@ -5,10 +5,13 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
                           http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
 <include>QStandardPaths</include>
-<include>SpectacleCommon.h</include>
+<include>CaptureModeModel.h</include>
+<include>Gui/Annotations/AnnotationDocument.h</include>
 <kcfgfile />
 <group name="General">
-    <entry name="onLaunchAction" type="Enum">
+    <entry name="launchAction" key="onLaunchAction" type="Enum">
+        <!--Using a name that doesn't look like a signal handler.-->
+        <!--Not changing the key to avoid having to migrate.-->
         <label>What to do when Spectacle is launched</label>
         <choices>
         <choice name="TakeFullscreenScreenshot"></choice>
@@ -39,7 +42,9 @@
         </choices>
         <default>PostScreenshotDoNothing</default>
     </entry>
-    <entry name="useLightMaskColour" type="Bool">
+    <entry name="useLightMaskColor" key="useLightMaskColour" type="Bool">
+        <!--Using a consistent spelling for color in code.-->
+        <!--Not changing the key to avoid having to migrate.-->
         <label>Whether to use a light color mask in the region selection dialog</label>
         <default>false</default>
     </entry>
@@ -66,11 +71,13 @@
     </entry>
 </group>
 <group name="GuiConfig">
-    <entry name="cropRegion" type="IntList">
+    <entry name="cropRegion" type="Rect">
         <label>The last used region the user selected</label>
-        <default>0,0,0,0</default>
+        <default>QRect()</default>
     </entry>
-    <entry name="onClickChecked" type="Bool">
+    <entry name="captureOnClick" key="onClickChecked" type="Bool">
+        <!--Using a name that doesn't look like a signal handler.-->
+        <!--Not changing the key to avoid having to migrate.-->
         <label>Take screenshot on click</label>
         <default>false</default>
     </entry>
@@ -93,10 +100,11 @@
     <entry name="captureDelay" type="Double">
         <label>Delay</label>
         <default>0</default>
+        <min>0</min>
     </entry>
     <entry name="captureMode" type="Enum">
-        <choices name="Spectacle::CaptureMode"></choices>
-        <default>Spectacle::CaptureMode::AllScreens</default>
+        <choices name="CaptureModeModel::CaptureMode"></choices>
+        <default>CaptureModeModel::CaptureMode::AllScreens</default>
     </entry>
 </group>
 <group name="Save">
@@ -109,6 +117,8 @@
     <entry name="compressionQuality" type="UInt">
         <label>Compression quality for lossy file formats</label>
         <default>90</default>
+        <min>0</min>
+        <max>100</max>
     </entry>
      <entry name="defaultSaveImageFormat" type="String">
         <label>Default save image format</label>
@@ -126,21 +136,97 @@
         <label>Last path used for "save as" action</label>
         <default code="true">defaultSaveLocation()</default>
     </entry>
-    <entry name="lastUsedSaveMode" type="Enum">
-        <label>The last used save mode</label>
-        <choices>
-        <choice name="SaveAs"></choice>
-        <choice name="Save"></choice>
-        </choices>
-        <default>SaveAs</default>
+</group>
+<group name="Annotations">
+    <entry name="annotationToolType" type="Enum">
+        <label>The last used annotation tool type</label>
+        <choices name="AnnotationDocument::EditActionType"></choices>
+        <default>AnnotationDocument::EditActionType::None</default>
     </entry>
-    <entry name="lastUsedCopyMode" type="Enum">
-        <label>The last used copy mode</label>
-        <choices>
-        <choice name="CopyLocation"></choice>
-        <choice name="CopyImage"></choice>
-        </choices>
-        <default>CopyImage</default>
+
+    <entry name="freehandStrokeWidth" type="UInt">
+        <label>Stroke width for freehand annotation tool</label>
+        <default>4</default>
+        <min>1</min>
+    </entry>
+    <entry name="highlighterStrokeWidth" type="UInt">
+        <label>Stroke width for highlighter annotation tool</label>
+        <default>20</default>
+        <min>1</min>
+    </entry>
+    <entry name="lineStrokeWidth" type="UInt">
+        <label>Stroke width for line annotation tool</label>
+        <default>4</default>
+        <min>1</min>
+    </entry>
+    <entry name="arrowStrokeWidth" type="UInt">
+        <label>Stroke width for arrow annotation tool</label>
+        <default>4</default>
+        <min>1</min>
+    </entry>
+    <entry name="rectangleStrokeWidth" type="UInt">
+        <label>Stroke width for rectangle annotation tool</label>
+        <default>0</default>
+        <min>0</min>
+    </entry>
+    <entry name="ellipseStrokeWidth" type="UInt">
+        <label>Stroke width for ellipse annotation tool</label>
+        <default>0</default>
+        <min>0</min>
+    </entry>
+
+    <entry name="freehandStrokeColor" type="Color">
+        <label>Stroke width for freehand annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+    <entry name="highlighterStrokeColor" type="Color">
+        <label>Stroke width for highlighter annotation tool</label>
+        <default>255,255,0,255</default>
+    </entry>
+    <entry name="lineStrokeColor" type="Color">
+        <label>Stroke width for line annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+    <entry name="arrowStrokeColor" type="Color">
+        <label>Stroke width for arrow annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+    <entry name="rectangleStrokeColor" type="Color">
+        <label>Stroke width for rectangle annotation tool</label>
+        <default>0,0,0,255</default>
+    </entry>
+    <entry name="ellipseStrokeColor" type="Color">
+        <label>Stroke width for ellipse annotation tool</label>
+        <default>0,0,0,255</default>
+    </entry>
+
+    <entry name="rectangleFillColor" type="Color">
+        <label>Stroke width for rectangle annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+    <entry name="ellipseFillColor" type="Color">
+        <label>Stroke width for ellipse annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+    <entry name="numberFillColor" type="Color">
+        <label>Stroke width for ellipse annotation tool</label>
+        <default>255,0,0,255</default>
+    </entry>
+
+    <entry name="textFont" type="Font">
+        <label>Font for annotations</label>
+    </entry>
+    <entry name="numberFont" type="Font">
+        <label>Font for annotations</label>
+    </entry>
+
+    <entry name="textFontColor" type="Color">
+        <label>Font color for annotations</label>
+        <default>0,0,0,255</default>
+    </entry>
+    <entry name="numberFontColor" type="Color">
+        <label>Font color for annotations</label>
+        <default>0,0,0,255</default>
     </entry>
 </group>
 </kcfg>

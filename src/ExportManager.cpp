@@ -73,12 +73,12 @@ QString ExportManager::windowTitle() const
     return mWindowTitle;
 }
 
-Spectacle::CaptureMode ExportManager::captureMode() const
+CaptureModeModel::CaptureMode ExportManager::captureMode() const
 {
     return mCaptureMode;
 }
 
-void ExportManager::setCaptureMode(Spectacle::CaptureMode theCaptureMode)
+void ExportManager::setCaptureMode(CaptureModeModel::CaptureMode theCaptureMode)
 {
     mCaptureMode = theCaptureMode;
 }
@@ -97,6 +97,8 @@ void ExportManager::setPixmap(const QPixmap &pixmap)
 
     // since the pixmap was modified, we now consider the image unsaved
     mImageSavedNotInTemp = false;
+
+    Q_EMIT pixmapChanged();
 }
 
 void ExportManager::updatePixmapTimestamp()
@@ -164,8 +166,8 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     QString baseDir = defaultSaveLocation();
     QString title;
 
-    if (mCaptureMode == Spectacle::CaptureMode::ActiveWindow || mCaptureMode == Spectacle::CaptureMode::TransientWithParent
-        || mCaptureMode == Spectacle::CaptureMode::WindowUnderCursor) {
+    if (mCaptureMode == CaptureModeModel::ActiveWindow || mCaptureMode == CaptureModeModel::TransientWithParent
+        || mCaptureMode == CaptureModeModel::WindowUnderCursor) {
         title = mWindowTitle.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it
@@ -479,7 +481,7 @@ void ExportManager::doSave(const QUrl &url, bool notify)
     }
 }
 
-bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
+bool ExportManager::doSaveAs(bool notify)
 {
     QStringList supportedFilters;
 
@@ -493,7 +495,7 @@ bool ExportManager::doSaveAs(QWidget *parentWindow, bool notify)
     // construct the file name
     const QString filenameExtension = Settings::self()->defaultSaveImageFormat().toLower();
     const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
-    QFileDialog dialog(parentWindow);
+    QFileDialog dialog;
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
     dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename));
@@ -575,9 +577,10 @@ void ExportManager::doPrint(QPrinter *printer)
 
     if (!(painter.begin(printer))) {
         Q_EMIT errorMessage(i18n("Printing failed. The printer failed to initialize."));
-        delete printer;
         return;
     }
+
+    painter.setRenderHint(QPainter::LosslessImageRendering);
 
     QRect devRect(0, 0, printer->width(), printer->height());
     QPixmap pixmap = mSavePixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
@@ -586,9 +589,6 @@ void ExportManager::doPrint(QPrinter *printer)
 
     painter.drawPixmap(srcRect.topLeft(), pixmap);
     painter.end();
-
-    delete printer;
-    return;
 }
 
 const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{

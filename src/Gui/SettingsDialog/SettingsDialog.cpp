@@ -13,6 +13,7 @@
 #include "settings.h"
 
 #include <QFontDatabase>
+#include <QWindow>
 
 #include <KLocalizedString>
 #include <KShortcutWidget>
@@ -35,6 +36,14 @@ QSize SettingsDialog::sizeHint() const
     // Take the font size into account for the window size, as we do for UI elements
     const float fontSize = QFontDatabase::systemFont(QFontDatabase::GeneralFont).pointSizeF();
     return QSize(qRound(58 * fontSize), qRound(62 * fontSize));
+}
+
+void SettingsDialog::showEvent(QShowEvent *event)
+{
+    auto parent = parentWidget();
+    bool onTop = parent && parent->windowHandle()->flags().testFlag(Qt::WindowStaysOnTopHint);
+    windowHandle()->setFlag(Qt::WindowStaysOnTopHint, onTop);
+    KConfigDialog::showEvent(event);
 }
 
 bool SettingsDialog::hasChanged()

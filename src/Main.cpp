@@ -6,7 +6,6 @@
  */
 
 #include "Config.h"
-#include "SpectacleCommon.h"
 #include "SpectacleCore.h"
 #include "SpectacleDBusAdapter.h"
 #include "settings.h"
@@ -45,6 +44,7 @@ int main(int argc, char **argv)
                          i18n("(C) 2015 Boudhayan Gupta"));
     aboutData.addAuthor(QStringLiteral("Boudhayan Gupta"), QString(), QStringLiteral("bgupta@kde.org"));
     aboutData.addAuthor(QStringLiteral("David Redondo"), QString(), QStringLiteral("kde@david-redondo.de"));
+    aboutData.addAuthor(QStringLiteral("Noah Davis"), QString(), QStringLiteral("noahadvs@gmail.com"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
         QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
-        lCore.onActivateRequested(app.arguments(), QStringLiteral());
+        lCore.onActivateRequested(app.arguments(), QLatin1String());
 
         return app.exec();
     }
@@ -95,20 +95,20 @@ int main(int argc, char **argv)
 
     // set up the KDBusService activateRequested slot
     QObject::connect(&service, &KDBusService::activateRequested, &lCore, &SpectacleCore::onActivateRequested);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
     QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
-    QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
 
     // create the dbus connections
     SpectacleDBusAdapter *lDBusAdapter = new SpectacleDBusAdapter(&lCore);
     QObject::connect(&lCore, &SpectacleCore::grabFailed, lDBusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
     QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, &lCore, [&](const QUrl &savedAt) {
-        lDBusAdapter->ScreenshotTaken(savedAt.toLocalFile());
+        Q_EMIT lDBusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &lCore);
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
-    lCore.onActivateRequested(app.arguments(), QStringLiteral());
+    lCore.onActivateRequested(app.arguments(), QLatin1String());
 
     return app.exec();
 }

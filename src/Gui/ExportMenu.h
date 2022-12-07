@@ -7,7 +7,7 @@
 #ifndef EXPORTMENU_H
 #define EXPORTMENU_H
 
-#include <QMenu>
+#include "SpectacleMenu.h"
 
 #include "Config.h"
 #include "ExportManager.h"
@@ -17,23 +17,23 @@
 #include <PurposeWidgets/Menu>
 #endif
 
-class ExportMenu : public QMenu
+class ExportMenu : public SpectacleMenu
 {
     Q_OBJECT
 
 public:
     explicit ExportMenu(QWidget *parent = nullptr);
-    void imageUpdated();
 
-private Q_SLOTS:
-
-    void populateMenu();
+public Q_SLOTS:
+    void openPrintDialog();
 
 Q_SIGNALS:
-
     void imageShared(int error, const QString &message);
 
 private:
+    Q_SLOT void onPixmapChanged();
+    Q_SLOT void openScreenshotsFolder();
+
     void getKServiceItems();
 
 #ifdef PURPOSE_FOUND
@@ -43,8 +43,6 @@ private:
     bool mUpdatedImageAvailable;
     Purpose::Menu *mPurposeMenu = nullptr;
 #endif
-
-    ExportManager *const mExportManager;
 };
 
 #endif // EXPORTMENU_H

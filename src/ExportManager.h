@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <SpectacleCommon.h>
+#include <CaptureModeModel.h>
 
 #include <KLocalizedString>
 #include <QDateTime>
@@ -45,13 +45,14 @@ public:
     void updatePixmapTimestamp();
     void setTimestamp(const QDateTime &timestamp);
     QString windowTitle() const;
-    Spectacle::CaptureMode captureMode() const;
-    void setCaptureMode(Spectacle::CaptureMode theCaptureMode);
+    CaptureModeModel::CaptureMode captureMode() const;
+    void setCaptureMode(CaptureModeModel::CaptureMode theCaptureMode);
     QString formatFilename(const QString &nameTemplate);
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
 Q_SIGNALS:
+    void pixmapChanged();
 
     void errorMessage(const QString &str);
     void imageSaved(const QUrl &savedAt);
@@ -67,7 +68,7 @@ public Q_SLOTS:
 
     void setWindowTitle(const QString &windowTitle);
     void doSave(const QUrl &url = QUrl(), bool notify = false);
-    bool doSaveAs(QWidget *parentWindow = nullptr, bool notify = false);
+    bool doSaveAs(bool notify = false);
     void doSaveAndCopy(const QUrl &url = QUrl());
     void doCopyToClipboard(bool notify = false);
     void doCopyLocationToClipboard(bool notify = false);
@@ -92,5 +93,5 @@ private:
     QTemporaryDir *mTempDir = nullptr;
     QList<QUrl> mUsedTempFileNames;
     QString mWindowTitle;
-    Spectacle::CaptureMode mCaptureMode{Spectacle::CaptureMode::AllScreens};
+    CaptureModeModel::CaptureMode mCaptureMode = CaptureModeModel::AllScreens;
 };

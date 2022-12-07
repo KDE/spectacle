@@ -5,7 +5,9 @@
  */
 
 #include "ExportMenu.h"
+#include "CaptureWindow.h"
 #include "spectacle_gui_debug.h"
+#include "settings.h"
 
 #include <KApplicationTrader>
 #include <KIO/ApplicationLauncherJob>
@@ -15,38 +17,44 @@
 #else
 #include <KIO/JobUiDelegate>
 #endif
+#include <KIO/OpenFileManagerWindowJob>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
+#include <KStandardAction>
 #include <KStandardShortcut>
 
 #include <QJsonArray>
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QTimer>
+#include <QWindow>
 #include <chrono>
 
 using namespace std::chrono_literals;
 
 ExportMenu::ExportMenu(QWidget *parent)
-    : QMenu(parent)
+    : SpectacleMenu(parent)
 #ifdef PURPOSE_FOUND
     , mUpdatedImageAvailable(false)
     , mPurposeMenu(new Purpose::Menu(this))
 #endif
-    , mExportManager(ExportManager::instance())
 {
-    QTimer::singleShot(300ms, this, &ExportMenu::populateMenu);
-}
+    addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
+              i18n("Open Default Screenshots Folder"),
+              this, &ExportMenu::openScreenshotsFolder);
+    addAction(KStandardAction::print(this, &ExportMenu::openPrintDialog, this));
 
-void ExportMenu::populateMenu()
-{
 #ifdef PURPOSE_FOUND
     loadPurposeMenu();
+    connect(ExportManager::instance(), &ExportManager::pixmapChanged, this, &ExportMenu::onPixmapChanged);
 #endif
 
     addSeparator();
     getKServiceItems();
 }
 
-void ExportMenu::imageUpdated()
+void ExportMenu::onPixmapChanged()
 {
 #ifdef PURPOSE_FOUND
     // mark cached image as stale
@@ -66,9 +74,18 @@ void ExportMenu::getKServiceItems()
         const QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
-        connect(action, &QAction::triggered, this, [=]() {
-            const QUrl filename = mExportManager->getAutosaveFilename();
-            mExportManager->doSave(filename);
+        connect(action, &QAction::triggered, this, [this, service]() {
+            auto captureWindow = qobject_cast<CaptureWindow *>(this->windowHandle()->transientParent());
+            if(captureWindow && !captureWindow->accept()) {
+                return;
+            }
+            QUrl filename;
+            if(ExportManager::instance()->isImageSavedNotInTemp()) {
+                filename = Settings::self()->lastSaveLocation();
+            } else {
+                filename = ExportManager::instance()->getAutosaveFilename();
+                ExportManager::instance()->doSave(filename);
+            }
 
             auto *job = new KIO::ApplicationLauncherJob(service);
             auto *delegate = new KNotificationJobUiDelegate;
@@ -89,9 +106,19 @@ void ExportMenu::getKServiceItems()
     QAction *openWith = new QAction(i18n("Other Application..."), this);
     openWith->setShortcuts(KStandardShortcut::open());
 
-    connect(openWith, &QAction::triggered, this, [=]() {
-        const QUrl filename = mExportManager->getAutosaveFilename();
-        mExportManager->doSave(filename);
+    connect(openWith, &QAction::triggered, this, [this]() {
+        auto captureWindow = qobject_cast<CaptureWindow *>(this->windowHandle()->transientParent());
+        if(captureWindow && !captureWindow->accept()) {
+            return;
+        }
+        QUrl filename;
+        if(ExportManager::instance()->isImageSavedNotInTemp()) {
+            filename = Settings::self()->lastSaveLocation();
+        } else {
+            filename = ExportManager::instance()->getAutosaveFilename();
+            ExportManager::instance()->doSave(filename);
+        }
+
         auto job = new KIO::ApplicationLauncherJob;
 #if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
         job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
@@ -122,7 +149,10 @@ void ExportMenu::loadPurposeMenu()
     });
 
     // update available options based on the latest picture
-    connect(mPurposeMenu, &QMenu::aboutToShow, this, &ExportMenu::loadPurposeItems);
+    connect(mPurposeMenu, &QMenu::aboutToShow, this, [this]() {
+        loadPurposeItems();
+        mPurposeMenu->windowHandle()->setTransientParent(windowHandle());
+    });
 }
 
 void ExportMenu::loadPurposeItems()
@@ -135,9 +165,47 @@ void ExportMenu::loadPurposeItems()
     const QString dataUri = ExportManager::instance()->tempSave().toString();
     mUpdatedImageAvailable = false;
 
-    mPurposeMenu->model()->setInputData(
-        QJsonObject{{QStringLiteral("mimeType"), QStringLiteral("image/png")}, {QStringLiteral("urls"), QJsonArray({dataUri})}});
+    QJsonObject inputData = {
+        {QStringLiteral("mimeType"), QStringLiteral("image/png")},
+        {QStringLiteral("urls"), QJsonArray({dataUri})}
+    };
+    mPurposeMenu->model()->setInputData(inputData);
     mPurposeMenu->model()->setPluginType(QStringLiteral("Export"));
     mPurposeMenu->reload();
 }
 #endif
+
+void ExportMenu::openScreenshotsFolder()
+{
+    auto job = new KIO::OpenUrlJob(Settings::defaultSaveLocation());
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
+#else
+    job->setUiDelegate(new KIO::JobUiDelegate(KIO::JobUiDelegate::AutoHandlingEnabled, this));
+#endif
+    job->start();
+}
+
+void ExportMenu::openPrintDialog()
+{
+    if (auto captureWindow = qobject_cast<CaptureWindow *>(windowHandle()->transientParent())) {
+        captureWindow->accept();
+    }
+    auto printer = new QPrinter(QPrinter::HighResolution);
+    auto dialog = new QPrintDialog(printer);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+
+    // properly set the transientparent chain
+    if (dialog->winId()) {
+        dialog->windowHandle()->setTransientParent(windowHandle()->transientParent());
+    }
+
+    connect(dialog, &QDialog::finished, dialog, [printer](int result){
+        if (result == QDialog::Accepted) {
+            ExportManager::instance()->doPrint(printer);
+        }
+        delete printer;
+    });
+
+    dialog->setVisible(true);
+}

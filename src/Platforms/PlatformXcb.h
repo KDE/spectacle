@@ -26,11 +26,10 @@ public:
     ShutterModes supportedShutterModes() const override final;
 
 public Q_SLOTS:
-
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 
 private Q_SLOTS:
-
+    void updateSupportedGrabModes();
     void handleKWinScreenshotReply(quint64 theDrawable);
     void doGrabNow(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
     void doGrabOnClick(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
@@ -58,5 +57,7 @@ private:
 
     // on-click screenshot shutter support needs a native event filter in xcb
     class OnClickEventFilter;
-    OnClickEventFilter *mNativeEventFilter;
+    std::unique_ptr<OnClickEventFilter> m_nativeEventFilter;
+
+    GrabModes m_grabModes;
 };

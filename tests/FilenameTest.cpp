@@ -8,7 +8,7 @@
 #include <QUuid>
 
 #include "ExportManager.h"
-#include "SpectacleCommon.h"
+#include "CaptureModeModel.h"
 
 class FilenameTest : public QObject
 {
@@ -57,10 +57,10 @@ void FilenameTest::testDateTokens()
 
 void FilenameTest::testWindowTitle()
 {
-    mExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+    mExportManager->setCaptureMode(CaptureModeModel::ActiveWindow);
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("%T")), QStringLiteral("Spectacle"));
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("Before%TAfter")), QStringLiteral("BeforeSpectacleAfter"));
-    mExportManager->setCaptureMode(Spectacle::CaptureMode::AllScreens);
+    mExportManager->setCaptureMode(CaptureModeModel::AllScreens);
     // Empty String produces Screenshot
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("%T")), QStringLiteral("Screenshot"));
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("Before%TAfter")), QStringLiteral("BeforeAfter"));
@@ -91,10 +91,10 @@ void FilenameTest::testNumbering()
 
 void FilenameTest::testCombined()
 {
-    mExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+    mExportManager->setCaptureMode(CaptureModeModel::ActiveWindow);
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")),
              QStringLiteral("App_Spectacle_Date_20190322_Time_10:43:25%F"));
-    mExportManager->setCaptureMode(Spectacle::CaptureMode::AllScreens);
+    mExportManager->setCaptureMode(CaptureModeModel::AllScreens);
     QCOMPARE(mExportManager->formatFilename(QStringLiteral("App_%T_Date_%Y%M%D_Time_%H:%m:%S%F")), QStringLiteral("App_Date_20190322_Time_10:43:25%F"));
 }
 

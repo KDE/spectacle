@@ -46,6 +46,9 @@ public:
 public Q_SLOTS:
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override;
 
+private Q_SLOTS:
+    void updateSupportedGrabModes();
+
 private:
     explicit PlatformKWinWayland2(QObject *parent = nullptr);
 
@@ -59,6 +62,7 @@ private:
     void trackSource(ScreenShotSourceMeta2 *source);
 
     int m_apiVersion = 1;
+    GrabModes m_grabModes;
 };
 
 /**

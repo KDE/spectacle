@@ -101,6 +101,9 @@ static QVector<QImage> readImages(int thePipeFd)
 PlatformKWinWayland::PlatformKWinWayland(QObject *parent)
     : Platform(parent)
 {
+    updateSupportedGrabModes();
+    connect(qGuiApp, &QGuiApplication::screenAdded, this, &PlatformKWinWayland::updateSupportedGrabModes);
+    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWinWayland::updateSupportedGrabModes);
 }
 
 QString PlatformKWinWayland::platformName() const
@@ -160,26 +163,38 @@ std::array<int, 3> findPlasmaMinorVersion()
 
 Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
 {
-    Platform::GrabModes lSupportedModes({Platform::GrabMode::AllScreens, GrabMode::WindowUnderCursor});
+    return m_grabModes;
+}
+
+void PlatformKWinWayland::updateSupportedGrabModes()
+{
+    GrabModes grabModes = {Platform::GrabMode::AllScreens, GrabMode::WindowUnderCursor};
     QList<QScreen *> screens = QApplication::screens();
+    int screenCount = screens.count();
 
     // TODO remove sometime after Plasma 5.21 is released
     // We can handle rectangular selection one one screen not scale factor
     // on Plasma < 5.21
-    if (screenshotScreensAvailable() || (screens.count() == 1 && screens.first()->devicePixelRatio() == 1)) {
-        lSupportedModes |= Platform::GrabMode::PerScreenImageNative;
+    if (screenshotScreensAvailable()
+        || (screenCount == 1 && screens.first()->devicePixelRatio() == 1)) {
+        grabModes |= Platform::GrabMode::PerScreenImageNative;
     }
 
-    // TODO remove sometime after Plasma 5.20 is released
-    auto plasmaVersion = findPlasmaMinorVersion();
-    if (plasmaVersion.at(0) != -1 && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20))) {
-        lSupportedModes |= Platform::GrabMode::AllScreensScaled;
+    if (screenCount > 1) {
+        grabModes |= Platform::GrabMode::CurrentScreen;
+
+        // TODO remove sometime after Plasma 5.20 is released
+        auto plasmaVersion = findPlasmaMinorVersion();
+        if (plasmaVersion.at(0) != -1
+            && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20))) {
+            grabModes |= Platform::GrabMode::AllScreensScaled;
+        }
     }
 
-    if (screens.count() > 1) {
-        lSupportedModes |= Platform::GrabMode::CurrentScreen;
+    if (m_grabModes != grabModes) {
+        m_grabModes = grabModes;
+        Q_EMIT supportedGrabModesChanged();
     }
-    return lSupportedModes;
 }
 
 bool PlatformKWinWayland::screenshotScreensAvailable() const
@@ -273,11 +288,21 @@ void PlatformKWinWayland::startReadImages(int theReadPipe)
     auto lWatcher = new QFutureWatcher<QVector<QImage>>(this);
     QObject::connect(lWatcher, &QFutureWatcher<QVector<QImage>>::finished, this, [lWatcher, this]() {
         lWatcher->deleteLater();
-        auto result = lWatcher->result();
-        if (result.isEmpty()) {
+        auto images = lWatcher->result();
+        if (images.isEmpty()) {
             Q_EMIT newScreenshotFailed();
         } else {
-            Q_EMIT newScreensScreenshotTaken(result);
+            QVector<ScreenImage> screenImages;
+            const auto &screens = qGuiApp->screens();
+            if (images.length() != screens.length()) {
+                qWarning() << "ERROR: number of screens does not match number of images, expected:" << images.length() << "actual:" << screens.length();
+                Q_EMIT newScreenshotFailed();
+                return;
+            }
+            for (int i = 0; i < screens.length(); ++i) {
+                screenImages.append({screens.at(i), images.at(i), static_cast<qreal>(images.at(i).width()) / screens.at(i)->geometry().width()});
+            }
+            Q_EMIT newScreensScreenshotTaken(screenImages);
         }
     });
     lWatcher->setFuture(QtConcurrent::run(readImages, theReadPipe));

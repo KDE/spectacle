@@ -26,6 +26,9 @@ public Q_SLOTS:
 
     void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
 
+private Q_SLOTS:
+    void updateSupportedGrabModes();
+
 private:
     void startReadImage(int theReadPipe);
     void startReadImages(int theReadPipe);
@@ -40,4 +43,6 @@ private:
     void doGrabHelper(const QString &theGrabMethod, ArgType... arguments);
     template<typename... ArgType>
     void doGrabImagesHelper(const QString &theGrabMethod, ArgType... arguments);
+
+    GrabModes m_grabModes;
 };

@@ -20,6 +20,7 @@ public:
 
 protected:
     QSize sizeHint() const override;
+    void showEvent(QShowEvent *event) override;
 
 private:
     bool hasChanged() override;

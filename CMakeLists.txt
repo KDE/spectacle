@@ -40,6 +40,10 @@ find_package(
     Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
         Concurrent
+        Qml
+        Quick
+        QuickControls2
+        QuickTemplates2
         Widgets
         DBus
         PrintSupport
@@ -62,6 +66,7 @@ find_package(
         XmlGui
         Wayland
         GuiAddons
+        Kirigami2
 )
 # optional components
 find_package(KF5DocTools ${KF5_MIN_VERSION})
@@ -97,24 +102,6 @@ endif()
 if(NOT XCB_CURSOR_FOUND)
 	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-CURSOR ")
 	set(XCB_COMPONENTS_FOUND FALSE)
-endif()
-
-if (QT_MAJOR_VERSION STREQUAL "5") # For the moment kImageAnnotator is not ported to qt6
-    find_package(kImageAnnotator)
-endif()
-if(kImageAnnotator_FOUND)
-    find_package(X11 REQUIRED)
-    find_package(kColorPicker REQUIRED)
-    set(KIMAGEANNOTATOR_FOUND 1)
-    if(NOT kImageAnnotator_VERSION VERSION_LESS 0.5.0)
-        set(KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS 1)
-    endif()
-    if(NOT kImageAnnotator_VERSION VERSION_LESS 0.6.0)
-        set(KIMAGEANNOTATOR_HAS_EXTRA_TOOLS 1)
-    endif()
-    if(NOT kImageAnnotator_VERSION VERSION_LESS 0.6.1)
-        set(KIMAGEANNOTATOR_HAS_FIXED_SIZEHINT 1)
-    endif()
 endif()
 
 # add the spectacle.upd file

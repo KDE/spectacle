@@ -8,7 +8,7 @@
 #include "SaveOptionsPage.h"
 
 #include "ExportManager.h"
-#include "SpectacleCommon.h"
+#include "CaptureModeModel.h"
 #include "ui_SaveOptions.h"
 
 #include <KLocalizedString>
@@ -74,14 +74,14 @@ void SaveOptionsPage::updateFilenamePreview()
 {
     auto lExportManager = ExportManager::instance();
     lExportManager->setWindowTitle(QStringLiteral("Spectacle"));
-    Spectacle::CaptureMode lOldMode = lExportManager->captureMode();
+    CaptureModeModel::CaptureMode lOldMode = lExportManager->captureMode();
 
     // If the grabMode is not one of those below we need to change it to have the placeholder
     // replaced by the window title
-    const bool lSwitchGrabMode = !(lOldMode == Spectacle::CaptureMode::ActiveWindow || lOldMode == Spectacle::CaptureMode::TransientWithParent
-                                   || lOldMode == Spectacle::CaptureMode::WindowUnderCursor);
+    const bool lSwitchGrabMode = !(lOldMode == CaptureModeModel::ActiveWindow || lOldMode == CaptureModeModel::TransientWithParent
+                                   || lOldMode == CaptureModeModel::WindowUnderCursor);
     if (lSwitchGrabMode) {
-        lExportManager->setCaptureMode(Spectacle::CaptureMode::ActiveWindow);
+        lExportManager->setCaptureMode(CaptureModeModel::ActiveWindow);
     }
     const QString lFileName = lExportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
     m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
