@@ -66,6 +66,7 @@ ColumnLayout {
         QQC2.ToolTip.visible: hovered
         QQC2.ToolTip.text: i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border")
         checked: Settings.includeDecorations
+        enabled: [CaptureModeModel.ActiveWindow, CaptureModeModel.WindowUnderCursor].includes(Settings.captureMode)
         onToggled: Settings.includeDecorations = checked
     }
     QQC2.CheckBox {
@@ -74,6 +75,7 @@ ColumnLayout {
         QQC2.ToolTip.visible: hovered
         QQC2.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc).\nIf disabled, the pop-up is captured along with the parent window")
         checked: Settings.transientOnly
+        enabled: [CaptureModeModel.ActiveWindow, CaptureModeModel.WindowUnderCursor].includes(Settings.captureMode)
         onToggled: Settings.transientOnly = checked
     }
     QQC2.CheckBox {
