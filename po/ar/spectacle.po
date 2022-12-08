@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:44+0000\n"
+"POT-Creation-Date: 2022-12-08 00:43+0000\n"
 "PO-Revision-Date: 2022-08-08 22:23+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -44,12 +44,48 @@ msgstr "التقط النّافذة النّشطة"
 msgid "Capture Rectangular Region"
 msgstr "التقط منطقة مستطيلة"
 
-#: src/ExportManager.cpp:308
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "منطقة مستطيلة"
+
+#: src/CaptureModeModel.cpp:102
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgid "All Screens"
+msgstr "ملء الشاشة"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "ملء الشاشة"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:116
+#, kde-format
+msgid "Current Screen"
+msgstr "الشّاشة الحاليّة"
+
+#: src/CaptureModeModel.cpp:123
+#, kde-format
+msgid "Active Window"
+msgstr "النّافذة النّشطة"
+
+#: src/CaptureModeModel.cpp:130
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "النّافذة تحت المؤشّر"
+
+#: src/ExportManager.cpp:310
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "تعذّر على QImageWriter كتابة الصّورة: %1"
 
-#: src/ExportManager.cpp:323
+#: src/ExportManager.cpp:325
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -58,12 +94,12 @@ msgid ""
 msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:335
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ."
 
-#: src/ExportManager.cpp:353
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -73,27 +109,27 @@ msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل البعيد:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ المحليّ المؤقّت."
 
-#: src/ExportManager.cpp:372
+#: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "تعذّر حفظ الصّورة بسبب تعذّر رفعها إلى المكان البعيد."
 
-#: src/ExportManager.cpp:421
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "تعذّر حفظ اللقطة لأنّ اسم الملفّ غير صالح."
 
-#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "لا يمكن حفظ لقطة فارغة."
 
-#: src/ExportManager.cpp:577
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "فشلت الطّباعة. فشل تمهيد الطّابعة."
@@ -186,263 +222,160 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "ترقيم متتابع، مبطن حتى أكبر رقم"
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
-msgid "Full Screen"
-msgstr "ملء الشاشة"
+msgid "Stroke:"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
-msgid "Full Screen (All Monitors)"
-msgstr "ملء الشّاشة (كلّ الشّاشات)"
+msgid "Stroke Width"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:133
+#: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
-msgid "Full Screen (All Monitors, scaled)"
-msgstr "ملء الشّاشة (كلّ الشّاشات، محجمة)"
+msgid "Stroke Color"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:137
+#: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
-msgid "Rectangular Region"
+msgid "Fill:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:185
+#, kde-format
+msgid "Font:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
+#, kde-format
+msgid "Font Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:253
+#, kde-format
+msgid "Number:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#, kde-format
+msgid "Number for number annotations"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:65
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:72
+#, kde-format
+msgid "Select"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:80
+#, kde-format
+msgid "Freehand"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:87
+#, kde-format
+msgid "Highlighter"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:94
+#, kde-format
+msgid "Line"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:101
+#, fuzzy, kde-format
+#| msgctxt "Keyboard action"
+#| msgid "Arrow keys"
+msgid "Arrow"
+msgstr "مفاتيح الأسهم"
+
+#: src/Gui/AnnotationsToolBarContents.qml:108
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangle"
 msgstr "منطقة مستطيلة"
 
-#: src/Gui/CaptureAreaComboBox.cpp:140
+#: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
-msgid "Current Screen"
-msgstr "الشّاشة الحاليّة"
-
-#: src/Gui/CaptureAreaComboBox.cpp:143
-#, kde-format
-msgid "Active Window"
-msgstr "النّافذة النّشطة"
-
-#: src/Gui/CaptureAreaComboBox.cpp:146
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "النّافذة تحت المؤشّر"
-
-#: src/Gui/ExportMenu.cpp:89
-#, kde-format
-msgid "Other Application..."
-msgstr "تطبيق آخر..."
-
-#: src/Gui/ExportMenu.cpp:112
-#, kde-format
-msgid "Share"
-msgstr "شارك"
-
-#: src/Gui/KSImageWidget.cpp:32
-#, kde-format
-msgid "Image Size: %1x%2 pixels"
-msgstr "حجم الصّورة: %1×%2 بكسل"
-
-#: src/Gui/KSMainWindow.cpp:151
-#, kde-format
-msgid "Configure..."
-msgstr "اضبط..."
-
-#: src/Gui/KSMainWindow.cpp:152
-#, kde-format
-msgid "Change Spectacle's settings."
-msgstr "غيّر إعدادات لاقط الشاشة."
-
-#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
-#, kde-format
-msgid "Annotate"
-msgstr "اشرح"
-
-#: src/Gui/KSMainWindow.cpp:158
-#, kde-format
-msgid "Add annotation to the screenshot"
-msgstr "أضف شرحاً للقطة الشاشة"
-
-#: src/Gui/KSMainWindow.cpp:165
-#, kde-format
-msgid "Tools"
-msgstr "الأدوات"
-
-#: src/Gui/KSMainWindow.cpp:171
-#, kde-format
-msgid "Export"
-msgstr "صدّر"
-
-#: src/Gui/KSMainWindow.cpp:192
-#, kde-format
-msgid "Open Default Screenshots Folder"
-msgstr "افتح المجلد المبدئي للقطات الشاشة"
-
-#: src/Gui/KSMainWindow.cpp:196
-#, kde-format
-msgid "Record Screen"
-msgstr "سجّل الشاشة"
-
-#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
-#, kde-format
-msgid "Copy Image to Clipboard"
-msgstr "انسخ الصورة إلى الحافظة"
-
-#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
-#, kde-format
-msgid "Copy Location to Clipboard"
-msgstr "انسخ الموقع إلى الحافظة"
-
-#: src/Gui/KSMainWindow.cpp:255
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "افتح المجلد الحاوي"
-
-#: src/Gui/KSMainWindow.cpp:301
-#, kde-format
-msgid "Save As..."
-msgstr "احفظ باسم..."
-
-#: src/Gui/KSMainWindow.cpp:367
-#, kde-format
-msgctxt "@title:window"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "ثانية"
-msgstr[1] "ثانية واحدة"
-msgstr[2] "ثانيتان"
-msgstr[3] "%1 ثواني"
-msgstr[4] "%1 ثانية"
-msgstr[5] "%1 ثانية"
-
-#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
-#, kde-format
-msgctxt "@title:window Unsaved Screenshot"
-msgid "Unsaved[*]"
-msgstr "غير محفوظة[*]"
-
-#: src/Gui/KSMainWindow.cpp:506
-#, kde-format
-msgid "There was a problem sharing the image: %1"
-msgstr "حدثت مشكلة في مشاركة الصّورة: %1"
-
-#: src/Gui/KSMainWindow.cpp:509
-#, kde-format
-msgid "Image shared"
-msgstr "شوركت الصورة"
-
-#: src/Gui/KSMainWindow.cpp:511
-#, kde-format
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr "رابط الصورة المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
-
-#: src/Gui/KSMainWindow.cpp:545
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "نُسخت اللقطة إلى الحافظة."
-
-#: src/Gui/KSMainWindow.cpp:551
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr "حفظت اللقطة كـ <a href=\"%1\">%2</a> ونُسخت إلى الحافظة."
-
-#: src/Gui/KSMainWindow.cpp:559
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgid "Ellipse"
 msgstr ""
-"لا يمكن أخذ لقطة. رجاء بلغ عن هذه العلة هنا:<a href=\"https://bugs.kde.org/"
-"enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 
-#: src/Gui/KSMainWindow.cpp:569
+#: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
-msgid "Ready to take a screenshot"
-msgstr "جاهز لأخذ صورة"
+msgid "Pixelate"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:586
+#: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "حُفظت لقطة شاشة ك‍<a href=\"%1\">%2</a>"
+msgid "Blur"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:596
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr "نسخت الصورة إلى الحافظة وحُفظت ك‍<a href=\"%1\">%2</a>"
+msgid "Text"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:692
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
-msgctxt "@action:button"
-msgid "Annotate"
-msgstr "اشرح"
+msgid "Number"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:704
-#, kde-format
-msgctxt "@action:button"
-msgid "Annotation Done"
-msgstr "انهِ الشرح"
-
-#: src/Gui/KSWidget.cpp:47
-#, kde-format
-msgid "<b>Capture Mode</b>"
+#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
 msgstr "<b>وضع الالتقاط</b>"
 
-#: src/Gui/KSWidget.cpp:63
-#, kde-format
-msgid "No Delay"
-msgstr "بدون تأخير"
+#: src/Gui/CaptureOptionsSidebarContents.qml:52
+#: src/Gui/MainToolBarContents.qml:130
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgid "Options"
+msgstr "خيارات الحفظ"
 
-#: src/Gui/KSWidget.cpp:67
-#, kde-format
-msgid "On Click"
-msgstr "عند النّقر"
-
-#: src/Gui/KSWidget.cpp:68
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "انتظر نقرة بالفأرة قبل أخذ اللقطة"
-
-#: src/Gui/KSWidget.cpp:77
-#, kde-format
-msgid "Area:"
-msgstr "المنطقة:"
-
-#: src/Gui/KSWidget.cpp:78
-#, kde-format
-msgid "Delay:"
-msgstr "التّأخير:"
-
-#: src/Gui/KSWidget.cpp:83
-#, kde-format
-msgid "<b>Options</b>"
-msgstr "<b>خيارات</b>"
-
-#: src/Gui/KSWidget.cpp:85
+#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "ضمّن مؤشّر الفأرة"
 
-#: src/Gui/KSWidget.cpp:86
+#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "أظهر مؤشّر الفأرة في اللقطة"
 
-#: src/Gui/KSWidget.cpp:89
+#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "ضمّن شريط عنوان النّافذة وحدودها"
 
-#: src/Gui/KSWidget.cpp:90
+#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
+#: src/Gui/OptionsMenu.cpp:83
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr "أظهر شريط عنوان النّافذة، أزرار صغّر/كبّر/أغلق وحدود النّافذة"
 
-#: src/Gui/KSWidget.cpp:94
+#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
+#: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "التقط المنبثقة الحاليّة فقط"
 
-#: src/Gui/KSWidget.cpp:96
+#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -451,25 +384,227 @@ msgstr ""
 "التقط النّافذة (أي القوائم، التّلميحات، إلخ) المنبثقة حاليًّا فقط.\n"
 " إن لم يكن هذا مفعّلًا، ستُلتقط المنبثقة مع النّافذة الأمّ"
 
-#: src/Gui/KSWidget.cpp:101
+#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
+#: src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "اخرج بعد نسخ أو حفظ يدوي"
 
-#: src/Gui/KSWidget.cpp:102
+#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
+#: src/Gui/OptionsMenu.cpp:109
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "اخرج من لاقط الشاشة بعد حفظ الصورة يدويًا أو نسخها"
 
-#: src/Gui/KSWidget.cpp:112
+#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
+#: src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "التّأخير:"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
+#, kde-format
+msgid "On Click"
+msgstr "عند النّقر"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
+#: src/Gui/MainToolBarContents.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
+msgstr[0] "ثانية"
+msgstr[1] "ثانية واحدة"
+msgstr[2] "ثانيتان"
+msgstr[3] "%1 ثواني"
+msgstr[4] "%1 ثانية"
+msgstr[5] "%1 ثانية"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
 msgid "Take a New Screenshot"
 msgstr "خُذ لقطة جديدة"
 
-#: src/Gui/KSWidget.cpp:116
+#: src/Gui/CopiedMessage.qml:13
 #, kde-format
-msgid "Cancel"
-msgstr "ألغِ"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "نُسخت اللقطة إلى الحافظة."
+
+#: src/Gui/DelaySpinBox.qml:17
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "بدون تأخير"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " ثانية"
+msgstr[1] " ثانية"
+msgstr[2] " ثانية"
+msgstr[3] " ثواني"
+msgstr[4] " ثانية"
+msgstr[5] " ثانية"
+
+#: src/Gui/DelaySpinBox.qml:28 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " ثانية"
+
+#: src/Gui/DialogPage.qml:52
+#, fuzzy, kde-format
+#| msgid "Take a new Screenshot"
+msgid "Take a new screenshot"
+msgstr "خُذ لقطة جديدة"
+
+#: src/Gui/DialogPage.qml:95
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Modes"
+msgstr "<b>وضع الالتقاط</b>"
+
+#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:157
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "انتظر نقرة بالفأرة قبل أخذ اللقطة"
+
+#: src/Gui/DialogPage.qml:183
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+msgstr ""
+"التقط النّافذة (أي القوائم، التّلميحات، إلخ) المنبثقة حاليًّا فقط.\n"
+" إن لم يكن هذا مفعّلًا، ستُلتقط المنبثقة مع النّافذة الأمّ"
+
+#: src/Gui/DialogPage.qml:204
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#, kde-format
+msgid "Help"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:44
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "افتح المجلد المبدئي للقطات الشاشة"
+
+#: src/Gui/ExportMenu.cpp:106
+#, kde-format
+msgid "Other Application..."
+msgstr "تطبيق آخر..."
+
+#: src/Gui/ExportMenu.cpp:139
+#, kde-format
+msgid "Share"
+msgstr "شارك"
+
+#: src/Gui/ImageView.qml:338
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ImageView.qml:352
+#, kde-format
+msgid "Image Zoom"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#, kde-format
+msgid "Save"
+msgstr "احفظ"
+
+#: src/Gui/MainToolBarContents.qml:66
+#, kde-format
+msgid "Save As..."
+msgstr "احفظ باسم..."
+
+#: src/Gui/MainToolBarContents.qml:77
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:83
+#, kde-format
+msgid "Export"
+msgstr "صدّر"
+
+#: src/Gui/MainToolBarContents.qml:96
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Annotation Done"
+msgid "Show Annotation Tools"
+msgstr "انهِ الشرح"
+
+#: src/Gui/MainToolBarContents.qml:119
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "New Screenshot"
+msgstr "خُذ لقطة جديدة"
+
+#: src/Gui/MainToolBarContents.qml:142
+#, kde-format
+msgid "Configure..."
+msgstr "اضبط..."
+
+#: src/Gui/OptionsMenu.cpp:123
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture On Click"
+msgstr "عند النّقر"
+
+#: src/Gui/OptionsMenu.cpp:143
+#, kde-format
+msgid "No Delay"
+msgstr "بدون تأخير"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr "نسخت الصورة إلى الحافظة وحُفظت ك‍<a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedAndLocationCopied.qml:8
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr "حفظت اللقطة كـ <a href=\"%1\">%2</a> ونُسخت إلى الحافظة."
+
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "حُفظت لقطة شاشة ك‍<a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:19
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "افتح المجلد الحاوي"
+
+#: src/Gui/ScreenshotFailedMessage.qml:12
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"لا يمكن أخذ لقطة. رجاء بلغ عن هذه العلة هنا:<a href=\"https://bugs.kde.org/"
+"enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -477,19 +612,19 @@ msgstr "ألغِ"
 msgid "When launching Spectacle:"
 msgstr "عند بدء لاقط الشاشة:"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
 msgstr "خُذ لقطة جديدة لكامل الشاشة"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Use last-used capture mode"
 msgstr "استخدم أخر نمط مستعمل"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
@@ -672,30 +807,25 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
 #, kde-format
 msgid "General"
 msgstr "عامّ"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
-msgid "Save"
-msgstr "احفظ"
-
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
 #, kde-format
 msgid "Shortcuts"
 msgstr "الاختصارات"
 
-#. i18n: ectx: label, entry (onLaunchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "ماذا يحدث عند بدء لاقط الشاشة"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -703,31 +833,31 @@ msgstr ""
 "ما الذي يجب أن يحدث إذا ضغط على مفتاح الطباعة أثناء تشغيل لاقط الشاشة بالفعل"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "احفظ لقطة الشاشة تلقائيًا بعد التقاطها"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "إجراء الحافظة الذي يجب تنفيذه بعد التقاط لقطة الشاشة"
 
-#. i18n: ectx: label, entry (useLightMaskColour), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "ما إذا كان سيستخدم قناع لون فاتح في مربع حوار تحديد المنطقة أم لا"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "ما إذا كان سيظهر المكبر في تحديد المنطقة"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:56
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -735,136 +865,338 @@ msgid ""
 msgstr "ما إذا كان يجب التقاط لقطة الشاشة بعد تحديد المنطقة وتحرير الفأرة"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "ما إذا كان سيظهر تعليمات الالتقاط في منطقة التحديد"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "تذكّر أخر منطقة مستطيلة"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "أخر منطقة مستعملة حددها المستخدم"
 
-#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "خُذ لقطة عند النقر"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:85
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "ما إذا كان سيظهر مؤشّر الفأرة في اللقطة"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:89
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "ما إذا كان سيظهر زخرفة النافذة في اللقطة"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "التقط القائمة المنبثقة الحاليّة فقط"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:97
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "اخرج بعد حفظ أو نسخ الصورة"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:101
 #, kde-format
 msgid "Delay"
 msgstr "التّأخير"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Default filename"
 msgstr "اسم الملفّ المبدئي"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "جودة الضغط لتنسيقات الملفات الفاقدة"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Default save image format"
 msgstr "تنسيق حفظ الصورة المبدئي"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "اسم الملف المبدئي عند الحفظ"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:132
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "أخر مسار ملف محفوظ"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "أخر مسار مستعمل في إجراء \"احفظ كـ\""
 
-#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
-#, kde-format
-msgid "The last used save mode"
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The last used save mode"
+msgid "The last used annotation tool type"
 msgstr "أخر نمط حفظ مستعمل"
 
-#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
-msgid "The last used copy mode"
-msgstr "أخر نمط حفظ مستعمل"
+msgid "Stroke width for freehand annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:30
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
-msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " ثانية"
-msgstr[1] " ثانية"
-msgstr[2] " ثانية"
-msgstr[3] " ثواني"
-msgstr[4] " ثانية"
-msgstr[5] " ثانية"
+msgid "Stroke width for highlighter annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:32
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
-msgctxt "Decimal number of seconds"
-msgid " seconds"
-msgstr " ثانية"
+msgid "Stroke width for line annotation tool"
+msgstr ""
 
-#: src/Main.cpp:41
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:173
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#, kde-format
+msgid "Font for annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#, kde-format
+msgid "Font color for annotations"
+msgstr ""
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid "Image shared"
+msgstr "شوركت الصورة"
+
+#: src/Gui/SharedMessage.qml:14
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr "رابط الصورة المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
+
+#: src/Gui/ShareErrorMessage.qml:13
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "حدثت مشكلة في مشاركة الصّورة: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "خُذ لقطة:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "أنشء تحديد مستطيل جديد:"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "حرك مستطيل التحديد:"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "تحجيم مستطيل التحجيم:"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "صفّر التحديد:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "ألغِ:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "إفلات الزر الأيسر"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "نقر مزدوج"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "مفتاح الإدخال"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "اسحب خارج مستطيل التحديد"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Shift: مكبر"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "اسحب داخل مستطيل التحديد"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "مفاتيح الأسهم"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Shift: حرك بكسل للدخل كل مرة"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "مقابض السحب"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "مفاتيح الأسهم + Alt"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Shift: حجم بكسل كل مرة"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "النقر باليمين"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "مفتاح الهرب"
+
+#: src/Gui/SpectacleWindow.cpp:132
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "ثانية"
+msgstr[1] "ثانية واحدة"
+msgstr[2] "ثانيتان"
+msgstr[3] "%1 ثواني"
+msgstr[4] "%1 ثانية"
+msgstr[5] "%1 ثانية"
+
+#: src/Gui/SpectacleWindow.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@title:window Unsaved Screenshot"
+#| msgid "Unsaved[*]"
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "غير محفوظة[*]"
+
+#: src/Gui/UndoRedoGroup.qml:32
+#, kde-format
+msgid "Undo"
+msgstr ""
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr ""
+
+#: src/Main.cpp:40
 #, kde-format
 msgid "Spectacle"
 msgstr "لاقط الشاشة"
 
-#: src/Main.cpp:43
+#: src/Main.cpp:42
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "أداة كدي لأخذ اللقطات"
 
-#: src/Main.cpp:45
+#: src/Main.cpp:44
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
@@ -881,128 +1213,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zayed.alsaidi@gmail.com,safa1996alfulaij@gmail.com"
 
-#: src/QuickEditor/QuickEditor.cpp:61
-#, kde-format
-msgid ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-msgstr ""
-"انقر في أيّ مكان واسحب لبدء رسم تحديد مستطيل، \n"
-" أو اضغط Esc للإنهاء"
-
-#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
-#, kde-format
-msgid "Take Screenshot:"
-msgstr "خُذ لقطة:"
-
-#: src/QuickEditor/QuickEditor.cpp:717
-#, kde-format
-msgctxt "Mouse action"
-msgid "Release left-click"
-msgstr "إفلات الزر الأيسر"
-
-#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Enter"
-msgstr "مفتاح الإدخال"
-
-#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
-#, kde-format
-msgid "Create new selection rectangle:"
-msgstr "أنشء تحديد مستطيل جديد:"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag outside selection rectangle"
-msgstr "اسحب خارج مستطيل التحديد"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Magnifier"
-msgstr "+ Shift: مكبر"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgid "Cancel:"
-msgstr "ألغِ:"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Escape"
-msgstr "مفتاح الهرب"
-
-#: src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Mouse action"
-msgid "Double-click"
-msgstr "نقر مزدوج"
-
-#: src/QuickEditor/QuickEditor.cpp:729
-#, kde-format
-msgid "Move selection rectangle:"
-msgstr "حرك مستطيل التحديد:"
-
-#: src/QuickEditor/QuickEditor.cpp:730
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag inside selection rectangle"
-msgstr "اسحب داخل مستطيل التحديد"
-
-#: src/QuickEditor/QuickEditor.cpp:731
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys"
-msgstr "مفاتيح الأسهم"
-
-#: src/QuickEditor/QuickEditor.cpp:732
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: حرك بكسل للدخل كل مرة"
-
-#: src/QuickEditor/QuickEditor.cpp:733
-#, kde-format
-msgid "Resize selection rectangle:"
-msgstr "تحجيم مستطيل التحجيم:"
-
-#: src/QuickEditor/QuickEditor.cpp:734
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag handles"
-msgstr "مقابض السحب"
-
-#: src/QuickEditor/QuickEditor.cpp:735
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys + Alt"
-msgstr "مفاتيح الأسهم + Alt"
-
-#: src/QuickEditor/QuickEditor.cpp:736
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: حجم بكسل كل مرة"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgid "Reset selection:"
-msgstr "صفّر التحديد:"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgctxt "Mouse action"
-msgid "Right-click"
-msgstr "النقر باليمين"
-
-#: src/QuickEditor/QuickEditor.cpp:923
-#, kde-format
-msgid "%1×%2"
-msgstr "%1×%2"
-
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1013,176 +1223,231 @@ msgstr "التقط النافذة التي تحت المؤشر"
 msgid "Launch Spectacle without capturing"
 msgstr "شغل لاقط الشاشة بدون أخذ صورة"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "أُلغي أو فشل أخذ اللقطة"
 
-#: src/SpectacleCore.cpp:454
-#, kde-format
-msgctxt "The entire screen area was captured, heading"
-msgid "Full Screen Captured"
-msgstr "التُقطت الشّاشة بالكامل"
-
-#: src/SpectacleCore.cpp:457
-#, kde-format
-msgctxt "The current screen was captured, heading"
-msgid "Current Screen Captured"
-msgstr "التُقطت الشّاشة الحاليّة"
-
-#: src/SpectacleCore.cpp:460
-#, kde-format
-msgctxt "The active window was captured, heading"
-msgid "Active Window Captured"
-msgstr "التُقطت النّافذة النّشطة"
-
-#: src/SpectacleCore.cpp:464
-#, kde-format
-msgctxt "The window under the mouse was captured, heading"
-msgid "Window Under Cursor Captured"
-msgstr "التُقطت النّافذة تحت المؤشّر"
-
-#: src/SpectacleCore.cpp:467
-#, kde-format
-msgctxt "A rectangular region was captured, heading"
-msgid "Rectangular Region Captured"
-msgstr "التُقطت منطقة مستطيلة"
-
-#: src/SpectacleCore.cpp:477
-#, kde-format
-msgid "A screenshot was copied to your clipboard."
+#: src/SpectacleCore.cpp:662
+#, fuzzy, kde-format
+#| msgid "A screenshot was copied to your clipboard."
+msgid "A screenshot was saved to your clipboard."
 msgstr "نُسخت لقطة شاشة في الحافظة."
 
-#: src/SpectacleCore.cpp:479
-#, kde-format
+#: src/SpectacleCore.cpp:664
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been copied to your clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
-"has been copied to your clipboard."
+"has been saved to your clipboard."
 msgstr "حفظت اللقطة كـ'%1' في '%2' ونُسخ مسارها إلى الحافظة."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى مجلّد الصّور."
 
-#: src/SpectacleCore.cpp:485
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى '%2'."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "افتح"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgid "Annotate"
+msgstr "اشرح"
+
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "التقط المكتب بالكامل (الافتراضيّ)"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "التقط الشّاشة الحاليّة"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Capture the active window"
 msgstr "التقط النّافذة النّشطة"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "التقط النّافذة تحت المؤشّر حاليًّا، بما في ذلك أمّهات القوائم المنبثقة"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "التقط النّافذة تحت المؤشّر حاليًّا، بلا أمّهات القوائم المنبثقة"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "التقط منطقة مستطيلة من الشّاشة"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "شغل لاقط الشاشة بدون أخذ صورة"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "ابدأ في وضع الواجهة (افتراضيّ)"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "خُذ لقطة واخرج بلا إظهار الواجهة"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "ابدأ في نمط التنشيط بواسطة DBus"
 
-#: src/SpectacleCore.cpp:540
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "في وضع الخلفيّة، لا تبثق إخطارًا عند أخذ اللقطة"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "في وضع الخلفيّة، احفظ الصّورة في ملفّ محدّد"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "في وضع الخلفيّة، تأخّر قبل أخذ اللقطة (بالملّي ثانية)"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr "في وضع الخلفيّة، انسخ الصّورة إلى الحافظة إلا إذا استخدم  -o"
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "في وضع الخلفيّة، انسخ مسار حفظ الصّورة إلى الحافظة"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "انتظر النّقر قبل أخذ اللقطة. لن يتحقّق من التّأخير"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "تشغل نسخة رسومية من لاقط الشاشة بدون التسجيل في DBus"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "في وضع الخلفيّة، ضمن المؤشر في اللقطة"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "في وضع الخلفيّة، استبعد زخرفة النافذة من اللقطة"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "افتح و حرر لاقط موجودة مسبقا"
+
+#~ msgid "Full Screen (All Monitors)"
+#~ msgstr "ملء الشّاشة (كلّ الشّاشات)"
+
+#~ msgid "Full Screen (All Monitors, scaled)"
+#~ msgstr "ملء الشّاشة (كلّ الشّاشات، محجمة)"
+
+#~ msgid "Image Size: %1x%2 pixels"
+#~ msgstr "حجم الصّورة: %1×%2 بكسل"
+
+#~ msgid "Change Spectacle's settings."
+#~ msgstr "غيّر إعدادات لاقط الشاشة."
+
+#~ msgid "Add annotation to the screenshot"
+#~ msgstr "أضف شرحاً للقطة الشاشة"
+
+#~ msgid "Tools"
+#~ msgstr "الأدوات"
+
+#~ msgid "Record Screen"
+#~ msgstr "سجّل الشاشة"
+
+#~ msgid "Copy Image to Clipboard"
+#~ msgstr "انسخ الصورة إلى الحافظة"
+
+#~ msgid "Copy Location to Clipboard"
+#~ msgstr "انسخ الموقع إلى الحافظة"
+
+#~ msgid "Ready to take a screenshot"
+#~ msgstr "جاهز لأخذ صورة"
+
+#~ msgctxt "@action:button"
+#~ msgid "Annotate"
+#~ msgstr "اشرح"
+
+#~ msgid "Area:"
+#~ msgstr "المنطقة:"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>خيارات</b>"
+
+#~ msgid "Cancel"
+#~ msgstr "ألغِ"
+
+#~ msgid "The last used copy mode"
+#~ msgstr "أخر نمط حفظ مستعمل"
+
+#~ msgid ""
+#~ "Click and drag to draw a selection rectangle,\n"
+#~ "or press Esc to quit"
+#~ msgstr ""
+#~ "انقر في أيّ مكان واسحب لبدء رسم تحديد مستطيل، \n"
+#~ " أو اضغط Esc للإنهاء"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "The entire screen area was captured, heading"
+#~ msgid "Full Screen Captured"
+#~ msgstr "التُقطت الشّاشة بالكامل"
+
+#~ msgctxt "The current screen was captured, heading"
+#~ msgid "Current Screen Captured"
+#~ msgstr "التُقطت الشّاشة الحاليّة"
+
+#~ msgctxt "The active window was captured, heading"
+#~ msgid "Active Window Captured"
+#~ msgstr "التُقطت النّافذة النّشطة"
+
+#~ msgctxt "The window under the mouse was captured, heading"
+#~ msgid "Window Under Cursor Captured"
+#~ msgstr "التُقطت النّافذة تحت المؤشّر"
+
+#~ msgctxt "A rectangular region was captured, heading"
+#~ msgid "Rectangular Region Captured"
+#~ msgstr "التُقطت منطقة مستطيلة"
 
 #~ msgid "More Online Services"
 #~ msgstr "خدمات أخرى على الشّابكة"
@@ -1371,9 +1636,6 @@ msgstr "افتح و حرر لاقط موجودة مسبقا"
 
 #~ msgid "Application Preferences"
 #~ msgstr "تفضيلات التّطبيق"
-
-#~ msgid "Save Options"
-#~ msgstr "خيارات الحفظ"
 
 #~ msgid "Open With..."
 #~ msgstr "افتح بِـ..."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:44+0000\n"
+"POT-Creation-Date: 2022-12-08 00:43+0000\n"
 "PO-Revision-Date: 2022-04-07 18:23+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -42,12 +42,48 @@ msgstr "Zachytiť aktívne okno"
 msgid "Capture Rectangular Region"
 msgstr "Zachytiť pravouhlú oblasť"
 
-#: src/ExportManager.cpp:308
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Pravouhlá oblasť"
+
+#: src/CaptureModeModel.cpp:102
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgid "All Screens"
+msgstr "Celá obrazovka"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "Celá obrazovka"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:116
+#, kde-format
+msgid "Current Screen"
+msgstr "Aktuálna obrazovka"
+
+#: src/CaptureModeModel.cpp:123
+#, kde-format
+msgid "Active Window"
+msgstr "Aktívne okno"
+
+#: src/CaptureModeModel.cpp:130
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Okno pod kurzorom"
+
+#: src/ExportManager.cpp:310
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Aplikácia QImageWriter nemôže zapísať obrázok: %1"
 
-#: src/ExportManager.cpp:323
+#: src/ExportManager.cpp:325
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -57,12 +93,12 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie priečinku: <nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:335
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise súboru."
 
-#: src/ExportManager.cpp:353
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -72,31 +108,31 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie vzdialeného "
 "priečinku: <nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise dočasného "
 "miestneho súboru."
 
-#: src/ExportManager.cpp:372
+#: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Nie je možné uložiť obrázok. Nepodarilo sa odovzdať súbor do vzdialeného "
 "umiestnenia."
 
-#: src/ExportManager.cpp:421
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Nedá sa uložiť snímka obrazovky. Ukladaný názov súboru nie je platný."
 
-#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nedá sa uložiť prázdny obrázok so snímkou obrazovky."
 
-#: src/ExportManager.cpp:577
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tlač zlyhala. Tlačiareň sa nepodarilo inicializovať."
@@ -189,257 +225,147 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Sekvenčné číslovanie, orezané na N číslic"
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
-msgid "Full Screen"
-msgstr "Celá obrazovka"
+msgid "Stroke:"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
-msgid "Full Screen (All Monitors)"
-msgstr "Celá obrazovka (Všetky monitory)"
+msgid "Stroke Width"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:133
+#: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
-msgid "Full Screen (All Monitors, scaled)"
-msgstr "Celá obrazovka (Všetky monitory, zmenšené)"
+msgid "Stroke Color"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:137
+#: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
-msgid "Rectangular Region"
+msgid "Fill:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:185
+#, kde-format
+msgid "Font:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
+#, kde-format
+msgid "Font Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:253
+#, kde-format
+msgid "Number:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#, kde-format
+msgid "Number for number annotations"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:65
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:72
+#, kde-format
+msgid "Select"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:80
+#, kde-format
+msgid "Freehand"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:87
+#, kde-format
+msgid "Highlighter"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:94
+#, kde-format
+msgid "Line"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:101
+#, fuzzy, kde-format
+#| msgctxt "Keyboard action"
+#| msgid "Arrow keys"
+msgid "Arrow"
+msgstr "Klávesy so šípkami"
+
+#: src/Gui/AnnotationsToolBarContents.qml:108
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangle"
 msgstr "Pravouhlá oblasť"
 
-#: src/Gui/CaptureAreaComboBox.cpp:140
+#: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
-msgid "Current Screen"
-msgstr "Aktuálna obrazovka"
-
-#: src/Gui/CaptureAreaComboBox.cpp:143
-#, kde-format
-msgid "Active Window"
-msgstr "Aktívne okno"
-
-#: src/Gui/CaptureAreaComboBox.cpp:146
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "Okno pod kurzorom"
-
-#: src/Gui/ExportMenu.cpp:89
-#, kde-format
-msgid "Other Application..."
-msgstr "Iná aplikácia..."
-
-#: src/Gui/ExportMenu.cpp:112
-#, kde-format
-msgid "Share"
-msgstr "Zdieľať"
-
-#: src/Gui/KSImageWidget.cpp:32
-#, kde-format
-msgid "Image Size: %1x%2 pixels"
-msgstr "Veľkosť obrázku: %1x%2 bodov"
-
-#: src/Gui/KSMainWindow.cpp:151
-#, kde-format
-msgid "Configure..."
-msgstr "Nastaviť..."
-
-#: src/Gui/KSMainWindow.cpp:152
-#, kde-format
-msgid "Change Spectacle's settings."
-msgstr "Zmeniť nastavenia aplikácie Spectacle."
-
-#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
-#, kde-format
-msgid "Annotate"
-msgstr "Komentovať"
-
-#: src/Gui/KSMainWindow.cpp:158
-#, kde-format
-msgid "Add annotation to the screenshot"
-msgstr "Pridať komentár do snímky obrazovky"
-
-#: src/Gui/KSMainWindow.cpp:165
-#, kde-format
-msgid "Tools"
-msgstr "Nástroje"
-
-#: src/Gui/KSMainWindow.cpp:171
-#, kde-format
-msgid "Export"
-msgstr "Exportovať"
-
-#: src/Gui/KSMainWindow.cpp:192
-#, kde-format
-msgid "Open Default Screenshots Folder"
-msgstr "Otvoriť predvolený priečinok so snímkami obrazoviek"
-
-#: src/Gui/KSMainWindow.cpp:196
-#, kde-format
-msgid "Record Screen"
-msgstr "Zaznamenať obrazovku"
-
-#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
-#, kde-format
-msgid "Copy Image to Clipboard"
-msgstr "Skopírovať obrázok do schránky"
-
-#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
-#, kde-format
-msgid "Copy Location to Clipboard"
-msgstr "Kopírovať umiestnenie do schránky"
-
-#: src/Gui/KSMainWindow.cpp:255
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Otvoriť priečinok s obsahom"
-
-#: src/Gui/KSMainWindow.cpp:301
-#, kde-format
-msgid "Save As..."
-msgstr "Uložiť ako..."
-
-#: src/Gui/KSMainWindow.cpp:367
-#, kde-format
-msgctxt "@title:window"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekúnd"
-
-#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
-#, kde-format
-msgctxt "@title:window Unsaved Screenshot"
-msgid "Unsaved[*]"
-msgstr "Neuložené[*]"
-
-#: src/Gui/KSMainWindow.cpp:506
-#, kde-format
-msgid "There was a problem sharing the image: %1"
-msgstr "Vyskytol sa problém so zdieľaním obrázku: %1"
-
-#: src/Gui/KSMainWindow.cpp:509
-#, kde-format
-msgid "Image shared"
-msgstr "Obrázok zdieľaný"
-
-#: src/Gui/KSMainWindow.cpp:511
-#, kde-format
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
+msgid "Ellipse"
 msgstr ""
-"Odkaz na zdieľaný obrázok (<a href=\"%1\">%1</a>) bol skopírovaný do "
-"schránky."
 
-#: src/Gui/KSMainWindow.cpp:545
+#: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "Snímka obrazovky bola skopírovaná do schránky."
-
-#: src/Gui/KSMainWindow.cpp:551
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
+msgid "Pixelate"
 msgstr ""
-"Snímka obrazovky bola uložený ako <a href=\"%1\">%2</a> a jej umiestnenie "
-"bolo skopírované do schránky"
 
-#: src/Gui/KSMainWindow.cpp:559
+#: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgid "Blur"
 msgstr ""
-"Nepodarilo sa vytvoriť snímku obrazovky. Nahláste túto chybu tu: <a href="
-"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">vytvoriť chybu v "
-"Spectacle</a>"
 
-#: src/Gui/KSMainWindow.cpp:569
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
-msgid "Ready to take a screenshot"
-msgstr "Pripravené na vytvorenie snímky obrazovky"
-
-#: src/Gui/KSMainWindow.cpp:586
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Snímka obrazovky bola uložená ako <a href=\"%1\">%2</a>"
-
-#: src/Gui/KSMainWindow.cpp:596
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgid "Text"
 msgstr ""
-"Snímka obrazovky bola skopírovaná do schránky a uložená ako <a href=\"%1\">"
-"%2</a>"
 
-#: src/Gui/KSMainWindow.cpp:692
+#: src/Gui/AnnotationsToolBarContents.qml:143
+#, kde-format
+msgid "Number"
+msgstr ""
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
 #, fuzzy, kde-format
-#| msgid "Annotate"
-msgctxt "@action:button"
-msgid "Annotate"
-msgstr "Komentovať"
-
-#: src/Gui/KSMainWindow.cpp:704
-#, fuzzy, kde-format
-#| msgid "Annotation Done"
-msgctxt "@action:button"
-msgid "Annotation Done"
-msgstr "Komentár hotový"
-
-#: src/Gui/KSWidget.cpp:47
-#, kde-format
-msgid "<b>Capture Mode</b>"
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
 msgstr "<b>Režim zachytenia</b>"
 
-#: src/Gui/KSWidget.cpp:63
-#, kde-format
-msgid "No Delay"
-msgstr "Bez oneskorenia"
+#: src/Gui/CaptureOptionsSidebarContents.qml:52
+#: src/Gui/MainToolBarContents.qml:130
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgid "Options"
+msgstr "Uložiť voľby"
 
-#: src/Gui/KSWidget.cpp:67
-#, kde-format
-msgid "On Click"
-msgstr "Po kliknutí"
-
-#: src/Gui/KSWidget.cpp:68
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Pred zachytením snímky obrazovky sa bude čakať na kliknutie myšou"
-
-#: src/Gui/KSWidget.cpp:77
-#, kde-format
-msgid "Area:"
-msgstr "Oblasť:"
-
-#: src/Gui/KSWidget.cpp:78
-#, kde-format
-msgid "Delay:"
-msgstr "Oneskorenie:"
-
-#: src/Gui/KSWidget.cpp:83
-#, kde-format
-msgid "<b>Options</b>"
-msgstr "<b>Voľby</b>"
-
-#: src/Gui/KSWidget.cpp:85
+#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Zahrnúť ukazovateľ myši"
 
-#: src/Gui/KSWidget.cpp:86
+#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Zobraziť kurzor myši v obrázku snímky obrazovky"
 
-#: src/Gui/KSWidget.cpp:89
+#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Zahrnúť záhlavie okna a okraje"
 
-#: src/Gui/KSWidget.cpp:90
+#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
+#: src/Gui/OptionsMenu.cpp:83
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -448,12 +374,13 @@ msgstr ""
 "Zobraziť záhlavie okna, tlačidlá minimalizovať/maximalizovať/zatvoriť a "
 "okraj okna"
 
-#: src/Gui/KSWidget.cpp:94
+#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
+#: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Zachytiť iba aktuálne vyskakovacie okno"
 
-#: src/Gui/KSWidget.cpp:96
+#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -463,26 +390,227 @@ msgstr ""
 "Ak je voľba zakázaná, vyskakovacie okno bude zachytené spolu s nadradeným "
 "oknom."
 
-#: src/Gui/KSWidget.cpp:101
+#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
+#: src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Ukončiť po ručnom uložení alebo kopírovaní"
 
-#: src/Gui/KSWidget.cpp:102
+#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
+#: src/Gui/OptionsMenu.cpp:109
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 "Ukončiť aplikáciu Spectacle po ručnom uložení alebo skopírovaní obrázku"
 
-#: src/Gui/KSWidget.cpp:112
+#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
+#: src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Oneskorenie:"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
+#, kde-format
+msgid "On Click"
+msgstr "Po kliknutí"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
+#: src/Gui/MainToolBarContents.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
+msgstr[0] "%1 sekunda"
+msgstr[1] "%1 sekundy"
+msgstr[2] "%1 sekúnd"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
 msgid "Take a New Screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
-#: src/Gui/KSWidget.cpp:116
+#: src/Gui/CopiedMessage.qml:13
 #, kde-format
-msgid "Cancel"
-msgstr "Zrušiť"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Snímka obrazovky bola skopírovaná do schránky."
+
+#: src/Gui/DelaySpinBox.qml:17
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "Bez oneskorenia"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " sekunda"
+msgstr[1] " sekundy"
+msgstr[2] " sekúnd"
+
+#: src/Gui/DelaySpinBox.qml:28 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " sekundy"
+
+#: src/Gui/DialogPage.qml:52
+#, fuzzy, kde-format
+#| msgid "Take a new Screenshot"
+msgid "Take a new screenshot"
+msgstr "Zachytiť novú snímku obrazovky"
+
+#: src/Gui/DialogPage.qml:95
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Modes"
+msgstr "<b>Režim zachytenia</b>"
+
+#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:157
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "Pred zachytením snímky obrazovky sa bude čakať na kliknutie myšou"
+
+#: src/Gui/DialogPage.qml:183
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+msgstr ""
+"Zachytiť iba aktuálne vyskakovacie okno (ako je ponuka, popisok atď.).\n"
+"Ak je voľba zakázaná, vyskakovacie okno bude zachytené spolu s nadradeným "
+"oknom."
+
+#: src/Gui/DialogPage.qml:204
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#, kde-format
+msgid "Help"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:44
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Otvoriť predvolený priečinok so snímkami obrazoviek"
+
+#: src/Gui/ExportMenu.cpp:106
+#, kde-format
+msgid "Other Application..."
+msgstr "Iná aplikácia..."
+
+#: src/Gui/ExportMenu.cpp:139
+#, kde-format
+msgid "Share"
+msgstr "Zdieľať"
+
+#: src/Gui/ImageView.qml:338
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ImageView.qml:352
+#, kde-format
+msgid "Image Zoom"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#, kde-format
+msgid "Save"
+msgstr "Uloženie"
+
+#: src/Gui/MainToolBarContents.qml:66
+#, kde-format
+msgid "Save As..."
+msgstr "Uložiť ako..."
+
+#: src/Gui/MainToolBarContents.qml:77
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:83
+#, kde-format
+msgid "Export"
+msgstr "Exportovať"
+
+#: src/Gui/MainToolBarContents.qml:96
+#, fuzzy, kde-format
+#| msgid "Annotation Done"
+msgid "Show Annotation Tools"
+msgstr "Komentár hotový"
+
+#: src/Gui/MainToolBarContents.qml:119
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "New Screenshot"
+msgstr "Zachytiť novú snímku obrazovky"
+
+#: src/Gui/MainToolBarContents.qml:142
+#, kde-format
+msgid "Configure..."
+msgstr "Nastaviť..."
+
+#: src/Gui/OptionsMenu.cpp:123
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture On Click"
+msgstr "Po kliknutí"
+
+#: src/Gui/OptionsMenu.cpp:143
+#, kde-format
+msgid "No Delay"
+msgstr "Bez oneskorenia"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"Snímka obrazovky bola skopírovaná do schránky a uložená ako <a href=\"%1\">"
+"%2</a>"
+
+#: src/Gui/SavedAndLocationCopied.qml:8
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Snímka obrazovky bola uložený ako <a href=\"%1\">%2</a> a jej umiestnenie "
+"bolo skopírované do schránky"
+
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "Snímka obrazovky bola uložená ako <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:19
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Otvoriť priečinok s obsahom"
+
+#: src/Gui/ScreenshotFailedMessage.qml:12
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"Nepodarilo sa vytvoriť snímku obrazovky. Nahláste túto chybu tu: <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">vytvoriť chybu v "
+"Spectacle</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -490,19 +618,19 @@ msgstr "Zrušiť"
 msgid "When launching Spectacle:"
 msgstr "Pri spúšťaní aplikácie Spectacle:"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
 msgstr "Urobiť snímku celej obrazovky"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Use last-used capture mode"
 msgstr "Použiť naposledy použitý režim zachytenia"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
@@ -685,30 +813,25 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
 #, kde-format
 msgid "General"
 msgstr "Všeobecné"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
-msgid "Save"
-msgstr "Uloženie"
-
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
 #, kde-format
 msgid "Shortcuts"
 msgstr "Skratky"
 
-#. i18n: ectx: label, entry (onLaunchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Čo urobiť, keď je spustená aplikácia Spectacle"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -717,31 +840,31 @@ msgstr ""
 "spustená"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Uložiť snímku obrazovky automaticky po zachytení"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Akcia schránky, ktorá by sa mala vykonať po vytvorení snímky obrazovky"
 
-#. i18n: ectx: label, entry (useLightMaskColour), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "Či sa má použiť svetlá maska farieb v dialógovom okne výberu oblasti"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "Či sa má zobraziť lupa vo výbere oblasti"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:56
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -749,133 +872,337 @@ msgid ""
 msgstr "Či sa má snímka obrazovky zachytiť po vybraní oblasti a uvoľnení myši"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Či sa majú zobraziť inštrukcie pri výbere oblasti"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Zapamätať si poslednú pravouhlú oblasť"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Naposledy používateľom vybratá oblasť"
 
-#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Urobiť snímku obrazovky na kliknutie"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:85
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Či má byť kurzor súčasťou snímky obrazovky"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:89
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Či sa majú dekorácie okna zahrnúť do snímky obrazovky"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Zachytiť iba aktuálny pop-up"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:97
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Ukončiť po uložení alebo kopírovaní obrázku"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:101
 #, kde-format
 msgid "Delay"
 msgstr "Oneskorenie"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Default filename"
 msgstr "Predvolený názov súboru"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Kvalita komprimácie pre stratové formáty súborov"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Default save image format"
 msgstr "Predvolený formát ukladaných obrázkov"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Predvolený názov súboru použitý pri ukladaní"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:132
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Cesta k naposledy uloženému súboru"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Naposledy použitá cesta akcie \"Uložiť ako\""
 
-#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
-#, kde-format
-msgid "The last used save mode"
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The last used save mode"
+msgid "The last used annotation tool type"
 msgstr "Naposledy použitý režim ukladania"
 
-#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
-msgid "The last used copy mode"
-msgstr "Naposledy použitý režim kopírovania"
+msgid "Stroke width for freehand annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:30
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
-msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " sekunda"
-msgstr[1] " sekundy"
-msgstr[2] " sekúnd"
+msgid "Stroke width for highlighter annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:32
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
-msgctxt "Decimal number of seconds"
-msgid " seconds"
-msgstr " sekundy"
+msgid "Stroke width for line annotation tool"
+msgstr ""
 
-#: src/Main.cpp:41
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:173
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#, kde-format
+msgid "Font for annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#, kde-format
+msgid "Font color for annotations"
+msgstr ""
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid "Image shared"
+msgstr "Obrázok zdieľaný"
+
+#: src/Gui/SharedMessage.qml:14
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Odkaz na zdieľaný obrázok (<a href=\"%1\">%1</a>) bol skopírovaný do "
+"schránky."
+
+#: src/Gui/ShareErrorMessage.qml:13
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Vyskytol sa problém so zdieľaním obrázku: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Zachytenie snímky obrazovky:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Vytvorenie nového pravouhlého výberu:"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Presun pravouhlého výberu:"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Zmena veľkosti pravouhlého výberu:"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "Obnova výberu:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "Zrušenie:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Uvoľnenie ľavého tlačidla"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Dvojité kliknutie"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Ťahanie mimo pravouhlého výberu"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Shift: Lupa"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Ťahanie v pravouhlom výbere"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Klávesy so šípkami"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Shift: Posun v krokoch po 1 bode"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Ťahanie úchytov"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Klávesy so šípkami + Alt"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Shift: Zmena veľkosti v krokoch po 1 bode"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Kliknutie pravým"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Escape"
+
+#: src/Gui/SpectacleWindow.cpp:132
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekunda"
+msgstr[1] "%1 sekundy"
+msgstr[2] "%1 sekúnd"
+
+#: src/Gui/SpectacleWindow.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@title:window Unsaved Screenshot"
+#| msgid "Unsaved[*]"
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "Neuložené[*]"
+
+#: src/Gui/UndoRedoGroup.qml:32
+#, kde-format
+msgid "Undo"
+msgstr ""
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr ""
+
+#: src/Main.cpp:40
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:43
+#: src/Main.cpp:42
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Nástroj snímok obrazovky prostredia KDE"
 
-#: src/Main.cpp:45
+#: src/Main.cpp:44
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
@@ -892,128 +1219,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wizzardsk@gmail.com,prescott66@gmail.com"
 
-#: src/QuickEditor/QuickEditor.cpp:61
-#, kde-format
-msgid ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-msgstr ""
-"Kliknutím a ťahaním nakreslíte pravouhlý výber,\n"
-"alebo stlačením klávesu Esc skončíte"
-
-#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
-#, kde-format
-msgid "Take Screenshot:"
-msgstr "Zachytenie snímky obrazovky:"
-
-#: src/QuickEditor/QuickEditor.cpp:717
-#, kde-format
-msgctxt "Mouse action"
-msgid "Release left-click"
-msgstr "Uvoľnenie ľavého tlačidla"
-
-#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Enter"
-msgstr "Enter"
-
-#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
-#, kde-format
-msgid "Create new selection rectangle:"
-msgstr "Vytvorenie nového pravouhlého výberu:"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag outside selection rectangle"
-msgstr "Ťahanie mimo pravouhlého výberu"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Magnifier"
-msgstr "+ Shift: Lupa"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgid "Cancel:"
-msgstr "Zrušenie:"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Escape"
-msgstr "Escape"
-
-#: src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Mouse action"
-msgid "Double-click"
-msgstr "Dvojité kliknutie"
-
-#: src/QuickEditor/QuickEditor.cpp:729
-#, kde-format
-msgid "Move selection rectangle:"
-msgstr "Presun pravouhlého výberu:"
-
-#: src/QuickEditor/QuickEditor.cpp:730
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag inside selection rectangle"
-msgstr "Ťahanie v pravouhlom výbere"
-
-#: src/QuickEditor/QuickEditor.cpp:731
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys"
-msgstr "Klávesy so šípkami"
-
-#: src/QuickEditor/QuickEditor.cpp:732
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: Posun v krokoch po 1 bode"
-
-#: src/QuickEditor/QuickEditor.cpp:733
-#, kde-format
-msgid "Resize selection rectangle:"
-msgstr "Zmena veľkosti pravouhlého výberu:"
-
-#: src/QuickEditor/QuickEditor.cpp:734
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag handles"
-msgstr "Ťahanie úchytov"
-
-#: src/QuickEditor/QuickEditor.cpp:735
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys + Alt"
-msgstr "Klávesy so šípkami + Alt"
-
-#: src/QuickEditor/QuickEditor.cpp:736
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: Zmena veľkosti v krokoch po 1 bode"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgid "Reset selection:"
-msgstr "Obnova výberu:"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgctxt "Mouse action"
-msgid "Right-click"
-msgstr "Kliknutie pravým"
-
-#: src/QuickEditor/QuickEditor.cpp:923
-#, kde-format
-msgid "%1×%2"
-msgstr "%1×%2"
-
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1024,93 +1229,68 @@ msgstr "Zaznamenať okno pod kurzorom"
 msgid "Launch Spectacle without capturing"
 msgstr "Spustiť aplikáciu Spectacle bez zachytenia"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zachytenie snímky obrazovky bolo zrušené alebo zlyhalo"
 
-#: src/SpectacleCore.cpp:454
-#, kde-format
-msgctxt "The entire screen area was captured, heading"
-msgid "Full Screen Captured"
-msgstr "Bola zachytená celá obrazovka"
-
-#: src/SpectacleCore.cpp:457
-#, kde-format
-msgctxt "The current screen was captured, heading"
-msgid "Current Screen Captured"
-msgstr "Bola zachytená aktuálna obrazovka"
-
-#: src/SpectacleCore.cpp:460
-#, kde-format
-msgctxt "The active window was captured, heading"
-msgid "Active Window Captured"
-msgstr "Bolo zachytené aktívne okno"
-
-#: src/SpectacleCore.cpp:464
-#, kde-format
-msgctxt "The window under the mouse was captured, heading"
-msgid "Window Under Cursor Captured"
-msgstr "Bolo zachytené okno pod kurzorom"
-
-#: src/SpectacleCore.cpp:467
-#, kde-format
-msgctxt "A rectangular region was captured, heading"
-msgid "Rectangular Region Captured"
-msgstr "Bola zachytená pravouhlá oblasť"
-
-#: src/SpectacleCore.cpp:477
+#: src/SpectacleCore.cpp:662
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
-msgid "A screenshot was copied to your clipboard."
+msgid "A screenshot was saved to your clipboard."
 msgstr "Snímka obrazovky bola uložená do vašej schránky."
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:664
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
 #| "screenshot has been saved to your clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
-"has been copied to your clipboard."
+"has been saved to your clipboard."
 msgstr ""
 "Snímka obrazovky bola uložený ako '%1' na '%2' a jej umiestnenie bolo "
 "skopírované do schránky."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Snímka obrazovky bola uložená ako \"%1\" do vášho priečinka s obrázkami."
 
-#: src/SpectacleCore.cpp:485
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímka obrazovky bola uložená ako \"%1\" do \"%2\"."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgid "Annotate"
+msgstr "Komentovať"
+
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Zachytí celú pracovnú plochu (predvolené)"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Zachytí aktívny monitor"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Capture the active window"
 msgstr "Zachytí aktívne okno"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1118,40 +1298,40 @@ msgid ""
 msgstr ""
 "Zachytí okno pod kurzorom, vrátane nadradených okien vyskakovacích ponúk"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "Zachytí okno pod kurzorom, okrem nadradených okien vyskakovacích ponúk"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Zachytí pravouhlú oblasť obrazovky"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spustiť aplikáciu Spectacle bez vytvorenia snímky obrazovky"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Spustí v režime grafického používateľského rozhrania (predvolené)"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Zachytí snímku a ukončiť bez zobrazenia grafického používateľského rozhrania"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Spustí v režime aktivácie zbernice DBus"
 
-#: src/SpectacleCore.cpp:540
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1159,17 +1339,17 @@ msgstr ""
 "Nezobrazí vyskakovacie upozornenie po vytvorení snímky obrazovky v režime "
 "pozadia"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Uloží obrázok do určeného súboru v režime pozadia"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Oneskorenie pred zachytením snímky (v milisekundách) v režime pozadia"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1178,36 +1358,114 @@ msgstr ""
 "V režime na pozadí, skopírovať snímku obrazovky do schránky, ak sa nepoužije "
 "-o"
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "V režime na pozadí, skopírovať cestu k súboru snímky obrazovky do schránky"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Čaká na kliknutie pred zachytením snímky obrazovky (zruší oneskorenie)"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Spustí novú grafickú inštanciu Spectacle bez registrácie do DBus"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "V režime na pozadí, zahrnúť ukazovateľ myši na snímke obrazovky"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "V režime na pozadí, vynechať dekorácie zo snímky obrazovky"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Otvoriť a upraviť existujúci súbor so snímkom obrazovky"
+
+#~ msgid "Full Screen (All Monitors)"
+#~ msgstr "Celá obrazovka (Všetky monitory)"
+
+#~ msgid "Full Screen (All Monitors, scaled)"
+#~ msgstr "Celá obrazovka (Všetky monitory, zmenšené)"
+
+#~ msgid "Image Size: %1x%2 pixels"
+#~ msgstr "Veľkosť obrázku: %1x%2 bodov"
+
+#~ msgid "Change Spectacle's settings."
+#~ msgstr "Zmeniť nastavenia aplikácie Spectacle."
+
+#~ msgid "Add annotation to the screenshot"
+#~ msgstr "Pridať komentár do snímky obrazovky"
+
+#~ msgid "Tools"
+#~ msgstr "Nástroje"
+
+#~ msgid "Record Screen"
+#~ msgstr "Zaznamenať obrazovku"
+
+#~ msgid "Copy Image to Clipboard"
+#~ msgstr "Skopírovať obrázok do schránky"
+
+#~ msgid "Copy Location to Clipboard"
+#~ msgstr "Kopírovať umiestnenie do schránky"
+
+#~ msgid "Ready to take a screenshot"
+#~ msgstr "Pripravené na vytvorenie snímky obrazovky"
+
+#, fuzzy
+#~| msgid "Annotate"
+#~ msgctxt "@action:button"
+#~ msgid "Annotate"
+#~ msgstr "Komentovať"
+
+#~ msgid "Area:"
+#~ msgstr "Oblasť:"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Voľby</b>"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušiť"
+
+#~ msgid "The last used copy mode"
+#~ msgstr "Naposledy použitý režim kopírovania"
+
+#~ msgid ""
+#~ "Click and drag to draw a selection rectangle,\n"
+#~ "or press Esc to quit"
+#~ msgstr ""
+#~ "Kliknutím a ťahaním nakreslíte pravouhlý výber,\n"
+#~ "alebo stlačením klávesu Esc skončíte"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "The entire screen area was captured, heading"
+#~ msgid "Full Screen Captured"
+#~ msgstr "Bola zachytená celá obrazovka"
+
+#~ msgctxt "The current screen was captured, heading"
+#~ msgid "Current Screen Captured"
+#~ msgstr "Bola zachytená aktuálna obrazovka"
+
+#~ msgctxt "The active window was captured, heading"
+#~ msgid "Active Window Captured"
+#~ msgstr "Bolo zachytené aktívne okno"
+
+#~ msgctxt "The window under the mouse was captured, heading"
+#~ msgid "Window Under Cursor Captured"
+#~ msgstr "Bolo zachytené okno pod kurzorom"
+
+#~ msgctxt "A rectangular region was captured, heading"
+#~ msgid "Rectangular Region Captured"
+#~ msgstr "Bola zachytená pravouhlá oblasť"
 
 #~ msgid "More Online Services"
 #~ msgstr "Viac internetových služieb"
@@ -1439,9 +1697,6 @@ msgstr "Otvoriť a upraviť existujúci súbor so snímkom obrazovky"
 
 #~ msgid "Application Preferences"
 #~ msgstr "Aplikačné predvoľby"
-
-#~ msgid "Save Options"
-#~ msgstr "Uložiť voľby"
 
 #~ msgid "Open With..."
 #~ msgstr "Otvoriť s..."

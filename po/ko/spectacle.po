@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:44+0000\n"
+"POT-Creation-Date: 2022-12-08 00:43+0000\n"
 "PO-Revision-Date: 2022-07-13 11:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -42,12 +42,48 @@ msgstr "활성 창 찍기"
 msgid "Capture Rectangular Region"
 msgstr "직사각형 영역 찍기"
 
-#: src/ExportManager.cpp:308
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "직사각형 영역"
+
+#: src/CaptureModeModel.cpp:102
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgid "All Screens"
+msgstr "전체 화면"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "전체 화면"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:116
+#, kde-format
+msgid "Current Screen"
+msgstr "현재 화면"
+
+#: src/CaptureModeModel.cpp:123
+#, kde-format
+msgid "Active Window"
+msgstr "활성 창"
+
+#: src/CaptureModeModel.cpp:130
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "커서 아래 창"
+
+#: src/ExportManager.cpp:310
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter에서 그림을 작성할 수 없음: %1"
 
-#: src/ExportManager.cpp:323
+#: src/ExportManager.cpp:325
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -57,12 +93,12 @@ msgstr ""
 "디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:335
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "스크린샷을 저장할 수 없습니다. 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:353
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -72,27 +108,27 @@ msgstr ""
 "원격 디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "스크린샷을 저장할 수 없습니다. 임시 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:372
+#: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:421
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되었습니다."
 
-#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:577
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
@@ -185,260 +221,160 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "순차적 번호, N자릿수로 채워짐"
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
-msgid "Full Screen"
-msgstr "전체 화면"
+msgid "Stroke:"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
-msgid "Full Screen (All Monitors)"
-msgstr "전체 화면(모든 모니터)"
+msgid "Stroke Width"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:133
+#: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
-msgid "Full Screen (All Monitors, scaled)"
-msgstr "전체 화면(모든 모니터, 크기 조정됨)"
+msgid "Stroke Color"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:137
+#: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
-msgid "Rectangular Region"
+msgid "Fill:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:185
+#, kde-format
+msgid "Font:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
+#, kde-format
+msgid "Font Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:253
+#, kde-format
+msgid "Number:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#, kde-format
+msgid "Number for number annotations"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:65
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:72
+#, kde-format
+msgid "Select"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:80
+#, kde-format
+msgid "Freehand"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:87
+#, kde-format
+msgid "Highlighter"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:94
+#, kde-format
+msgid "Line"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:101
+#, fuzzy, kde-format
+#| msgctxt "Keyboard action"
+#| msgid "Arrow keys"
+msgid "Arrow"
+msgstr "화살표 키"
+
+#: src/Gui/AnnotationsToolBarContents.qml:108
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangle"
 msgstr "직사각형 영역"
 
-#: src/Gui/CaptureAreaComboBox.cpp:140
+#: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
-msgid "Current Screen"
-msgstr "현재 화면"
-
-#: src/Gui/CaptureAreaComboBox.cpp:143
-#, kde-format
-msgid "Active Window"
-msgstr "활성 창"
-
-#: src/Gui/CaptureAreaComboBox.cpp:146
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "커서 아래 창"
-
-#: src/Gui/ExportMenu.cpp:89
-#, kde-format
-msgid "Other Application..."
-msgstr "다른 프로그램..."
-
-#: src/Gui/ExportMenu.cpp:112
-#, kde-format
-msgid "Share"
-msgstr "공유"
-
-#: src/Gui/KSImageWidget.cpp:32
-#, kde-format
-msgid "Image Size: %1x%2 pixels"
-msgstr "그림 크기: %1x%2 픽셀"
-
-#: src/Gui/KSMainWindow.cpp:151
-#, kde-format
-msgid "Configure..."
-msgstr "설정..."
-
-#: src/Gui/KSMainWindow.cpp:152
-#, kde-format
-msgid "Change Spectacle's settings."
-msgstr "Spectacle 설정을 변경합니다."
-
-#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
-#, kde-format
-msgid "Annotate"
-msgstr "주석 달기"
-
-#: src/Gui/KSMainWindow.cpp:158
-#, kde-format
-msgid "Add annotation to the screenshot"
-msgstr "스크린샷에 주석 달기"
-
-#: src/Gui/KSMainWindow.cpp:165
-#, kde-format
-msgid "Tools"
-msgstr "도구"
-
-#: src/Gui/KSMainWindow.cpp:171
-#, kde-format
-msgid "Export"
-msgstr "내보내기"
-
-#: src/Gui/KSMainWindow.cpp:192
-#, kde-format
-msgid "Open Default Screenshots Folder"
-msgstr "기본 스크린샷 폴더 열기"
-
-#: src/Gui/KSMainWindow.cpp:196
-#, kde-format
-msgid "Record Screen"
-msgstr "화면 녹화"
-
-#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
-#, kde-format
-msgid "Copy Image to Clipboard"
-msgstr "클립보드로 그림 복사"
-
-#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
-#, kde-format
-msgid "Copy Location to Clipboard"
-msgstr "클립보드에 위치 복사"
-
-#: src/Gui/KSMainWindow.cpp:255
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "포함하는 폴더 열기"
-
-#: src/Gui/KSMainWindow.cpp:301
-#, kde-format
-msgid "Save As..."
-msgstr "다른 이름으로 저장..."
-
-#: src/Gui/KSMainWindow.cpp:367
-#, kde-format
-msgctxt "@title:window"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1초"
-
-#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
-#, kde-format
-msgctxt "@title:window Unsaved Screenshot"
-msgid "Unsaved[*]"
-msgstr "저장되지 않음[*]"
-
-#: src/Gui/KSMainWindow.cpp:506
-#, kde-format
-msgid "There was a problem sharing the image: %1"
-msgstr "그림 공유 중 문제 발생: %1"
-
-#: src/Gui/KSMainWindow.cpp:509
-#, kde-format
-msgid "Image shared"
-msgstr "그림 공유됨"
-
-#: src/Gui/KSMainWindow.cpp:511
-#, kde-format
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr "공유된 그림 링크(<a href=\"%1\">%1</a>)를 클립보드에 복사했습니다."
-
-#: src/Gui/KSMainWindow.cpp:545
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "스크린샷을 클립보드에 복사했습니다."
-
-#: src/Gui/KSMainWindow.cpp:551
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
+msgid "Ellipse"
 msgstr ""
-"스크린샷을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
 
-#: src/Gui/KSMainWindow.cpp:559
+#: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgid "Pixelate"
 msgstr ""
-"스크린샷을 찍을 수 없습니다. 버그를 보고해 주십시오: <a href=\"https://bugs."
-"kde.org/enter_bug.cgi?product=Spectacle\">Spectacle 버그 생성</a>"
 
-#: src/Gui/KSMainWindow.cpp:569
+#: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
-msgid "Ready to take a screenshot"
-msgstr "스크린샷 찍기 준비됨"
-
-#: src/Gui/KSMainWindow.cpp:586
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "스크린샷을 <a href=\"%1\">%2</a>(으)로 저장했습니다."
-
-#: src/Gui/KSMainWindow.cpp:596
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgid "Blur"
 msgstr ""
-"스크린샷을 클립보드에 복사했고 <a href=\"%1\">%2</a>(으)로 저장했습니다."
 
-#: src/Gui/KSMainWindow.cpp:692
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
-msgctxt "@action:button"
-msgid "Annotate"
-msgstr "주석 달기"
+msgid "Text"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:704
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
-msgctxt "@action:button"
-msgid "Annotation Done"
-msgstr "주석 달기 완료"
+msgid "Number"
+msgstr ""
 
-#: src/Gui/KSWidget.cpp:47
-#, kde-format
-msgid "<b>Capture Mode</b>"
+#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
 msgstr "<b>캡처 모드</b>"
 
-#: src/Gui/KSWidget.cpp:63
-#, kde-format
-msgid "No Delay"
-msgstr "지연 없음"
+#: src/Gui/CaptureOptionsSidebarContents.qml:52
+#: src/Gui/MainToolBarContents.qml:130
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgid "Options"
+msgstr "저장 옵션"
 
-#: src/Gui/KSWidget.cpp:67
-#, kde-format
-msgid "On Click"
-msgstr "클릭할 때"
-
-#: src/Gui/KSWidget.cpp:68
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "스크린샷을 찍기 전에 마우스 클릭을 기다립니다"
-
-#: src/Gui/KSWidget.cpp:77
-#, kde-format
-msgid "Area:"
-msgstr "영역:"
-
-#: src/Gui/KSWidget.cpp:78
-#, kde-format
-msgid "Delay:"
-msgstr "지연:"
-
-#: src/Gui/KSWidget.cpp:83
-#, kde-format
-msgid "<b>Options</b>"
-msgstr "<b>옵션</b>"
-
-#: src/Gui/KSWidget.cpp:85
+#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "마우스 포인터 포함하기"
 
-#: src/Gui/KSWidget.cpp:86
+#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "스크린샷 그림에 마우스 커서 표시"
 
-#: src/Gui/KSWidget.cpp:89
+#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "창 제목 표시줄과 경계선 포함"
 
-#: src/Gui/KSWidget.cpp:90
+#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
+#: src/Gui/OptionsMenu.cpp:83
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr "창 제목 표시줄, 조절 단추와 창 경계선 표시"
 
-#: src/Gui/KSWidget.cpp:94
+#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
+#: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "현재 팝업 창만 캡처"
 
-#: src/Gui/KSWidget.cpp:96
+#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -447,25 +383,219 @@ msgstr ""
 "현재 팝업 창(메뉴, 풍선 도움말 등)만 캡처합니다.\n"
 "이 옵션을 사용하지 않으면 팝업 창과 부모 창을 같이 캡처합니다"
 
-#: src/Gui/KSWidget.cpp:101
+#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
+#: src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "수동으로 저장하거나 복사한 후 끝내기"
 
-#: src/Gui/KSWidget.cpp:102
+#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
+#: src/Gui/OptionsMenu.cpp:109
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "그림을 수동으로 저장하거나 복사한 후 Spectacle 끝내기"
 
-#: src/Gui/KSWidget.cpp:112
+#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
+#: src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "지연:"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
+#, kde-format
+msgid "On Click"
+msgstr "클릭할 때"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
+#: src/Gui/MainToolBarContents.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
+msgstr[0] "%1초"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
 msgid "Take a New Screenshot"
 msgstr "새 스크린샷 찍기"
 
-#: src/Gui/KSWidget.cpp:116
+#: src/Gui/CopiedMessage.qml:13
 #, kde-format
-msgid "Cancel"
-msgstr "취소"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "스크린샷을 클립보드에 복사했습니다."
+
+#: src/Gui/DelaySpinBox.qml:17
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "지연 없음"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " 초"
+
+#: src/Gui/DelaySpinBox.qml:28 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " 초"
+
+#: src/Gui/DialogPage.qml:52
+#, fuzzy, kde-format
+#| msgid "Take a new Screenshot"
+msgid "Take a new screenshot"
+msgstr "새 스크린샷 찍기"
+
+#: src/Gui/DialogPage.qml:95
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Modes"
+msgstr "<b>캡처 모드</b>"
+
+#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:157
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "스크린샷을 찍기 전에 마우스 클릭을 기다립니다"
+
+#: src/Gui/DialogPage.qml:183
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+msgstr ""
+"현재 팝업 창(메뉴, 풍선 도움말 등)만 캡처합니다.\n"
+"이 옵션을 사용하지 않으면 팝업 창과 부모 창을 같이 캡처합니다"
+
+#: src/Gui/DialogPage.qml:204
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#, kde-format
+msgid "Help"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:44
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "기본 스크린샷 폴더 열기"
+
+#: src/Gui/ExportMenu.cpp:106
+#, kde-format
+msgid "Other Application..."
+msgstr "다른 프로그램..."
+
+#: src/Gui/ExportMenu.cpp:139
+#, kde-format
+msgid "Share"
+msgstr "공유"
+
+#: src/Gui/ImageView.qml:338
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ImageView.qml:352
+#, kde-format
+msgid "Image Zoom"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#, kde-format
+msgid "Save"
+msgstr "저장"
+
+#: src/Gui/MainToolBarContents.qml:66
+#, kde-format
+msgid "Save As..."
+msgstr "다른 이름으로 저장..."
+
+#: src/Gui/MainToolBarContents.qml:77
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:83
+#, kde-format
+msgid "Export"
+msgstr "내보내기"
+
+#: src/Gui/MainToolBarContents.qml:96
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Annotation Done"
+msgid "Show Annotation Tools"
+msgstr "주석 달기 완료"
+
+#: src/Gui/MainToolBarContents.qml:119
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "New Screenshot"
+msgstr "새 스크린샷 찍기"
+
+#: src/Gui/MainToolBarContents.qml:142
+#, kde-format
+msgid "Configure..."
+msgstr "설정..."
+
+#: src/Gui/OptionsMenu.cpp:123
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture On Click"
+msgstr "클릭할 때"
+
+#: src/Gui/OptionsMenu.cpp:143
+#, kde-format
+msgid "No Delay"
+msgstr "지연 없음"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"스크린샷을 클립보드에 복사했고 <a href=\"%1\">%2</a>(으)로 저장했습니다."
+
+#: src/Gui/SavedAndLocationCopied.qml:8
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"스크린샷을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
+
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "스크린샷을 <a href=\"%1\">%2</a>(으)로 저장했습니다."
+
+#: src/Gui/SavedMessage.qml:19
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "포함하는 폴더 열기"
+
+#: src/Gui/ScreenshotFailedMessage.qml:12
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"스크린샷을 찍을 수 없습니다. 버그를 보고해 주십시오: <a href=\"https://bugs."
+"kde.org/enter_bug.cgi?product=Spectacle\">Spectacle 버그 생성</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -473,19 +603,19 @@ msgstr "취소"
 msgid "When launching Spectacle:"
 msgstr "Spectacle을 실행할 때:"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
 msgstr "전체 화면 스크린샷 찍기"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Use last-used capture mode"
 msgstr "마지막으로 사용한 캡처 모드 사용"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
@@ -668,61 +798,56 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
 #, kde-format
 msgid "General"
 msgstr "일반"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
-msgid "Save"
-msgstr "저장"
-
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
 #, kde-format
 msgid "Shortcuts"
 msgstr "단축키"
 
-#. i18n: ectx: label, entry (onLaunchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Spectacle을 실행했을 때 할 일"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr "Spectacle이 실행 중일 때 Print Screen 키를 눌렀을 때 할 행동"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "스크린샷을 찍은 후 자동으로 저장하기"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "스크린샷을 찍고 실행할 클립보드 동작"
 
-#. i18n: ectx: label, entry (useLightMaskColour), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "영역 선택 대화 상자에서 밝은 색 마스크를 사용할지 여부"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "영역 선택 시 돋보기를 표시할지 여부"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:56
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -730,131 +855,333 @@ msgid ""
 msgstr "영역을 선택하고 마우스 단추를 놓을 때 스크린샷을 찍을지 여부"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "영역 선택 시 캡처 방법을 표시할지 여부"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "마지막으로 사용한 직사각형 영역 기억"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "사용자가 마지막으로 선택한 영역"
 
-#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "클릭할 때 스크린샷 찍기"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:85
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "스크린샷 그림에 마우스 커서를 표시할지 여부"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:89
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "스크린샷 그림에 창 장식을 표시할지 여부"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "현재 팝업 메뉴만 캡처"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:97
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "그림을 저장하거나 복사한 후 끝내기"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:101
 #, kde-format
 msgid "Delay"
 msgstr "지연"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Default filename"
 msgstr "기본 파일 이름"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "손실 압축 형식의 압축 품질"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Default save image format"
 msgstr "기본 그림 저장 형식"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "저장할 때 사용할 기본 파일 이름"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:132
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "마지막으로 저장한 파일 경로"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "마지막으로 사용한 \"다른 이름으로 저장\" 경로"
 
-#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
-#, kde-format
-msgid "The last used save mode"
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The last used save mode"
+msgid "The last used annotation tool type"
 msgstr "마지막으로 사용한 저장 모드"
 
-#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
-msgid "The last used copy mode"
-msgstr "마지막으로 사용한 복사 모드"
+msgid "Stroke width for freehand annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:30
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
-msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " 초"
+msgid "Stroke width for highlighter annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:32
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
-msgctxt "Decimal number of seconds"
-msgid " seconds"
-msgstr " 초"
+msgid "Stroke width for line annotation tool"
+msgstr ""
 
-#: src/Main.cpp:41
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:173
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#, kde-format
+msgid "Font for annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#, kde-format
+msgid "Font color for annotations"
+msgstr ""
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid "Image shared"
+msgstr "그림 공유됨"
+
+#: src/Gui/SharedMessage.qml:14
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr "공유된 그림 링크(<a href=\"%1\">%1</a>)를 클립보드에 복사했습니다."
+
+#: src/Gui/ShareErrorMessage.qml:13
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "그림 공유 중 문제 발생: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "스크린샷 찍기:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "새 선택 사각형 만들기:"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "선택 사각형 이동:"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "선택 사각형 크기 조정:"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "선택 영역 초기화:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "취소:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "왼쪽 단추 놓기"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "두 번 클릭"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "선택 사각형 바깥쪽에서 드래그"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Shift: 돋보기 표시"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "선택 사각형 안쪽에서 드래그"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "화살표 키"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Shift: 1픽셀 단위로 이동"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "핸들 드래그"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "화살표 키 + Alt"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Shift: 1픽셀 단위로 크기 조정"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "오른쪽 클릭"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Escape"
+
+#: src/Gui/SpectacleWindow.cpp:132
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1초"
+
+#: src/Gui/SpectacleWindow.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@title:window Unsaved Screenshot"
+#| msgid "Unsaved[*]"
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "저장되지 않음[*]"
+
+#: src/Gui/UndoRedoGroup.qml:32
+#, kde-format
+msgid "Undo"
+msgstr ""
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr ""
+
+#: src/Main.cpp:40
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:43
+#: src/Main.cpp:42
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE 스크린샷 프로그램"
 
-#: src/Main.cpp:45
+#: src/Main.cpp:44
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
@@ -871,128 +1198,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: src/QuickEditor/QuickEditor.cpp:61
-#, kde-format
-msgid ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-msgstr ""
-"클릭한 후 드래그로 선택 사각형을 그리거나,\n"
-"Esc 키를 눌러서 끝내십시오"
-
-#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
-#, kde-format
-msgid "Take Screenshot:"
-msgstr "스크린샷 찍기:"
-
-#: src/QuickEditor/QuickEditor.cpp:717
-#, kde-format
-msgctxt "Mouse action"
-msgid "Release left-click"
-msgstr "왼쪽 단추 놓기"
-
-#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Enter"
-msgstr "Enter"
-
-#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
-#, kde-format
-msgid "Create new selection rectangle:"
-msgstr "새 선택 사각형 만들기:"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag outside selection rectangle"
-msgstr "선택 사각형 바깥쪽에서 드래그"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Magnifier"
-msgstr "+ Shift: 돋보기 표시"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgid "Cancel:"
-msgstr "취소:"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Escape"
-msgstr "Escape"
-
-#: src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Mouse action"
-msgid "Double-click"
-msgstr "두 번 클릭"
-
-#: src/QuickEditor/QuickEditor.cpp:729
-#, kde-format
-msgid "Move selection rectangle:"
-msgstr "선택 사각형 이동:"
-
-#: src/QuickEditor/QuickEditor.cpp:730
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag inside selection rectangle"
-msgstr "선택 사각형 안쪽에서 드래그"
-
-#: src/QuickEditor/QuickEditor.cpp:731
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys"
-msgstr "화살표 키"
-
-#: src/QuickEditor/QuickEditor.cpp:732
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: 1픽셀 단위로 이동"
-
-#: src/QuickEditor/QuickEditor.cpp:733
-#, kde-format
-msgid "Resize selection rectangle:"
-msgstr "선택 사각형 크기 조정:"
-
-#: src/QuickEditor/QuickEditor.cpp:734
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag handles"
-msgstr "핸들 드래그"
-
-#: src/QuickEditor/QuickEditor.cpp:735
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys + Alt"
-msgstr "화살표 키 + Alt"
-
-#: src/QuickEditor/QuickEditor.cpp:736
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: 1픽셀 단위로 크기 조정"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgid "Reset selection:"
-msgstr "선택 영역 초기화:"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgctxt "Mouse action"
-msgid "Right-click"
-msgstr "오른쪽 클릭"
-
-#: src/QuickEditor/QuickEditor.cpp:923
-#, kde-format
-msgid "%1×%2"
-msgstr "%1×%2"
-
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1003,143 +1208,122 @@ msgstr "커서 아래 창 캡처"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "스크린샷 찍기 취소 혹은 실패"
 
-#: src/SpectacleCore.cpp:454
-#, kde-format
-msgctxt "The entire screen area was captured, heading"
-msgid "Full Screen Captured"
-msgstr "전체 화면 캡처됨"
-
-#: src/SpectacleCore.cpp:457
-#, kde-format
-msgctxt "The current screen was captured, heading"
-msgid "Current Screen Captured"
-msgstr "현재 화면 캡처됨"
-
-#: src/SpectacleCore.cpp:460
-#, kde-format
-msgctxt "The active window was captured, heading"
-msgid "Active Window Captured"
-msgstr "활성 창 캡처됨"
-
-#: src/SpectacleCore.cpp:464
-#, kde-format
-msgctxt "The window under the mouse was captured, heading"
-msgid "Window Under Cursor Captured"
-msgstr "커서 아래 창 캡처됨"
-
-#: src/SpectacleCore.cpp:467
-#, kde-format
-msgctxt "A rectangular region was captured, heading"
-msgid "Rectangular Region Captured"
-msgstr "직사각형 영역 캡처됨"
-
-#: src/SpectacleCore.cpp:477
-#, kde-format
-msgid "A screenshot was copied to your clipboard."
+#: src/SpectacleCore.cpp:662
+#, fuzzy, kde-format
+#| msgid "A screenshot was copied to your clipboard."
+msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 복사했습니다."
 
-#: src/SpectacleCore.cpp:479
-#, kde-format
+#: src/SpectacleCore.cpp:664
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been copied to your clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
-"has been copied to your clipboard."
+"has been saved to your clipboard."
 msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:485
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgid "Annotate"
+msgstr "주석 달기"
+
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "전체 바탕 화면 찍기(기본값)"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "현재 모니터 찍기"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Capture the active window"
 msgstr "활성 창 찍기"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "팝업 메뉴 부모와 같이 현재 커서 아래 창 찍기"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "팝업 메뉴 부모를 제외한 현재 커서 아래 창 찍기"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "화면의 사각형 영역 찍기"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "스크린샷을 찍지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI 모드로 시작(기본값)"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "GUI를 표시하지 않고 스크린샷을 찍고 끝내기"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus 활성화 모드로 시작"
 
-#: src/SpectacleCore.cpp:540
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "배경 모드에서 스크린샷을 찍었을 때 알림 표시하지 않음"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "배경 모드에서 지정한 파일로 그림 저장"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "배경 모드에서 사진 찍기 전 지연 시간(밀리초 단위)"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1148,35 +1332,111 @@ msgstr ""
 "-o 옵션을 지정하지 않았다면 배경 모드에서 스크린샷 그림을 클립보드에 복사합니"
 "다."
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "배경 모드에서 스크린샷 파일 경로를 클립보드에 복사"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "스크린샷을 찍기 전 마우스 클릭 대기. 지연 시간 무시"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus에 등록하지 않고 Spectacle의 새 GUI 인스턴스 시작"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "배경 모드에서 스크린샷에 포인터 포함"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
+
+#~ msgid "Full Screen (All Monitors)"
+#~ msgstr "전체 화면(모든 모니터)"
+
+#~ msgid "Full Screen (All Monitors, scaled)"
+#~ msgstr "전체 화면(모든 모니터, 크기 조정됨)"
+
+#~ msgid "Image Size: %1x%2 pixels"
+#~ msgstr "그림 크기: %1x%2 픽셀"
+
+#~ msgid "Change Spectacle's settings."
+#~ msgstr "Spectacle 설정을 변경합니다."
+
+#~ msgid "Add annotation to the screenshot"
+#~ msgstr "스크린샷에 주석 달기"
+
+#~ msgid "Tools"
+#~ msgstr "도구"
+
+#~ msgid "Record Screen"
+#~ msgstr "화면 녹화"
+
+#~ msgid "Copy Image to Clipboard"
+#~ msgstr "클립보드로 그림 복사"
+
+#~ msgid "Copy Location to Clipboard"
+#~ msgstr "클립보드에 위치 복사"
+
+#~ msgid "Ready to take a screenshot"
+#~ msgstr "스크린샷 찍기 준비됨"
+
+#~ msgctxt "@action:button"
+#~ msgid "Annotate"
+#~ msgstr "주석 달기"
+
+#~ msgid "Area:"
+#~ msgstr "영역:"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>옵션</b>"
+
+#~ msgid "Cancel"
+#~ msgstr "취소"
+
+#~ msgid "The last used copy mode"
+#~ msgstr "마지막으로 사용한 복사 모드"
+
+#~ msgid ""
+#~ "Click and drag to draw a selection rectangle,\n"
+#~ "or press Esc to quit"
+#~ msgstr ""
+#~ "클릭한 후 드래그로 선택 사각형을 그리거나,\n"
+#~ "Esc 키를 눌러서 끝내십시오"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "The entire screen area was captured, heading"
+#~ msgid "Full Screen Captured"
+#~ msgstr "전체 화면 캡처됨"
+
+#~ msgctxt "The current screen was captured, heading"
+#~ msgid "Current Screen Captured"
+#~ msgstr "현재 화면 캡처됨"
+
+#~ msgctxt "The active window was captured, heading"
+#~ msgid "Active Window Captured"
+#~ msgstr "활성 창 캡처됨"
+
+#~ msgctxt "The window under the mouse was captured, heading"
+#~ msgid "Window Under Cursor Captured"
+#~ msgstr "커서 아래 창 캡처됨"
+
+#~ msgctxt "A rectangular region was captured, heading"
+#~ msgid "Rectangular Region Captured"
+#~ msgstr "직사각형 영역 캡처됨"
 
 #~ msgid "More Online Services"
 #~ msgstr "더 많은 온라인 서비스"
@@ -1425,9 +1685,6 @@ msgstr "기존 스크린샷 파일 열고 편집"
 
 #~ msgid "Application Preferences"
 #~ msgstr "프로그램 설정"
-
-#~ msgid "Save Options"
-#~ msgstr "저장 옵션"
 
 #~ msgid "Open With..."
 #~ msgstr "다음으로 열기..."

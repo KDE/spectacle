@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:44+0000\n"
+"POT-Creation-Date: 2022-12-08 00:43+0000\n"
 "PO-Revision-Date: 2022-07-01 18:00+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -42,12 +42,48 @@ msgstr "Actieve venster vangen"
 msgid "Capture Rectangular Region"
 msgstr "Rechthoekig gebied vangen"
 
-#: src/ExportManager.cpp:308
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Rechthoekig gebied"
+
+#: src/CaptureModeModel.cpp:102
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgid "All Screens"
+msgstr "Volledig scherm"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "Volledig scherm"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:116
+#, kde-format
+msgid "Current Screen"
+msgstr "Huidig scherm"
+
+#: src/CaptureModeModel.cpp:123
+#, kde-format
+msgid "Active Window"
+msgstr "Actief venster"
+
+#: src/CaptureModeModel.cpp:130
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Venster onder muiscursor"
+
+#: src/ExportManager.cpp:310
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan geen afbeelding wegschrijven: %1"
 
-#: src/ExportManager.cpp:323
+#: src/ExportManager.cpp:325
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -57,12 +93,12 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map is mislukt:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:335
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan schermafdruk niet opslaan. Fout bij schrijven van bestand."
 
-#: src/ExportManager.cpp:353
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -72,32 +108,32 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map op afstand is "
 "mislukt:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kan schermafdruk niet opslaan. Fout bij schrijven van tijdelijk lokaal "
 "bestand."
 
-#: src/ExportManager.cpp:372
+#: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Afbeelding opslaan lukt niet. Bestand kon niet worden opgestuurd naar "
 "externe locatie."
 
-#: src/ExportManager.cpp:421
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Kan schermafdruk niet opslaan. De bestandsnaam voor opslaan is ongeldig."
 
-#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan geen lege schermafdruk opslaan."
 
-#: src/ExportManager.cpp:577
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Afdrukken is mislukt. Initialiseren van de printer is mislukt"
@@ -190,254 +226,147 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Opvolgende nummering, opgevuld naar N cijfers"
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
-msgid "Full Screen"
-msgstr "Volledig scherm"
+msgid "Stroke:"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
-msgid "Full Screen (All Monitors)"
-msgstr "Volledig scherm (alle monitoren)"
+msgid "Stroke Width"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:133
+#: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
-msgid "Full Screen (All Monitors, scaled)"
-msgstr "Volledig scherm (alle monitoren, geschaald)"
+msgid "Stroke Color"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:137
+#: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
-msgid "Rectangular Region"
+msgid "Fill:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:185
+#, kde-format
+msgid "Font:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
+#, kde-format
+msgid "Font Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:253
+#, kde-format
+msgid "Number:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#, kde-format
+msgid "Number for number annotations"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:65
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:72
+#, kde-format
+msgid "Select"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:80
+#, kde-format
+msgid "Freehand"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:87
+#, kde-format
+msgid "Highlighter"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:94
+#, kde-format
+msgid "Line"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:101
+#, fuzzy, kde-format
+#| msgctxt "Keyboard action"
+#| msgid "Arrow keys"
+msgid "Arrow"
+msgstr "Pijl-toetsen"
+
+#: src/Gui/AnnotationsToolBarContents.qml:108
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangle"
 msgstr "Rechthoekig gebied"
 
-#: src/Gui/CaptureAreaComboBox.cpp:140
+#: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
-msgid "Current Screen"
-msgstr "Huidig scherm"
-
-#: src/Gui/CaptureAreaComboBox.cpp:143
-#, kde-format
-msgid "Active Window"
-msgstr "Actief venster"
-
-#: src/Gui/CaptureAreaComboBox.cpp:146
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "Venster onder muiscursor"
-
-#: src/Gui/ExportMenu.cpp:89
-#, kde-format
-msgid "Other Application..."
-msgstr "Ander programma..."
-
-#: src/Gui/ExportMenu.cpp:112
-#, kde-format
-msgid "Share"
-msgstr "Delen"
-
-#: src/Gui/KSImageWidget.cpp:32
-#, kde-format
-msgid "Image Size: %1x%2 pixels"
-msgstr "Afbeeldingsformaat: %1x%2 pixels"
-
-#: src/Gui/KSMainWindow.cpp:151
-#, kde-format
-msgid "Configure..."
-msgstr "Configureren..."
-
-#: src/Gui/KSMainWindow.cpp:152
-#, kde-format
-msgid "Change Spectacle's settings."
-msgstr "Instellingen van Spectacle wijzigen."
-
-#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
-#, kde-format
-msgid "Annotate"
-msgstr "Annotatie maken"
-
-#: src/Gui/KSMainWindow.cpp:158
-#, kde-format
-msgid "Add annotation to the screenshot"
-msgstr "Annotatie toevoegen aan de schermafdruk"
-
-#: src/Gui/KSMainWindow.cpp:165
-#, kde-format
-msgid "Tools"
-msgstr "Hulpmiddelen"
-
-#: src/Gui/KSMainWindow.cpp:171
-#, kde-format
-msgid "Export"
-msgstr "Exporteren"
-
-#: src/Gui/KSMainWindow.cpp:192
-#, kde-format
-msgid "Open Default Screenshots Folder"
-msgstr "Standaard map voor schermafdrukken openen"
-
-#: src/Gui/KSMainWindow.cpp:196
-#, kde-format
-msgid "Record Screen"
-msgstr "Scherm opnemen"
-
-#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
-#, kde-format
-msgid "Copy Image to Clipboard"
-msgstr "Afbeelding naar klembord kopiëren"
-
-#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
-#, kde-format
-msgid "Copy Location to Clipboard"
-msgstr "Locatie naar klembord kopiëren"
-
-#: src/Gui/KSMainWindow.cpp:255
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Map openen waarin het zich bevindt"
-
-#: src/Gui/KSMainWindow.cpp:301
-#, kde-format
-msgid "Save As..."
-msgstr "Opslaan als..."
-
-#: src/Gui/KSMainWindow.cpp:367
-#, kde-format
-msgctxt "@title:window"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 seconde"
-msgstr[1] "%1 seconden"
-
-#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
-#, kde-format
-msgctxt "@title:window Unsaved Screenshot"
-msgid "Unsaved[*]"
-msgstr "Onopgeslagen[*]"
-
-#: src/Gui/KSMainWindow.cpp:506
-#, kde-format
-msgid "There was a problem sharing the image: %1"
-msgstr "Er deed zich een fout voor bij het delen van de afbeelding: %1"
-
-#: src/Gui/KSMainWindow.cpp:509
-#, kde-format
-msgid "Image shared"
-msgstr "Afbeelding gedeeld"
-
-#: src/Gui/KSMainWindow.cpp:511
-#, kde-format
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
+msgid "Ellipse"
 msgstr ""
-"De gedeelde koppeling naar afbeelding (<a href=\"%1\">%1</a>) is naar het "
-"klembord gekopieerd."
 
-#: src/Gui/KSMainWindow.cpp:545
+#: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "De schermafdruk is naar het klembord gekopieerd."
-
-#: src/Gui/KSMainWindow.cpp:551
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
+msgid "Pixelate"
 msgstr ""
-"De schermafdruk is opgeslagen als (<a href=\"%1\">%2</a>) en zijn locatie is "
-"naar het klembord gekopieerd."
 
-#: src/Gui/KSMainWindow.cpp:559
+#: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgid "Blur"
 msgstr ""
-"Kon geen schermafdruk maken. Rapporteer deze bug hier: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">een bugrapport over spectacle "
-"maken</a>"
 
-#: src/Gui/KSMainWindow.cpp:569
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
-msgid "Ready to take a screenshot"
-msgstr "Gereed om een schermafdruk te maken"
-
-#: src/Gui/KSMainWindow.cpp:586
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "De schermafdruk is opgeslagen als <a href=\"%1\">%2</a>."
-
-#: src/Gui/KSMainWindow.cpp:596
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgid "Text"
 msgstr ""
-"De schermafdruk is gekopieerd naar het klembord en opgeslagen als <a href="
-"\"%1\">%2</a>."
 
-#: src/Gui/KSMainWindow.cpp:692
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
-msgctxt "@action:button"
-msgid "Annotate"
-msgstr "Annotatie maken"
+msgid "Number"
+msgstr ""
 
-#: src/Gui/KSMainWindow.cpp:704
-#, kde-format
-msgctxt "@action:button"
-msgid "Annotation Done"
-msgstr "Annotatie maken gereed"
-
-#: src/Gui/KSWidget.cpp:47
-#, kde-format
-msgid "<b>Capture Mode</b>"
+#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
 msgstr "<b>Opnamemodus</b>"
 
-#: src/Gui/KSWidget.cpp:63
-#, kde-format
-msgid "No Delay"
-msgstr "Geen vertraging"
+#: src/Gui/CaptureOptionsSidebarContents.qml:52
+#: src/Gui/MainToolBarContents.qml:130
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgid "Options"
+msgstr "Opslag-opties"
 
-#: src/Gui/KSWidget.cpp:67
-#, kde-format
-msgid "On Click"
-msgstr "Bij klik"
-
-#: src/Gui/KSWidget.cpp:68
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Wacht op een muisklik alvorens een schermafdruk te nemen"
-
-#: src/Gui/KSWidget.cpp:77
-#, kde-format
-msgid "Area:"
-msgstr "Gebied:"
-
-#: src/Gui/KSWidget.cpp:78
-#, kde-format
-msgid "Delay:"
-msgstr "Vertraging:"
-
-#: src/Gui/KSWidget.cpp:83
-#, kde-format
-msgid "<b>Options</b>"
-msgstr "<b>Opties</b>"
-
-#: src/Gui/KSWidget.cpp:85
+#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Muisaanwijzer ook meenemen"
 
-#: src/Gui/KSWidget.cpp:86
+#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "De muiscursor in de schermafdruk tonen"
 
-#: src/Gui/KSWidget.cpp:89
+#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Venstertitelbalk en randen meenemen"
 
-#: src/Gui/KSWidget.cpp:90
+#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
+#: src/Gui/OptionsMenu.cpp:83
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -446,12 +375,13 @@ msgstr ""
 "De titelbalk, de knoppen minimaliseren/maximaliseren/sluiten en de "
 "vensterrand van het venster tonen"
 
-#: src/Gui/KSWidget.cpp:94
+#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
+#: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Opname van alleen de huidige pop-up"
 
-#: src/Gui/KSWidget.cpp:96
+#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -461,25 +391,225 @@ msgstr ""
 "tekstballon, etc). Indien uitgeschakeld, zal de pop-up opgenomen worden "
 "samen met het hoofdvenster"
 
-#: src/Gui/KSWidget.cpp:101
+#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
+#: src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Afsluiten na handmatig opslaan of kopiëren"
 
-#: src/Gui/KSWidget.cpp:102
+#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
+#: src/Gui/OptionsMenu.cpp:109
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Spectacle afsluiten na handmatig opslaan of kopiëren van de afbeelding"
 
-#: src/Gui/KSWidget.cpp:112
+#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
+#: src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Vertraging:"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
+#, kde-format
+msgid "On Click"
+msgstr "Bij klik"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
+#: src/Gui/MainToolBarContents.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
+msgstr[0] "%1 seconde"
+msgstr[1] "%1 seconden"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
 msgid "Take a New Screenshot"
 msgstr "Een nieuwe schermafdruk maken"
 
-#: src/Gui/KSWidget.cpp:116
+#: src/Gui/CopiedMessage.qml:13
 #, kde-format
-msgid "Cancel"
-msgstr "Annuleren"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "De schermafdruk is naar het klembord gekopieerd."
+
+#: src/Gui/DelaySpinBox.qml:17
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "Geen vertraging"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " seconde"
+msgstr[1] " seconden"
+
+#: src/Gui/DelaySpinBox.qml:28 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " seconden"
+
+#: src/Gui/DialogPage.qml:52
+#, fuzzy, kde-format
+#| msgid "Take a new Screenshot"
+msgid "Take a new screenshot"
+msgstr "Een nieuwe schermafdruk maken"
+
+#: src/Gui/DialogPage.qml:95
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Modes"
+msgstr "<b>Opnamemodus</b>"
+
+#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:157
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "Wacht op een muisklik alvorens een schermafdruk te nemen"
+
+#: src/Gui/DialogPage.qml:183
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+msgstr ""
+"Maak alleen een opname van het huidige pop-up venster (zoals een menu, "
+"tekstballon, etc). Indien uitgeschakeld, zal de pop-up opgenomen worden "
+"samen met het hoofdvenster"
+
+#: src/Gui/DialogPage.qml:204
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#, kde-format
+msgid "Help"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:44
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Standaard map voor schermafdrukken openen"
+
+#: src/Gui/ExportMenu.cpp:106
+#, kde-format
+msgid "Other Application..."
+msgstr "Ander programma..."
+
+#: src/Gui/ExportMenu.cpp:139
+#, kde-format
+msgid "Share"
+msgstr "Delen"
+
+#: src/Gui/ImageView.qml:338
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ImageView.qml:352
+#, kde-format
+msgid "Image Zoom"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#, kde-format
+msgid "Save"
+msgstr "Opslaan"
+
+#: src/Gui/MainToolBarContents.qml:66
+#, kde-format
+msgid "Save As..."
+msgstr "Opslaan als..."
+
+#: src/Gui/MainToolBarContents.qml:77
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:83
+#, kde-format
+msgid "Export"
+msgstr "Exporteren"
+
+#: src/Gui/MainToolBarContents.qml:96
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Annotation Done"
+msgid "Show Annotation Tools"
+msgstr "Annotatie maken gereed"
+
+#: src/Gui/MainToolBarContents.qml:119
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "New Screenshot"
+msgstr "Een nieuwe schermafdruk maken"
+
+#: src/Gui/MainToolBarContents.qml:142
+#, kde-format
+msgid "Configure..."
+msgstr "Configureren..."
+
+#: src/Gui/OptionsMenu.cpp:123
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture On Click"
+msgstr "Bij klik"
+
+#: src/Gui/OptionsMenu.cpp:143
+#, kde-format
+msgid "No Delay"
+msgstr "Geen vertraging"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"De schermafdruk is gekopieerd naar het klembord en opgeslagen als <a href="
+"\"%1\">%2</a>."
+
+#: src/Gui/SavedAndLocationCopied.qml:8
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"De schermafdruk is opgeslagen als (<a href=\"%1\">%2</a>) en zijn locatie is "
+"naar het klembord gekopieerd."
+
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "De schermafdruk is opgeslagen als <a href=\"%1\">%2</a>."
+
+#: src/Gui/SavedMessage.qml:19
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Map openen waarin het zich bevindt"
+
+#: src/Gui/ScreenshotFailedMessage.qml:12
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"Kon geen schermafdruk maken. Rapporteer deze bug hier: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">een bugrapport over spectacle "
+"maken</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -487,19 +617,19 @@ msgstr "Annuleren"
 msgid "When launching Spectacle:"
 msgstr "Bij starten van Spectacle:"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
 msgstr "Schermafdruk van volledig scherm nemen"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Use last-used capture mode"
 msgstr "De laatst gebruikte opnamemodus gebruiken"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
@@ -683,30 +813,25 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
 #, kde-format
 msgid "General"
 msgstr "Algemeen"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
-msgid "Save"
-msgstr "Opslaan"
-
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
 #, kde-format
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#. i18n: ectx: label, entry (onLaunchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Wat doen wanneer Spectacle gestart wordt."
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -715,20 +840,20 @@ msgstr ""
 "al actief is"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Schermafdruk automatisch opslaan nadat deze is genomen"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
 "Klembordactie die uitgevoerd moet worden na het nemen van een schermafdruk"
 
-#. i18n: ectx: label, entry (useLightMaskColour), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr ""
@@ -736,13 +861,13 @@ msgstr ""
 "gebied"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "Of een vergrootglas wordt getoond in de selectie van een gebied"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:56
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -752,132 +877,336 @@ msgstr ""
 "loslaten van de muis "
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Of opname-instructies getoond worden in de selectie van een gebied"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Het laatste rechthoekige gebied onthouden"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Het laatste gebruikte gebied dat de gebruiker heeft geselecteerd"
 
-#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Schermafdruk maken bij klikken"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:85
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Of de muiscursor in de schermafdruk wordt meegenomen"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:89
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Of de vensterdecoraties worden meegenomen in de schermafdruk"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Alleen het huidige pop-up-menu vangen"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:97
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Afsluiten na opslaan of kopiëren van een afbeelding"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:101
 #, kde-format
 msgid "Delay"
 msgstr "Vertraging"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Default filename"
 msgstr "Standaard bestandsnaam"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Compressiekwaliteit voor bestandsformaat met verlies"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Default save image format"
 msgstr "Standaard opslagformaat van afbeelding"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "De standaard gebruikte bestandsnaam bij opslaan"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:132
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Het pad naar het laatst opgeslagen bestand"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Laatste pad gebruikt voor actie \"opslaan als\""
 
-#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
-#, kde-format
-msgid "The last used save mode"
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The last used save mode"
+msgid "The last used annotation tool type"
 msgstr "De laatst gebruikte opslagmodus"
 
-#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
-msgid "The last used copy mode"
-msgstr "De laatst gebruikte kopieermodus"
+msgid "Stroke width for freehand annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:30
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
-msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " seconde"
-msgstr[1] " seconden"
+msgid "Stroke width for highlighter annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:32
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
-msgctxt "Decimal number of seconds"
-msgid " seconds"
-msgstr " seconden"
+msgid "Stroke width for line annotation tool"
+msgstr ""
 
-#: src/Main.cpp:41
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:173
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#, kde-format
+msgid "Font for annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#, kde-format
+msgid "Font color for annotations"
+msgstr ""
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid "Image shared"
+msgstr "Afbeelding gedeeld"
+
+#: src/Gui/SharedMessage.qml:14
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"De gedeelde koppeling naar afbeelding (<a href=\"%1\">%1</a>) is naar het "
+"klembord gekopieerd."
+
+#: src/Gui/ShareErrorMessage.qml:13
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Er deed zich een fout voor bij het delen van de afbeelding: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Schermafdruk maken:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Nieuwe rechthoek voor selectie maken:"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Rechthoek voor selectie verplaatsen:"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Rechthoek voor selectie van grootte veranderen"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "Selectie resetten:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "Annuleren:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Linker-klik loslaten"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Dubbelklik"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Enter"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Buiten rechthoek voor selectie slepen"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Shift: vergrootglas"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Binnen rechthoek voor selectie slepen"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Pijl-toetsen"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Shift: in stappen van 1 pixel verplaatsen"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Hendels verslepen"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Pijltjestoetsen + Alt"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Shift: in stappen van 1 pixel van grootte wijzigen"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Rechter-klik"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Escape"
+
+#: src/Gui/SpectacleWindow.cpp:132
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 seconde"
+msgstr[1] "%1 seconden"
+
+#: src/Gui/SpectacleWindow.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@title:window Unsaved Screenshot"
+#| msgid "Unsaved[*]"
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "Onopgeslagen[*]"
+
+#: src/Gui/UndoRedoGroup.qml:32
+#, kde-format
+msgid "Undo"
+msgstr ""
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr ""
+
+#: src/Main.cpp:40
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:43
+#: src/Main.cpp:42
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE-programma voor schermafdrukken"
 
-#: src/Main.cpp:45
+#: src/Main.cpp:44
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
@@ -894,128 +1223,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: src/QuickEditor/QuickEditor.cpp:61
-#, kde-format
-msgid ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-msgstr ""
-"Klik en slepen om een rechthoek voor selectie te tekenen\n"
-"of druk op Esc om te annuleren"
-
-#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
-#, kde-format
-msgid "Take Screenshot:"
-msgstr "Schermafdruk maken:"
-
-#: src/QuickEditor/QuickEditor.cpp:717
-#, kde-format
-msgctxt "Mouse action"
-msgid "Release left-click"
-msgstr "Linker-klik loslaten"
-
-#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Enter"
-msgstr "Enter"
-
-#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
-#, kde-format
-msgid "Create new selection rectangle:"
-msgstr "Nieuwe rechthoek voor selectie maken:"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag outside selection rectangle"
-msgstr "Buiten rechthoek voor selectie slepen"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Magnifier"
-msgstr "+ Shift: vergrootglas"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgid "Cancel:"
-msgstr "Annuleren:"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Escape"
-msgstr "Escape"
-
-#: src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Mouse action"
-msgid "Double-click"
-msgstr "Dubbelklik"
-
-#: src/QuickEditor/QuickEditor.cpp:729
-#, kde-format
-msgid "Move selection rectangle:"
-msgstr "Rechthoek voor selectie verplaatsen:"
-
-#: src/QuickEditor/QuickEditor.cpp:730
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag inside selection rectangle"
-msgstr "Binnen rechthoek voor selectie slepen"
-
-#: src/QuickEditor/QuickEditor.cpp:731
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys"
-msgstr "Pijl-toetsen"
-
-#: src/QuickEditor/QuickEditor.cpp:732
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: in stappen van 1 pixel verplaatsen"
-
-#: src/QuickEditor/QuickEditor.cpp:733
-#, kde-format
-msgid "Resize selection rectangle:"
-msgstr "Rechthoek voor selectie van grootte veranderen"
-
-#: src/QuickEditor/QuickEditor.cpp:734
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag handles"
-msgstr "Hendels verslepen"
-
-#: src/QuickEditor/QuickEditor.cpp:735
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys + Alt"
-msgstr "Pijltjestoetsen + Alt"
-
-#: src/QuickEditor/QuickEditor.cpp:736
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: in stappen van 1 pixel van grootte wijzigen"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgid "Reset selection:"
-msgstr "Selectie resetten:"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgctxt "Mouse action"
-msgid "Right-click"
-msgstr "Rechter-klik"
-
-#: src/QuickEditor/QuickEditor.cpp:923
-#, kde-format
-msgid "%1×%2"
-msgstr "%1×%2"
-
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1026,89 +1233,68 @@ msgstr "Venster onder cursor opnemen"
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle starten zonder opnemen"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Schermafdrukopname is geannuleerd of mislukt"
 
-#: src/SpectacleCore.cpp:454
-#, kde-format
-msgctxt "The entire screen area was captured, heading"
-msgid "Full Screen Captured"
-msgstr "Volledig scherm opgenomen"
-
-#: src/SpectacleCore.cpp:457
-#, kde-format
-msgctxt "The current screen was captured, heading"
-msgid "Current Screen Captured"
-msgstr "Huidig scherm opgenomen"
-
-#: src/SpectacleCore.cpp:460
-#, kde-format
-msgctxt "The active window was captured, heading"
-msgid "Active Window Captured"
-msgstr "Actief venster opgenomen"
-
-#: src/SpectacleCore.cpp:464
-#, kde-format
-msgctxt "The window under the mouse was captured, heading"
-msgid "Window Under Cursor Captured"
-msgstr "Venster onder muiscursor opgenomen"
-
-#: src/SpectacleCore.cpp:467
-#, kde-format
-msgctxt "A rectangular region was captured, heading"
-msgid "Rectangular Region Captured"
-msgstr "Rechthoekig gebied opgenomen"
-
-#: src/SpectacleCore.cpp:477
-#, kde-format
-msgid "A screenshot was copied to your clipboard."
+#: src/SpectacleCore.cpp:662
+#, fuzzy, kde-format
+#| msgid "A screenshot was copied to your clipboard."
+msgid "A screenshot was saved to your clipboard."
 msgstr "Een schermafdruk is gekopieerd naar uw klembord."
 
-#: src/SpectacleCore.cpp:479
-#, kde-format
+#: src/SpectacleCore.cpp:664
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been copied to your clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
-"has been copied to your clipboard."
+"has been saved to your clipboard."
 msgstr ""
 "De schermafdruk is opgeslagen als '%1'naar '%2' en het bestandspad van de "
 "schermafdruk is naar het klembord gekopieerd."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Een schermafdruk is opgenomen en opgeslagen als '%1' in uw map Afbeeldingen."
 
-#: src/SpectacleCore.cpp:485
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Een schermafdruk is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Openen"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgid "Annotate"
+msgstr "Annotatie maken"
+
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Opname van het gehele bureaublad (standaard)"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Opname van de huidige monitor"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Capture the active window"
 msgstr "Opname van het actieve venster"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1117,7 +1303,7 @@ msgstr ""
 "Opname van het huidige venster onder de cursor, inclusief hoofdvenster van "
 "pop-up-menu's"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1126,32 +1312,32 @@ msgstr ""
 "Opname van het huidige venster onder de cursor, zonder hoofdvenster van pop-"
 "up-menu's"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Opname van een rechthoekig gebied op het scherm"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spectacle starten zonder een schermafdruk te maken"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "In modus GUI beginnen (standaard)"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Een schermafdruk nemen en beëindigen zonder de GUI te tonen"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "In DBus-activeringsmodus starten"
 
-#: src/SpectacleCore.cpp:540
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1159,18 +1345,18 @@ msgstr ""
 "In achtergrondmodus, laat geen melding zien wanneer de schermafdruk is "
 "genomen"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "In achtergrondmodus, stuur afbeelding naar naar gespecificeerd bestand"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "In achtergrondmodus, vertragen alvorens de opname te maken (in milliseconden)"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1179,39 +1365,115 @@ msgstr ""
 "In achtergrondmodus, kopieer schermafdrukafbeelding naar klembord, tenzij -o "
 "ook wordt gebruikt."
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "In achtergrondmodus, kopieer bestandspad van schermafdruk naar klembord"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Wacht op een klik alvorens een schermafdruk te nemen. Maakt vertraging "
 "ongeldig"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Begint een nieuw GUI-exemplaar van spectacle zonder registratie bij DBus"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "In achtergrondmodus, aanwijzer meenemen in de schermafdruk"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "In achtergrondmodus, decoraties niet meenemen in de schermafdruk"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Bestaand schermafdrukbestand openen en bewerken"
+
+#~ msgid "Full Screen (All Monitors)"
+#~ msgstr "Volledig scherm (alle monitoren)"
+
+#~ msgid "Full Screen (All Monitors, scaled)"
+#~ msgstr "Volledig scherm (alle monitoren, geschaald)"
+
+#~ msgid "Image Size: %1x%2 pixels"
+#~ msgstr "Afbeeldingsformaat: %1x%2 pixels"
+
+#~ msgid "Change Spectacle's settings."
+#~ msgstr "Instellingen van Spectacle wijzigen."
+
+#~ msgid "Add annotation to the screenshot"
+#~ msgstr "Annotatie toevoegen aan de schermafdruk"
+
+#~ msgid "Tools"
+#~ msgstr "Hulpmiddelen"
+
+#~ msgid "Record Screen"
+#~ msgstr "Scherm opnemen"
+
+#~ msgid "Copy Image to Clipboard"
+#~ msgstr "Afbeelding naar klembord kopiëren"
+
+#~ msgid "Copy Location to Clipboard"
+#~ msgstr "Locatie naar klembord kopiëren"
+
+#~ msgid "Ready to take a screenshot"
+#~ msgstr "Gereed om een schermafdruk te maken"
+
+#~ msgctxt "@action:button"
+#~ msgid "Annotate"
+#~ msgstr "Annotatie maken"
+
+#~ msgid "Area:"
+#~ msgstr "Gebied:"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Opties</b>"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"
+
+#~ msgid "The last used copy mode"
+#~ msgstr "De laatst gebruikte kopieermodus"
+
+#~ msgid ""
+#~ "Click and drag to draw a selection rectangle,\n"
+#~ "or press Esc to quit"
+#~ msgstr ""
+#~ "Klik en slepen om een rechthoek voor selectie te tekenen\n"
+#~ "of druk op Esc om te annuleren"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "The entire screen area was captured, heading"
+#~ msgid "Full Screen Captured"
+#~ msgstr "Volledig scherm opgenomen"
+
+#~ msgctxt "The current screen was captured, heading"
+#~ msgid "Current Screen Captured"
+#~ msgstr "Huidig scherm opgenomen"
+
+#~ msgctxt "The active window was captured, heading"
+#~ msgid "Active Window Captured"
+#~ msgstr "Actief venster opgenomen"
+
+#~ msgctxt "The window under the mouse was captured, heading"
+#~ msgid "Window Under Cursor Captured"
+#~ msgstr "Venster onder muiscursor opgenomen"
+
+#~ msgctxt "A rectangular region was captured, heading"
+#~ msgid "Rectangular Region Captured"
+#~ msgstr "Rechthoekig gebied opgenomen"
 
 #~ msgid "More Online Services"
 #~ msgstr "Meer online-services"
@@ -1453,9 +1715,6 @@ msgstr "Bestaand schermafdrukbestand openen en bewerken"
 
 #~ msgid "Application Preferences"
 #~ msgstr "Voorkeuren van de toepassing"
-
-#~ msgid "Save Options"
-#~ msgstr "Opslag-opties"
 
 #~ msgid "Open With..."
 #~ msgstr "Openen met..."

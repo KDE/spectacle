@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:44+0000\n"
+"POT-Creation-Date: 2022-12-08 00:43+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -43,12 +43,48 @@ msgstr "Aktiivse akna pildistamine"
 msgid "Capture Rectangular Region"
 msgstr "Ristkülikukujulise ala pildistamine"
 
-#: src/ExportManager.cpp:308
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Ristkülikukujuline ala"
+
+#: src/CaptureModeModel.cpp:102
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgid "All Screens"
+msgstr "Täisekraan"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "Täisekraan"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:116
+#, kde-format
+msgid "Current Screen"
+msgstr "Aktiivne ekraan"
+
+#: src/CaptureModeModel.cpp:123
+#, kde-format
+msgid "Active Window"
+msgstr "Aktiivne aken"
+
+#: src/CaptureModeModel.cpp:130
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Aken kursori all"
+
+#: src/ExportManager.cpp:310
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ei suuda pilti kirjutada: %1"
 
-#: src/ExportManager.cpp:323
+#: src/ExportManager.cpp:325
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -58,12 +94,12 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest kataloogi loomine nurjus:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:335
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekraanipildi salvestamine nurjus. Tõrge faili kirjutamisel."
 
-#: src/ExportManager.cpp:353
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -73,28 +109,28 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest võrgukataloogi loomine nurjus:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:364 src/ExportManager.cpp:414
+#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ekraanipildi salvestamine nurjus. Tõrge ajutise kohaliku faili kirjutamisel."
 
-#: src/ExportManager.cpp:372
+#: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Pildi salvestamine nurjus. Faili ei saanud kaugasukohta üles laadida."
 
-#: src/ExportManager.cpp:421
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekraanipildi salvestamine nurjus. Salvestatav failinimi on vigane."
 
-#: src/ExportManager.cpp:466 src/ExportManager.cpp:525
+#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Tühja ekraanipilti ei saa salvestada."
 
-#: src/ExportManager.cpp:577
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Trükkimine nurjus. Printerit ei õnnestunud initsialiseerida."
@@ -187,156 +223,360 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Järjestikune nummerdamine, piiratud N kohaga"
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
-msgid "Full Screen"
-msgstr "Täisekraan"
+msgid "Stroke:"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
-msgid "Full Screen (All Monitors)"
-msgstr "Täisekraan (kõik monitorid)"
+msgid "Stroke Width"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:133
+#: src/Gui/AnnotationOptionsToolBarContents.qml:99
+#, kde-format
+msgid "Stroke Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:139
+#, kde-format
+msgid "Fill:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:185
+#, kde-format
+msgid "Font:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
+#, kde-format
+msgid "Font Color"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:253
+#, kde-format
+msgid "Number:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#, kde-format
+msgid "Number for number annotations"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:65
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:72
+#, kde-format
+msgid "Select"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:80
+#, kde-format
+msgid "Freehand"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:87
+#, kde-format
+msgid "Highlighter"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:94
+#, kde-format
+msgid "Line"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:101
 #, fuzzy, kde-format
-#| msgid "Full Screen (All Monitors)"
-msgid "Full Screen (All Monitors, scaled)"
-msgstr "Täisekraan (kõik monitorid)"
+#| msgctxt "Keyboard action"
+#| msgid "Arrow keys"
+msgid "Arrow"
+msgstr "Nooleklahvidega"
 
-#: src/Gui/CaptureAreaComboBox.cpp:137
-#, kde-format
-msgid "Rectangular Region"
+#: src/Gui/AnnotationsToolBarContents.qml:108
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Rectangle"
 msgstr "Ristkülikukujuline ala"
 
-#: src/Gui/CaptureAreaComboBox.cpp:140
+#: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
-msgid "Current Screen"
-msgstr "Aktiivne ekraan"
+msgid "Ellipse"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:143
+#: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
-msgid "Active Window"
-msgstr "Aktiivne aken"
+msgid "Pixelate"
+msgstr ""
 
-#: src/Gui/CaptureAreaComboBox.cpp:146
+#: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
-msgid "Window Under Cursor"
-msgstr "Aken kursori all"
+msgid "Blur"
+msgstr ""
 
-#: src/Gui/ExportMenu.cpp:89
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
-msgid "Other Application..."
-msgstr "Muu rakendus ..."
+msgid "Text"
+msgstr ""
 
-#: src/Gui/ExportMenu.cpp:112
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
-msgid "Share"
-msgstr "Jaga"
+msgid "Number"
+msgstr ""
 
-#: src/Gui/KSImageWidget.cpp:32
-#, kde-format
-msgid "Image Size: %1x%2 pixels"
-msgstr "Pildi suurus: %1x%2 pikslit"
-
-#: src/Gui/KSMainWindow.cpp:151
-#, kde-format
-msgid "Configure..."
-msgstr "Seadista ..."
-
-#: src/Gui/KSMainWindow.cpp:152
-#, kde-format
-msgid "Change Spectacle's settings."
-msgstr "Spectacle'i seadistuste muutmine."
-
-#: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
-#, kde-format
-msgid "Annotate"
-msgstr "Annoteeri"
-
-#: src/Gui/KSMainWindow.cpp:158
-#, kde-format
-msgid "Add annotation to the screenshot"
-msgstr "Lisa ekraanipildile annotatsioon"
-
-#: src/Gui/KSMainWindow.cpp:165
-#, kde-format
-msgid "Tools"
-msgstr "Tööriistad"
-
-#: src/Gui/KSMainWindow.cpp:171
-#, kde-format
-msgid "Export"
-msgstr "Eksport"
-
-#: src/Gui/KSMainWindow.cpp:192
-#, kde-format
-msgid "Open Default Screenshots Folder"
-msgstr "Ava ekraanipiltide vaikekataloog"
-
-#: src/Gui/KSMainWindow.cpp:196
-#, kde-format
-msgid "Record Screen"
-msgstr "Salvesta ekraani"
-
-#: src/Gui/KSMainWindow.cpp:215 src/Gui/KSMainWindow.cpp:314
+#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
 #, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
-msgid "Copy Image to Clipboard"
-msgstr "Kopeeritakse pilt lõikepuhvrisse"
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
+msgstr "<b>Pildistamise režiim</b>"
 
-#: src/Gui/KSMainWindow.cpp:216 src/Gui/KSMainWindow.cpp:318
+#: src/Gui/CaptureOptionsSidebarContents.qml:52
+#: src/Gui/MainToolBarContents.qml:130
 #, fuzzy, kde-format
-#| msgid "Copy Save Location to Clipboard"
-msgid "Copy Location to Clipboard"
-msgstr "Salvestamiskoha kopeerimine lõikepuhvrisse"
+#| msgid "Save Options"
+msgid "Options"
+msgstr "Salvestamisvalikud"
 
-#: src/Gui/KSMainWindow.cpp:255
+#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Open Containing Folder"
-msgstr "Ava sisaldav kataloog"
+msgid "Include mouse pointer"
+msgstr "Kaasa arvatud hiirekursor"
 
-#: src/Gui/KSMainWindow.cpp:301
+#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
-msgid "Save As..."
-msgstr "Salvesta kui ..."
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Hiirekursori näitamine ekraanipildil"
 
-#: src/Gui/KSMainWindow.cpp:367
+#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
-msgctxt "@title:window"
-msgid "%1 second"
-msgid_plural "%1 seconds"
+msgid "Include window titlebar and borders"
+msgstr "Kaasa arvatud akna tiitliribad ja piirded"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Näidatakse akna tiitliriba, minimeerimis-/maksimeerimis-/sulgemisnuppu ja "
+"akna piiret"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
+#: src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Ainult aktiivse hüpiku pildistamine"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Pildistatakse ainult aktiivset hüpikakent (nt. menüü, kohtspikker vms.).\n"
+" Kui see pole lubatud, siis pildistatakse hüpik koos eellasaknaga"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
+#: src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Väljumine pärast käsitsi salvestamist või kopeerimist"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr ""
+"Spectacle'i töö lõpetamine pärast pildi käsitsi salvestamist või kopeerimist"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
+#: src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Viivitus:"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
+#, kde-format
+msgid "On Click"
+msgstr "Klõpsamisel"
+
+#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
+#: src/Gui/MainToolBarContents.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekundit"
 
-#: src/Gui/KSMainWindow.cpp:395 src/Gui/KSMainWindow.cpp:628
+#: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
-msgctxt "@title:window Unsaved Screenshot"
-msgid "Unsaved[*]"
-msgstr "Salvestamata[*]"
+msgid "Take a New Screenshot"
+msgstr "Tee uus pilt"
 
-#: src/Gui/KSMainWindow.cpp:506
-#, kde-format
-msgid "There was a problem sharing the image: %1"
-msgstr "Pildi jagamisel tekkis probleem: %1"
-
-#: src/Gui/KSMainWindow.cpp:509
-#, kde-format
-msgid "Image shared"
-msgstr "Pilt on jagatud"
-
-#: src/Gui/KSMainWindow.cpp:511
-#, kde-format
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
-
-#: src/Gui/KSMainWindow.cpp:545
+#: src/Gui/CopiedMessage.qml:13
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekraanipilt kopeeriti lõikepuhvrisse."
 
-#: src/Gui/KSMainWindow.cpp:551
+#: src/Gui/DelaySpinBox.qml:17
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "Puudub"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " sekund"
+msgstr[1] " sekundit"
+
+#: src/Gui/DelaySpinBox.qml:28 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " sekundit"
+
+#: src/Gui/DialogPage.qml:52
+#, fuzzy, kde-format
+#| msgid "Take a new Screenshot"
+msgid "Take a new screenshot"
+msgstr "Tehakse uus ekraanipilt"
+
+#: src/Gui/DialogPage.qml:95
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Modes"
+msgstr "<b>Pildistamise režiim</b>"
+
+#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:157
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image"
+msgstr "Enne ekraanipildi tegemist oodatakse hiirega klõpsamist"
+
+#: src/Gui/DialogPage.qml:183
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+msgstr ""
+"Pildistatakse ainult aktiivset hüpikakent (nt. menüü, kohtspikker vms.).\n"
+" Kui see pole lubatud, siis pildistatakse hüpik koos eellasaknaga"
+
+#: src/Gui/DialogPage.qml:204
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#, kde-format
+msgid "Help"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:44
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Ava ekraanipiltide vaikekataloog"
+
+#: src/Gui/ExportMenu.cpp:106
+#, kde-format
+msgid "Other Application..."
+msgstr "Muu rakendus ..."
+
+#: src/Gui/ExportMenu.cpp:139
+#, kde-format
+msgid "Share"
+msgstr "Jaga"
+
+#: src/Gui/ImageView.qml:338
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ImageView.qml:352
+#, kde-format
+msgid "Image Zoom"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
+#, kde-format
+msgid "Save"
+msgstr "Salvestamine"
+
+#: src/Gui/MainToolBarContents.qml:66
+#, kde-format
+msgid "Save As..."
+msgstr "Salvesta kui ..."
+
+#: src/Gui/MainToolBarContents.qml:77
+#, kde-format
+msgid "Copy"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:83
+#, kde-format
+msgid "Export"
+msgstr "Eksport"
+
+#: src/Gui/MainToolBarContents.qml:96
+#, fuzzy, kde-format
+#| msgid "Annotation done"
+msgid "Show Annotation Tools"
+msgstr "Annotatsioon lisatud"
+
+#: src/Gui/MainToolBarContents.qml:119
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "New Screenshot"
+msgstr "Tee uus pilt"
+
+#: src/Gui/MainToolBarContents.qml:142
+#, kde-format
+msgid "Configure..."
+msgstr "Seadista ..."
+
+#: src/Gui/OptionsMenu.cpp:123
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture On Click"
+msgstr "Klõpsamisel"
+
+#: src/Gui/OptionsMenu.cpp:143
+#, kde-format
+msgid "No Delay"
+msgstr "Puudub"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"Ekraanipilt kopeeriti lõikepuhvrisse ja salvestati kui <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedAndLocationCopied.qml:8
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -346,7 +586,17 @@ msgid ""
 "been copied to clipboard"
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/Gui/KSMainWindow.cpp:559
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "Ekraanipilt salvestati kui <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:19
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Ava sisaldav kataloog"
+
+#: src/Gui/ScreenshotFailedMessage.qml:12
 #, kde-format
 msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
@@ -356,132 +606,6 @@ msgstr ""
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">luues Spectacle'i kohta "
 "veateate</a>"
 
-#: src/Gui/KSMainWindow.cpp:569
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
-msgid "Ready to take a screenshot"
-msgstr "Pärast ekraanipildi tegemist:"
-
-#: src/Gui/KSMainWindow.cpp:586
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Ekraanipilt salvestati kui <a href=\"%1\">%2</a>"
-
-#: src/Gui/KSMainWindow.cpp:596
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"Ekraanipilt kopeeriti lõikepuhvrisse ja salvestati kui <a href=\"%1\">%2</a>"
-
-#: src/Gui/KSMainWindow.cpp:692
-#, fuzzy, kde-format
-#| msgid "Annotate"
-msgctxt "@action:button"
-msgid "Annotate"
-msgstr "Annoteeri"
-
-#: src/Gui/KSMainWindow.cpp:704
-#, fuzzy, kde-format
-#| msgid "Annotation done"
-msgctxt "@action:button"
-msgid "Annotation Done"
-msgstr "Annotatsioon lisatud"
-
-#: src/Gui/KSWidget.cpp:47
-#, kde-format
-msgid "<b>Capture Mode</b>"
-msgstr "<b>Pildistamise režiim</b>"
-
-#: src/Gui/KSWidget.cpp:63
-#, kde-format
-msgid "No Delay"
-msgstr "Puudub"
-
-#: src/Gui/KSWidget.cpp:67
-#, kde-format
-msgid "On Click"
-msgstr "Klõpsamisel"
-
-#: src/Gui/KSWidget.cpp:68
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Enne ekraanipildi tegemist oodatakse hiirega klõpsamist"
-
-#: src/Gui/KSWidget.cpp:77
-#, kde-format
-msgid "Area:"
-msgstr "Ala"
-
-#: src/Gui/KSWidget.cpp:78
-#, kde-format
-msgid "Delay:"
-msgstr "Viivitus:"
-
-#: src/Gui/KSWidget.cpp:83
-#, kde-format
-msgid "<b>Options</b>"
-msgstr "<b>Valikud</b>"
-
-#: src/Gui/KSWidget.cpp:85
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "Kaasa arvatud hiirekursor"
-
-#: src/Gui/KSWidget.cpp:86
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "Hiirekursori näitamine ekraanipildil"
-
-#: src/Gui/KSWidget.cpp:89
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "Kaasa arvatud akna tiitliribad ja piirded"
-
-#: src/Gui/KSWidget.cpp:90
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr ""
-"Näidatakse akna tiitliriba, minimeerimis-/maksimeerimis-/sulgemisnuppu ja "
-"akna piiret"
-
-#: src/Gui/KSWidget.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Ainult aktiivse hüpiku pildistamine"
-
-#: src/Gui/KSWidget.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Pildistatakse ainult aktiivset hüpikakent (nt. menüü, kohtspikker vms.).\n"
-" Kui see pole lubatud, siis pildistatakse hüpik koos eellasaknaga"
-
-#: src/Gui/KSWidget.cpp:101
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "Väljumine pärast käsitsi salvestamist või kopeerimist"
-
-#: src/Gui/KSWidget.cpp:102
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr ""
-"Spectacle'i töö lõpetamine pärast pildi käsitsi salvestamist või kopeerimist"
-
-#: src/Gui/KSWidget.cpp:112
-#, kde-format
-msgid "Take a New Screenshot"
-msgstr "Tee uus pilt"
-
-#: src/Gui/KSWidget.cpp:116
-#, kde-format
-msgid "Cancel"
-msgstr "Loobu"
-
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, fuzzy, kde-format
@@ -489,21 +613,21 @@ msgstr "Loobu"
 msgid "When launching Spectacle:"
 msgstr "Käivita Spectacle"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, fuzzy, kde-format
 #| msgid "Take a new screenshot"
 msgid "Take full screen screenshot"
 msgstr "Tehakse uus ekraanipilt"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, fuzzy, kde-format
 #| msgid "The last used save mode"
 msgid "Use last-used capture mode"
 msgstr "Viimati kasutatud salvestusviis"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_onLaunchAction)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, fuzzy, kde-format
 #| msgid "Save screenshot automatically after it is taken"
@@ -690,62 +814,57 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:24
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
 #, kde-format
 msgid "General"
 msgstr "Üldine"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
-msgid "Save"
-msgstr "Salvestamine"
-
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:47
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
 #, kde-format
 msgid "Shortcuts"
 msgstr "Kiirklahvid"
 
-#. i18n: ectx: label, entry (onLaunchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:12
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgid "What to do when Spectacle is launched"
 msgstr "Spectacle'i töötamise ajal"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:21
+#: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr "Mida teha, kui Spectacle juba töötab ja vajutatakse trükkimise klahvi"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:30
+#: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Ekraanipilt salvestatakse tegemise järel automaatselt"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
 
-#. i18n: ectx: label, entry (useLightMaskColour), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:43
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "Kas kasutada ala valimise dialoogis heledat värvimaski"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "Kas näidata ala valimisel suurendusklaasi"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:56
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -753,134 +872,335 @@ msgid ""
 msgstr "Kas teha ekraanipilt pärast ala valimist ja hiirenupu vabastamist"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, fuzzy, kde-format
 #| msgid "Whether to show a magnifier in the region selection"
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Kas näidata ala valimisel suurendusklaasi"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Viimase ristkülikukujulise ala meeldejätmine"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:70
+#: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Viimati kasutatud kasutaja valitud ala"
 
-#. i18n: ectx: label, entry (onClickChecked), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Ekraanipildi tegemine klõpsamisel"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:85
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Kas näidata ekraanipildil hiirekursorit"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:89
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Kas näidata ekraanipildil akna dekoratsioone"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Ainult aktiivse hüpiku pildistamine"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:97
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Väljumine pärast pildi salvestamist või kopeerimist"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:101
 #, kde-format
 msgid "Delay"
 msgstr "Viivitus"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Default filename"
 msgstr "Vaikimisi failinimi"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Kadudega failivormingute tihenduse kvaliteet"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Default save image format"
 msgstr "Piltide salvestamise vaikevorming"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Vaikimisi failinimi salvestamisel"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:132
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Viimati salvestatud faili asukoht"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Viimati kasutatud \"salvesta kui\" asukoht"
 
-#. i18n: ectx: label, entry (lastUsedSaveMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
-#, kde-format
-msgid "The last used save mode"
-msgstr "Viimati kasutatud salvestusviis"
-
-#. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, fuzzy, kde-format
 #| msgid "The last used save mode"
-msgid "The last used copy mode"
+msgid "The last used annotation tool type"
 msgstr "Viimati kasutatud salvestusviis"
 
-#: src/Gui/SmartSpinBox.cpp:30
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
-msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " sekund"
-msgstr[1] " sekundit"
+msgid "Stroke width for freehand annotation tool"
+msgstr ""
 
-#: src/Gui/SmartSpinBox.cpp:32
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
-msgctxt "Decimal number of seconds"
-msgid " seconds"
-msgstr " sekundit"
+msgid "Stroke width for highlighter annotation tool"
+msgstr ""
 
-#: src/Main.cpp:41
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#, kde-format
+msgid "Stroke width for line annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:173
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#, kde-format
+msgid "Font for annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#, kde-format
+msgid "Font color for annotations"
+msgstr ""
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid "Image shared"
+msgstr "Pilt on jagatud"
+
+#: src/Gui/SharedMessage.qml:14
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
+
+#: src/Gui/ShareErrorMessage.qml:13
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Pildi jagamisel tekkis probleem: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Ekraanipildi tegemine:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Uue valikuristküliku loomine:"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Valikuristküliku liigutamine:"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Valikuristküliku suuruse muutmine:"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "Valiku lähtestamine:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "Loobumine:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Vasakklõpsu vabastamisel"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Topeltklõps"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "Enteriga"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Lohistades väljaspool valikuristkülikut"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ Shift: suurendusklaas"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Lohistades valikuristküliku sees"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Nooleklahvidega"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ Shift: liikumine 1 piksli kaupa"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Pidemeid lohistades"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Nooleklahvid + Alt"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ Shift: suuruse muutmine 1 piksli kaupa"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Paremklõpsuga"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Escape"
+
+#: src/Gui/SpectacleWindow.cpp:132
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekund"
+msgstr[1] "%1 sekundit"
+
+#: src/Gui/SpectacleWindow.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@title:window Unsaved Screenshot"
+#| msgid "Unsaved[*]"
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "Salvestamata[*]"
+
+#: src/Gui/UndoRedoGroup.qml:32
+#, kde-format
+msgid "Undo"
+msgstr ""
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr ""
+
+#: src/Main.cpp:40
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:43
+#: src/Main.cpp:42
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE ekraani pildistamise tööriist"
 
-#: src/Main.cpp:45
+#: src/Main.cpp:44
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015: Boudhayan Gupta"
@@ -897,128 +1217,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "qiilaq69@gmail.com"
 
-#: src/QuickEditor/QuickEditor.cpp:61
-#, kde-format
-msgid ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-msgstr ""
-"Klõpsa valikuristküliku joonistamise alustamiseks\n"
-"või vajuta Esc väljumiseks"
-
-#: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
-#, kde-format
-msgid "Take Screenshot:"
-msgstr "Ekraanipildi tegemine:"
-
-#: src/QuickEditor/QuickEditor.cpp:717
-#, kde-format
-msgctxt "Mouse action"
-msgid "Release left-click"
-msgstr "Vasakklõpsu vabastamisel"
-
-#: src/QuickEditor/QuickEditor.cpp:717 src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Enter"
-msgstr "Enteriga"
-
-#: src/QuickEditor/QuickEditor.cpp:719 src/QuickEditor/QuickEditor.cpp:727
-#, kde-format
-msgid "Create new selection rectangle:"
-msgstr "Uue valikuristküliku loomine:"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag outside selection rectangle"
-msgstr "Lohistades väljaspool valikuristkülikut"
-
-#: src/QuickEditor/QuickEditor.cpp:720 src/QuickEditor/QuickEditor.cpp:728
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Magnifier"
-msgstr "+ Shift: suurendusklaas"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgid "Cancel:"
-msgstr "Loobumine:"
-
-#: src/QuickEditor/QuickEditor.cpp:721 src/QuickEditor/QuickEditor.cpp:738
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Escape"
-msgstr "Escape"
-
-#: src/QuickEditor/QuickEditor.cpp:725
-#, kde-format
-msgctxt "Mouse action"
-msgid "Double-click"
-msgstr "Topeltklõps"
-
-#: src/QuickEditor/QuickEditor.cpp:729
-#, kde-format
-msgid "Move selection rectangle:"
-msgstr "Valikuristküliku liigutamine:"
-
-#: src/QuickEditor/QuickEditor.cpp:730
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag inside selection rectangle"
-msgstr "Lohistades valikuristküliku sees"
-
-#: src/QuickEditor/QuickEditor.cpp:731
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys"
-msgstr "Nooleklahvidega"
-
-#: src/QuickEditor/QuickEditor.cpp:732
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: liikumine 1 piksli kaupa"
-
-#: src/QuickEditor/QuickEditor.cpp:733
-#, kde-format
-msgid "Resize selection rectangle:"
-msgstr "Valikuristküliku suuruse muutmine:"
-
-#: src/QuickEditor/QuickEditor.cpp:734
-#, kde-format
-msgctxt "Mouse action"
-msgid "Drag handles"
-msgstr "Pidemeid lohistades"
-
-#: src/QuickEditor/QuickEditor.cpp:735
-#, kde-format
-msgctxt "Keyboard action"
-msgid "Arrow keys + Alt"
-msgstr "Nooleklahvid + Alt"
-
-#: src/QuickEditor/QuickEditor.cpp:736
-#, kde-format
-msgctxt "Keyboard action"
-msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: suuruse muutmine 1 piksli kaupa"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgid "Reset selection:"
-msgstr "Valiku lähtestamine:"
-
-#: src/QuickEditor/QuickEditor.cpp:737
-#, kde-format
-msgctxt "Mouse action"
-msgid "Right-click"
-msgstr "Paremklõpsuga"
-
-#: src/QuickEditor/QuickEditor.cpp:923
-#, kde-format
-msgid "%1×%2"
-msgstr "%1×%2"
-
 #: src/ShortcutActions.cpp:58
 #, fuzzy, kde-format
 #| msgid "Window Under Cursor"
@@ -1031,90 +1229,65 @@ msgstr "Aken kursori all"
 msgid "Launch Spectacle without capturing"
 msgstr "Käivita Spectacle"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekraanipildi tegemine katkestati või nurjus"
 
-#: src/SpectacleCore.cpp:454
-#, kde-format
-msgctxt "The entire screen area was captured, heading"
-msgid "Full Screen Captured"
-msgstr "Pildistati täisekraan"
-
-#: src/SpectacleCore.cpp:457
-#, kde-format
-msgctxt "The current screen was captured, heading"
-msgid "Current Screen Captured"
-msgstr "Pildistati aktiivne ekraan"
-
-#: src/SpectacleCore.cpp:460
-#, kde-format
-msgctxt "The active window was captured, heading"
-msgid "Active Window Captured"
-msgstr "Pildistati aktiivne aken"
-
-#: src/SpectacleCore.cpp:464
-#, kde-format
-msgctxt "The window under the mouse was captured, heading"
-msgid "Window Under Cursor Captured"
-msgstr "Pildistati aken kursori all"
-
-#: src/SpectacleCore.cpp:467
-#, kde-format
-msgctxt "A rectangular region was captured, heading"
-msgid "Rectangular Region Captured"
-msgstr "Pildistati ristkülikukujuline ala"
-
-#: src/SpectacleCore.cpp:477
+#: src/SpectacleCore.cpp:662
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
-msgid "A screenshot was copied to your clipboard."
+msgid "A screenshot was saved to your clipboard."
 msgstr "Ekraanipilt salvestati sinu lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:664
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 #| "clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
-"has been copied to your clipboard."
+"has been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:485
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ava"
 
-#: src/SpectacleCore.cpp:530
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgid "Annotate"
+msgstr "Annoteeri"
+
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Kogu ekraani pildistamine (vaikimisi)"
 
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Aktiivse monitori pildistamine"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Capture the active window"
 msgstr "Aktiivse akna pildistamine"
 
-#: src/SpectacleCore.cpp:533
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1123,7 +1296,7 @@ msgstr ""
 "Parajasti kursori all asuva akna pildistamine, kaasa arvatud eellase "
 "hüpikmenüüd"
 
-#: src/SpectacleCore.cpp:534
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1132,51 +1305,51 @@ msgstr ""
 "Parajasti kursori all asuva akna pildistamine, välja arvatud eellase "
 "hüpikmenüüd"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Ekraani ristkülikukujulise ala pildistamine"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:714
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Pärast ekraanipildi tegemist:"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Käivitamine graafilises režiimis (vaikimisi)"
 
-#: src/SpectacleCore.cpp:538
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Ekraanipildi tegemine ja väljumine graafilist kasutajaliidest näitamata"
 
-#: src/SpectacleCore.cpp:539
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Käivitamine DBus-Activation režiimis"
 
-#: src/SpectacleCore.cpp:540
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "Taustarežiimis ei näidata ühtegi märguannet ekraanipildi tegemise kohta"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Taustarežiimis salvestatakse pilt määratud faili"
 
-#: src/SpectacleCore.cpp:543
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Taustarežiimis viivitus enne pildi tegemist (millisekundites)"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:723
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid ""
@@ -1184,37 +1357,125 @@ msgid ""
 "used."
 msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
 
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:724
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Klõpsu ootamine enne pilti tegemist. Tühistab viivituse"
 
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Spectacle'i uue graafilise isendi käivitamine ilma DBUS-is registreerimata"
 
-#: src/SpectacleCore.cpp:549
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Taustarežiimis kaasatakse ekraanipildile hiirekursor"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Taustarežiimis jäetakse akna dekoratsioonid ekraanipildilt välja"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""
+
+#~ msgid "Full Screen (All Monitors)"
+#~ msgstr "Täisekraan (kõik monitorid)"
+
+#, fuzzy
+#~| msgid "Full Screen (All Monitors)"
+#~ msgid "Full Screen (All Monitors, scaled)"
+#~ msgstr "Täisekraan (kõik monitorid)"
+
+#~ msgid "Image Size: %1x%2 pixels"
+#~ msgstr "Pildi suurus: %1x%2 pikslit"
+
+#~ msgid "Change Spectacle's settings."
+#~ msgstr "Spectacle'i seadistuste muutmine."
+
+#~ msgid "Add annotation to the screenshot"
+#~ msgstr "Lisa ekraanipildile annotatsioon"
+
+#~ msgid "Tools"
+#~ msgstr "Tööriistad"
+
+#~ msgid "Record Screen"
+#~ msgstr "Salvesta ekraani"
+
+#, fuzzy
+#~| msgid "Copy image to clipboard"
+#~ msgid "Copy Image to Clipboard"
+#~ msgstr "Kopeeritakse pilt lõikepuhvrisse"
+
+#, fuzzy
+#~| msgid "Copy Save Location to Clipboard"
+#~ msgid "Copy Location to Clipboard"
+#~ msgstr "Salvestamiskoha kopeerimine lõikepuhvrisse"
+
+#, fuzzy
+#~| msgid "After taking a screenshot:"
+#~ msgid "Ready to take a screenshot"
+#~ msgstr "Pärast ekraanipildi tegemist:"
+
+#, fuzzy
+#~| msgid "Annotate"
+#~ msgctxt "@action:button"
+#~ msgid "Annotate"
+#~ msgstr "Annoteeri"
+
+#~ msgid "Area:"
+#~ msgstr "Ala"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Valikud</b>"
+
+#~ msgid "Cancel"
+#~ msgstr "Loobu"
+
+#, fuzzy
+#~| msgid "The last used save mode"
+#~ msgid "The last used copy mode"
+#~ msgstr "Viimati kasutatud salvestusviis"
+
+#~ msgid ""
+#~ "Click and drag to draw a selection rectangle,\n"
+#~ "or press Esc to quit"
+#~ msgstr ""
+#~ "Klõpsa valikuristküliku joonistamise alustamiseks\n"
+#~ "või vajuta Esc väljumiseks"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "The entire screen area was captured, heading"
+#~ msgid "Full Screen Captured"
+#~ msgstr "Pildistati täisekraan"
+
+#~ msgctxt "The current screen was captured, heading"
+#~ msgid "Current Screen Captured"
+#~ msgstr "Pildistati aktiivne ekraan"
+
+#~ msgctxt "The active window was captured, heading"
+#~ msgid "Active Window Captured"
+#~ msgstr "Pildistati aktiivne aken"
+
+#~ msgctxt "The window under the mouse was captured, heading"
+#~ msgid "Window Under Cursor Captured"
+#~ msgstr "Pildistati aken kursori all"
+
+#~ msgctxt "A rectangular region was captured, heading"
+#~ msgid "Rectangular Region Captured"
+#~ msgstr "Pildistati ristkülikukujuline ala"
 
 #~ msgid "More Online Services"
 #~ msgstr "Veel võrguteenuseid"
@@ -1415,6 +1676,3 @@ msgstr ""
 
 #~ msgid "Application Preferences"
 #~ msgstr "Rakenduse eelistused"
-
-#~ msgid "Save Options"
-#~ msgstr "Salvestamisvalikud"
