@@ -83,121 +83,44 @@ EmptyPage {
         }
     }
 
-    contentItem: Row {
-        spacing: Kirigami.Units.mediumSpacing * 4
-        Column {
-            height: Math.max(implicitHeight, parent.height)
-            spacing: Kirigami.Units.mediumSpacing
-            QQC2.Label {
-                height: fontMetrics.height + topPadding + bottomPadding
-                topPadding: -fontMetrics.descent
-                verticalAlignment: Text.AlignTop
-                text: i18n("Capture Modes")
-                font.bold: true
-            }
-            Repeater {
-                model: SpectacleCore.captureModeModel
-                delegate: QQC2.DelayButton {
-                    id: button
-                    readonly property bool showCancel: Settings.captureMode === model.captureMode && SpectacleCore.captureTimeRemaining > 0
-                    width: Math.max(implicitWidth, parent.width)
-                    leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-                    rightPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-                    topPadding: Kirigami.Units.mediumSpacing
-                    bottomPadding: Kirigami.Units.mediumSpacing
-                    // Delay doesn't really matter since we set
-                    // progress directly and have no transition
-                    delay: 1
-                    transition: null
-                    progress: Settings.captureMode === model.captureMode ?
-                        SpectacleCore.captureProgress : 0
-                    icon.name: showCancel ? "dialog-cancel" : ""
-                    text: showCancel ?
-                        i18np("Cancel (%1 second)", "Cancel (%1 seconds)",
-                              Math.ceil(SpectacleCore.captureTimeRemaining / 1000))
-                        : model.display
-                    QQC2.ToolTip.text: model.shortcuts
-                    QQC2.ToolTip.visible: (hovered || pressed) && model.shortcuts.length > 0
-                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                    onClicked: if (showCancel) {
-                        SpectacleCore.cancelScreenshot()
-                    } else {
-                        Settings.captureMode = model.captureMode
-                        SpectacleCore.takeNewScreenshot()
-                    }
-                }
+    contentItem: GridLayout {
+        rowSpacing: Kirigami.Units.mediumSpacing
+        columnSpacing: Kirigami.Units.mediumSpacing * 4
+        columns: 2
+        rows: 2
+
+        Kirigami.Heading {
+            Layout.column: 0; Layout.row: 0
+            topPadding: -captureHeadingMetrics.descent
+            bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+            text: i18n("Capture Modes")
+            level: 3
+            FontMetrics {
+                id: captureHeadingMetrics
             }
         }
-        Column {
-            height: Math.max(implicitHeight, parent.height)
-            spacing: Kirigami.Units.mediumSpacing
-            // Label ToolButton ToolButton
-            QQC2.Label {
-                height: fontMetrics.height + topPadding + bottomPadding
-                topPadding: -fontMetrics.descent
-                verticalAlignment: Text.AlignTop
-                text: i18n("Capture Settings")
-                font.bold: true
-            }
-            // Label SpinBox CheckBox
-            RowLayout {
-                width: Math.max(implicitWidth, parent.width)
-                spacing: parent.spacing
-                QQC2.Label {
-                    text: i18n("Delay:")
-                }
-                DelaySpinBox {
-                    Layout.fillWidth: true
-                    enabled: !captureOnClickCheckBox.checked
-                }
-                QQC2.CheckBox {
-                    id: captureOnClickCheckBox
-                    text: i18n("On Click")
-                    enabled: Platform.supportedShutterModes === Platform.Immediate | Platform.OnClick
-                    QQC2.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image")
-                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                    QQC2.ToolTip.visible: hovered || pressed
-                    checked: Platform.supportedShutterModes & Platform.OnClick && Settings.captureOnClick
-                    onToggled: Settings.captureOnClick = checked
-                }
-            }
-            // column of CheckBoxes
-            QQC2.CheckBox {
-                text: i18n("Include mouse pointer")
-                QQC2.ToolTip.text: i18n("Show the mouse cursor in the screenshot image")
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                QQC2.ToolTip.visible: hovered
-                checked: Settings.includePointer
-                onToggled: Settings.includePointer = checked
-            }
-            QQC2.CheckBox {
-                text: i18n("Include window titlebar and borders")
-                QQC2.ToolTip.text: i18n("Show the window title bar, the minimize/maximize/close buttons, and the window border")
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                QQC2.ToolTip.visible: hovered
-                checked: Settings.includeDecorations
-                onToggled: Settings.includeDecorations = checked
-            }
-            QQC2.CheckBox {
-                text: i18n("Capture the current pop-up only")
-                QQC2.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc).\n"
-                                        + "If disabled, the pop-up is captured along with the parent window")
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                QQC2.ToolTip.visible: hovered
-                checked: Settings.transientOnly
-                onToggled: Settings.transientOnly = checked
-            }
-            QQC2.CheckBox {
-                text: i18n("Quit after manual Save or Copy")
-                QQC2.ToolTip.text: i18n("Quit Spectacle after manually saving or copying the image")
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                QQC2.ToolTip.visible: hovered
-                checked: Settings.quitAfterSaveCopyExport
-                onToggled: Settings.quitAfterSaveCopyExport = checked
-            }
+
+        CaptureModeButtonsColumn {
+            Layout.column: 0; Layout.row: 1
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Layout.fillHeight: true
+        }
+
+        Kirigami.Heading {
+            Layout.column: 1; Layout.row: 0
+            topPadding: -captureHeadingMetrics.descent
+            bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+            text: i18n("Capture Settings")
+            level: 3
+        }
+
+        CaptureSettingsColumn {
+            Layout.column: 1; Layout.row: 1
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Layout.fillHeight: true
             // Button ToolButton
-            Row {
-                width: Math.max(implicitWidth, parent.width)
+            RowLayout {
+                Layout.fillWidth: true
                 spacing: parent.spacing
                 QQC2.Button {
                     icon.name: "configure"

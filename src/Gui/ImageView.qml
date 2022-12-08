@@ -30,7 +30,8 @@ EmptyPage {
     )
     readonly property real minimumHeight: header.implicitHeight
         + Math.max(annotationsToolBar.implicitHeight,
-                   footerLoader.implicitHeight)
+                   footerLoader.implicitHeight,
+                   captureOptionsLoader.implicitHeight)
 
     readonly property bool annotating: mainToolBarContents.annotationsButtonChecked
 
@@ -62,7 +63,7 @@ EmptyPage {
     AnimatedLoader { // parent is contentItem
         id: inlineMessageLoader
         anchors.left: annotationsToolBar.right
-        anchors.right: captureOptionsSidebar.left
+        anchors.right: captureOptionsLoader.left
         anchors.top: parent.top
         anchors.margins: visible ? Kirigami.Units.mediumSpacing : 0
         state: "inactive"
@@ -110,7 +111,7 @@ EmptyPage {
         id: contentPage
         anchors {
             left: footerLoader.left
-            right: captureOptionsSidebar.left
+            right: captureOptionsLoader.left
             top: inlineMessageLoader.bottom
             bottom: footerLoader.top
             topMargin: inlineMessageLoader.active ? Kirigami.Units.mediumSpacing : 0
@@ -274,25 +275,61 @@ EmptyPage {
         }
     }
 
-    QQC2.Pane { // parent is contentItem
-        id: captureOptionsSidebar
+    Loader { // parent is contentItem
+        id: captureOptionsLoader
+        visible: true
+        active: visible
         anchors {
             top: parent.top
             bottom: parent.bottom
             right: parent.right
         }
-        visible: true
+        sourceComponent: QQC2.Pane {
 
-        contentItem: CaptureOptionsSidebarContents {
-            id: captureOptionsSidebarContents
-        }
-        background: Rectangle {
-            color: Kirigami.Theme.backgroundColor
-            Kirigami.Separator {
-                anchors {
-                    left: parent.left
-                    top: parent.top
-                    bottom: parent.bottom
+            leftPadding: Kirigami.Units.mediumSpacing * 2
+                + (!mirrored ? sideBarSeparator.implicitWidth : 0)
+            rightPadding: Kirigami.Units.mediumSpacing * 2
+                + (mirrored ? sideBarSeparator.implicitWidth : 0)
+            topPadding: Kirigami.Units.mediumSpacing * 2
+            bottomPadding: Kirigami.Units.mediumSpacing * 2
+
+            contentItem: Column {
+                spacing: Kirigami.Units.mediumSpacing
+                Kirigami.Heading {
+                    anchors.left: parent.left
+                    topPadding: -captureHeadingMetrics.descent
+                    bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+                    text: i18n("Take a new screenshot")
+                    level: 3
+                    FontMetrics {
+                        id: captureHeadingMetrics
+                    }
+                }
+                CaptureModeButtonsColumn {
+                    anchors.left: parent.left
+                    width: Math.max(implicitWidth, parent.width)
+                }
+                Kirigami.Heading {
+                    anchors.left: parent.left
+                    topPadding: -captureHeadingMetrics.descent + parent.spacing
+                    bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+                    text: i18n("Capture Settings")
+                    level: 3
+                }
+                CaptureSettingsColumn {
+                    anchors.left: parent.left
+                    width: parent.width
+                }
+            }
+            background: Rectangle {
+                color: Kirigami.Theme.backgroundColor
+                Kirigami.Separator {
+                    id: sideBarSeparator
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
                 }
             }
         }
@@ -301,7 +338,7 @@ EmptyPage {
     Loader {
         id: footerLoader
         anchors.left: separator.right
-        anchors.right: parent.right
+        anchors.right: captureOptionsLoader.left
         anchors.top: parent.bottom
         visible: false
         active: visible
@@ -406,7 +443,7 @@ EmptyPage {
                 anchors.top: undefined
             }
             AnchorChanges {
-                target: captureOptionsSidebar
+                target: captureOptionsLoader
                 anchors.left: parent.right
                 anchors.right: undefined
             }
@@ -430,7 +467,7 @@ EmptyPage {
                 anchors.top: parent.bottom
             }
             AnchorChanges {
-                target: captureOptionsSidebar
+                target: captureOptionsLoader
                 anchors.left: undefined
                 anchors.right: parent.right
             }
@@ -441,7 +478,7 @@ EmptyPage {
             to: "annotating"
             SequentialAnimation {
                 PropertyAction {
-                    targets: [annotationsToolBar, separator, footerLoader, captureOptionsSidebar]
+                    targets: [annotationsToolBar, separator, footerLoader]
                     property: "visible"
                     value: true
                 }
@@ -458,7 +495,7 @@ EmptyPage {
                     }
                 }
                 PropertyAction {
-                    targets: captureOptionsSidebar
+                    targets: captureOptionsLoader
                     property: "visible"
                     value: false
                 }
@@ -468,7 +505,7 @@ EmptyPage {
             to: "normal"
             SequentialAnimation {
                 PropertyAction {
-                    targets: captureOptionsSidebar
+                    targets: captureOptionsLoader
                     property: "visible"
                     value: true
                 }
