@@ -10,30 +10,7 @@ import org.kde.spectacle.private 1.0
 
 ColumnLayout {
     spacing: Kirigami.Units.mediumSpacing
-    // Label SpinBox CheckBox
-    RowLayout {
-        Layout.fillWidth: true
-        spacing: parent.spacing
-        QQC2.Label {
-            text: i18n("Delay:")
-        }
-        DelaySpinBox {
-            Layout.fillWidth: true
-            enabled: !captureOnClickCheckBox.checked
-        }
-    }
     // column of CheckBoxes
-    QQC2.CheckBox {
-        id: captureOnClickCheckBox
-        Layout.fillWidth: true
-        text: i18n("Capture on click")
-        enabled: Platform.supportedShutterModes === Platform.Immediate | Platform.OnClick
-        QQC2.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image.")
-        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC2.ToolTip.visible: hovered || pressed
-        checked: Platform.supportedShutterModes & Platform.OnClick && Settings.captureOnClick
-        onToggled: Settings.captureOnClick = checked
-    }
     QQC2.CheckBox {
         Layout.fillWidth: true
         text: i18n("Include mouse pointer")
@@ -69,5 +46,26 @@ ColumnLayout {
         QQC2.ToolTip.visible: hovered
         checked: Settings.quitAfterSaveCopyExport
         onToggled: Settings.quitAfterSaveCopyExport = checked
+    }
+    QQC2.CheckBox {
+        id: captureOnClickCheckBox
+        Layout.fillWidth: true
+        text: i18n("Capture on click")
+        enabled: Platform.supportedShutterModes === Platform.Immediate | Platform.OnClick
+        QQC2.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image.")
+        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        QQC2.ToolTip.visible: hovered || pressed
+        checked: Platform.supportedShutterModes & Platform.OnClick && Settings.captureOnClick
+        onToggled: Settings.captureOnClick = checked
+    }
+    // Label SpinBox CheckBox
+    RowLayout {
+        spacing: parent.spacing
+        QQC2.Label {
+            text: i18n("Delay:")
+        }
+        DelaySpinBox {
+            enabled: !captureOnClickCheckBox.checked
+        }
     }
 }
