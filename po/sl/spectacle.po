@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-08 00:43+0000\n"
-"PO-Revision-Date: 2022-11-18 12:04+0100\n"
+"PO-Revision-Date: 2022-12-09 09:54+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.1.1\n"
 
@@ -51,10 +51,9 @@ msgid "Rectangular Region"
 msgstr "Pravokotno območje"
 
 #: src/CaptureModeModel.cpp:102
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgid "All Screens"
-msgstr "Celotni zaslon"
+msgstr "Vsi zasloni"
 
 #: src/CaptureModeModel.cpp:102
 #, kde-format
@@ -64,7 +63,7 @@ msgstr "Celotni zaslon"
 #: src/CaptureModeModel.cpp:109
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Vsi zasloni (Umerjeni na isto velikost)"
 
 #: src/CaptureModeModel.cpp:116
 #, kde-format
@@ -232,90 +231,87 @@ msgstr "Zaporedno številčenje zapolnjeno do N mest"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
 msgid "Stroke:"
-msgstr ""
+msgstr "Zapis:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Širina zapisa"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Barva zapisa"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
 msgid "Fill:"
-msgstr ""
+msgstr "Polnilo:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:145
 #, kde-format
 msgid "Fill Color"
-msgstr ""
+msgstr "Barva polnila"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:185
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Pisava:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:213
 #, kde-format
 msgid "Font Color"
-msgstr ""
+msgstr "Barva pisave"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:253
 #, kde-format
 msgid "Number:"
-msgstr ""
+msgstr "Število:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:273
 #, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "Število za številčenje opomb"
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Nobeno"
 
 #: src/Gui/AnnotationsToolBarContents.qml:72
 #, kde-format
 msgid "Select"
-msgstr ""
+msgstr "Izberi"
 
 #: src/Gui/AnnotationsToolBarContents.qml:80
 #, kde-format
 msgid "Freehand"
-msgstr ""
+msgstr "Prostoročno"
 
 #: src/Gui/AnnotationsToolBarContents.qml:87
 #, kde-format
 msgid "Highlighter"
-msgstr ""
+msgstr "Osvetljevalnik"
 
 #: src/Gui/AnnotationsToolBarContents.qml:94
 #, kde-format
 msgid "Line"
-msgstr ""
+msgstr "Črta"
 
 #: src/Gui/AnnotationsToolBarContents.qml:101
-#, fuzzy, kde-format
-#| msgctxt "Keyboard action"
-#| msgid "Arrow keys"
+#, kde-format
 msgid "Arrow"
-msgstr "Tipke puščice"
+msgstr "Puščica"
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangle"
-msgstr "Pravokotno območje"
+msgstr "Pravokotnik"
 
 #: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "Elipsa"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
@@ -325,30 +321,28 @@ msgstr ""
 #: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
 msgid "Blur"
-msgstr ""
+msgstr "Zamegli"
 
 #: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Besedilo"
 
 #: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
 msgid "Number"
-msgstr ""
+msgstr "Število"
 
 #: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Mode"
-msgstr "<b>Način zajema</b>"
+msgstr "Način zajema"
 
 #: src/Gui/CaptureOptionsSidebarContents.qml:52
 #: src/Gui/MainToolBarContents.qml:130
-#, fuzzy, kde-format
-#| msgid "<b>Options</b>"
+#, kde-format
 msgid "Options"
-msgstr "<b>Možnosti</b>"
+msgstr "Možnosti"
 
 #: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
 #: src/Gui/OptionsMenu.cpp:70
@@ -416,16 +410,13 @@ msgstr "Ob kliku"
 
 #: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
 #: src/Gui/MainToolBarContents.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundi"
-msgstr[2] "%1 sekunde"
-msgstr[3] "%1 sekund"
+msgstr[0] "Prekliči (%1 sekunda)"
+msgstr[1] "Prekliči (%1 sekundi)"
+msgstr[2] "Prekliči (%1 sekunde)"
+msgstr[3] "Prekliči (%1 sekund)"
 
 #: src/Gui/CaptureOptionsSidebarContents.qml:124
 #, kde-format
@@ -438,8 +429,7 @@ msgid "The screenshot has been copied to the clipboard."
 msgstr "Zaslonska slika je bila kopirana v odložišče."
 
 #: src/Gui/DelaySpinBox.qml:17
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Brez zakasnitve"
@@ -461,21 +451,19 @@ msgid " seconds"
 msgstr " sekund"
 
 #: src/Gui/DialogPage.qml:52
-#, fuzzy, kde-format
-#| msgid "Take a new Screenshot"
+#, kde-format
 msgid "Take a new screenshot"
 msgstr "Zajemi novo zaslonsko sliko"
 
 #: src/Gui/DialogPage.qml:95
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Modes"
-msgstr "<b>Način zajema</b>"
+msgstr "Načini zajema"
 
 #: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
-msgstr ""
+msgstr "Nastavitve zajema"
 
 #: src/Gui/DialogPage.qml:157
 #, kde-format
@@ -483,24 +471,19 @@ msgid "Wait for a mouse click before capturing the screenshot image"
 msgstr "Počakaj na klik miške pred zajemom zaslonske slike"
 
 #: src/Gui/DialogPage.qml:183
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr ""
-"Zajemi le trenutno pojavno okno (meni, orodni namig, itd.). Če to ni "
-"omogočeno, bo pojavno okno zajeto skupaj z nadrejenim oknom"
+msgstr "Zajemi le trenutno pojavno okno (meni, orodni namig, itd.).\n"
 
 #: src/Gui/DialogPage.qml:204
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "Nastavi Spectacle…"
 
 #: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Pomoč"
 
 #: src/Gui/ExportMenu.cpp:44
 #, kde-format
@@ -520,12 +503,12 @@ msgstr "Deli"
 #: src/Gui/ImageView.qml:338
 #, kde-format
 msgid "Zoom:"
-msgstr ""
+msgstr "Zoom:"
 
 #: src/Gui/ImageView.qml:352
 #, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "Zoom slike"
 
 #: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
@@ -541,7 +524,7 @@ msgstr "Shrani kot..."
 #: src/Gui/MainToolBarContents.qml:77
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: src/Gui/MainToolBarContents.qml:83
 #, kde-format
@@ -549,17 +532,14 @@ msgid "Export"
 msgstr "Izvoz"
 
 #: src/Gui/MainToolBarContents.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Annotation Done"
+#, kde-format
 msgid "Show Annotation Tools"
-msgstr "Zabeležka dodana"
+msgstr "Prikaži orodja zabeležk"
 
 #: src/Gui/MainToolBarContents.qml:119
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "New Screenshot"
-msgstr "Zajemi novo zaslonsko sliko"
+msgstr "Nova zaslonska slika"
 
 #: src/Gui/MainToolBarContents.qml:142
 #, kde-format
@@ -567,10 +547,9 @@ msgid "Configure..."
 msgstr "Nastavi..."
 
 #: src/Gui/OptionsMenu.cpp:123
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture On Click"
-msgstr "Ob kliku"
+msgstr "Zajemi ob kliku"
 
 #: src/Gui/OptionsMenu.cpp:143
 #, kde-format
@@ -966,10 +945,9 @@ msgstr "Zadnja uporabljena pot pri akciji Shrani kot"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
-#, fuzzy, kde-format
-#| msgid "The last used save mode"
+#, kde-format
 msgid "The last used annotation tool type"
-msgstr "Zadnje uporabljen način shranjevanja"
+msgstr "Zadnje uporabljeno orodje beleženja opomb"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
@@ -977,7 +955,7 @@ msgstr "Zadnje uporabljen način shranjevanja"
 #: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja za prostoročne opombe"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -985,7 +963,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja osvetljevanja za opombe"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -993,7 +971,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja za opombe v obliki črte"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -1001,7 +979,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja za opombe v obliki puščice"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -1011,7 +989,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:204
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja za opombe v obliki pravokotnika"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -1023,7 +1001,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:212
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Širina zapisa orodja za opombe v obliki elipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1031,7 +1009,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:220
 #, kde-format
 msgid "Font for annotations"
-msgstr ""
+msgstr "Pisava za opombe"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1039,7 +1017,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "Barva pisave za opombe"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1052,7 +1030,7 @@ msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Povezava na zaslonsko sliko (<a href=\"%1\">%1</a>)  je bila kopirana v "
+"Povezava na zaslonsko sliko (<a href=\"%1\">%1</a>)  je bila kopirana na "
 "odložišče."
 
 #: src/Gui/ShareErrorMessage.qml:13
@@ -1179,22 +1157,20 @@ msgstr[2] "%1 sekunde"
 msgstr[3] "%1 sekund"
 
 #: src/Gui/SpectacleWindow.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@title:window Unsaved Screenshot"
-#| msgid "Unsaved[*]"
+#, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "Neshranjena[*]"
+msgstr "Neshranjeno"
 
 #: src/Gui/UndoRedoGroup.qml:32
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Opusti"
 
 #: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Uveljavi"
 
 #: src/Main.cpp:40
 #, kde-format
@@ -1239,22 +1215,18 @@ msgid "Screenshot capture canceled or failed"
 msgstr "Zajem slike je bil preklican ali ni uspel"
 
 #: src/SpectacleCore.cpp:662
-#, fuzzy, kde-format
-#| msgid "A screenshot was copied to your clipboard."
+#, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Posnetek zaslona je bil prekopiran v odložišče."
+msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
 
 #: src/SpectacleCore.cpp:664
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been copied to your clipboard."
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
-"bila prekopirana na vaše odložišče."
+"bilo shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:668
 #, kde-format
