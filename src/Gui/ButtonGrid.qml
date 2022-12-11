@@ -63,10 +63,7 @@ Grid {
         text: "text metrics"
         visible: false
         enabled: false
-        // NOTE: only qqc2-desktop-style and qqc2-breeze-style have showMenuArrow
-        Component.onCompleted: if (background.hasOwnProperty("showMenuArrow")) {
-            background.showMenuArrow = true
-        }
+        Accessible.role: Accessible.ButtonMenu
     }
 
     QQC2.ToolButton {

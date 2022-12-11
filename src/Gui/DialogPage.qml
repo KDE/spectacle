@@ -209,11 +209,8 @@ EmptyPage {
                     icon.name: "help-contents"
                     text: i18n("Help")
                     down: pressed || contextWindow.helpMenu.visible
+                    Accessible.role: Accessible.ButtonMenu
                     onPressed: contextWindow.helpMenu.popup(mapToGlobal(0, height))
-                    // NOTE: only qqc2-desktop-style and qqc2-breeze-style have showMenuArrow
-                    Component.onCompleted: if (background.hasOwnProperty("showMenuArrow")) {
-                        background.showMenuArrow = true
-                    }
                 }
             }
         }

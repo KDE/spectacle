@@ -82,12 +82,9 @@ ButtonGrid {
         icon.name: "document-share"
         text: i18n("Export")
         down: pressed || contextWindow.exportMenu.visible
+        Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: contextWindow.exportMenu.popup(mapToGlobal(0, y + height))
-        // NOTE: only qqc2-desktop-style and qqc2-breeze-style have showMenuArrow
-        Component.onCompleted: if (background.hasOwnProperty("showMenuArrow")) {
-            background.showMenuArrow = true
-        }
     }
 
     ToolButton {
@@ -129,12 +126,9 @@ ButtonGrid {
         icon.name: "configure"
         text: i18n("Options")
         down: pressed || contextWindow.optionsMenu.visible
+        Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: contextWindow.optionsMenu.popup(mapToGlobal(0, y + height))
-        // NOTE: only qqc2-desktop-style and qqc2-breeze-style have showMenuArrow
-        Component.onCompleted: if (background.hasOwnProperty("showMenuArrow")) {
-            background.showMenuArrow = true
-        }
     }
     ToolButton {
         visible: !root.showOptionsMenu
@@ -148,11 +142,8 @@ ButtonGrid {
         icon.name: "help-contents"
         text: i18n("Help")
         down: pressed || contextWindow.helpMenu.visible
+        Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: contextWindow.helpMenu.popup(mapToGlobal(0, y + height))
-        // NOTE: only qqc2-desktop-style and qqc2-breeze-style have showMenuArrow
-        Component.onCompleted: if (background.hasOwnProperty("showMenuArrow")) {
-            background.showMenuArrow = true
-        }
     }
 }
