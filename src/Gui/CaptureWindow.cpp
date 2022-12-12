@@ -136,9 +136,7 @@ void CaptureWindow::save()
 {
     const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
     if (hasSelection) {
-        if (!Settings::quitAfterSaveCopyExport()) {
-            accept();
-        }
+        accept();
         SpectacleWindow::save();
     }
 }
@@ -147,9 +145,7 @@ void CaptureWindow::saveAs()
 {
     const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
     if (hasSelection) {
-        if (!Settings::quitAfterSaveCopyExport()) {
-            accept();
-        }
+        accept();
         SpectacleWindow::saveAs();
     }
 }
@@ -158,9 +154,7 @@ void CaptureWindow::copyImage()
 {
     const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
     if (hasSelection) {
-        if (!Settings::quitAfterSaveCopyExport()) {
-            accept();
-        }
+        accept();
         SpectacleWindow::copyImage();
     }
 }
@@ -169,9 +163,7 @@ void CaptureWindow::copyLocation()
 {
     const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
     if (hasSelection) {
-        if (!Settings::quitAfterSaveCopyExport()) {
-            accept();
-        }
+        accept();
         SpectacleWindow::copyLocation();
     }
 }

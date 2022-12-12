@@ -121,6 +121,9 @@ void SpectacleCore::init()
     connect(this, &SpectacleCore::grabDone, this, [this](const QPixmap &pixmap){
         // only clear images because we're transitioning from rectangle capture to image view.
         m_annotationDocument->clearImages();
+        if (m_startMode != StartMode::Gui) {
+            SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        }
         onScreenshotUpdated(pixmap);
     });
 
@@ -563,6 +566,7 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
     switch (m_startMode) {
     case StartMode::Background:
     case StartMode::DBus: {
+        syncExportPixmap();
         if (m_saveToOutput || !m_copyImageToClipboard
             || (Settings::autoSaveImage() && !m_saveToOutput)) {
             m_saveToOutput = Settings::autoSaveImage();
