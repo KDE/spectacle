@@ -742,7 +742,10 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         d->handleRadius = s_handleRadiusTouch;
     }
 
-    if (event->button() & Qt::LeftButton) {
+    if (event->button() & (Qt::LeftButton | Qt::RightButton)) {
+        if (event->button() & Qt::RightButton) {
+            d->selection->setRect(QRect());
+        }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
         d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft();
@@ -880,6 +883,7 @@ void SelectionEditor::mouseReleaseEvent(QQuickItem *item, QMouseEvent *event)
 {
     switch (event->button()) {
     case Qt::LeftButton:
+    case Qt::RightButton:
         if (d->dragLocation == MouseLocation::Outside && Settings::useReleaseToCapture()) {
             acceptSelection();
             return;
@@ -888,9 +892,6 @@ void SelectionEditor::mouseReleaseEvent(QQuickItem *item, QMouseEvent *event)
         if (d->dragLocation == MouseLocation::Inside) {
             item->setCursor(Qt::OpenHandCursor);
         }
-        break;
-    case Qt::RightButton:
-        d->selection->setRect(QRect());
         break;
     default:
         break;
