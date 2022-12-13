@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-13 00:53+0000\n"
 "PO-Revision-Date: 2022-12-11 23:02+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -352,87 +352,7 @@ msgstr "Текст"
 msgid "Number"
 msgstr "Число"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, kde-format
-msgid "Capture Mode"
-msgstr "Режим съёмки"
-
-# BUGME: please add @title:window; please add ellipsis to the action name --aspotashev
-#: src/Gui/CaptureOptionsSidebarContents.qml:52
-#: src/Gui/MainToolBarContents.qml:130
-#, kde-format
-msgid "Options"
-msgstr "Параметры"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
-#: src/Gui/OptionsMenu.cpp:70
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "Включая курсор мыши"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "Добавить указатель мыши на снимок экрана"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
-#: src/Gui/OptionsMenu.cpp:82
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "Включая заголовок и границы окна"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
-#: src/Gui/OptionsMenu.cpp:83
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr ""
-"Включить в снимок заголовок окна, кнопки в заголовке («свернуть», "
-"«распахнуть», «закрыть» и другие) и границы окна"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
-#: src/Gui/OptionsMenu.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Захватить только текущее всплывающее окно"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Захватить только текущее всплывающее окно (например, меню, всплывающую "
-"подсказку и тому подобное).\n"
-"Если выключено, то в снимок будет также включено родительское окно."
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
-#: src/Gui/OptionsMenu.cpp:108
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "Выйти после сохранения или копирования"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
-#: src/Gui/OptionsMenu.cpp:109
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
-#: src/Gui/OptionsMenu.cpp:138
-#, kde-format
-msgid "Delay:"
-msgstr "Задержка:"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
-#, kde-format
-msgid "On Click"
-msgstr "По щелчку"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
-#: src/Gui/MainToolBarContents.qml:106
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -441,10 +361,74 @@ msgstr[1] "Отмена (%1 секунды)"
 msgstr[2] "Отмена (%1 секунда)"
 msgstr[3] "Отмена (%1 секунда)"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:124
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Take a New Screenshot"
-msgstr "Сделать новый снимок"
+msgid "Include mouse pointer"
+msgstr "Включая курсор мыши"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screenshot image."
+msgstr "Добавить указатель мыши на снимок экрана"
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Включая заголовок и границы окна"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Захватить только текущее всплывающее окно"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+"Захватить только текущее всплывающее окно (например, меню, всплывающую "
+"подсказку и тому подобное).\n"
+"Если выключено, то в снимок будет также включено родительское окно."
+
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Выйти после сохранения или копирования"
+
+#: src/Gui/CaptureSettingsColumn.qml:44
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
+
+#: src/Gui/CaptureSettingsColumn.qml:53
+#, fuzzy, kde-format
+#| msgid "Capture On Click"
+msgid "Capture on click"
+msgstr "По щелчку"
+
+#: src/Gui/CaptureSettingsColumn.qml:55
+#, fuzzy, kde-format
+#| msgid "Wait for a mouse click before capturing the screenshot image"
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr "Ждать щелчка мышью перед съёмкой изображения экрана"
+
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Задержка:"
 
 #: src/Gui/CopiedMessage.qml:13
 #, kde-format
@@ -474,39 +458,28 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " секунд"
 
-#: src/Gui/DialogPage.qml:52
+#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Сделать новый снимок"
 
-#: src/Gui/DialogPage.qml:95
+#: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "Режимы съёмки"
 
-#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
+#: src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
 msgstr "Параметры съёмки"
 
-#: src/Gui/DialogPage.qml:157
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Ждать щелчка мышью перед съёмкой изображения экрана"
-
-#: src/Gui/DialogPage.qml:183
-#, kde-format
-msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr ""
-"Захватить только текущее всплывающее окно (например, меню, всплывающую "
-"подсказку и тому подобное).\n"
-
-#: src/Gui/DialogPage.qml:204
+#: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Настроить Spectacle…"
 
-#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Help"
 msgstr "Справка"
@@ -526,12 +499,12 @@ msgstr "Другое приложение..."
 msgid "Share"
 msgstr "Опубликовать"
 
-#: src/Gui/ImageView.qml:338
+#: src/Gui/ImageView.qml:375
 #, kde-format
 msgid "Zoom:"
 msgstr "Масштаб:"
 
-#: src/Gui/ImageView.qml:352
+#: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
 msgstr "Мастаб изображения"
@@ -557,20 +530,60 @@ msgstr "Копировать"
 msgid "Export"
 msgstr "Экспорт"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Показать инструменты комментирования"
 
-#: src/Gui/MainToolBarContents.qml:119
+#: src/Gui/MainToolBarContents.qml:116
 #, kde-format
 msgid "New Screenshot"
 msgstr "Сделать новый снимок"
 
-#: src/Gui/MainToolBarContents.qml:142
+# BUGME: please add @title:window; please add ellipsis to the action name --aspotashev
+#: src/Gui/MainToolBarContents.qml:127
+#, kde-format
+msgid "Options"
+msgstr "Параметры"
+
+#: src/Gui/MainToolBarContents.qml:136
 #, kde-format
 msgid "Configure..."
 msgstr "Настройка..."
+
+#: src/Gui/OptionsMenu.cpp:40
+#, kde-format
+msgid "Capture Mode"
+msgstr "Режим съёмки"
+
+#: src/Gui/OptionsMenu.cpp:71
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Добавить указатель мыши на снимок экрана"
+
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Включить в снимок заголовок окна, кнопки в заголовке («свернуть», "
+"«распахнуть», «закрыть» и другие) и границы окна"
+
+#: src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Захватить только текущее всплывающее окно (например, меню, всплывающую "
+"подсказку и тому подобное).\n"
+"Если выключено, то в снимок будет также включено родительское окно."
+
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -1397,6 +1410,17 @@ msgstr "В фоновом режиме, не включая заголовок �
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Открыть и отредактировать существующий файл снимка экрана"
+
+#~ msgid "On Click"
+#~ msgstr "По щелчку"
+
+#~ msgid "Take a New Screenshot"
+#~ msgstr "Сделать новый снимок"
+
+#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ msgstr ""
+#~ "Захватить только текущее всплывающее окно (например, меню, всплывающую "
+#~ "подсказку и тому подобное).\n"
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #~ msgid "Full Screen (All Monitors)"

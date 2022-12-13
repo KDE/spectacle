@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-13 00:53+0000\n"
 "PO-Revision-Date: 2022-12-08 21:32+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -327,97 +327,82 @@ msgstr "உரை"
 msgid "Number"
 msgstr "எண்"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, kde-format
-msgid "Capture Mode"
-msgstr "பிடிப்பு முறை"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:52
-#: src/Gui/MainToolBarContents.qml:130
-#, kde-format
-msgid "Options"
-msgstr "விருப்பங்கள்"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
-#: src/Gui/OptionsMenu.cpp:70
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "சுட்டிக்குறியை உட்படுத்து"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "திரைப்பிடிப்பில் சுட்டிக்குறியையும் காட்டும்"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
-#: src/Gui/OptionsMenu.cpp:82
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "சாளர தலைப்புப்பட்டை மற்றும் விளிம்புகளை உட்படுத்து"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
-#: src/Gui/OptionsMenu.cpp:83
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr ""
-"சாளரத்தின் தலைப்புப்பட்டை, ஒதுக்கு/அதிகபட்ச பெரிதாக்கு/மூடு பட்டன்கள், மற்றும் சாளர "
-"விளிம்புகள் திரைப்பிடிப்பில் காணப்படும்"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
-#: src/Gui/OptionsMenu.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடு"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடுக்கும் (எ.கா. பட்டி, கருவித் துப்பு "
-"போன்றவை).\n"
-"இத்தேர்வு முடக்கப்பட்டிருந்தால், தெரித்தெழும் சாளரம் அதன் தாய் சாளரத்துடன் சேர்த்து "
-"படமெடுக்கப்படும்"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
-#: src/Gui/OptionsMenu.cpp:108
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு வெளியேறு"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
-#: src/Gui/OptionsMenu.cpp:109
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "படத்தை கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு ஸ்பெக்டக்குலிலிருந்து வெளியேறு"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
-#: src/Gui/OptionsMenu.cpp:138
-#, kde-format
-msgid "Delay:"
-msgstr "தாமதம்:"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
-#, kde-format
-msgid "On Click"
-msgstr "க்ளிக் செய்யும்போது"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
-#: src/Gui/MainToolBarContents.qml:106
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "ரத்து செய் (%1 நொடி)"
 msgstr[1] "ரத்து செய் (%1 நொடிகள்)"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:124
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Take a New Screenshot"
-msgstr "புதிய திரைப்பிடிப்பை எடு"
+msgid "Include mouse pointer"
+msgstr "சுட்டிக்குறியை உட்படுத்து"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screenshot image."
+msgstr "திரைப்பிடிப்பில் சுட்டிக்குறியையும் காட்டும்"
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "சாளர தலைப்புப்பட்டை மற்றும் விளிம்புகளை உட்படுத்து"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடு"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+"தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடுக்கும் (எ.கா. பட்டி, கருவித் துப்பு "
+"போன்றவை).\n"
+"இத்தேர்வு முடக்கப்பட்டிருந்தால், தெரித்தெழும் சாளரம் அதன் தாய் சாளரத்துடன் சேர்த்து "
+"படமெடுக்கப்படும்"
+
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு வெளியேறு"
+
+#: src/Gui/CaptureSettingsColumn.qml:44
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr "படத்தை கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு ஸ்பெக்டக்குலிலிருந்து வெளியேறு"
+
+#: src/Gui/CaptureSettingsColumn.qml:53
+#, fuzzy, kde-format
+#| msgid "Capture On Click"
+msgid "Capture on click"
+msgstr "க்ளிக் செய்யும்போது படமெடு"
+
+#: src/Gui/CaptureSettingsColumn.qml:55
+#, fuzzy, kde-format
+#| msgid "Wait for a mouse click before capturing the screenshot image"
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr "சுட்டியை க்ளிக் செய்த பிறகே திரைப்பிடிப்பு எடுக்கப்படும்"
+
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "தாமதம்:"
 
 #: src/Gui/CopiedMessage.qml:13
 #, kde-format
@@ -444,39 +429,28 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " நொடிகள்"
 
-#: src/Gui/DialogPage.qml:52
+#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "புதிய திரைப்பிடிப்பை எடு"
 
-#: src/Gui/DialogPage.qml:95
+#: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "பிடிப்பு முறைகள்"
 
-#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
+#: src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
 msgstr "பிடிப்புக்கான அமைப்புகள்"
 
-#: src/Gui/DialogPage.qml:157
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "சுட்டியை க்ளிக் செய்த பிறகே திரைப்பிடிப்பு எடுக்கப்படும்"
-
-#: src/Gui/DialogPage.qml:183
-#, kde-format
-msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr ""
-"தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடுக்கும் (எ.கா. பட்டி, கருவித் துப்பு "
-"போன்றவை).\n"
-
-#: src/Gui/DialogPage.qml:204
+#: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "ஸ்பெக்டக்குலை அமை…"
 
-#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Help"
 msgstr "உதவி"
@@ -496,12 +470,12 @@ msgstr "வேறு செயலி..."
 msgid "Share"
 msgstr "பகிர்"
 
-#: src/Gui/ImageView.qml:338
+#: src/Gui/ImageView.qml:375
 #, kde-format
 msgid "Zoom:"
 msgstr "உருப்பெருக்கம்:"
 
-#: src/Gui/ImageView.qml:352
+#: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
 msgstr "படத்தின் உருப்பெருக்கம்"
@@ -527,20 +501,60 @@ msgstr "நகலெடு"
 msgid "Export"
 msgstr "ஏற்றுமதி"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "குறிப்புக்கருவிகளைக் காட்டு"
 
-#: src/Gui/MainToolBarContents.qml:119
+#: src/Gui/MainToolBarContents.qml:116
 #, kde-format
 msgid "New Screenshot"
 msgstr "புதிய திரைப்பிடிப்பு"
 
-#: src/Gui/MainToolBarContents.qml:142
+#: src/Gui/MainToolBarContents.qml:127
+#, kde-format
+msgid "Options"
+msgstr "விருப்பங்கள்"
+
+#: src/Gui/MainToolBarContents.qml:136
 #, kde-format
 msgid "Configure..."
 msgstr "அமை..."
+
+#: src/Gui/OptionsMenu.cpp:40
+#, kde-format
+msgid "Capture Mode"
+msgstr "பிடிப்பு முறை"
+
+#: src/Gui/OptionsMenu.cpp:71
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "திரைப்பிடிப்பில் சுட்டிக்குறியையும் காட்டும்"
+
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"சாளரத்தின் தலைப்புப்பட்டை, ஒதுக்கு/அதிகபட்ச பெரிதாக்கு/மூடு பட்டன்கள், மற்றும் சாளர "
+"விளிம்புகள் திரைப்பிடிப்பில் காணப்படும்"
+
+#: src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடுக்கும் (எ.கா. பட்டி, கருவித் துப்பு "
+"போன்றவை).\n"
+"இத்தேர்வு முடக்கப்பட்டிருந்தால், தெரித்தெழும் சாளரம் அதன் தாய் சாளரத்துடன் சேர்த்து "
+"படமெடுக்கப்படும்"
+
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "படத்தை கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு ஸ்பெக்டக்குலிலிருந்து வெளியேறு"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -1361,6 +1375,17 @@ msgstr "பின்னணி பயன்முறையில், சாளர
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ஏற்கனவேயுள்ள திரைப்பிடிப்பை திறந்து திருத்து"
+
+#~ msgid "On Click"
+#~ msgstr "க்ளிக் செய்யும்போது"
+
+#~ msgid "Take a New Screenshot"
+#~ msgstr "புதிய திரைப்பிடிப்பை எடு"
+
+#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ msgstr ""
+#~ "தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடுக்கும் (எ.கா. பட்டி, கருவித் துப்பு "
+#~ "போன்றவை).\n"
 
 #~ msgid "Full Screen (All Monitors)"
 #~ msgstr "முழுத்திரை (அனைத்து காட்சிக் கருவிகளும்)"

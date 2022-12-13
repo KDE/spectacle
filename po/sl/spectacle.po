@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-13 00:53+0000\n"
 "PO-Revision-Date: 2022-12-09 09:54+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -333,83 +333,7 @@ msgstr "Besedilo"
 msgid "Number"
 msgstr "Število"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, kde-format
-msgid "Capture Mode"
-msgstr "Način zajema"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:52
-#: src/Gui/MainToolBarContents.qml:130
-#, kde-format
-msgid "Options"
-msgstr "Možnosti"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
-#: src/Gui/OptionsMenu.cpp:70
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "Vključi miškino kazalko"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "Pokaži miškino kazalko v zaslonski sliki"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
-#: src/Gui/OptionsMenu.cpp:82
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "Vključi nazivno vrstico in obrobe okna"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
-#: src/Gui/OptionsMenu.cpp:83
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr "Pokaži nazivno vrstico okna, gumbe skrči/razpni/zapri ter obrobo okna"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
-#: src/Gui/OptionsMenu.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Zajemi samo trenutno pojavno okno"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Zajemi le trenutno pojavno okno (meni, orodni namig, itd.). Če to ni "
-"omogočeno, bo pojavno okno zajeto skupaj z nadrejenim oknom"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
-#: src/Gui/OptionsMenu.cpp:108
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "Zapusti po ročnem shranjevanju ali kopiranju"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
-#: src/Gui/OptionsMenu.cpp:109
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "Zapusti Spectacle po ročnem shranjevanju ali kopiranju slike"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
-#: src/Gui/OptionsMenu.cpp:138
-#, kde-format
-msgid "Delay:"
-msgstr "Zakasnitev:"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
-#, kde-format
-msgid "On Click"
-msgstr "Ob kliku"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
-#: src/Gui/MainToolBarContents.qml:106
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -418,10 +342,73 @@ msgstr[1] "Prekliči (%1 sekundi)"
 msgstr[2] "Prekliči (%1 sekunde)"
 msgstr[3] "Prekliči (%1 sekund)"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:124
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Take a New Screenshot"
-msgstr "Zajemi novo zaslonsko sliko"
+msgid "Include mouse pointer"
+msgstr "Vključi miškino kazalko"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screenshot image."
+msgstr "Pokaži miškino kazalko v zaslonski sliki"
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Vključi nazivno vrstico in obrobe okna"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Zajemi samo trenutno pojavno okno"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+"Zajemi le trenutno pojavno okno (meni, orodni namig, itd.). Če to ni "
+"omogočeno, bo pojavno okno zajeto skupaj z nadrejenim oknom"
+
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Zapusti po ročnem shranjevanju ali kopiranju"
+
+#: src/Gui/CaptureSettingsColumn.qml:44
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr "Zapusti Spectacle po ročnem shranjevanju ali kopiranju slike"
+
+#: src/Gui/CaptureSettingsColumn.qml:53
+#, fuzzy, kde-format
+#| msgid "Capture On Click"
+msgid "Capture on click"
+msgstr "Zajemi ob kliku"
+
+#: src/Gui/CaptureSettingsColumn.qml:55
+#, fuzzy, kde-format
+#| msgid "Wait for a mouse click before capturing the screenshot image"
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr "Počakaj na klik miške pred zajemom zaslonske slike"
+
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Zakasnitev:"
 
 #: src/Gui/CopiedMessage.qml:13
 #, kde-format
@@ -450,37 +437,28 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekund"
 
-#: src/Gui/DialogPage.qml:52
+#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Zajemi novo zaslonsko sliko"
 
-#: src/Gui/DialogPage.qml:95
+#: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "Načini zajema"
 
-#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
+#: src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
 msgstr "Nastavitve zajema"
 
-#: src/Gui/DialogPage.qml:157
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Počakaj na klik miške pred zajemom zaslonske slike"
-
-#: src/Gui/DialogPage.qml:183
-#, kde-format
-msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr "Zajemi le trenutno pojavno okno (meni, orodni namig, itd.).\n"
-
-#: src/Gui/DialogPage.qml:204
+#: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Nastavi Spectacle…"
 
-#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Help"
 msgstr "Pomoč"
@@ -500,12 +478,12 @@ msgstr "Drug program..."
 msgid "Share"
 msgstr "Deli"
 
-#: src/Gui/ImageView.qml:338
+#: src/Gui/ImageView.qml:375
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:352
+#: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom slike"
@@ -531,20 +509,56 @@ msgstr "Kopiraj"
 msgid "Export"
 msgstr "Izvoz"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Prikaži orodja zabeležk"
 
-#: src/Gui/MainToolBarContents.qml:119
+#: src/Gui/MainToolBarContents.qml:116
 #, kde-format
 msgid "New Screenshot"
 msgstr "Nova zaslonska slika"
 
-#: src/Gui/MainToolBarContents.qml:142
+#: src/Gui/MainToolBarContents.qml:127
+#, kde-format
+msgid "Options"
+msgstr "Možnosti"
+
+#: src/Gui/MainToolBarContents.qml:136
 #, kde-format
 msgid "Configure..."
 msgstr "Nastavi..."
+
+#: src/Gui/OptionsMenu.cpp:40
+#, kde-format
+msgid "Capture Mode"
+msgstr "Način zajema"
+
+#: src/Gui/OptionsMenu.cpp:71
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Pokaži miškino kazalko v zaslonski sliki"
+
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr "Pokaži nazivno vrstico okna, gumbe skrči/razpni/zapri ter obrobo okna"
+
+#: src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Zajemi le trenutno pojavno okno (meni, orodni namig, itd.). Če to ni "
+"omogočeno, bo pojavno okno zajeto skupaj z nadrejenim oknom"
+
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Zapusti Spectacle po ročnem shranjevanju ali kopiranju slike"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -1366,6 +1380,15 @@ msgstr "Ob delovanju v ozadju izključi okraske oken iz posnetka zaslona"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko posnetka zaslona"
+
+#~ msgid "On Click"
+#~ msgstr "Ob kliku"
+
+#~ msgid "Take a New Screenshot"
+#~ msgstr "Zajemi novo zaslonsko sliko"
+
+#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ msgstr "Zajemi le trenutno pojavno okno (meni, orodni namig, itd.).\n"
 
 #~ msgid "Full Screen (All Monitors)"
 #~ msgstr "Celotni zaslon (vsi monitorji)"

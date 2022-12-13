@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-13 00:53+0000\n"
 "PO-Revision-Date: 2022-07-15 12:22+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -335,88 +335,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
-msgid "Capture Mode"
-msgstr "<b>Modo de captura</b>"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:52
-#: src/Gui/MainToolBarContents.qml:130
-#, fuzzy, kde-format
-#| msgid "<b>Options</b>"
-msgid "Options"
-msgstr "<b>Optiones</b>"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
-#: src/Gui/OptionsMenu.cpp:70
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "Include punctator de mus"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "Monstra le cursor de mus in le imagine de captura de schermo"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
-#: src/Gui/OptionsMenu.cpp:82
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "Include barra de titulo de fenestra e bordos"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
-#: src/Gui/OptionsMenu.cpp:83
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr ""
-"Monstra le barra de titulo de fenestra, le buttones de minimizar/maximizar/"
-"clauder, e le bordo de fenestra"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
-#: src/Gui/OptionsMenu.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Captura solmente le pop-up currente"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Captura solmente le fenestra de pop-up currente (como un menu, consilios "
-"etc.).\n"
-"Si dishabilitate, le pop-up es capturate con le fenestra genitor"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
-#: src/Gui/OptionsMenu.cpp:108
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "Quita postea salveguardar o copiar manualmente"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
-#: src/Gui/OptionsMenu.cpp:109
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "Quita Spectacle post salveguardr o copiar manualmente le imagine"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
-#: src/Gui/OptionsMenu.cpp:138
-#, kde-format
-msgid "Delay:"
-msgstr "Retardo:"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
-#, kde-format
-msgid "On Click"
-msgstr "Sur Click"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
-#: src/Gui/MainToolBarContents.qml:106
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "%1 second"
@@ -426,10 +345,74 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "%1 secunda"
 msgstr[1] "%1 secundas"
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:124
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Take a New Screenshot"
-msgstr "Prende un nove captura de schermo"
+msgid "Include mouse pointer"
+msgstr "Include punctator de mus"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screenshot image."
+msgstr "Monstra le cursor de mus in le imagine de captura de schermo"
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Include barra de titulo de fenestra e bordos"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Captura solmente le pop-up currente"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+"Captura solmente le fenestra de pop-up currente (como un menu, consilios "
+"etc.).\n"
+"Si dishabilitate, le pop-up es capturate con le fenestra genitor"
+
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Quita postea salveguardar o copiar manualmente"
+
+#: src/Gui/CaptureSettingsColumn.qml:44
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr "Quita Spectacle post salveguardr o copiar manualmente le imagine"
+
+#: src/Gui/CaptureSettingsColumn.qml:53
+#, fuzzy, kde-format
+#| msgid "On Click"
+msgid "Capture on click"
+msgstr "Sur Click"
+
+#: src/Gui/CaptureSettingsColumn.qml:55
+#, fuzzy, kde-format
+#| msgid "Wait for a mouse click before capturing the screenshot image"
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr "Attende un click de mus ante capturar le imagine de captura de schermo"
+
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Retardo:"
 
 #: src/Gui/CopiedMessage.qml:13
 #, kde-format
@@ -457,45 +440,30 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " secundas"
 
-#: src/Gui/DialogPage.qml:52
+#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, fuzzy, kde-format
 #| msgid "Take a new Screenshot"
 msgid "Take a new screenshot"
 msgstr "Prende un nove captura de schermo"
 
-#: src/Gui/DialogPage.qml:95
+#: src/Gui/DialogPage.qml:96
 #, fuzzy, kde-format
 #| msgid "<b>Capture Mode</b>"
 msgid "Capture Modes"
 msgstr "<b>Modo de captura</b>"
 
-#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
+#: src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:157
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Attende un click de mus ante capturar le imagine de captura de schermo"
-
-#: src/Gui/DialogPage.qml:183
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
-msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr ""
-"Captura solmente le fenestra de pop-up currente (como un menu, consilios "
-"etc.).\n"
-"Si dishabilitate, le pop-up es capturate con le fenestra genitor"
-
-#: src/Gui/DialogPage.qml:204
+#: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Help"
 msgstr ""
@@ -515,12 +483,12 @@ msgstr "Altere application..."
 msgid "Share"
 msgstr "Comparti"
 
-#: src/Gui/ImageView.qml:338
+#: src/Gui/ImageView.qml:375
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:352
+#: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -546,23 +514,64 @@ msgstr ""
 msgid "Export"
 msgstr "Exporta"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:93
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Annotation Done"
 msgid "Show Annotation Tools"
 msgstr "Annotation facite"
 
-#: src/Gui/MainToolBarContents.qml:119
+#: src/Gui/MainToolBarContents.qml:116
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "New Screenshot"
 msgstr "Prende un nove captura de schermo"
 
-#: src/Gui/MainToolBarContents.qml:142
+#: src/Gui/MainToolBarContents.qml:127
+#, fuzzy, kde-format
+#| msgid "<b>Options</b>"
+msgid "Options"
+msgstr "<b>Optiones</b>"
+
+#: src/Gui/MainToolBarContents.qml:136
 #, kde-format
 msgid "Configure..."
 msgstr "Configura..."
+
+#: src/Gui/OptionsMenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "<b>Capture Mode</b>"
+msgid "Capture Mode"
+msgstr "<b>Modo de captura</b>"
+
+#: src/Gui/OptionsMenu.cpp:71
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Monstra le cursor de mus in le imagine de captura de schermo"
+
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Monstra le barra de titulo de fenestra, le buttones de minimizar/maximizar/"
+"clauder, e le bordo de fenestra"
+
+#: src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Captura solmente le fenestra de pop-up currente (como un menu, consilios "
+"etc.).\n"
+"Si dishabilitate, le pop-up es capturate con le fenestra genitor"
+
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Quita Spectacle post salveguardr o copiar manualmente le imagine"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, fuzzy, kde-format
@@ -1402,6 +1411,22 @@ msgstr ""
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Aperi e modifica file de captura de schermo existente"
+
+#~ msgid "On Click"
+#~ msgstr "Sur Click"
+
+#~ msgid "Take a New Screenshot"
+#~ msgstr "Prende un nove captura de schermo"
+
+#, fuzzy
+#~| msgid ""
+#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~| "If disabled, the pop-up is captured along with the parent window"
+#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ msgstr ""
+#~ "Captura solmente le fenestra de pop-up currente (como un menu, consilios "
+#~ "etc.).\n"
+#~ "Si dishabilitate, le pop-up es capturate con le fenestra genitor"
 
 #~ msgid "Full Screen (All Monitors)"
 #~ msgstr "Schermo plen (Omne Monitores)"
