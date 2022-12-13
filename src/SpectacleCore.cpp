@@ -614,7 +614,7 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
         if (m_saveToOutput && m_copyImageToClipboard) {
             syncExportPixmap();
             exportManager->doSaveAndCopy(m_editExisting ? m_screenCaptureUrl : QUrl());
-        } else if (m_saveToOutput) {
+        } else if (m_saveToOutput || m_editExisting) {
             exportManager->doSave(m_editExisting ? m_screenCaptureUrl : QUrl());
         } else if (m_copyImageToClipboard) {
             syncExportPixmap();
