@@ -211,7 +211,7 @@ void SpectacleWindow::save()
     // which is connected to SpectacleCore::doNotify,
     // which emits SpectacleCore::allDone,
     // which is connected to QCoreApplication::quit in Main.cpp
-    ExportManager::instance()->doSave(Settings::lastSaveLocation(), /* notify */ quitChecked);
+    ExportManager::instance()->doSave(ExportManager::instance()->isImageSavedNotInTemp() ? Settings::lastSaveLocation() : QUrl(), /* notify */ quitChecked);
     if (quitChecked) {
         qApp->setQuitOnLastWindowClosed(false);
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
