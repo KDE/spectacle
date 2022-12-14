@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-13 00:53+0000\n"
-"PO-Revision-Date: 2022-12-11 23:02+0300\n"
+"POT-Creation-Date: 2022-12-14 00:45+0000\n"
+"PO-Revision-Date: 2022-12-13 22:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -367,10 +367,9 @@ msgid "Include mouse pointer"
 msgstr "Включая курсор мыши"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Добавить указатель мыши на снимок экрана"
+msgstr "Добавить указатель мыши на снимок экрана."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
 #, kde-format
@@ -381,7 +380,7 @@ msgstr "Включая заголовок и границы окна"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
+msgstr "При съёмке окна показывать его заголовок и границы"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
 #, kde-format
@@ -389,17 +388,14 @@ msgid "Capture the current pop-up only"
 msgstr "Захватить только текущее всплывающее окно"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Захватить только текущее всплывающее окно (например, меню, всплывающую "
-"подсказку и тому подобное).\n"
+"При съёмке окна захватить только текущее всплывающее окно (например, меню, "
+"всплывающую подсказку и тому подобное).\n"
 "Если выключено, то в снимок будет также включено родительское окно."
 
 #: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
@@ -408,20 +404,17 @@ msgid "Quit after manual Save or Copy"
 msgstr "Выйти после сохранения или копирования"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
 
 #: src/Gui/CaptureSettingsColumn.qml:53
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgid "Capture on click"
 msgstr "По щелчку"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Ждать щелчка мышью перед съёмкой изображения экрана"
 
@@ -1249,17 +1242,17 @@ msgstr "Создать снимок окна под курсором мыши"
 msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Создание снимка экрана отменено или не удалось."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:666
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:664
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1268,45 +1261,45 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Сделать снимок всех экранов (по умолчанию)."
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Сделать снимок текущего экрана."
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Capture the active window"
 msgstr "Сделать снимок активного окна."
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1315,7 +1308,7 @@ msgstr ""
 "Сделать снимок окна под курсором мыши, включая родительские окна всплывающих "
 "меню."
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1324,34 +1317,34 @@ msgstr ""
 "Сделать снимок окна под курсором мыши, не включая родительские окна "
 "всплывающих меню."
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Сделать снимок прямоугольной области экрана."
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Запускать Spectacle без создания снимка экрана"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Запустить в графическом режиме (по умолчанию)."
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Фоновый режим: сделать снимок экрана и выйти, не показывая графический "
 "интерфейс."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Запустить в режиме активации через D-Bus."
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1359,17 +1352,17 @@ msgstr ""
 "В фоновом режиме не показывать всплывающее уведомление после создания снимка "
 "экрана."
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "В фоновом режиме сохранить изображение в указанный файл."
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "В фоновом режиме сделать задержку перед съёмкой (в миллисекундах)."
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1378,35 +1371,35 @@ msgstr ""
 "В фоновом режиме скопировать изображение в буфер обмена (только если не "
 "использован аргумент -o)."
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "В фоновом режиме скопировать путь к файлу изображения в буфер обмена."
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Ждать щелчка мышью, прежде чем сделать снимок экрана. Отменяет задержку."
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Запуск нового экземпляра приложения в графическом режиме без регистрации в "
 "DBus."
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "В фоновом режиме, включая курсор мыши"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "В фоновом режиме, не включая заголовок и границы окна"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Открыть и отредактировать существующий файл снимка экрана"

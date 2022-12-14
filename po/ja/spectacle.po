@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-13 00:53+0000\n"
+"POT-Creation-Date: 2022-12-14 00:45+0000\n"
 "PO-Revision-Date: 2022-08-08 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1233,67 +1233,63 @@ msgstr "カーソル下のウィンドウを撮影"
 msgid "Launch Spectacle without capturing"
 msgstr "撮影せずに Spectacle を起動"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "スクリーンショットの撮影がキャンセルされたか失敗しました"
 
-#: src/SpectacleCore.cpp:662
-#, fuzzy, kde-format
-#| msgid "A screenshot was copied to your clipboard."
+#: src/SpectacleCore.cpp:666
+#, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "スクリーンショットはクリップボードにコピーされました。"
+msgstr "スクリーンショットはクリップボードに保存されました。"
 
-#: src/SpectacleCore.cpp:664
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been copied to your clipboard."
+#: src/SpectacleCore.cpp:668
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
-"コピーされました。"
+"保存されました。"
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "スクリーンショットは'%1'としてピクチャフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "Annotate"
 msgstr "注釈する"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "デスクトップ全体を撮影 (デフォルト)"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "現在のモニターを撮影"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Capture the active window"
 msgstr "アクティブウィンドウを撮影"
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1302,7 +1298,7 @@ msgstr ""
 "現在カーソル下にあるウィンドウを撮影します (ポップアップメニューの親を含みま"
 "す)"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1311,32 +1307,32 @@ msgstr ""
 "現在カーソル下にあるウィンドウを撮影します (ポップアップメニューの親を含みま"
 "せん)"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "スクリーンの矩形領域を撮影します"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "スクリーンショットを撮影せずに Spectacle を起動する"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI モードで起動"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "新しいスクリーンショットを撮影し GUI を表示せずに終了"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "D-Bus アクティベーションモードで起動"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1344,17 +1340,17 @@ msgstr ""
 "バックグラウンドモードで、スクリーンショットが撮影されたときに通知をポップ"
 "アップしません"
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "バックグラウンドモードで、指定されたファイルに画像を保存"
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "バックグラウンドモードで、撮影する前に遅延する (ミリ秒で)"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1363,123 +1359,34 @@ msgstr ""
 "バックグラウンドモードで、オプション -o が使われていないときスクリーンショッ"
 "トをクリップボードにコピー"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "バックグラウンドモードで、スクリーンショットをクリップボードのパスにコピー"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "クリックされるまでスクリーンショットを待機します。遅延は無効になります"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "D-Bus に登録せずに新しい Spectacle の GUI インスタンスを開始する"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "バックグラウンドモードで、スクリーンショットにポインターを含める"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "バックグラウンドモードで、ウィンドウの飾りをスクリーンショットに含まない"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "既存のスクリーンショットファイルを開き、編集する"
-
-#~ msgid "On Click"
-#~ msgstr "クリック時"
-
-#~ msgid "Take a New Screenshot"
-#~ msgstr "新しいスクリーンショットを撮影"
-
-#, fuzzy
-#~| msgid ""
-#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~| "If disabled, the pop-up is captured along with the parent window"
-#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ msgstr ""
-#~ "現在のポップアップウィンドウ (メニューやツールチップなど) のみ撮影しま"
-#~ "す。\n"
-#~ "無効化された場合、ポップアップは親ウィンドウとともに撮影されます"
-
-#~ msgid "Full Screen (All Monitors)"
-#~ msgstr "フルスクリーン (すべてのモニター)"
-
-#~ msgid "Full Screen (All Monitors, scaled)"
-#~ msgstr "フルスクリーン (すべてのモニター、スケールされた)"
-
-#~ msgid "Image Size: %1x%2 pixels"
-#~ msgstr "画像サイズ: %1x%2 ピクセル"
-
-#~ msgid "Change Spectacle's settings."
-#~ msgstr "Spectacle の設定を変更。"
-
-#~ msgid "Add annotation to the screenshot"
-#~ msgstr "スクリーンショットに注釈を追加"
-
-#~ msgid "Tools"
-#~ msgstr "ツール"
-
-#~ msgid "Record Screen"
-#~ msgstr "スクリーンを録画"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "画像をクリップボードにコピー"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "場所をクリップボードにコピー"
-
-#~ msgid "Ready to take a screenshot"
-#~ msgstr "スクリーンショットの撮影準備完了"
-
-#~ msgctxt "@action:button"
-#~ msgid "Annotate"
-#~ msgstr "注釈する"
-
-#~ msgid "Area:"
-#~ msgstr "領域:"
-
-#~ msgid "Cancel"
-#~ msgstr "キャンセル"
-
-#~ msgid "The last used copy mode"
-#~ msgstr "最後に使用されたコピーモード"
-
-#~ msgid ""
-#~ "Click and drag to draw a selection rectangle,\n"
-#~ "or press Esc to quit"
-#~ msgstr ""
-#~ "クリックとドラッグで選択矩形を描画します\n"
-#~ "もしくは Esc を押して終了"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1x%2"
-
-#~ msgctxt "The entire screen area was captured, heading"
-#~ msgid "Full Screen Captured"
-#~ msgstr "フルスクリーンで撮影されました"
-
-#~ msgctxt "The current screen was captured, heading"
-#~ msgid "Current Screen Captured"
-#~ msgstr "現在のスクリーンが撮影されました"
-
-#~ msgctxt "The active window was captured, heading"
-#~ msgid "Active Window Captured"
-#~ msgstr "アクティブウィンドウが撮影されました"
-
-#~ msgctxt "The window under the mouse was captured, heading"
-#~ msgid "Window Under Cursor Captured"
-#~ msgstr "カーソル下のウィンドウが撮影されました"
-
-#~ msgctxt "A rectangular region was captured, heading"
-#~ msgid "Rectangular Region Captured"
-#~ msgstr "矩形領域が撮影されました"
