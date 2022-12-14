@@ -83,7 +83,7 @@ public:
 
 public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
-                           int timeout = Settings::captureDelay() * 1000,
+                           int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000,
                            bool includePointer = Settings::includePointer(),
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
