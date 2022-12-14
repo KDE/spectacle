@@ -9,6 +9,7 @@
 #include "Utils.h"
 #include "settings.h"
 
+#include <QGuiApplication>
 #include <QPainter>
 #include <QPainterPath>
 #include <QQuickItem>
@@ -1051,12 +1052,12 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
         case Blur: {
             auto *sa = static_cast<ShapeAction *>(ea);
             const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 2;
+            const qreal factor = 2 * qGuiApp->devicePixelRatio(); // take the maximum scale factor of any screen
             const qreal dpr = 1.0 / factor;
-            if (sa->backingStoreCache().isNull()) {
+            if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
                 stopAtAction << ea;
                 sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), dpr);
-
+                sa->backingStoreCache().setDevicePixelRatio(painter->deviceTransform().m11());
                 stopAtAction.pop_back();
                 // With more scaling, blur more
                 sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
