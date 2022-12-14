@@ -45,6 +45,7 @@ public:
     void setNumber(int number);
 
     QMarginsF strokeMargins() const;
+    QMarginsF shadowMargins() const;
 
     QRectF lastUpdateArea() const;
 
@@ -83,6 +84,10 @@ public:
 
     void translate(const QPointF &delta);
 
+    bool supportsShadow() const;
+    bool hasShadow() const;
+    void setShadow(bool shadow);
+
     virtual QRectF geometry() const = 0;
     virtual void setGeometry(const QRectF &geom) = 0;
 
@@ -110,6 +115,8 @@ protected:
     QColor m_fontColor;
     int m_number = 0;
     QRectF m_lastUpdateArea;
+    bool m_supportsShadow = false;
+    bool m_hasShadow = false;
     EditAction *m_replacedBy = nullptr;
     EditAction *m_replaces = nullptr;
 };

@@ -20,19 +20,21 @@
 static AnnotationTool::Options optionsForType(AnnotationDocument::EditActionType type)
 {
     switch (type) {
-    case AnnotationDocument::FreeHand:
     case AnnotationDocument::Highlight:
+        return AnnotationTool::Stroke;
+    case AnnotationDocument::FreeHand:
     case AnnotationDocument::Line:
     case AnnotationDocument::Arrow:
-        return AnnotationTool::Stroke;
+        return {AnnotationTool::Stroke, AnnotationTool::Shadow};
     case AnnotationDocument::Rectangle:
     case AnnotationDocument::Ellipse:
-        return {AnnotationTool::Stroke, AnnotationTool::Fill};
+        return {AnnotationTool::Stroke, AnnotationTool::Shadow, AnnotationTool::Fill};
     case AnnotationDocument::Text:
-        return AnnotationTool::Font;
+        return {AnnotationTool::Font, AnnotationTool::Shadow};
     case AnnotationDocument::Number:
-        return {AnnotationTool::Fill, AnnotationTool::Font};
-    default: return AnnotationTool::NoOptions;
+        return {AnnotationTool::Fill, AnnotationTool::Shadow, AnnotationTool::Font};
+    default:
+        return AnnotationTool::NoOptions;
     }
 }
 
@@ -144,6 +146,12 @@ void AnnotationTool::setType(AnnotationDocument::EditActionType type)
     const auto &newFontColor = fontColorForType(type);
     if (oldFontColor != newFontColor) {
         Q_EMIT fontColorChanged(newFontColor);
+    }
+
+    const auto &oldShadow = typeHasShadow(oldType);
+    const auto &newShadow = typeHasShadow(type);
+    if (oldShadow != newShadow) {
+        Q_EMIT shadowChanged(newShadow);
     }
 }
 
@@ -448,6 +456,77 @@ void AnnotationTool::resetNumber()
     setNumber(1);
 }
 
+bool AnnotationTool::typeHasShadow(AnnotationDocument::EditActionType type) const
+{
+    switch (type) {
+    case AnnotationDocument::FreeHand:
+        return Settings::freehandShadow();
+    case AnnotationDocument::Line:
+        return Settings::lineShadow();
+    case AnnotationDocument::Arrow:
+        return Settings::arrowShadow();
+    case AnnotationDocument::Rectangle:
+        return Settings::rectangleShadow();
+    case AnnotationDocument::Ellipse:
+        return Settings::ellipseShadow();
+    case AnnotationDocument::Text:
+        return Settings::textShadow();
+    case AnnotationDocument::Number:
+        return Settings::numberShadow();
+    default:
+        return false;
+    }
+}
+
+bool AnnotationTool::hasShadow() const
+{
+    return typeHasShadow(m_type);
+}
+
+void AnnotationTool::setTypeHasShadow(AnnotationDocument::EditActionType type, bool shadow)
+{
+    switch (type) {
+    case AnnotationDocument::FreeHand:
+        Settings::setFreehandShadow(shadow);
+        break;
+    case AnnotationDocument::Line:
+        Settings::setLineShadow(shadow);
+        break;
+    case AnnotationDocument::Arrow:
+        Settings::setArrowShadow(shadow);
+        break;
+    case AnnotationDocument::Rectangle:
+        Settings::setRectangleShadow(shadow);
+        break;
+    case AnnotationDocument::Ellipse:
+        Settings::setEllipseShadow(shadow);
+        break;
+    case AnnotationDocument::Text:
+        Settings::setTextShadow(shadow);
+        break;
+    case AnnotationDocument::Number:
+        Settings::setNumberShadow(shadow);
+        break;
+    default:
+        break;
+    }
+}
+
+void AnnotationTool::setShadow(bool shadow)
+{
+    if (!m_options.testFlag(Option::Shadow) || hasShadow() == shadow) {
+        return;
+    }
+
+    setTypeHasShadow(m_type, shadow);
+    Q_EMIT shadowChanged(shadow);
+}
+
+void AnnotationTool::resetShadow()
+{
+    setShadow(true);
+}
+
 //////////////////////////
 
 SelectedActionWrapper::SelectedActionWrapper(AnnotationDocument *document)
@@ -676,6 +755,22 @@ void SelectedActionWrapper::setVisualGeometry(const QRectF &geom)
     m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
 }
 
+bool SelectedActionWrapper::hasShadow() const
+{
+    return m_editAction && m_editAction->supportsShadow() && m_editAction->hasShadow();
+}
+
+void SelectedActionWrapper::setShadow(bool shadow)
+{
+    if (!m_editAction || !m_editAction->supportsShadow() || m_editAction->hasShadow() == shadow) {
+        return;
+    }
+
+    m_editAction->setShadow(shadow);
+    Q_EMIT shadowChanged();
+    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+}
+
 void SelectedActionWrapper::commitChanges()
 {
     auto copy = m_actionCopy.get();
@@ -887,6 +982,14 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
         painter->setPen(pen);
         painter->setBrush(Qt::NoBrush);
 
+        // Draw the shadow if existent
+        if (ea->hasShadow()) {
+            QImage shadow = shapeShadow(ea, painter->deviceTransform().m11() / zoomFactor);
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+            painter->drawImage(QRectF(ea->visualGeometry().translated(-viewPort.topLeft()) + ea->shadowMargins()).topLeft(), shadow);
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
+        }
+
         switch (ea->type()) {
         case FreeHand:
         case Highlight: {
@@ -896,8 +999,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             }
             QPointF offsetPos;
             if (offsetStroke) {
-                qreal offset = penWidth / 2.0;
-                offsetPos = {offset, offset};
+                offsetPos = {0.5, 0.5};
             }
             auto path = fha->path().translated(-viewPort.topLeft() + offsetPos);
             if (path.isEmpty()) {
@@ -913,10 +1015,10 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             auto *la = static_cast<LineAction *>(ea);
             QPointF offsetPos;
             if (offsetStroke) {
-                qreal offset = penWidth / 2.0;
-                offsetPos = {offset, offset};
+                offsetPos = {0.5, 0.5};
             }
             const auto &line = la->line().translated(-viewPort.topLeft() + offsetPos);
+
             painter->drawLine(line);
             if (la->type() == Arrow) {
                 painter->drawPolyline(la->arrowHeadPolygon(line));
@@ -930,7 +1032,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             painter->setBrush(sa->fillColor());
             QMarginsF offsetMargins;
             if (offsetStroke && sa->strokeWidth() > 0) {
-                qreal offset = sa->strokeWidth() / 2.0;
+                qreal offset = 0.5;
                 offsetMargins = {-offset, -offset, -offset, -offset};
             }
             const auto rect = sa->geometry().translated(-viewPort.topLeft()) + offsetMargins;
@@ -949,7 +1051,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
         case Blur: {
             auto *sa = static_cast<ShapeAction *>(ea);
             const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 4;
+            const qreal factor = 2;
             const qreal dpr = 1.0 / factor;
             if (sa->backingStoreCache().isNull()) {
                 stopAtAction << ea;
@@ -957,7 +1059,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
 
                 stopAtAction.pop_back();
                 // With more scaling, blur more
-                sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4);
+                sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
             }
             painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
             painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), dpr).normalized());
@@ -1193,6 +1295,9 @@ void AnnotationDocument::beginAction(const QPointF &point)
     }
 
     if (action) {
+        if (action->supportsShadow()) {
+            action->setShadow(m_tool->hasShadow());
+        }
         updateRect = updateRect.united(action->lastUpdateArea());
     }
     emitRepaintNeededUnlessEmpty(updateRect);

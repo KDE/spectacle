@@ -133,14 +133,10 @@ class AnnotationTool : public QObject
     Q_PROPERTY(QFont font READ font WRITE setFont RESET resetFont NOTIFY fontChanged)
     Q_PROPERTY(QColor fontColor READ fontColor WRITE setFontColor RESET resetFontColor NOTIFY fontColorChanged)
     Q_PROPERTY(int number READ number WRITE setNumber RESET resetNumber NOTIFY numberChanged)
+    Q_PROPERTY(bool shadow READ hasShadow WRITE setShadow RESET resetShadow NOTIFY shadowChanged)
 
 public:
-    enum Option {
-        NoOptions = 0b000,
-        Stroke    = 0b001,
-        Fill      = 0b010,
-        Font      = 0b100
-    };
+    enum Option { NoOptions = 0b0000, Stroke = 0b0001, Fill = 0b0010, Font = 0b0100, Shadow = 0b1000 };
     Q_DECLARE_FLAGS(Options, Option)
     Q_FLAG(Options)
 
@@ -177,6 +173,10 @@ public:
     void setNumber(int number);
     void resetNumber();
 
+    bool hasShadow() const;
+    void setShadow(bool shadow);
+    void resetShadow();
+
 Q_SIGNALS:
     void typeChanged();
     void optionsChanged();
@@ -186,6 +186,7 @@ Q_SIGNALS:
     void fontChanged(const QFont &font);
     void fontColorChanged(const QColor &color);
     void numberChanged(const int number);
+    void shadowChanged(bool hasShadow);
 
 private:
     int strokeWidthForType(AnnotationDocument::EditActionType type) const;
@@ -202,6 +203,9 @@ private:
 
     QColor fontColorForType(AnnotationDocument::EditActionType type) const;
     void setFontColorForType(const QColor &color, AnnotationDocument::EditActionType type);
+
+    bool typeHasShadow(AnnotationDocument::EditActionType type) const;
+    void setTypeHasShadow(AnnotationDocument::EditActionType type, bool shadow);
 
     AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
     Options m_options = Option::NoOptions;
@@ -224,6 +228,7 @@ class SelectedActionWrapper : public QObject
     Q_PROPERTY(int number READ number WRITE setNumber NOTIFY numberChanged)
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
     Q_PROPERTY(QRectF visualGeometry READ visualGeometry WRITE setVisualGeometry NOTIFY visualGeometryChanged)
+    Q_PROPERTY(bool shadow READ hasShadow WRITE setShadow NOTIFY shadowChanged)
 
 public:
     SelectedActionWrapper(AnnotationDocument *document);
@@ -262,6 +267,9 @@ public:
     QRectF visualGeometry() const;
     void setVisualGeometry(const QRectF &geom);
 
+    bool hasShadow() const;
+    void setShadow(bool shadow);
+
     Q_INVOKABLE void commitChanges();
 
 Q_SIGNALS:
@@ -273,6 +281,7 @@ Q_SIGNALS:
     void numberChanged();
     void textChanged();
     void visualGeometryChanged();
+    void shadowChanged();
 
 private:
     AnnotationDocument::EditActionType m_type;

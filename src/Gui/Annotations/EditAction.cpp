@@ -5,6 +5,7 @@
  */
 
 #include "EditAction.h"
+#include "Utils.h"
 
 #include <QDebug>
 #include <QFontMetrics>
@@ -142,6 +143,7 @@ EditAction::EditAction(EditAction *action)
     , m_fontColor(action->fontColor())
     , m_number(action->number())
     , m_lastUpdateArea(action->lastUpdateArea())
+    , m_hasShadow(action->hasShadow())
 {
 }
 
@@ -286,6 +288,15 @@ QMarginsF EditAction::strokeMargins() const
     return QMarginsF(penMargin, penMargin, penMargin, penMargin);
 }
 
+QMarginsF EditAction::shadowMargins() const
+{
+    if (!supportsShadow()) {
+        return QMarginsF(0, 0, 0, 0);
+    }
+
+    return QMarginsF(shadowBlurRadius + 1, shadowBlurRadius + 1, shadowBlurRadius + shadowOffsetX + 1, shadowBlurRadius + shadowOffsetY + 1);
+}
+
 QRectF EditAction::lastUpdateArea() const
 {
     return m_lastUpdateArea;
@@ -300,9 +311,9 @@ QRectF EditAction::getUpdateArea() const
     case AnnotationDocument::Rectangle:
     case AnnotationDocument::Ellipse:
         // adjust update area to prevent clipping stroke sometimes
-        return visualGeometry().adjusted(0, 0, 1, 1);
+        return visualGeometry().adjusted(0, 0, 1, 1) + shadowMargins();
     default:
-        return visualGeometry();
+        return visualGeometry() + shadowMargins();
     }
 }
 
@@ -431,6 +442,26 @@ void EditAction::copyFrom(EditAction *other)
 void EditAction::translate(const QPointF &delta)
 {
     setGeometry(geometry().translated(delta));
+}
+
+bool EditAction::supportsShadow() const
+{
+    return m_supportsShadow;
+}
+
+bool EditAction::hasShadow() const
+{
+    return m_hasShadow && m_supportsShadow;
+}
+
+void EditAction::setShadow(bool shadow)
+{
+    if (!m_supportsShadow || m_hasShadow == shadow) {
+        return;
+    }
+
+    m_hasShadow = shadow;
+    m_lastUpdateArea = getUpdateArea();
 }
 
 QRectF EditAction::visualGeometry() const
@@ -569,6 +600,7 @@ FreeHandAction::FreeHandAction(AnnotationTool *tool, const QPointF &startPoint)
     : EditAction(tool)
     , m_path(startPoint)
 {
+    m_supportsShadow = m_type == AnnotationDocument::FreeHand;
     if (m_type != AnnotationDocument::FreeHand && m_type != AnnotationDocument::Highlight) {
         m_type = AnnotationDocument::FreeHand;
     }
@@ -579,6 +611,7 @@ FreeHandAction::FreeHandAction(FreeHandAction *action)
     : EditAction(action)
     , m_path(action->path())
 {
+    m_supportsShadow = m_type == AnnotationDocument::FreeHand;
 }
 
 FreeHandAction::~FreeHandAction()
@@ -653,6 +686,8 @@ LineAction::LineAction(AnnotationTool *tool, const QPointF &startPoint)
     : EditAction(tool)
     , m_line(startPoint, startPoint)
 {
+    m_supportsShadow = true;
+
     if (m_type != AnnotationDocument::Line && m_type != AnnotationDocument::Arrow) {
         m_type = AnnotationDocument::Line;
     }
@@ -662,6 +697,7 @@ LineAction::LineAction(LineAction *action)
     : EditAction(action)
     , m_line(action->line())
 {
+    m_supportsShadow = true;
 }
 
 LineAction::~LineAction()
@@ -743,6 +779,8 @@ ShapeAction::ShapeAction(AnnotationTool *tool, const QPointF &startPoint)
     : EditAction(tool)
     , m_rect(startPoint, QSizeF(0, 0))
 {
+    m_supportsShadow = m_type != AnnotationDocument::Blur && m_type != AnnotationDocument::Pixelate;
+
     if (m_type != AnnotationDocument::Rectangle
         && m_type != AnnotationDocument::Ellipse
         && m_type != AnnotationDocument::Blur
@@ -755,6 +793,7 @@ ShapeAction::ShapeAction(ShapeAction *action)
     : EditAction(action)
     , m_rect(action->geometry())
 {
+    m_supportsShadow = m_type != AnnotationDocument::Blur && m_type != AnnotationDocument::Pixelate;
     action->invalidateCache();
 }
 
@@ -807,6 +846,7 @@ void ShapeAction::invalidateCache()
 TextAction::TextAction(AnnotationTool *tool, const QPointF &startPoint)
     : EditAction(tool)
 {
+    m_supportsShadow = true;
     QFontMetricsF m(font());
     m_boundingRect = {startPoint.x(), startPoint.y() - m.height() / 2, 0, m.height()};
 }
@@ -816,6 +856,7 @@ TextAction::TextAction(TextAction *action)
     , m_boundingRect(action->geometry())
     , m_text(action->text())
 {
+    m_supportsShadow = true;
 }
 
 TextAction::~TextAction()
@@ -840,7 +881,7 @@ void TextAction::setText(const QString &text)
     m_boundingRect = m.boundingRect(text);
     m_boundingRect.setWidth(qMax(m_boundingRect.width(), m.horizontalAdvance(text)));
     m_boundingRect.moveTopLeft(oldRect.topLeft());
-    m_lastUpdateArea = m_boundingRect.united(oldRect);
+    m_lastUpdateArea = m_boundingRect.united(oldRect) + shadowMargins();
 }
 
 bool TextAction::isValid() const
@@ -852,7 +893,7 @@ void TextAction::setGeometry(const QRectF &geom)
 {
     auto oldRect = m_boundingRect;
     m_boundingRect.moveTopLeft(geom.topLeft());
-    m_lastUpdateArea = m_boundingRect.united(oldRect);
+    m_lastUpdateArea = m_boundingRect.united(oldRect) + shadowMargins();
 }
 
 QRectF TextAction::geometry() const
@@ -865,12 +906,13 @@ QRectF TextAction::geometry() const
 NumberAction::NumberAction(AnnotationTool *tool, const QPointF &startPoint)
     : EditAction(tool)
 {
+    m_supportsShadow = true;
     QFontMetricsF m(font());
     m_boundingRect = m.boundingRect(QString::number(tool->number()));
     const qreal size = qMax(m_boundingRect.width(), m_boundingRect.height()) + m_padding * 2;
     m_boundingRect.setSize(QSizeF(size, size));
     m_boundingRect.translate(startPoint - QPointF(size / 2, 0));
-    m_lastUpdateArea = m_boundingRect;
+    m_lastUpdateArea = m_boundingRect + shadowMargins();
 }
 
 NumberAction::NumberAction(NumberAction *action)
@@ -878,6 +920,7 @@ NumberAction::NumberAction(NumberAction *action)
     , m_boundingRect(action->geometry())
     , m_padding(action->padding())
 {
+    m_supportsShadow = true;
 }
 
 NumberAction::~NumberAction()
@@ -908,7 +951,7 @@ void NumberAction::setGeometry(const QRectF &geom)
 {
     const auto oldRect = m_boundingRect;
     m_boundingRect.moveTopLeft(geom.topLeft());
-    m_lastUpdateArea = oldRect.united(m_boundingRect);
+    m_lastUpdateArea = oldRect.united(m_boundingRect) + shadowMargins();
 }
 
 QRectF NumberAction::geometry() const

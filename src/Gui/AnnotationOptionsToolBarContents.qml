@@ -284,4 +284,38 @@ ButtonGrid {
             }
         }
     }
+
+    QQC2.ToolSeparator {
+        visible: shadowCheckbox.visible
+        height: root.fullButtonHeight
+    }
+
+    QQC2.CheckBox {
+        id: shadowCheckbox
+        visible: root.isSelectedActionOptions ?
+            AnnotationDocument.selectedAction.options & AnnotationTool.Shadow
+            : AnnotationDocument.tool.options & AnnotationTool.Shadow
+        text: i18n("Shadow")
+        checked: {
+            if (AnnotationDocument.tool.type === AnnotationDocument.Text && AnnotationDocument.selectedAction.type === AnnotationDocument.Text) {
+                return AnnotationDocument.tool.shadow;
+            } else if (root.isSelectedActionOptions) {
+                return AnnotationDocument.selectedAction.shadow;
+            } else {
+                return AnnotationDocument.tool.shadow;
+            }
+        }
+        onToggled: {
+            if (AnnotationDocument.tool.type === AnnotationDocument.Text && AnnotationDocument.selectedAction.type === AnnotationDocument.Text) {
+                AnnotationDocument.selectedAction.shadow = checked;
+                AnnotationDocument.tool.shadow = checked;
+            } else if (root.isSelectedActionOptions) {
+                AnnotationDocument.selectedAction.shadow = checked;
+                commitChangesTimer.restart();
+            } else {
+                AnnotationDocument.tool.shadow = checked;
+            }
+            commitChangesTimer.restart();
+        }
+    }
 }
