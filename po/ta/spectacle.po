@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:45+0000\n"
+"POT-Creation-Date: 2022-12-15 00:46+0000\n"
 "PO-Revision-Date: 2022-12-13 19:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -266,6 +266,11 @@ msgstr "எண்:"
 #, kde-format
 msgid "Number for number annotations"
 msgstr "எண்ணிடும் குறிப்புகளுக்கான எண்"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:298
+#, kde-format
+msgid "Shadow"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
@@ -1025,6 +1030,53 @@ msgstr "குறிப்புகளுக்கான எழுத்து�
 #, kde-format
 msgid "Font color for annotations"
 msgstr "குறிப்புகளுக்கான உரைநிறம்"
+
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#, fuzzy, kde-format
+#| msgid "Stroke width for freehand annotation tool"
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr "கைமுறை குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#, fuzzy, kde-format
+#| msgid "Stroke width for line annotation tool"
+msgid "Whether line annotation tool has a drop shadow"
+msgstr "கோடு குறிப்புக்கருவிக்கான அகலம்"
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#, fuzzy, kde-format
+#| msgid "Stroke width for arrow annotation tool"
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr "அம்புக்குறி குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr "நீள்வட்ட குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format

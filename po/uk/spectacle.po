@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:45+0000\n"
+"POT-Creation-Date: 2022-12-15 00:46+0000\n"
 "PO-Revision-Date: 2022-12-13 14:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -271,6 +271,11 @@ msgstr "Номер:"
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Кількість нумерованих анотацій"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:298
+#, kde-format
+msgid "Shadow"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
@@ -1036,6 +1041,53 @@ msgstr "Шрифт для анотацій"
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Колір шрифту для анотацій"
+
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#, fuzzy, kde-format
+#| msgid "Stroke width for freehand annotation tool"
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr "Товщина штриха для засобу анотування довільною лінією"
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#, fuzzy, kde-format
+#| msgid "Stroke width for line annotation tool"
+msgid "Whether line annotation tool has a drop shadow"
+msgstr "Товщина штриха для засобу анотування прямою лінією"
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#, fuzzy, kde-format
+#| msgid "Stroke width for arrow annotation tool"
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr "Товщина штриха для засобу анотування стрілочкою"
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr "Товщина штриха для засобу анотування прямокутником"
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr "Товщина штриха для засобу анотування еліпсом"
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format

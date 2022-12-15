@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:45+0000\n"
-"PO-Revision-Date: 2022-12-08 20:01+0100\n"
+"POT-Creation-Date: 2022-12-15 00:46+0000\n"
+"PO-Revision-Date: 2022-12-14 20:39+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -271,6 +271,11 @@ msgstr "Номер:"
 msgid "Number for number annotations"
 msgstr "Номера за числови бележки"
 
+#: src/Gui/AnnotationOptionsToolBarContents.qml:298
+#, kde-format
+msgid "Shadow"
+msgstr ""
+
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
 msgid "None"
@@ -344,10 +349,9 @@ msgid "Include mouse pointer"
 msgstr "Включване курсора на мишката"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Показване на курсора на мишката в изображението на екрана"
+msgstr "Показване на курсора на мишката в изображението на екрана."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
 #, kde-format
@@ -359,6 +363,8 @@ msgstr "Включване на заглавната лента и рамкат�
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Показване на лентата със заглавието и рамката на прозореца при снимка на "
+"прозореца."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
 #, kde-format
@@ -366,19 +372,15 @@ msgid "Capture the current pop-up only"
 msgstr "Заснемане само на текущия изскачащ прозорец"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
 "Заснемане само на текущия изскачащ прозорец (като меню, подсказка за "
-"инструменти и т.н.).\n"
-"Ако е изключено, изскачащият прозорец се заснема заедно с родителския "
-"прозорец"
+"инструменти и т.н.). Ако е изключено, изскачащият прозорец се заснема заедно "
+"с родителския прозорец"
 
 #: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -386,24 +388,21 @@ msgid "Quit after manual Save or Copy"
 msgstr "Излизане  от програмата след ръчно запазване или копиране"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
-"Излизане от Spectacle след ръчно запазване или копиране на изображението"
+"Излизане от Spectacle след ръчно запазване или копиране на изображението."
 
 #: src/Gui/CaptureSettingsColumn.qml:53
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgid "Capture on click"
-msgstr "При натискане"
+msgstr "Заснемане при кликване"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr ""
-"Изчакаване на щракване с мишката, преди заснемане на изображение на екрана"
+"Изчакване на щракване с мишката, преди заснемане на изображение на екрана."
 
 #: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
 #, kde-format
@@ -566,7 +565,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
 msgid "Capture On Click"
-msgstr "При натискане"
+msgstr "Заснемане при кликване"
 
 #: src/Gui/OptionsMenu.cpp:143
 #, kde-format
@@ -1045,6 +1044,53 @@ msgstr "Шрифт на бележките"
 msgid "Font color for annotations"
 msgstr "Цвят на шрифта на бележките"
 
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#, fuzzy, kde-format
+#| msgid "Stroke width for freehand annotation tool"
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr "Широчина на щриха на инструмента за бележки с очертаване на ръка"
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#, fuzzy, kde-format
+#| msgid "Stroke width for line annotation tool"
+msgid "Whether line annotation tool has a drop shadow"
+msgstr "Широчина на щриха на инструмента за бележки с линия"
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#, fuzzy, kde-format
+#| msgid "Stroke width for arrow annotation tool"
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr "Широчина на щриха на инструмента за бележки със стрелка"
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr "Широчина на щриха на инструмента за бележки с правоъгълник"
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr "Широчина на щриха на инструмента за бележки с елипса"
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr ""
+
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgid "Image shared"
@@ -1371,7 +1417,7 @@ msgstr ""
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
-"Изчакаване на щракване с мишката, преди заснемане на екрана. Забавянето се "
+"Изчакване на щракване с мишката, преди заснемане на екрана. Забавянето се "
 "анулира"
 
 #: src/SpectacleCore.cpp:730
@@ -1398,87 +1444,3 @@ msgstr ""
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Отваряне и редактиране на съществуващ файл със снимка на екрана"
-
-#~ msgid "On Click"
-#~ msgstr "При натискане"
-
-#~ msgid "Take a New Screenshot"
-#~ msgstr "Нова екранна снимка"
-
-#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ msgstr ""
-#~ "Заснемане само на текущия изскачащ прозорец (като меню, подсказка за "
-#~ "инструменти и т.н.).\n"
-
-#~ msgid "Full Screen (All Monitors)"
-#~ msgstr "Цял екран (всички монитори)"
-
-#~ msgid "Full Screen (All Monitors, scaled)"
-#~ msgstr "Пълен екран (всички монитори, мащабирани)"
-
-#~ msgid "Image Size: %1x%2 pixels"
-#~ msgstr "Размер на изображението: %1x%2 пиксела"
-
-#~ msgid "Change Spectacle's settings."
-#~ msgstr "Промяна на настройките на Spectacle."
-
-#~ msgid "Add annotation to the screenshot"
-#~ msgstr "Добавяне на пояснение към екранната снимка"
-
-#~ msgid "Tools"
-#~ msgstr "Инструменти"
-
-#~ msgid "Record Screen"
-#~ msgstr "Запис на екрана"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Копиране на изображението в клипборда"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "Копиране на местоположението в клипборда"
-
-#~ msgid "Ready to take a screenshot"
-#~ msgstr "В готовност за екранна снимка"
-
-#~ msgctxt "@action:button"
-#~ msgid "Annotate"
-#~ msgstr "Пояснение"
-
-#~ msgid "Area:"
-#~ msgstr "Област:"
-
-#~ msgid "Cancel"
-#~ msgstr "Отказ"
-
-#~ msgid "The last used copy mode"
-#~ msgstr "Последно използваният режим на копиране"
-
-#~ msgid ""
-#~ "Click and drag to draw a selection rectangle,\n"
-#~ "or press Esc to quit"
-#~ msgstr ""
-#~ "Щракнете и плъзнете, за да нарисувате правоъгълник за избор, \n"
-#~ "или натиснете Esc, за да излезете"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
-
-#~ msgctxt "The entire screen area was captured, heading"
-#~ msgid "Full Screen Captured"
-#~ msgstr "Целият екран е заснет"
-
-#~ msgctxt "The current screen was captured, heading"
-#~ msgid "Current Screen Captured"
-#~ msgstr "Текущият екран е заснет"
-
-#~ msgctxt "The active window was captured, heading"
-#~ msgid "Active Window Captured"
-#~ msgstr "Активният прозорец е заснет"
-
-#~ msgctxt "The window under the mouse was captured, heading"
-#~ msgid "Window Under Cursor Captured"
-#~ msgstr "Уловен прозорец под курсора"
-
-#~ msgctxt "A rectangular region was captured, heading"
-#~ msgid "Rectangular Region Captured"
-#~ msgstr "Правоъгълният регион е заснет"

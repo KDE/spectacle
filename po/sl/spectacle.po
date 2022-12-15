@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:45+0000\n"
-"PO-Revision-Date: 2022-12-09 09:54+0100\n"
+"POT-Creation-Date: 2022-12-15 00:46+0000\n"
+"PO-Revision-Date: 2022-12-14 09:11+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -273,6 +273,11 @@ msgstr "Število:"
 msgid "Number for number annotations"
 msgstr "Število za številčenje opomb"
 
+#: src/Gui/AnnotationOptionsToolBarContents.qml:298
+#, kde-format
+msgid "Shadow"
+msgstr ""
+
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
 msgid "None"
@@ -348,10 +353,9 @@ msgid "Include mouse pointer"
 msgstr "Vključi miškino kazalko"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Pokaži miškino kazalko v zaslonski sliki"
+msgstr "Pokaži miškino kazalko v zaslonski sliki."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
 #, kde-format
@@ -363,6 +367,7 @@ msgstr "Vključi nazivno vrstico in obrobe okna"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Prikaži naslovno vrstico okna in obrobo, ko se zajema slika zaslona okna."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
 #, kde-format
@@ -370,17 +375,15 @@ msgid "Capture the current pop-up only"
 msgstr "Zajemi samo trenutno pojavno okno"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Zajemi le trenutno pojavno okno (meni, orodni namig, itd.). Če to ni "
-"omogočeno, bo pojavno okno zajeto skupaj z nadrejenim oknom"
+"Zajemi le trenutno pojavno okno (kot npr. meni, orodni namig, itd.), kadar "
+"zajemaš zaslonsko sliko okna.  Če to ni omogočeno, bo pojavno okno zajeto "
+"skupaj z nadrejenim oknom."
 
 #: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -388,22 +391,19 @@ msgid "Quit after manual Save or Copy"
 msgstr "Zapusti po ročnem shranjevanju ali kopiranju"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "Zapusti Spectacle po ročnem shranjevanju ali kopiranju slike"
+msgstr "Zapusti Spectacle po ročnem shranjevanju ali kopiranju slike."
 
 #: src/Gui/CaptureSettingsColumn.qml:53
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgid "Capture on click"
 msgstr "Zajemi ob kliku"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Počakaj na klik miške pred zajemom zaslonske slike"
+msgstr "Počakaj na klik miške pred zajemom zaslonske slike."
 
 #: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
 #, kde-format
@@ -1032,6 +1032,53 @@ msgstr "Pisava za opombe"
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Barva pisave za opombe"
+
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#, fuzzy, kde-format
+#| msgid "Stroke width for freehand annotation tool"
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr "Širina zapisa orodja za prostoročne opombe"
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#, fuzzy, kde-format
+#| msgid "Stroke width for line annotation tool"
+msgid "Whether line annotation tool has a drop shadow"
+msgstr "Širina zapisa orodja za opombe v obliki črte"
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#, fuzzy, kde-format
+#| msgid "Stroke width for arrow annotation tool"
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr "Širina zapisa orodja za opombe v obliki puščice"
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr "Širina zapisa orodja za opombe v obliki pravokotnika"
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr "Širina zapisa orodja za opombe v obliki elipse"
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
