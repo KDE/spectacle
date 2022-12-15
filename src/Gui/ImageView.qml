@@ -264,7 +264,7 @@ EmptyPage {
                     zoom: Math.min(1, Math.max(minZoom, defaultZoom))
                     scale: Math.max(1, Math.min(maxZoom, defaultZoom))
                     antialiasing: false
-                    smooth: false
+                    smooth: !root.annotating || annotations.effectiveZoom <= 2
                     width: implicitWidth
                     height: implicitHeight
                     visible: true
