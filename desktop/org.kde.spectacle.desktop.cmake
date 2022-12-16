@@ -189,6 +189,7 @@ Icon=spectacle
 Type=Application
 StartupNotify=false
 Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;OpenWithoutScreenshot;
+DBusActivatable=true
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
 X-KDE-Shortcuts=Print
@@ -247,7 +248,7 @@ Name[uk]=Захопити зображення усієї стільниці
 Name[x-test]=xxCapture Entire Desktopxx
 Name[zh_CN]=截取整个桌面
 Name[zh_TW]=擷取整個桌面
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / FullScreen -1
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -f
 X-KDE-Shortcuts=Shift+Print
 
 [Desktop Action CurrentMonitorScreenShot]
@@ -302,7 +303,7 @@ Name[uk]=Захопити зображення на моніторі
 Name[x-test]=xxCapture Current Monitorxx
 Name[zh_CN]=截取当前显示器
 Name[zh_TW]=擷取目前螢幕
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / CurrentScreen -1
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -m
 
 
 [Desktop Action ActiveWindowScreenShot]
@@ -357,7 +358,7 @@ Name[uk]=Захопити зображення активного вікна
 Name[x-test]=xxCapture Active Windowxx
 Name[zh_CN]=截取活动窗口
 Name[zh_TW]=擷取作用中的視窗
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / ActiveWindow -1 -1
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -a
 X-KDE-Shortcuts=Meta+Print
 
 [Desktop Action RectangularRegionScreenShot]
@@ -412,7 +413,7 @@ Name[uk]=Захопити прямокутну область екрана
 Name[x-test]=xxCapture Rectangular Regionxx
 Name[zh_CN]=截取矩形区域
 Name[zh_TW]=擷取矩形區域
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / RectangularRegion -1
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -r
 X-KDE-Shortcuts=Meta+Shift+Print
 
 [Desktop Action WindowUnderCursorScreenShot]
@@ -460,7 +461,7 @@ Name[uk]=Захопити зображення вікна під вказівн�
 Name[x-test]=xxCapture Window Under Cursorxx
 Name[zh_CN]=捕获光标所在窗口
 Name[zh_TW]=擷取游標下的視窗
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / WindowUnderCursor -1 -1
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -u
 X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action OpenWithoutScreenshot]
@@ -506,4 +507,4 @@ Name[uk]=Запустити без створення знімка
 Name[x-test]=xxLaunch without taking a screenshotxx
 Name[zh_CN]=启动时不进行截图
 Name[zh_TW]=啟動而不擷取螢幕截圖
-Exec=@QtBinariesDir@/qdbus org.kde.Spectacle / OpenWithoutScreenshot
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -l

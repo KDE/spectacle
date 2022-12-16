@@ -125,9 +125,6 @@ if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
     message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
 endif()
 
-# locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
-ecm_query_qt(QtBinariesDir QT_INSTALL_BINS)
-
 # setup handling of deprecated Qt & KF API
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2  KF 5.100.0)
