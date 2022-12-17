@@ -5,16 +5,13 @@
 #include "OptionsMenu.h"
 
 #include "CaptureModeModel.h"
-#include "SpectacleCore.h"
 #include "Gui/SettingsDialog/SettingsDialog.h"
-#include "Gui/SmartSpinBox.h"
+#include "SpectacleCore.h"
 #include "settings.h"
 
 #include <KLocalizedString>
 #include <KStandardAction>
 
-#include <QHBoxLayout>
-#include <QLabel>
 #include <QStyle>
 #include <qnamespace.h>
 

@@ -4,7 +4,6 @@
  */
 
 #include "AnnotationViewport.h"
-#include "AnnotationDocument.h"
 #include "EditAction.h"
 
 #include <QCursor>

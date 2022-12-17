@@ -6,7 +6,6 @@
  */
 
 #include "SpectacleCore.h"
-#include "CaptureModeModel.h"
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/Selection.h"
 #include "Gui/SelectionEditor.h"
@@ -15,7 +14,6 @@
 #include "ShortcutActions.h"
 // generated
 #include "Config.h"
-#include "settings.h"
 #include "spectacle_core_debug.h"
 
 #include <KGlobalAccel>
@@ -41,13 +39,10 @@
 #include <QQmlComponent>
 #include <QQmlContext>
 #include <QQmlEngine>
-#include <QQuickItem>
 #include <QScopedPointer>
 #include <QScreen>
-#include <QtMath>
 #include <QTimer>
-
-#include <memory>
+#include <QtMath>
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
 
