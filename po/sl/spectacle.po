@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-15 00:46+0000\n"
-"PO-Revision-Date: 2022-12-14 09:11+0100\n"
+"PO-Revision-Date: 2022-12-16 08:57+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.2.2\n"
 
@@ -276,7 +276,7 @@ msgstr "Število za številčenje opomb"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:298
 #, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "Senca"
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
@@ -1035,50 +1035,45 @@ msgstr "Barva pisave za opombe"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "Širina zapisa orodja za prostoročne opombe"
+msgstr "Ali orodje za prostoročne opombe nariše tudi senco"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:237
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr "Širina zapisa orodja za opombe v obliki črte"
+msgstr "Ali orodje za risanje črt riše tudi senco"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:241
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "Širina zapisa orodja za opombe v obliki puščice"
+msgstr "Ali orodje za risanje puščic riše tudi senco"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:245
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "Širina zapisa orodja za opombe v obliki pravokotnika"
+msgstr "Ali orodje za risanje pravokotnikov riše tudi senco"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:249
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "Širina zapisa orodja za opombe v obliki elipse"
+msgstr "Ali orodje za risanje elips riše tudi senco"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "Ali orodje za pisanje opomb riše tudi senco"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "Ali orodje za pisanje števil riše tudi senco"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
