@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:43+0000\n"
+"POT-Creation-Date: 2022-12-15 00:46+0000\n"
 "PO-Revision-Date: 2022-07-04 22:07+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -270,6 +270,11 @@ msgstr ""
 msgid "Number for number annotations"
 msgstr ""
 
+#: src/Gui/AnnotationOptionsToolBarContents.qml:298
+#, kde-format
+msgid "Shadow"
+msgstr ""
+
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
 msgid "None"
@@ -330,98 +335,72 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:30 src/Gui/OptionsMenu.cpp:40
-#, kde-format
-msgid "Capture Mode"
-msgstr ""
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:52
-#: src/Gui/MainToolBarContents.qml:130
-#, kde-format
-msgid "Options"
-msgstr ""
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:56 src/Gui/DialogPage.qml:166
-#: src/Gui/OptionsMenu.cpp:70
-#, kde-format
-msgid "Include mouse pointer"
-msgstr "Ta med musepeikaren"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:59 src/Gui/DialogPage.qml:167
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgid "Show the mouse cursor in the screenshot image"
-msgstr "Vis musepeikaren på skjermbiletet"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:64 src/Gui/DialogPage.qml:174
-#: src/Gui/OptionsMenu.cpp:82
-#, kde-format
-msgid "Include window titlebar and borders"
-msgstr "Ta med tittellinje og vindaugsramme"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:67 src/Gui/DialogPage.qml:175
-#: src/Gui/OptionsMenu.cpp:83
-#, kde-format
-msgid ""
-"Show the window title bar, the minimize/maximize/close buttons, and the "
-"window border"
-msgstr ""
-"Vis tittellinja, knappane minimer/maksimer/lukk og ramma rundt vindauget"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:73 src/Gui/DialogPage.qml:182
-#: src/Gui/OptionsMenu.cpp:94
-#, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Ta berre bilete av gjeldande sprettopp"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:76 src/Gui/OptionsMenu.cpp:96
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Ta berre bilete av gjeldande sprettoppvindauge (for eksempel ein meny eller "
-"ei hjelpeboble).\n"
-"Viss det ikkje er kryssa av her, vert sprettoppvindauget med i biletet av "
-"foreldervindauget."
-
-# Bruk av skråstrek i staden for «eller» gjer setninga klarare (manuell-biten gjeld både lagring og kopiering) og samtidig kortare.
-#: src/Gui/CaptureOptionsSidebarContents.qml:82 src/Gui/DialogPage.qml:191
-#: src/Gui/OptionsMenu.cpp:108
-#, kde-format
-msgid "Quit after manual Save or Copy"
-msgstr "Avslutt etter manuell lagring/kopiering"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:85 src/Gui/DialogPage.qml:192
-#: src/Gui/OptionsMenu.cpp:109
-#, kde-format
-msgid "Quit Spectacle after manually saving or copying the image"
-msgstr ""
-"Avslutt Spectacle etter manuell lagring eller kopiering av skjermbilete"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:92 src/Gui/DialogPage.qml:147
-#: src/Gui/OptionsMenu.cpp:138
-#, kde-format
-msgid "Delay:"
-msgstr "Forseinking:"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:96 src/Gui/DialogPage.qml:155
-#, kde-format
-msgid "On Click"
-msgstr "Ved klikk"
-
-#: src/Gui/CaptureOptionsSidebarContents.qml:112 src/Gui/DialogPage.qml:116
-#: src/Gui/MainToolBarContents.qml:106
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/CaptureOptionsSidebarContents.qml:124
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
 #, kde-format
-msgid "Take a New Screenshot"
-msgstr "Ta nytt skjermbilete"
+msgid "Include mouse pointer"
+msgstr "Ta med musepeikaren"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Ta med tittellinje og vindaugsramme"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Ta berre bilete av gjeldande sprettopp"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+
+# Bruk av skråstrek i staden for «eller» gjer setninga klarare (manuell-biten gjeld både lagring og kopiering) og samtidig kortare.
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Avslutt etter manuell lagring/kopiering"
+
+#: src/Gui/CaptureSettingsColumn.qml:44
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:53
+#, kde-format
+msgid "Capture on click"
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:55
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr ""
+
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#, kde-format
+msgid "Delay:"
+msgstr "Forseinking:"
 
 #: src/Gui/CopiedMessage.qml:13
 #, kde-format
@@ -448,37 +427,28 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekund"
 
-#: src/Gui/DialogPage.qml:52
+#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Ta nytt skjermbilete"
 
-#: src/Gui/DialogPage.qml:95
+#: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:139 src/Gui/OptionsMenu.cpp:66
+#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
+#: src/Gui/OptionsMenu.cpp:66
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:157
-#, kde-format
-msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr "Vent på museklikk før skjermfotografering"
-
-#: src/Gui/DialogPage.qml:183
-#, kde-format
-msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-msgstr ""
-
-#: src/Gui/DialogPage.qml:204
+#: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:210 src/Gui/MainToolBarContents.qml:149
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Help"
 msgstr ""
@@ -498,12 +468,12 @@ msgstr "Anna program …"
 msgid "Share"
 msgstr "Del"
 
-#: src/Gui/ImageView.qml:338
+#: src/Gui/ImageView.qml:375
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:352
+#: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -529,20 +499,60 @@ msgstr ""
 msgid "Export"
 msgstr "Eksporter"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:119
+#: src/Gui/MainToolBarContents.qml:116
 #, kde-format
 msgid "New Screenshot"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:142
+#: src/Gui/MainToolBarContents.qml:127
+#, kde-format
+msgid "Options"
+msgstr ""
+
+#: src/Gui/MainToolBarContents.qml:136
 #, kde-format
 msgid "Configure..."
 msgstr "Set opp …"
+
+#: src/Gui/OptionsMenu.cpp:40
+#, kde-format
+msgid "Capture Mode"
+msgstr ""
+
+#: src/Gui/OptionsMenu.cpp:71
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Vis musepeikaren på skjermbiletet"
+
+#: src/Gui/OptionsMenu.cpp:83
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Vis tittellinja, knappane minimer/maksimer/lukk og ramma rundt vindauget"
+
+#: src/Gui/OptionsMenu.cpp:96
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Ta berre bilete av gjeldande sprettoppvindauge (for eksempel ein meny eller "
+"ei hjelpeboble).\n"
+"Viss det ikkje er kryssa av her, vert sprettoppvindauget med i biletet av "
+"foreldervindauget."
+
+#: src/Gui/OptionsMenu.cpp:109
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr ""
+"Avslutt Spectacle etter manuell lagring eller kopiering av skjermbilete"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -1018,6 +1028,48 @@ msgstr ""
 msgid "Font color for annotations"
 msgstr ""
 
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#, kde-format
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#, kde-format
+msgid "Whether line annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#, kde-format
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, kde-format
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#, kde-format
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr ""
+
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgid "Image shared"
@@ -1206,17 +1258,17 @@ msgstr "Ta bilete av vindauget under peikaren"
 msgid "Launch Spectacle without capturing"
 msgstr "Start Spectacle utan å ta skjermbilete"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Skjermbiletlagring avbroten eller mislukka"
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:666
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Eit skjermbilete vart lagra til utklippstavla."
 
-#: src/SpectacleCore.cpp:664
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1225,44 +1277,44 @@ msgstr ""
 "Eit skjermbilete vart lagra som «%1» i «%2», og adressa til skjermbiletet "
 "vart kopiert til utklippstavla."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Eit skjermbilete vart lagra som «%1» i biletmappa."
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Eit skjermbilete vart lagra som «%1» i «%2»."
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Opna"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "Annotate"
 msgstr "Legg til merknad"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Ta bilete av heile skrivebordet (standard)"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Ta bilete av gjeldande skjerm"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Capture the active window"
 msgstr "Ta bilete av gjeldande vindauge"
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1271,7 +1323,7 @@ msgstr ""
 "Ta bilete av vindauget under peikaren, også foreldervindauge til "
 "sprettoppvindauge"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1280,50 +1332,50 @@ msgstr ""
 "Ta bilete av vindauget under peikaren, men ikkje foreldervindauge til "
 "sprettoppvindauge"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Ta bilete av eit utsnitt av skjermen"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Start Spectacle utan å ta eit bilete"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Start i grafisk grensesnitt (standard)"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Ta skjermbilete og avslutt utan å visa det grafiske grensesnittet"
 
 # skip-rule: aktiver
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Start i DBus-aktiveringsmodus"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "I bakgrunnsmodus, ikkje vis ei melding på skjermen når bilete vert teke"
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "I bakgrunnsmodus, lagra biletet til vald fil"
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "I bakgrunnsmodus, vent før skjermbilettaking (milliskund)"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1332,33 +1384,33 @@ msgstr ""
 "I bakgrunnsmodus, kopier skjermbiletet til utklippstavla, med mindre òg «-o» "
 "er brukt"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "I bakgrunnsmodus, kopier filadressa til skjermbiletet til utklippstavla"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Vent på klikk før skjermbilettaking (ignorerer oppgjeven ventetid)"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Start nytt Spectacle-vindauge utan å registrera med D-Bus"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "I bakgrunnsmodus, ikkje ta med musepeikaren i skjermbiletet"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "I bakgrunnsmodus, ikkje ta med vindaugspynt i skjermbiletet"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Opna og rediger eksisterande skjermbiletfil"
