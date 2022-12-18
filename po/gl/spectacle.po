@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-18 00:50+0000\n"
 "PO-Revision-Date: 2020-03-07 09:26+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -352,7 +352,7 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "%1 segundo"
 msgstr[1] "%1 segundos"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Incluír o punteiro do rato"
@@ -363,7 +363,7 @@ msgstr "Incluír o punteiro do rato"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Mostrar o cursor do rato na captura de pantalla."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Incluír a decoración da xanela"
@@ -374,7 +374,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Só capturar a xanela emerxente actual."
@@ -393,7 +393,7 @@ msgstr ""
 "Se desactiva esta opción, a xanela emerxente captúrase xunto coa xanela da "
 "que depende."
 
-#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Saír tras gardar ou copiar manualmente"
@@ -416,7 +416,7 @@ msgstr "Ao premer"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Agardar por un clic do rato antes de capturar a pantalla."
 
-#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgid "Delay:"
 msgstr "Atraso:"
@@ -460,7 +460,7 @@ msgid "Capture Modes"
 msgstr "<b>Modo de captura</b>"
 
 #: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
-#: src/Gui/OptionsMenu.cpp:66
+#: src/Gui/OptionsMenu.cpp:63
 #, fuzzy, kde-format
 #| msgid "Capture Delay"
 msgid "Capture Settings"
@@ -544,18 +544,18 @@ msgstr "Opcións de garda"
 msgid "Configure..."
 msgstr "Configurar…"
 
-#: src/Gui/OptionsMenu.cpp:40
+#: src/Gui/OptionsMenu.cpp:37
 #, fuzzy, kde-format
 #| msgid "<b>Capture Mode</b>"
 msgid "Capture Mode"
 msgstr "<b>Modo de captura</b>"
 
-#: src/Gui/OptionsMenu.cpp:71
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Mostrar o cursor do rato na captura de pantalla."
 
-#: src/Gui/OptionsMenu.cpp:83
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -564,7 +564,7 @@ msgstr ""
 "Mostrar a barra do título da xanela, os botóns de minimizar, maximizar e "
 "pechar, e o bordo da xanela."
 
-#: src/Gui/OptionsMenu.cpp:96
+#: src/Gui/OptionsMenu.cpp:93
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -574,18 +574,18 @@ msgstr ""
 "Se desactiva esta opción, a xanela emerxente captúrase xunto coa xanela da "
 "que depende."
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:106
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Saír de Spectacle tras gardar ou copiar a imaxe manualmente"
 
-#: src/Gui/OptionsMenu.cpp:123
+#: src/Gui/OptionsMenu.cpp:120
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture On Click"
 msgstr "Ao premer"
 
-#: src/Gui/OptionsMenu.cpp:143
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgid "No Delay"
 msgstr "Sen retardo"
@@ -1295,18 +1295,18 @@ msgstr "A xanela na que está o cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle"
 
-#: src/SpectacleCore.cpp:637
+#: src/SpectacleCore.cpp:632
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "A captura de pantalla cancelouse ou fallou."
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:661
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Gardouse unha captura no portapapeis."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:663
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1318,44 +1318,44 @@ msgstr ""
 "A ligazón de imaxe compartida (<a href=\"%1\">%1</a>) copiouse no "
 "portapapeis."
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Gardouse a captura co nome «%1» no cartafol persoal de imaxes."
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:669
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Gardouse a captura co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "Annotate"
 msgstr ""
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Capturar o escritorio completo (predeterminado)"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Capturar o monitor actual"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the active window"
 msgstr "Capturar a xanela activa"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1364,7 +1364,7 @@ msgstr ""
 "Capturar a xanela que está baixo o cursor, incluíndo as xanelas das que "
 "dependen as xanelas emerxentes"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1373,33 +1373,33 @@ msgstr ""
 "Capturar a xanela que está baixo o cursor, excluíndo as xanelas das que "
 "dependen as xanelas emerxentes"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Capturar unha zona rectangular da pantalla"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:713
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Tras facer unha captura de pantalla:"
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Iniciar en modo gráfico (predeterminado)"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Facer unha captura de pantalla e saír sen mostrar a interface gráfica"
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Iniciar en modo de activación por DBus"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1407,19 +1407,19 @@ msgstr ""
 "No modo en segundo plano, non mostrar unha notificación tras facer unha "
 "captura de pantalla"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "No modo en segundo plano, gardar a imaxe no ficheiro indicado"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "No modo en segundo plano, demora antes de facer a captura de pantalla (en "
 "milisegundos)"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:722
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid ""
@@ -1427,37 +1427,37 @@ msgid ""
 "used."
 msgstr "No modo en segundo plano, copiar a captura de pantalla no portapapeis"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:723
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "No modo en segundo plano, copiar a captura de pantalla no portapapeis"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Agardar por un clic antes de facer a captura de pantalla. Se definiu un "
 "atraso, usar esta opción provocará que se ignore o atraso"
 
-#: src/SpectacleCore.cpp:730
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:726
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Tras facer unha captura de pantalla:"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:727
 #, fuzzy, kde-format
 #| msgid "Whether the window decorations are included in the screenshot"
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Se incluír as decoracións de xanela na captura de pantalla"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""

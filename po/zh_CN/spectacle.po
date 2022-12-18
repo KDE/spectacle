@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-18 00:50+0000\n"
 "PO-Revision-Date: 2022-12-13 12:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -336,7 +336,7 @@ msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "取消 (%1 秒)"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "包含鼠标光标"
@@ -347,7 +347,7 @@ msgstr "包含鼠标光标"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "屏幕截图包含鼠标光标"
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "包含窗口标题栏和边框"
@@ -358,7 +358,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "仅截取当前弹出窗口"
@@ -376,7 +376,7 @@ msgstr ""
 "只截取当前弹出窗口 (如菜单，工具提示等)。\n"
 "如果禁用，弹出窗口将与父窗口一起截取。"
 
-#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "手动保存或复制后退出"
@@ -399,7 +399,7 @@ msgstr "点击时截图"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "在鼠标点击时截取屏幕"
 
-#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgid "Delay:"
 msgstr "延迟："
@@ -439,7 +439,7 @@ msgid "Capture Modes"
 msgstr "截图方式"
 
 #: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
-#: src/Gui/OptionsMenu.cpp:66
+#: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "截图设置"
@@ -520,24 +520,24 @@ msgstr "选项"
 msgid "Configure..."
 msgstr "配置..."
 
-#: src/Gui/OptionsMenu.cpp:40
+#: src/Gui/OptionsMenu.cpp:37
 #, kde-format
 msgid "Capture Mode"
 msgstr "截图方式"
 
-#: src/Gui/OptionsMenu.cpp:71
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "屏幕截图包含鼠标光标"
 
-#: src/Gui/OptionsMenu.cpp:83
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr "显示窗口标题栏、最小化/最大化/关闭按钮、窗口边框等"
 
-#: src/Gui/OptionsMenu.cpp:96
+#: src/Gui/OptionsMenu.cpp:93
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -546,17 +546,17 @@ msgstr ""
 "只截取当前弹出窗口 (如菜单，工具提示等)。\n"
 "如果禁用，弹出窗口将与父窗口一起截取。"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:106
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "在手动保存或复制图像之后退出 Spectacle"
 
-#: src/Gui/OptionsMenu.cpp:123
+#: src/Gui/OptionsMenu.cpp:120
 #, kde-format
 msgid "Capture On Click"
 msgstr "点击时截图"
 
-#: src/Gui/OptionsMenu.cpp:143
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgid "No Delay"
 msgstr "无延迟"
@@ -1253,116 +1253,116 @@ msgstr "截取光标所在窗口"
 msgid "Launch Spectacle without capturing"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:637
+#: src/SpectacleCore.cpp:632
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "屏幕截图已取消或失败"
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:669
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "打开"
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "Annotate"
 msgstr "标注"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "截取整个桌面 (默认)"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "截取当前屏幕"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the active window"
 msgstr "截取活动窗口"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "截取鼠标光标所在的窗口，包括弹出菜单的父窗口元素"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "截取鼠标光标所在的窗口，不包括父窗口的弹出菜单"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "截取屏幕中的一个矩形区域"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "启动到图形界面模式 (默认)"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "截图后自动退出，不显示图形界面"
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "启动到 DBus 激活模式"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "在后台模式下，截图时不弹出通知"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "在后台模式下，将图像保存到指定的文件"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "在后台模式下，截图前的延迟时间 (毫秒)"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1370,32 +1370,32 @@ msgid ""
 msgstr ""
 "在后台模式下，在后台模式下，将截图复制到剪贴板，除非同时使用了 -o 参数。"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "在后台模式下，将截图文件路径复制到剪贴板"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "截图前等待鼠标点击。延迟设置将被忽略"
 
-#: src/SpectacleCore.cpp:730
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "启动一个新的 Spectacle 图形界面实例，但不在 DBus 中注册。"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "在后台模式下，屏幕截图中包含光标指针"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"

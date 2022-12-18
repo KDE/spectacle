@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-18 00:50+0000\n"
 "PO-Revision-Date: 2022-04-07 18:23+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -349,7 +349,7 @@ msgstr[0] "%1 sekunda"
 msgstr[1] "%1 sekundy"
 msgstr[2] "%1 sekúnd"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:70
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Zahrnúť ukazovateľ myši"
@@ -360,7 +360,7 @@ msgstr "Zahrnúť ukazovateľ myši"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Zobraziť kurzor myši v obrázku snímky obrazovky"
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:82
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Zahrnúť záhlavie okna a okraje"
@@ -371,7 +371,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:94
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Zachytiť iba aktuálne vyskakovacie okno"
@@ -390,7 +390,7 @@ msgstr ""
 "Ak je voľba zakázaná, vyskakovacie okno bude zachytené spolu s nadradeným "
 "oknom."
 
-#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:108
+#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Ukončiť po ručnom uložení alebo kopírovaní"
@@ -414,7 +414,7 @@ msgstr "Po kliknutí"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Pred zachytením snímky obrazovky sa bude čakať na kliknutie myšou"
 
-#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:138
+#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgid "Delay:"
 msgstr "Oneskorenie:"
@@ -459,7 +459,7 @@ msgid "Capture Modes"
 msgstr "<b>Režim zachytenia</b>"
 
 #: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
-#: src/Gui/OptionsMenu.cpp:66
+#: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
@@ -543,18 +543,18 @@ msgstr "Uložiť voľby"
 msgid "Configure..."
 msgstr "Nastaviť..."
 
-#: src/Gui/OptionsMenu.cpp:40
+#: src/Gui/OptionsMenu.cpp:37
 #, fuzzy, kde-format
 #| msgid "<b>Capture Mode</b>"
 msgid "Capture Mode"
 msgstr "<b>Režim zachytenia</b>"
 
-#: src/Gui/OptionsMenu.cpp:71
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Zobraziť kurzor myši v obrázku snímky obrazovky"
 
-#: src/Gui/OptionsMenu.cpp:83
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -563,7 +563,7 @@ msgstr ""
 "Zobraziť záhlavie okna, tlačidlá minimalizovať/maximalizovať/zatvoriť a "
 "okraj okna"
 
-#: src/Gui/OptionsMenu.cpp:96
+#: src/Gui/OptionsMenu.cpp:93
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -573,19 +573,19 @@ msgstr ""
 "Ak je voľba zakázaná, vyskakovacie okno bude zachytené spolu s nadradeným "
 "oknom."
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:106
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 "Ukončiť aplikáciu Spectacle po ručnom uložení alebo skopírovaní obrázku"
 
-#: src/Gui/OptionsMenu.cpp:123
+#: src/Gui/OptionsMenu.cpp:120
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture On Click"
 msgstr "Po kliknutí"
 
-#: src/Gui/OptionsMenu.cpp:143
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgid "No Delay"
 msgstr "Bez oneskorenia"
@@ -1286,18 +1286,18 @@ msgstr "Zaznamenať okno pod kurzorom"
 msgid "Launch Spectacle without capturing"
 msgstr "Spustiť aplikáciu Spectacle bez zachytenia"
 
-#: src/SpectacleCore.cpp:637
+#: src/SpectacleCore.cpp:632
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zachytenie snímky obrazovky bolo zrušené alebo zlyhalo"
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:661
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snímka obrazovky bola uložená do vašej schránky."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:663
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1309,45 +1309,45 @@ msgstr ""
 "Snímka obrazovky bola uložený ako '%1' na '%2' a jej umiestnenie bolo "
 "skopírované do schránky."
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Snímka obrazovky bola uložená ako \"%1\" do vášho priečinka s obrázkami."
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:669
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímka obrazovky bola uložená ako \"%1\" do \"%2\"."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:674
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "Annotate"
 msgstr "Komentovať"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Zachytí celú pracovnú plochu (predvolené)"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Zachytí aktívny monitor"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the active window"
 msgstr "Zachytí aktívne okno"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1355,40 +1355,40 @@ msgid ""
 msgstr ""
 "Zachytí okno pod kurzorom, vrátane nadradených okien vyskakovacích ponúk"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "Zachytí okno pod kurzorom, okrem nadradených okien vyskakovacích ponúk"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Zachytí pravouhlú oblasť obrazovky"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spustiť aplikáciu Spectacle bez vytvorenia snímky obrazovky"
 
-#: src/SpectacleCore.cpp:719
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Spustí v režime grafického používateľského rozhrania (predvolené)"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Zachytí snímku a ukončiť bez zobrazenia grafického používateľského rozhrania"
 
-#: src/SpectacleCore.cpp:721
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Spustí v režime aktivácie zbernice DBus"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1396,17 +1396,17 @@ msgstr ""
 "Nezobrazí vyskakovacie upozornenie po vytvorení snímky obrazovky v režime "
 "pozadia"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Uloží obrázok do určeného súboru v režime pozadia"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Oneskorenie pred zachytením snímky (v milisekundách) v režime pozadia"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1415,33 +1415,33 @@ msgstr ""
 "V režime na pozadí, skopírovať snímku obrazovky do schránky, ak sa nepoužije "
 "-o"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "V režime na pozadí, skopírovať cestu k súboru snímky obrazovky do schránky"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Čaká na kliknutie pred zachytením snímky obrazovky (zruší oneskorenie)"
 
-#: src/SpectacleCore.cpp:730
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Spustí novú grafickú inštanciu Spectacle bez registrácie do DBus"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "V režime na pozadí, zahrnúť ukazovateľ myši na snímke obrazovky"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "V režime na pozadí, vynechať dekorácie zo snímky obrazovky"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Otvoriť a upraviť existujúci súbor so snímkom obrazovky"
