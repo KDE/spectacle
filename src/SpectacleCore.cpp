@@ -23,6 +23,7 @@
 #include <KMessageBox>
 #include <KNotification>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <QApplication>
 #include <QClipboard>
@@ -495,7 +496,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     // no way of knowing how long the disappearing effects take, but as per default
     // settings (and unless the user has set an extremely slow effect), 200
     // milliseconds is a good amount of wait time.
-    timeout = qMax(timeout, KWindowSystem::compositingActive() ? 200 : 50);
+    timeout = qMax(timeout, KX11Extras::compositingActive() ? 200 : 50);
 
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);

@@ -35,6 +35,7 @@
 
 #include <KWindowInfo>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <memory>
 
@@ -186,7 +187,7 @@ void PlatformXcb::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool 
 
 void PlatformXcb::updateWindowTitle(xcb_window_t theWindow)
 {
-    auto lTitle = KWindowSystem::readNameProperty(theWindow, XA_WM_NAME);
+    auto lTitle = KX11Extras::readNameProperty(theWindow, XA_WM_NAME);
     Q_EMIT windowTitleChanged(lTitle);
 }
 
@@ -542,7 +543,7 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
 
 void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecorations)
 {
-    auto lActiveWindow = KWindowSystem::activeWindow();
+    auto lActiveWindow = KX11Extras::activeWindow();
     updateWindowTitle(lActiveWindow);
 
     // if KWin is available, use the KWin DBus interfaces
@@ -632,7 +633,7 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
     // All parents are known now, find other transient children.
     // Assume that the lowest window is behind everything else, then if a new
     // transient window is discovered, its children can then also be found.
-    auto lWinList = KWindowSystem::stackingOrder();
+    auto lWinList = KX11Extras::stackingOrder();
     for (auto lWinId : lWinList) {
         QRect lWinRect;
         auto lParentWindow = getTransientWindowParent(lWinId, lWinRect, theIncludeDecorations);
