@@ -12,7 +12,7 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION     "5.15.2")
-set(KF5_MIN_VERSION    "5.92.0")
+set(KF5_MIN_VERSION    "5.101.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -139,6 +139,8 @@ endif()
 ki18n_install(po)
 
 ecm_qt_install_logging_categories(EXPORT SPECTACLE FILE spectacle.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+
+install(FILES completions/spectacle.zsh RENAME _spectacle DESTINATION ${KDE_INSTALL_ZSHAUTOCOMPLETEDIR})
 
 # summaries
 
