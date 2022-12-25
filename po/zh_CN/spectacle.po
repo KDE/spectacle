@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-18 00:50+0000\n"
-"PO-Revision-Date: 2022-12-13 12:22\n"
+"PO-Revision-Date: 2022-12-24 11:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -268,7 +268,7 @@ msgstr "数字标注的数字"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:298
 #, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "投影"
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
@@ -342,10 +342,9 @@ msgid "Include mouse pointer"
 msgstr "包含鼠标光标"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "屏幕截图包含鼠标光标"
+msgstr "屏幕截图包含鼠标光标。"
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
@@ -356,7 +355,7 @@ msgstr "包含窗口标题栏和边框"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
+msgstr "窗口模式截图包含标题栏和边框。"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -364,17 +363,14 @@ msgid "Capture the current pop-up only"
 msgstr "仅截取当前弹出窗口"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"只截取当前弹出窗口 (如菜单，工具提示等)。\n"
-"如果禁用，弹出窗口将与父窗口一起截取。"
+"窗口模式截图只截取当前弹出窗口 (如菜单，工具提示等)。如果禁用，将同时截取弹出"
+"窗口与它的父窗口。"
 
 #: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
 #, kde-format
@@ -382,22 +378,19 @@ msgid "Quit after manual Save or Copy"
 msgstr "手动保存或复制后退出"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "在手动保存或复制图像之后退出 Spectacle"
+msgstr "在手动保存或复制截图之后退出 Spectacle。"
 
 #: src/Gui/CaptureSettingsColumn.qml:53
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgid "Capture on click"
 msgstr "点击时截图"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "在鼠标点击时截取屏幕"
+msgstr "在鼠标点击时截取屏幕。"
 
 #: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
@@ -503,7 +496,7 @@ msgstr "导出"
 #: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
-msgstr "显示批注工具"
+msgstr "显示标注工具"
 
 #: src/Gui/MainToolBarContents.qml:116
 #, kde-format
@@ -944,7 +937,7 @@ msgstr "最近一次“另存为”操作所用的路径"
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, kde-format
 msgid "The last used annotation tool type"
-msgstr "最后使用的批注工具类型"
+msgstr "最后使用的标注工具类型"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
@@ -952,7 +945,7 @@ msgstr "最后使用的批注工具类型"
 #: src/Gui/SettingsDialog/spectacle.kcfg:179
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr "手绘批注工具的线条宽度"
+msgstr "手绘标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -960,7 +953,7 @@ msgstr "手绘批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:183
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr "高亮笔批注工具的线条宽度"
+msgstr "高亮笔标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -968,7 +961,7 @@ msgstr "高亮笔批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr "直线批注工具的线条宽度"
+msgstr "直线标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -976,7 +969,7 @@ msgstr "直线批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr "箭头批注工具的线条宽度"
+msgstr "箭头标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -986,7 +979,7 @@ msgstr "箭头批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:204
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr "矩形批注工具的线条宽度"
+msgstr "矩形标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -998,7 +991,7 @@ msgstr "矩形批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:212
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr "椭圆形批注工具的线条宽度"
+msgstr "椭圆形标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1006,7 +999,7 @@ msgstr "椭圆形批注工具的线条宽度"
 #: src/Gui/SettingsDialog/spectacle.kcfg:220
 #, kde-format
 msgid "Font for annotations"
-msgstr "批注字体"
+msgstr "标注字体"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1014,54 +1007,49 @@ msgstr "批注字体"
 #: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Font color for annotations"
-msgstr "批注字体颜色"
+msgstr "标注字体颜色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "手绘批注工具的线条宽度"
+msgstr "手绘标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:237
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr "直线批注工具的线条宽度"
+msgstr "直线标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:241
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "箭头批注工具的线条宽度"
+msgstr "箭头标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:245
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "矩形批注工具的线条宽度"
+msgstr "矩形标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:249
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "椭圆形批注工具的线条宽度"
+msgstr "椭圆形标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "文字标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "数字标注工具是否有投影效果"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1399,12 +1387,3 @@ msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"
-
-#~ msgid "On Click"
-#~ msgstr "点击时截图"
-
-#~ msgid "Take a New Screenshot"
-#~ msgstr "进行截图"
-
-#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ msgstr "只街区当前弹出窗口 (例如菜单、工具提示等)。\n"
