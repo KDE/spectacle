@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-18 00:50+0000\n"
-"PO-Revision-Date: 2022-12-10 11:44+0100\n"
+"PO-Revision-Date: 2022-12-29 10:26+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -272,7 +272,7 @@ msgstr "Numer dla numerowanych opisów"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:298
 #, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "Cień"
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
@@ -348,10 +348,9 @@ msgid "Include mouse pointer"
 msgstr "Z wskaźnikiem myszy"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Pokaż wskaźnik myszy na zrzucie ekranu"
+msgstr "Pokaż wskaźnik myszy na zrzucie ekranu."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
@@ -362,7 +361,7 @@ msgstr "Z paskiem tytułowym i obramowaniem okna"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
+msgstr "Pokaż pasek nazwy okna i jego obramowanie na zrzucie ekranu."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -370,18 +369,15 @@ msgid "Capture the current pop-up only"
 msgstr "Zrzuć tylko bieżące okno wyskakujące"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Zrzuć tylko bieżące okno wyskakujące (takie jak menu, podpowiedź, itp.)\n"
-"Jeśli wyłączono, to okno wyskakujące zostanie zrzucone wraz z oknem "
-"nadrzędnym."
+"Zrzuć tylko bieżące okno wyskakujące (takie jak menu, podpowiedź, itp.) na "
+"zrzucie okna. Jeśli wyłączono, to okno wyskakujące zostanie zrzucone wraz z "
+"oknem nadrzędnym."
 
 #: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
 #, kde-format
@@ -389,22 +385,19 @@ msgid "Quit after manual Save or Copy"
 msgstr "Zakończ po ręcznym zapisaniu lub skopiowaniu"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "Zakończ Spectacle po ręcznym zapisaniu lub skopiowaniu obrazu"
+msgstr "Zakończ Spectacle po ręcznym zapisaniu lub skopiowaniu obrazu."
 
 #: src/Gui/CaptureSettingsColumn.qml:53
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgid "Capture on click"
 msgstr "Zrzuć po naciśnięciu"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Czeka na kliknięcie myszą przed wykonaniem zrzutu ekranu"
+msgstr "Czeka na kliknięcie myszą przed wykonaniem zrzutu ekranu."
 
 #: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
@@ -1038,50 +1031,45 @@ msgstr "Kolor czcionki dla opisów"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "Szerokość kreski dla narzędzia opisywania odręcznego"
+msgstr "Określa czy narzędzie opisywania odręcznego rzuca cień"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:237
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr "Szerokość kreski dla narzędzia opisywania liniami"
+msgstr "Określa czy narzędzie opisywania liniami rzuca cień"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:241
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "Szerokość kreski dla narzędzia opisywania strzałkami"
+msgstr "Określa czy narzędzie opisywania strzałkami rzuca cień"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:245
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "Szerokość kreski dla narzędzia opisywania prostokątami"
+msgstr "Określa czy narzędzie opisywania prostokątami rzuca cień"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:249
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "Szerokość kreski dla narzędzia opisywania elipsami"
+msgstr "Określa czy narzędzie opisywania elipsami rzuca cień"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "Określa czy narzędzie opisywania tekstem rzuca cień"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "Określa czy narzędzie opisywania liczbami rzuca cień"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
