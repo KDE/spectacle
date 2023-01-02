@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:44+0000\n"
-"PO-Revision-Date: 2022-12-29 11:42+0100\n"
+"PO-Revision-Date: 2023-01-01 13:03+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -196,12 +196,12 @@ msgstr "სრულეკრანიანი რეჟიმი"
 #: src/Gui/CaptureAreaComboBox.cpp:128
 #, kde-format
 msgid "Full Screen (All Monitors)"
-msgstr ""
+msgstr "მთელ ეკრანზე (ყველა მონიტორი)"
 
 #: src/Gui/CaptureAreaComboBox.cpp:133
 #, kde-format
 msgid "Full Screen (All Monitors, scaled)"
-msgstr ""
+msgstr "მთელ ეკრანზე (ყველა მონიტორი, მასშტაბირებული)"
 
 #: src/Gui/CaptureAreaComboBox.cpp:137
 #, kde-format
@@ -236,7 +236,7 @@ msgstr "გაზიარება"
 #: src/Gui/KSImageWidget.cpp:32
 #, kde-format
 msgid "Image Size: %1x%2 pixels"
-msgstr ""
+msgstr "გამოსახულების ზომა: %1x%2 პიქსელი"
 
 #: src/Gui/KSMainWindow.cpp:151
 #, kde-format
@@ -246,7 +246,7 @@ msgstr "მორგება..."
 #: src/Gui/KSMainWindow.cpp:152
 #, kde-format
 msgid "Change Spectacle's settings."
-msgstr ""
+msgstr "Spectacle-ის პარამეტრების შეცვლა."
 
 #: src/Gui/KSMainWindow.cpp:157 src/SpectacleCore.cpp:500
 #, kde-format
@@ -256,7 +256,7 @@ msgstr "ანოტაცია"
 #: src/Gui/KSMainWindow.cpp:158
 #, kde-format
 msgid "Add annotation to the screenshot"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდისთვის ანოტაციის დამატება"
 
 #: src/Gui/KSMainWindow.cpp:165
 #, kde-format
@@ -357,7 +357,7 @@ msgstr ""
 #: src/Gui/KSMainWindow.cpp:569
 #, kde-format
 msgid "Ready to take a screenshot"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი გადასაღებად მზადაა"
 
 #: src/Gui/KSMainWindow.cpp:586
 #, kde-format
@@ -381,12 +381,12 @@ msgstr "ანოტაცია"
 #, kde-format
 msgctxt "@action:button"
 msgid "Annotation Done"
-msgstr ""
+msgstr "ანოტაცია მზადაა"
 
 #: src/Gui/KSWidget.cpp:47
 #, kde-format
 msgid "<b>Capture Mode</b>"
-msgstr ""
+msgstr "<b>გადაღების რეჟიმი</b>"
 
 #: src/Gui/KSWidget.cpp:63
 #, kde-format
@@ -401,7 +401,7 @@ msgstr "დაწკაპუნებისას"
 #: src/Gui/KSWidget.cpp:68
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდის გადაღებამდე თაგუნას წკაპის დალოდება"
 
 #: src/Gui/KSWidget.cpp:77
 #, kde-format
@@ -834,13 +834,13 @@ msgstr "ბოლო ბილიკი, რომელიც გამოყ�
 #: src/Gui/SettingsDialog/spectacle.kcfg:130
 #, kde-format
 msgid "The last used save mode"
-msgstr ""
+msgstr "ბოლოს გამოყენებული შენახვის რეჟიმი"
 
 #. i18n: ectx: label, entry (lastUsedCopyMode), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "The last used copy mode"
-msgstr ""
+msgstr "ბოლოს გამოყენებული კოპირების რეჟიმი"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -889,6 +889,8 @@ msgid ""
 "Click and drag to draw a selection rectangle,\n"
 "or press Esc to quit"
 msgstr ""
+"დააწკაპუნეთ და გადაათრიეთ რეგიონის მოსანიშნად\n"
+"ან Esc, გასასვლელად"
 
 #: src/QuickEditor/QuickEditor.cpp:716 src/QuickEditor/QuickEditor.cpp:724
 #, kde-format
@@ -1022,36 +1024,36 @@ msgstr "ეკრანის ანაბეჭდს გადაღება 
 #, kde-format
 msgctxt "The entire screen area was captured, heading"
 msgid "Full Screen Captured"
-msgstr ""
+msgstr "მთელი ეკრანი გადაღებულია"
 
 #: src/SpectacleCore.cpp:457
 #, kde-format
 msgctxt "The current screen was captured, heading"
 msgid "Current Screen Captured"
-msgstr ""
+msgstr "მიმდინარე ეკრანი გადაღებულია"
 
 #: src/SpectacleCore.cpp:460
 #, kde-format
 msgctxt "The active window was captured, heading"
 msgid "Active Window Captured"
-msgstr ""
+msgstr "აქტიური ფანჯარა გადაღებულია"
 
 #: src/SpectacleCore.cpp:464
 #, kde-format
 msgctxt "The window under the mouse was captured, heading"
 msgid "Window Under Cursor Captured"
-msgstr ""
+msgstr "კურსორის ქვეშ მყოფი ფანჯარა გადაღებულია"
 
 #: src/SpectacleCore.cpp:467
 #, kde-format
 msgctxt "A rectangular region was captured, heading"
 msgid "Rectangular Region Captured"
-msgstr ""
+msgstr "ოთხკუთხედი რეგიონი გადაღებულია"
 
 #: src/SpectacleCore.cpp:477
 #, kde-format
 msgid "A screenshot was copied to your clipboard."
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი ბუფერში დაკოპირდა."
 
 #: src/SpectacleCore.cpp:479
 #, kde-format
@@ -1059,6 +1061,8 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been copied to your clipboard."
 msgstr ""
+"ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
+"ბილიკი შენახულია ბუფერში."
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -1075,7 +1079,7 @@ msgstr "ეკრანის ანაბეჭდი შენახული�
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
-msgstr ""
+msgstr "გახსნა"
 
 #: src/SpectacleCore.cpp:530
 #, kde-format
