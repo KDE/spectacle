@@ -38,6 +38,7 @@ private:
 
 public:
     QString defaultSaveLocation() const;
+    QString defaultVideoSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
     void setPixmap(const QPixmap &pixmap);
@@ -48,6 +49,8 @@ public:
     CaptureModeModel::CaptureMode captureMode() const;
     void setCaptureMode(CaptureModeModel::CaptureMode theCaptureMode);
     QString formatFilename(const QString &nameTemplate);
+
+    QString suggestedVideoFilename(const QString &extension);
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 

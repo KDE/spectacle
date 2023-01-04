@@ -6,6 +6,7 @@
 
 #include "PlatformNull.h"
 
+#include <QDebug>
 #include <QPixmap>
 
 /* -- Null Platform ---------------------------------------------------------------------------- */
@@ -33,4 +34,33 @@ void PlatformNull::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool
     Q_UNUSED(theIncludePointer)
     Q_UNUSED(theIncludeDecorations)
     Q_EMIT newScreenshotTaken(QPixmap());
+}
+
+VideoPlatformNull::VideoPlatformNull(QObject *parent)
+    : VideoPlatform(parent)
+{
+}
+
+QVector<VideoPlatform::RecordingMode> VideoPlatformNull::supportedRecordingModes() const
+{
+    return {};
+}
+
+void VideoPlatformNull::startRecording(const QString &path, RecordingMode mode, const RecordingOption &, bool withPointer)
+{
+    setRecording(true);
+    m_path = path;
+    qDebug() << "start recording" << mode << "pointer:" << withPointer << path;
+}
+
+void VideoPlatformNull::finishRecording()
+{
+    setRecording(false);
+    qDebug() << "finish recording" << m_path;
+    Q_EMIT recordingSaved(m_path);
+}
+
+QString VideoPlatformNull::extension() const
+{
+    return QStringLiteral("mp4");
 }

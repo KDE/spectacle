@@ -17,6 +17,7 @@ class QCommandLineParser;
 #include "Gui/CaptureWindow.h"
 #include "Gui/ViewerWindow.h"
 #include "Platforms/PlatformLoader.h"
+#include "RecordingModeModel.h"
 #include "settings.h"
 
 #include <memory>
@@ -37,9 +38,12 @@ class SpectacleCore : public QObject
     Q_OBJECT
     Q_PROPERTY(Platform *platform READ platform CONSTANT FINAL)
     Q_PROPERTY(CaptureModeModel *captureModeModel READ captureModeModel CONSTANT FINAL)
+    Q_PROPERTY(RecordingModeModel *recordingModeModel READ recordingModeModel CONSTANT FINAL)
     Q_PROPERTY(QUrl screenCaptureUrl READ screenCaptureUrl NOTIFY screenCaptureUrlChanged FINAL)
     Q_PROPERTY(int captureTimeRemaining READ captureTimeRemaining NOTIFY captureTimeRemainingChanged FINAL)
     Q_PROPERTY(qreal captureProgress READ captureProgress NOTIFY captureProgressChanged FINAL)
+    Q_PROPERTY(bool recordingSupported READ recordingSupported CONSTANT)
+    Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
 public:
     enum class StartMode {
         Gui = 0,
@@ -60,6 +64,7 @@ public:
     KWayland::Client::PlasmaShell *plasmaShellInterfaceWrapper() const;
 
     CaptureModeModel *captureModeModel() const;
+    RecordingModeModel *recordingModeModel() const;
 
     AnnotationDocument *annotationDocument() const;
 
@@ -80,6 +85,13 @@ public:
     void initGuiNoScreenshot();
 
     void syncExportPixmap();
+
+    void startRecordingWindow(const QString &uuid, bool withPointer);
+    void startRecordingRegion(const QRect &region, bool withPointer);
+    void startRecordingScreen(QScreen *screen, bool withPointer);
+    Q_INVOKABLE void finishRecording();
+    bool isRecording() const;
+    bool recordingSupported() const;
 
 public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
@@ -105,6 +117,7 @@ Q_SIGNALS:
     void allDone();
     void grabDone(const QPixmap &pixmap);
     void grabFailed();
+    void recordingChanged(bool isRecording);
 
 private:
     Platform::GrabMode toPlatformGrabMode(CaptureModeModel::CaptureMode theCaptureMode);
@@ -123,7 +136,9 @@ private:
     bool m_notify = false;
     QUrl m_screenCaptureUrl;
     std::unique_ptr<Platform> m_platform;
+    std::unique_ptr<VideoPlatform> m_videoPlatform;
     std::unique_ptr<CaptureModeModel> m_captureModeModel;
+    std::unique_ptr<RecordingModeModel> m_recordingModeModel;
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
     std::unique_ptr<ViewerWindow> m_viewerWindow;

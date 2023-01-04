@@ -26,6 +26,7 @@ EmptyPage {
     // Used in ViewerWindow::setMode()
     readonly property real minimumWidth: Math.max(
         header.implicitWidth,
+
         annotationsToolBar.implicitWidth + separator.implicitWidth + footerLoader.implicitWidth
     )
     readonly property real minimumHeight: header.implicitHeight
@@ -275,70 +276,34 @@ EmptyPage {
         }
     }
 
+    QQC2.TabBar {
+        id: captureTabs
+        anchors {
+            top: parent.top
+            left: captureOptionsLoader.left
+            right: parent.right
+        }
+        QQC2.TabButton {
+            text: qsTr("Screenshot")
+            readonly property string optionsFile: "CaptureOptions.qml"
+        }
+        QQC2.TabButton {
+            text: qsTr("Recording")
+            readonly property string optionsFile: "RecordOptions.qml"
+        }
+        visible: SpectacleCore.recordingSupported
+    }
+
     Loader { // parent is contentItem
         id: captureOptionsLoader
         visible: true
         active: visible
         anchors {
-            top: parent.top
+            top: captureTabs.visible ? captureTabs.bottom : parent.top
             bottom: parent.bottom
             right: parent.right
         }
-        sourceComponent: QQC2.Pane {
-
-            leftPadding: Kirigami.Units.mediumSpacing * 2
-                + (!mirrored ? sideBarSeparator.implicitWidth : 0)
-            rightPadding: Kirigami.Units.mediumSpacing * 2
-                + (mirrored ? sideBarSeparator.implicitWidth : 0)
-            topPadding: Kirigami.Units.mediumSpacing * 2
-            bottomPadding: Kirigami.Units.mediumSpacing * 2
-
-            contentItem: Column {
-                spacing: Kirigami.Units.mediumSpacing
-                Kirigami.Heading {
-                    anchors.left: parent.left
-                    width: Math.max(implicitWidth, parent.width)
-                    topPadding: -captureHeadingMetrics.descent
-                    bottomPadding: -captureHeadingMetrics.descent + parent.spacing
-                    text: i18n("Take a new screenshot")
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
-                    level: 3
-                    FontMetrics {
-                        id: captureHeadingMetrics
-                    }
-                }
-                CaptureModeButtonsColumn {
-                    anchors.left: parent.left
-                    width: Math.max(implicitWidth, parent.width)
-                }
-                Kirigami.Heading {
-                    anchors.left: parent.left
-                    width: Math.max(implicitWidth, parent.width)
-                    topPadding: -captureHeadingMetrics.descent + parent.spacing
-                    bottomPadding: -captureHeadingMetrics.descent + parent.spacing
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
-                    text: i18n("Capture Settings")
-                    level: 3
-                }
-                CaptureSettingsColumn {
-                    anchors.left: parent.left
-                    width: Math.max(Layout.minimumWidth, parent.width)
-                }
-            }
-            background: Rectangle {
-                color: Kirigami.Theme.backgroundColor
-                Kirigami.Separator {
-                    id: sideBarSeparator
-                    anchors {
-                        left: parent.left
-                        top: parent.top
-                        bottom: parent.bottom
-                    }
-                }
-            }
-        }
+        source: captureTabs.contentChildren[captureTabs.currentIndex].optionsFile
     }
 
     Loader {

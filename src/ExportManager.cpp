@@ -113,18 +113,26 @@ void ExportManager::setTimestamp(const QDateTime &timestamp)
 
 // native file save helpers
 
-QString ExportManager::defaultSaveLocation() const
+static QString ensureDefaultLocationExists(const QUrl &saveUrl)
 {
-    const QUrl saveUrl = Settings::self()->defaultSaveLocation();
-    QString savePath = saveUrl.scheme().isEmpty() ? saveUrl.toString() : saveUrl.toLocalFile();
+    QString savePath = saveUrl.isRelative() ? saveUrl.toString() : saveUrl.toLocalFile();
     savePath = QDir::cleanPath(savePath);
 
     QDir savePathDir(savePath);
     if (!(savePathDir.exists())) {
         savePathDir.mkpath(QStringLiteral("."));
     }
-
     return savePath;
+}
+
+QString ExportManager::defaultSaveLocation() const
+{
+    return ensureDefaultLocationExists(Settings::self()->defaultSaveLocation());
+}
+
+QString ExportManager::defaultVideoSaveLocation() const
+{
+    return ensureDefaultLocationExists(Settings::self()->defaultVideoSaveLocation());
 }
 
 QUrl ExportManager::getAutosaveFilename()
@@ -140,6 +148,21 @@ QUrl ExportManager::getAutosaveFilename()
         return fileNameUrl;
     } else {
         return QUrl();
+    }
+}
+
+QString ExportManager::suggestedVideoFilename(const QString &extension)
+{
+    const QString baseDir = defaultVideoSaveLocation();
+    const QDir baseDirPath(baseDir);
+    const QString filename = formatFilename(Settings::self()->saveVideoFormat());
+    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
+
+    const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
+    if (fileNameUrl.isValid() && fileNameUrl.isLocalFile()) {
+        return fileNameUrl.toLocalFile();
+    } else {
+        return {};
     }
 }
 

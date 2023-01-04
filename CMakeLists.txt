@@ -50,6 +50,7 @@ find_package(
         PrintSupport
         Svg
         Test
+        WaylandClient
 )
 
 find_package(
@@ -69,6 +70,18 @@ find_package(
         GuiAddons
         Kirigami2
 )
+
+find_package(Wayland REQUIRED COMPONENTS Client)
+find_package(PlasmaWaylandProtocols REQUIRED)
+if (QT_MAJOR_VERSION EQUAL "5")
+    find_package(QtWaylandScanner REQUIRED)
+endif()
+find_package(KPipeWire)
+set_package_properties(KPipeWire PROPERTIES DESCRIPTION
+    "Used to record pipewire streams into a file"
+    TYPE REQUIRED
+)
+
 # optional components
 find_package(KF5DocTools ${KF5_MIN_VERSION})
 set_package_properties(KF5DocTools PROPERTIES DESCRIPTION

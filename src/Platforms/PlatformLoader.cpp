@@ -10,6 +10,7 @@
 #include "PlatformKWinWayland.h"
 #include "PlatformKWinWayland2.h"
 #include "PlatformNull.h"
+#include "VideoPlatformWayland.h"
 
 #ifdef XCB_FOUND
 #include "PlatformXcb.h"
@@ -39,4 +40,12 @@ PlatformPtr loadPlatform()
 
     // If nothing else worked, return the null platform
     return std::make_unique<PlatformNull>();
+}
+
+VideoPlatformPtr loadVideoPlatform()
+{
+    if (KWindowSystem::isPlatformWayland()) {
+        return std::make_unique<VideoPlatformWayland>();
+    }
+    return std::make_unique<VideoPlatformNull>();
 }

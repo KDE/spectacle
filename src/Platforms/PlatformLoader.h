@@ -7,7 +7,11 @@
 #pragma once
 
 #include "Platform.h"
+#include "VideoPlatform.h"
 #include <memory>
 
 using PlatformPtr = std::unique_ptr<Platform>;
 PlatformPtr loadPlatform();
+
+using VideoPlatformPtr = std::unique_ptr<VideoPlatform>;
+VideoPlatformPtr loadVideoPlatform();

@@ -108,6 +108,7 @@ SpectacleCore::~SpectacleCore() noexcept
 void SpectacleCore::init()
 {
     m_platform = loadPlatform();
+    m_videoPlatform = loadVideoPlatform();
     auto platform = m_platform.get();
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
@@ -211,6 +212,7 @@ void SpectacleCore::init()
 
     // set up CaptureMode model
     m_captureModeModel = std::make_unique<CaptureModeModel>(platform->supportedGrabModes(), this);
+    m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
     auto captureModeModel = m_captureModeModel.get();
     connect(platform, &Platform::supportedGrabModesChanged, captureModeModel, [this](){
         m_captureModeModel->setGrabModes(m_platform->supportedGrabModes());
@@ -225,6 +227,11 @@ void SpectacleCore::init()
                 w->deleteLater();
             }
         }
+    });
+
+    connect(m_videoPlatform.get(), &VideoPlatform::recordingChanged, this, &SpectacleCore::recordingChanged);
+    connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
+        m_viewerWindow->showSavedMessage(QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile));
     });
 }
 
@@ -246,6 +253,11 @@ KWayland::Client::PlasmaShell *SpectacleCore::plasmaShellInterfaceWrapper() cons
 CaptureModeModel *SpectacleCore::captureModeModel() const
 {
     return m_captureModeModel.get();
+}
+
+RecordingModeModel *SpectacleCore::recordingModeModel() const
+{
+    return m_recordingModeModel.get();
 }
 
 AnnotationDocument *SpectacleCore::annotationDocument() const
@@ -862,4 +874,41 @@ void SpectacleCore::unityLauncherUpdate(const QVariantMap &properties) const
                                                       QStringLiteral("Update"));
     message.setArguments({QApplication::desktopFileName(), properties});
     QDBusConnection::sessionBus().send(message);
+}
+
+void SpectacleCore::startRecordingScreen(QScreen *screen, bool withPointer)
+{
+    Q_ASSERT(!m_videoPlatform->isRecording());
+    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    m_videoPlatform->startRecording(output, VideoPlatform::Screen, screen, withPointer);
+}
+
+void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
+{
+    Q_ASSERT(!m_videoPlatform->isRecording());
+    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    m_videoPlatform->startRecording(output, VideoPlatform::Region, region, withPointer);
+}
+
+void SpectacleCore::startRecordingWindow(const QString &uuid, bool withPointer)
+{
+    Q_ASSERT(!m_videoPlatform->isRecording());
+    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    m_videoPlatform->startRecording(output, VideoPlatform::Window, uuid, withPointer);
+}
+
+void SpectacleCore::finishRecording()
+{
+    Q_ASSERT(m_videoPlatform->isRecording());
+    m_videoPlatform->finishRecording();
+}
+
+bool SpectacleCore::isRecording() const
+{
+    return m_videoPlatform->isRecording();
+}
+
+bool SpectacleCore::recordingSupported() const
+{
+    return !m_videoPlatform->supportedRecordingModes().isEmpty();
 }

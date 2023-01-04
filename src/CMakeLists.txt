@@ -13,6 +13,7 @@ add_executable(spectacle
     ${SPECTACLE_SRCS}
     Main.cpp
     CaptureModeModel.cpp
+    RecordingModeModel.cpp
     ExportManager.cpp
     SpectacleCore.cpp
     SpectacleDBusAdapter.cpp
@@ -41,6 +42,9 @@ add_executable(spectacle
     Platforms/PlatformNull.cpp
     Platforms/PlatformKWinWayland.cpp
     Platforms/PlatformKWinWayland2.cpp
+    Platforms/VideoPlatform.cpp
+    Platforms/VideoPlatformWayland.cpp
+    Platforms/screencasting.cpp
 
     ../resources.qrc
     )
@@ -61,6 +65,17 @@ if(XCB_FOUND)
     endif()
 endif()
 
+if (QT_MAJOR_VERSION EQUAL "5")
+    ecm_add_qtwayland_client_protocol(spectacle
+        PROTOCOL ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
+        BASENAME zkde-screencast-unstable-v1
+    )
+else()
+    qt6_generate_wayland_protocol_client_sources(spectacle FILES
+        ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml)
+endif()
+
+
 if(PURPOSE_FOUND)
     target_link_libraries(spectacle KF5::PurposeWidgets)
 endif()
@@ -76,6 +91,8 @@ target_link_libraries(
         Qt::Quick
         Qt::QuickControls2
         Qt::QuickTemplates2
+        Qt::GuiPrivate
+        Qt::WaylandClient
         KF5::CoreAddons
         KF5::DBusAddons
         KF5::WidgetsAddons
@@ -89,6 +106,8 @@ target_link_libraries(
         KF5::XmlGui
         KF5::WaylandClient
         KF5::GuiAddons
+        K::KPipeWireRecord
+        Wayland::Client
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

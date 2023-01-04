@@ -111,7 +111,13 @@
     <entry name="defaultSaveLocation" type="Url">
         <label>Default filename</label>
         <default code="true">
-            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/')) 
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/'))
+        </default>
+    </entry>
+    <entry name="defaultVideoSaveLocation" type="Url">
+        <label>Default filename</label>
+        <default code="true">
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)+QLatin1Char('/'))
         </default>
     </entry>
     <entry name="compressionQuality" type="UInt">
@@ -124,9 +130,17 @@
         <label>Default save image format</label>
         <default>PNG</default>
     </entry>
+     <entry name="defaultSaveVideoFormat" type="String">
+        <label>Default save image format</label>
+        <default>mkv</default>
+    </entry>
     <entry name="saveFilenameFormat" type="String">
         <label>The default filename used when saving</label>
         <default>Screenshot_%Y%M%D_%H%m%S</default>
+    </entry>
+    <entry name="saveVideoFormat" type="String">
+        <label>The default filename used when recording a video</label>
+        <default>Screencast_%Y%M%D_%H%m%S</default>
     </entry>
     <entry name="lastSaveLocation" type="Url">
         <label>The path of the file saved last</label>
