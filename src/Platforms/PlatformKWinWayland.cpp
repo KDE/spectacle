@@ -106,11 +106,6 @@ PlatformKWinWayland::PlatformKWinWayland(QObject *parent)
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWinWayland::updateSupportedGrabModes);
 }
 
-QString PlatformKWinWayland::platformName() const
-{
-    return QStringLiteral("KWinWayland");
-}
-
 static std::array<int, 3> s_plasmaVersion = {-1, -1, -1};
 
 std::array<int, 3> findPlasmaMinorVersion()

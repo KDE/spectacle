@@ -15,7 +15,6 @@ public:
     explicit PlatformNull(QObject *parent = nullptr);
     ~PlatformNull() override = default;
 
-    QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 

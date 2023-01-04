@@ -255,11 +255,6 @@ PlatformKWinWayland2::PlatformKWinWayland2(QObject *parent)
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWinWayland2::updateSupportedGrabModes);
 }
 
-QString PlatformKWinWayland2::platformName() const
-{
-    return QStringLiteral("PlatformKWinWayland2");
-}
-
 Platform::GrabModes PlatformKWinWayland2::supportedGrabModes() const
 {
     return m_grabModes;

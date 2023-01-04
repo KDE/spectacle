@@ -10,7 +10,6 @@
 
 #include <QFlags>
 #include <QObject>
-#include <QScreen>
 
 class Platform : public QObject
 {
@@ -41,7 +40,6 @@ public:
     explicit Platform(QObject *parent = nullptr);
     ~Platform() override = default;
 
-    virtual QString platformName() const = 0;
     virtual GrabModes supportedGrabModes() const = 0;
     virtual ShutterModes supportedShutterModes() const = 0;
 

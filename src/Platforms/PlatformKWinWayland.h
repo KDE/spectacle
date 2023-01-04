@@ -18,7 +18,6 @@ public:
     explicit PlatformKWinWayland(QObject *parent = nullptr);
     ~PlatformKWinWayland() override = default;
 
-    QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 

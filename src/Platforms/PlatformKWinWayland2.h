@@ -39,7 +39,6 @@ public:
         Screen = 1,
     };
 
-    QString platformName() const override;
     GrabModes supportedGrabModes() const override;
     ShutterModes supportedShutterModes() const override;
 

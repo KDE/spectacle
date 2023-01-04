@@ -140,11 +140,6 @@ PlatformXcb::~PlatformXcb()
 {
 }
 
-QString PlatformXcb::platformName() const
-{
-    return QStringLiteral("Xcb");
-}
-
 Platform::GrabModes PlatformXcb::supportedGrabModes() const
 {
     return m_grabModes;

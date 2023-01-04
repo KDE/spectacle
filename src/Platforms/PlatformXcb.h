@@ -21,7 +21,6 @@ public:
     explicit PlatformXcb(QObject *parent = nullptr);
     ~PlatformXcb() override;
 
-    QString platformName() const override final;
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 

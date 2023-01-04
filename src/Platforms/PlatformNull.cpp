@@ -15,11 +15,6 @@ PlatformNull::PlatformNull(QObject *parent)
 {
 }
 
-QString PlatformNull::platformName() const
-{
-    return QStringLiteral("Null");
-}
-
 Platform::GrabModes PlatformNull::supportedGrabModes() const
 {
     return {GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent
