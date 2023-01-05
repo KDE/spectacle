@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2015, 2016, 2017, 2018, 2019, 2020.
-# Vit Pelcak <vit@pelcak.org>, 2021.
+# Vit Pelcak <vit@pelcak.org>, 2021, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-18 00:50+0000\n"
-"PO-Revision-Date: 2021-08-16 12:37+0200\n"
+"PO-Revision-Date: 2023-01-04 15:04+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.04.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -26,22 +26,22 @@ msgstr "Spustit Spectacle"
 #: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Capture Entire Desktop"
-msgstr "Zachytit celou plochu"
+msgstr "Sejmout celou plochu"
 
 #: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:43
 #, kde-format
 msgid "Capture Current Monitor"
-msgstr "Zachytit současný monitor"
+msgstr "Sejmout současný monitor"
 
 #: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:48
 #, kde-format
 msgid "Capture Active Window"
-msgstr "Zachytit aktivní okno"
+msgstr "Sejmout aktivní okno"
 
 #: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:53
 #, kde-format
 msgid "Capture Rectangular Region"
-msgstr "Zachytit obdélníkovou oblast"
+msgstr "Sejmout obdélníkovou oblast"
 
 #: src/CaptureModeModel.cpp:95
 #, kde-format
@@ -51,7 +51,7 @@ msgstr "Obdélníková oblast"
 #: src/CaptureModeModel.cpp:102
 #, kde-format
 msgid "All Screens"
-msgstr ""
+msgstr "Všechny obrazovky"
 
 #: src/CaptureModeModel.cpp:102
 #, kde-format
@@ -195,7 +195,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Timezone"
-msgstr ""
+msgstr "Časové pásmo"
 
 #: src/ExportManager.cpp:603
 #, kde-format
@@ -229,12 +229,12 @@ msgstr "Tah:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Šířka pomocí"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Barva tahu"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
@@ -315,7 +315,7 @@ msgstr "Elipsa"
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelizovat"
 
 #: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
@@ -336,9 +336,9 @@ msgstr "Číslo"
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Zrušit (%1 sekunda)"
+msgstr[1] "Zrušit (%1 sekundy)"
+msgstr[2] "Zrušit (%1 sekund)"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #, kde-format
@@ -348,7 +348,7 @@ msgstr "Zahrnout ukazatel myši"
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr ""
+msgstr "Zobrazit kurzor myši na snímku obrazovky"
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
@@ -364,7 +364,7 @@ msgstr ""
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
 msgid "Capture the current pop-up only"
-msgstr "Zachytit pouze současné vyskakovací okno"
+msgstr "Sejmout pouze současné vyskakovací okno"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, kde-format
@@ -382,17 +382,17 @@ msgstr "Ukončit po manuálním uložení nebo zkopírování"
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr ""
+msgstr "Ukončit Spectacle po uložení nebo zkopírování obrázku."
 
 #: src/Gui/CaptureSettingsColumn.qml:53
 #, kde-format
 msgid "Capture on click"
-msgstr ""
+msgstr "Sejmout při kliknutí"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr ""
+msgstr "Počkat na kliknutí myší před zachycením snímku obrazovky."
 
 #: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
 #, kde-format
@@ -408,7 +408,7 @@ msgstr "Snímek byl zkopírován do schránky."
 #, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
-msgstr ""
+msgstr "Žádná prodleva"
 
 #: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -433,18 +433,18 @@ msgstr "Pořídit nový snímek"
 #: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
-msgstr ""
+msgstr "Režimy sejmutí"
 
 #: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:316
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
-msgstr ""
+msgstr "Nastavení sejmutí"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "Nastavit Spectacle…"
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
 #, kde-format
@@ -474,7 +474,7 @@ msgstr "Zvětšení:"
 #: src/Gui/ImageView.qml:389
 #, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "Přiblížení obrázku"
 
 #: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
@@ -500,7 +500,7 @@ msgstr "Exportovat"
 #: src/Gui/MainToolBarContents.qml:93
 #, kde-format
 msgid "Show Annotation Tools"
-msgstr ""
+msgstr "Zobrazit nástroje pro anotace"
 
 #: src/Gui/MainToolBarContents.qml:116
 #, kde-format
@@ -520,7 +520,7 @@ msgstr "Nastavit..."
 #: src/Gui/OptionsMenu.cpp:37
 #, kde-format
 msgid "Capture Mode"
-msgstr ""
+msgstr "Režim sejmutí"
 
 #: src/Gui/OptionsMenu.cpp:68
 #, kde-format
@@ -549,7 +549,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:120
 #, kde-format
 msgid "Capture On Click"
-msgstr ""
+msgstr "Sejmout při kliknutí"
 
 #: src/Gui/OptionsMenu.cpp:140
 #, kde-format
@@ -608,7 +608,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Use last-used capture mode"
-msgstr ""
+msgstr "Naposledy použitý režim sejmutí"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
@@ -710,7 +710,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, kde-format
 msgid "Show capture instructions"
-msgstr ""
+msgstr "Zobrazit instrukce sejmutí"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:218
@@ -851,7 +851,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr ""
+msgstr "Zda zobrazovat instrukce pro sejmutí při výběru oblasti"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:64
@@ -887,7 +887,7 @@ msgstr "Zda budou dekorace oken zahrnuty ve snímku"
 #: src/Gui/SettingsDialog/spectacle.kcfg:93
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Zachytit pouze současnou vyskakovací nabídku"
+msgstr "Sejmout pouze současnou vyskakovací nabídku"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:97
@@ -1194,7 +1194,7 @@ msgstr[2] "%1 sekund"
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr ""
+msgstr "Neuloženo"
 
 #: src/Gui/UndoRedoGroup.qml:32
 #, kde-format
@@ -1236,12 +1236,12 @@ msgstr "vit@pelcak.org"
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
-msgstr "Zachytit okno pod kurzorem"
+msgstr "Sejmout okno pod kurzorem"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
 msgid "Launch Spectacle without capturing"
-msgstr ""
+msgstr "Spustit Spectacle bez sejmutí"
 
 #: src/SpectacleCore.cpp:632
 #, kde-format
@@ -1285,17 +1285,17 @@ msgstr "Anotace"
 #: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Zachytit celou plochu (výchozí)"
+msgstr "Sejmout celou plochu (výchozí)"
 
 #: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Capture the current monitor"
-msgstr "Zachytit současný monitor"
+msgstr "Sejmout současný monitor"
 
 #: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Capture the active window"
-msgstr "Zachytit aktivní okno"
+msgstr "Sejmout aktivní okno"
 
 #: src/SpectacleCore.cpp:710
 #, kde-format
@@ -1303,7 +1303,7 @@ msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Zachytit okno por kurzorem včetně rodičovských oken a vyskakovacích nabídek"
+"Sejmout okno pod kurzorem včetně rodičovských oken a vyskakovacích nabídek"
 
 #: src/SpectacleCore.cpp:711
 #, kde-format
@@ -1311,17 +1311,17 @@ msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr ""
-"Zachytit okno pod kurzorem bez rodičovských oken a vyskakovacích nabídek."
+"Sejmout okno pod kurzorem bez rodičovských oken a vyskakovacích nabídek."
 
 #: src/SpectacleCore.cpp:712
 #, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Zachytit obdélníkový výběr na obrazovce"
+msgstr "Sejmout obdélníkový výběr na obrazovce"
 
 #: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr ""
+msgstr "Spustit Spectacle bez sejmutí obrazovky"
 
 #: src/SpectacleCore.cpp:714
 #, kde-format
