@@ -1,432 +1,189 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY spectacle "<application
->Spectacle</application
->">
+  <!ENTITY spectacle "<application>Spectacle</application>">
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % German "INCLUDE"
-> <!-- change language only here -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
 
 <book id="spectacle" lang="&language;">
     <bookinfo>
-        <title
->Das Handbuch zu &spectacle;</title>
+        <title>The &spectacle; Handbook</title>
 
         <authorgroup>
-            <author
->&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+            <author>
+                &Boudhayan.Gupta;
+                &Boudhayan.Gupta.mail;
+            </author>
 
-            <othercredit role="developer"
->&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+            <othercredit role="developer">
+                &Boudhayan.Gupta;
+                &Boudhayan.Gupta.mail;
+            </othercredit>
 
-            <othercredit role="translator"
-><firstname
->Burkhard</firstname
-><surname
->Lück</surname
-><affiliation
-><address
-><email
->lueck@hube-lueck.de</email
-></address
-></affiliation
-><contrib
->Übersetzung</contrib
-></othercredit
-> 
+            <!-- TRANS:ROLES_OF_TRANSLATORS -->
         </authorgroup>
 
-        <copyright
-><year
->1997-2000</year
-><holder
->&Richard.J.Moore;</holder
-></copyright>
-        <copyright
-><year
->2000</year
-><holder
->&Matthias.Ettrich;</holder
-></copyright>
-        <copyright
-><year
->2015</year
-><holder
->&Boudhayan.Gupta;</holder
-></copyright>
+        <copyright><year>1997-2000</year><holder>&Richard.J.Moore;</holder></copyright>
+        <copyright><year>2000</year><holder>&Matthias.Ettrich;</holder></copyright>
+        <copyright><year>2015</year><holder>&Boudhayan.Gupta;</holder></copyright>
 
-        <legalnotice
->&FDLNotice;</legalnotice>
+        <legalnotice>&FDLNotice;</legalnotice>
 
-        <date
->2021-04-25</date>
-        <releaseinfo
->Applications 20.08</releaseinfo>
+        <date>2021-04-25</date>
+        <releaseinfo>Applications 21.08</releaseinfo>
 
         <abstract>
-            <para
->&spectacle; ist eine Anwendung zur Aufnahme und Bearbeitung von Bildschirmfotos der Arbeitsfläche. Sie können die gesamte Arbeitsfläche, einen einzelnen Bildschirm, das zur Zeit aktive Fenster, das Fenster unter der Maus oder einen rechteckigen Bereich des Bildschirms aufnehmen. Die Aufnahmen können Sie mit Anmerkungen versehen, drucken, mit anderen Anwendungen zur Bearbeitung öffnen oder direkt speichern.</para>
+            <para>&spectacle; is an application for capturing and editing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
         </abstract>
 
         <keywordset>
-            <keyword
->KDE</keyword>
-            <keyword
->spectacle</keyword>
-            <keyword
->kdegraphics</keyword>
-            <keyword
->Bildschirmfoto</keyword>
-            <keyword
->Bildschirmaufnahme</keyword>
-            <keyword
->Bildschirmaufnahme</keyword>
+            <keyword>KDE</keyword>
+            <keyword>spectacle</keyword>
+            <keyword>kdegraphics</keyword>
+            <keyword>screenshot</keyword>
+            <keyword>screen capture</keyword>
+            <keyword>screen grab</keyword>
         </keywordset>
     </bookinfo>
 
     <chapter id="introduction">
-        <title
->Einführung</title>
+        <title>Introduction</title>
 
-        <para
->&spectacle; ist eine Anwendung zur Aufnahme und Bearbeitung von Bildschirmfotos der Arbeitsfläche. Sie können die gesamte Arbeitsfläche, einen einzelnen Bildschirm, das zur Zeit aktive Fenster, das Fenster unter der Maus oder einen rechteckigen Bereich des Bildschirms aufnehmen. Die Aufnahmen können Sie mit Anmerkungen versehen, drucken, mit anderen Anwendungen zur Bearbeitung öffnen oder direkt speichern.</para>
+        <para>&spectacle; is an application for capturing and editing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
-        <para
->Bei Problemen und für Verbesserungsvorschläge wenden Sie sich bitte an das <ulink url="https://bugskde.org/"
->&kde;-Fehlerverfolgungs-System</ulink
->..</para>
+        <para>Please report any problems or feature requests to the <ulink url="https://bugs.kde.org/">&kde; Bug Tracking System</ulink>.</para>
     </chapter>
 
     <chapter id="starting">
-        <title
->&spectacle; starten</title>
+        <title>Starting &spectacle;</title>
 
-        <para
->Sie können &spectacle; wie unten gezeigt, auf verschiedene Weise starten:</para>
+        <para>&spectacle; can be started in a variety of ways, as described below:</para>
 
         <itemizedlist>
             <listitem>
-                <para
->Im Programmstartmenü finden Sie &spectacle; unter <menuchoice
-><guisubmenu
->Anwendungen</guisubmenu
-><guisubmenu
->Dienstprogramme</guisubmenu
-><guimenuitem
->Dienstprogramm für Bildschirmfotos &spectacle;</guimenuitem
-></menuchoice
-></para>
+                <para>In the application launcher menu, &spectacle; can be found at <menuchoice><guisubmenu>Applications</guisubmenu><guisubmenu>Utilities</guisubmenu><guimenuitem>Screenshot Capture Utility &spectacle;</guimenuitem></menuchoice></para>
             </listitem>
             <listitem>
-                <para
->Drücken Sie <keysym
->Druck</keysym
-> auf der Tastatur, um &spectacle; direkt zu starten. Zusätzlich gibt es drei weitere Kurzbefehle, um Bildschirmfotos aufzunehmen und im eingestellten Speicherordner abzulegen, ohne die &GUI; anzuzeigen.</para>
+                <para>Pressing the <keysym>Print Screen</keysym> button on the keyboard (often labeled <keycap>PrtSc</keycap>, <keycap>PrtScn</keycap> or similar) will immediately launch &spectacle;. Additionally, three more keyboard shortcuts are available to take screenshots and save them in your default save folder without showing the &GUI;:</para>
                 <itemizedlist>
-                <listitem
-><para
-><keycombo action="simul"
-><keycap
->Meta</keycap
-><keysym
->Druck</keysym
-></keycombo
-> erstellt ein Bildschirmfoto des aktuell aktiven Fensters.</para
-></listitem>
-                <listitem
-><para
-><keycombo action="simul"
->&Shift;<keysym
->Druck</keysym
-></keycombo
-> erstellt ein Bildschirmfoto der gesamten Arbeitsfläche, &ie; von allem Bildschirmen</para
-></listitem>
-                <listitem
-><para
-><keycombo action="simul"
-><keycap
->Meta</keycap
->&Shift;<keysym
->Druck</keysym
-></keycombo
-> erstellt ein Bildschirmfoto eines rechteckigen Bereichs</para
-></listitem>
+                <listitem><para><keycombo action="simul"><keycap>Meta</keycap><keysym>Print Screen</keysym></keycombo> will take a screenshot of the active window</para></listitem>
+                <listitem><para><keycombo action="simul">&Shift;<keysym>Print Screen</keysym></keycombo> will take a screenshot of your entire desktop, &ie; all monitors</para></listitem>
+                <listitem><para><keycombo action="simul"><keycap>Meta</keycap>&Shift;<keysym>Print Screen</keysym></keycombo> will take a rectangular region screenshot</para></listitem>
                 </itemizedlist>
-                <para
->Sie können den Standardordner und den Dateinamen zum Speichern einstellen, indem Sie &spectacle; normal starten und dann <guibutton
->Einstellungen</guibutton
-> auswählen und zur Seite <guilabel
->Speichern</guilabel
-> gehen.</para>
+                <para>You can configure the default save location and filename by starting &spectacle; normally and clicking on the <guibutton>Configure...</guibutton> button, then navigating to the Save section.</para>
             </listitem>
             <listitem>
-                <para
->&krunner; (aufgerufen mit <keycombo action="simul"
->&Alt; <keycap
->F2</keycap
-></keycombo
->) kann ebenfalls zum Starten von &spectacle; benutzt werden.</para>
+                <para>The mini command line &krunner; (invoked with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) may also be used to start &spectacle;.</para>
             </listitem>
             <listitem>
-                <para
->&spectacle; kann auch auf der Befehlszeile gestartet werden. Es gibt viele Befehlszeilenparameter einschließlich eines Hintergrundmodus, der in Skripten zur Aufnahme von Bildschirmfotos ohne Anzeige der &GUI; oder Eingaben des Benutzers verwendet werden kann.</para>
+                <para> &spectacle; can be started from the command-line. &spectacle; has an extensive set of command-line options, including a background mode which can be used to script the capture of screenshots without showing the &GUI; or requiring user interaction.</para>
 
-                <para
->Um &spectacle; auf der Befehlszeile zu starten, geben Sie folgendes ein:</para>
-                <screen width="40"
-><prompt
->%</prompt
-> <command
->spectacle &amp;</command
->
+                <para>To start &spectacle; from the command prompt, type in:</para>
+                <screen width="40">
+                    <prompt>%</prompt> <command>spectacle &amp;</command>
                 </screen>
 
-                <para
->Um eine Liste aller verfügbaren Befehlszeilenparameter mit Erläuterungen angezeigt zu bekommen, geben Sie folgendes ein:</para>
-                <screen width="40"
-><prompt
->%</prompt
-> <command
->spectacle --help</command
->
+                <para>To view the full list of command-line options and their explanation, type in:</para>
+                <screen width="40">
+                    <prompt>%</prompt> <command>spectacle --help</command>
                 </screen>
             </listitem>
         </itemizedlist>
     </chapter>
 
     <chapter id="using">
-        <title
->&spectacle; verwenden</title>
+        <title>Using &spectacle;</title>
 
-        <para
->Wenn &spectacle; gestartet ist, erscheint ein Fenster ähnlich wie dieses: <mediaobject>
+        <para>Once &spectacle; starts, you will see a window like the following:
+            <mediaobject>
                 <imageobject>
                     <imagedata fileref="MainWindow.png" format="PNG"/>
                 </imageobject>
                 <textobject>
-                    <phrase
->Hauptfenster von &spectacle;</phrase>
+                    <phrase>&spectacle; Main Window</phrase>
                 </textobject>
             </mediaobject>
         </para>
 
-        <para
->&spectacle; erstellt beim Starten, noch bevor es selbst auf dem Bildschirm erscheint, automatisch ein Foto des gesamten Bildschirms. Dies erlaubt Ihnen das schnelle Erstellen von Bildschirmabbildungen.</para>
+        <para>&spectacle; grabs an image of your entire desktop immediately after it is started, but before it displays itself on screen. This allows you to quickly create full-desktop screenshot images.</para>
 
-        <para
->Das mit &spectacle; aufgenommene Bildschirmfoto wird im Vorschaubereich verkleinert angezeigt, das sich links im Fenster der Anwendung &spectacle; befindet.</para>
+        <para>The snapshot taken by &spectacle; is displayed in the preview window, which is located on the left-hand side of the &spectacle; application window.</para>
 
-        <para
->Das Bild kann in einem beliebigen Ordner gespeichert werden, indem Sie auf <guimenuitem
->Speichern unter</guimenuitem
-> klicken oder den Kurzbefehl <keycombo action="simul"
->&Ctrl;&Shift;<keycap
->S</keycap
-></keycombo
-> benutzen. Damit wird der Standard-Dateidialog geöffnet, in dem Sie den Dateinamen, den Ordner und das Format zum Speichern des Bildschirmfotos wählen können. Sie können einen beliebigen Dateinamen verwenden, auch den Namen eines vorher gespeicherten Bildschirmfotos.</para>
+        <para>The image can be saved to a location of your choice by clicking on the <guibutton>Save As</guibutton> button or typing <keycombo action="simul">&Ctrl;&Shift;<keycap>S</keycap></keycombo>. This opens the standard save dialog, where you can choose the filename, the folder location, and the format that your screenshot will be saved in. You may edit the filename to anything you wish, including the name of a previously saved screenshot.</para>
 
-        <para
->Um das Bild im Standardordner zu speichern, drücken Sie auf den Pfeil rechts neben <guibutton
->Speichern unter </guibutton
-> und wählen <guimenuitem
->Speichern</guimenuitem
-> (<keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo
->). Der neue Speichermodus wird beim nächsten Mal wieder verwendet. Die Vorgabe für Speicherort und Dateiname können eingestellt werden.</para>
+        <para>To save a screenshot to the default location, click on the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save </guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) button. The new save mode will be remembered for next time. The default save location and filename can be configured, as described later.</para>
 
-        <para
->Um das Bild direkt zu speichern und &spectacle; zu beenden, wählen Sie das Ankreuzfeld <guilabel
->Nach dem manuellen Speichern oder Kopieren beenden</guilabel
->. Dann drücken dann auf den Pfeil neben <guibutton
->Speichern unter</guibutton
-> und wählen <guimenuitem
->Speichern</guimenuitem
-> (<keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo
->). Dann wird das Bild als PNG-Datei im Ihrem Ordner <filename class="directory"
->Bilder</filename
-> gespeichert und die Anwendung dann sofort beendet. Der Speichermodus wird beim nächsten Mal wieder verwendet.</para>
+        <para>To quickly save the image and quit &spectacle;, click on the checkbox beside <guilabel>Quit after manual Save or Copy</guilabel>, then click the arrow portion of the <guibutton>Save As...</guibutton> button and press the <guimenuitem>Save</guimenuitem> (<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>) item. This saves the image as a PNG file in your default <filename class="directory">Pictures</filename> folder, and exits the application immediately. As above, this new save mode will be remembered.</para>
 
         <sect1 id="taking-screenshot">
-            <title
->Bildschirmfotos aufnehmen</title>
+            <title>Taking A Screenshot</title>
 
-            <para
->Wenn Sie &spectacle; starten, wird sofort der gesamte Bildschirm aufgenommen und als Vorschau im Hauptfenster angezeigt. Sie können dieses Bildschirmfoto mit den Knöpfen unten im Fenster speichern oder die Bedienungselemente rechts neben der Vorschau verwenden, um ein neues Bildschirmfoto aufzunehmen.</para>
+            <para>When you open &spectacle;, it immediately takes a screenshot, unless otherwise set in the general options, of the whole screen as a convenience and shows a preview of it in the main window. You can save this screenshot using the buttons on the bottom of the window, or take a new one using the controls to the right of the preview.</para>
 
-            <para
->Um das aktuelle Bildschirmfoto zu verwerfen und ein neues aufzunehmen, klicken Sie auf <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> (<keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
->).</para>
+            <para>To discard the current screenshot and take another screenshot, press the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
             
-            <para
->Nach der Aufnahme eines Bildschirmfotos werden Informationen mit einer Verknüpfung zur Bildschirmfotodatei und die Aktion <guibutton
->Ordner mit diesem Inhalt öffnen</guibutton
-> angeboten.</para>
+            <para>After capturing a screenshot, &spectacle; will show you an info panel with a link to the screenshot file and propose you to <guibutton>Open Containing Folder</guibutton> of this file.</para>
 
-            <para
->Sie können die Einstellungen für die Aufnahme auf der rechten Seite des Programmfensters ändern. Hier können Sie den Bildschirmbereich und eine Verzögerung für die Aufnahme einstellen, ebenso ob der Mauszeiger oder die Fensterdekoration mit aufgenommen werden soll.</para>
+            <para>You may configure certain options on the right hand side of the application window before taking a new screenshot. These options allow you to select the area of the screen that is to be captured, set a delay before capturing the image, and configure whether the mouse cursor and/or the window decorations should be captured along with the screenshot.</para>
 
             <sect2>
-                <title
->Aufnahmemodus</title>
+                <title>Capture Mode</title>
 
-                <para
->In den Einstellungen für die Aufnahme können Sie den Bereich des Bildschirm und eine Verzögerung zwischen dem Drücken von <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> (<keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
->) und der Aufnahme angeben. Sie können auch die Einstellung <guilabel
->Bei Klick</guilabel
-> benutzen, damit wird die Verzögerung abgeschaltet. Dann müssen Sie nach Drücken von <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> (<keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
->) irgendwo auf den Bildschirm klicken damit das Foto aufgenommen wird.</para>
+                <para>The capture mode settings allow you to set the area of the screen that should be captured, and whether there should be a delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. You may also enable the <guilabel>On Click</guilabel> checkbox, which disables the delay function and only takes the screenshot after you click anywhere on the screen after clicking the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button.</para>
 
-                <para
->Im Auswahlfeld <guilabel
->Bereich</guilabel
-> können Sie einstellen, welche Teile des Bildschirms aufgenommen werden sollen. Dazu gibt es fünf Einstellungen, die im folgenden erläutert werden.</para>
+                <para>The <guilabel>Area</guilabel> combo-box allows you to set the area of the screen that should be captured. There are five options to select from, as described below.</para>
 
                 <itemizedlist>
                     <listitem>
-                        <para
->Mit <guilabel
->Vollbild (Alle Monitore)</guilabel
-> wird ein Foto der gesamten Arbeitsfläche aufgenommen, einschließlich aller Ausgabegeräte wie Monitore, Projektor usw.</para>
+                        <para>The <guilabel>Full Screen (All Monitors)</guilabel> option takes a screenshot of your entire desktop, spread across all the outputs, including all the monitors, projectors etc.</para>
                     </listitem>
                     <listitem>
-                        <para
->Mit <guilabel
->Aktueller Bildschirm</guilabel
-> wird ein Foto des Bildschirms aufgenommen, das den Mauszeiger enthält.</para>
+                        <para>The <guilabel>Current Screen</guilabel> option takes a screenshot of the output that currently contains the mouse pointer.</para>
                     </listitem>
                     <listitem>
-                        <para
->Mit <guilabel
->Rechteckiger Bereich</guilabel
-> können Sie einen bestimmten Teil der Arbeitsfläche für die Aufnahme auswählen. Dieser Bereich kann sich über mehrere Ausgabegeräte erstrecken.</para>
+                        <para>The <guilabel>Rectangular Region</guilabel> option allows you to select a rectangular region of your desktop with your mouse. This region may be spread across different outputs.</para>
 
-                        <para
->In diesem Modus erfolgt die Aufnahme erst, wenn Sie ein Rechteck auf dem Bildschirm gezeichnet haben. Dieses Rechteck können Sie verschieben und in der Größe ändern. Hat das Rechteck die richtige Lage und Größe, doppelklicken Sie irgendwo auf den Bildschirm oder drücken Sie die &Enter;taste, um die Aufnahme zu starten.</para>
+                        <para>This mode does not immediately take a screenshot but allows you to draw a rectangle on your screen, which can be moved and resized as needed. Once the desired selection rectangle has been drawn, double-clicking anywhere on the screen, or pressing the &Enter; button on the keyboard will capture the screenshot.</para>
                         
-                        <para
->Mit den Pfeiltasten können Sie das Rechteck verschieben und anpassen. Durch Drücken der Pfeiltasten bewegen Sie das Rechteck. Halten Sie die &Shift;taste gedrückt. während Sie die Pfeiltasten drücken, wird das Rechteck langsam bewegt, so dass Sie die Auswahl genauer anpassen können. Halten Sie die Taste &Alt; gedrückt, können sie mit den Pfeiltasten die Größe des Rechtecks anpassen.</para>
+                        <para>You can use the arrow keys to move and adjust the rectangle. Pressing the arrow keys will move the rectangle. Holding the &Shift; key while pressing the arrow keys will move the rectangle slowly, for fine-tuning your selection. Holding the &Alt; key while pressing the arrow keys will adjust the size of the rectangle.</para>
                                     
                     </listitem>
                     <listitem>
-                        <para
->Mit <guilabel
->Aktives Fenster</guilabel
-> wird ein Foto des Fensters aufgenommen, das gerade den Fokus hat. In diesem Modus sollten Sie eine Verzögerung einstellen, damit Sie Zeit genug zur Auswahl und Aktivierung eines Fensters zur Aufnahme haben.</para>
+                        <para>The <guilabel>Active Window</guilabel> option takes a screenshot of the window that currently has focus. It is advisable to use a delay with this mode, to give you time to select and activate a window before the screenshot is taken.</para>
                     </listitem>
                     <listitem>
-                        <para
->Mit <guilabel
->Fenster unter dem Mauszeiger</guilabel
-> wird ein Foto des Fensters aufgenommen, in dem der Mauszeiger steht. Steht der Mauszeiger auf einem Aufklappmenü, wird ein Foto des Menüs wie auch des zugehörigen Fensters aufgenommen.</para>
+                        <para>The <guilabel>Window Under Cursor</guilabel> option takes a screenshot of the window that is under the mouse cursor. If the cursor is on top of a popup menu, &spectacle; tries to take a screenshot of the menu as well as its parent window.</para>
 
-                        <para
->Meisten funktioniert die Erkennung des Fensters, zu dem das Menü gehört, aber in manchen Fällen kann das zugehörige Fenster nicht bestimmt werden. In diesem Fall wird nur ein Bild des Aufklappmenüs aufgenommen. Diese Verhalten können Sie erzwingen, indem Sie die Einstellung <guilabel
->Nur das aktuelle Aufklappmenü aufnehmen</guilabel
-> im Abschnitt <guilabel
->Einstellungen</guilabel
-> auswählen.</para>
+                        <para>While this works most of the time, in certain cases it may fail to obtain information about the parent window. In this case, &spectacle; falls back to old way of capturing the image automatically, and captures an image of only the popup menu. You can also force the old way of capturing the image by checking the <guilabel>Capture the current pop-up only</guilabel> checkbox under <guilabel>Options</guilabel></para>
                     </listitem>
                 </itemizedlist>
 
-                <para
->Die <guilabel
->Verzögerung</guilabel
-> zwischen dem Drücken von <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> (<keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
->) und der tatsächlichen Aufnahme des Fotos können Sie in Schritten von einer Sekunde mit dem Drehfeld oder mit der Tastatur einstellen.</para>
+                <para>The <guilabel>Delay</guilabel> spin-box allows you to set the delay between pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button and taking the screenshot. This delay can be set in increments of 1 seconds using the spinbox buttons or the keyboard.</para>
                 
-                <para
->Wenn Sie ein Bildschirmfoto mit Verzögerung aufnehmen, wird die verbleibende Zeit bis zur Aufnahme im Fenster von &spectacle; im Eintrag in der Fensterleiste angegebenen. In Eintrag in der Fensterleiste wird außerdem auch der Fortschritt angezeigt, so dass Sie die Zeit bis zur Aufnahme verfolgen können.</para>
+                <para>When taking a time-delayed screenshot, &spectacle; displays the remaining time before the screenshot is taken in its window title, and makes it visible in its Task Manager item. &spectacle;'s Task Manager button also shows a progress bar, so you can keep track of when the snap will be taken.</para>
                 
-                <para
->Während der Aufnahme eines Bildschirmfotos mit Verzögerung können Sie das Fenster von &spectacle; wieder anzeigen. Der Knopf <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> wird dann mit <guibutton
->Abbrechen</guibutton
-> beschriftet. der Fortschritt wird ebenfalls hier angezeigt, so das Sie die Aktion anhalten können.</para>
+                <para>While waiting for the delayed screenshot, you can un-minimize &spectacle; and the <guibutton>Take a New Screenshot</guibutton> button will turn into a <guibutton>Cancel</guibutton> button. The progress bar will also be shown here, giving you the chance to stop the countdown.</para>
 
-                <para
->Die Aktivierung von <guilabel
->Bei Klick</guilabel
-> schaltet die Verzögerung ab. Dann wird nach dem Drücken von <guibutton
->Neues Bildschirmfoto aufnehmen</guibutton
-> (<keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
->) das &spectacle;-Fenster ausgeblendet und der Mauszeiger zu einem Fadenkreuz geändert. Beim Klicken mit der linken Maustaste wird das Foto aufgenommen, alle anderen Maustasten brechen die Aufnahme ab. Solange der Mauszeiger als Fadenkreuz angezeigt wird, können Sie Ihre Arbeitsfläche nicht mehr mit der Maus, nur noch mit der Tastatur steuern.</para>
+                <para>Enabling the <guilabel>On Click</guilabel> checkbox overrides the delay. When this checkbox is enabled, pressing the <guibutton>Take a New Screenshot</guibutton> (<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>) button hides the &spectacle; window and changes the mouse cursor to a crosshair. The screenshot is captured when the mouse is left-clicked, or aborted if any other mouse buttons are clicked. Note that you cannot interact with the desktop using the mouse while the cursor is a crosshair, but you can use the keyboard.</para>
             </sect2>
 
             <sect2>
-                <title
->Einstellungen</title>
+                <title>Options</title>
 
-                <para
->Mit diesen Einstellungen können Sie auswählen, ob der Mauszeiger im Bildschirmfoto und ob die Fensterdekoration einer Anwendung mit aufgenommen wird. Im Modus <guilabel
->Fenster unter dem Mauszeiger</guilabel
-> können Sie zusätzlich einstellen, ob nur das aktuelle Aufklappmenü oder auch das zugehörige Fenster aufgenommen wird. Wählen Sie <guilabel
->Nach dem Speichern oder Kopieren beenden</guilabel
->, um &spectacle; nach einer dieser Operationen zu beenden.</para>
+                <para>The Options settings allow you to select whether the mouse cursor should be included in the screenshots, and whether to capture window decorations along with the image of a single application window. In <guilabel>Window Under Cursor</guilabel> mode, it also allows you to select if &spectacle; shall only capture the image of the current popup menu under the cursor, or also include the parent window. Finally, <guilabel>Quit after Save or Copy</guilabel> will quit &spectacle; after any save or copy operations.</para>
 
                 <itemizedlist>
                     <listitem>
-                        <para
->Aktivieren Sie <guilabel
->Mauszeiger einbeziehen</guilabel
->, dann erscheint das Symbol des Mauszeigers im Bildschirmfoto.</para>
+                        <para>Enabling the <guilabel>Include mouse pointer</guilabel> checkbox includes an image of the mouse pointer in the screenshot.</para>
                     </listitem>
                     <listitem>
-                        <para
-><guilabel
->Titelleiste und Ränder des Fensters einschließen</guilabel
-> ist nur im Modus <guilabel
->Aktives Fenster</guilabel
-> oder <guilabel
->Fenster unter dem Mauszeiger</guilabel
-> aktiviert. Mit dieser Einstellung wird die Fensterdekoration mit aufgenommen, ansonsten nur der Inhalt des Fensters.</para>
+                        <para>The <guilabel>Include window titlebar and borders</guilabel> option is only enabled when either the <guilabel>Active Window</guilabel> mode or the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option includes the window borders and decoration in the screenshot, while unchecking it gives an image of only the window contents.</para>
                     </listitem>
                     <listitem>
-                        <para
-><guilabel
->Nur das aktuelle Aufklappmenü aufnehmen</guilabel
-> ist nur im Modus <guilabel
->Fenster unter dem Mauszeiger</guilabel
-> aktiviert. Ist diese Einstellung ausgewählt, wird nur das Aufklappmenü ohne das zugehörige Fenster aufgenommen.</para>
+                        <para>The <guilabel>Capture the current pop-up only</guilabel> option is only enabled when the <guilabel>Window Under Cursor</guilabel> mode is selected in the <guilabel>Area</guilabel> combo-box. Checking this option captures only the popup menu under the cursor, without its parent window.</para>
                     </listitem>
                     <listitem>
-                        <para
->Mit der Einstellung <guilabel
->Nach dem manuellen Speichern oder Kopieren beenden</guilabel
-> wird &spectacle; nach diesen Aktionen beendet. Eine Kopie des Bildschirmfotos bleibt nur erhalten, wenn die Zwischenablage Bilder akzeptiert. Um dies für &klipper; einzustellen, klicken Sie mit der &RMBn; auf dessen Symbol, wählen <guilabel
->Zwischenablage einrichten</guilabel
-> und schalten <guilabel
->Bilder ignorieren</guilabel
-> ab.</para>
+                        <para>The <guilabel>Quit after manual Save or Copy</guilabel> option will quit &spectacle; after any saving or copying operations. Note that a copied screenshot will only be retained if you are running a clipboard manager that accepts images. KDE Klipper can be configured in this manner by right-clicking on its icon, selecting <guilabel>Configure Clipboard...</guilabel>, and unchecking <guilabel>Ignore images</guilabel>.</para>
                     </listitem>
                 </itemizedlist>
             </sect2>
@@ -434,423 +191,241 @@
     </chapter>
 
     <chapter id="additional-functionality">
-        <title
->Weitere Funktionen</title>
+        <title>Additional Functionality</title>
 
         <sect1>
-            <title
->Knöpfe</title>
+            <title>Buttons</title>
 
-            <para
->Es gibt am unteren Rand des &spectacle;-Fensters noch weitere Knöpfe. Deren Funktion wird im Folgenden beschrieben:</para>
+            <para>There are some buttons located at the bottom of the &spectacle; window. Their functions are described below:</para>
 
             <variablelist>
                 <varlistentry>
-                    <term
-><guibutton
->Hilfe</guibutton
-></term>
+                    <term><guibutton>Help</guibutton></term>
                     <listitem>
-                        <para
->Öffnet die bekannten Menüeinträge, die im Abschnitt über das Menü <ulink url="help:/fundamentals/menus.html#menus-help"
->Hilfe</ulink
-> der &kde;-Grundlagen beschrieben werden.</para>
+                        <para>Gives you the common menu items described in the <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Einrichten ...</guibutton
-></term>
+                    <term><guibutton>Configure...</guibutton></term>
                     <listitem>
-                        <para
->Öffnet den Einrichtungsdialog von &spectacle;, in dem Sie die Einstellungen für die Aufnahme und die Voreinstellung für Speicherort und Dateinamen ändern können.</para>
+                        <para>Gives you access to &spectacle;'s Configure window where you can change the capture settings and default save location and filename.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Anmerkungen</guibutton
-></term>
+                    <term><guibutton>Annotate</guibutton></term>
                     <listitem>
-                        <para
->Öffnet den Editor für Anmerkungen mit verschiedenen Arten von Anmerkungen:</para>
+                        <para>Opens an annotation editor window that offers various annotating tools:</para>
                         <mediaobject>
                             <imageobject>
                                 <imagedata fileref="Annotate.png" format="PNG"/>
                             </imageobject>
                             <textobject>
-                                <phrase
->Anmerkungs-Editor</phrase>
+                                <phrase>Annotation editor</phrase>
                             </textobject>
                         </mediaobject>
-                        <para
->Um Ihre Bildschirmfotos zu erläutern, können Sie Pfeile, Stifte, Markierungen, Textfelder, Zahlen und sogar Smileys benutzen. Sie können die Parameter von Anmerkungen einstellen und auch Effekte wie Schalten, Graustufen und Rahmen hinzufügen. </para>
-                        <para
->Haben Sie alle Anmerkungen eingefügt, klicken Sie auf <guibutton
->Anmerkungen fertig</guibutton
->. </para>
+                        <para>
+                            Give a try to the annotating tools. You might find everything that is needed to explain your screenshots there: arrows, pen, markers, text boxes, numbers, even smileys. It is possible to change the tool parameters and add effects (shadow, grayscale, and border).
+                        </para>
+                        <para>
+                            When you think that annotating is finished press the <guibutton>Annotation Done</guibutton> button.
+                        </para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Extras</guibutton
-></term>
+                    <term><guibutton>Tools</guibutton></term>
                     <listitem>
-                        <para
->Öffnet ein Auswahlfeld mit verschiedenen Aktionen:</para>
+                        <para>Opens a drop-down menu which offers various tools:</para>
                         <itemizedlist>
                             <listitem>
-                                <para
-><guimenuitem
->Standard-Ordner für Bildschirmfotos öffnen</guimenuitem
-> öffnet den eingestellten Standardordner in der Dateiverwaltung</para>
+                                <para><guimenuitem>Open Default Screenshots Folder</guimenuitem> will highlight the last saved screenshot in the default file manager</para>
                             </listitem>
                             <listitem>
-                                <para
->Zugriff auf den <guimenuitem
->Druck</guimenuitem
->-Dialog</para>
+                                <para>Access to the <guimenuitem>Print</guimenuitem> dialog</para>
                             </listitem>
                             <listitem>
-                                <para
->Eine Liste von externen Programmen zur Bildschirmaufnahme</para>
+                                <para>A range of external programs for Screen Recording</para>
                             </listitem>
                         </itemizedlist>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Exportieren</guibutton
-></term>
+                    <term><guibutton>Export</guibutton></term>
                     <listitem>
-                        <para
->In diesem Untermenü finden Sie Einträge für alle Programme, die dem &MIME;-Typ „PNG“ (Portable Network Graphics) zugeordnet sind. Abhängig von den installierten Programmen können Sie Bildschirmfotos in Ihren Grafikprogrammen oder Betrachtern öffnen und bearbeiten.</para>
+                        <para>Opens a drop-down menu that will allow you to directly open the screenshot with all programs that are associated with the PNG (Portable Network Graphics) &MIME; type. Depending on what programs are installed, you will be able to open and edit the snapshot in your graphics applications or viewers.</para>
 
-                        <para
->Haben Sie auch die <application
->KIPI-Module</application
-> installiert. können Sie außerdem Ihre Bildschirmfotos drucken, sie als E-Mail versenden und direkt zu einigen sozialen Netzwerken und Webseiten exportieren.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Bild in die Zwischenablage kopieren / Ort in die Zwischenablage kopieren</guibutton
-></term>
+                    <term><guibutton>Copy Image to Clipboard/Copy Location to Clipboard</guibutton></term>
                     <listitem>
-                        <para
->Kopiert das aktuelle Bildschirmfoto oder den Speicherort in die Zwischenablage. Sie können für diese Aktion auch den Kurzbefehl <keycombo action="simul"
->&Ctrl;<keycap
->C</keycap
-></keycombo
-> verwenden.</para>
+                        <para>Copies the current screenshot or its location to the clipboard. You can also use the <keycombo action="simul">&Ctrl;<keycap>C</keycap></keycombo> keyboard shortcut for this.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guibutton
->Speichern unter ...</guibutton
-></term>
+                    <term><guibutton>Save As</guibutton></term>
                     <listitem>
-                        <para
->Speichert das Bildschirmfoto im PNG-Format in Ihrem Standardordner für Bilder und die Anwendung sofort beendet.</para>
+                        <para>Saves the screenshot as a PNG image in your default Pictures folder and immediately exits the application.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
         </sect1>
 
         <sect1>
-            <title
->Einrichten</title>
-            <para
->Mit diesem Knopf öffnen Sie den Einrichtungsdialog.</para>
+            <title>Configure</title>
+            <para>Use the <guibutton>Configure...</guibutton> button to open the configuration dialog.</para>
             <sect2>
-            <title
->Allgemein</title>
+            <title>General</title>
                 <mediaobject>
                     <imageobject>
                         <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
                     </imageobject>
                     <textobject>
-                        <phrase
->Allgemein</phrase>
+                        <phrase>General</phrase>
                     </textobject>
                 </mediaobject>
             <variablelist>
                 <varlistentry>
-                    <term
-><guilabel
->Nach der Aufnahme eines Bildschirmfotos</guilabel
-></term>
+                    <term><guilabel>When launching Spectacle</guilabel></term>
                     <listitem>
-                        <para
->Hier können eine <guilabel
->Datei automatisch im Standardort speichern</guilabel
->, alle Aktionen der Zwischenablage abschalten oder ein Bildschirmfoto oder den Pfad zum Bildschirmfoto in die Zwischenablage kopieren Der Standard-Speicherort kann auf der Seite <link linkend="save-page"
->Speichern</link
-> des Einrichtungsdialogs eingestellt werden. Außerdem können Sie den <guilabel
->Speicherort der Datei in Zwischenablage kopieren</guilabel
->. Dann können Sie diesen Pfad überall als Texteingabe verwenden. Dazu müssen Sie natürlich ein Verwaltungsprogramm für die Zwischenablage verwenden, damit der Pfad zum Speicherort der Datei auch nach dem Beenden von &spectacle; noch verfügbar bleibt.</para>
+                        <para>Allows to <guilabel>Take full screen screenshot</guilabel>, use last-used capture mode, or do not take a screenshot automatically. The last-used capture mode is the one set in Capture Mode</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Bei Drücken der Taste Bildschirmfoto</guilabel
-></term>
+                    <term><guilabel>After taking a screenshot</guilabel></term>
                     <listitem>
-                        <para
->Wenn ein Kurzbefehl zur Erstellung eines Bildschirmfotos gedrückt wird und &spectacle; bereits ausgeführt wird, können Die das Verhalten einstellen. Sie können wählen zwischen der Erstellung eines neuen Bildschirmfotos, dem Öffnen eines neuen &spectacle;-Fensters und der Aktivierung des vorhandenen &spectacle;-Fensters.</para>
+                        <para>Allows <guilabel>Save file to default folder</guilabel>, switching off any clipboard actions, copying the image to clipboard, or copying screenshot path to the clipboard. The default location can be configured using the <link linkend="save-page">Save</link> configuration page. It is possible to <guilabel>Copy file location to clipboard</guilabel>. You can then paste it anywhere that accepts text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Hellen Hintergrund verwenden</guilabel
-></term>
+                    <term><guilabel>Press screenshot key to</guilabel></term>
                     <listitem>
-                        <para
->Verwendet eine helle Hintergrundfarbe für die Anzeige des ausgewählten Bereichs für die Auswahl eines Rechtecks. Damit können Sie dunkle Mauszeiger besser erkennen.</para>
+                        <para>When a shortcut to make screenshot is pressed and &spectacle; is already running it is possible to configure the behavior of the screenshoting system. You can choose between taking a new screenshot, opening of a new &spectacle; window, and returning focus to the existing &spectacle; window.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Lupe anzeigen</guilabel
-></term>
+                    <term><guilabel>Use light background</guilabel></term>
                     <listitem>
-                        <para
->Wenn Sie ein Bildschirmfoto speichern, wird der Speicherort der Datei auch in der Zwischenablage gespeichert. Diesen Eintrag können Sie überall als Texteingabe verwenden. Dazu müssen Sie natürlich ein Verwaltungsprogramm für die Zwischenablage verwenden, damit der Pfad zum Speicherort der Datei auch nach dem Beenden von &spectacle; noch verfügbar bleibt.</para>
+                        <para>Use a light background color to mask the cropped-out area in the rectangular region selector. This may make dark cursors easier to see.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Mit Klicken und Loslassen übernehmen</guilabel
-></term>
+                    <term><guilabel>Show magnifier</guilabel></term>
                     <listitem>
-                        <para
->Ist dies aktiviert, wird der ausgewählte Bereich im Modus <guilabel
->Rechteckiger Bereich</guilabel
-> sofort übernommen, wenn die Maustaste losgelassen wird.</para>
-                        <para
->Bei der Auswahl eines neuen Bereichs ohne einen zuvor gespeicherten Bereich, wird das Bildschirmfoto sofort aufgenommen, wenn Die mit der Maustaste klicken, ziehen und loslassen.Wird ein zuvor gespeicherter Bereich angezeigt, kann die Auswahl weiter bearbeitet werden. Zum Speichern dieses Bereichs eine manuelle Bestätigung (&Enter; oder Doppelklick mit dem &LMB;) erforderlich. Mit Klicken und Ziehen außerhalb des zuvor gespeicherten Bereichs erstellen Sie sofort ein neues Foto.</para>
+                        <para>When a screenshot is saved, copy the location at which the file was saved to the clipboard. You can then paste it anywhere that accepts
+                        text input. Note that you must be running a clipboard manager in order to keep the path in the clipboard after &spectacle; quits.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Ausgewählten Bereich merken</guilabel
-></term>
+                    <term><guilabel>Accept on click-and-release</guilabel></term>
                     <listitem>
-                        <para
->In der Voreinstellung merkt sich &spectacle; keine anfängliche Auswahl für einen rechteckigen Bereich. Sie können einstellen, ob der zuletzt ausgewählte Bereich nicht gespeichert wird oder als Vorgabe zwischen den Sitzungen beibehalten wird.</para>
+                        <para>If checked, accept the selected region as soon as the mouse button is released in the <guilabel>Rectangular Region</guilabel> mode.</para>
+                        <para>When selecting a new region, without a previously saved region available, clicking, dragging, and releasing the mouse button should immediately capture the selected region. When a previously saved region is shown, the saved region can be manipulated further and saving this region requires manual confirmation (&Enter; or double click with the &LMB;). Clicking and dragging outside of the previously saved region captures the newly selected region immediately.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><guilabel>Remember selected area</guilabel></term>
+                    <listitem>
+                        <para>By default, &spectacle; remembers an initial selection when you take a screenshot of a rectangular region until you close the &spectacle; window. You can also choose to make &spectacle; never remember selected area or remember it between the screenshoting sessions.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
             </sect2>
             <sect2 id="save-page">
-            <title
->Speichern</title>
-            <para
->Wenn Sie auf <guibutton
->Speichern</guibutton
-> klicken, werden die Bilder mit einem vorgegebenen Dateinamen im Ordner Bilder in Ihrem persönlichen Ordner gespeichert. Im Standard-Dateinamen sind Datum und Zeit der Aufnahme enthalten.</para>
+            <title>Save</title>
+            <para>When you use the <guilabel>Save</guilabel> function, &spectacle; saves the image with a default filename, in your Pictures folder (which is inside your home folder). The default filename includes the date and time when the image was taken.</para>
 
-            <para
->Auf der Seite <guilabel
->Speichern</guilabel
-> können Sie die Vorgabe für Speicherort und Dateinamen festlegen. Klicken Sie auf diese Optionen, dann öffnet sich der folgende Dialog: <mediaobject>
+            <para>The <guilabel>Save</guilabel> page allows you to set the default save location and filename. Clicking this option brings up a dialog box like the following:
+                <mediaobject>
                     <imageobject>
                         <imagedata fileref="SaveOptions.png" format="PNG"/>
                     </imageobject>
                     <textobject>
-                        <phrase
->Speichen</phrase>
+                        <phrase>Save</phrase>
                     </textobject>
                 </mediaobject>
             </para>
             <variablelist>
                 <varlistentry>
-                    <term
-><guilabel
->Speicherort</guilabel
-></term>
+                    <term><guilabel>Save Location</guilabel></term>
                     <listitem>
-                    <para
->Im Textfeld <guilabel
->Speicherort</guilabel
-> tragen Sie den Ordner ein, in dem Ihre Bildschirmfotos gespeichert werden sollen, wenn Sie auf <guibutton
->Speichern</guibutton
-> klicken.</para>
+                    <para>In the location text box set the folder where you'd like to save your screenshots when you press <guibutton>Save</guibutton>.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Komprimierungs-Qualität</guilabel
-></term>
+                    <term><guilabel>Compression Quality</guilabel></term>
                     <listitem>
-                        <para
->Wählen Sie die Bildqualität beim Speichern mit verlustbehafteten Bildformaten wie JPEG. Höhere Werte ergeben eine bessere Qualität, vergrößern aber die Dateigröße. Auf der Wikipedia-Seite <ulink url="https://de.wikipedia.org/wiki/Grafikformat"
->Grafikformat</ulink
-> finden Sie weitere Informationen zu den Bildformaten, die in &spectacle; verwendet werden.</para>
+                        <para>Choose the image quality when saving with lossy image formats like JPEG. The higher values give better quality but increase the file size. See <ulink url="https://en.wikipedia.org/wiki/Image_file_formats">Wikipedia page</ulink> for the details on the image formats that are used in &spectacle;.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term
-><guilabel
->Dateiname</guilabel
-></term>
+                    <term><guilabel>Filename</guilabel></term>
                     <listitem>
-                        <para
->Standardnamen für gespeicherte Bildschirmfotos einstellen.</para>
-                        <para
->Sie können im Dateinamen die folgenden Platzhalter verwenden, die beim Speichern durch den eigentlichen Text ersetzt werden:</para>
+                        <para>Set a default filename for saved screenshots.</para>
+                        <para>You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:</para>
                         <itemizedlist>
-                        <listitem
-><para
-><userinput
->%D</userinput
->: Tag</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%H</userinput
->: Stunde</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%M</userinput
->: Monat</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%Nd</userinput
->: Fortlaufende Nummerierung mit N Stellen</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%S</userinput
->: Sekunde</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%T</userinput
->: Fenstertitel</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%Y</userinput
->: Jahr (4 Stellen)</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%d</userinput
->: Fortlaufende Nummerierung</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%m</userinput
->: Minute</para
-></listitem>
-                        <listitem
-><para
-><userinput
->%y</userinput
->: Jahr (2 Stellen)</para
-></listitem>
+                        <listitem><para><userinput>%D</userinput>: Day</para></listitem>
+                        <listitem><para><userinput>%H</userinput>: Hour</para></listitem>
+                        <listitem><para><userinput>%M</userinput>: Month</para></listitem>
+                        <listitem><para><userinput>%Nd</userinput>: Sequential number padded to N digits</para></listitem>
+                        <listitem><para><userinput>%S</userinput>: Second</para></listitem>
+                        <listitem><para><userinput>%T</userinput>: Window title</para></listitem>
+                        <listitem><para><userinput>%Y</userinput>: Year (4 digit)</para></listitem>
+                        <listitem><para><userinput>%Nd</userinput>: Sequential number</para></listitem>
+                        <listitem><para><userinput>%m</userinput>: Minute</para></listitem>
+                        <listitem><para><userinput>%y</userinput>: Year (2 digit)</para></listitem>
                         </itemizedlist>
-                        <para
->Sie können auf die Platzhalter in der Liste unten klicken, um sie in die Zeile <guilabel
->Dateiname</guilabel
-> einzufügen.</para>
-                        <para
->Existiert bereits eine Datei mit dem Namen, wird dem Dateinamen eine Seriennummer angehängt. So wird ein Bildschirmfoto mit dem Namen <filename
->Bildschirmfoto</filename
->, sofern die Datei <filename
->Bildschirmfoto.png</filename
-> bereits existiert, als <filename
->Bildschirmfoto-1.png</filename
-> gespeichert.</para>
-                        <para
->Wählen Sie die im Auswahlfeld neben dem Textfeld das Standard-Bildformat für Bildschirmfotos. Auf der Wikipedia-Seite <ulink url="https://de.wikipedia.org/wiki/Grafikformat"
->Grafikformat</ulink
-> finden Sie weitere Informationen zu den Bildformaten, die in &spectacle; verwendet werden.</para>
+                        <para>You can click on placeholders in the reference list below to insert them into the <guilabel>Filename</guilabel> line.</para>
+                        <para>If a file with this name already exists, a serial number will be appended to the filename. For example, if the filename is <filename>Screenshot</filename>, and <filename>Screenshot.png</filename> already exists, the image will be saved as <filename>Screenshot-1.png</filename>.</para>
+                        <para>Use the drop-down box next to the text field to select the default image format for screenshots. See <ulink url="https://en.wikipedia.org/wiki/Image_file_formats">Wikipedia page</ulink> for the details on the image formats that are used in &spectacle;.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
             </sect2>
             <sect2>
-            <title
->Kurzbefehle</title>
-            <para
->Auf dieser Einrichtungsseite können Sie die Standardkurzbefehle für &spectacle; einstellen. Es gibt Kurzbefehle für den Start von &spectacle; und das Aufnehmen verschiedener Teile der Arbeitsfläche. </para>
+            <title>Shortcuts</title>
+            <para>
+                This configuration page can be used to change the default shortcuts of &spectacle;. It is possible to configure shortcuts for starting &spectacle; and capturing different parts of your desktop.
+            </para>
             </sect2>
         </sect1>
 
         <sect1>
-            <title
->Ziehen und Ablegen (Drag and Drop)</title>
-            <para
->Ein aufgenommenes Bildschirmfoto kann in ein anderes Programm oder Dokument gezogen werden. Kann das Programm Bilder verarbeiten, wird eine Kopie des ganzen Bilds dort eingefügt.</para>
+            <title>Drag and Drop</title>
+            <para>A captured image can be dragged to another application or document. If the application is able to handle images, a copy of the full image is inserted there.</para>
 
-            <para
->Ziehen Sie ein Bildschirmfoto in ein Dateiverwaltungsfenster, erscheint ein Dialog, in dem Sie den Dateinamen eingeben und das Bildformat wählen können. Die Datei wird dann in den aktuellen Ordner eingefügt.</para>
+            <para>If you drag a screenshot into a file manager window, a dialog pops up where you can edit the filename and select the image format and the file will be inserted into the actual folder.</para>
 
-            <para
->Ziehen Sie ein Bildschirmfoto in ein Textfeld, wird der Pfad zur temporär gespeicherten Datei eingefügt. Diese Funktion können Sie benutzen, um zum Beispiel ein Bildschirmfoto mit Webformularen hochzuladen oder zu einen Fehlerbericht im <ulink url="https://bugs.kde.org/"
->&kde;-Fehlerverfolgungssystem</ulink
-> hinzuzufügen.</para>
+            <para>If you drag the screenshot to a text box, the path to the temporary saved file is inserted. This is useful for example to upload a screenshot through web forms or to attach screenshots into bug reports on the <ulink url="https://bugs.kde.org/">&kde; bugtracker</ulink>.</para>
 
-            <para
->Dies funktioniert mit allen Anwendungen, die nur eine &URL; in den Metadaten des abgelegten Fotos erwarten und nicht die Bilddaten verarbeiten können.</para>
+            <para>This works with all clients that do not pick up the image data, but only look for a &URL; in the dragged mimedata.</para>
         </sect1>
     </chapter>
 
     <chapter id="credits">
-        <title
->Mitwirkende und Lizenz</title>
+        <title>Credits and License</title>
 
-        <para
->Program Copyright &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+        <para>Program copyright &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
 
-        <para
->Teile des Quelltexts basieren direkt auf dem Quelltext des Programms &ksnapshot;. Copyright &copy; 1997-2011 Die &ksnapshot;-Entwickler. Ausführliche Hinweise zum Copyright finden Sie im Quelltext von &ksnapshot;.</para>
+        <para>Portions of the code are based directly on code from the &ksnapshot; project. Copyright &copy; 1997-2011 The &ksnapshot; Developers. Detailed copyright assignment notices are available in the headers in the source code.</para>
 
-        <para
->Teile des Quelltexts basieren direkt auf dem Quelltext des Programms &kwin;. Copyright &copy; 2008-2013 Die &kwin;-Entwickler. Ausführliche Hinweise zum Copyright finden Sie im Quelltext von &kwin;.</para>
+        <para>Portions of the code are based directly on code from the &kwin; project. Copyright &copy; 2008, 2013 The &kwin; Developers. Detailed copyright assignment notices are available in the headers in the source code.</para>
 
-        <para
->Grundlage der Dokumentation ist die ursprüngliche Dokumentation zu &ksnapshot;</para>
+        <para>Documentation based on the original &ksnapshot; documentation:</para>
 
         <itemizedlist>
             <listitem>
-                <para
->Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+                <para>Copyright &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
             </listitem>
             <listitem>
-                <para
->Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+                <para>Copyright &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
             </listitem>
         </itemizedlist>
 
-        <para
->Übersetzung Burkhard Lück<email
->lueck@hube-lueck.de</email
-></para
-> &underFDL; &underGPL; </chapter>
+        <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+        &underFDL;
+        &underGPL;
+    </chapter>
 
 &documentation.index;
 </book>

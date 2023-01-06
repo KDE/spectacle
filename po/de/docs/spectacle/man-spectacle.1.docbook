@@ -1,313 +1,202 @@
 <?xml version="1.0" ?>
 <!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY % German "INCLUDE">
+<!ENTITY % English "INCLUDE">
 ]>
 
 <refentry lang="&language;">
 <refentryinfo>
-<title
->Spectacle-Benutzerhandbuch</title>
-<author
-><firstname
->Yuri</firstname
-><surname
->Chornoivan</surname
-> <contrib
->Spectacle-Benutzerhandbuch</contrib
-> <email
->yurchor@ukr.net</email
-></author>
-<date
->2021-04-11</date>
-<releaseinfo
->Spectacle 21.08</releaseinfo>
-<productname
->KDE-Anwendungen</productname>
+<title>Spectacle User's Manual</title>
+<author><firstname>Yuri</firstname><surname>Chornoivan</surname>
+<contrib>Spectacle man page.</contrib>
+<email>yurchor@ukr.net</email></author>
+<date>2021-04-11</date>
+<releaseinfo>Spectacle 21.08</releaseinfo>
+<productname>KDE Applications</productname>
 </refentryinfo>
 
 <refmeta>
-<refentrytitle
-><command
->spectacle</command
-></refentrytitle>
-<manvolnum
->1</manvolnum>
+<refentrytitle><command>spectacle</command></refentrytitle>
+<manvolnum>1</manvolnum>
 </refmeta>
 
 <refnamediv>
-<refname
->spectacle</refname>
-<refpurpose
->Dienstprogramm für Bildschirmfotos</refpurpose>
+<refname>spectacle</refname>
+<refpurpose>screenshot capture Utility</refpurpose>
 </refnamediv>
 <!-- body begins here -->
 <refsynopsisdiv id='synopsis'>
-<cmdsynopsis
-><command
->spectacle</command
-> <arg choice="opt"
-><replaceable
->Spectacle-Optionen</replaceable
-></arg
-> </cmdsynopsis>
+<cmdsynopsis>
+<command>spectacle</command>
+<arg choice="opt"><replaceable>Spectacle options</replaceable></arg>
+</cmdsynopsis>
 </refsynopsisdiv>
 
 
-<refsect1 id="description"
-><title
->Beschreibung</title>
-<para
-><command
->spectacle</command
-> ist eine einfache Anwendung für Aufnahmen des Bildschirms der Arbeitsfläche. Sie können die gesamte Arbeitsfläche, einen einzelnen Bildschirm, das zur Zeit aktive Fenster, das Fenster unter der Maus oder einen rechteckigen Bereich des Bildschirms aufnehmen. Die Aufnahmen können Sie drucken, mit anderen Anwendungen zur Bearbeitung öffnen oder direkt speichern.</para>
+<refsect1 id="description"><title>Description</title>
+<para><command>spectacle</command> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
 </refsect1>
 
-<refsect1 id="options"
-><title
->Spectacle-Optionen</title>
+<refsect1 id="options"><title>Spectacle options</title>
 <variablelist>
 
 <varlistentry>
-<term
-><option
->-f, --fullscreen</option
-></term>
+<term><option>-f, --fullscreen</option></term>
 <listitem>
-<para
->Die gesamte Arbeitsfläche aufnehmen (Voreinstellung).</para>
+<para>Capture the entire desktop (default).</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-m, --current</option
-></term>
+<term><option>-m, --current</option></term>
 <listitem>
-<para
->Den aktuellen Bildschirm aufnehmen.</para>
+<para>Capture the current monitor.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-a, --activewindow</option
-></term>
+<term><option>-a, --activewindow</option></term>
 <listitem>
-<para
->Das aktive Fenster aufnehmen.</para>
+<para>Capture the active window.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-u, --windowundercursor</option
-></term>
+<term><option>-u, --windowundercursor</option></term>
 <listitem>
-<para
->Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-Elemente (Menüs, Kurzinfos usw.) werden mit dem übergeordneten Fenster aufgenommen..</para>
+<para>Capture the window currently under the cursor, including parents of pop-up menus.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-t, --transientonly</option
-></term>
+<term><option>-t, --transientonly</option></term>
 <listitem>
-<para
->Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-Elemente (Menüs, Kurzinfos usw.) werden ohne das übergeordnete Fenster aufgenommen..</para>
+<para>Capture the window currently under the cursor, excluding parents of pop-up menus.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-r, --region</option
-></term>
+<term><option>-r, --region</option></term>
 <listitem>
-<para
->Einen rechteckigen Bereich aufnehmen.</para>
+<para>Capture a rectangular region of the screen.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-g, --gui</option
-></term>
+<term><option>-l, --launchonly</option></term>
 <listitem>
-<para
->Mit grafischer Oberfläche starten (Standard).</para>
+<para>Launch Spectacle without taking a screenshot.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-b, --background</option
-></term>
+<term><option>-g, --gui</option></term>
 <listitem>
-<para
->Ein Bildschirmfoto aufnehmen und ohne Anzeige der grafischen Oberfläche beenden.</para>
+<para>Start in GUI mode (default).</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-s, --dbus</option
-></term>
+<term><option>-b, --background</option></term>
 <listitem>
-<para
->Im DBus-Aktivierungsmodus starten.</para>
+<para>Take a screenshot and exit without showing the GUI.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-n, --nonotify</option
-></term>
+<term><option>-s, --dbus</option></term>
 <listitem>
-<para
->Im Hintergrundmodus keine Benachrichtigung anzeigen, wenn das Bildschirmfoto aufgenommen wurde.</para>
+<para>Start in DBus-Activation mode.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-o, --output <replaceable
->fileName</replaceable
-></option
-></term>
+<term><option>-n, --nonotify</option></term>
 <listitem>
-<para
->Im Hintergrundmodus das Bild in die angegebene Datei <replaceable
->fileName</replaceable
-> speichern.</para>
+<para>In background mode, do not pop up a notification when the screenshot is taken.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-d, --delay <replaceable
->delayMsec</replaceable
-></option
-></term>
+<term><option>-o, --output <replaceable>fileName</replaceable></option></term>
 <listitem>
-<para
->Verzögerung in Millisekunden vor der Aufnahme im Hintergrundmodus.</para>
+<para>In background mode, save image to specified file <replaceable>fileName</replaceable>.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-c, --clipboard</option
-></term>
+<term><option>-d, --delay <replaceable>delayMsec</replaceable></option></term>
 <listitem>
-<para
->Im Hintergrundmodus das Bild in die Zwischenablage kopieren.</para>
+<para>In background mode, delay before taking the shot (in milliseconds).</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-w, --onclick</option
-></term>
+<term><option>-c, --copy-image</option></term>
 <listitem>
-<para
->Das Bildschirmfoto bei Mausklick aufnehmen. Die Verzögerung wird so nicht beachtet.</para>
+<para>In background mode, copy screenshot only to clipboard, unless -o is also used.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-i, --new-instance</option
-></term>
+<term><option>-C, --copy-path</option></term>
 <listitem>
-<para
->Startet eine neue GUI-Instanz von Spectacle ohne Registrierung am DBus.</para>
+<para>In background mode, copy screenshot file path to clipboard.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-i, --pointer</option
-></term>
+<term><option>-w, --onclick</option></term>
 <listitem>
-<para
->Im Hintergrundmodus Mauszeiger im Bildschirmfoto anzeigen.</para>
+<para>Wait for a click before taking screenshot. Invalidates delay..</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><option
->-e, --no-decoration</option
-></term>
+<term><option>-i, --new-instance</option></term>
 <listitem>
-<para
->Im Hintergrundmodus Fensterdekoration im Bildschirmfoto nicht anzeigen.</para>
+<para>Starts a new GUI instance of spectacle without registering to DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-i, --pointer</option></term>
+<listitem>
+<para>In background mode, include pointer in the screenshot.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-e, --no-decoration</option></term>
+<listitem>
+<para>In background mode, do not include window decorations in the screenshot.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 </refsect1>
 
-<refsect1 id="feedback"
-><title
->Rückmeldung</title>
-<para
->Im IRC-Kanal #kde auf irc.libera.chat, über E-Mails an die Mailingliste kde-graphics-devel@kde.org oder im Internet auf der Seite &lt;<ulink url="https://apps.kde.org/spectacle"
->https://apps.kde.org/spectacle</ulink
->&gt;</para>
+<refsect1 id="feedback"><title>Feedback</title>
+<para>On IRC, irc.libera.chat #kde or via email, kde-graphics-devel@kde.org or on the web, &lt;<ulink url="https://apps.kde.org/spectacle">https://apps.kde.org/spectacle</ulink>&gt;</para>
 </refsect1>
 
 <refsect1>
-<title
->Siehe auch</title>
+<title>See Also</title>
 <simplelist>
-<member
->Ausführlichere Informationen finden Sie mit <ulink url="help:/spectacle"
->help:help:/spectacle</ulink
->. Sie können diese <acronym
->URL</acronym
-> in der Adressleiste von &konqueror; eingeben oder führen Sie <userinput
-><command
->khelpcenter</command
-> <parameter
->help:/spectacle</parameter
-></userinput
-> aus.</member>
-<member
->kf5options(7)</member>
-<member
->qt5options(7)</member>
-<member
->Weitere Informationen finden Sie auf der Webseite <ulink url="https://apps.kde.org/spectacle"
->https://apps.kde.org/spectacle</ulink
-></member>
+<member>More detailed user documentation is available from <ulink
+url="help:/spectacle">help:/spectacle</ulink>
+(either enter this <acronym>URL</acronym> into &konqueror;, or run
+<userinput><command>khelpcenter</command>
+<parameter>help:/spectacle</parameter></userinput>).</member>
+<member>kf5options(7)</member>
+<member>qt5options(7)</member>
+<member>There is also further information available at
+<ulink url="https://apps.kde.org/spectacle">https://apps.kde.org/spectacle</ulink></member>
 </simplelist>
 </refsect1>
 
-<refsect1 id="copyright"
-><title
->Copyright</title>
-<para
->Copyright &copy; 2015 Boudhayan Gupta</para>
-<para
->Lizenz: GNU General Public License Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
->https://www.gnu.org/licenses/gpl-2.0.html</ulink
->&gt;</para>
+<refsect1 id="copyright"><title>Copyright</title>
+<para>Copyright &copy; 2015 Boudhayan Gupta</para>
+<para>License: GNU General Public Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html">https://www.gnu.org/licenses/gpl-2.0.html</ulink>&gt;</para>
 </refsect1>
 </refentry>
 
