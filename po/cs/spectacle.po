@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-18 00:50+0000\n"
-"PO-Revision-Date: 2023-01-04 15:04+0100\n"
+"PO-Revision-Date: 2023-01-10 17:04+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -61,7 +61,7 @@ msgstr "Celá obrazovka"
 #: src/CaptureModeModel.cpp:109
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Všechny obrazovky (škálované na stejnou velikost)"
 
 #: src/CaptureModeModel.cpp:116
 #, kde-format
@@ -111,12 +111,12 @@ msgstr ""
 #: src/ExportManager.cpp:366 src/ExportManager.cpp:416
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
-msgstr ""
+msgstr "Nelze uložit snímek obrazovky. Chyba při zápisu dočasného souboru."
 
 #: src/ExportManager.cpp:374
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
-msgstr ""
+msgstr "Snímek nelze uložit. Nelze jej odeslat na vzdálené úložiště."
 
 #: src/ExportManager.cpp:423
 #, kde-format
@@ -428,7 +428,7 @@ msgstr " sekund"
 #: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:302
 #, kde-format
 msgid "Take a new screenshot"
-msgstr "Pořídit nový snímek"
+msgstr "Zachytit nový snímek"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -588,7 +588,7 @@ msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"Snímek obrazovky nešlo pořídit. Prosím, nahlaste tuto chybu zde: : <a href="
+"Snímek obrazovky nešlo zachytit. Prosím, nahlaste tuto chybu zde: : <a href="
 "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">vytvořit chybové "
 "hlášení spectacle</a>"
 
@@ -596,13 +596,13 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, kde-format
 msgid "When launching Spectacle:"
-msgstr ""
+msgstr "Při spuštění Spectacle"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr ""
+msgstr "Zachytit snímek celé obrazovky"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
@@ -614,7 +614,7 @@ msgstr "Naposledy použitý režim sejmutí"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
-msgstr ""
+msgstr "Nezachycovat snímek obrazovky automaticky"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:59
@@ -626,7 +626,7 @@ msgstr "Po sejmutí obrazovky:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:66
 #, kde-format
 msgid "Save file to default folder"
-msgstr ""
+msgstr "Uložit soubor do výchozí složky"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:77
@@ -662,7 +662,7 @@ msgstr "Stiskněte klávesu pro snímek obrazovky pro:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:126
 #, kde-format
 msgid "Take a new Screenshot"
-msgstr "Pořídit nový snímek"
+msgstr "Zachytit nový snímek"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
@@ -680,7 +680,7 @@ msgstr "Přepnout zpět na Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
 #, kde-format
 msgid "Rectangular Region Selection"
-msgstr ""
+msgstr "Výběr obdélníkové oblasti"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:167
@@ -704,7 +704,7 @@ msgstr "Zobrazit lupu"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:188
 #, kde-format
 msgid "Accept on click-and-release"
-msgstr ""
+msgstr "Přijmout při kliknutí-a-uvolnění"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
@@ -734,7 +734,7 @@ msgstr "Vždy"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:236
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr ""
+msgstr "Pokud není Spectacle ukončeno"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/SaveOptions.ui:17
@@ -783,7 +783,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/SaveOptionsPage.cpp:61
 #, kde-format
 msgid "To save to a sub-folder"
-msgstr "Pro uležení do podsložky"
+msgstr "Pro uložení do podsložky"
 
 #: src/Gui/SettingsDialog/SaveOptionsPage.cpp:87
 #, kde-kuit-format
@@ -806,26 +806,26 @@ msgstr "Zkratky"
 #: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
-msgstr ""
+msgstr "Co dělat při spuštění Spectacle"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:24
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
-msgstr ""
+msgstr "Co se má stát pokud je klávesa stisknuta a Spectacle již běží"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:33
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
-msgstr "Uložit snímek obrazovky automaticky po pořízení"
+msgstr "Uložit snímek obrazovky automaticky po zachycení"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:37
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
-msgstr ""
+msgstr "Činnost schránky, která má být provedena po zachycení snímku obrazovky"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:48
@@ -845,7 +845,7 @@ msgstr "Zda zobrazovat lupu při výběru oblasti"
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
-msgstr ""
+msgstr "Zda má být snímek obrazovky zachycen po výběru oblasti a uvolnění myši"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:60
@@ -869,7 +869,7 @@ msgstr "Naposledy použitá oblast vybraná uživatelem"
 #: src/Gui/SettingsDialog/spectacle.kcfg:81
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Pořídit snímek při kliknutí"
+msgstr "Zachytit snímek při kliknutí"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:85
@@ -935,13 +935,13 @@ msgstr "Cesta k naposledy uloženému souboru"
 #: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Last path used for \"save as\" action"
-msgstr ""
+msgstr "Poslední cesta použitá v činnosti \"Uložit jako\""
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, kde-format
 msgid "The last used annotation tool type"
-msgstr ""
+msgstr "Naposled použitý nástroj pro vytváření poznámek"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
@@ -1003,7 +1003,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:220
 #, kde-format
 msgid "Font for annotations"
-msgstr ""
+msgstr "Písmo pro poznámky"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1011,7 +1011,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "Barva písma pro poznámky"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:233
@@ -1076,7 +1076,7 @@ msgstr "Při sdílení obrázku došlo k problému: %1"
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Pořídit snímek:"
+msgstr "Zachytit snímek:"
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
@@ -1091,7 +1091,7 @@ msgstr "Posunout obdélník výběru:"
 #: src/Gui/ShortcutsTextBox.qml:21
 #, kde-format
 msgid "Resize selection rectangle:"
-msgstr ""
+msgstr "Změnit velikost výběru:"
 
 #: src/Gui/ShortcutsTextBox.qml:24
 #, kde-format
@@ -1107,37 +1107,37 @@ msgstr "Zrušit:"
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
-msgstr ""
+msgstr "Uvolnit levý klik"
 
 #: src/Gui/ShortcutsTextBox.qml:31
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
-msgstr ""
+msgstr "Dvojité kliknutí"
 
 #: src/Gui/ShortcutsTextBox.qml:32
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag outside selection rectangle"
-msgstr ""
+msgstr "Táhnout vně obdélníku výběru"
 
 #: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
-msgstr ""
+msgstr "+ Shift: Lupa"
 
 #: src/Gui/ShortcutsTextBox.qml:36
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag inside selection rectangle"
-msgstr ""
+msgstr "Táhnout uvnitř obdélníku výběru"
 
 #: src/Gui/ShortcutsTextBox.qml:37
 #, kde-format
@@ -1149,13 +1149,13 @@ msgstr "Šipky"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr ""
+msgstr "+ Shift: Posunovat po 1 pixelu"
 
 #: src/Gui/ShortcutsTextBox.qml:39
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
-msgstr ""
+msgstr "Táhněte za úchyty"
 
 #: src/Gui/ShortcutsTextBox.qml:40
 #, kde-format
@@ -1167,7 +1167,7 @@ msgstr "Šipky + Alt"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr ""
+msgstr "+ Shift: Měnit velikost po 1 pixelu"
 
 #: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
@@ -1259,6 +1259,8 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
+"Snímek obrazovky byl uložen jako  '%1' do '%2' cesta k jeho umístění byla "
+"uložena do schránky."
 
 #: src/SpectacleCore.cpp:667
 #, kde-format
@@ -1389,4 +1391,4 @@ msgstr "Při režimu na pozadí, vyjmou dekorace ze snímku obrazovky"
 #: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr ""
+msgstr "Otevřít a upravit existující soubor snímku"
