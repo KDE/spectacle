@@ -297,9 +297,12 @@ EmptyPage {
                 spacing: Kirigami.Units.mediumSpacing
                 Kirigami.Heading {
                     anchors.left: parent.left
+                    width: Math.max(implicitWidth, parent.width)
                     topPadding: -captureHeadingMetrics.descent
                     bottomPadding: -captureHeadingMetrics.descent + parent.spacing
                     text: i18n("Take a new screenshot")
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
                     level: 3
                     FontMetrics {
                         id: captureHeadingMetrics
@@ -311,14 +314,17 @@ EmptyPage {
                 }
                 Kirigami.Heading {
                     anchors.left: parent.left
+                    width: Math.max(implicitWidth, parent.width)
                     topPadding: -captureHeadingMetrics.descent + parent.spacing
                     bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
                     text: i18n("Capture Settings")
                     level: 3
                 }
                 CaptureSettingsColumn {
                     anchors.left: parent.left
-                    width: parent.width
+                    width: Math.max(Layout.minimumWidth, parent.width)
                 }
             }
             background: Rectangle {

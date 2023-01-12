@@ -9,8 +9,8 @@ import org.kde.kirigami 2.19 as Kirigami
 import org.kde.spectacle.private 1.0
 
 ColumnLayout {
+    Layout.minimumWidth: delayRow.implicitWidth
     spacing: Kirigami.Units.mediumSpacing
-    // column of CheckBoxes
     QQC2.CheckBox {
         Layout.fillWidth: true
         text: i18n("Include mouse pointer")
@@ -58,8 +58,8 @@ ColumnLayout {
         checked: Platform.supportedShutterModes & Platform.OnClick && Settings.captureOnClick
         onToggled: Settings.captureOnClick = checked
     }
-    // Label SpinBox CheckBox
     RowLayout {
+        id: delayRow
         spacing: parent.spacing
         QQC2.Label {
             text: i18n("Delay:")
