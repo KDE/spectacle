@@ -10,10 +10,6 @@
 #include "SpectacleDBusAdapter.h"
 #include "settings.h"
 
-#ifdef KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS
-#include <kImageAnnotator/KImageAnnotator.h>
-#endif
-
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDBusConnection>
@@ -85,10 +81,6 @@ int main(int argc, char **argv)
     // and activateRequested signal is triggered
     // For some reason this does not work properly if behind an if
     KDBusService service(KDBusService::Unique, &lCore);
-
-#ifdef KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS
-    kImageAnnotator::loadTranslations();
-#endif
 
     // Delay initialisation after we now we are in the single instance or new-instance was passed, to avoid doing it each time spectacle executable is called
     lCore.init();
