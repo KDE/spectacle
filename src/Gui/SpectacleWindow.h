@@ -9,8 +9,7 @@
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
-
-#include <KWayland/Client/plasmashell.h>
+#include "plasmashell.h"
 
 #include <QQuickView>
 #include <QQmlContext>
@@ -104,9 +103,9 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
-    KWayland::Client::PlasmaShellSurface *plasmashellSurface();
+    PlasmaShellSurface *plasmashellSurface();
 
-    KWayland::Client::PlasmaShellSurface *m_plasmaShellSurface = nullptr;
+    PlasmaShellSurface *m_plasmaShellSurface = nullptr;
 
     static bool s_synchronizingVisibility;
     static bool s_synchronizingTitle;

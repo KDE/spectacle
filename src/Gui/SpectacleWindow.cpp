@@ -9,19 +9,20 @@
 #include "SpectacleWindow.h"
 
 #include "SpectacleCore.h"
+#include "plasmashell.h"
 #include "spectacle_gui_debug.h"
 
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KUrlMimeData>
-#include <KWayland/Client/surface.h>
 
 #include <QApplication>
 #include <QColorDialog>
 #include <QDrag>
 #include <QFontDialog>
 #include <QtQml>
+#include <qpa/qplatformnativeinterface.h>
 
 bool SpectacleWindow::s_synchronizingVisibility = false;
 bool SpectacleWindow::s_synchronizingTitle = false;
@@ -183,11 +184,10 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
 
 void SpectacleWindow::setPosition(const QPoint &p)
 {
-    using namespace KWayland::Client;
     // TODO This is a hack until a better interface is available.
     // Original context: https://phabricator.kde.org/D23466
     if (auto surface = plasmashellSurface()) {
-        surface->setPosition(p);
+        surface->set_position(p.x(), p.y());
     } else {
         QQuickView::setPosition(p);
     }
@@ -196,11 +196,10 @@ void SpectacleWindow::setPosition(const QPoint &p)
 void SpectacleWindow::setGeometry(const QRect &r)
 {
     QQuickView::setGeometry(r);
-    using namespace KWayland::Client;
     // TODO This is a hack until a better interface is available.
     // Original context: https://phabricator.kde.org/D23466
     if (auto surface = plasmashellSurface()) {
-        surface->setPosition(r.topLeft());
+        surface->set_position(r.topLeft().x(), r.topLeft().y());
     }
 }
 
@@ -484,15 +483,23 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
-KWayland::Client::PlasmaShellSurface *SpectacleWindow::plasmashellSurface()
+wl_surface *surfaceFromWindow(QWindow *window)
+{
+    QPlatformNativeInterface *nativeInterface = qGuiApp->platformNativeInterface();
+    if (!nativeInterface) {
+        return nullptr;
+    }
+    return static_cast<wl_surface *>(nativeInterface->nativeResourceForWindow("surface", window));
+}
+
+PlasmaShellSurface *SpectacleWindow::plasmashellSurface()
 {
     // TODO This is a hack until a better interface is available.
     // Original context: https://phabricator.kde.org/D23466
     if (auto plasmashell = SpectacleCore::instance()->plasmaShellInterfaceWrapper()) {
-        using namespace KWayland::Client;
-        auto surface = Surface::fromWindow(this);
+        auto surface = surfaceFromWindow(this);
         if (surface) {
-            return plasmashell->createSurface(surface, this);
+            return new PlasmaShellSurface(plasmashell->get_surface(surface), this);
         }
     }
     return nullptr;

@@ -41,6 +41,7 @@ add_executable(spectacle
     Platforms/PlatformNull.cpp
     Platforms/PlatformKWinWayland.cpp
     Platforms/PlatformKWinWayland2.cpp
+    plasmashell.cpp
 
     ../resources.qrc
     )
@@ -65,6 +66,15 @@ if(PURPOSE_FOUND)
     target_link_libraries(spectacle KF5::PurposeWidgets)
 endif()
 
+if(QT_MAJOR_VERSION STREQUAL "5")
+    ecm_add_qtwayland_client_protocol(spectacle
+        PROTOCOL ${PLASMA_WAYLAND_PROTOCOLS_DIR}/plasma-shell.xml
+        BASENAME plasma-shell
+    )
+else()
+    qt_generate_wayland_protocol_client_sources(spectacle FILES ${PLASMA_WAYLAND_PROTOCOLS_DIR}/plasma-shell.xml)
+endif()
+
 ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/SaveOptions.ui)
 
 target_link_libraries(
@@ -87,8 +97,10 @@ target_link_libraries(
         KF5::NewStuff
         KF5::GlobalAccel
         KF5::XmlGui
-        KF5::WaylandClient
         KF5::GuiAddons
+        Wayland::Client
+        Qt::GuiPrivate
+        Qt::WaylandClient
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

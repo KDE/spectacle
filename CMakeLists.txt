@@ -65,7 +65,6 @@ find_package(
         NewStuff
         GlobalAccel
         XmlGui
-        Wayland
         GuiAddons
         Kirigami2
 )
@@ -104,6 +103,13 @@ if(NOT XCB_CURSOR_FOUND)
 	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-CURSOR ")
 	set(XCB_COMPONENTS_FOUND FALSE)
 endif()
+
+if (QT_MAJOR_VERSION STREQUAL "5")
+    find_package(QtWaylandScanner REQUIRED)
+endif()
+find_package(PlasmaWaylandProtocols REQUIRED)
+find_package(Wayland REQUIRED COMPONENTS Client)
+find_package(Qt${QT_MAJOR_VERSION}WaylandClient REQUIRED)
 
 # add the spectacle.upd file
 install(FILES conf/update/spectacle_clipboard.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})

@@ -17,20 +17,12 @@ class QCommandLineParser;
 #include "Gui/CaptureWindow.h"
 #include "Gui/ViewerWindow.h"
 #include "Platforms/PlatformLoader.h"
+#include "plasmashell.h"
 #include "settings.h"
 
 #include <memory>
 
-namespace KWayland
-{
-namespace Client
-{
-class PlasmaShell;
-}
-}
-
 static const auto QML_URI_PRIVATE = "org.kde.spectacle.private";
-
 
 class SpectacleCore : public QObject
 {
@@ -57,7 +49,7 @@ public:
     Platform *platform() const;
 
     // Needed so the QuickEditor can go fullscreen on wayland.
-    KWayland::Client::PlasmaShell *plasmaShellInterfaceWrapper() const;
+    PlasmaShell *plasmaShellInterfaceWrapper() const;
 
     CaptureModeModel *captureModeModel() const;
 
@@ -117,7 +109,7 @@ private:
     void unityLauncherUpdate(const QVariantMap &properties) const;
 
     static SpectacleCore *s_self;
-    KWayland::Client::PlasmaShell *m_waylandPlasmashell = nullptr;
+    std::unique_ptr<PlasmaShell> m_plasmaShell = nullptr;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
     StartMode m_startMode = StartMode::Gui;
     bool m_notify = false;
