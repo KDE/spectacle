@@ -511,6 +511,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     m_tempIncludeDecorations = includeDecorations;
 
     if (timeout < 0 || !m_platform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate)) {
+        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         m_platform->doGrab(Platform::ShutterMode::OnClick, m_tempGrabMode, m_tempIncludePointer, m_tempIncludeDecorations);
         return;
     }
@@ -525,6 +526,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     timeout = qMax(timeout, KWindowSystem::compositingActive() ? 200 : 50);
 
     if (noDelay) {
+        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         QTimer::singleShot(timeout, this, [this]() {
             m_platform->doGrab(Platform::ShutterMode::Immediate, m_tempGrabMode, m_tempIncludePointer, m_tempIncludeDecorations);
         });
