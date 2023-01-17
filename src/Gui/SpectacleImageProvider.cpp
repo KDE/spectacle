@@ -17,11 +17,6 @@ SpectacleImageProvider::SpectacleImageProvider(ImageType type, Flags flags)
 {
 }
 
-// QImage SpectacleImageProvider::requestImage(const QString &id, QSize *size, const QSize& requestedSize)
-// {
-//     return QImage();
-// }
-
 QPixmap SpectacleImageProvider::requestPixmap(const QString &id, QSize *size, const QSize& requestedSize)
 {
     // `id` is the "my_id" part of this example url: "image://spectacle/my_id"
@@ -63,8 +58,3 @@ QPixmap SpectacleImageProvider::requestPixmap(const QString &id, QSize *size, co
     }
     return pixmap;
 }
-
-// QQuickTextureFactory *SpectacleImageProvider::requestTexture(const QString &id, QSize *size, const QSize &requestedSize)
-// {
-//     return;
-// }

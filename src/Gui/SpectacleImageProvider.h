@@ -12,7 +12,5 @@ public:
     SpectacleImageProvider(ImageType type, Flags flags = Flags());
     ~SpectacleImageProvider() override = default;
 
-//     QImage requestImage(const QString &id, QSize *size, const QSize& requestedSize) override;
-    QPixmap requestPixmap(const QString &id, QSize *size, const QSize& requestedSize) override;
-//     QQuickTextureFactory *requestTexture(const QString &id, QSize *size, const QSize &requestedSize) override;
+    QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) override;
 };
