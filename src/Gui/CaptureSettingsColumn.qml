@@ -51,7 +51,7 @@ ColumnLayout {
         id: captureOnClickCheckBox
         Layout.fillWidth: true
         text: i18n("Capture on click")
-        enabled: Platform.supportedShutterModes === (Platform.Immediate | Platform.OnClick)
+        visible: Platform.supportedShutterModes === (Platform.Immediate | Platform.OnClick)
         QQC2.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image.")
         QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         QQC2.ToolTip.visible: hovered || pressed
