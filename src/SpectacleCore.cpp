@@ -784,7 +784,7 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         m_engine = std::make_unique<QQmlEngine>(this);
         m_engine->addImageProvider(QStringLiteral("spectacle"),
                                    new SpectacleImageProvider(QQmlImageProviderBase::Pixmap));
-        m_engine->rootContext()->setContextObject(new KLocalizedContext);
+        m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine.get()));
 
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "SpectacleCore", this);
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Platform", m_platform.get());

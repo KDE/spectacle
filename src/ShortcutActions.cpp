@@ -30,37 +30,37 @@ ShortcutActions::ShortcutActions()
     // OpenWithoutScreenshot
     // _launch
     {
-        QAction *action = new QAction(i18n("Launch Spectacle"));
+        QAction *action = new QAction(i18n("Launch Spectacle"), &mActions);
         action->setObjectName(QStringLiteral("_launch"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Entire Desktop"));
+        QAction *action = new QAction(i18n("Capture Entire Desktop"), &mActions);
         action->setObjectName(QStringLiteral("FullScreenScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Current Monitor"));
+        QAction *action = new QAction(i18n("Capture Current Monitor"), &mActions);
         action->setObjectName(QStringLiteral("CurrentMonitorScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Active Window"));
+        QAction *action = new QAction(i18n("Capture Active Window"), &mActions);
         action->setObjectName(QStringLiteral("ActiveWindowScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Rectangular Region"));
+        QAction *action = new QAction(i18n("Capture Rectangular Region"), &mActions);
         action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Window Under Cursor"));
+        QAction *action = new QAction(i18n("Capture Window Under Cursor"), &mActions);
         action->setObjectName(QStringLiteral("WindowUnderCursorScreenShot"));
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Launch Spectacle without capturing"));
+        QAction *action = new QAction(i18n("Launch Spectacle without capturing"), &mActions);
         action->setObjectName(QStringLiteral("OpenWithoutScreenshot"));
         mActions.addAction(action->objectName(), action);
     }
