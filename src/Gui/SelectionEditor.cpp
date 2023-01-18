@@ -664,6 +664,7 @@ bool SelectionEditor::eventFilter(QObject *watched, QEvent *event)
         break;
     case QEvent::MouseButtonDblClick:
         mouseDoubleClickEvent(item, static_cast<QMouseEvent *>(event));
+        break;
     default:
         break;
     }

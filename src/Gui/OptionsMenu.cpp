@@ -187,6 +187,7 @@ void OptionsMenu::changeEvent(QEvent *event)
     case QEvent::LayoutDirectionChange:
     case QEvent::StyleChange:
         delayActionLayoutUpdate();
+        break;
     default: break;
     }
     QWidget::changeEvent(event);

@@ -118,6 +118,7 @@ QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
             path.lineTo(start.x + 0.0001, start.y);
         }
         p.drawPath(path);
+        break;
     }
     case AnnotationDocument::Line:
     case AnnotationDocument::Arrow: {
@@ -127,6 +128,7 @@ QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
         if (la->type() == AnnotationDocument::Arrow) {
             p.drawPolyline(la->arrowHeadPolygon(line));
         }
+        break;
     }
     case AnnotationDocument::Rectangle:
     case AnnotationDocument::Ellipse: {
