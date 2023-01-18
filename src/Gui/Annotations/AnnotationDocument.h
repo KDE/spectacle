@@ -284,7 +284,7 @@ Q_SIGNALS:
     void shadowChanged();
 
 private:
-    AnnotationDocument::EditActionType m_type;
+    AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
     AnnotationTool::Options m_options;
     EditAction *m_editAction = nullptr;
     std::unique_ptr<EditAction> m_actionCopy;
