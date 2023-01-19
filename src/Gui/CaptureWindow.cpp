@@ -12,44 +12,10 @@
 #include "Gui/SelectionEditor.h"
 #include "spectacle_gui_debug.h"
 
-#include <KWindowSystem>
-
-#ifdef XCB_FOUND
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QX11Info>
-#else
-#include <private/qtx11extras_p.h>
-#endif
-#endif
-
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
     , m_screenToFollow(screen)
 {
-    // before we do anything, we need to set a window property
-    // that skips the close/hide window animation on kwin. this
-    // fixes a ghost image of the spectacle window that appears
-    // on subsequent screenshots taken with the take new screenshot
-    // button
-    //
-    // credits for this goes to Thomas Lübking <thomas.luebking@gmail.com>
-
-#ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
-
-        // do the xcb shenanigans
-        xcb_connection_t *xcbConn = QX11Info::connection();
-        const QByteArray effectName = QByteArrayLiteral("_KDE_NET_WM_SKIP_CLOSE_ANIMATION");
-
-        xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, false, effectName.length(), effectName.constData());
-        QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
-        if (!atom.isNull()) {
-            uint32_t value = 1;
-            xcb_change_property(xcbConn, XCB_PROP_MODE_REPLACE, winId(), atom->atom, XCB_ATOM_CARDINAL, 32, 1, &value);
-        }
-    }
-#endif
-
     setFlags({
         Qt::Window, // the default window flag
         Qt::FramelessWindowHint,
