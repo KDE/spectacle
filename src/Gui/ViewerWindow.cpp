@@ -116,34 +116,48 @@ void ViewerWindow::updateMinimumSize()
     }
 }
 
-void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariant &messageArgument)
+void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariantMap &properties)
 {
-    rootObject()->setProperty("inlineMessageData", QVariantList{qmlFile, messageArgument});
+    rootObject()->setProperty("inlineMessageSource", qmlFile);
+    rootObject()->setProperty("inlineMessageData", properties);
 }
 
-void ViewerWindow::showSavedMessage(const QUrl &messageArgument)
+void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedMessage.qml"), messageArgument);
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedMessage.qml"),
+                      {
+                          {QLatin1String("messageArgument"), messageArgument},
+                          {QLatin1String("video"), false},
+                      });
+}
+
+void ViewerWindow::showSavedVideoMessage(const QUrl &messageArgument)
+{
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedMessage.qml"),
+                      {
+                          {QLatin1String("messageArgument"), messageArgument},
+                          {QLatin1String("video"), true},
+                      });
 }
 
 void ViewerWindow::showSavedAndCopiedMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedAndCopiedMessage.qml"), messageArgument);
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedAndCopiedMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
 }
 
 void ViewerWindow::showSavedAndLocationCopiedMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedAndLocationCopied.qml"), messageArgument);
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/SavedAndLocationCopied.qml"), {{QLatin1String("messageArgument"), messageArgument}});
 }
 
 void ViewerWindow::showCopiedMessage()
 {
-    showInlineMessage(QStringLiteral("qrc:/src/Gui/CopiedMessage.qml"));
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/CopiedMessage.qml"), {});
 }
 
 void ViewerWindow::showScreenshotFailedMessage()
 {
-    showInlineMessage(QStringLiteral("qrc:/src/Gui/ScreenshotFailedMessage.qml"));
+    showInlineMessage(QStringLiteral("qrc:/src/Gui/ScreenshotFailedMessage.qml"), {});
 }
 
 void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageArgument)
@@ -154,9 +168,9 @@ void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageA
     }
 
     if (errorCode) {
-        showInlineMessage(QStringLiteral("qrc:/src/Gui/ShareErrorMessage.qml"), messageArgument);
+        showInlineMessage(QStringLiteral("qrc:/src/Gui/ShareErrorMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
     } else {
-        showInlineMessage(QStringLiteral("qrc:/src/Gui/SharedMessage.qml"), messageArgument);
+        showInlineMessage(QStringLiteral("qrc:/src/Gui/SharedMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
         if (!messageArgument.isEmpty()) {
             QApplication::clipboard()->setText(messageArgument);
         }

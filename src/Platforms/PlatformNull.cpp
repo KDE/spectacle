@@ -41,7 +41,7 @@ VideoPlatformNull::VideoPlatformNull(QObject *parent)
 {
 }
 
-QVector<VideoPlatform::RecordingMode> VideoPlatformNull::supportedRecordingModes() const
+VideoPlatform::RecordingModes VideoPlatformNull::supportedRecordingModes() const
 {
     return {};
 }

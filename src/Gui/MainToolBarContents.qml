@@ -51,6 +51,7 @@ ButtonGrid {
     }
 
     ToolButton {
+        visible: !SpectacleCore.videoMode
         icon.name: "document-save"
         text: i18n("Save")
         onClicked: {
@@ -62,6 +63,7 @@ ButtonGrid {
     }
 
     ToolButton {
+        visible: !SpectacleCore.videoMode
         icon.name: "document-save-as"
         text: i18n("Save As...")
         onClicked: {
@@ -73,6 +75,7 @@ ButtonGrid {
     }
 
     ToolButton {
+        visible: !SpectacleCore.videoMode
         icon.name: "edit-copy"
         text: i18n("Copy")
         onClicked: contextWindow.copyImage()
@@ -91,6 +94,7 @@ ButtonGrid {
         id: annotationsButton
         icon.name: "edit-image"
         text: i18n("Show Annotation Tools")
+        visible: !SpectacleCore.videoMode
         checkable: true
         checked: false
     }

@@ -36,11 +36,13 @@ EmptyPage {
 
     readonly property bool annotating: mainToolBarContents.annotationsButtonChecked
 
-    property var inlineMessageData: null
+    property var inlineMessageData: {}
+    property string inlineMessageSource: ""
     onInlineMessageDataChanged: {
-        inlineMessageLoader.setSource(inlineMessageData[0],
-                                      {"messageArgument": inlineMessageData[1]})
-        inlineMessageLoader.state = "active"
+        if (inlineMessageSource) {
+            inlineMessageLoader.setSource(inlineMessageSource, inlineMessageData)
+            inlineMessageLoader.state = "active"
+        }
     }
 
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
@@ -125,10 +127,10 @@ EmptyPage {
             function zoomByFactor(factor, centerPos = mapToItem(contentItem, width/2, height/2)) {
                 let newWidth = Math.max(width, // min
                                Math.min(annotationsParent.width * factor,
-                                        annotationsParent.implicitWidth * annotations.maxZoom)) // max
+                                        annotationsParent.implicitWidth * annotationsParent.maxZoom)) // max
                 let newHeight = Math.max(height, // min
                                 Math.min(annotationsParent.height * factor,
-                                         annotationsParent.implicitHeight * annotations.maxZoom)) // max
+                                         annotationsParent.implicitHeight * annotationsParent.maxZoom)) // max
                 resizeContent(newWidth, newHeight, centerPos)
                 returnToBounds()
                 if (newWidth === width) {
@@ -141,11 +143,11 @@ EmptyPage {
 
             function zoomToPercent(percent, centerPos = mapToItem(contentItem, width/2, height/2)) {
                 let newWidth = Math.max(width, // min
-                               Math.min(annotations.implicitWidth * percent,
-                                        annotations.implicitWidth * annotations.maxZoom)) // max
+                               Math.min(annotationsParent.item.implicitWidth * percent,
+                                        annotationsParent.item.implicitWidth * annotationsParent.maxZoom)) // max
                 let newHeight = Math.max(height, // min
-                                Math.min(annotations.implicitHeight * percent,
-                                         annotations.implicitHeight * annotations.maxZoom)) // max
+                                Math.min(annotationsParent.item.implicitHeight * percent,
+                                         annotationsParent.item.implicitHeight * annotationsParent.maxZoom)) // max
                 resizeContent(newWidth, newHeight, centerPos)
                 returnToBounds()
                 if (newWidth === width) {
@@ -245,33 +247,19 @@ EmptyPage {
                 }
             }
 
-            Item {
+            Loader {
                 id: annotationsParent
                 x: contextWindow.dprRound((parent.width - width) / 2)
                 y: contextWindow.dprRound((parent.height - height) / 2)
-                implicitWidth: annotations.implicitWidth * (annotations.zoom < 1 ? annotations.zoom : annotations.scale)
-                implicitHeight: annotations.implicitHeight * (annotations.zoom < 1 ? annotations.zoom : annotations.scale)
+                readonly property real minZoom: Math.min(flickable.width / item.implicitWidth,
+                                                         flickable.height / item.implicitHeight)
+                readonly property real maxZoom: Math.max(minZoom, 8)
+                readonly property real defaultZoom: Math.min(parent.width / item.implicitWidth,
+                                                             parent.height / item.implicitHeight)
+                width: item.implicitWidth * (item.zoom < 1 ? item.zoom : item.scale)
+                height: item.implicitHeight * (item.zoom < 1 ? item.zoom : item.scale)
 
-                AnnotationEditor {
-                    id: annotations
-                    readonly property real minZoom: Math.min(flickable.width / implicitWidth,
-                                                            flickable.height / implicitHeight)
-                    readonly property real maxZoom: Math.max(minZoom, 8)
-                    readonly property real defaultZoom: Math.min(parent.parent.width / implicitWidth,
-                                                                parent.parent.height / implicitHeight)
-                    transformOrigin: Item.TopLeft
-                    implicitWidth: contextWindow.imageSize.width / contextWindow.imageDpr
-                    implicitHeight: contextWindow.imageSize.height / contextWindow.imageDpr
-                    zoom: Math.min(1, Math.max(minZoom, defaultZoom))
-                    scale: Math.max(1, Math.min(maxZoom, defaultZoom))
-                    antialiasing: false
-                    smooth: !root.annotating || annotations.effectiveZoom <= 2
-                    width: implicitWidth
-                    height: implicitHeight
-                    visible: true
-                    enabled: root.annotating
-                        && AnnotationDocument.tool.type !== AnnotationDocument.None
-                }
+                source: SpectacleCore.videoMode ? "RecordingView.qml" : "ScreenshotView.qml"
             }
         }
     }
@@ -347,10 +335,10 @@ EmptyPage {
                 }
                 QQC2.SpinBox {
                     id: zoomEditor
-                    from: annotations.minZoom * 100
-                    to: annotations.maxZoom * 100
+                    from: annotationsParent.minZoom * 100
+                    to: annotationsParent.maxZoom * 100
                     stepSize: 1
-                    value: annotations.effectiveZoom * 100
+                    value: annotationsParent.item.effectiveZoom * 100
                     textFromValue: (value, locale) => {
                         return Number(Math.round(value)).toLocaleString(locale, 'f', 0) + locale.percent
                     }
@@ -400,8 +388,8 @@ EmptyPage {
             when: root.annotating
             PropertyChanges {
                 target: flickable
-                contentWidth: annotations.implicitWidth
-                contentHeight: annotations.implicitHeight
+                contentWidth: annotationsParent.item.implicitWidth
+                contentHeight: annotationsParent.item.implicitHeight
             }
             AnchorChanges {
                 target: annotationsToolBar
@@ -451,7 +439,7 @@ EmptyPage {
                 PropertyAction {
                     targets: [annotationsToolBar, separator, footerLoader]
                     property: "visible"
-                    value: true
+                    value: !SpectacleCore.videoMode
                 }
                 ParallelAnimation {
                     AnchorAnimation {

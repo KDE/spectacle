@@ -35,7 +35,8 @@ public:
     QSize imageSize() const;
     qreal imageDpr() const;
 
-    void showSavedMessage(const QUrl &messageArgument);
+    void showSavedScreenshotMessage(const QUrl &messageArgument);
+    void showSavedVideoMessage(const QUrl &messageArgument);
     void showSavedAndCopiedMessage(const QUrl &messageArgument);
     void showSavedAndLocationCopiedMessage(const QUrl &messageArgument);
     void showCopiedMessage();
@@ -53,7 +54,7 @@ private:
     void setMode(ViewerWindow::Mode mode);
     Q_SLOT void updateColor();
     Q_SLOT void updateMinimumSize();
-    Q_SLOT void showInlineMessage(const QString &qmlFile, const QVariant &messageArgument = {});
+    Q_SLOT void showInlineMessage(const QString &source, const QVariantMap &properties);
     Q_SLOT void showImageSharedMessage(int errorCode, const QString &messageArgument);
 
     void setBackgroundColorRole(QPalette::ColorRole role);

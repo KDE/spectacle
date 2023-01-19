@@ -10,9 +10,12 @@ import org.kde.kirigami 2.19 as Kirigami
 InlineMessage {
     id: root
     type: Kirigami.MessageType.Information
-    text: i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
+    property bool video: false
+    text: (video ? i18n("The video was saved as <a href=\"%1\">%2</a>",
                 messageArgument,
-                contextWindow.baseFileName(messageArgument))
+                contextWindow.baseFileName(messageArgument)) : i18n("The screenshot was saved as <a href=\"%1\">%2</a>",
+                messageArgument,
+                contextWindow.baseFileName(messageArgument)))
     actions: [
         QQC2.Action {
             icon.name: "document-open-folder"

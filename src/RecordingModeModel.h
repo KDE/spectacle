@@ -13,7 +13,7 @@ class RecordingModeModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
-    RecordingModeModel(const QVector<VideoPlatform::RecordingMode> &modes, QObject *parent = nullptr);
+    RecordingModeModel(VideoPlatform::RecordingModes modes, QObject *parent = nullptr);
 
     enum {
         RecordingModeRole = Qt::UserRole + 1,
@@ -37,5 +37,5 @@ private:
 
     QVector<Item> m_data;
     QHash<int, QByteArray> m_roleNames;
-    const QVector<VideoPlatform::RecordingMode> m_modes;
+    const VideoPlatform::RecordingModes m_modes;
 };

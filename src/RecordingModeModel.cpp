@@ -17,27 +17,27 @@
 #include <qnamespace.h>
 #include <utility>
 
-RecordingModeModel::RecordingModeModel(const QVector<VideoPlatform::RecordingMode> &modes, QObject *parent)
+RecordingModeModel::RecordingModeModel(VideoPlatform::RecordingModes modes, QObject *parent)
     : QAbstractListModel(parent)
     , m_modes(modes)
 {
     m_roleNames[RecordingModeRole] = QByteArrayLiteral("recordingMode");
     m_roleNames[Qt::DisplayRole] = QByteArrayLiteral("display");
 
-    if (modes.contains(VideoPlatform::Region)) {
+    if (modes & VideoPlatform::Region) {
         m_data.append({VideoPlatform::Region, i18n("Workspace")}); // TODO: Rename to region when regions can be selected
     }
 
-    if (modes.contains(VideoPlatform::Region)) {
+    if (modes & VideoPlatform::Region) {
         m_data.append({
             VideoPlatform::Screen,
-            i18n("Current Screen"),
+            i18n("Selected Screen"),
         });
     }
-    if (modes.contains(VideoPlatform::Window)) {
+    if (modes & VideoPlatform::Window) {
         m_data.append({
             VideoPlatform::Window,
-            i18n("Active Window"),
+            i18n("Selected Window"),
         });
     }
 }

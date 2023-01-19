@@ -90,6 +90,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     auto onFinished = [this]() {
         m_platform->doGrab(Platform::ShutterMode::Immediate, m_tempGrabMode,
                            m_tempIncludePointer, m_tempIncludeDecorations);
+        setVideoMode(false);
     };
     QObject::connect(delayAnimation, &QVariantAnimation::stateChanged,
                      this, onStateChanged, Qt::QueuedConnection);
@@ -166,7 +167,7 @@ void SpectacleCore::init()
         }
         SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
         if (m_viewerWindow) {
-            m_viewerWindow->showSavedMessage(savedAt);
+            m_viewerWindow->showSavedScreenshotMessage(savedAt);
         }
     });
     connect(exportManager, &ExportManager::imageCopied, this, [this](){
@@ -231,7 +232,9 @@ void SpectacleCore::init()
 
     connect(m_videoPlatform.get(), &VideoPlatform::recordingChanged, this, &SpectacleCore::recordingChanged);
     connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
-        m_viewerWindow->showSavedMessage(QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile));
+        const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
+        m_viewerWindow->showSavedVideoMessage(url);
+        setCurrentVideo(url);
     });
 }
 
@@ -881,6 +884,7 @@ void SpectacleCore::startRecordingScreen(QScreen *screen, bool withPointer)
     Q_ASSERT(!m_videoPlatform->isRecording());
     const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
     m_videoPlatform->startRecording(output, VideoPlatform::Screen, screen, withPointer);
+    setVideoMode(true);
 }
 
 void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
@@ -888,6 +892,7 @@ void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
     Q_ASSERT(!m_videoPlatform->isRecording());
     const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
     m_videoPlatform->startRecording(output, VideoPlatform::Region, region, withPointer);
+    setVideoMode(true);
 }
 
 void SpectacleCore::startRecordingWindow(const QString &uuid, bool withPointer)
@@ -895,6 +900,7 @@ void SpectacleCore::startRecordingWindow(const QString &uuid, bool withPointer)
     Q_ASSERT(!m_videoPlatform->isRecording());
     const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
     m_videoPlatform->startRecording(output, VideoPlatform::Window, uuid, withPointer);
+    setVideoMode(true);
 }
 
 void SpectacleCore::finishRecording()
@@ -910,5 +916,33 @@ bool SpectacleCore::isRecording() const
 
 bool SpectacleCore::recordingSupported() const
 {
-    return !m_videoPlatform->supportedRecordingModes().isEmpty();
+    return m_videoPlatform->supportedRecordingModes() != 0;
+}
+
+bool SpectacleCore::videoMode() const
+{
+    return m_videoMode;
+}
+
+void SpectacleCore::setVideoMode(bool videoMode)
+{
+    if (videoMode == m_videoMode) {
+        return;
+    }
+    m_videoMode = videoMode;
+    Q_EMIT videoModeChanged(videoMode);
+}
+
+QUrl SpectacleCore::currentVideo() const
+{
+    return m_currentVideo;
+}
+
+void SpectacleCore::setCurrentVideo(const QUrl &currentVideo)
+{
+    if (currentVideo == m_currentVideo) {
+        return;
+    }
+    m_currentVideo = currentVideo;
+    Q_EMIT currentVideoChanged(currentVideo);
 }

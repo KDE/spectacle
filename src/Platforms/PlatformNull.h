@@ -31,7 +31,7 @@ class VideoPlatformNull final : public VideoPlatform
 public:
     explicit VideoPlatformNull(QObject *parent = nullptr);
 
-    QVector<RecordingMode> supportedRecordingModes() const override;
+    RecordingModes supportedRecordingModes() const override;
     void startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) override;
     void finishRecording() override;
 

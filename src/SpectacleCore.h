@@ -44,6 +44,8 @@ class SpectacleCore : public QObject
     Q_PROPERTY(qreal captureProgress READ captureProgress NOTIFY captureProgressChanged FINAL)
     Q_PROPERTY(bool recordingSupported READ recordingSupported CONSTANT)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
+    Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
+    Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
 public:
     enum class StartMode {
         Gui = 0,
@@ -92,6 +94,8 @@ public:
     Q_INVOKABLE void finishRecording();
     bool isRecording() const;
     bool recordingSupported() const;
+    bool videoMode() const;
+    QUrl currentVideo() const;
 
 public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
@@ -118,6 +122,8 @@ Q_SIGNALS:
     void grabDone(const QPixmap &pixmap);
     void grabFailed();
     void recordingChanged(bool isRecording);
+    void videoModeChanged(bool videoMode);
+    void currentVideoChanged(const QUrl &currentVideo);
 
 private:
     Platform::GrabMode toPlatformGrabMode(CaptureModeModel::CaptureMode theCaptureMode);
@@ -128,6 +134,8 @@ private:
     void deleteCaptureWindows();
     void deleteViewerWindow();
     void unityLauncherUpdate(const QVariantMap &properties) const;
+    void setVideoMode(bool enabled);
+    void setCurrentVideo(const QUrl &currentVideo);
 
     static SpectacleCore *s_self;
     KWayland::Client::PlasmaShell *m_waylandPlasmashell = nullptr;
@@ -155,4 +163,6 @@ private:
     Platform::GrabMode m_tempGrabMode = Platform::GrabMode::InvalidChoice;
     bool m_tempIncludePointer = false;
     bool m_tempIncludeDecorations = false;
+    bool m_videoMode = false;
+    QUrl m_currentVideo;
 };

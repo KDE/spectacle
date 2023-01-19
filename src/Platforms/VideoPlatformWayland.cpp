@@ -16,9 +16,9 @@ VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
 {
 }
 
-QVector<VideoPlatform::RecordingMode> VideoPlatformWayland::supportedRecordingModes() const
+VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() const
 {
-    return {Screen, Window, Region};
+    return Screen | Window | Region;
 }
 
 void VideoPlatformWayland::startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)

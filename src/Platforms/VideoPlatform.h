@@ -16,23 +16,24 @@ class QScreen;
 class VideoPlatform : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVector<RecordingMode> supportedRecordingModes READ supportedRecordingModes CONSTANT)
+    Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes CONSTANT)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
 
 public:
     explicit VideoPlatform(QObject *parent = nullptr);
     ~VideoPlatform() override = default;
 
-    enum RecordingMode {
-        Screen, //< records a specific output, provided its QScreen::name()
-        Window, //< records a specific window, provided its uuid
-        Region, //< records the provided region rectangle
+    enum RecordingMode : char {
+        Screen = 0b001, //< records a specific output, provided its QScreen::name()
+        Window = 0b010, //< records a specific window, provided its uuid
+        Region = 0b100, //< records the provided region rectangle
     };
     Q_ENUM(RecordingMode)
     using RecordingOption = std::variant<QScreen *, QRect, QString>;
+    Q_DECLARE_FLAGS(RecordingModes, RecordingMode)
 
     bool isRecording() const;
-    virtual QVector<RecordingMode> supportedRecordingModes() const = 0;
+    virtual RecordingModes supportedRecordingModes() const = 0;
     virtual QString extension() const = 0;
 
 protected:
@@ -49,3 +50,5 @@ Q_SIGNALS:
 private:
     bool m_recording = false;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::RecordingModes)
