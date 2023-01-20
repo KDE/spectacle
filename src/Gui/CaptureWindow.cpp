@@ -134,38 +134,26 @@ bool CaptureWindow::accept()
 
 void CaptureWindow::save()
 {
-    const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
-    if (hasSelection) {
-        accept();
-        SpectacleWindow::save();
-    }
+    accept();
+    SpectacleWindow::save();
 }
 
 void CaptureWindow::saveAs()
 {
-    const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
-    if (hasSelection) {
-        accept();
-        SpectacleWindow::saveAs();
-    }
+    accept();
+    SpectacleWindow::saveAs();
 }
 
 void CaptureWindow::copyImage()
 {
-    const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
-    if (hasSelection) {
-        accept();
-        SpectacleWindow::copyImage();
-    }
+    accept();
+    SpectacleWindow::copyImage();
 }
 
 void CaptureWindow::copyLocation()
 {
-    const bool hasSelection = !SelectionEditor::instance()->selection()->isEmpty();
-    if (hasSelection) {
-        accept();
-        SpectacleWindow::copyLocation();
-    }
+    accept();
+    SpectacleWindow::copyLocation();
 }
 
 void CaptureWindow::mousePressEvent(QMouseEvent *event)

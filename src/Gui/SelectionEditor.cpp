@@ -561,8 +561,11 @@ QVector<ScreenImage> SelectionEditor::screenImages() const
 
 bool SelectionEditor::acceptSelection()
 {
-    if (d->selection->isEmpty() || d->screenImages.isEmpty() /*TODO || !isVisible()*/) {
+    if (d->screenImages.isEmpty()) {
         return false;
+    }
+    if (d->selection->isEmpty()) {
+        d->selection->setRect(d->screensRect);
     }
     QRect scaledCropRegion(d->selection->alignedRect(d->devicePixelRatio));
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
