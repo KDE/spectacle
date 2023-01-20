@@ -198,7 +198,7 @@ MouseArea {
             id: ssToolTip
             readonly property int valignment: {
                 if (Selection.empty) {
-                    return 0
+                    return Qt.AlignVCenter
                 }
                 const margin = Kirigami.Units.mediumSpacing * 2
                 const w = width + margin
@@ -208,33 +208,37 @@ MouseArea {
                 } else if (SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom >= h) {
                     return Qt.AlignBottom
                 } else {
-                    return Qt.AlignVCenter
+                    // At the bottom of the inside of the selection rect.
+                    return Qt.AlignBaseline
                 }
             }
+            readonly property bool normallyVisible: !Selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
             Binding on x {
                 value: contextWindow.dprRound(Selection.horizontalCenter - ssToolTip.width / 2)
-                when: !Selection.empty
+                when: ssToolTip.normallyVisible
                 restoreMode: Binding.RestoreNone
             }
             Binding on y {
                 value: {
                     let v = 0
-                    if (ssToolTip.valignment === Qt.AlignVCenter) {
-                        v = Selection.verticalCenter - ssToolTip.height / 2
-                    } else if (ssToolTip.valignment === Qt.AlignTop) {
+                    if (ssToolTip.valignment & Qt.AlignBaseline) {
+                        v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                            - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
+                    } else if (ssToolTip.valignment & Qt.AlignTop) {
                         v = SelectionEditor.handlesRect.top
                             - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
-                    } else if (ssToolTip.valignment === Qt.AlignBottom) {
+                    } else if (ssToolTip.valignment & Qt.AlignBottom) {
                         v = SelectionEditor.handlesRect.bottom + Kirigami.Units.mediumSpacing * 2
+                    } else {
+                        v = (root.height - ssToolTip.height) / 2 - parent.y
                     }
                     return contextWindow.dprRound(v)
                 }
-                when: !Selection.empty
+                when: ssToolTip.normallyVisible
                 restoreMode: Binding.RestoreNone
             }
             visible: opacity > 0
-            opacity: !Selection.empty
-                && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
+            opacity: ssToolTip.normallyVisible
                 && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
@@ -260,10 +264,25 @@ MouseArea {
             }
         }
 
+        Connections {
+            target: Selection
+            function onEmptyChanged() {
+                if (!Selection.empty
+                    && (mainToolBar.rememberPosition || atbLoader.rememberPosition)) {
+                    mainToolBar.rememberPosition = false
+                    atbLoader.rememberPosition = false
+                }
+            }
+        }
+
         // Main ToolBar
         FloatingToolBar {
             id: mainToolBar
+            property bool rememberPosition: false
             readonly property int valignment: {
+                if (Selection.empty) {
+                    return Qt.AlignVCenter
+                }
                 if (height + topPadding
                     <= SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom
                 ) {
@@ -273,35 +292,52 @@ MouseArea {
                 ) {
                     return Qt.AlignTop
                 } else {
-                    return Qt.AlignVCenter
+                    // At the bottom of the inside of the selection rect.
+                    return Qt.AlignBaseline
                 }
             }
+            readonly property bool normallyVisible: {
+                let emptyHovered = root.containsMouse && Selection.empty
+                let menuVisible = contextWindow.exportMenu.visible
+                menuVisible |= contextWindow.optionsMenu.visible
+                menuVisible |= contextWindow.helpMenu.visible
+                let pressed = SelectionEditor.dragLocation || annotations.anyPressed
+                return (emptyHovered || !Selection.empty || menuVisible) && !pressed
+            }
             Binding on x {
-                value: Math.max(mainToolBar.leftPadding, // min value
-                    Math.min(contextWindow.dprRound(Selection.horizontalCenter - mainToolBar.width / 2),
-                                SelectionEditor.screensRect.width - mainToolBar.width - mainToolBar.rightPadding)) // max value
-                when: !Selection.empty
+                value: {
+                    const v = Selection.empty ?
+                        (root.width - mainToolBar.width) / 2 + contextWindow.x
+                        : Selection.horizontalCenter - mainToolBar.width / 2
+                    return Math.max(mainToolBar.leftPadding, // min value
+                           Math.min(contextWindow.dprRound(v),
+                                    SelectionEditor.screensRect.width - mainToolBar.width - mainToolBar.rightPadding)) // max value
+                }
+                when: mainToolBar.normallyVisible && !mainToolBar.rememberPosition
                 restoreMode: Binding.RestoreNone
             }
             Binding on y {
                 value: {
                     let v = 0
                     // put above selection if not enough room below selection
-                    if (mainToolBar.valignment === Qt.AlignTop) {
-                        v = SelectionEditor.handlesRect.top - mainToolBar.height - mainToolBar.bottomPadding
-                    } else if (mainToolBar.valignment === Qt.AlignBottom) {
+                    if (mainToolBar.valignment & Qt.AlignTop) {
+                        v = SelectionEditor.handlesRect.top
+                            - mainToolBar.height - mainToolBar.bottomPadding
+                    } else if (mainToolBar.valignment & Qt.AlignBottom) {
                         v = SelectionEditor.handlesRect.bottom + mainToolBar.topPadding
+                    } else if (mainToolBar.valignment & Qt.AlignBaseline) {
+                        v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                            - mainToolBar.height - mainToolBar.bottomPadding
                     } else {
-                        v = Selection.verticalCenter - mainToolBar.height / 2
+                        v = (root.height - mainToolBar.height) / 2 - mainToolBar.parent.y
                     }
                     return contextWindow.dprRound(v)
                 }
-                when: !Selection.empty
+                when: mainToolBar.normallyVisible && !mainToolBar.rememberPosition
                 restoreMode: Binding.RestoreNone
             }
             visible: opacity > 0
-            opacity: !Selection.empty && !SelectionEditor.dragLocation
-                && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
+            opacity: normallyVisible && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
@@ -320,21 +356,73 @@ MouseArea {
                                                 Selection.height,
                                                 SelectionEditor.devicePixelRatio)
             }
+
+            DragHandler { // parent is contentItem and parent is a read-only property
+                id: mtbDragHandler
+                enabled: Selection.empty
+                target: mainToolBar
+                acceptedButtons: Qt.LeftButton
+                margin: mainToolBar.padding
+                xAxis.minimum: contextWindow.x
+                xAxis.maximum: contextWindow.x + root.width - mainToolBar.width
+                yAxis.minimum: contextWindow.y
+                yAxis.maximum: contextWindow.y + root.height - mainToolBar.height
+                cursorShape: enabled ?
+                    (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                    : undefined
+                onActiveChanged: if (active && !mainToolBar.rememberPosition) {
+                    mainToolBar.rememberPosition = true
+                }
+            }
         }
 
         AnimatedLoader {
             id: atbLoader
-            readonly property int valignment: mainToolBar.valignment === Qt.AlignTop ?
+            property bool rememberPosition: false
+            readonly property int valignment: mainToolBar.valignment & (Qt.AlignTop | Qt.AlignBaseline) ?
                 Qt.AlignTop : Qt.AlignBottom
             active: visible && mainToolBar.visible
-            state: !Selection.empty && !SelectionEditor.dragLocation
+            onActiveChanged: if (!active && rememberPosition
+                && !mainToolBarContents.annotationsButtonChecked) {
+                rememberPosition = false
+            }
+            state: mainToolBar.normallyVisible
                 && mainToolBarContents.annotationsButtonChecked ? "active" : "inactive"
-            x: Math.max(mainToolBar.x, // min value
-               Math.min(contextWindow.dprRound(mainToolBar.x + (mainToolBar.width - width) / 2),
-                        mainToolBar.x + mainToolBar.width - width)) // max value
-            y: contextWindow.dprRound(valignment === Qt.AlignTop ?
-                mainToolBar.y - height - Kirigami.Units.mediumSpacing
-                : mainToolBar.y + mainToolBar.height + Kirigami.Units.mediumSpacing)
+
+            Binding on x {
+                value: {
+                    const min = mainToolBar.x
+                    const target = contextWindow.dprRound(mainToolBar.x + (mainToolBar.width - atbLoader.width) / 2)
+                    const max = mainToolBar.x + mainToolBar.width - atbLoader.width
+                    return Math.max(min, Math.min(target, max))
+                }
+                when: !atbLoader.rememberPosition
+                restoreMode: Binding.RestoreNone
+            }
+            Binding on y {
+                value: contextWindow.dprRound(atbLoader.valignment & Qt.AlignTop ?
+                    mainToolBar.y - atbLoader.height - Kirigami.Units.mediumSpacing
+                    : mainToolBar.y + mainToolBar.height + Kirigami.Units.mediumSpacing)
+                when: !atbLoader.rememberPosition
+                restoreMode: Binding.RestoreNone
+            }
+
+            DragHandler { // parented to contentItem
+                id: atbDragHandler
+                enabled: Selection.empty
+                acceptedButtons: Qt.LeftButton
+                xAxis.minimum: contextWindow.x
+                xAxis.maximum: contextWindow.x + root.width - atbLoader.width
+                yAxis.minimum: contextWindow.y
+                yAxis.maximum: contextWindow.y + root.height - atbLoader.height
+                cursorShape: enabled ?
+                    (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                    : undefined
+                onActiveChanged: if (active && !atbLoader.rememberPosition) {
+                    atbLoader.rememberPosition = true
+                }
+            }
+
             sourceComponent: FloatingToolBar {
                 id: annotationsToolBar
                 focusPolicy: Qt.NoFocus
