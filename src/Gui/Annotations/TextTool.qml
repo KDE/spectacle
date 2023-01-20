@@ -19,15 +19,6 @@ AnimatedLoader {
         && (document.tool.type === AnnotationDocument.Text
             || document.tool.type === AnnotationDocument.ChangeAction)
 
-    function setCursorPositionFromScene(pos) {
-        if (item === null) {
-            return;
-        }
-        // mapFromItem(null, x, y) actually does QQuickItem::mapFromScene(QPointF(x, y))
-        let mapped = item.mapFromItem(null, pos.x, pos.y);
-        item.cursorPosition = item.positionAt(mapped.x, mapped.y);
-    }
-
     state: shouldShow ? "active" : "inactive"
 
     sourceComponent: T.TextField {
@@ -64,6 +55,10 @@ AnimatedLoader {
         selectByMouse: true
         selectionColor: Qt.rgba(1-color.r, 1-color.g, 1-color.b, 1)
         selectedTextColor: Qt.rgba(color.r, color.g, color.b, 1)
+        cursorPosition: {
+            const mapped = mapFromItem(root.viewport, root.viewport.pressPosition)
+            return positionAt(mapped.x, mapped.y)
+        }
         cursorDelegate: Item {
             id: cursor
             visible: textField.cursorVisible

@@ -21,6 +21,9 @@ class AnnotationViewport : public QQuickPaintedItem
     Q_PROPERTY(QRectF viewportRect READ viewportRect WRITE setViewportRect NOTIFY viewportRectChanged)
     Q_PROPERTY(qreal zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
     Q_PROPERTY(AnnotationDocument *document READ document WRITE setDocument NOTIFY documentChanged)
+    Q_PROPERTY(QPointF pressPosition READ pressPosition NOTIFY pressPositionChanged)
+    Q_PROPERTY(bool pressed READ isPressed NOTIFY pressedChanged)
+    Q_PROPERTY(bool anyPressed READ isAnyPressed NOTIFY anyPressedChanged)
 
 public:
     explicit AnnotationViewport(QQuickItem *parent = nullptr);
@@ -37,12 +40,19 @@ public:
 
     void paint(QPainter *painter) override;
 
+    QPointF pressPosition() const;
+
+    bool isPressed() const;
+
+    bool isAnyPressed() const;
+
 Q_SIGNALS:
     void viewportRectChanged();
     void documentChanged();
     void zoomChanged();
-
-    void pressed(const QPointF &scaledMousePos);
+    void pressPositionChanged();
+    void pressedChanged();
+    void anyPressedChanged();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -53,6 +63,9 @@ protected:
 
 private:
     bool shouldIgnoreInput() const;
+    void setPressPosition(const QPointF &point);
+    void setPressed(bool pressed);
+    void setAnyPressed();
     void onRepaintNeeded(const QRectF &area);
     void setCursorForToolType();
 
@@ -60,7 +73,9 @@ private:
     qreal m_zoom = 1.0;
     QPointer<AnnotationDocument> m_document;
     QPointF m_lastScaledViewPressPos;
+    QPointF m_pressPosition;
     QRectF m_lastSelectedActionVisualGeometry;
+    bool m_isPressed = false;
     bool m_allowDraggingSelectedAction = false;
     bool m_acceptKeyReleaseEvents = false;
 };

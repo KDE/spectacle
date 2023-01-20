@@ -17,12 +17,9 @@ AnnotationViewport {
     viewportRect: Qt.rect(0, 0, width, height)
     property real effectiveZoom: zoom * scale
 
-    onPressed: {
+    onPressedChanged: if (pressed) {
         if (textTool.shouldShow) {
             textTool.forceActiveFocus(Qt.MouseFocusReason);
-            if (document.tool.type === AnnotationDocument.ChangeAction) {
-                textTool.setCursorPositionFromScene(scaledMousePos);
-            }
         }
     }
 

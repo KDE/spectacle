@@ -9,16 +9,24 @@
 #include <QCursor>
 #include <QPainter>
 #include <QScreen>
+#include <utility>
+
+static QVector<AnnotationViewport *> s_viewportInstances;
+static bool s_synchronizingAnyPressed = false;
+static bool s_isAnyPressed = false;
 
 AnnotationViewport::AnnotationViewport(QQuickItem *parent)
     : QQuickPaintedItem(parent)
 {
+    s_viewportInstances.append(this);
     setFlag(ItemIsFocusScope);
     setAcceptedMouseButtons(Qt::LeftButton);
 }
 
 AnnotationViewport::~AnnotationViewport() noexcept
 {
+    setPressed(false);
+    s_viewportInstances.removeOne(this);
 }
 
 QRectF AnnotationViewport::viewportRect() const
@@ -75,6 +83,69 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
     update();
 }
 
+QPointF AnnotationViewport::pressPosition() const
+{
+    return m_pressPosition;
+}
+
+void AnnotationViewport::setPressPosition(const QPointF &point)
+{
+    if (m_pressPosition == point) {
+        return;
+    }
+    m_pressPosition = point;
+    Q_EMIT pressPositionChanged();
+}
+
+bool AnnotationViewport::isPressed() const
+{
+    return m_isPressed;
+}
+
+void AnnotationViewport::setPressed(bool pressed)
+{
+    if (m_isPressed == pressed) {
+        return;
+    }
+
+    m_isPressed = pressed;
+    Q_EMIT pressedChanged();
+    setAnyPressed();
+}
+
+bool AnnotationViewport::isAnyPressed() const
+{
+    return s_isAnyPressed;
+}
+
+void AnnotationViewport::setAnyPressed()
+{
+    if (s_synchronizingAnyPressed || s_isAnyPressed == m_isPressed) {
+        return;
+    }
+    s_synchronizingAnyPressed = true;
+    // If pressed is true, anyPressed is guaranteed to be true.
+    // If pressed is false, anyPressed may still be true if another viewport is pressed.
+    const bool oldAnyPressed = s_isAnyPressed;
+    if (m_isPressed) {
+        s_isAnyPressed = m_isPressed;
+    } else {
+        for (const auto viewport : std::as_const(s_viewportInstances)) {
+            s_isAnyPressed = viewport->m_isPressed;
+            if (s_isAnyPressed) {
+                break;
+            }
+        }
+    }
+    // Don't emit if s_isAnyPressed still hasn't changed
+    if (oldAnyPressed != s_isAnyPressed) {
+        for (const auto viewport : std::as_const(s_viewportInstances)) {
+            Q_EMIT viewport->anyPressedChanged();
+        }
+    }
+    s_synchronizingAnyPressed = false;
+}
+
 void AnnotationViewport::paint(QPainter *painter)
 {
     if (!m_document || m_viewportRect.isEmpty()) {
@@ -114,7 +185,8 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
                                  && saWrapper->type() != AnnotationDocument::None;
     m_lastSelectedActionVisualGeometry = saWrapper->visualGeometry();
 
-    Q_EMIT pressed(scaledMousePos);
+    setPressPosition(event->localPos());
+    setPressed(true);
     event->accept();
 }
 
@@ -154,6 +226,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         m_document->continueAction(scaledViewMousePos, options);
     }
 
+    setPressPosition(event->localPos());
     event->accept();
 }
 
@@ -175,6 +248,8 @@ void AnnotationViewport::mouseReleaseEvent(QMouseEvent *event)
         saWrapper->commitChanges();
         update();
     }
+
+    setPressed(false);
     event->accept();
 }
 
