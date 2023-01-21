@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-18 00:55+0000\n"
+"POT-Creation-Date: 2023-01-21 00:56+0000\n"
 "PO-Revision-Date: 2023-01-12 10:31\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -77,12 +77,12 @@ msgstr "活动窗口"
 msgid "Window Under Cursor"
 msgstr "光标所在窗口"
 
-#: src/ExportManager.cpp:310
+#: src/ExportManager.cpp:333
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter 无法写入图像：%1"
 
-#: src/ExportManager.cpp:325
+#: src/ExportManager.cpp:348
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -92,12 +92,12 @@ msgstr ""
 "无法保存截图，因为无法创建目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:358
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "无法保存屏幕截图。写入文件时出错。"
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:378
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -107,32 +107,32 @@ msgstr ""
 "无法保存截图，因为无法创建远程目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
+#: src/ExportManager.cpp:389 src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "无法保存屏幕截图。写入本地临时文件时出错。"
 
-#: src/ExportManager.cpp:374
+#: src/ExportManager.cpp:397
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "无法保存图像。无法上传至远程地址。"
 
-#: src/ExportManager.cpp:423
+#: src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "无法保存屏幕截图。该文件名无效。"
 
-#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
+#: src/ExportManager.cpp:491 src/ExportManager.cpp:550
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "无法保存空白截屏图像。"
 
-#: src/ExportManager.cpp:579
+#: src/ExportManager.cpp:602
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "无法打印。打印机初始化失败。"
 
-#: src/ExportManager.cpp:595
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -140,7 +140,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "年 (四位数)"
 
-#: src/ExportManager.cpp:596
+#: src/ExportManager.cpp:619
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -148,7 +148,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "年 (两位数)"
 
-#: src/ExportManager.cpp:597
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -156,7 +156,7 @@ msgctxt ""
 msgid "Month"
 msgstr "月"
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -164,7 +164,7 @@ msgctxt ""
 msgid "Day"
 msgstr "日"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:622
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -172,7 +172,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "时"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:623
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -180,7 +180,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "分"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:624
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -188,7 +188,7 @@ msgctxt ""
 msgid "Second"
 msgstr "秒"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:625
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -196,7 +196,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "时区"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:626
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -204,7 +204,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "窗口标题"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:627
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -212,7 +212,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "顺序编号"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:629
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,13 +330,25 @@ msgstr "文字"
 msgid "Number"
 msgstr "数字"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:107
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "取消 (%1 秒)"
 
+#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#, kde-format
+msgid "Take a new screenshot"
+msgstr "进行截图"
+
+#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/OptionsMenu.cpp:63
+#, kde-format
+msgid "Capture Settings"
+msgstr "截图设置"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/RecordOptions.qml:56
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "包含鼠标光标"
@@ -421,28 +433,17 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " 秒"
 
-#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:303
-#, kde-format
-msgid "Take a new screenshot"
-msgstr "进行截图"
-
 #: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "截图方式"
-
-#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:322
-#: src/Gui/OptionsMenu.cpp:63
-#, kde-format
-msgid "Capture Settings"
-msgstr "截图设置"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "配置 Spectacle…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
 msgid "Help"
 msgstr "帮助"
@@ -462,53 +463,53 @@ msgstr "其他应用程序..."
 msgid "Share"
 msgstr "分享"
 
-#: src/Gui/ImageView.qml:381
+#: src/Gui/ImageView.qml:334
 #, kde-format
 msgid "Zoom:"
 msgstr "缩放："
 
-#: src/Gui/ImageView.qml:395
+#: src/Gui/ImageView.qml:348
 #, kde-format
 msgid "Image Zoom"
 msgstr "图像缩放"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:56
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "保存"
 
-#: src/Gui/MainToolBarContents.qml:66
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Save As..."
 msgstr "另存为..."
 
-#: src/Gui/MainToolBarContents.qml:77
+#: src/Gui/MainToolBarContents.qml:80
 #, kde-format
 msgid "Copy"
 msgstr "复制"
 
-#: src/Gui/MainToolBarContents.qml:83
+#: src/Gui/MainToolBarContents.qml:86
 #, kde-format
 msgid "Export"
 msgstr "导出"
 
-#: src/Gui/MainToolBarContents.qml:93
+#: src/Gui/MainToolBarContents.qml:96
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "显示标注工具"
 
-#: src/Gui/MainToolBarContents.qml:116
+#: src/Gui/MainToolBarContents.qml:120
 #, kde-format
 msgid "New Screenshot"
 msgstr "新建截图..."
 
-#: src/Gui/MainToolBarContents.qml:127
+#: src/Gui/MainToolBarContents.qml:131
 #, kde-format
 msgid "Options"
 msgstr "选项"
 
-#: src/Gui/MainToolBarContents.qml:136
+#: src/Gui/MainToolBarContents.qml:140
 #, kde-format
 msgid "Configure..."
 msgstr "配置..."
@@ -554,6 +555,32 @@ msgstr "点击时截图"
 msgid "No Delay"
 msgstr "无延迟"
 
+#: src/Gui/RecordingView.qml:28
+#, kde-format
+msgid "Recording"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:28
+#, kde-format
+msgid "New screen recording"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:51
+#, kde-format
+msgid "Recording Settings"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:57
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image."
+msgid "Show the mouse cursor in the screen recording."
+msgstr "屏幕截图包含鼠标光标。"
+
+#: src/Gui/RecordOptions.qml:67
+#, kde-format
+msgid "Finish recording"
+msgstr ""
+
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
 msgid ""
@@ -567,12 +594,18 @@ msgid ""
 "been copied to clipboard"
 msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>，且该位置已被复制到剪贴板"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:16
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:19
+#: src/Gui/SavedMessage.qml:22
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "打开所在文件夹"
@@ -898,75 +931,86 @@ msgid "Delay"
 msgstr "延迟"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
+#. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Default filename"
 msgstr "默认文件名"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "有损压缩文件格式的画质"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:134
 #, kde-format
 msgid "Default save image format"
 msgstr "默认图像保存格式"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:128
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "保存时的默认文件名"
 
+#. i18n: ectx: label, entry (saveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The default filename used when saving"
+msgid "The default filename used when recording a video"
+msgstr "保存时的默认文件名"
+
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:132
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "最近一次保存文件的路径"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "最近一次“另存为”操作所用的路径"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "最后使用的标注工具类型"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
-#: src/Gui/SettingsDialog/spectacle.kcfg:179
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "手绘标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
-#: src/Gui/SettingsDialog/spectacle.kcfg:183
+#: src/Gui/SettingsDialog/spectacle.kcfg:167
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "高亮笔标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:172
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "直线标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:177
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "箭头标注工具的线条宽度"
@@ -974,9 +1018,9 @@ msgstr "箭头标注工具的线条宽度"
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "矩形标注工具的线条宽度"
@@ -985,68 +1029,68 @@ msgstr "矩形标注工具的线条宽度"
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:173
-#: src/Gui/SettingsDialog/spectacle.kcfg:199
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
-#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "椭圆形标注工具的线条宽度"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:217
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:231
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Font for annotations"
 msgstr "标注字体"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
+#: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Font color for annotations"
 msgstr "标注字体颜色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "手绘标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "直线标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "箭头标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "矩形标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "椭圆形标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "文字标注工具是否有投影效果"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "数字标注工具是否有投影效果"
@@ -1231,6 +1275,33 @@ msgstr ""
 "henry.hu.sh@gmail.com, hh.li99@outlook.com, tangtianbei06@gmail.com, "
 "tysontanx@gmail.com, wengxt@gmail.com"
 
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgid "Workspace"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgid "Selected Screen"
+msgstr "当前屏幕"
+
+#: src/RecordingModeModel.cpp:40
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgid "Selected Window"
+msgstr "活动窗口"
+
+#: src/RecordingModeModel.cpp:87
+#, kde-format
+msgid "Failed to select output"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:115
+#, kde-format
+msgid "Failed to select window"
+msgstr ""
+
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1241,116 +1312,116 @@ msgstr "截取光标所在窗口"
 msgid "Launch Spectacle without capturing"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:632
+#: src/SpectacleCore.cpp:647
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "屏幕截图已取消或失败"
 
-#: src/SpectacleCore.cpp:661
+#: src/SpectacleCore.cpp:676
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:663
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:669
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "打开"
 
-#: src/SpectacleCore.cpp:684
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "标注"
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "截取整个桌面 (默认)"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "截取当前屏幕"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Capture the active window"
 msgstr "截取活动窗口"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "截取鼠标光标所在的窗口，包括弹出菜单的父窗口元素"
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "截取鼠标光标所在的窗口，不包括父窗口的弹出菜单"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "截取屏幕中的一个矩形区域"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "启动到图形界面模式 (默认)"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "截图后自动退出，不显示图形界面"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "启动到 DBus 激活模式"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "在后台模式下，截图时不弹出通知"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "在后台模式下，将图像保存到指定的文件"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:735
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "在后台模式下，截图前的延迟时间 (毫秒)"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:737
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1358,32 +1429,32 @@ msgid ""
 msgstr ""
 "在后台模式下，在后台模式下，将截图复制到剪贴板，除非同时使用了 -o 参数。"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "在后台模式下，将截图文件路径复制到剪贴板"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:739
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "截图前等待鼠标点击。延迟设置将被忽略"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "启动一个新的 Spectacle 图形界面实例，但不在 DBus 中注册。"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:741
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "在后台模式下，屏幕截图中包含光标指针"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:742
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:743
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"

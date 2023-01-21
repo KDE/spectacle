@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-18 00:55+0000\n"
+"POT-Creation-Date: 2023-01-21 00:56+0000\n"
 "PO-Revision-Date: 2022-12-16 21:27+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -83,12 +83,12 @@ msgstr "Fenêtre active"
 msgid "Window Under Cursor"
 msgstr "Fenêtre sous le curseur"
 
-#: src/ExportManager.cpp:310
+#: src/ExportManager.cpp:333
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne peut pas écrire l'image : %1"
 
-#: src/ExportManager.cpp:325
+#: src/ExportManager.cpp:348
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -98,14 +98,14 @@ msgstr ""
 "Impossible de créer le dossier et donc d'enregistrer la capture d'écran :<nl/"
 "> <filename>%1</filename>"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:358
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
 "le fichier."
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:378
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -115,38 +115,38 @@ msgstr ""
 "Impossible de créer le dossier à distance et donc d'enregistrer la capture "
 "d'écran :<nl/> <filename>%1</filename>"
 
-#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
+#: src/ExportManager.cpp:389 src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
 "le fichier local temporaire."
 
-#: src/ExportManager.cpp:374
+#: src/ExportManager.cpp:397
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Impossible d'enregistrer l'image. Le fichier n'a pas pu être envoyé à "
 "l'emplacement distant."
 
-#: src/ExportManager.cpp:423
+#: src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Le nom de fichier n'est pas "
 "valable."
 
-#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
+#: src/ExportManager.cpp:491 src/ExportManager.cpp:550
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Impossible d'enregistrer une capture d'écran vide."
 
-#: src/ExportManager.cpp:579
+#: src/ExportManager.cpp:602
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Échec de l'impression. Impossible d'initialiser l'imprimante."
 
-#: src/ExportManager.cpp:595
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -154,7 +154,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Année (4 chiffres)"
 
-#: src/ExportManager.cpp:596
+#: src/ExportManager.cpp:619
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -162,7 +162,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Année (2 chiffres)"
 
-#: src/ExportManager.cpp:597
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -170,7 +170,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mois"
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -178,7 +178,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Jour"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:622
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -186,7 +186,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Heure"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:623
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -194,7 +194,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minute"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:624
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -202,7 +202,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Seconde"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:625
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -210,7 +210,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:626
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -218,7 +218,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Titre de la fenêtre"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:627
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -226,7 +226,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Numéro de séquence"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:629
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -344,14 +344,26 @@ msgstr "Texte"
 msgid "Number"
 msgstr "Nombre"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:107
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Annuler (%1 seconde)"
 msgstr[1] "Annuler (%1 secondes)"
 
+#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#, kde-format
+msgid "Take a new screenshot"
+msgstr "Prendre une nouvelle copie d'écran"
+
+#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/OptionsMenu.cpp:63
+#, kde-format
+msgid "Capture Settings"
+msgstr "Configuration de la copie"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/RecordOptions.qml:56
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Inclure le pointeur de souris"
@@ -442,28 +454,17 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " secondes"
 
-#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:303
-#, kde-format
-msgid "Take a new screenshot"
-msgstr "Prendre une nouvelle copie d'écran"
-
 #: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "Modes de copie"
-
-#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:322
-#: src/Gui/OptionsMenu.cpp:63
-#, kde-format
-msgid "Capture Settings"
-msgstr "Configuration de la copie"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Configurer Spectacle..."
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
 msgid "Help"
 msgstr "Aide"
@@ -483,53 +484,53 @@ msgstr "Autre application..."
 msgid "Share"
 msgstr "Partager"
 
-#: src/Gui/ImageView.qml:381
+#: src/Gui/ImageView.qml:334
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom :"
 
-#: src/Gui/ImageView.qml:395
+#: src/Gui/ImageView.qml:348
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom d'image"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:56
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/Gui/MainToolBarContents.qml:66
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Save As..."
 msgstr "Enregistrer sous..."
 
-#: src/Gui/MainToolBarContents.qml:77
+#: src/Gui/MainToolBarContents.qml:80
 #, kde-format
 msgid "Copy"
 msgstr "Copier"
 
-#: src/Gui/MainToolBarContents.qml:83
+#: src/Gui/MainToolBarContents.qml:86
 #, kde-format
 msgid "Export"
 msgstr "Exporter"
 
-#: src/Gui/MainToolBarContents.qml:93
+#: src/Gui/MainToolBarContents.qml:96
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Afficher les outils d'annotation"
 
-#: src/Gui/MainToolBarContents.qml:116
+#: src/Gui/MainToolBarContents.qml:120
 #, kde-format
 msgid "New Screenshot"
 msgstr "Nouvelle copie d'écran"
 
-#: src/Gui/MainToolBarContents.qml:127
+#: src/Gui/MainToolBarContents.qml:131
 #, kde-format
 msgid "Options"
 msgstr "Options"
 
-#: src/Gui/MainToolBarContents.qml:136
+#: src/Gui/MainToolBarContents.qml:140
 #, kde-format
 msgid "Configure..."
 msgstr "Configurer..."
@@ -578,6 +579,34 @@ msgstr "Copie sur un clic"
 msgid "No Delay"
 msgstr "Aucun délai"
 
+#: src/Gui/RecordingView.qml:28
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording"
+msgstr "Enregistrer l'écran"
+
+#: src/Gui/RecordOptions.qml:28
+#, kde-format
+msgid "New screen recording"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:51
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording Settings"
+msgstr "Enregistrer l'écran"
+
+#: src/Gui/RecordOptions.qml:57
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image."
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Afficher le pointeur de la souris sur la copie d'écran."
+
+#: src/Gui/RecordOptions.qml:67
+#, kde-format
+msgid "Finish recording"
+msgstr ""
+
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
 msgid ""
@@ -595,12 +624,18 @@ msgstr ""
 "La copie d'écran a été enregistrée <a href=\"%1\">%2</a> et son emplacement "
 "a été copié dans le presse-papier."
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgstr "Une capture d'écran a été enregistrée sous <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:16
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Une capture d'écran a été enregistrée sous <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:19
+#: src/Gui/SavedMessage.qml:22
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Ouvrir le dossier contenant"
@@ -941,75 +976,86 @@ msgid "Delay"
 msgstr "Retard"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
+#. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Default filename"
 msgstr "Nom de fichier par défaut"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Qualité de compression pour les formats de fichiers avec perte."
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:134
 #, kde-format
 msgid "Default save image format"
 msgstr "Format d'enregistrement d'image par défaut"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:128
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Le nom de fichier par défaut à utiliser pour l'enregistrement"
 
+#. i18n: ectx: label, entry (saveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The default filename used when saving"
+msgid "The default filename used when recording a video"
+msgstr "Le nom de fichier par défaut à utiliser pour l'enregistrement"
+
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:132
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "L'emplacement du dernier fichier enregistré"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Dernier emplacement utilisé pour l'action « Enregistrer sous »"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Le dernier type d'outil d'annotation utilisé"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
-#: src/Gui/SettingsDialog/spectacle.kcfg:179
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec main levée"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
-#: src/Gui/SettingsDialog/spectacle.kcfg:183
+#: src/Gui/SettingsDialog/spectacle.kcfg:167
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec surligneur"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:172
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec ligne"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:177
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec flèche"
@@ -1017,9 +1063,9 @@ msgstr "Largeur du trait pour l'outil d'annotation avec flèche"
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec rectangle"
@@ -1028,53 +1074,53 @@ msgstr "Largeur du trait pour l'outil d'annotation avec rectangle"
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:173
-#: src/Gui/SettingsDialog/spectacle.kcfg:199
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
-#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Largeur du trait pour l'outil d'annotation avec ellipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:217
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:231
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Font for annotations"
 msgstr "Police pour les annotations"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
+#: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Couleur de police pour les annotations"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr ""
 "Définit si l’outil d’annotation à main levée présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr ""
 "Définit si l’outil d’annotation de lignes présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr ""
 "Définit si l’outil d’annotation avec flèches présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr ""
@@ -1082,21 +1128,21 @@ msgstr ""
 "non"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr ""
 "Définit si l’outil d’annotation elliptique présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr ""
 "Définit si l’outil d’annotation de texte présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr ""
@@ -1280,6 +1326,33 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vpinon@kde.org, johan.claudebreuninger@gmail.com, sdepiets@gmail.com"
 
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgid "Workspace"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Selected Screen"
+msgstr "Enregistrer l'écran"
+
+#: src/RecordingModeModel.cpp:40
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgid "Selected Window"
+msgstr "Fenêtre active"
+
+#: src/RecordingModeModel.cpp:87
+#, kde-format
+msgid "Failed to select output"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:115
+#, kde-format
+msgid "Failed to select window"
+msgstr ""
+
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1290,17 +1363,17 @@ msgstr "Capturer la fenêtre sous le curseur"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
-#: src/SpectacleCore.cpp:632
+#: src/SpectacleCore.cpp:647
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Annulation ou échec de la capture d'écran"
 
-#: src/SpectacleCore.cpp:661
+#: src/SpectacleCore.cpp:676
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une capture d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:663
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1309,7 +1382,7 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1317,38 +1390,38 @@ msgstr ""
 "Une capture d'écran a été enregistrée sous « %1 » dans votre dossier "
 "d'images."
 
-#: src/SpectacleCore.cpp:669
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une capture d'écran a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:684
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Capturer le bureau entier (par défaut)"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Capturer le moniteur actuel"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Capture the active window"
 msgstr "Capturer la fenêtre active"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1357,7 +1430,7 @@ msgstr ""
 "Capturer la fenêtre actuellement sous le curseur, en incluant les fenêtres "
 "parentes des menus contextuels."
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1366,32 +1439,32 @@ msgstr ""
 "Capturer la fenêtre actuellement sous le curseur, en excluant les fenêtres "
 "parentes des menus contextuels."
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Capturer une région rectangulaire de l'écran"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Lancer Spectacle sans réaliser de copie d'écran"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Démarrer en mode interface graphique (par défaut)"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Prendre une capture d'écran et quitter sans afficher l'interface"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Démarrer en mode d'activation D-Bus"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1399,18 +1472,18 @@ msgstr ""
 "En mode arrière-plan, ne pas afficher de notification lorsqu'une capture "
 "d'écran est prise"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "En mode arrière-plan, enregistrer l'image dans le fichier spécifié"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:735
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "En mode arrière-plan, délai avant de prendre la capture (en millisecondes)"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:737
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1419,39 +1492,39 @@ msgstr ""
 "En mode arrière-plan, copier la copie d'écran dans le presse-papier, sauf si "
 "le paramètre « -o » est aussi utilisé."
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "En mode arrière-plan, copier la copie d'écran dans le presse-papier"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:739
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Attendre un clic avant de prendre la capture d'écran. Ne pas tenir compte du "
 "délai"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Démarre une nouvelle instance d'interface graphique de Spectacle sans "
 "enregistrer « D-Bus »"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:741
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr ""
 "En mode d'arrière-plan, inclure le pointeur de souris dans la copie d'écran"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:742
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "En mode d'arrière-plan, exclure les décorations de fenêtres dans la copie "
 "d'écran"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:743
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Ouvrir ou modifier un fichier existant de copie d'écran"
@@ -1489,9 +1562,6 @@ msgstr "Ouvrir ou modifier un fichier existant de copie d'écran"
 
 #~ msgid "Tools"
 #~ msgstr "Outils"
-
-#~ msgid "Record Screen"
-#~ msgstr "Enregistrer l'écran"
 
 #~ msgid "Copy Image to Clipboard"
 #~ msgstr "Copier l'image dans le presse-papier"

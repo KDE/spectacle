@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-18 00:55+0000\n"
+"POT-Creation-Date: 2023-01-21 00:56+0000\n"
 "PO-Revision-Date: 2022-12-16 06:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -78,12 +78,12 @@ msgstr "აქტიური ფანჯარა"
 msgid "Window Under Cursor"
 msgstr "კურსორის ქვეშ მდებარე ფანჯარა"
 
-#: src/ExportManager.cpp:310
+#: src/ExportManager.cpp:333
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter -ის შეცდომა გამოსახულების შენახვისას: %1"
 
-#: src/ExportManager.cpp:325
+#: src/ExportManager.cpp:348
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -93,12 +93,12 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. საქაღალდის შექმნის შეცდომა:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:358
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის ჩაწერა შეუძლებელია."
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:378
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -108,34 +108,34 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. დაშორებული საქაღალდის შექმნის შეცდომა:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:366 src/ExportManager.cpp:416
+#: src/ExportManager.cpp:389 src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "ეკრანის ანაბეჭდის შენახვის შეცდომა. დროებითი ლოკალური ფაილის ჩაწერა "
 "შეუძლებელია."
 
-#: src/ExportManager.cpp:374
+#: src/ExportManager.cpp:397
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "გამოსახულების შენახვის შეცდომა. დაშორებულ ადგილას ატვირთვის შეცდომა."
 
-#: src/ExportManager.cpp:423
+#: src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის სახელი არასწორია."
 
-#: src/ExportManager.cpp:468 src/ExportManager.cpp:527
+#: src/ExportManager.cpp:491 src/ExportManager.cpp:550
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ცარიელი ეკრანის ანაბეჭდის გამოსახულების შენახვა შეუძლებელია."
 
-#: src/ExportManager.cpp:579
+#: src/ExportManager.cpp:602
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "დაბეჭდვის შეცდომა. პრინტერის ინიციალიზაცია შეუძლებელია."
 
-#: src/ExportManager.cpp:595
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -143,7 +143,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "წელი (4 ციფრი)"
 
-#: src/ExportManager.cpp:596
+#: src/ExportManager.cpp:619
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -151,7 +151,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "წელი (2 ციფრი)"
 
-#: src/ExportManager.cpp:597
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -159,7 +159,7 @@ msgctxt ""
 msgid "Month"
 msgstr "თვე"
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -167,7 +167,7 @@ msgctxt ""
 msgid "Day"
 msgstr "დღე"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:622
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -175,7 +175,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "საათი"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:623
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -183,7 +183,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "წუთი"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:624
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -191,7 +191,7 @@ msgctxt ""
 msgid "Second"
 msgstr "წამი"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:625
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -199,7 +199,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "დროის ზონა"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:626
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -207,7 +207,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ფანჯრის სათაური"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:627
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -215,7 +215,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "თანმიმდევრული ათვლა"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:629
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,14 +333,26 @@ msgstr "ტექსტი"
 msgid "Number"
 msgstr "რიცხვი"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:103
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:107
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "გაუქმება (%1 წამი)"
 msgstr[1] "გაუქმება (%1 წამი)"
 
+#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#, kde-format
+msgid "Take a new screenshot"
+msgstr "ახალი ეკრანის ანაბეჭდის გადაღება"
+
+#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/OptionsMenu.cpp:63
+#, kde-format
+msgid "Capture Settings"
+msgstr "ჩაჭერის მორგება"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/RecordOptions.qml:56
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "თაგუნას კურსორის ჩათვლით"
@@ -429,28 +441,17 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " წამი"
 
-#: src/Gui/DialogPage.qml:52 src/Gui/ImageView.qml:303
-#, kde-format
-msgid "Take a new screenshot"
-msgstr "ახალი ეკრანის ანაბეჭდის გადაღება"
-
 #: src/Gui/DialogPage.qml:96
 #, kde-format
 msgid "Capture Modes"
 msgstr "ჩაჭერის რეჟიმები"
-
-#: src/Gui/DialogPage.qml:113 src/Gui/ImageView.qml:322
-#: src/Gui/OptionsMenu.cpp:63
-#, kde-format
-msgid "Capture Settings"
-msgstr "ჩაჭერის მორგება"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Spectacle-ის მორგება…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:143
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
 msgid "Help"
 msgstr "დახმარება"
@@ -470,53 +471,53 @@ msgstr "სხვა პროგრამა..."
 msgid "Share"
 msgstr "გაზიარება"
 
-#: src/Gui/ImageView.qml:381
+#: src/Gui/ImageView.qml:334
 #, kde-format
 msgid "Zoom:"
 msgstr "გადიდება:"
 
-#: src/Gui/ImageView.qml:395
+#: src/Gui/ImageView.qml:348
 #, kde-format
 msgid "Image Zoom"
 msgstr "გამოსახულების გადიდება"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:56
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "შენახვა"
 
-#: src/Gui/MainToolBarContents.qml:66
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Save As..."
 msgstr "შენახვა, როგორც..."
 
-#: src/Gui/MainToolBarContents.qml:77
+#: src/Gui/MainToolBarContents.qml:80
 #, kde-format
 msgid "Copy"
 msgstr "კოპირება"
 
-#: src/Gui/MainToolBarContents.qml:83
+#: src/Gui/MainToolBarContents.qml:86
 #, kde-format
 msgid "Export"
 msgstr "გატანა"
 
-#: src/Gui/MainToolBarContents.qml:93
+#: src/Gui/MainToolBarContents.qml:96
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "ანოტაციის ხელსაწყოების ჩვენება"
 
-#: src/Gui/MainToolBarContents.qml:116
+#: src/Gui/MainToolBarContents.qml:120
 #, kde-format
 msgid "New Screenshot"
 msgstr "ახალი ეკრანის ანაბეჭდი"
 
-#: src/Gui/MainToolBarContents.qml:127
+#: src/Gui/MainToolBarContents.qml:131
 #, kde-format
 msgid "Options"
 msgstr "პარამეტრები"
 
-#: src/Gui/MainToolBarContents.qml:136
+#: src/Gui/MainToolBarContents.qml:140
 #, kde-format
 msgid "Configure..."
 msgstr "მორგება..."
@@ -564,6 +565,34 @@ msgstr "ჩაჭერა დაწკაპუნებისას"
 msgid "No Delay"
 msgstr "დაყოვნების გარეშე"
 
+#: src/Gui/RecordingView.qml:28
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording"
+msgstr "ეკრანის ჩასწერა"
+
+#: src/Gui/RecordOptions.qml:28
+#, kde-format
+msgid "New screen recording"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:51
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording Settings"
+msgstr "ეკრანის ჩასწერა"
+
+#: src/Gui/RecordOptions.qml:57
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image."
+msgid "Show the mouse cursor in the screen recording."
+msgstr "ეკრანის ანაბეჭდის სურათზე თაგუნას კურსორის ჩვენება."
+
+#: src/Gui/RecordOptions.qml:67
+#, kde-format
+msgid "Finish recording"
+msgstr ""
+
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
 msgid ""
@@ -580,12 +609,18 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a> და მისი მდებარეობა "
 "ბუფერში დაკოპირდა"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:16
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:19
+#: src/Gui/SavedMessage.qml:22
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "შემცველი საქაღალდის გახსნა"
@@ -914,75 +949,86 @@ msgid "Delay"
 msgstr "დაყოვნება"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
+#. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
 #, kde-format
 msgid "Default filename"
 msgstr "ნაგულისხმები ფაილის სახელი"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:124
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "შეკუმშვის ხარისხი კარგვის მქონე ფორმატებისთვის"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:134
 #, kde-format
 msgid "Default save image format"
 msgstr "ნაგულისხმები შესანახი ფაილის ფორმატი"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:128
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "შენახვისას გამოყენებული ნაგულისხმები სახელი"
 
+#. i18n: ectx: label, entry (saveVideoFormat), group (Save)
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#, fuzzy, kde-format
+#| msgid "The default filename used when saving"
+msgid "The default filename used when recording a video"
+msgstr "შენახვისას გამოყენებული ნაგულისხმები სახელი"
+
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:132
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "ბოლოს შენახული ფაილის ბილიკი"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "ბოლო ბილიკი, რომელიც გამოყენებული იყო \"შენახვა, როგორც\" ქმედებისთვის"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "ბოლოს გამოყენებული ანოტაციის ხელსაწყოს ტიპი"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
-#: src/Gui/SettingsDialog/spectacle.kcfg:179
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "ხელით ხატვის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
-#: src/Gui/SettingsDialog/spectacle.kcfg:183
+#: src/Gui/SettingsDialog/spectacle.kcfg:167
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "გამოკვეთის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:172
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "ხაზის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:177
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "ისრის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
@@ -990,9 +1036,9 @@ msgstr "ისრის ანოტაციის ხელსაწყოს 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "მართკუთხედის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
@@ -1001,68 +1047,68 @@ msgstr "მართკუთხედის ანოტაციის ხე�
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:173
-#: src/Gui/SettingsDialog/spectacle.kcfg:199
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
-#: src/Gui/SettingsDialog/spectacle.kcfg:212
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "ოვალის ანოტაციის ხელსაწყოს საზღვრის ხაზის სისქე"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:217
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:231
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Font for annotations"
 msgstr "ანოტაციების ფონტი"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
+#: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Font color for annotations"
 msgstr "ანოტაციების ფონტის ფერი"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "აქვს თუ არა თავისუფალი ხატვის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:237
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ხაზის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ისრის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "აქვს თუ არა მართკუთხედის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ოვალის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ტექსტის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "აქვს თუ არა რიცხვის ანოტაციის ხელსაწყოს ჩრდილი"
@@ -1244,6 +1290,33 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgid "Workspace"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Selected Screen"
+msgstr "ეკრანის ჩასწერა"
+
+#: src/RecordingModeModel.cpp:40
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgid "Selected Window"
+msgstr "აქტიური ფანჯარა"
+
+#: src/RecordingModeModel.cpp:87
+#, kde-format
+msgid "Failed to select output"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:115
+#, kde-format
+msgid "Failed to select window"
+msgstr ""
+
 #: src/ShortcutActions.cpp:58
 #, kde-format
 msgid "Capture Window Under Cursor"
@@ -1254,17 +1327,17 @@ msgstr "კურსორის ქვეშ მყოფი კურსორ
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
 
-#: src/SpectacleCore.cpp:632
+#: src/SpectacleCore.cpp:647
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "ეკრანის ანაბეჭდს გადაღება გაუქმდა ან შეცდომით დასრულდა"
 
-#: src/SpectacleCore.cpp:661
+#: src/SpectacleCore.cpp:676
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:663
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1273,44 +1346,44 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:669
+#: src/SpectacleCore.cpp:684
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:674
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:684
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "მთელი სამუშაო მაგიდის ჩაჭერა(ნაგულისხმები)"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:723
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "მიმდინარე ეკრანის ჩაჭერა"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgid "Capture the active window"
 msgstr "აქტიური ფანჯრის ჩაჭერა"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:725
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1319,7 +1392,7 @@ msgstr ""
 "ამჟამად კურსორის ქვეშ მყოფი ფანჯრის მხტუნარა მენიუს მშობლების ჩათვლით "
 "გადაღება"
 
-#: src/SpectacleCore.cpp:711
+#: src/SpectacleCore.cpp:726
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1327,48 +1400,48 @@ msgid ""
 msgstr ""
 "ამჟამად კურსორის ქვეშ მყოფი ფანჯრის მხტუნარა მენიუს მშობლების გარეშე გადაღება"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:727
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "ეკრანის მართკუთხა რეგიონის გადაღება"
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spectacle-ის ეკრანის ანაბეჭდის გადაღების გარეშე გაშვება"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:729
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI რეჟიმში გაშვება (ნაგულისხმები)"
 
-#: src/SpectacleCore.cpp:715
+#: src/SpectacleCore.cpp:730
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "ეკრანის ანაბეჭდის გადაღება და გასვლა ინტერფეისის ჩვენების გარეშე"
 
-#: src/SpectacleCore.cpp:716
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-ის აქტივაციის რეჟიმში გაშვება"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "ფონურ რეჟიმში ასლის გადაღებისას გაფრთხილება ნაჩვენები არ იქნება"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "ფონურ რეჟიმში სურათების მითითებულ ფაილში შენახვა"
 
-#: src/SpectacleCore.cpp:720
+#: src/SpectacleCore.cpp:735
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "ფონურ რეჟიმში დაყოვნება გადაღებამდე (მილიწამებში)"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:737
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1377,34 +1450,34 @@ msgstr ""
 "ფონურ რეჟიმში ეკრანის ანაბეჭდის გამოსახულების ბუფერში კოპირება, თუ -o არ "
 "გამოიყენება."
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "ფონურ რეჟიმში, ეკრანის ანაბეჭდის ფაილის ბილიკის ბუფერში კოპირება"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:739
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "ეკრანის ანაბეჭდის გადაღებამდე წკაპის მოლოდინი. აუქმებს დაყოვნებას"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Spectacle-ის ახალი GUI-ის გაშვებული ასლის DBus-თან რეგისტრაციის გარეშე "
 "გაშვება"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:741
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდზე კურსორის გამოჩენა"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:742
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს დეკორაციები არ ექნება"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:743
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ეკრანის ანაბეჭდის არსებული ფაილის გახსნა და ჩასწორება"
@@ -1417,9 +1490,6 @@ msgstr "ეკრანის ანაბეჭდის არსებულ�
 
 #~ msgid "Tools"
 #~ msgstr "ხელსაწყოები"
-
-#~ msgid "Record Screen"
-#~ msgstr "ეკრანის ჩასწერა"
 
 #~ msgctxt "@action:button"
 #~ msgid "Annotate"
