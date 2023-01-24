@@ -52,6 +52,20 @@ MouseArea {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: selectionRectangle.visible ? selectionRectangle.top : parent.bottom
+        opacity: if (Selection.empty
+            && (annotations.enabled || annotations.document.undoStackDepth > 0)) {
+            return 0
+        } else if (Selection.empty) {
+            return 0.25
+        } else {
+            return 0.5
+        }
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.OutCubic
+            }
+        }
     }
     Overlay { // bottom
         id: bottomOverlay
