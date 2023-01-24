@@ -452,16 +452,16 @@ MouseArea {
 
                 topLeftRadius: optionsToolBar.visible
                     && optionsToolBar.x === 0
-                    && atbLoader.valignment === Qt.AlignTop ? 0 : radius
+                    && atbLoader.valignment & Qt.AlignTop ? 0 : radius
                 topRightRadius: optionsToolBar.visible
                     && optionsToolBar.x === width - optionsToolBar.width
-                    && atbLoader.valignment === Qt.AlignTop ? 0 : radius
+                    && atbLoader.valignment & Qt.AlignTop ? 0 : radius
                 bottomLeftRadius: optionsToolBar.visible
                     && optionsToolBar.x === 0
-                    && atbLoader.valignment === Qt.AlignBottom ? 0 : radius
+                    && atbLoader.valignment & Qt.AlignBottom ? 0 : radius
                 bottomRightRadius: optionsToolBar.visible
                     && optionsToolBar.x === width - optionsToolBar.width
-                    && atbLoader.valignment === Qt.AlignBottom ? 0 : radius
+                    && atbLoader.valignment & Qt.AlignBottom ? 0 : radius
 
                 // Exists purely for cosmetic reasons to make the border of
                 // optionsToolBar that meets annotationsToolBar look better
@@ -472,7 +472,7 @@ MouseArea {
                     opacity: optionsToolBar.opacity
                     parent: annotationsToolBar
                     x: optionsToolBar.x + annotationsToolBar.background.border.width
-                    y: atbLoader.valignment === Qt.AlignTop ?
+                    y: atbLoader.valignment & Qt.AlignTop ?
                         optionsToolBar.y + optionsToolBar.height : optionsToolBar.y
                     width: optionsToolBar.width - annotationsToolBar.background.border.width * 2
                     height: contextWindow.dprRound(1)
@@ -490,7 +490,7 @@ MouseArea {
                                Math.min(contextWindow.dprRound(targetX),
                                         parent.width - width)) // max value
                     }
-                    y: atbLoader.valignment === Qt.AlignTop ?
+                    y: atbLoader.valignment & Qt.AlignTop ?
                         -optionsToolBar.height + borderBg.height
                         : optionsToolBar.height - borderBg.height
                     state: if (AnnotationDocument.tool.options !== AnnotationTool.NoOptions
@@ -507,10 +507,10 @@ MouseArea {
                             displayMode: QQC2.AbstractButton.IconOnly
                             focusPolicy: Qt.NoFocus
                         }
-                        topLeftRadius: atbLoader.valignment === Qt.AlignBottom && x >= 0 ? 0 : radius
-                        topRightRadius: atbLoader.valignment === Qt.AlignBottom && x + width <= annotationsToolBar.width ? 0 : radius
-                        bottomLeftRadius: atbLoader.valignment === Qt.AlignTop && x >= 0 ? 0 : radius
-                        bottomRightRadius: atbLoader.valignment === Qt.AlignTop && x + width <= annotationsToolBar.width ? 0 : radius
+                        topLeftRadius: atbLoader.valignment & Qt.AlignBottom && x >= 0 ? 0 : radius
+                        topRightRadius: atbLoader.valignment & Qt.AlignBottom && x + width <= annotationsToolBar.width ? 0 : radius
+                        bottomLeftRadius: atbLoader.valignment & Qt.AlignTop && x >= 0 ? 0 : radius
+                        bottomRightRadius: atbLoader.valignment & Qt.AlignTop && x + width <= annotationsToolBar.width ? 0 : radius
                     }
                 }
             }
