@@ -177,6 +177,10 @@ MouseArea {
         // Assume SelectionEditor covers all screens.
         // Use parent's coordinate system.
         opacity: root.containsMouse
+            && !root.pressed
+            && !annotations.enabled
+            && !mtbDragHandler.active
+            && !atbDragHandler.active
             && !Selection.rectIntersectsRect(SelectionEditor.handlesRect,
                                              Qt.rect(x, y, width, height))
         Behavior on opacity {
