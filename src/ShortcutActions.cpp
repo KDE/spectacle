@@ -32,36 +32,43 @@ ShortcutActions::ShortcutActions()
     {
         QAction *action = new QAction(i18n("Launch Spectacle"), &mActions);
         action->setObjectName(QStringLiteral("_launch"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Entire Desktop"), &mActions);
         action->setObjectName(QStringLiteral("FullScreenScreenShot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Current Monitor"), &mActions);
         action->setObjectName(QStringLiteral("CurrentMonitorScreenShot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Active Window"), &mActions);
         action->setObjectName(QStringLiteral("ActiveWindowScreenShot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Rectangular Region"), &mActions);
         action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Window Under Cursor"), &mActions);
         action->setObjectName(QStringLiteral("WindowUnderCursorScreenShot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Launch Spectacle without capturing"), &mActions);
         action->setObjectName(QStringLiteral("OpenWithoutScreenshot"));
+        action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
 }
