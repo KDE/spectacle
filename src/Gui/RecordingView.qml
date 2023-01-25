@@ -32,6 +32,6 @@ Item
     Kirigami.Heading {
         anchors.centerIn: parent
         visible: SpectacleCore.isRecording
-        text: i18n("Recording") + " " + parent.width + "x" + parent.height
+        text: i18n("Recording")
     }
 }
