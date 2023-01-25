@@ -5,7 +5,7 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as QQC2
-import VLCQt 1.0
+import QtMultimedia 5.15
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.spectacle.private 1.0
 
@@ -16,10 +16,17 @@ Item
     implicitWidth: parent.width
     implicitHeight: parent.height
 
-    VlcVideoPlayer {
+    Video {
         anchors.fill: parent
-        visible: !SpectacleCore.isRecording
-        url: SpectacleCore.currentVideo
+        source: SpectacleCore.currentVideo
+        flushMode: VideoOutput.FirstFrame
+        autoPlay: true
+
+        Text {
+            text: parent.availability
+            anchors.fill: parent
+            opacity: 0.3
+        }
     }
 
     Kirigami.Heading {

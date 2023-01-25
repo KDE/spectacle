@@ -135,8 +135,6 @@ else()
     MESSAGE(STATUS "need to find QtBinariesDir")
 endif()
 
-ecm_find_qmlmodule(VLCQt 1.0)
-
 # setup handling of deprecated Qt & KF API
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2  KF 5.100.0)
