@@ -337,7 +337,7 @@ EmptyPage {
                     id: zoomEditor
                     from: annotationsParent.minZoom * 100
                     to: annotationsParent.maxZoom * 100
-                    stepSize: 1
+                    stepSize: 10
                     value: annotationsParent.item.effectiveZoom * 100
                     textFromValue: (value, locale) => {
                         return Number(Math.round(value)).toLocaleString(locale, 'f', 0) + locale.percent
