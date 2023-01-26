@@ -264,34 +264,59 @@ EmptyPage {
         }
     }
 
-    QQC2.TabBar {
-        id: captureTabs
-        anchors {
-            top: parent.top
-            left: captureOptionsLoader.left
-            right: parent.right
-        }
-        QQC2.TabButton {
-            text: qsTr("Screenshot")
-            readonly property string optionsFile: "CaptureOptions.qml"
-        }
-        QQC2.TabButton {
-            text: qsTr("Recording")
-            readonly property string optionsFile: "RecordOptions.qml"
-        }
-        visible: SpectacleCore.recordingSupported
-    }
-
     Loader { // parent is contentItem
         id: captureOptionsLoader
         visible: true
         active: visible
         anchors {
-            top: captureTabs.visible ? captureTabs.bottom : parent.top
+            top: parent.top
             bottom: parent.bottom
             right: parent.right
         }
-        source: captureTabs.contentChildren[captureTabs.currentIndex].optionsFile
+        sourceComponent: QQC2.Page {
+
+            leftPadding: Kirigami.Units.mediumSpacing * 2
+                + (!mirrored ? sideBarSeparator.implicitWidth : 0)
+            rightPadding: Kirigami.Units.mediumSpacing * 2
+                + (mirrored ? sideBarSeparator.implicitWidth : 0)
+            topPadding: Kirigami.Units.mediumSpacing * 2
+            bottomPadding: Kirigami.Units.mediumSpacing * 2
+
+            header: QQC2.TabBar {
+                id: tabBar
+                visible: SpectacleCore.recordingSupported
+                currentIndex: 0
+                QQC2.TabButton {
+                    text: i18n("Screenshot")
+                }
+                QQC2.TabButton {
+                    text: i18n("Recording")
+                }
+            }
+
+            contentItem: Loader {
+                source: switch (tabBar.currentIndex) {
+                    case 0: return "CaptureOptions.qml"
+                    case 1: return "RecordOptions.qml"
+                    default: return ""
+                }
+            }
+
+            background: Rectangle {
+                color: Kirigami.Theme.backgroundColor
+                Kirigami.Separator {
+                    id: sideBarSeparator
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
+                }
+            }
+
+            onImplicitContentWidthChanged: contentWidth = Math.max(contentWidth, implicitContentWidth)
+            onImplicitContentHeightChanged: contentHeight = Math.max(contentHeight, implicitContentHeight)
+        }
     }
 
     Loader {

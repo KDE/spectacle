@@ -9,78 +9,58 @@ import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.spectacle.private 1.0
 
-QQC2.Pane {
-    leftPadding: Kirigami.Units.mediumSpacing * 2
-        + (!mirrored ? sideBarSeparator.implicitWidth : 0)
-    rightPadding: Kirigami.Units.mediumSpacing * 2
-        + (mirrored ? sideBarSeparator.implicitWidth : 0)
-    topPadding: Kirigami.Units.mediumSpacing * 2
-    bottomPadding: Kirigami.Units.mediumSpacing * 2
-
-    contentItem: ColumnLayout {
-        ColumnLayout {
-            visible: !SpectacleCore.isRecording
-            spacing: Kirigami.Units.mediumSpacing
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                topPadding: -captureHeadingMetrics.descent
-                bottomPadding: -captureHeadingMetrics.descent + parent.spacing
-                text: i18n("New screen recording")
-                level: 3
-                FontMetrics {
-                    id: captureHeadingMetrics
-                }
-            }
-            Repeater {
-                model: SpectacleCore.recordingModeModel
-                delegate: QQC2.Button {
-                    id: button
-                    Layout.fillWidth: true
-                    leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-                    rightPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-                    topPadding: Kirigami.Units.mediumSpacing
-                    bottomPadding: Kirigami.Units.mediumSpacing
-                    text: model.display
-                    onClicked: SpectacleCore.recordingModeModel.startRecording(model.index, Settings.includePointer)
-                }
-            }
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                topPadding: -captureHeadingMetrics.descent + parent.spacing
-                bottomPadding: -captureHeadingMetrics.descent + parent.spacing
-                text: i18n("Recording Settings")
-                level: 3
-            }
-            QQC2.CheckBox {
-                Layout.fillWidth: true
-                text: i18n("Include mouse pointer")
-                QQC2.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                QQC2.ToolTip.visible: hovered
-                checked: Settings.includePointer
-                onToggled: Settings.includePointer = checked
+ColumnLayout {
+    ColumnLayout {
+        visible: !SpectacleCore.isRecording
+        spacing: Kirigami.Units.mediumSpacing
+        Kirigami.Heading {
+            Layout.fillWidth: true
+            topPadding: -captureHeadingMetrics.descent
+            bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+            text: i18n("New screen recording")
+            level: 3
+            FontMetrics {
+                id: captureHeadingMetrics
             }
         }
-        ColumnLayout {
-            visible: SpectacleCore.isRecording
-            QQC2.Button {
-                text: i18n("Finish recording")
-                onClicked: SpectacleCore.finishRecording()
+        Repeater {
+            model: SpectacleCore.recordingModeModel
+            delegate: QQC2.Button {
+                id: button
+                Layout.fillWidth: true
+                leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
+                rightPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
+                topPadding: Kirigami.Units.mediumSpacing
+                bottomPadding: Kirigami.Units.mediumSpacing
+                text: model.display
+                onClicked: SpectacleCore.recordingModeModel.startRecording(model.index, Settings.includePointer)
             }
         }
-        Item {
-            Layout.fillHeight: true
+        Kirigami.Heading {
+            Layout.fillWidth: true
+            topPadding: -captureHeadingMetrics.descent + parent.spacing
+            bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+            text: i18n("Recording Settings")
+            level: 3
+        }
+        QQC2.CheckBox {
+            Layout.fillWidth: true
+            text: i18n("Include mouse pointer")
+            QQC2.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC2.ToolTip.visible: hovered
+            checked: Settings.includePointer
+            onToggled: Settings.includePointer = checked
         }
     }
-    background: Rectangle {
-        color: Kirigami.Theme.backgroundColor
-        Kirigami.Separator {
-            id: sideBarSeparator
-            anchors {
-                left: parent.left
-                top: parent.top
-                bottom: parent.bottom
-            }
+    ColumnLayout {
+        visible: SpectacleCore.isRecording
+        QQC2.Button {
+            text: i18n("Finish recording")
+            onClicked: SpectacleCore.finishRecording()
         }
+    }
+    Item {
+        Layout.fillHeight: true
     }
 }
