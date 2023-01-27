@@ -501,9 +501,16 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     }
 }
 
-void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations)
+void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations, bool transientOnly)
 {
     m_delayAnimation->stop();
+
+    // TODO: Improve API for transientOnly or make it obsolete.
+    if (!transientOnly
+        && m_platform->supportedGrabModes() & Platform::TransientWithParent
+        && captureMode == CaptureModeModel::WindowUnderCursor) {
+        captureMode = CaptureModeModel::TransientWithParent;
+    }
 
     ExportManager::instance()->setCaptureMode(CaptureModeModel::CaptureMode(captureMode));
     m_tempGrabMode = toPlatformGrabMode(CaptureModeModel::CaptureMode(captureMode));
