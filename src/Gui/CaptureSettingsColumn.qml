@@ -32,6 +32,7 @@ ColumnLayout {
     QQC2.CheckBox {
         Layout.fillWidth: true
         text: i18n("Capture the current pop-up only")
+        visible: Platform.supportedGrabModes & Platform.TransientWithParent
         QQC2.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc) when taking a screenshot of a window. If disabled, the pop-up is captured along with the parent window.")
         QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         QQC2.ToolTip.visible: hovered
