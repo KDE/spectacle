@@ -70,7 +70,7 @@ public:
         : QWaylandClientExtensionTemplate<ScreencastingPrivate>(ZKDE_SCREENCAST_UNSTABLE_V1_STREAM_REGION_SINCE_VERSION)
         , q(q)
     {
-#if QTWAYLANDCLIENT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
         initialize();
 #else
         // QWaylandClientExtensionTemplate invokes this with a QueuedConnection but we want it called immediately
