@@ -10,8 +10,6 @@
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
 
-#include <KWayland/Client/plasmashell.h>
-
 #include <QQuickView>
 #include <QQmlContext>
 
@@ -83,9 +81,6 @@ public:
     Q_INVOKABLE QString baseFileName(const QUrl &url) const;
 
 public Q_SLOTS:
-    // QWindow::setPosition has no effect on wayland, so here's one that works
-    virtual void setPosition(const QPoint &p);
-    virtual void setGeometry(const QRect &r);
     virtual void save();
     virtual void saveAs();
     virtual void copyImage();
@@ -113,10 +108,6 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
-
-    KWayland::Client::PlasmaShellSurface *plasmashellSurface();
-
-    KWayland::Client::PlasmaShellSurface *m_plasmaShellSurface = nullptr;
 
     static QVector<SpectacleWindow *> s_instances;
     static bool s_synchronizingVisibility;

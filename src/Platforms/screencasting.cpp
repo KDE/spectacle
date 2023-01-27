@@ -6,17 +6,13 @@
 
 #include "screencasting.h"
 #include "qwayland-zkde-screencast-unstable-v1.h"
-#include <KWayland/Client/output.h>
-#include <KWayland/Client/plasmawindowmanagement.h>
-#include <KWayland/Client/registry.h>
 #include <QDebug>
 #include <QGuiApplication>
+#include <QPointer>
 #include <QRect>
 #include <QtWaylandClient/QWaylandClientExtensionTemplate>
 #include <qpa/qplatformnativeinterface.h>
 #include <qscreen.h>
-
-using namespace KWayland::Client;
 
 class ScreencastingStreamPrivate : public QtWayland::zkde_screencast_stream_unstable_v1
 {

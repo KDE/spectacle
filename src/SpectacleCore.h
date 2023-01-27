@@ -22,16 +22,7 @@ class QCommandLineParser;
 
 #include <memory>
 
-namespace KWayland
-{
-namespace Client
-{
-class PlasmaShell;
-}
-}
-
 static const auto QML_URI_PRIVATE = "org.kde.spectacle.private";
-
 
 class SpectacleCore : public QObject
 {
@@ -61,9 +52,6 @@ public:
     static SpectacleCore *instance();
 
     Platform *platform() const;
-
-    // Needed so the QuickEditor can go fullscreen on wayland.
-    KWayland::Client::PlasmaShell *plasmaShellInterfaceWrapper() const;
 
     CaptureModeModel *captureModeModel() const;
     RecordingModeModel *recordingModeModel() const;
@@ -132,7 +120,6 @@ private:
     void setCurrentVideo(const QUrl &currentVideo);
 
     static SpectacleCore *s_self;
-    KWayland::Client::PlasmaShell *m_waylandPlasmashell = nullptr;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
     StartMode m_startMode = StartMode::Gui;
     bool m_notify = false;

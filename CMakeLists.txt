@@ -67,7 +67,6 @@ find_package(
         NewStuff
         GlobalAccel
         XmlGui
-        Wayland
         GuiAddons
         Kirigami2
 )

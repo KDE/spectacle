@@ -24,11 +24,6 @@ class CaptureWindow;
 class Selection;
 class SelectionEditorPrivate;
 
-namespace KWayland::Client
-{
-class PlasmaShell;
-}
-
 /**
  * This class is used to set the selected rectangle capture region,
  * get information related to it and handle input from a capture window.

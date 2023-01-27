@@ -12,7 +12,6 @@
 #include "spectacle_gui_debug.h"
 
 #include <KLocalizedString>
-#include <KWayland/Client/plasmashell.h>
 #include <KWindowSystem>
 
 #include <QGuiApplication>

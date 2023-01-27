@@ -15,7 +15,6 @@
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KUrlMimeData>
-#include <KWayland/Client/surface.h>
 #include <KWindowSystem>
 
 #include <QApplication>
@@ -243,29 +242,6 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
     }
 
     setContent(source, component, object);
-}
-
-void SpectacleWindow::setPosition(const QPoint &p)
-{
-    using namespace KWayland::Client;
-    // TODO This is a hack until a better interface is available.
-    // Original context: https://phabricator.kde.org/D23466
-    if (auto surface = plasmashellSurface()) {
-        surface->setPosition(p);
-    } else {
-        QQuickView::setPosition(p);
-    }
-}
-
-void SpectacleWindow::setGeometry(const QRect &r)
-{
-    QQuickView::setGeometry(r);
-    using namespace KWayland::Client;
-    // TODO This is a hack until a better interface is available.
-    // Original context: https://phabricator.kde.org/D23466
-    if (auto surface = plasmashellSurface()) {
-        surface->setPosition(r.topLeft());
-    }
 }
 
 void SpectacleWindow::save()
@@ -546,18 +522,4 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
         event->accept();
         m_helpMenu->showAppHelp();
     }
-}
-
-KWayland::Client::PlasmaShellSurface *SpectacleWindow::plasmashellSurface()
-{
-    // TODO This is a hack until a better interface is available.
-    // Original context: https://phabricator.kde.org/D23466
-    if (auto plasmashell = SpectacleCore::instance()->plasmaShellInterfaceWrapper()) {
-        using namespace KWayland::Client;
-        auto surface = Surface::fromWindow(this);
-        if (surface) {
-            return plasmashell->createSurface(surface, this);
-        }
-    }
-    return nullptr;
 }

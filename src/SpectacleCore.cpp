@@ -22,9 +22,6 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
-#include <KWayland/Client/connection_thread.h>
-#include <KWayland/Client/plasmashell.h>
-#include <KWayland/Client/registry.h>
 #include <KWindowSystem>
 
 #include <QApplication>
@@ -106,7 +103,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
 SpectacleCore::~SpectacleCore() noexcept
 {
     s_self = nullptr;
-    m_waylandPlasmashell = nullptr;
 }
 
 void SpectacleCore::init()
@@ -191,20 +187,6 @@ void SpectacleCore::init()
         }
     });
 
-    if (KWindowSystem::isPlatformWayland()) {
-        using namespace KWayland::Client;
-        ConnectionThread *connection = ConnectionThread::fromApplication(this);
-        if (connection) {
-            Registry *registry = new Registry(this);
-            registry->create(connection);
-            connect(registry, &Registry::plasmaShellAnnounced, this, [this, registry](quint32 name, quint32 version) {
-                m_waylandPlasmashell = registry->createPlasmaShell(name, version, this);
-            });
-            registry->setup();
-            connection->roundtrip();
-        }
-    }
-
     // set up shortcuts
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(), Qt::Key_Print);
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->fullScreenAction(), Qt::SHIFT | Qt::Key_Print);
@@ -249,11 +231,6 @@ SpectacleCore *SpectacleCore::instance()
 Platform *SpectacleCore::platform() const
 {
     return m_platform.get();
-}
-
-KWayland::Client::PlasmaShell *SpectacleCore::plasmaShellInterfaceWrapper() const
-{
-    return m_waylandPlasmashell;
 }
 
 CaptureModeModel *SpectacleCore::captureModeModel() const
