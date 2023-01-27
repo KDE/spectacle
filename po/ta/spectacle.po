@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2023-01-24 21:37+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -339,19 +339,19 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "ரத்து செய் (%1 நொடி)"
 msgstr[1] "ரத்து செய் (%1 நொடிகள்)"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "புதிய திரைப்பிடிப்பை எடு"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "பிடிப்புக்கான அமைப்புகள்"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "சுட்டிக்குறியை உட்படுத்து"
@@ -472,12 +472,23 @@ msgstr "வேறு செயலி..."
 msgid "Share"
 msgstr "பகிர்"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
+msgid "Screenshot"
+msgstr "புதிய திரைப்பிடிப்பு"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, kde-format
+msgid "Recording"
+msgstr "பதிவு செய்யப்படுகிறது"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr "உருப்பெருக்கம்:"
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr "படத்தின் உருப்பெருக்கம்"
@@ -568,27 +579,22 @@ msgstr "க்ளிக் செய்யும்போது படமெட�
 msgid "No Delay"
 msgstr "தாமதிக்க வேண்டாம்"
 
-#: src/Gui/RecordingView.qml:28
-#, kde-format
-msgid "Recording"
-msgstr "பதிவு செய்யப்படுகிறது"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr "புதிய திரைப்பதிவு"
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Recording Settings"
 msgstr "திரைப்பதிவு அமைப்புகள்"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr "பதிவிடுவதை முடி"

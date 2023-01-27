@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2022-07-09 14:43+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -353,13 +353,13 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "%1 sekunti"
 msgstr[1] "%1 sekuntia"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, fuzzy, kde-format
 #| msgid "Take a new Screenshot"
 msgid "Take a new screenshot"
 msgstr "kaappaa uuden kuvan"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, fuzzy, kde-format
 #| msgid "Capture Delay"
@@ -367,7 +367,7 @@ msgid "Capture Settings"
 msgstr "Kaappauksen viive"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Kaappaa myös hiiriosoitin"
@@ -492,12 +492,24 @@ msgstr "Muu sovellus…"
 msgid "Share"
 msgstr "Jaa"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "Screenshot"
+msgstr "Kaappaa uusi kuva"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording"
+msgstr "Tallenna näyttö"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -591,30 +603,24 @@ msgstr "Napsautettaessa"
 msgid "No Delay"
 msgstr "Ei viivettä"
 
-#: src/Gui/RecordingView.qml:28
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgid "Recording"
-msgstr "Tallenna näyttö"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording Settings"
 msgstr "Tallenna näyttö"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screenshot image"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Näytä kaapatussa kuvassa hiiriosoitin"
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr ""

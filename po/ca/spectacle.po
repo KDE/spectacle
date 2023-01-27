@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2023-01-21 12:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -347,19 +347,19 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Cancel·la (%1 segon)"
 msgstr[1] "Cancel·la (%1 segons)"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Pren una captura de pantalla nova"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Configuració de la captura"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Incloure el punter del ratolí"
@@ -481,12 +481,23 @@ msgstr "Una altra aplicació..."
 msgid "Share"
 msgstr "Comparteix"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
+msgid "Screenshot"
+msgstr "Captura de pantalla nova"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, kde-format
+msgid "Recording"
+msgstr "Enregistrament"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom de la imatge"
@@ -576,27 +587,22 @@ msgstr "Captura en fer clic"
 msgid "No Delay"
 msgstr "Sense retard"
 
-#: src/Gui/RecordingView.qml:28
-#, kde-format
-msgid "Recording"
-msgstr "Enregistrament"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr "Enregistrament de pantalla nou"
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Recording Settings"
 msgstr "Configuració de l'enregistrament"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostra el cursor del ratolí en l'enregistrament de pantalla."
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr "Finalitza l'enregistrament"

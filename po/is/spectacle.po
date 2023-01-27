@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2022-08-03 18:06+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -345,20 +345,20 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "sekúnda"
 msgstr[1] "%1 sekúndur"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, fuzzy, kde-format
 #| msgid "Take a new Screenshot"
 msgid "Take a new screenshot"
 msgstr "Taka nýja skjámynd"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Taka með músarbendil"
@@ -485,12 +485,24 @@ msgstr "Annað forrit..."
 msgid "Share"
 msgstr "Deila"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgid "Screenshot"
+msgstr "Taka nýja skjámynd"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording"
+msgstr "Taka upp af skjánum"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -586,30 +598,24 @@ msgstr "Við smell"
 msgid "No Delay"
 msgstr "Engin töf"
 
-#: src/Gui/RecordingView.qml:28
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgid "Recording"
-msgstr "Taka upp af skjánum"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording Settings"
 msgstr "Taka upp af skjánum"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screenshot image"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Birta músarbendilinn á skjámyndinni"
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr ""

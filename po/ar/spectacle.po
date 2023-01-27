@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2023-01-23 20:21+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -342,19 +342,19 @@ msgstr[3] "ألغ (%1 ثواني)"
 msgstr[4] "ألغ (%1 ثانية)"
 msgstr[5] "ألغ (%1 ثانية)"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "خُذ لقطة جديدة"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "إعدادات الالتقاط"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "ضمّن مؤشّر الفأرة"
@@ -474,12 +474,23 @@ msgstr "تطبيق آخر..."
 msgid "Share"
 msgstr "شارك"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
+msgid "Screenshot"
+msgstr "لقطة جديدة"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, kde-format
+msgid "Recording"
+msgstr "يسجّل"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr "التّكبير:"
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr "تكبير الصورة"
@@ -566,27 +577,22 @@ msgstr "التقط عند النّقر"
 msgid "No Delay"
 msgstr "بدون تأخير"
 
-#: src/Gui/RecordingView.qml:28
-#, kde-format
-msgid "Recording"
-msgstr "يسجّل"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr "تسجيل شاشة جديد"
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Recording Settings"
 msgstr "إعدادات التسجيل"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "أظهر مؤشّر الفأرة في تسجيل الشاشة."
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr "أنهِ التسجيل"

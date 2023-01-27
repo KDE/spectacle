@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-26 00:55+0000\n"
+"POT-Creation-Date: 2023-01-27 00:56+0000\n"
 "PO-Revision-Date: 2023-01-01 22:57+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -366,19 +366,19 @@ msgstr[1] "Отмена (%1 секунды)"
 msgstr[2] "Отмена (%1 секунда)"
 msgstr[3] "Отмена (%1 секунда)"
 
-#: src/Gui/CaptureOptions.qml:27 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Сделать новый снимок"
 
-#: src/Gui/CaptureOptions.qml:46 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Параметры съёмки"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:56
+#: src/Gui/RecordOptions.qml:48
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Включая курсор мыши"
@@ -498,12 +498,24 @@ msgstr "Другое приложение..."
 msgid "Share"
 msgstr "Опубликовать"
 
-#: src/Gui/ImageView.qml:334
+#: src/Gui/ImageView.qml:290
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
+msgid "Screenshot"
+msgstr "Сделать новый снимок"
+
+#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Recording"
+msgstr "Запись экрана"
+
+#: src/Gui/ImageView.qml:359
 #, kde-format
 msgid "Zoom:"
 msgstr "Масштаб:"
 
-#: src/Gui/ImageView.qml:348
+#: src/Gui/ImageView.qml:373
 #, kde-format
 msgid "Image Zoom"
 msgstr "Мастаб изображения"
@@ -594,30 +606,24 @@ msgstr "По щелчку"
 msgid "No Delay"
 msgstr "Без задержки"
 
-#: src/Gui/RecordingView.qml:28
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgid "Recording"
-msgstr "Запись экрана"
-
-#: src/Gui/RecordOptions.qml:28
+#: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:51
+#: src/Gui/RecordOptions.qml:43
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording Settings"
 msgstr "Запись экрана"
 
-#: src/Gui/RecordOptions.qml:57
+#: src/Gui/RecordOptions.qml:49
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screenshot image."
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Добавить указатель мыши на снимок экрана."
 
-#: src/Gui/RecordOptions.qml:67
+#: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
 msgstr ""
