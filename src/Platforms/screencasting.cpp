@@ -11,6 +11,7 @@
 #include <QPointer>
 #include <QRect>
 #include <QtWaylandClient/QWaylandClientExtensionTemplate>
+#include <QtWaylandClient/qtwaylandclientversion.h>
 #include <qpa/qplatformnativeinterface.h>
 #include <qscreen.h>
 
