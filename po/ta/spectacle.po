@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-27 00:56+0000\n"
+"POT-Creation-Date: 2023-01-28 00:56+0000\n"
 "PO-Revision-Date: 2023-01-24 21:37+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -379,7 +379,7 @@ msgstr ""
 msgid "Capture the current pop-up only"
 msgstr "தற்போதைய தெரித்தெழும் சாளரத்தை மட்டும் படமெடு"
 
-#: src/Gui/CaptureSettingsColumn.qml:35
+#: src/Gui/CaptureSettingsColumn.qml:36
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
@@ -391,28 +391,28 @@ msgstr ""
 "இத்தேர்வு முடக்கப்பட்டிருந்தால், தெரித்தெழும் சாளரம் அதன் தாய் சாளரத்துடன் சேர்த்து "
 "படமெடுக்கப்படும்"
 
-#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு வெளியேறு"
 
-#: src/Gui/CaptureSettingsColumn.qml:44
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
 "படத்தை கைமுறையாக சேமித்த அல்லது நகலெடுத்த பிறகு ஸ்பெக்டக்குலிலிருந்து வெளியேறு."
 
-#: src/Gui/CaptureSettingsColumn.qml:53
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "க்ளிக் செய்யும்போது படமெடு"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "சுட்டியைக் கிளிக் செய்த பிறகே திரைப்பிடிப்பு எடுக்கப்படும்."
 
-#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgid "Delay:"
 msgstr "தாமதம்:"
@@ -737,7 +737,7 @@ msgstr "செவ்வக பரப்பளவை தேர்வு செய
 msgid "General:"
 msgstr "பொதுவானவை:"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColour)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColor)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:174
 #, kde-format
 msgid "Use light background"
@@ -1247,7 +1247,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:132
+#: src/Gui/SpectacleWindow.cpp:164
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1255,7 +1255,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:135
+#: src/Gui/SpectacleWindow.cpp:167
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1333,17 +1333,17 @@ msgstr "சுட்டிக்குறிக்கு கீழுள்ள �
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:647
+#: src/SpectacleCore.cpp:656
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:676
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1352,44 +1352,44 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:684
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "முழு பணிமேடையின் படமெடு (இயல்பிருப்பு)"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "தற்போதைய காட்சிக் கருவியின் படமெடு"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "Capture the active window"
 msgstr "செயலில் உள்ள சாளரத்தின் படமெடு"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:734
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1398,7 +1398,7 @@ msgstr ""
 "தற்போது சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடுக்கும், தெரித்தெழும் சாளரங்களின் தாய் "
 "சாளரங்களை சேர்த்து"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:735
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1407,49 +1407,49 @@ msgstr ""
 "தற்போது சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடுக்கும், தெரித்தெழும் சாளரங்களின் தாய் "
 "சாளரங்களை சேர்க்காமல்"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:736
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "திரையின் ஓர் செவ்வக பரப்பை படமெடு"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:737
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "திரைப்பிடிப்பை எடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI பயன்முறை தொடங்கு (இயல்பிருப்பு)"
 
-#: src/SpectacleCore.cpp:730
+#: src/SpectacleCore.cpp:739
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "GUI-ஐ காட்டாமல் திரையின் படமெடுத்து வெளியேறு"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-Activation பயன்முறையில் துவக்கு"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:741
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "பின்னணி பயன்முறையில், திரைப்பிடிப்பு எடுக்கப்படும்போது அறிவிக்காதே"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:742
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "பின்னணி பயன்முறையில், குறிப்பிட்ட கோப்பிற்கு படத்தை சேமி"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:744
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "பின்னணி பயன்முறையில், படமெடுக்கும் முன் காத்திருக்க வேண்டிய தாமதம் (மில்லிநொடிகளில்)"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:746
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1458,35 +1458,35 @@ msgstr ""
 "பின்னணி பயன்முறையில், -o என்ற விருப்பம் பயன்படுத்தப்படாத பட்சத்தில் திரைப்பிடிப்பை "
 "பிடிப்புப்பலகைக்கு நகலெடு"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:747
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "பின்னணி பயன்முறையில், திரைப்பிடிப்பு கோப்பின் இருப்பிடத்தை பிடிப்புப்பலகைக்கு நகலெடு"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:748
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "திரைப்பிடிப்பை எடுக்கும் முன்னர் க்ளிக்கிற்காக காத்திருக்கவும். கால தாமதம் "
 "பொருட்படுத்தப்படாது"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus-இல் பதிவு செய்யாமல் ஸ்பெக்டக்குல்லின் புதிய அமர்வை திறக்கும்"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:750
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "பின்னணி பயன்முறையில், திரைப்பிடிப்பில் சுட்டிக்குறியை உட்படுத்து"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:751
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "பின்னணி பயன்முறையில், சாளர விளிம்புகளை உட்படுத்தாதே"
 
-#: src/SpectacleCore.cpp:743
+#: src/SpectacleCore.cpp:752
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ஏற்கனவேயுள்ள திரைப்பிடிப்பை திறந்து திருத்து"

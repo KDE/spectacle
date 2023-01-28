@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the spectacle package.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # It is also distributed according the GNU LGPLv2.1 or later.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-27 00:56+0000\n"
-"PO-Revision-Date: 2022-12-16 22:36+0100\n"
+"POT-Creation-Date: 2023-01-28 00:56+0000\n"
+"PO-Revision-Date: 2023-01-24 01:50+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -385,7 +385,7 @@ msgstr ""
 msgid "Capture the current pop-up only"
 msgstr "Cattura solo la finestra a comparsa attuale"
 
-#: src/Gui/CaptureSettingsColumn.qml:35
+#: src/Gui/CaptureSettingsColumn.qml:36
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
@@ -396,27 +396,27 @@ msgstr ""
 "quando viene acquisita una schermata. Se l'opzione è disabilitata, la "
 "finestra a comparsa viene catturata assieme alla finestra che la contiene."
 
-#: src/Gui/CaptureSettingsColumn.qml:43 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Esci dopo il salvataggio o la copia manuali"
 
-#: src/Gui/CaptureSettingsColumn.qml:44
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Chiude Spectacle dopo aver salvato o copiato l'immagine manualmente."
 
-#: src/Gui/CaptureSettingsColumn.qml:53
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "Cattura al clic"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Aspetta un clic del mouse prima di catturare la schermata."
 
-#: src/Gui/CaptureSettingsColumn.qml:65 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgid "Delay:"
 msgstr "Ritardo:"
@@ -483,10 +483,9 @@ msgid "Screenshot"
 msgstr "Nuova schermata"
 
 #: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording"
-msgstr "Registra schermo"
+msgstr "Registrazione"
 
 #: src/Gui/ImageView.qml:359
 #, kde-format
@@ -587,24 +586,22 @@ msgstr "Nessun ritardo"
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
-msgstr ""
+msgstr "Nuova registrazione di schermo"
 
 #: src/Gui/RecordOptions.qml:43
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording Settings"
-msgstr "Registra schermo"
+msgstr "Impostazioni registrazione"
 
 #: src/Gui/RecordOptions.qml:49
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image."
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Mostra il puntatore del mouse nella schermata."
+msgstr "Mostra il puntatore del mouse nella registrazione dello schermo."
 
 #: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Termina registrazione"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -624,10 +621,9 @@ msgstr ""
 "stata copiata negli appunti"
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "La schermata è stata salvata come <a href=\"%1\">%2</a>"
+msgstr "Il video è stato salvato come <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -744,7 +740,7 @@ msgstr "Selezione di regione rettangolare"
 msgid "General:"
 msgstr "Generale:"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColour)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColor)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:174
 #, kde-format
 msgid "Use light background"
@@ -1001,10 +997,9 @@ msgstr "Il nome di file predefinito usato per il salvataggio"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The default filename used when recording a video"
-msgstr "Il nome di file predefinito usato per il salvataggio"
+msgstr "Il nome di file predefinito usato per la registrazione di un video"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
@@ -1263,7 +1258,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:132
+#: src/Gui/SpectacleWindow.cpp:164
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1271,7 +1266,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 secondo"
 msgstr[1] "%1 secondi"
 
-#: src/Gui/SpectacleWindow.cpp:135
+#: src/Gui/SpectacleWindow.cpp:167
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1317,29 +1312,27 @@ msgstr "luigi.toscano@tiscali.it"
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "Spazio di lavoro"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "Registra schermo"
+msgstr "Schermo selezionato"
 
 #: src/RecordingModeModel.cpp:40
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "Finestra attiva"
+msgstr "Finestra selezionata"
 
 #: src/RecordingModeModel.cpp:87
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "Seleziona dell'uscita non riuscita"
 
 #: src/RecordingModeModel.cpp:115
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Selezione della finestra non riuscita"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
@@ -1351,17 +1344,17 @@ msgstr "Cattura finestra sotto il cursore"
 msgid "Launch Spectacle without capturing"
 msgstr "Esegui Spectacle senza acquisire"
 
-#: src/SpectacleCore.cpp:647
+#: src/SpectacleCore.cpp:656
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Cattura della schermata annullata o non riuscita"
 
-#: src/SpectacleCore.cpp:676
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Una schermata è stata salvata negli appunti."
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1370,7 +1363,7 @@ msgstr ""
 "La schermata è stata salvata come «%1» in «%2» ed il suo percorso è stata "
 "copiato negli appunti."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1378,38 +1371,38 @@ msgstr ""
 "Una nuova schermata è stata salvata come «%1» nella tua cartella delle "
 "immagini."
 
-#: src/SpectacleCore.cpp:684
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Una nuova schermata è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Apri"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:731
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Cattura l'intero desktop (predefinito)"
 
-#: src/SpectacleCore.cpp:723
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Cattura il monitor attuale"
 
-#: src/SpectacleCore.cpp:724
+#: src/SpectacleCore.cpp:733
 #, kde-format
 msgid "Capture the active window"
 msgstr "Cattura la finestra attiva"
 
-#: src/SpectacleCore.cpp:725
+#: src/SpectacleCore.cpp:734
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1418,7 +1411,7 @@ msgstr ""
 "Cattura la finestra attualmente sotto al cursore, incluse le finestre che "
 "contengono i menu a comparsa"
 
-#: src/SpectacleCore.cpp:726
+#: src/SpectacleCore.cpp:735
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1427,32 +1420,32 @@ msgstr ""
 "Cattura la finestra attualmente sotto al cursore, escludendo le finestre che "
 "contengono i menu a comparsa"
 
-#: src/SpectacleCore.cpp:727
+#: src/SpectacleCore.cpp:736
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Cattura una regione rettangolare dello schermo"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:737
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Esegui Spectacle senza acquisire una schermata"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Avvia in modalità grafica (predefinita)"
 
-#: src/SpectacleCore.cpp:730
+#: src/SpectacleCore.cpp:739
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Acquisce una schermata ed esce senza mostrare l'interfaccia grafica"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Avvia in modalità attivazione di DBus"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:741
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1460,19 +1453,19 @@ msgstr ""
 "In modalità background, non mostra finestre a comparsa di notifica quando "
 "acquisce una schermata"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:742
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "In modalità background, invia l'immagine nel file specificato"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:744
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "In modalità background, attende prima di acquisire la schermata (in "
 "millisecondi)"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:746
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1481,36 +1474,36 @@ msgstr ""
 "In modalità background, copia l'immagine della schermata negli appunti, a "
 "meno che non sia stato usato anche -o."
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:747
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "In modalità background, copia il percorso del file della schermata negli "
 "appunti"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:748
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Aspetta per un clic prima di acquisire una schermata. Annulla il tempo di "
 "attesa"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Avvia una nuova istanza grafica di spectacle non registrata su DBus"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:750
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "In modalità background, includi il puntatore nella schermata"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:751
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "In modalità background, escludi le decorazioni nella schermata"
 
-#: src/SpectacleCore.cpp:743
+#: src/SpectacleCore.cpp:752
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Apri e modifica il file della schermata esistente"
