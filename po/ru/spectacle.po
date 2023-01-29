@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:56+0000\n"
-"PO-Revision-Date: 2023-01-01 22:57+0300\n"
+"PO-Revision-Date: 2023-01-28 14:06+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -499,14 +499,12 @@ msgid "Share"
 msgstr "Опубликовать"
 
 #: src/Gui/ImageView.qml:290
-#, fuzzy, kde-format
-#| msgid "New Screenshot"
+#, kde-format
 msgid "Screenshot"
-msgstr "Сделать новый снимок"
+msgstr "Снимок экрана"
 
 #: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:28
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording"
 msgstr "Запись экрана"
 
@@ -612,21 +610,19 @@ msgid "New screen recording"
 msgstr ""
 
 #: src/Gui/RecordOptions.qml:43
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording Settings"
-msgstr "Запись экрана"
+msgstr "Параметры записи"
 
 #: src/Gui/RecordOptions.qml:49
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image."
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Добавить указатель мыши на снимок экрана."
+msgstr "Показывать положение курсора в записи экрана."
 
 #: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Завершить запись"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -644,10 +640,9 @@ msgstr ""
 "скопирован в буфер обмена."
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Снимок экрана сохранён в файл <a href=\"%1\">%2</a>"
+msgstr "Запись экрана сохранена в файл <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -1334,29 +1329,27 @@ msgstr ""
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "Область окна"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "Запись экрана"
+msgstr "Выбранный экран"
 
 #: src/RecordingModeModel.cpp:40
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "Активное окно"
+msgstr "Выбранное окно"
 
 #: src/RecordingModeModel.cpp:87
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "Не удалось выбрать окно вывода"
 
 #: src/RecordingModeModel.cpp:115
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Не удалось выбрать окно"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
