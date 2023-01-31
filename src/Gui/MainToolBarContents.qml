@@ -12,7 +12,6 @@ ButtonGrid {
     id: root
     property size imageSize: Qt.size(0, 0)
     property bool showSizeLabel: false
-    property alias annotationsButtonChecked: annotationsButton.checked
     property bool showUndoRedo: false
     property bool showNewScreenshotButton: true
     property bool showOptionsMenu: true
@@ -96,7 +95,8 @@ ButtonGrid {
         text: i18n("Show Annotation Tools")
         visible: !SpectacleCore.videoMode
         checkable: true
-        checked: false
+        checked: contextWindow.annotating
+        onToggled: contextWindow.annotating = checked
     }
 
     ToolButton {

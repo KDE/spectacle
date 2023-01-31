@@ -27,6 +27,7 @@ class SpectacleWindow : public QQuickView
     Q_PROPERTY(ExportMenu *exportMenu READ exportMenu CONSTANT FINAL)
     Q_PROPERTY(OptionsMenu *optionsMenu READ optionsMenu CONSTANT FINAL)
     Q_PROPERTY(HelpMenu *helpMenu READ helpMenu CONSTANT FINAL)
+    Q_PROPERTY(bool annotating READ isAnnotating WRITE setAnnotating NOTIFY annotatingChanged FINAL)
 
 public:
     explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);
@@ -44,6 +45,9 @@ public:
     ExportMenu *exportMenu() const;
     OptionsMenu *optionsMenu() const;
     HelpMenu *helpMenu() const;
+
+    bool isAnnotating() const;
+    void setAnnotating(bool annotating);
 
     /**
      * Makes the window visible and removes the WindowMinimized flag from the WindowStates flags.
@@ -95,6 +99,9 @@ public Q_SLOTS:
     void openContainingFolder(const QUrl &url);
     void startDrag();
 
+Q_SIGNALS:
+    void annotatingChanged();
+
 protected:
     using QQuickView::setTitle;
 
@@ -116,6 +123,8 @@ protected:
     static bool s_synchronizingTitle;
     static TitlePreset s_lastTitlePreset;
     static QString s_previousTitle;
+    static bool s_synchronizingAnnotating;
+    static bool s_isAnnotating;
 
     const std::unique_ptr<ExportMenu> m_exportMenu;
     const std::unique_ptr<OptionsMenu> m_optionsMenu;

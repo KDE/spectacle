@@ -17,6 +17,7 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
     , m_mode(mode)
 {
+    s_isAnnotating = false;
     connect(qGuiApp, &QGuiApplication::paletteChanged, this, &ViewerWindow::updateColor);
 
     connect(SpectacleCore::instance(), &SpectacleCore::screenCaptureUrlChanged, this, &ViewerWindow::imageSizeChanged);

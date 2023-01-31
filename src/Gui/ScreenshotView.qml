@@ -16,10 +16,10 @@ AnnotationEditor {
     zoom: Math.min(1, Math.max(parent.minZoom, parent.defaultZoom))
     scale: Math.max(1, Math.min(parent.maxZoom, parent.defaultZoom))
     antialiasing: false
-    smooth: !root.annotating || effectiveZoom <= 2
+    smooth: !contextWindow.annotating || effectiveZoom <= 2
     width: implicitWidth
     height: implicitHeight
     visible: true
-    enabled: root.annotating
+    enabled: contextWindow.annotating
         && AnnotationDocument.tool.type !== AnnotationDocument.None
 }

@@ -37,7 +37,7 @@ MouseArea {
         id: annotations
         anchors.fill: parent
         visible: true
-        enabled: mainToolBarContents.annotationsButtonChecked && AnnotationDocument.tool.type !== AnnotationDocument.None
+        enabled: contextWindow.annotating && AnnotationDocument.tool.type !== AnnotationDocument.None
         viewportRect: Qt.rect(contextWindow.x, contextWindow.y, width, height)
     }
 
@@ -367,7 +367,6 @@ MouseArea {
             contentItem: MainToolBarContents {
                 id: mainToolBarContents
                 focusPolicy: Qt.NoFocus
-                annotationsButtonChecked: true
                 displayMode: QQC2.AbstractButton.TextBesideIcon
                 showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
                 imageSize: Selection.alignedSize(Selection.width,
@@ -401,11 +400,11 @@ MouseArea {
                 Qt.AlignTop : Qt.AlignBottom
             active: visible && mainToolBar.visible
             onActiveChanged: if (!active && rememberPosition
-                && !mainToolBarContents.annotationsButtonChecked) {
+                && !contextWindow.annotating) {
                 rememberPosition = false
             }
             state: mainToolBar.normallyVisible
-                && mainToolBarContents.annotationsButtonChecked ? "active" : "inactive"
+                && contextWindow.annotating ? "active" : "inactive"
 
             Binding on x {
                 value: {

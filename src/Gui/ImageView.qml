@@ -34,8 +34,6 @@ EmptyPage {
                    footerLoader.implicitHeight,
                    captureOptionsLoader.implicitHeight)
 
-    readonly property bool annotating: mainToolBarContents.annotationsButtonChecked
-
     property var inlineMessageData: {}
     property string inlineMessageSource: ""
     onInlineMessageDataChanged: {
@@ -54,7 +52,7 @@ EmptyPage {
             id: mainToolBarContents
             showNewScreenshotButton: false
             showOptionsMenu: false
-            showUndoRedo: annotationsButtonChecked
+            showUndoRedo: contextWindow.annotating
             displayMode: QQC2.AbstractButton.TextBesideIcon
         }
     }
@@ -158,8 +156,8 @@ EmptyPage {
                 }
             }
 
-            clip: root.annotating
-            interactive: root.annotating
+            clip: contextWindow.annotating
+            interactive: contextWindow.annotating
                 && AnnotationDocument.tool.type === AnnotationDocument.None
             boundsBehavior: Flickable.StopAtBounds
             rebound: Transition {} // Instant transition. Null doesn't do this.
@@ -183,12 +181,12 @@ EmptyPage {
                 property point angleDelta: Qt.point(0,0)
                 Binding on angleDelta { // reset when annotation tools are hidden
                     value: Qt.point(0,0)
-                    when: !root.annotating
+                    when: !contextWindow.annotating
                     restoreMode: Binding.RestoreNone
                 }
                 target: flickable
                 keyNavigationEnabled: true
-                scrollFlickableTarget: root.annotating
+                scrollFlickableTarget: contextWindow.annotating
                 onWheel: if (wheel.modifiers & Qt.ControlModifier && scrollFlickableTarget) {
                     // apparently it's impossible to add points to each other directly in QML
                     angleDelta.x += wheel.angleDelta.x
@@ -241,7 +239,7 @@ EmptyPage {
                 cursorShape: enabled ?
                     (pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
                     : undefined
-                enabled: !root.annotating
+                enabled: !contextWindow.annotating
                 onPositionChanged: {
                     contextWindow.startDrag()
                 }
@@ -390,12 +388,12 @@ EmptyPage {
     }
 
     Shortcut {
-        enabled: root.annotating
+        enabled: contextWindow.annotating
         sequences: [StandardKey.ZoomIn]
         onActivated: flickable.zoomByFactor(1.25)
     }
     Shortcut {
-        enabled: root.annotating
+        enabled: contextWindow.annotating
         sequences: [StandardKey.ZoomOut]
         onActivated: flickable.zoomByFactor(0.8)
     }
@@ -410,7 +408,7 @@ EmptyPage {
     states: [
         State {
             name: "annotating"
-            when: root.annotating
+            when: contextWindow.annotating
             PropertyChanges {
                 target: flickable
                 contentWidth: annotationsParent.item.implicitWidth
@@ -434,7 +432,7 @@ EmptyPage {
         },
         State {
             name: "normal"
-            when: !root.annotating
+            when: !contextWindow.annotating
             PropertyChanges {
                 target: flickable
                 contentWidth: -1

@@ -17,6 +17,8 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     : SpectacleWindow(engine, parent)
     , m_screenToFollow(screen)
 {
+    s_isAnnotating = true;
+
     setFlags({
         Qt::Window, // the default window flag
         Qt::FramelessWindowHint,

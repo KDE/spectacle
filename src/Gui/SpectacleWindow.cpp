@@ -38,6 +38,8 @@ bool SpectacleWindow::s_synchronizingVisibility = false;
 bool SpectacleWindow::s_synchronizingTitle = false;
 SpectacleWindow::TitlePreset SpectacleWindow::s_lastTitlePreset = Default;
 QString SpectacleWindow::s_previousTitle = QGuiApplication::applicationDisplayName();
+bool SpectacleWindow::s_synchronizingAnnotating = false;
+bool SpectacleWindow::s_isAnnotating = false;
 
 SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     : QQuickView(engine, parent)
@@ -112,6 +114,24 @@ OptionsMenu *SpectacleWindow::optionsMenu() const
 HelpMenu *SpectacleWindow::helpMenu() const
 {
     return m_helpMenu.get();
+}
+
+bool SpectacleWindow::isAnnotating() const
+{
+    return s_isAnnotating;
+}
+
+void SpectacleWindow::setAnnotating(bool annotating)
+{
+    if (s_synchronizingAnnotating || s_isAnnotating == annotating) {
+        return;
+    }
+    s_synchronizingAnnotating = true;
+    s_isAnnotating = annotating;
+    for (auto window : s_instances) {
+        Q_EMIT window->annotatingChanged();
+    }
+    s_synchronizingAnnotating = false;
 }
 
 void SpectacleWindow::unminimize()
