@@ -7,6 +7,7 @@
 
 #include "SpectacleCore.h"
 #include "Gui/Annotations/AnnotationViewport.h"
+#include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
 #include "Gui/SelectionEditor.h"
 #include "Gui/SpectacleImageProvider.h"
@@ -43,6 +44,7 @@
 #include <QScreen>
 #include <QTimer>
 #include <QtMath>
+#include <utility>
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
 
@@ -80,8 +82,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         Q_EMIT captureTimeRemainingChanged();
         Q_EMIT captureProgressChanged();
         unityLauncherUpdate({{QStringLiteral("progress"), value.toReal()}});
-        if (m_delayAnimation->state() != State::Stopped && !m_spectacleWindows.isEmpty()) {
-            if (captureTimeRemaining() <= 500 && m_spectacleWindows.constFirst()->isVisible()) {
+        const auto windows = SpectacleWindow::instances();
+        if (m_delayAnimation->state() != State::Stopped && !windows.isEmpty()) {
+            if (captureTimeRemaining() <= 500 && windows.constFirst()->isVisible()) {
                 SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
             }
             SpectacleWindow::setTitleForAll(SpectacleWindow::Timer);
@@ -220,12 +223,12 @@ void SpectacleCore::init()
     });
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
-        for (auto *w : m_captureWindows) {
-            if (w->screen() == screen) {
-                m_captureWindows.removeAll(w);
-                m_spectacleWindows.removeAll(w);
-                w->hide();
-                w->deleteLater();
+        for (auto it = m_captureWindows.begin(); it != m_captureWindows.end(); ++it) {
+            if (it->get()->screen() == screen) {
+                auto pointer = it->release();
+                m_captureWindows.erase(it);
+                pointer->hide();
+                pointer->deleteLater();
             }
         }
     });
@@ -304,21 +307,6 @@ qreal SpectacleCore::captureProgress() const
     // using currentValue() sometimes gives 1.0 when we don't want it.
     return m_delayAnimation->state() == QVariantAnimation::Stopped ?
         0 : m_delayAnimation->currentValue().toReal();
-}
-
-QVector<CaptureWindow *> SpectacleCore::captureWindows() const
-{
-    return m_captureWindows;
-}
-
-ViewerWindow *SpectacleCore::viewerWindow() const
-{
-    return m_viewerWindow.get();
-}
-
-QVector<SpectacleWindow *> SpectacleCore::spectacleWindows() const
-{
-    return m_spectacleWindows;
 }
 
 void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /*workingDirectory */)
@@ -471,10 +459,10 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
                 break;
             }
             case Actions::FocusWindow: {
-                bool isCaptureWindow = !m_captureWindows.isEmpty();
+                bool isCaptureWindow = !m_captureWindows.empty();
                 SpectacleWindow *window = nullptr;
                 if (isCaptureWindow) {
-                    window = m_captureWindows.first();
+                    window = m_captureWindows.front().get();
                 } else {
                     window = m_viewerWindow.get();
                 }
@@ -779,7 +767,7 @@ Platform::GrabMode SpectacleCore::toPlatformGrabMode(CaptureModeModel::CaptureMo
 
 bool SpectacleCore::isGuiNull() const
 {
-    return m_captureWindows.isEmpty() && m_viewerWindow == nullptr;
+    return m_captureWindows.empty() && m_viewerWindow == nullptr;
 }
 
 void SpectacleCore::initGuiNoScreenshot()
@@ -829,8 +817,7 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 
 void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 {
-    deleteCaptureWindows();
-    deleteViewerWindow();
+    deleteWindows();
 
     // Allow the window to be transparent. Used for video recording UI.
     // It has to be set before creating the window.
@@ -838,44 +825,32 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 
     auto engine = getQmlEngine();
     for (auto *screen : qApp->screens()) {
-        auto captureWindow = new CaptureWindow(mode, screen, engine);
-        m_captureWindows << captureWindow;
-        m_spectacleWindows << captureWindow;
-        Q_EMIT captureWindowAdded(captureWindow);
+        m_captureWindows.emplace_back(std::make_unique<CaptureWindow>(mode, screen, engine));
     }
 }
 
 void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
 {
-    deleteCaptureWindows();
-    deleteViewerWindow();
+    deleteWindows();
 
     // Transparency isn't needed for this window.
     QQuickWindow::setDefaultAlphaBuffer(false);
 
     m_viewerWindow = std::make_unique<ViewerWindow>(mode, getQmlEngine());
-    m_spectacleWindows = {m_viewerWindow.get()};
 }
 
-void SpectacleCore::deleteCaptureWindows()
+void SpectacleCore::deleteWindows()
 {
-    while (!m_captureWindows.isEmpty()) {
-        auto oldWindow = m_captureWindows.first();
-        m_captureWindows.pop_front();
-        m_spectacleWindows.pop_front();
-        Q_EMIT captureWindowRemoved(oldWindow);
-        oldWindow->hide();
-        oldWindow->deleteLater();
-    }
-}
-
-void SpectacleCore::deleteViewerWindow()
-{
-    if (m_viewerWindow != nullptr) {
-        m_viewerWindow->hide();
-        ViewerWindow *oldWindow = m_viewerWindow.release();
-        m_spectacleWindows.clear();
-        oldWindow->deleteLater();
+    if (auto pointer = m_viewerWindow.release()) {
+        pointer->hide();
+        pointer->deleteLater();
+    } else {
+        for (auto it = m_captureWindows.begin(); it != m_captureWindows.end(); ++it) {
+            auto pointer = it->release();
+            m_captureWindows.erase(it);
+            pointer->hide();
+            pointer->deleteLater();
+        }
     }
 }
 

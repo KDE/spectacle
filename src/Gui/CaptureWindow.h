@@ -26,12 +26,11 @@ public:
     };
 
     explicit CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
+    ~CaptureWindow();
 
     QScreen *screenToFollow() const;
 
     QString screenCaptureUrl() const;
-
-    static void setVisibilityForAll(QWindow::Visibility visibility);
 
 public Q_SLOTS:
     bool accept();

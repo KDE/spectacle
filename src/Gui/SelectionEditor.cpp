@@ -372,13 +372,6 @@ SelectionEditor::SelectionEditor(QObject *parent)
     , d(new SelectionEditorPrivate(this))
 {
     setObjectName(QStringLiteral("selectionEditor"));
-    connect(SpectacleCore::instance(), &SpectacleCore::captureWindowAdded, this, [this](CaptureWindow *window) {
-        connect(window, &CaptureWindow::devicePixelRatioChanged, this, &SelectionEditor::devicePixelRatioChanged);
-        window->rootObject()->installEventFilter(this);
-    });
-    connect(SpectacleCore::instance(), &SpectacleCore::captureWindowRemoved, this, [this](CaptureWindow *window) {
-        window->rootObject()->removeEventFilter(this);
-    });
 
     d->updateDevicePixelRatio();
 

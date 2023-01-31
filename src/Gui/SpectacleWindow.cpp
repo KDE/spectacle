@@ -23,6 +23,7 @@
 #include <QDrag>
 #include <QFontDialog>
 #include <QtQml>
+#include <utility>
 
 #ifdef XCB_FOUND
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -32,6 +33,7 @@
 #endif
 #endif
 
+QVector<SpectacleWindow *> SpectacleWindow::s_instances = {};
 bool SpectacleWindow::s_synchronizingVisibility = false;
 bool SpectacleWindow::s_synchronizingTitle = false;
 SpectacleWindow::TitlePreset SpectacleWindow::s_lastTitlePreset = Default;
@@ -44,6 +46,8 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     , m_helpMenu(new HelpMenu)
     , m_context(new QQmlContext(engine->rootContext(), this))
 {
+    s_instances.append(this);
+
     if (m_exportMenu->winId()) {
         m_exportMenu->windowHandle()->setTransientParent(this);
     }
@@ -90,6 +94,11 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     m_context->setContextProperty(QStringLiteral("contextWindow"), this);
 }
 
+SpectacleWindow::~SpectacleWindow()
+{
+    s_instances.removeOne(this);
+}
+
 ExportMenu *SpectacleWindow::exportMenu() const
 {
     return m_exportMenu.get();
@@ -111,14 +120,18 @@ void SpectacleWindow::unminimize()
     setWindowStates(windowStates().setFlag(Qt::WindowMinimized, false));
 }
 
+QVector<SpectacleWindow *> SpectacleWindow::instances()
+{
+    return s_instances;
+}
+
 void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
 {
-    auto windows = SpectacleCore::instance()->spectacleWindows();
-    if (s_synchronizingVisibility || windows.isEmpty()) {
+    if (s_synchronizingVisibility || s_instances.isEmpty()) {
         return;
     }
     s_synchronizingVisibility = true;
-    for (auto window : windows) {
+    for (auto window : s_instances) {
         window->setVisibility(visibility);
     }
     s_synchronizingVisibility = false;
@@ -126,8 +139,7 @@ void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
 
 void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName)
 {
-    const auto windows = SpectacleCore::instance()->spectacleWindows();
-    if (s_synchronizingTitle || windows.isEmpty()) {
+    if (s_synchronizingTitle || s_instances.isEmpty()) {
         return;
     }
     s_synchronizingTitle = true;
@@ -136,11 +148,11 @@ void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName
 
     if (!newTitle.isEmpty()) {
         if (s_lastTitlePreset != TitlePreset::Timer) {
-            s_previousTitle = windows.constFirst()->title();
+            s_previousTitle = s_instances.constFirst()->title();
         }
         s_lastTitlePreset = preset;
 
-        for (auto window : windows) {
+        for (auto window : s_instances) {
             window->setTitle(newTitle);
         }
     }

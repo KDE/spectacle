@@ -78,10 +78,6 @@ public:
     int captureTimeRemaining() const;
     qreal captureProgress() const;
 
-    QVector<CaptureWindow *> captureWindows() const;
-    ViewerWindow *viewerWindow() const;
-    QVector<SpectacleWindow *> spectacleWindows() const;
-
     void populateCommandLineParser(QCommandLineParser *lCmdLineParser);
 
     void initGuiNoScreenshot();
@@ -112,8 +108,6 @@ public Q_SLOTS:
     void onActivateRequested(QStringList arguments, const QString & /*workingDirectory */);
 
 Q_SIGNALS:
-    void captureWindowAdded(CaptureWindow *window);
-    void captureWindowRemoved(CaptureWindow *window);
     void screenCaptureUrlChanged();
     void captureTimeRemainingChanged();
     void captureProgressChanged();
@@ -132,8 +126,7 @@ private:
     QQmlEngine *getQmlEngine();
     void initCaptureWindows(CaptureWindow::Mode mode);
     void initViewerWindow(ViewerWindow::Mode mode);
-    void deleteCaptureWindows();
-    void deleteViewerWindow();
+    void deleteWindows();
     void unityLauncherUpdate(const QVariantMap &properties) const;
     void setVideoMode(bool enabled);
     void setCurrentVideo(const QUrl &currentVideo);
@@ -151,8 +144,9 @@ private:
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
     std::unique_ptr<ViewerWindow> m_viewerWindow;
-    QVector<CaptureWindow *> m_captureWindows;
-    QVector<SpectacleWindow *> m_spectacleWindows;
+    // Using std::vector for emplace_back(), needed for appending unique_ptrs to a vector.
+    // QVector won't get emplaceBack() until Qt 6.
+    std::vector<std::unique_ptr<CaptureWindow>> m_captureWindows;
     std::unique_ptr<QVariantAnimation> m_delayAnimation;
 
     bool m_copyImageToClipboard = false;

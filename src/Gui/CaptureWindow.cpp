@@ -8,6 +8,7 @@
 #include "CaptureWindow.h"
 
 #include "Config.h"
+#include "Gui/SpectacleWindow.h"
 #include "SpectacleCore.h"
 #include "Gui/SelectionEditor.h"
 #include "spectacle_gui_debug.h"
@@ -33,9 +34,14 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
         syncGeometryWithScreen();
     });
     connect(selectionEditor, &SelectionEditor::screenImagesChanged, this, &CaptureWindow::screenCaptureUrlChanged);
+    connect(this, &CaptureWindow::devicePixelRatioChanged,
+            selectionEditor, &SelectionEditor::devicePixelRatioChanged);
 
     // set up QML
     setMode(mode); // sets source and other stuff based on mode.
+    if (auto rootItem = rootObject()) {
+        rootItem->installEventFilter(selectionEditor);
+    }
 
     // follow a screen
     connect(screen, &QScreen::geometryChanged, this, &CaptureWindow::syncGeometryWithScreen);
@@ -50,11 +56,11 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     // sync visibility
     connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){
-        if (s_synchronizingVisibility || SpectacleCore::instance()->spectacleWindows().length() <= 1) {
+        if (s_synchronizingVisibility || s_instances.size() <= 1) {
             return;
         }
         s_synchronizingVisibility = true;
-        for (auto window : SpectacleCore::instance()->spectacleWindows()) {
+        for (auto window : s_instances) {
             if (window == this) {
                 continue;
             }
@@ -62,6 +68,13 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
         }
         s_synchronizingVisibility = false;
     });
+}
+
+CaptureWindow::~CaptureWindow()
+{
+    if (auto rootItem = rootObject()) {
+        rootItem->removeEventFilter(SelectionEditor::instance());
+    }
 }
 
 QScreen *CaptureWindow::screenToFollow() const

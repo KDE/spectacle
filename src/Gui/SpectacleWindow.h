@@ -30,6 +30,7 @@ class SpectacleWindow : public QQuickView
 
 public:
     explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);
+    ~SpectacleWindow();
 
     enum TitlePreset {
         Default,
@@ -48,6 +49,8 @@ public:
      * Makes the window visible and removes the WindowMinimized flag from the WindowStates flags.
      */
     void unminimize();
+
+    static QVector<SpectacleWindow *> instances();
 
     /**
      * Set the visibility of all SpectacleWindows created in SpectacleCore.
@@ -108,6 +111,7 @@ protected:
 
     KWayland::Client::PlasmaShellSurface *m_plasmaShellSurface = nullptr;
 
+    static QVector<SpectacleWindow *> s_instances;
     static bool s_synchronizingVisibility;
     static bool s_synchronizingTitle;
     static TitlePreset s_lastTitlePreset;
