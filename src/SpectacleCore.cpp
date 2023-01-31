@@ -848,9 +848,11 @@ void SpectacleCore::deleteWindows()
         pointer->hide();
         pointer->deleteLater();
     } else {
-        for (auto it = m_captureWindows.begin(); it != m_captureWindows.end(); ++it) {
-            auto pointer = it->release();
-            m_captureWindows.erase(it);
+        // It's dangerous to erase from within a for loop, so we use a while loop.
+        while (!m_captureWindows.empty()) {
+            auto begin = m_captureWindows.begin();
+            auto pointer = begin->release();
+            m_captureWindows.erase(begin);
             pointer->hide();
             pointer->deleteLater();
         }
