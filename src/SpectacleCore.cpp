@@ -610,6 +610,9 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
             setScreenCaptureUrl(QUrl(QStringLiteral("image://spectacle/%1").arg(pixmapUsed.cacheKey())));
         }
         initViewerWindow(ViewerWindow::Image);
+        if (m_editExisting) {
+            m_viewerWindow->setAnnotating(true);
+        }
         m_viewerWindow->setVisible(true);
         auto titlePreset = !pixmapUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
