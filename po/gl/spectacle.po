@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 00:55+0000\n"
 "PO-Revision-Date: 2020-03-07 09:26+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -491,50 +491,50 @@ msgstr "Outra aplicación…"
 msgid "Share"
 msgstr "Compartir"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:288
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Facer unha captura nova"
 
-#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
 msgstr "Gravar a pantalla"
 
-#: src/Gui/ImageView.qml:359
+#: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:373
+#: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:56
+#: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Gardar"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:67
 #, kde-format
 msgid "Save As..."
 msgstr "Gardar como…"
 
-#: src/Gui/MainToolBarContents.qml:80
+#: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:86
+#: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Export"
 msgstr "Exportar"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:95
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr ""
@@ -1281,7 +1281,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:164
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1289,7 +1289,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segundo"
 msgstr[1] "%1 segundos"
 
-#: src/Gui/SpectacleWindow.cpp:167
+#: src/Gui/SpectacleWindow.cpp:198
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1373,17 +1373,17 @@ msgstr "A xanela na que está o cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:625
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "A captura de pantalla cancelouse ou fallou."
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Gardouse unha captura no portapapeis."
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:656
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1395,44 +1395,44 @@ msgstr ""
 "A ligazón de imaxe compartida (<a href=\"%1\">%1</a>) copiouse no "
 "portapapeis."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:660
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Gardouse a captura co nome «%1» no cartafol persoal de imaxes."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:662
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Gardouse a captura co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:677
 #, kde-format
 msgid "Annotate"
 msgstr ""
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Capturar o escritorio completo (predeterminado)"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:701
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Capturar o monitor actual"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgid "Capture the active window"
 msgstr "Capturar a xanela activa"
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1441,7 +1441,7 @@ msgstr ""
 "Capturar a xanela que está baixo o cursor, incluíndo as xanelas das que "
 "dependen as xanelas emerxentes"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1450,33 +1450,33 @@ msgstr ""
 "Capturar a xanela que está baixo o cursor, excluíndo as xanelas das que "
 "dependen as xanelas emerxentes"
 
-#: src/SpectacleCore.cpp:736
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Capturar unha zona rectangular da pantalla"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:706
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Tras facer unha captura de pantalla:"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Iniciar en modo gráfico (predeterminado)"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Facer unha captura de pantalla e saír sen mostrar a interface gráfica"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Iniciar en modo de activación por DBus"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1484,19 +1484,19 @@ msgstr ""
 "No modo en segundo plano, non mostrar unha notificación tras facer unha "
 "captura de pantalla"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "No modo en segundo plano, gardar a imaxe no ficheiro indicado"
 
-#: src/SpectacleCore.cpp:744
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "No modo en segundo plano, demora antes de facer a captura de pantalla (en "
 "milisegundos)"
 
-#: src/SpectacleCore.cpp:746
+#: src/SpectacleCore.cpp:715
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid ""
@@ -1504,37 +1504,37 @@ msgid ""
 "used."
 msgstr "No modo en segundo plano, copiar a captura de pantalla no portapapeis"
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:716
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot to clipboard"
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "No modo en segundo plano, copiar a captura de pantalla no portapapeis"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Agardar por un clic antes de facer a captura de pantalla. Se definiu un "
 "atraso, usar esta opción provocará que se ignore o atraso"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 
-#: src/SpectacleCore.cpp:750
+#: src/SpectacleCore.cpp:719
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Tras facer unha captura de pantalla:"
 
-#: src/SpectacleCore.cpp:751
+#: src/SpectacleCore.cpp:720
 #, fuzzy, kde-format
 #| msgid "Whether the window decorations are included in the screenshot"
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Se incluír as decoracións de xanela na captura de pantalla"
 
-#: src/SpectacleCore.cpp:752
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""

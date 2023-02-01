@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 00:55+0000\n"
 "PO-Revision-Date: 2023-01-29 10:54+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -485,48 +485,48 @@ msgstr "Autre application..."
 msgid "Share"
 msgstr "Partager"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:288
 #, kde-format
 msgid "Screenshot"
 msgstr "Copie d'écran"
 
-#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, kde-format
 msgid "Recording"
 msgstr "Enregistrement en cours"
 
-#: src/Gui/ImageView.qml:359
+#: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom :"
 
-#: src/Gui/ImageView.qml:373
+#: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom d'image"
 
-#: src/Gui/MainToolBarContents.qml:56
+#: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:67
 #, kde-format
 msgid "Save As..."
 msgstr "Enregistrer sous..."
 
-#: src/Gui/MainToolBarContents.qml:80
+#: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
 msgstr "Copier"
 
-#: src/Gui/MainToolBarContents.qml:86
+#: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Export"
 msgstr "Exporter"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:95
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Afficher les outils d'annotation"
@@ -1277,7 +1277,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Échap"
 
-#: src/Gui/SpectacleWindow.cpp:164
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1285,7 +1285,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 seconde"
 msgstr[1] "%1 secondes"
 
-#: src/Gui/SpectacleWindow.cpp:167
+#: src/Gui/SpectacleWindow.cpp:198
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1363,17 +1363,17 @@ msgstr "Capturer la fenêtre sous le curseur"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:625
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Annulation ou échec de la capture d'écran"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une capture d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:656
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1382,7 +1382,7 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:660
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1390,38 +1390,38 @@ msgstr ""
 "Une capture d'écran a été enregistrée sous « %1 » dans votre dossier "
 "d'images."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:662
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une capture d'écran a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:677
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Capturer le bureau entier (par défaut)"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:701
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Capturer le moniteur actuel"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgid "Capture the active window"
 msgstr "Capturer la fenêtre active"
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1430,7 +1430,7 @@ msgstr ""
 "Capturer la fenêtre actuellement sous le curseur, en incluant les fenêtres "
 "parentes des menus contextuels."
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1439,32 +1439,32 @@ msgstr ""
 "Capturer la fenêtre actuellement sous le curseur, en excluant les fenêtres "
 "parentes des menus contextuels."
 
-#: src/SpectacleCore.cpp:736
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Capturer une région rectangulaire de l'écran"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Lancer Spectacle sans réaliser de copie d'écran"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Démarrer en mode interface graphique (par défaut)"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Prendre une capture d'écran et quitter sans afficher l'interface"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Démarrer en mode d'activation D-Bus"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -1472,18 +1472,18 @@ msgstr ""
 "En mode arrière-plan, ne pas afficher de notification lorsqu'une capture "
 "d'écran est prise"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "En mode arrière-plan, enregistrer l'image dans le fichier spécifié"
 
-#: src/SpectacleCore.cpp:744
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "En mode arrière-plan, délai avant de prendre la capture (en millisecondes)"
 
-#: src/SpectacleCore.cpp:746
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1492,39 +1492,39 @@ msgstr ""
 "En mode arrière-plan, copier la copie d'écran dans le presse-papier, sauf si "
 "le paramètre « -o » est aussi utilisé."
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "En mode arrière-plan, copier la copie d'écran dans le presse-papier"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Attendre un clic avant de prendre la capture d'écran. Ne pas tenir compte du "
 "délai"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Démarre une nouvelle instance d'interface graphique de Spectacle sans "
 "enregistrer « D-Bus »"
 
-#: src/SpectacleCore.cpp:750
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr ""
 "En mode d'arrière-plan, inclure le pointeur de souris dans la copie d'écran"
 
-#: src/SpectacleCore.cpp:751
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "En mode d'arrière-plan, exclure les décorations de fenêtres dans la copie "
 "d'écran"
 
-#: src/SpectacleCore.cpp:752
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Ouvrir ou modifier un fichier existant de copie d'écran"

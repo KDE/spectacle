@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 00:55+0000\n"
 "PO-Revision-Date: 2022-02-14 09:24+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -484,50 +484,50 @@ msgstr "Egyéb alkalmazás…"
 msgid "Share"
 msgstr "Megosztás"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:288
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Új kép készítése"
 
-#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
 msgstr "Képernyőrögzítés"
 
-#: src/Gui/ImageView.qml:359
+#: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:373
+#: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:56
+#: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Mentés"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:67
 #, kde-format
 msgid "Save As..."
 msgstr "Mentés másként…"
 
-#: src/Gui/MainToolBarContents.qml:80
+#: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:86
+#: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Export"
 msgstr "Exportálás"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:95
 #, fuzzy, kde-format
 #| msgid "Annotation Done"
 msgid "Show Annotation Tools"
@@ -1264,7 +1264,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:164
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1272,7 +1272,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 másodperc"
 msgstr[1] "%1 másodperc"
 
-#: src/Gui/SpectacleWindow.cpp:167
+#: src/Gui/SpectacleWindow.cpp:198
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1354,18 +1354,18 @@ msgstr "Kurzor alatti ablak rögzítése"
 msgid "Launch Spectacle without capturing"
 msgstr "A Spectacle indítása rögzítés nélkül"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:625
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Képernyőkép-rögzítés megszakítva vagy meghiúsult"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:654
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:656
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1377,134 +1377,134 @@ msgstr ""
 "A képernyőkép mentve lett, mint „%1„ ide: „%2”, a helye pedig a vágólapra "
 "került"
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:660
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:662
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:677
 #, kde-format
 msgid "Annotate"
 msgstr "Feliratozás"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Teljes asztal rögzítése (alapértelmezés)"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:701
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Aktuális monitor rögzítése"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgid "Capture the active window"
 msgstr "Aktív ablak rögzítése"
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "Kurzor alatti ablak rögzítése, beleértve a felugró menük szüleit"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "Kurzor alatti ablak rögzítése, kihagyva a felugró menük szüleit"
 
-#: src/SpectacleCore.cpp:736
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Téglalap alakú terület rögzítése a képernyőn"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "A Spectacle indítása képernyőkép készítése nélkül"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Grafikus felület indítása (alapértelmezés)"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Képernyőkép készítése és kilépés a grafikus felület megjelenítése nélkül"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Indítás DBus-Activation módban"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "Ne jelenjen meg értesítés képernyőkép készítésekor"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Kép mentése a megadott fájlba"
 
-#: src/SpectacleCore.cpp:744
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Késleltetés képernyőkép készítése előtt (ezredmásodpercekben)"
 
-#: src/SpectacleCore.cpp:746
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr "Képernyőkép másolása a vágólapra, hacsak az -o opció nincs megadva."
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "Képfájl elérési útjának másolása a vágólapra"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Várakozás kattintásra képernyőkép készítése előtt. Érvényteleníti a "
 "késleltetést"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Új grafikus felület indítása a DBusra regisztrálás nélkül"
 
-#: src/SpectacleCore.cpp:750
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Egérmutató belefoglalása a képernyőképbe"
 
-#: src/SpectacleCore.cpp:751
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Dekorációk lehagyása a képernyőképről"
 
-#: src/SpectacleCore.cpp:752
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"

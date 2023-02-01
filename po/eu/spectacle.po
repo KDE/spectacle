@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 00:55+0000\n"
 "PO-Revision-Date: 2023-01-27 21:03+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -474,48 +474,48 @@ msgstr "Beste aplikazio bat..."
 msgid "Share"
 msgstr "Partekatu"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:288
 #, kde-format
 msgid "Screenshot"
 msgstr "Pantaila-argazkia"
 
-#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, kde-format
 msgid "Recording"
 msgstr "Grabatzen"
 
-#: src/Gui/ImageView.qml:359
+#: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:373
+#: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
 msgstr "Irudiaren zoom"
 
-#: src/Gui/MainToolBarContents.qml:56
+#: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Gorde"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:67
 #, kde-format
 msgid "Save As..."
 msgstr "Gorde honela..."
 
-#: src/Gui/MainToolBarContents.qml:80
+#: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: src/Gui/MainToolBarContents.qml:86
+#: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Export"
 msgstr "Esportatu"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:95
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Erakutsi idatzohar tresnak"
@@ -1246,7 +1246,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Ihes"
 
-#: src/Gui/SpectacleWindow.cpp:164
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1254,7 +1254,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "segundo %1"
 msgstr[1] "%1 segundo"
 
-#: src/Gui/SpectacleWindow.cpp:167
+#: src/Gui/SpectacleWindow.cpp:198
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1332,17 +1332,17 @@ msgstr "Atzeman kurtsorearen azpiko leihoa"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:625
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:656
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1351,44 +1351,44 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:660
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:662
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:677
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Atzeman mahaigain osoa (lehenetsia)"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:701
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Atzeman uneko monitorea"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgid "Capture the active window"
 msgstr "Atzeman leiho aktiboa"
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1396,7 +1396,7 @@ msgid ""
 msgstr ""
 "Atzeman kurtsorearen azpiko leihoa, menu-gainerakorren guraso leihoak barne"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1405,49 +1405,49 @@ msgstr ""
 "Atzeman kurtsoaren azpiko leihoa, menu-gainerakorren guraso leihoak kanpo "
 "utzita"
 
-#: src/SpectacleCore.cpp:736
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Atzeman pantailaren eremu laukizuzen bat"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Abiatu Spectacle pantaila-argazki bat hartu gabe"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Hasi «interfaze grafiko» moduan (lehenetsia)"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Hartu pantaila-argazki bat eta irten interfaze grafikoa erakusteke"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Abiarazi «DBus-aktibazio» moduan"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "Atzealdeko moduan, ez gaineratu jakinarazpen bat pantaila-argazkia hartzean"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Atzealdeko moduan, gorde irudia adierazitako fitxategian"
 
-#: src/SpectacleCore.cpp:744
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Atzealdeko moduan, itxaron argazkia hartu aurretik (milisegundotan)"
 
-#: src/SpectacleCore.cpp:746
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1456,37 +1456,37 @@ msgstr ""
 "Atzealdeko moduan, kopiatu pantaila-argazkiko irudia arbelera, -o ere "
 "erabiltzen ez bada."
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Atzealdeko moduan, kopiatu pantaila-argazki fitxategiaren bide-izena arbelera"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Itxaron klik bati pantaila-argazkia hartzeko. Itxaron-denbora baliogabetzen "
 "du"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Spectacle-ren instantzia grafiko berri bat abiarazten du DBus-en "
 "erregistratu gabe"
 
-#: src/SpectacleCore.cpp:750
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Atzeko plano moduan, barneratu erakuslea pantaila-argazkian"
 
-#: src/SpectacleCore.cpp:751
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
 
-#: src/SpectacleCore.cpp:752
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 00:55+0000\n"
 "PO-Revision-Date: 2023-01-28 10:00+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -479,48 +479,48 @@ msgstr "Drug program..."
 msgid "Share"
 msgstr "Deli"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:288
 #, kde-format
 msgid "Screenshot"
 msgstr "Zaslonska slika"
 
-#: src/Gui/ImageView.qml:293 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, kde-format
 msgid "Recording"
 msgstr "Snemanje"
 
-#: src/Gui/ImageView.qml:359
+#: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:373
+#: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom slike"
 
-#: src/Gui/MainToolBarContents.qml:56
+#: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Shrani"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:67
 #, kde-format
 msgid "Save As..."
 msgstr "Shrani kot..."
 
-#: src/Gui/MainToolBarContents.qml:80
+#: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/Gui/MainToolBarContents.qml:86
+#: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Export"
 msgstr "Izvoz"
 
-#: src/Gui/MainToolBarContents.qml:96
+#: src/Gui/MainToolBarContents.qml:95
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Prikaži orodja zabeležk"
@@ -1248,7 +1248,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:164
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1258,7 +1258,7 @@ msgstr[1] "%1 sekundi"
 msgstr[2] "%1 sekunde"
 msgstr[3] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:167
+#: src/Gui/SpectacleWindow.cpp:198
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1336,17 +1336,17 @@ msgstr "Zajemi okno pod kazalko"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:625
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zajem slike je bil preklican ali ni uspel"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:656
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1355,44 +1355,44 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bilo shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:660
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "V vašo mapo s slikami je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:662
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "V '%2' je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:667
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:677
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"
 
-#: src/SpectacleCore.cpp:731
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "Capture the entire desktop (default)"
 msgstr "Zajemi celotno namizje (privzeto)"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:701
 #, kde-format
 msgid "Capture the current monitor"
 msgstr "Zajemi trenutni zaslon"
 
-#: src/SpectacleCore.cpp:733
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgid "Capture the active window"
 msgstr "Zajemi dejavno okno"
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -1401,7 +1401,7 @@ msgstr ""
 "Zajemi okno, ki je trenutno pod kazalko, vključno z nadrejenimi okni "
 "pojavnih menijev"
 
-#: src/SpectacleCore.cpp:735
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -1410,50 +1410,50 @@ msgstr ""
 "Zajemi okno, ki je trenutno pod kazalko, brez nadrejenih oken pojavnih "
 "menijev"
 
-#: src/SpectacleCore.cpp:736
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Zajemi pravokotno območje zaslona"
 
-#: src/SpectacleCore.cpp:737
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Zaženi Spectacle ne da bi zajel sliko"
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:707
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Zaženi v načinu z grafičnim vmesnikom (privzeto)"
 
-#: src/SpectacleCore.cpp:739
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Zajemi zaslonsko sliko in končaj brez prikaza grafičnega vmesnika"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Zaženi v načinu omogočitve DBus"
 
-#: src/SpectacleCore.cpp:741
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "Ob delovanju programa v ozadju ne prikazuj obvestil ob zajemu zaslonske slike"
 
-#: src/SpectacleCore.cpp:742
+#: src/SpectacleCore.cpp:711
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Ob delovanju v ozadju shrani sliko v navedeno datoteko"
 
-#: src/SpectacleCore.cpp:744
+#: src/SpectacleCore.cpp:713
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "Ob delovanju v ozadju zakasni pred zajemom zaslonske slike (v milisekundah)"
 
-#: src/SpectacleCore.cpp:746
+#: src/SpectacleCore.cpp:715
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -1462,34 +1462,34 @@ msgstr ""
 "Ob delovanju v ozadju kopiraj zaslonsko sliko v odložišče, razen če ni "
 "uporabljena tudi opcija -o."
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:716
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Ob delovanju v ozadju kopiraj pot datoteke zaslonske slike na odložišče"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Počakaj na klik pred zajemom zaslonske slike. Pozabi na zakasnitev"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Zažene nov pojavek uporabniškega vmesnika spectacle brez registracije v DBusu"
 
-#: src/SpectacleCore.cpp:750
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Ob delovanju v ozadju vključi kazalko na posnetek zaslona"
 
-#: src/SpectacleCore.cpp:751
+#: src/SpectacleCore.cpp:720
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Ob delovanju v ozadju izključi okraske oken iz posnetka zaslona"
 
-#: src/SpectacleCore.cpp:752
+#: src/SpectacleCore.cpp:721
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko posnetka zaslona"
