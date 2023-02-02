@@ -10,6 +10,9 @@
 
 struct CommandLineOptions {
     static CommandLineOptions *self();
+    static QString toArgument(const QCommandLineOption &option) {
+        return QStringLiteral("--") + option.names().constLast();
+    }
     // i18n() can't be used in static code,
     // so we can't just make the variables static and use them directly.
     const QCommandLineOption fullscreen = {

@@ -457,7 +457,9 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
             case Actions::StartNewInstance: {
                 QProcess newInstance;
                 newInstance.setProgram(QCoreApplication::applicationFilePath());
-                newInstance.setArguments({CommandLineOptions::self()->newInstance.names().constFirst()});
+                newInstance.setArguments({
+                    CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance)
+                });
                 newInstance.startDetached();
                 break;
             }
@@ -679,9 +681,11 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         connect(lNotify, &KNotification::action1Activated, this, [theSavedAt]() {
             QProcess newInstance;
             newInstance.setProgram(QCoreApplication::applicationFilePath());
-            newInstance.setArguments({CommandLineOptions::self()->newInstance.names().constFirst(),
-                                      CommandLineOptions::self()->editExisting.names().constFirst(),
-                                      theSavedAt.toLocalFile()});
+            newInstance.setArguments({
+                CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance),
+                CommandLineOptions::toArgument(CommandLineOptions::self()->editExisting),
+                theSavedAt.toLocalFile()
+            });
             newInstance.startDetached();
         });
     }
