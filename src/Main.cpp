@@ -7,6 +7,7 @@
 
 #include "Config.h"
 #include "SpectacleCore.h"
+#include "CommandLineOptions.h"
 #include "SpectacleDBusAdapter.h"
 #include "settings.h"
 
@@ -49,7 +50,7 @@ int main(int argc, char **argv)
 
     QCommandLineParser lCmdLineParser;
     aboutData.setupCommandLine(&lCmdLineParser);
-    lCore.populateCommandLineParser(&lCmdLineParser);
+    lCmdLineParser.addOptions(CommandLineOptions::self()->allOptions);
 
     // first parsing for help-about
     lCmdLineParser.process(app.arguments());
@@ -64,7 +65,7 @@ int main(int argc, char **argv)
     QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
     // and new-instance
-    if (lCmdLineParser.isSet(QStringLiteral("new-instance"))) {
+    if (lCmdLineParser.isSet(CommandLineOptions::self()->newInstance)) {
         lCore.init();
 
         QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);

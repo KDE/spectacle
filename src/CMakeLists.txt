@@ -13,6 +13,7 @@ add_executable(spectacle
     ${SPECTACLE_SRCS}
     Main.cpp
     CaptureModeModel.cpp
+    CommandLineOptions.cpp
     RecordingModeModel.cpp
     ExportManager.cpp
     SpectacleCore.cpp

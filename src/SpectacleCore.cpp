@@ -6,6 +6,7 @@
  */
 
 #include "SpectacleCore.h"
+#include "CommandLineOptions.h"
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
@@ -294,9 +295,9 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     arguments.prepend(qApp->applicationFilePath());
 
     // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
-    QScopedPointer<QCommandLineParser> parser(new QCommandLineParser);
-    populateCommandLineParser(parser.data());
-    parser->parse(arguments);
+    QCommandLineParser parser;
+    parser.addOptions(CommandLineOptions::self()->allOptions);
+    parser.parse(arguments);
 
     m_startMode = StartMode::Gui;
     m_existingLoaded = false;
@@ -304,15 +305,15 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
     qint64 delayMsec = 0;
 
     // are we ask to run in background or dbus mode?
-    if (parser->isSet(QStringLiteral("background"))) {
+    if (parser.isSet(CommandLineOptions::self()->background)) {
         m_startMode = StartMode::Background;
-    } else if (parser->isSet(QStringLiteral("dbus"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->dbus)) {
         m_startMode = StartMode::DBus;
     }
 
-    m_editExisting = parser->isSet(QStringLiteral("edit-existing"));
+    m_editExisting = parser.isSet(CommandLineOptions::self()->editExisting);
     if (m_editExisting) {
-        QString existingFileName = parser->value(QStringLiteral("edit-existing"));
+        QString existingFileName = parser.value(CommandLineOptions::self()->editExisting);
         if (!(existingFileName.isEmpty() || existingFileName.isNull())) {
             setScreenCaptureUrl(existingFileName);
             m_saveToOutput = true;
@@ -331,20 +332,20 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
 
     CaptureModeModel::CaptureMode captureMode = CaptureModeModel::AllScreens;
     // extract the capture mode
-    if (parser->isSet(QStringLiteral("fullscreen"))) {
+    if (parser.isSet(CommandLineOptions::self()->fullscreen)) {
         captureMode = CaptureModeModel::AllScreens;
-    } else if (parser->isSet(QStringLiteral("current"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->current)) {
         captureMode = CaptureModeModel::CurrentScreen;
-    } else if (parser->isSet(QStringLiteral("activewindow"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->activeWindow)) {
         captureMode = CaptureModeModel::ActiveWindow;
-    } else if (parser->isSet(QStringLiteral("region"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->region)) {
         captureMode = CaptureModeModel::RectangularRegion;
-    } else if (parser->isSet(QStringLiteral("windowundercursor"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->windowUnderCursor)) {
         captureMode = CaptureModeModel::TransientWithParent;
-    } else if (parser->isSet(QStringLiteral("transientonly"))) {
+    } else if (parser.isSet(CommandLineOptions::self()->transientOnly)) {
         captureMode = CaptureModeModel::WindowUnderCursor;
     } else if (m_startMode == StartMode::Gui
-               && (parser->isSet(QStringLiteral("launchonly")) || Settings::launchAction() == Settings::EnumLaunchAction::DoNotTakeScreenshot)
+               && (parser.isSet(CommandLineOptions::self()->launchOnly) || Settings::launchAction() == Settings::EnumLaunchAction::DoNotTakeScreenshot)
                && !m_editExisting) {
         initViewerWindow(ViewerWindow::Dialog);
         m_viewerWindow->setVisible(true);
@@ -375,34 +376,34 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         m_copyLocationToClipboard = false;
         m_saveToOutput = true;
 
-        if (parser->isSet(QStringLiteral("nonotify"))) {
+        if (parser.isSet(CommandLineOptions::self()->noNotify)) {
             m_notify = false;
         }
 
-        if (parser->isSet(QStringLiteral("copy-image"))) {
+        if (parser.isSet(CommandLineOptions::self()->copyImage)) {
             m_saveToOutput = false;
             m_copyImageToClipboard = true;
-        } else if (parser->isSet(QStringLiteral("copy-path"))) {
+        } else if (parser.isSet(CommandLineOptions::self()->copyPath)) {
             m_copyLocationToClipboard = true;
         }
 
-        if (parser->isSet(QStringLiteral("output"))) {
+        if (parser.isSet(CommandLineOptions::self()->output)) {
             m_saveToOutput = true;
-            QString lFileName = parser->value(QStringLiteral("output"));
+            QString lFileName = parser.value(CommandLineOptions::self()->output);
             if (!(lFileName.isEmpty() || lFileName.isNull())) {
                 setScreenCaptureUrl(lFileName);
             }
         }
 
-        if (parser->isSet(QStringLiteral("delay"))) {
+        if (parser.isSet(CommandLineOptions::self()->delay)) {
             bool lParseOk = false;
-            qint64 lDelayValue = parser->value(QStringLiteral("delay")).toLongLong(&lParseOk);
+            qint64 lDelayValue = parser.value(CommandLineOptions::self()->delay).toLongLong(&lParseOk);
             if (lParseOk) {
                 delayMsec = lDelayValue;
             }
         }
 
-        if (parser->isSet(QStringLiteral("onclick"))) {
+        if (parser.isSet(CommandLineOptions::self()->onClick)) {
             delayMsec = -1;
         }
 
@@ -413,11 +414,11 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
         auto lIncludePointer = false;
         auto lIncludeDecorations = true;
 
-        if (parser->isSet(QStringLiteral("pointer"))) {
+        if (parser.isSet(CommandLineOptions::self()->pointer)) {
             lIncludePointer = true;
         }
 
-        if (parser->isSet(QStringLiteral("no-decoration"))) {
+        if (parser.isSet(CommandLineOptions::self()->noDecoration)) {
             lIncludeDecorations = false;
         }
 
@@ -456,7 +457,7 @@ void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /
             case Actions::StartNewInstance: {
                 QProcess newInstance;
                 newInstance.setProgram(QCoreApplication::applicationFilePath());
-                newInstance.setArguments({QStringLiteral("--new-instance")});
+                newInstance.setArguments({CommandLineOptions::self()->newInstance.names().constFirst()});
                 newInstance.startDetached();
                 break;
             }
@@ -678,7 +679,9 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         connect(lNotify, &KNotification::action1Activated, this, [theSavedAt]() {
             QProcess newInstance;
             newInstance.setProgram(QCoreApplication::applicationFilePath());
-            newInstance.setArguments({QStringLiteral("--new-instance"), QStringLiteral("--edit-existing"), theSavedAt.toLocalFile()});
+            newInstance.setArguments({CommandLineOptions::self()->newInstance.names().constFirst(),
+                                      CommandLineOptions::self()->editExisting.names().constFirst(),
+                                      theSavedAt.toLocalFile()});
             newInstance.startDetached();
         });
     }
@@ -692,34 +695,6 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     });
 
     lNotify->sendEvent();
-}
-
-void SpectacleCore::populateCommandLineParser(QCommandLineParser *lCmdLineParser)
-{
-    lCmdLineParser->addOptions({
-        {{QStringLiteral("f"), QStringLiteral("fullscreen")}, i18n("Capture the entire desktop (default)")},
-        {{QStringLiteral("m"), QStringLiteral("current")}, i18n("Capture the current monitor")},
-        {{QStringLiteral("a"), QStringLiteral("activewindow")}, i18n("Capture the active window")},
-        {{QStringLiteral("u"), QStringLiteral("windowundercursor")}, i18n("Capture the window currently under the cursor, including parents of pop-up menus")},
-        {{QStringLiteral("t"), QStringLiteral("transientonly")}, i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")},
-        {{QStringLiteral("r"), QStringLiteral("region")}, i18n("Capture a rectangular region of the screen")},
-        {{QStringLiteral("l"), QStringLiteral("launchonly")}, i18n("Launch Spectacle without taking a screenshot")},
-        {{QStringLiteral("g"), QStringLiteral("gui")}, i18n("Start in GUI mode (default)")},
-        {{QStringLiteral("b"), QStringLiteral("background")}, i18n("Take a screenshot and exit without showing the GUI")},
-        {{QStringLiteral("s"), QStringLiteral("dbus")}, i18n("Start in DBus-Activation mode")},
-        {{QStringLiteral("n"), QStringLiteral("nonotify")}, i18n("In background mode, do not pop up a notification when the screenshot is taken")},
-        {{QStringLiteral("o"), QStringLiteral("output")}, i18n("In background mode, save image to specified file"), QStringLiteral("fileName")},
-        {{QStringLiteral("d"), QStringLiteral("delay")},
-         i18n("In background mode, delay before taking the shot (in milliseconds)"),
-         QStringLiteral("delayMsec")},
-        {{QStringLiteral("c"), QStringLiteral("copy-image")}, i18n("In background mode, copy screenshot image to clipboard, unless -o is also used.")},
-        {{QStringLiteral("C"), QStringLiteral("copy-path")}, i18n("In background mode, copy screenshot file path to clipboard")},
-        {{QStringLiteral("w"), QStringLiteral("onclick")}, i18n("Wait for a click before taking screenshot. Invalidates delay")},
-        {{QStringLiteral("i"), QStringLiteral("new-instance")}, i18n("Starts a new GUI instance of spectacle without registering to DBus")},
-        {{QStringLiteral("p"), QStringLiteral("pointer")}, i18n("In background mode, include pointer in the screenshot")},
-        {{QStringLiteral("e"), QStringLiteral("no-decoration")}, i18n("In background mode, exclude decorations in the screenshot")},
-        {{QStringLiteral("E"), QStringLiteral("edit-existing")}, i18n("Open and edit existing screenshot file"), QStringLiteral("existingFileName")},
-    });
 }
 
 // Private

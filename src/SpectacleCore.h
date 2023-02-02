@@ -5,13 +5,13 @@
 
 #pragma once
 
-class QCommandLineParser;
 #include <QObject>
 #include <QQmlEngine>
 #include <QQuickItem>
 #include <QVariantAnimation>
 
 #include "CaptureModeModel.h"
+#include "CommandLineOptions.h"
 #include "ExportManager.h"
 #include "Gui/Annotations/AnnotationDocument.h"
 #include "Gui/CaptureWindow.h"
@@ -65,8 +65,6 @@ public:
 
     int captureTimeRemaining() const;
     qreal captureProgress() const;
-
-    void populateCommandLineParser(QCommandLineParser *lCmdLineParser);
 
     void initGuiNoScreenshot();
 
