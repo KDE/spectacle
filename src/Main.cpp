@@ -53,6 +53,9 @@ int main(int argc, char **argv)
     // first parsing for help-about
     commandLineParser.process(app.arguments());
     aboutData.processCommandLine(&commandLineParser);
+
+    // Prevent session manager from restoring the app on start up.
+    // https://bugs.kde.org/show_bug.cgi?id=430411
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setFallbackSessionManagementEnabled(false);
 #endif
@@ -64,7 +67,8 @@ int main(int argc, char **argv)
 
     SpectacleCore spectacleCore;
 
-    // and new-instance
+    // If the new instance command line option has been specified,
+    // use this alternative path for executing Spectacle.
     if (commandLineParser.isSet(CommandLineOptions::self()->newInstance)) {
         spectacleCore.init();
 
@@ -77,11 +81,9 @@ int main(int argc, char **argv)
         return app.exec();
     }
 
-    // Ensure that we only launch a new instance if we need to
-    // If there is already an instance running, we will quit here
-    // and activateRequested signal is triggered
-    // For some reason this does not work properly if behind an if
     KDBusService service(KDBusService::Unique, &lCore);
+    // With the StartupOption::Unique flag, this process will exit during the construction of
+    // KDBusService if Spectacle has already been registered.
 
     // Delay initialisation after we now we are in the single instance or new-instance was passed, to avoid doing it each time spectacle executable is called
     spectacleCore.init();
