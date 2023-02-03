@@ -89,7 +89,7 @@ public Q_SLOTS:
     void onScreenshotFailed();
     void doNotify(const QUrl &theSavedAt);
 
-    void onActivateRequested(QStringList arguments, const QString & /*workingDirectory */);
+    void activate(QStringList arguments, const QString & /*workingDirectory */);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();

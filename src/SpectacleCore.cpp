@@ -285,7 +285,7 @@ qreal SpectacleCore::captureProgress() const
         0 : m_delayAnimation->currentValue().toReal();
 }
 
-void SpectacleCore::onActivateRequested(QStringList arguments, const QString & /*workingDirectory */)
+void SpectacleCore::activate(QStringList arguments, const QString & /*workingDirectory */)
 {
     // QCommandLineParser expects the first argument to be the executable name
     // In the current version it just strips it away

@@ -74,7 +74,7 @@ int main(int argc, char **argv)
         QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
-        spectacleCore.onActivateRequested(app.arguments(), QLatin1String());
+        spectacleCore.activate(app.arguments(), QLatin1String());
 
         return app.exec();
     }
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
     SpectacleCore spectacleCore;
 
     // set up the KDBusService activateRequested slot
-    QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::onActivateRequested);
+    QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::activate);
     QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
     QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
-    spectacleCore.onActivateRequested(app.arguments(), QLatin1String());
+    spectacleCore.activate(app.arguments(), QLatin1String());
 
     return app.exec();
 }
