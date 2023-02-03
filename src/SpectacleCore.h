@@ -47,8 +47,6 @@ public:
     explicit SpectacleCore(QObject *parent = nullptr);
     ~SpectacleCore() override;
 
-    void init();
-
     static SpectacleCore *instance();
 
     Platform *platform() const;

@@ -65,12 +65,10 @@ int main(int argc, char **argv)
     QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
     QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
-    SpectacleCore spectacleCore;
-
     // If the new instance command line option has been specified,
     // use this alternative path for executing Spectacle.
     if (commandLineParser.isSet(CommandLineOptions::self()->newInstance)) {
-        spectacleCore.init();
+        SpectacleCore spectacleCore;
 
         QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
         QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
@@ -81,12 +79,12 @@ int main(int argc, char **argv)
         return app.exec();
     }
 
-    KDBusService service(KDBusService::Unique, &lCore);
     // With the StartupOption::Unique flag, this process will exit during the construction of
     // KDBusService if Spectacle has already been registered.
+    // This object does not need a parent since it will be deleted when it falls out of scope.
+    KDBusService service(KDBusService::Unique);
 
-    // Delay initialisation after we now we are in the single instance or new-instance was passed, to avoid doing it each time spectacle executable is called
-    spectacleCore.init();
+    SpectacleCore spectacleCore;
 
     // set up the KDBusService activateRequested slot
     QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::onActivateRequested);

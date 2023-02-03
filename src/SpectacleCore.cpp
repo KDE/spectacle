@@ -100,15 +100,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                      this, onValueChanged, Qt::QueuedConnection);
     QObject::connect(delayAnimation, &QVariantAnimation::finished,
                      this, onFinished, Qt::QueuedConnection);
-}
 
-SpectacleCore::~SpectacleCore() noexcept
-{
-    s_self = nullptr;
-}
-
-void SpectacleCore::init()
-{
     m_platform = loadPlatform();
     m_videoPlatform = loadVideoPlatform();
     auto platform = m_platform.get();
@@ -223,6 +215,11 @@ void SpectacleCore::init()
         m_viewerWindow->showSavedVideoMessage(url);
         setCurrentVideo(url);
     });
+}
+
+SpectacleCore::~SpectacleCore() noexcept
+{
+    s_self = nullptr;
 }
 
 SpectacleCore *SpectacleCore::instance()
