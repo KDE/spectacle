@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-01 00:55+0000\n"
+"POT-Creation-Date: 2023-02-03 00:57+0000\n"
 "PO-Revision-Date: 2022-07-12 12:01-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -79,6 +79,124 @@ msgstr "Janela ativa"
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Janela sob o cursor"
+
+#: src/CommandLineOptions.h:20
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Captura toda a área de trabalho (padrão)"
+
+#: src/CommandLineOptions.h:24
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Captura do monitor atual"
+
+#: src/CommandLineOptions.h:28
+#, kde-format
+msgid "Capture the active window"
+msgstr "Captura a janela ativa"
+
+#: src/CommandLineOptions.h:32
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Captura a janela que estiver sob o cursor, incluindo os menus de origem"
+
+#: src/CommandLineOptions.h:36
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Captura a janela que estiver sob o cursor, excluindo os menus de origem"
+
+#: src/CommandLineOptions.h:40
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Captura uma região retangular da tela"
+
+#: src/CommandLineOptions.h:44
+#, kde-format
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Iniciar o Spectacle sem capturar uma imagem"
+
+#: src/CommandLineOptions.h:48
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Iniciar no modo gráfico (padrão)"
+
+#: src/CommandLineOptions.h:52
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Capturar uma imagem e sair sem mostrar a interface"
+
+#: src/CommandLineOptions.h:56
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Iniciar no modo de ativação por D-Bus"
+
+#: src/CommandLineOptions.h:60
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"No modo em segundo plano, não mostrar uma mensagem informando que a imagem "
+"foi tirada"
+
+#: src/CommandLineOptions.h:64
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "No modo em segundo plano, salvar a imagem no arquivo indicado"
+
+#: src/CommandLineOptions.h:69
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr ""
+"No modo em segundo plano, este é o atraso antes de tirar a foto (em "
+"milissegundos)"
+
+#: src/CommandLineOptions.h:74
+#, kde-format
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr ""
+"No modo em segundo plano, copiar a imagem para a área de transferência, a "
+"menos que -o também seja usado."
+
+#: src/CommandLineOptions.h:78
+#, kde-format
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr ""
+"No modo em segundo plano, copiar o caminho do arquivo da imagem para a área "
+"de transferência"
+
+#: src/CommandLineOptions.h:82
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr "Aguarda por um clique antes de capturar a tela. Invalida o atraso"
+
+#: src/CommandLineOptions.h:86
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr ""
+"Inicia uma nova instância da interface do Spectacle sem registrar no DBus"
+
+#: src/CommandLineOptions.h:90
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "No modo em segundo plano, incluir o ponteiro na imagem"
+
+#: src/CommandLineOptions.h:94
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "No modo em segundo plano, excluir as decorações da imagem"
+
+#: src/CommandLineOptions.h:98
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr "Abrir e editar o arquivo da imagem existente"
 
 #: src/ExportManager.cpp:333
 #, kde-format
@@ -1300,28 +1418,28 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:36
+#: src/Main.cpp:37
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:38
+#: src/Main.cpp:39
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Utilitário de captura de tela do KDE"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:41
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "André Marcelo Alvarenga"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1364,18 +1482,18 @@ msgstr "Capturar janela sob o cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar o Spectacle sem fazer captura"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "A captura da tela foi cancelada ou falhou"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "A imagem foi copiada para a área de transferência."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:659
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1387,145 +1505,27 @@ msgstr ""
 "Uma imagem foi salva como '%1' em '%2' e o caminho da imagem foi copiado na "
 "área de transferência."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Foi gravada uma imagem como '%1' na sua pasta de Imagens."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Uma imagem foi salva como '%1' em '%2'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
-
-#: src/SpectacleCore.cpp:700
-#, kde-format
-msgid "Capture the entire desktop (default)"
-msgstr "Captura toda a área de trabalho (padrão)"
-
-#: src/SpectacleCore.cpp:701
-#, kde-format
-msgid "Capture the current monitor"
-msgstr "Captura do monitor atual"
-
-#: src/SpectacleCore.cpp:702
-#, kde-format
-msgid "Capture the active window"
-msgstr "Captura a janela ativa"
-
-#: src/SpectacleCore.cpp:703
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, including parents of pop-up "
-"menus"
-msgstr ""
-"Captura a janela que estiver sob o cursor, incluindo os menus de origem"
-
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Captura a janela que estiver sob o cursor, excluindo os menus de origem"
-
-#: src/SpectacleCore.cpp:705
-#, kde-format
-msgid "Capture a rectangular region of the screen"
-msgstr "Captura uma região retangular da tela"
-
-#: src/SpectacleCore.cpp:706
-#, kde-format
-msgid "Launch Spectacle without taking a screenshot"
-msgstr "Iniciar o Spectacle sem capturar uma imagem"
-
-#: src/SpectacleCore.cpp:707
-#, kde-format
-msgid "Start in GUI mode (default)"
-msgstr "Iniciar no modo gráfico (padrão)"
-
-#: src/SpectacleCore.cpp:708
-#, kde-format
-msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Capturar uma imagem e sair sem mostrar a interface"
-
-#: src/SpectacleCore.cpp:709
-#, kde-format
-msgid "Start in DBus-Activation mode"
-msgstr "Iniciar no modo de ativação por D-Bus"
-
-#: src/SpectacleCore.cpp:710
-#, kde-format
-msgid ""
-"In background mode, do not pop up a notification when the screenshot is taken"
-msgstr ""
-"No modo em segundo plano, não mostrar uma mensagem informando que a imagem "
-"foi tirada"
-
-#: src/SpectacleCore.cpp:711
-#, kde-format
-msgid "In background mode, save image to specified file"
-msgstr "No modo em segundo plano, salvar a imagem no arquivo indicado"
-
-#: src/SpectacleCore.cpp:713
-#, kde-format
-msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr ""
-"No modo em segundo plano, este é o atraso antes de tirar a foto (em "
-"milissegundos)"
-
-#: src/SpectacleCore.cpp:715
-#, kde-format
-msgid ""
-"In background mode, copy screenshot image to clipboard, unless -o is also "
-"used."
-msgstr ""
-"No modo em segundo plano, copiar a imagem para a área de transferência, a "
-"menos que -o também seja usado."
-
-#: src/SpectacleCore.cpp:716
-#, kde-format
-msgid "In background mode, copy screenshot file path to clipboard"
-msgstr ""
-"No modo em segundo plano, copiar o caminho do arquivo da imagem para a área "
-"de transferência"
-
-#: src/SpectacleCore.cpp:717
-#, kde-format
-msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr "Aguarda por um clique antes de capturar a tela. Invalida o atraso"
-
-#: src/SpectacleCore.cpp:718
-#, kde-format
-msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr ""
-"Inicia uma nova instância da interface do Spectacle sem registrar no DBus"
-
-#: src/SpectacleCore.cpp:719
-#, kde-format
-msgid "In background mode, include pointer in the screenshot"
-msgstr "No modo em segundo plano, incluir o ponteiro na imagem"
-
-#: src/SpectacleCore.cpp:720
-#, kde-format
-msgid "In background mode, exclude decorations in the screenshot"
-msgstr "No modo em segundo plano, excluir as decorações da imagem"
-
-#: src/SpectacleCore.cpp:721
-#, kde-format
-msgid "Open and edit existing screenshot file"
-msgstr "Abrir e editar o arquivo da imagem existente"
 
 #~ msgid "On Click"
 #~ msgstr "Ao clicar"

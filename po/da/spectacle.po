@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-01 00:55+0000\n"
+"POT-Creation-Date: 2023-02-03 00:57+0000\n"
 "PO-Revision-Date: 2020-11-17 19:54+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -77,6 +77,123 @@ msgstr "Aktivt vindue"
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Vinduet under markøren"
+
+#: src/CommandLineOptions.h:20
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Indfang hele skrivebordet (standard)"
+
+#: src/CommandLineOptions.h:24
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Indfang den aktuelle skærm"
+
+#: src/CommandLineOptions.h:28
+#, kde-format
+msgid "Capture the active window"
+msgstr "Indfang det aktive vindue"
+
+#: src/CommandLineOptions.h:32
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Indfang det vindue der aktuelt er under musemarkøren, inklusiv forældre for "
+"pop-op-menuer"
+
+#: src/CommandLineOptions.h:36
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Indfang det vindue der aktuelt er under musemarkøren, eksklusiv forældre for "
+"pop-op-menuer"
+
+#: src/CommandLineOptions.h:40
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Indfang et firkantet område af skærmen"
+
+#: src/CommandLineOptions.h:44
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Efter der er taget et skærmbillede:"
+
+#: src/CommandLineOptions.h:48
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Start i GUI-tilstand (standard)"
+
+#: src/CommandLineOptions.h:52
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Tag skærmbillede og afslutte uden at vise GUI'en"
+
+#: src/CommandLineOptions.h:56
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Start i D-Bus-aktiveringstilstand"
+
+#: src/CommandLineOptions.h:60
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"Vis ikke en bekendtgørelses-pop-op når skærmbilledet tages i "
+"baggrundstilstand"
+
+#: src/CommandLineOptions.h:64
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "Gem billede til angiven fil i baggrundstilstand"
+
+#: src/CommandLineOptions.h:69
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr "Forsinkelse før billedet tages (i millisekunder) i baggrundstilstand"
+
+#: src/CommandLineOptions.h:74
+#, fuzzy, kde-format
+#| msgid "In background mode, copy screenshot to clipboard"
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr "Kopiér skærmbilledet til udklipsholderen i baggrundstilstand"
+
+#: src/CommandLineOptions.h:78
+#, fuzzy, kde-format
+#| msgid "In background mode, copy screenshot to clipboard"
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr "Kopiér skærmbilledet til udklipsholderen i baggrundstilstand"
+
+#: src/CommandLineOptions.h:82
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr "Vent på et klik før der tages et skærmbillede. Ugyldiggør forsinkelse"
+
+#: src/CommandLineOptions.h:86
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr ""
+"Starter en ny grafisk instans af Spectacle uden at registrere det hos DBus"
+
+#: src/CommandLineOptions.h:90
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "Medtag musemarkøren i skærmbilledet i baggrundstilstand"
+
+#: src/CommandLineOptions.h:94
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "Udelad musemarkøren i skærmbilledet i baggrundstilstand"
+
+#: src/CommandLineOptions.h:98
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr ""
 
 #: src/ExportManager.cpp:333
 #, kde-format
@@ -1306,28 +1423,28 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:36
+#: src/Main.cpp:37
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:38
+#: src/Main.cpp:39
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE-skærmfotoværktøj"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:41
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Martin Schlander"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1372,18 +1489,18 @@ msgstr "Vinduet under markøren"
 msgid "Launch Spectacle without capturing"
 msgstr "Start Spectacle"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Indfangning af skærmbillede annulleret eller mislykket"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Et skærmbillede blev gemt i din udklipsholder."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:659
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1395,144 +1512,27 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Et skærmbillede blev gemt som \"%1\" i din billedmappe."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Et skærmbillede blev gemt som \"%1\" i \"%2\"."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Åbn"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentér"
-
-#: src/SpectacleCore.cpp:700
-#, kde-format
-msgid "Capture the entire desktop (default)"
-msgstr "Indfang hele skrivebordet (standard)"
-
-#: src/SpectacleCore.cpp:701
-#, kde-format
-msgid "Capture the current monitor"
-msgstr "Indfang den aktuelle skærm"
-
-#: src/SpectacleCore.cpp:702
-#, kde-format
-msgid "Capture the active window"
-msgstr "Indfang det aktive vindue"
-
-#: src/SpectacleCore.cpp:703
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, including parents of pop-up "
-"menus"
-msgstr ""
-"Indfang det vindue der aktuelt er under musemarkøren, inklusiv forældre for "
-"pop-op-menuer"
-
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Indfang det vindue der aktuelt er under musemarkøren, eksklusiv forældre for "
-"pop-op-menuer"
-
-#: src/SpectacleCore.cpp:705
-#, kde-format
-msgid "Capture a rectangular region of the screen"
-msgstr "Indfang et firkantet område af skærmen"
-
-#: src/SpectacleCore.cpp:706
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
-msgid "Launch Spectacle without taking a screenshot"
-msgstr "Efter der er taget et skærmbillede:"
-
-#: src/SpectacleCore.cpp:707
-#, kde-format
-msgid "Start in GUI mode (default)"
-msgstr "Start i GUI-tilstand (standard)"
-
-#: src/SpectacleCore.cpp:708
-#, kde-format
-msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Tag skærmbillede og afslutte uden at vise GUI'en"
-
-#: src/SpectacleCore.cpp:709
-#, kde-format
-msgid "Start in DBus-Activation mode"
-msgstr "Start i D-Bus-aktiveringstilstand"
-
-#: src/SpectacleCore.cpp:710
-#, kde-format
-msgid ""
-"In background mode, do not pop up a notification when the screenshot is taken"
-msgstr ""
-"Vis ikke en bekendtgørelses-pop-op når skærmbilledet tages i "
-"baggrundstilstand"
-
-#: src/SpectacleCore.cpp:711
-#, kde-format
-msgid "In background mode, save image to specified file"
-msgstr "Gem billede til angiven fil i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:713
-#, kde-format
-msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr "Forsinkelse før billedet tages (i millisekunder) i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:715
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot to clipboard"
-msgid ""
-"In background mode, copy screenshot image to clipboard, unless -o is also "
-"used."
-msgstr "Kopiér skærmbilledet til udklipsholderen i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:716
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot to clipboard"
-msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "Kopiér skærmbilledet til udklipsholderen i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:717
-#, kde-format
-msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr "Vent på et klik før der tages et skærmbillede. Ugyldiggør forsinkelse"
-
-#: src/SpectacleCore.cpp:718
-#, kde-format
-msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr ""
-"Starter en ny grafisk instans af Spectacle uden at registrere det hos DBus"
-
-#: src/SpectacleCore.cpp:719
-#, kde-format
-msgid "In background mode, include pointer in the screenshot"
-msgstr "Medtag musemarkøren i skærmbilledet i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:720
-#, kde-format
-msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Udelad musemarkøren i skærmbilledet i baggrundstilstand"
-
-#: src/SpectacleCore.cpp:721
-#, kde-format
-msgid "Open and edit existing screenshot file"
-msgstr ""
 
 #~ msgid "On Click"
 #~ msgstr "Ved klik"

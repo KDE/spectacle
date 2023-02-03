@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-01 00:55+0000\n"
+"POT-Creation-Date: 2023-02-03 00:57+0000\n"
 "PO-Revision-Date: 2022-09-27 18:12+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -79,6 +79,124 @@ msgstr "Jendela Aktif"
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Jendela Bawah Kursor"
+
+#: src/CommandLineOptions.h:20
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Tangkap entri desktop (baku)"
+
+#: src/CommandLineOptions.h:24
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Tangkap monitor saat ini"
+
+#: src/CommandLineOptions.h:28
+#, kde-format
+msgid "Capture the active window"
+msgstr "Tangkap jendela aktif"
+
+#: src/CommandLineOptions.h:32
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Tangkap jendela yang saat ini di bawah kursor, termasuk induk menu-menu "
+"sembul"
+
+#: src/CommandLineOptions.h:36
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Tangkap jendela yang saat ini di bawah kursor, tidak termasuk induk menu-"
+"menu sembul"
+
+#: src/CommandLineOptions.h:40
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Tangkap sebuah bidang persegi pada layar"
+
+#: src/CommandLineOptions.h:44
+#, kde-format
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Luncurkan Spectacle tanpa mengambil screenshot"
+
+#: src/CommandLineOptions.h:48
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Mulai dalam mode GUI (baku)"
+
+#: src/CommandLineOptions.h:52
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Ambil sebuah screenshot dan keluar tanpa menampilkan GUI"
+
+#: src/CommandLineOptions.h:56
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Mulai dalam mode DBus-Activation"
+
+#: src/CommandLineOptions.h:60
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"Dalam mode latarbelakang, jangan sembulkan notifikasi ketika screenshot "
+"diambil"
+
+#: src/CommandLineOptions.h:64
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "Dalam mode latarbelakang, simpan citra ke file yang ditentukan"
+
+#: src/CommandLineOptions.h:69
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr ""
+"Dalam mode latar-belakang, tunda sebelum mengambil jepret (dalam mili detik)"
+
+#: src/CommandLineOptions.h:74
+#, kde-format
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr ""
+"Dalam mode latarbelakang, salin screenshot ke papan-klip, kecuali -o juga "
+"digunakan"
+
+#: src/CommandLineOptions.h:78
+#, kde-format
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr "Dalam mode latarbelakang, salin alur file screenshot ke papan-klip"
+
+#: src/CommandLineOptions.h:82
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr ""
+"Tunggu sebuah klik sebelum mengambil screenshot. Membuat tidak absahnya "
+"tundaan"
+
+#: src/CommandLineOptions.h:86
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr "Mulai instance GUI baru dari spectacle tanpa mendaftar ke DBus"
+
+#: src/CommandLineOptions.h:90
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "Dalam mode latarbelakang, sertakan pointer di tangkapan layar"
+
+#: src/CommandLineOptions.h:94
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "Dalam mode latarbelakang, kecualikan dekorasi di tangkapan layar"
+
+#: src/CommandLineOptions.h:98
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr "Buka dan edit file screenshot yang ada"
 
 #: src/ExportManager.cpp:333
 #, kde-format
@@ -1300,28 +1418,28 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:36
+#: src/Main.cpp:37
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:38
+#: src/Main.cpp:39
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Utilitas Screenshot KDE"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:41
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Wantoyo"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1364,17 +1482,17 @@ msgstr "Tangkap Layar Jendela Di Bawah Kursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Luncurkan Spectacle tanpa menangkap layar"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Tangkapan screenshot dibatalkan atau gagal"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Sebuah screenshot telah disimpan ke papanklipmu."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:659
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1383,145 +1501,27 @@ msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
 "tangkapan layarnya telah disalin ke papan klipmu."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Sebuah screenshot telah disimpan sebagai '%1' ke folder Gambar Anda."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Sebuah screenshot telah disimpan sebagai '%1' ke '%2'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Buka"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "Annotate"
 msgstr "Anotasi"
-
-#: src/SpectacleCore.cpp:700
-#, kde-format
-msgid "Capture the entire desktop (default)"
-msgstr "Tangkap entri desktop (baku)"
-
-#: src/SpectacleCore.cpp:701
-#, kde-format
-msgid "Capture the current monitor"
-msgstr "Tangkap monitor saat ini"
-
-#: src/SpectacleCore.cpp:702
-#, kde-format
-msgid "Capture the active window"
-msgstr "Tangkap jendela aktif"
-
-#: src/SpectacleCore.cpp:703
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, including parents of pop-up "
-"menus"
-msgstr ""
-"Tangkap jendela yang saat ini di bawah kursor, termasuk induk menu-menu "
-"sembul"
-
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Tangkap jendela yang saat ini di bawah kursor, tidak termasuk induk menu-"
-"menu sembul"
-
-#: src/SpectacleCore.cpp:705
-#, kde-format
-msgid "Capture a rectangular region of the screen"
-msgstr "Tangkap sebuah bidang persegi pada layar"
-
-#: src/SpectacleCore.cpp:706
-#, kde-format
-msgid "Launch Spectacle without taking a screenshot"
-msgstr "Luncurkan Spectacle tanpa mengambil screenshot"
-
-#: src/SpectacleCore.cpp:707
-#, kde-format
-msgid "Start in GUI mode (default)"
-msgstr "Mulai dalam mode GUI (baku)"
-
-#: src/SpectacleCore.cpp:708
-#, kde-format
-msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Ambil sebuah screenshot dan keluar tanpa menampilkan GUI"
-
-#: src/SpectacleCore.cpp:709
-#, kde-format
-msgid "Start in DBus-Activation mode"
-msgstr "Mulai dalam mode DBus-Activation"
-
-#: src/SpectacleCore.cpp:710
-#, kde-format
-msgid ""
-"In background mode, do not pop up a notification when the screenshot is taken"
-msgstr ""
-"Dalam mode latarbelakang, jangan sembulkan notifikasi ketika screenshot "
-"diambil"
-
-#: src/SpectacleCore.cpp:711
-#, kde-format
-msgid "In background mode, save image to specified file"
-msgstr "Dalam mode latarbelakang, simpan citra ke file yang ditentukan"
-
-#: src/SpectacleCore.cpp:713
-#, kde-format
-msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr ""
-"Dalam mode latar-belakang, tunda sebelum mengambil jepret (dalam mili detik)"
-
-#: src/SpectacleCore.cpp:715
-#, kde-format
-msgid ""
-"In background mode, copy screenshot image to clipboard, unless -o is also "
-"used."
-msgstr ""
-"Dalam mode latarbelakang, salin screenshot ke papan-klip, kecuali -o juga "
-"digunakan"
-
-#: src/SpectacleCore.cpp:716
-#, kde-format
-msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "Dalam mode latarbelakang, salin alur file screenshot ke papan-klip"
-
-#: src/SpectacleCore.cpp:717
-#, kde-format
-msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr ""
-"Tunggu sebuah klik sebelum mengambil screenshot. Membuat tidak absahnya "
-"tundaan"
-
-#: src/SpectacleCore.cpp:718
-#, kde-format
-msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr "Mulai instance GUI baru dari spectacle tanpa mendaftar ke DBus"
-
-#: src/SpectacleCore.cpp:719
-#, kde-format
-msgid "In background mode, include pointer in the screenshot"
-msgstr "Dalam mode latarbelakang, sertakan pointer di tangkapan layar"
-
-#: src/SpectacleCore.cpp:720
-#, kde-format
-msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Dalam mode latarbelakang, kecualikan dekorasi di tangkapan layar"
-
-#: src/SpectacleCore.cpp:721
-#, kde-format
-msgid "Open and edit existing screenshot file"
-msgstr "Buka dan edit file screenshot yang ada"
 
 #~ msgid "On Click"
 #~ msgstr "Saat Klik"

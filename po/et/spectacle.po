@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-01 00:55+0000\n"
+"POT-Creation-Date: 2023-02-03 00:57+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -78,6 +78,123 @@ msgstr "Aktiivne aken"
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Aken kursori all"
+
+#: src/CommandLineOptions.h:20
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Kogu ekraani pildistamine (vaikimisi)"
+
+#: src/CommandLineOptions.h:24
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Aktiivse monitori pildistamine"
+
+#: src/CommandLineOptions.h:28
+#, kde-format
+msgid "Capture the active window"
+msgstr "Aktiivse akna pildistamine"
+
+#: src/CommandLineOptions.h:32
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Parajasti kursori all asuva akna pildistamine, kaasa arvatud eellase "
+"hüpikmenüüd"
+
+#: src/CommandLineOptions.h:36
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Parajasti kursori all asuva akna pildistamine, välja arvatud eellase "
+"hüpikmenüüd"
+
+#: src/CommandLineOptions.h:40
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Ekraani ristkülikukujulise ala pildistamine"
+
+#: src/CommandLineOptions.h:44
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Pärast ekraanipildi tegemist:"
+
+#: src/CommandLineOptions.h:48
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Käivitamine graafilises režiimis (vaikimisi)"
+
+#: src/CommandLineOptions.h:52
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr ""
+"Ekraanipildi tegemine ja väljumine graafilist kasutajaliidest näitamata"
+
+#: src/CommandLineOptions.h:56
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Käivitamine DBus-Activation režiimis"
+
+#: src/CommandLineOptions.h:60
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"Taustarežiimis ei näidata ühtegi märguannet ekraanipildi tegemise kohta"
+
+#: src/CommandLineOptions.h:64
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "Taustarežiimis salvestatakse pilt määratud faili"
+
+#: src/CommandLineOptions.h:69
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr "Taustarežiimis viivitus enne pildi tegemist (millisekundites)"
+
+#: src/CommandLineOptions.h:74
+#, fuzzy, kde-format
+#| msgid "In background mode, copy screenshot to clipboard"
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
+
+#: src/CommandLineOptions.h:78
+#, fuzzy, kde-format
+#| msgid "In background mode, copy screenshot to clipboard"
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
+
+#: src/CommandLineOptions.h:82
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr "Klõpsu ootamine enne pilti tegemist. Tühistab viivituse"
+
+#: src/CommandLineOptions.h:86
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr ""
+"Spectacle'i uue graafilise isendi käivitamine ilma DBUS-is registreerimata"
+
+#: src/CommandLineOptions.h:90
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "Taustarežiimis kaasatakse ekraanipildile hiirekursor"
+
+#: src/CommandLineOptions.h:94
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "Taustarežiimis jäetakse akna dekoratsioonid ekraanipildilt välja"
+
+#: src/CommandLineOptions.h:98
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr ""
 
 #: src/ExportManager.cpp:333
 #, kde-format
@@ -1299,28 +1416,28 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:36
+#: src/Main.cpp:37
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:38
+#: src/Main.cpp:39
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE ekraani pildistamise tööriist"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:41
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015: Boudhayan Gupta"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Marek Laane"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:45
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1365,18 +1482,18 @@ msgstr "Aken kursori all"
 msgid "Launch Spectacle without capturing"
 msgstr "Käivita Spectacle"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekraanipildi tegemine katkestati või nurjus"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekraanipilt salvestati sinu lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:659
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1386,144 +1503,27 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ava"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "Annotate"
 msgstr "Annoteeri"
-
-#: src/SpectacleCore.cpp:700
-#, kde-format
-msgid "Capture the entire desktop (default)"
-msgstr "Kogu ekraani pildistamine (vaikimisi)"
-
-#: src/SpectacleCore.cpp:701
-#, kde-format
-msgid "Capture the current monitor"
-msgstr "Aktiivse monitori pildistamine"
-
-#: src/SpectacleCore.cpp:702
-#, kde-format
-msgid "Capture the active window"
-msgstr "Aktiivse akna pildistamine"
-
-#: src/SpectacleCore.cpp:703
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, including parents of pop-up "
-"menus"
-msgstr ""
-"Parajasti kursori all asuva akna pildistamine, kaasa arvatud eellase "
-"hüpikmenüüd"
-
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Parajasti kursori all asuva akna pildistamine, välja arvatud eellase "
-"hüpikmenüüd"
-
-#: src/SpectacleCore.cpp:705
-#, kde-format
-msgid "Capture a rectangular region of the screen"
-msgstr "Ekraani ristkülikukujulise ala pildistamine"
-
-#: src/SpectacleCore.cpp:706
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
-msgid "Launch Spectacle without taking a screenshot"
-msgstr "Pärast ekraanipildi tegemist:"
-
-#: src/SpectacleCore.cpp:707
-#, kde-format
-msgid "Start in GUI mode (default)"
-msgstr "Käivitamine graafilises režiimis (vaikimisi)"
-
-#: src/SpectacleCore.cpp:708
-#, kde-format
-msgid "Take a screenshot and exit without showing the GUI"
-msgstr ""
-"Ekraanipildi tegemine ja väljumine graafilist kasutajaliidest näitamata"
-
-#: src/SpectacleCore.cpp:709
-#, kde-format
-msgid "Start in DBus-Activation mode"
-msgstr "Käivitamine DBus-Activation režiimis"
-
-#: src/SpectacleCore.cpp:710
-#, kde-format
-msgid ""
-"In background mode, do not pop up a notification when the screenshot is taken"
-msgstr ""
-"Taustarežiimis ei näidata ühtegi märguannet ekraanipildi tegemise kohta"
-
-#: src/SpectacleCore.cpp:711
-#, kde-format
-msgid "In background mode, save image to specified file"
-msgstr "Taustarežiimis salvestatakse pilt määratud faili"
-
-#: src/SpectacleCore.cpp:713
-#, kde-format
-msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr "Taustarežiimis viivitus enne pildi tegemist (millisekundites)"
-
-#: src/SpectacleCore.cpp:715
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot to clipboard"
-msgid ""
-"In background mode, copy screenshot image to clipboard, unless -o is also "
-"used."
-msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
-
-#: src/SpectacleCore.cpp:716
-#, fuzzy, kde-format
-#| msgid "In background mode, copy screenshot to clipboard"
-msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "Taustarežiimis kopeeritakse pilt lõikepuhvrisse"
-
-#: src/SpectacleCore.cpp:717
-#, kde-format
-msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr "Klõpsu ootamine enne pilti tegemist. Tühistab viivituse"
-
-#: src/SpectacleCore.cpp:718
-#, kde-format
-msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr ""
-"Spectacle'i uue graafilise isendi käivitamine ilma DBUS-is registreerimata"
-
-#: src/SpectacleCore.cpp:719
-#, kde-format
-msgid "In background mode, include pointer in the screenshot"
-msgstr "Taustarežiimis kaasatakse ekraanipildile hiirekursor"
-
-#: src/SpectacleCore.cpp:720
-#, kde-format
-msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Taustarežiimis jäetakse akna dekoratsioonid ekraanipildilt välja"
-
-#: src/SpectacleCore.cpp:721
-#, kde-format
-msgid "Open and edit existing screenshot file"
-msgstr ""
 
 #~ msgid "On Click"
 #~ msgstr "Klõpsamisel"
