@@ -46,15 +46,13 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("spectacle")));
 
-    SpectacleCore lCore;
-
-    QCommandLineParser lCmdLineParser;
-    aboutData.setupCommandLine(&lCmdLineParser);
-    lCmdLineParser.addOptions(CommandLineOptions::self()->allOptions);
+    QCommandLineParser commandLineParser;
+    aboutData.setupCommandLine(&commandLineParser);
+    commandLineParser.addOptions(CommandLineOptions::self()->allOptions);
 
     // first parsing for help-about
-    lCmdLineParser.process(app.arguments());
-    aboutData.processCommandLine(&lCmdLineParser);
+    commandLineParser.process(app.arguments());
+    aboutData.processCommandLine(&commandLineParser);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setFallbackSessionManagementEnabled(false);
 #endif
@@ -64,15 +62,17 @@ int main(int argc, char **argv)
     QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
     QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
+    SpectacleCore spectacleCore;
+
     // and new-instance
-    if (lCmdLineParser.isSet(CommandLineOptions::self()->newInstance)) {
-        lCore.init();
+    if (commandLineParser.isSet(CommandLineOptions::self()->newInstance)) {
+        spectacleCore.init();
 
         QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
-        QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
+        QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
-        lCore.onActivateRequested(app.arguments(), QLatin1String());
+        spectacleCore.onActivateRequested(app.arguments(), QLatin1String());
 
         return app.exec();
     }
@@ -84,24 +84,24 @@ int main(int argc, char **argv)
     KDBusService service(KDBusService::Unique, &lCore);
 
     // Delay initialisation after we now we are in the single instance or new-instance was passed, to avoid doing it each time spectacle executable is called
-    lCore.init();
+    spectacleCore.init();
 
     // set up the KDBusService activateRequested slot
-    QObject::connect(&service, &KDBusService::activateRequested, &lCore, &SpectacleCore::onActivateRequested);
+    QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::onActivateRequested);
     QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
-    QObject::connect(&lCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
+    QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
     // create the dbus connections
-    SpectacleDBusAdapter *lDBusAdapter = new SpectacleDBusAdapter(&lCore);
-    QObject::connect(&lCore, &SpectacleCore::grabFailed, lDBusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
-    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, &lCore, [&](const QUrl &savedAt) {
+    SpectacleDBusAdapter *lDBusAdapter = new SpectacleDBusAdapter(&spectacleCore);
+    QObject::connect(&spectacleCore, &SpectacleCore::grabFailed, lDBusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, &spectacleCore, [&](const QUrl &savedAt) {
         Q_EMIT lDBusAdapter->ScreenshotTaken(savedAt.toLocalFile());
     });
-    QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &lCore);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &spectacleCore);
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
-    lCore.onActivateRequested(app.arguments(), QLatin1String());
+    spectacleCore.onActivateRequested(app.arguments(), QLatin1String());
 
     return app.exec();
 }
