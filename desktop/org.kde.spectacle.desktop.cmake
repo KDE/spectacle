@@ -456,6 +456,7 @@ Name[az]=Ekran şəkli çəkmədən başladın
 Name[bg]=Стартиране без заснемане на екрана
 Name[ca]=Llança sense prendre cap captura de pantalla
 Name[ca@valencia]=Inicia sense prendre cap captura de pantalla
+Name[cs]=Spustit bez sejmutí obrazovky
 Name[de]=Ohne Aufnahme eines Bildschirmfotos starten
 Name[en_GB]=Launch without taking a screenshot
 Name[es]=Lanzar sin realizar una captura de pantalla
