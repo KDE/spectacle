@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 00:56+0000\n"
-"PO-Revision-Date: 2022-11-16 22:53+0200\n"
+"PO-Revision-Date: 2023-02-05 00:57+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.2.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -51,10 +51,9 @@ msgid "Rectangular Region"
 msgstr "Stačiakampė sritis"
 
 #: src/CaptureModeModel.cpp:102
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgid "All Screens"
-msgstr "Visas ekranas"
+msgstr "Visi ekranai"
 
 #: src/CaptureModeModel.cpp:102
 #, kde-format
@@ -419,17 +418,14 @@ msgid "Line"
 msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:101
-#, fuzzy, kde-format
-#| msgctxt "Keyboard action"
-#| msgid "Arrow keys"
+#, kde-format
 msgid "Arrow"
-msgstr "Krypties klavišai"
+msgstr "Rodyklė"
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangle"
-msgstr "Stačiakampė sritis"
+msgstr "Stačiakampis"
 
 #: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
@@ -457,20 +453,16 @@ msgid "Number"
 msgstr ""
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:107
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "%1 sekundė"
-msgstr[1] "%1 sekundės"
-msgstr[2] "%1 sekundžių"
-msgstr[3] "%1 sekundė"
+msgstr[0] "Atsisakyti (%1 sekundė)"
+msgstr[1] "Atsisakyti (%1 sekundės)"
+msgstr[2] "Atsisakyti (%1 sekundžių)"
+msgstr[3] "Atsisakyti (%1 sekundė)"
 
 #: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
-#, fuzzy, kde-format
-#| msgid "Take a new Screenshot"
+#, kde-format
 msgid "Take a new screenshot"
 msgstr "Padaryti naują ekrano kopiją"
 
@@ -478,7 +470,7 @@ msgstr "Padaryti naują ekrano kopiją"
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
-msgstr ""
+msgstr "Fotografavimo nuostatos"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #: src/Gui/RecordOptions.qml:48
@@ -487,10 +479,9 @@ msgid "Include mouse pointer"
 msgstr "Įtraukti pelės rodyklę"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį"
+msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
@@ -556,8 +547,7 @@ msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekrano kopija nukopijuota į iškarpinę."
 
 #: src/Gui/DelaySpinBox.qml:17
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Jokios delsos"
@@ -579,20 +569,19 @@ msgid " seconds"
 msgstr " sek."
 
 #: src/Gui/DialogPage.qml:96
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Modes"
-msgstr "<b>Fotografavimo veiksena</b>"
+msgstr "Fotografavimo veiksenos"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "Konfigūruoti Spectacle…"
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Pagalba"
 
 #: src/Gui/ExportMenu.cpp:44
 #, kde-format
@@ -610,26 +599,24 @@ msgid "Share"
 msgstr "Bendrinti"
 
 #: src/Gui/ImageView.qml:288
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "Screenshot"
-msgstr "Padaryti naują ekrano kopiją"
+msgstr "Ekrano kopija"
 
 #: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
 #, fuzzy, kde-format
-#| msgid "Record Screen"
 msgid "Recording"
-msgstr "Ekrano filmavimas"
+msgstr "Įrašas"
 
 #: src/Gui/ImageView.qml:357
 #, kde-format
 msgid "Zoom:"
-msgstr ""
+msgstr "Mastelis:"
 
 #: src/Gui/ImageView.qml:371
 #, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "Paveikslo mastelis"
 
 #: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
@@ -645,7 +632,7 @@ msgstr "Įrašyti kaip..."
 #: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "Kopijuoti"
 
 #: src/Gui/MainToolBarContents.qml:85
 #, kde-format
@@ -660,16 +647,14 @@ msgid "Show Annotation Tools"
 msgstr "Anotacijos atliktos"
 
 #: src/Gui/MainToolBarContents.qml:120
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "New Screenshot"
-msgstr "Padaryti naują ekrano kopiją"
+msgstr "Nauja ekrano kopija"
 
 #: src/Gui/MainToolBarContents.qml:131
-#, fuzzy, kde-format
-#| msgid "Save Options"
+#, kde-format
 msgid "Options"
-msgstr "Įrašymo parinktys"
+msgstr "Parinktys"
 
 #: src/Gui/MainToolBarContents.qml:140
 #, kde-format
@@ -677,10 +662,9 @@ msgid "Configure..."
 msgstr "Konfigūruoti..."
 
 #: src/Gui/OptionsMenu.cpp:37
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Mode"
-msgstr "<b>Fotografavimo veiksena</b>"
+msgstr "Fotografavimo veiksena"
 
 #: src/Gui/OptionsMenu.cpp:68
 #, kde-format
@@ -712,10 +696,9 @@ msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Rankiniu būdu įrašius ar nukopijavus paveikslą, išeiti iš Spectacle"
 
 #: src/Gui/OptionsMenu.cpp:120
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture On Click"
-msgstr "Spustelėjus"
+msgstr "Fotografuoti spustelėjus"
 
 #: src/Gui/OptionsMenu.cpp:140
 #, kde-format
@@ -725,7 +708,7 @@ msgstr "Jokios delsos"
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
-msgstr ""
+msgstr "Naujas ekrano įrašas"
 
 #: src/Gui/RecordOptions.qml:43
 #, fuzzy, kde-format
@@ -742,7 +725,7 @@ msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį"
 #: src/Gui/RecordOptions.qml:59
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Baigti įrašą"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -762,10 +745,9 @@ msgstr ""
 "nukopijuota į iškarpinę"
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Ekrano kopija buvo įrašyta kaip <a href=\"%1\">%2</a>"
+msgstr "Vaizdo įrašas buvo įrašytas kaip <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -1405,22 +1387,20 @@ msgstr[2] "%1 sekundžių"
 msgstr[3] "%1 sekundė"
 
 #: src/Gui/SpectacleWindow.cpp:198
-#, fuzzy, kde-format
-#| msgctxt "@title:window Unsaved Screenshot"
-#| msgid "Unsaved[*]"
+#, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "Neįrašyta[*]"
+msgstr "Neįrašyta"
 
 #: src/Gui/UndoRedoGroup.qml:32
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Atšaukti"
 
 #: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Grąžinti"
 
 #: src/Main.cpp:37
 #, kde-format
@@ -1452,29 +1432,27 @@ msgstr "opensuse.lietuviu.kalba@gmail.com, <>"
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "Darbo sritis"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "Ekrano filmavimas"
+msgstr "Pasirinktas ekranas"
 
 #: src/RecordingModeModel.cpp:40
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "Aktyvus langas"
+msgstr "Pasirinktas langas"
 
 #: src/RecordingModeModel.cpp:87
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "Nepavyko pasirinkti išvesties"
 
 #: src/RecordingModeModel.cpp:115
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Nepavyko pasirinkti lango"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
@@ -1492,22 +1470,18 @@ msgid "Screenshot capture canceled or failed"
 msgstr "Ekrano kopijos darymo atsisakyta arba jis patyrė nesėkmę"
 
 #: src/SpectacleCore.cpp:654
-#, fuzzy, kde-format
-#| msgid "A screenshot was copied to your clipboard."
+#, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Ekrano kopija nukopijuota į jūsų iškaprinę."
+msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
 #: src/SpectacleCore.cpp:656
 #, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been copied to your clipboard."
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Ekrano kopija buvo įrašyta kaip „%1“ į „%2“, o ekrano kopijos failo kelias "
-"nukopijuotas į iškarpinę."
+"Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
+"ekrano kopijos failo kelias įrašytas į iškarpinę."
 
 #: src/SpectacleCore.cpp:660
 #, kde-format
