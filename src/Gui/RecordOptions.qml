@@ -56,6 +56,7 @@ ColumnLayout {
     ColumnLayout {
         visible: SpectacleCore.isRecording
         QQC2.Button {
+            Layout.fillWidth: true
             text: i18n("Finish recording")
             onClicked: SpectacleCore.finishRecording()
         }
