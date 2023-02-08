@@ -6,9 +6,11 @@
 
 #pragma once
 
+#include <QDateTime>
 #include <QFlags>
 #include <QObject>
 #include <QRect>
+#include <QTimer>
 #include <variant>
 
 class QScreen;
@@ -18,6 +20,7 @@ class VideoPlatform : public QObject
     Q_OBJECT
     Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes CONSTANT)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
+    Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
 
 public:
     explicit VideoPlatform(QObject *parent = nullptr);
@@ -35,6 +38,7 @@ public:
     bool isRecording() const;
     virtual RecordingModes supportedRecordingModes() const = 0;
     virtual QString extension() const = 0;
+    QString recordedTime() const;
 
 protected:
     void setRecording(bool recording);
@@ -46,8 +50,11 @@ public Q_SLOTS:
 Q_SIGNALS:
     void recordingChanged(bool isRecording);
     void recordingSaved(const QString &path);
+    void recordedTimeChanged();
 
 private:
+    QDateTime m_startedRecording;
+    QTimer m_recordedTimeChanged;
     bool m_recording = false;
 };
 

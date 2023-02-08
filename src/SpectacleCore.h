@@ -35,6 +35,7 @@ class SpectacleCore : public QObject
     Q_PROPERTY(qreal captureProgress READ captureProgress NOTIFY captureProgressChanged FINAL)
     Q_PROPERTY(bool recordingSupported READ recordingSupported CONSTANT)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
+    Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
     Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
 public:
@@ -76,6 +77,7 @@ public:
     bool recordingSupported() const;
     bool videoMode() const;
     QUrl currentVideo() const;
+    QString recordedTime() const;
 
 public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
@@ -103,6 +105,7 @@ Q_SIGNALS:
     void recordingChanged(bool isRecording);
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
+    void recordedTimeChanged();
 
 private:
     Platform::GrabMode toPlatformGrabMode(CaptureModeModel::CaptureMode theCaptureMode);

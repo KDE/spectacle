@@ -5,10 +5,16 @@
  */
 
 #include "VideoPlatform.h"
+#include <KFormat>
+#include <chrono>
 
 VideoPlatform::VideoPlatform(QObject *parent)
     : QObject(parent)
 {
+    using namespace std::chrono_literals;
+    m_recordedTimeChanged.setInterval(1s);
+    m_recordedTimeChanged.setSingleShot(false);
+    connect(&m_recordedTimeChanged, &QTimer::timeout, this, &VideoPlatform::recordedTimeChanged);
 }
 
 bool VideoPlatform::isRecording() const
@@ -23,4 +29,17 @@ void VideoPlatform::setRecording(bool recording)
     Q_ASSERT(recording != m_recording);
     m_recording = recording;
     Q_EMIT recordingChanged(recording);
+
+    if (recording) {
+        m_startedRecording = QDateTime::currentDateTimeUtc();
+        m_recordedTimeChanged.start();
+    } else {
+        m_recordedTimeChanged.stop();
+    }
+}
+
+QString VideoPlatform::recordedTime() const
+{
+    auto msecs = m_startedRecording.msecsTo(QDateTime::currentDateTimeUtc());
+    return KFormat().formatDuration(msecs);
 }

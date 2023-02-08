@@ -209,6 +209,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     });
 
+    connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
     connect(m_videoPlatform.get(), &VideoPlatform::recordingChanged, this, &SpectacleCore::recordingChanged);
     connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
         const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
@@ -888,4 +889,9 @@ void SpectacleCore::setCurrentVideo(const QUrl &currentVideo)
     }
     m_currentVideo = currentVideo;
     Q_EMIT currentVideoChanged(currentVideo);
+}
+
+QString SpectacleCore::recordedTime() const
+{
+    return m_videoPlatform->recordedTime();
 }

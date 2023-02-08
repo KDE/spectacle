@@ -21,6 +21,7 @@ Item
         source: SpectacleCore.currentVideo
         flushMode: VideoOutput.FirstFrame
         autoPlay: true
+        visible: !SpectacleCore.isRecording
 
         Text {
             text: parent.availability
@@ -32,6 +33,6 @@ Item
     Kirigami.Heading {
         anchors.centerIn: parent
         visible: SpectacleCore.isRecording
-        text: i18n("Recording")
+        text: i18n("Recording:\n%1", SpectacleCore.recordedTime)
     }
 }
