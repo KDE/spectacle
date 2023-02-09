@@ -17,6 +17,7 @@
 #include <KUrlMimeData>
 #include <KWindowSystem>
 
+#include <Kirigami/Units>
 #include <QApplication>
 #include <QColorDialog>
 #include <QDrag>
@@ -446,7 +447,7 @@ void SpectacleWindow::startDrag()
         return;
     }
 
-    QUrl tempFile = exportManager->tempSave();
+    const QUrl tempFile = SpectacleCore::instance()->videoMode() ? SpectacleCore::instance()->currentVideo() : exportManager->tempSave();
     if (!tempFile.isValid()) {
         return;
     }
@@ -458,13 +459,19 @@ void SpectacleWindow::startDrag()
 
     auto dragHandler = new QDrag(this);
     dragHandler->setMimeData(mimeData);
-    QSize size = exportManager->pixmap().size();
 
-    // TODO: use the composed pixmap with annotations instead
-    if (size.width() > 256 || size.height() > 256) {
-        dragHandler->setPixmap(exportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    if (SpectacleCore::instance()->videoMode()) {
+        Kirigami::Units units;
+        auto iconSize = units.iconSizes()->large();
+        dragHandler->setPixmap(QIcon::fromTheme(QStringLiteral("video-x-matroska")).pixmap(iconSize, iconSize));
     } else {
-        dragHandler->setPixmap(exportManager->pixmap());
+        QSize size = exportManager->pixmap().size();
+        // TODO: use the composed pixmap with annotations instead
+        if (size.width() > 256 || size.height() > 256) {
+            dragHandler->setPixmap(exportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        } else {
+            dragHandler->setPixmap(exportManager->pixmap());
+        }
     }
     dragHandler->exec(Qt::CopyAction);
 }

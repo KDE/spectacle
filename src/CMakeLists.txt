@@ -106,6 +106,7 @@ target_link_libraries(
         KF5::GlobalAccel
         KF5::XmlGui
         KF5::GuiAddons
+        KF5::Kirigami2
         K::KPipeWireRecord
         Wayland::Client
 )
