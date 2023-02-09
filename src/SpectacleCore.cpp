@@ -92,7 +92,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
     auto onFinished = [this]() {
         m_platform->doGrab(Platform::ShutterMode::Immediate, m_tempGrabMode,
                            m_tempIncludePointer, m_tempIncludeDecorations);
-        setVideoMode(false);
     };
     QObject::connect(delayAnimation, &QVariantAnimation::stateChanged,
                      this, onStateChanged, Qt::QueuedConnection);
@@ -120,6 +119,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QPixmap &pixmap){
         m_annotationDocument->clear();
         onScreenshotUpdated(pixmap);
+        setVideoMode(false);
     });
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<ScreenImage> &screenImages) {
         SelectionEditor::instance()->setScreenImages(screenImages);
