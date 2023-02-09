@@ -286,9 +286,11 @@ EmptyPage {
                 visible: SpectacleCore.recordingSupported
                 currentIndex: 0
                 QQC2.TabButton {
+                    width: tabBar.width / tabBar.count
                     text: i18n("Screenshot")
                 }
                 QQC2.TabButton {
+                    width: tabBar.width / tabBar.count
                     text: i18n("Recording")
                 }
             }
