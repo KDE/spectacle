@@ -665,32 +665,33 @@ void SpectacleCore::onScreenshotFailed()
 
 void SpectacleCore::doNotify(const QUrl &theSavedAt)
 {
-    KNotification *lNotify = new KNotification(QStringLiteral("newScreenshotSaved"));
+    KNotification *notification = new KNotification(QStringLiteral("newScreenshotSaved"),
+                                                    KNotification::CloseOnTimeout, this);
 
     int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
     auto captureModeLabel = captureModeModel()->data(captureModeModel()->index(index),
                                                      Qt::DisplayRole);
-    lNotify->setTitle(captureModeLabel.toString());
+    notification->setTitle(captureModeLabel.toString());
 
     // a speaking message is prettier than a URL, special case for copy image/location to clipboard and the default pictures location
     const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
 
     if (m_copyImageToClipboard && theSavedAt.fileName().isEmpty()) {
-        lNotify->setText(i18n("A screenshot was saved to your clipboard."));
+        notification->setText(i18n("A screenshot was saved to your clipboard."));
     } else if (m_copyLocationToClipboard && !theSavedAt.fileName().isEmpty()) {
-        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+        notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
                               theSavedAt.fileName(),
                               lSavePath));
     } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
-        lNotify->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
+        notification->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
     } else if (!theSavedAt.fileName().isEmpty()) {
-        lNotify->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
+        notification->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
     }
 
     if (!theSavedAt.isEmpty()) {
-        lNotify->setUrls({theSavedAt});
-        lNotify->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
-        connect(lNotify, &KNotification::defaultActivated, this, [this, theSavedAt]() {
+        notification->setUrls({theSavedAt});
+        notification->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
+        connect(notification, &KNotification::defaultActivated, this, [this, theSavedAt]() {
             auto job = new KIO::OpenUrlJob(theSavedAt);
             job->start();
             QTimer::singleShot(250, this, [this] {
@@ -699,8 +700,8 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
                 }
             });
         });
-        lNotify->setActions({i18n("Annotate")});
-        connect(lNotify, &KNotification::action1Activated, this, [theSavedAt]() {
+        notification->setActions({i18n("Annotate")});
+        connect(notification, &KNotification::action1Activated, this, [theSavedAt]() {
             QProcess newInstance;
             newInstance.setProgram(QCoreApplication::applicationFilePath());
             newInstance.setArguments({
@@ -712,7 +713,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         });
     }
 
-    connect(lNotify, &QObject::destroyed, this, [this] {
+    connect(notification, &QObject::destroyed, this, [this] {
         QTimer::singleShot(250, this, [this] {
             if (isGuiNull() || Settings::quitAfterSaveCopyExport()) {
                 Q_EMIT allDone();
@@ -720,7 +721,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         });
     });
 
-    lNotify->sendEvent();
+    notification->sendEvent();
 }
 
 // In background and dbus mode, ensure that either save or copy image is enabled.
