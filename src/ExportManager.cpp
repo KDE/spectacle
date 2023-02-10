@@ -35,9 +35,9 @@
 
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
-    , mImageSavedNotInTemp(false)
-    , mSavePixmap(QPixmap())
-    , mTempFile(QUrl())
+    , m_imageSavedNotInTemp(false)
+    , m_savePixmap(QPixmap())
+    , m_tempFile(QUrl())
 {
     connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
     connect(this, &ExportManager::imageSavedAndCopied, &Settings::setLastSaveLocation);
@@ -45,7 +45,7 @@ ExportManager::ExportManager(QObject *parent)
 
 ExportManager::~ExportManager()
 {
-    delete mTempDir;
+    delete m_tempDir;
 }
 
 ExportManager *ExportManager::instance()
@@ -60,7 +60,7 @@ ExportManager *ExportManager::instance()
 
 QPixmap ExportManager::pixmap() const
 {
-    return mSavePixmap;
+    return m_savePixmap;
 }
 
 void ExportManager::setWindowTitle(const QString &windowTitle)
@@ -75,30 +75,30 @@ QString ExportManager::windowTitle() const
 
 void ExportManager::setPixmap(const QPixmap &pixmap)
 {
-    mSavePixmap = pixmap;
+    m_savePixmap = pixmap;
 
     // reset our saved tempfile
-    if (mTempFile.isValid()) {
-        mUsedTempFileNames.append(mTempFile);
-        QFile file(mTempFile.toLocalFile());
+    if (m_tempFile.isValid()) {
+        m_usedTempFileNames.append(m_tempFile);
+        QFile file(m_tempFile.toLocalFile());
         file.remove();
-        mTempFile = QUrl();
+        m_tempFile = QUrl();
     }
 
     // since the pixmap was modified, we now consider the image unsaved
-    mImageSavedNotInTemp = false;
+    m_imageSavedNotInTemp = false;
 
     Q_EMIT pixmapChanged();
 }
 
 void ExportManager::updatePixmapTimestamp()
 {
-    mPixmapTimestamp = QDateTime::currentDateTime();
+    m_pixmapTimestamp = QDateTime::currentDateTime();
 }
 
 void ExportManager::setTimestamp(const QDateTime &timestamp)
 {
-    mPixmapTimestamp = timestamp;
+    m_pixmapTimestamp = timestamp;
 }
 
 // native file save helpers
@@ -174,7 +174,7 @@ QString ExportManager::makeAutosaveFilename()
 
 QString ExportManager::formatFilename(const QString &nameTemplate)
 {
-    const QDateTime timestamp = mPixmapTimestamp;
+    const QDateTime timestamp = m_pixmapTimestamp;
     QString baseName = nameTemplate;
     QString baseDir = defaultSaveLocation();
     QString title;
@@ -190,14 +190,14 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     }
 
     QString result = baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
-                         .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
-                         .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
-                         .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
-                         .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
-                         .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
-                         .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
-                         .replace(QLatin1String("%t"), timestamp.toString(QStringLiteral("t")))
-                         .replace(QLatin1String("%T"), title);
+                             .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
+                             .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
+                             .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
+                             .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
+                             .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
+                             .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
+                             .replace(QLatin1String("%t"), timestamp.toString(QStringLiteral("t")))
+                             .replace(QLatin1String("%T"), title);
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
@@ -323,7 +323,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
         return false;
     }
 
-    return imageWriter.write(mSavePixmap.toImage());
+    return imageWriter.write(m_savePixmap.toImage());
 }
 
 bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
@@ -395,32 +395,32 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
 QUrl ExportManager::tempSave()
 {
     // if we already have a temp file saved, use that
-    if (mTempFile.isValid()) {
-        if (QFile(mTempFile.toLocalFile()).exists()) {
-            return mTempFile;
+    if (m_tempFile.isValid()) {
+        if (QFile(m_tempFile.toLocalFile()).exists()) {
+            return m_tempFile;
         }
     }
 
-    if (!mTempDir) {
-        mTempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + QStringLiteral("Spectacle.XXXXXX"));
+    if (!m_tempDir) {
+        m_tempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + QStringLiteral("Spectacle.XXXXXX"));
     }
-    if (mTempDir && mTempDir->isValid()) {
+    if (m_tempDir && m_tempDir->isValid()) {
         // create the temporary file itself with normal file name and also unique one for this session
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const QString baseFileName = mTempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(makeAutosaveFilename()).fileName();
+        const QString baseFileName = m_tempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(makeAutosaveFilename()).fileName();
 
         QString mimetype = makeSaveMimetype(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, mimetype, &ExportManager::isTempFileAlreadyUsed);
         QFile tmpFile(fileName);
         if (tmpFile.open(QFile::WriteOnly)) {
             if (writeImage(&tmpFile, mimetype.toLatin1())) {
-                mTempFile = QUrl::fromLocalFile(tmpFile.fileName());
+                m_tempFile = QUrl::fromLocalFile(tmpFile.fileName());
                 // try to make sure 3rd-party which gets the url of the temporary file e.g. on export
                 // properly treats this as readonly, also hide from other users
                 tmpFile.setPermissions(QFile::ReadUser);
-                return mTempFile;
+                return m_tempFile;
             }
         }
     }
@@ -444,7 +444,7 @@ bool ExportManager::save(const QUrl &url)
         saveSucceded = remoteSave(url, mimetype);
     }
     if (saveSucceded) {
-        mImageSavedNotInTemp = true;
+        m_imageSavedNotInTemp = true;
         KRecentDocument::add(url, QGuiApplication::desktopFileName());
     }
     return saveSucceded;
@@ -464,19 +464,19 @@ bool ExportManager::isFileExists(const QUrl &url) const
 
 bool ExportManager::isImageSavedNotInTemp() const
 {
-    return mImageSavedNotInTemp;
+    return m_imageSavedNotInTemp;
 }
 
 bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
 {
-    return mUsedTempFileNames.contains(url);
+    return m_usedTempFileNames.contains(url);
 }
 
 // save slots
 
 void ExportManager::doSave(const QUrl &url, bool notify)
 {
-    if (mSavePixmap.isNull()) {
+    if (m_savePixmap.isNull()) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -535,7 +535,7 @@ bool ExportManager::doSaveAs(bool notify)
 
 void ExportManager::doSaveAndCopy(const QUrl &url)
 {
-    if (mSavePixmap.isNull()) {
+    if (m_savePixmap.isNull()) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -554,7 +554,7 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
 void ExportManager::doCopyToClipboard(bool notify)
 {
     auto data = new QMimeData();
-    data->setImageData(mSavePixmap.toImage());
+    data->setImageData(m_savePixmap.toImage());
     data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
     KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
     Q_EMIT imageCopied();
@@ -566,7 +566,7 @@ void ExportManager::doCopyToClipboard(bool notify)
 void ExportManager::doCopyLocationToClipboard(bool notify)
 {
     QString localFile;
-    if (mImageSavedNotInTemp) {
+    if (m_imageSavedNotInTemp) {
         // The image has been saved (manually or automatically), we need to choose that file path
         localFile = Settings::self()->lastSaveLocation().toLocalFile();
     } else {
@@ -595,7 +595,7 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.setRenderHint(QPainter::LosslessImageRendering);
 
     QRect devRect(0, 0, printer->width(), printer->height());
-    QPixmap pixmap = mSavePixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QPixmap pixmap = m_savePixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     QRect srcRect = pixmap.rect();
     srcRect.moveCenter(devRect.center());
 

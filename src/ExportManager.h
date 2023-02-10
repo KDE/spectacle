@@ -93,12 +93,11 @@ private:
     bool remoteSave(const QUrl &url, const QString &mimetype);
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
-    bool mImageSavedNotInTemp;
-    QPixmap mSavePixmap;
-    QDateTime mPixmapTimestamp;
-    QUrl mTempFile;
-    QTemporaryDir *mTempDir = nullptr;
-    QList<QUrl> mUsedTempFileNames;
-    QString mWindowTitle;
+    bool m_imageSavedNotInTemp;
+    QPixmap m_savePixmap;
+    QDateTime m_pixmapTimestamp;
+    QUrl m_tempFile;
+    QTemporaryDir *m_tempDir = nullptr;
+    QList<QUrl> m_usedTempFileNames;
     QString m_windowTitle;
 };
