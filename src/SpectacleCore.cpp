@@ -838,6 +838,8 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 
 void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 {
+    // quit on last window closed whenever a GUI is created to avoid never closing.
+    qApp->setQuitOnLastWindowClosed(true);
     deleteWindows();
 
     // Allow the window to be transparent. Used for video recording UI.
@@ -852,6 +854,8 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 
 void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
 {
+    // quit on last window closed whenever a GUI is created to avoid never closing.
+    qApp->setQuitOnLastWindowClosed(true);
     // always switch to gui mode when a viewer window is used.
     m_startMode = SpectacleCore::StartMode::Gui;
     deleteWindows();
