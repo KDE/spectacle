@@ -764,7 +764,7 @@ Platform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captu
     } else if (supportedGrabModes.testFlag(Platform::AllScreens)) { // default if supported
         return GrabMode::AllScreens;
     } else {
-        return GrabMode::InvalidChoice;
+        return GrabMode::NoGrabModes;
     }
 }
 

@@ -720,7 +720,7 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
     case GrabMode::TransientWithParent:
         grabTransientWithParent(theIncludePointer, theIncludeDecorations);
         break;
-    case GrabMode::InvalidChoice:
+    case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
     }
 }

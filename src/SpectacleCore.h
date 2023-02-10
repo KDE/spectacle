@@ -145,7 +145,7 @@ private:
     bool m_existingLoaded = false;
     std::array<bool, CommandLineOptions::TotalOptions> m_cliOptions = {};
 
-    Platform::GrabMode m_lastGrabMode = Platform::GrabMode::InvalidChoice;
+    Platform::GrabMode m_lastGrabMode = Platform::GrabMode::NoGrabModes;
     bool m_lastIncludePointer = false; // cli default value
     bool m_lastIncludeDecorations = true; // cli default value
     bool m_videoMode = false;

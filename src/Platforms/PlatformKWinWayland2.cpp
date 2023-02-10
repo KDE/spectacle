@@ -328,9 +328,8 @@ void PlatformKWinWayland2::doGrab(ShutterMode, GrabMode theGrabMode, bool theInc
     case GrabMode::PerScreenImageNative:
         takeScreenShotScreens(QGuiApplication::screens(), flags);
         break;
-
-    case GrabMode::InvalidChoice:
     case GrabMode::TransientWithParent:
+    case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
         break;
     }

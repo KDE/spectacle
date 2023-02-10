@@ -21,14 +21,14 @@ class Platform : public QObject
 
 public:
     enum GrabMode {
-        InvalidChoice = 0x00,
-        AllScreens = 0x01,
-        CurrentScreen = 0x02,
-        ActiveWindow = 0x04,
-        WindowUnderCursor = 0x08,
-        TransientWithParent = 0x10,
-        AllScreensScaled = 0x20,
-        PerScreenImageNative = 0x40,
+        NoGrabModes =           0b0000000,
+        AllScreens =            0b0000001,
+        CurrentScreen =         0b0000010,
+        ActiveWindow =          0b0000100,
+        WindowUnderCursor =     0b0001000,
+        TransientWithParent =   0b0010000,
+        AllScreensScaled =      0b0100000,
+        PerScreenImageNative =  0b1000000,
     };
     Q_DECLARE_FLAGS(GrabModes, GrabMode)
     Q_FLAG(GrabModes)

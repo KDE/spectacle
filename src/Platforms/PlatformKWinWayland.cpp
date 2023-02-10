@@ -253,9 +253,9 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
         doGrabHelper(QStringLiteral("interactive"), lOpMask);
         return;
     }
-    case GrabMode::InvalidChoice:
     case GrabMode::ActiveWindow:
     case GrabMode::TransientWithParent:
+    case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
         return;
     }
