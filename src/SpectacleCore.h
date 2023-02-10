@@ -80,6 +80,7 @@ public:
     QString recordedTime() const;
 
 public Q_SLOTS:
+    void activate(const QStringList &arguments, const QString &workingDirectory);
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
                            int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000,
                            bool includePointer = Settings::includePointer(),
@@ -89,8 +90,6 @@ public Q_SLOTS:
     void onScreenshotUpdated(const QPixmap &thePixmap);
     void onScreenshotFailed();
     void doNotify(const QUrl &theSavedAt);
-
-    void activate(QStringList arguments, const QString & /*workingDirectory */);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();

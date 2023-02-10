@@ -290,8 +290,9 @@ qreal SpectacleCore::captureProgress() const
         0 : m_delayAnimation->currentValue().toReal();
 }
 
-void SpectacleCore::activate(QStringList arguments, const QString & /*workingDirectory */)
+void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
+    Q_UNUSED(workingDirectory)
 
     // Remove any windows if they are present.
     deleteWindows();
