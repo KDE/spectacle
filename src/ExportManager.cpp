@@ -65,22 +65,12 @@ QPixmap ExportManager::pixmap() const
 
 void ExportManager::setWindowTitle(const QString &windowTitle)
 {
-    mWindowTitle = windowTitle;
+    m_windowTitle = windowTitle;
 }
 
 QString ExportManager::windowTitle() const
 {
-    return mWindowTitle;
-}
-
-CaptureModeModel::CaptureMode ExportManager::captureMode() const
-{
-    return mCaptureMode;
-}
-
-void ExportManager::setCaptureMode(CaptureModeModel::CaptureMode theCaptureMode)
-{
-    mCaptureMode = theCaptureMode;
+    return m_windowTitle;
 }
 
 void ExportManager::setPixmap(const QPixmap &pixmap)
@@ -189,9 +179,8 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     QString baseDir = defaultSaveLocation();
     QString title;
 
-    if (mCaptureMode == CaptureModeModel::ActiveWindow || mCaptureMode == CaptureModeModel::TransientWithParent
-        || mCaptureMode == CaptureModeModel::WindowUnderCursor) {
-        title = mWindowTitle.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
+    if (!m_windowTitle.isEmpty()) {
+        title = m_windowTitle.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it
         const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");

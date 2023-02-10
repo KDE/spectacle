@@ -686,6 +686,10 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
 
 void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
 {
+    if (theGrabMode & ~(ActiveWindow | WindowUnderCursor | TransientWithParent)) {
+        // Notify that window title is empty since we are not picking a window.
+        Q_EMIT windowTitleChanged();
+    }
     switch (theGrabMode) {
     case GrabMode::AllScreens:
     case GrabMode::AllScreensScaled:

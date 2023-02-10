@@ -5,8 +5,6 @@
 
 #pragma once
 
-#include <CaptureModeModel.h>
-
 #include <KLocalizedString>
 #include <QDateTime>
 class QIODevice;
@@ -45,9 +43,15 @@ public:
     QPixmap pixmap() const;
     void updatePixmapTimestamp();
     void setTimestamp(const QDateTime &timestamp);
+
+    /**
+     * The title used to fill the window title template in formatted file names.
+     */
     QString windowTitle() const;
-    CaptureModeModel::CaptureMode captureMode() const;
-    void setCaptureMode(CaptureModeModel::CaptureMode theCaptureMode);
+
+    /**
+     * Returns a formatted filename using a template string.
+     */
     QString formatFilename(const QString &nameTemplate);
 
     QString suggestedVideoFilename(const QString &extension);
@@ -96,5 +100,5 @@ private:
     QTemporaryDir *mTempDir = nullptr;
     QList<QUrl> mUsedTempFileNames;
     QString mWindowTitle;
-    CaptureModeModel::CaptureMode mCaptureMode = CaptureModeModel::AllScreens;
+    QString m_windowTitle;
 };

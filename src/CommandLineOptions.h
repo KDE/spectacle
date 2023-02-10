@@ -98,11 +98,52 @@ struct CommandLineOptions {
         i18n("Open and edit existing screenshot file"),
         QStringLiteral("existingFileName")
     };
+
     const QList<QCommandLineOption> allOptions = {
-        fullscreen, current, activeWindow, windowUnderCursor, transientOnly, region, launchOnly,
-        gui, background, dbus, noNotify, output, delay, copyImage, copyPath, onClick, newInstance,
-        pointer, noDecoration, editExisting
+        fullscreen,
+        current,
+        activeWindow,
+        windowUnderCursor,
+        transientOnly,
+        region,
+        launchOnly,
+        gui,
+        background,
+        dbus,
+        noNotify,
+        output,
+        delay,
+        copyImage,
+        copyPath,
+        onClick,
+        newInstance,
+        pointer,
+        noDecoration,
+        editExisting
+    };
+
+    // Keep order in sync with allOptions
+    enum Option {
+        Fullscreen,
+        Current,
+        ActiveWindow,
+        WindowUnderCursor,
+        TransientOnly,
+        Region,
+        LaunchOnly,
+        Gui,
+        Background,
+        DBus,
+        NoNotify,
+        Output,
+        Delay,
+        CopyImage,
+        CopyPath,
+        OnClick,
+        NewInstance,
+        Pointer,
+        NoDecoration,
+        EditExisting,
+        TotalOptions
     };
 };
-
-

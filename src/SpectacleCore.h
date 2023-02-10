@@ -83,8 +83,7 @@ public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
                            int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000,
                            bool includePointer = Settings::includePointer(),
-                           bool includeDecorations = Settings::includeDecorations(),
-                           bool transientOnly = Settings::transientOnly());
+                           bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
     void showErrorMessage(const QString &theErrString);
     void onScreenshotUpdated(const QPixmap &thePixmap);
@@ -108,7 +107,11 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
-    Platform::GrabMode toPlatformGrabMode(CaptureModeModel::CaptureMode theCaptureMode);
+    void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
+                           bool includePointer, bool includeDecorations);
+    void setSaveCopyImageCopyPath(bool save, bool copyImage, bool copyPath);
+    Platform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
+    CaptureModeModel::CaptureMode toCaptureMode(Platform::GrabMode grabMode) const;
     bool isGuiNull() const;
     QQmlEngine *getQmlEngine();
     void initCaptureWindows(CaptureWindow::Mode mode);
@@ -140,10 +143,11 @@ private:
     bool m_saveToOutput = false;
     bool m_editExisting = false;
     bool m_existingLoaded = false;
+    std::array<bool, CommandLineOptions::TotalOptions> m_cliOptions = {};
 
-    Platform::GrabMode m_tempGrabMode = Platform::GrabMode::InvalidChoice;
-    bool m_tempIncludePointer = false;
-    bool m_tempIncludeDecorations = false;
+    Platform::GrabMode m_lastGrabMode = Platform::GrabMode::InvalidChoice;
+    bool m_lastIncludePointer = false; // cli default value
+    bool m_lastIncludeDecorations = true; // cli default value
     bool m_videoMode = false;
     QUrl m_currentVideo;
 };

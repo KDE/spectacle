@@ -6,6 +6,7 @@
  */
 
 #include "SpectacleCore.h"
+#include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/CaptureWindow.h"
@@ -16,6 +17,7 @@
 #include "ShortcutActions.h"
 // generated
 #include "Config.h"
+#include "settings.h"
 #include "spectacle_core_debug.h"
 
 #include <KGlobalAccel>
@@ -90,8 +92,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     };
     auto onFinished = [this]() {
-        m_platform->doGrab(Platform::ShutterMode::Immediate, m_tempGrabMode,
-                           m_tempIncludePointer, m_tempIncludeDecorations);
+        m_platform->doGrab(Platform::ShutterMode::Immediate, m_lastGrabMode,
+                           m_lastIncludePointer, m_lastIncludeDecorations);
     };
     QObject::connect(delayAnimation, &QVariantAnimation::stateChanged,
                      this, onStateChanged, Qt::QueuedConnection);
@@ -290,28 +292,92 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(QStringList arguments, const QString & /*workingDirectory */)
 {
-    // QCommandLineParser expects the first argument to be the executable name
-    // In the current version it just strips it away
-    arguments.prepend(qApp->applicationFilePath());
+
+    // Remove any windows if they are present.
+    deleteWindows();
 
     // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
     QCommandLineParser parser;
     parser.addOptions(CommandLineOptions::self()->allOptions);
     parser.parse(arguments);
 
-    m_startMode = StartMode::Gui;
-    m_existingLoaded = false;
-    m_notify = true;
-    qint64 delayMsec = 0;
-
-    // are we ask to run in background or dbus mode?
-    if (parser.isSet(CommandLineOptions::self()->background)) {
-        m_startMode = StartMode::Background;
-    } else if (parser.isSet(CommandLineOptions::self()->dbus)) {
-        m_startMode = StartMode::DBus;
+    // Collect parsed command line options
+    using Option = CommandLineOptions::Option;
+    m_cliOptions.fill(false); // reset all values to false
+    int optionsToCheck = parser.optionNames().size();
+    for (int i = 0; optionsToCheck > 0 && i < CommandLineOptions::self()->allOptions.size(); ++i) {
+        m_cliOptions[i] = parser.isSet(CommandLineOptions::self()->allOptions[i]);
+        if (m_cliOptions[i]) {
+            --optionsToCheck;
+        }
     }
 
-    m_editExisting = parser.isSet(CommandLineOptions::self()->editExisting);
+    // No existing screen capture loaded.
+    m_existingLoaded = false;
+
+    // Determine start mode
+    m_startMode = StartMode::Gui; // Default to Gui
+    // Gui is an option that's normally useless since it's the default mode.
+    // Make it override the other modes if explicitly set or using the launchonly option.
+    if (!m_cliOptions[Option::Gui] && !m_cliOptions[Option::LaunchOnly]) {
+        // Background gets precidence over DBus
+        if (m_cliOptions[Option::Background]) {
+            m_startMode = StartMode::Background;
+        } else if (m_cliOptions[Option::DBus]) {
+            m_startMode = StartMode::DBus;
+        }
+    }
+
+    // In the GUI/CLI, the TransientWithParent mode is represented by the
+    // "Window Under Cursor" option and the real WindowUnderCursor mode is
+    // represented by the popup-only/transientOnly setting, which is meant to
+    // override TransientWithParent. Needless to say, This is rather convoluted.
+    // TODO: Improve the API for transientOnly or make it obsolete.
+    bool transientOnly;
+    bool onClick;
+    int delayMsec = 0; // default to 0 if cli value parse fails
+    bool includeDecorations;
+    bool includePointer;
+    if (m_startMode == StartMode::Background) {
+        transientOnly = m_cliOptions[Option::TransientOnly];
+        onClick = m_cliOptions[Option::OnClick];
+        if (onClick) {
+            delayMsec = -1;
+        } else if (m_cliOptions[Option::Delay]) {
+            bool parseOk = false;
+            int value = parser.value(CommandLineOptions::self()->delay).toInt(&parseOk);
+            if (parseOk) {
+                delayMsec = value;
+            }
+        }
+        includeDecorations = !m_cliOptions[Option::NoDecoration];
+        includePointer = m_cliOptions[Option::Pointer];
+        setSaveCopyImageCopyPath(m_cliOptions[Option::Output],
+                                 m_cliOptions[Option::CopyImage],
+                                 m_cliOptions[Option::CopyPath]);
+    } else {
+        transientOnly = Settings::transientOnly() || m_cliOptions[Option::TransientOnly];
+        onClick = Settings::captureOnClick() || m_cliOptions[Option::OnClick];
+        if (onClick) {
+            delayMsec = -1;
+        } else if (m_cliOptions[Option::Delay]) {
+            bool parseOk = false;
+            int value = parser.value(CommandLineOptions::self()->delay).toInt(&parseOk);
+            if (parseOk) {
+                delayMsec = value;
+            }
+        } else {
+            delayMsec = Settings::captureDelay() * 1000; // default when cli option isn't used
+        }
+        includeDecorations = Settings::includeDecorations()
+                            && !m_cliOptions[Option::NoDecoration];
+        includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
+        setSaveCopyImageCopyPath(m_cliOptions[Option::Output] || Settings::autoSaveImage(),
+                                 m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
+                                 m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
+    }
+
+    m_editExisting = m_cliOptions[Option::EditExisting];
     if (m_editExisting) {
         QString existingFileName = parser.value(CommandLineOptions::self()->editExisting);
         if (!(existingFileName.isEmpty() || existingFileName.isNull())) {
@@ -320,121 +386,71 @@ void SpectacleCore::activate(QStringList arguments, const QString & /*workingDir
         }
     }
 
-    auto onClickAvailable = m_platform->supportedShutterModes().testFlag(Platform::ShutterMode::OnClick);
-    if ((!onClickAvailable) && (delayMsec < 0)) {
-        delayMsec = 0;
+    // Determine grab mode
+    using CaptureMode = CaptureModeModel::CaptureMode;
+    using GrabMode = Platform::GrabMode;
+    GrabMode grabMode = GrabMode::AllScreens; // Default to all screens
+    if (m_cliOptions[Option::Fullscreen]) {
+        grabMode = GrabMode::AllScreens;
+    } else if (m_cliOptions[Option::Current]) {
+        grabMode = GrabMode::CurrentScreen;
+    } else if (m_cliOptions[Option::ActiveWindow]) {
+        grabMode = GrabMode::ActiveWindow;
+    } else if (m_cliOptions[Option::Region]) {
+        grabMode = GrabMode::PerScreenImageNative;
+    } else if (m_cliOptions[Option::WindowUnderCursor]) {
+        grabMode = GrabMode::WindowUnderCursor;
+    } else if (Settings::launchAction() == Settings::UseLastUsedCapturemode) {
+        grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
     }
+    ExportManager::instance()->setWindowTitle({});
 
     // reset last region if it should not be remembered across restarts
     if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
+        // QRect defaults to {0,0,-1,-1} while QRectF defaults to {0,0,0,0}.
         Settings::setCropRegion({0, 0, 0, 0});
     }
 
-    CaptureModeModel::CaptureMode captureMode = CaptureModeModel::AllScreens;
-    // extract the capture mode
-    if (parser.isSet(CommandLineOptions::self()->fullscreen)) {
-        captureMode = CaptureModeModel::AllScreens;
-    } else if (parser.isSet(CommandLineOptions::self()->current)) {
-        captureMode = CaptureModeModel::CurrentScreen;
-    } else if (parser.isSet(CommandLineOptions::self()->activeWindow)) {
-        captureMode = CaptureModeModel::ActiveWindow;
-    } else if (parser.isSet(CommandLineOptions::self()->region)) {
-        captureMode = CaptureModeModel::RectangularRegion;
-    } else if (parser.isSet(CommandLineOptions::self()->windowUnderCursor)) {
-        captureMode = CaptureModeModel::TransientWithParent;
-    } else if (parser.isSet(CommandLineOptions::self()->transientOnly)) {
-        captureMode = CaptureModeModel::WindowUnderCursor;
-    } else if (m_startMode == StartMode::Gui
-               && (parser.isSet(CommandLineOptions::self()->launchOnly) || Settings::launchAction() == Settings::EnumLaunchAction::DoNotTakeScreenshot)
-               && !m_editExisting) {
-        initViewerWindow(ViewerWindow::Dialog);
-        m_viewerWindow->setVisible(true);
-        return;
-    } else if (Settings::launchAction() == Settings::EnumLaunchAction::UseLastUsedCapturemode && !m_editExisting) {
-        captureMode = CaptureModeModel::CaptureMode(Settings::captureMode());
-        if (Settings::captureOnClick()) {
-            delayMsec = -1;
-            takeNewScreenshot(captureMode, delayMsec);
-        }
-    }
-
-    auto exportManager = ExportManager::instance();
-    exportManager->setCaptureMode(captureMode);
-
     switch (m_startMode) {
     case StartMode::DBus:
-        // if both mCopyImageToClipboard and mSaveToOutput are false, image will only be copied to clipboard
-        m_copyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
-        m_copyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
-        m_saveToOutput = Settings::autoSaveImage();
+        m_notify = !m_cliOptions[Option::NoNotify];
 
         qApp->setQuitOnLastWindowClosed(false);
         break;
 
     case StartMode::Background: {
-        m_copyImageToClipboard = false;
-        m_copyLocationToClipboard = false;
-        m_saveToOutput = true;
+        m_notify = !m_cliOptions[Option::NoNotify];
 
-        if (parser.isSet(CommandLineOptions::self()->noNotify)) {
-            m_notify = false;
-        }
-
-        if (parser.isSet(CommandLineOptions::self()->copyImage)) {
-            m_saveToOutput = false;
-            m_copyImageToClipboard = true;
-        } else if (parser.isSet(CommandLineOptions::self()->copyPath)) {
-            m_copyLocationToClipboard = true;
-        }
-
-        if (parser.isSet(CommandLineOptions::self()->output)) {
-            m_saveToOutput = true;
+        if (m_saveToOutput) {
             QString lFileName = parser.value(CommandLineOptions::self()->output);
             if (!(lFileName.isEmpty() || lFileName.isNull())) {
                 setScreenCaptureUrl(lFileName);
             }
         }
 
-        if (parser.isSet(CommandLineOptions::self()->delay)) {
-            bool lParseOk = false;
-            qint64 lDelayValue = parser.value(CommandLineOptions::self()->delay).toLongLong(&lParseOk);
-            if (lParseOk) {
-                delayMsec = lDelayValue;
-            }
-        }
+        qApp->setQuitOnLastWindowClosed(false);
 
-        if (parser.isSet(CommandLineOptions::self()->onClick)) {
-            delayMsec = -1;
-        }
-
-        if (isGuiNull()) {
-            static_cast<QApplication *>(qApp->instance())->setQuitOnLastWindowClosed(false);
-        }
-
-        auto lIncludePointer = false;
-        auto lIncludeDecorations = true;
-
-        if (parser.isSet(CommandLineOptions::self()->pointer)) {
-            lIncludePointer = true;
-        }
-
-        if (parser.isSet(CommandLineOptions::self()->noDecoration)) {
-            lIncludeDecorations = false;
-        }
-
-        takeNewScreenshot(captureMode, delayMsec, lIncludePointer, lIncludeDecorations);
+        takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
     } break;
 
     case StartMode::Gui:
+        m_notify = Settings::quitAfterSaveCopyExport() && !m_cliOptions[Option::NoNotify];
         if (isGuiNull()) {
-            takeNewScreenshot(captureMode, delayMsec);
+            if ((m_cliOptions[Option::LaunchOnly]
+                    || Settings::launchAction() == Settings::DoNotTakeScreenshot)
+                && !m_editExisting
+            ) {
+                initViewerWindow(ViewerWindow::Dialog);
+                m_viewerWindow->setVisible(true);
+            } else {
+                takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
+            }
         } else {
             using Actions = Settings::EnumPrintKeyActionRunning;
             switch (Settings::printKeyActionRunning()) {
             case Actions::TakeNewScreenshot: {
-                // 0 means Immediate, -1 onClick
-                int timeout = m_platform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate) ? 0 : -1;
-                takeNewScreenshot(Settings::captureMode(), timeout);
+                // takeNewScreenshot switches to on click if immediate is not supported.
+                takeNewScreenshot(grabMode, 0, includePointer, includeDecorations);
                 break;
             }
             case Actions::FocusWindow: {
@@ -470,25 +486,19 @@ void SpectacleCore::activate(QStringList arguments, const QString & /*workingDir
     }
 }
 
-void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations, bool transientOnly)
+void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
 {
     m_delayAnimation->stop();
 
-    // TODO: Improve API for transientOnly or make it obsolete.
-    if (!transientOnly
-        && m_platform->supportedGrabModes() & Platform::TransientWithParent
-        && captureMode == CaptureModeModel::WindowUnderCursor) {
-        captureMode = CaptureModeModel::TransientWithParent;
-    }
+    m_lastGrabMode = grabMode;
+    m_lastIncludePointer = includePointer;
+    m_lastIncludeDecorations = includeDecorations;
 
-    ExportManager::instance()->setCaptureMode(CaptureModeModel::CaptureMode(captureMode));
-    m_tempGrabMode = toPlatformGrabMode(CaptureModeModel::CaptureMode(captureMode));
-    m_tempIncludePointer = includePointer;
-    m_tempIncludeDecorations = includeDecorations;
-
-    if (timeout < 0 || !m_platform->supportedShutterModes().testFlag(Platform::ShutterMode::Immediate)) {
+    if ((timeout < 0 || !m_platform->supportedShutterModes().testFlag(Platform::Immediate))
+        && m_platform->supportedShutterModes().testFlag(Platform::OnClick)
+    ) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
-        m_platform->doGrab(Platform::ShutterMode::OnClick, m_tempGrabMode, m_tempIncludePointer, m_tempIncludeDecorations);
+        m_platform->doGrab(Platform::ShutterMode::OnClick, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
         return;
     }
 
@@ -504,7 +514,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         QTimer::singleShot(timeout, this, [this]() {
-            m_platform->doGrab(Platform::ShutterMode::Immediate, m_tempGrabMode, m_tempIncludePointer, m_tempIncludeDecorations);
+            m_platform->doGrab(Platform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
         });
         return;
     }
@@ -513,6 +523,13 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     m_delayAnimation->start();
 
     SpectacleWindow::setVisibilityForAll(QWindow::Minimized);
+}
+
+void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations)
+{
+    using CaptureMode = CaptureModeModel::CaptureMode;
+    takeNewScreenshot(toGrabMode(CaptureMode(captureMode), Settings::transientOnly()),
+                      timeout, includePointer, includeDecorations);
 }
 
 void SpectacleCore::cancelScreenshot()
@@ -540,6 +557,7 @@ void SpectacleCore::showErrorMessage(const QString &theErrString)
 
 void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
 {
+    using Option = CommandLineOptions::Option;
     QPixmap existingPixmap;
     const QPixmap &pixmapUsed = (m_editExisting && !m_existingLoaded) ? existingPixmap : thePixmap;
     if (m_editExisting && !m_existingLoaded) {
@@ -555,13 +573,10 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
     case StartMode::Background:
     case StartMode::DBus: {
         syncExportPixmap();
-        if (m_saveToOutput || !m_copyImageToClipboard
-            || (Settings::autoSaveImage() && !m_saveToOutput)) {
-            m_saveToOutput = Settings::autoSaveImage();
+        if (m_saveToOutput) {
             QUrl lSavePath = (m_startMode == StartMode::Background && m_screenCaptureUrl.isValid() && m_screenCaptureUrl.isLocalFile()) ? m_screenCaptureUrl : QUrl();
             exportManager->doSave(lSavePath, m_notify);
         }
-
         if (m_copyImageToClipboard) {
             exportManager->doCopyToClipboard(m_notify);
         } else if (m_copyLocationToClipboard) {
@@ -582,6 +597,13 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
         }
     } break;
     case StartMode::Gui:
+        // These can change in GUI mode, so set them again
+        m_notify = Settings::quitAfterSaveCopyExport()
+                && !m_cliOptions[CommandLineOptions::NoNotify];
+        setSaveCopyImageCopyPath(m_cliOptions[Option::Output] || Settings::autoSaveImage(),
+                                 m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
+                                 m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
+
         if (pixmapUsed.isNull()) {
             initViewerWindow(ViewerWindow::Dialog);
             m_viewerWindow->setVisible(true);
@@ -598,10 +620,6 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
         auto titlePreset = !pixmapUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
 
-        m_saveToOutput = Settings::autoSaveImage();
-        m_copyImageToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyImage;
-        m_copyLocationToClipboard = Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation;
-
         if (m_saveToOutput && m_copyImageToClipboard) {
             syncExportPixmap();
             exportManager->doSaveAndCopy();
@@ -610,7 +628,10 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
         } else if (m_copyImageToClipboard) {
             syncExportPixmap();
             exportManager->doCopyToClipboard(false);
-        } else if (m_copyLocationToClipboard) {
+        }
+        // This is a separate block since we don't do anything special for
+        // saving and copying the location, unlike saving and copying the image.
+        if (m_copyLocationToClipboard) {
             exportManager->doCopyLocationToClipboard(false);
         }
     }
@@ -645,7 +666,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 {
     KNotification *lNotify = new KNotification(QStringLiteral("newScreenshotSaved"));
 
-    int index = captureModeModel()->indexOfCaptureMode(ExportManager::instance()->captureMode());
+    int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
     auto captureModeLabel = captureModeModel()->data(captureModeModel()->index(index),
                                                      Qt::DisplayRole);
     lNotify->setTitle(captureModeLabel.toString());
@@ -701,27 +722,68 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     lNotify->sendEvent();
 }
 
-// Private
-
-Platform::GrabMode SpectacleCore::toPlatformGrabMode(CaptureModeModel::CaptureMode theCaptureMode)
+// In background and dbus mode, ensure that either save or copy image is enabled.
+void SpectacleCore::setSaveCopyImageCopyPath(bool save, bool copyImage, bool copyPath)
 {
-    switch (theCaptureMode) {
-    case CaptureModeModel::AllScreens:
-        return Platform::GrabMode::AllScreens;
-    case CaptureModeModel::CurrentScreen:
-        return Platform::GrabMode::CurrentScreen;
-    case CaptureModeModel::ActiveWindow:
-        return Platform::GrabMode::ActiveWindow;
-    case CaptureModeModel::WindowUnderCursor:
-        return Platform::GrabMode::WindowUnderCursor;
-    case CaptureModeModel::TransientWithParent:
-        return Platform::GrabMode::TransientWithParent;
-    case CaptureModeModel::RectangularRegion:
-        return Platform::GrabMode::PerScreenImageNative;
-    case CaptureModeModel::AllScreensScaled:
-        return Platform::GrabMode::AllScreensScaled;
-    default:
-        return Platform::GrabMode::InvalidChoice;
+    if (m_startMode == StartMode::Gui) {
+        m_saveToOutput = save;
+        m_copyImageToClipboard = copyImage;
+        m_copyLocationToClipboard = save && copyPath;
+    } else {
+        m_saveToOutput = save || !copyImage;
+        m_copyImageToClipboard = !m_saveToOutput || copyImage;
+        m_copyLocationToClipboard = save && copyPath;
+    }
+}
+
+Platform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const
+{
+    using GrabMode = Platform::GrabMode;
+    using CaptureMode = CaptureModeModel::CaptureMode;
+    const auto &supportedGrabModes = m_platform->supportedGrabModes();
+    if (captureMode == CaptureMode::CurrentScreen
+        && supportedGrabModes.testFlag(Platform::CurrentScreen)) {
+        return GrabMode::CurrentScreen;
+    } else if (captureMode == CaptureMode::ActiveWindow
+        && supportedGrabModes.testFlag(Platform::ActiveWindow)) {
+        return GrabMode::ActiveWindow;
+    } else if (captureMode == CaptureMode::WindowUnderCursor
+        && supportedGrabModes.testFlag(Platform::WindowUnderCursor)) {
+        // TODO: Improve API for transientOnly or make it obsolete.
+        if (transientOnly || !supportedGrabModes.testFlag(Platform::TransientWithParent)) {
+            return GrabMode::WindowUnderCursor;
+        } else {
+            return GrabMode::TransientWithParent;
+        }
+    } else if (captureMode == CaptureMode::RectangularRegion
+        && supportedGrabModes.testFlag(Platform::PerScreenImageNative)) {
+        return GrabMode::PerScreenImageNative;
+    } else if (captureMode == CaptureMode::AllScreensScaled
+        && supportedGrabModes.testFlag(Platform::AllScreensScaled)) {
+        return GrabMode::AllScreensScaled;
+    } else if (supportedGrabModes.testFlag(Platform::AllScreens)) { // default if supported
+        return GrabMode::AllScreens;
+    } else {
+        return GrabMode::InvalidChoice;
+    }
+}
+
+CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(Platform::GrabMode grabMode) const
+{
+    using GrabMode = Platform::GrabMode;
+    using CaptureMode = CaptureModeModel::CaptureMode;
+    if (grabMode == GrabMode::CurrentScreen) {
+        return CaptureMode::CurrentScreen;
+    } else if (grabMode == GrabMode::ActiveWindow) {
+        return CaptureMode::ActiveWindow;
+    } else if (grabMode == GrabMode::WindowUnderCursor) {
+        return CaptureMode::WindowUnderCursor;
+    } else if (grabMode == GrabMode::PerScreenImageNative) {
+        return CaptureMode::RectangularRegion;
+    } else if (grabMode == GrabMode::AllScreensScaled) {
+        return CaptureMode::AllScreensScaled;
+    } else {
+        return CaptureMode::AllScreens;
     }
 }
 
@@ -732,9 +794,6 @@ bool SpectacleCore::isGuiNull() const
 
 void SpectacleCore::initGuiNoScreenshot()
 {
-    // in some cases like the openWithoutScreenshot DBus method, the start mode is DBus, but we need to show a GUI
-    // so we should switch the mode appropriately
-    m_startMode = SpectacleCore::StartMode::Gui;
     initViewerWindow(ViewerWindow::Dialog);
     m_viewerWindow->setVisible(true);
 }
@@ -791,6 +850,8 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 
 void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
 {
+    // always switch to gui mode when a viewer window is used.
+    m_startMode = SpectacleCore::StartMode::Gui;
     deleteWindows();
 
     // Transparency isn't needed for this window.

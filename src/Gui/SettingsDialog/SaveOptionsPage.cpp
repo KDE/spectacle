@@ -72,20 +72,17 @@ SaveOptionsPage::~SaveOptionsPage() = default;
 
 void SaveOptionsPage::updateFilenamePreview()
 {
-    auto lExportManager = ExportManager::instance();
-    lExportManager->setWindowTitle(QStringLiteral("Spectacle"));
-    CaptureModeModel::CaptureMode lOldMode = lExportManager->captureMode();
+    auto exportManager = ExportManager::instance();
+    exportManager->setWindowTitle(QStringLiteral("Spectacle"));
 
-    // If the grabMode is not one of those below we need to change it to have the placeholder
-    // replaced by the window title
-    const bool lSwitchGrabMode = !(lOldMode == CaptureModeModel::ActiveWindow || lOldMode == CaptureModeModel::TransientWithParent
-                                   || lOldMode == CaptureModeModel::WindowUnderCursor);
-    if (lSwitchGrabMode) {
-        lExportManager->setCaptureMode(CaptureModeModel::ActiveWindow);
+    // If there is no window title, we need to change it to have a placeholder.
+    const bool usePlaceholder = exportManager->windowTitle().isEmpty();
+    if (usePlaceholder) {
+        exportManager->setWindowTitle(QGuiApplication::applicationDisplayName());
     }
-    const QString lFileName = lExportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
+    const QString lFileName = exportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
     m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
-    if (lSwitchGrabMode) {
-        lExportManager->setCaptureMode(lOldMode);
+    if (usePlaceholder) {
+        exportManager->setWindowTitle({});
     }
 }

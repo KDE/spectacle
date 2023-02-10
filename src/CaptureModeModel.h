@@ -19,14 +19,13 @@ public:
     CaptureModeModel(Platform::GrabModes grabModes, QObject *parent = nullptr);
 
     enum CaptureMode {
-        AllScreens = 0,
-        CurrentScreen = 1,
-        ActiveWindow = 2,
-        WindowUnderCursor = 3,
-        TransientWithParent = 4,
-        RectangularRegion = 5,
+        RectangularRegion,
+        AllScreens,
         // TODO: find a more user configuration friendly way to scale source images
-        AllScreensScaled = 6
+        AllScreensScaled,
+        CurrentScreen,
+        ActiveWindow,
+        WindowUnderCursor
     };
     Q_ENUM(CaptureMode)
 

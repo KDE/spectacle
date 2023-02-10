@@ -53,7 +53,7 @@ Q_SIGNALS:
     void newScreensScreenshotTaken(const QVector<ScreenImage> &screenImages);
 
     void newScreenshotFailed();
-    void windowTitleChanged(const QString &theWindowTitle);
+    void windowTitleChanged(const QString &theWindowTitle = {});
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Platform::GrabModes)
