@@ -245,6 +245,8 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
         doGrabHelper(QStringLiteral("screenshotScreen"), theIncludePointer);
         return;
     }
+    case GrabMode::ActiveWindow:
+    case GrabMode::TransientWithParent:
     case GrabMode::WindowUnderCursor: {
         int lOpMask = theIncludeDecorations ? 1 : 0;
         if (theIncludePointer) {
@@ -253,8 +255,6 @@ void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theG
         doGrabHelper(QStringLiteral("interactive"), lOpMask);
         return;
     }
-    case GrabMode::ActiveWindow:
-    case GrabMode::TransientWithParent:
     case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
         return;
