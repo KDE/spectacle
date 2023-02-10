@@ -86,8 +86,11 @@ int main(int argc, char **argv)
 
     SpectacleCore spectacleCore;
 
-    // set up the KDBusService activateRequested slot
+    // KDBusService::activateRequested() will only send arguments
+    // if activated via the command line with arguments.
+    // Otherwise, the arguments list will be empty.
     QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::activate);
+
     QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
     QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
