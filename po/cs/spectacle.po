@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-02-03 17:01+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -576,12 +576,12 @@ msgstr "Jiná aplikace..."
 msgid "Share"
 msgstr "Sdílet"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, kde-format
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, kde-format
 msgid "Recording"
 msgstr "Nahrávání"
@@ -676,6 +676,14 @@ msgstr "Sejmout při kliknutí"
 msgid "No Delay"
 msgstr "Žádná prodleva"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Nahrávání"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -691,7 +699,7 @@ msgstr ""
 msgid "Show the mouse cursor in the screen recording."
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1336,7 +1344,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1345,7 +1353,7 @@ msgstr[0] "%1 sekunda"
 msgstr[1] "%1 sekundy"
 msgstr[2] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1423,17 +1431,17 @@ msgstr "Sejmout okno pod kurzorem"
 msgid "Launch Spectacle without capturing"
 msgstr "Spustit Spectacle bez sejmutí"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Snímání obrazovky bylo zrušeno nebo selhalo"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snímek obrazovky byl uložen do schránky."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1442,24 +1450,24 @@ msgstr ""
 "Snímek obrazovky byl uložen jako  '%1' do '%2' cesta k jeho umístění byla "
 "uložena do schránky."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snímek obrazovky byl uložen jako '%1' do vaší složky Obrázky."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímek obrazovky byl uložen jako '%1' do '%2'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Anotace"

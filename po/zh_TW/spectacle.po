@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2022-03-16 15:39+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -584,13 +584,13 @@ msgstr "其它應用程式…"
 msgid "Share"
 msgstr "分享"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "拍一張新的螢幕擷取"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -693,6 +693,14 @@ msgstr "點選時"
 msgid "No Delay"
 msgstr "無延遲"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "錄製螢幕"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -710,7 +718,7 @@ msgstr "錄製螢幕"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "在螢幕擷取的圖片中顯示滑鼠游標"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1357,14 +1365,14 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Esc 鍵"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1 秒"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1446,18 +1454,18 @@ msgstr "擷取游標下的視窗"
 msgid "Launch Spectacle without capturing"
 msgstr "啟動 Spectacle 但不擷取"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "螢幕擷取擷取取消或失敗"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "一張螢幕擷取已經儲存至您的剪貼簿。"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1467,24 +1475,24 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "螢幕擷取已在 %2 中儲存為 %1，此路徑已複製到剪貼簿"
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "螢幕擷取被儲存為「%1」到您的圖片資料夾中。"
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "螢幕擷取被儲存為「%1」到「%2」中。"
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開啟"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "標注"

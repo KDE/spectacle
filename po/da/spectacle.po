@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2020-11-17 19:54+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -601,13 +601,13 @@ msgstr "Andet program..."
 msgid "Share"
 msgstr "Del"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Tag et nyt skærmbillede"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -712,6 +712,14 @@ msgstr "Ved klik"
 msgid "No Delay"
 msgstr "Ingen forsinkelse"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Optag skærm"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -729,7 +737,7 @@ msgstr "Optag skærm"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Vis musemarkøren i skærmbilledet"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1397,7 +1405,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1405,7 +1413,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekunder"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1489,18 +1497,18 @@ msgstr "Vinduet under markøren"
 msgid "Launch Spectacle without capturing"
 msgstr "Start Spectacle"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Indfangning af skærmbillede annulleret eller mislykket"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Et skærmbillede blev gemt i din udklipsholder."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1512,24 +1520,24 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Et skærmbillede blev gemt som \"%1\" i din billedmappe."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Et skærmbillede blev gemt som \"%1\" i \"%2\"."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Åbn"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentér"

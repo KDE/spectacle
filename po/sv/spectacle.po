@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2022-08-03 09:13+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -600,13 +600,13 @@ msgstr "Annat program..."
 msgid "Share"
 msgstr "Dela"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Ta en ny skärmbild"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -712,6 +712,14 @@ msgstr "Vid klick"
 msgid "No Delay"
 msgstr "Ingen fördröjning"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Spela in bildskärm"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -729,7 +737,7 @@ msgstr "Spela in bildskärm"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Visa muspekaren på skärmbilden"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1382,7 +1390,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Esc"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1390,7 +1398,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekunder"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1472,18 +1480,18 @@ msgstr "Ta en bild av fönster under markör"
 msgid "Launch Spectacle without capturing"
 msgstr "Starta Spectacle utan tagning"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Tagning av skärmbild avbruten eller misslyckad"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1495,24 +1503,24 @@ msgstr ""
 "En skärmbild sparades som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öppna"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentera"

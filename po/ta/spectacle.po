@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-01-31 19:52+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -589,12 +589,12 @@ msgstr "வேறு செயலி..."
 msgid "Share"
 msgstr "பகிர்"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, kde-format
 msgid "Screenshot"
 msgstr "திரைப்பிடிப்பு"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, kde-format
 msgid "Recording"
 msgstr "திரைப்பதிவு"
@@ -695,6 +695,14 @@ msgstr "க்ளிக் செய்யும்போது படமெட�
 msgid "No Delay"
 msgstr "தாமதிக்க வேண்டாம்"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "திரைப்பதிவு"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -710,7 +718,7 @@ msgstr "திரைப்பதிவு அமைப்புகள்"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr "பதிவிடுவதை முடி"
@@ -1363,7 +1371,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1371,7 +1379,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1449,17 +1457,17 @@ msgstr "சுட்டிக்குறிக்கு கீழுள்ள �
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1468,24 +1476,24 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"

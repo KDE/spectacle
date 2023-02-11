@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-02-05 00:57+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -598,12 +598,12 @@ msgstr "Kita programa..."
 msgid "Share"
 msgstr "Bendrinti"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, kde-format
 msgid "Screenshot"
 msgstr "Ekrano kopija"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 msgid "Recording"
 msgstr "Įrašas"
@@ -705,6 +705,13 @@ msgstr "Fotografuoti spustelėjus"
 msgid "No Delay"
 msgstr "Jokios delsos"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Įrašas"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -722,7 +729,7 @@ msgstr "Ekrano filmavimas"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr "Baigti įrašą"
@@ -1376,7 +1383,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Grįžimo (Esc) klavišas"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1386,7 +1393,7 @@ msgstr[1] "%1 sekundės"
 msgstr[2] "%1 sekundžių"
 msgstr[3] "%1 sekundė"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1464,17 +1471,17 @@ msgstr "Fotografuoti langą po žymekliu"
 msgid "Launch Spectacle without capturing"
 msgstr "Paleisti Spectacle nefotografuojant"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrano kopijos darymo atsisakyta arba jis patyrė nesėkmę"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1483,24 +1490,24 @@ msgstr ""
 "Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
 "ekrano kopijos failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip \"%1\"."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrano kopija buvo įrašyta į \"%2\" kaip \"%1\"."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atverti"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Kurti anotacijas"

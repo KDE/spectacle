@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2021-09-04 10:08+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -620,13 +620,13 @@ msgstr "Άλλη εφαρμογή..."
 msgid "Share"
 msgstr "Διαμοιρασμός"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -734,6 +734,14 @@ msgstr "Χωρίς κλικ"
 msgid "No Delay"
 msgstr "Χωρίς καθυστέρηση"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Εγγραφή οθόνης"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -751,7 +759,7 @@ msgstr "Εγγραφή οθόνης"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1417,7 +1425,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1425,7 +1433,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 δευτερόλεπτο"
 msgstr[1] "%1 δευτερόλεπτα"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1508,18 +1516,18 @@ msgstr "Λήψη παραθύρου υπό τον δρομέα"
 msgid "Launch Spectacle without capturing"
 msgstr "Εκτέλεση του Spectacle"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Αποτυχία ή ακύρωση της λήψης στιγμιοτύπου οθόνης."
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -1531,24 +1539,24 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"

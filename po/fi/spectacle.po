@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2022-07-09 14:43+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -605,13 +605,13 @@ msgstr "Muu sovellus…"
 msgid "Share"
 msgstr "Jaa"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Kaappaa uusi kuva"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -716,6 +716,14 @@ msgstr "Napsautettaessa"
 msgid "No Delay"
 msgstr "Ei viivettä"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Tallenna näyttö"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -733,7 +741,7 @@ msgstr "Tallenna näyttö"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Näytä kaapatussa kuvassa hiiriosoitin"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1389,7 +1397,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Seuraavan merkin erikoismerkityksen poisto"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1397,7 +1405,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekunti"
 msgstr[1] "%1 sekuntia"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1481,18 +1489,18 @@ msgstr "Kaappaa osoittimen alla oleva ikkuna"
 msgid "Launch Spectacle without capturing"
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Kuvan kaappaaminen peruttiin tai se epäonnistui"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1504,24 +1512,24 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2”, ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"

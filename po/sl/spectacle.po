@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-01-28 10:00+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -596,12 +596,12 @@ msgstr "Drug program..."
 msgid "Share"
 msgstr "Deli"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, kde-format
 msgid "Screenshot"
 msgstr "Zaslonska slika"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, kde-format
 msgid "Recording"
 msgstr "Snemanje"
@@ -698,6 +698,14 @@ msgstr "Zajemi ob kliku"
 msgid "No Delay"
 msgstr "Brez zakasnitve"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Snemanje"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -713,7 +721,7 @@ msgstr "Nastavitve snemanja"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Pokaži miškino kazalko v posnetku zaslona."
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr "Končaj snemanje"
@@ -1365,7 +1373,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1375,7 +1383,7 @@ msgstr[1] "%1 sekundi"
 msgstr[2] "%1 sekunde"
 msgstr[3] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1453,17 +1461,17 @@ msgstr "Zajemi okno pod kazalko"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zajem slike je bil preklican ali ni uspel"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1472,24 +1480,24 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bilo shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "V vašo mapo s slikami je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "V '%2' je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"

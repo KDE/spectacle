@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2021-06-21 08:12-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -585,13 +585,13 @@ msgstr "...ਹੋਰ ਐਪਲੀਕੇਸ਼ਨ"
 msgid "Share"
 msgstr "ਸਾਂਝਾ ਕਰੋ"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "ਨਵਾਂ ਸਕਰੀਨਸ਼ਾਟ ਲਵੋ"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
@@ -692,6 +692,14 @@ msgstr "ਕਲਿੱਕ ਕਰਨ ਉੱਤੇ"
 msgid "No Delay"
 msgstr "ਕੋਈ ਦੇਰੀ ਨਹੀਂ"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "ਸਕਰੀਨ ਰਿਕਾਰਡ ਕਰੋ"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -709,7 +717,7 @@ msgstr "ਸਕਰੀਨ ਰਿਕਾਰਡ ਕਰੋ"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਚਿੱਤਰ ਵਿੱਚ ਮਾਊਸ ਕਰਸਰ ਵੇਖਾਓ"
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1357,7 +1365,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1365,7 +1373,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 ਸਕਿੰਟ"
 msgstr[1] "%1 ਸਕਿੰਟ"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1449,42 +1457,42 @@ msgstr "ਕਰਸਰ ਹੇਠਲੀ ਵਿੰਡੋ"
 msgid "Launch Spectacle without capturing"
 msgstr "ਸਪੈਕਟਾਕਲ ਚਲਾਓ"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਖਿੱਚਣਾ ਰੱਦ ਕੀਤਾ ਜਾਂ ਫੇਲ੍ਹ ਹੋਇਆ"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਤਸਵੀਰਾਂ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "ਟਿੱਪਣੀ"

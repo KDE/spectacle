@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 00:56+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-01-27 11:56+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -601,12 +601,12 @@ msgstr "Una altra aplicació..."
 msgid "Share"
 msgstr "Comparteix"
 
-#: src/Gui/ImageView.qml:288
+#: src/Gui/ImageView.qml:290
 #, kde-format
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/Gui/ImageView.qml:291 src/Gui/RecordingView.qml:35
+#: src/Gui/ImageView.qml:294
 #, kde-format
 msgid "Recording"
 msgstr "Enregistrament"
@@ -706,6 +706,14 @@ msgstr "Captura en fer clic"
 msgid "No Delay"
 msgstr "Sense retard"
 
+#: src/Gui/RecordingView.qml:36
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid ""
+"Recording:\n"
+"%1"
+msgstr "Enregistrament"
+
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
@@ -721,7 +729,7 @@ msgstr "Configuració de l'enregistrament"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostra el cursor del ratolí en l'enregistrament de pantalla."
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
 msgstr "Finalitza l'enregistrament"
@@ -1378,7 +1386,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escapada"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1386,7 +1394,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segon"
 msgstr[1] "%1 segons"
 
-#: src/Gui/SpectacleWindow.cpp:198
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1464,17 +1472,17 @@ msgstr "Captura la finestra sota el cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Llança l'Spectacle sense capturar"
 
-#: src/SpectacleCore.cpp:625
+#: src/SpectacleCore.cpp:626
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "La captura de pantalla s'ha cancel·lat o ha fallat"
 
-#: src/SpectacleCore.cpp:654
+#: src/SpectacleCore.cpp:655
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha desat una captura de pantalla al porta-retalls."
 
-#: src/SpectacleCore.cpp:656
+#: src/SpectacleCore.cpp:657
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1483,24 +1491,24 @@ msgstr ""
 "La captura de pantalla s'ha desat com a «%1» a «%2» i el camí al seu fitxer "
 "s'ha copiat al porta-retalls."
 
-#: src/SpectacleCore.cpp:660
+#: src/SpectacleCore.cpp:661
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha desat una captura de pantalla com a «%1» a la carpeta Imatges."
 
-#: src/SpectacleCore.cpp:662
+#: src/SpectacleCore.cpp:663
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha desat una captura de pantalla com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:667
+#: src/SpectacleCore.cpp:668
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Obre"
 
-#: src/SpectacleCore.cpp:677
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid "Annotate"
 msgstr "Anotació"
