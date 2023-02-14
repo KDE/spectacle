@@ -199,14 +199,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
-        for (auto it = m_captureWindows.begin(); it != m_captureWindows.end(); ++it) {
-            if (it->get()->screen() == screen) {
-                auto pointer = it->release();
-                m_captureWindows.erase(it);
-                pointer->hide();
-                pointer->deleteLater();
-            }
-        }
+        // It's dangerous to erase from within a for loop, so we use std::find_if
+        auto hasScreen = [screen](const std::unique_ptr<CaptureWindow> &window) -> bool {
+            return window->screen() == screen;
+        };
+        auto it = std::find_if(m_captureWindows.begin(), m_captureWindows.end(), hasScreen);
+        auto pointer = it->release();
+        m_captureWindows.erase(it);
+        disconnect(pointer, &QWindow::visibilityChanged, pointer, nullptr);
+        pointer->hide();
+        pointer->deleteLater();
     });
 
     connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
