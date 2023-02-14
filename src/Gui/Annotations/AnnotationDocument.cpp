@@ -1438,9 +1438,11 @@ void AnnotationDocument::deleteSelectedAction()
         const int i = m_undoStack.lastIndexOf(action);
         m_undoStack.remove(i);
     }
+    QRectF updateRect;
     if (action && action->isValid()) {
         // add undoable action for representing the deletion of an action
         m_undoStack << new DeleteAction(action);
+        updateRect = action->lastUpdateArea();
     } else {
         const int i = m_undoStack.lastIndexOf(action);
         m_undoStack.remove(i);
@@ -1448,7 +1450,7 @@ void AnnotationDocument::deleteSelectedAction()
 
     Q_EMIT undoStackDepthChanged();
     clearRedoStack();
-    emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
+    emitRepaintNeededUnlessEmpty(updateRect);
 }
 
 void AnnotationDocument::addAction(EditAction *action)
