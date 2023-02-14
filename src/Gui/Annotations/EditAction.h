@@ -105,7 +105,7 @@ protected:
     explicit EditAction(EditAction *action);
 
     void setReplaces(EditAction *action);
-    QRectF getUpdateArea() const;
+    virtual QRectF getUpdateArea() const;
 
     AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
     int m_strokeWidth = 0;
@@ -179,6 +179,9 @@ public:
     QRectF geometry() const override;
     QRectF visualGeometry() const override;
     void setVisualGeometry(const QRectF &geom) override;
+
+protected:
+    QRectF getUpdateArea() const override;
 
 private:
     LineAction(LineAction *action);

@@ -714,15 +714,8 @@ void LineAction::setEndPoint(const QPointF &endPoint)
     if (m_line.p2() == endPoint) {
         return;
     }
-
     auto updateRect = getUpdateArea();
-    auto oldLine = m_line;
     m_line.setP2(endPoint);
-    if (m_type == AnnotationDocument::Arrow) {
-        auto oldArrowHeadRect = arrowHeadPolygon(oldLine).boundingRect() + strokeMargins();
-        auto newArrowHeadRect = arrowHeadPolygon(m_line).boundingRect() + strokeMargins();
-        updateRect = updateRect.united(oldArrowHeadRect).united(newArrowHeadRect);
-    }
     m_lastUpdateArea = updateRect.united(getUpdateArea());
 }
 
@@ -737,14 +730,8 @@ void LineAction::setGeometry(const QRectF &geom)
         return;
     }
     auto updateRect = getUpdateArea();
-    auto oldLine = m_line;
     // TODO: deal with negative geometry instead of normalizing
     m_line = mapLineToRect(geom.normalized(), m_line);
-    if (m_type == AnnotationDocument::Arrow) {
-        auto oldArrowHeadRect = arrowHeadPolygon(oldLine).boundingRect() + strokeMargins();
-        auto newArrowHeadRect = arrowHeadPolygon(m_line).boundingRect() + strokeMargins();
-        updateRect = updateRect.united(oldArrowHeadRect).united(newArrowHeadRect);
-    }
     m_lastUpdateArea = updateRect.united(getUpdateArea());
 }
 
@@ -766,11 +753,24 @@ void LineAction::setVisualGeometry(const QRectF &geom)
 QPolygonF LineAction::arrowHeadPolygon(const QLineF &mainLine) const
 {
     const auto &end = mainLine.p2();
-    const qreal length = qMin(mainLine.length(), 10.0);
+    // This should leave a decently sized gap between the arrow head and shaft
+    // and a decently sized length for all stroke widths.
+    // Arrow head length will grow with stroke width.
+    const qreal length = qMax(8.0, m_strokeWidth * 3.0);
     const qreal angle = mainLine.angle() + 180;
     auto headLine1 = QLineF::fromPolar(length, angle + 30).translated(end);
     auto headLine2 = QLineF::fromPolar(length, angle - 30).translated(end);
     return QVector<QPointF>{headLine1.p2(), end, headLine2.p2()};
+}
+
+QRectF LineAction::getUpdateArea() const
+{
+    if (m_type != AnnotationDocument::Arrow) {
+        return EditAction::getUpdateArea();
+    }
+    auto arrowHeadUpdateRect = arrowHeadPolygon(m_line).boundingRect()
+                             + strokeMargins() + shadowMargins();
+    return EditAction::getUpdateArea().united(arrowHeadUpdateRect);
 }
 
 /////////////////////////////
