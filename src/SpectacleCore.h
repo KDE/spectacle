@@ -20,6 +20,7 @@
 #include "RecordingModeModel.h"
 #include "settings.h"
 
+#include <array>
 #include <memory>
 
 static const auto QML_URI_PRIVATE = "org.kde.spectacle.private";
