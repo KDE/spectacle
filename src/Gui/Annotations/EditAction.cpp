@@ -336,10 +336,10 @@ EditAction *EditAction::replaces() const
 
 void EditAction::setReplaces(EditAction *action)
 {
-    Q_ASSERT(m_type == action->type());
     if (action && action->replaces() == this) {
         return;
     }
+    Q_ASSERT(m_type == action->type());
     m_replaces = action;
     action->m_replacedBy = this;
     if (m_type == AnnotationDocument::Blur || m_type == AnnotationDocument::Pixelate) {
