@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-11 00:56+0000\n"
-"PO-Revision-Date: 2023-01-29 10:54+0100\n"
+"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"PO-Revision-Date: 2023-02-13 19:06+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -207,12 +207,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Ouvrir ou modifier un fichier existant de copie d'écran"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:322
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne peut pas écrire l'image : %1"
 
-#: src/ExportManager.cpp:348
+#: src/ExportManager.cpp:337
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -222,14 +222,14 @@ msgstr ""
 "Impossible de créer le dossier et donc d'enregistrer la capture d'écran :<nl/"
 "> <filename>%1</filename>"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:347
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
 "le fichier."
 
-#: src/ExportManager.cpp:378
+#: src/ExportManager.cpp:367
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -239,38 +239,38 @@ msgstr ""
 "Impossible de créer le dossier à distance et donc d'enregistrer la capture "
 "d'écran :<nl/> <filename>%1</filename>"
 
-#: src/ExportManager.cpp:389 src/ExportManager.cpp:439
+#: src/ExportManager.cpp:378 src/ExportManager.cpp:428
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
 "le fichier local temporaire."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:386
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Impossible d'enregistrer l'image. Le fichier n'a pas pu être envoyé à "
 "l'emplacement distant."
 
-#: src/ExportManager.cpp:446
+#: src/ExportManager.cpp:435
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Impossible d'enregistrer la capture d'écran. Le nom de fichier n'est pas "
 "valable."
 
-#: src/ExportManager.cpp:491 src/ExportManager.cpp:550
+#: src/ExportManager.cpp:480 src/ExportManager.cpp:539
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Impossible d'enregistrer une capture d'écran vide."
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:591
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Échec de l'impression. Impossible d'initialiser l'imprimante."
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:607
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -278,7 +278,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Année (4 chiffres)"
 
-#: src/ExportManager.cpp:619
+#: src/ExportManager.cpp:608
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -286,7 +286,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Année (2 chiffres)"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:609
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -294,7 +294,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mois"
 
-#: src/ExportManager.cpp:621
+#: src/ExportManager.cpp:610
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -302,7 +302,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Jour"
 
-#: src/ExportManager.cpp:622
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -310,7 +310,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Heure"
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:612
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -318,7 +318,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minute"
 
-#: src/ExportManager.cpp:624
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -326,7 +326,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Seconde"
 
-#: src/ExportManager.cpp:625
+#: src/ExportManager.cpp:614
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -334,7 +334,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: src/ExportManager.cpp:626
+#: src/ExportManager.cpp:615
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -342,7 +342,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Titre de la fenêtre"
 
-#: src/ExportManager.cpp:627
+#: src/ExportManager.cpp:616
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -350,7 +350,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Numéro de séquence"
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -714,12 +714,13 @@ msgid "No Delay"
 msgstr "Aucun délai"
 
 #: src/Gui/RecordingView.qml:36
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Enregistrement en cours"
+msgstr ""
+"Enregistrement : \n"
+"%1"
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -981,7 +982,7 @@ msgstr ""
 msgid "To save to a sub-folder"
 msgstr "Pour enregistrer dans un sous-dossier"
 
-#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:87
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:84
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
@@ -1494,17 +1495,17 @@ msgstr "Capturer la fenêtre sous le curseur"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:650
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Annulation ou échec de la capture d'écran"
 
-#: src/SpectacleCore.cpp:655
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une capture d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:657
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1513,7 +1514,7 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:661
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1521,18 +1522,18 @@ msgstr ""
 "Une capture d'écran a été enregistrée sous « %1 » dans votre dossier "
 "d'images."
 
-#: src/SpectacleCore.cpp:663
+#: src/SpectacleCore.cpp:688
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une capture d'écran a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-11 00:56+0000\n"
+"POT-Creation-Date: 2023-02-15 00:57+0000\n"
 "PO-Revision-Date: 2023-02-11 09:39+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -198,12 +198,12 @@ msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:333
+#: src/ExportManager.cpp:322
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:348
+#: src/ExportManager.cpp:337
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -213,12 +213,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:347
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:378
+#: src/ExportManager.cpp:367
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -228,35 +228,35 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:389 src/ExportManager.cpp:439
+#: src/ExportManager.cpp:378 src/ExportManager.cpp:428
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:386
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:446
+#: src/ExportManager.cpp:435
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:491 src/ExportManager.cpp:550
+#: src/ExportManager.cpp:480 src/ExportManager.cpp:539
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:591
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:607
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +264,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Urtea (4 digitu)"
 
-#: src/ExportManager.cpp:619
+#: src/ExportManager.cpp:608
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +272,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Urtea (2 digitu)"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:609
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,7 +280,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Hilabetea"
 
-#: src/ExportManager.cpp:621
+#: src/ExportManager.cpp:610
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -288,7 +288,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Eguna"
 
-#: src/ExportManager.cpp:622
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -296,7 +296,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Ordua"
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:612
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -304,7 +304,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minutua"
 
-#: src/ExportManager.cpp:624
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -312,7 +312,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Segundoa"
 
-#: src/ExportManager.cpp:625
+#: src/ExportManager.cpp:614
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +320,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Ordu-eremua"
 
-#: src/ExportManager.cpp:626
+#: src/ExportManager.cpp:615
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -328,7 +328,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Leihoaren titulua"
 
-#: src/ExportManager.cpp:627
+#: src/ExportManager.cpp:616
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -336,7 +336,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Zenbakitze sekuentziala"
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -961,7 +961,7 @@ msgstr ""
 msgid "To save to a sub-folder"
 msgstr "Gorde azpi-karpeta batean"
 
-#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:87
+#: src/Gui/SettingsDialog/SaveOptionsPage.cpp:84
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
@@ -1459,17 +1459,17 @@ msgstr "Atzeman kurtsorearen azpiko leihoa"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:650
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:655
+#: src/SpectacleCore.cpp:680
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:657
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1478,24 +1478,24 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:661
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:663
+#: src/SpectacleCore.cpp:688
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:668
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"

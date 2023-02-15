@@ -257,7 +257,7 @@
 >Bildschirmfotos aufnehmen</title>
 
             <para
->Wenn Sie &spectacle; starten, wird sofort der gesamte Bildschirm aufgenommen und als Vorschau im Hauptfenster angezeigt. Sie können dieses Bildschirmfoto mit den Knöpfen unten im Fenster speichern oder die Bedienungselemente rechts neben der Vorschau verwenden, um ein neues Bildschirmfoto aufzunehmen.</para>
+>Wenn Sie &spectacle; starten, wird, sofern in den allgemeinen Einstellungen nicht anders festgelegt, sofort der gesamte Bildschirm aufgenommen und als Vorschau im Hauptfenster angezeigt. Sie können dieses Bildschirmfoto mit den Knöpfen unten im Fenster speichern oder die Bedienungselemente rechts neben der Vorschau verwenden, um ein neues Bildschirmfoto aufzunehmen.</para>
 
             <para
 >Um das aktuelle Bildschirmfoto zu verwerfen und ein neues aufzunehmen, klicken Sie auf <guibutton
@@ -529,10 +529,6 @@
                         <para
 >In diesem Untermenü finden Sie Einträge für alle Programme, die dem &MIME;-Typ „PNG“ (Portable Network Graphics) zugeordnet sind. Abhängig von den installierten Programmen können Sie Bildschirmfotos in Ihren Grafikprogrammen oder Betrachtern öffnen und bearbeiten.</para>
 
-                        <para
->Haben Sie auch die <application
->KIPI-Module</application
-> installiert. können Sie außerdem Ihre Bildschirmfotos drucken, sie als E-Mail versenden und direkt zu einigen sozialen Netzwerken und Webseiten exportieren.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -583,12 +579,24 @@
                 <varlistentry>
                     <term
 ><guilabel
+>Beim Start von Spectacle</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ermöglicht die <guilabel
+>Aufnahme des vollständigen Bildschirms</guilabel
+> im zuletzt verwendeten Aufnahmemodus oder nimmt kein Bildschirmfoto automatisch auf. Der zuletzt verwendete Aufnahmemodus it der, der im Aufnahmemodus eingestellt ist.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
 >Nach der Aufnahme eines Bildschirmfotos</guilabel
 ></term>
                     <listitem>
                         <para
 >Hier können eine <guilabel
->Datei automatisch im Standardort speichern</guilabel
+>Datei im Standardort speichern</guilabel
 >, alle Aktionen der Zwischenablage abschalten oder ein Bildschirmfoto oder den Pfad zum Bildschirmfoto in die Zwischenablage kopieren Der Standard-Speicherort kann auf der Seite <link linkend="save-page"
 >Speichern</link
 > des Einrichtungsdialogs eingestellt werden. Außerdem können Sie den <guilabel

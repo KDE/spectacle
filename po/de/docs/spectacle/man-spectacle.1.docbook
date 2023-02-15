@@ -137,6 +137,17 @@
 <varlistentry>
 <term
 ><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Spectacle starten ohne ein Bildschirmfoto aufzunehmen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
 >-g, --gui</option
 ></term>
 <listitem>
@@ -209,11 +220,22 @@
 <varlistentry>
 <term
 ><option
->-c, --clipboard</option
+>-c, --copy-image</option
 ></term>
 <listitem>
 <para
->Im Hintergrundmodus das Bild in die Zwischenablage kopieren.</para>
+>Im Hintergrundmodus das Bild nur in die Zwischenablage kopieren, außer -o wird zusätzlich verwendet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>Im Hintergrundmodus den Pfad zum Bildschirmfoto in die Zwischenablage kopieren.</para>
 </listitem>
 </varlistentry>
 
