@@ -141,7 +141,7 @@ ButtonGrid {
     ToolButton {
         QQC2.ButtonGroup.group: toolGroup
         text: i18n("Number")
-        icon.name: "" //TODO: Needs proper icon
+        icon.name: "draw-number"
         checked: AnnotationDocument.tool.type === AnnotationDocument.Number
         onClicked: AnnotationDocument.tool.type = AnnotationDocument.Number
     }
