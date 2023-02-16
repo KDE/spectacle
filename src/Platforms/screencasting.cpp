@@ -80,12 +80,13 @@ public:
         if (!isInitialized()) {
             qWarning() << "Remember requesting the interface on your desktop file: X-KDE-Wayland-Interfaces=zkde_screencast_unstable_v1";
         }
-        Q_ASSERT(isInitialized());
     }
 
     ~ScreencastingPrivate()
     {
-        destroy();
+        if (isInitialized()) {
+            destroy();
+        }
     }
 
     Screencasting *const q;
@@ -133,6 +134,11 @@ ScreencastingStream *Screencasting::createVirtualMonitorStream(const QString &na
     auto stream = new ScreencastingStream(this);
     stream->d->init(d->stream_virtual_output(name, size.width(), size.height(), wl_fixed_from_double(scale), mode));
     return stream;
+}
+
+bool Screencasting::isAvailable() const
+{
+    return d->isInitialized();
 }
 
 void Screencasting::destroy()

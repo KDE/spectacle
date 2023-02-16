@@ -18,7 +18,10 @@ VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
 
 VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() const
 {
-    return Screen | Window | Region;
+    if (m_screencasting->isAvailable())
+        return Screen | Window | Region;
+    else
+        return {};
 }
 
 void VideoPlatformWayland::startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)

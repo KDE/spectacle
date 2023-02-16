@@ -49,6 +49,7 @@ public:
         Metadata = 4,
     };
     Q_ENUM(CursorMode);
+    bool isAvailable() const;
 
     ScreencastingStream *createOutputStream(QScreen *screen, CursorMode mode);
     ScreencastingStream *createRegionStream(const QRect &region, qreal scaling, CursorMode mode);
