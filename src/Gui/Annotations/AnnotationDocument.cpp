@@ -1186,6 +1186,11 @@ void AnnotationDocument::undo()
     m_redoStack << action;
     m_undoStack.pop_back();
 
+    if (action->type() == AnnotationDocument::Number) {
+        auto na = static_cast<NumberAction *>(action);
+        m_tool->setNumber(na->number());
+    }
+
     if (isSelected && replacesEarlierAction) {
         m_selectedActionWrapper->setEditAction(replacedAction);
     }
@@ -1229,6 +1234,11 @@ void AnnotationDocument::redo()
     }
     m_undoStack << action;
     m_redoStack.pop_back();
+
+    if (action->type() == AnnotationDocument::Number) {
+        auto na = static_cast<NumberAction *>(action);
+        m_tool->setNumber(na->number() + 1);
+    }
 
     if (isReplacedSelected && replacesEarlierAction) {
         m_selectedActionWrapper->setEditAction(action);
