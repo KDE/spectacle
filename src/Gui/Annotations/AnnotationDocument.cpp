@@ -1195,19 +1195,18 @@ void AnnotationDocument::undo()
         m_selectedActionWrapper->setEditAction(replacedAction);
     }
 
-    for (auto action : m_undoStack) {
+    for (auto action : std::as_const(m_undoStack)) {
         if (isActionVisible(action, updateRect)) {
             updateRect = updateRect.united(action->lastUpdateArea());
+        }
+        if (action->type() == AnnotationDocument::Blur
+            || action->type() == AnnotationDocument::Pixelate) {
+            auto *sa = static_cast<ShapeAction *>(action);
+            sa->invalidateCache();
         }
     }
     Q_EMIT undoStackDepthChanged();
     Q_EMIT redoStackDepthChanged();
-    for (auto *ea : std::as_const(m_undoStack)) {
-        if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            sa->invalidateCache();
-        }
-    }
     emitRepaintNeededUnlessEmpty(updateRect);
 }
 
