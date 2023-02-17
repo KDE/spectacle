@@ -5,7 +5,6 @@
  */
 
 #include "VideoPlatform.h"
-#include <KFormat>
 #include <QTimerEvent>
 
 VideoPlatform::VideoPlatform(QObject *parent)
@@ -35,9 +34,9 @@ void VideoPlatform::setRecording(bool recording)
     Q_EMIT recordedTimeChanged();
 }
 
-QString VideoPlatform::recordedTime() const
+qint64 VideoPlatform::recordedTime() const
 {
-    return KFormat().formatDuration(m_elapsedTimer.isValid() ? m_elapsedTimer.elapsed() : 0);
+    return m_elapsedTimer.isValid() ? m_elapsedTimer.elapsed() : 0;
 }
 
 void VideoPlatform::timerEvent(QTimerEvent *event)

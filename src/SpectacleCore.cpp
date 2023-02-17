@@ -20,6 +20,7 @@
 #include "settings.h"
 #include "spectacle_core_debug.h"
 
+#include <KFormat>
 #include <KGlobalAccel>
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
@@ -962,5 +963,14 @@ void SpectacleCore::setCurrentVideo(const QUrl &currentVideo)
 
 QString SpectacleCore::recordedTime() const
 {
-    return m_videoPlatform->recordedTime();
+    return timeFromMilliseconds(m_videoPlatform->recordedTime());
+}
+
+QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
+{
+    KFormat::DurationFormatOptions options = KFormat::DefaultDuration;
+    if (milliseconds < 1000.0 * 60.0 * 60.0) {
+        options |= KFormat::FoldHours;
+    }
+    return KFormat().formatDuration(milliseconds, options);
 }

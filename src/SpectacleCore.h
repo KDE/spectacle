@@ -79,6 +79,7 @@ public:
     bool videoMode() const;
     QUrl currentVideo() const;
     QString recordedTime() const;
+    Q_INVOKABLE QString timeFromMilliseconds(qint64 milliseconds) const;
 
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
