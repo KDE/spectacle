@@ -59,7 +59,8 @@ EmptyPage {
 
     // Needed for scrolling via keyboard input
     Keys.priority: Keys.AfterItem
-    Keys.forwardTo: flickable
+    Keys.enabled: !SpectacleCore.videoMode && contentLoader.item !== null
+    Keys.forwardTo: contentLoader.item
 
     AnimatedLoader { // parent is contentItem
         id: inlineMessageLoader
@@ -107,9 +108,8 @@ EmptyPage {
         anchors.bottom: parent.bottom
     }
 
-    // Can't use ScrollView because ScrollView prevents mice from being able to drag the view
-    EmptyPage { // parent is contentItem
-        id: contentPage
+    Loader { // parent is contentItem
+        id: contentLoader
         anchors {
             left: footerLoader.left
             right: captureOptionsLoader.left
@@ -117,149 +117,7 @@ EmptyPage {
             bottom: footerLoader.top
             topMargin: inlineMessageLoader.active ? Kirigami.Units.mediumSpacing : 0
         }
-        leftPadding: mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
-        rightPadding: !mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
-        bottomPadding: horizontalScrollBar.visible ? horizontalScrollBar.height : 0
-        contentItem: Flickable {
-            id: flickable
-            function zoomByFactor(factor, centerPos = mapToItem(contentItem, width/2, height/2)) {
-                let newWidth = Math.max(width, // min
-                               Math.min(annotationsParent.width * factor,
-                                        annotationsParent.implicitWidth * annotationsParent.maxZoom)) // max
-                let newHeight = Math.max(height, // min
-                                Math.min(annotationsParent.height * factor,
-                                         annotationsParent.implicitHeight * annotationsParent.maxZoom)) // max
-                resizeContent(newWidth, newHeight, centerPos)
-                returnToBounds()
-                if (newWidth === width) {
-                    contentWidth = -1 // reset to follow flickable width
-                }
-                if (newHeight === height) {
-                    contentHeight = -1 // reset to follow flickable height
-                }
-            }
-
-            function zoomToPercent(percent, centerPos = mapToItem(contentItem, width/2, height/2)) {
-                let newWidth = Math.max(width, // min
-                               Math.min(annotationsParent.item.implicitWidth * percent,
-                                        annotationsParent.item.implicitWidth * annotationsParent.maxZoom)) // max
-                let newHeight = Math.max(height, // min
-                                Math.min(annotationsParent.item.implicitHeight * percent,
-                                         annotationsParent.item.implicitHeight * annotationsParent.maxZoom)) // max
-                resizeContent(newWidth, newHeight, centerPos)
-                returnToBounds()
-                if (newWidth === width) {
-                    contentWidth = -1 // reset to follow flickable width
-                }
-                if (newHeight === height) {
-                    contentHeight = -1 // reset to follow flickable height
-                }
-            }
-
-            clip: contextWindow.annotating
-            interactive: contextWindow.annotating
-                && AnnotationDocument.tool.type === AnnotationDocument.None
-            boundsBehavior: Flickable.StopAtBounds
-            rebound: Transition {} // Instant transition. Null doesn't do this.
-
-            // Needed to re-center the content when the window has been
-            // resized to be larger than the content after zooming in.
-            // Can't use contentWidth, contentHeight, contentX and contentY here for some reason.
-            // Doing so causes the content to be positioned wrong or make the centering not work.
-            Binding on contentItem.x {
-                value: (flickable.width - flickable.contentItem.width) / 2
-                when: flickable.width > flickable.contentItem.width
-                restoreMode: Binding.RestoreBindingOrValue
-            }
-            Binding on contentItem.y {
-                value: (flickable.height - flickable.contentItem.height) / 2
-                when: flickable.height > flickable.contentItem.height
-                restoreMode: Binding.RestoreBindingOrValue
-            }
-
-            Kirigami.WheelHandler {
-                property point angleDelta: Qt.point(0,0)
-                Binding on angleDelta { // reset when annotation tools are hidden
-                    value: Qt.point(0,0)
-                    when: !contextWindow.annotating
-                    restoreMode: Binding.RestoreNone
-                }
-                target: flickable
-                keyNavigationEnabled: true
-                scrollFlickableTarget: contextWindow.annotating
-                onWheel: if (wheel.modifiers & Qt.ControlModifier && scrollFlickableTarget) {
-                    // apparently it's impossible to add points to each other directly in QML
-                    angleDelta.x += wheel.angleDelta.x
-                    angleDelta.y += wheel.angleDelta.y
-                    if (angleDelta.x >= 120 || angleDelta.y >= 120) {
-                        angleDelta = Qt.point(0,0)
-                        const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                        flickable.zoomByFactor(1.25, centerPos)
-                    } else if (angleDelta.x <= -120 || angleDelta.y <= -120) {
-                        angleDelta = Qt.point(0,0)
-                        const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                        flickable.zoomByFactor(0.8, centerPos)
-                    }
-                    wheel.accepted = true
-                }
-            }
-
-            QQC2.ScrollBar.vertical: QQC2.ScrollBar {
-                id: verticalScrollBar
-                parent: contentPage
-                z: 1
-                anchors.right: parent.right
-                y: contentPage.topPadding
-                height: contentPage.availableHeight
-                active: horizontalScrollBar.active
-            }
-            QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
-                id: horizontalScrollBar
-                parent: contentPage
-                z: 1
-                x: contentPage.leftPadding
-                anchors.bottom: parent.bottom
-                width: contentPage.availableWidth
-                active: verticalScrollBar.active
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                z: -1
-                enabled: flickable.interactive
-                    && (flickable.contentWidth > flickable.width
-                        || flickable.contentHeight > flickable.height)
-                cursorShape: enabled ?
-                    (pressed || flickable.dragging ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                    : undefined
-            }
-
-            MouseArea {
-                anchors.fill: annotationsParent
-                cursorShape: enabled ?
-                    (pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                    : undefined
-                enabled: !contextWindow.annotating
-                onPositionChanged: {
-                    contextWindow.startDrag()
-                }
-            }
-
-            Loader {
-                id: annotationsParent
-                x: contextWindow.dprRound((parent.width - width) / 2)
-                y: contextWindow.dprRound((parent.height - height) / 2)
-                readonly property real minZoom: Math.min(flickable.width / item.implicitWidth,
-                                                         flickable.height / item.implicitHeight)
-                readonly property real maxZoom: Math.max(minZoom, 8)
-                readonly property real defaultZoom: Math.min(parent.width / item.implicitWidth,
-                                                             parent.height / item.implicitHeight)
-                width: item.implicitWidth * (item.zoom < 1 ? item.zoom : item.scale)
-                height: item.implicitHeight * (item.zoom < 1 ? item.zoom : item.scale)
-
-                source: SpectacleCore.videoMode ? "RecordingView.qml" : "ScreenshotView.qml"
-            }
-        }
+        source: SpectacleCore.videoMode ? "RecordingView.qml" : "ScreenshotView.qml"
     }
 
     Loader { // parent is contentItem
@@ -358,10 +216,10 @@ EmptyPage {
                 }
                 QQC2.SpinBox {
                     id: zoomEditor
-                    from: annotationsParent.minZoom * 100
-                    to: annotationsParent.maxZoom * 100
+                    from: contentLoader.item.minZoom * 100
+                    to: contentLoader.item.maxZoom * 100
                     stepSize: 10
-                    value: annotationsParent.item.effectiveZoom * 100
+                    value: contentLoader.item.effectiveZoom * 100
                     textFromValue: (value, locale) => {
                         return Number(Math.round(value)).toLocaleString(locale, 'f', 0) + locale.percent
                     }
@@ -377,7 +235,7 @@ EmptyPage {
                         value: Text.AlignRight
                         restoreMode: Binding.RestoreNone
                     }
-                    onValueModified: flickable.zoomToPercent(Math.round(value) / 100)
+                    onValueModified: contentLoader.item.zoomToPercent(Math.round(value) / 100)
                 }
             }
         }
@@ -388,14 +246,14 @@ EmptyPage {
     }
 
     Shortcut {
-        enabled: contextWindow.annotating
+        enabled: contextWindow.annotating && !SpectacleCore.videoMode && contentLoader.item !== null
         sequences: [StandardKey.ZoomIn]
-        onActivated: flickable.zoomByFactor(1.25)
+        onActivated: contentLoader.item.zoomByFactor(1.25)
     }
     Shortcut {
-        enabled: contextWindow.annotating
+        enabled: contextWindow.annotating && !SpectacleCore.videoMode && contentLoader.item !== null
         sequences: [StandardKey.ZoomOut]
-        onActivated: flickable.zoomByFactor(0.8)
+        onActivated: contentLoader.item.zoomByFactor(0.8)
     }
     // FIXME: This shortcut only exists here because spectacle interprets "Ctrl+Shift+,"
     // as "Ctrl+Shift+<" for some reason unless we use a QML Shortcut.
@@ -409,11 +267,8 @@ EmptyPage {
         State {
             name: "annotating"
             when: contextWindow.annotating
-            PropertyChanges {
-                target: flickable
-                contentWidth: annotationsParent.item.implicitWidth
-                contentHeight: annotationsParent.item.implicitHeight
-            }
+                && !SpectacleCore.videoMode
+                && contentLoader.item !== null
             AnchorChanges {
                 target: annotationsToolBar
                 anchors.left: parent.left
@@ -433,11 +288,8 @@ EmptyPage {
         State {
             name: "normal"
             when: !contextWindow.annotating
-            PropertyChanges {
-                target: flickable
-                contentWidth: -1
-                contentHeight: -1
-            }
+                || SpectacleCore.videoMode
+                || contentLoader.item === null
             AnchorChanges {
                 target: annotationsToolBar
                 anchors.left: undefined
@@ -462,19 +314,11 @@ EmptyPage {
                 PropertyAction {
                     targets: [annotationsToolBar, separator, footerLoader]
                     property: "visible"
-                    value: !SpectacleCore.videoMode
+                    value: true
                 }
-                ParallelAnimation {
-                    AnchorAnimation {
-                        duration: Kirigami.Units.longDuration
-                        easing.type: Easing.OutCubic
-                    }
-                    NumberAnimation {
-                        target: flickable
-                        properties: "contentWidth,contentHeight"
-                        duration: Kirigami.Units.longDuration
-                        easing.type: Easing.InOutSine
-                    }
+                AnchorAnimation {
+                    duration: Kirigami.Units.longDuration
+                    easing.type: Easing.OutCubic
                 }
                 PropertyAction {
                     targets: captureOptionsLoader
@@ -491,17 +335,9 @@ EmptyPage {
                     property: "visible"
                     value: true
                 }
-                ParallelAnimation {
-                    AnchorAnimation {
-                        duration: Kirigami.Units.longDuration
-                        easing.type: Easing.OutCubic
-                    }
-                    NumberAnimation {
-                        target: flickable
-                        properties: "contentWidth,contentHeight"
-                        duration: Kirigami.Units.longDuration
-                        easing.type: Easing.InOutSine
-                    }
+                AnchorAnimation {
+                    duration: Kirigami.Units.longDuration
+                    easing.type: Easing.OutCubic
                 }
                 PropertyAction {
                     targets: [annotationsToolBar, separator, footerLoader]
