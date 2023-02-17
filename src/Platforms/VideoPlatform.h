@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <QDateTime>
+#include <QBasicTimer>
+#include <QElapsedTimer>
 #include <QFlags>
 #include <QObject>
 #include <QRect>
-#include <QTimer>
 #include <variant>
 
 class QScreen;
@@ -42,6 +42,7 @@ public:
 
 protected:
     void setRecording(bool recording);
+    void timerEvent(QTimerEvent *event) override;
 
 public Q_SLOTS:
     virtual void startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) = 0;
@@ -53,9 +54,8 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
-    QDateTime m_startedRecording;
-    QTimer m_recordedTimeChanged;
-    bool m_recording = false;
+    QElapsedTimer m_elapsedTimer;
+    QBasicTimer m_basicTimer;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::RecordingModes)

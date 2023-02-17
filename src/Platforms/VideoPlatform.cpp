@@ -6,40 +6,43 @@
 
 #include "VideoPlatform.h"
 #include <KFormat>
-#include <chrono>
+#include <QTimerEvent>
 
 VideoPlatform::VideoPlatform(QObject *parent)
     : QObject(parent)
 {
-    using namespace std::chrono_literals;
-    m_recordedTimeChanged.setInterval(1s);
-    m_recordedTimeChanged.setSingleShot(false);
-    connect(&m_recordedTimeChanged, &QTimer::timeout, this, &VideoPlatform::recordedTimeChanged);
 }
 
 bool VideoPlatform::isRecording() const
 {
-    return m_recording;
+    return m_basicTimer.isActive();
 }
 
 void VideoPlatform::setRecording(bool recording)
 {
     // We are asserting because if we start recording on an already
     // started session which is bad usage of the API
-    Q_ASSERT(recording != m_recording);
-    m_recording = recording;
-    Q_EMIT recordingChanged(recording);
+    Q_ASSERT(recording != m_basicTimer.isActive());
 
     if (recording) {
-        m_startedRecording = QDateTime::currentDateTimeUtc();
-        m_recordedTimeChanged.start();
+        m_elapsedTimer.start();
+        m_basicTimer.start(1000, Qt::PreciseTimer, this);
     } else {
-        m_recordedTimeChanged.stop();
+        m_elapsedTimer.invalidate();
+        m_basicTimer.stop();
     }
+    Q_EMIT recordingChanged(recording);
+    Q_EMIT recordedTimeChanged();
 }
 
 QString VideoPlatform::recordedTime() const
 {
-    auto msecs = m_startedRecording.msecsTo(QDateTime::currentDateTimeUtc());
-    return KFormat().formatDuration(msecs);
+    return KFormat().formatDuration(m_elapsedTimer.isValid() ? m_elapsedTimer.elapsed() : 0);
+}
+
+void VideoPlatform::timerEvent(QTimerEvent *event)
+{
+    if (event->timerId() == m_basicTimer.timerId()) {
+        Q_EMIT recordedTimeChanged();
+    }
 }
