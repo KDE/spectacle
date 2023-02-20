@@ -301,11 +301,11 @@ MouseArea {
                 if (Selection.empty) {
                     return Qt.AlignVCenter
                 }
-                if (height + topPadding
+                if (3 * height + topPadding + Kirigami.Units.mediumSpacing
                     <= SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom
                 ) {
                     return Qt.AlignBottom
-                } else if (height + bottomPadding
+                } else if (3 * height + bottomPadding + Kirigami.Units.mediumSpacing
                     <= SelectionEditor.handlesRect.top
                 ) {
                     return Qt.AlignTop
