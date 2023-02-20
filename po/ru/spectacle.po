@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 00:57+0000\n"
-"PO-Revision-Date: 2023-01-28 14:06+0300\n"
+"PO-Revision-Date: 2023-02-19 13:57+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -726,17 +726,18 @@ msgid "No Delay"
 msgstr "Без задержки"
 
 #: src/Gui/RecordingView.qml:36
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Запись экрана"
+msgstr ""
+"Запись экрана:\n"
+"%1"
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
-msgstr ""
+msgstr "Новая запись экрана"
 
 #: src/Gui/RecordOptions.qml:43
 #, kde-format
@@ -1136,10 +1137,9 @@ msgstr "Имя файла по умолчанию"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The default filename used when recording a video"
-msgstr "Имя файла по умолчанию"
+msgstr "Имя файла по умолчанию для записи видео"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
