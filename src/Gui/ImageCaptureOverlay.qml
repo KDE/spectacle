@@ -177,6 +177,7 @@ MouseArea {
         // Assume SelectionEditor covers all screens.
         // Use parent's coordinate system.
         opacity: root.containsMouse
+            && !contains(mapFromItem(root, root.mouseX, root.mouseY))
             && !root.pressed
             && !annotations.enabled
             && !mtbDragHandler.active
