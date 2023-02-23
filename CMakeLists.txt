@@ -49,7 +49,6 @@ find_package(
         Widgets
         DBus
         PrintSupport
-        Svg
         Test
         WaylandClient
 )
