@@ -329,6 +329,16 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     }
 
+    /* The logic for setting options for each start mode:
+     *
+     * - Gui/DBus: Prioritise command line options and default to saved settings.
+     * - Background: Prioritise command line options and use defaults based on
+     *   how command line options are meant to be used.
+     *
+     * Never start with a delay by default. It is annoying and confuses users
+     * when nothing happens immediately after starting spectacle.
+     */
+
     // In the GUI/CLI, the TransientWithParent mode is represented by the
     // "Window Under Cursor" option and the real WindowUnderCursor mode is
     // represented by the popup-only/transientOnly setting, which is meant to
@@ -336,21 +346,11 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     // TODO: Improve the API for transientOnly or make it obsolete.
     bool transientOnly;
     bool onClick;
-    int delayMsec = 0; // default to 0 if cli value parse fails
     bool includeDecorations;
     bool includePointer;
     if (m_startMode == StartMode::Background) {
         transientOnly = m_cliOptions[Option::TransientOnly];
         onClick = m_cliOptions[Option::OnClick];
-        if (onClick) {
-            delayMsec = -1;
-        } else if (m_cliOptions[Option::Delay]) {
-            bool parseOk = false;
-            int value = parser.value(CommandLineOptions::self()->delay).toInt(&parseOk);
-            if (parseOk) {
-                delayMsec = value;
-            }
-        }
         includeDecorations = !m_cliOptions[Option::NoDecoration];
         includePointer = m_cliOptions[Option::Pointer];
         setSaveCopyImageCopyPath(m_cliOptions[Option::Output],
@@ -359,23 +359,23 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     } else {
         transientOnly = Settings::transientOnly() || m_cliOptions[Option::TransientOnly];
         onClick = Settings::captureOnClick() || m_cliOptions[Option::OnClick];
-        if (onClick) {
-            delayMsec = -1;
-        } else if (m_cliOptions[Option::Delay]) {
-            bool parseOk = false;
-            int value = parser.value(CommandLineOptions::self()->delay).toInt(&parseOk);
-            if (parseOk) {
-                delayMsec = value;
-            }
-        } else {
-            delayMsec = Settings::captureDelay() * 1000; // default when cli option isn't used
-        }
         includeDecorations = Settings::includeDecorations()
                             && !m_cliOptions[Option::NoDecoration];
         includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
         setSaveCopyImageCopyPath(m_cliOptions[Option::Output] || Settings::autoSaveImage(),
                                  m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
                                  m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
+    }
+
+    int delayMsec = 0; // default to 0 if cli value parse fails
+    if (onClick) {
+        delayMsec = -1;
+    } else if (m_cliOptions[Option::Delay]) {
+        bool parseOk = false;
+        int value = parser.value(CommandLineOptions::self()->delay).toInt(&parseOk);
+        if (parseOk) {
+            delayMsec = value;
+        }
     }
 
     m_editExisting = m_cliOptions[Option::EditExisting];
