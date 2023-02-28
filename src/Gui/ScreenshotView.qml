@@ -19,8 +19,10 @@ EmptyPage {
                                             flickable.height / annotationEditor.implicitHeight)
     readonly property real maxZoom: Math.max(minZoom, 8)
     readonly property real defaultZoom: Math.min(
-        flickable.contentWidth / annotationEditor.implicitWidth,
-        flickable.contentHeight / annotationEditor.implicitHeight
+        // sometimes flickable's contentWidth/contentHeight can return -1 after setting them to -1,
+        // but not always, so get content size from the flickable's contentItem directly.
+        flickable.contentItem.width / annotationEditor.implicitWidth,
+        flickable.contentItem.height / annotationEditor.implicitHeight
     )
     readonly property real effectiveZoom: annotationEditor.effectiveZoom
 
@@ -140,8 +142,8 @@ EmptyPage {
             anchors.fill: parent
             z: -1
             enabled: flickable.interactive
-                && (flickable.contentWidth > flickable.width
-                    || flickable.contentHeight > flickable.height)
+                && (flickable.contentItem.width > flickable.width
+                    || flickable.contentItem.height > flickable.height)
             cursorShape: enabled ?
                 (pressed || flickable.dragging ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
                 : undefined
