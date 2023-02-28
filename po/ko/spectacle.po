@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2022-07-13 11:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -589,24 +589,24 @@ msgstr "다른 프로그램..."
 msgid "Share"
 msgstr "공유"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "새 스크린샷 찍기"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
 msgstr "화면 녹화"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -699,13 +699,23 @@ msgstr "클릭할 때"
 msgid "No Delay"
 msgstr "지연 없음"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid ""
 "Recording:\n"
 "%1"
 msgstr "화면 녹화"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1460,18 +1470,18 @@ msgstr "커서 아래 창 캡처"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "스크린샷 찍기 취소 혹은 실패"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 복사했습니다."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1483,24 +1493,24 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"

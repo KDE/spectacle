@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2022-12-29 17:23+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -586,24 +586,24 @@ msgstr "Altă aplicație..."
 msgid "Share"
 msgstr "Partajează"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, fuzzy, kde-format
 #| msgid "New Screenshot"
 msgid "Screenshot"
 msgstr "Captură nouă"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
 msgstr "Înregistrează ecranul"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "Apropiere:"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "Apropiere imagine"
@@ -693,13 +693,23 @@ msgstr "Capturează la clic"
 msgid "No Delay"
 msgstr "Fără întârziere"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid ""
 "Recording:\n"
 "%1"
 msgstr "Înregistrează ecranul"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1464,17 +1474,17 @@ msgstr "Capturează fereastra de sub cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Capturarea ecranului anulată sau eșuată"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1483,24 +1493,24 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Deschide"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Adnotează"

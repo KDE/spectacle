@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2023-02-19 13:57+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -619,22 +619,22 @@ msgstr "Другое приложение..."
 msgid "Share"
 msgstr "Опубликовать"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, kde-format
 msgid "Screenshot"
 msgstr "Снимок экрана"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
 msgstr "Запись экрана"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "Масштаб:"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "Мастаб изображения"
@@ -725,7 +725,7 @@ msgstr "По щелчку"
 msgid "No Delay"
 msgstr "Без задержки"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -733,6 +733,16 @@ msgid ""
 msgstr ""
 "Запись экрана:\n"
 "%1"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1490,17 +1500,17 @@ msgstr "Создать снимок окна под курсором мыши"
 msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Создание снимка экрана отменено или не удалось."
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1509,24 +1519,24 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"

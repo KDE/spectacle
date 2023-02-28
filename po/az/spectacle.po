@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2022-07-06 09:32+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -606,24 +606,24 @@ msgstr "Başqa tətbiqlər..."
 msgid "Share"
 msgstr "Paylaşmaq"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Screenshot"
 msgstr "Yeni ekran şəkli çəkmək"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording"
 msgstr "Ekranı videoya yazmaq"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -718,13 +718,23 @@ msgstr "Kliklədikdə"
 msgid "No Delay"
 msgstr "Gecikməsiz"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid ""
 "Recording:\n"
 "%1"
 msgstr "Ekranı videoya yazmaq"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1491,18 +1501,18 @@ msgstr "Kursor altındakı pəncərəni çəkmək"
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle-ı şəkil çəkmədən başlatmaq"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekran şəkli çəkilməsi ləğv edildi və ya alınmadı"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekran şəkli mübadilə yaddaşınıza kopyalandı."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1514,24 +1524,24 @@ msgstr ""
 "Ekran görüntüsü \"%1\" kimi \"%2\" daxilində saxlanıldı və ekran şəklinin "
 "fayl yolu mübadilə yaddaşına kopyalandı."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekran şəkli Şəkillər qovluğunuzda \"%1\" faylı kimi saxlanıldı."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekran şəkli \"%2\" qovluğunda \"%1\" faylı kimi saxlanıld."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Açmaq"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Şərh etmək"

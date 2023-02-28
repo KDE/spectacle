@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
-"PO-Revision-Date: 2023-02-02 11:57+0400\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
+"PO-Revision-Date: 2023-02-16 11:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -581,22 +581,22 @@ msgstr "تطبيق آخر..."
 msgid "Share"
 msgstr "شارك"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, kde-format
 msgid "Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
 msgstr "يسجّل"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "التّكبير:"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "تكبير الصورة"
@@ -683,13 +683,24 @@ msgstr "التقط عند النّقر"
 msgid "No Delay"
 msgstr "بدون تأخير"
 
-#: src/Gui/RecordingView.qml:36
-#, fuzzy, kde-format
-#| msgid "Recording"
+#: src/Gui/RecordingView.qml:65
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "يسجّل"
+msgstr ""
+"يسجّل:\n"
+"‏%1"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1439,41 +1450,41 @@ msgstr "التقط النافذة التي تحت المؤشر"
 msgid "Launch Spectacle without capturing"
 msgstr "شغل لاقط الشاشة بدون أخذ صورة"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "أُلغي أو فشل أخذ اللقطة"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "حُفظت لقطة شاشة في الحافظة."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "حُفظت اللقطة كـ'%1' في '%2' وحُفظ مسارها إلى الحافظة."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى مجلّد الصّور."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى '%2'."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "افتح"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "اشرح"

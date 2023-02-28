@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2023-02-11 08:47+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -586,22 +586,22 @@ msgstr "Inny program..."
 msgid "Share"
 msgstr "Udostępnij"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, kde-format
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
 msgstr "Nagrywanie"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "Powiększenie:"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "Powiększenie obrazu"
@@ -691,7 +691,7 @@ msgstr "Zrzuć po naciśnięciu"
 msgid "No Delay"
 msgstr "Bez opóźnienia"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -699,6 +699,16 @@ msgid ""
 msgstr ""
 "Nagrywanie:\n"
 "%1"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1454,17 +1464,17 @@ msgstr "Zrzuć okno pod wskaźnikiem"
 msgid "Launch Spectacle without capturing"
 msgstr "Uruchom Spectacle bez wykonania zrzutu"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zaniechano zrzucania ekranu lub nie udało się tego zrobić"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zrzut zapisano w twoim schowku."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1472,24 +1482,24 @@ msgid ""
 msgstr ""
 "Zapisano zrzut ekranu jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu Zdjęcia."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu '%2'."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Opisz"

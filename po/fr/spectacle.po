@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
 "PO-Revision-Date: 2023-02-13 19:06+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -508,7 +508,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 "Afficher la barre de titre et la bordure de la fenêtre lors de la copie "
-"d’écran d’une fenêtre."
+"d'écran d'une fenêtre."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -608,22 +608,22 @@ msgstr "Autre application..."
 msgid "Share"
 msgstr "Partager"
 
-#: src/Gui/ImageView.qml:290
+#: src/Gui/ImageView.qml:148
 #, kde-format
 msgid "Screenshot"
 msgstr "Copie d'écran"
 
-#: src/Gui/ImageView.qml:294
+#: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
 msgstr "Enregistrement en cours"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom :"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom d'image"
@@ -713,7 +713,7 @@ msgstr "Copie sur un clic"
 msgid "No Delay"
 msgstr "Aucun délai"
 
-#: src/Gui/RecordingView.qml:36
+#: src/Gui/RecordingView.qml:65
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -721,6 +721,16 @@ msgid ""
 msgstr ""
 "Enregistrement : \n"
 "%1"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -1237,28 +1247,28 @@ msgstr "Couleur de police pour les annotations"
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation à main levée présente une ombre portée ou non"
+"Définit si l'outil d'annotation à main levée présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation de lignes présente une ombre portée ou non"
+"Définit si l'outil d'annotation de lignes présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation avec flèches présente une ombre portée ou non"
+"Définit si l'outil d'annotation avec flèches présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation en rectangles présente une ombre portée ou "
+"Définit si l'outil d'annotation en rectangles présente une ombre portée ou "
 "non"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
@@ -1266,21 +1276,21 @@ msgstr ""
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation elliptique présente une ombre portée ou non"
+"Définit si l'outil d'annotation elliptique présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation de texte présente une ombre portée ou non"
+"Définit si l'outil d'annotation de texte présente une ombre portée ou non"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr ""
-"Définit si l’outil d’annotation des nombres présente une ombre portée ou non"
+"Définit si l'outil d'annotation des nombres présente une ombre portée ou non"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1495,17 +1505,17 @@ msgstr "Capturer la fenêtre sous le curseur"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Annulation ou échec de la capture d'écran"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une capture d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1514,7 +1524,7 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1522,18 +1532,18 @@ msgstr ""
 "Une capture d'écran a été enregistrée sous « %1 » dans votre dossier "
 "d'images."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une capture d'écran a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"

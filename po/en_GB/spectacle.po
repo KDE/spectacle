@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Steve Allewell, 2015.
-# Steve Allewell <steve.allewell@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Steve Allewell <steve.allewell@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 00:57+0000\n"
-"PO-Revision-Date: 2022-12-31 16:42+0000\n"
+"POT-Creation-Date: 2023-02-28 00:56+0000\n"
+"PO-Revision-Date: 2023-02-27 20:11+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -582,24 +582,22 @@ msgstr "Other Application..."
 msgid "Share"
 msgstr "Share"
 
-#: src/Gui/ImageView.qml:290
-#, fuzzy, kde-format
-#| msgid "New Screenshot"
+#: src/Gui/ImageView.qml:148
+#, kde-format
 msgid "Screenshot"
-msgstr "New Screenshot"
+msgstr "Screenshot"
 
-#: src/Gui/ImageView.qml:294
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#: src/Gui/ImageView.qml:152
+#, kde-format
 msgid "Recording"
-msgstr "Record Screen"
+msgstr "Recording"
 
-#: src/Gui/ImageView.qml:357
+#: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:371
+#: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
 msgstr "Image Zoom"
@@ -688,35 +686,44 @@ msgstr "Capture On Click"
 msgid "No Delay"
 msgstr "No Delay"
 
-#: src/Gui/RecordingView.qml:36
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#: src/Gui/RecordingView.qml:65
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Record Screen"
+msgstr ""
+"Recording:\n"
+"%1"
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Pause"
+msgstr ""
+
+#: src/Gui/RecordingView.qml:96
+#, kde-format
+msgid "Play"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
 msgid "New screen recording"
-msgstr ""
+msgstr "New screen recording"
 
 #: src/Gui/RecordOptions.qml:43
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording Settings"
-msgstr "Record Screen"
+msgstr "Recording Settings"
 
 #: src/Gui/RecordOptions.qml:49
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image."
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Show the mouse cursor in the screenshot image."
+msgstr "Show the mouse cursor in the screen recording."
 
 #: src/Gui/RecordOptions.qml:60
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Finish recording"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -735,10 +742,9 @@ msgstr ""
 "been copied to clipboard"
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "The video was saved as <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -1104,10 +1110,9 @@ msgstr "The default filename used when saving"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The default filename used when recording a video"
-msgstr "The default filename used when saving"
+msgstr "The default filename used when recording a video"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
@@ -1420,29 +1425,27 @@ msgstr "steve.allewell@gmail.com"
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "Workspace"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "Record Screen"
+msgstr "Selected Screen"
 
 #: src/RecordingModeModel.cpp:40
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "Active Window"
+msgstr "Selected Window"
 
 #: src/RecordingModeModel.cpp:87
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "Failed to select output"
 
 #: src/RecordingModeModel.cpp:115
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Failed to select window"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
@@ -1454,17 +1457,17 @@ msgstr "Capture Window Under Cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Launch Spectacle without capturing"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:651
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Screenshot capture cancelled or failed"
 
-#: src/SpectacleCore.cpp:680
+#: src/SpectacleCore.cpp:681
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "A screenshot was saved to your clipboard."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:683
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1473,24 +1476,24 @@ msgstr ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:687
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "A screenshot was saved as '%1' to your Pictures folder."
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "A screenshot was saved as '%1' to '%2'."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Open"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgid "Annotate"
 msgstr "Annotate"
