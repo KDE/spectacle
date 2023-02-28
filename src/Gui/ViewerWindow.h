@@ -47,6 +47,7 @@ Q_SIGNALS:
     void imageDprChanged();
 
 protected:
+    bool event(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 

@@ -18,7 +18,10 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     , m_mode(mode)
 {
     s_isAnnotating = false;
+// QGuiApplication::paletteChanged() is deprecated in Qt 6.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     connect(qGuiApp, &QGuiApplication::paletteChanged, this, &ViewerWindow::updateColor);
+#endif
 
     connect(SpectacleCore::instance(), &SpectacleCore::screenCaptureUrlChanged, this, &ViewerWindow::imageSizeChanged);
     connect(SpectacleCore::instance(), &SpectacleCore::screenCaptureUrlChanged, this, &ViewerWindow::imageDprChanged);
@@ -176,6 +179,18 @@ void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageA
             QApplication::clipboard()->setText(messageArgument);
         }
     }
+}
+
+bool ViewerWindow::event(QEvent *event)
+{
+// This should work in Qt 5, but doesn't.
+// The event type simply never happens in response to color scheme changes.
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    if (event->type() == QEvent::ApplicationPaletteChange) {
+        updateColor();
+    }
+#endif
+    return SpectacleWindow::event(event);
 }
 
 void ViewerWindow::resizeEvent(QResizeEvent *event)
