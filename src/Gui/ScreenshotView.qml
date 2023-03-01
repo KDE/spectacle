@@ -173,6 +173,7 @@ EmptyPage {
             smooth: !contextWindow.annotating || effectiveZoom <= 2
             width: implicitWidth * (zoom < 1 ? zoom : scale)
             height: implicitHeight * (zoom < 1 ? zoom : scale)
+            smooth: !contextWindow.annotating || effectiveZoom < 2
             visible: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationDocument.None
