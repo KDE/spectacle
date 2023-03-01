@@ -63,6 +63,31 @@ EmptyPage {
         flickable.returnToBounds()
     }
 
+    function zoomIn(centerPos = flickable.mapToItem(flickable.contentItem,
+                                                    flickable.width / 2,
+                                                    flickable.height / 2)) {
+        let stepSize = 1
+        if (effectiveZoom + 0.5 <= 1) {
+            stepSize = 0.25
+        } else if (effectiveZoom + 1 <= 2) {
+            stepSize = 0.5
+        }
+        zoomToPercent(effectiveZoom - (effectiveZoom % stepSize) + stepSize, centerPos)
+    }
+
+    function zoomOut(centerPos = flickable.mapToItem(flickable.contentItem,
+                                                     flickable.width / 2,
+                                                     flickable.height / 2)) {
+        let inverseRemainder = 1 - (effectiveZoom % 1)
+        let stepSize = 1
+        if (effectiveZoom - 0.5 <= 0.5) {
+            stepSize = 0.25
+        } else if (effectiveZoom - 1 <= 1) {
+            stepSize = 0.5
+        }
+        zoomToPercent(effectiveZoom + (inverseRemainder % stepSize) - stepSize, centerPos)
+    }
+
     leftPadding: mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
     rightPadding: !mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
     bottomPadding: horizontalScrollBar.visible ? horizontalScrollBar.height : 0
@@ -95,11 +120,11 @@ EmptyPage {
                 if (angleDelta.x >= 120 || angleDelta.y >= 120) {
                     angleDelta = Qt.point(0,0)
                     const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomToPercent(root.effectiveZoom * 1.25, centerPos)
+                    root.zoomIn(centerPos)
                 } else if (angleDelta.x <= -120 || angleDelta.y <= -120) {
                     angleDelta = Qt.point(0,0)
                     const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomToPercent(root.effectiveZoom * 0.8, centerPos)
+                    root.zoomOut(centerPos)
                 }
                 wheel.accepted = true
             }

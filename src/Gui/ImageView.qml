@@ -248,12 +248,12 @@ EmptyPage {
     Shortcut {
         enabled: contextWindow.annotating && !SpectacleCore.videoMode && contentLoader.item !== null
         sequences: [StandardKey.ZoomIn]
-        onActivated: contentLoader.item.zoomToPercent(contentLoader.item.effectiveZoom * 1.25)
+        onActivated: contentLoader.item.zoomIn()
     }
     Shortcut {
         enabled: contextWindow.annotating && !SpectacleCore.videoMode && contentLoader.item !== null
         sequences: [StandardKey.ZoomOut]
-        onActivated: contentLoader.item.zoomToPercent(contentLoader.item.effectiveZoom * 0.8)
+        onActivated: contentLoader.item.zoomOut()
     }
     // FIXME: This shortcut only exists here because spectacle interprets "Ctrl+Shift+,"
     // as "Ctrl+Shift+<" for some reason unless we use a QML Shortcut.
