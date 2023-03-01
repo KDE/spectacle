@@ -150,23 +150,16 @@ EmptyPage {
         }
 
         MouseArea {
-            anchors.fill: parent
             z: -1
-            enabled: flickable.interactive
-                && (flickable.contentItem.width > flickable.width
-                    || flickable.contentItem.height > flickable.height)
-            cursorShape: enabled ?
-                (pressed || flickable.dragging ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                : undefined
-        }
-
-        MouseArea {
             anchors.fill: annotationEditor
-            cursorShape: enabled ?
-                (pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                : undefined
             enabled: !contextWindow.annotating
-            onPositionChanged: {
+                || (flickable.interactive
+                    && (flickable.contentItem.width > flickable.width
+                        || flickable.contentItem.height > flickable.height))
+            cursorShape: enabled ?
+                (containsPress || flickable.dragging ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                : undefined
+            onPositionChanged: if (!contextWindow.annotating) {
                 contextWindow.startDrag()
             }
         }
