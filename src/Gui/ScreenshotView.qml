@@ -15,53 +15,52 @@ import "Annotations"
 EmptyPage {
     id: root
 
-    readonly property real minZoom: Math.min(flickable.width / annotationEditor.implicitWidth,
-                                            flickable.height / annotationEditor.implicitHeight)
+    readonly property real fitZoom: Math.min(flickable.width / annotationEditor.implicitWidth,
+                                             flickable.height / annotationEditor.implicitHeight)
+    readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
-    readonly property real defaultZoom: Math.min(
-        // sometimes flickable's contentWidth/contentHeight can return -1 after setting them to -1,
-        // but not always, so get content size from the flickable's contentItem directly.
-        flickable.contentItem.width / annotationEditor.implicitWidth,
-        flickable.contentItem.height / annotationEditor.implicitHeight
-    )
     readonly property real effectiveZoom: annotationEditor.effectiveZoom
 
-    function zoomByFactor(factor, centerPos = flickable.mapToItem(flickable.contentItem,
-                                                                  flickable.width / 2,
-                                                                  flickable.height / 2)) {
-        let newWidth = Math.max(flickable.width, // min
-                       Math.min(annotationEditor.width * factor,
-                                annotationEditor.implicitWidth * maxZoom)) // max
-        let newHeight = Math.max(flickable.height, // min
-                        Math.min(annotationEditor.height * factor,
-                                 annotationEditor.implicitHeight * maxZoom)) // max
-        flickable.resizeContent(newWidth, newHeight, centerPos)
-        flickable.returnToBounds()
-        if (newWidth === flickable.width) {
-            flickable.contentWidth = -1 // reset to follow flickable width
+    // Flickable doesn't work well when making the contentItem smaller than the flickable,
+    // so we have to create custom behavior for resizing content.
+    function resizeContent(w, h, center) {
+        const oldW = annotationEditor.width
+        const oldH = annotationEditor.height
+        annotationEditor.width = w
+        annotationEditor.height = h
+
+        // Setting contentX and contentY can cause jittery movement, especially when animating,
+        // but not using them can cause the content to go out of bounds when zooming out.
+        // Using returnToBounds() will not fix it. You must manually limit the positions.
+        if (center.x !== 0) {
+            const min = flickable.width - Math.max(w, flickable.contentItem.width)
+            const target = contextWindow.dprRound(flickable.contentItem.x + center.x
+                                                  + (-center.x * w / oldW))
+            flickable.contentItem.x = Math.max(min,
+                                      Math.min(target,
+                                               0)) // max
         }
-        if (newHeight === flickable.height) {
-            flickable.contentHeight = -1 // reset to follow flickable height
+        if (center.y !== 0) {
+            const min = flickable.height - Math.max(h, flickable.contentItem.height)
+            const target = contextWindow.dprRound(flickable.contentItem.y + center.y
+                                                  + (-center.y * w / oldW))
+            flickable.contentItem.y = Math.max(min,
+                                      Math.min(target,
+                                               0)) // max
         }
     }
 
     function zoomToPercent(percent, centerPos = flickable.mapToItem(flickable.contentItem,
                                                                     flickable.width / 2,
                                                                     flickable.height / 2)) {
-        let newWidth = Math.max(flickable.width, // min
+        let newWidth = Math.max(annotationEditor.implicitWidth * minZoom, // min
                        Math.min(annotationEditor.implicitWidth * percent,
                                 annotationEditor.implicitWidth * maxZoom)) // max
-        let newHeight = Math.max(flickable.height, // min
+        let newHeight = Math.max(annotationEditor.implicitHeight * minZoom, // min
                         Math.min(annotationEditor.implicitHeight * percent,
                                  annotationEditor.implicitHeight * maxZoom)) // max
-        flickable.resizeContent(newWidth, newHeight, centerPos)
+        resizeContent(newWidth, newHeight, centerPos)
         flickable.returnToBounds()
-        if (newWidth === flickable.width) {
-            flickable.contentWidth = -1 // reset to follow flickable width
-        }
-        if (newHeight === flickable.height) {
-            flickable.contentHeight = -1 // reset to follow flickable height
-        }
     }
 
     leftPadding: mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
@@ -76,21 +75,8 @@ EmptyPage {
             && AnnotationDocument.tool.type === AnnotationDocument.None
         boundsBehavior: Flickable.StopAtBounds
         rebound: Transition {} // Instant transition. Null doesn't do this.
-
-        // Needed to re-center the content when the window has been
-        // resized to be larger than the content after zooming in.
-        // Can't use contentWidth, contentHeight, contentX and contentY here for some reason.
-        // Doing so causes the content to be positioned wrong or make the centering not work.
-        Binding on contentItem.x {
-            value: contextWindow.dprRound((flickable.width - flickable.contentItem.width) / 2)
-            when: flickable.width > flickable.contentItem.width
-            restoreMode: Binding.RestoreBindingOrValue
-        }
-        Binding on contentItem.y {
-            value: contextWindow.dprRound((flickable.height - flickable.contentItem.height) / 2)
-            when: flickable.height > flickable.contentItem.height
-            restoreMode: Binding.RestoreBindingOrValue
-        }
+        contentWidth: Math.max(width, annotationEditor.width)
+        contentHeight: Math.max(height, annotationEditor.height)
 
         Kirigami.WheelHandler {
             property point angleDelta: Qt.point(0,0)
@@ -109,11 +95,11 @@ EmptyPage {
                 if (angleDelta.x >= 120 || angleDelta.y >= 120) {
                     angleDelta = Qt.point(0,0)
                     const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomByFactor(1.25, centerPos)
+                    root.zoomToPercent(root.effectiveZoom * 1.25, centerPos)
                 } else if (angleDelta.x <= -120 || angleDelta.y <= -120) {
                     angleDelta = Qt.point(0,0)
                     const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomByFactor(0.8, centerPos)
+                    root.zoomToPercent(root.effectiveZoom * 0.8, centerPos)
                 }
                 wheel.accepted = true
             }
@@ -162,18 +148,19 @@ EmptyPage {
 
         AnnotationEditor {
             id: annotationEditor
-            x: contextWindow.dprRound((parent.width - width) / 2)
-            y: contextWindow.dprRound((parent.height - height) / 2)
-            implicitWidth: contextWindow.imageSize.width / contextWindow.imageDpr
-            implicitHeight: contextWindow.imageSize.height / contextWindow.imageDpr
+            readonly property real targetZoom: Math.min(width / implicitWidth,
+                                                        height / implicitHeight)
+            x: contextWindow.dprRound((flickable.contentItem.width - annotationEditor.width) / 2)
+            y: contextWindow.dprRound((flickable.contentItem.height - annotationEditor.height) / 2)
+            implicitWidth: document.canvasSize.width
+            implicitHeight: document.canvasSize.height
             transformOrigin: Item.TopLeft
-            zoom: Math.min(1, Math.max(root.minZoom, root.defaultZoom))
-            scale: Math.max(1, Math.min(root.maxZoom, root.defaultZoom))
+            zoom: Math.min(1, Math.max(root.minZoom, targetZoom))
+            scale: Math.max(1, Math.min(root.maxZoom, targetZoom))
             antialiasing: false
-            smooth: !contextWindow.annotating || effectiveZoom <= 2
-            width: implicitWidth * (zoom < 1 ? zoom : scale)
-            height: implicitHeight * (zoom < 1 ? zoom : scale)
             smooth: !contextWindow.annotating || effectiveZoom < 2
+            width: implicitWidth * root.fitZoom
+            height: implicitHeight * root.fitZoom
             visible: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationDocument.None
@@ -186,26 +173,25 @@ EmptyPage {
             name: "annotating"
             when: contextWindow.annotating
             PropertyChanges {
-                target: flickable
-                contentWidth: annotationEditor.implicitWidth
-                contentHeight: annotationEditor.implicitHeight
+                target: annotationEditor
+                width: annotationEditor.implicitWidth
+                height: annotationEditor.implicitHeight
             }
         },
         State {
             name: "normal"
             when: !contextWindow.annotating
             PropertyChanges {
-                target: flickable
-                contentWidth: -1
-                contentHeight: -1
+                target: annotationEditor
+                width: annotationEditor.implicitWidth * root.fitZoom
+                height: annotationEditor.implicitHeight * root.fitZoom
             }
         }
     ]
     transitions: [
         Transition {
             NumberAnimation {
-                target: flickable
-                properties: "contentWidth,contentHeight"
+                properties: "width,height"
                 duration: Kirigami.Units.longDuration
                 easing.type: Easing.InOutSine
             }
