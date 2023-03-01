@@ -218,7 +218,7 @@ EmptyPage {
                     id: zoomEditor
                     from: contentLoader.item.minZoom * 100
                     to: contentLoader.item.maxZoom * 100
-                    stepSize: 10
+                    stepSize: 25
                     value: contentLoader.item.effectiveZoom * 100
                     textFromValue: (value, locale) => {
                         return Number(Math.round(value)).toLocaleString(locale, 'f', 0) + locale.percent
