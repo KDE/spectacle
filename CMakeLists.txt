@@ -12,9 +12,9 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION     "5.15.2")
-set(KF5_MIN_VERSION    "5.104.0")
+set(KF_MIN_VERSION    "5.104.0")
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 # set up standard kde build settings
@@ -54,7 +54,7 @@ find_package(
 )
 
 find_package(
-    KF5 ${KF5_MIN_VERSION} REQUIRED
+    KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED
         CoreAddons
         WidgetsAddons
         DBusAddons
@@ -82,13 +82,13 @@ set_package_properties(KPipeWire PROPERTIES DESCRIPTION
 )
 
 # optional components
-find_package(KF5DocTools ${KF5_MIN_VERSION})
-set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
+find_package(KF${QT_MAJOR_VERSION}DocTools ${KF_MIN_VERSION})
+set_package_properties(KF${QT_MAJOR_VERSION}DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
-find_package(KF5Purpose)
-if (KF5Purpose_FOUND)
+find_package(KF${QT_MAJOR_VERSION}Purpose)
+if (KF${QT_MAJOR_VERSION}Purpose_FOUND)
     set(PURPOSE_FOUND 1)
 endif()
 
@@ -145,7 +145,7 @@ add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(tests)
 
-if (KF5DocTools_FOUND)
+if (KF${QT_MAJOR_VERSION}DocTools_FOUND)
     add_subdirectory(doc)
     kdoctools_install(po)
 endif()

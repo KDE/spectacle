@@ -78,7 +78,7 @@ endif()
 
 
 if(PURPOSE_FOUND)
-    target_link_libraries(spectacle KF5::PurposeWidgets)
+    target_link_libraries(spectacle KF${QT_MAJOR_VERSION}::PurposeWidgets)
 endif()
 
 ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/SaveOptions.ui)
@@ -94,19 +94,19 @@ target_link_libraries(
         Qt::QuickTemplates2
         Qt::GuiPrivate
         Qt::WaylandClient
-        KF5::CoreAddons
-        KF5::DBusAddons
-        KF5::WidgetsAddons
-        KF5::Notifications
-        KF5::ConfigCore
-        KF5::I18n
-        KF5::KIOWidgets
-        KF5::WindowSystem
-        KF5::NewStuff
-        KF5::GlobalAccel
-        KF5::XmlGui
-        KF5::GuiAddons
-        KF5::Kirigami2
+        KF${QT_MAJOR_VERSION}::CoreAddons
+        KF${QT_MAJOR_VERSION}::DBusAddons
+        KF${QT_MAJOR_VERSION}::WidgetsAddons
+        KF${QT_MAJOR_VERSION}::Notifications
+        KF${QT_MAJOR_VERSION}::ConfigCore
+        KF${QT_MAJOR_VERSION}::I18n
+        KF${QT_MAJOR_VERSION}::KIOWidgets
+        KF${QT_MAJOR_VERSION}::WindowSystem
+        KF${QT_MAJOR_VERSION}::NewStuff
+        KF${QT_MAJOR_VERSION}::GlobalAccel
+        KF${QT_MAJOR_VERSION}::XmlGui
+        KF${QT_MAJOR_VERSION}::GuiAddons
+        KF${QT_MAJOR_VERSION}::Kirigami2
         K::KPipeWireRecord
         Wayland::Client
 )
