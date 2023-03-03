@@ -180,6 +180,14 @@ void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName
     s_synchronizingTitle = false;
 }
 
+void SpectacleWindow::closeAll()
+{
+    // counting down should prevent invalid memory access
+    for (int i = s_spectacleWindowInstances.count() - 1; i >= 0; --i) {
+        s_spectacleWindowInstances[i]->close();
+    }
+}
+
 qreal SpectacleWindow::dprRound(qreal value) const
 {
     return std::round(value * devicePixelRatio()) / devicePixelRatio();
@@ -260,8 +268,7 @@ void SpectacleWindow::save()
     // which is connected to QCoreApplication::quit in Main.cpp
     ExportManager::instance()->doSave(QUrl(), /* notify */ quitChecked);
     if (quitChecked) {
-        qApp->setQuitOnLastWindowClosed(false);
-        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        SpectacleWindow::closeAll();
     }
 }
 
@@ -269,8 +276,7 @@ void SpectacleWindow::saveAs()
 {
     const bool quitChecked = Settings::quitAfterSaveCopyExport();
     if (ExportManager::instance()->doSaveAs(/* notify */ quitChecked) && quitChecked) {
-        qApp->setQuitOnLastWindowClosed(false);
-        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        SpectacleWindow::closeAll();
     }
 }
 
@@ -280,8 +286,7 @@ void SpectacleWindow::copyImage()
     SpectacleCore::instance()->syncExportPixmap();
     ExportManager::instance()->doCopyToClipboard(/* notify */ quitChecked);
     if (quitChecked) {
-        qApp->setQuitOnLastWindowClosed(false);
-        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        SpectacleWindow::closeAll();
     }
 }
 
@@ -290,8 +295,7 @@ void SpectacleWindow::copyLocation()
     const bool quitChecked = Settings::quitAfterSaveCopyExport();
     ExportManager::instance()->doCopyLocationToClipboard();
     if (quitChecked) {
-        qApp->setQuitOnLastWindowClosed(false);
-        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        SpectacleWindow::closeAll();
     }
 }
 

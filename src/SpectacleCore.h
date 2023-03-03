@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <QEventLoopLocker>
 #include <QObject>
 #include <QQmlEngine>
 #include <QQuickItem>

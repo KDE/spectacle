@@ -412,8 +412,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     switch (m_startMode) {
     case StartMode::DBus:
         m_notify = !m_cliOptions[Option::NoNotify];
-
-        qApp->setQuitOnLastWindowClosed(false);
         break;
 
     case StartMode::Background: {
@@ -425,8 +423,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 setScreenCaptureUrl(lFileName);
             }
         }
-
-        qApp->setQuitOnLastWindowClosed(false);
 
         takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
     } break;
@@ -664,6 +660,10 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 {
     KNotification *notification = new KNotification(QStringLiteral("newScreenshotSaved"),
                                                     KNotification::CloseOnTimeout, this);
+    // ensure program stays alive until the notification finishes.
+    if (!m_eventLoopLocker) {
+        m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
+    }
 
     int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
     auto captureModeLabel = captureModeModel()->data(captureModeModel()->index(index),
@@ -688,14 +688,9 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     if (!theSavedAt.isEmpty()) {
         notification->setUrls({theSavedAt});
         notification->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
-        connect(notification, &KNotification::defaultActivated, this, [this, theSavedAt]() {
+        connect(notification, &KNotification::defaultActivated, this, [theSavedAt]() {
             auto job = new KIO::OpenUrlJob(theSavedAt);
             job->start();
-            QTimer::singleShot(250, this, [this] {
-                if (isGuiNull() || Settings::quitAfterSaveCopyExport()) {
-                    Q_EMIT allDone();
-                }
-            });
         });
         notification->setActions({i18n("Annotate")});
         connect(notification, &KNotification::action1Activated, this, [theSavedAt]() {
@@ -712,9 +707,7 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
 
     connect(notification, &QObject::destroyed, this, [this] {
         QTimer::singleShot(250, this, [this] {
-            if (isGuiNull() || Settings::quitAfterSaveCopyExport()) {
-                Q_EMIT allDone();
-            }
+            m_eventLoopLocker.reset();
         });
     });
 
@@ -835,8 +828,6 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 
 void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 {
-    // quit on last window closed whenever a GUI is created to avoid never closing.
-    qApp->setQuitOnLastWindowClosed(true);
     deleteWindows();
 
     // Allow the window to be transparent. Used for video recording UI.
@@ -852,8 +843,6 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 
 void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
 {
-    // quit on last window closed whenever a GUI is created to avoid never closing.
-    qApp->setQuitOnLastWindowClosed(true);
     // always switch to gui mode when a viewer window is used.
     m_startMode = SpectacleCore::StartMode::Gui;
     deleteWindows();

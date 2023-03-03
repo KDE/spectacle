@@ -65,6 +65,11 @@ public:
     static void setTitleForAll(TitlePreset preset, const QString &fileName = {});
 
     /**
+     * Close all SpectacleWindows.
+     */
+    static void closeAll();
+
+    /**
      * Round value to be physically pixel perfect, based on the device pixel ratio.
      * Meant to be used with coordinates, line widths and shape sizes.
      * This is meant to be used in QML.
