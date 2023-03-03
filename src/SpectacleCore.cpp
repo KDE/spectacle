@@ -656,14 +656,18 @@ void SpectacleCore::onScreenshotFailed()
     }
 }
 
+static QVector<KNotification *> notifications;
+
 void SpectacleCore::doNotify(const QUrl &theSavedAt)
 {
-    KNotification *notification = new KNotification(QStringLiteral("newScreenshotSaved"),
-                                                    KNotification::CloseOnTimeout, this);
     // ensure program stays alive until the notification finishes.
     if (!m_eventLoopLocker) {
         m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
     }
+
+    auto notification = new KNotification(QStringLiteral("newScreenshotSaved"),
+                                          KNotification::CloseOnTimeout, this);
+    notifications.append(notification);
 
     int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
     auto captureModeLabel = captureModeModel()->data(captureModeModel()->index(index),
@@ -705,10 +709,14 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
         });
     }
 
-    connect(notification, &QObject::destroyed, this, [this] {
-        QTimer::singleShot(250, this, [this] {
-            m_eventLoopLocker.reset();
-        });
+    connect(notification, &QObject::destroyed, this, [this](QObject *notification) {
+        notifications.removeOne(static_cast<KNotification *>(notification));
+        // When there are no more notifications running, we can remove the loop locker.
+        if (notifications.empty()) {
+            QTimer::singleShot(250, this, [this] {
+                m_eventLoopLocker.reset();
+            });
+        }
     });
 
     notification->sendEvent();
