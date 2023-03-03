@@ -45,7 +45,8 @@ protected:
     void timerEvent(QTimerEvent *event) override;
 
 public Q_SLOTS:
-    virtual void startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) = 0;
+    virtual void startRecording(const QString &path, VideoPlatform::RecordingMode recordingMode,
+                                const VideoPlatform::RecordingOption &option, bool includePointer) = 0;
     virtual void finishRecording() = 0;
 
 Q_SIGNALS:

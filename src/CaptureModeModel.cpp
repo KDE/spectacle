@@ -107,7 +107,7 @@ void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
         m_data.append({
             CaptureModeModel::AllScreensScaled,
             i18n("All Screens (Scaled to same size)"),
-            QStringLiteral("")
+            QLatin1String("")
         });
     }
     if (m_grabModes.testFlag(Platform::GrabMode::CurrentScreen)) {

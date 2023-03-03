@@ -127,7 +127,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<ScreenImage> &screenImages) {
         SelectionEditor::instance()->setScreenImages(screenImages);
         m_annotationDocument->clear();
-        for (const auto &img : SelectionEditor::instance()->screenImages()) {
+        for (const auto &img : screenImages) {
             QImage image(img.image);
             if (KWindowSystem::isPlatformWayland()) {
                 image.setDevicePixelRatio(qreal(image.width()) / img.screen->geometry().width());
@@ -848,7 +848,8 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
     QQuickWindow::setDefaultAlphaBuffer(true);
 
     auto engine = getQmlEngine();
-    for (auto *screen : qApp->screens()) {
+    const auto screens = qApp->screens();
+    for (auto *screen : screens) {
         m_captureWindows.emplace_back(std::make_unique<CaptureWindow>(mode, screen, engine));
     }
 }

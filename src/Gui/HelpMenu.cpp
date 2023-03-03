@@ -19,7 +19,8 @@ static QObject *findWidgetOfType(const char *className)
     if (strlen(className) == 0) {
         return nullptr;
     }
-    for (auto w : qApp->allWidgets()) {
+    const auto widgets = qApp->allWidgets();
+    for (const auto w : widgets) {
         if (w->inherits(className)) {
             return w;
         }

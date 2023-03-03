@@ -90,7 +90,8 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
 
             const QVariantMap data = asyncReply.value();
             const QPoint top(data[QStringLiteral("x")].toDouble(), data[QStringLiteral("y")].toDouble());
-            for (auto screen : qGuiApp->screens()) {
+            const auto screens = qGuiApp->screens();
+            for (auto screen : screens) {
                 if (screen->geometry().contains(top)) {
                     SpectacleCore::instance()->startRecordingScreen(screen, withPointer);
                     return;
@@ -122,7 +123,8 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
     case VideoPlatform::Region: {
         // TODO: Ask user for the region
         QRect region;
-        for (auto screen : qGuiApp->screens()) {
+        const auto screens = qGuiApp->screens();
+        for (auto screen : screens) {
             region |= screen->geometry();
         }
         SpectacleCore::instance()->startRecordingRegion(region, withPointer);

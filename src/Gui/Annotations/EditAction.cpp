@@ -672,7 +672,7 @@ void FreeHandAction::setGeometry(const QRectF &geom)
 
 QRectF FreeHandAction::visualGeometry() const
 {
-    return geometry() + strokeMargins();
+    return EditAction::visualGeometry() + strokeMargins();
 }
 
 void FreeHandAction::setVisualGeometry(const QRectF &geom)
@@ -742,7 +742,7 @@ QRectF LineAction::geometry() const
 
 QRectF LineAction::visualGeometry() const
 {
-    return geometry().normalized() + strokeMargins();
+    return EditAction::visualGeometry() + strokeMargins();
 }
 
 void LineAction::setVisualGeometry(const QRectF &geom)
@@ -823,7 +823,7 @@ QRectF ShapeAction::geometry() const
 
 QRectF ShapeAction::visualGeometry() const
 {
-    return geometry().normalized() + strokeMargins();
+    return EditAction::visualGeometry() + strokeMargins();
 }
 
 void ShapeAction::setVisualGeometry(const QRectF &geom)

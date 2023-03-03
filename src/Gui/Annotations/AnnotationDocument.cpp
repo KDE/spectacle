@@ -857,7 +857,7 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
 {
     QVector<EditAction *> filteredUndo;
     QVector<EditAction *> filteredRedo;
-    for (auto *ea : m_undoStack) {
+    for (auto *ea : std::as_const(m_undoStack)) {
         if (ea->visualGeometry().intersects(cropRect)) {
             ea->translate(-cropRect.topLeft());
             if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
@@ -870,7 +870,7 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     }
     m_undoStack = filteredUndo;
 
-    for (auto *ea : m_redoStack) {
+    for (auto *ea : std::as_const(m_redoStack)) {
         if (ea->visualGeometry().intersects(cropRect)) {
             ea->translate(-cropRect.topLeft());
             filteredRedo << ea;
@@ -1243,7 +1243,7 @@ void AnnotationDocument::redo()
         m_selectedActionWrapper->setEditAction(action);
     }
 
-    for (auto action : m_undoStack) {
+    for (auto action : std::as_const(m_undoStack)) {
         if (isActionVisible(action, updateRect)) {
             updateRect = updateRect.united(action->lastUpdateArea());
         }

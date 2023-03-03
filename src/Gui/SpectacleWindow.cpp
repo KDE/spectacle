@@ -128,7 +128,7 @@ void SpectacleWindow::setAnnotating(bool annotating)
     }
     s_synchronizingAnnotating = true;
     s_isAnnotating = annotating;
-    for (auto window : s_instances) {
+    for (auto window : std::as_const(s_instances)) {
         Q_EMIT window->annotatingChanged();
     }
     s_synchronizingAnnotating = false;
@@ -151,7 +151,7 @@ void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
         return;
     }
     s_synchronizingVisibility = true;
-    for (auto window : s_instances) {
+    for (auto window : std::as_const(s_instances)) {
         window->setVisibility(visibility);
     }
     s_synchronizingVisibility = false;
@@ -172,7 +172,7 @@ void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName
         }
         s_lastTitlePreset = preset;
 
-        for (auto window : s_instances) {
+        for (auto window : std::as_const(s_instances)) {
             window->setTitle(newTitle);
         }
     }
@@ -503,7 +503,7 @@ void SpectacleWindow::keyPressEvent(QKeyEvent *event)
         if (spectacleCore->captureTimeRemaining() > 0) {
             spectacleCore->cancelScreenshot();
         } else {
-            engine()->quit();
+            Q_EMIT engine()->quit();
         }
     }
 }

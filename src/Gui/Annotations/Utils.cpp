@@ -71,7 +71,7 @@ QImage fastPseudoBlur(const QImage &src, int radius, qreal devicePixelRatio)
 
     QPainter p(&out);
     p.setOpacity(1.0 / radius);
-    for (qreal i = -radius; i < 0; ++i) {
+    for (int i = -radius; i < 0; ++i) {
         p.drawImage(QPointF(i / devicePixelRatio, 0), src);
         p.drawImage(QPointF(-i / devicePixelRatio, 0), src);
     }
@@ -79,7 +79,7 @@ QImage fastPseudoBlur(const QImage &src, int radius, qreal devicePixelRatio)
 
     p.begin(&out2);
     p.setOpacity(1.0 / radius);
-    for (qreal i = -radius; i < 0; ++i) {
+    for (int i = -radius; i < 0; ++i) {
         p.drawImage(QPointF(0, i / devicePixelRatio), out);
         p.drawImage(QPointF(0, -i / devicePixelRatio), out);
     }

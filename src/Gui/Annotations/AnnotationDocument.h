@@ -84,7 +84,7 @@ public Q_SLOTS:
     void undo();
     void redo();
     void beginAction(const QPointF &point);
-    void continueAction(const QPointF &point, ContinueOptions options = ContinueOption::NoOptions);
+    void continueAction(const QPointF &point, AnnotationDocument::ContinueOptions options = ContinueOption::NoOptions);
     void finishAction();
     void selectAction(const QPointF &point);
     void deselectAction();

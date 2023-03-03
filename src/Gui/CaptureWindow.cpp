@@ -62,7 +62,7 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
             return;
         }
         s_synchronizingVisibility = true;
-        for (auto window : s_instances) {
+        for (auto window : std::as_const(s_instances)) {
             if (window == this) {
                 continue;
             }
