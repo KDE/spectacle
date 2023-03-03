@@ -110,7 +110,7 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
-    static QVector<SpectacleWindow *> s_instances;
+    static QVector<SpectacleWindow *> s_spectacleWindowInstances;
     static bool s_synchronizingVisibility;
     static bool s_synchronizingTitle;
     static TitlePreset s_lastTitlePreset;

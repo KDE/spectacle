@@ -33,7 +33,7 @@
 #endif
 #endif
 
-QVector<SpectacleWindow *> SpectacleWindow::s_instances = {};
+QVector<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
 bool SpectacleWindow::s_synchronizingVisibility = false;
 bool SpectacleWindow::s_synchronizingTitle = false;
 SpectacleWindow::TitlePreset SpectacleWindow::s_lastTitlePreset = Default;
@@ -48,7 +48,7 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     , m_helpMenu(new HelpMenu)
     , m_context(new QQmlContext(engine->rootContext(), this))
 {
-    s_instances.append(this);
+    s_spectacleWindowInstances.append(this);
 
     if (m_exportMenu->winId()) {
         m_exportMenu->windowHandle()->setTransientParent(this);
@@ -98,7 +98,7 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
 
 SpectacleWindow::~SpectacleWindow()
 {
-    s_instances.removeOne(this);
+    s_spectacleWindowInstances.removeOne(this);
 }
 
 ExportMenu *SpectacleWindow::exportMenu() const
@@ -128,7 +128,7 @@ void SpectacleWindow::setAnnotating(bool annotating)
     }
     s_synchronizingAnnotating = true;
     s_isAnnotating = annotating;
-    for (auto window : std::as_const(s_instances)) {
+    for (auto window : std::as_const(s_spectacleWindowInstances)) {
         Q_EMIT window->annotatingChanged();
     }
     s_synchronizingAnnotating = false;
@@ -142,16 +142,16 @@ void SpectacleWindow::unminimize()
 
 QVector<SpectacleWindow *> SpectacleWindow::instances()
 {
-    return s_instances;
+    return s_spectacleWindowInstances;
 }
 
 void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
 {
-    if (s_synchronizingVisibility || s_instances.isEmpty()) {
+    if (s_synchronizingVisibility || s_spectacleWindowInstances.isEmpty()) {
         return;
     }
     s_synchronizingVisibility = true;
-    for (auto window : std::as_const(s_instances)) {
+    for (auto window : std::as_const(s_spectacleWindowInstances)) {
         window->setVisibility(visibility);
     }
     s_synchronizingVisibility = false;
@@ -159,7 +159,7 @@ void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
 
 void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName)
 {
-    if (s_synchronizingTitle || s_instances.isEmpty()) {
+    if (s_synchronizingTitle || s_spectacleWindowInstances.isEmpty()) {
         return;
     }
     s_synchronizingTitle = true;
@@ -168,11 +168,11 @@ void SpectacleWindow::setTitleForAll(TitlePreset preset, const QString &fileName
 
     if (!newTitle.isEmpty()) {
         if (s_lastTitlePreset != TitlePreset::Timer) {
-            s_previousTitle = s_instances.constFirst()->title();
+            s_previousTitle = s_spectacleWindowInstances.constFirst()->title();
         }
         s_lastTitlePreset = preset;
 
-        for (auto window : std::as_const(s_instances)) {
+        for (auto window : std::as_const(s_spectacleWindowInstances)) {
             window->setTitle(newTitle);
         }
     }

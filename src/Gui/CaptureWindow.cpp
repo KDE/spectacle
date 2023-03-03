@@ -13,10 +13,13 @@
 #include "Gui/SelectionEditor.h"
 #include "spectacle_gui_debug.h"
 
+QVector<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
+
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
     , m_screenToFollow(screen)
 {
+    s_captureWindowInstances.append(this);
     s_isAnnotating = true;
 
     setFlags({
@@ -58,11 +61,11 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     // sync visibility
     connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){
-        if (s_synchronizingVisibility || s_instances.size() <= 1) {
+        if (s_synchronizingVisibility || s_captureWindowInstances.size() <= 1) {
             return;
         }
         s_synchronizingVisibility = true;
-        for (auto window : std::as_const(s_instances)) {
+        for (auto window : std::as_const(s_captureWindowInstances)) {
             if (window == this) {
                 continue;
             }
@@ -74,6 +77,7 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
 CaptureWindow::~CaptureWindow()
 {
+    s_captureWindowInstances.removeOne(this);
     if (auto rootItem = rootObject()) {
         rootItem->removeEventFilter(SelectionEditor::instance());
     }
@@ -83,6 +87,11 @@ CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *scree
 {
     return UniquePointer(new CaptureWindow(mode, screen, engine, parent),
                          &SpectacleWindow::deleter);
+}
+
+QVector<CaptureWindow *> CaptureWindow::instances()
+{
+    return s_captureWindowInstances;
 }
 
 QScreen *CaptureWindow::screenToFollow() const

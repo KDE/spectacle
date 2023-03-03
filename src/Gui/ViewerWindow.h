@@ -34,6 +34,8 @@ public:
 
     static UniquePointer makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
 
+    static ViewerWindow *instance();
+
     QSize imageSize() const;
     qreal imageDpr() const;
 
@@ -55,6 +57,7 @@ protected:
 
 private:
     explicit ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
+    ~ViewerWindow();
 
     void setMode(ViewerWindow::Mode mode);
     Q_SLOT void updateColor();
@@ -68,4 +71,5 @@ private:
     QPalette::ColorRole m_backgroundColorRole;
     Qt::WindowStates m_oldWindowStates;
     const Mode m_mode;
+    static ViewerWindow *s_viewerWindowInstance;
 };

@@ -13,10 +13,13 @@
 #include <QApplication>
 #include <QClipboard>
 
+ViewerWindow *ViewerWindow::s_viewerWindowInstance = nullptr;
+
 ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
     , m_mode(mode)
 {
+    s_viewerWindowInstance = this;
     s_isAnnotating = false;
 // QGuiApplication::paletteChanged() is deprecated in Qt 6.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -34,9 +37,19 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     m_oldWindowStates = windowStates();
 }
 
+ViewerWindow::~ViewerWindow()
+{
+    s_viewerWindowInstance = nullptr;
+}
+
 ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent)
 {
     return UniquePointer(new ViewerWindow(mode, engine, parent), &SpectacleWindow::deleter);
+}
+
+ViewerWindow *ViewerWindow::instance()
+{
+    return s_viewerWindowInstance;
 }
 
 QSize ViewerWindow::imageSize() const

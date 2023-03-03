@@ -157,30 +157,30 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportPixmap);
 
-    connect(exportManager, &ExportManager::imageSaved, this, [this](const QUrl &savedAt){
+    connect(exportManager, &ExportManager::imageSaved, this, [](const QUrl &savedAt){
         if (Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation) {
             qApp->clipboard()->setText(savedAt.toLocalFile());
         }
         SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (m_viewerWindow) {
-            m_viewerWindow->showSavedScreenshotMessage(savedAt);
+        if (ViewerWindow::instance()) {
+            ViewerWindow::instance()->showSavedScreenshotMessage(savedAt);
         }
     });
-    connect(exportManager, &ExportManager::imageCopied, this, [this](){
-        if (m_viewerWindow) {
-            m_viewerWindow->showCopiedMessage();
+    connect(exportManager, &ExportManager::imageCopied, this, [](){
+        if (ViewerWindow::instance()) {
+            ViewerWindow::instance()->showCopiedMessage();
         }
     });
-    connect(exportManager, &ExportManager::imageLocationCopied, this, [this](const QUrl &savedAt){
+    connect(exportManager, &ExportManager::imageLocationCopied, this, [](const QUrl &savedAt){
         SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (m_viewerWindow) {
-            m_viewerWindow->showSavedAndLocationCopiedMessage(savedAt);
+        if (ViewerWindow::instance()) {
+            ViewerWindow::instance()->showSavedAndLocationCopiedMessage(savedAt);
         }
     });
-    connect(exportManager, &ExportManager::imageSavedAndCopied, this, [this](const QUrl &savedAt){
+    connect(exportManager, &ExportManager::imageSavedAndCopied, this, [](const QUrl &savedAt){
         SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (m_viewerWindow) {
-            m_viewerWindow->showSavedAndCopiedMessage(savedAt);
+        if (ViewerWindow::instance()) {
+            ViewerWindow::instance()->showSavedAndCopiedMessage(savedAt);
         }
     });
 
@@ -214,7 +214,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(m_videoPlatform.get(), &VideoPlatform::recordingChanged, this, &SpectacleCore::recordingChanged);
     connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
         const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
-        m_viewerWindow->showSavedVideoMessage(url);
+        ViewerWindow::instance()->showSavedVideoMessage(url);
         setCurrentVideo(url);
     });
 }
@@ -439,7 +439,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 && !m_editExisting
             ) {
                 initViewerWindow(ViewerWindow::Dialog);
-                m_viewerWindow->setVisible(true);
+                ViewerWindow::instance()->setVisible(true);
             } else {
                 takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
             }
@@ -452,12 +452,12 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 break;
             }
             case Actions::FocusWindow: {
-                bool isCaptureWindow = !m_captureWindows.empty();
+                bool isCaptureWindow = !CaptureWindow::instances().isEmpty();
                 SpectacleWindow *window = nullptr;
                 if (isCaptureWindow) {
-                    window = m_captureWindows.front().get();
+                    window = CaptureWindow::instances().front();
                 } else {
-                    window = m_viewerWindow.get();
+                    window = ViewerWindow::instance();
                 }
                 if (isCaptureWindow) {
                     SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
@@ -604,7 +604,7 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
 
         if (pixmapUsed.isNull()) {
             initViewerWindow(ViewerWindow::Dialog);
-            m_viewerWindow->setVisible(true);
+            ViewerWindow::instance()->setVisible(true);
             return;
         }
         if (!m_editExisting) {
@@ -612,9 +612,9 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
         }
         initViewerWindow(ViewerWindow::Image);
         if (m_editExisting) {
-            m_viewerWindow->setAnnotating(true);
+            ViewerWindow::instance()->setAnnotating(true);
         }
-        m_viewerWindow->setVisible(true);
+        ViewerWindow::instance()->setVisible(true);
         auto titlePreset = !pixmapUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
 
@@ -652,10 +652,10 @@ void SpectacleCore::onScreenshotFailed()
         Q_EMIT allDone();
         return;
     case StartMode::Gui:
-        if (!m_viewerWindow) {
+        if (!ViewerWindow::instance()) {
             initViewerWindow(ViewerWindow::Dialog);
         }
-        m_viewerWindow->showScreenshotFailedMessage();
+        ViewerWindow::instance()->showScreenshotFailedMessage();
         return;
     }
 }
@@ -788,13 +788,13 @@ CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(Platform::GrabMode gr
 
 bool SpectacleCore::isGuiNull() const
 {
-    return m_captureWindows.empty() && m_viewerWindow == nullptr;
+    return SpectacleWindow::instances().isEmpty();
 }
 
 void SpectacleCore::initGuiNoScreenshot()
 {
     initViewerWindow(ViewerWindow::Dialog);
-    m_viewerWindow->setVisible(true);
+    ViewerWindow::instance()->setVisible(true);
 }
 
 void SpectacleCore::syncExportPixmap()
