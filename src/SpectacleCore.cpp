@@ -203,15 +203,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
         // It's dangerous to erase from within a for loop, so we use std::find_if
-        auto hasScreen = [screen](const std::unique_ptr<CaptureWindow> &window) -> bool {
+        auto hasScreen = [screen](const CaptureWindow::UniquePointer &window) {
             return window->screen() == screen;
         };
         auto it = std::find_if(m_captureWindows.begin(), m_captureWindows.end(), hasScreen);
-        auto pointer = it->release();
         m_captureWindows.erase(it);
-        disconnect(pointer, &QWindow::visibilityChanged, pointer, nullptr);
-        pointer->hide();
-        pointer->deleteLater();
     });
 
     connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
@@ -850,7 +846,7 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
     auto engine = getQmlEngine();
     const auto screens = qApp->screens();
     for (auto *screen : screens) {
-        m_captureWindows.emplace_back(std::make_unique<CaptureWindow>(mode, screen, engine));
+        m_captureWindows.emplace_back(CaptureWindow::makeUnique(mode, screen, engine));
     }
 }
 
@@ -865,24 +861,13 @@ void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
     // Transparency isn't needed for this window.
     QQuickWindow::setDefaultAlphaBuffer(false);
 
-    m_viewerWindow = std::make_unique<ViewerWindow>(mode, getQmlEngine());
+    m_viewerWindow = ViewerWindow::makeUnique(mode, getQmlEngine());
 }
 
 void SpectacleCore::deleteWindows()
 {
-    if (auto pointer = m_viewerWindow.release()) {
-        pointer->hide();
-        pointer->deleteLater();
-    } else {
-        // It's dangerous to erase from within a for loop, so we use a while loop.
-        while (!m_captureWindows.empty()) {
-            auto begin = m_captureWindows.begin();
-            auto pointer = begin->release();
-            m_captureWindows.erase(begin);
-            pointer->hide();
-            pointer->deleteLater();
-        }
-    }
+    m_viewerWindow.reset();
+    m_captureWindows.clear();
 }
 
 void SpectacleCore::unityLauncherUpdate(const QVariantMap &properties) const

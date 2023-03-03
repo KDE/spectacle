@@ -25,8 +25,9 @@ public:
         Video,
     };
 
-    explicit CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
-    ~CaptureWindow();
+    using UniquePointer = std::unique_ptr<CaptureWindow, decltype(&SpectacleWindow::deleter)>;
+
+    static UniquePointer makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
 
     QScreen *screenToFollow() const;
 
@@ -50,6 +51,9 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private:
+    explicit CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
+    ~CaptureWindow();
+
     void setMode(CaptureWindow::Mode mode);
     void syncGeometryWithScreen();
 

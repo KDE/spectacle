@@ -28,9 +28,6 @@ class SpectacleWindow : public QQuickView
     Q_PROPERTY(bool annotating READ isAnnotating WRITE setAnnotating NOTIFY annotatingChanged FINAL)
 
 public:
-    explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);
-    ~SpectacleWindow();
-
     enum TitlePreset {
         Default,
         Timer,
@@ -98,9 +95,13 @@ Q_SIGNALS:
     void annotatingChanged();
 
 protected:
+    explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);
+    ~SpectacleWindow();
+
     using QQuickView::setTitle;
 
     static QString titlePresetString(TitlePreset preset, const QString &fileName = {});
+    static void deleter(SpectacleWindow *window);
 
     // set source, but with a window specific QQmlContext and initial properties
     void setSource(const QUrl &source, const QVariantMap &initialProperties);

@@ -207,6 +207,12 @@ QString SpectacleWindow::titlePresetString(TitlePreset preset, const QString &fi
     return QGuiApplication::applicationDisplayName();
 }
 
+void SpectacleWindow::deleter(SpectacleWindow *window)
+{
+    // QWindow::close() will delete the window for us
+    window->close();
+}
+
 void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialProperties)
 {
     if (source.isEmpty()) {

@@ -30,7 +30,9 @@ public:
         Video,
     };
 
-    explicit ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
+    using UniquePointer = std::unique_ptr<ViewerWindow, decltype(&SpectacleWindow::deleter)>;
+
+    static UniquePointer makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
 
     QSize imageSize() const;
     qreal imageDpr() const;
@@ -52,6 +54,8 @@ protected:
     void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
+    explicit ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
+
     void setMode(ViewerWindow::Mode mode);
     Q_SLOT void updateColor();
     Q_SLOT void updateMinimumSize();

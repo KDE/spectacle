@@ -133,10 +133,10 @@ private:
     std::unique_ptr<RecordingModeModel> m_recordingModeModel;
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
-    std::unique_ptr<ViewerWindow> m_viewerWindow;
+    ViewerWindow::UniquePointer m_viewerWindow = {nullptr, nullptr};
     // Using std::vector for emplace_back(), needed for appending unique_ptrs to a vector.
     // QVector won't get emplaceBack() until Qt 6.
-    std::vector<std::unique_ptr<CaptureWindow>> m_captureWindows;
+    std::vector<CaptureWindow::UniquePointer> m_captureWindows;
     std::unique_ptr<QVariantAnimation> m_delayAnimation;
 
     bool m_copyImageToClipboard = false;

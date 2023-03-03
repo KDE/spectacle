@@ -79,6 +79,12 @@ CaptureWindow::~CaptureWindow()
     }
 }
 
+CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
+{
+    return UniquePointer(new CaptureWindow(mode, screen, engine, parent),
+                         &SpectacleWindow::deleter);
+}
+
 QScreen *CaptureWindow::screenToFollow() const
 {
     return m_screenToFollow;

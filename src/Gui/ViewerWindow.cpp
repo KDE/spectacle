@@ -34,6 +34,11 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     m_oldWindowStates = windowStates();
 }
 
+ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent)
+{
+    return UniquePointer(new ViewerWindow(mode, engine, parent), &SpectacleWindow::deleter);
+}
+
 QSize ViewerWindow::imageSize() const
 {
     return ExportManager::instance()->pixmap().size();
