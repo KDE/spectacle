@@ -67,9 +67,9 @@ EmptyPage {
                                                     flickable.width / 2,
                                                     flickable.height / 2)) {
         let stepSize = 1
-        if (effectiveZoom + 0.5 <= 1) {
+        if (effectiveZoom < 1) {
             stepSize = 0.25
-        } else if (effectiveZoom + 1 <= 2) {
+        } else if (effectiveZoom < 2) {
             stepSize = 0.5
         }
         zoomToPercent(effectiveZoom - (effectiveZoom % stepSize) + stepSize, centerPos)
@@ -80,9 +80,9 @@ EmptyPage {
                                                      flickable.height / 2)) {
         let inverseRemainder = 1 - (effectiveZoom % 1)
         let stepSize = 1
-        if (effectiveZoom - 0.5 <= 0.5) {
+        if (effectiveZoom <= 1) {
             stepSize = 0.25
-        } else if (effectiveZoom - 1 <= 1) {
+        } else if (effectiveZoom <= 2) {
             stepSize = 0.5
         }
         zoomToPercent(effectiveZoom + (inverseRemainder % stepSize) - stepSize, centerPos)
