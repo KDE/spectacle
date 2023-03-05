@@ -64,7 +64,6 @@ class SelectionEditorPrivate
 {
 public:
     SelectionEditorPrivate(SelectionEditor *q);
-    ~SelectionEditorPrivate();
 
     SelectionEditor *const q;
 
@@ -81,7 +80,7 @@ public:
     void setMouseCursor(QQuickItem *item, const QPointF &pos);
     MouseLocation mouseLocation(const QPointF &pos) const;
 
-    Selection *const selection;
+    const std::unique_ptr<Selection> selection;
 
     QPointF startPos;
     QPointF initialTopLeft;
@@ -108,11 +107,6 @@ SelectionEditorPrivate::SelectionEditorPrivate(SelectionEditor *q)
     : q(q)
     , selection(new Selection(q))
 {
-}
-
-SelectionEditorPrivate::~SelectionEditorPrivate() noexcept
-{
-    delete selection;
 }
 
 void SelectionEditorPrivate::updateDevicePixelRatio()
@@ -374,7 +368,7 @@ SelectionEditor::SelectionEditor(QObject *parent)
 
     d->updateDevicePixelRatio();
 
-    connect(d->selection, &Selection::rectChanged, this, [this](){
+    connect(d->selection.get(), &Selection::rectChanged, this, [this](){
         d->updateHandlePositions();
     });
 
@@ -390,11 +384,6 @@ SelectionEditor::SelectionEditor(QObject *parent)
     }
 }
 
-SelectionEditor::~SelectionEditor() noexcept
-{
-    delete d;
-}
-
 SelectionEditor *SelectionEditor::instance()
 {
     return &privateSelectionEditorSelf()->self;
@@ -402,7 +391,7 @@ SelectionEditor *SelectionEditor::instance()
 
 Selection *SelectionEditor::selection() const
 {
-    return d->selection;
+    return d->selection.get();
 }
 
 qreal SelectionEditor::devicePixelRatio() const

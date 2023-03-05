@@ -60,7 +60,7 @@ public:
     Q_ENUM(MouseLocation)
 
     explicit SelectionEditor(QObject *parent = nullptr);
-    ~SelectionEditor() override;
+
     static SelectionEditor *instance();
 
     Selection *selection() const;
@@ -120,7 +120,7 @@ protected:
     void mouseDoubleClickEvent(QQuickItem *item, QMouseEvent *event);
 
 private:
-    SelectionEditorPrivate *const d;
+    const std::unique_ptr<SelectionEditorPrivate> d;
 };
 
 #endif // SELECTIONEDITOR_H
