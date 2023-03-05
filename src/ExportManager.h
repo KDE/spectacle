@@ -52,9 +52,9 @@ public:
     /**
      * Returns a formatted filename using a template string.
      */
-    QString formatFilename(const QString &nameTemplate);
+    QString formatFilename(const QString &nameTemplate) const;
 
-    QString suggestedVideoFilename(const QString &extension);
+    QString suggestedVideoFilename(const QString &extension) const;
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
@@ -70,7 +70,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
 
-    QUrl getAutosaveFilename();
+    QUrl getAutosaveFilename() const;
     QUrl tempSave();
 
     void setWindowTitle(const QString &windowTitle);
@@ -82,11 +82,11 @@ public Q_SLOTS:
     void doPrint(QPrinter *printer);
 
 private:
-    QString truncatedFilename(const QString &filename);
-    QString makeAutosaveFilename();
+    QString truncatedFilename(const QString &filename) const;
+    QString makeAutosaveFilename() const;
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
-    QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed);
-    QString makeSaveMimetype(const QUrl &url);
+    QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
+    QString makeSaveMimetype(const QUrl &url) const;
     bool writeImage(QIODevice *device, const QByteArray &format);
     bool save(const QUrl &url);
     bool localSave(const QUrl &url, const QString &mimetype);

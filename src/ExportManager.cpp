@@ -125,7 +125,7 @@ QString ExportManager::defaultVideoSaveLocation() const
     return ensureDefaultLocationExists(Settings::self()->defaultVideoSaveLocation());
 }
 
-QUrl ExportManager::getAutosaveFilename()
+QUrl ExportManager::getAutosaveFilename() const
 {
     const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
@@ -141,7 +141,7 @@ QUrl ExportManager::getAutosaveFilename()
     }
 }
 
-QString ExportManager::suggestedVideoFilename(const QString &extension)
+QString ExportManager::suggestedVideoFilename(const QString &extension) const
 {
     const QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
@@ -156,7 +156,7 @@ QString ExportManager::suggestedVideoFilename(const QString &extension)
     }
 }
 
-QString ExportManager::truncatedFilename(QString const &filename)
+QString ExportManager::truncatedFilename(QString const &filename) const
 {
     QString result = filename;
     constexpr auto maxFilenameLength = 255;
@@ -167,20 +167,20 @@ QString ExportManager::truncatedFilename(QString const &filename)
     return result;
 }
 
-QString ExportManager::makeAutosaveFilename()
+QString ExportManager::makeAutosaveFilename() const
 {
     return formatFilename(Settings::self()->saveFilenameFormat());
 }
 
-QString ExportManager::formatFilename(const QString &nameTemplate)
+QString ExportManager::formatFilename(const QString &nameTemplate) const
 {
     const QDateTime timestamp = m_pixmapTimestamp;
     QString baseName = nameTemplate;
     QString baseDir = defaultSaveLocation();
-    QString title;
+    QString title = m_windowTitle;
 
-    if (!m_windowTitle.isEmpty()) {
-        title = m_windowTitle.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
+    if (!title.isEmpty()) {
+        title.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it
         const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");
@@ -272,7 +272,7 @@ QString ExportManager::formatFilename(const QString &nameTemplate)
     return truncatedFilename(result);
 }
 
-QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed)
+QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const
 {
     QString result = truncatedFilename(baseName) + QLatin1String(".") + extension;
     if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
@@ -294,7 +294,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     return truncatedFilename(result) + extension;
 }
 
-QString ExportManager::makeSaveMimetype(const QUrl &url)
+QString ExportManager::makeSaveMimetype(const QUrl &url) const
 {
     QMimeDatabase mimedb;
     const QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
