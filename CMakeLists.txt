@@ -63,7 +63,6 @@ find_package(
         I18n
         KIO
         WindowSystem
-        NewStuff
         GlobalAccel
         XmlGui
         GuiAddons

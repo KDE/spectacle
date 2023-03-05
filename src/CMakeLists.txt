@@ -102,7 +102,6 @@ target_link_libraries(
         KF${QT_MAJOR_VERSION}::I18n
         KF${QT_MAJOR_VERSION}::KIOWidgets
         KF${QT_MAJOR_VERSION}::WindowSystem
-        KF${QT_MAJOR_VERSION}::NewStuff
         KF${QT_MAJOR_VERSION}::GlobalAccel
         KF${QT_MAJOR_VERSION}::XmlGui
         KF${QT_MAJOR_VERSION}::GuiAddons
