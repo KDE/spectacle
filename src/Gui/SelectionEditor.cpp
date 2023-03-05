@@ -100,8 +100,8 @@ public:
     QRectF handlesRect;
     // Radius of handles is either handleRadiusMouse or handleRadiusTouch
     qreal handleRadius = s_handleRadiusMouse;
-    qreal penWidth;
-    qreal penOffset;
+    qreal penWidth = 1;
+    qreal penOffset = 0.5;
 };
 
 SelectionEditorPrivate::SelectionEditorPrivate(SelectionEditor *q)
