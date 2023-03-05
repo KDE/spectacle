@@ -104,7 +104,6 @@ protected:
     explicit EditAction(AnnotationTool *tool);
     explicit EditAction(EditAction *action);
 
-    void setReplaces(EditAction *action);
     virtual QRectF getUpdateArea() const;
 
     AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
@@ -119,6 +118,9 @@ protected:
     bool m_hasShadow = false;
     EditAction *m_replacedBy = nullptr;
     EditAction *m_replaces = nullptr;
+
+private:
+    friend class DeleteAction;
 };
 
 QDebug operator<<(QDebug debug, const EditAction *action);
@@ -128,7 +130,7 @@ class DeleteAction : public EditAction
 {
 public:
     DeleteAction(AnnotationTool *tool) = delete;
-    DeleteAction(EditAction *replaces);
+    DeleteAction(EditAction *replaced);
     ~DeleteAction();
 
     bool isValid() const override;

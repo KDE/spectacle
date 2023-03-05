@@ -334,22 +334,6 @@ EditAction *EditAction::replaces() const
     return m_replaces;
 }
 
-void EditAction::setReplaces(EditAction *action)
-{
-    if (action && action->replaces() == this) {
-        return;
-    }
-    Q_ASSERT(m_type == action->type());
-    m_replaces = action;
-    action->m_replacedBy = this;
-    if (m_type == AnnotationDocument::Blur || m_type == AnnotationDocument::Pixelate) {
-        auto *ba1 = static_cast<ShapeAction *>(this);
-        auto *ba2 = static_cast<ShapeAction *>(action);
-        ba1->invalidateCache();
-        ba2->invalidateCache();
-    }
-}
-
 EditAction *EditAction::createCopy()
 {
     switch (m_type) {
@@ -569,10 +553,18 @@ QDebug operator<<(QDebug debug, const EditAction *action)
 
 /////////////////////////////
 
-DeleteAction::DeleteAction(EditAction *replaces)
-    : EditAction(replaces)
+DeleteAction::DeleteAction(EditAction *replaced)
+    : EditAction(replaced)
 {
-    setReplaces(replaces);
+    m_type = AnnotationDocument::None;
+    Q_ASSERT(replaced->replaces() != this);
+    m_replaces = replaced;
+    replaced->m_replacedBy = this;
+    if (replaced->m_type == AnnotationDocument::Blur
+        || replaced->m_type == AnnotationDocument::Pixelate) {
+        auto *ba = static_cast<ShapeAction *>(replaced);
+        ba->invalidateCache();
+    }
 }
 
 DeleteAction::~DeleteAction()
