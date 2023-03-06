@@ -289,7 +289,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     return truncatedFilename(result) + extension;
 }
 
-QString ExportManager::makeSaveMimetype(const QUrl &url) const
+QString ExportManager::imageFileSuffix(const QUrl &url) const
 {
     QMimeDatabase mimedb;
     const QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
@@ -300,9 +300,12 @@ QString ExportManager::makeSaveMimetype(const QUrl &url) const
     return type;
 }
 
-bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
+bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
 {
-    QImageWriter imageWriter(device, format);
+    // In the documentation for QImageWriter, it is a bit ambiguous what "format" means.
+    // From looking at how QImageWriter handles the built-in supported formats internally,
+    // "format" basically means the file extension, not the mimetype.
+    QImageWriter imageWriter(device, suffix);
     imageWriter.setQuality(Settings::self()->compressionQuality());
     /** Set compression 50 if the format is png. Otherwise if no compression value is specified
      *  it will fallback to using quality (QTBUG-43618) and produce huge files.
@@ -310,7 +313,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
      *  enabled by default and only disabled if compression is set to 0, also any value except 0
      *  has the same effect for them.
      */
-    if (format == "png") {
+    if (suffix == "png") {
         imageWriter.setCompression(50);
     }
     if (!(imageWriter.canWrite())) {
@@ -321,7 +324,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &format)
     return imageWriter.write(m_savePixmap.toImage());
 }
 
-bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
+bool ExportManager::localSave(const QUrl &url, const QString &suffix)
 {
     // Create save directory if it doesn't exist
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
@@ -338,14 +341,14 @@ bool ExportManager::localSave(const QUrl &url, const QString &mimetype)
     QFile outputFile(url.toLocalFile());
 
     outputFile.open(QFile::WriteOnly);
-    if (!writeImage(&outputFile, mimetype.toLatin1())) {
+    if (!writeImage(&outputFile, suffix.toLatin1())) {
         Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing file."));
         return false;
     }
     return true;
 }
 
-bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
+bool ExportManager::remoteSave(const QUrl &url, const QString &suffix)
 {
     // Check if remote save directory exists
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
@@ -369,7 +372,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &mimetype)
     QTemporaryFile tmpFile;
 
     if (tmpFile.open()) {
-        if (!writeImage(&tmpFile, mimetype.toLatin1())) {
+        if (!writeImage(&tmpFile, suffix.toLatin1())) {
             Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
             return false;
         }
@@ -406,11 +409,11 @@ QUrl ExportManager::tempSave()
         // where the temp file name is used as filename suggestion
         const QString baseFileName = m_tempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(formattedFilename()).fileName();
 
-        QString mimetype = makeSaveMimetype(QUrl(baseFileName));
-        const QString fileName = autoIncrementFilename(baseFileName, mimetype, &ExportManager::isTempFileAlreadyUsed);
+        QString suffix = imageFileSuffix(QUrl(baseFileName));
+        const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
         QFile tmpFile(fileName);
         if (tmpFile.open(QFile::WriteOnly)) {
-            if (writeImage(&tmpFile, mimetype.toLatin1())) {
+            if (writeImage(&tmpFile, suffix.toLatin1())) {
                 m_tempFile = QUrl::fromLocalFile(tmpFile.fileName());
                 // try to make sure 3rd-party which gets the url of the temporary file e.g. on export
                 // properly treats this as readonly, also hide from other users
@@ -431,12 +434,12 @@ bool ExportManager::save(const QUrl &url)
         return false;
     }
 
-    const QString mimetype = makeSaveMimetype(url);
+    const QString suffix = imageFileSuffix(url);
     bool saveSucceded = false;
     if (url.isLocalFile()) {
-        saveSucceded = localSave(url, mimetype);
+        saveSucceded = localSave(url, suffix);
     } else {
-        saveSucceded = remoteSave(url, mimetype);
+        saveSucceded = remoteSave(url, suffix);
     }
     if (saveSucceded) {
         m_imageSavedNotInTemp = true;

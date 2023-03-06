@@ -86,11 +86,11 @@ private:
     QString truncatedFilename(const QString &filename) const;
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
     QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
-    QString makeSaveMimetype(const QUrl &url) const;
-    bool writeImage(QIODevice *device, const QByteArray &format);
+    QString imageFileSuffix(const QUrl &url) const;
+    bool writeImage(QIODevice *device, const QByteArray &suffix);
     bool save(const QUrl &url);
-    bool localSave(const QUrl &url, const QString &mimetype);
-    bool remoteSave(const QUrl &url, const QString &mimetype);
+    bool localSave(const QUrl &url, const QString &suffix);
+    bool remoteSave(const QUrl &url, const QString &suffix);
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     bool m_imageSavedNotInTemp;
