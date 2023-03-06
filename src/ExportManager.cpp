@@ -129,7 +129,7 @@ QUrl ExportManager::getAutosaveFilename() const
 {
     const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = makeAutosaveFilename();
+    const QString filename = formattedFilename();
     const QString fullpath =
         autoIncrementFilename(baseDirPath.filePath(filename), Settings::self()->defaultSaveImageFormat().toLower(), &ExportManager::isFileExists);
 
@@ -145,7 +145,7 @@ QString ExportManager::suggestedVideoFilename(const QString &extension) const
 {
     const QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = formatFilename(Settings::self()->saveVideoFormat());
+    const QString filename = formattedFilename(Settings::self()->saveVideoFormat());
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
@@ -167,12 +167,7 @@ QString ExportManager::truncatedFilename(QString const &filename) const
     return result;
 }
 
-QString ExportManager::makeAutosaveFilename() const
-{
-    return formatFilename(Settings::self()->saveFilenameFormat());
-}
-
-QString ExportManager::formatFilename(const QString &nameTemplate) const
+QString ExportManager::formattedFilename(const QString &nameTemplate) const
 {
     const QDateTime timestamp = m_pixmapTimestamp;
     QString baseName = nameTemplate;
@@ -409,7 +404,7 @@ QUrl ExportManager::tempSave()
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const QString baseFileName = m_tempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(makeAutosaveFilename()).fileName();
+        const QString baseFileName = m_tempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(formattedFilename()).fileName();
 
         QString mimetype = makeSaveMimetype(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, mimetype, &ExportManager::isTempFileAlreadyUsed);
@@ -511,7 +506,7 @@ bool ExportManager::doSaveAs(bool notify)
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::AnyFile);
     dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename));
-    dialog.selectFile(makeAutosaveFilename() + QStringLiteral(".") + filenameExtension);
+    dialog.selectFile(formattedFilename() + QStringLiteral(".") + filenameExtension);
     dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
     dialog.setMimeTypeFilters(supportedFilters);
     dialog.selectMimeTypeFilter(mimetype);

@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "settings.h"
 #include <KLocalizedString>
 #include <QDateTime>
 class QIODevice;
@@ -52,7 +53,7 @@ public:
     /**
      * Returns a formatted filename using a template string.
      */
-    QString formatFilename(const QString &nameTemplate) const;
+    QString formattedFilename(const QString &nameTemplate = Settings::saveFilenameFormat()) const;
 
     QString suggestedVideoFilename(const QString &extension) const;
 
@@ -83,7 +84,6 @@ public Q_SLOTS:
 
 private:
     QString truncatedFilename(const QString &filename) const;
-    QString makeAutosaveFilename() const;
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
     QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
     QString makeSaveMimetype(const QUrl &url) const;

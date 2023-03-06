@@ -80,7 +80,7 @@ void SaveOptionsPage::updateFilenamePreview()
     if (usePlaceholder) {
         exportManager->setWindowTitle(QGuiApplication::applicationDisplayName());
     }
-    const QString lFileName = exportManager->formatFilename(m_ui->kcfg_saveFilenameFormat->text());
+    const QString lFileName = exportManager->formattedFilename(m_ui->kcfg_saveFilenameFormat->text());
     m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
     if (usePlaceholder) {
         exportManager->setWindowTitle({});
