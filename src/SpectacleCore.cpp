@@ -158,6 +158,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportPixmap);
 
     connect(exportManager, &ExportManager::imageSaved, this, [](const QUrl &savedAt){
+        // This behavior has no relation to the setting in the config UI,
+        // but this was behavior was added to solve this feature request:
+        // https://bugs.kde.org/show_bug.cgi?id=357423
         if (Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation) {
             qApp->clipboard()->setText(savedAt.toLocalFile());
         }
