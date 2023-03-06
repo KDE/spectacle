@@ -297,7 +297,13 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
     QCommandLineParser parser;
     parser.addOptions(CommandLineOptions::self()->allOptions);
-    parser.parse(arguments);
+    // In KF5, KDBusService::activateRequested() will only send a list of arguments if activated
+    // via the command line with arguments.
+    // Until KF6, we need to check if the arguments list is empty to keep QCommandLineParser from
+    // warning us about the arguments being empty.
+    // In KF6, KDBusService::activateRequested() will at least send spectacle's executable as an argument
+    //  which is the first argument of QCoreApplication::arguments().
+    parser.parse(arguments.isEmpty() ? QStringList(QCoreApplication::arguments()[0]) : arguments);
 
     // Collect parsed command line options
     using Option = CommandLineOptions::Option;
