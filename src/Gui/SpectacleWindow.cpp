@@ -464,6 +464,12 @@ void SpectacleWindow::startDrag()
 
     auto mimeData = new QMimeData;
     mimeData->setUrls(QList<QUrl>{tempFile});
+    // "application/x-kde-suggestedfilename" is handled by KIO/PasteJob.
+    // It is only used when QMimeData::formats() is empty or when the user is
+    // prompted to set a filename for the content after drag & drop or paste.
+    // When QMimeData::formats() is empty, a dialog for picking the data format
+    // is supposed to appear.
+    // It's likely that users will never see the data format dialog with Spectacle.
     mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(tempFile.fileName()));
     KUrlMimeData::exportUrlsToPortal(mimeData);
 

@@ -553,6 +553,9 @@ void ExportManager::doCopyToClipboard(bool notify)
 {
     auto data = new QMimeData();
     data->setImageData(m_savePixmap.toImage());
+    // "x-kde-force-image-copy" is handled by Klipper.
+    // It ensures that the image is copied to Klipper even with the
+    // "Non-text selection: Never save in history" setting selected in Klipper.
     data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
     KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
     Q_EMIT imageCopied();
