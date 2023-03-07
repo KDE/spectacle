@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:45+0000\n"
+"POT-Creation-Date: 2023-03-07 00:45+0000\n"
 "PO-Revision-Date: 2022-08-08 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -196,12 +196,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "既存のスクリーンショットファイルを開き、編集する"
 
-#: src/ExportManager.cpp:322
+#: src/ExportManager.cpp:320
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter は画像を書き込めません: %1"
 
-#: src/ExportManager.cpp:337
+#: src/ExportManager.cpp:335
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,14 +211,14 @@ msgstr ""
 "ディレクトリの作成に失敗したため、スクリーンショットを保存できません:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:347
+#: src/ExportManager.cpp:345
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "スクリーンショットを保存できません。ファイルの書き込み中にエラーが発生しまし"
 "た。"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -228,36 +228,36 @@ msgstr ""
 "リモートディレクトリの作成に失敗したため、スクリーンショットを保存できません:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:378 src/ExportManager.cpp:428
+#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "スクリーンショットを保存できません。ローカルの一時ファイルの書き込み中にエ"
 "ラーが発生しました。"
 
-#: src/ExportManager.cpp:386
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "画像を保存できません。リモートの場所にファイルをアップロードできませんでし"
 "た。"
 
-#: src/ExportManager.cpp:435
+#: src/ExportManager.cpp:433
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "スクリーンショットを保存できません。ファイル名が不正です。"
 
-#: src/ExportManager.cpp:480 src/ExportManager.cpp:539
+#: src/ExportManager.cpp:478 src/ExportManager.cpp:537
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "空のスクリーンショットは保存できません。"
 
-#: src/ExportManager.cpp:591
+#: src/ExportManager.cpp:592
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "印刷に失敗しました。プリンタの初期化に失敗しました。"
 
-#: src/ExportManager.cpp:607
+#: src/ExportManager.cpp:608
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -265,7 +265,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "年 (4桁)"
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:609
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -273,7 +273,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "年 (2桁)"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:610
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -281,7 +281,7 @@ msgctxt ""
 msgid "Month"
 msgstr "月"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -289,7 +289,7 @@ msgctxt ""
 msgid "Day"
 msgstr "日"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:612
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -297,7 +297,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "時"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -305,7 +305,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "分"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:614
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +313,7 @@ msgctxt ""
 msgid "Second"
 msgstr "秒"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:615
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +321,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:616
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -329,7 +329,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ウィンドウのタイトル"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:617
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -337,7 +337,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "連番"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:619
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1491,17 +1491,17 @@ msgstr "カーソル下のウィンドウを撮影"
 msgid "Launch Spectacle without capturing"
 msgstr "撮影せずに Spectacle を起動"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:652
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "スクリーンショットの撮影がキャンセルされたか失敗しました"
 
-#: src/SpectacleCore.cpp:681
+#: src/SpectacleCore.cpp:690
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "スクリーンショットはクリップボードに保存されました。"
 
-#: src/SpectacleCore.cpp:683
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1510,24 +1510,24 @@ msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
 "保存されました。"
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "スクリーンショットは'%1'としてピクチャフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Annotate"
 msgstr "注釈する"

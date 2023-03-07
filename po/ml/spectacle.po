@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:45+0000\n"
+"POT-Creation-Date: 2023-03-07 00:45+0000\n"
 "PO-Revision-Date: 2019-12-12 21:06+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -185,12 +185,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:322
+#: src/ExportManager.cpp:320
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:337
+#: src/ExportManager.cpp:335
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -198,12 +198,12 @@ msgid ""
 "%1</filename>"
 msgstr ""
 
-#: src/ExportManager.cpp:347
+#: src/ExportManager.cpp:345
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,37 +211,29 @@ msgid ""
 "><filename>%1</filename>"
 msgstr ""
 
-#: src/ExportManager.cpp:378 src/ExportManager.cpp:428
+#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 
-#: src/ExportManager.cpp:386
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 
-#: src/ExportManager.cpp:435
+#: src/ExportManager.cpp:433
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 
-#: src/ExportManager.cpp:480 src/ExportManager.cpp:539
+#: src/ExportManager.cpp:478 src/ExportManager.cpp:537
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr ""
 
-#: src/ExportManager.cpp:591
+#: src/ExportManager.cpp:592
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
-msgstr ""
-
-#: src/ExportManager.cpp:607
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:608
@@ -249,7 +241,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Year (2 digit)"
+msgid "Year (4 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:609
@@ -257,7 +249,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Month"
+msgid "Year (2 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:610
@@ -265,7 +257,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Day"
+msgid "Month"
 msgstr ""
 
 #: src/ExportManager.cpp:611
@@ -273,7 +265,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Hour"
+msgid "Day"
 msgstr ""
 
 #: src/ExportManager.cpp:612
@@ -281,7 +273,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Minute"
+msgid "Hour"
 msgstr ""
 
 #: src/ExportManager.cpp:613
@@ -289,7 +281,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Second"
+msgid "Minute"
 msgstr ""
 
 #: src/ExportManager.cpp:614
@@ -297,7 +289,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Timezone"
+msgid "Second"
 msgstr ""
 
 #: src/ExportManager.cpp:615
@@ -305,7 +297,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Window Title"
+msgid "Timezone"
 msgstr ""
 
 #: src/ExportManager.cpp:616
@@ -313,10 +305,18 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
+msgid "Window Title"
+msgstr ""
+
+#: src/ExportManager.cpp:617
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
 msgid "Sequential numbering"
 msgstr ""
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:619
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1423,41 +1423,41 @@ msgstr ""
 msgid "Launch Spectacle without capturing"
 msgstr ""
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:652
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:681
+#: src/SpectacleCore.cpp:690
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:683
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:687
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr ""
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr ""
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:708
 #, kde-format
 msgid "Annotate"
 msgstr ""
