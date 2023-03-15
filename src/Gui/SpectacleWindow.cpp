@@ -217,8 +217,7 @@ QString SpectacleWindow::titlePresetString(TitlePreset preset, const QString &fi
 
 void SpectacleWindow::deleter(SpectacleWindow *window)
 {
-    // QWindow::close() will delete the window for us
-    window->close();
+    window->deleteLater();
 }
 
 void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialProperties)
