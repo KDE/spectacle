@@ -903,7 +903,7 @@ void AnnotationDocument::addImage(const QImage &image, const QPointF &pos)
 
     QRectF rect;
     for (const auto &img : qAsConst(m_baseImages)) {
-        rect = rect.united(QRectF(img.pos, img.image.size()));
+        rect = rect.united(QRectF(img.pos, img.image.size() / img.image.devicePixelRatio()));
     }
     m_canvasSize = rect.size();
 
