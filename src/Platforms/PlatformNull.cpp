@@ -60,7 +60,16 @@ void VideoPlatformNull::finishRecording()
     Q_EMIT recordingSaved(m_path);
 }
 
+void VideoPlatformNull::setExtension(const QString &)
+{
+}
+
 QString VideoPlatformNull::extension() const
 {
     return QStringLiteral("mp4");
+}
+
+QStringList VideoPlatformNull::suggestedExtensions() const
+{
+    return {QStringLiteral("mp4")};
 }

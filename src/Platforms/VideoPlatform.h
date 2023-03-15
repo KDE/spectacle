@@ -40,6 +40,9 @@ public:
     virtual QString extension() const = 0;
     qint64 recordedTime() const;
 
+    virtual QStringList suggestedExtensions() const = 0;
+    virtual void setExtension(const QString &encoder) = 0;
+
 protected:
     void setRecording(bool recording);
     void timerEvent(QTimerEvent *event) override;

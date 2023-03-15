@@ -106,6 +106,10 @@
         <choices name="CaptureModeModel::CaptureMode"></choices>
         <default>CaptureModeModel::CaptureMode::AllScreens</default>
     </entry>
+    <entry name="videoFormat" type="String">
+        <label>File format for saved screen recordings</label>
+        <default>webm</default>
+    </entry>
 </group>
 <group name="Save">
     <entry name="defaultSaveLocation" type="Url">

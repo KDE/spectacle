@@ -35,7 +35,9 @@ public:
     void startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) override;
     void finishRecording() override;
 
+    void setExtension(const QString &encoder) override;
     QString extension() const override;
+    QStringList suggestedExtensions() const override;
 
 private:
     QString m_path;

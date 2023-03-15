@@ -40,6 +40,9 @@ class SpectacleCore : public QObject
     Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
     Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
+    Q_PROPERTY(QStringList supportedVideoFormats READ supportedVideoFormats CONSTANT FINAL)
+    Q_PROPERTY(QString videoFormat READ videoFormat WRITE setVideoFormat NOTIFY videoFormatChanged)
+
 public:
     enum class StartMode {
         Gui = 0,
@@ -81,6 +84,9 @@ public:
     QUrl currentVideo() const;
     QString recordedTime() const;
     Q_INVOKABLE QString timeFromMilliseconds(qint64 milliseconds) const;
+    QStringList supportedVideoFormats() const;
+    void setVideoFormat(const QString &format);
+    QString videoFormat() const;
 
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
@@ -107,6 +113,7 @@ Q_SIGNALS:
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();
+    void videoFormatChanged(const QString &format);
 
 private:
     void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,

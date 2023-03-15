@@ -46,6 +46,7 @@
 #include <QScreen>
 #include <QTimer>
 #include <QtMath>
+#include <qobjectdefs.h>
 #include <utility>
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
@@ -105,6 +106,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     m_platform = loadPlatform();
     m_videoPlatform = loadVideoPlatform();
+    m_videoPlatform->setExtension(Settings::videoFormat());
     auto platform = m_platform.get();
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
@@ -965,4 +967,26 @@ QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
         options |= KFormat::FoldHours;
     }
     return KFormat().formatDuration(milliseconds, options);
+}
+
+QStringList SpectacleCore::supportedVideoFormats() const
+{
+    return m_videoPlatform->suggestedExtensions();
+}
+
+void SpectacleCore::setVideoFormat(const QString &format)
+{
+    if (format == Settings::videoFormat()) {
+        return;
+    }
+
+    m_videoPlatform->setExtension(format);
+    Settings::setVideoFormat(m_videoPlatform->extension());
+
+    Q_EMIT videoFormatChanged(format);
+}
+
+QString SpectacleCore::videoFormat() const
+{
+    return m_videoPlatform->extension();
 }
