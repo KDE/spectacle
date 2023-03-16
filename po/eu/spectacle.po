@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-07 00:45+0000\n"
+"POT-Creation-Date: 2023-03-16 00:59+0000\n"
 "PO-Revision-Date: 2023-02-11 09:39+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -730,7 +730,13 @@ msgstr "Grabatzeko ezarpenak"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
 
-#: src/Gui/RecordOptions.qml:60
+#: src/Gui/RecordOptions.qml:59
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Video format:"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:81
 #, kde-format
 msgid "Finish recording"
 msgstr "Bukatu grabazioa"
@@ -1093,86 +1099,93 @@ msgstr "Irten irudi bat gorde edo kopiatu ondoren"
 msgid "Delay"
 msgstr "Atzerapena"
 
+#. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#, fuzzy, kde-format
+#| msgid "New screen recording"
+msgid "File format for saved screen recordings"
+msgstr "Pantaila grabazio berria"
+
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:116
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
 #, kde-format
 msgid "Default filename"
 msgstr "Lehenetsitako fitxategi-izena"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Galeradun fitxategi formatuen konpresio kalitatea"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
 #. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
 #: src/Gui/SettingsDialog/spectacle.kcfg:134
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "Default save image format"
 msgstr "Irudia gordetzeko formatu lehenetsia"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Gordetzeko erabilitako fitxategi-izen lehenetsia"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "Bideo bat grabatzean erabilitako fitxategi-izen lehenetsia"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:146
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Gordetako azken fitxategiaren bide-izena"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:150
+#: src/Gui/SettingsDialog/spectacle.kcfg:154
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"Gorde honela\" ekintzarekin erabilitako azken bide-izena"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Erabilitako azken idatzohar tresna mota"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:193
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Trazuaren zabalera, esku-hutsez idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:167
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:171
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Trazuaren zabalera, nabarmentzeko idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:172
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Trazuaren zabalera, lerro idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:177
-#: src/Gui/SettingsDialog/spectacle.kcfg:205
+#: src/Gui/SettingsDialog/spectacle.kcfg:181
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Trazuaren zabalera, gezi idatzohar tresnarako"
@@ -1180,9 +1193,9 @@ msgstr "Trazuaren zabalera, gezi idatzohar tresnarako"
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Trazuaren zabalera, laukizuzen idatzohar tresnarako"
@@ -1191,68 +1204,68 @@ msgstr "Trazuaren zabalera, laukizuzen idatzohar tresnarako"
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
-#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Trazuaren zabalera, elipse idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:231
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Font for annotations"
 msgstr "Idatzoharretarako letra-tipoa"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #: src/Gui/SettingsDialog/spectacle.kcfg:242
+#: src/Gui/SettingsDialog/spectacle.kcfg:246
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Idatzoharretarako letra-tipoaren kolorea"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:247
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Esku-hutsezko idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:251
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Lerro-idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:255
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Gezi-idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:259
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Laukizuzen-idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:263
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Elipse-idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:267
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Testu-idatzohar tresnak itzala duen edo ez"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:271
+#: src/Gui/SettingsDialog/spectacle.kcfg:275
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Zenbaki-idatzohar tresnak itzala duen edo ez"
@@ -1469,17 +1482,17 @@ msgstr "Atzeman kurtsorearen azpiko leihoa"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:652
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:690
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1488,24 +1501,24 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-07 00:45+0000\n"
+"POT-Creation-Date: 2023-03-16 00:59+0000\n"
 "PO-Revision-Date: 2023-03-04 08:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -725,7 +725,13 @@ msgstr "Ustawienia nagrania"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Pokaż wskaźnik myszy na nagraniach ekranu."
 
-#: src/Gui/RecordOptions.qml:60
+#: src/Gui/RecordOptions.qml:59
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Video format:"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:81
 #, kde-format
 msgid "Finish recording"
 msgstr "Zakończ nagrywanie"
@@ -1086,86 +1092,93 @@ msgstr "Zakończ po zapisaniu lub skopiowaniu obrazu"
 msgid "Delay"
 msgstr "Opóźnienie"
 
+#. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#, fuzzy, kde-format
+#| msgid "New screen recording"
+msgid "File format for saved screen recordings"
+msgstr "Nowe nagranie ekranu"
+
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:116
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
 #, kde-format
 msgid "Default filename"
 msgstr "Domyślna nazwa pliku"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Jakość obrazu dla stratnych formatów plików"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
 #. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
 #: src/Gui/SettingsDialog/spectacle.kcfg:134
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "Default save image format"
 msgstr "Domyślny format zapisu obrazu"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Domyślna nazwa pliku przy zapisywaniu"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "Domyślna nazwa pliku przy nagrywaniu ekranu"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:146
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Ścieżka do ostatnio zapisanego pliku"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:150
+#: src/Gui/SettingsDialog/spectacle.kcfg:154
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Ostatnio używana ścieżka dla działania \"zapisz jako\""
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Ostatnio używane narzędzie opisywania"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:193
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania odręcznego"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:167
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:171
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania zakreślaczami"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:172
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania liniami"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:177
-#: src/Gui/SettingsDialog/spectacle.kcfg:205
+#: src/Gui/SettingsDialog/spectacle.kcfg:181
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania strzałkami"
@@ -1173,9 +1186,9 @@ msgstr "Szerokość kreski dla narzędzia opisywania strzałkami"
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania prostokątami"
@@ -1184,68 +1197,68 @@ msgstr "Szerokość kreski dla narzędzia opisywania prostokątami"
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
-#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Szerokość kreski dla narzędzia opisywania elipsami"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:231
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Font for annotations"
 msgstr "Czcionka dla opisów"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #: src/Gui/SettingsDialog/spectacle.kcfg:242
+#: src/Gui/SettingsDialog/spectacle.kcfg:246
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Kolor czcionki dla opisów"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:247
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania odręcznego rzuca cień"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:251
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania liniami rzuca cień"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:255
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania strzałkami rzuca cień"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:259
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania prostokątami rzuca cień"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:263
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania elipsami rzuca cień"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:267
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania tekstem rzuca cień"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:271
+#: src/Gui/SettingsDialog/spectacle.kcfg:275
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Określa czy narzędzie opisywania liczbami rzuca cień"
@@ -1464,17 +1477,17 @@ msgstr "Zrzuć okno pod wskaźnikiem"
 msgid "Launch Spectacle without capturing"
 msgstr "Uruchom Spectacle bez wykonania zrzutu"
 
-#: src/SpectacleCore.cpp:652
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zaniechano zrzucania ekranu lub nie udało się tego zrobić"
 
-#: src/SpectacleCore.cpp:690
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zrzut zapisano w twoim schowku."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1482,24 +1495,24 @@ msgid ""
 msgstr ""
 "Zapisano zrzut ekranu jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu Zdjęcia."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu '%2'."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Annotate"
 msgstr "Opisz"

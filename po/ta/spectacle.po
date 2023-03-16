@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-07 00:45+0000\n"
+"POT-Creation-Date: 2023-03-16 00:59+0000\n"
 "PO-Revision-Date: 2023-03-12 16:23+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -729,7 +729,13 @@ msgstr "திரைப்பதிவு அமைப்புகள்"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
 
-#: src/Gui/RecordOptions.qml:60
+#: src/Gui/RecordOptions.qml:59
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Video format:"
+msgstr ""
+
+#: src/Gui/RecordOptions.qml:81
 #, kde-format
 msgid "Finish recording"
 msgstr "பதிவிடுவதை முடி"
@@ -1091,86 +1097,93 @@ msgstr "படத்தை சேமித்த பின்போ நகலெ
 msgid "Delay"
 msgstr "தாமதம்"
 
+#. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:110
+#, fuzzy, kde-format
+#| msgid "New screen recording"
+msgid "File format for saved screen recordings"
+msgstr "புதிய திரைப்பதிவு"
+
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:116
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
 #, kde-format
 msgid "Default filename"
 msgstr "இயல்பிருப்பு கோப்புப்பெயர்"
 
 #. i18n: ectx: label, entry (compressionQuality), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:124
+#: src/Gui/SettingsDialog/spectacle.kcfg:128
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "இழப்புடை படிவங்களுக்கான சுருக்க தரம்"
 
 #. i18n: ectx: label, entry (defaultSaveImageFormat), group (Save)
 #. i18n: ectx: label, entry (defaultSaveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:130
 #: src/Gui/SettingsDialog/spectacle.kcfg:134
+#: src/Gui/SettingsDialog/spectacle.kcfg:138
 #, kde-format
 msgid "Default save image format"
 msgstr "இயல்பிருப்பு சேமிப்புவடிவம்"
 
 #. i18n: ectx: label, entry (saveFilenameFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:138
+#: src/Gui/SettingsDialog/spectacle.kcfg:142
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "சேமிக்கும்போது இயல்பிருப்பாக பயன்படுத்த வேண்டிய கோப்புப்பெயர்"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:146
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "நிகழ்படத்தை சேமிக்கும்போது இயல்பிருப்பாக பயன்படுத்த வேண்டிய கோப்புப்பெயர்"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:146
+#: src/Gui/SettingsDialog/spectacle.kcfg:150
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "கடைசியாக சேமித்த கோப்பிற்கான பாதை"
 
 #. i18n: ectx: label, entry (lastSaveAsLocation), group (Save)
-#: src/Gui/SettingsDialog/spectacle.kcfg:150
+#: src/Gui/SettingsDialog/spectacle.kcfg:154
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"இவ்வாறு சேமி\" என்பதில் கடைசியாக பயன்படுத்திய பாதை"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "கடைசியாக பயன்படுத்திய குறிப்புக்கருவி"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:193
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "கைமுறை குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:167
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:171
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "எடுப்பாக்கிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:172
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "கோடு குறிப்புக்கருவிக்கான அகலம்"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:177
-#: src/Gui/SettingsDialog/spectacle.kcfg:205
+#: src/Gui/SettingsDialog/spectacle.kcfg:181
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "அம்புக்குறி குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
@@ -1178,9 +1191,9 @@ msgstr "அம்புக்குறி குறிப்புக்கர�
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
@@ -1189,68 +1202,68 @@ msgstr "செவ்வக குறிப்புக்கருவிக்�
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
-#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "நீள்வட்ட குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:231
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Font for annotations"
 msgstr "குறிப்புகளுக்கான எழுத்துரு"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #: src/Gui/SettingsDialog/spectacle.kcfg:242
+#: src/Gui/SettingsDialog/spectacle.kcfg:246
 #, kde-format
 msgid "Font color for annotations"
 msgstr "குறிப்புகளுக்கான உரைநிறம்"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:247
+#: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "கைமுறை குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:251
+#: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "கோடு குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:255
+#: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "அம்புக்குறி குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:259
+#: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "செவ்வக குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:263
+#: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "நீள்வட்ட குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:267
+#: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "உரை குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:271
+#: src/Gui/SettingsDialog/spectacle.kcfg:275
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "எண் குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
@@ -1468,17 +1481,17 @@ msgstr "சுட்டிக்குறிக்கு கீழுள்ள �
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:652
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:690
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1487,24 +1500,24 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:708
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"
