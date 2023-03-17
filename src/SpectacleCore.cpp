@@ -815,7 +815,7 @@ void SpectacleCore::syncExportPixmap()
     for (auto &img : m_annotationDocument->baseImages()) {
         maxDpr = qMax(maxDpr, img.devicePixelRatio());
     }
-    QRectF imageRect(QPointF(0, 0), m_annotationDocument->canvasSize());
+    QRectF imageRect(QPointF(0, 0), m_annotationDocument->canvasSize() * maxDpr);
     const auto &image = m_annotationDocument->renderToImage(imageRect, maxDpr);
     ExportManager::instance()->setPixmap(QPixmap::fromImage(image));
 }
