@@ -375,7 +375,7 @@ void PlatformKWinWayland2::trackSource(ScreenShotSourceMeta2 *source)
 {
     connect(source, &ScreenShotSourceMeta2::finished, this, [this, source](const QVector<QImage> &images) {
         source->deleteLater();
-        QVector<ScreenImage> screenImages;
+        QVector<CanvasImage> screenImages;
         const auto &screens = qGuiApp->screens();
         if (images.length() != screens.length()) {
             qWarning() << "ERROR: number of screens does not match number of images, expected:" << images.length() << "actual:" << screens.length();
@@ -383,7 +383,7 @@ void PlatformKWinWayland2::trackSource(ScreenShotSourceMeta2 *source)
             return;
         }
         for (int i = 0; i < screens.length(); ++i) {
-            screenImages.append({screens.at(i), images.at(i), static_cast<qreal>(images.at(i).width()) / screens.at(i)->geometry().width()});
+            screenImages.append({images[i], screens[i]->geometry()});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
     });

@@ -8,7 +8,7 @@
 #define SELECTIONEDITOR_H
 
 #include "Selection.h"
-#include "ScreenImage.h"
+#include "CanvasImage.h"
 
 #include <QMap>
 #include <QPixmap>
@@ -92,8 +92,8 @@ public:
      * by QGuiApplication::screens().
      * Only used with CaptureModeModel::RectangularRegion
      */
-    Q_SLOT void setScreenImages(const QVector<ScreenImage> &screenImages);
-    QVector<ScreenImage> screenImages() const;
+    Q_SLOT void setScreenImages(const QVector<CanvasImage> &screenImages);
+    QVector<CanvasImage> screenImages() const;
 
     Q_SLOT bool acceptSelection();
 

@@ -123,17 +123,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
         onScreenshotUpdated(pixmap);
         setVideoMode(false);
     });
-    connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<ScreenImage> &screenImages) {
+    connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
         SelectionEditor::instance()->setScreenImages(screenImages);
         m_annotationDocument->clear();
         for (const auto &img : screenImages) {
-            QImage image(img.image);
-            if (KWindowSystem::isPlatformWayland()) {
-                image.setDevicePixelRatio(qreal(image.width()) / img.screen->geometry().width());
-            } else {
-                image.setDevicePixelRatio(qApp->devicePixelRatio());
-            }
-            m_annotationDocument->addImage(image, img.screen->geometry().topLeft());
+            m_annotationDocument->addImage(img);
         }
 
         auto remember = Settings::rememberLastRectangularRegion();
@@ -574,7 +568,7 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
 
     auto exportManager = ExportManager::instance();
     exportManager->setPixmap(pixmapUsed);
-    m_annotationDocument->addImage(pixmapUsed.toImage(), QPointF(0, 0));
+    m_annotationDocument->addImage(pixmapUsed.toImage());
     exportManager->updatePixmapTimestamp();
 
     switch (m_startMode) {
@@ -815,8 +809,8 @@ void SpectacleCore::initGuiNoScreenshot()
 void SpectacleCore::syncExportPixmap()
 {
     qreal maxDpr = 0.0;
-    for (auto &img : m_annotationDocument->baseImages()) {
-        maxDpr = qMax(maxDpr, img.devicePixelRatio());
+    for (auto &img : m_annotationDocument->canvasImages()) {
+        maxDpr = qMax(maxDpr, img.image.devicePixelRatio());
     }
     QRectF imageRect(QPointF(0, 0), m_annotationDocument->canvasSize() * maxDpr);
     const auto &image = m_annotationDocument->renderToImage(imageRect, maxDpr);

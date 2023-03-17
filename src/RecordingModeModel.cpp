@@ -15,6 +15,7 @@
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
+#include <QScreen>
 #include <qnamespace.h>
 #include <utility>
 

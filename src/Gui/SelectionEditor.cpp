@@ -85,8 +85,8 @@ public:
     QPointF startPos;
     QPointF initialTopLeft;
     MouseLocation dragLocation = MouseLocation::None;
-    QVector<ScreenImage> screenImages;
     QPixmap pixmap;
+    QVector<CanvasImage> screenImages;
     qreal devicePixelRatio = 1;
     qreal devicePixelRatioI = 1;
     QPointF mousePos;
@@ -444,37 +444,36 @@ qreal SelectionEditor::dprRound(qreal value) const
     return dprRound(value, d->devicePixelRatio);
 }
 
-void SelectionEditor::setScreenImages(const QVector<ScreenImage> &screenImages)
+void SelectionEditor::setScreenImages(const QVector<CanvasImage> &screenImages)
 {
     QVector<QPoint> translatedPoints;
     QRect screensRect;
     for (int i = 0; i < screenImages.length(); ++i) {
-        const QScreen *screen = screenImages[i].screen;
+        const QPoint &screenPos = screenImages[i].rect.topLeft().toPoint();
         const QImage &image = screenImages[i].image;
-        const qreal dpr = screenImages[i].devicePixelRatio;
+        const qreal dpr = image.devicePixelRatio();
 
         QRect virtualScreenRect;
         if (KWindowSystem::isPlatformX11()) {
-            virtualScreenRect = QRect(screen->geometry().topLeft(), image.size());
+            virtualScreenRect = QRect(screenPos, image.size());
         } else {
             // `QSize / qreal` divides the int width and int height by the qreal factor,
             // then rounds the results to the nearest int.
-            virtualScreenRect = QRect(screen->geometry().topLeft(), image.size() / dpr);
+            virtualScreenRect = QRect(screenPos, image.size() / dpr);
         }
         screensRect = screensRect.united(virtualScreenRect);
 
-        translatedPoints.append(screen->geometry().topLeft());
+        translatedPoints.append(screenPos);
     }
 
     d->screenImages = screenImages;
 
     // compute coordinates after scaling
     for (int i = 0; i < screenImages.length(); ++i) {
-        const QScreen *screen = screenImages[i].screen;
         const QImage &image = screenImages[i].image;
-        const QPoint &p = screen->geometry().topLeft();
+        const QPoint &p = screenImages[i].rect.topLeft().toPoint();
         const QSize &size = image.size();
-        const double dpr = screenImages[i].devicePixelRatio;
+        const double dpr = image.devicePixelRatio();
         if (!qFuzzyCompare(dpr, 1.0)) {
             // must update all coordinates of next rects
             int newWidth = size.width();
@@ -485,7 +484,7 @@ void SelectionEditor::setScreenImages(const QVector<ScreenImage> &screenImages)
 
             // for the next size
             for (int i2 = i; i2 < screenImages.length(); ++i2) {
-                auto point = screenImages[i2].screen->geometry().topLeft();
+                auto point = screenImages[i2].rect.topLeft();
 
                 if (point.x() >= newWidth + p.x() - deltaX) {
                     translatedPoints[i2].setX(translatedPoints[i2].x() + deltaX);
@@ -515,7 +514,7 @@ void SelectionEditor::setScreenImages(const QVector<ScreenImage> &screenImages)
     Q_EMIT screenImagesChanged();
 }
 
-QVector<ScreenImage> SelectionEditor::screenImages() const
+QVector<CanvasImage> SelectionEditor::screenImages() const
 {
     return d->screenImages;
 }
@@ -554,12 +553,11 @@ bool SelectionEditor::acceptSelection()
         // Don't enable SmoothPixmapTransform, we want crisp graphics
 
         for (auto it = d->screenImages.constBegin(); it != d->screenImages.constEnd(); ++it) {
-            const auto screen = it->screen;
-            const auto &screenRect = screen->geometry();
+            const QRect &screenRect = it->rect.toRect();
 
             if (selectionRect.intersects(screenRect)) {
                 const QPoint pos = screenRect.topLeft();
-                const qreal dpr = it->devicePixelRatio;
+                const qreal dpr = it->image.devicePixelRatio();
 
                 QRect intersected = screenRect.intersected(selectionRect);
 

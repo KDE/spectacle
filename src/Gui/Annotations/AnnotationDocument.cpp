@@ -880,8 +880,8 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     }
     m_redoStack = filteredRedo;
 
-    for (auto &img : m_baseImages) {
-        img.pos -= (cropRect.topLeft());
+    for (auto &img : m_canvasImages) {
+        img.rect.setTopLeft(img.rect.topLeft() - cropRect.topLeft());
     }
 
     m_canvasSize = cropRect.size();
@@ -897,13 +897,13 @@ QSizeF AnnotationDocument::canvasSize() const
     return m_canvasSize;
 }
 
-void AnnotationDocument::addImage(const QImage &image, const QPointF &pos)
+void AnnotationDocument::addImage(const CanvasImage &canvasImage)
 {
-    m_baseImages << BaseImage({image, pos});
+    m_canvasImages << canvasImage;
 
     QRectF rect;
-    for (const auto &img : qAsConst(m_baseImages)) {
-        rect = rect.united(QRectF(img.pos, img.image.size() / img.image.devicePixelRatio()));
+    for (const auto &img : qAsConst(m_canvasImages)) {
+        rect = rect.united(img.rect);
     }
     m_canvasSize = rect.size();
 
@@ -911,19 +911,15 @@ void AnnotationDocument::addImage(const QImage &image, const QPointF &pos)
     Q_EMIT repaintNeeded();
 }
 
-QVector<QImage> AnnotationDocument::baseImages() const
+QVector<CanvasImage> AnnotationDocument::canvasImages() const
 {
-    QVector<QImage> imgs;
-    for (const auto &bi : qAsConst(m_baseImages)) {
-        imgs.append(bi.image);
-    }
-    return imgs;
+    return m_canvasImages;
 }
 
 void AnnotationDocument::clearImages()
 {
-    m_baseImages.clear();
-    m_baseImages.squeeze();
+    m_canvasImages.clear();
+    m_canvasImages.squeeze();
     m_canvasSize = QSizeF();
     Q_EMIT canvasSizeChanged();
     Q_EMIT repaintNeeded();
@@ -949,12 +945,12 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     static QList<EditAction *> stopAtAction = QList<EditAction *>();
     const qreal scale = painter->transform().m11();
 
-    for (const auto &img : qAsConst(m_baseImages)) {
-        if (viewPort.intersects(QRectF(img.pos, img.image.size()))) {
+    for (const auto &img : qAsConst(m_canvasImages)) {
+        if (viewPort.intersects(img.rect)) {
             // More High quality scale down
             auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
-            painter->drawImage(zoomPoint(img.pos - viewPort.topLeft(), zoomFactor).toPoint(), scaledImg);
+            painter->drawImage(zoomPoint(img.rect.topLeft() - viewPort.topLeft(), zoomFactor).toPoint(), scaledImg);
         }
     }
 
