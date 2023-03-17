@@ -439,26 +439,6 @@ qreal SelectionEditor::dprRound(qreal value, qreal dpr) const
     return std::round(value * dpr) / dpr;
 }
 
-QImage SelectionEditor::imageForScreen(QScreen *screen)
-{
-    for (const auto &si : qAsConst(d->screenImages)) {
-        if (si.screen == screen) {
-            return si.image;
-        }
-    }
-    return QImage();
-}
-
-QImage SelectionEditor::imageForScreenName(const QString &name)
-{
-    for (const auto &si : qAsConst(d->screenImages)) {
-        if (si.screen->name() == name) {
-            return si.image;
-        }
-    }
-    return QImage();
-}
-
 qreal SelectionEditor::dprRound(qreal value) const
 {
     return dprRound(value, d->devicePixelRatio);
