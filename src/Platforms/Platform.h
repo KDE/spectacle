@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "ScreenImage.h"
+#include "CanvasImage.h"
 
 #include <QFlags>
 #include <QObject>
@@ -50,7 +50,7 @@ Q_SIGNALS:
     void supportedGrabModesChanged();
 
     void newScreenshotTaken(const QPixmap &thePixmap);
-    void newScreensScreenshotTaken(const QVector<ScreenImage> &screenImages);
+    void newScreensScreenshotTaken(const QVector<CanvasImage> &screenImages);
 
     void newScreenshotFailed();
     void windowTitleChanged(const QString &theWindowTitle = {});

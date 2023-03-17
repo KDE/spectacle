@@ -699,11 +699,11 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
         auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
         // break thePixmap into list of images
         const auto screens = QGuiApplication::screens();
-        QVector<ScreenImage> screenImages;
+        QVector<CanvasImage> screenImages;
         for (const auto screen : screens) {
-            QRect geom = screen->geometry();
-            geom.setSize(screen->size() * screen->devicePixelRatio());
-            screenImages.append({screen, lPixmap.copy(geom).toImage(), screen->devicePixelRatio()});
+            QRect imageRect = screen->geometry();
+            imageRect.setSize(screen->size() * screen->devicePixelRatio());
+            screenImages.append({lPixmap.copy(imageRect).toImage(), screen->geometry()});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
         break;

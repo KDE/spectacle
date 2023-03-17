@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "CanvasImage.h"
+
 #include <QColor>
 #include <QFont>
 #include <QImage>
@@ -47,11 +49,6 @@ public:
     Q_DECLARE_FLAGS(ContinueOptions, ContinueOption)
     Q_FLAG(ContinueOption)
 
-    struct BaseImage {
-        QImage image;
-        QPointF pos;
-    };
-
     explicit AnnotationDocument(QObject *parent = nullptr);
     ~AnnotationDocument();
 
@@ -69,8 +66,8 @@ public:
     void cropCanvas(const QRectF &cropRect);
     QSizeF canvasSize() const;
 
-    void addImage(const QImage &image, const QPointF &pos);
-    QVector<QImage> baseImages() const;
+    void addImage(const CanvasImage &canvasImage);
+    QVector<CanvasImage> canvasImages() const;
     void clearImages();
 
     // True when there is an edit action in the undo stack and it is invalid.
@@ -114,7 +111,7 @@ private:
     QSizeF m_canvasSize;
     QVector<EditAction *> m_undoStack;
     QVector<EditAction *> m_redoStack;
-    QVector<BaseImage> m_baseImages;
+    QVector<CanvasImage> m_canvasImages;
 };
 
 /**
