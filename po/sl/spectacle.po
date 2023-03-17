@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-16 00:59+0000\n"
-"PO-Revision-Date: 2023-03-10 07:34+0100\n"
+"PO-Revision-Date: 2023-03-16 12:25+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -736,7 +736,7 @@ msgstr "Pokaži miškino kazalko v posnetku zaslona."
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
-msgstr ""
+msgstr "Video format:"
 
 #: src/Gui/RecordOptions.qml:81
 #, kde-format
@@ -1101,10 +1101,9 @@ msgstr "Zamuda"
 
 #. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:110
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgid "File format for saved screen recordings"
-msgstr "Nov posnetek zaslona"
+msgstr "Format datoteke za shranjene posnetke zaslona"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
