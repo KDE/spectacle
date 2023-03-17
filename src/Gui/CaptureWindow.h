@@ -17,7 +17,6 @@ class CaptureWindow : public SpectacleWindow
 {
     Q_OBJECT
     Q_PROPERTY(QScreen *screenToFollow READ screenToFollow NOTIFY screenToFollowChanged FINAL)
-    Q_PROPERTY(QString screenCaptureUrl READ screenCaptureUrl NOTIFY screenCaptureUrlChanged FINAL)
 
 public:
     enum Mode {
@@ -33,8 +32,6 @@ public:
 
     QScreen *screenToFollow() const;
 
-    QString screenCaptureUrl() const;
-
 public Q_SLOTS:
     bool accept();
     void save() override;
@@ -45,7 +42,6 @@ public Q_SLOTS:
 Q_SIGNALS:
     void screenToFollowChanged();
     void devicePixelRatioChanged(qreal devicePixelRatio);
-    void screenCaptureUrlChanged();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

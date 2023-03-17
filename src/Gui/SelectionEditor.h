@@ -86,9 +86,6 @@ public:
     qreal dprRound(qreal value, qreal dpr) const;
     qreal dprRound(qreal value) const;
 
-    QImage imageForScreen(QScreen *screen);
-    QImage imageForScreenName(const QString &name);
-
     /**
      * Sets the images to use for each screen.
      * Each image should match a screen 1:1 in the order that they are listed

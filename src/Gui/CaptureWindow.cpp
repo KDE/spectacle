@@ -13,6 +13,8 @@
 #include "Gui/SelectionEditor.h"
 #include "spectacle_gui_debug.h"
 
+#include <QScreen>
+
 QVector<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
 
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
@@ -38,7 +40,6 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     connect(selectionEditor, &SelectionEditor::screensRectChanged, this, [this]() {
         syncGeometryWithScreen();
     });
-    connect(selectionEditor, &SelectionEditor::screenImagesChanged, this, &CaptureWindow::screenCaptureUrlChanged);
     connect(this, &CaptureWindow::devicePixelRatioChanged,
             selectionEditor, &SelectionEditor::devicePixelRatioChanged);
 
@@ -57,7 +58,6 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     syncGeometryWithScreen();
     Q_EMIT screenToFollowChanged();
     Q_EMIT devicePixelRatioChanged(m_screenToFollow->devicePixelRatio());
-    Q_EMIT screenCaptureUrlChanged();
 
     // sync visibility
     connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){
@@ -97,15 +97,6 @@ QVector<CaptureWindow *> CaptureWindow::instances()
 QScreen *CaptureWindow::screenToFollow() const
 {
     return m_screenToFollow;
-}
-
-QString CaptureWindow::screenCaptureUrl() const
-{
-    if (!m_screenToFollow) {
-        return QString();
-    }
-    return QStringLiteral("image://spectacle/screen/") + m_screenToFollow->name() + QLatin1Char('/')
-        + QString::number(SelectionEditor::instance()->imageForScreen(m_screenToFollow).cacheKey());
 }
 
 void CaptureWindow::setMode(CaptureWindow::Mode mode)
