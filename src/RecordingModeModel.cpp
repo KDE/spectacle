@@ -4,11 +4,12 @@
 
 #include "RecordingModeModel.h"
 #include "ShortcutActions.h"
+#include "SpectacleCore.h"
+#include "Gui/SpectacleWindow.h"
 
 #include <KGlobalAccel>
 #include <KLocalizedString>
 
-#include "SpectacleCore.h"
 #include <QApplication>
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -68,6 +69,16 @@ int RecordingModeModel::rowCount(const QModelIndex &parent) const
     return m_data.size();
 }
 
+static void minimizeIfWindowsIntersect(const QRectF &rect) {
+    const auto &windows = SpectacleWindow::instances();
+    for (const auto window : windows) {
+        if (rect.intersects(window->frameGeometry())) {
+            SpectacleWindow::setVisibilityForAll(QWindow::Minimized);
+            return;
+        }
+    }
+}
+
 void RecordingModeModel::startRecording(int row, bool withPointer)
 {
     switch (m_data[row].mode) {
@@ -92,7 +103,9 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
             const QPoint top(data[QStringLiteral("x")].toDouble(), data[QStringLiteral("y")].toDouble());
             const auto screens = qGuiApp->screens();
             for (auto screen : screens) {
-                if (screen->geometry().contains(top)) {
+                const auto &screenRect = screen->geometry();
+                if (screenRect.contains(top)) {
+                    minimizeIfWindowsIntersect(screenRect);
                     SpectacleCore::instance()->startRecordingScreen(screen, withPointer);
                     return;
                 }
@@ -116,7 +129,19 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
                 SpectacleCore::instance()->showErrorMessage(i18n("Failed to select window"));
                 return;
             }
-            SpectacleCore::instance()->startRecordingWindow(reply.value().value(QStringLiteral("uuid")).toString(), withPointer);
+            const auto &data = reply.value();
+            // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
+            // which may not be the same as QWindow::frameGeometry() on Wayland.
+            // Hopefully this is good enough most of the time.
+            const QRectF pickedWindowRect = {
+                data[QStringLiteral("x")].toDouble(), data[QStringLiteral("y")].toDouble(),
+                data[QStringLiteral("width")].toDouble(), data[QStringLiteral("height")].toDouble(),
+            };
+            // Don't minimize if we're recording Spectacle.
+            if (data[QStringLiteral("desktopFile")].toString() != qGuiApp->desktopFileName()) {
+                minimizeIfWindowsIntersect(pickedWindowRect);
+            }
+            SpectacleCore::instance()->startRecordingWindow(data.value(QStringLiteral("uuid")).toString(), withPointer);
         });
         break;
     }
@@ -127,6 +152,7 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
         for (auto screen : screens) {
             region |= screen->geometry();
         }
+        minimizeIfWindowsIntersect(region);
         SpectacleCore::instance()->startRecordingRegion(region, withPointer);
         break;
     }
