@@ -5,11 +5,13 @@
 */
 
 #include "PlatformKWinWayland2.h"
+#include "ExportManager.h"
 
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
+#include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
 #include <QFuture>
 #include <QFutureWatcher>
@@ -135,6 +137,12 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     QDataStream stream(&file);
     stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
 
+    bool ok = false;
+    const qreal scale = metadata.value(QStringLiteral("scale")).toReal(&ok);
+    if (ok) {
+        result.setDevicePixelRatio(scale);
+    }
+
     return result;
 }
 
@@ -144,6 +152,22 @@ void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
     if (type != QLatin1String("raw")) {
         qWarning() << "Unsupported metadata type:" << type;
         return;
+    }
+
+    const auto windowId = metadata.value(QStringLiteral("windowId")).toString();
+    if (!windowId.isEmpty()) {
+        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
+                                                              QStringLiteral("/KWin"),
+                                                              QStringLiteral("org.kde.KWin"),
+                                                              QStringLiteral("getWindowInfo"));
+        message.setArguments({windowId});
+        const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
+        if (reply.isValid()) {
+            const auto &windowTitle = reply.value().value(QStringLiteral("caption")).toString();
+            if (!windowTitle.isEmpty()) {
+                ExportManager::instance()->setWindowTitle(windowTitle);
+            }
+        }
     }
 
     auto watcher = new QFutureWatcher<QImage>(this);
