@@ -6,7 +6,6 @@
 
 import QtQuick 2.15
 import QtQml 2.15
-import QtGraphicalEffects 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.spectacle.private 1.0
@@ -133,40 +132,6 @@ AnimatedLoader {
                 color: Kirigami.Theme.highlightColor
                 radius: height / 2
             }
-
-            /* // TODO figure out why this is black
-            Item {
-                id: maskSource
-                visible: true
-                anchors.fill: graphics // Has to be the same size as source
-                Rectangle {
-                    x: handle.effectiveEdges & Qt.LeftEdge ? parent.width - width : 0
-                    y: handle.effectiveEdges & Qt.TopEdge ? parent.height - height : 0
-                    width: handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
-                        || handle.effectiveEdges === (Qt.RightEdge | Qt.BottomEdge)
-                        || handle.effectiveEdges === (Qt.LeftEdge | Qt.BottomEdge)
-                        || handle.effectiveEdges === (Qt.RightEdge | Qt.TopEdge)
-                        || handle.effectiveEdges === Qt.LeftEdge
-                        || handle.effectiveEdges === Qt.RightEdge ?
-                        parent.width / 2 : parent.width
-                    height: handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
-                        || handle.effectiveEdges === (Qt.RightEdge | Qt.BottomEdge)
-                        || handle.effectiveEdges === (Qt.LeftEdge | Qt.BottomEdge)
-                        || handle.effectiveEdges === (Qt.RightEdge | Qt.TopEdge)
-                        || handle.effectiveEdges === Qt.TopEdge
-                        || handle.effectiveEdges === Qt.BottomEdge ?
-                        parent.height / 2 : parent.height
-                }
-            }
-
-            OpacityMask {
-                anchors.fill: graphics
-                cached: true
-                invert: true
-                source: graphics
-                maskSource: maskSource
-            }
-            */
 
             cursorShape: {
                 if (handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
