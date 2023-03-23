@@ -14,6 +14,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDBusConnection>
+#include <QDir>
 #include <QSessionManager>
 
 #include <KAboutData>
@@ -74,7 +75,7 @@ int main(int argc, char **argv)
         QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
-        spectacleCore.activate(app.arguments(), QLatin1String());
+        spectacleCore.activate(app.arguments(), QDir::currentPath());
 
         return app.exec();
     }
@@ -101,7 +102,7 @@ int main(int argc, char **argv)
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
 
     // fire it up
-    spectacleCore.activate(app.arguments(), QLatin1String());
+    spectacleCore.activate(app.arguments(), QDir::currentPath());
 
     return app.exec();
 }
