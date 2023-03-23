@@ -292,7 +292,9 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
-    Q_UNUSED(workingDirectory)
+    if (!workingDirectory.isEmpty()) {
+        QDir::setCurrent(workingDirectory);
+    }
 
     // Remove any windows if they are present.
     deleteWindows();
