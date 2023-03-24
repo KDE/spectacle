@@ -72,7 +72,7 @@ public:
 
     void initGuiNoScreenshot();
 
-    void syncExportPixmap();
+    void syncExportImage();
 
     void startRecordingWindow(const QString &uuid, bool withPointer);
     void startRecordingRegion(const QRect &region, bool withPointer);
@@ -96,7 +96,7 @@ public Q_SLOTS:
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
     void showErrorMessage(const QString &theErrString);
-    void onScreenshotUpdated(const QPixmap &thePixmap);
+    void onScreenshotUpdated(const QImage &image);
     void onScreenshotFailed();
     void doNotify(const QUrl &theSavedAt);
 
@@ -107,7 +107,7 @@ Q_SIGNALS:
 
     void errorMessage(const QString &errString);
     void allDone();
-    void grabDone(const QPixmap &pixmap);
+    void grabDone(const QImage &image);
     void grabFailed();
     void recordingChanged(bool isRecording);
     void videoModeChanged(bool videoMode);

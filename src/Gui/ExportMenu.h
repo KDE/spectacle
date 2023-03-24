@@ -36,7 +36,7 @@ Q_SIGNALS:
     void imageShared(int error, const QString &message);
 
 private:
-    Q_SLOT void onPixmapChanged();
+    Q_SLOT void onImageChanged();
     Q_SLOT void openScreenshotsFolder();
 
     void getKServiceItems();

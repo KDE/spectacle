@@ -282,7 +282,7 @@ void SpectacleWindow::saveAs()
 void SpectacleWindow::copyImage()
 {
     const bool quitChecked = Settings::quitAfterSaveCopyExport();
-    SpectacleCore::instance()->syncExportPixmap();
+    SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->doCopyToClipboard(/* notify */ quitChecked);
     if (quitChecked) {
         SpectacleWindow::closeAll();
@@ -452,7 +452,7 @@ void SpectacleWindow::openContainingFolder(const QUrl &url)
 void SpectacleWindow::startDrag()
 {
     auto exportManager = ExportManager::instance();
-    if (exportManager->pixmap().isNull()) {
+    if (exportManager->image().isNull()) {
         return;
     }
 
@@ -480,12 +480,13 @@ void SpectacleWindow::startDrag()
         auto iconSize = units.iconSizes()->large();
         dragHandler->setPixmap(QIcon::fromTheme(QStringLiteral("video-x-matroska")).pixmap(iconSize, iconSize));
     } else {
-        QSize size = exportManager->pixmap().size();
+        QSize size = exportManager->image().size();
+        QPixmap pixmap = QPixmap::fromImage(exportManager->image());
         // TODO: use the composed pixmap with annotations instead
         if (size.width() > 256 || size.height() > 256) {
-            dragHandler->setPixmap(exportManager->pixmap().scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            dragHandler->setPixmap(pixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         } else {
-            dragHandler->setPixmap(exportManager->pixmap());
+            dragHandler->setPixmap(pixmap);
         }
     }
     dragHandler->exec(Qt::CopyAction);

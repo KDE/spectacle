@@ -85,7 +85,7 @@ public:
     QPointF startPos;
     QPointF initialTopLeft;
     MouseLocation dragLocation = MouseLocation::None;
-    QPixmap pixmap;
+    QImage image;
     QVector<CanvasImage> screenImages;
     qreal devicePixelRatio = 1;
     qreal devicePixelRatioI = 1;
@@ -496,8 +496,8 @@ void SelectionEditor::setScreenImages(const QVector<CanvasImage> &screenImages)
         }
     }
 
-    d->pixmap = QPixmap(screensRect.size());
-    QPainter painter(&d->pixmap);
+    d->image = QImage(screensRect.size(), QImage::Format_ARGB32);
+    QPainter painter(&d->image);
     // Don't enable SmoothPixmapTransform, we want crisp graphics.
     for (int i = 0; i < screenImages.length(); ++i) {
         // Geometry can have negative coordinates,
@@ -536,11 +536,11 @@ bool SelectionEditor::acceptSelection()
     spectacleCore->annotationDocument()->cropCanvas(d->selection->alignedRect(1));
 
     if (KWindowSystem::isPlatformX11()) {
-        d->pixmap.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        if (scaledCropRegion.size() != d->pixmap.size()) {
-            Q_EMIT spectacleCore->grabDone(d->pixmap.copy(scaledCropRegion));
+        d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
+        if (scaledCropRegion.size() != d->image.size()) {
+            Q_EMIT spectacleCore->grabDone(d->image.copy(scaledCropRegion));
         } else {
-            Q_EMIT spectacleCore->grabDone(d->pixmap);
+            Q_EMIT spectacleCore->grabDone(d->image);
         }
     } else { // Wayland case
         // QGuiApplication::devicePixelRatio() is calculated by getting the highest screen DPI
@@ -548,7 +548,7 @@ bool SelectionEditor::acceptSelection()
 
         QRect selectionRect = d->selection->alignedRect();
         QSize selectionSize = selectionRect.size();
-        QPixmap output(selectionSize * maxDpr);
+        QImage output(selectionSize * maxDpr, QImage::Format_ARGB32);
         QPainter painter(&output);
         // Don't enable SmoothPixmapTransform, we want crisp graphics
 
@@ -567,7 +567,7 @@ bool SelectionEditor::acceptSelection()
                 pixelOnScreenIntersected.setWidth(intersected.width() * dpr);
                 pixelOnScreenIntersected.setHeight(intersected.height() * dpr);
 
-                QPixmap screenOutput = QPixmap::fromImage(it->image.copy(pixelOnScreenIntersected));
+                QImage screenOutput = it->image.copy(pixelOnScreenIntersected);
 
                 // FIXME: this doesn't seem correct
                 if (intersected.size() == selectionSize) {

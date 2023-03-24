@@ -36,7 +36,7 @@
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
     , m_imageSavedNotInTemp(false)
-    , m_savePixmap(QPixmap())
+    , m_saveImage(QImage())
     , m_tempFile(QUrl())
 {
     connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
@@ -56,11 +56,11 @@ ExportManager *ExportManager::instance()
     return &instance;
 }
 
-// screenshot pixmap setter and getter
+// screenshot image setter and getter
 
-QPixmap ExportManager::pixmap() const
+QImage ExportManager::image() const
 {
-    return m_savePixmap;
+    return m_saveImage;
 }
 
 void ExportManager::setWindowTitle(const QString &windowTitle)
@@ -73,9 +73,9 @@ QString ExportManager::windowTitle() const
     return m_windowTitle;
 }
 
-void ExportManager::setPixmap(const QPixmap &pixmap)
+void ExportManager::setImage(const QImage &image)
 {
-    m_savePixmap = pixmap;
+    m_saveImage = image;
 
     // reset our saved tempfile
     if (m_tempFile.isValid()) {
@@ -85,20 +85,20 @@ void ExportManager::setPixmap(const QPixmap &pixmap)
         m_tempFile = QUrl();
     }
 
-    // since the pixmap was modified, we now consider the image unsaved
+    // since the image was modified, we now consider the image unsaved
     m_imageSavedNotInTemp = false;
 
-    Q_EMIT pixmapChanged();
+    Q_EMIT imageChanged();
 }
 
-void ExportManager::updatePixmapTimestamp()
+void ExportManager::updateTimestamp()
 {
-    m_pixmapTimestamp = QDateTime::currentDateTime();
+    m_timestamp = QDateTime::currentDateTime();
 }
 
 void ExportManager::setTimestamp(const QDateTime &timestamp)
 {
-    m_pixmapTimestamp = timestamp;
+    m_timestamp = timestamp;
 }
 
 // native file save helpers
@@ -169,7 +169,7 @@ QString ExportManager::truncatedFilename(QString const &filename) const
 
 QString ExportManager::formattedFilename(const QString &nameTemplate) const
 {
-    const QDateTime timestamp = m_pixmapTimestamp;
+    const QDateTime timestamp = m_timestamp;
     QString baseName = nameTemplate;
     QString baseDir = defaultSaveLocation();
     QString title = m_windowTitle;
@@ -321,7 +321,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
         return false;
     }
 
-    return imageWriter.write(m_savePixmap.toImage());
+    return imageWriter.write(m_saveImage);
 }
 
 bool ExportManager::localSave(const QUrl &url, const QString &suffix)
@@ -474,7 +474,7 @@ bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
 
 void ExportManager::doSave(const QUrl &url, bool notify)
 {
-    if (m_savePixmap.isNull()) {
+    if (m_saveImage.isNull()) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -533,7 +533,7 @@ bool ExportManager::doSaveAs(bool notify)
 
 void ExportManager::doSaveAndCopy(const QUrl &url)
 {
-    if (m_savePixmap.isNull()) {
+    if (m_saveImage.isNull()) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -552,7 +552,7 @@ void ExportManager::doSaveAndCopy(const QUrl &url)
 void ExportManager::doCopyToClipboard(bool notify)
 {
     auto data = new QMimeData();
-    data->setImageData(m_savePixmap.toImage());
+    data->setImageData(m_saveImage);
     // "x-kde-force-image-copy" is handled by Klipper.
     // It ensures that the image is copied to Klipper even with the
     // "Non-text selection: Never save in history" setting selected in Klipper.
@@ -596,11 +596,11 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.setRenderHint(QPainter::LosslessImageRendering);
 
     QRect devRect(0, 0, printer->width(), printer->height());
-    QPixmap pixmap = m_savePixmap.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    QRect srcRect = pixmap.rect();
+    QImage image = m_saveImage.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QRect srcRect = image.rect();
     srcRect.moveCenter(devRect.center());
 
-    painter.drawPixmap(srcRect.topLeft(), pixmap);
+    painter.drawImage(srcRect.topLeft(), image);
     painter.end();
 }
 

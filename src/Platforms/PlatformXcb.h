@@ -40,12 +40,12 @@ private:
     QRect getDrawableGeometry(xcb_drawable_t theDrawable);
     xcb_window_t getWindowUnderCursor();
     xcb_window_t getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDecorations);
-    QPixmap convertFromNative(xcb_image_t *theXcbImage);
-    QPixmap blendCursorImage(QPixmap &thePixmap, const QRect theRect);
-    QPixmap postProcessPixmap(QPixmap &thePixmap, QRect theRect, bool theBlendPointer);
-    QPixmap getPixmapFromDrawable(xcb_drawable_t theXcbDrawable, const QRect &theRect);
-    QPixmap getToplevelPixmap(QRect theRect, bool theBlendPointer);
-    QPixmap getWindowPixmap(xcb_window_t theWindow, bool theBlendPointer);
+    QImage convertFromNative(xcb_image_t *theXcbImage);
+    QImage blendCursorImage(QImage &image, const QRect theRect);
+    QImage postProcessImage(QImage &image, QRect theRect, bool theBlendPointer);
+    QImage getImageFromDrawable(xcb_drawable_t theXcbDrawable, const QRect &theRect);
+    QImage getToplevelImage(QRect theRect, bool theBlendPointer);
+    QImage getWindowImage(xcb_window_t theWindow, bool theBlendPointer);
 
     void grabAllScreens(bool theIncludePointer);
     void grabCurrentScreen(bool theIncludePointer);
