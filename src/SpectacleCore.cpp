@@ -6,6 +6,7 @@
  */
 
 #include "SpectacleCore.h"
+#include "CanvasImage.h"
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "Gui/Annotations/AnnotationViewport.h"
@@ -109,18 +110,18 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     // essential connections
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
-    connect(this, &SpectacleCore::grabDone, this, [this](const QPixmap &pixmap){
+    connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image){
         // only clear images because we're transitioning from rectangle capture to image view.
         m_annotationDocument->clearImages();
         if (m_startMode != StartMode::Gui) {
             SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         }
-        onScreenshotUpdated(pixmap);
+        onScreenshotUpdated(image);
     });
 
-    connect(platform, &Platform::newScreenshotTaken, this, [this](const QPixmap &pixmap){
+    connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clear();
-        onScreenshotUpdated(pixmap);
+        onScreenshotUpdated(image);
         setVideoMode(false);
     });
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
@@ -148,7 +149,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(exportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
     connect(platform, &Platform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
-    connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportPixmap);
+    connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportImage);
 
     connect(exportManager, &ExportManager::imageSaved, this, [](const QUrl &savedAt){
         // This behavior has no relation to the setting in the config UI,
@@ -557,24 +558,24 @@ void SpectacleCore::showErrorMessage(const QString &theErrString)
     }
 }
 
-void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
+void SpectacleCore::onScreenshotUpdated(const QImage &image)
 {
     using Option = CommandLineOptions::Option;
-    QPixmap existingPixmap;
-    const QPixmap &pixmapUsed = (m_editExisting && !m_existingLoaded) ? existingPixmap : thePixmap;
+    QImage existingImage;
+    const QImage &imageUsed = (m_editExisting && !m_existingLoaded) ? existingImage : image;
     if (m_editExisting && !m_existingLoaded) {
-        existingPixmap.load(m_screenCaptureUrl.toLocalFile());
+        existingImage.load(m_screenCaptureUrl.toLocalFile());
     }
 
     auto exportManager = ExportManager::instance();
-    exportManager->setPixmap(pixmapUsed);
-    m_annotationDocument->addImage(pixmapUsed.toImage());
-    exportManager->updatePixmapTimestamp();
+    exportManager->setImage(imageUsed);
+    m_annotationDocument->addImage(imageUsed);
+    exportManager->updateTimestamp();
 
     switch (m_startMode) {
     case StartMode::Background:
     case StartMode::DBus: {
-        syncExportPixmap();
+        syncExportImage();
         if (m_saveToOutput) {
             QUrl lSavePath = (m_startMode == StartMode::Background && m_screenCaptureUrl.isValid() && m_screenCaptureUrl.isLocalFile()) ? m_screenCaptureUrl : QUrl();
             exportManager->doSave(lSavePath, m_notify);
@@ -606,29 +607,29 @@ void SpectacleCore::onScreenshotUpdated(const QPixmap &thePixmap)
                                  m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
                                  m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
 
-        if (pixmapUsed.isNull()) {
+        if (imageUsed.isNull()) {
             initViewerWindow(ViewerWindow::Dialog);
             ViewerWindow::instance()->setVisible(true);
             return;
         }
         if (!m_editExisting) {
-            setScreenCaptureUrl(QUrl(QStringLiteral("image://spectacle/%1").arg(pixmapUsed.cacheKey())));
+            setScreenCaptureUrl(QUrl(QStringLiteral("image://spectacle/%1").arg(imageUsed.cacheKey())));
         }
         initViewerWindow(ViewerWindow::Image);
         if (m_editExisting) {
             ViewerWindow::instance()->setAnnotating(true);
         }
         ViewerWindow::instance()->setVisible(true);
-        auto titlePreset = !pixmapUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
+        auto titlePreset = !imageUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
 
         if (m_saveToOutput && m_copyImageToClipboard) {
-            syncExportPixmap();
+            syncExportImage();
             exportManager->doSaveAndCopy();
         } else if (m_saveToOutput) {
             exportManager->doSave();
         } else if (m_copyImageToClipboard) {
-            syncExportPixmap();
+            syncExportImage();
             exportManager->doCopyToClipboard(false);
         }
         // This is a separate block since we don't do anything special for
@@ -806,7 +807,7 @@ void SpectacleCore::initGuiNoScreenshot()
     ViewerWindow::instance()->setVisible(true);
 }
 
-void SpectacleCore::syncExportPixmap()
+void SpectacleCore::syncExportImage()
 {
     qreal maxDpr = 0.0;
     for (auto &img : m_annotationDocument->canvasImages()) {
@@ -814,7 +815,7 @@ void SpectacleCore::syncExportPixmap()
     }
     QRectF imageRect(QPointF(0, 0), m_annotationDocument->canvasSize() * maxDpr);
     const auto &image = m_annotationDocument->renderToImage(imageRect, maxDpr);
-    ExportManager::instance()->setPixmap(QPixmap::fromImage(image));
+    ExportManager::instance()->setImage(image);
 }
 
 QQmlEngine *SpectacleCore::getQmlEngine()

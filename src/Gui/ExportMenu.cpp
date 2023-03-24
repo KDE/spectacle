@@ -47,14 +47,14 @@ ExportMenu::ExportMenu(QWidget *parent)
 
 #ifdef PURPOSE_FOUND
     loadPurposeMenu();
-    connect(ExportManager::instance(), &ExportManager::pixmapChanged, this, &ExportMenu::onPixmapChanged);
+    connect(ExportManager::instance(), &ExportManager::imageChanged, this, &ExportMenu::onImageChanged);
 #endif
 
     addSeparator();
     getKServiceItems();
 }
 
-void ExportMenu::onPixmapChanged()
+void ExportMenu::onImageChanged()
 {
 #ifdef PURPOSE_FOUND
     // mark cached image as stale

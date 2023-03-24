@@ -272,7 +272,7 @@ void PlatformKWinWayland::startReadImage(int theReadPipe)
         if (lImage.isNull()) {
             Q_EMIT newScreenshotFailed();
         } else {
-            Q_EMIT newScreenshotTaken(QPixmap::fromImage(lImage));
+            Q_EMIT newScreenshotTaken(lImage);
         }
     });
     lWatcher->setFuture(QtConcurrent::run(readImage, theReadPipe));

@@ -49,7 +49,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void supportedGrabModesChanged();
 
-    void newScreenshotTaken(const QPixmap &thePixmap);
+    void newScreenshotTaken(const QImage &image = {});
     void newScreensScreenshotTaken(const QVector<CanvasImage> &screenImages);
 
     void newScreenshotFailed();

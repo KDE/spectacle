@@ -33,7 +33,7 @@ void PlatformNull::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool
     Q_UNUSED(theGrabMode)
     Q_UNUSED(theIncludePointer)
     Q_UNUSED(theIncludeDecorations)
-    Q_EMIT newScreenshotTaken(QPixmap());
+    Q_EMIT newScreenshotTaken();
 }
 
 VideoPlatformNull::VideoPlatformNull(QObject *parent)

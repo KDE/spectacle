@@ -363,7 +363,7 @@ void PlatformKWinWayland2::trackSource(ScreenShotSource2 *source)
 {
     connect(source, &ScreenShotSourceArea2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
-        Q_EMIT newScreenshotTaken(QPixmap::fromImage(image));
+        Q_EMIT newScreenshotTaken(image);
     });
     connect(source, &ScreenShotSourceArea2::errorOccurred, this, [this, source]() {
         source->deleteLater();

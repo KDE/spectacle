@@ -54,12 +54,12 @@ ViewerWindow *ViewerWindow::instance()
 
 QSize ViewerWindow::imageSize() const
 {
-    return ExportManager::instance()->pixmap().size();
+    return ExportManager::instance()->image().size();
 }
 
 qreal ViewerWindow::imageDpr() const
 {
-    return ExportManager::instance()->pixmap().devicePixelRatio();
+    return ExportManager::instance()->image().devicePixelRatio();
 }
 
 void ViewerWindow::setMode(ViewerWindow::Mode mode)

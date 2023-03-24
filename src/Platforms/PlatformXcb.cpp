@@ -101,7 +101,7 @@ public:
                         });
                     } else if (lSecondEvent->detail == 2 || lSecondEvent->detail == 3) {
                         // 2: middle click, 3: right click; both cancel
-                        Q_EMIT mPlatformPtr->newScreenshotTaken(QPixmap());
+                        Q_EMIT mPlatformPtr->newScreenshotTaken();
                     } else if (lSecondEvent->detail < 4) {
                         Q_EMIT mPlatformPtr->newScreenshotFailed();
                     } else {
@@ -290,7 +290,7 @@ xcb_window_t PlatformXcb::getTransientWindowParent(xcb_window_t theChildWindow, 
 
 /* -- Image Processing Utilities --------------------------------------------------------------- */
 
-QPixmap PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
+QImage PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
 {
     auto lImageFormat = QImage::Format_Invalid;
     switch (theXcbImage->depth) {
@@ -310,7 +310,7 @@ QPixmap PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
         lImageFormat = QImage::Format_ARGB32_Premultiplied;
         break;
     default:
-        return QPixmap(); // we don't know
+        return {}; // we don't know
     }
 
     // the RGB32 format requires data format 0xffRRGGBB, ensure that this fourth byte really is 0xff
@@ -323,7 +323,7 @@ QPixmap PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
 
     QImage lImage(theXcbImage->data, theXcbImage->width, theXcbImage->height, lImageFormat);
     if (lImage.isNull()) {
-        return QPixmap();
+        return {};
     }
 
     // work around an abort in QImage::color
@@ -334,17 +334,17 @@ QPixmap PlatformXcb::convertFromNative(xcb_image_t *theXcbImage)
     }
 
     // the image is ready. Since the backing data from xcbImage could be freed
-    // before the QPixmap goes away, a deep copy is necessary.
-    return QPixmap::fromImage(lImage).copy();
+    // before the image goes away, a deep copy is necessary.
+    return lImage.copy();
 }
 
-QPixmap PlatformXcb::blendCursorImage(QPixmap &thePixmap, const QRect theRect)
+QImage PlatformXcb::blendCursorImage(QImage &image, const QRect theRect)
 {
     // If the cursor position lies outside the area, do not bother drawing a cursor.
 
     auto lCursorPos = getCursorPosition();
     if (!theRect.contains(lCursorPos)) {
-        return thePixmap;
+        return image;
     }
 
     // now we can get the image and start processing
@@ -353,13 +353,13 @@ QPixmap PlatformXcb::blendCursorImage(QPixmap &thePixmap, const QRect theRect)
     auto lCursorCookie = xcb_xfixes_get_cursor_image_unchecked(lXcbConn);
     XcbReplyPtr<xcb_xfixes_get_cursor_image_reply_t> lCursorReply(xcb_xfixes_get_cursor_image_reply(lXcbConn, lCursorCookie, nullptr));
     if (!lCursorReply) {
-        return thePixmap;
+        return image;
     }
 
     // get the image and process it into a qimage
     auto lPixelData = xcb_xfixes_get_cursor_image_cursor_image(lCursorReply.get());
     if (!lPixelData) {
-        return thePixmap;
+        return image;
     }
     QImage lCursorImage(reinterpret_cast<quint8 *>(lPixelData), lCursorReply->width, lCursorReply->height, QImage::Format_ARGB32_Premultiplied);
 
@@ -368,23 +368,23 @@ QPixmap PlatformXcb::blendCursorImage(QPixmap &thePixmap, const QRect theRect)
 
     // now we translate the cursor point to our screen rectangle and do the painting
     lCursorPos -= QPoint(theRect.x(), theRect.y());
-    QPainter lPainter(&thePixmap);
+    QPainter lPainter(&image);
     lPainter.drawImage(lCursorPos, lCursorImage);
-    return thePixmap;
+    return image;
 }
 
-QPixmap PlatformXcb::postProcessPixmap(QPixmap &thePixmap, QRect theRect, bool theBlendPointer)
+QImage PlatformXcb::postProcessImage(QImage &image, QRect theRect, bool theBlendPointer)
 {
     if (!(theBlendPointer)) {
-        // note: this may be the null pixmap if an error occurred.
-        return thePixmap;
+        // note: this may be a null image if an error occurred.
+        return image;
     }
-    return blendCursorImage(thePixmap, theRect);
+    return blendCursorImage(image, theRect);
 }
 
 /* -- Capture Helpers -------------------------------------------------------------------------- */
 
-QPixmap PlatformXcb::getPixmapFromDrawable(xcb_drawable_t theXcbDrawable, const QRect &theRect)
+QImage PlatformXcb::getImageFromDrawable(xcb_drawable_t theXcbDrawable, const QRect &theRect)
 {
     auto lXcbConn = QX11Info::connection();
 
@@ -393,15 +393,14 @@ QPixmap PlatformXcb::getPixmapFromDrawable(xcb_drawable_t theXcbDrawable, const 
 
     // too bad, the capture failed.
     if (!lXcbImage) {
-        return QPixmap();
+        return {};
     }
 
     // now process the image
-    auto lPixmap = convertFromNative(lXcbImage.get());
-    return lPixmap;
+    return convertFromNative(lXcbImage.get());
 }
 
-QPixmap PlatformXcb::getToplevelPixmap(QRect theRect, bool theBlendPointer)
+QImage PlatformXcb::getToplevelImage(QRect theRect, bool theBlendPointer)
 {
     auto lRootWindow = QX11Info::appRootWindow();
 
@@ -425,11 +424,11 @@ QPixmap PlatformXcb::getToplevelPixmap(QRect theRect, bool theBlendPointer)
         theRect = (lScreenRegion & theRect).boundingRect();
     }
 
-    auto lPixmap = getPixmapFromDrawable(lRootWindow, theRect);
-    return postProcessPixmap(lPixmap, theRect, theBlendPointer);
+    auto image = getImageFromDrawable(lRootWindow, theRect);
+    return postProcessImage(image, theRect, theBlendPointer);
 }
 
-QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointer)
+QImage PlatformXcb::getWindowImage(xcb_window_t theWindow, bool theBlendPointer)
 {
     auto lXcbConn = QX11Info::connection();
 
@@ -439,7 +438,7 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
     QRect lWindowRect(lGeoReply->x, lGeoReply->y, lGeoReply->width, lGeoReply->height);
 
     // then proceed to get an image
-    auto lPixmap = getPixmapFromDrawable(theWindow, lWindowRect);
+    auto image = getImageFromDrawable(theWindow, lWindowRect);
 
     // translate window coordinates to global ones.
     auto lRootGeoCookie = xcb_get_geometry_unchecked(lXcbConn, lGeoReply->root);
@@ -452,10 +451,10 @@ QPixmap PlatformXcb::getWindowPixmap(xcb_window_t theWindow, bool theBlendPointe
     lWindowRect.moveTop(lWindowRect.y() + lTranslateReply->dst_y);
 
     // if the window capture failed, try to obtain one from the full screen.
-    if (lPixmap.isNull()) {
-        return getToplevelPixmap(lWindowRect, theBlendPointer);
+    if (image.isNull()) {
+        return getToplevelImage(lWindowRect, theBlendPointer);
     }
-    return postProcessPixmap(lPixmap, lWindowRect, theBlendPointer);
+    return postProcessImage(image, lWindowRect, theBlendPointer);
 }
 
 void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
@@ -467,13 +466,14 @@ void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
                                              this,
                                              SLOT(handleKWinScreenshotReply(quint64)));
 
-    // obtain width and height and grab an image (x and y are always zero for pixmaps)
+    // obtain width and height and grab an image (x and y are always zero for drawables)
     auto lDrawable = static_cast<xcb_drawable_t>(theDrawable);
     auto lRect = getDrawableGeometry(lDrawable);
-    auto lPixmap = getPixmapFromDrawable(lDrawable, lRect);
+    auto image = getImageFromDrawable(lDrawable, lRect);
 
-    if (!lPixmap.isNull()) {
-        Q_EMIT newScreenshotTaken(lPixmap);
+    if (!image.isNull()) {
+        image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
+        Q_EMIT newScreenshotTaken(image);
         return;
     }
     Q_EMIT newScreenshotFailed();
@@ -483,8 +483,9 @@ void PlatformXcb::handleKWinScreenshotReply(quint64 theDrawable)
 
 void PlatformXcb::grabAllScreens(bool theIncludePointer)
 {
-    auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
-    Q_EMIT newScreenshotTaken(lPixmap);
+    auto image = getToplevelImage(QRect(), theIncludePointer);
+    image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
+    Q_EMIT newScreenshotTaken(image);
 }
 
 void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
@@ -500,8 +501,9 @@ void PlatformXcb::grabCurrentScreen(bool theIncludePointer)
         // the screen origin is in native pixels, but the size is device-dependent.
         // convert these also to native pixels.
         QRect lNativeScreenRect(lScreenRect.topLeft(), lScreenRect.size() * lScreen->devicePixelRatio());
-        auto lPixmap = getToplevelPixmap(lNativeScreenRect, theIncludePointer);
-        Q_EMIT newScreenshotTaken(lPixmap);
+        auto image = getToplevelImage(lNativeScreenRect, theIncludePointer);
+        image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
+        Q_EMIT newScreenshotTaken(image);
         return;
     }
 
@@ -514,9 +516,10 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
     // if the user doesn't want decorations captured, we're in luck. This is
     // the easiest bit
 
-    auto lPixmap = getWindowPixmap(theWindow, theIncludePointer);
+    auto image = getWindowImage(theWindow, theIncludePointer);
+    image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
     if (!theIncludeDecorations || theWindow == QX11Info::appRootWindow()) {
-        Q_EMIT newScreenshotTaken(lPixmap);
+        Q_EMIT newScreenshotTaken(image);
         return;
     }
 
@@ -534,11 +537,11 @@ void PlatformXcb::grabApplicationWindow(xcb_window_t theWindow, bool theIncludeP
     KWindowInfo lWindowInfo(theWindow, NET::WMFrameExtents);
     if (lWindowInfo.valid()) {
         auto lFrameGeom = lWindowInfo.frameGeometry();
-        lPixmap = getToplevelPixmap(lFrameGeom, theIncludePointer);
+        image = getToplevelImage(lFrameGeom, theIncludePointer);
     }
 
     // fallback is window without the frame
-    Q_EMIT newScreenshotTaken(lPixmap);
+    Q_EMIT newScreenshotTaken(image);
 }
 
 void PlatformXcb::grabActiveWindow(bool theIncludePointer, bool theIncludeDecorations)
@@ -605,7 +608,8 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
     updateWindowTitle(lWindow);
 
     // grab the image early
-    auto lPixmap = getToplevelPixmap(QRect(), false);
+    auto image = getToplevelImage(QRect(), false);
+    image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
 
     // now that we know we have a transient window, let's
     // find other possible transient windows and the app window itself.
@@ -648,14 +652,14 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
     }
 
     // we can probably go ahead and generate the image now
-    QImage lImage(lPixmap.size(), QImage::Format_ARGB32);
-    lImage.fill(Qt::transparent);
+    QImage clippedImage(image.size(), QImage::Format_ARGB32);
+    clippedImage.fill(Qt::transparent);
 
-    QPainter lPainter(&lImage);
+    QPainter lPainter(&clippedImage);
     lPainter.setClipRegion(lClipRegion);
-    lPainter.drawPixmap(0, 0, lPixmap);
+    lPainter.drawImage(0, 0, image);
     lPainter.end();
-    lPixmap = QPixmap::fromImage(lImage).copy(lClipRegion.boundingRect());
+    image = clippedImage.copy(lClipRegion.boundingRect());
 
     // why stop here, when we can render a 20px drop shadow all around it
     auto lShadowEffect = new QGraphicsDropShadowEffect;
@@ -663,25 +667,26 @@ void PlatformXcb::grabTransientWithParent(bool theIncludePointer, bool theInclud
     lShadowEffect->setBlurRadius(20);
 
     auto lPixmapItem = new QGraphicsPixmapItem;
-    lPixmapItem->setPixmap(lPixmap);
+    lPixmapItem->setPixmap(QPixmap::fromImage(image));
     lPixmapItem->setGraphicsEffect(lShadowEffect);
 
-    QImage lShadowImage(lPixmap.size() + QSize(40, 40), QImage::Format_ARGB32);
+    QImage lShadowImage(image.size() + QSize(40, 40), QImage::Format_ARGB32);
     lShadowImage.fill(Qt::transparent);
     QPainter lShadowPainter(&lShadowImage);
 
     QGraphicsScene lGraphicsScene;
     lGraphicsScene.addItem(lPixmapItem);
-    lGraphicsScene.render(&lShadowPainter, QRectF(), QRectF(-20, -20, lPixmap.width() + 40, lPixmap.height() + 40));
+    lGraphicsScene.render(&lShadowPainter, QRectF(), QRectF(-20, -20, image.width() + 40, image.height() + 40));
     lShadowPainter.end();
 
     // we can finish up now
-    lPixmap = QPixmap::fromImage(lShadowImage);
+    image = lShadowImage;
     if (theIncludePointer) {
         auto lTopLeft = lClipRegion.boundingRect().topLeft() - QPoint(20, 20);
-        lPixmap = blendCursorImage(lPixmap, QRect(lTopLeft, QSize(lPixmap.width(), lPixmap.height())));
+        image = blendCursorImage(image, QRect(lTopLeft, QSize(image.width(), image.height())));
     }
-    Q_EMIT newScreenshotTaken(lPixmap);
+
+    Q_EMIT newScreenshotTaken(image);
 }
 
 void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
@@ -696,14 +701,14 @@ void PlatformXcb::doGrabNow(GrabMode theGrabMode, bool theIncludePointer, bool t
         grabAllScreens(theIncludePointer);
         break;
     case GrabMode::PerScreenImageNative: {
-        auto lPixmap = getToplevelPixmap(QRect(), theIncludePointer);
-        // break thePixmap into list of images
+        auto image = getToplevelImage(QRect(), theIncludePointer);
+        // break the image into a list of images
         const auto screens = QGuiApplication::screens();
         QVector<CanvasImage> screenImages;
         for (const auto screen : screens) {
             QRect imageRect = screen->geometry();
             imageRect.setSize(screen->size() * screen->devicePixelRatio());
-            screenImages.append({lPixmap.copy(imageRect).toImage(), screen->geometry()});
+            screenImages.append({image.copy(imageRect), screen->geometry()});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
         break;

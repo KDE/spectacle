@@ -11,7 +11,6 @@
 class QIODevice;
 #include <QMap>
 #include <QObject>
-#include <QPixmap>
 class QPrinter;
 #include <QUrl>
 
@@ -40,9 +39,9 @@ public:
     QString defaultVideoSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
-    void setPixmap(const QPixmap &pixmap);
-    QPixmap pixmap() const;
-    void updatePixmapTimestamp();
+    void setImage(const QImage &image);
+    QImage image() const;
+    void updateTimestamp();
     void setTimestamp(const QDateTime &timestamp);
 
     /**
@@ -60,7 +59,7 @@ public:
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
 Q_SIGNALS:
-    void pixmapChanged();
+    void imageChanged();
 
     void errorMessage(const QString &str);
     void imageSaved(const QUrl &savedAt);
@@ -94,8 +93,8 @@ private:
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     bool m_imageSavedNotInTemp;
-    QPixmap m_savePixmap;
-    QDateTime m_pixmapTimestamp;
+    QImage m_saveImage;
+    QDateTime m_timestamp;
     QUrl m_tempFile;
     QTemporaryDir *m_tempDir = nullptr;
     QList<QUrl> m_usedTempFileNames;
