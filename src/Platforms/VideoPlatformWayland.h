@@ -7,7 +7,7 @@
 #pragma once
 
 #include "VideoPlatform.h"
-#include <KPipeWire/PipeWireRecord>
+#include <PipeWireRecord>
 #include <memory>
 
 class Screencasting;
