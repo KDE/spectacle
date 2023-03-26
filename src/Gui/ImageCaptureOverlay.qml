@@ -173,7 +173,7 @@ MouseArea {
             horizontalCenter: parent.horizontalCenter
             bottom: parent.bottom
         }
-        visible: opacity > 0
+        visible: opacity > 0 && Settings.showCaptureInstructions
         // Assume SelectionEditor covers all screens.
         // Use parent's coordinate system.
         opacity: root.containsMouse
