@@ -296,9 +296,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         QDir::setCurrent(workingDirectory);
     }
 
-    // Remove any windows if they are present.
-    deleteWindows();
-
     // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
     QCommandLineParser parser;
     parser.addOptions(CommandLineOptions::self()->allOptions);
@@ -335,6 +332,13 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         } else if (m_cliOptions[Option::DBus]) {
             m_startMode = StartMode::DBus;
         }
+    }
+
+    if (parser.optionNames().size() > 0 || m_startMode != StartMode::Gui) {
+        // Delete windows if we have CLI options or not in GUI mode.
+        // We don't want to delete them otherwise because that will mess with the
+        // settings for PrintScreen key behavior.
+        deleteWindows();
     }
 
     /* The logic for setting options for each start mode:
