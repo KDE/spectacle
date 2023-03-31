@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-25 00:44+0000\n"
-"PO-Revision-Date: 2023-03-14 23:42+0100\n"
+"POT-Creation-Date: 2023-03-31 00:45+0000\n"
+"PO-Revision-Date: 2023-03-30 12:43+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -60,7 +60,7 @@ msgstr "Schermo plen"
 #: src/CaptureModeModel.cpp:109
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Omne schermos (scalate al mesme dimension)"
 
 #: src/CaptureModeModel.cpp:116
 #, kde-format
@@ -357,12 +357,12 @@ msgstr "Tracto:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Largessa de Colpo (Stroke)"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Color de Colpo (Stroke)"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
@@ -442,7 +442,7 @@ msgstr "Ellipse"
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
 msgid "Pixelate"
-msgstr ""
+msgstr "A Pixel (pixelate)"
 
 #: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
@@ -498,6 +498,8 @@ msgstr "Include barra de titulo de fenestra e bordos"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Monstra le barra de titulo de femestra e bordo quando prende un instantanee  "
+"de schermo d euna fenestra."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -739,7 +741,7 @@ msgstr "Monstra le cursor de mus in le registrar de schermo"
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
-msgstr ""
+msgstr "Formato de Video:"
 
 #: src/Gui/RecordOptions.qml:81
 #, kde-format
@@ -1109,10 +1111,9 @@ msgstr "Retardo"
 
 #. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:110
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgid "File format for saved screen recordings"
-msgstr "Nove Registration de Schermo"
+msgstr "Formato de file per registrationes de schermo salveguardate"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
@@ -1172,7 +1173,7 @@ msgstr "Le ultime typo de instrumento de annotation"
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a mano libere"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -1181,6 +1182,7 @@ msgstr ""
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr ""
+"Largessa de colpo (Stroke) per instrumento de annotation a evidentiator"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -1188,7 +1190,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a linea"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -1196,7 +1198,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a flecha"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -1206,7 +1208,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a rectangulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -1218,7 +1220,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a ellipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1226,7 +1228,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Font for annotations"
-msgstr ""
+msgstr "Font per annotationes"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1234,49 +1236,49 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:246
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "Color de font per annotationes"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a mano libere ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a linea ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a flecha ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a rectangulo ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a ellipse ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation de texto ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:275
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation de numero ha un umbra de cadita"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1491,17 +1493,17 @@ msgstr "Captura Fenestra sub Cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancea Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:650
+#: src/SpectacleCore.cpp:654
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Captura de instantaneo cancellate o fallite"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Un captura de schermo esseva salveguardate a tu tabuliero."
 
-#: src/SpectacleCore.cpp:690
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1510,25 +1512,25 @@ msgstr ""
 "Un captura de schermo ha essite salveguardate como '%1' a '%2' e le percurso "
 "del captura de schermo ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Un captura de schermo esseva salveguardate como '%1' a tu dossier de Photo."
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Un captura de schermo esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:701
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperi"
 
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:710
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
