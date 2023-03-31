@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-30 02:42+0000\n"
-"PO-Revision-Date: 2023-03-14 22:27+0100\n"
+"PO-Revision-Date: 2023-03-30 12:42+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -60,7 +60,7 @@ msgstr "Schermo plen"
 #: src/CaptureModeModel.cpp:109
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Omne schermos (scalate al mesme dimension)"
 
 #: src/CaptureModeModel.cpp:116
 #, kde-format
@@ -357,12 +357,12 @@ msgstr "Tracto:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:83
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Largessa de Colpo (Stroke)"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:99
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Color de Colpo (Stroke)"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:139
 #, kde-format
@@ -442,7 +442,7 @@ msgstr "Ellipse"
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
 msgid "Pixelate"
-msgstr ""
+msgstr "A Pixel (pixelate)"
 
 #: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
@@ -498,6 +498,8 @@ msgstr "Include barra de titulo de fenestra e bordos"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Monstra le barra de titulo de femestra e bordo quando prende un instantanee  "
+"de schermo d euna fenestra."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -1159,7 +1161,7 @@ msgstr "Le ultime typo de instrumento de annotation"
 #: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a mano libere"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -1168,6 +1170,7 @@ msgstr ""
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr ""
+"Largessa de colpo (Stroke) per instrumento de annotation a evidentiator"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -1175,7 +1178,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a linea"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -1183,7 +1186,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a flecha"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -1193,7 +1196,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a rectangulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -1205,7 +1208,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Largessa de colpo (Stroke) per instrumento de annotation a ellipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1213,7 +1216,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Font for annotations"
-msgstr ""
+msgstr "Font per annotationes"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1221,49 +1224,49 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "Color de font per annotationes"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a mano libere ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a linea ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a flecha ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a rectangulo ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation a ellipse ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation de texto ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "Si le instrumento de annotation de numero ha un umbra de cadita"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
