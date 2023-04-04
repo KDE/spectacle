@@ -9,6 +9,7 @@
 
 #include "Selection.h"
 #include "CanvasImage.h"
+#include "ExportManager.h"
 
 #include <QMap>
 #include <QPixmap>
@@ -95,7 +96,7 @@ public:
     Q_SLOT void setScreenImages(const QVector<CanvasImage> &screenImages);
     QVector<CanvasImage> screenImages() const;
 
-    Q_SLOT bool acceptSelection();
+    Q_SLOT bool acceptSelection(ExportManager::Actions actions = {});
 
 Q_SIGNALS:
     void devicePixelRatioChanged();

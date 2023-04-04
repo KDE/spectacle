@@ -39,8 +39,14 @@ ExportManager::ExportManager(QObject *parent)
     , m_saveImage(QImage())
     , m_tempFile(QUrl())
 {
-    connect(this, &ExportManager::imageSaved, &Settings::setLastSaveLocation);
-    connect(this, &ExportManager::imageSavedAndCopied, &Settings::setLastSaveLocation);
+    connect(this, &ExportManager::imageExported, [](Actions actions, const QUrl &url) {
+        if (actions & AnySave) {
+            Settings::setLastSaveLocation(url);
+            if (actions & SaveAs) {
+                Settings::setLastSaveAsLocation(url);
+            }
+        }
+    });
 }
 
 ExportManager::~ExportManager()
@@ -471,117 +477,96 @@ bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
     return m_usedTempFileNames.contains(url);
 }
 
-// save slots
-
-void ExportManager::doSave(const QUrl &url, bool notify)
+void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 {
-    if (m_saveImage.isNull()) {
+    if (m_saveImage.isNull() && actions & (Save | SaveAs | CopyImage)) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
 
-    QUrl savePath = url.isValid() ? url : getAutosaveFilename();
-    if (save(savePath)) {
-        QDir dir(savePath.path());
-        dir.cdUp();
+    bool success = false;
+    if (actions & SaveAs) {
+        QStringList supportedFilters;
 
-        Q_EMIT imageSaved(savePath);
-        if (notify) {
-            Q_EMIT forceNotify(savePath);
+        // construct the supported mimetype list
+        const auto mimeTypes = QImageWriter::supportedMimeTypes();
+        supportedFilters.reserve(mimeTypes.count());
+        for (const auto &mimeType : mimeTypes) {
+            supportedFilters.append(QString::fromUtf8(mimeType).trimmed());
+        }
+
+        // construct the file name
+        const QString filenameExtension = Settings::self()->defaultSaveImageFormat().toLower();
+        const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
+        QFileDialog dialog;
+        dialog.setAcceptMode(QFileDialog::AcceptSave);
+        dialog.setFileMode(QFileDialog::AnyFile);
+        QUrl dirUrl = url.adjusted(QUrl::RemoveFilename);
+        if (!dirUrl.isValid()) {
+            dirUrl = Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename);
+        }
+        dialog.setDirectoryUrl(dirUrl);
+        dialog.selectFile(formattedFilename() + QStringLiteral(".") + filenameExtension);
+        dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
+        dialog.setMimeTypeFilters(supportedFilters);
+        dialog.selectMimeTypeFilter(mimetype);
+
+        // launch the dialog
+        const bool accepted = dialog.exec() == QDialog::Accepted;
+        if (accepted && !dialog.selectedUrls().isEmpty()) {
+            url = dialog.selectedUrls().constFirst();
+        }
+        actions.setFlag(SaveAs, accepted && url.isValid());
+    }
+
+    bool saved = actions & AnySave;
+    if (saved) {
+        if (!url.isValid()) {
+            url = getAutosaveFilename();
+        }
+        saved = success = save(url);
+        if (!success) {
+            actions.setFlag(Save, false);
+            actions.setFlag(SaveAs, false);
         }
     }
-}
 
-bool ExportManager::doSaveAs(bool notify)
-{
-    QStringList supportedFilters;
-
-    // construct the supported mimetype list
-    const auto mimeTypes = QImageWriter::supportedMimeTypes();
-    supportedFilters.reserve(mimeTypes.count());
-    for (const auto &mimeType : mimeTypes) {
-        supportedFilters.append(QString::fromUtf8(mimeType).trimmed());
+    if (actions & CopyImage) {
+        auto data = new QMimeData();
+        data->setImageData(m_saveImage);
+        // "x-kde-force-image-copy" is handled by Klipper.
+        // It ensures that the image is copied to Klipper even with the
+        // "Non-text selection: Never save in history" setting selected in Klipper.
+        data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+        success = true;
     }
 
-    // construct the file name
-    const QString filenameExtension = Settings::self()->defaultSaveImageFormat().toLower();
-    const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
-    QFileDialog dialog;
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setDirectoryUrl(Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename));
-    dialog.selectFile(formattedFilename() + QStringLiteral(".") + filenameExtension);
-    dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
-    dialog.setMimeTypeFilters(supportedFilters);
-    dialog.selectMimeTypeFilter(mimetype);
-
-    // launch the dialog
-    if (dialog.exec() == QFileDialog::Accepted) {
-        const QUrl saveUrl = dialog.selectedUrls().constFirst();
-        if (saveUrl.isValid()) {
-            if (save(saveUrl)) {
-                Q_EMIT imageSaved(saveUrl);
-                Settings::setLastSaveAsLocation(saveUrl);
-                if (notify) {
-                    Q_EMIT forceNotify(saveUrl);
-                }
-                return true;
+    if (actions & CopyPath
+        // This behavior has no relation to the setting in the config UI,
+        // but it was added to solve this feature request:
+        // https://bugs.kde.org/show_bug.cgi?id=357423
+        || (saved && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
+        if (!url.isValid()) {
+            if (m_imageSavedNotInTemp) {
+                // The image has been saved (manually or automatically),
+                // we need to choose that file path
+                url = Settings::self()->lastSaveLocation();
+            } else {
+                // use a temporary save path, and copy that to clipboard instead
+                url = ExportManager::instance()->tempSave();
             }
         }
-    }
-    return false;
-}
 
-void ExportManager::doSaveAndCopy(const QUrl &url)
-{
-    if (m_saveImage.isNull()) {
-        Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
-        return;
+        // will be deleted for us by the platform's clipboard manager.
+        auto data = new QMimeData();
+        data->setText(url.toLocalFile());
+        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+        success = true;
     }
 
-    QUrl savePath = url.isValid() ? url : getAutosaveFilename();
-    if (save(savePath)) {
-        QDir dir(savePath.path());
-        dir.cdUp();
-
-        doCopyToClipboard(false);
-        Q_EMIT imageSavedAndCopied(savePath);
-    }
-}
-
-// misc helpers
-void ExportManager::doCopyToClipboard(bool notify)
-{
-    auto data = new QMimeData();
-    data->setImageData(m_saveImage);
-    // "x-kde-force-image-copy" is handled by Klipper.
-    // It ensures that the image is copied to Klipper even with the
-    // "Non-text selection: Never save in history" setting selected in Klipper.
-    data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
-    KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-    Q_EMIT imageCopied();
-    if (notify) {
-        Q_EMIT forceNotify(QUrl());
-    }
-}
-
-void ExportManager::doCopyLocationToClipboard(bool notify)
-{
-    QString localFile;
-    if (m_imageSavedNotInTemp) {
-        // The image has been saved (manually or automatically), we need to choose that file path
-        localFile = Settings::self()->lastSaveLocation().toLocalFile();
-    } else {
-        // use a temporary save path, and copy that to clipboard instead
-        localFile = ExportManager::instance()->tempSave().toLocalFile();
-    }
-
-    auto data = new QMimeData();
-    data->setText(localFile);
-    KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-    Q_EMIT imageLocationCopied(QUrl::fromLocalFile(localFile));
-    if (notify) {
-        Q_EMIT forceNotify(QUrl::fromLocalFile(localFile));
+    if (success) {
+        Q_EMIT imageExported(actions, url);
     }
 }
 

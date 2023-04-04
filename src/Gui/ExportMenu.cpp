@@ -84,7 +84,7 @@ void ExportMenu::getKServiceItems()
                 filename = Settings::self()->lastSaveLocation();
             } else {
                 filename = ExportManager::instance()->getAutosaveFilename();
-                ExportManager::instance()->doSave(filename);
+                ExportManager::instance()->exportImage(ExportManager::Save, filename);
             }
 
             auto *job = new KIO::ApplicationLauncherJob(service);
@@ -116,7 +116,7 @@ void ExportMenu::getKServiceItems()
             filename = Settings::self()->lastSaveLocation();
         } else {
             filename = ExportManager::instance()->getAutosaveFilename();
-            ExportManager::instance()->doSave(filename);
+            ExportManager::instance()->exportImage(ExportManager::Save, filename);
         }
 
         auto job = new KIO::ApplicationLauncherJob;

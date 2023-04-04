@@ -123,26 +123,22 @@ bool CaptureWindow::accept()
 
 void CaptureWindow::save()
 {
-    accept();
-    SpectacleWindow::save();
+    SelectionEditor::instance()->acceptSelection(ExportManager::Save);
 }
 
 void CaptureWindow::saveAs()
 {
-    accept();
-    SpectacleWindow::saveAs();
+    SelectionEditor::instance()->acceptSelection(ExportManager::SaveAs);
 }
 
 void CaptureWindow::copyImage()
 {
-    accept();
-    SpectacleWindow::copyImage();
+    SelectionEditor::instance()->acceptSelection(ExportManager::CopyImage);
 }
 
 void CaptureWindow::copyLocation()
 {
-    accept();
-    SpectacleWindow::copyLocation();
+    SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::CopyPath);
 }
 
 void CaptureWindow::mousePressEvent(QMouseEvent *event)

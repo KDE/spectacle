@@ -90,6 +90,8 @@ public:
     void setVideoFormat(const QString &format);
     QString videoFormat() const;
 
+    ExportManager::Actions autoExportActions() const;
+
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
@@ -98,9 +100,9 @@ public Q_SLOTS:
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
-    void onScreenshotUpdated(const QImage &image);
+    void onScreenshotUpdated(const QImage &image, const ExportManager::Actions &actions = {});
     void onScreenshotFailed();
-    void doNotify(const QUrl &saveUrl);
+    void doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();
@@ -109,7 +111,7 @@ Q_SIGNALS:
 
     void errorMessage(const QString &message);
     void allDone();
-    void grabDone(const QImage &image);
+    void grabDone(const QImage &image, const ExportManager::Actions &actions);
     void grabFailed();
     void recordingChanged(bool isRecording);
     void videoModeChanged(bool videoMode);
@@ -120,7 +122,6 @@ Q_SIGNALS:
 private:
     void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
                            bool includePointer, bool includeDecorations);
-    void setSaveCopyImageCopyPath(bool save, bool copyImage, bool copyPath);
     Platform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(Platform::GrabMode grabMode) const;
     bool isGuiNull() const;
@@ -135,7 +136,6 @@ private:
     static SpectacleCore *s_self;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
     StartMode m_startMode = StartMode::Gui;
-    bool m_notify = false;
     QUrl m_screenCaptureUrl;
     std::unique_ptr<Platform> m_platform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;

@@ -519,7 +519,7 @@ QVector<CanvasImage> SelectionEditor::screenImages() const
     return d->screenImages;
 }
 
-bool SelectionEditor::acceptSelection()
+bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 {
     if (d->screenImages.isEmpty()) {
         return false;
@@ -538,9 +538,9 @@ bool SelectionEditor::acceptSelection()
     if (KWindowSystem::isPlatformX11()) {
         d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
         if (scaledCropRegion.size() != d->image.size()) {
-            Q_EMIT spectacleCore->grabDone(d->image.copy(scaledCropRegion));
+            Q_EMIT spectacleCore->grabDone(d->image.copy(scaledCropRegion), actions);
         } else {
-            Q_EMIT spectacleCore->grabDone(d->image);
+            Q_EMIT spectacleCore->grabDone(d->image, actions);
         }
     } else { // Wayland case
         // QGuiApplication::devicePixelRatio() is calculated by getting the highest screen DPI
@@ -575,7 +575,7 @@ bool SelectionEditor::acceptSelection()
                     // keep native screen resolution
                     // we need to set the pixmap dpr to be able to properly align with annotations
                     screenOutput.setDevicePixelRatio(dpr);
-                    Q_EMIT spectacleCore->grabDone(screenOutput);
+                    Q_EMIT spectacleCore->grabDone(screenOutput, actions);
                     return true;
                 }
 
@@ -591,7 +591,7 @@ bool SelectionEditor::acceptSelection()
             }
         }
 
-        Q_EMIT spectacleCore->grabDone(output);
+        Q_EMIT spectacleCore->grabDone(output, actions);
     }
 
     return true;
