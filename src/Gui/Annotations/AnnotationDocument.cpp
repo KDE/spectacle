@@ -839,18 +839,8 @@ SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
 
 void AnnotationDocument::clear()
 {
-    qDeleteAll(m_undoStack);
-    m_undoStack.clear();
-    m_undoStack.squeeze();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-    m_redoStack.squeeze();
+    clearAnnotations();
     clearImages();
-    m_tool->resetType();
-    m_tool->resetNumber();
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
-    Q_EMIT repaintNeeded();
 }
 
 void AnnotationDocument::cropCanvas(const QRectF &cropRect)
@@ -922,6 +912,21 @@ void AnnotationDocument::clearImages()
     m_canvasImages.squeeze();
     m_canvasSize = QSizeF();
     Q_EMIT canvasSizeChanged();
+    Q_EMIT repaintNeeded();
+}
+
+void AnnotationDocument::clearAnnotations()
+{
+    qDeleteAll(m_undoStack);
+    m_undoStack.clear();
+    m_undoStack.squeeze();
+    qDeleteAll(m_redoStack);
+    m_redoStack.clear();
+    m_redoStack.squeeze();
+    m_tool->resetType();
+    m_tool->resetNumber();
+    Q_EMIT undoStackDepthChanged();
+    Q_EMIT redoStackDepthChanged();
     Q_EMIT repaintNeeded();
 }
 
