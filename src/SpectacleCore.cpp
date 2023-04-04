@@ -113,11 +113,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // essential connections
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image){
+        deleteWindows();
         // only clear images because we're transitioning from rectangle capture to image view.
         m_annotationDocument->clearImages();
-        if (m_startMode != StartMode::Gui) {
-            SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
-        }
         onScreenshotUpdated(image);
     });
 
