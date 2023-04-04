@@ -113,12 +113,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image){
         deleteWindows();
         // only clear images because we're transitioning from rectangle capture to image view.
-        m_annotationDocument->clearImages();
         onScreenshotUpdated(image);
     });
 
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
-        m_annotationDocument->clear();
+        m_annotationDocument->clearAnnotations();
         onScreenshotUpdated(image);
         setVideoMode(false);
     });
@@ -564,6 +563,7 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
     if (m_editExisting && !m_existingLoaded) {
         existingImage.load(m_screenCaptureUrl.toLocalFile());
     }
+    m_annotationDocument->clearImages();
 
     auto exportManager = ExportManager::instance();
     exportManager->setImage(imageUsed);

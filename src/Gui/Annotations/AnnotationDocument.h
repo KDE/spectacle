@@ -70,6 +70,8 @@ public:
     QVector<CanvasImage> canvasImages() const;
     void clearImages();
 
+    void clearAnnotations();
+
     // True when there is an edit action in the undo stack and it is invalid.
     Q_INVOKABLE bool isLastActionInvalid() const;
 
