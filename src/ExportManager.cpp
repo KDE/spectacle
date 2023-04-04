@@ -453,6 +453,7 @@ bool ExportManager::isFileExists(const QUrl &url) const
     if (!(url.isValid())) {
         return false;
     }
+    // Using StatJob instead of QFileInfo::exists() is necessary for checking non-local URLs.
     KIO::StatJob *existsJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails, KIO::HideProgressInfo);
 
     existsJob->exec();
