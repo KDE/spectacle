@@ -8,6 +8,7 @@
 
 #include "SpectacleWindow.h"
 
+#include "ExportManager.h"
 #include "SpectacleCore.h"
 #include "spectacle_gui_debug.h"
 
@@ -261,42 +262,23 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
 
 void SpectacleWindow::save()
 {
-    const bool quitChecked = Settings::quitAfterSaveCopyExport();
-    // emits ExportManager::forceNotify when quitChecked is true,
-    // which is connected to SpectacleCore::doNotify,
-    // which emits SpectacleCore::allDone,
-    // which is connected to QCoreApplication::quit in Main.cpp
-    ExportManager::instance()->doSave(SpectacleCore::instance()->outputUrl(), /* notify */ quitChecked);
-    if (quitChecked) {
-        SpectacleWindow::closeAll();
-    }
+    ExportManager::instance()->exportImage(ExportManager::Save, SpectacleCore::instance()->outputUrl());
 }
 
 void SpectacleWindow::saveAs()
 {
-    const bool quitChecked = Settings::quitAfterSaveCopyExport();
-    if (ExportManager::instance()->doSaveAs(/* notify */ quitChecked) && quitChecked) {
-        SpectacleWindow::closeAll();
-    }
+    ExportManager::instance()->exportImage(ExportManager::SaveAs);
 }
 
 void SpectacleWindow::copyImage()
 {
-    const bool quitChecked = Settings::quitAfterSaveCopyExport();
     SpectacleCore::instance()->syncExportImage();
-    ExportManager::instance()->doCopyToClipboard(/* notify */ quitChecked);
-    if (quitChecked) {
-        SpectacleWindow::closeAll();
-    }
+    ExportManager::instance()->exportImage(ExportManager::CopyImage);
 }
 
 void SpectacleWindow::copyLocation()
 {
-    const bool quitChecked = Settings::quitAfterSaveCopyExport();
-    ExportManager::instance()->doCopyLocationToClipboard();
-    if (quitChecked) {
-        SpectacleWindow::closeAll();
-    }
+    ExportManager::instance()->exportImage(ExportManager::CopyPath);
 }
 
 void SpectacleWindow::showPrintDialog()

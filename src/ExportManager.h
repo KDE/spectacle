@@ -35,6 +35,17 @@ private:
     // now the usual stuff
 
 public:
+    enum Action {
+        NoActions = 0b0000,
+        Save      = 0b0001,
+        SaveAs    = 0b0010,
+        CopyImage = 0b0100,
+        CopyPath  = 0b1000,
+        AnySave   = Save | SaveAs,
+    };
+    Q_DECLARE_FLAGS(Actions, Action)
+    Q_FLAG(Action)
+
     QString defaultSaveLocation() const;
     QString defaultVideoSaveLocation() const;
     bool isFileExists(const QUrl &url) const;
@@ -62,11 +73,7 @@ Q_SIGNALS:
     void imageChanged();
 
     void errorMessage(const QString &str);
-    void imageSaved(const QUrl &savedAt);
-    void imageCopied();
-    void imageLocationCopied(const QUrl &savedAt);
-    void imageSavedAndCopied(const QUrl &savedAt);
-    void forceNotify(const QUrl &savedAt);
+    void imageExported(const ExportManager::Actions &actions, const QUrl &url = {});
 
 public Q_SLOTS:
 
@@ -74,11 +81,7 @@ public Q_SLOTS:
     QUrl tempSave();
 
     void setWindowTitle(const QString &windowTitle);
-    void doSave(const QUrl &url = QUrl(), bool notify = false);
-    bool doSaveAs(bool notify = false);
-    void doSaveAndCopy(const QUrl &url = QUrl());
-    void doCopyToClipboard(bool notify = false);
-    void doCopyLocationToClipboard(bool notify = false);
+    void exportImage(ExportManager::Actions actions, QUrl url = {});
     void doPrint(QPrinter *printer);
 
 private:
@@ -100,3 +103,5 @@ private:
     QList<QUrl> m_usedTempFileNames;
     QString m_windowTitle;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(ExportManager::Actions)

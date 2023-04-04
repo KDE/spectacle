@@ -9,6 +9,7 @@
 #include "CanvasImage.h"
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
+#include "ExportManager.h"
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
@@ -110,15 +111,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     // essential connections
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
-    connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image){
+    connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image,
+                                                         const ExportManager::Actions &actions){
         deleteWindows();
-        // only clear images because we're transitioning from rectangle capture to image view.
-        onScreenshotUpdated(image);
+        const auto &exportActions = actions == ExportManager::NoActions ? autoExportActions() : actions;
+        onScreenshotUpdated(image, exportActions);
     });
 
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
-        onScreenshotUpdated(image);
+        onScreenshotUpdated(image, autoExportActions());
         setVideoMode(false);
     });
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
@@ -142,41 +144,52 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     // set up the export manager
     auto exportManager = ExportManager::instance();
+    auto onImageExported = [this](const ExportManager::Actions &actions, const QUrl &url) {
+        if (Settings::quitAfterSaveCopyExport()) {
+            deleteWindows();
+        }
+
+        if (isGuiNull()) {
+            if (m_cliOptions[CommandLineOptions::NoNotify]) {
+                // if we notify, we Q_EMIT allDone only if the user either dismissed the notification or pressed
+                // the "Open" button, otherwise the app closes before it can react to it.
+                if (actions & ExportManager::CopyImage) {
+                    // Allow some time for clipboard content to transfer if '--nonotify' is used, see Bug #411263
+                    // TODO: Find better solution
+                    QTimer::singleShot(250, this, &SpectacleCore::allDone);
+                } else {
+                    Q_EMIT allDone();
+                }
+            } else {
+                doNotify(actions, url);
+            }
+            return;
+        }
+
+        auto viewerWindow = ViewerWindow::instance();
+        if (!viewerWindow) {
+            return;
+        }
+
+        if (actions & ExportManager::AnySave) {
+            SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
+            if (actions & ExportManager::CopyImage) {
+                viewerWindow->showSavedAndCopiedMessage(url);
+            } else if (actions & ExportManager::CopyPath) {
+                viewerWindow->showSavedAndLocationCopiedMessage(url);
+            } else {
+                viewerWindow->showSavedScreenshotMessage(url);
+            }
+        } else if (actions & ExportManager::CopyImage) {
+            viewerWindow->showCopiedMessage();
+        }
+    };
+    connect(exportManager, &ExportManager::imageExported, this, onImageExported);
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
-    connect(exportManager, &ExportManager::forceNotify, this, &SpectacleCore::doNotify);
+
     connect(platform, &Platform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportImage);
-
-    connect(exportManager, &ExportManager::imageSaved, this, [](const QUrl &savedAt){
-        // This behavior has no relation to the setting in the config UI,
-        // but this was behavior was added to solve this feature request:
-        // https://bugs.kde.org/show_bug.cgi?id=357423
-        if (Settings::clipboardGroup() == Settings::EnumClipboardGroup::PostScreenshotCopyLocation) {
-            qApp->clipboard()->setText(savedAt.toLocalFile());
-        }
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (ViewerWindow::instance()) {
-            ViewerWindow::instance()->showSavedScreenshotMessage(savedAt);
-        }
-    });
-    connect(exportManager, &ExportManager::imageCopied, this, [](){
-        if (ViewerWindow::instance()) {
-            ViewerWindow::instance()->showCopiedMessage();
-        }
-    });
-    connect(exportManager, &ExportManager::imageLocationCopied, this, [](const QUrl &savedAt){
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (ViewerWindow::instance()) {
-            ViewerWindow::instance()->showSavedAndLocationCopiedMessage(savedAt);
-        }
-    });
-    connect(exportManager, &ExportManager::imageSavedAndCopied, this, [](const QUrl &savedAt){
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, savedAt.fileName());
-        if (ViewerWindow::instance()) {
-            ViewerWindow::instance()->showSavedAndCopiedMessage(savedAt);
-        }
-    });
 
     // set up shortcuts
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(), Qt::Key_Print);
@@ -367,18 +380,12 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         onClick = m_cliOptions[Option::OnClick];
         includeDecorations = !m_cliOptions[Option::NoDecoration];
         includePointer = m_cliOptions[Option::Pointer];
-        setSaveCopyImageCopyPath(m_cliOptions[Option::Output],
-                                 m_cliOptions[Option::CopyImage],
-                                 m_cliOptions[Option::CopyPath]);
     } else {
         transientOnly = Settings::transientOnly() || m_cliOptions[Option::TransientOnly];
         onClick = Settings::captureOnClick() || m_cliOptions[Option::OnClick];
         includeDecorations = Settings::includeDecorations()
                             && !m_cliOptions[Option::NoDecoration];
         includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
-        setSaveCopyImageCopyPath((m_startMode == StartMode::DBus && m_cliOptions[Option::Output]) || Settings::autoSaveImage(),
-                                 m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
-                                 m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
     }
 
     int delayMsec = 0; // default to 0 if cli value parse fails
@@ -443,16 +450,11 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
     switch (m_startMode) {
     case StartMode::DBus:
-        m_notify = !m_cliOptions[Option::NoNotify];
         break;
-
-    case StartMode::Background: {
-        m_notify = !m_cliOptions[Option::NoNotify];
+    case StartMode::Background:
         takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
-    } break;
-
+        break;
     case StartMode::Gui:
-        m_notify = Settings::quitAfterSaveCopyExport() && !m_cliOptions[Option::NoNotify];
         if (isGuiNull()) {
             if ((m_cliOptions[Option::LaunchOnly]
                 || Settings::launchAction() == Settings::DoNotTakeScreenshot)
@@ -582,9 +584,10 @@ void SpectacleCore::showErrorMessage(const QString &message)
     }
 }
 
-void SpectacleCore::onScreenshotUpdated(const QImage &image)
+void SpectacleCore::onScreenshotUpdated(const QImage &image, const ExportManager::Actions &actions)
 {
     using Option = CommandLineOptions::Option;
+    using Action = ExportManager::Action;
 
     m_annotationDocument->clearImages();
 
@@ -593,40 +596,7 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
     m_annotationDocument->addImage(image);
     exportManager->updateTimestamp();
 
-    switch (m_startMode) {
-    case StartMode::Background:
-    case StartMode::DBus: {
-        syncExportImage();
-        if (m_saveToOutput) {
-            exportManager->doSave(outputUrl(), m_notify);
-        }
-        if (m_copyImageToClipboard) {
-            exportManager->doCopyToClipboard(m_notify);
-        } else if (m_copyLocationToClipboard) {
-            exportManager->doCopyLocationToClipboard(m_notify);
-        }
-
-        // if we don't have a Gui already opened, Q_EMIT allDone
-        if (isGuiNull()) {
-            // if we notify, we Q_EMIT allDone only if the user either dismissed the notification or pressed
-            // the "Open" button, otherwise the app closes before it can react to it.
-            if (!m_notify && m_copyImageToClipboard) {
-                // Allow some time for clipboard content to transfer if '--nonotify' is used, see Bug #411263
-                // TODO: Find better solution
-                QTimer::singleShot(250, this, &SpectacleCore::allDone);
-            } else if (!m_notify) {
-                Q_EMIT allDone();
-            }
-        }
-    } break;
-    case StartMode::Gui:
-        // These can change in GUI mode, so set them again
-        m_notify = Settings::quitAfterSaveCopyExport()
-                && !m_cliOptions[CommandLineOptions::NoNotify];
-        setSaveCopyImageCopyPath(Settings::autoSaveImage(),
-                                 m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
-                                 m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
-
+    if (m_startMode == StartMode::Gui) {
         if (image.isNull()) {
             initViewerWindow(ViewerWindow::Dialog);
             ViewerWindow::instance()->setVisible(true);
@@ -639,21 +609,15 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
         ViewerWindow::instance()->setVisible(true);
         auto titlePreset = !image.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
+    }
 
-        if (m_saveToOutput && m_copyImageToClipboard) {
-            syncExportImage();
-            exportManager->doSaveAndCopy(outputUrl());
-        } else if (m_saveToOutput) {
-            exportManager->doSave(outputUrl());
-        } else if (m_copyImageToClipboard) {
-            syncExportImage();
-            exportManager->doCopyToClipboard(false);
-        }
-        // This is a separate block since we don't do anything special for
-        // saving and copying the location, unlike saving and copying the image.
-        if (m_copyLocationToClipboard) {
-            exportManager->doCopyLocationToClipboard(false);
-        }
+    syncExportImage();
+    if (actions & Action::Save && m_cliOptions[Option::Output]) {
+        exportManager->exportImage(actions, m_outputUrl);
+    } else if (actions & Action::Save && m_cliOptions[Option::EditExisting]) {
+        exportManager->exportImage(actions, m_editExistingUrl);
+    } else {
+        exportManager->exportImage(actions, outputUrl());
     }
 }
 
@@ -679,7 +643,7 @@ void SpectacleCore::onScreenshotFailed()
 
 static QVector<KNotification *> notifications;
 
-void SpectacleCore::doNotify(const QUrl &saveUrl)
+void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl)
 {
     // ensure program stays alive until the notification finishes.
     if (!m_eventLoopLocker) {
@@ -697,17 +661,23 @@ void SpectacleCore::doNotify(const QUrl &saveUrl)
 
     // a speaking message is prettier than a URL, special case for copy image/location to clipboard and the default pictures location
     const QString &saveDirPath = saveUrl.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
+    const QString &saveFileName = saveUrl.fileName();
 
-    if (m_copyImageToClipboard && saveUrl.fileName().isEmpty()) {
+    using Action = ExportManager::Action;
+    if (actions & Action::AnySave && !saveFileName.isEmpty()) {
+        if (actions & Action::CopyPath) {
+            notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+                                       saveFileName, saveDirPath));
+        } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+            notification->setText(i18nc("Placeholder is filename",
+                                        "A screenshot was saved as '%1' to your Pictures folder.",
+                                        saveFileName));
+        } else {
+            notification->setText(i18n("A screenshot was saved as '%1' to '%2'.",
+                                       saveFileName, saveDirPath));
+        }
+    } else if (actions & Action::CopyImage) {
         notification->setText(i18n("A screenshot was saved to your clipboard."));
-    } else if (m_copyLocationToClipboard && !saveUrl.fileName().isEmpty()) {
-        notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
-                              saveUrl.fileName(),
-                              saveDirPath));
-    } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
-        notification->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", saveUrl.fileName()));
-    } else if (!saveUrl.fileName().isEmpty()) {
-        notification->setText(i18n("A screenshot was saved as '%1' to '%2'.", saveUrl.fileName(), saveDirPath));
     }
 
     if (!saveUrl.isEmpty()) {
@@ -743,18 +713,29 @@ void SpectacleCore::doNotify(const QUrl &saveUrl)
     notification->sendEvent();
 }
 
-// In background and dbus mode, ensure that either save or copy image is enabled.
-void SpectacleCore::setSaveCopyImageCopyPath(bool save, bool copyImage, bool copyPath)
+ExportManager::Actions SpectacleCore::autoExportActions() const
 {
-    if (m_startMode == StartMode::Gui) {
-        m_saveToOutput = save;
-        m_copyImageToClipboard = copyImage;
-        m_copyLocationToClipboard = save && copyPath;
-    } else {
-        m_saveToOutput = save || !copyImage;
-        m_copyImageToClipboard = !m_saveToOutput || copyImage;
-        m_copyLocationToClipboard = save && copyPath;
+    using Action = ExportManager::Action;
+    using Option = CommandLineOptions::Option;
+    bool save = m_startMode != StartMode::Gui && m_cliOptions[Option::Output];
+    bool copyImage = m_cliOptions[Option::CopyImage];
+    bool copyPath = m_cliOptions[Option::CopyPath];
+    ExportManager::Actions actions;
+    if (m_startMode != StartMode::Background) {
+        save |= Settings::autoSaveImage();
+        copyImage |= Settings::clipboardGroup() == Settings::PostScreenshotCopyImage;
+        copyPath |= Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation;
     }
+    if (m_startMode == StartMode::Gui) {
+        actions.setFlag(Action::Save, save);
+        actions.setFlag(Action::CopyImage, copyImage);
+    } else {
+        // In background and dbus mode, ensure that either save or copy image is enabled.
+        actions.setFlag(Action::Save, save || !copyImage);
+        actions.setFlag(Action::CopyImage, !actions.testFlag(Action::Save) || copyImage);
+    }
+    actions.setFlag(Action::CopyPath, actions.testFlag(Action::Save) && copyPath);
+    return actions;
 }
 
 Platform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const

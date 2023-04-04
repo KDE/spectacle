@@ -95,8 +95,10 @@ int main(int argc, char **argv)
     // create the dbus connections
     SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&spectacleCore);
     QObject::connect(&spectacleCore, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
-    QObject::connect(ExportManager::instance(), &ExportManager::imageSaved, &spectacleCore, [&](const QUrl &savedAt) {
-        Q_EMIT dbusAdapter->ScreenshotTaken(savedAt.toLocalFile());
+    QObject::connect(ExportManager::instance(), &ExportManager::imageExported,
+                     &spectacleCore, [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
+        Q_UNUSED(actions)
+        Q_EMIT dbusAdapter->ScreenshotTaken(url.toLocalFile());
     });
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/"), &spectacleCore);
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Spectacle"));
