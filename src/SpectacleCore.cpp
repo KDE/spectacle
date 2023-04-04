@@ -551,12 +551,12 @@ void SpectacleCore::cancelScreenshot()
     }
 }
 
-void SpectacleCore::showErrorMessage(const QString &theErrString)
+void SpectacleCore::showErrorMessage(const QString &message)
 {
-    qCDebug(SPECTACLE_CORE_LOG) << "ERROR: " << theErrString;
+    qCDebug(SPECTACLE_CORE_LOG) << "ERROR: " << message;
 
     if (m_startMode == StartMode::Gui) {
-        KMessageBox::error(nullptr, theErrString);
+        KMessageBox::error(nullptr, message);
     }
 }
 
@@ -669,7 +669,7 @@ void SpectacleCore::onScreenshotFailed()
 
 static QVector<KNotification *> notifications;
 
-void SpectacleCore::doNotify(const QUrl &theSavedAt)
+void SpectacleCore::doNotify(const QUrl &saveUrl)
 {
     // ensure program stays alive until the notification finishes.
     if (!m_eventLoopLocker) {
@@ -686,35 +686,35 @@ void SpectacleCore::doNotify(const QUrl &theSavedAt)
     notification->setTitle(captureModeLabel.toString());
 
     // a speaking message is prettier than a URL, special case for copy image/location to clipboard and the default pictures location
-    const QString &lSavePath = theSavedAt.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
+    const QString &saveDirPath = saveUrl.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
 
-    if (m_copyImageToClipboard && theSavedAt.fileName().isEmpty()) {
+    if (m_copyImageToClipboard && saveUrl.fileName().isEmpty()) {
         notification->setText(i18n("A screenshot was saved to your clipboard."));
-    } else if (m_copyLocationToClipboard && !theSavedAt.fileName().isEmpty()) {
+    } else if (m_copyLocationToClipboard && !saveUrl.fileName().isEmpty()) {
         notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
-                              theSavedAt.fileName(),
-                              lSavePath));
-    } else if (lSavePath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
-        notification->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", theSavedAt.fileName()));
-    } else if (!theSavedAt.fileName().isEmpty()) {
-        notification->setText(i18n("A screenshot was saved as '%1' to '%2'.", theSavedAt.fileName(), lSavePath));
+                              saveUrl.fileName(),
+                              saveDirPath));
+    } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+        notification->setText(i18nc("Placeholder is filename", "A screenshot was saved as '%1' to your Pictures folder.", saveUrl.fileName()));
+    } else if (!saveUrl.fileName().isEmpty()) {
+        notification->setText(i18n("A screenshot was saved as '%1' to '%2'.", saveUrl.fileName(), saveDirPath));
     }
 
-    if (!theSavedAt.isEmpty()) {
-        notification->setUrls({theSavedAt});
+    if (!saveUrl.isEmpty()) {
+        notification->setUrls({saveUrl});
         notification->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
-        connect(notification, &KNotification::defaultActivated, this, [theSavedAt]() {
-            auto job = new KIO::OpenUrlJob(theSavedAt);
+        connect(notification, &KNotification::defaultActivated, this, [saveUrl]() {
+            auto job = new KIO::OpenUrlJob(saveUrl);
             job->start();
         });
         notification->setActions({i18n("Annotate")});
-        connect(notification, &KNotification::action1Activated, this, [theSavedAt]() {
+        connect(notification, &KNotification::action1Activated, this, [saveUrl]() {
             QProcess newInstance;
             newInstance.setProgram(QCoreApplication::applicationFilePath());
             newInstance.setArguments({
                 CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance),
                 CommandLineOptions::toArgument(CommandLineOptions::self()->editExisting),
-                theSavedAt.toLocalFile()
+                saveUrl.toLocalFile()
             });
             newInstance.startDetached();
         });
