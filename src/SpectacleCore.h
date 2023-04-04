@@ -89,17 +89,17 @@ public Q_SLOTS:
                            bool includePointer = Settings::includePointer(),
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
-    void showErrorMessage(const QString &theErrString);
+    void showErrorMessage(const QString &message);
     void onScreenshotUpdated(const QImage &image);
     void onScreenshotFailed();
-    void doNotify(const QUrl &theSavedAt);
+    void doNotify(const QUrl &saveUrl);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();
     void captureTimeRemainingChanged();
     void captureProgressChanged();
 
-    void errorMessage(const QString &errString);
+    void errorMessage(const QString &message);
     void allDone();
     void grabDone(const QImage &image);
     void grabFailed();
