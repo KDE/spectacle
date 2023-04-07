@@ -598,7 +598,7 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
     case StartMode::DBus: {
         syncExportImage();
         if (m_saveToOutput) {
-            exportManager->doSave(m_outputUrl, m_notify);
+            exportManager->doSave(outputUrl(), m_notify);
         }
         if (m_copyImageToClipboard) {
             exportManager->doCopyToClipboard(m_notify);
@@ -642,9 +642,9 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
 
         if (m_saveToOutput && m_copyImageToClipboard) {
             syncExportImage();
-            exportManager->doSaveAndCopy(m_outputUrl);
+            exportManager->doSaveAndCopy(outputUrl());
         } else if (m_saveToOutput) {
-            exportManager->doSave(m_outputUrl);
+            exportManager->doSave(outputUrl());
         } else if (m_copyImageToClipboard) {
             syncExportImage();
             exportManager->doCopyToClipboard(false);
