@@ -265,7 +265,7 @@ void SpectacleWindow::save()
     // which is connected to SpectacleCore::doNotify,
     // which emits SpectacleCore::allDone,
     // which is connected to QCoreApplication::quit in Main.cpp
-    ExportManager::instance()->doSave(QUrl(), /* notify */ quitChecked);
+    ExportManager::instance()->doSave(SpectacleCore::instance()->outputUrl(), /* notify */ quitChecked);
     if (quitChecked) {
         SpectacleWindow::closeAll();
     }

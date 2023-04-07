@@ -266,6 +266,11 @@ void SpectacleCore::setScreenCaptureUrl(const QString &filePath)
     }
 }
 
+QUrl SpectacleCore::outputUrl() const
+{
+    return m_outputUrl;
+}
+
 int SpectacleCore::captureTimeRemaining() const
 {
     int totalDuration = m_delayAnimation->totalDuration();
@@ -365,7 +370,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         includeDecorations = Settings::includeDecorations()
                             && !m_cliOptions[Option::NoDecoration];
         includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
-        setSaveCopyImageCopyPath(m_cliOptions[Option::Output] || Settings::autoSaveImage(),
+        setSaveCopyImageCopyPath((m_startMode == StartMode::DBus && m_cliOptions[Option::Output]) || Settings::autoSaveImage(),
                                  m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
                                  m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
     }
@@ -388,6 +393,17 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             setScreenCaptureUrl(existingFileName);
             m_saveToOutput = true;
         }
+    }
+
+    if (m_cliOptions[Option::Output]) {
+        m_outputUrl = QUrl::fromUserInput(parser.value(CommandLineOptions::self()->output),
+                                          QDir::currentPath(), QUrl::AssumeLocalFile);
+        if (!m_outputUrl.isValid()) {
+            m_cliOptions[Option::Output] = false;
+            m_outputUrl.clear();
+        }
+    } else {
+        m_outputUrl.clear();
     }
 
     // Determine grab mode
@@ -421,14 +437,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
     case StartMode::Background: {
         m_notify = !m_cliOptions[Option::NoNotify];
-
-        if (m_saveToOutput) {
-            QString lFileName = parser.value(CommandLineOptions::self()->output);
-            if (!(lFileName.isEmpty() || lFileName.isNull())) {
-                setScreenCaptureUrl(lFileName);
-            }
-        }
-
         takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
     } break;
 
@@ -577,8 +585,7 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
     case StartMode::DBus: {
         syncExportImage();
         if (m_saveToOutput) {
-            QUrl lSavePath = (m_startMode == StartMode::Background && m_screenCaptureUrl.isValid() && m_screenCaptureUrl.isLocalFile()) ? m_screenCaptureUrl : QUrl();
-            exportManager->doSave(lSavePath, m_notify);
+            exportManager->doSave(m_outputUrl, m_notify);
         }
         if (m_copyImageToClipboard) {
             exportManager->doCopyToClipboard(m_notify);
@@ -603,7 +610,7 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
         // These can change in GUI mode, so set them again
         m_notify = Settings::quitAfterSaveCopyExport()
                 && !m_cliOptions[CommandLineOptions::NoNotify];
-        setSaveCopyImageCopyPath(m_cliOptions[Option::Output] || Settings::autoSaveImage(),
+        setSaveCopyImageCopyPath(Settings::autoSaveImage(),
                                  m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
                                  m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
 
@@ -625,9 +632,9 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
 
         if (m_saveToOutput && m_copyImageToClipboard) {
             syncExportImage();
-            exportManager->doSaveAndCopy();
+            exportManager->doSaveAndCopy(m_outputUrl);
         } else if (m_saveToOutput) {
-            exportManager->doSave();
+            exportManager->doSave(m_outputUrl);
         } else if (m_copyImageToClipboard) {
             syncExportImage();
             exportManager->doCopyToClipboard(false);
