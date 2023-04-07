@@ -151,10 +151,9 @@ private:
     bool m_copyImageToClipboard = false;
     bool m_copyLocationToClipboard = false;
     bool m_saveToOutput = false;
-    bool m_editExisting = false;
-    bool m_existingLoaded = false;
     std::array<bool, CommandLineOptions::TotalOptions> m_cliOptions = {};
 
+    QUrl m_editExistingUrl;
     QUrl m_outputUrl;
 
     Platform::GrabMode m_lastGrabMode = Platform::GrabMode::NoGrabModes;

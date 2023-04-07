@@ -268,7 +268,7 @@ void SpectacleCore::setScreenCaptureUrl(const QString &filePath)
 
 QUrl SpectacleCore::outputUrl() const
 {
-    return m_outputUrl;
+    return m_outputUrl.isEmpty() ? m_editExistingUrl : m_outputUrl;
 }
 
 int SpectacleCore::captureTimeRemaining() const
@@ -314,14 +314,14 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     }
 
-    // No existing screen capture loaded.
-    m_existingLoaded = false;
-
     // Determine start mode
     m_startMode = StartMode::Gui; // Default to Gui
     // Gui is an option that's normally useless since it's the default mode.
-    // Make it override the other modes if explicitly set or using the launchonly option.
-    if (!m_cliOptions[Option::Gui] && !m_cliOptions[Option::LaunchOnly]) {
+    // Make it override the other modes if explicitly set, using the launchonly option,
+    // or editing an existing image. Editing an existing image requires a viewer window.
+    if (!m_cliOptions[Option::Gui]
+        && !m_cliOptions[Option::LaunchOnly]
+        && !m_cliOptions[Option::EditExisting]) {
         // Background gets precidence over DBus
         if (m_cliOptions[Option::Background]) {
             m_startMode = StartMode::Background;
@@ -335,6 +335,12 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         // We don't want to delete them otherwise because that will mess with the
         // settings for PrintScreen key behavior.
         deleteWindows();
+    }
+
+    // reset last region if it should not be remembered across restarts
+    if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
+        // QRect defaults to {0,0,-1,-1} while QRectF defaults to {0,0,0,0}.
+        Settings::setCropRegion({0, 0, 0, 0});
     }
 
     /* The logic for setting options for each start mode:
@@ -386,13 +392,23 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     }
 
-    m_editExisting = m_cliOptions[Option::EditExisting];
-    if (m_editExisting) {
-        QString existingFileName = parser.value(CommandLineOptions::self()->editExisting);
-        if (!(existingFileName.isEmpty() || existingFileName.isNull())) {
-            setScreenCaptureUrl(existingFileName);
-            m_saveToOutput = true;
+    if (m_cliOptions[Option::EditExisting]) {
+        auto input = parser.value(CommandLineOptions::self()->editExisting);
+        m_editExistingUrl = QUrl::fromUserInput(input, QDir::currentPath(), QUrl::AssumeLocalFile);
+        // QFileInfo::exists() only works with local files.
+        auto existingLocalFile = m_editExistingUrl.toLocalFile();
+        if (QFileInfo::exists(existingLocalFile)) {
+            m_annotationDocument->clearAnnotations();
+            // If editing an existing image, open the annotation editor.
+            // This QImage constructor only works with local files or Qt resource file names.
+            onScreenshotUpdated(QImage(existingLocalFile));
+            return;
+        } else {
+            m_cliOptions[Option::EditExisting] = false;
+            m_editExistingUrl.clear();
         }
+    } else {
+        m_editExistingUrl.clear();
     }
 
     if (m_cliOptions[Option::Output]) {
@@ -424,11 +440,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
     }
 
-    // reset last region if it should not be remembered across restarts
-    if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
-        // QRect defaults to {0,0,-1,-1} while QRectF defaults to {0,0,0,0}.
-        Settings::setCropRegion({0, 0, 0, 0});
-    }
 
     switch (m_startMode) {
     case StartMode::DBus:
@@ -444,8 +455,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         m_notify = Settings::quitAfterSaveCopyExport() && !m_cliOptions[Option::NoNotify];
         if (isGuiNull()) {
             if ((m_cliOptions[Option::LaunchOnly]
-                    || Settings::launchAction() == Settings::DoNotTakeScreenshot)
-                && !m_editExisting
+                || Settings::launchAction() == Settings::DoNotTakeScreenshot)
             ) {
                 initViewerWindow(ViewerWindow::Dialog);
                 ViewerWindow::instance()->setVisible(true);
@@ -495,6 +505,13 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
 void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
 {
+    if (m_cliOptions[CommandLineOptions::EditExisting]) {
+        // Clear when a new screenshot is taken to avoid overwriting
+        // the existing file with a completely unrelated image.
+        m_editExistingUrl.clear();
+        m_cliOptions[CommandLineOptions::EditExisting] = false;
+    }
+
     // Clear the window title that can be used in file names.
     ExportManager::instance()->setWindowTitle({});
 
@@ -568,16 +585,12 @@ void SpectacleCore::showErrorMessage(const QString &message)
 void SpectacleCore::onScreenshotUpdated(const QImage &image)
 {
     using Option = CommandLineOptions::Option;
-    QImage existingImage;
-    const QImage &imageUsed = (m_editExisting && !m_existingLoaded) ? existingImage : image;
-    if (m_editExisting && !m_existingLoaded) {
-        existingImage.load(m_screenCaptureUrl.toLocalFile());
-    }
+
     m_annotationDocument->clearImages();
 
     auto exportManager = ExportManager::instance();
-    exportManager->setImage(imageUsed);
-    m_annotationDocument->addImage(imageUsed);
+    exportManager->setImage(image);
+    m_annotationDocument->addImage(image);
     exportManager->updateTimestamp();
 
     switch (m_startMode) {
@@ -614,20 +627,17 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
                                  m_cliOptions[Option::CopyImage] || Settings::clipboardGroup() == Settings::PostScreenshotCopyImage,
                                  m_cliOptions[Option::CopyPath] || Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation);
 
-        if (imageUsed.isNull()) {
+        if (image.isNull()) {
             initViewerWindow(ViewerWindow::Dialog);
             ViewerWindow::instance()->setVisible(true);
             return;
         }
-        if (!m_editExisting) {
-            setScreenCaptureUrl(QUrl(QStringLiteral("image://spectacle/%1").arg(imageUsed.cacheKey())));
-        }
         initViewerWindow(ViewerWindow::Image);
-        if (m_editExisting) {
+        if (m_cliOptions[Option::EditExisting]) {
             ViewerWindow::instance()->setAnnotating(true);
         }
         ViewerWindow::instance()->setVisible(true);
-        auto titlePreset = !imageUsed.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
+        auto titlePreset = !image.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
 
         if (m_saveToOutput && m_copyImageToClipboard) {
@@ -644,11 +654,6 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image)
         if (m_copyLocationToClipboard) {
             exportManager->doCopyLocationToClipboard(false);
         }
-    }
-
-    if (m_editExisting && !m_existingLoaded) {
-        Settings::setLastSaveLocation(m_screenCaptureUrl);
-        m_existingLoaded = true;
     }
 }
 
