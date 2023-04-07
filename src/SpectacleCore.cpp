@@ -683,6 +683,10 @@ static QVector<KNotification *> notifications;
 
 void SpectacleCore::doNotify(const QUrl &saveUrl)
 {
+    if (m_cliOptions[CommandLineOptions::NoNotify]) {
+        return;
+    }
+
     // ensure program stays alive until the notification finishes.
     if (!m_eventLoopLocker) {
         m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
