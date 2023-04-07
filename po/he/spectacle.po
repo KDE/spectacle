@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-31 00:45+0000\n"
+"POT-Creation-Date: 2023-04-07 00:45+0000\n"
 "PO-Revision-Date: 2017-05-24 08:44-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -240,22 +240,14 @@ msgstr ""
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 
-#: src/ExportManager.cpp:478 src/ExportManager.cpp:537
+#: src/ExportManager.cpp:479 src/ExportManager.cpp:538
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr ""
 
-#: src/ExportManager.cpp:592
+#: src/ExportManager.cpp:593
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
-msgstr ""
-
-#: src/ExportManager.cpp:608
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:609
@@ -263,7 +255,7 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Year (2 digit)"
+msgid "Year (4 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:610
@@ -271,10 +263,18 @@ msgstr ""
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Month"
+msgid "Year (2 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:611
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr ""
+
+#: src/ExportManager.cpp:612
 #, fuzzy, kde-format
 #| msgid "Delay:"
 msgctxt ""
@@ -283,7 +283,7 @@ msgctxt ""
 msgid "Day"
 msgstr "השהיה:"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -291,7 +291,7 @@ msgctxt ""
 msgid "Hour"
 msgstr ""
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:614
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -299,7 +299,7 @@ msgctxt ""
 msgid "Minute"
 msgstr ""
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:615
 #, fuzzy, kde-format
 #| msgid " second"
 msgctxt ""
@@ -308,7 +308,7 @@ msgctxt ""
 msgid "Second"
 msgstr "שניה"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:616
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -316,7 +316,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr ""
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:617
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -324,7 +324,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr ""
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -332,7 +332,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr ""
 
-#: src/ExportManager.cpp:619
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
