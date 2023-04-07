@@ -67,6 +67,8 @@ public:
     // Used when setting the URL from CLI
     void setScreenCaptureUrl(const QString &filePath);
 
+    QUrl outputUrl() const;
+
     int captureTimeRemaining() const;
     qreal captureProgress() const;
 
@@ -159,6 +161,8 @@ private:
     bool m_editExisting = false;
     bool m_existingLoaded = false;
     std::array<bool, CommandLineOptions::TotalOptions> m_cliOptions = {};
+
+    QUrl m_outputUrl;
 
     Platform::GrabMode m_lastGrabMode = Platform::GrabMode::NoGrabModes;
     bool m_lastIncludePointer = false; // cli default value
