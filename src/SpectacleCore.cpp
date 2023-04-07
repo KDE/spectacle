@@ -407,7 +407,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     } else if (Settings::launchAction() == Settings::UseLastUsedCapturemode) {
         grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
     }
-    ExportManager::instance()->setWindowTitle({});
 
     // reset last region if it should not be remembered across restarts
     if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
@@ -488,6 +487,9 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
 void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
 {
+    // Clear the window title that can be used in file names.
+    ExportManager::instance()->setWindowTitle({});
+
     m_delayAnimation->stop();
 
     m_lastGrabMode = grabMode;
