@@ -30,7 +30,7 @@ public:
         Video,
     };
 
-    using UniquePointer = std::unique_ptr<ViewerWindow, decltype(&SpectacleWindow::deleter)>;
+    using UniquePointer = std::unique_ptr<ViewerWindow, void (*)(ViewerWindow *)>;
 
     static UniquePointer makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);
 

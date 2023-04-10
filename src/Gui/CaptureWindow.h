@@ -24,7 +24,7 @@ public:
         Video,
     };
 
-    using UniquePointer = std::unique_ptr<CaptureWindow, decltype(&SpectacleWindow::deleter)>;
+    using UniquePointer = std::unique_ptr<CaptureWindow, void (*)(CaptureWindow *)>;
 
     static UniquePointer makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
 

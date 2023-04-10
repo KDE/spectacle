@@ -44,7 +44,10 @@ ViewerWindow::~ViewerWindow()
 
 ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent)
 {
-    return UniquePointer(new ViewerWindow(mode, engine, parent), &SpectacleWindow::deleter);
+    return UniquePointer(new ViewerWindow(mode, engine, parent), [](ViewerWindow *window){
+        s_viewerWindowInstance = nullptr;
+        deleter(window);
+    });
 }
 
 ViewerWindow *ViewerWindow::instance()
