@@ -85,8 +85,10 @@ CaptureWindow::~CaptureWindow()
 
 CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
 {
-    return UniquePointer(new CaptureWindow(mode, screen, engine, parent),
-                         &SpectacleWindow::deleter);
+    return UniquePointer(new CaptureWindow(mode, screen, engine, parent), [](CaptureWindow *window){
+        s_captureWindowInstances.removeOne(window);
+        deleter(window);
+    });
 }
 
 QVector<CaptureWindow *> CaptureWindow::instances()

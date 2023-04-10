@@ -217,6 +217,7 @@ QString SpectacleWindow::titlePresetString(TitlePreset preset, const QString &fi
 
 void SpectacleWindow::deleter(SpectacleWindow *window)
 {
+    s_spectacleWindowInstances.removeOne(window);
     window->deleteLater();
 }
 
