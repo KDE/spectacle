@@ -16,6 +16,7 @@ add_executable(spectacle
     CommandLineOptions.cpp
     RecordingModeModel.cpp
     ExportManager.cpp
+    PlasmaVersion.cpp
     SpectacleCore.cpp
     SpectacleDBusAdapter.cpp
     ShortcutActions.cpp

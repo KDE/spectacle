@@ -16,6 +16,7 @@
 #include "Gui/SelectionEditor.h"
 #include "Gui/SpectacleWindow.h"
 #include "ShortcutActions.h"
+#include "PlasmaVersion.h"
 // generated
 #include "Config.h"
 #include "settings.h"
@@ -533,12 +534,14 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
 
     const bool noDelay = timeout == 0;
 
-    // when compositing is enabled, we need to give it enough time for the window
-    // to disappear and all the effects are complete before we take the shot. there's
-    // no way of knowing how long the disappearing effects take, but as per default
-    // settings (and unless the user has set an extremely slow effect), 200
-    // milliseconds is a good amount of wait time.
-    timeout = qMax(timeout, KX11Extras::compositingActive() ? 200 : 50);
+    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 5)) {
+        // when compositing is enabled, we need to give it enough time for the window
+        // to disappear and all the effects are complete before we take the shot. there's
+        // no way of knowing how long the disappearing effects take, but as per default
+        // settings (and unless the user has set an extremely slow effect), 200
+        // milliseconds is a good amount of wait time.
+        timeout = qMax(timeout, KX11Extras::compositingActive() ? 200 : 50);
+    }
 
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
