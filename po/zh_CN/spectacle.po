@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-08 00:45+0000\n"
-"PO-Revision-Date: 2023-03-27 11:59\n"
+"POT-Creation-Date: 2023-04-11 00:46+0000\n"
+"PO-Revision-Date: 2023-04-10 14:10\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -185,12 +185,12 @@ msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"
 
-#: src/ExportManager.cpp:320
+#: src/ExportManager.cpp:326
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter 无法写入图像：%1"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:341
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -200,12 +200,12 @@ msgstr ""
 "无法保存截图，因为无法创建目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:345
+#: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "无法保存屏幕截图。写入文件时出错。"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,32 +215,32 @@ msgstr ""
 "无法保存截图，因为无法创建远程目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
+#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "无法保存屏幕截图。写入本地临时文件时出错。"
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "无法保存图像。无法上传至远程地址。"
 
-#: src/ExportManager.cpp:433
+#: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "无法保存屏幕截图。该文件名无效。"
 
-#: src/ExportManager.cpp:479 src/ExportManager.cpp:538
+#: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "无法保存空白截屏图像。"
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "无法打印。打印机初始化失败。"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:594
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -248,7 +248,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "年 (四位数)"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:595
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -256,7 +256,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "年 (两位数)"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +264,7 @@ msgctxt ""
 msgid "Month"
 msgstr "月"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +272,7 @@ msgctxt ""
 msgid "Day"
 msgstr "日"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,7 +280,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "时"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:599
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -288,7 +288,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "分"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:600
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -296,7 +296,7 @@ msgctxt ""
 msgid "Second"
 msgstr "秒"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:601
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -304,7 +304,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "时区"
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:602
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -312,7 +312,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "窗口标题"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:603
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +320,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "顺序编号"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:605
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1361,14 +1361,14 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "ESC 键"
 
-#: src/Gui/SpectacleWindow.cpp:204
+#: src/Gui/SpectacleWindow.cpp:205
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1 秒"
 
-#: src/Gui/SpectacleWindow.cpp:207
+#: src/Gui/SpectacleWindow.cpp:208
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1451,41 +1451,41 @@ msgstr "截取光标所在窗口"
 msgid "Launch Spectacle without capturing"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:630
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "屏幕截图已取消或失败"
 
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid "A screenshot was saved to your clipboard."
-msgstr "屏幕截图已保存到剪贴板。"
-
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:686
+#, kde-format
+msgid "A screenshot was saved to your clipboard."
+msgstr "屏幕截图已保存到剪贴板。"
+
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "打开"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgid "Annotate"
 msgstr "标注"

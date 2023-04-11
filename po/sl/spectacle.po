@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-08 00:45+0000\n"
+"POT-Creation-Date: 2023-04-11 00:46+0000\n"
 "PO-Revision-Date: 2023-04-08 08:09+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -197,12 +197,12 @@ msgstr "Ob delovanju v ozadju izključi okraske oken iz posnetka zaslona"
 msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko posnetka zaslona"
 
-#: src/ExportManager.cpp:320
+#: src/ExportManager.cpp:326
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne more zapisati slike: %1"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:341
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,12 +212,12 @@ msgstr ""
 "Posnetka zaslona ni bilo mogoče shraniti, ker ustvarjanje mape ni uspelo: "
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:345
+#: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v datoteko."
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -227,37 +227,37 @@ msgstr ""
 "Posnetka zaslona ni bilo mogoče shraniti, ker ustvarjanje oddaljene mape ni "
 "uspelo:nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
+#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v krajevno začasno "
 "datoteko."
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ni bilo mogoče poslati datoteke na "
 "oddaljeno mesto."
 
-#: src/ExportManager.cpp:433
+#: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ime datoteke za shranjevanje ni veljavno."
 
-#: src/ExportManager.cpp:479 src/ExportManager.cpp:538
+#: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ni mogoče shraniti prazne zaslonske slike."
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tiskanje ni uspelo. Tiskalnika ni bilo mogoče zagnati."
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:594
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -265,7 +265,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Leto (4 cifre)"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:595
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -273,7 +273,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Leto (2 cifri)"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -281,7 +281,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mesec"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -289,7 +289,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Dan"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -297,7 +297,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Ura"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:599
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -305,7 +305,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minut"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:600
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +313,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Sekund"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:601
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +321,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Časovna cona"
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:602
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -329,7 +329,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Naslov okna"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:603
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -337,7 +337,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Zaporedno številčenje"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:605
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1396,7 +1396,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:204
+#: src/Gui/SpectacleWindow.cpp:205
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1406,7 +1406,7 @@ msgstr[1] "%1 sekundi"
 msgstr[2] "%1 sekunde"
 msgstr[3] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:207
+#: src/Gui/SpectacleWindow.cpp:208
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1484,17 +1484,12 @@ msgstr "Zajemi okno pod kazalko"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:630
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zajem slike je bil preklican ali ni uspel"
 
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid "A screenshot was saved to your clipboard."
-msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
-
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1503,24 +1498,29 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bilo shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "V vašo mapo s slikami je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "V '%2' je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:686
+#, kde-format
+msgid "A screenshot was saved to your clipboard."
+msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
+
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"

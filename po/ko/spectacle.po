@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-08 00:45+0000\n"
+"POT-Creation-Date: 2023-04-11 00:46+0000\n"
 "PO-Revision-Date: 2023-03-01 01:43+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -186,12 +186,12 @@ msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
 
-#: src/ExportManager.cpp:320
+#: src/ExportManager.cpp:326
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter에서 그림을 작성할 수 없음: %1"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:341
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -201,12 +201,12 @@ msgstr ""
 "디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:345
+#: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "스크린샷을 저장할 수 없습니다. 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -216,32 +216,32 @@ msgstr ""
 "원격 디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
+#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "스크린샷을 저장할 수 없습니다. 임시 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:433
+#: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되었습니다."
 
-#: src/ExportManager.cpp:479 src/ExportManager.cpp:538
+#: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:594
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -249,7 +249,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "연도(4자리)"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:595
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -257,7 +257,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "연도(2자리)"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -265,7 +265,7 @@ msgctxt ""
 msgid "Month"
 msgstr "월"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -273,7 +273,7 @@ msgctxt ""
 msgid "Day"
 msgstr "일"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -281,7 +281,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "시"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:599
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -289,7 +289,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "분"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:600
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -297,7 +297,7 @@ msgctxt ""
 msgid "Second"
 msgstr "초"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:601
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -305,7 +305,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "시간대"
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:602
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +313,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "창 제목"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:603
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +321,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "순차적 번호"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:605
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1365,14 +1365,14 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:204
+#: src/Gui/SpectacleWindow.cpp:205
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1초"
 
-#: src/Gui/SpectacleWindow.cpp:207
+#: src/Gui/SpectacleWindow.cpp:208
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1450,17 +1450,12 @@ msgstr "커서 아래 창 캡처"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:666
+#: src/SpectacleCore.cpp:630
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "스크린샷 찍기 취소 혹은 실패"
 
-#: src/SpectacleCore.cpp:704
-#, kde-format
-msgid "A screenshot was saved to your clipboard."
-msgstr "스크린샷을 클립보드에 저장했습니다."
-
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1469,24 +1464,29 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:710
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:712
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:686
+#, kde-format
+msgid "A screenshot was saved to your clipboard."
+msgstr "스크린샷을 클립보드에 저장했습니다."
+
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"
