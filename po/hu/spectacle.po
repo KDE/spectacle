@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:42+0000\n"
+"POT-Creation-Date: 2023-04-11 03:30+0000\n"
 "PO-Revision-Date: 2022-02-14 09:24+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -189,12 +189,12 @@ msgstr "Dekorációk lehagyása a képernyőképről"
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/ExportManager.cpp:320
+#: src/ExportManager.cpp:326
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:341
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -204,12 +204,12 @@ msgstr ""
 "A képernyőkép nem menthető, mert a mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:345
+#: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -219,33 +219,33 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
+#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:433
+#: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:478 src/ExportManager.cpp:537
+#: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:592
+#: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:594
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -253,7 +253,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Évszám (négy jegy)"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:595
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -261,7 +261,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Évszám (két jegy)"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -269,7 +269,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Hónap"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -277,7 +277,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Nap"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Óra"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:599
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -293,7 +293,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Perc"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:600
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -301,7 +301,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Másodperc"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:601
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +309,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Időzóna"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:602
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Ablakcím"
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:603
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Sorszám"
 
-#: src/ExportManager.cpp:619
+#: src/ExportManager.cpp:605
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1392,7 +1392,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:204
+#: src/Gui/SpectacleWindow.cpp:205
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1400,7 +1400,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 másodperc"
 msgstr[1] "%1 másodperc"
 
-#: src/Gui/SpectacleWindow.cpp:207
+#: src/Gui/SpectacleWindow.cpp:208
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1445,29 +1445,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kiszel.kristof@gmail.com"
 
-#: src/RecordingModeModel.cpp:29
+#: src/RecordingModeModel.cpp:30
 #, kde-format
 msgid "Workspace"
 msgstr ""
 
-#: src/RecordingModeModel.cpp:35
+#: src/RecordingModeModel.cpp:36
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Selected Screen"
 msgstr "Képernyőrögzítés"
 
-#: src/RecordingModeModel.cpp:41
+#: src/RecordingModeModel.cpp:42
 #, fuzzy, kde-format
 #| msgid "Active Window"
 msgid "Selected Window"
 msgstr "Aktív ablak"
 
-#: src/RecordingModeModel.cpp:98
+#: src/RecordingModeModel.cpp:99
 #, kde-format
 msgid "Failed to select output"
 msgstr ""
 
-#: src/RecordingModeModel.cpp:129
+#: src/RecordingModeModel.cpp:130
 #, kde-format
 msgid "Failed to select window"
 msgstr ""
@@ -1482,18 +1482,12 @@ msgstr "Kurzor alatti ablak rögzítése"
 msgid "Launch Spectacle without capturing"
 msgstr "A Spectacle indítása rögzítés nélkül"
 
-#: src/SpectacleCore.cpp:658
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Képernyőkép-rögzítés megszakítva vagy meghiúsult"
 
-#: src/SpectacleCore.cpp:696
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
-msgid "A screenshot was saved to your clipboard."
-msgstr "Képernyőkép mentve a vágólapra."
-
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:669
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1505,24 +1499,30 @@ msgstr ""
 "A képernyőkép mentve lett, mint „%1„ ide: „%2”, a helye pedig a vágólapra "
 "került"
 
-#: src/SpectacleCore.cpp:702
+#: src/SpectacleCore.cpp:673
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:676
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:680
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved to your clipboard."
+msgid "A screenshot was saved to your clipboard."
+msgstr "Képernyőkép mentve a vágólapra."
+
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:690
 #, kde-format
 msgid "Annotate"
 msgstr "Feliratozás"

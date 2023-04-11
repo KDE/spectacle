@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:42+0000\n"
+"POT-Creation-Date: 2023-04-11 03:30+0000\n"
 "PO-Revision-Date: 2023-04-02 15:16+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -191,12 +191,12 @@ msgstr "V režime na pozadí, vynechať dekorácie zo snímky obrazovky"
 msgid "Open and edit existing screenshot file"
 msgstr "Otvoriť a upraviť existujúci súbor so snímkom obrazovky"
 
-#: src/ExportManager.cpp:320
+#: src/ExportManager.cpp:326
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Aplikácia QImageWriter nemôže zapísať obrázok: %1"
 
-#: src/ExportManager.cpp:335
+#: src/ExportManager.cpp:341
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,12 +206,12 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie priečinku: <nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:345
+#: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise súboru."
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,36 +221,36 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie vzdialeného "
 "priečinku: <nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:376 src/ExportManager.cpp:426
+#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise dočasného "
 "miestneho súboru."
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Nie je možné uložiť obrázok. Nepodarilo sa odovzdať súbor do vzdialeného "
 "umiestnenia."
 
-#: src/ExportManager.cpp:433
+#: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Nedá sa uložiť snímka obrazovky. Ukladaný názov súboru nie je platný."
 
-#: src/ExportManager.cpp:478 src/ExportManager.cpp:537
+#: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nedá sa uložiť prázdny obrázok so snímkou obrazovky."
 
-#: src/ExportManager.cpp:592
+#: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tlač zlyhala. Tlačiareň sa nepodarilo inicializovať."
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:594
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -258,7 +258,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Rok (4 číslice)"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:595
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -266,7 +266,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Rok (2 číslice)"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -274,7 +274,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mesiac"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -282,7 +282,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Deň"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -290,7 +290,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Hodina"
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:599
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -298,7 +298,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minúta"
 
-#: src/ExportManager.cpp:614
+#: src/ExportManager.cpp:600
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -306,7 +306,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Sekunda"
 
-#: src/ExportManager.cpp:615
+#: src/ExportManager.cpp:601
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -314,7 +314,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Časové pásmo"
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:602
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +322,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Nadpis okna"
 
-#: src/ExportManager.cpp:617
+#: src/ExportManager.cpp:603
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +330,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Postupné číslovanie"
 
-#: src/ExportManager.cpp:619
+#: src/ExportManager.cpp:605
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1378,7 +1378,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:204
+#: src/Gui/SpectacleWindow.cpp:205
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1387,7 +1387,7 @@ msgstr[0] "%1 sekunda"
 msgstr[1] "%1 sekundy"
 msgstr[2] "%1 sekúnd"
 
-#: src/Gui/SpectacleWindow.cpp:207
+#: src/Gui/SpectacleWindow.cpp:208
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1430,27 +1430,27 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wizzardsk@gmail.com,prescott66@gmail.com"
 
-#: src/RecordingModeModel.cpp:29
+#: src/RecordingModeModel.cpp:30
 #, kde-format
 msgid "Workspace"
 msgstr "Pracovná plocha"
 
-#: src/RecordingModeModel.cpp:35
+#: src/RecordingModeModel.cpp:36
 #, kde-format
 msgid "Selected Screen"
 msgstr "Vybraná obrazovka"
 
-#: src/RecordingModeModel.cpp:41
+#: src/RecordingModeModel.cpp:42
 #, kde-format
 msgid "Selected Window"
 msgstr "Vybrané okno"
 
-#: src/RecordingModeModel.cpp:98
+#: src/RecordingModeModel.cpp:99
 #, kde-format
 msgid "Failed to select output"
 msgstr "Nepodarilo sa vybrať výstup"
 
-#: src/RecordingModeModel.cpp:129
+#: src/RecordingModeModel.cpp:130
 #, kde-format
 msgid "Failed to select window"
 msgstr "Nepodarilo sa vybrať okno"
@@ -1465,17 +1465,12 @@ msgstr "Zaznamenať okno pod kurzorom"
 msgid "Launch Spectacle without capturing"
 msgstr "Spustiť aplikáciu Spectacle bez zachytenia"
 
-#: src/SpectacleCore.cpp:658
+#: src/SpectacleCore.cpp:628
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zachytenie snímky obrazovky bolo zrušené alebo zlyhalo"
 
-#: src/SpectacleCore.cpp:696
-#, kde-format
-msgid "A screenshot was saved to your clipboard."
-msgstr "Snímka obrazovky bola uložená do vašej schránky."
-
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:669
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1484,25 +1479,30 @@ msgstr ""
 "Snímka obrazovky bola uložený ako '%1' na '%2' a jej umiestnenie bolo "
 "skopírované do schránky."
 
-#: src/SpectacleCore.cpp:702
+#: src/SpectacleCore.cpp:673
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Snímka obrazovky bola uložená ako \"%1\" do vášho priečinka s obrázkami."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:676
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímka obrazovky bola uložená ako \"%1\" do \"%2\"."
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:680
+#, kde-format
+msgid "A screenshot was saved to your clipboard."
+msgstr "Snímka obrazovky bola uložená do vašej schránky."
+
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/SpectacleCore.cpp:714
+#: src/SpectacleCore.cpp:690
 #, kde-format
 msgid "Annotate"
 msgstr "Komentovať"
