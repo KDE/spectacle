@@ -5,6 +5,7 @@
  */
 
 #include "PlatformKWinWayland.h"
+#include "PlasmaVersion.h"
 
 #include <QApplication>
 #include <QDBusInterface>
@@ -106,56 +107,6 @@ PlatformKWinWayland::PlatformKWinWayland(QObject *parent)
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWinWayland::updateSupportedGrabModes);
 }
 
-static std::array<int, 3> s_plasmaVersion = {-1, -1, -1};
-
-std::array<int, 3> findPlasmaMinorVersion()
-{
-    if (s_plasmaVersion == std::array<int, 3>{-1, -1, -1}) {
-        auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
-                                                      QStringLiteral("/MainApplication"),
-                                                      QStringLiteral("org.freedesktop.DBus.Properties"),
-                                                      QStringLiteral("Get"));
-
-        message.setArguments({QStringLiteral("org.qtproject.Qt.QCoreApplication"), QStringLiteral("applicationVersion")});
-
-        const auto resultMessage = QDBusConnection::sessionBus().call(message);
-        if (resultMessage.type() != QDBusMessage::ReplyMessage) {
-            qWarning() << "Error querying plasma version" << resultMessage.errorName() << resultMessage.errorMessage();
-            return s_plasmaVersion;
-        }
-        QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
-
-        const QString rawVersion = val.variant().value<QString>();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-        const QVector<QStringRef> splitted = rawVersion.splitRef(QLatin1Char('.'));
-#else
-        const QVector<QStringView> splitted = QStringView(rawVersion).split(QLatin1Char('.'));
-#endif
-        if (splitted.size() != 3) {
-            qWarning() << "error parsing plasma version";
-            return s_plasmaVersion;
-        }
-        bool ok;
-        int plasmaMajorVersion = splitted[0].toInt(&ok);
-        if (!ok) {
-            qWarning() << "error parsing plasma major version";
-            return s_plasmaVersion;
-        }
-        int plasmaMinorVersion = splitted[1].toInt(&ok);
-        if (!ok) {
-            qWarning() << "error parsing plasma minor version";
-            return s_plasmaVersion;
-        }
-        int plasmaPatchVersion = splitted[2].toInt(&ok);
-        if (!ok) {
-            qWarning() << "error parsing plasma patch version";
-            return s_plasmaVersion;
-        }
-        s_plasmaVersion = {plasmaMajorVersion, plasmaMinorVersion, plasmaPatchVersion};
-    }
-    return s_plasmaVersion;
-}
-
 Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
 {
     return m_grabModes;
@@ -179,9 +130,7 @@ void PlatformKWinWayland::updateSupportedGrabModes()
         grabModes |= Platform::GrabMode::CurrentScreen;
 
         // TODO remove sometime after Plasma 5.20 is released
-        auto plasmaVersion = findPlasmaMinorVersion();
-        if (plasmaVersion.at(0) != -1
-            && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20))) {
+        if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 0)) {
             grabModes |= Platform::GrabMode::AllScreensScaled;
         }
     }
@@ -195,9 +144,8 @@ void PlatformKWinWayland::updateSupportedGrabModes()
 bool PlatformKWinWayland::screenshotScreensAvailable() const
 {
     // TODO remove sometime after Plasma 5.21 is released
-    auto plasmaVersion = findPlasmaMinorVersion();
     // Screenshot screenshotScreens dbus interface requires Plasma 5.21
-    if (plasmaVersion.at(0) != -1 && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 21 || (plasmaVersion.at(1) == 20 && plasmaVersion.at(2) >= 80)))) {
+    if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 80)) {
         return true;
     } else {
         return false;
@@ -207,8 +155,7 @@ bool PlatformKWinWayland::screenshotScreensAvailable() const
 Platform::ShutterModes PlatformKWinWayland::supportedShutterModes() const
 {
     // TODO remove sometime after Plasma 5.20 is released
-    auto plasmaVersion = findPlasmaMinorVersion();
-    if (plasmaVersion.at(0) != -1 && (plasmaVersion.at(0) != 5 || (plasmaVersion.at(1) >= 20))) {
+    if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 0)) {
         return {ShutterMode::Immediate};
     } else {
         return {ShutterMode::OnClick};
