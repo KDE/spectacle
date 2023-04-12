@@ -66,6 +66,8 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
             QCoreApplication::quit();
         }
     });
+    connect(this, &SpectacleWindow::xChanged, this, &SpectacleWindow::logicalXChanged);
+    connect(this, &SpectacleWindow::yChanged, this, &SpectacleWindow::logicalYChanged);
 
     // before we do anything, we need to set a window property
     // that skips the close/hide window animation on kwin. this
@@ -100,6 +102,30 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
 SpectacleWindow::~SpectacleWindow()
 {
     s_spectacleWindowInstances.removeOne(this);
+}
+
+qreal SpectacleWindow::logicalX() const
+{
+#ifdef XCB_FOUND
+    if (KWindowSystem::isPlatformX11()) {
+        return x() / devicePixelRatio();
+    } else
+#endif
+    {
+        return x();
+    }
+}
+
+qreal SpectacleWindow::logicalY() const
+{
+#ifdef XCB_FOUND
+    if (KWindowSystem::isPlatformX11()) {
+        return y() / devicePixelRatio();
+    } else
+#endif
+    {
+        return y();
+    }
 }
 
 ExportMenu *SpectacleWindow::exportMenu() const

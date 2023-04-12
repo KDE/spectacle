@@ -26,6 +26,8 @@ class SpectacleWindow : public QQuickView
     Q_PROPERTY(OptionsMenu *optionsMenu READ optionsMenu CONSTANT FINAL)
     Q_PROPERTY(HelpMenu *helpMenu READ helpMenu CONSTANT FINAL)
     Q_PROPERTY(bool annotating READ isAnnotating WRITE setAnnotating NOTIFY annotatingChanged FINAL)
+    Q_PROPERTY(qreal logicalX READ logicalX NOTIFY logicalXChanged)
+    Q_PROPERTY(qreal logicalY READ logicalY NOTIFY logicalYChanged)
 
 public:
     enum TitlePreset {
@@ -40,6 +42,9 @@ public:
     ExportMenu *exportMenu() const;
     OptionsMenu *optionsMenu() const;
     HelpMenu *helpMenu() const;
+
+    qreal logicalX() const;
+    qreal logicalY() const;
 
     bool isAnnotating() const;
     void setAnnotating(bool annotating);
@@ -98,6 +103,8 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void annotatingChanged();
+    void logicalXChanged();
+    void logicalYChanged();
 
 protected:
     explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);

@@ -497,13 +497,16 @@ void SelectionEditor::setScreenImages(const QVector<CanvasImage> &screenImages)
     }
 
     d->image = QImage(screensRect.size(), QImage::Format_ARGB32);
+    d->image.fill(Qt::black);
     QPainter painter(&d->image);
     // Don't enable SmoothPixmapTransform, we want crisp graphics.
     for (int i = 0; i < screenImages.length(); ++i) {
         // Geometry can have negative coordinates,
         // so it is necessary to subtract the upper left point,
         // because coordinates on the widget are counted from 0.
-        painter.drawImage(translatedPoints[i] - screensRect.topLeft(), screenImages[i].image);
+        QImage image = screenImages[i].image;
+        image.setDevicePixelRatio(1);
+        painter.drawImage(translatedPoints[i] - screensRect.topLeft(), image);
     }
 
     if (d->screensRect != screensRect) {
@@ -549,6 +552,7 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
         QRect selectionRect = d->selection->alignedRect();
         QSize selectionSize = selectionRect.size();
         QImage output(selectionSize * maxDpr, QImage::Format_ARGB32);
+        output.fill(Qt::black);
         QPainter painter(&output);
         // Don't enable SmoothPixmapTransform, we want crisp graphics
 
@@ -581,13 +585,9 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
                 // upscale the image according to max screen dpr, to keep the image not distorted
                 output.setDevicePixelRatio(maxDpr);
-                const auto dprI = maxDpr / dpr;
-                QBrush brush(screenOutput);
-                brush.setTransform(QTransform::fromScale(dprI, dprI));
                 intersected.moveTopLeft((intersected.topLeft() - selectionRect.topLeft()) * maxDpr);
                 intersected.setSize(intersected.size() * maxDpr);
-                painter.setBrushOrigin(intersected.topLeft());
-                painter.fillRect(intersected, brush);
+                painter.drawImage(intersected, screenOutput);
             }
         }
 
@@ -688,7 +688,7 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     if (!item->window() || !item->window()->screen()) {
         return;
     }
-    d->mousePos = event->posF() + item->window()->screen()->geometry().topLeft();
+    d->mousePos = event->posF() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
 }
@@ -711,7 +711,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
-        d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft();
+        d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
         Q_EMIT mousePositionChanged();
         auto newDragLocation = d->mouseLocation(d->mousePos);
         if (d->dragLocation != newDragLocation) {
@@ -764,7 +764,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         return;
     }
 
-    d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft();
+    d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
     Q_EMIT mousePositionChanged();
     const bool wasMagnifierAllowed = d->magnifierAllowed;
     d->magnifierAllowed = true;
