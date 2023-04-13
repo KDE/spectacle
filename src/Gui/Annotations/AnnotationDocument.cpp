@@ -925,6 +925,7 @@ void AnnotationDocument::clearAnnotations()
     m_redoStack.squeeze();
     m_tool->resetType();
     m_tool->resetNumber();
+    deselectAction();
     Q_EMIT undoStackDepthChanged();
     Q_EMIT redoStackDepthChanged();
     Q_EMIT repaintNeeded();
