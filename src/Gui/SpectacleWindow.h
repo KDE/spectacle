@@ -135,4 +135,6 @@ protected:
     const std::unique_ptr<HelpMenu> m_helpMenu;
     const std::unique_ptr<QQmlContext> m_context;
     std::unique_ptr<QQmlComponent> m_component;
+
+    QKeySequence m_pressedKeys;
 };
