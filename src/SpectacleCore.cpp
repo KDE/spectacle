@@ -534,7 +534,7 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
 
     const bool noDelay = timeout == 0;
 
-    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 5)) {
+    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 4)) {
         // when compositing is enabled, we need to give it enough time for the window
         // to disappear and all the effects are complete before we take the shot. there's
         // no way of knowing how long the disappearing effects take, but as per default
