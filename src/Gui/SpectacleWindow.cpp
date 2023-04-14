@@ -519,18 +519,7 @@ void SpectacleWindow::keyPressEvent(QKeyEvent *event)
     if (event->isAccepted()) {
         return;
     }
-    // Cancel defaults to Escape in QPlatformTheme
-    if (event->matches(QKeySequence::Quit)
-        || event->matches(QKeySequence::Close)
-        || event->matches(QKeySequence::Cancel)) {
-        // we must do the shortcut here to prevent closing dialogs from closing Spectacle
-        auto spectacleCore = SpectacleCore::instance();
-        if (spectacleCore->captureTimeRemaining() > 0) {
-            spectacleCore->cancelScreenshot();
-        } else {
-            Q_EMIT engine()->quit();
-        }
-    }
+    m_pressedKeys = event->key() | event->modifiers();
 }
 
 void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
@@ -540,10 +529,22 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
     if (event->isAccepted()) {
         return;
     }
-    if (event->matches(QKeySequence::Quit)
+    // Cancel defaults to Escape in QPlatformTheme.
+    // Handling this here fixes https://bugs.kde.org/show_bug.cgi?id=428478
+    if ((event->matches(QKeySequence::Quit)
         || event->matches(QKeySequence::Close)
-        || event->matches(QKeySequence::Cancel)) {
+        || event->matches(QKeySequence::Cancel))
+        // We need to check if these were pressed previously or else pressing escape
+        // in a dialog will quit spectacle when you release the escape key.
+        && m_pressedKeys == event->key() | event->modifiers()
+    ) {
         event->accept();
+        auto spectacleCore = SpectacleCore::instance();
+        if (spectacleCore->captureTimeRemaining() > 0) {
+            spectacleCore->cancelScreenshot();
+        } else {
+            Q_EMIT engine()->quit();
+        }
     } else if (event->matches(QKeySequence::Preferences)) {
         event->accept();
         showPreferencesDialog();
@@ -554,4 +555,5 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
         event->accept();
         m_helpMenu->showAppHelp();
     }
+    m_pressedKeys = {};
 }
