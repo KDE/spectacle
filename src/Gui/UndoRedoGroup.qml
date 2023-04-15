@@ -31,6 +31,7 @@ Grid {
         display: QQC2.ToolButton.IconOnly
         text: i18n("Undo")
         icon.name: "edit-undo"
+        autoRepeat: true
         QQC2.ToolTip.text: text
         QQC2.ToolTip.visible: hovered || pressed
         QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
@@ -44,6 +45,7 @@ Grid {
         display: QQC2.ToolButton.IconOnly
         text: i18n("Redo")
         icon.name: "edit-redo"
+        autoRepeat: true
         QQC2.ToolTip.text: text
         QQC2.ToolTip.visible: hovered || pressed
         QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
