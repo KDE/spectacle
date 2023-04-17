@@ -2,12 +2,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QDBusConnection>
-#include <QDBusMessage>
-#include <QDBusVariant>
-#include <QDebug>
-#include <array>
-#include <cstdint>
+#include <QtGlobal>
 
 class PlasmaVersion
 {
@@ -15,12 +10,12 @@ public:
     /**
      * Get the plasma version as an unsigned int.
      */
-    static uint get();
+    static quint32 get();
 
     /**
      * Use this for plasama versions the same way you'd use QT_VERSION_CHECK()
      */
-    static uint check(uchar major, uchar minor, uchar patch);
+    static quint32 check(quint8 major, quint8 minor, quint8 patch);
 
 private:
     PlasmaVersion() = delete;
@@ -29,6 +24,4 @@ private:
     PlasmaVersion(PlasmaVersion &&) = delete;
     PlasmaVersion &operator=(const PlasmaVersion &) = delete;
     PlasmaVersion &operator=(PlasmaVersion &&) = delete;
-
-    static uint s_plasmaVersion;
 };
