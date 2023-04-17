@@ -9,6 +9,7 @@
 #include "SpectacleCore.h"
 #include "CommandLineOptions.h"
 #include "SpectacleDBusAdapter.h"
+#include "ScreenShotEffect.h"
 #include "settings.h"
 
 #include <QApplication>
@@ -20,6 +21,8 @@
 #include <KAboutData>
 #include <KDBusService>
 #include <KLocalizedString>
+#include <KMessageBox>
+#include <KWindowSystem>
 
 int main(int argc, char **argv)
 {
@@ -54,6 +57,21 @@ int main(int argc, char **argv)
     // first parsing for help-about
     commandLineParser.process(app.arguments());
     aboutData.processCommandLine(&commandLineParser);
+
+    // BUG: https://bugs.kde.org/show_bug.cgi?id=451842
+    // We currently don't support desktop environments besides KDE Plasma on Wayland
+    // because we have to rely on KWin's DBus API.
+    if (KWindowSystem::isPlatformWayland() && !ScreenShotEffect::isLoaded()) {
+        auto message = QStringLiteral("On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not seem to be available. Use Spectacle on KDE Plasma, or use a different screenshot tool.");
+        qWarning().noquote() << message;
+        if (commandLineParser.isSet(CommandLineOptions::self()->background)
+            || commandLineParser.isSet(CommandLineOptions::self()->dbus)) {
+            // Return early if not in GUI mode.
+            return 1;
+        } else {
+            KMessageBox::error(nullptr, message);
+        }
+    }
 
     // Prevent session manager from restoring the app on start up.
     // https://bugs.kde.org/show_bug.cgi?id=430411
