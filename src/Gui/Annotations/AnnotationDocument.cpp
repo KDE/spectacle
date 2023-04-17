@@ -956,7 +956,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             // More High quality scale down
             auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
-            painter->drawImage(zoomPoint(img.rect.topLeft() - viewPort.topLeft() * img.image.devicePixelRatio(), zoomFactor).toPoint(), scaledImg);
+            painter->drawImage(zoomPoint((img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio(), zoomFactor).toPoint(), scaledImg);
         }
     }
 
