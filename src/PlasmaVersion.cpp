@@ -3,12 +3,17 @@
  */
 
 #include "PlasmaVersion.h"
-#include <QDBusConnectionInterface>
 
-uint PlasmaVersion::s_plasmaVersion = 0;
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDBusMessage>
+#include <QDBusVariant>
+#include <QDebug>
+
+static quint32 s_plasmaVersion = 0;
 static const auto s_plasmashellService = QStringLiteral("org.kde.plasmashell");
 
-uint PlasmaVersion::get()
+quint32 PlasmaVersion::get()
 {
     if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(s_plasmashellService)) {
         s_plasmaVersion = 0;
@@ -58,7 +63,7 @@ uint PlasmaVersion::get()
     return s_plasmaVersion;
 }
 
-uint PlasmaVersion::check(uchar major, uchar minor, uchar patch)
+quint32 PlasmaVersion::check(quint8 major, quint8 minor, quint8 patch)
 {
     return (major << 16) | (minor << 8) | patch;
 }
