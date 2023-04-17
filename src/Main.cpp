@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     // We currently don't support desktop environments besides KDE Plasma on Wayland
     // because we have to rely on KWin's DBus API.
     if (KWindowSystem::isPlatformWayland() && !ScreenShotEffect::isLoaded()) {
-        auto message = QStringLiteral("On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not seem to be available. Use Spectacle on KDE Plasma, or use a different screenshot tool.");
+        auto message = i18n("On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not seem to be available. Use Spectacle on KDE Plasma, or use a different screenshot tool.");
         qWarning().noquote() << message;
         if (commandLineParser.isSet(CommandLineOptions::self()->background)
             || commandLineParser.isSet(CommandLineOptions::self()->dbus)) {
