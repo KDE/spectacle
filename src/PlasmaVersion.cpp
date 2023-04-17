@@ -3,16 +3,20 @@
  */
 
 #include "PlasmaVersion.h"
+#include <QDBusConnectionInterface>
 
 uint PlasmaVersion::s_plasmaVersion = 0;
+static const auto s_plasmashellService = QStringLiteral("org.kde.plasmashell");
 
 uint PlasmaVersion::get()
 {
-    if (s_plasmaVersion == 0) {
-        auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
-                                                    QStringLiteral("/MainApplication"),
-                                                    QStringLiteral("org.freedesktop.DBus.Properties"),
-                                                    QStringLiteral("Get"));
+    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(s_plasmashellService)) {
+        s_plasmaVersion = 0;
+    } else if (s_plasmaVersion == 0) {
+        auto message = QDBusMessage::createMethodCall(s_plasmashellService,
+                                                      QStringLiteral("/MainApplication"),
+                                                      QStringLiteral("org.freedesktop.DBus.Properties"),
+                                                      QStringLiteral("Get"));
 
         message.setArguments({QStringLiteral("org.qtproject.Qt.QCoreApplication"), QStringLiteral("applicationVersion")});
 
