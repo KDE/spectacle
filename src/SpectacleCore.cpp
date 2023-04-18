@@ -534,13 +534,17 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
 
     const bool noDelay = timeout == 0;
 
-    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 4)) {
+    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 4) && KX11Extras::compositingActive()) {
         // when compositing is enabled, we need to give it enough time for the window
         // to disappear and all the effects are complete before we take the shot. there's
         // no way of knowing how long the disappearing effects take, but as per default
         // settings (and unless the user has set an extremely slow effect), 200
         // milliseconds is a good amount of wait time.
-        timeout = qMax(timeout, KX11Extras::compositingActive() ? 200 : 50);
+        timeout = qMax(timeout, 200);
+    } else if (KWindowSystem::isPlatformX11()) {
+        // Minimum 50ms delay to prevent segfaults from xcb function calls
+        // that don't get replies fast enough.
+        timeout = qMax(timeout, 50);
     }
 
     if (noDelay) {
