@@ -1,107 +1,279 @@
-/* This file is part of Spectacle, the KDE screenshot utility
- * SPDX-FileCopyrightText: 2016 Martin Graesslin <mgraesslin@kde.org>
+/*
+    SPDX-FileCopyrightText: 2021 Vlad Zahorodnii <vlad.zahorodnii@kde.org>
 
- * SPDX-License-Identifier: LGPL-2.0-or-later
- */
+    SPDX-License-Identifier: LGPL-2.0-or-later
+*/
 
 #include "PlatformKWinWayland.h"
-#include "PlasmaVersion.h"
+#include "ExportManager.h"
 
-#include <QApplication>
-#include <QDBusInterface>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
+#include <QDBusPendingCallWatcher>
+#include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
+#include <QFuture>
 #include <QFutureWatcher>
 #include <QGuiApplication>
-#include <QImage>
 #include <QPixmap>
 #include <QScreen>
 #include <QtConcurrent>
-#include <qplatformdefs.h>
 
-#include <array>
+#include <errno.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
 
-/* -- Static Helpers --------------------------------------------------------------------------- */
-
-static bool readData(int fd, QByteArray &data)
+static QVariantMap screenShotFlagsToVardict(PlatformKWinWayland::ScreenShotFlags flags)
 {
-    fd_set readset;
-    FD_ZERO(&readset);
-    FD_SET(fd, &readset);
-    struct timeval timeout;
-    timeout.tv_sec = 30;
-    timeout.tv_usec = 0;
-    char buf[4096 * 16];
+    QVariantMap options;
 
-    while (true) {
-        int ready = select(FD_SETSIZE, &readset, nullptr, nullptr, &timeout);
-        if (ready < 0) {
-            qWarning() << "PlatformKWinWayland readData: select() failed" << strerror(errno);
-            return false;
-        } else if (ready == 0) {
-            qWarning("PlatformKWinWayland readData: timeout reading from pipe");
-            return false;
-        } else {
-            int n = read(fd, buf, sizeof buf);
+    if (flags & PlatformKWinWayland::ScreenShotFlag::IncludeCursor) {
+        options.insert(QStringLiteral("include-cursor"), true);
+    }
+    if (flags & PlatformKWinWayland::ScreenShotFlag::IncludeDecoration) {
+        options.insert(QStringLiteral("include-decoration"), true);
+    }
+    if (flags & PlatformKWinWayland::ScreenShotFlag::NativeSize) {
+        options.insert(QStringLiteral("native-resolution"), true);
+    }
 
-            if (n < 0) {
-                qWarning() << "PlatformKWinWayland readData: read() failed" << strerror(errno);
-                return false;
-            } else if (n == 0) {
-                return true;
+    return options;
+}
+
+static const QString s_screenShotService = QStringLiteral("org.kde.KWin.ScreenShot2");
+static const QString s_screenShotObjectPath = QStringLiteral("/org/kde/KWin/ScreenShot2");
+static const QString s_screenShotInterface = QStringLiteral("org.kde.KWin.ScreenShot2");
+
+template<typename... ArgType>
+ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
+{
+    // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
+    // that read() will block if there is no any data yet.
+    int pipeFds[2];
+    if (pipe2(pipeFds, O_CLOEXEC) == -1) {
+        QTimer::singleShot(0, this, &ScreenShotSource2::errorOccurred);
+        qWarning() << "pipe2() failed:" << strerror(errno);
+        return;
+    }
+
+    QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService, s_screenShotObjectPath, s_screenShotInterface, methodName);
+
+    QVariantList dbusArguments{arguments...};
+    dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
+    message.setArguments(dbusArguments);
+
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+    close(pipeFds[1]);
+    m_pipeFileDescriptor = pipeFds[0];
+
+    auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
+        watcher->deleteLater();
+        const QDBusPendingReply<QVariantMap> reply = *watcher;
+
+        if (reply.isError()) {
+            qWarning() << "Screenshot request failed:" << reply.error().message();
+            if (reply.error().name() == QStringLiteral("org.kde.KWin.ScreenShot2.Error.Cancelled")) {
+                // don't show error on user cancellation
+                Q_EMIT finished(m_result);
             } else {
-                data.append(buf, n);
+                Q_EMIT errorOccurred();
+            }
+        } else {
+            handleMetaDataReceived(reply);
+        }
+    });
+}
+
+ScreenShotSource2::~ScreenShotSource2()
+{
+    if (m_pipeFileDescriptor != -1) {
+        close(m_pipeFileDescriptor);
+    }
+}
+
+QImage ScreenShotSource2::result() const
+{
+    return m_result;
+}
+
+static QImage allocateImage(const QVariantMap &metadata)
+{
+    bool ok;
+
+    const uint width = metadata.value(QStringLiteral("width")).toUInt(&ok);
+    if (!ok) {
+        return QImage();
+    }
+
+    const uint height = metadata.value(QStringLiteral("height")).toUInt(&ok);
+    if (!ok) {
+        return QImage();
+    }
+
+    const uint format = metadata.value(QStringLiteral("format")).toUInt(&ok);
+    if (!ok) {
+        return QImage();
+    }
+
+    return QImage(width, height, QImage::Format(format));
+}
+
+static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
+{
+    QFile file;
+    if (!file.open(fileDescriptor, QFileDevice::ReadOnly, QFileDevice::AutoCloseHandle)) {
+        close(fileDescriptor);
+        return QImage();
+    }
+
+    QImage result = allocateImage(metadata);
+    if (result.isNull()) {
+        return QImage();
+    }
+
+    QDataStream stream(&file);
+    stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
+
+    bool ok = false;
+    const qreal scale = metadata.value(QStringLiteral("scale")).toReal(&ok);
+    if (ok) {
+        result.setDevicePixelRatio(scale);
+    }
+
+    return result;
+}
+
+void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
+{
+    const QString type = metadata.value(QStringLiteral("type")).toString();
+    if (type != QLatin1String("raw")) {
+        qWarning() << "Unsupported metadata type:" << type;
+        return;
+    }
+
+    const auto windowId = metadata.value(QStringLiteral("windowId")).toString();
+    if (!windowId.isEmpty()) {
+        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
+                                                              QStringLiteral("/KWin"),
+                                                              QStringLiteral("org.kde.KWin"),
+                                                              QStringLiteral("getWindowInfo"));
+        message.setArguments({windowId});
+        const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
+        if (reply.isValid()) {
+            const auto &windowTitle = reply.value().value(QStringLiteral("caption")).toString();
+            if (!windowTitle.isEmpty()) {
+                ExportManager::instance()->setWindowTitle(windowTitle);
             }
         }
     }
 
-    Q_UNREACHABLE();
-}
-
-static QImage readImage(int thePipeFd)
-{
-    QByteArray lContent;
-    if (!readData(thePipeFd, lContent)) {
-        close(thePipeFd);
-        return QImage();
-    }
-    close(thePipeFd);
-
-    QDataStream lDataStream(lContent);
-    QImage lImage;
-    lDataStream >> lImage;
-    return lImage;
-}
-
-static QVector<QImage> readImages(int thePipeFd)
-{
-    QByteArray lContent;
-    if (!readData(thePipeFd, lContent)) {
-        close(thePipeFd);
-        return QVector<QImage>();
-    }
-    close(thePipeFd);
-
-    QDataStream lDataStream(lContent);
-    lDataStream.setVersion(QDataStream::Qt_DefaultCompiledVersion);
-
-    QImage lImage;
-    QVector<QImage> imgs;
-    while (!lDataStream.atEnd()) {
-        lDataStream >> lImage;
-        if (!lImage.isNull()) {
-            imgs << lImage;
+    auto watcher = new QFutureWatcher<QImage>(this);
+    connect(watcher, &QFutureWatcher<QImage>::finished, this, [this, watcher]() {
+        watcher->deleteLater();
+        m_result = watcher->result();
+        if (m_result.isNull()) {
+            Q_EMIT errorOccurred();
+        } else {
+            Q_EMIT finished(m_result);
         }
-    }
+    });
+    watcher->setFuture(QtConcurrent::run(readImage, m_pipeFileDescriptor, metadata));
 
-    return imgs;
+    // The ownership of the pipe file descriptor has been moved to the worker thread.
+    m_pipeFileDescriptor = -1;
 }
 
-/* -- General Plumbing ------------------------------------------------------------------------- */
+ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, PlatformKWinWayland::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureArea"),
+                        qint32(area.x()),
+                        qint32(area.y()),
+                        quint32(area.width()),
+                        quint32(area.height()),
+                        screenShotFlagsToVardict(flags))
+{
+}
+
+ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(PlatformKWinWayland::InteractiveKind kind, PlatformKWinWayland::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureInteractive"), quint32(kind), screenShotFlagsToVardict(flags))
+{
+}
+
+ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, PlatformKWinWayland::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureScreen"), screen->name(), screenShotFlagsToVardict(flags))
+{
+}
+
+ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(PlatformKWinWayland::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureActiveWindow"), screenShotFlagsToVardict(flags))
+{
+}
+
+ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(PlatformKWinWayland::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureActiveScreen"), screenShotFlagsToVardict(flags))
+{
+}
+
+ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
+    : m_sources(sources)
+{
+    for (ScreenShotSource2 *source : sources) {
+        source->setParent(this);
+
+        connect(source, &ScreenShotSource2::finished, this, &ScreenShotSourceMeta2::handleSourceFinished);
+        connect(source, &ScreenShotSource2::errorOccurred, this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
+    }
+}
+
+void ScreenShotSourceMeta2::handleSourceFinished()
+{
+    const bool isFinished = std::all_of(m_sources.constBegin(), m_sources.constEnd(), [](const ScreenShotSource2 *source) {
+        return !source->result().isNull();
+    });
+    if (!isFinished) {
+        return;
+    }
+
+    QVector<QImage> results;
+    results.reserve(m_sources.count());
+
+    for (const ScreenShotSource2 *source : std::as_const(m_sources)) {
+        results.append(source->result());
+    }
+
+    Q_EMIT finished(results);
+}
+
+void ScreenShotSourceMeta2::handleSourceErrorOccurred()
+{
+    Q_EMIT errorOccurred();
+}
+
+std::unique_ptr<PlatformKWinWayland> PlatformKWinWayland::create()
+{
+    QDBusConnectionInterface *interface = QDBusConnection::sessionBus().interface();
+    if (interface->isServiceRegistered(s_screenShotService)) {
+        return std::unique_ptr<PlatformKWinWayland>(new PlatformKWinWayland());
+    }
+    return nullptr;
+}
 
 PlatformKWinWayland::PlatformKWinWayland(QObject *parent)
     : Platform(parent)
 {
+    auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin.ScreenShot2"),
+                                                  QStringLiteral("/org/kde/KWin/ScreenShot2"),
+                                                  QStringLiteral("org.freedesktop.DBus.Properties"),
+                                                  QStringLiteral("Get"));
+    message.setArguments({QStringLiteral("org.kde.KWin.ScreenShot2"), QStringLiteral("Version")});
+
+    const QDBusMessage reply = QDBusConnection::sessionBus().call(message);
+    if (reply.type() == QDBusMessage::ReplyMessage) {
+        m_apiVersion = reply.arguments().constFirst().value<QDBusVariant>().variant().toUInt();
+    }
+
     updateSupportedGrabModes();
     connect(qGuiApp, &QGuiApplication::screenAdded, this, &PlatformKWinWayland::updateSupportedGrabModes);
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWinWayland::updateSupportedGrabModes);
@@ -114,25 +286,14 @@ Platform::GrabModes PlatformKWinWayland::supportedGrabModes() const
 
 void PlatformKWinWayland::updateSupportedGrabModes()
 {
-    GrabModes grabModes = {Platform::GrabMode::AllScreens, GrabMode::WindowUnderCursor};
-    QList<QScreen *> screens = QApplication::screens();
-    int screenCount = screens.count();
+    Platform::GrabModes grabModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative;
 
-    // TODO remove sometime after Plasma 5.21 is released
-    // We can handle rectangular selection one one screen not scale factor
-    // on Plasma < 5.21
-    if (screenshotScreensAvailable()
-        || (screenCount == 1 && screens.first()->devicePixelRatio() == 1)) {
-        grabModes |= Platform::GrabMode::PerScreenImageNative;
+    if (m_apiVersion >= 2) {
+        grabModes |= GrabMode::ActiveWindow;
     }
 
-    if (screenCount > 1) {
-        grabModes |= Platform::GrabMode::CurrentScreen;
-
-        // TODO remove sometime after Plasma 5.20 is released
-        if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 0)) {
-            grabModes |= Platform::GrabMode::AllScreensScaled;
-        }
+    if (QGuiApplication::screens().count() > 1) {
+        grabModes |= GrabMode::CurrentScreen | GrabMode::AllScreensScaled;
     }
 
     if (m_grabModes != grabModes) {
@@ -141,162 +302,125 @@ void PlatformKWinWayland::updateSupportedGrabModes()
     }
 }
 
-bool PlatformKWinWayland::screenshotScreensAvailable() const
-{
-    // TODO remove sometime after Plasma 5.21 is released
-    // Screenshot screenshotScreens dbus interface requires Plasma 5.21
-    if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 80)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 Platform::ShutterModes PlatformKWinWayland::supportedShutterModes() const
 {
-    // TODO remove sometime after Plasma 5.20 is released
-    if (PlasmaVersion::get() >= PlasmaVersion::check(5, 20, 0)) {
-        return {ShutterMode::Immediate};
-    } else {
-        return {ShutterMode::OnClick};
-    }
+    return ShutterMode::Immediate;
 }
 
-void PlatformKWinWayland::doGrab(ShutterMode /* theShutterMode */, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+static QRect workArea()
 {
+    const QList<QScreen *> screens = QGuiApplication::screens();
+
+    auto accumulateFunc = [](const QRect &accumulator, const QScreen *screen) {
+        return accumulator.united(screen->geometry());
+    };
+
+    return std::accumulate(screens.begin(), screens.end(), QRect(), accumulateFunc);
+}
+
+void PlatformKWinWayland::doGrab(ShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+{
+    ScreenShotFlags flags = ScreenShotFlag::NativeSize;
+
+    if (theIncludeDecorations) {
+        flags |= ScreenShotFlag::IncludeDecoration;
+    }
+    if (theIncludePointer) {
+        flags |= ScreenShotFlag::IncludeCursor;
+    }
+
     switch (theGrabMode) {
     case GrabMode::AllScreens:
-        doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer, true);
-        return;
-    case GrabMode::AllScreensScaled:
-        doGrabHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer, false);
-        return;
-
-    case GrabMode::PerScreenImageNative: {
-        const QList<QScreen *> screens = QGuiApplication::screens();
-        QStringList screenNames;
-        screenNames.reserve(screens.count());
-        for (const auto screen : screens) {
-            screenNames << screen->name();
-        }
-        if (screenshotScreensAvailable()) {
-            doGrabImagesHelper(QStringLiteral("screenshotScreens"), screenNames, theIncludePointer, true);
+        takeScreenShotArea(workArea(), flags);
+        break;
+    case GrabMode::CurrentScreen:
+        if (m_apiVersion >= 2) {
+            takeScreenShotActiveScreen(flags);
         } else {
-            // TODO remove sometime after Plasma 5.21 is released
-            // Use the dbus call screenshotFullscreen to get a single screen screenshot and treat it as a list of images
-            doGrabImagesHelper(QStringLiteral("screenshotFullscreen"), theIncludePointer, true);
+            takeScreenShotInteractive(InteractiveKind::Screen, flags);
         }
-        return;
-    }
-    case GrabMode::CurrentScreen: {
-        doGrabHelper(QStringLiteral("screenshotScreen"), theIncludePointer);
-        return;
-    }
+        break;
     case GrabMode::ActiveWindow:
+        takeScreenShotActiveWindow(flags);
+        break;
     case GrabMode::TransientWithParent:
-    case GrabMode::WindowUnderCursor: {
-        int lOpMask = theIncludeDecorations ? 1 : 0;
-        if (theIncludePointer) {
-            lOpMask |= 1 << 1;
-        }
-        doGrabHelper(QStringLiteral("interactive"), lOpMask);
-        return;
-    }
+    case GrabMode::WindowUnderCursor:
+        takeScreenShotInteractive(InteractiveKind::Window, flags);
+        break;
+    case GrabMode::AllScreensScaled:
+        takeScreenShotArea(workArea(), flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
+        break;
+    case GrabMode::PerScreenImageNative:
+        takeScreenShotScreens(QGuiApplication::screens(), flags);
+        break;
     case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
-        return;
+        break;
     }
 }
 
-/* -- Grab Helpers ----------------------------------------------------------------------------- */
-
-void PlatformKWinWayland::startReadImage(int theReadPipe)
+void PlatformKWinWayland::trackSource(ScreenShotSource2 *source)
 {
-    auto lWatcher = new QFutureWatcher<QImage>(this);
-    QObject::connect(lWatcher, &QFutureWatcher<QImage>::finished, this, [lWatcher, this]() {
-        lWatcher->deleteLater();
-        const QImage lImage = lWatcher->result();
-        if (lImage.isNull()) {
-            Q_EMIT newScreenshotFailed();
-        } else {
-            Q_EMIT newScreenshotTaken(lImage);
-        }
+    connect(source, &ScreenShotSourceArea2::finished, this, [this, source](const QImage &image) {
+        source->deleteLater();
+        Q_EMIT newScreenshotTaken(image);
     });
-    lWatcher->setFuture(QtConcurrent::run(readImage, theReadPipe));
-}
-
-void PlatformKWinWayland::startReadImages(int theReadPipe)
-{
-    auto lWatcher = new QFutureWatcher<QVector<QImage>>(this);
-    QObject::connect(lWatcher, &QFutureWatcher<QVector<QImage>>::finished, this, [lWatcher, this]() {
-        lWatcher->deleteLater();
-        auto images = lWatcher->result();
-        if (images.isEmpty()) {
-            Q_EMIT newScreenshotFailed();
-        } else {
-            QVector<CanvasImage> screenImages;
-            const auto &screens = qGuiApp->screens();
-            if (images.length() != screens.length()) {
-                qWarning() << "ERROR: number of screens does not match number of images, expected:" << images.length() << "actual:" << screens.length();
-                Q_EMIT newScreenshotFailed();
-                return;
-            }
-            for (int i = 0; i < screens.length(); ++i) {
-                screenImages.append({images[i], screens[i]->geometry()});
-            }
-            Q_EMIT newScreensScreenshotTaken(screenImages);
-        }
-    });
-    lWatcher->setFuture(QtConcurrent::run(readImages, theReadPipe));
-}
-
-template<typename... ArgType>
-void PlatformKWinWayland::callDBus(const QString &theGrabMethod, int theWriteFile, ArgType... arguments)
-{
-    QDBusInterface lInterface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
-    QDBusPendingCall pcall = lInterface.asyncCall(theGrabMethod, QVariant::fromValue(QDBusUnixFileDescriptor(theWriteFile)), arguments...);
-    checkDbusPendingCall(pcall);
-}
-
-void PlatformKWinWayland::checkDbusPendingCall(const QDBusPendingCall &pcall)
-{
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-        if (watcher->isError()) {
-            const auto error = watcher->error();
-            qWarning() << "Error calling KWin DBus interface:" << error.name() << error.message();
-            Q_EMIT newScreenshotFailed();
-        }
-        watcher->deleteLater();
-    });
-}
-
-template<typename... ArgType>
-void PlatformKWinWayland::doGrabHelper(const QString &theGrabMethod, ArgType... arguments)
-{
-    int lPipeFds[2];
-    if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
+    connect(source, &ScreenShotSourceArea2::errorOccurred, this, [this, source]() {
+        source->deleteLater();
         Q_EMIT newScreenshotFailed();
-        return;
-    }
-
-    callDBus(theGrabMethod, lPipeFds[1], arguments...);
-    startReadImage(lPipeFds[0]);
-
-    close(lPipeFds[1]);
+    });
 }
 
-template<typename... ArgType>
-void PlatformKWinWayland::doGrabImagesHelper(const QString &theGrabMethod, ArgType... arguments)
+void PlatformKWinWayland::trackSource(ScreenShotSourceMeta2 *source)
 {
-    int lPipeFds[2];
-    if (pipe2(lPipeFds, O_CLOEXEC | O_NONBLOCK) != 0) {
+    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source](const QVector<QImage> &images) {
+        source->deleteLater();
+        QVector<CanvasImage> screenImages;
+        const auto &screens = qGuiApp->screens();
+        if (images.length() != screens.length()) {
+            qWarning() << "ERROR: number of screens does not match number of images, expected:" << images.length() << "actual:" << screens.length();
+            Q_EMIT newScreenshotFailed();
+            return;
+        }
+        for (int i = 0; i < screens.length(); ++i) {
+            screenImages.append({images[i], screens[i]->geometry()});
+        }
+        Q_EMIT newScreensScreenshotTaken(screenImages);
+    });
+    connect(source, &ScreenShotSourceMeta2::errorOccurred, this, [this, source]() {
+        source->deleteLater();
         Q_EMIT newScreenshotFailed();
-        return;
+    });
+}
+
+void PlatformKWinWayland::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceArea2(area, flags));
+}
+
+void PlatformKWinWayland::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceInteractive2(kind, flags));
+}
+
+void PlatformKWinWayland::takeScreenShotActiveWindow(ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceActiveWindow2(flags));
+}
+
+void PlatformKWinWayland::takeScreenShotActiveScreen(ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceActiveScreen2(flags));
+}
+
+void PlatformKWinWayland::takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags)
+{
+    QVector<ScreenShotSource2 *> sources;
+    sources.reserve(screens.count());
+
+    for (QScreen *screen : screens) {
+        sources.append(new ScreenShotSourceScreen2(screen, flags));
     }
 
-    callDBus(theGrabMethod, lPipeFds[1], arguments...);
-    startReadImages(lPipeFds[0]);
-
-    close(lPipeFds[1]);
+    trackSource(new ScreenShotSourceMeta2(sources));
 }

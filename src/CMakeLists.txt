@@ -43,7 +43,6 @@ add_executable(spectacle
     Platforms/Platform.cpp
     Platforms/PlatformNull.cpp
     Platforms/PlatformKWinWayland.cpp
-    Platforms/PlatformKWinWayland2.cpp
     Platforms/VideoPlatform.cpp
     Platforms/VideoPlatformWayland.cpp
     Platforms/screencasting.cpp

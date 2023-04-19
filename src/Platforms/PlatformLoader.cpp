@@ -8,7 +8,6 @@
 #include "Config.h"
 
 #include "PlatformKWinWayland.h"
-#include "PlatformKWinWayland2.h"
 #include "PlatformNull.h"
 #include "VideoPlatformWayland.h"
 
@@ -20,26 +19,25 @@
 
 PlatformPtr loadPlatform()
 {
+    PlatformPtr platform;
     // We might be using the XCB platform (with Xwayland) in a wayland session,
     // but the X11 grabber won't work in that case. So force the Wayland grabber
     // in Wayland sessions.
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") == 0) {
-        std::unique_ptr<Platform> platform = PlatformKWinWayland2::create();
-        if (platform) {
-            return platform;
-        }
-        return std::make_unique<PlatformKWinWayland>();
+        platform = PlatformKWinWayland::create();
     }
-
-    // Try checking if we're running under X11 now
 #ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
-        return std::make_unique<PlatformXcb>();
+    else if (KWindowSystem::isPlatformX11()) {
+        platform = std::make_unique<PlatformXcb>();
     }
 #endif
 
     // If nothing else worked, return the null platform
-    return std::make_unique<PlatformNull>();
+    if (!platform) {
+        platform = std::make_unique<PlatformNull>();
+    }
+
+    return platform;
 }
 
 VideoPlatformPtr loadVideoPlatform()
