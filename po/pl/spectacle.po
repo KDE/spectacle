@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-16 00:46+0000\n"
+"POT-Creation-Date: 2023-04-19 00:47+0000\n"
 "PO-Revision-Date: 2023-04-15 11:34+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1414,32 +1414,40 @@ msgstr "Cofnij"
 msgid "Redo"
 msgstr "Przywróć"
 
-#: src/Main.cpp:38
+#: src/Main.cpp:41
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:43
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Program do zrzutów ekranu"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:45
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Łukasz Wojniłowicz"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "lukasz.wojnilowicz@gmail.com"
+
+#: src/Main.cpp:65
+#, kde-format
+msgid ""
+"On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
+"seem to be available. Use Spectacle on KDE Plasma, or use a different "
+"screenshot tool."
+msgstr ""
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1476,12 +1484,12 @@ msgstr "Zrzuć okno pod wskaźnikiem"
 msgid "Launch Spectacle without capturing"
 msgstr "Uruchom Spectacle bez wykonania zrzutu"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zaniechano zrzucania ekranu lub nie udało się tego zrobić"
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1489,29 +1497,29 @@ msgid ""
 msgstr ""
 "Zapisano zrzut ekranu jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu Zdjęcia."
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu '%2'."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zrzut zapisano w twoim schowku."
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Opisz"

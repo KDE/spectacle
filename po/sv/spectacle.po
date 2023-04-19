@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-16 00:46+0000\n"
+"POT-Creation-Date: 2023-04-19 00:47+0000\n"
 "PO-Revision-Date: 2022-08-03 09:13+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1438,32 +1438,40 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:38
+#: src/Main.cpp:41
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:43
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE skärmbildsverktyg"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:45
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "© 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stefan Asserhäll"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@bredband.net"
+
+#: src/Main.cpp:65
+#, kde-format
+msgid ""
+"On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
+"seem to be available. Use Spectacle on KDE Plasma, or use a different "
+"screenshot tool."
+msgstr ""
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1502,12 +1510,12 @@ msgstr "Ta en bild av fönster under markör"
 msgid "Launch Spectacle without capturing"
 msgstr "Starta Spectacle utan tagning"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Tagning av skärmbild avbruten eller misslyckad"
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:682
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1519,30 +1527,30 @@ msgstr ""
 "En skärmbild sparades som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:693
 #, fuzzy, kde-format
 #| msgid "A screenshot was copied to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öppna"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentera"

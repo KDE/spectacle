@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-16 00:46+0000\n"
+"POT-Creation-Date: 2023-04-19 00:47+0000\n"
 "PO-Revision-Date: 2021-09-04 10:08+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1473,32 +1473,40 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Main.cpp:38
+#: src/Main.cpp:41
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:40
+#: src/Main.cpp:43
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Εργαλείο του KDE για λήψη στιγμιοτύπων οθόνης"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:45
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stelios"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:49
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sstavra@gmail.com"
+
+#: src/Main.cpp:65
+#, kde-format
+msgid ""
+"On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
+"seem to be available. Use Spectacle on KDE Plasma, or use a different "
+"screenshot tool."
+msgstr ""
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1538,12 +1546,12 @@ msgstr "Λήψη παραθύρου υπό τον δρομέα"
 msgid "Launch Spectacle without capturing"
 msgstr "Εκτέλεση του Spectacle"
 
-#: src/SpectacleCore.cpp:633
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Αποτυχία ή ακύρωση της λήψης στιγμιοτύπου οθόνης."
 
-#: src/SpectacleCore.cpp:678
+#: src/SpectacleCore.cpp:682
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -1555,30 +1563,30 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:693
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:694
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"
