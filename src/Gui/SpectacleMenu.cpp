@@ -49,11 +49,12 @@ void SpectacleMenu::popup(QQuickItem *item)
     }
     auto point = item->mapToGlobal({0, item->height()});
     auto screenRect = item->window()->screen()->geometry();
-    if (point.y() + height() > screenRect.bottom()) {
-        point.setY(point.y() - item->height() - height());
+    auto sizeHint = this->sizeHint();
+    if (point.y() + sizeHint.height() > screenRect.bottom()) {
+        point.setY(point.y() - item->height() - sizeHint.height());
     }
-    if (point.x() + width() > screenRect.right()) {
-        point.setX(point.x() - width() + item->width());
+    if (point.x() + sizeHint.width() > screenRect.right()) {
+        point.setX(point.x() - sizeHint.width() + item->width());
     }
     popup(point);
 }
