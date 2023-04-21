@@ -40,3 +40,11 @@ void SpectacleMenu::popup(const QPointF &globalPos)
         QMenu::popup(globalPos.toPoint());
     });
 }
+
+void SpectacleMenu::popup(QQuickItem *item)
+{
+    if (!item) {
+        return;
+    }
+    popup(item->mapToGlobal({0, item->y() + item->height()}));
+}

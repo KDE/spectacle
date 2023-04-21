@@ -86,7 +86,7 @@ ButtonGrid {
         down: pressed || contextWindow.exportMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.exportMenu.popup(mapToGlobal(0, y + height))
+        onPressed: contextWindow.exportMenu.popup(this)
     }
 
     ToolButton {
@@ -132,7 +132,7 @@ ButtonGrid {
         down: pressed || contextWindow.optionsMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.optionsMenu.popup(mapToGlobal(0, y + height))
+        onPressed: contextWindow.optionsMenu.popup(this)
     }
     ToolButton {
         visible: !root.showOptionsMenu
@@ -148,6 +148,6 @@ ButtonGrid {
         down: pressed || contextWindow.helpMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.helpMenu.popup(mapToGlobal(0, y + height))
+        onPressed: contextWindow.helpMenu.popup(this)
     }
 }

@@ -6,6 +6,8 @@
 
 #include <QMenu>
 
+class QQuickItem;
+
 /**
  * This class only exists to make QMenu more usable with Qt Quick
  */
@@ -26,6 +28,11 @@ public:
      * Same as QMenu::popup(), but invokable. Takes global coordinates.
      */
     Q_INVOKABLE void popup(const QPointF &globalPos);
+
+    /**
+     * Popup on the specified item
+     */
+    Q_INVOKABLE virtual void popup(QQuickItem *item);
 
 Q_SIGNALS:
     void visibleChanged();
