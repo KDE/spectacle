@@ -25,6 +25,7 @@ add_executable(spectacle
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
     Gui/OptionsMenu.cpp
+    Gui/TextContextMenu.cpp
     Gui/SmartSpinBox.cpp
     Gui/Selection.cpp
     Gui/SelectionEditor.cpp

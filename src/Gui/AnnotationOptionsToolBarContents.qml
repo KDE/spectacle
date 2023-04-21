@@ -91,6 +91,9 @@ ButtonGrid {
                     value: Text.AlignRight
                     restoreMode: Binding.RestoreNone
                 }
+                TextContextMenuConnection {
+                    target: spinBox.contentItem
+                }
             }
 
             ToolButton {
@@ -280,6 +283,9 @@ ButtonGrid {
                     property: "horizontalAlignment"
                     value: Text.AlignRight
                     restoreMode: Binding.RestoreNone
+                }
+                TextContextMenuConnection {
+                    target: spinBox.contentItem
                 }
             }
         }

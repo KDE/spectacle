@@ -130,6 +130,9 @@ QQC2.SpinBox {
                 cursorPosition = oldCursorPos
             }
         }
+        TextContextMenuConnection {
+            target: root.contentItem
+        }
     }
 
     FontMetrics {

@@ -9,6 +9,7 @@
 #include "SpectacleWindow.h"
 
 #include "ExportManager.h"
+#include "Gui/TextContextMenu.h"
 #include "SpectacleCore.h"
 #include "spectacle_gui_debug.h"
 
@@ -47,6 +48,7 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     , m_exportMenu(new ExportMenu)
     , m_optionsMenu(new OptionsMenu)
     , m_helpMenu(new HelpMenu)
+    , m_textContextMenu(new TextContextMenu)
     , m_context(new QQmlContext(engine->rootContext(), this))
 {
     s_spectacleWindowInstances.append(this);
@@ -59,6 +61,9 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     }
     if (m_helpMenu->winId()) {
         m_helpMenu->windowHandle()->setTransientParent(this);
+    }
+    if (m_textContextMenu->winId()) {
+        m_textContextMenu->windowHandle()->setTransientParent(this);
     }
     connect(engine, &QQmlEngine::quit, QCoreApplication::instance(), &QCoreApplication::quit, Qt::QueuedConnection);
     connect(this, &QQuickView::statusChanged, this, [](QQuickView::Status status){
@@ -141,6 +146,11 @@ OptionsMenu *SpectacleWindow::optionsMenu() const
 HelpMenu *SpectacleWindow::helpMenu() const
 {
     return m_helpMenu.get();
+}
+
+TextContextMenu *SpectacleWindow::textContextMenu() const
+{
+    return m_textContextMenu.get();
 }
 
 bool SpectacleWindow::isAnnotating() const
