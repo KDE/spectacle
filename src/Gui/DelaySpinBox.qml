@@ -127,5 +127,8 @@ QQC.SpinBox {
                 cursorPosition = oldCursorPos
             }
         }
+        TextContextMenuConnection {
+            target: root.contentItem
+        }
     }
 }

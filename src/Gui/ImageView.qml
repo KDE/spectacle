@@ -254,6 +254,9 @@ EmptyPage {
                         value: Text.AlignRight
                         restoreMode: Binding.RestoreNone
                     }
+                    TextContextMenuConnection {
+                        target: zoomEditor.contentItem
+                    }
                     onValueModified: contentLoader.item.zoomToPercent(Math.round(value) / 100)
                 }
             }

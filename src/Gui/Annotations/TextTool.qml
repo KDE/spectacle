@@ -230,6 +230,9 @@ AnimatedLoader {
                 cursorShape: Qt.SizeAllCursor
             }
         }
+        TextContextMenuConnection {
+            target: textField
+        }
         Component.onCompleted: forceActiveFocus()
     }
 }

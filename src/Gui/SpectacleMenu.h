@@ -27,7 +27,7 @@ public:
     /**
      * Popup on the specified item
      */
-    Q_INVOKABLE void popup(QQuickItem *item);
+    Q_INVOKABLE virtual void popup(QQuickItem *item);
 
 Q_SIGNALS:
     void visibleChanged();

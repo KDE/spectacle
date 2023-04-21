@@ -37,6 +37,7 @@ target_sources(spectacle PRIVATE
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
     Gui/OptionsMenu.cpp
+    Gui/TextContextMenu.cpp
     Gui/SmartSpinBox.cpp
     Gui/Selection.cpp
     Gui/SelectionEditor.cpp
@@ -190,6 +191,7 @@ qt_target_qml_sources(spectacle
     Gui/SharedMessage.qml
     Gui/ShortcutsTextBox.qml
     Gui/SizeLabel.qml
+    Gui/TextContextMenuConnection.qml
     Gui/UndoRedoGroup.qml
     Gui/VideoCaptureOverlay.qml
 )

@@ -120,6 +120,9 @@ Row {
                     value: Text.AlignRight
                     restoreMode: Binding.RestoreNone
                 }
+                TextContextMenuConnection {
+                    target: spinBox.contentItem
+                }
             }
 
             ToolButton {
@@ -353,6 +356,9 @@ Row {
                     property: "horizontalAlignment"
                     value: Text.AlignRight
                     restoreMode: Binding.RestoreNone
+                }
+                TextContextMenuConnection {
+                    target: spinBox.contentItem
                 }
             }
         }
