@@ -5,6 +5,7 @@
 #include "SpectacleMenu.h"
 #include <QQuickItem>
 #include <QQuickWindow>
+#include <QScreen>
 #include <QTimer>
 
 SpectacleMenu::SpectacleMenu(const QString &title, QWidget *parent)
@@ -46,5 +47,13 @@ void SpectacleMenu::popup(QQuickItem *item)
     if (!item) {
         return;
     }
-    popup(item->mapToGlobal({0, item->y() + item->height()}));
+    auto point = item->mapToGlobal({0, item->height()});
+    auto screenRect = item->window()->screen()->geometry();
+    if (point.y() + height() > screenRect.bottom()) {
+        point.setY(point.y() - item->height() - height());
+    }
+    if (point.x() + width() > screenRect.right()) {
+        point.setX(point.x() - width() + item->width());
+    }
+    popup(point);
 }
