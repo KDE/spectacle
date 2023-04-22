@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-19 00:47+0000\n"
-"PO-Revision-Date: 2023-03-01 01:43+0100\n"
+"PO-Revision-Date: 2023-04-22 00:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -686,12 +686,12 @@ msgstr ""
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "일시 정지"
 
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "재생"
 
 #: src/Gui/RecordOptions.qml:20
 #, kde-format
@@ -712,7 +712,7 @@ msgstr "화면 녹화에 마우스 커서를 표시합니다."
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
-msgstr ""
+msgstr "동영상 형식:"
 
 #: src/Gui/RecordOptions.qml:81
 #, kde-format
@@ -1071,10 +1071,9 @@ msgstr "지연"
 
 #. i18n: ectx: label, entry (videoFormat), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:110
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgid "File format for saved screen recordings"
-msgstr "새 화면 녹화"
+msgstr "화면 녹화 파일 형식"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
@@ -1422,6 +1421,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Wayland 환경에서 Spectacle은 KDE Plasma의 KWin 컴포지터를 사용해야 하지만 시"
+"스템에 설치되어 있지 않은 것 같습니다. KDE Plasma에서 Spectacle을 사용하거나 "
+"다른 캡처 도구를 사용하십시오."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
