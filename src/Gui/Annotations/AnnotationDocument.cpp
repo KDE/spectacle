@@ -1159,6 +1159,15 @@ EditAction *AnnotationDocument::actionAtPoint(const QPointF &point) const
     return nullptr;
 }
 
+QRectF AnnotationDocument::visualGeometryAtPoint(const QPointF &point) const
+{
+    auto action = actionAtPoint(point);
+    if (!action) {
+        return {};
+    }
+    return action->visualGeometry();
+}
+
 void AnnotationDocument::undo()
 {
     if (m_undoStack.isEmpty()) {

@@ -20,6 +20,7 @@ AnnotationViewport::AnnotationViewport(QQuickItem *parent)
 {
     s_viewportInstances.append(this);
     setFlag(ItemIsFocusScope);
+    setAcceptHoverEvents(true);
     setAcceptedMouseButtons(Qt::LeftButton);
 }
 
@@ -82,6 +83,37 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
     Q_EMIT documentChanged();
     update();
 }
+
+QPointF AnnotationViewport::hoverPosition() const
+{
+    return m_localHoverPosition;
+}
+
+void AnnotationViewport::setHoverPosition(const QPointF &point)
+{
+    if (m_localHoverPosition == point) {
+        return;
+    }
+    m_localHoverPosition = point;
+    Q_EMIT hoverPositionChanged();
+}
+
+bool AnnotationViewport::isHovered() const
+{
+    return m_isHovered;
+}
+
+void AnnotationViewport::setHovered(bool hovered)
+{
+    if (m_isHovered == hovered) {
+        return;
+    }
+
+    m_isHovered = hovered;
+    Q_EMIT hoveredChanged();
+}
+
+void setHovered(bool hovered);
 
 QPointF AnnotationViewport::pressPosition() const
 {
@@ -153,6 +185,34 @@ void AnnotationViewport::paint(QPainter *painter)
     }
 
     m_document->paint(painter, m_viewportRect, m_zoom);
+}
+
+void AnnotationViewport::hoverEnterEvent(QHoverEvent *event)
+{
+    if (shouldIgnoreInput()) {
+        QQuickItem::hoverEnterEvent(event);
+        return;
+    }
+    setHoverPosition(event->posF());
+    setHovered(true);
+}
+
+void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
+{
+    if (shouldIgnoreInput()) {
+        QQuickItem::hoverMoveEvent(event);
+        return;
+    }
+    setHoverPosition(event->posF());
+}
+
+void AnnotationViewport::hoverLeaveEvent(QHoverEvent *event)
+{
+    if (shouldIgnoreInput()) {
+        QQuickItem::hoverLeaveEvent(event);
+        return;
+    }
+    setHovered(false);
 }
 
 void AnnotationViewport::mousePressEvent(QMouseEvent *event)

@@ -79,6 +79,8 @@ public:
 
     EditAction *actionAtPoint(const QPointF &point) const;
 
+    Q_INVOKABLE QRectF visualGeometryAtPoint(const QPointF &point) const;
+
 public Q_SLOTS:
     void undo();
     void redo();

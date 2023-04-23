@@ -21,6 +21,8 @@ class AnnotationViewport : public QQuickPaintedItem
     Q_PROPERTY(QRectF viewportRect READ viewportRect WRITE setViewportRect NOTIFY viewportRectChanged)
     Q_PROPERTY(qreal zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
     Q_PROPERTY(AnnotationDocument *document READ document WRITE setDocument NOTIFY documentChanged)
+    Q_PROPERTY(QPointF hoverPosition READ hoverPosition NOTIFY hoverPositionChanged)
+    Q_PROPERTY(bool hovered READ isHovered NOTIFY hoveredChanged)
     Q_PROPERTY(QPointF pressPosition READ pressPosition NOTIFY pressPositionChanged)
     Q_PROPERTY(bool pressed READ isPressed NOTIFY pressedChanged)
     Q_PROPERTY(bool anyPressed READ isAnyPressed NOTIFY anyPressedChanged)
@@ -40,21 +42,42 @@ public:
 
     void paint(QPainter *painter) override;
 
+    QPointF hoverPosition() const;
+
+    bool isHovered() const;
+
     QPointF pressPosition() const;
 
     bool isPressed() const;
 
     bool isAnyPressed() const;
 
+    /**
+     * Transform point from the local coordinate system
+     * to the document coordinate system.
+     */
+    Q_INVOKABLE QPointF toDocumentPoint(const QPointF &point) const;
+
+    /**
+     * Transform rect from the document coordinate system
+     * to the local coordinate system.
+     */
+    Q_INVOKABLE QRectF toLocalRect(const QRectF &rect) const;
+
 Q_SIGNALS:
     void viewportRectChanged();
     void documentChanged();
     void zoomChanged();
+    void hoverPositionChanged();
+    void hoveredChanged();
     void pressPositionChanged();
     void pressedChanged();
     void anyPressedChanged();
 
 protected:
+    void hoverEnterEvent(QHoverEvent *event) override;
+    void hoverMoveEvent(QHoverEvent *event) override;
+    void hoverLeaveEvent(QHoverEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
@@ -62,19 +85,9 @@ protected:
     void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
-    /**
-     * Transform point from the local coordinate system
-     * to the document coordinate system.
-     */
-    QPointF toDocumentPoint(const QPointF &point) const;
-
-    /**
-     * Transform rect from the document coordinate system
-     * to the local coordinate system.
-     */
-    QRectF toLocalRect(const QRectF &rect) const;
-
     bool shouldIgnoreInput() const;
+    void setHoverPosition(const QPointF &point);
+    void setHovered(bool hovered);
     void setPressPosition(const QPointF &point);
     void setPressed(bool pressed);
     void setAnyPressed();
@@ -88,8 +101,10 @@ private:
     qreal m_zoom = 1.0;
     QPointer<AnnotationDocument> m_document;
     QPointF m_lastDocumentPressPos;
+    QPointF m_localHoverPosition;
     QPointF m_localPressPosition;
     QRectF m_lastSelectedActionVisualGeometry;
+    bool m_isHovered = false;
     bool m_isPressed = false;
     bool m_allowDraggingSelectedAction = false;
     bool m_acceptKeyReleaseEvents = false;
