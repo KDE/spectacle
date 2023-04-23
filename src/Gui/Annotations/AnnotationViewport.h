@@ -62,18 +62,33 @@ protected:
     void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
+    /**
+     * Transform point from the local coordinate system
+     * to the document coordinate system.
+     */
+    QPointF toDocumentPoint(const QPointF &point) const;
+
+    /**
+     * Transform rect from the document coordinate system
+     * to the local coordinate system.
+     */
+    QRectF toLocalRect(const QRectF &rect) const;
+
     bool shouldIgnoreInput() const;
     void setPressPosition(const QPointF &point);
     void setPressed(bool pressed);
     void setAnyPressed();
-    void onRepaintNeeded(const QRectF &area);
+    // Repaint rect from document coordinate system or whole viewport if empty.
+    void repaintDocument(const QRectF &documentRect);
+    // Repaint rect from document coordinate system or nothing if empty.
+    void repaintDocumentRect(const QRectF &documentRect);
     void setCursorForToolType();
 
     QRectF m_viewportRect;
     qreal m_zoom = 1.0;
     QPointer<AnnotationDocument> m_document;
-    QPointF m_lastScaledViewPressPos;
-    QPointF m_pressPosition;
+    QPointF m_lastDocumentPressPos;
+    QPointF m_localPressPosition;
     QRectF m_lastSelectedActionVisualGeometry;
     bool m_isPressed = false;
     bool m_allowDraggingSelectedAction = false;

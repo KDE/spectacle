@@ -76,7 +76,7 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
     }
 
     m_document = doc;
-    connect(doc, &AnnotationDocument::repaintNeeded, this, &AnnotationViewport::onRepaintNeeded);
+    connect(doc, &AnnotationDocument::repaintNeeded, this, &AnnotationViewport::repaintDocument);
     connect(doc->tool(), &AnnotationTool::typeChanged,
             this, &AnnotationViewport::setCursorForToolType);
     Q_EMIT documentChanged();
@@ -85,15 +85,15 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
 
 QPointF AnnotationViewport::pressPosition() const
 {
-    return m_pressPosition;
+    return m_localPressPosition;
 }
 
 void AnnotationViewport::setPressPosition(const QPointF &point)
 {
-    if (m_pressPosition == point) {
+    if (m_localPressPosition == point) {
         return;
     }
-    m_pressPosition = point;
+    m_localPressPosition = point;
     Q_EMIT pressPositionChanged();
 }
 
@@ -162,9 +162,7 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
         return;
     }
 
-    qreal zoom = this->zoom();
-    QPointF scaledMousePos = event->localPos() / zoom;
-    m_lastScaledViewPressPos = m_viewportRect.topLeft() / zoom + scaledMousePos;
+    m_lastDocumentPressPos = toDocumentPoint(event->localPos());
     auto toolType = m_document->tool()->type();
     auto saWrapper = m_document->selectedActionWrapper();
 
@@ -174,11 +172,11 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
     }
 
     if (toolType == AnnotationDocument::ChangeAction) {
-        m_document->selectAction(m_lastScaledViewPressPos);
+        m_document->selectAction(m_lastDocumentPressPos);
         // Immediately commit to immediately pop an action copy up in the z order
         saWrapper->commitChanges();
     } else {
-        m_document->beginAction(m_lastScaledViewPressPos);
+        m_document->beginAction(m_lastDocumentPressPos);
     }
 
     m_allowDraggingSelectedAction = toolType == AnnotationDocument::ChangeAction
@@ -198,11 +196,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
     }
 
     auto toolType = m_document->tool()->type();
-    qreal zoom = this->zoom();
-    QPointF scaledMousePos = event->localPos() / zoom;
-    QRectF scaledViewRect = {m_viewportRect.topLeft() / zoom,
-                                 m_viewportRect.size() / zoom};
-    QPointF scaledViewMousePos = scaledViewRect.topLeft() + scaledMousePos;
+    QPointF documentMousePos = toDocumentPoint(event->localPos());
 
     auto saWrapper = m_document->selectedActionWrapper();
     if (toolType == AnnotationDocument::ChangeAction
@@ -210,7 +204,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         && m_allowDraggingSelectedAction
     ) {
         auto visualGeometry = saWrapper->visualGeometry();
-        QPointF posDiff = scaledViewMousePos - m_lastScaledViewPressPos;
+        QPointF posDiff = documentMousePos - m_lastDocumentPressPos;
         visualGeometry.moveTo(m_lastSelectedActionVisualGeometry.topLeft() + posDiff);
         saWrapper->setVisualGeometry(visualGeometry);
     } else if (toolType != AnnotationDocument::None) {
@@ -223,7 +217,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         if (event->modifiers() & Qt::ControlModifier) {
             options |= ContinueOption::CenterResize;
         }
-        m_document->continueAction(scaledViewMousePos, options);
+        m_document->continueAction(documentMousePos, options);
     }
 
     setPressPosition(event->localPos());
@@ -295,20 +289,38 @@ void AnnotationViewport::keyReleaseEvent(QKeyEvent *event)
     m_acceptKeyReleaseEvents = false;
 }
 
+QPointF AnnotationViewport::toDocumentPoint(const QPointF &point) const
+{
+    return (point + m_viewportRect.topLeft()) / m_zoom;
+}
+
+QRectF AnnotationViewport::toLocalRect(const QRectF &rect) const
+{
+    return {(rect.topLeft() - m_viewportRect.topLeft()) * m_zoom,
+            rect.size() * m_zoom};
+}
+
 bool AnnotationViewport::shouldIgnoreInput() const
 {
     return !isEnabled() || !m_document || m_document->tool()->type() == AnnotationDocument::None;
 }
 
-void AnnotationViewport::onRepaintNeeded(const QRectF &area)
+void AnnotationViewport::repaintDocument(const QRectF &documentRect)
 {
-    auto scaledArea = QRectF(area.x() * m_zoom, area.y() * m_zoom, area.width() * m_zoom, area.height() * m_zoom);
-    if (area.isEmpty()) {
+    if (documentRect.isEmpty()) {
         update();
-    } else if (!m_viewportRect.intersects(scaledArea)) {
         return;
-    } else {
-        update(scaledArea.translated(-m_viewportRect.topLeft() * m_zoom).toAlignedRect());
+    }
+
+    repaintDocumentRect(documentRect);
+}
+
+void AnnotationViewport::repaintDocumentRect(const QRectF &documentRect)
+{
+    auto localRect = toLocalRect(documentRect).toAlignedRect();
+    // intersects returns false if either rect is empty
+    if (boundingRect().intersects(localRect)) {
+        update(localRect);
     }
 }
 
