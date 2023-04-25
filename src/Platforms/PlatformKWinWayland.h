@@ -43,7 +43,7 @@ public:
     ShutterModes supportedShutterModes() const override;
 
 public Q_SLOTS:
-    void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override;
+    void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) override;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();

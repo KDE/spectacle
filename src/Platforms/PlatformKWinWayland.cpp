@@ -318,18 +318,18 @@ static QRect workArea()
     return std::accumulate(screens.begin(), screens.end(), QRect(), accumulateFunc);
 }
 
-void PlatformKWinWayland::doGrab(ShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+void PlatformKWinWayland::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
 {
     ScreenShotFlags flags = ScreenShotFlag::NativeSize;
 
-    if (theIncludeDecorations) {
+    if (includeDecorations) {
         flags |= ScreenShotFlag::IncludeDecoration;
     }
-    if (theIncludePointer) {
+    if (includePointer) {
         flags |= ScreenShotFlag::IncludeCursor;
     }
 
-    switch (theGrabMode) {
+    switch (grabMode) {
     case GrabMode::AllScreens:
         takeScreenShotArea(workArea(), flags);
         break;
