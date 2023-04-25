@@ -27,12 +27,12 @@ Platform::ShutterModes PlatformNull::supportedShutterModes() const
     return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
-void PlatformNull::doGrab(ShutterMode theShutterMode, GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations)
+void PlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
 {
-    Q_UNUSED(theShutterMode)
-    Q_UNUSED(theGrabMode)
-    Q_UNUSED(theIncludePointer)
-    Q_UNUSED(theIncludeDecorations)
+    Q_UNUSED(shutterMode)
+    Q_UNUSED(grabMode)
+    Q_UNUSED(includePointer)
+    Q_UNUSED(includeDecorations)
     Q_EMIT newScreenshotTaken();
 }
 
