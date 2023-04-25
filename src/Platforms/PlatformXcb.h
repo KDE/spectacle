@@ -25,34 +25,34 @@ public:
     ShutterModes supportedShutterModes() const override final;
 
 public Q_SLOTS:
-    void doGrab(Platform::ShutterMode theShutterMode, Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations) override final;
+    void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();
-    void handleKWinScreenshotReply(quint64 theDrawable);
-    void doGrabNow(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
-    void doGrabOnClick(Platform::GrabMode theGrabMode, bool theIncludePointer, bool theIncludeDecorations);
+    void handleKWinScreenshotReply(quint64 drawable);
+    void doGrabNow(Platform::GrabMode grabMode, bool includePointer, bool includeDecorations);
+    void doGrabOnClick(Platform::GrabMode grabMode, bool includePointer, bool includeDecorations);
 
 private:
-    inline void updateWindowTitle(xcb_window_t theWindow);
+    inline void updateWindowTitle(xcb_window_t window);
     bool isKWinAvailable();
     QPoint getCursorPosition();
-    QRect getDrawableGeometry(xcb_drawable_t theDrawable);
+    QRect getDrawableGeometry(xcb_drawable_t drawable);
     xcb_window_t getWindowUnderCursor();
-    xcb_window_t getTransientWindowParent(xcb_window_t theChildWindow, QRect &theWindowRectOut, bool theIncludeDecorations);
-    QImage convertFromNative(xcb_image_t *theXcbImage);
-    QImage blendCursorImage(QImage &image, const QRect theRect);
-    QImage postProcessImage(QImage &image, QRect theRect, bool theBlendPointer);
-    QImage getImageFromDrawable(xcb_drawable_t theXcbDrawable, const QRect &theRect);
-    QImage getToplevelImage(QRect theRect, bool theBlendPointer);
-    QImage getWindowImage(xcb_window_t theWindow, bool theBlendPointer);
+    xcb_window_t getTransientWindowParent(xcb_window_t childWindow, QRect &windowRectOut, bool includeDecorations);
+    QImage convertFromNative(xcb_image_t *xcbImage);
+    QImage blendCursorImage(QImage &image, const QRect rect);
+    QImage postProcessImage(QImage &image, QRect rect, bool blendPointer);
+    QImage getImageFromDrawable(xcb_drawable_t xcbDrawable, const QRect &rect);
+    QImage getToplevelImage(QRect rect, bool blendPointer);
+    QImage getWindowImage(xcb_window_t window, bool blendPointer);
 
-    void grabAllScreens(bool theIncludePointer);
-    void grabCurrentScreen(bool theIncludePointer);
-    void grabApplicationWindow(xcb_window_t theWindow, bool theIncludePointer, bool theIncludeDecorations);
-    void grabActiveWindow(bool theIncludePointer, bool theIncludeDecorations);
-    void grabWindowUnderCursor(bool theIncludePointer, bool theIncludeDecorations);
-    void grabTransientWithParent(bool theIncludePointer, bool theIncludeDecorations);
+    void grabAllScreens(bool includePointer);
+    void grabCurrentScreen(bool includePointer);
+    void grabApplicationWindow(xcb_window_t window, bool includePointer, bool includeDecorations);
+    void grabActiveWindow(bool includePointer, bool includeDecorations);
+    void grabWindowUnderCursor(bool includePointer, bool includeDecorations);
+    void grabTransientWithParent(bool includePointer, bool includeDecorations);
 
     // on-click screenshot shutter support needs a native event filter in xcb
     class OnClickEventFilter;
