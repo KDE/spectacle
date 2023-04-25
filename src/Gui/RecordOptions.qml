@@ -13,16 +13,7 @@ ColumnLayout {
     ColumnLayout {
         visible: !SpectacleCore.isRecording
         spacing: Kirigami.Units.mediumSpacing
-        Kirigami.Heading {
-            Layout.fillWidth: true
-            topPadding: -captureHeadingMetrics.descent
-            bottomPadding: -captureHeadingMetrics.descent + parent.spacing
-            text: i18n("New screen recording")
-            level: 3
-            FontMetrics {
-                id: captureHeadingMetrics
-            }
-        }
+
         Repeater {
             model: SpectacleCore.recordingModeModel
             delegate: QQC2.Button {
@@ -38,10 +29,13 @@ ColumnLayout {
         }
         Kirigami.Heading {
             Layout.fillWidth: true
-            topPadding: -captureHeadingMetrics.descent + parent.spacing
-            bottomPadding: -captureHeadingMetrics.descent + parent.spacing
+            topPadding: -recordingSettingsMetrics.descent + parent.spacing
+            bottomPadding: -recordingSettingsMetrics.descent + parent.spacing
             text: i18n("Recording Settings")
             level: 3
+            FontMetrics {
+                id: recordingSettingsMetrics
+            }
         }
         QQC2.CheckBox {
             Layout.fillWidth: true
