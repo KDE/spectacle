@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:47+0000\n"
-"PO-Revision-Date: 2023-03-20 11:52+0000\n"
+"POT-Creation-Date: 2023-04-26 00:47+0000\n"
+"PO-Revision-Date: 2023-04-23 12:51+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -13,7 +13,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-POFile-SpellExtra: Portable Boudhayan Spectacle Gupta KIPI Enter\n"
 "X-POFile-SpellExtra: Graphics QImageWriter Network Online Nd Print\n"
-"X-POFile-SpellExtra: RemeberlastRectangularRegion textoActual DBus\n"
+"X-POFile-SpellExtra: RemeberlastRectangularRegion textoActual DBus Wayland\n"
+"X-POFile-SpellExtra: KWin\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -469,14 +470,14 @@ msgstr[1] "Cancelar (%1 segundos)"
 msgid "Take a new screenshot"
 msgstr "Tirar uma nova fotografia"
 
-#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:41 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Configuração da Captura"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:48
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Incluir o cursor do rato"
@@ -718,28 +719,23 @@ msgstr "Pausa"
 msgid "Play"
 msgstr "Reproduzir"
 
-#: src/Gui/RecordOptions.qml:20
-#, kde-format
-msgid "New screen recording"
-msgstr "Nova gravação do ecrã"
-
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:34
 #, kde-format
 msgid "Recording Settings"
 msgstr "Configuração da Gravação"
 
-#: src/Gui/RecordOptions.qml:49
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostrar o cursor do rato na gravação do ecrã."
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:53
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
 msgstr "Formato do vídeo:"
 
-#: src/Gui/RecordOptions.qml:81
+#: src/Gui/RecordOptions.qml:75
 #, kde-format
 msgid "Finish recording"
 msgstr "Terminar a gravação"
@@ -1455,6 +1451,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"No Wayland, o Spectacle precisa do compositor KWin, do Plasma do KDE, que "
+"não parece estar disponível. Use o Spectacle no Plasma do KDE ou use uma "
+"ferramenta diferente para a captura do ecrã."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1531,3 +1530,6 @@ msgstr "Abrir"
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
+
+#~ msgid "New screen recording"
+#~ msgstr "Nova gravação do ecrã"

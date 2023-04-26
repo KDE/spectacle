@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:47+0000\n"
+"POT-Creation-Date: 2023-04-26 00:47+0000\n"
 "PO-Revision-Date: 2023-04-15 18:48+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -492,14 +492,14 @@ msgstr[3] "Отмена (%1 секунда)"
 msgid "Take a new screenshot"
 msgstr "Сделать новый снимок"
 
-#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:41 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Параметры съёмки"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:48
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Включая курсор мыши"
@@ -744,28 +744,23 @@ msgstr "Приостановить"
 msgid "Play"
 msgstr "Воспроизвести"
 
-#: src/Gui/RecordOptions.qml:20
-#, kde-format
-msgid "New screen recording"
-msgstr "Новая запись экрана"
-
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:34
 #, kde-format
 msgid "Recording Settings"
 msgstr "Параметры записи"
 
-#: src/Gui/RecordOptions.qml:49
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Показывать положение курсора в записи экрана."
 
-#: src/Gui/RecordOptions.qml:59
+#: src/Gui/RecordOptions.qml:53
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:81
+#: src/Gui/RecordOptions.qml:75
 #, kde-format
 msgid "Finish recording"
 msgstr "Завершить запись"
@@ -1561,6 +1556,9 @@ msgstr "Открыть"
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
+
+#~ msgid "New screen recording"
+#~ msgstr "Новая запись экрана"
 
 #~ msgid "On Click"
 #~ msgstr "По щелчку"
