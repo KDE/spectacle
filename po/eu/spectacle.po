@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:53+0000\n"
+"POT-Creation-Date: 2023-04-26 02:47+0000\n"
 "PO-Revision-Date: 2023-04-13 23:35+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -466,14 +466,14 @@ msgstr[1] "Utzi (%1 segundo)"
 msgid "Take a new screenshot"
 msgstr "Hartu pantaila-argazki berri bat"
 
-#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:41 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Atzemate ezarpenak"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:48
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Jaso saguaren erakuslea"
@@ -715,22 +715,17 @@ msgstr "Eten"
 msgid "Play"
 msgstr "Jo"
 
-#: src/Gui/RecordOptions.qml:20
-#, kde-format
-msgid "New screen recording"
-msgstr "Pantaila grabazio berria"
-
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:34
 #, kde-format
 msgid "Recording Settings"
 msgstr "Grabatzeko ezarpenak"
 
-#: src/Gui/RecordOptions.qml:49
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
 
-#: src/Gui/RecordOptions.qml:60
+#: src/Gui/RecordOptions.qml:54
 #, kde-format
 msgid "Finish recording"
 msgstr "Bukatu grabazioa"
@@ -1509,6 +1504,9 @@ msgstr "Ireki"
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
+
+#~ msgid "New screen recording"
+#~ msgstr "Pantaila grabazio berria"
 
 #~ msgid "On Click"
 #~ msgstr "Klik egitean"

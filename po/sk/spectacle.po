@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:53+0000\n"
+"POT-Creation-Date: 2023-04-26 02:47+0000\n"
 "PO-Revision-Date: 2023-04-02 15:16+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -461,14 +461,14 @@ msgstr[2] "Zrušiť (%1 sekúnd)"
 msgid "Take a new screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
-#: src/Gui/CaptureOptions.qml:38 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:41 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Nastavenia záznamu"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:48
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Zahrnúť ukazovateľ myši"
@@ -712,22 +712,17 @@ msgstr "Pozastaviť"
 msgid "Play"
 msgstr "Prehrať"
 
-#: src/Gui/RecordOptions.qml:20
-#, kde-format
-msgid "New screen recording"
-msgstr "Nová nahrávka obrazovky"
-
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:34
 #, kde-format
 msgid "Recording Settings"
 msgstr "Nastavenia záznamu"
 
-#: src/Gui/RecordOptions.qml:49
+#: src/Gui/RecordOptions.qml:43
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Zobraziť kurzor myši v zázname obrazovky."
 
-#: src/Gui/RecordOptions.qml:60
+#: src/Gui/RecordOptions.qml:54
 #, kde-format
 msgid "Finish recording"
 msgstr "Dokončiť nahrávku"
@@ -1506,6 +1501,9 @@ msgstr "Otvoriť"
 #, kde-format
 msgid "Annotate"
 msgstr "Komentovať"
+
+#~ msgid "New screen recording"
+#~ msgstr "Nová nahrávka obrazovky"
 
 #~ msgid "On Click"
 #~ msgstr "Po kliknutí"
