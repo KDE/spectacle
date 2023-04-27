@@ -300,7 +300,7 @@ MouseArea {
             property bool rememberPosition: false
             readonly property int valignment: {
                 if (Selection.empty) {
-                    return Qt.AlignVCenter
+                    return 0
                 }
                 if (3 * height + topPadding + Kirigami.Units.mediumSpacing
                     <= SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom
@@ -348,7 +348,7 @@ MouseArea {
                         v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - mainToolBar.height - mainToolBar.bottomPadding
                     } else {
-                        v = (root.height - mainToolBar.height) / 2 - mainToolBar.parent.y
+                        v = (mainToolBar.height / 2) - mainToolBar.parent.y
                     }
                     return contextWindow.dprRound(v)
                 }
