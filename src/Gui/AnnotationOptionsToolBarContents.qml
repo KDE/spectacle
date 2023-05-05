@@ -49,12 +49,15 @@ ButtonGrid {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.Label {
-                leftPadding: root.mirrored ? 0 : parent.spacing
-                rightPadding: root.mirrored ? parent.spacing : 0
-                width: contextWindow.dprRound(implicitWidth)
+            QQC2.CheckBox {
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Stroke:")
+                checked: colorRect.color.a > 0
+                onToggled: if (root.isSelectedActionOptions) {
+                    AnnotationDocument.selectedAction.strokeColor.a = checked
+                } else {
+                    AnnotationDocument.tool.strokeColor.a = checked
+                }
             }
 
             QQC2.SpinBox {
@@ -98,6 +101,7 @@ ButtonGrid {
                 display: QQC2.ToolButton.IconOnly
                 QQC2.ToolTip.text: i18n("Stroke Color")
                 Rectangle { // should we use some kind of image provider instead?
+                    id: colorRect
                     anchors.centerIn: parent
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
@@ -131,12 +135,15 @@ ButtonGrid {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.Label {
-                leftPadding: root.mirrored ? 0 : parent.spacing
-                rightPadding: root.mirrored ? parent.spacing : 0
-                width: contextWindow.dprRound(implicitWidth)
+            QQC2.CheckBox {
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Fill:")
+                checked: colorRect.color.a > 0
+                onToggled: if (root.isSelectedActionOptions) {
+                    AnnotationDocument.selectedAction.fillColor.a = checked
+                } else {
+                    AnnotationDocument.tool.fillColor.a = checked
+                }
             }
 
             ToolButton {
@@ -144,6 +151,7 @@ ButtonGrid {
                 display: QQC2.ToolButton.IconOnly
                 QQC2.ToolTip.text: i18n("Fill Color")
                 Rectangle {
+                    id: colorRect
                     anchors.centerIn: parent
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
@@ -177,12 +185,15 @@ ButtonGrid {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.Label {
-                leftPadding: root.mirrored ? 0 : parent.spacing
-                rightPadding: root.mirrored ? parent.spacing : 0
-                width: contextWindow.dprRound(implicitWidth)
+            QQC2.CheckBox {
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Font:")
+                checked: colorRect.color.a > 0
+                onToggled: if (root.isSelectedActionOptions) {
+                    AnnotationDocument.selectedAction.fillColor.a = checked
+                } else {
+                    AnnotationDocument.tool.fillColor.a = checked
+                }
             }
 
             ToolButton {
@@ -212,6 +223,7 @@ ButtonGrid {
                 display: QQC2.ToolButton.IconOnly
                 QQC2.ToolTip.text: i18n("Font Color")
                 Rectangle {
+                    id: colorRect
                     anchors.centerIn: parent
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
