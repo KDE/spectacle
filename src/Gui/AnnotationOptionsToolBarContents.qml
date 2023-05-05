@@ -185,15 +185,12 @@ ButtonGrid {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.CheckBox {
+            QQC2.Label {
+                leftPadding: root.mirrored ? 0 : parent.spacing
+                rightPadding: root.mirrored ? parent.spacing : 0
+                width: contextWindow.dprRound(implicitWidth)
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Font:")
-                checked: colorRect.color.a > 0
-                onToggled: if (root.isSelectedActionOptions) {
-                    AnnotationDocument.selectedAction.fillColor.a = checked
-                } else {
-                    AnnotationDocument.tool.fillColor.a = checked
-                }
             }
 
             ToolButton {
