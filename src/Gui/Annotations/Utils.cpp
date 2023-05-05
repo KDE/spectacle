@@ -90,7 +90,7 @@ QImage fastPseudoBlur(const QImage &src, int radius, qreal devicePixelRatio)
 
 QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
 {
-    if (!action->hasShadow()) {
+    if (!action || !action->hasShadow()) {
         return QImage();
     }
 
