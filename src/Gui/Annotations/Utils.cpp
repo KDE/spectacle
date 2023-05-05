@@ -94,14 +94,15 @@ QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
         return QImage();
     }
 
-    const QColor shadowColor(63, 63, 63, std::min(28, std::max(action->strokeColor().alpha(), action->fillColor().alpha())));
+    const QColor shadowStroke(63, 63, 63, std::ceil(28 * action->strokeColor().alphaF()));
+    const QColor shadowFill(63, 63, 63, std::ceil(28 * action->fillColor().alphaF()));
 
     const QRectF totalRect = action->visualGeometry() + action->shadowMargins();
     QImage shadow(totalRect.size().toSize() * devicePixelRatio, QImage::Format_ARGB32_Premultiplied);
     shadow.fill(Qt::transparent);
     QPainter p(&shadow);
     p.setRenderHint(QPainter::Antialiasing);
-    QPen pen(shadowColor, action->strokeWidth(), Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+    QPen pen(shadowStroke, action->strokeWidth(), Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
     p.setCompositionMode(QPainter::CompositionMode_Source);
     p.setPen(pen);
     p.setBrush(Qt::NoBrush);
@@ -133,7 +134,7 @@ QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
     case AnnotationDocument::Rectangle:
     case AnnotationDocument::Ellipse: {
         auto *sa = static_cast<ShapeAction *>(action);
-        p.setBrush(shadowColor);
+        p.setBrush(shadowFill);
         // p.setPen(sa->strokeWidth() > 0 ? pen : Qt::NoPen);
         // p.setBrush(sa->fillColor());
 
@@ -161,7 +162,7 @@ QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
     case AnnotationDocument::Number: {
         auto *na = static_cast<NumberAction *>(action);
         const auto rect = na->geometry().translated(translation);
-        p.setBrush(shadowColor);
+        p.setBrush(shadowFill);
         p.setPen(Qt::NoPen);
         p.drawEllipse(rect);
         break;
