@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 00:45+0000\n"
-"PO-Revision-Date: 2023-04-19 13:08+0300\n"
+"PO-Revision-Date: 2023-05-08 11:00+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
 msgid "Launch Spectacle"
-msgstr "Spectacle'ı Başlat"
+msgstr "Deklanşör'ü Başlat"
 
 #: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:39
 #, kde-format
@@ -115,7 +115,7 @@ msgstr "Ekranın dikdörtgen bir bölgesini yakala"
 #: src/CommandLineOptions.h:44
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Bir ekran görüntüsü almadan Spectacle'ı başlat"
+msgstr "Bir ekran görüntüsü almadan Deklanşör'ü başlat"
 
 #: src/CommandLineOptions.h:48
 #, kde-format
@@ -171,7 +171,7 @@ msgstr ""
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
-"DBus'a kayıt yapmadan yeni bir Spectacle grafik arabirim örneği başlatır"
+"DBus'a kayıt yapmadan yeni bir Deklanşör grafik arabirim örneği başlatır"
 
 #: src/CommandLineOptions.h:90
 #, kde-format
@@ -508,7 +508,7 @@ msgstr "Elle kaydet veya kopyala işleminden sonra çık"
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
-"Görüntüyü elle kaydettikten veya kopyaladıktan sonra Spectacle'dan çık."
+"Görseli elle kaydettikten veya kopyaladıktan sonra Deklanşör'den çıkın."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
@@ -558,7 +558,7 @@ msgstr "Yakalama Kipleri"
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr "Spectacle'ı Yapılandır…"
+msgstr "Deklanşör'ü Yapılandır…"
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
@@ -673,7 +673,7 @@ msgstr ""
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
-"Görüntüyü elle kaydettikten veya kopyaladıktan sonra Spectacle "
+"Görüntüyü elle kaydettikten veya kopyaladıktan sonra Deklanşör "
 "uygulamasından çık"
 
 #: src/Gui/OptionsMenu.cpp:120
@@ -763,15 +763,14 @@ msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"Bir ekran görüntüsü alınamadı. Lütfen burada bir hata bildirin: <a href="
-"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">Spectacle hataları</"
-"a>"
+"Bir ekran görüntüsü alınamadı. Lütfen, <a href=\"https://bugs.kde.org/"
+"enter_bug.cgi?product=Spectacle\">adresinden</a> bir hata kaydı açın"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, kde-format
 msgid "When launching Spectacle:"
-msgstr "Spectacle başlatılırken:"
+msgstr "Deklanşör başlatılırken:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
@@ -825,7 +824,7 @@ msgstr "Dosya konumunu panoya kopyala"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "Spectacle çalışırken"
+msgstr "Deklanşör çalışırken"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
@@ -843,13 +842,13 @@ msgstr "Yeni bir ekran görüntüsü al"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
 #, kde-format
 msgid "Open a new Spectacle window"
-msgstr "Yeni bir Spectacle penceresi aç"
+msgstr "Yeni bir Deklanşör penceresi aç"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Return focus to Spectacle"
-msgstr "Odağı Spectacle'a döndür"
+msgstr "Odağı Deklanşör'e döndür"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
@@ -909,7 +908,7 @@ msgstr "Her zaman"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:236
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr "Spectacle kapanana dek"
+msgstr "Deklanşör kapanana dek"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/SaveOptions.ui:17
@@ -983,7 +982,7 @@ msgstr "Kısayollar"
 #: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
-msgstr "Spectacle başlatıldığında ne yapılsın"
+msgstr "Deklanşör başlatıldığında ne yapılsın"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:24
@@ -991,7 +990,7 @@ msgstr "Spectacle başlatıldığında ne yapılsın"
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr ""
-"Spectacle halihazırda çalışıyorken yazdır düğmesine basıldığında ne olmalı"
+"Deklanşör halihazırda çalışıyorken yazdır düğmesine basıldığında ne olmalı"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:33
@@ -1328,7 +1327,7 @@ msgstr "Seçim dörtgeni dışına sürükle"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
-msgstr "+ Shift: Büyüteç"
+msgstr "+ Üst Karakter: Büyüteç"
 
 #: src/Gui/ShortcutsTextBox.qml:36
 #, kde-format
@@ -1346,7 +1345,7 @@ msgstr "Ok düğmeleri"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: 1 piksellik adımlarla taşı"
+msgstr "+ Üst Karakter: 1 piksellik adımlarla taşı"
 
 #: src/Gui/ShortcutsTextBox.qml:39
 #, kde-format
@@ -1358,13 +1357,13 @@ msgstr "Sürükleme tutaçları"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
-msgstr "Ok düğmeleri + Alt"
+msgstr "Ok Düğmeleri + Seçenek"
 
 #: src/Gui/ShortcutsTextBox.qml:41
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: 1 piksellik adımlarla yeniden boyutlandır"
+msgstr "+ Üst Karakter: 1 piksellik adımlarla yeniden boyutlandır"
 
 #: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
@@ -1405,7 +1404,7 @@ msgstr "Yinele"
 #: src/Main.cpp:41
 #, kde-format
 msgid "Spectacle"
-msgstr "Spectacle"
+msgstr "Deklanşör"
 
 #: src/Main.cpp:43
 #, kde-format
@@ -1436,9 +1435,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Wayland üzerinde, Spectacle, KDE Plasma'nın KWin bileşikleştiricisini "
-"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Spectacle'ı KDE "
-"Plasma ile veya başka bir ekran görüntüsü aracı kullanın."
+"Wayland üzerinde Deklanşör, KDE Plasma'nın KWin bileşikleştiricisini "
+"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Deklanşör'ü KDE "
+"Plasma üzerinde kullanın veya başka bir ekran görüntüsü alma aracı seçin."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1473,7 +1472,7 @@ msgstr "İmleç Altındaki Pencereyi Yakala"
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgid "Launch Spectacle without capturing"
-msgstr "Spectacle'ı yakalama olmadan başlat"
+msgstr "Deklanşör'ü yakalama olmadan başlat"
 
 #: src/SpectacleCore.cpp:637
 #, kde-format
