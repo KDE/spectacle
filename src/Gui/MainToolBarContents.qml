@@ -53,24 +53,14 @@ ButtonGrid {
         visible: !SpectacleCore.videoMode
         icon.name: "document-save"
         text: i18n("Save")
-        onClicked: {
-            if (annotationsButton.checked) {
-                annotationsButton.toggle()
-            }
-            contextWindow.save()
-        }
+        onClicked: contextWindow.save()
     }
 
     ToolButton {
         visible: !SpectacleCore.videoMode
         icon.name: "document-save-as"
         text: i18n("Save As...")
-        onClicked: {
-            if (annotationsButton.checked) {
-                annotationsButton.toggle()
-            }
-            contextWindow.saveAs()
-        }
+        onClicked: contextWindow.saveAs()
     }
 
     ToolButton {
