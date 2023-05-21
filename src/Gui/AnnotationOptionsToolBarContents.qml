@@ -295,12 +295,12 @@ ButtonGrid {
     }
 
     QQC2.ToolSeparator {
-        visible: shadowCheckbox.visible
+        visible: shadowCheckBox.visible
         height: root.fullButtonHeight
     }
 
     QQC2.CheckBox {
-        id: shadowCheckbox
+        id: shadowCheckBox
         visible: root.isSelectedActionOptions ?
             AnnotationDocument.selectedAction.options & AnnotationTool.Shadow
             : AnnotationDocument.tool.options & AnnotationTool.Shadow
