@@ -129,7 +129,7 @@ EmptyPage {
             bottom: parent.bottom
             right: parent.right
         }
-        width: Math.min(parent.width/3, Kirigami.Units.gridUnit * 15)
+        width: Math.max(implicitWidth, Kirigami.Units.gridUnit * 15)
         sourceComponent: QQC2.Page {
 
             leftPadding: Kirigami.Units.mediumSpacing * 2
