@@ -1,12 +1,12 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:55+0000\n"
-"PO-Revision-Date: 2022-08-08 21:19+0900\n"
+"PO-Revision-Date: 2023-05-18 00:31+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -49,10 +49,9 @@ msgid "Rectangular Region"
 msgstr "矩形領域"
 
 #: src/CaptureModeModel.cpp:102
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgid "All Screens"
-msgstr "フルスクリーン"
+msgstr "すべてのスクリーン"
 
 #: src/CaptureModeModel.cpp:102
 #, kde-format
@@ -62,7 +61,7 @@ msgstr "フルスクリーン"
 #: src/CaptureModeModel.cpp:109
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "すべてのスクリーン (同じサイズにスケール)"
 
 #: src/CaptureModeModel.cpp:116
 #, kde-format
@@ -348,129 +347,122 @@ msgstr "N桁の連番"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:54
 #, kde-format
 msgid "Stroke:"
-msgstr ""
+msgstr "線:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:86
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "線の大きさ"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:102
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "線の色"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:140
 #, kde-format
 msgid "Fill:"
-msgstr ""
+msgstr "塗りつぶし:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:152
 #, kde-format
 msgid "Fill Color"
-msgstr ""
+msgstr "塗りつぶしの色"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:193
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "フォント:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:221
 #, kde-format
 msgid "Font Color"
-msgstr ""
+msgstr "フォントの色"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:262
 #, kde-format
 msgid "Number:"
-msgstr ""
+msgstr "数字:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "数字の注釈"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:307
 #, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "影"
 
 #: src/Gui/AnnotationsToolBarContents.qml:65
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: src/Gui/AnnotationsToolBarContents.qml:72
 #, kde-format
 msgid "Select"
-msgstr ""
+msgstr "選択"
 
 #: src/Gui/AnnotationsToolBarContents.qml:80
 #, kde-format
 msgid "Freehand"
-msgstr ""
+msgstr "手書き"
 
 #: src/Gui/AnnotationsToolBarContents.qml:87
 #, kde-format
 msgid "Highlighter"
-msgstr ""
+msgstr "マーカー"
 
 #: src/Gui/AnnotationsToolBarContents.qml:94
 #, kde-format
 msgid "Line"
-msgstr ""
+msgstr "直線"
 
 #: src/Gui/AnnotationsToolBarContents.qml:101
-#, fuzzy, kde-format
-#| msgctxt "Keyboard action"
-#| msgid "Arrow keys"
+#, kde-format
 msgid "Arrow"
-msgstr "矢印キー"
+msgstr "矢印"
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangle"
-msgstr "矩形領域"
+msgstr "矩形"
 
 #: src/Gui/AnnotationsToolBarContents.qml:115
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "楕円"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
 msgid "Pixelate"
-msgstr ""
+msgstr "モザイク"
 
 #: src/Gui/AnnotationsToolBarContents.qml:129
 #, kde-format
 msgid "Blur"
-msgstr ""
+msgstr "ぼかし"
 
 #: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "テキスト"
 
 #: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
 msgid "Number"
-msgstr ""
+msgstr "数字"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:107
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "%1 秒"
-msgstr[1] "%1 秒"
+msgstr[0] "キャンセル (%1 秒)"
+msgstr[1] "キャンセル (%1 秒)"
 
 #: src/Gui/CaptureOptions.qml:19 src/Gui/DialogPage.qml:52
-#, fuzzy, kde-format
-#| msgid "Take a new Screenshot"
+#, kde-format
 msgid "Take a new screenshot"
 msgstr "新しいスクリーンショットを撮影"
 
@@ -478,7 +470,7 @@ msgstr "新しいスクリーンショットを撮影"
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
-msgstr ""
+msgstr "撮影設定"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
 #: src/Gui/RecordOptions.qml:42
@@ -487,10 +479,9 @@ msgid "Include mouse pointer"
 msgstr "マウスポインターを含める"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "スクリーンショット画像にマウスカーソルを表示"
+msgstr "スクリーンショット画像にマウスカーソルを表示します。"
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
 #, kde-format
@@ -501,7 +492,7 @@ msgstr "ウィンドウのタイトルバーと縁を含める"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
+msgstr "ウィンドウ撮影時にタイトルバーと縁を表示します。"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -509,17 +500,15 @@ msgid "Capture the current pop-up only"
 msgstr "現在のポップアップのみを撮影"
 
 #: src/Gui/CaptureSettingsColumn.qml:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"現在のポップアップウィンドウ (メニューやツールチップなど) のみ撮影します。\n"
-"無効化された場合、ポップアップは親ウィンドウとともに撮影されます"
+"ウィンドウ撮影時に、ポップアップウィンドウ (メニューやツールチップなど) のみ"
+"撮影します。無効化された場合、ポップアップは親ウィンドウとともに撮影されま"
+"す。"
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
 #, kde-format
@@ -527,22 +516,19 @@ msgid "Quit after manual Save or Copy"
 msgstr "保存かコピーしたあとに終了"
 
 #: src/Gui/CaptureSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "画像を保存かコピーしたあとに Spectacle を終了"
+msgstr "画像を保存もしくはコピーしたあとに Spectacle を終了します。"
 
 #: src/Gui/CaptureSettingsColumn.qml:54
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture on click"
-msgstr "クリック時"
+msgstr "クリックして撮影"
 
 #: src/Gui/CaptureSettingsColumn.qml:56
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "マウスクリックされてからスクリーンショット画像を撮影"
+msgstr "マウスクリックされてからスクリーンショット画像を撮影します。"
 
 #: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
 #, kde-format
@@ -555,8 +541,7 @@ msgid "The screenshot has been copied to the clipboard."
 msgstr "スクリーンショットがクリップボードにコピーされました。"
 
 #: src/Gui/DelaySpinBox.qml:17
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "遅延なし"
@@ -576,20 +561,19 @@ msgid " seconds"
 msgstr " 秒"
 
 #: src/Gui/DialogPage.qml:96
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Modes"
-msgstr "<b>撮影モード</b>"
+msgstr "撮影モード"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "Spectacle を設定..."
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:147
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: src/Gui/ExportMenu.cpp:44
 #, kde-format
@@ -607,25 +591,24 @@ msgid "Share"
 msgstr "共有"
 
 #: src/Gui/ImageView.qml:148
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "Screenshot"
-msgstr "新しいスクリーンショットを撮影"
+msgstr "スクリーンショット"
 
 #: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
-msgstr ""
+msgstr "録画中"
 
 #: src/Gui/ImageView.qml:215
 #, kde-format
 msgid "Zoom:"
-msgstr ""
+msgstr "ズーム:"
 
 #: src/Gui/ImageView.qml:229
 #, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "画像ズーム"
 
 #: src/Gui/MainToolBarContents.qml:55
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
@@ -641,7 +624,7 @@ msgstr "名前を付けて保存..."
 #: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "コピー"
 
 #: src/Gui/MainToolBarContents.qml:85
 #, kde-format
@@ -649,23 +632,19 @@ msgid "Export"
 msgstr "エクスポート"
 
 #: src/Gui/MainToolBarContents.qml:95
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Annotation Done"
+#, kde-format
 msgid "Show Annotation Tools"
-msgstr "注釈完了"
+msgstr "注釈ツールを表示"
 
 #: src/Gui/MainToolBarContents.qml:120
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "New Screenshot"
-msgstr "新しいスクリーンショットを撮影"
+msgstr "新しいスクリーンショット"
 
 #: src/Gui/MainToolBarContents.qml:131
-#, fuzzy, kde-format
-#| msgid "<b>Options</b>"
+#, kde-format
 msgid "Options"
-msgstr "<b>オプション</b>"
+msgstr "オプション"
 
 #: src/Gui/MainToolBarContents.qml:140
 #, kde-format
@@ -673,10 +652,9 @@ msgid "Configure..."
 msgstr "設定..."
 
 #: src/Gui/OptionsMenu.cpp:37
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Mode"
-msgstr "<b>撮影モード</b>"
+msgstr "撮影モード"
 
 #: src/Gui/OptionsMenu.cpp:68
 #, kde-format
@@ -706,10 +684,9 @@ msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "画像を保存かコピーしたあとに Spectacle を終了"
 
 #: src/Gui/OptionsMenu.cpp:120
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture On Click"
-msgstr "クリック時"
+msgstr "クリックして撮影"
 
 #: src/Gui/OptionsMenu.cpp:140
 #, kde-format
@@ -722,32 +699,33 @@ msgid ""
 "Recording:\n"
 "%1"
 msgstr ""
+"録画中:\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "一時停止"
 
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "再生"
 
 #: src/Gui/RecordOptions.qml:34
 #, kde-format
 msgid "Recording Settings"
-msgstr ""
+msgstr "録画設定"
 
 #: src/Gui/RecordOptions.qml:43
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "スクリーンショット画像にマウスカーソルを表示"
+msgstr "スクリーン録画にマウスカーソルを表示します。"
 
 #: src/Gui/RecordOptions.qml:54
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "録画完了"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -767,10 +745,9 @@ msgstr ""
 "ボードにコピーされました"
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "スクリーンショットは <a href=\"%1\">%2</a> として保存されました。"
+msgstr "動画は <a href=\"%1\">%2</a> として保存されました。"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -1133,10 +1110,9 @@ msgstr "保存時に使用される既定のファイル名"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The default filename used when recording a video"
-msgstr "保存時に使用される既定のファイル名"
+msgstr "録画時に使用される既定のファイル名"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
@@ -1152,10 +1128,9 @@ msgstr "「名前をつけて保存」で使用されるパス"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "The last used save mode"
+#, kde-format
 msgid "The last used annotation tool type"
-msgstr "最後に使用された保存モード"
+msgstr "最後に使用された注釈ツール"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
@@ -1163,7 +1138,7 @@ msgstr "最後に使用された保存モード"
 #: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "手書き注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -1171,7 +1146,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr ""
+msgstr "マーカー注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -1179,7 +1154,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "直線注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -1187,7 +1162,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "矢印注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -1197,7 +1172,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "矩形注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -1209,7 +1184,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "楕円注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1217,7 +1192,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Font for annotations"
-msgstr ""
+msgstr "注釈フォント"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1225,49 +1200,49 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "注釈フォントの色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr ""
+msgstr "手書き注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr ""
+msgstr "直線注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr ""
+msgstr "矢印注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr ""
+msgstr "矩形注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr ""
+msgstr "楕円注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "テキスト注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "数字注釈ツールでドロップシャドウを使用するか"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1405,22 +1380,20 @@ msgstr[0] "%1 秒"
 msgstr[1] "%1 秒"
 
 #: src/Gui/SpectacleWindow.cpp:234
-#, fuzzy, kde-format
-#| msgctxt "@title:window Unsaved Screenshot"
-#| msgid "Unsaved[*]"
+#, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "未保存[*]"
+msgstr "未保存"
 
 #: src/Gui/UndoRedoGroup.qml:32
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "元に戻す"
 
 #: src/Gui/UndoRedoGroup.qml:46
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "やり直す"
 
 #: src/Main.cpp:41
 #, kde-format
@@ -1452,29 +1425,27 @@ msgstr "tomhioo@outlook.jp, ryuichi_ya220@outlook.jp"
 #: src/RecordingModeModel.cpp:30
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "ワークスペース"
 
 #: src/RecordingModeModel.cpp:36
-#, fuzzy, kde-format
-#| msgid "Current Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "現在のスクリーン"
+msgstr "選択されたスクリーン"
 
 #: src/RecordingModeModel.cpp:42
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "アクティブウィンドウ"
+msgstr "選択されたウィンドウ"
 
 #: src/RecordingModeModel.cpp:99
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "出力の選択に失敗しました"
 
 #: src/RecordingModeModel.cpp:130
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "ウィンドウの選択に失敗しました"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
