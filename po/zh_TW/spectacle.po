@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-21 00:44+0000\n"
+"POT-Creation-Date: 2023-05-23 00:44+0000\n"
 "PO-Revision-Date: 2022-03-16 15:39+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -1146,65 +1146,101 @@ msgid "The last used annotation tool type"
 msgstr "上次使用的儲存模式"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:166
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:171
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:176
-#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:181
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:186
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
-#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:191
-#: src/Gui/SettingsDialog/spectacle.kcfg:217
-#: src/Gui/SettingsDialog/spectacle.kcfg:226
-#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr ""
 
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#, kde-format
+msgid "Stroke color for freehand annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#, kde-format
+msgid "Stroke color for highlighter annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
+#, kde-format
+msgid "Stroke color for line annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#, kde-format
+msgid "Stroke color for arrow annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#, kde-format
+msgid "Stroke color for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#, kde-format
+msgid "Stroke color for ellipse annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#, kde-format
+msgid "Fill color for rectangle annotation tool"
+msgstr ""
+
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:226
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
+#, kde-format
+msgid "Fill color for ellipse annotation tool"
+msgstr ""
+
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
+#, kde-format
+msgid "Font for text annotations"
+msgstr ""
+
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
-msgid "Font for annotations"
+msgid "Font for number annotations"
 msgstr ""
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)

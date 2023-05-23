@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-21 00:44+0000\n"
+"POT-Creation-Date: 2023-05-23 00:44+0000\n"
 "PO-Revision-Date: 2023-04-23 16:54+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1151,65 +1151,111 @@ msgid "The last used annotation tool type"
 msgstr "கடைசியாக பயன்படுத்திய குறிப்புக்கருவி"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:166
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "கைமுறை குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:171
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "எடுப்பாக்கிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:176
-#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "கோடு குறிப்புக்கருவிக்கான அகலம்"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:181
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "அம்புக்குறி குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:186
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
-#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:191
-#: src/Gui/SettingsDialog/spectacle.kcfg:217
-#: src/Gui/SettingsDialog/spectacle.kcfg:226
-#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "நீள்வட்ட குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
 
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#, fuzzy, kde-format
+#| msgid "Stroke width for freehand annotation tool"
+msgid "Stroke color for freehand annotation tool"
+msgstr "கைமுறை குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#, fuzzy, kde-format
+#| msgid "Stroke width for highlighter annotation tool"
+msgid "Stroke color for highlighter annotation tool"
+msgstr "எடுப்பாக்கிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
+#, fuzzy, kde-format
+#| msgid "Stroke width for line annotation tool"
+msgid "Stroke color for line annotation tool"
+msgstr "கோடு குறிப்புக்கருவிக்கான அகலம்"
+
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#, fuzzy, kde-format
+#| msgid "Stroke width for arrow annotation tool"
+msgid "Stroke color for arrow annotation tool"
+msgstr "அம்புக்குறி குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Stroke color for rectangle annotation tool"
+msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Stroke color for ellipse annotation tool"
+msgstr "நீள்வட்ட குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
+#, fuzzy, kde-format
+#| msgid "Stroke width for rectangle annotation tool"
+msgid "Fill color for rectangle annotation tool"
+msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:226
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
+#, fuzzy, kde-format
+#| msgid "Stroke width for ellipse annotation tool"
+msgid "Fill color for ellipse annotation tool"
+msgstr "நீள்வட்ட குறிப்புக்கருவிக்கான கோட்டின் அகலம்"
+
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
+#, fuzzy, kde-format
+#| msgid "Font for annotations"
+msgid "Font for text annotations"
+msgstr "குறிப்புகளுக்கான எழுத்துரு"
+
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, kde-format
-msgid "Font for annotations"
+#, fuzzy, kde-format
+#| msgid "Font for annotations"
+msgid "Font for number annotations"
 msgstr "குறிப்புகளுக்கான எழுத்துரு"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
