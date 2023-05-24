@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-23 00:44+0000\n"
-"PO-Revision-Date: 2023-04-24 09:54+0200\n"
+"PO-Revision-Date: 2023-05-23 08:54+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.2.2\n"
 
@@ -1190,75 +1190,65 @@ msgstr "Širina zapisa orodja za opombe v obliki elipse"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Širina zapisa orodja za prostoročne opombe"
+msgstr "Barva potega s čopičem orodja za prostoročne opombe"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Širina zapisa orodja osvetljevanja za opombe"
+msgstr "Barva potega s čopičem orodja osvetljevanja za opombe"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki črte"
+msgstr "Barva potega s čopičem orodja za opombe v obliki črte"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki puščice"
+msgstr "Barva potega s čopičem orodja za opombe v obliki puščice"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki pravokotnika"
+msgstr "Barva potega s čopičem orodja za opombe v obliki pravokotnika"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki elipse"
+msgstr "Barva potega s čopičem orodja za opombe v obliki elipse"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki pravokotnika"
+msgstr "Barva polnila orodja za opombe v obliki pravokotnika"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Širina zapisa orodja za opombe v obliki elipse"
+msgstr "Barva polnila orodja za opombe v obliki elipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Pisava za opombe"
+msgstr "Pisava za besedilne opombe"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Pisava za opombe"
+msgstr "Pisava za številske opombe"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
