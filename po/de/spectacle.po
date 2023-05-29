@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:55+0000\n"
-"PO-Revision-Date: 2023-04-20 19:36+0200\n"
+"PO-Revision-Date: 2023-05-28 10:33+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -394,7 +394,7 @@ msgstr "Nummer:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "Zahl für Zählanmerkung"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:307
 #, kde-format
@@ -1143,10 +1143,9 @@ msgstr "Der zuletzt verwendet Pfad für die Aktion „Speichern unter“"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "The last used save mode"
+#, kde-format
 msgid "The last used annotation tool type"
-msgstr "Der zuletzt verwendet Speichermodus"
+msgstr "Der zuletzt verwendetes Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
@@ -1154,7 +1153,7 @@ msgstr "Der zuletzt verwendet Speichermodus"
 #: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "Strichdicke für Freihand-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
@@ -1162,7 +1161,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr ""
+msgstr "Strichdicke für Hervorheben-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
@@ -1170,7 +1169,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "Strichdicke für Linie-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
@@ -1178,7 +1177,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "Strichdicke für Pfeil-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
@@ -1188,7 +1187,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "Strichdicke für Rechteck-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
@@ -1200,7 +1199,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Strichdicke für Ellipse-Anmerkungswerkzeug"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
@@ -1223,42 +1222,49 @@ msgstr "Schriftfarbe für Anmerkungen"
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Freihand-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Linie-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Pfeil-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Rechteck-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:263
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Ellipse-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:267
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Text-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:271
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr ""
+"Gibt an, ob das Zähl-Anmerkungswerkzeug einen Schlagschatten werfen soll"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1424,19 +1430,19 @@ msgstr "KDE-Dienstprogramm für Bildschirmfotos"
 #: src/Main.cpp:45
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "Copyright 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:49
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Frederik Schwarzer"
+msgstr "Deutsches KDE-Übersetzerteam"
 
 #: src/Main.cpp:49
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "schwarzer@kde.org"
+msgstr "kde-i18n-de@kde.org"
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
@@ -1461,7 +1467,7 @@ msgstr ""
 #: src/RecordingModeModel.cpp:130
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Auswahl eines Fensters ist fehlgeschlagen"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
@@ -1479,16 +1485,13 @@ msgid "Screenshot capture canceled or failed"
 msgstr "Bildschirmaufnahme abgebrochen oder fehlgeschlagen"
 
 #: src/SpectacleCore.cpp:676
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been copied to your clipboard."
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Das Bildschirmfoto wurde als „%1“ in „%2“ gespeichert und der Ort wurde in "
-"die Zwischenablage kopiert."
+"Das Bildschirmfoto wurde als „%1“ nach „%2“ gespeichert und der Speicherort "
+"der Datei wurde in die Zwischenablage kopiert."
 
 #: src/SpectacleCore.cpp:680
 #, kde-format
