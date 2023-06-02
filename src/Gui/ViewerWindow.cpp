@@ -26,9 +26,6 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     connect(qGuiApp, &QGuiApplication::paletteChanged, this, &ViewerWindow::updateColor);
 #endif
 
-    connect(SpectacleCore::instance(), &SpectacleCore::screenCaptureUrlChanged, this, &ViewerWindow::imageSizeChanged);
-    connect(SpectacleCore::instance(), &SpectacleCore::screenCaptureUrlChanged, this, &ViewerWindow::imageDprChanged);
-
     connect(m_exportMenu.get(), &ExportMenu::imageShared, this, &ViewerWindow::showImageSharedMessage);
 
     // set up QML
@@ -53,16 +50,6 @@ ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engi
 ViewerWindow *ViewerWindow::instance()
 {
     return s_viewerWindowInstance;
-}
-
-QSize ViewerWindow::imageSize() const
-{
-    return ExportManager::instance()->image().size();
-}
-
-qreal ViewerWindow::imageDpr() const
-{
-    return ExportManager::instance()->image().devicePixelRatio();
 }
 
 void ViewerWindow::setMode(ViewerWindow::Mode mode)

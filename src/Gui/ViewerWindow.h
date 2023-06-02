@@ -19,10 +19,6 @@ class ViewerWindowPrivate;
 class ViewerWindow : public SpectacleWindow
 {
     Q_OBJECT
-    // Only create this window after the image has been set
-    Q_PROPERTY(QSize imageSize READ imageSize NOTIFY imageSizeChanged FINAL)
-    Q_PROPERTY(qreal imageDpr READ imageDpr NOTIFY imageDprChanged FINAL)
-
 public:
     enum Mode {
         Dialog,
@@ -36,9 +32,6 @@ public:
 
     static ViewerWindow *instance();
 
-    QSize imageSize() const;
-    qreal imageDpr() const;
-
     void showSavedScreenshotMessage(const QUrl &messageArgument);
     void showSavedVideoMessage(const QUrl &messageArgument);
     void showSavedAndCopiedMessage(const QUrl &messageArgument);
@@ -46,9 +39,6 @@ public:
     void showCopiedMessage();
     void showScreenshotFailedMessage();
 
-Q_SIGNALS:
-    void imageSizeChanged();
-    void imageDprChanged();
 
 protected:
     bool event(QEvent *event) override;

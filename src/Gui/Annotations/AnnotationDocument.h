@@ -36,6 +36,8 @@ class AnnotationDocument : public QObject
     Q_PROPERTY(int redoStackDepth READ redoStackDepth NOTIFY redoStackDepthChanged)
     Q_PROPERTY(int undoStackDepth READ undoStackDepth NOTIFY undoStackDepthChanged)
     Q_PROPERTY(QSizeF canvasSize READ canvasSize NOTIFY canvasSizeChanged)
+    Q_PROPERTY(QSizeF imageSize READ imageSize NOTIFY imageSizeChanged)
+    Q_PROPERTY(qreal imageDpr READ imageDpr NOTIFY imageDprChanged)
 
 public:
     enum EditActionType { None, FreeHand, Highlight, Line, Arrow, Rectangle, Ellipse, Blur, Pixelate, Text, Number, ChangeAction };
@@ -72,6 +74,16 @@ public:
 
     void clearAnnotations();
 
+    /**
+     * Canvas size in raw pixels
+     */
+    QSizeF imageSize() const;
+
+    /**
+     * The highest device pixel ratio of all CanvasImages.
+     */
+    qreal imageDpr() const;
+
     // True when there is an edit action in the undo stack and it is invalid.
     Q_INVOKABLE bool isLastActionInvalid() const;
 
@@ -96,6 +108,8 @@ Q_SIGNALS:
     void undoStackDepthChanged();
     void redoStackDepthChanged();
     void canvasSizeChanged();
+    void imageSizeChanged();
+    void imageDprChanged();
 
     void repaintNeeded(const QRectF &area = {});
 
@@ -113,6 +127,8 @@ private:
     SelectedActionWrapper *m_selectedActionWrapper;
 
     QSizeF m_canvasSize;
+    QSizeF m_imageSize;
+    qreal m_imageDpr = 1;
     QVector<EditAction *> m_undoStack;
     QVector<EditAction *> m_redoStack;
     QVector<CanvasImage> m_canvasImages;

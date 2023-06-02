@@ -892,18 +892,33 @@ void AnnotationDocument::addImage(const CanvasImage &canvasImage)
     m_canvasImages << canvasImage;
 
     QRectF rect;
+    m_imageDpr = 0;
     for (const auto &img : qAsConst(m_canvasImages)) {
         rect = rect.united(img.rect);
+        m_imageDpr = qMax(img.image.devicePixelRatio(), m_imageDpr);
     }
     m_canvasSize = rect.size();
+    m_imageSize = m_canvasSize * m_imageDpr;
 
     Q_EMIT canvasSizeChanged();
+    Q_EMIT imageSizeChanged();
+    Q_EMIT imageDprChanged();
     Q_EMIT repaintNeeded();
 }
 
 QVector<CanvasImage> AnnotationDocument::canvasImages() const
 {
     return m_canvasImages;
+}
+
+QSizeF AnnotationDocument::imageSize() const
+{
+    return m_imageSize;
+}
+
+qreal AnnotationDocument::imageDpr() const
+{
+    return m_imageDpr;
 }
 
 void AnnotationDocument::clearImages()
