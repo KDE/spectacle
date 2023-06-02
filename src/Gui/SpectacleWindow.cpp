@@ -15,13 +15,10 @@
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
-#include <KUrlMimeData>
 #include <KWindowSystem>
 
-#include <Kirigami/Units>
 #include <QApplication>
 #include <QColorDialog>
-#include <QDrag>
 #include <QFontDialog>
 #include <QtQml>
 #include <utility>
@@ -457,49 +454,6 @@ void SpectacleWindow::openUrlExternally(const QUrl &url)
 void SpectacleWindow::openContainingFolder(const QUrl &url)
 {
     KIO::highlightInFileManager({url});
-}
-
-void SpectacleWindow::startDrag()
-{
-    auto exportManager = ExportManager::instance();
-    if (exportManager->image().isNull()) {
-        return;
-    }
-
-    const QUrl tempFile = SpectacleCore::instance()->videoMode() ? SpectacleCore::instance()->currentVideo() : exportManager->tempSave();
-    if (!tempFile.isValid()) {
-        return;
-    }
-
-    auto mimeData = new QMimeData;
-    mimeData->setUrls(QList<QUrl>{tempFile});
-    // "application/x-kde-suggestedfilename" is handled by KIO/PasteJob.
-    // It is only used when QMimeData::formats() is empty or when the user is
-    // prompted to set a filename for the content after drag & drop or paste.
-    // When QMimeData::formats() is empty, a dialog for picking the data format
-    // is supposed to appear.
-    // It's likely that users will never see the data format dialog with Spectacle.
-    mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(tempFile.fileName()));
-    KUrlMimeData::exportUrlsToPortal(mimeData);
-
-    auto dragHandler = new QDrag(this);
-    dragHandler->setMimeData(mimeData);
-
-    if (SpectacleCore::instance()->videoMode()) {
-        Kirigami::Units units;
-        auto iconSize = units.iconSizes()->large();
-        dragHandler->setPixmap(QIcon::fromTheme(QStringLiteral("video-x-matroska")).pixmap(iconSize, iconSize));
-    } else {
-        QSize size = exportManager->image().size();
-        QPixmap pixmap = QPixmap::fromImage(exportManager->image());
-        // TODO: use the composed pixmap with annotations instead
-        if (size.width() > 256 || size.height() > 256) {
-            dragHandler->setPixmap(pixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-        } else {
-            dragHandler->setPixmap(pixmap);
-        }
-    }
-    dragHandler->exec(Qt::CopyAction);
 }
 
 void SpectacleWindow::mousePressEvent(QMouseEvent *event)

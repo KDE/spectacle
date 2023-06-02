@@ -99,7 +99,6 @@ public Q_SLOTS:
     // TODO: Remove in Qt6. Qt.openUrlExternally() doesn't activate the window on wayland.
     void openUrlExternally(const QUrl &url);
     void openContainingFolder(const QUrl &url);
-    void startDrag();
 
 Q_SIGNALS:
     void annotatingChanged();

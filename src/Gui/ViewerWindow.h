@@ -39,6 +39,7 @@ public:
     void showCopiedMessage();
     void showScreenshotFailedMessage();
 
+    Q_INVOKABLE void startDrag();
 
 protected:
     bool event(QEvent *event) override;
