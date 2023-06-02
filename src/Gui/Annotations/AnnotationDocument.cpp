@@ -1146,6 +1146,11 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal devicePix
     return img;
 }
 
+QImage AnnotationDocument::renderToImage() const
+{
+    return renderToImage({{0,0}, m_imageSize}, m_imageDpr);
+}
+
 int AnnotationDocument::undoStackDepth() const
 {
     return m_undoStack.count();

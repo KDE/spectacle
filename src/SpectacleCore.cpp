@@ -57,6 +57,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
 {
     s_self = this;
+    // Timer to prevent lots of extra rendering to images
     m_annotationSyncTimer = std::make_unique<QTimer>(new QTimer(this));
     m_annotationSyncTimer->setInterval(400);
     m_annotationSyncTimer->setSingleShot(true);
@@ -196,7 +197,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(platform, &Platform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
-    connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, &SpectacleCore::syncExportImage);
+    connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, [this] {
+        ExportManager::instance()->setImage(m_annotationDocument->renderToImage());
+    }, Qt::QueuedConnection); // QueuedConnection to help prevent making the visible render lag.
 
     // set up shortcuts
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(), Qt::Key_Print);
@@ -805,14 +808,19 @@ void SpectacleCore::initGuiNoScreenshot()
     ViewerWindow::instance()->setVisible(true);
 }
 
+// Hurry up the sync if the sync timer is active.
 void SpectacleCore::syncExportImage()
 {
-    qreal maxDpr = 0.0;
-    for (auto &img : m_annotationDocument->canvasImages()) {
-        maxDpr = qMax(maxDpr, img.image.devicePixelRatio());
+    if (!m_annotationSyncTimer->isActive()) {
+        return;
     }
-    QRectF imageRect(QPointF(0, 0), m_annotationDocument->canvasSize() * maxDpr);
-    const auto &image = m_annotationDocument->renderToImage(imageRect, maxDpr);
+    setExportImage(m_annotationDocument->renderToImage());
+}
+
+// A convenient way to stop the sync timer and set the export image.
+void SpectacleCore::setExportImage(const QImage &image)
+{
+    m_annotationSyncTimer->stop();
     ExportManager::instance()->setImage(image);
 }
 

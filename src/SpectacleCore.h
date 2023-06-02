@@ -122,6 +122,7 @@ Q_SIGNALS:
 private:
     void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
                            bool includePointer, bool includeDecorations);
+    void setExportImage(const QImage &image);
     Platform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(Platform::GrabMode grabMode) const;
     bool isGuiNull() const;
