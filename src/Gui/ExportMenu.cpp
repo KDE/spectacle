@@ -6,6 +6,7 @@
 
 #include "ExportMenu.h"
 #include "CaptureWindow.h"
+#include "SpectacleCore.h"
 #include "spectacle_gui_debug.h"
 #include "settings.h"
 
@@ -84,6 +85,7 @@ void ExportMenu::getKServiceItems()
                 filename = Settings::self()->lastSaveLocation();
             } else {
                 filename = ExportManager::instance()->getAutosaveFilename();
+                SpectacleCore::instance()->syncExportImage();
                 ExportManager::instance()->exportImage(ExportManager::Save, filename);
             }
 
@@ -116,6 +118,7 @@ void ExportMenu::getKServiceItems()
             filename = Settings::self()->lastSaveLocation();
         } else {
             filename = ExportManager::instance()->getAutosaveFilename();
+            SpectacleCore::instance()->syncExportImage();
             ExportManager::instance()->exportImage(ExportManager::Save, filename);
         }
 

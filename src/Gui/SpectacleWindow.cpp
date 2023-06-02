@@ -285,12 +285,14 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
 
 void SpectacleWindow::save()
 {
+    SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::Save | ExportManager::UserAction,
                                            SpectacleCore::instance()->outputUrl());
 }
 
 void SpectacleWindow::saveAs()
 {
+    SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction);
 }
 
@@ -302,11 +304,13 @@ void SpectacleWindow::copyImage()
 
 void SpectacleWindow::copyLocation()
 {
+    SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::CopyPath | ExportManager::UserAction);
 }
 
 void SpectacleWindow::showPrintDialog()
 {
+    SpectacleCore::instance()->syncExportImage();
     m_exportMenu->openPrintDialog();
 }
 
