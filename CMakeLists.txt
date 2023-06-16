@@ -126,11 +126,7 @@ if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
 endif()
 
 # locate qdbus in the Qt path because not every distro makes a symlink at /usr/bin/qdbus
-if (QT_MAJOR_VERSION EQUAL "5")
-    query_qmake(QtBinariesDir QT_INSTALL_BINS)
-else()
-    MESSAGE(STATUS "need to find QtBinariesDir")
-endif()
+ecm_query_qt(QtBinariesDir QT_INSTALL_BINS)
 
 # setup handling of deprecated Qt & KF API
 
