@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the spectacle package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-23 00:44+0000\n"
-"PO-Revision-Date: 2022-12-29 17:23+0000\n"
+"PO-Revision-Date: 2023-06-18 19:15+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -587,16 +587,14 @@ msgid "Share"
 msgstr "Partajează"
 
 #: src/Gui/ImageView.qml:148
-#, fuzzy, kde-format
-#| msgid "New Screenshot"
+#, kde-format
 msgid "Screenshot"
-msgstr "Captură nouă"
+msgstr "Captură de ecran"
 
 #: src/Gui/ImageView.qml:152
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording"
-msgstr "Înregistrează ecranul"
+msgstr "Înregistrare"
 
 #: src/Gui/ImageView.qml:215
 #, kde-format
@@ -694,45 +692,44 @@ msgid "No Delay"
 msgstr "Fără întârziere"
 
 #: src/Gui/RecordingView.qml:65
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Înregistrează ecranul"
+msgstr ""
+"Înregistrare:\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "Întrerupe"
 
 #: src/Gui/RecordingView.qml:96
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "Redă"
 
 #: src/Gui/RecordOptions.qml:34
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording Settings"
-msgstr "Înregistrează ecranul"
+msgstr "Configurări înregistrare"
 
 #: src/Gui/RecordOptions.qml:43
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image."
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Arată cursorul mausului în imaginea capturată."
+msgstr "Arată cursorul mausului în înregistrarea ecranului."
 
 #: src/Gui/RecordOptions.qml:53
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
-msgstr ""
+msgstr "Format video:"
 
 #: src/Gui/RecordOptions.qml:75
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Încheie înregistrarea"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -752,10 +749,9 @@ msgstr ""
 "acesteia a fost copiată în clipboard"
 
 #: src/Gui/SavedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Captura de ecran a fost salvată ca <a href=\"%1\">%2</a>"
+msgstr "Videoclipul a fost salvat ca <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:16
 #, kde-format
@@ -1098,7 +1094,7 @@ msgstr "Întârziere"
 #: src/Gui/SettingsDialog/spectacle.kcfg:110
 #, kde-format
 msgid "File format for saved screen recordings"
-msgstr ""
+msgstr "Formatul de fișier pentru înregistrările de ecran salvate"
 
 #. i18n: ectx: label, entry (defaultSaveLocation), group (Save)
 #. i18n: ectx: label, entry (defaultVideoSaveLocation), group (Save)
@@ -1130,10 +1126,9 @@ msgstr "Denumirea implicită de fișier folosită la salvare"
 
 #. i18n: ectx: label, entry (saveVideoFormat), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The default filename used when recording a video"
-msgstr "Denumirea implicită de fișier folosită la salvare"
+msgstr "Denumirea implicită de fișier folosită la înregistrarea unui video"
 
 #. i18n: ectx: label, entry (lastSaveLocation), group (Save)
 #: src/Gui/SettingsDialog/spectacle.kcfg:150
@@ -1191,75 +1186,65 @@ msgstr "Lățimea cursei pentru unealta de adnotare cu elipsă"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu desen"
+msgstr "Culoarea cursei pentru unealta de adnotare cu desen"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu evidențiator"
+msgstr "Culoarea cursei pentru unealta de adnotare cu evidențiator"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu linie"
+msgstr "Culoarea cursei pentru unealta de adnotare cu linie"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu săgeată"
+msgstr "Culoarea cursei pentru unealta de adnotare cu săgeată"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu dreptunghi"
+msgstr "Culoarea cursei pentru unealta de adnotare cu dreptunghi"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu elipsă"
+msgstr "Culoarea cursei pentru unealta de adnotare cu elipsă"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu dreptunghi"
+msgstr "Culoarea de umplere pentru unealta de adnotare cu dreptunghi"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu elipsă"
+msgstr "Culoarea de umplere pentru unealta de adnotare cu elipsă"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Font pentru adnotări"
+msgstr "Font pentru adnotări textuale"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Font pentru adnotări"
+msgstr "Font pentru adnotări numerice"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1497,33 +1482,34 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Pe Wayland, Spectacle necesită compozitorul KWin din KDE Plasma, ce nu pare "
+"să fie disponibil. Folosiți Spectacle pe KDE Plasma, sau folosiți altă "
+"unealtă de capturare a ecranului."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
 msgid "Workspace"
-msgstr ""
+msgstr "Spațiu de lucru"
 
 #: src/RecordingModeModel.cpp:36
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Selected Screen"
-msgstr "Înregistrează ecranul"
+msgstr "Ecranul ales"
 
 #: src/RecordingModeModel.cpp:42
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgid "Selected Window"
-msgstr "Fereastra activă"
+msgstr "Fereastra aleasă"
 
 #: src/RecordingModeModel.cpp:99
 #, kde-format
 msgid "Failed to select output"
-msgstr ""
+msgstr "Alegerea ecranului a eșuat"
 
 #: src/RecordingModeModel.cpp:130
 #, kde-format
 msgid "Failed to select window"
-msgstr ""
+msgstr "Alegerea ferestrei a eșuat"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format
