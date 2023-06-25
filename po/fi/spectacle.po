@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-23 00:44+0000\n"
-"PO-Revision-Date: 2023-03-30 13:05+0300\n"
+"PO-Revision-Date: 2023-06-04 23:12+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -1185,75 +1185,65 @@ msgstr "Soikiomerkintätyökalun viivan paksuus"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Vapaan käden merkintätyökalun viivan paksuus"
+msgstr "Vapaan käden merkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Korostusmerkintätyökalun viivan paksuus"
+msgstr "Korostusmerkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Viivamerkintätyökalun viivan paksuus"
+msgstr "Viivamerkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Nuolimerkintätyökalun viivan paksuus"
+msgstr "Nuolimerkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Nelikulmiomerkintätyökalun viivan paksuus"
+msgstr "Nelikulmiomerkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Soikiomerkintätyökalun viivan paksuus"
+msgstr "Soikiomerkintätyökalun viivan väri"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Nelikulmiomerkintätyökalun viivan paksuus"
+msgstr "Nelikulmiomerkintätyökalun täyttöväri"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Soikiomerkintätyökalun viivan paksuus"
+msgstr "Soikiomerkintätyökalun täyttöväri"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Merkintöjen fontti"
+msgstr "Tekstimerkintöjen fontti"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Merkintöjen fontti"
+msgstr "Numeromerkintöjen fontti"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1490,6 +1480,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Waylandissä Spectacle vaatii KDE Plasman KWin-koostimen, joka ei näyttäisi "
+"olevan käytettävissä. Käytä Spectaclea KDE Plasmassa tai valitse toinen "
+"ruutukaappaustyökalu."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
