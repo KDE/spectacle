@@ -159,3 +159,5 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
     }
     }
 }
+
+#include "moc_RecordingModeModel.cpp"

@@ -137,3 +137,5 @@ void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
         Q_EMIT countChanged();
     }
 }
+
+#include "moc_CaptureModeModel.cpp"

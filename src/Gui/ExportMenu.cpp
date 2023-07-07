@@ -209,3 +209,5 @@ void ExportMenu::openPrintDialog()
 
     dialog->setVisible(true);
 }
+
+#include "moc_ExportMenu.cpp"

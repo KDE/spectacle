@@ -73,3 +73,5 @@ void SettingsDialog::updateWidgetsDefault()
     KConfigDialog::updateWidgetsDefault();
     mShortcutsPage->defaults();
 }
+
+#include "moc_SettingsDialog.cpp"

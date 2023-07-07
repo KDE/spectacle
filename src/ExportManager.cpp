@@ -604,3 +604,5 @@ const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{
     {QStringLiteral("%Nd"),
      ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded out to N digits")},
 };
+
+#include "moc_ExportManager.cpp"

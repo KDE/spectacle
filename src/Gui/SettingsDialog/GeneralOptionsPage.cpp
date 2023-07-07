@@ -30,3 +30,5 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
 }
 
 GeneralOptionsPage::~GeneralOptionsPage() = default;
+
+#include "moc_GeneralOptionsPage.cpp"

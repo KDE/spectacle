@@ -992,3 +992,5 @@ QString SpectacleCore::videoFormat() const
 {
     return m_videoPlatform->extension();
 }
+
+#include "moc_SpectacleCore.cpp"

@@ -253,3 +253,5 @@ void ViewerWindow::keyReleaseEvent(QKeyEvent *event)
         }
     }
 }
+
+#include "moc_ViewerWindow.cpp"

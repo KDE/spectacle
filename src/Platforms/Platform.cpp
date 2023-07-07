@@ -9,3 +9,5 @@ Platform::Platform(QObject *parent)
     : QObject(parent)
 {
 }
+
+#include "moc_Platform.cpp"

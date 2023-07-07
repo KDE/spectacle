@@ -45,3 +45,5 @@ void ShortcutsOptionsPage::defaults() const
 {
     mEditor->allDefault();
 }
+
+#include "moc_ShortcutsOptionsPage.cpp"

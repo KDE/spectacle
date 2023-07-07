@@ -780,3 +780,5 @@ void PlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, bool inc
     xcb_cursor_context_free(xcbCursorCtx);
     xcb_free_cursor(QX11Info::connection(), xcbCursor);
 }
+
+#include "moc_PlatformXcb.cpp"

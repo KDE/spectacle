@@ -199,3 +199,5 @@ void CaptureWindow::syncGeometryWithScreen()
     setGeometry(screenRect);
     setScreen(m_screenToFollow);
 }
+
+#include "moc_CaptureWindow.cpp"

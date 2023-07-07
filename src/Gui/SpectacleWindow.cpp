@@ -557,3 +557,5 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
     }
     m_pressedKeys = {};
 }
+
+#include "moc_SpectacleWindow.cpp"

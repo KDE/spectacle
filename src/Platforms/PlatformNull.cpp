@@ -73,3 +73,5 @@ QStringList VideoPlatformNull::suggestedExtensions() const
 {
     return {QStringLiteral("mp4")};
 }
+
+#include "moc_PlatformNull.cpp"

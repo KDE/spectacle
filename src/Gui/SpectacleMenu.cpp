@@ -58,3 +58,5 @@ void SpectacleMenu::popup(QQuickItem *item)
     }
     popup(point);
 }
+
+#include "moc_SpectacleMenu.cpp"

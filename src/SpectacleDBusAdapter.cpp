@@ -56,3 +56,5 @@ void SpectacleDBusAdapter::OpenWithoutScreenshot()
 {
     parent()->initGuiNoScreenshot();
 }
+
+#include "moc_SpectacleDBusAdapter.cpp"

@@ -301,3 +301,5 @@ QDebug operator<<(QDebug debug, const Selection *selection)
     debug << ')';
     return debug;
 }
+
+#include "moc_Selection.cpp"

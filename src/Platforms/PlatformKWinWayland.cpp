@@ -424,3 +424,5 @@ void PlatformKWinWayland::takeScreenShotScreens(const QList<QScreen *> &screens,
 
     trackSource(new ScreenShotSourceMeta2(sources));
 }
+
+#include "moc_PlatformKWinWayland.cpp"

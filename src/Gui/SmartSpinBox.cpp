@@ -32,3 +32,5 @@ void SmartSpinBox::suffixChangeHandler(double val)
         setSuffix(i18nc("Decimal number of seconds", " seconds"));
     }
 }
+
+#include "moc_SmartSpinBox.cpp"

@@ -71,3 +71,5 @@ void HelpMenu::onTriggered(QAction *action)
         dialog->windowHandle()->requestActivate();
     }
 }
+
+#include "moc_HelpMenu.cpp"

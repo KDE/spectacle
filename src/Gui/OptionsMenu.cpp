@@ -265,3 +265,5 @@ void OptionsMenu::updateCaptureModes()
         insertAction(captureSettingsSection.get(), action);
     }
 }
+
+#include "moc_OptionsMenu.cpp"

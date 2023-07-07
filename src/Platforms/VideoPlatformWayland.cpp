@@ -122,3 +122,5 @@ void VideoPlatformWayland::setExtension(const QString &extension)
 #endif
 #endif
 }
+
+#include "moc_VideoPlatformWayland.cpp"

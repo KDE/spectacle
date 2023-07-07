@@ -86,3 +86,5 @@ void SaveOptionsPage::updateFilenamePreview()
         exportManager->setWindowTitle({});
     }
 }
+
+#include "moc_SaveOptionsPage.cpp"

@@ -45,3 +45,5 @@ void VideoPlatform::timerEvent(QTimerEvent *event)
         Q_EMIT recordedTimeChanged();
     }
 }
+
+#include "moc_VideoPlatform.cpp"
