@@ -33,6 +33,7 @@ install(
     FILES spectacle_newConfig.upd
     DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
 )
+if (QT_MAJOR_VERSION STREQUAL "5")
 add_executable(spectacle-migrate-shortcuts MigrateShortcuts.cpp)
 target_link_libraries(spectacle-migrate-shortcuts Qt::DBus KF${QT_MAJOR_VERSION}::GlobalAccel KF${QT_MAJOR_VERSION}::ConfigCore KF${QT_MAJOR_VERSION}::XmlGui KF${QT_MAJOR_VERSION}::I18n)
 add_executable(spectacle-migrate-rememberregion MigrateRememberRegion.cpp)
@@ -41,3 +42,4 @@ install(
     TARGETS spectacle-migrate-shortcuts spectacle-migrate-rememberregion
     DESTINATION ${KDE_INSTALL_LIBDIR}/kconf_update_bin
 )
+endif()
