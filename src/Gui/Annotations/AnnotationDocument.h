@@ -39,7 +39,7 @@ class AnnotationDocument : public QObject
 
 public:
     enum EditActionType { None, FreeHand, Highlight, Line, Arrow, Rectangle, Ellipse, Blur, Pixelate, Text, Number, ChangeAction };
-    Q_ENUM(EditActionType);
+    Q_ENUM(EditActionType)
 
     enum class ContinueOption {
         NoOptions    = 0b00,

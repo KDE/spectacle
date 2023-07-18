@@ -48,7 +48,7 @@ public:
         Embedded = 2,
         Metadata = 4,
     };
-    Q_ENUM(CursorMode);
+    Q_ENUM(CursorMode)
     bool isAvailable() const;
 
     ScreencastingStream *createOutputStream(QScreen *screen, CursorMode mode);
