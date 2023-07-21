@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-23 00:44+0000\n"
-"PO-Revision-Date: 2023-04-13 23:33+0200\n"
+"PO-Revision-Date: 2023-07-20 09:08+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -1190,75 +1190,65 @@ msgstr "Trazuaren zabalera, elipse idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Trazuaren zabalera, esku-hutsez idatzohar tresnarako"
+msgstr "Trazuaren kolorea, esku-hutsez idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Trazuaren zabalera, nabarmentzeko idatzohar tresnarako"
+msgstr "Trazuaren kolorea, nabarmentzeko idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Trazuaren zabalera, lerro idatzohar tresnarako"
+msgstr "Trazuaren kolorea, lerro idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Trazuaren zabalera, gezi idatzohar tresnarako"
+msgstr "Trazuaren kolorea, gezi idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Trazuaren zabalera, laukizuzen idatzohar tresnarako"
+msgstr "Trazuaren kolorea, laukizuzen idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Trazuaren zabalera, elipse idatzohar tresnarako"
+msgstr "Trazuaren kolorea, elipse idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Trazuaren zabalera, laukizuzen idatzohar tresnarako"
+msgstr "Betetzeko kolorea, laukizuzen idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Trazuaren zabalera, elipse idatzohar tresnarako"
+msgstr "Betetzeko kolorea, elipse idatzohar tresnarako"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Idatzoharretarako letra-tipoa"
+msgstr "Letra tipoa, testu idatzoharretarako"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Idatzoharretarako letra-tipoa"
+msgstr "Letra-tipoa, zenbaki idatzoharretarako"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1494,6 +1484,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"«Wayland»en, «Spectacle»k KDE Plasmaren KWin konposatzailea behar du, eta ez "
+"dirudi instalatuta dagoenik. Erabili «Spectacle» KDE Plasman, edo erabili "
+"pantaila-argazkietarako beste tresna bat."
 
 #: src/RecordingModeModel.cpp:30
 #, kde-format
