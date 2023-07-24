@@ -100,7 +100,7 @@ public Q_SLOTS:
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
-    void onScreenshotUpdated(const QImage &image, const ExportManager::Actions &actions = {});
+    void onScreenshotUpdated(const QImage &image);
     void onScreenshotFailed();
     void doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl);
 

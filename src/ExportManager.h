@@ -36,12 +36,14 @@ private:
 
 public:
     enum Action {
-        NoActions = 0b0000,
-        Save      = 0b0001,
-        SaveAs    = 0b0010,
-        CopyImage = 0b0100,
-        CopyPath  = 0b1000,
-        AnySave   = Save | SaveAs,
+        NoActions   = 0b00000,
+        Save        = 0b00001,
+        SaveAs      = 0b00010,
+        CopyImage   = 0b00100,
+        CopyPath    = 0b01000,
+        UserAction  = 0b10000,
+        AnySave     = Save | SaveAs,
+        AnyAction   = AnySave | CopyImage | CopyPath,
     };
     Q_DECLARE_FLAGS(Actions, Action)
     Q_FLAG(Action)
