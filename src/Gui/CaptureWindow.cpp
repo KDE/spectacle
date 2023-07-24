@@ -123,22 +123,22 @@ bool CaptureWindow::accept()
 
 void CaptureWindow::save()
 {
-    SelectionEditor::instance()->acceptSelection(ExportManager::Save);
+    SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::UserAction);
 }
 
 void CaptureWindow::saveAs()
 {
-    SelectionEditor::instance()->acceptSelection(ExportManager::SaveAs);
+    SelectionEditor::instance()->acceptSelection(ExportManager::SaveAs | ExportManager::UserAction);
 }
 
 void CaptureWindow::copyImage()
 {
-    SelectionEditor::instance()->acceptSelection(ExportManager::CopyImage);
+    SelectionEditor::instance()->acceptSelection(ExportManager::CopyImage | ExportManager::UserAction);
 }
 
 void CaptureWindow::copyLocation()
 {
-    SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::CopyPath);
+    SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::CopyPath | ExportManager::UserAction);
 }
 
 void CaptureWindow::mousePressEvent(QMouseEvent *event)

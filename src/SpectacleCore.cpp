@@ -117,13 +117,17 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image,
                                                          const ExportManager::Actions &actions){
         deleteWindows();
-        const auto &exportActions = actions == ExportManager::NoActions ? autoExportActions() : actions;
-        onScreenshotUpdated(image, exportActions);
+        onScreenshotUpdated(image);
+        syncExportImage();
+        const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
+        ExportManager::instance()->exportImage(exportActions, outputUrl());
     });
 
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
-        onScreenshotUpdated(image, autoExportActions());
+        onScreenshotUpdated(image);
+        syncExportImage();
+        ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
@@ -148,7 +152,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // set up the export manager
     auto exportManager = ExportManager::instance();
     auto onImageExported = [this](const ExportManager::Actions &actions, const QUrl &url) {
-        if (Settings::quitAfterSaveCopyExport()) {
+        if (actions & ExportManager::UserAction && Settings::quitAfterSaveCopyExport()) {
             deleteWindows();
         }
 
@@ -593,17 +597,12 @@ void SpectacleCore::showErrorMessage(const QString &message)
     }
 }
 
-void SpectacleCore::onScreenshotUpdated(const QImage &image, const ExportManager::Actions &actions)
+void SpectacleCore::onScreenshotUpdated(const QImage &image)
 {
-    using Option = CommandLineOptions::Option;
-    using Action = ExportManager::Action;
-
     m_annotationDocument->clearImages();
-
-    auto exportManager = ExportManager::instance();
-    exportManager->setImage(image);
     m_annotationDocument->addImage(image);
-    exportManager->updateTimestamp();
+    ExportManager::instance()->setImage(image);
+    ExportManager::instance()->updateTimestamp();
 
     if (m_startMode == StartMode::Gui) {
         if (image.isNull()) {
@@ -612,21 +611,12 @@ void SpectacleCore::onScreenshotUpdated(const QImage &image, const ExportManager
             return;
         }
         initViewerWindow(ViewerWindow::Image);
-        if (m_cliOptions[Option::EditExisting]) {
+        if (m_cliOptions[CommandLineOptions::EditExisting]) {
             ViewerWindow::instance()->setAnnotating(true);
         }
         ViewerWindow::instance()->setVisible(true);
         auto titlePreset = !image.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
         SpectacleWindow::setTitleForAll(titlePreset);
-    }
-
-    syncExportImage();
-    if (actions & Action::Save && m_cliOptions[Option::Output]) {
-        exportManager->exportImage(actions, m_outputUrl);
-    } else if (actions & Action::Save && m_cliOptions[Option::EditExisting]) {
-        exportManager->exportImage(actions, m_editExistingUrl);
-    } else {
-        exportManager->exportImage(actions, outputUrl());
     }
 }
 
