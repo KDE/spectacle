@@ -221,7 +221,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
             return window->screen() == screen;
         };
         auto it = std::find_if(m_captureWindows.begin(), m_captureWindows.end(), hasScreen);
-        m_captureWindows.erase(it);
+        if (it != m_captureWindows.end()) {
+            m_captureWindows.erase(it);
+        }
     });
 
     connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
