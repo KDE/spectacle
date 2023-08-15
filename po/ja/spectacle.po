@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-11 00:43+0000\n"
-"PO-Revision-Date: 2023-05-18 00:31+0900\n"
+"PO-Revision-Date: 2023-08-12 01:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -188,7 +188,7 @@ msgstr "バックグラウンドモードで、スクリーンショットにポ
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
-"バックグラウンドモードで、ウィンドウの飾りをスクリーンショットに含まない"
+"バックグラウンドモードで、ウィンドウの装飾をスクリーンショットに含まない"
 
 #: src/CommandLineOptions.h:98
 #, kde-format
@@ -491,7 +491,7 @@ msgstr "ウィンドウのタイトルバーと縁を含める"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr "ウィンドウ撮影時にタイトルバーと縁を表示します。"
+msgstr "ウィンドウ撮影時にタイトルバーと縁を含めます。"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
 #, kde-format
@@ -596,7 +596,7 @@ msgstr "スクリーンショット"
 #: src/Gui/ImageView.qml:152
 #, kde-format
 msgid "Recording"
-msgstr "録画中"
+msgstr "画面録画"
 
 #: src/Gui/ImageView.qml:215
 #, kde-format
@@ -777,7 +777,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, kde-format
 msgid "When launching Spectacle:"
-msgstr "Spectacle を起動している場合:"
+msgstr "Spectacle が起動されたとき:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
@@ -831,7 +831,7 @@ msgstr "ファイルの場所をクリップボードにコピー"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "Spectacle が実行されている場合"
+msgstr "既に Spectacle が実行されている場合"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
@@ -915,7 +915,7 @@ msgstr "常に"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:236
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr "Spectacle が閉じるまで"
+msgstr "Spectacle が閉じられるまで"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/SaveOptions.ui:17
@@ -1028,7 +1028,7 @@ msgstr "拡大鏡を領域選択に表示するか"
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
-msgstr "領域を選択しマウスを離した後にスクリーンショットが撮影されるか"
+msgstr "領域を選択してマウスを離した後にスクリーンショットが撮影されるか"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:60
@@ -1180,75 +1180,65 @@ msgstr "楕円注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "手書き注釈ツールの線の太さ"
+msgstr "手書き注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "マーカー注釈ツールの線の太さ"
+msgstr "マーカー注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:205
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "直線注釈ツールの線の太さ"
+msgstr "直線注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "矢印注釈ツールの線の太さ"
+msgstr "矢印注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "矩形注釈ツールの線の太さ"
+msgstr "矩形注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "楕円注釈ツールの線の太さ"
+msgstr "楕円注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:222
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "矩形注釈ツールの線の太さ"
+msgstr "矩形注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:226
 #: src/Gui/SettingsDialog/spectacle.kcfg:230
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "楕円注釈ツールの線の太さ"
+msgstr "楕円注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "注釈フォント"
+msgstr "テキスト注釈フォント"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "注釈フォント"
+msgstr "数字注釈フォント"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1541,7 +1531,7 @@ msgstr ""
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "スクリーンショットは'%1'としてピクチャフォルダに保存されました。"
+msgstr "スクリーンショットは '%1' としてピクチャフォルダに保存されました。"
 
 #: src/SpectacleCore.cpp:681
 #, kde-format
