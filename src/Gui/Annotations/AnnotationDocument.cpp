@@ -6,7 +6,7 @@
 
 #include "AnnotationDocument.h"
 #include "EditAction.h"
-#include "Utils.h"
+#include "EffectUtils.h"
 #include "settings.h"
 
 #include <QGuiApplication>
