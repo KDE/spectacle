@@ -135,6 +135,8 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     }
 
     const auto windowId = metadata.value(QStringLiteral("windowId")).toString();
+    // No point in storing the windowId in the image since it means nothing to users
+    // and can't be used if the window is closed.
     if (!windowId.isEmpty()) {
         QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
                                                               QStringLiteral("/KWin"),
@@ -145,6 +147,7 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         if (reply.isValid()) {
             const auto &windowTitle = reply.value().value(QStringLiteral("caption")).toString();
             if (!windowTitle.isEmpty()) {
+                result.setText(QStringLiteral("windowTitle"), windowTitle);
                 ExportManager::instance()->setWindowTitle(windowTitle);
             }
         }
@@ -154,6 +157,11 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     const qreal scale = metadata.value(QStringLiteral("scale")).toReal(&ok);
     if (ok) {
         result.setDevicePixelRatio(scale);
+    }
+
+    const auto screen = metadata.value(QStringLiteral("screen")).toString();
+    if (!screen.isEmpty()) {
+        result.setText(QStringLiteral("screen"), screen);
     }
 
     QDataStream stream(&file);
