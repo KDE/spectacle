@@ -134,9 +134,6 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         return QImage();
     }
 
-    QDataStream stream(&file);
-    stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
-
     const auto windowId = metadata.value(QStringLiteral("windowId")).toString();
     if (!windowId.isEmpty()) {
         QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
@@ -158,6 +155,9 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     if (ok) {
         result.setDevicePixelRatio(scale);
     }
+
+    QDataStream stream(&file);
+    stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
 
     return result;
 }
