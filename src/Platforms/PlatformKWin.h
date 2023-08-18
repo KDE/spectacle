@@ -17,15 +17,15 @@ class ScreenShotSource2;
 class ScreenShotSourceMeta2;
 
 /**
- * The PlatformKWinWayland2 class uses the org.kde.KWin.ScreenShot2 dbus interface
+ * The PlatformKWin class uses the org.kde.KWin.ScreenShot2 dbus interface
  * for taking screenshots of screens and windows.
  */
-class PlatformKWinWayland final : public Platform
+class PlatformKWin final : public Platform
 {
     Q_OBJECT
 
 public:
-    static std::unique_ptr<PlatformKWinWayland> create();
+    static std::unique_ptr<PlatformKWin> create();
 
     enum class ScreenShotFlag : uint {
         IncludeCursor = 0x1,
@@ -49,7 +49,7 @@ private Q_SLOTS:
     void updateSupportedGrabModes();
 
 private:
-    explicit PlatformKWinWayland(QObject *parent = nullptr);
+    explicit PlatformKWin(QObject *parent = nullptr);
 
     void takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags);
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
@@ -100,7 +100,7 @@ class ScreenShotSourceArea2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceArea2(const QRect &area, PlatformKWinWayland::ScreenShotFlags flags);
+    ScreenShotSourceArea2(const QRect &area, PlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -113,7 +113,7 @@ class ScreenShotSourceInteractive2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceInteractive2(PlatformKWinWayland::InteractiveKind kind, PlatformKWinWayland::ScreenShotFlags flags);
+    ScreenShotSourceInteractive2(PlatformKWin::InteractiveKind kind, PlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -125,7 +125,7 @@ class ScreenShotSourceScreen2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceScreen2(const QScreen *screen, PlatformKWinWayland::ScreenShotFlags flags);
+    ScreenShotSourceScreen2(const QScreen *screen, PlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -137,7 +137,7 @@ class ScreenShotSourceActiveWindow2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveWindow2(PlatformKWinWayland::ScreenShotFlags flags);
+    ScreenShotSourceActiveWindow2(PlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -149,7 +149,7 @@ class ScreenShotSourceActiveScreen2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveScreen2(PlatformKWinWayland::ScreenShotFlags flags);
+    ScreenShotSourceActiveScreen2(PlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -175,4 +175,4 @@ private:
     QVector<ScreenShotSource2 *> m_sources;
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(PlatformKWinWayland::ScreenShotFlags)
+Q_DECLARE_OPERATORS_FOR_FLAGS(PlatformKWin::ScreenShotFlags)

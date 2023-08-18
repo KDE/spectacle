@@ -7,7 +7,7 @@
 #include "PlatformLoader.h"
 #include "Config.h"
 
-#include "PlatformKWinWayland.h"
+#include "PlatformKWin.h"
 #include "PlatformNull.h"
 #include "VideoPlatformWayland.h"
 
@@ -24,7 +24,7 @@ PlatformPtr loadPlatform()
     // but the X11 grabber won't work in that case. So force the Wayland grabber
     // in Wayland sessions.
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") == 0) {
-        platform = PlatformKWinWayland::create();
+        platform = PlatformKWin::create();
     }
 #ifdef XCB_FOUND
     else if (KWindowSystem::isPlatformX11()) {
