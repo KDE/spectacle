@@ -6,6 +6,7 @@
 
 #include "PlatformLoader.h"
 #include "Config.h"
+#include "ScreenShotEffect.h"
 
 #include "PlatformKWin.h"
 #include "PlatformNull.h"
@@ -20,14 +21,11 @@
 PlatformPtr loadPlatform()
 {
     PlatformPtr platform;
-    // We might be using the XCB platform (with Xwayland) in a wayland session,
-    // but the X11 grabber won't work in that case. So force the Wayland grabber
-    // in Wayland sessions.
-    if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") == 0) {
+    if (ScreenShotEffect::isLoaded()) {
         platform = PlatformKWin::create();
     }
 #ifdef XCB_FOUND
-    else if (KWindowSystem::isPlatformX11()) {
+    else if (KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0) {
         platform = std::make_unique<PlatformXcb>();
     }
 #endif
