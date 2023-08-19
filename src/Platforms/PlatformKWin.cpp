@@ -403,6 +403,19 @@ void PlatformKWin::trackSource(ScreenShotSourceMeta2 *source)
                 screenFound |= screen->name() == screenName;
                 if (screenFound) {
                     QRectF screenRect = screen->geometry();
+                    // On X11 QScreen::geometry has a scaled and rounded size, but a raw position.
+                    // Do additional processing for X11 to get the logical (wayland) geometry.
+                    if (KWindowSystem::isPlatformX11()) {
+                        // Assume that all screens on X11 have the same DPR.
+                        // Plasma System Settings only allows global scaling on X11
+                        // and this makes the math easier.
+                        qreal scale = image.devicePixelRatio();
+                        if (scale == 1 && scale != screen->devicePixelRatio()) {
+                            scale = screen->devicePixelRatio();
+                        }
+                        screenRect.setSize(QSizeF(image.size()) / scale);
+                        screenRect.moveTo(screenRect.topLeft() / scale);
+                    }
                     screenImages.append({image, screenRect});
                     break;
                 }
