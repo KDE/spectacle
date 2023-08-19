@@ -7,6 +7,8 @@
 #include "PlatformKWin.h"
 #include "ExportManager.h"
 
+#include <KWindowSystem>
+
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
@@ -385,13 +387,36 @@ void PlatformKWin::trackSource(ScreenShotSourceMeta2 *source)
         source->deleteLater();
         QVector<CanvasImage> screenImages;
         const auto &screens = qGuiApp->screens();
-        if (images.length() != screens.length()) {
-            qWarning() << "ERROR: number of screens does not match number of images, expected:" << images.length() << "actual:" << screens.length();
+        QStringList missingScreens;
+        for (int i = 0; i < images.size(); ++i) {
+            auto &image = images[i];
+            const auto screenName = image.text(QStringLiteral("screen"));
+            if (screenName.isEmpty()) {
+                qWarning() << "ERROR: A screen image did not have an associated screen name.";
+                Q_EMIT newScreenshotFailed();
+                return;
+            }
+
+            bool screenFound = false;
+            for (int ii = 0; ii < screens.size(); ++ii) {
+                auto screen = screens[ii];
+                screenFound |= screen->name() == screenName;
+                if (screenFound) {
+                    QRectF screenRect = screen->geometry();
+                    screenImages.append({image, screenRect});
+                    break;
+                }
+            }
+
+            if (!screenFound) {
+                missingScreens << screenName;
+            }
+        }
+        if (!missingScreens.empty()) {
+            qWarning() << "ERROR: The following captured screen names could not be found:"
+                       << missingScreens.join(QStringLiteral(", "));
             Q_EMIT newScreenshotFailed();
             return;
-        }
-        for (int i = 0; i < screens.length(); ++i) {
-            screenImages.append({images[i], screens[i]->geometry()});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
     });
