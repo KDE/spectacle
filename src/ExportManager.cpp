@@ -193,6 +193,8 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     QString result = baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
                              .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
                              .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
+                             .replace(QLatin1String("%n"), timestamp.toString(QStringLiteral("MMM")))
+                             .replace(QLatin1String("%N"), timestamp.toString(QStringLiteral("MMMM")))
                              .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
                              .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
                              .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
@@ -598,6 +600,8 @@ const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{
     {QStringLiteral("%Y"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
     {QStringLiteral("%y"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
     {QStringLiteral("%M"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
+    {QStringLiteral("%n"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
+    {QStringLiteral("%N"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
     {QStringLiteral("%D"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
     {QStringLiteral("%H"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
     {QStringLiteral("%m"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
