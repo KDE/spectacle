@@ -73,7 +73,7 @@
 <group name="GuiConfig">
     <entry name="cropRegion" type="Rect">
         <label>The last used region the user selected</label>
-        <default>QRect()</default>
+        <default>QRect(0,0,0,0)</default>
     </entry>
     <entry name="captureOnClick" key="onClickChecked" type="Bool">
         <!--Using a name that doesn't look like a signal handler.-->
