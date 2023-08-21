@@ -851,6 +851,8 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         qmlRegisterUncreatableType<SelectedActionWrapper>(QML_URI_PRIVATE, 1, 0, "SelectedAction",
                                                           QStringLiteral("Use AnnotationDocument.selectedAction"));
         qmlRegisterType<AnnotationViewport>(QML_URI_PRIVATE, 1, 0, "AnnotationViewport");
+        qmlRegisterUncreatableType<QScreen>(QML_URI_PRIVATE, 1, 0, "QScreen",
+                                            QStringLiteral("Only created by Qt"));
     }
     return m_engine.get();
 }
