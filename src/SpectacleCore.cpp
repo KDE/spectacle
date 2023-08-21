@@ -10,6 +10,7 @@
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "ExportManager.h"
+#include "Geometry.h"
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
@@ -841,6 +842,8 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "CaptureModeModel", m_captureModeModel.get());
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "SelectionEditor", SelectionEditor::instance());
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Selection", SelectionEditor::instance()->selection());
+        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Geometry", Geometry::instance());
+        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "G", Geometry::instance());
 
         qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "AnnotationDocument", m_annotationDocument.get());
         qmlRegisterUncreatableType<AnnotationTool>(QML_URI_PRIVATE, 1, 0, "AnnotationTool",

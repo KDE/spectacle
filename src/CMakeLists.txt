@@ -16,6 +16,7 @@ add_executable(spectacle
     CommandLineOptions.cpp
     RecordingModeModel.cpp
     ExportManager.cpp
+    Geometry.cpp
     PlasmaVersion.cpp
     ScreenShotEffect.cpp
     SpectacleCore.cpp
