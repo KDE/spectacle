@@ -23,7 +23,7 @@ void Selection::setX(qreal x)
 {
     QRectF newRect = selection;
     newRect.setX(x);
-    setRect(newRect, Horizontal);
+    setRect(newRect, Qt::Horizontal);
 }
 
 qreal Selection::y() const
@@ -35,7 +35,7 @@ void Selection::setY(qreal y)
 {
     QRectF newRect = selection;
     newRect.setY(y);
-    setRect(newRect, Vertical);
+    setRect(newRect, Qt::Vertical);
 }
 
 qreal Selection::width() const
@@ -47,7 +47,7 @@ void Selection::setWidth(qreal w)
 {
     QRectF newRect = selection;
     newRect.setWidth(w);
-    setRect(newRect.normalized(), Horizontal);
+    setRect(newRect.normalized(), Qt::Horizontal);
 }
 
 qreal Selection::height() const
@@ -59,7 +59,7 @@ void Selection::setHeight(qreal h)
 {
     QRectF newRect = selection;
     newRect.setHeight(h);
-    setRect(newRect.normalized(), Vertical);
+    setRect(newRect.normalized(), Qt::Vertical);
 }
 
 qreal Selection::left() const
@@ -71,7 +71,7 @@ void Selection::setLeft(qreal l)
 {
     QRectF newRect = selection;
     newRect.setLeft(l);
-    setRect(newRect.normalized(), Horizontal);
+    setRect(newRect.normalized(), Qt::Horizontal);
 }
 
 qreal Selection::top() const
@@ -83,7 +83,7 @@ void Selection::setTop(qreal t)
 {
     QRectF newRect = selection;
     newRect.setTop(t);
-    setRect(newRect.normalized(), Vertical);
+    setRect(newRect.normalized(), Qt::Vertical);
 }
 
 qreal Selection::right() const
@@ -95,7 +95,7 @@ void Selection::setRight(qreal r)
 {
     QRectF newRect = selection;
     newRect.setRight(r);
-    setRect(newRect.normalized(), Horizontal);
+    setRect(newRect.normalized(), Qt::Horizontal);
 }
 
 qreal Selection::bottom() const
@@ -107,7 +107,7 @@ void Selection::setBottom(qreal b)
 {
     QRectF newRect = selection;
     newRect.setBottom(b);
-    setRect(newRect.normalized(), Vertical);
+    setRect(newRect.normalized(), Qt::Vertical);
 }
 
 qreal Selection::horizontalCenter() const
@@ -142,19 +142,19 @@ void Selection::moveTo(qreal x, qreal y)
 {
     QRectF newRect = selection;
     newRect.moveTo(x, y);
-    setRect(newRect, Horizontal | Vertical);
+    setRect(newRect, Qt::Horizontal | Qt::Vertical);
 }
 
 void Selection::moveTo(const QPointF &p)
 {
     QRectF newRect = selection;
     newRect.moveTo(p);
-    setRect(newRect, Horizontal | Vertical);
+    setRect(newRect, Qt::Horizontal | Qt::Vertical);
 }
 
 void Selection::setRect(const QRectF &r)
 {
-    setRect(r.normalized(), Horizontal | Vertical);
+    setRect(r.normalized(), Qt::Horizontal | Qt::Vertical);
 }
 
 void Selection::setRect(qreal x, qreal y, qreal w, qreal h)
@@ -162,7 +162,7 @@ void Selection::setRect(qreal x, qreal y, qreal w, qreal h)
     setRect(QRectF(x, y, w, h));
 }
 
-void Selection::setRect(const QRectF &newRect, int changeTypes)
+void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
 {
     const QRectF oldRect = selection;
     selection = newRect;
@@ -171,7 +171,7 @@ void Selection::setRect(const QRectF &newRect, int changeTypes)
     bool rectChange = false;
     // Keeping track of which things change without unnecessarily
     // sending signals or sending signals more than once is tough.
-    if (changeTypes & Horizontal) {
+    if (orientations & Qt::Horizontal) {
         if (!qFuzzyCompare(oldRect.x(), newRect.x())) {
             rectChange = true;
             Q_EMIT xChanged();
@@ -195,7 +195,7 @@ void Selection::setRect(const QRectF &newRect, int changeTypes)
             Q_EMIT rightChanged();
         }
     }
-    if (changeTypes & Vertical) {
+    if (orientations & Qt::Vertical) {
         if (!qFuzzyCompare(oldRect.y(), newRect.y())) {
             rectChange = true;
             Q_EMIT yChanged();

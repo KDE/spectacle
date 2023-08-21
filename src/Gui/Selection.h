@@ -119,12 +119,7 @@ Q_SIGNALS:
     void emptyChanged();
 
 private:
-    enum ChangeType {
-        Horizontal = 0b01,
-        Vertical =   0b10,
-    };
-
-    void setRect(const QRectF &newRect, int changeTypes);
+    void setRect(const QRectF &newRect, Qt::Orientations orientations);
 
     QRectF selection;
     // mainly exists so that I don't have to qobject_cast the parent
