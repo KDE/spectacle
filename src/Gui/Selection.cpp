@@ -4,9 +4,12 @@
 
 #include "Selection.h"
 #include "SelectionEditor.h"
+#include "Geometry.h"
 
 #include <QQuickItem>
 #include <QtMath>
+
+using G = Geometry;
 
 Selection::Selection(SelectionEditor *editor)
     : QObject(editor)
@@ -167,7 +170,8 @@ void Selection::setRect(qreal x, qreal y, qreal w, qreal h)
 void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
 {
     const QRectF oldRect = selection;
-    selection = newRect;
+    const auto &bounds = editor->screensRect();
+    selection = G::rectClipped(newRect, bounds, orientations);
     // Using this instead of just comparing rects to take advantage
     // of the qFuzzyCompare calculations we're doing anyway.
     bool rectChange = false;
@@ -175,51 +179,51 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
     // Keeping track of which things change without unnecessarily
     // sending signals or sending signals more than once is tough.
     if (orientations & Qt::Horizontal) {
-        if (!qFuzzyCompare(oldRect.x(), newRect.x())) {
+        if (!qFuzzyCompare(oldRect.x(), selection.x())) {
             rectChange = true;
             Q_EMIT xChanged();
         }
         qreal oldHC = oldRect.x() + oldRect.width() / 2.0;
-        qreal newHC = newRect.x() + newRect.width() / 2.0;
+        qreal newHC = selection.x() + selection.width() / 2.0;
         if (!qFuzzyCompare(oldHC, newHC)) {
             rectChange = true;
             Q_EMIT horizontalCenterChanged();
         }
-        if (!qFuzzyCompare(oldRect.width(), newRect.width())) {
+        if (!qFuzzyCompare(oldRect.width(), selection.width())) {
             rectChange = true;
             sizeChange = true;
             Q_EMIT widthChanged();
         }
-        if (!qFuzzyCompare(oldRect.left(), newRect.left())) {
+        if (!qFuzzyCompare(oldRect.left(), selection.left())) {
             rectChange = true;
             Q_EMIT leftChanged();
         }
-        if (!qFuzzyCompare(oldRect.right(), newRect.right())) {
+        if (!qFuzzyCompare(oldRect.right(), selection.right())) {
             rectChange = true;
             Q_EMIT rightChanged();
         }
     }
     if (orientations & Qt::Vertical) {
-        if (!qFuzzyCompare(oldRect.y(), newRect.y())) {
+        if (!qFuzzyCompare(oldRect.y(), selection.y())) {
             rectChange = true;
             Q_EMIT yChanged();
         }
         qreal oldVC = oldRect.y() + oldRect.height() / 2.0;
-        qreal newVC = newRect.y() + newRect.height() / 2.0;
+        qreal newVC = selection.y() + selection.height() / 2.0;
         if (!qFuzzyCompare(oldVC, newVC)) {
             rectChange = true;
             Q_EMIT verticalCenterChanged();
         }
-        if (!qFuzzyCompare(oldRect.height(), newRect.height())) {
+        if (!qFuzzyCompare(oldRect.height(), selection.height())) {
             rectChange = true;
             sizeChange = true;
             Q_EMIT heightChanged();
         }
-        if (!qFuzzyCompare(oldRect.top(), newRect.top())) {
+        if (!qFuzzyCompare(oldRect.top(), selection.top())) {
             rectChange = true;
             Q_EMIT topChanged();
         }
-        if (!qFuzzyCompare(oldRect.bottom(), newRect.bottom())) {
+        if (!qFuzzyCompare(oldRect.bottom(), selection.bottom())) {
             rectChange = true;
             Q_EMIT bottomChanged();
         }
@@ -230,7 +234,7 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
     if (sizeChange) {
         Q_EMIT sizeChanged();
     }
-    if (oldRect.isEmpty() != newRect.isEmpty()) {
+    if (oldRect.isEmpty() != selection.isEmpty()) {
         Q_EMIT emptyChanged();
     }
 }
