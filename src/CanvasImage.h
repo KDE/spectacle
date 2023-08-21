@@ -61,7 +61,7 @@ struct CanvasImage
     /**
      * Holds the QRectF that should be used for rendering the image in the GUI.
      *
-     * This should be scaled based on the devicePixelRatio.
+     * The size and position should be scaled based on the devicePixelRatio.
      * Use image.size() if you want to get the true image size.
      */
     QRectF rect;
