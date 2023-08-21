@@ -22,7 +22,8 @@ qreal Selection::x() const
 void Selection::setX(qreal x)
 {
     QRectF newRect = selection;
-    newRect.setX(x);
+    // QRectF::setX is the same as QRectF::setLeft
+    newRect.moveLeft(x);
     setRect(newRect, Qt::Horizontal);
 }
 
@@ -34,7 +35,8 @@ qreal Selection::y() const
 void Selection::setY(qreal y)
 {
     QRectF newRect = selection;
-    newRect.setY(y);
+    // QRectF::setY is the same as QRectF::setTop
+    newRect.moveTop(y);
     setRect(newRect, Qt::Vertical);
 }
 
