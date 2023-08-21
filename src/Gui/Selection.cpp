@@ -171,6 +171,7 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
     // Using this instead of just comparing rects to take advantage
     // of the qFuzzyCompare calculations we're doing anyway.
     bool rectChange = false;
+    bool sizeChange = false;
     // Keeping track of which things change without unnecessarily
     // sending signals or sending signals more than once is tough.
     if (orientations & Qt::Horizontal) {
@@ -186,6 +187,7 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
         }
         if (!qFuzzyCompare(oldRect.width(), newRect.width())) {
             rectChange = true;
+            sizeChange = true;
             Q_EMIT widthChanged();
         }
         if (!qFuzzyCompare(oldRect.left(), newRect.left())) {
@@ -210,6 +212,7 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
         }
         if (!qFuzzyCompare(oldRect.height(), newRect.height())) {
             rectChange = true;
+            sizeChange = true;
             Q_EMIT heightChanged();
         }
         if (!qFuzzyCompare(oldRect.top(), newRect.top())) {
@@ -223,6 +226,9 @@ void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
     }
     if (rectChange) {
         Q_EMIT rectChanged();
+    }
+    if (sizeChange) {
+        Q_EMIT sizeChanged();
     }
     if (oldRect.isEmpty() != newRect.isEmpty()) {
         Q_EMIT emptyChanged();

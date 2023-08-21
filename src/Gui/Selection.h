@@ -34,6 +34,7 @@ class Selection : public QObject
     Q_PROPERTY(qreal verticalCenter READ verticalCenter WRITE setVerticalCenter NOTIFY verticalCenterChanged FINAL)
 
     Q_PROPERTY(QRectF rect READ rectF WRITE setRect NOTIFY rectChanged FINAL)
+    Q_PROPERTY(QSizeF size READ sizeF NOTIFY sizeChanged FINAL)
 
     Q_PROPERTY(bool empty READ isEmpty NOTIFY emptyChanged() FINAL)
     QML_ANONYMOUS
@@ -102,6 +103,7 @@ Q_SIGNALS:
     void verticalCenterChanged();
 
     void rectChanged();
+    void sizeChanged();
 
     void emptyChanged();
 
