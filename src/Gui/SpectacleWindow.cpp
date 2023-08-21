@@ -10,6 +10,7 @@
 
 #include "ExportManager.h"
 #include "SpectacleCore.h"
+#include "Geometry.h"
 #include "spectacle_gui_debug.h"
 
 #include <KIO/JobUiDelegateFactory>
@@ -30,6 +31,8 @@
 #include <private/qtx11extras_p.h>
 #endif
 #endif
+
+using G = Geometry;
 
 QVector<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
 bool SpectacleWindow::s_synchronizingVisibility = false;
@@ -103,26 +106,12 @@ SpectacleWindow::~SpectacleWindow()
 
 qreal SpectacleWindow::logicalX() const
 {
-#ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
-        return x() / devicePixelRatio();
-    } else
-#endif
-    {
-        return x();
-    }
+    return G::mapFromPlatformValue(x(), devicePixelRatio());
 }
 
 qreal SpectacleWindow::logicalY() const
 {
-#ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
-        return y() / devicePixelRatio();
-    } else
-#endif
-    {
-        return y();
-    }
+    return G::mapFromPlatformValue(y(), devicePixelRatio());
 }
 
 ExportMenu *SpectacleWindow::exportMenu() const
@@ -214,7 +203,7 @@ void SpectacleWindow::closeAll()
 
 qreal SpectacleWindow::dprRound(qreal value) const
 {
-    return std::round(value * devicePixelRatio()) / devicePixelRatio();
+    return G::dprRound(value, devicePixelRatio());
 }
 
 QString SpectacleWindow::baseFileName(const QUrl &url) const
