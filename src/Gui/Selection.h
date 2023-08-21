@@ -13,6 +13,7 @@ class SelectionEditor;
 
 /**
  * This class provides information about the selected rectangle capture region and a few related utilities.
+ * Uses logical global coordinates.
  */
 class Selection : public QObject
 {
