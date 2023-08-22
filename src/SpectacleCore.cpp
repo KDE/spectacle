@@ -709,13 +709,13 @@ void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &
 
     if (!saveUrl.isEmpty()) {
         notification->setUrls({saveUrl});
-        notification->setDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
-        connect(notification, &KNotification::defaultActivated, this, [saveUrl]() {
+
+        auto open = [saveUrl]() {
             auto job = new KIO::OpenUrlJob(saveUrl);
             job->start();
-        });
-        notification->setActions({i18n("Annotate")});
-        connect(notification, &KNotification::action1Activated, this, [saveUrl]() {
+        };
+
+        auto annotate = [saveUrl]() {
             QProcess newInstance;
             newInstance.setProgram(QCoreApplication::applicationFilePath());
             newInstance.setArguments({
@@ -724,7 +724,13 @@ void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &
                 saveUrl.toLocalFile()
             });
             newInstance.startDetached();
-        });
+        };
+
+        auto defaultAction = notification->addDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
+        connect(defaultAction, &KNotificationAction::activated, this, open);
+
+        auto annotateAction = notification->addAction(i18n("Annotate"));
+        connect(annotateAction, &KNotificationAction::activated, this, annotate);
     }
 
     connect(notification, &QObject::destroyed, this, [this](QObject *notification) {
