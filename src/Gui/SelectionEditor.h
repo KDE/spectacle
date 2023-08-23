@@ -80,14 +80,6 @@ public:
     QPointF mousePosition() const;
 
     /**
-     * Round value to be physically pixel perfect, based on the device pixel ratio.
-     * Meant to be used with coordinates, line widths and shape sizes.
-     * This is not meant to be used in QML.
-     */
-    qreal dprRound(qreal value, qreal dpr) const;
-    qreal dprRound(qreal value) const;
-
-    /**
      * Sets the images to use for each screen.
      * Each image should match a screen 1:1 in the order that they are listed
      * by QGuiApplication::screens().

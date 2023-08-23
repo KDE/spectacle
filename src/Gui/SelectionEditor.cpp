@@ -8,6 +8,7 @@
 
 #include "Annotations/AnnotationDocument.h"
 #include "SpectacleCore.h"
+#include "Geometry.h"
 #include "settings.h"
 #include "spectacle_gui_debug.h"
 
@@ -25,6 +26,8 @@
 #include <QtMath>
 #include <qnamespace.h>
 
+using G = Geometry;
+
 class SelectionEditorSingleton
 {
 public:
@@ -35,25 +38,9 @@ Q_GLOBAL_STATIC(SelectionEditorSingleton, privateSelectionEditorSelf)
 
 static constexpr qreal s_handleRadiusMouse = 9;
 static constexpr qreal s_handleRadiusTouch = 12;
-static constexpr qreal s_increaseDragAreaFactor = 2.0;
 static constexpr qreal s_minSpacingBetweenHandles = 20;
 static constexpr qreal s_borderDragAreaSize = 10;
 static constexpr qreal s_magnifierLargeStep = 15;
-
-static constexpr inline bool isPointInsideCircle(const QPointF &circleCenter, qreal radius, const QPointF &point) noexcept
-{
-    return (std::pow(point.x() - circleCenter.x(), 2) + std::pow(point.y() - circleCenter.y(), 2) <= std::pow(radius, 2)) ? true : false;
-}
-
-static constexpr inline bool inRange(qreal low, qreal high, qreal value) noexcept
-{
-    return value >= low && value <= high;
-}
-
-static constexpr inline bool withinThreshold(qreal offset, qreal threshold) noexcept
-{
-    return std::fabs(offset) <= threshold;
-}
 
 // SelectionEditorPrivate =====================
 
@@ -73,6 +60,8 @@ public:
     int boundsRight(int newTopLeftX, const bool mouse = true);
     int boundsUp(int newTopLeftY, const bool mouse = true);
     int boundsDown(int newTopLeftY, const bool mouse = true);
+
+    qreal dprRound(qreal value) const;
 
     void handleArrowKey(QKeyEvent *event);
 
@@ -116,8 +105,8 @@ void SelectionEditorPrivate::updateDevicePixelRatio()
         devicePixelRatio = qApp->devicePixelRatio();
     }
 
-    devicePixel = 1.0 / devicePixelRatio;
-    penWidth = q->dprRound(1.0);
+    devicePixel = G::dpx(devicePixelRatio);
+    penWidth = dprRound(1.0);
     penOffset = penWidth / 2.0;
 }
 
@@ -241,6 +230,11 @@ int SelectionEditorPrivate::boundsDown(int newTopLeftY, const bool mouse)
     return newTopLeftY;
 }
 
+qreal SelectionEditorPrivate::dprRound(qreal value) const
+{
+    return G::dprRound(value, devicePixelRatio);
+}
+
 void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
 {
     if (disableArrowKeys) {
@@ -248,8 +242,9 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     }
 
     const auto key = static_cast<Qt::Key>(event->key());
-    const bool modifySize = event->modifiers() & Qt::AltModifier;
-    const qreal step = (event->modifiers() & Qt::ShiftModifier ? 1 : s_magnifierLargeStep);
+    const auto modifiers = event->modifiers();
+    const bool modifySize = modifiers & Qt::AltModifier;
+    const qreal step = modifiers & Qt::ShiftModifier ? devicePixel : dprRound(s_magnifierLargeStep);
     QRectF selectionRect = selection->rectF();
 
     if (key == Qt::Key_Left) {
@@ -307,51 +302,49 @@ void SelectionEditorPrivate::setMouseCursor(QQuickItem *item, const QPointF &pos
 
 SelectionEditor::MouseLocation SelectionEditorPrivate::mouseLocation(const QPointF &pos) const
 {
-    if (isPointInsideCircle(handlePositions[0], handleRadius * s_increaseDragAreaFactor, pos)) {
+    QRectF handleRect(-handleRadius, -handleRadius, handleRadius * 2, handleRadius * 2);
+    if (G::ellipseContains(handleRect.translated(handlePositions[0]), pos)) {
         return MouseLocation::TopLeft;
     }
-    if (isPointInsideCircle(handlePositions[1], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[1]), pos)) {
         return MouseLocation::TopRight;
     }
-    if (isPointInsideCircle(handlePositions[2], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[2]), pos)) {
         return MouseLocation::BottomRight;
     }
-    if (isPointInsideCircle(handlePositions[3], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[3]), pos)) {
         return MouseLocation::BottomLeft;
     }
-    if (isPointInsideCircle(handlePositions[4], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[4]), pos)) {
         return MouseLocation::Top;
     }
-    if (isPointInsideCircle(handlePositions[5], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[5]), pos)) {
         return MouseLocation::Right;
     }
-    if (isPointInsideCircle(handlePositions[6], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[6]), pos)) {
         return MouseLocation::Bottom;
     }
-    if (isPointInsideCircle(handlePositions[7], handleRadius * s_increaseDragAreaFactor, pos)) {
+    if (G::ellipseContains(handleRect.translated(handlePositions[7]), pos)) {
         return MouseLocation::Left;
     }
 
+    const auto rect = selection->normalized();
     // Rectangle can be resized when border is dragged, if it's big enough
-    if (selection->width() >= 100 && selection->height() >= 100) {
-        if (inRange(selection->x(), selection->x() + selection->width(), pos.x())) {
-            if (withinThreshold(pos.y() - selection->y(), s_borderDragAreaSize)) {
-                return MouseLocation::Top;
-            }
-            if (withinThreshold(pos.y() - selection->y() - selection->height(), s_borderDragAreaSize)) {
-                return MouseLocation::Bottom;
-            }
+    if (rect.width() >= 100 && rect.height() >= 100) {
+        if (rect.adjusted(0, 0, 0, -rect.height() + s_borderDragAreaSize).contains(pos)) {
+            return MouseLocation::Top;
         }
-        if (inRange(selection->y(), selection->y() + selection->height(), pos.y())) {
-            if (withinThreshold(pos.x() - selection->x(), s_borderDragAreaSize)) {
-                return MouseLocation::Left;
-            }
-            if (withinThreshold(pos.x() - selection->x() - selection->width(), s_borderDragAreaSize)) {
-                return MouseLocation::Right;
-            }
+        if (rect.adjusted(0, rect.height() - s_borderDragAreaSize, 0, 0).contains(pos)) {
+            return MouseLocation::Bottom;
+        }
+        if (rect.adjusted(0, 0, -rect.width() + s_borderDragAreaSize, 0).contains(pos)) {
+            return MouseLocation::Left;
+        }
+        if (rect.adjusted(rect.width() - s_borderDragAreaSize, 0, 0, 0).contains(pos)) {
+            return MouseLocation::Right;
         }
     }
-    if (selection->contains(pos.toPoint())) {
+    if (rect.contains(pos)) {
         return MouseLocation::Inside;
     }
     return MouseLocation::Outside;
@@ -420,16 +413,6 @@ bool SelectionEditor::magnifierAllowed() const
 QPointF SelectionEditor::mousePosition() const
 {
     return d->mousePos;
-}
-
-qreal SelectionEditor::dprRound(qreal value, qreal dpr) const
-{
-    return std::round(value * dpr) / dpr;
-}
-
-qreal SelectionEditor::dprRound(qreal value) const
-{
-    return dprRound(value, d->devicePixelRatio);
 }
 
 void SelectionEditor::setScreenImages(const QVector<CanvasImage> &screenImages)
@@ -530,8 +513,10 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
     if (KWindowSystem::isPlatformX11()) {
         d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        auto imageCropRegion = QRectF(selectionRect.topLeft() * d->devicePixelRatio, //
-                                      selectionRect.size() * d->devicePixelRatio).toRect();
+        auto imageCropRegion = G::rectClipped({selectionRect.topLeft() * d->devicePixelRatio, //
+                                               selectionRect.size() * d->devicePixelRatio}, //
+                                              {d->screensRect.topLeft() * d->devicePixelRatio, //
+                                               d->screensRect.size() * d->devicePixelRatio}).toRect();
         if (imageCropRegion.size() != d->image.size()) {
             Q_EMIT spectacleCore->grabDone(d->image.copy(imageCropRegion), actions);
         } else {
@@ -679,7 +664,7 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     if (!item->window() || !item->window()->screen()) {
         return;
     }
-    d->mousePos = event->posF() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
+    d->mousePos = item->mapToScene(event->posF()) + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
 }
@@ -702,7 +687,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
-        d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
+        d->mousePos = event->windowPos() + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
         Q_EMIT mousePositionChanged();
         auto newDragLocation = d->mouseLocation(d->mousePos);
         if (d->dragLocation != newDragLocation) {
@@ -755,7 +740,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         return;
     }
 
-    d->mousePos = event->localPos() + item->window()->screen()->geometry().topLeft() / (KWindowSystem::isPlatformWayland() ? 1 : devicePixelRatio());
+    d->mousePos = event->windowPos() + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
     Q_EMIT mousePositionChanged();
     const bool wasMagnifierAllowed = d->magnifierAllowed;
     d->magnifierAllowed = true;
