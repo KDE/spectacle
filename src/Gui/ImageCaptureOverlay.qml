@@ -100,8 +100,8 @@ MouseArea {
         color: "transparent"
         border.color: palette.highlight
         border.width: contextWindow.dprRound(1)
-        visible: !Selection.empty && Selection.rectIntersectsRect(Qt.rect(x,y,width,height),
-                                                                  Qt.rect(0,0,parent.width, parent.height))
+        visible: !Selection.empty && G.rectIntersects(Qt.rect(x,y,width,height),
+                                                      Qt.rect(0,0,parent.width, parent.height))
         x: Selection.x - border.width - contextWindow.logicalX
         y: Selection.y - border.width - contextWindow.logicalY
         width: Selection.width + border.width * 2
@@ -123,7 +123,7 @@ MouseArea {
         component Handle: Rectangle {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
-                && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
+                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             color: palette.highlight
             width: Kirigami.Units.gridUnit
             height: width
@@ -182,8 +182,7 @@ MouseArea {
             && !annotations.enabled
             && !mtbDragHandler.active
             && !atbDragHandler.active
-            && !Selection.rectIntersectsRect(SelectionEditor.handlesRect,
-                                             Qt.rect(x, y, width, height))
+            && !G.rectIntersects(SelectionEditor.handlesRect, Qt.rect(x, y, width, height))
         Behavior on opacity {
             NumberAnimation {
                 duration: Kirigami.Units.longDuration
@@ -204,7 +203,7 @@ MouseArea {
             y: contextWindow.dprRound(Math.min(SelectionEditor.mousePosition.y + Kirigami.Units.gridUnit, SelectionEditor.screensRect.height - height))
             z: 100
             visible: Settings.showMagnifier && SelectionEditor.magnifierAllowed
-                && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
+                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             active: Settings.showMagnifier
             sourceComponent: Magnifier {
                 viewport: annotations
@@ -258,15 +257,14 @@ MouseArea {
             }
             visible: opacity > 0
             opacity: ssToolTip.normallyVisible
-                && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
+                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
                     easing.type: Easing.OutCubic
                 }
             }
-            size: Selection.alignedSize(Selection.width, Selection.height,
-                                        SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
+            size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
             padding: Kirigami.Units.mediumSpacing * 2
             topPadding: padding - fontMetrics.descent
             bottomPadding: topPadding
@@ -356,7 +354,7 @@ MouseArea {
                 restoreMode: Binding.RestoreNone
             }
             visible: opacity > 0
-            opacity: normallyVisible && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
+            opacity: normallyVisible && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
@@ -370,9 +368,7 @@ MouseArea {
                 focusPolicy: Qt.NoFocus
                 displayMode: QQC2.AbstractButton.TextBesideIcon
                 showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
-                imageSize: Selection.alignedSize(Selection.width,
-                                                Selection.height,
-                                                SelectionEditor.devicePixelRatio)
+                imageSize: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio)
             }
 
             DragHandler { // parent is contentItem and parent is a read-only property
