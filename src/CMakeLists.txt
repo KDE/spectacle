@@ -58,6 +58,7 @@ if(XCB_FOUND)
         XCB::IMAGE
         XCB::CURSOR
         XCB::UTIL
+        XCB::RANDR
     )
     if (QT_MAJOR_VERSION STREQUAL "5")
         target_link_libraries(spectacle Qt::X11Extras)

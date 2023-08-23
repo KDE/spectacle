@@ -6,6 +6,7 @@
 
 #include "PlatformXcb.h"
 
+#include <xcb/randr.h>
 #include <xcb/xcb_cursor.h>
 #include <xcb/xcb_util.h>
 #include <xcb/xfixes.h>
@@ -288,6 +289,22 @@ xcb_window_t PlatformXcb::getTransientWindowParent(xcb_window_t childWindow, QRe
     return windowInfo.transientFor();
 }
 
+QList<QRect> PlatformXcb::getScreenRects()
+{
+    QList<QRect> screenRects;
+    auto xcbConn = QX11Info::connection();
+    auto appWin = QX11Info::appRootWindow();
+    auto monitorsCookie = xcb_randr_get_monitors(xcbConn, appWin, 1);
+    XcbReplyPtr<xcb_randr_get_monitors_reply_t> monitorsReply(xcb_randr_get_monitors_reply(xcbConn, monitorsCookie, nullptr));
+    auto it = xcb_randr_get_monitors_monitors_iterator(monitorsReply.get());
+    while (it.rem) {
+        auto monitorInfo = it.data;
+        screenRects += {monitorInfo->x, monitorInfo->y, monitorInfo->width, monitorInfo->height};
+        xcb_randr_monitor_info_next(&it);
+    }
+    return screenRects;
+}
+
 /* -- Image Processing Utilities --------------------------------------------------------------- */
 
 QImage PlatformXcb::convertFromNative(xcb_image_t *xcbImage)
@@ -409,16 +426,8 @@ QImage PlatformXcb::getToplevelImage(QRect rect, bool blendPointer)
         rect = getDrawableGeometry(rootWindow);
     } else {
         QRegion screenRegion;
-        const auto screens = QGuiApplication::screens();
-        for (auto screen : screens) {
-            auto screenRect = screen->geometry();
-
-            // Do not use setSize() here, because QSize::operator*=()
-            // performs qRound() which can result in xcb_image_get() failing
-            const auto pixelRatio = screen->devicePixelRatio();
-            screenRect.setHeight(qFloor(screenRect.height() * pixelRatio));
-            screenRect.setWidth(qFloor(screenRect.width() * pixelRatio));
-
+        const auto screenRects = getScreenRects();
+        for (auto &screenRect :screenRects) {
             screenRegion += screenRect;
         }
         rect = (screenRegion & rect).boundingRect();
@@ -491,17 +500,17 @@ void PlatformXcb::grabAllScreens(bool includePointer)
 void PlatformXcb::grabCurrentScreen(bool includePointer)
 {
     auto cursorPosition = QCursor::pos();
-    const auto screens = QGuiApplication::screens();
-    for (auto screen : screens) {
-        auto screenRect = screen->geometry();
-        if (!screenRect.contains(cursorPosition)) {
+    const auto screenRects = getScreenRects();
+    for (auto &screenRect : screenRects) {
+        // On X11, QScreen::geometry's position is not scaled, but the size is scaled and rounded.
+        QRect qScreenRect(screenRect.topLeft(), screenRect.size() / qGuiApp->devicePixelRatio());
+        if (!qScreenRect.contains(cursorPosition)) {
             continue;
         }
 
         // the screen origin is in native pixels, but the size is device-dependent.
         // convert these also to native pixels.
-        QRect nativeScreenRect(screenRect.topLeft(), screenRect.size() * screen->devicePixelRatio());
-        auto image = getToplevelImage(nativeScreenRect, includePointer);
+        auto image = getToplevelImage(screenRect, includePointer);
         image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
         Q_EMIT newScreenshotTaken(image);
         return;
@@ -705,12 +714,12 @@ void PlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool include
         qreal scale = qGuiApp->devicePixelRatio();
         image.setDevicePixelRatio(scale);
         // break the image into a list of images
-        const auto screens = QGuiApplication::screens();
+        const auto screenRects = getScreenRects();
         QVector<CanvasImage> screenImages;
-        for (const auto screen : screens) {
-            QRect imageRect = screen->geometry();
-            imageRect.setSize(screen->size() * screen->devicePixelRatio());
-            screenImages.append({image.copy(imageRect), screen->geometry()});
+        for (auto &screenRect : screenRects) {
+            // Assume all screens have the same DPR on X11
+            QRectF rect(QPointF(screenRect.topLeft()), QSizeF(screenRect.size()) / scale);
+            screenImages.append({image.copy(screenRect), rect});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
         break;

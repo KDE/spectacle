@@ -40,6 +40,7 @@ private:
     QRect getDrawableGeometry(xcb_drawable_t drawable);
     xcb_window_t getWindowUnderCursor();
     xcb_window_t getTransientWindowParent(xcb_window_t childWindow, QRect &windowRectOut, bool includeDecorations);
+    QList<QRect> getScreenRects();
     QImage convertFromNative(xcb_image_t *xcbImage);
     QImage blendCursorImage(QImage &image, const QRect rect);
     QImage postProcessImage(QImage &image, QRect rect, bool blendPointer);
