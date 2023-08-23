@@ -702,6 +702,8 @@ void PlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool include
         break;
     case GrabMode::PerScreenImageNative: {
         auto image = getToplevelImage(QRect(), includePointer);
+        qreal scale = qGuiApp->devicePixelRatio();
+        image.setDevicePixelRatio(scale);
         // break the image into a list of images
         const auto screens = QGuiApplication::screens();
         QVector<CanvasImage> screenImages;
