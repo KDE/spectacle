@@ -718,7 +718,7 @@ void PlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool include
         QVector<CanvasImage> screenImages;
         for (auto &screenRect : screenRects) {
             // Assume all screens have the same DPR on X11
-            QRectF rect(QPointF(screenRect.topLeft()), QSizeF(screenRect.size()) / scale);
+            QRectF rect(QPointF(screenRect.topLeft()) / scale, QSizeF(screenRect.size()) / scale);
             screenImages.append({image.copy(screenRect), rect});
         }
         Q_EMIT newScreensScreenshotTaken(screenImages);
