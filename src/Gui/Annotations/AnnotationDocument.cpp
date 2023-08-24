@@ -968,10 +968,16 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
 
     for (const auto &img : qAsConst(m_canvasImages)) {
         if (viewPort.intersects(img.rect)) {
-            // More High quality scale down
-            auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
-            painter->drawImage(zoomPoint((img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio(), zoomFactor).toPoint(), scaledImg);
+            auto point = (img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio();
+            if (zoomFactor == 1) {
+                painter->drawImage(point.toPoint(), img.image);
+            } else {
+                // More High quality scale down
+                auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(),
+                                                  Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
+                painter->drawImage(zoomPoint(point, zoomFactor).toPoint(), scaledImg);
+            }
         }
     }
 
