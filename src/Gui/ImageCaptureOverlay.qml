@@ -200,8 +200,8 @@ MouseArea {
 
         // Magnifier
         Loader {
-            x: Math.round(Math.min(SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit , SelectionEditor.screensRect.width - width))
-            y: Math.round(Math.min(SelectionEditor.mousePosition.y + Kirigami.Units.gridUnit , SelectionEditor.screensRect.height - height))
+            x: contextWindow.dprRound(Math.min(SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit, SelectionEditor.screensRect.width - width))
+            y: contextWindow.dprRound(Math.min(SelectionEditor.mousePosition.y + Kirigami.Units.gridUnit, SelectionEditor.screensRect.height - height))
             z: 100
             visible: Settings.showMagnifier && SelectionEditor.magnifierAllowed
                 && Selection.rectIntersectsRect(Qt.rect(x,y,width,height), annotations.viewportRect)
