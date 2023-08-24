@@ -549,7 +549,7 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
         // settings (and unless the user has set an extremely slow effect), 200
         // milliseconds is a good amount of wait time.
         timeout = qMax(timeout, 200);
-    } else if (KWindowSystem::isPlatformX11()) {
+    } else if (m_platform->inherits("PlatformXcb")) {
         // Minimum 50ms delay to prevent segfaults from xcb function calls
         // that don't get replies fast enough.
         timeout = qMax(timeout, 50);
