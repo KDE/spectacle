@@ -150,6 +150,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
 
         initCaptureWindows(CaptureWindow::Image);
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     });
     connect(platform, &Platform::newScreenshotFailed, this, &SpectacleCore::onScreenshotFailed);
