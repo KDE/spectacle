@@ -88,7 +88,7 @@ public:
     QImage image;
     QVector<CanvasImage> screenImages;
     qreal devicePixelRatio = 1;
-    qreal devicePixelRatioI = 1;
+    qreal devicePixel = 1;
     QPointF mousePos;
     bool magnifierAllowed = false;
     bool toggleMagnifier = false;
@@ -117,7 +117,7 @@ void SelectionEditorPrivate::updateDevicePixelRatio()
         devicePixelRatio = qApp->devicePixelRatio();
     }
 
-    devicePixelRatioI = 1.0 / devicePixelRatio;
+    devicePixel = 1.0 / devicePixelRatio;
     penWidth = q->dprRound(1.0);
     penOffset = penWidth / 2.0;
 }
@@ -192,7 +192,7 @@ int SelectionEditorPrivate::boundsLeft(int newTopLeftX, const bool mouse)
     if (newTopLeftX < 0) {
         if (mouse) {
             // tweak startPos to prevent rectangle from getting stuck
-            startPos.setX(startPos.x() + newTopLeftX * devicePixelRatioI);
+            startPos.setX(startPos.x() + newTopLeftX * devicePixel);
         }
         newTopLeftX = 0;
     }
@@ -207,7 +207,7 @@ int SelectionEditorPrivate::boundsRight(int newTopLeftX, const bool mouse)
     const int xOffset = newTopLeftX - realMaxX;
     if (xOffset > 0) {
         if (mouse) {
-            startPos.setX(startPos.x() + xOffset * devicePixelRatioI);
+            startPos.setX(startPos.x() + xOffset * devicePixel);
         }
         newTopLeftX = realMaxX;
     }
@@ -219,7 +219,7 @@ int SelectionEditorPrivate::boundsUp(int newTopLeftY, const bool mouse)
 {
     if (newTopLeftY < 0) {
         if (mouse) {
-            startPos.setY(startPos.y() + newTopLeftY * devicePixelRatioI);
+            startPos.setY(startPos.y() + newTopLeftY * devicePixel);
         }
         newTopLeftY = 0;
     }
@@ -234,7 +234,7 @@ int SelectionEditorPrivate::boundsDown(int newTopLeftY, const bool mouse)
     const int yOffset = newTopLeftY - realMaxY;
     if (yOffset > 0) {
         if (mouse) {
-            startPos.setY(startPos.y() + yOffset * devicePixelRatioI);
+            startPos.setY(startPos.y() + yOffset * devicePixel);
         }
         newTopLeftY = realMaxY;
     }
@@ -256,32 +256,32 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     if (key == Qt::Key_Left) {
         const int newPos = boundsLeft(qRound(selectionRect.left() * devicePixelRatio - step), false);
         if (modifiers & Qt::AltModifier) {
-            selectionRect.setRight(devicePixelRatioI * newPos + selectionRect.width());
+            selectionRect.setRight(devicePixel * newPos + selectionRect.width());
             selectionRect = selectionRect.normalized();
         } else {
-            selectionRect.moveLeft(devicePixelRatioI * newPos);
+            selectionRect.moveLeft(devicePixel * newPos);
         }
     } else if (key == Qt::Key_Right) {
         const int newPos = boundsRight(qRound(selectionRect.left() * devicePixelRatio + step), false);
         if (modifiers & Qt::AltModifier) {
-            selectionRect.setRight(devicePixelRatioI * newPos + selectionRect.width());
+            selectionRect.setRight(devicePixel * newPos + selectionRect.width());
         } else {
-            selectionRect.moveLeft(devicePixelRatioI * newPos);
+            selectionRect.moveLeft(devicePixel * newPos);
         }
     } else if (key == Qt::Key_Up) {
         const int newPos = boundsUp(qRound(selectionRect.top() * devicePixelRatio - step), false);
         if (modifiers & Qt::AltModifier) {
-            selectionRect.setBottom(devicePixelRatioI * newPos + selectionRect.height());
+            selectionRect.setBottom(devicePixel * newPos + selectionRect.height());
             selectionRect = selectionRect.normalized();
         } else {
-            selectionRect.moveTop(devicePixelRatioI * newPos);
+            selectionRect.moveTop(devicePixel * newPos);
         }
     } else if (key == Qt::Key_Down) {
         const int newPos = boundsDown(qRound(selectionRect.top() * devicePixelRatio + step), false);
         if (modifiers & Qt::AltModifier) {
-            selectionRect.setBottom(devicePixelRatioI * newPos + selectionRect.height());
+            selectionRect.setBottom(devicePixel * newPos + selectionRect.height());
         } else {
-            selectionRect.moveTop(devicePixelRatioI * newPos);
+            selectionRect.moveTop(devicePixel * newPos);
         }
     }
     selection->setRect(selectionRect);
@@ -375,10 +375,10 @@ SelectionEditor::SelectionEditor(QObject *parent)
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
         QRectF cropRegion = Settings::cropRegion();
         if (!cropRegion.isEmpty()) {
-            cropRegion.setRect(cropRegion.x() * d->devicePixelRatioI,
-                               cropRegion.y() * d->devicePixelRatioI,
-                               cropRegion.width() * d->devicePixelRatioI,
-                               cropRegion.height() * d->devicePixelRatioI);
+            cropRegion.setRect(cropRegion.x() * d->devicePixel,
+                               cropRegion.y() * d->devicePixel,
+                               cropRegion.width() * d->devicePixel,
+                               cropRegion.height() * d->devicePixel);
             d->selection->setRect(cropRegion.intersected(QRectF(d->screensRect.x(), d->screensRect.y(), d->screensRect.width(), d->screensRect.height())));
         }
     }
@@ -782,15 +782,15 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         const bool afterY = d->mousePos.y() >= d->startPos.y();
         d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
                               afterY ? d->startPos.y() : d->mousePos.y(),
-                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixelRatioI : 0),
-                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixelRatioI : 0));
+                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
+                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
     case MouseLocation::Outside: {
         d->selection->setRect(qMin(d->mousePos.x(), d->startPos.x()),
                               qMin(d->mousePos.y(), d->startPos.y()),
-                              qAbs(d->mousePos.x() - d->startPos.x()) + d->devicePixelRatioI,
-                              qAbs(d->mousePos.y() - d->startPos.y()) + d->devicePixelRatioI);
+                              qAbs(d->mousePos.x() - d->startPos.x()) + d->devicePixel,
+                              qAbs(d->mousePos.y() - d->startPos.y()) + d->devicePixel);
         break;
     }
     case MouseLocation::Top:
@@ -799,7 +799,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         d->selection->setRect(d->selection->x(),
                               afterY ? d->startPos.y() : d->mousePos.y(),
                               d->selection->width(),
-                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixelRatioI : 0));
+                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
     case MouseLocation::Right:
@@ -807,7 +807,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         const bool afterX = d->mousePos.x() >= d->startPos.x();
         d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
                               d->selection->y(),
-                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixelRatioI : 0),
+                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
                               d->selection->height());
         break;
     }
@@ -829,7 +829,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
             newTopLeft.setY(qMin(translatedScreensRect.bottom() - newRect.height(), qMax(newTopLeft.y(), translatedScreensRect.top())));
         }
 
-        d->selection->moveTo(newTopLeft * d->devicePixelRatioI);
+        d->selection->moveTo(newTopLeft * d->devicePixel);
         break;
     }
     default:
