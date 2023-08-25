@@ -371,17 +371,6 @@ SelectionEditor::SelectionEditor(QObject *parent)
     connect(d->selection.get(), &Selection::rectChanged, this, [this](){
         d->updateHandlePositions();
     });
-
-    if (Settings::rememberLastRectangularRegion() == Settings::Always) {
-        QRectF cropRegion = Settings::cropRegion();
-        if (!cropRegion.isEmpty()) {
-            cropRegion.setRect(cropRegion.x() * d->devicePixel,
-                               cropRegion.y() * d->devicePixel,
-                               cropRegion.width() * d->devicePixel,
-                               cropRegion.height() * d->devicePixel);
-            d->selection->setRect(cropRegion.intersected(QRectF(d->screensRect.x(), d->screensRect.y(), d->screensRect.width(), d->screensRect.height())));
-        }
-    }
 }
 
 SelectionEditor *SelectionEditor::instance()
