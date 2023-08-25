@@ -519,18 +519,19 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     if (d->selection->isEmpty()) {
         d->selection->setRect(d->screensRect);
     }
-    QRect scaledCropRegion(d->selection->alignedRect(d->devicePixelRatio));
+    QRect selectionRect(d->selection->alignedRect());
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
-        Settings::setCropRegion(scaledCropRegion);
+        Settings::setCropRegion(selectionRect);
     }
 
     auto spectacleCore = SpectacleCore::instance();
-    spectacleCore->annotationDocument()->cropCanvas(d->selection->alignedRect(1));
+    spectacleCore->annotationDocument()->cropCanvas(selectionRect);
 
     if (KWindowSystem::isPlatformX11()) {
         d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        if (scaledCropRegion.size() != d->image.size()) {
-            Q_EMIT spectacleCore->grabDone(d->image.copy(scaledCropRegion), actions);
+        auto imageCropRegion = d->selection->alignedRect(d->devicePixelRatio);
+        if (imageCropRegion.size() != d->image.size()) {
+            Q_EMIT spectacleCore->grabDone(d->image.copy(imageCropRegion), actions);
         } else {
             Q_EMIT spectacleCore->grabDone(d->image, actions);
         }
@@ -538,7 +539,6 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
         // QGuiApplication::devicePixelRatio() is calculated by getting the highest screen DPI
         qreal maxDpr = qGuiApp->devicePixelRatio();
 
-        QRect selectionRect = d->selection->alignedRect();
         QSize selectionSize = selectionRect.size();
         QImage output(selectionSize * maxDpr, QImage::Format_ARGB32);
         output.fill(Qt::black);
