@@ -132,7 +132,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         setVideoMode(false);
     });
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
-        SelectionEditor::instance()->setScreenImages(screenImages);
+        auto selectionEditor = SelectionEditor::instance();
+        auto selection = selectionEditor->selection();
+        selectionEditor->setScreenImages(screenImages);
         m_annotationDocument->clear();
         for (const auto &img : screenImages) {
             m_annotationDocument->addImage(img);
@@ -140,9 +142,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
         auto remember = Settings::rememberLastRectangularRegion();
         if (remember == Settings::Never) {
-            SelectionEditor::instance()->selection()->setRect({});
+            selection->setRect({});
         } else if (remember == Settings::Always) {
-            SelectionEditor::instance()->selection()->setRect(Settings::cropRegion());
+            auto cropRegion = Settings::cropRegion();
+            if (cropRegion.width() < 0 || cropRegion.height() < 0) {
+                cropRegion = {0, 0, 0, 0};
+            }
+            selection->setRect(cropRegion);
         }
 
         initCaptureWindows(CaptureWindow::Image);
