@@ -426,6 +426,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             // If editing an existing image, open the annotation editor.
             // This QImage constructor only works with local files or Qt resource file names.
             onScreenshotUpdated(QImage(existingLocalFile));
+            SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
             return;
         } else {
             m_cliOptions[Option::EditExisting] = false;
