@@ -887,9 +887,9 @@ QSizeF AnnotationDocument::canvasSize() const
     return m_canvasSize;
 }
 
-void AnnotationDocument::addImage(const CanvasImage &canvasImage)
+void AnnotationDocument::setCanvasImages(const QVector<CanvasImage> &canvasImages)
 {
-    m_canvasImages << canvasImage;
+    m_canvasImages = canvasImages;
 
     QRectF rect;
     m_imageDpr = 0;

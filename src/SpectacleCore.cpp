@@ -136,9 +136,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         auto selection = selectionEditor->selection();
         selectionEditor->setScreenImages(screenImages);
         m_annotationDocument->clear();
-        for (const auto &img : screenImages) {
-            m_annotationDocument->addImage(img);
-        }
+        m_annotationDocument->setCanvasImages(screenImages);
 
         auto remember = Settings::rememberLastRectangularRegion();
         if (remember == Settings::Never) {
@@ -610,8 +608,7 @@ void SpectacleCore::showErrorMessage(const QString &message)
 
 void SpectacleCore::onScreenshotUpdated(const QImage &image)
 {
-    m_annotationDocument->clearImages();
-    m_annotationDocument->addImage(image);
+    m_annotationDocument->setCanvasImages({image});
     ExportManager::instance()->setImage(image);
     ExportManager::instance()->updateTimestamp();
 

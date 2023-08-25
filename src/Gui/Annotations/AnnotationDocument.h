@@ -69,7 +69,7 @@ public:
     void cropCanvas(const QRectF &cropRect);
     QSizeF canvasSize() const;
 
-    void addImage(const CanvasImage &canvasImage);
+    void setCanvasImages(const QVector<CanvasImage> &canvasImages);
     QVector<CanvasImage> canvasImages() const;
     void clearImages();
 
