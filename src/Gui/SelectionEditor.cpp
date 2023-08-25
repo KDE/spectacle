@@ -93,7 +93,7 @@ public:
     bool magnifierAllowed = false;
     bool toggleMagnifier = false;
     bool disableArrowKeys = false;
-    QRect screensRect;
+    QRectF screensRect;
     // Midpoints of handles
     QVector<QPointF> handlePositions = QVector<QPointF>{8};
     QRectF handlesRect;
@@ -145,7 +145,7 @@ void SelectionEditorPrivate::updateHandlePositions()
     if (minEdgeLength < minDragHandleSpace) {
         offset = (minDragHandleSpace - minEdgeLength) / 2.0;
     } else {
-        const QRect translatedScreensRect = screensRect.translated(-screensRect.topLeft());
+        const auto translatedScreensRect = screensRect.translated(-screensRect.topLeft());
 
         offsetTop = top - translatedScreensRect.top() - handleRadius;
         offsetTop = (offsetTop >= 0) ? 0 : offsetTop;
@@ -388,7 +388,7 @@ qreal SelectionEditor::devicePixelRatio() const
     return d->devicePixelRatio;
 }
 
-QRect SelectionEditor::screensRect() const
+QRectF SelectionEditor::screensRect() const
 {
     return d->screensRect;
 }

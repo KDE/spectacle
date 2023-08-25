@@ -34,7 +34,7 @@ class SelectionEditor : public QObject
     Q_OBJECT
     Q_PROPERTY(Selection *selection READ selection CONSTANT FINAL)
     Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio NOTIFY devicePixelRatioChanged FINAL)
-    Q_PROPERTY(QRect screensRect READ screensRect NOTIFY screensRectChanged FINAL)
+    Q_PROPERTY(QRectF screensRect READ screensRect NOTIFY screensRectChanged FINAL)
     Q_PROPERTY(MouseLocation dragLocation READ dragLocation NOTIFY dragLocationChanged FINAL)
     Q_PROPERTY(QRectF handlesRect READ handlesRect NOTIFY handlesRectChanged FINAL)
     Q_PROPERTY(bool magnifierAllowed READ magnifierAllowed NOTIFY magnifierAllowedChanged FINAL)
@@ -67,8 +67,8 @@ public:
     Selection *selection() const;
 
     qreal devicePixelRatio() const;
+    QRectF screensRect() const;
 
-    QRect screensRect() const;
     int width() const;
     int height() const;
 
