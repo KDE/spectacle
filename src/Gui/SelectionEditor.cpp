@@ -516,12 +516,14 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     if (d->screenImages.isEmpty()) {
         return false;
     }
-    if (d->selection->isEmpty()) {
-        d->selection->setRect(d->screensRect);
-    }
-    QRect selectionRect(d->selection->alignedRect());
+
+    auto selectionRect = d->selection->alignedRect();
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
         Settings::setCropRegion(selectionRect);
+    }
+
+    if (selectionRect.isEmpty()) {
+        selectionRect = d->screensRect;
     }
 
     auto spectacleCore = SpectacleCore::instance();
