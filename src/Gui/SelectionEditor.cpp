@@ -517,9 +517,9 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
         return false;
     }
 
-    auto selectionRect = d->selection->alignedRect();
+    auto selectionRect = d->selection->normalized();
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
-        Settings::setCropRegion(selectionRect);
+        Settings::setCropRegion(selectionRect.toRect());
     }
 
     if (selectionRect.isEmpty()) {
@@ -531,7 +531,8 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
     if (KWindowSystem::isPlatformX11()) {
         d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        auto imageCropRegion = d->selection->alignedRect(d->devicePixelRatio);
+        auto imageCropRegion = QRectF(selectionRect.topLeft() * d->devicePixelRatio, //
+                                      selectionRect.size() * d->devicePixelRatio).toRect();
         if (imageCropRegion.size() != d->image.size()) {
             Q_EMIT spectacleCore->grabDone(d->image.copy(imageCropRegion), actions);
         } else {
@@ -540,7 +541,7 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     } else { // Wayland case
         // QGuiApplication::devicePixelRatio() is calculated by getting the highest screen DPI
         qreal maxDpr = qGuiApp->devicePixelRatio();
-
+        auto selectionRect = d->selection->normalized().toRect();
         QSize selectionSize = selectionRect.size();
         QImage output(selectionSize * maxDpr, QImage::Format_ARGB32);
         output.fill(Qt::black);

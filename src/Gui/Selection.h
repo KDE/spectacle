@@ -78,27 +78,13 @@ public:
     void setRect(qreal x, qreal y, qreal w, qreal h);
 
     QRectF rectF() const;
-
-    // The smallest QRect capable of fully containing the real rect
-    // while also fitting inside of the SelectionEditor.
-    // Optionally set the device pixel ratio.
-    QRect alignedRect(qreal dpr = 1) const;
-
     QSizeF sizeF() const;
-
-    // The smallest QSize capable of fully containing the real size
-    // while also fitting inside of the SelectionEditor.
-    // Optionally set the device pixel ratio.
-    Q_INVOKABLE QSize alignedSize(qreal width, qreal height, qreal dpr = 1) const;
 
     QRectF normalized() const;
 
     bool isEmpty() const;
 
     bool contains(const QPointF &p) const;
-
-    Q_INVOKABLE bool rectContainsRect(const QRectF &rect1, const QRectF& rect2) const;
-    Q_INVOKABLE bool rectIntersectsRect(const QRectF &rect1, const QRectF& rect2) const;
 
 Q_SIGNALS:
     void xChanged();

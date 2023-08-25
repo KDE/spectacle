@@ -234,35 +234,9 @@ QRectF Selection::rectF() const
     return selection;
 }
 
-QRect Selection::alignedRect(qreal dpr) const
-{
-    const int x = std::max(std::round(selection.x() * dpr), 0.0);
-    const int y = std::max(std::round(selection.y() * dpr), 0.0);
-    const int maxWidth = std::trunc(editor->width() * dpr);
-    const int maxHeight = std::trunc(editor->height() * dpr);
-    int width = std::round(selection.width() * dpr);
-    int height = std::round(selection.height() * dpr);
-    // prevent selection from going outside of selection editor
-    const int widthDiff = x + width - maxWidth;
-    const int heightDiff = y + height - maxHeight;
-    if (widthDiff > 0) {
-        width = width - widthDiff;
-    }
-    if (heightDiff > 0) {
-        height = height - heightDiff;
-    }
-    return QRect(x, y, width, height);
-}
-
 QSizeF Selection::sizeF() const
 {
     return selection.size();
-}
-
-QSize Selection::alignedSize(qreal width, qreal height, qreal dpr) const
-{
-    return QSize(std::min(std::round(width * dpr), std::trunc(editor->width() * dpr)),
-                 std::min(std::round(height * dpr), std::trunc(editor->height() * dpr)));
 }
 
 QRectF Selection::normalized() const
@@ -278,16 +252,6 @@ bool Selection::isEmpty() const
 bool Selection::contains(const QPointF &p) const
 {
     return selection.contains(p);
-}
-
-bool Selection::rectContainsRect(const QRectF &rect1, const QRectF& rect2) const
-{
-    return rect1.contains(rect2);
-}
-
-bool Selection::rectIntersectsRect(const QRectF &rect1, const QRectF& rect2) const
-{
-    return rect1.intersects(rect2);
 }
 
 QDebug operator<<(QDebug debug, const Selection *selection)
