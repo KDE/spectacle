@@ -249,13 +249,13 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     }
 
     const auto key = static_cast<Qt::Key>(event->key());
-    const auto modifiers = event->modifiers();
-    const qreal step = (modifiers & Qt::ShiftModifier ? 1 : s_magnifierLargeStep);
+    const bool modifySize = event->modifiers() & Qt::AltModifier;
+    const qreal step = (event->modifiers() & Qt::ShiftModifier ? 1 : s_magnifierLargeStep);
     QRectF selectionRect = selection->rectF();
 
     if (key == Qt::Key_Left) {
         const int newPos = boundsLeft(qRound(selectionRect.left() * devicePixelRatio - step), false);
-        if (modifiers & Qt::AltModifier) {
+        if (modifySize) {
             selectionRect.setRight(devicePixel * newPos + selectionRect.width());
             selectionRect = selectionRect.normalized();
         } else {
@@ -263,14 +263,14 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
         }
     } else if (key == Qt::Key_Right) {
         const int newPos = boundsRight(qRound(selectionRect.left() * devicePixelRatio + step), false);
-        if (modifiers & Qt::AltModifier) {
+        if (modifySize) {
             selectionRect.setRight(devicePixel * newPos + selectionRect.width());
         } else {
             selectionRect.moveLeft(devicePixel * newPos);
         }
     } else if (key == Qt::Key_Up) {
         const int newPos = boundsUp(qRound(selectionRect.top() * devicePixelRatio - step), false);
-        if (modifiers & Qt::AltModifier) {
+        if (modifySize) {
             selectionRect.setBottom(devicePixel * newPos + selectionRect.height());
             selectionRect = selectionRect.normalized();
         } else {
@@ -278,13 +278,13 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
         }
     } else if (key == Qt::Key_Down) {
         const int newPos = boundsDown(qRound(selectionRect.top() * devicePixelRatio + step), false);
-        if (modifiers & Qt::AltModifier) {
+        if (modifySize) {
             selectionRect.setBottom(devicePixel * newPos + selectionRect.height());
         } else {
             selectionRect.moveTop(devicePixel * newPos);
         }
     }
-    selection->setRect(selectionRect);
+    selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensRect));
 }
 
 // TODO: change cursor with pointerhandlers in qml?
@@ -809,19 +809,17 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         // move the rectangle with moves it out of bounds,
         // in which case we adjust the diff to not let that happen
 
-        // new top left point of the rectangle
-        QPointF newTopLeft = (d->mousePos - d->startPos + d->initialTopLeft) * d->devicePixelRatio;
-
-        const QRectF newRect(newTopLeft, d->selection->sizeF() * d->devicePixelRatio);
+        QRectF newRect((d->mousePos - d->startPos + d->initialTopLeft) * d->devicePixelRatio,
+                       d->selection->sizeF() * d->devicePixelRatio);
 
         const QRectF translatedScreensRect = d->screensRect.translated(-d->screensRect.topLeft());
         if (!translatedScreensRect.contains(newRect)) {
             // Keep the item inside the scene screen region bounding rect.
-            newTopLeft.setX(qMin(translatedScreensRect.right() - newRect.width(), qMax(newTopLeft.x(), translatedScreensRect.left())));
-            newTopLeft.setY(qMin(translatedScreensRect.bottom() - newRect.height(), qMax(newTopLeft.y(), translatedScreensRect.top())));
+            newRect.moveTo(qMin(translatedScreensRect.right() - newRect.width(), qMax(newRect.x(), translatedScreensRect.left())) * d->devicePixel,
+                           qMin(translatedScreensRect.bottom() - newRect.height(), qMax(newRect.y(), translatedScreensRect.top())) * d->devicePixel);
         }
 
-        d->selection->moveTo(newTopLeft * d->devicePixel);
+        d->selection->setRect(G::rectBounded(newRect, d->screensRect));
         break;
     }
     default:
