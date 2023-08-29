@@ -699,7 +699,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
 
     if (event->button() & (Qt::LeftButton | Qt::RightButton)) {
         if (event->button() & Qt::RightButton) {
-            d->selection->setRect(QRect());
+            d->selection->setRect({});
         }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
