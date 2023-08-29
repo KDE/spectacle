@@ -94,6 +94,10 @@ public:
 
     Q_INVOKABLE QRectF visualGeometryAtPoint(const QPointF &point) const;
 
+    Q_INVOKABLE QString svgVisualOutlineAtPoint(const QPointF &point,
+                                                const QPointF &translation = {},
+                                                qreal scale = 1) const;
+
 public Q_SLOTS:
     void undo();
     void redo();

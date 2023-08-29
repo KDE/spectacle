@@ -1194,6 +1194,37 @@ QRectF AnnotationDocument::visualGeometryAtPoint(const QPointF &point) const
     return action->visualGeometry();
 }
 
+QString AnnotationDocument::svgVisualOutlineAtPoint(const QPointF &point,
+                                                    const QPointF &translation,
+                                                    qreal scale) const
+{
+    for (int i = m_undoStack.count() - 1; i >= 0; --i) {
+        auto action = m_undoStack[i];
+        auto path = action->visualOutline();
+        if (isActionVisible(action) && path.contains(point)) {
+            QString svgPath;
+            for (int i = 0; i < path.elementCount(); ++i) {
+                auto element = path.elementAt(i);
+                QString svgPathElement;
+                if (element.type == QPainterPath::MoveToElement) {
+                    svgPathElement = QStringLiteral("M %1,%2 ");
+                } else if (element.type == QPainterPath::LineToElement) {
+                    svgPathElement = QStringLiteral("L %1,%2 ");
+                } else if (element.type == QPainterPath::CurveToElement) {
+                    svgPathElement = QStringLiteral("C %1,%2 ");
+                } else if (element.type == QPainterPath::CurveToDataElement) {
+                    // two CurveToDataElements should always follow a CurveToElement
+                    svgPathElement = QStringLiteral("%1,%2 ");
+                }
+                svgPath.append(svgPathElement.arg((element.x + translation.x()) * scale, 0, 'f')
+                                             .arg((element.y + translation.y()) * scale, 0, 'f'));
+            }
+            return svgPath;
+        }
+    }
+    return {};
+}
+
 void AnnotationDocument::undo()
 {
     if (m_undoStack.isEmpty()) {
