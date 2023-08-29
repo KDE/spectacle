@@ -24,6 +24,8 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     s_captureWindowInstances.append(this);
     s_isAnnotating = true;
 
+    m_context->setContextObject(this); // Must be before QML is initialized
+
     setFlags({
         Qt::Window, // the default window flag
         Qt::FramelessWindowHint,
