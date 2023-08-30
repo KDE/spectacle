@@ -39,7 +39,6 @@ Q_GLOBAL_STATIC(SelectionEditorSingleton, privateSelectionEditorSelf)
 static constexpr qreal s_handleRadiusMouse = 9;
 static constexpr qreal s_handleRadiusTouch = 12;
 static constexpr qreal s_minSpacingBetweenHandles = 20;
-static constexpr qreal s_borderDragAreaSize = 10;
 static constexpr qreal s_magnifierLargeStep = 15;
 
 // SelectionEditorPrivate =====================
@@ -249,16 +248,16 @@ SelectionEditor::MouseLocation SelectionEditorPrivate::mouseLocation(const QPoin
     const auto rect = selection->normalized();
     // Rectangle can be resized when border is dragged, if it's big enough
     if (rect.width() >= 100 && rect.height() >= 100) {
-        if (rect.adjusted(0, 0, 0, -rect.height() + s_borderDragAreaSize).contains(pos)) {
+        if (rect.adjusted(0, -handleRadius, 0, -rect.height() + handleRadius).contains(pos)) {
             return MouseLocation::Top;
         }
-        if (rect.adjusted(0, rect.height() - s_borderDragAreaSize, 0, 0).contains(pos)) {
+        if (rect.adjusted(0, rect.height() - handleRadius, 0, handleRadius).contains(pos)) {
             return MouseLocation::Bottom;
         }
-        if (rect.adjusted(0, 0, -rect.width() + s_borderDragAreaSize, 0).contains(pos)) {
+        if (rect.adjusted(-handleRadius, 0, -rect.width() + handleRadius, 0).contains(pos)) {
             return MouseLocation::Left;
         }
-        if (rect.adjusted(rect.width() - s_borderDragAreaSize, 0, 0, 0).contains(pos)) {
+        if (rect.adjusted(rect.width() - handleRadius, 0, handleRadius, 0).contains(pos)) {
             return MouseLocation::Right;
         }
     }
