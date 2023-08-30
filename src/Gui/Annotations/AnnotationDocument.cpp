@@ -969,7 +969,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     if (options.testFlag(RenderOption::Images)) {
         for (const auto &img : qAsConst(m_canvasImages)) {
             if (viewPort.intersects(img.rect)) {
-                auto point = (img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio();
+                auto point = img.rect.topLeft() - viewPort.topLeft();
                 if (zoomFactor == 1) {
                     painter->drawImage(point.toPoint(), img.image);
                 } else {
