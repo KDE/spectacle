@@ -1075,18 +1075,18 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
         case Blur: {
             auto *sa = static_cast<ShapeAction *>(ea);
             const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 2 * qGuiApp->devicePixelRatio(); // take the maximum scale factor of any screen
-            const qreal dpr = 1.0 / factor;
+            const qreal factor = 2 * m_imageDpr;
+            const qreal scale = 1.0 / factor;
             if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
                 stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), dpr);
+                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
                 sa->backingStoreCache().setDevicePixelRatio(painter->deviceTransform().m11());
                 stopAtAction.pop_back();
                 // With more scaling, blur more
                 sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
             }
             painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), dpr).normalized());
+            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), scale * m_imageDpr).normalized());
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
             break;
         }
@@ -1094,15 +1094,15 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             auto *sa = static_cast<ShapeAction *>(ea);
             const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
             const qreal factor = 4;
-            const qreal dpr = 1.0 / factor;
+            const qreal scale = 1.0 / factor;
             if (sa->backingStoreCache().isNull()) {
                 stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), dpr);
+                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
 
                 stopAtAction.pop_back();
             }
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), dpr).normalized());
+            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), scale * m_imageDpr).normalized());
             break;
         }
         case Text: {
@@ -1131,15 +1131,17 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     painter->scale(scale, scale);
 }
 
-QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal devicePixelRatio) const
+QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale) const
 {
-    QImage img(viewPort.width() /* devicePixelRatio*/, viewPort.height() /* devicePixelRatio*/, QImage::Format_ARGB32_Premultiplied);
+    QImage img(qRound(viewPort.width() * m_imageDpr), qRound(viewPort.height() * m_imageDpr), //
+               QImage::Format_ARGB32_Premultiplied);
+    img.setDevicePixelRatio(m_imageDpr);
     img.fill(Qt::transparent);
     QPainter p(&img);
     p.setRenderHint(QPainter::Antialiasing);
     // Makes pixelate and blur look better
     p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    p.scale(devicePixelRatio, devicePixelRatio);
+    p.scale(scale, scale);
     paint(&p, viewPort);
     p.end();
 
@@ -1148,7 +1150,7 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal devicePix
 
 QImage AnnotationDocument::renderToImage() const
 {
-    return renderToImage({{0,0}, m_imageSize}, m_imageDpr);
+    return renderToImage({{0,0}, m_canvasSize});
 }
 
 int AnnotationDocument::undoStackDepth() const

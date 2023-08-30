@@ -61,7 +61,7 @@ public:
     int redoStackDepth() const;
 
     void paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor = 1.0) const;
-    QImage renderToImage(const QRectF &viewPort, qreal devicePixelRatio) const;
+    QImage renderToImage(const QRectF &viewPort, qreal scale = 1) const;
     QImage renderToImage() const;
 
     // Actions that can't be undone
