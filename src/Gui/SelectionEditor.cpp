@@ -33,13 +33,12 @@ public:
 
 Q_GLOBAL_STATIC(SelectionEditorSingleton, privateSelectionEditorSelf)
 
-static constexpr int s_handleRadiusMouse = 9;
-static constexpr int s_handleRadiusTouch = 12;
+static constexpr qreal s_handleRadiusMouse = 9;
+static constexpr qreal s_handleRadiusTouch = 12;
 static constexpr qreal s_increaseDragAreaFactor = 2.0;
-static constexpr int s_minSpacingBetweenHandles = 20;
-static constexpr int s_borderDragAreaSize = 10;
-
-static constexpr int s_magnifierLargeStep = 15;
+static constexpr qreal s_minSpacingBetweenHandles = 20;
+static constexpr qreal s_borderDragAreaSize = 10;
+static constexpr qreal s_magnifierLargeStep = 15;
 
 static constexpr inline bool isPointInsideCircle(const QPointF &circleCenter, qreal radius, const QPointF &point) noexcept
 {
