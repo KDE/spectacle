@@ -519,7 +519,7 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
     auto selectionRect = d->selection->normalized();
     if (Settings::rememberLastRectangularRegion() == Settings::Always) {
-        Settings::setCropRegion(selectionRect.toRect());
+        Settings::setCropRegion(selectionRect.toAlignedRect());
     }
 
     if (selectionRect.isEmpty()) {
