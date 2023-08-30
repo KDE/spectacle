@@ -1,0 +1,28 @@
+{
+    "id": "org.kde.spectacle",
+    "branch": "master",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "spectacle",
+    "tags": ["nightly"],
+    "desktop-file-name-suffix": " (Nightly)",
+    "finish-args": ["--share=ipc", "--socket=x11", "--socket=wayland",
+        "--talk-name=org.kde.kglobalaccel",
+        "--talk-name=org.kde.KWin"],
+
+    "modules": [
+        {
+            "name": "kpipewire",
+            "buildsystem": "cmake-ninja",
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/plasma/kpipewire.git", "tag": "v5.27.5" } ]
+        },
+        {
+            "name": "spectacle",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                { "type": "dir", "path": "." }
+            ]
+        }
+    ]
+}
