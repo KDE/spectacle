@@ -100,7 +100,6 @@ public Q_SLOTS:
                            bool includeDecorations = Settings::includeDecorations());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
-    void onScreenshotUpdated(const QImage &image);
     void onScreenshotFailed();
     void doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl);
 
@@ -123,6 +122,7 @@ private:
     void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
                            bool includePointer, bool includeDecorations);
     void setExportImage(const QImage &image);
+    void showViewerIfGuiMode();
     Platform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(Platform::GrabMode grabMode) const;
     bool isGuiNull() const;

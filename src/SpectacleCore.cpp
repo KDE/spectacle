@@ -119,16 +119,22 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image,
                                                          const ExportManager::Actions &actions){
         deleteWindows();
-        onScreenshotUpdated(image);
+        m_annotationDocument->setCanvasImages({image});
         syncExportImage();
+        ExportManager::instance()->updateTimestamp();
+        showViewerIfGuiMode();
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
         ExportManager::instance()->exportImage(exportActions, outputUrl());
     });
 
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
-        onScreenshotUpdated(image);
-        syncExportImage();
+        m_annotationDocument->setCanvasImages({image});
+        setExportImage(image);
+        ExportManager::instance()->updateTimestamp();
+        showViewerIfGuiMode();
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
@@ -136,7 +142,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         auto selectionEditor = SelectionEditor::instance();
         auto selection = selectionEditor->selection();
         selectionEditor->setScreenImages(screenImages);
-        m_annotationDocument->clear();
+        m_annotationDocument->clearAnnotations();
         m_annotationDocument->setCanvasImages(screenImages);
 
         auto remember = Settings::rememberLastRectangularRegion();
@@ -423,10 +429,12 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         // QFileInfo::exists() only works with local files.
         auto existingLocalFile = m_editExistingUrl.toLocalFile();
         if (QFileInfo::exists(existingLocalFile)) {
-            m_annotationDocument->clearAnnotations();
             // If editing an existing image, open the annotation editor.
             // This QImage constructor only works with local files or Qt resource file names.
-            onScreenshotUpdated(QImage(existingLocalFile));
+            QImage existingImage(existingLocalFile);
+            m_annotationDocument->clearAnnotations();
+            m_annotationDocument->setCanvasImages({existingImage});
+            showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
             return;
         } else {
@@ -609,26 +617,16 @@ void SpectacleCore::showErrorMessage(const QString &message)
     }
 }
 
-void SpectacleCore::onScreenshotUpdated(const QImage &image)
+void SpectacleCore::showViewerIfGuiMode()
 {
-    m_annotationDocument->setCanvasImages({image});
-    ExportManager::instance()->setImage(image);
-    ExportManager::instance()->updateTimestamp();
-
-    if (m_startMode == StartMode::Gui) {
-        if (image.isNull()) {
-            initViewerWindow(ViewerWindow::Dialog);
-            ViewerWindow::instance()->setVisible(true);
-            return;
-        }
-        initViewerWindow(ViewerWindow::Image);
-        if (m_cliOptions[CommandLineOptions::EditExisting]) {
-            ViewerWindow::instance()->setAnnotating(true);
-        }
-        ViewerWindow::instance()->setVisible(true);
-        auto titlePreset = !image.isNull() ? SpectacleWindow::Unsaved : SpectacleWindow::Saved;
-        SpectacleWindow::setTitleForAll(titlePreset);
+    if (m_startMode != StartMode::Gui) {
+        return;
     }
+    initViewerWindow(ViewerWindow::Image);
+    if (m_cliOptions[CommandLineOptions::EditExisting]) {
+        ViewerWindow::instance()->setAnnotating(true);
+    }
+    ViewerWindow::instance()->setVisible(true);
 }
 
 void SpectacleCore::onScreenshotFailed()
