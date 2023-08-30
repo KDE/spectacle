@@ -127,8 +127,8 @@ private:
     AnnotationTool *m_tool;
     SelectedActionWrapper *m_selectedActionWrapper;
 
-    QSizeF m_canvasSize;
-    QSizeF m_imageSize;
+    QSizeF m_canvasSize = {0, 0}; // same as a default QRectF or QQuickItem
+    QSizeF m_imageSize = {0, 0};
     qreal m_imageDpr = 1;
     QVector<EditAction *> m_undoStack;
     QVector<EditAction *> m_redoStack;

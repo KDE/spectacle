@@ -925,7 +925,7 @@ void AnnotationDocument::clearImages()
 {
     m_canvasImages.clear();
     m_canvasImages.squeeze();
-    m_canvasSize = QSizeF();
+    m_canvasSize = {0, 0}; // same as a default QRectF or QQuickItem
     Q_EMIT canvasSizeChanged();
     Q_EMIT repaintNeeded();
 }
