@@ -191,7 +191,7 @@ int SelectionEditorPrivate::boundsLeft(int newTopLeftX, const bool mouse)
 int SelectionEditorPrivate::boundsRight(int newTopLeftX, const bool mouse)
 {
     // the max X coordinate of the top left point
-    const int realMaxX = qRound((q->width() - selection->width()) * devicePixelRatio);
+    const int realMaxX = qRound((screensRect.width() - selection->width()) * devicePixelRatio);
     const int xOffset = newTopLeftX - realMaxX;
     if (xOffset > 0) {
         if (mouse) {
@@ -218,7 +218,7 @@ int SelectionEditorPrivate::boundsUp(int newTopLeftY, const bool mouse)
 int SelectionEditorPrivate::boundsDown(int newTopLeftY, const bool mouse)
 {
     // the max Y coordinate of the top left point
-    const int realMaxY = qRound((q->height() - selection->height()) * devicePixelRatio);
+    const int realMaxY = qRound((screensRect.height() - selection->height()) * devicePixelRatio);
     const int yOffset = newTopLeftY - realMaxY;
     if (yOffset > 0) {
         if (mouse) {
@@ -385,12 +385,12 @@ QRectF SelectionEditor::screensRect() const
     return d->screensRect;
 }
 
-int SelectionEditor::width() const
+qreal SelectionEditor::screensWidth() const
 {
     return d->screensRect.width();
 }
 
-int SelectionEditor::height() const
+qreal SelectionEditor::screensHeight() const
 {
     return d->screensRect.height();
 }

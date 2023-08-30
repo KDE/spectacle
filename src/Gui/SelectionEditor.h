@@ -69,8 +69,8 @@ public:
     qreal devicePixelRatio() const;
     QRectF screensRect() const;
 
-    int width() const;
-    int height() const;
+    qreal screensWidth() const;
+    qreal screensHeight() const;
 
     MouseLocation dragLocation() const;
 
