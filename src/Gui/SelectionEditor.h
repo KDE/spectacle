@@ -67,7 +67,10 @@ public:
     Selection *selection() const;
 
     qreal devicePixelRatio() const;
+    void setDevicePixelRatio(qreal dpr);
+
     QRectF screensRect() const;
+    void setScreensRect(const QRectF &rect);
 
     qreal screensWidth() const;
     qreal screensHeight() const;
@@ -79,15 +82,6 @@ public:
     bool magnifierAllowed() const;
     QPointF mousePosition() const;
 
-    /**
-     * Sets the images to use for each screen.
-     * Each image should match a screen 1:1 in the order that they are listed
-     * by QGuiApplication::screens().
-     * Only used with CaptureModeModel::RectangularRegion
-     */
-    Q_SLOT void setScreenImages(const QVector<CanvasImage> &screenImages);
-    QVector<CanvasImage> screenImages() const;
-
     Q_SLOT bool acceptSelection(ExportManager::Actions actions = {});
 
 Q_SIGNALS:
@@ -95,7 +89,6 @@ Q_SIGNALS:
     void screensRectChanged();
     void dragLocationChanged();
     void handlesRectChanged();
-    void screenImagesChanged();
     void magnifierAllowedChanged();
     void mousePositionChanged();
 

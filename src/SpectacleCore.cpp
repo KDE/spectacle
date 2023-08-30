@@ -141,9 +141,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
         auto selectionEditor = SelectionEditor::instance();
         auto selection = selectionEditor->selection();
-        selectionEditor->setScreenImages(screenImages);
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setCanvasImages(screenImages);
+        QRectF screensRect;
+        qreal maxDpr = 0;
+        for (const auto &si : screenImages) {
+            screensRect = screensRect.united(si.rect);
+            maxDpr = qMax(maxDpr, si.image.devicePixelRatio());
+        }
+        selectionEditor->setScreensRect(screensRect);
+        selectionEditor->setDevicePixelRatio(maxDpr);
 
         auto remember = Settings::rememberLastRectangularRegion();
         if (remember == Settings::Never) {

@@ -961,26 +961,31 @@ inline QRectF zoomRect(const QRectF &rect, qreal zoomFactor)
     return QRectF(rect.x() * zoomFactor, rect.y() * zoomFactor, rect.width() * zoomFactor, rect.height() * zoomFactor);
 }
 
-void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor) const
+void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
 {
     static QList<EditAction *> stopAtAction = QList<EditAction *>();
     const qreal scale = painter->transform().m11();
 
-    for (const auto &img : qAsConst(m_canvasImages)) {
-        if (viewPort.intersects(img.rect)) {
-            auto point = (img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio();
-            if (zoomFactor == 1) {
-                painter->drawImage(point.toPoint(), img.image);
-            } else {
-                // More High quality scale down
-                auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(),
-                                                  Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-                scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
-                painter->drawImage(zoomPoint(point, zoomFactor).toPoint(), scaledImg);
+    if (options.testFlag(RenderOption::Images)) {
+        for (const auto &img : qAsConst(m_canvasImages)) {
+            if (viewPort.intersects(img.rect)) {
+                auto point = (img.rect.topLeft() - viewPort.topLeft()) * img.image.devicePixelRatio();
+                if (zoomFactor == 1) {
+                    painter->drawImage(point.toPoint(), img.image);
+                } else {
+                    // More High quality scale down
+                    auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(),
+                                                    Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                    scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
+                    painter->drawImage(zoomPoint(point, zoomFactor).toPoint(), scaledImg);
+                }
             }
         }
     }
 
+    if (!options.testFlag(RenderOption::Annotations)) {
+        return;
+    }
     painter->scale(zoomFactor, zoomFactor);
     painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
     for (auto *ea : m_undoStack) {
@@ -1131,7 +1136,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     painter->scale(scale, scale);
 }
 
-QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale) const
+QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options) const
 {
     QImage img(qRound(viewPort.width() * m_imageDpr), qRound(viewPort.height() * m_imageDpr), //
                QImage::Format_ARGB32_Premultiplied);
@@ -1142,7 +1147,7 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale) co
     // Makes pixelate and blur look better
     p.setRenderHint(QPainter::SmoothPixmapTransform, true);
     p.scale(scale, scale);
-    paint(&p, viewPort);
+    paint(&p, viewPort, 1, options);
     p.end();
 
     return img;

@@ -51,6 +51,15 @@ public:
     Q_DECLARE_FLAGS(ContinueOptions, ContinueOption)
     Q_FLAG(ContinueOption)
 
+    enum class RenderOption {
+        // No RenderNone because that's pointless
+        Images      = 0b01,
+        Annotations = 0b10,
+        RenderAll   = Images | Annotations
+    };
+    Q_DECLARE_FLAGS(RenderOptions, RenderOption)
+    Q_FLAG(RenderOption)
+
     explicit AnnotationDocument(QObject *parent = nullptr);
     ~AnnotationDocument();
 
@@ -60,8 +69,8 @@ public:
     int undoStackDepth() const;
     int redoStackDepth() const;
 
-    void paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor = 1.0) const;
-    QImage renderToImage(const QRectF &viewPort, qreal scale = 1) const;
+    void paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor = 1.0, RenderOptions options = RenderOption::RenderAll) const;
+    QImage renderToImage(const QRectF &viewPort, qreal scale = 1, RenderOptions options = RenderOption::RenderAll) const;
     QImage renderToImage() const;
 
     // Actions that can't be undone
@@ -312,4 +321,5 @@ private:
 QDebug operator<<(QDebug debug, const SelectedActionWrapper *saw);
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::ContinueOptions)
+Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::RenderOptions)
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationTool::Options)

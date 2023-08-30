@@ -53,7 +53,6 @@ public:
 
     SelectionEditor *const q;
 
-    void updateDevicePixelRatio();
     void updateHandlePositions();
 
     qreal dprRound(qreal value) const;
@@ -68,8 +67,6 @@ public:
     QPointF startPos;
     QPointF initialTopLeft;
     MouseLocation dragLocation = MouseLocation::None;
-    QImage image;
-    QVector<CanvasImage> screenImages;
     qreal devicePixelRatio = 1;
     qreal devicePixel = 1;
     QPointF mousePos;
@@ -90,19 +87,6 @@ SelectionEditorPrivate::SelectionEditorPrivate(SelectionEditor *q)
     : q(q)
     , selection(new Selection(q))
 {
-}
-
-void SelectionEditorPrivate::updateDevicePixelRatio()
-{
-    if (KWindowSystem::isPlatformWayland()) {
-        devicePixelRatio = 1.0;
-    } else {
-        devicePixelRatio = qApp->devicePixelRatio();
-    }
-
-    devicePixel = G::dpx(devicePixelRatio);
-    penWidth = dprRound(1.0);
-    penOffset = penWidth / 2.0;
 }
 
 void SelectionEditorPrivate::updateHandlePositions()
@@ -292,8 +276,6 @@ SelectionEditor::SelectionEditor(QObject *parent)
 {
     setObjectName(QStringLiteral("selectionEditor"));
 
-    d->updateDevicePixelRatio();
-
     connect(d->selection.get(), &Selection::rectChanged, this, [this](){
         d->updateHandlePositions();
     });
@@ -314,9 +296,28 @@ qreal SelectionEditor::devicePixelRatio() const
     return d->devicePixelRatio;
 }
 
+void SelectionEditor::setDevicePixelRatio(qreal dpr)
+{
+    if (d->devicePixelRatio == dpr) {
+        return;
+    }
+    d->devicePixelRatio = dpr;
+    d->devicePixel = 1 / dpr;
+    Q_EMIT devicePixelRatioChanged();
+}
+
 QRectF SelectionEditor::screensRect() const
 {
     return d->screensRect;
+}
+
+void SelectionEditor::setScreensRect(const QRectF &rect)
+{
+    if (d->screensRect == rect) {
+        return;
+    }
+    d->screensRect = rect;
+    Q_EMIT screensRectChanged();
 }
 
 qreal SelectionEditor::screensWidth() const
@@ -349,87 +350,9 @@ QPointF SelectionEditor::mousePosition() const
     return d->mousePos;
 }
 
-void SelectionEditor::setScreenImages(const QVector<CanvasImage> &screenImages)
-{
-    QVector<QPoint> translatedPoints;
-    QRect screensRect;
-    for (int i = 0; i < screenImages.length(); ++i) {
-        const QPoint &screenPos = screenImages[i].rect.topLeft().toPoint();
-        const QImage &image = screenImages[i].image;
-        const qreal dpr = image.devicePixelRatio();
-
-        QRect virtualScreenRect;
-        if (KWindowSystem::isPlatformX11()) {
-            virtualScreenRect = QRect(screenPos, image.size());
-        } else {
-            // `QSize / qreal` divides the int width and int height by the qreal factor,
-            // then rounds the results to the nearest int.
-            virtualScreenRect = QRect(screenPos, image.size() / dpr);
-        }
-        screensRect = screensRect.united(virtualScreenRect);
-
-        translatedPoints.append(screenPos);
-    }
-
-    d->screenImages = screenImages;
-
-    // compute coordinates after scaling
-    for (int i = 0; i < screenImages.length(); ++i) {
-        const QImage &image = screenImages[i].image;
-        const QPoint &p = screenImages[i].rect.topLeft().toPoint();
-        const QSize &size = image.size();
-        const double dpr = image.devicePixelRatio();
-        if (!qFuzzyCompare(dpr, 1.0)) {
-            // must update all coordinates of next rects
-            int newWidth = size.width();
-            int newHeight = size.height();
-
-            int deltaX = newWidth - (size.width());
-            int deltaY = newHeight - (size.height());
-
-            // for the next size
-            for (int i2 = i; i2 < screenImages.length(); ++i2) {
-                auto point = screenImages[i2].rect.topLeft();
-
-                if (point.x() >= newWidth + p.x() - deltaX) {
-                    translatedPoints[i2].setX(translatedPoints[i2].x() + deltaX);
-                }
-                if (point.y() >= newHeight + p.y() - deltaY) {
-                    translatedPoints[i2].setY(translatedPoints[i2].y() + deltaY);
-                }
-            }
-        }
-    }
-
-    d->image = QImage(screensRect.size(), QImage::Format_ARGB32);
-    d->image.fill(Qt::black);
-    QPainter painter(&d->image);
-    // Don't enable SmoothPixmapTransform, we want crisp graphics.
-    for (int i = 0; i < screenImages.length(); ++i) {
-        // Geometry can have negative coordinates,
-        // so it is necessary to subtract the upper left point,
-        // because coordinates on the widget are counted from 0.
-        QImage image = screenImages[i].image;
-        image.setDevicePixelRatio(1);
-        painter.drawImage(translatedPoints[i] - screensRect.topLeft(), image);
-    }
-
-    if (d->screensRect != screensRect) {
-        d->screensRect = screensRect;
-        Q_EMIT screensRectChanged();
-    }
-
-    Q_EMIT screenImagesChanged();
-}
-
-QVector<CanvasImage> SelectionEditor::screenImages() const
-{
-    return d->screenImages;
-}
-
 bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 {
-    if (d->screenImages.isEmpty()) {
+    if (d->screensRect.isEmpty()) {
         return false;
     }
 
@@ -443,67 +366,10 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     }
 
     auto spectacleCore = SpectacleCore::instance();
-    spectacleCore->annotationDocument()->cropCanvas(selectionRect);
-
-    if (KWindowSystem::isPlatformX11()) {
-        d->image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        auto imageCropRegion = G::rectClipped({selectionRect.topLeft() * d->devicePixelRatio, //
-                                               selectionRect.size() * d->devicePixelRatio}, //
-                                              {d->screensRect.topLeft() * d->devicePixelRatio, //
-                                               d->screensRect.size() * d->devicePixelRatio}).toRect();
-        if (imageCropRegion.size() != d->image.size()) {
-            Q_EMIT spectacleCore->grabDone(d->image.copy(imageCropRegion), actions);
-        } else {
-            Q_EMIT spectacleCore->grabDone(d->image, actions);
-        }
-    } else { // Wayland case
-        // QGuiApplication::devicePixelRatio() is calculated by getting the highest screen DPI
-        qreal maxDpr = qGuiApp->devicePixelRatio();
-        auto selectionRect = d->selection->normalized().toRect();
-        QSize selectionSize = selectionRect.size();
-        QImage output(selectionSize * maxDpr, QImage::Format_ARGB32);
-        output.fill(Qt::black);
-        QPainter painter(&output);
-        // Don't enable SmoothPixmapTransform, we want crisp graphics
-
-        for (auto it = d->screenImages.constBegin(); it != d->screenImages.constEnd(); ++it) {
-            const QRect &screenRect = it->rect.toRect();
-
-            if (selectionRect.intersects(screenRect)) {
-                const QPoint pos = screenRect.topLeft();
-                const qreal dpr = it->image.devicePixelRatio();
-
-                QRect intersected = screenRect.intersected(selectionRect);
-
-                // converts to screen size & position
-                QRect pixelOnScreenIntersected;
-                pixelOnScreenIntersected.moveTopLeft((intersected.topLeft() - pos) * dpr);
-                pixelOnScreenIntersected.setWidth(intersected.width() * dpr);
-                pixelOnScreenIntersected.setHeight(intersected.height() * dpr);
-
-                QImage screenOutput = it->image.copy(pixelOnScreenIntersected);
-
-                // FIXME: this doesn't seem correct
-                if (intersected.size() == selectionSize) {
-                    // short path when single screen
-                    // keep native screen resolution
-                    // we need to set the pixmap dpr to be able to properly align with annotations
-                    screenOutput.setDevicePixelRatio(dpr);
-                    Q_EMIT spectacleCore->grabDone(screenOutput, actions);
-                    return true;
-                }
-
-                // upscale the image according to max screen dpr, to keep the image not distorted
-                output.setDevicePixelRatio(maxDpr);
-                intersected.moveTopLeft((intersected.topLeft() - selectionRect.topLeft()) * maxDpr);
-                intersected.setSize(intersected.size() * maxDpr);
-                painter.drawImage(intersected, screenOutput);
-            }
-        }
-
-        Q_EMIT spectacleCore->grabDone(output, actions);
-    }
-
+    auto annotationDocument = spectacleCore->annotationDocument();
+    QImage image = annotationDocument->renderToImage(selectionRect, 1, AnnotationDocument::RenderOption::Images);
+    annotationDocument->cropCanvas(selectionRect);
+    Q_EMIT spectacleCore->grabDone(image, actions);
     return true;
 }
 
