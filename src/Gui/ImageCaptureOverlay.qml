@@ -38,7 +38,7 @@ MouseArea {
         anchors.fill: parent
         visible: true
         enabled: contextWindow.annotating && AnnotationDocument.tool.type !== AnnotationDocument.None
-        viewportRect: Qt.rect(contextWindow.logicalX, contextWindow.logicalY, width, height)
+        viewportRect: G.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
     }
 
     component Overlay: Rectangle {
