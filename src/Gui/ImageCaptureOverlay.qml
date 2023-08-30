@@ -102,8 +102,8 @@ MouseArea {
         border.width: contextWindow.dprRound(1)
         visible: !Selection.empty && G.rectIntersects(Qt.rect(x,y,width,height),
                                                       Qt.rect(0,0,parent.width, parent.height))
-        x: Selection.x - border.width - contextWindow.logicalX
-        y: Selection.y - border.width - contextWindow.logicalY
+        x: Selection.x - border.width - annotations.viewportRect.x
+        y: Selection.y - border.width - annotations.viewportRect.y
         width: Selection.width + border.width * 2
         height: Selection.height + border.width * 2
 
@@ -117,8 +117,8 @@ MouseArea {
     }
 
     Item {
-        x: -contextWindow.logicalX
-        y: -contextWindow.logicalY
+        x: -annotations.viewportRect.x
+        y: -annotations.viewportRect.y
         enabled: selectionRectangle.enabled
         component Handle: Rectangle {
             visible: enabled && selectionRectangle.visible
@@ -194,8 +194,8 @@ MouseArea {
     Item { // separate item because it needs to be above the stuff defined above
         width: SelectionEditor.screensRect.width
         height: SelectionEditor.screensRect.height
-        x: -contextWindow.logicalX
-        y: -contextWindow.logicalY
+        x: -annotations.viewportRect.x
+        y: -annotations.viewportRect.y
 
         // Magnifier
         Loader {
@@ -324,7 +324,7 @@ MouseArea {
             Binding on x {
                 value: {
                     const v = Selection.empty ?
-                        (root.width - mainToolBar.width) / 2 + contextWindow.logicalX
+                        (root.width - mainToolBar.width) / 2 + annotations.viewportRect.x
                         : Selection.horizontalCenter - mainToolBar.width / 2
                     return Math.max(mainToolBar.leftPadding, // min value
                            Math.min(contextWindow.dprRound(v),
@@ -377,10 +377,10 @@ MouseArea {
                 target: mainToolBar
                 acceptedButtons: Qt.LeftButton
                 margin: mainToolBar.padding
-                xAxis.minimum: contextWindow.logicalX
-                xAxis.maximum: contextWindow.logicalX + root.width - mainToolBar.width
-                yAxis.minimum: contextWindow.logicalY
-                yAxis.maximum: contextWindow.logicalY + root.height - mainToolBar.height
+                xAxis.minimum: annotations.viewportRect.x
+                xAxis.maximum: annotations.viewportRect.x + root.width - mainToolBar.width
+                yAxis.minimum: annotations.viewportRect.y
+                yAxis.maximum: annotations.viewportRect.y + root.height - mainToolBar.height
                 cursorShape: enabled ?
                     (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
                     : undefined
@@ -425,10 +425,10 @@ MouseArea {
                 id: atbDragHandler
                 enabled: Selection.empty
                 acceptedButtons: Qt.LeftButton
-                xAxis.minimum: contextWindow.logicalX
-                xAxis.maximum: contextWindow.logicalX + root.width - atbLoader.width
-                yAxis.minimum: contextWindow.logicalY
-                yAxis.maximum: contextWindow.logicalY + root.height - atbLoader.height
+                xAxis.minimum: annotations.viewportRect.x
+                xAxis.maximum: annotations.viewportRect.x + root.width - atbLoader.width
+                yAxis.minimum: annotations.viewportRect.y
+                yAxis.maximum: annotations.viewportRect.y + root.height - atbLoader.height
                 cursorShape: enabled ?
                     (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
                     : undefined
