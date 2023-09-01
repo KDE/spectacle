@@ -212,6 +212,9 @@ ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(PlatformKWin::Interac
 }
 
 ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, PlatformKWin::ScreenShotFlags flags)
+// NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
+// It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
+// KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
     : ScreenShotSource2(QStringLiteral("CaptureScreen"), screen->name(), screenShotFlagsToVardict(flags))
 {
 }
@@ -388,6 +391,9 @@ void PlatformKWin::trackSource(ScreenShotSourceMeta2 *source)
         QVector<CanvasImage> screenImages;
         const auto &screens = qGuiApp->screens();
         QStringList missingScreens;
+        // NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
+        // It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
+        // KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
         for (int i = 0; i < images.size(); ++i) {
             auto &image = images[i];
             const auto screenName = image.text(QStringLiteral("screen"));
