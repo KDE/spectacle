@@ -30,11 +30,10 @@ include(ECMSetupVersion)
 include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
-include(ECMQueryQmake)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
-include(ECMQMLModules)
+include(ECMFindQmlModule)
 
 # find dependencies
 
