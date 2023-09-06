@@ -107,28 +107,6 @@ public:
      */
     [[nodiscard]] Q_INVOKABLE static QSize rawSize(const QSizeF &size, qreal dpr);
 
-    /// Check if the rectangle contains the value on the given axes.
-    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal v, //
-                                                       Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
-    /// Check if the rectangle contains the point.
-    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal x, qreal y);
-    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, const QPointF& point);
-    /// Check if the first rectangle contains the second rectangle.
-    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect1, const QRectF& rect2);
-    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal x, qreal y, qreal w, qreal h);
-
-    /// Check if the ellipse contains the point.
-    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(qreal ellipseX, qreal ellipseY,
-                                                          qreal ellipseWidth, qreal ellipseHeight,
-                                                          qreal x, qreal y);
-    /// Assuming the rectangle represents an ellipse's bounding box, check if it contains the point.
-    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(const QRectF &rect, qreal x, qreal y);
-    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(const QRectF &rect, const QPointF &point);
-
-    /// Check if two rectangles intersect.
-    [[nodiscard]] Q_INVOKABLE static bool rectIntersects(const QRectF &rect1, const QRectF& rect2);
-    [[nodiscard]] Q_INVOKABLE static bool rectIntersects(const QRectF &rect, qreal x, qreal y, qreal w, qreal h);
-
     /// Get the rectangle with adjusted left, top, right and bottom sides.
     [[nodiscard]] Q_INVOKABLE static QRectF rectAdjusted(const QRectF &rect, qreal xp1, qreal yp1, qreal xp2, qreal yp2);
 
@@ -158,6 +136,28 @@ public:
      */
     [[nodiscard]] Q_INVOKABLE static QRectF rectClipped(const QRectF &rect, const QRectF &clipRect, //
                                                         Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
+
+    /// Check if the rectangle contains the value on the given axes.
+    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal v, //
+                                                       Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
+    /// Check if the rectangle contains the point.
+    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal x, qreal y);
+    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, const QPointF& point);
+    /// Check if the first rectangle contains the second rectangle.
+    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect1, const QRectF& rect2);
+    [[nodiscard]] Q_INVOKABLE static bool rectContains(const QRectF &rect, qreal x, qreal y, qreal w, qreal h);
+
+    /// Check if the ellipse contains the point.
+    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(qreal ellipseX, qreal ellipseY,
+                                                          qreal ellipseWidth, qreal ellipseHeight,
+                                                          qreal x, qreal y);
+    /// Assuming the rectangle represents an ellipse's bounding box, check if it contains the point.
+    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(const QRectF &rect, qreal x, qreal y);
+    [[nodiscard]] Q_INVOKABLE static bool ellipseContains(const QRectF &rect, const QPointF &point);
+
+    /// Check if two rectangles intersect.
+    [[nodiscard]] Q_INVOKABLE static bool rectIntersects(const QRectF &rect1, const QRectF& rect2);
+    [[nodiscard]] Q_INVOKABLE static bool rectIntersects(const QRectF &rect, qreal x, qreal y, qreal w, qreal h);
 
     /// Is width or height less than or equal to 0
     [[nodiscard]] Q_INVOKABLE static bool isEmpty(qreal w, qreal h);
