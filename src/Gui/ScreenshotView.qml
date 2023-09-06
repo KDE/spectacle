@@ -113,20 +113,22 @@ EmptyPage {
             target: flickable
             keyNavigationEnabled: true
             scrollFlickableTarget: contextWindow.annotating
-            onWheel: if (wheel.modifiers & Qt.ControlModifier && scrollFlickableTarget) {
-                // apparently it's impossible to add points to each other directly in QML
-                angleDelta.x += wheel.angleDelta.x
-                angleDelta.y += wheel.angleDelta.y
-                if (angleDelta.x >= 120 || angleDelta.y >= 120) {
-                    angleDelta = Qt.point(0,0)
-                    const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomIn(centerPos)
-                } else if (angleDelta.x <= -120 || angleDelta.y <= -120) {
-                    angleDelta = Qt.point(0,0)
-                    const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
-                    root.zoomOut(centerPos)
+            onWheel: wheel => {
+                    if (wheel.modifiers & Qt.ControlModifier && scrollFlickableTarget) {
+                    // apparently it's impossible to add points to each other directly in QML
+                    angleDelta.x += wheel.angleDelta.x
+                    angleDelta.y += wheel.angleDelta.y
+                    if (angleDelta.x >= 120 || angleDelta.y >= 120) {
+                        angleDelta = Qt.point(0,0)
+                        const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
+                        root.zoomIn(centerPos)
+                    } else if (angleDelta.x <= -120 || angleDelta.y <= -120) {
+                        angleDelta = Qt.point(0,0)
+                        const centerPos = flickable.mapToItem(flickable.contentItem, wheel.x, wheel.y)
+                        root.zoomOut(centerPos)
+                    }
+                    wheel.accepted = true
                 }
-                wheel.accepted = true
             }
         }
 
