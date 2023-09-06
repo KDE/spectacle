@@ -8,6 +8,7 @@
 
 #include "Annotations/AnnotationDocument.h"
 #include "SpectacleCore.h"
+#include "Selection.h"
 #include "Geometry.h"
 #include "settings.h"
 #include "spectacle_gui_debug.h"
@@ -21,6 +22,7 @@
 #include <QPainterPath>
 #include <QPalette>
 #include <QPixmapCache>
+#include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
 #include <QtMath>

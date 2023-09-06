@@ -7,21 +7,14 @@
 #ifndef SELECTIONEDITOR_H
 #define SELECTIONEDITOR_H
 
-#include "Selection.h"
-#include "CanvasImage.h"
 #include "ExportManager.h"
-
-#include <QMap>
-#include <QPixmap>
-#include <QQuickPaintedItem>
 
 #include <memory>
 
-class ComparableQPoint;
+class QHoverEvent;
 class QKeyEvent;
 class QMouseEvent;
-class QPainter;
-class CaptureWindow;
+class QQuickItem;
 class Selection;
 class SelectionEditorPrivate;
 
