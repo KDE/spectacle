@@ -39,6 +39,7 @@ ButtonGrid {
         implicitHeight: QmlUtils.iconTextButtonHeight
         focusPolicy: root.focusPolicy
         display: root.displayMode
+        checkable: true
         QQC2.ToolTip {
             id: tooltip
             text: button.text
