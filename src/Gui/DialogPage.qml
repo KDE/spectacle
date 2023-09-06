@@ -20,10 +20,10 @@ import org.kde.spectacle.private 1.0
 EmptyPage {
     id: root
 
-    property var inlineMessageData: null
-    onInlineMessageDataChanged: {
-        inlineMessageLoader.setSource(inlineMessageData[0],
-                                      {"messageArgument": inlineMessageData[1]})
+    property var inlineMessageData: {}
+    property string inlineMessageSource: ""
+    onInlineMessageDataChanged: if (inlineMessageSource) {
+        inlineMessageLoader.setSource(inlineMessageSource, inlineMessageData)
         inlineMessageLoader.state = "active"
     }
 
