@@ -10,12 +10,15 @@ import org.kde.kirigami 2.19 as Kirigami
 import org.kde.spectacle.private 1.0
 import "Annotations"
 
-ButtonGrid {
+Row {
     id: root
-    readonly property int activeSectionCount: strokeLoader.active + fillLoader.active + fontLoader.active
     readonly property bool isSelectedActionOptions: AnnotationDocument.tool.type === AnnotationDocument.ChangeAction || (AnnotationDocument.tool.type === AnnotationDocument.Text && AnnotationDocument.selectedAction.type === AnnotationDocument.Text)
+    property int displayMode: QQC2.AbstractButton.TextBesideIcon
+    property int focusPolicy: Qt.StrongFocus
+    readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
 
-    animationsEnabled: false
+    clip: childrenRect.width > width || childrenRect.height > height
+    spacing: Kirigami.Units.mediumSpacing
 
     Timer {
         id: commitChangesTimer
@@ -42,6 +45,7 @@ ButtonGrid {
 
     Loader { // stroke
         id: strokeLoader
+        anchors.verticalCenter: parent.verticalCenter
         visible: active
         active: isSelectedActionOptions ?
             AnnotationDocument.selectedAction.options & AnnotationTool.Stroke
@@ -122,12 +126,14 @@ ButtonGrid {
     }
 
     QQC2.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
         visible: strokeLoader.visible && fillLoader.visible
         height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // fill
         id: fillLoader
+        anchors.verticalCenter: parent.verticalCenter
         visible: active
         active: isSelectedActionOptions ?
             AnnotationDocument.selectedAction.options & AnnotationTool.Fill
@@ -172,12 +178,14 @@ ButtonGrid {
     }
 
     QQC2.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
         visible: fillLoader.visible && fontLoader.visible
         height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // font
         id: fontLoader
+        anchors.verticalCenter: parent.verticalCenter
         visible: active
         active: isSelectedActionOptions ?
             AnnotationDocument.selectedAction.options & AnnotationTool.Font
@@ -194,6 +202,7 @@ ButtonGrid {
             }
 
             ToolButton {
+                anchors.verticalCenter: parent.verticalCenter
                 implicitWidth: contextWindow.dprRound(implicitContentWidth)
                 display: QQC2.ToolButton.TextOnly
                 contentItem: QQC2.Label {
@@ -241,12 +250,14 @@ ButtonGrid {
     }
 
     QQC2.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
         visible: fontLoader.visible && numberLoader.visible
         height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // stroke
         id: numberLoader
+        anchors.verticalCenter: parent.verticalCenter
         visible: active
         active: isSelectedActionOptions ?
             AnnotationDocument.selectedAction.type === AnnotationDocument.Number
@@ -295,12 +306,14 @@ ButtonGrid {
     }
 
     QQC2.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
         visible: shadowCheckBox.visible
         height: QmlUtils.iconTextButtonHeight
     }
 
     QQC2.CheckBox {
         id: shadowCheckBox
+        anchors.verticalCenter: parent.verticalCenter
         visible: root.isSelectedActionOptions ?
             AnnotationDocument.selectedAction.options & AnnotationTool.Shadow
             : AnnotationDocument.tool.options & AnnotationTool.Shadow
