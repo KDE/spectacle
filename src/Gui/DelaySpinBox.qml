@@ -91,16 +91,16 @@ QQC2.SpinBox {
         readOnly: !root.editable
         validator: root.validator
         inputMethodHints: root.inputMethodHints
-        leftPadding: fontMetrics.descent
-        rightPadding: fontMetrics.descent
+        leftPadding: QmlUtils.fontMetrics.descent
+        rightPadding: QmlUtils.fontMetrics.descent
         horizontalAlignment: TextInput.AlignLeft
         verticalAlignment: TextInput.AlignVCenter
         implicitWidth: {
-            const noDelay = fontMetrics.boundingRect(root.noDelayString).width
-            const largest = fontMetrics.boundingRect(root.getDisplayText(9999)).width
+            const noDelay = QmlUtils.fontMetrics.boundingRect(root.noDelayString).width
+            const largest = QmlUtils.fontMetrics.boundingRect(root.getDisplayText(9999)).width
             return Math.max(noDelay, largest) + leftPadding + rightPadding
         }
-        implicitHeight: fontMetrics.height
+        implicitHeight: QmlUtils.fontMetrics.height
         onTextEdited: {
             validator.changed()
             if (cursorPosition > 2) {
@@ -129,9 +129,5 @@ QQC2.SpinBox {
                 cursorPosition = oldCursorPos
             }
         }
-    }
-
-    FontMetrics {
-        id: fontMetrics
     }
 }

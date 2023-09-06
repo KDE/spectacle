@@ -19,8 +19,8 @@ ColumnLayout {
             delegate: QQC2.Button {
                 id: button
                 Layout.fillWidth: true
-                leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-                rightPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
+                leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
+                rightPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
                 topPadding: Kirigami.Units.mediumSpacing
                 bottomPadding: Kirigami.Units.mediumSpacing
                 text: model.display

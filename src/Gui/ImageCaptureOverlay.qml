@@ -164,10 +164,6 @@ MouseArea {
         }
     }
 
-    FontMetrics {
-        id: fontMetrics
-    }
-
     ShortcutsTextBox {
         anchors {
             horizontalCenter: parent.horizontalCenter
@@ -266,7 +262,7 @@ MouseArea {
             }
             size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
             padding: Kirigami.Units.mediumSpacing * 2
-            topPadding: padding - fontMetrics.descent
+            topPadding: padding - QmlUtils.fontMetrics.descent
             bottomPadding: topPadding
             background: FloatingBackground {
                 implicitWidth: Math.ceil(parent.contentWidth) + parent.leftPadding + parent.rightPadding

@@ -48,7 +48,7 @@ EmptyPage {
             padding: Kirigami.Units.mediumSpacing * 4
             topPadding: padding - headingFontMetrics.descent
             bottomPadding: topPadding
-            font.pixelSize: fontMetrics.height
+            font.pixelSize: QmlUtils.fontMetrics.height
             text: i18n("Take a new screenshot")
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -137,10 +137,6 @@ EmptyPage {
                 }
             }
         }
-    }
-
-    FontMetrics {
-        id: fontMetrics
     }
 
     // FIXME: This shortcut only exists here because spectacle interprets "Ctrl+Shift+,"

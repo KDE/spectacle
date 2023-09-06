@@ -19,7 +19,7 @@ ButtonGrid {
         active: root.showUndoRedo
         sourceComponent: UndoRedoGroup {
             animationsEnabled: root.animationsEnabled
-            buttonHeight: root.fullButtonHeight
+            buttonHeight: QmlUtils.iconTextButtonHeight
             height: flow === Grid.LeftToRight ? buttonHeight : implicitHeight
             width: flow === Grid.TopToBottom ? buttonHeight : implicitWidth
             focusPolicy: root.focusPolicy
@@ -36,7 +36,7 @@ ButtonGrid {
 
     component ToolButton: QQC2.ToolButton {
         id: button
-        height: root.fullButtonHeight
+        implicitHeight: QmlUtils.iconTextButtonHeight
         focusPolicy: root.focusPolicy
         display: root.displayMode
         QQC2.ToolTip {

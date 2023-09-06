@@ -16,8 +16,8 @@ ColumnLayout {
             id: button
             readonly property bool showCancel: Settings.captureMode === model.captureMode && SpectacleCore.captureTimeRemaining > 0
             Layout.fillWidth: true
-            leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
-            rightPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
+            leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
+            rightPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
             topPadding: Kirigami.Units.mediumSpacing
             bottomPadding: Kirigami.Units.mediumSpacing
             // Delay doesn't really matter since we set
@@ -41,9 +41,5 @@ ColumnLayout {
                 SpectacleCore.takeNewScreenshot()
             }
         }
-    }
-
-    FontMetrics {
-        id: fontMetrics
     }
 }

@@ -31,7 +31,7 @@ ButtonGrid {
     }
 
     component ToolButton: QQC2.ToolButton {
-        height: root.fullButtonHeight
+        implicitHeight: QmlUtils.iconTextButtonHeight
         width: display === QQC2.ToolButton.IconOnly ? height : implicitWidth
         focusPolicy: root.focusPolicy
         display: root.displayMode
@@ -123,7 +123,7 @@ ButtonGrid {
 
     QQC2.ToolSeparator {
         visible: strokeLoader.visible && fillLoader.visible
-        height: root.fullButtonHeight
+        height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // fill
@@ -173,7 +173,7 @@ ButtonGrid {
 
     QQC2.ToolSeparator {
         visible: fillLoader.visible && fontLoader.visible
-        height: root.fullButtonHeight
+        height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // font
@@ -242,7 +242,7 @@ ButtonGrid {
 
     QQC2.ToolSeparator {
         visible: fontLoader.visible && numberLoader.visible
-        height: root.fullButtonHeight
+        height: QmlUtils.iconTextButtonHeight
     }
 
     Loader { // stroke
@@ -296,7 +296,7 @@ ButtonGrid {
 
     QQC2.ToolSeparator {
         visible: shadowCheckBox.visible
-        height: root.fullButtonHeight
+        height: QmlUtils.iconTextButtonHeight
     }
 
     QQC2.CheckBox {

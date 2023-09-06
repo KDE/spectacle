@@ -67,7 +67,7 @@ FloatingBackground {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.leftMargin: Kirigami.Units.mediumSpacing * 2
-        anchors.topMargin: anchors.leftMargin - fontMetrics.descent
+        anchors.topMargin: anchors.leftMargin - QmlUtils.fontMetrics.descent
         anchors.bottomMargin: anchors.topMargin
         color: palette.windowText
         text: root.actionsColumnText
@@ -86,7 +86,7 @@ FloatingBackground {
         anchors.bottom: parent.bottom
         anchors.leftMargin: Kirigami.Units.mediumSpacing
         anchors.rightMargin: Kirigami.Units.mediumSpacing * 2
-        anchors.topMargin: anchors.rightMargin - fontMetrics.descent
+        anchors.topMargin: anchors.rightMargin - QmlUtils.fontMetrics.descent
         anchors.bottomMargin: anchors.topMargin
         color: palette.windowText
         text: root.shortcutsColumnText

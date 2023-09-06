@@ -17,7 +17,7 @@ ButtonGrid {
     property bool showOptionsMenu: true
 
     component ToolButton: QQC2.ToolButton {
-        height: root.fullButtonHeight
+        implicitHeight: QmlUtils.iconTextButtonHeight
         width: display === QQC2.ToolButton.IconOnly ? height : implicitWidth
         focusPolicy: root.focusPolicy
         display: root.displayMode
@@ -28,12 +28,12 @@ ButtonGrid {
 
     AnimatedLoader {
         id: sizeLabelLoader
-        height: root.fullButtonHeight
         state: root.showSizeLabel && root.imageSize.width > 0 && root.imageSize.height > 0 ?
             "active" : "inactive"
         sourceComponent: SizeLabel {
+            height: QmlUtils.iconTextButtonHeight
             size: root.imageSize
-            leftPadding: Kirigami.Units.mediumSpacing + fontMetrics.descent
+            leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
             rightPadding: leftPadding
         }
     }
@@ -42,7 +42,7 @@ ButtonGrid {
         state: root.showUndoRedo ? "active" : "inactive"
         sourceComponent: UndoRedoGroup {
             animationsEnabled: root.animationsEnabled
-            buttonHeight: root.fullButtonHeight
+            buttonHeight: QmlUtils.iconTextButtonHeight
             focusPolicy: root.focusPolicy
             flow: root.flow
             spacing: root.spacing
@@ -92,6 +92,7 @@ ButtonGrid {
     ToolButton {
         // Can't rely on checked since clicking also toggles checked
         readonly property bool showCancel: SpectacleCore.captureTimeRemaining > 0
+        readonly property real cancelWidth: QmlUtils.getButtonSize(display, cancelText(Settings.captureDelay), icon.name).width
 
         function cancelText(seconds) {
             return i18np("Cancel (%1 second)", "Cancel (%1 seconds)", Math.ceil(seconds))
@@ -100,7 +101,7 @@ ButtonGrid {
         visible: root.showNewScreenshotButton
         checked: showCancel
         width: if (showCancel) {
-            return root.getButtonWidth(display, cancelText(Settings.captureDelay), icon.name)
+            return cancelWidth
         } else {
             return display === QQC2.ToolButton.IconOnly ? height : implicitWidth
         }

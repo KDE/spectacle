@@ -184,7 +184,7 @@ EmptyPage {
         active: visible
         sourceComponent: QQC2.ToolBar { // parent is contentItem
             position: QQC2.ToolBar.Footer
-            contentHeight: mainToolBarContents.fullButtonHeight
+            contentHeight: QmlUtils.iconTextButtonHeight
             contentItem: RowLayout {
                 spacing: Kirigami.Units.mediumSpacing
                 AnimatedLoader {
@@ -239,10 +239,6 @@ EmptyPage {
                 }
             }
         }
-    }
-
-    FontMetrics {
-        id: fontMetrics
     }
 
     Shortcut {
