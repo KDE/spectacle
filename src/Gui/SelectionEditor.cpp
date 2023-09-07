@@ -43,6 +43,18 @@ static constexpr qreal s_handleRadiusTouch = 12;
 static constexpr qreal s_minSpacingBetweenHandles = 20;
 static constexpr qreal s_magnifierLargeStep = 15;
 
+// Map the global position of the scene to a logical global position (if necessary),
+// then translate the scene position of the event to a logical global position using
+// the logical global position of the scene. If you try to get the global event position
+// and then convert it to a logical global position, you will get the wrong mouse position
+// since the event position in the scene is already scaled by the scene's device pixel ratio.
+QPointF mapSceneToLogicalGlobalPoint(const QPointF &point, QQuickItem *item)
+{
+    auto window = item ? item->window() : nullptr;
+    Q_ASSERT(window != nullptr);
+    return point + G::mapFromPlatformPoint(window->position(), window->devicePixelRatio());
+}
+
 // SelectionEditorPrivate =====================
 
 using MouseLocation = SelectionEditor::MouseLocation;
@@ -465,7 +477,7 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     if (!item->window() || !item->window()->screen()) {
         return;
     }
-    d->mousePos = item->mapToScene(event->posF()) + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
+    d->mousePos = mapSceneToLogicalGlobalPoint(item->mapToScene(event->posF()), item);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
 }
@@ -488,7 +500,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
-        d->mousePos = event->windowPos() + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
+        d->mousePos = mapSceneToLogicalGlobalPoint(event->windowPos(), item);
         Q_EMIT mousePositionChanged();
         auto newDragLocation = d->mouseLocation(d->mousePos);
         if (d->dragLocation != newDragLocation) {
@@ -541,7 +553,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         return;
     }
 
-    d->mousePos = event->windowPos() + G::mapFromPlatformPoint(item->window()->position(), d->devicePixelRatio);
+    d->mousePos = mapSceneToLogicalGlobalPoint(event->windowPos(), item);
     Q_EMIT mousePositionChanged();
     const bool wasMagnifierAllowed = d->magnifierAllowed;
     d->magnifierAllowed = true;
