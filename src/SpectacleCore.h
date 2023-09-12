@@ -152,8 +152,8 @@ private:
 
     // Use CaptureWindow::instances() to get the capture windows.
     // Don't assume that this will never have entries that are null.
-    // Using std::vector for emplace_back(), needed for appending unique_ptrs to a vector.
-    // QVector won't get emplaceBack() until Qt 6.
+    // For some reason, removeIf/erase_if/find_if then erase doesn't work with QList/QVector,
+    // so we have to use std::vector. Something about use of a deleted unique_ptr function.
     std::vector<CaptureWindow::UniquePointer> m_captureWindows;
 
     bool m_copyImageToClipboard = false;
