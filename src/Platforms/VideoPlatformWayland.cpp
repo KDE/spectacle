@@ -77,15 +77,6 @@ QStringList VideoPlatformWayland::suggestedExtensions() const
 #ifdef KPW_WITH_SUGGESTED
     QStringList extensions;
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    for (const QByteArray &enc : m_recorder->suggestedEncoders()) {
-        if (enc == "libvpx") {
-            extensions.append(QStringLiteral("webm"));
-        } else if (enc == "libx264") {
-            extensions.append(QStringLiteral("mp4"));
-        }
-    }
-#else
     for (const PipeWireBaseEncodedStream::Encoder enc : m_recorder->suggestedEncoders()) {
         if (enc == PipeWireBaseEncodedStream::VP8) {
             extensions.append(QStringLiteral("webm"));
@@ -93,7 +84,6 @@ QStringList VideoPlatformWayland::suggestedExtensions() const
             extensions.append(QStringLiteral("mp4"));
         }
     }
-#endif
     return extensions;
 #else
     return {m_recorder->extension()};
@@ -103,15 +93,6 @@ QStringList VideoPlatformWayland::suggestedExtensions() const
 void VideoPlatformWayland::setExtension(const QString &extension)
 {
 #ifdef KPW_WITH_SUGGESTED
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    if (extension == QStringLiteral("webm")) {
-        m_recorder->setEncoder("libvpx");
-    } else if (extension == QStringLiteral("mp4")) {
-        m_recorder->setEncoder("libx264");
-    } else {
-        qWarning() << "Unsupported extension" << extension;
-    }
-#else
     if (extension == QStringLiteral("webm")) {
         m_recorder->setEncoder(PipeWireBaseEncodedStream::VP8);
     } else if (extension == QStringLiteral("mp4")) {
@@ -119,7 +100,6 @@ void VideoPlatformWayland::setExtension(const QString &extension)
     } else {
         qWarning() << "Unsupported extension" << extension;
     }
-#endif
 #endif
 }
 

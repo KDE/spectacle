@@ -13,11 +13,7 @@
 #include <KApplicationTrader>
 #include <KIO/ApplicationLauncherJob>
 #include <kio_version.h>
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
 #include <KIO/JobUiDelegateFactory>
-#else
-#include <KIO/JobUiDelegate>
-#endif
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
@@ -123,11 +119,7 @@ void ExportMenu::getKServiceItems()
         }
 
         auto job = new KIO::ApplicationLauncherJob;
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
         job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
-#else
-        job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
-#endif
         job->setUrls({filename});
         job->start();
     });
@@ -181,11 +173,7 @@ void ExportMenu::loadPurposeItems()
 void ExportMenu::openScreenshotsFolder()
 {
     auto job = new KIO::OpenUrlJob(Settings::defaultSaveLocation());
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 98, 0)
     job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
-#else
-    job->setUiDelegate(new KIO::JobUiDelegate(KIO::JobUiDelegate::AutoHandlingEnabled, this));
-#endif
     job->start();
 }
 

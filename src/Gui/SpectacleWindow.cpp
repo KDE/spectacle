@@ -24,11 +24,7 @@
 #include <utility>
 
 #ifdef XCB_FOUND
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QX11Info>
-#else
 #include <private/qtx11extras_p.h>
-#endif
 #endif
 
 using G = Geometry;

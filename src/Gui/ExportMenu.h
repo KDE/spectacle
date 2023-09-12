@@ -15,11 +15,7 @@
 #ifdef PURPOSE_FOUND
 #include <Purpose/AlternativesModel>
 #include <purpose_version.h>
-#if PURPOSE_VERSION >= QT_VERSION_CHECK(5, 104, 0)
 #include <Purpose/Menu>
-#else
-#include <PurposeWidgets/Menu>
-#endif
 #endif
 
 class ExportMenu : public SpectacleMenu

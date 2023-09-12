@@ -30,9 +30,6 @@ int main(int argc, char **argv)
     // set up the application
 
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain("spectacle");
@@ -76,9 +73,6 @@ int main(int argc, char **argv)
 
     // Prevent session manager from restoring the app on start up.
     // https://bugs.kde.org/show_bug.cgi?id=430411
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setFallbackSessionManagementEnabled(false);
-#endif
     auto disableSessionManagement = [](QSessionManager &sm) {
         sm.setRestartHint(QSessionManager::RestartNever);
     };

@@ -70,13 +70,7 @@ public:
         : QWaylandClientExtensionTemplate<ScreencastingPrivate>(ZKDE_SCREENCAST_UNSTABLE_V1_STREAM_REGION_SINCE_VERSION)
         , q(q)
     {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
         initialize();
-#else
-        // QWaylandClientExtensionTemplate invokes this with a QueuedConnection but we want it called immediately
-        QMetaObject::invokeMethod(this, "addRegistryListener", Qt::DirectConnection);
-#endif
-
         if (!isInitialized()) {
             qWarning() << "Remember requesting the interface on your desktop file: X-KDE-Wayland-Interfaces=zkde_screencast_unstable_v1";
         }

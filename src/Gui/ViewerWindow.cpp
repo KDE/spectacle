@@ -30,11 +30,6 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
 
     m_context->setContextObject(this); // Must be before QML is initialized
 
-// QGuiApplication::paletteChanged() is deprecated in Qt 6.
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    connect(qGuiApp, &QGuiApplication::paletteChanged, this, &ViewerWindow::updateColor);
-#endif
-
     connect(m_exportMenu.get(), &ExportMenu::imageShared, this, &ViewerWindow::showImageSharedMessage);
 
     // set up QML
@@ -246,13 +241,9 @@ void ViewerWindow::startDrag()
 
 bool ViewerWindow::event(QEvent *event)
 {
-// This should work in Qt 5, but doesn't.
-// The event type simply never happens in response to color scheme changes.
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     if (event->type() == QEvent::ApplicationPaletteChange) {
         updateColor();
     }
-#endif
     return SpectacleWindow::event(event);
 }
 

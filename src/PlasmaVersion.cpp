@@ -33,11 +33,7 @@ quint32 PlasmaVersion::get()
         QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
 
         const QString rawVersion = val.variant().value<QString>();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-        const QVector<QStringRef> splitted = rawVersion.splitRef(QLatin1Char('.'));
-#else
         const QVector<QStringView> splitted = QStringView(rawVersion).split(QLatin1Char('.'));
-#endif
         if (splitted.size() != 3) {
             qWarning() << "error parsing plasma version";
             return s_plasmaVersion;
