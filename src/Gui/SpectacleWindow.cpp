@@ -15,7 +15,6 @@
 
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
-#include <KIO/OpenUrlJob>
 #include <KWindowSystem>
 
 #include <QApplication>
@@ -435,13 +434,6 @@ void SpectacleWindow::showColorDialog(int option)
     });
 
     dialog->open();
-}
-
-void SpectacleWindow::openUrlExternally(const QUrl &url)
-{
-    auto job = new KIO::OpenUrlJob(url);
-    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, nullptr));
-    job->start();
 }
 
 void SpectacleWindow::openContainingFolder(const QUrl &url)

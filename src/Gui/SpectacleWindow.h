@@ -96,8 +96,6 @@ public Q_SLOTS:
     void showPreferencesDialog();
     void showFontDialog();
     void showColorDialog(int option);
-    // TODO: Remove in Qt6. Qt.openUrlExternally() doesn't activate the window on wayland.
-    void openUrlExternally(const QUrl &url);
     void openContainingFolder(const QUrl &url);
 
 Q_SIGNALS:

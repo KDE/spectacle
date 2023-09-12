@@ -16,5 +16,5 @@ Kirigami.InlineMessage {
     case Kirigami.MessageType.Information: return "dialog-information"
     default: return ""
     }
-    onLinkActivated: contextWindow.openUrlExternally(link)
+    onLinkActivated: Qt.openUrlExternally(link)
 }
