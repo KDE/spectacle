@@ -14,12 +14,18 @@ import "Annotations"
 
 FocusScope {
     id: root
-    // playing will be available through MediaPlayer in Qt 6
+    // BUG with mediaPlayer.playing: https://bugreports.qt.io/browse/QTBUG-117006
     readonly property bool playing: mediaPlayer.playbackState === MediaPlayer.PlayingState
-    readonly property real videoScale: Math.min(width / implicitWidth,
-                                                height / implicitHeight)
-    implicitWidth: videoOutput.sourceRect.width
-    implicitHeight: videoOutput.sourceRect.height
+    readonly property real videoScale: Math.min(width / resolution.width,
+                                                height / resolution.height)
+    // BUG with VideoOutput implicit size: https://bugreports.qt.io/browse/QTBUG-116979
+    readonly property size resolution: {
+        let size = mediaPlayer.metaData.value(MediaMetaData.Resolution)
+        // Try implicit size in case resolution metadata is not valid.
+        size.width = Math.max(size.width, videoOutput.implicitWidth)
+        size.height = Math.max(size.height, videoOutput.implicitHeight)
+        return size
+    }
 
     MouseArea {
         anchors.fill: videoOutput
@@ -32,12 +38,6 @@ FocusScope {
         }
     }
 
-    // The following properties will not be available in Qt 6:
-    // autoLoad, autoPlay, availability, flushMode, notifyInterval, status
-
-    // Using VideoOutput for the sourceRect property.
-    // Not using mediaPlayer.metaData.resolution because
-    // it isn't reliably available when it needs to be.
     VideoOutput {
         id: videoOutput
         // Not filling the parent because resizing causes some issues with repositioning
@@ -45,17 +45,14 @@ FocusScope {
         // posiitoned a bit higher than it should be.
         x: contextWindow.dprRound((parent.width - width) / 2)
         y: contextWindow.dprRound((parent.height - height) / 2)
-        width: contextWindow.dprRound(root.implicitWidth * root.videoScale)
-        height: contextWindow.dprRound(root.implicitHeight * root.videoScale)
-        flushMode: VideoOutput.FirstFrame
+        width: contextWindow.dprRound(root.resolution.width * root.videoScale)
+        height: contextWindow.dprRound(root.resolution.height * root.videoScale)
         fillMode: VideoOutput.PreserveAspectFit
     }
 
     MediaPlayer {
         id: mediaPlayer
-        autoPlay: true
         source: SpectacleCore.currentVideo
-        notifyInterval: 16 // makes the seekbar smooth enough for 60fps
         videoOutput: videoOutput
     }
 
@@ -109,9 +106,7 @@ FocusScope {
                 from: 0
                 to: Math.max(1, mediaPlayer.duration)
                 value: mediaPlayer.position
-                // seek() will be removed in Qt 6. Set the position property instead.
-                // We can't set the position property now because it's read-only in Qt 5.
-                onMoved: mediaPlayer.seek(Math.round(value))
+                onMoved: mediaPlayer.setPosition(Math.round(value))
             }
             QQC.Label {
                 leftPadding: parent.spacing
