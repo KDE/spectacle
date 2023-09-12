@@ -4,9 +4,9 @@
 
 pragma Singleton
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15 as QQC
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Controls as QQC
+import org.kde.spectacle.private
 
 /**
  * A general utilities singleton for use in QML.

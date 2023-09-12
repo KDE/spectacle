@@ -2,11 +2,10 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 ButtonGrid {
     id: root
@@ -16,14 +15,14 @@ ButtonGrid {
     property bool showNewScreenshotButton: true
     property bool showOptionsMenu: true
 
-    component ToolButton: QQC2.ToolButton {
+    component ToolButton: QQC.ToolButton {
         implicitHeight: QmlUtils.iconTextButtonHeight
-        width: display === QQC2.ToolButton.IconOnly ? height : implicitWidth
+        width: display === QQC.ToolButton.IconOnly ? height : implicitWidth
         focusPolicy: root.focusPolicy
         display: root.displayMode
-        QQC2.ToolTip.text: text
-        QQC2.ToolTip.visible: (hovered || pressed) && display === QQC2.ToolButton.IconOnly
-        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        QQC.ToolTip.text: text
+        QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
+        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
     }
 
     AnimatedLoader {
@@ -103,7 +102,7 @@ ButtonGrid {
         width: if (showCancel) {
             return cancelWidth
         } else {
-            return display === QQC2.ToolButton.IconOnly ? height : implicitWidth
+            return display === QQC.ToolButton.IconOnly ? height : implicitWidth
         }
         icon.name: showCancel ? "dialog-cancel" : "list-add"
         text: showCancel ?

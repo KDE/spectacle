@@ -2,18 +2,17 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Templates 2.15 as T
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Controls as QQC
+import QtQuick.Templates as T
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 import "Annotations"
 
 Row {
     id: root
     readonly property bool isSelectedActionOptions: AnnotationDocument.tool.type === AnnotationDocument.ChangeAction || (AnnotationDocument.tool.type === AnnotationDocument.Text && AnnotationDocument.selectedAction.type === AnnotationDocument.Text)
-    property int displayMode: QQC2.AbstractButton.TextBesideIcon
+    property int displayMode: QQC.AbstractButton.TextBesideIcon
     property int focusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
 
@@ -33,14 +32,14 @@ Row {
         }
     }
 
-    component ToolButton: QQC2.ToolButton {
+    component ToolButton: QQC.ToolButton {
         implicitHeight: QmlUtils.iconTextButtonHeight
-        width: display === QQC2.ToolButton.IconOnly ? height : implicitWidth
+        width: display === QQC.ToolButton.IconOnly ? height : implicitWidth
         focusPolicy: root.focusPolicy
         display: root.displayMode
-        QQC2.ToolTip.text: text
-        QQC2.ToolTip.visible: (hovered || pressed) && display === QQC2.ToolButton.IconOnly
-        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        QQC.ToolTip.text: text
+        QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
+        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
     }
 
     Loader { // stroke
@@ -53,7 +52,7 @@ Row {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.CheckBox {
+            QQC.CheckBox {
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Stroke:")
                 checked: colorRect.color.a > 0
@@ -64,7 +63,7 @@ Row {
                 }
             }
 
-            QQC2.SpinBox {
+            QQC.SpinBox {
                 id: spinBox
                 function setStrokeWidth() {
                     if (root.isSelectedActionOptions) {
@@ -87,9 +86,9 @@ Row {
                 valueFromText: (text, locale) => {
                     return Number.fromLocaleString(locale, text.replace(/\D/g,''))
                 }
-                QQC2.ToolTip.text: i18n("Stroke Width")
-                QQC2.ToolTip.visible: hovered
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                QQC.ToolTip.text: i18n("Stroke Width")
+                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 // not using onValueModified because of https://bugreports.qt.io/browse/QTBUG-91281
                 onValueChanged: Qt.callLater(setStrokeWidth)
                 Binding {
@@ -102,8 +101,8 @@ Row {
 
             ToolButton {
                 anchors.verticalCenter: parent.verticalCenter
-                display: QQC2.ToolButton.IconOnly
-                QQC2.ToolTip.text: i18n("Stroke Color")
+                display: QQC.ToolButton.IconOnly
+                QQC.ToolTip.text: i18n("Stroke Color")
                 Rectangle { // should we use some kind of image provider instead?
                     id: colorRect
                     anchors.centerIn: parent
@@ -125,7 +124,7 @@ Row {
         }
     }
 
-    QQC2.ToolSeparator {
+    QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
         visible: strokeLoader.visible && fillLoader.visible
         height: QmlUtils.iconTextButtonHeight
@@ -141,7 +140,7 @@ Row {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.CheckBox {
+            QQC.CheckBox {
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("Fill:")
                 checked: colorRect.color.a > 0
@@ -154,8 +153,8 @@ Row {
 
             ToolButton {
                 anchors.verticalCenter: parent.verticalCenter
-                display: QQC2.ToolButton.IconOnly
-                QQC2.ToolTip.text: i18n("Fill Color")
+                display: QQC.ToolButton.IconOnly
+                QQC.ToolTip.text: i18n("Fill Color")
                 Rectangle {
                     id: colorRect
                     anchors.centerIn: parent
@@ -177,7 +176,7 @@ Row {
         }
     }
 
-    QQC2.ToolSeparator {
+    QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
         visible: fillLoader.visible && fontLoader.visible
         height: QmlUtils.iconTextButtonHeight
@@ -193,7 +192,7 @@ Row {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.Label {
+            QQC.Label {
                 leftPadding: root.mirrored ? 0 : parent.spacing
                 rightPadding: root.mirrored ? parent.spacing : 0
                 width: contextWindow.dprRound(implicitWidth)
@@ -204,8 +203,8 @@ Row {
             ToolButton {
                 anchors.verticalCenter: parent.verticalCenter
                 implicitWidth: contextWindow.dprRound(implicitContentWidth)
-                display: QQC2.ToolButton.TextOnly
-                contentItem: QQC2.Label {
+                display: QQC.ToolButton.TextOnly
+                contentItem: QQC.Label {
                     readonly property font currentFont: root.isSelectedActionOptions ?
                         AnnotationDocument.selectedAction.font
                         : AnnotationDocument.tool.font
@@ -226,8 +225,8 @@ Row {
 
             ToolButton {
                 anchors.verticalCenter: parent.verticalCenter
-                display: QQC2.ToolButton.IconOnly
-                QQC2.ToolTip.text: i18n("Font Color")
+                display: QQC.ToolButton.IconOnly
+                QQC.ToolTip.text: i18n("Font Color")
                 Rectangle {
                     id: colorRect
                     anchors.centerIn: parent
@@ -249,7 +248,7 @@ Row {
         }
     }
 
-    QQC2.ToolSeparator {
+    QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
         visible: fontLoader.visible && numberLoader.visible
         height: QmlUtils.iconTextButtonHeight
@@ -265,7 +264,7 @@ Row {
         sourceComponent: Row {
             spacing: root.spacing
 
-            QQC2.Label {
+            QQC.Label {
                 leftPadding: root.mirrored ? 0 : parent.spacing
                 rightPadding: root.mirrored ? parent.spacing : 0
                 width: contextWindow.dprRound(implicitWidth)
@@ -273,7 +272,7 @@ Row {
                 text: i18n("Number:")
             }
 
-            QQC2.SpinBox {
+            QQC.SpinBox {
                 id: spinBox
                 readonly property int number: root.isSelectedActionOptions ?
                     AnnotationDocument.selectedAction.number : AnnotationDocument.tool.number
@@ -290,9 +289,9 @@ Row {
                 to: Math.max(999, number + 1)
                 stepSize: 1
                 value: number
-                QQC2.ToolTip.text: i18n("Number for number annotations")
-                QQC2.ToolTip.visible: hovered
-                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                QQC.ToolTip.text: i18n("Number for number annotations")
+                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 // not using onValueModified because of https://bugreports.qt.io/browse/QTBUG-91281
                 onValueChanged: Qt.callLater(setNumber)
                 Binding {
@@ -305,13 +304,13 @@ Row {
         }
     }
 
-    QQC2.ToolSeparator {
+    QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
         visible: shadowCheckBox.visible
         height: QmlUtils.iconTextButtonHeight
     }
 
-    QQC2.CheckBox {
+    QQC.CheckBox {
         id: shadowCheckBox
         anchors.verticalCenter: parent.verticalCenter
         visible: root.isSelectedActionOptions ?

@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
+import QtQuick
 
 SavedMessage {
     text:i18n("The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>",

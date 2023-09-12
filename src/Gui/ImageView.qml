@@ -2,13 +2,12 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Window
+import QtQuick.Layouts
+import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 import "Annotations"
 
@@ -46,14 +45,14 @@ EmptyPage {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    header: QQC2.ToolBar {
+    header: QQC.ToolBar {
         id: header
         contentItem: MainToolBarContents {
             id: mainToolBarContents
             showNewScreenshotButton: false
             showOptionsMenu: false
             showUndoRedo: contextWindow.annotating
-            displayMode: QQC2.AbstractButton.TextBesideIcon
+            displayMode: QQC.AbstractButton.TextBesideIcon
         }
     }
 
@@ -78,7 +77,7 @@ EmptyPage {
         }
     }
 
-    QQC2.Pane { // parent is contentItem
+    QQC.Pane { // parent is contentItem
         id: annotationsToolBar
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -90,7 +89,7 @@ EmptyPage {
         bottomPadding: header.bottomPadding
         contentItem: AnnotationsToolBarContents {
             id: annotationsToolBarContents
-            displayMode: QQC2.AbstractButton.IconOnly
+            displayMode: QQC.AbstractButton.IconOnly
             flow: Grid.TopToBottom
             showUndoRedo: false
             rememberToolType: true
@@ -130,7 +129,7 @@ EmptyPage {
             right: parent.right
         }
         width: Math.max(implicitWidth, Kirigami.Units.gridUnit * 15)
-        sourceComponent: QQC2.Page {
+        sourceComponent: QQC.Page {
 
             leftPadding: Kirigami.Units.mediumSpacing * 2
                 + (!mirrored ? sideBarSeparator.implicitWidth : 0)
@@ -139,15 +138,15 @@ EmptyPage {
             topPadding: Kirigami.Units.mediumSpacing * 2
             bottomPadding: Kirigami.Units.mediumSpacing * 2
 
-            header: QQC2.TabBar {
+            header: QQC.TabBar {
                 id: tabBar
                 visible: SpectacleCore.recordingSupported
                 currentIndex: 0
-                QQC2.TabButton {
+                QQC.TabButton {
                     width: tabBar.width / tabBar.count
                     text: i18n("Screenshot")
                 }
-                QQC2.TabButton {
+                QQC.TabButton {
                     width: tabBar.width / tabBar.count
                     text: i18n("Recording")
                 }
@@ -182,8 +181,8 @@ EmptyPage {
         anchors.top: parent.bottom
         visible: false
         active: visible
-        sourceComponent: QQC2.ToolBar { // parent is contentItem
-            position: QQC2.ToolBar.Footer
+        sourceComponent: QQC.ToolBar { // parent is contentItem
+            position: QQC.ToolBar.Footer
             contentHeight: QmlUtils.iconTextButtonHeight
             contentItem: RowLayout {
                 spacing: Kirigami.Units.mediumSpacing
@@ -202,7 +201,7 @@ EmptyPage {
                     }
                     source: "AnnotationOptionsToolBarContents.qml"
                 }
-                QQC2.ToolSeparator {
+                QQC.ToolSeparator {
                     Layout.fillHeight: true
                     visible: loader.implicitWidth
                         + implicitWidth
@@ -210,11 +209,11 @@ EmptyPage {
                         + zoomEditor.implicitWidth
                         + parent.spacing * 3 >= parent.width
                 }
-                QQC2.Label {
+                QQC.Label {
                     id: zoomLabel
                     text: i18n("Zoom:")
                 }
-                QQC2.SpinBox {
+                QQC.SpinBox {
                     id: zoomEditor
                     from: contentLoader.item.minZoom * 100
                     to: contentLoader.item.maxZoom * 100
@@ -226,9 +225,9 @@ EmptyPage {
                     valueFromText: (text, locale) => {
                         return Number.fromLocaleString(locale, text.replace(/\D/g,''))
                     }
-                    QQC2.ToolTip.text: i18n("Image Zoom")
-                    QQC2.ToolTip.visible: hovered
-                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    QQC.ToolTip.text: i18n("Image Zoom")
+                    QQC.ToolTip.visible: hovered
+                    QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                     Binding {
                         target: zoomEditor.contentItem
                         property: "horizontalAlignment"

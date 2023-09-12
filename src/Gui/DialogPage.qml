@@ -2,13 +2,13 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Templates 2.15 as T
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Window
+import QtQuick.Controls as QQC
+import QtQuick.Templates as T
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 /**
  * This page is shown when a user does not want to take a screenshot when Spectacle is started.
@@ -41,7 +41,7 @@ EmptyPage {
                                  + Kirigami.Units.mediumSpacing * 2,
                                  contextWindow.dprRound(headerLabel.implicitHeight))
 
-        QQC2.Label {
+        QQC.Label {
             id: headerLabel
             visible: !inlineMessageLoader.visible
             anchors.fill: parent
@@ -122,12 +122,12 @@ EmptyPage {
             RowLayout {
                 Layout.fillWidth: true
                 spacing: parent.spacing
-                QQC2.Button {
+                QQC.Button {
                     icon.name: "configure"
                     text: i18n("Configure Spectacle…")
                     onClicked: contextWindow.showPreferencesDialog()
                 }
-                QQC2.ToolButton {
+                QQC.ToolButton {
                     flat: false
                     icon.name: "help-contents"
                     text: i18n("Help")

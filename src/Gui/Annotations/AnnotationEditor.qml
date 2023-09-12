@@ -4,9 +4,9 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.14
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Layouts
+import org.kde.spectacle.private
 
 AnnotationViewport {
     id: root

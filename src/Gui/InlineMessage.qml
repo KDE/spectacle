@@ -2,9 +2,8 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick
+import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
     visible: true

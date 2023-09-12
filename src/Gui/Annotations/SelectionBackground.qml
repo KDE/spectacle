@@ -2,10 +2,10 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Shapes 1.15
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Shapes
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 Shape {
     id: root

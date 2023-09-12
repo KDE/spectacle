@@ -2,10 +2,9 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Templates 2.15 as T
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Templates as T
+import org.kde.spectacle.private
 
 T.Label {
     id: root

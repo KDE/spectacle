@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
-import QtMultimedia 5.15
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC
+import QtMultimedia
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 import "Annotations"
 
@@ -71,11 +71,11 @@ FocusScope {
         id: tbHoverHandler
     }
 
-    component ToolButton: QQC2.ToolButton {
-        display: QQC2.ToolButton.IconOnly
-        QQC2.ToolTip.text: text
-        QQC2.ToolTip.visible: (hovered || pressed) && display === QQC2.ToolButton.IconOnly
-        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+    component ToolButton: QQC.ToolButton {
+        display: QQC.ToolButton.IconOnly
+        QQC.ToolTip.text: text
+        QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
+        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
     }
 
     FloatingToolBar {
@@ -94,14 +94,14 @@ FocusScope {
                 icon.name: root.playing ?
                     "media-playback-pause" : "media-playback-start"
                 text: root.playing ? i18n("Pause") : i18n("Play")
-                display: QQC2.ToolButton.IconOnly
+                display: QQC.ToolButton.IconOnly
                 onClicked: if (root.playing) {
                     mediaPlayer.pause()
                 } else {
                     mediaPlayer.play()
                 }
             }
-            QQC2.Slider {
+            QQC.Slider {
                 id: seekBar
                 Layout.fillWidth: true
                 enabled: mediaPlayer.seekable
@@ -113,7 +113,7 @@ FocusScope {
                 // We can't set the position property now because it's read-only in Qt 5.
                 onMoved: mediaPlayer.seek(Math.round(value))
             }
-            QQC2.Label {
+            QQC.Label {
                 leftPadding: parent.spacing
                 rightPadding: parent.spacing
                 horizontalAlignment: Text.AlignHCenter

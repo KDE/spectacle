@@ -2,12 +2,11 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 ColumnLayout {
     ColumnLayout {
@@ -16,7 +15,7 @@ ColumnLayout {
 
         Repeater {
             model: SpectacleCore.recordingModeModel
-            delegate: QQC2.Button {
+            delegate: QQC.Button {
                 id: button
                 Layout.fillWidth: true
                 leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
@@ -37,22 +36,22 @@ ColumnLayout {
                 id: recordingSettingsMetrics
             }
         }
-        QQC2.CheckBox {
+        QQC.CheckBox {
             Layout.fillWidth: true
             text: i18n("Include mouse pointer")
-            QQC2.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
-            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-            QQC2.ToolTip.visible: hovered
+            QQC.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
+            QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC.ToolTip.visible: hovered
             checked: Settings.includePointer
             onToggled: Settings.includePointer = checked
         }
         RowLayout {
             visible: SpectacleCore.supportedVideoFormats.length > 1
             Layout.fillWidth: true
-            QQC2.Label {
+            QQC.Label {
                 text: i18nc("@label:listbox", "Video format:")
             }
-            QQC2.ComboBox {
+            QQC.ComboBox {
                 id: formatCombo
                 Layout.fillWidth: true
                 model: SpectacleCore.supportedVideoFormats
@@ -70,7 +69,7 @@ ColumnLayout {
     }
     ColumnLayout {
         visible: SpectacleCore.isRecording
-        QQC2.Button {
+        QQC.Button {
             Layout.fillWidth: true
             text: i18n("Finish recording")
             onClicked: SpectacleCore.finishRecording()

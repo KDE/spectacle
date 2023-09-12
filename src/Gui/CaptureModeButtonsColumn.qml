@@ -2,17 +2,17 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 ColumnLayout {
     spacing: Kirigami.Units.mediumSpacing
     Repeater {
         model: SpectacleCore.captureModeModel
-        delegate: QQC2.DelayButton {
+        delegate: QQC.DelayButton {
             id: button
             readonly property bool showCancel: Settings.captureMode === model.captureMode && SpectacleCore.captureTimeRemaining > 0
             Layout.fillWidth: true
@@ -31,9 +31,9 @@ ColumnLayout {
                 i18np("Cancel (%1 second)", "Cancel (%1 seconds)",
                         Math.ceil(SpectacleCore.captureTimeRemaining / 1000))
                 : model.display
-            QQC2.ToolTip.text: model.shortcuts
-            QQC2.ToolTip.visible: (hovered || pressed) && model.shortcuts.length > 0
-            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC.ToolTip.text: model.shortcuts
+            QQC.ToolTip.visible: (hovered || pressed) && model.shortcuts.length > 0
+            QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
             onClicked: if (showCancel) {
                 SpectacleCore.cancelScreenshot()
             } else {

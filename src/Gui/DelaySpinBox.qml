@@ -2,16 +2,15 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Templates 2.15 as T
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Controls as QQC
+import QtQuick.Templates as T
+import org.kde.spectacle.private
 
 /**
  * Meant to mimic the behavior of SmartSpinBox, a custom Qt Widget spinbox created for Spectacle.
  */
-QQC2.SpinBox {
+QQC.SpinBox {
     id: root
     readonly property string noDelayString: i18nc("0 second delay", "No Delay")
 
@@ -29,7 +28,7 @@ QQC2.SpinBox {
         return textFromValue(value) + suffix
     }
 
-    // QQC2 Spinbox uses ints for some reason,
+    // QQC Spinbox uses ints for some reason,
     // so I need to multiply by 10^decimals to get n decimal places of precision.
     from: 0
     to: 9900 // not 9999 to prevent stepping up by 1 at 99 from going to 99.99

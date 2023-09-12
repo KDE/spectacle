@@ -3,13 +3,12 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQml 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.spectacle.private 1.0
+import QtQuick
+import QtQuick.Window
+import QtQuick.Layouts
+import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
+import org.kde.spectacle.private
 
 import "Annotations"
 
@@ -362,7 +361,7 @@ MouseArea {
             contentItem: MainToolBarContents {
                 id: mainToolBarContents
                 focusPolicy: Qt.NoFocus
-                displayMode: QQC2.AbstractButton.TextBesideIcon
+                displayMode: QQC.AbstractButton.TextBesideIcon
                 showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
                 imageSize: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio)
             }
@@ -438,7 +437,7 @@ MouseArea {
                 focusPolicy: Qt.NoFocus
                 contentItem: AnnotationsToolBarContents {
                     id: annotationsContents
-                    displayMode: QQC2.AbstractButton.IconOnly
+                    displayMode: QQC.AbstractButton.IconOnly
                     focusPolicy: Qt.NoFocus
                 }
 
@@ -496,7 +495,7 @@ MouseArea {
                     sourceComponent: FloatingToolBar {
                         focusPolicy: Qt.NoFocus
                         contentItem: AnnotationOptionsToolBarContents {
-                            displayMode: QQC2.AbstractButton.IconOnly
+                            displayMode: QQC.AbstractButton.IconOnly
                             focusPolicy: Qt.NoFocus
                         }
                         topLeftRadius: atbLoader.valignment & Qt.AlignBottom && x >= 0 ? 0 : radius
