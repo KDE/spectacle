@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 00:43+0000\n"
+"POT-Creation-Date: 2023-09-13 02:06+0000\n"
 "PO-Revision-Date: 2023-05-23 09:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -202,12 +202,12 @@ msgstr "En mode segon pla, exclou les decoracions en la captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Obri i edita un fitxer existent de captura de pantalla"
 
-#: src/ExportManager.cpp:326
+#: src/ExportManager.cpp:328
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter no ha pogut escriure la imatge: %1"
 
-#: src/ExportManager.cpp:341
+#: src/ExportManager.cpp:343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -217,14 +217,14 @@ msgstr ""
 "No s'ha pogut guardar la captura de pantalla perquè ha fallat la creació del "
 "directori:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:351
+#: src/ExportManager.cpp:353
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. S'ha produït un error en "
 "escriure en el fitxer."
 
-#: src/ExportManager.cpp:371
+#: src/ExportManager.cpp:373
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -234,37 +234,37 @@ msgstr ""
 "No s'ha pogut guardar la captura de pantalla perquè ha fallat la creació del "
 "directori remot:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
+#: src/ExportManager.cpp:384 src/ExportManager.cpp:434
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. S'ha produït un error en "
 "escriure en el fitxer local temporal."
 
-#: src/ExportManager.cpp:390
+#: src/ExportManager.cpp:392
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "No s'ha pogut guardar la imatge. No s'ha pogut pujar a la ubicació remota."
 
-#: src/ExportManager.cpp:439
+#: src/ExportManager.cpp:441
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. El nom de fitxer que s'ha de "
 "guardar no és vàlid."
 
-#: src/ExportManager.cpp:487
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "No s'ha pogut guardar una imatge de captura de pantalla buida."
 
-#: src/ExportManager.cpp:582
+#: src/ExportManager.cpp:580
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "No s'ha pogut imprimir. No s'ha pogut restablir la impressora."
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +272,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Any (4 dígits)"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,13 +280,29 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Any (2 dígits)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month"
 msgstr "Mes"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr ""
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -352,136 +368,136 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Numeració seqüencial, farcit a N dígits"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:58
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
 msgid "Stroke:"
 msgstr "Traç:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:90
+#: src/Gui/AnnotationOptionsToolBarContents.qml:89
 #, kde-format
 msgid "Stroke Width"
 msgstr "Amplària del traç"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:106
+#: src/Gui/AnnotationOptionsToolBarContents.qml:105
 #, kde-format
 msgid "Stroke Color"
 msgstr "Color del traç"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:146
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
 #, kde-format
 msgid "Fill:"
 msgstr "Farciment:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:158
+#: src/Gui/AnnotationOptionsToolBarContents.qml:157
 #, kde-format
 msgid "Fill Color"
 msgstr "Color de farciment"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:201
+#: src/Gui/AnnotationOptionsToolBarContents.qml:200
 #, kde-format
 msgid "Font:"
 msgstr "Lletra:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:230
+#: src/Gui/AnnotationOptionsToolBarContents.qml:229
 #, kde-format
 msgid "Font Color"
 msgstr "Color de la lletra"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#: src/Gui/AnnotationOptionsToolBarContents.qml:272
 #, kde-format
 msgid "Number:"
 msgstr "Número:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:293
+#: src/Gui/AnnotationOptionsToolBarContents.qml:292
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Número per a les anotacions numèriques"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:320
+#: src/Gui/AnnotationOptionsToolBarContents.qml:319
 #, kde-format
 msgid "Shadow"
 msgstr "Ombra"
 
-#: src/Gui/AnnotationsToolBarContents.qml:65
+#: src/Gui/AnnotationsToolBarContents.qml:64
 #, kde-format
 msgid "None"
 msgstr "Cap"
 
-#: src/Gui/AnnotationsToolBarContents.qml:72
+#: src/Gui/AnnotationsToolBarContents.qml:71
 #, kde-format
 msgid "Select"
 msgstr "Selecció"
 
-#: src/Gui/AnnotationsToolBarContents.qml:80
+#: src/Gui/AnnotationsToolBarContents.qml:79
 #, kde-format
 msgid "Freehand"
 msgstr "A mà alçada"
 
-#: src/Gui/AnnotationsToolBarContents.qml:87
+#: src/Gui/AnnotationsToolBarContents.qml:86
 #, kde-format
 msgid "Highlighter"
 msgstr "Marcador fluorescent"
 
-#: src/Gui/AnnotationsToolBarContents.qml:94
+#: src/Gui/AnnotationsToolBarContents.qml:93
 #, kde-format
 msgid "Line"
 msgstr "Línia"
 
-#: src/Gui/AnnotationsToolBarContents.qml:101
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Arrow"
 msgstr "Fletxa"
 
-#: src/Gui/AnnotationsToolBarContents.qml:108
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#: src/Gui/AnnotationsToolBarContents.qml:115
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Ellipse"
 msgstr "El·lipse"
 
-#: src/Gui/AnnotationsToolBarContents.qml:122
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Pixelate"
 msgstr "Pixelació"
 
-#: src/Gui/AnnotationsToolBarContents.qml:129
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Blur"
 msgstr "Difuminat"
 
-#: src/Gui/AnnotationsToolBarContents.qml:136
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Text"
 msgstr "Text"
 
-#: src/Gui/AnnotationsToolBarContents.qml:143
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Number"
 msgstr "Número"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:98
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Cancel·la (%1 segon)"
 msgstr[1] "Cancel·la (%1 segons)"
 
-#: src/Gui/CaptureOptions.qml:18 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Pren una captura de pantalla nova"
 
-#: src/Gui/CaptureOptions.qml:40 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Configureu la captura"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:42
+#: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Inclou el punter del ratolí"
@@ -548,18 +564,18 @@ msgstr ""
 msgid "Delay:"
 msgstr "Retard:"
 
-#: src/Gui/CopiedMessage.qml:13
+#: src/Gui/CopiedMessage.qml:12
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
 msgstr "La captura de pantalla s'ha copiat al porta-retalls."
 
-#: src/Gui/DelaySpinBox.qml:16
+#: src/Gui/DelaySpinBox.qml:15
 #, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Sense retard"
 
-#: src/Gui/DelaySpinBox.qml:25 src/Gui/SmartSpinBox.cpp:30
+#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
 #, kde-format
 msgctxt "Integer number of seconds"
 msgid " second"
@@ -567,7 +583,7 @@ msgid_plural " seconds"
 msgstr[0] " segon"
 msgstr[1] " segons"
 
-#: src/Gui/DelaySpinBox.qml:27 src/Gui/SmartSpinBox.cpp:32
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
@@ -583,83 +599,83 @@ msgstr "Modes de captura"
 msgid "Configure Spectacle…"
 msgstr "Configura Spectacle…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:138
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
 #, kde-format
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/Gui/ExportMenu.cpp:45
+#: src/Gui/ExportMenu.cpp:41
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Obri la carpeta predeterminada de captures de pantalla"
 
-#: src/Gui/ExportMenu.cpp:108
+#: src/Gui/ExportMenu.cpp:104
 #, kde-format
 msgid "Other Application..."
 msgstr "Una altra aplicació..."
 
-#: src/Gui/ExportMenu.cpp:142
+#: src/Gui/ExportMenu.cpp:134
 #, kde-format
 msgid "Share"
 msgstr "Compartix"
 
-#: src/Gui/ImageView.qml:148
+#: src/Gui/ImageView.qml:147
 #, kde-format
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/Gui/ImageView.qml:152
+#: src/Gui/ImageView.qml:151
 #, kde-format
 msgid "Recording"
 msgstr "Gravació"
 
-#: src/Gui/ImageView.qml:215
+#: src/Gui/ImageView.qml:214
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:229
+#: src/Gui/ImageView.qml:228
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom de la imatge"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:54
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Guarda"
 
-#: src/Gui/MainToolBarContents.qml:62
+#: src/Gui/MainToolBarContents.qml:61
 #, kde-format
 msgid "Save As..."
 msgstr "Anomena i guarda..."
 
-#: src/Gui/MainToolBarContents.qml:69
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Copy"
 msgstr "Copia"
 
-#: src/Gui/MainToolBarContents.qml:75
+#: src/Gui/MainToolBarContents.qml:74
 #, kde-format
 msgid "Export"
 msgstr "Exporta"
 
-#: src/Gui/MainToolBarContents.qml:85
+#: src/Gui/MainToolBarContents.qml:84
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Mostra les eines d'anotació"
 
-#: src/Gui/MainToolBarContents.qml:111
+#: src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "New Screenshot"
 msgstr "Captura de pantalla nova"
 
-#: src/Gui/MainToolBarContents.qml:122
+#: src/Gui/MainToolBarContents.qml:121
 #, kde-format
 msgid "Options"
 msgstr "Opcions"
 
-#: src/Gui/MainToolBarContents.qml:131
+#: src/Gui/MainToolBarContents.qml:130
 #, kde-format
 msgid "Configure..."
 msgstr "Configura..."
@@ -708,7 +724,7 @@ msgstr "Captura en fer clic"
 msgid "No Delay"
 msgstr "Sense retard"
 
-#: src/Gui/RecordingView.qml:65
+#: src/Gui/RecordingView.qml:62
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -717,33 +733,33 @@ msgstr ""
 "Gravació:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Play"
 msgstr "Reproduïx"
 
-#: src/Gui/RecordOptions.qml:34
+#: src/Gui/RecordOptions.qml:33
 #, kde-format
 msgid "Recording Settings"
 msgstr "Configureu la gravació"
 
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostra el cursor del ratolí en la gravació de pantalla."
 
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:52
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
 msgstr "Format de vídeo:"
 
-#: src/Gui/RecordOptions.qml:75
+#: src/Gui/RecordOptions.qml:74
 #, kde-format
 msgid "Finish recording"
 msgstr "Finalitza la gravació"
@@ -765,22 +781,22 @@ msgstr ""
 "La captura de pantalla s'ha guardat com a <a href=\"%1\">%2</a> i la seua "
 "ubicació s'ha copiat al porta-retalls"
 
-#: src/Gui/SavedMessage.qml:14
+#: src/Gui/SavedMessage.qml:13
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "El vídeo s'ha guardat com a <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:16
+#: src/Gui/SavedMessage.qml:15
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "La captura de pantalla s'ha guardat com a <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:22
+#: src/Gui/SavedMessage.qml:21
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Obri la carpeta contenidora"
 
-#: src/Gui/ScreenshotFailedMessage.qml:12
+#: src/Gui/ScreenshotFailedMessage.qml:11
 #, kde-format
 msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
@@ -1317,12 +1333,12 @@ msgstr "Si l'eina d'anotació de text té una ombra caiguda"
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Si l'eina d'anotació de número té una ombra caiguda"
 
-#: src/Gui/SharedMessage.qml:13
+#: src/Gui/SharedMessage.qml:12
 #, kde-format
 msgid "Image shared"
 msgstr "S'ha compartit la imatge"
 
-#: src/Gui/SharedMessage.qml:14
+#: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1331,7 +1347,7 @@ msgstr ""
 "L'enllaç cap a la imatge compartida (<a href=\"%1\">%1</a>) s'ha copiat al "
 "porta-retalls."
 
-#: src/Gui/ShareErrorMessage.qml:13
+#: src/Gui/ShareErrorMessage.qml:12
 #, kde-format
 msgid "There was a problem sharing the image: %1"
 msgstr "S'ha produït un problema en compartir la imatge: %1"
@@ -1444,7 +1460,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escapada"
 
-#: src/Gui/SpectacleWindow.cpp:217
+#: src/Gui/SpectacleWindow.cpp:212
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1452,50 +1468,50 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segon"
 msgstr[1] "%1 segons"
 
-#: src/Gui/SpectacleWindow.cpp:220
+#: src/Gui/SpectacleWindow.cpp:215
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
 msgstr "Sense guardar"
 
-#: src/Gui/UndoRedoGroup.qml:32
+#: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/Gui/UndoRedoGroup.qml:46
+#: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
 msgstr "Refés"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:39
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:41
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "Utilitat de captura de pantalla de KDE"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:43
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Josep M. Ferrer"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
 
-#: src/Main.cpp:66
+#: src/Main.cpp:63
 #, kde-format
 msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
@@ -1541,12 +1557,12 @@ msgstr "Captura la finestra baix el cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Inicia Spectacle sense capturar"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "La captura de pantalla s'ha cancel·lat o ha fallat"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1555,29 +1571,29 @@ msgstr ""
 "La captura de pantalla s'ha guardat com a «%1» a «%2» i el camí al seu "
 "fitxer s'ha copiat al porta-retalls."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha guardat una captura de pantalla com a «%1» en la carpeta Imatges."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha guardat una captura de pantalla com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha guardat una captura de pantalla en el porta-retalls."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Obri"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Anotació"

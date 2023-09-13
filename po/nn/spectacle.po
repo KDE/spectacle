@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-01 00:44+0000\n"
+"POT-Creation-Date: 2023-09-13 02:06+0000\n"
 "PO-Revision-Date: 2023-07-29 12:23+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -196,27 +196,27 @@ msgstr "I bakgrunnsmodus, ikkje ta med vindaugspynt i skjermbiletet"
 msgid "Open and edit existing screenshot file"
 msgstr "Opna og rediger eksisterande skjermbiletfil"
 
-#: src/ExportManager.cpp:326
+#: src/ExportManager.cpp:328
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter klarte ikkje lagra bilete: %1"
 
-#: src/ExportManager.cpp:341
+#: src/ExportManager.cpp:343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"Cannot save screenshot because creating the directory failed:<nl/"
-"><filename>%1</filename>"
+"Cannot save screenshot because creating the directory failed:<nl/><filename>"
+"%1</filename>"
 msgstr ""
 "Klarte ikkje lagra skjermbilete, på grunn av feil ved oppretting av mappe:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:351
+#: src/ExportManager.cpp:353
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Klarte ikkje lagra skjermbilete. Feil ved skriving av fil."
 
-#: src/ExportManager.cpp:371
+#: src/ExportManager.cpp:373
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -226,34 +226,34 @@ msgstr ""
 "Klarte ikkje lagra skjermbilete, på grunn av feil ved oppretting av mappe på "
 "nettverket:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
+#: src/ExportManager.cpp:384 src/ExportManager.cpp:434
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Klarte ikkje lagra skjermbilete. Feil ved skriving av mellombels lokal fil."
 
-#: src/ExportManager.cpp:390
+#: src/ExportManager.cpp:392
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Klarte ikkje lagra skjermbilete. Feil ved opplasting til eksternt område."
 
-#: src/ExportManager.cpp:439
+#: src/ExportManager.cpp:441
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Klarte ikkje lagra skjermbilete. Filnamnet er ugyldig."
 
-#: src/ExportManager.cpp:487
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan ikkje lagra tomt skjermbilete."
 
-#: src/ExportManager.cpp:582
+#: src/ExportManager.cpp:580
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Feil ved utskrift. Klarte ikkje starta skrivaren."
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -261,7 +261,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Årstal (fire siffer)"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -269,13 +269,29 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Årstal (to siffer)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month"
 msgstr "Månad"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr ""
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -341,52 +357,52 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Talfølgje, med N siffer"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:54
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
 msgid "Stroke:"
 msgstr "Strek:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:86
+#: src/Gui/AnnotationOptionsToolBarContents.qml:89
 #, kde-format
 msgid "Stroke Width"
 msgstr "Strekbreidd"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:102
+#: src/Gui/AnnotationOptionsToolBarContents.qml:105
 #, kde-format
 msgid "Stroke Color"
 msgstr "Strekfarge"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:140
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
 #, kde-format
 msgid "Fill:"
 msgstr "Fyll:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:157
 #, kde-format
 msgid "Fill Color"
 msgstr "Fyllfarge"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:193
+#: src/Gui/AnnotationOptionsToolBarContents.qml:200
 #, kde-format
 msgid "Font:"
 msgstr "Skrift:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:221
+#: src/Gui/AnnotationOptionsToolBarContents.qml:229
 #, kde-format
 msgid "Font Color"
 msgstr "Skriftfarge"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:262
+#: src/Gui/AnnotationOptionsToolBarContents.qml:272
 #, kde-format
 msgid "Number:"
 msgstr "Tal:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:282
+#: src/Gui/AnnotationOptionsToolBarContents.qml:292
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Tal for talpåteikningar"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:307
+#: src/Gui/AnnotationOptionsToolBarContents.qml:319
 #, kde-format
 msgid "Shadow"
 msgstr "Skugge"
@@ -458,19 +474,19 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Avbryt (%1 sekund)"
 msgstr[1] "Avbryt (%1 sekund)"
 
-#: src/Gui/CaptureOptions.qml:18 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Ta nytt skjermbilete"
 
-#: src/Gui/CaptureOptions.qml:40 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Biletval"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:42
+#: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Ta med musepeikaren"
@@ -536,18 +552,18 @@ msgstr "Vent på museklikk før skjermfotografering."
 msgid "Delay:"
 msgstr "Forseinking:"
 
-#: src/Gui/CopiedMessage.qml:13
+#: src/Gui/CopiedMessage.qml:12
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Skjermbiletet er no kopiert til utklippstavla."
 
-#: src/Gui/DelaySpinBox.qml:16
+#: src/Gui/DelaySpinBox.qml:15
 #, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Inga forseinking"
 
-#: src/Gui/DelaySpinBox.qml:25 src/Gui/SmartSpinBox.cpp:30
+#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
 #, kde-format
 msgctxt "Integer number of seconds"
 msgid " second"
@@ -555,7 +571,7 @@ msgid_plural " seconds"
 msgstr[0] " sekund"
 msgstr[1] " sekund"
 
-#: src/Gui/DelaySpinBox.qml:27 src/Gui/SmartSpinBox.cpp:32
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
@@ -576,63 +592,63 @@ msgstr "Set opp Spectacle …"
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/Gui/ExportMenu.cpp:45
+#: src/Gui/ExportMenu.cpp:41
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Opna standard skjermbiletmappe"
 
-#: src/Gui/ExportMenu.cpp:108
+#: src/Gui/ExportMenu.cpp:104
 #, kde-format
 msgid "Other Application..."
 msgstr "Anna program …"
 
-#: src/Gui/ExportMenu.cpp:142
+#: src/Gui/ExportMenu.cpp:134
 #, kde-format
 msgid "Share"
 msgstr "Del"
 
-#: src/Gui/ImageView.qml:148
+#: src/Gui/ImageView.qml:147
 #, kde-format
 msgid "Screenshot"
 msgstr "Skjermbilete"
 
-#: src/Gui/ImageView.qml:152
+#: src/Gui/ImageView.qml:151
 #, kde-format
 msgid "Recording"
 msgstr "Opptak"
 
-#: src/Gui/ImageView.qml:215
+#: src/Gui/ImageView.qml:214
 #, kde-format
 msgid "Zoom:"
 msgstr "Forstørring:"
 
-#: src/Gui/ImageView.qml:229
+#: src/Gui/ImageView.qml:228
 #, kde-format
 msgid "Image Zoom"
 msgstr "Biletforstørring"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:54
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Lagra"
 
-#: src/Gui/MainToolBarContents.qml:62
+#: src/Gui/MainToolBarContents.qml:61
 #, kde-format
 msgid "Save As..."
 msgstr "Lagra som …"
 
-#: src/Gui/MainToolBarContents.qml:69
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/Gui/MainToolBarContents.qml:75
+#: src/Gui/MainToolBarContents.qml:74
 #, kde-format
 msgid "Export"
 msgstr "Eksporter"
 
-#: src/Gui/MainToolBarContents.qml:85
+#: src/Gui/MainToolBarContents.qml:84
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Vis påteikningsverktøy"
@@ -697,7 +713,7 @@ msgstr "Ta bilete ved museklikk"
 msgid "No Delay"
 msgstr "Inga forseinking"
 
-#: src/Gui/RecordingView.qml:65
+#: src/Gui/RecordingView.qml:62
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -706,33 +722,33 @@ msgstr ""
 "Tek opp:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Pause"
 msgstr "Pause"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Play"
 msgstr "Spel"
 
-#: src/Gui/RecordOptions.qml:34
+#: src/Gui/RecordOptions.qml:33
 #, kde-format
 msgid "Recording Settings"
 msgstr "Opptaksinnstillingar"
 
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Vis musepeikaren på skjermopptaket."
 
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:52
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
 msgstr "Videoformat:"
 
-#: src/Gui/RecordOptions.qml:75
+#: src/Gui/RecordOptions.qml:74
 #, kde-format
 msgid "Finish recording"
 msgstr "Avslutt opptak"
@@ -742,8 +758,8 @@ msgstr "Avslutt opptak"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
 msgstr ""
-"Skjermbiletet er no kopiert til utklippstavla og lagra som <a "
-"href=\"%1\">%2</a>."
+"Skjermbiletet er no kopiert til utklippstavla og lagra som <a href=\"%1\">"
+"%2</a>."
 
 #: src/Gui/SavedAndLocationCopied.qml:8
 #, kde-format
@@ -754,29 +770,29 @@ msgstr ""
 "Skjermbiletet er no lagra som <a href=\"%1\">%2</a> og denne filadressa "
 "kopiert til utklippstavla."
 
-#: src/Gui/SavedMessage.qml:14
+#: src/Gui/SavedMessage.qml:13
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Vidoen er no lagra som <a href=\"%1\">%2</a>."
 
-#: src/Gui/SavedMessage.qml:16
+#: src/Gui/SavedMessage.qml:15
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Skjermbiletet er no lagra som <a href=\"%1\">%2</a>."
 
-#: src/Gui/SavedMessage.qml:22
+#: src/Gui/SavedMessage.qml:21
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Opna foreldermappa"
 
-#: src/Gui/ScreenshotFailedMessage.qml:12
+#: src/Gui/ScreenshotFailedMessage.qml:11
 #, kde-format
 msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"Klarte ikkje ta skjermbilete. Meld frå dette som ein feil her: <a "
-"href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">Meld frå om "
+"Klarte ikkje ta skjermbilete. Meld frå dette som ein feil her: <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">Meld frå om "
 "Spectacle-feil</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
@@ -1301,12 +1317,12 @@ msgstr "Om tekstpåteikningar skal ha ein skuggeeffekt"
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Om talpåteikningar skal ha ein skuggeeffekt"
 
-#: src/Gui/SharedMessage.qml:13
+#: src/Gui/SharedMessage.qml:12
 #, kde-format
 msgid "Image shared"
 msgstr "Bilete delt"
 
-#: src/Gui/SharedMessage.qml:14
+#: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1315,7 +1331,7 @@ msgstr ""
 "Lenkja til det delte biletet  (<a href=\"%1\">%1</a>) er no kopiert til "
 "utklippstavla."
 
-#: src/Gui/ShareErrorMessage.qml:13
+#: src/Gui/ShareErrorMessage.qml:12
 #, kde-format
 msgid "There was a problem sharing the image: %1"
 msgstr "Det oppstod ein feil ved deling av biletet: %1"
@@ -1428,7 +1444,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:217
+#: src/Gui/SpectacleWindow.cpp:212
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1436,50 +1452,50 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:220
+#: src/Gui/SpectacleWindow.cpp:215
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
 msgstr "Ulagra"
 
-#: src/Gui/UndoRedoGroup.qml:32
+#: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
 msgstr "Angra"
 
-#: src/Gui/UndoRedoGroup.qml:46
+#: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
 msgstr "Gjer om"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:39
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:41
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE-verktøy for skjermbilete"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:43
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "© 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Karl Ove Hufthammer"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "karl@huftis.org"
 
-#: src/Main.cpp:66
+#: src/Main.cpp:63
 #, kde-format
 msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
@@ -1525,12 +1541,12 @@ msgstr "Ta bilete av vindauget under peikaren"
 msgid "Launch Spectacle without capturing"
 msgstr "Start Spectacle utan å ta skjermbilete"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Skjermbiletlagring avbroten eller mislukka"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1539,29 +1555,29 @@ msgstr ""
 "Eit skjermbilete vart lagra som «%1» i «%2», og adressa til skjermbiletet "
 "vart kopiert til utklippstavla."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Eit skjermbilete vart lagra som «%1» i biletmappa."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Eit skjermbilete vart lagra som «%1» i «%2»."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Eit skjermbilete vart lagra til utklippstavla."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Opna"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Legg til påteikningar"

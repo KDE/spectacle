@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 00:43+0000\n"
+"POT-Creation-Date: 2023-09-13 02:06+0000\n"
 "PO-Revision-Date: 2023-07-20 09:08+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -198,12 +198,12 @@ msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:326
+#: src/ExportManager.cpp:328
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:341
+#: src/ExportManager.cpp:343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -213,12 +213,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:351
+#: src/ExportManager.cpp:353
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:371
+#: src/ExportManager.cpp:373
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -228,35 +228,35 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:382 src/ExportManager.cpp:432
+#: src/ExportManager.cpp:384 src/ExportManager.cpp:434
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:390
+#: src/ExportManager.cpp:392
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:439
+#: src/ExportManager.cpp:441
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:487
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:582
+#: src/ExportManager.cpp:580
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
 
-#: src/ExportManager.cpp:598
+#: src/ExportManager.cpp:596
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +264,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Urtea (4 digitu)"
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:597
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,13 +272,29 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Urtea (2 digitu)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:598
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month"
 msgstr "Hilabetea"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr ""
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -344,136 +360,136 @@ msgctxt ""
 msgid "Sequential numbering, padded out to N digits"
 msgstr "Zenbakitze sekuentziala, N digitura egokitua"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:58
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
 msgid "Stroke:"
 msgstr "Trazua:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:90
+#: src/Gui/AnnotationOptionsToolBarContents.qml:89
 #, kde-format
 msgid "Stroke Width"
 msgstr "Trazuaren zabalera"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:106
+#: src/Gui/AnnotationOptionsToolBarContents.qml:105
 #, kde-format
 msgid "Stroke Color"
 msgstr "Trazuaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:146
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
 #, kde-format
 msgid "Fill:"
 msgstr "Betegarria:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:158
+#: src/Gui/AnnotationOptionsToolBarContents.qml:157
 #, kde-format
 msgid "Fill Color"
 msgstr "Betegarriaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:201
+#: src/Gui/AnnotationOptionsToolBarContents.qml:200
 #, kde-format
 msgid "Font:"
 msgstr "Letra-tipoa:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:230
+#: src/Gui/AnnotationOptionsToolBarContents.qml:229
 #, kde-format
 msgid "Font Color"
 msgstr "Letra-tipoaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:273
+#: src/Gui/AnnotationOptionsToolBarContents.qml:272
 #, kde-format
 msgid "Number:"
 msgstr "Zenbakia:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:293
+#: src/Gui/AnnotationOptionsToolBarContents.qml:292
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Zenbakizko idatzoharretarako zenbakia"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:320
+#: src/Gui/AnnotationOptionsToolBarContents.qml:319
 #, kde-format
 msgid "Shadow"
 msgstr "Itzala"
 
-#: src/Gui/AnnotationsToolBarContents.qml:65
+#: src/Gui/AnnotationsToolBarContents.qml:64
 #, kde-format
 msgid "None"
 msgstr "Bat ere ez"
 
-#: src/Gui/AnnotationsToolBarContents.qml:72
+#: src/Gui/AnnotationsToolBarContents.qml:71
 #, kde-format
 msgid "Select"
 msgstr "Hautatu"
 
-#: src/Gui/AnnotationsToolBarContents.qml:80
+#: src/Gui/AnnotationsToolBarContents.qml:79
 #, kde-format
 msgid "Freehand"
 msgstr "Esku hutsez"
 
-#: src/Gui/AnnotationsToolBarContents.qml:87
+#: src/Gui/AnnotationsToolBarContents.qml:86
 #, kde-format
 msgid "Highlighter"
 msgstr "Nabarmentzailea"
 
-#: src/Gui/AnnotationsToolBarContents.qml:94
+#: src/Gui/AnnotationsToolBarContents.qml:93
 #, kde-format
 msgid "Line"
 msgstr "Lerroa"
 
-#: src/Gui/AnnotationsToolBarContents.qml:101
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Arrow"
 msgstr "Gezia"
 
-#: src/Gui/AnnotationsToolBarContents.qml:108
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Rectangle"
 msgstr "Laukizuzena"
 
-#: src/Gui/AnnotationsToolBarContents.qml:115
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Ellipse"
 msgstr "Elipsea"
 
-#: src/Gui/AnnotationsToolBarContents.qml:122
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Pixelate"
 msgstr "Pixelatu"
 
-#: src/Gui/AnnotationsToolBarContents.qml:129
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Blur"
 msgstr "Lausotu"
 
-#: src/Gui/AnnotationsToolBarContents.qml:136
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Text"
 msgstr "Testua"
 
-#: src/Gui/AnnotationsToolBarContents.qml:143
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Number"
 msgstr "Zenbakia"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:98
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Utzi (segundo %1)"
 msgstr[1] "Utzi (%1 segundo)"
 
-#: src/Gui/CaptureOptions.qml:18 src/Gui/DialogPage.qml:52
+#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Hartu pantaila-argazki berri bat"
 
-#: src/Gui/CaptureOptions.qml:40 src/Gui/DialogPage.qml:113
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:63
 #, kde-format
 msgid "Capture Settings"
 msgstr "Atzemate ezarpenak"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
-#: src/Gui/RecordOptions.qml:42
+#: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Jaso saguaren erakuslea"
@@ -537,18 +553,18 @@ msgstr "Itxaron saguaren klik bati pantaila-argazkia atzemateko."
 msgid "Delay:"
 msgstr "Atzerapena:"
 
-#: src/Gui/CopiedMessage.qml:13
+#: src/Gui/CopiedMessage.qml:12
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Pantaila-argazkia arbelera kopiatu da."
 
-#: src/Gui/DelaySpinBox.qml:16
+#: src/Gui/DelaySpinBox.qml:15
 #, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Atzerapenik ez"
 
-#: src/Gui/DelaySpinBox.qml:25 src/Gui/SmartSpinBox.cpp:30
+#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
 #, kde-format
 msgctxt "Integer number of seconds"
 msgid " second"
@@ -556,7 +572,7 @@ msgid_plural " seconds"
 msgstr[0] " segundo"
 msgstr[1] " segundo"
 
-#: src/Gui/DelaySpinBox.qml:27 src/Gui/SmartSpinBox.cpp:32
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
@@ -572,83 +588,83 @@ msgstr "Atzemateko moduak"
 msgid "Configure Spectacle…"
 msgstr "Konfiguratu Spectacle..."
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:138
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
 #, kde-format
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/Gui/ExportMenu.cpp:45
+#: src/Gui/ExportMenu.cpp:41
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Ireki pantaila-argazkien karpeta lehenetsia"
 
-#: src/Gui/ExportMenu.cpp:108
+#: src/Gui/ExportMenu.cpp:104
 #, kde-format
 msgid "Other Application..."
 msgstr "Beste aplikazio bat..."
 
-#: src/Gui/ExportMenu.cpp:142
+#: src/Gui/ExportMenu.cpp:134
 #, kde-format
 msgid "Share"
 msgstr "Partekatu"
 
-#: src/Gui/ImageView.qml:148
+#: src/Gui/ImageView.qml:147
 #, kde-format
 msgid "Screenshot"
 msgstr "Pantaila-argazkia"
 
-#: src/Gui/ImageView.qml:152
+#: src/Gui/ImageView.qml:151
 #, kde-format
 msgid "Recording"
 msgstr "Grabatzen"
 
-#: src/Gui/ImageView.qml:215
+#: src/Gui/ImageView.qml:214
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:229
+#: src/Gui/ImageView.qml:228
 #, kde-format
 msgid "Image Zoom"
 msgstr "Irudiaren zoom"
 
-#: src/Gui/MainToolBarContents.qml:55
+#: src/Gui/MainToolBarContents.qml:54
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Gorde"
 
-#: src/Gui/MainToolBarContents.qml:62
+#: src/Gui/MainToolBarContents.qml:61
 #, kde-format
 msgid "Save As..."
 msgstr "Gorde honela..."
 
-#: src/Gui/MainToolBarContents.qml:69
+#: src/Gui/MainToolBarContents.qml:68
 #, kde-format
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: src/Gui/MainToolBarContents.qml:75
+#: src/Gui/MainToolBarContents.qml:74
 #, kde-format
 msgid "Export"
 msgstr "Esportatu"
 
-#: src/Gui/MainToolBarContents.qml:85
+#: src/Gui/MainToolBarContents.qml:84
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Erakutsi idatzohar tresnak"
 
-#: src/Gui/MainToolBarContents.qml:111
+#: src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "New Screenshot"
 msgstr "Pantaila-argazki berria"
 
-#: src/Gui/MainToolBarContents.qml:122
+#: src/Gui/MainToolBarContents.qml:121
 #, kde-format
 msgid "Options"
 msgstr "Aukerak"
 
-#: src/Gui/MainToolBarContents.qml:131
+#: src/Gui/MainToolBarContents.qml:130
 #, kde-format
 msgid "Configure..."
 msgstr "Konfiguratu..."
@@ -696,7 +712,7 @@ msgstr "Atzeman klik egitean"
 msgid "No Delay"
 msgstr "Atzerapenik ez"
 
-#: src/Gui/RecordingView.qml:65
+#: src/Gui/RecordingView.qml:62
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -705,33 +721,33 @@ msgstr ""
 "Grabatzen:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Pause"
 msgstr "Eten"
 
-#: src/Gui/RecordingView.qml:96
+#: src/Gui/RecordingView.qml:93
 #, kde-format
 msgid "Play"
 msgstr "Jo"
 
-#: src/Gui/RecordOptions.qml:34
+#: src/Gui/RecordOptions.qml:33
 #, kde-format
 msgid "Recording Settings"
 msgstr "Grabatzeko ezarpenak"
 
-#: src/Gui/RecordOptions.qml:43
+#: src/Gui/RecordOptions.qml:42
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
 
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:52
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Video format:"
 msgstr "Bideo-formatua:"
 
-#: src/Gui/RecordOptions.qml:75
+#: src/Gui/RecordOptions.qml:74
 #, kde-format
 msgid "Finish recording"
 msgstr "Bukatu grabazioa"
@@ -752,22 +768,22 @@ msgstr ""
 "Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da eta bere kokalekua "
 "arbelera kopiatu da"
 
-#: src/Gui/SavedMessage.qml:14
+#: src/Gui/SavedMessage.qml:13
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Bideoa <a href=\"%1\">%2</a> gisa gorde da"
 
-#: src/Gui/SavedMessage.qml:16
+#: src/Gui/SavedMessage.qml:15
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da"
 
-#: src/Gui/SavedMessage.qml:22
+#: src/Gui/SavedMessage.qml:21
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Ireki hau barnean duen karpeta"
 
-#: src/Gui/ScreenshotFailedMessage.qml:12
+#: src/Gui/ScreenshotFailedMessage.qml:11
 #, kde-format
 msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
@@ -1300,12 +1316,12 @@ msgstr "Testu-idatzohar tresnak itzala duen edo ez"
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Zenbaki-idatzohar tresnak itzala duen edo ez"
 
-#: src/Gui/SharedMessage.qml:13
+#: src/Gui/SharedMessage.qml:12
 #, kde-format
 msgid "Image shared"
 msgstr "Irudia partekatu da"
 
-#: src/Gui/SharedMessage.qml:14
+#: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1313,7 +1329,7 @@ msgid ""
 msgstr ""
 "Partekatutako irudiaren esteka (<a href=\"%1\">%1</a>) arbelera kopiatu da."
 
-#: src/Gui/ShareErrorMessage.qml:13
+#: src/Gui/ShareErrorMessage.qml:12
 #, kde-format
 msgid "There was a problem sharing the image: %1"
 msgstr "Arazo bat sortu da irudia partekatzean: %1"
@@ -1426,7 +1442,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Ihes"
 
-#: src/Gui/SpectacleWindow.cpp:217
+#: src/Gui/SpectacleWindow.cpp:212
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1434,50 +1450,50 @@ msgid_plural "%1 seconds"
 msgstr[0] "segundo %1"
 msgstr[1] "%1 segundo"
 
-#: src/Gui/SpectacleWindow.cpp:220
+#: src/Gui/SpectacleWindow.cpp:215
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
 msgstr "Gordetzeke"
 
-#: src/Gui/UndoRedoGroup.qml:32
+#: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/Gui/UndoRedoGroup.qml:46
+#: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
 msgstr "Berregin"
 
-#: src/Main.cpp:42
+#: src/Main.cpp:39
 #, kde-format
 msgid "Spectacle"
 msgstr "Spectacle"
 
-#: src/Main.cpp:44
+#: src/Main.cpp:41
 #, kde-format
 msgid "KDE Screenshot Utility"
 msgstr "KDE pantaila-argazki baliagarritasuna"
 
-#: src/Main.cpp:46
+#: src/Main.cpp:43
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
 msgstr "(C) 2015 Boudhayan Gupta"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Iñigo Salvador Azurmendi"
 
-#: src/Main.cpp:50
+#: src/Main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Xalba@euskalnet.net"
 
-#: src/Main.cpp:66
+#: src/Main.cpp:63
 #, kde-format
 msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
@@ -1523,12 +1539,12 @@ msgstr "Atzeman kurtsorearen azpiko leihoa"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:637
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1537,29 +1553,29 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:693
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:703
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
