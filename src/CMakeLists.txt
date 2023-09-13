@@ -61,22 +61,11 @@ if(XCB_FOUND)
         XCB::UTIL
         XCB::RANDR
     )
-    if (QT_MAJOR_VERSION STREQUAL "5")
-        target_link_libraries(spectacle Qt::X11Extras)
-    else()
-        target_link_libraries(spectacle Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
-    endif()
+    target_link_libraries(spectacle Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
 endif()
 
-if (QT_MAJOR_VERSION EQUAL "5")
-    ecm_add_qtwayland_client_protocol(spectacle
-        PROTOCOL ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
-        BASENAME zkde-screencast-unstable-v1
-    )
-else()
-    qt6_generate_wayland_protocol_client_sources(spectacle FILES
-        ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml)
-endif()
+qt6_generate_wayland_protocol_client_sources(spectacle FILES
+    ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml)
 
 
 if(PURPOSE_FOUND)

@@ -70,9 +70,6 @@ find_package(
 
 find_package(Wayland REQUIRED COMPONENTS Client)
 find_package(PlasmaWaylandProtocols REQUIRED)
-if (QT_MAJOR_VERSION EQUAL "5")
-    find_package(QtWaylandScanner REQUIRED)
-endif()
 find_package(KPipeWire)
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
@@ -92,11 +89,6 @@ endif()
 
 find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR RANDR)
 set(XCB_COMPONENTS_ERRORS FALSE)
-if (XCB_FOUND)
-    if (QT_MAJOR_VERSION STREQUAL "5")
-        find_package(Qt5X11Extras ${QT_MIN_VERSION} REQUIRED)
-    endif()
-endif()
 set(XCB_COMPONENTS_FOUND TRUE)
 if(NOT XCB_XFIXES_FOUND)
 	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-XFIXES ")
