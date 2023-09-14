@@ -7,43 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-13 02:06+0000\n"
-"PO-Revision-Date: 2023-05-23 08:54+0200\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
+"PO-Revision-Date: 2023-09-13 07:50+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.2.2\n"
-
-#: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "Zaženi Spectacle"
-
-#: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:39
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "Zajemi celotno namizje"
-
-#: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:45
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "Zajemi trenutni zaslon"
-
-#: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:51
-#, kde-format
-msgid "Capture Active Window"
-msgstr "Zajemi dejavno okno"
-
-#: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:57
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "Zajemi pravokotno območje"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/CaptureModeModel.cpp:95
 #, kde-format
@@ -287,7 +262,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "Mesec (lokalno kratko ime)"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -295,7 +270,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "Mesec (lokalno dolgo ime)"
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -1531,6 +1506,31 @@ msgstr "Neuspela izbira izhoda"
 #, kde-format
 msgid "Failed to select window"
 msgstr "Neuspela izbira okna"
+
+#: src/ShortcutActions.cpp:33
+#, kde-format
+msgid "Launch Spectacle"
+msgstr "Zaženi Spectacle"
+
+#: src/ShortcutActions.cpp:39
+#, kde-format
+msgid "Capture Entire Desktop"
+msgstr "Zajemi celotno namizje"
+
+#: src/ShortcutActions.cpp:45
+#, kde-format
+msgid "Capture Current Monitor"
+msgstr "Zajemi trenutni zaslon"
+
+#: src/ShortcutActions.cpp:51
+#, kde-format
+msgid "Capture Active Window"
+msgstr "Zajemi dejavno okno"
+
+#: src/ShortcutActions.cpp:57
+#, kde-format
+msgid "Capture Rectangular Region"
+msgstr "Zajemi pravokotno območje"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format

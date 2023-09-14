@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-13 02:06+0000\n"
-"PO-Revision-Date: 2023-05-23 09:12+0300\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
+"PO-Revision-Date: 2023-09-13 05:40+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -19,31 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
-
-#: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "Запустити Spectacle"
-
-#: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:39
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "Захопити зображення усієї стільниці"
-
-#: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:45
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "Захопити зображення на поточному моніторі"
-
-#: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:51
-#, kde-format
-msgid "Capture Active Window"
-msgstr "Захопити зображення активного вікна"
-
-#: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:57
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "Захопити прямокутну ділянку"
 
 #: src/CaptureModeModel.cpp:95
 #, kde-format
@@ -284,7 +259,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "Місяць (скорочена локалізована назва)"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -292,7 +267,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "Місяць (повна локалізована назва)"
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -1538,6 +1513,31 @@ msgstr "Не вдалося вибрати виведення"
 #, kde-format
 msgid "Failed to select window"
 msgstr "Не вдалося вибрати вікно"
+
+#: src/ShortcutActions.cpp:33
+#, kde-format
+msgid "Launch Spectacle"
+msgstr "Запустити Spectacle"
+
+#: src/ShortcutActions.cpp:39
+#, kde-format
+msgid "Capture Entire Desktop"
+msgstr "Захопити зображення усієї стільниці"
+
+#: src/ShortcutActions.cpp:45
+#, kde-format
+msgid "Capture Current Monitor"
+msgstr "Захопити зображення на поточному моніторі"
+
+#: src/ShortcutActions.cpp:51
+#, kde-format
+msgid "Capture Active Window"
+msgstr "Захопити зображення активного вікна"
+
+#: src/ShortcutActions.cpp:57
+#, kde-format
+msgid "Capture Rectangular Region"
+msgstr "Захопити прямокутну ділянку"
 
 #: src/ShortcutActions.cpp:63
 #, kde-format

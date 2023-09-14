@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-13 02:06+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -18,38 +18,6 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
 "X-Associated-UI-Catalogs: kwidgetsaddons5_qt\n"
-
-# >> @item
-#: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
-#, fuzzy, kde-format
-#| msgid "Taken with Spectacle"
-msgid "Launch Spectacle"
-msgstr "снимљено Спектаклом"
-
-#: desktop/MigrateShortcuts.cpp:77 src/ShortcutActions.cpp:39
-#, fuzzy, kde-format
-#| msgid "Capture the entire desktop (default)"
-msgid "Capture Entire Desktop"
-msgstr "Сними целу површ (подразумевано)"
-
-#: desktop/MigrateShortcuts.cpp:82 src/ShortcutActions.cpp:45
-#, fuzzy, kde-format
-#| msgid "Capture the current monitor"
-msgid "Capture Current Monitor"
-msgstr "Сними тренутни монитор"
-
-#: desktop/MigrateShortcuts.cpp:87 src/ShortcutActions.cpp:51
-#, fuzzy, kde-format
-#| msgid "Capture the active window"
-msgid "Capture Active Window"
-msgstr "Сними активни прозор"
-
-# >> @item:inlistbox
-#: desktop/MigrateShortcuts.cpp:92 src/ShortcutActions.cpp:57
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
-msgid "Capture Rectangular Region"
-msgstr "правоугаона зона"
 
 # >> @item:inlistbox
 #: src/CaptureModeModel.cpp:95
@@ -1600,6 +1568,38 @@ msgstr ""
 #, kde-format
 msgid "Failed to select window"
 msgstr ""
+
+# >> @item
+#: src/ShortcutActions.cpp:33
+#, fuzzy, kde-format
+#| msgid "Taken with Spectacle"
+msgid "Launch Spectacle"
+msgstr "снимљено Спектаклом"
+
+#: src/ShortcutActions.cpp:39
+#, fuzzy, kde-format
+#| msgid "Capture the entire desktop (default)"
+msgid "Capture Entire Desktop"
+msgstr "Сними целу површ (подразумевано)"
+
+#: src/ShortcutActions.cpp:45
+#, fuzzy, kde-format
+#| msgid "Capture the current monitor"
+msgid "Capture Current Monitor"
+msgstr "Сними тренутни монитор"
+
+#: src/ShortcutActions.cpp:51
+#, fuzzy, kde-format
+#| msgid "Capture the active window"
+msgid "Capture Active Window"
+msgstr "Сними активни прозор"
+
+# >> @item:inlistbox
+#: src/ShortcutActions.cpp:57
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Capture Rectangular Region"
+msgstr "правоугаона зона"
 
 # >> @item:inlistbox
 # switch-rule: t-cursor > t-pointer
