@@ -193,7 +193,7 @@ void AnnotationViewport::hoverEnterEvent(QHoverEvent *event)
         QQuickItem::hoverEnterEvent(event);
         return;
     }
-    setHoverPosition(event->posF());
+    setHoverPosition(event->position());
     setHovered(true);
 }
 
@@ -203,7 +203,7 @@ void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
         QQuickItem::hoverMoveEvent(event);
         return;
     }
-    setHoverPosition(event->posF());
+    setHoverPosition(event->position());
 }
 
 void AnnotationViewport::hoverLeaveEvent(QHoverEvent *event)
@@ -222,7 +222,7 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
         return;
     }
 
-    m_lastDocumentPressPos = toDocumentPoint(event->localPos());
+    m_lastDocumentPressPos = toDocumentPoint(event->position());
     auto toolType = m_document->tool()->type();
     auto saWrapper = m_document->selectedActionWrapper();
 
@@ -243,7 +243,7 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
                                  && saWrapper->type() != AnnotationDocument::None;
     m_lastSelectedActionVisualGeometry = saWrapper->visualGeometry();
 
-    setPressPosition(event->localPos());
+    setPressPosition(event->position());
     setPressed(true);
     event->accept();
 }
@@ -256,7 +256,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
     }
 
     auto toolType = m_document->tool()->type();
-    QPointF documentMousePos = toDocumentPoint(event->localPos());
+    QPointF documentMousePos = toDocumentPoint(event->position());
 
     auto saWrapper = m_document->selectedActionWrapper();
     if (toolType == AnnotationDocument::ChangeAction
@@ -280,7 +280,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         m_document->continueAction(documentMousePos, options);
     }
 
-    setPressPosition(event->localPos());
+    setPressPosition(event->position());
     event->accept();
 }
 

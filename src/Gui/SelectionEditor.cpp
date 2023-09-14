@@ -471,7 +471,7 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     if (!item->window() || !item->window()->screen()) {
         return;
     }
-    d->mousePos = mapSceneToLogicalGlobalPoint(item->mapToScene(event->posF()), item);
+    d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
 }
@@ -494,7 +494,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         }
         item->setFocus(true);
         const bool wasMagnifierAllowed = d->magnifierAllowed;
-        d->mousePos = mapSceneToLogicalGlobalPoint(event->windowPos(), item);
+        d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
         Q_EMIT mousePositionChanged();
         auto newDragLocation = d->mouseLocation(d->mousePos);
         if (d->dragLocation != newDragLocation) {
@@ -547,7 +547,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         return;
     }
 
-    d->mousePos = mapSceneToLogicalGlobalPoint(event->windowPos(), item);
+    d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
     Q_EMIT mousePositionChanged();
     const bool wasMagnifierAllowed = d->magnifierAllowed;
     d->magnifierAllowed = true;
