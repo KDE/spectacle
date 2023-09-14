@@ -117,6 +117,9 @@ public:
      */
     [[nodiscard]] Q_INVOKABLE static QRectF rectAdjustedVisually(const QRectF &rect, qreal xp1, qreal yp1, qreal xp2, qreal yp2);
 
+    /// Get a rect with a size and position multiplied by the scale.
+    [[nodiscard]] Q_INVOKABLE static QRectF rectScaled(const QRectF &rect, qreal scale);
+
     /// Get the intersection of two rectangles.
     [[nodiscard]] Q_INVOKABLE static QRectF rectIntersected(const QRectF &rect1, const QRectF &rect2);
 
