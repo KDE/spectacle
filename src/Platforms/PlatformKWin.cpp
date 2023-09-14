@@ -229,41 +229,6 @@ ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(PlatformKWin::Scree
 {
 }
 
-ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
-    : m_sources(sources)
-{
-    for (ScreenShotSource2 *source : sources) {
-        source->setParent(this);
-
-        connect(source, &ScreenShotSource2::finished, this, &ScreenShotSourceMeta2::handleSourceFinished);
-        connect(source, &ScreenShotSource2::errorOccurred, this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
-    }
-}
-
-void ScreenShotSourceMeta2::handleSourceFinished()
-{
-    const bool isFinished = std::all_of(m_sources.constBegin(), m_sources.constEnd(), [](const ScreenShotSource2 *source) {
-        return !source->result().isNull();
-    });
-    if (!isFinished) {
-        return;
-    }
-
-    QVector<QImage> results;
-    results.reserve(m_sources.count());
-
-    for (const ScreenShotSource2 *source : std::as_const(m_sources)) {
-        results.append(source->result());
-    }
-
-    Q_EMIT finished(results);
-}
-
-void ScreenShotSourceMeta2::handleSourceErrorOccurred()
-{
-    Q_EMIT errorOccurred();
-}
-
 std::unique_ptr<PlatformKWin> PlatformKWin::create()
 {
     QDBusConnectionInterface *interface = QDBusConnection::sessionBus().interface();
@@ -364,7 +329,7 @@ void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, b
         takeScreenShotArea(workArea(), flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
         break;
     case GrabMode::PerScreenImageNative:
-        takeScreenShotScreens(QGuiApplication::screens(), flags);
+        takeScreenShotCroppable(flags);
         break;
     case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
@@ -374,72 +339,23 @@ void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, b
 
 void PlatformKWin::trackSource(ScreenShotSource2 *source)
 {
-    connect(source, &ScreenShotSourceArea2::finished, this, [this, source](const QImage &image) {
+    connect(source, &ScreenShotSource2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
         Q_EMIT newScreenshotTaken(image);
     });
-    connect(source, &ScreenShotSourceArea2::errorOccurred, this, [this, source]() {
+    connect(source, &ScreenShotSource2::errorOccurred, this, [this, source]() {
         source->deleteLater();
         Q_EMIT newScreenshotFailed();
     });
 }
 
-void PlatformKWin::trackSource(ScreenShotSourceMeta2 *source)
+void PlatformKWin::trackCroppableSource(ScreenShotSourceArea2 *source)
 {
-    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source](const QVector<QImage> &images) {
+    connect(source, &ScreenShotSourceArea2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
-        QVector<CanvasImage> screenImages;
-        const auto &screens = qGuiApp->screens();
-        QStringList missingScreens;
-        // NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
-        // It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
-        // KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
-        for (int i = 0; i < images.size(); ++i) {
-            auto &image = images[i];
-            const auto screenName = image.text(QStringLiteral("screen"));
-            if (screenName.isEmpty()) {
-                qWarning() << "ERROR: A screen image did not have an associated screen name.";
-                Q_EMIT newScreenshotFailed();
-                return;
-            }
-
-            bool screenFound = false;
-            for (int ii = 0; ii < screens.size(); ++ii) {
-                auto screen = screens[ii];
-                screenFound |= screen->name() == screenName;
-                if (screenFound) {
-                    QRectF screenRect = screen->geometry();
-                    // On X11 QScreen::geometry has a scaled and rounded size, but a raw position.
-                    // Do additional processing for X11 to get the logical (wayland) geometry.
-                    if (KWindowSystem::isPlatformX11()) {
-                        // Assume that all screens on X11 have the same DPR.
-                        // Plasma System Settings only allows global scaling on X11
-                        // and this makes the math easier.
-                        qreal scale = image.devicePixelRatio();
-                        if (scale == 1 && scale != screen->devicePixelRatio()) {
-                            scale = screen->devicePixelRatio();
-                        }
-                        screenRect.setSize(QSizeF(image.size()) / scale);
-                        screenRect.moveTo(screenRect.topLeft() / scale);
-                    }
-                    screenImages.append({image, screenRect});
-                    break;
-                }
-            }
-
-            if (!screenFound) {
-                missingScreens << screenName;
-            }
-        }
-        if (!missingScreens.empty()) {
-            qWarning() << "ERROR: The following captured screen names could not be found:"
-                       << missingScreens.join(QStringLiteral(", "));
-            Q_EMIT newScreenshotFailed();
-            return;
-        }
-        Q_EMIT newScreensScreenshotTaken(screenImages);
+        Q_EMIT newCroppableScreenshotTaken(image);
     });
-    connect(source, &ScreenShotSourceMeta2::errorOccurred, this, [this, source]() {
+    connect(source, &ScreenShotSourceArea2::errorOccurred, this, [this, source]() {
         source->deleteLater();
         Q_EMIT newScreenshotFailed();
     });
@@ -465,16 +381,9 @@ void PlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
     trackSource(new ScreenShotSourceActiveScreen2(flags));
 }
 
-void PlatformKWin::takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags)
+void PlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
-    QVector<ScreenShotSource2 *> sources;
-    sources.reserve(screens.count());
-
-    for (QScreen *screen : screens) {
-        sources.append(new ScreenShotSourceScreen2(screen, flags));
-    }
-
-    trackSource(new ScreenShotSourceMeta2(sources));
+    trackCroppableSource(new ScreenShotSourceArea2(workArea(), flags));
 }
 
 #include "moc_PlatformKWin.cpp"

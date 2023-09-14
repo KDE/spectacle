@@ -482,10 +482,14 @@ void PlatformXcb::handleKWinScreenshotReply(quint64 drawable)
 
 /* -- Grabber Methods -------------------------------------------------------------------------- */
 
-void PlatformXcb::grabAllScreens(bool includePointer)
+void PlatformXcb::grabAllScreens(bool includePointer, bool crop)
 {
     auto image = getToplevelImage(QRect(), includePointer);
     image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
+    if (crop) {
+        Q_EMIT newCroppableScreenshotTaken(image);
+        return;
+    }
     Q_EMIT newScreenshotTaken(image);
 }
 
@@ -702,18 +706,7 @@ void PlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool include
         grabAllScreens(includePointer);
         break;
     case GrabMode::PerScreenImageNative: {
-        auto image = getToplevelImage(QRect(), includePointer);
-        qreal scale = qGuiApp->devicePixelRatio();
-        image.setDevicePixelRatio(scale);
-        // break the image into a list of images
-        const auto screenRects = getScreenRects();
-        QVector<CanvasImage> screenImages;
-        for (auto &screenRect : screenRects) {
-            // Assume all screens have the same DPR on X11
-            QRectF rect(QPointF(screenRect.topLeft()) / scale, QSizeF(screenRect.size()) / scale);
-            screenImages.append({image.copy(screenRect), rect});
-        }
-        Q_EMIT newScreensScreenshotTaken(screenImages);
+        grabAllScreens(includePointer, true);
         break;
     }
     case GrabMode::CurrentScreen:

@@ -6,9 +6,8 @@
 
 #pragma once
 
-#include "CanvasImage.h"
-
 #include <QFlags>
+#include <QImage>
 #include <QObject>
 
 class Platform : public QObject
@@ -50,7 +49,7 @@ Q_SIGNALS:
     void supportedGrabModesChanged();
 
     void newScreenshotTaken(const QImage &image = {});
-    void newScreensScreenshotTaken(const QVector<CanvasImage> &screenImages);
+    void newCroppableScreenshotTaken(const QImage &image);
 
     void newScreenshotFailed();
     void windowTitleChanged(const QString &windowTitle = {});

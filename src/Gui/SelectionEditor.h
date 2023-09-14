@@ -85,6 +85,8 @@ Q_SIGNALS:
     void magnifierAllowedChanged();
     void mousePositionChanged();
 
+    void accepted(const QRectF &rect, const ExportManager::Actions &actions);
+
 protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
     void keyPressEvent(QQuickItem *item, QKeyEvent *event);

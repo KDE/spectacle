@@ -110,7 +110,6 @@ Q_SIGNALS:
 
     void errorMessage(const QString &message);
     void allDone();
-    void grabDone(const QImage &image, const ExportManager::Actions &actions);
     void grabFailed();
     void recordingChanged(bool isRecording);
     void videoModeChanged(bool videoMode);

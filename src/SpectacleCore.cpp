@@ -6,7 +6,6 @@
  */
 
 #include "SpectacleCore.h"
-#include "CanvasImage.h"
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "ExportManager.h"
@@ -116,10 +115,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     // essential connections
     connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
-    connect(this, &SpectacleCore::grabDone, this, [this](const QImage &image,
-                                                         const ExportManager::Actions &actions){
+    connect(SelectionEditor::instance(), &SelectionEditor::accepted,
+            this, [this](const QRectF &rect, const ExportManager::Actions &actions){
         deleteWindows();
-        m_annotationDocument->setCanvasImages({image});
+        m_annotationDocument->cropCanvas(rect);
         syncExportImage();
         ExportManager::instance()->updateTimestamp();
         showViewerIfGuiMode();
@@ -130,7 +129,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
-        m_annotationDocument->setCanvasImages({image});
+        m_annotationDocument->setImage(image);
         setExportImage(image);
         ExportManager::instance()->updateTimestamp();
         showViewerIfGuiMode();
@@ -138,19 +137,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
-    connect(platform, &Platform::newScreensScreenshotTaken, this, [this](const QVector<CanvasImage> &screenImages) {
+    connect(platform, &Platform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
         auto selectionEditor = SelectionEditor::instance();
         auto selection = selectionEditor->selection();
         m_annotationDocument->clearAnnotations();
-        m_annotationDocument->setCanvasImages(screenImages);
-        QRectF screensRect;
-        qreal maxDpr = 0;
-        for (const auto &si : screenImages) {
-            screensRect = screensRect.united(si.rect);
-            maxDpr = qMax(maxDpr, si.image.devicePixelRatio());
-        }
-        selectionEditor->setScreensRect(screensRect);
-        selectionEditor->setDevicePixelRatio(maxDpr);
+        m_annotationDocument->setImage(image);
+        selectionEditor->setScreensRect({{0,0}, m_annotationDocument->canvasSize()});
+        selectionEditor->setDevicePixelRatio(image.devicePixelRatio());
 
         auto remember = Settings::rememberLastRectangularRegion();
         if (remember == Settings::Never) {
@@ -434,7 +427,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             // This QImage constructor only works with local files or Qt resource file names.
             QImage existingImage(existingLocalFile);
             m_annotationDocument->clearAnnotations();
-            m_annotationDocument->setCanvasImages({existingImage});
+            m_annotationDocument->setImage(existingImage);
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
             return;

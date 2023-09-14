@@ -6,8 +6,6 @@
 
 #pragma once
 
-#include "CanvasImage.h"
-
 #include <QColor>
 #include <QFont>
 #include <QImage>
@@ -78,20 +76,15 @@ public:
     void cropCanvas(const QRectF &cropRect);
     QSizeF canvasSize() const;
 
-    void setCanvasImages(const QVector<CanvasImage> &canvasImages);
-    QVector<CanvasImage> canvasImages() const;
-    void clearImages();
+    void setImage(const QImage &image);
 
     void clearAnnotations();
 
     /**
-     * Canvas size in raw pixels
+     * Image size in raw pixels
      */
     QSizeF imageSize() const;
 
-    /**
-     * The highest device pixel ratio of all CanvasImages.
-     */
     qreal imageDpr() const;
 
     // True when there is an edit action in the undo stack and it is invalid.
@@ -136,12 +129,10 @@ private:
     AnnotationTool *m_tool;
     SelectedActionWrapper *m_selectedActionWrapper;
 
-    QSizeF m_canvasSize = {0, 0}; // same as a default QRectF or QQuickItem
-    QSizeF m_imageSize = {0, 0};
-    qreal m_imageDpr = 1;
+    QRectF m_canvasRect;
+    QImage m_image;
     QVector<EditAction *> m_undoStack;
     QVector<EditAction *> m_redoStack;
-    QVector<CanvasImage> m_canvasImages;
 };
 
 /**

@@ -48,7 +48,7 @@ private:
     QImage getToplevelImage(QRect rect, bool blendPointer);
     QImage getWindowImage(xcb_window_t window, bool blendPointer);
 
-    void grabAllScreens(bool includePointer);
+    void grabAllScreens(bool includePointer, bool crop = false);
     void grabCurrentScreen(bool includePointer);
     void grabApplicationWindow(xcb_window_t window, bool includePointer, bool includeDecorations);
     void grabActiveWindow(bool includePointer, bool includeDecorations);

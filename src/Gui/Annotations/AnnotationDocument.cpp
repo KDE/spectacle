@@ -7,6 +7,7 @@
 #include "AnnotationDocument.h"
 #include "EditAction.h"
 #include "EffectUtils.h"
+#include "Geometry.h"
 #include "settings.h"
 
 #include <QGuiApplication>
@@ -17,6 +18,8 @@
 #include <QScreen>
 #include <cmath>
 #include <memory>
+
+using G = Geometry;
 
 static AnnotationTool::Options optionsForType(AnnotationDocument::EditActionType type)
 {
@@ -824,7 +827,6 @@ AnnotationDocument::~AnnotationDocument()
     m_undoStack.clear();
     qDeleteAll(m_redoStack);
     m_redoStack.clear();
-    clearImages();
 }
 
 AnnotationTool *AnnotationDocument::tool() const
@@ -840,13 +842,16 @@ SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
 void AnnotationDocument::clear()
 {
     clearAnnotations();
-    clearImages();
+    setImage({});
 }
 
 void AnnotationDocument::cropCanvas(const QRectF &cropRect)
 {
+    if (cropRect == m_canvasRect) {
+        return;
+    }
+
     QVector<EditAction *> filteredUndo;
-    QVector<EditAction *> filteredRedo;
     for (auto *ea : std::as_const(m_undoStack)) {
         if (ea->visualGeometry().intersects(cropRect)) {
             ea->translate(-cropRect.topLeft());
@@ -860,6 +865,7 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     }
     m_undoStack = filteredUndo;
 
+    QVector<EditAction *> filteredRedo;
     for (auto *ea : std::as_const(m_redoStack)) {
         if (ea->visualGeometry().intersects(cropRect)) {
             ea->translate(-cropRect.topLeft());
@@ -870,11 +876,7 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     }
     m_redoStack = filteredRedo;
 
-    for (auto &img : m_canvasImages) {
-        img.rect.setTopLeft(img.rect.topLeft() - cropRect.topLeft());
-    }
-
-    m_canvasSize = cropRect.size();
+    setImage(m_image.copy(G::rectScaled(cropRect, imageDpr()).toAlignedRect()));
 
     Q_EMIT canvasSizeChanged();
     Q_EMIT undoStackDepthChanged();
@@ -884,21 +886,13 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
 
 QSizeF AnnotationDocument::canvasSize() const
 {
-    return m_canvasSize;
+    return m_canvasRect.size();
 }
 
-void AnnotationDocument::setCanvasImages(const QVector<CanvasImage> &canvasImages)
+void AnnotationDocument::setImage(const QImage &image)
 {
-    m_canvasImages = canvasImages;
-
-    QRectF rect;
-    m_imageDpr = 0;
-    for (const auto &img : qAsConst(m_canvasImages)) {
-        rect = rect.united(img.rect);
-        m_imageDpr = qMax(img.image.devicePixelRatio(), m_imageDpr);
-    }
-    m_canvasSize = rect.size();
-    m_imageSize = m_canvasSize * m_imageDpr;
+    m_image = image;
+    m_canvasRect = {{0, 0}, QSizeF(image.size()) / image.devicePixelRatio()};
 
     Q_EMIT canvasSizeChanged();
     Q_EMIT imageSizeChanged();
@@ -906,28 +900,14 @@ void AnnotationDocument::setCanvasImages(const QVector<CanvasImage> &canvasImage
     Q_EMIT repaintNeeded();
 }
 
-QVector<CanvasImage> AnnotationDocument::canvasImages() const
-{
-    return m_canvasImages;
-}
-
 QSizeF AnnotationDocument::imageSize() const
 {
-    return m_imageSize;
+    return m_image.size();
 }
 
 qreal AnnotationDocument::imageDpr() const
 {
-    return m_imageDpr;
-}
-
-void AnnotationDocument::clearImages()
-{
-    m_canvasImages.clear();
-    m_canvasImages.squeeze();
-    m_canvasSize = {0, 0}; // same as a default QRectF or QQuickItem
-    Q_EMIT canvasSizeChanged();
-    Q_EMIT repaintNeeded();
+    return m_image.devicePixelRatio();
 }
 
 void AnnotationDocument::clearAnnotations()
@@ -946,40 +926,20 @@ void AnnotationDocument::clearAnnotations()
     Q_EMIT repaintNeeded();
 }
 
-inline QPointF zoomPoint(const QPointF &pos, qreal zoomFactor)
-{
-    return QPointF(pos.x() * zoomFactor, pos.y() * zoomFactor);
-}
-
-inline QSizeF zoomSize(const QSizeF &size, qreal zoomFactor)
-{
-    return QSizeF(size.width() * zoomFactor, size.height() * zoomFactor);
-}
-
-inline QRectF zoomRect(const QRectF &rect, qreal zoomFactor)
-{
-    return QRectF(rect.x() * zoomFactor, rect.y() * zoomFactor, rect.width() * zoomFactor, rect.height() * zoomFactor);
-}
-
 void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
 {
     static QList<EditAction *> stopAtAction = QList<EditAction *>();
     const qreal scale = painter->transform().m11();
 
     if (options.testFlag(RenderOption::Images)) {
-        for (const auto &img : qAsConst(m_canvasImages)) {
-            if (viewPort.intersects(img.rect)) {
-                auto point = img.rect.topLeft() - viewPort.topLeft();
-                if (zoomFactor == 1) {
-                    painter->drawImage(point.toPoint(), img.image);
-                } else {
-                    // More High quality scale down
-                    auto scaledImg = img.image.scaled(zoomSize(img.image.size(), zoomFactor).toSize(),
-                                                    Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-                    scaledImg.setDevicePixelRatio(img.image.devicePixelRatio());
-                    painter->drawImage(zoomPoint(point, zoomFactor).toPoint(), scaledImg);
-                }
-            }
+        auto imageRect = G::rectScaled(viewPort, imageDpr() / zoomFactor);
+        if (zoomFactor == 1) {
+            painter->drawImage({0, 0}, m_image, imageRect);
+        } else {
+            // More High quality scale down
+            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor,
+                                            Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            painter->drawImage({0, 0}, scaledImg, imageRect);
         }
     }
 
@@ -994,7 +954,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             return;
         }
 
-        if (!isActionVisible(ea, zoomRect(viewPort, 1 / zoomFactor))) {
+        if (!isActionVisible(ea, G::rectScaled(viewPort, 1 / zoomFactor))) {
             continue;
         }
 
@@ -1080,7 +1040,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
         case Blur: {
             auto *sa = static_cast<ShapeAction *>(ea);
             const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 2 * m_imageDpr;
+            const qreal factor = 2 * imageDpr();
             const qreal scale = 1.0 / factor;
             if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
                 stopAtAction << ea;
@@ -1091,7 +1051,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
                 sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
             }
             painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), scale * m_imageDpr).normalized());
+            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
             break;
         }
@@ -1107,7 +1067,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
                 stopAtAction.pop_back();
             }
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            painter->drawImage(targetRect, sa->backingStoreCache(), zoomRect(sa->geometry(), scale * m_imageDpr).normalized());
+            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
             break;
         }
         case Text: {
@@ -1138,9 +1098,8 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
 
 QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options) const
 {
-    QImage img(qRound(viewPort.width() * m_imageDpr), qRound(viewPort.height() * m_imageDpr), //
-               QImage::Format_ARGB32_Premultiplied);
-    img.setDevicePixelRatio(m_imageDpr);
+    QImage img((viewPort.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
+    img.setDevicePixelRatio(imageDpr());
     img.fill(Qt::transparent);
     QPainter p(&img);
     p.setRenderHint(QPainter::Antialiasing);
@@ -1155,7 +1114,7 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, Re
 
 QImage AnnotationDocument::renderToImage() const
 {
-    return renderToImage({{0,0}, m_canvasSize});
+    return renderToImage(m_canvasRect);
 }
 
 int AnnotationDocument::undoStackDepth() const

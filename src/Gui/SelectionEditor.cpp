@@ -6,8 +6,6 @@
 
 #include "SelectionEditor.h"
 
-#include "Annotations/AnnotationDocument.h"
-#include "SpectacleCore.h"
 #include "Selection.h"
 #include "Geometry.h"
 #include "settings.h"
@@ -378,11 +376,7 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
         selectionRect = d->screensRect;
     }
 
-    auto spectacleCore = SpectacleCore::instance();
-    auto annotationDocument = spectacleCore->annotationDocument();
-    QImage image = annotationDocument->renderToImage(selectionRect, 1, AnnotationDocument::RenderOption::Images);
-    annotationDocument->cropCanvas(selectionRect);
-    Q_EMIT spectacleCore->grabDone(image, actions);
+    Q_EMIT accepted(selectionRect, actions);
     return true;
 }
 
