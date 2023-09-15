@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-14 01:54+0000\n"
+"POT-Creation-Date: 2023-09-15 01:53+0000\n"
 "PO-Revision-Date: 2023-09-13 21:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -248,7 +248,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "Ay (yerelleştirilmiş kısa ad)"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -256,7 +256,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "Ay (yerelleştirilmiş uzun ad)"
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -1299,7 +1299,7 @@ msgstr "Görsel paylaşırken bir hata oluştu: %1"
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Ekran Görüntüsü Al:"
+msgstr "Ekran görüntüsü al:"
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
@@ -1342,7 +1342,7 @@ msgstr "Çift tık"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
-msgstr "Gir"
+msgstr "Giriş"
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
@@ -1526,12 +1526,12 @@ msgstr "İmleç Altındaki Pencereyi Yakala"
 msgid "Launch Spectacle without capturing"
 msgstr "Deklanşör'ü yakalama yapmadan başlat"
 
-#: src/SpectacleCore.cpp:637
+#: src/SpectacleCore.cpp:630
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekran görüntüsü iptal edildi veya başarılı olmadı"
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:675
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1540,112 +1540,29 @@ msgstr ""
 "Bir ekran görüntüsü '%2' konumuna '%1' olarak kaydedildi ve ekran "
 "görüntüsünün dosya yolu panoya kaydedildi."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:679
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Bir ekran görüntüsü Resimler klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:689
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Bir ekran görüntüsü '%2' klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:686
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Bir ekran görüntüsü panoya kopyalandı."
 
-#: src/SpectacleCore.cpp:698
+#: src/SpectacleCore.cpp:691
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aç"
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:696
 #, kde-format
 msgid "Annotate"
 msgstr "Bilgi Notu"
-
-#~ msgid "New screen recording"
-#~ msgstr "Yeni Ekran Kaydı"
-
-#~ msgid "On Click"
-#~ msgstr "Tıklama ile"
-
-#~ msgid "Take a New Screenshot"
-#~ msgstr "Yeni Ekran Görüntüsü Al"
-
-#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ msgstr ""
-#~ "Yalnızca geçerli açılır pencereyi yakala (menü, araç ipucu vb. benzeri).\n"
-
-#~ msgid "Full Screen (All Monitors)"
-#~ msgstr "Tam Ekran (Tüm Ekranlar)"
-
-#~ msgid "Full Screen (All Monitors, scaled)"
-#~ msgstr "Tam ekran (tüm monitörler, ölçeklendirilmiş)"
-
-#~ msgid "Image Size: %1x%2 pixels"
-#~ msgstr "Görsel Boyutu: %1x%2 piksel"
-
-#~ msgid "Change Spectacle's settings."
-#~ msgstr "Spectacle ayarlarını değiştir."
-
-#~ msgid "Add annotation to the screenshot"
-#~ msgstr "Ekran görüntüsüne açıklama ekleyin"
-
-#~ msgid "Tools"
-#~ msgstr "Araçlar"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Görseli Panoya Kopyala"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "Konumu Panoya Kopyala"
-
-#~ msgid "Ready to take a screenshot"
-#~ msgstr "Ekran görüntüsü almaya hazır"
-
-#~ msgctxt "@action:button"
-#~ msgid "Annotate"
-#~ msgstr "Bilgi Notu Ekle"
-
-#~ msgid "Area:"
-#~ msgstr "Bölge:"
-
-#~ msgid "Cancel"
-#~ msgstr "İptal"
-
-#~ msgid "The last used copy mode"
-#~ msgstr "Son kullanılan kopyalama kipi"
-
-#~ msgid ""
-#~ "Click and drag to draw a selection rectangle,\n"
-#~ "or press Esc to quit"
-#~ msgstr ""
-#~ "Bir seçim dikdörtgeni çizmek için tıklayın ve\n"
-#~ " sürükleyin veya çıkmak için Esc düğmesine basın"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
-
-#~ msgctxt "The entire screen area was captured, heading"
-#~ msgid "Full Screen Captured"
-#~ msgstr "Tam Ekran Yakalandı"
-
-#~ msgctxt "The current screen was captured, heading"
-#~ msgid "Current Screen Captured"
-#~ msgstr "Geçerli Ekran Yakalandı"
-
-#~ msgctxt "The active window was captured, heading"
-#~ msgid "Active Window Captured"
-#~ msgstr "Etkin Pencere Yakalandı"
-
-#~ msgctxt "The window under the mouse was captured, heading"
-#~ msgid "Window Under Cursor Captured"
-#~ msgstr "İmleç Altındaki Pencere Yakalandı"
-
-#~ msgctxt "A rectangular region was captured, heading"
-#~ msgid "Rectangular Region Captured"
-#~ msgstr "Dikdörtgen Bölge Yakalandı"
