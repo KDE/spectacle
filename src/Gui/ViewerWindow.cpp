@@ -100,7 +100,6 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
         connect(rootItem, SIGNAL(minimumWidthChanged()), this, SLOT(updateMinimumSize()));
         connect(rootItem, SIGNAL(minimumHeightChanged()), this, SLOT(updateMinimumSize()));
     } else if (mode == Video) {
-        
     }
 }
 
@@ -201,7 +200,6 @@ void ViewerWindow::startDrag()
 
     SpectacleCore::instance()->syncExportImage();
     auto exportManager = ExportManager::instance();
-    const auto &image = exportManager->image();
 
     const QUrl tempFile = SpectacleCore::instance()->videoMode() ? SpectacleCore::instance()->currentVideo() : exportManager->tempSave();
     if (!tempFile.isValid()) {
@@ -227,8 +225,9 @@ void ViewerWindow::startDrag()
         auto iconSize = units.iconSizes()->large();
         dragHandler->setPixmap(QIcon::fromTheme(QStringLiteral("video-x-matroska")).pixmap(iconSize, iconSize));
     } else {
-        QSize size = image.size();
-        QPixmap pixmap = QPixmap::fromImage(image);
+        QImage image = exportManager->image();
+        const QSize size = image.size();
+        QPixmap pixmap = QPixmap::fromImage(std::move(image));
         // TODO: use the composed pixmap with annotations instead
         if (size.width() > 256 || size.height() > 256) {
             dragHandler->setPixmap(pixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation));

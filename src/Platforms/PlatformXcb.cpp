@@ -685,7 +685,7 @@ void PlatformXcb::grabTransientWithParent(bool includePointer, bool includeDecor
     shadowPainter.end();
 
     // we can finish up now
-    image = shadowImage;
+    image = std::move(shadowImage);
     if (includePointer) {
         auto topLeft = clipRegion.boundingRect().topLeft() - QPoint(20, 20);
         image = blendCursorImage(image, QRect(topLeft, QSize(image.width(), image.height())));
