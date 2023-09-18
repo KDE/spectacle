@@ -134,8 +134,12 @@ void ViewerWindow::updateMinimumSize()
 
 void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariantMap &properties)
 {
-    rootObject()->setProperty("inlineMessageSource", qmlFile);
-    rootObject()->setProperty("inlineMessageData", properties);
+    auto rootItem = rootObject();
+    if (!rootItem) {
+        return;
+    }
+    rootItem->setProperty("inlineMessageSource", qmlFile);
+    rootItem->setProperty("inlineMessageData", properties);
 }
 
 void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
