@@ -1,5 +1,6 @@
 # common - configure file and version definitions
 
+set(SPECTACLE_QML_URI "org.kde.spectacle.private")
 configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 
 # target
@@ -47,21 +48,19 @@ add_executable(spectacle
     Platforms/VideoPlatform.cpp
     Platforms/VideoPlatformWayland.cpp
     Platforms/screencasting.cpp
-
-    ../resources.qrc
-    )
+)
 
 if(XCB_FOUND)
     target_sources(spectacle PRIVATE Platforms/PlatformXcb.cpp Platforms/PlatformXcb.h)
 
-    target_link_libraries(spectacle
+    target_link_libraries(spectacle PRIVATE
         XCB::XFIXES
         XCB::IMAGE
         XCB::CURSOR
         XCB::UTIL
         XCB::RANDR
     )
-    target_link_libraries(spectacle Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
+    target_link_libraries(spectacle PRIVATE Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
 endif()
 
 qt6_generate_wayland_protocol_client_sources(spectacle FILES
@@ -69,36 +68,76 @@ qt6_generate_wayland_protocol_client_sources(spectacle FILES
 
 
 if(PURPOSE_FOUND)
-    target_link_libraries(spectacle KF${QT_MAJOR_VERSION}::PurposeWidgets)
+    target_link_libraries(spectacle PRIVATE KF${QT_MAJOR_VERSION}::PurposeWidgets)
 endif()
 
 ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/SaveOptions.ui)
 
-target_link_libraries(
-    spectacle
-        Qt::Concurrent
-        Qt::DBus
-        Qt::PrintSupport
-        Qt::Qml
-        Qt::Quick
-        Qt::QuickControls2
-        Qt::QuickTemplates2
-        Qt::GuiPrivate
-        Qt::WaylandClient
-        KF${QT_MAJOR_VERSION}::CoreAddons
-        KF${QT_MAJOR_VERSION}::DBusAddons
-        KF${QT_MAJOR_VERSION}::WidgetsAddons
-        KF${QT_MAJOR_VERSION}::Notifications
-        KF${QT_MAJOR_VERSION}::ConfigCore
-        KF${QT_MAJOR_VERSION}::I18n
-        KF${QT_MAJOR_VERSION}::KIOWidgets
-        KF${QT_MAJOR_VERSION}::WindowSystem
-        KF${QT_MAJOR_VERSION}::GlobalAccel
-        KF${QT_MAJOR_VERSION}::XmlGui
-        KF${QT_MAJOR_VERSION}::GuiAddons
-        KF${QT_MAJOR_VERSION}::Kirigami2
-        K::KPipeWireRecord
-        Wayland::Client
+target_link_libraries(spectacle PRIVATE
+    Qt::Concurrent
+    Qt::DBus
+    Qt::PrintSupport
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::QuickTemplates2
+    Qt::GuiPrivate
+    Qt::WaylandClient
+    KF${QT_MAJOR_VERSION}::CoreAddons
+    KF${QT_MAJOR_VERSION}::DBusAddons
+    KF${QT_MAJOR_VERSION}::WidgetsAddons
+    KF${QT_MAJOR_VERSION}::Notifications
+    KF${QT_MAJOR_VERSION}::ConfigCore
+    KF${QT_MAJOR_VERSION}::I18n
+    KF${QT_MAJOR_VERSION}::KIOWidgets
+    KF${QT_MAJOR_VERSION}::WindowSystem
+    KF${QT_MAJOR_VERSION}::GlobalAccel
+    KF${QT_MAJOR_VERSION}::XmlGui
+    KF${QT_MAJOR_VERSION}::GuiAddons
+    KF${QT_MAJOR_VERSION}::Kirigami2
+    K::KPipeWireRecord
+    Wayland::Client
+)
+
+qt_add_qml_module(spectacle
+    URI ${SPECTACLE_QML_URI}
+    QML_FILES
+    Gui/AnimatedLoader.qml
+    Gui/AnnotationOptionsToolBarContents.qml
+    Gui/Annotations/AnnotationEditor.qml
+    Gui/Annotations/HoverOutline.qml
+    Gui/Annotations/ResizeHandles.qml
+    Gui/Annotations/SelectionBackground.qml
+    Gui/Annotations/TextTool.qml
+    Gui/AnnotationsToolBarContents.qml
+    Gui/ButtonGrid.qml
+    Gui/CaptureModeButtonsColumn.qml
+    Gui/CaptureOptions.qml
+    Gui/CaptureSettingsColumn.qml
+    Gui/CopiedMessage.qml
+    Gui/DelaySpinBox.qml
+    Gui/DialogPage.qml
+    Gui/EmptyPage.qml
+    Gui/FloatingBackground.qml
+    Gui/FloatingToolBar.qml
+    Gui/ImageCaptureOverlay.qml
+    Gui/ImageView.qml
+    Gui/InlineMessage.qml
+    Gui/Magnifier.qml
+    Gui/MainToolBarContents.qml
+    Gui/QmlUtils.qml
+    Gui/RecordOptions.qml
+    Gui/RecordingView.qml
+    Gui/SavedAndCopiedMessage.qml
+    Gui/SavedAndLocationCopied.qml
+    Gui/SavedMessage.qml
+    Gui/ScreenshotFailedMessage.qml
+    Gui/ScreenshotView.qml
+    Gui/ShareErrorMessage.qml
+    Gui/SharedMessage.qml
+    Gui/ShortcutsTextBox.qml
+    Gui/SizeLabel.qml
+    Gui/UndoRedoGroup.qml
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

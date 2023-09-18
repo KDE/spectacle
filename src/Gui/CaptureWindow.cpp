@@ -112,7 +112,7 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
             // the parent and window be null in Component.onCompleted
             {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
         };
-        setSource(QUrl(QStringLiteral("qrc:/src/Gui/ImageCaptureOverlay.qml")), initialProperties);
+        setSource(QUrl(QStringLiteral("src/Gui/ImageCaptureOverlay.qml")), initialProperties);
     } else if (mode == Video) {
         
     }

@@ -24,8 +24,6 @@
 #include <array>
 #include <memory>
 
-static const auto QML_URI_PRIVATE = "org.kde.spectacle.private";
-
 class SpectacleCore : public QObject
 {
     Q_OBJECT

@@ -37,7 +37,6 @@ class Selection : public QObject
     Q_PROPERTY(QSizeF size READ sizeF NOTIFY sizeChanged FINAL)
 
     Q_PROPERTY(bool empty READ isEmpty NOTIFY emptyChanged() FINAL)
-    QML_ANONYMOUS
 
 public:
     explicit Selection(SelectionEditor *editor);

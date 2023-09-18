@@ -828,22 +828,22 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         m_engine = std::make_unique<QQmlEngine>(this);
         m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine.get()));
 
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "SpectacleCore", this);
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Platform", m_platform.get());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Settings", Settings::self());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "CaptureModeModel", m_captureModeModel.get());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "SelectionEditor", SelectionEditor::instance());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Selection", SelectionEditor::instance()->selection());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "Geometry", Geometry::instance());
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "G", Geometry::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SpectacleCore", this);
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Platform", m_platform.get());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Settings", Settings::self());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "CaptureModeModel", m_captureModeModel.get());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SelectionEditor", SelectionEditor::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Selection", SelectionEditor::instance()->selection());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Geometry", Geometry::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "G", Geometry::instance());
 
-        qmlRegisterSingletonInstance(QML_URI_PRIVATE, 1, 0, "AnnotationDocument", m_annotationDocument.get());
-        qmlRegisterUncreatableType<AnnotationTool>(QML_URI_PRIVATE, 1, 0, "AnnotationTool",
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "AnnotationDocument", m_annotationDocument.get());
+        qmlRegisterUncreatableType<AnnotationTool>(SPECTACLE_QML_URI, 1, 0, "AnnotationTool",
                                                    QStringLiteral("Use AnnotationDocument.tool"));
-        qmlRegisterUncreatableType<SelectedActionWrapper>(QML_URI_PRIVATE, 1, 0, "SelectedAction",
+        qmlRegisterUncreatableType<SelectedActionWrapper>(SPECTACLE_QML_URI, 1, 0, "SelectedAction",
                                                           QStringLiteral("Use AnnotationDocument.selectedAction"));
-        qmlRegisterType<AnnotationViewport>(QML_URI_PRIVATE, 1, 0, "AnnotationViewport");
-        qmlRegisterUncreatableType<QScreen>(QML_URI_PRIVATE, 1, 0, "QScreen",
+        qmlRegisterType<AnnotationViewport>(SPECTACLE_QML_URI, 1, 0, "AnnotationViewport");
+        qmlRegisterUncreatableType<QScreen>(SPECTACLE_QML_URI, 1, 0, "QScreen",
                                             QStringLiteral("Only created by Qt"));
     }
     return m_engine.get();
