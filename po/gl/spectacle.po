@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
+# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-11 02:23+0000\n"
-"PO-Revision-Date: 2023-08-06 05:12+0200\n"
+"PO-Revision-Date: 2023-09-17 16:19+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: desktop/MigrateShortcuts.cpp:72 src/ShortcutActions.cpp:33
 #, kde-format
@@ -100,7 +100,7 @@ msgid ""
 "menus"
 msgstr ""
 "Capturar a xanela que está baixo o cursor, incluíndo as xanelas das que "
-"dependen as xanelas emerxentes"
+"dependen os menús emerxentes"
 
 #: src/CommandLineOptions.h:36
 #, kde-format
@@ -109,7 +109,7 @@ msgid ""
 "menus"
 msgstr ""
 "Capturar a xanela que está baixo o cursor, excluíndo as xanelas das que "
-"dependen as xanelas emerxentes"
+"dependen os menús emerxentes"
 
 #: src/CommandLineOptions.h:40
 #, kde-format
@@ -124,12 +124,12 @@ msgstr "Iniciar Spectacle sen facer unha captura de pantalla"
 #: src/CommandLineOptions.h:48
 #, kde-format
 msgid "Start in GUI mode (default)"
-msgstr "Iniciar en modo gráfico (predeterminado)"
+msgstr "Iniciar en modo GUI (predeterminado)"
 
 #: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Facer unha captura de pantalla e saír sen amosar a interface gráfica"
+msgstr "Facer unha captura de pantalla e saír sen amosar a GUI"
 
 #: src/CommandLineOptions.h:56
 #, kde-format
@@ -182,9 +182,7 @@ msgstr ""
 #: src/CommandLineOptions.h:86
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr ""
-"Inicia unha nova instancia da interface gráfica de Spectacle sen rexistrala "
-"en D-Bus"
+msgstr "Inicia unha nova instancia da GUI de Spectacle sen rexistrala en D-Bus"
 
 #: src/CommandLineOptions.h:90
 #, kde-format
@@ -214,14 +212,14 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Non se pode gardar a captura de pantalla porque a creación do directorio "
+"Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "fallou:<nl/><filename>%1</filename>"
 
 #: src/ExportManager.cpp:351
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
-"Non se pode gardar a captura de pantalla. Produciuse un erro ao gardar o "
+"Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro."
 
 #: src/ExportManager.cpp:371
@@ -231,38 +229,40 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Non se pode gardar a captura de pantalla porque a creación do directorio "
+"Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "remoto fallou:<nl/><filename>%1</filename>"
 
 #: src/ExportManager.cpp:382 src/ExportManager.cpp:432
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
-"Non se pode gardar a captura de pantalla. Produciuse un erro ao gardar o "
+"Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro temporal local."
 
 #: src/ExportManager.cpp:390
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
-"Non se pode gardar a imaxe. Non se puido enviar o ficheiro ao lugar remoto."
+"Non é posíbel gardar a imaxe. Non se puido enviar o ficheiro ao lugar remoto."
 
 #: src/ExportManager.cpp:439
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
-"Non se pode gardar a captura de pantalla. O nome do ficheiro no que gardala "
-"é incorrecto."
+"Non é posíbel gardar a captura de pantalla. O nome do ficheiro no que "
+"gardala é incorrecto."
 
 #: src/ExportManager.cpp:483
 #, kde-format
 msgid "Cannot save an empty screenshot image."
-msgstr "Non se pode gardar unha captura de pantalla baleira."
+msgstr "Non é posíbel gardar unha captura de pantalla baleira."
 
 #: src/ExportManager.cpp:578
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
-msgstr "Fallou a impresión. Non se puido inicializar a impresora."
+msgstr ""
+"Produciuse un erro ao imprimir. Produciuse un erro ao inicializar a "
+"impresora."
 
 #: src/ExportManager.cpp:594
 #, kde-format
@@ -515,9 +515,10 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Capturar só a xanela emerxente actual (como un menú, unha axuda, etc.) ao "
-"facer unha captura de pantalla dunha xanela. Se desactiva esta opción, a "
-"xanela emerxente captúrase xunto coa xanela da que depende."
+"Capturar só a xanela emerxente actual (como un menú, unha indicación "
+"emerxente, etc.) ao facer unha captura de pantalla dunha xanela. Se "
+"desactiva esta opción, a xanela emerxente captúrase xunto coa xanela da que "
+"depende."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
 #, kde-format
@@ -643,7 +644,7 @@ msgstr "Exportar"
 #: src/Gui/MainToolBarContents.qml:85
 #, kde-format
 msgid "Show Annotation Tools"
-msgstr "Mostras as ferramentas de anotación"
+msgstr "Amosar as ferramentas de anotación"
 
 #: src/Gui/MainToolBarContents.qml:110
 #, kde-format
@@ -685,7 +686,8 @@ msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
-"Capturar só a xanela emerxente actual (como un menú, unha axuda, etc.).\n"
+"Capturar só a xanela emerxente actual (como un menú, unha indicación "
+"emerxente, etc.).\n"
 "Se desactiva esta opción, a xanela emerxente captúrase xunto coa xanela da "
 "que depende."
 
@@ -775,13 +777,14 @@ msgstr "A captura gardouse como <a href=\"%1\">%2</a>"
 msgid "Open Containing Folder"
 msgstr "Abrir o cartafol contedor"
 
+# skip-rule: trasno-bug-report_reverse
 #: src/Gui/ScreenshotFailedMessage.qml:12
 #, kde-format
 msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"Non se puido facer unha captura de pantalla. Informe deste fallo aquí: <a "
+"Non foi posíbel facer unha captura de pantalla. Informe deste fallo aquí: <a "
 "href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">crear un "
 "informe de fallo de Spectacle</a>"
 
@@ -837,7 +840,7 @@ msgstr "Copiar a imaxe no portapapeis"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Copiar a ruta do ficheiro no portapapeis"
+msgstr "Copiar a localización do ficheiro no portapapeis"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
@@ -1049,7 +1052,7 @@ msgstr "Se capturar a pantalla tras seleccionar a rexión e soltar o rato"
 #: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Se mostras as instrucións de captura na selección de zona"
+msgstr "Se amosar as instrucións de captura na selección de zona."
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:64
@@ -1061,7 +1064,7 @@ msgstr "Lembrar a última rexión rectangular"
 #: src/Gui/SettingsDialog/spectacle.kcfg:75
 #, kde-format
 msgid "The last used region the user selected"
-msgstr "A última rexión que o usuario seleccionou"
+msgstr "A última rexión que a usuaria seleccionou"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:81
