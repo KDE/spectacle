@@ -7,6 +7,7 @@
 
 #include "ViewerWindow.h"
 
+#include "Config.h"
 #include "SpectacleCore.h"
 #include "spectacle_gui_debug.h"
 
@@ -18,6 +19,8 @@
 #include <QDrag>
 #include <QFile>
 #include <QMimeData>
+
+using namespace Qt::StringLiterals;
 
 ViewerWindow *ViewerWindow::s_viewerWindowInstance = nullptr;
 
@@ -65,7 +68,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
             // the parent and window be null in Component.onCompleted
             {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
         };
-        setSource(QUrl(QStringLiteral("src/Gui/DialogPage.qml")), initialProperties);
+        setSource(QUrl("%1/Gui/DialogPage.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
         if (!rootItem) {
             return;
@@ -91,7 +94,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
             // the parent and window be null in Component.onCompleted
             {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
         };
-        setSource(QUrl(QStringLiteral("src/Gui/ImageView.qml")), initialProperties);
+        setSource(QUrl("%1/Gui/ImageView.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
         if (!rootItem) {
             return;
@@ -144,7 +147,7 @@ void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariantMap &
 
 void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("src/Gui/SavedMessage.qml"),
+    showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
                       {
                           {QLatin1String("messageArgument"), messageArgument},
                           {QLatin1String("video"), false},
@@ -153,7 +156,7 @@ void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
 
 void ViewerWindow::showSavedVideoMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("src/Gui/SavedMessage.qml"),
+    showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
                       {
                           {QLatin1String("messageArgument"), messageArgument},
                           {QLatin1String("video"), true},
@@ -162,22 +165,24 @@ void ViewerWindow::showSavedVideoMessage(const QUrl &messageArgument)
 
 void ViewerWindow::showSavedAndCopiedMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("src/Gui/SavedAndCopiedMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
+    showInlineMessage("%1/Gui/SavedAndCopiedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                      {{QLatin1String("messageArgument"), messageArgument}});
 }
 
 void ViewerWindow::showSavedAndLocationCopiedMessage(const QUrl &messageArgument)
 {
-    showInlineMessage(QStringLiteral("src/Gui/SavedAndLocationCopied.qml"), {{QLatin1String("messageArgument"), messageArgument}});
+    showInlineMessage("%1/Gui/SavedAndLocationCopied.qml"_L1.arg(SPECTACLE_QML_PATH),
+                      {{QLatin1String("messageArgument"), messageArgument}});
 }
 
 void ViewerWindow::showCopiedMessage()
 {
-    showInlineMessage(QStringLiteral("src/Gui/CopiedMessage.qml"), {});
+    showInlineMessage("%1/Gui/CopiedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {});
 }
 
 void ViewerWindow::showScreenshotFailedMessage()
 {
-    showInlineMessage(QStringLiteral("src/Gui/ScreenshotFailedMessage.qml"), {});
+    showInlineMessage("%1/Gui/ScreenshotFailedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {});
 }
 
 void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageArgument)
@@ -188,9 +193,11 @@ void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageA
     }
 
     if (errorCode) {
-        showInlineMessage(QStringLiteral("src/Gui/ShareErrorMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
+        showInlineMessage("%1/Gui/ShareErrorMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                          {{QLatin1String("messageArgument"), messageArgument}});
     } else {
-        showInlineMessage(QStringLiteral("src/Gui/SharedMessage.qml"), {{QLatin1String("messageArgument"), messageArgument}});
+        showInlineMessage("%1/Gui/SharedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                          {{QLatin1String("messageArgument"), messageArgument}});
         if (!messageArgument.isEmpty()) {
             QApplication::clipboard()->setText(messageArgument);
         }

@@ -13,4 +13,7 @@
 /* Set the QML module URI from CMake */
 #cmakedefine SPECTACLE_QML_URI "@SPECTACLE_QML_URI@"
 
+/* Set the QML module URI from CMake */
+static const auto SPECTACLE_QML_PATH = u"@SPECTACLE_QML_PATH@";
+
 #endif

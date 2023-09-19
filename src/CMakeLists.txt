@@ -1,6 +1,7 @@
 # common - configure file and version definitions
 
 set(SPECTACLE_QML_URI "org.kde.spectacle.private")
+set(SPECTACLE_QML_PATH "qrc:/qt/qml/org/kde/spectacle/private")
 configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 
 # target

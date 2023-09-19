@@ -51,6 +51,7 @@ find_package(
         Test
         WaylandClient
 )
+qt_policy(SET QTP0001 NEW)
 
 find_package(
     KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED

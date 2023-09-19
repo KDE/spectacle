@@ -15,6 +15,8 @@
 
 #include <QScreen>
 
+using namespace Qt::StringLiterals;
+
 QVector<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
 
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
@@ -112,7 +114,8 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
             // the parent and window be null in Component.onCompleted
             {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
         };
-        setSource(QUrl(QStringLiteral("src/Gui/ImageCaptureOverlay.qml")), initialProperties);
+        setSource(QUrl("%1/Gui/ImageCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
+                  initialProperties);
     } else if (mode == Video) {
         
     }
