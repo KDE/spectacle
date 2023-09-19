@@ -100,6 +100,10 @@ target_link_libraries(spectacle PRIVATE
     Wayland::Client
 )
 
+set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
+  QT_QML_SINGLETON_TYPE TRUE
+)
+
 qt_add_qml_module(spectacle
     URI ${SPECTACLE_QML_URI}
     QML_FILES
