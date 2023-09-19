@@ -44,8 +44,6 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     connect(selectionEditor, &SelectionEditor::screensRectChanged, this, [this]() {
         syncGeometryWithScreen();
     });
-    connect(this, &CaptureWindow::devicePixelRatioChanged,
-            selectionEditor, &SelectionEditor::devicePixelRatioChanged);
 
     // set up QML
     setMode(mode); // sets source and other stuff based on mode.
@@ -55,13 +53,10 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     // follow a screen
     connect(screen, &QScreen::geometryChanged, this, &CaptureWindow::syncGeometryWithScreen);
-    connect(screen, &QScreen::physicalDotsPerInchChanged, this, [this]() {
-        Q_EMIT devicePixelRatioChanged(m_screenToFollow->devicePixelRatio());
-        syncGeometryWithScreen();
-    });
+    connect(screen, &QScreen::physicalDotsPerInchChanged,
+            this, &CaptureWindow::syncGeometryWithScreen);
     syncGeometryWithScreen();
     Q_EMIT screenToFollowChanged();
-    Q_EMIT devicePixelRatioChanged(m_screenToFollow->devicePixelRatio());
 
     // sync visibility
     connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){

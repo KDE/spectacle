@@ -41,7 +41,6 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void screenToFollowChanged();
-    void devicePixelRatioChanged(qreal devicePixelRatio);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
