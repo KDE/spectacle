@@ -39,18 +39,6 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     this->setColor(Qt::transparent);
 
-    // setup selectionEditor
-    auto selectionEditor = SelectionEditor::instance();
-    connect(selectionEditor, &SelectionEditor::screensRectChanged, this, [this]() {
-        syncGeometryWithScreen();
-    });
-
-    // set up QML
-    setMode(mode); // sets source and other stuff based on mode.
-    if (auto rootItem = rootObject()) {
-        rootItem->installEventFilter(selectionEditor);
-    }
-
     // follow a screen
     connect(screen, &QScreen::geometryChanged, this, &CaptureWindow::syncGeometryWithScreen);
     connect(screen, &QScreen::physicalDotsPerInchChanged,
@@ -72,6 +60,18 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
         }
         s_synchronizingVisibility = false;
     });
+
+    // setup selectionEditor
+    auto selectionEditor = SelectionEditor::instance();
+    connect(selectionEditor, &SelectionEditor::screensRectChanged, this, [this]() {
+        syncGeometryWithScreen();
+    });
+
+    // set up QML
+    setMode(mode); // sets source and other stuff based on mode.
+    if (auto rootItem = rootObject()) {
+        rootItem->installEventFilter(selectionEditor);
+    }
 }
 
 CaptureWindow::~CaptureWindow()
