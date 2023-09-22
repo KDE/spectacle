@@ -14,7 +14,7 @@ class QScreen;
 #include <memory>
 
 class ScreenShotSource2;
-class ScreenShotSourceArea2;
+class ScreenShotSourceWorkspace2;
 
 /**
  * The PlatformKWin class uses the org.kde.KWin.ScreenShot2 dbus interface
@@ -53,12 +53,13 @@ private:
 
     void takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags);
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
-    void takeScreenShotCroppable(ScreenShotFlags flags);
     void takeScreenShotActiveWindow(ScreenShotFlags flags);
     void takeScreenShotActiveScreen(ScreenShotFlags flags);
+    void takeScreenShotWorkspace(ScreenShotFlags flags);
+    void takeScreenShotCroppable(ScreenShotFlags flags);
 
     void trackSource(ScreenShotSource2 *source);
-    void trackCroppableSource(ScreenShotSourceArea2 *source);
+    void trackCroppableSource(ScreenShotSourceWorkspace2 *source);
 
     int m_apiVersion = 1;
     GrabModes m_grabModes;
@@ -150,6 +151,18 @@ class ScreenShotSourceActiveScreen2 final : public ScreenShotSource2
 
 public:
     ScreenShotSourceActiveScreen2(PlatformKWin::ScreenShotFlags flags);
+};
+
+/**
+ * The ScreenShotSourceWorkspace2 class provides a convenient way to take a screenshot
+ * of the whole workspace. This uses the org.kde.KWin.ScreenShot2 dbus interface.
+ */
+class ScreenShotSourceWorkspace2 final : public ScreenShotSource2
+{
+    Q_OBJECT
+
+public:
+    ScreenShotSourceWorkspace2(PlatformKWin::ScreenShotFlags flags);
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(PlatformKWin::ScreenShotFlags)

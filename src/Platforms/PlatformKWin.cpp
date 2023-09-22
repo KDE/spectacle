@@ -229,6 +229,11 @@ ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(PlatformKWin::Scree
 {
 }
 
+ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(PlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource2(QStringLiteral("CaptureWorkspace"), screenShotFlagsToVardict(flags))
+{
+}
+
 std::unique_ptr<PlatformKWin> PlatformKWin::create()
 {
     QDBusConnectionInterface *interface = QDBusConnection::sessionBus().interface();
@@ -285,17 +290,6 @@ Platform::ShutterModes PlatformKWin::supportedShutterModes() const
     return ShutterMode::Immediate;
 }
 
-static QRect workArea()
-{
-    const QList<QScreen *> screens = QGuiApplication::screens();
-
-    auto accumulateFunc = [](const QRect &accumulator, const QScreen *screen) {
-        return accumulator.united(screen->geometry());
-    };
-
-    return std::accumulate(screens.begin(), screens.end(), QRect(), accumulateFunc);
-}
-
 void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
 {
     ScreenShotFlags flags = ScreenShotFlag::NativeSize;
@@ -309,7 +303,7 @@ void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, b
 
     switch (grabMode) {
     case GrabMode::AllScreens:
-        takeScreenShotArea(workArea(), flags);
+        takeScreenShotWorkspace(flags);
         break;
     case GrabMode::CurrentScreen:
         if (m_apiVersion >= 2) {
@@ -326,7 +320,7 @@ void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, b
         takeScreenShotInteractive(InteractiveKind::Window, flags);
         break;
     case GrabMode::AllScreensScaled:
-        takeScreenShotArea(workArea(), flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
+        takeScreenShotWorkspace(flags & ~ScreenShotFlags(ScreenShotFlag::NativeSize));
         break;
     case GrabMode::PerScreenImageNative:
         takeScreenShotCroppable(flags);
@@ -349,13 +343,13 @@ void PlatformKWin::trackSource(ScreenShotSource2 *source)
     });
 }
 
-void PlatformKWin::trackCroppableSource(ScreenShotSourceArea2 *source)
+void PlatformKWin::trackCroppableSource(ScreenShotSourceWorkspace2 *source)
 {
-    connect(source, &ScreenShotSourceArea2::finished, this, [this, source](const QImage &image) {
+    connect(source, &ScreenShotSourceWorkspace2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
         Q_EMIT newCroppableScreenshotTaken(image);
     });
-    connect(source, &ScreenShotSourceArea2::errorOccurred, this, [this, source]() {
+    connect(source, &ScreenShotSourceWorkspace2::errorOccurred, this, [this, source]() {
         source->deleteLater();
         Q_EMIT newScreenshotFailed();
     });
@@ -381,9 +375,14 @@ void PlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
     trackSource(new ScreenShotSourceActiveScreen2(flags));
 }
 
+void PlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
+{
+    trackSource(new ScreenShotSourceWorkspace2(flags));
+}
+
 void PlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
-    trackCroppableSource(new ScreenShotSourceArea2(workArea(), flags));
+    trackCroppableSource(new ScreenShotSourceWorkspace2(flags));
 }
 
 #include "moc_PlatformKWin.cpp"
