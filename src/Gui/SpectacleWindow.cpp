@@ -11,6 +11,9 @@
 #include "ExportManager.h"
 #include "SpectacleCore.h"
 #include "Geometry.h"
+#include "Gui/ExportMenu.h"
+#include "Gui/HelpMenu.h"
+#include "Gui/OptionsMenu.h"
 #include "spectacle_gui_debug.h"
 
 #include <KIO/JobUiDelegateFactory>
@@ -39,22 +42,10 @@ bool SpectacleWindow::s_isAnnotating = false;
 
 SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     : QQuickView(engine, parent)
-    , m_exportMenu(new ExportMenu)
-    , m_optionsMenu(new OptionsMenu)
-    , m_helpMenu(new HelpMenu)
     , m_context(new QQmlContext(engine->rootContext(), this))
 {
     s_spectacleWindowInstances.append(this);
 
-    if (m_exportMenu->winId()) {
-        m_exportMenu->windowHandle()->setTransientParent(this);
-    }
-    if (m_optionsMenu->winId()) {
-        m_optionsMenu->windowHandle()->setTransientParent(this);
-    }
-    if (m_helpMenu->winId()) {
-        m_helpMenu->windowHandle()->setTransientParent(this);
-    }
     connect(engine, &QQmlEngine::quit, QCoreApplication::instance(), &QCoreApplication::quit, Qt::QueuedConnection);
     connect(this, &QQuickView::statusChanged, this, [](QQuickView::Status status){
         if (status == QQuickView::Error) {
@@ -107,21 +98,6 @@ qreal SpectacleWindow::logicalX() const
 qreal SpectacleWindow::logicalY() const
 {
     return G::mapFromPlatformValue(y(), devicePixelRatio());
-}
-
-ExportMenu *SpectacleWindow::exportMenu() const
-{
-    return m_exportMenu.get();
-}
-
-OptionsMenu *SpectacleWindow::optionsMenu() const
-{
-    return m_optionsMenu.get();
-}
-
-HelpMenu *SpectacleWindow::helpMenu() const
-{
-    return m_helpMenu.get();
 }
 
 bool SpectacleWindow::isAnnotating() const
@@ -295,12 +271,12 @@ void SpectacleWindow::copyLocation()
 void SpectacleWindow::showPrintDialog()
 {
     SpectacleCore::instance()->syncExportImage();
-    m_exportMenu->openPrintDialog();
+    ExportMenu::instance()->openPrintDialog();
 }
 
 void SpectacleWindow::showPreferencesDialog()
 {
-    m_optionsMenu->showPreferencesDialog();
+    OptionsMenu::instance()->showPreferencesDialog();
 }
 
 void SpectacleWindow::showFontDialog()
@@ -489,7 +465,7 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
         SpectacleCore::instance()->takeNewScreenshot();
     } else if (event->matches(QKeySequence::HelpContents)) {
         event->accept();
-        m_helpMenu->showAppHelp();
+        HelpMenu::instance()->showAppHelp();
     }
     m_pressedKeys = {};
 }

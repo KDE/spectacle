@@ -15,6 +15,14 @@
 #include <QStyle>
 #include <qnamespace.h>
 
+class OptionsMenuSingleton
+{
+public:
+    OptionsMenu self;
+};
+
+Q_GLOBAL_STATIC(OptionsMenuSingleton, privateOptionsMenuSelf)
+
 OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
     , captureModeSection(new QAction(this))
@@ -155,6 +163,11 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     delayAction->setDefaultWidget(delayWidget.get());
     delayAction->setEnabled(!captureOnClickAction->isChecked());
     addAction(delayAction.get());
+}
+
+OptionsMenu *OptionsMenu::instance()
+{
+    return &privateOptionsMenuSelf->self;
 }
 
 void OptionsMenu::showPreferencesDialog()

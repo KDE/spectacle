@@ -23,7 +23,7 @@ class ExportMenu : public SpectacleMenu
     Q_OBJECT
 
 public:
-    explicit ExportMenu(QWidget *parent = nullptr);
+    static ExportMenu *instance();
 
 public Q_SLOTS:
     void openPrintDialog();
@@ -32,6 +32,8 @@ Q_SIGNALS:
     void imageShared(int error, const QString &message);
 
 private:
+    explicit ExportMenu(QWidget *parent = nullptr);
+
     Q_SLOT void onImageChanged();
     Q_SLOT void openScreenshotsFolder();
 
@@ -44,6 +46,7 @@ private:
     bool mUpdatedImageAvailable;
     Purpose::Menu *mPurposeMenu = nullptr;
 #endif
+    friend class ExportMenuSingleton;
 };
 
 #endif // EXPORTMENU_H

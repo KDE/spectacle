@@ -310,9 +310,9 @@ MouseArea {
             }
             readonly property bool normallyVisible: {
                 let emptyHovered = root.containsMouse && Selection.empty
-                let menuVisible = contextWindow.exportMenu.visible
-                menuVisible |= contextWindow.optionsMenu.visible
-                menuVisible |= contextWindow.helpMenu.visible
+                let menuVisible = ExportMenu.visible
+                menuVisible |= OptionsMenu.visible
+                menuVisible |= HelpMenu.visible
                 let pressed = SelectionEditor.dragLocation || annotations.anyPressed
                 return (emptyHovered || !Selection.empty || menuVisible) && !pressed
             }

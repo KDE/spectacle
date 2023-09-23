@@ -30,25 +30,14 @@ void SpectacleMenu::setVisible(bool visible)
     Q_EMIT visibleChanged();
 }
 
-void SpectacleMenu::popup(const QPointF &globalPos)
-{
-    // Workaround same as plasma to have click anywhereto close the menu
-    QTimer::singleShot(0, this, [this, globalPos]() {
-        QQuickWindow *tp = qobject_cast<QQuickWindow *>(windowHandle()->transientParent());
-        if (tp->mouseGrabberItem()) {
-            tp->mouseGrabberItem()->ungrabMouse();
-        }
-        QMenu::popup(globalPos.toPoint());
-    });
-}
-
 void SpectacleMenu::popup(QQuickItem *item)
 {
-    if (!item) {
+    if (!item || !item->window()) {
         return;
     }
+    auto itemWindow = item->window();
     auto point = item->mapToGlobal({0, item->height()});
-    auto screenRect = item->window()->screen()->geometry();
+    auto screenRect = itemWindow->screen()->geometry();
     auto sizeHint = this->sizeHint();
     if (point.y() + sizeHint.height() > screenRect.bottom()) {
         point.setY(point.y() - item->height() - sizeHint.height());
@@ -56,7 +45,16 @@ void SpectacleMenu::popup(QQuickItem *item)
     if (point.x() + sizeHint.width() > screenRect.right()) {
         point.setX(point.x() - sizeHint.width() + item->width());
     }
-    popup(point);
+    if (winId()) {
+        windowHandle()->setTransientParent(itemWindow);
+    }
+    // Workaround same as plasma to have click anywhereto close the menu
+    QTimer::singleShot(0, this, [this, itemWindow, point]() {
+        if (itemWindow->mouseGrabberItem()) {
+            itemWindow->mouseGrabberItem()->ungrabMouse();
+        }
+        QMenu::popup(point.toPoint());
+    });
 }
 
 #include "moc_SpectacleMenu.cpp"

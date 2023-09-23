@@ -9,6 +9,7 @@
 
 #include "Config.h"
 #include "SpectacleCore.h"
+#include "Gui/ExportMenu.h"
 #include "spectacle_gui_debug.h"
 
 #include <KUrlMimeData>
@@ -33,7 +34,7 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
 
     m_context->setContextObject(this); // Must be before QML is initialized
 
-    connect(m_exportMenu.get(), &ExportMenu::imageShared, this, &ViewerWindow::showImageSharedMessage);
+    connect(ExportMenu::instance(), &ExportMenu::imageShared, this, &ViewerWindow::showImageSharedMessage);
 
     // set up QML
     setResizeMode(QQuickView::SizeRootObjectToView);

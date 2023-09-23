@@ -8,7 +8,6 @@
 #include "CaptureWindow.h"
 
 #include "Config.h"
-#include "Gui/SpectacleWindow.h"
 #include "SpectacleCore.h"
 #include "Gui/SelectionEditor.h"
 #include "spectacle_gui_debug.h"

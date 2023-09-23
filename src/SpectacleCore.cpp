@@ -15,6 +15,9 @@
 #include "Gui/Selection.h"
 #include "Gui/SelectionEditor.h"
 #include "Gui/SpectacleWindow.h"
+#include "Gui/ExportMenu.h"
+#include "Gui/HelpMenu.h"
+#include "Gui/OptionsMenu.h"
 #include "ShortcutActions.h"
 #include "PlasmaVersion.h"
 // generated
@@ -836,6 +839,9 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Selection", SelectionEditor::instance()->selection());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Geometry", Geometry::instance());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "G", Geometry::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "ExportMenu", ExportMenu::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "HelpMenu", HelpMenu::instance());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "OptionsMenu", OptionsMenu::instance());
 
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "AnnotationDocument", m_annotationDocument.get());
         qmlRegisterUncreatableType<AnnotationTool>(SPECTACLE_QML_URI, 1, 0, "AnnotationTool",

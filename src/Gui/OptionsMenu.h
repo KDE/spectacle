@@ -25,7 +25,7 @@ class OptionsMenu : public SpectacleMenu
     Q_OBJECT
 
 public:
-    explicit OptionsMenu(QWidget *parent = nullptr);
+    static OptionsMenu *instance();
 
     Q_SLOT void showPreferencesDialog();
 
@@ -35,6 +35,8 @@ protected:
     void changeEvent(QEvent *event) override;
 
 private:
+    explicit OptionsMenu(QWidget *parent = nullptr);
+
     void delayActionLayoutUpdate();
     Q_SLOT void updateCaptureModes();
 
@@ -57,6 +59,8 @@ private:
     bool shouldUpdateCaptureModes = true;
     bool updatingDelayActionLayout = false;
     bool captureModeOptionsEnabled = true;
+
+    friend class OptionsMenuSingleton;
 };
 
 #endif // OPTIONSMENU_H

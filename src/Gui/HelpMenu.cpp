@@ -4,15 +4,21 @@
 
 #include "HelpMenu.h"
 
-#include "SpectacleCore.h"
-#include "Gui/CaptureWindow.h"
-
 #include <KAboutData>
 
 #include <QApplication>
 #include <QDialog>
+#include <QWindow>
+
 #include <cstring>
-#include <qnamespace.h>
+
+class HelpMenuSingleton
+{
+public:
+    HelpMenu self;
+};
+
+Q_GLOBAL_STATIC(HelpMenuSingleton, privateHelpMenuSelf)
 
 static QObject *findWidgetOfType(const char *className)
 {
@@ -36,6 +42,11 @@ HelpMenu::HelpMenu(QWidget* parent)
     connect(this, &QMenu::triggered, this, &HelpMenu::onTriggered);
 }
 
+HelpMenu *HelpMenu::instance()
+{
+    return &privateHelpMenuSelf->self;
+}
+
 void HelpMenu::showAppHelp()
 {
     kHelpMenu->appHelpActivated();
@@ -43,9 +54,8 @@ void HelpMenu::showAppHelp()
 
 void HelpMenu::onTriggered(QAction *action)
 {
-    auto spectacleWindow = qobject_cast<SpectacleWindow *>(windowHandle()->transientParent());
-
-    if (!spectacleWindow || !spectacleWindow->isVisible() || action == kHelpMenu->action(KHelpMenu::menuWhatsThis)) {
+    auto transientParent = windowHandle()->transientParent();
+    if (!transientParent || !transientParent->isVisible() || action == kHelpMenu->action(KHelpMenu::menuWhatsThis)) {
         return;
     }
 
@@ -66,7 +76,7 @@ void HelpMenu::onTriggered(QAction *action)
 
     if (dialog) {
         if (dialog->winId()) {
-            dialog->windowHandle()->setTransientParent(windowHandle()->transientParent());
+            dialog->windowHandle()->setTransientParent(transientParent);
         }
         dialog->windowHandle()->requestActivate();
     }

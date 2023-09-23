@@ -6,10 +6,6 @@
 
 #pragma once
 
-#include "Gui/ExportMenu.h"
-#include "Gui/HelpMenu.h"
-#include "Gui/OptionsMenu.h"
-
 #include <QQuickView>
 #include <QQmlContext>
 
@@ -22,9 +18,6 @@ class SpectacleWindowPrivate;
 class SpectacleWindow : public QQuickView
 {
     Q_OBJECT
-    Q_PROPERTY(ExportMenu *exportMenu READ exportMenu CONSTANT FINAL)
-    Q_PROPERTY(OptionsMenu *optionsMenu READ optionsMenu CONSTANT FINAL)
-    Q_PROPERTY(HelpMenu *helpMenu READ helpMenu CONSTANT FINAL)
     Q_PROPERTY(bool annotating READ isAnnotating WRITE setAnnotating NOTIFY annotatingChanged FINAL)
     Q_PROPERTY(qreal logicalX READ logicalX NOTIFY logicalXChanged)
     Q_PROPERTY(qreal logicalY READ logicalY NOTIFY logicalYChanged)
@@ -38,10 +31,6 @@ public:
         Modified,
         Previous,
     };
-
-    ExportMenu *exportMenu() const;
-    OptionsMenu *optionsMenu() const;
-    HelpMenu *helpMenu() const;
 
     qreal logicalX() const;
     qreal logicalY() const;
@@ -127,9 +116,6 @@ protected:
     static bool s_synchronizingAnnotating;
     static bool s_isAnnotating;
 
-    const std::unique_ptr<ExportMenu> m_exportMenu;
-    const std::unique_ptr<OptionsMenu> m_optionsMenu;
-    const std::unique_ptr<HelpMenu> m_helpMenu;
     const std::unique_ptr<QQmlContext> m_context;
     std::unique_ptr<QQmlComponent> m_component;
 

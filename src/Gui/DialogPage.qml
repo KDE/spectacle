@@ -131,9 +131,9 @@ EmptyPage {
                     flat: false
                     icon.name: "help-contents"
                     text: i18n("Help")
-                    down: pressed || contextWindow.helpMenu.visible
+                    down: pressed || HelpMenu.visible
                     Accessible.role: Accessible.ButtonMenu
-                    onPressed: contextWindow.helpMenu.popup(mapToGlobal(0, height))
+                    onPressed: HelpMenu.popup(this)
                 }
             }
         }

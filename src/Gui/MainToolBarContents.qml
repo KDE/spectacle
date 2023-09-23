@@ -72,10 +72,10 @@ ButtonGrid {
     ToolButton {
         icon.name: "document-share"
         text: i18n("Export")
-        down: pressed || contextWindow.exportMenu.visible
+        down: pressed || ExportMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.exportMenu.popup(this)
+        onPressed: ExportMenu.popup(this)
     }
 
     ToolButton {
@@ -119,25 +119,25 @@ ButtonGrid {
         visible: root.showOptionsMenu
         icon.name: "configure"
         text: i18n("Options")
-        down: pressed || contextWindow.optionsMenu.visible
+        down: pressed || OptionsMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.optionsMenu.popup(this)
+        onPressed: OptionsMenu.popup(this)
     }
     ToolButton {
         visible: !root.showOptionsMenu
         icon.name: "configure"
         text: i18n("Configure...")
-        onClicked: contextWindow.optionsMenu.showPreferencesDialog();
+        onClicked: OptionsMenu.showPreferencesDialog();
     }
 
     ToolButton {
         id: helpButton
         icon.name: "help-contents"
         text: i18n("Help")
-        down: pressed || contextWindow.helpMenu.visible
+        down: pressed || HelpMenu.visible
         Accessible.role: Accessible.ButtonMenu
         // for some reason, y has to be set to get the correct y pos, but x shouldn't be
-        onPressed: contextWindow.helpMenu.popup(this)
+        onPressed: HelpMenu.popup(this)
     }
 }

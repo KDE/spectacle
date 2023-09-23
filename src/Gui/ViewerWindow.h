@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Gui/SpectacleWindow.h"
+#include <QPalette>
 
 class ViewerWindowPrivate;
 

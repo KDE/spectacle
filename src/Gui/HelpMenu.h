@@ -15,11 +15,13 @@ class HelpMenu : public SpectacleMenu
     Q_OBJECT
 
 public:
-    explicit HelpMenu(QWidget *parent = nullptr);
+    static HelpMenu *instance();
 
     Q_SLOT void showAppHelp();
 
 private:
+    explicit HelpMenu(QWidget *parent = nullptr);
     Q_SLOT void onTriggered(QAction *action);
     const std::unique_ptr<KHelpMenu> kHelpMenu;
+    friend class HelpMenuSingleton;
 };

@@ -30,6 +30,14 @@
 
 using namespace std::chrono_literals;
 
+class ExportMenuSingleton
+{
+public:
+    ExportMenu self;
+};
+
+Q_GLOBAL_STATIC(ExportMenuSingleton, privateExportMenuSelf)
+
 ExportMenu::ExportMenu(QWidget *parent)
     : SpectacleMenu(parent)
 #ifdef PURPOSE_FOUND
@@ -49,6 +57,11 @@ ExportMenu::ExportMenu(QWidget *parent)
 
     addSeparator();
     getKServiceItems();
+}
+
+ExportMenu *ExportMenu::instance()
+{
+    return &privateExportMenuSelf->self;
 }
 
 void ExportMenu::onImageChanged()

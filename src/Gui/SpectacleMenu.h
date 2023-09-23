@@ -25,14 +25,9 @@ public:
     void setVisible(bool visible) override;
 
     /**
-     * Same as QMenu::popup(), but invokable. Takes global coordinates.
-     */
-    Q_INVOKABLE void popup(const QPointF &globalPos);
-
-    /**
      * Popup on the specified item
      */
-    Q_INVOKABLE virtual void popup(QQuickItem *item);
+    Q_INVOKABLE void popup(QQuickItem *item);
 
 Q_SIGNALS:
     void visibleChanged();
