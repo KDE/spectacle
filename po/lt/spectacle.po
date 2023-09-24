@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2023-02-05 00:57+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -458,12 +458,12 @@ msgid "Take a new screenshot"
 msgstr "Padaryti naują ekrano kopiją"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr "Fotografavimo nuostatos"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -474,7 +474,7 @@ msgstr "Įtraukti pelės rodyklę"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Įtraukti lango antraštę ir rėmelį"
@@ -485,7 +485,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Fotografuoti tik esamą iškylantįjį langą"
@@ -504,7 +504,7 @@ msgstr ""
 "t.).\n"
 "Jei išjungta, iškylantieji langai yra fotografuojami kartu su pirminiu langu"
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Rankiniu būdu įrašius ar nukopijavus, užverti"
@@ -527,7 +527,7 @@ msgstr "Spustelėjus"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Prieš fotografuojant ekrano kopiją, laukti pelės mygtuko spustelėjimo"
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "Delsa:"
@@ -574,17 +574,17 @@ msgstr "Konfigūruoti Spectacle…"
 msgid "Help"
 msgstr "Pagalba"
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Atverti numatytąjį ekrano kopijų aplanką"
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, kde-format
 msgid "Other Application..."
 msgstr "Kita programa..."
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "Bendrinti"
@@ -652,17 +652,17 @@ msgstr "Parinktys"
 msgid "Configure..."
 msgstr "Konfigūruoti..."
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, kde-format
 msgid "Capture Mode"
 msgstr "Fotografavimo veiksena"
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Rodyti ekrano kopijos paveiksle pelės žymeklį"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -671,7 +671,7 @@ msgstr ""
 "Rodyti lango antraštę su sumažinimo/išdidinimo/užvėrimo mygtukais bei lango "
 "rėmeliu"
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -681,17 +681,17 @@ msgstr ""
 "t.).\n"
 "Jei išjungta, iškylantieji langai yra fotografuojami kartu su pirminiu langu"
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Rankiniu būdu įrašius ar nukopijavus paveikslą, išeiti iš Spectacle"
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, kde-format
 msgid "Capture On Click"
 msgstr "Fotografuoti spustelėjus"
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "Jokios delsos"
@@ -1428,7 +1428,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Grįžimo (Esc) klavišas"
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1438,7 +1438,7 @@ msgstr[1] "%1 sekundės"
 msgstr[2] "%1 sekundžių"
 msgstr[3] "%1 sekundė"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1549,12 +1549,12 @@ msgstr "Fotografuoti langą po žymekliu"
 msgid "Launch Spectacle without capturing"
 msgstr "Paleisti Spectacle nefotografuojant"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrano kopijos darymo atsisakyta arba jis patyrė nesėkmę"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, fuzzy, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1563,29 +1563,29 @@ msgstr ""
 "Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
 "ekrano kopijos failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip \"%1\"."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrano kopija buvo įrašyta į \"%2\" kaip \"%1\"."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atverti"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "Kurti anotacijas"

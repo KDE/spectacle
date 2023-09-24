@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2023-04-28 20:48+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -459,12 +459,12 @@ msgid "Take a new screenshot"
 msgstr "Ambil tangkapan layar baru"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr "Pengaturan Tangkap"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -475,7 +475,7 @@ msgstr "Sertakan titik mouse"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Tampilkan kursor mouse di dalam gambar tangkapan layar"
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Sertakan bilah judul dan bingkai jendela"
@@ -488,7 +488,7 @@ msgstr ""
 "Tampilkan bilah judul jendela dan bingkai ketika mengambil tangkapan layar "
 "sebuah jendela."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Tangkap sembulan saat ini saja"
@@ -504,7 +504,7 @@ msgstr ""
 "mengambil sebuah tangkapan layar jendela. Jika dinonfungsikan, sembulan "
 "ditangkap sepanjang induk jendela."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Tutup setelah Simpan atau Salin manual"
@@ -524,7 +524,7 @@ msgstr "Tangkap saat klik"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Menunggu klik mouse sebelum menangkap gambar tangkapan layar."
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "Tunda:"
@@ -569,17 +569,17 @@ msgstr "Atur Spectacle…"
 msgid "Help"
 msgstr "Bantuan"
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Buka Folder Tangkapan Layar"
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, kde-format
 msgid "Other Application..."
 msgstr "Aplikasi Lainnya..."
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "Bagikan"
@@ -645,17 +645,17 @@ msgstr "Opsi"
 msgid "Configure..."
 msgstr "Konfigurasikan..."
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, kde-format
 msgid "Capture Mode"
 msgstr "Mode Tangkap"
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Tampilkan kursor mouse di dalam citra tangkapan layar"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -664,7 +664,7 @@ msgstr ""
 "Tampilkan bilah judul jendela, tombol-tombol minimal/maksimal/tutup, dan "
 "bingkai jendela"
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -673,17 +673,17 @@ msgstr ""
 "Hanya tangkap jendela sembul saat ini (seperti menu, tooltip dll).\n"
 "Jika dinonfungsikan, sembulan ditangkap sepanjang induk jendela"
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Tutup Spectacle setelah secara manual menyimpan atau menyalin citra"
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, kde-format
 msgid "Capture On Click"
 msgstr "Tangkap Saat Klik"
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "Tidak ada Tunda"
@@ -1430,7 +1430,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1438,7 +1438,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 detik"
 msgstr[1] "%1 detik"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1552,12 +1552,12 @@ msgstr "Tangkap Layar Jendela Di Bawah Kursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Luncurkan Spectacle tanpa menangkap layar"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Menangkap tangkapan layar dibatalkan atau gagal"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1566,30 +1566,30 @@ msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
 "tangkapan layarnya telah disalin ke papan klip Anda."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2'."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Sebuah tangkapan layar telah disimpan ke papan klip Anda."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Buka"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "Anotasi"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2023-09-14 07:45+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -449,12 +449,12 @@ msgid "Take a new screenshot"
 msgstr "Preni novan ekrankopion"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr "Kapti Agordojn"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -465,7 +465,7 @@ msgstr "Inkluzivi musmontrilon"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Montri la muskursonon en la ekrankopio."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Inkluzivi fenestra titolbreto kaj limoj"
@@ -478,7 +478,7 @@ msgstr ""
 "Montri la fenestran titolbreton kaj randon kiam vi prenas ekrankopion de "
 "fenestro."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Kapti nur la nunan ŝprucfenestron"
@@ -494,7 +494,7 @@ msgstr ""
 "de fenestro. Se malebligita, la ŝprucfenestro estas kaptita kune kun la "
 "gepatra fenestro."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Forlasi post permana Konservado aŭ Kopiado"
@@ -514,7 +514,7 @@ msgstr "Kapti alklakante"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Atendu musklakon antaŭ ol kapti la ekrankopion."
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "Prokrasto:"
@@ -559,17 +559,17 @@ msgstr "Agordi Spectacle…"
 msgid "Help"
 msgstr "Helpo"
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Malfermi Defaŭltan Ekrankopiojn Dosierujon"
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, kde-format
 msgid "Other Application..."
 msgstr "Alia Apliko..."
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "Kunhavigi"
@@ -635,17 +635,17 @@ msgstr "Opcioj"
 msgid "Configure..."
 msgstr "Agordi..."
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, kde-format
 msgid "Capture Mode"
 msgstr "Kapta Reĝimo"
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Montri la muskursoron en la ekrankopio"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -654,7 +654,7 @@ msgstr ""
 "Montri la fenestran titolbreton, la minimumigi/maksimumigi/fermi butonojn "
 "kaj la fenestran randon"
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -663,17 +663,17 @@ msgstr ""
 "Kapti nur la nunan ŝprucfenestron (kiel menuo, konsileto ktp).\n"
 "Se malŝaltita, la ŝprucfenestro estas kaptita kune kun la gepatra fenestro"
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Forlasi Spectacle post permana konservo aŭ kopio de la bildo"
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, kde-format
 msgid "Capture On Click"
 msgstr "Kapti Sur Klako"
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "Neniu Prokrasto"
@@ -1408,7 +1408,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Eskapi"
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1416,7 +1416,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekundo"
 msgstr[1] "%1 sekundoj"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1530,12 +1530,12 @@ msgstr "Kapti Fenestron Sub Kursoro"
 msgid "Launch Spectacle without capturing"
 msgstr "Lanĉi Spectacle sen kapti"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrankopio nuligis aŭ malsukcesis"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1544,29 +1544,29 @@ msgstr ""
 "Ekrankopio estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
 "ekrankopio estis konservita al via tondujo."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrankopio estis konservita kiel '%1' al via dosierujo de Bildoj."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrankopio estis konservita kiel '%1' al '%2'."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrankopio estis konservita en via tondujo."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Malfermi"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "Komenti"

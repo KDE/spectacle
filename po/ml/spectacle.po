@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2019-12-12 21:06+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -438,12 +438,12 @@ msgid "Take a new screenshot"
 msgstr ""
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -454,7 +454,7 @@ msgstr ""
 msgid "Show the mouse cursor in the screenshot image."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr ""
@@ -465,7 +465,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr ""
@@ -478,7 +478,7 @@ msgid ""
 "with the parent window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr ""
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr ""
@@ -543,17 +543,17 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, kde-format
 msgid "Other Application..."
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr ""
@@ -619,41 +619,41 @@ msgstr ""
 msgid "Configure..."
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, kde-format
 msgid "Capture Mode"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, kde-format
 msgid "Capture On Click"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr ""
@@ -1371,7 +1371,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr ""
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1379,7 +1379,7 @@ msgid_plural "%1 seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1490,41 +1490,41 @@ msgstr ""
 msgid "Launch Spectacle without capturing"
 msgstr ""
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr ""
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr ""
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr ""

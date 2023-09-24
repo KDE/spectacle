@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2017-05-24 08:44-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -452,12 +452,12 @@ msgid "Take a new screenshot"
 msgstr "צור צילום מסך חדש"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -469,7 +469,7 @@ msgstr "כולל סמן העכבר"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "מציג את סמן העכבר בצילום המסך"
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "כולל שורת הכותרת והגבולות"
@@ -480,7 +480,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "לכוד את החלון הקופץ הנוכחי בלבד"
@@ -493,7 +493,7 @@ msgid ""
 "with the parent window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr ""
@@ -515,7 +515,7 @@ msgstr "בלחיצה"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "ממתין ללחיצת עכבר לפני צילום המסך"
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "השהיה:"
@@ -564,18 +564,18 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, fuzzy, kde-format
 #| msgid "Other Application"
 msgid "Other Application..."
 msgstr "יישומים אחרים"
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "שתף"
@@ -644,43 +644,43 @@ msgstr "אפשרויות שמירה"
 msgid "Configure..."
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, fuzzy, kde-format
 #| msgid "<b>Capture Mode</b>"
 msgid "Capture Mode"
 msgstr "<b>מצב צילום</b>"
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "מציג את סמן העכבר בצילום המסך"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture On Click"
 msgstr "בלחיצה"
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "ללא השהיה"
@@ -1422,7 +1422,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr ""
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, fuzzy, kde-format
 #| msgid " second"
 msgctxt "@title:window"
@@ -1431,7 +1431,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "שניה"
 msgstr[1] "שניה"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, fuzzy, kde-format
 #| msgctxt "Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1553,12 +1553,12 @@ msgstr "החלון שתחת העכבר"
 msgid "Launch Spectacle without capturing"
 msgstr "צולם באמצעות Spectacle"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgid ""
@@ -1566,31 +1566,31 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "צילום המסך הועתק ללוח העריכה"
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "הצילום מסך נשמר כ־\"%1\" בתיקית התמונות שלך."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "הצילום מסך נשמר כ־\"%1\" ב\"%2\"."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgid "A screenshot was saved to your clipboard."
 msgstr "הצילום מסך נשמר כ־\"%1\" בתיקית התמונות שלך."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "פתח"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr ""

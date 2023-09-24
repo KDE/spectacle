@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2023-06-01 09:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -446,12 +446,12 @@ msgid "Take a new screenshot"
 msgstr "خُذ لقطة جديدة"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr "إعدادات الالتقاط"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -462,7 +462,7 @@ msgstr "ضمّن مؤشّر الفأرة"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "أظهر مؤشّر الفأرة في اللقطة."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "ضمّن شريط عنوان النّافذة وحدودها"
@@ -473,7 +473,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr "أظهر شريط عنوان النّافذة والحدود عند أخذ لقطة لنافذة."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "التقط المنبثقة الحاليّة فقط"
@@ -488,7 +488,7 @@ msgstr ""
 "التقط النّافذة  المنبثقة حاليًّا فقط (أي القوائم، التّلميحات، إلخ) عند أخذ لقطة "
 "للنافذة. إن لم يكن هذا مفعّلًا، ستُلتقط المنبثقة مع النّافذة الأمّ."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "اخرج بعد نسخ أو حفظ يدوي"
@@ -508,7 +508,7 @@ msgstr "التقط عند النّقر"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "انتظر نقرة بالفأرة قبل أخذ اللقطة."
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "التّأخير:"
@@ -557,17 +557,17 @@ msgstr "اضبط لاقط الشاشة…"
 msgid "Help"
 msgstr "مساعدة"
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "افتح المجلد المبدئي للقطات الشاشة"
 
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, kde-format
 msgid "Other Application..."
 msgstr "تطبيق آخر..."
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "شارك"
@@ -633,24 +633,24 @@ msgstr "خيارات"
 msgid "Configure..."
 msgstr "اضبط..."
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, kde-format
 msgid "Capture Mode"
 msgstr "وضع الالتقاط"
 
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "أظهر مؤشّر الفأرة في اللقطة"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr "أظهر شريط عنوان النّافذة، أزرار صغّر/كبّر/أغلق وحدود النّافذة"
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -659,17 +659,17 @@ msgstr ""
 "التقط النّافذة (أي القوائم، التّلميحات، إلخ) المنبثقة حاليًّا فقط.\n"
 " إن لم يكن هذا مفعّلًا، ستُلتقط المنبثقة مع النّافذة الأمّ"
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "اخرج من لاقط الشاشة بعد حفظ الصورة يدويًا أو نسخها"
 
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, kde-format
 msgid "Capture On Click"
 msgstr "التقط عند النّقر"
 
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "بدون تأخير"
@@ -1394,7 +1394,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "مفتاح الهرب"
 
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1406,7 +1406,7 @@ msgstr[3] "%1 ثواني"
 msgstr[4] "%1 ثانية"
 msgstr[5] "%1 ثانية"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1520,41 +1520,41 @@ msgstr "التقط النافذة التي تحت المؤشر"
 msgid "Launch Spectacle without capturing"
 msgstr "شغل لاقط الشاشة بدون أخذ صورة"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "أُلغي أو فشل أخذ اللقطة"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "حُفظت اللقطة كـ'%1' في '%2' وحُفظ مسارها إلى الحافظة."
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى مجلّد الصّور."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "حُفظت لقطة شاشة ك‍'%1' إلى '%2'."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "حُفظت لقطة شاشة في الحافظة."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "افتح"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr "اشرح"

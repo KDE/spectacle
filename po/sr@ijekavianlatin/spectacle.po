@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-15 01:53+0000\n"
+"POT-Creation-Date: 2023-09-24 01:43+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -473,12 +473,12 @@ msgid "Take a new screenshot"
 msgstr "Uhvati novi snimak"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:63
+#: src/Gui/OptionsMenu.cpp:71
 #, kde-format
 msgid "Capture Settings"
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:67
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:75
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -491,7 +491,7 @@ msgstr "Uključi pokazivač miša"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Prikaži pokazivač miša u snimku ekrana"
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:79
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:87
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Uključi naslov i ivice prozora"
@@ -502,7 +502,7 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:91
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:99
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Uhvati samo trenutni iskakač"
@@ -520,7 +520,7 @@ msgstr ""
 "Hvata samo trenutni iskačući prozor (npr. meni, oblačić, itd). Ako ovo nije "
 "aktivirano, iskakač će biti uhvaćen zajedno sa roditeljskim prozorom."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:105
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:113
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr ""
@@ -542,7 +542,7 @@ msgstr "Uhvati novi snimak"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Sačekaj na klik mišem pre hvatanja snimka ekrana"
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:135
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:143
 #, kde-format
 msgid "Delay:"
 msgstr "Zastoj:"
@@ -596,19 +596,19 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:41
+#: src/Gui/ExportMenu.cpp:49
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr ""
 
 # >> @item:inmenu
-#: src/Gui/ExportMenu.cpp:104
+#: src/Gui/ExportMenu.cpp:117
 #, fuzzy, kde-format
 #| msgid "Other Application"
 msgid "Other Application..."
 msgstr "drugi program"
 
-#: src/Gui/ExportMenu.cpp:134
+#: src/Gui/ExportMenu.cpp:147
 #, kde-format
 msgid "Share"
 msgstr "Podeli"
@@ -680,19 +680,19 @@ msgstr "<b>Opcije sadržaja</b>"
 msgid "Configure..."
 msgstr "Podešavanje"
 
-#: src/Gui/OptionsMenu.cpp:37
+#: src/Gui/OptionsMenu.cpp:45
 #, fuzzy, kde-format
 #| msgid "<b>Capture Mode</b>"
 msgid "Capture Mode"
 msgstr "<b>Režim hvatanja</b>"
 
 # switch-rule: t-cursor > t-pointer
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/OptionsMenu.cpp:76
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Prikaži pokazivač miša u snimku ekrana"
 
-#: src/Gui/OptionsMenu.cpp:80
+#: src/Gui/OptionsMenu.cpp:88
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -701,7 +701,7 @@ msgstr ""
 "Prikaži naslovnu traku prozora, dugmad za minimizovanje/maksimizovanje/"
 "zatvaranje i ivice prozora"
 
-#: src/Gui/OptionsMenu.cpp:93
+#: src/Gui/OptionsMenu.cpp:101
 #, fuzzy, kde-format
 #| msgid ""
 #| "Capture only the current pop-up window (like a menu, tooltip etc). If "
@@ -713,20 +713,20 @@ msgstr ""
 "Hvata samo trenutni iskačući prozor (npr. meni, oblačić, itd). Ako ovo nije "
 "aktivirano, iskakač će biti uhvaćen zajedno sa roditeljskim prozorom."
 
-#: src/Gui/OptionsMenu.cpp:106
+#: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 
 # >> @option:check
-#: src/Gui/OptionsMenu.cpp:120
+#: src/Gui/OptionsMenu.cpp:128
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture On Click"
 msgstr "Na klik"
 
 # >> @item:inrange
-#: src/Gui/OptionsMenu.cpp:140
+#: src/Gui/OptionsMenu.cpp:148
 #, kde-format
 msgid "No Delay"
 msgstr "bez zastoja"
@@ -1476,7 +1476,7 @@ msgid "Escape"
 msgstr ""
 
 # >! Plurals.
-#: src/Gui/SpectacleWindow.cpp:212
+#: src/Gui/SpectacleWindow.cpp:188
 #, fuzzy, kde-format
 #| msgid " second"
 msgctxt "@title:window"
@@ -1487,7 +1487,7 @@ msgstr[1] " sekunda"
 msgstr[2] " sekunda"
 msgstr[3] " sekunda"
 
-#: src/Gui/SpectacleWindow.cpp:215
+#: src/Gui/SpectacleWindow.cpp:191
 #, fuzzy, kde-format
 #| msgctxt "Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1616,43 +1616,43 @@ msgstr "prozor pod pokazivačem"
 msgid "Launch Spectacle without capturing"
 msgstr "snimljeno Spectacleom"
 
-#: src/SpectacleCore.cpp:630
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Hvatanje snimka otkazano ili propalo"
 
-#: src/SpectacleCore.cpp:675
+#: src/SpectacleCore.cpp:678
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:679
+#: src/SpectacleCore.cpp:682
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:682
+#: src/SpectacleCore.cpp:685
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:689
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:691
+#: src/SpectacleCore.cpp:694
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvori"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "Annotate"
 msgstr ""
