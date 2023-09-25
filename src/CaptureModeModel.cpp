@@ -80,55 +80,54 @@ int CaptureModeModel::indexOfCaptureMode(CaptureMode captureMode) const
 
 void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
 {
-    if(m_grabModes == modes) {
+    if (m_grabModes == modes) {
         return;
     }
     m_grabModes = modes;
     const int oldCount = m_data.size();
     m_data.clear();
 
-    int screenCount = QApplication::screens().count();
+    const bool hasCurrentScreen = m_grabModes.testFlag(Platform::GrabMode::CurrentScreen);
 
     if (m_grabModes.testFlag(Platform::GrabMode::PerScreenImageNative)) {
         m_data.append({
             CaptureModeModel::RectangularRegion,
             i18n("Rectangular Region"),
-            actionShortcutsToString(ShortcutActions::self()->regionAction())
+            actionShortcutsToString(ShortcutActions::self()->regionAction()),
         });
     }
     if (m_grabModes.testFlag(Platform::GrabMode::AllScreens)) {
         m_data.append({
             CaptureModeModel::AllScreens,
-            screenCount > 1 ? i18n("All Screens") : i18n("Full Screen"),
-            actionShortcutsToString(ShortcutActions::self()->fullScreenAction())
+            hasCurrentScreen ? i18n("All Screens") : i18n("Full Screen"),
+            actionShortcutsToString(ShortcutActions::self()->fullScreenAction()),
         });
     }
     if (m_grabModes.testFlag(Platform::GrabMode::AllScreensScaled)) {
         m_data.append({
             CaptureModeModel::AllScreensScaled,
             i18n("All Screens (Scaled to same size)"),
-            QLatin1String("")
         });
     }
-    if (m_grabModes.testFlag(Platform::GrabMode::CurrentScreen)) {
+    if (hasCurrentScreen) {
         m_data.append({
             CaptureModeModel::CurrentScreen,
             i18n("Current Screen"),
-            actionShortcutsToString(ShortcutActions::self()->currentScreenAction())
+            actionShortcutsToString(ShortcutActions::self()->currentScreenAction()),
         });
     }
     if (m_grabModes.testFlag(Platform::GrabMode::ActiveWindow)) {
         m_data.append({
             CaptureModeModel::ActiveWindow,
             i18n("Active Window"),
-            actionShortcutsToString(ShortcutActions::self()->activeWindowAction())
+            actionShortcutsToString(ShortcutActions::self()->activeWindowAction()),
         });
     }
     if (m_grabModes.testFlag(Platform::GrabMode::WindowUnderCursor)) {
         m_data.append({
             CaptureModeModel::WindowUnderCursor,
             i18n("Window Under Cursor"),
-            actionShortcutsToString(ShortcutActions::self()->windowUnderCursorAction())
+            actionShortcutsToString(ShortcutActions::self()->windowUnderCursorAction()),
         });
     }
 

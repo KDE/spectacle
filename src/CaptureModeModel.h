@@ -50,7 +50,7 @@ private:
     struct Item {
         CaptureModeModel::CaptureMode captureMode;
         QString label;
-        QString shortcuts; // default value in case there's nothing
+        QString shortcuts = {}; // default value in case there's nothing
     };
 
     QVector<Item> m_data;
