@@ -31,9 +31,9 @@ public:
         Window = 0b010, //< records a specific window, provided its uuid
         Region = 0b100, //< records the provided region rectangle
     };
-    Q_ENUM(RecordingMode)
-    using RecordingOption = std::variant<QScreen *, QRect, QString>;
+    Q_FLAG(RecordingMode)
     Q_DECLARE_FLAGS(RecordingModes, RecordingMode)
+    using RecordingOption = std::variant<QScreen *, QRect, QString>;
 
     bool isRecording() const;
     virtual RecordingModes supportedRecordingModes() const = 0;
