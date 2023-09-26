@@ -23,6 +23,7 @@
 #include <KStandardShortcut>
 
 #include <QJsonArray>
+#include <QMimeDatabase>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QTimer>
@@ -42,7 +43,7 @@ Q_GLOBAL_STATIC(ExportMenuSingleton, privateExportMenuSelf)
 ExportMenu::ExportMenu(QWidget *parent)
     : SpectacleMenu(parent)
 #ifdef PURPOSE_FOUND
-    , mUpdatedImageAvailable(false)
+    , mUpdatedImageAvailable(true)
     , mPurposeMenu(new Purpose::Menu)
 #endif
 {
@@ -176,8 +177,9 @@ void ExportMenu::loadPurposeItems()
     const QString dataUri = ExportManager::instance()->tempSave().toString();
     mUpdatedImageAvailable = false;
 
+    auto mimeType = QMimeDatabase().mimeTypeForFile(dataUri).name();
     QJsonObject inputData = {
-        {QStringLiteral("mimeType"), QStringLiteral("image/png")},
+        {QStringLiteral("mimeType"), mimeType},
         {QStringLiteral("urls"), QJsonArray({dataUri})}
     };
     mPurposeMenu->model()->setInputData(inputData);
