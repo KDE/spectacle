@@ -7,6 +7,7 @@
 #include "CaptureModeModel.h"
 #include "Gui/SettingsDialog/SettingsDialog.h"
 #include "SpectacleCore.h"
+#include "WidgetWindowUtils.h"
 #include "settings.h"
 
 #include <KLocalizedString>
@@ -179,9 +180,7 @@ void OptionsMenu::showPreferencesDialog()
     }
 
     // properly set the transientparent chain
-    if (dialog->winId()) {
-        dialog->windowHandle()->setTransientParent(windowHandle()->transientParent());
-    }
+    setWidgetTransientParent(dialog, getWidgetTransientParent(this));
 
     // HACK: how to make it appear on top of the fullscreen window? dialog->setWindowFlags(Qt::Popup); is an ugly way
 

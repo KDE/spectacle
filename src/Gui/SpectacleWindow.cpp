@@ -14,6 +14,7 @@
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
+#include "Gui/WidgetWindowUtils.h"
 #include "spectacle_gui_debug.h"
 
 #include <KIO/JobUiDelegateFactory>
@@ -295,9 +296,7 @@ void SpectacleWindow::showFontDialog()
     QFontDialog *dialog = new QFontDialog(font);
     dialog->setAttribute(Qt::WA_DeleteOnClose);
 
-    if (dialog->winId()) {
-        dialog->windowHandle()->setTransientParent(this);
-    }
+    setWidgetTransientParent(dialog, this);
 
     if (flags().testFlag(Qt::WindowStaysOnTopHint)) {
         dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
@@ -380,9 +379,7 @@ void SpectacleWindow::showColorDialog(int option)
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->setOption(QColorDialog::ShowAlphaChannel);
 
-    if (dialog->winId()) {
-        dialog->windowHandle()->setTransientParent(this);
-    }
+    setWidgetTransientParent(dialog, this);
 
     if (flags().testFlag(Qt::WindowStaysOnTopHint)) {
         dialog->setWindowFlag(Qt::WindowStaysOnTopHint);

@@ -3,6 +3,7 @@
  */
 
 #include "HelpMenu.h"
+#include "WidgetWindowUtils.h"
 
 #include <KAboutData>
 
@@ -54,7 +55,7 @@ void HelpMenu::showAppHelp()
 
 void HelpMenu::onTriggered(QAction *action)
 {
-    auto transientParent = windowHandle()->transientParent();
+    auto transientParent = getWidgetTransientParent(this);
     if (!transientParent || !transientParent->isVisible() || action == kHelpMenu->action(KHelpMenu::menuWhatsThis)) {
         return;
     }
@@ -75,9 +76,7 @@ void HelpMenu::onTriggered(QAction *action)
     }
 
     if (dialog) {
-        if (dialog->winId()) {
-            dialog->windowHandle()->setTransientParent(transientParent);
-        }
+        setWidgetTransientParent(dialog, transientParent);
         dialog->windowHandle()->requestActivate();
     }
 }

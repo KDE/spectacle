@@ -7,6 +7,7 @@
 #include "ExportMenu.h"
 #include "CaptureWindow.h"
 #include "SpectacleCore.h"
+#include "WidgetWindowUtils.h"
 #include "spectacle_gui_debug.h"
 #include "settings.h"
 
@@ -85,7 +86,7 @@ void ExportMenu::getKServiceItems()
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
         connect(action, &QAction::triggered, this, [this, service]() {
-            auto captureWindow = qobject_cast<CaptureWindow *>(this->windowHandle()->transientParent());
+            auto captureWindow = qobject_cast<CaptureWindow *>(getWidgetTransientParent(this));
             if(captureWindow && !captureWindow->accept()) {
                 return;
             }
@@ -118,7 +119,7 @@ void ExportMenu::getKServiceItems()
     openWith->setShortcuts(KStandardShortcut::open());
 
     connect(openWith, &QAction::triggered, this, [this]() {
-        auto captureWindow = qobject_cast<CaptureWindow *>(this->windowHandle()->transientParent());
+        auto captureWindow = qobject_cast<CaptureWindow *>(getWidgetTransientParent(this));
         if(captureWindow && !captureWindow->accept()) {
             return;
         }
@@ -159,7 +160,7 @@ void ExportMenu::loadPurposeMenu()
     // update available options based on the latest picture
     connect(mPurposeMenu, &QMenu::aboutToShow, this, [this]() {
         loadPurposeItems();
-        mPurposeMenu->windowHandle()->setTransientParent(windowHandle());
+        setWidgetTransientParentToWidget(mPurposeMenu, this);
     });
 }
 
@@ -192,7 +193,7 @@ void ExportMenu::openScreenshotsFolder()
 
 void ExportMenu::openPrintDialog()
 {
-    if (auto captureWindow = qobject_cast<CaptureWindow *>(windowHandle()->transientParent())) {
+    if (auto captureWindow = qobject_cast<CaptureWindow *>(getWidgetTransientParent(this))) {
         captureWindow->accept();
     }
     auto printer = new QPrinter(QPrinter::HighResolution);
@@ -200,9 +201,7 @@ void ExportMenu::openPrintDialog()
     dialog->setAttribute(Qt::WA_DeleteOnClose);
 
     // properly set the transientparent chain
-    if (dialog->winId()) {
-        dialog->windowHandle()->setTransientParent(windowHandle()->transientParent());
-    }
+    setWidgetTransientParent(dialog, getWidgetTransientParent(this));
 
     connect(dialog, &QDialog::finished, dialog, [printer](int result){
         if (result == QDialog::Accepted) {

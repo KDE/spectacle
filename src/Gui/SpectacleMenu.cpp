@@ -3,6 +3,7 @@
  */
 
 #include "SpectacleMenu.h"
+#include "WidgetWindowUtils.h"
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
@@ -45,9 +46,7 @@ void SpectacleMenu::popup(QQuickItem *item)
     if (point.x() + sizeHint.width() > screenRect.right()) {
         point.setX(point.x() - sizeHint.width() + item->width());
     }
-    if (winId()) {
-        windowHandle()->setTransientParent(itemWindow);
-    }
+    setWidgetTransientParent(this, itemWindow);
     // Workaround same as plasma to have click anywhereto close the menu
     QTimer::singleShot(0, this, [this, itemWindow, point]() {
         if (itemWindow->mouseGrabberItem()) {
