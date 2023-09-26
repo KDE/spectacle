@@ -44,7 +44,7 @@ private:
     void loadPurposeItems();
 
     bool mUpdatedImageAvailable;
-    Purpose::Menu *mPurposeMenu = nullptr;
+    std::unique_ptr<Purpose::Menu> mPurposeMenu;
 #endif
     friend class ExportMenuSingleton;
 };

@@ -43,7 +43,7 @@ ExportMenu::ExportMenu(QWidget *parent)
     : SpectacleMenu(parent)
 #ifdef PURPOSE_FOUND
     , mUpdatedImageAvailable(false)
-    , mPurposeMenu(new Purpose::Menu(this))
+    , mPurposeMenu(new Purpose::Menu)
 #endif
 {
     addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
@@ -144,12 +144,14 @@ void ExportMenu::getKServiceItems()
 void ExportMenu::loadPurposeMenu()
 {
     // attach the menu
-    QAction *purposeMenu = addMenu(mPurposeMenu);
-    purposeMenu->setText(i18n("Share"));
-    purposeMenu->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
+    auto purposeMenu = mPurposeMenu.get();
+    QAction *purposeMenuAction = addMenu(purposeMenu);
+    purposeMenuAction->setObjectName("purposeMenuAction");
+    purposeMenuAction->setText(i18n("Share"));
+    purposeMenuAction->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
 
     // set up the callback signal
-    connect(mPurposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
+    connect(purposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
         if (error) {
             Q_EMIT imageShared(error, message);
         } else {
@@ -158,9 +160,9 @@ void ExportMenu::loadPurposeMenu()
     });
 
     // update available options based on the latest picture
-    connect(mPurposeMenu, &QMenu::aboutToShow, this, [this]() {
+    connect(purposeMenu, &QMenu::aboutToShow, this, [this]() {
         loadPurposeItems();
-        setWidgetTransientParentToWidget(mPurposeMenu, this);
+        setWidgetTransientParentToWidget(mPurposeMenu.get(), this);
     });
 }
 
