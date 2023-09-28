@@ -20,8 +20,3 @@ install(
     FILES org.kde.spectacle.appdata.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
 )
-
-install(
-    FILES spectacle_newConfig.upd
-    DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
-)
