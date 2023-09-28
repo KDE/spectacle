@@ -38,7 +38,7 @@ include(ECMFindQmlModule)
 # find dependencies
 
 find_package(
-    Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED
+    Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED
         Core
         Concurrent
         Qml
@@ -54,7 +54,7 @@ find_package(
 qt_policy(SET QTP0001 NEW)
 
 find_package(
-    KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED
+    KF6 ${KF_MIN_VERSION} REQUIRED
         CoreAddons
         WidgetsAddons
         DBusAddons
@@ -78,13 +78,13 @@ set_package_properties(KPipeWire PROPERTIES DESCRIPTION
 )
 
 # optional components
-find_package(KF${QT_MAJOR_VERSION}DocTools ${KF_MIN_VERSION})
-set_package_properties(KF${QT_MAJOR_VERSION}DocTools PROPERTIES DESCRIPTION
+find_package(KF6DocTools ${KF_MIN_VERSION})
+set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
-find_package(KF${QT_MAJOR_VERSION}Purpose)
-if (KF${QT_MAJOR_VERSION}Purpose_FOUND)
+find_package(KF6Purpose)
+if (KF6Purpose_FOUND)
     set(PURPOSE_FOUND 1)
 endif()
 
@@ -128,7 +128,7 @@ add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(tests)
 
-if (KF${QT_MAJOR_VERSION}DocTools_FOUND)
+if (KF6DocTools_FOUND)
     add_subdirectory(doc)
     kdoctools_install(po)
 endif()
