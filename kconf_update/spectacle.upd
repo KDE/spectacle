@@ -1,0 +1,28 @@
+# This is meant to be a unified kconf_update file. When you need to update the
+# config file, add a new section in this file.
+#
+# Each section should have a comment saying what it's for just above it.
+#
+# Each section ID should have a version prefix indicating the release version
+# for which it was added, followed by a topic string using underscores for
+# spaces, followed by an increment suffix. The latter should only be used if for
+# some reason you need to do more than one config update for the same release
+# version with the same topic. These parts should be connected by hyphens.
+# Examples: `24.02.0-example_update`, `24.02.0-example_update-2`.
+#
+# If you are using `ScriptArguments=`, always put it before `Script=`.
+#
+# Scripts should be named after the basename of this `.upd` file, followed by
+# the name of their associated section, connected by a hyphen.
+# Example: `spectacle-24.02.0-example_update.py`.
+# This way the `spectacle.upd` file and the scripts are sorted next to each
+# other in `/usr/share/kconf_update` and it's easy to identify associated
+# sections added to the `update_info` entry of `spectaclerc`.
+
+# KDE Frameworks/kconf_update version.
+# This only needs to be changed when the version of kconf_update changes.
+Version=6
+
+# This is an example section.
+# Id=24.02.0-example_update
+# Script=spectacle-24.02.0-example_update.py,python3
