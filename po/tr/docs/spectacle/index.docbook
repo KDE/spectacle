@@ -1,0 +1,870 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Turkish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>&spectacle; El Kitabı</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+><firstname
+>Emir</firstname
+><surname
+>SARI</surname
+><affiliation
+><address
+><email
+>emir_sari@icloud.com</email
+></address
+></affiliation
+><contrib
+>Çeviri</contrib
+></othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>Uygulamalar 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>deklanşör</keyword>
+            <keyword
+>kde grafikleri</keyword>
+            <keyword
+>ekran görüntüsü</keyword>
+            <keyword
+>ekran yakalama</keyword>
+            <keyword
+>ekran tutma</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Giriş</title>
+
+        <para
+>&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+
+        <para
+>Herhangi bir sorunu veya özellik isteğini lütfen <ulink url="https://bugs.kde.org/"
+>&kde;'nin Hata İzleme Sistemi</ulink
+>'ne bildirin.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>&spectacle;'ü Başlatmak</title>
+
+        <para
+>&spectacle;, aşağıda açıklanan birden çok yol ile başlatılabilir:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>&spectacle;'ü uygulama başlatıcısı menüsünde <menuchoice
+><guisubmenu
+>Uygulamalar</guisubmenu
+><guisubmenu
+>İzlenceler</guisubmenu
+><guimenuitem
+>&spectacle;</guimenuitem
+></menuchoice
+> altında bulabilirsiniz.</para>
+            </listitem>
+            <listitem>
+                <para
+>Klavyenizdeki <keysym
+>Ekranı Yazdır</keysym
+> düğmesine basmak (genelde <keycap
+>PrtSc</keycap
+>, <keycap
+>PrtScn</keycap
+> veya benzeri biçimde etiketlidir), &spectacle;'ü anında başlatır. Ek olarak, grafik arayüzü göstermeden ekran görüntüsü almak ve onları öntanımlı kaydetme klasörünüze kaydetmek için üç tane daha klavye kısayolu vardır:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Ekranı Yazdır</keysym
+></keycombo
+>, etkin pencerenin ekran görüntüsünü alır</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Ekranı Yazdır</keysym
+></keycombo
+>, tüm monitörleri içerecek biçimde tüm masaüstünüzün ekran görüntüsünü alır</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Ekranı Yazdır</keysym
+></keycombo
+>, dörtgen bir bölgenin ekran görüntüsünü alır</para
+></listitem>
+                </itemizedlist>
+                <para
+>Öntanımlı kaydetme konumunu ve dosya adını &spectacle;'ü normal bir biçimde başlatıp <guibutton
+>Yapılandır...</guibutton
+> düğmesine bastıktan sonra Kaydetme bölümüne giderek yapılandırabilirsiniz.</para>
+            </listitem>
+            <listitem>
+                <para
+>&krunner; mini komut satırı da (<keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> düğme kombinasyonuyla çağrılır) &spectacle;'ü başlatmak için kullanılabilir.</para>
+            </listitem>
+            <listitem>
+                <para
+>&spectacle; komut satırından başlatılabilir. &spectacle; grafik arayüzü göstermeden veya kullanıcı etkileşimi gerektirmeden.ekran görüntülerini yakalamak üzere betik oluşturmak için kullanılabilecek bir arka plan kipi da dahil olmak üzere, kapsamlı bir komut satırı seçenekleri kümesine sahiptir.</para>
+
+                <para
+>&spectacle;'ü komut satırından başlatmak için şunu yazın:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Komut satırı seçeneklerinin tam listesini ve açıklamalarını görmek için şunu yazın:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>&spectacle; Kullanımı</title>
+
+        <para
+>&spectacle; başlatıldığında şuna benzer bir pencere görürsünüz: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>&spectacle; Ana Penceresi</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle;, başlatıldıktan hemen sonra; ancak ekranda kendini göstermeden önce tüm masaüstünüzün görüntüsünü alır. Bu, hızlı bir şekilde tam masaüstü ekran görüntüsü görüntüleri oluşturmanıza olanak tanır.</para>
+
+        <para
+>&spectacle; tarafından alınan ekran görüntüsü, önizleme penceresine görüntülenir. Bu pencere, &spectacle; uygulama penceresinin sol tarafında yer alır.</para>
+
+        <para
+>Görseli istediğiniz yere kaydetmek için <guibutton
+>Farklı Kaydet</guibutton
+> düğmesini kullanın veya <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> düğme kombinasyonunu kullanın. Bu, standart kaydetme iletişim kutusunu açar; burada dosya adını, klasör konumunu ve ekran görüntüsünün kaydedileceği biçimi seçebilirsiniz. Dosya adını istediğiniz herhangi bir şeye değiştirebilirsiniz.</para>
+
+        <para
+>Öntanımlı konuma bir ekran görüntüsü kaydetmek için <guibutton
+>Farklı Kaydet...</guibutton
+> düğmesinin ok kısmına tıklayın ve <guimenuitem
+>Kaydet</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>) düğmesine basın. Yeni kaydetme kipi bir sonraki başlangıçta anımsanacaktır. Daha sonra açıklandığı üzere, öntanımlı kaydetme konumu ve dosya adları özelleştirilebilirdir.</para>
+
+        <para
+>Tez bir görsel kaydedip &spectacle;'den çıkmak için <guilabel
+>Elle kaydet veya kopyala işleminden sonra çık</guilabel
+> yanındaki onay kutusuna tıklayıp <guibutton
+>Farklı Kaydet...</guibutton
+> düğmesinin ok kısmına basın ve <guimenuitem
+>Kaydet</guimenuitem
+> ögesini seçin (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Bu, görseli öntanımlı <filename class="directory"
+>Resimler</filename
+> klasörünüzde bir PNG görseli olarak kaydeder ve uygulamadan çıkar. Yukarıda da söz edildiği üzere, bu yeni kaydetme kipi daha sonrası için anımsanacaktır.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Bir Ekran Görüntüsü Almak</title>
+
+            <para
+>&spectacle;'ü açtığınızda, genel seçeneklerde aksi belirtilmediği sürece kolaylık sağlamak amacıyla hemen tüm ekranın ekran görüntüsünü alır ve ana pencerede bunun bir önizlemesini gösterir. Bu ekran görüntüsünü pencerenin altındaki düğmeleri kullanarak kaydedebilir veya önizlemenin sağındaki denetimleri kullanarak yeni bir ekran görüntüsü alabilirsiniz.</para>
+
+            <para
+>Geçerli ekran görüntüsünü atıp başka bir tane almak için <guibutton
+>Yeni Bir Ekran Görüntüsü Al</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) düğmesine basın.</para>
+            
+            <para
+>Bir ekran görüntüsü yakaladıktan sonra &spectacle;, size ekran görüntüsü dosyasına bağlantı içeren bir bilgi paneli gösterecek ve bu dosyanın <guibutton
+>İçeren Klasörünü Açmanızı</guibutton
+> önerecektir.</para>
+
+            <para
+>Yeni bir ekran görüntüsü almadan önce uygulama penceresinin sağ tarafında belirli seçenekleri yapılandırabilirsiniz. Bu seçenekler ekranın yakalanacak alanını seçmenize, görüntüyü yakalamadan önce bir gecikme ayarlamanıza ve ekran görüntüsüyle birlikte fare imlecinin ve/veya pencere dekorasyonlarının de yakalanması gerekip gerekmediğini yapılandırmanıza olanak tanır.</para>
+
+            <sect2>
+                <title
+>Yakalama Kipi</title>
+
+                <para
+>Yakalama kipi ayarları, size ekranın yakalanması gereken alanını ayarlamanıza ve <guibutton
+>Yeni bir ekran görüntüsü al</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) düğmesine basmak ve ekran görüntüsünü almak arasında bir gecikme olup olmaması gerektiğini ayarlamanıza olanak tanır. Ayrıca, <guilabel
+>Tıklamada</guilabel
+> onay kutusunu işaretlemek gecikme işlevini devre dışı bırakır ve <guibutton
+>Yeni bir ekran görüntüsü al</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) düğmesine bastıktan sonraki ilk tıklamada ekran görüntüsünü alır.</para>
+
+                <para
+><guilabel
+>Alan</guilabel
+> çoklu kutusu, ekranın yakalanması gereken alanını ayarlamanıza olanak tanır. Aşağıda açıklandığı üzere, seçebileceğiniz beş seçenek vardır.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+><guilabel
+>Tam Ekran (Tüm Monitörler)</guilabel
+> seçeneği, tüm monitörler, projektörler vb. dahil olmak üzere tüm çıktılara yayılmış olarak tüm masaüstünüzün ekran görüntüsünü alır.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Geçerli Ekran</guilabel
+> seçeneği, o anda fare işaretçisini içeren çıktının ekran görüntüsünü alır.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Dikdörtgen Bölge</guilabel
+> seçeneği, farenizle masaüstünüzün dikdörtgen bir bölgesini seçmenizi sağlar. Bu bölge farklı çıktılara yayılabilir.</para>
+
+                        <para
+>Bu kip anında ekran görüntüsü almaz; ancak ekranınızda gerektiğinde taşınabilen ve yeniden boyutlandırılabilen bir dikdörtgen çizmenize olanak tanır. İstenilen seçim dikdörtgenini çizdikten sonra ekranın herhangi bir yerine çift tıklayarak veya &Enter; düğmesine basarak ekran görüntüsünü alabilirsiniz.</para>
+                        
+                        <para
+>Dikdörtgeni taşımak ve ayarlamak için ok düğmelerini kullanabilirsiniz. Ok düğmelerine basıldığında dikdörtgen hareket eder. &Shift; düğmesini basılı tutarken ok düğmelerini kullanmak, seçiminize ince ayar yapmak için dikdörtgeni yavaşça hareket ettirecektir. &Alt; düğmesini basılı tutarken ok düğmelerini kullanmak ise dikdörtgenin boyutunu ayarlayacaktır.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Etkin Pencere</guilabel
+> seçeneği, o anda odaklanılan pencerenin ekran görüntüsünü alır. Ekran görüntüsü alınmadan önce bir pencereyi seçip etkinleştirmeniz için size zaman tanımak amacıyla bu kipte bir gecikme kullanılması tavsiye edilir.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>İmleç Altındaki Pencere</guilabel
+> seçeneği, fare imlecinin altındaki pencerenin ekran görüntüsünü alır. İmleç açılır menünün üstündeyse &spectacle; menünün ve ana penceresinin ekran görüntüsünü almaya çalışır.</para>
+
+                        <para
+>Bu çoğu zaman işe yarasa da bazı durumlarda ana pencere hakkında bilgi almakta başarısız olabilir. Bu durumda &spectacle; görüntüyü eski usul yakalamaya çalışır ve yalnızca açılır menünün görüntüsünü çeker. Ayrıca, <guilabel
+>Seçenekler</guilabel
+> altındaki <guilabel
+>Yalnızca geçerli açılır pencereyi yakala</guilabel
+> onay kutusunu işaretleyerek eski görüntü yakalama yöntemini de zorlayabilirsiniz.</para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+><guilabel
+>Gecikme</guilabel
+> döndürme kutusu, <guibutton
+>Yeni Bir Ekran Görüntüsü Al</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) düğmesine basma ve ekran görüntüsü alma arasındaki gecikmeyi ayarlamanıza olanak tanır. Bu gecikme, döndürme kutusu düğmeleri veya klavye kullanılarak 1 saniyelik artışlarla ayarlanabilir.</para>
+                
+                <para
+>Zaman gecikmeli ekran görüntüsü alırken &spectacle; ekran görüntüsü alınmadan önce kalan süreyi pencere başlığında görüntüler ve Görev Yöneticisi ögesinde görünür hale getirir. &spectacle;'ün Görev Yöneticisi düğmesi aynı zamanda bir ilerleme çubuğu da gösterir, böylece görüntünün ne zaman çekileceğini takip edebilirsiniz.</para>
+                
+                <para
+>Gecikmeli ekran görüntüsünü beklerken, &spectacle;'ü geri yükleyebilirsiniz Bu durumda, <guibutton
+>Yeni Ekran Görüntüsü Al</guibutton
+> düğmesi <guibutton
+>İptal</guibutton
+> düğmesine dönüşecektir. İlerleme çubuğu da burada gösterilir ve size geri sayımı durdurma şansını verir.</para>
+
+                <para
+><guilabel
+>Tıklamada</guilabel
+> onay kutusunun etkinleştirilmesi gecikmeyi geçersiz kılar. Bu onay kutusu etkinleştirildiğinde, <guibutton
+>Yeni Bir Ekran Görüntüsü Al</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) düğmesine basıldığında &spectacle; penceresini açar ve fare imlecini artı işaretine dönüştürür. Ekran görüntüsü, fareye sol tıklandığında yakalanır veya başka herhangi bir fare düğmesine tıklandığında iptal edilir. İmleç artı işareti konumundayken fareyi kullanarak masaüstüyle etkileşim kuramayacağınızı; ancak klavyeyi kullanabileceğinizi unutmayın.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Seçenekler</title>
+
+                <para
+>Seçenekler, fare imlecinin ekran görüntülerine dahil edilip edilmeyeceğini ve tek bir uygulama penceresinin görüntüsüyle birlikte pencere dekorasyonlarının yakalanıp yakalanmayacağını seçmenizi sağlar. <guilabel
+>İmleç Altındaki Pencere</guilabel
+> kipinde, &spectacle; yalnızca imlecin altındaki geçerli açılır menünün görüntüsünü yakalayacak veya aynı zamanda ana pencereyi de içerecektir. Son olarak, <guilabel
+>Kaydet veya Kopyaladıktan sonra Çık</guilabel
+> seçeneği, herhangi bir kaydetme veya kopyalama işleminden sonra &spectacle;'den çıkacaktır.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+><guilabel
+>Fare işaretçisini içer</guilabel
+> onay kutusunun etkinleştirilmesi, ekran görüntüsüne fare işaretçisini de dahil eder.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Pencere başlık çubuğunu ve kenarlıklarını içer</guilabel
+> seçeneği yalnızca <guilabel
+>Alan</guilabel
+> çoklu kutusunda <guilabel
+>Etkin Pencere</guilabel
+> kipi veya <guilabel
+>İmleç Altındaki Pencere</guilabel
+> kipi seçiliyse etkindir. Bu seçeneği işaretlemek pencere kenarlıklarını ve dekorasyonlarını ekran görüntüsüne dahil eder; işareti kaldırmak yalnzıca pencere içeriğini alır.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Yalnızca geçerli açılır pencereyi yakala</guilabel
+> seçeneği yalnızca <guilabel
+>Alan</guilabel
+> çoklu kutusunda <guilabel
+>İmleç Altındaki Pencere</guilabel
+> kipi seçiliyse etkindir. Bu seçeneği işaretlenmek, ana penceresi olmadan yalnızca imlecin altındaki açılır menüyü yakalar.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+><guilabel
+>Elle kaydet veya kopyala işleminden sonra çık</guilabel
+> seçeneği, herhangi bir kaydetme veya kopyalama işleminden sonra &spectacle;'den çıkar. Kopyalanan ekran görüntüsünün yalnızca görüntüleri kabul eden bir pano yöneticisi çalıştırıyorsanız saklanacağını unutmayın. KDE Klipper simgesine sağ tıklayıp <guilabel
+>Panoyu Yapılandır...</guilabel
+> seçeneğini seçerek ve <guilabel
+>Görselleri yok say</guilabel
+> seçeneğinin işaretini kaldırarak bu şekilde yapılandırabilirsiniz.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Ek İşlevsellik</title>
+
+        <sect1>
+            <title
+>Düğmeler</title>
+
+            <para
+>&spectacle; penceresinin alt kısmında bazı düğmeler bulunur. Bunların işlevleri aşağıda açıklanmıştır:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Yardım</guibutton
+></term>
+                    <listitem>
+                        <para
+>&kde; Temelleri'nin <ulink url="help:/fundamentals/menus.html#menus-help"
+>Yardım Menüsü</ulink
+> bölümünde açıklanan temel menü ögelerini sağlar.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Yapılandır...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Yakalama ayarlarını ve öntanımlı kaydetme konumunu ve dosya adını değiştirebileceğiniz &spectacle;'ün Yapılandır penceresine erişmenizi sağlar.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Bilgi Notu</guibutton
+></term>
+                    <listitem>
+                        <para
+>Çeşitli bilgi notu ekleme araçları sunan bir not düzenleyici penceresi açar:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Bilgi notu düzenleyicisi</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Bilgi notu araçlarını deneyin. Ekran görüntülerinizi açıklamak için gereksiniminiz olan her şeyi burada bulabilirsiniz: Oklar, kalemler, işaretleyiciler, metin kutuları, sayılar ve hatta suratlar. Araç parametrelerini değiştirmek ve efektler (gölge, gri tonlama ve kenarlık) eklemek olanaklıdır. </para>
+                        <para
+>İşinizi bitirdiğinizde <guibutton
+>Tamam</guibutton
+> düğmesine basın. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Araçlar</guibutton
+></term>
+                    <listitem>
+                        <para
+>Çeşitli araçlar sunan bir açılır menüyü açar:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Öntanımlı Ekran Görüntüleri Klasörünü Aç</guimenuitem
+>, öntanımlı dosya yöneticisinde son kaydedilen ekran görüntüsünü vurgular</para>
+                            </listitem>
+                            <listitem>
+                                <para
+><guimenuitem
+>Yazdır</guimenuitem
+> iletişim kutusuna erişim</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Ekran Kaydı için çeşitli dış programlar</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Dışa Aktar</guibutton
+></term>
+                    <listitem>
+                        <para
+>PNG (Taşınabilir Ağ Grafikleri) &MIME; türü ile ilişkili tüm programların ekran görüntüsünü doğrudan açmanıza olanak tanıyan bir açılır menüyü açar. Hangi programların kurulu olduğuna bağlı olarak, anlık görüntüyü grafik uygulamalarınızda veya görüntüleyicilerinizde açıp düzenleyebilirsiniz.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Görseli Panoya Kopyala/Konumu Panoya Kopyala</guibutton
+></term>
+                    <listitem>
+                        <para
+>Geçerli ekran görüntüsünü veya konumunu panoya kopyalar. Bunun için <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> klavye kısayolunu da kullanabilirsiniz.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Farklı Kaydet</guibutton
+></term>
+                    <listitem>
+                        <para
+>Ekran görüntüsünü öntanımlı Resimler klasörünüze PNG görüntüsü olarak kaydeder ve uygulamadan hemen çıkar.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Yapılandır</title>
+            <para
+>Yapılandırma iletişim kutusunu açmak için <guibutton
+>Yapılandır...</guibutton
+> düğmesini kullanın.</para>
+            <sect2>
+            <title
+>Genel</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Genel</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Deklanşör başlatıldığında</guilabel
+></term>
+                    <listitem>
+                        <para
+><guilabel
+>Bütün ekranın görüntüsünü al</guilabel
+>maya, son kullanılan yakalama kipini kullanmaya veya kendiliğinden ekran görüntüsü almamaya olanak tanır. En son kullanılan yakalama kipi, Yakalama Kipi'nde ayarlanmiş kiptir</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Bir ekran görüntüsü aldıktan sonra</guilabel
+></term>
+                    <listitem>
+                        <para
+>Herhangi bir pano eylemini, görseli panoya kopyalamayı veya ekran görüntüsü yolunu panoya kopyalamayı <guilabel
+>Dosyayı öntanımlı klasöre kaydet</guilabel
+> ile devre dışı bırakabilirsiniz. Öntanımlı konum, <link linkend="save-page"
+>Kaydet</link
+> yapılandırma sayfasından yapılandırılabilir. <guilabel
+>Dosya konumunu panoya kopyala</guilabel
+>mak olanaklıdır. Sonrasında bunu metin girişi kabul eden herhangi bir yere yapıştırabilirsiniz. &spectacle; çıktıktan sonra yolu panoda tutmayı sürdürmek için bir pano yöneticisi çalıştırmanız gerektiğini not edin.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Ekran görüntüsü düğmesine basınca</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ekran görüntüsü almak için bir kısayola basıldığında ve &spectacle; halihazırda çalışıyorsa ekran görüntüsü alma sisteminin davranışını yapılandırmak olanaklıdır. Yeni bir ekran görüntüsü almak, yeni bir &spectacle; penceresi açmak veya pencere ve odağın var olan &spectacle; penceresine döndürülmesi arasında seçim yapabilirsiniz.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Açık renkli arka plan kullan</guilabel
+></term>
+                    <listitem>
+                        <para
+>Dikdörtgen bölge seçicide kırpılan alanı maskelemek için açık renkli bir arka plan rengi kullanın. Bu, koyu renkli imleçlerin görülmesini kolaylaştırabilir.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Büyüteci göster</guilabel
+></term>
+                    <listitem>
+                        <para
+>Bir ekran görüntüsü kaydedildiğinde, dosyanın kaydedildiği konumu panoya kopyalayın. Daha sonra bunu metin girişini kabul eden herhangi bir yere yapıştırabilirsiniz. &spectacle;'den çıkıldıktan sonra yolu panoda tutmak için bir pano yöneticisi çalıştırmanız gerektiğini unutmayın.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Tıkla ve bırak yapınca kabul et</guilabel
+></term>
+                    <listitem>
+                        <para
+>İşaretliyse <guilabel
+>Dikdörtgen Bölge</guilabel
+> kipinde fare düğmesi bırakılır bırakılmaz seçilen bölgeyi kabul edin.</para>
+                        <para
+>Yeni bir bölge seçerken, önceden kaydedilmiş bir bölge kullanılabilir değilken fare düğmesinin tıklatılması, sürüklenmesi ve bırakılması, seçilen bölgenin hemen yakalanmasını sağlayacaktır. Daha önce kaydedilmiş bir bölge gösterildiğinde, kaydedilen bölge daha fazla değiştirilebilir ve bu bölgenin kaydedilmesi elle onay gerektirir (&Enter; veya &LMB; ile çift tıklama). Önceden kaydedilen bölgenin dışına tıklayıp sürüklemek, yeni seçilen bölgeyi hemen yakalar.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Seçili alanı anımsa</guilabel
+></term>
+                    <listitem>
+                        <para
+>Öntanımlı olarak &spectacle;, kapatılıncaya kadar dikdörtgen bir bölgenin ekran görüntüsünü aldığınızda ilk seçimi anımsar. Ayrıca &spectacle;'ün seçili alanı her zaman veya ekran görüntüsü oturumları arasında anımsamamasını da sağlayabilirsiniz.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Kaydet</title>
+            <para
+><guilabel
+>Kaydet</guilabel
+> işlevini kullandığınızda &spectacle;, görüntüyü öntanımlı dosya adıyla Resimler klasörünüze (ana klasörünüzün içindedir) kaydeder. Öntanımlı dosya adı, görüntünün çekildiği tarih ve saati içerir.</para>
+
+            <para
+><guilabel
+>Kaydet</guilabel
+> sayfası, öntanımlı kaydetme konumunu ve dosya adını ayarlamanıza olanak tanır. Bu seçeneğe tıklamak aşağıdaki gibi bir iletişim kutusu açar: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Kaydet</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Kaydetme konumu</guilabel
+></term>
+                    <listitem>
+                    <para
+>Konum metin kutusunda <guibutton
+>Kaydet</guibutton
+>'a bastığınızda ekran görüntülerinizi kaydetmek istediğiniz klasörü ayarlayın.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Sıkıştırma kalitesi</guilabel
+></term>
+                    <listitem>
+                        <para
+>JPEG gibi kayıplı görsel biçimleriyle kaydederken kullanılan görsel kalitesini seçin. Daha yüksek değerler daha iyi kalite sağlar; ancak dosya boyutunu artırır. &spectacle;'de kullanılan dosya biçimleriyle ilgili daha fazla bilgi için ilgili <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>Vikipedi</ulink
+> sayfasına bakın.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Dosya adı</guilabel
+></term>
+                    <listitem>
+                        <para
+>Kaydedilen ekran görüntüleri için öntanımlı bir dosya adı ayarlayın.</para>
+                        <para
+>Dosya adında, dosya kaydedildiğinde gerçek metinle değiştirilecek olan aşağıdaki yer tutucuları kullanabilirsiniz:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>%D</userinput
+>: Gün</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%H</userinput
+>: Saat</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%M</userinput
+>: Ay</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: N basamağa kadar doldurulmuş sıralı sayı</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%S</userinput
+>: Saniye</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%T</userinput
+>: Pencere başlığı</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Y</userinput
+>: Yıl (4 basamak)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%Nd</userinput
+>: Sıralı numara</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%m</userinput
+>: Dakika</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>%y</userinput
+>: Yıl (2 basamak)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Aşağıdaki başvuru listesindeki yer tutuculara tıklayarak <guilabel
+>Dosya adı</guilabel
+> satırına ekleyebilirsiniz.</para>
+                        <para
+>Bu adda bir dosya varsa dosya adına bir seri numarası eklenir. Örneğin, dosya adı <filename
+>Ekran görüntüsü</filename
+> ise ve <filename
+>Ekran görüntüsü.png</filename
+> halihazırda varsa <filename
+>Ekran görüntüsü-1.png</filename
+> olarak kaydedilir.</para>
+                        <para
+>Ekran görüntüleri için öntanımlı görsel biçimini seçmek üzere metin alanının yanındaki açılır kutuyu kullanın. &spectacle;'de kullanılan dosya biçimleriyle ilgili daha fazla bilgi için ilgili <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>Vikipedi</ulink
+> sayfasına bakın.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Kısayollar</title>
+            <para
+>Bu yapılandırma sayfası, &spectacle;'ün öntanımlı kısayollarını değiştirmek için kullanılabilir. &spectacle;'ü başlatmak ve masaüstünüzün farklı bölümlerini yakalamak için kısayollar yapılandırmak olanaklıdır. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Sürükle ve Bırak</title>
+            <para
+>Yakalanan bir görüntü başka bir uygulamaya veya belgeye sürüklenebilir. Uygulama görüntüleri işleyebiliyorsa tam görüntünün bir kopyası buraya eklenir.</para>
+
+            <para
+>Bir ekran görüntüsünü dosya yöneticisi penceresine sürüklerseniz dosya adını düzenleyebileceğiniz ve görsel biçimini seçebileceğiniz bir iletişim kutusu açılır ve sonrasında dosya gerçek klasöre eklenir.</para>
+
+            <para
+>Ekran görüntüsünü bir metin kutusuna sürüklerseniz geçici olarak kaydedilen dosyanın yolu eklenir. Bu, web formlarına veya <ulink url="https://bugs.kde.org/"
+>&kde; hata izleyicisine</ulink
+> bir ekran görüntüsü eklerken yararlıdır.</para>
+
+            <para
+>Bu, görsel verisini almayan ve yalnızca sürüklenen MIME verisinde bir &URL; arayan tüm istemcilerle çalışır.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Emeği Geçenler ve Lisans</title>
+
+        <para
+>Program telif hakkı &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Kodun bazı kısımları doğrudan &ksnapshot; projesinden alınmıştır. Telif hakkı &copy; 1997-2011 &ksnapshot; geliştiricileri. Ayrıntılı telif hakkı devri bildirimleri kaynak kodundaki başlıklarda vardır.</para>
+
+        <para
+>Kodun bazı kısımları doğrudan &kwin; projesinden alınmıştır. Telif hakkı &copy; 2008, 2013 &kwin; geliştiricileri. Ayrıntılı telif hakkı devri bildirimleri kaynak kodundaki başlıklarda vardır.</para>
+
+        <para
+>Belgelendirme, özgün &ksnapshot; belgelendirmesi temellidir:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Telif hakkı &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Telif hakkı &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Emir SARI<email
+>emir_sari@icloud.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>

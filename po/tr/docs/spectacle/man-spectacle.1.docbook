@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Turkish "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Deklanşör Kullanıcı Kılavuzu</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Spectacle man page.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2021-04-11</date>
+<releaseinfo
+>Deklanşör 21.08</releaseinfo>
+<productname
+>KDE Uygulamaları</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Ekran görüntüsü yakalama izlencesi</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Deklanşör seçenekleri</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Açıklama</title>
+<para
+><command
+>spectacle</command
+>, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Deklanşör seçenekleri</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Tüm masaüstünü yakala (öntanımlı).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Geçerli monitörü yakala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Etkin pencereyi yakala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>İmlecin altındaki pencereyi ve açılır menüleri yakala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>İmlecin altındaki pencereyi, açılır menülerin üst ögeleri içerilmeden yakala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Ekranın dörtgen bir bölgesini yakala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Bir ekran görüntüsü almadan Deklanşör'ü başlat.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Grafik arayüz kipinde başlat (öntanımlı).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Bir ekran görüntüsü al ve grafik arayüzü göstermeden çık.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>DBus etkinleştirme kipinde başlat.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, ekran görüntüsü alındığında bir bildirim gösterme.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>dosya</replaceable
+></option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, ekran görüntüsünü <replaceable
+>dosya</replaceable
+>'ya kaydet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>milisaniye-gecikme</replaceable
+></option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, görüntüyü almadan önceki gecikme (milisaniye türünden).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, -o da kullanılmamışsa ekran görüntüsünü yalnızca panoya kopyala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, ekran görüntüsü dosyası yolunu panoya kopyala.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Ekran görüntüsünü almadan önce bir tıklamayı bekle. Gecikmeyi geçersiz kılar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>DBus kaydını yapmadan yeni bir grafik arayüz örneği açar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-p, --pointer</option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, ekran görüntüsünde işaretçiyi içer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>Arka plan kipinde, ekran görüntüsünde pencere dekorasyonlarını içerme.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Geri bildirim</title>
+<para
+>IRC için irc.libera.chat sunucusunda #kde odasını, de-graphics-devel@kde.org e-postasını veya web üzerinde &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt; adresini kullanabilirsiniz</para>
+</refsect1>
+
+<refsect1>
+<title
+>Ayrıca</title>
+<simplelist>
+<member
+>Daha ayrıntılı kullanıcı belgelendirmesine <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> adresinden ulaşılabilir (bu <acronym
+>URL</acronym
+>'yi &konqueror;'a girin veya <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+> komutunu çalıştırın).</member>
+<member
+>kf5options(7)</member>
+<member
+>qt5options(7)</member>
+<member
+>Ayrıca ek bilgiye <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+> adresinden ulaşılabilir</member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Telif hakkı</title>
+<para
+>Telif hakkı &copy; 2015 Boudhayan Gupta</para>
+<para
+>Lisans: GNU Genel Kamu Lisansı Sürüm 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+
