@@ -33,7 +33,7 @@ void ShortcutsOptionsPage::resetChanges()
 
 void ShortcutsOptionsPage::saveChanges()
 {
-    mEditor->commit();
+    mEditor->save();
 }
 
 bool ShortcutsOptionsPage::isModified() const
