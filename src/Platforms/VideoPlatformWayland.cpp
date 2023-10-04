@@ -73,19 +73,19 @@ QStringList VideoPlatformWayland::suggestedExtensions() const
     QStringList extensions;
 
     for (const PipeWireBaseEncodedStream::Encoder enc : m_recorder->suggestedEncoders()) {
-        if (enc == PipeWireBaseEncodedStream::VP8) {
+        if (enc == PipeWireBaseEncodedStream::VP9) {
             extensions.append(QStringLiteral("webm"));
         } else if (enc == PipeWireBaseEncodedStream::H264Baseline || enc == PipeWireBaseEncodedStream::H264Main) {
             extensions.append(QStringLiteral("mp4"));
         }
     }
     return extensions;
-
 }
+
 void VideoPlatformWayland::setExtension(const QString &extension)
 {
     if (extension == QStringLiteral("webm")) {
-        m_recorder->setEncoder(PipeWireBaseEncodedStream::VP8);
+        m_recorder->setEncoder(PipeWireBaseEncodedStream::VP9);
     } else if (extension == QStringLiteral("mp4")) {
         m_recorder->setEncoder(PipeWireBaseEncodedStream::H264Main);
     } else {
