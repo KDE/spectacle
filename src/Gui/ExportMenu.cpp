@@ -93,7 +93,7 @@ void ExportMenu::getKServiceItems()
             }
             QUrl filename;
             if(ExportManager::instance()->isImageSavedNotInTemp()) {
-                filename = Settings::self()->lastSaveLocation();
+                filename = Settings::self()->lastImageSaveLocation();
             } else {
                 filename = ExportManager::instance()->getAutosaveFilename();
                 SpectacleCore::instance()->syncExportImage();
@@ -126,7 +126,7 @@ void ExportMenu::getKServiceItems()
         }
         QUrl filename;
         if(ExportManager::instance()->isImageSavedNotInTemp()) {
-            filename = Settings::self()->lastSaveLocation();
+            filename = Settings::self()->lastImageSaveLocation();
         } else {
             filename = ExportManager::instance()->getAutosaveFilename();
             SpectacleCore::instance()->syncExportImage();
@@ -190,7 +190,7 @@ void ExportMenu::loadPurposeItems()
 
 void ExportMenu::openScreenshotsFolder()
 {
-    auto job = new KIO::OpenUrlJob(Settings::defaultSaveLocation());
+    auto job = new KIO::OpenUrlJob(Settings::imageSaveLocation());
     job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
     job->start();
 }

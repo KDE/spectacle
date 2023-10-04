@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SaveOptions</class>
- <widget class="QWidget" name="SaveOptions">
+ <class>ImageSaveOptions</class>
+ <widget class="QWidget" name="ImageSaveOptions">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,12 +17,12 @@
       <string>Save Location:</string>
      </property>
      <property name="buddy">
-      <cstring>kcfg_defaultSaveLocation</cstring>
+      <cstring>kcfg_imageSaveLocation</cstring>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="KUrlRequester" name="kcfg_defaultSaveLocation">
+    <widget class="KUrlRequester" name="kcfg_imageSaveLocation">
      <property name="mode">
       <set>KFile::Directory|KFile::LocalOnly</set>
      </property>
@@ -59,7 +59,7 @@
      <item>
       <layout class="QHBoxLayout" name="qualityHLayout">
        <item>
-        <widget class="QSlider" name="kcfg_compressionQuality">
+        <widget class="QSlider" name="kcfg_imageCompressionQuality">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -88,21 +88,21 @@
       <string>Filename:</string>
      </property>
      <property name="buddy">
-      <cstring>kcfg_saveFilenameFormat</cstring>
+      <cstring>kcfg_imageFilenameFormat</cstring>
      </property>
     </widget>
    </item>
    <item row="6" column="1">
     <layout class="QHBoxLayout" name="saveLayout">
      <item>
-      <widget class="QLineEdit" name="kcfg_saveFilenameFormat">
+      <widget class="QLineEdit" name="kcfg_imageFilenameFormat">
        <property name="placeholderText">
         <string notr="true">%d</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="kcfg_defaultSaveImageFormat">
+      <widget class="QComboBox" name="kcfg_preferredImageFormat">
        <property name="kcfg_property" stdset="0">
         <!-- This is not a user-visible string but a property name. Don't translate it. -->
         <string notr="true">currentText</string>
@@ -168,7 +168,7 @@
     </spacer>
    </item>
    <item row="4" column="1">
-    <widget class="QLabel" name="compressionQualityHelpLable">
+    <widget class="QLabel" name="imageCompressionQualityHelpLable">
      <property name="text">
       <string>For lossy image formats like JPEG</string>
      </property>
@@ -186,7 +186,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>kcfg_compressionQuality</sender>
+   <sender>kcfg_imageCompressionQuality</sender>
    <signal>valueChanged(int)</signal>
    <receiver>qualitySpinner</receiver>
    <slot>setValue(int)</slot>
@@ -204,7 +204,7 @@
   <connection>
    <sender>qualitySpinner</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>kcfg_compressionQuality</receiver>
+   <receiver>kcfg_imageCompressionQuality</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">

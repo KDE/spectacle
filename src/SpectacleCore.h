@@ -19,6 +19,7 @@
 #include "Gui/ViewerWindow.h"
 #include "Platforms/PlatformLoader.h"
 #include "RecordingModeModel.h"
+#include "VideoFormatModel.h"
 #include "settings.h"
 
 #include <array>
@@ -38,8 +39,6 @@ class SpectacleCore : public QObject
     Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
     Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
-    Q_PROPERTY(QStringList supportedVideoFormats READ supportedVideoFormats CONSTANT FINAL)
-    Q_PROPERTY(QString videoFormat READ videoFormat WRITE setVideoFormat NOTIFY videoFormatChanged)
 
 public:
     enum class StartMode {
@@ -57,6 +56,7 @@ public:
 
     CaptureModeModel *captureModeModel() const;
     RecordingModeModel *recordingModeModel() const;
+    VideoFormatModel *videoFormatModel() const;
 
     AnnotationDocument *annotationDocument() const;
 
@@ -84,9 +84,6 @@ public:
     QUrl currentVideo() const;
     QString recordedTime() const;
     Q_INVOKABLE QString timeFromMilliseconds(qint64 milliseconds) const;
-    QStringList supportedVideoFormats() const;
-    void setVideoFormat(const QString &format);
-    QString videoFormat() const;
 
     ExportManager::Actions autoExportActions() const;
 
@@ -113,7 +110,6 @@ Q_SIGNALS:
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();
-    void videoFormatChanged(const QString &format);
 
 private:
     void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
@@ -139,6 +135,7 @@ private:
     std::unique_ptr<VideoPlatform> m_videoPlatform;
     std::unique_ptr<CaptureModeModel> m_captureModeModel;
     std::unique_ptr<RecordingModeModel> m_recordingModeModel;
+    std::unique_ptr<VideoFormatModel> m_videoFormatModel;
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
     std::unique_ptr<QVariantAnimation> m_delayAnimation;

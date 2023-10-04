@@ -10,7 +10,8 @@
 #include <KConfigDialog>
 
 class GeneralOptionsPage;
-class SaveOptionsPage;
+class ImageSaveOptionsPage;
+class VideoSaveOptionsPage;
 class ShortcutsOptionsPage;
 
 class SettingsDialog : public KConfigDialog
@@ -32,7 +33,8 @@ private:
     void updateWidgetsDefault() override;
 
     GeneralOptionsPage *const m_generalPage;
-    SaveOptionsPage *const m_savePage;
+    ImageSaveOptionsPage *const m_imagesPage;
+    VideoSaveOptionsPage *const m_videosPage;
     ShortcutsOptionsPage *const m_shortcutsPage;
 };
 

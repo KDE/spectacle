@@ -45,34 +45,13 @@ ColumnLayout {
             checked: Settings.includePointer
             onToggled: Settings.includePointer = checked
         }
-        RowLayout {
-            visible: SpectacleCore.supportedVideoFormats.length > 1
-            Layout.fillWidth: true
-            QQC.Label {
-                text: i18nc("@label:listbox", "Video format:")
-            }
-            QQC.ComboBox {
-                id: formatCombo
-                Layout.fillWidth: true
-                model: SpectacleCore.supportedVideoFormats
-                onActivated: {
-                    const fmt = valueAt(index);
-                    SpectacleCore.videoFormat = fmt;
-                }
-                Binding {
-                    target: formatCombo
-                    property: "currentIndex"
-                    value: Math.max(0,  SpectacleCore.supportedVideoFormats.indexOf(SpectacleCore.videoFormat));
-                }
-            }
-        }
     }
     ColumnLayout {
         visible: SpectacleCore.isRecording
         QQC.Button {
             Layout.fillWidth: true
             text: i18n("Finish recording")
-            onClicked: SpectacleCore.finishRecording()
+            onClicked: VideoPlatform.finishRecording()
         }
     }
     Item {

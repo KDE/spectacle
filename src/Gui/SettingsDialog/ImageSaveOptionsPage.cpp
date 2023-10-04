@@ -5,11 +5,11 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include "SaveOptionsPage.h"
+#include "ImageSaveOptionsPage.h"
 
 #include "ExportManager.h"
-#include "CaptureModeModel.h"
-#include "ui_SaveOptions.h"
+#include "SaveOptionsUtils.h"
+#include "ui_ImageSaveOptions.h"
 
 #include <KLocalizedString>
 
@@ -20,13 +20,13 @@
 #include <QLabel>
 #include <QLineEdit>
 
-SaveOptionsPage::SaveOptionsPage(QWidget *parent)
+ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     : QWidget(parent)
-    , m_ui(new Ui_SaveOptions)
+    , m_ui(new Ui_ImageSaveOptions)
 {
     m_ui->setupUi(this);
 
-    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
+    connect(m_ui->kcfg_imageFilenameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
         for (const auto &item : imageFormats) {
@@ -34,14 +34,14 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
             if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
                 txtCopy.chop(fmt.length() + 1);
-                m_ui->kcfg_saveFilenameFormat->setText(txtCopy);
-                m_ui->kcfg_defaultSaveImageFormat->setCurrentIndex(m_ui->kcfg_defaultSaveImageFormat->findText(fmt.toUpper()));
+                m_ui->kcfg_imageFilenameFormat->setText(txtCopy);
+                m_ui->kcfg_preferredImageFormat->setCurrentIndex(m_ui->kcfg_preferredImageFormat->findText(fmt.toUpper()));
             }
         }
     });
-    connect(m_ui->kcfg_saveFilenameFormat, &QLineEdit::textChanged, this, &SaveOptionsPage::updateFilenamePreview);
+    connect(m_ui->kcfg_imageFilenameFormat, &QLineEdit::textChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
 
-    m_ui->kcfg_defaultSaveImageFormat->addItems([&]() {
+    m_ui->kcfg_preferredImageFormat->addItems([&]() {
         QStringList items;
         const auto formats = QImageWriter::supportedImageFormats();
         items.reserve(formats.count());
@@ -50,7 +50,7 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
         }
         return items;
     }());
-    connect(m_ui->kcfg_defaultSaveImageFormat, &QComboBox::currentTextChanged, this, &SaveOptionsPage::updateFilenamePreview);
+    connect(m_ui->kcfg_preferredImageFormat, &QComboBox::currentTextChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
 
     QString captureInstruction = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
@@ -62,29 +62,19 @@ SaveOptionsPage::SaveOptionsPage(QWidget *parent)
     captureInstruction += QStringLiteral("</blockquote>");
     m_ui->captureInstructionLabel->setText(captureInstruction);
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
-        m_ui->kcfg_saveFilenameFormat->insert(placeholder);
+        m_ui->kcfg_imageFilenameFormat->insert(placeholder);
     });
 
-    m_ui->compressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
+    m_ui->imageCompressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
 }
 
-SaveOptionsPage::~SaveOptionsPage() = default;
+ImageSaveOptionsPage::~ImageSaveOptionsPage() = default;
 
-void SaveOptionsPage::updateFilenamePreview()
+void ImageSaveOptionsPage::updateFilenamePreview()
 {
-    auto exportManager = ExportManager::instance();
-    exportManager->setWindowTitle(QStringLiteral("Spectacle"));
-
-    // If there is no window title, we need to change it to have a placeholder.
-    const bool usePlaceholder = exportManager->windowTitle().isEmpty();
-    if (usePlaceholder) {
-        exportManager->setWindowTitle(QGuiApplication::applicationDisplayName());
-    }
-    const QString lFileName = exportManager->formattedFilename(m_ui->kcfg_saveFilenameFormat->text());
-    m_ui->preview->setText(xi18nc("@info", "<filename>%1.%2</filename>", lFileName, m_ui->kcfg_defaultSaveImageFormat->currentText().toLower()));
-    if (usePlaceholder) {
-        exportManager->setWindowTitle({});
-    }
+    const auto extension = m_ui->kcfg_preferredImageFormat->currentText().toLower();
+    const auto templateBasename = m_ui->kcfg_imageFilenameFormat->text();
+    ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension);
 }
 
-#include "moc_SaveOptionsPage.cpp"
+#include "moc_ImageSaveOptionsPage.cpp"

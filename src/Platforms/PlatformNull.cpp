@@ -46,6 +46,11 @@ VideoPlatform::RecordingModes VideoPlatformNull::supportedRecordingModes() const
     return {};
 }
 
+VideoPlatform::Formats VideoPlatformNull::supportedFormats() const
+{
+    return {};
+}
+
 void VideoPlatformNull::startRecording(const QString &path, RecordingMode mode, const RecordingOption &, bool withPointer)
 {
     setRecording(true);
@@ -60,18 +65,6 @@ void VideoPlatformNull::finishRecording()
     Q_EMIT recordingSaved(m_path);
 }
 
-void VideoPlatformNull::setExtension(const QString &)
-{
-}
 
-QString VideoPlatformNull::extension() const
-{
-    return QStringLiteral("mp4");
-}
-
-QStringList VideoPlatformNull::suggestedExtensions() const
-{
-    return {QStringLiteral("mp4")};
-}
 
 #include "moc_PlatformNull.cpp"

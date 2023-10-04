@@ -10,18 +10,18 @@
 #include <QScopedPointer>
 #include <QWidget>
 
-class Ui_SaveOptions;
+class Ui_ImageSaveOptions;
 
-class SaveOptionsPage : public QWidget
+class ImageSaveOptionsPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit SaveOptionsPage(QWidget *parent = nullptr);
-    ~SaveOptionsPage() override;
+    explicit ImageSaveOptionsPage(QWidget *parent = nullptr);
+    ~ImageSaveOptionsPage() override;
 
 private:
-    QScopedPointer<Ui_SaveOptions> m_ui;
+    QScopedPointer<Ui_ImageSaveOptions> m_ui;
 
     void updateFilenamePreview();
 };

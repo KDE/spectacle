@@ -5,16 +5,50 @@
 */
 
 #include "VideoPlatformWayland.h"
+#include "Platforms/VideoPlatform.h"
 #include "screencasting.h"
+#include "settings.h"
 #include <QDebug>
 #include <QStandardPaths>
 #include <QUrl>
+
+using Format = VideoPlatform::Format;
+using Formats = VideoPlatform::Formats;
+using Encoder = PipeWireBaseEncodedStream::Encoder;
+
+VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
+{
+    switch (encoder) {
+    case Encoder::VP9: return WebM_VP9;
+    case Encoder::H264Main: return MP4_H264;
+    case Encoder::H264Baseline: return MP4_H264;
+    default: return NoFormat;
+    }
+}
+
+PipeWireBaseEncodedStream::Encoder VideoPlatformWayland::encoderForFormat(Format format) const
+{
+    const auto encoders = m_recorder->suggestedEncoders();
+    if (format == WebM_VP9 && encoders.contains(Encoder::VP9)) {
+        return Encoder::VP9;
+    }
+    if (format == MP4_H264) {
+        if (encoders.contains(Encoder::H264Main)) {
+            return Encoder::H264Main;
+        }
+        if (encoders.contains(Encoder::H264Baseline)) {
+            return Encoder::H264Baseline;
+        }
+    }
+    return Encoder::NoEncoder;
+}
 
 VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     : VideoPlatform(parent)
     , m_screencasting(new Screencasting(this))
     , m_recorder(new PipeWireRecord())
 {
+    // m_recorder->setMaxFramerate({30, 1});
 }
 
 VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() const
@@ -25,8 +59,28 @@ VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() co
         return {};
 }
 
-void VideoPlatformWayland::startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
+VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
 {
+    Formats formats;
+    if (m_screencasting->isAvailable()) {
+        const auto encoders = m_recorder->suggestedEncoders();
+        for (auto encoder : encoders) {
+            formats |= formatForEncoder(encoder);
+        }
+    }
+    return formats;
+}
+
+void VideoPlatformWayland::startRecording
+(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
+{
+    if (isRecording()) {
+        qWarning() << "Warning: Tried to start recording while already recording.";
+        return;
+    }
+
+    auto format = static_cast<Format>(Settings::preferredVideoFormat());
+    m_recorder->setEncoder(encoderForFormat(format));
     Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Metadata : Screencasting::Hidden;
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
@@ -50,6 +104,7 @@ void VideoPlatformWayland::startRecording(const QString &path, RecordingMode rec
     m_recorder->setOutput(path);
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
+        qDebug() <<m_recorder->state();
         if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
             Q_EMIT recordingSaved(m_recorder->output());
             setRecording(false);
@@ -61,36 +116,6 @@ void VideoPlatformWayland::finishRecording()
 {
     Q_ASSERT(m_recorder);
     m_recorder->setActive(false);
-}
-
-QString VideoPlatformWayland::extension() const
-{
-    return m_recorder->currentExtension();
-}
-
-QStringList VideoPlatformWayland::suggestedExtensions() const
-{
-    QStringList extensions;
-
-    for (const PipeWireBaseEncodedStream::Encoder enc : m_recorder->suggestedEncoders()) {
-        if (enc == PipeWireBaseEncodedStream::VP9) {
-            extensions.append(QStringLiteral("webm"));
-        } else if (enc == PipeWireBaseEncodedStream::H264Baseline || enc == PipeWireBaseEncodedStream::H264Main) {
-            extensions.append(QStringLiteral("mp4"));
-        }
-    }
-    return extensions;
-}
-
-void VideoPlatformWayland::setExtension(const QString &extension)
-{
-    if (extension == QStringLiteral("webm")) {
-        m_recorder->setEncoder(PipeWireBaseEncodedStream::VP9);
-    } else if (extension == QStringLiteral("mp4")) {
-        m_recorder->setEncoder(PipeWireBaseEncodedStream::H264Main);
-    } else {
-        qWarning() << "Unsupported extension" << extension;
-    }
 }
 
 #include "moc_VideoPlatformWayland.cpp"

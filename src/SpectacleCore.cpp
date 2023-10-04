@@ -18,6 +18,7 @@
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
+#include "Platforms/VideoPlatform.h"
 #include "ShortcutActions.h"
 #include "PlasmaVersion.h"
 // generated
@@ -112,7 +113,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     m_platform = loadPlatform();
     m_videoPlatform = loadVideoPlatform();
-    m_videoPlatform->setExtension(Settings::videoFormat());
     auto platform = m_platform.get();
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
@@ -228,6 +228,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // set up CaptureMode model
     m_captureModeModel = std::make_unique<CaptureModeModel>(platform->supportedGrabModes(), this);
     m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
+    m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
     auto captureModeModel = m_captureModeModel.get();
     connect(platform, &Platform::supportedGrabModesChanged, captureModeModel, [this](){
         m_captureModeModel->setGrabModes(m_platform->supportedGrabModes());
@@ -276,6 +277,11 @@ CaptureModeModel *SpectacleCore::captureModeModel() const
 RecordingModeModel *SpectacleCore::recordingModeModel() const
 {
     return m_recordingModeModel.get();
+}
+
+VideoFormatModel *SpectacleCore::videoFormatModel() const
+{
+    return m_videoFormatModel.get();
 }
 
 AnnotationDocument *SpectacleCore::annotationDocument() const
@@ -833,6 +839,7 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SpectacleCore", this);
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Platform", m_platform.get());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "VideoPlatform", m_videoPlatform.get());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Settings", Settings::self());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "CaptureModeModel", m_captureModeModel.get());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SelectionEditor", SelectionEditor::instance());
@@ -900,7 +907,9 @@ void SpectacleCore::unityLauncherUpdate(const QVariantMap &properties) const
 void SpectacleCore::startRecordingScreen(QScreen *screen, bool withPointer)
 {
     Q_ASSERT(!m_videoPlatform->isRecording());
-    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
+    auto extension = VideoPlatform::extensionForFormat(format);
+    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
     m_videoPlatform->startRecording(output, VideoPlatform::Screen, screen, withPointer);
     setVideoMode(true);
 }
@@ -908,7 +917,9 @@ void SpectacleCore::startRecordingScreen(QScreen *screen, bool withPointer)
 void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
 {
     Q_ASSERT(!m_videoPlatform->isRecording());
-    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
+    auto extension = VideoPlatform::extensionForFormat(format);
+    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
     m_videoPlatform->startRecording(output, VideoPlatform::Region, region, withPointer);
     setVideoMode(true);
 }
@@ -916,7 +927,9 @@ void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
 void SpectacleCore::startRecordingWindow(const QString &uuid, bool withPointer)
 {
     Q_ASSERT(!m_videoPlatform->isRecording());
-    const QString output = ExportManager::instance()->suggestedVideoFilename(m_videoPlatform->extension());
+    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
+    auto extension = VideoPlatform::extensionForFormat(format);
+    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
     m_videoPlatform->startRecording(output, VideoPlatform::Window, uuid, withPointer);
     setVideoMode(true);
 }
@@ -977,28 +990,6 @@ QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
         options |= KFormat::FoldHours;
     }
     return KFormat().formatDuration(milliseconds, options);
-}
-
-QStringList SpectacleCore::supportedVideoFormats() const
-{
-    return m_videoPlatform->suggestedExtensions();
-}
-
-void SpectacleCore::setVideoFormat(const QString &format)
-{
-    if (format == Settings::videoFormat()) {
-        return;
-    }
-
-    m_videoPlatform->setExtension(format);
-    Settings::setVideoFormat(m_videoPlatform->extension());
-
-    Q_EMIT videoFormatChanged(format);
-}
-
-QString SpectacleCore::videoFormat() const
-{
-    return m_videoPlatform->extension();
 }
 
 #include "moc_SpectacleCore.cpp"

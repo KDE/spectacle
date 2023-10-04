@@ -108,9 +108,6 @@ if(NOT XCB_CURSOR_FOUND)
 	set(XCB_COMPONENTS_FOUND FALSE)
 endif()
 
-# add the spectacle.upd file
-install(FILES kconf_update/spectacle.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
-
 # fail build if none of the platform backends can be found
 if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
     message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
@@ -126,6 +123,7 @@ add_subdirectory(src)
 add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
+add_subdirectory(kconf_update)
 add_subdirectory(tests)
 
 if (KF6DocTools_FOUND)

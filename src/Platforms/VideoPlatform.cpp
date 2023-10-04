@@ -7,6 +7,8 @@
 #include "VideoPlatform.h"
 #include <QTimerEvent>
 
+using namespace Qt::StringLiterals;
+
 VideoPlatform::VideoPlatform(QObject *parent)
     : QObject(parent)
 {
@@ -43,6 +45,15 @@ void VideoPlatform::timerEvent(QTimerEvent *event)
 {
     if (event->timerId() == m_basicTimer.timerId()) {
         Q_EMIT recordedTimeChanged();
+    }
+}
+
+QString VideoPlatform::extensionForFormat(Format format)
+{
+    switch (format) {
+    case WebM_VP9: return "webm"_L1;
+    case MP4_H264: return "mp4"_L1;
+    default: return {};
     }
 }
 

@@ -7,6 +7,7 @@
 <include>QStandardPaths</include>
 <include>CaptureModeModel.h</include>
 <include>Gui/Annotations/AnnotationDocument.h</include>
+<include>Platforms/VideoPlatform.h</include>
 <kcfgfile />
 <group name="General">
     <entry name="launchAction" key="onLaunchAction" type="Enum">
@@ -106,53 +107,62 @@
         <choices name="CaptureModeModel::CaptureMode"></choices>
         <default>CaptureModeModel::CaptureMode::AllScreens</default>
     </entry>
-    <entry name="videoFormat" type="String">
-        <label>File format for saved screen recordings</label>
-        <default>webm</default>
-    </entry>
 </group>
-<group name="Save">
-    <entry name="defaultSaveLocation" type="Url">
+<group name="ImageSave">
+    <entry name="imageSaveLocation" type="Url">
         <label>Default filename</label>
         <default code="true">
             QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/'))
         </default>
     </entry>
-    <entry name="defaultVideoSaveLocation" type="Url">
-        <label>Default filename</label>
-        <default code="true">
-            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)+QLatin1Char('/'))
-        </default>
-    </entry>
-    <entry name="compressionQuality" type="UInt">
+    <entry name="imageCompressionQuality" type="UInt">
         <label>Compression quality for lossy file formats</label>
         <default>90</default>
         <min>0</min>
         <max>100</max>
     </entry>
-     <entry name="defaultSaveImageFormat" type="String">
+    <entry name="preferredImageFormat" type="String">
+        <!--This is a string because the available formats
+        come from QImageWriter::supportedImageFormats()-->
         <label>Default save image format</label>
         <default>PNG</default>
     </entry>
-     <entry name="defaultSaveVideoFormat" type="String">
-        <label>Default save image format</label>
-        <default>mkv</default>
-    </entry>
-    <entry name="saveFilenameFormat" type="String">
+    <entry name="imageFilenameFormat" type="String">
         <label>The default filename used when saving</label>
         <default>Screenshot_%Y%M%D_%H%m%S</default>
     </entry>
-    <entry name="saveVideoFormat" type="String">
+    <entry name="lastImageSaveLocation" type="Url">
+        <label>The path of the file saved last</label>
+        <default code="true">imageSaveLocation()</default>
+    </entry>
+    <entry name="lastImageSaveAsLocation" type="Url">
+        <label>Last path used for "save as" action</label>
+        <default code="true">imageSaveLocation()</default>
+    </entry>
+</group>
+<group name="VideoSave">
+    <entry name="videoSaveLocation" type="Url">
+        <label>Default filename</label>
+        <default code="true">
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)+QLatin1Char('/'))
+        </default>
+    </entry>
+    <entry name="preferredVideoFormat" type="Enum">
+        <label>Default video format</label>
+        <choices name="VideoPlatform::Format"></choices>
+        <default>VideoPlatform::Format::DefaultFormat</default>
+    </entry>
+    <entry name="videoFilenameFormat" type="String">
         <label>The default filename used when recording a video</label>
         <default>Screencast_%Y%M%D_%H%m%S</default>
     </entry>
-    <entry name="lastSaveLocation" type="Url">
+    <entry name="lastVideoSaveLocation" type="Url">
         <label>The path of the file saved last</label>
-        <default code="true">defaultSaveLocation()</default>
+        <default code="true">videoSaveLocation()</default>
     </entry>
-    <entry name="lastSaveAsLocation" type="Url">
+    <entry name="lastVideoSaveAsLocation" type="Url">
         <label>Last path used for "save as" action</label>
-        <default code="true">defaultSaveLocation()</default>
+        <default code="true">videoSaveLocation()</default>
     </entry>
 </group>
 <group name="Annotations">

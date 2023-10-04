@@ -24,6 +24,7 @@ add_executable(spectacle
     SpectacleCore.cpp
     SpectacleDBusAdapter.cpp
     ShortcutActions.cpp
+    VideoFormatModel.cpp
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
@@ -38,7 +39,8 @@ add_executable(spectacle
     Gui/Annotations/AnnotationViewport.cpp
     Gui/Annotations/EditAction.cpp
     Gui/Annotations/EffectUtils.cpp
-    Gui/SettingsDialog/SaveOptionsPage.cpp
+    Gui/SettingsDialog/ImageSaveOptionsPage.cpp
+    Gui/SettingsDialog/VideoSaveOptionsPage.cpp
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
@@ -72,7 +74,11 @@ if(PURPOSE_FOUND)
     target_link_libraries(spectacle PRIVATE KF6::PurposeWidgets)
 endif()
 
-ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/SaveOptions.ui)
+ki18n_wrap_ui(spectacle
+    Gui/SettingsDialog/GeneralOptions.ui
+    Gui/SettingsDialog/ImageSaveOptions.ui
+    Gui/SettingsDialog/VideoSaveOptions.ui
+)
 
 target_link_libraries(spectacle PRIVATE
     Qt::Concurrent

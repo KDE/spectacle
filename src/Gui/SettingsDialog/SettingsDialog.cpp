@@ -8,7 +8,8 @@
 #include "SettingsDialog.h"
 
 #include "GeneralOptionsPage.h"
-#include "SaveOptionsPage.h"
+#include "ImageSaveOptionsPage.h"
+#include "VideoSaveOptionsPage.h"
 #include "ShortcutsOptionsPage.h"
 #include "settings.h"
 
@@ -25,12 +26,14 @@ using namespace Qt::StringLiterals;
 SettingsDialog::SettingsDialog(QWidget *parent)
     : KConfigDialog(parent, "settings"_L1, Settings::self())
     , m_generalPage(new GeneralOptionsPage(this))
-    , m_savePage(new SaveOptionsPage(this))
+    , m_imagesPage(new ImageSaveOptionsPage(this))
+    , m_videosPage(new VideoSaveOptionsPage(this))
     , m_shortcutsPage(new ShortcutsOptionsPage(this))
 {
     setFaceType(KPageDialog::List);
     addPage(m_generalPage, Settings::self(), i18nc("Settings category", "General"), "spectacle"_L1);
-    addPage(m_savePage, Settings::self(), i18nc("Settings category", "Save"), "document-save"_L1);
+    addPage(m_imagesPage, Settings::self(), i18nc("Settings category", "Image Saving"), "image-x-generic"_L1);
+    addPage(m_videosPage, Settings::self(), i18nc("Settings category", "Video Saving"), "video-x-generic"_L1);
     addPage(m_shortcutsPage, i18nc("Settings category", "Shortcuts"), "preferences-desktop-keyboard"_L1);
     connect(m_shortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
         updateButtons();
@@ -45,7 +48,8 @@ QSize SettingsDialog::sizeHint() const
     const auto headerSize = pageWidget()->pageHeader()->sizeHint();
     const auto footerSize = pageWidget()->pageFooter()->sizeHint();
     auto sh = m_generalPage->sizeHint();
-    sh = sh.expandedTo(m_savePage->sizeHint());
+    sh = sh.expandedTo(m_imagesPage->sizeHint());
+    sh = sh.expandedTo(m_videosPage->sizeHint());
     sh = sh.expandedTo(m_shortcutsPage->sizeHint());
     sh.rheight() += headerSize.height() + footerSize.height()
                  + style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) * 2;

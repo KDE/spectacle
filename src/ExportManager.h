@@ -65,7 +65,7 @@ public:
     /**
      * Returns a formatted filename using a template string.
      */
-    QString formattedFilename(const QString &nameTemplate = Settings::saveFilenameFormat()) const;
+    QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameFormat()) const;
 
     QString suggestedVideoFilename(const QString &extension) const;
 

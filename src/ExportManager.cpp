@@ -41,9 +41,9 @@ ExportManager::ExportManager(QObject *parent)
 {
     connect(this, &ExportManager::imageExported, [](Actions actions, const QUrl &url) {
         if (actions & AnySave) {
-            Settings::setLastSaveLocation(url);
+            Settings::setLastImageSaveLocation(url);
             if (actions & SaveAs) {
-                Settings::setLastSaveAsLocation(url);
+                Settings::setLastImageSaveAsLocation(url);
             }
         }
     });
@@ -123,12 +123,12 @@ static QString ensureDefaultLocationExists(const QUrl &saveUrl)
 
 QString ExportManager::defaultSaveLocation() const
 {
-    return ensureDefaultLocationExists(Settings::self()->defaultSaveLocation());
+    return ensureDefaultLocationExists(Settings::imageSaveLocation());
 }
 
 QString ExportManager::defaultVideoSaveLocation() const
 {
-    return ensureDefaultLocationExists(Settings::self()->defaultVideoSaveLocation());
+    return ensureDefaultLocationExists(Settings::videoSaveLocation());
 }
 
 QUrl ExportManager::getAutosaveFilename() const
@@ -136,8 +136,9 @@ QUrl ExportManager::getAutosaveFilename() const
     const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
     const QString filename = formattedFilename();
-    const QString fullpath =
-        autoIncrementFilename(baseDirPath.filePath(filename), Settings::self()->defaultSaveImageFormat().toLower(), &ExportManager::isFileExists);
+    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
+                                                   Settings::preferredImageFormat().toLower(),
+                                                   &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -151,7 +152,7 @@ QString ExportManager::suggestedVideoFilename(const QString &extension) const
 {
     const QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = formattedFilename(Settings::self()->saveVideoFormat());
+    const QString filename = formattedFilename(Settings::videoFilenameFormat());
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
@@ -303,7 +304,7 @@ QString ExportManager::imageFileSuffix(const QUrl &url) const
     const QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
 
     if (type.isEmpty()) {
-        return Settings::self()->defaultSaveImageFormat().toLower();
+        return Settings::self()->preferredImageFormat().toLower();
     }
     return type;
 }
@@ -314,7 +315,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
     // From looking at how QImageWriter handles the built-in supported formats internally,
     // "format" basically means the file extension, not the mimetype.
     QImageWriter imageWriter(device, suffix);
-    imageWriter.setQuality(Settings::self()->compressionQuality());
+    imageWriter.setQuality(Settings::imageCompressionQuality());
     /** Set compression 50 if the format is png. Otherwise if no compression value is specified
      *  it will fallback to using quality (QTBUG-43618) and produce huge files.
      *  See also qpnghandler.cpp#n1075. The other formats that do compression seem to have it
@@ -498,14 +499,14 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         }
 
         // construct the file name
-        const QString filenameExtension = Settings::self()->defaultSaveImageFormat().toLower();
+        const QString filenameExtension = Settings::self()->preferredImageFormat().toLower();
         const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
         QFileDialog dialog;
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
         QUrl dirUrl = url.adjusted(QUrl::RemoveFilename);
         if (!dirUrl.isValid()) {
-            dirUrl = Settings::self()->lastSaveAsLocation().adjusted(QUrl::RemoveFilename);
+            dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
         }
         dialog.setDirectoryUrl(dirUrl);
         dialog.selectFile(formattedFilename() + QStringLiteral(".") + filenameExtension);
@@ -553,7 +554,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             if (m_imageSavedNotInTemp) {
                 // The image has been saved (manually or automatically),
                 // we need to choose that file path
-                url = Settings::self()->lastSaveLocation();
+                url = Settings::self()->lastImageSaveLocation();
             } else {
                 // use a temporary save path, and copy that to clipboard instead
                 url = ExportManager::instance()->tempSave();
