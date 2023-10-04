@@ -65,16 +65,11 @@ void VideoPlatformWayland::finishRecording()
 
 QString VideoPlatformWayland::extension() const
 {
-#ifdef KPW_WITH_SUGGESTED
     return m_recorder->currentExtension();
-#else
-    return m_recorder->extension();
-#endif
 }
 
 QStringList VideoPlatformWayland::suggestedExtensions() const
 {
-#ifdef KPW_WITH_SUGGESTED
     QStringList extensions;
 
     for (const PipeWireBaseEncodedStream::Encoder enc : m_recorder->suggestedEncoders()) {
@@ -85,14 +80,10 @@ QStringList VideoPlatformWayland::suggestedExtensions() const
         }
     }
     return extensions;
-#else
-    return {m_recorder->extension()};
-#endif
-}
 
+}
 void VideoPlatformWayland::setExtension(const QString &extension)
 {
-#ifdef KPW_WITH_SUGGESTED
     if (extension == QStringLiteral("webm")) {
         m_recorder->setEncoder(PipeWireBaseEncodedStream::VP8);
     } else if (extension == QStringLiteral("mp4")) {
@@ -100,7 +91,6 @@ void VideoPlatformWayland::setExtension(const QString &extension)
     } else {
         qWarning() << "Unsupported extension" << extension;
     }
-#endif
 }
 
 #include "moc_VideoPlatformWayland.cpp"
