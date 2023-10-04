@@ -9,6 +9,8 @@
 
 #include <KConfigDialog>
 
+class GeneralOptionsPage;
+class SaveOptionsPage;
 class ShortcutsOptionsPage;
 
 class SettingsDialog : public KConfigDialog
@@ -29,7 +31,9 @@ private:
     void updateWidgets() override;
     void updateWidgetsDefault() override;
 
-    ShortcutsOptionsPage *const mShortcutsPage;
+    GeneralOptionsPage *const m_generalPage;
+    SaveOptionsPage *const m_savePage;
+    ShortcutsOptionsPage *const m_shortcutsPage;
 };
 
 #endif // SETTINGSDIALOG_H

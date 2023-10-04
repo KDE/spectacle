@@ -13,19 +13,26 @@
 #include "settings.h"
 
 #include <QFontDatabase>
+#include <QScreen>
+#include <QStyle>
 #include <QWindow>
 
 #include <KLocalizedString>
 #include <KShortcutWidget>
 
+using namespace Qt::StringLiterals;
+
 SettingsDialog::SettingsDialog(QWidget *parent)
-    : KConfigDialog(parent, QStringLiteral("settings"), Settings::self())
-    , mShortcutsPage(new ShortcutsOptionsPage(this))
+    : KConfigDialog(parent, "settings"_L1, Settings::self())
+    , m_generalPage(new GeneralOptionsPage(this))
+    , m_savePage(new SaveOptionsPage(this))
+    , m_shortcutsPage(new ShortcutsOptionsPage(this))
 {
-    addPage(new GeneralOptionsPage(this), Settings::self(), i18n("General"), QStringLiteral("spectacle"));
-    addPage(new SaveOptionsPage(this), Settings::self(), i18n("Save"), QStringLiteral("document-save"));
-    addPage(mShortcutsPage, i18n("Shortcuts"), QStringLiteral("preferences-desktop-keyboard"));
-    connect(mShortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
+    setFaceType(KPageDialog::List);
+    addPage(m_generalPage, Settings::self(), i18nc("Settings category", "General"), "spectacle"_L1);
+    addPage(m_savePage, Settings::self(), i18nc("Settings category", "Save"), "document-save"_L1);
+    addPage(m_shortcutsPage, i18nc("Settings category", "Shortcuts"), "preferences-desktop-keyboard"_L1);
+    connect(m_shortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
         updateButtons();
     });
     connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
@@ -33,9 +40,19 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
 QSize SettingsDialog::sizeHint() const
 {
-    // Take the font size into account for the window size, as we do for UI elements
-    const float fontSize = QFontDatabase::systemFont(QFontDatabase::GeneralFont).pointSizeF();
-    return QSize(qRound(58 * fontSize), qRound(62 * fontSize));
+    // Avoid having pages that need to be scrolled,
+    // unless size is larger than available screen height.
+    const auto headerSize = pageWidget()->pageHeader()->sizeHint();
+    const auto footerSize = pageWidget()->pageFooter()->sizeHint();
+    auto sh = m_generalPage->sizeHint();
+    sh = sh.expandedTo(m_savePage->sizeHint());
+    sh = sh.expandedTo(m_shortcutsPage->sizeHint());
+    sh.rheight() += headerSize.height() + footerSize.height()
+                 + style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) * 2;
+    sh = KConfigDialog::sizeHint().expandedTo(sh);
+    const auto screenHeight = screen() ? screen()->availableGeometry().height() : 0;
+    sh.setHeight(std::min(sh.height(), screenHeight));
+    return sh;
 }
 
 void SettingsDialog::showEvent(QShowEvent *event)
@@ -48,7 +65,7 @@ void SettingsDialog::showEvent(QShowEvent *event)
 
 bool SettingsDialog::hasChanged()
 {
-    return mShortcutsPage->isModified() || KConfigDialog::hasChanged();
+    return m_shortcutsPage->isModified() || KConfigDialog::hasChanged();
 }
 
 bool SettingsDialog::isDefault()
@@ -59,19 +76,19 @@ bool SettingsDialog::isDefault()
 void SettingsDialog::updateSettings()
 {
     KConfigDialog::updateSettings();
-    mShortcutsPage->saveChanges();
+    m_shortcutsPage->saveChanges();
 }
 
 void SettingsDialog::updateWidgets()
 {
     KConfigDialog::updateWidgets();
-    mShortcutsPage->resetChanges();
+    m_shortcutsPage->resetChanges();
 }
 
 void SettingsDialog::updateWidgetsDefault()
 {
     KConfigDialog::updateWidgetsDefault();
-    mShortcutsPage->defaults();
+    m_shortcutsPage->defaults();
 }
 
 #include "moc_SettingsDialog.cpp"
