@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-05 01:40+0000\n"
 "PO-Revision-Date: 2017-05-24 08:44-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -602,7 +602,6 @@ msgid "Image Zoom"
 msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:54
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr ""
@@ -973,13 +972,26 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:32
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "Settings category"
 msgid "General"
 msgstr "כללי"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:33
+#, kde-format
+msgctxt "Settings category"
+msgid "Save"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#, kde-format
+msgctxt "Settings category"
+msgid "Shortcuts"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:73
 #, kde-format
 msgid "Shortcuts"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-05 01:40+0000\n"
 "PO-Revision-Date: 2023-09-16 02:28-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -605,7 +605,6 @@ msgid "Image Zoom"
 msgstr "Zoom da imagem"
 
 #: src/Gui/MainToolBarContents.qml:54
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "Salvar"
@@ -971,13 +970,28 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:32
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "Settings category"
 msgid "General"
 msgstr "Geral"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:33
+#, fuzzy, kde-format
+#| msgid "Save"
+msgctxt "Settings category"
+msgid "Save"
+msgstr "Salvar"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#, fuzzy, kde-format
+#| msgid "Shortcuts"
+msgctxt "Settings category"
+msgid "Shortcuts"
+msgstr "Atalhos"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:73
 #, kde-format
 msgid "Shortcuts"
 msgstr "Atalhos"

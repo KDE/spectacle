@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-05 01:40+0000\n"
 "PO-Revision-Date: 2023-06-11 17:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -601,7 +601,6 @@ msgid "Image Zoom"
 msgstr "படத்தின் உருப்பெருக்கம்"
 
 #: src/Gui/MainToolBarContents.qml:54
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:26
 #, kde-format
 msgid "Save"
 msgstr "சேமி"
@@ -969,13 +968,28 @@ msgctxt "@info"
 msgid "<filename>%1.%2</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:25
-#, kde-format
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:32
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "Settings category"
 msgid "General"
 msgstr "பொது"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:27
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:56
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:33
+#, fuzzy, kde-format
+#| msgid "Save"
+msgctxt "Settings category"
+msgid "Save"
+msgstr "சேமி"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#, fuzzy, kde-format
+#| msgid "Shortcuts"
+msgctxt "Settings category"
+msgid "Shortcuts"
+msgstr "சுருக்குவழிகள்"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:73
 #, kde-format
 msgid "Shortcuts"
 msgstr "சுருக்குவழிகள்"
