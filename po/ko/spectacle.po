@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-06 01:40+0000\n"
-"PO-Revision-Date: 2023-07-23 21:49+0200\n"
+"PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -246,7 +246,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "월(지역화된 짧은 이름)"
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -254,7 +254,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "월(지역화된 긴 이름)"
 
 #: src/ExportManager.cpp:602
 #, kde-format
@@ -938,16 +938,13 @@ msgid "To save to a sub-folder"
 msgstr "하위 폴더에 저장할 때"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "일반"
@@ -956,17 +953,16 @@ msgstr "일반"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "그림 저장"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "동영상 저장"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "단축키"
@@ -1119,10 +1115,9 @@ msgstr "마지막으로 사용한 \"다른 이름으로 저장\" 경로"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "기본 그림 저장 형식"
+msgstr "기본 동영상 형식"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
@@ -1286,10 +1281,9 @@ msgstr "숫자 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "저장 위치:"
+msgstr "저장 위치(&L):"
 
 #: src/Gui/SharedMessage.qml:12
 #, kde-format
@@ -1582,13 +1576,13 @@ msgstr "주석 달기"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:27
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "Video format:"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-06 01:40+0000\n"
-"PO-Revision-Date: 2023-10-06 17:21+0200\n"
+"PO-Revision-Date: 2023-10-07 10:57+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -984,12 +984,10 @@ msgid "To save to a sub-folder"
 msgstr "Pour enregistrer dans un sous-dossier"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1001,13 +999,13 @@ msgstr "Général"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Enregistrement de l'image "
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Enregistrement de la vidéo"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1174,10 +1172,9 @@ msgstr "Dernier emplacement utilisé pour l'action « Enregistrer sous »"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Format d'enregistrement d'image par défaut"
+msgstr "Format de vidéo par défaut"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
@@ -1350,10 +1347,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Emplacement de l'enregistrement :"
+msgstr "Enregistrer l'emplacement :"
 
 #: src/Gui/SharedMessage.qml:12
 #, kde-format
@@ -1651,13 +1647,13 @@ msgstr "Annoter"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM / VP9"
 
 #: src/VideoFormatModel.cpp:27
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4 / H.264"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "Video format:"
