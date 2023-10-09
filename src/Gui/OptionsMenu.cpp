@@ -14,15 +14,8 @@
 #include <KStandardAction>
 
 #include <QStyle>
-#include <qnamespace.h>
 
-class OptionsMenuSingleton
-{
-public:
-    OptionsMenu self;
-};
-
-Q_GLOBAL_STATIC(OptionsMenuSingleton, privateOptionsMenuSelf)
+static QPointer<OptionsMenu> s_instance = nullptr;
 
 OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
@@ -168,7 +161,12 @@ OptionsMenu::OptionsMenu(QWidget *parent)
 
 OptionsMenu *OptionsMenu::instance()
 {
-    return &privateOptionsMenuSelf->self;
+    // We need to create it here instead of using Q_GLOBAL_STATIC like the other menus
+    // to prevent a segfault.
+    if (!s_instance) {
+        s_instance = new OptionsMenu;
+    }
+    return s_instance;
 }
 
 void OptionsMenu::showPreferencesDialog()
