@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Yasen Pramatarov <yasen@lindeas.com>, 2015.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 01:40+0000\n"
-"PO-Revision-Date: 2023-09-15 18:30+0200\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"PO-Revision-Date: 2023-10-09 18:10+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/CaptureModeModel.cpp:95
 #, kde-format
@@ -465,12 +465,12 @@ msgid "Take a new screenshot"
 msgstr "Нова екранна снимка"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:72
+#: src/Gui/OptionsMenu.cpp:65
 #, kde-format
 msgid "Capture Settings"
 msgstr "Настройки на прихващане"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:76
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:69
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -481,7 +481,7 @@ msgstr "Включване курсора на мишката"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Показване на курсора на мишката в изображението на екрана."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:88
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:81
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Включване на заглавната лента и рамката на прозореца"
@@ -494,7 +494,7 @@ msgstr ""
 "Показване на лентата със заглавието и рамката на прозореца при снимка на "
 "прозореца."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:100
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:93
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Заснемане само на текущия изскачащ прозорец"
@@ -510,7 +510,7 @@ msgstr ""
 "инструменти и т.н.). Ако е изключено, изскачащият прозорец се заснема заедно "
 "с родителския прозорец"
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:114
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:107
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Излизане  от програмата след ръчно запазване или копиране"
@@ -532,7 +532,7 @@ msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr ""
 "Изчакване на щракване с мишката, преди заснемане на изображение на екрана."
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:144
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:137
 #, kde-format
 msgid "Delay:"
 msgstr "Изчакване:"
@@ -652,17 +652,17 @@ msgstr "Настройки"
 msgid "Configure..."
 msgstr "Конфигуриране..."
 
-#: src/Gui/OptionsMenu.cpp:46
+#: src/Gui/OptionsMenu.cpp:39
 #, kde-format
 msgid "Capture Mode"
 msgstr "Режим на прихващане"
 
-#: src/Gui/OptionsMenu.cpp:77
+#: src/Gui/OptionsMenu.cpp:70
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Показване на курсора на мишката в изображението на екрана"
 
-#: src/Gui/OptionsMenu.cpp:89
+#: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -671,7 +671,7 @@ msgstr ""
 "Показване на лентата за заглавие на прозореца, бутоните за минимизиране/"
 "максимизиране/затваряне и рамкатата на прозореца"
 
-#: src/Gui/OptionsMenu.cpp:102
+#: src/Gui/OptionsMenu.cpp:95
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -682,18 +682,18 @@ msgstr ""
 "Ако е изключено, изскачащият прозорец се заснема заедно с родителския "
 "прозорец"
 
-#: src/Gui/OptionsMenu.cpp:115
+#: src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 "Излизане от Spectacle след ръчно запазване или копиране на изображението"
 
-#: src/Gui/OptionsMenu.cpp:129
+#: src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgid "Capture On Click"
 msgstr "Заснемане при кликване"
 
-#: src/Gui/OptionsMenu.cpp:149
+#: src/Gui/OptionsMenu.cpp:142
 #, kde-format
 msgid "No Delay"
 msgstr "Без изчакване"
@@ -975,16 +975,13 @@ msgid "To save to a sub-folder"
 msgstr "За запазване в подпапка"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Общи"
@@ -993,17 +990,16 @@ msgstr "Общи"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Запазване на изображение"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Запазване на видео"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Клавишни комбинации"
@@ -1168,10 +1164,9 @@ msgstr "Пътят, използван последно при \"Запазва�
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Формат по подразбиране на изображението за запазване"
+msgstr "Видео формат по подразбиране"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
@@ -1335,10 +1330,9 @@ msgstr "Дали инструментът за бележка Номера да 
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Място за запис:"
+msgstr "Местоположение на &записване:"
 
 #: src/Gui/SharedMessage.qml:12
 #, kde-format
@@ -1634,13 +1628,13 @@ msgstr "Бележка"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:27
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "Video format:"
