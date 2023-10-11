@@ -112,7 +112,7 @@
     <entry name="imageSaveLocation" type="Url">
         <label>Default filename</label>
         <default code="true">
-            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)+QLatin1Char('/'))
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + u"/Screenshots/")
         </default>
     </entry>
     <entry name="imageCompressionQuality" type="UInt">
@@ -144,7 +144,7 @@
     <entry name="videoSaveLocation" type="Url">
         <label>Default filename</label>
         <default code="true">
-            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)+QLatin1Char('/'))
+            QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + u"/Screencasts/")
         </default>
     </entry>
     <entry name="preferredVideoFormat" type="Enum">

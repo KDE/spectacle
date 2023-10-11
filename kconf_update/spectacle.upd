@@ -30,3 +30,7 @@ Version=6
 # Remove old video settings. Separate save related image and video settings.
 Id=24.02.0-video_format
 Script=spectacle-24.02.0-video_format
+
+# Keep old default image and video save locations for users with existing configs
+Id=24.02.0-keep_old_save_location
+Script=spectacle-24.02.0-keep_old_save_location
