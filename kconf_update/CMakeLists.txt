@@ -7,3 +7,10 @@ target_link_libraries(spectacle-24.02.0-video_format
     KF6::ConfigCore
     KF6::XmlGui
 )
+
+# install C++ scripts to kconf_update_bin
+install(
+    TARGETS
+        spectacle-24.02.0-video_format
+    DESTINATION ${KDE_INSTALL_LIBDIR}/kconf_update_bin
+)
