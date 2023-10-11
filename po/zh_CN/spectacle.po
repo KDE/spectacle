@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-10 01:46+0000\n"
-"PO-Revision-Date: 2023-09-16 10:06\n"
+"PO-Revision-Date: 2023-10-10 14:25\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -245,7 +245,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "月份 (本地化短名)"
 
 #: src/ExportManager.cpp:601
 #, kde-format
@@ -253,7 +253,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "月份 (本地化长名)"
 
 #: src/ExportManager.cpp:602
 #, kde-format
@@ -935,16 +935,13 @@ msgid "To save to a sub-folder"
 msgstr "用于保存到子文件夹"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "常规"
@@ -953,17 +950,16 @@ msgstr "常规"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "图像保存"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "视频保存"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "快捷键"
@@ -1116,10 +1112,9 @@ msgstr "最近一次“另存为”操作所用的路径"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "默认图像保存格式"
+msgstr "默认视频格式"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
@@ -1283,10 +1278,9 @@ msgstr "数字标注工具是否有投影效果"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "保存位置："
+msgstr "保存位置(&L)："
 
 #: src/Gui/SharedMessage.qml:12
 #, kde-format
@@ -1581,23 +1575,10 @@ msgstr "标注"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:27
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Video format:"
-#~ msgstr "视频格式："
-
-#, fuzzy
-#~| msgid "Save"
-#~ msgctxt "Settings category"
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#~ msgid "File format for saved screen recordings"
-#~ msgstr "用于保存录屏的文件格式"
+msgstr "MP4/H.264"

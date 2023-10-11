@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-10 01:46+0000\n"
-"PO-Revision-Date: 2023-03-16 16:34+0100\n"
+"PO-Revision-Date: 2023-06-05 11:49+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -940,19 +940,16 @@ msgid "To save to a sub-folder"
 msgstr "Pro uložení do podsložky"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr "Obecné"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:35
 #, kde-format
@@ -967,11 +964,10 @@ msgid "Video Saving"
 msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
-msgstr "Zkratky"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:77
 #, kde-format
@@ -1121,10 +1117,9 @@ msgstr "Poslední cesta použitá v činnosti \"Uložit jako\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Výchozí formát obrázků pro uložení"
+msgstr ""
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
@@ -1288,10 +1283,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Umístění ukládaných souborů:"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:12
 #, kde-format
@@ -1591,13 +1585,3 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Video format:"
-#~ msgstr "Formát videa:"
-
-#, fuzzy
-#~| msgid "Save"
-#~ msgctxt "Settings category"
-#~ msgid "Save"
-#~ msgstr "Uložit"
