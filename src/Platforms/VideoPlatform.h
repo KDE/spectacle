@@ -47,6 +47,9 @@ public:
      * Our definition of "best available encoder" is whichever encoder provides the best balance of
      * compatibility, performance and quality for most devices used by PC and smartphone users.
      *
+     * We don't need to worry about ABI compatibility, but we do need to migrate user configs with
+     * kconf_update if enum values change.
+     *
      * Consider looking at guides like the following when adding new formats:
      *
      * - <https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Video_codecs#recommendations_for_everyday_videos>
@@ -55,37 +58,23 @@ public:
         /// A value for when no encoders are available.
         NoFormat = 0b00,
         /**
-         * WebM container with the best available VP8 encoder.
-         *
-         * Usecase: Sharing videos over the internet.
+         * WebM container with the best available VP9 encoder.
          *
          * Advantages: Works OOTB on most Linux distros and well supported by web browsers.
          *
-         * Disadvantages: Other codecs have better performance and quality.
-         *
-         * The reason why we are using VP8 instead of VP9 is that we had trouble getting VP9 to
-         * perform well while developing KPipeWire. VP9 is also only supported by Safari since MacOS
-         * Big Sur 11.3, so it may not be as good for sharing videos with Apple device users, but
-         * that is a secondary concern. We should switch to using VP9 if we figure out a good way to
-         * use it since it is supposed to be better than VP8.
+         * Disadvantages: Hardware accelerated encoding support is uncommon.
          *
          * If we add audio support, this should use Opus.
-         *
-         * The flag equal to 1 should be the default format for the user settings.
-         * We don't need to worry about ABI compatibility.
          */
         WebM_VP9 = 0b01,
         /**
          * MP4 container with the best available H.264 encoder.
          *
-         * Usecase: When better performance and quality than VP8 is needed and sacrificing OOTB
-         * Linux distro compatibility is acceptable.
+         * Advantages: Hardware accelerated encoding support is very common and well supported by
+         * web browsers.
          *
-         * Advantages: All around good performance, quality and compatibility, even if it's a bit
-         * old by now. H.265 is still patented and lacks support. AV1 is still too slow and
-         * lacks support.
-         *
-         * Disadvantages: Doesn't work OOTB on all Linux distros.
+         * Disadvantages: Doesn't work OOTB on all Linux distros. While it's still good, it's not as
+         * efficient as newer formats.
          *
          * If we add audio support, this should use AAC.
          */
