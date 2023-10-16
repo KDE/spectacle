@@ -19,9 +19,36 @@
 
 #include <KWindowSystem>
 
+#include <QDebug>
+
+ImagePlatformPtr getForcedImagePlatform()
+{
+    // This environment variable is only for testing purposes.
+    auto platformName = qgetenv("SPECTACLE_IMAGE_PLATFORM");
+    if (platformName.isEmpty()) {
+        return nullptr;
+    }
+
+    if (platformName == ImagePlatformKWin::staticMetaObject.className()) {
+        return ImagePlatformKWin::create();
+    } else if (platformName == ImagePlatformXcb::staticMetaObject.className()) {
+        return std::make_unique<ImagePlatformXcb>();
+    } else if (platformName == ImagePlatformNull::staticMetaObject.className()) {
+        return std::make_unique<ImagePlatformNull>();
+    } else if (!platformName.isEmpty()) {
+        qWarning() << "SPECTACLE_IMAGE_PLATFORM:" << platformName << "is invalid";
+    }
+
+    return nullptr;
+}
+
 ImagePlatformPtr loadImagePlatform()
 {
-    ImagePlatformPtr platform;
+    ImagePlatformPtr platform = getForcedImagePlatform();
+    if (platform) {
+        return platform;
+    }
+
     // Check XDG_SESSION_TYPE because Spectacle might be using the XCB platform via XWayland
     const bool isReallyX11 = KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0;
     // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
@@ -43,8 +70,30 @@ ImagePlatformPtr loadImagePlatform()
     return platform;
 }
 
+VideoPlatformPtr getForcedVideoPlatform()
+{
+    // This environment variable is only for testing purposes.
+    auto platformName = qgetenv("SPECTACLE_VIDEO_PLATFORM");
+    if (platformName.isEmpty()) {
+        return nullptr;
+    }
+
+    if (platformName == VideoPlatformWayland::staticMetaObject.className()) {
+        return std::make_unique<VideoPlatformWayland>();
+    } else if (platformName == VideoPlatformNull::staticMetaObject.className()) {
+        return std::make_unique<VideoPlatformNull>();
+    } else if (!platformName.isEmpty()) {
+        qWarning() << "SPECTACLE_VIDEO_PLATFORM:" << platformName << "is invalid";
+    }
+
+    return nullptr;
+}
+
 VideoPlatformPtr loadVideoPlatform()
 {
+    if (auto platform = getForcedVideoPlatform()) {
+        return platform;
+    }
     if (KWindowSystem::isPlatformWayland()) {
         return std::make_unique<VideoPlatformWayland>();
     }
