@@ -101,7 +101,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     };
     auto onFinished = [this]() {
-        m_platform->doGrab(Platform::ShutterMode::Immediate, m_lastGrabMode,
+        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode,
                            m_lastIncludePointer, m_lastIncludeDecorations);
     };
     QObject::connect(delayAnimation, &QVariantAnimation::stateChanged,
@@ -111,9 +111,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
     QObject::connect(delayAnimation, &QVariantAnimation::finished,
                      this, onFinished, Qt::QueuedConnection);
 
-    m_platform = loadPlatform();
+    m_imagePlatform = loadImagePlatform();
     m_videoPlatform = loadVideoPlatform();
-    auto platform = m_platform.get();
+    auto imagePlatform = m_imagePlatform.get();
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
     // essential connections
@@ -130,7 +130,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->exportImage(exportActions, outputUrl());
     });
 
-    connect(platform, &Platform::newScreenshotTaken, this, [this](const QImage &image){
+    connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setImage(image);
         setExportImage(image);
@@ -140,7 +140,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
-    connect(platform, &Platform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
+    connect(imagePlatform, &ImagePlatform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
         auto selectionEditor = SelectionEditor::instance();
         auto selection = selectionEditor->selection();
         m_annotationDocument->clearAnnotations();
@@ -163,7 +163,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     });
-    connect(platform, &Platform::newScreenshotFailed, this, &SpectacleCore::onScreenshotFailed);
+    connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, &SpectacleCore::onScreenshotFailed);
 
     // set up the export manager
     auto exportManager = ExportManager::instance();
@@ -210,7 +210,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(exportManager, &ExportManager::imageExported, this, onImageExported);
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
 
-    connect(platform, &Platform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
+    connect(imagePlatform, &ImagePlatform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, [this] {
         ExportManager::instance()->setImage(m_annotationDocument->renderToImage());
@@ -226,12 +226,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openWithoutScreenshotAction(), QList<QKeySequence>());
 
     // set up CaptureMode model
-    m_captureModeModel = std::make_unique<CaptureModeModel>(platform->supportedGrabModes(), this);
+    m_captureModeModel = std::make_unique<CaptureModeModel>(imagePlatform->supportedGrabModes(), this);
     m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
     m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
     auto captureModeModel = m_captureModeModel.get();
-    connect(platform, &Platform::supportedGrabModesChanged, captureModeModel, [this](){
-        m_captureModeModel->setGrabModes(m_platform->supportedGrabModes());
+    connect(imagePlatform, &ImagePlatform::supportedGrabModesChanged, captureModeModel, [this](){
+        m_captureModeModel->setGrabModes(m_imagePlatform->supportedGrabModes());
     });
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
@@ -264,9 +264,9 @@ SpectacleCore *SpectacleCore::instance()
     return s_self;
 }
 
-Platform *SpectacleCore::platform() const
+ImagePlatform *SpectacleCore::imagePlatform() const
 {
-    return m_platform.get();
+    return m_imagePlatform.get();
 }
 
 CaptureModeModel *SpectacleCore::captureModeModel() const
@@ -461,7 +461,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
     // Determine grab mode
     using CaptureMode = CaptureModeModel::CaptureMode;
-    using GrabMode = Platform::GrabMode;
+    using GrabMode = ImagePlatform::GrabMode;
     GrabMode grabMode = GrabMode::AllScreens; // Default to all screens
     if (m_cliOptions[Option::Fullscreen]) {
         grabMode = GrabMode::AllScreens;
@@ -535,7 +535,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     }
 }
 
-void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
+void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
 {
     if (m_cliOptions[CommandLineOptions::EditExisting]) {
         // Clear when a new screenshot is taken to avoid overwriting
@@ -553,11 +553,11 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
     m_lastIncludePointer = includePointer;
     m_lastIncludeDecorations = includeDecorations;
 
-    if ((timeout < 0 || !m_platform->supportedShutterModes().testFlag(Platform::Immediate))
-        && m_platform->supportedShutterModes().testFlag(Platform::OnClick)
+    if ((timeout < 0 || !m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::Immediate))
+        && m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick)
     ) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
-        m_platform->doGrab(Platform::ShutterMode::OnClick, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
+        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::OnClick, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
         return;
     }
 
@@ -570,7 +570,7 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
         // settings (and unless the user has set an extremely slow effect), 200
         // milliseconds is a good amount of wait time.
         timeout = qMax(timeout, 200);
-    } else if (m_platform->inherits("PlatformXcb")) {
+    } else if (m_imagePlatform->inherits("PlatformXcb")) {
         // Minimum 50ms delay to prevent segfaults from xcb function calls
         // that don't get replies fast enough.
         timeout = qMax(timeout, 50);
@@ -579,7 +579,7 @@ void SpectacleCore::takeNewScreenshot(Platform::GrabMode grabMode, int timeout, 
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         QTimer::singleShot(timeout, this, [this]() {
-            m_platform->doGrab(Platform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
+            m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
         });
         return;
     }
@@ -753,41 +753,41 @@ ExportManager::Actions SpectacleCore::autoExportActions() const
     return actions;
 }
 
-Platform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const
+ImagePlatform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const
 {
-    using GrabMode = Platform::GrabMode;
+    using GrabMode = ImagePlatform::GrabMode;
     using CaptureMode = CaptureModeModel::CaptureMode;
-    const auto &supportedGrabModes = m_platform->supportedGrabModes();
+    const auto &supportedGrabModes = m_imagePlatform->supportedGrabModes();
     if (captureMode == CaptureMode::CurrentScreen
-        && supportedGrabModes.testFlag(Platform::CurrentScreen)) {
+        && supportedGrabModes.testFlag(ImagePlatform::CurrentScreen)) {
         return GrabMode::CurrentScreen;
     } else if (captureMode == CaptureMode::ActiveWindow
-        && supportedGrabModes.testFlag(Platform::ActiveWindow)) {
+        && supportedGrabModes.testFlag(ImagePlatform::ActiveWindow)) {
         return GrabMode::ActiveWindow;
     } else if (captureMode == CaptureMode::WindowUnderCursor
-        && supportedGrabModes.testFlag(Platform::WindowUnderCursor)) {
+        && supportedGrabModes.testFlag(ImagePlatform::WindowUnderCursor)) {
         // TODO: Improve API for transientOnly or make it obsolete.
-        if (transientOnly || !supportedGrabModes.testFlag(Platform::TransientWithParent)) {
+        if (transientOnly || !supportedGrabModes.testFlag(ImagePlatform::TransientWithParent)) {
             return GrabMode::WindowUnderCursor;
         } else {
             return GrabMode::TransientWithParent;
         }
     } else if (captureMode == CaptureMode::RectangularRegion
-        && supportedGrabModes.testFlag(Platform::PerScreenImageNative)) {
+        && supportedGrabModes.testFlag(ImagePlatform::PerScreenImageNative)) {
         return GrabMode::PerScreenImageNative;
     } else if (captureMode == CaptureMode::AllScreensScaled
-        && supportedGrabModes.testFlag(Platform::AllScreensScaled)) {
+        && supportedGrabModes.testFlag(ImagePlatform::AllScreensScaled)) {
         return GrabMode::AllScreensScaled;
-    } else if (supportedGrabModes.testFlag(Platform::AllScreens)) { // default if supported
+    } else if (supportedGrabModes.testFlag(ImagePlatform::AllScreens)) { // default if supported
         return GrabMode::AllScreens;
     } else {
         return GrabMode::NoGrabModes;
     }
 }
 
-CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(Platform::GrabMode grabMode) const
+CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(ImagePlatform::GrabMode grabMode) const
 {
-    using GrabMode = Platform::GrabMode;
+    using GrabMode = ImagePlatform::GrabMode;
     using CaptureMode = CaptureModeModel::CaptureMode;
     if (grabMode == GrabMode::CurrentScreen) {
         return CaptureMode::CurrentScreen;
@@ -838,7 +838,7 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine.get()));
 
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SpectacleCore", this);
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Platform", m_platform.get());
+        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "ImagePlatform", m_imagePlatform.get());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "VideoPlatform", m_videoPlatform.get());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Settings", Settings::self());
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "CaptureModeModel", m_captureModeModel.get());

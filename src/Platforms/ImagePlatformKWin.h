@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Platform.h"
+#include "ImagePlatform.h"
 
 #include <QImage>
 class QScreen;
@@ -20,12 +20,12 @@ class ScreenShotSourceWorkspace2;
  * The PlatformKWin class uses the org.kde.KWin.ScreenShot2 dbus interface
  * for taking screenshots of screens and windows.
  */
-class PlatformKWin final : public Platform
+class ImagePlatformKWin final : public ImagePlatform
 {
     Q_OBJECT
 
 public:
-    static std::unique_ptr<PlatformKWin> create();
+    static std::unique_ptr<ImagePlatformKWin> create();
 
     enum class ScreenShotFlag : uint {
         IncludeCursor = 0x1,
@@ -43,13 +43,13 @@ public:
     ShutterModes supportedShutterModes() const override;
 
 public Q_SLOTS:
-    void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) override;
+    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();
 
 private:
-    explicit PlatformKWin(QObject *parent = nullptr);
+    explicit ImagePlatformKWin(QObject *parent = nullptr);
 
     void takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags);
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
@@ -101,7 +101,7 @@ class ScreenShotSourceArea2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceArea2(const QRect &area, PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -114,7 +114,7 @@ class ScreenShotSourceInteractive2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceInteractive2(PlatformKWin::InteractiveKind kind, PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceInteractive2(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -126,7 +126,7 @@ class ScreenShotSourceScreen2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceScreen2(const QScreen *screen, PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceScreen2(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -138,7 +138,7 @@ class ScreenShotSourceActiveWindow2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveWindow2(PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceActiveWindow2(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -150,7 +150,7 @@ class ScreenShotSourceActiveScreen2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveScreen2(PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceActiveScreen2(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -162,7 +162,7 @@ class ScreenShotSourceWorkspace2 final : public ScreenShotSource2
     Q_OBJECT
 
 public:
-    ScreenShotSourceWorkspace2(PlatformKWin::ScreenShotFlags flags);
+    ScreenShotSourceWorkspace2(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(PlatformKWin::ScreenShotFlags)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatformKWin::ScreenShotFlags)

@@ -6,32 +6,32 @@
 
 #pragma once
 
-#include "Platform.h"
+#include "ImagePlatform.h"
 
 #include <xcb/xcb.h>
 #include <xcb/xcb_image.h>
 
 #include <QPixmap>
 
-class PlatformXcb final : public Platform
+class ImagePlatformXcb final : public ImagePlatform
 {
     Q_OBJECT
 
 public:
-    explicit PlatformXcb(QObject *parent = nullptr);
-    ~PlatformXcb() override;
+    explicit ImagePlatformXcb(QObject *parent = nullptr);
+    ~ImagePlatformXcb() override;
 
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 
 public Q_SLOTS:
-    void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
+    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();
     void handleKWinScreenshotReply(quint64 drawable);
-    void doGrabNow(Platform::GrabMode grabMode, bool includePointer, bool includeDecorations);
-    void doGrabOnClick(Platform::GrabMode grabMode, bool includePointer, bool includeDecorations);
+    void doGrabNow(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations);
+    void doGrabOnClick(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations);
 
 private:
     inline void updateWindowTitle(xcb_window_t window);

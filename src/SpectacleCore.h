@@ -28,7 +28,7 @@
 class SpectacleCore : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(Platform *platform READ platform CONSTANT FINAL)
+    Q_PROPERTY(ImagePlatform *imagePlatform READ imagePlatform CONSTANT FINAL)
     Q_PROPERTY(CaptureModeModel *captureModeModel READ captureModeModel CONSTANT FINAL)
     Q_PROPERTY(RecordingModeModel *recordingModeModel READ recordingModeModel CONSTANT FINAL)
     Q_PROPERTY(QUrl screenCaptureUrl READ screenCaptureUrl NOTIFY screenCaptureUrlChanged FINAL)
@@ -52,7 +52,7 @@ public:
 
     static SpectacleCore *instance();
 
-    Platform *platform() const;
+    ImagePlatform *imagePlatform() const;
 
     CaptureModeModel *captureModeModel() const;
     RecordingModeModel *recordingModeModel() const;
@@ -112,12 +112,12 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
-    void takeNewScreenshot(Platform::GrabMode grabMode, int timeout,
+    void takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout,
                            bool includePointer, bool includeDecorations);
     void setExportImage(const QImage &image);
     void showViewerIfGuiMode();
-    Platform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
-    CaptureModeModel::CaptureMode toCaptureMode(Platform::GrabMode grabMode) const;
+    ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
+    CaptureModeModel::CaptureMode toCaptureMode(ImagePlatform::GrabMode grabMode) const;
     bool isGuiNull() const;
     QQmlEngine *getQmlEngine();
     void initCaptureWindows(CaptureWindow::Mode mode);
@@ -131,7 +131,7 @@ private:
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
     StartMode m_startMode = StartMode::Gui;
     QUrl m_screenCaptureUrl;
-    std::unique_ptr<Platform> m_platform;
+    std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;
     std::unique_ptr<CaptureModeModel> m_captureModeModel;
     std::unique_ptr<RecordingModeModel> m_recordingModeModel;
@@ -158,7 +158,7 @@ private:
     QUrl m_editExistingUrl;
     QUrl m_outputUrl;
 
-    Platform::GrabMode m_lastGrabMode = Platform::GrabMode::NoGrabModes;
+    ImagePlatform::GrabMode m_lastGrabMode = ImagePlatform::GrabMode::NoGrabModes;
     bool m_lastIncludePointer = false; // cli default value
     bool m_lastIncludeDecorations = true; // cli default value
     bool m_videoMode = false;

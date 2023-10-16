@@ -5,23 +5,23 @@
 
 #pragma once
 
-#include "Platform.h"
+#include "ImagePlatform.h"
 #include "VideoPlatform.h"
 
-class PlatformNull final : public Platform
+class ImagePlatformNull final : public ImagePlatform
 {
     Q_OBJECT
 
 public:
-    explicit PlatformNull(QObject *parent = nullptr);
-    ~PlatformNull() override = default;
+    explicit ImagePlatformNull(QObject *parent = nullptr);
+    ~ImagePlatformNull() override = default;
 
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;
 
 public Q_SLOTS:
 
-    void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
+    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
 };
 
 class VideoPlatformNull final : public VideoPlatform

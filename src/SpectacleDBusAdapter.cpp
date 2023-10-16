@@ -4,7 +4,7 @@
  */
 
 #include "SpectacleDBusAdapter.h"
-#include "Platforms/Platform.h"
+#include "Platforms/ImagePlatform.h"
 #include "settings.h"
 
 SpectacleDBusAdapter::SpectacleDBusAdapter(SpectacleCore *parent)

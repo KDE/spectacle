@@ -11,23 +11,23 @@
 
 /* -- Null Platform ---------------------------------------------------------------------------- */
 
-PlatformNull::PlatformNull(QObject *parent)
-    : Platform(parent)
+ImagePlatformNull::ImagePlatformNull(QObject *parent)
+    : ImagePlatform(parent)
 {
 }
 
-Platform::GrabModes PlatformNull::supportedGrabModes() const
+ImagePlatform::GrabModes ImagePlatformNull::supportedGrabModes() const
 {
     return {GrabMode::AllScreens | GrabMode::CurrentScreen | GrabMode::ActiveWindow | GrabMode::WindowUnderCursor | GrabMode::TransientWithParent
             | GrabMode::AllScreensScaled};
 }
 
-Platform::ShutterModes PlatformNull::supportedShutterModes() const
+ImagePlatform::ShutterModes ImagePlatformNull::supportedShutterModes() const
 {
     return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
-void PlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
 {
     Q_UNUSED(shutterMode)
     Q_UNUSED(grabMode)

@@ -29,7 +29,7 @@ static QString actionShortcutsToString(QAction *action)
     return value;
 }
 
-CaptureModeModel::CaptureModeModel(Platform::GrabModes grabModes, QObject *parent)
+CaptureModeModel::CaptureModeModel(ImagePlatform::GrabModes grabModes, QObject *parent)
     : QAbstractListModel(parent)
 {
     m_roleNames[CaptureModeRole] = QByteArrayLiteral("captureMode");
@@ -78,7 +78,7 @@ int CaptureModeModel::indexOfCaptureMode(CaptureMode captureMode) const
     return finalIndex;
 }
 
-void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
+void CaptureModeModel::setGrabModes(ImagePlatform::GrabModes modes)
 {
     if (m_grabModes == modes) {
         return;
@@ -87,23 +87,23 @@ void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
     const int oldCount = m_data.size();
     m_data.clear();
 
-    const bool hasCurrentScreen = m_grabModes.testFlag(Platform::GrabMode::CurrentScreen);
+    const bool hasCurrentScreen = m_grabModes.testFlag(ImagePlatform::GrabMode::CurrentScreen);
 
-    if (m_grabModes.testFlag(Platform::GrabMode::PerScreenImageNative)) {
+    if (m_grabModes.testFlag(ImagePlatform::GrabMode::PerScreenImageNative)) {
         m_data.append({
             CaptureModeModel::RectangularRegion,
             i18n("Rectangular Region"),
             actionShortcutsToString(ShortcutActions::self()->regionAction()),
         });
     }
-    if (m_grabModes.testFlag(Platform::GrabMode::AllScreens)) {
+    if (m_grabModes.testFlag(ImagePlatform::GrabMode::AllScreens)) {
         m_data.append({
             CaptureModeModel::AllScreens,
             hasCurrentScreen ? i18n("All Screens") : i18n("Full Screen"),
             actionShortcutsToString(ShortcutActions::self()->fullScreenAction()),
         });
     }
-    if (m_grabModes.testFlag(Platform::GrabMode::AllScreensScaled)) {
+    if (m_grabModes.testFlag(ImagePlatform::GrabMode::AllScreensScaled)) {
         m_data.append({
             CaptureModeModel::AllScreensScaled,
             i18n("All Screens (Scaled to same size)"),
@@ -116,14 +116,14 @@ void CaptureModeModel::setGrabModes(Platform::GrabModes modes)
             actionShortcutsToString(ShortcutActions::self()->currentScreenAction()),
         });
     }
-    if (m_grabModes.testFlag(Platform::GrabMode::ActiveWindow)) {
+    if (m_grabModes.testFlag(ImagePlatform::GrabMode::ActiveWindow)) {
         m_data.append({
             CaptureModeModel::ActiveWindow,
             i18n("Active Window"),
             actionShortcutsToString(ShortcutActions::self()->activeWindowAction()),
         });
     }
-    if (m_grabModes.testFlag(Platform::GrabMode::WindowUnderCursor)) {
+    if (m_grabModes.testFlag(ImagePlatform::GrabMode::WindowUnderCursor)) {
         m_data.append({
             CaptureModeModel::WindowUnderCursor,
             i18n("Window Under Cursor"),

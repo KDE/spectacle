@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include "Platform.h"
+#include "ImagePlatform.h"
 #include "VideoPlatform.h"
 #include <memory>
 
-using PlatformPtr = std::unique_ptr<Platform>;
-PlatformPtr loadPlatform();
+using ImagePlatformPtr = std::unique_ptr<ImagePlatform>;
+ImagePlatformPtr loadImagePlatform();
 
 using VideoPlatformPtr = std::unique_ptr<VideoPlatform>;
 VideoPlatformPtr loadVideoPlatform();

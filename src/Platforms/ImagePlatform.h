@@ -10,7 +10,7 @@
 #include <QImage>
 #include <QObject>
 
-class Platform : public QObject
+class ImagePlatform : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(GrabModes supportedGrabModes READ supportedGrabModes NOTIFY supportedGrabModesChanged)
@@ -36,14 +36,14 @@ public:
     Q_DECLARE_FLAGS(ShutterModes, ShutterMode)
     Q_FLAG(ShutterModes)
 
-    explicit Platform(QObject *parent = nullptr);
-    ~Platform() override = default;
+    explicit ImagePlatform(QObject *parent = nullptr);
+    ~ImagePlatform() override = default;
 
     virtual GrabModes supportedGrabModes() const = 0;
     virtual ShutterModes supportedShutterModes() const = 0;
 
 public Q_SLOTS:
-    virtual void doGrab(Platform::ShutterMode shutterMode, Platform::GrabMode grabMode, bool includePointer, bool includeDecorations) = 0;
+    virtual void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) = 0;
 
 Q_SIGNALS:
     void supportedGrabModesChanged();
@@ -55,5 +55,5 @@ Q_SIGNALS:
     void windowTitleChanged(const QString &windowTitle = {});
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Platform::GrabModes)
-Q_DECLARE_OPERATORS_FOR_FLAGS(Platform::ShutterModes)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatform::GrabModes)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatform::ShutterModes)

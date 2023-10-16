@@ -45,16 +45,16 @@ add_executable(spectacle
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
     Platforms/PlatformLoader.cpp
-    Platforms/Platform.cpp
+    Platforms/ImagePlatform.cpp
     Platforms/PlatformNull.cpp
-    Platforms/PlatformKWin.cpp
+    Platforms/ImagePlatformKWin.cpp
     Platforms/VideoPlatform.cpp
     Platforms/VideoPlatformWayland.cpp
     Platforms/screencasting.cpp
 )
 
 if(XCB_FOUND)
-    target_sources(spectacle PRIVATE Platforms/PlatformXcb.cpp Platforms/PlatformXcb.h)
+    target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
 
     target_link_libraries(spectacle PRIVATE
         XCB::XFIXES

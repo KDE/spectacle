@@ -4,7 +4,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#include "PlatformKWin.h"
+#include "ImagePlatformKWin.h"
 #include "ExportManager.h"
 
 #include <KWindowSystem>
@@ -27,17 +27,17 @@
 #include <string.h>
 #include <unistd.h>
 
-static QVariantMap screenShotFlagsToVardict(PlatformKWin::ScreenShotFlags flags)
+static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
     QVariantMap options;
 
-    if (flags & PlatformKWin::ScreenShotFlag::IncludeCursor) {
+    if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeCursor) {
         options.insert(QStringLiteral("include-cursor"), true);
     }
-    if (flags & PlatformKWin::ScreenShotFlag::IncludeDecoration) {
+    if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeDecoration) {
         options.insert(QStringLiteral("include-decoration"), true);
     }
-    if (flags & PlatformKWin::ScreenShotFlag::NativeSize) {
+    if (flags & ImagePlatformKWin::ScreenShotFlag::NativeSize) {
         options.insert(QStringLiteral("native-resolution"), true);
     }
 
@@ -196,7 +196,7 @@ void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
     m_pipeFileDescriptor = -1;
 }
 
-ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureArea"),
                         qint32(area.x()),
                         qint32(area.y()),
@@ -206,12 +206,12 @@ ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, PlatformKWin::Sc
 {
 }
 
-ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(PlatformKWin::InteractiveKind kind, PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureInteractive"), quint32(kind), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags)
 // NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
 // It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
 // KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
@@ -219,32 +219,32 @@ ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, Platform
 {
 }
 
-ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureActiveWindow"), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureActiveScreen"), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(PlatformKWin::ScreenShotFlags flags)
+ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(QStringLiteral("CaptureWorkspace"), screenShotFlagsToVardict(flags))
 {
 }
 
-std::unique_ptr<PlatformKWin> PlatformKWin::create()
+std::unique_ptr<ImagePlatformKWin> ImagePlatformKWin::create()
 {
     QDBusConnectionInterface *interface = QDBusConnection::sessionBus().interface();
     if (interface->isServiceRegistered(s_screenShotService)) {
-        return std::unique_ptr<PlatformKWin>(new PlatformKWin());
+        return std::unique_ptr<ImagePlatformKWin>(new ImagePlatformKWin());
     }
     return nullptr;
 }
 
-PlatformKWin::PlatformKWin(QObject *parent)
-    : Platform(parent)
+ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
+    : ImagePlatform(parent)
 {
     auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin.ScreenShot2"),
                                                   QStringLiteral("/org/kde/KWin/ScreenShot2"),
@@ -258,18 +258,18 @@ PlatformKWin::PlatformKWin(QObject *parent)
     }
 
     updateSupportedGrabModes();
-    connect(qGuiApp, &QGuiApplication::screenAdded, this, &PlatformKWin::updateSupportedGrabModes);
-    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &PlatformKWin::updateSupportedGrabModes);
+    connect(qGuiApp, &QGuiApplication::screenAdded, this, &ImagePlatformKWin::updateSupportedGrabModes);
+    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ImagePlatformKWin::updateSupportedGrabModes);
 }
 
-Platform::GrabModes PlatformKWin::supportedGrabModes() const
+ImagePlatform::GrabModes ImagePlatformKWin::supportedGrabModes() const
 {
     return m_grabModes;
 }
 
-void PlatformKWin::updateSupportedGrabModes()
+void ImagePlatformKWin::updateSupportedGrabModes()
 {
-    Platform::GrabModes grabModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative;
+    ImagePlatform::GrabModes grabModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative;
 
     if (m_apiVersion >= 2) {
         grabModes |= GrabMode::ActiveWindow;
@@ -285,12 +285,12 @@ void PlatformKWin::updateSupportedGrabModes()
     }
 }
 
-Platform::ShutterModes PlatformKWin::supportedShutterModes() const
+ImagePlatform::ShutterModes ImagePlatformKWin::supportedShutterModes() const
 {
     return ShutterMode::Immediate;
 }
 
-void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
 {
     ScreenShotFlags flags = ScreenShotFlag::NativeSize;
 
@@ -331,7 +331,7 @@ void PlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, b
     }
 }
 
-void PlatformKWin::trackSource(ScreenShotSource2 *source)
+void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 {
     connect(source, &ScreenShotSource2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
@@ -343,7 +343,7 @@ void PlatformKWin::trackSource(ScreenShotSource2 *source)
     });
 }
 
-void PlatformKWin::trackCroppableSource(ScreenShotSourceWorkspace2 *source)
+void ImagePlatformKWin::trackCroppableSource(ScreenShotSourceWorkspace2 *source)
 {
     connect(source, &ScreenShotSourceWorkspace2::finished, this, [this, source](const QImage &image) {
         source->deleteLater();
@@ -355,34 +355,34 @@ void PlatformKWin::trackCroppableSource(ScreenShotSourceWorkspace2 *source)
     });
 }
 
-void PlatformKWin::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceArea2(area, flags));
 }
 
-void PlatformKWin::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceInteractive2(kind, flags));
 }
 
-void PlatformKWin::takeScreenShotActiveWindow(ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotActiveWindow(ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceActiveWindow2(flags));
 }
 
-void PlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceActiveScreen2(flags));
 }
 
-void PlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceWorkspace2(flags));
 }
 
-void PlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
+void ImagePlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
     trackCroppableSource(new ScreenShotSourceWorkspace2(flags));
 }
 
-#include "moc_PlatformKWin.cpp"
+#include "moc_ImagePlatformKWin.cpp"

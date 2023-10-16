@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include "Platform.h"
+#include "ImagePlatform.h"
 
-Platform::Platform(QObject *parent)
+ImagePlatform::ImagePlatform(QObject *parent)
     : QObject(parent)
 {
 }
 
-#include "moc_Platform.cpp"
+#include "moc_ImagePlatform.cpp"

@@ -32,7 +32,7 @@ ColumnLayout {
     QQC.CheckBox {
         Layout.fillWidth: true
         text: i18n("Capture the current pop-up only")
-        visible: Platform.supportedGrabModes & Platform.TransientWithParent
+        visible: ImagePlatform.supportedGrabModes & ImagePlatform.TransientWithParent
         QQC.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc) when taking a screenshot of a window. If disabled, the pop-up is captured along with the parent window.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
         QQC.ToolTip.visible: hovered
@@ -52,11 +52,11 @@ ColumnLayout {
         id: captureOnClickCheckBox
         Layout.fillWidth: true
         text: i18n("Capture on click")
-        visible: Platform.supportedShutterModes === (Platform.Immediate | Platform.OnClick)
+        visible: ImagePlatform.supportedShutterModes === (ImagePlatform.Immediate | ImagePlatform.OnClick)
         QQC.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
         QQC.ToolTip.visible: hovered || pressed
-        checked: Platform.supportedShutterModes & Platform.OnClick && Settings.captureOnClick
+        checked: ImagePlatform.supportedShutterModes & ImagePlatform.OnClick && Settings.captureOnClick
         onToggled: Settings.captureOnClick = checked
     }
     RowLayout {

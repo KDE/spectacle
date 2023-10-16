@@ -5,7 +5,7 @@ SET(FILENAME_TEST_SRCS
     ../src/CaptureModeModel.cpp
     ../src/ShortcutActions.cpp
     ../src/ExportManager.cpp
-    ../src/Platforms/Platform.cpp
+    ../src/Platforms/ImagePlatform.cpp
 )
 
 

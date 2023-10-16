@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "Platforms/Platform.h"
+#include "Platforms/ImagePlatform.h"
 
 #include <QAbstractListModel>
 
@@ -16,7 +16,7 @@ class CaptureModeModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
-    CaptureModeModel(Platform::GrabModes grabModes, QObject *parent = nullptr);
+    CaptureModeModel(ImagePlatform::GrabModes grabModes, QObject *parent = nullptr);
 
     enum CaptureMode {
         RectangularRegion,
@@ -40,7 +40,7 @@ public:
 
     int indexOfCaptureMode(CaptureMode captureMode) const;
 
-    void setGrabModes(Platform::GrabModes modes);
+    void setGrabModes(ImagePlatform::GrabModes modes);
 
 Q_SIGNALS:
     void captureModesChanged();
@@ -55,5 +55,5 @@ private:
 
     QVector<Item> m_data;
     QHash<int, QByteArray> m_roleNames;
-    Platform::GrabModes m_grabModes;
+    ImagePlatform::GrabModes m_grabModes;
 };
