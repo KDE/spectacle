@@ -21,7 +21,7 @@ static const auto s_screenShot2ObjectPath = QStringLiteral("/org/kde/KWin/Screen
 static const auto s_screenShot2Interface = QStringLiteral("org.kde.KWin.ScreenShot2");
 
 static bool s_isLoaded = false;
-static quint32 s_version = 0;
+static quint32 s_version = ScreenShotEffect::NullVersion;
 
 bool ScreenShotEffect::isLoaded()
 {
@@ -39,12 +39,12 @@ bool ScreenShotEffect::isLoaded()
 quint32 ScreenShotEffect::version()
 {
     if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(s_screenShot2Service)) {
-        s_version = 0;
-    } else if (s_version == 0) {
+        s_version = ScreenShotEffect::NullVersion;
+    } else if (s_version == ScreenShotEffect::NullVersion) {
         QDBusInterface interface(s_screenShot2Service, s_screenShot2ObjectPath, s_screenShot2Interface);
         bool ok;
         auto version = interface.property("Version").toUInt(&ok);
-        s_version = ok ? version : 0;
+        s_version = ok ? version : ScreenShotEffect::NullVersion;
     }
     return s_version;
 }

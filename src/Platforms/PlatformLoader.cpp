@@ -52,7 +52,7 @@ ImagePlatformPtr loadImagePlatform()
     const bool isReallyX11 = KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0;
     // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
     // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
-    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != 0
+    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
         && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
         return std::make_unique<ImagePlatformKWin>();
     }

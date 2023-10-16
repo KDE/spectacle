@@ -12,6 +12,10 @@ public:
     static bool isLoaded();
     static quint32 version();
 
+    enum {
+        NullVersion = 0
+    };
+
 private:
     ScreenShotEffect() = delete;
     ~ScreenShotEffect() = delete;
