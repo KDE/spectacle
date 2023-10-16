@@ -104,7 +104,6 @@ void VideoPlatformWayland::startRecording
     m_recorder->setOutput(path);
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
-        qDebug() <<m_recorder->state();
         if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
             Q_EMIT recordingSaved(m_recorder->output());
             setRecording(false);
