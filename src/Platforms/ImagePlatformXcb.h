@@ -19,7 +19,7 @@ class ImagePlatformXcb final : public ImagePlatform
 
 public:
     explicit ImagePlatformXcb(QObject *parent = nullptr);
-    ~ImagePlatformXcb() override;
+    ~ImagePlatformXcb() override = default;
 
     GrabModes supportedGrabModes() const override final;
     ShutterModes supportedShutterModes() const override final;

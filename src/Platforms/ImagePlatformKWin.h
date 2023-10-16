@@ -25,7 +25,8 @@ class ImagePlatformKWin final : public ImagePlatform
     Q_OBJECT
 
 public:
-    static std::unique_ptr<ImagePlatformKWin> create();
+    explicit ImagePlatformKWin(QObject *parent = nullptr);
+    ~ImagePlatformKWin() override = default;
 
     enum class ScreenShotFlag : uint {
         IncludeCursor = 0x1,
@@ -49,8 +50,6 @@ private Q_SLOTS:
     void updateSupportedGrabModes();
 
 private:
-    explicit ImagePlatformKWin(QObject *parent = nullptr);
-
     void takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags);
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
     void takeScreenShotActiveWindow(ScreenShotFlags flags);

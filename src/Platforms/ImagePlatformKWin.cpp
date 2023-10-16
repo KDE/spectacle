@@ -234,15 +234,6 @@ ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::Screen
 {
 }
 
-std::unique_ptr<ImagePlatformKWin> ImagePlatformKWin::create()
-{
-    QDBusConnectionInterface *interface = QDBusConnection::sessionBus().interface();
-    if (interface->isServiceRegistered(s_screenShotService)) {
-        return std::unique_ptr<ImagePlatformKWin>(new ImagePlatformKWin());
-    }
-    return nullptr;
-}
-
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
     : ImagePlatform(parent)
 {
