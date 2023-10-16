@@ -1,0 +1,1620 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the spectacle package.
+#
+# Toms Trasuns <toms.trasuns@posteo.net>, 2023.
+# Māris Nartišs <maris.kde@gmail.com>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: spectacle\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"PO-Revision-Date: 2023-10-15 22:10+0300\n"
+"Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 22.12.3\n"
+
+#: src/CaptureModeModel.cpp:95
+#, kde-format
+msgid "Rectangular Region"
+msgstr "Četrstūra reģions"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "All Screens"
+msgstr "Visi ekrāni"
+
+#: src/CaptureModeModel.cpp:102
+#, kde-format
+msgid "Full Screen"
+msgstr "Viss ekrāns"
+
+#: src/CaptureModeModel.cpp:109
+#, kde-format
+msgid "All Screens (Scaled to same size)"
+msgstr "Visi ekrāni (mērogots līdz vienādam izmēram)"
+
+#: src/CaptureModeModel.cpp:115
+#, kde-format
+msgid "Current Screen"
+msgstr "Pašreizējais monitors"
+
+#: src/CaptureModeModel.cpp:122
+#, kde-format
+msgid "Active Window"
+msgstr "Aktīvais logs"
+
+#: src/CaptureModeModel.cpp:129
+#, kde-format
+msgid "Window Under Cursor"
+msgstr "Logs zem kursora"
+
+#: src/CommandLineOptions.h:20
+#, kde-format
+msgid "Capture the entire desktop (default)"
+msgstr "Uzņemt visu darbvirsmu (noklusējums)"
+
+#: src/CommandLineOptions.h:24
+#, kde-format
+msgid "Capture the current monitor"
+msgstr "Uzņemt pašreizējo ekrānu"
+
+#: src/CommandLineOptions.h:28
+#, kde-format
+msgid "Capture the active window"
+msgstr "Uzņemt aktīvo logu"
+
+#: src/CommandLineOptions.h:32
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, including parents of pop-up "
+"menus"
+msgstr ""
+"Uzņemt logu, kas šobrīd ir zem kursora, tostarp uzlecošo izvēļņu pamatlogus"
+
+#: src/CommandLineOptions.h:36
+#, kde-format
+msgid ""
+"Capture the window currently under the cursor, excluding parents of pop-up "
+"menus"
+msgstr ""
+"Uzņemt logu, kas atrodas zem kursora, izņemot uzlecošo izvēļņu pamatlogus"
+
+#: src/CommandLineOptions.h:40
+#, kde-format
+msgid "Capture a rectangular region of the screen"
+msgstr "Uzņemt ekrāna četrstūra reģionu"
+
+#: src/CommandLineOptions.h:44
+#, kde-format
+msgid "Launch Spectacle without taking a screenshot"
+msgstr "Palaist Spectacle, neuzņemot ekrānattēlu"
+
+#: src/CommandLineOptions.h:48
+#, kde-format
+msgid "Start in GUI mode (default)"
+msgstr "Ieslēgt GUI režīmā (noklusējums)"
+
+#: src/CommandLineOptions.h:52
+#, kde-format
+msgid "Take a screenshot and exit without showing the GUI"
+msgstr "Uzņemt ekrānattēlu un iziet, neparādot GUI"
+
+#: src/CommandLineOptions.h:56
+#, kde-format
+msgid "Start in DBus-Activation mode"
+msgstr "Ieslēgt DBus aktivizācijas režīmā"
+
+#: src/CommandLineOptions.h:60
+#, kde-format
+msgid ""
+"In background mode, do not pop up a notification when the screenshot is taken"
+msgstr ""
+"Darbojoties fona režīmā, neparādīt uzlecošu paziņojumu, kad tiek uzņemts "
+"ekrānattēls"
+
+#: src/CommandLineOptions.h:64
+#, kde-format
+msgid "In background mode, save image to specified file"
+msgstr "Darbojoties fona režīmā, attēlu saglabāt noteiktā datnē"
+
+#: src/CommandLineOptions.h:69
+#, kde-format
+msgid "In background mode, delay before taking the shot (in milliseconds)"
+msgstr "Darbojoties fona režīmā, uzņemšanu veikt pēc pauzes (milisekundēs)"
+
+#: src/CommandLineOptions.h:74
+#, kde-format
+msgid ""
+"In background mode, copy screenshot image to clipboard, unless -o is also "
+"used."
+msgstr ""
+"Darbojoties fona režīmā, starpliktuvē kopēt visu ekrānattēlu, izņemot, ja "
+"tiek lietots arī -o."
+
+#: src/CommandLineOptions.h:78
+#, kde-format
+msgid "In background mode, copy screenshot file path to clipboard"
+msgstr "Darbojoties fona režīmā, starpliktuvē kopēt ceļu uz ekrānattēla datni"
+
+#: src/CommandLineOptions.h:82
+#, kde-format
+msgid "Wait for a click before taking screenshot. Invalidates delay"
+msgstr ""
+"Pirms ekrānattēla uzņemšanas gaidīt klikšķi. Aizturi padara par spēkā neesošu"
+
+#: src/CommandLineOptions.h:86
+#, kde-format
+msgid "Starts a new GUI instance of spectacle without registering to DBus"
+msgstr "Sākt jaunu Spectacle GUI instanci, to nereģistrējot DBus"
+
+#: src/CommandLineOptions.h:90
+#, kde-format
+msgid "In background mode, include pointer in the screenshot"
+msgstr "Darbojoties fona režīmā, ekrānattēlā iekļaut kursoru"
+
+#: src/CommandLineOptions.h:94
+#, kde-format
+msgid "In background mode, exclude decorations in the screenshot"
+msgstr "Darbojoties fona režīmā, ekrānattēlā neiekļaut dekorācijas"
+
+#: src/CommandLineOptions.h:98
+#, kde-format
+msgid "Open and edit existing screenshot file"
+msgstr "Atvērt un rediģēt esošo ekrānattēla datni"
+
+#: src/ExportManager.cpp:329
+#, kde-format
+msgid "QImageWriter cannot write image: %1"
+msgstr "QImageWriter neizdodas saglabāt attēlu: %1"
+
+#: src/ExportManager.cpp:344
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the directory failed:<nl/><filename>"
+"%1</filename>"
+msgstr ""
+"Neizdodas saglabāt ekrānattēlu, jo nav izdevies izveidot direktoriju:<nl/"
+"><filename>%1</filename>"
+
+#: src/ExportManager.cpp:354
+#, kde-format
+msgid "Cannot save screenshot. Error while writing file."
+msgstr "Neizdodas saglabāt ekrānattēlu. Kļūda, saglabājot datni."
+
+#: src/ExportManager.cpp:374
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Cannot save screenshot because creating the remote directory failed:<nl/"
+"><filename>%1</filename>"
+msgstr ""
+"Neizdevās saglabāt ekrānattēlu, jo neizdevās izveidot attālinātu direktoriju:"
+"<nl/><filename>%1</filename>"
+
+#: src/ExportManager.cpp:385 src/ExportManager.cpp:435
+#, kde-format
+msgid "Cannot save screenshot. Error while writing temporary local file."
+msgstr "Neizdevās saglabāt ekrānattēlu. Kļūda saglabājot lokālu pagaidu datni."
+
+#: src/ExportManager.cpp:393
+#, kde-format
+msgid "Unable to save image. Could not upload file to remote location."
+msgstr ""
+"Neizdevās saglabāt attēlu. Neizdevās datnes augšupielāde uz attālinātu vietu."
+
+#: src/ExportManager.cpp:442
+#, kde-format
+msgid "Cannot save screenshot. The save filename is invalid."
+msgstr "Neizdevās saglabāt ekrānattēlu. Datnes nosaukums ir nederīgs."
+
+#: src/ExportManager.cpp:486
+#, kde-format
+msgid "Cannot save an empty screenshot image."
+msgstr "Nevar saglabāt tukšu ekrānattēlu."
+
+#: src/ExportManager.cpp:581
+#, kde-format
+msgid "Printing failed. The printer failed to initialize."
+msgstr "Drukāšanas kļūda. Neizdevās inicializēt printeri."
+
+#: src/ExportManager.cpp:597
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Gads (četru ciparu formātā)"
+
+#: src/ExportManager.cpp:598
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Gads (divu ciparu formātā)"
+
+#: src/ExportManager.cpp:599
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Mēnesis"
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr "Mēnesis (lokalizēts saīsināts nosaukums)"
+
+#: src/ExportManager.cpp:601
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr "Mēnesis (lokalizēts pilns nosaukums)"
+
+#: src/ExportManager.cpp:602
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Day"
+msgstr "Diena"
+
+#: src/ExportManager.cpp:603
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Hour"
+msgstr "Stunda"
+
+#: src/ExportManager.cpp:604
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Minute"
+msgstr "Minūte"
+
+#: src/ExportManager.cpp:605
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Second"
+msgstr "Sekunde"
+
+#: src/ExportManager.cpp:606
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Timezone"
+msgstr "Laika josla"
+
+#: src/ExportManager.cpp:607
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Window Title"
+msgstr "Loga virsraksts"
+
+#: src/ExportManager.cpp:608
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering"
+msgstr "Secīga numurēšana"
+
+#: src/ExportManager.cpp:610
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Sequential numbering, padded out to N digits"
+msgstr "Secīga numurēšana līdz N cipariem"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:57
+#, kde-format
+msgid "Stroke:"
+msgstr "Līnija:"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:89
+#, kde-format
+msgid "Stroke Width"
+msgstr "Līnijas biezums"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:105
+#, kde-format
+msgid "Stroke Color"
+msgstr "Līnijas krāsa"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#, kde-format
+msgid "Fill:"
+msgstr "Aizpildījums:"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:157
+#, kde-format
+msgid "Fill Color"
+msgstr "Aizpildījuma krāsa"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:200
+#, kde-format
+msgid "Font:"
+msgstr "Fonts:"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:229
+#, kde-format
+msgid "Font Color"
+msgstr "Fonta krāsa:"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:272
+#, kde-format
+msgid "Number:"
+msgstr "Numurs:"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:292
+#, kde-format
+msgid "Number for number annotations"
+msgstr "Numurs numura anotācijām"
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:319
+#, kde-format
+msgid "Shadow"
+msgstr "Ēna"
+
+#: src/Gui/AnnotationsToolBarContents.qml:64
+#, kde-format
+msgid "None"
+msgstr "Nav"
+
+#: src/Gui/AnnotationsToolBarContents.qml:71
+#, kde-format
+msgid "Select"
+msgstr "Atlasīt"
+
+#: src/Gui/AnnotationsToolBarContents.qml:79
+#, kde-format
+msgid "Freehand"
+msgstr "Brīva roka"
+
+#: src/Gui/AnnotationsToolBarContents.qml:86
+#, kde-format
+msgid "Highlighter"
+msgstr "Iezīmētājs"
+
+#: src/Gui/AnnotationsToolBarContents.qml:93
+#, kde-format
+msgid "Line"
+msgstr "Taisna līnija"
+
+#: src/Gui/AnnotationsToolBarContents.qml:100
+#, kde-format
+msgid "Arrow"
+msgstr "Bulta"
+
+#: src/Gui/AnnotationsToolBarContents.qml:107
+#, kde-format
+msgid "Rectangle"
+msgstr "Četrstūris"
+
+#: src/Gui/AnnotationsToolBarContents.qml:114
+#, kde-format
+msgid "Ellipse"
+msgstr "Elipse"
+
+#: src/Gui/AnnotationsToolBarContents.qml:121
+#, kde-format
+msgid "Pixelate"
+msgstr "Pikselēt"
+
+#: src/Gui/AnnotationsToolBarContents.qml:128
+#, kde-format
+msgid "Blur"
+msgstr "Aizmiglot"
+
+#: src/Gui/AnnotationsToolBarContents.qml:135
+#, kde-format
+msgid "Text"
+msgstr "Teksts"
+
+#: src/Gui/AnnotationsToolBarContents.qml:142
+#, kde-format
+msgid "Number"
+msgstr "Skaitļi"
+
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#, kde-format
+msgid "Cancel (%1 second)"
+msgid_plural "Cancel (%1 seconds)"
+msgstr[0] "Atcelts (%1 sekunde)"
+msgstr[1] "Atcelt (%1 sekundes)"
+msgstr[2] "Atcelt (%1 sekunžu)"
+
+#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
+#, kde-format
+msgid "Take a new screenshot"
+msgstr "Uzņemt jaunu ekrānattēlu"
+
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
+#: src/Gui/OptionsMenu.cpp:65
+#, kde-format
+msgid "Capture Settings"
+msgstr "Uzņemšanas iestatījumi"
+
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:69
+#: src/Gui/RecordOptions.qml:41
+#, kde-format
+msgid "Include mouse pointer"
+msgstr "Iekļaut peles kursoru"
+
+#: src/Gui/CaptureSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image."
+msgstr "Ekrānattēlā parādīt peles kursoru."
+
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:81
+#, kde-format
+msgid "Include window titlebar and borders"
+msgstr "Iekļaut logu virsrakstus un apmales"
+
+#: src/Gui/CaptureSettingsColumn.qml:26
+#, kde-format
+msgid ""
+"Show the window title bar and border when taking a screenshot of a window."
+msgstr "Loga ekrānattēlā parādīt tā virsraksta joslu un apmales"
+
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:93
+#, kde-format
+msgid "Capture the current pop-up only"
+msgstr "Uzņemt tikai pašreizējo uzlecološ logu"
+
+#: src/Gui/CaptureSettingsColumn.qml:36
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc) when "
+"taking a screenshot of a window. If disabled, the pop-up is captured along "
+"with the parent window."
+msgstr ""
+"Uzņemt tikai loga uzlecošo lodziņu (piemēram, izvēlni, paskaidri utt.). Ja "
+"izslēgts, uzlecošais lodziņš tiks uzņemts kopā ar tā pamatlogu."
+
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:107
+#, kde-format
+msgid "Quit after manual Save or Copy"
+msgstr "Iziet pēc manuālas saglabāšanas vai nokopēšanas"
+
+#: src/Gui/CaptureSettingsColumn.qml:45
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image."
+msgstr "Iziet no Spectacle pēc attēla manuālas saglabāšanas vai nokopēšanas."
+
+#: src/Gui/CaptureSettingsColumn.qml:54
+#, kde-format
+msgid "Capture on click"
+msgstr "Uzņemt pēc noklikšķināšanas"
+
+#: src/Gui/CaptureSettingsColumn.qml:56
+#, kde-format
+msgid "Wait for a mouse click before capturing the screenshot image."
+msgstr "Pirms ekrānattēla uzņemšanas sagaidīt peles klikšķi."
+
+#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:137
+#, kde-format
+msgid "Delay:"
+msgstr "Aizture:"
+
+#: src/Gui/CopiedMessage.qml:12
+#, kde-format
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Ekrānattēls ir nokopēts starpliktuvē."
+
+#: src/Gui/DelaySpinBox.qml:15
+#, kde-format
+msgctxt "0 second delay"
+msgid "No Delay"
+msgstr "Bez aiztures"
+
+#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " sekunde"
+msgstr[1] " sekundes"
+msgstr[2] " sekunžu"
+
+#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " sekundes"
+
+#: src/Gui/DialogPage.qml:96
+#, kde-format
+msgid "Capture Modes"
+msgstr "Uzņemšanas režīmi"
+
+#: src/Gui/DialogPage.qml:127
+#, kde-format
+msgid "Configure Spectacle…"
+msgstr "Konfigurēt Spectacle..."
+
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#, kde-format
+msgid "Help"
+msgstr "Palīdzība"
+
+#: src/Gui/ExportMenu.cpp:51
+#, kde-format
+msgid "Open Default Screenshots Folder"
+msgstr "Atvērt noklusējuma ekrānattēlu mapi"
+
+#: src/Gui/ExportMenu.cpp:119
+#, kde-format
+msgid "Other Application..."
+msgstr "Cita programma..."
+
+#: src/Gui/ExportMenu.cpp:151
+#, kde-format
+msgid "Share"
+msgstr "Dalīties"
+
+#: src/Gui/ImageView.qml:147
+#, kde-format
+msgid "Screenshot"
+msgstr "Ekrānattēls"
+
+#: src/Gui/ImageView.qml:151
+#, kde-format
+msgid "Recording"
+msgstr "Video"
+
+#: src/Gui/ImageView.qml:214
+#, kde-format
+msgid "Zoom:"
+msgstr "Tālummaiņa:"
+
+#: src/Gui/ImageView.qml:228
+#, kde-format
+msgid "Image Zoom"
+msgstr "Attēla tālummaiņa"
+
+#: src/Gui/MainToolBarContents.qml:54
+#, kde-format
+msgid "Save"
+msgstr "Saglabāt"
+
+#: src/Gui/MainToolBarContents.qml:61
+#, kde-format
+msgid "Save As..."
+msgstr "Saglabāt kā..."
+
+#: src/Gui/MainToolBarContents.qml:68
+#, kde-format
+msgid "Copy"
+msgstr "Kopēt"
+
+#: src/Gui/MainToolBarContents.qml:74
+#, kde-format
+msgid "Export"
+msgstr "Eksportēt"
+
+#: src/Gui/MainToolBarContents.qml:84
+#, kde-format
+msgid "Show Annotation Tools"
+msgstr "Parādīt anotācijas rīkus"
+
+#: src/Gui/MainToolBarContents.qml:110
+#, kde-format
+msgid "New Screenshot"
+msgstr "Jauns ekrānattēls"
+
+#: src/Gui/MainToolBarContents.qml:121
+#, kde-format
+msgid "Options"
+msgstr "Opcijas"
+
+#: src/Gui/MainToolBarContents.qml:130
+#, kde-format
+msgid "Configure..."
+msgstr "Konfigurēt..."
+
+#: src/Gui/OptionsMenu.cpp:39
+#, kde-format
+msgid "Capture Mode"
+msgstr "Uzņemšanas režīms"
+
+#: src/Gui/OptionsMenu.cpp:70
+#, kde-format
+msgid "Show the mouse cursor in the screenshot image"
+msgstr "Ekrānattēlā parādīt peles kursoru"
+
+#: src/Gui/OptionsMenu.cpp:82
+#, kde-format
+msgid ""
+"Show the window title bar, the minimize/maximize/close buttons, and the "
+"window border"
+msgstr ""
+"Parādīt loga virsraksta joslu, minimizēšanas/maksimizēšanas/aizvēršanas "
+"pogas un loga apmali"
+
+#: src/Gui/OptionsMenu.cpp:95
+#, kde-format
+msgid ""
+"Capture only the current pop-up window (like a menu, tooltip etc).\n"
+"If disabled, the pop-up is captured along with the parent window"
+msgstr ""
+"Parādīt tikai pašreizējo uzlecošo logu (piemēram, izvēlni, paskaidri utt.).\n"
+"Ja izslēgts, izvēlne tiek uzņemta kopā ar pamatlogu"
+
+#: src/Gui/OptionsMenu.cpp:108
+#, kde-format
+msgid "Quit Spectacle after manually saving or copying the image"
+msgstr "Iziet no Spectacle pēc attēla manuālas saglabāšanas vai nokopēšanas"
+
+#: src/Gui/OptionsMenu.cpp:122
+#, kde-format
+msgid "Capture On Click"
+msgstr "Uzņemt pēc noklikšķināšanas"
+
+#: src/Gui/OptionsMenu.cpp:142
+#, kde-format
+msgid "No Delay"
+msgstr "Bez aiztures"
+
+#: src/Gui/RecordingView.qml:62
+#, kde-format
+msgid ""
+"Recording:\n"
+"%1"
+msgstr ""
+"Ieraksta:\n"
+"%1"
+
+#: src/Gui/RecordingView.qml:93
+#, kde-format
+msgid "Pause"
+msgstr "Pauze"
+
+#: src/Gui/RecordingView.qml:93
+#, kde-format
+msgid "Play"
+msgstr "Atskaņot"
+
+#: src/Gui/RecordOptions.qml:33
+#, kde-format
+msgid "Recording Settings"
+msgstr "Ieraksta iestatījumi"
+
+#: src/Gui/RecordOptions.qml:42
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Ekrāna ierakstā parādīt peles kursoru."
+
+#: src/Gui/RecordOptions.qml:53
+#, kde-format
+msgid "Finish recording"
+msgstr "Pabeigt ierakstu"
+
+#: src/Gui/SavedAndCopiedMessage.qml:8
+#, kde-format
+msgid ""
+"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
+msgstr ""
+"Ekrānattēls ir nokopēts starpliktuvē un saglabāts kā <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedAndLocationCopied.qml:8
+#, kde-format
+msgid ""
+"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Ekrānattēls ir saglabāts kā <a href=\"%1\">%2</a> un tā atrašanās vieta ir "
+"nokopēta starpliktuvē"
+
+#: src/Gui/SavedMessage.qml:13
+#, kde-format
+msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgstr "Video tika saglabāts kā <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:15
+#, kde-format
+msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgstr "Ekrānattēls tika saglabāts kā <a href=\"%1\">%2</a>"
+
+#: src/Gui/SavedMessage.qml:21
+#, kde-format
+msgid "Open Containing Folder"
+msgstr "Atvērt mapi, kurā ir saglabāts"
+
+#: src/Gui/ScreenshotFailedMessage.qml:11
+#, kde-format
+msgid ""
+"Could not take a screenshot. Please report this bug here: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
+msgstr ""
+"Neizdevās uzņemt ekrānattēlu. Lūdzu, ziņojiet par kļūdu: <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=Spectacle\">iesniegt „Spectacle“ kļūdu</a>"
+
+#. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:17
+#, kde-format
+msgid "When launching Spectacle:"
+msgstr "Ieslēdzot Spectacle:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:25
+#, kde-format
+msgid "Take full screen screenshot"
+msgstr "Uzņemt visa ekrāna attēlu"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:30
+#, kde-format
+msgid "Use last-used capture mode"
+msgstr "Pēdējais izmantotais uzņemšanas režīms"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:35
+#, kde-format
+msgid "Do not take a screenshot automatically"
+msgstr "Neuzņemt automātiskus ekrānattēlus"
+
+#. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:59
+#, kde-format
+msgid "After taking a screenshot:"
+msgstr "Pēc ekrānattēla uzņemšanas:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:66
+#, kde-format
+msgid "Save file to default folder"
+msgstr "Saglabāt datni noklusējuma mapē"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:77
+#, kde-format
+msgid "Do not copy anything"
+msgstr "Neko nekopēt"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:82
+#, kde-format
+msgid "Copy image to clipboard"
+msgstr "Attēlu kopēt starpliktuvē"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:87
+#, kde-format
+msgid "Copy file location to clipboard"
+msgstr "Starpliktuvē kopēt attēla atrašanās vietu"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:111
+#, kde-format
+msgid "While Spectacle is running"
+msgstr "Kamēr Spectacle ir ieslēgts"
+
+#. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:118
+#, kde-format
+msgid "Press screenshot key to:"
+msgstr "Tastatūras ekrānattēla poga:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:126
+#, kde-format
+msgid "Take a new Screenshot"
+msgstr "Uzņem jaunu ekrānattēlu"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:131
+#, kde-format
+msgid "Open a new Spectacle window"
+msgstr "Atver jaunu Spectacle logu"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyActionRunning)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:136
+#, kde-format
+msgid "Return focus to Spectacle"
+msgstr "Atgriež fokusu uz Spectacle"
+
+#. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:160
+#, kde-format
+msgid "Rectangular Region Selection"
+msgstr "Četrstūra reģiona iezīmēšana"
+
+#. i18n: ectx: property (text), widget (QLabel, generalLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:167
+#, kde-format
+msgid "General:"
+msgstr "Vispārīgi:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColor)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:174
+#, kde-format
+msgid "Use light background"
+msgstr "Izmantot gaišu fonu"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showMagnifier)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:181
+#, kde-format
+msgid "Show magnifier"
+msgstr "Parādīt pietuvināšanas rīku"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#, kde-format
+msgid "Accept on click-and-release"
+msgstr "Apstiprināt pēc klikšķa un atlaišanas"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#, kde-format
+msgid "Show capture instructions"
+msgstr "Parādīt uzņemšanas instrukcijas"
+
+#. i18n: ectx: property (text), widget (QLabel, rememberLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#, kde-format
+msgid "Remember selected area:"
+msgstr "Atcerēties izvēlēto reģionu:"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:226
+#, kde-format
+msgid "Never"
+msgstr "Nekad"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:231
+#, kde-format
+msgid "Always"
+msgstr "Vienmēr"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberLastRectangularRegion)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:236
+#, kde-format
+msgid "Until Spectacle is closed"
+msgstr "Kamēr Spectacle nav aizvērts"
+
+#. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:17
+#, kde-format
+msgid "Save Location:"
+msgstr "Saglabāšanas vieta:"
+
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:50
+#, kde-format
+msgid "Compression Quality:"
+msgstr "Kompresijas kvalitāte:"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
+#, no-c-format, kde-format
+msgid "%"
+msgstr "%"
+
+#. i18n: ectx: property (text), widget (QLabel, filenameLabel)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:88
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:50
+#, kde-format
+msgid "Filename:"
+msgstr "Datnes nosaukums:"
+
+#. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
+#. i18n: ectx: property (text), widget (QLabel, previewLabel)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:133
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:90
+#, kde-format
+msgctxt "Preview of the user configured filename"
+msgid "Preview:"
+msgstr "Priekšskats:"
+
+#. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:173
+#, kde-format
+msgid "For lossy image formats like JPEG"
+msgstr "Kompresijai ar zudumiem JPEG vai līdzīgu formātu gadījumā"
+
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:56
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:59
+#, kde-format
+msgid ""
+"You can use the following placeholders in the filename, which will be "
+"replaced with actual text when the file is saved:<blockquote>"
+msgstr ""
+"Datņu nosaukumam varat izmantot šos vietturus, kas datnes saglabāšanas brīdī "
+"tiks aizvietoti ar attiecīgu tekstu:<blockquote>"
+
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:61
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:64
+#, kde-format
+msgid "To save to a sub-folder"
+msgstr "Lai saglabātu apakšmapē"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<filename>%1.%2</filename>"
+msgctxt "@info"
+msgid "<filename>%1</filename>"
+msgstr "<filename>%1.%2</filename>"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "Settings category"
+msgid "General"
+msgstr "Vispārīgi"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:35
+#, kde-format
+msgctxt "Settings category"
+msgid "Image Saving"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#, kde-format
+msgctxt "Settings category"
+msgid "Video Saving"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#, fuzzy, kde-format
+#| msgid "Shortcuts"
+msgctxt "Settings category"
+msgid "Shortcuts"
+msgstr "Saīsnes"
+
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:77
+#, kde-format
+msgid "Shortcuts"
+msgstr "Saīsnes"
+
+#. i18n: ectx: label, entry (launchAction), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:16
+#, kde-format
+msgid "What to do when Spectacle is launched"
+msgstr "Ko darīt pēc Spectacle palaišanas"
+
+#. i18n: ectx: label, entry (printKeyActionRunning), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:25
+#, kde-format
+msgid ""
+"What should happen if print key is pressed when Spectacle is already running"
+msgstr ""
+"Kas notiks, ja tiek nospiesta tastatūras ekrānattēla poga, kad Spectacle ir "
+"jau palaists"
+
+#. i18n: ectx: label, entry (autoSaveImage), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#, kde-format
+msgid "Save screenshot automatically after it is taken"
+msgstr "Automātiski saglabāt ekrānattēlu pēc ta uzņemšanas"
+
+#. i18n: ectx: label, entry (clipboardGroup), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#, kde-format
+msgid "Clipboard action which should be executed after the screenshot is taken"
+msgstr "Starpliktuves darbība, kas ir jāizpilda pēc ekrānattēla uzņemšanas"
+
+#. i18n: ectx: label, entry (useLightMaskColor), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:49
+#, kde-format
+msgid "Whether to use a light color mask in the region selection dialog"
+msgstr "Vai izvēles dialoga reģionā izvēlēties gaišas krāsas masku"
+
+#. i18n: ectx: label, entry (showMagnifier), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:53
+#, kde-format
+msgid "Whether to show a magnifier in the region selection"
+msgstr "Vai izvēles reģionā parādīt pietuvinājuma rīku"
+
+#. i18n: ectx: label, entry (useReleaseToCapture), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:57
+#, kde-format
+msgid ""
+"Whether the screenshot should be captured after selecting the region and "
+"releasing the mouse"
+msgstr ""
+"Vai pēc peles nospiešanas un atlaišanas, izvēloties reģionu, ir jāuzņem "
+"ekrānattēls"
+
+#. i18n: ectx: label, entry (showCaptureInstructions), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:61
+#, kde-format
+msgid "Whether to show capture instructions in the region selection"
+msgstr "Vai reģiona iezīmēšanas laikā parādīt uzņemšanas instrukcijas"
+
+#. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:65
+#, kde-format
+msgid "Remember the last rectangular region"
+msgstr "Atcerēties pēdējo iezīmēto reģionu"
+
+#. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:76
+#, kde-format
+msgid "The last used region the user selected"
+msgstr "Pēdējais lietotāja izvēlētais reģions"
+
+#. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#, kde-format
+msgid "Take screenshot on click"
+msgstr "Uzņemt ekrānattēlu pēc noklikšķināšanas"
+
+#. i18n: ectx: label, entry (includePointer), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#, kde-format
+msgid "Whether the mouse cursor is included in the screenshot"
+msgstr "Vai ekrānattēlā ir jāparāda peles kursors"
+
+#. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#, kde-format
+msgid "Whether the window decorations are included in the screenshot"
+msgstr "Vai loga dekorācijas (virsraksts, apmales) ir jāiekļauj ekrānattēlā"
+
+#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#, kde-format
+msgid "Only capture the current pop up menu"
+msgstr "Uzņemt tikai pašreizējo uzlecošo izvēlni"
+
+#. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:98
+#, kde-format
+msgid "Quit after saving or copying an image"
+msgstr "Iziet pēc saglabāšanas vai attēla kopēšanas"
+
+#. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:102
+#, kde-format
+msgid "Delay"
+msgstr "Aizture"
+
+#. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
+#. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:113
+#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#, kde-format
+msgid "Default filename"
+msgstr "Noklusētais datnes nosaukums"
+
+#. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#, kde-format
+msgid "Compression quality for lossy file formats"
+msgstr "Kompresijas kvalitāte kompresijai ar zudumiem"
+
+#. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:127
+#, kde-format
+msgid "Default save image format"
+msgstr "Noklusējuma attēla formāts"
+
+#. i18n: ectx: label, entry (imageFilenameFormat), group (ImageSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:131
+#, kde-format
+msgid "The default filename used when saving"
+msgstr "Noklusējuma datnes nosaukums saglabājot"
+
+#. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
+#. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:135
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgid "The path of the file saved last"
+msgstr "Pēdējās saglabātās datnes ceļš"
+
+#. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
+#. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:164
+#, kde-format
+msgid "Last path used for \"save as\" action"
+msgstr "Pēdējais ceļš, izvēloties „saglabāt kā“"
+
+#. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#, fuzzy, kde-format
+#| msgid "Default save image format"
+msgid "Default video format"
+msgstr "Noklusējuma attēla formāts"
+
+#. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#, kde-format
+msgid "The default filename used when recording a video"
+msgstr "Noklusējuma datnes nosaukums, ierakstot video"
+
+#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#, kde-format
+msgid "The last used annotation tool type"
+msgstr "Pēdējais izmantotais anotācijas rīka tips"
+
+#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
+#, kde-format
+msgid "Stroke width for freehand annotation tool"
+msgstr "Līnijas biezums brīvas rokas anotācijas rīkam"
+
+#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:181
+#, kde-format
+msgid "Stroke width for highlighter annotation tool"
+msgstr "Līnijas biezums iekrāsošanas rīkam"
+
+#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#, kde-format
+msgid "Stroke width for line annotation tool"
+msgstr "Līnijas biezums taisnas līnijas rīkam"
+
+#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, kde-format
+msgid "Stroke width for arrow annotation tool"
+msgstr "Līnijas biezums bultas rīkam"
+
+#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#, kde-format
+msgid "Stroke width for rectangle annotation tool"
+msgstr "Līnijas biezums četrstūra rīkam"
+
+#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#, kde-format
+msgid "Stroke width for ellipse annotation tool"
+msgstr "Līnijas biezums elipses rīkam"
+
+#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:207
+#, kde-format
+msgid "Stroke color for freehand annotation tool"
+msgstr "Līnijas krāsa brīvas rokas anotācijas rīkam"
+
+#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:211
+#, kde-format
+msgid "Stroke color for highlighter annotation tool"
+msgstr "Līnijas krāsa iekrāsošanas rīkam"
+
+#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:215
+#, kde-format
+msgid "Stroke color for line annotation tool"
+msgstr "Līnijas krāsa taisnas līnijas rīkam"
+
+#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
+#, kde-format
+msgid "Stroke color for arrow annotation tool"
+msgstr "Līnijas krāsa bultas rīkam"
+
+#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#, kde-format
+msgid "Stroke color for rectangle annotation tool"
+msgstr "Līnijas krāsa četrstūra rīkam"
+
+#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:227
+#, kde-format
+msgid "Stroke color for ellipse annotation tool"
+msgstr "Līnijas krāsa elipses rīkam"
+
+#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:232
+#, kde-format
+msgid "Fill color for rectangle annotation tool"
+msgstr "Aizpildījuma krāsa četrstūra rīkam"
+
+#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:236
+#: src/Gui/SettingsDialog/spectacle.kcfg:240
+#, kde-format
+msgid "Fill color for ellipse annotation tool"
+msgstr "Aizpildījuma krāsa elipses rīkam"
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#, kde-format
+msgid "Font for text annotations"
+msgstr "Fonts teksta anotācijām"
+
+#. i18n: ectx: label, entry (numberFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
+#, kde-format
+msgid "Font for number annotations"
+msgstr "Fonts skaitļu anotācijām"
+
+#. i18n: ectx: label, entry (textFontColor), group (Annotations)
+#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
+#, kde-format
+msgid "Font color for annotations"
+msgstr "Fonta krāsa anotācijām"
+
+#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#, kde-format
+msgid "Whether freehand annotation tool has a drop shadow"
+msgstr "Ēna brīvas rokas anotācijas rīkam"
+
+#. i18n: ectx: label, entry (lineShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
+#, kde-format
+msgid "Whether line annotation tool has a drop shadow"
+msgstr "Ēna taisnas līnijas anotācijas rīkam"
+
+#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:269
+#, kde-format
+msgid "Whether arrow annotation tool has a drop shadow"
+msgstr "Ēna bultas anotācijas rīkam"
+
+#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:273
+#, kde-format
+msgid "Whether rectangle annotation tool has a drop shadow"
+msgstr "Ēna četrstūra anotācijas rīkam"
+
+#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:277
+#, kde-format
+msgid "Whether ellipse annotation tool has a drop shadow"
+msgstr "Ēna elipses anotācijas rīkam"
+
+#. i18n: ectx: label, entry (textShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:281
+#, kde-format
+msgid "Whether text annotation tool has a drop shadow"
+msgstr "Ēna teksta anotācijas rīkam"
+
+#. i18n: ectx: label, entry (numberShadow), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#, kde-format
+msgid "Whether number annotation tool has a drop shadow"
+msgstr "Ēna skaitļu anotācijas rīkam"
+
+#. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
+#, fuzzy, kde-format
+#| msgid "Save Location:"
+msgid "Save &Location:"
+msgstr "Saglabāšanas vieta:"
+
+#: src/Gui/SharedMessage.qml:12
+#, kde-format
+msgid "Image shared"
+msgstr "Attēls ir kopīgots"
+
+#: src/Gui/SharedMessage.qml:13
+#, kde-format
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Attēla kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
+
+#: src/Gui/ShareErrorMessage.qml:12
+#, kde-format
+msgid "There was a problem sharing the image: %1"
+msgstr "Kopīgojot attālu, radās problēma: %1"
+
+#: src/Gui/ShortcutsTextBox.qml:13
+#, kde-format
+msgid "Take Screenshot:"
+msgstr "Uzņemt ekrānattēlu:"
+
+#: src/Gui/ShortcutsTextBox.qml:15
+#, kde-format
+msgid "Create new selection rectangle:"
+msgstr "Iezīmēt jaunu izvēles četrstūri"
+
+#: src/Gui/ShortcutsTextBox.qml:18
+#, kde-format
+msgid "Move selection rectangle:"
+msgstr "Pārvietot izvēles četrstūri"
+
+#: src/Gui/ShortcutsTextBox.qml:21
+#, kde-format
+msgid "Resize selection rectangle:"
+msgstr "Mainīt četrstūra izmēru:"
+
+#: src/Gui/ShortcutsTextBox.qml:24
+#, kde-format
+msgid "Reset selection:"
+msgstr "Atstatīt izvēli:"
+
+#: src/Gui/ShortcutsTextBox.qml:26
+#, kde-format
+msgid "Cancel:"
+msgstr "Atcelt:"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Release left-click"
+msgstr "Atlaist peles kreiso taustiņu"
+
+#: src/Gui/ShortcutsTextBox.qml:31
+#, kde-format
+msgctxt "Mouse action"
+msgid "Double-click"
+msgstr "Dubultklikšķis"
+
+#: src/Gui/ShortcutsTextBox.qml:32
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Enter"
+msgstr "„Enter“ taustiņš"
+
+#: src/Gui/ShortcutsTextBox.qml:33
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag outside selection rectangle"
+msgstr "Vilkt ārpus četrstūrim"
+
+#: src/Gui/ShortcutsTextBox.qml:34
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Magnifier"
+msgstr "+ „Shift“: Tālummaiņa"
+
+#: src/Gui/ShortcutsTextBox.qml:36
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag inside selection rectangle"
+msgstr "Vilkt iekšpusē četrstūrim"
+
+#: src/Gui/ShortcutsTextBox.qml:37
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys"
+msgstr "Bultu tausiņi"
+
+#: src/Gui/ShortcutsTextBox.qml:38
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Move in 1 pixel steps"
+msgstr "+ „Shift“: Pārvietot pa vienam pikselim"
+
+#: src/Gui/ShortcutsTextBox.qml:39
+#, kde-format
+msgctxt "Mouse action"
+msgid "Drag handles"
+msgstr "Vilkšanas atzīmes"
+
+#: src/Gui/ShortcutsTextBox.qml:40
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Arrow keys + Alt"
+msgstr "Bultu taustiņi un „Alt“"
+
+#: src/Gui/ShortcutsTextBox.qml:41
+#, kde-format
+msgctxt "Keyboard action"
+msgid "+ Shift: Resize in 1 pixel steps"
+msgstr "+ „Shift“: Mainīt izmēru pa vienam pikselim"
+
+#: src/Gui/ShortcutsTextBox.qml:42
+#, kde-format
+msgctxt "Mouse action"
+msgid "Right-click"
+msgstr "Labai klikšķis"
+
+#: src/Gui/ShortcutsTextBox.qml:44
+#, kde-format
+msgctxt "Keyboard action"
+msgid "Escape"
+msgstr "Iziet"
+
+#: src/Gui/SpectacleWindow.cpp:189
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekunde"
+msgstr[1] "%1 sekundes"
+msgstr[2] "%1 sekunžu"
+
+#: src/Gui/SpectacleWindow.cpp:192
+#, kde-format
+msgctxt "@title:window Unsaved Screenshot"
+msgid "Unsaved"
+msgstr "Nav saglabāts"
+
+#: src/Gui/UndoRedoGroup.qml:31
+#, kde-format
+msgid "Undo"
+msgstr "Atsaukt"
+
+#: src/Gui/UndoRedoGroup.qml:45
+#, kde-format
+msgid "Redo"
+msgstr "Atatsaukt"
+
+#: src/Main.cpp:39
+#, kde-format
+msgid "Spectacle"
+msgstr "Spectacle"
+
+#: src/Main.cpp:41
+#, kde-format
+msgid "KDE Screenshot Utility"
+msgstr "KDE ekrānattēlu rīks"
+
+#: src/Main.cpp:43
+#, kde-format
+msgid "(C) 2015 Boudhayan Gupta"
+msgstr "(C) 2015 Boudhayan Gupta"
+
+#: src/Main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Toms Trasūns"
+
+#: src/Main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "toms.trasuns@posteo.net"
+
+#: src/Main.cpp:63
+#, kde-format
+msgid ""
+"On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
+"seem to be available. Use Spectacle on KDE Plasma, or use a different "
+"screenshot tool."
+msgstr ""
+"Izmantojot Wayland, KDE Plasma nepieciešams KWin kompozitors, kas, šķiet, "
+"nav pieejams. Izmantojiet Spectacle kopā ar KDE Plasma vai izvēlieties citu "
+"ekrānattēlu uzņemšanas rīku."
+
+#: src/RecordingModeModel.cpp:30
+#, kde-format
+msgid "Workspace"
+msgstr "Darbvirsma"
+
+#: src/RecordingModeModel.cpp:36
+#, kde-format
+msgid "Selected Screen"
+msgstr "Izvēlētais monitors"
+
+#: src/RecordingModeModel.cpp:42
+#, kde-format
+msgid "Selected Window"
+msgstr "Izvēlētais logs"
+
+#: src/RecordingModeModel.cpp:99
+#, kde-format
+msgid "Failed to select output"
+msgstr "Neizdevās atlasīt izeju"
+
+#: src/RecordingModeModel.cpp:130
+#, kde-format
+msgid "Failed to select window"
+msgstr "Neizdevās atlasīt logu"
+
+#: src/ShortcutActions.cpp:33
+#, kde-format
+msgid "Launch Spectacle"
+msgstr "Palaist Spectacle"
+
+#: src/ShortcutActions.cpp:39
+#, kde-format
+msgid "Capture Entire Desktop"
+msgstr "Uzņemt visu darbvirsmu"
+
+#: src/ShortcutActions.cpp:45
+#, kde-format
+msgid "Capture Current Monitor"
+msgstr "Uzņemt pašreizējo ekrānu"
+
+#: src/ShortcutActions.cpp:51
+#, kde-format
+msgid "Capture Active Window"
+msgstr "Uzņemt aktīvo logu"
+
+#: src/ShortcutActions.cpp:57
+#, kde-format
+msgid "Capture Rectangular Region"
+msgstr "Uzņemt četrstūra reģionu"
+
+#: src/ShortcutActions.cpp:63
+#, kde-format
+msgid "Capture Window Under Cursor"
+msgstr "Uzņemt logu zem kursora"
+
+#: src/ShortcutActions.cpp:69
+#, kde-format
+msgid "Launch Spectacle without capturing"
+msgstr "Palaist Spectacle bez uzņemšanas"
+
+#: src/SpectacleCore.cpp:639
+#, kde-format
+msgid "Screenshot capture canceled or failed"
+msgstr "Ekrānattēla uzņemšana ar atcelta vai neizdevās"
+
+#: src/SpectacleCore.cpp:684
+#, kde-format
+msgid ""
+"A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
+"has been saved to your clipboard."
+msgstr ""
+"Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“, bet ceļš uz ekrānattēlu ir "
+"saglabāts starpliktuvē."
+
+#: src/SpectacleCore.cpp:688
+#, kde-format
+msgctxt "Placeholder is filename"
+msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgstr "Ekrānattēls ir saglabāts Attēlu mapē ar nosaukumu „%1“."
+
+#: src/SpectacleCore.cpp:691
+#, kde-format
+msgid "A screenshot was saved as '%1' to '%2'."
+msgstr "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“."
+
+#: src/SpectacleCore.cpp:695
+#, kde-format
+msgid "A screenshot was saved to your clipboard."
+msgstr "Ekrānattēls ir saglabāts starpliktuvē"
+
+#: src/SpectacleCore.cpp:700
+#, kde-format
+msgctxt "Open the screenshot we just saved"
+msgid "Open"
+msgstr "Atvērt"
+
+#: src/SpectacleCore.cpp:705
+#, kde-format
+msgid "Annotate"
+msgstr "Anotēt"
+
+#: src/VideoFormatModel.cpp:20
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "WebM/VP9"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:27
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "MP4/H.264"
+msgstr ""
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Video format:"
+#~ msgstr "Video formāts:"
+
+#~ msgid "File format for saved screen recordings"
+#~ msgstr "Datnes formāts ekrāna videoierakstiem"
