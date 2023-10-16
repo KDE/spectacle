@@ -130,6 +130,10 @@ ImagePlatformXcb::ImagePlatformXcb(QObject *parent)
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ImagePlatformXcb::updateSupportedGrabModes);
 }
 
+ImagePlatformXcb::~ImagePlatformXcb()
+{
+}
+
 ImagePlatform::GrabModes ImagePlatformXcb::supportedGrabModes() const
 {
     return m_grabModes;
