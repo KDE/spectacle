@@ -15,12 +15,15 @@
 #include <QDBusPendingCallWatcher>
 #include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
+#include <QFile>
+#include <QFileDevice>
 #include <QFuture>
 #include <QFutureWatcher>
 #include <QGuiApplication>
 #include <QPixmap>
 #include <QScreen>
-#include <QtConcurrent>
+#include <QTimer>
+#include <QtConcurrentRun>
 
 #include <errno.h>
 #include <fcntl.h>
