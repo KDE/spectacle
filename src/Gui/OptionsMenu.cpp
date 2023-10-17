@@ -55,7 +55,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         if (captureModeGroup->checkedAction() && mode == captureModeGroup->checkedAction()->data().toInt()) {
             return;
         }
-        for (auto action : qAsConst(captureModeActions)) {
+        for (auto action : std::as_const(captureModeActions)) {
             if (mode == action->data().toInt()) {
                 action->setChecked(true);
             }
@@ -229,7 +229,7 @@ void OptionsMenu::updateCaptureModes()
 {
     captureModeSection->setVisible(captureModeOptionsEnabled);
     if (!captureModeOptionsEnabled) {
-        for (auto action : qAsConst(captureModeActions)) {
+        for (auto action : std::as_const(captureModeActions)) {
             captureModeGroup->removeAction(action);
             removeAction(action);
             action->deleteLater();
@@ -255,7 +255,7 @@ void OptionsMenu::updateCaptureModes()
         return;
     }
     shouldUpdateCaptureModes = false;
-    for (auto action : qAsConst(captureModeActions)) {
+    for (auto action : std::as_const(captureModeActions)) {
         captureModeGroup->removeAction(action);
         removeAction(action);
         action->deleteLater();
