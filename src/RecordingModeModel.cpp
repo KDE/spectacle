@@ -19,12 +19,14 @@
 #include <qnamespace.h>
 #include <utility>
 
+using namespace Qt::StringLiterals;
+
 RecordingModeModel::RecordingModeModel(VideoPlatform::RecordingModes modes, QObject *parent)
     : QAbstractListModel(parent)
     , m_modes(modes)
 {
-    m_roleNames[RecordingModeRole] = QByteArrayLiteral("recordingMode");
-    m_roleNames[Qt::DisplayRole] = QByteArrayLiteral("display");
+    m_roleNames[RecordingModeRole] = "recordingMode"_ba;
+    m_roleNames[Qt::DisplayRole] = "display"_ba;
 
     if (modes & VideoPlatform::Region) {
         m_data.append({VideoPlatform::Region, i18n("Workspace")}); // TODO: Rename to region when regions can be selected
@@ -85,10 +87,10 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
     switch (m_data[row].mode) {
     case VideoPlatform::Screen: {
         // We should probably come up with a better way of choosing outputs. This should be okay for now. #FLW
-        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("/KWin"),
-                                                              QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("queryWindowInfo"));
+        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
+                                                              u"/KWin"_s,
+                                                              u"org.kde.KWin"_s,
+                                                              u"queryWindowInfo"_s);
 
         QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
@@ -101,7 +103,7 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
             }
 
             const QVariantMap data = asyncReply.value();
-            const QPoint top(data[QStringLiteral("x")].toDouble(), data[QStringLiteral("y")].toDouble());
+            const QPoint top(data[u"x"_s].toDouble(), data[u"y"_s].toDouble());
             const auto screens = qGuiApp->screens();
             for (auto screen : screens) {
                 const auto &screenRect = screen->geometry();
@@ -115,10 +117,10 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
         break;
     }
     case VideoPlatform::Window: {
-        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("/KWin"),
-                                                              QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("queryWindowInfo"));
+        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
+                                                              u"/KWin"_s,
+                                                              u"org.kde.KWin"_s,
+                                                              u"queryWindowInfo"_s);
 
         QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
@@ -135,14 +137,14 @@ void RecordingModeModel::startRecording(int row, bool withPointer)
             // which may not be the same as QWindow::frameGeometry() on Wayland.
             // Hopefully this is good enough most of the time.
             const QRectF pickedWindowRect = {
-                data[QStringLiteral("x")].toDouble(), data[QStringLiteral("y")].toDouble(),
-                data[QStringLiteral("width")].toDouble(), data[QStringLiteral("height")].toDouble(),
+                data[u"x"_s].toDouble(), data[u"y"_s].toDouble(),
+                data[u"width"_s].toDouble(), data[u"height"_s].toDouble(),
             };
             // Don't minimize if we're recording Spectacle.
-            if (data[QStringLiteral("desktopFile")].toString() != qGuiApp->desktopFileName()) {
+            if (data[u"desktopFile"_s].toString() != qGuiApp->desktopFileName()) {
                 minimizeIfWindowsIntersect(pickedWindowRect);
             }
-            SpectacleCore::instance()->startRecordingWindow(data.value(QStringLiteral("uuid")).toString(), withPointer);
+            SpectacleCore::instance()->startRecordingWindow(data.value(u"uuid"_s).toString(), withPointer);
         });
         break;
     }

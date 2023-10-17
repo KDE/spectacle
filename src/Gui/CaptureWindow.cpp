@@ -106,7 +106,7 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
         QVariantMap initialProperties = {
             // Set the parent in initialProperties to avoid having
             // the parent and window be null in Component.onCompleted
-            {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
+            {u"parent"_s, QVariant::fromValue(contentItem())}
         };
         setSource(QUrl("%1/Gui/ImageCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
                   initialProperties);

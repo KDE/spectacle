@@ -8,95 +8,97 @@
 #include <QCommandLineOption>
 #include <QList>
 
+using namespace Qt::StringLiterals;
+
 struct CommandLineOptions {
     static CommandLineOptions *self();
     static QString toArgument(const QCommandLineOption &option) {
-        return QStringLiteral("--") + option.names().constLast();
+        return u"--" + option.names().constLast();
     }
     // i18n() can't be used in static code,
     // so we can't just make the variables static and use them directly.
     const QCommandLineOption fullscreen = {
-        {QStringLiteral("f"), QStringLiteral("fullscreen")},
+        {u'f', u"fullscreen"_s},
         i18n("Capture the entire desktop (default)")
     };
     const QCommandLineOption current = {
-        {QStringLiteral("m"), QStringLiteral("current")},
+        {u'm', u"current"_s},
         i18n("Capture the current monitor")
     };
     const QCommandLineOption activeWindow = {
-        {QStringLiteral("a"), QStringLiteral("activewindow")},
+        {u'a', u"activewindow"_s},
         i18n("Capture the active window")
     };
     const QCommandLineOption windowUnderCursor = {
-        {QStringLiteral("u"), QStringLiteral("windowundercursor")},
+        {u'u', u"windowundercursor"_s},
         i18n("Capture the window currently under the cursor, including parents of pop-up menus")
     };
     const QCommandLineOption transientOnly = {
-        {QStringLiteral("t"), QStringLiteral("transientonly")},
+        {u't', u"transientonly"_s},
         i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")
     };
     const QCommandLineOption region = {
-        {QStringLiteral("r"), QStringLiteral("region")},
+        {u'r', u"region"_s},
         i18n("Capture a rectangular region of the screen")
     };
     const QCommandLineOption launchOnly = {
-        {QStringLiteral("l"), QStringLiteral("launchonly")},
+        {u'l', u"launchonly"_s},
         i18n("Launch Spectacle without taking a screenshot")
     };
     const QCommandLineOption gui = {
-        {QStringLiteral("g"), QStringLiteral("gui")},
+        {u'g', u"gui"_s},
         i18n("Start in GUI mode (default)")
     };
     const QCommandLineOption background = {
-        {QStringLiteral("b"), QStringLiteral("background")},
+        {u'b', u"background"_s},
         i18n("Take a screenshot and exit without showing the GUI")
     };
     const QCommandLineOption dbus = {
-        {QStringLiteral("s"), QStringLiteral("dbus")},
+        {u's', u"dbus"_s},
         i18n("Start in DBus-Activation mode")
     };
     const QCommandLineOption noNotify = {
-        {QStringLiteral("n"), QStringLiteral("nonotify")},
+        {u'n', u"nonotify"_s},
         i18n("In background mode, do not pop up a notification when the screenshot is taken")
     };
     const QCommandLineOption output = {
-        {QStringLiteral("o"), QStringLiteral("output")},
+        {u'o', u"output"_s},
         i18n("In background mode, save image to specified file"),
-        QStringLiteral("fileName")
+        u"fileName"_s
     };
     const QCommandLineOption delay = {
-        {QStringLiteral("d"), QStringLiteral("delay")},
+        {u'd', u"delay"_s},
         i18n("In background mode, delay before taking the shot (in milliseconds)"),
-        QStringLiteral("delayMsec")
+        u"delayMsec"_s
     };
     const QCommandLineOption copyImage = {
-        {QStringLiteral("c"), QStringLiteral("copy-image")},
+        {u'c', u"copy-image"_s},
         i18n("In background mode, copy screenshot image to clipboard, unless -o is also used.")
     };
     const QCommandLineOption copyPath = {
-        {QStringLiteral("C"), QStringLiteral("copy-path")},
+        {u'C', u"copy-path"_s},
         i18n("In background mode, copy screenshot file path to clipboard")
     };
     const QCommandLineOption onClick = {
-        {QStringLiteral("w"), QStringLiteral("onclick")},
+        {u'w', u"onclick"_s},
         i18n("Wait for a click before taking screenshot. Invalidates delay")
     };
     const QCommandLineOption newInstance = {
-        {QStringLiteral("i"), QStringLiteral("new-instance")},
+        {u'i', u"new-instance"_s},
         i18n("Starts a new GUI instance of spectacle without registering to DBus")
     };
     const QCommandLineOption pointer = {
-        {QStringLiteral("p"), QStringLiteral("pointer")},
+        {u'p', u"pointer"_s},
         i18n("In background mode, include pointer in the screenshot")
     };
     const QCommandLineOption noDecoration = {
-        {QStringLiteral("e"), QStringLiteral("no-decoration")},
+        {u'e', u"no-decoration"_s},
         i18n("In background mode, exclude decorations in the screenshot")
     };
     const QCommandLineOption editExisting = {
-        {QStringLiteral("E"), QStringLiteral("edit-existing")},
+        {u'E', u"edit-existing"_s},
         i18n("Open and edit existing screenshot file"),
-        QStringLiteral("existingFileName")
+        u"existingFileName"_s
     };
 
     const QList<QCommandLineOption> allOptions = {

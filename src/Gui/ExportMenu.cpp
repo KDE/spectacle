@@ -31,6 +31,7 @@
 #include <chrono>
 
 using namespace std::chrono_literals;
+using namespace Qt::StringLiterals;
 
 class ExportMenuSingleton
 {
@@ -47,7 +48,7 @@ ExportMenu::ExportMenu(QWidget *parent)
     , mPurposeMenu(new Purpose::Menu)
 #endif
 {
-    addAction(QIcon::fromTheme(QStringLiteral("document-open-folder")),
+    addAction(QIcon::fromTheme(u"document-open-folder"_s),
               i18n("Open Default Screenshots Folder"),
               this, &ExportMenu::openScreenshotsFolder);
     addAction(KStandardAction::print(this, &ExportMenu::openPrintDialog, this));
@@ -80,10 +81,10 @@ void ExportMenu::getKServiceItems()
     // populate all locally installed applications and services
     // which can handle images first
 
-    const KService::List services = KApplicationTrader::queryByMimeType(QStringLiteral("image/png"));
+    const KService::List services = KApplicationTrader::queryByMimeType(u"image/png"_s);
 
     for (auto service : services) {
-        const QString name = service->name().replace(QLatin1Char('&'), QLatin1String("&&"));
+        const QString name = service->name().replace('&'_L1, "&&"_L1);
         QAction *action = new QAction(QIcon::fromTheme(service->icon()), name, this);
 
         connect(action, &QAction::triggered, this, [this, service]() {
@@ -149,14 +150,14 @@ void ExportMenu::loadPurposeMenu()
     QAction *purposeMenuAction = addMenu(purposeMenu);
     purposeMenuAction->setObjectName("purposeMenuAction");
     purposeMenuAction->setText(i18n("Share"));
-    purposeMenuAction->setIcon(QIcon::fromTheme(QStringLiteral("document-share")));
+    purposeMenuAction->setIcon(QIcon::fromTheme(u"document-share"_s));
 
     // set up the callback signal
     connect(purposeMenu, &Purpose::Menu::finished, this, [this](const QJsonObject &output, int error, const QString &message) {
         if (error) {
             Q_EMIT imageShared(error, message);
         } else {
-            Q_EMIT imageShared(error, output[QStringLiteral("url")].toString());
+            Q_EMIT imageShared(error, output[u"url"_s].toString());
         }
     });
 
@@ -179,11 +180,11 @@ void ExportMenu::loadPurposeItems()
 
     auto mimeType = QMimeDatabase().mimeTypeForFile(dataUri).name();
     QJsonObject inputData = {
-        {QStringLiteral("mimeType"), mimeType},
-        {QStringLiteral("urls"), QJsonArray({dataUri})}
+        {u"mimeType"_s, mimeType},
+        {u"urls"_s, QJsonArray({dataUri})}
     };
     mPurposeMenu->model()->setInputData(inputData);
-    mPurposeMenu->model()->setPluginType(QStringLiteral("Export"));
+    mPurposeMenu->model()->setPluginType(u"Export"_s);
     mPurposeMenu->reload();
 }
 #endif

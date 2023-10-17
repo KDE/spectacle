@@ -26,6 +26,7 @@
 #include <QtMath>
 #include <qnamespace.h>
 
+using namespace Qt::StringLiterals;
 using G = Geometry;
 
 class SelectionEditorSingleton
@@ -285,7 +286,7 @@ SelectionEditor::SelectionEditor(QObject *parent)
     : QObject(parent)
     , d(new SelectionEditorPrivate(this))
 {
-    setObjectName(QStringLiteral("selectionEditor"));
+    setObjectName(u"selectionEditor"_s);
 
     connect(d->selection.get(), &Selection::rectChanged, this, [this](){
         d->updateHandlePositions();

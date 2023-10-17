@@ -15,6 +15,8 @@
 
 #include <QStyle>
 
+using namespace Qt::StringLiterals;
+
 static QPointer<OptionsMenu> s_instance = nullptr;
 
 OptionsMenu::OptionsMenu(QWidget *parent)
@@ -171,7 +173,7 @@ OptionsMenu *OptionsMenu::instance()
 
 void OptionsMenu::showPreferencesDialog()
 {
-    KConfigDialog *dialog = KConfigDialog::exists(QStringLiteral("settings"));
+    KConfigDialog *dialog = KConfigDialog::exists(u"settings"_s);
     if (!dialog) {
         dialog = new SettingsDialog;
         dialog->setAttribute(Qt::WA_DeleteOnClose);

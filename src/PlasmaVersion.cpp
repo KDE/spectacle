@@ -10,8 +10,10 @@
 #include <QDBusVariant>
 #include <QDebug>
 
+using namespace Qt::StringLiterals;
+
 static quint32 s_plasmaVersion = 0;
-static const auto s_plasmashellService = QStringLiteral("org.kde.plasmashell");
+static const auto s_plasmashellService = u"org.kde.plasmashell"_s;
 
 quint32 PlasmaVersion::get()
 {
@@ -19,11 +21,11 @@ quint32 PlasmaVersion::get()
         s_plasmaVersion = 0;
     } else if (s_plasmaVersion == 0) {
         auto message = QDBusMessage::createMethodCall(s_plasmashellService,
-                                                      QStringLiteral("/MainApplication"),
-                                                      QStringLiteral("org.freedesktop.DBus.Properties"),
-                                                      QStringLiteral("Get"));
+                                                      u"/MainApplication"_s,
+                                                      u"org.freedesktop.DBus.Properties"_s,
+                                                      u"Get"_s);
 
-        message.setArguments({QStringLiteral("org.qtproject.Qt.QCoreApplication"), QStringLiteral("applicationVersion")});
+        message.setArguments({u"org.qtproject.Qt.QCoreApplication"_s, u"applicationVersion"_s});
 
         const auto resultMessage = QDBusConnection::sessionBus().call(message);
         if (resultMessage.type() != QDBusMessage::ReplyMessage) {
@@ -33,7 +35,7 @@ quint32 PlasmaVersion::get()
         QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
 
         const QString rawVersion = val.variant().value<QString>();
-        const QVector<QStringView> splitted = QStringView(rawVersion).split(QLatin1Char('.'));
+        const QVector<QStringView> splitted = QStringView(rawVersion).split(u'.');
         if (splitted.size() != 3) {
             qWarning() << "error parsing plasma version";
             return s_plasmaVersion;

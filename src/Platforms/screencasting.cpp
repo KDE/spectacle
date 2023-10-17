@@ -15,6 +15,8 @@
 #include <qpa/qplatformnativeinterface.h>
 #include <qscreen.h>
 
+using namespace Qt::StringLiterals;
+
 class ScreencastingStreamPrivate : public QtWayland::zkde_screencast_stream_unstable_v1
 {
 public:
@@ -111,7 +113,7 @@ ScreencastingStream *Screencasting::createRegionStream(const QRect &geometry, qr
 {
     Q_ASSERT(d->QWaylandClientExtension::version() >= ZKDE_SCREENCAST_UNSTABLE_V1_STREAM_REGION_SINCE_VERSION);
     auto stream = new ScreencastingStream(this);
-    stream->setObjectName(QStringLiteral("region-%1,%2 (%3x%4)").arg(geometry.x()).arg(geometry.y()).arg(geometry.width()).arg(geometry.height()));
+    stream->setObjectName(u"region-%1,%2 (%3x%4)"_s.arg(geometry.x()).arg(geometry.y()).arg(geometry.width()).arg(geometry.height()));
     stream->d->init(d->stream_region(geometry.x(), geometry.y(), geometry.width(), geometry.height(), wl_fixed_from_double(scaling), mode));
     return stream;
 }

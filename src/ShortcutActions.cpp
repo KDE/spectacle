@@ -10,6 +10,8 @@
 
 #include <KLocalizedString>
 
+using namespace Qt::StringLiterals;
+
 ShortcutActions *ShortcutActions::self()
 {
     static ShortcutActions self;
@@ -31,43 +33,43 @@ ShortcutActions::ShortcutActions()
     // _launch
     {
         QAction *action = new QAction(i18n("Launch Spectacle"), &mActions);
-        action->setObjectName(QStringLiteral("_launch"));
+        action->setObjectName(u"_launch"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Entire Desktop"), &mActions);
-        action->setObjectName(QStringLiteral("FullScreenScreenShot"));
+        action->setObjectName(u"FullScreenScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Current Monitor"), &mActions);
-        action->setObjectName(QStringLiteral("CurrentMonitorScreenShot"));
+        action->setObjectName(u"CurrentMonitorScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Active Window"), &mActions);
-        action->setObjectName(QStringLiteral("ActiveWindowScreenShot"));
+        action->setObjectName(u"ActiveWindowScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Rectangular Region"), &mActions);
-        action->setObjectName(QStringLiteral("RectangularRegionScreenShot"));
+        action->setObjectName(u"RectangularRegionScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Capture Window Under Cursor"), &mActions);
-        action->setObjectName(QStringLiteral("WindowUnderCursorScreenShot"));
+        action->setObjectName(u"WindowUnderCursorScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         QAction *action = new QAction(i18n("Launch Spectacle without capturing"), &mActions);
-        action->setObjectName(QStringLiteral("OpenWithoutScreenshot"));
+        action->setObjectName(u"OpenWithoutScreenshot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
@@ -80,7 +82,7 @@ KActionCollection *ShortcutActions::shortcutActions()
 
 QString ShortcutActions::componentName() const
 {
-    return QGuiApplication::desktopFileName().append(QStringLiteral(".desktop"));
+    return QGuiApplication::desktopFileName().append(u".desktop"_s);
 }
 
 QAction *ShortcutActions::openAction() const

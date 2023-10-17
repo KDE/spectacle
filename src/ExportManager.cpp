@@ -33,6 +33,8 @@
 #include <KSharedConfig>
 #include <KSystemClipboard>
 
+using namespace Qt::StringLiterals;
+
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
     , m_imageSavedNotInTemp(false)
@@ -116,7 +118,7 @@ static QString ensureDefaultLocationExists(const QUrl &saveUrl)
 
     QDir savePathDir(savePath);
     if (!(savePathDir.exists())) {
-        savePathDir.mkpath(QStringLiteral("."));
+        savePathDir.mkpath(u"."_s);
     }
     return savePath;
 }
@@ -182,35 +184,35 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     QString title = m_windowTitle;
 
     if (!title.isEmpty()) {
-        title.replace(QLatin1Char('/'), QLatin1String("_")); // POSIX doesn't allow "/" in filenames
+        title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
     } else {
         // Remove '%T' with separators around it
-        const auto wordSymbol = QStringLiteral(R"(\p{L}\p{M}\p{N})");
-        const auto separator = QStringLiteral("([^%1]+)").arg(wordSymbol);
-        const auto re = QRegularExpression(QStringLiteral("(.*?)(%1%T|%T%1)(.*?)").arg(separator));
-        baseName.replace(re, QStringLiteral(R"(\1\5)"));
+        const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
+        const auto separator = u"([^%1]+)"_s.arg(wordSymbol);
+        const auto re = QRegularExpression(u"(.*?)(%1%T|%T%1)(.*?)"_s.arg(separator));
+        baseName.replace(re, uR"(\1\5)"_s);
     }
 
-    QString result = baseName.replace(QLatin1String("%Y"), timestamp.toString(QStringLiteral("yyyy")))
-                             .replace(QLatin1String("%y"), timestamp.toString(QStringLiteral("yy")))
-                             .replace(QLatin1String("%M"), timestamp.toString(QStringLiteral("MM")))
-                             .replace(QLatin1String("%n"), timestamp.toString(QStringLiteral("MMM")))
-                             .replace(QLatin1String("%N"), timestamp.toString(QStringLiteral("MMMM")))
-                             .replace(QLatin1String("%D"), timestamp.toString(QStringLiteral("dd")))
-                             .replace(QLatin1String("%H"), timestamp.toString(QStringLiteral("hh")))
-                             .replace(QLatin1String("%m"), timestamp.toString(QStringLiteral("mm")))
-                             .replace(QLatin1String("%S"), timestamp.toString(QStringLiteral("ss")))
-                             .replace(QLatin1String("%t"), timestamp.toString(QStringLiteral("t")))
-                             .replace(QLatin1String("%T"), title);
+    QString result = baseName.replace("%Y"_L1, timestamp.toString(u"yyyy"_s))
+                             .replace("%y"_L1, timestamp.toString(u"yy"_s))
+                             .replace("%M"_L1, timestamp.toString(u"MM"_s))
+                             .replace("%n"_L1, timestamp.toString(u"MMM"_s))
+                             .replace("%N"_L1, timestamp.toString(u"MMMM"_s))
+                             .replace("%D"_L1, timestamp.toString(u"dd"_s))
+                             .replace("%H"_L1, timestamp.toString(u"hh"_s))
+                             .replace("%m"_L1, timestamp.toString(u"mm"_s))
+                             .replace("%S"_L1, timestamp.toString(u"ss"_s))
+                             .replace("%t"_L1, timestamp.toString(u"t"_s))
+                             .replace("%T"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
-    paddingRE.setPattern(QStringLiteral("%(\\d*)d"));
+    paddingRE.setPattern(u"%(\\d*)d"_s);
     QRegularExpressionMatchIterator it = paddingRE.globalMatch(result);
     if (it.hasNext()) {
         // strip any subdirectories from the template to construct the filename matching regex
         // we are matching filenames only, not paths
-        QString resultCopy = QRegularExpression::escape(result.section(QLatin1Char('/'), -1));
+        QString resultCopy = QRegularExpression::escape(result.section(u'/', -1));
         QVector<QRegularExpressionMatch> matches;
         while (it.hasNext()) {
             QRegularExpressionMatch paddingMatch = it.next();
@@ -221,13 +223,13 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
                 paddedLength = paddingMatch.captured(1).toInt();
             }
             QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
-            resultCopy.replace(escapedMatch, QStringLiteral("(\\d{%1,})").arg(QString::number(paddedLength)));
+            resultCopy.replace(escapedMatch, u"(\\d{%1,})"_s.arg(QString::number(paddedLength)));
         }
-        if (result.contains(QLatin1Char('/'))) {
+        if (result.contains(u'/')) {
             // In case the filename template contains a subdirectory,
             // we need to search for files in the subdirectory instead of the baseDir.
             // so let's add that to baseDir before we search for files.
-            baseDir += QStringLiteral("/%1").arg(result.section(QLatin1Char('/'), 0, -2));
+            baseDir += u"/%1"_s.arg(result.section(u'/', 0, -2));
         }
         // search save directory for files
         QDir dir(baseDir);
@@ -257,33 +259,33 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
             if (!match.captured(1).isEmpty()) {
                 paddedLength = match.captured(1).toInt();
             }
-            const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, QLatin1Char('0'));
+            const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, u'0');
             result.replace(match.captured(), nextFileNumberPadded);
         }
     }
 
     // Remove leading and trailing '/'
-    while (result.startsWith(QLatin1Char('/'))) {
+    while (result.startsWith(u'/')) {
         result.remove(0, 1);
     }
-    while (result.endsWith(QLatin1Char('/'))) {
+    while (result.endsWith(u'/')) {
         result.chop(1);
     }
 
     if (result.isEmpty()) {
-        result = QStringLiteral("Screenshot");
+        result = u"Screenshot"_s;
     }
     return truncatedFilename(result);
 }
 
 QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const
 {
-    QString result = truncatedFilename(baseName) + QLatin1String(".") + extension;
+    QString result = truncatedFilename(baseName) + u'.' + extension;
     if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
         return result;
     }
 
-    QString fileNameFmt = truncatedFilename(baseName) + QStringLiteral("-%1.");
+    QString fileNameFmt = truncatedFilename(baseName) + u"-%1.";
     for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
         result = fileNameFmt.arg(i) + extension;
         if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
@@ -294,7 +296,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     // unlikely this will ever happen, but just in case we've run
     // out of numbers
 
-    result = fileNameFmt.arg(QLatin1String("OVERFLOW-") + QString::number(QRandomGenerator::global()->bounded(10000)));
+    result = fileNameFmt.arg(u"OVERFLOW-" + QString::number(QRandomGenerator::global()->bounded(10000)));
     return truncatedFilename(result) + extension;
 }
 
@@ -339,7 +341,7 @@ bool ExportManager::localSave(const QUrl &url, const QString &suffix)
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
     const QDir dir(dirPath.path());
 
-    if (!dir.mkpath(QStringLiteral("."))) {
+    if (!dir.mkpath(u"."_s)) {
         Q_EMIT errorMessage(xi18nc("@info",
                                    "Cannot save screenshot because creating "
                                    "the directory failed:<nl/><filename>%1</filename>",
@@ -409,14 +411,14 @@ QUrl ExportManager::tempSave()
     }
 
     if (!m_tempDir) {
-        m_tempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + QStringLiteral("Spectacle.XXXXXX"));
+        m_tempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + u"Spectacle.XXXXXX"_s);
     }
     if (m_tempDir && m_tempDir->isValid()) {
         // create the temporary file itself with normal file name and also unique one for this session
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const QString baseFileName = m_tempDir->path() + QLatin1Char('/') + QUrl::fromLocalFile(formattedFilename()).fileName();
+        const QString baseFileName = m_tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename()).fileName();
 
         QString suffix = imageFileSuffix(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
@@ -500,7 +502,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 
         // construct the file name
         const QString filenameExtension = Settings::self()->preferredImageFormat().toLower();
-        const QString mimetype = QMimeDatabase().mimeTypeForFile(QStringLiteral("~/fakefile.") + filenameExtension, QMimeDatabase::MatchExtension).name();
+        const QString mimetype = QMimeDatabase().mimeTypeForFile(u"~/fakefile."_s + filenameExtension, QMimeDatabase::MatchExtension).name();
         QFileDialog dialog;
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
@@ -509,8 +511,8 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
         }
         dialog.setDirectoryUrl(dirUrl);
-        dialog.selectFile(formattedFilename() + QStringLiteral(".") + filenameExtension);
-        dialog.setDefaultSuffix(QStringLiteral(".") + filenameExtension);
+        dialog.selectFile(formattedFilename() + u"."_s + filenameExtension);
+        dialog.setDefaultSuffix(u"."_s + filenameExtension);
         dialog.setMimeTypeFilters(supportedFilters);
         dialog.selectMimeTypeFilter(mimetype);
 
@@ -540,7 +542,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         // "x-kde-force-image-copy" is handled by Klipper.
         // It ensures that the image is copied to Klipper even with the
         // "Non-text selection: Never save in history" setting selected in Klipper.
-        data->setData(QStringLiteral("x-kde-force-image-copy"), QByteArray());
+        data->setData(u"x-kde-force-image-copy"_s, QByteArray());
         KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
         success = true;
     }
@@ -594,19 +596,19 @@ void ExportManager::doPrint(QPrinter *printer)
 }
 
 const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{
-    {QStringLiteral("%Y"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
-    {QStringLiteral("%y"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
-    {QStringLiteral("%M"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
-    {QStringLiteral("%n"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
-    {QStringLiteral("%N"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
-    {QStringLiteral("%D"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
-    {QStringLiteral("%H"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
-    {QStringLiteral("%m"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
-    {QStringLiteral("%S"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
-    {QStringLiteral("%t"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
-    {QStringLiteral("%T"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
-    {QStringLiteral("%d"), ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering")},
-    {QStringLiteral("%Nd"),
+    {u"%Y"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
+    {u"%y"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
+    {u"%M"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
+    {u"%n"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
+    {u"%N"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
+    {u"%D"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
+    {u"%H"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
+    {u"%m"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
+    {u"%S"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
+    {u"%t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
+    {u"%T"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
+    {u"%d"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering")},
+    {u"%Nd"_s,
      ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded out to N digits")},
 };
 

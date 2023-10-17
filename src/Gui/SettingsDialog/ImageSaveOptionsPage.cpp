@@ -20,6 +20,8 @@
 #include <QLabel>
 #include <QLineEdit>
 
+using namespace Qt::StringLiterals;
+
 ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     : QWidget(parent)
     , m_ui(new Ui_ImageSaveOptions)
@@ -31,7 +33,7 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
         const auto imageFormats = QImageWriter::supportedImageFormats();
         for (const auto &item : imageFormats) {
             fmt = QString::fromLocal8Bit(item);
-            if (newText.endsWith(QLatin1Char('.') + fmt, Qt::CaseInsensitive)) {
+            if (newText.endsWith(u'.' + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
                 txtCopy.chop(fmt.length() + 1);
                 m_ui->kcfg_imageFilenameFormat->setText(txtCopy);
@@ -56,10 +58,10 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
         "You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:<blockquote>");
     for (auto option = ExportManager::filenamePlaceholders.cbegin(); option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        captureInstruction += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value().toString());
+        captureInstruction += u"<a href=%1>%1</a>: %2<br>"_s.arg(option.key(), option.value().toString());
     }
-    captureInstruction += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
-    captureInstruction += QStringLiteral("</blockquote>");
+    captureInstruction += u"<a href='/'>/</a>: "_s + i18n("To save to a sub-folder");
+    captureInstruction += u"</blockquote>"_s;
     m_ui->captureInstructionLabel->setText(captureInstruction);
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
         m_ui->kcfg_imageFilenameFormat->insert(placeholder);

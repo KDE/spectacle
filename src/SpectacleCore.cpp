@@ -55,6 +55,8 @@
 #include <qobjectdefs.h>
 #include <utility>
 
+using namespace Qt::StringLiterals;
+
 SpectacleCore *SpectacleCore::s_self = nullptr;
 
 SpectacleCore::SpectacleCore(QObject *parent)
@@ -75,23 +77,23 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // We need to reset this on start in case a previous instance
     // didn't reset these before it closed or crashed.
     unityLauncherUpdate({
-        {QStringLiteral("progress-visible"), false},
-        {QStringLiteral("progress"), 0}
+        {u"progress-visible"_s, false},
+        {u"progress"_s, 0}
     });
     using State = QVariantAnimation::State;
     auto onStateChanged = [this](State newState, State oldState) {
         Q_UNUSED(oldState)
         if (newState == State::Running) {
-            unityLauncherUpdate({{QStringLiteral("progress-visible"), true}});
+            unityLauncherUpdate({{u"progress-visible"_s, true}});
         } else if (newState == State::Stopped) {
-            unityLauncherUpdate({{QStringLiteral("progress-visible"), false}});
+            unityLauncherUpdate({{u"progress-visible"_s, false}});
             m_delayAnimation->setCurrentTime(0);
         }
     };
     auto onValueChanged = [this](const QVariant &value) {
         Q_EMIT captureTimeRemainingChanged();
         Q_EMIT captureProgressChanged();
-        unityLauncherUpdate({{QStringLiteral("progress"), value.toReal()}});
+        unityLauncherUpdate({{u"progress"_s, value.toReal()}});
         const auto windows = SpectacleWindow::instances();
         if (m_delayAnimation->state() != State::Stopped && !windows.isEmpty()) {
             if (captureTimeRemaining() <= 500 && windows.constFirst()->isVisible()) {
@@ -665,7 +667,7 @@ void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &
         m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
     }
 
-    auto notification = new KNotification(QStringLiteral("newScreenshotSaved"),
+    auto notification = new KNotification(u"newScreenshotSaved"_s,
                                           KNotification::CloseOnTimeout, this);
     notifications.append(notification);
 
@@ -852,12 +854,12 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "AnnotationDocument", m_annotationDocument.get());
         qmlRegisterUncreatableType<AnnotationTool>(SPECTACLE_QML_URI, 1, 0, "AnnotationTool",
-                                                   QStringLiteral("Use AnnotationDocument.tool"));
+                                                   u"Use AnnotationDocument.tool"_s);
         qmlRegisterUncreatableType<SelectedActionWrapper>(SPECTACLE_QML_URI, 1, 0, "SelectedAction",
-                                                          QStringLiteral("Use AnnotationDocument.selectedAction"));
+                                                          u"Use AnnotationDocument.selectedAction"_s);
         qmlRegisterType<AnnotationViewport>(SPECTACLE_QML_URI, 1, 0, "AnnotationViewport");
         qmlRegisterUncreatableType<QScreen>(SPECTACLE_QML_URI, 1, 0, "QScreen",
-                                            QStringLiteral("Only created by Qt"));
+                                            u"Only created by Qt"_s);
     }
     return m_engine.get();
 }
@@ -897,9 +899,9 @@ void SpectacleCore::deleteWindows()
 
 void SpectacleCore::unityLauncherUpdate(const QVariantMap &properties) const
 {
-    QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/org/kde/Spectacle"),
-                                                      QStringLiteral("com.canonical.Unity.LauncherEntry"),
-                                                      QStringLiteral("Update"));
+    QDBusMessage message = QDBusMessage::createSignal(u"/org/kde/Spectacle"_s,
+                                                      u"com.canonical.Unity.LauncherEntry"_s,
+                                                      u"Update"_s);
     message.setArguments({QApplication::desktopFileName(), properties});
     QDBusConnection::sessionBus().send(message);
 }

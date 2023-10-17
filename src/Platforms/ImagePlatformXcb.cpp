@@ -34,6 +34,8 @@
 #include <KWindowSystem>
 #include <KX11Extras>
 
+using namespace Qt::StringLiterals;
+
 #include <memory>
 
 /* -- XCB Image Smart Pointer ------------------------------------------------------------------ */
@@ -186,9 +188,9 @@ void ImagePlatformXcb::updateWindowTitle(xcb_window_t window)
 
 bool ImagePlatformXcb::isKWinAvailable()
 {
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.KWin"))) {
-        QDBusInterface iface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Effects"), QStringLiteral("org.kde.kwin.Effects"));
-        QDBusReply<bool> reply = iface.call(QStringLiteral("isEffectLoaded"), QStringLiteral("screenshot"));
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(u"org.kde.KWin"_s)) {
+        QDBusInterface iface(u"org.kde.KWin"_s, u"/Effects"_s, u"org.kde.kwin.Effects"_s);
+        QDBusReply<bool> reply = iface.call(u"isEffectLoaded"_s, u"screenshot"_s);
         return reply.value();
     }
     return false;
@@ -460,10 +462,10 @@ QImage ImagePlatformXcb::getWindowImage(xcb_window_t window, bool blendPointer)
 
 void ImagePlatformXcb::handleKWinScreenshotReply(quint64 drawable)
 {
-    QDBusConnection::sessionBus().disconnect(QStringLiteral("org.kde.KWin"),
-                                             QStringLiteral("/Screenshot"),
-                                             QStringLiteral("org.kde.kwin.Screenshot"),
-                                             QStringLiteral("screenshotCreated"),
+    QDBusConnection::sessionBus().disconnect(u"org.kde.KWin"_s,
+                                             u"/Screenshot"_s,
+                                             u"org.kde.kwin.Screenshot"_s,
+                                             u"screenshotCreated"_s,
                                              this,
                                              SLOT(handleKWinScreenshotReply(quint64)));
 
@@ -557,19 +559,19 @@ void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorat
     // if KWin is available, use the KWin DBus interfaces
     if (includeDecorations && isKWinAvailable()) {
         auto bus = QDBusConnection::sessionBus();
-        bus.connect(QStringLiteral("org.kde.KWin"),
-                     QStringLiteral("/Screenshot"),
-                     QStringLiteral("org.kde.kwin.Screenshot"),
-                     QStringLiteral("screenshotCreated"),
+        bus.connect(u"org.kde.KWin"_s,
+                     u"/Screenshot"_s,
+                     u"org.kde.kwin.Screenshot"_s,
+                     u"screenshotCreated"_s,
                      this,
                      SLOT(handleKWinScreenshotReply(quint64)));
-        QDBusInterface iface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
+        QDBusInterface iface(u"org.kde.KWin"_s, u"/Screenshot"_s, u"org.kde.kwin.Screenshot"_s);
 
         int opMask = 1;
         if (includePointer) {
             opMask |= 1 << 1;
         }
-        iface.call(QStringLiteral("screenshotForWindow"), static_cast<quint64>(activeWindow), opMask);
+        iface.call(u"screenshotForWindow"_s, static_cast<quint64>(activeWindow), opMask);
 
         return;
     }
@@ -586,19 +588,19 @@ void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDe
     // if KWin is available, use the KWin DBus interfaces
     if (includeDecorations && isKWinAvailable()) {
         auto bus = QDBusConnection::sessionBus();
-        bus.connect(QStringLiteral("org.kde.KWin"),
-                     QStringLiteral("/Screenshot"),
-                     QStringLiteral("org.kde.kwin.Screenshot"),
-                     QStringLiteral("screenshotCreated"),
+        bus.connect(u"org.kde.KWin"_s,
+                     u"/Screenshot"_s,
+                     u"org.kde.kwin.Screenshot"_s,
+                     u"screenshotCreated"_s,
                      this,
                      SLOT(handleKWinScreenshotReply(quint64)));
-        QDBusInterface interface(QStringLiteral("org.kde.KWin"), QStringLiteral("/Screenshot"), QStringLiteral("org.kde.kwin.Screenshot"));
+        QDBusInterface interface(u"org.kde.KWin"_s, u"/Screenshot"_s, u"org.kde.kwin.Screenshot"_s);
 
         int opMask = 1;
         if (includePointer) {
             opMask |= 1 << 1;
         }
-        interface.call(QStringLiteral("screenshotWindowUnderCursor"), opMask);
+        interface.call(u"screenshotWindowUnderCursor"_s, opMask);
 
         return;
     }
@@ -734,10 +736,10 @@ void ImagePlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, boo
     xcb_screen_t *xcbAppScreen = xcb_aux_get_screen(QX11Info::connection(), QX11Info::appScreen());
 
     if (xcb_cursor_context_new(QX11Info::connection(), xcbAppScreen, &xcbCursorCtx) >= 0) {
-        QVector<QByteArray> cursorNames = {QByteArrayLiteral("cross"),
-                                            QByteArrayLiteral("crosshair"),
-                                            QByteArrayLiteral("diamond-cross"),
-                                            QByteArrayLiteral("cross-reverse")};
+        QVector<QByteArray> cursorNames = {"cross"_ba,
+                                            "crosshair"_ba,
+                                            "diamond-cross"_ba,
+                                            "cross-reverse"_ba};
 
         for (const auto &cursorName : cursorNames) {
             xcb_cursor_t cursor = xcb_cursor_load_cursor(xcbCursorCtx, cursorName.constData());

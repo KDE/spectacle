@@ -23,6 +23,8 @@
 #include <QLabel>
 #include <QLineEdit>
 
+using namespace Qt::StringLiterals;
+
 VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
     : QWidget(parent)
     , m_ui(new Ui_VideoSaveOptions)
@@ -59,10 +61,10 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
         "You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:<blockquote>");
     for (auto option = ExportManager::filenamePlaceholders.cbegin(); option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        captureInstruction += QStringLiteral("<a href=%1>%1</a>: %2<br>").arg(option.key(), option.value().toString());
+        captureInstruction += u"<a href=%1>%1</a>: %2<br>"_s.arg(option.key(), option.value().toString());
     }
-    captureInstruction += QLatin1String("<a href='/'>/</a>: ") + i18n("To save to a sub-folder");
-    captureInstruction += QStringLiteral("</blockquote>");
+    captureInstruction += u"<a href='/'>/</a>: "_s + i18n("To save to a sub-folder");
+    captureInstruction += u"</blockquote>"_s;
     m_ui->captureInstructionLabel->setText(captureInstruction);
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
         m_ui->kcfg_videoFilenameFormat->insert(placeholder);

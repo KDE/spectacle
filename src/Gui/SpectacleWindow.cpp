@@ -31,6 +31,7 @@
 #include <private/qtx11extras_p.h>
 #endif
 
+using namespace Qt::StringLiterals;
 using G = Geometry;
 
 QVector<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
@@ -68,7 +69,7 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     if (KWindowSystem::isPlatformX11()) {
         // do the xcb shenanigans
         xcb_connection_t *xcbConn = QX11Info::connection();
-        const QByteArray effectName = QByteArrayLiteral("_KDE_NET_WM_SKIP_CLOSE_ANIMATION");
+        const QByteArray effectName = "_KDE_NET_WM_SKIP_CLOSE_ANIMATION"_ba;
 
         xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, false, effectName.length(), effectName.constData());
         QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
@@ -83,7 +84,7 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
 
     // set up QML
     setResizeMode(QQuickView::SizeRootObjectToView);
-    m_context->setContextProperty(QStringLiteral("contextWindow"), this);
+    m_context->setContextProperty(u"contextWindow"_s, this);
 }
 
 SpectacleWindow::~SpectacleWindow()
@@ -189,11 +190,11 @@ QString SpectacleWindow::titlePresetString(TitlePreset preset, const QString &fi
         return i18ncp("@title:window", "%1 second", "%1 seconds",
                       qCeil(SpectacleCore::instance()->captureTimeRemaining() / 1000.0));
     } else if (preset == TitlePreset::Unsaved) {
-        return i18nc("@title:window Unsaved Screenshot", "Unsaved") + QStringLiteral("*");
+        return i18nc("@title:window Unsaved Screenshot", "Unsaved") + u"*"_s;
     } else if (preset == TitlePreset::Saved && !fileName.isEmpty()) {
         return fileName;
     } else if (preset == TitlePreset::Modified && !fileName.isEmpty()) {
-        return fileName + QStringLiteral("*");
+        return fileName + u"*"_s;
     } else if (preset == TitlePreset::Previous && !s_previousTitle.isEmpty()) {
         return s_previousTitle;
     }
@@ -309,10 +310,10 @@ void SpectacleWindow::showFontDialog()
         // https://bugreports.qt.io/browse/QTBUG-63792
         // https://bugs.kde.org/show_bug.cgi?id=378523
         if (newFont.weight() == QFont::Normal
-            && (newFont.styleName() == QLatin1String("Regular")
-                || newFont.styleName() == QLatin1String("Normal")
-                || newFont.styleName() == QLatin1String("Book")
-                || newFont.styleName() == QLatin1String("Roman"))) {
+            && (newFont.styleName() == "Regular"_L1
+                || newFont.styleName() == "Normal"_L1
+                || newFont.styleName() == "Book"_L1
+                || newFont.styleName() == "Roman"_L1)) {
             newFont.setStyleName(QString());
         }
         auto tool = SpectacleCore::instance()->annotationDocument()->tool();

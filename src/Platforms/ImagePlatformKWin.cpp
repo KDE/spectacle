@@ -27,26 +27,28 @@
 #include <string.h>
 #include <unistd.h>
 
+using namespace Qt::StringLiterals;
+
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
     QVariantMap options;
 
     if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeCursor) {
-        options.insert(QStringLiteral("include-cursor"), true);
+        options.insert(u"include-cursor"_s, true);
     }
     if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeDecoration) {
-        options.insert(QStringLiteral("include-decoration"), true);
+        options.insert(u"include-decoration"_s, true);
     }
     if (flags & ImagePlatformKWin::ScreenShotFlag::NativeSize) {
-        options.insert(QStringLiteral("native-resolution"), true);
+        options.insert(u"native-resolution"_s, true);
     }
 
     return options;
 }
 
-static const QString s_screenShotService = QStringLiteral("org.kde.KWin.ScreenShot2");
-static const QString s_screenShotObjectPath = QStringLiteral("/org/kde/KWin/ScreenShot2");
-static const QString s_screenShotInterface = QStringLiteral("org.kde.KWin.ScreenShot2");
+static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
+static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
+static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
 
 template<typename... ArgType>
 ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
@@ -77,7 +79,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
 
         if (reply.isError()) {
             qWarning() << "Screenshot request failed:" << reply.error().message();
-            if (reply.error().name() == QStringLiteral("org.kde.KWin.ScreenShot2.Error.Cancelled")) {
+            if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
                 // don't show error on user cancellation
                 Q_EMIT finished(m_result);
             } else {
@@ -105,17 +107,17 @@ static QImage allocateImage(const QVariantMap &metadata)
 {
     bool ok;
 
-    const uint width = metadata.value(QStringLiteral("width")).toUInt(&ok);
+    const uint width = metadata.value(u"width"_s).toUInt(&ok);
     if (!ok) {
         return QImage();
     }
 
-    const uint height = metadata.value(QStringLiteral("height")).toUInt(&ok);
+    const uint height = metadata.value(u"height"_s).toUInt(&ok);
     if (!ok) {
         return QImage();
     }
 
-    const uint format = metadata.value(QStringLiteral("format")).toUInt(&ok);
+    const uint format = metadata.value(u"format"_s).toUInt(&ok);
     if (!ok) {
         return QImage();
     }
@@ -136,34 +138,34 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         return QImage();
     }
 
-    const auto windowId = metadata.value(QStringLiteral("windowId")).toString();
+    const auto windowId = metadata.value(u"windowId"_s).toString();
     // No point in storing the windowId in the image since it means nothing to users
     // and can't be used if the window is closed.
     if (!windowId.isEmpty()) {
-        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("/KWin"),
-                                                              QStringLiteral("org.kde.KWin"),
-                                                              QStringLiteral("getWindowInfo"));
+        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
+                                                              u"/KWin"_s,
+                                                              u"org.kde.KWin"_s,
+                                                              u"getWindowInfo"_s);
         message.setArguments({windowId});
         const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
         if (reply.isValid()) {
-            const auto &windowTitle = reply.value().value(QStringLiteral("caption")).toString();
+            const auto &windowTitle = reply.value().value(u"caption"_s).toString();
             if (!windowTitle.isEmpty()) {
-                result.setText(QStringLiteral("windowTitle"), windowTitle);
+                result.setText(u"windowTitle"_s, windowTitle);
                 ExportManager::instance()->setWindowTitle(windowTitle);
             }
         }
     }
 
     bool ok = false;
-    const qreal scale = metadata.value(QStringLiteral("scale")).toReal(&ok);
+    const qreal scale = metadata.value(u"scale"_s).toReal(&ok);
     if (ok) {
         result.setDevicePixelRatio(scale);
     }
 
-    const auto screen = metadata.value(QStringLiteral("screen")).toString();
+    const auto screen = metadata.value(u"screen"_s).toString();
     if (!screen.isEmpty()) {
-        result.setText(QStringLiteral("screen"), screen);
+        result.setText(u"screen"_s, screen);
     }
 
     QDataStream stream(&file);
@@ -174,8 +176,8 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
 
 void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
 {
-    const QString type = metadata.value(QStringLiteral("type")).toString();
-    if (type != QLatin1String("raw")) {
+    const QString type = metadata.value(u"type"_s).toString();
+    if (type != "raw"_L1) {
         qWarning() << "Unsupported metadata type:" << type;
         return;
     }
@@ -197,7 +199,7 @@ void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
 }
 
 ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureArea"),
+    : ScreenShotSource2(u"CaptureArea"_s,
                         qint32(area.x()),
                         qint32(area.y()),
                         quint32(area.width()),
@@ -207,7 +209,7 @@ ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWi
 }
 
 ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureInteractive"), quint32(kind), screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureInteractive"_s, quint32(kind), screenShotFlagsToVardict(flags))
 {
 }
 
@@ -215,33 +217,33 @@ ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, ImagePla
 // NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
 // It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
 // KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
-    : ScreenShotSource2(QStringLiteral("CaptureScreen"), screen->name(), screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureScreen"_s, screen->name(), screenShotFlagsToVardict(flags))
 {
 }
 
 ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureActiveWindow"), screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureActiveWindow"_s, screenShotFlagsToVardict(flags))
 {
 }
 
 ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureActiveScreen"), screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureActiveScreen"_s, screenShotFlagsToVardict(flags))
 {
 }
 
 ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(QStringLiteral("CaptureWorkspace"), screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureWorkspace"_s, screenShotFlagsToVardict(flags))
 {
 }
 
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
     : ImagePlatform(parent)
 {
-    auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin.ScreenShot2"),
-                                                  QStringLiteral("/org/kde/KWin/ScreenShot2"),
-                                                  QStringLiteral("org.freedesktop.DBus.Properties"),
-                                                  QStringLiteral("Get"));
-    message.setArguments({QStringLiteral("org.kde.KWin.ScreenShot2"), QStringLiteral("Version")});
+    auto message = QDBusMessage::createMethodCall(u"org.kde.KWin.ScreenShot2"_s,
+                                                  u"/org/kde/KWin/ScreenShot2"_s,
+                                                  u"org.freedesktop.DBus.Properties"_s,
+                                                  u"Get"_s);
+    message.setArguments({u"org.kde.KWin.ScreenShot2"_s, u"Version"_s});
 
     const QDBusMessage reply = QDBusConnection::sessionBus().call(message);
     if (reply.type() == QDBusMessage::ReplyMessage) {

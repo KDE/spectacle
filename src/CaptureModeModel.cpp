@@ -12,6 +12,8 @@
 #include <qnamespace.h>
 #include <utility>
 
+using namespace Qt::StringLiterals;
+
 static QString actionShortcutsToString(QAction *action)
 {
     QString value;
@@ -22,7 +24,7 @@ static QString actionShortcutsToString(QAction *action)
     const auto &shortcuts = KGlobalAccel::self()->shortcut(action);
     for (int i = 0; i < shortcuts.length(); ++i) {
         if (i > 0) {
-            value.append(QStringLiteral(", "));
+            value += u", ";
         }
         value.append(shortcuts[i].toString(QKeySequence::NativeText));
     }
@@ -32,9 +34,9 @@ static QString actionShortcutsToString(QAction *action)
 CaptureModeModel::CaptureModeModel(ImagePlatform::GrabModes grabModes, QObject *parent)
     : QAbstractListModel(parent)
 {
-    m_roleNames[CaptureModeRole] = QByteArrayLiteral("captureMode");
-    m_roleNames[Qt::DisplayRole] = QByteArrayLiteral("display");
-    m_roleNames[ShortcutsRole] = QByteArrayLiteral("shortcuts");
+    m_roleNames[CaptureModeRole] = "captureMode"_ba;
+    m_roleNames[Qt::DisplayRole] = "display"_ba;
+    m_roleNames[ShortcutsRole] = "shortcuts"_ba;
     setGrabModes(grabModes);
 }
 

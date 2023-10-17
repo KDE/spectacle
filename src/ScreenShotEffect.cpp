@@ -12,13 +12,15 @@
 #include <QDBusReply>
 #include <QDebug>
 
-static const auto s_kwinService = QStringLiteral("org.kde.KWin");
-static const auto s_effectsObjectPath = QStringLiteral("/Effects");
-static const auto s_effectsInterface = QStringLiteral("org.kde.kwin.Effects");
+using namespace Qt::StringLiterals;
 
-static const auto s_screenShot2Service = QStringLiteral("org.kde.KWin.ScreenShot2");
-static const auto s_screenShot2ObjectPath = QStringLiteral("/org/kde/KWin/ScreenShot2");
-static const auto s_screenShot2Interface = QStringLiteral("org.kde.KWin.ScreenShot2");
+static const auto s_kwinService = u"org.kde.KWin"_s;
+static const auto s_effectsObjectPath = u"/Effects"_s;
+static const auto s_effectsInterface = u"org.kde.kwin.Effects"_s;
+
+static const auto s_screenShot2Service = u"org.kde.KWin.ScreenShot2"_s;
+static const auto s_screenShot2ObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
+static const auto s_screenShot2Interface = u"org.kde.KWin.ScreenShot2"_s;
 
 static bool s_isLoaded = false;
 static quint32 s_version = ScreenShotEffect::NullVersion;
@@ -29,8 +31,8 @@ bool ScreenShotEffect::isLoaded()
         s_isLoaded = false;
     } else if (!s_isLoaded) {
         QDBusInterface interface(s_kwinService, s_effectsObjectPath, s_effectsInterface);
-        QDBusReply<bool> reply = interface.call(QStringLiteral("isEffectLoaded"),
-                                                QStringLiteral("screenshot"));
+        QDBusReply<bool> reply = interface.call(u"isEffectLoaded"_s,
+                                                u"screenshot"_s);
         s_isLoaded = reply.value();
     }
     return s_isLoaded;

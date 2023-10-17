@@ -7,12 +7,14 @@
 
 #include <KLocalizedString>
 
+using namespace Qt::StringLiterals;
+
 VideoFormatModel::VideoFormatModel(VideoPlatform::Formats formats, QObject *parent)
     : QAbstractListModel(parent)
 {
-    m_roleNames[Qt::DisplayRole] = QByteArrayLiteral("display");
-    m_roleNames[FormatRole] = QByteArrayLiteral("format");
-    m_roleNames[ExtensionRole] = QByteArrayLiteral("extension");
+    m_roleNames[Qt::DisplayRole] = "display"_ba;
+    m_roleNames[FormatRole] = "format"_ba;
+    m_roleNames[ExtensionRole] = "extension"_ba;
 
     QStringList extensions;
     if (formats.testFlag(VideoPlatform::WebM_VP9)) {

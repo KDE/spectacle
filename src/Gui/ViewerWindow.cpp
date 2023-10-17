@@ -67,7 +67,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
         QVariantMap initialProperties = {
             // Set the parent in initialProperties to avoid having
             // the parent and window be null in Component.onCompleted
-            {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
+            {u"parent"_s, QVariant::fromValue(contentItem())}
         };
         setSource(QUrl("%1/Gui/DialogPage.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
@@ -93,7 +93,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
         QVariantMap initialProperties = {
             // Set the parent in initialProperties to avoid having
             // the parent and window be null in Component.onCompleted
-            {QStringLiteral("parent"), QVariant::fromValue(contentItem())}
+            {u"parent"_s, QVariant::fromValue(contentItem())}
         };
         setSource(QUrl("%1/Gui/ImageView.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
@@ -150,8 +150,8 @@ void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
 {
     showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
                       {
-                          {QLatin1String("messageArgument"), messageArgument},
-                          {QLatin1String("video"), false},
+                          {"messageArgument"_L1, messageArgument},
+                          {"video"_L1, false},
                       });
 }
 
@@ -159,21 +159,21 @@ void ViewerWindow::showSavedVideoMessage(const QUrl &messageArgument)
 {
     showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
                       {
-                          {QLatin1String("messageArgument"), messageArgument},
-                          {QLatin1String("video"), true},
+                          {"messageArgument"_L1, messageArgument},
+                          {"video"_L1, true},
                       });
 }
 
 void ViewerWindow::showSavedAndCopiedMessage(const QUrl &messageArgument)
 {
     showInlineMessage("%1/Gui/SavedAndCopiedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
-                      {{QLatin1String("messageArgument"), messageArgument}});
+                      {{"messageArgument"_L1, messageArgument}});
 }
 
 void ViewerWindow::showSavedAndLocationCopiedMessage(const QUrl &messageArgument)
 {
     showInlineMessage("%1/Gui/SavedAndLocationCopied.qml"_L1.arg(SPECTACLE_QML_PATH),
-                      {{QLatin1String("messageArgument"), messageArgument}});
+                      {{"messageArgument"_L1, messageArgument}});
 }
 
 void ViewerWindow::showCopiedMessage()
@@ -195,10 +195,10 @@ void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageA
 
     if (errorCode) {
         showInlineMessage("%1/Gui/ShareErrorMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
-                          {{QLatin1String("messageArgument"), messageArgument}});
+                          {{"messageArgument"_L1, messageArgument}});
     } else {
         showInlineMessage("%1/Gui/SharedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
-                          {{QLatin1String("messageArgument"), messageArgument}});
+                          {{"messageArgument"_L1, messageArgument}});
         if (!messageArgument.isEmpty()) {
             QApplication::clipboard()->setText(messageArgument);
         }
@@ -228,7 +228,7 @@ void ViewerWindow::startDrag()
     // When QMimeData::formats() is empty, a dialog for picking the data format
     // is supposed to appear.
     // It's likely that users will never see the data format dialog with Spectacle.
-    mimeData->setData(QStringLiteral("application/x-kde-suggestedfilename"), QFile::encodeName(tempFile.fileName()));
+    mimeData->setData(u"application/x-kde-suggestedfilename"_s, QFile::encodeName(tempFile.fileName()));
     KUrlMimeData::exportUrlsToPortal(mimeData);
 
     auto dragHandler = new QDrag(this);
@@ -237,7 +237,7 @@ void ViewerWindow::startDrag()
     if (SpectacleCore::instance()->videoMode()) {
         Kirigami::Units units;
         auto iconSize = units.iconSizes()->large();
-        dragHandler->setPixmap(QIcon::fromTheme(QStringLiteral("video-x-matroska")).pixmap(iconSize, iconSize));
+        dragHandler->setPixmap(QIcon::fromTheme(u"video-x-matroska"_s).pixmap(iconSize, iconSize));
     } else {
         QSize size = image.size();
         QPixmap pixmap = QPixmap::fromImage(image);
