@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"POT-Creation-Date: 2023-10-17 01:39+0000\n"
 "PO-Revision-Date: 2023-08-12 01:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -997,44 +997,44 @@ msgid "Shortcuts"
 msgstr "ショートカット"
 
 #. i18n: ectx: label, entry (launchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:16
+#: src/Gui/SettingsDialog/spectacle.kcfg:17
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Spectacle が起動された時の動作"
 
 #. i18n: ectx: label, entry (printKeyActionRunning), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:25
+#: src/Gui/SettingsDialog/spectacle.kcfg:26
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr "Spectacle が既に実行されている時に Print キーが押された場合の動作"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:35
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "撮影されたスクリーンショットを自動的に保存する"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#: src/Gui/SettingsDialog/spectacle.kcfg:39
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "スクリーンショットが撮影された後に実行されるクリップボードの動作"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:49
+#: src/Gui/SettingsDialog/spectacle.kcfg:50
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "領域選択ダイアログに明るいカラーマスクを使用するか"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:53
+#: src/Gui/SettingsDialog/spectacle.kcfg:54
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
 msgstr "拡大鏡を領域選択に表示するか"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:57
+#: src/Gui/SettingsDialog/spectacle.kcfg:58
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1042,264 +1042,278 @@ msgid ""
 msgstr "領域を選択してマウスを離した後にスクリーンショットが撮影されるか"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:61
+#: src/Gui/SettingsDialog/spectacle.kcfg:62
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "撮影方法の説明を領域選択画面に表示するか"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:65
+#: src/Gui/SettingsDialog/spectacle.kcfg:66
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "最後に使用した矩形領域を記憶する"
 
 #. i18n: ectx: label, entry (cropRegion), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:76
+#: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "最後に使用されたユーザ選択の領域"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "クリックでスクリーンショットを撮影"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "マウスカーソルをスクリーンショットに含むか"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "ウィンドウの飾りをスクリーンショットに含むか"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "現在のポップアップのみを撮影"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:98
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "画像を保存かコピーしたあとに終了"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:102
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Delay"
 msgstr "遅延"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:113
-#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#: src/Gui/SettingsDialog/spectacle.kcfg:114
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
 #, kde-format
 msgid "Default filename"
 msgstr "既定のファイル名"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "非可逆圧縮フォーマットの圧縮品質"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:143
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "スクリーンショット"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:127
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgid "Default save image format"
 msgstr "既定の保存画像フォーマット"
 
 #. i18n: ectx: label, entry (imageFilenameFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:131
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "保存時に使用される既定のファイル名"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:135
-#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "最後に保存されたファイルのパス"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
-#: src/Gui/SettingsDialog/spectacle.kcfg:164
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "「名前をつけて保存」で使用されるパス"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:184
 #, fuzzy, kde-format
 #| msgid "Default save image format"
 msgid "Default video format"
 msgstr "既定の保存画像フォーマット"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:189
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "録画時に使用される既定のファイル名"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "スクリーンショット"
+
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:203
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "最後に使用された注釈ツール"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:176
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "手書き注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:181
+#: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "マーカー注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "直線注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "矢印注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "矩形注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "楕円注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:207
+#: src/Gui/SettingsDialog/spectacle.kcfg:240
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "手書き注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:211
+#: src/Gui/SettingsDialog/spectacle.kcfg:244
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "マーカー注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:215
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "直線注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "矢印注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "矩形注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:227
+#: src/Gui/SettingsDialog/spectacle.kcfg:260
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "楕円注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:232
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "矩形注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:236
-#: src/Gui/SettingsDialog/spectacle.kcfg:240
+#: src/Gui/SettingsDialog/spectacle.kcfg:269
+#: src/Gui/SettingsDialog/spectacle.kcfg:273
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "楕円注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Font for text annotations"
 msgstr "テキスト注釈フォント"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:248
+#: src/Gui/SettingsDialog/spectacle.kcfg:281
 #, kde-format
 msgid "Font for number annotations"
 msgstr "数字注釈フォント"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:252
-#: src/Gui/SettingsDialog/spectacle.kcfg:256
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "Font color for annotations"
 msgstr "注釈フォントの色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:294
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "手書き注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "直線注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:269
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "矢印注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:273
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "矩形注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:277
+#: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "楕円注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:281
+#: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "テキスト注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "数字注釈ツールでドロップシャドウを使用するか"
