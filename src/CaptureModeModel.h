@@ -53,7 +53,7 @@ private:
         QString shortcuts = {}; // default value in case there's nothing
     };
 
-    QVector<Item> m_data;
+    QList<Item> m_data;
     QHash<int, QByteArray> m_roleNames;
     ImagePlatform::GrabModes m_grabModes;
 };

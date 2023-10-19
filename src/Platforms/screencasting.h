@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <QList>
 #include <QObject>
 #include <QSharedPointer>
-#include <QVector>
 #include <optional>
 
 class QScreen;

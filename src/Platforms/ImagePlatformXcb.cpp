@@ -736,10 +736,7 @@ void ImagePlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, boo
     xcb_screen_t *xcbAppScreen = xcb_aux_get_screen(QX11Info::connection(), QX11Info::appScreen());
 
     if (xcb_cursor_context_new(QX11Info::connection(), xcbAppScreen, &xcbCursorCtx) >= 0) {
-        QVector<QByteArray> cursorNames = {"cross"_ba,
-                                            "crosshair"_ba,
-                                            "diamond-cross"_ba,
-                                            "cross-reverse"_ba};
+        QList<QByteArray> cursorNames = {"cross"_ba, "crosshair"_ba, "diamond-cross"_ba, "cross-reverse"_ba};
 
         for (const auto &cursorName : cursorNames) {
             xcb_cursor_t cursor = xcb_cursor_load_cursor(xcbCursorCtx, cursorName.constData());

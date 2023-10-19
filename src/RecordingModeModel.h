@@ -35,7 +35,7 @@ private:
         QString label;
     };
 
-    QVector<Item> m_data;
+    QList<Item> m_data;
     QHash<int, QByteArray> m_roleNames;
     const VideoPlatform::RecordingModes m_modes;
 };

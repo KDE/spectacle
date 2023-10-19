@@ -131,8 +131,8 @@ private:
 
     QRectF m_canvasRect;
     QImage m_image;
-    QVector<EditAction *> m_undoStack;
-    QVector<EditAction *> m_redoStack;
+    QList<EditAction *> m_undoStack;
+    QList<EditAction *> m_redoStack;
 };
 
 /**

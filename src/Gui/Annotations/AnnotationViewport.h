@@ -108,5 +108,5 @@ private:
     bool m_isPressed = false;
     bool m_allowDraggingSelectedAction = false;
     bool m_acceptKeyReleaseEvents = false;
-    static QVector<AnnotationViewport *> s_viewportInstances;
+    static QList<AnnotationViewport *> s_viewportInstances;
 };

@@ -146,7 +146,7 @@ private:
 
     // Use CaptureWindow::instances() to get the capture windows.
     // Don't assume that this will never have entries that are null.
-    // For some reason, removeIf/erase_if/find_if then erase doesn't work with QList/QVector,
+    // For some reason, removeIf/erase_if/find_if then erase doesn't work with QList/QList,
     // so we have to use std::vector. Something about use of a deleted unique_ptr function.
     std::vector<CaptureWindow::UniquePointer> m_captureWindows;
 

@@ -654,7 +654,7 @@ void SpectacleCore::onScreenshotFailed()
     }
 }
 
-static QVector<KNotification *> notifications;
+static QList<KNotification *> notifications;
 
 void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl)
 {

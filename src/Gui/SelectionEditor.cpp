@@ -87,7 +87,7 @@ public:
     bool disableArrowKeys = false;
     QRectF screensRect;
     // Midpoints of handles
-    QVector<QPointF> handlePositions = QVector<QPointF>{8};
+    QList<QPointF> handlePositions = QList<QPointF>{8};
     QRectF handlesRect;
     // Radius of handles is either handleRadiusMouse or handleRadiusTouch
     qreal handleRadius = s_handleRadiusMouse;

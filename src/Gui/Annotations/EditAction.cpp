@@ -752,7 +752,7 @@ QPolygonF LineAction::arrowHeadPolygon(const QLineF &mainLine) const
     const qreal angle = mainLine.angle() + 180;
     auto headLine1 = QLineF::fromPolar(length, angle + 30).translated(end);
     auto headLine2 = QLineF::fromPolar(length, angle - 30).translated(end);
-    return QVector<QPointF>{headLine1.p2(), end, headLine2.p2()};
+    return QList<QPointF>{headLine1.p2(), end, headLine2.p2()};
 }
 
 QRectF LineAction::getUpdateArea() const

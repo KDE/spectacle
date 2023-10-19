@@ -16,7 +16,7 @@
 
 using namespace Qt::StringLiterals;
 
-QVector<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
+QList<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
 
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
@@ -89,7 +89,7 @@ CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *scree
     });
 }
 
-QVector<CaptureWindow *> CaptureWindow::instances()
+QList<CaptureWindow *> CaptureWindow::instances()
 {
     return s_captureWindowInstances;
 }

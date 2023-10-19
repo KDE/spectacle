@@ -11,7 +11,7 @@
 #include <QScreen>
 #include <utility>
 
-QVector<AnnotationViewport *> AnnotationViewport::s_viewportInstances = {};
+QList<AnnotationViewport *> AnnotationViewport::s_viewportInstances = {};
 static bool s_synchronizingAnyPressed = false;
 static bool s_isAnyPressed = false;
 

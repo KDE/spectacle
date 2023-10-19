@@ -28,7 +28,7 @@ public:
 
     static UniquePointer makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
 
-    static QVector<CaptureWindow *> instances();
+    static QList<CaptureWindow *> instances();
 
     QScreen *screenToFollow() const;
 
@@ -55,5 +55,5 @@ private:
     void syncGeometryWithScreen();
 
     QPointer<QScreen> m_screenToFollow;
-    static QVector<CaptureWindow *> s_captureWindowInstances;
+    static QList<CaptureWindow *> s_captureWindowInstances;
 };

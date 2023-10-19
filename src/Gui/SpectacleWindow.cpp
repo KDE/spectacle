@@ -34,7 +34,7 @@
 using namespace Qt::StringLiterals;
 using G = Geometry;
 
-QVector<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
+QList<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
 bool SpectacleWindow::s_synchronizingVisibility = false;
 bool SpectacleWindow::s_synchronizingTitle = false;
 SpectacleWindow::TitlePreset SpectacleWindow::s_lastTitlePreset = Default;
@@ -126,7 +126,7 @@ void SpectacleWindow::unminimize()
     setWindowStates(windowStates().setFlag(Qt::WindowMinimized, false));
 }
 
-QVector<SpectacleWindow *> SpectacleWindow::instances()
+QList<SpectacleWindow *> SpectacleWindow::instances()
 {
     return s_spectacleWindowInstances;
 }

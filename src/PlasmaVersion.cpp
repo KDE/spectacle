@@ -35,7 +35,7 @@ quint32 PlasmaVersion::get()
         QDBusVariant val = resultMessage.arguments().at(0).value<QDBusVariant>();
 
         const QString rawVersion = val.variant().value<QString>();
-        const QVector<QStringView> splitted = QStringView(rawVersion).split(u'.');
+        const QList<QStringView> splitted = QStringView(rawVersion).split(u'.');
         if (splitted.size() != 3) {
             qWarning() << "error parsing plasma version";
             return s_plasmaVersion;

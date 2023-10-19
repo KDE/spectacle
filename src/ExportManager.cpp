@@ -213,7 +213,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         // strip any subdirectories from the template to construct the filename matching regex
         // we are matching filenames only, not paths
         QString resultCopy = QRegularExpression::escape(result.section(u'/', -1));
-        QVector<QRegularExpressionMatch> matches;
+        QList<QRegularExpressionMatch> matches;
         while (it.hasNext()) {
             QRegularExpressionMatch paddingMatch = it.next();
             matches.push_back(paddingMatch);

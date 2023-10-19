@@ -12,7 +12,7 @@
 #include <QActionGroup>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QVector>
+#include <QList>
 #include <QWidgetAction>
 
 #include <memory>
@@ -40,7 +40,7 @@ private:
     void delayActionLayoutUpdate();
     Q_SLOT void updateCaptureModes();
 
-    QVector<QAction *> captureModeActions;
+    QList<QAction *> captureModeActions;
     const std::unique_ptr<QAction> captureModeSection;
     const std::unique_ptr<QActionGroup> captureModeGroup;
     const std::unique_ptr<QAction> captureSettingsSection;
