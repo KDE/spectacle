@@ -481,6 +481,17 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
     }
 
+    // If any capture mode is given in the cli options, let it override
+    // the setting to not take a screenshot on launch
+    // clang-format off
+    bool captureModeFromCli =
+        m_cliOptions[Option::Fullscreen] ||
+        m_cliOptions[Option::Current] ||
+        m_cliOptions[Option::ActiveWindow] ||
+        m_cliOptions[Option::WindowUnderCursor] ||
+        m_cliOptions[Option::TransientOnly] ||
+        m_cliOptions[Option::Region];
+    // clang-format on
 
     switch (m_startMode) {
     case StartMode::DBus:
@@ -490,9 +501,8 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         break;
     case StartMode::Gui:
         if (isGuiNull()) {
-            if ((m_cliOptions[Option::LaunchOnly]
-                || Settings::launchAction() == Settings::DoNotTakeScreenshot)
-            ) {
+            if (m_cliOptions[Option::LaunchOnly] || //
+                (Settings::launchAction() == Settings::DoNotTakeScreenshot && !captureModeFromCli)) {
                 initViewerWindow(ViewerWindow::Dialog);
                 ViewerWindow::instance()->setVisible(true);
             } else {
