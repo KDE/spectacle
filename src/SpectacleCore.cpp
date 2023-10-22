@@ -103,8 +103,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     };
     auto onFinished = [this]() {
-        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode,
-                           m_lastIncludePointer, m_lastIncludeDecorations);
+        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations, m_lastIncludeShadow);
     };
     QObject::connect(delayAnimation, &QVariantAnimation::stateChanged,
                      this, onStateChanged, Qt::QueuedConnection);
@@ -404,16 +403,19 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     bool onClick;
     bool includeDecorations;
     bool includePointer;
+    bool includeShadow;
     if (m_startMode == StartMode::Background) {
         transientOnly = m_cliOptions[Option::TransientOnly];
         onClick = m_cliOptions[Option::OnClick];
         includeDecorations = !m_cliOptions[Option::NoDecoration];
         includePointer = m_cliOptions[Option::Pointer];
+        includeShadow = !m_cliOptions[Option::NoShadow];
     } else {
         transientOnly = Settings::transientOnly() || m_cliOptions[Option::TransientOnly];
         onClick = Settings::captureOnClick() || m_cliOptions[Option::OnClick];
         includeDecorations = Settings::includeDecorations()
                             && !m_cliOptions[Option::NoDecoration];
+        includeShadow = Settings::includeShadow() && !m_cliOptions[Option::NoShadow];
         includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
     }
 
@@ -484,7 +486,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     case StartMode::DBus:
         break;
     case StartMode::Background:
-        takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
+        takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
         break;
     case StartMode::Gui:
         if (isGuiNull()) {
@@ -494,14 +496,14 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 initViewerWindow(ViewerWindow::Dialog);
                 ViewerWindow::instance()->setVisible(true);
             } else {
-                takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations);
+                takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
             }
         } else {
             using Actions = Settings::EnumPrintKeyActionRunning;
             switch (Settings::printKeyActionRunning()) {
             case Actions::TakeNewScreenshot: {
                 // takeNewScreenshot switches to on click if immediate is not supported.
-                takeNewScreenshot(grabMode, 0, includePointer, includeDecorations);
+                takeNewScreenshot(grabMode, 0, includePointer, includeDecorations, includeShadow);
                 break;
             }
             case Actions::FocusWindow: {
@@ -537,7 +539,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     }
 }
 
-void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations)
+void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations, bool includeWindowShadow)
 {
     if (m_cliOptions[CommandLineOptions::EditExisting]) {
         // Clear when a new screenshot is taken to avoid overwriting
@@ -554,12 +556,13 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
     m_lastGrabMode = grabMode;
     m_lastIncludePointer = includePointer;
     m_lastIncludeDecorations = includeDecorations;
+    m_lastIncludeShadow = includeWindowShadow;
 
     if ((timeout < 0 || !m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::Immediate))
         && m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick)
     ) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
-        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::OnClick, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
+        m_imagePlatform->doGrab(ImagePlatform::ShutterMode::OnClick, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations, m_lastIncludeShadow);
         return;
     }
 
@@ -581,7 +584,7 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         QTimer::singleShot(timeout, this, [this]() {
-            m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations);
+            m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations, m_lastIncludeShadow);
         });
         return;
     }
@@ -592,11 +595,10 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
     SpectacleWindow::setVisibilityForAll(QWindow::Minimized);
 }
 
-void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations)
+void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     using CaptureMode = CaptureModeModel::CaptureMode;
-    takeNewScreenshot(toGrabMode(CaptureMode(captureMode), Settings::transientOnly()),
-                      timeout, includePointer, includeDecorations);
+    takeNewScreenshot(toGrabMode(CaptureMode(captureMode), Settings::transientOnly()), timeout, includePointer, includeDecorations, includeShadow);
 }
 
 void SpectacleCore::cancelScreenshot()

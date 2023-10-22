@@ -28,20 +28,22 @@ void SpectacleDBusAdapter::CurrentScreen(int includeMousePointer)
     parent()->takeNewScreenshot(CaptureModeModel::CurrentScreen, 0, (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer, true);
 }
 
-void SpectacleDBusAdapter::ActiveWindow(int includeWindowDecorations, int includeMousePointer)
+void SpectacleDBusAdapter::ActiveWindow(int includeWindowDecorations, int includeMousePointer, int includeWindowShadow)
 {
     parent()->takeNewScreenshot(CaptureModeModel::ActiveWindow,
                                 0,
                                 (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
-                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
+                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations,
+                                includeWindowShadow == -1 ? Settings::includeShadow() : includeWindowShadow);
 }
 
-void SpectacleDBusAdapter::WindowUnderCursor(int includeWindowDecorations, int includeMousePointer)
+void SpectacleDBusAdapter::WindowUnderCursor(int includeWindowDecorations, int includeMousePointer, int includeWindowShadow)
 {
     parent()->takeNewScreenshot(CaptureModeModel::WindowUnderCursor,
                                 0,
                                 (includeMousePointer == -1) ? Settings::includePointer() : includeMousePointer,
-                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations);
+                                includeWindowDecorations == -1 ? Settings::includeDecorations() : includeWindowDecorations,
+                                includeWindowShadow == -1 ? Settings::includeShadow() : includeWindowShadow);
 }
 
 void SpectacleDBusAdapter::RectangularRegion(int includeMousePointer)

@@ -21,7 +21,11 @@ public:
 
 public Q_SLOTS:
 
-    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
+    void doGrab(ImagePlatform::ShutterMode shutterMode,
+                ImagePlatform::GrabMode grabMode,
+                bool includePointer,
+                bool includeDecorations,
+                bool includeShadow) override final;
 };
 
 class VideoPlatformNull final : public VideoPlatform

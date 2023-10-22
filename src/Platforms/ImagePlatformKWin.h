@@ -32,6 +32,7 @@ public:
         IncludeCursor = 0x1,
         IncludeDecoration = 0x2,
         NativeSize = 0x4,
+        IncludeShadow = 0x8,
     };
     Q_DECLARE_FLAGS(ScreenShotFlags, ScreenShotFlag)
 
@@ -44,7 +45,8 @@ public:
     ShutterModes supportedShutterModes() const override;
 
 public Q_SLOTS:
-    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override;
+    void
+    doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow) override;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();

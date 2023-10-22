@@ -31,6 +31,16 @@ ColumnLayout {
     }
     QQC.CheckBox {
         Layout.fillWidth: true
+        text: i18n("Include window shadow")
+        QQC.ToolTip.text: i18n("Show the window shadow when taking a screenshot of a window.")
+        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
+        QQC.ToolTip.visible: hovered
+        enabled: Settings.includeDecorations
+        checked: Settings.includeShadow
+        onToggled: Settings.includeShadow = checked
+    }
+    QQC.CheckBox {
+        Layout.fillWidth: true
         text: i18n("Capture the current pop-up only")
         visible: ImagePlatform.supportedGrabModes & ImagePlatform.TransientWithParent
         QQC.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc) when taking a screenshot of a window. If disabled, the pop-up is captured along with the parent window.")

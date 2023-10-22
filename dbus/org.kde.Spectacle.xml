@@ -61,6 +61,12 @@
                     <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
                 </doc:doc>
             </arg>
+            <arg name="includeWindowShadow" direction="in" type="i">
+                <doc:doc>
+                    <doc:summary>Whether to include the window shadow. Depends on the user set option 'include window shadow' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include window shadow', 0 - doesn't include window shadow, 1 - includes window shadow</doc:para>
+                </doc:doc>
+            </arg>
             <doc:doc>
                 <doc:description>
                     <doc:para>Takes a screenshot of the window that currently has window focus.</doc:para>
@@ -80,6 +86,12 @@
                 <doc:doc>
                     <doc:summary>Whether to include an image of the mouse pointer. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
                     <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
+                </doc:doc>
+            </arg>
+            <arg name="includeWindowShadow" direction="in" type="i">
+                <doc:doc>
+                    <doc:summary>Whether to include the window shadow. Depends on the user set option 'include window shadow' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include window shadow', 0 - doesn't include window shadow, 1 - includes window shadow</doc:para>
                 </doc:doc>
             </arg>
             <doc:doc>

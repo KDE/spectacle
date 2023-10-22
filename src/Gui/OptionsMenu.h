@@ -46,6 +46,7 @@ private:
     const std::unique_ptr<QAction> captureSettingsSection;
     const std::unique_ptr<QAction> includeMousePointerAction;
     const std::unique_ptr<QAction> includeWindowDecorationsAction;
+    const std::unique_ptr<QAction> includeWindowShadowAction;
     const std::unique_ptr<QAction> onlyCapturePopupAction;
     const std::unique_ptr<QAction> quitAfterSaveAction;
     const std::unique_ptr<QAction> captureOnClickAction;

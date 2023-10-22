@@ -92,7 +92,8 @@ public Q_SLOTS:
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
                            int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000,
                            bool includePointer = Settings::includePointer(),
-                           bool includeDecorations = Settings::includeDecorations());
+                           bool includeDecorations = Settings::includeDecorations(),
+                           bool includeShadow = Settings::includeShadow());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
     void onScreenshotFailed();
@@ -112,8 +113,7 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
-    void takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout,
-                           bool includePointer, bool includeDecorations);
+    void takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow);
     void setExportImage(const QImage &image);
     void showViewerIfGuiMode();
     ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
@@ -161,6 +161,7 @@ private:
     ImagePlatform::GrabMode m_lastGrabMode = ImagePlatform::GrabMode::NoGrabModes;
     bool m_lastIncludePointer = false; // cli default value
     bool m_lastIncludeDecorations = true; // cli default value
+    bool m_lastIncludeShadow = true; // cli default value
     bool m_videoMode = false;
     QUrl m_currentVideo;
 };

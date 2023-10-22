@@ -95,34 +95,16 @@ struct CommandLineOptions {
         {u"e"_s, u"no-decoration"_s},
         i18n("In background mode, exclude decorations in the screenshot")
     };
+    const QCommandLineOption noShadow = {{u"S"_s, u"no-shadow"_s}, i18n("In background mode, exclude shadows in the screenshot")};
     const QCommandLineOption editExisting = {
         {u"E"_s, u"edit-existing"_s},
         i18n("Open and edit existing screenshot file"),
         u"existingFileName"_s
     };
 
-    const QList<QCommandLineOption> allOptions = {
-        fullscreen,
-        current,
-        activeWindow,
-        windowUnderCursor,
-        transientOnly,
-        region,
-        launchOnly,
-        gui,
-        background,
-        dbus,
-        noNotify,
-        output,
-        delay,
-        copyImage,
-        copyPath,
-        onClick,
-        newInstance,
-        pointer,
-        noDecoration,
-        editExisting
-    };
+    const QList<QCommandLineOption> allOptions = {fullscreen, current,    activeWindow, windowUnderCursor, transientOnly, region,   launchOnly,
+                                                  gui,        background, dbus,         noNotify,          output,        delay,    copyImage,
+                                                  copyPath,   onClick,    newInstance,  pointer,           noDecoration,  noShadow, editExisting};
 
     // Keep order in sync with allOptions
     enum Option {
@@ -145,6 +127,7 @@ struct CommandLineOptions {
         NewInstance,
         Pointer,
         NoDecoration,
+        NoShadow,
         EditExisting,
         TotalOptions
     };

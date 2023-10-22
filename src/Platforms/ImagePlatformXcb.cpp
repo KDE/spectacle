@@ -69,11 +69,12 @@ public:
     {
     }
 
-    void setCaptureOptions(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations)
+    void setCaptureOptions(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
     {
         m_grabMode = grabMode;
         m_includePointer = includePointer;
         m_includeDecorations = includeDecorations;
+        m_includeShadow = includeShadow;
     }
 
     bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr * /*result*/) override
@@ -92,7 +93,7 @@ public:
                     auto secondEvent = static_cast<xcb_button_release_event_t *>(message);
                     if (secondEvent->detail == 1) {
                         QTimer::singleShot(0, nullptr, [this]() {
-                            m_platformPtr->doGrabNow(m_grabMode, m_includePointer, m_includeDecorations);
+                            m_platformPtr->doGrabNow(m_grabMode, m_includePointer, m_includeDecorations, m_includeShadow);
                         });
                     } else if (secondEvent->detail == 2 || secondEvent->detail == 3) {
                         // 2: middle click, 3: right click; both cancel
@@ -101,7 +102,7 @@ public:
                         Q_EMIT m_platformPtr->newScreenshotFailed();
                     } else {
                         QTimer::singleShot(0, nullptr, [this]() {
-                            m_platformPtr->doGrabOnClick(m_grabMode, m_includePointer, m_includeDecorations);
+                            m_platformPtr->doGrabOnClick(m_grabMode, m_includePointer, m_includeDecorations, m_includeShadow);
                         });
                     }
                 }
@@ -119,6 +120,7 @@ private:
     ImagePlatform::GrabMode m_grabMode{GrabMode::AllScreens};
     bool m_includePointer{true};
     bool m_includeDecorations{true};
+    bool m_includeShadow{true};
 };
 
 /* -- General Plumbing ------------------------------------------------------------------------- */
@@ -164,15 +166,15 @@ ImagePlatform::ShutterModes ImagePlatformXcb::supportedShutterModes() const
     return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
-void ImagePlatformXcb::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     switch (shutterMode) {
     case ShutterMode::Immediate: {
-        doGrabNow(grabMode, includePointer, includeDecorations);
+        doGrabNow(grabMode, includePointer, includeDecorations, includeShadow);
         return;
     }
     case ShutterMode::OnClick: {
-        doGrabOnClick(grabMode, includePointer, includeDecorations);
+        doGrabOnClick(grabMode, includePointer, includeDecorations, includeShadow);
         return;
     }
     }
@@ -300,6 +302,37 @@ QList<QRect> ImagePlatformXcb::getScreenRects()
 }
 
 /* -- Image Processing Utilities --------------------------------------------------------------- */
+
+QImage ImagePlatformXcb::addDropShadow(QImage &image)
+{
+    // Create a new image that is 20px wider and 20px taller than the original image
+    QImage shadowImage(image.size() + QSize(40, 40), QImage::Format_ARGB32);
+    shadowImage.fill(Qt::transparent);
+
+    // Create a painter for the shadow image
+    QPainter shadowPainter(&shadowImage);
+
+    // Create a pixmap item for the original image
+    auto pixmapItem = new QGraphicsPixmapItem;
+    pixmapItem->setPixmap(QPixmap::fromImage(image));
+
+    // Create a drop shadow effect for the pixmap item
+    auto shadowEffect = new QGraphicsDropShadowEffect;
+    shadowEffect->setOffset(0);
+    shadowEffect->setBlurRadius(20);
+    pixmapItem->setGraphicsEffect(shadowEffect);
+
+    // Create a graphics scene and add the pixmap item to it
+    QGraphicsScene graphicsScene;
+    graphicsScene.addItem(pixmapItem);
+
+    // Render the graphics scene to the shadow image
+    graphicsScene.render(&shadowPainter, QRectF(), QRectF(-20, -20, image.width() + 40, image.height() + 40));
+    shadowPainter.end();
+
+    // Return the shadow image
+    return shadowImage;
+}
 
 QImage ImagePlatformXcb::convertFromNative(xcb_image_t *xcbImage)
 {
@@ -551,7 +584,7 @@ void ImagePlatformXcb::grabApplicationWindow(xcb_window_t window, bool includePo
     Q_EMIT newScreenshotTaken(image);
 }
 
-void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorations, bool includeShadow)
 {
     auto activeWindow = KX11Extras::activeWindow();
     updateWindowTitle(activeWindow);
@@ -571,7 +604,10 @@ void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorat
         if (includePointer) {
             opMask |= 1 << 1;
         }
-        iface.call(u"screenshotForWindow"_s, static_cast<quint64>(activeWindow), opMask);
+        if (includeShadow) {
+            opMask |= 1 << 2;
+        }
+        iface.call(QStringLiteral("screenshotForWindow"), static_cast<quint64>(activeWindow), opMask);
 
         return;
     }
@@ -580,7 +616,7 @@ void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorat
     grabApplicationWindow(activeWindow, includePointer, includeDecorations);
 }
 
-void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDecorations, bool includeShadow)
 {
     auto window = getWindowUnderCursor();
     updateWindowTitle(window);
@@ -600,6 +636,9 @@ void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDe
         if (includePointer) {
             opMask |= 1 << 1;
         }
+        if (includeShadow) {
+            opMask |= 1 << 2;
+        }
         interface.call(u"screenshotWindowUnderCursor"_s, opMask);
 
         return;
@@ -609,7 +648,7 @@ void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDe
     grabApplicationWindow(window, includePointer, includeDecorations);
 }
 
-void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool includeDecorations, bool includeShadow)
 {
     auto window = getWindowUnderCursor();
     updateWindowTitle(window);
@@ -668,26 +707,11 @@ void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool include
     painter.end();
     image = clippedImage.copy(clipRegion.boundingRect());
 
-    // why stop here, when we can render a 20px drop shadow all around it
-    auto shadowEffect = new QGraphicsDropShadowEffect;
-    shadowEffect->setOffset(0);
-    shadowEffect->setBlurRadius(20);
+    // add a drop shadow if requested
+    if (includeShadow) {
+        image = addDropShadow(image);
+    }
 
-    auto pixmapItem = new QGraphicsPixmapItem;
-    pixmapItem->setPixmap(QPixmap::fromImage(image));
-    pixmapItem->setGraphicsEffect(shadowEffect);
-
-    QImage shadowImage(image.size() + QSize(40, 40), QImage::Format_ARGB32);
-    shadowImage.fill(Qt::transparent);
-    QPainter shadowPainter(&shadowImage);
-
-    QGraphicsScene graphicsScene;
-    graphicsScene.addItem(pixmapItem);
-    graphicsScene.render(&shadowPainter, QRectF(), QRectF(-20, -20, image.width() + 40, image.height() + 40));
-    shadowPainter.end();
-
-    // we can finish up now
-    image = shadowImage;
     if (includePointer) {
         auto topLeft = clipRegion.boundingRect().topLeft() - QPoint(20, 20);
         image = blendCursorImage(image, QRect(topLeft, QSize(image.width(), image.height())));
@@ -696,7 +720,7 @@ void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool include
     Q_EMIT newScreenshotTaken(image);
 }
 
-void ImagePlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     if (grabMode & ~(ActiveWindow | WindowUnderCursor | TransientWithParent)) {
         // Notify that window title is empty since we are not picking a window.
@@ -715,20 +739,20 @@ void ImagePlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool in
         grabCurrentScreen(includePointer);
         break;
     case GrabMode::ActiveWindow:
-        grabActiveWindow(includePointer, includeDecorations);
+        grabActiveWindow(includePointer, includeDecorations, includeShadow);
         break;
     case GrabMode::WindowUnderCursor:
-        grabWindowUnderCursor(includePointer, includeDecorations);
+        grabWindowUnderCursor(includePointer, includeDecorations, includeShadow);
         break;
     case GrabMode::TransientWithParent:
-        grabTransientWithParent(includePointer, includeDecorations);
+        grabTransientWithParent(includePointer, includeDecorations, includeShadow);
         break;
     case GrabMode::NoGrabModes:
         Q_EMIT newScreenshotFailed();
     }
 }
 
-void ImagePlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     // get the cursor image
     xcb_cursor_t xcbCursor = XCB_CURSOR_NONE;
@@ -762,12 +786,12 @@ void ImagePlatformXcb::doGrabOnClick(GrabMode grabMode, bool includePointer, boo
 
     // if the grab failed, take the screenshot right away
     if (grabPointerReply->status != XCB_GRAB_STATUS_SUCCESS) {
-        doGrabNow(grabMode, includePointer, includeDecorations);
+        doGrabNow(grabMode, includePointer, includeDecorations, includeShadow);
         return;
     }
 
     // fix things if our pointer grab causes a lockup and install our event filter
-    m_nativeEventFilter->setCaptureOptions(grabMode, includePointer, includeDecorations);
+    m_nativeEventFilter->setCaptureOptions(grabMode, includePointer, includeDecorations, includeShadow);
     xcb_allow_events(QX11Info::connection(), XCB_ALLOW_SYNC_POINTER, XCB_TIME_CURRENT_TIME);
     qApp->installNativeEventFilter(m_nativeEventFilter.get());
 

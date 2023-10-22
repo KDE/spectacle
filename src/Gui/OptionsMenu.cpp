@@ -26,6 +26,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     , captureSettingsSection(new QAction(this))
     , includeMousePointerAction(new QAction(this))
     , includeWindowDecorationsAction(new QAction(this))
+    , includeWindowShadowAction(new QAction(this))
     , onlyCapturePopupAction(new QAction(this))
     , quitAfterSaveAction(new QAction(this))
     , captureOnClickAction(new QAction(this))
@@ -91,6 +92,18 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         includeWindowDecorationsAction->setChecked(Settings::includeDecorations());
     });
     addAction(includeWindowDecorationsAction.get());
+
+    includeWindowShadowAction->setText(i18n("Include window shadow"));
+    includeWindowShadowAction->setToolTip(i18n("Show the window shadow"));
+    includeWindowShadowAction->setCheckable(true);
+    includeWindowShadowAction->setChecked(Settings::includeShadow());
+    connect(includeWindowShadowAction.get(), &QAction::toggled, this, [](bool checked) {
+        Settings::setIncludeShadow(checked);
+    });
+    connect(Settings::self(), &Settings::includeShadowChanged, this, [this]() {
+        includeWindowShadowAction->setChecked(Settings::includeShadow());
+    });
+    addAction(includeWindowShadowAction.get());
 
     onlyCapturePopupAction->setText(i18n("Capture the current pop-up only"));
     onlyCapturePopupAction->setToolTip(

@@ -27,12 +27,13 @@ ImagePlatform::ShutterModes ImagePlatformNull::supportedShutterModes() const
     return {ShutterMode::Immediate | ShutterMode::OnClick};
 }
 
-void ImagePlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     Q_UNUSED(shutterMode)
     Q_UNUSED(grabMode)
     Q_UNUSED(includePointer)
     Q_UNUSED(includeDecorations)
+    Q_UNUSED(includeShadow)
     Q_EMIT newScreenshotTaken();
 }
 

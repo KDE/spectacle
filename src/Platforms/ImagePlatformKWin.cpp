@@ -42,6 +42,10 @@ static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags f
     if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeDecoration) {
         options.insert(u"include-decoration"_s, true);
     }
+
+    bool includeShadow = flags & ImagePlatformKWin::ScreenShotFlag::IncludeShadow;
+    options.insert(u"include-shadow"_s, includeShadow);
+
     if (flags & ImagePlatformKWin::ScreenShotFlag::NativeSize) {
         options.insert(u"native-resolution"_s, true);
     }
@@ -286,9 +290,11 @@ ImagePlatform::ShutterModes ImagePlatformKWin::supportedShutterModes() const
     return ShutterMode::Immediate;
 }
 
-void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations)
+void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     ScreenShotFlags flags = ScreenShotFlag::NativeSize;
+
+    flags.setFlag(ScreenShotFlag::IncludeShadow, includeShadow);
 
     if (includeDecorations) {
         flags |= ScreenShotFlag::IncludeDecoration;

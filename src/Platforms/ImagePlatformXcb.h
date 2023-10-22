@@ -25,21 +25,36 @@ public:
     ShutterModes supportedShutterModes() const override final;
 
 public Q_SLOTS:
-    void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) override final;
+    void doGrab(ImagePlatform::ShutterMode shutterMode,
+                ImagePlatform::GrabMode grabMode,
+                bool includePointer,
+                bool includeDecorations,
+                bool includeShadow) override final;
 
 private Q_SLOTS:
     void updateSupportedGrabModes();
     void handleKWinScreenshotReply(quint64 drawable);
-    void doGrabNow(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations);
-    void doGrabOnClick(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations);
+    void doGrabNow(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow);
+    void doGrabOnClick(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow);
 
 private:
     inline void updateWindowTitle(xcb_window_t window);
     bool isKWinAvailable();
+
     QPoint getCursorPosition();
     QRect getDrawableGeometry(xcb_drawable_t drawable);
     xcb_window_t getWindowUnderCursor();
     xcb_window_t getTransientWindowParent(xcb_window_t childWindow, QRect &windowRectOut, bool includeDecorations);
+
+    /* ----------------------- Image Processing Utilities ----------------------- */
+
+    /**
+     * @brief Adds a drop shadow to the given image.
+     * @param image The image to add a drop shadow to.
+     * @return The image with a drop shadow.
+     */
+    QImage addDropShadow(QImage &image);
+
     QList<QRect> getScreenRects();
     QImage convertFromNative(xcb_image_t *xcbImage);
     QImage blendCursorImage(QImage &image, const QRect rect);
@@ -51,9 +66,9 @@ private:
     void grabAllScreens(bool includePointer, bool crop = false);
     void grabCurrentScreen(bool includePointer);
     void grabApplicationWindow(xcb_window_t window, bool includePointer, bool includeDecorations);
-    void grabActiveWindow(bool includePointer, bool includeDecorations);
-    void grabWindowUnderCursor(bool includePointer, bool includeDecorations);
-    void grabTransientWithParent(bool includePointer, bool includeDecorations);
+    void grabActiveWindow(bool includePointer, bool includeDecorations, bool includeShadow);
+    void grabWindowUnderCursor(bool includePointer, bool includeDecorations, bool includeShadow);
+    void grabTransientWithParent(bool includePointer, bool includeDecorations, bool includeShadow);
 
     // on-click screenshot shutter support needs a native event filter in xcb
     class OnClickEventFilter;

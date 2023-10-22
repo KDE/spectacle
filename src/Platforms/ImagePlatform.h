@@ -43,7 +43,8 @@ public:
     virtual ShutterModes supportedShutterModes() const = 0;
 
 public Q_SLOTS:
-    virtual void doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations) = 0;
+    virtual void
+    doGrab(ImagePlatform::ShutterMode shutterMode, ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow) = 0;
 
 Q_SIGNALS:
     void supportedGrabModesChanged();
