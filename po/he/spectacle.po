@@ -3,21 +3,22 @@
 #
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-18 01:42+0000\n"
-"PO-Revision-Date: 2023-10-06 15:33+0300\n"
-"Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-10-21 16:09+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -433,13 +434,13 @@ msgid "Number"
 msgstr "מספר"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "ביטול (שנייה)"
-msgstr[1] "ביטול (%1 שניות)"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "ביטול (שתי שניות)"
+msgstr[2] "ביטול (%1 שניות)"
+msgstr[3] "ביטול (%1 שניות)"
 
 #: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
 #, kde-format
@@ -526,14 +527,14 @@ msgid "No Delay"
 msgstr "ללא השהיה"
 
 #: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid " second"
 msgid_plural " seconds"
 msgstr[0] " שנייה"
 msgstr[1] " שניות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] "שניות"
+msgstr[3] "שניות"
 
 #: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
 #, kde-format
@@ -1093,11 +1094,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "איכות הדחיסה לתסדירים ירודי איכות"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:143
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "צילום מסך"
+msgstr "צילומי מסך"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:144
@@ -1140,11 +1140,10 @@ msgid "The default filename used when recording a video"
 msgstr "שם ברירת המחדל שמשמש בעת הקלטת סרטון"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:191
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "צילום מסך"
+msgstr "הסרטות מסך"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:203
@@ -1432,14 +1431,14 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SpectacleWindow.cpp:190
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "שנייה"
 msgstr[1] "%1 שניות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] "%1 שניות"
+msgstr[3] "%1 שניות"
 
 #: src/Gui/SpectacleWindow.cpp:193
 #, kde-format
