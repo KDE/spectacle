@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-18 01:42+0000\n"
+"POT-Creation-Date: 2023-10-23 01:39+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -156,7 +156,13 @@ msgstr "배경 모드에서 스크린샷에 포인터 포함"
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:98
+#, fuzzy, kde-format
+#| msgid "In background mode, exclude decorations in the screenshot"
+msgid "In background mode, exclude shadows in the screenshot"
+msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
+
+#: src/CommandLineOptions.h:101
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
@@ -442,12 +448,12 @@ msgid "Take a new screenshot"
 msgstr "새 스크린샷 찍기"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
-#: src/Gui/OptionsMenu.cpp:67
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Capture Settings"
 msgstr "캡처 설정"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:71
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordOptions.qml:41
 #, kde-format
 msgid "Include mouse pointer"
@@ -458,7 +464,7 @@ msgstr "마우스 포인터 포함하기"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "스크린샷 그림에 마우스 커서를 표시합니다."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:83
+#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "창 제목 표시줄과 경계선 포함"
@@ -469,12 +475,25 @@ msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr "창의 스크린샷을 찍을 때 제목 표시줄과 테두리를 포함합니다."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:95
+#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
+#, fuzzy, kde-format
+#| msgid "Include window titlebar and borders"
+msgid "Include window shadow"
+msgstr "창 제목 표시줄과 경계선 포함"
+
+#: src/Gui/CaptureSettingsColumn.qml:35
+#, fuzzy, kde-format
+#| msgid ""
+#| "Show the window title bar and border when taking a screenshot of a window."
+msgid "Show the window shadow when taking a screenshot of a window."
+msgstr "창의 스크린샷을 찍을 때 제목 표시줄과 테두리를 포함합니다."
+
+#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "현재 팝업 창만 캡처"
 
-#: src/Gui/CaptureSettingsColumn.qml:36
+#: src/Gui/CaptureSettingsColumn.qml:46
 #, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
@@ -484,27 +503,27 @@ msgstr ""
 "창의 스크린샷을 찍을 때 현재 팝업 창(메뉴, 풍선 도움말 등)만 캡처합니다. 이 "
 "옵션을 사용하지 않으면 팝업 창과 부모 창을 같이 캡처합니다."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:109
+#: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "수동으로 저장하거나 복사한 후 끝내기"
 
-#: src/Gui/CaptureSettingsColumn.qml:45
+#: src/Gui/CaptureSettingsColumn.qml:55
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "그림을 수동으로 저장하거나 복사한 후 Spectacle 끝냅니다."
 
-#: src/Gui/CaptureSettingsColumn.qml:54
+#: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
 msgstr "클릭할 때 캡처"
 
-#: src/Gui/CaptureSettingsColumn.qml:56
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "스크린샷을 찍기 전에 마우스 클릭을 기다립니다."
 
-#: src/Gui/CaptureSettingsColumn.qml:66 src/Gui/OptionsMenu.cpp:139
+#: src/Gui/CaptureSettingsColumn.qml:76 src/Gui/OptionsMenu.cpp:152
 #, kde-format
 msgid "Delay:"
 msgstr "지연:"
@@ -623,17 +642,17 @@ msgstr "옵션"
 msgid "Configure..."
 msgstr "설정..."
 
-#: src/Gui/OptionsMenu.cpp:41
+#: src/Gui/OptionsMenu.cpp:42
 #, kde-format
 msgid "Capture Mode"
 msgstr "캡처 모드"
 
-#: src/Gui/OptionsMenu.cpp:72
+#: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "스크린샷 그림에 마우스 커서 표시"
 
-#: src/Gui/OptionsMenu.cpp:84
+#: src/Gui/OptionsMenu.cpp:85
 #, kde-format
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -642,6 +661,11 @@ msgstr "창 제목 표시줄, 조절 단추와 창 경계선 표시"
 
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
+msgid "Show the window shadow"
+msgstr ""
+
+#: src/Gui/OptionsMenu.cpp:110
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
@@ -649,17 +673,17 @@ msgstr ""
 "현재 팝업 창(메뉴, 풍선 도움말 등)만 캡처합니다.\n"
 "이 옵션을 사용하지 않으면 팝업 창과 부모 창을 같이 캡처합니다"
 
-#: src/Gui/OptionsMenu.cpp:110
+#: src/Gui/OptionsMenu.cpp:123
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "그림을 수동으로 저장하거나 복사한 후 Spectacle 끝내기"
 
-#: src/Gui/OptionsMenu.cpp:124
+#: src/Gui/OptionsMenu.cpp:137
 #, kde-format
 msgid "Capture On Click"
 msgstr "클릭할 때 캡처"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:157
 #, kde-format
 msgid "No Delay"
 msgstr "지연 없음"
@@ -1053,39 +1077,46 @@ msgstr "스크린샷 그림에 마우스 커서를 표시할지 여부"
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "스크린샷 그림에 창 장식을 표시할지 여부"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
+#. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
+#, fuzzy, kde-format
+#| msgid "Whether the window decorations are included in the screenshot"
+msgid "Whether the window shadow is included in the screenshot"
+msgstr "스크린샷 그림에 창 장식을 표시할지 여부"
+
+#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "현재 팝업 메뉴만 캡처"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:99
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "그림을 저장하거나 복사한 후 끝내기"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:103
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Delay"
 msgstr "지연"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:114
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:118
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
 #, kde-format
 msgid "Default filename"
 msgstr "기본 파일 이름"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "손실 압축 형식의 압축 품질"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:143
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, fuzzy, kde-format
 #| msgid "Screenshot"
 msgctxt "translatable folder name"
@@ -1093,46 +1124,46 @@ msgid "Screenshots"
 msgstr "스크린샷"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "Default save image format"
 msgstr "기본 그림 저장 형식"
 
 #. i18n: ectx: label, entry (imageFilenameFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "저장할 때 사용할 기본 파일 이름"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
-#: src/Gui/SettingsDialog/spectacle.kcfg:193
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "마지막으로 저장한 파일 경로"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "마지막으로 사용한 \"다른 이름으로 저장\" 경로"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:184
+#: src/Gui/SettingsDialog/spectacle.kcfg:188
 #, kde-format
 msgid "Default video format"
 msgstr "기본 동영상 형식"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:189
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "녹화할 때 사용할 기본 파일 이름"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, fuzzy, kde-format
 #| msgid "Screenshot"
 msgctxt "translatable folder name"
@@ -1140,155 +1171,155 @@ msgid "Screencasts"
 msgstr "스크린샷"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:203
+#: src/Gui/SettingsDialog/spectacle.kcfg:207
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "마지막으로 사용한 주석 도구 형식"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "자유형 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:214
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "강조 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
+#: src/Gui/SettingsDialog/spectacle.kcfg:223
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "선 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "화살표 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:229
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "직사각형 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "타원 주석 도구에 사용할 획 너비"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:240
+#: src/Gui/SettingsDialog/spectacle.kcfg:244
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "자유형 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:244
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "강조 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:248
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "선 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:252
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "화살표 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:256
+#: src/Gui/SettingsDialog/spectacle.kcfg:260
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "직사각형 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:260
+#: src/Gui/SettingsDialog/spectacle.kcfg:264
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "타원 주석 도구에 사용할 획 색상"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
+#: src/Gui/SettingsDialog/spectacle.kcfg:269
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "직사각형 주석 도구에 사용할 채우기 색상"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:269
 #: src/Gui/SettingsDialog/spectacle.kcfg:273
+#: src/Gui/SettingsDialog/spectacle.kcfg:277
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "타원 주석 도구에 사용할 채우기 색상"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:278
+#: src/Gui/SettingsDialog/spectacle.kcfg:282
 #, kde-format
 msgid "Font for text annotations"
 msgstr "텍스트 주석에 사용할 글꼴"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:281
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #, kde-format
 msgid "Font for number annotations"
 msgstr "숫자 주석에 사용할 글꼴"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #: src/Gui/SettingsDialog/spectacle.kcfg:289
+#: src/Gui/SettingsDialog/spectacle.kcfg:293
 #, kde-format
 msgid "Font color for annotations"
 msgstr "주석 글꼴 색상"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:294
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "자유형 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "선 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "화살표 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "직사각형 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:310
+#: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "타원 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:314
+#: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "텍스트 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:318
+#: src/Gui/SettingsDialog/spectacle.kcfg:322
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "숫자 주석 도구에 그림자 사용 여부"
@@ -1545,12 +1576,12 @@ msgstr "커서 아래 창 캡처"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:641
+#: src/SpectacleCore.cpp:643
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "스크린샷 찍기 취소 혹은 실패"
 
-#: src/SpectacleCore.cpp:686
+#: src/SpectacleCore.cpp:688
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1559,29 +1590,29 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:690
+#: src/SpectacleCore.cpp:692
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:693
+#: src/SpectacleCore.cpp:695
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:697
+#: src/SpectacleCore.cpp:699
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 저장했습니다."
 
-#: src/SpectacleCore.cpp:702
+#: src/SpectacleCore.cpp:704
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"
