@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-23 01:39+0000\n"
-"PO-Revision-Date: 2023-10-17 13:55+0200\n"
+"POT-Creation-Date: 2023-10-24 01:41+0000\n"
+"PO-Revision-Date: 2023-10-23 18:07+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -174,12 +174,10 @@ msgstr ""
 "pantalla"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr ""
-"En el modo de segundo plano, excluir las decoraciones en la captura de "
-"pantalla"
+"En el modo de segundo plano, excluir las sombras en la captura de pantalla"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -507,19 +505,14 @@ msgstr ""
 "una ventana."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Incluir la barra de título y los bordes de la ventana"
+msgstr "Incluir la sombra de la ventana"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
-"Mostrar la barra de título y el borde de la ventana al hacer una captura de "
-"una ventana."
+msgstr "Mostrar la sombra de la ventana al hacer una captura de una ventana."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -699,7 +692,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Mostrar la sombra de la ventana"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -799,9 +792,9 @@ msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"No se ha podido hacer una captura de pantalla. Por favor, notifique este "
-"error aquí: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle"
-"\">crear un error de Spectacle</a>."
+"No se ha podido hacer una captura de pantalla. Informe de este problema "
+"aquí: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">crear "
+"un fallo de Spectacle</a>."
 
 #. i18n: ectx: property (text), widget (QLabel, onLaunchSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1070,14 +1063,14 @@ msgstr "Acción del portapapeles a ejecutar tras hacer una captura de pantalla"
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr ""
-"Si se debe usar una máscara de color claro en el diálogo de selección de "
+"Controla si se usa una máscara de color claro en el diálogo de selección de "
 "región"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:54
 #, kde-format
 msgid "Whether to show a magnifier in the region selection"
-msgstr "Si se debe mostrar una lupa en la selección de la región"
+msgstr "Controla si se muestra una lupa en la selección de la región"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:58
@@ -1086,15 +1079,16 @@ msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
 msgstr ""
-"Si la captura de pantalla se debe hacer tras seleccionar una región y dejar "
-"de pulsar el botón del ratón"
+"Controla si la captura de pantalla se debe hacer tras seleccionar una región "
+"y dejar de pulsar el botón del ratón"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:62
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr ""
-"Si se deben mostrar las instrucciones de captura en la selección de la región"
+"Controla si se muestran las instrucciones de captura en la selección de la "
+"región"
 
 #. i18n: ectx: label, entry (rememberLastRectangularRegion), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:66
@@ -1118,24 +1112,22 @@ msgstr "Hacer captura de pantalla al pulsar"
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Si se debe incluir el cursor del ratón en la captura de pantalla"
+msgstr "Controla si se incluye el cursor del ratón en la captura de pantalla"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr ""
-"Si se deben incluir las decoraciones de las ventanas en la captura de "
+"Controla si se incluyen las decoraciones de las ventanas en la captura de "
 "pantalla"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr ""
-"Si se deben incluir las decoraciones de las ventanas en la captura de "
-"pantalla"
+"Controla si se incluye la sombra de la ventana en la captura de pantalla"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1337,43 +1329,45 @@ msgstr "Color del texto de las anotaciones"
 #: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación a mano alzada arroja una sombra o no"
+msgstr ""
+"Controla si la herramienta de anotación a mano alzada arroja una sombra"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de línea arroja una sombra o no"
+msgstr "Controla si la herramienta de anotación de línea arroja una sombra"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de flecha arroja una sombra o no"
+msgstr "Controla si la herramienta de anotación de flecha arroja una sombra"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de rectángulo arroja una sombra o no"
+msgstr ""
+"Controla si la herramienta de anotación de rectángulo arroja una sombra"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de elipse arroja una sombra o no"
+msgstr "Controla si la herramienta de anotación de elipse arroja una sombra"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de texto arroja una sombra o no"
+msgstr "Controla si la herramienta de anotación de texto arroja una sombra"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:322
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr "Si la herramienta de anotación de número arroja una sombra o no"
+msgstr "Controla si la herramienta de anotación de número arroja una sombra"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
@@ -1630,12 +1624,12 @@ msgstr "Capturar la ventana bajo el cursor"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:653
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Captura de pantalla cancelada o fallida"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1644,29 +1638,29 @@ msgstr ""
 "Se ha guardado una captura de pantalla como «%1» en «%2» y su ruta de "
 "archivo se ha guardado en el portapapeles."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Se ha guardado la captura de pantalla «%1» en la carpeta «Imágenes»."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Se ha guardado la captura de pantalla «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Se ha guardado una captura de pantalla en el portapapeles."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"

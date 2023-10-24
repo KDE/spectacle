@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-23 01:39+0000\n"
-"PO-Revision-Date: 2023-10-08 01:04+0200\n"
+"POT-Creation-Date: 2023-10-24 01:41+0000\n"
+"PO-Revision-Date: 2023-10-24 00:39+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -104,7 +104,7 @@ msgstr "Avvia in modalità grafica (predefinita)"
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Acquisce una schermata ed esce senza mostrare l'interfaccia grafica"
+msgstr "Acquisisce una schermata ed esce senza mostrare l'interfaccia grafica"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -117,7 +117,7 @@ msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "In modalità background, non mostra finestre a comparsa di notifica quando "
-"acquisce una schermata"
+"acquisisce una schermata"
 
 #: src/CommandLineOptions.h:66
 #, kde-format
@@ -170,10 +170,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "In modalità background, escludi le decorazioni nella schermata"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "In modalità background, escludi le decorazioni nella schermata"
+msgstr "In modalità background, escludi le ombre nella schermata"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -495,23 +494,20 @@ msgstr "Includi la barra del titolo ed i bordi della finestra"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
-"Mostra la barra del titolo della finestra ed il bordo quando si acquisce una "
-"schermata di una finestra."
+"Mostra la barra del titolo della finestra ed il bordo quando si acquisisce "
+"una schermata di una finestra."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Includi la barra del titolo ed i bordi della finestra"
+msgstr "Includi l'ombra della finestra"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
-"Mostra la barra del titolo della finestra ed il bordo quando si acquisce una "
-"schermata di una finestra."
+"Mostra l'ombra della finestra quando si acquisisce una schermata di una "
+"finestra."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -691,7 +687,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Mostra l'ombra della finestra"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1123,11 +1119,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr ""
-"Se le decorazioni della finestra debbano essere incluse nella schermata"
+msgstr "Se l'ombra della finestra debba essere inclusa nella schermata"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1163,11 +1157,10 @@ msgstr ""
 "Qualità di compressione per i formati di file con perdita di informazione"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Schermata"
+msgstr "Schermate"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:148
@@ -1210,11 +1203,10 @@ msgid "The default filename used when recording a video"
 msgstr "Il nome di file predefinito usato per la registrazione di un video"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Schermata"
+msgstr "Screencast"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1625,12 +1617,12 @@ msgstr "Cattura finestra sotto il cursore"
 msgid "Launch Spectacle without capturing"
 msgstr "Esegui Spectacle senza acquisire"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:653
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Cattura della schermata annullata o non riuscita"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1639,7 +1631,7 @@ msgstr ""
 "La schermata è stata salvata come «%1» in «%2» ed il suo percorso è stata "
 "copiato negli appunti."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1647,23 +1639,23 @@ msgstr ""
 "Una nuova schermata è stata salvata come «%1» nella tua cartella delle "
 "immagini."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Una nuova schermata è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Una schermata è stata salvata negli appunti."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Apri"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-23 01:39+0000\n"
-"PO-Revision-Date: 2023-10-17 09:42+0300\n"
+"POT-Creation-Date: 2023-10-24 01:41+0000\n"
+"PO-Revision-Date: 2023-10-23 16:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -166,10 +166,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "У фоновому режимі, виключити обрамлення вікна зі знімку"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "У фоновому режимі, виключити обрамлення вікна зі знімку"
+msgstr "У фоновому режимі, виключити тіні вікон зі знімку"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -492,17 +491,14 @@ msgid ""
 msgstr "Показувати смужку заголовка вікна і рамку при створенні знімка вікна."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Включити заголовок і рамку вікна"
+msgstr "Включити тінь вікна"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Показувати смужку заголовка вікна і рамку при створенні знімка вікна."
+msgstr "Показувати тінь вікна при створенні знімка вікна."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -684,7 +680,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Показувати тінь вікна"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1115,10 +1111,9 @@ msgstr "Визначає, чи слід включати до знімка ві�
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Визначає, чи слід включати до знімка вікна його обрамлення"
+msgstr "Визначає, чи слід включати до знімка вікна його тінь"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1616,12 +1611,12 @@ msgstr "Захопити зображення вікна під вказівни
 msgid "Launch Spectacle without capturing"
 msgstr "Запустити Spectacle без створення знімка"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:653
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Захоплення знімка екрана скасовано або його не вдалося виконати"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1630,29 +1625,29 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-23 01:39+0000\n"
-"PO-Revision-Date: 2023-10-17 11:01+0200\n"
+"POT-Creation-Date: 2023-10-24 01:41+0000\n"
+"PO-Revision-Date: 2023-10-23 11:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -167,10 +167,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "In achtergrondmodus, decoraties niet meenemen in de schermafdruk"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "In achtergrondmodus, decoraties niet meenemen in de schermafdruk"
+msgstr "In achtergrondmodus, schaduwen niet meenemen in de schermafdruk"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -494,18 +493,15 @@ msgstr ""
 "venster."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Venstertitelbalk en randen meenemen"
+msgstr "Schaduw van venster meenemen"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
-"De venstertitelbalk en rand tonen bij maken van een schermafdruk van een "
+"De schaduw van het venster tonen bij maken van een schermafdruk van een "
 "venster."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
@@ -687,7 +683,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Schaduw van het venster tonen"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1116,10 +1112,9 @@ msgstr "Of de vensterdecoraties worden meegenomen in de schermafdruk"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Of de vensterdecoraties worden meegenomen in de schermafdruk"
+msgstr "Of de schaduw van het venster wordt meegenomen in de schermafdruk"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1614,12 +1609,12 @@ msgstr "Venster onder cursor opnemen"
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle starten zonder opnemen"
 
-#: src/SpectacleCore.cpp:643
+#: src/SpectacleCore.cpp:653
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Schermafdrukopname is geannuleerd of mislukt"
 
-#: src/SpectacleCore.cpp:688
+#: src/SpectacleCore.cpp:698
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1628,30 +1623,30 @@ msgstr ""
 "De schermafdruk is opgeslagen als '%1'naar '%2' en het bestandspad van de "
 "schermafdruk is in het klembord opgeslagen."
 
-#: src/SpectacleCore.cpp:692
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Een schermafdruk is opgenomen en opgeslagen als '%1' in uw map Afbeeldingen."
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:705
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Een schermafdruk is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:699
+#: src/SpectacleCore.cpp:709
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Een schermafdruk is opgeslagen naar uw klembord."
 
-#: src/SpectacleCore.cpp:704
+#: src/SpectacleCore.cpp:714
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Openen"
 
-#: src/SpectacleCore.cpp:709
+#: src/SpectacleCore.cpp:719
 #, kde-format
 msgid "Annotate"
 msgstr "Annotatie maken"
