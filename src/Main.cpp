@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("spectacle");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("spectacle"));
     QCoreApplication::setOrganizationDomain(u"org.kde"_s);
 
     KAboutData aboutData(u"spectacle"_s,
