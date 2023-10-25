@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-24 01:41+0000\n"
-"PO-Revision-Date: 2023-10-17 17:15+0200\n"
+"PO-Revision-Date: 2023-10-24 21:01+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -169,10 +169,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
+msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -494,19 +493,14 @@ msgstr ""
 "argazki bat hartzean."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Jaso leihoaren titulu-barra eta ertzak"
+msgstr "Jaso leihoaren itzala"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
-"Erakutsi leihoaren titulu-barra eta ertza leiho baten ertzaren pantaila-"
-"argazki bat hartzean."
+msgstr "Erakutsi leihoaren itzala leiho baten pantaila-argazki bat hartzean."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -686,7 +680,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Erakutsi leihoaren itzala"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1111,10 +1105,9 @@ msgstr "Leihoaren apaingarriak pantaila-argazkian sartuko diren"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Leihoaren apaingarriak pantaila-argazkian sartuko diren"
+msgstr "Leihoaren itzala pantaila-argazkian jasoko den edo ez"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-24 01:41+0000\n"
-"PO-Revision-Date: 2023-10-21 16:09+0300\n"
+"PO-Revision-Date: 2023-10-24 08:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -160,10 +160,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "במצב רקע, לא לכלול את העיטורים בצילום המסך"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "במצב רקע, לא לכלול את העיטורים בצילום המסך"
+msgstr "במצב רקע, לא לכלול את ההצללות בצילום המסך"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -482,17 +481,14 @@ msgid ""
 msgstr "להציג את כותרת ומסגרת החלון בעת צילום החלון."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "כולל שורת הכותרת והגבולות"
+msgstr "כולל הצללת החלון"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "להציג את כותרת ומסגרת החלון בעת צילום החלון."
+msgstr "להציג את הצללת החלון בעת צילום החלון."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -671,7 +667,7 @@ msgstr "להציג את כותרת החלון, את כפתורי המזעור/ה
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "הצגת צללית החלון"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1087,10 +1083,9 @@ msgstr "האם עיטורי החלונות ייכללו בצילום המסך"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "האם עיטורי החלונות ייכללו בצילום המסך"
+msgstr "האם הצללת החלון תיכלל בצילום המסך"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-24 01:41+0000\n"
-"PO-Revision-Date: 2023-10-18 06:07+0200\n"
+"PO-Revision-Date: 2023-10-24 06:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -163,10 +163,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს დეკორაციები არ ექნება"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს დეკორაციები არ ექნება"
+msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს ჩრდილი არ ექნება"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -487,19 +486,14 @@ msgstr ""
 "ჩვენება."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "ფანჯრის ქუდისა და საზღვრების ჩათვლით"
+msgstr "ფანჯრის ჩრდილის ჩათვლით"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
-"ფანჯრის ეკრანის ანაბეჭდის გადაღებისას ფანჯრის სათაურის ზოლისა და საზღვრის "
-"ჩვენება."
+msgstr "ფანჯრის ეკრანის ანაბეჭდის გადაღებისას ფანჯრის ჩრდილის ჩვენება."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -679,7 +673,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "ფანჯრის ჩრდილის ჩვენება"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1100,10 +1094,9 @@ msgstr "გამოჩნდება ეკრანის ანაბეჭ�
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "გამოჩნდება ეკრანის ანაბეჭდში ფანჯრის დეკორაციები, თუ არა"
+msgstr "გამოჩნდება ეკრანის ანაბეჭდში ფანჯრის ჩრდილი, თუ არა"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
