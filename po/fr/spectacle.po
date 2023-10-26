@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-24 01:41+0000\n"
-"PO-Revision-Date: 2023-10-18 19:14+0200\n"
+"PO-Revision-Date: 2023-10-24 14:29+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -179,12 +179,10 @@ msgstr ""
 "d'écran"
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr ""
-"En mode d'arrière-plan, exclure les décorations de fenêtres dans la copie "
-"d'écran"
+"En mode d'arrière-plan, exclure les ombrages de fenêtres de la copie d'écran"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -511,19 +509,15 @@ msgstr ""
 "d'écran d'une fenêtre."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Inclure la barre de titre et les bordures de la fenêtre"
+msgstr "Inclure l'ombrage de la fenêtre"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
-"Afficher la barre de titre et la bordure de la fenêtre lors de la copie "
-"d'écran d'une fenêtre."
+"Afficher l'ombrage de la fenêtre lors de la copie d'écran d'une fenêtre."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -705,7 +699,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Affichage l'ombrage de la fenêtre"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1140,11 +1134,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr ""
-"Choisir d'inclure ou non les décorations de fenêtres dans la capture d'écran"
+"Choisir d'inclure ou non l'ombrage des fenêtres dans la capture d'écran"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
