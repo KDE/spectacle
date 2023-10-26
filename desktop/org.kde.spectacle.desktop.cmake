@@ -53,6 +53,7 @@ GenericName[zh_CN]=屏幕截图工具
 GenericName[zh_TW]=畫面擷取工具
 Name=Spectacle
 Name[ar]=لاقط الشاشة
+Name[ast]=Spectacle
 Name[az]=Spectacle
 Name[bg]=Spectacle
 Name[ca]=Spectacle
