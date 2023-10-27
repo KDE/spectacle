@@ -22,8 +22,8 @@ FocusScope {
     readonly property size resolution: {
         let size = mediaPlayer.metaData.value(MediaMetaData.Resolution)
         // Try implicit size in case resolution metadata is not valid.
-        size.width = Math.max(size.width, videoOutput.implicitWidth)
-        size.height = Math.max(size.height, videoOutput.implicitHeight)
+        size.width = Math.max(size?.width ?? 0, videoOutput.implicitWidth)
+        size.height = Math.max(size?.height ?? 0, videoOutput.implicitHeight)
         return size
     }
 
