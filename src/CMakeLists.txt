@@ -101,7 +101,7 @@ target_link_libraries(spectacle PRIVATE
     KF6::GlobalAccel
     KF6::XmlGui
     KF6::GuiAddons
-    KF6::Kirigami2
+    KF6::KirigamiPlatform
     K::KPipeWireRecord
     Wayland::Client
 )

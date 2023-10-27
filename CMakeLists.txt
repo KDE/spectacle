@@ -66,7 +66,7 @@ find_package(
         GlobalAccel
         XmlGui
         GuiAddons
-        Kirigami2
+        KirigamiPlatform
 )
 
 find_package(Wayland REQUIRED COMPONENTS Client)
