@@ -13,7 +13,7 @@
 #include "spectacle_gui_debug.h"
 
 #include <KUrlMimeData>
-#include <Kirigami/Units>
+#include <Kirigami/Platform/Units>
 
 #include <QApplication>
 #include <QClipboard>
@@ -235,7 +235,7 @@ void ViewerWindow::startDrag()
     dragHandler->setMimeData(mimeData);
 
     if (SpectacleCore::instance()->videoMode()) {
-        Kirigami::Units units;
+        auto units = engine()->singletonInstance<Kirigami::Platform::Units>("org.kde.kirigami.platform", "Units");
         auto iconSize = units.iconSizes()->large();
         dragHandler->setPixmap(QIcon::fromTheme(u"video-x-matroska"_s).pixmap(iconSize, iconSize));
     } else {
