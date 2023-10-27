@@ -50,6 +50,7 @@ find_package(
         PrintSupport
         Test
         WaylandClient
+        Multimedia
 )
 qt_policy(SET QTP0001 NEW)
 
