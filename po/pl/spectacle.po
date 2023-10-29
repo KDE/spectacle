@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-24 01:41+0000\n"
-"PO-Revision-Date: 2023-10-21 11:32+0200\n"
+"PO-Revision-Date: 2023-10-28 09:29+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -163,10 +163,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "W trybie działania w tle, usuwaj obramowania okien na zrzutach ekranu "
 
 #: src/CommandLineOptions.h:98
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "W trybie działania w tle, usuwaj obramowania okien na zrzutach ekranu "
+msgstr "W trybie działania w tle, usuwaj cienie na zrzutach ekranu"
 
 #: src/CommandLineOptions.h:101
 #, kde-format
@@ -487,17 +486,14 @@ msgid ""
 msgstr "Pokaż pasek nazwy okna i jego obramowanie na zrzucie ekranu."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Z paskiem tytułowym i obramowaniem okna"
+msgstr "Z cieniem okna"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Pokaż pasek nazwy okna i jego obramowanie na zrzucie ekranu."
+msgstr "Pokaż cień okna na jego zrzucie."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -678,7 +674,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Pokaż cień okna"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -1102,10 +1098,9 @@ msgstr "Określa, czy ozdoby okien mają znaleźć się na zrzucie ekranu"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Określa, czy ozdoby okien mają znaleźć się na zrzucie ekranu"
+msgstr "Określa, czy cień okna maa znaleźć się na zrzucie ekranu"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
