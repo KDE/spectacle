@@ -235,8 +235,8 @@ void ViewerWindow::startDrag()
     dragHandler->setMimeData(mimeData);
 
     if (SpectacleCore::instance()->videoMode()) {
-        auto units = engine()->singletonInstance<Kirigami::Platform::Units>("org.kde.kirigami.platform", "Units");
-        auto iconSize = units.iconSizes()->large();
+        auto units = engine()->singletonInstance<Kirigami::Platform::Units *>("org.kde.kirigami.platform", "Units");
+        auto iconSize = units->iconSizes()->large();
         dragHandler->setPixmap(QIcon::fromTheme(u"video-x-generic"_s).pixmap(iconSize, iconSize));
     } else {
         QSize size = image.size();
