@@ -10,7 +10,7 @@ import org.kde.spectacle.private
 
 ColumnLayout {
     ColumnLayout {
-        visible: !SpectacleCore.isRecording
+        visible: !VideoPlatform.isRecording
         spacing: Kirigami.Units.mediumSpacing
 
         Repeater {
@@ -47,7 +47,7 @@ ColumnLayout {
         }
     }
     ColumnLayout {
-        visible: SpectacleCore.isRecording
+        visible: VideoPlatform.isRecording
         QQC.Button {
             Layout.fillWidth: true
             text: i18n("Finish recording")

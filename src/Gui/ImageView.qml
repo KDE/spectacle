@@ -140,7 +140,7 @@ EmptyPage {
 
             header: QQC.TabBar {
                 id: tabBar
-                visible: SpectacleCore.recordingSupported
+                visible: VideoPlatform.supportedRecordingModes
                 currentIndex: 0
                 QQC.TabButton {
                     width: tabBar.width / tabBar.count

@@ -247,7 +247,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
-    connect(m_videoPlatform.get(), &VideoPlatform::recordingChanged, this, &SpectacleCore::recordingChanged);
     connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
         const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
         ViewerWindow::instance()->showSavedVideoMessage(url);
@@ -952,16 +951,6 @@ void SpectacleCore::finishRecording()
 {
     Q_ASSERT(m_videoPlatform->isRecording());
     m_videoPlatform->finishRecording();
-}
-
-bool SpectacleCore::isRecording() const
-{
-    return m_videoPlatform->isRecording();
-}
-
-bool SpectacleCore::recordingSupported() const
-{
-    return m_videoPlatform->supportedRecordingModes() != 0;
 }
 
 bool SpectacleCore::videoMode() const
