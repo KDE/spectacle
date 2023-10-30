@@ -16,16 +16,6 @@ FocusScope {
     id: root
     // BUG with mediaPlayer.playing: https://bugreports.qt.io/browse/QTBUG-117006
     readonly property bool playing: mediaPlayer.playbackState === MediaPlayer.PlayingState
-    readonly property real videoScale: Math.min(width / resolution.width,
-                                                height / resolution.height)
-    // BUG with VideoOutput implicit size: https://bugreports.qt.io/browse/QTBUG-116979
-    readonly property size resolution: {
-        let size = mediaPlayer.metaData.value(MediaMetaData.Resolution)
-        // Try implicit size in case resolution metadata is not valid.
-        size.width = Math.max(size?.width ?? 0, videoOutput.implicitWidth)
-        size.height = Math.max(size?.height ?? 0, videoOutput.implicitHeight)
-        return size
-    }
 
     MouseArea {
         anchors.fill: videoOutput
@@ -40,13 +30,7 @@ FocusScope {
 
     VideoOutput {
         id: videoOutput
-        // Not filling the parent because resizing causes some issues with repositioning
-        // The content after the inline notification has been dismissed. Usually, it'll be
-        // posiitoned a bit higher than it should be.
-        x: contextWindow.dprRound((parent.width - width) / 2)
-        y: contextWindow.dprRound((parent.height - height) / 2)
-        width: contextWindow.dprRound(root.resolution.width * root.videoScale)
-        height: contextWindow.dprRound(root.resolution.height * root.videoScale)
+        anchors.fill: parent
         fillMode: VideoOutput.PreserveAspectFit
     }
 
