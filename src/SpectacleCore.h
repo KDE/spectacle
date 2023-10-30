@@ -100,7 +100,6 @@ Q_SIGNALS:
     void captureTimeRemainingChanged();
     void captureProgressChanged();
 
-    void errorMessage(const QString &message);
     void allDone();
     void grabFailed();
     void videoModeChanged(bool videoMode);

@@ -118,7 +118,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
     // essential connections
-    connect(this, &SpectacleCore::errorMessage, this, &SpectacleCore::showErrorMessage);
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
         deleteWindows();
