@@ -117,6 +117,11 @@ int main(int argc, char **argv)
         Q_UNUSED(actions)
         Q_EMIT dbusAdapter->ScreenshotTaken(url.toLocalFile());
     });
+    QObject::connect(ExportManager::instance(), &ExportManager::videoExported,
+                     &spectacleCore, [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
+        Q_UNUSED(actions)
+        Q_EMIT dbusAdapter->RecordingTaken(url.toLocalFile());
+    });
     QDBusConnection::sessionBus().registerObject(u"/"_s, &spectacleCore);
     QDBusConnection::sessionBus().registerService(u"org.kde.Spectacle"_s);
 
