@@ -480,6 +480,27 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
     }
 
+    using RecordingMode = VideoPlatform::RecordingMode;
+    RecordingMode recordingMode = RecordingMode::NoRecordingModes;
+    if (m_cliOptions[Option::Record]) {
+        auto input = parser.value(CommandLineOptions::self()->record);
+        if (input.startsWith(u"s"_s, Qt::CaseInsensitive)) {
+            recordingMode = RecordingMode::Screen;
+        } else if (input.startsWith(u"w"_s, Qt::CaseInsensitive)) {
+            recordingMode = RecordingMode::Window;
+        } else if (input.startsWith(u"r"_s, Qt::CaseInsensitive)) {
+            recordingMode = RecordingMode::Region;
+        } else {
+            // QCommandLineParser handles the case where input is empty
+            qWarning().noquote() << i18nc("@info:shell", "%1 is not a valid mode for --record", input);
+            Q_EMIT allDone();
+            return;
+        }
+        setVideoMode(true);
+    } else {
+        setVideoMode(false);
+    }
+
     // If any capture mode is given in the cli options, let it override
     // the setting to not take a screenshot on launch
     // clang-format off
@@ -489,14 +510,19 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         m_cliOptions[Option::ActiveWindow] ||
         m_cliOptions[Option::WindowUnderCursor] ||
         m_cliOptions[Option::TransientOnly] ||
-        m_cliOptions[Option::Region];
+        m_cliOptions[Option::Region] ||
+        m_cliOptions[Option::Record];
     // clang-format on
 
     switch (m_startMode) {
     case StartMode::DBus:
         break;
     case StartMode::Background:
-        takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
+        if (m_videoMode) {
+            startRecording(recordingMode, includePointer);
+        } else {
+            takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
+        }
         break;
     case StartMode::Gui:
         if (isGuiNull()) {
@@ -505,7 +531,11 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 initViewerWindow(ViewerWindow::Dialog);
                 ViewerWindow::instance()->setVisible(true);
             } else {
-                takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
+                if (m_videoMode) {
+                    startRecording(recordingMode, includePointer);
+                } else {
+                    takeNewScreenshot(grabMode, delayMsec, includePointer, includeDecorations, includeShadow);
+                }
             }
         } else {
             using Actions = Settings::EnumPrintKeyActionRunning;

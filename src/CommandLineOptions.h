@@ -41,6 +41,14 @@ struct CommandLineOptions {
         {u"r"_s, u"region"_s},
         i18n("Capture a rectangular region of the screen")
     };
+    const QCommandLineOption record = {
+        {u"R"_s, u"record"_s},
+        i18n("Record the screen using the given mode. Modes:\n"
+             "- r, region\n"
+             "- s, screen\n"
+             "- w, window"),
+        u"mode"_s,
+    };
     const QCommandLineOption launchOnly = {
         {u"l"_s, u"launchonly"_s},
         i18n("Launch Spectacle without taking a screenshot")
@@ -102,9 +110,10 @@ struct CommandLineOptions {
         u"existingFileName"_s
     };
 
-    const QList<QCommandLineOption> allOptions = {fullscreen, current,    activeWindow, windowUnderCursor, transientOnly, region,   launchOnly,
-                                                  gui,        background, dbus,         noNotify,          output,        delay,    copyImage,
-                                                  copyPath,   onClick,    newInstance,  pointer,           noDecoration,  noShadow, editExisting};
+    const QList<QCommandLineOption> allOptions = {
+        fullscreen, current, activeWindow, windowUnderCursor, transientOnly, region,  record,      launchOnly, gui,          background, dbus,
+        noNotify,   output,  delay,        copyImage,         copyPath,      onClick, newInstance, pointer,    noDecoration, noShadow,   editExisting,
+    };
 
     // Keep order in sync with allOptions
     enum Option {
@@ -114,6 +123,7 @@ struct CommandLineOptions {
         WindowUnderCursor,
         TransientOnly,
         Region,
+        Record,
         LaunchOnly,
         Gui,
         Background,
