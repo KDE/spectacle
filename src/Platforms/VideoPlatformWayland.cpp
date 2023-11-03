@@ -108,6 +108,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         stream = m_screencasting->createRegionStream(std::get<QRect>(option), 1, mode);
         break;
     }
+    default: break; // This shouldn't happen
+    }
 
     Q_ASSERT(stream);
     connect(stream, &ScreencastingStream::created, this, [this, stream] {
