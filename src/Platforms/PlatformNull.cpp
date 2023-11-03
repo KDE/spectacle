@@ -63,7 +63,7 @@ void VideoPlatformNull::finishRecording()
 {
     setRecording(false);
     qDebug() << "finish recording" << m_fileUrl;
-    Q_EMIT recordingSaved(m_fileUrl.toLocalFile());
+    Q_EMIT recordingSaved(m_fileUrl);
 }
 
 

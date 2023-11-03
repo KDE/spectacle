@@ -111,7 +111,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void recordingChanged(bool isRecording);
-    void recordingSaved(const QString &path);
+    void recordingSaved(const QUrl &fileUrl);
     void recordingFailed(const QString &message);
     void recordingCanceled(const QString &message);
     void recordedTimeChanged();

@@ -123,8 +123,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
-            Q_EMIT recordingSaved(m_recorder->output());
             setRecording(false);
+            Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
         }
     });
 }

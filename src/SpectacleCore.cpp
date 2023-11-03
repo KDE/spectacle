@@ -256,10 +256,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         Q_EMIT recordedTimeChanged();
         s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
     });
-    connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
-        const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
-        ViewerWindow::instance()->showSavedVideoMessage(url);
-        setCurrentVideo(url);
+    connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
+        // Always try to save. Needed to move recordings out of temp dir.
+        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl);
     });
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [](const QString &message) {
         qInfo() << message;
