@@ -196,6 +196,40 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     };
     connect(exportManager, &ExportManager::imageExported, this, onImageExported);
+    auto onVideoExported = [this](const ExportManager::Actions &actions, const QUrl &url) {
+        setCurrentVideo(url);
+
+        if (actions & ExportManager::UserAction && Settings::quitAfterSaveCopyExport()) {
+            deleteWindows();
+        } else {
+            showViewerIfGuiMode();
+            SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+        }
+
+        if (isGuiNull()) {
+            if (m_cliOptions[CommandLineOptions::NoNotify]) {
+                Q_EMIT allDone();
+            } else {
+                doNotify(ScreenCapture::Recording, actions, url);
+            }
+            return;
+        }
+
+        auto viewerWindow = ViewerWindow::instance();
+        if (!viewerWindow) {
+            return;
+        }
+
+        if (actions & ExportManager::AnySave) {
+            SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
+            if (actions & ExportManager::CopyPath) {
+                viewerWindow->showSavedAndLocationCopiedMessage(url);
+            } else {
+                viewerWindow->showSavedScreenshotMessage(url);
+            }
+        }
+    };
+    connect(exportManager, &ExportManager::videoExported, this, onVideoExported);
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
 
     connect(imagePlatform, &ImagePlatform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
