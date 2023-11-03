@@ -12,6 +12,7 @@
 #include <KLocalizedString>
 #include <QDebug>
 #include <QStandardPaths>
+#include <QTemporaryDir>
 #include <QUrl>
 
 using namespace Qt::StringLiterals;
@@ -19,6 +20,8 @@ using namespace Qt::StringLiterals;
 using Format = VideoPlatform::Format;
 using Formats = VideoPlatform::Formats;
 using Encoder = PipeWireBaseEncodedStream::Encoder;
+
+static std::unique_ptr<QTemporaryDir> s_tempDir;
 
 VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
 {
@@ -135,9 +138,22 @@ void VideoPlatformWayland::finishRecording()
 void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
 {
     if (!fileUrl.isValid()) {
+        // Try to use a temporary location so we can save it properly later like screenshots
+        if (!s_tempDir) {
+            s_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
+        }
         const auto format = static_cast<Format>(Settings::preferredVideoFormat());
         auto extension = VideoPlatform::extensionForFormat(format);
         auto output = ExportManager::instance()->suggestedVideoFilename(extension);
+        if (s_tempDir->isValid()) {
+            auto defaultSaveDirPath = Settings::videoSaveLocation().adjusted(QUrl::StripTrailingSlash).path();
+            if (!defaultSaveDirPath.isEmpty()) {
+                defaultSaveDirPath += u'/';
+            }
+            auto reducedPath = output.path();
+            reducedPath = reducedPath.right(reducedPath.size() - defaultSaveDirPath.size());
+            output.setPath(s_tempDir->path() + u'/' + reducedPath);
+        }
         m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(output.toLocalFile());
     } else {
