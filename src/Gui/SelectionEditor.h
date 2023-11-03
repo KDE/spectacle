@@ -60,10 +60,8 @@ public:
     Selection *selection() const;
 
     qreal devicePixelRatio() const;
-    void setDevicePixelRatio(qreal dpr);
 
     QRectF screensRect() const;
-    void setScreensRect(const QRectF &rect);
 
     qreal screensWidth() const;
     qreal screensHeight() const;
@@ -76,6 +74,8 @@ public:
     QPointF mousePosition() const;
 
     Q_SLOT bool acceptSelection(ExportManager::Actions actions = {});
+
+    void reset();
 
 Q_SIGNALS:
     void devicePixelRatioChanged();

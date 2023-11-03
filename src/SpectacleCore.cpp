@@ -141,23 +141,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         setVideoMode(false);
     });
     connect(imagePlatform, &ImagePlatform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
-        auto selectionEditor = SelectionEditor::instance();
-        auto selection = selectionEditor->selection();
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setImage(image);
-        selectionEditor->setScreensRect({{0,0}, m_annotationDocument->canvasSize()});
-        selectionEditor->setDevicePixelRatio(image.devicePixelRatio());
-
-        auto remember = Settings::rememberLastRectangularRegion();
-        if (remember == Settings::Never) {
-            selection->setRect({});
-        } else if (remember == Settings::Always) {
-            auto cropRegion = Settings::cropRegion();
-            if (cropRegion.width() < 0 || cropRegion.height() < 0) {
-                cropRegion = {0, 0, 0, 0};
-            }
-            selection->setRect(cropRegion);
-        }
+        SelectionEditor::instance()->reset();
 
         initCaptureWindows(CaptureWindow::Image);
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);

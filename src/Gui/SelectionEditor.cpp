@@ -91,8 +91,6 @@ public:
     QRectF handlesRect;
     // Radius of handles is either handleRadiusMouse or handleRadiusTouch
     qreal handleRadius = s_handleRadiusMouse;
-    qreal penWidth = 1;
-    qreal penOffset = 0.5;
 };
 
 SelectionEditorPrivate::SelectionEditorPrivate(SelectionEditor *q)
@@ -129,10 +127,10 @@ void SelectionEditorPrivate::updateHandlePositions()
         offsetTop = top - translatedScreensRect.top() - handleRadius;
         offsetTop = (offsetTop >= 0) ? 0 : offsetTop;
 
-        offsetRight = translatedScreensRect.right() - right - handleRadius + penWidth;
+        offsetRight = translatedScreensRect.right() - right - handleRadius + devicePixel;
         offsetRight = (offsetRight >= 0) ? 0 : offsetRight;
 
-        offsetBottom = translatedScreensRect.bottom() - bottom - handleRadius + penWidth;
+        offsetBottom = translatedScreensRect.bottom() - bottom - handleRadius + devicePixel;
         offsetBottom = (offsetBottom >= 0) ? 0 : offsetBottom;
 
         offsetLeft = left - translatedScreensRect.left() - handleRadius;
@@ -308,28 +306,9 @@ qreal SelectionEditor::devicePixelRatio() const
     return d->devicePixelRatio;
 }
 
-void SelectionEditor::setDevicePixelRatio(qreal dpr)
-{
-    if (d->devicePixelRatio == dpr) {
-        return;
-    }
-    d->devicePixelRatio = dpr;
-    d->devicePixel = 1 / dpr;
-    Q_EMIT devicePixelRatioChanged();
-}
-
 QRectF SelectionEditor::screensRect() const
 {
     return d->screensRect;
-}
-
-void SelectionEditor::setScreensRect(const QRectF &rect)
-{
-    if (d->screensRect == rect) {
-        return;
-    }
-    d->screensRect = rect;
-    Q_EMIT screensRectChanged();
 }
 
 qreal SelectionEditor::screensWidth() const
@@ -379,6 +358,33 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
     Q_EMIT accepted(selectionRect, actions);
     return true;
+}
+
+void SelectionEditor::reset()
+{
+    qreal dpr = qGuiApp->devicePixelRatio();
+    if (d->devicePixelRatio != dpr) {
+        d->devicePixelRatio = dpr;
+        d->devicePixel = 1 / dpr;
+        Q_EMIT devicePixelRatioChanged();
+    }
+
+    auto rect = G::logicalScreensRect();
+    if (d->screensRect != rect) {
+        d->screensRect = rect;
+        Q_EMIT screensRectChanged();
+    }
+
+    auto remember = Settings::rememberLastRectangularRegion();
+    if (remember == Settings::Never) {
+        d->selection->setRect({});
+    } else if (remember == Settings::Always) {
+        auto cropRegion = Settings::cropRegion();
+        if (cropRegion.width() < 0 || cropRegion.height() < 0) {
+            cropRegion = {0, 0, 0, 0};
+        }
+        d->selection->setRect(cropRegion);
+    }
 }
 
 bool SelectionEditor::eventFilter(QObject *watched, QEvent *event)
