@@ -114,7 +114,7 @@ private:
 
     void takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow);
     void setExportImage(const QImage &image);
-    void showViewerIfGuiMode();
+    void showViewerIfGuiMode(bool minimized = false);
     void doNotify(ScreenCapture type, const ExportManager::Actions &actions, const QUrl &saveUrl);
     ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(ImagePlatform::GrabMode grabMode) const;

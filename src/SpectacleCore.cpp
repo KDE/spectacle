@@ -694,16 +694,20 @@ void SpectacleCore::showErrorMessage(const QString &message)
     }
 }
 
-void SpectacleCore::showViewerIfGuiMode()
+void SpectacleCore::showViewerIfGuiMode(bool minimized)
 {
     if (m_startMode != StartMode::Gui) {
         return;
     }
     initViewerWindow(ViewerWindow::Image);
-    if (m_cliOptions[CommandLineOptions::EditExisting]) {
+    if (!m_videoMode && m_cliOptions[CommandLineOptions::EditExisting]) {
         ViewerWindow::instance()->setAnnotating(true);
     }
-    ViewerWindow::instance()->setVisible(true);
+    if (minimized) {
+        ViewerWindow::instance()->showMinimized();
+    } else {
+        ViewerWindow::instance()->setVisible(true);
+    }
 }
 
 void SpectacleCore::onScreenshotFailed()
