@@ -76,6 +76,7 @@ Q_SIGNALS:
 
     void errorMessage(const QString &str);
     void imageExported(const ExportManager::Actions &actions, const QUrl &url = {});
+    void videoExported(const ExportManager::Actions &actions, const QUrl &url = {});
 
 public Q_SLOTS:
 
@@ -84,6 +85,7 @@ public Q_SLOTS:
 
     void setWindowTitle(const QString &windowTitle);
     void exportImage(ExportManager::Actions actions, QUrl url = {});
+    void exportVideo(ExportManager::Actions actions, const QUrl &url = {});
     void doPrint(QPrinter *printer);
 
 private:
