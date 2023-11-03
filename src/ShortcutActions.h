@@ -24,6 +24,9 @@ public:
     QAction *activeWindowAction() const;
     QAction *regionAction() const;
     QAction *windowUnderCursorAction() const;
+    QAction *recordScreenAction() const;
+    QAction *recordWindowAction() const;
+    QAction *recordRegionAction() const;
     QAction *openWithoutScreenshotAction() const;
 
 private:

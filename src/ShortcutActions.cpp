@@ -30,6 +30,9 @@ ShortcutActions::ShortcutActions()
     // RectangularRegionScreenShot
     // FullScreenScreenShot
     // OpenWithoutScreenshot
+    // RecordScreen
+    // RecordWindow
+    // RecordRegion
     // _launch
     {
         QAction *action = new QAction(i18n("Launch Spectacle"), &mActions);
@@ -64,6 +67,24 @@ ShortcutActions::ShortcutActions()
     {
         QAction *action = new QAction(i18n("Capture Window Under Cursor"), &mActions);
         action->setObjectName(u"WindowUnderCursorScreenShot"_s);
+        action->setProperty("isConfigurationAction", true);
+        mActions.addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Record Screen"), &mActions);
+        action->setObjectName(u"RecordScreen"_s);
+        action->setProperty("isConfigurationAction", true);
+        mActions.addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Record Window"), &mActions);
+        action->setObjectName(u"RecordWindow"_s);
+        action->setProperty("isConfigurationAction", true);
+        mActions.addAction(action->objectName(), action);
+    }
+    {
+        QAction *action = new QAction(i18n("Record Rectangular Region"), &mActions);
+        action->setObjectName(u"RecordRegion"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
@@ -115,7 +136,22 @@ QAction *ShortcutActions::windowUnderCursorAction() const
     return mActions.action(5);
 }
 
-QAction *ShortcutActions::openWithoutScreenshotAction() const
+QAction *ShortcutActions::recordScreenAction() const
 {
     return mActions.action(6);
+}
+
+QAction *ShortcutActions::recordWindowAction() const
+{
+    return mActions.action(7);
+}
+
+QAction *ShortcutActions::recordRegionAction() const
+{
+    return mActions.action(8);
+}
+
+QAction *ShortcutActions::openWithoutScreenshotAction() const
+{
+    return mActions.action(9);
 }

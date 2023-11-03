@@ -196,7 +196,7 @@ Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle
 Icon=spectacle
 Type=Application
 StartupNotify=false
-Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;OpenWithoutScreenshot;
+Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;RectangularRegionScreenShot;WindowUnderCursorScreenShot;RecordRegion;RecordScreen;RecordWindow;OpenWithoutScreenshot;
 DBusActivatable=true
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
@@ -477,6 +477,21 @@ Name[zh_CN]=捕获光标所在窗口
 Name[zh_TW]=擷取游標下的視窗
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -u
 X-KDE-Shortcuts=Meta+Ctrl+Print
+
+[Desktop Action RecordRegion]
+Name=Record Rectangular Region
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R region
+X-KDE-Shortcuts=Meta+Shift+R,Meta+R
+
+[Desktop Action RecordScreen]
+Name=Record Screen
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R screen
+X-KDE-Shortcuts=Meta+Alt+R
+
+[Desktop Action RecordWindow]
+Name=Record Window
+Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R window
+X-KDE-Shortcuts=Meta+Ctrl+R
 
 [Desktop Action OpenWithoutScreenshot]
 Name=Launch without taking a screenshot

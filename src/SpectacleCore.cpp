@@ -212,6 +212,15 @@ SpectacleCore::SpectacleCore(QObject *parent)
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->regionAction(), Qt::META | Qt::SHIFT | Qt::Key_Print);
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->currentScreenAction(), QList<QKeySequence>());
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openWithoutScreenshotAction(), QList<QKeySequence>());
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->recordScreenAction(), Qt::META | Qt::ALT | Qt::Key_R);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->recordWindowAction(), Qt::META | Qt::CTRL | Qt::Key_R);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->recordRegionAction(),
+                                            QList<QKeySequence>{
+                                                // Similar to region screenshot
+                                                Qt::META | Qt::SHIFT | Qt::Key_R,
+                                                // Also use Meta+R for now
+                                                Qt::META | Qt::Key_R,
+                                            });
 
     // set up CaptureMode model
     m_captureModeModel = std::make_unique<CaptureModeModel>(imagePlatform->supportedGrabModes(), this);
@@ -1026,6 +1035,24 @@ void SpectacleCore::activateAction(const QString &actionName, const QVariant &pa
         takeNewScreenshot(CaptureModeModel::WindowUnderCursor, 0);
     } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
         takeNewScreenshot(CaptureModeModel::RectangularRegion, 0);
+    } else if (actionName == ShortcutActions::self()->recordRegionAction()->objectName()) {
+        if (!m_videoPlatform->isRecording()) {
+            startRecording(VideoPlatform::Region);
+        } else {
+            finishRecording();
+        }
+    } else if (actionName == ShortcutActions::self()->recordScreenAction()->objectName()) {
+        if (!m_videoPlatform->isRecording()) {
+            startRecording(VideoPlatform::Screen);
+        } else {
+            finishRecording();
+        }
+    } else if (actionName == ShortcutActions::self()->recordWindowAction()->objectName()) {
+        if (!m_videoPlatform->isRecording()) {
+            startRecording(VideoPlatform::Window);
+        } else {
+            finishRecording();
+        }
     } else if (actionName == ShortcutActions::self()->openWithoutScreenshotAction()->objectName()) {
         initGuiNoScreenshot();
     }
