@@ -150,7 +150,7 @@ QUrl ExportManager::getAutosaveFilename() const
     }
 }
 
-QString ExportManager::suggestedVideoFilename(const QString &extension) const
+QUrl ExportManager::suggestedVideoFilename(const QString &extension) const
 {
     const QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
@@ -159,7 +159,7 @@ QString ExportManager::suggestedVideoFilename(const QString &extension) const
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid() && fileNameUrl.isLocalFile()) {
-        return fileNameUrl.toLocalFile();
+        return fileNameUrl;
     } else {
         return {};
     }

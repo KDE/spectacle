@@ -11,6 +11,7 @@
 #include <QFlags>
 #include <QObject>
 #include <QRect>
+#include <QUrl>
 #include <variant>
 
 class QScreen;
@@ -100,7 +101,7 @@ protected:
     void timerEvent(QTimerEvent *event) override;
 
 public Q_SLOTS:
-    virtual void startRecording(const QString &path,
+    virtual void startRecording(const QUrl &fileUrl,
                                 VideoPlatform::RecordingMode recordingMode,
                                 const VideoPlatform::RecordingOption &option,
                                 bool includePointer) = 0;

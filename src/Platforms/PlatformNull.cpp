@@ -52,18 +52,18 @@ VideoPlatform::Formats VideoPlatformNull::supportedFormats() const
     return {};
 }
 
-void VideoPlatformNull::startRecording(const QString &path, RecordingMode mode, const RecordingOption &, bool withPointer)
+void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const RecordingOption &, bool withPointer)
 {
     setRecording(true);
-    m_path = path;
-    qDebug() << "start recording" << mode << "pointer:" << withPointer << path;
+    m_fileUrl = fileUrl;
+    qDebug() << "start recording" << mode << "pointer:" << withPointer << "url:" << fileUrl;
 }
 
 void VideoPlatformNull::finishRecording()
 {
     setRecording(false);
-    qDebug() << "finish recording" << m_path;
-    Q_EMIT recordingSaved(m_path);
+    qDebug() << "finish recording" << m_fileUrl;
+    Q_EMIT recordingSaved(m_fileUrl.toLocalFile());
 }
 
 

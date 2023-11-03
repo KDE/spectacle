@@ -5,6 +5,7 @@
 */
 
 #include "VideoPlatformWayland.h"
+#include "ExportManager.h"
 #include "Platforms/VideoPlatform.h"
 #include "screencasting.h"
 #include "settings.h"
@@ -71,11 +72,13 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
     return formats;
 }
 
-void VideoPlatformWayland::startRecording
-(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
+void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
 {
     if (isRecording()) {
         qWarning() << "Warning: Tried to start recording while already recording.";
+        return;
+    }
+    if (!fileUrl.isEmpty() && !fileUrl.isLocalFile()) {
         return;
     }
 
@@ -101,7 +104,7 @@ void VideoPlatformWayland::startRecording
         m_recorder->setActive(true);
         setRecording(true);
     });
-    m_recorder->setOutput(path);
+    setupOutput(fileUrl);
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
@@ -115,6 +118,19 @@ void VideoPlatformWayland::finishRecording()
 {
     Q_ASSERT(m_recorder);
     m_recorder->setActive(false);
+}
+
+void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
+{
+    if (!fileUrl.isValid()) {
+        const auto format = static_cast<Format>(Settings::preferredVideoFormat());
+        auto extension = VideoPlatform::extensionForFormat(format);
+        auto output = ExportManager::instance()->suggestedVideoFilename(extension);
+        m_recorder->setOutput(output.toLocalFile());
+    } else {
+        const auto &localFile = fileUrl.toLocalFile();
+        m_recorder->setOutput(fileUrl.toLocalFile());
+    }
 }
 
 #include "moc_VideoPlatformWayland.cpp"

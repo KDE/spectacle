@@ -25,13 +25,14 @@ public:
 
     RecordingModes supportedRecordingModes() const override;
     Formats supportedFormats() const override;
-    void startRecording(const QString &path, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) override;
+    void startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const RecordingOption &option, bool includePointer) override;
     void finishRecording() override;
 
     Format formatForEncoder(PipeWireBaseEncodedStream::Encoder encoder) const;
     PipeWireBaseEncodedStream::Encoder encoderForFormat(Format format) const;
 
 private:
+    void setupOutput(const QUrl &fileUrl);
     Screencasting *const m_screencasting;
     std::unique_ptr<PipeWireRecord> m_recorder;
 };

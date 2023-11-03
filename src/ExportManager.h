@@ -67,7 +67,7 @@ public:
      */
     QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameFormat()) const;
 
-    QString suggestedVideoFilename(const QString &extension) const;
+    QUrl suggestedVideoFilename(const QString &extension) const;
 
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
