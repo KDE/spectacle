@@ -261,6 +261,29 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ViewerWindow::instance()->showSavedVideoMessage(url);
         setCurrentVideo(url);
     });
+    connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [](const QString &message) {
+        qInfo() << message;
+    });
+    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this](const QString &message){
+        switch (m_startMode) {
+        case StartMode::Background:
+            if (!message.isEmpty()) {
+                showErrorMessage(message);
+            }
+            Q_EMIT allDone();
+            return;
+        case StartMode::DBus:
+            Q_EMIT dbusRecordingFailed();
+            Q_EMIT allDone();
+            return;
+        case StartMode::Gui:
+            if (!ViewerWindow::instance()) {
+                initViewerWindow(ViewerWindow::Dialog);
+            }
+            ViewerWindow::instance()->showScreenshotFailedMessage();
+            return;
+        }
+    });
 }
 
 SpectacleCore::~SpectacleCore() noexcept

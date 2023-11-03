@@ -110,6 +110,8 @@ public Q_SLOTS:
 Q_SIGNALS:
     void recordingChanged(bool isRecording);
     void recordingSaved(const QString &path);
+    void recordingFailed(const QString &message);
+    void recordingCanceled(const QString &message);
     void recordedTimeChanged();
 
 private:

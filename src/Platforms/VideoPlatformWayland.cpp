@@ -9,9 +9,12 @@
 #include "Platforms/VideoPlatform.h"
 #include "screencasting.h"
 #include "settings.h"
+#include <KLocalizedString>
 #include <QDebug>
 #include <QStandardPaths>
 #include <QUrl>
+
+using namespace Qt::StringLiterals;
 
 using Format = VideoPlatform::Format;
 using Formats = VideoPlatform::Formats;
@@ -74,11 +77,18 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
 
 void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
 {
+    if (recordingMode == NoRecordingModes) {
+        // We should avoid calling startRecording without a recording mode,
+        // but it shouldn't cause a runtime error if we can handle it gracefully.
+        Q_EMIT recordingCanceled(u"Recording canceled: No recording mode"_s);
+        return;
+    }
     if (isRecording()) {
         qWarning() << "Warning: Tried to start recording while already recording.";
         return;
     }
     if (!fileUrl.isEmpty() && !fileUrl.isLocalFile()) {
+        Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: File URL is not a local file"));
         return;
     }
 
@@ -103,6 +113,10 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         m_recorder->setNodeId(stream->nodeId());
         m_recorder->setActive(true);
         setRecording(true);
+    });
+    connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
+        setRecording(false);
+        Q_EMIT recordingFailed(error);
     });
     setupOutput(fileUrl);
 
