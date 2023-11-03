@@ -149,6 +149,7 @@ qt_add_qml_module(spectacle
     Gui/ShortcutsTextBox.qml
     Gui/SizeLabel.qml
     Gui/UndoRedoGroup.qml
+    Gui/VideoCaptureOverlay.qml
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
