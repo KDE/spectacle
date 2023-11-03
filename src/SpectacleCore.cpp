@@ -923,34 +923,16 @@ void SpectacleCore::unityLauncherUpdate(const QVariantMap &properties) const
     QDBusConnection::sessionBus().send(message);
 }
 
-void SpectacleCore::startRecordingScreen(QScreen *screen, bool withPointer)
+void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withPointer)
 {
-    Q_ASSERT(!m_videoPlatform->isRecording());
-    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
-    auto extension = VideoPlatform::extensionForFormat(format);
-    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
-    m_videoPlatform->startRecording(output, VideoPlatform::Screen, screen, withPointer);
+    if (m_videoPlatform->isRecording() || mode == VideoPlatform::NoRecordingModes) {
+        return;
+    }
+    m_lastRecordingMode = mode;
     setVideoMode(true);
-}
-
-void SpectacleCore::startRecordingRegion(const QRect &region, bool withPointer)
-{
-    Q_ASSERT(!m_videoPlatform->isRecording());
-    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
-    auto extension = VideoPlatform::extensionForFormat(format);
-    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
-    m_videoPlatform->startRecording(output, VideoPlatform::Region, region, withPointer);
-    setVideoMode(true);
-}
-
-void SpectacleCore::startRecordingWindow(const QString &uuid, bool withPointer)
-{
-    Q_ASSERT(!m_videoPlatform->isRecording());
-    auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
-    auto extension = VideoPlatform::extensionForFormat(format);
-    const QString output = ExportManager::instance()->suggestedVideoFilename(extension);
-    m_videoPlatform->startRecording(output, VideoPlatform::Window, uuid, withPointer);
-    setVideoMode(true);
+    if (mode == VideoPlatform::Region) {
+    } else {
+    }
 }
 
 void SpectacleCore::finishRecording()

@@ -23,7 +23,7 @@ ColumnLayout {
                 topPadding: Kirigami.Units.mediumSpacing
                 bottomPadding: Kirigami.Units.mediumSpacing
                 text: model.display
-                onClicked: SpectacleCore.recordingModeModel.startRecording(model.index, Settings.includePointer)
+                onClicked: SpectacleCore.startRecording(model.recordingMode, Settings.includePointer)
             }
         }
         Kirigami.Heading {
@@ -51,7 +51,7 @@ ColumnLayout {
         QQC.Button {
             Layout.fillWidth: true
             text: i18n("Finish recording")
-            onClicked: VideoPlatform.finishRecording()
+            onClicked: SpectacleCore.finishRecording()
         }
     }
     Item {

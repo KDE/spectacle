@@ -28,9 +28,10 @@ public:
     ~VideoPlatform() override = default;
 
     enum RecordingMode : char {
-        Screen = 0b001, //< records a specific output, provided its QScreen::name()
-        Window = 0b010, //< records a specific window, provided its uuid
-        Region = 0b100, //< records the provided region rectangle
+        NoRecordingModes = 0b000,
+        Screen =           0b001, //< records a specific output, provided its QScreen::name()
+        Window =           0b010, //< records a specific window, provided its uuid
+        Region =           0b100, //< records the provided region rectangle
     };
     Q_FLAG(RecordingMode)
     Q_DECLARE_FLAGS(RecordingModes, RecordingMode)

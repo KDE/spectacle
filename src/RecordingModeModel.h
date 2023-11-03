@@ -23,10 +23,9 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    Q_SCRIPTABLE void startRecording(int row, bool withPointer);
+    int indexOfRecordingMode(VideoPlatform::RecordingMode mode) const;
 
 Q_SIGNALS:
-    void captureModesChanged();
     void countChanged();
 
 private:

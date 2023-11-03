@@ -3,9 +3,6 @@
  */
 
 #include "RecordingModeModel.h"
-#include "ShortcutActions.h"
-#include "SpectacleCore.h"
-#include "Gui/SpectacleWindow.h"
 
 #include <KGlobalAccel>
 #include <KLocalizedString>
@@ -17,7 +14,6 @@
 #include <QDBusPendingReply>
 #include <QScreen>
 #include <qnamespace.h>
-#include <utility>
 
 using namespace Qt::StringLiterals;
 
@@ -29,20 +25,13 @@ RecordingModeModel::RecordingModeModel(VideoPlatform::RecordingModes modes, QObj
     m_roleNames[Qt::DisplayRole] = "display"_ba;
 
     if (modes & VideoPlatform::Region) {
-        m_data.append({VideoPlatform::Region, i18n("Workspace")}); // TODO: Rename to region when regions can be selected
+        m_data.append({VideoPlatform::Region, i18nc("@item recording mode", "Region")});
     }
-
     if (modes & VideoPlatform::Region) {
-        m_data.append({
-            VideoPlatform::Screen,
-            i18n("Selected Screen"),
-        });
+        m_data.append({VideoPlatform::Screen, i18nc("@item recording mode", "Screen")});
     }
     if (modes & VideoPlatform::Window) {
-        m_data.append({
-            VideoPlatform::Window,
-            i18n("Selected Window"),
-        });
+        m_data.append({VideoPlatform::Window, i18nc("@item recording mode", "Window")});
     }
 }
 
@@ -72,94 +61,16 @@ int RecordingModeModel::rowCount(const QModelIndex &parent) const
     return m_data.size();
 }
 
-static void minimizeIfWindowsIntersect(const QRectF &rect) {
-    const auto &windows = SpectacleWindow::instances();
-    for (const auto window : windows) {
-        if (rect.intersects(window->frameGeometry())) {
-            SpectacleWindow::setVisibilityForAll(QWindow::Minimized);
-            return;
-        }
-    }
-}
-
-void RecordingModeModel::startRecording(int row, bool withPointer)
+int RecordingModeModel::indexOfRecordingMode(VideoPlatform::RecordingMode mode) const
 {
-    switch (m_data[row].mode) {
-    case VideoPlatform::Screen: {
-        // We should probably come up with a better way of choosing outputs. This should be okay for now. #FLW
-        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                              u"/KWin"_s,
-                                                              u"org.kde.KWin"_s,
-                                                              u"queryWindowInfo"_s);
-
-        QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [withPointer, asyncReply](QDBusPendingCallWatcher *self) {
-            self->deleteLater();
-            if (!self->isValid()) {
-                qWarning() << "error when querying window for output" << self->error();
-                SpectacleCore::instance()->showErrorMessage(i18n("Failed to select output"));
-                return;
-            }
-
-            const QVariantMap data = asyncReply.value();
-            const QPoint top(data[u"x"_s].toDouble(), data[u"y"_s].toDouble());
-            const auto screens = qGuiApp->screens();
-            for (auto screen : screens) {
-                const auto &screenRect = screen->geometry();
-                if (screenRect.contains(top)) {
-                    minimizeIfWindowsIntersect(screenRect);
-                    SpectacleCore::instance()->startRecordingScreen(screen, withPointer);
-                    return;
-                }
-            }
-        });
-        break;
-    }
-    case VideoPlatform::Window: {
-        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                              u"/KWin"_s,
-                                                              u"org.kde.KWin"_s,
-                                                              u"queryWindowInfo"_s);
-
-        QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [withPointer](QDBusPendingCallWatcher *self) {
-            QDBusPendingReply<QVariantMap> reply = *self;
-            self->deleteLater();
-            if (!reply.isValid()) {
-                qWarning() << "error when querying window" << self->error();
-                SpectacleCore::instance()->showErrorMessage(i18n("Failed to select window"));
-                return;
-            }
-            const auto &data = reply.value();
-            // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
-            // which may not be the same as QWindow::frameGeometry() on Wayland.
-            // Hopefully this is good enough most of the time.
-            const QRectF pickedWindowRect = {
-                data[u"x"_s].toDouble(), data[u"y"_s].toDouble(),
-                data[u"width"_s].toDouble(), data[u"height"_s].toDouble(),
-            };
-            // Don't minimize if we're recording Spectacle.
-            if (data[u"desktopFile"_s].toString() != qGuiApp->desktopFileName()) {
-                minimizeIfWindowsIntersect(pickedWindowRect);
-            }
-            SpectacleCore::instance()->startRecordingWindow(data.value(u"uuid"_s).toString(), withPointer);
-        });
-        break;
-    }
-    case VideoPlatform::Region: {
-        // TODO: Ask user for the region
-        QRect region;
-        const auto screens = qGuiApp->screens();
-        for (auto screen : screens) {
-            region |= screen->geometry();
+    int finalIndex = -1;
+    for (int i = 0; i < m_data.length(); ++i) {
+        if (m_data[i].mode == mode) {
+            finalIndex = i;
+            break;
         }
-        minimizeIfWindowsIntersect(region);
-        SpectacleCore::instance()->startRecordingRegion(region, withPointer);
-        break;
     }
-    }
+    return finalIndex;
 }
 
 #include "moc_RecordingModeModel.cpp"

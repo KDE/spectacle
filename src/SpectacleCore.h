@@ -72,9 +72,7 @@ public:
 
     void syncExportImage();
 
-    void startRecordingWindow(const QString &uuid, bool withPointer);
-    void startRecordingRegion(const QRect &region, bool withPointer);
-    void startRecordingScreen(QScreen *screen, bool withPointer);
+    Q_INVOKABLE void startRecording(VideoPlatform::RecordingMode mode, bool withPointer = Settings::includePointer());
     Q_INVOKABLE void finishRecording();
     bool videoMode() const;
     QUrl currentVideo() const;
@@ -158,6 +156,7 @@ private:
     bool m_lastIncludePointer = false; // cli default value
     bool m_lastIncludeDecorations = true; // cli default value
     bool m_lastIncludeShadow = true; // cli default value
+    VideoPlatform::RecordingMode m_lastRecordingMode = VideoPlatform::NoRecordingModes;
     bool m_videoMode = false;
     QUrl m_currentVideo;
 };
