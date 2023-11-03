@@ -92,8 +92,6 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         return;
     }
 
-    auto format = static_cast<Format>(Settings::preferredVideoFormat());
-    m_recorder->setEncoder(encoderForFormat(format));
     Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Metadata : Screencasting::Hidden;
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
@@ -140,9 +138,12 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
         const auto format = static_cast<Format>(Settings::preferredVideoFormat());
         auto extension = VideoPlatform::extensionForFormat(format);
         auto output = ExportManager::instance()->suggestedVideoFilename(extension);
+        m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(output.toLocalFile());
     } else {
         const auto &localFile = fileUrl.toLocalFile();
+        auto extension = localFile.mid(localFile.lastIndexOf(u'.') + 1);
+        m_recorder->setEncoder(encoderForFormat(formatForExtension(extension)));
         m_recorder->setOutput(fileUrl.toLocalFile());
     }
 }

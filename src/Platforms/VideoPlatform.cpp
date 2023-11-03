@@ -57,4 +57,16 @@ QString VideoPlatform::extensionForFormat(Format format)
     }
 }
 
+VideoPlatform::Format VideoPlatform::formatForExtension(const QString &extension)
+{
+    auto lowercaseExtension = extension.toLower();
+    if (lowercaseExtension == "webm"_L1) {
+        return WebM_VP9;
+    } else if (lowercaseExtension == "mp4"_L1) {
+        return MP4_H264;
+    } else {
+        return NoFormat;
+    }
+}
+
 #include "moc_VideoPlatform.cpp"

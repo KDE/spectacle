@@ -93,6 +93,8 @@ public:
 
     static QString extensionForFormat(Format format);
 
+    static Format formatForExtension(const QString &extension);
+
     bool isRecording() const;
     qint64 recordedTime() const;
 
