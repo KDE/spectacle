@@ -122,14 +122,23 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // essential connections
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
-        deleteWindows();
-        m_annotationDocument->cropCanvas(rect);
-        syncExportImage();
         ExportManager::instance()->updateTimestamp();
-        showViewerIfGuiMode();
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-        const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
-        ExportManager::instance()->exportImage(exportActions, outputUrl());
+        if (m_videoMode) {
+            deleteWindows();
+            showViewerIfGuiMode(true);
+            bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
+            includePointer |= m_startMode != StartMode::Background && Settings::includePointer();
+            const auto &output = m_outputUrl.isLocalFile() ? m_outputUrl : QUrl();
+            m_videoPlatform->startRecording(output, VideoPlatform::Region, rect.toRect(), includePointer);
+        } else {
+            deleteWindows();
+            m_annotationDocument->cropCanvas(rect);
+            syncExportImage();
+            showViewerIfGuiMode();
+            SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+            const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
+            ExportManager::instance()->exportImage(exportActions, outputUrl());
+        }
     });
 
     connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
@@ -1047,6 +1056,10 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
     m_lastRecordingMode = mode;
     setVideoMode(true);
     if (mode == VideoPlatform::Region) {
+        SelectionEditor::instance()->reset();
+        initCaptureWindows(CaptureWindow::Video);
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     } else {
     }
 }
