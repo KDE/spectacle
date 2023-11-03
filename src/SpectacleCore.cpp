@@ -172,7 +172,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     Q_EMIT allDone();
                 }
             } else {
-                doNotify(actions, url);
+                doNotify(ScreenCapture::Screenshot, actions, url);
             }
             return;
         }
@@ -729,7 +729,7 @@ void SpectacleCore::onScreenshotFailed()
 
 static QList<KNotification *> notifications;
 
-void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl)
+void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &actions, const QUrl &saveUrl)
 {
     if (m_cliOptions[CommandLineOptions::NoNotify]) {
         return;
@@ -740,34 +740,51 @@ void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &
         m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
     }
 
-    auto notification = new KNotification(u"newScreenshotSaved"_s,
-                                          KNotification::CloseOnTimeout, this);
-    notifications.append(notification);
+    KNotification *notification = nullptr;
+    QString title;
+    if (type == ScreenCapture::Screenshot) {
+        notification = new KNotification(u"newScreenshotSaved"_s, KNotification::CloseOnTimeout, this);
+        int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
+        title = captureModeModel()->data(captureModeModel()->index(index), Qt::DisplayRole).toString();
+    } else {
+        notification = new KNotification(u"recordingSaved"_s, KNotification::CloseOnTimeout, this);
+        int index = m_recordingModeModel->indexOfRecordingMode(m_lastRecordingMode);
+        title = m_recordingModeModel->data(m_recordingModeModel->index(index), Qt::DisplayRole).toString();
+    }
+    notification->setTitle(title);
 
-    int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
-    auto captureModeLabel = captureModeModel()->data(captureModeModel()->index(index),
-                                                     Qt::DisplayRole);
-    notification->setTitle(captureModeLabel.toString());
+    notifications.append(notification);
 
     // a speaking message is prettier than a URL, special case for copy image/location to clipboard and the default pictures location
     const QString &saveDirPath = saveUrl.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path();
     const QString &saveFileName = saveUrl.fileName();
 
     using Action = ExportManager::Action;
-    if (actions & Action::AnySave && !saveFileName.isEmpty()) {
-        if (actions & Action::CopyPath) {
-            notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
-                                       saveFileName, saveDirPath));
-        } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
-            notification->setText(i18nc("Placeholder is filename",
-                                        "A screenshot was saved as '%1' to your Pictures folder.",
-                                        saveFileName));
-        } else {
-            notification->setText(i18n("A screenshot was saved as '%1' to '%2'.",
-                                       saveFileName, saveDirPath));
+    if (type == ScreenCapture::Screenshot) {
+        if (actions & Action::AnySave && !saveFileName.isEmpty()) {
+            if (actions & Action::CopyPath) {
+                notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+                                        saveFileName, saveDirPath));
+            } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
+                notification->setText(i18nc("Placeholder is filename",
+                                            "A screenshot was saved as '%1' to your Pictures folder.",
+                                            saveFileName));
+            } else {
+                notification->setText(i18n("A screenshot was saved as '%1' to '%2'.",
+                                        saveFileName, saveDirPath));
+            }
+        } else if (actions & Action::CopyImage) {
+            notification->setText(i18n("A screenshot was saved to your clipboard."));
         }
-    } else if (actions & Action::CopyImage) {
-        notification->setText(i18n("A screenshot was saved to your clipboard."));
+    } else if (type == ScreenCapture::Recording && actions & Action::AnySave && !saveFileName.isEmpty()) {
+        if (actions & Action::CopyPath) {
+            notification->setText(
+                i18n("A recording was saved as '%1' to '%2' and the file path of the recording has been saved to your clipboard.", saveFileName, saveDirPath));
+        } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)) {
+            notification->setText(i18nc("Placeholder is filename", "A recording was saved as '%1' to your Videos folder.", saveFileName));
+        } else {
+            notification->setText(i18n("A recording was saved as '%1' to '%2'.", saveFileName, saveDirPath));
+        }
     }
 
     if (!saveUrl.isEmpty()) {
@@ -777,23 +794,23 @@ void SpectacleCore::doNotify(const ExportManager::Actions &actions, const QUrl &
             auto job = new KIO::OpenUrlJob(saveUrl);
             job->start();
         };
-
-        auto annotate = [saveUrl]() {
-            QProcess newInstance;
-            newInstance.setProgram(QCoreApplication::applicationFilePath());
-            newInstance.setArguments({
-                CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance),
-                CommandLineOptions::toArgument(CommandLineOptions::self()->editExisting),
-                saveUrl.toLocalFile()
-            });
-            newInstance.startDetached();
-        };
-
         auto defaultAction = notification->addDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(defaultAction, &KNotificationAction::activated, this, open);
 
-        auto annotateAction = notification->addAction(i18n("Annotate"));
-        connect(annotateAction, &KNotificationAction::activated, this, annotate);
+        if (type == ScreenCapture::Screenshot) {
+            auto annotate = [saveUrl]() {
+                QProcess newInstance;
+                newInstance.setProgram(QCoreApplication::applicationFilePath());
+                newInstance.setArguments({
+                    CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance),
+                    CommandLineOptions::toArgument(CommandLineOptions::self()->editExisting),
+                    saveUrl.toLocalFile()
+                });
+                newInstance.startDetached();
+            };
+            auto annotateAction = notification->addAction(i18n("Annotate"));
+            connect(annotateAction, &KNotificationAction::activated, this, annotate);
+        }
     }
 
     connect(notification, &QObject::destroyed, this, [this](QObject *notification) {

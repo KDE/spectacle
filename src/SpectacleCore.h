@@ -93,7 +93,6 @@ public Q_SLOTS:
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
     void onScreenshotFailed();
-    void doNotify(const ExportManager::Actions &actions, const QUrl &saveUrl);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();
@@ -108,9 +107,15 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
+    enum class ScreenCapture {
+        Screenshot,
+        Recording,
+    };
+
     void takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow);
     void setExportImage(const QImage &image);
     void showViewerIfGuiMode();
+    void doNotify(ScreenCapture type, const ExportManager::Actions &actions, const QUrl &saveUrl);
     ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(ImagePlatform::GrabMode grabMode) const;
     bool isGuiNull() const;
