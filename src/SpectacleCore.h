@@ -102,6 +102,7 @@ Q_SIGNALS:
 
     void allDone();
     void dbusScreenshotFailed();
+    void dbusRecordingFailed();
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();

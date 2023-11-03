@@ -117,6 +117,51 @@
             </doc:doc>
         </method>
 
+        <method name="RecordRegion">
+            <arg name="includeMousePointer" direction="in" type="i">
+                <doc:doc>
+                    <doc:summary>Whether to include the mouse pointer in the recording. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a recording of a rectangular region.</doc:para>
+                    <doc:para>The user is prompted to select the region to capture. If Spectacle was started via D-Bus, it exits after the recording has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="RecordScreen">
+            <arg name="includeMousePointer" direction="in" type="i">
+                <doc:doc>
+                    <doc:summary>Whether to include the mouse pointer in the recording. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a recording of a screen.</doc:para>
+                    <doc:para>The user is prompted to select the screen to capture. If Spectacle was started via D-Bus, it exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
+        <method name="RecordWindow">
+            <arg name="includeMousePointer" direction="in" type="i">
+                <doc:doc>
+                    <doc:summary>Whether to include the mouse pointer in the recording. Depends on the user set option 'include mouse pointer' or the parameter sent via dbus.</doc:summary>
+                    <doc:para>Available parameters: -1 - uses the value set in the option 'include mouse pointer', 0 - doesn't include the mouse pointer, 1 - includes the mouse pointer</doc:para>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Takes a recording of a window.</doc:para>
+                    <doc:para>The user is prompted to select the window to capture. If Spectacle was started via D-Bus, it exits after the shot has been taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </method>
+
         <method name="OpenWithoutScreenshot">
             <doc:doc>
                 <doc:description>
@@ -141,6 +186,25 @@
             <doc:doc>
                 <doc:description>
                     <doc:para>Emitted if the screenshot capture failed.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </signal>
+        <signal name="RecordingTaken">
+            <arg name="fileName" direction="out" type="s">
+                <doc:doc>
+                    <doc:summary>The file name with which the recording was saved.</doc:summary>
+                </doc:doc>
+            </arg>
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Emitted if the recording was successfully taken.</doc:para>
+                </doc:description>
+            </doc:doc>
+        </signal>
+        <signal name="RecordingFailed">
+            <doc:doc>
+                <doc:description>
+                    <doc:para>Emitted if the recording failed.</doc:para>
                 </doc:description>
             </doc:doc>
         </signal>

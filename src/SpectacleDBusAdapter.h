@@ -25,10 +25,15 @@ public Q_SLOTS:
     Q_NOREPLY void ActiveWindow(int includeWindowDecorations, int includeMousePointer, int includeWindowShadow);
     Q_NOREPLY void WindowUnderCursor(int includeWindowDecorations, int includeMousePointer, int includeWindowShadow);
     Q_NOREPLY void RectangularRegion(int includeMousePointer);
+    Q_NOREPLY void RecordRegion(int includeMousePointer);
+    Q_NOREPLY void RecordScreen(int includeMousePointer);
+    Q_NOREPLY void RecordWindow(int includeMousePointer);
     Q_NOREPLY void OpenWithoutScreenshot();
 
 Q_SIGNALS:
 
     void ScreenshotTaken(const QString &fileName);
     void ScreenshotFailed();
+    void RecordingTaken(const QString &fileName);
+    void RecordingFailed();
 };
