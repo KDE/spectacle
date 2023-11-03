@@ -50,6 +50,7 @@
 #include <QQmlEngine>
 #include <QScopedPointer>
 #include <QScreen>
+#include <QSystemTrayIcon>
 #include <QTimer>
 #include <QtMath>
 #include <qobjectdefs.h>
@@ -58,6 +59,7 @@
 using namespace Qt::StringLiterals;
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
+static std::unique_ptr<QSystemTrayIcon> s_systemTrayIcon;
 
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
@@ -231,7 +233,20 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     });
 
-    connect(m_videoPlatform.get(), &VideoPlatform::recordedTimeChanged, this, &SpectacleCore::recordedTimeChanged);
+    s_systemTrayIcon = std::make_unique<QSystemTrayIcon>(QIcon::fromTheme(u"media-record-symbolic"_s));
+    auto systemTrayIcon = s_systemTrayIcon.get();
+    connect(systemTrayIcon, &QSystemTrayIcon::activated, systemTrayIcon, [](auto reason) {
+        if (reason == QSystemTrayIcon::Trigger) {
+            SpectacleCore::instance()->finishRecording();
+        }
+    });
+
+    auto videoPlatform = m_videoPlatform.get();
+    connect(videoPlatform, &VideoPlatform::recordingChanged, systemTrayIcon, &QSystemTrayIcon::setVisible);
+    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
+        Q_EMIT recordedTimeChanged();
+        s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
+    });
     connect(m_videoPlatform.get(), &VideoPlatform::recordingSaved, this, [this](const QString &path) {
         const QUrl url = QUrl::fromUserInput(path, {}, QUrl::AssumeLocalFile);
         ViewerWindow::instance()->showSavedVideoMessage(url);
