@@ -142,6 +142,7 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
         if (!s_tempDir) {
             s_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
         }
+        ExportManager::instance()->updateTimestamp();
         const auto format = static_cast<Format>(Settings::preferredVideoFormat());
         auto extension = VideoPlatform::extensionForFormat(format);
         auto output = ExportManager::instance()->suggestedVideoFilename(extension);
