@@ -638,7 +638,7 @@ void SpectacleCore::onScreenshotFailed()
         Q_EMIT allDone();
         return;
     case StartMode::DBus:
-        Q_EMIT grabFailed();
+        Q_EMIT dbusScreenshotFailed();
         Q_EMIT allDone();
         return;
     case StartMode::Gui:

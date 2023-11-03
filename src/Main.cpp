@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
     // create the dbus connections
     SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&spectacleCore);
-    QObject::connect(&spectacleCore, &SpectacleCore::grabFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    QObject::connect(&spectacleCore, &SpectacleCore::dbusScreenshotFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
     QObject::connect(ExportManager::instance(), &ExportManager::imageExported,
                      &spectacleCore, [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
         Q_UNUSED(actions)
