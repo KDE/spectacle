@@ -116,6 +116,9 @@ Q_SIGNALS:
     void recordingCanceled(const QString &message);
     void recordedTimeChanged();
 
+    /// Request a region from the platform agnostic selection editor
+    void regionRequested();
+
 private:
     QElapsedTimer m_elapsedTimer;
     QBasicTimer m_basicTimer;

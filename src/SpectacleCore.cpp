@@ -1061,6 +1061,8 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     } else {
+        const auto &output = m_outputUrl.isLocalFile() ? m_outputUrl : QUrl();
+        m_videoPlatform->startRecording(output, mode, {}, withPointer);
     }
 }
 

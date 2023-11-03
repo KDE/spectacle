@@ -10,7 +10,15 @@
 #include "screencasting.h"
 #include "settings.h"
 #include <KLocalizedString>
+#include <QGuiApplication>
+#include <QWindow>
+#include <QScreen>
 #include <QDebug>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QDBusReply>
 #include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QUrl>
@@ -50,6 +58,19 @@ PipeWireBaseEncodedStream::Encoder VideoPlatformWayland::encoderForFormat(Format
     return Encoder::NoEncoder;
 }
 
+static void minimizeIfWindowsIntersect(const QRectF &rect) {
+    if (rect.isEmpty()) {
+        return;
+    }
+    const auto &windows = qGuiApp->allWindows();
+    for (auto window : windows) {
+        if (rect.intersects(window->frameGeometry())
+            && window->isVisible() && window->visibility() != QWindow::Minimized) {
+            window->showMinimized();
+        }
+    }
+}
+
 VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     : VideoPlatform(parent)
     , m_screencasting(new Screencasting(this))
@@ -78,6 +99,18 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
     return formats;
 }
 
+static void setWindowInfo(const QVariantMap &data, QRectF &windowRect, bool &isSpectacle)
+{
+    // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
+    // which may not be the same as QWindow::frameGeometry() on Wayland.
+    // Hopefully this is good enough most of the time.
+    windowRect = {
+        data[u"x"_s].toDouble(), data[u"y"_s].toDouble(),
+        data[u"width"_s].toDouble(), data[u"height"_s].toDouble(),
+    };
+    isSpectacle = data[u"desktopFile"_s].toString() == qGuiApp->desktopFileName();
+}
+
 void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
 {
     if (recordingMode == NoRecordingModes) {
@@ -98,14 +131,55 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Metadata : Screencasting::Hidden;
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
-    case Screen:
-        stream = m_screencasting->createOutputStream(std::get<QScreen *>(option), mode);
+    case Screen: {
+        auto screen = std::get<QScreen *>(option);
+        if (!screen) {
+            selectAndRecord(fileUrl, recordingMode, includePointer);
+            return;
+        }
+        Q_ASSERT(screen != nullptr);
+        minimizeIfWindowsIntersect(screen->geometry());
+        stream = m_screencasting->createOutputStream(screen, mode);
         break;
-    case Window:
-        stream = m_screencasting->createWindowStream(std::get<QString>(option), mode);
+    }
+    case Window: {
+        auto window = std::get<QString>(option);
+        if (window.isEmpty()) {
+            selectAndRecord(fileUrl, recordingMode, includePointer);
+            return;
+        }
+        Q_ASSERT(!window.isEmpty());
+        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
+                                                                u"/KWin"_s,
+                                                                u"org.kde.KWin"_s,
+                                                                u"getWindowInfo"_s);
+        message.setArguments({window});
+        const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
+        const auto &data = reply.value();
+
+        QRectF windowRect;
+        bool isSpectacle = false;
+        if (reply.isValid()) {
+            setWindowInfo(data, windowRect, isSpectacle);
+            ExportManager::instance()->setWindowTitle(data[u"caption"_s].toString());
+        }
+
+        if (!windowRect.isEmpty() && !isSpectacle) {
+            minimizeIfWindowsIntersect(windowRect);
+        }
+        stream = m_screencasting->createWindowStream(window, mode);
         break;
-    case Region:
-        stream = m_screencasting->createRegionStream(std::get<QRect>(option), 1, mode);
+    }
+    case Region: {
+        auto region = std::get<QRect>(option);
+        if (region.isEmpty()) {
+            selectAndRecord(fileUrl, recordingMode, includePointer);
+            return;
+        }
+        minimizeIfWindowsIntersect(region);
+        // Should this always be 1? Trying to match the screen(s) DPR resulted in a black video.
+        qreal scaling = 1;
+        stream = m_screencasting->createRegionStream(region, scaling, mode);
         break;
     }
     default: break; // This shouldn't happen
@@ -165,6 +239,78 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
         m_recorder->setEncoder(encoderForFormat(formatForExtension(extension)));
         m_recorder->setOutput(fileUrl.toLocalFile());
     }
+}
+
+void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer)
+{
+    if (recordingMode == Region) {
+        Q_EMIT regionRequested();
+        return;
+    }
+
+    // We should probably come up with a better way of choosing outputs. This should be okay for now. #FLW
+    QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
+                                                          u"/KWin"_s,
+                                                          u"org.kde.KWin"_s,
+                                                          u"queryWindowInfo"_s);
+
+    QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
+    auto onFinished = [this, fileUrl, recordingMode, includePointer](QDBusPendingCallWatcher *self) {
+        QDBusPendingReply<QVariantMap> reply = *self;
+        self->deleteLater();
+        if (!reply.isValid()) {
+            const auto &error = self->error();
+            if (error.name() == u"org.kde.KWin.Error.UserCancel"_s) {
+                QString message;
+                if (recordingMode == Screen) {
+                    message = i18nc("@info:shell", "Screen recording canceled");
+                } else {
+                    message = i18nc("@info:shell", "Window recording canceled");
+                }
+                Q_EMIT recordingCanceled(message);
+            } else {
+                QString message;
+                if (recordingMode == Screen) {
+                    message = i18nc("@info:shell", "Failed to select screen: %1", error.message());
+                } else {
+                    message = i18nc("@info:shell", "Failed to select window: %1", error.message());
+                }
+                Q_EMIT recordingFailed(message);
+            }
+            return;
+        }
+        const auto &data = reply.value();
+        RecordingOption option;
+        if (recordingMode == Screen) {
+            QPoint pos = QCursor::pos();
+            // if (pos.isNull()) {
+            //     pos = {data[u"x"_s].toInt(), data[u"y"_s].toInt()};
+            // }
+            const auto &screens = qGuiApp->screens();
+            QScreen *screen = nullptr;
+            for (auto s : screens) {
+                if (s->geometry().contains(pos)) {
+                    screen = s;
+                    break;
+                }
+            }
+            if (!screen) {
+                Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to select screen: No screen contained the mouse cursor position"));
+                return;
+            }
+            option = screen;
+        } else {
+            const auto &windowId = data.value(u"uuid"_s).toString();
+            if (windowId.isEmpty()) {
+                Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to select window: No window found"));
+                return;
+            }
+            option = windowId;
+        }
+        startRecording(fileUrl, recordingMode, option, includePointer);
+    };
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, onFinished);
 }
 
 #include "moc_VideoPlatformWayland.cpp"

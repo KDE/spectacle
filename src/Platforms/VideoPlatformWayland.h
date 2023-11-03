@@ -33,6 +33,8 @@ public:
 
 private:
     void setupOutput(const QUrl &fileUrl);
+    void selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer);
+
     Screencasting *const m_screencasting;
     std::unique_ptr<PipeWireRecord> m_recorder;
 };
