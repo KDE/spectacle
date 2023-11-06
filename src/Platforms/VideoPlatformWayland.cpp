@@ -66,6 +66,9 @@ static void minimizeIfWindowsIntersect(const QRectF &rect) {
     for (auto window : windows) {
         if (rect.intersects(window->frameGeometry())
             && window->isVisible() && window->visibility() != QWindow::Minimized) {
+            if (window->visibility() == QWindow::FullScreen) {
+                window->setVisible(false);
+            }
             window->showMinimized();
         }
     }
