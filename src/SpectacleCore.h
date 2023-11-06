@@ -83,6 +83,8 @@ public:
 
     ExportManager::Actions autoExportActions() const;
 
+    void activateAction(const QString &actionName, const QVariant &parameter);
+
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
     void takeNewScreenshot(int captureMode = Settings::captureMode(),

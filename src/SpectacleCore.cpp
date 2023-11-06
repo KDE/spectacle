@@ -1000,4 +1000,22 @@ QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
     return KFormat().formatDuration(milliseconds, options);
 }
 
+void SpectacleCore::activateAction(const QString &actionName, const QVariant &parameter)
+{
+    Q_UNUSED(parameter)
+    if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
+        takeNewScreenshot(CaptureModeModel::AllScreens, 0);
+    } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
+        takeNewScreenshot(CaptureModeModel::CurrentScreen, 0);
+    } else if (actionName == ShortcutActions::self()->activeWindowAction()->objectName()) {
+        takeNewScreenshot(CaptureModeModel::ActiveWindow, 0);
+    } else if (actionName == ShortcutActions::self()->windowUnderCursorAction()->objectName()) {
+        takeNewScreenshot(CaptureModeModel::WindowUnderCursor, 0);
+    } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
+        takeNewScreenshot(CaptureModeModel::RectangularRegion, 0);
+    } else if (actionName == ShortcutActions::self()->openWithoutScreenshotAction()->objectName()) {
+        initGuiNoScreenshot();
+    }
+}
+
 #include "moc_SpectacleCore.cpp"

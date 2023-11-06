@@ -103,21 +103,7 @@ int main(int argc, char **argv)
     SpectacleCore spectacleCore;
 
     QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::activate);
-    QObject::connect(&service, &KDBusService::activateActionRequested, &spectacleCore, [&spectacleCore](const QString &actionName) {
-        if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
-            spectacleCore.takeNewScreenshot(CaptureModeModel::AllScreens, 0);
-        } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
-            spectacleCore.takeNewScreenshot(CaptureModeModel::CurrentScreen, 0);
-        } else if (actionName == ShortcutActions::self()->activeWindowAction()->objectName()) {
-            spectacleCore.takeNewScreenshot(CaptureModeModel::ActiveWindow, 0);
-        } else if (actionName == ShortcutActions::self()->windowUnderCursorAction()->objectName()) {
-            spectacleCore.takeNewScreenshot(CaptureModeModel::WindowUnderCursor, 0);
-        } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
-            spectacleCore.takeNewScreenshot(CaptureModeModel::RectangularRegion, 0);
-        } else if (actionName == ShortcutActions::self()->openWithoutScreenshotAction()->objectName()) {
-            spectacleCore.initGuiNoScreenshot();
-        }
-    });
+    QObject::connect(&service, &KDBusService::activateActionRequested, &spectacleCore, &SpectacleCore::activateAction);
 
     QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
     QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
