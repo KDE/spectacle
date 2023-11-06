@@ -211,6 +211,17 @@ void VideoPlatformWayland::finishRecording()
     m_recorder->setActive(false);
 }
 
+bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
+{
+    QDir dir(fileUrl.adjusted(QUrl::RemoveFilename).toLocalFile());
+    if (dir.exists() || dir.mkpath(u"."_s)) {
+        return true;
+    } else {
+        Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Unable to create folder (%1)", dir.path()));
+        return false;
+    }
+}
+
 void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
 {
     if (!fileUrl.isValid()) {
@@ -231,13 +242,19 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
             reducedPath = reducedPath.right(reducedPath.size() - defaultSaveDirPath.size());
             output.setPath(s_tempDir->path() + u'/' + reducedPath);
         }
+        if (!mkDirPath(output)) {
+            return;
+        }
         m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(output.toLocalFile());
     } else {
+        if (!mkDirPath(fileUrl)) {
+            return;
+        }
         const auto &localFile = fileUrl.toLocalFile();
         auto extension = localFile.mid(localFile.lastIndexOf(u'.') + 1);
         m_recorder->setEncoder(encoderForFormat(formatForExtension(extension)));
-        m_recorder->setOutput(fileUrl.toLocalFile());
+        m_recorder->setOutput(localFile);
     }
 }
 

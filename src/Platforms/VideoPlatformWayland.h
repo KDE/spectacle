@@ -32,6 +32,7 @@ public:
     PipeWireBaseEncodedStream::Encoder encoderForFormat(Format format) const;
 
 private:
+    bool mkDirPath(const QUrl &fileUrl);
     void setupOutput(const QUrl &fileUrl);
     void selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer);
 
