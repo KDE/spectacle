@@ -36,7 +36,6 @@ public:
     };
     Q_FLAG(RecordingMode)
     Q_DECLARE_FLAGS(RecordingModes, RecordingMode)
-    using RecordingOption = std::variant<QScreen *, QRect, QString>;
 
     /**
      * Video formats supported by this class's APIs.
@@ -105,7 +104,7 @@ protected:
 public Q_SLOTS:
     virtual void startRecording(const QUrl &fileUrl,
                                 VideoPlatform::RecordingMode recordingMode,
-                                const VideoPlatform::RecordingOption &option,
+                                const QVariant &option,
                                 bool includePointer) = 0;
     virtual void finishRecording() = 0;
 

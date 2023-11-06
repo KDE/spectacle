@@ -111,7 +111,7 @@ static void setWindowInfo(const QVariantMap &data, QRectF &windowRect, bool &isS
     isSpectacle = data[u"desktopFile"_s].toString() == qGuiApp->desktopFileName();
 }
 
-void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const RecordingOption &option, bool includePointer)
+void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariant &option, bool includePointer)
 {
     if (recordingMode == NoRecordingModes) {
         // We should avoid calling startRecording without a recording mode,
@@ -132,7 +132,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
     case Screen: {
-        auto screen = std::get<QScreen *>(option);
+        auto screen = option.value<QScreen *>();
         if (!screen) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
@@ -143,7 +143,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         break;
     }
     case Window: {
-        auto window = std::get<QString>(option);
+        auto window = option.toString();
         if (window.isEmpty()) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
@@ -171,7 +171,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         break;
     }
     case Region: {
-        auto region = std::get<QRect>(option);
+        auto region = option.toRect();
         if (region.isEmpty()) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
@@ -281,7 +281,7 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
             return;
         }
         const auto &data = reply.value();
-        RecordingOption option;
+        QVariant option;
         if (recordingMode == Screen) {
             QPoint pos = QCursor::pos();
             // if (pos.isNull()) {
@@ -299,7 +299,7 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
                 Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to select screen: No screen contained the mouse cursor position"));
                 return;
             }
-            option = screen;
+            option = QVariant::fromValue(screen);
         } else {
             const auto &windowId = data.value(u"uuid"_s).toString();
             if (windowId.isEmpty()) {
