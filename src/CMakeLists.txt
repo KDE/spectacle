@@ -104,6 +104,7 @@ target_link_libraries(spectacle PRIVATE
     KF6::KirigamiPlatform
     K::KPipeWireRecord
     Wayland::Client
+    LayerShellQt::Interface
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES

@@ -34,6 +34,8 @@
 #include <KNotification>
 #include <KWindowSystem>
 #include <KX11Extras>
+#include <LayerShellQt/Shell>
+#include <LayerShellQt/Window>
 
 #include <QApplication>
 #include <QClipboard>
@@ -124,8 +126,26 @@ SpectacleCore::SpectacleCore(QObject *parent)
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
         ExportManager::instance()->updateTimestamp();
         if (m_videoMode) {
-            deleteWindows();
-            showViewerIfGuiMode(true);
+            const auto captureWindows = CaptureWindow::instances();
+            SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+            for (auto captureWindow : captureWindows) {
+                // Destroy the QPlatformWindow so we can change the window behavior.
+                // The QPlatformWindow will be recreated when the window is shown again.
+                captureWindow->destroy();
+                captureWindow->setFlag(Qt::WindowTransparentForInput, true);
+                captureWindow->setFlag(Qt::WindowStaysOnTopHint, true);
+                if (auto window = LayerShellQt::Window::get(captureWindow)) {
+                    using namespace LayerShellQt;
+                    window->setCloseOnDismissed(true);
+                    window->setLayer(Window::LayerOverlay);
+                    auto anchors = Window::Anchors::fromInt(Window::AnchorTop | Window::AnchorBottom | Window::AnchorLeft | Window::AnchorRight);
+                    window->setAnchors(anchors);
+                    window->setKeyboardInteractivity(Window::KeyboardInteractivityNone);
+                }
+            }
+            SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+            // deleteWindows();
+            // showViewerIfGuiMode(true);
             bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
             includePointer |= m_startMode != StartMode::Background && Settings::includePointer();
             const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
@@ -294,7 +314,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged, systemTrayIcon, &QSystemTrayIcon::setVisible);
+    connect(videoPlatform, &VideoPlatform::recordingChanged,
+            systemTrayIcon, [this](bool isRecording){
+        s_systemTrayIcon->setVisible(isRecording);
+        if (!isRecording) {
+            m_captureWindows.clear();
+        }
+    });
     connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
         Q_EMIT recordedTimeChanged();
         s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
@@ -1009,6 +1035,10 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
 {
     deleteWindows();
+
+    if (mode == CaptureWindow::Video) {
+        LayerShellQt::Shell::useLayerShell;
+    }
 
     // Allow the window to be transparent. Used for video recording UI.
     // It has to be set before creating the window.

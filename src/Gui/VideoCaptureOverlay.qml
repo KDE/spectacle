@@ -19,11 +19,24 @@ MouseArea {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     anchors.fill: parent
+    enabled: !VideoPlatform.isRecording
 
     component Overlay: Rectangle {
         color: Settings.useLightMaskColor ? "white" : "black"
-        opacity: 0.5
+        opacity: if (VideoPlatform.isRecording) {
+            return 0
+        } else if (Selection.empty) {
+            return 0.25
+        } else {
+            return 0.5
+        }
         LayoutMirroring.enabled: false
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.OutCubic
+            }
+        }
     }
     Overlay { // top / full overlay when nothing selected
         id: topOverlay
@@ -31,17 +44,6 @@ MouseArea {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: selectionRectangle.visible ? selectionRectangle.top : parent.bottom
-        opacity: if (Selection.empty) {
-            return 0.25
-        } else {
-            return 0.5
-        }
-        Behavior on opacity {
-            NumberAnimation {
-                duration: Kirigami.Units.longDuration
-                easing.type: Easing.OutCubic
-            }
-        }
     }
     Overlay { // bottom
         id: bottomOverlay
@@ -75,8 +77,9 @@ MouseArea {
         color: "transparent"
         border.color: palette.highlight
         border.width: contextWindow.dprRound(1)
-        visible: !Selection.empty && G.rectIntersects(Qt.rect(x,y,width,height),
-                                                      Qt.rect(0,0,parent.width, parent.height))
+        visible: !Selection.empty
+            && !VideoPlatform.isRecording
+            && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         x: Selection.x - border.width - root.viewportRect.x
         y: Selection.y - border.width - root.viewportRect.y
         width: Selection.width + border.width * 2
@@ -86,13 +89,23 @@ MouseArea {
         LayoutMirroring.childrenInherit: true
     }
 
+    SelectionBackground {
+        visible: VideoPlatform.isRecording
+        strokeWidth: selectionRectangle.border.width
+        // We need to be a bit careful about staying out of the recorded area
+        x: dprRound(Math.floor(Selection.x - strokeWidth - root.viewportRect.x))
+        y: dprRound(Math.floor(Selection.y - strokeWidth - root.viewportRect.y))
+        width: dprRound(Math.ceil(Selection.width + strokeWidth * 2))
+        height: dprRound(Math.ceil(Selection.height + strokeWidth * 2))
+    }
+
     Item {
         x: -root.viewportRect.x
         y: -root.viewportRect.y
         enabled: selectionRectangle.enabled
+        visible: !VideoPlatform.isRecording
         component Handle: Rectangle {
             visible: enabled && selectionRectangle.visible
-                && !VideoPlatform.isRecording
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
             color: palette.highlight
@@ -136,6 +149,7 @@ MouseArea {
     }
 
     Item { // separate item because it needs to be above the stuff defined above
+        visible: !VideoPlatform.isRecording
         width: SelectionEditor.screensRect.width
         height: SelectionEditor.screensRect.height
         x: -root.viewportRect.x
