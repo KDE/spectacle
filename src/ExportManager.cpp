@@ -584,62 +584,67 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
     }
 }
 
-void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &url)
+void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inputUrl, QUrl outputUrl)
 {
-    const auto &localFile = url.toLocalFile();
-    const auto &fileName = url.fileName();
-    if ((fileName.isEmpty() || !QFileInfo::exists(localFile)) && actions & (Save | SaveAs)) {
-        Q_EMIT errorMessage(i18nc("@info:shell","Failed to export recording: URL must be an existing local file"));
+    // input can be empty or nonexistent, but not if we're saving
+    const auto &inputFile = inputUrl.toLocalFile();
+    const auto &inputName = inputUrl.fileName();
+    if ((inputName.isEmpty() || !QFileInfo::exists(inputFile)) && actions & (Save | SaveAs)) {
+        Q_EMIT errorMessage(i18nc("@info:shell","Failed to export video: Temporary file URL must be an existing local file"));
         return;
     }
 
-    bool success = false;
-    QUrl newUrl;
-    const auto &tempPath = QDir::tempPath();
+    // output can be empty, but not invalid or with an empty name when not empty and saving
+    const auto &outputName = outputUrl.fileName();
+    if (!outputUrl.isEmpty() && (!outputUrl.isValid() || outputName.isEmpty()) && actions & (Save | SaveAs)) {
+        Q_EMIT errorMessage(i18nc("@info:shell","Failed to export video: Output file URL must be a valid URL with a file name"));
+        return;
+    }
+
     if (actions & SaveAs) {
         QMimeDatabase mimeDatabase;
         // construct the file name
-        const auto &extension = fileName.mid(fileName.lastIndexOf(u'.'));
-        const auto &mimetype = mimeDatabase.mimeTypeForFile(fileName, QMimeDatabase::MatchExtension).name();
+        const auto &extension = inputName.mid(inputName.lastIndexOf(u'.'));
+        const auto &mimetype = mimeDatabase.mimeTypeForFile(inputName, QMimeDatabase::MatchExtension).name();
         QFileDialog dialog;
         dialog.setAcceptMode(QFileDialog::AcceptSave);
         dialog.setFileMode(QFileDialog::AnyFile);
-        if (localFile.startsWith(tempPath)) {
+        const auto outputDir = outputUrl.adjusted(QUrl::RemoveFilename);
+        if (!outputDir.isValid()) {
             dialog.setDirectoryUrl(Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename));
         } else {
-            dialog.setDirectoryUrl(url.adjusted(QUrl::RemoveFilename));
+            dialog.setDirectoryUrl(outputUrl);
         }
         dialog.setDefaultSuffix(extension);
-        dialog.selectFile(fileName);
+        dialog.selectFile(!outputName.isEmpty() ? outputName : inputName);
         dialog.setMimeTypeFilters({mimetype});
         dialog.selectMimeTypeFilter(mimetype);
 
         // launch the dialog
         const bool accepted = dialog.exec() == QDialog::Accepted;
-        if (accepted && !dialog.selectedUrls().isEmpty()) {
-            newUrl = dialog.selectedUrls().constFirst();
+        const auto &selectedUrl = dialog.selectedUrls().value(0, QUrl());
+        if (accepted && !selectedUrl.fileName().isEmpty()) {
+            outputUrl = selectedUrl;
         }
-        actions.setFlag(SaveAs, accepted && newUrl.isValid());
+        actions.setFlag(SaveAs, accepted && outputUrl.isValid());
     }
 
-    bool moveFile = actions & AnySave;
-    if (!newUrl.isValid()) {
-        if (moveFile && localFile.startsWith(tempPath)) {
-            // Cut out /tmp/Spectacle.XXXXXX/
-            // It's not the actual path, but the length is what matters.
-            const auto &oldDirPath = tempPath + u"/Spectacle.XXXXXX/";
-            const auto &reducedPath = localFile.right(localFile.size() - oldDirPath.size());
-            newUrl = Settings::videoSaveLocation().adjusted(QUrl::StripTrailingSlash);
-            newUrl.setPath(newUrl.path() + u'/' + reducedPath);
+    if (!outputUrl.isValid()) {
+        if (actions & AnySave && temporaryDir() && inputFile.startsWith(m_tempDir->path())) {
+            // Use the temp url without the temp dir as the new url, if necessary
+            const auto &tempDirPath = m_tempDir->path() + u'/';
+            const auto &reducedPath = inputFile.right(inputFile.size() - tempDirPath.size());
+            outputUrl = Settings::videoSaveLocation().adjusted(QUrl::StripTrailingSlash);
+            outputUrl.setPath(outputUrl.path() + u'/' + reducedPath);
         } else {
-            moveFile = false;
-            actions.setFlag(Save, false);
-            actions.setFlag(SaveAs, false);
+            outputUrl = inputUrl;
         }
     }
 
-    if (moveFile) {
-        const auto saveDirUrl = newUrl.adjusted(QUrl::RemoveFilename);
+    // When the input is the output, it should still count as a successful save
+    bool saved = inputUrl == outputUrl;
+    if (actions & AnySave && !saved) {
+        const auto &saveDirUrl = outputUrl.adjusted(QUrl::RemoveFilename);
         bool saveDirExists = false;
         if (saveDirUrl.isLocalFile()) {
             saveDirExists = QFileInfo::exists(saveDirUrl.toLocalFile());
@@ -654,36 +659,32 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &url)
             saveDirExists = mkpathJob->error() == KJob::NoError;
         }
         if (saveDirExists) {
-            auto fileMoveJob = KIO::file_move(url, newUrl);
+            auto fileMoveJob = KIO::file_move(inputUrl, outputUrl);
             fileMoveJob->exec();
-            moveFile = success = fileMoveJob->error() == KJob::NoError;
+            saved = fileMoveJob->error() == KJob::NoError;
         }
-        if (!success) {
-            actions.setFlag(Save, false);
-            actions.setFlag(SaveAs, false);
-            Q_EMIT errorMessage(i18nc("@info", "Unable to save recording. Could not move file to location: %1", newUrl.toString()));
+        if (!saved) {
+            actions.setFlag(AnySave, false);
+            Q_EMIT errorMessage(i18nc("@info", "Unable to save recording. Could not move file to location: %1", outputUrl.toString()));
             return;
         }
     }
 
+    bool copiedPath = false;
     if (actions & CopyPath
         // This behavior has no relation to the setting in the config UI,
         // but it was added to solve this feature request:
         // https://bugs.kde.org/show_bug.cgi?id=357423
-        || (moveFile && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
+        || (saved && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
         // will be deleted for us by the platform's clipboard manager.
         auto data = new QMimeData();
-        if (moveFile) {
-            data->setText(newUrl.isLocalFile() ? newUrl.toLocalFile() : newUrl.toString());
-        } else {
-            data->setText(url.isLocalFile() ? url.toLocalFile() : url.toString());
-        }
+        data->setText(outputUrl.isLocalFile() ? outputUrl.toLocalFile() : outputUrl.toString());
         KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-        success = true;
+        copiedPath = true;
     }
 
-    if (success) {
-        Q_EMIT videoExported(actions, moveFile ? newUrl : url);
+    if (saved || copiedPath) {
+        Q_EMIT videoExported(actions, outputUrl);
     }
 }
 

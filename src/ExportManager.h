@@ -90,7 +90,7 @@ public Q_SLOTS:
 
     void setWindowTitle(const QString &windowTitle);
     void exportImage(ExportManager::Actions actions, QUrl url = {});
-    void exportVideo(ExportManager::Actions actions, const QUrl &url = {});
+    void exportVideo(ExportManager::Actions actions, const QUrl &inputUrl, QUrl outputUrl = {});
     void doPrint(QPrinter *printer);
 
 private:

@@ -301,7 +301,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
     connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
         // Always try to save. Needed to move recordings out of temp dir.
-        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl);
+        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
     });
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [](const QString &message) {
         qInfo() << message;
