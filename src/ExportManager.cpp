@@ -629,8 +629,9 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         actions.setFlag(SaveAs, accepted && outputUrl.isValid());
     }
 
+    bool inputFromTemp = temporaryDir() && inputFile.startsWith(m_tempDir->path());
     if (!outputUrl.isValid()) {
-        if (actions & AnySave && temporaryDir() && inputFile.startsWith(m_tempDir->path())) {
+        if (actions & AnySave && inputFromTemp) {
             // Use the temp url without the temp dir as the new url, if necessary
             const auto &tempDirPath = m_tempDir->path() + u'/';
             const auto &reducedPath = inputFile.right(inputFile.size() - tempDirPath.size());
@@ -659,9 +660,15 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
             saveDirExists = mkpathJob->error() == KJob::NoError;
         }
         if (saveDirExists) {
-            auto fileMoveJob = KIO::file_move(inputUrl, outputUrl);
-            fileMoveJob->exec();
-            saved = fileMoveJob->error() == KJob::NoError;
+            if (inputFromTemp) {
+                auto fileMoveJob = KIO::file_move(inputUrl, outputUrl);
+                fileMoveJob->exec();
+                saved = fileMoveJob->error() == KJob::NoError;
+            } else {
+                auto fileCopyJob = KIO::file_copy(inputUrl, outputUrl);
+                fileCopyJob->exec();
+                saved = fileCopyJob->error() == KJob::NoError;
+            }
         }
         if (!saved) {
             actions.setFlag(AnySave, false);
