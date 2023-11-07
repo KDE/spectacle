@@ -25,8 +25,8 @@ EmptyPage {
     // Used in ViewerWindow::setMode()
     readonly property real minimumWidth: Math.max(
         header.implicitWidth,
-
-        annotationsToolBar.implicitWidth + separator.implicitWidth + footerLoader.implicitWidth
+        annotationsToolBar.implicitWidth + separator.implicitWidth + footerLoader.implicitWidth,
+        captureOptionsLoader.implicitWidth + 480 // leave some room for content if necessary
     )
     readonly property real minimumHeight: header.implicitHeight
         + Math.max(annotationsToolBar.implicitHeight,
