@@ -239,6 +239,10 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
         m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(tempUrl.toLocalFile());
     } else {
+        if (!fileUrl.isLocalFile()) {
+            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
+            return;
+        }
         if (!mkDirPath(fileUrl)) {
             return;
         }
