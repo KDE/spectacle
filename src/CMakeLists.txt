@@ -139,6 +139,7 @@ qt_add_qml_module(spectacle
     Gui/MainToolBarContents.qml
     Gui/QmlUtils.qml
     Gui/RecordOptions.qml
+    Gui/RecordingFailedMessage.qml
     Gui/RecordingView.qml
     Gui/SavedAndCopiedMessage.qml
     Gui/SavedAndLocationCopied.qml
