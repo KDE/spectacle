@@ -9,7 +9,6 @@ import org.kde.kirigami as Kirigami
 InlineMessage {
     id: root
     type: Kirigami.MessageType.Information
-    property bool video: false
     text: (video ? i18n("The video was saved as <a href=\"%1\">%2</a>",
                 messageArgument,
                 contextWindow.baseFileName(messageArgument)) : i18n("The screenshot was saved as <a href=\"%1\">%2</a>",

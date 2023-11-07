@@ -146,22 +146,10 @@ void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariantMap &
     rootItem->setProperty("inlineMessageData", properties);
 }
 
-void ViewerWindow::showSavedScreenshotMessage(const QUrl &messageArgument)
+void ViewerWindow::showSavedMessage(const QUrl &messageArgument, bool video)
 {
     showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
-                      {
-                          {"messageArgument"_L1, messageArgument},
-                          {"video"_L1, false},
-                      });
-}
-
-void ViewerWindow::showSavedVideoMessage(const QUrl &messageArgument)
-{
-    showInlineMessage("%1/Gui/SavedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
-                      {
-                          {"messageArgument"_L1, messageArgument},
-                          {"video"_L1, true},
-                      });
+                      {{"messageArgument"_L1, messageArgument}, {"video"_L1, video}});
 }
 
 void ViewerWindow::showSavedAndCopiedMessage(const QUrl &messageArgument)
@@ -170,10 +158,10 @@ void ViewerWindow::showSavedAndCopiedMessage(const QUrl &messageArgument)
                       {{"messageArgument"_L1, messageArgument}});
 }
 
-void ViewerWindow::showSavedAndLocationCopiedMessage(const QUrl &messageArgument)
+void ViewerWindow::showSavedAndLocationCopiedMessage(const QUrl &messageArgument, bool video)
 {
     showInlineMessage("%1/Gui/SavedAndLocationCopied.qml"_L1.arg(SPECTACLE_QML_PATH),
-                      {{"messageArgument"_L1, messageArgument}});
+                      {{"messageArgument"_L1, messageArgument}, {"video"_L1, video}});
 }
 
 void ViewerWindow::showCopiedMessage()
@@ -184,6 +172,12 @@ void ViewerWindow::showCopiedMessage()
 void ViewerWindow::showScreenshotFailedMessage()
 {
     showInlineMessage("%1/Gui/ScreenshotFailedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {});
+}
+
+void ViewerWindow::showRecordingFailedMessage(const QString &messageArgument)
+{
+    showInlineMessage("%1/Gui/RecordingFailedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                      {{"messageArgument"_L1, messageArgument}});
 }
 
 void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageArgument)
@@ -199,6 +193,25 @@ void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageA
     } else {
         showInlineMessage("%1/Gui/SharedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
                           {{"messageArgument"_L1, messageArgument}});
+        if (!messageArgument.isEmpty()) {
+            QApplication::clipboard()->setText(messageArgument);
+        }
+    }
+}
+
+void ViewerWindow::showVideoSharedMessage(int errorCode, const QString &messageArgument)
+{
+    if (errorCode == 1 || status() != QQuickView::Ready) {
+        // errorCode == 1 means the user cancelled the sharing
+        return;
+    }
+
+    if (errorCode) {
+        showInlineMessage("%1/Gui/ShareErrorMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                          {{"messageArgument"_L1, messageArgument}, {"video"_L1, true}});
+    } else {
+        showInlineMessage("%1/Gui/SharedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                          {{"messageArgument"_L1, messageArgument}, {"video"_L1, true}});
         if (!messageArgument.isEmpty()) {
             QApplication::clipboard()->setText(messageArgument);
         }

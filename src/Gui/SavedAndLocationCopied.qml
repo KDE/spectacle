@@ -5,6 +5,11 @@
 import QtQuick
 
 SavedMessage {
-    text: i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard",
-               messageArgument, contextWindow.baseFileName(messageArgument))
+    text: if (video) {
+        return i18n("The video has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard",
+                    messageArgument, contextWindow.baseFileName(messageArgument))
+    } else {
+        return i18n("The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard",
+                    messageArgument, contextWindow.baseFileName(messageArgument))
+    }
 }

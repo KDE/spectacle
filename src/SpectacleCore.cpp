@@ -218,7 +218,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             } else if (actions & ExportManager::CopyPath) {
                 viewerWindow->showSavedAndLocationCopiedMessage(url);
             } else {
-                viewerWindow->showSavedScreenshotMessage(url);
+                viewerWindow->showSavedMessage(url);
             }
         } else if (actions & ExportManager::CopyImage) {
             viewerWindow->showCopiedMessage();
@@ -252,9 +252,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (actions & ExportManager::AnySave) {
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
             if (actions & ExportManager::CopyPath) {
-                viewerWindow->showSavedAndLocationCopiedMessage(url);
+                viewerWindow->showSavedAndLocationCopiedMessage(url, true);
             } else {
-                viewerWindow->showSavedScreenshotMessage(url);
+                viewerWindow->showSavedMessage(url, true);
             }
         }
     };
@@ -350,7 +350,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             if (!ViewerWindow::instance()) {
                 initViewerWindow(ViewerWindow::Dialog);
             }
-            ViewerWindow::instance()->showScreenshotFailedMessage();
+            ViewerWindow::instance()->showRecordingFailedMessage(message);
             return;
         }
     });

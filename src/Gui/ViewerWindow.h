@@ -33,12 +33,12 @@ public:
 
     static ViewerWindow *instance();
 
-    void showSavedScreenshotMessage(const QUrl &messageArgument);
-    void showSavedVideoMessage(const QUrl &messageArgument);
+    void showSavedMessage(const QUrl &messageArgument, bool video = false);
     void showSavedAndCopiedMessage(const QUrl &messageArgument);
-    void showSavedAndLocationCopiedMessage(const QUrl &messageArgument);
+    void showSavedAndLocationCopiedMessage(const QUrl &messageArgument, bool video = false);
     void showCopiedMessage();
     void showScreenshotFailedMessage();
+    void showRecordingFailedMessage(const QString &messageArgument);
 
     Q_INVOKABLE void startDrag();
 
@@ -56,6 +56,7 @@ private:
     Q_SLOT void updateMinimumSize();
     Q_SLOT void showInlineMessage(const QString &source, const QVariantMap &properties);
     Q_SLOT void showImageSharedMessage(int errorCode, const QString &messageArgument);
+    void showVideoSharedMessage(int errorCode, const QString &messageArgument);
 
     void setBackgroundColorRole(QPalette::ColorRole role);
 

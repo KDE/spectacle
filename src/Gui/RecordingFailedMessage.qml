@@ -5,13 +5,11 @@
 import QtQuick
 import QtQuick.Controls as QQC
 import org.kde.kirigami as Kirigami
-import org.kde.spectacle.private
 
 InlineMessage {
     type: Kirigami.MessageType.Error
-    text: video ?
-        i18nc("@info", "There was a problem sharing the video: %1", messageArgument)
-        : i18nc("@info", "There was a problem sharing the image: %1", messageArgument)
+    text: messageArgument
+    video: true
     // Not using showCloseButton because it toggles visible on this item,
     // making it harder to use with loaders.
     actions: Kirigami.Action {
