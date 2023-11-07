@@ -225,11 +225,4 @@ MouseArea {
             }
         }
     }
-
-    // FIXME: This shortcut only exists here because spectacle interprets "Ctrl+Shift+,"
-    // as "Ctrl+Shift+<" for some reason unless we use a QML Shortcut.
-    Shortcut {
-        sequences: [StandardKey.Preferences]
-        onActivated: contextWindow.showPreferencesDialog()
-    }
 }
