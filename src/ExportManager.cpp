@@ -51,10 +51,7 @@ ExportManager::ExportManager(QObject *parent)
     });
 }
 
-ExportManager::~ExportManager()
-{
-    delete m_tempDir;
-}
+ExportManager::~ExportManager() = default;
 
 ExportManager *ExportManager::instance()
 {
@@ -163,6 +160,14 @@ QUrl ExportManager::suggestedVideoFilename(const QString &extension) const
     } else {
         return {};
     }
+}
+
+const QTemporaryDir *ExportManager::temporaryDir()
+{
+    if (!m_tempDir) {
+        m_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
+    }
+    return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
 }
 
 QString ExportManager::truncatedFilename(QString const &filename) const
@@ -410,10 +415,8 @@ QUrl ExportManager::tempSave()
         }
     }
 
-    if (!m_tempDir) {
-        m_tempDir = new QTemporaryDir(QDir::tempPath() + QDir::separator() + u"Spectacle.XXXXXX"_s);
-    }
-    if (m_tempDir && m_tempDir->isValid()) {
+    auto tempDir = this->temporaryDir();
+    if (tempDir) {
         // create the temporary file itself with normal file name and also unique one for this session
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,

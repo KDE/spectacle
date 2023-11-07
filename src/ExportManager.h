@@ -69,6 +69,8 @@ public:
 
     QUrl suggestedVideoFilename(const QString &extension) const;
 
+    const QTemporaryDir *temporaryDir();
+
     static const QMap<QString, KLocalizedString> filenamePlaceholders;
 
 Q_SIGNALS:
@@ -103,7 +105,7 @@ private:
     QImage m_saveImage;
     QDateTime m_timestamp;
     QUrl m_tempFile;
-    QTemporaryDir *m_tempDir = nullptr;
+    std::unique_ptr<QTemporaryDir> m_tempDir;
     QList<QUrl> m_usedTempFileNames;
     QString m_windowTitle;
 };
