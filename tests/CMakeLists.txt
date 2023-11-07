@@ -6,6 +6,7 @@ SET(FILENAME_TEST_SRCS
     ../src/ShortcutActions.cpp
     ../src/ExportManager.cpp
     ../src/Platforms/ImagePlatform.cpp
+    ../src/Platforms/VideoPlatform.cpp
 )
 
 

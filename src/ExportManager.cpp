@@ -147,19 +147,25 @@ QUrl ExportManager::getAutosaveFilename() const
     }
 }
 
-QUrl ExportManager::suggestedVideoFilename(const QString &extension) const
+QUrl ExportManager::tempVideoUrl()
 {
-    const QString baseDir = defaultVideoSaveLocation();
+    const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
+    auto extension = VideoPlatform::extensionForFormat(format);
+    QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
     const QString filename = formattedFilename(Settings::videoFilenameFormat());
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
+    QString filepath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
 
-    const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
-    if (fileNameUrl.isValid() && fileNameUrl.isLocalFile()) {
-        return fileNameUrl;
-    } else {
+    auto tempDir = temporaryDir();
+    if (!tempDir) {
         return {};
     }
+
+    if (!baseDir.isEmpty() && !baseDir.endsWith(u'/')) {
+        baseDir += u'/';
+    }
+    filepath = tempDir->path() + u'/' + filepath.right(filepath.size() - baseDir.size());
+    return QUrl::fromLocalFile(filepath);
 }
 
 const QTemporaryDir *ExportManager::temporaryDir()

@@ -67,7 +67,10 @@ public:
      */
     QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameFormat()) const;
 
-    QUrl suggestedVideoFilename(const QString &extension) const;
+    /**
+     * The URL to record a video with before it is exported.
+     */
+    QUrl tempVideoUrl();
 
     const QTemporaryDir *temporaryDir();
 

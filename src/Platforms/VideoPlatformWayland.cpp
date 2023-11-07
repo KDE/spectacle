@@ -29,8 +29,6 @@ using Format = VideoPlatform::Format;
 using Formats = VideoPlatform::Formats;
 using Encoder = PipeWireBaseEncodedStream::Encoder;
 
-static std::unique_ptr<QTemporaryDir> s_tempDir;
-
 VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
 {
     switch (encoder) {
@@ -228,28 +226,18 @@ bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
 void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
 {
     if (!fileUrl.isValid()) {
-        // Try to use a temporary location so we can save it properly later like screenshots
-        if (!s_tempDir) {
-            s_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
-        }
         ExportManager::instance()->updateTimestamp();
         const auto format = static_cast<Format>(Settings::preferredVideoFormat());
-        auto extension = VideoPlatform::extensionForFormat(format);
-        auto output = ExportManager::instance()->suggestedVideoFilename(extension);
-        if (s_tempDir->isValid()) {
-            auto defaultSaveDirPath = Settings::videoSaveLocation().adjusted(QUrl::StripTrailingSlash).path();
-            if (!defaultSaveDirPath.isEmpty()) {
-                defaultSaveDirPath += u'/';
-            }
-            auto reducedPath = output.path();
-            reducedPath = reducedPath.right(reducedPath.size() - defaultSaveDirPath.size());
-            output.setPath(s_tempDir->path() + u'/' + reducedPath);
+        auto tempUrl = ExportManager::instance()->tempVideoUrl();
+        if (!tempUrl.isLocalFile()) {
+            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
+            return;
         }
-        if (!mkDirPath(output)) {
+        if (!mkDirPath(tempUrl)) {
             return;
         }
         m_recorder->setEncoder(encoderForFormat(format));
-        m_recorder->setOutput(output.toLocalFile());
+        m_recorder->setOutput(tempUrl.toLocalFile());
     } else {
         if (!mkDirPath(fileUrl)) {
             return;
