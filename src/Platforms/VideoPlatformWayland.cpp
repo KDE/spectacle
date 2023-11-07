@@ -255,8 +255,7 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
             return;
         }
         const auto &localFile = fileUrl.toLocalFile();
-        auto extension = localFile.mid(localFile.lastIndexOf(u'.') + 1);
-        m_recorder->setEncoder(encoderForFormat(formatForExtension(extension)));
+        m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
         m_recorder->setOutput(localFile);
     }
 }

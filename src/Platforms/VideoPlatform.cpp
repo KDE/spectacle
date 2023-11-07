@@ -69,4 +69,9 @@ VideoPlatform::Format VideoPlatform::formatForExtension(const QString &extension
     }
 }
 
+VideoPlatform::Format VideoPlatform::formatForPath(const QString &path)
+{
+    return formatForExtension(path.mid(path.lastIndexOf(u'.') + 1));
+}
+
 #include "moc_VideoPlatform.cpp"
