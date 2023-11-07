@@ -48,6 +48,8 @@ ButtonGrid {
         }
     }
 
+    // We don't show this in video mode because the video is already automatically saved.
+    // and you can't edit the video.
     ToolButton {
         visible: !SpectacleCore.videoMode
         icon.name: "document-save"
@@ -56,12 +58,13 @@ ButtonGrid {
     }
 
     ToolButton {
-        visible: !SpectacleCore.videoMode
         icon.name: "document-save-as"
         text: i18n("Save As...")
         onClicked: contextWindow.saveAs()
     }
 
+    // We don't show this in video mode because you can't copy raw video to the clipboard,
+    // or at least not elegantly.
     ToolButton {
         visible: !SpectacleCore.videoMode
         icon.name: "edit-copy"
@@ -69,7 +72,17 @@ ButtonGrid {
         onClicked: contextWindow.copyImage()
     }
 
+    // We only show this in video mode to save space in screenshot mode
     ToolButton {
+        visible: SpectacleCore.videoMode
+        icon.name: "edit-copy-path"
+        text: i18n("Copy Location")
+        onClicked: contextWindow.copyLocation()
+    }
+
+    ToolButton {
+        // FIXME: make export menu actually work with videos
+        visible: !SpectacleCore.videoMode
         icon.name: "document-share"
         text: i18n("Export")
         down: pressed || ExportMenu.visible

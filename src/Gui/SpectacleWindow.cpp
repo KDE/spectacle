@@ -254,6 +254,11 @@ void SpectacleWindow::save()
 
 void SpectacleWindow::saveAs()
 {
+    if (SpectacleCore::instance()->videoMode()) {
+        ExportManager::instance()->exportVideo(ExportManager::SaveAs | ExportManager::UserAction,
+                                               SpectacleCore::instance()->currentVideo());
+        return;
+    }
     SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction);
 }
@@ -266,6 +271,11 @@ void SpectacleWindow::copyImage()
 
 void SpectacleWindow::copyLocation()
 {
+    if (SpectacleCore::instance()->videoMode()) {
+        ExportManager::instance()->exportVideo(ExportManager::CopyPath | ExportManager::UserAction,
+                                               SpectacleCore::instance()->currentVideo());
+        return;
+    }
     SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::CopyPath | ExportManager::UserAction);
 }
