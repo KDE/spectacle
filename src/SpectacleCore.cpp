@@ -905,13 +905,13 @@ ExportManager::Actions SpectacleCore::autoExportActions() const
 {
     using Action = ExportManager::Action;
     using Option = CommandLineOptions::Option;
-    bool save = m_startMode != StartMode::Gui && m_cliOptions[Option::Output];
-    bool copyImage = m_cliOptions[Option::CopyImage];
+    bool save = (m_startMode != StartMode::Gui && m_cliOptions[Option::Output]) || m_videoMode;
+    bool copyImage = m_cliOptions[Option::CopyImage] && !m_videoMode;
     bool copyPath = m_cliOptions[Option::CopyPath];
     ExportManager::Actions actions;
     if (m_startMode != StartMode::Background) {
         save |= Settings::autoSaveImage();
-        copyImage |= Settings::clipboardGroup() == Settings::PostScreenshotCopyImage;
+        copyImage |= Settings::clipboardGroup() == Settings::PostScreenshotCopyImage && !m_videoMode;
         copyPath |= Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation;
     }
     if (m_startMode == StartMode::Gui) {
