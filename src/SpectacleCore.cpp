@@ -332,7 +332,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
         if (m_startMode != StartMode::Gui) {
             Q_EMIT allDone();
+            return;
         }
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
     });
     connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this](const QString &message){
         switch (m_startMode) {
