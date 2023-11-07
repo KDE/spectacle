@@ -128,7 +128,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             showViewerIfGuiMode(true);
             bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
             includePointer |= m_startMode != StartMode::Background && Settings::includePointer();
-            const auto &output = m_outputUrl.isLocalFile() ? m_outputUrl : QUrl();
+            const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
             m_videoPlatform->startRecording(output, VideoPlatform::Region, rect.toRect(), includePointer);
         } else {
             deleteWindows();
@@ -1061,7 +1061,7 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     } else {
-        const auto &output = m_outputUrl.isLocalFile() ? m_outputUrl : QUrl();
+        const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
         m_videoPlatform->startRecording(output, mode, {}, withPointer);
     }
 }
@@ -1098,6 +1098,11 @@ void SpectacleCore::setCurrentVideo(const QUrl &currentVideo)
     }
     m_currentVideo = currentVideo;
     Q_EMIT currentVideoChanged(currentVideo);
+}
+
+QUrl SpectacleCore::videoOutputUrl() const
+{
+    return VideoPlatform::formatForPath(m_outputUrl.path()) != VideoPlatform::NoFormat ? m_outputUrl : QUrl();
 }
 
 QString SpectacleCore::recordedTime() const

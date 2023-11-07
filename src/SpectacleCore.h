@@ -126,6 +126,7 @@ private:
     void unityLauncherUpdate(const QVariantMap &properties) const;
     void setVideoMode(bool enabled);
     void setCurrentVideo(const QUrl &currentVideo);
+    QUrl videoOutputUrl() const;
 
     static SpectacleCore *s_self;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
