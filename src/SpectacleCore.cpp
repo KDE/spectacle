@@ -329,7 +329,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
     });
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
-        if (m_startMode != StartMode::Gui) {
+        if (m_startMode != StartMode::Gui || isGuiNull()) {
             Q_EMIT allDone();
             return;
         }
