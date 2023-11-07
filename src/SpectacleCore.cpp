@@ -255,6 +255,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
             } else {
                 viewerWindow->showSavedMessage(url, true);
             }
+        } else if (actions & ExportManager::CopyPath) {
+            viewerWindow->showLocationCopiedMessage();
         }
     };
     connect(exportManager, &ExportManager::videoExported, this, onVideoExported);

@@ -135,6 +135,7 @@ qt_add_qml_module(spectacle
     Gui/ImageCaptureOverlay.qml
     Gui/ImageView.qml
     Gui/InlineMessage.qml
+    Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
     Gui/MainToolBarContents.qml
     Gui/QmlUtils.qml
