@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:51+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2023-10-22 17:21+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -92,42 +92,51 @@ msgstr "திரையின் ஓர் செவ்வக பரப்பை
 
 #: src/CommandLineOptions.h:46
 #, kde-format
+msgid ""
+"Record the screen using the given mode. Modes:\n"
+"- r, region\n"
+"- s, screen\n"
+"- w, window"
+msgstr ""
+
+#: src/CommandLineOptions.h:54
+#, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "திரைப்பிடிப்பை எடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI பயன்முறை தொடங்கு (இயல்பிருப்பு)"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "GUI-ஐ காட்டாமல் திரையின் படமெடுத்து வெளியேறு"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-Activation பயன்முறையில் துவக்கு"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "பின்னணி பயன்முறையில், திரைப்பிடிப்பு எடுக்கப்படும்போது அறிவிக்காதே"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "பின்னணி பயன்முறையில், குறிப்பிட்ட கோப்பிற்கு படத்தை சேமி"
 
-#: src/CommandLineOptions.h:71
+#: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "பின்னணி பயன்முறையில், படமெடுக்கும் முன் காத்திருக்க வேண்டிய தாமதம் (மில்லிநொடிகளில்)"
 
-#: src/CommandLineOptions.h:76
+#: src/CommandLineOptions.h:84
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -136,51 +145,51 @@ msgstr ""
 "பின்னணி பயன்முறையில், -o என்ற விருப்பம் பயன்படுத்தப்படாத பட்சத்தில் திரைப்பிடிப்பை "
 "பிடிப்புப்பலகைக்கு நகலெடு"
 
-#: src/CommandLineOptions.h:80
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "பின்னணி பயன்முறையில், திரைப்பிடிப்பு கோப்பின் இருப்பிடத்தை பிடிப்புப்பலகைக்கு நகலெடு"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "திரைப்பிடிப்பை எடுக்கும் முன்னர் க்ளிக்கிற்காக காத்திருக்கவும். கால தாமதம் "
 "பொருட்படுத்தப்படாது"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus-இல் பதிவு செய்யாமல் ஸ்பெக்டக்குல்லின் புதிய அமர்வை திறக்கும்"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "பின்னணி பயன்முறையில், திரைப்பிடிப்பில் சுட்டிக்குறியை உட்படுத்து"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "பின்னணி பயன்முறையில், சாளர விளிம்புகளை உட்படுத்தாதே"
 
-#: src/CommandLineOptions.h:98
+#: src/CommandLineOptions.h:106
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "பின்னணி பயன்முறையில், சாளர விளிம்புகளை உட்படுத்தாதே"
 
-#: src/CommandLineOptions.h:101
+#: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ஏற்கனவேயுள்ள திரைப்பிடிப்பை திறந்து திருத்து"
 
-#: src/ExportManager.cpp:331
+#: src/ExportManager.cpp:342
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-ஆல் படத்தை கோப்புக்கு எழுத முடியவில்லை: %1"
 
-#: src/ExportManager.cpp:346
+#: src/ExportManager.cpp:357
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -190,12 +199,12 @@ msgstr ""
 "அடைவை உருவாக்குதல் தோல்வியடைந்ததால் திரைப்பிடிப்பை சேமிக்க முடியவில்லை:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:356
+#: src/ExportManager.cpp:367
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. கோப்புக்கு எழுதுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:376
+#: src/ExportManager.cpp:387
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,34 +214,55 @@ msgstr ""
 "தொலை அடைவை உருவாக்குதல் தோல்வியடைந்ததால் திரைப்பிடிப்பை சேமிக்க முடியவில்லை:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:387 src/ExportManager.cpp:437
+#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. தற்காலிக உள்ளமை கோப்புக்கு எழுதுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:406
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "படத்தை சேமிக்க முடியவில்லை. தொலை முகவரிக்கு கோப்பை பதிவேற்றுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:444
+#: src/ExportManager.cpp:453
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "திரைப்பிடிப்பை சேமிக்க முடியாது. சேமிக்க வேண்டிய கோப்புப்பெயர் செல்லுபடியாகாதது."
 
-#: src/ExportManager.cpp:488
+#: src/ExportManager.cpp:497
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "காலியான திரைப்பிடிப்பு படத்தை சேமிக்க முடியாது."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Temporary file URL must be an existing local file"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Output file URL must be a valid URL with a file name"
+msgstr ""
+
+#: src/ExportManager.cpp:668
+#, fuzzy, kde-format
+#| msgid "Unable to save image. Could not upload file to remote location."
+msgctxt "@info"
+msgid "Unable to save recording. Could not move file to location: %1"
+msgstr "படத்தை சேமிக்க முடியவில்லை. தொலை முகவரிக்கு கோப்பை பதிவேற்றுவதில் சிக்கல்."
+
+#: src/ExportManager.cpp:696
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "அச்சிடுதல் தோல்வியடைந்தது. அச்சுப்பொறியை துவக்க முடியவில்லை."
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:712
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -240,7 +270,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "ஆண்டு (4 எண்கள்)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:713
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -248,7 +278,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "ஆண்டு (2 எண்கள்)"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -256,7 +286,7 @@ msgctxt ""
 msgid "Month"
 msgstr "மாதம்"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:715
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +294,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "மாதம் (வட்டார மொழியில் குறுகிய பெயர்)"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +302,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "மாதம் (வட்டார மொழியில் நெடும் பெயர்)"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:717
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,7 +310,7 @@ msgctxt ""
 msgid "Day"
 msgstr "நாள்"
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:718
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -288,7 +318,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "மணி"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -296,7 +326,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "நிமிடம்"
 
-#: src/ExportManager.cpp:607
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -304,7 +334,7 @@ msgctxt ""
 msgid "Second"
 msgstr "நொடி"
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -312,7 +342,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "கால மண்டலம்"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +350,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "சாளரத்தின் தலைப்பு"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -328,7 +358,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "தொடர்வரிசையான எண்ணிக்கை"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1547,72 +1577,166 @@ msgstr ""
 "டீ.யீ. பிளாஸ்மாவில் ஸ்பெக்டக்குலைப் பயன்படுத்துங்கள், அல்லது வேறு திரைப்பிடிப்பு செயலியைப் "
 "பயன்படுத்துங்கள்."
 
-#: src/RecordingModeModel.cpp:32
+#: src/Platforms/VideoPlatformWayland.cpp:128
 #, kde-format
-msgid "Workspace"
-msgstr "பணிமேடை"
+msgctxt "@info:shell"
+msgid "Failed to record: File URL is not a local file"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:38
+#: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
-msgid "Selected Screen"
-msgstr "தேர்ந்தெடுத்துள்ள திரை"
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:44
+#: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
-msgid "Selected Window"
-msgstr "தேர்ந்தெடுத்துள்ள சாளரம்"
+msgctxt "@info:shell"
+msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:101
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
-msgid "Failed to select output"
-msgstr "வெளியீட்டை தேர்ந்தெடுப்பது தோல்வியடைந்தது"
+msgctxt "@info:shell"
+msgid "Failed to record: Output file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:132
+#: src/Platforms/VideoPlatformWayland.cpp:278
+#, fuzzy, kde-format
+#| msgid "New screen recording"
+msgctxt "@info:shell"
+msgid "Screen recording canceled"
+msgstr "புதிய திரைப்பதிவு"
+
+#: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
-msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Window recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:286
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select screen: %1"
 msgstr "சாளரத்தை தேர்ந்தெடுப்பது தோல்வியடைந்தது"
 
-#: src/ShortcutActions.cpp:35
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: %1"
+msgstr "சாளரத்தை தேர்ந்தெடுப்பது தோல்வியடைந்தது"
+
+#: src/Platforms/VideoPlatformWayland.cpp:310
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select screen: No screen contained the mouse cursor position"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:317
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: No window found"
+msgstr "சாளரத்தை தேர்ந்தெடுப்பது தோல்வியடைந்தது"
+
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Region"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:31
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@item recording mode"
+msgid "Screen"
+msgstr "திரைப்பிடிப்பு"
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
+msgctxt "@item recording mode"
+msgid "Window"
+msgstr "சாளரத்தின் தலைப்பு"
+
+#: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
 msgstr "ஸ்பெக்டக்குலை திற"
 
-#: src/ShortcutActions.cpp:41
+#: src/ShortcutActions.cpp:44
 #, kde-format
 msgid "Capture Entire Desktop"
 msgstr "முழு பணிமேடையின் படமெடு"
 
-#: src/ShortcutActions.cpp:47
+#: src/ShortcutActions.cpp:50
 #, kde-format
 msgid "Capture Current Monitor"
 msgstr "தற்போதைய திரையின் படமெடு"
 
-#: src/ShortcutActions.cpp:53
+#: src/ShortcutActions.cpp:56
 #, kde-format
 msgid "Capture Active Window"
 msgstr "செயலில் உள்ள சாளரத்தின் படமெடு"
 
-#: src/ShortcutActions.cpp:59
+#: src/ShortcutActions.cpp:62
 #, kde-format
 msgid "Capture Rectangular Region"
 msgstr "செவ்வக பரப்பளவை படமெடு"
 
-#: src/ShortcutActions.cpp:65
+#: src/ShortcutActions.cpp:68
 #, kde-format
 msgid "Capture Window Under Cursor"
 msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடு"
 
-#: src/ShortcutActions.cpp:71
+#: src/ShortcutActions.cpp:74
+#, fuzzy, kde-format
+#| msgid "Selected Screen"
+msgid "Record Screen"
+msgstr "தேர்ந்தெடுத்துள்ள திரை"
+
+#: src/ShortcutActions.cpp:80
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid "Record Window"
+msgstr "திரைப்பதிவு"
+
+#: src/ShortcutActions.cpp:86
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Record Rectangular Region"
+msgstr "செவ்வக பரப்பளவு"
+
+#: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:651
+#: src/SpectacleCore.cpp:300
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Spectacle is recording: %1\n"
+"Click to finish recording"
+msgstr ""
+
+#: src/SpectacleCore.cpp:569
+#, kde-format
+msgctxt "@info:shell"
+msgid "%1 is not a valid mode for --record"
+msgstr ""
+
+#: src/SpectacleCore.cpp:760
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:812
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1621,29 +1745,55 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:816
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:823
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:828
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgid ""
+"A recording was saved as '%1' to '%2' and the file path of the recording has "
+"been saved to your clipboard."
+msgstr ""
+"ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
+"இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
+
+#: src/SpectacleCore.cpp:830
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "Placeholder is filename"
+msgid "A recording was saved as '%1' to your Videos folder."
+msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
+
+#: src/SpectacleCore.cpp:832
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgid "A recording was saved as '%1' to '%2'."
+msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
+
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"
@@ -1660,6 +1810,15 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
+#~ msgid "Workspace"
+#~ msgstr "பணிமேடை"
+
+#~ msgid "Selected Window"
+#~ msgstr "தேர்ந்தெடுத்துள்ள சாளரம்"
+
+#~ msgid "Failed to select output"
+#~ msgstr "வெளியீட்டை தேர்ந்தெடுப்பது தோல்வியடைந்தது"
+
 #~ msgctxt "@label:listbox"
 #~ msgid "Video format:"
 #~ msgstr "நிகழ்பட கோப்புவடிவம்:"
@@ -1672,9 +1831,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "File format for saved screen recordings"
 #~ msgstr "சேமிக்கப்படும் திரைப்பதிவுகளுக்கான கோப்புவடிவம்"
-
-#~ msgid "New screen recording"
-#~ msgstr "புதிய திரைப்பதிவு"
 
 #~ msgid "On Click"
 #~ msgstr "க்ளிக் செய்யும்போது"

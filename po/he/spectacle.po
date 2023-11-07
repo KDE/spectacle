@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:51+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2023-10-24 08:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -91,41 +91,50 @@ msgstr "צילום אזור מרובע מהמסך"
 
 #: src/CommandLineOptions.h:46
 #, kde-format
+msgid ""
+"Record the screen using the given mode. Modes:\n"
+"- r, region\n"
+"- s, screen\n"
+"- w, window"
+msgstr ""
+
+#: src/CommandLineOptions.h:54
+#, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "להפעיל את Spectacle מבלי לצלם"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "הפעלה במצב ממשק חזותי (ברירת־מחדל)"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "לצלם את המסך ולצאת מבלי להציג את החלון החזותי"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "הפעלה במצב תפעול דרך D-Bus"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "במצב רקע, לא להקפיץ התראה כשהמסך מצולם"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "במצב רקע, לשמור את התמונה לקובץ מסוים"
 
-#: src/CommandLineOptions.h:71
+#: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "במצב רקע, להשהות בטרם הצילום (במילישניות)"
 
-#: src/CommandLineOptions.h:76
+#: src/CommandLineOptions.h:84
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -134,47 +143,47 @@ msgstr ""
 "במצב רקע, להעתיק את תמונת צילום המסך ללוח הגזירים, אלא אם כן נעשה שימוש גם "
 "ב־‎-o."
 
-#: src/CommandLineOptions.h:80
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "במצב רקע, להעתיק את נתיב קובץ צילום המסך ללוח הגזירים"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "להמתין ללחיצה לפני הצילום. מחליף השהיה"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "להפעיל מופע גרפי חדש של Spectacle מבלי להירשם מול D-Bus"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "במצב רקע, לכלול את סמן העכבר בצילום המסך"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "במצב רקע, לא לכלול את העיטורים בצילום המסך"
 
-#: src/CommandLineOptions.h:98
+#: src/CommandLineOptions.h:106
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "במצב רקע, לא לכלול את ההצללות בצילום המסך"
 
-#: src/CommandLineOptions.h:101
+#: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "פתיחת קובץ צילום מסך קיים"
 
-#: src/ExportManager.cpp:331
+#: src/ExportManager.cpp:342
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter לא יכול לכתוב תמונה: %1"
 
-#: src/ExportManager.cpp:346
+#: src/ExportManager.cpp:357
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -184,12 +193,12 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה נכשלה:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:356
+#: src/ExportManager.cpp:367
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבה."
 
-#: src/ExportManager.cpp:376
+#: src/ExportManager.cpp:387
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -199,32 +208,53 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה המרוחקת נכשלה:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:387 src/ExportManager.cpp:437
+#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבת הקובץ המקומי הזמני."
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:406
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "לא ניתן לשמור תמונה. לא ניתן להעלות למקום המרוחק."
 
-#: src/ExportManager.cpp:444
+#: src/ExportManager.cpp:453
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "לא ניתן לשמור צילום מסך. שם הקובץ לשמירה שגויה."
 
-#: src/ExportManager.cpp:488
+#: src/ExportManager.cpp:497
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "לא ניתן לשמור תמונת צילום מסך ריקה."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Temporary file URL must be an existing local file"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Output file URL must be a valid URL with a file name"
+msgstr ""
+
+#: src/ExportManager.cpp:668
+#, fuzzy, kde-format
+#| msgid "Unable to save image. Could not upload file to remote location."
+msgctxt "@info"
+msgid "Unable to save recording. Could not move file to location: %1"
+msgstr "לא ניתן לשמור תמונה. לא ניתן להעלות למקום המרוחק."
+
+#: src/ExportManager.cpp:696
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ההדפסה נכשלה. הפעלת המדפסת נכשלה."
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:712
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -232,7 +262,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "שנה (4 ספרות)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:713
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -240,7 +270,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "שנה (2 ספרות)"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -248,7 +278,7 @@ msgctxt ""
 msgid "Month"
 msgstr "חודש"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:715
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -256,7 +286,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "חודש (שם מקומי מקוצר)"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +294,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "חודש (שם מקומי ארוך)"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:717
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +302,7 @@ msgctxt ""
 msgid "Day"
 msgstr "יום"
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:718
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,7 +310,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "שעה"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -288,7 +318,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "דקה"
 
-#: src/ExportManager.cpp:607
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -296,7 +326,7 @@ msgctxt ""
 msgid "Second"
 msgstr "שנייה"
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -304,7 +334,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "אזור זמן"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -312,7 +342,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "כותרת חלון"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +350,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "מספור רציף"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1520,72 +1550,165 @@ msgstr ""
 "שהוא לא זמין. יש להשתמש ב־Spectacle עם פלזמה מבית KDE או להשתמש בכלי אחר "
 "לצילום המסך."
 
-#: src/RecordingModeModel.cpp:32
+#: src/Platforms/VideoPlatformWayland.cpp:128
 #, kde-format
-msgid "Workspace"
-msgstr "מרחב עבודה"
+msgctxt "@info:shell"
+msgid "Failed to record: File URL is not a local file"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:38
+#: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
-msgid "Selected Screen"
-msgstr "מסך נבחר"
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:44
+#: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
-msgid "Selected Window"
-msgstr "חלון נבחר"
+msgctxt "@info:shell"
+msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:101
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
-msgid "Failed to select output"
-msgstr "בחירת הפלט נכשלה"
+msgctxt "@info:shell"
+msgid "Failed to record: Output file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:132
+#: src/Platforms/VideoPlatformWayland.cpp:278
 #, kde-format
-msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Screen recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:280
+#, kde-format
+msgctxt "@info:shell"
+msgid "Window recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:286
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select screen: %1"
 msgstr "בחירת החלון נכשלה"
 
-#: src/ShortcutActions.cpp:35
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: %1"
+msgstr "בחירת החלון נכשלה"
+
+#: src/Platforms/VideoPlatformWayland.cpp:310
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select screen: No screen contained the mouse cursor position"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:317
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: No window found"
+msgstr "בחירת החלון נכשלה"
+
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Region"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:31
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@item recording mode"
+msgid "Screen"
+msgstr "צילום מסך"
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
+msgctxt "@item recording mode"
+msgid "Window"
+msgstr "כותרת חלון"
+
+#: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
 msgstr "הפעלת Spectacle"
 
-#: src/ShortcutActions.cpp:41
+#: src/ShortcutActions.cpp:44
 #, kde-format
 msgid "Capture Entire Desktop"
 msgstr "צילום כל שולחן העבודה"
 
-#: src/ShortcutActions.cpp:47
+#: src/ShortcutActions.cpp:50
 #, kde-format
 msgid "Capture Current Monitor"
 msgstr "צילום המסך הנוכחי"
 
-#: src/ShortcutActions.cpp:53
+#: src/ShortcutActions.cpp:56
 #, kde-format
 msgid "Capture Active Window"
 msgstr "צילום החלון הפעיל"
 
-#: src/ShortcutActions.cpp:59
+#: src/ShortcutActions.cpp:62
 #, kde-format
 msgid "Capture Rectangular Region"
 msgstr "צילום אזור מרובע"
 
-#: src/ShortcutActions.cpp:65
+#: src/ShortcutActions.cpp:68
 #, kde-format
 msgid "Capture Window Under Cursor"
 msgstr "צילום החלון שמתחת לסמן העכבר"
 
-#: src/ShortcutActions.cpp:71
+#: src/ShortcutActions.cpp:74
+#, fuzzy, kde-format
+#| msgid "Selected Screen"
+msgid "Record Screen"
+msgstr "מסך נבחר"
+
+#: src/ShortcutActions.cpp:80
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid "Record Window"
+msgstr "הקלטה"
+
+#: src/ShortcutActions.cpp:86
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Record Rectangular Region"
+msgstr "אזור מרובע"
+
+#: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "להפעיל את Spectacle מבלי לצלם"
 
-#: src/SpectacleCore.cpp:651
+#: src/SpectacleCore.cpp:300
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Spectacle is recording: %1\n"
+"Click to finish recording"
+msgstr ""
+
+#: src/SpectacleCore.cpp:569
+#, kde-format
+msgctxt "@info:shell"
+msgid "%1 is not a valid mode for --record"
+msgstr ""
+
+#: src/SpectacleCore.cpp:760
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "צילום המסך בוטל או נכשל"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:812
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1593,29 +1716,54 @@ msgid ""
 msgstr ""
 "צילום המסך נשמר בשם ‚%1’ אל ‚%2’ ונתיב קובץ צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:816
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "צילום המסך נשמר בשם ‚%1’ בתיקיית התמונות שלך."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "צילום המסך נשמר בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:823
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:828
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgid ""
+"A recording was saved as '%1' to '%2' and the file path of the recording has "
+"been saved to your clipboard."
+msgstr ""
+"צילום המסך נשמר בשם ‚%1’ אל ‚%2’ ונתיב קובץ צילום המסך נשמר ללוח הגזירים שלך."
+
+#: src/SpectacleCore.cpp:830
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "Placeholder is filename"
+msgid "A recording was saved as '%1' to your Videos folder."
+msgstr "צילום המסך נשמר בשם ‚%1’ בתיקיית התמונות שלך."
+
+#: src/SpectacleCore.cpp:832
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgid "A recording was saved as '%1' to '%2'."
+msgstr "צילום המסך נשמר בשם ‚%1’ אל ‚%2’."
+
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "פתיחה"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgid "Annotate"
 msgstr "פירוש"
@@ -1631,6 +1779,15 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Workspace"
+#~ msgstr "מרחב עבודה"
+
+#~ msgid "Selected Window"
+#~ msgstr "חלון נבחר"
+
+#~ msgid "Failed to select output"
+#~ msgstr "בחירת הפלט נכשלה"
 
 #~ msgid "On Click"
 #~ msgstr "בלחיצה"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:51+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2021-09-04 10:08+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -94,27 +94,36 @@ msgid "Capture a rectangular region of the screen"
 msgstr "Σύλληψη μιας ορθογώνιας περιοχής της οθόνης"
 
 #: src/CommandLineOptions.h:46
+#, kde-format
+msgid ""
+"Record the screen using the given mode. Modes:\n"
+"- r, region\n"
+"- s, screen\n"
+"- w, window"
+msgstr ""
+
+#: src/CommandLineOptions.h:54
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Μετά τη λήψη στιγμιοτύπου:"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Εκκίνηση σε λειτουργία GUI (προκαθορισμένο)"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Λήψη στιγμιοτύπου οθόνης και έξοδος χωρίς εμφάνιση του GUI"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Εκκίνηση σε λειτουργία DBus-Activation"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -122,20 +131,20 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να μην αιωρείται ειδοποίηση κατά τη λήψη του "
 "στιγμιοτύπου"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποθηκεύεται η εικόνα στο επιλεγμένο αρχείο"
 
-#: src/CommandLineOptions.h:71
+#: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να υπάρχει καθυστέρηση πριν τη λήψη (σε χιλιοστά "
 "δευτερολέπτου)"
 
-#: src/CommandLineOptions.h:76
+#: src/CommandLineOptions.h:84
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot image to clipboard"
 msgid ""
@@ -145,38 +154,38 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται το στιγμιότυπο της εικόνας στο "
 "πρόχειρο"
 
-#: src/CommandLineOptions.h:80
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται η διαδρομή του αρχείου "
 "στιγμιοτύπου στο πρόχειρο"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Αναμονή για κλικ πριν τη λήψη στιγμιοτύπου. Ακυρώνει την καθυστέρηση."
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Εκκινεί μια νέα διεργασία γραφικού περιβάλλοντος του spectacle χωρίς "
 "καταχώρηση στο DBus"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Σε λειτουργία παρασκηνίου, να περιλαμβάνεται δείκτης στο στιγμιότυπο"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:98
+#: src/CommandLineOptions.h:106
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
@@ -184,17 +193,17 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:101
+#: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:331
+#: src/ExportManager.cpp:342
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Αδυναμία του QImageWriter να γράψει την εικόνα: %1"
 
-#: src/ExportManager.cpp:346
+#: src/ExportManager.cpp:357
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -204,14 +213,14 @@ msgstr ""
 "Αδυναμία αποθήκευσης του στιγμιοτύπου οθόνης εξαιτίας αποτυχίας δημιουργίας "
 "του καταλόγου:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:356
+#: src/ExportManager.cpp:367
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Αδυναμία αποθήκευσης στιγμιοτύπου οθόνης. Σφάλμα κατά την εγγραφή του "
 "αρχείου."
 
-#: src/ExportManager.cpp:376
+#: src/ExportManager.cpp:387
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,37 +230,60 @@ msgstr ""
 "Αδυναμία αποθήκευσης στιγμιοτύπου οθόνης εξαιτίας της αποτυχίας δημιουργίας "
 "απομακρυσμένου καταλόγου:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:387 src/ExportManager.cpp:437
+#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Αδυναμία αποθήκευσης στιγμιοτύπου οθόνης. Σφάλμα κατά την εγγραφή του "
 "προσωρινού τοπικού αρχείου."
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:406
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Αδυναμία αποθήκευσης εικόνας. Αδυναμία φόρτωσης αρχείου στην απομακρυσμένη "
 "θέση."
 
-#: src/ExportManager.cpp:444
+#: src/ExportManager.cpp:453
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Αδυναμία αποθήκευσης στιγμιοτύπου οθόνης. Το όνομα αρχείου δεν είναι έγκυρο."
 
-#: src/ExportManager.cpp:488
+#: src/ExportManager.cpp:497
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Αδυναμία αποθήκευσης κενής εικόνας στιγμιοτύπου οθόνης."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Temporary file URL must be an existing local file"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Output file URL must be a valid URL with a file name"
+msgstr ""
+
+#: src/ExportManager.cpp:668
+#, fuzzy, kde-format
+#| msgid "Unable to save image. Could not upload file to remote location."
+msgctxt "@info"
+msgid "Unable to save recording. Could not move file to location: %1"
+msgstr ""
+"Αδυναμία αποθήκευσης εικόνας. Αδυναμία φόρτωσης αρχείου στην απομακρυσμένη "
+"θέση."
+
+#: src/ExportManager.cpp:696
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Αποτυχία εκτύπωσης. Αποτυχία αρχικοποίησης του εκτυπωτή."
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:712
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -259,7 +291,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Έτος (4 ψηφία)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:713
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -267,7 +299,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Έτος (2 ψηφία)"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -275,7 +307,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Μήνας"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:715
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -283,7 +315,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -291,7 +323,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:717
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -299,7 +331,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Ημέρα"
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:718
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -307,7 +339,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Ώρα"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -315,7 +347,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Λεπτό"
 
-#: src/ExportManager.cpp:607
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -323,7 +355,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Δευτερόλεπτο"
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -331,7 +363,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr ""
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -339,7 +371,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Τίτλος παραθύρου"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -347,7 +379,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Ακολουθιακή αρίθμηση"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1605,75 +1637,163 @@ msgid ""
 "screenshot tool."
 msgstr ""
 
-#: src/RecordingModeModel.cpp:32
+#: src/Platforms/VideoPlatformWayland.cpp:128
 #, kde-format
-msgid "Workspace"
+msgctxt "@info:shell"
+msgid "Failed to record: File URL is not a local file"
 msgstr ""
 
-#: src/RecordingModeModel.cpp:38
+#: src/Platforms/VideoPlatformWayland.cpp:221
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:233
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:243
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Output file URL is not a local file (%1)"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:278
+#, kde-format
+msgctxt "@info:shell"
+msgid "Screen recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:280
+#, kde-format
+msgctxt "@info:shell"
+msgid "Window recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:286
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select screen: %1"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select window: %1"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:310
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select screen: No screen contained the mouse cursor position"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:317
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select window: No window found"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Region"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:31
 #, fuzzy, kde-format
-#| msgid "Record Screen"
-msgid "Selected Screen"
-msgstr "Εγγραφή οθόνης"
+#| msgid "Take a New Screenshot"
+msgctxt "@item recording mode"
+msgid "Screen"
+msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
-#: src/RecordingModeModel.cpp:44
+#: src/RecordingModeModel.cpp:34
 #, fuzzy, kde-format
-#| msgid "Active Window"
-msgid "Selected Window"
-msgstr "Ενεργό παράθυρο"
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
+msgctxt "@item recording mode"
+msgid "Window"
+msgstr "Τίτλος παραθύρου"
 
-#: src/RecordingModeModel.cpp:101
-#, kde-format
-msgid "Failed to select output"
-msgstr ""
-
-#: src/RecordingModeModel.cpp:132
-#, kde-format
-msgid "Failed to select window"
-msgstr ""
-
-#: src/ShortcutActions.cpp:35
+#: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
 msgstr "Εκτέλεση του Spectacle"
 
-#: src/ShortcutActions.cpp:41
+#: src/ShortcutActions.cpp:44
 #, kde-format
 msgid "Capture Entire Desktop"
 msgstr "Σύλληψη όλης της επιφάνειας εργασίας"
 
-#: src/ShortcutActions.cpp:47
+#: src/ShortcutActions.cpp:50
 #, kde-format
 msgid "Capture Current Monitor"
 msgstr "Σύλληψη τρέχουσας οθόνης"
 
-#: src/ShortcutActions.cpp:53
+#: src/ShortcutActions.cpp:56
 #, kde-format
 msgid "Capture Active Window"
 msgstr "Σύλληψη ενεργού παραθύρου"
 
-#: src/ShortcutActions.cpp:59
+#: src/ShortcutActions.cpp:62
 #, kde-format
 msgid "Capture Rectangular Region"
 msgstr "Σύλληψη ορθογώνιας περιοχής"
 
-#: src/ShortcutActions.cpp:65
+#: src/ShortcutActions.cpp:68
 #, kde-format
 msgid "Capture Window Under Cursor"
 msgstr "Λήψη παραθύρου υπό τον δρομέα"
 
-#: src/ShortcutActions.cpp:71
+#: src/ShortcutActions.cpp:74
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Record Screen"
+msgstr "Εγγραφή οθόνης"
+
+#: src/ShortcutActions.cpp:80
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgid "Record Window"
+msgstr "Εγγραφή οθόνης"
+
+#: src/ShortcutActions.cpp:86
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Record Rectangular Region"
+msgstr "Ορθογώνια περιοχή"
+
+#: src/ShortcutActions.cpp:92
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle"
 msgid "Launch Spectacle without capturing"
 msgstr "Εκτέλεση του Spectacle"
 
-#: src/SpectacleCore.cpp:651
+#: src/SpectacleCore.cpp:300
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Spectacle is recording: %1\n"
+"Click to finish recording"
+msgstr ""
+
+#: src/SpectacleCore.cpp:569
+#, kde-format
+msgctxt "@info:shell"
+msgid "%1 is not a valid mode for --record"
+msgstr ""
+
+#: src/SpectacleCore.cpp:760
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Αποτυχία ή ακύρωση της λήψης στιγμιοτύπου οθόνης."
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:812
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -1685,30 +1805,56 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:816
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:823
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:828
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"A recording was saved as '%1' to '%2' and the file path of the recording has "
+"been saved to your clipboard."
+msgstr ""
+"Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
+"έχει αντιγραφεί στο πρόχειρο"
+
+#: src/SpectacleCore.cpp:830
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "Placeholder is filename"
+msgid "A recording was saved as '%1' to your Videos folder."
+msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
+
+#: src/SpectacleCore.cpp:832
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgid "A recording was saved as '%1' to '%2'."
+msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
+
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"
@@ -1724,6 +1870,11 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Active Window"
+#~ msgid "Selected Window"
+#~ msgstr "Ενεργό παράθυρο"
 
 #, fuzzy
 #~| msgid "Save"

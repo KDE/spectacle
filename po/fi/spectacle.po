@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:51+0000\n"
-"PO-Revision-Date: 2023-06-04 23:12+0300\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"PO-Revision-Date: 2023-10-23 15:11+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 # HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/CaptureModeModel.cpp:97
@@ -95,41 +95,50 @@ msgstr "Kaappaa suorakulmainen alue näytöstä"
 
 #: src/CommandLineOptions.h:46
 #, kde-format
+msgid ""
+"Record the screen using the given mode. Modes:\n"
+"- r, region\n"
+"- s, screen\n"
+"- w, window"
+msgstr ""
+
+#: src/CommandLineOptions.h:54
+#, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Käynnistä graafiseen käyttöliittymään (oletus)"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Kaappaa kuva ja lopeta ikkunaa avaamatta"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Käynnistä DBus-Activation-tilassa"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "Älä tausta-ajossa näytä ilmoitusta kuvan kaappaamisesta"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Tallenna tausta-ajossa kuva annettuun tiedostoon"
 
-#: src/CommandLineOptions.h:71
+#: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Viivytä tausta-ajossa kuvan kaappaamista (aika millisekunteina)"
 
-#: src/CommandLineOptions.h:76
+#: src/CommandLineOptions.h:84
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -138,48 +147,48 @@ msgstr ""
 "Kopioi tausta-ajossa ruutukaappaus leikepöydälle, ellei -o-valitsinta ole "
 "annettu."
 
-#: src/CommandLineOptions.h:80
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "Kopioi tausta-ajossa ruutukaappaustiedoston sijainti leikepöydälle"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Odota napsautusta ennen kuvan kaappaamista. Viivettä ei huomioida"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Käynnistää uuden käyttöliittymäinstanssin rekisteröimättä DBusiin"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Sisällytä tausta-ajossa kuvakaappaukseen osoitin"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Sisällytä tausta-ajossa kuvakaappaukseen ikkunakoristeet"
 
-#: src/CommandLineOptions.h:98
+#: src/CommandLineOptions.h:106
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "Sisällytä tausta-ajossa kuvakaappaukseen ikkunakoristeet"
 
-#: src/CommandLineOptions.h:101
+#: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Avaa ruutukaappaustiedosto ja muokkaa sitä"
 
-#: src/ExportManager.cpp:331
+#: src/ExportManager.cpp:342
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ei voi kirjoittaa kuvaa: %1"
 
-#: src/ExportManager.cpp:346
+#: src/ExportManager.cpp:357
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -189,14 +198,14 @@ msgstr ""
 "Ruutukaappausta ei voitu tallentaa, koska kansion luonti epäonnistui:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:356
+#: src/ExportManager.cpp:367
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Kuvakaappauksen tallentaminen epäonnistui. Tiedostoa tallennettaessa sattui "
 "virhe."
 
-#: src/ExportManager.cpp:376
+#: src/ExportManager.cpp:387
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,35 +215,57 @@ msgstr ""
 "Ruutukaappausta ei voitu tallentaa, koska etäkansion luonti epäonnistui:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:387 src/ExportManager.cpp:437
+#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kuvakaappauksen tallentaminen epäonnistui. Paikalliseen väliaikaistiedostoon "
 "kirjoitettaessa sattui virhe."
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:406
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Kuvan tallennus epäonnistui. Tiedostoa ei voitu lähettää verkkokohteeseen."
 
-#: src/ExportManager.cpp:444
+#: src/ExportManager.cpp:453
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Kuvakaappauksen tallennus epäonnistui. Tiedostonimi on virheellinen."
 
-#: src/ExportManager.cpp:488
+#: src/ExportManager.cpp:497
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Tyhjää kuvakaappausta ei voi tallentaa."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:593
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Temporary file URL must be an existing local file"
+msgstr ""
+
+#: src/ExportManager.cpp:600
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"Failed to export video: Output file URL must be a valid URL with a file name"
+msgstr ""
+
+#: src/ExportManager.cpp:668
+#, fuzzy, kde-format
+#| msgid "Unable to save image. Could not upload file to remote location."
+msgctxt "@info"
+msgid "Unable to save recording. Could not move file to location: %1"
+msgstr ""
+"Kuvan tallennus epäonnistui. Tiedostoa ei voitu lähettää verkkokohteeseen."
+
+#: src/ExportManager.cpp:696
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tulostus epäonnistui tulostimen alustuksen epäonnistuttua."
 
-#: src/ExportManager.cpp:599
+#: src/ExportManager.cpp:712
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -242,7 +273,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "vuosi (nelinumeroinen)"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:713
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -250,7 +281,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "vuosi (kaksinumeroinen)"
 
-#: src/ExportManager.cpp:601
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -258,23 +289,23 @@ msgctxt ""
 msgid "Month"
 msgstr "kuukausi"
 
-#: src/ExportManager.cpp:602
+#: src/ExportManager.cpp:715
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "Kuukausi (kotoistettu lyhyt nimi)"
 
-#: src/ExportManager.cpp:603
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "Kuukausi (kotoistettu pitkä nimi)"
 
-#: src/ExportManager.cpp:604
+#: src/ExportManager.cpp:717
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -282,7 +313,7 @@ msgctxt ""
 msgid "Day"
 msgstr "päivä"
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:718
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -290,7 +321,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "tunti"
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -298,7 +329,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "minuutit"
 
-#: src/ExportManager.cpp:607
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -306,7 +337,7 @@ msgctxt ""
 msgid "Second"
 msgstr "sekunnit"
 
-#: src/ExportManager.cpp:608
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -314,7 +345,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Aikavyöhyke"
 
-#: src/ExportManager.cpp:609
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +353,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ikkunan otsikko"
 
-#: src/ExportManager.cpp:610
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +361,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "juokseva numero"
 
-#: src/ExportManager.cpp:612
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1550,72 +1581,167 @@ msgstr ""
 "olevan käytettävissä. Käytä Spectaclea KDE Plasmassa tai valitse toinen "
 "ruutukaappaustyökalu."
 
-#: src/RecordingModeModel.cpp:32
+#: src/Platforms/VideoPlatformWayland.cpp:128
 #, kde-format
-msgid "Workspace"
-msgstr "Työtila"
+msgctxt "@info:shell"
+msgid "Failed to record: File URL is not a local file"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:38
+#: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
-msgid "Selected Screen"
-msgstr "Valittu näyttö"
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:44
+#: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
-msgid "Selected Window"
-msgstr "Valittu ikkuna"
+msgctxt "@info:shell"
+msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:101
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
-msgid "Failed to select output"
-msgstr "Ulostuloa ei voitu valita"
+msgctxt "@info:shell"
+msgid "Failed to record: Output file URL is not a local file (%1)"
+msgstr ""
 
-#: src/RecordingModeModel.cpp:132
+#: src/Platforms/VideoPlatformWayland.cpp:278
+#, fuzzy, kde-format
+#| msgid "New screen recording"
+msgctxt "@info:shell"
+msgid "Screen recording canceled"
+msgstr "Uusi ruutunauhoitus"
+
+#: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
-msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Window recording canceled"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:286
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select screen: %1"
 msgstr "Ikkunaa ei voitu valita"
 
-#: src/ShortcutActions.cpp:35
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: %1"
+msgstr "Ikkunaa ei voitu valita"
+
+#: src/Platforms/VideoPlatformWayland.cpp:310
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to select screen: No screen contained the mouse cursor position"
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:317
+#, fuzzy, kde-format
+#| msgid "Failed to select window"
+msgctxt "@info:shell"
+msgid "Failed to select window: No window found"
+msgstr "Ikkunaa ei voitu valita"
+
+#: src/RecordingModeModel.cpp:28
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Region"
+msgstr ""
+
+#: src/RecordingModeModel.cpp:31
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@item recording mode"
+msgid "Screen"
+msgstr "Ruutukaappaus"
+
+#: src/RecordingModeModel.cpp:34
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
+msgctxt "@item recording mode"
+msgid "Window"
+msgstr "ikkunan otsikko"
+
+#: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
 msgstr "Käynnistä Spectacle"
 
-#: src/ShortcutActions.cpp:41
+#: src/ShortcutActions.cpp:44
 #, kde-format
 msgid "Capture Entire Desktop"
 msgstr "Kaappaa koko työpöytä"
 
-#: src/ShortcutActions.cpp:47
+#: src/ShortcutActions.cpp:50
 #, kde-format
 msgid "Capture Current Monitor"
 msgstr "Kaappaa nykyinen näyttö"
 
-#: src/ShortcutActions.cpp:53
+#: src/ShortcutActions.cpp:56
 #, kde-format
 msgid "Capture Active Window"
 msgstr "Kaappaa aktiivinen ikkuna"
 
-#: src/ShortcutActions.cpp:59
+#: src/ShortcutActions.cpp:62
 #, kde-format
 msgid "Capture Rectangular Region"
 msgstr "Kaappaa suorakulmainen alue"
 
-#: src/ShortcutActions.cpp:65
+#: src/ShortcutActions.cpp:68
 #, kde-format
 msgid "Capture Window Under Cursor"
 msgstr "Kaappaa osoittimen alla oleva ikkuna"
 
-#: src/ShortcutActions.cpp:71
+#: src/ShortcutActions.cpp:74
+#, fuzzy, kde-format
+#| msgid "Selected Screen"
+msgid "Record Screen"
+msgstr "Valittu näyttö"
+
+#: src/ShortcutActions.cpp:80
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgid "Record Window"
+msgstr "Nauhoitus"
+
+# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
+#: src/ShortcutActions.cpp:86
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgid "Record Rectangular Region"
+msgstr "Suorakulmainen alue"
+
+#: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
-#: src/SpectacleCore.cpp:651
+#: src/SpectacleCore.cpp:300
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Spectacle is recording: %1\n"
+"Click to finish recording"
+msgstr ""
+
+#: src/SpectacleCore.cpp:569
+#, kde-format
+msgctxt "@info:shell"
+msgid "%1 is not a valid mode for --record"
+msgstr ""
+
+#: src/SpectacleCore.cpp:760
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Kuvan kaappaaminen peruttiin tai se epäonnistui"
 
-#: src/SpectacleCore.cpp:696
+#: src/SpectacleCore.cpp:812
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1624,29 +1750,55 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:816
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:703
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:823
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle"
 
-#: src/SpectacleCore.cpp:729
+#: src/SpectacleCore.cpp:828
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgid ""
+"A recording was saved as '%1' to '%2' and the file path of the recording has "
+"been saved to your clipboard."
+msgstr ""
+"Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
+"sijainti kopioitiin leikepöydälle."
+
+#: src/SpectacleCore.cpp:830
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "Placeholder is filename"
+msgid "A recording was saved as '%1' to your Videos folder."
+msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
+
+#: src/SpectacleCore.cpp:832
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgid "A recording was saved as '%1' to '%2'."
+msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
+
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"
@@ -1663,6 +1815,15 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
 
+#~ msgid "Workspace"
+#~ msgstr "Työtila"
+
+#~ msgid "Selected Window"
+#~ msgstr "Valittu ikkuna"
+
+#~ msgid "Failed to select output"
+#~ msgstr "Ulostuloa ei voitu valita"
+
 #~ msgctxt "@label:listbox"
 #~ msgid "Video format:"
 #~ msgstr "Videomuoto:"
@@ -1675,9 +1836,6 @@ msgstr ""
 
 #~ msgid "File format for saved screen recordings"
 #~ msgstr "Ruutunauhoituksen tiedostomuoto"
-
-#~ msgid "New screen recording"
-#~ msgstr "Uusi ruutunauhoitus"
 
 #~ msgid "On Click"
 #~ msgstr "Napsautettaessa"
