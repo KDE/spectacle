@@ -232,7 +232,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
             deleteWindows();
         } else if (!ViewerWindow::instance()) {
             showViewerIfGuiMode();
-            SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         }
 
         if (isGuiNull()) {
