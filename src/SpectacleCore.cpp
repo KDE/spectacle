@@ -230,7 +230,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
         if (actions & ExportManager::UserAction && Settings::quitAfterSaveCopyExport()) {
             deleteWindows();
-        } else {
+        } else if (!ViewerWindow::instance()) {
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         }
