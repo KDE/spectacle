@@ -480,16 +480,43 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action RecordRegion]
 Name=Record Rectangular Region
+Name[ca]=Enregistra una regió rectangular
+Name[eo]=Registri Rektangulan Regionon
+Name[es]=Grabar una región rectangular
+Name[he]=הקלטת אזור מרובע
+Name[ka]=ოთხკუთხედი რეგიონის ჩაწერა
+Name[nl]=Rechthoekig gebied opnemen
+Name[sl]=Zajemi pravokotno območje
+Name[uk]=Захопити прямокутну область
+Name[x-test]=xxRecord Rectangular Regionxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R region
 X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
 [Desktop Action RecordScreen]
 Name=Record Screen
+Name[ca]=Enregistra la pantalla
+Name[eo]=Registri Ekranon
+Name[es]=Grabar la pantalla
+Name[he]=הקלטת המסך
+Name[ka]=ეკრანის ჩასწერა
+Name[nl]=Scherm opnemen
+Name[sl]=Zajemi zaslon
+Name[uk]=Запис з екрана
+Name[x-test]=xxRecord Screenxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R screen
 X-KDE-Shortcuts=Meta+Alt+R
 
 [Desktop Action RecordWindow]
 Name=Record Window
+Name[ca]=Enregistra una finestra
+Name[eo]=Registri Fenestron
+Name[es]=Grabar ventana
+Name[he]=הקלטת חלון
+Name[ka]=ფანჯრის ჩაწერა
+Name[nl]=Opnamevenster
+Name[sl]=Zajemi okno
+Name[uk]=Записати з вікна
+Name[x-test]=xxRecord Windowxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R window
 X-KDE-Shortcuts=Meta+Ctrl+R
 
