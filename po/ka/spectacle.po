@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
-"PO-Revision-Date: 2023-10-24 06:43+0200\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
+"PO-Revision-Date: 2023-11-08 02:56+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -98,6 +98,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"ეკრანის ჩაწერა მითითებული რეჟიმით. რეჟიმები:\n"
+"- r, რეგიონი\n"
+"- s, ეკრანი\n"
+"- w, ფანჯარა"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -239,6 +243,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"ვიდეოს გატანა ჩავარდა: დროებით ფაილის ბმული არსებული ლოკალური ფაილი უნდა იყოს"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -246,20 +251,21 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"ვიდეოს გატანა ჩავარდა: გამოტანის ფაილის ბმული სახელის შემცველ სწორ ბმულს "
+"უნდა წარმოადგენდეს"
 
-#: src/ExportManager.cpp:668
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#: src/ExportManager.cpp:675
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "გამოსახულების შენახვის შეცდომა. დაშორებულ ადგილას ატვირთვის შეცდომა."
+msgstr "ჩანაწერის შენახვა შეუძლებელია. ფაილი ვერ გადავიტანე საქაღალდეში: %1"
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "დაბეჭდვის შეცდომა. პრინტერის ინიციალიზაცია შეუძლებელია."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -267,7 +273,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "წელი (4 ციფრი)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -275,7 +281,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "წელი (2 ციფრი)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -283,7 +289,7 @@ msgctxt ""
 msgid "Month"
 msgstr "თვე"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -291,7 +297,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "თვე (თარგმნილი მოკლე სახელი)"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -299,7 +305,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "თვე (თარგმნილი გრძელი სახელი)"
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -307,7 +313,7 @@ msgctxt ""
 msgid "Day"
 msgstr "დღე"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -315,7 +321,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "საათი"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -323,7 +329,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "წუთი"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -331,7 +337,7 @@ msgctxt ""
 msgid "Second"
 msgstr "წამი"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -339,7 +345,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "დროის ზონა"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -347,7 +353,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ფანჯრის სათაური"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -355,7 +361,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "თანმიმდევრული ათვლა"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -473,7 +479,7 @@ msgstr "ტექსტი"
 msgid "Number"
 msgstr "რიცხვი"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -601,7 +607,7 @@ msgstr "ჩაჭერის რეჟიმები"
 msgid "Configure Spectacle…"
 msgstr "Spectacle-ის მორგება…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "დახმარება"
@@ -641,42 +647,62 @@ msgstr "გადიდება:"
 msgid "Image Zoom"
 msgstr "გამოსახულების გადიდება"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "ეკრანის ანაბეჭდი ბუფერში დაკოპირდა."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "ეკრანის ანაბეჭდი ბუფერში დაკოპირდა."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "შენახვა"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "შენახვა, როგორც..."
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "კოპირება"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Save Location:"
+msgid "Copy Location"
+msgstr "შენახვის მდებარეობა:"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "გატანა"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "ანოტაციის ხელსაწყოების ჩვენება"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "ახალი ეკრანის ანაბეჭდი"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "პარამეტრები"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "მორგება..."
@@ -770,7 +796,19 @@ msgid ""
 msgstr ""
 "ეკრანის ანაბეჭდი დაკოპირდა ბუფერში და შენახულია, როგორც <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a> და მისი მდებარეობა "
+"ბუფერში დაკოპირდა"
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -779,17 +817,17 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a> და მისი მდებარეობა "
 "ბუფერში დაკოპირდა"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "ვიდეო შენახულია, როგორც <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "შემცველი საქაღალდის გახსნა"
@@ -1372,21 +1410,55 @@ msgstr "აქვს თუ არა რიცხვის ანოტაც�
 msgid "Save &Location:"
 msgstr "შენახვის &მდებარეობა:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "გამოსახულება გაზიარებულია"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "გამოსახულება გაზიარებულია"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"გაზიარებული გამოსახულების ბმული (<a href=\"%1\">%1</a>) ბუფერში დაკოპირდა."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
 "გაზიარებული გამოსახულების ბმული (<a href=\"%1\">%1</a>) ბუფერში დაკოპირდა."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "პრობლემა გამოსახულების გაზიარებისას: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "პრობლემა გამოსახულების გაზიარებისას: %1"
 
@@ -1564,88 +1636,80 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი არაა"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "ჩაწერის შეცდომა: საქაღალდის (%1) შექმნა შეუძლებელია"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "ჩაწერის შეცდომა: გამოტანის ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "ახალი ეკრანის ჩანაწერი"
+msgstr "ეკრანის ჩაწერა გაუქმდა"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "ფანჯრის ჩაწერა გაუქმდა"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "ფანჯრის არჩევის შეცდომა"
+msgstr "ეკრანის არჩევა ჩავარდა: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "ფანჯრის არჩევის შეცდომა"
+msgstr "ფანჯრის არჩევა ჩავარდა: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"ეკრანის არჩევა ჩავარდა: ეკრანი, რომელიც თაგუნას კურსორს შეიცავს, ვერ ვიპოვე"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "ფანჯრის არჩევის შეცდომა"
+msgstr "ფანჯრის არჩევა ჩავარდა: ფანჯარა ვერ ვიპოვე"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "რეგიონი"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "ეკრანის ანაბეჭდი"
+msgstr "ეკრანი"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "ფანჯრის სათაური"
+msgstr "ფანჯარა"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1678,48 +1742,47 @@ msgid "Capture Window Under Cursor"
 msgstr "კურსორის ქვეშ მყოფი კურსორის ჩაჭერა"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "არჩეული ეკრანი"
+msgstr "ეკრანის ჩასწერა"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "ჩაწერა"
+msgstr "ფანჯრის ჩაწერა"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "მართკუთხედი რეგიონი"
+msgstr "მართკუთხედი რეგიონის ჩაწერა"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle იწერს: %1\n"
+"დააწკაპუნეთ ჩაწერის დასასრულებლად"
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "ეკრანის ანაბეჭდს გადაღება გაუქმდა ან შეცდომით დასრულდა"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1728,55 +1791,49 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:828
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#: src/SpectacleCore.cpp:859
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
-"ბილიკი შენახულია ბუფერში."
+"ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
+"ბუფერში."
 
-#: src/SpectacleCore.cpp:830
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#: src/SpectacleCore.cpp:861
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
+msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:832
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#: src/SpectacleCore.cpp:863
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
+msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"

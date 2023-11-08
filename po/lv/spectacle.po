@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
 "PO-Revision-Date: 2023-10-15 22:10+0300\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -248,7 +248,7 @@ msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:668
+#: src/ExportManager.cpp:675
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -256,12 +256,12 @@ msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Neizdevās saglabāt attēlu. Neizdevās datnes augšupielāde uz attālinātu vietu."
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Drukāšanas kļūda. Neizdevās inicializēt printeri."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -269,7 +269,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Gads (četru ciparu formātā)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -277,7 +277,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Gads (divu ciparu formātā)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mēnesis"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -293,7 +293,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Mēnesis (lokalizēts saīsināts nosaukums)"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -301,7 +301,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Mēnesis (lokalizēts pilns nosaukums)"
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +309,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Diena"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Stunda"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minūte"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,7 +333,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Sekunde"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -341,7 +341,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Laika josla"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -349,7 +349,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Loga virsraksts"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -357,7 +357,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Secīga numurēšana"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -475,7 +475,7 @@ msgstr "Teksts"
 msgid "Number"
 msgstr "Skaitļi"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -605,7 +605,7 @@ msgstr "Uzņemšanas režīmi"
 msgid "Configure Spectacle…"
 msgstr "Konfigurēt Spectacle..."
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "Palīdzība"
@@ -645,42 +645,62 @@ msgstr "Tālummaiņa:"
 msgid "Image Zoom"
 msgstr "Attēla tālummaiņa"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Ekrānattēls ir nokopēts starpliktuvē."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "Ekrānattēls ir nokopēts starpliktuvē."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "Saglabāt"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "Saglabāt kā..."
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "Kopēt"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Save Location:"
+msgid "Copy Location"
+msgstr "Saglabāšanas vieta:"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "Eksportēt"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Parādīt anotācijas rīkus"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "Jauns ekrānattēls"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "Opcijas"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "Konfigurēt..."
@@ -774,7 +794,19 @@ msgid ""
 msgstr ""
 "Ekrānattēls ir nokopēts starpliktuvē un saglabāts kā <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"Ekrānattēls ir saglabāts kā <a href=\"%1\">%2</a> un tā atrašanās vieta ir "
+"nokopēta starpliktuvē"
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -783,17 +815,17 @@ msgstr ""
 "Ekrānattēls ir saglabāts kā <a href=\"%1\">%2</a> un tā atrašanās vieta ir "
 "nokopēta starpliktuvē"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Video tika saglabāts kā <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Ekrānattēls tika saglabāts kā <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Atvērt mapi, kurā ir saglabāts"
@@ -1386,21 +1418,55 @@ msgstr "Ēna skaitļu anotācijas rīkam"
 msgid "Save &Location:"
 msgstr "Saglabāšanas vieta:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "Attēls ir kopīgots"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "Attēls ir kopīgots"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Attēla kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
 "Attēla kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "Kopīgojot attālu, radās problēma: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Kopīgojot attālu, radās problēma: %1"
 
@@ -1714,7 +1780,7 @@ msgstr "Četrstūra reģions"
 msgid "Launch Spectacle without capturing"
 msgstr "Palaist Spectacle bez uzņemšanas"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1722,18 +1788,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrānattēla uzņemšana ar atcelta vai neizdevās"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1742,23 +1808,23 @@ msgstr ""
 "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“, bet ceļš uz ekrānattēlu ir "
 "saglabāts starpliktuvē."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrānattēls ir saglabāts Attēlu mapē ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrānattēls ir saglabāts starpliktuvē"
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:859
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1770,7 +1836,7 @@ msgstr ""
 "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“, bet ceļš uz ekrānattēlu ir "
 "saglabāts starpliktuvē."
 
-#: src/SpectacleCore.cpp:830
+#: src/SpectacleCore.cpp:861
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1778,19 +1844,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ekrānattēls ir saglabāts Attēlu mapē ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:832
+#: src/SpectacleCore.cpp:863
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atvērt"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "Anotēt"

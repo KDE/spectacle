@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
 "PO-Revision-Date: 2023-03-26 01:01+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -236,19 +236,19 @@ msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:668
+#: src/ExportManager.cpp:675
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "無法儲存影像。無法上傳檔案到遠端。"
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "列印失敗。列印機初始化失敗。"
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -256,7 +256,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "年（四位數）"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -264,7 +264,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "年（兩位數）"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -272,7 +272,7 @@ msgctxt ""
 msgid "Month"
 msgstr "月"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -280,7 +280,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -288,7 +288,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -296,7 +296,7 @@ msgctxt ""
 msgid "Day"
 msgstr "日"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -304,7 +304,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "時"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -312,7 +312,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "分"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +320,7 @@ msgctxt ""
 msgid "Second"
 msgstr "秒"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -328,7 +328,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "時區"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -336,7 +336,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "視窗標題"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -344,7 +344,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "順序編號"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -462,7 +462,7 @@ msgstr "文字"
 msgid "Number"
 msgstr "編號"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -588,7 +588,7 @@ msgstr "擷取模式"
 msgid "Configure Spectacle…"
 msgstr "設定 Spectacle⋯"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "說明"
@@ -628,42 +628,62 @@ msgstr "縮放："
 msgid "Image Zoom"
 msgstr "圖片縮放"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "螢幕截圖已複製到剪貼簿。"
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "螢幕截圖已複製到剪貼簿。"
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "儲存"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "另存為…"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "複製"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Copy Location to Clipboard"
+msgid "Copy Location"
+msgstr "複製路徑到剪貼簿"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "匯出"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "顯示標注工具"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "新的螢幕擷取"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "選項"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "設定⋯"
@@ -755,24 +775,34 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
 msgstr "螢幕截圖已複製至剪貼簿，且已存為 <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr "此螢幕截圖已存為 <a href=\"%1\">%2</a>，其網址已複製到剪貼簿"
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
 "been copied to clipboard"
 msgstr "此螢幕截圖已存為 <a href=\"%1\">%2</a>，其網址已複製到剪貼簿"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "影片已儲存為 <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "螢幕截圖已儲存為 <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "打開所在資料夾"
@@ -1361,20 +1391,53 @@ msgstr "數字註記工具是否有陰影"
 msgid "Save &Location:"
 msgstr "儲存位置："
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "已分享圖片"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "已分享圖片"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr "分享的圖片連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr "分享的圖片連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "分享圖片時發生問題：%1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "分享圖片時發生問題：%1"
 
@@ -1686,7 +1749,7 @@ msgstr "矩形區域"
 msgid "Launch Spectacle without capturing"
 msgstr "啟動 Spectacle 但不擷取"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1694,41 +1757,41 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "螢幕截圖擷取取消或失敗"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "螢幕截圖已儲存至您的剪貼簿。"
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:859
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1738,7 +1801,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:830
+#: src/SpectacleCore.cpp:861
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1746,19 +1809,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:832
+#: src/SpectacleCore.cpp:863
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開啟"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "註記"
@@ -1832,9 +1895,6 @@ msgstr ""
 
 #~ msgid "Copy Image to Clipboard"
 #~ msgstr "複製影像到剪貼簿"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "複製路徑到剪貼簿"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "準備好擷取螢幕"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
-"PO-Revision-Date: 2023-10-23 16:41+0300\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
+"PO-Revision-Date: 2023-11-07 13:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -101,6 +101,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Записати зображення з екрана з використанням вказаного режиму. Режими:\n"
+"- r, область\n"
+"- s, екран\n"
+"- w, вікно"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -244,6 +248,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Не вдалося експортувати відео: має бути вказано адресу наявного локального "
+"файла для тимчасового файла"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -251,22 +257,22 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Не вдалося експортувати відео: адреса файла виведення даних має бути "
+"коректною адресою з назвою файла"
 
-#: src/ExportManager.cpp:668
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#: src/ExportManager.cpp:675
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Не вдалося зберегти зображення. Не вдалося вивантажити файл на віддалений "
-"сервер."
+"Не вдалося зберегти запис. Не вдалося пересунути файл до вказаного місця: %1"
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Не вдалося надрукувати. Спроба ініціалізувати принтер зазнала невдачі."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -274,7 +280,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Рік (4 цифри)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -282,7 +288,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Рік (2 цифри)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -290,7 +296,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Місяць"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -298,7 +304,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Місяць (скорочена локалізована назва)"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -306,7 +312,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Місяць (повна локалізована назва)"
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -314,7 +320,7 @@ msgctxt ""
 msgid "Day"
 msgstr "День"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +328,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Година"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +336,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Хвилина"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -338,7 +344,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Секунда"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -346,7 +352,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Часовий пояс"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -354,7 +360,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -362,7 +368,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Послідовна нумерація"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -480,7 +486,7 @@ msgstr "Текст"
 msgid "Number"
 msgstr "Номер"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -610,7 +616,7 @@ msgstr "Режими захоплення"
 msgid "Configure Spectacle…"
 msgstr "Налаштувати Spectacle…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "Довідка"
@@ -650,42 +656,62 @@ msgstr "Масштаб:"
 msgid "Image Zoom"
 msgstr "Масштаб зображення"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Знімок вікна було скопійовано до буфера обміну даними."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "Знімок вікна було скопійовано до буфера обміну даними."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "Збереження"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "Зберегти як…"
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "Копіювати"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Copy Location to Clipboard"
+msgid "Copy Location"
+msgstr "Копіювати адресу до буфера"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "Експорт"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Показати засоби анотування"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "Новий знімок вікна"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "Параметри"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "Налаштувати…"
@@ -781,7 +807,19 @@ msgstr ""
 "Знімок було скопійовано до буфера обміну даними і збережено як <a href="
 "\"%1\">%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"Знімок вікна було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск "
+"and its location has been copied to clipboard"
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -790,17 +828,17 @@ msgstr ""
 "Знімок вікна було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск "
 "and its location has been copied to clipboard"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Відео було збережено як <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Знімок було збережено як <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Відкрити теку зі знімками"
@@ -1392,13 +1430,39 @@ msgstr "Чи слід використовувати у засобі аноту�
 msgid "Save &Location:"
 msgstr "Місце з&берігання:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "Зображення оприлюднено"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "Зображення оприлюднено"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Посилання на зображення (<a href=\"%1\">%1</a>) було скопійовано до буфера "
+"обміну даними."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
@@ -1406,8 +1470,17 @@ msgstr ""
 "Посилання на зображення (<a href=\"%1\">%1</a>) було скопійовано до буфера "
 "обміну даними."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "Під час спроби оприлюднити зображення виникли проблеми: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Під час спроби оприлюднити зображення виникли проблеми: %1"
 
@@ -1587,88 +1660,80 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Не вдалося записати: адреса файла не є локальною"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Не вдалося записати: не вдалося створити теку (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "Не вдалося записати: адреса тимчасового файла не є локальною (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "Не вдалося записати: адреса файла виведення даних не є локальною (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Новий запис з екрана"
+msgstr "Запис з екрана скасовано"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Запис з вікна скасовано"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Не вдалося вибрати вікно"
+msgstr "Не вдалося вибрати екран: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Не вдалося вибрати вікно"
+msgstr "Не вдалося вибрати вікно: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Не вдалося вибрати екран: немає екрана, що містить позицію вказівника миші"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Не вдалося вибрати вікно"
+msgstr "Не вдалося вибрати вікно: не знайдено вікна"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "Область"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "Знімок вікна"
+msgstr "Екран"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Заголовок вікна"
+msgstr "Вікно"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1701,48 +1766,47 @@ msgid "Capture Window Under Cursor"
 msgstr "Захопити зображення вікна під вказівником миші"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Вибраний екран"
+msgstr "Записати відео з екрана"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Запис"
+msgstr "Записати з вікна"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Прямокутна ділянка"
+msgstr "Захопити прямокутну область"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "Запустити Spectacle без створення знімка"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle записує дані: %1\n"
+"Клацніть, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Захоплення знімка екрана скасовано або його не вдалося виконати"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1751,55 +1815,49 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:828
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#: src/SpectacleCore.cpp:859
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
-"було збережено у буфері обміну даними системи."
+"Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
+"у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:830
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#: src/SpectacleCore.cpp:861
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
+msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:832
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#: src/SpectacleCore.cpp:863
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Знімок було збережено як «%1» до «%2»."
+msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"
@@ -1867,9 +1925,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Copy Image to Clipboard"
 #~ msgstr "Копіювати зображення до буфера"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "Копіювати адресу до буфера"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "Готова до створення знімка"

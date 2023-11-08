@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
 "PO-Revision-Date: 2023-04-28 20:48+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -256,7 +256,7 @@ msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:668
+#: src/ExportManager.cpp:675
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -265,12 +265,12 @@ msgstr ""
 "Tak mampu menyimpan citra. Tidak dapat mengunggah file untuk lokasi jarak "
 "jauh."
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Gagal mencetak. Printer gagal untuk dikenali."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -278,7 +278,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Tahun (4 digit)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -286,7 +286,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Tahun (2 digit)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -294,7 +294,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Bulan"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -302,7 +302,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -310,7 +310,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -318,7 +318,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Hari"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -326,7 +326,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Jam"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -334,7 +334,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Menit"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -342,7 +342,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Detik"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -350,7 +350,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Zona Waktu"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -358,7 +358,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Judul Jendela"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -366,7 +366,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Penomoran secara berurutan"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -484,7 +484,7 @@ msgstr "Teks"
 msgid "Number"
 msgstr "Nomor"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -617,7 +617,7 @@ msgstr "Mode Tangkap"
 msgid "Configure Spectacle…"
 msgstr "Atur Spectacle…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "Bantuan"
@@ -657,42 +657,62 @@ msgstr "Zoom:"
 msgid "Image Zoom"
 msgstr "Zoom Gambar"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Tangkapan layar telah disalin ke papan klip."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "Tangkapan layar telah disalin ke papan klip."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "Simpan"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "Simpan Sebagai..."
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "Salin"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Copy Location to Clipboard"
+msgid "Copy Location"
+msgstr "Salin Lokasi Simpanan ke Papan Klip"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "Ekspor"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Tampilkan Alat Anotasi"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "Tangkapan Layar Baru"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "Opsi"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "Konfigurasikan..."
@@ -787,7 +807,19 @@ msgstr ""
 "Tangkapan layar telah disalin ke papan klip dan disimpan sebagai <a href="
 "\"%1\">%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya "
+"telah disalin ke papan klip."
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -796,17 +828,17 @@ msgstr ""
 "Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya "
 "telah disalin ke papan klip."
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Video akan disimpan sebagai <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Buka Folder Yang Mengandungnya"
@@ -1412,13 +1444,39 @@ msgstr "Apakah alat anotasi angka memiliki bayangan"
 msgid "Save &Location:"
 msgstr "Lokasi Simpanan:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "Citra dibagikan"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "Citra dibagikan"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Tautan citra  (<a href=\"%1\">%1</a>) yang dibagikan telah disalin ke papan "
+"klip."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
@@ -1426,8 +1484,17 @@ msgstr ""
 "Tautan citra  (<a href=\"%1\">%1</a>) yang dibagikan telah disalin ke papan "
 "klip."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "Ada yang tidak beres dengan berbagi citra: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Ada yang tidak beres dengan berbagi citra: %1"
 
@@ -1740,7 +1807,7 @@ msgstr "Bidang Persegi"
 msgid "Launch Spectacle without capturing"
 msgstr "Luncurkan Spectacle tanpa menangkap layar"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1748,18 +1815,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Menangkap tangkapan layar dibatalkan atau gagal"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1768,24 +1835,24 @@ msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
 "tangkapan layarnya telah disalin ke papan klip Anda."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2'."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Sebuah tangkapan layar telah disimpan ke papan klip Anda."
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:859
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1797,7 +1864,7 @@ msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
 "tangkapan layarnya telah disalin ke papan klip Anda."
 
-#: src/SpectacleCore.cpp:830
+#: src/SpectacleCore.cpp:861
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1806,19 +1873,19 @@ msgid "A recording was saved as '%1' to your Videos folder."
 msgstr ""
 "Sebuah tangkapan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
 
-#: src/SpectacleCore.cpp:832
+#: src/SpectacleCore.cpp:863
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2'."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Buka"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "Anotasi"
@@ -1892,9 +1959,6 @@ msgstr ""
 
 #~ msgid "Copy Image to Clipboard"
 #~ msgstr "Salin citra ke papan klip"
-
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "Salin Lokasi Simpanan ke Papan Klip"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "Siap untuk menangkap layar"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
 "PO-Revision-Date: 2020-11-17 19:54+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -250,19 +250,19 @@ msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:668
+#: src/ExportManager.cpp:675
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kan ikke gemme billede. Kunne ikke uploade fil til ekstern placering."
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Udskrift mislykkedes. Printeren kunne ikke initialiseres."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -270,7 +270,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "År (4 cifre)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -278,7 +278,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "År (2 cifre)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -286,7 +286,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Måned"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -294,7 +294,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -302,7 +302,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -310,7 +310,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Dag"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -318,7 +318,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Time"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -326,7 +326,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minut"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -334,7 +334,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Sekund"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -342,7 +342,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr ""
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -350,7 +350,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Vinduestitel"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -358,7 +358,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Sekventiel nummerering"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "%1 second"
@@ -619,7 +619,7 @@ msgstr "<b>Indfangningstilstand</b>"
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr ""
@@ -661,45 +661,65 @@ msgstr ""
 msgid "Image Zoom"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Skærmbilledet er blevet kopieret til udklipsholderen."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "Skærmbilledet er blevet kopieret til udklipsholderen."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "Gem"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "Gem som..."
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr ""
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Copy Save Location to Clipboard"
+msgid "Copy Location"
+msgstr "Kopiér gemmeplacering til udklipsholderen"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "Eksportér"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, fuzzy, kde-format
 #| msgid "Annotation done"
 msgid "Show Annotation Tools"
 msgstr "Kommentering gennemført"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "New Screenshot"
 msgstr "Tag et nyt skærmbillede"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, fuzzy, kde-format
 #| msgid "Save Options"
 msgid "Options"
 msgstr "Gemmeindstillinger"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "Indstil..."
@@ -797,7 +817,19 @@ msgstr ""
 "Skærmbilledet blev kopieret til udklipsholderen og gemt som <a href=\"%1\">"
 "%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
+"udklipsholderen."
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -809,18 +841,18 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, fuzzy, kde-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "Skærmbilledet blev gemt som <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "Skærmbilledet blev gemt som <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Åbn indeholdende mappe"
@@ -1425,13 +1457,39 @@ msgstr ""
 msgid "Save &Location:"
 msgstr "Sted at gemme:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "Billede delt"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "Billede delt"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
+"udklipsholderen."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
@@ -1439,8 +1497,17 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "Der opstod et problem under deling af billedet: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Der opstod et problem under deling af billedet: %1"
 
@@ -1751,7 +1818,7 @@ msgstr "Firkantet område"
 msgid "Launch Spectacle without capturing"
 msgstr "Start Spectacle"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1759,18 +1826,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Indfangning af skærmbillede annulleret eller mislykket"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1782,24 +1849,24 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Et skærmbillede blev gemt som \"%1\" i din billedmappe."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Et skærmbillede blev gemt som \"%1\" i \"%2\"."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Et skærmbillede blev gemt i din udklipsholder."
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:859
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1811,7 +1878,7 @@ msgstr ""
 "Linket til det delte billede (<a href=\"%1\">%1</a>) er blevet kopieret til "
 "udklipsholderen."
 
-#: src/SpectacleCore.cpp:830
+#: src/SpectacleCore.cpp:861
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1819,19 +1886,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Et skærmbillede blev gemt som \"%1\" i din billedmappe."
 
-#: src/SpectacleCore.cpp:832
+#: src/SpectacleCore.cpp:863
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Et skærmbillede blev gemt som \"%1\" i \"%2\"."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Åbn"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentér"
@@ -1900,11 +1967,6 @@ msgstr ""
 #~| msgid "Copy image to clipboard"
 #~ msgid "Copy Image to Clipboard"
 #~ msgstr "Kopiér billedet til udklipsholderen"
-
-#, fuzzy
-#~| msgid "Copy Save Location to Clipboard"
-#~ msgid "Copy Location to Clipboard"
-#~ msgstr "Kopiér gemmeplacering til udklipsholderen"
 
 #, fuzzy
 #~| msgid "After taking a screenshot:"

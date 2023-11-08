@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
-"PO-Revision-Date: 2023-10-23 06:09+0100\n"
+"POT-Creation-Date: 2023-11-08 08:47+0000\n"
+"PO-Revision-Date: 2023-11-07 06:43+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -100,6 +100,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Registri la ekranon uzante la donitan reĝimon. Reĝimoj:\n"
+"- r, regiono\n"
+"- s, screen (ekrano)\n"
+"- w, window (fenestro)"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -237,6 +241,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Malsukcesis eksporti filmeton: Provizora dosier-URL devas esti ekzistanta "
+"loka dosiero"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -244,20 +250,21 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Malsukcesis eksporti filmeton: Eligdosiera URL devas esti valida URL kun "
+"dosiernomo"
 
-#: src/ExportManager.cpp:668
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#: src/ExportManager.cpp:675
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Ne eblas konservi bildon. Ne eblis alŝuti dosieron al fora loko."
+msgstr "Ne eblas konservi bildon. Ne eblis movi dosieron al loko: %1"
 
-#: src/ExportManager.cpp:696
+#: src/ExportManager.cpp:703
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Presado malsukcesis. La presilo malsukcesis pravalorigi."
 
-#: src/ExportManager.cpp:712
+#: src/ExportManager.cpp:719
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -265,7 +272,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Jaro (4 ciferoj)"
 
-#: src/ExportManager.cpp:713
+#: src/ExportManager.cpp:720
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -273,7 +280,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Jaro (2 ciferoj)"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:721
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -281,7 +288,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Monato"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:722
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -289,7 +296,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Monato (lokalizita mallonga nomo)"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:723
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -297,7 +304,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Monato (lokalizita longa nomo)"
 
-#: src/ExportManager.cpp:717
+#: src/ExportManager.cpp:724
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -305,7 +312,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Tago"
 
-#: src/ExportManager.cpp:718
+#: src/ExportManager.cpp:725
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +320,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Horo"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:726
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +328,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minuto"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:727
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -329,7 +336,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Due"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:728
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -337,7 +344,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Horzono"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:729
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -345,7 +352,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Fenestra Titolo"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:730
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -353,7 +360,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Sinsekva numerado"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:732
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -471,7 +478,7 @@ msgstr "Teksto"
 msgid "Number"
 msgstr "Numero"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:97
+#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:110
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -599,7 +606,7 @@ msgstr "Kaptaj Reĝimoj"
 msgid "Configure Spectacle…"
 msgstr "Agordi Spectacle…"
 
-#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:137
+#: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:150
 #, kde-format
 msgid "Help"
 msgstr "Helpo"
@@ -639,42 +646,62 @@ msgstr "Zomi:"
 msgid "Image Zoom"
 msgstr "Bildo Zoom"
 
-#: src/Gui/MainToolBarContents.qml:54
+#: src/Gui/LocationCopiedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "La ekrankopio estis kopiita al la tondujo."
+
+#: src/Gui/LocationCopiedMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot location has been copied to the clipboard."
+msgstr "La ekrankopio estis kopiita al la tondujo."
+
+#: src/Gui/MainToolBarContents.qml:56
 #, kde-format
 msgid "Save"
 msgstr "Konservi"
 
-#: src/Gui/MainToolBarContents.qml:61
+#: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
 msgstr "Konservi kiel..."
 
-#: src/Gui/MainToolBarContents.qml:68
+#: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/Gui/MainToolBarContents.qml:74
+#: src/Gui/MainToolBarContents.qml:79
+#, fuzzy, kde-format
+#| msgid "Save Location:"
+msgid "Copy Location"
+msgstr "Konservejo:"
+
+#: src/Gui/MainToolBarContents.qml:87
 #, kde-format
 msgid "Export"
 msgstr "Eksporto"
 
-#: src/Gui/MainToolBarContents.qml:84
+#: src/Gui/MainToolBarContents.qml:97
 #, kde-format
 msgid "Show Annotation Tools"
 msgstr "Montri Komentadajn Ilojn"
 
-#: src/Gui/MainToolBarContents.qml:110
+#: src/Gui/MainToolBarContents.qml:123
 #, kde-format
 msgid "New Screenshot"
 msgstr "Nova Ekrankopio"
 
-#: src/Gui/MainToolBarContents.qml:121
+#: src/Gui/MainToolBarContents.qml:134
 #, kde-format
 msgid "Options"
 msgstr "Opcioj"
 
-#: src/Gui/MainToolBarContents.qml:130
+#: src/Gui/MainToolBarContents.qml:143
 #, kde-format
 msgid "Configure..."
 msgstr "Agordi..."
@@ -769,7 +796,19 @@ msgstr ""
 "La ekrankopio estis kopiita al la tondujo kaj konservita kiel <a href=\"%1\">"
 "%2</a>"
 
-#: src/Gui/SavedAndLocationCopied.qml:8
+#: src/Gui/SavedAndLocationCopied.qml:9
+#, fuzzy, kde-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgid ""
+"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
+"copied to clipboard"
+msgstr ""
+"La ekrankopio estis konservita kiel <a href=\"%1\">%2</a> kaj ĝia loko estis "
+"kopiita al tondujo"
+
+#: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
 msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -778,17 +817,17 @@ msgstr ""
 "La ekrankopio estis konservita kiel <a href=\"%1\">%2</a> kaj ĝia loko estis "
 "kopiita al tondujo"
 
-#: src/Gui/SavedMessage.qml:13
+#: src/Gui/SavedMessage.qml:12
 #, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgstr "La video estis konservita kiel <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:15
+#: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgstr "La ekrankopio estis konservita kiel <a href=\"%1\">%2</a>"
 
-#: src/Gui/SavedMessage.qml:21
+#: src/Gui/SavedMessage.qml:20
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Malfermi Enhavan Dosierujon"
@@ -1374,21 +1413,55 @@ msgstr "Ĉu numerkomenta ilo havas falombron"
 msgid "Save &Location:"
 msgstr "&Loko de Konservado:"
 
-#: src/Gui/SharedMessage.qml:12
-#, kde-format
-msgid "Image shared"
+#: src/Gui/SharedMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Video shared"
 msgstr "Bildo dividita"
 
 #: src/Gui/SharedMessage.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image shared"
+msgctxt "@info"
+msgid "Image shared"
+msgstr "Bildo dividita"
+
+#: src/Gui/SharedMessage.qml:16
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
+msgid ""
+"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"La komuna bildligo (<a href=\"%1\">%1</a>) estis kopiita al la tondujo."
+
+#: src/Gui/SharedMessage.qml:18
+#, fuzzy, kde-format
+#| msgid ""
+#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+#| "clipboard."
+msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
 "La komuna bildligo (<a href=\"%1\">%1</a>) estis kopiita al la tondujo."
 
-#: src/Gui/ShareErrorMessage.qml:12
-#, kde-format
+#: src/Gui/ShareErrorMessage.qml:13
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
+msgid "There was a problem sharing the video: %1"
+msgstr "Estis problemo kun konigo de la bildo: %1"
+
+#: src/Gui/ShareErrorMessage.qml:14
+#, fuzzy, kde-format
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Estis problemo kun konigo de la bildo: %1"
 
@@ -1566,61 +1639,59 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Malsukcesis registri: Dosier-URL ne estas loka dosiero"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Malsukcesis registri: Ne eblas keri dosierujon (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "Malsukcesis registri: Provizora dosier-URL ne estas loka dosiero (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "Malsukcesis registri: Eligdosiera URL ne estas loka dosiero (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Ekranregistrado nuligita"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Fenestroregistrado nuligita"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Malsukcesis elekti fenestron"
+msgstr "Malsukcesis elekti ekranon: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Malsukcesis elekti fenestron"
+msgstr "Malsukcesis elekti fenestron: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Malsukcesis elekti ekranon: Neniu ekrano enhavis la muskorsoran pozicion"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Malsukcesis elekti fenestron"
@@ -1629,24 +1700,19 @@ msgstr "Malsukcesis elekti fenestron"
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "Regiono"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "Ekrankopio"
+msgstr "Ekrano"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Fenestra Titolo"
+msgstr "Fenestro"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1679,48 +1745,47 @@ msgid "Capture Window Under Cursor"
 msgstr "Kapti Fenestron Sub Kursoro"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Elektita Ekrano"
+msgstr "Registri  Ekranon"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Registrado"
+msgstr "Registri Fenestron"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Rektangula Regiono"
+msgstr "Registri Rektangulan Regionon"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
 msgstr "Lanĉi Spectacle sen kapti"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle estas registranta: %1\n"
+"Klaku por fini registradon"
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 ne stas valida reĝimo por --record"
 
-#: src/SpectacleCore.cpp:760
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrankopio nuligis aŭ malsukcesis"
 
-#: src/SpectacleCore.cpp:812
+#: src/SpectacleCore.cpp:843
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1729,55 +1794,49 @@ msgstr ""
 "Ekrankopio estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
 "ekrankopio estis konservita al via tondujo."
 
-#: src/SpectacleCore.cpp:816
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrankopio estis konservita kiel '%1' al via dosierujo de Bildoj."
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrankopio estis konservita kiel '%1' al '%2'."
 
-#: src/SpectacleCore.cpp:823
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrankopio estis konservita en via tondujo."
 
-#: src/SpectacleCore.cpp:828
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#: src/SpectacleCore.cpp:859
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Ekrankopio estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
-"ekrankopio estis konservita al via tondujo."
+"Registraĵo estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
+"registraĵo estis konservita al via tondujo."
 
-#: src/SpectacleCore.cpp:830
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#: src/SpectacleCore.cpp:861
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Ekrankopio estis konservita kiel '%1' al via dosierujo de Bildoj."
+msgstr "Registraĵo estis konservita kiel '%1' al via dosierujo de Filmetoj."
 
-#: src/SpectacleCore.cpp:832
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#: src/SpectacleCore.cpp:863
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekrankopio estis konservita kiel '%1' al '%2'."
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Malfermi"
 
-#: src/SpectacleCore.cpp:857
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid "Annotate"
 msgstr "Komenti"
@@ -1793,12 +1852,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Workspace"
-#~ msgstr "Laborspaco"
-
-#~ msgid "Selected Window"
-#~ msgstr "Elektita Fenestro"
-
-#~ msgid "Failed to select output"
-#~ msgstr "Malsukcesis elekti eligon"
