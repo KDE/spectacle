@@ -30,13 +30,13 @@ int main()
     auto spectaclerc = KSharedConfig::openConfig(fileName, KConfig::SimpleConfig);
 
     // Preserve old defaults for existing users that didn't already have these set.
-    auto imageSaveGroup = spectaclerc->group("ImageSave");
+    auto imageSaveGroup = spectaclerc->group(QStringLiteral("ImageSave"));
     if (!imageSaveGroup.exists() || imageSaveGroup.readEntry("imageSaveLocation").isEmpty()) {
         const auto url = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + u'/');
         imageSaveGroup.writeEntry("imageSaveLocation", url);
     }
 
-    auto videoSaveGroup = spectaclerc->group("VideoSave");
+    auto videoSaveGroup = spectaclerc->group(QStringLiteral("VideoSave"));
     if (!videoSaveGroup.exists() || videoSaveGroup.readEntry("videoSaveLocation").isEmpty()) {
         const auto url = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + u'/');
         videoSaveGroup.writeEntry("videoSaveLocation", url);

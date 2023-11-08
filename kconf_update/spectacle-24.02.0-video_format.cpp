@@ -22,15 +22,15 @@ int main()
     auto spectaclerc = KSharedConfig::openConfig("spectaclerc"_L1, KConfig::SimpleConfig);
 
     // Remove old settings.
-    spectaclerc->group("GuiConfig").deleteEntry("videoFormat");
-    auto saveGroup = spectaclerc->group("Save");
+    spectaclerc->group(QStringLiteral("GuiConfig")).deleteEntry("videoFormat");
+    auto saveGroup = spectaclerc->group(QStringLiteral("Save"));
     // These couldn't be changed via the GUI, but removing them anyway just in case
     saveGroup.deleteEntry("defaultVideoSaveLocation");
     saveGroup.deleteEntry("defaultSaveVideoFormat");
     saveGroup.deleteEntry("saveVideoFormat");
 
     // Copy to new groups and remove old groups
-    auto imageSaveGroup = spectaclerc->group("ImageSave");
+    auto imageSaveGroup = spectaclerc->group(QStringLiteral("ImageSave"));
     saveGroup.copyTo(&imageSaveGroup);
     saveGroup.deleteGroup();
 

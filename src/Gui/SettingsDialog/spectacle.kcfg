@@ -124,7 +124,7 @@
                 // with a bunch of different folders when they temporarily change languages.
                 auto pictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
                 auto config = sharedConfig();
-                auto group = config->group("ImageSave");
+                auto group = config->group(QStringLiteral("ImageSave"));
                 auto subFolder = group.readEntry("translatedScreenshotsFolder");
                 if (subFolder.isEmpty()) {
                     subFolder = i18nc("translatable folder name", "Screenshots");
@@ -172,7 +172,7 @@
                 // with a bunch of different folders when they temporarily change languages.
                 auto videos = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
                 auto config = sharedConfig();
-                auto group = config->group("VideoSave");
+                auto group = config->group(QStringLiteral("VideoSave"));
                 auto subFolder = group.readEntry("translatedScreencastsFolder");
                 if (subFolder.isEmpty()) {
                     subFolder = i18nc("translatable folder name", "Screencasts");
