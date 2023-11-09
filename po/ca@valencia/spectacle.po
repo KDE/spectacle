@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-10-23 10:28+0200\n"
+"PO-Revision-Date: 2023-11-08 11:18+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -102,6 +102,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Grava la pantalla utilitzant el mode indicat. Modes:\n"
+"-r, regió\n"
+"-s, pantalla\n"
+"-w, finestra"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -254,6 +258,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"No s'ha pogut exportar el vídeo: l'URL del fitxer temporal cal que siga un "
+"fitxer local existent"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -261,14 +267,16 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"No s'ha pogut exportar el vídeo: l'URL del fitxer d'eixida cal que siga un "
+"URL vàlid amb un nom de fitxer"
 
 #: src/ExportManager.cpp:675
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"No s'ha pogut guardar la imatge. No s'ha pogut pujar a la ubicació remota."
+"No s'ha pogut guardar la gravació. No s'ha pogut moure el fitxer a la "
+"ubicació: %1"
 
 #: src/ExportManager.cpp:703
 #, kde-format
@@ -558,8 +566,8 @@ msgid ""
 "with the parent window."
 msgstr ""
 "Només captura la finestra emergent actual (com un menú, consell d'eina, "
-"etc.) en prendre una captura de pantalla d'una finestra. Si està inactivada, "
-"es capturarà l'emergent amb la finestra pare."
+"etc.) en prendre una captura de pantalla d'una finestra. Si no se "
+"selecciona, es capturarà l'emergent amb la finestra pare."
 
 #: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
 #, kde-format
@@ -664,18 +672,17 @@ msgid "Image Zoom"
 msgstr "Zoom de la imatge"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "La captura de pantalla s'ha copiat a dins del porta-retalls."
+msgstr "La ubicació del vídeo s'ha copiat a dins del porta-retalls."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "La captura de pantalla s'ha copiat a dins del porta-retalls."
+msgstr ""
+"La ubicació de la captura de pantalla s'ha copiat a dins del porta-retalls."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -693,10 +700,9 @@ msgid "Copy"
 msgstr "Copia"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Copy Location"
-msgstr "Ubicació de guardada:"
+msgstr "Copia la ubicació"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -755,7 +761,7 @@ msgid ""
 msgstr ""
 "Només captura la finestra emergent actual (com un menú, consell d'eina, "
 "etc.).\n"
-"Si està inactivada, es capturarà l'emergent amb la finestra pare"
+"Si no se selecciona, es capturarà l'emergent amb la finestra pare"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -815,16 +821,13 @@ msgstr ""
 "<a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"La captura de pantalla s'ha guardat com a <a href=\"%1\">%2</a> i la seua "
-"ubicació s'ha copiat a dins del porta-retalls"
+"El vídeo s'ha guardat com a <a href=\"%1\">%2</a> i la seua ubicació s'ha "
+"copiat a dins del porta-retalls"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1437,37 +1440,29 @@ msgid "Save &Location:"
 msgstr "&Ubicació de guardada:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "S'ha compartit la imatge"
+msgstr "S'ha compartit el vídeo"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "S'ha compartit la imatge"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"L'enllaç cap a la imatge compartida (<a href=\"%1\">%1</a>) s'ha copiat a "
-"dins del porta-retalls."
+"L'enllaç cap al vídeo compartit (<a href=\"%1\">%1</a>) s'ha copiat a dins "
+"del porta-retalls."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1477,15 +1472,13 @@ msgstr ""
 "dins del porta-retalls."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "S'ha produït un problema en compartir la imatge: %1"
+msgstr "S'ha produït un problema en compartir el vídeo: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "S'ha produït un problema en compartir la imatge: %1"
@@ -1664,87 +1657,85 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "No s'ha pogut enregistrar: l'URL del fitxer no és un fitxer local"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "No s'ha pogut enregistrar: no s'ha pogut crear la carpeta (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"No s'ha pogut enregistrar: l'URL del fitxer temporal no és cap fitxer local "
+"(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"No s'ha pogut enregistrar: l'URL del fitxer d'eixida no és cap fitxer local "
+"(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "S'ha cancel·lat la gravació de pantalla"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "S'ha cancel·lat la gravació de la finestra"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "No s'ha pogut seleccionar la finestra"
+msgstr "No s'ha pogut seleccionar la pantalla: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "No s'ha pogut seleccionar la finestra"
+msgstr "No s'ha pogut seleccionar la finestra: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"No s'ha pogut seleccionar la pantalla: cap pantalla conté la posició del "
+"cursor"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "No s'ha pogut seleccionar la finestra"
+msgstr "No s'ha pogut seleccionar la finestra: no se n'ha trobat cap"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "Regió"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "Captura de pantalla"
+msgstr "Pantalla"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Títol de la finestra"
+msgstr "Finestra"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1777,22 +1768,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Captura la finestra baix el cursor"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Pantalla seleccionada"
+msgstr "Grava la pantalla"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Gravació"
+msgstr "Grava una finestra"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Regió rectangular"
+msgstr "Grava una regió rectangular"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1806,12 +1794,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle està gravant: %1\n"
+"Feu clic per a finalitzar la gravació"
 
 #: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 no és un mode vàlid per a --record"
 
 #: src/SpectacleCore.cpp:791
 #, kde-format
@@ -1844,30 +1834,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha guardat una captura de pantalla en el porta-retalls."
 
 #: src/SpectacleCore.cpp:859
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"La captura de pantalla s'ha guardat com a «%1» a «%2» i el camí cap al seu "
-"fitxer s'ha copiat a dins del porta-retalls."
+"La gravació s'ha guardat com a «%1» a «%2» i el camí del fitxer de gravació "
+"s'ha guardat al porta-retalls."
 
 #: src/SpectacleCore.cpp:861
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "S'ha guardat una captura de pantalla com a «%1» en la carpeta Imatges."
+msgstr "S'ha guardat una gravació com a «%1» a la carpeta Vídeos."
 
 #: src/SpectacleCore.cpp:863
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "S'ha guardat una captura de pantalla com a «%1» a «%2»."
+msgstr "S'ha guardat una gravació com a «%1» a «%2»."
 
 #: src/SpectacleCore.cpp:874
 #, kde-format
@@ -1891,12 +1875,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Workspace"
-#~ msgstr "Espai de treball"
-
-#~ msgid "Selected Window"
-#~ msgstr "Finestra seleccionada"
-
-#~ msgid "Failed to select output"
-#~ msgstr "No s'ha pogut seleccionar l'eixida"
