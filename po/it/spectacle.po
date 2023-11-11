@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-10-24 00:39+0200\n"
+"PO-Revision-Date: 2023-11-08 14:39+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -99,6 +99,9 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Registra lo schermo usando la modalità fornita. Modalità: - r, regione\n"
+"- s, schermo\n"
+"- w, finestra"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -250,6 +253,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Impossibile esportare il video: l'URL del file temporaneo deve essere un "
+"file locale esistente"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -257,15 +262,16 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Impossibile esportare il video: l'URL del file di destinazione deve essere "
+"un URL valido con un nome di file"
 
 #: src/ExportManager.cpp:675
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Impossibile salvare l'immagine. Invio del file al sistema remoto non "
-"riuscito."
+"Impossibile salvare la registrazione. Impossibile spostare il file alla "
+"posizione: %1"
 
 #: src/ExportManager.cpp:703
 #, kde-format
@@ -658,18 +664,16 @@ msgid "Image Zoom"
 msgstr "Ingrandimento dell'immagine"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "La schermata è stata copiata negli appunti."
+msgstr "La posizione del video è stata copiata negli appunti."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "La schermata è stata copiata negli appunti."
+msgstr "La posizione della schermata è stata copiata negli appunti."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -687,10 +691,9 @@ msgid "Copy"
 msgstr "Copia"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Copia la posizione negli appunti"
+msgstr "Copia posizione"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -810,15 +813,12 @@ msgstr ""
 "a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"La schermata è stata salvata come <a href=\"%1\">%2</a> e la sua posizione è "
+"Il video è stato salvato come <a href=\"%1\">%2</a> e la sua posizione è "
 "stata copiata negli appunti"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
@@ -1433,37 +1433,29 @@ msgid "Save &Location:"
 msgstr "Posizione di sa&lvataggio:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Immagine condivisa"
+msgstr "Video condiviso"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Immagine condivisa"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Il collegamento per condividere l'immagine (<a href=\"%1\">%1</a>) è stato "
+"Il collegamento per condividere il video (<a href=\"%1\">%1</a>) è stato "
 "copiato negli appunti."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1473,15 +1465,13 @@ msgstr ""
 "copiato negli appunti."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Si è verificato un problema durante la condivisione dell'immagine: %1"
+msgstr "Si è verificato un problema durante la condivisione del video: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Si è verificato un problema durante la condivisione dell'immagine: %1"
@@ -1660,88 +1650,85 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Impossibile registrare: l'URL del file non è di un file locale"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Impossibile registrare: impossibile creare la cartella (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Impossibile registrare: l'URL del file temporaneo non è di un file locale "
+"(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Impossibile registrare: l'URL del file di destinazione non è di un file "
+"locale (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Nuova registrazione di schermo"
+msgstr "Registrazione della schermo annullata"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Registrazione della finestra annullata"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Selezione della finestra non riuscita"
+msgstr "Selezione dello schermo non riuscita: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Selezione della finestra non riuscita"
+msgstr "Selezione della finestra non riuscita: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Selezione dello schermo non riuscita: nessuno schermo contiene la posizione "
+"del puntatore del mouse"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Selezione della finestra non riuscita"
+msgstr "Selezione della finestra non riuscita: nessuna finestra trovata"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "Regione"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "Schermata"
+msgstr "Schermo"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Titolo della finestra"
+msgstr "Finestra"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1774,22 +1761,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Cattura finestra sotto il cursore"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Schermo selezionato"
+msgstr "Registra schermo"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Registrazione"
+msgstr "Registra finestra"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Regione rettangolare"
+msgstr "Registra una regione rettangolare"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1803,12 +1787,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle sta registrando: %1\n"
+"Clic per terminare la registrazione"
 
 #: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "«%1» non una modalità valida per --record"
 
 #: src/SpectacleCore.cpp:791
 #, kde-format
@@ -1828,14 +1814,12 @@ msgstr ""
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr ""
-"Una nuova schermata è stata salvata come «%1» nella tua cartella delle "
-"immagini."
+msgstr "Una schermata è stata salvata come «%1» nella cartella delle immagini."
 
 #: src/SpectacleCore.cpp:850
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Una nuova schermata è stata salvata come «%1» in «%2»."
+msgstr "Una schermata è stata salvata come «%1» in «%2»."
 
 #: src/SpectacleCore.cpp:854
 #, kde-format
@@ -1843,32 +1827,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Una schermata è stata salvata negli appunti."
 
 #: src/SpectacleCore.cpp:859
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"La schermata è stata salvata come «%1» in «%2» ed il suo percorso è stata "
-"copiato negli appunti."
+"Una registrazione è stata salvata come «%1» in «%2» ed il suo percorso è "
+"stata copiato negli appunti."
 
 #: src/SpectacleCore.cpp:861
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr ""
-"Una nuova schermata è stata salvata come «%1» nella tua cartella delle "
-"immagini."
+msgstr "Una registrazione è stata salvata come «%1» nella cartella dei video."
 
 #: src/SpectacleCore.cpp:863
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Una nuova schermata è stata salvata come «%1» in «%2»."
+msgstr "Una registrazione è stata salvata come «%1» in «%2»."
 
 #: src/SpectacleCore.cpp:874
 #, kde-format

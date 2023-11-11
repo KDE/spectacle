@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-11-08 12:44+0100\n"
+"PO-Revision-Date: 2023-11-09 13:04+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -677,18 +677,16 @@ msgid "Image Zoom"
 msgstr "Zoom d'image"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "La capture d'écran a été copiée dans le presse-papier."
+msgstr "L'emplacement de la vidéo a été copiée dans le presse-papier."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "La capture d'écran a été copiée dans le presse-papier."
+msgstr "L'emplacement de la capture a été copiée dans le presse-papier."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -706,10 +704,9 @@ msgid "Copy"
 msgstr "Copier"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Copier l'emplacement dans le presse-papier"
+msgstr "Copier l'emplacement"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -828,16 +825,13 @@ msgstr ""
 "<a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"La copie d'écran a été enregistrée <a href=\"%1\">%2</a> et son emplacement "
-"a été copié dans le presse-papier."
+"La vidéo a été enregistrée comme <a href=\"%1\">%2</a> et son emplacement a "
+"été copié dans le presse-papier."
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1464,55 +1458,45 @@ msgid "Save &Location:"
 msgstr "Enregistrer l'emplacement :"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Image partagée"
+msgstr "Vidéo partagée"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Image partagée"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Le lien de l'image partagée (<a href=\"%1\">%1</a>) a été copié dans le "
-"presse-papiers."
+"Le lien de la vidéo partagée (<a href=\"%1\">%1</a>) a été copié dans le "
+"presse-papier."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
 "Le lien de l'image partagée (<a href=\"%1\">%1</a>) a été copié dans le "
-"presse-papiers."
+"presse-papier."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Un problème est survenu lors du partage de l'image : %1"
+msgstr "Un problème est survenu lors du partage de la vidéo : %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Un problème est survenu lors du partage de l'image : %1"
