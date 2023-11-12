@@ -1,24 +1,24 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2015, 2016, 2017, 2018.
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-11-07 18:47+0100\n"
+"PO-Revision-Date: 2023-11-11 09:38+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -662,18 +662,16 @@ msgid "Image Zoom"
 msgstr "Zoom slike"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Zaslonska slika je bila kopirana v odložišče."
+msgstr "Lokacija videa je bila prekopirana na odložišče."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Zaslonska slika je bila kopirana v odložišče."
+msgstr "Lokacija zaslonske slike je bila prekopirana na odložišče."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -691,10 +689,9 @@ msgid "Copy"
 msgstr "Kopiraj"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Kopiraj lokacijo na odložišče"
+msgstr "Kopiraj lokacijo"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -810,16 +807,13 @@ msgstr ""
 "\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Zaslonska slika (<a href=\"%1\">%2</a>) in njena lokacija je bila skopirana "
-"na odložišče"
+"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegova lokacija je "
+"bila prekopirana na odložišče"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1425,55 +1419,45 @@ msgid "Save &Location:"
 msgstr "Shrani lokacijo:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Slika deljena"
+msgstr "Video deljen z drugimi"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
-msgstr "Slika deljena"
+msgstr "Slika deljena z drugimi"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Povezava na zaslonsko sliko (<a href=\"%1\">%1</a>)  je bila kopirana na "
+"Deljena povezava na video (<a href=\"%1\">%1</a>)  je bila prekopirana na "
 "odložišče."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Povezava na zaslonsko sliko (<a href=\"%1\">%1</a>)  je bila kopirana na "
+"Deljena povezava na sliko (<a href=\"%1\">%1</a>)  je bila prekopirana na "
 "odložišče."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Med deljenjem slike je prišlo do težave: %1"
+msgstr "Med deljenjem videa je prišlo do težave: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Med deljenjem slike je prišlo do težave: %1"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-10-09 18:10+0200\n"
+"PO-Revision-Date: 2023-11-11 18:16+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -99,6 +99,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Записване на екрана, като използвате дадения режим. Режими:\n"
+"- r, регион\n"
+"- s, екран\n"
+"- w, прозорец"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -183,11 +187,10 @@ msgstr ""
 "При заснемане във фонов режим: изключване на декорациите на екранната снимка"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr ""
-"При заснемане във фонов режим: изключване на декорациите на екранната снимка"
+"При заснемане във фонов режим: пропускане на сенките в екранната снимка"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -255,6 +258,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Не успя да експортира видео: URL адресът на временния файл трябва да е "
+"съществуващ локален файл"
 
 #: src/ExportManager.cpp:600
 #, kde-format
@@ -262,15 +267,16 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Не успя да експортира видео: URL адресът на изходния файл трябва да е "
+"валиден URL адрес с име на файл"
 
 #: src/ExportManager.cpp:675
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Невъзможно е да се запази изображението. Не може да се качи файл на "
-"отдалечено място."
+"Невъзможно е да се запази видеозаписът. Не може да се премести файла в "
+"местоположение: %1"
 
 #: src/ExportManager.cpp:703
 #, kde-format
@@ -534,19 +540,14 @@ msgstr ""
 "прозореца."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Включване на заглавната лента и рамката на прозореца"
+msgstr "Включване на сянката на прозореца"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
-"Показване на лентата със заглавието и рамката на прозореца при снимка на "
-"прозореца."
+msgstr "Показване на сянката на прозореца при снимка на прозореца."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -667,18 +668,16 @@ msgid "Image Zoom"
 msgstr "Мащаб на изображение"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Екранната снимка е копирана в клипборда."
+msgstr "Местоположението на видеото е копирано в клипборда."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Екранната снимка е копирана в клипборда."
+msgstr "Местоположението на екранната снимка е копирано в клипборда."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -696,10 +695,9 @@ msgid "Copy"
 msgstr "Копиране"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Copy Location"
-msgstr "Място за запис:"
+msgstr "Местоположение на записа"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -748,7 +746,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Показване на сянката на прозореца"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -820,16 +818,13 @@ msgstr ""
 "%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Екранната снимка е запазена като <a href=\"%1\">%2</a> и местоположението е "
-"копирано в клипборда"
+"Видеото е запазено като <a href=\"%1\">%2</a> и местоположението е копирано "
+"в клипборда"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1195,11 +1190,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr ""
-"Определя дали декорациите на прозореца се включват в снимката на екрана"
+msgstr "Определя дали сянката на прозореца се включва в снимката на екрана"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1234,8 +1227,7 @@ msgid "Compression quality for lossy file formats"
 msgstr "Качество на компресията за файлови формати със загуба на данни"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Снимка на екрана"
@@ -1281,11 +1273,10 @@ msgid "The default filename used when recording a video"
 msgstr "Име на файла по подразбиране, използвано при записване на видео"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Снимка на екрана"
+msgstr "Видеозаснемане на екрана"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1448,55 +1439,44 @@ msgid "Save &Location:"
 msgstr "Местоположение на &записване:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Изображението е споделено"
+msgstr "Видеото е споделено"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Изображението е споделено"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Връзката за споделено изображение (<a href=\"%1\">%1</a>)е копирана в "
-"клипборда."
+"Връзката за споделено видео (<a href=\"%1\">%1</a>)е копирана в клипборда."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Връзката за споделено изображение (<a href=\"%1\">%1</a>)е копирана в "
+"Връзката на споделеното изображение (<a href=\"%1\">%1</a>)е копирана в "
 "клипборда."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Имаше проблем при споделянето на изображението: %1"
+msgstr "Имаше проблем при споделянето на видеото: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Имаше проблем при споделянето на изображението: %1"
@@ -1675,87 +1655,83 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Неуспешно записване: URL адресът на файла не е локален файл"
 
 #: src/Platforms/VideoPlatformWayland.cpp:221
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Неуспешно записване: Не може да се създаде папка (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Неуспешно записване: URL адресът на временния файл не е локален файл (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Неуспешно записване: URL адресът на изходния файл не е локален файл (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:278
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Записването на екрана е отменено"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Записването на прозореца е отменено"
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Неуспех при избор на прозорец"
+msgstr "Неуспех при селекция на екрана: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Неуспех при избор на прозорец"
+msgstr "Неуспех при селекция на прозорец: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Не успя да се избере екран: Няма екран, който да съдържа позицията на "
+"курсора на мишката"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Неуспех при избор на прозорец"
+msgstr "Неуспех при селекция на прозорец: Не е намерен прозорец"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Region"
-msgstr ""
+msgstr "Регион"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "Снимка на екрана"
+msgstr "Екран"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Заглавие на прозореца"
+msgstr "Прозорец"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1788,22 +1764,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Заснемане на прозорец под курсора"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Избран екран"
+msgstr "Записване на екрана"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Записване на видео"
+msgstr "Записване на прозорец"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Правоъгълна област"
+msgstr "Записване на правоъгълна област"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1817,12 +1790,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle записва: %1\n"
+"Кликнете, за да завършите записването"
 
 #: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 не е валиден режим за --record"
 
 #: src/SpectacleCore.cpp:791
 #, kde-format
@@ -1855,30 +1830,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Екранната снимка беше запазена в клипборда."
 
 #: src/SpectacleCore.cpp:859
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Екранната снимка беше запазена като \"%1\" в \"%2\" и пътя на файла е "
-"запазен в клипборда."
+"Записването беше запазено като \"%1\" в \"%2\" и пътят на файла е запазен в "
+"клипборда."
 
 #: src/SpectacleCore.cpp:861
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Снимката на екрана беше запазена като '%1' в папката Изображения."
+msgstr "Записването беше запазено като '%1' в папката Видео."
 
 #: src/SpectacleCore.cpp:863
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Екранната снимка беше запазена като \"%1\" в \"%2\"."
+msgstr "Записването беше запазено като \"%1\" в \"%2\"."
 
 #: src/SpectacleCore.cpp:874
 #, kde-format

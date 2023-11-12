@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:47+0000\n"
-"PO-Revision-Date: 2023-10-21 13:51\n"
+"PO-Revision-Date: 2023-11-11 07:19\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -165,10 +165,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "在后台模式下，屏幕截图中不包含窗口装饰"
+msgstr "在后台模式下，屏幕截图中不包含窗口阴影"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -240,11 +239,10 @@ msgid ""
 msgstr ""
 
 #: src/ExportManager.cpp:675
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "无法保存图像。无法上传至远程地址。"
+msgstr ""
 
 #: src/ExportManager.cpp:703
 #, kde-format
@@ -505,17 +503,14 @@ msgid ""
 msgstr "窗口模式截图包含标题栏和边框。"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "包含窗口标题栏和边框"
+msgstr "包含窗口阴影"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "窗口模式截图包含标题栏和边框。"
+msgstr "窗口模式截图包含窗口阴影。"
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -632,18 +627,16 @@ msgid "Image Zoom"
 msgstr "图像缩放"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "截图已复制到剪贴板。"
+msgstr ""
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "截图已复制到剪贴板。"
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -661,10 +654,9 @@ msgid "Copy"
 msgstr "复制"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Copy Location"
-msgstr "保存位置："
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -711,7 +703,7 @@ msgstr "显示窗口标题栏、最小化/最大化/关闭按钮、窗口边框�
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "显示窗口阴影"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -778,14 +770,11 @@ msgid ""
 msgstr "屏幕截图已复制到剪贴板并保存为 <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
-msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>，且该位置已被复制到剪贴板"
+msgstr ""
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1136,10 +1125,9 @@ msgstr "是否在截图中包含窗口装饰元素"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "是否在截图中包含窗口装饰元素"
+msgstr "是否在截图中包含窗口阴影"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
@@ -1177,7 +1165,7 @@ msgstr "有损压缩文件格式的画质"
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr ""
+msgstr "屏幕截图"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:148
@@ -1223,7 +1211,7 @@ msgstr "录制视频时使用的默认文件名"
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr ""
+msgstr "屏幕录像"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1386,35 +1374,27 @@ msgid "Save &Location:"
 msgstr "保存位置(&L)："
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "图像已分享"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "图像已分享"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "该图像的分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板。"
+msgstr ""
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1422,15 +1402,13 @@ msgid ""
 msgstr "该图像的分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板。"
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "分享图像出错：%1"
+msgstr ""
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "分享图像出错：%1"
@@ -1645,18 +1623,16 @@ msgid "Window recording canceled"
 msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:286
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "选择窗口失败"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "选择窗口失败"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:310
 #, kde-format
@@ -1665,11 +1641,10 @@ msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "选择窗口失败"
+msgstr ""
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
@@ -1678,21 +1653,16 @@ msgid "Region"
 msgstr ""
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Screen"
-msgstr "屏幕截图"
+msgstr ""
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "窗口标题"
+msgstr ""
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1725,22 +1695,19 @@ msgid "Capture Window Under Cursor"
 msgstr "截取光标所在窗口"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "选定的屏幕"
+msgstr ""
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "屏幕录像"
+msgstr ""
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "绘制矩形区域"
+msgstr ""
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1790,28 +1757,22 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:859
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
-msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
+msgstr ""
 
 #: src/SpectacleCore.cpp:861
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
+msgstr ""
 
 #: src/SpectacleCore.cpp:863
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
+msgstr ""
 
 #: src/SpectacleCore.cpp:874
 #, kde-format
@@ -1835,12 +1796,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Workspace"
-#~ msgstr "工作区"
-
-#~ msgid "Selected Window"
-#~ msgstr "选定的窗口"
-
-#~ msgid "Failed to select output"
-#~ msgstr "选择输出设备失败"
