@@ -480,6 +480,7 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action RecordRegion]
 Name=Record Rectangular Region
+Name[bg]=Заснемане на правоъгълен регион
 Name[ca]=Enregistra una regió rectangular
 Name[ca@valencia]=Grava una regió rectangular
 Name[cs]=Zaznamenat obdélníkovou oblast
@@ -493,6 +494,7 @@ Name[is]=Taka mynd af rétthyrndu svæði
 Name[it]=Registra una regione rettangolare
 Name[ka]=ოთხკუთხედი რეგიონის ჩაწერა
 Name[nl]=Rechthoekig gebied opnemen
+Name[sk]=Nahrať pravouhlú oblasť
 Name[sl]=Zajemi pravokotno območje
 Name[tr]=Dikdörtgen Bölgeyi Kaydet
 Name[uk]=Захопити прямокутну область
@@ -502,6 +504,7 @@ X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
 [Desktop Action RecordScreen]
 Name=Record Screen
+Name[bg]=Запис на екрана
 Name[ca]=Enregistra la pantalla
 Name[ca@valencia]=Grava la pantalla
 Name[cs]=Nahrávat obrazovku
@@ -515,6 +518,7 @@ Name[is]=Taka upp skjá
 Name[it]=Registra schermo
 Name[ka]=ეკრანის ჩასწერა
 Name[nl]=Scherm opnemen
+Name[sk]=Nahrávať obrazovku
 Name[sl]=Zajemi zaslon
 Name[tr]=Ekranı Kaydet
 Name[uk]=Запис з екрана
@@ -524,6 +528,7 @@ X-KDE-Shortcuts=Meta+Alt+R
 
 [Desktop Action RecordWindow]
 Name=Record Window
+Name[bg]=Запис на прозорец
 Name[ca]=Enregistra una finestra
 Name[ca@valencia]=Grava una finestra
 Name[cs]=Zaznamenat okno
@@ -537,6 +542,7 @@ Name[is]=Taka upp glugga
 Name[it]=Registra finestra
 Name[ka]=ფანჯრის ჩაწერა
 Name[nl]=Opnamevenster
+Name[sk]=Nahrávať okno
 Name[sl]=Zajemi okno
 Name[tr]=Pencereyi Kaydet
 Name[uk]=Записати з вікна
