@@ -56,17 +56,17 @@ void SpectacleDBusAdapter::RectangularRegion(int includeMousePointer)
 
 void SpectacleDBusAdapter::RecordRegion(int includeMousePointer)
 {
-    parent()->startRecording(VideoPlatform::Region, includeMousePointer == -1 ? Settings::includePointer() : includeMousePointer);
+    parent()->startRecording(VideoPlatform::Region, includeMousePointer == -1 ? Settings::videoIncludePointer() : includeMousePointer);
 }
 
 void SpectacleDBusAdapter::RecordScreen(int includeMousePointer)
 {
-    parent()->startRecording(VideoPlatform::Screen, includeMousePointer == -1 ? Settings::includePointer() : includeMousePointer);
+    parent()->startRecording(VideoPlatform::Screen, includeMousePointer == -1 ? Settings::videoIncludePointer() : includeMousePointer);
 }
 
 void SpectacleDBusAdapter::RecordWindow(int includeMousePointer)
 {
-    parent()->startRecording(VideoPlatform::Window, includeMousePointer == -1 ? Settings::includePointer() : includeMousePointer);
+    parent()->startRecording(VideoPlatform::Window, includeMousePointer == -1 ? Settings::videoIncludePointer() : includeMousePointer);
 }
 
 void SpectacleDBusAdapter::OpenWithoutScreenshot()

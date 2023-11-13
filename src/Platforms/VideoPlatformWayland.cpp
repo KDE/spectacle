@@ -129,7 +129,9 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         return;
     }
 
-    Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Metadata : Screencasting::Hidden;
+    // BUG: https://bugs.kde.org/show_bug.cgi?id=476964
+    // CursorMode::Metadata doesn't work.
+    Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Embedded : Screencasting::Hidden;
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
     case Screen: {

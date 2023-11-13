@@ -72,7 +72,7 @@ public:
 
     void syncExportImage();
 
-    Q_INVOKABLE void startRecording(VideoPlatform::RecordingMode mode, bool withPointer = Settings::includePointer());
+    Q_INVOKABLE void startRecording(VideoPlatform::RecordingMode mode, bool withPointer = Settings::videoIncludePointer());
     Q_INVOKABLE void finishRecording();
     bool videoMode() const;
     QUrl currentVideo() const;

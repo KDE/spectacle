@@ -147,7 +147,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             // deleteWindows();
             // showViewerIfGuiMode(true);
             bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
-            includePointer |= m_startMode != StartMode::Background && Settings::includePointer();
+            includePointer |= m_startMode != StartMode::Background && Settings::videoIncludePointer();
             const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
             m_videoPlatform->startRecording(output, VideoPlatform::Region, rect.toRect(), includePointer);
         } else {
@@ -602,6 +602,10 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             return;
         }
         setVideoMode(true);
+
+        if (m_startMode != StartMode::Background) {
+            includePointer = Settings::videoIncludePointer() || m_cliOptions[Option::Pointer];
+        }
     } else {
         setVideoMode(false);
     }

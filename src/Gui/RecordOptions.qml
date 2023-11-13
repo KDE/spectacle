@@ -23,7 +23,7 @@ ColumnLayout {
                 topPadding: Kirigami.Units.mediumSpacing
                 bottomPadding: Kirigami.Units.mediumSpacing
                 text: model.display
-                onClicked: SpectacleCore.startRecording(model.recordingMode, Settings.includePointer)
+                onClicked: SpectacleCore.startRecording(model.recordingMode, Settings.videoIncludePointer)
             }
         }
         Kirigami.Heading {
@@ -42,8 +42,8 @@ ColumnLayout {
             QQC.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
             QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
             QQC.ToolTip.visible: hovered
-            checked: Settings.includePointer
-            onToggled: Settings.includePointer = checked
+            checked: Settings.videoIncludePointer
+            onToggled: Settings.videoIncludePointer = checked
         }
     }
     ColumnLayout {
