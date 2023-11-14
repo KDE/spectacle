@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 08:47+0000\n"
+"POT-Creation-Date: 2023-11-14 01:38+0000\n"
 "PO-Revision-Date: 2023-11-08 16:19+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1175,253 +1175,260 @@ msgstr "Prende captura de schermo al click"
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Si le cursor de mus es includite in le captura de schermo"
 
-#. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
+#. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
+#, fuzzy, kde-format
+#| msgid "Whether the mouse cursor is included in the screenshot"
+msgid "Whether the mouse cursor is included in the video"
+msgstr "Si le cursor de mus es includite in le captura de schermo"
+
+#. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Si le decorationes de fenestra es includite in le captura de schermo"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:95
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Si le umbra de fenestra es includite in le captura de schermo"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:99
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Captura solmente le menu currente de popup"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:103
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Quita postea salveguardar o copiar un imagine"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:107
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
 msgstr "Retardo"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:118
-#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
 #, kde-format
 msgid "Default filename"
 msgstr "Nomine de file predefinite"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:140
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Qualitate de compression per formatos de file lossy (i.e. con perdita)"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:147
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Capturas de schermo"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, kde-format
 msgid "Default save image format"
 msgstr "Formato de image de salveguardar predefinite"
 
 #. i18n: ectx: label, entry (imageFilenameFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgid "The default filename used when saving"
 msgstr "Le nomine predefinite usate quando on salveguarda"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Le percurso del file salveguardate per ultime"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:160
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:164
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Ultime percurso usate per action de \"salveguarda como\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:188
+#: src/Gui/SettingsDialog/spectacle.kcfg:192
 #, kde-format
 msgid "Default video format"
 msgstr "Formato de video predefinite"
 
 #. i18n: ectx: label, entry (videoFilenameFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:193
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The default filename used when recording a video"
 msgstr "Le nomine de file predefinite usate quando on registra un video"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Screencasts"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:207
+#: src/Gui/SettingsDialog/spectacle.kcfg:211
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Le ultime typo de instrumento de annotation"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:217
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Largessa de colpo (Stroke) per instrumento de annotation a mano libere"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:222
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr ""
 "Largessa de colpo (Stroke) per instrumento de annotation a evidentiator"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#: src/Gui/SettingsDialog/spectacle.kcfg:227
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Largessa de colpo (Stroke) per instrumento de annotation a linea"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:232
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Largessa de colpo (Stroke) per instrumento de annotation a flecha"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:237
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Largessa de colpo (Stroke) per instrumento de annotation a rectangulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:238
+#: src/Gui/SettingsDialog/spectacle.kcfg:242
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Largessa de colpo (Stroke) per instrumento de annotation a ellipse"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:244
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a mano libere"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:248
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a evidentiator"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:252
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a linea"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:256
+#: src/Gui/SettingsDialog/spectacle.kcfg:260
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a flecha"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:260
+#: src/Gui/SettingsDialog/spectacle.kcfg:264
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a rectangulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:264
+#: src/Gui/SettingsDialog/spectacle.kcfg:268
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a ellipse"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:269
+#: src/Gui/SettingsDialog/spectacle.kcfg:273
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a rectangulo"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:273
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
+#: src/Gui/SettingsDialog/spectacle.kcfg:281
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Color de colpo (Stroke) per instrumento de annotation a ellipse"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:282
+#: src/Gui/SettingsDialog/spectacle.kcfg:286
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Font per annotationes de texto"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Font per annotationes de numero"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:297
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Color de font per annotationes"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation a mano libere ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation a linea ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation a flecha ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:310
+#: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation a rectangulo ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:314
+#: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation a ellipse ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:318
+#: src/Gui/SettingsDialog/spectacle.kcfg:322
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation de texto ha un umbra de cadita"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:322
+#: src/Gui/SettingsDialog/spectacle.kcfg:326
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Si le instrumento de annotation de numero ha un umbra de cadita"
@@ -1652,49 +1659,49 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Falleva a registrar: URL de file non es un file local"
 
-#: src/Platforms/VideoPlatformWayland.cpp:221
+#: src/Platforms/VideoPlatformWayland.cpp:223
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Falleva a registrar: Incapace a crear dossier (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:233
+#: src/Platforms/VideoPlatformWayland.cpp:235
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Falleva a registrar: URL de file temporanee non es un file local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:243
+#: src/Platforms/VideoPlatformWayland.cpp:245
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Falleva a registrar: URL de file de exito non es un file local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:278
+#: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Registration de Schermo Cancellate"
 
-#: src/Platforms/VideoPlatformWayland.cpp:280
+#: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Registration de fenestra camcellate"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:288
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Falleva a seliger  schermo: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:290
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Falleva a seliger fenestra: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:310
+#: src/Platforms/VideoPlatformWayland.cpp:312
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1702,23 +1709,25 @@ msgstr ""
 "Fallve a selectionar schermo: Nulle schermo contineva le position de cursor "
 "de mus"
 
-#: src/Platforms/VideoPlatformWayland.cpp:317
+#: src/Platforms/VideoPlatformWayland.cpp:319
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Falleva a seliger fenestra : nulle fenestra trovate"
 
 #: src/RecordingModeModel.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
 msgctxt "@item recording mode"
-msgid "Region"
-msgstr "Region"
+msgid "Rectangular Region"
+msgstr "Region rectangular"
 
 #: src/RecordingModeModel.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Full Screen"
 msgctxt "@item recording mode"
-msgid "Screen"
-msgstr "Schermo"
+msgid "Full Screen"
+msgstr "Schermo plen"
 
 #: src/RecordingModeModel.cpp:34
 #, kde-format
@@ -1792,12 +1801,12 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non es un valide modo per -record"
 
-#: src/SpectacleCore.cpp:791
+#: src/SpectacleCore.cpp:795
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Captura de instantaneo cancellate o fallite"
 
-#: src/SpectacleCore.cpp:843
+#: src/SpectacleCore.cpp:847
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1806,24 +1815,24 @@ msgstr ""
 "Un captura de schermo ha essite salveguardate como '%1' a '%2' e le percurso "
 "del captura de schermo ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:847
+#: src/SpectacleCore.cpp:851
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Un captura de schermo esseva salveguardate como '%1' a tu dossier de Photo."
 
-#: src/SpectacleCore.cpp:850
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Un captura de schermo esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:854
+#: src/SpectacleCore.cpp:858
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Un captura de schermo esseva salveguardate a tu tabuliero."
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:863
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1832,24 +1841,24 @@ msgstr ""
 "Un  registration ha essite salveguardate como '%1' a '%2' e le percurso del "
 "registration ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:861
+#: src/SpectacleCore.cpp:865
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Un registration esseva salveguardate como '%1' a tu dossier de Videos."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:867
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Un registration esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:874
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperi"
 
-#: src/SpectacleCore.cpp:888
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
@@ -1865,6 +1874,14 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "@item recording mode"
+#~ msgid "Region"
+#~ msgstr "Region"
+
+#~ msgctxt "@item recording mode"
+#~ msgid "Screen"
+#~ msgstr "Schermo"
 
 #~ msgid "Workspace"
 #~ msgstr "Spatio de labor"
