@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:38+0000\n"
-"PO-Revision-Date: 2023-11-09 20:08+0100\n"
+"PO-Revision-Date: 2023-11-14 06:59+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1153,10 +1153,9 @@ msgstr "Ĉu la muskursoro estas inkluzivita en la ekrankopio"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Ĉu la muskursoro estas inkluzivita en la ekrankopio"
+msgstr "Ĉu la muskursoro estas inkluzivita en la filmeto"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1688,18 +1687,16 @@ msgid "Failed to select window: No window found"
 msgstr "Malsukcesis elekti fenestron"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
-msgstr "Rektangula Regiono"
+msgstr "Ortangula Regiono"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
-msgstr "Plenekrane"
+msgstr "Plenekrana"
 
 #: src/RecordingModeModel.cpp:34
 #, kde-format
@@ -1845,11 +1842,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Region"
-#~ msgstr "Regiono"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Screen"
-#~ msgstr "Ekrano"

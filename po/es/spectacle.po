@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:38+0000\n"
-"PO-Revision-Date: 2023-11-10 00:04+0100\n"
+"PO-Revision-Date: 2023-11-14 17:50+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1182,10 +1182,9 @@ msgstr "Controla si se incluye el cursor del ratón en la captura de pantalla"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Controla si se incluye el cursor del ratón en la captura de pantalla"
+msgstr "Controla si se incluye el cursor del ratón en el vídeo"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1730,15 +1729,13 @@ msgstr ""
 "No se ha podido seleccionar la ventana: No se ha encontrado ninguna ventana."
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Región rectangular"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Pantalla completa"

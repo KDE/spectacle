@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:38+0000\n"
-"PO-Revision-Date: 2023-11-09 15:41+0100\n"
+"PO-Revision-Date: 2023-11-14 13:12+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -1126,10 +1126,9 @@ msgstr "Zda bude kurzor zahrnut ve snímku"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Zda bude kurzor zahrnut ve snímku"
+msgstr "Zda bude kurzor zahrnut ve videu"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1659,15 +1658,13 @@ msgid "Failed to select window: No window found"
 msgstr "Selhal výběr okna: Nebylo nalezeno žádné okno"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Obdélníková oblast"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Celá obrazovka"
@@ -1816,11 +1813,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Region"
-#~ msgstr "Oblast"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Screen"
-#~ msgstr "Obrazovka"
