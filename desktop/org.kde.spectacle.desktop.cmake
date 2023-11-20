@@ -499,6 +499,7 @@ Name[sl]=Zajemi pravokotno območje
 Name[tr]=Dikdörtgen Bölgeyi Kaydet
 Name[uk]=Захопити прямокутну область
 Name[x-test]=xxRecord Rectangular Regionxx
+Name[zh_CN]=录制矩形区域
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R region
 X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
@@ -523,6 +524,7 @@ Name[sl]=Zajemi zaslon
 Name[tr]=Ekranı Kaydet
 Name[uk]=Запис з екрана
 Name[x-test]=xxRecord Screenxx
+Name[zh_CN]=录制屏幕
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R screen
 X-KDE-Shortcuts=Meta+Alt+R
 
@@ -547,6 +549,7 @@ Name[sl]=Zajemi okno
 Name[tr]=Pencereyi Kaydet
 Name[uk]=Записати з вікна
 Name[x-test]=xxRecord Windowxx
+Name[zh_CN]=录制窗口
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R window
 X-KDE-Shortcuts=Meta+Ctrl+R
 
