@@ -547,7 +547,27 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 
     if (actions & CopyImage) {
         auto data = new QMimeData();
-        data->setImageData(m_saveImage);
+        bool savedLocal = saved && url.isLocalFile();
+        bool canWriteTemp = temporaryDir() != nullptr;
+        if (savedLocal || canWriteTemp) {
+            QString localFilePath;
+            if (savedLocal || (url.isEmpty() && canWriteTemp)) {
+                if (url.isEmpty()) {
+                    url = tempSave();
+                }
+                localFilePath = url.toLocalFile();
+            } else {
+                localFilePath = tempSave().toLocalFile();
+            }
+            QFile imageFile(localFilePath);
+            imageFile.open(QFile::ReadOnly);
+            const auto mimetype = QMimeDatabase().mimeTypeForFile(localFilePath);
+            data->setData(mimetype.name(), imageFile.readAll());
+            imageFile.close();
+        } else {
+            // Fallback to the old way if we can't save a temp file for some reason.
+            data->setImageData(m_saveImage);
+        }
         // "x-kde-force-image-copy" is handled by Klipper.
         // It ensures that the image is copied to Klipper even with the
         // "Non-text selection: Never save in history" setting selected in Klipper.
