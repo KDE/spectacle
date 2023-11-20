@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-14 01:38+0000\n"
-"PO-Revision-Date: 2023-11-11 07:19\n"
+"PO-Revision-Date: 2023-11-19 03:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -94,6 +94,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"录制屏幕显示内容。可以选择以下录制模式：\n"
+"- r, region\n"
+"- s, screen\n"
+"- w, window"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -229,20 +233,20 @@ msgstr "无法保存空白截屏图像。"
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
-msgstr ""
+msgstr "导出视频失败：临时文件 URL 必须是现有的本地文件"
 
 #: src/ExportManager.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
-msgstr ""
+msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的有效 URL"
 
 #: src/ExportManager.cpp:675
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
+msgstr "无法保存录像。无法移动文件到位置：%1"
 
 #: src/ExportManager.cpp:703
 #, kde-format
@@ -630,13 +634,13 @@ msgstr "图像缩放"
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr ""
+msgstr "视频的位置已复制到剪贴板。"
 
 #: src/Gui/LocationCopiedMessage.qml:14
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr ""
+msgstr "截图的位置已复制到剪贴板。"
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -656,7 +660,7 @@ msgstr "复制"
 #: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy Location"
-msgstr ""
+msgstr "复制地址"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -774,7 +778,7 @@ msgstr "屏幕截图已复制到剪贴板并保存为 <a href=\"%1\">%2</a>"
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
-msgstr ""
+msgstr "视频已保存为 <a href=\"%1\">%2</a>，且该位置已被复制到剪贴板"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1119,10 +1123,9 @@ msgstr "是否在截图中包含鼠标光标"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "是否在截图中包含鼠标光标"
+msgstr "是否在视频中包含鼠标光标"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1384,7 +1387,7 @@ msgstr "保存位置(&L)："
 #, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr ""
+msgstr "视频已分享"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1398,7 +1401,7 @@ msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr ""
+msgstr "视频分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板。"
 
 #: src/Gui/SharedMessage.qml:18
 #, kde-format
@@ -1412,7 +1415,7 @@ msgstr "该图像的分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板�
 #, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr ""
+msgstr "分享视频出错：%1"
 
 #: src/Gui/ShareErrorMessage.qml:14
 #, kde-format
@@ -1597,72 +1600,70 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "录制失败：文件 URL 不是本地文件"
 
 #: src/Platforms/VideoPlatformWayland.cpp:223
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "录制失败：无法创建文件夹 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:235
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "录制失败：临时文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:245
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "录制失败：输出文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:280
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "屏幕录像已取消"
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "窗口录像已取消"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "选择屏幕失败：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:290
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr ""
+msgstr "选择窗口失败：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:312
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "选择屏幕失败：没有包含鼠标光标位置的屏幕"
 
 #: src/Platforms/VideoPlatformWayland.cpp:319
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr ""
+msgstr "选择窗口失败：找不到窗口"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "绘制矩形区域"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "全屏"
@@ -1671,7 +1672,7 @@ msgstr "全屏"
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr ""
+msgstr "窗口"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1706,17 +1707,17 @@ msgstr "截取光标所在窗口"
 #: src/ShortcutActions.cpp:74
 #, kde-format
 msgid "Record Screen"
-msgstr ""
+msgstr "录制屏幕"
 
 #: src/ShortcutActions.cpp:80
 #, kde-format
 msgid "Record Window"
-msgstr ""
+msgstr "录制窗口"
 
 #: src/ShortcutActions.cpp:86
 #, kde-format
 msgid "Record Rectangular Region"
-msgstr ""
+msgstr "录制矩形区域"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1730,12 +1731,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle 正在录像：%1\n"
+"点击以结束录像"
 
 #: src/SpectacleCore.cpp:600
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 不是 --record 参数的有效模式"
 
 #: src/SpectacleCore.cpp:795
 #, kde-format
@@ -1770,18 +1773,18 @@ msgstr "屏幕截图已保存到剪贴板。"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
-msgstr ""
+msgstr "屏幕录像已经使用名称“%1”保存到了“%2”，该录像的文件路径已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:865
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr ""
+msgstr "录像已保存到你的视频文件夹，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:867
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr ""
+msgstr "录像已保存到文件夹“%2”，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:878
 #, kde-format
