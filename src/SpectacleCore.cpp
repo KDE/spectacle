@@ -269,7 +269,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
     }, Qt::QueuedConnection); // QueuedConnection to help prevent making the visible render lag.
 
     // set up shortcuts
-    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(), Qt::Key_Print);
+    KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->openAction(),
+                                            QList<QKeySequence>{
+                                                Qt::Key_Print,
+                                                // Default screenshot shortcut on Windows.
+                                                // Also for keyboards without a print screen key.
+                                                Qt::META | Qt::SHIFT | Qt::Key_S,
+                                            });
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->fullScreenAction(), Qt::SHIFT | Qt::Key_Print);
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->activeWindowAction(), Qt::META | Qt::Key_Print);
     KGlobalAccel::self()->setGlobalShortcut(ShortcutActions::self()->windowUnderCursorAction(), Qt::META | Qt::CTRL | Qt::Key_Print);

@@ -200,7 +200,7 @@ Actions=FullScreenScreenShot;CurrentMonitorScreenShot;ActiveWindowScreenShot;Rec
 DBusActivatable=true
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.Spectacle
-X-KDE-Shortcuts=Print
+X-KDE-Shortcuts=Print,Meta+Shift+S
 X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot,org.kde.KWin.ScreenShot2
 X-KDE-Wayland-Interfaces=org_kde_plasma_window_management,zkde_screencast_unstable_v1
 
