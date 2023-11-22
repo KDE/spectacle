@@ -649,7 +649,7 @@ void SelectionEditor::mouseReleaseEvent(QQuickItem *item, QMouseEvent *event)
 void SelectionEditor::mouseDoubleClickEvent(QQuickItem *item, QMouseEvent *event)
 {
     Q_UNUSED(item)
-    if (event->button() == Qt::LeftButton && d->selection->contains(d->mousePos)) {
+    if (event->button() == Qt::LeftButton && (d->selection->contains(d->mousePos) || d->selection->isEmpty())) {
         acceptSelection();
     }
     event->accept();
