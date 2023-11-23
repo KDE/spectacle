@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:38+0000\n"
+"POT-Creation-Date: 2023-11-23 01:37+0000\n"
 "PO-Revision-Date: 2023-11-14 17:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -232,7 +232,7 @@ msgstr "Ekran görüntüsü kaydedilemiyor. Dosya kayıt adı geçersiz."
 msgid "Cannot save an empty screenshot image."
 msgstr "Boş ekran görüntüsü görseli kaydedilemez."
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Video dışa aktarılamadı: Geçici dosya URL'si var olan bir yerel dosya "
 "olmalıdır"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,18 +250,18 @@ msgstr ""
 "Video dışa aktarılamadı: Çıktı dosyası URL'si bir dosya adı içeren geçerli "
 "bir URL olmalıdır"
 
-#: src/ExportManager.cpp:675
+#: src/ExportManager.cpp:695
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kayıt kaydedilemiyor. Dosya, şu konuma taşınamadı: %1"
 
-#: src/ExportManager.cpp:703
+#: src/ExportManager.cpp:723
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Yazdırma başarısız. Yazıcı başlatılamadı."
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:739
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -269,7 +269,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Yıl (4 basamaklı)"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:740
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -277,7 +277,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Yıl (2 basamaklı)"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Ay"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:742
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -293,7 +293,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Ay (yerelleştirilmiş kısa ad)"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:743
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -301,7 +301,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Ay (yerelleştirilmiş uzun ad)"
 
-#: src/ExportManager.cpp:724
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +309,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Gün"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:745
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Saat"
 
-#: src/ExportManager.cpp:726
+#: src/ExportManager.cpp:746
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Dakika"
 
-#: src/ExportManager.cpp:727
+#: src/ExportManager.cpp:747
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,7 +333,7 @@ msgctxt ""
 msgid "Second"
 msgstr "saniye"
 
-#: src/ExportManager.cpp:728
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -341,7 +341,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Zaman dilimi"
 
-#: src/ExportManager.cpp:729
+#: src/ExportManager.cpp:749
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -349,7 +349,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Pencere başlığı"
 
-#: src/ExportManager.cpp:730
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -357,7 +357,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Sıralı numaralandırma"
 
-#: src/ExportManager.cpp:732
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1748,7 +1748,7 @@ msgstr "Dikdörtgen Bölgeyi Kaydet"
 msgid "Launch Spectacle without capturing"
 msgstr "Deklanşör'ü yakalama yapmadan başlat"
 
-#: src/SpectacleCore.cpp:327
+#: src/SpectacleCore.cpp:333
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1758,18 +1758,18 @@ msgstr ""
 "Deklanşör kayıt yapıyor: %1\n"
 "Kaydı bitirmek için tıkla"
 
-#: src/SpectacleCore.cpp:600
+#: src/SpectacleCore.cpp:606
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1, --record için geçerli bir kip değil"
 
-#: src/SpectacleCore.cpp:795
+#: src/SpectacleCore.cpp:801
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekran görüntüsü iptal edildi veya başarılı olmadı"
 
-#: src/SpectacleCore.cpp:847
+#: src/SpectacleCore.cpp:853
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1778,23 +1778,23 @@ msgstr ""
 "Bir ekran görüntüsü '%2' konumuna '%1' olarak kaydedildi ve ekran "
 "görüntüsünün dosya yolu panoya kaydedildi."
 
-#: src/SpectacleCore.cpp:851
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Bir ekran görüntüsü Resimler klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:854
+#: src/SpectacleCore.cpp:860
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Bir ekran görüntüsü '%2' klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:858
+#: src/SpectacleCore.cpp:864
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Bir ekran görüntüsü panoya kopyalandı."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:869
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1803,24 +1803,24 @@ msgstr ""
 "Bir kayıt '%2' klasörüne '%1' olarak kaydedildi ve kaydın dosya yolu panoya "
 "kaydedildi."
 
-#: src/SpectacleCore.cpp:865
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Bir kayıt Videolar klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:867
+#: src/SpectacleCore.cpp:873
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Bir kayıt '%2' klasörüne '%1' olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:884
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aç"
 
-#: src/SpectacleCore.cpp:892
+#: src/SpectacleCore.cpp:898
 #, kde-format
 msgid "Annotate"
 msgstr "Bilgi Notu"

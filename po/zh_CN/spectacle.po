@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:38+0000\n"
+"POT-Creation-Date: 2023-11-23 01:37+0000\n"
 "PO-Revision-Date: 2023-11-19 03:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -228,32 +228,32 @@ msgstr "无法保存屏幕截图。该文件名无效。"
 msgid "Cannot save an empty screenshot image."
 msgstr "无法保存空白截屏图像。"
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "导出视频失败：临时文件 URL 必须是现有的本地文件"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的有效 URL"
 
-#: src/ExportManager.cpp:675
+#: src/ExportManager.cpp:695
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "无法保存录像。无法移动文件到位置：%1"
 
-#: src/ExportManager.cpp:703
+#: src/ExportManager.cpp:723
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "无法打印。打印机初始化失败。"
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:739
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -261,7 +261,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "年 (四位数)"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:740
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -269,7 +269,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "年 (两位数)"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -277,7 +277,7 @@ msgctxt ""
 msgid "Month"
 msgstr "月"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:742
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "月份 (本地化短名)"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:743
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -293,7 +293,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "月份 (本地化长名)"
 
-#: src/ExportManager.cpp:724
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -301,7 +301,7 @@ msgctxt ""
 msgid "Day"
 msgstr "日"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:745
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +309,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "时"
 
-#: src/ExportManager.cpp:726
+#: src/ExportManager.cpp:746
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "分"
 
-#: src/ExportManager.cpp:727
+#: src/ExportManager.cpp:747
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Second"
 msgstr "秒"
 
-#: src/ExportManager.cpp:728
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,7 +333,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "时区"
 
-#: src/ExportManager.cpp:729
+#: src/ExportManager.cpp:749
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -341,7 +341,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "窗口标题"
 
-#: src/ExportManager.cpp:730
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -349,7 +349,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "顺序编号"
 
-#: src/ExportManager.cpp:732
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1724,7 +1724,7 @@ msgstr "录制矩形区域"
 msgid "Launch Spectacle without capturing"
 msgstr "启动 Spectacle，但不截图"
 
-#: src/SpectacleCore.cpp:327
+#: src/SpectacleCore.cpp:333
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1734,65 +1734,65 @@ msgstr ""
 "Spectacle 正在录像：%1\n"
 "点击以结束录像"
 
-#: src/SpectacleCore.cpp:600
+#: src/SpectacleCore.cpp:606
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 参数的有效模式"
 
-#: src/SpectacleCore.cpp:795
+#: src/SpectacleCore.cpp:801
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "屏幕截图已取消或失败"
 
-#: src/SpectacleCore.cpp:847
+#: src/SpectacleCore.cpp:853
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:851
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:854
+#: src/SpectacleCore.cpp:860
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:858
+#: src/SpectacleCore.cpp:864
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:869
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "屏幕录像已经使用名称“%1”保存到了“%2”，该录像的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:865
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "录像已保存到你的视频文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:867
+#: src/SpectacleCore.cpp:873
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "录像已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:884
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "打开"
 
-#: src/SpectacleCore.cpp:892
+#: src/SpectacleCore.cpp:898
 #, kde-format
 msgid "Annotate"
 msgstr "标注"

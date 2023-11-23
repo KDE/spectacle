@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:38+0000\n"
+"POT-Creation-Date: 2023-11-23 01:37+0000\n"
 "PO-Revision-Date: 2023-11-08 23:29+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,19 +262,19 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:675
+#: src/ExportManager.cpp:695
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:703
+#: src/ExportManager.cpp:723
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:739
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -282,7 +282,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Urtea (4 digitu)"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:740
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -290,7 +290,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Urtea (2 digitu)"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -298,7 +298,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Hilabetea"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:742
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -306,7 +306,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Hilabetea (lekukotutako izen laburra)"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:743
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -314,7 +314,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Hilabetea (lekukotutako izen luzea)"
 
-#: src/ExportManager.cpp:724
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +322,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Eguna"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:745
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +330,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Ordua"
 
-#: src/ExportManager.cpp:726
+#: src/ExportManager.cpp:746
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -338,7 +338,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minutua"
 
-#: src/ExportManager.cpp:727
+#: src/ExportManager.cpp:747
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -346,7 +346,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Segundoa"
 
-#: src/ExportManager.cpp:728
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -354,7 +354,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Ordu-eremua"
 
-#: src/ExportManager.cpp:729
+#: src/ExportManager.cpp:749
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -362,7 +362,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Leihoaren titulua"
 
-#: src/ExportManager.cpp:730
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -370,7 +370,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Zenbakitze sekuentziala"
 
-#: src/ExportManager.cpp:732
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1772,7 +1772,7 @@ msgstr "Grabatu eskualde laukizuzena"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:327
+#: src/SpectacleCore.cpp:333
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1782,18 +1782,18 @@ msgstr ""
 "«Spectacle» grabatzen ari da: %1\n"
 "Egin klik grabatzen bukatzeko"
 
-#: src/SpectacleCore.cpp:600
+#: src/SpectacleCore.cpp:606
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:795
+#: src/SpectacleCore.cpp:801
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:847
+#: src/SpectacleCore.cpp:853
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1802,23 +1802,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:851
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:854
+#: src/SpectacleCore.cpp:860
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:858
+#: src/SpectacleCore.cpp:864
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:869
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1827,24 +1827,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:865
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:867
+#: src/SpectacleCore.cpp:873
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:884
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:892
+#: src/SpectacleCore.cpp:898
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"

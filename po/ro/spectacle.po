@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 01:38+0000\n"
+"POT-Creation-Date: 2023-11-23 01:37+0000\n"
 "PO-Revision-Date: 2023-06-18 19:15+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -235,21 +235,21 @@ msgstr "Nu se poate salva captura. Denumirea fișierului de salvat nu e validă.
 msgid "Cannot save an empty screenshot image."
 msgstr "Nu se poate salva o imagine de captură goală."
 
-#: src/ExportManager.cpp:593
+#: src/ExportManager.cpp:613
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:600
+#: src/ExportManager.cpp:620
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:675
+#: src/ExportManager.cpp:695
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -258,12 +258,12 @@ msgstr ""
 "Nu se poate salva imaginea. Fișierul nu a putut fi încărcat în amplasarea "
 "distantă."
 
-#: src/ExportManager.cpp:703
+#: src/ExportManager.cpp:723
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Imprimarea a eșuat. Inițializarea imprimantei a eșuat."
 
-#: src/ExportManager.cpp:719
+#: src/ExportManager.cpp:739
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -271,7 +271,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "An (4 cifre)"
 
-#: src/ExportManager.cpp:720
+#: src/ExportManager.cpp:740
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -279,7 +279,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "An (2 cifre)"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -287,7 +287,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Lună"
 
-#: src/ExportManager.cpp:722
+#: src/ExportManager.cpp:742
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -295,7 +295,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:743
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -303,7 +303,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:724
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -311,7 +311,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Zi"
 
-#: src/ExportManager.cpp:725
+#: src/ExportManager.cpp:745
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -319,7 +319,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Oră"
 
-#: src/ExportManager.cpp:726
+#: src/ExportManager.cpp:746
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -327,7 +327,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minut"
 
-#: src/ExportManager.cpp:727
+#: src/ExportManager.cpp:747
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -335,7 +335,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Secundă"
 
-#: src/ExportManager.cpp:728
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -343,7 +343,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Fus orar"
 
-#: src/ExportManager.cpp:729
+#: src/ExportManager.cpp:749
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -351,7 +351,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Titlu fereastră"
 
-#: src/ExportManager.cpp:730
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -359,7 +359,7 @@ msgctxt ""
 msgid "Sequential numbering"
 msgstr "Numerotare secvențială"
 
-#: src/ExportManager.cpp:732
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1798,7 +1798,7 @@ msgstr "Regiune dreptunghiulară"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
-#: src/SpectacleCore.cpp:327
+#: src/SpectacleCore.cpp:333
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1806,18 +1806,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:600
+#: src/SpectacleCore.cpp:606
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:795
+#: src/SpectacleCore.cpp:801
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Capturarea ecranului anulată sau eșuată"
 
-#: src/SpectacleCore.cpp:847
+#: src/SpectacleCore.cpp:853
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1826,23 +1826,23 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:851
+#: src/SpectacleCore.cpp:857
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:854
+#: src/SpectacleCore.cpp:860
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:858
+#: src/SpectacleCore.cpp:864
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:869
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1854,7 +1854,7 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:865
+#: src/SpectacleCore.cpp:871
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1862,19 +1862,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:867
+#: src/SpectacleCore.cpp:873
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:884
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Deschide"
 
-#: src/SpectacleCore.cpp:892
+#: src/SpectacleCore.cpp:898
 #, kde-format
 msgid "Annotate"
 msgstr "Adnotează"
