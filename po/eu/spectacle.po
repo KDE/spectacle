@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-23 01:37+0000\n"
-"PO-Revision-Date: 2023-11-08 23:29+0100\n"
+"PO-Revision-Date: 2023-11-25 19:42+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -1159,14 +1159,13 @@ msgstr "Hartu pantaila-argazkia klik egitean"
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Saguaren kurtsorea pantaila-argazkian sartuko den"
+msgstr "Saguaren kurtsorea pantaila-argazkian jasoko den edo ez"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Saguaren kurtsorea pantaila-argazkian sartuko den"
+msgstr "Saguaren kurtsorea bideoan jasoko den edo ez"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1703,15 +1702,13 @@ msgid "Failed to select window: No window found"
 msgstr "Leihoa hautatzea huts egin du: Ez da leihorik aurkitu"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Eskualde laukizuzena"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Pantaila-betea"
