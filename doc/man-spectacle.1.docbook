@@ -9,8 +9,8 @@
 <author><firstname>Yuri</firstname><surname>Chornoivan</surname>
 <contrib>Spectacle man page.</contrib>
 <email>yurchor@ukr.net</email></author>
-<date>2021-04-11</date>
-<releaseinfo>Spectacle 21.08</releaseinfo>
+<date>2023-11-26</date>
+<releaseinfo>Spectacle 23.08</releaseinfo>
 <productname>KDE Applications</productname>
 </refentryinfo>
 
@@ -33,12 +33,33 @@
 
 
 <refsect1 id="description"><title>Description</title>
-<para><command>spectacle</command> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+<para><command>spectacle</command> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
 </refsect1>
 
 <refsect1 id="options"><title>Spectacle options</title>
 <variablelist>
+
+<varlistentry>
+<term><option>-h, --help</option></term>
+<listitem>
+<para>Displays help on commandline options.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>--help-all</option></term>
+<listitem>
+<para>Displays help including Qt specific options.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-v, --version</option></term>
+<listitem>
+<para>Displays version information.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term><option>-f, --fullscreen</option></term>
@@ -170,6 +191,13 @@
 <term><option>-e, --no-decoration</option></term>
 <listitem>
 <para>In background mode, do not include window decorations in the screenshot.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>-E, --edit-existing <replaceable>existingFileName</replaceable></option></term>
+<listitem>
+<para>Open and edit existing screenshot file.</para>
 </listitem>
 </varlistentry>
 </variablelist>
