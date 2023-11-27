@@ -179,9 +179,14 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
         }
-        // minimizeIfWindowsIntersect(region);
-        // Should this always be 1? Trying to match the screen(s) DPR resulted in a black video.
         qreal scaling = 1;
+        const auto screens = qGuiApp->screens();
+        // Don't make the resolution larger than it needs to be.
+        for (auto screen : screens) {
+            if (screen->geometry().intersects(region)) {
+                scaling = std::max(scaling, screen->devicePixelRatio());
+            }
+        }
         stream = m_screencasting->createRegionStream(region, scaling, mode);
         break;
     }
