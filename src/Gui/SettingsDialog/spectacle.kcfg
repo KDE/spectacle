@@ -8,6 +8,7 @@
 <include>CaptureModeModel.h</include>
 <include>Gui/Annotations/AnnotationDocument.h</include>
 <include>Platforms/VideoPlatform.h</include>
+<include>Gui/SettingsDialog/SettingsUtils.h</include>
 <include>KLocalizedString</include>
 <kcfgfile />
 <group name="General">
@@ -127,14 +128,9 @@
                 // We only want to set the translated folder name once so the user doesn't end up
                 // with a bunch of different folders when they temporarily change languages.
                 auto pictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-                auto config = sharedConfig();
-                auto group = config->group(QStringLiteral("ImageSave"));
-                auto subFolder = group.readEntry("translatedScreenshotsFolder");
-                if (subFolder.isEmpty()) {
-                    subFolder = i18nc("translatable folder name", "Screenshots");
-                    group.writeEntry("translatedScreenshotsFolder", subFolder);
-                    config->sync();
-                }
+                auto subFolder = onceTranslatedString(this, currentGroup(),
+                                                      "translatedScreenshotsFolder",
+                                                      i18nc("translatable folder name", "Screenshots"));
                 defaultImageSaveLocation = QUrl::fromLocalFile(pictures + u'/' + subFolder + u'/');
             }
         </code>
@@ -175,14 +171,9 @@
                 // We only want to set the translated folder name once so the user doesn't end up
                 // with a bunch of different folders when they temporarily change languages.
                 auto videos = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
-                auto config = sharedConfig();
-                auto group = config->group(QStringLiteral("VideoSave"));
-                auto subFolder = group.readEntry("translatedScreencastsFolder");
-                if (subFolder.isEmpty()) {
-                    subFolder = i18nc("translatable folder name", "Screencasts");
-                    group.writeEntry("translatedScreencastsFolder", subFolder);
-                    config->sync();
-                }
+                auto subFolder = onceTranslatedString(this, currentGroup(),
+                                                      "translatedScreencastsFolder",
+                                                      i18nc("translatable folder name", "Screencasts"));
                 defaultVideoSaveLocation = QUrl::fromLocalFile(videos + u'/' + subFolder + u'/');
             }
         </code>
