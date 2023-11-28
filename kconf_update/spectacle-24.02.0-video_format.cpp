@@ -2,19 +2,11 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
+#include "ConfigUtils.h"
 #include <KConfigGroup>
 #include <KSharedConfig>
-#include <kconfiggroup.h>
 
 using namespace Qt::StringLiterals;
-
-inline void renameEntry(KConfigGroup *group, const char *readFrom, const char *writeTo) {
-    if (!group || !group->exists() || !group->hasKey(readFrom)) {
-        return;
-    }
-    group->writeEntry(writeTo, group->readEntry(readFrom));
-    group->deleteEntry(readFrom);
-};
 
 int main()
 {
@@ -35,12 +27,15 @@ int main()
     saveGroup.deleteGroup();
 
     // Rename settings
-    renameEntry(&imageSaveGroup, "defaultSaveLocation", "imageSaveLocation");
-    renameEntry(&imageSaveGroup, "compressionQuality", "imageCompressionQuality");
-    renameEntry(&imageSaveGroup, "defaultSaveImageFormat", "preferredImageFormat");
-    renameEntry(&imageSaveGroup, "saveFilenameFormat", "imageFilenameFormat");
-    renameEntry(&imageSaveGroup, "lastSaveLocation", "lastImageSaveLocation");
-    renameEntry(&imageSaveGroup, "lastSaveAsLocation", "lastImageSaveAsLocation");
+    KeyMap oldNewMap{
+        {"defaultSaveLocation", "imageSaveLocation"},
+        {"compressionQuality", "imageCompressionQuality"},
+        {"defaultSaveImageFormat", "preferredImageFormat"},
+        {"saveFilenameFormat", "imageFilenameFormat"},
+        {"lastSaveLocation", "lastImageSaveLocation"},
+        {"lastSaveAsLocation", "lastImageSaveAsLocation"},
+    };
+    replaceEntryKeys(imageSaveGroup, oldNewMap);
 
     return spectaclerc->sync() ? 0 : 1;
 }
