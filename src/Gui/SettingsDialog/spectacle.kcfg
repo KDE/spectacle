@@ -144,7 +144,10 @@
     </entry>
     <entry name="imageFilenameTemplate" type="String">
         <label>The filename template used when saving screenshots</label>
-        <default>Screenshot_%Y%M%D_%H%m%S</default>
+        <default code="true">
+            i18nc("part of default image filename template", "Screenshot")
+            + u"_%Y%M%D_%H%m%S"
+        </default>
     </entry>
     <entry name="lastImageSaveLocation" type="Url">
         <label>The path of the file saved last</label>
@@ -180,7 +183,10 @@
     </entry>
     <entry name="videoFilenameTemplate" type="String">
         <label>The filename template used when saving screencasts</label>
-        <default>Screencast_%Y%M%D_%H%m%S</default>
+        <default code="true">
+            i18nc("part of default video filename template", "Screencast")
+            + u"_%Y%M%D_%H%m%S"
+        </default>
     </entry>
     <entry name="lastVideoSaveLocation" type="Url">
         <label>The path of the file saved last</label>
