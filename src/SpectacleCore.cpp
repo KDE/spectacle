@@ -489,9 +489,8 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     }
 
     // reset last region if it should not be remembered across restarts
-    if (!(Settings::rememberLastRectangularRegion() == Settings::EnumRememberLastRectangularRegion::Always)) {
-        // QRect defaults to {0,0,-1,-1} while QRectF defaults to {0,0,0,0}.
-        Settings::setCropRegion({0, 0, 0, 0});
+    if (!(Settings::rememberSelectionRect() == Settings::EnumRememberSelectionRect::Always)) {
+        Settings::setSelectionRect({0, 0, 0, 0});
     }
 
     /* The logic for setting options for each start mode:
@@ -653,8 +652,8 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 }
             }
         } else {
-            using Actions = Settings::EnumPrintKeyActionRunning;
-            switch (Settings::printKeyActionRunning()) {
+            using Actions = Settings::EnumPrintKeyRunningAction;
+            switch (Settings::printKeyRunningAction()) {
             case Actions::TakeNewScreenshot: {
                 // takeNewScreenshot switches to on click if immediate is not supported.
                 takeNewScreenshot(grabMode, 0, includePointer, includeDecorations, includeShadow);

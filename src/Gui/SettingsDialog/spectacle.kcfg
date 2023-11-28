@@ -12,9 +12,7 @@
 <include>KLocalizedString</include>
 <kcfgfile />
 <group name="General">
-    <entry name="launchAction" key="onLaunchAction" type="Enum">
-        <!--Using a name that doesn't look like a signal handler.-->
-        <!--Not changing the key to avoid having to migrate.-->
+    <entry name="launchAction" type="Enum">
         <label>What to do when Spectacle is launched</label>
         <choices>
         <choice name="TakeFullscreenScreenshot"></choice>
@@ -23,7 +21,7 @@
         </choices>
         <default>TakeFullscreenScreenshot</default>
     </entry>
-    <entry name="printKeyActionRunning" type="Enum">
+    <entry name="printKeyRunningAction" type="Enum">
         <label>What should happen if print key is pressed when Spectacle is already running</label>
         <choices>
         <choice name="TakeNewScreenshot"></choice>
@@ -45,9 +43,7 @@
         </choices>
         <default>PostScreenshotDoNothing</default>
     </entry>
-    <entry name="useLightMaskColor" key="useLightMaskColour" type="Bool">
-        <!--Using a consistent spelling for color in code.-->
-        <!--Not changing the key to avoid having to migrate.-->
+    <entry name="useLightMaskColor" type="Bool">
         <label>Whether to use a light color mask in the region selection dialog</label>
         <default>false</default>
     </entry>
@@ -63,24 +59,22 @@
         <label>Whether to show capture instructions in the region selection</label>
         <default>true</default>
     </entry>
-    <entry name="rememberLastRectangularRegion" type="Enum">
+    <entry name="rememberSelectionRect" type="Enum">
         <label>Remember the last rectangular region</label>
         <choices>
         <choice name="Never"></choice>
         <choice name="Always"></choice>
-        <choice name="UntilSpectacleIsClosed"></choice>
+        <choice name="UntilClosed"></choice>
         </choices>
-        <default>UntilSpectacleIsClosed</default>
+        <default>UntilClosed</default>
     </entry>
 </group>
 <group name="GuiConfig">
-    <entry name="cropRegion" type="Rect">
+    <entry name="selectionRect" type="RectF">
         <label>The last used region the user selected</label>
-        <default>QRect(0,0,0,0)</default>
+        <default>QRectF(0,0,0,0)</default>
     </entry>
-    <entry name="captureOnClick" key="onClickChecked" type="Bool">
-        <!--Using a name that doesn't look like a signal handler.-->
-        <!--Not changing the key to avoid having to migrate.-->
+    <entry name="captureOnClick" type="Bool">
         <label>Take screenshot on click</label>
         <default>false</default>
     </entry>
@@ -148,8 +142,8 @@
         <label>Default save image format</label>
         <default>PNG</default>
     </entry>
-    <entry name="imageFilenameFormat" type="String">
-        <label>The default filename used when saving</label>
+    <entry name="imageFilenameTemplate" type="String">
+        <label>The filename template used when saving screenshots</label>
         <default>Screenshot_%Y%M%D_%H%m%S</default>
     </entry>
     <entry name="lastImageSaveLocation" type="Url">
@@ -184,8 +178,8 @@
         <choices name="VideoPlatform::Format"></choices>
         <default>VideoPlatform::Format::DefaultFormat</default>
     </entry>
-    <entry name="videoFilenameFormat" type="String">
-        <label>The default filename used when recording a video</label>
+    <entry name="videoFilenameTemplate" type="String">
+        <label>The filename template used when saving screencasts</label>
         <default>Screencast_%Y%M%D_%H%m%S</default>
     </entry>
     <entry name="lastVideoSaveLocation" type="Url">

@@ -348,8 +348,8 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     }
 
     auto selectionRect = d->selection->normalized();
-    if (Settings::rememberLastRectangularRegion() == Settings::Always) {
-        Settings::setCropRegion(selectionRect.toAlignedRect());
+    if (Settings::rememberSelectionRect() == Settings::Always) {
+        Settings::setSelectionRect(selectionRect.toAlignedRect());
     }
 
     if (selectionRect.isEmpty()) {
@@ -375,15 +375,15 @@ void SelectionEditor::reset()
         Q_EMIT screensRectChanged();
     }
 
-    auto remember = Settings::rememberLastRectangularRegion();
+    auto remember = Settings::rememberSelectionRect();
     if (remember == Settings::Never) {
         d->selection->setRect({});
     } else if (remember == Settings::Always) {
-        auto cropRegion = Settings::cropRegion();
-        if (cropRegion.width() < 0 || cropRegion.height() < 0) {
-            cropRegion = {0, 0, 0, 0};
+        auto selectionRect = Settings::selectionRect();
+        if (selectionRect.width() < 0 || selectionRect.height() < 0) {
+            selectionRect = {0, 0, 0, 0};
         }
-        d->selection->setRect(cropRegion);
+        d->selection->setRect(selectionRect);
     }
 }
 

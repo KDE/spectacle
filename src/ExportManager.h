@@ -65,7 +65,7 @@ public:
     /**
      * Returns a formatted filename using a template string.
      */
-    QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameFormat()) const;
+    QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameTemplate()) const;
 
     /**
      * The URL to record a video with before it is exported.
