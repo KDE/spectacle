@@ -34,18 +34,18 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
     const auto videoFormatModel = SpectacleCore::instance()->videoFormatModel();
 
     // Auto select the correct format if the user types an extension in the filename template.
-    connect(m_ui->kcfg_videoFilenameFormat, &QLineEdit::textEdited, this, [this, videoFormatModel](const QString &text) {
+    connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textEdited, this, [this, videoFormatModel](const QString &text) {
         const auto count = videoFormatModel->rowCount();
         for (auto i = 0; i < count; ++i) {
             auto index = videoFormatModel->index(i);
             auto extension = index.data(VideoFormatModel::ExtensionRole).toString();
             if (text.endsWith(u'.' + extension, Qt::CaseInsensitive)) {
-                m_ui->kcfg_videoFilenameFormat->setText(text.chopped(extension.length() + 1));
+                m_ui->kcfg_videoFilenameTemplate->setText(text.chopped(extension.length() + 1));
                 m_ui->videoFormatComboBox->setCurrentIndex(i);
             }
         }
     });
-    connect(m_ui->kcfg_videoFilenameFormat, &QLineEdit::textChanged,
+    connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textChanged,
             this, &VideoSaveOptionsPage::updateFilenamePreview);
 
     m_ui->videoFormatComboBox->setModel(videoFormatModel);
@@ -67,7 +67,7 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
     captureInstruction += u"</blockquote>"_s;
     m_ui->captureInstructionLabel->setText(captureInstruction);
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
-        m_ui->kcfg_videoFilenameFormat->insert(placeholder);
+        m_ui->kcfg_videoFilenameTemplate->insert(placeholder);
     });
 }
 
@@ -76,7 +76,7 @@ VideoSaveOptionsPage::~VideoSaveOptionsPage() = default;
 void VideoSaveOptionsPage::updateFilenamePreview()
 {
     const auto extension = m_ui->videoFormatComboBox->currentData(VideoFormatModel::ExtensionRole).toString();
-    const auto templateBasename = m_ui->kcfg_videoFilenameFormat->text();
+    const auto templateBasename = m_ui->kcfg_videoFilenameTemplate->text();
     ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension);
 }
 

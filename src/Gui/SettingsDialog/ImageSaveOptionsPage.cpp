@@ -28,7 +28,7 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
 {
     m_ui->setupUi(this);
 
-    connect(m_ui->kcfg_imageFilenameFormat, &QLineEdit::textEdited, this, [&](const QString &newText) {
+    connect(m_ui->kcfg_imageFilenameTemplate, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
         for (const auto &item : imageFormats) {
@@ -36,12 +36,12 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
             if (newText.endsWith(u'.' + fmt, Qt::CaseInsensitive)) {
                 QString txtCopy = newText;
                 txtCopy.chop(fmt.length() + 1);
-                m_ui->kcfg_imageFilenameFormat->setText(txtCopy);
+                m_ui->kcfg_imageFilenameTemplate->setText(txtCopy);
                 m_ui->kcfg_preferredImageFormat->setCurrentIndex(m_ui->kcfg_preferredImageFormat->findText(fmt.toUpper()));
             }
         }
     });
-    connect(m_ui->kcfg_imageFilenameFormat, &QLineEdit::textChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
+    connect(m_ui->kcfg_imageFilenameTemplate, &QLineEdit::textChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
 
     m_ui->kcfg_preferredImageFormat->addItems([&]() {
         QStringList items;
@@ -64,7 +64,7 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     captureInstruction += u"</blockquote>"_s;
     m_ui->captureInstructionLabel->setText(captureInstruction);
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
-        m_ui->kcfg_imageFilenameFormat->insert(placeholder);
+        m_ui->kcfg_imageFilenameTemplate->insert(placeholder);
     });
 
     m_ui->imageCompressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
@@ -75,7 +75,7 @@ ImageSaveOptionsPage::~ImageSaveOptionsPage() = default;
 void ImageSaveOptionsPage::updateFilenamePreview()
 {
     const auto extension = m_ui->kcfg_preferredImageFormat->currentText().toLower();
-    const auto templateBasename = m_ui->kcfg_imageFilenameFormat->text();
+    const auto templateBasename = m_ui->kcfg_imageFilenameTemplate->text();
     ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension);
 }
 

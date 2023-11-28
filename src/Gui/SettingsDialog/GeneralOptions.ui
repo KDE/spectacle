@@ -12,7 +12,7 @@
   </property>
   <layout class="QFormLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="onLaunchSpectacleLabel">
+    <widget class="QLabel" name="launchActionSpectacleLabel">
      <property name="text">
       <string>When launching Spectacle:</string>
      </property>
@@ -120,7 +120,7 @@
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="QComboBox" name="kcfg_printKeyActionRunning">
+    <widget class="QComboBox" name="kcfg_printKeyRunningAction">
      <item>
       <property name="text">
        <string>Take a new Screenshot</string>
@@ -220,7 +220,7 @@
     </widget>
    </item>
    <item row="14" column="1">
-    <widget class="QComboBox" name="kcfg_rememberLastRectangularRegion">
+    <widget class="QComboBox" name="kcfg_rememberSelectionRect">
      <item>
       <property name="text">
        <string>Never</string>
@@ -251,12 +251,12 @@
   <tabstop>kcfg_launchAction</tabstop>
   <tabstop>kcfg_autoSaveImage</tabstop>
   <tabstop>kcfg_clipboardGroup</tabstop>
-  <tabstop>kcfg_printKeyActionRunning</tabstop>
+  <tabstop>kcfg_printKeyRunningAction</tabstop>
   <tabstop>kcfg_useLightMaskColor</tabstop>
   <tabstop>kcfg_showMagnifier</tabstop>
   <tabstop>kcfg_useReleaseToCapture</tabstop>
   <tabstop>kcfg_showCaptureInstructions</tabstop>
-  <tabstop>kcfg_rememberLastRectangularRegion</tabstop>
+  <tabstop>kcfg_rememberSelectionRect</tabstop>
  </tabstops>
  <resources/>
  <connections/>
