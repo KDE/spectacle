@@ -5,6 +5,9 @@
 #pragma once
 
 #include <KConfigGroup>
+#include <QDateTime>
+#include <QFileInfo>
+#include <QStandardPaths>
 
 // automatically use this when including this header
 using namespace Qt::StringLiterals;
@@ -47,3 +50,33 @@ inline void replaceEntryValues(KConfigGroup &group, const char *key,
         }
     }
 };
+
+inline bool continueUpdate(const QString &fileName, const QString &isoDateTime = {})
+{
+    const auto path = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, fileName);
+    // false if there is no existing user config.
+    if (path.isEmpty() || !path.startsWith(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation))) {
+        return false;
+    }
+
+    // true if we aren't doing a datetime check
+    if (isoDateTime.isEmpty()) {
+        return true;
+    }
+
+    // false if the existing config is newer than the threshold datetime.
+    QFileInfo fileInfo(path);
+    auto configDateTime = fileInfo.birthTime();
+    auto thresholdDateTime = QDateTime::fromString(isoDateTime, Qt::ISODate);
+    if (!configDateTime.isValid() || !thresholdDateTime.isValid()
+        || configDateTime > thresholdDateTime) {
+        return false;
+    }
+
+    return true;
+}
+
+inline bool isEntryDefault(KConfigGroup &group, const char *key)
+{
+    return !group.exists() || group.readEntry(key).isEmpty();
+}
