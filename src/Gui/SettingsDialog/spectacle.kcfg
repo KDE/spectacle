@@ -153,8 +153,14 @@
         <default>PNG</default>
     </entry>
     <entry name="imageFilenameFormat" type="String">
-        <label>The default filename used when saving</label>
-        <default>Screenshot_%Y%M%D_%H%m%S</default>
+        <label>The default filename used when saving an image</label>
+        <code>
+            QString defaultScreenshotFilenameFormat;
+            {
+                defaultScreenshotFilenameFormat = i18nc("Prefix for screenshot file name, it is followed by date and time", "Screenshot") + " %Y-%M-%D %H%m%S";
+            }
+        </code>
+        <default code="true">defaultScreenshotFilenameFormat</default>
     </entry>
     <entry name="lastImageSaveLocation" type="Url">
         <label>The path of the file saved last</label>
@@ -195,7 +201,13 @@
     </entry>
     <entry name="videoFilenameFormat" type="String">
         <label>The default filename used when recording a video</label>
-        <default>Screencast_%Y%M%D_%H%m%S</default>
+        <code>
+            QString defaultScreencastFilenameFormat;
+            {
+                defaultScreencastFilenameFormat = i18nc("Prefix for screencast file name, it is followed by date and time", "Screencast") + " %Y-%M-%D %H%m%S";
+            }
+        </code>
+        <default code="true">defaultScreencastFilenameFormat</default>
     </entry>
     <entry name="lastVideoSaveLocation" type="Url">
         <label>The path of the file saved last</label>
