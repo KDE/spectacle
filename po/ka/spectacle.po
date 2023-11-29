@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:37+0000\n"
-"PO-Revision-Date: 2023-11-15 06:05+0100\n"
+"POT-Creation-Date: 2023-11-29 13:38+0000\n"
+"PO-Revision-Date: 2023-11-29 05:42+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1212,14 +1212,12 @@ msgstr "ნაგულისხმები შესანახი ფაი�
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "შენახვისას გამოყენებული ნაგულისხმები სახელი"
+msgstr "ეკრანის ანაბეჭდების შენახვისას გამოყენებული ფაილის სახელის ნიმუში"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "ეკრანის ანაბეჭდი"
@@ -1248,10 +1246,9 @@ msgstr "ნაგულისხმევი ვიდეოფორმატ�
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "შენახვისას გამოყენებული ნაგულისხმები სახელი"
+msgstr "ეკრანის ვიდეოს შენახვისას გამოყენებული ფაილის სახელის ნიმუში"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1260,12 +1257,10 @@ msgid "Screencasts"
 msgstr "ეკრანის ვიდეოჩანაწერები"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "ეკრანის ვიდეოჩანაწერები"
+msgstr "ეკრანის ვიდეოჩანაწერი"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1783,12 +1778,12 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:800
+#: src/SpectacleCore.cpp:802
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "ეკრანის ანაბეჭდს გადაღება გაუქმდა ან შეცდომით დასრულდა"
 
-#: src/SpectacleCore.cpp:852
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1797,23 +1792,23 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:856
+#: src/SpectacleCore.cpp:858
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:861
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:865
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:868
+#: src/SpectacleCore.cpp:870
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1822,24 +1817,24 @@ msgstr ""
 "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
 "ბუფერში."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:872
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:885
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:897
+#: src/SpectacleCore.cpp:899
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"

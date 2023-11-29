@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:37+0000\n"
-"PO-Revision-Date: 2023-11-14 07:50+0200\n"
+"POT-Creation-Date: 2023-11-29 13:38+0000\n"
+"PO-Revision-Date: 2023-11-29 09:57+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1232,17 +1232,15 @@ msgstr "Типовий формат зберігання зображень"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Типова назва файла, яку буде використано під час зберігання"
+msgstr "Шаблон назви файла, який буде використано під час зберігання знімків"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Знімок вікна"
+msgstr "Знімок"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1268,10 +1266,10 @@ msgstr "Типовий формат відео"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Типова назва файла, яку буде використано під час зберігання"
+msgstr ""
+"Шаблон назви файла, який буде використано під час зберігання записі з екрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1280,12 +1278,10 @@ msgid "Screencasts"
 msgstr "Трансляції з екрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Трансляції з екрана"
+msgstr "Трансляція"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1808,12 +1804,12 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:800
+#: src/SpectacleCore.cpp:802
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Захоплення знімка екрана скасовано або його не вдалося виконати"
 
-#: src/SpectacleCore.cpp:852
+#: src/SpectacleCore.cpp:854
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1822,23 +1818,23 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:856
+#: src/SpectacleCore.cpp:858
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:861
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:865
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:868
+#: src/SpectacleCore.cpp:870
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1847,24 +1843,24 @@ msgstr ""
 "Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
 "у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:872
+#: src/SpectacleCore.cpp:874
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:885
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:897
+#: src/SpectacleCore.cpp:899
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"
