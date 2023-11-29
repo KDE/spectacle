@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->2021-04-11</date>
+>2023-11-26</date>
 <releaseinfo
->Deklanşör 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >KDE Uygulamaları</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 ><command
 >spectacle</command
->, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be annotated, printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Deklanşör seçenekleri</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Displays help on commandline options.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Displays help including Qt specific options.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Displays version information.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >Arka plan kipinde, ekran görüntüsünde pencere dekorasyonlarını içerme.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>existingFileName</replaceable
+></option
+></term>
+<listitem>
+<para
+>Open and edit existing screenshot file.</para>
 </listitem>
 </varlistentry>
 </variablelist>
