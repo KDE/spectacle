@@ -60,8 +60,8 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
     QString captureInstruction = i18n(
         "You can use the following placeholders in the filename, which will be replaced "
         "with actual text when the file is saved:<blockquote>");
-    for (auto option = ExportManager::filenamePlaceholders.cbegin(); option != ExportManager::filenamePlaceholders.cend(); ++option) {
-        captureInstruction += u"<a href=%1>%1</a>: %2<br>"_s.arg(option.key(), option.value().toString());
+    for (auto it = ExportManager::filenamePlaceholders.cbegin(); it != ExportManager::filenamePlaceholders.cend(); ++it) {
+        captureInstruction += u"<a href=%1>%1</a>: %2<br>"_s.arg(it->htmlKey, it->description.toString());
     }
     captureInstruction += u"<a href='/'>/</a>: "_s + i18n("To save to a sub-folder");
     captureInstruction += u"</blockquote>"_s;

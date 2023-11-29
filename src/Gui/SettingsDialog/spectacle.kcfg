@@ -146,7 +146,7 @@
         <label>The filename template used when saving screenshots</label>
         <default code="true">
             i18nc("part of default image filename template", "Screenshot")
-            + u"_%Y%M%D_%H%m%S"
+            + u"_&lt;yyyy&gt;&lt;MM&gt;&lt;dd&gt;_&lt;hh&gt;&lt;mm&gt;&lt;ss&gt;"
         </default>
     </entry>
     <entry name="lastImageSaveLocation" type="Url">
@@ -185,7 +185,7 @@
         <label>The filename template used when saving screencasts</label>
         <default code="true">
             i18nc("part of default video filename template", "Screencast")
-            + u"_%Y%M%D_%H%m%S"
+            + u"_&lt;yyyy&gt;&lt;MM&gt;&lt;dd&gt;_&lt;hh&gt;&lt;mm&gt;&lt;ss&gt;"
         </default>
     </entry>
     <entry name="lastVideoSaveLocation" type="Url">

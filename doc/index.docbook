@@ -366,16 +366,15 @@
                         <para>Set a default filename for saved screenshots.</para>
                         <para>You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:</para>
                         <itemizedlist>
-                        <listitem><para><userinput>%D</userinput>: Day</para></listitem>
-                        <listitem><para><userinput>%H</userinput>: Hour</para></listitem>
-                        <listitem><para><userinput>%M</userinput>: Month</para></listitem>
-                        <listitem><para><userinput>%Nd</userinput>: Sequential number padded to N digits</para></listitem>
-                        <listitem><para><userinput>%S</userinput>: Second</para></listitem>
-                        <listitem><para><userinput>%T</userinput>: Window title</para></listitem>
-                        <listitem><para><userinput>%Y</userinput>: Year (4 digit)</para></listitem>
-                        <listitem><para><userinput>%Nd</userinput>: Sequential number</para></listitem>
-                        <listitem><para><userinput>%m</userinput>: Minute</para></listitem>
-                        <listitem><para><userinput>%y</userinput>: Year (2 digit)</para></listitem>
+                        <listitem><para><userinput>&lt;dd&gt;</userinput>: Day</para></listitem>
+                        <listitem><para><userinput>&lt;hh&gt;</userinput>: Hour</para></listitem>
+                        <listitem><para><userinput>&lt;MM&gt;</userinput>: Month</para></listitem>
+                        <listitem><para><userinput>&lt;ss&gt;</userinput>: Second</para></listitem>
+                        <listitem><para><userinput>&lt;title&gt;</userinput>: Window title</para></listitem>
+                        <listitem><para><userinput>&lt;yyyy&gt;</userinput>: Year (4 digit)</para></listitem>
+                        <listitem><para><userinput>&lt;#&gt;</userinput>: Sequential number</para></listitem>
+                        <listitem><para><userinput>&lt;mm&gt;</userinput>: Minute</para></listitem>
+                        <listitem><para><userinput>&lt;yy&gt;</userinput>: Year (2 digit)</para></listitem>
                         </itemizedlist>
                         <para>You can click on placeholders in the reference list below to insert them into the <guilabel>Filename</guilabel> line.</para>
                         <para>If a file with this name already exists, a serial number will be appended to the filename. For example, if the filename is <filename>Screenshot</filename>, and <filename>Screenshot.png</filename> already exists, the image will be saved as <filename>Screenshot-1.png</filename>.</para>

@@ -26,6 +26,12 @@ target_link_libraries(spectacle-24.02.0-keep_old_filename_templates
     KF6::XmlGui
 )
 
+add_executable(spectacle-24.02.0-change_placeholder_format "spectacle-24.02.0-change_placeholder_format.cpp")
+target_link_libraries(spectacle-24.02.0-change_placeholder_format
+    KF6::ConfigCore
+    KF6::XmlGui
+)
+
 # install C++ scripts to kconf_update_bin
 install(
     TARGETS
@@ -33,5 +39,6 @@ install(
         spectacle-24.02.0-keep_old_save_location
         spectacle-24.02.0-rename_settings
         spectacle-24.02.0-keep_old_filename_templates
+        spectacle-24.02.0-change_placeholder_format
     DESTINATION ${KDE_INSTALL_LIBDIR}/kconf_update_bin
 )

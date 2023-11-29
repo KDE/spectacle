@@ -74,7 +74,19 @@ public:
 
     const QTemporaryDir *temporaryDir();
 
-    static const QMap<QString, KLocalizedString> filenamePlaceholders;
+    struct Placeholder {
+        // Expect the config UI to use rich text.
+        const QString htmlKey;
+        const KLocalizedString description;
+
+        Placeholder(const QString &key, const KLocalizedString &description)
+            : htmlKey(u"&lt;" % key % u"&gt;") // key -> <key> in HTML
+            , description(description)
+        {
+        }
+    };
+
+    static const QList<Placeholder> filenamePlaceholders;
 
 Q_SIGNALS:
     void imageChanged();

@@ -197,28 +197,28 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     if (!title.isEmpty()) {
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
     } else {
-        // Remove '%T' with separators around it
+        // Remove <title> with separators around it
         const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
         const auto separator = u"([^%1]+)"_s.arg(wordSymbol);
-        const auto re = QRegularExpression(u"(.*?)(%1%T|%T%1)(.*?)"_s.arg(separator));
+        const auto re = QRegularExpression(u"(.*?)(%1<title>|<title>%1)(.*?)"_s.arg(separator));
         baseName.replace(re, uR"(\1\5)"_s);
     }
 
-    QString result = baseName.replace("%Y"_L1, timestamp.toString(u"yyyy"_s))
-                             .replace("%y"_L1, timestamp.toString(u"yy"_s))
-                             .replace("%M"_L1, timestamp.toString(u"MM"_s))
-                             .replace("%n"_L1, timestamp.toString(u"MMM"_s))
-                             .replace("%N"_L1, timestamp.toString(u"MMMM"_s))
-                             .replace("%D"_L1, timestamp.toString(u"dd"_s))
-                             .replace("%H"_L1, timestamp.toString(u"hh"_s))
-                             .replace("%m"_L1, timestamp.toString(u"mm"_s))
-                             .replace("%S"_L1, timestamp.toString(u"ss"_s))
-                             .replace("%t"_L1, timestamp.toString(u"t"_s))
-                             .replace("%T"_L1, title);
+    QString result = baseName.replace("<yyyy>"_L1, timestamp.toString(u"yyyy"_s))
+                             .replace("<yy>"_L1, timestamp.toString(u"yy"_s))
+                             .replace("<MM>"_L1, timestamp.toString(u"MM"_s))
+                             .replace("<MMM>"_L1, timestamp.toString(u"MMM"_s))
+                             .replace("<MMMM>"_L1, timestamp.toString(u"MMMM"_s))
+                             .replace("<dd>"_L1, timestamp.toString(u"dd"_s))
+                             .replace("<hh>"_L1, timestamp.toString(u"hh"_s))
+                             .replace("<mm>"_L1, timestamp.toString(u"mm"_s))
+                             .replace("<ss>"_L1, timestamp.toString(u"ss"_s))
+                             .replace("<t>"_L1, timestamp.toString(u"t"_s))
+                             .replace("<title>"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
-    paddingRE.setPattern(u"%(\\d*)d"_s);
+    paddingRE.setPattern(u"<(#+)>"_s);
     QRegularExpressionMatchIterator it = paddingRE.globalMatch(result);
     if (it.hasNext()) {
         // strip any subdirectories from the template to construct the filename matching regex
@@ -231,7 +231,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
             // determine padding value
             int paddedLength = 1;
             if (!paddingMatch.captured(1).isEmpty()) {
-                paddedLength = paddingMatch.captured(1).toInt();
+                paddedLength = paddingMatch.captured(1).length();
             }
             QString escapedMatch = QRegularExpression::escape(paddingMatch.captured());
             resultCopy.replace(escapedMatch, u"(\\d{%1,})"_s.arg(QString::number(paddedLength)));
@@ -257,7 +257,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
             if (filteredFiles.length() > 0) {
                 // loop through filtered file names looking for highest number
                 for (const QString &filteredFile : filteredFiles) {
-                    int currentFileNumber = fileNumberRE.match(filteredFile).captured(1).toInt();
+                    int currentFileNumber = fileNumberRE.match(filteredFile).captured(1).length();
                     if (currentFileNumber > highestFileNumber) {
                         highestFileNumber = currentFileNumber;
                     }
@@ -268,7 +268,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         for (const auto &match : matches) {
             int paddedLength = 1;
             if (!match.captured(1).isEmpty()) {
-                paddedLength = match.captured(1).toInt();
+                paddedLength = match.captured(1).length();
             }
             const QString nextFileNumberPadded = QString::number(highestFileNumber + 1).rightJustified(paddedLength, u'0');
             result.replace(match.captured(), nextFileNumberPadded);
@@ -735,21 +735,19 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.end();
 }
 
-const QMap<QString, KLocalizedString> ExportManager::filenamePlaceholders{
-    {u"%Y"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
-    {u"%y"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
-    {u"%M"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
-    {u"%n"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
-    {u"%N"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
-    {u"%D"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
-    {u"%H"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
-    {u"%m"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
-    {u"%S"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
-    {u"%t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
-    {u"%T"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
-    {u"%d"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering")},
-    {u"%Nd"_s,
-     ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded out to N digits")},
+const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
+    {u"yyyy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
+    {u"yy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
+    {u"MM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
+    {u"MMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
+    {u"MMMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
+    {u"dd"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
+    {u"hh"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
+    {u"mm"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
+    {u"ss"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
+    {u"t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
+    {u"title"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
+    {u"#"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded by inserting additional '#' characters")},
 };
 
 #include "moc_ExportManager.cpp"
