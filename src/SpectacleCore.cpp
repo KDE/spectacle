@@ -1051,7 +1051,7 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
     deleteWindows();
 
     if (mode == CaptureWindow::Video) {
-        LayerShellQt::Shell::useLayerShell;
+        LayerShellQt::Shell::useLayerShell();
     }
 
     // Allow the window to be transparent. Used for video recording UI.
