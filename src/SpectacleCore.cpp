@@ -745,6 +745,8 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
     m_delayAnimation->setDuration(timeout);
     m_delayAnimation->start();
 
+    // skip minimize animation.
+    SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
     SpectacleWindow::setVisibilityForAll(QWindow::Minimized);
 }
 
