@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->2021-04-11</date>
+>2023-11-26</date>
 <releaseinfo
->Spectacle 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >KDE Applications</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 ><command
 >spectacle</command
-> is een eenvoudige toepassing voor het opnemen van schermafbeeldingen van het bureaublad. Het kan afbeeldingen van het gehele bureaublad, een enkele monitor, het nu actieve venster, het venster nu onder de muis of een rechthoekig gebied van het scherm. De afbeelding kan dan afgedrukt worden, naar een andere toepassing voor bewerking worden verzonden of snel worden opgeslagen zoals deze nu is.</para>
+> is een eenvoudige toepassing voor het opnemen van schermafbeeldingen van het bureaublad. Het kan afbeeldingen van het gehele bureaublad, een enkele monitor, het nu actieve venster, het venster nu onder de muis of een rechthoekig gebied van het scherm. De afbeelding kan dan geannoteerd, afgedrukt worden, naar een andere toepassing voor bewerking worden verzonden of snel worden opgeslagen zoals deze nu is.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Opties voor Spectacle</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Help tonen over de opties voor de opdrachtregel.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Help tonen inclusief Qt specifieke opties.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Toont versie-informatie.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >In achtergrondmodus, geen vensterdecoraties meenemen in de schermafdruk.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>existingFileName</replaceable
+></option
+></term>
+<listitem>
+<para
+>Bestaand schermafdrukbestand openen en bewerken.</para>
 </listitem>
 </varlistentry>
 </variablelist>

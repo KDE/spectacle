@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->2021-04-11</date>
+>2023-11-26</date>
 <releaseinfo
->Spectacle 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >Aplicaciones de KDE</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 ><command
 >spectacle</command
-> es una aplicación sencilla para realizar capturas del escritorio. Puede capturar imágenes de la totalidad del escritorio, de un único monitor, de la ventana activa, de la ventana que está bajo el cursor o de un área rectangular de la pantalla. Las imágenes se pueden imprimir, enviar a otras aplicaciones o guardar tal cual de forma instantánea.</para>
+> es una aplicación sencilla para realizar capturas del escritorio. Puede capturar imágenes de la totalidad del escritorio, de un único monitor, de la ventana activa, de la ventana que está bajo el cursor o de un área rectangular de la pantalla. Las imágenes se pueden anotar, imprimir, enviar a otras aplicaciones o guardar tal cual de forma instantánea.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Opciones de Spectacle</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Muestra ayuda sobre las opciones de la línea de órdenes.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Muestra ayuda que incluye las opciones específicas de Qt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Muestra información sobre la versión.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >En el modo de segundo plano, no incluir las decoraciones de las ventanas en la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>archivoExistente</replaceable
+></option
+></term>
+<listitem>
+<para
+>Abre y edita un archivo de captura de pantalla existente.</para>
 </listitem>
 </varlistentry>
 </variablelist>

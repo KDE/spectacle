@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->11 d'abril de 2021</date>
+>26 de novembre de 2023</date>
 <releaseinfo
->Spectacle 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >Aplicacions KDE</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 >L'<command
 >spectacle</command
-> és una senzilla aplicació per a prendre captures de pantalla de l'escriptori. Pot capturar imatges de tot l'escriptori, un sol monitor, la finestra activa, la finestra sota el ratolí o d'una regió rectangular de la pantalla. Les imatges es poden imprimir, enviar a altres aplicacions per a la seva manipulació o desar-les com estan.</para>
+> és una senzilla aplicació per a prendre captures de pantalla de l'escriptori. Pot capturar imatges de tot l'escriptori, un sol monitor, la finestra activa, la finestra sota el ratolí o d'una regió rectangular de la pantalla. Les imatges es poden anotar, imprimir, enviar a altres aplicacions per a la seva manipulació o desar-les com estan.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Opcions de l'Spectacle</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Mostra l'ajuda sobre les opcions de la línia d'ordres.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Mostra l'ajuda incloent les opcions específiques de les Qt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Mostra informació de la versió.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >En mode segon pla, no inclou les decoracions de la finestra a la captura de pantalla.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>nomFitxerExistent</replaceable
+></option
+></term>
+<listitem>
+<para
+>Obre i edita un fitxer existent de captura de pantalla.</para>
 </listitem>
 </varlistentry>
 </variablelist>

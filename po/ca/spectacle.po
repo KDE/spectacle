@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-29 13:38+0000\n"
-"PO-Revision-Date: 2023-11-14 10:16+0100\n"
+"PO-Revision-Date: 2023-11-29 13:48+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1242,14 +1242,13 @@ msgstr "Format de desament predeterminat de la imatge"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "El nom de fitxer predeterminat usat en desar"
+msgstr ""
+"La plantilla de noms de fitxer utilitzada en desar captures de pantalla"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Captura de pantalla"
@@ -1278,10 +1277,11 @@ msgstr "Format de desament predeterminat"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "El nom de fitxer predeterminat usat en desar"
+msgstr ""
+"La plantilla de noms de fitxer utilitzada en desar vídeos de captura de "
+"pantalla"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1290,12 +1290,10 @@ msgid "Screencasts"
 msgstr "Vídeos de captura de pantalla"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Vídeos de captura de pantalla"
+msgstr "Vídeo de captura de pantalla"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
