@@ -767,6 +767,11 @@ void SpectacleCore::cancelScreenshot()
     m_delayAnimation->stop();
     if (currentTime > 0) {
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
+    } else if (!ViewerWindow::instance()) {
+        initViewerWindow(ViewerWindow::Image);
+        ViewerWindow::instance()->setVisible(true);
+    } else if (ViewerWindow::instance()) {
+        Q_EMIT allDone();
     }
 }
 

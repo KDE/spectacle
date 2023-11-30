@@ -460,11 +460,7 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
     ) {
         event->accept();
         auto spectacleCore = SpectacleCore::instance();
-        if (spectacleCore->captureTimeRemaining() > 0) {
-            spectacleCore->cancelScreenshot();
-        } else {
-            Q_EMIT engine()->quit();
-        }
+        spectacleCore->cancelScreenshot();
     } else if (event->matches(QKeySequence::Preferences)) {
         event->accept();
         showPreferencesDialog();
