@@ -1168,6 +1168,7 @@ QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
 void SpectacleCore::activateAction(const QString &actionName, const QVariant &parameter)
 {
     Q_UNUSED(parameter)
+    m_startMode = StartMode::DBus;
     if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
         takeNewScreenshot(CaptureModeModel::AllScreens, 0);
     } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
