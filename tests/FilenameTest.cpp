@@ -42,8 +42,10 @@ void FilenameTest::testStrings()
     // empty string produces Screenshot per default
     QCOMPARE(mExportManager->formattedFilename({}), u"Screenshot"_s);
     // not a placeholder
-    QCOMPARE(mExportManager->formattedFilename(u"%"_s), u"%"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"%K"_s), u"%K"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<"_s), u"<"_s);
+    QCOMPARE(mExportManager->formattedFilename(u">"_s), u">"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<>"_s), u"<>"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<notaplaceholder>"_s), u"<notaplaceholder>"_s);
 }
 
 void FilenameTest::testDateTokens()
@@ -93,11 +95,11 @@ void FilenameTest::testNumbering()
 void FilenameTest::testCombined()
 {
     mExportManager->setWindowTitle(u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss>%F"_s),
-             u"App_Spectacle_Date_20190322_Time_10:43:25%F"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><notaplaceholder>"_s),
+             u"App_Spectacle_Date_20190322_Time_10:43:25<notaplaceholder>"_s);
     mExportManager->setWindowTitle({});
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss>%F"_s),
-             u"App_Date_20190322_Time_10:43:25%F"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><notaplaceholder>"_s),
+             u"App_Date_20190322_Time_10:43:25<notaplaceholder>"_s);
 }
 
 QTEST_GUILESS_MAIN(FilenameTest)
