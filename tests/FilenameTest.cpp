@@ -18,6 +18,7 @@ class FilenameTest : public QObject
 
 private:
     ExportManager *mExportManager;
+    QDateTime timestamp;
 
 private Q_SLOTS:
 
@@ -32,7 +33,8 @@ private Q_SLOTS:
 void FilenameTest::initTestCase()
 {
     mExportManager = ExportManager::instance();
-    mExportManager->setTimestamp(QDateTime::fromString(u"2019-03-22T10:43:25"_s, Qt::ISODate));
+    timestamp = QDateTime::fromString(u"2019-03-22T10:43:25"_s, Qt::ISODate);
+    mExportManager->setTimestamp(timestamp);
     mExportManager->setWindowTitle(u"Spectacle"_s);
 }
 
@@ -50,13 +52,13 @@ void FilenameTest::testStrings()
 
 void FilenameTest::testDateTokens()
 {
-    QCOMPARE(mExportManager->formattedFilename(u"<yyyy>"_s), u"2019"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<yy>"_s), u"19"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<MM>"_s), u"03"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<dd>"_s), u"22"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<hh>"_s), u"10"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<mm>"_s), u"43"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<ss>"_s), u"25"_s);
+    using Category = ExportManager::Placeholder::Category;
+    const auto &placeholders = mExportManager->filenamePlaceholders;
+    for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
+        if (it->category == Category::Date || it->category == Category::Time) {
+            QCOMPARE(mExportManager->formattedFilename(it->plainKey), timestamp.toString(it->baseKey));
+        }
+    }
 }
 
 void FilenameTest::testWindowTitle()

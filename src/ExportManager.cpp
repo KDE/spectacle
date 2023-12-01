@@ -204,17 +204,15 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         baseName.replace(re, uR"(\1\5)"_s);
     }
 
-    QString result = baseName.replace("<yyyy>"_L1, timestamp.toString(u"yyyy"_s))
-                             .replace("<yy>"_L1, timestamp.toString(u"yy"_s))
-                             .replace("<MM>"_L1, timestamp.toString(u"MM"_s))
-                             .replace("<MMM>"_L1, timestamp.toString(u"MMM"_s))
-                             .replace("<MMMM>"_L1, timestamp.toString(u"MMMM"_s))
-                             .replace("<dd>"_L1, timestamp.toString(u"dd"_s))
-                             .replace("<hh>"_L1, timestamp.toString(u"hh"_s))
-                             .replace("<mm>"_L1, timestamp.toString(u"mm"_s))
-                             .replace("<ss>"_L1, timestamp.toString(u"ss"_s))
-                             .replace("<t>"_L1, timestamp.toString(u"t"_s))
-                             .replace("<title>"_L1, title);
+    QString result = baseName;
+    // Date/Time
+    for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
+        if (it->category == Placeholder::Date || it->category == Placeholder::Time) {
+            result.replace(it->plainKey, timestamp.toString(it->baseKey));
+        }
+    }
+    // Other
+    result.replace("<title>"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
@@ -736,18 +734,39 @@ void ExportManager::doPrint(QPrinter *printer)
 }
 
 const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
-    {u"yyyy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
-    {u"yy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
-    {u"MM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
-    {u"MMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
-    {u"MMMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
-    {u"dd"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
-    {u"hh"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
-    {u"mm"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
-    {u"ss"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
-    {u"t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
-    {u"title"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
-    {u"#"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded by inserting additional '#' characters")},
+    {Placeholder::Date, u"d"_s},
+    {Placeholder::Date, u"dd"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
+    {Placeholder::Date, u"ddd"_s},
+    {Placeholder::Date, u"dddd"_s},
+    {Placeholder::Date, u"M"_s},
+    {Placeholder::Date, u"MM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
+    {Placeholder::Date, u"MMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
+    {Placeholder::Date, u"MMMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
+    {Placeholder::Date, u"yy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
+    {Placeholder::Date, u"yyyy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
+    {Placeholder::Time, u"H"_s},
+    {Placeholder::Time, u"HH"_s},
+    {Placeholder::Time, u"h"_s},
+    {Placeholder::Time, u"hh"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
+    {Placeholder::Time, u"m"_s},
+    {Placeholder::Time, u"mm"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
+    {Placeholder::Time, u"s"_s},
+    {Placeholder::Time, u"ss"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
+    {Placeholder::Time, u"z"_s},
+    {Placeholder::Time, u"zz"_s}, // same as `z`
+    {Placeholder::Time, u"zzz"_s},
+    {Placeholder::Time, u"AP"_s},
+    {Placeholder::Time, u"A"_s}, // same as `AP`
+    {Placeholder::Time, u"ap"_s},
+    {Placeholder::Time, u"a"_s}, // same as `ap`
+    {Placeholder::Time, u"Ap"_s},
+    {Placeholder::Time, u"aP"_s}, // same as `Ap`
+    {Placeholder::Time, u"t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
+    {Placeholder::Time, u"tt"_s},
+    {Placeholder::Time, u"ttt"_s},
+    {Placeholder::Time, u"tttt"_s},
+    {Placeholder::Other, u"title"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
+    {Placeholder::Other, u"#"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded by inserting additional '#' characters")},
 };
 
 #include "moc_ExportManager.cpp"

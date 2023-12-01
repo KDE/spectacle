@@ -75,13 +75,32 @@ public:
     const QTemporaryDir *temporaryDir();
 
     struct Placeholder {
-        // Expect the config UI to use rich text.
+        enum Category {
+            Date,
+            Time,
+            Other,
+        };
+
+        const Category category;
+        const QString baseKey;
+        const QString plainKey;
         const QString htmlKey;
         const KLocalizedString description;
 
-        Placeholder(const QString &key, const KLocalizedString &description)
-            : htmlKey(u"&lt;" % key % u"&gt;") // key -> <key> in HTML
+        // Placeholders with empty descriptions will not be visible in the config UI
+        Placeholder(Category category, const QString &key, const KLocalizedString &description)
+            : category(category)
+            , baseKey(key)
+            , plainKey(u"<" % key % u">")
+            , htmlKey(u"&lt;" % key % u"&gt;") // key -> <key> in HTML
             , description(description)
+        {
+        }
+
+        Placeholder(Category category, const QString &key)
+            : category(category)
+            , baseKey(key)
+            , plainKey(u"<" % key % u">")
         {
         }
     };
