@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"POT-Creation-Date: 2023-12-02 01:36+0000\n"
 "PO-Revision-Date: 2023-08-12 01:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -359,19 +359,15 @@ msgid "Window Title"
 msgstr "ウィンドウのタイトル"
 
 #: src/ExportManager.cpp:750
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Sequential numbering"
-msgstr "連番"
-
-#: src/ExportManager.cpp:752
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded out to N digits"
+msgid "Sequential numbering, padded by inserting additional '#' characters"
 msgstr "N桁の連番"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
@@ -1025,7 +1021,7 @@ msgid "Preview:"
 msgstr "プレビュー:"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:173
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
 #, kde-format
 msgid "For lossy image formats like JPEG"
 msgstr "JPEG のような非可逆圧縮の画像フォーマットに適用されます"
@@ -1898,6 +1894,12 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering"
+#~ msgstr "連番"
 
 #~ msgid "The default filename used when recording a video"
 #~ msgstr "録画時に使用される既定のファイル名"

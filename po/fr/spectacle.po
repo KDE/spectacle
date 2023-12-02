@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
-"PO-Revision-Date: 2023-11-15 12:48+0100\n"
+"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"PO-Revision-Date: 2023-11-30 09:25+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
-"Language-Team: fr\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -380,19 +380,15 @@ msgid "Window Title"
 msgstr "Titre de la fenêtre"
 
 #: src/ExportManager.cpp:750
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Sequential numbering"
-msgstr "Numéro de séquence"
-
-#: src/ExportManager.cpp:752
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded out to N digits"
+msgid "Sequential numbering, padded by inserting additional '#' characters"
 msgstr "Numéro de séquence, complété pour une longueur exacte de N chiffres"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
@@ -1048,7 +1044,7 @@ msgid "Preview:"
 msgstr "Aperçu :"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:173
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
 #, kde-format
 msgid "For lossy image formats like JPEG"
 msgstr "Pour les formats d'images avec perte de qualité comme « JPEG »"
@@ -1256,14 +1252,14 @@ msgstr "Format d'enregistrement d'image par défaut"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Le nom de fichier par défaut à utiliser pour l'enregistrement"
+msgstr ""
+"Le modèle de nom de fichier à utiliser pour l'enregistrement des copies "
+"d'écran"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Copie d'écran"
@@ -1292,10 +1288,11 @@ msgstr "Format de vidéo par défaut"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Le nom de fichier par défaut à utiliser pour l'enregistrement"
+msgstr ""
+"Le modèle de nom de fichier à utiliser pour l'enregistrement des "
+"enregistrements d'écran"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1304,12 +1301,10 @@ msgid "Screencasts"
 msgstr "Copies d'écran"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Copies d'écran"
+msgstr "Enregistrement d'écran"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1919,6 +1914,12 @@ msgstr "WebM / VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4 / H.264"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering"
+#~ msgstr "Numéro de séquence"
 
 #~ msgid "The default filename used when recording a video"
 #~ msgstr ""

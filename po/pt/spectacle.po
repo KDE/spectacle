@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"POT-Creation-Date: 2023-12-02 01:36+0000\n"
 "PO-Revision-Date: 2023-05-23 13:00+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -363,19 +363,15 @@ msgid "Window Title"
 msgstr "Título da Janela"
 
 #: src/ExportManager.cpp:750
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Sequential numbering"
-msgstr "Numeração sequencial"
-
-#: src/ExportManager.cpp:752
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded out to N digits"
+msgid "Sequential numbering, padded by inserting additional '#' characters"
 msgstr "Numeração sequencial, preenchida com N algarismos"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
@@ -1035,7 +1031,7 @@ msgid "Preview:"
 msgstr "Antevisão:"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:173
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
 #, kde-format
 msgid "For lossy image formats like JPEG"
 msgstr "Para os formatos de imagens com perdas, como o JPEG"
@@ -1913,6 +1909,12 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering"
+#~ msgstr "Numeração sequencial"
 
 #~ msgid "The default filename used when recording a video"
 #~ msgstr "O nome predefinido do ficheiro a usar na gravação de um vídeo"

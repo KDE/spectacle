@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-01 01:37+0000\n"
+"POT-Creation-Date: 2023-12-02 01:36+0000\n"
 "PO-Revision-Date: 2021-09-04 10:08+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -372,19 +372,15 @@ msgid "Window Title"
 msgstr "Τίτλος παραθύρου"
 
 #: src/ExportManager.cpp:750
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
-msgid "Sequential numbering"
-msgstr "Ακολουθιακή αρίθμηση"
-
-#: src/ExportManager.cpp:752
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded out to N digits"
+msgid "Sequential numbering, padded by inserting additional '#' characters"
 msgstr "Ακολουθιακή αρίθμηση, γέμισμα με Ν ψηφία"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
@@ -1075,7 +1071,7 @@ msgid "Preview:"
 msgstr "Προεπισκόπηση:"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:173
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
 #, kde-format
 msgid "For lossy image formats like JPEG"
 msgstr "Για τύπους αποθήκευσης αρχείων με απώλειες όπως ο JPEG"
@@ -1960,6 +1956,12 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering"
+#~ msgstr "Ακολουθιακή αρίθμηση"
 
 #, fuzzy
 #~| msgid "The default filename used when saving"
