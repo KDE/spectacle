@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->2021-04-11</date>
+>26 листопада 2023 року</date>
 <releaseinfo
->Spectacle 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >Програми KDE</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 ><command
 >spectacle</command
-> is a simple application for capturing desktop screenshots. It can capture images of the entire desktop, a single monitor, the currently active window, the window currently under the mouse, or a rectangular region of the screen. The images can then be printed, sent to other applications for manipulation, or quickly be saved as-is.</para>
+> — проста програма для створення знімків екрана. Вона здатна захоплювати знімки усієї стільниці, окремого монітора, поточного активного вікна, вікна, у якому перебуватиме вказівник миші, чи прямокутної ділянки вікна. Створені зображення можна анотувати, друкувати, надсилати до інших програм для обробки або швидко зберігати без обробки.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Параметри Spectacle</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Вивести довідку щодо параметрів командного рядка.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Вивести довідку, включно із специфічними для Qt параметрами.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Показати дані щодо версії.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >У фоновому режимі, не включати обрамлення вікна до знімка.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>НазваНаявногоФайла</replaceable
+></option
+></term>
+<listitem>
+<para
+>Відкрити і редагувати наявний файл знімка вікна.</para>
 </listitem>
 </varlistentry>
 </variablelist>
