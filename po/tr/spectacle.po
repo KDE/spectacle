@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"POT-Creation-Date: 2023-12-05 01:34+0000\n"
 "PO-Revision-Date: 2023-12-02 14:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -182,12 +182,12 @@ msgstr "Arka plan kipinde, ekran görüntüsünde gölgeleri dışarıda tut"
 msgid "Open and edit existing screenshot file"
 msgstr "Var olan ekran görüntüsü dosyasını aç ve düzenle"
 
-#: src/ExportManager.cpp:342
+#: src/ExportManager.cpp:340
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter görseli yazamıyor: %1"
 
-#: src/ExportManager.cpp:357
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -197,12 +197,12 @@ msgstr ""
 "Dizin oluşturulamadığı için ekran görüntüsü kaydedilemiyor:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya yazılırken hata."
 
-#: src/ExportManager.cpp:387
+#: src/ExportManager.cpp:385
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,27 +212,27 @@ msgstr ""
 "Uzak dizin oluşturma başarısız olduğu için ekran görüntüsü kaydedilemiyor:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
+#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Geçici dosyaya yazılırken hata."
 
-#: src/ExportManager.cpp:406
+#: src/ExportManager.cpp:404
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Görsel kaydedilemedi. Dosya uzak konuma yüklenemedi."
 
-#: src/ExportManager.cpp:453
+#: src/ExportManager.cpp:451
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya kayıt adı geçersiz."
 
-#: src/ExportManager.cpp:497
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Boş ekran görüntüsü görseli kaydedilemez."
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Video dışa aktarılamadı: Geçici dosya URL'si var olan bir yerel dosya "
 "olmalıdır"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,58 +250,18 @@ msgstr ""
 "Video dışa aktarılamadı: Çıktı dosyası URL'si bir dosya adı içeren geçerli "
 "bir URL olmalıdır"
 
-#: src/ExportManager.cpp:695
+#: src/ExportManager.cpp:693
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kayıt kaydedilemiyor. Dosya, şu konuma taşınamadı: %1"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:721
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Yazdırma başarısız. Yazıcı başlatılamadı."
 
-#: src/ExportManager.cpp:739
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "Yıl (4 basamaklı)"
-
-#: src/ExportManager.cpp:740
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "Yıl (2 basamaklı)"
-
-#: src/ExportManager.cpp:741
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "Ay"
-
-#: src/ExportManager.cpp:742
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "Ay (yerelleştirilmiş kısa ad)"
-
-#: src/ExportManager.cpp:743
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "Ay (yerelleştirilmiş uzun ad)"
-
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:738
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +269,47 @@ msgctxt ""
 msgid "Day"
 msgstr "Gün"
 
+#: src/ExportManager.cpp:742
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Ay"
+
+#: src/ExportManager.cpp:743
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr "Ay (yerelleştirilmiş kısa ad)"
+
+#: src/ExportManager.cpp:744
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr "Ay (yerelleştirilmiş uzun ad)"
+
 #: src/ExportManager.cpp:745
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Yıl (2 basamaklı)"
+
+#: src/ExportManager.cpp:746
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Yıl (4 basamaklı)"
+
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Saat"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Dakika"
 
-#: src/ExportManager.cpp:747
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,7 +333,7 @@ msgctxt ""
 msgid "Second"
 msgstr "saniye"
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -341,7 +341,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Zaman dilimi"
 
-#: src/ExportManager.cpp:749
+#: src/ExportManager.cpp:768
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -349,7 +349,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Pencere başlığı"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:769
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1019,8 +1019,8 @@ msgstr ""
 "Dosya adlarında aşağıdaki yer tutucuları kullanabilirsiniz; dosya "
 "kaydedildiğinde gerçek metin ile değiştirilirler:<blockquote>"
 
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:63
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:66
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Bir alt klasöre kaydet"

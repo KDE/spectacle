@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"POT-Creation-Date: 2023-12-05 01:34+0000\n"
 "PO-Revision-Date: 2023-12-02 10:39+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -189,12 +189,12 @@ msgstr "In achtergrondmodus, schaduwen niet meenemen in de schermafdruk"
 msgid "Open and edit existing screenshot file"
 msgstr "Bestaand schermafdrukbestand openen en bewerken"
 
-#: src/ExportManager.cpp:342
+#: src/ExportManager.cpp:340
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan geen afbeelding wegschrijven: %1"
 
-#: src/ExportManager.cpp:357
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -204,12 +204,12 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map is mislukt:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan schermafdruk niet opslaan. Fout bij schrijven van bestand."
 
-#: src/ExportManager.cpp:387
+#: src/ExportManager.cpp:385
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -219,32 +219,32 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map op afstand is "
 "mislukt:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
+#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kan schermafdruk niet opslaan. Fout bij schrijven van tijdelijk lokaal "
 "bestand."
 
-#: src/ExportManager.cpp:406
+#: src/ExportManager.cpp:404
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Afbeelding opslaan lukt niet. Bestand kon niet worden opgestuurd naar "
 "externe locatie."
 
-#: src/ExportManager.cpp:453
+#: src/ExportManager.cpp:451
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Kan schermafdruk niet opslaan. De bestandsnaam voor opslaan is ongeldig."
 
-#: src/ExportManager.cpp:497
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan geen lege schermafdruk opslaan."
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Video exporteren is mislukt: URL van tijdelijk bestand moet een bestaand "
 "lokaal bestand zijn"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,59 +262,19 @@ msgstr ""
 "Video exporteren is mislukt: URL van uitvoerbestand moet een geldige URL "
 "zijn met een bestandsnaam"
 
-#: src/ExportManager.cpp:695
+#: src/ExportManager.cpp:693
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Opname opslaan lukt niet. Kon het bestand niet verplaatsen naar locatie: %1"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:721
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Afdrukken is mislukt. Initialiseren van de printer is mislukt"
 
-#: src/ExportManager.cpp:739
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "Jaar (4 cijfers)"
-
-#: src/ExportManager.cpp:740
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "Jaar (2 cijfers)"
-
-#: src/ExportManager.cpp:741
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "Maand"
-
-#: src/ExportManager.cpp:742
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "Maand (lokale korte naam)"
-
-#: src/ExportManager.cpp:743
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "Maand (lokale lange naam)"
-
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:738
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +282,47 @@ msgctxt ""
 msgid "Day"
 msgstr "Dag"
 
+#: src/ExportManager.cpp:742
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Maand"
+
+#: src/ExportManager.cpp:743
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr "Maand (lokale korte naam)"
+
+#: src/ExportManager.cpp:744
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr "Maand (lokale lange naam)"
+
 #: src/ExportManager.cpp:745
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Jaar (2 cijfers)"
+
+#: src/ExportManager.cpp:746
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Jaar (4 cijfers)"
+
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +330,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Uur"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -338,7 +338,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minuut"
 
-#: src/ExportManager.cpp:747
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -346,7 +346,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Seconde"
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -354,7 +354,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Tijdzone"
 
-#: src/ExportManager.cpp:749
+#: src/ExportManager.cpp:768
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -362,7 +362,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Venstertitel"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:769
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1037,8 +1037,8 @@ msgstr ""
 "zullen worden door actuele tekst wanneer het bestand wordt opgeslagen:"
 "<blockquote>"
 
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:63
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:66
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Om op te slaan naar een submap"

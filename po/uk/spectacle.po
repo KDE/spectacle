@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"POT-Creation-Date: 2023-12-05 01:34+0000\n"
 "PO-Revision-Date: 2023-12-02 22:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -188,12 +188,12 @@ msgstr "У фоновому режимі, виключити тіні вікон
 msgid "Open and edit existing screenshot file"
 msgstr "Відкрити і редагувати наявний файл знімка вікна"
 
-#: src/ExportManager.cpp:342
+#: src/ExportManager.cpp:340
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter не вдалося записати зображення: %1"
 
-#: src/ExportManager.cpp:357
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -203,12 +203,12 @@ msgstr ""
 "Не вдалося зберегти знімок вікна, оскільки не вдалося створити каталог:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не вдалося зберегти знімок. Помилка під час спроби записати файл."
 
-#: src/ExportManager.cpp:387
+#: src/ExportManager.cpp:385
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -218,31 +218,31 @@ msgstr ""
 "Не вдалося зберегти знімок вікна, оскільки не вдалося створити віддалений "
 "каталог:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
+#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не вдалося зберегти знімок. Помилка під час спроби записати тимчасовий "
 "локальний файл."
 
-#: src/ExportManager.cpp:406
+#: src/ExportManager.cpp:404
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Не вдалося зберегти зображення. Не вдалося вивантажити файл на віддалений "
 "сервер."
 
-#: src/ExportManager.cpp:453
+#: src/ExportManager.cpp:451
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Не вдалося зберегти знімок. Назва файла є некоректною."
 
-#: src/ExportManager.cpp:497
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Неможливо зберегти порожнє зображення знімка."
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -251,7 +251,7 @@ msgstr ""
 "Не вдалося експортувати відео: має бути вказано адресу наявного локального "
 "файла для тимчасового файла"
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -260,59 +260,19 @@ msgstr ""
 "Не вдалося експортувати відео: адреса файла виведення даних має бути "
 "коректною адресою з назвою файла"
 
-#: src/ExportManager.cpp:695
+#: src/ExportManager.cpp:693
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Не вдалося зберегти запис. Не вдалося пересунути файл до вказаного місця: %1"
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:721
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Не вдалося надрукувати. Спроба ініціалізувати принтер зазнала невдачі."
 
-#: src/ExportManager.cpp:739
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "Рік (4 цифри)"
-
-#: src/ExportManager.cpp:740
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "Рік (2 цифри)"
-
-#: src/ExportManager.cpp:741
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "Місяць"
-
-#: src/ExportManager.cpp:742
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "Місяць (скорочена локалізована назва)"
-
-#: src/ExportManager.cpp:743
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "Місяць (повна локалізована назва)"
-
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:738
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -320,7 +280,47 @@ msgctxt ""
 msgid "Day"
 msgstr "День"
 
+#: src/ExportManager.cpp:742
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Місяць"
+
+#: src/ExportManager.cpp:743
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr "Місяць (скорочена локалізована назва)"
+
+#: src/ExportManager.cpp:744
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr "Місяць (повна локалізована назва)"
+
 #: src/ExportManager.cpp:745
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Рік (2 цифри)"
+
+#: src/ExportManager.cpp:746
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Рік (4 цифри)"
+
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -328,7 +328,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Година"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -336,7 +336,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Хвилина"
 
-#: src/ExportManager.cpp:747
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -344,7 +344,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Секунда"
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -352,7 +352,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Часовий пояс"
 
-#: src/ExportManager.cpp:749
+#: src/ExportManager.cpp:768
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -360,7 +360,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:769
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -1033,8 +1033,8 @@ msgstr ""
 "У назвах файлів ви можете використовувати вказані нижче замінники, які буде "
 "замінено текстом під час збереження файлів:<blockquote>"
 
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:63
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:66
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Для збереження до підтеки"

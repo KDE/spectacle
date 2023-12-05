@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"POT-Creation-Date: 2023-12-05 01:34+0000\n"
 "PO-Revision-Date: 2023-02-05 00:57+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -187,12 +187,12 @@ msgstr "Foninėje veiksenoje į ekrano kopiją neįtraukti langų dekoracijų"
 msgid "Open and edit existing screenshot file"
 msgstr "Atverti ir taisyti esamą ekrano kopijos failą"
 
-#: src/ExportManager.cpp:342
+#: src/ExportManager.cpp:340
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter negali įrašyti paveikslo: %1"
 
-#: src/ExportManager.cpp:357
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -202,12 +202,12 @@ msgstr ""
 "Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti katalogą:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nepavyksta įrašyti ekrano kopijos. Klaida rašant į failą."
 
-#: src/ExportManager.cpp:387
+#: src/ExportManager.cpp:385
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -217,95 +217,55 @@ msgstr ""
 "Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti nuotolinio katalogo:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
+#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nepavyksta įrašyti ekrano kopijos. Klaida rašant į laikinąjį vietinį failą."
 
-#: src/ExportManager.cpp:406
+#: src/ExportManager.cpp:404
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Nepavyko įrašyti paveikslo. Nepavyko įkelti failo į nuotolinę vietą."
 
-#: src/ExportManager.cpp:453
+#: src/ExportManager.cpp:451
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Nepavyksta įrašyti ekrano kopijos. Įrašymui netinkamas failo pavadinimas."
 
-#: src/ExportManager.cpp:497
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nepavyksta įrašyti tuščio ekrano kopijos paveikslo."
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:695
+#: src/ExportManager.cpp:693
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Nepavyko įrašyti paveikslo. Nepavyko įkelti failo į nuotolinę vietą."
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:721
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Nepavyko atspausdinti. Nepavyko inicijuoti spausdintuvo."
 
-#: src/ExportManager.cpp:739
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "Metai (4 skaitmenys)"
-
-#: src/ExportManager.cpp:740
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "Metai (2 skaitmenys)"
-
-#: src/ExportManager.cpp:741
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "Mėnuo"
-
-#: src/ExportManager.cpp:742
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr ""
-
-#: src/ExportManager.cpp:743
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr ""
-
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:738
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +273,47 @@ msgctxt ""
 msgid "Day"
 msgstr "Diena"
 
+#: src/ExportManager.cpp:742
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "Mėnuo"
+
+#: src/ExportManager.cpp:743
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr ""
+
+#: src/ExportManager.cpp:744
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr ""
+
 #: src/ExportManager.cpp:745
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "Metai (2 skaitmenys)"
+
+#: src/ExportManager.cpp:746
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "Metai (4 skaitmenys)"
+
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +321,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Valanda"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -329,7 +329,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minutė"
 
-#: src/ExportManager.cpp:747
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -337,7 +337,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Sekundė"
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -345,7 +345,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Laiko juosta"
 
-#: src/ExportManager.cpp:749
+#: src/ExportManager.cpp:768
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -353,7 +353,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Lango antraštė"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:769
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "A placeholder in the user configurable filename will replaced by the "
@@ -1045,8 +1045,8 @@ msgstr ""
 "Galite naudoti šiuos pakaitos simbolius, kurie, įrašant failą, bus pakeisti "
 "faktiniu tekstu:<blockquote>"
 
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:63
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:66
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Norėdami įrašyti į poaplankį"

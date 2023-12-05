@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 01:36+0000\n"
+"POT-Creation-Date: 2023-12-05 01:34+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -176,12 +176,12 @@ msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
 
-#: src/ExportManager.cpp:342
+#: src/ExportManager.cpp:340
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter에서 그림을 작성할 수 없음: %1"
 
-#: src/ExportManager.cpp:357
+#: src/ExportManager.cpp:355
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -191,12 +191,12 @@ msgstr ""
 "디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "스크린샷을 저장할 수 없습니다. 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:387
+#: src/ExportManager.cpp:385
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,93 +206,53 @@ msgstr ""
 "원격 디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:398 src/ExportManager.cpp:446
+#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "스크린샷을 저장할 수 없습니다. 임시 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:406
+#: src/ExportManager.cpp:404
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:453
+#: src/ExportManager.cpp:451
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되었습니다."
 
-#: src/ExportManager.cpp:497
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:613
+#: src/ExportManager.cpp:611
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:620
+#: src/ExportManager.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:695
+#: src/ExportManager.cpp:693
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:723
+#: src/ExportManager.cpp:721
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
 
-#: src/ExportManager.cpp:739
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "연도(4자리)"
-
-#: src/ExportManager.cpp:740
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "연도(2자리)"
-
-#: src/ExportManager.cpp:741
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "월"
-
-#: src/ExportManager.cpp:742
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "월(지역화된 짧은 이름)"
-
-#: src/ExportManager.cpp:743
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "월(지역화된 긴 이름)"
-
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:738
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -300,7 +260,47 @@ msgctxt ""
 msgid "Day"
 msgstr "일"
 
+#: src/ExportManager.cpp:742
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month"
+msgstr "월"
+
+#: src/ExportManager.cpp:743
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized short name)"
+msgstr "월(지역화된 짧은 이름)"
+
+#: src/ExportManager.cpp:744
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Month (localized long name)"
+msgstr "월(지역화된 긴 이름)"
+
 #: src/ExportManager.cpp:745
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (2 digit)"
+msgstr "연도(2자리)"
+
+#: src/ExportManager.cpp:746
+#, kde-format
+msgctxt ""
+"A placeholder in the user configurable filename will replaced by the "
+"specified value"
+msgid "Year (4 digit)"
+msgstr "연도(4자리)"
+
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -308,7 +308,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "시"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -316,7 +316,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "분"
 
-#: src/ExportManager.cpp:747
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -324,7 +324,7 @@ msgctxt ""
 msgid "Second"
 msgstr "초"
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -332,7 +332,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "시간대"
 
-#: src/ExportManager.cpp:749
+#: src/ExportManager.cpp:768
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -340,7 +340,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "창 제목"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:769
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "A placeholder in the user configurable filename will replaced by the "
@@ -1012,8 +1012,8 @@ msgstr ""
 "파일 이름에 다음 자리 비움자를 사용할 수 있으며 실제 파일을 저장할 때 대체됩"
 "니다:<blockquote>"
 
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:63
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:66
+#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
+#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "하위 폴더에 저장할 때"
