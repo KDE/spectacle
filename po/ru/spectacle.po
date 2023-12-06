@@ -17,21 +17,21 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018.
 # Andrew <kissmeoutbeforeugo@gmail.com>, 2016.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Alexander Yavorsky <kekcuha@gmail.com>
 # Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-05 01:34+0000\n"
-"PO-Revision-Date: 2023-04-15 18:48+0300\n"
+"PO-Revision-Date: 2023-12-05 21:56+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -200,10 +200,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "В фоновом режиме, не включая заголовок и границы окна"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "В фоновом режиме, не включая заголовок и границы окна"
+msgstr "В фоновом режиме, не включая тень окна"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -269,6 +268,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Не удалось экспортировать видео: адресом временного файла должен быть "
+"существующий временный файл"
 
 #: src/ExportManager.cpp:618
 #, kde-format
@@ -278,13 +279,11 @@ msgid ""
 msgstr ""
 
 #: src/ExportManager.cpp:693
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Ошибка при сохранении изображения. Не удалось загрузить файл на удалённый "
-"адрес."
+"Ошибка при сохранении записи: не удалось переместить файл в расположение «%1»"
 
 #: src/ExportManager.cpp:721
 #, kde-format
@@ -313,7 +312,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized short name)"
-msgstr ""
+msgstr "Месяц (региональная короткая форма)"
 
 #: src/ExportManager.cpp:744
 #, kde-format
@@ -321,7 +320,7 @@ msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Month (localized long name)"
-msgstr ""
+msgstr "Месяц (региональная длинная форма)"
 
 #: src/ExportManager.cpp:745
 #, kde-format
@@ -381,16 +380,12 @@ msgid "Window Title"
 msgstr "Заголовок окна"
 
 #: src/ExportManager.cpp:769
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Sequential numbering, padded out to N digits"
+#, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Последовательная нумерация, дополненная до N цифр"
+msgstr "Последовательная нумерация, дополненная символами «#»"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -542,20 +537,17 @@ msgstr "Включая заголовок и границы окна"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr "При съёмке окна показывать его заголовок и границы"
+msgstr "При съёмке окна захватывать его заголовок и границы"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Включая заголовок и границы окна"
+msgstr "Включая тень окна"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "При съёмке окна показывать его заголовок и границы"
+msgstr "При съёмке окна захватывать его тень."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -677,18 +669,16 @@ msgid "Image Zoom"
 msgstr "Мастаб изображения"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Снимок экрана скопирован в буфер обмена."
+msgstr "Путь к файлу видео скопирован в буфер обмена."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Снимок экрана скопирован в буфер обмена."
+msgstr "Путь к файлу снимка экрана скопирован в буфер обмена."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -706,10 +696,9 @@ msgid "Copy"
 msgstr "Копировать"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Копировать место сохранения в буфер обмена"
+msgstr "Копировать путь к файлу"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -759,7 +748,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Включить в снимок экрана тень окна"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -827,15 +816,12 @@ msgid ""
 msgstr "Снимок экрана скопирован в буфер обмена и в файл <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Снимок экрана сохранён в файл (<a href=\"%1\">%2</a>) и полный путь к нему "
+"Видео сохранено в файл (<a href=\"%1\">%2</a>) и полный путь к нему "
 "скопирован в буфер обмена."
 
 #: src/Gui/SavedAndLocationCopied.qml:12
@@ -1073,35 +1059,31 @@ msgid "To save to a sub-folder"
 msgstr "Сохранение во вложенную папку"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr "Основные"
+msgstr "Общие"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:35
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Сохранение изображений"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Сохранение видео"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Комбинации клавиш"
@@ -1190,10 +1172,9 @@ msgstr "Не убирать указатель мыши со снимка экр
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Не убирать указатель мыши со снимка экрана"
+msgstr "Не убирать указатель мыши при записи видео"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1203,10 +1184,9 @@ msgstr "Не убирать заголовок и границы окна со �
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Не убирать заголовок и границы окна со снимка экрана"
+msgstr "Не убирать тень окна со снимка экрана"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1241,11 +1221,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Уровень сжатия при сохранении в формате с потерей качества"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Снимок экрана"
+msgstr "Снимки экрана"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1255,14 +1234,12 @@ msgstr "Формат для сохранения снимков экрана п�
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Имя файла по умолчанию"
+msgstr "Шаблон имени файла для сохранения снимков экрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Снимок экрана"
@@ -1285,31 +1262,27 @@ msgstr "Путь, использованный при последнем сох�
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Формат для сохранения снимков экрана по умолчанию"
+msgstr "Формат для сохранения видео по умолчанию"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Имя файла по умолчанию"
+msgstr "Шаблон имени файла для сохранения записей с экрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Снимок экрана"
+msgstr "Трансляции экрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Снимок экрана"
+msgstr "Трансляция экрана"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1355,75 +1328,65 @@ msgstr "Ширина обводки эллипса"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Ширина обводки произвольный линии"
+msgstr "Цвет обводки произвольный линии"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:243
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Ширина обводки выделения"
+msgstr "Цвет обводки выделения"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:247
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Ширина обводки линии"
+msgstr "Цвет обводки линии"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Ширина обводки стрелки"
+msgstr "Цвет обводки стрелки"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Ширина обводки прямоугольника"
+msgstr "Цвет обводки прямоугольника"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Ширина обводки эллипса"
+msgstr "Цвет обводки эллипса"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:264
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Ширина обводки прямоугольника"
+msgstr "Цвет заполнения прямоугольника"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:268
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Ширина обводки эллипса"
+msgstr "Цвет заполнения эллипса"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Шрифт"
+msgstr "Шрифт для текста"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:280
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Шрифт"
+msgstr "Шрифт для чисел"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1477,43 +1440,34 @@ msgstr "Тень при использовании инструмента «ци
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Путь для сохранения:"
+msgstr "&Путь для сохранения:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Изображение опубликовано"
+msgstr "Видео опубликовано"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Изображение опубликовано"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Ссылка на опубликованный снимок экрана (<a href=\"%1\">%1</a>) скопирована в "
-"буфер обмена."
+"Ссылка на опубликованное видео (<a href=\"%1\">%1</a>) скопирована в буфер "
+"обмена."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1523,15 +1477,13 @@ msgstr ""
 "буфер обмена."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Не удалось опубликовать изображение: %1"
+msgstr "Не удалось опубликовать видео: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Не удалось опубликовать изображение: %1"
@@ -1708,6 +1660,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Для работы этого приложения в графическом окружении Wayland необходим "
+"компоновщик рабочего стола KWin. Данное приложение предназначено только для "
+"работы в окружении рабочего стола Plasma."
 
 #: src/Platforms/VideoPlatformWayland.cpp:128
 #, kde-format
@@ -1734,68 +1689,60 @@ msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:285
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Новая запись экрана"
+msgstr "Запись экрана отменена"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Запись окна отменена"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Не удалось выбрать окно"
+msgstr "Не удалось выбрать экран: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Не удалось выбрать окно"
+msgstr "Не удалось выбрать окно: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Не удалось выбрать экран: ни один экран не содержит информации о "
+"расположении курсора мыши"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Не удалось выбрать окно"
+msgstr "Не удалось выбрать окно: не найдено ни одного окна"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Прямоугольная область"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Весь экран"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Заголовок окна"
+msgstr "Окно"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1829,22 +1776,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Создать снимок окна под курсором мыши"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Выбранный экран"
-
-#: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
-msgid "Record Window"
 msgstr "Запись экрана"
 
+#: src/ShortcutActions.cpp:80
+#, kde-format
+msgid "Record Window"
+msgstr "Запись окна"
+
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Прямоугольная область"
+msgstr "Запись прямоугольной области"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1896,30 +1840,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
 #: src/SpectacleCore.cpp:875
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
+"Запись экрана сохранена как «%1» в «%2», полный путь к неё скопирован в "
 "буфер обмена."
 
 #: src/SpectacleCore.cpp:877
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
+msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
 #: src/SpectacleCore.cpp:879
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
+msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
 #: src/SpectacleCore.cpp:890
 #, kde-format
@@ -1936,13 +1874,13 @@ msgstr "Комментировать"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

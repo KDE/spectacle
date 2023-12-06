@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-05 01:34+0000\n"
-"PO-Revision-Date: 2023-11-14 19:35+0100\n"
+"PO-Revision-Date: 2023-12-03 18:37+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -368,16 +368,12 @@ msgid "Window Title"
 msgstr "Titolo della finestra"
 
 #: src/ExportManager.cpp:769
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Sequential numbering, padded out to N digits"
+#, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Numerazione sequenziale, spaziatura a N cifre"
+msgstr "Numerazione sequenziale, riempita inserendo ulteriori caratteri «#»"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -1236,14 +1232,12 @@ msgstr "Formato di salvataggio predefinito per le immagini"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Il nome di file predefinito usato per il salvataggio"
+msgstr "Il modello di nome di file usato per il salvataggio di schermate"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Schermata"
@@ -1272,10 +1266,9 @@ msgstr "Formato predefinito per i video"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Il nome di file predefinito usato per il salvataggio"
+msgstr "Il modello di nome di file usato per il salvataggio di screencast"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1284,9 +1277,7 @@ msgid "Screencasts"
 msgstr "Screencast"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Screencast"
