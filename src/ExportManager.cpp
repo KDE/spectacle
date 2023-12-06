@@ -25,6 +25,7 @@
 #include <QTemporaryDir>
 #include <QTemporaryFile>
 
+#include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
 #include <KIO/ListJob>
 #include <KIO/MkpathJob>
@@ -171,7 +172,16 @@ QUrl ExportManager::tempVideoUrl()
 const QTemporaryDir *ExportManager::temporaryDir()
 {
     if (!m_tempDir) {
+        // Cleanup Spectacle's temp dirs after startup instead of while quitting.
+        const auto filters = QDir::Filter::Dirs | QDir::NoDotAndDotDot | QDir::CaseSensitive | QDir::NoSymLinks;
+        const auto oldDirs = QDir::temp().entryList({u"Spectacle.??????"_s}, filters);
+        QList<QUrl> oldUrls;
+        for (const auto &dir : oldDirs) {
+            oldUrls << QUrl::fromLocalFile(QDir::tempPath() + u'/' + dir);
+        }
+        KIO::del(oldUrls, KIO::HideProgressInfo)->start();
         m_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
+        m_tempDir->setAutoRemove(false);
     }
     return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
 }
