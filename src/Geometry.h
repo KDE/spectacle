@@ -130,6 +130,8 @@ public:
      */
     [[nodiscard]] Q_INVOKABLE static QRectF rectBounded(const QRectF &rect, const QRectF &boundsRect, //
                                                         Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
+    [[nodiscard]] Q_INVOKABLE static QRectF rectBounded(qreal x, qreal y, qreal width, qreal height, const QRectF &boundsRect, //
+                                                        Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
 
     /**
      * Clip the rect to the clipRect on the given axes.

@@ -166,6 +166,12 @@ QRectF Geometry::rectBounded(const QRectF &rect, const QRectF &boundsRect,
     return newRect;
 }
 
+QRectF Geometry::rectBounded(qreal x, qreal y, qreal width, qreal height, const QRectF &boundsRect,
+                             Qt::Orientations orientations)
+{
+    return rectBounded({x, y, width, height}, boundsRect, orientations);
+}
+
 QRectF Geometry::rectClipped(const QRectF &rect, const QRectF &clipRect,
                              Qt::Orientations orientations)
 {
