@@ -87,7 +87,6 @@ ButtonGrid {
         text: i18n("Export")
         down: pressed || ExportMenu.visible
         Accessible.role: Accessible.ButtonMenu
-        // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: ExportMenu.popup(this)
     }
 
@@ -134,7 +133,6 @@ ButtonGrid {
         text: i18n("Options")
         down: pressed || OptionsMenu.visible
         Accessible.role: Accessible.ButtonMenu
-        // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: OptionsMenu.popup(this)
     }
     ToolButton {
@@ -150,7 +148,6 @@ ButtonGrid {
         text: i18n("Help")
         down: pressed || HelpMenu.visible
         Accessible.role: Accessible.ButtonMenu
-        // for some reason, y has to be set to get the correct y pos, but x shouldn't be
         onPressed: HelpMenu.popup(this)
     }
 }
