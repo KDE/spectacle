@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 01:34+0000\n"
+"POT-Creation-Date: 2023-12-08 01:34+0000\n"
 "PO-Revision-Date: 2023-12-02 22:16+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -185,12 +185,12 @@ msgstr "ფონურ რეჟიმში ეკრანის ანაბ
 msgid "Open and edit existing screenshot file"
 msgstr "ეკრანის ანაბეჭდის არსებული ფაილის გახსნა და ჩასწორება"
 
-#: src/ExportManager.cpp:340
+#: src/ExportManager.cpp:350
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter -ის შეცდომა გამოსახულების შენახვისას: %1"
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -200,12 +200,12 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. საქაღალდის შექმნის შეცდომა:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:375
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის ჩაწერა შეუძლებელია."
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,29 +215,29 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. დაშორებული საქაღალდის შექმნის შეცდომა:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
+#: src/ExportManager.cpp:406 src/ExportManager.cpp:454
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "ეკრანის ანაბეჭდის შენახვის შეცდომა. დროებითი ლოკალური ფაილის ჩაწერა "
 "შეუძლებელია."
 
-#: src/ExportManager.cpp:404
+#: src/ExportManager.cpp:414
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "გამოსახულების შენახვის შეცდომა. დაშორებულ ადგილას ატვირთვის შეცდომა."
 
-#: src/ExportManager.cpp:451
+#: src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის სახელი არასწორია."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ცარიელი ეკრანის ანაბეჭდის გამოსახულების შენახვა შეუძლებელია."
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,7 +245,7 @@ msgid ""
 msgstr ""
 "ვიდეოს გატანა ჩავარდა: დროებით ფაილის ბმული არსებული ლოკალური ფაილი უნდა იყოს"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,18 +254,18 @@ msgstr ""
 "ვიდეოს გატანა ჩავარდა: გამოტანის ფაილის ბმული სახელის შემცველ სწორ ბმულს "
 "უნდა წარმოადგენდეს"
 
-#: src/ExportManager.cpp:693
+#: src/ExportManager.cpp:703
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ჩანაწერის შენახვა შეუძლებელია. ფაილი ვერ გადავიტანე საქაღალდეში: %1"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:731
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "დაბეჭდვის შეცდომა. პრინტერის ინიციალიზაცია შეუძლებელია."
 
-#: src/ExportManager.cpp:738
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -273,7 +273,7 @@ msgctxt ""
 msgid "Day"
 msgstr "დღე"
 
-#: src/ExportManager.cpp:742
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -281,7 +281,7 @@ msgctxt ""
 msgid "Month"
 msgstr "თვე"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -289,7 +289,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "თვე (თარგმნილი მოკლე სახელი)"
 
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -297,7 +297,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "თვე (თარგმნილი გრძელი სახელი)"
 
-#: src/ExportManager.cpp:745
+#: src/ExportManager.cpp:755
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -305,7 +305,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "წელი (2 ციფრი)"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -313,7 +313,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "წელი (4 ციფრი)"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -321,7 +321,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "საათი"
 
-#: src/ExportManager.cpp:752
+#: src/ExportManager.cpp:762
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -329,7 +329,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "წუთი"
 
-#: src/ExportManager.cpp:754
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -337,7 +337,7 @@ msgctxt ""
 msgid "Second"
 msgstr "წამი"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:774
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -345,7 +345,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "დროის ზონა"
 
-#: src/ExportManager.cpp:768
+#: src/ExportManager.cpp:778
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -353,7 +353,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ფანჯრის სათაური"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:779
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "

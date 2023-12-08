@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 01:34+0000\n"
+"POT-Creation-Date: 2023-12-08 01:34+0000\n"
 "PO-Revision-Date: 2023-10-26 15:19-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -187,12 +187,12 @@ msgstr "No modo em segundo plano, excluir as sombras da imagem"
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir e editar o arquivo da imagem existente"
 
-#: src/ExportManager.cpp:340
+#: src/ExportManager.cpp:350
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "O QImageWriter não pode salvar a imagem:  %1"
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -202,12 +202,12 @@ msgstr ""
 "Não foi possível salvar a imagem pois falhou a criação da pasta:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:375
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Não é possível salvar a imagem. Ocorreu um erro ao salvar o arquivo."
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -217,45 +217,45 @@ msgstr ""
 "Não foi possível salvar a imagem pois falhou a criação da pasta remota:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
+#: src/ExportManager.cpp:406 src/ExportManager.cpp:454
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Não é possível salvar a imagem. Ocorreu um erro ao salvar o arquivo "
 "temporário local."
 
-#: src/ExportManager.cpp:404
+#: src/ExportManager.cpp:414
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Não é possível salvar a imagem, porque o arquivo não pôde ser enviado para "
 "uma localização remota."
 
-#: src/ExportManager.cpp:451
+#: src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Não é possível salvar a imagem. O nome do arquivo é inválido."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Não é possível salvar uma captura de imagem vazia."
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:693
+#: src/ExportManager.cpp:703
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -264,12 +264,12 @@ msgstr ""
 "Não é possível salvar a imagem, porque o arquivo não pôde ser enviado para "
 "uma localização remota."
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:731
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Falha na impressão. Não foi possível inicializar a impressora."
 
-#: src/ExportManager.cpp:738
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -277,7 +277,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Dia"
 
-#: src/ExportManager.cpp:742
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Mês"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -293,7 +293,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Mês (nome abreviado)"
 
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -301,7 +301,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Mês (nome completo)"
 
-#: src/ExportManager.cpp:745
+#: src/ExportManager.cpp:755
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -309,7 +309,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Ano (2 dígitos)"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -317,7 +317,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Ano (4 dígitos)"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -325,7 +325,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Hora"
 
-#: src/ExportManager.cpp:752
+#: src/ExportManager.cpp:762
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -333,7 +333,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minuto"
 
-#: src/ExportManager.cpp:754
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -341,7 +341,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Segundo"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:774
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -349,7 +349,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Fuso horário"
 
-#: src/ExportManager.cpp:768
+#: src/ExportManager.cpp:778
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -357,7 +357,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Título da janela"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:779
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "A placeholder in the user configurable filename will replaced by the "

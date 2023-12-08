@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 01:34+0000\n"
+"POT-Creation-Date: 2023-12-08 01:34+0000\n"
 "PO-Revision-Date: 2023-12-02 06:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -191,12 +191,12 @@ msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:340
+#: src/ExportManager.cpp:350
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,12 +206,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:375
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,30 +221,30 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
+#: src/ExportManager.cpp:406 src/ExportManager.cpp:454
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:404
+#: src/ExportManager.cpp:414
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:451
+#: src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,19 +262,19 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:693
+#: src/ExportManager.cpp:703
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:731
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
 
-#: src/ExportManager.cpp:738
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -282,7 +282,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Eguna"
 
-#: src/ExportManager.cpp:742
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -290,7 +290,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Hilabetea"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -298,7 +298,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Hilabetea (lekukotutako izen laburra)"
 
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -306,7 +306,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Hilabetea (lekukotutako izen luzea)"
 
-#: src/ExportManager.cpp:745
+#: src/ExportManager.cpp:755
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -314,7 +314,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Urtea (2 digitu)"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -322,7 +322,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Urtea (4 digitu)"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -330,7 +330,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Ordua"
 
-#: src/ExportManager.cpp:752
+#: src/ExportManager.cpp:762
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -338,7 +338,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Minutua"
 
-#: src/ExportManager.cpp:754
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -346,7 +346,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Segundoa"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:774
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -354,7 +354,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Ordu-eremua"
 
-#: src/ExportManager.cpp:768
+#: src/ExportManager.cpp:778
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -362,7 +362,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Leihoaren titulua"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:779
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "

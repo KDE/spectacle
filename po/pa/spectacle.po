@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 01:34+0000\n"
+"POT-Creation-Date: 2023-12-08 01:34+0000\n"
 "PO-Revision-Date: 2023-07-16 11:37-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -176,12 +176,12 @@ msgstr "ਬੈਕਗਰਾਊਂਡ ਮੋਡ ਵਿੱਚ, ਸਕਰੀਨਸ਼�
 msgid "Open and edit existing screenshot file"
 msgstr "ਮੌਜੂਦਾ ਸਕਰੀਨਸ਼ਾਟ ਫ਼ਾਈਲ ਖੋਲ੍ਹੋ ਅਤੇ ਸੋਧੋ"
 
-#: src/ExportManager.cpp:340
+#: src/ExportManager.cpp:350
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:355
+#: src/ExportManager.cpp:365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -191,12 +191,12 @@ msgstr ""
 "ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:375
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,53 +206,53 @@ msgstr ""
 "ਰਿਮੋਟ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:396 src/ExportManager.cpp:444
+#: src/ExportManager.cpp:406 src/ExportManager.cpp:454
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਆਰਜ਼ੀ ਲੋਕਲ ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:404
+#: src/ExportManager.cpp:414
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "ਚਿੱਤਰ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਰਿਮੋਟ ਟਿਕਾਣੇ ਉੱਤੇ ਫ਼ਾਇਲ ਅੱਪਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।"
 
-#: src/ExportManager.cpp:451
+#: src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਸੰਭਾਲਣ ਲਈ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਗ਼ੈਰ-ਵਾਜਬ ਹੈ।"
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ਖ਼ਾਲੀ ਸਕਰੀਨਸ਼ਾਟ ਚਿੱਤਰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: src/ExportManager.cpp:611
+#: src/ExportManager.cpp:621
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:618
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:693
+#: src/ExportManager.cpp:703
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ਚਿੱਤਰ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਰਿਮੋਟ ਟਿਕਾਣੇ ਉੱਤੇ ਫ਼ਾਇਲ ਅੱਪਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।"
 
-#: src/ExportManager.cpp:721
+#: src/ExportManager.cpp:731
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ਪਰਿੰਟ ਕਰਨਾ ਅਸਫ਼ਲ ਹੈ। ਪਰਿੰਟਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
 
-#: src/ExportManager.cpp:738
+#: src/ExportManager.cpp:748
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -260,7 +260,7 @@ msgctxt ""
 msgid "Day"
 msgstr "ਦਿਨ"
 
-#: src/ExportManager.cpp:742
+#: src/ExportManager.cpp:752
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -268,7 +268,7 @@ msgctxt ""
 msgid "Month"
 msgstr "ਮਹੀਨਾ"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -276,7 +276,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr ""
 
-#: src/ExportManager.cpp:744
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -284,7 +284,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr ""
 
-#: src/ExportManager.cpp:745
+#: src/ExportManager.cpp:755
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -292,7 +292,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "ਸਾਲ (2 ਅੰਕ)"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -300,7 +300,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "ਸਾਲ (4 ਅੰਕ)"
 
-#: src/ExportManager.cpp:750
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -308,7 +308,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "ਘੰਟਾ"
 
-#: src/ExportManager.cpp:752
+#: src/ExportManager.cpp:762
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -316,7 +316,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "ਮਿੰਟ"
 
-#: src/ExportManager.cpp:754
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -324,7 +324,7 @@ msgctxt ""
 msgid "Second"
 msgstr "ਸਕਿੰਟ"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:774
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -332,7 +332,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "ਸਮਾਂ-ਖੇਤਰ"
 
-#: src/ExportManager.cpp:768
+#: src/ExportManager.cpp:778
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -340,7 +340,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "ਵਿੰਡੋ ਟਾਇਟਲ"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:779
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "A placeholder in the user configurable filename will replaced by the "
