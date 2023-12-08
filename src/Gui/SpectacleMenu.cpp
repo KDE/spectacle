@@ -27,8 +27,14 @@ void SpectacleMenu::setVisible(bool visible)
     if (oldVisible == visible) {
         return;
     }
-    QMenu::setVisible(visible);
-    Q_EMIT visibleChanged();
+    // Workaround for a bug where Qt Quick buttons always open the menu even when the menu is already open
+    if (visible) {
+        QMenu::setVisible(true);
+    } else {
+        QTimer::singleShot(200, this, [this] {
+            QMenu::setVisible(false);
+        });
+    }
 }
 
 void SpectacleMenu::popup(QQuickItem *item)
@@ -54,6 +60,18 @@ void SpectacleMenu::popup(QQuickItem *item)
         }
         QMenu::popup(point.toPoint());
     });
+}
+
+void SpectacleMenu::showEvent(QShowEvent *event)
+{
+    QMenu::showEvent(event);
+    Q_EMIT visibleChanged();
+}
+
+void SpectacleMenu::hideEvent(QHideEvent *event)
+{
+    QMenu::hideEvent(event);
+    Q_EMIT visibleChanged();
 }
 
 #include "moc_SpectacleMenu.cpp"

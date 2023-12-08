@@ -31,4 +31,8 @@ public:
 
 Q_SIGNALS:
     void visibleChanged();
+
+protected:
+    void showEvent(QShowEvent *event) override;
+    void hideEvent(QHideEvent *) override;
 };
