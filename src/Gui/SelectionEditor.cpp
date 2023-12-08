@@ -28,6 +28,7 @@
 
 using namespace Qt::StringLiterals;
 using G = Geometry;
+using Location = SelectionEditor::Location;
 
 class SelectionEditorSingleton
 {
@@ -55,9 +56,6 @@ QPointF mapSceneToLogicalGlobalPoint(const QPointF &point, QQuickItem *item)
 }
 
 // SelectionEditorPrivate =====================
-
-using MouseLocation = SelectionEditor::MouseLocation;
-
 class SelectionEditorPrivate
 {
 public:
@@ -72,18 +70,65 @@ public:
     void handleArrowKey(QKeyEvent *event);
 
     void setMouseCursor(QQuickItem *item, const QPointF &pos);
-    MouseLocation mouseLocation(const QPointF &pos) const;
+    Location mouseLocation(const QPointF &pos) const;
+
+    void setDragLocation(Location location)
+    {
+        if (dragLocation == location) {
+            return;
+        }
+        lastDragLocation = dragLocation;
+        dragLocation = location;
+        Q_EMIT q->dragLocationChanged();
+    }
+
+    bool validMagnifierLocation(Location location) const
+    {
+        return location != Location::None && location != Location::Inside;
+    }
+
+    void setShowMagnifier(bool show)
+    {
+        show = show && Settings::showMagnifier() && validMagnifierLocation(magnifierLocation);
+        if (showMagnifier == show) {
+            return;
+        }
+        showMagnifier = show;
+        Q_EMIT q->showMagnifierChanged();
+    }
+
+    void updateShowMagnifier()
+    {
+        setShowMagnifier(showMagnifier);
+    }
+
+    void setMagnifierLocation(Location location)
+    {
+        if (magnifierLocation == location) {
+            return;
+        }
+        magnifierLocation = location;
+        // if valid, move then show, else hide then move
+        if (validMagnifierLocation(magnifierLocation)) {
+            Q_EMIT q->magnifierLocationChanged();
+            updateShowMagnifier();
+        } else {
+            setShowMagnifier(false);
+            Q_EMIT q->magnifierLocationChanged();
+        }
+    }
 
     const std::unique_ptr<Selection> selection;
 
     QPointF startPos;
     QPointF initialTopLeft;
-    MouseLocation dragLocation = MouseLocation::None;
+    Location dragLocation = Location::None;
+    Location lastDragLocation = Location::None;
     qreal devicePixelRatio = 1;
     qreal devicePixel = 1;
     QPointF mousePos;
-    bool magnifierAllowed = false;
-    bool toggleMagnifier = false;
+    bool showMagnifier = false;
+    Location magnifierLocation = Location::FollowMouse;
     bool disableArrowKeys = false;
     QRectF screensRect;
     // Midpoints of handles
@@ -181,29 +226,81 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     const qreal step = modifiers & Qt::ShiftModifier ? devicePixel : dprRound(s_magnifierLargeStep);
     QRectF selectionRect = selection->rectF();
 
+    bool leftMag = false;
+    bool rightMag = false;
+    bool topMag = false;
+    bool bottomMag = false;
+
+    auto lastLocation = magnifierLocation;
+    if (lastLocation == Location::FollowMouse) {
+        lastLocation = dragLocation == Location::None ? lastDragLocation : dragLocation;
+    }
+    if (lastLocation == Location::FollowMouse) {
+            leftMag = startPos.x() > selectionRect.x();
+            rightMag = !leftMag;
+            topMag = startPos.y() > selectionRect.y();
+            bottomMag = !topMag;
+    } else {
+        leftMag = lastLocation == Location::TopLeft || lastLocation == Location::Left || lastLocation == Location::BottomLeft;
+        rightMag = lastLocation == Location::TopRight || lastLocation == Location::Right || lastLocation == Location::BottomRight;
+        topMag =  lastLocation == Location::TopLeft || lastLocation == Location::Top || lastLocation == Location::TopRight;
+        bottomMag = lastLocation == Location::BottomLeft || lastLocation == Location::Bottom || lastLocation == Location::BottomRight;
+    }
+
     if (key == Qt::Key_Left) {
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, -step, 0);
+            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(-step, 0);
+            if (topMag) {
+                setMagnifierLocation(Location::TopLeft);
+            } else if (bottomMag) {
+                setMagnifierLocation(Location::BottomLeft);
+            } else {
+                setMagnifierLocation(Location::Left);
+            }
         }
     } else if (key == Qt::Key_Right) {
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, step, 0);
+            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(step, 0);
+            if (topMag) {
+                setMagnifierLocation(Location::TopRight);
+            } else if (bottomMag) {
+                setMagnifierLocation(Location::BottomRight);
+            } else {
+                setMagnifierLocation(Location::Right);
+            }
         }
     } else if (key == Qt::Key_Up) {
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, -step);
+            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(0, -step);
+            if (leftMag) {
+                setMagnifierLocation(Location::TopLeft);
+            } else if (rightMag) {
+                setMagnifierLocation(Location::TopRight);
+            } else {
+                setMagnifierLocation(Location::Top);
+            }
         }
     } else if (key == Qt::Key_Down) {
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, step);
         } else {
             selectionRect.translate(0, step);
+            if (leftMag) {
+                setMagnifierLocation(Location::BottomLeft);
+            } else if (rightMag) {
+                setMagnifierLocation(Location::BottomRight);
+            } else {
+                setMagnifierLocation(Location::Bottom);
+            }
         }
     }
     selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensRect));
@@ -212,70 +309,70 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
 // TODO: change cursor with pointerhandlers in qml?
 void SelectionEditorPrivate::setMouseCursor(QQuickItem *item, const QPointF &pos)
 {
-    MouseLocation mouseState = mouseLocation(pos);
-    if (mouseState == MouseLocation::Outside) {
+    const auto mouseState = mouseLocation(pos);
+    if (mouseState == Location::Outside) {
         item->setCursor(Qt::CrossCursor);
-    } else if (MouseLocation::TopLeftOrBottomRight & mouseState) {
+    } else if (mouseState == Location::TopLeft || mouseState == Location::BottomRight) {
         item->setCursor(Qt::SizeFDiagCursor);
-    } else if (MouseLocation::TopRightOrBottomLeft & mouseState) {
+    } else if (mouseState == Location::TopRight || mouseState == Location::BottomLeft) {
         item->setCursor(Qt::SizeBDiagCursor);
-    } else if (MouseLocation::TopOrBottom & mouseState) {
+    } else if (mouseState == Location::Top || mouseState == Location::Bottom) {
         item->setCursor(Qt::SizeVerCursor);
-    } else if (MouseLocation::RightOrLeft & mouseState) {
+    } else if (mouseState == Location::Left || mouseState == Location::Right) {
         item->setCursor(Qt::SizeHorCursor);
     } else {
         item->setCursor(Qt::OpenHandCursor);
     }
 }
 
-SelectionEditor::MouseLocation SelectionEditorPrivate::mouseLocation(const QPointF &pos) const
+SelectionEditor::Location SelectionEditorPrivate::mouseLocation(const QPointF &pos) const
 {
     QRectF handleRect(-handleRadius, -handleRadius, handleRadius * 2, handleRadius * 2);
     if (G::ellipseContains(handleRect.translated(handlePositions[0]), pos)) {
-        return MouseLocation::TopLeft;
+        return Location::TopLeft;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[1]), pos)) {
-        return MouseLocation::TopRight;
+        return Location::TopRight;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[2]), pos)) {
-        return MouseLocation::BottomRight;
+        return Location::BottomRight;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[3]), pos)) {
-        return MouseLocation::BottomLeft;
+        return Location::BottomLeft;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[4]), pos)) {
-        return MouseLocation::Top;
+        return Location::Top;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[5]), pos)) {
-        return MouseLocation::Right;
+        return Location::Right;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[6]), pos)) {
-        return MouseLocation::Bottom;
+        return Location::Bottom;
     }
     if (G::ellipseContains(handleRect.translated(handlePositions[7]), pos)) {
-        return MouseLocation::Left;
+        return Location::Left;
     }
 
     const auto rect = selection->normalized();
     // Rectangle can be resized when border is dragged, if it's big enough
     if (rect.width() >= 100 && rect.height() >= 100) {
         if (rect.adjusted(0, -handleRadius, 0, -rect.height() + handleRadius).contains(pos)) {
-            return MouseLocation::Top;
+            return Location::Top;
         }
         if (rect.adjusted(0, rect.height() - handleRadius, 0, handleRadius).contains(pos)) {
-            return MouseLocation::Bottom;
+            return Location::Bottom;
         }
         if (rect.adjusted(-handleRadius, 0, -rect.width() + handleRadius, 0).contains(pos)) {
-            return MouseLocation::Left;
+            return Location::Left;
         }
         if (rect.adjusted(rect.width() - handleRadius, 0, handleRadius, 0).contains(pos)) {
-            return MouseLocation::Right;
+            return Location::Right;
         }
     }
     if (rect.contains(pos)) {
-        return MouseLocation::Inside;
+        return Location::Inside;
     }
-    return MouseLocation::Outside;
+    return Location::Outside;
 }
 
 // SelectionEditor =================================
@@ -321,7 +418,7 @@ qreal SelectionEditor::screensHeight() const
     return d->screensRect.height();
 }
 
-MouseLocation SelectionEditor::dragLocation() const
+Location SelectionEditor::dragLocation() const
 {
     return d->dragLocation;
 }
@@ -331,14 +428,19 @@ QRectF SelectionEditor::handlesRect() const
     return d->handlesRect;
 }
 
-bool SelectionEditor::magnifierAllowed() const
-{
-    return d->magnifierAllowed;
-}
-
 QPointF SelectionEditor::mousePosition() const
 {
     return d->mousePos;
+}
+
+bool SelectionEditor::showMagnifier() const
+{
+    return d->showMagnifier;
+}
+
+Location SelectionEditor::magnifierLocation() const
+{
+    return d->magnifierLocation;
 }
 
 bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
@@ -426,12 +528,6 @@ bool SelectionEditor::eventFilter(QObject *watched, QEvent *event)
 void SelectionEditor::keyPressEvent(QQuickItem *item, QKeyEvent *event)
 {
     Q_UNUSED(item);
-
-    const auto modifiers = event->modifiers();
-    const bool shiftPressed = modifiers & Qt::ShiftModifier;
-    if (shiftPressed) {
-        d->toggleMagnifier = true;
-    }
     switch (event->key()) {
     case Qt::Key_Return:
     case Qt::Key_Enter:
@@ -443,7 +539,11 @@ void SelectionEditor::keyPressEvent(QQuickItem *item, QKeyEvent *event)
     case Qt::Key_Down:
     case Qt::Key_Left:
         d->handleArrowKey(event);
+        d->setShowMagnifier(event->modifiers().testFlag(Qt::ShiftModifier));
         event->accept();
+        break;
+    case Qt::Key_Shift:
+        d->setShowMagnifier(true);
         break;
     default:
         break;
@@ -453,10 +553,6 @@ void SelectionEditor::keyPressEvent(QQuickItem *item, QKeyEvent *event)
 void SelectionEditor::keyReleaseEvent(QQuickItem *item, QKeyEvent *event)
 {
     Q_UNUSED(item);
-
-    if (d->toggleMagnifier && !(event->modifiers() & Qt::ShiftModifier)) {
-        d->toggleMagnifier = false;
-    }
     switch (event->key()) {
     case Qt::Key_Return:
     case Qt::Key_Enter:
@@ -467,6 +563,9 @@ void SelectionEditor::keyReleaseEvent(QQuickItem *item, QKeyEvent *event)
     case Qt::Key_Down:
     case Qt::Key_Left:
         event->accept();
+        break;
+    case Qt::Key_Shift:
+        d->setShowMagnifier(false);
         break;
     default:
         break;
@@ -481,6 +580,7 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
+    d->setShowMagnifier(event->modifiers().testFlag(Qt::ShiftModifier));
 }
 
 void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
@@ -500,49 +600,39 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
             d->selection->setRect({});
         }
         item->setFocus(true);
-        const bool wasMagnifierAllowed = d->magnifierAllowed;
         d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
         Q_EMIT mousePositionChanged();
-        auto newDragLocation = d->mouseLocation(d->mousePos);
-        if (d->dragLocation != newDragLocation) {
-            d->dragLocation = newDragLocation;
-            Q_EMIT dragLocationChanged();
-        }
-        d->magnifierAllowed = true;
+        d->setDragLocation(d->mouseLocation(d->mousePos));
+        d->setMagnifierLocation(d->dragLocation);
         d->disableArrowKeys = true;
 
         switch (d->dragLocation) {
-        case MouseLocation::Outside:
+        case Location::Outside:
             d->startPos = d->mousePos;
             break;
-        case MouseLocation::Inside:
+        case Location::Inside:
             d->startPos = d->mousePos;
-            d->magnifierAllowed = false;
             d->initialTopLeft = d->selection->rectF().topLeft();
             item->setCursor(Qt::ClosedHandCursor);
             break;
-        case MouseLocation::Top:
-        case MouseLocation::Left:
-        case MouseLocation::TopLeft:
+        case Location::Top:
+        case Location::Left:
+        case Location::TopLeft:
             d->startPos = d->selection->rectF().bottomRight();
             break;
-        case MouseLocation::Bottom:
-        case MouseLocation::Right:
-        case MouseLocation::BottomRight:
+        case Location::Bottom:
+        case Location::Right:
+        case Location::BottomRight:
             d->startPos = d->selection->rectF().topLeft();
             break;
-        case MouseLocation::TopRight:
+        case Location::TopRight:
             d->startPos = d->selection->rectF().bottomLeft();
             break;
-        case MouseLocation::BottomLeft:
+        case Location::BottomLeft:
             d->startPos = d->selection->rectF().topRight();
             break;
         default:
             break;
-        }
-
-        if (d->magnifierAllowed != wasMagnifierAllowed) {
-            Q_EMIT magnifierAllowedChanged();
         }
     }
     event->accept();
@@ -556,18 +646,16 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
 
     d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
     Q_EMIT mousePositionChanged();
-    const bool wasMagnifierAllowed = d->magnifierAllowed;
-    d->magnifierAllowed = true;
+    d->setMagnifierLocation(d->dragLocation);
     switch (d->dragLocation) {
-    case MouseLocation::None: {
+    case Location::None: {
         d->setMouseCursor(item, d->mousePos);
-        d->magnifierAllowed = false;
         break;
     }
-    case MouseLocation::TopLeft:
-    case MouseLocation::TopRight:
-    case MouseLocation::BottomRight:
-    case MouseLocation::BottomLeft: {
+    case Location::TopLeft:
+    case Location::TopRight:
+    case Location::BottomRight:
+    case Location::BottomLeft: {
         const bool afterX = d->mousePos.x() >= d->startPos.x();
         const bool afterY = d->mousePos.y() >= d->startPos.y();
         d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
@@ -576,15 +664,15 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
                               qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
-    case MouseLocation::Outside: {
+    case Location::Outside: {
         d->selection->setRect(qMin(d->mousePos.x(), d->startPos.x()),
                               qMin(d->mousePos.y(), d->startPos.y()),
                               qAbs(d->mousePos.x() - d->startPos.x()) + d->devicePixel,
                               qAbs(d->mousePos.y() - d->startPos.y()) + d->devicePixel);
         break;
     }
-    case MouseLocation::Top:
-    case MouseLocation::Bottom: {
+    case Location::Top:
+    case Location::Bottom: {
         const bool afterY = d->mousePos.y() >= d->startPos.y();
         d->selection->setRect(d->selection->x(),
                               afterY ? d->startPos.y() : d->mousePos.y(),
@@ -592,8 +680,8 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
                               qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
-    case MouseLocation::Right:
-    case MouseLocation::Left: {
+    case Location::Right:
+    case Location::Left: {
         const bool afterX = d->mousePos.x() >= d->startPos.x();
         d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
                               d->selection->y(),
@@ -601,8 +689,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
                               d->selection->height());
         break;
     }
-    case MouseLocation::Inside: {
-        d->magnifierAllowed = false;
+    case Location::Inside: {
         // We use some math here to figure out if the diff with which we move the rectangle
         QRectF newRect(d->mousePos - d->startPos + d->initialTopLeft, d->selection->sizeF());
         d->selection->setRect(G::rectBounded(newRect, d->screensRect));
@@ -610,9 +697,6 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
     }
     default:
         break;
-    }
-    if (d->magnifierAllowed != wasMagnifierAllowed) {
-        Q_EMIT magnifierAllowedChanged();
     }
 
     event->accept();
@@ -623,27 +707,21 @@ void SelectionEditor::mouseReleaseEvent(QQuickItem *item, QMouseEvent *event)
     switch (event->button()) {
     case Qt::LeftButton:
     case Qt::RightButton:
-        if (d->dragLocation == MouseLocation::Outside && Settings::useReleaseToCapture()) {
+        if (d->dragLocation == Location::Outside && Settings::useReleaseToCapture()) {
             acceptSelection();
-            return;
-        }
-        d->disableArrowKeys = false;
-        if (d->dragLocation == MouseLocation::Inside) {
-            item->setCursor(Qt::OpenHandCursor);
+        } else {
+            d->disableArrowKeys = false;
+            if (d->dragLocation == Location::Inside) {
+                item->setCursor(Qt::OpenHandCursor);
+            }
         }
         break;
     default:
         break;
     }
+    d->setDragLocation(Location::None);
+    d->setMagnifierLocation(Location::FollowMouse);
     event->accept();
-    if (d->dragLocation != MouseLocation::None) {
-        d->dragLocation = MouseLocation::None;
-        Q_EMIT dragLocationChanged();
-    }
-    if (d->magnifierAllowed) {
-        d->magnifierAllowed = false;
-        Q_EMIT magnifierAllowedChanged();
-    }
 }
 
 void SelectionEditor::mouseDoubleClickEvent(QQuickItem *item, QMouseEvent *event)
@@ -652,6 +730,7 @@ void SelectionEditor::mouseDoubleClickEvent(QQuickItem *item, QMouseEvent *event
     if (event->button() == Qt::LeftButton && (d->selection->contains(d->mousePos) || d->selection->isEmpty())) {
         acceptSelection();
     }
+    d->setMagnifierLocation(Location::FollowMouse);
     event->accept();
 }
 

@@ -28,30 +28,28 @@ class SelectionEditor : public QObject
     Q_PROPERTY(Selection *selection READ selection CONSTANT FINAL)
     Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio NOTIFY devicePixelRatioChanged FINAL)
     Q_PROPERTY(QRectF screensRect READ screensRect NOTIFY screensRectChanged FINAL)
-    Q_PROPERTY(MouseLocation dragLocation READ dragLocation NOTIFY dragLocationChanged FINAL)
+    Q_PROPERTY(Location dragLocation READ dragLocation NOTIFY dragLocationChanged FINAL)
     Q_PROPERTY(QRectF handlesRect READ handlesRect NOTIFY handlesRectChanged FINAL)
-    Q_PROPERTY(bool magnifierAllowed READ magnifierAllowed NOTIFY magnifierAllowedChanged FINAL)
     Q_PROPERTY(QPointF mousePosition READ mousePosition NOTIFY mousePositionChanged)
+    /// Whether or not to show the magnifier.
+    Q_PROPERTY(bool showMagnifier READ showMagnifier NOTIFY showMagnifierChanged FINAL)
+    /// The location that the magnifier is looking at,
+    /// not necessarily the location of the magnifier.
+    Q_PROPERTY(Location magnifierLocation READ magnifierLocation NOTIFY magnifierLocationChanged FINAL)
 
 public:
-    enum MouseLocation : short {
-        None =          0b000000,
-        Inside =        0b000001,
-        Outside =       0b000010,
-        TopLeft =       0b000101,
-        Top =           0b010001,
-        TopRight =      0b001001,
-        Right =         0b100001,
-        BottomRight =   0b000110,
-        Bottom =        0b010010,
-        BottomLeft =    0b001010,
-        Left =          0b100010,
-        TopLeftOrBottomRight = TopLeft & BottomRight, // 100
-        TopRightOrBottomLeft = TopRight & BottomLeft, // 1000
-        TopOrBottom = Top & Bottom, // 10000
-        RightOrLeft = Right & Left, // 100000
+    /// Locations in relation to the current selection
+    enum Location : short {
+        None = 0,
+        Outside,
+        // clang-format off
+        TopLeft,    Top,    TopRight,
+        Left,       Inside, Right,
+        BottomLeft, Bottom, BottomRight,
+        // clang-format on
+        FollowMouse = Outside, // Semantic alias for the magnifier
     };
-    Q_ENUM(MouseLocation)
+    Q_ENUM(Location)
 
     explicit SelectionEditor(QObject *parent = nullptr);
 
@@ -66,12 +64,15 @@ public:
     qreal screensWidth() const;
     qreal screensHeight() const;
 
-    MouseLocation dragLocation() const;
+    Location dragLocation() const;
 
     QRectF handlesRect() const;
 
-    bool magnifierAllowed() const;
     QPointF mousePosition() const;
+
+    bool showMagnifier() const;
+
+    Location magnifierLocation() const;
 
     Q_SLOT bool acceptSelection(ExportManager::Actions actions = {});
 
@@ -82,8 +83,9 @@ Q_SIGNALS:
     void screensRectChanged();
     void dragLocationChanged();
     void handlesRectChanged();
-    void magnifierAllowedChanged();
     void mousePositionChanged();
+    void showMagnifierChanged();
+    void magnifierLocationChanged();
 
     void accepted(const QRectF &rect, const ExportManager::Actions &actions);
 

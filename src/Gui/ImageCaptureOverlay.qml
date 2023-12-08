@@ -195,15 +195,91 @@ MouseArea {
 
         // Magnifier
         Loader {
-            x: contextWindow.dprRound(Math.min(SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit, SelectionEditor.screensRect.width - width))
-            y: contextWindow.dprRound(Math.min(SelectionEditor.mousePosition.y + Kirigami.Units.gridUnit, SelectionEditor.screensRect.height - height))
+            id: magnifierLoader
+            readonly property point targetPoint: {
+                if (SelectionEditor.magnifierLocation === SelectionEditor.FollowMouse) {
+                    return SelectionEditor.mousePosition
+                } else {
+                    let x = -width
+                    let y = -height
+                    if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Left
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft) {
+                        x = Selection.left
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.TopRight
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Right
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
+                        x = Selection.right
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.Top
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Bottom) {
+                        if (SelectionEditor.dragLocation !== SelectionEditor.None) {
+                            x = SelectionEditor.mousePosition.x
+                        } else {
+                            x = Selection.horizontalCenter
+                        }
+                    }
+                    if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Top
+                        || SelectionEditor.magnifierLocation === SelectionEditor.TopRight) {
+                        y = Selection.top
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Bottom
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
+                        y = Selection.bottom
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.Left
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Right) {
+                        if (SelectionEditor.dragLocation !== SelectionEditor.None) {
+                            y = SelectionEditor.mousePosition.y
+                        } else {
+                            y = Selection.verticalCenter
+                        }
+                    }
+                    return Qt.point(x, y)
+                }
+            }
+            readonly property rect rect: {
+                let margin = Kirigami.Units.gridUnit
+                let x = targetPoint.x + margin
+                let y = targetPoint.y + margin
+                if (SelectionEditor.magnifierLocation !== SelectionEditor.FollowMouse) {
+                    if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Left
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft) {
+                        x = targetPoint.x - width - margin
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.TopRight
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Right
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
+                        x = targetPoint.x + margin
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.Top
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Bottom) {
+                        x = targetPoint.x - width / 2
+                    }
+
+                    if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Top
+                        || SelectionEditor.magnifierLocation === SelectionEditor.TopRight) {
+                        y = targetPoint.y - width - margin
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Bottom
+                        || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
+                        y = targetPoint.y + margin
+                    } else if (SelectionEditor.magnifierLocation === SelectionEditor.Left
+                        || SelectionEditor.magnifierLocation === SelectionEditor.Right) {
+                        y = targetPoint.y - height / 2
+                    }
+                }
+                return G.rectBounded(dprRound(x), dprRound(y), width, height, SelectionEditor.screensRect)
+            }
+            x: rect.x
+            y: rect.y
             z: 100
-            visible: Settings.showMagnifier && SelectionEditor.magnifierAllowed
-                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
+            visible: SelectionEditor.showMagnifier
+                && SelectionEditor.magnifierLocation !== SelectionEditor.None
+                && G.rectIntersects(rect, annotations.viewportRect)
             active: Settings.showMagnifier
             sourceComponent: Magnifier {
                 viewport: annotations
-                targetPoint: SelectionEditor.mousePosition
+                targetPoint: magnifierLoader.targetPoint
             }
         }
 
