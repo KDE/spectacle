@@ -13,7 +13,7 @@ int main()
     // We only need to read spectaclerc, so we use SimpleConfig.
     auto spectaclerc = KSharedConfig::openConfig("spectaclerc"_L1, KConfig::SimpleConfig);
 
-    auto general = spectaclerc->group("General");
+    auto general = spectaclerc->group(QStringLiteral("General"));
     KeyMap generalOldNewMap{
         // Using a name that doesn't look like a signal handler.
         {"onLaunchAction", "launchAction"},
@@ -30,7 +30,7 @@ int main()
     replaceEntryValues(general, "rememberSelectionRect",
                        {{u"UntilSpectacleIsClosed"_s, u"UntilClosed"_s}});
 
-    auto guiConfig = spectaclerc->group("GuiConfig");
+    auto guiConfig = spectaclerc->group(QStringLiteral("GuiConfig"));
     KeyMap guiConfigOldNewMap{
         // More in line with naming elsewhere.
         {"cropRegion", "selectionRect"},
@@ -41,10 +41,10 @@ int main()
     };
     replaceEntryKeys(guiConfig, guiConfigOldNewMap);
 
-    auto imageSave = spectaclerc->group("ImageSave");
+    auto imageSave = spectaclerc->group(QStringLiteral("ImageSave"));
     replaceEntryKeys(imageSave, {{"imageFilenameFormat", "imageFilenameTemplate"}});
 
-    auto videoSave = spectaclerc->group("VideoSave");
+    auto videoSave = spectaclerc->group(QStringLiteral("VideoSave"));
     replaceEntryKeys(videoSave, {{"videoFilenameFormat", "videoFilenameTemplate"}});
 
     return spectaclerc->sync() ? 0 : 1;
