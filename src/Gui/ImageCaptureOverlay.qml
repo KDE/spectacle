@@ -97,7 +97,13 @@ MouseArea {
         id: selectionRectangle
         enabled: !annotations.enabled
         color: "transparent"
-        border.color: palette.highlight
+        border.color: if (enabled) {
+            return palette.active.highlight
+        } else if (Settings.useLightMaskColor) {
+            return "black"
+        } else {
+            return "white"
+        }
         border.width: contextWindow.dprRound(1)
         visible: !Selection.empty && G.rectIntersects(Qt.rect(x,y,width,height),
                                                       Qt.rect(0,0,parent.width, parent.height))
@@ -108,11 +114,6 @@ MouseArea {
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
-
-        SystemPalette {
-            id: palette
-            colorGroup: selectionRectangle.enabled ? SystemPalette.Active : SystemPalette.Disabled
-        }
     }
 
     Item {
@@ -123,7 +124,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
-            color: palette.highlight
+            color: selectionRectangle.border.color
             width: Kirigami.Units.gridUnit
             height: width
             radius: width / 2
