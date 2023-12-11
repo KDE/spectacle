@@ -75,7 +75,7 @@ MouseArea {
     Rectangle {
         id: selectionRectangle
         color: "transparent"
-        border.color: palette.highlight
+        border.color: palette.active.highlight
         border.width: contextWindow.dprRound(1)
         visible: !Selection.empty
             && !VideoPlatform.isRecording
@@ -108,7 +108,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
-            color: palette.highlight
+            color: selectionRectangle.color
             width: Kirigami.Units.gridUnit
             height: width
             radius: width / 2
