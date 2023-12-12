@@ -226,81 +226,34 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     const qreal step = modifiers & Qt::ShiftModifier ? devicePixel : dprRound(s_magnifierLargeStep);
     QRectF selectionRect = selection->rectF();
 
-    bool leftMag = false;
-    bool rightMag = false;
-    bool topMag = false;
-    bool bottomMag = false;
-
-    auto lastLocation = magnifierLocation;
-    if (lastLocation == Location::FollowMouse) {
-        lastLocation = dragLocation == Location::None ? lastDragLocation : dragLocation;
-    }
-    if (lastLocation == Location::FollowMouse) {
-            leftMag = startPos.x() > selectionRect.x();
-            rightMag = !leftMag;
-            topMag = startPos.y() > selectionRect.y();
-            bottomMag = !topMag;
-    } else {
-        leftMag = lastLocation == Location::TopLeft || lastLocation == Location::Left || lastLocation == Location::BottomLeft;
-        rightMag = lastLocation == Location::TopRight || lastLocation == Location::Right || lastLocation == Location::BottomRight;
-        topMag =  lastLocation == Location::TopLeft || lastLocation == Location::Top || lastLocation == Location::TopRight;
-        bottomMag = lastLocation == Location::BottomLeft || lastLocation == Location::Bottom || lastLocation == Location::BottomRight;
-    }
-
+    const bool brMag = modifySize || selection->width() == 0.0 || selection->height() == 0.0;
     if (key == Qt::Key_Left) {
+        setMagnifierLocation(brMag ? Location::BottomRight : Location::Left);
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, -step, 0);
-            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(-step, 0);
-            if (topMag) {
-                setMagnifierLocation(Location::TopLeft);
-            } else if (bottomMag) {
-                setMagnifierLocation(Location::BottomLeft);
-            } else {
-                setMagnifierLocation(Location::Left);
-            }
         }
     } else if (key == Qt::Key_Right) {
+        setMagnifierLocation(brMag ? Location::BottomRight : Location::Right);
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, step, 0);
-            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(step, 0);
-            if (topMag) {
-                setMagnifierLocation(Location::TopRight);
-            } else if (bottomMag) {
-                setMagnifierLocation(Location::BottomRight);
-            } else {
-                setMagnifierLocation(Location::Right);
-            }
         }
     } else if (key == Qt::Key_Up) {
+        setMagnifierLocation(brMag ? Location::BottomRight : Location::Top);
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, -step);
-            setMagnifierLocation(Location::BottomRight);
         } else {
             selectionRect.translate(0, -step);
-            if (leftMag) {
-                setMagnifierLocation(Location::TopLeft);
-            } else if (rightMag) {
-                setMagnifierLocation(Location::TopRight);
-            } else {
-                setMagnifierLocation(Location::Top);
-            }
         }
     } else if (key == Qt::Key_Down) {
+        setMagnifierLocation(brMag ? Location::BottomRight : Location::Bottom);
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, step);
         } else {
             selectionRect.translate(0, step);
-            if (leftMag) {
-                setMagnifierLocation(Location::BottomLeft);
-            } else if (rightMag) {
-                setMagnifierLocation(Location::BottomRight);
-            } else {
-                setMagnifierLocation(Location::Bottom);
-            }
         }
     }
     selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensRect));
