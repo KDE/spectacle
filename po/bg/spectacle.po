@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-09 01:36+0000\n"
-"PO-Revision-Date: 2023-11-16 14:15+0100\n"
+"PO-Revision-Date: 2023-12-11 12:01+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
-"Language-Team: \n"
+"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -372,16 +372,12 @@ msgid "Window Title"
 msgstr "Заглавие на прозореца"
 
 #: src/ExportManager.cpp:779
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Sequential numbering, padded out to N digits"
+#, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Последователно номериране, допълнено до N цифри"
+msgstr "Последователно номериране, допълнено със символ „#“"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -1242,14 +1238,13 @@ msgstr "Формат по подразбиране на изображениет
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Име на файла по подразбиране, използвано при запазване"
+msgstr ""
+"Шаблон на името на файла, използван при запазване на снимките на екрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Снимка на екрана"
@@ -1278,10 +1273,10 @@ msgstr "Видео формат по подразбиране"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Име на файла по подразбиране, използвано при запазване"
+msgstr ""
+"Шаблон на името на файла, използван при запазване на видеозаписите на екрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1290,9 +1285,7 @@ msgid "Screencasts"
 msgstr "Видеозаснемане на екрана"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Видеозаснемане на екрана"
