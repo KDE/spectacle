@@ -130,6 +130,7 @@ public:
     bool showMagnifier = false;
     Location magnifierLocation = Location::FollowMouse;
     bool disableArrowKeys = false;
+    QSet<Qt::Key> pressedKeys;
     QRectF screensRect;
     // Midpoints of handles
     QList<QPointF> handlePositions = QList<QPointF>{8};
@@ -226,36 +227,60 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
     const qreal step = modifiers & Qt::ShiftModifier ? devicePixel : dprRound(s_magnifierLargeStep);
     QRectF selectionRect = selection->rectF();
 
+    // The current event should override any previously pressed keys
+    bool leftArrow = key == Qt::Key_Left || (pressedKeys.contains(Qt::Key_Left) && !pressedKeys.contains(Qt::Key_Right));
+    bool rightArrow = key == Qt::Key_Right || (pressedKeys.contains(Qt::Key_Right) && !pressedKeys.contains(Qt::Key_Left));
+    bool upArrow = key == Qt::Key_Up || (pressedKeys.contains(Qt::Key_Up) && !pressedKeys.contains(Qt::Key_Down));
+    bool downArrow = key == Qt::Key_Down || (pressedKeys.contains(Qt::Key_Down) && !pressedKeys.contains(Qt::Key_Up));
+
     const bool brMag = modifySize || selection->width() == 0.0 || selection->height() == 0.0;
-    if (key == Qt::Key_Left) {
-        setMagnifierLocation(brMag ? Location::BottomRight : Location::Left);
+    auto magLocation = Location::None;
+
+    if (leftArrow) {
+        magLocation = Location::Left;
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, -step, 0);
         } else {
             selectionRect.translate(-step, 0);
         }
-    } else if (key == Qt::Key_Right) {
-        setMagnifierLocation(brMag ? Location::BottomRight : Location::Right);
+    }
+    if (rightArrow) {
+        magLocation = Location::Right;
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, step, 0);
         } else {
             selectionRect.translate(step, 0);
         }
-    } else if (key == Qt::Key_Up) {
-        setMagnifierLocation(brMag ? Location::BottomRight : Location::Top);
+    }
+    if (upArrow) {
+        if (magLocation == Location::Left) {
+            magLocation = Location::TopLeft;
+        } else if (magLocation == Location::Right) {
+            magLocation = Location::TopRight;
+        } else {
+            magLocation = Location::Top;
+        }
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, -step);
         } else {
             selectionRect.translate(0, -step);
         }
-    } else if (key == Qt::Key_Down) {
-        setMagnifierLocation(brMag ? Location::BottomRight : Location::Bottom);
+    }
+    if (downArrow) {
+        if (magLocation == Location::Left) {
+            magLocation = Location::BottomLeft;
+        } else if (magLocation == Location::Right) {
+            magLocation = Location::BottomRight;
+        } else {
+            magLocation = Location::Bottom;
+        }
         if (modifySize) {
             selectionRect = G::rectAdjustedVisually(selectionRect, 0, 0, 0, step);
         } else {
             selectionRect.translate(0, step);
         }
     }
+    setMagnifierLocation(brMag ? Location::BottomRight : magLocation);
     selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensRect));
 }
 
@@ -480,6 +505,7 @@ bool SelectionEditor::eventFilter(QObject *watched, QEvent *event)
 
 void SelectionEditor::keyPressEvent(QQuickItem *item, QKeyEvent *event)
 {
+    d->pressedKeys.insert(event->keyCombination().key());
     Q_UNUSED(item);
     switch (event->key()) {
     case Qt::Key_Return:
@@ -505,6 +531,7 @@ void SelectionEditor::keyPressEvent(QQuickItem *item, QKeyEvent *event)
 
 void SelectionEditor::keyReleaseEvent(QQuickItem *item, QKeyEvent *event)
 {
+    d->pressedKeys.remove(event->keyCombination().key());
     Q_UNUSED(item);
     switch (event->key()) {
     case Qt::Key_Return:
