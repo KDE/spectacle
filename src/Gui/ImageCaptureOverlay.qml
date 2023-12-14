@@ -336,7 +336,7 @@ MouseArea {
                     easing.type: Easing.OutCubic
                 }
             }
-            size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
+            size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio)
             padding: Kirigami.Units.mediumSpacing * 2
             topPadding: padding - QmlUtils.fontMetrics.descent
             bottomPadding: topPadding
