@@ -305,6 +305,10 @@ void SelectionEditorPrivate::setMouseCursor(QQuickItem *item, const QPointF &pos
 
 SelectionEditor::Location SelectionEditorPrivate::mouseLocation(const QPointF &pos) const
 {
+    if (selection->isEmpty()) {
+        return Location::Outside;
+    }
+
     QRectF handleRect(-handleRadius, -handleRadius, handleRadius * 2, handleRadius * 2);
     if (G::ellipseContains(handleRect.translated(handlePositions[0]), pos)) {
         return Location::TopLeft;
