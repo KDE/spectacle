@@ -133,7 +133,10 @@ QRectF Geometry::rectAdjustedVisually(const QRectF &rect, qreal xp1, qreal yp1, 
 
 QRectF Geometry::rectScaled(const QRectF &rect, qreal scale)
 {
-    return {rect.topLeft() * scale, rect.size() *scale};
+    if (scale == 1) {
+        return rect;
+    }
+    return {rect.topLeft() * scale, rect.size() * scale};
 }
 
 QRectF Geometry::rectIntersected(const QRectF &rect1, const QRectF &rect2)
