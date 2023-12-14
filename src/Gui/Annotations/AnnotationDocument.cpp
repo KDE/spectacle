@@ -839,10 +839,40 @@ SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
     return m_selectedActionWrapper;
 }
 
-void AnnotationDocument::clear()
+int AnnotationDocument::undoStackDepth() const
 {
-    clearAnnotations();
-    setImage({});
+    return m_undoStack.count();
+}
+
+int AnnotationDocument::redoStackDepth() const
+{
+    return m_redoStack.count();
+}
+
+QSizeF AnnotationDocument::canvasSize() const
+{
+    return m_canvasRect.size();
+}
+
+QSizeF AnnotationDocument::imageSize() const
+{
+    return m_image.size();
+}
+
+qreal AnnotationDocument::imageDpr() const
+{
+    return m_image.devicePixelRatio();
+}
+
+void AnnotationDocument::setImage(const QImage &image)
+{
+    m_image = image;
+    m_canvasRect = {{0, 0}, QSizeF(image.size()) / image.devicePixelRatio()};
+
+    Q_EMIT canvasSizeChanged();
+    Q_EMIT imageSizeChanged();
+    Q_EMIT imageDprChanged();
+    Q_EMIT repaintNeeded();
 }
 
 void AnnotationDocument::cropCanvas(const QRectF &cropRect)
@@ -884,32 +914,6 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     Q_EMIT repaintNeeded();
 }
 
-QSizeF AnnotationDocument::canvasSize() const
-{
-    return m_canvasRect.size();
-}
-
-void AnnotationDocument::setImage(const QImage &image)
-{
-    m_image = image;
-    m_canvasRect = {{0, 0}, QSizeF(image.size()) / image.devicePixelRatio()};
-
-    Q_EMIT canvasSizeChanged();
-    Q_EMIT imageSizeChanged();
-    Q_EMIT imageDprChanged();
-    Q_EMIT repaintNeeded();
-}
-
-QSizeF AnnotationDocument::imageSize() const
-{
-    return m_image.size();
-}
-
-qreal AnnotationDocument::imageDpr() const
-{
-    return m_image.devicePixelRatio();
-}
-
 void AnnotationDocument::clearAnnotations()
 {
     qDeleteAll(m_undoStack);
@@ -924,6 +928,12 @@ void AnnotationDocument::clearAnnotations()
     Q_EMIT undoStackDepthChanged();
     Q_EMIT redoStackDepthChanged();
     Q_EMIT repaintNeeded();
+}
+
+void AnnotationDocument::clear()
+{
+    clearAnnotations();
+    setImage({});
 }
 
 void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
@@ -1115,16 +1125,6 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, Re
 QImage AnnotationDocument::renderToImage() const
 {
     return renderToImage(m_canvasRect);
-}
-
-int AnnotationDocument::undoStackDepth() const
-{
-    return m_undoStack.count();
-}
-
-int AnnotationDocument::redoStackDepth() const
-{
-    return m_redoStack.count();
 }
 
 bool AnnotationDocument::isLastActionInvalid() const
@@ -1465,6 +1465,13 @@ void AnnotationDocument::deleteSelectedAction()
     emitRepaintNeededUnlessEmpty(updateRect);
 }
 
+bool AnnotationDocument::isActionVisible(EditAction *action, const QRectF &rect) const
+{
+    return action && action->isVisible()
+            && (!action->replacedBy() || !m_undoStack.contains(action->replacedBy()))
+            && (rect.isEmpty() || action->visualGeometry().intersects(rect));
+}
+
 void AnnotationDocument::addAction(EditAction *action)
 {
     if (!action || action->replacedBy() || m_undoStack.contains(action)) {
@@ -1507,13 +1514,6 @@ void AnnotationDocument::clearRedoStack()
     if (oldRedoCount != m_redoStack.count()) {
         Q_EMIT redoStackDepthChanged();
     }
-}
-
-bool AnnotationDocument::isActionVisible(EditAction *action, const QRectF &rect) const
-{
-    return action && action->isVisible()
-            && (!action->replacedBy() || !m_undoStack.contains(action->replacedBy()))
-            && (rect.isEmpty() || action->visualGeometry().intersects(rect));
 }
 
 void AnnotationDocument::emitRepaintNeededUnlessEmpty(const QRectF &area)

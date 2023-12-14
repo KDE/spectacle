@@ -67,25 +67,30 @@ public:
     int undoStackDepth() const;
     int redoStackDepth() const;
 
+    QSizeF canvasSize() const;
+
+    /// Image size in raw pixels
+    QSizeF imageSize() const;
+
+    /// Image device pixel ratio
+    qreal imageDpr() const;
+
+    /// Set the base image. Cannot be undone.
+    void setImage(const QImage &image);
+
+    /// Remove annotations that do not intersect with the rectangle and crop the image.
+    /// Cannot be undone.
+    void cropCanvas(const QRectF &cropRect);
+
+    /// Clear all annotations. Cannot be undone.
+    void clearAnnotations();
+
+    /// Clear all annotations and the image. Cannot be undone.
+    void clear();
+
     void paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor = 1.0, RenderOptions options = RenderOption::RenderAll) const;
     QImage renderToImage(const QRectF &viewPort, qreal scale = 1, RenderOptions options = RenderOption::RenderAll) const;
     QImage renderToImage() const;
-
-    // Actions that can't be undone
-    void clear();
-    void cropCanvas(const QRectF &cropRect);
-    QSizeF canvasSize() const;
-
-    void setImage(const QImage &image);
-
-    void clearAnnotations();
-
-    /**
-     * Image size in raw pixels
-     */
-    QSizeF imageSize() const;
-
-    qreal imageDpr() const;
 
     // True when there is an edit action in the undo stack and it is invalid.
     Q_INVOKABLE bool isLastActionInvalid() const;
@@ -119,12 +124,11 @@ Q_SIGNALS:
 private:
     friend class SelectedActionWrapper;
 
+    bool isActionVisible(EditAction *action, const QRectF &rect = {}) const;
     void addAction(EditAction *action);
     void permanentlyDeleteAction(EditAction *action);
     void clearRedoStack();
     void emitRepaintNeededUnlessEmpty(const QRectF &area);
-
-    bool isActionVisible(EditAction *action, const QRectF &rect = {}) const;
 
     AnnotationTool *m_tool;
     SelectedActionWrapper *m_selectedActionWrapper;
