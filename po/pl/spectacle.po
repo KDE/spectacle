@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-09 01:36+0000\n"
-"PO-Revision-Date: 2023-10-28 09:29+0200\n"
-"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"PO-Revision-Date: 2023-12-16 11:09+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -99,6 +99,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Nagraj ekran w danym trybie. Tryby:\n"
+"- r, obszar\n"
+"- s, ekran\n"
+"- w, okno"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -240,6 +244,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Nie udało się wyeksportować nagrania: Adres URL tymczasowego pliku musi "
+"wskazywać na istniejący plik"
 
 #: src/ExportManager.cpp:628
 #, kde-format
@@ -247,14 +253,14 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Nie udało się wyeksportować nagrania: Adres URL wynikowego pliku musi być "
+"prawidłowym adresem"
 
 #: src/ExportManager.cpp:703
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
-"Nie można zapisać obrazu. Nie można wysłać pliku do położenia zdalnego."
+msgstr "Nie można zapisać nagrania. Nie można przenieść pliku do miejsca: %1"
 
 #: src/ExportManager.cpp:731
 #, kde-format
@@ -350,16 +356,12 @@ msgid "Window Title"
 msgstr "Tytuł okna"
 
 #: src/ExportManager.cpp:779
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Sequential numbering, padded out to N digits"
+#, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
 "specified value"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Numer w ciągu, mający zawsze N cyfr"
+msgstr "Numer w ciągu, poprzedzone tyloma cyframi ile wstawiono znaków '#'"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -640,18 +642,16 @@ msgid "Image Zoom"
 msgstr "Powiększenie obrazu"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Zrzut ekranu został skopiowany do schowka."
+msgstr "Skopiowano miejsce nagrania do schowka."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Zrzut ekranu został skopiowany do schowka."
+msgstr "Skopiowano miejsce zrzutu do schowka."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -669,10 +669,9 @@ msgid "Copy"
 msgstr "Skopiuj"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Skopiuj położenie do schowka"
+msgstr "Skopiuj położenie"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -789,16 +788,13 @@ msgid ""
 msgstr "Zrzut skopiowano do schowka i zapisano jako <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Zrzut ekranu zapisano w <a href=\"%1\">%2</a>, a jego położenie skopiowano "
-"do schowka"
+"Nagranie zapisano w <a href=\"%1\">%2</a>, a jego położenie skopiowano do "
+"schowka"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -1151,10 +1147,9 @@ msgstr "Określa, czy wskaźnik myszy ma znaleźć się na zrzucie ekranu"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Określa, czy wskaźnik myszy ma znaleźć się na zrzucie ekranu"
+msgstr "Określa, czy wskaźnik myszy ma znaleźć się na nagraniu"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1214,14 +1209,12 @@ msgstr "Domyślny format zapisu obrazu"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Domyślna nazwa pliku przy zapisywaniu"
+msgstr "Wzorzec nazwy pliku stosowany do zapisywania zrzutów"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
@@ -1250,10 +1243,9 @@ msgstr "Domyślny format zapisu nagrań"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Domyślna nazwa pliku przy zapisywaniu"
+msgstr "Wzorzec nazwy pliku stosowany do zapisywania nagrań"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1262,9 +1254,7 @@ msgid "Screencasts"
 msgstr "Nagranie ekranu"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Nagranie ekranu"
@@ -1430,58 +1420,48 @@ msgid "Save &Location:"
 msgstr "&Miejsce zapisu:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Udostępniono obraz"
+msgstr "Udostępniono nagranie"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Udostępniono obraz"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Odnośnik do współdzielonego obrazu (<a href=\"%1\">%1</a>) został skopiowany "
-"do schowka."
+"Odnośnik do współdzielonego nagrania (<a href=\"%1\">%1</a>) został "
+"skopiowany do schowka."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Odnośnik do współdzielonego obrazu (<a href=\"%1\">%1</a>) został skopiowany "
-"do schowka."
+"Odnośnik do współdzielonego nagrania (<a href=\"%1\">%1</a>) został "
+"skopiowany do schowka."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Wystąpiły problemy przy udostępnianiu obrazu: %1"
+msgstr "Napotkano kłopot przy udostępnianiu nagrania: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr "Wystąpiły problemy przy udostępnianiu obrazu: %1"
+msgstr "Napotkano kłopot przy udostępnianiu obrazu: %1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
@@ -1658,89 +1638,85 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Nie udało się nagrać: Adres URL nie wskazuje na plik lokalny"
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Nie udało się nagrać: Nie można było utworzyć katalogu (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:240
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Nie udało się nagrać: Adres URL tymczasowego pliku nie wskazuje na plik "
+"lokalny (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Nie udało się nagrać: Adres URL wynikowego pliku nie wskazuje na plik "
+"lokalny (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:285
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Nowe nagranie ekranu"
+msgstr "Zaniechano nagrywania ekranu"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Zaniechano nagrywania okna"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Nie udało się wybrać okna"
+msgstr "Nie udało się wybrać ekranu: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Nie udało się wybrać okna"
+msgstr "Nie udało się wybrać okna: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Nie udało się wybrać ekranu: Żaden z ekranów nie zawierał położenia "
+"wskaźnika myszy"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Nie udało się wybrać okna"
+msgstr "Nie udało się wybrać okna: Nie znaleziono żadnego okna"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Prostokątny obszar"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Cały ekran"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Tytuł okna"
+msgstr "Okno"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1773,22 +1749,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Zrzuć okno pod wskaźnikiem"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Wybrany ekran"
+msgstr "Nagraj ekran"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Nagrywanie"
+msgstr "Nagraj okno"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Prostokątny obszar"
+msgstr "Nagraj prostokątny obszar"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1802,12 +1775,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle jest w trakcie nagrywania: %1\n"
+"Naciśnij, aby zakończ nagrywanie"
 
 #: src/SpectacleCore.cpp:605
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 nie jest prawidłowym trybem do --record"
 
 #: src/SpectacleCore.cpp:807
 #, kde-format
@@ -1839,29 +1814,23 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Zrzut zapisano w twoim schowku."
 
 #: src/SpectacleCore.cpp:875
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Zapisano zrzut ekranu jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
+"Zapisano nagranie jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
 #: src/SpectacleCore.cpp:877
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu Zdjęcia."
+msgstr "Nagranie zapisano pod nazwą '%1' w katalogu Filmów."
 
 #: src/SpectacleCore.cpp:879
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu '%2'."
+msgstr "Nagranie zapisano pod nazwą '%1' w katalogu '%2'."
 
 #: src/SpectacleCore.cpp:890
 #, kde-format
