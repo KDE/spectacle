@@ -81,7 +81,14 @@ Row {
                     AnnotationDocument.selectedAction.strokeWidth
                     : AnnotationDocument.tool.strokeWidth
                 textFromValue: (value, locale) => {
-                    return Number(Math.round(value)).toLocaleString(locale, 'f', 0) + "px"
+                    // we don't use the locale here because the px suffix
+                    // needs to be treated as a translatable string, which
+                    // doesn't take into account the locale passed in here.
+                    // but it's going to be the application locale
+                    // which ki18n uses so it doesn't matter that much
+                    // unless someone decides to set the locale for a specific
+                    // part of spectacle in the future.
+                    return i18ncp("px: pixels", "%1px", "%1px", Math.round(value))
                 }
                 valueFromText: (text, locale) => {
                     return Number.fromLocaleString(locale, text.replace(/\D/g,''))
