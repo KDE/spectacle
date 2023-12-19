@@ -18,14 +18,13 @@ QQC.SpinBox {
         if (value === 0) {
             return noDelayString
         }
-        let suffix = ""
+        const text = textFromValue(value)
         if (value % 100 === 0) {
-            suffix = i18ncp("Integer number of seconds",
-                        " second", " seconds", value / 100)
+            return i18ncp("Integer number of seconds",
+                "%2 second", "%2 seconds", value / 100, text)
         } else {
-            suffix = i18nc("Decimal number of seconds", " seconds")
+            return i18nc("Decimal number of seconds", "%2 seconds", text)
         }
-        return textFromValue(value) + suffix
     }
 
     // QQC Spinbox uses ints for some reason,
