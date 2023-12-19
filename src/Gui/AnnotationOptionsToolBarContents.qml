@@ -212,9 +212,9 @@ Row {
                     rightPadding: leftPadding
                     font.family: currentFont.family
                     font.styleName: currentFont.styleName
-                    text: font.family
-                        + (font.styleName ? ` ${font.styleName}` : "")
-                        + ` ${currentFont.pointSize}pts`
+                    text: font.styleName !== "" ?
+                        i18ncp("%2 font family, %3 font style name, %1 font point size", "%2 %3 %1pt", "%2 %3 %1pts", currentFont.pointSize, font.family, font.styleName) :
+                        i18ncp("%2 font family %1 font point size", "%2 %1pt", "%2 %1pts", currentFont.pointSize, font.family)
                     elide: Text.ElideNone
                     wrapMode: Text.NoWrap
                     horizontalAlignment: Text.AlignHCenter
