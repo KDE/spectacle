@@ -10,7 +10,7 @@ T.Label {
     id: root
     property size size: Qt.size(0, 0)
     Binding on text {
-        value: `${size.width}×${size.height}`
+        value: i18n("%1×%2", size.width, size.height)
         when: root.size.width > 0 && root.size.height > 0
         restoreMode: Binding.RestoreNone
     }
