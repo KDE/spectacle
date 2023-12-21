@@ -18,9 +18,9 @@
 >yurchor@ukr.net</email
 ></author>
 <date
->11/4/2021</date>
+>26/11/2023</date>
 <releaseinfo
->Spectacle 21.08</releaseinfo>
+>Spectacle 23.08</releaseinfo>
 <productname
 >KDE Applications</productname>
 </refentryinfo>
@@ -59,7 +59,7 @@
 <para
 ><command
 >spectacle</command
-> è una semplice applicazione per catturare schermate del desktop. Può acquisire immagini dell'intero desktop, di un singolo monitor, della finestra attiva, della finestra sotto il puntatore del mouse, o di una regione rettangolare dello schermo. Le immagini possono essere stampate, inviate ad altre applicazioni per essere modificate, o salvate rapidamente così come sono.</para>
+> è una semplice applicazione per catturare schermate del desktop. Può acquisire immagini dell'intero desktop, di un singolo monitor, della finestra attiva, della finestra sotto il puntatore del mouse, o di una regione rettangolare dello schermo. Le immagini possono essere annotate, stampate, inviate ad altre applicazioni per essere manipolate, o salvate rapidamente così come sono.</para>
 
 </refsect1>
 
@@ -67,6 +67,39 @@
 ><title
 >Opzioni di Spectacle</title>
 <variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Visualizza le informazioni di aiuto sulle opzioni a riga di comando.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Visualizza le informazioni di aiuto includendo le opzioni specifiche di Qt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Visualizza le informazioni di versione.</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term
@@ -280,6 +313,19 @@
 <listitem>
 <para
 >In modalità sfondo, non includere le decorazioni delle finestre nella schermata.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>nomeFileEsistente</replaceable
+></option
+></term>
+<listitem>
+<para
+>Apri e modifica il file della schermata esistente.</para>
 </listitem>
 </varlistentry>
 </variablelist>
