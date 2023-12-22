@@ -54,19 +54,7 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     }());
     connect(m_ui->kcfg_preferredImageFormat, &QComboBox::currentTextChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
 
-    QString captureInstruction = i18n(
-        "You can use the following placeholders in the filename, which will be replaced "
-        "with actual text when the file is saved:<blockquote>");
-    for (auto it = ExportManager::filenamePlaceholders.cbegin(); it != ExportManager::filenamePlaceholders.cend(); ++it) {
-        // Only show placeholders with descriptions
-        if (it->description.isEmpty()) {
-            continue;
-        }
-        captureInstruction += u"<a href=%1>%1</a>: %2<br>"_s.arg(it->htmlKey, it->description.toString());
-    }
-    captureInstruction += u"<a href='/'>/</a>: "_s + i18n("To save to a sub-folder");
-    captureInstruction += u"</blockquote>"_s;
-    m_ui->captureInstructionLabel->setText(captureInstruction);
+    m_ui->captureInstructionLabel->setText(captureInstructions());
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &placeholder) {
         m_ui->kcfg_imageFilenameTemplate->insert(placeholder);
     });
