@@ -61,6 +61,8 @@ void FilenameTest::testDateTokens()
             QCOMPARE(mExportManager->formattedFilename(it->plainKey), locale.toString(timestamp, it->baseKey));
         }
     }
+    QCOMPARE(mExportManager->formattedFilename(u"<h>"_s), u"8"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<hh>"_s), u"08"_s);
     QCOMPARE(mExportManager->formattedFilename(u"<UnixTime>"_s), QString::number(timestamp.toSecsSinceEpoch()));
 }
 
@@ -100,11 +102,11 @@ void FilenameTest::testNumbering()
 void FilenameTest::testCombined()
 {
     mExportManager->setWindowTitle(u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<HH>:<mm>:<ss><notaplaceholder>"_s),
-             u"App_Spectacle_Date_20190322_Time_20:43:25<notaplaceholder>"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s),
+             u"App_Spectacle_Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
     mExportManager->setWindowTitle({});
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<HH>:<mm>:<ss><notaplaceholder>"_s),
-             u"App_Date_20190322_Time_20:43:25<notaplaceholder>"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s),
+             u"App_Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
 }
 
 QTEST_GUILESS_MAIN(FilenameTest)

@@ -224,6 +224,11 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         }
     }
     // Manual interpretation
+    // `h` and `hh` in QDateTime::toString or QLocale::toString
+    // are only 12 hour when paired with an AM/PM display in the same toString call,
+    // so we have to get the 12 hour format for `<h>` and `<hh>` manually.
+    result.replace("<h>"_L1, timestamp.toString(u"hAP"_s).chopped(2));
+    result.replace("<hh>"_L1, timestamp.toString(u"hhAP"_s).chopped(2));
     result.replace("<UnixTime>"_L1, QString::number(timestamp.toSecsSinceEpoch()));
     result.replace("<title>"_L1, title);
 
@@ -753,37 +758,37 @@ KLocalizedString placeholderDescription(const char *string)
 
 using enum ExportManager::Placeholder::Flag;
 const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
-    {Date | QDateTime, u"d"_s},
-    {Date | QDateTime, u"dd"_s, placeholderDescription("Day")},
-    {Date | QDateTime, u"ddd"_s},
-    {Date | QDateTime, u"dddd"_s},
-    {Date | QDateTime, u"M"_s},
-    {Date | QDateTime, u"MM"_s, placeholderDescription("Month")},
-    {Date | QDateTime, u"MMM"_s, placeholderDescription("Month (localized short name)")},
-    {Date | QDateTime, u"MMMM"_s, placeholderDescription("Month (localized long name)")},
+    {Date | Extra | QDateTime, u"d"_s, placeholderDescription("Day (1–31)")},
+    {Date | QDateTime, u"dd"_s, placeholderDescription("Day (01–31)")},
+    {Date | Extra | QDateTime, u"ddd"_s, placeholderDescription("Day (short name)")},
+    {Date | Extra | QDateTime, u"dddd"_s, placeholderDescription("Day (long name)")},
+    {Date | Extra | QDateTime, u"M"_s, placeholderDescription("Month (1–12)")},
+    {Date | QDateTime, u"MM"_s, placeholderDescription("Month (01–12)")},
+    {Date | QDateTime, u"MMM"_s, placeholderDescription("Month (short name)")},
+    {Date | QDateTime, u"MMMM"_s, placeholderDescription("Month (long name)")},
     {Date | QDateTime, u"yy"_s, placeholderDescription("Year (2 digit)")},
     {Date | QDateTime, u"yyyy"_s, placeholderDescription("Year (4 digit)")},
-    {Time | QDateTime, u"H"_s},
-    {Time | QDateTime, u"HH"_s},
-    {Time | QDateTime, u"h"_s},
-    {Time | QDateTime, u"hh"_s, placeholderDescription("Hour")},
-    {Time | QDateTime, u"m"_s},
-    {Time | QDateTime, u"mm"_s, placeholderDescription("Minute")},
-    {Time | QDateTime, u"s"_s},
-    {Time | QDateTime, u"ss"_s, placeholderDescription("Second")},
-    {Time | QDateTime, u"z"_s},
-    {Time | QDateTime, u"zz"_s}, // same as `z`
-    {Time | QDateTime, u"zzz"_s},
-    {Time | QDateTime, u"AP"_s},
-    {Time | QDateTime, u"A"_s}, // same as `AP`
-    {Time | QDateTime, u"ap"_s},
-    {Time | QDateTime, u"a"_s}, // same as `ap`
-    {Time | QDateTime, u"Ap"_s},
-    {Time | QDateTime, u"aP"_s}, // same as `Ap`
-    {Time | QDateTime, u"t"_s, placeholderDescription("Timezone")},
-    {Time | QDateTime, u"tt"_s},
-    {Time | QDateTime, u"ttt"_s},
-    {Time | QDateTime, u"tttt"_s},
+    {Time | Extra | QDateTime, u"H"_s, placeholderDescription("Hour (0–23)")},
+    {Time | QDateTime, u"HH"_s, placeholderDescription("Hour (00–23)")},
+    {Time | Extra, u"h"_s, placeholderDescription("Hour (1–12)")},
+    {Time, u"hh"_s, placeholderDescription("Hour (01–12)")},
+    {Time | Extra | QDateTime, u"m"_s, placeholderDescription("Minute (0–59)")},
+    {Time | QDateTime, u"mm"_s, placeholderDescription("Minute (00–59)")},
+    {Time | Extra | QDateTime, u"s"_s, placeholderDescription("Second (0–59)")},
+    {Time | QDateTime, u"ss"_s, placeholderDescription("Second (00–59)")},
+    {Time | Extra | QDateTime, u"z"_s, placeholderDescription("Millisecond (0–999)")},
+    {Time | Extra | QDateTime, u"zz"_s}, // same as `z`
+    {Time | Extra | QDateTime, u"zzz"_s, placeholderDescription("Millisecond (000–999)")},
+    {Time | Extra | QDateTime, u"AP"_s, placeholderDescription("AM/PM")},
+    {Time | Extra | QDateTime, u"A"_s}, // same as `AP`
+    {Time | Extra | QDateTime, u"ap"_s, placeholderDescription("am/pm")},
+    {Time | Extra | QDateTime, u"a"_s}, // same as `ap`
+    {Time | QDateTime, u"Ap"_s, placeholderDescription("AM/PM or am/pm (localized)")},
+    {Time | Extra | QDateTime, u"aP"_s}, // same as `Ap`
+    {Time | Extra | QDateTime, u"t"_s, placeholderDescription("Timezone (short name)")},
+    {Time | QDateTime, u"tt"_s, placeholderDescription("Timezone offset (±0000)")},
+    {Time | Extra | QDateTime, u"ttt"_s, placeholderDescription("Timezone offset (±00:00)")},
+    {Time | Extra | QDateTime, u"tttt"_s, placeholderDescription("Timezone (long name)")},
     {Time | Extra, u"UnixTime"_s, placeholderDescription("Seconds since the Unix epoch")},
     {Other, u"title"_s, placeholderDescription("Window Title")},
     {Other, u"#"_s, placeholderDescription("Sequential numbering, padded by inserting additional '#' characters")},
