@@ -61,6 +61,7 @@ void FilenameTest::testDateTokens()
             QCOMPARE(mExportManager->formattedFilename(it->plainKey), locale.toString(timestamp, it->baseKey));
         }
     }
+    QCOMPARE(mExportManager->formattedFilename(u"<UnixTime>"_s), QString::number(timestamp.toSecsSinceEpoch()));
 }
 
 void FilenameTest::testWindowTitle()

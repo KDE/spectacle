@@ -224,6 +224,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         }
     }
     // Manual interpretation
+    result.replace("<UnixTime>"_L1, QString::number(timestamp.toSecsSinceEpoch()));
     result.replace("<title>"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
@@ -783,6 +784,7 @@ const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
     {Time | QDateTime, u"tt"_s},
     {Time | QDateTime, u"ttt"_s},
     {Time | QDateTime, u"tttt"_s},
+    {Time | Extra, u"UnixTime"_s, placeholderDescription("Seconds since the Unix epoch")},
     {Other, u"title"_s, placeholderDescription("Window Title")},
     {Other, u"#"_s, placeholderDescription("Sequential numbering, padded by inserting additional '#' characters")},
 };
