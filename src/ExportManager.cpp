@@ -217,13 +217,13 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
 
     QString result = baseName;
     const auto &locale = QLocale::system();
-    // Date/Time
+    // QDateTime
     for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
-        if (it->category == Placeholder::Date || it->category == Placeholder::Time) {
+        if (it->flags.testFlags(Placeholder::QDateTime)) {
             result.replace(it->plainKey, locale.toString(timestamp, it->baseKey));
         }
     }
-    // Other
+    // Manual interpretation
     result.replace("<title>"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
@@ -745,40 +745,46 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.end();
 }
 
+KLocalizedString placeholderDescription(const char *string)
+{
+    return ki18nc("A placeholder in the user configurable filename will replaced by the specified value", string);
+}
+
+using enum ExportManager::Placeholder::Flag;
 const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
-    {Placeholder::Date, u"d"_s},
-    {Placeholder::Date, u"dd"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Day")},
-    {Placeholder::Date, u"ddd"_s},
-    {Placeholder::Date, u"dddd"_s},
-    {Placeholder::Date, u"M"_s},
-    {Placeholder::Date, u"MM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month")},
-    {Placeholder::Date, u"MMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized short name)")},
-    {Placeholder::Date, u"MMMM"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Month (localized long name)")},
-    {Placeholder::Date, u"yy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (2 digit)")},
-    {Placeholder::Date, u"yyyy"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Year (4 digit)")},
-    {Placeholder::Time, u"H"_s},
-    {Placeholder::Time, u"HH"_s},
-    {Placeholder::Time, u"h"_s},
-    {Placeholder::Time, u"hh"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Hour")},
-    {Placeholder::Time, u"m"_s},
-    {Placeholder::Time, u"mm"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Minute")},
-    {Placeholder::Time, u"s"_s},
-    {Placeholder::Time, u"ss"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Second")},
-    {Placeholder::Time, u"z"_s},
-    {Placeholder::Time, u"zz"_s}, // same as `z`
-    {Placeholder::Time, u"zzz"_s},
-    {Placeholder::Time, u"AP"_s},
-    {Placeholder::Time, u"A"_s}, // same as `AP`
-    {Placeholder::Time, u"ap"_s},
-    {Placeholder::Time, u"a"_s}, // same as `ap`
-    {Placeholder::Time, u"Ap"_s},
-    {Placeholder::Time, u"aP"_s}, // same as `Ap`
-    {Placeholder::Time, u"t"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Timezone")},
-    {Placeholder::Time, u"tt"_s},
-    {Placeholder::Time, u"ttt"_s},
-    {Placeholder::Time, u"tttt"_s},
-    {Placeholder::Other, u"title"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Window Title")},
-    {Placeholder::Other, u"#"_s, ki18nc("A placeholder in the user configurable filename will replaced by the specified value", "Sequential numbering, padded by inserting additional '#' characters")},
+    {Date | QDateTime, u"d"_s},
+    {Date | QDateTime, u"dd"_s, placeholderDescription("Day")},
+    {Date | QDateTime, u"ddd"_s},
+    {Date | QDateTime, u"dddd"_s},
+    {Date | QDateTime, u"M"_s},
+    {Date | QDateTime, u"MM"_s, placeholderDescription("Month")},
+    {Date | QDateTime, u"MMM"_s, placeholderDescription("Month (localized short name)")},
+    {Date | QDateTime, u"MMMM"_s, placeholderDescription("Month (localized long name)")},
+    {Date | QDateTime, u"yy"_s, placeholderDescription("Year (2 digit)")},
+    {Date | QDateTime, u"yyyy"_s, placeholderDescription("Year (4 digit)")},
+    {Time | QDateTime, u"H"_s},
+    {Time | QDateTime, u"HH"_s},
+    {Time | QDateTime, u"h"_s},
+    {Time | QDateTime, u"hh"_s, placeholderDescription("Hour")},
+    {Time | QDateTime, u"m"_s},
+    {Time | QDateTime, u"mm"_s, placeholderDescription("Minute")},
+    {Time | QDateTime, u"s"_s},
+    {Time | QDateTime, u"ss"_s, placeholderDescription("Second")},
+    {Time | QDateTime, u"z"_s},
+    {Time | QDateTime, u"zz"_s}, // same as `z`
+    {Time | QDateTime, u"zzz"_s},
+    {Time | QDateTime, u"AP"_s},
+    {Time | QDateTime, u"A"_s}, // same as `AP`
+    {Time | QDateTime, u"ap"_s},
+    {Time | QDateTime, u"a"_s}, // same as `ap`
+    {Time | QDateTime, u"Ap"_s},
+    {Time | QDateTime, u"aP"_s}, // same as `Ap`
+    {Time | QDateTime, u"t"_s, placeholderDescription("Timezone")},
+    {Time | QDateTime, u"tt"_s},
+    {Time | QDateTime, u"ttt"_s},
+    {Time | QDateTime, u"tttt"_s},
+    {Other, u"title"_s, placeholderDescription("Window Title")},
+    {Other, u"#"_s, placeholderDescription("Sequential numbering, padded by inserting additional '#' characters")},
 };
 
 #include "moc_ExportManager.cpp"

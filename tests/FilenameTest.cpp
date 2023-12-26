@@ -53,11 +53,11 @@ void FilenameTest::testStrings()
 
 void FilenameTest::testDateTokens()
 {
-    using Category = ExportManager::Placeholder::Category;
     const auto &placeholders = mExportManager->filenamePlaceholders;
     const auto &locale = QLocale::system();
     for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
-        if (it->category == Category::Date || it->category == Category::Time) {
+        using Flag = ExportManager::Placeholder::Flag;
+        if (it->flags.testFlag(Flag::QDateTime)) {
             QCOMPARE(mExportManager->formattedFilename(it->plainKey), locale.toString(timestamp, it->baseKey));
         }
     }

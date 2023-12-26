@@ -46,22 +46,43 @@ inline QString tableRow(const QString &href, const QString &label, const QString
                 <td>%2</td></tr>)"_s.arg(cell1, description);
     // clang-format on
 }
+inline QString buttonRow(const QString &href, const QString &label)
+{
+    QString cell2 = u"<a href='%1'>%2</a>"_s.arg(href, label);
+    // clang-format off
+    return uR"(
+            <tr><td>&nbsp;</td>
+                <td>%1</td></tr>)"_s.arg(cell2);
+    // clang-format on
+}
 }
 
-inline QString captureInstructions()
+inline QString captureInstructions(bool showExtras)
 {
     using namespace CaptureInstructionHelpers;
     QString intro = i18n("You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:");
 
     QString tableBody;
+    bool hasAnyExtras = false;
     for (auto it = ExportManager::filenamePlaceholders.cbegin(); it != ExportManager::filenamePlaceholders.cend(); ++it) {
-        // Only show placeholders with descriptions
-        if (it->description.isEmpty()) {
+        using Flag = ExportManager::Placeholder::Flag;
+        if (it->flags.testFlag(Flag::Hidden)) {
             continue;
         }
-        tableBody += tableRow(it->plainKey, it->htmlKey, it->description.toString());
+        const bool isExtra = it->flags.testFlag(Flag::Extra);
+        hasAnyExtras |= isExtra;
+        if (showExtras || !isExtra) {
+            tableBody += tableRow(it->plainKey, it->htmlKey, it->description.toString());
+        }
     }
     tableBody += tableRow(u"/"_s, u"/"_s, i18n("To save to a sub-folder"));
+    if (hasAnyExtras) {
+        if (showExtras) {
+            tableBody += buttonRow(u"showless"_s, i18nc("show fewer filename placeholder templates", "Show Less"));
+        } else {
+            tableBody += buttonRow(u"showmore"_s, i18nc("show more filename placeholder templates", "Show More"));
+        }
+    }
 
     auto hspacing = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing);
     // Make the distance from the bottom of a typical capital letter to the top of another below it

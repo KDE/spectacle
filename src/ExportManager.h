@@ -75,21 +75,25 @@ public:
     const QTemporaryDir *temporaryDir();
 
     struct Placeholder {
-        enum Category {
-            Date,
-            Time,
-            Other,
+        enum Flag {
+            Other = 0,
+            Date = 1,
+            Time = 1 << 1,
+            Extra = 1 << 28, //< Placeholders that are extras are hidden by default.
+            Hidden = 1 << 29, //< Placeholders that won't be shown
+            QDateTime = 1 << 30, //< Can be put directly into QDateTime::toString.
         };
+        using Flags = QFlags<Flag>;
 
-        const Category category;
+        const Flags flags;
         const QString baseKey;
         const QString plainKey;
         const QString htmlKey;
+        // Placeholders with empty descriptions will not be visible in the config UI
         const KLocalizedString description;
 
-        // Placeholders with empty descriptions will not be visible in the config UI
-        Placeholder(Category category, const QString &key, const KLocalizedString &description)
-            : category(category)
+        Placeholder(const Flags &flags, const QString &key, const KLocalizedString &description)
+            : flags(flags)
             , baseKey(key)
             , plainKey(u"<" % key % u">")
             , htmlKey(u"&lt;" % key % u"&gt;") // key -> <key> in HTML
@@ -97,8 +101,8 @@ public:
         {
         }
 
-        Placeholder(Category category, const QString &key)
-            : category(category)
+        Placeholder(const Flags &flags, const QString &key)
+            : flags(flags | Hidden)
             , baseKey(key)
             , plainKey(u"<" % key % u">")
         {
@@ -145,3 +149,4 @@ private:
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ExportManager::Actions)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ExportManager::Placeholder::Flags)
