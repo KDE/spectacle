@@ -16,7 +16,7 @@ const ValueMap oldNewMap{
     {u"%n"_s, u"<MMM>"_s},
     {u"%N"_s, u"<MMMM>"_s},
     {u"%D"_s, u"<dd>"_s},
-    {u"%H"_s, u"<hh>"_s},
+    {u"%H"_s, u"<HH>"_s},
     {u"%m"_s, u"<mm>"_s},
     {u"%S"_s, u"<ss>"_s},
     {u"%t"_s, u"<t>"_s},
