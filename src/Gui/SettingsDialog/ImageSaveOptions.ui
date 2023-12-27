@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>ImageSaveOptions</class>
  <widget class="QWidget" name="ImageSaveOptions">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>598</width>
-    <height>286</height>
-   </rect>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="1" column="0">
     <widget class="QLabel" name="saveLocationLabel">
@@ -28,23 +20,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>18</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="qualityLabel">
      <property name="text">
       <string>Compression Quality:</string>
@@ -54,35 +30,45 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <layout class="QVBoxLayout" name="qualityVLayout">
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="qualityHLayout">
      <item>
-      <layout class="QHBoxLayout" name="qualityHLayout">
+      <layout class="QVBoxLayout" name="qualityVLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QSlider" name="kcfg_imageCompressionQuality">
+         <property name="maximum">
+          <number>100</number>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
         </widget>
        </item>
-       <item>
-        <widget class="QSpinBox" name="qualitySpinner">
-         <property name="suffix">
-          <string>%</string>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+       <item alignment="Qt::AlignTop">
+        <widget class="QLabel" name="imageCompressionQualityHelpLable">
+         <property name="text">
+          <string>For lossy image formats like JPEG</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
+     <item alignment="Qt::AlignTop">
+      <widget class="QSpinBox" name="qualitySpinner">
+       <property name="suffix">
+        <string>%</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
-   <item row="6" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="filenameLabel">
      <property name="text">
       <string>Filename:</string>
@@ -92,7 +78,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="3" column="1">
     <layout class="QHBoxLayout" name="saveLayout">
      <item>
       <widget class="QLineEdit" name="kcfg_imageFilenameTemplate">
@@ -111,37 +97,21 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0" colspan="2">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>18</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="8" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="PreviewLabel">
      <property name="text">
       <string comment="Preview of the user configured filename">Preview:</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="4" column="1">
     <widget class="QLabel" name="preview">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="6" column="1">
     <widget class="QLabel" name="captureInstructionLabel">
      <property name="text">
       <string/>
@@ -151,29 +121,6 @@
      </property>
      <property name="wordWrap">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>18</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="imageCompressionQualityHelpLable">
-     <property name="text">
-      <string>For lossy image formats like JPEG</string>
      </property>
     </widget>
    </item>

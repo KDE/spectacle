@@ -48,6 +48,8 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
     connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textChanged,
             this, &VideoSaveOptionsPage::updateFilenamePreview);
 
+    m_ui->preview->setFixedHeight(m_ui->kcfg_videoFilenameTemplate->height());
+
     m_ui->videoFormatComboBox->setModel(videoFormatModel);
     const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
     m_ui->videoFormatComboBox->setCurrentIndex(videoFormatModel->indexOfFormat(format));

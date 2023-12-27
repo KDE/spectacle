@@ -28,6 +28,17 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
 {
     m_ui->setupUi(this);
 
+    m_ui->imageCompressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
+    const int sliderSpinboxHeightDiff = m_ui->qualitySpinner->sizeHint().height() - m_ui->kcfg_imageCompressionQuality->sizeHint().height();
+    const int smallLabelLineEditHeightDiff =
+        m_ui->kcfg_imageFilenameTemplate->sizeHint().height() - m_ui->imageCompressionQualityHelpLable->sizeHint().height();
+    m_ui->qualityVLayout->setContentsMargins({
+        0,
+        std::max(0, qRound(sliderSpinboxHeightDiff / 2.0)),
+        0,
+        std::max(0, qRound(smallLabelLineEditHeightDiff / 2.0)),
+    });
+
     connect(m_ui->kcfg_imageFilenameTemplate, &QLineEdit::textEdited, this, [&](const QString &newText) {
         QString fmt;
         const auto imageFormats = QImageWriter::supportedImageFormats();
@@ -42,6 +53,8 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
         }
     });
     connect(m_ui->kcfg_imageFilenameTemplate, &QLineEdit::textChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
+
+    m_ui->preview->setFixedHeight(m_ui->kcfg_imageFilenameTemplate->height());
 
     m_ui->kcfg_preferredImageFormat->addItems([&]() {
         QStringList items;
@@ -64,8 +77,6 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
             m_ui->kcfg_imageFilenameTemplate->insert(link);
         }
     });
-
-    m_ui->imageCompressionQualityHelpLable->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
 }
 
 ImageSaveOptionsPage::~ImageSaveOptionsPage() = default;
