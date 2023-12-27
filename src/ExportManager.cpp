@@ -14,6 +14,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QImageWriter>
+#include <QLocale>
 #include <QMimeData>
 #include <QMimeDatabase>
 #include <QPainter>
@@ -215,10 +216,11 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     }
 
     QString result = baseName;
+    const auto &locale = QLocale::system();
     // Date/Time
     for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
         if (it->category == Placeholder::Date || it->category == Placeholder::Time) {
-            result.replace(it->plainKey, timestamp.toString(it->baseKey));
+            result.replace(it->plainKey, locale.toString(timestamp, it->baseKey));
         }
     }
     // Other

@@ -4,6 +4,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QLocale>
 #include <QTest>
 #include <QUuid>
 
@@ -33,7 +34,7 @@ private Q_SLOTS:
 void FilenameTest::initTestCase()
 {
     mExportManager = ExportManager::instance();
-    timestamp = QDateTime::fromString(u"2019-03-22T10:43:25"_s, Qt::ISODate);
+    timestamp = QDateTime::fromString(u"2019-03-22T20:43:25Z"_s, Qt::ISODate);
     mExportManager->setTimestamp(timestamp);
     mExportManager->setWindowTitle(u"Spectacle"_s);
 }
@@ -54,9 +55,10 @@ void FilenameTest::testDateTokens()
 {
     using Category = ExportManager::Placeholder::Category;
     const auto &placeholders = mExportManager->filenamePlaceholders;
+    const auto &locale = QLocale::system();
     for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
         if (it->category == Category::Date || it->category == Category::Time) {
-            QCOMPARE(mExportManager->formattedFilename(it->plainKey), timestamp.toString(it->baseKey));
+            QCOMPARE(mExportManager->formattedFilename(it->plainKey), locale.toString(timestamp, it->baseKey));
         }
     }
 }
@@ -97,11 +99,11 @@ void FilenameTest::testNumbering()
 void FilenameTest::testCombined()
 {
     mExportManager->setWindowTitle(u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><notaplaceholder>"_s),
-             u"App_Spectacle_Date_20190322_Time_10:43:25<notaplaceholder>"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<HH>:<mm>:<ss><notaplaceholder>"_s),
+             u"App_Spectacle_Date_20190322_Time_20:43:25<notaplaceholder>"_s);
     mExportManager->setWindowTitle({});
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><notaplaceholder>"_s),
-             u"App_Date_20190322_Time_10:43:25<notaplaceholder>"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<HH>:<mm>:<ss><notaplaceholder>"_s),
+             u"App_Date_20190322_Time_20:43:25<notaplaceholder>"_s);
 }
 
 QTEST_GUILESS_MAIN(FilenameTest)
