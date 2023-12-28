@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-09 01:36+0000\n"
+"POT-Creation-Date: 2023-12-28 01:33+0000\n"
 "PO-Revision-Date: 2023-12-11 12:01+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -197,12 +197,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Отваряне и редактиране на съществуващ файл със снимка на екрана"
 
-#: src/ExportManager.cpp:350
+#: src/ExportManager.cpp:352
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter не може да запише изображение: %1"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:367
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,12 +212,12 @@ msgstr ""
 "Не може да се запази екранната снимка, защото създаването на директорията е "
 "неуспешно:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:375
+#: src/ExportManager.cpp:377
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не може да се запази екранната снимка. Грешка при запис на файла."
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:397
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -227,32 +227,32 @@ msgstr ""
 "Не може да се запази екранната снимка, защото създаването на отдалечената "
 "директория е неуспешно:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:406 src/ExportManager.cpp:454
+#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не може да се запази екранната снимка. Грешка при записването на временен "
 "локален файл."
 
-#: src/ExportManager.cpp:414
+#: src/ExportManager.cpp:416
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Невъзможно е да се запази изображението. Не може да се качи файл на "
 "отдалечено място."
 
-#: src/ExportManager.cpp:461
+#: src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Не може да се запази екранната снимка. Името на записания файл е невалидно."
 
-#: src/ExportManager.cpp:505
+#: src/ExportManager.cpp:507
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Не може да се запази празна снимка на екрана."
 
-#: src/ExportManager.cpp:621
+#: src/ExportManager.cpp:623
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -261,7 +261,7 @@ msgstr ""
 "Не успя да експортира видео: URL адресът на временния файл трябва да е "
 "съществуващ локален файл"
 
-#: src/ExportManager.cpp:628
+#: src/ExportManager.cpp:630
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -270,7 +270,7 @@ msgstr ""
 "Не успя да експортира видео: URL адресът на изходния файл трябва да е "
 "валиден URL адрес с име на файл"
 
-#: src/ExportManager.cpp:703
+#: src/ExportManager.cpp:705
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -278,12 +278,12 @@ msgstr ""
 "Невъзможно е да се запази видеозаписът. Не може да се премести файла в "
 "местоположение: %1"
 
-#: src/ExportManager.cpp:731
+#: src/ExportManager.cpp:733
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Отпечатването е неуспешно. Принтерът не успя да се инициализира."
 
-#: src/ExportManager.cpp:748
+#: src/ExportManager.cpp:750
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -291,7 +291,7 @@ msgctxt ""
 msgid "Day"
 msgstr "Ден"
 
-#: src/ExportManager.cpp:752
+#: src/ExportManager.cpp:754
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -299,7 +299,7 @@ msgctxt ""
 msgid "Month"
 msgstr "Месец"
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:755
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -307,7 +307,7 @@ msgctxt ""
 msgid "Month (localized short name)"
 msgstr "Месец (съкратено име)"
 
-#: src/ExportManager.cpp:754
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -315,7 +315,7 @@ msgctxt ""
 msgid "Month (localized long name)"
 msgstr "Месец (пълно име)"
 
-#: src/ExportManager.cpp:755
+#: src/ExportManager.cpp:757
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -323,7 +323,7 @@ msgctxt ""
 msgid "Year (2 digit)"
 msgstr "Година (2 цифри)"
 
-#: src/ExportManager.cpp:756
+#: src/ExportManager.cpp:758
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -331,7 +331,7 @@ msgctxt ""
 msgid "Year (4 digit)"
 msgstr "Година (4 цифри)"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:762
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -339,7 +339,7 @@ msgctxt ""
 msgid "Hour"
 msgstr "Час"
 
-#: src/ExportManager.cpp:762
+#: src/ExportManager.cpp:764
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -347,7 +347,7 @@ msgctxt ""
 msgid "Minute"
 msgstr "Минута"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:766
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -355,7 +355,7 @@ msgctxt ""
 msgid "Second"
 msgstr "Секунда"
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:776
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -363,7 +363,7 @@ msgctxt ""
 msgid "Timezone"
 msgstr "Часова зона"
 
-#: src/ExportManager.cpp:778
+#: src/ExportManager.cpp:780
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
@@ -371,7 +371,7 @@ msgctxt ""
 msgid "Window Title"
 msgstr "Заглавие на прозореца"
 
-#: src/ExportManager.cpp:779
+#: src/ExportManager.cpp:781
 #, kde-format
 msgctxt ""
 "A placeholder in the user configurable filename will replaced by the "
