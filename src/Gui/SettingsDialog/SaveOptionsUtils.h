@@ -36,7 +36,8 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
     }
 }
 
-namespace CaptureInstructionHelpers {
+namespace CaptureInstructionHelpers
+{
 inline QString tableRow(const QString &href, const QString &label, const QString &description = {})
 {
     QString cell1 = u"<a href='%1'><code>%2</code></a>"_s.arg(href, label);
