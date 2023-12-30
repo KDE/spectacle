@@ -87,7 +87,7 @@ inline QString captureInstructions(bool showExtras)
     auto hspacing = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing);
     // Make the distance from the bottom of a typical capital letter to the top of another below it
     // equal to QLayout vertical spacing, unless it is less than the largest descent.
-    auto vspacing = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing);
+    qreal vspacing = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing);
     QFontMetricsF generalMetrics(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
     QFontMetricsF fixedMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     vspacing = std::max(0.0, vspacing - std::max(generalMetrics.descent(), fixedMetrics.descent()));
