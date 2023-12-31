@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:33+0000\n"
+"POT-Creation-Date: 2023-12-31 01:54+0000\n"
 "PO-Revision-Date: 2023-12-03 10:00+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -282,102 +282,6 @@ msgid "Printing failed. The printer failed to initialize."
 msgstr ""
 "Produciuse un erro ao imprimir. Produciuse un erro ao inicializar a "
 "impresora."
-
-#: src/ExportManager.cpp:750
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Day"
-msgstr "Día"
-
-#: src/ExportManager.cpp:754
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "Mes"
-
-#: src/ExportManager.cpp:755
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "Mes (nome curto localizado)"
-
-#: src/ExportManager.cpp:756
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "Mes (nome longo localizado)"
-
-#: src/ExportManager.cpp:757
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "Ano (2 díxitos)"
-
-#: src/ExportManager.cpp:758
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "Ano (4 díxitos)"
-
-#: src/ExportManager.cpp:762
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Hour"
-msgstr "Hora"
-
-#: src/ExportManager.cpp:764
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Minute"
-msgstr "Minuto"
-
-#: src/ExportManager.cpp:766
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Second"
-msgstr "Segundo"
-
-#: src/ExportManager.cpp:776
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Timezone"
-msgstr "Fuso horario"
-
-#: src/ExportManager.cpp:780
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Window Title"
-msgstr "Título da xanela"
-
-#: src/ExportManager.cpp:781
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Numeración secuencial, enchido con cancelos (#) adicionais"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -994,66 +898,79 @@ msgid "Until Spectacle is closed"
 msgstr "Ata pecharse Spectacle"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:17
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
 msgid "Save Location:"
 msgstr "Lugar no que gardar:"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:50
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:26
 #, kde-format
 msgid "Compression Quality:"
 msgstr "Calidade da compresión:"
 
+#. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
+#, kde-format
+msgid "For lossy image formats like JPEG"
+msgstr "Para os formatos de imaxe con perda como JPEG"
+
 #. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:62
 #, no-c-format, kde-format
 msgid "%"
 msgstr "%"
 
 #. i18n: ectx: property (text), widget (QLabel, filenameLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:88
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:50
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:26
 #, kde-format
 msgid "Filename:"
 msgstr "Nome do ficheiro:"
 
 #. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
 #. i18n: ectx: property (text), widget (QLabel, previewLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:133
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:90
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:103
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:50
 #, kde-format
 msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Vista previa:"
 
-#. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
-#, kde-format
-msgid "For lossy image formats like JPEG"
-msgstr "Para os formatos de imaxe con perda como JPEG"
-
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:58
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:61
-#, kde-format
-msgid ""
-"You can use the following placeholders in the filename, which will be "
-"replaced with actual text when the file is saved:<blockquote>"
-msgstr ""
-"Pode usar as seguintes marcas de posición no nome de ficheiro, que se "
-"substituirán por texto real cando se garda o ficheiro:<blockquote>"
-
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
-#, kde-format
-msgid "To save to a sub-folder"
-msgstr "Para gardar nun cartafol subordinado"
-
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#, fuzzy, kde-format
+#| msgid ""
+#| "You can use the following placeholders in the filename, which will be "
+#| "replaced with actual text when the file is saved:<blockquote>"
+msgid ""
+"You can use the following placeholders in the filename, which will be "
+"replaced with actual text when the file is saved:"
+msgstr ""
+"Pode usar as seguintes marcas de posición no nome de ficheiro, que se "
+"substituirán por texto real cando se garda o ficheiro:<blockquote>"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#, kde-format
+msgid "To save to a sub-folder"
+msgstr "Para gardar nun cartafol subordinado"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#, kde-format
+msgctxt "show fewer filename placeholder templates"
+msgid "Show Less"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#, kde-format
+msgctxt "show more filename placeholder templates"
+msgid "Show More"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1431,7 +1348,7 @@ msgid "Whether number annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotación de número ten sombra"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
 #, kde-format
 msgid "Save &Location:"
 msgstr "&Localización de garda:"
@@ -1872,6 +1789,78 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Day"
+#~ msgstr "Día"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month"
+#~ msgstr "Mes"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month (localized short name)"
+#~ msgstr "Mes (nome curto localizado)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month (localized long name)"
+#~ msgstr "Mes (nome longo localizado)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Year (2 digit)"
+#~ msgstr "Ano (2 díxitos)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Year (4 digit)"
+#~ msgstr "Ano (4 díxitos)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Hour"
+#~ msgstr "Hora"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Minute"
+#~ msgstr "Minuto"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Second"
+#~ msgstr "Segundo"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Timezone"
+#~ msgstr "Fuso horario"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Window Title"
+#~ msgstr "Título da xanela"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
+#~ msgstr "Numeración secuencial, enchido con cancelos (#) adicionais"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

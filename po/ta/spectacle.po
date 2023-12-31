@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:33+0000\n"
+"POT-Creation-Date: 2023-12-31 01:54+0000\n"
 "PO-Revision-Date: 2023-12-10 11:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -267,106 +267,6 @@ msgstr "நிகழ்படத்தை சேமிக்க முடிய�
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "அச்சிடுதல் தோல்வியடைந்தது. அச்சுப்பொறியை துவக்க முடியவில்லை."
-
-#: src/ExportManager.cpp:750
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Day"
-msgstr "நாள்"
-
-#: src/ExportManager.cpp:754
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month"
-msgstr "மாதம்"
-
-#: src/ExportManager.cpp:755
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized short name)"
-msgstr "மாதம் (வட்டார மொழியில் குறுகிய பெயர்)"
-
-#: src/ExportManager.cpp:756
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Month (localized long name)"
-msgstr "மாதம் (வட்டார மொழியில் நெடும் பெயர்)"
-
-#: src/ExportManager.cpp:757
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (2 digit)"
-msgstr "ஆண்டு (2 எண்கள்)"
-
-#: src/ExportManager.cpp:758
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Year (4 digit)"
-msgstr "ஆண்டு (4 எண்கள்)"
-
-#: src/ExportManager.cpp:762
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Hour"
-msgstr "மணி"
-
-#: src/ExportManager.cpp:764
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Minute"
-msgstr "நிமிடம்"
-
-#: src/ExportManager.cpp:766
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Second"
-msgstr "நொடி"
-
-#: src/ExportManager.cpp:776
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Timezone"
-msgstr "கால மண்டலம்"
-
-#: src/ExportManager.cpp:780
-#, kde-format
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Window Title"
-msgstr "சாளரத்தின் தலைப்பு"
-
-#: src/ExportManager.cpp:781
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Sequential numbering, padded out to N digits"
-msgctxt ""
-"A placeholder in the user configurable filename will replaced by the "
-"specified value"
-msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "தொடர்வரிசையான எண்ணிக்கை, கூடுதல் '#'"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
@@ -986,66 +886,79 @@ msgid "Until Spectacle is closed"
 msgstr "ஸ்பெக்டக்குல் மூடப்படும் வரை"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:17
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
 msgid "Save Location:"
 msgstr "சேமிக்கப்படும் இடம்:"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:50
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:26
 #, kde-format
 msgid "Compression Quality:"
 msgstr "சுருக்கத்தின் தரம்:"
 
+#. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
+#, kde-format
+msgid "For lossy image formats like JPEG"
+msgstr "JPEG போன்ற இழப்புடை படிவங்களுக்கு"
+
 #. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:62
 #, no-c-format, kde-format
 msgid "%"
 msgstr "%"
 
 #. i18n: ectx: property (text), widget (QLabel, filenameLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:88
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:50
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:26
 #, kde-format
 msgid "Filename:"
 msgstr "கோப்புப்பெயர்"
 
 #. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
 #. i18n: ectx: property (text), widget (QLabel, previewLabel)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:133
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:90
+#: src/Gui/SettingsDialog/ImageSaveOptions.ui:103
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:50
 #, kde-format
 msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "முன்தோற்றம்:"
 
-#. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
-#: src/Gui/SettingsDialog/ImageSaveOptions.ui:176
-#, kde-format
-msgid "For lossy image formats like JPEG"
-msgstr "JPEG போன்ற இழப்புடை படிவங்களுக்கு"
-
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:58
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:61
-#, kde-format
-msgid ""
-"You can use the following placeholders in the filename, which will be "
-"replaced with actual text when the file is saved:<blockquote>"
-msgstr ""
-"கோப்புப்பெயரில் கீழ்காணும் கொள்ளிடங்களை நீங்கள் பயன்படுத்தலாம், கோப்பு சேமிக்கப்படும்போது "
-"அவற்றிற்கேற்ற மதிப்புகளை அவை பெறும்:<blockquote>"
-
-#: src/Gui/SettingsDialog/ImageSaveOptionsPage.cpp:67
-#: src/Gui/SettingsDialog/VideoSaveOptionsPage.cpp:70
-#, kde-format
-msgid "To save to a sub-folder"
-msgstr "சார் அடைவில் சேமிக்க"
-
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:28
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#, fuzzy, kde-format
+#| msgid ""
+#| "You can use the following placeholders in the filename, which will be "
+#| "replaced with actual text when the file is saved:<blockquote>"
+msgid ""
+"You can use the following placeholders in the filename, which will be "
+"replaced with actual text when the file is saved:"
+msgstr ""
+"கோப்புப்பெயரில் கீழ்காணும் கொள்ளிடங்களை நீங்கள் பயன்படுத்தலாம், கோப்பு சேமிக்கப்படும்போது "
+"அவற்றிற்கேற்ற மதிப்புகளை அவை பெறும்:<blockquote>"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#, kde-format
+msgid "To save to a sub-folder"
+msgstr "சார் அடைவில் சேமிக்க"
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#, kde-format
+msgctxt "show fewer filename placeholder templates"
+msgid "Show Less"
+msgstr ""
+
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#, kde-format
+msgctxt "show more filename placeholder templates"
+msgid "Show More"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1425,7 +1338,7 @@ msgid "Whether number annotation tool has a drop shadow"
 msgstr "எண் குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
-#: src/Gui/SettingsDialog/VideoSaveOptions.ui:17
+#: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
 #, kde-format
 msgid "Save &Location:"
 msgstr "&சேமிக்கப்படும் இடம்:"
@@ -1860,6 +1773,83 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Day"
+#~ msgstr "நாள்"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month"
+#~ msgstr "மாதம்"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month (localized short name)"
+#~ msgstr "மாதம் (வட்டார மொழியில் குறுகிய பெயர்)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Month (localized long name)"
+#~ msgstr "மாதம் (வட்டார மொழியில் நெடும் பெயர்)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Year (2 digit)"
+#~ msgstr "ஆண்டு (2 எண்கள்)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Year (4 digit)"
+#~ msgstr "ஆண்டு (4 எண்கள்)"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Hour"
+#~ msgstr "மணி"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Minute"
+#~ msgstr "நிமிடம்"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Second"
+#~ msgstr "நொடி"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Timezone"
+#~ msgstr "கால மண்டலம்"
+
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Window Title"
+#~ msgstr "சாளரத்தின் தலைப்பு"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "A placeholder in the user configurable filename will replaced by the "
+#~| "specified value"
+#~| msgid "Sequential numbering, padded out to N digits"
+#~ msgctxt ""
+#~ "A placeholder in the user configurable filename will replaced by the "
+#~ "specified value"
+#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
+#~ msgstr "தொடர்வரிசையான எண்ணிக்கை, கூடுதல் '#'"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
