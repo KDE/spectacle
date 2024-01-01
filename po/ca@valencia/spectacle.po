@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 01:54+0000\n"
-"PO-Revision-Date: 2023-12-02 10:51+0100\n"
+"PO-Revision-Date: 2023-12-31 09:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -811,7 +811,7 @@ msgstr "Copia la imatge a dins del porta-retalls"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Copia la ubicació del fitxer al porta-retalls"
+msgstr "Copia la ubicació del fitxer a dins del porta-retalls"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
@@ -950,17 +950,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "Podeu utilitzar els següents marcadors de posició en el nom de fitxer, els "
 "quals seran substituïts amb el text real quan es guarde el fitxer:"
-"<blockquote>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -971,13 +967,13 @@ msgstr "Per a guardar a una subcarpeta"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
-msgstr ""
+msgstr "Mostra'n menys"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Mostra'n més"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1770,7 +1766,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr ""
 "La gravació s'ha guardat com a «%1» a «%2» i el camí del fitxer de gravació "
-"s'ha guardat al porta-retalls."
+"s'ha guardat a dins del porta-retalls."
 
 #: src/SpectacleCore.cpp:877
 #, kde-format
@@ -1805,75 +1801,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Day"
-#~ msgstr "Dia"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month"
-#~ msgstr "Mes"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized short name)"
-#~ msgstr "Mes (nom curt localitzat)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized long name)"
-#~ msgstr "Mes (nom llarg localitzat)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (2 digit)"
-#~ msgstr "Any (2 dígits)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (4 digit)"
-#~ msgstr "Any (4 dígits)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Hour"
-#~ msgstr "Hora"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Minute"
-#~ msgstr "Minut"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Second"
-#~ msgstr "Segon"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Timezone"
-#~ msgstr "Zona horària"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Window Title"
-#~ msgstr "Títol de la finestra"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
-#~ msgstr "Numeració seqüencial, farcit inserint caràcters «#» addicionals"
