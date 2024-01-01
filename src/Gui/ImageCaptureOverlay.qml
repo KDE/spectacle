@@ -386,7 +386,7 @@ MouseArea {
                 }
             }
             readonly property bool normallyVisible: {
-                let emptyHovered = root.containsMouse && Selection.empty
+                let emptyHovered = (root.containsMouse || annotations.hovered) && Selection.empty
                 let menuVisible = ExportMenu.visible
                 menuVisible |= OptionsMenu.visible
                 menuVisible |= HelpMenu.visible
