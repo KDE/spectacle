@@ -3,21 +3,21 @@
 #
 # Jeff Huang <s8321414@gmail.com>, 2016, 2017.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 01:54+0000\n"
-"PO-Revision-Date: 2023-03-26 01:01+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2024-01-05 05:26+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -96,6 +96,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"以指定模式錄製螢幕。模式選項：\n"
+"- r, region（矩形區域）\n"
+"- s, screen（螢幕）\n"
+"- w, window（視窗）"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -166,10 +170,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "在背景模式下，截圖裡不要包含視窗裝飾"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "在背景模式下，截圖裡不要包含視窗裝飾"
+msgstr "在背景模式下，截圖裡不要包含陰影"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -227,21 +230,20 @@ msgstr "無法儲存空白的螢幕截圖影像。"
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
-msgstr ""
+msgstr "匯出影片失敗：暫存檔 URL 必須是現存的本地檔案"
 
 #: src/ExportManager.cpp:630
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
-msgstr ""
+msgstr "匯出影片失敗：輸出檔 URL 必須是有效的 URL，且必須包含檔案名稱"
 
 #: src/ExportManager.cpp:705
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "無法儲存影像。無法上傳檔案到遠端。"
+msgstr "無法儲存錄製。無法移動檔案到位置：%1"
 
 #: src/ExportManager.cpp:733
 #, kde-format
@@ -398,17 +400,14 @@ msgid ""
 msgstr "擷取視窗時包括視窗標題列以及邊框。"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "包含視窗標題列與邊框"
+msgstr "包含視窗陰影"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "擷取視窗時包括視窗標題列以及邊框。"
+msgstr "擷取視窗時包括視窗陰影。"
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -525,18 +524,16 @@ msgid "Image Zoom"
 msgstr "圖片縮放"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "螢幕截圖已複製到剪貼簿。"
+msgstr "影片位置已複製到剪貼簿。"
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "螢幕截圖已複製到剪貼簿。"
+msgstr "螢幕截圖位置已複製到剪貼簿。"
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -554,10 +551,9 @@ msgid "Copy"
 msgstr "複製"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "複製路徑到剪貼簿"
+msgstr "複製位置"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -604,7 +600,7 @@ msgstr "顯示視窗標題列、最小化/最大化/關閉按鈕以及視窗邊�
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "顯示視窗陰影"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -650,10 +646,9 @@ msgid "Play"
 msgstr "播放"
 
 #: src/Gui/RecordOptions.qml:33
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Recording Settings"
-msgstr "錄製"
+msgstr "錄製設定"
 
 #: src/Gui/RecordOptions.qml:42
 #, kde-format
@@ -672,14 +667,11 @@ msgid ""
 msgstr "螢幕截圖已複製至剪貼簿，且已存為 <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
-msgstr "此螢幕截圖已存為 <a href=\"%1\">%2</a>，其網址已複製到剪貼簿"
+msgstr "影片已存為 <a href=\"%1\">%2</a>，其位置已複製到剪貼簿"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -897,24 +889,18 @@ msgid "Preview:"
 msgstr "預覽："
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "您能在檔案名稱使用以下的佔位符，這些佔位符將在檔案儲存時替換成實際文字："
-"<blockquote>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -925,17 +911,16 @@ msgstr "若要儲存到子資料夾"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
-msgstr ""
+msgstr "顯示更少"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "顯示更多"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "一般"
@@ -944,17 +929,16 @@ msgstr "一般"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "影像儲存"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "影片儲存"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "快捷鍵"
@@ -1041,10 +1025,9 @@ msgstr "是否將滑鼠游標加入螢幕截圖"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "是否將滑鼠游標加入螢幕截圖"
+msgstr "影片中是否要包含滑鼠游標"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1054,10 +1037,9 @@ msgstr "是否要將視窗裝飾加入螢幕截圖"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "是否要將視窗裝飾加入螢幕截圖"
+msgstr "螢幕截圖是否要包含視窗裝飾"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1092,11 +1074,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "有損檔案格式的壓縮品質"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "螢幕擷取"
+msgstr "螢幕截圖"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1106,17 +1087,15 @@ msgstr "預設儲存圖片格式"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "儲存預設檔名"
+msgstr "儲存螢幕截圖時用的檔案名稱樣本"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "螢幕擷取"
+msgstr "螢幕截圖"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1136,31 +1115,27 @@ msgstr "要為「儲存為」動作使用的上個路徑"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "預設儲存圖片格式"
+msgstr "預設影片格式"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "儲存預設檔名"
+msgstr "儲存螢幕錄製時用的檔案名稱樣本"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "螢幕擷取"
+msgstr "螢幕錄製"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "螢幕擷取"
+msgstr "螢幕錄製"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1318,60 +1293,49 @@ msgstr "數字註記工具是否有陰影"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "儲存位置："
+msgstr "儲存位置(&L)："
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "已分享圖片"
+msgstr "已分享影片"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
-msgstr "已分享圖片"
+msgstr "已分享影像"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "分享的圖片連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
+msgstr "分享的影片連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "分享的圖片連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
+msgstr "分享的影像連結 (<a href=\"%1\">%1</a>) 已經複製到剪貼簿。"
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "分享圖片時發生問題：%1"
+msgstr "分享影片時發生問題：%1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr "分享圖片時發生問題：%1"
+msgstr "分享影像時發生問題：%1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
@@ -1545,89 +1509,79 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "錄製失敗：檔案 URL 不是本機檔案"
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "錄製失敗：無法建立資料夾 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:240
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "錄製失敗：暫存檔 URL 不是本機檔案 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "錄製失敗：輸出檔案 URL 不是本機檔案 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:285
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "新的螢幕錄影"
+msgstr "螢幕錄製已取消"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "視窗錄製已取消"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "選取視窗失敗"
+msgstr "選取螢幕失敗：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "選取視窗失敗"
+msgstr "選取視窗失敗：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "選取螢幕失敗：沒有任何螢幕包含目前滑鼠游標位置"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "選取視窗失敗"
+msgstr "選取視窗失敗：找不到視窗"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "矩形區域"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "全螢幕"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "視窗標題"
+msgstr "視窗"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1660,22 +1614,19 @@ msgid "Capture Window Under Cursor"
 msgstr "擷取游標下的視窗"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "已選螢幕"
+msgstr "錄製螢幕"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "錄製"
+msgstr "錄製視窗"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "矩形區域"
+msgstr "錄製矩形區域"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1689,12 +1640,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle 錄製中：%1\n"
+"點擊以結束錄製"
 
 #: src/SpectacleCore.cpp:605
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 不是 --record 的有效模式"
 
 #: src/SpectacleCore.cpp:807
 #, kde-format
@@ -1725,28 +1678,22 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "螢幕截圖已儲存至您的剪貼簿。"
 
 #: src/SpectacleCore.cpp:875
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
-msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
+msgstr "螢幕錄製已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
 #: src/SpectacleCore.cpp:877
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
+msgstr "螢幕錄製已儲存為您的影片資料夾中的「%1」。"
 
 #: src/SpectacleCore.cpp:879
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
+msgstr "螢幕錄製已儲存為「%2」中的「%1」。"
 
 #: src/SpectacleCore.cpp:890
 #, kde-format
@@ -1763,13 +1710,13 @@ msgstr "註記"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
