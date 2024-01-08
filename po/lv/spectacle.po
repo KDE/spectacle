@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the spectacle package.
 #
 # Toms Trasuns <toms.trasuns@posteo.net>, 2023.
-# Māris Nartišs <maris.kde@gmail.com>, 2023.
+# Māris Nartišs <maris.kde@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 01:54+0000\n"
-"PO-Revision-Date: 2023-10-15 22:10+0300\n"
+"PO-Revision-Date: 2024-01-07 16:59+0200\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
-"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language-Team: \n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -173,10 +173,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Darbojoties fona režīmā, ekrānattēlā neiekļaut dekorācijas"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Darbojoties fona režīmā, ekrānattēlā neiekļaut dekorācijas"
+msgstr "Darbojoties fona režīmā, ekrānattēlā neiekļaut logu ēnas"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -249,12 +248,10 @@ msgid ""
 msgstr ""
 
 #: src/ExportManager.cpp:705
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
-"Neizdevās saglabāt attēlu. Neizdevās datnes augšupielāde uz attālinātu vietu."
+msgstr "Neizdevās saglabāt ierakstu. Nevar pārvietot datni uz: %1"
 
 #: src/ExportManager.cpp:733
 #, kde-format
@@ -413,17 +410,14 @@ msgid ""
 msgstr "Loga ekrānattēlā parādīt tā virsraksta joslu un apmales"
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Iekļaut logu virsrakstus un apmales"
+msgstr "Iekļaut logu ēnas"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Loga ekrānattēlā parādīt tā virsraksta joslu un apmales"
+msgstr "Rādīt logu ēnas, kad tiek uzņemts ekrānattēls."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -542,18 +536,16 @@ msgid "Image Zoom"
 msgstr "Attēla tālummaiņa"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Ekrānattēls ir nokopēts starpliktuvē."
+msgstr "Video atrašanās vieta ir nokopēta."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Ekrānattēls ir nokopēts starpliktuvē."
+msgstr "Ekrānattēla atrašanās vieta ir nokopēta."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -571,10 +563,9 @@ msgid "Copy"
 msgstr "Kopēt"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Copy Location"
-msgstr "Saglabāšanas vieta:"
+msgstr "Kopēt atrašanās vietu"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -623,7 +614,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Rādīt loga ēnu"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -691,15 +682,12 @@ msgstr ""
 "Ekrānattēls ir nokopēts starpliktuvē un saglabāts kā <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Ekrānattēls ir saglabāts kā <a href=\"%1\">%2</a> un tā atrašanās vieta ir "
+"Video ir saglabāts kā <a href=\"%1\">%2</a> un tā atrašanās vieta ir "
 "nokopēta starpliktuvē"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
@@ -920,24 +908,19 @@ msgid "Preview:"
 msgstr "Priekšskats:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "Datņu nosaukumam varat izmantot šos vietturus, kas datnes saglabāšanas brīdī "
-"tiks aizvietoti ar attiecīgu tekstu:<blockquote>"
+"tiks aizvietoti ar attiecīgu tekstu:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -948,36 +931,34 @@ msgstr "Lai saglabātu apakšmapē"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
-msgstr ""
+msgstr "Rādīt mazāk"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Rādīt vairāk"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr "Vispārīgi"
+msgstr "Pamata"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:35
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Attēlu saglabāšana"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Video saglabāšana"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Saīsnes"
@@ -1068,10 +1049,9 @@ msgstr "Vai ekrānattēlā ir jāparāda peles kursors"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Vai ekrānattēlā ir jāparāda peles kursors"
+msgstr "Vai video ir jāparāda peles kursors"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1081,10 +1061,9 @@ msgstr "Vai loga dekorācijas (virsraksts, apmales) ir jāiekļauj ekrānattēl�
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Vai loga dekorācijas (virsraksts, apmales) ir jāiekļauj ekrānattēlā"
+msgstr "Vai loga ēnas ir jāiekļauj ekrānattēlā"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1119,11 +1098,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Kompresijas kvalitāte kompresijai ar zudumiem"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Ekrānattēls"
+msgstr "Ekrānattēli"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1133,14 +1111,12 @@ msgstr "Noklusējuma attēla formāts"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Noklusējuma datnes nosaukums saglabājot"
+msgstr "Datnes nosaukuma šablons, ko izmantos saglabājot ekrānattēlus"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Ekrānattēls"
@@ -1163,31 +1139,27 @@ msgstr "Pēdējais ceļš, izvēloties „saglabāt kā“"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Noklusējuma attēla formāts"
+msgstr "Noklusējuma video formāts"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Noklusējuma datnes nosaukums saglabājot"
+msgstr "Datnes nosaukuma šablons, ko izmantos saglabājot video"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Ekrānattēls"
+msgstr "Ekrānieraksti"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Ekrānattēls"
+msgstr "Ekrānieraksts"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1345,42 +1317,33 @@ msgstr "Ēna skaitļu anotācijas rīkam"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Saglabāšanas vieta:"
+msgstr "Sag&labāšanas vieta:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Attēls ir kopīgots"
+msgstr "Video ir kopīgots"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Attēls ir kopīgots"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Attēla kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
+"Video kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1389,15 +1352,13 @@ msgstr ""
 "Attēla kopīgošanas saite (<a href=\"%1\">%1</a>) ir nokopēta starpliktuvē."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Kopīgojot attālu, radās problēma: %1"
+msgstr "Kopīgojot video, radās problēma: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Kopīgojot attālu, radās problēma: %1"
@@ -1601,64 +1562,57 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Ekrāna ierakstīšana ir atcelta"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Loga ierakstīšana ir atcelta"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Neizdevās atlasīt logu"
+msgstr "Neizdevās atlasīt ekrānu: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Neizdevās atlasīt logu"
+msgstr "Neizdevās atlasīt logu: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Neizdevās atlasīt ekrānu: Peles kursora atrašanās vieta bija ārpus visiem "
+"ekrāniem"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Neizdevās atlasīt logu"
+msgstr "Neizdevās atlasīt logu: Logs nav atrasts"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
-msgstr "Četrstūra reģions"
+msgstr "Taisnstūra reģions"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Viss ekrāns"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Loga virsraksts"
+msgstr "Logs"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1691,22 +1645,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Uzņemt logu zem kursora"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Izvēlētais monitors"
+msgstr "Ierakstīt ekrānu"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Video"
+msgstr "Ierakstīt logu"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Četrstūra reģions"
+msgstr "Ierakstīt taisnstūra reģionu"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1720,6 +1671,8 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle ieraksta: %1\n"
+"Klikšķini, lai pārtrauktu"
 
 #: src/SpectacleCore.cpp:605
 #, kde-format
@@ -1798,13 +1751,13 @@ msgstr "Anotēt"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
