@@ -71,7 +71,7 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &link) {
         if (link == u"showmore"_s) {
             m_ui->captureInstructionLabel->setText(captureInstructions(true));
-        } else if (link == u"showless"_s) {
+        } else if (link == u"showfewer"_s) {
             m_ui->captureInstructionLabel->setText(captureInstructions(false));
         } else {
             m_ui->kcfg_imageFilenameTemplate->insert(link);

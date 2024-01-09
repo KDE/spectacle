@@ -79,7 +79,7 @@ inline QString captureInstructions(bool showExtras)
     tableBody += tableRow(u"/"_s, u"/"_s, i18n("To save to a sub-folder"));
     if (hasAnyExtras) {
         if (showExtras) {
-            tableBody += buttonRow(u"showless"_s, i18nc("show fewer filename placeholder templates", "Show Less"));
+            tableBody += buttonRow(u"showfewer"_s, i18nc("show fewer filename placeholder templates", "Show Fewer"));
         } else {
             tableBody += buttonRow(u"showmore"_s, i18nc("show more filename placeholder templates", "Show More"));
         }
