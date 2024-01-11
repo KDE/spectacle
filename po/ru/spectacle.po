@@ -17,21 +17,21 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018.
 # Andrew <kissmeoutbeforeugo@gmail.com>, 2016.
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 01:54+0000\n"
-"PO-Revision-Date: 2023-12-05 21:56+0300\n"
+"PO-Revision-Date: 2024-01-10 21:39+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -121,6 +121,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Выполнить запись экрана в заданном режиме. Возможные режимы:\n"
+"- r, область;\n"
+"-s, экран;\n"
+"-w, окно."
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -972,13 +976,13 @@ msgstr "Сохранение во вложенную папку"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
-msgstr ""
+msgstr "Показать меньше"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Показать больше"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1718,12 +1722,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Приложение Spectacle выполняет запись %1\n"
+"Нажмите чтобы остановить запись."
 
 #: src/SpectacleCore.cpp:605
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 не является допустимым режимом при указании ключа -- record"
 
 #: src/SpectacleCore.cpp:807
 #, kde-format
