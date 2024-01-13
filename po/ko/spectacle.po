@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 01:54+0000\n"
+"POT-Creation-Date: 2024-01-13 00:37+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -257,47 +257,71 @@ msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다
 msgid "Stroke:"
 msgstr "획 그리기:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:89
+#. i18n uses so it doesn't matter that much
+#. unless someone decides to set the locale for a specific
+#. part of spectacle in the future.
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#, kde-format
+msgctxt "px: pixels"
+msgid "%1px"
+msgid_plural "%1px"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "획 너비"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:105
+#: src/Gui/AnnotationOptionsToolBarContents.qml:112
 #, kde-format
 msgid "Stroke Color"
 msgstr "획 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#: src/Gui/AnnotationOptionsToolBarContents.qml:152
 #, kde-format
 msgid "Fill:"
 msgstr "채우기:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:157
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill Color"
 msgstr "채우기 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:200
+#: src/Gui/AnnotationOptionsToolBarContents.qml:207
 #, kde-format
 msgid "Font:"
 msgstr "글꼴:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:229
+#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#, kde-format
+msgctxt "%2 font family, %3 font style name, %1 font point size"
+msgid "%2 %3 %1pt"
+msgid_plural "%2 %3 %1pts"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#, kde-format
+msgctxt "%2 font family %1 font point size"
+msgid "%2 %1pt"
+msgid_plural "%2 %1pts"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
 msgid "Font Color"
 msgstr "글꼴 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:272
+#: src/Gui/AnnotationOptionsToolBarContents.qml:279
 #, kde-format
 msgid "Number:"
 msgstr "번호:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:292
+#: src/Gui/AnnotationOptionsToolBarContents.qml:299
 #, kde-format
 msgid "Number for number annotations"
 msgstr "번호 표기에 사용할 번호"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:319
+#: src/Gui/AnnotationOptionsToolBarContents.qml:326
 #, kde-format
 msgid "Shadow"
 msgstr "그림자"
@@ -465,17 +489,22 @@ msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "지연 없음"
 
-#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:24
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " 초"
+msgid "%2 second"
+msgid_plural "%2 seconds"
+msgstr[0] "%1초"
 
-#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:26
+#, fuzzy, kde-format
+#| msgctxt "Decimal number of seconds"
+#| msgid " seconds"
 msgctxt "Decimal number of seconds"
-msgid " seconds"
+msgid "%2 seconds"
 msgstr " 초"
 
 #: src/Gui/DialogPage.qml:96
@@ -928,7 +957,7 @@ msgstr "하위 폴더에 저장할 때"
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
-msgid "Show Less"
+msgid "Show Fewer"
 msgstr ""
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
@@ -1481,6 +1510,24 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
+#: src/Gui/SizeLabel.qml:13
+#, kde-format
+msgid "%1×%2"
+msgstr "%1×%2"
+
+#: src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " 초"
+
+#: src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " 초"
+
 #: src/Gui/SpectacleWindow.cpp:190
 #, kde-format
 msgctxt "@title:window"
@@ -1951,9 +1998,6 @@ msgstr "MP4/H.264"
 #~ msgstr ""
 #~ "클릭한 후 드래그로 선택 사각형을 그리거나,\n"
 #~ "Esc 키를 눌러서 끝내십시오"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
 
 #~ msgctxt "The entire screen area was captured, heading"
 #~ msgid "Full Screen Captured"

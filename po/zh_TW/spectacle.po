@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 01:54+0000\n"
+"POT-Creation-Date: 2024-01-13 00:37+0000\n"
 "PO-Revision-Date: 2024-01-05 05:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -255,47 +255,71 @@ msgstr "列印失敗。列印機初始化失敗。"
 msgid "Stroke:"
 msgstr "筆畫："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:89
+#. i18n uses so it doesn't matter that much
+#. unless someone decides to set the locale for a specific
+#. part of spectacle in the future.
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#, kde-format
+msgctxt "px: pixels"
+msgid "%1px"
+msgid_plural "%1px"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "筆畫寬度"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:105
+#: src/Gui/AnnotationOptionsToolBarContents.qml:112
 #, kde-format
 msgid "Stroke Color"
 msgstr "筆畫顏色"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#: src/Gui/AnnotationOptionsToolBarContents.qml:152
 #, kde-format
 msgid "Fill:"
 msgstr "填充："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:157
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill Color"
 msgstr "填充顏色"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:200
+#: src/Gui/AnnotationOptionsToolBarContents.qml:207
 #, kde-format
 msgid "Font:"
 msgstr "文字："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:229
+#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#, kde-format
+msgctxt "%2 font family, %3 font style name, %1 font point size"
+msgid "%2 %3 %1pt"
+msgid_plural "%2 %3 %1pts"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#, kde-format
+msgctxt "%2 font family %1 font point size"
+msgid "%2 %1pt"
+msgid_plural "%2 %1pts"
+msgstr[0] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
 msgid "Font Color"
 msgstr "文字顏色"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:272
+#: src/Gui/AnnotationOptionsToolBarContents.qml:279
 #, kde-format
 msgid "Number:"
 msgstr "編號："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:292
+#: src/Gui/AnnotationOptionsToolBarContents.qml:299
 #, kde-format
 msgid "Number for number annotations"
 msgstr "數字註記的數字"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:319
+#: src/Gui/AnnotationOptionsToolBarContents.qml:326
 #, kde-format
 msgid "Shadow"
 msgstr "陰影"
@@ -460,17 +484,22 @@ msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "無延遲"
 
-#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:24
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " 秒"
+msgid "%2 second"
+msgid_plural "%2 seconds"
+msgstr[0] "%1 秒"
 
-#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:26
+#, fuzzy, kde-format
+#| msgctxt "Decimal number of seconds"
+#| msgid " seconds"
 msgctxt "Decimal number of seconds"
-msgid " seconds"
+msgid "%2 seconds"
 msgstr " 秒"
 
 #: src/Gui/DialogPage.qml:96
@@ -908,9 +937,11 @@ msgid "To save to a sub-folder"
 msgstr "若要儲存到子資料夾"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "show fewer filename placeholder templates"
+#| msgid "Show Less"
 msgctxt "show fewer filename placeholder templates"
-msgid "Show Less"
+msgid "Show Fewer"
 msgstr "顯示更少"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
@@ -1445,6 +1476,24 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Esc 鍵"
 
+#: src/Gui/SizeLabel.qml:13
+#, kde-format
+msgid "%1×%2"
+msgstr "%1×%2"
+
+#: src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " 秒"
+
+#: src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " 秒"
+
 #: src/Gui/SpectacleWindow.cpp:190
 #, kde-format
 msgctxt "@title:window"
@@ -1878,9 +1927,6 @@ msgstr "MP4/H.264"
 #~ "Click and drag to draw a selection rectangle,\n"
 #~ "or press Esc to quit"
 #~ msgstr "長按拖曳來繪製選取區塊的矩形，或按 Esc 退出"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
 
 #~ msgctxt "The entire screen area was captured, heading"
 #~ msgid "Full Screen Captured"

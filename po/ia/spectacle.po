@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 01:54+0000\n"
+"POT-Creation-Date: 2024-01-13 00:37+0000\n"
 "PO-Revision-Date: 2024-01-03 12:30+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -286,47 +286,74 @@ msgstr "Imprimer falleva. Le imprimitor falleva a initialisar."
 msgid "Stroke:"
 msgstr "Tracto:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:89
+#. i18n uses so it doesn't matter that much
+#. unless someone decides to set the locale for a specific
+#. part of spectacle in the future.
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#, kde-format
+msgctxt "px: pixels"
+msgid "%1px"
+msgid_plural "%1px"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "Largessa de Colpo (Stroke)"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:105
+#: src/Gui/AnnotationOptionsToolBarContents.qml:112
 #, kde-format
 msgid "Stroke Color"
 msgstr "Color de Colpo (Stroke)"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:145
+#: src/Gui/AnnotationOptionsToolBarContents.qml:152
 #, kde-format
 msgid "Fill:"
 msgstr "Reimple:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:157
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill Color"
 msgstr "Reimple Color"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:200
+#: src/Gui/AnnotationOptionsToolBarContents.qml:207
 #, kde-format
 msgid "Font:"
 msgstr "Font:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:229
+#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#, kde-format
+msgctxt "%2 font family, %3 font style name, %1 font point size"
+msgid "%2 %3 %1pt"
+msgid_plural "%2 %3 %1pts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#, kde-format
+msgctxt "%2 font family %1 font point size"
+msgid "%2 %1pt"
+msgid_plural "%2 %1pts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
 msgid "Font Color"
 msgstr "Color de Font"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:272
+#: src/Gui/AnnotationOptionsToolBarContents.qml:279
 #, kde-format
 msgid "Number:"
 msgstr "Numero:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:292
+#: src/Gui/AnnotationOptionsToolBarContents.qml:299
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Numero per annotationes de numero"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:319
+#: src/Gui/AnnotationOptionsToolBarContents.qml:326
 #, kde-format
 msgid "Shadow"
 msgstr "Umbra"
@@ -498,18 +525,23 @@ msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Necun retardo"
 
-#: src/Gui/DelaySpinBox.qml:24 src/Gui/SmartSpinBox.cpp:30
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:24
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Integer number of seconds"
-msgid " second"
-msgid_plural " seconds"
-msgstr[0] " secunda"
-msgstr[1] " secundas"
+msgid "%2 second"
+msgid_plural "%2 seconds"
+msgstr[0] "%1 secunda"
+msgstr[1] "%1 secundas"
 
-#: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
-#, kde-format
+#: src/Gui/DelaySpinBox.qml:26
+#, fuzzy, kde-format
+#| msgctxt "Decimal number of seconds"
+#| msgid " seconds"
 msgctxt "Decimal number of seconds"
-msgid " seconds"
+msgid "%2 seconds"
 msgstr " secundas"
 
 #: src/Gui/DialogPage.qml:96
@@ -958,9 +990,11 @@ msgid "To save to a sub-folder"
 msgstr "Salveguardar a un sub-dossier"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "show fewer filename placeholder templates"
+#| msgid "Show Less"
 msgctxt "show fewer filename placeholder templates"
-msgid "Show Less"
+msgid "Show Fewer"
 msgstr "Monstra minus"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
@@ -1509,6 +1543,25 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
+#: src/Gui/SizeLabel.qml:13
+#, kde-format
+msgid "%1×%2"
+msgstr "%1×%2"
+
+#: src/Gui/SmartSpinBox.cpp:30
+#, kde-format
+msgctxt "Integer number of seconds"
+msgid " second"
+msgid_plural " seconds"
+msgstr[0] " secunda"
+msgstr[1] " secundas"
+
+#: src/Gui/SmartSpinBox.cpp:32
+#, kde-format
+msgctxt "Decimal number of seconds"
+msgid " seconds"
+msgstr " secundas"
+
 #: src/Gui/SpectacleWindow.cpp:190
 #, kde-format
 msgctxt "@title:window"
@@ -1961,9 +2014,6 @@ msgstr "MP4/H.264"
 #~ msgstr ""
 #~ "Clicca e trahe per designar un rectangulo de selection,\n"
 #~ "o pressa Esc per abandonar"
-
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
 
 #~ msgctxt "The entire screen area was captured, heading"
 #~ msgid "Full Screen Captured"
