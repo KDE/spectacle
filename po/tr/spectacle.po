@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 # Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:37+0000\n"
-"PO-Revision-Date: 2023-12-31 11:15+0300\n"
+"PO-Revision-Date: 2024-01-13 22:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -274,8 +274,8 @@ msgstr "Vuruş:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 pks"
+msgstr[1] "%1 pks"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -307,16 +307,16 @@ msgstr "Yazıtipi:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1 pt"
+msgstr[1] "%2 %3 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1 pt"
+msgstr[1] "%2 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -504,23 +504,18 @@ msgid "No Delay"
 msgstr "Gecikme yok"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 saniye"
-msgstr[1] "%1 saniye"
+msgstr[0] "%2 saniye"
+msgstr[1] "%2 saniye"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " saniye"
+msgstr "%2 saniye"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -966,9 +961,7 @@ msgid "To save to a sub-folder"
 msgstr "Bir alt klasöre kaydet"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Daha Az Göster"
@@ -1513,7 +1506,7 @@ msgstr "Kaçış"
 #: src/Gui/SizeLabel.qml:13
 #, kde-format
 msgid "%1×%2"
-msgstr ""
+msgstr "%1 × %2"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format

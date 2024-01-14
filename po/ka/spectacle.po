@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:37+0000\n"
-"PO-Revision-Date: 2023-12-31 06:23+0100\n"
+"PO-Revision-Date: 2024-01-13 05:08+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -278,8 +278,8 @@ msgstr "გამოძრავება:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -311,16 +311,16 @@ msgstr "ფონტი:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1წრტ"
+msgstr[1] "%2 %3 %1წრტ"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1წრტ"
+msgstr[1] "%2 %1წრტ"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -507,23 +507,18 @@ msgid "No Delay"
 msgstr "დაყოვნების გარეშე"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 წამი"
-msgstr[1] "%1 წამი"
+msgstr[0] "%2 წამი"
+msgstr[1] "%2 წამი"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " წამი"
+msgstr "%2 წამი"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -969,9 +964,7 @@ msgid "To save to a sub-folder"
 msgstr "ქვესაქაღალდეში შენახვა"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "ნაკლების ჩვენება"

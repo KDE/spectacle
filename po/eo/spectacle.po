@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:37+0000\n"
-"PO-Revision-Date: 2023-12-31 09:27+0100\n"
+"PO-Revision-Date: 2024-01-13 09:04+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -277,8 +277,8 @@ msgstr "Bato:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -310,16 +310,16 @@ msgstr "Tiparo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -506,23 +506,18 @@ msgid "No Delay"
 msgstr "Neniu Prokrasto"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekundo"
-msgstr[1] "%1 sekundoj"
+msgstr[0] "%2 sekundo"
+msgstr[1] "%2 sekundoj"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " sekundoj"
+msgstr "%2 sekundoj"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -969,24 +964,22 @@ msgid "To save to a sub-folder"
 msgstr "Por konservi en subdosierujo"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr "Montri Malpli"
+msgstr "Montri Malpliajn"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr "Montri Pli"
+msgstr "Montri Pliajn"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr "Ĝeneralaj"
+msgstr "Ĝenerala"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:35
 #, kde-format
@@ -1518,7 +1511,7 @@ msgstr "Eskapi"
 #: src/Gui/SizeLabel.qml:13
 #, kde-format
 msgid "%1×%2"
-msgstr ""
+msgstr "%1×%2"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format

@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:37+0000\n"
-"PO-Revision-Date: 2023-12-31 09:29+0200\n"
+"PO-Revision-Date: 2024-01-13 09:40+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -285,10 +285,10 @@ msgstr "Штрих:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%1пк"
+msgstr[1] "%1пк"
+msgstr[2] "%1пк"
+msgstr[3] "%1пк"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -320,20 +320,20 @@ msgstr "Шрифт:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%2 %3 %1пт"
+msgstr[1] "%2 %3 %1пт"
+msgstr[2] "%2 %3 %1пт"
+msgstr[3] "%2 %3 %1пт"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%2 %1пт"
+msgstr[1] "%2 %1пт"
+msgstr[2] "%2 %1пт"
+msgstr[3] "%2 %1пт"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -520,25 +520,20 @@ msgid "No Delay"
 msgstr "Без затримки"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 секунда"
-msgstr[1] "%1 секунди"
-msgstr[2] "%1 секунд"
-msgstr[3] "%1 секунда"
+msgstr[0] "%2 секунда"
+msgstr[1] "%2 секунди"
+msgstr[2] "%2 секунд"
+msgstr[3] "%2 секунда"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " секунд"
+msgstr "%2 секунд"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -986,9 +981,7 @@ msgid "To save to a sub-folder"
 msgstr "Для збереження до підтеки"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Стисліше"
