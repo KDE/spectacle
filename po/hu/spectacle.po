@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 01:54+0000\n"
-"PO-Revision-Date: 2024-01-08 11:04+0100\n"
+"PO-Revision-Date: 2024-01-15 14:22+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -24,10 +24,9 @@ msgid "Rectangular Region"
 msgstr "Téglalap alakú terület"
 
 #: src/CaptureModeModel.cpp:104
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgid "All Screens"
-msgstr "Teljes képernyő"
+msgstr "Összes képernyő"
 
 #: src/CaptureModeModel.cpp:104
 #, kde-format
@@ -37,7 +36,7 @@ msgstr "Teljes képernyő"
 #: src/CaptureModeModel.cpp:111
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Összes képernyő (azonos méretűre méretezve)"
 
 #: src/CaptureModeModel.cpp:117
 #, kde-format
@@ -96,6 +95,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"A képernyő rögzítése a megadott módban. Módok:\n"
+"-r, terület\n"
+"-s, képernyő\n"
+"-w, ablak"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -169,10 +172,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Dekorációk lehagyása a képernyőképről"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Dekorációk lehagyása a képernyőképről"
+msgstr "Árnyékok lehagyása a képernyőképről"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -275,27 +277,27 @@ msgstr ""
 #: src/Gui/AnnotationOptionsToolBarContents.qml:145
 #, kde-format
 msgid "Fill:"
-msgstr ""
+msgstr "Kitöltés:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:157
 #, kde-format
 msgid "Fill Color"
-msgstr ""
+msgstr "Kitöltőszín"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:200
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Betűtípus:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:229
 #, kde-format
 msgid "Font Color"
-msgstr ""
+msgstr "Betűszín:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:272
 #, kde-format
 msgid "Number:"
-msgstr ""
+msgstr "Szám:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:292
 #, kde-format
@@ -305,7 +307,7 @@ msgstr ""
 #: src/Gui/AnnotationOptionsToolBarContents.qml:319
 #, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "Árnyék"
 
 #: src/Gui/AnnotationsToolBarContents.qml:64
 #, kde-format
@@ -1649,28 +1651,22 @@ msgid "Failed to select window: No window found"
 msgstr ""
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Téglalap alakú terület"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Teljes képernyő"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Ablakcím"
+msgstr "Ablak"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1786,18 +1782,15 @@ msgstr ""
 "került"
 
 #: src/SpectacleCore.cpp:877
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
+msgstr "Felvétel mentve mint „%1” a Videók mappába."
 
 #: src/SpectacleCore.cpp:879
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
+msgstr "Felvétel mentve mint „%1” ide: „%2”."
 
 #: src/SpectacleCore.cpp:890
 #, kde-format
@@ -1814,13 +1807,13 @@ msgstr "Feliratozás"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
