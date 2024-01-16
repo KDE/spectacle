@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:37+0000\n"
-"PO-Revision-Date: 2024-01-03 12:30+0100\n"
+"POT-Creation-Date: 2024-01-16 00:37+0000\n"
+"PO-Revision-Date: 2024-01-15 18:22+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -195,12 +195,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Aperi e modifica file de captura de schermo existente"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:358
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pote scriber image: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:373
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -210,13 +210,13 @@ msgstr ""
 "Non pote salveguardar captura de schermo proque falleva a crear directorio."
 "<nl/><filename>%1></filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:383
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Error quando scribeva file."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:403
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -226,32 +226,32 @@ msgstr ""
 "Non pote salveguardar captura de schermo proque falleva a crear directorio "
 "remote:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Error quando scribeva file local "
 "temporanee."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:422
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Incapace a salveguardar imagine. Non poteva incargar file a location remote."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:469
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Le nomine de file de "
 "salvaguardar es invalide."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:513
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Non poteva salveguardar captura de schermo vacue."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:629
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -260,7 +260,7 @@ msgstr ""
 "Falleva a exportar video: Le URL de file temporanee debe esser un file local "
 "existente"
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:636
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -269,14 +269,14 @@ msgstr ""
 "Falleva a exportar video: le URL de file de Exito debe esser un valide URL "
 "con un nomine de file"
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:711
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Incapace a salveguardar registration. Non poteva mover file a location %1"
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:739
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Imprimer falleva. Le imprimitor falleva a initialisar."
@@ -294,8 +294,8 @@ msgstr "Tracto:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -327,16 +327,16 @@ msgstr "Font:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -526,23 +526,18 @@ msgid "No Delay"
 msgstr "Necun retardo"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 secunda"
-msgstr[1] "%1 secundas"
+msgstr[0] "%2 secunda"
+msgstr[1] "%2 secundas"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " secundas"
+msgstr "%2 secundas"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -990,9 +985,7 @@ msgid "To save to a sub-folder"
 msgstr "Salveguardar a un sub-dossier"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Monstra minus"
