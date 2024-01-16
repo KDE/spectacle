@@ -21,6 +21,717 @@
 
 using G = Geometry;
 
+AnnotationDocument::AnnotationDocument(QObject *parent)
+    : QObject(parent)
+    , m_tool(new AnnotationTool(this))
+    , m_selectedActionWrapper(new SelectedActionWrapper(this))
+{
+}
+
+AnnotationDocument::~AnnotationDocument()
+{
+    qDeleteAll(m_undoStack);
+    m_undoStack.clear();
+    qDeleteAll(m_redoStack);
+    m_redoStack.clear();
+}
+
+AnnotationTool *AnnotationDocument::tool() const
+{
+    return m_tool;
+}
+
+SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
+{
+    return m_selectedActionWrapper;
+}
+
+int AnnotationDocument::undoStackDepth() const
+{
+    return m_undoStack.count();
+}
+
+int AnnotationDocument::redoStackDepth() const
+{
+    return m_redoStack.count();
+}
+
+QSizeF AnnotationDocument::canvasSize() const
+{
+    return m_canvasRect.size();
+}
+
+QSizeF AnnotationDocument::imageSize() const
+{
+    return m_image.size();
+}
+
+qreal AnnotationDocument::imageDpr() const
+{
+    return m_image.devicePixelRatio();
+}
+
+void AnnotationDocument::setImage(const QImage &image)
+{
+    m_image = image;
+    m_canvasRect = {{0, 0}, QSizeF(image.size()) / image.devicePixelRatio()};
+
+    Q_EMIT canvasSizeChanged();
+    Q_EMIT imageSizeChanged();
+    Q_EMIT imageDprChanged();
+    Q_EMIT repaintNeeded();
+}
+
+void AnnotationDocument::cropCanvas(const QRectF &cropRect)
+{
+    if (cropRect == m_canvasRect) {
+        return;
+    }
+
+    QList<EditAction *> filteredUndo;
+    for (auto *ea : std::as_const(m_undoStack)) {
+        if (ea->visualGeometry().intersects(cropRect)) {
+            ea->translate(-cropRect.topLeft());
+            if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
+                static_cast<ShapeAction *>(ea)->invalidateCache();
+            }
+            filteredUndo << ea;
+        } else {
+            delete ea;
+        }
+    }
+    m_undoStack = filteredUndo;
+
+    QList<EditAction *> filteredRedo;
+    for (auto *ea : std::as_const(m_redoStack)) {
+        if (ea->visualGeometry().intersects(cropRect)) {
+            ea->translate(-cropRect.topLeft());
+            filteredRedo << ea;
+        } else {
+            delete ea;
+        }
+    }
+    m_redoStack = filteredRedo;
+
+    setImage(m_image.copy(G::rectScaled(cropRect, imageDpr()).toAlignedRect()));
+
+    Q_EMIT canvasSizeChanged();
+    Q_EMIT undoStackDepthChanged();
+    Q_EMIT redoStackDepthChanged();
+    Q_EMIT repaintNeeded();
+}
+
+void AnnotationDocument::clearAnnotations()
+{
+    qDeleteAll(m_undoStack);
+    m_undoStack.clear();
+    m_undoStack.squeeze();
+    qDeleteAll(m_redoStack);
+    m_redoStack.clear();
+    m_redoStack.squeeze();
+    m_tool->resetType();
+    m_tool->resetNumber();
+    deselectAction();
+    Q_EMIT undoStackDepthChanged();
+    Q_EMIT redoStackDepthChanged();
+    Q_EMIT repaintNeeded();
+}
+
+void AnnotationDocument::clear()
+{
+    clearAnnotations();
+    setImage({});
+}
+
+void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
+{
+    static QList<EditAction *> stopAtAction = QList<EditAction *>();
+    const qreal scale = painter->transform().m11();
+
+    if (options.testFlag(RenderOption::Images)) {
+        auto imageRect = G::rectScaled(viewPort, imageDpr() / zoomFactor);
+        if (zoomFactor == 1) {
+            painter->drawImage({0, 0}, m_image, imageRect);
+        } else {
+            // More High quality scale down
+            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor,
+                                            Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            painter->drawImage({0, 0}, scaledImg, imageRect);
+        }
+    }
+
+    if (!options.testFlag(RenderOption::Annotations)) {
+        return;
+    }
+    painter->scale(zoomFactor, zoomFactor);
+    painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
+    for (auto *ea : m_undoStack) {
+        if (!stopAtAction.isEmpty() && ea == stopAtAction.last()) {
+            painter->scale(scale, scale);
+            return;
+        }
+
+        if (!isActionVisible(ea, G::rectScaled(viewPort, 1 / zoomFactor))) {
+            continue;
+        }
+
+        bool offsetStroke = scale == 1 && (ea->strokeWidth() % 2 || ea->strokeWidth() == 0);
+        qreal penWidth = ea->strokeWidth();
+        // QPainter will force pen width to 1 if it is set to 0 and strokes are being drawn.
+        // QPainter doesn't draw exactly 1px strokes nicely.
+        if (penWidth == 0 || penWidth == 1) {
+            penWidth = 1.001;
+        }
+        QPen pen(ea->strokeColor(), penWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+        painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
+
+        painter->setPen(pen);
+        painter->setBrush(Qt::NoBrush);
+
+        // Draw the shadow if existent
+        if (ea->hasShadow()) {
+            QImage shadow = shapeShadow(ea, painter->deviceTransform().m11() / zoomFactor);
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+            painter->drawImage(QRectF(ea->visualGeometry().translated(-viewPort.topLeft()) + ea->shadowMargins()).topLeft(), shadow);
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
+        }
+
+        switch (ea->type()) {
+        case FreeHand:
+        case Highlight: {
+            auto *fha = static_cast<FreeHandAction *>(ea);
+            if (ea->type() == Highlight) {
+                painter->setCompositionMode(QPainter::CompositionMode_Darken);
+            }
+            QPointF offsetPos;
+            if (offsetStroke) {
+                offsetPos = {0.5, 0.5};
+            }
+            auto path = fha->path().translated(-viewPort.topLeft() + offsetPos);
+            if (path.isEmpty()) {
+                auto start = path.elementAt(0);
+                // ensure a single point freehand event is visible
+                path.lineTo(start.x + 0.0001, start.y);
+            }
+            painter->drawPath(path);
+            break;
+        }
+        case Line:
+        case Arrow: {
+            auto *la = static_cast<LineAction *>(ea);
+            QPointF offsetPos;
+            if (offsetStroke) {
+                offsetPos = {0.5, 0.5};
+            }
+            const auto &line = la->line().translated(-viewPort.topLeft() + offsetPos);
+
+            painter->drawLine(line);
+            if (la->type() == Arrow) {
+                painter->drawPolyline(la->arrowHeadPolygon(line));
+            }
+            break;
+        }
+        case Rectangle:
+        case Ellipse: {
+            auto *sa = static_cast<ShapeAction *>(ea);
+            painter->setPen(sa->strokeWidth() > 0 ? pen : Qt::NoPen);
+            painter->setBrush(sa->fillColor());
+            QMarginsF offsetMargins;
+            if (offsetStroke && sa->strokeWidth() > 0) {
+                qreal offset = 0.5;
+                offsetMargins = {-offset, -offset, -offset, -offset};
+            }
+            const auto rect = sa->geometry().translated(-viewPort.topLeft()) + offsetMargins;
+            switch (sa->type()) {
+            case Rectangle:
+                painter->drawRect(rect);
+                break;
+            case Ellipse:
+                painter->drawEllipse(rect);
+                break;
+            default:
+                break;
+            }
+            break;
+        }
+        case Blur: {
+            auto *sa = static_cast<ShapeAction *>(ea);
+            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
+            const qreal factor = 2 * imageDpr();
+            const qreal scale = 1.0 / factor;
+            if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
+                stopAtAction << ea;
+                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
+                sa->backingStoreCache().setDevicePixelRatio(painter->deviceTransform().m11());
+                stopAtAction.pop_back();
+                // With more scaling, blur more
+                sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
+            }
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
+            break;
+        }
+        case Pixelate: {
+            auto *sa = static_cast<ShapeAction *>(ea);
+            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
+            const qreal factor = 4;
+            const qreal scale = 1.0 / factor;
+            if (sa->backingStoreCache().isNull()) {
+                stopAtAction << ea;
+                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
+
+                stopAtAction.pop_back();
+            }
+            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
+            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
+            break;
+        }
+        case Text: {
+            auto *ta = static_cast<TextAction *>(ea);
+            painter->setFont(ta->font());
+            painter->setPen(ta->fontColor());
+            QPointF baselineOffset = {0, QFontMetricsF(ta->font()).ascent()};
+            painter->drawText(ta->startPoint() - viewPort.topLeft() + baselineOffset, ta->text());
+            break;
+        }
+        case Number: {
+            auto *na = static_cast<NumberAction *>(ea);
+            const auto rect = na->boundingRect().translated(-viewPort.topLeft());
+            painter->setBrush(na->fillColor());
+            painter->setFont(na->font());
+            painter->setPen(Qt::NoPen);
+            painter->drawEllipse(rect);
+            painter->setPen(na->fontColor());
+            painter->drawText(rect, Qt::AlignCenter, QString::number(na->number()));
+            break;
+        }
+        default:
+            break;
+        }
+    }
+    painter->scale(scale, scale);
+}
+
+QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options) const
+{
+    QImage img((viewPort.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
+    img.setDevicePixelRatio(imageDpr());
+    img.fill(Qt::transparent);
+    QPainter p(&img);
+    p.setRenderHint(QPainter::Antialiasing);
+    // Makes pixelate and blur look better
+    p.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    p.scale(scale, scale);
+    paint(&p, viewPort, 1, options);
+    p.end();
+
+    return img;
+}
+
+QImage AnnotationDocument::renderToImage() const
+{
+    return renderToImage(m_canvasRect);
+}
+
+bool AnnotationDocument::isLastActionInvalid() const
+{
+    return !m_undoStack.isEmpty() && !m_undoStack.last()->isValid();
+}
+
+void AnnotationDocument::permanentlyDeleteLastAction()
+{
+    if (m_undoStack.isEmpty()) {
+        return;
+    }
+    permanentlyDeleteAction(m_undoStack.last());
+}
+
+EditAction *AnnotationDocument::actionAtPoint(const QPointF &point) const
+{
+    for (int i = m_undoStack.count() - 1; i >= 0; --i) {
+        auto action = m_undoStack[i];
+        if (isActionVisible(action) && action->visualGeometry().contains(point)) {
+            return action;
+        }
+    }
+    return nullptr;
+}
+
+QRectF AnnotationDocument::visualGeometryAtPoint(const QPointF &point) const
+{
+    auto action = actionAtPoint(point);
+    if (!action) {
+        return {};
+    }
+    return action->visualGeometry();
+}
+
+void AnnotationDocument::undo()
+{
+    if (m_undoStack.isEmpty()) {
+        return;
+    }
+
+    auto *action = m_undoStack.last();
+    auto *replacedAction = action->replaces();
+    int undoCount = m_undoStack.size();
+    bool isSelected = action == m_selectedActionWrapper->editAction();
+    bool replacesEarlierAction = undoCount > 1 && replacedAction
+                              && replacedAction == m_undoStack[undoCount - 2];
+
+    if (isSelected && !replacesEarlierAction) {
+        deselectAction();
+    }
+
+    if (m_undoStack.isEmpty()) {
+        // deselectAction() could have deleted the last action in the stack
+        return;
+    }
+
+    auto updateRect = action->lastUpdateArea();
+    if (action->replaces()) {
+        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
+    }
+    m_redoStack << action;
+    m_undoStack.pop_back();
+
+    if (action->type() == AnnotationDocument::Number) {
+        auto na = static_cast<NumberAction *>(action);
+        m_tool->setNumber(na->number());
+    }
+
+    if (isSelected && replacesEarlierAction) {
+        m_selectedActionWrapper->setEditAction(replacedAction);
+    }
+
+    for (auto action : std::as_const(m_undoStack)) {
+        if (isActionVisible(action, updateRect)) {
+            updateRect = updateRect.united(action->lastUpdateArea());
+        }
+        if (action->type() == AnnotationDocument::Blur
+            || action->type() == AnnotationDocument::Pixelate) {
+            auto *sa = static_cast<ShapeAction *>(action);
+            sa->invalidateCache();
+        }
+    }
+    Q_EMIT undoStackDepthChanged();
+    Q_EMIT redoStackDepthChanged();
+    emitRepaintNeededUnlessEmpty(updateRect);
+}
+
+void AnnotationDocument::redo()
+{
+    if (m_redoStack.isEmpty()) {
+        return;
+    }
+
+    auto *action = m_redoStack.last();
+    auto *replacedAction = action->replaces();
+    int undoCount = m_undoStack.size();
+    bool isReplacedSelected = replacedAction == m_selectedActionWrapper->editAction();
+    bool replacesEarlierAction = undoCount > 0 && replacedAction
+                              && replacedAction == m_undoStack[undoCount - 1];
+
+    if (isReplacedSelected && !replacesEarlierAction) {
+        deselectAction();
+    }
+
+    auto updateRect = action->lastUpdateArea();
+    if (action->replaces()) {
+        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
+    }
+    m_undoStack << action;
+    m_redoStack.pop_back();
+
+    if (action->type() == AnnotationDocument::Number) {
+        auto na = static_cast<NumberAction *>(action);
+        m_tool->setNumber(na->number() + 1);
+    }
+
+    if (isReplacedSelected && replacesEarlierAction) {
+        m_selectedActionWrapper->setEditAction(action);
+    }
+
+    for (auto action : std::as_const(m_undoStack)) {
+        if (isActionVisible(action, updateRect)) {
+            updateRect = updateRect.united(action->lastUpdateArea());
+        }
+    }
+    Q_EMIT undoStackDepthChanged();
+    Q_EMIT redoStackDepthChanged();
+    emitRepaintNeededUnlessEmpty(updateRect);
+}
+
+void AnnotationDocument::beginAction(const QPointF &point)
+{
+    QRectF updateRect;
+    // if the last action was not valid, discard it (for instance a rectangle with 0 size)
+    if (isLastActionInvalid()) {
+        QSignalBlocker blocker(this);
+        m_selectedActionWrapper->blockSignals(m_tool->type() == Text);
+        auto lastAction = m_undoStack.last();
+        updateRect = lastAction->lastUpdateArea();
+        permanentlyDeleteAction(lastAction);
+        m_selectedActionWrapper->blockSignals(false);
+    }
+
+    EditAction *action = nullptr;
+
+    switch (m_tool->type()) {
+    case FreeHand:
+    case Highlight: {
+        action = new FreeHandAction(m_tool, point);
+        addAction(action);
+        break;
+    }
+    case Line:
+    case Arrow: {
+        action = new LineAction(m_tool, point);
+        addAction(action);
+        break;
+    }
+    case Rectangle:
+    case Ellipse:
+    case Blur:
+    case Pixelate: {
+        action = new ShapeAction(m_tool, point);
+        addAction(action);
+        break;
+    }
+    case Text: {
+        action = new TextAction(m_tool, point);
+        addAction(action);
+        m_selectedActionWrapper->setEditAction(action);
+        break;
+    }
+    case Number: {
+        action = new NumberAction(m_tool, point);
+        addAction(action);
+        m_tool->setNumber(m_tool->number() + 1);
+        break;
+    }
+    default: return;
+    }
+
+    if (action) {
+        if (action->supportsShadow()) {
+            action->setShadow(m_tool->hasShadow());
+        }
+        updateRect = updateRect.united(action->lastUpdateArea());
+    }
+    emitRepaintNeededUnlessEmpty(updateRect);
+}
+
+void AnnotationDocument::continueAction(const QPointF &point, ContinueOptions options)
+{
+    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
+    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
+        return;
+    }
+
+    auto isSelectedAction = m_selectedActionWrapper->editAction() == action;
+    QRectF oldSelectedActionVisualGeometry;
+    bool wasValid = action->isValid();
+    if (isSelectedAction) {
+        oldSelectedActionVisualGeometry = action->visualGeometry();
+    }
+
+    switch (action->type()) {
+    case FreeHand:
+    case Highlight: {
+        auto *fha = static_cast<FreeHandAction *>(action);
+        fha->addPoint(point);
+        emitRepaintNeededUnlessEmpty(fha->lastUpdateArea());
+        break;
+    }
+    case Line:
+    case Arrow: {
+        auto *la = static_cast<LineAction *>(action);
+        QPointF endPoint = point;
+        if (options & ContinueOption::SnapAngle) {
+            QPointF posDiff = point - la->line().p1();
+            if (qAbs(posDiff.x()) / 1.5 > qAbs(posDiff.y())) {
+                // horizontal
+                endPoint.setY(la->line().p1().y());
+            } else if (qAbs(posDiff.x()) < qAbs(posDiff.y()) / 1.5) {
+                // vertical
+                endPoint.setX(la->line().p1().x());
+            } else {
+                // diagonal when 1/3 in between horizontal and vertical
+                auto xSign = std::copysign(1.0, posDiff.x());
+                auto ySign = std::copysign(1.0, posDiff.y());
+                qreal max = qMax(qAbs(posDiff.x()), qAbs(posDiff.y()));
+                endPoint = la->line().p1() + QPointF(max * xSign, max * ySign);
+            }
+        }
+        la->setEndPoint(endPoint);
+        emitRepaintNeededUnlessEmpty(la->lastUpdateArea());
+        break;
+    }
+    case Rectangle:
+    case Ellipse:
+    case Blur:
+    case Pixelate: {
+        auto *sa = static_cast<ShapeAction *>(action);
+        const auto &geometry = sa->geometry();
+        QRectF rect(geometry.topLeft(), point);
+        if (options & ContinueOption::SnapAngle) {
+            auto wSign = std::copysign(1.0, rect.width());
+            auto hSign = std::copysign(1.0, rect.height());
+            qreal max = qMax(qAbs(rect.width()), qAbs(rect.height()));
+            rect.setSize({max * wSign, max * hSign});
+        }
+        if (options & ContinueOption::CenterResize) {
+            rect.moveCenter(geometry.center());
+        }
+        sa->setGeometry(rect);
+        emitRepaintNeededUnlessEmpty(sa->lastUpdateArea());
+        break;
+    }
+    case Text: {
+        auto visualGeometry = action->visualGeometry();
+        visualGeometry.moveTo(point.x(), point.y() - visualGeometry.height() / 2);
+        if (action == m_selectedActionWrapper->editAction()) {
+            m_selectedActionWrapper->setVisualGeometry(visualGeometry);
+        } else {
+            action->setVisualGeometry(visualGeometry);
+        }
+        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
+        break;
+    }
+    case Number: {
+        auto visualGeometry = action->visualGeometry();
+        visualGeometry.moveCenter(point);
+        action->setVisualGeometry(visualGeometry);
+        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
+        break;
+    }
+    default: return;
+    }
+
+    if (action->isValid() && !wasValid) {
+        // Notify undo count change here if is now valid since
+        // beginAction doesn't emit if action was invalid.
+        Q_EMIT undoStackDepthChanged();
+    }
+    if (isSelectedAction && oldSelectedActionVisualGeometry != action->visualGeometry()) {
+        Q_EMIT m_selectedActionWrapper->visualGeometryChanged();
+    }
+}
+
+void AnnotationDocument::finishAction()
+{
+    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
+    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
+        return;
+    }
+
+    if (action->type() == AnnotationDocument::FreeHand) {
+        auto *fa = static_cast<FreeHandAction *>(action);
+        fa->makeSmooth();
+        Q_EMIT repaintNeeded(fa->visualGeometry());
+    }
+}
+
+void AnnotationDocument::selectAction(const QPointF &point)
+{
+    m_selectedActionWrapper->setEditAction(actionAtPoint(point));
+}
+
+void AnnotationDocument::deselectAction()
+{
+    m_selectedActionWrapper->setEditAction(nullptr);
+}
+
+void AnnotationDocument::deleteSelectedAction()
+{
+    auto *action = m_selectedActionWrapper->editAction();
+    if (!action || m_undoStack.contains(action->replacedBy())) {
+        return;
+    }
+
+    deselectAction();
+    if (!action->isValid()) {
+        action = action->replaces();
+        const int i = m_undoStack.lastIndexOf(action);
+        m_undoStack.remove(i);
+    }
+    QRectF updateRect;
+    if (action && action->isValid()) {
+        // add undoable action for representing the deletion of an action
+        m_undoStack << new DeleteAction(action);
+        updateRect = action->lastUpdateArea();
+    } else {
+        const int i = m_undoStack.lastIndexOf(action);
+        m_undoStack.remove(i);
+    }
+
+    Q_EMIT undoStackDepthChanged();
+    clearRedoStack();
+    emitRepaintNeededUnlessEmpty(updateRect);
+}
+
+bool AnnotationDocument::isActionVisible(EditAction *action, const QRectF &rect) const
+{
+    return action && action->isVisible()
+            && (!action->replacedBy() || !m_undoStack.contains(action->replacedBy()))
+            && (rect.isEmpty() || action->visualGeometry().intersects(rect));
+}
+
+void AnnotationDocument::addAction(EditAction *action)
+{
+    if (!action || action->replacedBy() || m_undoStack.contains(action)) {
+        return;
+    }
+    m_undoStack << action;
+
+    Q_EMIT undoStackDepthChanged();
+    clearRedoStack();
+}
+
+void AnnotationDocument::permanentlyDeleteAction(EditAction *action)
+{
+    const int i = m_undoStack.lastIndexOf(action);
+    if (i == -1) {
+        return;
+    }
+
+    const int oldSize = m_undoStack.size();
+    auto *selectedAction = m_selectedActionWrapper->editAction();
+    if (selectedAction == action) {
+        deselectAction();
+    }
+    // If deselecting the action already caused a removal, do nothing
+    if (oldSize != m_undoStack.size()) {
+        return;
+    }
+
+    m_undoStack.remove(i);
+    Q_EMIT undoStackDepthChanged();
+    emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
+    delete action;
+}
+
+void AnnotationDocument::clearRedoStack()
+{
+    int oldRedoCount = m_redoStack.count();
+    qDeleteAll(m_redoStack);
+    m_redoStack.clear();
+    if (oldRedoCount != m_redoStack.count()) {
+        Q_EMIT redoStackDepthChanged();
+    }
+}
+
+void AnnotationDocument::emitRepaintNeededUnlessEmpty(const QRectF &area)
+{
+    if (!area.isEmpty()) {
+        Q_EMIT repaintNeeded(area);
+    }
+}
+
+//////////////////////////
+
 static AnnotationTool::Options optionsForType(AnnotationDocument::EditActionType type)
 {
     switch (type) {
@@ -812,715 +1523,6 @@ QDebug operator<<(QDebug debug, const SelectedActionWrapper *saw)
     return debug;
 }
 
-//////////////////////////
 
-AnnotationDocument::AnnotationDocument(QObject *parent)
-    : QObject(parent)
-    , m_tool(new AnnotationTool(this))
-    , m_selectedActionWrapper(new SelectedActionWrapper(this))
-{
-}
-
-AnnotationDocument::~AnnotationDocument()
-{
-    qDeleteAll(m_undoStack);
-    m_undoStack.clear();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-}
-
-AnnotationTool *AnnotationDocument::tool() const
-{
-    return m_tool;
-}
-
-SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
-{
-    return m_selectedActionWrapper;
-}
-
-int AnnotationDocument::undoStackDepth() const
-{
-    return m_undoStack.count();
-}
-
-int AnnotationDocument::redoStackDepth() const
-{
-    return m_redoStack.count();
-}
-
-QSizeF AnnotationDocument::canvasSize() const
-{
-    return m_canvasRect.size();
-}
-
-QSizeF AnnotationDocument::imageSize() const
-{
-    return m_image.size();
-}
-
-qreal AnnotationDocument::imageDpr() const
-{
-    return m_image.devicePixelRatio();
-}
-
-void AnnotationDocument::setImage(const QImage &image)
-{
-    m_image = image;
-    m_canvasRect = {{0, 0}, QSizeF(image.size()) / image.devicePixelRatio()};
-
-    Q_EMIT canvasSizeChanged();
-    Q_EMIT imageSizeChanged();
-    Q_EMIT imageDprChanged();
-    Q_EMIT repaintNeeded();
-}
-
-void AnnotationDocument::cropCanvas(const QRectF &cropRect)
-{
-    if (cropRect == m_canvasRect) {
-        return;
-    }
-
-    QList<EditAction *> filteredUndo;
-    for (auto *ea : std::as_const(m_undoStack)) {
-        if (ea->visualGeometry().intersects(cropRect)) {
-            ea->translate(-cropRect.topLeft());
-            if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
-                static_cast<ShapeAction *>(ea)->invalidateCache();
-            }
-            filteredUndo << ea;
-        } else {
-            delete ea;
-        }
-    }
-    m_undoStack = filteredUndo;
-
-    QList<EditAction *> filteredRedo;
-    for (auto *ea : std::as_const(m_redoStack)) {
-        if (ea->visualGeometry().intersects(cropRect)) {
-            ea->translate(-cropRect.topLeft());
-            filteredRedo << ea;
-        } else {
-            delete ea;
-        }
-    }
-    m_redoStack = filteredRedo;
-
-    setImage(m_image.copy(G::rectScaled(cropRect, imageDpr()).toAlignedRect()));
-
-    Q_EMIT canvasSizeChanged();
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
-    Q_EMIT repaintNeeded();
-}
-
-void AnnotationDocument::clearAnnotations()
-{
-    qDeleteAll(m_undoStack);
-    m_undoStack.clear();
-    m_undoStack.squeeze();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-    m_redoStack.squeeze();
-    m_tool->resetType();
-    m_tool->resetNumber();
-    deselectAction();
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
-    Q_EMIT repaintNeeded();
-}
-
-void AnnotationDocument::clear()
-{
-    clearAnnotations();
-    setImage({});
-}
-
-void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
-{
-    static QList<EditAction *> stopAtAction = QList<EditAction *>();
-    const qreal scale = painter->transform().m11();
-
-    if (options.testFlag(RenderOption::Images)) {
-        auto imageRect = G::rectScaled(viewPort, imageDpr() / zoomFactor);
-        if (zoomFactor == 1) {
-            painter->drawImage({0, 0}, m_image, imageRect);
-        } else {
-            // More High quality scale down
-            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor,
-                                            Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            painter->drawImage({0, 0}, scaledImg, imageRect);
-        }
-    }
-
-    if (!options.testFlag(RenderOption::Annotations)) {
-        return;
-    }
-    painter->scale(zoomFactor, zoomFactor);
-    painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
-    for (auto *ea : m_undoStack) {
-        if (!stopAtAction.isEmpty() && ea == stopAtAction.last()) {
-            painter->scale(scale, scale);
-            return;
-        }
-
-        if (!isActionVisible(ea, G::rectScaled(viewPort, 1 / zoomFactor))) {
-            continue;
-        }
-
-        bool offsetStroke = scale == 1 && (ea->strokeWidth() % 2 || ea->strokeWidth() == 0);
-        qreal penWidth = ea->strokeWidth();
-        // QPainter will force pen width to 1 if it is set to 0 and strokes are being drawn.
-        // QPainter doesn't draw exactly 1px strokes nicely.
-        if (penWidth == 0 || penWidth == 1) {
-            penWidth = 1.001;
-        }
-        QPen pen(ea->strokeColor(), penWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
-        painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
-
-        painter->setPen(pen);
-        painter->setBrush(Qt::NoBrush);
-
-        // Draw the shadow if existent
-        if (ea->hasShadow()) {
-            QImage shadow = shapeShadow(ea, painter->deviceTransform().m11() / zoomFactor);
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(QRectF(ea->visualGeometry().translated(-viewPort.topLeft()) + ea->shadowMargins()).topLeft(), shadow);
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-        }
-
-        switch (ea->type()) {
-        case FreeHand:
-        case Highlight: {
-            auto *fha = static_cast<FreeHandAction *>(ea);
-            if (ea->type() == Highlight) {
-                painter->setCompositionMode(QPainter::CompositionMode_Darken);
-            }
-            QPointF offsetPos;
-            if (offsetStroke) {
-                offsetPos = {0.5, 0.5};
-            }
-            auto path = fha->path().translated(-viewPort.topLeft() + offsetPos);
-            if (path.isEmpty()) {
-                auto start = path.elementAt(0);
-                // ensure a single point freehand event is visible
-                path.lineTo(start.x + 0.0001, start.y);
-            }
-            painter->drawPath(path);
-            break;
-        }
-        case Line:
-        case Arrow: {
-            auto *la = static_cast<LineAction *>(ea);
-            QPointF offsetPos;
-            if (offsetStroke) {
-                offsetPos = {0.5, 0.5};
-            }
-            const auto &line = la->line().translated(-viewPort.topLeft() + offsetPos);
-
-            painter->drawLine(line);
-            if (la->type() == Arrow) {
-                painter->drawPolyline(la->arrowHeadPolygon(line));
-            }
-            break;
-        }
-        case Rectangle:
-        case Ellipse: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            painter->setPen(sa->strokeWidth() > 0 ? pen : Qt::NoPen);
-            painter->setBrush(sa->fillColor());
-            QMarginsF offsetMargins;
-            if (offsetStroke && sa->strokeWidth() > 0) {
-                qreal offset = 0.5;
-                offsetMargins = {-offset, -offset, -offset, -offset};
-            }
-            const auto rect = sa->geometry().translated(-viewPort.topLeft()) + offsetMargins;
-            switch (sa->type()) {
-            case Rectangle:
-                painter->drawRect(rect);
-                break;
-            case Ellipse:
-                painter->drawEllipse(rect);
-                break;
-            default:
-                break;
-            }
-            break;
-        }
-        case Blur: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 2 * imageDpr();
-            const qreal scale = 1.0 / factor;
-            if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
-                stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
-                sa->backingStoreCache().setDevicePixelRatio(painter->deviceTransform().m11());
-                stopAtAction.pop_back();
-                // With more scaling, blur more
-                sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
-            }
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            break;
-        }
-        case Pixelate: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 4;
-            const qreal scale = 1.0 / factor;
-            if (sa->backingStoreCache().isNull()) {
-                stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
-
-                stopAtAction.pop_back();
-            }
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
-            break;
-        }
-        case Text: {
-            auto *ta = static_cast<TextAction *>(ea);
-            painter->setFont(ta->font());
-            painter->setPen(ta->fontColor());
-            QPointF baselineOffset = {0, QFontMetricsF(ta->font()).ascent()};
-            painter->drawText(ta->startPoint() - viewPort.topLeft() + baselineOffset, ta->text());
-            break;
-        }
-        case Number: {
-            auto *na = static_cast<NumberAction *>(ea);
-            const auto rect = na->boundingRect().translated(-viewPort.topLeft());
-            painter->setBrush(na->fillColor());
-            painter->setFont(na->font());
-            painter->setPen(Qt::NoPen);
-            painter->drawEllipse(rect);
-            painter->setPen(na->fontColor());
-            painter->drawText(rect, Qt::AlignCenter, QString::number(na->number()));
-            break;
-        }
-        default:
-            break;
-        }
-    }
-    painter->scale(scale, scale);
-}
-
-QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options) const
-{
-    QImage img((viewPort.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
-    img.setDevicePixelRatio(imageDpr());
-    img.fill(Qt::transparent);
-    QPainter p(&img);
-    p.setRenderHint(QPainter::Antialiasing);
-    // Makes pixelate and blur look better
-    p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    p.scale(scale, scale);
-    paint(&p, viewPort, 1, options);
-    p.end();
-
-    return img;
-}
-
-QImage AnnotationDocument::renderToImage() const
-{
-    return renderToImage(m_canvasRect);
-}
-
-bool AnnotationDocument::isLastActionInvalid() const
-{
-    return !m_undoStack.isEmpty() && !m_undoStack.last()->isValid();
-}
-
-void AnnotationDocument::permanentlyDeleteLastAction()
-{
-    if (m_undoStack.isEmpty()) {
-        return;
-    }
-    permanentlyDeleteAction(m_undoStack.last());
-}
-
-EditAction *AnnotationDocument::actionAtPoint(const QPointF &point) const
-{
-    for (int i = m_undoStack.count() - 1; i >= 0; --i) {
-        auto action = m_undoStack[i];
-        if (isActionVisible(action) && action->visualGeometry().contains(point)) {
-            return action;
-        }
-    }
-    return nullptr;
-}
-
-QRectF AnnotationDocument::visualGeometryAtPoint(const QPointF &point) const
-{
-    auto action = actionAtPoint(point);
-    if (!action) {
-        return {};
-    }
-    return action->visualGeometry();
-}
-
-void AnnotationDocument::undo()
-{
-    if (m_undoStack.isEmpty()) {
-        return;
-    }
-
-    auto *action = m_undoStack.last();
-    auto *replacedAction = action->replaces();
-    int undoCount = m_undoStack.size();
-    bool isSelected = action == m_selectedActionWrapper->editAction();
-    bool replacesEarlierAction = undoCount > 1 && replacedAction
-                              && replacedAction == m_undoStack[undoCount - 2];
-
-    if (isSelected && !replacesEarlierAction) {
-        deselectAction();
-    }
-
-    if (m_undoStack.isEmpty()) {
-        // deselectAction() could have deleted the last action in the stack
-        return;
-    }
-
-    auto updateRect = action->lastUpdateArea();
-    if (action->replaces()) {
-        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
-    }
-    m_redoStack << action;
-    m_undoStack.pop_back();
-
-    if (action->type() == AnnotationDocument::Number) {
-        auto na = static_cast<NumberAction *>(action);
-        m_tool->setNumber(na->number());
-    }
-
-    if (isSelected && replacesEarlierAction) {
-        m_selectedActionWrapper->setEditAction(replacedAction);
-    }
-
-    for (auto action : std::as_const(m_undoStack)) {
-        if (isActionVisible(action, updateRect)) {
-            updateRect = updateRect.united(action->lastUpdateArea());
-        }
-        if (action->type() == AnnotationDocument::Blur
-            || action->type() == AnnotationDocument::Pixelate) {
-            auto *sa = static_cast<ShapeAction *>(action);
-            sa->invalidateCache();
-        }
-    }
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
-    emitRepaintNeededUnlessEmpty(updateRect);
-}
-
-void AnnotationDocument::redo()
-{
-    if (m_redoStack.isEmpty()) {
-        return;
-    }
-
-    auto *action = m_redoStack.last();
-    auto *replacedAction = action->replaces();
-    int undoCount = m_undoStack.size();
-    bool isReplacedSelected = replacedAction == m_selectedActionWrapper->editAction();
-    bool replacesEarlierAction = undoCount > 0 && replacedAction
-                              && replacedAction == m_undoStack[undoCount - 1];
-
-    if (isReplacedSelected && !replacesEarlierAction) {
-        deselectAction();
-    }
-
-    auto updateRect = action->lastUpdateArea();
-    if (action->replaces()) {
-        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
-    }
-    m_undoStack << action;
-    m_redoStack.pop_back();
-
-    if (action->type() == AnnotationDocument::Number) {
-        auto na = static_cast<NumberAction *>(action);
-        m_tool->setNumber(na->number() + 1);
-    }
-
-    if (isReplacedSelected && replacesEarlierAction) {
-        m_selectedActionWrapper->setEditAction(action);
-    }
-
-    for (auto action : std::as_const(m_undoStack)) {
-        if (isActionVisible(action, updateRect)) {
-            updateRect = updateRect.united(action->lastUpdateArea());
-        }
-    }
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
-    emitRepaintNeededUnlessEmpty(updateRect);
-}
-
-void AnnotationDocument::beginAction(const QPointF &point)
-{
-    QRectF updateRect;
-    // if the last action was not valid, discard it (for instance a rectangle with 0 size)
-    if (isLastActionInvalid()) {
-        QSignalBlocker blocker(this);
-        m_selectedActionWrapper->blockSignals(m_tool->type() == Text);
-        auto lastAction = m_undoStack.last();
-        updateRect = lastAction->lastUpdateArea();
-        permanentlyDeleteAction(lastAction);
-        m_selectedActionWrapper->blockSignals(false);
-    }
-
-    EditAction *action = nullptr;
-
-    switch (m_tool->type()) {
-    case FreeHand:
-    case Highlight: {
-        action = new FreeHandAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Line:
-    case Arrow: {
-        action = new LineAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Rectangle:
-    case Ellipse:
-    case Blur:
-    case Pixelate: {
-        action = new ShapeAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Text: {
-        action = new TextAction(m_tool, point);
-        addAction(action);
-        m_selectedActionWrapper->setEditAction(action);
-        break;
-    }
-    case Number: {
-        action = new NumberAction(m_tool, point);
-        addAction(action);
-        m_tool->setNumber(m_tool->number() + 1);
-        break;
-    }
-    default: return;
-    }
-
-    if (action) {
-        if (action->supportsShadow()) {
-            action->setShadow(m_tool->hasShadow());
-        }
-        updateRect = updateRect.united(action->lastUpdateArea());
-    }
-    emitRepaintNeededUnlessEmpty(updateRect);
-}
-
-void AnnotationDocument::continueAction(const QPointF &point, ContinueOptions options)
-{
-    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
-    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
-        return;
-    }
-
-    auto isSelectedAction = m_selectedActionWrapper->editAction() == action;
-    QRectF oldSelectedActionVisualGeometry;
-    bool wasValid = action->isValid();
-    if (isSelectedAction) {
-        oldSelectedActionVisualGeometry = action->visualGeometry();
-    }
-
-    switch (action->type()) {
-    case FreeHand:
-    case Highlight: {
-        auto *fha = static_cast<FreeHandAction *>(action);
-        fha->addPoint(point);
-        emitRepaintNeededUnlessEmpty(fha->lastUpdateArea());
-        break;
-    }
-    case Line:
-    case Arrow: {
-        auto *la = static_cast<LineAction *>(action);
-        QPointF endPoint = point;
-        if (options & ContinueOption::SnapAngle) {
-            QPointF posDiff = point - la->line().p1();
-            if (qAbs(posDiff.x()) / 1.5 > qAbs(posDiff.y())) {
-                // horizontal
-                endPoint.setY(la->line().p1().y());
-            } else if (qAbs(posDiff.x()) < qAbs(posDiff.y()) / 1.5) {
-                // vertical
-                endPoint.setX(la->line().p1().x());
-            } else {
-                // diagonal when 1/3 in between horizontal and vertical
-                auto xSign = std::copysign(1.0, posDiff.x());
-                auto ySign = std::copysign(1.0, posDiff.y());
-                qreal max = qMax(qAbs(posDiff.x()), qAbs(posDiff.y()));
-                endPoint = la->line().p1() + QPointF(max * xSign, max * ySign);
-            }
-        }
-        la->setEndPoint(endPoint);
-        emitRepaintNeededUnlessEmpty(la->lastUpdateArea());
-        break;
-    }
-    case Rectangle:
-    case Ellipse:
-    case Blur:
-    case Pixelate: {
-        auto *sa = static_cast<ShapeAction *>(action);
-        const auto &geometry = sa->geometry();
-        QRectF rect(geometry.topLeft(), point);
-        if (options & ContinueOption::SnapAngle) {
-            auto wSign = std::copysign(1.0, rect.width());
-            auto hSign = std::copysign(1.0, rect.height());
-            qreal max = qMax(qAbs(rect.width()), qAbs(rect.height()));
-            rect.setSize({max * wSign, max * hSign});
-        }
-        if (options & ContinueOption::CenterResize) {
-            rect.moveCenter(geometry.center());
-        }
-        sa->setGeometry(rect);
-        emitRepaintNeededUnlessEmpty(sa->lastUpdateArea());
-        break;
-    }
-    case Text: {
-        auto visualGeometry = action->visualGeometry();
-        visualGeometry.moveTo(point.x(), point.y() - visualGeometry.height() / 2);
-        if (action == m_selectedActionWrapper->editAction()) {
-            m_selectedActionWrapper->setVisualGeometry(visualGeometry);
-        } else {
-            action->setVisualGeometry(visualGeometry);
-        }
-        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-        break;
-    }
-    case Number: {
-        auto visualGeometry = action->visualGeometry();
-        visualGeometry.moveCenter(point);
-        action->setVisualGeometry(visualGeometry);
-        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-        break;
-    }
-    default: return;
-    }
-
-    if (action->isValid() && !wasValid) {
-        // Notify undo count change here if is now valid since
-        // beginAction doesn't emit if action was invalid.
-        Q_EMIT undoStackDepthChanged();
-    }
-    if (isSelectedAction && oldSelectedActionVisualGeometry != action->visualGeometry()) {
-        Q_EMIT m_selectedActionWrapper->visualGeometryChanged();
-    }
-}
-
-void AnnotationDocument::finishAction()
-{
-    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
-    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
-        return;
-    }
-
-    if (action->type() == AnnotationDocument::FreeHand) {
-        auto *fa = static_cast<FreeHandAction *>(action);
-        fa->makeSmooth();
-        Q_EMIT repaintNeeded(fa->visualGeometry());
-    }
-}
-
-void AnnotationDocument::selectAction(const QPointF &point)
-{
-    m_selectedActionWrapper->setEditAction(actionAtPoint(point));
-}
-
-void AnnotationDocument::deselectAction()
-{
-    m_selectedActionWrapper->setEditAction(nullptr);
-}
-
-void AnnotationDocument::deleteSelectedAction()
-{
-    auto *action = m_selectedActionWrapper->editAction();
-    if (!action || m_undoStack.contains(action->replacedBy())) {
-        return;
-    }
-
-    deselectAction();
-    if (!action->isValid()) {
-        action = action->replaces();
-        const int i = m_undoStack.lastIndexOf(action);
-        m_undoStack.remove(i);
-    }
-    QRectF updateRect;
-    if (action && action->isValid()) {
-        // add undoable action for representing the deletion of an action
-        m_undoStack << new DeleteAction(action);
-        updateRect = action->lastUpdateArea();
-    } else {
-        const int i = m_undoStack.lastIndexOf(action);
-        m_undoStack.remove(i);
-    }
-
-    Q_EMIT undoStackDepthChanged();
-    clearRedoStack();
-    emitRepaintNeededUnlessEmpty(updateRect);
-}
-
-bool AnnotationDocument::isActionVisible(EditAction *action, const QRectF &rect) const
-{
-    return action && action->isVisible()
-            && (!action->replacedBy() || !m_undoStack.contains(action->replacedBy()))
-            && (rect.isEmpty() || action->visualGeometry().intersects(rect));
-}
-
-void AnnotationDocument::addAction(EditAction *action)
-{
-    if (!action || action->replacedBy() || m_undoStack.contains(action)) {
-        return;
-    }
-    m_undoStack << action;
-
-    Q_EMIT undoStackDepthChanged();
-    clearRedoStack();
-}
-
-void AnnotationDocument::permanentlyDeleteAction(EditAction *action)
-{
-    const int i = m_undoStack.lastIndexOf(action);
-    if (i == -1) {
-        return;
-    }
-
-    const int oldSize = m_undoStack.size();
-    auto *selectedAction = m_selectedActionWrapper->editAction();
-    if (selectedAction == action) {
-        deselectAction();
-    }
-    // If deselecting the action already caused a removal, do nothing
-    if (oldSize != m_undoStack.size()) {
-        return;
-    }
-
-    m_undoStack.remove(i);
-    Q_EMIT undoStackDepthChanged();
-    emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-    delete action;
-}
-
-void AnnotationDocument::clearRedoStack()
-{
-    int oldRedoCount = m_redoStack.count();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-    if (oldRedoCount != m_redoStack.count()) {
-        Q_EMIT redoStackDepthChanged();
-    }
-}
-
-void AnnotationDocument::emitRepaintNeededUnlessEmpty(const QRectF &area)
-{
-    if (!area.isEmpty()) {
-        Q_EMIT repaintNeeded(area);
-    }
-}
 
 #include <moc_AnnotationDocument.cpp>
