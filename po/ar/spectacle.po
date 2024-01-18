@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2015, 2016.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-16 00:37+0000\n"
-"PO-Revision-Date: 2023-06-01 09:53+0400\n"
+"PO-Revision-Date: 2024-01-17 19:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -260,16 +260,16 @@ msgstr "الحدّ:"
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
 #: src/Gui/AnnotationOptionsToolBarContents.qml:91
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] " بكسل"
+msgstr[1] " بكسل"
+msgstr[2] " بكسل"
+msgstr[3] " بكسل"
+msgstr[4] " بكسل"
+msgstr[5] " بكسل"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -297,28 +297,28 @@ msgid "Font:"
 msgstr "الخط:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:223
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "نقطة"
+msgstr[1] "Pts"
+msgstr[2] "Pts"
+msgstr[3] "Pts"
+msgstr[4] "Pts"
+msgstr[5] "Pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "نقطة"
+msgstr[1] "Pts"
+msgstr[2] "Pts"
+msgstr[3] "Pts"
+msgstr[4] "Pts"
+msgstr[5] "Pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -509,27 +509,22 @@ msgid "No Delay"
 msgstr "بدون تأخير"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "ثانية"
+msgstr[0] "0 ثانية"
 msgstr[1] "ثانية واحدة"
 msgstr[2] "ثانيتان"
-msgstr[3] "%1 ثواني"
-msgstr[4] "%1 ثانية"
-msgstr[5] "%1 ثانية"
+msgstr[3] "%2 ثواني"
+msgstr[4] "%2 ثانية"
+msgstr[5] "%2 ثانية"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " ثانية"
+msgstr "%2 ثانية"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -611,10 +606,9 @@ msgid "Copy"
 msgstr "انسخ"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "انسخ الموقع إلى الحافظة"
+msgstr "انسخ المكان"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -961,16 +955,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1.%2</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "يمكنك استخدام العناصر النائبة التالية في اسم الملف ، والتي سيتم استبدالها "
-"بالنص الفعلي عند حفظ الملف:<blockquote>"
+"بالنص الفعلي عند حفظ الملف:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -981,17 +972,16 @@ msgstr "لتحفظ في مجلد فرعي"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "اعرض أقل"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "اعرض المزيد"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "عامّ"
@@ -1000,7 +990,7 @@ msgstr "عامّ"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "حفظ الصورة"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
@@ -1009,8 +999,7 @@ msgid "Video Saving"
 msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "الاختصارات"
@@ -1153,7 +1142,7 @@ msgstr "جودة الضغط لتنسيقات الملفات الفاقدة"
 #| msgid "Screenshot"
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "لقطة شاشة"
+msgstr "اللقطات"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1213,11 +1202,10 @@ msgid "Screencasts"
 msgstr "لقطة شاشة"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "لقطة شاشة"
+msgstr "تسجيل الشاشة"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1375,21 +1363,18 @@ msgstr "إذا ما كانت أداة الرقم تملك ظل ساقط"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "مكان الحفظ:"
+msgstr "&مكان الحفظ:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "شوركت الصورة"
+msgstr "شورك الفيديو"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "شوركت الصورة"
@@ -1406,15 +1391,12 @@ msgid ""
 msgstr "رابط الصورة المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "رابط الصورة المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
+msgstr "وصلة الصورة المشاركة بها (<a href=\"%1\">%1</a>) نسخت إلى الحافظة."
 
 #: src/Gui/ShareErrorMessage.qml:13
 #, fuzzy, kde-format
@@ -1424,8 +1406,7 @@ msgid "There was a problem sharing the video: %1"
 msgstr "حدثت مشكلة في مشاركة الصّورة: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "حدثت مشكلة في مشاركة الصّورة: %1"
@@ -1672,11 +1653,10 @@ msgid "Failed to select screen: %1"
 msgstr "فشل في تحديد نافذة"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "فشل في تحديد نافذة"
+msgstr "فشل في تحديد نافذة: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
@@ -1692,28 +1672,22 @@ msgid "Failed to select window: No window found"
 msgstr "فشل في تحديد نافذة"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "منطقة مستطيلة"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "ملء الشاشة"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "عنوان النّافذة"
+msgstr "نافذة"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1849,13 +1823,13 @@ msgstr "اشرح"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
