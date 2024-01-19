@@ -77,6 +77,7 @@ VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     , m_screencasting(new Screencasting(this))
     , m_recorder(new PipeWireRecord())
 {
+    m_recorder->setActive(false);
     // m_recorder->setMaxFramerate({30, 1});
 }
 
@@ -129,6 +130,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         return;
     }
 
+    m_recorder->setActive(false);
     // BUG: https://bugs.kde.org/show_bug.cgi?id=476964
     // CursorMode::Metadata doesn't work.
     Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Embedded : Screencasting::Hidden;
@@ -196,7 +198,9 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     Q_ASSERT(stream);
     connect(stream, &ScreencastingStream::created, this, [this, stream] {
         m_recorder->setNodeId(stream->nodeId());
-        m_recorder->setActive(true);
+        if (!m_recorder->output().isEmpty()) {
+            m_recorder->setActive(true);
+        }
         setRecording(true);
     });
     connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
@@ -245,6 +249,7 @@ void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
         }
         m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(tempUrl.toLocalFile());
+        m_recorder->setActive(m_recorder->nodeId() != 0);
     } else {
         if (!fileUrl.isLocalFile()) {
             Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
