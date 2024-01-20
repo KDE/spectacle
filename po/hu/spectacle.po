@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-16 00:37+0000\n"
-"PO-Revision-Date: 2024-01-15 14:22+0100\n"
+"PO-Revision-Date: 2024-01-18 13:42+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -238,6 +238,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
+"kell lennie"
 
 #: src/ExportManager.cpp:636
 #, kde-format
@@ -245,14 +247,16 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
+"nek kell lennie egy fájlnévvel"
 
 #: src/ExportManager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
+"A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
+"%1."
 
 #: src/ExportManager.cpp:739
 #, kde-format
@@ -262,7 +266,7 @@ msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
 #: src/Gui/AnnotationOptionsToolBarContents.qml:57
 #, kde-format
 msgid "Stroke:"
-msgstr ""
+msgstr "Vonal:"
 
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
@@ -278,12 +282,12 @@ msgstr[1] ""
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Vonalvastagság"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:112
 #, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Vonalszín"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:152
 #, kde-format
@@ -329,7 +333,7 @@ msgstr "Szám:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:299
 #, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "Szám a számjegyzetekhez"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:326
 #, kde-format
@@ -339,81 +343,74 @@ msgstr "Árnyék"
 #: src/Gui/AnnotationsToolBarContents.qml:64
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 #: src/Gui/AnnotationsToolBarContents.qml:71
 #, kde-format
 msgid "Select"
-msgstr ""
+msgstr "Kiválasztás"
 
 #: src/Gui/AnnotationsToolBarContents.qml:79
 #, kde-format
 msgid "Freehand"
-msgstr ""
+msgstr "Szabadkézi"
 
 #: src/Gui/AnnotationsToolBarContents.qml:86
 #, kde-format
 msgid "Highlighter"
-msgstr ""
+msgstr "Kiemelő"
 
 #: src/Gui/AnnotationsToolBarContents.qml:93
 #, kde-format
 msgid "Line"
-msgstr ""
+msgstr "Vonal"
 
 #: src/Gui/AnnotationsToolBarContents.qml:100
-#, fuzzy, kde-format
-#| msgctxt "Keyboard action"
-#| msgid "Arrow keys"
+#, kde-format
 msgid "Arrow"
-msgstr "Nyíl billentyűk"
+msgstr "Nyíl"
 
 #: src/Gui/AnnotationsToolBarContents.qml:107
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangle"
-msgstr "Téglalap alakú terület"
+msgstr "Téglalap"
 
 #: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Ellipse"
-msgstr ""
+msgstr "Ellipszis"
 
 #: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelesítés"
 
 #: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Blur"
-msgstr ""
+msgstr "Elmosás"
 
 #: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Text"
-msgstr ""
+msgstr "Szöveg"
 
 #: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:109
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "%1 másodperc"
-msgstr[1] "%1 másodperc"
+msgstr[0] "Mégse (%1 másodperc)"
+msgstr[1] "Mégse (%1 másodperc)"
 
 #: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
-#, fuzzy, kde-format
-#| msgid "Take a new Screenshot"
+#, kde-format
 msgid "Take a new screenshot"
-msgstr "Új kép készítéséhez"
+msgstr "Új kép készítése"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:113
 #: src/Gui/OptionsMenu.cpp:68
@@ -1226,18 +1223,16 @@ msgid "The filename template used when saving screencasts"
 msgstr "A mentéskor használt alapértelmezett fájlnév"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Új kép készítése"
+msgstr "Képernyőátjátszások"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Új kép készítése"
+msgstr "Képernyőátjátszás"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1396,42 +1391,33 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Mentés helye:"
+msgstr "Mentés he&lye:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Kép megosztva"
+msgstr "Videó megosztva"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Kép megosztva"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"A megosztott kép hivatkozása (<a href=\"%1\">%1</a>) a vágólapra került."
+"A megosztott videó hivatkozása (<a href=\"%1\">%1</a>) a vágólapra került."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1440,15 +1426,13 @@ msgstr ""
 "A megosztott kép hivatkozása (<a href=\"%1\">%1</a>) a vágólapra került."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Hiba történt a kép megosztásakor: %1"
+msgstr "Hiba történt a videó megosztásakor: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Hiba történt a kép megosztásakor: %1"
@@ -1589,12 +1573,10 @@ msgstr[0] "%1 másodperc"
 msgstr[1] "%1 másodperc"
 
 #: src/Gui/SpectacleWindow.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "@title:window Unsaved Screenshot"
-#| msgid "Unsaved[*]"
+#, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "Nem mentett[*]"
+msgstr "Nem mentett"
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
@@ -1645,61 +1627,63 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Nem sikerült felvenni: a fájl URL-je nem helyi fájl"
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Nem sikerült felvenni: nem lehet létrehozni a mappát (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:240
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "Nem sikerült felvenni: az átmeneti fájl URL-re nem helyi fájl (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "Nem lehet felvenni: a kimeneti fájl URL-je nem helyi fájl (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:285
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Képernyőfelvétel megszakítva"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Ablakfelvétel megszakítva"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "Nem sikerült kiválasztani a képernyőt: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:295
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr ""
+msgstr "Nem sikerült kiválasztani az ablakot: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:317
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Nem sikerült kiválasztani a képernyőt: egy képernyő sem tartalmazta az "
+"egérkurzor pozícióját"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr ""
+msgstr "Nem sikerült kiválasztani az ablakot: nem található ablak"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
@@ -1750,22 +1734,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Kurzor alatti ablak rögzítése"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Képernyőrögzítés"
+msgstr "Képernyő felvétele"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Record Window"
-msgstr "Képernyőrögzítés"
+msgstr "Ablak felvétele"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Téglalap alakú terület"
+msgstr "Téglalap alakú terület felvétele"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1779,12 +1760,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"A Spectacle felvesz: %1\n"
+"Kattintson a felvétel befejezéséhez"
 
 #: src/SpectacleCore.cpp:605
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "A(z) %1 nem érvényes mód a --record kapcsolóhoz"
 
 #: src/SpectacleCore.cpp:807
 #, kde-format
@@ -1792,16 +1775,13 @@ msgid "Screenshot capture canceled or failed"
 msgstr "Képernyőkép-rögzítés megszakítva vagy meghiúsult"
 
 #: src/SpectacleCore.cpp:859
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"A képernyőkép mentve lett, mint „%1„ ide: „%2”, a helye pedig a vágólapra "
-"került"
+"A képernyőkép mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
+"került."
 
 #: src/SpectacleCore.cpp:863
 #, kde-format
@@ -1815,22 +1795,18 @@ msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
 #: src/SpectacleCore.cpp:870
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
 #: src/SpectacleCore.cpp:875
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"A képernyőkép mentve lett, mint „%1„ ide: „%2”, a helye pedig a vágólapra "
-"került"
+"A felvétel mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
+"került."
 
 #: src/SpectacleCore.cpp:877
 #, kde-format
