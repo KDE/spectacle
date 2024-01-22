@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-16 00:37+0000\n"
-"PO-Revision-Date: 2023-12-31 10:52+0100\n"
+"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"PO-Revision-Date: 2024-01-21 08:34+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -280,9 +280,9 @@ msgstr "Kreska:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
+msgstr[2] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -314,18 +314,18 @@ msgstr "Czcionka:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
+msgstr[2] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
+msgstr[2] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -511,24 +511,19 @@ msgid "No Delay"
 msgstr "Bez opóźnienia"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekund"
+msgstr[0] "%2 sekunda"
+msgstr[1] "%2 sekundy"
+msgstr[2] "%2 sekund"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " sekund"
+msgstr "%2 sekund"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -973,12 +968,10 @@ msgid "To save to a sub-folder"
 msgstr "Aby zapisać do podkatalogu"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
-#, fuzzy, kde-format
-#| msgctxt "show fewer filename placeholder templates"
-#| msgid "Show Less"
+#, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr "Pokaż mniej"
+msgstr "Wyświetl mniej"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
@@ -1605,19 +1598,19 @@ msgstr ""
 "niedostępny. Użyj Spectacle na Plazmie lub innego narzędzia do zrzucania "
 "ekranu."
 
-#: src/Platforms/VideoPlatformWayland.cpp:128
+#: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Nie udało się nagrać: Adres URL nie wskazuje na plik lokalny"
 
-#: src/Platforms/VideoPlatformWayland.cpp:228
+#: src/Platforms/VideoPlatformWayland.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Nie udało się nagrać: Nie można było utworzyć katalogu (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:240
+#: src/Platforms/VideoPlatformWayland.cpp:244
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -1625,7 +1618,7 @@ msgstr ""
 "Nie udało się nagrać: Adres URL tymczasowego pliku nie wskazuje na plik "
 "lokalny (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:255
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -1633,31 +1626,31 @@ msgstr ""
 "Nie udało się nagrać: Adres URL wynikowego pliku nie wskazuje na plik "
 "lokalny (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:285
+#: src/Platforms/VideoPlatformWayland.cpp:290
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Zaniechano nagrywania ekranu"
 
-#: src/Platforms/VideoPlatformWayland.cpp:287
+#: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Zaniechano nagrywania okna"
 
-#: src/Platforms/VideoPlatformWayland.cpp:293
+#: src/Platforms/VideoPlatformWayland.cpp:298
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Nie udało się wybrać ekranu: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:295
+#: src/Platforms/VideoPlatformWayland.cpp:300
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Nie udało się wybrać okna: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:317
+#: src/Platforms/VideoPlatformWayland.cpp:322
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1665,7 +1658,7 @@ msgstr ""
 "Nie udało się wybrać ekranu: Żaden z ekranów nie zawierał położenia "
 "wskaźnika myszy"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:329
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
