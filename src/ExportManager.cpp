@@ -52,8 +52,6 @@ ExportManager::ExportManager(QObject *parent)
             }
         }
     });
-
-    connect(this, &ExportManager::imageChanged, this, &ExportManager::scanQRCode);
 }
 
 ExportManager::~ExportManager() = default;

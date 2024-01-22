@@ -156,6 +156,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             syncExportImage();
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+            ExportManager::instance()->scanQRCode();
             const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
             ExportManager::instance()->exportImage(exportActions, outputUrl());
         }
@@ -168,6 +169,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->updateTimestamp();
         showViewerIfGuiMode();
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+        ExportManager::instance()->scanQRCode();
         ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
