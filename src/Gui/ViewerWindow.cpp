@@ -185,6 +185,11 @@ void ViewerWindow::showRecordingFailedMessage(const QString &messageArgument)
                       {{"messageArgument"_L1, messageArgument}});
 }
 
+void ViewerWindow::showQRCodeScannedMessage(const QString &messageArgument)
+{
+    showInlineMessage("%1/Gui/QRCodeScannedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {{"messageArgument"_L1, messageArgument}});
+}
+
 void ViewerWindow::showImageSharedMessage(int errorCode, const QString &messageArgument)
 {
     if (errorCode == 1 || status() != QQuickView::Ready) {

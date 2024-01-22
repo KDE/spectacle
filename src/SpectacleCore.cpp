@@ -260,6 +260,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     };
     connect(exportManager, &ExportManager::videoExported, this, onVideoExported);
+
+    auto onQRCodeScanned = [](const QString &result) {
+        auto viewerWindow = ViewerWindow::instance();
+        if (!viewerWindow) {
+            return;
+        }
+        viewerWindow->showQRCodeScannedMessage(result);
+    };
+    connect(exportManager, &ExportManager::qrCodeScanned, this, onQRCodeScanned);
+
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
 
     connect(imagePlatform, &ImagePlatform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);

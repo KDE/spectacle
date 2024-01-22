@@ -40,6 +40,7 @@ public:
     void showLocationCopiedMessage();
     void showScreenshotFailedMessage();
     void showRecordingFailedMessage(const QString &messageArgument);
+    void showQRCodeScannedMessage(const QString &messageArgument);
 
     Q_INVOKABLE void startDrag();
 

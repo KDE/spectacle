@@ -19,7 +19,9 @@
 
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KSystemClipboard>
 #include <KWindowSystem>
+#include <QMimeData>
 
 #include <QApplication>
 #include <QColorDialog>
@@ -278,6 +280,13 @@ void SpectacleWindow::copyLocation()
     }
     SpectacleCore::instance()->syncExportImage();
     ExportManager::instance()->exportImage(ExportManager::CopyPath | ExportManager::UserAction);
+}
+
+void SpectacleWindow::copyText(const QString &text)
+{
+    auto data = new QMimeData();
+    data->setText(text);
+    KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
 }
 
 void SpectacleWindow::showPrintDialog()

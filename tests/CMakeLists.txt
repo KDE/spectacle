@@ -16,5 +16,5 @@ ecm_add_test(
     ${FILENAME_TEST_SRCS}
     TEST_NAME "filename_test"
     LINK_LIBRARIES  Qt::Test
-        Qt::PrintSupport KF6::I18n KF6::ConfigCore KF6::GlobalAccel KF6::KIOCore KF6::WindowSystem KF6::XmlGui KF6::GuiAddons
+        Qt::PrintSupport KF6::I18n KF6::ConfigCore KF6::GlobalAccel KF6::KIOCore KF6::WindowSystem KF6::XmlGui KF6::GuiAddons ZXing::Core
 )

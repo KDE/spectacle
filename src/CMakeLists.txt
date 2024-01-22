@@ -105,6 +105,7 @@ target_link_libraries(spectacle PRIVATE
     K::KPipeWireRecord
     Wayland::Client
     LayerShellQt::Interface
+    ZXing::Core
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
@@ -139,6 +140,7 @@ qt_add_qml_module(spectacle
     Gui/Magnifier.qml
     Gui/MainToolBarContents.qml
     Gui/QmlUtils.qml
+    Gui/QRCodeScannedMessage.qml
     Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
     Gui/RecordingView.qml

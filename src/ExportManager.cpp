@@ -34,6 +34,7 @@
 #include <KRecentDocument>
 #include <KSharedConfig>
 #include <KSystemClipboard>
+#include <ZXing/ReadBarcode.h>
 
 using namespace Qt::StringLiterals;
 
@@ -51,6 +52,8 @@ ExportManager::ExportManager(QObject *parent)
             }
         }
     });
+
+    connect(this, &ExportManager::imageChanged, this, &ExportManager::scanQRCode);
 }
 
 ExportManager::~ExportManager() = default;
@@ -617,6 +620,25 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 
     if (success) {
         Q_EMIT imageExported(actions, url);
+    }
+}
+
+void ExportManager::scanQRCode()
+{
+    auto image = ExportManager::instance()->image();
+    image.convertTo(QImage::Format_Mono);
+    image.convertTo(QImage::Format_Grayscale8);
+
+    auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::Lum);
+    auto results = ZXing::ReadBarcodes(zximage, {});
+
+    if (!results.empty()) {
+        QString result = QString::fromStdString(results[0].text());
+
+        auto data = new QMimeData();
+        data->setText(result);
+        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+        Q_EMIT qrCodeScanned(result);
     }
 }
 

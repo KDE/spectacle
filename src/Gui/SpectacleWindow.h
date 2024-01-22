@@ -81,6 +81,7 @@ public Q_SLOTS:
     virtual void saveAs();
     virtual void copyImage();
     virtual void copyLocation();
+    virtual void copyText(const QString &text);
     void showPrintDialog();
     void showPreferencesDialog();
     void showFontDialog();
