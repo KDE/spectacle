@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2023-12-10 11:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -187,12 +187,12 @@ msgstr "பின்னணி பயன்முறையில், சாளர
 msgid "Open and edit existing screenshot file"
 msgstr "ஏற்கனவேயுள்ள திரைப்பிடிப்பை திறந்து திருத்து"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-ஆல் படத்தை கோப்புக்கு எழுத முடியவில்லை: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -202,12 +202,12 @@ msgstr ""
 "அடைவை உருவாக்குதல் தோல்வியடைந்ததால் திரைப்பிடிப்பை சேமிக்க முடியவில்லை:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. கோப்புக்கு எழுதுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -217,29 +217,29 @@ msgstr ""
 "தொலை அடைவை உருவாக்குதல் தோல்வியடைந்ததால் திரைப்பிடிப்பை சேமிக்க முடியவில்லை:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. தற்காலிக உள்ளமை கோப்புக்கு எழுதுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "படத்தை சேமிக்க முடியவில்லை. தொலை முகவரிக்கு கோப்பை பதிவேற்றுவதில் சிக்கல்."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "திரைப்பிடிப்பை சேமிக்க முடியாது. சேமிக்க வேண்டிய கோப்புப்பெயர் செல்லுபடியாகாதது."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "காலியான திரைப்பிடிப்பு படத்தை சேமிக்க முடியாது."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -248,7 +248,7 @@ msgstr ""
 "நிகழ்படத்தை ஏற்றுமதி செய்ய முடியவில்லை: தற்காலிக கோப்பு ஏற்கனவேயுள்ள உள்ளமை கோப்பாக "
 "இருக்க வேண்டும்"
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -257,13 +257,13 @@ msgstr ""
 "நிகழ்படத்தை ஏற்றுமதி செய்ய முடியவில்லை: சேருமிட கோப்பு, முறையான கோப்புப்பெயருடம் "
 "கூடிய முகவரியாக இருக்க வேண்டும்"
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "நிகழ்படத்தை சேமிக்க முடியவில்லை. இவ்விடத்திற்கு கோப்பை நகர்த்த முடியவில்லை: %1"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "அச்சிடுதல் தோல்வியடைந்தது. அச்சுப்பொறியை துவக்க முடியவில்லை."
@@ -687,6 +687,11 @@ msgstr "க்ளிக் செய்யும்போது படமெட�
 #, kde-format
 msgid "No Delay"
 msgstr "தாமதிக்க வேண்டாம்"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1546,7 +1551,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1554,7 +1559,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1736,7 +1741,7 @@ msgstr "செவ்வக பரப்பளவை பதிவுசெய்"
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1746,18 +1751,18 @@ msgstr ""
 "ஸ்பெக்டக்குல் திரைப்பதிவிடுகிறது: %1\n"
 "பதிவை முடிக்க கிளிக் செய்யவும்"
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "--record என்பதற்கு %1 ஒரு செல்லுபடியாகும் பயன்முறை இல்லை"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1766,23 +1771,23 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1791,24 +1796,24 @@ msgstr ""
 "ஓர் திரைப்பதிவு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ஓர் திரைப்பதிவு '%1' என உங்கள் நிகழ்பட அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ஓர் திரைப்பதிவு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"

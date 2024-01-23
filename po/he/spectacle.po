@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2024-01-19 08:36+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -182,12 +182,12 @@ msgstr "במצב רקע, לא לכלול את ההצללות בצילום המס
 msgid "Open and edit existing screenshot file"
 msgstr "פתיחת קובץ צילום מסך קיים"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter לא יכול לכתוב תמונה: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -197,12 +197,12 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה נכשלה:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבה."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,47 +212,47 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה המרוחקת נכשלה:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבת הקובץ המקומי הזמני."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "לא ניתן לשמור תמונה. לא ניתן להעלות למקום המרוחק."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "לא ניתן לשמור צילום מסך. שם הקובץ לשמירה שגויה."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "לא ניתן לשמור תמונת צילום מסך ריקה."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "יייצוא הסרטון נכשל: כתובת הקובץ הזמני חייב להיות קובץ מקומי קיים"
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr "ייצוא הסרטון נכשל: כתובת קובץ הפלט חייבת להיות כתובת תקפה עם שם קובץ"
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "לא ניתן לשמור הקלטה. לא ניתן להעביר את הקובץ למקום: %1"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ההדפסה נכשלה. הפעלת המדפסת נכשלה."
@@ -671,6 +671,11 @@ msgstr "צילום בלחיצה"
 #, kde-format
 msgid "No Delay"
 msgstr "ללא השהיה"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1514,7 +1519,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " שניות"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1524,7 +1529,7 @@ msgstr[1] "%1 שניות"
 msgstr[2] "%1 שניות"
 msgstr[3] "%1 שניות"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1706,7 +1711,7 @@ msgstr "הקלטת אזור מרובע"
 msgid "Launch Spectacle without capturing"
 msgstr "להפעיל את Spectacle מבלי לצלם"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1716,18 +1721,18 @@ msgstr ""
 "Spectacle מקליט: %1\n"
 "לחיצה תסיים את ההקלטה"
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 אינו מצב תקף עבור ‎--record"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "צילום המסך בוטל או נכשל"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1735,23 +1740,23 @@ msgid ""
 msgstr ""
 "צילום המסך נשמר בשם ‚%1’ אל ‚%2’ ונתיב קובץ צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "צילום המסך נשמר בשם ‚%1’ בתיקיית התמונות שלך."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "צילום המסך נשמר בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1759,24 +1764,24 @@ msgid ""
 msgstr ""
 "הקלטה נשמרה בתור ‚%1’ אל ‚%2’ והנתיב לקובץ ההקלטה נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "הקלטה נשמרה בתור ‚%1’ לתיקיית הסרטונים (Videos) שלך."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "הקלטת המסך נשמרה בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "פתיחה"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "פירוש"

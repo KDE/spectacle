@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2024-01-13 16:33+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -194,12 +194,12 @@ msgstr "En mode segon pla, exclou les ombres a la captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Obre i edita un fitxer existent de captura de pantalla"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "El QImageWriter no ha pogut escriure la imatge: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -209,13 +209,13 @@ msgstr ""
 "No s'ha pogut desar la captura de pantalla perquè ha fallat la creació del "
 "directori:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. Error en escriure al fitxer."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -225,32 +225,32 @@ msgstr ""
 "No s'ha pogut desar la captura de pantalla perquè ha fallat la creació del "
 "directori remot:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. Error en escriure al fitxer "
 "local temporal."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "No s'ha pogut desar la imatge. No s'ha pogut pujar a la ubicació remota."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. El nom de fitxer a desar no és "
 "vàlid."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "No s'ha pogut desar una imatge de captura de pantalla buida."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -259,7 +259,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer temporal cal que sigui un "
 "fitxer local existent"
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer de sortida cal que sigui un "
 "URL vàlid amb un nom de fitxer"
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -276,7 +276,7 @@ msgstr ""
 "No s'ha pogut desar l'enregistrament. No s'ha pogut moure el fitxer a la "
 "ubicació: %1"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ha fallat la impressió. Ha fallat en inicialitzar la impressora."
@@ -697,6 +697,11 @@ msgstr "Captura en fer clic"
 #, kde-format
 msgid "No Delay"
 msgstr "Sense retard"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1559,7 +1564,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segons"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1567,7 +1572,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segon"
 msgstr[1] "%1 segons"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1755,7 +1760,7 @@ msgstr "Enregistra una regió rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Llança l'Spectacle sense capturar"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1765,18 +1770,18 @@ msgstr ""
 "L'Spectacle està enregistrant: %1\n"
 "Feu clic per a finalitzar l'enregistrament"
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 no és un mode vàlid per a --record"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "La captura de pantalla s'ha cancel·lat o ha fallat"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1785,23 +1790,23 @@ msgstr ""
 "La captura de pantalla s'ha desat com a «%1» a «%2» i el camí al seu fitxer "
 "s'ha copiat al porta-retalls."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha desat una captura de pantalla com a «%1» a la carpeta Imatges."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha desat una captura de pantalla com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha desat una captura de pantalla al porta-retalls."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1810,24 +1815,24 @@ msgstr ""
 "L'enregistrament s'ha desat com a «%1» a «%2» i el camí del fitxer "
 "d'enregistrament s'ha desat al porta-retalls."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "S'ha desat un enregistrament com a «%1» a la carpeta Vídeos."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "S'ha desat un enregistrament com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Obre"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Anotació"

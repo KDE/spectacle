@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2023-10-23 15:11+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -183,12 +183,12 @@ msgstr "Sisällytä tausta-ajossa kuvakaappaukseen ikkunakoristeet"
 msgid "Open and edit existing screenshot file"
 msgstr "Avaa ruutukaappaustiedosto ja muokkaa sitä"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ei voi kirjoittaa kuvaa: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -198,14 +198,14 @@ msgstr ""
 "Ruutukaappausta ei voitu tallentaa, koska kansion luonti epäonnistui:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Kuvakaappauksen tallentaminen epäonnistui. Tiedostoa tallennettaessa sattui "
 "virhe."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,44 +215,44 @@ msgstr ""
 "Ruutukaappausta ei voitu tallentaa, koska etäkansion luonti epäonnistui:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kuvakaappauksen tallentaminen epäonnistui. Paikalliseen väliaikaistiedostoon "
 "kirjoitettaessa sattui virhe."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Kuvan tallennus epäonnistui. Tiedostoa ei voitu lähettää verkkokohteeseen."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Kuvakaappauksen tallennus epäonnistui. Tiedostonimi on virheellinen."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Tyhjää kuvakaappausta ei voi tallentaa."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -260,7 +260,7 @@ msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Kuvan tallennus epäonnistui. Tiedostoa ei voitu lähettää verkkokohteeseen."
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tulostus epäonnistui tulostimen alustuksen epäonnistuttua."
@@ -682,6 +682,11 @@ msgstr "Kaappaa napsautettaessa"
 #, kde-format
 msgid "No Delay"
 msgstr "Ei viivettä"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1565,7 +1570,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekuntia"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1573,7 +1578,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekunti"
 msgstr[1] "%1 sekuntia"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1772,7 +1777,7 @@ msgstr "Suorakulmainen alue"
 msgid "Launch Spectacle without capturing"
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1780,18 +1785,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Kuvan kaappaaminen peruttiin tai se epäonnistui"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1800,23 +1805,23 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle"
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1828,7 +1833,7 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1836,19 +1841,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"

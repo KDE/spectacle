@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -199,13 +199,13 @@ msgstr "U pozadinskom režimu, ne izbacuj obaveštenje kada se uhvati snimak"
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, fuzzy, kde-format
 #| msgid "QImageWriter cannot write image: "
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne može da upiše sliku: "
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -213,12 +213,12 @@ msgid ""
 "%1</filename>"
 msgstr ""
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ne mogu da sačuvam snimak. Greška pri upisivanju fajla."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -226,43 +226,43 @@ msgid ""
 "><filename>%1</filename>"
 msgstr ""
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ne mogu da sačuvam snimak. Greška pri upisivanju privremenog lokalnog fajla."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Ne mogu da sačuvam snimak. Ne mogu da otpremim fajl na udaljenu lokaciju."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ne mogu da sačuvam snimak. Ime fajla za upisivanje nije dobro."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ne mogu da sačuvam prazan snimak."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -270,7 +270,7 @@ msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ne mogu da sačuvam snimak. Ne mogu da otpremim fajl na udaljenu lokaciju."
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Štampanje nije uspelo. Štampač ne može da se pripremi."
@@ -730,6 +730,11 @@ msgstr "Na klik"
 #, kde-format
 msgid "No Delay"
 msgstr "bez zastoja"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1618,7 +1623,7 @@ msgid " seconds"
 msgstr " sekundi"
 
 # >! Plurals.
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, fuzzy, kde-format
 #| msgid " second"
 msgctxt "@title:window"
@@ -1629,7 +1634,7 @@ msgstr[1] " sekunda"
 msgstr[2] " sekunda"
 msgstr[3] " sekunda"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, fuzzy, kde-format
 #| msgctxt "Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1834,7 +1839,7 @@ msgstr "pravougaona zona"
 msgid "Launch Spectacle without capturing"
 msgstr "snimljeno Spectacleom"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1842,50 +1847,50 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Hvatanje snimka otkazano ili propalo"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1893,19 +1898,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvori"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr ""

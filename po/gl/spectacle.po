@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2024-01-15 19:30+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -193,12 +193,12 @@ msgstr "No modo en segundo plano, excluír as sombras da captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir e editar o ficheiro de captura de pantalla existente"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pode gardar a imaxe: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,14 +208,14 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -225,32 +225,32 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "remoto fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro temporal local."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Non é posíbel gardar a imaxe. Non se puido enviar o ficheiro ao lugar remoto."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. O nome do ficheiro no que "
 "gardala é incorrecto."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Non é posíbel gardar unha captura de pantalla baleira."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -259,7 +259,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro temporal debe ser un "
 "ficheiro local existente."
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro de saída debe ser un URL "
 "válido cun nome de ficheiro."
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -276,7 +276,7 @@ msgstr ""
 "Non é posíbel gardar a gravación. Non se puido mover o ficheiro á "
 "localización: %1"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr ""
@@ -694,6 +694,11 @@ msgstr "Capturar ao premer"
 #, kde-format
 msgid "No Delay"
 msgstr "Sen retardo"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1548,7 +1553,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segundos"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1556,7 +1561,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segundo"
 msgstr[1] "%1 segundos"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1744,7 +1749,7 @@ msgstr "Gravar unha zona rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle sen capturar"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1754,18 +1759,18 @@ msgstr ""
 "Spectacle está gravando: %1\n"
 "Prema para rematar a gravación."
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non é un modo válido para «--record»."
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "A captura de pantalla cancelouse ou fallou."
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1774,23 +1779,23 @@ msgstr ""
 "Gardouse unha captura de pantalla como «%1» en «%2» e a ruta de ficheiro da "
 "captura de pantalla gardouse no portapapeis."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Gardouse a captura co nome «%1» no cartafol persoal de imaxes."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Gardouse a captura co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Gardouse unha captura no portapapeis."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1799,24 +1804,24 @@ msgstr ""
 "Gardouse unha gravación como «%1» en «%2» e a ruta de ficheiro da gravación "
 "gardouse no portapapeis."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Gardouse a gravación co nome «%1» no cartafol persoal de vídeos."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Gardouse a gravación co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"

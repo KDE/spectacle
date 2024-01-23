@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -186,12 +186,12 @@ msgstr "Taustarežiimis jäetakse akna dekoratsioonid ekraanipildilt välja"
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ei suuda pilti kirjutada: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -201,12 +201,12 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest kataloogi loomine nurjus:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekraanipildi salvestamine nurjus. Tõrge faili kirjutamisel."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -216,49 +216,49 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest võrgukataloogi loomine nurjus:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ekraanipildi salvestamine nurjus. Tõrge ajutise kohaliku faili kirjutamisel."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Pildi salvestamine nurjus. Faili ei saanud kaugasukohta üles laadida."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekraanipildi salvestamine nurjus. Salvestatav failinimi on vigane."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Tühja ekraanipilti ei saa salvestada."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Pildi salvestamine nurjus. Faili ei saanud kaugasukohta üles laadida."
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Trükkimine nurjus. Printerit ei õnnestunud initsialiseerida."
@@ -703,6 +703,11 @@ msgstr "Klõpsamisel"
 #, kde-format
 msgid "No Delay"
 msgstr "Puudub"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, fuzzy, kde-format
@@ -1590,7 +1595,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekundit"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1598,7 +1603,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekundit"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, fuzzy, kde-format
 #| msgctxt "@title:window Unsaved Screenshot"
 #| msgid "Unsaved[*]"
@@ -1790,7 +1795,7 @@ msgstr "Ristkülikukujuline ala"
 msgid "Launch Spectacle without capturing"
 msgstr "Käivita Spectacle"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1798,18 +1803,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekraanipildi tegemine katkestati või nurjus"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1819,24 +1824,24 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekraanipilt salvestati sinu lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1846,7 +1851,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1854,19 +1859,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ava"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Annoteeri"

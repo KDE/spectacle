@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2024-01-10 21:39+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -213,12 +213,12 @@ msgstr "В фоновом режиме, не включая тень окна"
 msgid "Open and edit existing screenshot file"
 msgstr "Открыть и отредактировать существующий файл снимка экрана"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Ошибка записи изображения с помощью QImageWriter: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -228,12 +228,12 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога: <nl/"
 "><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не удалось сохранить снимок экрана. Ошибка при записи файла."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -243,30 +243,30 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога в сетевой "
 "файловой системе: <nl/><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не удалось сохранить снимок экрана. Ошибка при записи временного файла."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Ошибка при сохранении изображения. Не удалось загрузить файл на удалённый "
 "адрес."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Не удалось сохранить снимок экрана. Недопустимое имя файла."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Невозможно сохранить пустой снимок экрана."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -275,21 +275,21 @@ msgstr ""
 "Не удалось экспортировать видео: адресом временного файла должен быть "
 "существующий временный файл"
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ошибка при сохранении записи: не удалось переместить файл в расположение «%1»"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ошибка печати: не удалось инициализировать принтер."
@@ -719,6 +719,11 @@ msgstr "По щелчку"
 #, kde-format
 msgid "No Delay"
 msgstr "Без задержки"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1578,7 +1583,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " секунд"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1588,7 +1593,7 @@ msgstr[1] "%1 секунды"
 msgstr[2] "%1 секунд"
 msgstr[3] "%1 секунда"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1777,7 +1782,7 @@ msgstr "Запись прямоугольной области"
 msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1787,18 +1792,18 @@ msgstr ""
 "Приложение Spectacle выполняет запись %1\n"
 "Нажмите чтобы остановить запись."
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не является допустимым режимом при указании ключа -- record"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Создание снимка экрана отменено или не удалось."
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1807,23 +1812,23 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1832,24 +1837,24 @@ msgstr ""
 "Запись экрана сохранена как «%1» в «%2», полный путь к неё скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"

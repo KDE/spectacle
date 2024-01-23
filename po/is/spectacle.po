@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:36+0000\n"
+"POT-Creation-Date: 2024-01-23 00:37+0000\n"
 "PO-Revision-Date: 2023-11-09 12:57+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -184,12 +184,12 @@ msgstr "Keyra í bakgrunni, undanskilja skugga í skjámyndinni"
 msgid "Open and edit existing screenshot file"
 msgstr "Opna og breyta fyrirliggjandi skjámyndarskrá"
 
-#: src/ExportManager.cpp:358
+#: src/ExportManager.cpp:359
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter getur ekki skrifað mynd: %1"
 
-#: src/ExportManager.cpp:373
+#: src/ExportManager.cpp:374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -199,12 +199,12 @@ msgstr ""
 "Get ekki vistað skjámyndina því ekki tókst að búa til möppuna:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:383
+#: src/ExportManager.cpp:384
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Get ekki vistað skjámyndina. Villa við að skrifa skrána."
 
-#: src/ExportManager.cpp:403
+#: src/ExportManager.cpp:404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -214,27 +214,27 @@ msgstr ""
 "Get ekki vistað skjámyndina því ekki tókst að búa til fjartengda möppu:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:414 src/ExportManager.cpp:462
+#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Get ekki vistað skjámyndina. Villa við að skrifa bráðabirgðaskrá."
 
-#: src/ExportManager.cpp:422
+#: src/ExportManager.cpp:423
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Gat ekki vistað myndina. Gat ekki hlaðið skránni á fjartengdan stað."
 
-#: src/ExportManager.cpp:469
+#: src/ExportManager.cpp:470
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Get ekki vistað skjámyndina. Skrárheitið sem á að nota er ógilt."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ekki er hægt að vista tóma skjámynd."
 
-#: src/ExportManager.cpp:629
+#: src/ExportManager.cpp:649
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -243,7 +243,7 @@ msgstr ""
 "Mistókst að flytja út myndskeið: Slóð á bráðabirgðaskrá verður að vera "
 "staðbundin skrá sem er til"
 
-#: src/ExportManager.cpp:636
+#: src/ExportManager.cpp:656
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -252,13 +252,13 @@ msgstr ""
 "Mistókst að flytja út myndskeið: Slóð á úttaksskrá verður að vera gild slóð "
 "með skrárheiti"
 
-#: src/ExportManager.cpp:711
+#: src/ExportManager.cpp:731
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Gat ekki vistað upptökuna. Gat ekki fært skrána á staðinn: %1"
 
-#: src/ExportManager.cpp:739
+#: src/ExportManager.cpp:759
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Prentun mistókst. Mistókst að frumstilla prentarann."
@@ -679,6 +679,11 @@ msgstr "Taka mynd við smell"
 #, kde-format
 msgid "No Delay"
 msgstr "Engin töf"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "QR Code found: %1"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1541,7 +1546,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekúndur"
 
-#: src/Gui/SpectacleWindow.cpp:190
+#: src/Gui/SpectacleWindow.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1549,7 +1554,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "sekúnda"
 msgstr[1] "%1 sekúndur"
 
-#: src/Gui/SpectacleWindow.cpp:193
+#: src/Gui/SpectacleWindow.cpp:195
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1733,7 +1738,7 @@ msgstr "Taka upp rétthyrnt svæði"
 msgid "Launch Spectacle without capturing"
 msgstr "Opna Spectacle án þess að taka mynd"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1743,18 +1748,18 @@ msgstr ""
 "Spectacle er að taka upp: %1\n"
 "Smelltu til að ljúka upptöku"
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:617
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 er ekki gilt snið fyrir --record"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:819
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Hætt við töku skjámyndar eða hún mistókst"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:871
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1763,23 +1768,23 @@ msgstr ""
 "Skjámynd var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
 "klippispjaldið."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:875
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Skjámynd var vistuð sem '%1' í myndamöppunni þína."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Skjámynd var vistuð sem '%1' í '%2'."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:882
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Skjámynd var vistuð á klippispjaldið þitt."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1788,24 +1793,24 @@ msgstr ""
 "Upptakan var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
 "klippispjaldið."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:889
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Upptakan var vistuð sem '%1' í myndskeiðamöppunni þína."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:891
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Upptaka var vistuð sem '%1' í '%2'."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:902
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Opna"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:916
 #, kde-format
 msgid "Annotate"
 msgstr "Glósa"
