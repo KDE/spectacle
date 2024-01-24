@@ -25,6 +25,7 @@
 #include <QString>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
+#include <QtConcurrent/QtConcurrentRun>
 
 #include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
@@ -623,21 +624,24 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 
 void ExportManager::scanQRCode()
 {
-    auto image = ExportManager::instance()->image();
-    image.convertTo(QImage::Format_Mono);
-    image.convertTo(QImage::Format_Grayscale8);
+    auto scan = [this] {
+        auto image = ExportManager::instance()->image();
+        image.convertTo(QImage::Format_Mono);
+        image.convertTo(QImage::Format_Grayscale8);
 
-    auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::Lum);
-    auto results = ZXing::ReadBarcodes(zximage, {});
+        auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::Lum);
+        auto results = ZXing::ReadBarcodes(zximage, {});
 
-    if (!results.empty()) {
-        QString result = QString::fromStdString(results[0].text());
+        if (!results.empty()) {
+            QString result = QString::fromStdString(results[0].text());
 
-        auto data = new QMimeData();
-        data->setText(result);
-        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-        Q_EMIT qrCodeScanned(result);
-    }
+            auto data = new QMimeData();
+            data->setText(result);
+            KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+            Q_EMIT qrCodeScanned(result);
+        }
+    };
+    auto future = QtConcurrent::run(scan);
 }
 
 void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inputUrl, QUrl outputUrl)
