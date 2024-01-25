@@ -150,6 +150,8 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
 
     if (options.testFlag(RenderOption::Images)) {
         auto imageRect = G::rectScaled(viewPort, imageDpr() / zoomFactor);
+        // Enable smooth transform for fractional scales.
+        painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / zoomFactor, 1) != 0);
         if (zoomFactor == 1) {
             painter->drawImage({0, 0}, m_image, imageRect);
         } else {
