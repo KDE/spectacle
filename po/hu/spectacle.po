@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:37+0000\n"
-"PO-Revision-Date: 2024-01-18 13:42+0100\n"
+"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"PO-Revision-Date: 2024-01-24 11:39+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -181,12 +181,12 @@ msgstr "Árnyékok lehagyása a képernyőképről"
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/ExportManager.cpp:359
+#: src/ExportManager.cpp:360
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:374
+#: src/ExportManager.cpp:375
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -196,12 +196,12 @@ msgstr ""
 "A képernyőkép nem menthető, mert a mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:384
+#: src/ExportManager.cpp:385
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:404
+#: src/ExportManager.cpp:405
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,28 +211,28 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:415 src/ExportManager.cpp:463
+#: src/ExportManager.cpp:416 src/ExportManager.cpp:464
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:423
+#: src/ExportManager.cpp:424
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:470
+#: src/ExportManager.cpp:471
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:515
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:649
+#: src/ExportManager.cpp:653
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:656
+#: src/ExportManager.cpp:660
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:731
+#: src/ExportManager.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -258,7 +258,7 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:759
+#: src/ExportManager.cpp:763
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
@@ -416,7 +416,7 @@ msgstr "Új kép készítése"
 #: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Capture Settings"
-msgstr ""
+msgstr "Rögzítési beállítások"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordOptions.qml:41
@@ -425,10 +425,9 @@ msgid "Include mouse pointer"
 msgstr "Egérmutató belefoglalása"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Az egérmutató jelenjen meg a képernyőképen"
+msgstr "Az egérmutató jelenjen meg a képernyőképen."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
 #, kde-format
@@ -440,17 +439,18 @@ msgstr "Címsor és keret belefoglalása"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Az ablak címsorának és szegélyének megjelenítése ablak képernyőképének "
+"készítésekor."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Címsor és keret belefoglalása"
+msgstr "Ablak árnyékának belefoglalása"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
+msgstr "Az ablak árnyékának megjelenítése ablak képernyőképének készítésekor."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -458,17 +458,15 @@ msgid "Capture the current pop-up only"
 msgstr "Csak az aktuális felugró ablak mentése"
 
 #: src/Gui/CaptureSettingsColumn.qml:46
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc) when "
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Csak az aktuális felugró ablak (menü, buboréksúgó, stb) mentése.\n"
-"Ha nincs engedélyezve, a felugró ablak a szülő ablakkal együtt kerül mentésre"
+"Csak az aktuális felugró ablak (menü, buboréksúgó, stb) mentése ablak "
+"képernyőképének készítésekor. Ha nincs engedélyezve, a felugró ablak a szülő "
+"ablakkal együtt kerül mentésre."
 
 #: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
 #, kde-format
@@ -476,22 +474,19 @@ msgid "Quit after manual Save or Copy"
 msgstr "Kilépés kézi mentés vagy másolás után"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "Kilépés a Spectacle-ből a kép kézi mentése vagy másolása után"
+msgstr "Kilépés a Spectacle-ből a kép kézi mentése vagy másolása után."
 
 #: src/Gui/CaptureSettingsColumn.qml:64
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture on click"
-msgstr "Kattintásra"
+msgstr "Rögzítés kattintásra"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Várjon egérkattintásra a képernyőkép készítése előtt"
+msgstr "Várjon egérkattintásra a képernyőkép készítése előtt."
 
 #: src/Gui/CaptureSettingsColumn.qml:76 src/Gui/OptionsMenu.cpp:152
 #, kde-format
@@ -504,8 +499,7 @@ msgid "The screenshot has been copied to the clipboard."
 msgstr "A képernyőkép a vágólapra került."
 
 #: src/Gui/DelaySpinBox.qml:15
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Nincs késleltetés"
@@ -530,20 +524,19 @@ msgid "%2 seconds"
 msgstr " másodperc"
 
 #: src/Gui/DialogPage.qml:96
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Modes"
-msgstr "<b>Rögzítési mód</b>"
+msgstr "Rögzítési módok"
 
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "A Spectacle beállítása…"
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Súgó"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -561,40 +554,36 @@ msgid "Share"
 msgstr "Megosztás"
 
 #: src/Gui/ImageView.qml:147
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "Screenshot"
-msgstr "Új kép készítése"
+msgstr "Képernyőkép"
 
 #: src/Gui/ImageView.qml:151
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording"
-msgstr "Képernyőrögzítés"
+msgstr "Felvétel"
 
 #: src/Gui/ImageView.qml:214
 #, kde-format
 msgid "Zoom:"
-msgstr ""
+msgstr "Nagyítás:"
 
 #: src/Gui/ImageView.qml:228
 #, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "Képnagyítás"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "A képernyőkép a vágólapra került."
+msgstr "A videó helye a vágólapra került."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "A képernyőkép a vágólapra került."
+msgstr "A képernyőkép helye a vágólapra került."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -609,13 +598,12 @@ msgstr "Mentés másként…"
 #: src/Gui/MainToolBarContents.qml:71
 #, kde-format
 msgid "Copy"
-msgstr ""
+msgstr "Másolás"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Hely másolása a vágólapra"
+msgstr "Hely másolása"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -623,22 +611,19 @@ msgid "Export"
 msgstr "Exportálás"
 
 #: src/Gui/MainToolBarContents.qml:96
-#, fuzzy, kde-format
-#| msgid "Annotation Done"
+#, kde-format
 msgid "Show Annotation Tools"
-msgstr "Feliratozás kész"
+msgstr "Feliratozó eszközök megjelenítése"
 
 #: src/Gui/MainToolBarContents.qml:122
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgid "New Screenshot"
-msgstr "Új kép készítése"
+msgstr "Új képernyőkép"
 
 #: src/Gui/MainToolBarContents.qml:133
-#, fuzzy, kde-format
-#| msgid "<b>Options</b>"
+#, kde-format
 msgid "Options"
-msgstr "<b>Opciók</b>"
+msgstr "Opciók"
 
 #: src/Gui/MainToolBarContents.qml:141
 #, kde-format
@@ -646,10 +631,9 @@ msgid "Configure..."
 msgstr "Beállítások…"
 
 #: src/Gui/OptionsMenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
+#, kde-format
 msgid "Capture Mode"
-msgstr "<b>Rögzítési mód</b>"
+msgstr "Rögzítési mód"
 
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
@@ -668,7 +652,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Az ablak árnyékának megjelenítése"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -685,10 +669,9 @@ msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Kilépés a Spectacle-ből a kép kézi mentése vagy másolása után"
 
 #: src/Gui/OptionsMenu.cpp:137
-#, fuzzy, kde-format
-#| msgid "On Click"
+#, kde-format
 msgid "Capture On Click"
-msgstr "Kattintásra"
+msgstr "Rögzítés kattintásra"
 
 #: src/Gui/OptionsMenu.cpp:157
 #, kde-format
@@ -701,39 +684,38 @@ msgid "QR Code found: %1"
 msgstr ""
 
 #: src/Gui/RecordingView.qml:46
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Képernyőrögzítés"
+msgstr ""
+"Felvétel:\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:77
 #, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #: src/Gui/RecordingView.qml:77
 #, kde-format
 msgid "Play"
-msgstr ""
+msgstr "Lejátszás"
 
 #: src/Gui/RecordOptions.qml:33
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Recording Settings"
-msgstr "Képernyőrögzítés"
+msgstr "Felvételi beállítások"
 
 #: src/Gui/RecordOptions.qml:42
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Az egérmutató jelenjen meg a képernyőképen"
+msgstr "Az egérmutató jelenjen meg a képernyőfelvételen."
 
 #: src/Gui/RecordOptions.qml:53
 #, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Felvétel befejezése"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -742,16 +724,13 @@ msgid ""
 msgstr "A képernyőkép a vágólapra került, és mentve mint <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"A képernyőkép mentve lett, mint <a href=\"%1\">%2</a>, a helye pedig a "
-"vágólapra került"
+"A videó mentve lett, mint <a href=\"%1\">%2</a>, a helye pedig a vágólapra "
+"került"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -763,10 +742,9 @@ msgstr ""
 "vágólapra került"
 
 #: src/Gui/SavedMessage.qml:12
-#, fuzzy, kde-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-format
 msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "A képernyő kép mentve, mint <a href=\"%1\">%2</a>"
+msgstr "A videó kép mentve, mint <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:14
 #, kde-format
@@ -874,10 +852,9 @@ msgstr "Fókusz visszaadásához a Spectacle-nek"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Rectangular Region Selection"
-msgstr "Téglalap alakú terület"
+msgstr "Téglalap alakú terület kijelölése"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:167
@@ -907,7 +884,7 @@ msgstr "„Kattintás és felengedés” elfogadása"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, kde-format
 msgid "Show capture instructions"
-msgstr ""
+msgstr "Rögzítési utasítások megjelenítése"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:218
@@ -974,24 +951,19 @@ msgid "Preview:"
 msgstr "Előnézet:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "A következő helykitöltőket használhatja a fájlnévben, amelyek helyettesítve "
-"lesznek a tényleges szöveggel a fájl mentésekor:<blockquote>"
+"lesznek a tényleges szöveggel a fájl mentésekor:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -1008,11 +980,10 @@ msgstr ""
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Több"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Általános"
@@ -1021,17 +992,16 @@ msgstr "Általános"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Képmentés"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Videómentés"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
@@ -1089,10 +1059,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:59
-#, fuzzy, kde-format
-#| msgid "Whether to show a magnifier in the region selection"
+#, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Megjelenjen-e a nagyító a területkijelölőben"
+msgstr "Megjelenjenek-e a rögzítési utasítások a területkijelölőben"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:63
@@ -1120,10 +1089,9 @@ msgstr "Az egérmutatót tartalmazza-e a képernyőkép"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Az egérmutatót tartalmazza-e a képernyőkép"
+msgstr "Az egérmutatót tartalmazza-e a videó"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1133,10 +1101,9 @@ msgstr "Az ablakdekorációkat tartalmazza-e a képernyőkép"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Az ablakdekorációkat tartalmazza-e a képernyőkép"
+msgstr "Az ablak árnyékát tartalmazza-e a képernyőkép"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1171,11 +1138,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Tömörítés minősége veszteséges képformátumoknál"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Új kép készítése"
+msgstr "Képernyőképek"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1185,17 +1151,15 @@ msgstr "Alapértelmezett képformátum"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "A mentéskor használt alapértelmezett fájlnév"
+msgstr "A képernyőképek mentésekor használt fájlnévsablon"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Új kép készítése"
+msgstr "Képernyőkép"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1215,17 +1179,15 @@ msgstr "A „Mentés másként” művelethez legutóbb használt elérési út"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Alapértelmezett képformátum"
+msgstr "Alapértelmezett videóformátum"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "A mentéskor használt alapértelmezett fájlnév"
+msgstr "A képernyővideók mentésekor használt fájlnévsablon"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1241,88 +1203,87 @@ msgstr "Képernyőátjátszás"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
-#, fuzzy, kde-format
-#| msgid "The last used save mode"
+#, kde-format
 msgid "The last used annotation tool type"
-msgstr "A legutóbb használt mentési mód"
+msgstr "A legutóbb használt feliratozó eszköz típusa"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:208
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "A szabadkézi feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:213
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr ""
+msgstr "A kiemelő feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "A vonal feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:223
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "A nyíl feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "A téglalap feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:233
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Az ellipszis feliratozó eszköz vonalvastagsága"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr ""
+msgstr "Szabadkézi feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:243
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr ""
+msgstr "A kiemelő feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:247
 #, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr ""
+msgstr "A vonal feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:251
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr ""
+msgstr "A nyíl feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:255
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr ""
+msgstr "A téglalap feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:259
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr ""
+msgstr "Az ellipszis feliratozó eszköz vonalszíne"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:264
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr ""
+msgstr "A téglalap feliratozó eszköz kitöltőszíne"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
@@ -1330,19 +1291,19 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr ""
+msgstr "Az ellipszis feliratozó eszköz kitöltőszíne"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
 #, kde-format
 msgid "Font for text annotations"
-msgstr ""
+msgstr "A szöveges feliratok betűtípusa"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:280
 #, kde-format
 msgid "Font for number annotations"
-msgstr ""
+msgstr "A számjegyzetek betűtípusa"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1350,49 +1311,49 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "Font color for annotations"
-msgstr ""
+msgstr "A feliratok betűszíne"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:293
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
-msgstr ""
+msgstr "A szabadkézi feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:297
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr ""
+msgstr "A vonal feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:301
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
-msgstr ""
+msgstr "A nyíl feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:305
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr ""
+msgstr "A téglalap feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:309
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr ""
+msgstr "Az ellipszis feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:313
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "A szöveges feliratozó eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:317
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr ""
+msgstr "A számjegyzet eszköznek legyen-e árnyékolása"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
@@ -1586,12 +1547,12 @@ msgstr "Nem mentett"
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Visszavonás"
 
 #: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Újra"
 
 #: src/Main.cpp:41
 #, kde-format
@@ -1627,6 +1588,9 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Waylanden a Spectacle a KDE Plasma KWin kompozitorát igényli, amely nem "
+"tűnik elérhetőnek. Használja a Spectacle-t a KDE Plasma alatt, vagy "
+"használjon egy másik képernyőkép-készítő eszközt."
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
