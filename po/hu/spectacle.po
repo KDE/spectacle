@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-24 11:39+0100\n"
+"PO-Revision-Date: 2024-01-25 11:07+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -276,8 +276,8 @@ msgstr "Vonal:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 képpont"
+msgstr[1] "%1 képpont"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -309,16 +309,16 @@ msgstr "Betűtípus:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1 pt"
+msgstr[1] "%2 %3 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1 pt"
+msgstr[1] "%2 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:236
 #, kde-format
@@ -505,23 +505,18 @@ msgid "No Delay"
 msgstr "Nincs késleltetés"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 másodperc"
-msgstr[1] "%1 másodperc"
+msgstr[0] "%2 másodperc"
+msgstr[1] "%2 másodperc"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " másodperc"
+msgstr "%2 másodperc"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -681,7 +676,7 @@ msgstr "Nincs késleltetés"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR-kód található: %1"
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -974,7 +969,7 @@ msgstr "Almappába mentéshez"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Kevesebb megjelenítése"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
