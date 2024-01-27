@@ -117,7 +117,7 @@ Q_SIGNALS:
     void errorMessage(const QString &str);
     void imageExported(const ExportManager::Actions &actions, const QUrl &url = {});
     void videoExported(const ExportManager::Actions &actions, const QUrl &url = {});
-    void qrCodeScanned(const QString &text);
+    void qrCodeScanned(const QVariant &content);
 
 public Q_SLOTS:
 

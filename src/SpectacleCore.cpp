@@ -263,7 +263,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     };
     connect(exportManager, &ExportManager::videoExported, this, onVideoExported);
 
-    auto onQRCodeScanned = [](const QString &result) {
+    auto onQRCodeScanned = [](const QVariant &result) {
         auto viewerWindow = ViewerWindow::instance();
         if (!viewerWindow) {
             return;

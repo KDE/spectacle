@@ -630,8 +630,16 @@ void ExportManager::scanQRCode()
         const auto result = ZXing::ReadBarcode(zximage, {});
 
         if (result.isValid()) {
-            QString text = QString::fromStdString(result.text());
-            Q_EMIT qrCodeScanned(text);
+            QVariant content;
+            if (result.contentType() == ZXing::ContentType::Text) {
+                content = QString::fromStdString(result.text());
+            } else {
+                QByteArray b;
+                b.resize(result.bytes().size());
+                std::copy(result.bytes().begin(), result.bytes().end(), b.begin());
+                content = b;
+            }
+            Q_EMIT qrCodeScanned(content);
         }
     };
     auto future = QtConcurrent::run(scan);

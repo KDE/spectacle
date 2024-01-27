@@ -282,10 +282,14 @@ void SpectacleWindow::copyLocation()
     ExportManager::instance()->exportImage(ExportManager::CopyPath | ExportManager::UserAction);
 }
 
-void SpectacleWindow::copyText(const QString &text)
+void SpectacleWindow::copyToClipboard(const QVariant &content)
 {
     auto data = new QMimeData();
-    data->setText(text);
+    if (content.typeId() == QMetaType::QString) {
+        data->setText(content.toString());
+    } else if (content.typeId() == QMetaType::QByteArray) {
+        data->setData(QStringLiteral("application/octet-stream"), content.toByteArray());
+    }
     KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
 }
 

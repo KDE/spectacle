@@ -19,12 +19,12 @@ InlineMessage {
     }
 
     type: Kirigami.MessageType.Information
-    text: i18n("QR Code found: %1", linkify(messageArgument))
+    text: typeof messageArgument === "string" ? i18n("QR Code found: %1", linkify(messageArgument)) : i18n("Found QR code with binary content.")
     actions: [
         Kirigami.Action {
             displayComponent: QQC2.ToolButton {
                 icon.name: "edit-copy"
-                onClicked: contextWindow.copyText(messageArgument)
+                onClicked: contextWindow.copyToClipboard(messageArgument)
             }
         },
         // Not using showCloseButton because it toggles visible on this item,
