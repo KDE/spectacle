@@ -631,10 +631,6 @@ void ExportManager::scanQRCode()
 
         if (result.isValid()) {
             QString text = QString::fromStdString(result.text());
-
-            auto data = new QMimeData();
-            data->setText(text);
-            KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
             Q_EMIT qrCodeScanned(text);
         }
     };
