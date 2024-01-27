@@ -627,17 +627,15 @@ void ExportManager::scanQRCode()
     auto scan = [this] {
         const auto image = ExportManager::instance()->image();
         const auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::XRGB);
+        const auto result = ZXing::ReadBarcode(zximage, {});
 
-        auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::Lum);
-        auto results = ZXing::ReadBarcodes(zximage, {});
-
-        if (!results.empty()) {
-            QString result = QString::fromStdString(results[0].text());
+        if (result.isValid()) {
+            QString text = QString::fromStdString(result.text());
 
             auto data = new QMimeData();
-            data->setText(result);
+            data->setText(text);
             KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-            Q_EMIT qrCodeScanned(result);
+            Q_EMIT qrCodeScanned(text);
         }
     };
     auto future = QtConcurrent::run(scan);
