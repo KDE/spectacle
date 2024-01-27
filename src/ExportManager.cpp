@@ -625,9 +625,8 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 void ExportManager::scanQRCode()
 {
     auto scan = [this] {
-        auto image = ExportManager::instance()->image();
-        image.convertTo(QImage::Format_Mono);
-        image.convertTo(QImage::Format_Grayscale8);
+        const auto image = ExportManager::instance()->image();
+        const auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::XRGB);
 
         auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::Lum);
         auto results = ZXing::ReadBarcodes(zximage, {});
