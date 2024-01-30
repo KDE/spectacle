@@ -351,7 +351,11 @@ void SpectacleWindow::showFontDialog()
         }
     });
 
-    dialog->open();
+    // BUG https://bugs.kde.org/show_bug.cgi?id=478155:
+    // Workaround modal font dialog being unusable.
+    // This should probably be fixed in the plasma-integration.
+    dialog->setModal(false);
+    dialog->show();
 }
 
 void SpectacleWindow::showColorDialog(int option)
