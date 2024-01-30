@@ -14,9 +14,9 @@ AnimatedLoader {
     required property AnnotationViewport viewport
     readonly property AnnotationDocument document: viewport.document
     readonly property bool shouldShow: enabled
-        && document.selectedAction.type === AnnotationDocument.Text
-        && (document.tool.type === AnnotationDocument.Text
-            || document.tool.type === AnnotationDocument.ChangeAction)
+        && document.selectedItem.options & AnnotationTool.TextOption
+        && (document.tool.options & AnnotationTool.TextOption
+            || document.tool.type === AnnotationTool.SelectTool)
 
     state: shouldShow ? "active" : "inactive"
 
@@ -28,32 +28,48 @@ AnimatedLoader {
         LayoutMirroring.childrenInherit: true
 
         Binding on implicitWidth {
-            value: Math.ceil(Math.max(contentWidth, fontMetrics.xHeight))
+            value: root.document.selectedItem.mousePath.boundingRect.width
             restoreMode: Binding.RestoreNone
             when: root.shouldShow
         }
         Binding on implicitHeight {
-            value: textField.contentHeight
+            value: root.document.selectedItem.mousePath.boundingRect.height
             restoreMode: Binding.RestoreNone
             when: root.shouldShow
         }
-        Binding on color {
-            value: root.document.selectedAction.type === AnnotationDocument.Text ?
-                root.document.selectedAction.fontColor : root.document.tool.fontColor
+        Binding {
+            target: root
+            property: "x"
+            when: root.shouldShow
+            value: root.document.selectedItem.mousePath.boundingRect.x
+            restoreMode: Binding.RestoreNone
+        }
+        Binding {
+            target: root
+            property: "y"
+            when: root.shouldShow
+            value: root.document.selectedItem.mousePath.boundingRect.y
+            restoreMode: Binding.RestoreNone
+        }
+        property color textColor
+        Binding on textColor {
+            value: root.document.selectedItem.options & AnnotationTool.TextOption ?
+                root.document.selectedItem.fontColor : root.document.tool.fontColor
             restoreMode: Binding.RestoreNone
             when: root.shouldShow
         }
+        color: Qt.rgba(textColor.r, textColor.g, textColor.b, 0)
         Binding on font {
-            value: root.document.selectedAction.type === AnnotationDocument.Text ?
-                root.document.selectedAction.font : root.document.tool.font
+            value: root.document.selectedItem.options & AnnotationTool.TextOption ?
+                root.document.selectedItem.font : root.document.tool.font
             restoreMode: Binding.RestoreNone
             when: root.shouldShow
         }
 
         focus: true
         selectByMouse: true
-        selectionColor: Qt.rgba(1-color.r, 1-color.g, 1-color.b, 1)
-        selectedTextColor: Qt.rgba(color.r, color.g, color.b, 1)
+        selectionColor: Qt.rgba(1-textColor.r, 1-textColor.g, 1-textColor.b, 1)
+        selectedTextColor: Qt.rgba(textColor.r, textColor.g, textColor.b, 1)
         cursorPosition: {
             const mapped = mapFromItem(root.viewport, root.viewport.pressPosition)
             return positionAt(mapped.x, mapped.y)
@@ -68,7 +84,7 @@ AnimatedLoader {
                 width: Math.max(1 / root.viewport.zoom,
                                 contextWindow.dprRound(fontMetrics.xHeight / 12))
                 height: parent.height
-                color: Qt.rgba(textField.color.r, textField.color.g, textField.color.b, 1)
+                color: Qt.rgba(textField.textColor.r, textField.textColor.g, textField.textColor.b, 1)
             }
             Connections {
                 target: textField
@@ -102,63 +118,50 @@ AnimatedLoader {
         }
 
         Binding on text {
-            value: root.document.selectedAction.text
+            value: root.document.selectedItem.text
             restoreMode: Binding.RestoreNone
             when: root.shouldShow
         }
-        onTextEdited: {
-            root.document.selectedAction.text = text
-            commitChangesTimer.restart()
+        onTextChanged: {
+            if (root.document.selectedItem.text === text) {
+                return
+            }
+            let wasEmpty = root.document.selectedItem.text.length === 0
+            root.document.selectedItem.text = text
+            if (wasEmpty) {
+                root.document.selectedItem.commitChanges()
+            } else {
+                commitChangesTimer.restart()
+            }
+        }
+
+        Keys.onDeletePressed: (event) => {
+            event.accepted = text.length === 0
+            if (event.accepted) {
+                root.document.deleteSelectedItem()
+            }
         }
 
         Timer {
             id: commitChangesTimer
             interval: 250
-            onTriggered: root.document.selectedAction.commitChanges()
+            onTriggered: root.document.selectedItem.commitChanges()
         }
 
         Connections {
             target: root.document
-            function onSelectedActionWrapperChanged() {
+            function onSelectedItemWrapperChanged() {
                 commitChangesTimer.stop()
             }
-        }
-
-        // these have to be set here to avoid null selectedAction errors
-        Binding {
-            target: root
-            property: "x"
-            when: root.shouldShow && !dragHandler.active
-            value: root.document.selectedAction.visualGeometry.x
-            restoreMode: Binding.RestoreNone
-        }
-        Binding {
-            target: root
-            property: "y"
-            when: root.shouldShow && !dragHandler.active
-            value: root.document.selectedAction.visualGeometry.y
-            restoreMode: Binding.RestoreNone
-        }
-        Binding {
-            target: root.document.selectedAction
-            property: "visualGeometry.x"
-            value: root.x
-            when: root.shouldShow && dragHandler.active
-            restoreMode: Binding.RestoreNone
-        }
-        Binding {
-            target: root.document.selectedAction
-            property: "visualGeometry.y"
-            value: root.y
-            when: root.shouldShow && dragHandler.active
-            restoreMode: Binding.RestoreNone
         }
 
         leftInset: -background.strokeWidth
         rightInset: -background.strokeWidth
         topInset: -background.strokeWidth
         bottomInset: -background.strokeWidth
-        background: SelectionBackground { zoom: root.viewport.zoom }
+        background: SelectionBackground {
+            zoom: root.viewport.effectiveZoom
+        }
 
         FontMetrics {
             id: fontMetrics
@@ -184,9 +187,17 @@ AnimatedLoader {
             }
             DragHandler {
                 id: dragHandler
-                target: root
+                target: null
                 cursorShape: Qt.SizeAllCursor
                 dragThreshold: 0
+                onActiveTranslationChanged: if (active) {
+                    let dx = activeTranslation.x / viewport.effectiveZoom
+                    let dy = activeTranslation.y / viewport.effectiveZoom
+                    root.document.selectedItem.transform(dx, dy)
+                }
+                onActiveChanged: if (!active) {
+                    root.document.selectedItem.commitChanges()
+                }
             }
             TapHandler {
                 cursorShape: Qt.SizeAllCursor

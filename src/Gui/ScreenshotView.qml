@@ -96,7 +96,7 @@ EmptyPage {
 
         clip: contextWindow.annotating
         interactive: contextWindow.annotating
-            && AnnotationDocument.tool.type === AnnotationDocument.None
+            && AnnotationDocument.tool.type === AnnotationTool.NoTool
         boundsBehavior: Flickable.StopAtBounds
         rebound: Transition {} // Instant transition. Null doesn't do this.
         contentWidth: Math.max(width, annotationEditor.width)
@@ -182,7 +182,7 @@ EmptyPage {
             height: implicitHeight * root.fitZoom
             visible: true
             enabled: contextWindow.annotating
-                && AnnotationDocument.tool.type !== AnnotationDocument.None
+                && AnnotationDocument.tool.type !== AnnotationTool.NoTool
         }
     }
 

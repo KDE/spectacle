@@ -5,10 +5,8 @@
  */
 
 #include "AnnotationDocument.h"
-#include "EditAction.h"
 #include "EffectUtils.h"
 #include "Geometry.h"
-#include "settings.h"
 
 #include <QGuiApplication>
 #include <QPainter>
@@ -16,7 +14,6 @@
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
-#include <cmath>
 #include <memory>
 
 using G = Geometry;
@@ -24,16 +21,12 @@ using G = Geometry;
 AnnotationDocument::AnnotationDocument(QObject *parent)
     : QObject(parent)
     , m_tool(new AnnotationTool(this))
-    , m_selectedActionWrapper(new SelectedActionWrapper(this))
+    , m_selectedItemWrapper(new SelectedItemWrapper(this))
 {
 }
 
 AnnotationDocument::~AnnotationDocument()
 {
-    qDeleteAll(m_undoStack);
-    m_undoStack.clear();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
 }
 
 AnnotationTool *AnnotationDocument::tool() const
@@ -41,19 +34,19 @@ AnnotationTool *AnnotationDocument::tool() const
     return m_tool;
 }
 
-SelectedActionWrapper *AnnotationDocument::selectedActionWrapper() const
+SelectedItemWrapper *AnnotationDocument::selectedItemWrapper() const
 {
-    return m_selectedActionWrapper;
+    return m_selectedItemWrapper;
 }
 
 int AnnotationDocument::undoStackDepth() const
 {
-    return m_undoStack.count();
+    return m_history.undoList().size();
 }
 
 int AnnotationDocument::redoStackDepth() const
 {
-    return m_redoStack.count();
+    return m_history.redoList().size();
 }
 
 QSizeF AnnotationDocument::canvasSize() const
@@ -88,30 +81,20 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
         return;
     }
 
-    QList<EditAction *> filteredUndo;
-    for (auto *ea : std::as_const(m_undoStack)) {
-        if (ea->visualGeometry().intersects(cropRect)) {
-            ea->translate(-cropRect.topLeft());
-            if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
-                static_cast<ShapeAction *>(ea)->invalidateCache();
-            }
-            filteredUndo << ea;
-        } else {
-            delete ea;
-        }
+    auto translate = QTransform::fromTranslate(-cropRect.x(), -cropRect.y());
+    auto intersectsRect = [cropRect](History::List::const_reference item) {
+        return item && item->renderRect().intersects(cropRect);
+    };
+    History::Lists filteredLists = m_history.filteredLists(intersectsRect);
+    auto &filteredUndo = filteredLists.undoList;
+    auto &filteredRedo = filteredLists.redoList;
+    for (auto it = filteredUndo.begin(); it != filteredUndo.end(); ++it) {
+        Traits::transformTraits(translate, it->get()->traits());
     }
-    m_undoStack = filteredUndo;
-
-    QList<EditAction *> filteredRedo;
-    for (auto *ea : std::as_const(m_redoStack)) {
-        if (ea->visualGeometry().intersects(cropRect)) {
-            ea->translate(-cropRect.topLeft());
-            filteredRedo << ea;
-        } else {
-            delete ea;
-        }
+    for (auto it = filteredRedo.begin(); it != filteredRedo.end(); ++it) {
+        Traits::transformTraits(translate, it->get()->traits());
     }
-    m_redoStack = filteredRedo;
+    m_history = {filteredUndo, filteredRedo};
 
     setImage(m_image.copy(G::rectScaled(cropRect, imageDpr()).toAlignedRect()));
 
@@ -123,17 +106,16 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
 
 void AnnotationDocument::clearAnnotations()
 {
-    qDeleteAll(m_undoStack);
-    m_undoStack.clear();
-    m_undoStack.squeeze();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-    m_redoStack.squeeze();
+    auto result = m_history.clearLists();
     m_tool->resetType();
     m_tool->resetNumber();
-    deselectAction();
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
+    deselectItem();
+    if (result.undoListChanged) {
+        Q_EMIT undoStackDepthChanged();
+    }
+    if (result.redoListChanged) {
+        Q_EMIT redoStackDepthChanged();
+    }
     Q_EMIT repaintNeeded();
 }
 
@@ -145,7 +127,7 @@ void AnnotationDocument::clear()
 
 void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
 {
-    static QList<EditAction *> stopAtAction = QList<EditAction *>();
+    static History::ConstList stopAtItem = {};
     const qreal scale = painter->transform().m11();
 
     if (options.testFlag(RenderOption::Images)) {
@@ -156,8 +138,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             painter->drawImage({0, 0}, m_image, imageRect);
         } else {
             // More High quality scale down
-            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor,
-                                            Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             painter->drawImage({0, 0}, scaledImg, imageRect);
         }
     }
@@ -167,150 +148,71 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     }
     painter->scale(zoomFactor, zoomFactor);
     painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
-    for (auto *ea : m_undoStack) {
-        if (!stopAtAction.isEmpty() && ea == stopAtAction.last()) {
+    const auto &undoList = m_history.undoList();
+    for (auto it = undoList.cbegin(); it != undoList.cend(); ++it) {
+        if (!stopAtItem.empty() && *it == stopAtItem.back()) {
             painter->scale(scale, scale);
             return;
         }
-
-        if (!isActionVisible(ea, G::rectScaled(viewPort, 1 / zoomFactor))) {
+        if (!m_history.itemVisible(*it)) {
+            continue;
+        }
+        // Render the temporary item instead if this item is selected.
+        auto selectedItem = m_selectedItemWrapper->selectedItem().lock();
+        auto renderedItem = *it == selectedItem ? m_tempItem.get() : it->get();
+        if (!renderedItem) {
+            continue;
+        }
+        auto &geometry = std::get<Traits::Geometry::Opt>(renderedItem->traits());
+        if (!geometry->visualRect.intersects(G::rectScaled(viewPort, 1 / zoomFactor))) {
             continue;
         }
 
-        bool offsetStroke = scale == 1 && (ea->strokeWidth() % 2 || ea->strokeWidth() == 0);
-        qreal penWidth = ea->strokeWidth();
-        // QPainter will force pen width to 1 if it is set to 0 and strokes are being drawn.
-        // QPainter doesn't draw exactly 1px strokes nicely.
-        if (penWidth == 0 || penWidth == 1) {
-            penWidth = 1.001;
-        }
-        QPen pen(ea->strokeColor(), penWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
-        painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
-
-        painter->setPen(pen);
+        painter->save(); // Remember to call restore later.
+        painter->translate(-viewPort.topLeft());
+        painter->setPen(Qt::NoPen);
         painter->setBrush(Qt::NoBrush);
 
+        auto &highlight = std::get<Traits::Highlight::Opt>(renderedItem->traits());
+        painter->setCompositionMode(highlight ? highlight->compositionMode : QPainter::CompositionMode_SourceOver);
+
         // Draw the shadow if existent
-        if (ea->hasShadow()) {
-            QImage shadow = shapeShadow(ea, painter->deviceTransform().m11() / zoomFactor);
+        auto &shadow = std::get<Traits::Shadow::Opt>(renderedItem->traits());
+        if (shadow && shadow->enabled) {
+            QImage image = shapeShadow(renderedItem->traits());
             painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(QRectF(ea->visualGeometry().translated(-viewPort.topLeft()) + ea->shadowMargins()).topLeft(), shadow);
+            painter->drawImage(geometry->visualRect, image);
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
         }
 
-        switch (ea->type()) {
-        case FreeHand:
-        case Highlight: {
-            auto *fha = static_cast<FreeHandAction *>(ea);
-            if (ea->type() == Highlight) {
-                painter->setCompositionMode(QPainter::CompositionMode_Darken);
-            }
-            QPointF offsetPos;
-            if (offsetStroke) {
-                offsetPos = {0.5, 0.5};
-            }
-            auto path = fha->path().translated(-viewPort.topLeft() + offsetPos);
-            if (path.isEmpty()) {
-                auto start = path.elementAt(0);
-                // ensure a single point freehand event is visible
-                path.lineTo(start.x + 0.0001, start.y);
-            }
-            painter->drawPath(path);
-            break;
+        if (auto &fill = std::get<Traits::Fill::Opt>(renderedItem->traits())) {
+            painter->setBrush(fill->brush);
+            painter->drawPath(geometry->path);
         }
-        case Line:
-        case Arrow: {
-            auto *la = static_cast<LineAction *>(ea);
-            QPointF offsetPos;
-            if (offsetStroke) {
-                offsetPos = {0.5, 0.5};
-            }
-            const auto &line = la->line().translated(-viewPort.topLeft() + offsetPos);
 
-            painter->drawLine(line);
-            if (la->type() == Arrow) {
-                painter->drawPolyline(la->arrowHeadPolygon(line));
-            }
-            break;
+        if (auto &stroke = std::get<Traits::Stroke::Opt>(renderedItem->traits())) {
+            painter->setBrush(stroke->pen.brush());
+            painter->drawPath(stroke->path);
         }
-        case Rectangle:
-        case Ellipse: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            painter->setPen(sa->strokeWidth() > 0 ? pen : Qt::NoPen);
-            painter->setBrush(sa->fillColor());
-            QMarginsF offsetMargins;
-            if (offsetStroke && sa->strokeWidth() > 0) {
-                qreal offset = 0.5;
-                offsetMargins = {-offset, -offset, -offset, -offset};
-            }
-            const auto rect = sa->geometry().translated(-viewPort.topLeft()) + offsetMargins;
-            switch (sa->type()) {
-            case Rectangle:
-                painter->drawRect(rect);
-                break;
-            case Ellipse:
-                painter->drawEllipse(rect);
-                break;
-            default:
-                break;
-            }
-            break;
-        }
-        case Blur: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 2 * imageDpr();
-            const qreal scale = 1.0 / factor;
-            if (sa->backingStoreCache().isNull() || sa->backingStoreCache().devicePixelRatio() != painter->deviceTransform().m11()) {
-                stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
-                sa->backingStoreCache().setDevicePixelRatio(painter->deviceTransform().m11());
-                stopAtAction.pop_back();
-                // With more scaling, blur more
-                sa->backingStoreCache() = fastPseudoBlur(sa->backingStoreCache(), 4, painter->deviceTransform().m11());
-            }
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            break;
-        }
-        case Pixelate: {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            const QRectF &targetRect = sa->geometry().normalized().translated(-viewPort.topLeft());
-            const qreal factor = 4;
-            const qreal scale = 1.0 / factor;
-            if (sa->backingStoreCache().isNull()) {
-                stopAtAction << ea;
-                sa->backingStoreCache() = renderToImage(QRectF(QPointF(0, 0), canvasSize()), scale);
 
-                stopAtAction.pop_back();
-            }
-            painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
-            painter->drawImage(targetRect, sa->backingStoreCache(), G::rectScaled(sa->geometry(), scale * imageDpr()).normalized());
-            break;
+        if (auto &text = std::get<Traits::Text::Opt>(renderedItem->traits())) {
+            painter->setBrush(Qt::NoBrush);
+            painter->setPen(text->brush.color());
+            painter->setFont(text->font);
+            painter->drawText(geometry->path.boundingRect(), text->textFlags(), text->text());
         }
-        case Text: {
-            auto *ta = static_cast<TextAction *>(ea);
-            painter->setFont(ta->font());
-            painter->setPen(ta->fontColor());
-            QPointF baselineOffset = {0, QFontMetricsF(ta->font()).ascent()};
-            painter->drawText(ta->startPoint() - viewPort.topLeft() + baselineOffset, ta->text());
-            break;
+
+        if (auto &imageEffect = std::get<Traits::ImageEffect::Opt>(renderedItem->traits())) {
+            auto getImage = [this] {
+                return renderToImage();
+            };
+            const auto &rect = geometry->path.boundingRect();
+            stopAtItem.push_back(*it);
+            const auto &image = imageEffect->image(getImage, rect, imageDpr());
+            stopAtItem.pop_back();
+            painter->drawImage(rect, image);
         }
-        case Number: {
-            auto *na = static_cast<NumberAction *>(ea);
-            const auto rect = na->boundingRect().translated(-viewPort.topLeft());
-            painter->setBrush(na->fillColor());
-            painter->setFont(na->font());
-            painter->setPen(Qt::NoPen);
-            painter->drawEllipse(rect);
-            painter->setPen(na->fontColor());
-            painter->drawText(rect, Qt::AlignCenter, QString::number(na->number()));
-            break;
-        }
-        default:
-            break;
-        }
+        painter->restore();
     }
     painter->scale(scale, scale);
 }
@@ -336,87 +238,86 @@ QImage AnnotationDocument::renderToImage() const
     return renderToImage(m_canvasRect);
 }
 
-bool AnnotationDocument::isLastActionInvalid() const
+bool AnnotationDocument::isCurrentItemValid() const
 {
-    return !m_undoStack.isEmpty() && !m_undoStack.last()->isValid();
+    return m_history.currentItem() && m_history.currentItem()->isValid();
 }
 
-void AnnotationDocument::permanentlyDeleteLastAction()
+HistoryItem::shared_ptr AnnotationDocument::popCurrentItem()
 {
-    if (m_undoStack.isEmpty()) {
-        return;
+    auto result = m_history.pop();
+    if (result.item) {
+        if (result.item == m_selectedItemWrapper->selectedItem().lock()) {
+            deselectItem();
+        }
+        Q_EMIT undoStackDepthChanged();
+        emitRepaintNeededUnlessEmpty(result.item->renderRect());
     }
-    permanentlyDeleteAction(m_undoStack.last());
+    if (result.redoListChanged) {
+        Q_EMIT redoStackDepthChanged();
+    }
+    return result.item;
 }
 
-EditAction *AnnotationDocument::actionAtPoint(const QPointF &point) const
+HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) const
 {
-    for (int i = m_undoStack.count() - 1; i >= 0; --i) {
-        auto action = m_undoStack[i];
-        if (isActionVisible(action) && action->visualGeometry().contains(point)) {
-            return action;
+    const auto &undoList = m_history.undoList();
+    // Precisely the first time so that users can get exactly what they click.
+    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
+        auto &item = *it;
+        if (m_history.itemVisible(item)) {
+            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
+            if (geometry->mousePath.contains(rect.center())) {
+                return item;
+            }
+        }
+    }
+    // If rect has no width or height
+    if (rect.isNull()) {
+        return nullptr;
+    }
+    // Forgiving if that failed so that you don't need to be perfect.
+    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
+        auto &item = *it;
+        if (m_history.itemVisible(item)) {
+            QPainterPath path(rect.topLeft());
+            path.addEllipse(rect);
+            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
+            if (geometry->mousePath.intersects(path)) {
+                return item;
+            }
         }
     }
     return nullptr;
 }
 
-QRectF AnnotationDocument::visualGeometryAtPoint(const QPointF &point) const
-{
-    auto action = actionAtPoint(point);
-    if (!action) {
-        return {};
-    }
-    return action->visualGeometry();
-}
-
 void AnnotationDocument::undo()
 {
-    if (m_undoStack.isEmpty()) {
+    const auto undoCount = m_history.undoList().size();
+    if (!undoCount) {
         return;
     }
 
-    auto *action = m_undoStack.last();
-    auto *replacedAction = action->replaces();
-    int undoCount = m_undoStack.size();
-    bool isSelected = action == m_selectedActionWrapper->editAction();
-    bool replacesEarlierAction = undoCount > 1 && replacedAction
-                              && replacedAction == m_undoStack[undoCount - 2];
-
-    if (isSelected && !replacesEarlierAction) {
-        deselectAction();
+    auto currentItem = m_history.currentItem();
+    auto prevItem = undoCount > 1 ? m_history.undoList()[undoCount - 2] : nullptr;
+    auto updateRect = currentItem->renderRect();
+    if (prevItem) {
+        updateRect |= prevItem->renderRect();
     }
-
-    if (m_undoStack.isEmpty()) {
-        // deselectAction() could have deleted the last action in the stack
-        return;
-    }
-
-    auto updateRect = action->lastUpdateArea();
-    if (action->replaces()) {
-        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
-    }
-    m_redoStack << action;
-    m_undoStack.pop_back();
-
-    if (action->type() == AnnotationDocument::Number) {
-        auto na = static_cast<NumberAction *>(action);
-        m_tool->setNumber(na->number());
-    }
-
-    if (isSelected && replacesEarlierAction) {
-        m_selectedActionWrapper->setEditAction(replacedAction);
-    }
-
-    for (auto action : std::as_const(m_undoStack)) {
-        if (isActionVisible(action, updateRect)) {
-            updateRect = updateRect.united(action->lastUpdateArea());
-        }
-        if (action->type() == AnnotationDocument::Blur
-            || action->type() == AnnotationDocument::Pixelate) {
-            auto *sa = static_cast<ShapeAction *>(action);
-            sa->invalidateCache();
+    if (auto text = std::get<Traits::Text::Opt>(currentItem->traits())) {
+        if (text->type() == Traits::Text::Number) {
+            m_tool->setNumber(std::get<Traits::Text::Number>(text->value));
         }
     }
+    if (currentItem == m_selectedItemWrapper->selectedItem().lock()) {
+        if (prevItem && currentItem->hasParent() && (prevItem == currentItem->parent())) {
+            m_selectedItemWrapper->setSelectedItem(prevItem);
+        } else {
+            deselectItem();
+        }
+    }
+    m_history.undo();
+
     Q_EMIT undoStackDepthChanged();
     Q_EMIT redoStackDepthChanged();
     emitRepaintNeededUnlessEmpty(updateRect);
@@ -424,303 +325,272 @@ void AnnotationDocument::undo()
 
 void AnnotationDocument::redo()
 {
-    if (m_redoStack.isEmpty()) {
+    if (m_history.redoList().empty()) {
         return;
     }
 
-    auto *action = m_redoStack.last();
-    auto *replacedAction = action->replaces();
-    int undoCount = m_undoStack.size();
-    bool isReplacedSelected = replacedAction == m_selectedActionWrapper->editAction();
-    bool replacesEarlierAction = undoCount > 0 && replacedAction
-                              && replacedAction == m_undoStack[undoCount - 1];
-
-    if (isReplacedSelected && !replacesEarlierAction) {
-        deselectAction();
+    auto currentItem = m_history.currentItem();
+    auto nextItem = *m_history.redoList().crbegin();
+    auto updateRect = nextItem->renderRect();
+    if (currentItem) {
+        updateRect |= currentItem->renderRect();
     }
-
-    auto updateRect = action->lastUpdateArea();
-    if (action->replaces()) {
-        updateRect = updateRect.united(action->replaces()->lastUpdateArea());
-    }
-    m_undoStack << action;
-    m_redoStack.pop_back();
-
-    if (action->type() == AnnotationDocument::Number) {
-        auto na = static_cast<NumberAction *>(action);
-        m_tool->setNumber(na->number() + 1);
-    }
-
-    if (isReplacedSelected && replacesEarlierAction) {
-        m_selectedActionWrapper->setEditAction(action);
-    }
-
-    for (auto action : std::as_const(m_undoStack)) {
-        if (isActionVisible(action, updateRect)) {
-            updateRect = updateRect.united(action->lastUpdateArea());
+    if (auto text = std::get<Traits::Text::Opt>(nextItem->traits())) {
+        if (text->type() == Traits::Text::Number) {
+            m_tool->setNumber(std::get<Traits::Text::Number>(text->value) + 1);
         }
     }
+    if (currentItem && currentItem == m_selectedItemWrapper->selectedItem()) {
+        if (nextItem == currentItem->child()) {
+            m_selectedItemWrapper->setSelectedItem(nextItem);
+        } else {
+            deselectItem();
+        }
+    }
+    m_history.redo();
+
     Q_EMIT undoStackDepthChanged();
     Q_EMIT redoStackDepthChanged();
     emitRepaintNeededUnlessEmpty(updateRect);
 }
 
-void AnnotationDocument::beginAction(const QPointF &point)
+bool isAnyOfToolType(AnnotationTool::Tool type, auto... args)
 {
-    QRectF updateRect;
-    // if the last action was not valid, discard it (for instance a rectangle with 0 size)
-    if (isLastActionInvalid()) {
-        QSignalBlocker blocker(this);
-        m_selectedActionWrapper->blockSignals(m_tool->type() == Text);
-        auto lastAction = m_undoStack.last();
-        updateRect = lastAction->lastUpdateArea();
-        permanentlyDeleteAction(lastAction);
-        m_selectedActionWrapper->blockSignals(false);
-    }
-
-    EditAction *action = nullptr;
-
-    switch (m_tool->type()) {
-    case FreeHand:
-    case Highlight: {
-        action = new FreeHandAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Line:
-    case Arrow: {
-        action = new LineAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Rectangle:
-    case Ellipse:
-    case Blur:
-    case Pixelate: {
-        action = new ShapeAction(m_tool, point);
-        addAction(action);
-        break;
-    }
-    case Text: {
-        action = new TextAction(m_tool, point);
-        addAction(action);
-        m_selectedActionWrapper->setEditAction(action);
-        break;
-    }
-    case Number: {
-        action = new NumberAction(m_tool, point);
-        addAction(action);
-        m_tool->setNumber(m_tool->number() + 1);
-        break;
-    }
-    default: return;
-    }
-
-    if (action) {
-        if (action->supportsShadow()) {
-            action->setShadow(m_tool->hasShadow());
-        }
-        updateRect = updateRect.united(action->lastUpdateArea());
-    }
-    emitRepaintNeededUnlessEmpty(updateRect);
+    return ((type == args) || ...);
 }
 
-void AnnotationDocument::continueAction(const QPointF &point, ContinueOptions options)
+void AnnotationDocument::beginItem(const QPointF &point)
 {
-    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
-    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
+    if (!m_tool->isCreationTool()) {
         return;
     }
 
-    auto isSelectedAction = m_selectedActionWrapper->editAction() == action;
-    QRectF oldSelectedActionVisualGeometry;
-    bool wasValid = action->isValid();
-    if (isSelectedAction) {
-        oldSelectedActionVisualGeometry = action->visualGeometry();
+    QRectF updateRect;
+    // if the last item was not valid, discard it (for instance a rectangle with 0 size)
+    if (!isCurrentItemValid()) {
+        auto result = m_history.pop();
+        if (result.item) {
+            updateRect = result.item->renderRect();
+        }
     }
 
-    switch (action->type()) {
-    case FreeHand:
-    case Highlight: {
-        auto *fha = static_cast<FreeHandAction *>(action);
-        fha->addPoint(point);
-        emitRepaintNeededUnlessEmpty(fha->lastUpdateArea());
-        break;
+    using enum AnnotationTool::Tool;
+    using enum AnnotationTool::Option;
+    HistoryItem temp;
+    auto &geometry = std::get<Traits::Geometry::Opt>(temp.traits());
+    geometry.emplace(QPainterPath{point}, QPainterPath{point}, QRectF{point, point});
+
+    auto toolOptions = m_tool->options();
+    if (toolOptions.testFlag(FillOption)) {
+        auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
+        fill.emplace(m_tool->fillColor());
     }
-    case Line:
-    case Arrow: {
-        auto *la = static_cast<LineAction *>(action);
+
+    if (toolOptions.testFlag(StrokeOption)) {
+        auto &stroke = std::get<Traits::Stroke::Opt>(temp.traits());
+        auto pen = Traits::Stroke::defaultPen();
+        pen.setBrush(m_tool->strokeColor());
+        pen.setWidthF(m_tool->strokeWidth());
+        stroke.emplace(pen);
+    }
+
+    if (toolOptions.testFlag(ShadowOption)) {
+        auto &shadow = std::get<Traits::Shadow::Opt>(temp.traits());
+        shadow.emplace(m_tool->hasShadow());
+    }
+
+    auto toolType = m_tool->type();
+    if (toolType == HighlightTool) {
+        std::get<Traits::Highlight::Opt>(temp.traits()).emplace();
+    } else if (toolType == ArrowTool) {
+        std::get<Traits::Arrow::Opt>(temp.traits()).emplace();
+    } else if (toolType == BlurTool) {
+        std::get<Traits::ImageEffect::Opt>(temp.traits()).emplace(Traits::ImageEffect::Blur, 4);
+    } else if (toolType == PixelateTool) {
+        std::get<Traits::ImageEffect::Opt>(temp.traits()).emplace(Traits::ImageEffect::Pixelate, 4);
+    } else if (toolType == NumberTool) {
+        std::get<Traits::Text::Opt>(temp.traits()).emplace(m_tool->number(), m_tool->fontColor(), m_tool->font());
+        m_tool->setNumber(m_tool->number() + 1);
+    } else if (toolType == TextTool) {
+        std::get<Traits::Text::Opt>(temp.traits()).emplace(QString{}, m_tool->fontColor(), m_tool->font());
+    }
+
+    Traits::initOptTuple(temp.traits());
+
+    auto newItem = std::make_shared<HistoryItem>(std::move(temp));
+    updateRect |= newItem->renderRect();
+    addItem(newItem);
+    m_selectedItemWrapper->setSelectedItem(newItem);
+    emitRepaintNeededUnlessEmpty(updateRect);
+}
+
+void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions options)
+{
+    const auto &currentItem = m_history.currentItem();
+    bool isSelected = m_selectedItemWrapper->selectedItem() == currentItem;
+    const auto &item = isSelected ? m_tempItem : currentItem;
+    if (!m_tool->isCreationTool() || !item || !std::get<Traits::Geometry::Opt>(item->traits())) {
+        return;
+    }
+
+    auto renderRect = item->renderRect();
+    auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
+    auto &path = geometry->path;
+    switch (m_tool->type()) {
+    case AnnotationTool::FreeHandTool:
+    case AnnotationTool::HighlightTool: {
+        auto prev = path.currentPosition();
+        // smooth path as we go.
+        path.quadTo(prev, (prev + point) / 2);
+    } break;
+    case AnnotationTool::LineTool:
+    case AnnotationTool::ArrowTool: {
+        auto count = path.elementCount();
+        auto lastElement = path.elementAt(count - 1);
         QPointF endPoint = point;
         if (options & ContinueOption::SnapAngle) {
-            QPointF posDiff = point - la->line().p1();
+            const auto &prevElement = count > 1 ? path.elementAt(count - 2) : lastElement;
+            QPointF posDiff = point - prevElement;
             if (qAbs(posDiff.x()) / 1.5 > qAbs(posDiff.y())) {
                 // horizontal
-                endPoint.setY(la->line().p1().y());
+                endPoint.setY(prevElement.y);
             } else if (qAbs(posDiff.x()) < qAbs(posDiff.y()) / 1.5) {
                 // vertical
-                endPoint.setX(la->line().p1().x());
+                endPoint.setX(prevElement.x);
             } else {
                 // diagonal when 1/3 in between horizontal and vertical
                 auto xSign = std::copysign(1.0, posDiff.x());
                 auto ySign = std::copysign(1.0, posDiff.y());
                 qreal max = qMax(qAbs(posDiff.x()), qAbs(posDiff.y()));
-                endPoint = la->line().p1() + QPointF(max * xSign, max * ySign);
+                endPoint = prevElement + QPointF(max * xSign, max * ySign);
             }
         }
-        la->setEndPoint(endPoint);
-        emitRepaintNeededUnlessEmpty(la->lastUpdateArea());
-        break;
-    }
-    case Rectangle:
-    case Ellipse:
-    case Blur:
-    case Pixelate: {
-        auto *sa = static_cast<ShapeAction *>(action);
-        const auto &geometry = sa->geometry();
-        QRectF rect(geometry.topLeft(), point);
+        if (count > 1 && !lastElement.isMoveTo()) {
+            path.setElementPositionAt(count - 1, endPoint.x(), endPoint.y());
+        } else {
+            path.lineTo(endPoint);
+        }
+    } break;
+    case AnnotationTool::RectangleTool:
+    case AnnotationTool::EllipseTool:
+    case AnnotationTool::BlurTool:
+    case AnnotationTool::PixelateTool: {
+        const auto count = path.elementCount();
+        // We always make the real start point the last point so we can easily keep it without
+        // needing to keep a separate point or rectangle. Qt automatically moves the first MoveTo
+        // element if one exists, so we can't just keep it at the start.
+        auto start = path.currentPosition();
+        // Can have a negative size with bottom right being visually top left.
+        QRectF rect(start, point);
         if (options & ContinueOption::SnapAngle) {
             auto wSign = std::copysign(1.0, rect.width());
             auto hSign = std::copysign(1.0, rect.height());
             qreal max = qMax(qAbs(rect.width()), qAbs(rect.height()));
             rect.setSize({max * wSign, max * hSign});
         }
+
         if (options & ContinueOption::CenterResize) {
-            rect.moveCenter(geometry.center());
+            if (count > 1) {
+                auto oldBounds = path.boundingRect();
+                rect.moveCenter(oldBounds.center());
+            } else {
+                rect.moveCenter(start);
+            }
         }
-        sa->setGeometry(rect);
-        emitRepaintNeededUnlessEmpty(sa->lastUpdateArea());
-        break;
-    }
-    case Text: {
-        auto visualGeometry = action->visualGeometry();
-        visualGeometry.moveTo(point.x(), point.y() - visualGeometry.height() / 2);
-        if (action == m_selectedActionWrapper->editAction()) {
-            m_selectedActionWrapper->setVisualGeometry(visualGeometry);
+        path.clear();
+        if (m_tool->type() == AnnotationTool::EllipseTool) {
+            path.addEllipse(rect);
         } else {
-            action->setVisualGeometry(visualGeometry);
+            path.addRect(rect);
         }
-        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-        break;
-    }
-    case Number: {
-        auto visualGeometry = action->visualGeometry();
-        visualGeometry.moveCenter(point);
-        action->setVisualGeometry(visualGeometry);
-        emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-        break;
-    }
-    default: return;
+        // the top left is now the real start point
+        path.moveTo(rect.topLeft());
+    } break;
+    case AnnotationTool::TextTool: {
+        const auto count = path.elementCount();
+        auto rect = path.boundingRect();
+        if (count == 1) {
+            // BUG: boundingRect won't have the correct position if the only element is a MoveTo.
+            // Fixed in https://codereview.qt-project.org/c/qt/qtbase/+/534966.
+            rect.moveTo(path.elementAt(0));
+        }
+        path.translate(point - QPointF{rect.x(), rect.center().y()});
+    } break;
+    case AnnotationTool::NumberTool: {
+        const auto count = path.elementCount();
+        auto rect = path.boundingRect();
+        if (count == 1) {
+            // BUG: boundingRect won't have the correct position if the only element is a MoveTo.
+            // Fixed in https://codereview.qt-project.org/c/qt/qtbase/+/534966.
+            rect.moveTo(path.elementAt(0));
+        }
+        path.translate(point - rect.center());
+    } break;
+    default:
+        return;
     }
 
-    if (action->isValid() && !wasValid) {
-        // Notify undo count change here if is now valid since
-        // beginAction doesn't emit if action was invalid.
+    Traits::clearForInit(item->traits());
+    Traits::fastInitOptTuple(item->traits());
+
+    if (isSelected) {
+        *currentItem = *item;
+        renderRect |= m_selectedItemWrapper->reset();
+        m_selectedItemWrapper->setSelectedItem(currentItem);
+    }
+    emitRepaintNeededUnlessEmpty(renderRect | item->renderRect());
+}
+
+void AnnotationDocument::finishItem()
+{
+    const auto &currentItem = m_history.currentItem();
+    bool isSelected = m_selectedItemWrapper->selectedItem() == currentItem;
+    const auto &item = isSelected ? m_tempItem : currentItem;
+    if (!m_tool->isCreationTool() || !item || !std::get<Traits::Geometry::Opt>(item->traits())) {
+        return;
+    }
+
+    Traits::initOptTuple(item->traits());
+    if (isSelected) {
+        *currentItem = *item;
+        auto renderRect = m_selectedItemWrapper->reset();
+        m_selectedItemWrapper->setSelectedItem(currentItem);
+        Q_EMIT selectedItemWrapperChanged(); // re-evaluate qml bindings
+        emitRepaintNeededUnlessEmpty(renderRect);
+    }
+}
+
+void AnnotationDocument::selectItem(const QRectF &rect)
+{
+    m_selectedItemWrapper->setSelectedItem(itemAt(rect));
+}
+
+void AnnotationDocument::deselectItem()
+{
+    m_selectedItemWrapper->setSelectedItem(nullptr);
+}
+
+void AnnotationDocument::deleteSelectedItem()
+{
+    auto selectedItem = m_selectedItemWrapper->selectedItem().lock();
+    if (!selectedItem) {
+        return;
+    }
+
+    auto newItem = std::make_shared<HistoryItem>();
+    HistoryItem::setItemRelations(selectedItem, newItem);
+    addItem(newItem);
+    deselectItem();
+    emitRepaintNeededUnlessEmpty(selectedItem->renderRect());
+}
+
+void AnnotationDocument::addItem(const HistoryItem::shared_ptr &item)
+{
+    auto result = m_history.push(item);
+    if (result.undoListChanged) {
         Q_EMIT undoStackDepthChanged();
     }
-    if (isSelectedAction && oldSelectedActionVisualGeometry != action->visualGeometry()) {
-        Q_EMIT m_selectedActionWrapper->visualGeometryChanged();
-    }
-}
-
-void AnnotationDocument::finishAction()
-{
-    auto action = m_undoStack.isEmpty() ? nullptr : m_undoStack.last();
-    if (!action || action->type() == None || m_tool->type() == ChangeAction) {
-        return;
-    }
-
-    if (action->type() == AnnotationDocument::FreeHand) {
-        auto *fa = static_cast<FreeHandAction *>(action);
-        fa->makeSmooth();
-        Q_EMIT repaintNeeded(fa->visualGeometry());
-    }
-}
-
-void AnnotationDocument::selectAction(const QPointF &point)
-{
-    m_selectedActionWrapper->setEditAction(actionAtPoint(point));
-}
-
-void AnnotationDocument::deselectAction()
-{
-    m_selectedActionWrapper->setEditAction(nullptr);
-}
-
-void AnnotationDocument::deleteSelectedAction()
-{
-    auto *action = m_selectedActionWrapper->editAction();
-    if (!action || m_undoStack.contains(action->replacedBy())) {
-        return;
-    }
-
-    deselectAction();
-    if (!action->isValid()) {
-        action = action->replaces();
-        const int i = m_undoStack.lastIndexOf(action);
-        m_undoStack.remove(i);
-    }
-    QRectF updateRect;
-    if (action && action->isValid()) {
-        // add undoable action for representing the deletion of an action
-        m_undoStack << new DeleteAction(action);
-        updateRect = action->lastUpdateArea();
-    } else {
-        const int i = m_undoStack.lastIndexOf(action);
-        m_undoStack.remove(i);
-    }
-
-    Q_EMIT undoStackDepthChanged();
-    clearRedoStack();
-    emitRepaintNeededUnlessEmpty(updateRect);
-}
-
-bool AnnotationDocument::isActionVisible(EditAction *action, const QRectF &rect) const
-{
-    return action && action->isVisible()
-            && (!action->replacedBy() || !m_undoStack.contains(action->replacedBy()))
-            && (rect.isEmpty() || action->visualGeometry().intersects(rect));
-}
-
-void AnnotationDocument::addAction(EditAction *action)
-{
-    if (!action || action->replacedBy() || m_undoStack.contains(action)) {
-        return;
-    }
-    m_undoStack << action;
-
-    Q_EMIT undoStackDepthChanged();
-    clearRedoStack();
-}
-
-void AnnotationDocument::permanentlyDeleteAction(EditAction *action)
-{
-    const int i = m_undoStack.lastIndexOf(action);
-    if (i == -1) {
-        return;
-    }
-
-    const int oldSize = m_undoStack.size();
-    auto *selectedAction = m_selectedActionWrapper->editAction();
-    if (selectedAction == action) {
-        deselectAction();
-    }
-    // If deselecting the action already caused a removal, do nothing
-    if (oldSize != m_undoStack.size()) {
-        return;
-    }
-
-    m_undoStack.remove(i);
-    Q_EMIT undoStackDepthChanged();
-    emitRepaintNeededUnlessEmpty(action->lastUpdateArea());
-    delete action;
-}
-
-void AnnotationDocument::clearRedoStack()
-{
-    int oldRedoCount = m_redoStack.count();
-    qDeleteAll(m_redoStack);
-    m_redoStack.clear();
-    if (oldRedoCount != m_redoStack.count()) {
+    if (result.redoListChanged) {
         Q_EMIT redoStackDepthChanged();
     }
 }
@@ -734,797 +604,405 @@ void AnnotationDocument::emitRepaintNeededUnlessEmpty(const QRectF &area)
 
 //////////////////////////
 
-static AnnotationTool::Options optionsForType(AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Highlight:
-        return AnnotationTool::Stroke;
-    case AnnotationDocument::FreeHand:
-    case AnnotationDocument::Line:
-    case AnnotationDocument::Arrow:
-        return {AnnotationTool::Stroke, AnnotationTool::Shadow};
-    case AnnotationDocument::Rectangle:
-    case AnnotationDocument::Ellipse:
-        return {AnnotationTool::Stroke, AnnotationTool::Shadow, AnnotationTool::Fill};
-    case AnnotationDocument::Text:
-        return {AnnotationTool::Font, AnnotationTool::Shadow};
-    case AnnotationDocument::Number:
-        return {AnnotationTool::Fill, AnnotationTool::Shadow, AnnotationTool::Font};
-    default:
-        return AnnotationTool::NoOptions;
-    }
-}
-
-static int defaultStrokeWidthForType(AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-    case AnnotationDocument::Line:
-    case AnnotationDocument::Arrow:
-        return 4;
-    case AnnotationDocument::Highlight:
-        return 20;
-    default: return 0;
-    }
-}
-
-static QColor defaultStrokeColorForType(AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-    case AnnotationDocument::Line:
-    case AnnotationDocument::Arrow:
-        return Qt::red;
-    case AnnotationDocument::Highlight:
-        return Qt::yellow;
-    case AnnotationDocument::Rectangle:
-    case AnnotationDocument::Ellipse:
-        return Qt::black;
-    default: return Qt::transparent;
-    }
-}
-
-static QColor defaultFillColorForType(AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Rectangle:
-    case AnnotationDocument::Ellipse:
-    case AnnotationDocument::Number:
-        return Qt::red;
-    default: return Qt::transparent;
-    }
-}
-
-static QColor defaultFontColorForType(AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Text:
-    case AnnotationDocument::Number:
-        return Qt::black;
-    default: return Qt::transparent;
-    }
-}
-
-AnnotationTool::AnnotationTool(AnnotationDocument *document)
-    : QObject(document)
-{
-}
-
-AnnotationTool::~AnnotationTool()
-{
-}
-
-AnnotationDocument::EditActionType AnnotationTool::type() const
-{
-    return m_type;
-}
-
-void AnnotationTool::setType(AnnotationDocument::EditActionType type)
-{
-    if (m_type == type) {
-        return;
-    }
-
-    auto oldType = m_type;
-    m_type = type;
-    Q_EMIT typeChanged();
-
-    auto newOptions = optionsForType(type);
-    if (m_options != newOptions) {
-        m_options = newOptions;
-        Q_EMIT optionsChanged();
-    }
-
-    const auto &oldStrokeWidth = strokeWidthForType(oldType);
-    const auto &newStrokeWidth = strokeWidthForType(type);
-    if (oldStrokeWidth != newStrokeWidth) {
-        Q_EMIT strokeWidthChanged(newStrokeWidth);
-    }
-
-    const auto &oldStrokeColor = strokeColorForType(oldType);
-    const auto &newStrokeColor = strokeColorForType(type);
-    if (oldStrokeColor != newStrokeColor) {
-        Q_EMIT strokeColorChanged(newStrokeColor);
-    }
-
-    const auto &oldFillColor = fillColorForType(oldType);
-    const auto &newFillColor = fillColorForType(type);
-    if (oldFillColor != newFillColor) {
-        Q_EMIT fillColorChanged(newFillColor);
-    }
-
-    const auto &oldFont = fontForType(oldType);
-    const auto &newFont = fontForType(type);
-    if (oldFont != newFont) {
-        Q_EMIT fontChanged(newFont);
-    }
-
-    const auto &oldFontColor = fontColorForType(oldType);
-    const auto &newFontColor = fontColorForType(type);
-    if (oldFontColor != newFontColor) {
-        Q_EMIT fontColorChanged(newFontColor);
-    }
-
-    const auto &oldShadow = typeHasShadow(oldType);
-    const auto &newShadow = typeHasShadow(type);
-    if (oldShadow != newShadow) {
-        Q_EMIT shadowChanged(newShadow);
-    }
-}
-
-void AnnotationTool::resetType()
-{
-    setType(AnnotationDocument::None);
-}
-
-AnnotationTool::Options AnnotationTool::options() const
-{
-    return m_options;
-}
-
-int AnnotationTool::strokeWidth() const
-{
-    return strokeWidthForType(m_type);
-}
-
-int AnnotationTool::strokeWidthForType(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        return Settings::freehandStrokeWidth();
-    case AnnotationDocument::Highlight:
-        return Settings::highlighterStrokeWidth();
-    case AnnotationDocument::Line:
-        return Settings::lineStrokeWidth();
-    case AnnotationDocument::Arrow:
-        return Settings::arrowStrokeWidth();
-    case AnnotationDocument::Rectangle:
-        return Settings::rectangleStrokeWidth();
-    case AnnotationDocument::Ellipse:
-        return Settings::ellipseStrokeWidth();
-    default: return 0;
-    }
-}
-
-void AnnotationTool::setStrokeWidth(int width)
-{
-    if (!m_options.testFlag(Option::Stroke) || strokeWidth() == width) {
-        return;
-    }
-
-    setStrokeWidthForType(width, m_type);
-    Q_EMIT strokeWidthChanged(width);
-}
-
-void AnnotationTool::setStrokeWidthForType(int width, AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        Settings::setFreehandStrokeWidth(width);
-        break;
-    case AnnotationDocument::Highlight:
-        Settings::setHighlighterStrokeWidth(width);
-        break;
-    case AnnotationDocument::Line:
-        Settings::setLineStrokeWidth(width);
-        break;
-    case AnnotationDocument::Arrow:
-        Settings::setArrowStrokeWidth(width);
-        break;
-    case AnnotationDocument::Rectangle:
-        Settings::setRectangleStrokeWidth(width);
-        break;
-    case AnnotationDocument::Ellipse:
-        Settings::setEllipseStrokeWidth(width);
-        break;
-    default: break;
-    }
-}
-
-void AnnotationTool::resetStrokeWidth()
-{
-    setStrokeWidth(defaultStrokeWidthForType(m_type));
-}
-
-QColor AnnotationTool::strokeColor() const
-{
-    return strokeColorForType(m_type);
-}
-
-QColor AnnotationTool::strokeColorForType(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        return Settings::freehandStrokeColor();
-    case AnnotationDocument::Highlight:
-        return Settings::highlighterStrokeColor();
-    case AnnotationDocument::Line:
-        return Settings::lineStrokeColor();
-    case AnnotationDocument::Arrow:
-        return Settings::arrowStrokeColor();
-    case AnnotationDocument::Rectangle:
-        return Settings::rectangleStrokeColor();
-    case AnnotationDocument::Ellipse:
-        return Settings::ellipseStrokeColor();
-    default: return Qt::transparent;
-    }
-}
-
-void AnnotationTool::setStrokeColor(const QColor &color)
-{
-    if (!m_options.testFlag(Option::Stroke) || strokeColor() == color) {
-        return;
-    }
-
-    setStrokeColorForType(color, m_type);
-
-    Q_EMIT strokeColorChanged(color);
-}
-
-void AnnotationTool::setStrokeColorForType(const QColor &color,
-                                           AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        Settings::setFreehandStrokeColor(color);
-        break;
-    case AnnotationDocument::Highlight:
-        Settings::setHighlighterStrokeColor(color);
-        break;
-    case AnnotationDocument::Line:
-        Settings::setLineStrokeColor(color);
-        break;
-    case AnnotationDocument::Arrow:
-        Settings::setArrowStrokeColor(color);
-        break;
-    case AnnotationDocument::Rectangle:
-        Settings::setRectangleStrokeColor(color);
-        break;
-    case AnnotationDocument::Ellipse:
-        Settings::setEllipseStrokeColor(color);
-        break;
-    default: break;
-    }
-}
-
-void AnnotationTool::resetStrokeColor()
-{
-    setStrokeColor(defaultStrokeColorForType(m_type));
-}
-
-QColor AnnotationTool::fillColor() const
-{
-    return fillColorForType(m_type);
-}
-
-QColor AnnotationTool::fillColorForType(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::Rectangle:
-        return Settings::rectangleFillColor();
-    case AnnotationDocument::Ellipse:
-        return Settings::ellipseFillColor();
-    case AnnotationDocument::Number:
-        return Settings::numberFillColor();
-    default: return Qt::transparent;
-    }
-}
-
-void AnnotationTool::setFillColor(const QColor &color)
-{
-    if (!m_options.testFlag(Option::Fill) || fillColor() == color) {
-        return;
-    }
-
-    setFillColorForType(color, m_type);
-    Q_EMIT fillColorChanged(color);
-}
-
-void AnnotationTool::setFillColorForType(const QColor &color,
-                                         AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Rectangle:
-        Settings::setRectangleFillColor(color);
-        break;
-    case AnnotationDocument::Ellipse:
-        Settings::setEllipseFillColor(color);
-        break;
-    case AnnotationDocument::Number:
-        Settings::setNumberFillColor(color);
-        break;
-    default: break;
-    }
-}
-
-void AnnotationTool::resetFillColor()
-{
-    setFillColor(defaultFillColorForType(m_type));
-}
-
-QFont AnnotationTool::font() const
-{
-    return fontForType(m_type);
-}
-
-QFont AnnotationTool::fontForType(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::Text:
-        return Settings::textFont();
-    case AnnotationDocument::Number:
-        return Settings::numberFont();
-    default: return {};
-    }
-}
-
-void AnnotationTool::setFont(const QFont &font)
-{
-    if (!m_options.testFlag(Option::Font) || this->font() == font) {
-        return;
-    }
-
-    setFontForType(font, m_type);
-
-    Q_EMIT fontChanged(font);
-}
-
-void AnnotationTool::setFontForType(const QFont &font, AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Text:
-        Settings::setTextFont(font);
-        break;
-    case AnnotationDocument::Number:
-        Settings::setNumberFont(font);
-        break;
-    default: break;
-    }
-}
-
-void AnnotationTool::resetFont()
-{
-    setFont({});
-}
-
-QColor AnnotationTool::fontColor() const
-{
-    return fontColorForType(m_type);
-}
-
-QColor AnnotationTool::fontColorForType(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::Text:
-        return Settings::textFontColor();
-    case AnnotationDocument::Number:
-        return Settings::numberFontColor();
-    default: return Qt::transparent;
-    }
-}
-
-void AnnotationTool::setFontColor(const QColor &color)
-{
-    if (!m_options.testFlag(Option::Font) || fontColor() == color) {
-        return;
-    }
-
-    setFontColorForType(color, m_type);
-    Q_EMIT fontColorChanged(color);
-}
-
-void AnnotationTool::setFontColorForType(const QColor &color,
-                                         AnnotationDocument::EditActionType type)
-{
-    switch (type) {
-    case AnnotationDocument::Text:
-        Settings::setTextFontColor(color);
-        break;
-    case AnnotationDocument::Number:
-        Settings::setNumberFontColor(color);
-        break;
-    default: break;
-    }
-}
-
-void AnnotationTool::resetFontColor()
-{
-    setFontColor(defaultFontColorForType(m_type));
-}
-
-int AnnotationTool::number() const
-{
-    return m_number;
-}
-
-void AnnotationTool::setNumber(int number)
-{
-    if (m_number == number) {
-        return;
-    }
-
-    m_number = number;
-
-    Q_EMIT numberChanged(number);
-}
-
-void AnnotationTool::resetNumber()
-{
-    setNumber(1);
-}
-
-bool AnnotationTool::typeHasShadow(AnnotationDocument::EditActionType type) const
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        return Settings::freehandShadow();
-    case AnnotationDocument::Line:
-        return Settings::lineShadow();
-    case AnnotationDocument::Arrow:
-        return Settings::arrowShadow();
-    case AnnotationDocument::Rectangle:
-        return Settings::rectangleShadow();
-    case AnnotationDocument::Ellipse:
-        return Settings::ellipseShadow();
-    case AnnotationDocument::Text:
-        return Settings::textShadow();
-    case AnnotationDocument::Number:
-        return Settings::numberShadow();
-    default:
-        return false;
-    }
-}
-
-bool AnnotationTool::hasShadow() const
-{
-    return typeHasShadow(m_type);
-}
-
-void AnnotationTool::setTypeHasShadow(AnnotationDocument::EditActionType type, bool shadow)
-{
-    switch (type) {
-    case AnnotationDocument::FreeHand:
-        Settings::setFreehandShadow(shadow);
-        break;
-    case AnnotationDocument::Line:
-        Settings::setLineShadow(shadow);
-        break;
-    case AnnotationDocument::Arrow:
-        Settings::setArrowShadow(shadow);
-        break;
-    case AnnotationDocument::Rectangle:
-        Settings::setRectangleShadow(shadow);
-        break;
-    case AnnotationDocument::Ellipse:
-        Settings::setEllipseShadow(shadow);
-        break;
-    case AnnotationDocument::Text:
-        Settings::setTextShadow(shadow);
-        break;
-    case AnnotationDocument::Number:
-        Settings::setNumberShadow(shadow);
-        break;
-    default:
-        break;
-    }
-}
-
-void AnnotationTool::setShadow(bool shadow)
-{
-    if (!m_options.testFlag(Option::Shadow) || hasShadow() == shadow) {
-        return;
-    }
-
-    setTypeHasShadow(m_type, shadow);
-    Q_EMIT shadowChanged(shadow);
-}
-
-void AnnotationTool::resetShadow()
-{
-    setShadow(true);
-}
-
-//////////////////////////
-
-SelectedActionWrapper::SelectedActionWrapper(AnnotationDocument *document)
+SelectedItemWrapper::SelectedItemWrapper(AnnotationDocument *document)
     : QObject(document)
     , m_document(document)
 {
 }
 
-SelectedActionWrapper::~SelectedActionWrapper()
+SelectedItemWrapper::~SelectedItemWrapper()
 {
 }
 
-EditAction *SelectedActionWrapper::editAction() const
+HistoryItem::const_weak_ptr SelectedItemWrapper::selectedItem() const
 {
-    return m_editAction;
+    return m_selectedItem;
 }
 
-void SelectedActionWrapper::setEditAction(EditAction *action)
+void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &historyItem)
 {
-    if (m_editAction == action
-        || (action && (action->type() == AnnotationDocument::None
-                       || m_document->m_undoStack.contains(action->replacedBy())))) {
+    if (m_selectedItem == historyItem //
+        || (historyItem && !std::get<Traits::Geometry::Opt>(historyItem->traits()))) {
         return;
     }
 
-    // commit if valid, restore if invalid
-    auto copy = m_actionCopy.get();
-    if (m_editAction && copy && *m_editAction != copy
-        && !m_document->m_undoStack.contains(m_editAction->replacedBy())
-    ) {
-        if (m_editAction->isValid() && copy->isValid()) {
-            auto replacement = m_editAction->createReplacement();
-            m_editAction->copyFrom(copy);
-            m_document->addAction(replacement);
-        } else if (copy->isValid()) {
-            m_editAction->copyFrom(copy);
-            m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
-        } else if (!m_editAction->isValid()) {
-            if (m_document->m_undoStack.contains(m_editAction)) {
-                m_document->m_undoStack.removeAll(m_editAction);
-                Q_EMIT m_document->undoStackDepthChanged();
-            }
-            if (m_document->m_redoStack.contains(m_editAction)) {
-                m_document->m_redoStack.removeAll(m_editAction);
-                Q_EMIT m_document->redoStackDepthChanged();
-            }
-            auto oldAction = m_editAction;
-            m_editAction = nullptr;
-            m_document->permanentlyDeleteAction(oldAction);
-        } else if (m_editAction->isValid() && m_type == AnnotationDocument::Text) {
-            // we don't emit this until an action that was added is valid,
-            // so we need to emit here for text.
-            Q_EMIT m_document->undoStackDepthChanged();
-        }
-    }
-    m_editAction = action;
-    if (m_editAction) {
-        m_type = action->type();
-        m_actionCopy.reset(m_editAction->createCopy());
+    m_selectedItem = historyItem;
+    if (historyItem) {
+        auto &temp = m_document->m_tempItem;
+        temp = std::make_shared<HistoryItem>(*historyItem);
+        m_options.setFlag(AnnotationTool::StrokeOption, //
+                          std::get<Traits::Stroke::Opt>(temp->traits()).has_value());
+
+        m_options.setFlag(AnnotationTool::FillOption, //
+                          std::get<Traits::Fill::Opt>(temp->traits()).has_value());
+
+        auto &text = std::get<Traits::Text::Opt>(temp->traits());
+        m_options.setFlag(AnnotationTool::FontOption, text.has_value());
+        m_options.setFlag(AnnotationTool::TextOption, //
+                          text && text->type() == Traits::Text::String);
+        m_options.setFlag(AnnotationTool::NumberOption, //
+                          text && text->type() == Traits::Text::Number);
+
+        m_options.setFlag(AnnotationTool::ShadowOption, //
+                          std::get<Traits::Shadow::Opt>(temp->traits()).has_value());
     } else {
-        m_type = AnnotationDocument::None;
-        m_actionCopy.reset();
+        m_document->emitRepaintNeededUnlessEmpty(reset());
     }
-    m_options = optionsForType(m_type);
-    // all bindings using the selectedAction property should be re-evalulated when emitted
-    Q_EMIT m_document->selectedActionWrapperChanged();
+    // all bindings using the selectedItem property should be re-evalulated when emitted
+    Q_EMIT m_document->selectedItemWrapperChanged();
 }
 
-bool SelectedActionWrapper::isValid() const
+void SelectedItemWrapper::transform(qreal dx, qreal dy, Qt::Edges edges)
 {
-    return m_editAction && m_editAction->isValid();
+    auto selectedItem = m_selectedItem.lock();
+    auto &temp = m_document->m_tempItem;
+    if (!selectedItem || !temp || (qFuzzyIsNull(dx) && qFuzzyIsNull(dy))) {
+        return;
+    }
+    auto oldRenderRect = temp->renderRect();
+    auto &oldPath = std::get<Traits::Geometry::Opt>(selectedItem->traits())->path;
+    auto &path = std::get<Traits::Geometry::Opt>(temp->traits())->path;
+    if (edges.toInt() == 0 //
+        || edges.testFlags({Qt::TopEdge, Qt::LeftEdge, Qt::RightEdge, Qt::BottomEdge})) {
+        const auto pathDelta = path.boundingRect().topLeft() - oldPath.boundingRect().topLeft();
+        QTransform transform;
+        transform.translate(dx - pathDelta.x(), dy - pathDelta.y());
+        // This is less expensive since we don't regenerate stroke or mousePath when translating.
+        Traits::transformTraits(transform, temp->traits());
+    } else {
+        const auto oldRect = oldPath.boundingRect();
+        const auto leftEdge = edges.testFlag(Qt::LeftEdge);
+        const auto topEdge = edges.testFlag(Qt::TopEdge);
+        const auto newRect = oldRect.adjusted(leftEdge ? dx : 0, //
+                                              topEdge ? dy : 0,
+                                              edges.testFlag(Qt::RightEdge) ? dx : 0,
+                                              edges.testFlag(Qt::BottomEdge) ? dy : 0);
+        // We should never divide by zero and we don't need fractional sizes less than 1.
+        const auto wDivisor = std::max(1.0, oldRect.width());
+        const auto hDivisor = std::max(1.0, oldRect.height());
+        const auto sx = newRect.width() / wDivisor;
+        const auto sy = newRect.height() / hDivisor;
+        QTransform transform;
+        // Translate before scale to avoid scaling translation.
+        transform.translate(leftEdge ? dx : 0, topEdge ? dy : 0);
+        // Undo translation caused by scale.
+        const auto sxdx = oldRect.x() * sx - oldRect.x();
+        const auto sydy = oldRect.y() * sy - oldRect.y();
+        transform.translate(-sxdx, -sydy);
+        transform.scale(sx, sy);
+        path = transform.map(oldPath);
+        Traits::reInitTraits(temp->traits());
+    }
+    const auto &newRenderRect = temp->renderRect();
+    Q_EMIT mousePathChanged();
+    m_document->emitRepaintNeededUnlessEmpty(oldRenderRect | newRenderRect);
 }
 
-AnnotationDocument::EditActionType SelectedActionWrapper::type() const
+bool SelectedItemWrapper::commitChanges()
 {
-    return m_type;
+    auto selectedItem = m_selectedItem.lock();
+    auto &temp = m_document->m_tempItem;
+    if (!selectedItem || !temp || !temp->isValid() //
+        || temp->traits() == selectedItem->traits()) {
+        return false;
+    }
+
+    if (!selectedItem->isValid() && selectedItem == m_document->m_history.currentItem()) {
+        auto result = m_document->m_history.pop();
+        if (result.redoListChanged) {
+            Q_EMIT m_document->redoStackDepthChanged();
+        }
+    } else {
+        HistoryItem::setItemRelations(selectedItem, temp);
+    }
+    m_document->addItem(temp);
+    setSelectedItem(temp);
+    return true;
 }
 
-AnnotationTool::Options SelectedActionWrapper::options() const
+QRectF SelectedItemWrapper::reset()
+{
+    auto &temp = m_document->m_tempItem;
+    if (!hasSelection() && m_options == AnnotationTool::NoOptions) {
+        return {};
+    }
+    QRectF renderRect;
+    if (temp) {
+        auto selectedItem = m_selectedItem.lock();
+        if (selectedItem) {
+            renderRect = selectedItem->renderRect();
+        }
+        renderRect |= temp->renderRect();
+    }
+    temp.reset();
+    m_selectedItem.reset();
+    m_options = AnnotationTool::NoOptions;
+    // Not emitting selectedItemWrapperChanged.
+    // Use the return value to determine if that should be done when necessary.
+    return renderRect;
+}
+
+bool SelectedItemWrapper::hasSelection() const
+{
+    return !m_selectedItem.expired() && m_document->m_tempItem;
+}
+
+AnnotationTool::Options SelectedItemWrapper::options() const
 {
     return m_options;
 }
 
-int SelectedActionWrapper::strokeWidth() const
+int SelectedItemWrapper::strokeWidth() const
 {
-    return m_options.testFlag(AnnotationTool::Stroke) ?
-        m_editAction->strokeWidth() : defaultStrokeWidthForType(m_type);
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrokeOption) || !temp) {
+        return 0;
+    }
+    auto &stroke = std::get<Traits::Stroke::Opt>(temp->traits());
+    return stroke->pen.widthF();
 }
 
-void SelectedActionWrapper::setStrokeWidth(int width)
+void SelectedItemWrapper::setStrokeWidth(int width)
 {
-    if (!m_options.testFlag(AnnotationTool::Stroke) || m_editAction->strokeWidth() == width) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrokeOption) || !temp) {
         return;
     }
-    m_editAction->setStrokeWidth(width);
+    auto &stroke = std::get<Traits::Stroke::Opt>(temp->traits());
+    if (stroke->pen.widthF() == width) {
+        return;
+    }
+    auto oldRect = temp->renderRect();
+    stroke->pen.setWidthF(width);
+    Traits::reInitTraits(temp->traits());
+    const auto &newRect = temp->renderRect();
     Q_EMIT strokeWidthChanged();
-    Q_EMIT visualGeometryChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    if (oldRect != newRect) {
+        Q_EMIT mousePathChanged();
+    }
+    m_document->emitRepaintNeededUnlessEmpty(oldRect | newRect);
 }
 
-QColor SelectedActionWrapper::strokeColor() const
+QColor SelectedItemWrapper::strokeColor() const
 {
-    return m_options.testFlag(AnnotationTool::Stroke) ?
-        m_editAction->strokeColor() : defaultStrokeColorForType(m_type);
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrokeOption) || !temp) {
+        return {};
+    }
+    auto &stroke = std::get<Traits::Stroke::Opt>(temp->traits());
+    return stroke->pen.color();
 }
 
-void SelectedActionWrapper::setStrokeColor(const QColor &color)
+void SelectedItemWrapper::setStrokeColor(const QColor &color)
 {
-    if (!m_options.testFlag(AnnotationTool::Stroke) || m_editAction->strokeColor() == color) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrokeOption) || !temp) {
         return;
     }
-    m_editAction->setStrokeColor(color);
+    auto &stroke = std::get<Traits::Stroke::Opt>(temp->traits());
+    if (stroke->pen.color() == color) {
+        return;
+    }
+    stroke->pen.setColor(color);
     Q_EMIT strokeColorChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    m_document->emitRepaintNeededUnlessEmpty(temp->renderRect());
 }
 
-QColor SelectedActionWrapper::fillColor() const
+QColor SelectedItemWrapper::fillColor() const
 {
-    return m_options.testFlag(AnnotationTool::Fill) ?
-        m_editAction->fillColor() : defaultFillColorForType(m_type);
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FillOption) || !temp) {
+        return {};
+    }
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
+    return fill->brush.color();
 }
 
-void SelectedActionWrapper::setFillColor(const QColor &color)
+void SelectedItemWrapper::setFillColor(const QColor &color)
 {
-    if (!m_options.testFlag(AnnotationTool::Fill) || m_editAction->fillColor() == color) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FillOption) || !temp) {
         return;
     }
-    m_editAction->setFillColor(color);
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
+    if (fill->brush.color() == color) {
+        return;
+    }
+    fill->brush = color;
     Q_EMIT fillColorChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    m_document->emitRepaintNeededUnlessEmpty(temp->renderRect());
 }
 
-QFont SelectedActionWrapper::font() const
+QFont SelectedItemWrapper::font() const
 {
-    return m_options.testFlag(AnnotationTool::Font) ?
-        m_editAction->font() : QFont();
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FontOption) || !temp) {
+        return {};
+    }
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    return text->font;
 }
 
-void SelectedActionWrapper::setFont(const QFont &font)
+void SelectedItemWrapper::setFont(const QFont &font)
 {
-    if (!m_options.testFlag(AnnotationTool::Font) || m_editAction->font() == font) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FontOption) || !temp) {
         return;
     }
-    auto oldRect = m_editAction->visualGeometry();
-    m_editAction->setFont(font);
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    if (text->font == font) {
+        return;
+    }
+    auto oldRect = temp->renderRect();
+    text->font = font;
+    Traits::reInitTraits(temp->traits());
+    const auto &newRect = temp->renderRect();
     Q_EMIT fontChanged();
-    if (oldRect != m_editAction->visualGeometry()) {
-        Q_EMIT visualGeometryChanged();
+    if (oldRect != newRect) {
+        Q_EMIT mousePathChanged();
     }
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    m_document->emitRepaintNeededUnlessEmpty(oldRect | newRect);
 }
 
-QColor SelectedActionWrapper::fontColor() const
+QColor SelectedItemWrapper::fontColor() const
 {
-    return m_options.testFlag(AnnotationTool::Font) ?
-        m_editAction->fontColor() : defaultFontColorForType(m_type);
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FontOption) || !temp) {
+        return {};
+    }
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    return text->brush.color();
 }
 
-void SelectedActionWrapper::setFontColor(const QColor &color)
+void SelectedItemWrapper::setFontColor(const QColor &color)
 {
-    if (!m_options.testFlag(AnnotationTool::Font) || fontColor() == color) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FontOption) || !temp) {
         return;
     }
-    m_editAction->setFontColor(color);
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    if (text->brush.color() == color) {
+        return;
+    }
+    text->brush = color;
     Q_EMIT fontColorChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    m_document->emitRepaintNeededUnlessEmpty(temp->renderRect());
 }
 
-int SelectedActionWrapper::number() const
+int SelectedItemWrapper::number() const
 {
-    return m_type == AnnotationDocument::Number ? m_editAction->number() : 1;
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::NumberOption) || !temp) {
+        return 0;
+    }
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    const auto *number = std::get_if<Traits::Text::Number>(&text->value);
+    return number ? *number : 0;
 }
 
-void SelectedActionWrapper::setNumber(int number)
+void SelectedItemWrapper::setNumber(int number)
 {
-    if (m_type != AnnotationDocument::Number || m_editAction->number() == number) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::NumberOption) || !temp) {
         return;
     }
-    // NumberActions only set size when constructed
-    m_editAction->setNumber(number);
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    const auto *oldNumber = std::get_if<Traits::Text::Number>(&text->value);
+    if (!oldNumber || *oldNumber == number) {
+        return;
+    }
+    auto oldRect = temp->renderRect();
+    text->value.emplace<Traits::Text::Number>(number);
+    Traits::reInitTraits(temp->traits());
+    const auto &newRect = temp->renderRect();
     Q_EMIT numberChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
-}
-
-QString SelectedActionWrapper::text() const
-{
-    if (m_type == AnnotationDocument::Text) {
-        auto *ta = static_cast<TextAction *>(m_editAction);
-        return ta->text();
-    } else {
-        return QString();
+    if (oldRect != newRect) {
+        Q_EMIT mousePathChanged();
     }
+    m_document->emitRepaintNeededUnlessEmpty(oldRect | newRect);
 }
 
-void SelectedActionWrapper::setText(const QString &text)
+QString SelectedItemWrapper::text() const
 {
-    if (m_type != AnnotationDocument::Text) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::TextOption) || !temp) {
+        return {};
+    }
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    const auto *string = std::get_if<Traits::Text::String>(&text->value);
+    return string ? *string : QString{};
+}
+
+void SelectedItemWrapper::setText(const QString &string)
+{
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::TextOption) || !temp) {
         return;
     }
-
-    auto *ta = static_cast<TextAction *>(m_editAction);
-    if (text != ta->text()) {
-        auto oldRect = m_editAction->visualGeometry();
-        ta->setText(text);
-        Q_EMIT textChanged();
-        if (oldRect != m_editAction->visualGeometry()) {
-            Q_EMIT visualGeometryChanged();
-        }
-        m_document->emitRepaintNeededUnlessEmpty(ta->lastUpdateArea());
-    }
-}
-
-QRectF SelectedActionWrapper::visualGeometry() const
-{
-    return m_editAction ? m_editAction->visualGeometry() : QRectF();
-}
-
-void SelectedActionWrapper::setVisualGeometry(const QRectF &geom)
-{
-    if (!m_editAction || m_editAction->visualGeometry() == geom) {
+    auto &text = std::get<Traits::Text::Opt>(temp->traits());
+    const auto *oldString = std::get_if<Traits::Text::String>(&text->value);
+    if (!oldString || *oldString == string) {
         return;
     }
-    // determine when to duplicate in ResizeHandles.qml
-    m_editAction->setVisualGeometry(geom);
-    Q_EMIT visualGeometryChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    auto oldRect = temp->renderRect();
+    text->value.emplace<Traits::Text::String>(string);
+    Traits::reInitTraits(temp->traits());
+    const auto &newRect = temp->renderRect();
+    Q_EMIT textChanged();
+    if (oldRect != newRect) {
+        Q_EMIT mousePathChanged();
+    }
+    m_document->emitRepaintNeededUnlessEmpty(oldRect | newRect);
 }
 
-bool SelectedActionWrapper::hasShadow() const
+bool SelectedItemWrapper::hasShadow() const
 {
-    return m_editAction && m_editAction->supportsShadow() && m_editAction->hasShadow();
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::ShadowOption) || !temp) {
+        return false;
+    }
+    auto &shadow = std::get<Traits::Shadow::Opt>(temp->traits());
+    return shadow ? shadow->enabled : false;
 }
 
-void SelectedActionWrapper::setShadow(bool shadow)
+void SelectedItemWrapper::setShadow(bool enabled)
 {
-    if (!m_editAction || !m_editAction->supportsShadow() || m_editAction->hasShadow() == shadow) {
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::ShadowOption) || !temp) {
         return;
     }
-
-    m_editAction->setShadow(shadow);
+    auto &shadow = std::get<Traits::Shadow::Opt>(temp->traits());
+    if (shadow->enabled == enabled) {
+        return;
+    }
+    auto oldRect = temp->renderRect();
+    shadow->enabled = enabled;
+    Traits::reInitTraits(temp->traits());
     Q_EMIT shadowChanged();
-    m_document->emitRepaintNeededUnlessEmpty(m_editAction->lastUpdateArea());
+    m_document->emitRepaintNeededUnlessEmpty(oldRect | temp->renderRect());
 }
 
-void SelectedActionWrapper::commitChanges()
+QPainterPath SelectedItemWrapper::mousePath() const
 {
-    auto copy = m_actionCopy.get();
-    if (!m_editAction || !m_editAction->isValid() || !copy || !copy->isValid() /*|| *m_editAction == copy*/
-        || m_document->m_undoStack.contains(m_editAction->replacedBy())) {
-        return;
+    auto &temp = m_document->m_tempItem;
+    if (!hasSelection()) {
+        return {};
     }
-    auto replacement = m_editAction->createReplacement(); // make replacement using current data
-    m_editAction->copyFrom(copy); // restore old data to current action
-    m_actionCopy.reset(); // delete action copy to make restoring in setEditAction easier
-    m_document->addAction(replacement); // do the replacement
-    m_editAction = replacement;
-
-    for (auto *ea : std::as_const(m_document->m_undoStack)) {
-        if (ea->type() == AnnotationDocument::Blur || ea->type() == AnnotationDocument::Pixelate) {
-            auto *sa = static_cast<ShapeAction *>(ea);
-            sa->invalidateCache();
-        }
-    }
-    Q_EMIT m_document->selectedActionWrapperChanged();
-    Q_EMIT m_document->repaintNeeded(); // todo: boundingrect?
+    return Traits::mousePath(temp->traits());
 }
 
-QDebug operator<<(QDebug debug, const SelectedActionWrapper *saw)
+QDebug operator<<(QDebug debug, const SelectedItemWrapper *wrapper)
 {
     QDebugStateSaver stateSaver(debug);
     debug.nospace();
-    debug << "SelectedActionWrapper(";
-    if (!saw) {
+    debug << "SelectedItemWrapper(";
+    if (!wrapper) {
         return debug << "0x0)";
     }
-    debug << (const void *)saw;
-    debug << ", editAction=" << saw->editAction();
+    debug << (const void *)wrapper;
+    debug << ",\n  selectedItem=" << wrapper->selectedItem().lock().get();
     debug << ')';
     return debug;
 }
-
-
 
 #include <moc_AnnotationDocument.cpp>

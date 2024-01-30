@@ -200,8 +200,8 @@
 <group name="Annotations">
     <entry name="annotationToolType" type="Enum">
         <label>The last used annotation tool type</label>
-        <choices name="AnnotationDocument::EditActionType"></choices>
-        <default>AnnotationDocument::EditActionType::None</default>
+        <choices name="AnnotationTool::Tool"></choices>
+        <default>AnnotationTool::Tool::NoTool</default>
     </entry>
 
     <entry name="freehandStrokeWidth" type="UInt">

@@ -36,9 +36,12 @@ add_executable(spectacle
     Gui/SpectacleMenu.cpp
     Gui/ViewerWindow.cpp
     Gui/Annotations/AnnotationDocument.cpp
+    Gui/Annotations/AnnotationTool.cpp
     Gui/Annotations/AnnotationViewport.cpp
-    Gui/Annotations/EditAction.cpp
     Gui/Annotations/EffectUtils.cpp
+    Gui/Annotations/History.cpp
+    Gui/Annotations/QmlPainterPath.cpp
+    Gui/Annotations/Traits.cpp
     Gui/SettingsDialog/ImageSaveOptionsPage.cpp
     Gui/SettingsDialog/VideoSaveOptionsPage.cpp
     Gui/SettingsDialog/SettingsDialog.cpp

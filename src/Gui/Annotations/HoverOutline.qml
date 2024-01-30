@@ -11,40 +11,27 @@ AnimatedLoader {
     id: root
     required property AnnotationViewport viewport
     readonly property AnnotationDocument document: viewport.document
-    readonly property rect visualGeometry: viewport.hovered ?
-        document.visualGeometryAtPoint(viewport.toDocumentPoint(viewport.hoverPosition))
-        : Qt.rect(0, 0, 0, 0)
+    readonly property bool shouldShow: enabled && !viewport.hoveredMousePath.empty
+        && viewport.hoveredMousePath.boundingRect !== root.document.selectedItem.mousePath.boundingRect
 
-    state: enabled
-        && visualGeometry.width > 0 && visualGeometry.height > 0
-        && document.tool.type === AnnotationDocument.ChangeAction
-        && document.selectedAction.type === AnnotationDocument.None ?
-        "active" : "inactive"
+    // This item will be frequently activated, so only unload it when it can't be used at all.
+    active: enabled
+    state: shouldShow ? "active" : "inactive"
+
+    x: viewport.hoveredMousePath.boundingRect.x
+    y: viewport.hoveredMousePath.boundingRect.y
+    width: viewport.hoveredMousePath.boundingRect.width
+    height: viewport.hoveredMousePath.boundingRect.height
 
     sourceComponent: SelectionBackground {
         id: outline
+        svgPath: root.viewport.hoveredMousePath.svgPath
         zoom: root.viewport.effectiveZoom
-        strokeColor1: Kirigami.Theme.textColor
-        Binding on x {
-            value: root.visualGeometry.x - outline.strokeWidth
-            when: root.visualGeometry.width > 0
-            restoreMode: Binding.RestoreNone
-        }
-        Binding on y {
-            value: root.visualGeometry.y - outline.strokeWidth
-            when: root.visualGeometry.height > 0
-            restoreMode: Binding.RestoreNone
-        }
-        Binding on width {
-            value: root.visualGeometry.width + strokeWidth * 2
-            when: root.visualGeometry.width > 0
-            restoreMode: Binding.RestoreNone
-        }
-        Binding on height {
-            value: root.visualGeometry.height + strokeWidth * 2
-            when: root.visualGeometry.height > 0
-            restoreMode: Binding.RestoreNone
-        }
+        strokeColor1: palette.text
+        pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
+                           (root.height + effectiveStrokeWidth) / root.height)
+        x: -startX - boundingRect.x
+        y: -startY - boundingRect.y
     }
 }
 

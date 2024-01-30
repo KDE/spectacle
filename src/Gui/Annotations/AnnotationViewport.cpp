@@ -4,7 +4,6 @@
  */
 
 #include "AnnotationViewport.h"
-#include "EditAction.h"
 
 #include <QCursor>
 #include <QPainter>
@@ -42,17 +41,19 @@ void AnnotationViewport::setViewportRect(const QRectF &rect)
     }
     m_viewportRect = rect;
     Q_EMIT viewportRectChanged();
+    updateTransforms();
     update();
 }
 
 void AnnotationViewport::setZoom(qreal zoom)
 {
-    if (zoom == m_zoom) {
+    if (zoom == m_zoom || qFuzzyIsNull(zoom)) {
         return;
     }
 
     m_zoom = zoom;
     Q_EMIT zoomChanged();
+    updateTransforms();
     update();
 }
 
@@ -78,8 +79,7 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
 
     m_document = doc;
     connect(doc, &AnnotationDocument::repaintNeeded, this, &AnnotationViewport::repaintDocument);
-    connect(doc->tool(), &AnnotationTool::typeChanged,
-            this, &AnnotationViewport::setCursorForToolType);
+    connect(doc->tool(), &AnnotationTool::typeChanged, this, &AnnotationViewport::setCursorForToolType);
     Q_EMIT documentChanged();
     update();
 }
@@ -178,6 +178,51 @@ void AnnotationViewport::setAnyPressed()
     s_synchronizingAnyPressed = false;
 }
 
+QPainterPath AnnotationViewport::hoveredMousePath() const
+{
+    return m_hoveredMousePath;
+}
+
+void AnnotationViewport::setHoveredMousePath(const QPainterPath &path)
+{
+    if (path == m_hoveredMousePath) {
+        return;
+    }
+    m_hoveredMousePath = path;
+    Q_EMIT hoveredMousePathChanged();
+}
+
+QMatrix4x4 AnnotationViewport::localToDocument() const
+{
+    return m_localToDocument;
+}
+
+void AnnotationViewport::updateTransforms()
+{
+    QMatrix4x4 localToDocument;
+    // translate() is affected by existing scales,
+    // but scale() does not affect existing translations
+    localToDocument.scale(1 / m_zoom, 1 / m_zoom);
+    localToDocument.translate(m_viewportRect.x(), m_viewportRect.y());
+
+    if (m_localToDocument != localToDocument) {
+        m_localToDocument = localToDocument;
+        Q_EMIT localToDocumentChanged();
+    }
+    QMatrix4x4 documentToLocal;
+    documentToLocal.scale(m_zoom, m_zoom);
+    documentToLocal.translate(-m_viewportRect.x(), -m_viewportRect.y());
+    if (m_documentToLocal != documentToLocal) {
+        m_documentToLocal = documentToLocal;
+        Q_EMIT documentToLocalChanged();
+    }
+}
+
+QMatrix4x4 AnnotationViewport::documentToLocal() const
+{
+    return m_documentToLocal;
+}
+
 void AnnotationViewport::paint(QPainter *painter)
 {
     if (!m_document || m_viewportRect.isEmpty()) {
@@ -204,6 +249,22 @@ void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
         return;
     }
     setHoverPosition(event->position());
+
+    if (m_document->tool()->type() == AnnotationTool::SelectTool) {
+        // Without as_const, QMatrix4x4 will go to General mode with operator()(row, column).
+        // keep margin the same number of pixels regardless of zoom level.
+        auto margin = 4 * std::as_const(m_documentToLocal)(0, 0); // m11/x scale
+        QRectF forgivingRect{event->position(), QSizeF{0, 0}};
+        forgivingRect.adjust(-margin, -margin, margin, margin);
+        if (auto item = m_document->itemAt(m_localToDocument.mapRect(forgivingRect))) {
+            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
+            setHoveredMousePath(geometry->mousePath);
+        } else {
+            setHoveredMousePath({});
+        }
+    } else {
+        setHoveredMousePath({});
+    }
 }
 
 void AnnotationViewport::hoverLeaveEvent(QHoverEvent *event)
@@ -222,28 +283,25 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
         return;
     }
 
-    m_lastDocumentPressPos = toDocumentPoint(event->position());
     auto toolType = m_document->tool()->type();
-    auto saWrapper = m_document->selectedActionWrapper();
+    auto wrapper = m_document->selectedItemWrapper();
+    auto pressPos = event->position();
+    m_lastDocumentPressPos = m_localToDocument.map(pressPos);
 
-    // commit changes to selected text actions
-    if (toolType != AnnotationDocument::None && saWrapper->type() == AnnotationDocument::Text) {
-        saWrapper->commitChanges();
-    }
-
-    if (toolType == AnnotationDocument::ChangeAction) {
-        m_document->selectAction(m_lastDocumentPressPos);
-        // Immediately commit to immediately pop an action copy up in the z order
-        saWrapper->commitChanges();
+    if (toolType == AnnotationTool::SelectTool) {
+        auto margin = 4 * std::as_const(m_documentToLocal)(0, 0); // m11/x scale
+        QRectF forgivingRect{pressPos, QSizeF{0, 0}};
+        forgivingRect.adjust(-margin, -margin, margin, margin);
+        m_document->selectItem(m_localToDocument.mapRect(forgivingRect));
     } else {
-        m_document->beginAction(m_lastDocumentPressPos);
+        wrapper->commitChanges();
+        m_document->beginItem(m_lastDocumentPressPos);
     }
 
-    m_allowDraggingSelectedAction = toolType == AnnotationDocument::ChangeAction
-                                 && saWrapper->type() != AnnotationDocument::None;
-    m_lastSelectedActionVisualGeometry = saWrapper->visualGeometry();
+    m_allowDraggingSelection = toolType == AnnotationTool::SelectTool && wrapper->hasSelection();
 
-    setPressPosition(event->position());
+    setHoveredMousePath({});
+    setPressPosition(pressPos);
     setPressed(true);
     event->accept();
 }
@@ -256,18 +314,14 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
     }
 
     auto toolType = m_document->tool()->type();
-    QPointF documentMousePos = toDocumentPoint(event->position());
-
-    auto saWrapper = m_document->selectedActionWrapper();
-    if (toolType == AnnotationDocument::ChangeAction
-        && saWrapper->type() != AnnotationDocument::None
-        && m_allowDraggingSelectedAction
-    ) {
-        auto visualGeometry = saWrapper->visualGeometry();
-        QPointF posDiff = documentMousePos - m_lastDocumentPressPos;
-        visualGeometry.moveTo(m_lastSelectedActionVisualGeometry.topLeft() + posDiff);
-        saWrapper->setVisualGeometry(visualGeometry);
-    } else if (toolType != AnnotationDocument::None) {
+    auto mousePos = event->position();
+    auto wrapper = m_document->selectedItemWrapper();
+    if (toolType == AnnotationTool::SelectTool && wrapper->hasSelection() && m_allowDraggingSelection) {
+        auto documentMousePos = m_localToDocument.map(event->position());
+        auto dx = documentMousePos.x() - m_lastDocumentPressPos.x();
+        auto dy = documentMousePos.y() - m_lastDocumentPressPos.y();
+        wrapper->transform(dx, dy);
+    } else if (toolType > AnnotationTool::SelectTool) {
         using ContinueOptions = AnnotationDocument::ContinueOptions;
         using ContinueOption = AnnotationDocument::ContinueOption;
         ContinueOptions options;
@@ -277,10 +331,10 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         if (event->modifiers() & Qt::ControlModifier) {
             options |= ContinueOption::CenterResize;
         }
-        m_document->continueAction(documentMousePos, options);
+        m_document->continueItem(m_localToDocument.map(mousePos), options);
     }
 
-    setPressPosition(event->position());
+    setHoveredMousePath({});
     event->accept();
 }
 
@@ -291,16 +345,18 @@ void AnnotationViewport::mouseReleaseEvent(QMouseEvent *event)
         return;
     }
 
-    m_document->finishAction();
+    m_document->finishItem();
 
     auto toolType = m_document->tool()->type();
-    auto saWrapper = m_document->selectedActionWrapper();
-    auto saType = saWrapper->type();
-    if (m_document->isLastActionInvalid() && saType != AnnotationDocument::Text) {
-        m_document->permanentlyDeleteLastAction();
-    } else if (toolType == AnnotationDocument::ChangeAction && saType != AnnotationDocument::None) {
-        saWrapper->commitChanges();
-        update();
+    auto wrapper = m_document->selectedItemWrapper();
+    auto selectedOptions = wrapper->options();
+    if (!selectedOptions.testFlag(AnnotationTool::TextOption) //
+        && !m_document->isCurrentItemValid()) {
+        m_document->popCurrentItem();
+    } else if (toolType == AnnotationTool::SelectTool && wrapper->hasSelection()) {
+        wrapper->commitChanges();
+    } else if (!selectedOptions.testFlag(AnnotationTool::TextOption)) {
+        m_document->deselectItem();
     }
 
     setPressed(false);
@@ -316,22 +372,23 @@ void AnnotationViewport::keyPressEvent(QKeyEvent *event)
         return;
     }
 
-    const auto saWrapper = m_document->selectedActionWrapper();
-    const auto saType = saWrapper->type();
+    const auto wrapper = m_document->selectedItemWrapper();
+    const auto selectedOptions = wrapper->options();
     const auto toolType = m_document->tool()->type();
-    const bool usingChangeTool = toolType == AnnotationDocument::ChangeAction;
-    if (saType != AnnotationDocument::None) {
+    if (wrapper->hasSelection()) {
         if (event->matches(QKeySequence::Cancel)) {
-            m_document->deselectAction();
-            if (m_document->isLastActionInvalid()) {
-                m_document->permanentlyDeleteLastAction();
+            m_document->deselectItem();
+            if (!m_document->isCurrentItemValid()) {
+                m_document->popCurrentItem();
             }
             event->accept();
-        } else if (event->matches(QKeySequence::Delete)
-            && usingChangeTool && saType != AnnotationDocument::Text) {
+        } else if (event->matches(QKeySequence::Delete) //
+                   && toolType == AnnotationTool::SelectTool //
+                   && (!selectedOptions.testFlag(AnnotationTool::TextOption)
+                       || wrapper->text().isEmpty())) {
             // Only use delete shortcut when not using the text tool.
-            // We don't want users trying to delete text to accidentally delete the action.
-            m_document->deleteSelectedAction();
+            // We don't want users trying to delete text to accidentally delete the item.
+            m_document->deleteSelectedItem();
             event->accept();
         }
     }
@@ -349,20 +406,9 @@ void AnnotationViewport::keyReleaseEvent(QKeyEvent *event)
     m_acceptKeyReleaseEvents = false;
 }
 
-QPointF AnnotationViewport::toDocumentPoint(const QPointF &point) const
-{
-    return (point + m_viewportRect.topLeft()) / m_zoom;
-}
-
-QRectF AnnotationViewport::toLocalRect(const QRectF &rect) const
-{
-    return {(rect.topLeft() - m_viewportRect.topLeft()) * m_zoom,
-            rect.size() * m_zoom};
-}
-
 bool AnnotationViewport::shouldIgnoreInput() const
 {
-    return !isEnabled() || !m_document || m_document->tool()->type() == AnnotationDocument::None;
+    return !isEnabled() || !m_document || m_document->tool()->type() == AnnotationTool::NoTool;
 }
 
 void AnnotationViewport::repaintDocument(const QRectF &documentRect)
@@ -377,7 +423,7 @@ void AnnotationViewport::repaintDocument(const QRectF &documentRect)
 
 void AnnotationViewport::repaintDocumentRect(const QRectF &documentRect)
 {
-    auto localRect = toLocalRect(documentRect).toAlignedRect();
+    auto localRect = m_documentToLocal.mapRect(documentRect).toAlignedRect();
     // intersects returns false if either rect is empty
     if (boundingRect().intersects(localRect)) {
         update(localRect);
@@ -387,7 +433,7 @@ void AnnotationViewport::repaintDocumentRect(const QRectF &documentRect)
 void AnnotationViewport::setCursorForToolType()
 {
     if (m_document && isEnabled()) {
-        if (m_document->tool()->type() == AnnotationDocument::ChangeAction) {
+        if (m_document->tool()->type() == AnnotationTool::SelectTool) {
             setCursor(Qt::ArrowCursor);
         } else {
             setCursor(Qt::CrossCursor);

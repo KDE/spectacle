@@ -14,88 +14,79 @@ AnimatedLoader {
     required property AnnotationViewport viewport
     readonly property AnnotationDocument document: viewport.document
     readonly property bool shouldShow: enabled
-        && document.tool.type === AnnotationDocument.ChangeAction
-        && document.selectedAction.type !== AnnotationDocument.None
-        && document.selectedAction.type !== AnnotationDocument.Text
+        && document.tool.type === AnnotationTool.SelectTool
+        && document.selectedItem.hasSelection
+        && (document.selectedItem.options & AnnotationTool.TextOption) === 0
+    property bool dragging: false
 
     state: shouldShow ? "active" : "inactive"
 
     sourceComponent: Item {
         id: resizeHandles
-        readonly property bool pressed: tlHandle.pressed || tHandle.pressed || trHandle.pressed
-                                    || lHandle.pressed || rHandle.pressed
-                                    || blHandle.pressed || bHandle.pressed || brHandle.pressed
-        readonly property rect normalizedRect: Qt.rect(Math.min(x, x + width),
-                                                       Math.min(y, y + height),
-                                                       Math.abs(width), Math.abs(height))
+        readonly property bool dragging: tlHandle.active || tHandle.active || trHandle.active
+                                    || lHandle.active || rHandle.active
+                                    || blHandle.active || bHandle.active || brHandle.active
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
+
+        focus: true
+
+        Binding {
+            target: root
+            property: "dragging"
+            value: resizeHandles.dragging
+            when: root.shouldShow
+            restoreMode: Binding.RestoreNone
+        }
 
         // These have to be set here to avoid having a (0,0,0,0) rect.
         Binding {
             target: root
             property: "x"
-            value: root.document.selectedAction.visualGeometry.x
-            when: root.shouldShow && !resizeHandles.pressed
+            value: root.document.selectedItem.mousePath.boundingRect.x
+            when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }
         Binding {
             target: root
             property: "y"
-            value: root.document.selectedAction.visualGeometry.y
-            when: root.shouldShow && !resizeHandles.pressed
+            value: root.document.selectedItem.mousePath.boundingRect.y
+            when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }
         Binding {
             target: root
             property: "width"
-            value: root.document.selectedAction.visualGeometry.width
-            when: root.shouldShow && !resizeHandles.pressed
+            value: root.document.selectedItem.mousePath.boundingRect.width
+            when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }
         Binding {
             target: root
             property: "height"
-            value: root.document.selectedAction.visualGeometry.height
-            when: root.shouldShow && !resizeHandles.pressed
+            value: root.document.selectedItem.mousePath.boundingRect.height
+            when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }
 
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-            property real lastX
-            property real lastY
-            cursorShape: Qt.SizeAllCursor
-            onPressed: {
-                var pos = mapToItem(null, mouse.x, mouse.y);
-                lastX = pos.x;
-                lastY = pos.y;
-            }
-            onPositionChanged: {
-                var pos = mapToItem(null, mouse.x, mouse.y);
-
-                root.x += (pos.x - lastX) / viewport.effectiveZoom;
-                root.y += (pos.y - lastY) / viewport.effectiveZoom;
-                root.document.selectedAction.visualGeometry = Qt.rect(root.x, root.y,
-                                                             root.width, root.height);
-                lastX = pos.x;
-                lastY = pos.y;
-            }
-            onReleased: root.document.selectedAction.commitChanges()
-        }
-
         SelectionBackground {
-            id: background
+            id: outline
+            svgPath: root.document.selectedItem.mousePath.svgPath
             zoom: root.viewport.effectiveZoom
-            x: resizeHandles.normalizedRect.x - strokeWidth
-            y: resizeHandles.normalizedRect.y - strokeWidth
-            width: resizeHandles.normalizedRect.width + strokeWidth * 2
-            height: resizeHandles.normalizedRect.height + strokeWidth * 2
+            pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
+                               (root.height + effectiveStrokeWidth) / root.height)
+            x: -startX - boundingRect.x
+            y: -startY - boundingRect.y
+            width: boundingRect.width
+            height: boundingRect.height
+            containsMode: SelectionBackground.FillContains
+            HoverHandler {
+                cursorShape: Qt.SizeAllCursor
+            }
         }
 
-        component Handle: MouseArea {
+        component Handle: Rectangle {
             id: handle
             property int edges
             readonly property int effectiveEdges: {
@@ -116,63 +107,49 @@ AnimatedLoader {
                 }
                 return ret;
             }
-            property real lastX
-            property real lastY
+            readonly property alias active: dragHandler.active
             implicitWidth: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
             implicitHeight: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
-            visible: root.document.selectedAction.type !== AnnotationDocument.Number
+            visible: root.document.selectedItem.hasSelection
+                && (root.document.selectedItem.options & AnnotationTool.NumberOption) === 0
+            enabled: visible
+            color: Kirigami.Theme.highlightColor
+            radius: height / 2
 
-            Rectangle {
-                id: graphics
-                // TODO uncomment when the opacity masked handles are fixed
-                // visible: false
-                anchors.fill: parent
-                color: Kirigami.Theme.highlightColor
-                radius: height / 2
-            }
-
-            cursorShape: {
-                if (handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
-                    || handle.effectiveEdges === (Qt.RightEdge | Qt.BottomEdge)) {
-                    return Qt.SizeFDiagCursor;
-                } else if (handle.effectiveEdges === Qt.LeftEdge
-                    || handle.effectiveEdges === Qt.RightEdge) {
-                    return Qt.SizeHorCursor;
-                } else if (handle.effectiveEdges === (Qt.LeftEdge | Qt.BottomEdge)
-                    || handle.effectiveEdges === (Qt.RightEdge | Qt.TopEdge)) {
-                    return Qt.SizeBDiagCursor;
-                } else if (handle.effectiveEdges === Qt.TopEdge
-                    || handle.effectiveEdges === Qt.BottomEdge) {
-                    return Qt.SizeVerCursor;
+            HoverHandler {
+                cursorShape: {
+                    if (enabled) {
+                        if (handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
+                            || handle.effectiveEdges === (Qt.RightEdge | Qt.BottomEdge)) {
+                            return Qt.SizeFDiagCursor;
+                        } else if (handle.effectiveEdges === Qt.LeftEdge
+                            || handle.effectiveEdges === Qt.RightEdge) {
+                            return Qt.SizeHorCursor;
+                        } else if (handle.effectiveEdges === (Qt.LeftEdge | Qt.BottomEdge)
+                            || handle.effectiveEdges === (Qt.RightEdge | Qt.TopEdge)) {
+                            return Qt.SizeBDiagCursor;
+                        } else if (handle.effectiveEdges === Qt.TopEdge
+                            || handle.effectiveEdges === Qt.BottomEdge) {
+                            return Qt.SizeVerCursor;
+                        }
+                    } else {
+                        return undefined
+                    }
                 }
             }
-            onPressed: {
-                var pos = mapToItem(null, mouse.x, mouse.y);
-                lastX = pos.x;
-                lastY = pos.y;
-            }
-            onPositionChanged: {
-                var pos = mapToItem(null, mouse.x, mouse.y);
-
-                if (edges & Qt.LeftEdge) {
-                    root.x += (pos.x - lastX) / viewport.effectiveZoom;
-                    root.width += (lastX - pos.x) / viewport.effectiveZoom;
-                } else if (edges & Qt.RightEdge) {
-                    root.width += (pos.x - lastX) / viewport.effectiveZoom;
+            DragHandler {
+                id: dragHandler
+                target: null
+                dragThreshold: 0
+                onActiveTranslationChanged: if (active) {
+                    let dx = activeTranslation.x / viewport.effectiveZoom
+                    let dy = activeTranslation.y / viewport.effectiveZoom
+                    root.document.selectedItem.transform(dx, dy, edges)
                 }
-
-                if (edges & Qt.TopEdge) {
-                    root.y += (pos.y - lastY) / viewport.effectiveZoom;
-                    root.height += (lastY - pos.y) / viewport.effectiveZoom;
-                } else if (edges & Qt.BottomEdge) {
-                    root.height += (pos.y - lastY) / viewport.effectiveZoom;
+                onActiveChanged: if (!active) {
+                    root.document.selectedItem.commitChanges()
                 }
-                root.document.selectedAction.visualGeometry = Qt.rect(root.x, root.y,
-                                                                root.width, root.height);
-                lastX = pos.x;
-                lastY = pos.y;
             }
-            onReleased: root.document.selectedAction.commitChanges()
         }
         Handle {
             id: tlHandle

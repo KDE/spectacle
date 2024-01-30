@@ -280,13 +280,13 @@ void SpectacleWindow::showPreferencesDialog()
 void SpectacleWindow::showFontDialog()
 {
     auto tool = SpectacleCore::instance()->annotationDocument()->tool();
-    auto saWrapper = SpectacleCore::instance()->annotationDocument()->selectedActionWrapper();
+    auto wrapper = SpectacleCore::instance()->annotationDocument()->selectedItemWrapper();
     QFont font;
-    if (tool->type() == AnnotationDocument::ChangeAction
-        || (tool->type() == AnnotationDocument::Text
-            && saWrapper->type() == AnnotationDocument::Text)
+    if (tool->type() == AnnotationTool::SelectTool
+        || (tool->type() == AnnotationTool::TextTool
+            && wrapper->options().testFlag(AnnotationTool::TextOption))
     ) {
-        font = saWrapper->font();
+        font = wrapper->font();
     } else {
         font = tool->font();
     }
@@ -313,16 +313,16 @@ void SpectacleWindow::showFontDialog()
             newFont.setStyleName(QString());
         }
         auto tool = SpectacleCore::instance()->annotationDocument()->tool();
-        auto saWrapper = SpectacleCore::instance()->annotationDocument()->selectedActionWrapper();
-        if (tool->type() == AnnotationDocument::ChangeAction) {
-            saWrapper->setFont(newFont);
-            saWrapper->commitChanges();
-        } else if (tool->type() == AnnotationDocument::Text
-            && saWrapper->type() == AnnotationDocument::Text
+        auto wrapper = SpectacleCore::instance()->annotationDocument()->selectedItemWrapper();
+        if (tool->type() == AnnotationTool::SelectTool) {
+            wrapper->setFont(newFont);
+            wrapper->commitChanges();
+        } else if (tool->type() == AnnotationTool::TextTool
+            && wrapper->options().testFlag(AnnotationTool::TextOption)
         ) {
             tool->setFont(newFont);
-            saWrapper->setFont(newFont);
-            saWrapper->commitChanges();
+            wrapper->setFont(newFont);
+            wrapper->commitChanges();
         } else {
             tool->setFont(newFont);
         }
@@ -339,39 +339,39 @@ void SpectacleWindow::showColorDialog(int option)
 {
     QColorDialog *dialog = nullptr;
     auto tool = SpectacleCore::instance()->annotationDocument()->tool();
-    auto saWrapper = SpectacleCore::instance()->annotationDocument()->selectedActionWrapper();
+    auto wrapper = SpectacleCore::instance()->annotationDocument()->selectedItemWrapper();
 
     std::function<QColor()> toolGetter;
-    std::function<QColor()> sawGetter;
+    std::function<QColor()> wrapperGetter;
     std::function<void(const QColor &)> toolSetter;
-    std::function<void(const QColor &)> sawSetter;
+    std::function<void(const QColor &)> wrapperSetter;
     using namespace std::placeholders; // for std::placeholders::_1
-    if (option == AnnotationTool::Stroke) {
+    if (option == AnnotationTool::StrokeOption) {
         toolGetter = std::bind(&AnnotationTool::strokeColor, tool);
-        sawGetter = std::bind(&SelectedActionWrapper::strokeColor, saWrapper);
+        wrapperGetter = std::bind(&SelectedItemWrapper::strokeColor, wrapper);
         toolSetter = std::bind(&AnnotationTool::setStrokeColor, tool, _1);
-        sawSetter = std::bind(&SelectedActionWrapper::setStrokeColor, saWrapper, _1);
-    } else if (option == AnnotationTool::Fill) {
+        wrapperSetter = std::bind(&SelectedItemWrapper::setStrokeColor, wrapper, _1);
+    } else if (option == AnnotationTool::FillOption) {
         toolGetter = std::bind(&AnnotationTool::fillColor, tool);
-        sawGetter = std::bind(&SelectedActionWrapper::fillColor, saWrapper);
+        wrapperGetter = std::bind(&SelectedItemWrapper::fillColor, wrapper);
         toolSetter = std::bind(&AnnotationTool::setFillColor, tool, _1);
-        sawSetter = std::bind(&SelectedActionWrapper::setFillColor, saWrapper, _1);
-    } else if (option == AnnotationTool::Font) {
+        wrapperSetter = std::bind(&SelectedItemWrapper::setFillColor, wrapper, _1);
+    } else if (option == AnnotationTool::FontOption) {
         toolGetter = std::bind(&AnnotationTool::fontColor, tool);
-        sawGetter = std::bind(&SelectedActionWrapper::fontColor, saWrapper);
+        wrapperGetter = std::bind(&SelectedItemWrapper::fontColor, wrapper);
         toolSetter = std::bind(&AnnotationTool::setFontColor, tool, _1);
-        sawSetter = std::bind(&SelectedActionWrapper::setFontColor, saWrapper, _1);
+        wrapperSetter = std::bind(&SelectedItemWrapper::setFontColor, wrapper, _1);
     } else {
         qmlWarning(this) << "invalid option argument";
         return;
     }
 
     QColor color;
-    if (tool->type() == AnnotationDocument::ChangeAction
-        || (tool->type() == AnnotationDocument::Text
-            && saWrapper->type() == AnnotationDocument::Text)
+    if (tool->type() == AnnotationTool::SelectTool
+        || (tool->type() == AnnotationTool::TextTool
+            && wrapper->options().testFlag(AnnotationTool::TextOption))
     ) {
-        color = sawGetter();
+        color = wrapperGetter();
     } else {
         color = toolGetter();
     }
@@ -386,18 +386,18 @@ void SpectacleWindow::showColorDialog(int option)
         dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
     }
 
-    connect(dialog, &QColorDialog::colorSelected, this, [toolSetter, sawSetter](const QColor &color){
+    connect(dialog, &QColorDialog::colorSelected, this, [toolSetter, wrapperSetter](const QColor &color){
         auto tool = SpectacleCore::instance()->annotationDocument()->tool();
-        auto saw = SpectacleCore::instance()->annotationDocument()->selectedActionWrapper();
-        if (tool->type() == AnnotationDocument::ChangeAction) {
-            sawSetter(color);
-            saw->commitChanges();
-        } else if (tool->type() == AnnotationDocument::Text
-            && saw->type() == AnnotationDocument::Text
+        auto wrapper = SpectacleCore::instance()->annotationDocument()->selectedItemWrapper();
+        if (tool->type() == AnnotationTool::SelectTool) {
+            wrapperSetter(color);
+            wrapper->commitChanges();
+        } else if (tool->type() == AnnotationTool::TextTool
+            && wrapper->options().testFlag(AnnotationTool::TextOption)
         ) {
             toolSetter(color);
-            sawSetter(color);
-            saw->commitChanges();
+            wrapperSetter(color);
+            wrapper->commitChanges();
         } else {
             toolSetter(color);
         }

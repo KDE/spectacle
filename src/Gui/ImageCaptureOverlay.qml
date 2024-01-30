@@ -562,8 +562,8 @@ MouseArea {
                         -optionsToolBar.height + borderBg.height
                         : optionsToolBar.height - borderBg.height
                     state: if (AnnotationDocument.tool.options !== AnnotationTool.NoOptions
-                        || (AnnotationDocument.tool.type === AnnotationDocument.ChangeAction
-                            && AnnotationDocument.selectedAction.options !== AnnotationTool.NoOptions)
+                        || (AnnotationDocument.tool.type === AnnotationTool.SelectTool
+                            && AnnotationDocument.selectedItem.options !== AnnotationTool.NoOptions)
                     ) {
                         return "active"
                     } else {

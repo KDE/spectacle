@@ -11,6 +11,7 @@
 #include "ExportManager.h"
 #include "Geometry.h"
 #include "Gui/Annotations/AnnotationViewport.h"
+#include "Gui/Annotations/QmlPainterPath.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
 #include "Gui/SelectionEditor.h"
@@ -1056,11 +1057,14 @@ QQmlEngine *SpectacleCore::getQmlEngine()
         qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "AnnotationDocument", m_annotationDocument.get());
         qmlRegisterUncreatableType<AnnotationTool>(SPECTACLE_QML_URI, 1, 0, "AnnotationTool",
                                                    u"Use AnnotationDocument.tool"_s);
-        qmlRegisterUncreatableType<SelectedActionWrapper>(SPECTACLE_QML_URI, 1, 0, "SelectedAction",
-                                                          u"Use AnnotationDocument.selectedAction"_s);
+        qmlRegisterUncreatableType<SelectedItemWrapper>(SPECTACLE_QML_URI, 1, 0, "SelectedItem",
+                                                          u"Use AnnotationDocument.selectedItem"_s);
         qmlRegisterType<AnnotationViewport>(SPECTACLE_QML_URI, 1, 0, "AnnotationViewport");
         qmlRegisterUncreatableType<QScreen>(SPECTACLE_QML_URI, 1, 0, "QScreen",
                                             u"Only created by Qt"_s);
+        qmlRegisterExtendedUncreatableType<QPainterPath, QmlPainterPath>(SPECTACLE_QML_URI, 1, 0,
+                                                                         "QmlPainterPath",
+                                                                         u"Only created from C++"_s);
     }
     return m_engine.get();
 }

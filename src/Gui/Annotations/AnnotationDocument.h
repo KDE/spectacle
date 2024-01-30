@@ -6,30 +6,31 @@
 
 #pragma once
 
+#include "AnnotationTool.h"
+#include "History.h"
+
 #include <QColor>
 #include <QFont>
 #include <QImage>
+#include <QMatrix4x4>
 #include <QObject>
 #include <QVariant>
 
 class AnnotationTool;
-class SelectedActionWrapper;
-class EditAction;
+class SelectedItemWrapper;
 class QPainter;
 
 /**
- * This is the base logic that defines a Document: it's basically a stack of EditAction instances
- * which will decide how to actually render the document: there will be no QImages in the document until saved.
- * is more akin to a Vector drawin app. The undo functionality is implemented by removing EditActions form the top of
- * m_undoStack and moving them to m_redoStack.
- * paint and REnderToImage will be used by clients (AnnotationViewport) to render their own content.
- * There can be any amount of AnnotationViewport sharing the same AnnotationDocument.
+ * This class is used to render an image with annotations. The annotations are vector graphics
+ * and image effects created from a stack of history items that can be undone or redone.
+ * `paint()` and `renderToImage()` will be used by clients (e.g., AnnotationViewport) to render
+ * their own content. There can be any amount of clients sharing the same AnnotationDocument.
  */
 class AnnotationDocument : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AnnotationTool *tool READ tool CONSTANT)
-    Q_PROPERTY(SelectedActionWrapper *selectedAction READ selectedActionWrapper NOTIFY selectedActionWrapperChanged)
+    Q_PROPERTY(SelectedItemWrapper *selectedItem READ selectedItemWrapper NOTIFY selectedItemWrapperChanged)
 
     Q_PROPERTY(int redoStackDepth READ redoStackDepth NOTIFY redoStackDepthChanged)
     Q_PROPERTY(int undoStackDepth READ undoStackDepth NOTIFY undoStackDepthChanged)
@@ -38,9 +39,6 @@ class AnnotationDocument : public QObject
     Q_PROPERTY(qreal imageDpr READ imageDpr NOTIFY imageDprChanged)
 
 public:
-    enum EditActionType { None, FreeHand, Highlight, Line, Arrow, Rectangle, Ellipse, Blur, Pixelate, Text, Number, ChangeAction };
-    Q_ENUM(EditActionType)
-
     enum class ContinueOption {
         NoOptions    = 0b00,
         SnapAngle    = 0b01,
@@ -62,7 +60,7 @@ public:
     ~AnnotationDocument();
 
     AnnotationTool *tool() const;
-    SelectedActionWrapper *selectedActionWrapper() const;
+    SelectedItemWrapper *selectedItemWrapper() const;
 
     int undoStackDepth() const;
     int redoStackDepth() const;
@@ -92,27 +90,31 @@ public:
     QImage renderToImage(const QRectF &viewPort, qreal scale = 1, RenderOptions options = RenderOption::RenderAll) const;
     QImage renderToImage() const;
 
-    // True when there is an edit action in the undo stack and it is invalid.
-    Q_INVOKABLE bool isLastActionInvalid() const;
+    // True when there is an item at the end of the undo stack and it is invalid.
+    bool isCurrentItemValid() const;
 
-    Q_INVOKABLE void permanentlyDeleteLastAction();
+    HistoryItem::shared_ptr popCurrentItem();
 
-    EditAction *actionAtPoint(const QPointF &point) const;
+    // The first item with a mouse path intersecting the specified rectangle.
+    // The rectangle is meant to be used as a way to make selecting an item more forgiving
+    // by adding margins around the center of where the actual target point is.
+    HistoryItem::const_shared_ptr itemAt(const QRectF &rect) const;
 
-    Q_INVOKABLE QRectF visualGeometryAtPoint(const QPointF &point) const;
+    Q_INVOKABLE void undo();
+    Q_INVOKABLE void redo();
 
-public Q_SLOTS:
-    void undo();
-    void redo();
-    void beginAction(const QPointF &point);
-    void continueAction(const QPointF &point, AnnotationDocument::ContinueOptions options = ContinueOption::NoOptions);
-    void finishAction();
-    void selectAction(const QPointF &point);
-    void deselectAction();
-    void deleteSelectedAction();
+    // For starting a new item
+    void beginItem(const QPointF &point);
+    void continueItem(const QPointF &point, AnnotationDocument::ContinueOptions options = ContinueOption::NoOptions);
+    void finishItem();
+
+    // For managing an existing item
+    Q_INVOKABLE void selectItem(const QRectF &rect);
+    Q_INVOKABLE void deselectItem();
+    Q_INVOKABLE void deleteSelectedItem();
 
 Q_SIGNALS:
-    void selectedActionWrapperChanged();
+    void selectedItemWrapperChanged();
     void undoStackDepthChanged();
     void redoStackDepthChanged();
     void canvasSizeChanged();
@@ -122,125 +124,30 @@ Q_SIGNALS:
     void repaintNeeded(const QRectF &area = {});
 
 private:
-    friend class SelectedActionWrapper;
+    friend class SelectedItemWrapper;
 
-    bool isActionVisible(EditAction *action, const QRectF &rect = {}) const;
-    void addAction(EditAction *action);
-    void permanentlyDeleteAction(EditAction *action);
-    void clearRedoStack();
+    void addItem(const HistoryItem::shared_ptr &item);
     void emitRepaintNeededUnlessEmpty(const QRectF &area);
 
     AnnotationTool *m_tool;
-    SelectedActionWrapper *m_selectedActionWrapper;
+    SelectedItemWrapper *m_selectedItemWrapper;
 
     QRectF m_canvasRect;
     QImage m_image;
-    QList<EditAction *> m_undoStack;
-    QList<EditAction *> m_redoStack;
+    // A temporary version of the item we want to edit so we can modify at will. This will be used
+    // instead of the original item when rendering, but the original item will remain in history
+    // until the changes are committed.
+    HistoryItem::shared_ptr m_tempItem;
+    History m_history;
 };
 
 /**
- * This is the data structure that controls the creation of the next action. From qml its paramenter will be
- * set by the app toolbars, and then drawing on the screen with the mouse will lead to the creation of
- * a new EditAction based on those parameters
+ * When the user selects an existing shape with the mouse, this wraps all the parameters of the associated item, so that they can be modified from QML
  */
-class AnnotationTool : public QObject
+class SelectedItemWrapper : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(AnnotationDocument::EditActionType type READ type WRITE setType RESET resetType NOTIFY typeChanged)
-    Q_PROPERTY(Options options READ options NOTIFY optionsChanged)
-    Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth RESET resetStrokeWidth NOTIFY strokeWidthChanged)
-    Q_PROPERTY(QColor strokeColor READ strokeColor WRITE setStrokeColor RESET resetStrokeColor NOTIFY strokeColorChanged)
-    Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor RESET resetFillColor NOTIFY fillColorChanged)
-    Q_PROPERTY(QFont font READ font WRITE setFont RESET resetFont NOTIFY fontChanged)
-    Q_PROPERTY(QColor fontColor READ fontColor WRITE setFontColor RESET resetFontColor NOTIFY fontColorChanged)
-    Q_PROPERTY(int number READ number WRITE setNumber RESET resetNumber NOTIFY numberChanged)
-    Q_PROPERTY(bool shadow READ hasShadow WRITE setShadow RESET resetShadow NOTIFY shadowChanged)
-
-public:
-    enum Option { NoOptions = 0b0000, Stroke = 0b0001, Fill = 0b0010, Font = 0b0100, Shadow = 0b1000 };
-    Q_DECLARE_FLAGS(Options, Option)
-    Q_FLAG(Options)
-
-    AnnotationTool(AnnotationDocument *document);
-    ~AnnotationTool();
-
-    AnnotationDocument::EditActionType type() const;
-    void setType(AnnotationDocument::EditActionType type);
-    void resetType();
-
-    Options options() const;
-
-    int strokeWidth() const;
-    void setStrokeWidth(int width);
-    void resetStrokeWidth();
-
-    QColor strokeColor() const;
-    void setStrokeColor(const QColor &color);
-    void resetStrokeColor();
-
-    QColor fillColor() const;
-    void setFillColor(const QColor &color);
-    void resetFillColor();
-
-    QFont font() const;
-    void setFont(const QFont &font);
-    void resetFont();
-
-    QColor fontColor() const;
-    void setFontColor(const QColor &color);
-    void resetFontColor();
-
-    int number() const;
-    void setNumber(int number);
-    void resetNumber();
-
-    bool hasShadow() const;
-    void setShadow(bool shadow);
-    void resetShadow();
-
-Q_SIGNALS:
-    void typeChanged();
-    void optionsChanged();
-    void strokeWidthChanged(int width);
-    void strokeColorChanged(const QColor &color);
-    void fillColorChanged(const QColor &color);
-    void fontChanged(const QFont &font);
-    void fontColorChanged(const QColor &color);
-    void numberChanged(const int number);
-    void shadowChanged(bool hasShadow);
-
-private:
-    int strokeWidthForType(AnnotationDocument::EditActionType type) const;
-    void setStrokeWidthForType(int width, AnnotationDocument::EditActionType type);
-
-    QColor strokeColorForType(AnnotationDocument::EditActionType type) const;
-    void setStrokeColorForType(const QColor &color, AnnotationDocument::EditActionType type);
-
-    QColor fillColorForType(AnnotationDocument::EditActionType type) const;
-    void setFillColorForType(const QColor &color, AnnotationDocument::EditActionType type);
-
-    QFont fontForType(AnnotationDocument::EditActionType type) const;
-    void setFontForType(const QFont &font, AnnotationDocument::EditActionType type);
-
-    QColor fontColorForType(AnnotationDocument::EditActionType type) const;
-    void setFontColorForType(const QColor &color, AnnotationDocument::EditActionType type);
-
-    bool typeHasShadow(AnnotationDocument::EditActionType type) const;
-    void setTypeHasShadow(AnnotationDocument::EditActionType type, bool shadow);
-
-    AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
-    Options m_options = Option::NoOptions;
-    int m_number = 1;
-};
-
-/**
- * When the user selects an existing shape with the mouse, this wraps all the parameters of the associated action, so that they can be modified from QML
- */
-class SelectedActionWrapper : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(AnnotationDocument::EditActionType type READ type CONSTANT)
+    Q_PROPERTY(bool hasSelection READ hasSelection CONSTANT)
     Q_PROPERTY(AnnotationTool::Options options READ options CONSTANT)
     Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth NOTIFY strokeWidthChanged)
     Q_PROPERTY(QColor strokeColor READ strokeColor WRITE setStrokeColor NOTIFY strokeColorChanged)
@@ -249,19 +156,32 @@ class SelectedActionWrapper : public QObject
     Q_PROPERTY(QColor fontColor READ fontColor WRITE setFontColor NOTIFY fontColorChanged)
     Q_PROPERTY(int number READ number WRITE setNumber NOTIFY numberChanged)
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
-    Q_PROPERTY(QRectF visualGeometry READ visualGeometry WRITE setVisualGeometry NOTIFY visualGeometryChanged)
     Q_PROPERTY(bool shadow READ hasShadow WRITE setShadow NOTIFY shadowChanged)
+    Q_PROPERTY(QPainterPath mousePath READ mousePath NOTIFY mousePathChanged)
 
 public:
-    SelectedActionWrapper(AnnotationDocument *document);
-    ~SelectedActionWrapper();
+    SelectedItemWrapper(AnnotationDocument *document);
+    ~SelectedItemWrapper();
 
-    EditAction *editAction() const;
-    void setEditAction(EditAction *action);
+    // The item we are selecting.
+    HistoryItem::const_weak_ptr selectedItem() const;
+    void setSelectedItem(const HistoryItem::const_shared_ptr &item);
 
-    bool isValid() const;
+    // Transform the item with the given x and y deltas and at the specified edges.
+    // Specifying no edges or all edges only translates.
+    // We don't set things like scale directly because that would require more complex logic to be
+    // written in various places in QML files.
+    Q_INVOKABLE void transform(qreal dx, qreal dy, Qt::Edges edges = {});
 
-    AnnotationDocument::EditActionType type() const;
+    // Pushes the temporary item to history and sets the selected item as the temporary item parent.
+    // Returns whether the commit actually happened.
+    Q_INVOKABLE bool commitChanges();
+
+    // Resets the selected item, temp item and options.
+    // Returns the render area of the reset items.
+    QRectF reset();
+
+    bool hasSelection() const;
 
     AnnotationTool::Options options() const;
 
@@ -286,13 +206,10 @@ public:
     QString text() const;
     void setText(const QString &text);
 
-    QRectF visualGeometry() const;
-    void setVisualGeometry(const QRectF &geom);
-
     bool hasShadow() const;
     void setShadow(bool shadow);
 
-    Q_INVOKABLE void commitChanges();
+    QPainterPath mousePath() const;
 
 Q_SIGNALS:
     void strokeWidthChanged();
@@ -302,19 +219,16 @@ Q_SIGNALS:
     void fontColorChanged();
     void numberChanged();
     void textChanged();
-    void visualGeometryChanged();
     void shadowChanged();
+    void mousePathChanged();
 
 private:
-    AnnotationDocument::EditActionType m_type = AnnotationDocument::None;
     AnnotationTool::Options m_options;
-    EditAction *m_editAction = nullptr;
-    std::unique_ptr<EditAction> m_actionCopy;
+    HistoryItem::const_weak_ptr m_selectedItem;
     AnnotationDocument *const m_document;
 };
 
-QDebug operator<<(QDebug debug, const SelectedActionWrapper *saw);
+QDebug operator<<(QDebug debug, const SelectedItemWrapper *);
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::ContinueOptions)
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::RenderOptions)
-Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationTool::Options)

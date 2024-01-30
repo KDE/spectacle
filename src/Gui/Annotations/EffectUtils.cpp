@@ -88,89 +88,51 @@ QImage fastPseudoBlur(const QImage &src, int radius, qreal devicePixelRatio)
     return out2;
 }
 
-QImage shapeShadow(EditAction *action, qreal devicePixelRatio)
+QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
 {
-    if (!action || !action->hasShadow()) {
+    auto &geometryTrait = std::get<Traits::Geometry::Opt>(traits);
+    auto &shadowTrait = std::get<Traits::Shadow::Opt>(traits);
+    if (!geometryTrait || !shadowTrait) {
         return QImage();
     }
 
-    const QColor shadowStroke(63, 63, 63, std::ceil(28 * action->strokeColor().alphaF()));
-    const QColor shadowFill(63, 63, 63, std::ceil(28 * action->fillColor().alphaF()));
-
-    const QRectF totalRect = action->visualGeometry() + action->shadowMargins();
+    const QRectF &totalRect = geometryTrait->visualRect;
     QImage shadow(totalRect.size().toSize() * devicePixelRatio, QImage::Format_ARGB32_Premultiplied);
     shadow.fill(Qt::transparent);
     QPainter p(&shadow);
     p.setRenderHint(QPainter::Antialiasing);
-    QPen pen(shadowStroke, action->strokeWidth(), Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
     p.setCompositionMode(QPainter::CompositionMode_Source);
-    p.setPen(pen);
+    p.setPen(Qt::NoPen);
     p.setBrush(Qt::NoBrush);
+    p.scale(devicePixelRatio, devicePixelRatio);
+    p.translate(-totalRect.topLeft() + QPointF{Traits::Shadow::margins.left(), Traits::Shadow::margins.top()});
 
-    const QPointF translation = -totalRect.topLeft() + QPointF(shadowOffsetX, shadowOffsetY);
+    auto &fillTrait = std::get<Traits::Fill::Opt>(traits);
+    auto &strokeTrait = std::get<Traits::Stroke::Opt>(traits);
+    // No need to draw fill and stroke separately if they're both opaque
+    if (fillTrait && strokeTrait && fillTrait->brush.isOpaque() && strokeTrait->pen.brush().isOpaque()) {
+        p.setBrush(QColor(63, 63, 63, 28));
+        p.drawPath((strokeTrait->path | geometryTrait->path).simplified());
+    } else {
+        if (fillTrait) {
+            p.setBrush(QColor(63, 63, 63, std::ceil(28 * fillTrait->brush.color().alphaF())));
+            p.drawPath(geometryTrait->path);
+        }
+        if (strokeTrait) {
+            p.setBrush(QColor(63, 63, 63, std::ceil(28 * strokeTrait->pen.color().alphaF())));
+            p.drawPath(strokeTrait->path);
+        }
+    }
 
-    switch (action->type()) {
-    case AnnotationDocument::FreeHand: {
-        auto *fha = static_cast<FreeHandAction *>(action);
-        auto path = fha->path().translated(translation);
-        if (path.isEmpty()) {
-            auto start = path.elementAt(0);
-            // ensure a single point freehand event is visible
-            path.lineTo(start.x + 0.0001, start.y);
-        }
-        p.drawPath(path);
-        break;
-    }
-    case AnnotationDocument::Line:
-    case AnnotationDocument::Arrow: {
-        auto *la = static_cast<LineAction *>(action);
-        const auto &line = la->line().translated(translation);
-        p.drawLine(line);
-        if (la->type() == AnnotationDocument::Arrow) {
-            p.drawPolyline(la->arrowHeadPolygon(line));
-        }
-        break;
-    }
-    case AnnotationDocument::Rectangle:
-    case AnnotationDocument::Ellipse: {
-        auto *sa = static_cast<ShapeAction *>(action);
-        p.setBrush(shadowFill);
-        // p.setPen(sa->strokeWidth() > 0 ? pen : Qt::NoPen);
-        // p.setBrush(sa->fillColor());
-
-        const auto rect = sa->geometry().translated(translation);
-        switch (sa->type()) {
-        case AnnotationDocument::Rectangle:
-            p.drawRect(rect);
-            break;
-        case AnnotationDocument::Ellipse:
-            p.drawEllipse(rect);
-            break;
-        default:
-            break;
-        }
-        break;
-    }
-    case AnnotationDocument::Text: {
-        auto *ta = static_cast<TextAction *>(action);
-        p.setPen({63, 63, 63, std::min(28, ta->fontColor().alpha())});
-        p.setFont(ta->font());
-        QPointF baselineOffset = {0, QFontMetricsF(ta->font()).ascent()};
-        p.drawText(ta->startPoint() + baselineOffset + translation, ta->text());
-        break;
-    }
-    case AnnotationDocument::Number: {
-        auto *na = static_cast<NumberAction *>(action);
-        const auto rect = na->geometry().translated(translation);
-        p.setBrush(shadowFill);
-        p.setPen(Qt::NoPen);
-        p.drawEllipse(rect);
-        break;
-    }
-    default:
-        break;
+    auto &textTrait = std::get<Traits::Text::Opt>(traits);
+    // No need to paint text/number shadow if fill is opaque.
+    if ((!fillTrait || !fillTrait->brush.isOpaque()) && textTrait) {
+        p.setFont(textTrait->font);
+        p.setBrush(Qt::NoBrush);
+        p.setPen(QColor(63, 63, 63, std::ceil(28 * textTrait->brush.color().alphaF())));
+        p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
     }
 
     p.end();
-    return fastPseudoBlur(shadow, shadowBlurRadius, devicePixelRatio);
+    return fastPseudoBlur(shadow, Traits::Shadow::blurRadius, devicePixelRatio);
 }

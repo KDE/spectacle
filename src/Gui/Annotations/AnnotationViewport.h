@@ -6,6 +6,7 @@
 #pragma once
 
 #include "AnnotationDocument.h"
+#include <QMatrix4x4>
 #include <QQuickPaintedItem>
 
 class QPainter;
@@ -13,7 +14,7 @@ class QPainter;
 /**
  * This is a QML item which paints its correspondent AnnotationDocument or a sub-part of it,
  * depending from viewportRect and zoom.
- * This is also managing all the input which will do the edit actions.
+ * This is also managing all the input which will add the annotations.
  */
 class AnnotationViewport : public QQuickPaintedItem
 {
@@ -26,6 +27,9 @@ class AnnotationViewport : public QQuickPaintedItem
     Q_PROPERTY(QPointF pressPosition READ pressPosition NOTIFY pressPositionChanged)
     Q_PROPERTY(bool pressed READ isPressed NOTIFY pressedChanged)
     Q_PROPERTY(bool anyPressed READ isAnyPressed NOTIFY anyPressedChanged)
+    Q_PROPERTY(QPainterPath hoveredMousePath READ hoveredMousePath NOTIFY hoveredMousePathChanged)
+    Q_PROPERTY(QMatrix4x4 localToDocument READ localToDocument NOTIFY localToDocumentChanged)
+    Q_PROPERTY(QMatrix4x4 documentToLocal READ documentToLocal NOTIFY documentToLocalChanged)
 
 public:
     explicit AnnotationViewport(QQuickItem *parent = nullptr);
@@ -52,17 +56,19 @@ public:
 
     bool isAnyPressed() const;
 
-    /**
-     * Transform point from the local coordinate system
-     * to the document coordinate system.
-     */
-    Q_INVOKABLE QPointF toDocumentPoint(const QPointF &point) const;
+    QPainterPath hoveredMousePath() const;
 
     /**
-     * Transform rect from the document coordinate system
-     * to the local coordinate system.
+     * Matrix for transforming from the local coordinate system to the document coordinate system.
+     * Using QMatrix4x4 because QTransform doesn't work with QML.
      */
-    Q_INVOKABLE QRectF toLocalRect(const QRectF &rect) const;
+    QMatrix4x4 localToDocument() const;
+
+    /**
+     * Matrix for transforming from the document coordinate system to the local coordinate system.
+     * Using QMatrix4x4 because QTransform doesn't work with QML.
+     */
+    QMatrix4x4 documentToLocal() const;
 
 Q_SIGNALS:
     void viewportRectChanged();
@@ -73,6 +79,9 @@ Q_SIGNALS:
     void pressPositionChanged();
     void pressedChanged();
     void anyPressedChanged();
+    void hoveredMousePathChanged();
+    void localToDocumentChanged();
+    void documentToLocalChanged();
 
 protected:
     void hoverEnterEvent(QHoverEvent *event) override;
@@ -91,6 +100,8 @@ private:
     void setPressPosition(const QPointF &point);
     void setPressed(bool pressed);
     void setAnyPressed();
+    void setHoveredMousePath(const QPainterPath &path);
+    void updateTransforms();
     // Repaint rect from document coordinate system or whole viewport if empty.
     void repaintDocument(const QRectF &documentRect);
     // Repaint rect from document coordinate system or nothing if empty.
@@ -100,13 +111,15 @@ private:
     QRectF m_viewportRect;
     qreal m_zoom = 1.0;
     QPointer<AnnotationDocument> m_document;
-    QPointF m_lastDocumentPressPos;
     QPointF m_localHoverPosition;
     QPointF m_localPressPosition;
-    QRectF m_lastSelectedActionVisualGeometry;
+    QPointF m_lastDocumentPressPos;
+    QMatrix4x4 m_localToDocument;
+    QMatrix4x4 m_documentToLocal;
     bool m_isHovered = false;
     bool m_isPressed = false;
-    bool m_allowDraggingSelectedAction = false;
+    bool m_allowDraggingSelection = false;
     bool m_acceptKeyReleaseEvents = false;
+    QPainterPath m_hoveredMousePath;
     static QList<AnnotationViewport *> s_viewportInstances;
 };

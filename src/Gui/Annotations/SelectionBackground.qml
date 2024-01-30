@@ -11,35 +11,62 @@ Shape {
     id: root
     // usually the scale will be set elsewhere, so set this to what the scale would be
     property real zoom: 1
-    // ensure outline is always thick enough to be visible
-    property real strokeWidth: Math.max(1 / zoom, 1)
+    property real strokeWidth: 1
     // dash color 1
-    property color strokeColor1: Kirigami.Theme.highlightColor
+    property color strokeColor1: palette.highlight
     // dash color 2
-    property color strokeColor2: Kirigami.Theme.backgroundColor
+    property color strokeColor2: palette.base
 
-    Rectangle {
-        id: rectangle
-        z: -1
-        anchors.fill: parent
-        color: "transparent"
-        border.color: root.strokeColor1
-        border.width: root.strokeWidth
-    }
+    property alias svgPath: pathSvg.path
+
+    property alias pathScale: shapePath.scale
+
+    readonly property alias effectiveStrokeWidth: shapePath.strokeWidth
+    readonly property alias startX: shapePath.startX
+    readonly property alias startY: shapePath.startY
+
+    preferredRendererType: Shape.CurveRenderer
+
+    asynchronous: true
+
     ShapePath {
         id: shapePath
         fillColor: "transparent"
-        strokeWidth: root.strokeWidth
-        strokeColor: root.strokeColor2
-        strokeStyle: ShapePath.DashLine
-        // for some reason, +2 makes the spacing and dash lengths the same, no matter what the strokeWidth is.
-        dashPattern: [Kirigami.Units.smallSpacing / strokeWidth, Kirigami.Units.smallSpacing / strokeWidth + 2]
-        dashOffset: 0
+        // ensure outline is always thick enough to be visible, but grows with zoom
+        strokeWidth: Math.max(root.strokeWidth / root.zoom, 1 / Screen.devicePixelRatio)
+        strokeColor: root.strokeColor1
+        // Solid line because it's easier to do the alternating color effect this way.
+        strokeStyle: ShapePath.SolidLine
+        joinStyle: ShapePath.MiterJoin
         startX: strokeWidth / 2
         startY: startX
-        PathLine { x: root.width - shapePath.startX; y: shapePath.startY }
-        PathLine { x: root.width - shapePath.startX; y: root.height - shapePath.startY }
-        PathLine { x: shapePath.startX; y: root.height - shapePath.startY }
-        PathLine { x: shapePath.startX; y: shapePath.startY }
+        PathSvg {
+            id: pathSvg
+            // A rectangle path
+            path: `M ${shapePath.startX},${shapePath.startY}
+                   L ${root.width - shapePath.startX},${shapePath.startY}
+                   L ${root.width - shapePath.startX},${root.height - shapePath.startY}
+                   L ${shapePath.startX},${root.height - shapePath.startY}
+                   L ${shapePath.startX},${shapePath.startY}` // close path
+        }
+    }
+    ShapePath {
+        scale: shapePath.scale
+        fillColor: shapePath.fillColor
+        strokeWidth: shapePath.strokeWidth
+        strokeColor: root.strokeColor2
+        strokeStyle: ShapePath.DashLine
+        // dashPattern is a list of alternating dash and space lengths.
+        // Length in logical pixels is length * strokeWidth,
+        // so divide by strokeWidth if you want to set length in logical pixels.
+        dashPattern: [Kirigami.Units.mediumSpacing / strokeWidth, Kirigami.Units.mediumSpacing / strokeWidth]
+        dashOffset: 0
+        // FlatCap ensures that dash and space length are equal.
+        // With other cap styles, subtract strokeWidth * 2 from the logical pixel length of dashes.
+        capStyle: ShapePath.FlatCap
+        joinStyle: shapePath.joinStyle
+        startX: shapePath.startX
+        startY: shapePath.startY
+        PathSvg { path: pathSvg.path }
     }
 }

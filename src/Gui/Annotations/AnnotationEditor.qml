@@ -26,9 +26,6 @@ AnnotationViewport {
         y: -root.viewportRect.y
         scale: root.zoom < 1 ? root.zoom : 1
         transformOrigin: Item.TopLeft
-        HoverOutline {
-            viewport: root
-        }
         TextTool {
             id: textTool
             viewport: root
@@ -36,6 +33,10 @@ AnnotationViewport {
         ResizeHandles {
             id: resizeHandles
             viewport: root
+        }
+        HoverOutline {
+            viewport: root
+            enabled: !resizeHandles.dragging
         }
     }
 }
