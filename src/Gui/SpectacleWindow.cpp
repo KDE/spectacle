@@ -27,10 +27,6 @@
 #include <QtQml>
 #include <utility>
 
-#ifdef XCB_FOUND
-#include <private/qtx11extras_p.h>
-#endif
-
 using namespace Qt::StringLiterals;
 using G = Geometry;
 
@@ -56,29 +52,6 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     });
     connect(this, &SpectacleWindow::xChanged, this, &SpectacleWindow::logicalXChanged);
     connect(this, &SpectacleWindow::yChanged, this, &SpectacleWindow::logicalYChanged);
-
-    // before we do anything, we need to set a window property
-    // that skips the close/hide window animation on kwin. this
-    // fixes a ghost image of the spectacle window that appears
-    // on subsequent screenshots taken with the take new screenshot
-    // button
-    //
-    // credits for this goes to Thomas Lübking <thomas.luebking@gmail.com>
-
-#ifdef XCB_FOUND
-    if (KWindowSystem::isPlatformX11()) {
-        // do the xcb shenanigans
-        xcb_connection_t *xcbConn = QX11Info::connection();
-        const QByteArray effectName = "_KDE_NET_WM_SKIP_CLOSE_ANIMATION"_ba;
-
-        xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(xcbConn, false, effectName.length(), effectName.constData());
-        QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
-        if (!atom.isNull()) {
-            uint32_t value = 1;
-            xcb_change_property(xcbConn, XCB_PROP_MODE_REPLACE, winId(), atom->atom, XCB_ATOM_CARDINAL, 32, 1, &value);
-        }
-    }
-#endif
 
     setTextRenderType(QQuickWindow::NativeTextRendering);
 
