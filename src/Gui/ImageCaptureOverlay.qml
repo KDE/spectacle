@@ -36,7 +36,7 @@ MouseArea {
         id: annotations
         anchors.fill: parent
         visible: true
-        enabled: contextWindow.annotating && AnnotationDocument.tool.type !== AnnotationDocument.None
+        enabled: contextWindow.annotating && AnnotationDocument.tool.type !== AnnotationTool.NoTool
         viewportRect: G.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
     }
 
