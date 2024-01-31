@@ -34,7 +34,7 @@ Shape {
     ShapePath {
         id: shapePath
         fillColor: root.enabled ? palette.active.highlight : palette.disabled.highlight
-        strokeWidth: 1
+        strokeWidth: 0
         strokeColor: root.enabled ? palette.active.highlightedText : palette.disabled.highlightedText
         strokeStyle: ShapePath.SolidLine
         joinStyle: ShapePath.MiterJoin

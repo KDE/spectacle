@@ -86,7 +86,7 @@ AnimatedLoader {
             }
         }
 
-        component Handle: Rectangle {
+        component ResizeHandle: Handle {
             id: handle
             property int edges
             readonly property int effectiveEdges: {
@@ -108,13 +108,12 @@ AnimatedLoader {
                 return ret;
             }
             readonly property alias active: dragHandler.active
+
             implicitWidth: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
             implicitHeight: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
             visible: root.document.selectedItem.hasSelection
                 && (root.document.selectedItem.options & AnnotationTool.NumberOption) === 0
             enabled: visible
-            color: Kirigami.Theme.highlightColor
-            radius: height / 2
 
             HoverHandler {
                 cursorShape: {
@@ -151,68 +150,84 @@ AnimatedLoader {
                 }
             }
         }
-        Handle {
+        ResizeHandle {
             id: tlHandle
             anchors {
                 horizontalCenter: parent.left
                 verticalCenter: parent.top
             }
+            startAngle: 90
+            sweepAngle: 270
             edges: Qt.TopEdge | Qt.LeftEdge
         }
-        Handle {
+        ResizeHandle {
             id: lHandle
             anchors {
                 horizontalCenter: parent.left
                 verticalCenter: parent.verticalCenter
             }
+            startAngle: 90
+            sweepAngle: 180
             edges: Qt.LeftEdge
         }
-        Handle {
+        ResizeHandle {
             id: blHandle
             anchors {
                 horizontalCenter: parent.left
                 verticalCenter: parent.bottom
             }
+            startAngle: 0
+            sweepAngle: 270
             edges: Qt.BottomEdge | Qt.LeftEdge
         }
-        Handle {
+        ResizeHandle {
             id: tHandle
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.top
             }
+            startAngle: 180
+            sweepAngle: 180
             edges: Qt.TopEdge
         }
-        Handle {
+        ResizeHandle {
             id: bHandle
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.bottom
             }
+            startAngle: 0
+            sweepAngle: 180
             edges: Qt.BottomEdge
         }
-        Handle {
+        ResizeHandle {
             id: trHandle
             anchors {
                 horizontalCenter: parent.right
                 verticalCenter: parent.top
             }
+            startAngle: 180
+            sweepAngle: 270
             edges: Qt.TopEdge | Qt.RightEdge
         }
-        Handle {
+        ResizeHandle {
             id: rHandle
             anchors {
                 horizontalCenter: parent.right
                 verticalCenter: parent.verticalCenter
             }
+            startAngle: 270
+            sweepAngle: 180
             edges: Qt.RightEdge
         }
-        Handle {
+        ResizeHandle {
             id: brHandle
             anchors {
                 horizontalCenter: parent.right
                 verticalCenter: parent.bottom
             }
+            startAngle: 270
+            sweepAngle: 270
             edges: Qt.BottomEdge | Qt.RightEdge
         }
         Component.onCompleted: forceActiveFocus()
