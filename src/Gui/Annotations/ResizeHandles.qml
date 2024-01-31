@@ -98,6 +98,7 @@ AnimatedLoader {
             enabled: visible
 
             HoverHandler {
+                margin: dragHandler.margin
                 cursorShape: {
                     if (enabled) {
                         if (handle.edges === (Qt.LeftEdge | Qt.TopEdge)
@@ -120,6 +121,7 @@ AnimatedLoader {
             }
             DragHandler {
                 id: dragHandler
+                margin: Math.min(root.width, root.height) < 12 ? 0 : 4
                 target: null
                 dragThreshold: 0
                 onActiveTranslationChanged: if (active) {
