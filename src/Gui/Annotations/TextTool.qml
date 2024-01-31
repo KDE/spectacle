@@ -20,7 +20,7 @@ AnimatedLoader {
 
     state: shouldShow ? "active" : "inactive"
 
-    sourceComponent: T.TextField {
+    sourceComponent: T.TextArea {
         id: textField
         readonly property bool mirrored: effectiveHorizontalAlignment === TextInput.AlignRight
 
@@ -116,6 +116,20 @@ AnimatedLoader {
                 }
             }
         }
+
+        // Keep this in sync with the value used in Traits::createTextPath
+        tabStopDistance: Math.round(fontMetrics.advanceWidth("x") * 8)
+        // QPainter::drawText doesn't support rich text.
+        // We could consider using QStaticText to add rich text support.
+        // We probably shouldn't use QTextDocument because that's unnecessarily heavy.
+        textFormat: TextEdit.PlainText
+        // Keep in sync with Traits::Text::textFlags
+        horizontalAlignment: TextEdit.AlignLeft
+        verticalAlignment: TextEdit.AlignTop
+        wrapMode: TextEdit.NoWrap
+
+        // QPainter uses native antialiasing
+        renderType: TextEdit.NativeRendering
 
         Binding on text {
             value: root.document.selectedItem.text

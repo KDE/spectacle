@@ -23,7 +23,7 @@ Traits::Text::Type Traits::Text::type() const
 int Traits::Text::textFlags() const
 {
     return (type() == Text::String ? Qt::AlignLeft | Qt::AlignTop : Qt::AlignCenter) //
-        | Qt::TextDontClip | Qt::TextWordWrap;
+        | Qt::TextDontClip | Qt::TextExpandTabs | Qt::TextIncludeTrailingSpaces;
 }
 
 QString Traits::Text::text() const
@@ -125,7 +125,9 @@ QPainterPath Traits::createTextPath(const OptTuple &traits)
     QFontMetricsF fm(text->font);
     QPainterPath path{start};
     if (text->type() == Text::String) {
-        auto size = fm.boundingRect(text->text()).size();
+        // Same as QPainter's default
+        const auto tabStopDistance = qRound(fm.horizontalAdvance(u'x') * 8);
+        auto size = fm.size(text->textFlags(), text->text(), tabStopDistance);
         size.rwidth() = std::max(size.width(), fm.height());
         size.rheight() = std::max(size.height(), fm.height());
         // TODO: RTL language reversal
