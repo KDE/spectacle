@@ -155,10 +155,10 @@ AnimatedLoader {
             }
         }
 
-        leftInset: -background.strokeWidth
-        rightInset: -background.strokeWidth
-        topInset: -background.strokeWidth
-        bottomInset: -background.strokeWidth
+        leftInset: -background.effectiveStrokeWidth
+        rightInset: -background.effectiveStrokeWidth
+        topInset: -background.effectiveStrokeWidth
+        bottomInset: -background.effectiveStrokeWidth
         background: SelectionBackground {
             zoom: root.viewport.effectiveZoom
         }
