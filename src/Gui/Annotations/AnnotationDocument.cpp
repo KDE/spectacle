@@ -400,6 +400,9 @@ void AnnotationDocument::beginItem(const QPointF &point)
     }
 
     auto toolType = m_tool->type();
+    if (isAnyOfToolType(toolType, FreehandTool, HighlighterTool)) {
+        geometry->path = Traits::minPath(geometry->path);
+    }
     if (toolType == HighlighterTool) {
         std::get<Traits::Highlight::Opt>(temp.traits()).emplace();
     } else if (toolType == ArrowTool) {
