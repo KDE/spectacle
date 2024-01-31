@@ -89,24 +89,6 @@ AnimatedLoader {
         component ResizeHandle: Handle {
             id: handle
             property int edges
-            readonly property int effectiveEdges: {
-                const invertedW = root.width < 0;
-                const invertedH = root.height < 0;
-                let ret = 0;
-                if ((edges & Qt.LeftEdge && !invertedW) || (edges & Qt.RightEdge && invertedW)) {
-                    ret |= Qt.LeftEdge;
-                }
-                if ((edges & Qt.RightEdge && !invertedW) || (edges & Qt.LeftEdge && invertedW)) {
-                    ret |= Qt.RightEdge;
-                }
-                if ((edges & Qt.TopEdge && !invertedH) || (edges & Qt.BottomEdge && invertedH)) {
-                    ret |= Qt.TopEdge;
-                }
-                if ((edges & Qt.BottomEdge && !invertedH) || (edges & Qt.TopEdge && invertedH)) {
-                    ret |= Qt.BottomEdge;
-                }
-                return ret;
-            }
             readonly property alias active: dragHandler.active
 
             implicitWidth: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
@@ -118,17 +100,17 @@ AnimatedLoader {
             HoverHandler {
                 cursorShape: {
                     if (enabled) {
-                        if (handle.effectiveEdges === (Qt.LeftEdge | Qt.TopEdge)
-                            || handle.effectiveEdges === (Qt.RightEdge | Qt.BottomEdge)) {
+                        if (handle.edges === (Qt.LeftEdge | Qt.TopEdge)
+                            || handle.edges === (Qt.RightEdge | Qt.BottomEdge)) {
                             return Qt.SizeFDiagCursor;
-                        } else if (handle.effectiveEdges === Qt.LeftEdge
-                            || handle.effectiveEdges === Qt.RightEdge) {
+                        } else if (handle.edges === Qt.LeftEdge
+                            || handle.edges === Qt.RightEdge) {
                             return Qt.SizeHorCursor;
-                        } else if (handle.effectiveEdges === (Qt.LeftEdge | Qt.BottomEdge)
-                            || handle.effectiveEdges === (Qt.RightEdge | Qt.TopEdge)) {
+                        } else if (handle.edges === (Qt.LeftEdge | Qt.BottomEdge)
+                            || handle.edges === (Qt.RightEdge | Qt.TopEdge)) {
                             return Qt.SizeBDiagCursor;
-                        } else if (handle.effectiveEdges === Qt.TopEdge
-                            || handle.effectiveEdges === Qt.BottomEdge) {
+                        } else if (handle.edges === Qt.TopEdge
+                            || handle.edges === Qt.BottomEdge) {
                             return Qt.SizeVerCursor;
                         }
                     } else {
