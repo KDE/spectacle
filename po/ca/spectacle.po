@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2024-01-23 13:04+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -250,7 +250,7 @@ msgstr ""
 msgid "Cannot save an empty screenshot image."
 msgstr "No s'ha pogut desar una imatge de captura de pantalla buida."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -259,7 +259,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer temporal cal que sigui un "
 "fitxer local existent"
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer de sortida cal que sigui un "
 "URL vàlid amb un nom de fitxer"
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -276,7 +276,7 @@ msgstr ""
 "No s'ha pogut desar l'enregistrament. No s'ha pogut moure el fitxer a la "
 "ubicació: %1"
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ha fallat la impressió. Ha fallat en inicialitzar la impressora."
@@ -289,7 +289,7 @@ msgstr "Traç:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -297,32 +297,32 @@ msgid_plural "%1px"
 msgstr[0] "%1px"
 msgstr[1] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "Amplada del traç"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "Color del traç"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "Farciment:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "Color de farciment"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "Lletra:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -330,7 +330,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1pt"
 msgstr[1] "%2 %3 %1pts"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -338,22 +338,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1pt"
 msgstr[1] "%2 %1pts"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "Color de la lletra"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "Número:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Número per a les anotacions numèriques"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "Ombra"
@@ -702,6 +702,11 @@ msgstr "Sense retard"
 #, kde-format
 msgid "QR Code found: %1"
 msgstr "S'ha trobat el codi QR: %1"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1564,7 +1569,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segons"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1572,7 +1577,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segon"
 msgstr[1] "%1 segons"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1760,7 +1765,7 @@ msgstr "Enregistra una regió rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Llança l'Spectacle sense capturar"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1770,18 +1775,18 @@ msgstr ""
 "L'Spectacle està enregistrant: %1\n"
 "Feu clic per a finalitzar l'enregistrament"
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 no és un mode vàlid per a --record"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "La captura de pantalla s'ha cancel·lat o ha fallat"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1790,23 +1795,23 @@ msgstr ""
 "La captura de pantalla s'ha desat com a «%1» a «%2» i el camí al seu fitxer "
 "s'ha copiat al porta-retalls."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha desat una captura de pantalla com a «%1» a la carpeta Imatges."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha desat una captura de pantalla com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha desat una captura de pantalla al porta-retalls."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1815,24 +1820,24 @@ msgstr ""
 "L'enregistrament s'ha desat com a «%1» a «%2» i el camí del fitxer "
 "d'enregistrament s'ha desat al porta-retalls."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "S'ha desat un enregistrament com a «%1» a la carpeta Vídeos."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "S'ha desat un enregistrament com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Obre"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "Anotació"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2024-01-23 09:20+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Cannot save an empty screenshot image."
 msgstr "Ni mogoče shraniti prazne zaslonske slike."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,7 +254,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL začasne datoteke mora biti obstoječa lokalna "
 "datoteka"
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -263,7 +263,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL izhodne datoteke mora biti veljaven URL z imenom "
 "datoteke"
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -271,7 +271,7 @@ msgstr ""
 "Posnetka ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na lokacijo: "
 "%1"
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tiskanje ni uspelo. Tiskalnika ni bilo mogoče zagnati."
@@ -284,7 +284,7 @@ msgstr "Zapis:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -294,32 +294,32 @@ msgstr[1] "%1px"
 msgstr[2] "%1px"
 msgstr[3] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "Širina zapisa"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "Barva zapisa"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "Polnilo:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "Barva polnila"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "Pisava:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -329,7 +329,7 @@ msgstr[1] "%2 %3 %1pt"
 msgstr[2] "%2 %3 %1pt"
 msgstr[3] "%2 %3 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -339,22 +339,22 @@ msgstr[1] "%2 %1pt"
 msgstr[2] "%2 %1pt"
 msgstr[3] "%2 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "Barva pisave"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "Število:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Število za številčenje opomb"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "Senca"
@@ -697,6 +697,11 @@ msgstr "Brez zakasnitve"
 #, kde-format
 msgid "QR Code found: %1"
 msgstr "Najdena koda QR: %1"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1555,7 +1560,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekund"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1565,7 +1570,7 @@ msgstr[1] "%1 sekundi"
 msgstr[2] "%1 sekunde"
 msgstr[3] "%1 sekund"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1751,7 +1756,7 @@ msgstr "Posnemi pravokotno območje"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1761,18 +1766,18 @@ msgstr ""
 "Spectacle snema: %1\n"
 "Kliknite za konec zajemanja"
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Zajem slike je bil preklican ali ni uspel"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1781,23 +1786,23 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bilo shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "V vašo mapo s slikami je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "V '%2' je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1806,24 +1811,24 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bilo shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "V vašo mapo z videi je bila shranjena zaslonska slika '%1'."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Shranjena zaslonska slika je bila kot '%1'. v '%2'."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"

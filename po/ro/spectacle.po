@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2023-06-18 19:15+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -235,21 +235,21 @@ msgstr "Nu se poate salva captura. Denumirea fișierului de salvat nu e validă.
 msgid "Cannot save an empty screenshot image."
 msgstr "Nu se poate salva o imagine de captură goală."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -258,7 +258,7 @@ msgstr ""
 "Nu se poate salva imaginea. Fișierul nu a putut fi încărcat în amplasarea "
 "distantă."
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Imprimarea a eșuat. Inițializarea imprimantei a eșuat."
@@ -271,7 +271,7 @@ msgstr "Cursă:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -280,32 +280,32 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "Lățimea cursei"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "Culoarea cursei"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "Umplere:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "Culoare umplere"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "Font:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -314,7 +314,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -323,22 +323,22 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "Culoare font"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "Număr:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Numărul pentru adnotări cu număr"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "Umbră"
@@ -691,6 +691,11 @@ msgstr "Fără întârziere"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
+msgstr ""
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
 msgstr ""
 
 #: src/Gui/RecordingView.qml:46
@@ -1580,7 +1585,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " secunde"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1589,7 +1594,7 @@ msgstr[0] "%1 secundă"
 msgstr[1] "%1 secunde"
 msgstr[2] "%1 de secunde"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1783,7 +1788,7 @@ msgstr "Regiune dreptunghiulară"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1791,18 +1796,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Capturarea ecranului anulată sau eșuată"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1811,23 +1816,23 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1839,7 +1844,7 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1847,19 +1852,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Deschide"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "Adnotează"

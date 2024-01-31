@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -226,28 +226,28 @@ msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되�
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
@@ -260,68 +260,68 @@ msgstr "획 그리기:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
 msgstr[0] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "획 너비"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "획 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "채우기:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "채우기 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "글꼴:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
 msgstr[0] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
 msgstr[0] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "글꼴 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "번호:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "번호 표기에 사용할 번호"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "그림자"
@@ -666,6 +666,11 @@ msgstr "지연 없음"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
+msgstr ""
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
 msgstr ""
 
 #: src/Gui/RecordingView.qml:46
@@ -1533,14 +1538,14 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " 초"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1초"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1735,7 +1740,7 @@ msgstr "직사각형 영역"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1743,18 +1748,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "스크린샷 찍기 취소 혹은 실패"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1763,23 +1768,23 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 저장했습니다."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1791,7 +1796,7 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1799,19 +1804,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2023-12-10 11:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Cannot save an empty screenshot image."
 msgstr "காலியான திரைப்பிடிப்பு படத்தை சேமிக்க முடியாது."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -248,7 +248,7 @@ msgstr ""
 "நிகழ்படத்தை ஏற்றுமதி செய்ய முடியவில்லை: தற்காலிக கோப்பு ஏற்கனவேயுள்ள உள்ளமை கோப்பாக "
 "இருக்க வேண்டும்"
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -257,13 +257,13 @@ msgstr ""
 "நிகழ்படத்தை ஏற்றுமதி செய்ய முடியவில்லை: சேருமிட கோப்பு, முறையான கோப்புப்பெயருடம் "
 "கூடிய முகவரியாக இருக்க வேண்டும்"
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "நிகழ்படத்தை சேமிக்க முடியவில்லை. இவ்விடத்திற்கு கோப்பை நகர்த்த முடியவில்லை: %1"
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "அச்சிடுதல் தோல்வியடைந்தது. அச்சுப்பொறியை துவக்க முடியவில்லை."
@@ -276,7 +276,7 @@ msgstr "கோடு:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -284,32 +284,32 @@ msgid_plural "%1px"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "கோட்டின் அகலம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "கோட்டின் நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "நிரப்புவது:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "நிரப்ப வேண்டிய நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "எழுத்துரு:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -317,7 +317,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -325,22 +325,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "எழுத்துருவின் நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "எண்:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "எண்ணிடும் குறிப்புகளுக்கான எண்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "நிழல்"
@@ -691,6 +691,11 @@ msgstr "தாமதிக்க வேண்டாம்"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
+msgstr ""
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
 msgstr ""
 
 #: src/Gui/RecordingView.qml:46
@@ -1551,7 +1556,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1559,7 +1564,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1741,7 +1746,7 @@ msgstr "செவ்வக பரப்பளவை பதிவுசெய்"
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1751,18 +1756,18 @@ msgstr ""
 "ஸ்பெக்டக்குல் திரைப்பதிவிடுகிறது: %1\n"
 "பதிவை முடிக்க கிளிக் செய்யவும்"
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "--record என்பதற்கு %1 ஒரு செல்லுபடியாகும் பயன்முறை இல்லை"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "திரைப்பிடிப்பு ரத்து செய்யப்பட்டது அல்லது தோல்வியடைந்தது"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1771,23 +1776,23 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1796,24 +1801,24 @@ msgstr ""
 "ஓர் திரைப்பதிவு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ஓர் திரைப்பதிவு '%1' என உங்கள் நிகழ்பட அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ஓர் திரைப்பதிவு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"

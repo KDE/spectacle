@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2024-01-25 11:07+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -232,7 +232,7 @@ msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -258,7 +258,7 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
@@ -271,7 +271,7 @@ msgstr "Vonal:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -279,32 +279,32 @@ msgid_plural "%1px"
 msgstr[0] "%1 képpont"
 msgstr[1] "%1 képpont"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "Vonalvastagság"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "Vonalszín"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "Kitöltés:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "Kitöltőszín"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "Betűtípus:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -312,7 +312,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1 pt"
 msgstr[1] "%2 %3 %1 pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -320,22 +320,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1 pt"
 msgstr[1] "%2 %1 pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "Betűszín:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "Szám:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Szám a számjegyzetekhez"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "Árnyék"
@@ -677,6 +677,11 @@ msgstr "Nincs késleltetés"
 #, kde-format
 msgid "QR Code found: %1"
 msgstr "QR-kód található: %1"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1525,7 +1530,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " másodperc"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1533,7 +1538,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 másodperc"
 msgstr[1] "%1 másodperc"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1717,7 +1722,7 @@ msgstr "Téglalap alakú terület felvétele"
 msgid "Launch Spectacle without capturing"
 msgstr "A Spectacle indítása rögzítés nélkül"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1727,18 +1732,18 @@ msgstr ""
 "A Spectacle felvesz: %1\n"
 "Kattintson a felvétel befejezéséhez"
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "A(z) %1 nem érvényes mód a --record kapcsolóhoz"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Képernyőkép-rögzítés megszakítva vagy meghiúsult"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1747,23 +1752,23 @@ msgstr ""
 "A képernyőkép mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1772,24 +1777,24 @@ msgstr ""
 "A felvétel mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Felvétel mentve mint „%1” a Videók mappába."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Felvétel mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "Feliratozás"

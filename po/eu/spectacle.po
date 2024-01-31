@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-01-31 00:36+0000\n"
 "PO-Revision-Date: 2024-01-24 18:16+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:653
+#: src/ExportManager.cpp:654
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:660
+#: src/ExportManager.cpp:661
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:735
+#: src/ExportManager.cpp:736
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:763
+#: src/ExportManager.cpp:764
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
@@ -282,7 +282,7 @@ msgstr "Trazua:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:92
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -290,32 +290,32 @@ msgid_plural "%1px"
 msgstr[0] "%1px"
 msgstr[1] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
 msgid "Stroke Width"
 msgstr "Trazuaren zabalera"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:112
+#: src/Gui/AnnotationOptionsToolBarContents.qml:113
 #, kde-format
 msgid "Stroke Color"
 msgstr "Trazuaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:152
+#: src/Gui/AnnotationOptionsToolBarContents.qml:153
 #, kde-format
 msgid "Fill:"
 msgstr "Betegarria:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:165
 #, kde-format
 msgid "Fill Color"
 msgstr "Betegarriaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:207
+#: src/Gui/AnnotationOptionsToolBarContents.qml:208
 #, kde-format
 msgid "Font:"
 msgstr "Letra-tipoa:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:223
+#: src/Gui/AnnotationOptionsToolBarContents.qml:224
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -323,7 +323,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1pt"
 msgstr[1] "%2 %3 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -331,22 +331,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1pt"
 msgstr[1] "%2 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:236
+#: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
 msgid "Font Color"
 msgstr "Letra-tipoaren kolorea"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:279
+#: src/Gui/AnnotationOptionsToolBarContents.qml:280
 #, kde-format
 msgid "Number:"
 msgstr "Zenbakia:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:299
+#: src/Gui/AnnotationOptionsToolBarContents.qml:301
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Zenbakizko idatzoharretarako zenbakia"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:326
+#: src/Gui/AnnotationOptionsToolBarContents.qml:328
 #, kde-format
 msgid "Shadow"
 msgstr "Itzala"
@@ -688,6 +688,11 @@ msgstr "Atzerapenik ez"
 #, kde-format
 msgid "QR Code found: %1"
 msgstr "QR kodea aurkitu da: %1"
+
+#: src/Gui/QRCodeScannedMessage.qml:22
+#, kde-format
+msgid "Found QR code with binary content."
+msgstr ""
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1542,7 +1547,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segundo"
 
-#: src/Gui/SpectacleWindow.cpp:192
+#: src/Gui/SpectacleWindow.cpp:165
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1550,7 +1555,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "segundo %1"
 msgstr[1] "%1 segundo"
 
-#: src/Gui/SpectacleWindow.cpp:195
+#: src/Gui/SpectacleWindow.cpp:168
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1738,7 +1743,7 @@ msgstr "Grabatu eskualde laukizuzena"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:346
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1748,18 +1753,18 @@ msgstr ""
 "«Spectacle» grabatzen ari da: %1\n"
 "Egin klik grabatzen bukatzeko"
 
-#: src/SpectacleCore.cpp:617
+#: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:819
+#: src/SpectacleCore.cpp:820
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Pantaila-argazki atzematea utzi da edo huts egin du"
 
-#: src/SpectacleCore.cpp:871
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1768,23 +1773,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:876
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:878
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:882
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:888
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1793,24 +1798,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:889
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:902
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:916
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
