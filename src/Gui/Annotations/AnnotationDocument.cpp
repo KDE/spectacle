@@ -400,7 +400,7 @@ void AnnotationDocument::beginItem(const QPointF &point)
     }
 
     auto toolType = m_tool->type();
-    if (toolType == HighlightTool) {
+    if (toolType == HighlighterTool) {
         std::get<Traits::Highlight::Opt>(temp.traits()).emplace();
     } else if (toolType == ArrowTool) {
         std::get<Traits::Arrow::Opt>(temp.traits()).emplace();
@@ -437,8 +437,8 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
     auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
     auto &path = geometry->path;
     switch (m_tool->type()) {
-    case AnnotationTool::FreeHandTool:
-    case AnnotationTool::HighlightTool: {
+    case AnnotationTool::FreehandTool:
+    case AnnotationTool::HighlighterTool: {
         auto prev = path.currentPosition();
         // smooth path as we go.
         path.quadTo(prev, (prev + point) / 2);

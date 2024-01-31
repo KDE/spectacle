@@ -122,7 +122,7 @@
                 // We only want to set the translated folder name once so the user doesn't end up
                 // with a bunch of different folders when they temporarily change languages.
                 auto pictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-                auto subFolder = onceTranslatedString(this, currentGroup(),
+                auto subFolder = onceTranslatedString(Settings::self(), Settings::self()->currentGroup(),
                                                       "translatedScreenshotsFolder",
                                                       i18nc("translatable folder name", "Screenshots"));
                 defaultImageSaveLocation = QUrl::fromLocalFile(pictures + u'/' + subFolder + u'/');
@@ -168,7 +168,7 @@
                 // We only want to set the translated folder name once so the user doesn't end up
                 // with a bunch of different folders when they temporarily change languages.
                 auto videos = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
-                auto subFolder = onceTranslatedString(this, currentGroup(),
+                auto subFolder = onceTranslatedString(Settings::self(), Settings::self()->currentGroup(),
                                                       "translatedScreencastsFolder",
                                                       i18nc("translatable folder name", "Screencasts"));
                 defaultVideoSaveLocation = QUrl::fromLocalFile(videos + u'/' + subFolder + u'/');

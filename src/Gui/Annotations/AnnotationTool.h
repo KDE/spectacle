@@ -35,8 +35,8 @@ public:
     enum Tool {
         NoTool,
         SelectTool,
-        FreeHandTool,
-        HighlightTool,
+        FreehandTool,
+        HighlighterTool,
         LineTool,
         ArrowTool,
         RectangleTool,

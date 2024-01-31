@@ -78,15 +78,15 @@ ButtonGrid {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Freehand")
         icon.name: "draw-freehand"
-        checked: AnnotationDocument.tool.type === AnnotationTool.FreeHandTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.FreeHandTool
+        checked: AnnotationDocument.tool.type === AnnotationTool.FreehandTool
+        onClicked: AnnotationDocument.tool.type = AnnotationTool.FreehandTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Highlighter")
         icon.name: "draw-highlight"
-        checked: AnnotationDocument.tool.type === AnnotationTool.HighlightTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.HighlightTool
+        checked: AnnotationDocument.tool.type === AnnotationTool.HighlighterTool
+        onClicked: AnnotationDocument.tool.type = AnnotationTool.HighlighterTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup

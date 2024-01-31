@@ -9,6 +9,40 @@
 using enum AnnotationTool::Tool;
 using enum AnnotationTool::Option;
 
+// clang-format off
+
+// Default value macros
+
+#define DEFAULT_STROKE_WIDTH(ToolName) case ToolName##Tool: { return Settings::default##ToolName##StrokeWidthValue(); }
+
+#define DEFAULT_STROKE_COLOR(ToolName) case ToolName##Tool: { return Settings::default##ToolName##StrokeColorValue(); }
+
+#define DEFAULT_FILL_COLOR(ToolName) case ToolName##Tool: { return Settings::default##ToolName##FillColorValue(); }
+
+#define DEFAULT_FONT(ToolName) case ToolName##Tool: { return Settings::default##ToolName##FontValue(); }
+
+#define DEFAULT_FONT_COLOR(ToolName) case ToolName##Tool: { return Settings::default##ToolName##FontColorValue(); }
+
+#define DEFAULT_SHADOW(ToolName) case ToolName##Tool: { return Settings::default##ToolName##ShadowValue(); }
+
+// No getter macros because there's no way to lowercase the ToolName arg
+
+// Setter macros
+
+#define SET_STROKE_WIDTH(ToolName) case ToolName##Tool: { Settings::set##ToolName##StrokeWidth(width); } break;
+
+#define SET_STROKE_COLOR(ToolName) case ToolName##Tool: { Settings::set##ToolName##StrokeColor(color); } break;
+
+#define SET_FILL_COLOR(ToolName) case ToolName##Tool: { Settings::set##ToolName##FillColor(color); } break;
+
+#define SET_FONT(ToolName) case ToolName##Tool: { Settings::set##ToolName##Font(font); } break;
+
+#define SET_FONT_COLOR(ToolName) case ToolName##Tool: { Settings::set##ToolName##FontColor(color); } break;
+
+#define SET_SHADOW(ToolName) case ToolName##Tool: { Settings::set##ToolName##Shadow(shadow); } break;
+
+// clang-format on
+
 AnnotationTool::AnnotationTool(QObject *parent)
     : QObject(parent)
 {
@@ -94,9 +128,9 @@ AnnotationTool::Options AnnotationTool::options() const
 constexpr AnnotationTool::Options AnnotationTool::optionsForType(AnnotationTool::Tool type)
 {
     switch (type) {
-    case HighlightTool:
+    case HighlighterTool:
         return StrokeOption;
-    case FreeHandTool:
+    case FreehandTool:
     case LineTool:
     case ArrowTool:
         return {StrokeOption, ShadowOption};
@@ -120,12 +154,12 @@ int AnnotationTool::strokeWidth() const
 constexpr int AnnotationTool::defaultStrokeWidthForType(AnnotationTool::Tool type)
 {
     switch (type) {
-    case FreeHandTool:
-    case LineTool:
-    case ArrowTool:
-        return 4;
-    case HighlightTool:
-        return 20;
+        DEFAULT_STROKE_WIDTH(Freehand)
+        DEFAULT_STROKE_WIDTH(Highlighter)
+        DEFAULT_STROKE_WIDTH(Line)
+        DEFAULT_STROKE_WIDTH(Arrow)
+        DEFAULT_STROKE_WIDTH(Rectangle)
+        DEFAULT_STROKE_WIDTH(Ellipse)
     default:
         return 0;
     }
@@ -134,9 +168,9 @@ constexpr int AnnotationTool::defaultStrokeWidthForType(AnnotationTool::Tool typ
 int AnnotationTool::strokeWidthForType(AnnotationTool::Tool type) const
 {
     switch (type) {
-    case FreeHandTool:
+    case FreehandTool:
         return Settings::freehandStrokeWidth();
-    case HighlightTool:
+    case HighlighterTool:
         return Settings::highlighterStrokeWidth();
     case LineTool:
         return Settings::lineStrokeWidth();
@@ -164,24 +198,12 @@ void AnnotationTool::setStrokeWidth(int width)
 void AnnotationTool::setStrokeWidthForType(int width, AnnotationTool::Tool type)
 {
     switch (type) {
-    case FreeHandTool:
-        Settings::setFreehandStrokeWidth(width);
-        break;
-    case HighlightTool:
-        Settings::setHighlighterStrokeWidth(width);
-        break;
-    case LineTool:
-        Settings::setLineStrokeWidth(width);
-        break;
-    case ArrowTool:
-        Settings::setArrowStrokeWidth(width);
-        break;
-    case RectangleTool:
-        Settings::setRectangleStrokeWidth(width);
-        break;
-    case EllipseTool:
-        Settings::setEllipseStrokeWidth(width);
-        break;
+        SET_STROKE_WIDTH(Freehand)
+        SET_STROKE_WIDTH(Highlighter)
+        SET_STROKE_WIDTH(Line)
+        SET_STROKE_WIDTH(Arrow)
+        SET_STROKE_WIDTH(Rectangle)
+        SET_STROKE_WIDTH(Ellipse)
     default:
         break;
     }
@@ -200,15 +222,12 @@ QColor AnnotationTool::strokeColor() const
 constexpr QColor AnnotationTool::defaultStrokeColorForType(AnnotationTool::Tool type)
 {
     switch (type) {
-    case FreeHandTool:
-    case LineTool:
-    case ArrowTool:
-        return Qt::red;
-    case HighlightTool:
-        return Qt::yellow;
-    case RectangleTool:
-    case EllipseTool:
-        return Qt::black;
+        DEFAULT_STROKE_COLOR(Freehand)
+        DEFAULT_STROKE_COLOR(Highlighter)
+        DEFAULT_STROKE_COLOR(Line)
+        DEFAULT_STROKE_COLOR(Arrow)
+        DEFAULT_STROKE_COLOR(Rectangle)
+        DEFAULT_STROKE_COLOR(Ellipse)
     default:
         return Qt::transparent;
     }
@@ -217,9 +236,9 @@ constexpr QColor AnnotationTool::defaultStrokeColorForType(AnnotationTool::Tool 
 QColor AnnotationTool::strokeColorForType(AnnotationTool::Tool type) const
 {
     switch (type) {
-    case FreeHandTool:
+    case FreehandTool:
         return Settings::freehandStrokeColor();
-    case HighlightTool:
+    case HighlighterTool:
         return Settings::highlighterStrokeColor();
     case LineTool:
         return Settings::lineStrokeColor();
@@ -247,24 +266,12 @@ void AnnotationTool::setStrokeColor(const QColor &color)
 void AnnotationTool::setStrokeColorForType(const QColor &color, AnnotationTool::Tool type)
 {
     switch (type) {
-    case FreeHandTool:
-        Settings::setFreehandStrokeColor(color);
-        break;
-    case HighlightTool:
-        Settings::setHighlighterStrokeColor(color);
-        break;
-    case LineTool:
-        Settings::setLineStrokeColor(color);
-        break;
-    case ArrowTool:
-        Settings::setArrowStrokeColor(color);
-        break;
-    case RectangleTool:
-        Settings::setRectangleStrokeColor(color);
-        break;
-    case EllipseTool:
-        Settings::setEllipseStrokeColor(color);
-        break;
+        SET_STROKE_COLOR(Freehand)
+        SET_STROKE_COLOR(Highlighter)
+        SET_STROKE_COLOR(Line)
+        SET_STROKE_COLOR(Arrow)
+        SET_STROKE_COLOR(Rectangle)
+        SET_STROKE_COLOR(Ellipse)
     default:
         break;
     }
@@ -283,10 +290,9 @@ QColor AnnotationTool::fillColor() const
 constexpr QColor AnnotationTool::defaultFillColorForType(AnnotationTool::Tool type)
 {
     switch (type) {
-    case RectangleTool:
-    case EllipseTool:
-    case NumberTool:
-        return Qt::red;
+        DEFAULT_FILL_COLOR(Rectangle)
+        DEFAULT_FILL_COLOR(Ellipse)
+        DEFAULT_FILL_COLOR(Number)
     default:
         return Qt::transparent;
     }
@@ -319,15 +325,9 @@ void AnnotationTool::setFillColor(const QColor &color)
 void AnnotationTool::setFillColorForType(const QColor &color, AnnotationTool::Tool type)
 {
     switch (type) {
-    case RectangleTool:
-        Settings::setRectangleFillColor(color);
-        break;
-    case EllipseTool:
-        Settings::setEllipseFillColor(color);
-        break;
-    case NumberTool:
-        Settings::setNumberFillColor(color);
-        break;
+        SET_FILL_COLOR(Rectangle)
+        SET_FILL_COLOR(Ellipse)
+        SET_FILL_COLOR(Number)
     default:
         break;
     }
@@ -368,12 +368,8 @@ void AnnotationTool::setFont(const QFont &font)
 void AnnotationTool::setFontForType(const QFont &font, AnnotationTool::Tool type)
 {
     switch (type) {
-    case TextTool:
-        Settings::setTextFont(font);
-        break;
-    case NumberTool:
-        Settings::setNumberFont(font);
-        break;
+        SET_FONT(Text)
+        SET_FONT(Number)
     default:
         break;
     }
@@ -392,9 +388,8 @@ QColor AnnotationTool::fontColor() const
 constexpr QColor AnnotationTool::defaultFontColorForType(AnnotationTool::Tool type)
 {
     switch (type) {
-    case TextTool:
-    case NumberTool:
-        return Qt::black;
+        DEFAULT_FONT_COLOR(Text)
+        DEFAULT_FONT_COLOR(Number)
     default:
         return Qt::transparent;
     }
@@ -425,12 +420,8 @@ void AnnotationTool::setFontColor(const QColor &color)
 void AnnotationTool::setFontColorForType(const QColor &color, AnnotationTool::Tool type)
 {
     switch (type) {
-    case TextTool:
-        Settings::setTextFontColor(color);
-        break;
-    case NumberTool:
-        Settings::setNumberFontColor(color);
-        break;
+        SET_FONT_COLOR(Text)
+        SET_FONT_COLOR(Number)
     default:
         break;
     }
@@ -464,7 +455,7 @@ void AnnotationTool::resetNumber()
 bool AnnotationTool::typeHasShadow(AnnotationTool::Tool type) const
 {
     switch (type) {
-    case FreeHandTool:
+    case FreehandTool:
         return Settings::freehandShadow();
     case LineTool:
         return Settings::lineShadow();
@@ -491,27 +482,13 @@ bool AnnotationTool::hasShadow() const
 void AnnotationTool::setTypeHasShadow(AnnotationTool::Tool type, bool shadow)
 {
     switch (type) {
-    case FreeHandTool:
-        Settings::setFreehandShadow(shadow);
-        break;
-    case LineTool:
-        Settings::setLineShadow(shadow);
-        break;
-    case ArrowTool:
-        Settings::setArrowShadow(shadow);
-        break;
-    case RectangleTool:
-        Settings::setRectangleShadow(shadow);
-        break;
-    case EllipseTool:
-        Settings::setEllipseShadow(shadow);
-        break;
-    case TextTool:
-        Settings::setTextShadow(shadow);
-        break;
-    case NumberTool:
-        Settings::setNumberShadow(shadow);
-        break;
+        SET_SHADOW(Freehand)
+        SET_SHADOW(Line)
+        SET_SHADOW(Arrow)
+        SET_SHADOW(Rectangle)
+        SET_SHADOW(Ellipse)
+        SET_SHADOW(Text)
+        SET_SHADOW(Number)
     default:
         break;
     }
