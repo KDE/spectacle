@@ -136,6 +136,7 @@ qt_add_qml_module(spectacle
     Gui/EmptyPage.qml
     Gui/FloatingBackground.qml
     Gui/FloatingToolBar.qml
+    Gui/Handle.qml
     Gui/ImageCaptureOverlay.qml
     Gui/ImageView.qml
     Gui/InlineMessage.qml
