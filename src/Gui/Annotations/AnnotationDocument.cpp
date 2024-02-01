@@ -682,8 +682,8 @@ void SelectedItemWrapper::transform(qreal dx, qreal dy, Qt::Edges edges)
                                               edges.testFlag(Qt::BottomEdge) ? dy : 0);
         auto scale = Traits::scaleForSize(oldRect.size(), newRect.size());
         auto translation = Traits::unTranslateScale(scale.sx, scale.sy, oldRect.topLeft());
-        translation.dx += leftEdge ? dx : 0;
-        translation.dy += topEdge ? dy : 0;
+        translation.dx += leftEdge || oldRect.width() == 0 ? dx : 0;
+        translation.dy += topEdge || oldRect.height() == 0 ? dy : 0;
         // Translate before scale to avoid scaling translation.
         auto transform = QTransform::fromTranslate(translation.dx, translation.dy);
         transform.scale(scale.sx, scale.sy);
