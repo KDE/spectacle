@@ -10,10 +10,21 @@
 
 using namespace Qt::StringLiterals;
 
+// Stroke
+
 QPen Traits::Stroke::defaultPen()
 {
     return {Qt::NoBrush, 1.0, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin};
 }
+
+// Fill
+
+Traits::Fill::Type Traits::Fill::type() const
+{
+    return static_cast<Fill::Type>(index());
+}
+
+// Text
 
 Traits::Text::Type Traits::Text::type() const
 {
@@ -36,12 +47,9 @@ QString Traits::Text::text() const
     return {};
 }
 
-Traits::ImageEffect::ImageEffect(Type type, float factor)
-    : type(type)
-    , factor(factor)
-{
-}
+// ImageEffects
 
+static const auto factorKey = u"factor"_s;
 QImage imageCopyHelper(const QImage &image, const QRectF &copyRect)
 {
     if (copyRect.size() != image.size()) {
@@ -53,35 +61,78 @@ QImage imageCopyHelper(const QImage &image, const QRectF &copyRect)
     return image;
 }
 
-static const auto factorKey = u"factor"_s;
-QImage Traits::ImageEffect::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
+Traits::ImageEffects::Blur::Blur(uint factor)
+    : factor(factor)
 {
-    // Scale the factor with the devicePixelRatio.
-    // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-    const auto effectFactor = (factor < 1 ? 1 : factor) * dpr;
-    if (backingStoreCache.isNull() || backingStoreCache.devicePixelRatio() != dpr //
-        || backingStoreCache.text(factorKey).toFloat() != factor) {
+}
+
+bool Traits::ImageEffects::Blur::isValid() const
+{
+    return factor > 1;
+}
+
+QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
+{
+    if (!isValid()) {
+        return {};
+    }
+    if ((backingStoreCache.isNull() //
+         || backingStoreCache.devicePixelRatio() != dpr //
+         || backingStoreCache.text(factorKey).toFloat() != factor)
+        && getImage) {
         backingStoreCache = getImage();
-        if (type == Blur && factor > 1) {
-            auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-            auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
-            // A poor man's blur. It's fast, but not high quality.
-            // It's somewhat blocky, but it's definitely blurry.
-            backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-            backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
-        } else if (type == Pixelate && factor > 1) {
-            auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-            auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
-            // Smooth when scaling down to average out the colors.
-            backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-            backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
-        }
+        // Scale the factor with the devicePixelRatio.
+        // This way high DPI pictures aren't visually affected less than standard DPI pictures.
+        const auto effectFactor = factor * dpr;
+        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
+        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
+        // A poor man's blur. It's fast, but not high quality.
+        // It's somewhat blocky, but it's definitely blurry.
+        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
+        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
     rect = ::Geometry::rectScaled(rect, backingStoreCache.devicePixelRatio());
     return imageCopyHelper(backingStoreCache, rect);
 }
+
+Traits::ImageEffects::Pixelate::Pixelate(uint factor)
+    : factor(factor)
+{
+}
+
+bool Traits::ImageEffects::Pixelate::isValid() const
+{
+    return factor > 1;
+}
+
+QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
+{
+    if (!isValid()) {
+        return {};
+    }
+    if ((backingStoreCache.isNull() //
+         || backingStoreCache.devicePixelRatio() != dpr //
+         || backingStoreCache.text(factorKey).toFloat() != factor)
+        && getImage) {
+        backingStoreCache = getImage();
+        // Scale the factor with the devicePixelRatio.
+        // This way high DPI pictures aren't visually affected less than standard DPI pictures.
+        const auto effectFactor = factor * dpr;
+        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
+        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
+        // Smooth when scaling down to average out the colors.
+        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
+        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
+        backingStoreCache.setDevicePixelRatio(dpr);
+        backingStoreCache.setText(factorKey, QString::number(factor));
+    }
+    rect = ::Geometry::rectScaled(rect, backingStoreCache.devicePixelRatio());
+    return imageCopyHelper(backingStoreCache, rect);
+}
+
+// Functions
 
 Traits::Translation Traits::unTranslateScale(qreal sx, qreal sy, const QPointF &oldPoint)
 {
@@ -334,42 +385,56 @@ void Traits::transformTraits(const QTransform &transform, OptTuple &traits)
 }
 
 // Whether the values of the traits without std::optional are considered valid.
-template<typename T>
-bool isValidTraitHelper(const T &trait)
+template<>
+bool Traits::isValidTrait<Traits::Geometry>(const Traits::Geometry &trait)
 {
-    if constexpr (std::same_as<T, Traits::Geometry>) {
-        return !trait.visualRect.isEmpty() && !trait.path.isEmpty();
+    return !trait.visualRect.isEmpty() && !trait.path.isEmpty();
+}
+template<>
+bool Traits::isValidTrait<Traits::Stroke>(const Traits::Stroke &trait)
+{
+    return !trait.path.isEmpty() && trait.pen.style() != Qt::NoPen;
+}
+template<>
+bool Traits::isValidTrait<Traits::Fill>(const Traits::Fill &trait)
+{
+    switch (trait.index()) {
+    case Fill::Brush:
+        return std::get<Fill::Brush>(trait) != Qt::NoBrush;
+    case Fill::Blur:
+        return std::get<Fill::Blur>(trait).isValid();
+    case Fill::Pixelate:
+        return std::get<Fill::Pixelate>(trait).isValid();
+    default:
+        return false;
     }
-    if constexpr (std::same_as<T, Traits::Stroke>) {
-        return !trait.path.isEmpty() && trait.pen.style() != Qt::NoPen;
-    }
-    if constexpr (std::same_as<T, Traits::Fill>) {
-        return trait.brush != Qt::NoBrush;
-    }
-    if constexpr (std::same_as<T, Traits::Highlight>) {
-        return true;
-    }
-    if constexpr (std::same_as<T, Traits::Arrow>) {
-        return true;
-    }
-    if constexpr (std::same_as<T, Traits::Text>) {
-        return trait.brush != Qt::NoBrush //
-            && (trait.type() == Traits::Text::Number || !trait.text().isEmpty());
-    }
-    if constexpr (std::same_as<T, Traits::ImageEffect>) {
-        return true;
-    }
-    if constexpr (std::same_as<T, Traits::Shadow>) {
-        return true;
-    }
-    return false;
+}
+template<>
+bool Traits::isValidTrait<Traits::Highlight>(const Traits::Highlight &)
+{
+    return true;
+}
+template<>
+bool Traits::isValidTrait<Traits::Arrow>(const Traits::Arrow &)
+{
+    return true;
+}
+template<>
+bool Traits::isValidTrait<Traits::Text>(const Traits::Text &trait)
+{
+    return trait.brush != Qt::NoBrush //
+        && (trait.type() == Traits::Text::Number || !trait.text().isEmpty());
+}
+template<>
+bool Traits::isValidTrait<Traits::Shadow>(const Traits::Shadow &)
+{
+    return true;
 }
 
 // Whether the std::optionals are considered valid.
 template<typename T>
-bool isValidTrait(const Traits::OptTuple &traits, bool isNullValid)
+bool Traits::isValidTraitOpt(const Traits::OptTuple &traits, bool isNullValid)
 {
-    using namespace Traits;
     auto &traitOpt = std::get<std::optional<T>>(traits);
     if (!traitOpt) {
         return isNullValid;
@@ -377,40 +442,40 @@ bool isValidTrait(const Traits::OptTuple &traits, bool isNullValid)
     auto &trait = traitOpt.value();
 
     if constexpr (std::same_as<T, Traits::Geometry>) {
-        return isValidTraitHelper(trait);
+        return Traits::isValidTrait(trait);
     }
 
     // Traits that depend on geometry
     auto &geometry = std::get<Traits::Geometry::Opt>(traits);
-    const bool validGeometry = geometry && isValidTraitHelper(geometry.value());
+    const bool validGeometry = geometry && Traits::isValidTrait(geometry.value());
     if constexpr (std::same_as<T, Stroke>) {
-        return validGeometry && isValidTraitHelper(trait);
+        return validGeometry && Traits::isValidTrait(trait);
     }
     if constexpr (std::same_as<T, Fill>) {
-        return validGeometry && isValidTraitHelper(trait);
+        return validGeometry && Traits::isValidTrait(trait);
     }
     if constexpr (std::same_as<T, Text>) {
-        return validGeometry && isValidTraitHelper(trait);
-    }
-    if constexpr (std::same_as<T, ImageEffect>) {
-        return validGeometry && isValidTraitHelper(trait);
+        return validGeometry && Traits::isValidTrait(trait);
     }
 
     // Traits that depend on vector graphic traits
     auto &stroke = std::get<Stroke::Opt>(traits);
     auto &fill = std::get<Fill::Opt>(traits);
     auto &text = std::get<Text::Opt>(traits);
-    const bool validStroke = stroke && isValidTraitHelper(stroke.value());
-    const bool validFill = fill && isValidTraitHelper(fill.value());
-    const bool validText = text && isValidTraitHelper(text.value());
+    const bool validStroke = stroke && Traits::isValidTrait(stroke.value());
+    const bool validFill = fill && Traits::isValidTrait(fill.value());
+    const bool validText = text && Traits::isValidTrait(text.value());
     if constexpr (std::same_as<T, Highlight>) {
-        return validGeometry && (validStroke || validFill || validText) && isValidTraitHelper(trait);
+        return validGeometry && (validStroke || validFill || validText) //
+            && Traits::isValidTrait(trait);
     }
     if constexpr (std::same_as<T, Arrow>) {
-        return validGeometry && (validStroke || validFill || validText) && isValidTraitHelper(trait);
+        return validGeometry && (validStroke || validFill || validText) //
+            && Traits::isValidTrait(trait);
     }
     if constexpr (std::same_as<T, Shadow>) {
-        return validGeometry && (validStroke || validFill || validText) && isValidTraitHelper(trait);
+        return validGeometry && (validStroke || validFill || validText) //
+            && Traits::isValidTrait(trait);
     }
     return false;
 }
@@ -418,19 +483,20 @@ bool isValidTrait(const Traits::OptTuple &traits, bool isNullValid)
 template<typename... Ts>
 bool isValidHelper(const Traits::OptTuple &traits)
 {
-    return (isValidTrait<Ts>(traits, true) && ...);
+    return (Traits::isValidTraitOpt<Ts>(traits, true) && ...);
 }
 
 bool Traits::isValid(const OptTuple &traits)
 {
-    return isValidHelper<Geometry, Stroke, Fill, Highlight, Arrow, Text, ImageEffect, Shadow>(traits);
+    return isValidHelper<Geometry, Stroke, Fill, Highlight, Arrow, Text, Shadow>(traits);
 }
 
 bool Traits::isVisible(const OptTuple &traits)
 {
-    return isValidTrait<Geometry>(traits, false) //
-        && (isValidTrait<Stroke>(traits, false) || isValidTrait<Fill>(traits, false) //
-            || isValidTrait<Text>(traits, false) || isValidTrait<ImageEffect>(traits, false));
+    return Traits::isValidTraitOpt<Geometry>(traits, false) //
+        && (Traits::isValidTraitOpt<Stroke>(traits, false) //
+            || Traits::isValidTraitOpt<Fill>(traits, false) //
+            || Traits::isValidTraitOpt<Text>(traits, false));
 }
 
 QPainterPath Traits::mousePath(const OptTuple &traits)
@@ -446,6 +512,8 @@ QRectF Traits::visualRect(const OptTuple &traits)
 }
 
 // QDebug operator<< declarations
+
+// Traits
 
 QDebug operator<<(QDebug debug, const Traits::Geometry &trait)
 {
@@ -481,7 +549,20 @@ QDebug operator<<(QDebug debug, const Traits::Fill &trait)
     debug.nospace();
     debug << "Fill" << '(';
     debug << (const void *)&trait;
-    debug << ",\n    brush=" << trait.brush;
+    debug << ", ";
+    switch (trait.index()) {
+    case Fill::Brush:
+        debug << std::get<Fill::Brush>(trait);
+        break;
+    case Fill::Blur:
+        debug << std::get<Fill::Blur>(trait);
+        break;
+    case Fill::Pixelate:
+        debug << std::get<Fill::Pixelate>(trait);
+        break;
+    default:
+        break;
+    }
     debug << ')';
     return debug;
 }
@@ -522,19 +603,6 @@ QDebug operator<<(QDebug debug, const Traits::Text &trait)
     return debug;
 }
 
-QDebug operator<<(QDebug debug, const Traits::ImageEffect &trait)
-{
-    using namespace Traits;
-    QDebugStateSaver stateSaver(debug);
-    debug.nospace();
-    debug << "ImageEffect" << '(';
-    debug << (const void *)&trait;
-    debug << ",\n    type=" << trait.type;
-    debug << ",\n    factor=" << trait.factor;
-    debug << ')';
-    return debug;
-}
-
 QDebug operator<<(QDebug debug, const Traits::Shadow &trait)
 {
     using namespace Traits;
@@ -547,25 +615,34 @@ QDebug operator<<(QDebug debug, const Traits::Shadow &trait)
     return debug;
 }
 
-QDebug operator<<(QDebug debug, const Traits::OptTuple &optTuple)
+
+// ImageEffects
+
+QDebug operator<<(QDebug debug, const Traits::ImageEffects::Blur &ref)
 {
-    using namespace Traits;
+    using namespace Traits::ImageEffects;
     QDebugStateSaver stateSaver(debug);
     debug.nospace();
-    debug << "OptTuple" << '(';
-    debug << (const void *)&optTuple;
-    debug << ",\n  " << std::get<Traits::Geometry::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Stroke::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Fill::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Highlight::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Arrow::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Text::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::ImageEffect::Opt>(optTuple);
-    debug << ",\n  " << std::get<Traits::Shadow::Opt>(optTuple);
+    debug << "Blur" << '(';
+    debug << (const void *)&ref;
+    debug << ", factor=" << ref.factor;
     debug << ')';
     return debug;
 }
 
+QDebug operator<<(QDebug debug, const Traits::ImageEffects::Pixelate &ref)
+{
+    using namespace Traits::ImageEffects;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "Pixelate" << '(';
+    debug << (const void *)&ref;
+    debug << ", factor=" << ref.factor;
+    debug << ')';
+    return debug;
+}
+
+// Optionals
 // clang-format off
 #define OPTIONAL_DEBUG_DEF(ClassName)\
 QDebug operator<<(QDebug debug, const Traits::ClassName::Opt &optional)\
@@ -589,6 +666,24 @@ OPTIONAL_DEBUG_DEF(Fill)
 OPTIONAL_DEBUG_DEF(Highlight)
 OPTIONAL_DEBUG_DEF(Arrow)
 OPTIONAL_DEBUG_DEF(Text)
-OPTIONAL_DEBUG_DEF(ImageEffect)
 OPTIONAL_DEBUG_DEF(Shadow)
+
 #undef OPTIONAL_DEBUG_DEF
+
+QDebug operator<<(QDebug debug, const Traits::OptTuple &optTuple)
+{
+    using namespace Traits;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "OptTuple" << '(';
+    debug << (const void *)&optTuple;
+    debug << ",\n  " << std::get<Traits::Geometry::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Stroke::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Fill::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Highlight::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Arrow::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Text::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Shadow::Opt>(optTuple);
+    debug << ')';
+    return debug;
+}

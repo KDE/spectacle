@@ -185,9 +185,39 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
         }
 
-        if (auto &fill = std::get<Traits::Fill::Opt>(renderedItem->traits())) {
-            painter->setBrush(fill->brush);
-            painter->drawPath(geometry->path);
+        if (auto &fillOpt = std::get<Traits::Fill::Opt>(renderedItem->traits())) {
+            using namespace Traits;
+            auto &fill = fillOpt.value();
+            switch (fill.index()) {
+            case Fill::Brush:
+                painter->setBrush(std::get<Fill::Brush>(fill));
+                painter->drawPath(geometry->path);
+                break;
+            case Traits::Fill::Blur: {
+                auto &blur = std::get<Fill::Blur>(fill);
+                auto getImage = [this] {
+                    return renderToImage();
+                };
+                const auto &rect = geometry->path.boundingRect();
+                stopAtItem.push_back(*it);
+                const auto &image = blur.image(getImage, rect, imageDpr());
+                stopAtItem.pop_back();
+                painter->drawImage(rect, image);
+            } break;
+            case Traits::Fill::Pixelate: {
+                auto &pixelate = std::get<Fill::Pixelate>(fill);
+                auto getImage = [this] {
+                    return renderToImage();
+                };
+                const auto &rect = geometry->path.boundingRect();
+                stopAtItem.push_back(*it);
+                const auto &image = pixelate.image(getImage, rect, imageDpr());
+                stopAtItem.pop_back();
+                painter->drawImage(rect, image);
+            } break;
+            default:
+                break;
+            }
         }
 
         if (auto &stroke = std::get<Traits::Stroke::Opt>(renderedItem->traits())) {
@@ -202,16 +232,6 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             painter->drawText(geometry->path.boundingRect(), text->textFlags(), text->text());
         }
 
-        if (auto &imageEffect = std::get<Traits::ImageEffect::Opt>(renderedItem->traits())) {
-            auto getImage = [this] {
-                return renderToImage();
-            };
-            const auto &rect = geometry->path.boundingRect();
-            stopAtItem.push_back(*it);
-            const auto &image = imageEffect->image(getImage, rect, imageDpr());
-            stopAtItem.pop_back();
-            painter->drawImage(rect, image);
-        }
         painter->restore();
     }
     painter->scale(scale, scale);
@@ -380,8 +400,15 @@ void AnnotationDocument::beginItem(const QPointF &point)
     auto &geometry = std::get<Traits::Geometry::Opt>(temp.traits());
     geometry.emplace(QPainterPath{point}, QPainterPath{point}, QRectF{point, point});
 
+    auto toolType = m_tool->type();
     auto toolOptions = m_tool->options();
-    if (toolOptions.testFlag(FillOption)) {
+    if (toolType == BlurTool) {
+        auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
+        fill.emplace(Traits::ImageEffects::Blur{4});
+    } else if (toolType == PixelateTool) {
+        auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
+        fill.emplace(Traits::ImageEffects::Pixelate{4});
+    } else if (toolOptions.testFlag(FillOption)) {
         auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
         fill.emplace(m_tool->fillColor());
     }
@@ -399,7 +426,6 @@ void AnnotationDocument::beginItem(const QPointF &point)
         shadow.emplace(m_tool->hasShadow());
     }
 
-    auto toolType = m_tool->type();
     if (isAnyOfToolType(toolType, FreehandTool, HighlighterTool)) {
         geometry->path = Traits::minPath(geometry->path);
     }
@@ -407,10 +433,6 @@ void AnnotationDocument::beginItem(const QPointF &point)
         std::get<Traits::Highlight::Opt>(temp.traits()).emplace();
     } else if (toolType == ArrowTool) {
         std::get<Traits::Arrow::Opt>(temp.traits()).emplace();
-    } else if (toolType == BlurTool) {
-        std::get<Traits::ImageEffect::Opt>(temp.traits()).emplace(Traits::ImageEffect::Blur, 4);
-    } else if (toolType == PixelateTool) {
-        std::get<Traits::ImageEffect::Opt>(temp.traits()).emplace(Traits::ImageEffect::Pixelate, 4);
     } else if (toolType == NumberTool) {
         std::get<Traits::Text::Opt>(temp.traits()).emplace(m_tool->number(), m_tool->fontColor(), m_tool->font());
         m_tool->setNumber(m_tool->number() + 1);
@@ -636,8 +658,9 @@ void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &h
         m_options.setFlag(AnnotationTool::StrokeOption, //
                           std::get<Traits::Stroke::Opt>(temp->traits()).has_value());
 
+        auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FillOption, //
-                          std::get<Traits::Fill::Opt>(temp->traits()).has_value());
+                          fill.has_value() && fill->type() == Traits::Fill::Brush);
 
         auto &text = std::get<Traits::Text::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FontOption, text.has_value());
@@ -811,8 +834,9 @@ QColor SelectedItemWrapper::fillColor() const
     if (!m_options.testFlag(AnnotationTool::FillOption) || !temp) {
         return {};
     }
-    auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
-    return fill->brush.color();
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    auto &brush = std::get<Traits::Fill::Brush>(fill);
+    return brush.color();
 }
 
 void SelectedItemWrapper::setFillColor(const QColor &color)
@@ -821,11 +845,12 @@ void SelectedItemWrapper::setFillColor(const QColor &color)
     if (!m_options.testFlag(AnnotationTool::FillOption) || !temp) {
         return;
     }
-    auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
-    if (fill->brush.color() == color) {
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    auto &brush = std::get<Traits::Fill::Brush>(fill);
+    if (brush.color() == color) {
         return;
     }
-    fill->brush = color;
+    brush = color;
     Q_EMIT fillColorChanged();
     m_document->emitRepaintNeededUnlessEmpty(temp->renderRect());
 }

@@ -92,7 +92,7 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
 {
     auto &geometryTrait = std::get<Traits::Geometry::Opt>(traits);
     auto &shadowTrait = std::get<Traits::Shadow::Opt>(traits);
-    if (!geometryTrait || !shadowTrait) {
+    if (!(geometryTrait && Traits::isValidTrait(geometryTrait.value())) || !shadowTrait) {
         return QImage();
     }
 
@@ -109,13 +109,17 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
 
     auto &fillTrait = std::get<Traits::Fill::Opt>(traits);
     auto &strokeTrait = std::get<Traits::Stroke::Opt>(traits);
+    auto *fillBrush = fillTrait && Traits::isValidTrait(fillTrait.value()) //
+        ? std::get_if<Traits::Fill::Brush>(&fillTrait.value())
+        : nullptr;
+    bool hasStroke = strokeTrait && Traits::isValidTrait(strokeTrait.value());
     // No need to draw fill and stroke separately if they're both opaque
-    if (fillTrait && strokeTrait && fillTrait->brush.isOpaque() && strokeTrait->pen.brush().isOpaque()) {
+    if (fillBrush && hasStroke && fillBrush->isOpaque() && strokeTrait->pen.brush().isOpaque()) {
         p.setBrush(QColor(63, 63, 63, 28));
         p.drawPath((strokeTrait->path | geometryTrait->path).simplified());
     } else {
-        if (fillTrait) {
-            p.setBrush(QColor(63, 63, 63, std::ceil(28 * fillTrait->brush.color().alphaF())));
+        if (fillBrush) {
+            p.setBrush(QColor(63, 63, 63, std::ceil(28 * fillBrush->color().alphaF())));
             p.drawPath(geometryTrait->path);
         }
         if (strokeTrait) {
@@ -126,7 +130,7 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
 
     auto &textTrait = std::get<Traits::Text::Opt>(traits);
     // No need to paint text/number shadow if fill is opaque.
-    if ((!fillTrait || !fillTrait->brush.isOpaque()) && textTrait) {
+    if ((!fillTrait || (fillBrush && !fillBrush->isOpaque())) && textTrait) {
         p.setFont(textTrait->font);
         p.setBrush(Qt::NoBrush);
         p.setPen(QColor(63, 63, 63, std::ceil(28 * textTrait->brush.color().alphaF())));
