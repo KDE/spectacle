@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-31 00:36+0000\n"
-"PO-Revision-Date: 2024-01-23 18:46+0300\n"
+"POT-Creation-Date: 2024-02-01 00:37+0000\n"
+"PO-Revision-Date: 2024-01-31 16:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -682,7 +682,7 @@ msgstr "Kare kod bulundu: %1"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "İkili içerik içeren bir Kare Kod bulundu."
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1289,12 +1289,17 @@ msgid "Fill color for rectangle annotation tool"
 msgstr "Dörtgen bilgi notu aracı için dolgu rengi"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:268
-#: src/Gui/SettingsDialog/spectacle.kcfg:272
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Elips bilgi notu aracı için dolgu rengi"
+
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:272
+#, fuzzy, kde-format
+#| msgid "Fill color for rectangle annotation tool"
+msgid "Fill color for number annotation tool"
+msgstr "Dörtgen bilgi notu aracı için dolgu rengi"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277

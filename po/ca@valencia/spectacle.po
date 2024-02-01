@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-31 00:36+0000\n"
-"PO-Revision-Date: 2024-01-13 16:33+0100\n"
+"POT-Creation-Date: 2024-02-01 00:37+0000\n"
+"PO-Revision-Date: 2024-01-23 13:04+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -704,7 +704,7 @@ msgstr "Sense retard"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "S'ha trobat el codi QR: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
@@ -1327,12 +1327,17 @@ msgid "Fill color for rectangle annotation tool"
 msgstr "Color del traç de l'eina d'anotació de rectangle"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:268
-#: src/Gui/SettingsDialog/spectacle.kcfg:272
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Color del traç de l'eina d'anotació d'el·lipse"
+
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:272
+#, fuzzy, kde-format
+#| msgid "Fill color for rectangle annotation tool"
+msgid "Fill color for number annotation tool"
+msgstr "Color del traç de l'eina d'anotació de rectangle"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277

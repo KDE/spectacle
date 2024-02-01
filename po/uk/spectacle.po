@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-31 00:36+0000\n"
-"PO-Revision-Date: 2024-01-23 09:30+0200\n"
+"POT-Creation-Date: 2024-02-01 00:37+0000\n"
+"PO-Revision-Date: 2024-01-31 15:16+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -699,7 +699,7 @@ msgstr "Виявлено QR-код: %1"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Виявлено QR-код із двійковим вмістом."
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -1317,12 +1317,17 @@ msgid "Fill color for rectangle annotation tool"
 msgstr "Колір заповнення для засобу анотування прямокутником"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:268
-#: src/Gui/SettingsDialog/spectacle.kcfg:272
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Колір заповнення для засобу анотування еліпсом"
+
+#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:272
+#, fuzzy, kde-format
+#| msgid "Fill color for rectangle annotation tool"
+msgid "Fill color for number annotation tool"
+msgstr "Колір заповнення для засобу анотування прямокутником"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
