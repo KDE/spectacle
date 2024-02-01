@@ -9,6 +9,8 @@ SET(FILENAME_TEST_SRCS
     ../src/Platforms/VideoPlatform.cpp
 )
 
+# exceptions are needed for code using ZXing
+kde_source_files_enable_exceptions(../src/ExportManager.cpp)
 
 kconfig_add_kcfg_files(FILENAME_TEST_SRCS GENERATE_MOC ${PROJECT_SOURCE_DIR}/src/Gui/SettingsDialog/settings.kcfgc)
 

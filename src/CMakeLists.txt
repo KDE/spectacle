@@ -56,6 +56,9 @@ add_executable(spectacle
     Platforms/screencasting.cpp
 )
 
+# exceptions are needed for code using ZXing
+kde_source_files_enable_exceptions(ExportManager.cpp)
+
 if(XCB_FOUND)
     target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
 
