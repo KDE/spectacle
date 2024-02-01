@@ -680,19 +680,13 @@ void SelectedItemWrapper::transform(qreal dx, qreal dy, Qt::Edges edges)
                                               topEdge ? dy : 0,
                                               edges.testFlag(Qt::RightEdge) ? dx : 0,
                                               edges.testFlag(Qt::BottomEdge) ? dy : 0);
-        // We should never divide by zero and we don't need fractional sizes less than 1.
-        const auto wDivisor = std::max(1.0, oldRect.width());
-        const auto hDivisor = std::max(1.0, oldRect.height());
-        const auto sx = newRect.width() / wDivisor;
-        const auto sy = newRect.height() / hDivisor;
-        QTransform transform;
+        auto scale = Traits::scaleForSize(oldRect.size(), newRect.size());
+        auto translation = Traits::unTranslateScale(scale.sx, scale.sy, oldRect.topLeft());
+        translation.dx += leftEdge ? dx : 0;
+        translation.dy += topEdge ? dy : 0;
         // Translate before scale to avoid scaling translation.
-        transform.translate(leftEdge ? dx : 0, topEdge ? dy : 0);
-        // Undo translation caused by scale.
-        const auto sxdx = oldRect.x() * sx - oldRect.x();
-        const auto sydy = oldRect.y() * sy - oldRect.y();
-        transform.translate(-sxdx, -sydy);
-        transform.scale(sx, sy);
+        auto transform = QTransform::fromTranslate(translation.dx, translation.dy);
+        transform.scale(scale.sx, scale.sy);
         path = transform.map(oldPath);
         Traits::reInitTraits(temp->traits());
     }

@@ -158,6 +158,31 @@ struct All : ArgsType<Geometry, Stroke, Fill, Highlight, Arrow, Text, ImageEffec
 };
 using OptTuple = All::OptTuple;
 
+struct Translation {
+    // QTransform: m31
+    // QMatrix4x4: 3,0 or m41
+    qreal dx = 0;
+    // QTransform: m32
+    // QMatrix4x4: 3,1 or m42
+    qreal dy = 0;
+};
+
+struct Scale {
+    // QTransform: m11
+    // QMatrix4x4: 0,0 or m11
+    qreal sx = 1;
+    // QTransform: m22
+    // QMatrix4x4: 1,1 or m22
+    qreal sy = 1;
+};
+
+// Undo a translation caused by scaling.
+// Scaling can also translate unless you apply an opposite translation.
+// `oldPoint` should be the position for the geometry you will apply the scale to.
+Translation unTranslateScale(qreal sx, qreal sy, const QPointF &oldPoint);
+
+Scale scaleForSize(const QSizeF &oldSize, const QSizeF &newSize);
+
 // The path, but with at least a tiny line to make it visible with a stroke when empty.
 QPainterPath minPath(const QPainterPath &path);
 

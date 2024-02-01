@@ -83,6 +83,24 @@ QImage Traits::ImageEffect::image(std::function<QImage()> getImage, QRectF rect,
     return imageCopyHelper(backingStoreCache, rect);
 }
 
+Traits::Translation Traits::unTranslateScale(qreal sx, qreal sy, const QPointF &oldPoint)
+{
+    return {-oldPoint.x() * sx + oldPoint.x(), -oldPoint.y() * sy + oldPoint.y()};
+}
+
+Traits::Scale Traits::scaleForSize(const QSizeF &oldSize, const QSizeF &newSize)
+{
+    // We should never divide by zero and we don't need fractional sizes less than 1.
+    auto absWidth = std::abs(oldSize.width());
+    auto absHeight = std::abs(oldSize.height());
+    auto wSign = std::copysign(1.0, oldSize.width());
+    auto hSign = std::copysign(1.0, oldSize.height());
+    // Don't allow an absolute size less than 1x1.
+    const auto wDivisor = std::max(1.0, absWidth) * wSign;
+    const auto hDivisor = std::max(1.0, absHeight) * hSign;
+    return {newSize.width() / wDivisor, newSize.height() / hDivisor};
+}
+
 QPainterPath Traits::minPath(const QPainterPath &path)
 {
     if (path.isEmpty()) {
