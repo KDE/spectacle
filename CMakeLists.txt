@@ -11,7 +11,7 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 # Spectacle project
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
-set(QT_MIN_VERSION "6.5.2")
+set(QT_MIN_VERSION "6.6.0")
 set(KF_MIN_VERSION "5.240.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
