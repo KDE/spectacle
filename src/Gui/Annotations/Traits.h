@@ -245,10 +245,10 @@ QDebug operator<<(QDebug debug, const Traits::Text &trait);
 QDebug operator<<(QDebug debug, const Traits::ImageEffect &trait);
 QDebug operator<<(QDebug debug, const Traits::Shadow &trait);
 QDebug operator<<(QDebug debug, const Traits::OptTuple &optTuple);
-//clang-format off
+// clang-format off
 #define OPTIONAL_DEBUG_DEF(ClassName)\
 QDebug operator<<(QDebug debug, const std::optional<ClassName> &optional);
-//clang-format on
+// clang-format on
 OPTIONAL_DEBUG_DEF(Traits::Geometry)
 OPTIONAL_DEBUG_DEF(Traits::Stroke)
 OPTIONAL_DEBUG_DEF(Traits::Fill)
