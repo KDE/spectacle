@@ -115,15 +115,15 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     bool hasStroke = strokeTrait && Traits::isValidTrait(strokeTrait.value());
     // No need to draw fill and stroke separately if they're both opaque
     if (fillBrush && hasStroke && fillBrush->isOpaque() && strokeTrait->pen.brush().isOpaque()) {
-        p.setBrush(QColor(63, 63, 63, 28));
+        p.setBrush(QColor(0, 0, 0, 28));
         p.drawPath((strokeTrait->path | geometryTrait->path).simplified());
     } else {
         if (fillBrush) {
-            p.setBrush(QColor(63, 63, 63, std::ceil(28 * fillBrush->color().alphaF())));
+            p.setBrush(QColor(0, 0, 0, std::ceil(28 * fillBrush->color().alphaF())));
             p.drawPath(geometryTrait->path);
         }
         if (strokeTrait) {
-            p.setBrush(QColor(63, 63, 63, std::ceil(28 * strokeTrait->pen.color().alphaF())));
+            p.setBrush(QColor(0, 0, 0, std::ceil(28 * strokeTrait->pen.color().alphaF())));
             p.drawPath(strokeTrait->path);
         }
     }
@@ -133,7 +133,7 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     if ((!fillTrait || (fillBrush && !fillBrush->isOpaque())) && textTrait) {
         p.setFont(textTrait->font);
         p.setBrush(Qt::NoBrush);
-        p.setPen(QColor(63, 63, 63, std::ceil(28 * textTrait->brush.color().alphaF())));
+        p.setPen(QColor(0, 0, 0, std::ceil(28 * textTrait->brush.color().alphaF())));
         p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
     }
 
