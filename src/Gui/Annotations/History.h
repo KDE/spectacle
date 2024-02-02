@@ -71,17 +71,7 @@ public:
     using weak_ptr = shared_ptr::weak_type;
     using const_weak_ptr = const_shared_ptr::weak_type;
 
-    // Blank item
-    explicit HistoryItem() = default;
-    // Copy data to this item
-    explicit HistoryItem(const HistoryItem &item);
-    // Move data to this item
-    explicit HistoryItem(HistoryItem &&item);
-
-    // copy the item
-    HistoryItem &operator=(const HistoryItem &other) = default;
-
-    bool operator==(const HistoryItem &other) const;
+    bool operator==(const HistoryItem &other) const = default;
 
     bool hasParent() const;
     HistoryItem::const_weak_ptr parent() const;

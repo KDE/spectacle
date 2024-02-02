@@ -7,25 +7,6 @@
 
 using namespace Qt::StringLiterals;
 
-HistoryItem::HistoryItem(const HistoryItem &item)
-    : m_parent(item.m_parent)
-    , m_child(item.m_child)
-    , m_traits(item.m_traits)
-{
-}
-
-HistoryItem::HistoryItem(HistoryItem &&item)
-    : m_parent(std::move(item.m_parent))
-    , m_child(std::move(item.m_child))
-    , m_traits(std::move(item.m_traits))
-{
-}
-
-bool HistoryItem::operator==(const HistoryItem &other) const
-{
-    return m_parent == other.m_parent && m_child == other.m_child && m_traits == other.m_traits;
-}
-
 bool HistoryItem::hasParent() const
 {
     return m_parent && !m_parent->expired();
