@@ -47,15 +47,6 @@ public:
     Q_DECLARE_FLAGS(ContinueOptions, ContinueOption)
     Q_FLAG(ContinueOption)
 
-    enum class RenderOption {
-        // No RenderNone because that's pointless
-        Images      = 0b01,
-        Annotations = 0b10,
-        RenderAll   = Images | Annotations
-    };
-    Q_DECLARE_FLAGS(RenderOptions, RenderOption)
-    Q_FLAG(RenderOption)
-
     explicit AnnotationDocument(QObject *parent = nullptr);
     ~AnnotationDocument();
 
@@ -91,8 +82,13 @@ public:
         qreal scale = 1;
     };
 
-    void paint(QPainter *painter, const Viewport &viewport, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
-    QImage renderToImage(const Viewport &viewport, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
+    // Paint the base image.
+    void paintBaseImage(QPainter *painter, const Viewport &viewport) const;
+    // Paint the annotations. If the span is not set, all annotations will be painted.
+    void paintAnnotations(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
+    // Paint the base image and annotations.
+    void paint(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
+    QImage renderToImage(const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
     QImage renderToImage(std::optional<History::ConstSpan> span = {}) const;
 
     // True when there is an item at the end of the undo stack and it is invalid.
@@ -236,4 +232,3 @@ private:
 QDebug operator<<(QDebug debug, const SelectedItemWrapper *);
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::ContinueOptions)
-Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::RenderOptions)

@@ -125,26 +125,25 @@ void AnnotationDocument::clear()
     setImage({});
 }
 
-void AnnotationDocument::paint(QPainter *painter, const Viewport &viewport, RenderOptions options, std::optional<History::ConstSpan> span) const
+void AnnotationDocument::paintBaseImage(QPainter *painter, const Viewport &viewport) const
 {
-    const qreal scale = painter->transform().m11();
-
-    if (options.testFlag(RenderOption::Images)) {
-        auto imageRect = G::rectScaled(viewport.rect, imageDpr() / viewport.scale);
-        // Enable smooth transform for fractional scales.
-        painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / viewport.scale, 1) != 0);
-        if (viewport.scale == 1) {
-            painter->drawImage({0, 0}, m_image, imageRect);
-        } else {
-            // More High quality scale down
-            auto scaledImg = m_image.scaled(m_image.size() * viewport.scale, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            painter->drawImage({0, 0}, scaledImg, imageRect);
-        }
+    painter->save();
+    painter->scale(viewport.scale, viewport.scale);
+    auto imageRect = G::rectScaled(viewport.rect, imageDpr() / viewport.scale);
+    // Enable smooth transform for fractional scales.
+    painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / viewport.scale, 1) != 0);
+    if (viewport.scale == 1) {
+        painter->drawImage({0, 0}, m_image, imageRect);
+    } else {
+        // More High quality scale down
+        auto scaledImg = m_image.scaled(m_image.size() * viewport.scale, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        painter->drawImage({0, 0}, scaledImg, imageRect);
     }
-
-    if (!options.testFlag(RenderOption::Annotations)) {
-        return;
-    }
+    painter->restore();
+}
+void AnnotationDocument::paintAnnotations(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span) const
+{
+    painter->save();
     painter->scale(viewport.scale, viewport.scale);
     painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
     const auto &undoList = m_history.undoList();
@@ -229,10 +228,16 @@ void AnnotationDocument::paint(QPainter *painter, const Viewport &viewport, Rend
 
         painter->restore();
     }
-    painter->scale(scale, scale);
+    painter->restore();
 }
 
-QImage AnnotationDocument::renderToImage(const Viewport &viewport, RenderOptions options, std::optional<History::ConstSpan> span) const
+void AnnotationDocument::paint(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span) const
+{
+    paintBaseImage(painter, viewport);
+    paintAnnotations(painter, viewport, span);
+}
+
+QImage AnnotationDocument::renderToImage(const Viewport &viewport, std::optional<History::ConstSpan> span) const
 {
     QImage img((viewport.rect.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
     img.setDevicePixelRatio(imageDpr());
@@ -241,7 +246,7 @@ QImage AnnotationDocument::renderToImage(const Viewport &viewport, RenderOptions
     p.setRenderHint(QPainter::Antialiasing);
     // Makes pixelate and blur look better
     p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    paint(&p, viewport, options, span);
+    paint(&p, viewport, span);
     p.end();
 
     return img;
@@ -249,7 +254,7 @@ QImage AnnotationDocument::renderToImage(const Viewport &viewport, RenderOptions
 
 QImage AnnotationDocument::renderToImage(std::optional<History::ConstSpan> span) const
 {
-    return renderToImage({m_canvasRect, 1}, RenderOption::RenderAll, span);
+    return renderToImage({m_canvasRect, 1}, span);
 }
 
 bool AnnotationDocument::isCurrentItemValid() const
