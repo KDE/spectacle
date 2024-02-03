@@ -229,7 +229,7 @@ void AnnotationViewport::paint(QPainter *painter)
         return;
     }
 
-    m_document->paint(painter, m_viewportRect, m_zoom);
+    m_document->paint(painter, {m_viewportRect, m_zoom});
 }
 
 void AnnotationViewport::hoverEnterEvent(QHoverEvent *event)

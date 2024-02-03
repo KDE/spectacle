@@ -86,8 +86,13 @@ public:
     /// Clear all annotations and the image. Cannot be undone.
     void clear();
 
-    void paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor = 1.0, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
-    QImage renderToImage(const QRectF &viewPort, qreal scale = 1, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
+    struct Viewport {
+        QRectF rect;
+        qreal scale = 1;
+    };
+
+    void paint(QPainter *painter, const Viewport &viewport, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
+    QImage renderToImage(const Viewport &viewport, RenderOptions options = RenderOption::RenderAll, std::optional<History::ConstSpan> span = {}) const;
     QImage renderToImage(std::optional<History::ConstSpan> span = {}) const;
 
     // True when there is an item at the end of the undo stack and it is invalid.

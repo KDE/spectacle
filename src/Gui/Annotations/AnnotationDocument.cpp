@@ -125,19 +125,19 @@ void AnnotationDocument::clear()
     setImage({});
 }
 
-void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options, std::optional<History::ConstSpan> span) const
+void AnnotationDocument::paint(QPainter *painter, const Viewport &viewport, RenderOptions options, std::optional<History::ConstSpan> span) const
 {
     const qreal scale = painter->transform().m11();
 
     if (options.testFlag(RenderOption::Images)) {
-        auto imageRect = G::rectScaled(viewPort, imageDpr() / zoomFactor);
+        auto imageRect = G::rectScaled(viewport.rect, imageDpr() / viewport.scale);
         // Enable smooth transform for fractional scales.
-        painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / zoomFactor, 1) != 0);
-        if (zoomFactor == 1) {
+        painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / viewport.scale, 1) != 0);
+        if (viewport.scale == 1) {
             painter->drawImage({0, 0}, m_image, imageRect);
         } else {
             // More High quality scale down
-            auto scaledImg = m_image.scaled(m_image.size() * zoomFactor, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            auto scaledImg = m_image.scaled(m_image.size() * viewport.scale, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             painter->drawImage({0, 0}, scaledImg, imageRect);
         }
     }
@@ -145,7 +145,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     if (!options.testFlag(RenderOption::Annotations)) {
         return;
     }
-    painter->scale(zoomFactor, zoomFactor);
+    painter->scale(viewport.scale, viewport.scale);
     painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
     const auto &undoList = m_history.undoList();
     if (!span) {
@@ -163,12 +163,12 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
             continue;
         }
         auto &geometry = std::get<Traits::Geometry::Opt>(renderedItem->traits());
-        if (!geometry->visualRect.intersects(G::rectScaled(viewPort, 1 / zoomFactor))) {
+        if (!geometry->visualRect.intersects(G::rectScaled(viewport.rect, 1 / viewport.scale))) {
             continue;
         }
 
         painter->save(); // Remember to call restore later.
-        painter->translate(-viewPort.topLeft());
+        painter->translate(-viewport.rect.topLeft());
         painter->setPen(Qt::NoPen);
         painter->setBrush(Qt::NoBrush);
 
@@ -232,17 +232,16 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     painter->scale(scale, scale);
 }
 
-QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options, std::optional<History::ConstSpan> span) const
+QImage AnnotationDocument::renderToImage(const Viewport &viewport, RenderOptions options, std::optional<History::ConstSpan> span) const
 {
-    QImage img((viewPort.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
+    QImage img((viewport.rect.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
     img.setDevicePixelRatio(imageDpr());
     img.fill(Qt::transparent);
     QPainter p(&img);
     p.setRenderHint(QPainter::Antialiasing);
     // Makes pixelate and blur look better
     p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    p.scale(scale, scale);
-    paint(&p, viewPort, 1, options, span);
+    paint(&p, viewport, options, span);
     p.end();
 
     return img;
@@ -250,7 +249,7 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, Re
 
 QImage AnnotationDocument::renderToImage(std::optional<History::ConstSpan> span) const
 {
-    return renderToImage(m_canvasRect, 1, RenderOption::RenderAll, span);
+    return renderToImage({m_canvasRect, 1}, RenderOption::RenderAll, span);
 }
 
 bool AnnotationDocument::isCurrentItemValid() const
