@@ -133,10 +133,16 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     if ((!fillTrait || (fillBrush && !fillBrush->isOpaque())) && textTrait) {
         p.setFont(textTrait->font);
         p.setBrush(Qt::NoBrush);
-        p.setPen(QColor(0, 0, 0, std::ceil(28 * textTrait->brush.color().alphaF())));
+        p.setPen(Qt::black);
+        // Color emojis don't get semi-transparent shadows with a semi-transparent pen.
+        // setOpacity disables sub-pixel text antialiasing, but we don't need sub-pixel AA here.
+        p.setOpacity(std::ceil(28 * textTrait->brush.color().alphaF()) / 255.0);
         p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
     }
 
     p.end();
+    // We only want black shadows with opacity, so we only need black and 8 bits of alpha.
+    // If we don't do this, color emojis won't have black semi-transparent shadows.
+    shadow.convertTo(QImage::Format_Alpha8);
     return fastPseudoBlur(shadow, Traits::Shadow::blurRadius, devicePixelRatio);
 }
