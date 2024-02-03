@@ -5,6 +5,7 @@
 #pragma once
 
 #include "Traits.h"
+#include <span>
 
 class HistoryItem;
 class History;
@@ -130,6 +131,8 @@ class History
 public:
     using List = QList<HistoryItem::shared_ptr>;
     using ConstList = QList<HistoryItem::const_shared_ptr>;
+    using ConstSpan = std::span<const HistoryItem::const_shared_ptr>;
+
     struct ListsChangedResult {
         bool undoListChanged = false;
         bool redoListChanged = false;

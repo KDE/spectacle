@@ -125,9 +125,8 @@ void AnnotationDocument::clear()
     setImage({});
 }
 
-void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options) const
+void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal zoomFactor, RenderOptions options, std::optional<History::ConstSpan> span) const
 {
-    static History::ConstList stopAtItem = {};
     const qreal scale = painter->transform().m11();
 
     if (options.testFlag(RenderOption::Images)) {
@@ -149,11 +148,11 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     painter->scale(zoomFactor, zoomFactor);
     painter->setRenderHints({QPainter::Antialiasing, QPainter::TextAntialiasing});
     const auto &undoList = m_history.undoList();
-    for (auto it = undoList.cbegin(); it != undoList.cend(); ++it) {
-        if (!stopAtItem.empty() && *it == stopAtItem.back()) {
-            painter->scale(scale, scale);
-            return;
-        }
+    if (!span) {
+        span.emplace(undoList);
+    }
+    const auto begin = span->begin();
+    for (auto it = begin; it != span->end(); ++it) {
         if (!m_history.itemVisible(*it)) {
             continue;
         }
@@ -195,24 +194,20 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
                 break;
             case Traits::Fill::Blur: {
                 auto &blur = std::get<Fill::Blur>(fill);
-                auto getImage = [this] {
-                    return renderToImage();
+                auto getImage = [this, begin, it] {
+                    return renderToImage(std::span{begin, it});
                 };
                 const auto &rect = geometry->path.boundingRect();
-                stopAtItem.push_back(*it);
                 const auto &image = blur.image(getImage, rect, imageDpr());
-                stopAtItem.pop_back();
                 painter->drawImage(rect, image);
             } break;
             case Traits::Fill::Pixelate: {
                 auto &pixelate = std::get<Fill::Pixelate>(fill);
-                auto getImage = [this] {
-                    return renderToImage();
+                auto getImage = [this, begin, it] {
+                    return renderToImage(std::span{begin, it});
                 };
                 const auto &rect = geometry->path.boundingRect();
-                stopAtItem.push_back(*it);
                 const auto &image = pixelate.image(getImage, rect, imageDpr());
-                stopAtItem.pop_back();
                 painter->drawImage(rect, image);
             } break;
             default:
@@ -237,7 +232,7 @@ void AnnotationDocument::paint(QPainter *painter, const QRectF &viewPort, qreal 
     painter->scale(scale, scale);
 }
 
-QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options) const
+QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, RenderOptions options, std::optional<History::ConstSpan> span) const
 {
     QImage img((viewPort.size() * imageDpr()).toSize(), QImage::Format_ARGB32_Premultiplied);
     img.setDevicePixelRatio(imageDpr());
@@ -247,15 +242,15 @@ QImage AnnotationDocument::renderToImage(const QRectF &viewPort, qreal scale, Re
     // Makes pixelate and blur look better
     p.setRenderHint(QPainter::SmoothPixmapTransform, true);
     p.scale(scale, scale);
-    paint(&p, viewPort, 1, options);
+    paint(&p, viewPort, 1, options, span);
     p.end();
 
     return img;
 }
 
-QImage AnnotationDocument::renderToImage() const
+QImage AnnotationDocument::renderToImage(std::optional<History::ConstSpan> span) const
 {
-    return renderToImage(m_canvasRect);
+    return renderToImage(m_canvasRect, 1, RenderOption::RenderAll, span);
 }
 
 bool AnnotationDocument::isCurrentItemValid() const
