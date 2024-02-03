@@ -17,32 +17,18 @@ QPen Traits::Stroke::defaultPen()
     return {Qt::NoBrush, 1.0, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin};
 }
 
-// Fill
-
-Traits::Fill::Type Traits::Fill::type() const
-{
-    return static_cast<Fill::Type>(index());
-}
-
-// Text
-
-Traits::Text::Type Traits::Text::type() const
-{
-    return static_cast<Type>(value.index());
-}
-
 int Traits::Text::textFlags() const
 {
-    return (type() == Text::String ? Qt::AlignLeft | Qt::AlignTop : Qt::AlignCenter) //
+    return (index() == Text::String ? Qt::AlignLeft | Qt::AlignTop : Qt::AlignCenter) //
         | Qt::TextDontClip | Qt::TextExpandTabs | Qt::TextIncludeTrailingSpaces;
 }
 
 QString Traits::Text::text() const
 {
-    if (value.index() == String) {
-        return std::get<String>(value);
-    } else if (value.index() == Number) {
-        return QLocale::system().toString(std::get<Number>(value));
+    if (index() == String) {
+        return std::get<String>(*this);
+    } else if (index() == Number) {
+        return QLocale::system().toString(std::get<Number>(*this));
     }
     return {};
 }
@@ -193,7 +179,7 @@ QPainterPath Traits::createTextPath(const OptTuple &traits)
     QRectF rect{start, start};
     QFontMetricsF fm(text->font);
     QPainterPath path{start};
-    if (text->type() == Text::String) {
+    if (text->index() == Text::String) {
         // Same as QPainter's default
         const auto tabStopDistance = qRound(fm.horizontalAdvance(u'x') * 8);
         auto size = fm.size(text->textFlags(), text->text(), tabStopDistance);
@@ -202,7 +188,7 @@ QPainterPath Traits::createTextPath(const OptTuple &traits)
         // TODO: RTL language reversal
         rect.adjust(0, -fm.height() / 2, size.width(), size.height() - fm.height() / 2);
         path.addRect(rect);
-    } else if (text->type() == Text::Number) {
+    } else if (text->index() == Text::Number) {
         auto margin = fm.capHeight() * 1.33;
         rect.adjust(-margin, -margin, margin, margin);
         path.addEllipse(rect);
@@ -318,7 +304,7 @@ void clearForInitHelper(Traits::OptTuple &traits)
         if (!geometry) {
             return;
         }
-        if (trait.type() == Traits::Text::String) {
+        if (trait.index() == Traits::Text::String) {
             QFontMetricsF fm(trait.font);
             // TODO: RTL language reversal
             QPointF topLeft;
@@ -328,7 +314,7 @@ void clearForInitHelper(Traits::OptTuple &traits)
                 topLeft = geometry->path.boundingRect().topLeft();
             }
             geometry->path = QPainterPath{topLeft + QPointF{0, fm.height() / 2}};
-        } else if (trait.type() == Traits::Text::Number) {
+        } else if (trait.index() == Traits::Text::Number) {
             QPointF point;
             if (geometry->path.elementCount() == 1) {
                 point = geometry->path.elementAt(0);
@@ -423,7 +409,7 @@ template<>
 bool Traits::isValidTrait<Traits::Text>(const Traits::Text &trait)
 {
     return trait.brush != Qt::NoBrush //
-        && (trait.type() == Traits::Text::Number || !trait.text().isEmpty());
+        && (trait.index() == Traits::Text::Number || !trait.text().isEmpty());
 }
 template<>
 bool Traits::isValidTrait<Traits::Shadow>(const Traits::Shadow &)

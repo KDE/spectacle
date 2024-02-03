@@ -320,8 +320,8 @@ void AnnotationDocument::undo()
         updateRect |= prevItem->renderRect();
     }
     if (auto text = std::get<Traits::Text::Opt>(currentItem->traits())) {
-        if (text->type() == Traits::Text::Number) {
-            m_tool->setNumber(std::get<Traits::Text::Number>(text->value));
+        if (text->index() == Traits::Text::Number) {
+            m_tool->setNumber(std::get<Traits::Text::Number>(text.value()));
         }
     }
     if (currentItem == m_selectedItemWrapper->selectedItem().lock()) {
@@ -351,8 +351,8 @@ void AnnotationDocument::redo()
         updateRect |= currentItem->renderRect();
     }
     if (auto text = std::get<Traits::Text::Opt>(nextItem->traits())) {
-        if (text->type() == Traits::Text::Number) {
-            m_tool->setNumber(std::get<Traits::Text::Number>(text->value) + 1);
+        if (text->index() == Traits::Text::Number) {
+            m_tool->setNumber(std::get<Traits::Text::Number>(text.value()) + 1);
         }
     }
     if (currentItem && currentItem == m_selectedItemWrapper->selectedItem()) {
@@ -655,14 +655,14 @@ void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &h
 
         auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FillOption, //
-                          fill.has_value() && fill->type() == Traits::Fill::Brush);
+                          fill.has_value() && fill->index() == Traits::Fill::Brush);
 
         auto &text = std::get<Traits::Text::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FontOption, text.has_value());
         m_options.setFlag(AnnotationTool::TextOption, //
-                          text && text->type() == Traits::Text::String);
+                          text && text->index() == Traits::Text::String);
         m_options.setFlag(AnnotationTool::NumberOption, //
-                          text && text->type() == Traits::Text::Number);
+                          text && text->index() == Traits::Text::Number);
 
         m_options.setFlag(AnnotationTool::ShadowOption, //
                           std::get<Traits::Shadow::Opt>(temp->traits()).has_value());
@@ -913,7 +913,7 @@ int SelectedItemWrapper::number() const
         return 0;
     }
     auto &text = std::get<Traits::Text::Opt>(temp->traits());
-    const auto *number = std::get_if<Traits::Text::Number>(&text->value);
+    const auto *number = std::get_if<Traits::Text::Number>(&text.value());
     return number ? *number : 0;
 }
 
@@ -924,12 +924,12 @@ void SelectedItemWrapper::setNumber(int number)
         return;
     }
     auto &text = std::get<Traits::Text::Opt>(temp->traits());
-    const auto *oldNumber = std::get_if<Traits::Text::Number>(&text->value);
+    const auto *oldNumber = std::get_if<Traits::Text::Number>(&text.value());
     if (!oldNumber || *oldNumber == number) {
         return;
     }
     auto oldRect = temp->renderRect();
-    text->value.emplace<Traits::Text::Number>(number);
+    text.value().emplace<Traits::Text::Number>(number);
     Traits::reInitTraits(temp->traits());
     const auto &newRect = temp->renderRect();
     Q_EMIT numberChanged();
@@ -946,7 +946,7 @@ QString SelectedItemWrapper::text() const
         return {};
     }
     auto &text = std::get<Traits::Text::Opt>(temp->traits());
-    const auto *string = std::get_if<Traits::Text::String>(&text->value);
+    const auto *string = std::get_if<Traits::Text::String>(&text.value());
     return string ? *string : QString{};
 }
 
@@ -957,12 +957,12 @@ void SelectedItemWrapper::setText(const QString &string)
         return;
     }
     auto &text = std::get<Traits::Text::Opt>(temp->traits());
-    const auto *oldString = std::get_if<Traits::Text::String>(&text->value);
+    const auto *oldString = std::get_if<Traits::Text::String>(&text.value());
     if (!oldString || *oldString == string) {
         return;
     }
     auto oldRect = temp->renderRect();
-    text->value.emplace<Traits::Text::String>(string);
+    text.value().emplace<Traits::Text::String>(string);
     Traits::reInitTraits(temp->traits());
     const auto &newRect = temp->renderRect();
     Q_EMIT textChanged();

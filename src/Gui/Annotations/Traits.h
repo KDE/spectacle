@@ -117,7 +117,6 @@ using FillVariant = std::variant<QBrush, ImageEffects::Blur, ImageEffects::Pixel
 struct Fill : public FillVariant {
     COMMON_TRAIT_DEFS(Fill)
     enum Type : std::size_t { Brush, Blur, Pixelate, NPos = std::variant_npos };
-    Type type() const;
 };
 
 struct Highlight {
@@ -132,14 +131,12 @@ struct Arrow {
     enum Type { OneHead };
 };
 
-struct Text {
+// Set Geometry::path based on the bounding rect of this text.
+struct Text : public std::variant<QString, int> {
     COMMON_TRAIT_DEFS(Text)
-    using Variant = std::variant<QString, int>;
     enum Type : std::size_t { String, Number, NPos = std::variant_npos };
-    Type type() const;
     int textFlags() const;
     // Set Geometry::path to the bounding rect of this text.
-    Variant value{};
     QBrush brush{Qt::NoBrush};
     QFont font{};
     QString text() const;
