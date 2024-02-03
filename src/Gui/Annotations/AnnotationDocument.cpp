@@ -128,7 +128,6 @@ void AnnotationDocument::clear()
 void AnnotationDocument::paintBaseImage(QPainter *painter, const Viewport &viewport) const
 {
     painter->save();
-    painter->scale(viewport.scale, viewport.scale);
     auto imageRect = G::rectScaled(viewport.rect, imageDpr() / viewport.scale);
     // Enable smooth transform for fractional scales.
     painter->setRenderHint(QPainter::SmoothPixmapTransform, fmod(imageDpr() / viewport.scale, 1) != 0);
