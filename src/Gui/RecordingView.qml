@@ -38,6 +38,11 @@ FocusScope {
         id: mediaPlayer
         source: SpectacleCore.currentVideo
         videoOutput: videoOutput
+        loops: MediaPlayer.Infinite
+        onHasVideoChanged: if (hasVideo) {
+            play();
+            pause();
+        }
     }
 
     Kirigami.Heading {
