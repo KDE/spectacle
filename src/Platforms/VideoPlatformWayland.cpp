@@ -221,6 +221,7 @@ void VideoPlatformWayland::finishRecording()
 {
     Q_ASSERT(m_recorder);
     m_recorder->setActive(false);
+    m_recorder->setNodeId(0);
 }
 
 bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
