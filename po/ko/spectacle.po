@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-01 00:37+0000\n"
-"PO-Revision-Date: 2023-10-08 23:57+0200\n"
+"PO-Revision-Date: 2024-02-05 23:01+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -94,6 +94,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"지정한 모드른 사용하여 화면을 녹화합니다. 사용 가능한 모드:\n"
+"- r, 영역\n"
+"- s, 화면\n"
+"- w, 창"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -166,10 +170,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "배경 모드에서 스크린샷에 창 장식 포함 안 함"
+msgstr "배경 모드에서 스크린샷에 그림자 포함 안 함"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -231,7 +234,7 @@ msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
-msgstr ""
+msgstr "동영상을 내보낼 수 없음: 임시 파일 URL은 존재하는 로컬 파일이어야 함"
 
 #: src/ExportManager.cpp:661
 #, kde-format
@@ -239,13 +242,14 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"동영상을 내보낼 수 없음: 출력 파일 URL은 파일 이름을 포함하는 올바른 URL이어"
+"야 함"
 
 #: src/ExportManager.cpp:736
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
+msgstr "녹화를 저장할 수 없습니다. 파일을 위치로 이동할 수 없음: %1"
 
 #: src/ExportManager.cpp:764
 #, kde-format
@@ -265,7 +269,7 @@ msgstr "획 그리기:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
+msgstr[0] "%1픽셀"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
@@ -297,14 +301,14 @@ msgstr "글꼴:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
+msgstr[0] "%2 %3 %1포인트"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:225
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
+msgstr[0] "%2 %1포인트"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
@@ -426,17 +430,14 @@ msgid ""
 msgstr "창의 스크린샷을 찍을 때 제목 표시줄과 테두리를 포함합니다."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "창 제목 표시줄과 경계선 포함"
+msgstr "창 그림자 포함"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "창의 스크린샷을 찍을 때 제목 표시줄과 테두리를 포함합니다."
+msgstr "창의 스크린샷을 찍을 때 창 그림자를 포함합니다."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -490,22 +491,17 @@ msgid "No Delay"
 msgstr "지연 없음"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1초"
+msgstr[0] "%2초"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " 초"
+msgstr "%2초"
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -558,18 +554,16 @@ msgid "Image Zoom"
 msgstr "그림 확대/축소"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "스크린샷을 클립보드에 복사했습니다."
+msgstr "동영상 위치를 클립보드에 복사했습니다."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "스크린샷을 클립보드에 복사했습니다."
+msgstr "스크린샷 위치를 클립보드에 복사했습니다."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -587,10 +581,9 @@ msgid "Copy"
 msgstr "복사"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "클립보드에 위치 복사"
+msgstr "위치 복사"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -637,7 +630,7 @@ msgstr "창 제목 표시줄, 조절 단추와 창 경계선 표시"
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "창 그림자 표시"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -666,12 +659,12 @@ msgstr "지연 없음"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR 코드 발견됨: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "바이너리 내용이 있는 QR 코드를 발견했습니다."
 
 #: src/Gui/RecordingView.qml:46
 #, kde-format
@@ -715,15 +708,12 @@ msgstr ""
 "스크린샷을 클립보드에 복사했고 <a href=\"%1\">%2</a>(으)로 저장했습니다."
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"스크린샷을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
+"동영상을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -948,16 +938,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "파일 이름에 다음 자리 비움자를 사용할 수 있으며 실제 파일을 저장할 때 대체됩"
-"니다:<blockquote>"
+"니다:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
 #, kde-format
@@ -968,13 +955,13 @@ msgstr "하위 폴더에 저장할 때"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "적게 표시"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "더 보기"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1082,10 +1069,9 @@ msgstr "스크린샷 그림에 마우스 커서를 표시할지 여부"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "스크린샷 그림에 마우스 커서를 표시할지 여부"
+msgstr "동영상에 마우스 커서를 포함할지 여부"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1095,10 +1081,9 @@ msgstr "스크린샷 그림에 창 장식을 표시할지 여부"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "스크린샷 그림에 창 장식을 표시할지 여부"
+msgstr "스크린샷 그림에 창 그림자를 포함할지 여부"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1133,8 +1118,7 @@ msgid "Compression quality for lossy file formats"
 msgstr "손실 압축 형식의 압축 품질"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "스크린샷"
@@ -1147,14 +1131,12 @@ msgstr "기본 그림 저장 형식"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "저장할 때 사용할 기본 파일 이름"
+msgstr "스크린샷을 저장할 때 사용할 파일 이름 서식"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "스크린샷"
@@ -1183,24 +1165,21 @@ msgstr "기본 동영상 형식"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "저장할 때 사용할 기본 파일 이름"
+msgstr "스크린캐스트를 저장할 때 사용할 파일 이름 서식"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "스크린샷"
+msgstr "스크린캐스트"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "스크린샷"
+msgstr "스크린캐스트"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1294,10 +1273,9 @@ msgstr "타원 주석 도구에 사용할 채우기 색상"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "직사각형 주석 도구에 사용할 채우기 색상"
+msgstr "숫자 주석 도구에 사용할 채우기 색상"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
@@ -1368,35 +1346,27 @@ msgid "Save &Location:"
 msgstr "저장 위치(&L):"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "그림 공유됨"
+msgstr "동영상 공유됨"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "그림 공유됨"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "공유된 그림 링크(<a href=\"%1\">%1</a>)를 클립보드에 복사했습니다."
+msgstr "공유된 동영상 링크(<a href=\"%1\">%1</a>)를 클립보드에 복사했습니다."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1404,15 +1374,13 @@ msgid ""
 msgstr "공유된 그림 링크(<a href=\"%1\">%1</a>)를 클립보드에 복사했습니다."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "그림 공유 중 문제 발생: %1"
+msgstr "동영상 공유 중 문제 발생: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "그림 공유 중 문제 발생: %1"
@@ -1608,89 +1576,79 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "녹화할 수 없음: 파일 URL이 로컬 파일이 아님"
 
 #: src/Platforms/VideoPlatformWayland.cpp:232
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "녹화할 수 없음: 폴더를 만들 수 없음(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:244
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "녹화할 수 없음: 임시 파일 URL이 로컬 파일이 아님(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:255
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "녹화할 수 없음: 출력 파일 URL이 로컬 파일이 아님(%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:290
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "새 화면 녹화"
+msgstr "화면 녹화 취소됨"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "창 녹화 취소됨"
 
 #: src/Platforms/VideoPlatformWayland.cpp:298
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "창을 선택할 수 없음"
+msgstr "화면을 선택할 수 없음: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:300
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "창을 선택할 수 없음"
+msgstr "창을 선택할 수 없음: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:322
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "화면을 선택할 수 없음: 마우스 커서 위치가 포함된 화면 없음"
 
 #: src/Platforms/VideoPlatformWayland.cpp:329
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "창을 선택할 수 없음"
+msgstr "창을 선택할 수 없음: 창을 찾을 수 없음"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "직사각형 영역"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "전체 화면"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "창 제목"
+msgstr "창"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1723,22 +1681,19 @@ msgid "Capture Window Under Cursor"
 msgstr "커서 아래 창 캡처"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "선택한 화면"
+msgstr "화면 녹화"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "녹화"
+msgstr "창 녹화"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "직사각형 영역"
+msgstr "직사각형 영역 녹화"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1752,12 +1707,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle에서 녹화 중: %1\n"
+"클릭하면 녹화를 중단합니다"
 
 #: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1은(는) --record에 지정할 수 있는 올바른 모드가 아님"
 
 #: src/SpectacleCore.cpp:820
 #, kde-format
@@ -1790,30 +1747,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 저장했습니다."
 
 #: src/SpectacleCore.cpp:888
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
-"습니다."
+"녹화본을 '%2'에 '%1'(으)로 저장했고 녹화본 파일 위치를 클립보드에 복사했습니"
+"다."
 
 #: src/SpectacleCore.cpp:890
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
+msgstr "녹화본을 내 동영상 폴더에 '%1'(으)로 저장했습니다."
 
 #: src/SpectacleCore.cpp:892
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
+msgstr "녹화본을 '%2'에 '%1'(으)로 저장했습니다."
 
 #: src/SpectacleCore.cpp:903
 #, kde-format
