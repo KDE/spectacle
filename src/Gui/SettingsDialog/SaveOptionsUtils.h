@@ -29,8 +29,18 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
     if (usePlaceholder) {
         exportManager->setWindowTitle(QGuiApplication::applicationDisplayName());
     }
+    // Likewise, if no timestamp was set yet, we'll produce a new one as placeholder.
+    const QDateTime timestamp = exportManager->timestamp();
+    if (!timestamp.isValid()) {
+        exportManager->updateTimestamp();
+    }
     const auto filename = exportManager->formattedFilename(templateFilename);
     label->setText(xi18nc("@info", "<filename>%1</filename>", filename));
+
+    // Reset any previously empty values that we had temporarily set.
+    if (!timestamp.isValid()) {
+        exportManager->setTimestamp(timestamp);
+    }
     if (usePlaceholder) {
         exportManager->setWindowTitle({});
     }

@@ -56,6 +56,7 @@ public:
     QImage image() const;
     void updateTimestamp();
     void setTimestamp(const QDateTime &timestamp);
+    QDateTime timestamp() const;
 
     /**
      * The title used to fill the window title template in formatted file names.
