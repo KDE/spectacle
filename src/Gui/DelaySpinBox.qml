@@ -23,7 +23,7 @@ QQC.SpinBox {
             return i18ncp("Integer number of seconds",
                 "%2 second", "%2 seconds", value / 100, text)
         } else {
-            return i18nc("Decimal number of seconds", "%2 seconds", text)
+            return i18nc("Decimal number of seconds", "%1 seconds", text)
         }
     }
 
