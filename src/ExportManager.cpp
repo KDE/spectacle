@@ -110,6 +110,11 @@ void ExportManager::setTimestamp(const QDateTime &timestamp)
     m_timestamp = timestamp;
 }
 
+QDateTime ExportManager::timestamp() const
+{
+    return m_timestamp;
+}
+
 // native file save helpers
 
 static QString ensureDefaultLocationExists(const QUrl &saveUrl)
