@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 # Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-31 02:37+0000\n"
-"PO-Revision-Date: 2023-12-31 11:15+0300\n"
+"PO-Revision-Date: 2024-02-09 00:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -104,7 +104,7 @@ msgstr ""
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Bir ekran görüntüsü almadan Deklanşör'ü başlat"
+msgstr "Bir ekran görüntüsü almadan Spectacle'ı başlat"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -160,7 +160,7 @@ msgstr ""
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
-"DBus'a kayıt yapmadan yeni bir Deklanşör grafik arabirim örneği başlatır"
+"DBus'a kayıt yapmadan yeni bir Spectacle grafik arabirim örneği başlatır"
 
 #: src/CommandLineOptions.h:100
 #, kde-format
@@ -448,7 +448,7 @@ msgstr "Elle kaydet veya kopyala işleminden sonra çık"
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
-"Görseli elle kaydettikten veya kopyaladıktan sonra Deklanşör'den çıkın."
+"Görseli elle kaydettikten veya kopyaladıktan sonra Spectacle'dan çıkın."
 
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
@@ -498,7 +498,7 @@ msgstr "Yakalama Kipleri"
 #: src/Gui/DialogPage.qml:127
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr "Deklanşör'ü Yapılandır…"
+msgstr "Spectacle'ı Yapılandır…"
 
 #: src/Gui/DialogPage.qml:133 src/Gui/MainToolBarContents.qml:148
 #, kde-format
@@ -634,7 +634,7 @@ msgstr ""
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
-"Görüntüyü elle kaydettikten veya kopyaladıktan sonra Deklanşör "
+"Görüntüyü elle kaydettikten veya kopyaladıktan sonra Spectacle "
 "uygulamasından çık"
 
 #: src/Gui/OptionsMenu.cpp:137
@@ -733,7 +733,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, kde-format
 msgid "When launching Spectacle:"
-msgstr "Deklanşör başlatıldığında:"
+msgstr "Spectacle başlatıldığında:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
@@ -787,7 +787,7 @@ msgstr "Dosya konumunu panoya kopyala"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "Deklanşör çalışırken"
+msgstr "Spectacle çalışırken"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
@@ -805,13 +805,13 @@ msgstr "Yeni bir ekran görüntüsü al"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
 #, kde-format
 msgid "Open a new Spectacle window"
-msgstr "Yeni bir Deklanşör penceresi aç"
+msgstr "Yeni bir Spectacle penceresi aç"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Return focus to Spectacle"
-msgstr "Odağı Deklanşör'e döndür"
+msgstr "Odağı Spectacle'e döndür"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
@@ -871,7 +871,7 @@ msgstr "Her zaman"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:236
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr "Deklanşör kapanana dek"
+msgstr "Spectacle kapanana dek"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -978,7 +978,7 @@ msgstr "Kısayollar"
 #: src/Gui/SettingsDialog/spectacle.kcfg:16
 #, kde-format
 msgid "What to do when Spectacle is launched"
-msgstr "Deklanşör başlatıldığında ne yapılsın"
+msgstr "Spectacle başlatıldığında ne yapılsın"
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:25
@@ -986,7 +986,7 @@ msgstr "Deklanşör başlatıldığında ne yapılsın"
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr ""
-"Deklanşör halihazırda çalışıyorken yazdır düğmesine basıldığında ne olmalı"
+"Spectacle halihazırda çalışıyorken yazdır düğmesine basıldığında ne olmalı"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:34
@@ -1503,7 +1503,7 @@ msgstr "Yinele"
 #: src/Main.cpp:41
 #, kde-format
 msgid "Spectacle"
-msgstr "Deklanşör"
+msgstr "Spectacle"
 
 #: src/Main.cpp:43
 #, kde-format
@@ -1534,8 +1534,8 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Wayland üzerinde Deklanşör, KDE Plasma'nın KWin bileşikleştiricisini "
-"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Deklanşör'ü KDE "
+"Wayland üzerinde Spectacle, KDE Plasma'nın KWin bileşikleştiricisini "
+"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Spectacle'ı KDE "
 "Plasma üzerinde kullanın veya başka bir ekran görüntüsü alma aracı seçin."
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
@@ -1619,7 +1619,7 @@ msgstr "Pencere"
 #: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
-msgstr "Deklanşör'ü Başlat"
+msgstr "Spectacle'ı Başlat"
 
 #: src/ShortcutActions.cpp:44
 #, kde-format
@@ -1664,7 +1664,7 @@ msgstr "Dikdörtgen Bölgeyi Kaydet"
 #: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
-msgstr "Deklanşör'ü yakalama yapmadan başlat"
+msgstr "Spectacle'ı yakalama yapmadan başlat"
 
 #: src/SpectacleCore.cpp:333
 #, kde-format
@@ -1673,7 +1673,7 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
-"Deklanşör kayıt yapıyor: %1\n"
+"Spectacle kayıt yapıyor: %1\n"
 "Kaydı bitirmek için tıkla"
 
 #: src/SpectacleCore.cpp:605
