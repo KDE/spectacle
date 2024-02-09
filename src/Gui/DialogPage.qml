@@ -77,8 +77,14 @@ EmptyPage {
             acceptedButtons: Qt.LeftButton
             dragThreshold: 0
             target: null
+            // BUG: https://bugreports.qt.io/browse/QTBUG-110145
+            // Changing acceptedButtons cancels the drag when the left mouse button is released on
+            // Wayland. If we don't do this, you need to click somewhere in the window to be able to
+            // click or hover on UI elements again.
             onActiveChanged: if (active) {
-                contextWindow.startSystemMove()
+                acceptedButtons = contextWindow.startSystemMove() ? Qt.NoButton : Qt.LeftButton
+            } else {
+                acceptedButtons = Qt.LeftButton
             }
         }
     }
