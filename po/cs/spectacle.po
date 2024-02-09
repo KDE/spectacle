@@ -493,24 +493,19 @@ msgid "No Delay"
 msgstr "Žádná prodleva"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekund"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%2 seconds"
-msgstr " sekund"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:96
 #, kde-format
@@ -1139,17 +1134,15 @@ msgstr "Výchozí formát obrázků pro uložení"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Výchozí název souboru použitého při uložení"
+msgstr ""
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Snímek obrazovky"
+msgstr ""
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1175,10 +1168,9 @@ msgstr "Výchozí formát videa:"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Výchozí název souboru použitého při uložení"
+msgstr ""
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
@@ -1187,11 +1179,10 @@ msgid "Screencasts"
 msgstr ""
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Snímek obrazovky"
+msgstr ""
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1285,10 +1276,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Font color for annotations"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "Barva písma pro poznámky"
+msgstr ""
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
@@ -1511,7 +1501,7 @@ msgstr "Escape"
 #: src/Gui/SizeLabel.qml:13
 #, kde-format
 msgid "%1×%2"
-msgstr ""
+msgstr "%1×%2"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -1805,75 +1795,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Day"
-#~ msgstr "Den"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month"
-#~ msgstr "Měsíc"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized short name)"
-#~ msgstr "Měsíc (přeložené krátké jméno)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized long name)"
-#~ msgstr "Měsíc (přeložené dlouhé jméno)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (2 digit)"
-#~ msgstr "Rok (2 číslice)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (4 digit)"
-#~ msgstr "Rok (4 číslice)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Hour"
-#~ msgstr "Hodina"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Minute"
-#~ msgstr "Minuta"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Second"
-#~ msgstr "Sekunda"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Timezone"
-#~ msgstr "Časové pásmo"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Window Title"
-#~ msgstr "Titulek okna"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering"
-#~ msgstr "Sekvenční číslování"
