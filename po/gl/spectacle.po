@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-10 00:38+0000\n"
+"POT-Creation-Date: 2024-02-11 00:37+0000\n"
 "PO-Revision-Date: 2024-02-04 12:49+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -193,12 +193,12 @@ msgstr "No modo en segundo plano, excluír as sombras da captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir e editar o ficheiro de captura de pantalla existente"
 
-#: src/ExportManager.cpp:360
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pode gardar a imaxe: %1"
 
-#: src/ExportManager.cpp:375
+#: src/ExportManager.cpp:380
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,14 +208,14 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro."
 
-#: src/ExportManager.cpp:405
+#: src/ExportManager.cpp:410
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -225,32 +225,32 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "remoto fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:416 src/ExportManager.cpp:464
+#: src/ExportManager.cpp:421 src/ExportManager.cpp:469
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro temporal local."
 
-#: src/ExportManager.cpp:424
+#: src/ExportManager.cpp:429
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Non é posíbel gardar a imaxe. Non se puido enviar o ficheiro ao lugar remoto."
 
-#: src/ExportManager.cpp:471
+#: src/ExportManager.cpp:476
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. O nome do ficheiro no que "
 "gardala é incorrecto."
 
-#: src/ExportManager.cpp:515
+#: src/ExportManager.cpp:520
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Non é posíbel gardar unha captura de pantalla baleira."
 
-#: src/ExportManager.cpp:654
+#: src/ExportManager.cpp:659
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -259,7 +259,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro temporal debe ser un "
 "ficheiro local existente."
 
-#: src/ExportManager.cpp:661
+#: src/ExportManager.cpp:666
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro de saída debe ser un URL "
 "válido cun nome de ficheiro."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -276,7 +276,7 @@ msgstr ""
 "Non é posíbel gardar a gravación. Non se puido mover o ficheiro á "
 "localización: %1"
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:769
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr ""
@@ -974,13 +974,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Vista previa:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -989,18 +989,18 @@ msgstr ""
 "Pode usar as seguintes marcas de posición no nome de ficheiro, que se "
 "substituirán por texto real cando se garda o ficheiro:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Para gardar nun cartafol subordinado"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Amosar menos"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

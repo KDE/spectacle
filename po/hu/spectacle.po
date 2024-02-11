@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-10 00:38+0000\n"
+"POT-Creation-Date: 2024-02-11 00:37+0000\n"
 "PO-Revision-Date: 2024-02-05 22:57+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -181,12 +181,12 @@ msgstr "Árnyékok lehagyása a képernyőképről"
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/ExportManager.cpp:360
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:375
+#: src/ExportManager.cpp:380
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -196,12 +196,12 @@ msgstr ""
 "A képernyőkép nem menthető, mert a mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:405
+#: src/ExportManager.cpp:410
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,28 +211,28 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:416 src/ExportManager.cpp:464
+#: src/ExportManager.cpp:421 src/ExportManager.cpp:469
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:424
+#: src/ExportManager.cpp:429
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:471
+#: src/ExportManager.cpp:476
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:515
+#: src/ExportManager.cpp:520
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:654
+#: src/ExportManager.cpp:659
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:661
+#: src/ExportManager.cpp:666
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:741
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -258,7 +258,7 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:769
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
@@ -950,13 +950,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Előnézet:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -965,18 +965,18 @@ msgstr ""
 "A következő helykitöltőket használhatja a fájlnévben, amelyek helyettesítve "
 "lesznek a tényleges szöveggel a fájl mentésekor:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Almappába mentéshez"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Kevesebb megjelenítése"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

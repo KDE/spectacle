@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-10 00:38+0000\n"
+"POT-Creation-Date: 2024-02-11 00:37+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -186,12 +186,12 @@ msgstr "Taustarežiimis jäetakse akna dekoratsioonid ekraanipildilt välja"
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:360
+#: src/ExportManager.cpp:365
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ei suuda pilti kirjutada: %1"
 
-#: src/ExportManager.cpp:375
+#: src/ExportManager.cpp:380
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -201,12 +201,12 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest kataloogi loomine nurjus:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:390
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekraanipildi salvestamine nurjus. Tõrge faili kirjutamisel."
 
-#: src/ExportManager.cpp:405
+#: src/ExportManager.cpp:410
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -216,49 +216,49 @@ msgstr ""
 "Ekraanipilti ei õnnestunud salvestada, sest võrgukataloogi loomine nurjus:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:416 src/ExportManager.cpp:464
+#: src/ExportManager.cpp:421 src/ExportManager.cpp:469
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ekraanipildi salvestamine nurjus. Tõrge ajutise kohaliku faili kirjutamisel."
 
-#: src/ExportManager.cpp:424
+#: src/ExportManager.cpp:429
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Pildi salvestamine nurjus. Faili ei saanud kaugasukohta üles laadida."
 
-#: src/ExportManager.cpp:471
+#: src/ExportManager.cpp:476
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekraanipildi salvestamine nurjus. Salvestatav failinimi on vigane."
 
-#: src/ExportManager.cpp:515
+#: src/ExportManager.cpp:520
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Tühja ekraanipilti ei saa salvestada."
 
-#: src/ExportManager.cpp:654
+#: src/ExportManager.cpp:659
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:661
+#: src/ExportManager.cpp:666
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:741
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Pildi salvestamine nurjus. Faili ei saanud kaugasukohta üles laadida."
 
-#: src/ExportManager.cpp:764
+#: src/ExportManager.cpp:769
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Trükkimine nurjus. Printerit ei õnnestunud initsialiseerida."
@@ -993,7 +993,7 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Eelvaatlus:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "<filename>%1.%2</filename>"
@@ -1001,7 +1001,7 @@ msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, fuzzy, kde-format
 #| msgid ""
 #| "You can use the following placeholders in the filename, which will be "
@@ -1013,18 +1013,18 @@ msgstr ""
 "Failinimes võib kasutada järgmisi kohatäitjaid, mis asendatakse faili "
 "salvestamisel tegeliku tekstiga:<blockquote>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Salvestamiseks alamkataloogi"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
