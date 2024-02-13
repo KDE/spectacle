@@ -44,7 +44,9 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
 
 ViewerWindow::~ViewerWindow()
 {
-    s_viewerWindowInstance = nullptr;
+    if (s_viewerWindowInstance == this) {
+        s_viewerWindowInstance = nullptr;
+    }
 }
 
 ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent)
