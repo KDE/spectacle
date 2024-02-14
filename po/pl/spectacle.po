@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2024-02-04 09:40+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -520,10 +520,13 @@ msgstr[1] "%2 sekundy"
 msgstr[2] "%2 sekund"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr "%2 sekund"
+msgid "%1 seconds"
+msgstr "%1 sekunda"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -691,7 +694,7 @@ msgstr "Rozpoznano kod QR: %1"
 msgid "Found QR code with binary content."
 msgstr "Znaleziono kod QR z treścią dwójkową."
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -700,12 +703,12 @@ msgstr ""
 "Nagrywanie:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Wstrzymaj"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Odtwórz"
@@ -1832,6 +1835,10 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 sekund"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

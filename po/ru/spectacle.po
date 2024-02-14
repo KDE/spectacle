@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2024-02-04 19:03+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -553,12 +553,14 @@ msgstr[1] "%2 секунды"
 msgstr[2] "%2 секунд"
 msgstr[3] "%2 секунда"
 
-# BUGME: plurals please --aspotashev
 #: src/Gui/DelaySpinBox.qml:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr "%2 секунды"
+msgid "%1 seconds"
+msgstr "%1 секунда"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -727,7 +729,7 @@ msgstr "Найден QR-код: %1"
 msgid "Found QR code with binary content."
 msgstr "Найден QR-код, содержащий двоичные данные."
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -736,12 +738,12 @@ msgstr ""
 "Запись экрана:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Приостановить"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Воспроизвести"
@@ -1876,6 +1878,11 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+# BUGME: plurals please --aspotashev
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 секунды"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2023-12-12 19:30+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -518,11 +518,12 @@ msgstr[2] "%1 sekúnd"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, fuzzy, kde-format
-#| msgctxt "Decimal number of seconds"
-#| msgid " seconds"
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr " sekundy"
+msgid "%1 seconds"
+msgstr "%1 sekunda"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -693,7 +694,7 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -702,12 +703,12 @@ msgstr ""
 "Nahrávanie:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Pozastaviť"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Prehrať"
@@ -1841,6 +1842,13 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#, fuzzy
+#~| msgctxt "Decimal number of seconds"
+#~| msgid " seconds"
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr " sekundy"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

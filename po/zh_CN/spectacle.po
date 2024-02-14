@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2024-02-05 11:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -495,10 +495,13 @@ msgid_plural "%2 seconds"
 msgstr[0] "%2 秒"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr "%2 秒"
+msgid "%1 seconds"
+msgstr "%1 秒"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -663,7 +666,7 @@ msgstr "识别到二维码：%1"
 msgid "Found QR code with binary content."
 msgstr "识别到包含二进制内容的二维码。"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -672,12 +675,12 @@ msgstr ""
 "正在录制：\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "暂停"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "播放"
@@ -1780,3 +1783,7 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 秒"

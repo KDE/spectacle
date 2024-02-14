@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2024-02-05 17:21+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -492,10 +492,13 @@ msgid_plural "%2 seconds"
 msgstr[0] "%2 秒"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr "%2 秒"
+msgid "%1 seconds"
+msgstr "%1 秒"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -660,7 +663,7 @@ msgstr "找到 QR 碼：%1"
 msgid "Found QR code with binary content."
 msgstr "找到內容為二進位資料的 QR 碼。"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -669,12 +672,12 @@ msgstr ""
 "錄製螢幕：\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "暫停"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "播放"
@@ -1773,6 +1776,10 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 秒"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "

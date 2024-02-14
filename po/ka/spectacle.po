@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 00:37+0000\n"
+"POT-Creation-Date: 2024-02-14 00:37+0000\n"
 "PO-Revision-Date: 2024-02-01 03:12+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -515,10 +515,13 @@ msgstr[0] "%2 წამი"
 msgstr[1] "%2 წამი"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "%1 second"
+#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
-msgid "%2 seconds"
-msgstr "%2 წამი"
+msgid "%1 seconds"
+msgstr "%1 წამი"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -685,7 +688,7 @@ msgstr "ნაპოვნია QR კოდი: %1"
 msgid "Found QR code with binary content."
 msgstr "აღმოჩენილია QR კოდი ბინარული შემცველობით."
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -694,12 +697,12 @@ msgstr ""
 "ჩაწერა:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "პაუზა"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "დაკვრა"
@@ -1816,6 +1819,10 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 წამი"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
