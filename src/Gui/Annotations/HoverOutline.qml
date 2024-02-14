@@ -26,7 +26,7 @@ AnimatedLoader {
     sourceComponent: SelectionBackground {
         id: outline
         svgPath: root.viewport.hoveredMousePath.svgPath
-        zoom: root.viewport.effectiveZoom
+        zoom: root.viewport.scale
         strokeColor1: palette.text
         pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
                            (root.height + effectiveStrokeWidth) / root.height)

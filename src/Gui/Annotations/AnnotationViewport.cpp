@@ -4,21 +4,52 @@
  */
 
 #include "AnnotationViewport.h"
+#include "Geometry.h"
 
 #include <QCursor>
 #include <QPainter>
+#include <QQuickWindow>
+#include <QSGImageNode>
 #include <QScreen>
 #include <utility>
+
+using G = Geometry;
 
 QList<AnnotationViewport *> AnnotationViewport::s_viewportInstances = {};
 static bool s_synchronizingAnyPressed = false;
 static bool s_isAnyPressed = false;
 
+class AnnotationViewportNode : public QSGNode
+{
+    QSGImageNode *m_baseImageNode;
+    QSGImageNode *m_annotationsNode;
+
+public:
+    AnnotationViewportNode(QSGImageNode *baseImageNode, QSGImageNode *annotationsNode)
+        : QSGNode()
+        , m_baseImageNode(baseImageNode)
+        , m_annotationsNode(annotationsNode)
+    {
+        baseImageNode->setOwnsTexture(true);
+        appendChildNode(baseImageNode);
+        annotationsNode->setOwnsTexture(true);
+        appendChildNode(annotationsNode);
+    }
+    QSGImageNode *baseImageNode() const
+    {
+        return m_baseImageNode;
+    }
+    QSGImageNode *annotationsNode() const
+    {
+        return m_annotationsNode;
+    }
+};
+
 AnnotationViewport::AnnotationViewport(QQuickItem *parent)
-    : QQuickPaintedItem(parent)
+    : QQuickItem(parent)
 {
     s_viewportInstances.append(this);
-    setFlag(ItemIsFocusScope);
+    setFlags({ItemIsFocusScope, ItemHasContents, ItemIsViewport, ItemObservesViewport});
     setAcceptHoverEvents(true);
     setAcceptedMouseButtons(Qt::LeftButton);
 }
@@ -45,23 +76,6 @@ void AnnotationViewport::setViewportRect(const QRectF &rect)
     update();
 }
 
-void AnnotationViewport::setZoom(qreal zoom)
-{
-    if (zoom == m_zoom || qFuzzyIsNull(zoom)) {
-        return;
-    }
-
-    m_zoom = zoom;
-    Q_EMIT zoomChanged();
-    updateTransforms();
-    update();
-}
-
-qreal AnnotationViewport::zoom() const
-{
-    return m_zoom;
-}
-
 AnnotationDocument *AnnotationViewport::document() const
 {
     return m_document;
@@ -78,7 +92,17 @@ void AnnotationViewport::setDocument(AnnotationDocument *doc)
     }
 
     m_document = doc;
-    connect(doc, &AnnotationDocument::repaintNeeded, this, &AnnotationViewport::repaintDocument);
+    auto repaint = [this](AnnotationDocument::RepaintTypes types) {
+        using RepaintType = AnnotationDocument::RepaintType;
+        if (types.testFlag(RepaintType::BaseImage)) {
+            m_repaintBaseImage = true;
+        }
+        if (types.testFlag(RepaintType::Annotations)) {
+            m_repaintAnnotations = true;
+        }
+        update();
+    };
+    connect(doc, &AnnotationDocument::repaintNeeded, this, repaint);
     connect(doc->tool(), &AnnotationTool::typeChanged, this, &AnnotationViewport::setCursorForToolType);
     Q_EMIT documentChanged();
     update();
@@ -200,9 +224,6 @@ QMatrix4x4 AnnotationViewport::localToDocument() const
 void AnnotationViewport::updateTransforms()
 {
     QMatrix4x4 localToDocument;
-    // translate() is affected by existing scales,
-    // but scale() does not affect existing translations
-    localToDocument.scale(1 / m_zoom, 1 / m_zoom);
     localToDocument.translate(m_viewportRect.x(), m_viewportRect.y());
 
     if (m_localToDocument != localToDocument) {
@@ -210,7 +231,6 @@ void AnnotationViewport::updateTransforms()
         Q_EMIT localToDocumentChanged();
     }
     QMatrix4x4 documentToLocal;
-    documentToLocal.scale(m_zoom, m_zoom);
     documentToLocal.translate(-m_viewportRect.x(), -m_viewportRect.y());
     if (m_documentToLocal != documentToLocal) {
         m_documentToLocal = documentToLocal;
@@ -221,15 +241,6 @@ void AnnotationViewport::updateTransforms()
 QMatrix4x4 AnnotationViewport::documentToLocal() const
 {
     return m_documentToLocal;
-}
-
-void AnnotationViewport::paint(QPainter *painter)
-{
-    if (!m_document || m_viewportRect.isEmpty()) {
-        return;
-    }
-
-    m_document->paint(painter, {m_viewportRect, m_zoom});
 }
 
 void AnnotationViewport::hoverEnterEvent(QHoverEvent *event)
@@ -384,8 +395,7 @@ void AnnotationViewport::keyPressEvent(QKeyEvent *event)
             event->accept();
         } else if (event->matches(QKeySequence::Delete) //
                    && toolType == AnnotationTool::SelectTool //
-                   && (!selectedOptions.testFlag(AnnotationTool::TextOption)
-                       || wrapper->text().isEmpty())) {
+                   && (!selectedOptions.testFlag(AnnotationTool::TextOption) || wrapper->text().isEmpty())) {
             // Only use delete shortcut when not using the text tool.
             // We don't want users trying to delete text to accidentally delete the item.
             m_document->deleteSelectedItem();
@@ -406,28 +416,74 @@ void AnnotationViewport::keyReleaseEvent(QKeyEvent *event)
     m_acceptKeyReleaseEvents = false;
 }
 
+QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
+{
+    if (!m_document || width() <= 0 || height() <= 0) {
+        delete oldNode;
+        return nullptr;
+    }
+
+    const auto window = this->window();
+    auto node = static_cast<AnnotationViewportNode *>(oldNode);
+    if (!node) {
+        node = new AnnotationViewportNode(window->createImageNode(), //
+                                            window->createImageNode());
+        node->baseImageNode()->setFiltering(QSGTexture::Linear);
+        node->annotationsNode()->setFiltering(QSGTexture::Linear);
+    }
+
+    auto baseImageNode = node->baseImageNode();
+    if (!baseImageNode->texture() || m_repaintBaseImage) {
+        QQuickWindow::CreateTextureOptions options{QQuickWindow::TextureCanUseAtlas, QQuickWindow::TextureHasAlphaChannel};
+        baseImageNode->setTexture(window->createTextureFromImage(m_document->baseImage(), options));
+        m_repaintBaseImage = false;
+    }
+
+    auto annotationsNode = node->annotationsNode();
+    if (!annotationsNode->texture() || m_repaintAnnotations) {
+        QQuickWindow::CreateTextureOptions options{QQuickWindow::TextureCanUseAtlas, QQuickWindow::TextureHasAlphaChannel};
+        annotationsNode->setTexture(window->createTextureFromImage(m_document->annotationsImage(), options));
+        m_repaintAnnotations = false;
+    }
+
+    const auto canvasRect = m_document->canvasRect();
+    const auto imageDpr = m_document->imageDpr();
+    const auto windowDpr = window->effectiveDevicePixelRatio();
+    const auto canvasView = canvasRect.intersected(m_viewportRect.translated(canvasRect.topLeft()));
+    const auto imageView = G::rectScaled(canvasView.translated(-canvasRect.topLeft()), imageDpr);
+
+    auto setupImageNode = [&](QSGImageNode *node) {
+        QRectF sourceBounds{{0, 0}, node->texture()->textureSize()};
+        auto sourceRect = imageView.intersected(sourceBounds);
+        QRectF targetRect{{0, 0}, sourceRect.size().scaled(this->size(), Qt::KeepAspectRatio)};
+        targetRect.moveTo(std::round((width() - targetRect.width()) / 2 * windowDpr) / windowDpr,
+                          std::round((height() - targetRect.height()) / 2 * windowDpr) / windowDpr);
+        if (!sourceRect.isEmpty()) {
+            node->setSourceRect(sourceRect);
+        }
+        if (!targetRect.isEmpty()) {
+            node->setRect(targetRect);
+        }
+    };
+
+    setupImageNode(baseImageNode);
+    setupImageNode(annotationsNode);
+
+    return node;
+}
+
+void AnnotationViewport::itemChange(ItemChange change, const ItemChangeData &value)
+{
+    if (change == ItemDevicePixelRatioHasChanged) {
+        update();
+    }
+    QQuickItem::itemChange(change, value);
+}
+
+
 bool AnnotationViewport::shouldIgnoreInput() const
 {
     return !isEnabled() || !m_document || m_document->tool()->type() == AnnotationTool::NoTool;
-}
-
-void AnnotationViewport::repaintDocument(const QRectF &documentRect)
-{
-    if (documentRect.isEmpty()) {
-        update();
-        return;
-    }
-
-    repaintDocumentRect(documentRect);
-}
-
-void AnnotationViewport::repaintDocumentRect(const QRectF &documentRect)
-{
-    auto localRect = m_documentToLocal.mapRect(documentRect).toAlignedRect();
-    // intersects returns false if either rect is empty
-    if (boundingRect().intersects(localRect)) {
-        update(localRect);
-    }
 }
 
 void AnnotationViewport::setCursorForToolType()

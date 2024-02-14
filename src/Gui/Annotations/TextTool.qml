@@ -81,8 +81,7 @@ AnimatedLoader {
                 // prevent the cursor from overlapping with the background
                 x: textField.cursorPosition === textField.length && textField.length > 0 ?
                     -width : 0
-                width: Math.max(1 / root.viewport.zoom,
-                                contextWindow.dprRound(fontMetrics.xHeight / 12))
+                width: Math.max(1, contextWindow.dprRound(fontMetrics.xHeight / 12))
                 height: parent.height
                 color: Qt.rgba(textField.textColor.r, textField.textColor.g, textField.textColor.b, 1)
             }
@@ -174,7 +173,7 @@ AnimatedLoader {
         topInset: -background.effectiveStrokeWidth
         bottomInset: -background.effectiveStrokeWidth
         background: SelectionBackground {
-            zoom: root.viewport.effectiveZoom
+            zoom: root.viewport.scale
         }
 
         FontMetrics {
@@ -205,8 +204,8 @@ AnimatedLoader {
                 cursorShape: Qt.SizeAllCursor
                 dragThreshold: 0
                 onActiveTranslationChanged: if (active) {
-                    let dx = activeTranslation.x / viewport.effectiveZoom
-                    let dy = activeTranslation.y / viewport.effectiveZoom
+                    let dx = activeTranslation.x / viewport.scale
+                    let dy = activeTranslation.y / viewport.scale
                     root.document.selectedItem.transform(dx, dy)
                 }
                 onActiveChanged: if (!active) {

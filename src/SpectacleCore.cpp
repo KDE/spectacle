@@ -165,7 +165,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
         m_annotationDocument->clearAnnotations();
-        m_annotationDocument->setImage(image);
+        m_annotationDocument->setBaseImage(image);
         setExportImage(image);
         ExportManager::instance()->updateTimestamp();
         showViewerIfGuiMode();
@@ -176,7 +176,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
     connect(imagePlatform, &ImagePlatform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
         m_annotationDocument->clearAnnotations();
-        m_annotationDocument->setImage(image);
+        m_annotationDocument->setBaseImage(image);
         SelectionEditor::instance()->reset();
 
         initCaptureWindows(CaptureWindow::Image);
@@ -562,7 +562,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             // This QImage constructor only works with local files or Qt resource file names.
             QImage existingImage(existingLocalFile);
             m_annotationDocument->clearAnnotations();
-            m_annotationDocument->setImage(existingImage);
+            m_annotationDocument->setBaseImage(existingImage);
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
             return;

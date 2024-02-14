@@ -13,7 +13,6 @@ AnnotationViewport {
 
     document: AnnotationDocument
     viewportRect: Qt.rect(0, 0, width, height)
-    property real effectiveZoom: zoom * scale
 
     onPressedChanged: if (pressed) {
         if (textTool.shouldShow) {
@@ -24,7 +23,6 @@ AnnotationViewport {
     Item {
         x: -root.viewportRect.x
         y: -root.viewportRect.y
-        scale: root.zoom < 1 ? root.zoom : 1
         transformOrigin: Item.TopLeft
         TextTool {
             id: textTool

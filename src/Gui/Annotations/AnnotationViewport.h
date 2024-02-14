@@ -7,7 +7,7 @@
 
 #include "AnnotationDocument.h"
 #include <QMatrix4x4>
-#include <QQuickPaintedItem>
+#include <QQuickItem>
 
 class QPainter;
 
@@ -16,11 +16,10 @@ class QPainter;
  * depending from viewportRect and zoom.
  * This is also managing all the input which will add the annotations.
  */
-class AnnotationViewport : public QQuickPaintedItem
+class AnnotationViewport : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(QRectF viewportRect READ viewportRect WRITE setViewportRect NOTIFY viewportRectChanged)
-    Q_PROPERTY(qreal zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
     Q_PROPERTY(AnnotationDocument *document READ document WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(QPointF hoverPosition READ hoverPosition NOTIFY hoverPositionChanged)
     Q_PROPERTY(bool hovered READ isHovered NOTIFY hoveredChanged)
@@ -38,13 +37,8 @@ public:
     QRectF viewportRect() const;
     void setViewportRect(const QRectF &rect);
 
-    void setZoom(qreal zoom);
-    qreal zoom() const;
-
     AnnotationDocument *document() const;
     void setDocument(AnnotationDocument *doc);
-
-    void paint(QPainter *painter) override;
 
     QPointF hoverPosition() const;
 
@@ -73,7 +67,6 @@ public:
 Q_SIGNALS:
     void viewportRectChanged();
     void documentChanged();
-    void zoomChanged();
     void hoverPositionChanged();
     void hoveredChanged();
     void pressPositionChanged();
@@ -92,6 +85,8 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
+    QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *) override;
+    void itemChange(ItemChange, const ItemChangeData &) override;
 
 private:
     bool shouldIgnoreInput() const;
@@ -102,14 +97,9 @@ private:
     void setAnyPressed();
     void setHoveredMousePath(const QPainterPath &path);
     void updateTransforms();
-    // Repaint rect from document coordinate system or whole viewport if empty.
-    void repaintDocument(const QRectF &documentRect);
-    // Repaint rect from document coordinate system or nothing if empty.
-    void repaintDocumentRect(const QRectF &documentRect);
     void setCursorForToolType();
 
     QRectF m_viewportRect;
-    qreal m_zoom = 1.0;
     QPointer<AnnotationDocument> m_document;
     QPointF m_localHoverPosition;
     QPointF m_localPressPosition;
@@ -121,5 +111,7 @@ private:
     bool m_allowDraggingSelection = false;
     bool m_acceptKeyReleaseEvents = false;
     QPainterPath m_hoveredMousePath;
+    bool m_repaintBaseImage = true;
+    bool m_repaintAnnotations = true;
     static QList<AnnotationViewport *> s_viewportInstances;
 };

@@ -34,7 +34,7 @@ class AnnotationDocument : public QObject
 
     Q_PROPERTY(int redoStackDepth READ redoStackDepth NOTIFY redoStackDepthChanged)
     Q_PROPERTY(int undoStackDepth READ undoStackDepth NOTIFY undoStackDepthChanged)
-    Q_PROPERTY(QSizeF canvasSize READ canvasSize NOTIFY canvasSizeChanged)
+    Q_PROPERTY(QRectF canvasRect READ canvasRect NOTIFY canvasRectChanged)
     Q_PROPERTY(QSizeF imageSize READ imageSize NOTIFY imageSizeChanged)
     Q_PROPERTY(qreal imageDpr READ imageDpr NOTIFY imageDprChanged)
 
@@ -47,6 +47,15 @@ public:
     Q_DECLARE_FLAGS(ContinueOptions, ContinueOption)
     Q_FLAG(ContinueOption)
 
+    enum class RepaintType {
+        NoTypes = 0,
+        BaseImage = 1,
+        Annotations = 1 << 1,
+        All = BaseImage | Annotations,
+    };
+    Q_DECLARE_FLAGS(RepaintTypes, RepaintType)
+    Q_FLAG(RepaintType)
+
     explicit AnnotationDocument(QObject *parent = nullptr);
     ~AnnotationDocument();
 
@@ -56,7 +65,10 @@ public:
     int undoStackDepth() const;
     int redoStackDepth() const;
 
-    QSizeF canvasSize() const;
+    QRectF canvasRect() const;
+    // Set the canvas rect, device pixel ratio, image size and reset the annotation image.
+    // The image size and image device pixel ratio are also set based on these.
+    void setCanvas(const QRectF &rect, qreal dpr);
 
     /// Image size in raw pixels
     QSizeF imageSize() const;
@@ -64,8 +76,10 @@ public:
     /// Image device pixel ratio
     qreal imageDpr() const;
 
-    /// Set the base image. Cannot be undone.
-    void setImage(const QImage &image);
+    QImage baseImage() const;
+    /// Set the base image. Based on the base image, also set image size, image device pixel ratio
+    // and canvas rect. Cannot be undone.
+    void setBaseImage(const QImage &image);
 
     /// Remove annotations that do not intersect with the rectangle and crop the image.
     /// Cannot be undone.
@@ -77,19 +91,14 @@ public:
     /// Clear all annotations and the image. Cannot be undone.
     void clear();
 
-    struct Viewport {
-        QRectF rect;
-        qreal scale = 1;
-    };
+    // Paint the section of the image intersecting the viewport.
+    void paintImageView(QPainter *painter, const QImage &image, const QRectF &viewport = {}) const;
 
-    // Paint the base image.
-    void paintBaseImage(QPainter *painter, const Viewport &viewport) const;
-    // Paint the annotations. If the span is not set, all annotations will be painted.
-    void paintAnnotations(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
-    // Paint the base image and annotations.
-    void paint(QPainter *painter, const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
-    QImage renderToImage(const Viewport &viewport, std::optional<History::ConstSpan> span = {}) const;
-    QImage renderToImage(std::optional<History::ConstSpan> span = {}) const;
+    // Get an image containing just the annotations.
+    // This is lazily computed based on an internal paint region of areas needing to be repainted.
+    QImage annotationsImage();
+
+    QImage renderToImage();
 
     // True when there is an item at the end of the undo stack and it is invalid.
     bool isCurrentItemValid() const;
@@ -118,23 +127,55 @@ Q_SIGNALS:
     void selectedItemWrapperChanged();
     void undoStackDepthChanged();
     void redoStackDepthChanged();
-    void canvasSizeChanged();
+    void canvasRectChanged();
     void imageSizeChanged();
     void imageDprChanged();
 
-    void repaintNeeded(const QRectF &area = {});
+    void repaintNeeded(RepaintTypes types);
 
 private:
     friend class SelectedItemWrapper;
 
+    // Paint the annotations intersecting the region.
+    // The region is expected to be in image coordinates.
+    // If the span is not set, all annotations intersecting the region will be painted.
+    void paintAnnotations(QPainter *painter, const QRegion &imageRegion, std::optional<History::ConstSpan> span = std::nullopt) const;
+
+    // Get an image that only uses a part of the history.
+    QImage spanImage(History::ConstSpan span) const;
+
     void addItem(const HistoryItem::shared_ptr &item);
-    void emitRepaintNeededUnlessEmpty(const QRectF &area);
+
+    // Repaint if rect size is more than 0x0 and intersects with the canvas.
+    // Takes a rectangle with document coordinates.
+    // Defaults to Annotations because those are the most common.
+    void setRepaintNeeded(const QRectF &rect, RepaintTypes types = RepaintType::Annotations);
+    // Unconditionally repaint. Defaults to All because that is most common for this function.
+    void setRepaintNeeded(RepaintTypes types = RepaintType::All);
 
     AnnotationTool *m_tool;
     SelectedItemWrapper *m_selectedItemWrapper;
 
+    // The rectangle that contains the document area.
     QRectF m_canvasRect;
-    QImage m_image;
+    // The device pixel ratio for the document's coordinate system.
+    qreal m_imageDpr = 1;
+    // An image size based on the canvas size and device pixel ratio.
+    QSize m_imageSize{0, 0};
+    // The base screenshot image
+    QImage m_baseImage;
+    // An image containing just the annotations.
+    // It is separate so that we don't need to keep repainting the image underneath.
+    QImage m_annotationsImage;
+    // The last types of things to repaint. Used to determine when to emit repaintNeeded.
+    RepaintTypes m_lastRepaintTypes = RepaintType::NoTypes;
+    // Whether a repaint is needed. Used to determine when to repaint or emit repaintNeeded.
+    // TODO: Replace this with a proper region or rectangle for repainting?
+    // That was what I initially planned to do, but I had trouble with clearing regions that were
+    // supposed to be repainted and the actual performance impact of repainting everything vs only
+    // repainting areas that need to be repainted was surprisingly minimal.
+    bool m_repaintNeeded = false;
+
     // A temporary version of the item we want to edit so we can modify at will. This will be used
     // instead of the original item when rendering, but the original item will remain in history
     // until the changes are committed.
@@ -179,8 +220,7 @@ public:
     Q_INVOKABLE bool commitChanges();
 
     // Resets the selected item, temp item and options.
-    // Returns the render area of the reset items.
-    QRectF reset();
+    bool reset();
 
     bool hasSelection() const;
 
@@ -232,3 +272,4 @@ private:
 QDebug operator<<(QDebug debug, const SelectedItemWrapper *);
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::ContinueOptions)
+Q_DECLARE_OPERATORS_FOR_FLAGS(AnnotationDocument::RepaintTypes)

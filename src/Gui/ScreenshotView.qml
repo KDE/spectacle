@@ -14,51 +14,31 @@ import "Annotations"
 EmptyPage {
     id: root
 
-    readonly property real fitZoom: Math.min(flickable.width / annotationEditor.implicitWidth,
-                                             flickable.height / annotationEditor.implicitHeight)
+    readonly property real fitZoom: Math.min(flickable.width / AnnotationDocument.canvasRect.width,
+                                             flickable.height / AnnotationDocument.canvasRect.height)
     readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
-    readonly property real effectiveZoom: annotationEditor.effectiveZoom
+    readonly property real currentZoom: annotationEditor.scale
 
-    // Flickable doesn't work well when making the contentItem smaller than the flickable,
-    // so we have to create custom behavior for resizing content.
-    function resizeContent(w, h, center) {
-        const oldW = annotationEditor.width
-        const oldH = annotationEditor.height
-        annotationEditor.width = w
-        annotationEditor.height = h
+    function zoomToPercent(percent, center = flickable.mapToItem(flickable.contentItem,
+                                                                 flickable.width / 2,
+                                                                 flickable.height / 2)) {
+        const oldW = AnnotationDocument.canvasRect.width * annotationEditor.scale
+        const oldH = AnnotationDocument.canvasRect.height * annotationEditor.scale
+        annotationEditor.scale = Math.max(root.minZoom, Math.min(percent, root.maxZoom))
+        const w = AnnotationDocument.canvasRect.width * annotationEditor.scale
+        const h = AnnotationDocument.canvasRect.height * annotationEditor.scale
 
-        // Setting contentX and contentY can cause jittery movement, especially when animating,
-        // but not using them can cause the content to go out of bounds when zooming out.
-        // Using returnToBounds() will not fix it. You must manually limit the positions.
         if (center.x !== 0) {
             const min = flickable.width - Math.max(w, flickable.contentItem.width)
-            const target = contextWindow.dprRound(flickable.contentItem.x + center.x
-                                                  + (-center.x * w / oldW))
-            flickable.contentItem.x = Math.max(min,
-                                      Math.min(target,
-                                               0)) // max
+            const target = dprRound(flickable.contentItem.x + center.x + (-center.x * w / oldW))
+            flickable.contentX = -Math.max(min, Math.min(target, 0)) // max
         }
         if (center.y !== 0) {
             const min = flickable.height - Math.max(h, flickable.contentItem.height)
-            const target = contextWindow.dprRound(flickable.contentItem.y + center.y
-                                                  + (-center.y * w / oldW))
-            flickable.contentItem.y = Math.max(min,
-                                      Math.min(target,
-                                               0)) // max
+            const target = dprRound(flickable.contentItem.y + center.y + (-center.y * w / oldW))
+            flickable.contentY = -Math.max(min, Math.min(target, 0)) // max
         }
-    }
-
-    function zoomToPercent(percent, centerPos = flickable.mapToItem(flickable.contentItem,
-                                                                    flickable.width / 2,
-                                                                    flickable.height / 2)) {
-        let newWidth = Math.max(annotationEditor.implicitWidth * minZoom, // min
-                       Math.min(annotationEditor.implicitWidth * percent,
-                                annotationEditor.implicitWidth * maxZoom)) // max
-        let newHeight = Math.max(annotationEditor.implicitHeight * minZoom, // min
-                        Math.min(annotationEditor.implicitHeight * percent,
-                                 annotationEditor.implicitHeight * maxZoom)) // max
-        resizeContent(newWidth, newHeight, centerPos)
         flickable.returnToBounds()
     }
 
@@ -66,25 +46,25 @@ EmptyPage {
                                                     flickable.width / 2,
                                                     flickable.height / 2)) {
         let stepSize = 1
-        if (effectiveZoom < 1) {
+        if (currentZoom < 1) {
             stepSize = 0.25
-        } else if (effectiveZoom < 2) {
+        } else if (currentZoom < 2) {
             stepSize = 0.5
         }
-        zoomToPercent(effectiveZoom - (effectiveZoom % stepSize) + stepSize, centerPos)
+        zoomToPercent(currentZoom - (currentZoom % stepSize) + stepSize, centerPos)
     }
 
     function zoomOut(centerPos = flickable.mapToItem(flickable.contentItem,
                                                      flickable.width / 2,
                                                      flickable.height / 2)) {
-        let inverseRemainder = 1 - (effectiveZoom % 1)
+        let inverseRemainder = 1 - (currentZoom % 1)
         let stepSize = 1
-        if (effectiveZoom <= 1) {
+        if (currentZoom <= 1) {
             stepSize = 0.25
-        } else if (effectiveZoom <= 2) {
+        } else if (currentZoom <= 2) {
             stepSize = 0.5
         }
-        zoomToPercent(effectiveZoom + (inverseRemainder % stepSize) - stepSize, centerPos)
+        zoomToPercent(currentZoom + (inverseRemainder % stepSize) - stepSize, centerPos)
     }
 
     leftPadding: mirrored && verticalScrollBar.visible ? verticalScrollBar.width : 0
@@ -99,8 +79,8 @@ EmptyPage {
             && AnnotationDocument.tool.type === AnnotationTool.NoTool
         boundsBehavior: Flickable.StopAtBounds
         rebound: Transition {} // Instant transition. Null doesn't do this.
-        contentWidth: Math.max(width, annotationEditor.width)
-        contentHeight: Math.max(height, annotationEditor.height)
+        contentWidth: Math.max(width, AnnotationDocument.canvasRect.width * annotationEditor.scale)
+        contentHeight: Math.max(height, AnnotationDocument.canvasRect.height * annotationEditor.scale)
 
         Kirigami.WheelHandler {
             property point angleDelta: Qt.point(0,0)
@@ -112,6 +92,8 @@ EmptyPage {
             target: flickable
             keyNavigationEnabled: true
             scrollFlickableTarget: contextWindow.annotating
+            horizontalStepSize: dprRound(Application.styleHints.wheelScrollLines * 20)
+            verticalStepSize: dprRound(Application.styleHints.wheelScrollLines * 20)
             onWheel: wheel => {
                     if (wheel.modifiers & Qt.ControlModifier && scrollFlickableTarget) {
                     // apparently it's impossible to add points to each other directly in QML
@@ -153,6 +135,8 @@ EmptyPage {
         MouseArea {
             z: -1
             anchors.fill: annotationEditor
+            transformOrigin: annotationEditor.transformOrigin
+            scale: annotationEditor.scale
             enabled: !contextWindow.annotating
                 || (flickable.interactive
                     && (flickable.contentItem.width > flickable.width
@@ -167,20 +151,18 @@ EmptyPage {
 
         AnnotationEditor {
             id: annotationEditor
-            readonly property real targetZoom: Math.min(width / implicitWidth,
-                                                        height / implicitHeight)
-            x: contextWindow.dprRound((flickable.contentItem.width - annotationEditor.width) / 2)
-            y: contextWindow.dprRound((flickable.contentItem.height - annotationEditor.height) / 2)
-            implicitWidth: document.canvasSize.width
-            implicitHeight: document.canvasSize.height
+            x: dprRound((flickable.contentItem.width - AnnotationDocument.canvasRect.width * scale) / 2)
+            y: dprRound((flickable.contentItem.height - AnnotationDocument.canvasRect.height * scale) / 2)
+            implicitWidth: AnnotationDocument.canvasRect.width
+            implicitHeight: AnnotationDocument.canvasRect.height
             transformOrigin: Item.TopLeft
-            zoom: Math.min(1, Math.max(root.minZoom, targetZoom))
-            scale: Math.max(1, Math.min(root.maxZoom, targetZoom))
-            antialiasing: false
-            smooth: !contextWindow.annotating || effectiveZoom < 2
-            width: implicitWidth * root.fitZoom
-            height: implicitHeight * root.fitZoom
+            scale: root.fitZoom
             visible: true
+            // Allows smoothly scaling below 2x. Mipmaps help the most and layer smoothing is needed
+            // for scales that aren't `scale / 2^n` where `n` is an integer >= 1.
+            layer.enabled: true
+            layer.mipmap: true
+            layer.smooth: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationTool.NoTool
         }
@@ -193,8 +175,7 @@ EmptyPage {
             when: contextWindow.annotating
             PropertyChanges {
                 target: annotationEditor
-                width: annotationEditor.implicitWidth
-                height: annotationEditor.implicitHeight
+                scale: 1
             }
         },
         State {
@@ -202,15 +183,14 @@ EmptyPage {
             when: !contextWindow.annotating
             PropertyChanges {
                 target: annotationEditor
-                width: annotationEditor.implicitWidth * root.fitZoom
-                height: annotationEditor.implicitHeight * root.fitZoom
+                scale: root.fitZoom
             }
         }
     ]
     transitions: [
         Transition {
             NumberAnimation {
-                properties: "width,height"
+                property: "scale"
                 duration: Kirigami.Units.longDuration
                 easing.type: Easing.InOutSine
             }

@@ -73,7 +73,7 @@ AnimatedLoader {
         SelectionBackground {
             id: outline
             svgPath: root.document.selectedItem.mousePath.svgPath
-            zoom: root.viewport.effectiveZoom
+            zoom: root.viewport.scale
             pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
                                (root.height + effectiveStrokeWidth) / root.height)
             x: -startX - boundingRect.x
@@ -125,8 +125,8 @@ AnimatedLoader {
                 target: null
                 dragThreshold: 0
                 onActiveTranslationChanged: if (active) {
-                    let dx = activeTranslation.x / viewport.effectiveZoom
-                    let dy = activeTranslation.y / viewport.effectiveZoom
+                    let dx = activeTranslation.x / viewport.scale
+                    let dy = activeTranslation.y / viewport.scale
                     root.document.selectedItem.transform(dx, dy, edges)
                 }
                 onActiveChanged: if (!active) {
