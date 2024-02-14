@@ -149,9 +149,9 @@ private:
     // Repaint if rect size is more than 0x0 and intersects with the canvas.
     // Takes a rectangle with document coordinates.
     // Defaults to Annotations because those are the most common.
-    void setRepaintNeeded(const QRectF &rect, RepaintTypes types = RepaintType::Annotations);
+    void setRepaintRegion(const QRectF &rect, RepaintTypes types = RepaintType::Annotations);
     // Unconditionally repaint. Defaults to All because that is most common for this function.
-    void setRepaintNeeded(RepaintTypes types = RepaintType::All);
+    void setRepaintRegion(RepaintTypes types = RepaintType::All);
 
     AnnotationTool *m_tool;
     SelectedItemWrapper *m_selectedItemWrapper;
@@ -169,12 +169,8 @@ private:
     QImage m_annotationsImage;
     // The last types of things to repaint. Used to determine when to emit repaintNeeded.
     RepaintTypes m_lastRepaintTypes = RepaintType::NoTypes;
-    // Whether a repaint is needed. Used to determine when to repaint or emit repaintNeeded.
-    // TODO: Replace this with a proper region or rectangle for repainting?
-    // That was what I initially planned to do, but I had trouble with clearing regions that were
-    // supposed to be repainted and the actual performance impact of repainting everything vs only
-    // repainting areas that need to be repainted was surprisingly minimal.
-    bool m_repaintNeeded = false;
+    // Where a repaint is needed. Used to determine when to repaint or emit repaintNeeded.
+    QRegion m_repaintRegion;
 
     // A temporary version of the item we want to edit so we can modify at will. This will be used
     // instead of the original item when rendering, but the original item will remain in history

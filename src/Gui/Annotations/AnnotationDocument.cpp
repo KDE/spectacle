@@ -22,7 +22,6 @@ QImage defaultImage(const QSize &size, qreal dpr)
 {
     QImage image(size, QImage::Format_ARGB32_Premultiplied);
     image.setDevicePixelRatio(dpr);
-    image.fill(Qt::transparent);
     return image;
 }
 
@@ -85,7 +84,7 @@ void AnnotationDocument::setCanvas(const QRectF &rect, qreal dpr)
         Q_EMIT imageSizeChanged();
     }
     // Unconditionally repaint the whole canvas area
-    setRepaintNeeded();
+    setRepaintRegion();
 }
 
 QSizeF AnnotationDocument::imageSize() const
@@ -151,7 +150,7 @@ void AnnotationDocument::clearAnnotations()
     if (result.redoListChanged) {
         Q_EMIT redoStackDepthChanged();
     }
-    setRepaintNeeded(RepaintType::Annotations);
+    setRepaintRegion(RepaintType::Annotations);
 }
 
 void AnnotationDocument::clear()
@@ -174,9 +173,9 @@ void AnnotationDocument::paintImageView(QPainter *painter, const QImage &image, 
     }
 }
 
-void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &imageRegion, std::optional<History::ConstSpan> span) const
+void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &region, std::optional<History::ConstSpan> span) const
 {
-    if (!painter || imageRegion.isEmpty()) {
+    if (!painter || region.isEmpty()) {
         return;
     }
     const auto &undoList = m_history.undoList();
@@ -196,7 +195,7 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &imag
             continue;
         }
         auto &geometry = std::get<Traits::Geometry::Opt>(renderedItem->traits());
-        if (!imageRegion.intersects(geometry->visualRect.toAlignedRect())) {
+        if (!region.intersects(geometry->visualRect.toAlignedRect())) {
             continue;
         }
 
@@ -269,12 +268,19 @@ QImage AnnotationDocument::annotationsImage()
     if (m_annotationsImage.isNull()) {
         return m_annotationsImage;
     }
-    if (m_repaintNeeded) {
-        m_annotationsImage.fill(0x00000000);
+    if (!m_repaintRegion.isEmpty()) {
         QPainter painter(&m_annotationsImage);
-        paintAnnotations(&painter, m_canvasRect.toAlignedRect());
+        // Set clip region to prevent over-painting shadows or semi-transparent annotations near the region.
+        painter.setClipRegion(m_repaintRegion);
+        // Clear mode is needed to actually clear the region.
+        painter.setCompositionMode(QPainter::CompositionMode_Clear);
+        // The painter is clipped to the region, so we can just use eraseRect.
+        painter.eraseRect(m_repaintRegion.boundingRect());
+        // Restore default composition mode.
+        painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+        paintAnnotations(&painter, m_repaintRegion);
         painter.end();
-        m_repaintNeeded = false;
+        m_repaintRegion = {};
     }
     return m_annotationsImage;
 }
@@ -313,7 +319,7 @@ HistoryItem::shared_ptr AnnotationDocument::popCurrentItem()
             deselectItem();
         }
         Q_EMIT undoStackDepthChanged();
-        setRepaintNeeded(result.item->renderRect());
+        setRepaintRegion(result.item->renderRect());
     }
     if (result.redoListChanged) {
         Q_EMIT redoStackDepthChanged();
@@ -362,9 +368,9 @@ void AnnotationDocument::undo()
 
     auto currentItem = m_history.currentItem();
     auto prevItem = undoCount > 1 ? m_history.undoList()[undoCount - 2] : nullptr;
-    setRepaintNeeded(currentItem->renderRect());
+    setRepaintRegion(currentItem->renderRect());
     if (prevItem) {
-        setRepaintNeeded(prevItem->renderRect());
+        setRepaintRegion(prevItem->renderRect());
     }
     if (auto text = std::get<Traits::Text::Opt>(currentItem->traits())) {
         if (text->index() == Traits::Text::Number) {
@@ -392,9 +398,9 @@ void AnnotationDocument::redo()
 
     auto currentItem = m_history.currentItem();
     auto nextItem = *m_history.redoList().crbegin();
-    setRepaintNeeded(nextItem->renderRect());
+    setRepaintRegion(nextItem->renderRect());
     if (currentItem) {
-        setRepaintNeeded(currentItem->renderRect());
+        setRepaintRegion(currentItem->renderRect());
     }
     if (auto text = std::get<Traits::Text::Opt>(nextItem->traits())) {
         if (text->index() == Traits::Text::Number) {
@@ -429,7 +435,7 @@ void AnnotationDocument::beginItem(const QPointF &point)
     if (!isCurrentItemValid()) {
         auto result = m_history.pop();
         if (result.item) {
-            setRepaintNeeded(result.item->renderRect());
+            setRepaintRegion(result.item->renderRect());
         }
     }
 
@@ -482,7 +488,7 @@ void AnnotationDocument::beginItem(const QPointF &point)
     Traits::initOptTuple(temp.traits());
 
     auto newItem = std::make_shared<HistoryItem>(std::move(temp));
-    setRepaintNeeded(newItem->renderRect());
+    setRepaintRegion(newItem->renderRect());
     addItem(newItem);
     m_selectedItemWrapper->setSelectedItem(newItem);
 }
@@ -496,7 +502,7 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
         return;
     }
 
-    setRepaintNeeded(item->renderRect());
+    setRepaintRegion(item->renderRect());
     auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
     auto &path = geometry->path;
     switch (m_tool->type()) {
@@ -601,7 +607,7 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
         m_selectedItemWrapper->reset();
         m_selectedItemWrapper->setSelectedItem(currentItem);
     }
-    setRepaintNeeded(item->renderRect());
+    setRepaintRegion(item->renderRect());
 }
 
 void AnnotationDocument::finishItem()
@@ -643,7 +649,7 @@ void AnnotationDocument::deleteSelectedItem()
     HistoryItem::setItemRelations(selectedItem, newItem);
     addItem(newItem);
     deselectItem();
-    setRepaintNeeded(selectedItem->renderRect());
+    setRepaintRegion(selectedItem->renderRect());
 }
 
 void AnnotationDocument::addItem(const HistoryItem::shared_ptr &item)
@@ -657,7 +663,7 @@ void AnnotationDocument::addItem(const HistoryItem::shared_ptr &item)
     }
 }
 
-void AnnotationDocument::setRepaintNeeded(const QRectF &rect, RepaintTypes types)
+void AnnotationDocument::setRepaintRegion(const QRectF &rect, RepaintTypes types)
 {
     if (rect.isNull()) {
         return;
@@ -676,18 +682,18 @@ void AnnotationDocument::setRepaintNeeded(const QRectF &rect, RepaintTypes types
         // No point in trying to transform or add to the region if true.
         return;
     }
-    const bool emitRepaintNeeded = !m_repaintNeeded || m_lastRepaintTypes != types;
-    m_repaintNeeded = true;
+    const bool emitRepaintNeeded = m_repaintRegion.isEmpty() || m_lastRepaintTypes != types;
+    m_repaintRegion += rect.normalized().toAlignedRect();
     m_lastRepaintTypes = types;
     if (emitRepaintNeeded) {
         Q_EMIT repaintNeeded(m_lastRepaintTypes);
     }
 }
 
-void AnnotationDocument::setRepaintNeeded(RepaintTypes types)
+void AnnotationDocument::setRepaintRegion(RepaintTypes types)
 {
-    const bool emitRepaintNeeded = !m_repaintNeeded || m_lastRepaintTypes != types;
-    m_repaintNeeded = true;
+    const bool emitRepaintNeeded = m_repaintRegion.isEmpty() || m_lastRepaintTypes != types;
+    m_repaintRegion = m_canvasRect.toAlignedRect();
     m_lastRepaintTypes = types;
     if (emitRepaintNeeded) {
         Q_EMIT repaintNeeded(m_lastRepaintTypes);
@@ -752,7 +758,7 @@ void SelectedItemWrapper::transform(qreal dx, qreal dy, Qt::Edges edges)
     if (!selectedItem || !temp || (qFuzzyIsNull(dx) && qFuzzyIsNull(dy))) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     auto &oldPath = std::get<Traits::Geometry::Opt>(selectedItem->traits())->path;
     auto &path = std::get<Traits::Geometry::Opt>(temp->traits())->path;
     if (edges.toInt() == 0 //
@@ -780,7 +786,7 @@ void SelectedItemWrapper::transform(qreal dx, qreal dy, Qt::Edges edges)
         path = transform.map(oldPath);
         Traits::reInitTraits(temp->traits());
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT mousePathChanged();
 }
 
@@ -816,10 +822,10 @@ bool SelectedItemWrapper::reset()
     auto selectedItem = m_selectedItem.lock();
     if (selectedItem) {
         selectionChanged = true;
-        m_document->setRepaintNeeded(selectedItem->renderRect());
+        m_document->setRepaintRegion(selectedItem->renderRect());
     }
     if (temp) {
-        m_document->setRepaintNeeded(temp->renderRect());
+        m_document->setRepaintRegion(temp->renderRect());
     }
     temp.reset();
     m_selectedItem.reset();
@@ -859,10 +865,10 @@ void SelectedItemWrapper::setStrokeWidth(int width)
     if (stroke->pen.widthF() == width) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     stroke->pen.setWidthF(width);
     Traits::reInitTraits(temp->traits());
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT strokeWidthChanged();
     Q_EMIT mousePathChanged();
 }
@@ -889,7 +895,7 @@ void SelectedItemWrapper::setStrokeColor(const QColor &color)
     }
     stroke->pen.setColor(color);
     Q_EMIT strokeColorChanged();
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
 }
 
 QColor SelectedItemWrapper::fillColor() const
@@ -916,7 +922,7 @@ void SelectedItemWrapper::setFillColor(const QColor &color)
     }
     brush = color;
     Q_EMIT fillColorChanged();
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
 }
 
 QFont SelectedItemWrapper::font() const
@@ -939,10 +945,10 @@ void SelectedItemWrapper::setFont(const QFont &font)
     if (text->font == font) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     text->font = font;
     Traits::reInitTraits(temp->traits());
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT fontChanged();
     Q_EMIT mousePathChanged();
 }
@@ -969,7 +975,7 @@ void SelectedItemWrapper::setFontColor(const QColor &color)
     }
     text->brush = color;
     Q_EMIT fontColorChanged();
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
 }
 
 int SelectedItemWrapper::number() const
@@ -994,10 +1000,10 @@ void SelectedItemWrapper::setNumber(int number)
     if (!oldNumber || *oldNumber == number) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     text.value().emplace<Traits::Text::Number>(number);
     Traits::reInitTraits(temp->traits());
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT numberChanged();
     Q_EMIT mousePathChanged();
 }
@@ -1024,10 +1030,10 @@ void SelectedItemWrapper::setText(const QString &string)
     if (!oldString || *oldString == string) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     text.value().emplace<Traits::Text::String>(string);
     Traits::reInitTraits(temp->traits());
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT textChanged();
     Q_EMIT mousePathChanged();
 }
@@ -1052,10 +1058,10 @@ void SelectedItemWrapper::setShadow(bool enabled)
     if (shadow->enabled == enabled) {
         return;
     }
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     shadow->enabled = enabled;
     Traits::reInitTraits(temp->traits());
-    m_document->setRepaintNeeded(temp->renderRect());
+    m_document->setRepaintRegion(temp->renderRect());
     Q_EMIT shadowChanged();
 }
 
