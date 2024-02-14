@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2024-01-11 21:55+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -197,12 +197,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Отваряне и редактиране на съществуващ файл със снимка на екрана"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter не може да запише изображение: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,12 +212,12 @@ msgstr ""
 "Не може да се запази екранната снимка, защото създаването на директорията е "
 "неуспешно:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не може да се запази екранната снимка. Грешка при запис на файла."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -227,32 +227,32 @@ msgstr ""
 "Не може да се запази екранната снимка, защото създаването на отдалечената "
 "директория е неуспешно:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не може да се запази екранната снимка. Грешка при записването на временен "
 "локален файл."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Невъзможно е да се запази изображението. Не може да се качи файл на "
 "отдалечено място."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Не може да се запази екранната снимка. Името на записания файл е невалидно."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Не може да се запази празна снимка на екрана."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -261,7 +261,7 @@ msgstr ""
 "Не успя да експортира видео: URL адресът на временния файл трябва да е "
 "съществуващ локален файл"
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -270,7 +270,7 @@ msgstr ""
 "Не успя да експортира видео: URL адресът на изходния файл трябва да е "
 "валиден URL адрес с име на файл"
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -278,7 +278,7 @@ msgstr ""
 "Невъзможно е да се запази видеозаписът. Не може да се премести файла в "
 "местоположение: %1"
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Отпечатването е неуспешно. Принтерът не успя да се инициализира."
@@ -671,7 +671,7 @@ msgstr "Заснемане при кликване"
 msgid "No Delay"
 msgstr "Без изчакване"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -680,12 +680,12 @@ msgstr ""
 "Записване на видео\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Изпълнение"
@@ -940,13 +940,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Предварителен преглед:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -955,18 +955,18 @@ msgstr ""
 "Можете да използвате следните заместители в името на файла, които ще бъдат "
 "заменени с действителен текст, когато файлът бъде запазен:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "За запазване в подпапка"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr "Показване на по-малко"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

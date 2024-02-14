@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2023-12-31 12:50+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -189,12 +189,12 @@ msgstr "In achtergrondmodus, schaduwen niet meenemen in de schermafdruk"
 msgid "Open and edit existing screenshot file"
 msgstr "Bestaand schermafdrukbestand openen en bewerken"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan geen afbeelding wegschrijven: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -204,12 +204,12 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map is mislukt:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan schermafdruk niet opslaan. Fout bij schrijven van bestand."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -219,32 +219,32 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map op afstand is "
 "mislukt:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kan schermafdruk niet opslaan. Fout bij schrijven van tijdelijk lokaal "
 "bestand."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Afbeelding opslaan lukt niet. Bestand kon niet worden opgestuurd naar "
 "externe locatie."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Kan schermafdruk niet opslaan. De bestandsnaam voor opslaan is ongeldig."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan geen lege schermafdruk opslaan."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Video exporteren is mislukt: URL van tijdelijk bestand moet een bestaand "
 "lokaal bestand zijn"
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Video exporteren is mislukt: URL van uitvoerbestand moet een geldige URL "
 "zijn met een bestandsnaam"
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Opname opslaan lukt niet. Kon het bestand niet verplaatsen naar locatie: %1"
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Afdrukken is mislukt. Initialiseren van de printer is mislukt"
@@ -661,7 +661,7 @@ msgstr "Opname bij klik"
 msgid "No Delay"
 msgstr "Geen vertraging"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -670,12 +670,12 @@ msgstr ""
 "Opnemen bezig:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Pauzeren"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Afspelen"
@@ -930,13 +930,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Voorbeeld:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -945,18 +945,18 @@ msgstr ""
 "U kunt de volgende plaatshouders in de bestandsnaam gebruiken, die vervangen "
 "zullen worden door actuele tekst wanneer het bestand wordt opgeslagen:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Om op te slaan naar een submap"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr "Minder tonen"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

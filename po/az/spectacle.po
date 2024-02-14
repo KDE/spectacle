@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2022-07-06 09:32+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -190,12 +190,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Mövcud ekran şəkli faylını açın və ona düzəliş edin"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter şəkili qeyd edə bilmir: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,12 +205,12 @@ msgstr ""
 "Ekran şəklini saxlamaq mümkün olmadı, çünki qovluq yaradıla bilmədi:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekran şəklini saxlamaq mümkün olmadı. Fayl yazılan zaman xəta oldu."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -220,44 +220,44 @@ msgstr ""
 "Ekran şəklini saxlamaq mümkün olmadı, çünki, uzaq qovluq yaradıla bilmədi:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ekran şəklini saxlamaq mümkün olmadı. Müvəqqəti yerli fayl yazılarkən xəta "
 "baş verdi."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Şəkli saxlamaq mümkün olmadı. Şəkili uzaq saxlama yerinə yükləmək alınmadı."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Şəkil saxlanıla bilmədi. SAxlanılacaq fayl adı səhvdir."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Boş ekran-şəkli faylını saxlamaq mükün deyil."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -265,7 +265,7 @@ msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Şəkli saxlamaq mümkün olmadı. Şəkili uzaq saxlama yerinə yükləmək alınmadı."
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Çap etmək alınmadı. Printer başladıla bilmədi."
@@ -678,7 +678,7 @@ msgstr "Kliklədikdə"
 msgid "No Delay"
 msgstr "Gecikməsiz"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid ""
@@ -686,12 +686,12 @@ msgid ""
 "%1"
 msgstr "Ekranı videoya yazmaq"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr ""
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr ""
@@ -952,7 +952,7 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Öncədən baxış:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "<filename>%1.%2</filename>"
@@ -960,7 +960,7 @@ msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1.%2</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, fuzzy, kde-format
 #| msgid ""
 #| "You can use the following placeholders in the filename, which will be "
@@ -972,18 +972,18 @@ msgstr ""
 "Siz fayl adında aşağıdakı tamamlayıcılardan istifadə edə bilərsiniz, hansı "
 "ki, fayl saxlanıldıqda aktual mətn ilə əvəz olunacaq: <blockquote>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Alt-qovluqda saxlamaq"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

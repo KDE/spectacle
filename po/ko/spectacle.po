@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2024-02-05 23:01+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -179,12 +179,12 @@ msgstr "배경 모드에서 스크린샷에 그림자 포함 안 함"
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter에서 그림을 작성할 수 없음: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -194,12 +194,12 @@ msgstr ""
 "디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "스크린샷을 저장할 수 없습니다. 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -209,34 +209,34 @@ msgstr ""
 "원격 디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "스크린샷을 저장할 수 없습니다. 임시 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되었습니다."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "동영상을 내보낼 수 없음: 임시 파일 URL은 존재하는 로컬 파일이어야 함"
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,13 +245,13 @@ msgstr ""
 "동영상을 내보낼 수 없음: 출력 파일 URL은 파일 이름을 포함하는 올바른 URL이어"
 "야 함"
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "녹화를 저장할 수 없습니다. 파일을 위치로 이동할 수 없음: %1"
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
@@ -632,7 +632,7 @@ msgstr "클릭할 때 캡처"
 msgid "No Delay"
 msgstr "지연 없음"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -641,12 +641,12 @@ msgstr ""
 "녹화 중:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "일시 정지"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "재생"
@@ -897,13 +897,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "미리 보기:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -912,18 +912,18 @@ msgstr ""
 "파일 이름에 다음 자리 비움자를 사용할 수 있으며 실제 파일을 저장할 때 대체됩"
 "니다:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "하위 폴더에 저장할 때"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr "덜 보기"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

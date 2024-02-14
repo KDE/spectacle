@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2024-01-01 10:04+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -191,12 +191,12 @@ msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,12 +206,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,30 +221,30 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
@@ -657,7 +657,7 @@ msgstr "Atzeman klik egitean"
 msgid "No Delay"
 msgstr "Atzerapenik ez"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -666,12 +666,12 @@ msgstr ""
 "Grabatzen:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Eten"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Jo"
@@ -925,13 +925,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Aurreikuspegi:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -940,18 +940,18 @@ msgstr ""
 "Ondoko leku-markak erabil ditzakezu fitxategi-izenean, fitxategia gordetzen "
 "denean testuarekin ordeztuko direlarik:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Gorde azpi-karpeta batean"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr "Erakutsi gutxiago"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"

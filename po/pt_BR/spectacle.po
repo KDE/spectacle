@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-13 02:27+0000\n"
+"POT-Creation-Date: 2024-02-14 02:27+0000\n"
 "PO-Revision-Date: 2023-10-26 15:19-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -187,12 +187,12 @@ msgstr "No modo em segundo plano, excluir as sombras da imagem"
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir e editar o arquivo da imagem existente"
 
-#: src/ExportManager.cpp:352
+#: src/ExportManager.cpp:357
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "O QImageWriter não pode salvar a imagem:  %1"
 
-#: src/ExportManager.cpp:367
+#: src/ExportManager.cpp:372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -202,12 +202,12 @@ msgstr ""
 "Não foi possível salvar a imagem pois falhou a criação da pasta:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:377
+#: src/ExportManager.cpp:382
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Não é possível salvar a imagem. Ocorreu um erro ao salvar o arquivo."
 
-#: src/ExportManager.cpp:397
+#: src/ExportManager.cpp:402
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -217,45 +217,45 @@ msgstr ""
 "Não foi possível salvar a imagem pois falhou a criação da pasta remota:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:408 src/ExportManager.cpp:456
+#: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Não é possível salvar a imagem. Ocorreu um erro ao salvar o arquivo "
 "temporário local."
 
-#: src/ExportManager.cpp:416
+#: src/ExportManager.cpp:421
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Não é possível salvar a imagem, porque o arquivo não pôde ser enviado para "
 "uma localização remota."
 
-#: src/ExportManager.cpp:463
+#: src/ExportManager.cpp:468
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Não é possível salvar a imagem. O nome do arquivo é inválido."
 
-#: src/ExportManager.cpp:507
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Não é possível salvar uma captura de imagem vazia."
 
-#: src/ExportManager.cpp:623
+#: src/ExportManager.cpp:628
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:630
+#: src/ExportManager.cpp:635
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:705
+#: src/ExportManager.cpp:710
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
@@ -264,7 +264,7 @@ msgstr ""
 "Não é possível salvar a imagem, porque o arquivo não pôde ser enviado para "
 "uma localização remota."
 
-#: src/ExportManager.cpp:733
+#: src/ExportManager.cpp:738
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Falha na impressão. Não foi possível inicializar a impressora."
@@ -656,7 +656,7 @@ msgstr "Capturar ao clicar"
 msgid "No Delay"
 msgstr "Sem atraso"
 
-#: src/Gui/RecordingView.qml:46
+#: src/Gui/RecordingView.qml:51
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -665,12 +665,12 @@ msgstr ""
 "Gravando:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Pause"
 msgstr "Pausar"
 
-#: src/Gui/RecordingView.qml:77
+#: src/Gui/RecordingView.qml:82
 #, kde-format
 msgid "Play"
 msgstr "Reproduzir"
@@ -928,13 +928,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Visualização:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:33
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:64
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, fuzzy, kde-format
 #| msgid ""
 #| "You can use the following placeholders in the filename, which will be "
@@ -946,18 +946,18 @@ msgstr ""
 "Você pode usar os seguintes substitutos no nome do arquivo, que serão "
 "substituídos pelo texto real quando o arquivo for salvo:<blockquote>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:79
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Para salvar em uma subpasta"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:82
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:84
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
