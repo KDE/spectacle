@@ -158,11 +158,6 @@ EmptyPage {
             transformOrigin: Item.TopLeft
             scale: root.fitZoom
             visible: true
-            // Allows smoothly scaling below 2x. Mipmaps help the most and layer smoothing is needed
-            // for scales that aren't `scale / 2^n` where `n` is an integer >= 1.
-            layer.enabled: true
-            layer.mipmap: true
-            layer.smooth: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationTool.NoTool
         }

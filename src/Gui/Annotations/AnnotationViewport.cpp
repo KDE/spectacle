@@ -430,6 +430,10 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
                                             window->createImageNode());
         node->baseImageNode()->setFiltering(QSGTexture::Linear);
         node->annotationsNode()->setFiltering(QSGTexture::Linear);
+        // Setting the mipmap filter type also enables mipmaps.
+        // Super useful for scaling down smoothly.
+        node->baseImageNode()->setMipmapFiltering(QSGTexture::Linear);
+        node->annotationsNode()->setMipmapFiltering(QSGTexture::Linear);
     }
 
     auto baseImageNode = node->baseImageNode();
