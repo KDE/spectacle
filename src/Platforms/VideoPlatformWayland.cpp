@@ -308,9 +308,15 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
         QVariant option;
         if (recordingMode == Screen) {
             QPoint pos = QCursor::pos();
-            // if (pos.isNull()) {
-            //     pos = {data[u"x"_s].toInt(), data[u"y"_s].toInt()};
-            // }
+            // BUG: https://bugs.kde.org/show_bug.cgi?id=480599
+            // On wayland, you can't always get the cursor position from QCursor::pos().
+            // However, using selected window geometry can sometimes select the wrong screen if the
+            // window is between screens. We'll need to come up with a better solution someday.
+            if (pos.isNull()) {
+                pos = {
+                    data[u"x"_s].toInt() + data[u"width"_s].toInt() / 2,
+                    data[u"y"_s].toInt() + data[u"height"_s].toInt() / 2};
+            }
             const auto &screens = qGuiApp->screens();
             QScreen *screen = nullptr;
             for (auto s : screens) {
