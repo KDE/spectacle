@@ -289,7 +289,7 @@ void AnnotationViewport::hoverLeaveEvent(QHoverEvent *event)
 
 void AnnotationViewport::mousePressEvent(QMouseEvent *event)
 {
-    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons()) {
+    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons() || event->buttons() == Qt::NoButton) {
         QQuickItem::mousePressEvent(event);
         return;
     }
@@ -319,7 +319,7 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
 
 void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
 {
-    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons()) {
+    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons() || event->buttons() == Qt::NoButton) {
         QQuickItem::mouseMoveEvent(event);
         return;
     }
@@ -351,7 +351,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
 
 void AnnotationViewport::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons()) {
+    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons() || event->buttons() == Qt::NoButton) {
         QQuickItem::mouseReleaseEvent(event);
         return;
     }
