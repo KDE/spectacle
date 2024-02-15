@@ -38,10 +38,11 @@ FocusScope {
         id: mediaPlayer
         source: SpectacleCore.currentVideo
         videoOutput: videoOutput
-        loops: MediaPlayer.Infinite
         onHasVideoChanged: if (hasVideo) {
-            play();
             pause();
+        }
+        onPlaybackStateChanged: if (playbackState === MediaPlayer.StoppedState) {
+            pause()
         }
     }
 
