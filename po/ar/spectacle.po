@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-14 00:37+0000\n"
-"PO-Revision-Date: 2024-02-10 22:08+0400\n"
+"POT-Creation-Date: 2024-02-16 00:37+0000\n"
+"PO-Revision-Date: 2024-02-15 19:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -166,10 +166,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "في وضع الخلفيّة، استبعد زخرفة النافذة من اللقطة"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "في وضع الخلفيّة، استبعد زخرفة النافذة من اللقطة"
+msgstr "في وضع الخلفيّة، استبعد ظلال النافذة من اللقطة"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -240,11 +239,10 @@ msgid ""
 msgstr ""
 
 #: src/ExportManager.cpp:741
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "تعذّر حفظ الصّورة بسبب تعذّر رفعها إلى المكان البعيد."
+msgstr "تعذّر حفظ الصّورة بسبب تعذّر  نقل الملف إلى المكان: %1"
 
 #: src/ExportManager.cpp:769
 #, kde-format
@@ -445,10 +443,9 @@ msgid ""
 msgstr "أظهر شريط عنوان النّافذة والحدود عند أخذ لقطة لنافذة."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "ضمّن شريط عنوان النّافذة وحدودها"
+msgstr "ضمّن ظل النّافذة"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, fuzzy, kde-format
@@ -521,13 +518,10 @@ msgstr[4] "%2 ثانية"
 msgstr[5] "%2 ثانية"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "ثانية"
+msgstr "%1 ثانية"
 
 #: src/Gui/DialogPage.qml:102
 #, kde-format
@@ -580,18 +574,16 @@ msgid "Image Zoom"
 msgstr "تكبير الصورة"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "نُسخت اللقطة إلى الحافظة."
+msgstr "نُسخ موقع الفيديو إلى الحافظة."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "نُسخت اللقطة إلى الحافظة."
+msgstr "نُسخ موقع لقطة الشاشة إلى الحافظة."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -658,7 +650,7 @@ msgstr "أظهر شريط عنوان النّافذة، أزرار صغّر/كب
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "أظهر ظل النّافذة"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -687,14 +679,14 @@ msgstr "بدون تأخير"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "عثر على رمز الاستجابة السريعة: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "عثر على رمز QR بمحتوى ثنائي."
 
-#: src/Gui/RecordingView.qml:51
+#: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -703,12 +695,12 @@ msgstr ""
 "يسجّل:\n"
 "‏%1"
 
-#: src/Gui/RecordingView.qml:82
+#: src/Gui/RecordingView.qml:83
 #, kde-format
 msgid "Pause"
 msgstr "ألبث"
 
-#: src/Gui/RecordingView.qml:82
+#: src/Gui/RecordingView.qml:83
 #, kde-format
 msgid "Play"
 msgstr "شغّل"
@@ -1674,13 +1666,13 @@ msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "فشل في تحديد نافذة: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:323
+#: src/Platforms/VideoPlatformWayland.cpp:329
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:330
+#: src/Platforms/VideoPlatformWayland.cpp:336
 #, fuzzy, kde-format
 #| msgid "Failed to select window"
 msgctxt "@info:shell"
