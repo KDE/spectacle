@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-16 00:37+0000\n"
-"PO-Revision-Date: 2023-12-10 11:33+0530\n"
+"PO-Revision-Date: 2024-02-18 16:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -513,21 +513,15 @@ msgid "No Delay"
 msgstr "தாமதிக்க வேண்டாம்"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 நொடி"
-msgstr[1] "%1 நொடிகள்"
+msgstr[0] "%2 நொடி"
+msgstr[1] "%2 நொடி"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 நொடி"
@@ -692,12 +686,12 @@ msgstr "தாமதிக்க வேண்டாம்"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR குறி கண்டறியப்பட்டது: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
 
 #: src/Gui/RecordingView.qml:52
 #, kde-format
@@ -975,16 +969,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "கோப்புப்பெயரில் கீழ்காணும் கொள்ளிடங்களை நீங்கள் பயன்படுத்தலாம், கோப்பு சேமிக்கப்படும்போது "
-"அவற்றிற்கேற்ற மதிப்புகளை அவை பெறும்:<blockquote>"
+"அவற்றிற்கேற்ற மதிப்புகளை அவை பெறும்:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
@@ -995,13 +986,13 @@ msgstr "சார் அடைவில் சேமிக்க"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "சிலவற்றையே காட்டு"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "இன்னும் காட்டு"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1318,10 +1309,9 @@ msgstr "நீள்வட்ட குறிப்புக்கருவி�
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "செவ்வக குறிப்புக்கருவிக்கான கோட்டின் நிறம்"
+msgstr "எண் குறிப்புக்கருவிக்கான நிரப்பல் நிறம்"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
