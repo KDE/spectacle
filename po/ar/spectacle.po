@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-16 00:37+0000\n"
-"PO-Revision-Date: 2024-02-15 19:01+0400\n"
+"PO-Revision-Date: 2024-02-22 13:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -96,6 +96,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"سجل الشاشة باستخدام الوضع المحدد. الأوضاع:\n"
+"-r، المنطقة\n"
+"-s، الشاشة\n"
+"-w، النافذة"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -230,6 +234,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"فشل تصدير الفيديو: يجب أن يكون عنوان الرابط للملف المؤقت ملفًا محليًا موجودًا"
 
 #: src/ExportManager.cpp:666
 #, kde-format
@@ -237,6 +242,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"فشل تصدير الفيديو: يجب أن يكون عنوان الرابط لملف الإخراج عنوان رابط صالحًا "
+"يحوي اسم ملف"
 
 #: src/ExportManager.cpp:741
 #, kde-format
@@ -258,16 +265,16 @@ msgstr "الحدّ:"
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
 #: src/Gui/AnnotationOptionsToolBarContents.qml:92
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
 msgstr[0] " بكسل"
-msgstr[1] " بكسل"
-msgstr[2] " بكسل"
-msgstr[3] " بكسل"
-msgstr[4] " بكسل"
-msgstr[5] " بكسل"
+msgstr[1] "بكسل واحد"
+msgstr[2] "بكسلان"
+msgstr[3] "%1بكسل"
+msgstr[4] "%1بكسلاً"
+msgstr[5] "%1بكسل"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:97
 #, kde-format
@@ -295,28 +302,28 @@ msgid "Font:"
 msgstr "الخط:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:224
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] "نقطة"
-msgstr[1] "Pts"
-msgstr[2] "Pts"
-msgstr[3] "Pts"
-msgstr[4] "Pts"
-msgstr[5] "Pts"
+msgstr[0] "%2 %3"
+msgstr[1] "%2 %3 نقطة"
+msgstr[2] "%2 %3 نقطتان"
+msgstr[3] "%2 %3 %1نقاط"
+msgstr[4] "%2 %3 %1نقطة"
+msgstr[5] "%2 %3 %1نقطة"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:225
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] "نقطة"
-msgstr[1] "Pts"
-msgstr[2] "Pts"
-msgstr[3] "Pts"
-msgstr[4] "Pts"
-msgstr[5] "Pts"
+msgstr[0] "%2 %1نقطة"
+msgstr[1] "%1 نقطة"
+msgstr[2] "%1 نقطتين"
+msgstr[3] "%2 %1نقاط"
+msgstr[4] "%2 %1نقطة"
+msgstr[5] "%2 %1نقطة"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:237
 #, kde-format
@@ -448,11 +455,9 @@ msgid "Include window shadow"
 msgstr "ضمّن ظل النّافذة"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "أظهر شريط عنوان النّافذة والحدود عند أخذ لقطة لنافذة."
+msgstr "أظهر ظل النافذة عند التقاط لقطة شاشة لنافذة."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -727,14 +732,11 @@ msgid ""
 msgstr "نسخت الصورة إلى الحافظة وحُفظت ك‍<a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
-msgstr "حفظت اللقطة كـ <a href=\"%1\">%2</a> ونُسخت إلى الحافظة."
+msgstr "حفظت الفيديو كـ <a href=\"%1\">%2</a> ونُسخت إلى الحافظة."
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -952,12 +954,10 @@ msgid "Preview:"
 msgstr "معاينة:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
 #, kde-format
@@ -1001,7 +1001,7 @@ msgstr "حفظ الصورة"
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "حفظ الفيديو"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1092,10 +1092,9 @@ msgstr "ما إذا كان سيظهر مؤشّر الفأرة في اللقطة"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "ما إذا كان سيظهر مؤشّر الفأرة في اللقطة"
+msgstr "ما إذا كان سيظهر مؤشّر الفأرة في الفيديو"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1105,10 +1104,9 @@ msgstr "ما إذا كان سيظهر زخرفة النافذة في اللقط�
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "ما إذا كان سيظهر زخرفة النافذة في اللقطة"
+msgstr "ما إذا كان سيظهر ظل النافذة في اللقطة"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1156,10 +1154,9 @@ msgstr "تنسيق حفظ الصورة المبدئي"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "اسم الملف المبدئي عند الحفظ"
+msgstr "قالب اسم الملف المستخدم عند حفظ لقطات الشاشة"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1185,24 +1182,21 @@ msgstr "أخر مسار مستعمل في إجراء \"احفظ كـ\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "تنسيق حفظ الصورة المبدئي"
+msgstr "تنسيق الفيديو المبدئي"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "اسم الملف المبدئي عند الحفظ"
+msgstr "قالب اسم الملف المستخدم عند حفظ التسجيلات الرقمية للشاشة"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "لقطة شاشة"
+msgstr "فيديوهات شاشة"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
@@ -1302,10 +1296,9 @@ msgstr "لون الملء لأداة البيضاوي"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "لون الملء لأداة المستطيل"
+msgstr "لون الملء لأداة الأرقام"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
@@ -1388,15 +1381,12 @@ msgid "Image shared"
 msgstr "شوركت الصورة"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "رابط الصورة المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
+msgstr "رابط الفيديو المشارك بها (<a href=\"%1\">%1</a>) نُسخت إلى الحافظة."
 
 #: src/Gui/SharedMessage.qml:18
 #, kde-format
@@ -1407,11 +1397,10 @@ msgid ""
 msgstr "وصلة الصورة المشاركة بها (<a href=\"%1\">%1</a>) نسخت إلى الحافظة."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "حدثت مشكلة في مشاركة الصّورة: %1"
+msgstr "حدثت مشكلة في مشاركة الفيديو: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
 #, kde-format
@@ -1620,45 +1609,43 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "فشل التسجيل: عنوان الرابط للملف ليس ملفًا محليًا"
 
 #: src/Platforms/VideoPlatformWayland.cpp:233
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "فشل التسجيل: غير قادر على إنشاء المجلد (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:245
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "فشل التسجيل: عنوان الرابط للملف المؤقت ليس ملفًا محليًا (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:256
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "فشل التسجيل: عنوان الرابط لملف الإخراج ليس ملفًا محليًا (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:291
-#, fuzzy, kde-format
-#| msgid "New screen recording"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "تسجيل شاشة جديد"
+msgstr "ألغي تسجيل شاشة"
 
 #: src/Platforms/VideoPlatformWayland.cpp:293
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "ألغي تسجيل النافذة"
 
 #: src/Platforms/VideoPlatformWayland.cpp:299
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "فشل في تحديد نافذة"
+msgstr "فشل في تحديد الشاشة: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:301
 #, kde-format
@@ -1670,14 +1657,13 @@ msgstr "فشل في تحديد نافذة: %1"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "فشل في تحديد الشاشة: لا توجد شاشة تحتوي على موضع مؤشر الفأرة"
 
 #: src/Platforms/VideoPlatformWayland.cpp:336
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "فشل في تحديد نافذة"
+msgstr "فشل في تحديد النافذة: لم يتم العثور على نافذة"
 
 #: src/RecordingModeModel.cpp:28
 #, kde-format
@@ -1754,12 +1740,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"لاقط الشاة يسجل: %1\n"
+"انقر هنا لإنهاء التسجيل"
 
 #: src/SpectacleCore.cpp:618
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 ليس وضعًا صالحًا لـ --record"
 
 #: src/SpectacleCore.cpp:820
 #, kde-format
@@ -1777,12 +1765,12 @@ msgstr "حُفظت اللقطة كـ'%1' في '%2' وحُفظ مسارها إل�
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "حُفظت لقطة شاشة ك‍'%1' إلى مجلّد الصّور."
+msgstr "حُفظت لقطة شاشة ك‍'%1' في مجلّد الصّور."
 
 #: src/SpectacleCore.cpp:879
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "حُفظت لقطة شاشة ك‍'%1' إلى '%2'."
+msgstr "حُفظت لقطة شاشة ك‍'%1' في '%2'."
 
 #: src/SpectacleCore.cpp:883
 #, kde-format
@@ -1790,28 +1778,22 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "حُفظت لقطة شاشة في الحافظة."
 
 #: src/SpectacleCore.cpp:888
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
-msgstr "حُفظت اللقطة كـ'%1' في '%2' وحُفظ مسارها إلى الحافظة."
+msgstr "حُفظ التسجيل كـ'%1' في '%2' وحُفظ مساره إلى الحافظة."
 
 #: src/SpectacleCore.cpp:890
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "حُفظت لقطة شاشة ك‍'%1' إلى مجلّد الصّور."
+msgstr "حُفظ التسجيل ك‍'%1' في مجلّد الصّور."
 
 #: src/SpectacleCore.cpp:892
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "حُفظت لقطة شاشة ك‍'%1' إلى '%2'."
+msgstr "حُفظ التسجيل ك‍'%1' في '%2'."
 
 #: src/SpectacleCore.cpp:903
 #, kde-format
