@@ -10,6 +10,7 @@
 #include <QWidget>
 
 class Ui_VideoSaveOptions;
+class VideoFormatComboBox;
 
 class VideoSaveOptionsPage : public QWidget
 {
@@ -21,6 +22,7 @@ public:
 
 private:
     QScopedPointer<Ui_VideoSaveOptions> m_ui;
+    std::unique_ptr<VideoFormatComboBox> m_videoFormatComboBox;
 
     void updateFilenamePreview();
 };

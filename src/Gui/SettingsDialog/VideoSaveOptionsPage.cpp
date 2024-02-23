@@ -11,6 +11,7 @@
 #include "SpectacleCore.h"
 #include "ExportManager.h"
 #include "SaveOptionsUtils.h"
+#include "VideoFormatComboBox.h"
 #include "VideoFormatModel.h"
 #include "ui_VideoSaveOptions.h"
 
@@ -31,7 +32,11 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
 {
     m_ui->setupUi(this);
 
+    m_ui->preview->setFixedHeight(m_ui->kcfg_videoFilenameTemplate->height());
+
     const auto videoFormatModel = SpectacleCore::instance()->videoFormatModel();
+    m_videoFormatComboBox = std::make_unique<VideoFormatComboBox>(videoFormatModel, this);
+    m_ui->saveLayout->addWidget(m_videoFormatComboBox.get());
 
     // Auto select the correct format if the user types an extension in the filename template.
     connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textEdited, this, [this, videoFormatModel](const QString &text) {
@@ -41,23 +46,13 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
             auto extension = index.data(VideoFormatModel::ExtensionRole).toString();
             if (text.endsWith(u'.' + extension, Qt::CaseInsensitive)) {
                 m_ui->kcfg_videoFilenameTemplate->setText(text.chopped(extension.length() + 1));
-                m_ui->videoFormatComboBox->setCurrentIndex(i);
+                m_videoFormatComboBox->setCurrentIndex(i);
             }
         }
     });
     connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textChanged,
             this, &VideoSaveOptionsPage::updateFilenamePreview);
-
-    m_ui->preview->setFixedHeight(m_ui->kcfg_videoFilenameTemplate->height());
-
-    m_ui->videoFormatComboBox->setModel(videoFormatModel);
-    const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
-    m_ui->videoFormatComboBox->setCurrentIndex(videoFormatModel->indexOfFormat(format));
-    connect(m_ui->videoFormatComboBox, &QComboBox::currentIndexChanged, this, [this] {
-        const auto format = m_ui->videoFormatComboBox->currentData(VideoFormatModel::FormatRole);
-        Settings::setPreferredVideoFormat(format.value<VideoPlatform::Format>());
-    });
-    connect(m_ui->videoFormatComboBox, &QComboBox::currentTextChanged, this, &VideoSaveOptionsPage::updateFilenamePreview);
+    connect(m_videoFormatComboBox.get(), &QComboBox::currentTextChanged, this, &VideoSaveOptionsPage::updateFilenamePreview);
 
     m_ui->captureInstructionLabel->setText(captureInstructions(false));
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &link) {
@@ -75,7 +70,7 @@ VideoSaveOptionsPage::~VideoSaveOptionsPage() = default;
 
 void VideoSaveOptionsPage::updateFilenamePreview()
 {
-    const auto extension = m_ui->videoFormatComboBox->currentData(VideoFormatModel::ExtensionRole).toString();
+    const auto extension = m_videoFormatComboBox->currentData(VideoFormatModel::ExtensionRole).toString();
     const auto templateBasename = m_ui->kcfg_videoFilenameTemplate->text();
     ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension);
 }

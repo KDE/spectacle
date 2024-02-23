@@ -43,6 +43,7 @@ add_executable(spectacle
     Gui/Annotations/QmlPainterPath.cpp
     Gui/Annotations/Traits.cpp
     Gui/SettingsDialog/ImageSaveOptionsPage.cpp
+    Gui/SettingsDialog/VideoFormatComboBox.cpp
     Gui/SettingsDialog/VideoSaveOptionsPage.cpp
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
