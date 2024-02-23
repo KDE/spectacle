@@ -40,6 +40,7 @@ add_executable(spectacle
     Gui/Annotations/EditAction.cpp
     Gui/Annotations/EffectUtils.cpp
     Gui/SettingsDialog/ImageSaveOptionsPage.cpp
+    Gui/SettingsDialog/VideoFormatComboBox.cpp
     Gui/SettingsDialog/VideoSaveOptionsPage.cpp
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
