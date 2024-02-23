@@ -351,7 +351,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
 
 void AnnotationViewport::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (shouldIgnoreInput() || event->buttons() & ~acceptedMouseButtons() || event->buttons() == Qt::NoButton) {
+    if (shouldIgnoreInput() || event->button() & ~acceptedMouseButtons()) {
         QQuickItem::mouseReleaseEvent(event);
         return;
     }
