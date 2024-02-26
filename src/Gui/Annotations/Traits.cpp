@@ -9,6 +9,7 @@
 #include <QUuid>
 
 using namespace Qt::StringLiterals;
+using G = ::Geometry;
 
 // Stroke
 
@@ -79,7 +80,7 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = ::Geometry::rectScaled(rect, backingStoreCache.devicePixelRatio());
+    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
     return imageCopyHelper(backingStoreCache, rect);
 }
 
@@ -114,7 +115,7 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = ::Geometry::rectScaled(rect, backingStoreCache.devicePixelRatio());
+    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
     return imageCopyHelper(backingStoreCache, rect);
 }
 
