@@ -89,7 +89,7 @@ struct Blur {
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
     bool operator==(const Blur &other) const = default;
 
-protected:
+private:
     // Setting as mutable means it can be mutated even when this is const
     // or using a const member function.
     mutable QImage backingStoreCache{};
@@ -108,7 +108,7 @@ struct Pixelate {
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
     bool operator==(const Pixelate &other) const = default;
 
-protected:
+private:
     mutable QImage backingStoreCache{};
 };
 }
