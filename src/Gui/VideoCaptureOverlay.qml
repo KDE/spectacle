@@ -80,10 +80,10 @@ MouseArea {
         visible: !Selection.empty
             && !VideoPlatform.isRecording
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
-        x: Selection.x - border.width - root.viewportRect.x
-        y: Selection.y - border.width - root.viewportRect.y
-        width: Selection.width + border.width * 2
-        height: Selection.height + border.width * 2
+        x: dprFloor(Selection.x - border.width - root.viewportRect.x)
+        y: dprFloor(Selection.y - border.width - root.viewportRect.y)
+        width: dprCeil(Selection.right + border.width - root.viewportRect.x) - x
+        height: dprCeil(Selection.bottom + border.width - root.viewportRect.y) - y
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
@@ -118,50 +118,50 @@ MouseArea {
         SelectionHandle {
             startAngle: 90
             sweepAngle: 270
-            x: SelectionEditor.handlesRect.x
-            y: SelectionEditor.handlesRect.y
+            x: dprFloor(SelectionEditor.handlesRect.x)
+            y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
             startAngle: 90
             sweepAngle: 180
-            x: SelectionEditor.handlesRect.x
-            y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
+            x: dprFloor(SelectionEditor.handlesRect.x)
+            y: dprRound(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2)
         }
         SelectionHandle {
             startAngle: 0
             sweepAngle: 270
-            x: SelectionEditor.handlesRect.x
-            y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
+            x: dprFloor(SelectionEditor.handlesRect.x)
+            y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }
         SelectionHandle {
             startAngle: 180
             sweepAngle: 180
-            x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
-            y: SelectionEditor.handlesRect.y
+            x: dprRound(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2)
+            y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
             startAngle: 0
             sweepAngle: 180
-            x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
-            y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
+            x: dprRound(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2)
+            y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }
         SelectionHandle {
             startAngle: 270
             sweepAngle: 180
-            x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
-            y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
+            x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
+            y: dprRound(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2)
         }
         SelectionHandle {
             startAngle: 180
             sweepAngle: 270
-            x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
-            y: SelectionEditor.handlesRect.y
+            x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
+            y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
             startAngle: 270
             sweepAngle: 270
-            x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
-            y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
+            x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
+            y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }
     }
 
