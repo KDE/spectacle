@@ -104,45 +104,62 @@ MouseArea {
         y: -root.viewportRect.y
         enabled: selectionRectangle.enabled
         visible: !VideoPlatform.isRecording
-        component Handle: Rectangle {
+
+        component SelectionHandle: Handle {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
-            color: selectionRectangle.color
+            shapePath.fillColor: selectionRectangle.border.color
+            shapePath.strokeWidth: 0
             width: Kirigami.Units.gridUnit
             height: width
-            radius: width / 2
         }
 
-        Handle {
+        SelectionHandle {
+            startAngle: 90
+            sweepAngle: 270
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 90
+            sweepAngle: 180
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 0
+            sweepAngle: 270
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 180
+            sweepAngle: 180
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
             y: SelectionEditor.handlesRect.y
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 0
+            sweepAngle: 180
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 270
+            sweepAngle: 180
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 180
+            sweepAngle: 270
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y
         }
-        Handle {
+        SelectionHandle {
+            startAngle: 270
+            sweepAngle: 270
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }
