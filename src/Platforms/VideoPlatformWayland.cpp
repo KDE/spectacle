@@ -176,8 +176,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         break;
     }
     case Region: {
-        auto region = option.toRect();
-        if (region.isEmpty()) {
+        auto rect = option.toRectF();
+        if (rect.isEmpty()) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
         }
@@ -185,11 +185,19 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         const auto screens = qGuiApp->screens();
         // Don't make the resolution larger than it needs to be.
         for (auto screen : screens) {
-            if (screen->geometry().intersects(region)) {
+            if (rect.intersects(screen->geometry())) {
                 scaling = std::max(scaling, screen->devicePixelRatio());
             }
         }
-        stream = m_screencasting->createRegionStream(region, scaling, mode);
+        // Round to pixels that fit within the original rect.
+        // We do this to make it easier to keep the selection outline outside of the recording.
+        int x = std::ceil<int>(rect.x());
+        int y = std::ceil<int>(rect.y());
+        // We calculate size using floor(right) - x and floor(bottom) - y so that the rect doesn't
+        // shift too much. Ensure size is at least 1x1 to keep the final rect valid.
+        int w = std::max<int>(1, std::floor<int>(rect.right()) - x);
+        int h = std::max<int>(1, std::floor<int>(rect.bottom()) - y);
+        stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
         break;
     }
     default: break; // This shouldn't happen

@@ -93,10 +93,10 @@ MouseArea {
         visible: VideoPlatform.isRecording
         strokeWidth: selectionRectangle.border.width
         // We need to be a bit careful about staying out of the recorded area
-        x: dprRound(Math.floor(Selection.x - strokeWidth - root.viewportRect.x))
-        y: dprRound(Math.floor(Selection.y - strokeWidth - root.viewportRect.y))
-        width: dprRound(Math.ceil(Selection.width + strokeWidth * 2))
-        height: dprRound(Math.ceil(Selection.height + strokeWidth * 2))
+        x: dprFloor(Selection.x - strokeWidth - root.viewportRect.x) - 1 / Screen.devicePixelRatio
+        y: dprFloor(Selection.y - strokeWidth - root.viewportRect.y) - 1 / Screen.devicePixelRatio
+        width: dprCeil(Selection.right + strokeWidth - root.viewportRect.x) - x + 2 / Screen.devicePixelRatio
+        height: dprCeil(Selection.bottom + strokeWidth - root.viewportRect.y) - y + 2 / Screen.devicePixelRatio
     }
 
     Item {

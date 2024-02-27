@@ -40,6 +40,16 @@ qreal Geometry::dprRound(qreal value, qreal dpr)
     return std::round(value * dpr) / dpr;
 }
 
+qreal Geometry::dprCeil(qreal value, qreal dpr)
+{
+    return std::ceil(value * dpr) / dpr;
+}
+
+qreal Geometry::dprFloor(qreal value, qreal dpr)
+{
+    return std::floor(value * dpr) / dpr;
+}
+
 qreal Geometry::mapFromPlatformValue(qreal value, qreal dpr)
 {
     if (KWindowSystem::isPlatformX11()) {
