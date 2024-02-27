@@ -141,6 +141,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     window->setLayer(Window::LayerOverlay);
                     auto anchors = Window::Anchors::fromInt(Window::AnchorTop | Window::AnchorBottom | Window::AnchorLeft | Window::AnchorRight);
                     window->setAnchors(anchors);
+                    // -1 means this window should not make way for other surfaces such as panels.
+                    window->setExclusiveZone(-1);
                     window->setKeyboardInteractivity(Window::KeyboardInteractivityNone);
                 }
             }
