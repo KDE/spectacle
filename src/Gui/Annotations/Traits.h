@@ -113,8 +113,7 @@ protected:
 };
 }
 
-using FillVariant = std::variant<QBrush, ImageEffects::Blur, ImageEffects::Pixelate>;
-struct Fill : public FillVariant {
+struct Fill : public std::variant<QBrush, ImageEffects::Blur, ImageEffects::Pixelate> {
     COMMON_TRAIT_DEFS(Fill)
     enum Type : std::size_t { Brush, Blur, Pixelate, NPos = std::variant_npos };
 };
