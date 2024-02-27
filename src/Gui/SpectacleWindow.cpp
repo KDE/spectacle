@@ -154,6 +154,16 @@ qreal SpectacleWindow::dprRound(qreal value) const
     return G::dprRound(value, devicePixelRatio());
 }
 
+qreal SpectacleWindow::dprCeil(qreal value) const
+{
+    return G::dprCeil(value, devicePixelRatio());
+}
+
+qreal SpectacleWindow::dprFloor(qreal value) const
+{
+    return G::dprFloor(value, devicePixelRatio());
+}
+
 QString SpectacleWindow::baseFileName(const QUrl &url) const
 {
     return url.fileName();

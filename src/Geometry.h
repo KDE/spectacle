@@ -50,6 +50,18 @@ public:
     [[nodiscard]] Q_INVOKABLE static qreal dprRound(qreal value, qreal dpr);
 
     /**
+     * This ceils a logical axis value to a value that should be aligned to hardware pixels
+     * if the given device pixel ratio is correct.
+     */
+    [[nodiscard]] Q_INVOKABLE static qreal dprCeil(qreal value, qreal dpr);
+
+    /**
+     * This floors a logical axis value to a value that should be aligned to hardware pixels
+     * if the given device pixel ratio is correct.
+     */
+    [[nodiscard]] Q_INVOKABLE static qreal dprFloor(qreal value, qreal dpr);
+
+    /**
      * This converts an X11 screen axis value to a logical screen axis value.
      * Otherwise, it returns the value as it already was.
      */
