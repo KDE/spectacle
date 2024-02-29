@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-24 02:19+0000\n"
+"POT-Creation-Date: 2024-02-29 02:26+0000\n"
 "PO-Revision-Date: 2024-01-03 12:30+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1509,7 +1509,7 @@ msgctxt "Keyboard action"
 msgid "Escape"
 msgstr "Escape"
 
-#: src/Gui/SpectacleWindow.cpp:163
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1517,7 +1517,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 secunda"
 msgstr[1] "%1 secundas"
 
-#: src/Gui/SpectacleWindow.cpp:166
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1577,49 +1577,49 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Falleva a registrar: URL de file non es un file local"
 
-#: src/Platforms/VideoPlatformWayland.cpp:233
+#: src/Platforms/VideoPlatformWayland.cpp:241
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Falleva a registrar: Incapace a crear dossier (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:245
+#: src/Platforms/VideoPlatformWayland.cpp:253
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Falleva a registrar: URL de file temporanee non es un file local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:256
+#: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Falleva a registrar: URL de file de exito non es un file local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:291
+#: src/Platforms/VideoPlatformWayland.cpp:299
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Registration de Schermo Cancellate"
 
-#: src/Platforms/VideoPlatformWayland.cpp:293
+#: src/Platforms/VideoPlatformWayland.cpp:301
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Registration de fenestra camcellate"
 
-#: src/Platforms/VideoPlatformWayland.cpp:299
+#: src/Platforms/VideoPlatformWayland.cpp:307
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Falleva a seliger  schermo: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:301
+#: src/Platforms/VideoPlatformWayland.cpp:309
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Falleva a seliger fenestra: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:329
+#: src/Platforms/VideoPlatformWayland.cpp:337
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1627,7 +1627,7 @@ msgstr ""
 "Fallve a selectionar schermo: Nulle schermo contineva le position de cursor "
 "de mus"
 
-#: src/Platforms/VideoPlatformWayland.cpp:336
+#: src/Platforms/VideoPlatformWayland.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -1701,7 +1701,7 @@ msgstr "Registra region rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancea Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:333
+#: src/SpectacleCore.cpp:335
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1711,18 +1711,18 @@ msgstr ""
 "Spectacle es registrante: %1\n"
 "Clicca per terminar registration"
 
-#: src/SpectacleCore.cpp:605
+#: src/SpectacleCore.cpp:607
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non es un valide modo per -record"
 
-#: src/SpectacleCore.cpp:807
+#: src/SpectacleCore.cpp:809
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Captura de instantaneo cancellate o fallite"
 
-#: src/SpectacleCore.cpp:859
+#: src/SpectacleCore.cpp:861
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1731,24 +1731,24 @@ msgstr ""
 "Un captura de schermo ha essite salveguardate como '%1' a '%2' e le percurso "
 "del captura de schermo ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:863
+#: src/SpectacleCore.cpp:865
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Un captura de schermo esseva salveguardate como '%1' a tu dossier de Photo."
 
-#: src/SpectacleCore.cpp:866
+#: src/SpectacleCore.cpp:868
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Un captura de schermo esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:870
+#: src/SpectacleCore.cpp:872
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Un captura de schermo esseva salveguardate a tu tabuliero."
 
-#: src/SpectacleCore.cpp:875
+#: src/SpectacleCore.cpp:877
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1757,24 +1757,24 @@ msgstr ""
 "Un  registration ha essite salveguardate como '%1' a '%2' e le percurso del "
 "registration ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:877
+#: src/SpectacleCore.cpp:879
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Un registration esseva salveguardate como '%1' a tu dossier de Videos."
 
-#: src/SpectacleCore.cpp:879
+#: src/SpectacleCore.cpp:881
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Un registration esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:892
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperi"
 
-#: src/SpectacleCore.cpp:904
+#: src/SpectacleCore.cpp:906
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
