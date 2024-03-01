@@ -76,40 +76,56 @@ struct Stroke {
 
 namespace ImageEffects
 {
-struct Blur {
+class Blur
+{
+public:
+    Blur(qreal factor);
+
     // The factor by which original logical pixel sizes are multiplied.
     // One or less has no effect.
-    uint factor = 1;
-    Blur(uint factor);
+    qreal factor() const;
+    void setFactor(qreal factor);
+
     bool isValid() const;
+
     // Get an image that can be immediately used for rendering an image effect.
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+
     bool operator==(const Blur &other) const = default;
 
 private:
     // Setting as mutable means it can be mutated even when this is const
     // or using a const member function.
-    mutable QImage backingStoreCache{};
+    mutable QImage m_backingStoreCache{};
+    qreal m_factor = 1;
 };
 
-struct Pixelate {
+class Pixelate
+{
+public:
+    Pixelate(qreal factor);
+
     // The factor by which original logical pixel sizes are multiplied.
     // One or less has no effect.
-    uint factor = 1;
-    Pixelate(uint factor);
+    qreal factor() const;
+    void setFactor(qreal factor);
+
     bool isValid() const;
+
     // Get an image that can be immediately used for rendering an image effect.
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+
     bool operator==(const Pixelate &other) const = default;
 
 private:
-    mutable QImage backingStoreCache{};
+    mutable QImage m_backingStoreCache{};
+    qreal m_factor = 1;
 };
 }
 

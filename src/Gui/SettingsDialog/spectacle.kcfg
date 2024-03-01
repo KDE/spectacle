@@ -273,6 +273,19 @@
         <default>255,0,0,255</default>
     </entry>
 
+    <entry name="blurFactor" type="Double">
+        <label>The factor by which original logical pixel sizes are multiplied.</label>
+        <default>4</default>
+        <min>2</min>
+        <max>16</max>
+    </entry>
+    <entry name="pixelateFactor" type="Double">
+        <label>The factor by which original logical pixel sizes are multiplied.</label>
+        <default>4</default>
+        <min>2</min>
+        <max>16</max>
+    </entry>
+
     <entry name="textFont" type="Font">
         <label>Font for text annotations</label>
     </entry>

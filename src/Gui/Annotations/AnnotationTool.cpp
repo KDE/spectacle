@@ -91,6 +91,12 @@ void AnnotationTool::setType(AnnotationTool::Tool type)
         Q_EMIT fillColorChanged(newFillColor);
     }
 
+    const auto &oldFactor = factorForType(oldType);
+    const auto &newFactor = factorForType(type);
+    if (oldFactor != newFactor) {
+        Q_EMIT factorChanged(newFactor);
+    }
+
     const auto &oldFont = fontForType(oldType);
     const auto &newFont = fontForType(type);
     if (oldFont != newFont) {
@@ -137,6 +143,10 @@ constexpr AnnotationTool::Options AnnotationTool::optionsForType(AnnotationTool:
     case RectangleTool:
     case EllipseTool:
         return {StrokeOption, ShadowOption, FillOption};
+    case BlurTool:
+        return {FactorOption};
+    case PixelateTool:
+        return {FactorOption};
     case TextTool:
         return {FontOption, TextOption, ShadowOption};
     case NumberTool:
@@ -336,6 +346,64 @@ void AnnotationTool::setFillColorForType(const QColor &color, AnnotationTool::To
 void AnnotationTool::resetFillColor()
 {
     setFillColor(defaultFillColorForType(m_type));
+}
+
+qreal AnnotationTool::factor() const
+{
+    return factorForType(m_type);
+}
+
+constexpr qreal AnnotationTool::defaultFactorForType(AnnotationTool::Tool type)
+{
+    switch (type) {
+    case BlurTool:
+        return Settings::defaultBlurFactorValue();
+    case PixelateTool:
+        return Settings::defaultPixelateFactorValue();
+    default:
+        return 0;
+    }
+}
+
+qreal AnnotationTool::factorForType(AnnotationTool::Tool type) const
+{
+    switch (type) {
+    case BlurTool:
+        return Settings::blurFactor();
+    case PixelateTool:
+        return Settings::pixelateFactor();
+    default:
+        return 0;
+    }
+}
+
+void AnnotationTool::setFactor(qreal factor)
+{
+    if (!m_options.testFlag(Option::FactorOption) || this->factor() == factor) {
+        return;
+    }
+
+    setFactorForType(factor, m_type);
+    Q_EMIT factorChanged(factor);
+}
+
+void AnnotationTool::setFactorForType(qreal factor, AnnotationTool::Tool type)
+{
+    switch (type) {
+    case BlurTool:
+        Settings::setBlurFactor(factor);
+        break;
+    case PixelateTool:
+        Settings::setPixelateFactor(factor);
+        break;
+    default:
+        break;
+    }
+}
+
+void AnnotationTool::resetFactor()
+{
+    setFactor(defaultFactorForType(m_type));
 }
 
 QFont AnnotationTool::font() const

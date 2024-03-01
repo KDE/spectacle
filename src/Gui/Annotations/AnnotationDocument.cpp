@@ -734,6 +734,10 @@ void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &h
         auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FillOption, //
                           fill.has_value() && fill->index() == Traits::Fill::Brush);
+        m_options.setFlag(AnnotationTool::FactorOption, //
+                          fill.has_value()
+                              && (fill->index() == Traits::Fill::Blur //
+                                  || fill->index() == Traits::Fill::Pixelate));
 
         auto &text = std::get<Traits::Text::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FontOption, text.has_value());
@@ -923,6 +927,39 @@ void SelectedItemWrapper::setFillColor(const QColor &color)
     brush = color;
     Q_EMIT fillColorChanged();
     m_document->setRepaintRegion(temp->renderRect());
+}
+
+qreal SelectedItemWrapper::factor() const
+{
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FillOption) || !temp) {
+        return {};
+    }
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    if (auto blur = std::get_if<Traits::Fill::Blur>(&fill)) {
+        return blur->factor();
+    } else if (auto pixelate = std::get_if<Traits::Fill::Pixelate>(&fill)) {
+        return pixelate->factor();
+    }
+    return 0;
+}
+
+void SelectedItemWrapper::setFactor(qreal factor)
+{
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::FactorOption) || !temp) {
+        return;
+    }
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    if (auto blur = std::get_if<Traits::Fill::Blur>(&fill); blur && blur->factor() != factor) {
+        blur->setFactor(factor);
+        Q_EMIT factorChanged();
+        m_document->setRepaintRegion(temp->renderRect());
+    } else if (auto pixelate = std::get_if<Traits::Fill::Pixelate>(&fill); pixelate && pixelate->factor() != factor) {
+        pixelate->setFactor(factor);
+        Q_EMIT factorChanged();
+        m_document->setRepaintRegion(temp->renderRect());
+    }
 }
 
 QFont SelectedItemWrapper::font() const

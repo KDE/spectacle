@@ -48,14 +48,28 @@ QImage imageCopyHelper(const QImage &image, const QRectF &copyRect)
     return image;
 }
 
-Traits::ImageEffects::Blur::Blur(uint factor)
-    : factor(factor)
+Traits::ImageEffects::Blur::Blur(qreal factor)
+    : m_factor(factor)
 {
+}
+
+qreal Traits::ImageEffects::Blur::factor() const
+{
+    return m_factor;
+}
+
+void Traits::ImageEffects::Blur::setFactor(qreal factor)
+{
+    if (m_factor == factor) {
+        return;
+    }
+    m_factor = factor;
+    m_backingStoreCache = {};
 }
 
 bool Traits::ImageEffects::Blur::isValid() const
 {
-    return factor > 1;
+    return m_factor > 1;
 }
 
 QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -63,35 +77,49 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
     if (!isValid()) {
         return {};
     }
-    if ((backingStoreCache.isNull() //
-         || backingStoreCache.devicePixelRatio() != dpr //
-         || backingStoreCache.text(factorKey).toFloat() != factor)
+    if ((m_backingStoreCache.isNull() //
+         || m_backingStoreCache.devicePixelRatio() != dpr //
+         || m_backingStoreCache.text(factorKey).toFloat() != m_factor)
         && getImage) {
-        backingStoreCache = getImage();
+        m_backingStoreCache = getImage();
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-        const auto effectFactor = factor * dpr;
+        const auto effectFactor = m_factor * dpr;
         auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
         auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
         // A poor man's blur. It's fast, but not high quality.
         // It's somewhat blocky, but it's definitely blurry.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
-        backingStoreCache.setDevicePixelRatio(dpr);
-        backingStoreCache.setText(factorKey, QString::number(factor));
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
+        m_backingStoreCache.setDevicePixelRatio(dpr);
+        m_backingStoreCache.setText(factorKey, QString::number(m_factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    rect = G::rectScaled(rect, m_backingStoreCache.devicePixelRatio());
+    return imageCopyHelper(m_backingStoreCache, rect);
 }
 
-Traits::ImageEffects::Pixelate::Pixelate(uint factor)
-    : factor(factor)
+Traits::ImageEffects::Pixelate::Pixelate(qreal factor)
+    : m_factor(factor)
 {
+}
+
+qreal Traits::ImageEffects::Pixelate::factor() const
+{
+    return m_factor;
+}
+
+void Traits::ImageEffects::Pixelate::setFactor(qreal factor)
+{
+    if (m_factor == factor) {
+        return;
+    }
+    m_factor = factor;
+    m_backingStoreCache = {};
 }
 
 bool Traits::ImageEffects::Pixelate::isValid() const
 {
-    return factor > 1;
+    return m_factor > 1;
 }
 
 QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -99,24 +127,24 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
     if (!isValid()) {
         return {};
     }
-    if ((backingStoreCache.isNull() //
-         || backingStoreCache.devicePixelRatio() != dpr //
-         || backingStoreCache.text(factorKey).toFloat() != factor)
+    if ((m_backingStoreCache.isNull() //
+         || m_backingStoreCache.devicePixelRatio() != dpr //
+         || m_backingStoreCache.text(factorKey).toFloat() != m_factor)
         && getImage) {
-        backingStoreCache = getImage();
+        m_backingStoreCache = getImage();
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-        const auto effectFactor = factor * dpr;
+        const auto effectFactor = m_factor * dpr;
         auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
         auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
         // Smooth when scaling down to average out the colors.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
-        backingStoreCache.setDevicePixelRatio(dpr);
-        backingStoreCache.setText(factorKey, QString::number(factor));
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
+        m_backingStoreCache.setDevicePixelRatio(dpr);
+        m_backingStoreCache.setText(factorKey, QString::number(m_factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    rect = G::rectScaled(rect, m_backingStoreCache.devicePixelRatio());
+    return imageCopyHelper(m_backingStoreCache, rect);
 }
 
 // Functions
@@ -612,7 +640,7 @@ QDebug operator<<(QDebug debug, const Traits::ImageEffects::Blur &ref)
     debug.nospace();
     debug << "Blur" << '(';
     debug << (const void *)&ref;
-    debug << ", factor=" << ref.factor;
+    debug << ", factor=" << ref.factor();
     debug << ')';
     return debug;
 }
@@ -624,7 +652,7 @@ QDebug operator<<(QDebug debug, const Traits::ImageEffects::Pixelate &ref)
     debug.nospace();
     debug << "Pixelate" << '(';
     debug << (const void *)&ref;
-    debug << ", factor=" << ref.factor;
+    debug << ", factor=" << ref.factor();
     debug << ')';
     return debug;
 }

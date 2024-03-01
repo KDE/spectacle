@@ -190,6 +190,7 @@ class SelectedItemWrapper : public QObject
     Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth NOTIFY strokeWidthChanged)
     Q_PROPERTY(QColor strokeColor READ strokeColor WRITE setStrokeColor NOTIFY strokeColorChanged)
     Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor NOTIFY fillColorChanged)
+    Q_PROPERTY(qreal factor READ factor WRITE setFactor NOTIFY factorChanged)
     Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
     Q_PROPERTY(QColor fontColor READ fontColor WRITE setFontColor NOTIFY fontColorChanged)
     Q_PROPERTY(int number READ number WRITE setNumber NOTIFY numberChanged)
@@ -231,6 +232,9 @@ public:
     QColor fillColor() const;
     void setFillColor(const QColor &color);
 
+    qreal factor() const;
+    void setFactor(qreal factor);
+
     QFont font() const;
     void setFont(const QFont &font);
 
@@ -252,6 +256,7 @@ Q_SIGNALS:
     void strokeWidthChanged();
     void strokeColorChanged();
     void fillColorChanged();
+    void factorChanged();
     void fontChanged();
     void fontColorChanged();
     void numberChanged();
