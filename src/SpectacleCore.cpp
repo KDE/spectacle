@@ -447,6 +447,12 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
+    if (m_videoPlatform->isRecording()) {
+        // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
+        // TODO: find a way to support screenshot shortcuts while recording?
+        finishRecording();
+        return;
+    }
     if (!workingDirectory.isEmpty()) {
         QDir::setCurrent(workingDirectory);
     }
@@ -1176,7 +1182,11 @@ void SpectacleCore::activateAction(const QString &actionName, const QVariant &pa
 {
     Q_UNUSED(parameter)
     m_startMode = StartMode::DBus;
-    if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
+    if (m_videoPlatform->isRecording()) {
+        // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
+        // TODO: find a way to support screenshot shortcuts while recording?
+        finishRecording();
+    } else if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
         takeNewScreenshot(CaptureModeModel::AllScreens, 0);
     } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
         takeNewScreenshot(CaptureModeModel::CurrentScreen, 0);
@@ -1187,23 +1197,11 @@ void SpectacleCore::activateAction(const QString &actionName, const QVariant &pa
     } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
         takeNewScreenshot(CaptureModeModel::RectangularRegion, 0);
     } else if (actionName == ShortcutActions::self()->recordRegionAction()->objectName()) {
-        if (!m_videoPlatform->isRecording()) {
-            startRecording(VideoPlatform::Region);
-        } else {
-            finishRecording();
-        }
+        startRecording(VideoPlatform::Region);
     } else if (actionName == ShortcutActions::self()->recordScreenAction()->objectName()) {
-        if (!m_videoPlatform->isRecording()) {
-            startRecording(VideoPlatform::Screen);
-        } else {
-            finishRecording();
-        }
+        startRecording(VideoPlatform::Screen);
     } else if (actionName == ShortcutActions::self()->recordWindowAction()->objectName()) {
-        if (!m_videoPlatform->isRecording()) {
-            startRecording(VideoPlatform::Window);
-        } else {
-            finishRecording();
-        }
+        startRecording(VideoPlatform::Window);
     } else if (actionName == ShortcutActions::self()->openWithoutScreenshotAction()->objectName()) {
         initGuiNoScreenshot();
     }
