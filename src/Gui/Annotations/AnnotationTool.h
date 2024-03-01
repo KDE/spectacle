@@ -25,6 +25,7 @@ class AnnotationTool : public QObject
     Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth RESET resetStrokeWidth NOTIFY strokeWidthChanged)
     Q_PROPERTY(QColor strokeColor READ strokeColor WRITE setStrokeColor RESET resetStrokeColor NOTIFY strokeColorChanged)
     Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor RESET resetFillColor NOTIFY fillColorChanged)
+    Q_PROPERTY(qreal strength READ strength WRITE setStrength RESET resetStrength NOTIFY strengthChanged)
     Q_PROPERTY(QFont font READ font WRITE setFont RESET resetFont NOTIFY fontChanged)
     Q_PROPERTY(QColor fontColor READ fontColor WRITE setFontColor RESET resetFontColor NOTIFY fontColorChanged)
     Q_PROPERTY(int number READ number WRITE setNumber RESET resetNumber NOTIFY numberChanged)
@@ -62,10 +63,11 @@ public:
         NoOptions = 0,
         StrokeOption = 1,
         FillOption = 1 << 1,
-        FontOption = 1 << 2,
-        TextOption = 1 << 3,
-        NumberOption = 1 << 4,
-        ShadowOption = 1 << 5,
+        StrengthOption = 1 << 2,
+        FontOption = 1 << 3,
+        TextOption = 1 << 4,
+        NumberOption = 1 << 5,
+        ShadowOption = 1 << 6,
     };
     Q_DECLARE_FLAGS(Options, Option)
     Q_FLAG(Options)
@@ -99,6 +101,10 @@ public:
     void setFillColor(const QColor &color);
     void resetFillColor();
 
+    qreal strength() const;
+    void setStrength(qreal strength);
+    void resetStrength();
+
     QFont font() const;
     void setFont(const QFont &font);
     void resetFont();
@@ -121,6 +127,7 @@ Q_SIGNALS:
     void strokeWidthChanged(int width);
     void strokeColorChanged(const QColor &color);
     void fillColorChanged(const QColor &color);
+    void strengthChanged(qreal strength);
     void fontChanged(const QFont &font);
     void fontColorChanged(const QColor &color);
     void numberChanged(const int number);
@@ -140,6 +147,10 @@ private:
     static constexpr QColor defaultFillColorForType(AnnotationTool::Tool type);
     QColor fillColorForType(Tool type) const;
     void setFillColorForType(const QColor &color, Tool type);
+
+    static constexpr qreal defaultStrengthForType(AnnotationTool::Tool type);
+    qreal strengthForType(Tool type) const;
+    void setStrengthForType(qreal strength, Tool type);
 
     QFont fontForType(Tool type) const;
     void setFontForType(const QFont &font, Tool type);

@@ -91,6 +91,12 @@ void AnnotationTool::setType(AnnotationTool::Tool type)
         Q_EMIT fillColorChanged(newFillColor);
     }
 
+    const auto &oldStrength = strengthForType(oldType);
+    const auto &newStrength = strengthForType(type);
+    if (oldStrength != newStrength) {
+        Q_EMIT strengthChanged(newStrength);
+    }
+
     const auto &oldFont = fontForType(oldType);
     const auto &newFont = fontForType(type);
     if (oldFont != newFont) {
@@ -147,6 +153,10 @@ constexpr AnnotationTool::Options AnnotationTool::optionsForType(AnnotationTool:
     case RectangleTool:
     case EllipseTool:
         return {StrokeOption, ShadowOption, FillOption};
+    case BlurTool:
+        return {StrengthOption};
+    case PixelateTool:
+        return {StrengthOption};
     case TextTool:
         return {FontOption, TextOption, ShadowOption};
     case NumberTool:
@@ -346,6 +356,64 @@ void AnnotationTool::setFillColorForType(const QColor &color, AnnotationTool::To
 void AnnotationTool::resetFillColor()
 {
     setFillColor(defaultFillColorForType(m_type));
+}
+
+qreal AnnotationTool::strength() const
+{
+    return strengthForType(m_type);
+}
+
+constexpr qreal AnnotationTool::defaultStrengthForType(AnnotationTool::Tool type)
+{
+    switch (type) {
+    case BlurTool:
+        return Settings::defaultBlurStrengthValue();
+    case PixelateTool:
+        return Settings::defaultPixelateStrengthValue();
+    default:
+        return 0;
+    }
+}
+
+qreal AnnotationTool::strengthForType(AnnotationTool::Tool type) const
+{
+    switch (type) {
+    case BlurTool:
+        return Settings::blurStrength();
+    case PixelateTool:
+        return Settings::pixelateStrength();
+    default:
+        return 0;
+    }
+}
+
+void AnnotationTool::setStrength(qreal strength)
+{
+    if (!m_options.testFlag(Option::StrengthOption) || this->strength() == strength) {
+        return;
+    }
+
+    setStrengthForType(strength, m_type);
+    Q_EMIT strengthChanged(strength);
+}
+
+void AnnotationTool::setStrengthForType(qreal strength, AnnotationTool::Tool type)
+{
+    switch (type) {
+    case BlurTool:
+        Settings::setBlurStrength(strength);
+        break;
+    case PixelateTool:
+        Settings::setPixelateStrength(strength);
+        break;
+    default:
+        break;
+    }
+}
+
+void AnnotationTool::resetStrength()
+{
+    setStrength(defaultStrengthForType(m_type));
 }
 
 QFont AnnotationTool::font() const

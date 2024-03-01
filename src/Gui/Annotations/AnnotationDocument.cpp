@@ -515,10 +515,10 @@ void AnnotationDocument::beginItem(const QPointF &point)
     auto toolOptions = m_tool->options();
     if (toolType == BlurTool) {
         auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
-        fill.emplace(Traits::ImageEffects::Blur{4});
+        fill.emplace(Traits::ImageEffects::Blur{m_tool->strength()});
     } else if (toolType == PixelateTool) {
         auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
-        fill.emplace(Traits::ImageEffects::Pixelate{4});
+        fill.emplace(Traits::ImageEffects::Pixelate{m_tool->strength()});
     } else if (toolOptions.testFlag(FillOption)) {
         auto &fill = std::get<Traits::Fill::Opt>(temp.traits());
         fill.emplace(m_tool->fillColor());
@@ -804,6 +804,10 @@ void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &h
         auto &fill = std::get<Traits::Fill::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FillOption, //
                           fill.has_value() && fill->index() == Traits::Fill::Brush);
+        m_options.setFlag(AnnotationTool::StrengthOption, //
+                          fill.has_value()
+                              && (fill->index() == Traits::Fill::Blur //
+                                  || fill->index() == Traits::Fill::Pixelate));
 
         auto &text = std::get<Traits::Text::Opt>(temp->traits());
         m_options.setFlag(AnnotationTool::FontOption, text.has_value());
@@ -993,6 +997,39 @@ void SelectedItemWrapper::setFillColor(const QColor &color)
     brush = color;
     Q_EMIT fillColorChanged();
     m_document->setRepaintRegion(temp->renderRect());
+}
+
+qreal SelectedItemWrapper::strength() const
+{
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrengthOption) || !temp) {
+        return {};
+    }
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    if (auto blur = std::get_if<Traits::Fill::Blur>(&fill)) {
+        return blur->strength();
+    } else if (auto pixelate = std::get_if<Traits::Fill::Pixelate>(&fill)) {
+        return pixelate->strength();
+    }
+    return 0;
+}
+
+void SelectedItemWrapper::setStrength(qreal strength)
+{
+    auto &temp = m_document->m_tempItem;
+    if (!m_options.testFlag(AnnotationTool::StrengthOption) || !temp) {
+        return;
+    }
+    auto &fill = std::get<Traits::Fill::Opt>(temp->traits()).value();
+    if (auto blur = std::get_if<Traits::Fill::Blur>(&fill); blur && blur->strength() != strength) {
+        blur->setStrength(strength);
+        Q_EMIT strengthChanged();
+        m_document->setRepaintRegion(temp->renderRect());
+    } else if (auto pixelate = std::get_if<Traits::Fill::Pixelate>(&fill); pixelate && pixelate->strength() != strength) {
+        pixelate->setStrength(strength);
+        Q_EMIT strengthChanged();
+        m_document->setRepaintRegion(temp->renderRect());
+    }
 }
 
 QFont SelectedItemWrapper::font() const

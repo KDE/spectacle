@@ -12,6 +12,7 @@ import "Annotations"
 Row {
     id: root
     readonly property bool useSelectionOptions: AnnotationDocument.tool.type === AnnotationTool.SelectTool || (AnnotationDocument.tool.type === AnnotationTool.TextTool && AnnotationDocument.selectedItem.options & AnnotationTool.TextOption)
+    readonly property int options: useSelectionOptions ? AnnotationDocument.selectedItem.options : AnnotationDocument.tool.options
     property int displayMode: QQC.AbstractButton.TextBesideIcon
     property int focusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
@@ -46,9 +47,7 @@ Row {
         id: strokeLoader
         anchors.verticalCenter: parent.verticalCenter
         visible: active
-        active: useSelectionOptions ?
-            AnnotationDocument.selectedItem.options & AnnotationTool.StrokeOption
-            : AnnotationDocument.tool.options & AnnotationTool.StrokeOption
+        active: root.options & AnnotationTool.StrokeOption
         sourceComponent: Row {
             spacing: root.spacing
 
@@ -148,7 +147,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: strokeLoader.visible && fillLoader.visible
+        visible: strokeLoader.visible && root.options & ~AnnotationTool.StrokeOption > AnnotationTool.StrokeOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -156,9 +155,7 @@ Row {
         id: fillLoader
         anchors.verticalCenter: parent.verticalCenter
         visible: active
-        active: useSelectionOptions ?
-            AnnotationDocument.selectedItem.options & AnnotationTool.FillOption
-            : AnnotationDocument.tool.options & AnnotationTool.FillOption
+        active: root.options & AnnotationTool.FillOption
         sourceComponent: Row {
             spacing: root.spacing
 
@@ -200,7 +197,55 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: fillLoader.visible && fontLoader.visible
+        visible: fillLoader.visible && root.options & ~AnnotationTool.FillOption > AnnotationTool.FillOption
+        height: QmlUtils.iconTextButtonHeight
+    }
+
+    Loader { // strength
+        id: strengthLoader
+        anchors.verticalCenter: parent.verticalCenter
+        visible: active
+        active: root.options & AnnotationTool.StrengthOption
+        sourceComponent: Row {
+            spacing: root.spacing
+            leftPadding: spacing
+            rightPadding: spacing
+
+            QQC.Label {
+                width: dprRound(implicitWidth)
+                anchors.verticalCenter: parent.verticalCenter
+                text: i18nc("@label:slider strength of effect", "Strength:")
+            }
+
+            QQC.Slider {
+                id: slider
+                readonly property real strength: root.useSelectionOptions ?
+                    AnnotationDocument.selectedItem.strength : AnnotationDocument.tool.strength
+                anchors.verticalCenter: parent.verticalCenter
+                function setStrength() {
+                    if (root.useSelectionOptions
+                        && AnnotationDocument.selectedItem.strength !== slider.value) {
+                        AnnotationDocument.selectedItem.strength = slider.value
+                        commitChangesTimer.restart()
+                    } else {
+                        AnnotationDocument.tool.strength = slider.value
+                    }
+                }
+                height: QmlUtils.iconTextButtonHeight
+                from: 0
+                to: 1
+                value: strength
+                QQC.ToolTip.text: i18nc("@info:tooltip", "The strength of the effect.")
+                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
+                onMoved: setStrength()
+            }
+        }
+    }
+
+    QQC.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
+        visible: strengthLoader.visible && root.options & ~AnnotationTool.StrengthOption > AnnotationTool.StrengthOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -208,9 +253,7 @@ Row {
         id: fontLoader
         anchors.verticalCenter: parent.verticalCenter
         visible: active
-        active: useSelectionOptions ?
-            AnnotationDocument.selectedItem.options & AnnotationTool.FontOption
-            : AnnotationDocument.tool.options & AnnotationTool.FontOption
+        active: root.options & AnnotationTool.FontOption
         sourceComponent: Row {
             spacing: root.spacing
 
@@ -272,7 +315,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: fontLoader.visible && numberLoader.visible
+        visible: fontLoader.visible && root.options & ~AnnotationTool.FontOption > AnnotationTool.FontOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -280,9 +323,7 @@ Row {
         id: numberLoader
         anchors.verticalCenter: parent.verticalCenter
         visible: active
-        active: useSelectionOptions ?
-            AnnotationDocument.selectedItem.options & AnnotationTool.NumberOption
-            : AnnotationDocument.tool.options & AnnotationTool.NumberOption
+        active: root.options & AnnotationTool.NumberOption
         sourceComponent: Row {
             spacing: root.spacing
 
@@ -329,16 +370,14 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: shadowCheckBox.visible
+        visible: numberLoader.visible && root.options & ~AnnotationTool.NumberOption > AnnotationTool.NumberOption
         height: QmlUtils.iconTextButtonHeight
     }
 
     QQC.CheckBox {
         id: shadowCheckBox
         anchors.verticalCenter: parent.verticalCenter
-        visible: root.useSelectionOptions ?
-            AnnotationDocument.selectedItem.options & AnnotationTool.ShadowOption
-            : AnnotationDocument.tool.options & AnnotationTool.ShadowOption
+        visible: root.options & AnnotationTool.ShadowOption
         text: i18n("Shadow")
         checked: {
             if (AnnotationDocument.tool.type === AnnotationTool.TextTool && AnnotationDocument.selectedItem.options & AnnotationTool.TextOption) {

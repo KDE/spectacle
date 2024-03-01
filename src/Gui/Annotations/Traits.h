@@ -84,42 +84,50 @@ struct Stroke {
 
 namespace ImageEffects
 {
-struct Blur {
-    // Standard deviation for the blur effect.
-    // Values less than the minimum are invalid.
-    qreal factor = 2;
-    static constexpr qreal minimum = 0;
-    Blur(uint factor);
-    bool isValid() const;
+class Blur
+{
+public:
+    Blur(qreal);
+
+    // Strength from 0 (minimum) to 1 (maximum).
+    qreal strength() const;
+    void setStrength(qreal);
+
     // Get an image that can be immediately used for rendering an image effect.
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+
     bool operator==(const Blur &other) const = default;
 
 private:
     // Setting as mutable means it can be mutated even when this is const
     // or using a const member function.
-    mutable QImage backingStoreCache{};
+    mutable QImage m_backingStoreCache{};
+    qreal m_strength = 0;
 };
 
-struct Pixelate {
-    // The factor by which original logical pixel sizes are multiplied.
-    // Values less than the minimum are invalid.
-    uint factor = 4;
-    static constexpr qreal minimum = 1;
-    Pixelate(uint factor);
-    bool isValid() const;
+class Pixelate
+{
+public:
+    Pixelate(qreal);
+
+    // Strength from 0 (minimum) to 1 (maximum).
+    qreal strength() const;
+    void setStrength(qreal);
+
     // Get an image that can be immediately used for rendering an image effect.
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
     QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+
     bool operator==(const Pixelate &other) const = default;
 
 private:
-    mutable QImage backingStoreCache{};
+    mutable QImage m_backingStoreCache{};
+    qreal m_strength = 0;
 };
 }
 

@@ -6,6 +6,7 @@
 #include "Traits.h"
 #include "Geometry.h"
 #include "QtCV.h"
+#include "settings.h"
 #include <QLocale>
 #include <QUuid>
 
@@ -37,85 +38,122 @@ QString Traits::Text::text() const
 
 // ImageEffects
 
-static const auto factorKey = u"factor"_s;
+static const auto strengthKey = u"strength"_s;
 
-Traits::ImageEffects::Blur::Blur(uint factor)
-    : factor(factor)
+static QString strengthString(qreal strength)
+{
+    return QString::number(strength, 'f', std::numeric_limits<qreal>::digits10);
+}
+
+static constexpr qreal clampStrength(qreal strength)
+{
+    if (std::isnan(strength)) {
+        return 0.0;
+    } else if (std::isinf(strength)) {
+        return 1.0;
+    }
+    return std::clamp(strength, 0.0, 1.0);
+}
+
+Traits::ImageEffects::Blur::Blur(qreal strength)
+    : m_strength(strength)
 {
 }
 
-bool Traits::ImageEffects::Blur::isValid() const
+qreal Traits::ImageEffects::Blur::strength() const
 {
-    return factor >= minimum;
+    return m_strength;
+}
+
+void Traits::ImageEffects::Blur::setStrength(qreal strength)
+{
+    strength = clampStrength(strength);
+    if (m_strength == strength) {
+        return;
+    }
+    m_strength = strength;
+    m_backingStoreCache = {};
 }
 
 QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
 {
-    if (!isValid()) {
-        return {};
-    }
-    if ((backingStoreCache.isNull() //
-         || backingStoreCache.devicePixelRatio() != dpr //
-         || backingStoreCache.text(factorKey).toFloat() != factor)
+    if ((m_backingStoreCache.isNull() //
+         || m_backingStoreCache.devicePixelRatio() != dpr //
+         || m_backingStoreCache.text(strengthKey).toDouble() != m_strength)
         && getImage) {
-        backingStoreCache = getImage();
-        if (backingStoreCache.isNull()) {
-            return backingStoreCache;
+        m_backingStoreCache = getImage();
+        if (m_backingStoreCache.isNull()) {
+            return m_backingStoreCache;
         }
-        auto mat = QtCV::qImageToMat(backingStoreCache);
-        // Scale the factor with the devicePixelRatio.
-        // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-        const qreal sigma = factor * dpr;
+        auto mat = QtCV::qImageToMat(m_backingStoreCache);
+        // Below this, the effect is nearly invisible.
+        static const qreal min = 0.5;
+        // Above this, glitches with color splotches happen.
+        static const qreal max = 60;
+        // Scales with DPR to keep the effect looking similar for different image DPRs.
+        static const qreal dynamicMin = 1 * dpr;
+        static const qreal dynamicMax = 16 * dpr;
+        const qreal sigma = std::clamp(m_strength * (dynamicMax - dynamicMin) + dynamicMin, min, max);
         QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
-        backingStoreCache.setDevicePixelRatio(dpr);
-        backingStoreCache.setText(factorKey, QString::number(factor));
+        m_backingStoreCache.setDevicePixelRatio(dpr);
+        m_backingStoreCache.setText(strengthKey, strengthString(m_strength));
     }
-    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
-    if (copyRect.size() != backingStoreCache.size()) {
-        return backingStoreCache.copy(copyRect);
+    QRect copyRect = G::rectScaled(rect, m_backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != m_backingStoreCache.size()) {
+        return m_backingStoreCache.copy(copyRect);
     }
-    return backingStoreCache;
+    return m_backingStoreCache;
 }
 
-Traits::ImageEffects::Pixelate::Pixelate(uint factor)
-    : factor(factor)
+Traits::ImageEffects::Pixelate::Pixelate(qreal strength)
+    : m_strength(strength)
 {
 }
 
-bool Traits::ImageEffects::Pixelate::isValid() const
+qreal Traits::ImageEffects::Pixelate::strength() const
 {
-    return factor >= minimum;
+    return m_strength;
+}
+
+void Traits::ImageEffects::Pixelate::setStrength(qreal strength)
+{
+    strength = clampStrength(strength);
+    if (m_strength == strength) {
+        return;
+    }
+    m_strength = strength;
+    m_backingStoreCache = {};
 }
 
 QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
 {
-    if (!isValid()) {
-        return {};
-    }
-    if ((backingStoreCache.isNull() //
-         || backingStoreCache.devicePixelRatio() != dpr //
-         || backingStoreCache.text(factorKey).toFloat() != factor)
+    if ((m_backingStoreCache.isNull() //
+         || m_backingStoreCache.devicePixelRatio() != dpr //
+         || m_backingStoreCache.text(strengthKey).toDouble() != m_strength)
         && getImage) {
-        backingStoreCache = getImage();
-        if (backingStoreCache.isNull()) {
-            return backingStoreCache;
+        m_backingStoreCache = getImage();
+        if (m_backingStoreCache.isNull()) {
+            return m_backingStoreCache;
         }
-        // Scale the factor with the devicePixelRatio.
-        // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-        const auto effectFactor = factor * dpr;
-        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
+        // 1x would have no effect and a fractional scale would look bad, so 2x is the minimum.
+        static const qreal min = 2;
+        // Scales with DPR to keep the effect looking similar for different image DPRs.
+        static const qreal dynamicMin = min * dpr;
+        static const qreal dynamicMax = 16 * dpr;
+        const auto factor = std::max(std::round(m_strength * (dynamicMax - dynamicMin) + dynamicMin), min);
+        auto scaleDown = QTransform::fromScale(1 / factor, 1 / factor);
+        auto scaleUp = QTransform::fromScale(factor, factor);
         // Smooth when scaling down to average out the colors.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
-        backingStoreCache.setDevicePixelRatio(dpr);
-        backingStoreCache.setText(factorKey, QString::number(factor));
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
+        m_backingStoreCache = m_backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
+        m_backingStoreCache.setDevicePixelRatio(dpr);
+        m_backingStoreCache.setText(strengthKey, strengthString(m_strength));
     }
-    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
-    if (copyRect.size() != backingStoreCache.size()) {
-        return backingStoreCache.copy(copyRect);
+    QRect copyRect = G::rectScaled(rect, m_backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != m_backingStoreCache.size()) {
+        return m_backingStoreCache.copy(copyRect);
     }
-    return backingStoreCache;
+    return m_backingStoreCache;
 }
 
 // Functions
@@ -407,9 +445,8 @@ bool Traits::isValidTrait<Traits::Fill>(const Traits::Fill &trait)
     case Fill::Brush:
         return std::get<Fill::Brush>(trait) != Qt::NoBrush;
     case Fill::Blur:
-        return std::get<Fill::Blur>(trait).isValid();
     case Fill::Pixelate:
-        return std::get<Fill::Pixelate>(trait).isValid();
+        return true;
     default:
         return false;
     }
@@ -717,7 +754,7 @@ QDebug operator<<(QDebug debug, const Traits::ImageEffects::Blur &ref)
     debug.nospace();
     debug << "Blur" << '(';
     debug << (const void *)&ref;
-    debug << ", factor=" << ref.factor;
+    debug << ", strength=" << ref.strength();
     debug << ')';
     return debug;
 }
@@ -729,7 +766,7 @@ QDebug operator<<(QDebug debug, const Traits::ImageEffects::Pixelate &ref)
     debug.nospace();
     debug << "Pixelate" << '(';
     debug << (const void *)&ref;
-    debug << ", factor=" << ref.factor;
+    debug << ", strength=" << ref.strength();
     debug << ')';
     return debug;
 }
