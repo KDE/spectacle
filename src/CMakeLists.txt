@@ -151,6 +151,8 @@ qt_add_qml_module(spectacle
     Gui/QRCodeScannedMessage.qml
     Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
+    Gui/RecordingModeButtonsColumn.qml
+    Gui/RecordingSettingsColumn.qml
     Gui/RecordingView.qml
     Gui/SavedAndCopiedMessage.qml
     Gui/SavedAndLocationCopied.qml

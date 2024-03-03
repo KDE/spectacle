@@ -31,7 +31,6 @@ EmptyPage {
     LayoutMirroring.childrenInherit: true
 
     padding: Kirigami.Units.mediumSpacing * 4
-    topPadding: 0
 
     Item {
         parent: root
@@ -53,98 +52,191 @@ EmptyPage {
         }
     }
 
-    header: Item {
-        implicitWidth: Math.max(inlineMessageLoader.implicitWidth
-                                + Kirigami.Units.mediumSpacing * 2,
-                                contextWindow.dprRound(headerLabel.implicitWidth))
-        implicitHeight: Math.max(inlineMessageLoader.implicitHeight
-                                 + Kirigami.Units.mediumSpacing * 2,
-                                 contextWindow.dprRound(headerLabel.implicitHeight))
+    component ConfigHelpButtonRow : Row {
+        spacing: Kirigami.Units.mediumSpacing
+        QQC.Button {
+            y: dprRound((parent.height - height) / 2)
+            icon.name: "configure"
+            text: i18n("Configure Spectacle…")
+            onClicked: contextWindow.showPreferencesDialog()
+        }
+        // Only ToolButton supports the menu button style with qqc2-desktop-style
+        QQC.ToolButton {
+            y: dprRound((parent.height - height) / 2)
+            flat: false
+            icon.name: "help-contents"
+            text: i18n("Help")
+            down: pressed || HelpMenu.visible
+            Accessible.role: Accessible.ButtonMenu
+            onPressed: HelpMenu.popup(this)
+        }
+    }
 
-        QQC.Label {
-            id: headerLabel
-            visible: !inlineMessageLoader.visible
-            anchors.fill: parent
-            padding: Kirigami.Units.mediumSpacing * 4
-            topPadding: padding - headingFontMetrics.descent
-            bottomPadding: topPadding
-            font.pixelSize: QmlUtils.fontMetrics.height
-            text: i18n("Take a new screenshot")
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            FontMetrics {
-                id: headingFontMetrics
+    Component {
+        id: screenshotComponent
+        GridLayout {
+            rowSpacing: Kirigami.Units.mediumSpacing
+            columnSpacing: Kirigami.Units.mediumSpacing * 4
+            columns: 2
+            rows: 2
+            flow: GridLayout.TopToBottom
+
+            Kirigami.Heading {
+                topPadding: -captureHeadingMetrics.descent
+                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+                text: i18nc("@title:group", "Screenshot Modes")
+                level: 3
+                FontMetrics {
+                    id: captureHeadingMetrics
+                }
             }
-        }
 
-        AnimatedLoader {
-            id: inlineMessageLoader
-            anchors.centerIn: parent
-            state: "inactive"
-        }
+            CaptureModeButtonsColumn {
+                id: buttonsColumn
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            }
 
-        height: implicitHeight
-        Behavior on height {
-            NumberAnimation {
-                duration: inlineMessageLoader.animationDuration
-                easing.type: Easing.OutCubic
+            Kirigami.Heading {
+                topPadding: -captureHeadingMetrics.descent
+                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+                text: i18nc("@title:group", "Screenshot Settings")
+                level: 3
+            }
+
+            CaptureSettingsColumn {
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                Layout.preferredWidth: buttonRow.implicitWidth
+                ConfigHelpButtonRow {
+                    id: buttonRow
+                }
             }
         }
     }
 
-    contentItem: GridLayout {
-        rowSpacing: Kirigami.Units.mediumSpacing
-        columnSpacing: Kirigami.Units.mediumSpacing * 4
-        columns: 2
-        rows: 2
+    Component {
+        id: recordingComponent
+        GridLayout {
+            rowSpacing: Kirigami.Units.mediumSpacing
+            columnSpacing: Kirigami.Units.mediumSpacing * 4
+            columns: 2
+            rows: 2
+            flow: GridLayout.TopToBottom
 
-        Kirigami.Heading {
-            Layout.column: 0; Layout.row: 0
-            topPadding: -captureHeadingMetrics.descent
-            bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-            text: i18n("Capture Modes")
-            level: 3
-            FontMetrics {
-                id: captureHeadingMetrics
+            Kirigami.Heading {
+                topPadding: -captureHeadingMetrics.descent
+                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+                text: i18nc("@title:group", "Recording Modes")
+                level: 3
+                FontMetrics {
+                    id: captureHeadingMetrics
+                }
+            }
+
+            RecordingModeButtonsColumn {
+                id: buttonsColumn
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            }
+
+            Kirigami.Heading {
+                topPadding: -captureHeadingMetrics.descent
+                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
+                text: i18nc("@title:group", "Recording Settings")
+                level: 3
+            }
+
+            RecordingSettingsColumn {
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                Layout.preferredWidth: buttonRow.implicitWidth
+                ConfigHelpButtonRow {
+                    id: buttonRow
+                }
             }
         }
+    }
 
-        CaptureModeButtonsColumn {
-            Layout.column: 0; Layout.row: 1
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-            Layout.fillHeight: true
-        }
-
-        Kirigami.Heading {
-            Layout.column: 1; Layout.row: 0
-            topPadding: -captureHeadingMetrics.descent
-            bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-            text: i18n("Capture Settings")
-            level: 3
-        }
-
-        CaptureSettingsColumn {
-            Layout.column: 1; Layout.row: 1
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-            Layout.fillHeight: true
-            // Button ToolButton
-            RowLayout {
-                Layout.fillWidth: true
-                spacing: parent.spacing
-                QQC.Button {
-                    icon.name: "configure"
-                    text: i18n("Configure Spectacle…")
-                    onClicked: contextWindow.showPreferencesDialog()
+    // Not ColumnLayout because layouts don't work well with animations.
+    contentItem: Column {
+        spacing: Kirigami.Units.mediumSpacing * 2
+        // inline message and heading are not in header because we want the same padding as content.
+        AnimatedLoader {
+            id: inlineMessageLoader
+            state: "inactive"
+            width: parent.width
+            height: visible ? implicitHeight : 0
+            Behavior on height {
+                NumberAnimation {
+                    duration: inlineMessageLoader.animationDuration
+                    easing.type: Easing.OutCubic
                 }
+            }
+        }
+        Loader {
+            width: Math.max(parent.width, implicitWidth)
+            active: VideoPlatform.supportedRecordingModes
+            visible: active
+            sourceComponent: Row {
+                // We don't want the visuals of a tab because they don't look nice here with
+                // qqc2-desktop-style, but this is functionally a tab.
+                // Maybe use a segmented control style in the future when one becomes available.
                 QQC.ToolButton {
-                    flat: false
-                    icon.name: "help-contents"
-                    text: i18n("Help")
-                    down: pressed || HelpMenu.visible
-                    Accessible.role: Accessible.ButtonMenu
-                    onPressed: HelpMenu.popup(this)
+                    id: screenshotHeadingButton
+                    Accessible.role: Accessible.PageTab
+                    width: Math.max(parent.width / 2, dprRound(implicitWidth), dprRound(recordingHeadingButton.implicitWidth))
+                    height: Math.max(parent.height, dprRound(implicitHeight), dprRound(recordingHeadingButton.implicitHeight))
+                    // Extend the clickable area between the buttons
+                    leftInset: !mirrored ? 0 : Kirigami.Units.mediumSpacing
+                    rightInset: mirrored ? 0 : Kirigami.Units.mediumSpacing
+                    padding: Kirigami.Units.mediumSpacing * 2
+                    // Visually compensate for inset to make it look like spacing
+                    leftPadding: padding + leftInset
+                    rightPadding: padding + rightInset
+                    // Make the padding look more even with Latin-like scripts.
+                    // There should still be more than enough space for other scripts.
+                    topPadding: Math.max(0, padding - headingFontMetrics.descent)
+                    bottomPadding: Math.max(0, padding - headingFontMetrics.descent)
+                    // We do `pointSize * sqrt(2)` because `pointSize * 2` would actually result
+                    // in a font that uses 4x more area than the base font would have.
+                    font.pointSize: Application.font.pointSize * 1.414213562373095
+                    text: i18nc("@title:tab", "Screenshot")
+                    checkable: true
+                    checked: true
+                    autoExclusive: true
+                    FontMetrics {
+                        id: headingFontMetrics
+                        font: screenshotHeadingButton.font
+                    }
+                    onCheckedChanged: if (checked && contentLoader.sourceComponent !== screenshotComponent) {
+                        contentLoader.sourceComponent = screenshotComponent
+                    }
+                }
+
+                QQC.ToolButton {
+                    id: recordingHeadingButton
+                    Accessible.role: screenshotHeadingButton.Accessible.role
+                    width: screenshotHeadingButton.width
+                    height: screenshotHeadingButton.height
+                    leftInset: !mirrored ? Kirigami.Units.mediumSpacing : 0
+                    rightInset: mirrored ? Kirigami.Units.mediumSpacing : 0
+                    padding: screenshotHeadingButton.padding
+                    leftPadding: padding + leftInset
+                    rightPadding: padding + rightInset
+                    topPadding: screenshotHeadingButton.topPadding
+                    bottomPadding: screenshotHeadingButton.bottomPadding
+                    font: screenshotHeadingButton.font
+                    text: i18nc("@title:tab", "Recording")
+                    checkable: true
+                    checked: false
+                    autoExclusive: true
+                    onCheckedChanged: if (checked && contentLoader.sourceComponent !== recordingComponent) {
+                        contentLoader.sourceComponent = recordingComponent
+                    }
                 }
             }
+        }
+        Loader {
+            id: contentLoader
+            width: Math.max(parent.width, implicitWidth)
+            sourceComponent: screenshotComponent
         }
     }
 

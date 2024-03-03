@@ -13,18 +13,8 @@ ColumnLayout {
         visible: !VideoPlatform.isRecording
         spacing: Kirigami.Units.mediumSpacing
 
-        Repeater {
-            model: SpectacleCore.recordingModeModel
-            delegate: QQC.Button {
-                id: button
-                Layout.fillWidth: true
-                leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
-                rightPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
-                topPadding: Kirigami.Units.mediumSpacing
-                bottomPadding: Kirigami.Units.mediumSpacing
-                text: model.display
-                onClicked: SpectacleCore.startRecording(model.recordingMode, Settings.videoIncludePointer)
-            }
+        RecordingModeButtonsColumn {
+            Layout.fillWidth: true
         }
         Kirigami.Heading {
             Layout.fillWidth: true
@@ -36,14 +26,8 @@ ColumnLayout {
                 id: recordingSettingsMetrics
             }
         }
-        QQC.CheckBox {
+        RecordingSettingsColumn {
             Layout.fillWidth: true
-            text: i18n("Include mouse pointer")
-            QQC.ToolTip.text: i18n("Show the mouse cursor in the screen recording.")
-            QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-            QQC.ToolTip.visible: hovered
-            checked: Settings.videoIncludePointer
-            onToggled: Settings.videoIncludePointer = checked
         }
     }
     ColumnLayout {
