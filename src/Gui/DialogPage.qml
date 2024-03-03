@@ -33,6 +33,26 @@ EmptyPage {
     padding: Kirigami.Units.mediumSpacing * 4
     topPadding: 0
 
+    Item {
+        parent: root
+        anchors.fill: parent
+        z: -1
+        // Allow dragging the window from anywhere
+        DragHandler {
+            acceptedButtons: Qt.LeftButton
+            target: null
+            // BUG: https://bugreports.qt.io/browse/QTBUG-110145
+            // Changing acceptedButtons cancels the drag when the left mouse button is released on
+            // Wayland. If we don't do this, you need to click somewhere in the window to be able to
+            // click or hover on UI elements again.
+            onActiveChanged: if (active) {
+                acceptedButtons = contextWindow.startSystemMove() ? Qt.NoButton : Qt.LeftButton
+            } else {
+                acceptedButtons = Qt.LeftButton
+            }
+        }
+    }
+
     header: Item {
         implicitWidth: Math.max(inlineMessageLoader.implicitWidth
                                 + Kirigami.Units.mediumSpacing * 2,
@@ -68,23 +88,6 @@ EmptyPage {
             NumberAnimation {
                 duration: inlineMessageLoader.animationDuration
                 easing.type: Easing.OutCubic
-            }
-        }
-
-        // This area is mostly blank space most of the time.
-        // Let's make it a bit more useful by making it easier to move the window around.
-        DragHandler {
-            acceptedButtons: Qt.LeftButton
-            dragThreshold: 0
-            target: null
-            // BUG: https://bugreports.qt.io/browse/QTBUG-110145
-            // Changing acceptedButtons cancels the drag when the left mouse button is released on
-            // Wayland. If we don't do this, you need to click somewhere in the window to be able to
-            // click or hover on UI elements again.
-            onActiveChanged: if (active) {
-                acceptedButtons = contextWindow.startSystemMove() ? Qt.NoButton : Qt.LeftButton
-            } else {
-                acceptedButtons = Qt.LeftButton
             }
         }
     }
