@@ -36,7 +36,7 @@ Column {
         bottomPadding: -captureHeadingMetrics.descent + parent.spacing
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
-        text: i18n("Capture Settings")
+        text: i18nc("@title:group", "Screenshot Settings")
         level: 3
     }
     CaptureSettingsColumn {
