@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the spectacle package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022, 2023.
+# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-02 02:24+0000\n"
-"PO-Revision-Date: 2023-06-18 19:15+0100\n"
+"PO-Revision-Date: 2024-03-02 16:19+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -97,6 +97,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Înregistrează ecranul folosind regimul dat. Regimuri:\n"
+"- r, regiune\n"
+"- s, ecran\n"
+"- w, fereastră"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -172,10 +176,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "În regim de fundal, exclude decorațiile din captura de ecran"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "În regim de fundal, exclude decorațiile din captura de ecran"
+msgstr "În regim de fundal, exclude umbrele  din captura de ecran"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -241,6 +244,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Exportul filmului a eșuat: URL-ul fișierului temporar trebuie să fie un "
+"fișier local existent"
 
 #: src/ExportManager.cpp:635
 #, kde-format
@@ -248,15 +253,16 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Exportul filmului a eșuat: URL-ul fișierului de ieșire trebuie să fie URL "
+"valid cu denumire de fișier"
 
 #: src/ExportManager.cpp:710
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Nu se poate salva imaginea. Fișierul nu a putut fi încărcat în amplasarea "
-"distantă."
+"Nu se poate salva înregistrarea. Fișierul nu a putut fi mutat la amplasare: "
+"%1"
 
 #: src/ExportManager.cpp:738
 #, kde-format
@@ -415,17 +421,14 @@ msgid ""
 msgstr "Arată bara de titlu și conturul la capturarea unei ferestre."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Include bara de titlu și muchiile ferestrei"
+msgstr "Include umbra ferestrei"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Arată bara de titlu și conturul la capturarea unei ferestre."
+msgstr "Arată umbra ferestrei la capturarea unei ferestre."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -545,18 +548,16 @@ msgid "Image Zoom"
 msgstr "Apropiere imagine"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Captura de ecran a fost copiată în clipboard."
+msgstr "Amplasarea fișierului video a fost copiată în clipboard."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Captura de ecran a fost copiată în clipboard."
+msgstr "Amplasarea capturii de ecran a fost copiată în clipboard."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -574,10 +575,9 @@ msgid "Copy"
 msgstr "Copiază"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Copiază amplasarea în clipboard"
+msgstr "Copiază amplasarea"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -626,7 +626,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Arată umbra ferestrei"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -696,16 +696,13 @@ msgstr ""
 "%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Captura de ecran a fost salvată ca <a href=\"%1\">%2</a> și amplasarea "
-"acesteia a fost copiată în clipboard"
+"Filmul a fost salvat ca <a href=\"%1\">%2</a> și amplasarea acestuia a fost "
+"copiată în clipboard"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -926,24 +923,19 @@ msgid "Preview:"
 msgstr "Previzualizare:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "Puteți folosi următorii substituenți în denumirea fișierului, ce vor fi "
-"înlocuiți cu textul real la salvarea fișierului: <blockquote>"
+"înlocuiți cu textul real la salvarea fișierului:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
@@ -954,17 +946,16 @@ msgstr "Pentru a salva în subdosar"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Less"
-msgstr ""
+msgstr "Arată mai puțin"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Arată mai mult"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Generale"
@@ -973,17 +964,16 @@ msgstr "Generale"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Salvare imagine"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Salvare video"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Scurtături"
@@ -1076,10 +1066,9 @@ msgstr "Dacă cursorul mausului să fie inclus în instantaneu"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Dacă cursorul mausului să fie inclus în instantaneu"
+msgstr "Dacă cursorul mausului să fie inclus în video"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
@@ -1089,10 +1078,9 @@ msgstr "Dacă decorațiile ferestrei să fie incluse în instantaneu"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Dacă decorațiile ferestrei să fie incluse în instantaneu"
+msgstr "Dacă umbra ferestrei să fie incluse în instantaneu"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1127,11 +1115,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Calitatea compresiei pentru formate de fișier cu pierderi"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Captură de ecran"
+msgstr "Capturi de ecran"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:142
@@ -1141,14 +1128,12 @@ msgstr "Format implicit de salvare a imaginii"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:146
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Denumirea implicită de fișier folosită la salvare"
+msgstr "Șablon pentru denumirea de fișier folosită la salvarea capturilor"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Captură de ecran"
@@ -1171,31 +1156,27 @@ msgstr "Ultima cale folosită pentru acțiunea „salvează ca”"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Format implicit de salvare a imaginii"
+msgstr "Format video implicit"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Denumirea implicită de fișier folosită la salvare"
+msgstr "Șablon pentru denumirea de fișier folosită la salvarea înregistrărilor"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Captură de ecran"
+msgstr "Înregistrări de ecran"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Captură de ecran"
+msgstr "Înregistrare de ecran"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1353,43 +1334,34 @@ msgstr "Dacă unealta de adnotare cu număr lasă o umbră"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Locul salvării:"
+msgstr "&Locul salvării:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Imagine partajată"
+msgstr "Video partajat"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Imagine partajată"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Legătura spre imaginea partajată (<a href=\"%1\">%1</a>) a fost copiată în "
+"Legătura spre filmul partajat (<a href=\"%1\">%1</a>) a fost copiată în "
 "clipboard."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1399,18 +1371,16 @@ msgstr ""
 "clipboard."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "A fost o problemă cu partajarea imaginii: %1"
+msgstr "A intervenit o problemă cu partajarea filmului: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr "A fost o problemă cu partajarea imaginii: %1"
+msgstr "A intervenit o problemă cu partajarea imaginii: %1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
@@ -1588,87 +1558,82 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr ""
+"Înregistrarea a eșuat: URL-ul pentru fișier nu indică spre fișier local"
 
 #: src/Platforms/VideoPlatformWayland.cpp:241
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Înregistrarea a eșuat: Dosarul nu poate fi creat (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:253
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Înregistrarea a eșuat: URL-ul pentru fișier temporar nu e fișier local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Înregistrarea a eșuat: URL-ul pentru fișier de ieșire nu e fișier local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:299
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Înregistrare ecran anulată"
 
 #: src/Platforms/VideoPlatformWayland.cpp:301
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Înregistrare fereastră anulată"
 
 #: src/Platforms/VideoPlatformWayland.cpp:307
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Alegerea ferestrei a eșuat"
+msgstr "Alegerea ecranului a eșuat: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:309
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Alegerea ferestrei a eșuat"
+msgstr "Alegerea ferestrei a eșuat: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:337
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Alegerea ecranului a eșuat: Niciun ecran nu conținea poziția cursorului"
 
 #: src/Platforms/VideoPlatformWayland.cpp:344
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Alegerea ferestrei a eșuat"
+msgstr "Alegerea ferestrei a eșuat: Nicio fereastră găsită"
 
 #: src/RecordingModeModel.cpp:28
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Regiune dreptunghiulară"
 
 #: src/RecordingModeModel.cpp:31
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Ecran complet"
 
 #: src/RecordingModeModel.cpp:34
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Titlu fereastră"
+msgstr "Fereastră"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1701,22 +1666,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Capturează fereastra de sub cursor"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Ecranul ales"
+msgstr "Înregistrează ecran"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Înregistrare"
+msgstr "Înregistrează fereastră"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Regiune dreptunghiulară"
+msgstr "Înregistrează regiune dreptunghiulară"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1730,12 +1692,14 @@ msgid ""
 "Spectacle is recording: %1\n"
 "Click to finish recording"
 msgstr ""
+"Spectacle înregistrează: %1\n"
+"Apăsați pentru a încheia înregistrarea"
 
 #: src/SpectacleCore.cpp:613
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 nu e un regim valid pentru --record"
 
 #: src/SpectacleCore.cpp:815
 #, kde-format
@@ -1768,30 +1732,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
 #: src/SpectacleCore.cpp:883
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
-"fost copiată în clipboard."
+"O înregistrare a fost salvată ca „%1” în „%2” și amplasarea acesteia a fost "
+"copiată în clipboard."
 
 #: src/SpectacleCore.cpp:885
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
+msgstr "O înregistrare a fost salvată ca „%1” în dosarul Video."
 
 #: src/SpectacleCore.cpp:887
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "O captură a fost salvată ca „%1” în „%2”."
+msgstr "O înregistrare a fost salvată ca „%1” în „%2”."
 
 #: src/SpectacleCore.cpp:898
 #, kde-format
@@ -1808,13 +1766,13 @@ msgstr "Adnotează"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:29
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
