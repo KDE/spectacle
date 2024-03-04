@@ -438,15 +438,13 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
 
     auto baseImageNode = node->baseImageNode();
     if (!baseImageNode->texture() || m_repaintBaseImage) {
-        QQuickWindow::CreateTextureOptions options{QQuickWindow::TextureCanUseAtlas, QQuickWindow::TextureHasAlphaChannel};
-        baseImageNode->setTexture(window->createTextureFromImage(m_document->baseImage(), options));
+        baseImageNode->setTexture(window->createTextureFromImage(m_document->baseImage()));
         m_repaintBaseImage = false;
     }
 
     auto annotationsNode = node->annotationsNode();
     if (!annotationsNode->texture() || m_repaintAnnotations) {
-        QQuickWindow::CreateTextureOptions options{QQuickWindow::TextureCanUseAtlas, QQuickWindow::TextureHasAlphaChannel};
-        annotationsNode->setTexture(window->createTextureFromImage(m_document->annotationsImage(), options));
+        annotationsNode->setTexture(window->createTextureFromImage(m_document->annotationsImage()));
         m_repaintAnnotations = false;
     }
 
