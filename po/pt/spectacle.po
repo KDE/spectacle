@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2023-05-23 13:00+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -418,19 +418,20 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Cancelar (%1 segundo)"
 msgstr[1] "Cancelar (%1 segundos)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Tirar uma nova fotografia"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Configuração da Captura"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Imagem"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Incluir o cursor do rato"
@@ -538,20 +539,50 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 segundo"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Modos de Captura"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Configurar o Spectacle…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Ajuda"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Imagem"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "A gravar"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Configuração da Gravação"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Imagem"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "A gravar"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -653,6 +684,11 @@ msgstr "Configurar..."
 msgid "Capture Mode"
 msgstr "Modo de Captura"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Configuração da Captura"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -707,6 +743,11 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Mostrar o cursor do rato na gravação do ecrã."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -726,17 +767,12 @@ msgstr "Pausa"
 msgid "Play"
 msgstr "Reproduzir"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Configuração da Gravação"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Mostrar o cursor do rato na gravação do ecrã."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Terminar a gravação"
@@ -1889,6 +1925,9 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgid "Capture Modes"
+#~ msgstr "Modos de Captura"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

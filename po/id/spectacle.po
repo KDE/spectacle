@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2023-04-28 20:48+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -414,19 +414,20 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Batal (%1 detik)"
 msgstr[1] "Batal (%1 detik)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Ambil tangkapan layar baru"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Pengaturan Tangkap"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Tangkapan Layar"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Sertakan titik mouse"
@@ -536,20 +537,50 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 detik"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Mode Tangkap"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Atur Spectacle…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Bantuan"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Tangkapan Layar"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Merekam"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Pengaturan Rekam"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Tangkapan Layar"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Merekam"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -651,6 +682,11 @@ msgstr "Konfigurasikan..."
 msgid "Capture Mode"
 msgstr "Mode Tangkap"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Pengaturan Tangkap"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -704,6 +740,11 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Tampilkan kursor mouse di dalam perekaman layar."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -723,17 +764,12 @@ msgstr "Jeda"
 msgid "Play"
 msgstr "Putar"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Pengaturan Rekam"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Tampilkan kursor mouse di dalam perekaman layar."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Selesaikan perekaman"
@@ -1900,6 +1936,9 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgid "Capture Modes"
+#~ msgstr "Mode Tangkap"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

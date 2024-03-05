@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2024-02-18 16:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -412,19 +412,21 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "ரத்து செய் (%1 நொடி)"
 msgstr[1] "ரத்து செய் (%1 நொடிகள்)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "புதிய திரைப்பிடிப்பை எடு"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "பிடிப்புக்கான அமைப்புகள்"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "திரைப்பிடிப்புகள்"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "சுட்டிக்குறியை உட்படுத்து"
@@ -526,20 +528,51 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 நொடி"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "பிடிப்பு முறைகள்"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "ஸ்பெக்டக்குலை அமை…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "உதவி"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "திரைப்பிடிப்புகள்"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "திரைப்பதிவு"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "திரைப்பதிவு அமைப்புகள்"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "திரைப்பிடிப்பு"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "திரைப்பதிவு"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -638,6 +671,11 @@ msgstr "அமை..."
 msgid "Capture Mode"
 msgstr "பிடிப்பு முறை"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "பிடிப்புக்கான அமைப்புகள்"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -693,6 +731,11 @@ msgstr "QR குறி கண்டறியப்பட்டது: %1"
 msgid "Found QR code with binary content."
 msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -712,17 +755,12 @@ msgstr "இடைநிறுத்து"
 msgid "Play"
 msgstr "இயக்கு"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "திரைப்பதிவு அமைப்புகள்"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "பதிவிடுவதை முடி"
@@ -1830,6 +1868,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Capture Modes"
+#~ msgstr "பிடிப்பு முறைகள்"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

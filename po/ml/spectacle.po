@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2019-12-12 21:06+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -389,19 +389,19 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr ""
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
 #, kde-format
-msgid "Capture Settings"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
 msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr ""
@@ -495,19 +495,44 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr ""
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:87
+#, kde-format
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:128
+#, kde-format
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:143
+#, kde-format
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:200
+#, kde-format
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr ""
+
+#: src/Gui/DialogPage.qml:226
+#, kde-format
+msgctxt "@title:tab"
+msgid "Recording"
 msgstr ""
 
 #: src/Gui/ExportMenu.cpp:52
@@ -607,6 +632,11 @@ msgstr ""
 msgid "Capture Mode"
 msgstr ""
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -656,6 +686,11 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr ""
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -673,17 +708,12 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr ""
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr ""

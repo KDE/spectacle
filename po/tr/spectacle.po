@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2024-03-01 15:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -405,19 +405,21 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "İptal (%1 saniye)"
 msgstr[1] "İptal (%1 saniye)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Yeni bir ekran görüntüsü al"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Yakalama Ayarları"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Ekran Görüntüleri"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Fare imlecini içer"
@@ -517,20 +519,51 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 saniye"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Yakalama Kipleri"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Spectacle'ı Yapılandır…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Yardım"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Ekran Görüntüleri"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Kayıt"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Kayıt Ayarları"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Ekran Görüntüsü"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Kayıt"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -629,6 +662,11 @@ msgstr "Yapılandır..."
 msgid "Capture Mode"
 msgstr "Yakalama Kipi"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Yakalama Ayarları"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -684,6 +722,11 @@ msgstr "Kare kod bulundu: %1"
 msgid "Found QR code with binary content."
 msgstr "İkili içerik içeren bir Kare Kod bulundu."
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Ekran kaydında fare imlecini göster"
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -703,17 +746,12 @@ msgstr "Duraklat"
 msgid "Play"
 msgstr "Oynat"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Kayıt Ayarları"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Ekran kaydında fare imlecini göster"
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Kaydı Bitir"
@@ -1814,6 +1852,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Capture Modes"
+#~ msgstr "Yakalama Kipleri"
 
 #~ msgctxt "Decimal number of seconds"
 #~ msgid "%2 seconds"

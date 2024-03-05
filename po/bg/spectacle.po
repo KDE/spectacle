@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2024-02-17 12:54+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -427,19 +427,21 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Отказ (%1 секунда)"
 msgstr[1] "Отказ (%1 секунди)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Нова екранна снимка"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Настройки на прихващане"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Снимка на екрана"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Включване курсора на мишката"
@@ -540,20 +542,51 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 секунди"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Режим на прихващане"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Конфигуриране на Spectacle…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Помощ"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Снимка на екрана"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Записване на видео"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Настройки на видеозапис"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Снимка на екрана"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Записване на видео"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -652,6 +685,11 @@ msgstr "Конфигуриране..."
 msgid "Capture Mode"
 msgstr "Режим на прихващане"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Настройки на прихващане"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -708,6 +746,11 @@ msgstr "Намерен QR код: %1"
 msgid "Found QR code with binary content."
 msgstr "Намерен е QR код с двоично съдържание."
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Показване на курсора на мишката по време на записване на екрана."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -727,17 +770,12 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Изпълнение"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Настройки на видеозапис"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Показване на курсора на мишката по време на записване на екрана."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Видеозаписът е завършен"
@@ -1857,6 +1895,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Capture Modes"
+#~ msgstr "Режим на прихващане"
 
 #~ msgctxt "Decimal number of seconds"
 #~ msgid "%2 seconds"

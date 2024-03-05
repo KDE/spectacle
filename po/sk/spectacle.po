@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2023-12-12 19:30+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -408,19 +408,21 @@ msgstr[0] "Zrušiť (%1 sekunda)"
 msgstr[1] "Zrušiť (%1 sekundy)"
 msgstr[2] "Zrušiť (%1 sekúnd)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Nastavenia záznamu"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Snímky obrazovky"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Zahrnúť ukazovateľ myši"
@@ -525,20 +527,51 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 sekunda"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Režimy zachytenia"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Nastaviť Spectacle…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Pomocník"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Snímky obrazovky"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Nahrávka"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Nastavenia záznamu"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Snímka obrazovky"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Nahrávka"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -639,6 +672,11 @@ msgstr "Nastaviť..."
 msgid "Capture Mode"
 msgstr "Režim záznamu"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Nastavenia záznamu"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -694,6 +732,11 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Zobraziť kurzor myši v zázname obrazovky."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -713,17 +756,12 @@ msgstr "Pozastaviť"
 msgid "Play"
 msgstr "Prehrať"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Nastavenia záznamu"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Zobraziť kurzor myši v zázname obrazovky."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Dokončiť nahrávku"
@@ -1842,6 +1880,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Capture Modes"
+#~ msgstr "Režimy zachytenia"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

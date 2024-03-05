@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -413,20 +413,21 @@ msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "%1 sekund"
 msgstr[1] "%1 sekundit"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, fuzzy, kde-format
 #| msgid "Take a new Screenshot"
 msgid "Take a new screenshot"
 msgstr "Tehakse uus ekraanipilt"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr ""
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Tee uus pilt"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Kaasa arvatud hiirekursor"
@@ -538,21 +539,50 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 sekund"
 
-#: src/Gui/DialogPage.qml:105
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
-msgid "Capture Modes"
-msgstr "<b>Pildistamise režiim</b>"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr ""
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Tee uus pilt"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Salvesta ekraani"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Salvesta ekraani"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Tee uus pilt"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Salvesta ekraani"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -660,6 +690,11 @@ msgstr "Seadista ..."
 msgid "Capture Mode"
 msgstr "<b>Pildistamise režiim</b>"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -715,6 +750,12 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Hiirekursori näitamine ekraanipildil"
+
 #: src/Gui/RecordingView.qml:52
 #, fuzzy, kde-format
 #| msgid "Record Screen"
@@ -733,19 +774,13 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording Settings"
 msgstr "Salvesta ekraani"
 
-#: src/Gui/RecordOptions.qml:42
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Hiirekursori näitamine ekraanipildil"
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1897,6 +1932,11 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "<b>Capture Mode</b>"
+#~ msgid "Capture Modes"
+#~ msgstr "<b>Pildistamise režiim</b>"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

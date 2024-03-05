@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2024-02-14 09:11+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -424,19 +424,21 @@ msgstr[1] "Скасувати (%1 секунди)"
 msgstr[2] "Скасувати (%1 секунд)"
 msgstr[3] "Скасувати (%1 секунда)"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
 msgstr "Зробити новий знімок"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Параметри зйомки"
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Знімки вікон"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Включити вказівник миші"
@@ -535,20 +537,51 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 секунд"
 
-#: src/Gui/DialogPage.qml:105
-#, kde-format
-msgid "Capture Modes"
-msgstr "Режими захоплення"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Налаштувати Spectacle…"
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr "Довідка"
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Знімки вікон"
+
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "Запис"
+
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "Параметри запису"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Знімок вікна"
+
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "Запис"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -647,6 +680,11 @@ msgstr "Налаштувати…"
 msgid "Capture Mode"
 msgstr "Режим захоплення"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr "Параметри зйомки"
+
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
@@ -701,6 +739,11 @@ msgstr "Виявлено QR-код: %1"
 msgid "Found QR code with binary content."
 msgstr "Виявлено QR-код із двійковим вмістом."
 
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, kde-format
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Показувати вказівник миші на записі з екрана."
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -720,17 +763,12 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Пуск"
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr "Параметри запису"
 
-#: src/Gui/RecordOptions.qml:42
-#, kde-format
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Показувати вказівник миші на записі з екрана."
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr "Завершити записування"
@@ -1850,6 +1888,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Capture Modes"
+#~ msgstr "Режими захоплення"
 
 #~ msgctxt "Decimal number of seconds"
 #~ msgid "%2 seconds"

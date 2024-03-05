@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-04 00:37+0000\n"
+"POT-Creation-Date: 2024-03-05 00:37+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -431,20 +431,21 @@ msgstr[1] " sekunda"
 msgstr[2] " sekunda"
 msgstr[3] " sekunda"
 
-#: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:72
+#: src/Gui/CaptureOptions.qml:17
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "Take a new screenshot"
 msgstr "Uhvati novi snimak"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:122
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr ""
+#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Settings"
+msgstr "Uhvati novi snimak"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordOptions.qml:41
+#: src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Uključi pokazivač miša"
@@ -556,21 +557,53 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr " sekunda"
 
-#: src/Gui/DialogPage.qml:105
-#, fuzzy, kde-format
-#| msgid "<b>Capture Mode</b>"
-msgid "Capture Modes"
-msgstr "<b>Režim hvatanja</b>"
-
-#: src/Gui/DialogPage.qml:136
+#: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr ""
 
-#: src/Gui/DialogPage.qml:142 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
 msgid "Help"
 msgstr ""
+
+#: src/Gui/DialogPage.qml:87
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:group"
+msgid "Screenshot Modes"
+msgstr "Uhvati novi snimak"
+
+# >> @item:inlistbox
+#: src/Gui/DialogPage.qml:128
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@title:group"
+msgid "Recording Modes"
+msgstr "aktivni prozor"
+
+# >> @item:inlistbox
+#: src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@title:group"
+msgid "Recording Settings"
+msgstr "trenutni ekran"
+
+#: src/Gui/DialogPage.qml:200
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "@title:tab"
+msgid "Screenshot"
+msgstr "Uhvati novi snimak"
+
+# >> @item:inlistbox
+#: src/Gui/DialogPage.qml:226
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@title:tab"
+msgid "Recording"
+msgstr "aktivni prozor"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -681,6 +714,11 @@ msgstr "Podešavanje"
 msgid "Capture Mode"
 msgstr "<b>Režim hvatanja</b>"
 
+#: src/Gui/OptionsMenu.cpp:68
+#, kde-format
+msgid "Capture Settings"
+msgstr ""
+
 # switch-rule: t-cursor > t-pointer
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
@@ -741,6 +779,13 @@ msgstr ""
 msgid "Found QR code with binary content."
 msgstr ""
 
+# switch-rule: t-cursor > t-pointer
+#: src/Gui/RecordingSettingsColumn.qml:17
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgid "Show the mouse cursor in the screen recording."
+msgstr "Prikaži pokazivač miša u snimku ekrana"
+
 #: src/Gui/RecordingView.qml:52
 #, kde-format
 msgid ""
@@ -758,19 +803,12 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: src/Gui/RecordOptions.qml:33
+#: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
 msgstr ""
 
-# switch-rule: t-cursor > t-pointer
-#: src/Gui/RecordOptions.qml:42
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
-msgid "Show the mouse cursor in the screen recording."
-msgstr "Prikaži pokazivač miša u snimku ekrana"
-
-#: src/Gui/RecordOptions.qml:53
+#: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
 msgstr ""
@@ -1935,6 +1973,11 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "<b>Capture Mode</b>"
+#~ msgid "Capture Modes"
+#~ msgstr "<b>Režim hvatanja</b>"
 
 # >! Plurals.
 #, fuzzy
