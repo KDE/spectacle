@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-05 00:37+0000\n"
-"PO-Revision-Date: 2024-03-01 15:47+0300\n"
+"PO-Revision-Date: 2024-03-05 10:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -97,14 +97,14 @@ msgid ""
 "- w, window"
 msgstr ""
 "Verilen kipi kullanarak ekranı kaydet. Kipler:\n"
-"- r, bölge\n"
-"- s, ekran\n"
-"- w, pencere"
+"— r, bölge\n"
+"— s, ekran\n"
+"— w, pencere"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Bir ekran görüntüsü almadan Spectacle'ı başlat"
+msgstr "Bir ekran görüntüsü almadan Spectacle’ı başlat"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -119,7 +119,7 @@ msgstr "Ekran görüntüsü al ve arayüzü göstermeden çık"
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
-msgstr "DBus-Etkinleştirme kipinde başla"
+msgstr "DBus Etkinleştirme kipinde başla"
 
 #: src/CommandLineOptions.h:70
 #, kde-format
@@ -160,7 +160,7 @@ msgstr ""
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
-"DBus'a kayıt yapmadan yeni bir Spectacle grafik arabirim örneği başlatır"
+"DBus’a kayıt yapmadan yeni bir Spectacle grafik arabirim örneği başlatır"
 
 #: src/CommandLineOptions.h:100
 #, kde-format
@@ -238,7 +238,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
-"Video dışa aktarılamadı: Geçici dosya URL'si var olan bir yerel dosya "
+"Video dışa aktarılamadı: Geçici dosya URL’si, var olan bir yerel dosya "
 "olmalıdır"
 
 #: src/ExportManager.cpp:666
@@ -247,7 +247,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
-"Video dışa aktarılamadı: Çıktı dosyası URL'si bir dosya adı içeren geçerli "
+"Video dışa aktarılamadı: Çıktı dosyası URL’si, bir dosya adı içeren geçerli "
 "bir URL olmalıdır"
 
 #: src/ExportManager.cpp:741
@@ -411,12 +411,10 @@ msgid "Take a new screenshot"
 msgstr "Yeni bir ekran görüntüsü al"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Ekran Görüntüleri"
+msgstr "Ekran Görüntüsü Ayarları"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -477,7 +475,7 @@ msgstr "Elle kaydet veya kopyala işleminden sonra çık"
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
-"Görseli elle kaydettikten veya kopyaladıktan sonra Spectacle'den çıkın."
+"Görseli elle kaydettikten veya kopyaladıktan sonra Spectacle’dan çıkın."
 
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
@@ -522,7 +520,7 @@ msgstr "%1 saniye"
 #: src/Gui/DialogPage.qml:60
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr "Spectacle'ı Yapılandır…"
+msgstr "Spectacle’ı Yapılandır…"
 
 #: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
 #, kde-format
@@ -530,37 +528,31 @@ msgid "Help"
 msgstr "Yardım"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr "Ekran Görüntüleri"
+msgstr "Ekran Görüntüsü Kipleri"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr "Kayıt"
+msgstr "Kayıt Kipleri"
 
 #: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
 msgstr "Kayıt Ayarları"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Ekran Görüntüsü"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Kayıt"
@@ -573,7 +565,7 @@ msgstr "Öntanımlı Ekran Görüntüleri Klasörünü Aç"
 #: src/Gui/ExportMenu.cpp:120
 #, kde-format
 msgid "Other Application..."
-msgstr "Diğer Uygulama..."
+msgstr "Diğer Uygulama…"
 
 #: src/Gui/ExportMenu.cpp:152
 #, kde-format
@@ -620,7 +612,7 @@ msgstr "Kaydet"
 #: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
-msgstr "Farklı Kaydet..."
+msgstr "Farklı Kaydet…"
 
 #: src/Gui/MainToolBarContents.qml:71
 #, kde-format
@@ -655,7 +647,7 @@ msgstr "Seçenekler"
 #: src/Gui/MainToolBarContents.qml:141
 #, kde-format
 msgid "Configure..."
-msgstr "Yapılandır..."
+msgstr "Yapılandır…"
 
 #: src/Gui/OptionsMenu.cpp:42
 #, kde-format
@@ -886,7 +878,7 @@ msgstr "Yeni bir Spectacle penceresi aç"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Return focus to Spectacle"
-msgstr "Odağı Spectacle'e döndür"
+msgstr "Odağı Spectacle’e döndür"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:160
@@ -1216,7 +1208,7 @@ msgstr "En son kaydedilen dosyanın yolu"
 #: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, kde-format
 msgid "Last path used for \"save as\" action"
-msgstr "\"Farklı Kaydet\" eylemi için kullanılan son yol"
+msgstr "‘Farklı Kaydet’ eylemi için kullanılan son yol"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:180
@@ -1632,15 +1624,15 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Wayland üzerinde Spectacle, KDE Plasma'nın KWin bileşikleştiricisini "
-"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Spectacle'ı KDE "
+"Wayland üzerinde Spectacle, KDE Plasma’nın KWin bileşikleştiricisini "
+"gerektirir. Bu, şu anda kullanılabilir değil gibi görünüyor. Spectacle’ı KDE "
 "Plasma üzerinde kullanın veya başka bir ekran görüntüsü alma aracı seçin."
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr "Kaydedilemedi: Dosya URL'si yerel bir dosya değil"
+msgstr "Kaydedilemedi: Dosya URL’si yerel bir dosya değil"
 
 #: src/Platforms/VideoPlatformWayland.cpp:241
 #, kde-format
@@ -1652,13 +1644,13 @@ msgstr "Kaydedilemedi: Klasör oluşturulamıyor (%1)"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Kaydedilemedi: Geçici dosya URL'si yerel bir dosya değil (%1)"
+msgstr "Kaydedilemedi: Geçici dosya URL’si yerel bir dosya değil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr "Kaydedilemedi: Çıktı dosyası URL'si yerel bir dosya değil (%1)"
+msgstr "Kaydedilemedi: Çıktı dosyası URL’si yerel bir dosya değil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:299
 #, kde-format
@@ -1717,7 +1709,7 @@ msgstr "Pencere"
 #: src/ShortcutActions.cpp:38
 #, kde-format
 msgid "Launch Spectacle"
-msgstr "Spectacle'ı Başlat"
+msgstr "Spectacle’ı Başlat"
 
 #: src/ShortcutActions.cpp:44
 #, kde-format
@@ -1762,7 +1754,7 @@ msgstr "Dikdörtgen Bölgeyi Kaydet"
 #: src/ShortcutActions.cpp:92
 #, kde-format
 msgid "Launch Spectacle without capturing"
-msgstr "Spectacle'ı yakalama yapmadan başlat"
+msgstr "Spectacle’ı yakalama yapmadan başlat"
 
 #: src/SpectacleCore.cpp:348
 #, kde-format
@@ -1791,19 +1783,19 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Bir ekran görüntüsü '%2' konumuna '%1' olarak kaydedildi ve ekran "
+"Bir ekran görüntüsü ‘%2’ konumuna ‘%1’ olarak kaydedildi ve ekran "
 "görüntüsünün dosya yolu panoya kaydedildi."
 
 #: src/SpectacleCore.cpp:884
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Bir ekran görüntüsü Resimler klasörüne '%1' olarak kaydedildi."
+msgstr "Bir ekran görüntüsü Resimler klasörüne ‘%1’ olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:887
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Bir ekran görüntüsü '%2' klasörüne '%1' olarak kaydedildi."
+msgstr "Bir ekran görüntüsü ‘%2’ klasörüne ‘%1’ olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:891
 #, kde-format
@@ -1816,19 +1808,19 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Bir kayıt '%2' klasörüne '%1' olarak kaydedildi ve kaydın dosya yolu panoya "
+"Bir kayıt ‘%2’ klasörüne ‘%1’ olarak kaydedildi ve kaydın dosya yolu panoya "
 "kaydedildi."
 
 #: src/SpectacleCore.cpp:898
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Bir kayıt Videolar klasörüne '%1' olarak kaydedildi."
+msgstr "Bir kayıt Videolar klasörüne ‘%1’ olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:900
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Bir kayıt '%2' klasörüne '%1' olarak kaydedildi."
+msgstr "Bir kayıt ‘%2’ klasörüne ‘%1’ olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:911
 #, kde-format
