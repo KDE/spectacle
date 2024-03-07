@@ -89,7 +89,9 @@ public:
 
     void setShowMagnifier(bool show)
     {
-        show = show && Settings::showMagnifier() && validMagnifierLocation(magnifierLocation);
+        show = (show || Settings::showMagnifier() == Settings::ShowMagnifierAlways) //
+            && Settings::showMagnifier() != Settings::ShowMagnifierNever //
+            && validMagnifierLocation(magnifierLocation);
         if (showMagnifier == show) {
             return;
         }
@@ -127,7 +129,7 @@ public:
     qreal devicePixelRatio = 1;
     qreal devicePixel = 1;
     QPointF mousePos;
-    bool showMagnifier = false;
+    bool showMagnifier = Settings::showMagnifier() == Settings::ShowMagnifierAlways;
     Location magnifierLocation = Location::FollowMouse;
     bool disableArrowKeys = false;
     QSet<Qt::Key> pressedKeys;

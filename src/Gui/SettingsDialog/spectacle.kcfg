@@ -47,9 +47,14 @@
         <label>Whether to use a light color mask in the region selection dialog</label>
         <default>false</default>
     </entry>
-    <entry name="showMagnifier" type="Bool">
-        <label>Whether to show a magnifier in the region selection</label>
-        <default>false</default>
+    <entry name="showMagnifier" type="Enum">
+        <label>Clipboard action which should be executed after the screenshot is taken</label>
+        <choices>
+        <choice name="ShowMagnifierNever"></choice>
+        <choice name="ShowMagnifierAlways"></choice>
+        <choice name="ShowMagnifierShiftHeld"></choice>
+        </choices>
+        <default>ShowMagnifierShiftHeld</default>
     </entry>
     <entry name="useReleaseToCapture" type="Bool">
         <label>Whether the screenshot should be captured after selecting the region and releasing the mouse</label>

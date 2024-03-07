@@ -13,7 +13,9 @@ FloatingBackground {
         let t = i18n("Take Screenshot:")
         t += '\n'
         t += '\n' + i18n("Create new selection rectangle:")
-        t += '\n'
+        if (Settings.showMagnifier === Settings.ShowMagnifierShiftHeld) {
+            t += '\n'
+        }
         if (!Settings.useReleaseToCapture) {
             t += '\n' + i18n("Move selection rectangle:")
             t += '\n'
@@ -31,7 +33,9 @@ FloatingBackground {
             i18nc("Mouse action", "Release left-click") : i18nc("Mouse action", "Double-click")
         t += '\n' + i18nc("Keyboard action", "Enter")
         t += '\n' + i18nc("Mouse action", "Drag outside selection rectangle")
-        t += '\n' + i18nc("Keyboard action", "+ Shift: Magnifier")
+        if (Settings.showMagnifier === Settings.ShowMagnifierShiftHeld) {
+            t += '\n' + i18nc("Keyboard action", "+ Shift: Magnifier")
+        }
         if (!Settings.useReleaseToCapture) {
             t += '\n' + i18nc("Mouse action", "Drag inside selection rectangle")
             t += '\n' + i18nc("Keyboard action", "Arrow keys")

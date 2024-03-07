@@ -176,50 +176,53 @@
     </widget>
    </item>
    <item row="10" column="1">
-    <widget class="QCheckBox" name="kcfg_showMagnifier">
-     <property name="text">
-      <string>Show magnifier</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1">
     <widget class="QCheckBox" name="kcfg_useReleaseToCapture">
      <property name="text">
       <string>Accept on click-and-release</string>
      </property>
     </widget>
    </item>
-   <item row="12" column="1">
+   <item row="11" column="1">
     <widget class="QCheckBox" name="kcfg_showCaptureInstructions">
      <property name="text">
       <string>Show capture instructions</string>
      </property>
     </widget>
    </item>
-   <item row="13" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="12" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Show magnifier:</string>
      </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>18</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
-   <item row="14" column="0">
+   <item row="12" column="1">
+    <widget class="QComboBox" name="kcfg_showMagnifier">
+     <item>
+      <property name="text">
+       <string>Never</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Always</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>While holding Shift</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="13" column="0">
     <widget class="QLabel" name="rememberLabel">
      <property name="text">
       <string>Remember selected area:</string>
      </property>
     </widget>
    </item>
-   <item row="14" column="1">
+   <item row="13" column="1">
     <widget class="QComboBox" name="kcfg_rememberSelectionRect">
      <item>
       <property name="text">
@@ -253,7 +256,6 @@
   <tabstop>kcfg_clipboardGroup</tabstop>
   <tabstop>kcfg_printKeyRunningAction</tabstop>
   <tabstop>kcfg_useLightMaskColor</tabstop>
-  <tabstop>kcfg_showMagnifier</tabstop>
   <tabstop>kcfg_useReleaseToCapture</tabstop>
   <tabstop>kcfg_showCaptureInstructions</tabstop>
   <tabstop>kcfg_rememberSelectionRect</tabstop>

@@ -292,7 +292,7 @@ MouseArea {
             visible: SelectionEditor.showMagnifier
                 && SelectionEditor.magnifierLocation !== SelectionEditor.None
                 && G.rectIntersects(rect, annotations.viewportRect)
-            active: Settings.showMagnifier
+            active: Settings.showMagnifier !== Settings.ShowMagnifierNever
             sourceComponent: Magnifier {
                 viewport: annotations
                 targetPoint: magnifierLoader.targetPoint
