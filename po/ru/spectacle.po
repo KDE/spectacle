@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-05 00:37+0000\n"
+"POT-Creation-Date: 2024-03-09 00:37+0000\n"
 "PO-Revision-Date: 2024-02-27 21:42+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -949,44 +949,55 @@ msgstr "Общее:"
 msgid "Use light background"
 msgstr "Использовать светлый фон"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showMagnifier)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:181
-#, kde-format
-msgid "Show magnifier"
-msgstr "Показывать экранную лупу"
-
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#: src/Gui/SettingsDialog/GeneralOptions.ui:181
 #, kde-format
 msgid "Accept on click-and-release"
 msgstr "Применять по нажатию и отпусканию левой кнопки мыши"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#: src/Gui/SettingsDialog/GeneralOptions.ui:188
 #, kde-format
 msgid "Show capture instructions"
 msgstr "Показывать инструкции по захвату"
 
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#, fuzzy, kde-format
+#| msgid "Show magnifier"
+msgid "Show magnifier:"
+msgstr "Показывать экранную лупу"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:203
+#: src/Gui/SettingsDialog/GeneralOptions.ui:229
+#, kde-format
+msgid "Never"
+msgstr "Никогда"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:208
+#: src/Gui/SettingsDialog/GeneralOptions.ui:234
+#, kde-format
+msgid "Always"
+msgstr "Всегда"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:213
+#, kde-format
+msgid "While holding Shift"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#: src/Gui/SettingsDialog/GeneralOptions.ui:221
 #, kde-format
 msgid "Remember selected area:"
 msgstr "Запоминать выбранную область:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:226
-#, kde-format
-msgid "Never"
-msgstr "Никогда"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:231
-#, kde-format
-msgid "Always"
-msgstr "Всегда"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:236
+#: src/Gui/SettingsDialog/GeneralOptions.ui:239
 #, kde-format
 msgid "Until Spectacle is closed"
 msgstr "До выхода из программы"
@@ -1113,7 +1124,9 @@ msgid "Save screenshot automatically after it is taken"
 msgstr "Сохранять снимок экрана в файл после его создания"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
+#. i18n: ectx: label, entry (showMagnifier), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Действия с буфером обмена выполняются после создания снимка экрана"
@@ -1124,14 +1137,8 @@ msgstr "Действия с буфером обмена выполняются �
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "Использовать светлый фон при создании прямоугольной области выделения"
 
-#. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
-#, kde-format
-msgid "Whether to show a magnifier in the region selection"
-msgstr "Использовать экранную лупу для прямоугольной области выделения"
-
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1141,104 +1148,104 @@ msgstr ""
 "прямоугольной области"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Показывать инструкции по захвату для прямоугольной области выделения"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:63
+#: src/Gui/SettingsDialog/spectacle.kcfg:68
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Запоминать прямоугольную область"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#: src/Gui/SettingsDialog/spectacle.kcfg:79
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Последняя использованная прямоугольная область"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Создавать снимок по щелчку мышью"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Не убирать указатель мыши со снимка экрана"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Не убирать указатель мыши при записи видео"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Не убирать заголовок и границы окна со снимка экрана"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Не убирать тень окна со снимка экрана"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:98
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Захватить только текущее контекстное меню"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:102
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Выйти после сохранения или копирования"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:106
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
 msgstr "Задержка"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:117
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
 #, kde-format
 msgid "Default filename"
 msgstr "Имя файла по умолчанию"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
+#: src/Gui/SettingsDialog/spectacle.kcfg:139
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Уровень сжатия при сохранении в формате с потерей качества"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Снимки экрана"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Default save image format"
 msgstr "Формат для сохранения снимков экрана по умолчанию"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:146
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Шаблон имени файла для сохранения снимков экрана"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1246,198 +1253,198 @@ msgstr "Снимок экрана"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
-#: src/Gui/SettingsDialog/spectacle.kcfg:192
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Путь последнего сохранённого снимка экрана"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Путь, использованный при последнем сохранении"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
 msgid "Default video format"
 msgstr "Формат для сохранения видео по умолчанию"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Шаблон имени файла для сохранения записей с экрана"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Записи экрана"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Запись экрана"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:207
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Последний использованный инструмент"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Ширина обводки произвольный линии"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Ширина обводки выделения"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:223
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Ширина обводки линии"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Ширина обводки стрелки"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Ширина обводки прямоугольника"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Ширина обводки эллипса"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
+#: src/Gui/SettingsDialog/spectacle.kcfg:244
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Цвет обводки произвольный линии"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:243
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Цвет обводки выделения"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:247
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Цвет обводки линии"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:251
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Цвет обводки стрелки"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:255
+#: src/Gui/SettingsDialog/spectacle.kcfg:260
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Цвет обводки прямоугольника"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:259
+#: src/Gui/SettingsDialog/spectacle.kcfg:264
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Цвет обводки эллипса"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:264
+#: src/Gui/SettingsDialog/spectacle.kcfg:269
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Цвет заполнения прямоугольника"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:268
+#: src/Gui/SettingsDialog/spectacle.kcfg:273
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Цвет заполнения эллипса"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:272
+#: src/Gui/SettingsDialog/spectacle.kcfg:277
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "Цвет заполнения чисел"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:277
+#: src/Gui/SettingsDialog/spectacle.kcfg:282
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Шрифт для текста"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:280
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Шрифт для чисел"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:284
-#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
+#: src/Gui/SettingsDialog/spectacle.kcfg:293
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Цвет шрифта"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «произвольная линия»"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:297
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «линия»"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:301
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «стрелка»"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:305
+#: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «прямоугольник»"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:309
+#: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «эллипс»"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:313
+#: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «текст»"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:317
+#: src/Gui/SettingsDialog/spectacle.kcfg:322
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Тень при использовании инструмента «цифры»"
@@ -1502,99 +1509,99 @@ msgstr "Создание снимка экрана:"
 msgid "Create new selection rectangle:"
 msgstr "Создание прямоугольной области выделения:"
 
-#: src/Gui/ShortcutsTextBox.qml:18
+#: src/Gui/ShortcutsTextBox.qml:20
 #, kde-format
 msgid "Move selection rectangle:"
 msgstr "Перемещение прямоугольной области выделения:"
 
-#: src/Gui/ShortcutsTextBox.qml:21
+#: src/Gui/ShortcutsTextBox.qml:23
 #, kde-format
 msgid "Resize selection rectangle:"
 msgstr "Изменение размера области выделения:"
 
-#: src/Gui/ShortcutsTextBox.qml:24
+#: src/Gui/ShortcutsTextBox.qml:26
 #, kde-format
 msgid "Reset selection:"
 msgstr "Отмена выделения:"
 
-#: src/Gui/ShortcutsTextBox.qml:26
+#: src/Gui/ShortcutsTextBox.qml:28
 #, kde-format
 msgid "Cancel:"
 msgstr "Отмена создания снимка экрана:"
 
-#: src/Gui/ShortcutsTextBox.qml:31
+#: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
 msgstr "Отпускание левой кнопки мыши"
 
-#: src/Gui/ShortcutsTextBox.qml:31
+#: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
 msgstr "Двойной щелчок левой кнопкой мыши"
 
-#: src/Gui/ShortcutsTextBox.qml:32
+#: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
 msgstr "Ввод"
 
-#: src/Gui/ShortcutsTextBox.qml:33
+#: src/Gui/ShortcutsTextBox.qml:35
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag outside selection rectangle"
 msgstr "Перемещение мыши с нажатой левой кнопкой вне выделения"
 
-#: src/Gui/ShortcutsTextBox.qml:34
+#: src/Gui/ShortcutsTextBox.qml:37
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
 msgstr "+ Shift: экранная лупа"
 
-#: src/Gui/ShortcutsTextBox.qml:36
+#: src/Gui/ShortcutsTextBox.qml:40
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag inside selection rectangle"
 msgstr "Перемещение мыши с нажатой левой кнопкой внутри выделения"
 
-#: src/Gui/ShortcutsTextBox.qml:37
+#: src/Gui/ShortcutsTextBox.qml:41
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys"
 msgstr "Клавиши со стрелками"
 
-#: src/Gui/ShortcutsTextBox.qml:38
+#: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
 msgstr "+ Shift: перемещение с шагом 1 пикс."
 
-#: src/Gui/ShortcutsTextBox.qml:39
+#: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
 msgstr "Области перетаскивания"
 
-#: src/Gui/ShortcutsTextBox.qml:40
+#: src/Gui/ShortcutsTextBox.qml:44
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
 msgstr "Клавиши со стрелками + Alt"
 
-#: src/Gui/ShortcutsTextBox.qml:41
+#: src/Gui/ShortcutsTextBox.qml:45
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
 msgstr "+ Shift: изменение размера с шагом 1 пикс."
 
-#: src/Gui/ShortcutsTextBox.qml:42
+#: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
 msgctxt "Mouse action"
 msgid "Right-click"
 msgstr "Щелчок правой кнопкой мыши"
 
-#: src/Gui/ShortcutsTextBox.qml:44
+#: src/Gui/ShortcutsTextBox.qml:48
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Escape"
@@ -1914,6 +1921,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Whether to show a magnifier in the region selection"
+#~ msgstr "Использовать экранную лупу для прямоугольной области выделения"
 
 #~ msgid "Capture Modes"
 #~ msgstr "Режимы съёмки"

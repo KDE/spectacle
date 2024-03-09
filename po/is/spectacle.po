@@ -1,22 +1,22 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2023 Guðmundur Erlingsson <gudmundure@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024 Guðmundur Erlingsson <gudmundure@gmail.com>
 # Sveinn í Felli <sv1@fellsnet.is>, 2022, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-05 00:37+0000\n"
-"PO-Revision-Date: 2024-02-19 11:03+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"POT-Creation-Date: 2024-03-09 00:37+0000\n"
+"PO-Revision-Date: 2024-03-06 14:16+0000\n"
+"Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -413,12 +413,10 @@ msgid "Take a new screenshot"
 msgstr "Taka nýja skjámynd"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Skjámyndir"
+msgstr "Skjámyndastillingar"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -531,37 +529,31 @@ msgid "Help"
 msgstr "Hjálp"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr "Skjámyndir"
+msgstr "Skjámyndasnið"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr "Upptaka"
+msgstr "Upptökusnið"
 
 #: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
 msgstr "Upptökustillingar"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Skjámynd"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Upptaka"
@@ -908,44 +900,55 @@ msgstr "Almennt:"
 msgid "Use light background"
 msgstr "Nota ljósan bakgrunn"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showMagnifier)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:181
-#, kde-format
-msgid "Show magnifier"
-msgstr "Birta skjástækkara"
-
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#: src/Gui/SettingsDialog/GeneralOptions.ui:181
 #, kde-format
 msgid "Accept on click-and-release"
 msgstr "Samþykkja þegar músarhnappi er sleppt"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#: src/Gui/SettingsDialog/GeneralOptions.ui:188
 #, kde-format
 msgid "Show capture instructions"
 msgstr "Sýna leiðbeiningar fyrir myndatöku"
 
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#, fuzzy, kde-format
+#| msgid "Show magnifier"
+msgid "Show magnifier:"
+msgstr "Birta skjástækkara"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:203
+#: src/Gui/SettingsDialog/GeneralOptions.ui:229
+#, kde-format
+msgid "Never"
+msgstr "Aldrei"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:208
+#: src/Gui/SettingsDialog/GeneralOptions.ui:234
+#, kde-format
+msgid "Always"
+msgstr "Alltaf"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:213
+#, kde-format
+msgid "While holding Shift"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#: src/Gui/SettingsDialog/GeneralOptions.ui:221
 #, kde-format
 msgid "Remember selected area:"
 msgstr "Muna valið svæði:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:226
-#, kde-format
-msgid "Never"
-msgstr "Aldrei"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:231
-#, kde-format
-msgid "Always"
-msgstr "Alltaf"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:236
+#: src/Gui/SettingsDialog/GeneralOptions.ui:239
 #, kde-format
 msgid "Until Spectacle is closed"
 msgstr "Þar til Spectacle er lokað"
@@ -1073,7 +1076,9 @@ msgid "Save screenshot automatically after it is taken"
 msgstr "Vista skjámynd sjálfkrafa eftir að hún er tekin"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
+#. i18n: ectx: label, entry (showMagnifier), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Klippispjaldsaðgerð sem á að framkvæma eftir að er skjámyndin er tekin"
@@ -1084,14 +1089,8 @@ msgstr "Klippispjaldsaðgerð sem á að framkvæma eftir að er skjámyndin er 
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "Hvort eigi að nota ljósa hulu í svæðisvalinu"
 
-#. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
-#, kde-format
-msgid "Whether to show a magnifier in the region selection"
-msgstr "Hvort eigi að sýna skjástækkun í svæðisvalinu"
-
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:55
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1101,104 +1100,104 @@ msgstr ""
 "músarhnappinum sleppt"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:59
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Hvort eigi að birta leiðbeiningar fyrir skjámyndatöku í svæðisvalinu"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:63
+#: src/Gui/SettingsDialog/spectacle.kcfg:68
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Muna síðasta rétthyrnda svæðið"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#: src/Gui/SettingsDialog/spectacle.kcfg:79
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Síðast notaða svæðið sem notandinn valdi"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:78
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Taka skjámynd við smell"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:82
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Hvort músarbendilinn eigi að vera með á skjámyndinni"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:86
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Hvort músarbendilinn eigi að vera með í myndskeiðinu"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:90
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Hvort gluggaskreytingar eigi að vera með á skjámyndinni"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:94
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Hvort skuggi við glugga eigi að vera með á skjámyndinni"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:98
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Taka bara mynd af þessari sprettvalmynd"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:102
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Hætta eftir vistun eða afritun á mynd"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:106
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
 msgstr "Töf"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:117
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
 #, kde-format
 msgid "Default filename"
 msgstr "Sjálfgefið skrárheiti"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
+#: src/Gui/SettingsDialog/spectacle.kcfg:139
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Þjöppunargæði myndsniða með gagnatapi"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Skjámyndir"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:142
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Default save image format"
 msgstr "Sjálfgefið myndsnið við vistun"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:146
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Skrárheiti sniðmáts fyrir vistun skjámynda"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1206,198 +1205,198 @@ msgstr "Skjámynd"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
-#: src/Gui/SettingsDialog/spectacle.kcfg:192
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Slóð að skránni sem síðast var vistuð"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Síðasta slóð sem var notuð í aðgerðinni \"vista sem\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
 msgid "Default video format"
 msgstr "Sjálfgefið myndskeiðssnið"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Skrárheiti sniðmáts fyrir vistun skjávörpunar (screencasts)"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Skjáupptökur"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Skjávörpun"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:207
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Glósuverkfærið sem var notað síðast"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:213
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Línubreidd fyrir fríhendisverkfæri"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:218
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Línubreidd fyrir áherslulitunarverkfæri"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:223
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Línubreidd fyrir línuverkfæri"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#: src/Gui/SettingsDialog/spectacle.kcfg:228
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Línubreidd fyrir örvaverkfæri"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:233
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Línubreidd fyrir rétthyrningsverkfæri"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:238
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Línubreidd fyrir sporöskjuverkfæri"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
+#: src/Gui/SettingsDialog/spectacle.kcfg:244
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Línulitur fyrir fríhendisverkfæri"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:243
+#: src/Gui/SettingsDialog/spectacle.kcfg:248
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Línulitur fyrir áherslulitunarverkfæri"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:247
+#: src/Gui/SettingsDialog/spectacle.kcfg:252
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Línulitur fyrir línuverkfæri"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:251
+#: src/Gui/SettingsDialog/spectacle.kcfg:256
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Línulitur fyrir örvaverkfæri"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:255
+#: src/Gui/SettingsDialog/spectacle.kcfg:260
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Línulitur fyrir rétthyrningsverkfæri"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:259
+#: src/Gui/SettingsDialog/spectacle.kcfg:264
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Línulitur fyrir sporöskjuverkfæri"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:264
+#: src/Gui/SettingsDialog/spectacle.kcfg:269
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Fyllilitur fyrir rétthyrningsverkfæri "
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:268
+#: src/Gui/SettingsDialog/spectacle.kcfg:273
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Fyllilitur fyrir sporöskjuverkfæri"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:272
+#: src/Gui/SettingsDialog/spectacle.kcfg:277
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "Fyllilitur fyrir glósuverkfæri talna"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:277
+#: src/Gui/SettingsDialog/spectacle.kcfg:282
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Letur fyrir textaglósur"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:280
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Letur fyrir númeraglósur"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:284
-#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
+#: src/Gui/SettingsDialog/spectacle.kcfg:293
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Leturlitur fyrir glósur"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Hvort fríhendisglósur séu með skugga"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:297
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Hvort línuglósur séu með skugga"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:301
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Hvort örvaglósur séu með skugga"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:305
+#: src/Gui/SettingsDialog/spectacle.kcfg:310
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Hvort rétthyrningsglósur séu með skugga"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:309
+#: src/Gui/SettingsDialog/spectacle.kcfg:314
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Hvort sporöskuglósur séu með skugga"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:313
+#: src/Gui/SettingsDialog/spectacle.kcfg:318
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Hvort textaglósur séu með skugga"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:317
+#: src/Gui/SettingsDialog/spectacle.kcfg:322
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Hvort númeraglósur séu með skugga"
@@ -1462,99 +1461,99 @@ msgstr "Taka skjámynd:"
 msgid "Create new selection rectangle:"
 msgstr "Búa til nýjan valrétthyrning:"
 
-#: src/Gui/ShortcutsTextBox.qml:18
+#: src/Gui/ShortcutsTextBox.qml:20
 #, kde-format
 msgid "Move selection rectangle:"
 msgstr "Færa valrétthyrning:"
 
-#: src/Gui/ShortcutsTextBox.qml:21
+#: src/Gui/ShortcutsTextBox.qml:23
 #, kde-format
 msgid "Resize selection rectangle:"
 msgstr "Breyta stærð valrétthyrnings:"
 
-#: src/Gui/ShortcutsTextBox.qml:24
+#: src/Gui/ShortcutsTextBox.qml:26
 #, kde-format
 msgid "Reset selection:"
 msgstr "Endurstilla valið:"
 
-#: src/Gui/ShortcutsTextBox.qml:26
+#: src/Gui/ShortcutsTextBox.qml:28
 #, kde-format
 msgid "Cancel:"
 msgstr "Hætta við:"
 
-#: src/Gui/ShortcutsTextBox.qml:31
+#: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
 msgstr "Vinstrismella og sleppa"
 
-#: src/Gui/ShortcutsTextBox.qml:31
+#: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
 msgstr "Tvísmella"
 
-#: src/Gui/ShortcutsTextBox.qml:32
+#: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
 msgstr "Enter"
 
-#: src/Gui/ShortcutsTextBox.qml:33
+#: src/Gui/ShortcutsTextBox.qml:35
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag outside selection rectangle"
 msgstr "Draga fyrir utan valrétthyrninginn"
 
-#: src/Gui/ShortcutsTextBox.qml:34
+#: src/Gui/ShortcutsTextBox.qml:37
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
 msgstr "+ Shift: Skjástækkun"
 
-#: src/Gui/ShortcutsTextBox.qml:36
+#: src/Gui/ShortcutsTextBox.qml:40
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag inside selection rectangle"
 msgstr "Draga fyrir innan valrétthyrninginn"
 
-#: src/Gui/ShortcutsTextBox.qml:37
+#: src/Gui/ShortcutsTextBox.qml:41
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys"
 msgstr "Örvalyklar"
 
-#: src/Gui/ShortcutsTextBox.qml:38
+#: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
 msgstr "+ Shift: færa til í 1 mynddíls skrefum"
 
-#: src/Gui/ShortcutsTextBox.qml:39
+#: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
 msgstr "Draga haldföng"
 
-#: src/Gui/ShortcutsTextBox.qml:40
+#: src/Gui/ShortcutsTextBox.qml:44
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
 msgstr "Örvalyklar + Alt"
 
-#: src/Gui/ShortcutsTextBox.qml:41
+#: src/Gui/ShortcutsTextBox.qml:45
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
 msgstr "+ Shift: breyta stærð í 1 mynddíls skrefum"
 
-#: src/Gui/ShortcutsTextBox.qml:42
+#: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
 msgctxt "Mouse action"
 msgid "Right-click"
 msgstr "Hægri músarsmellur"
 
-#: src/Gui/ShortcutsTextBox.qml:44
+#: src/Gui/ShortcutsTextBox.qml:48
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Escape"
@@ -1857,6 +1856,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Whether to show a magnifier in the region selection"
+#~ msgstr "Hvort eigi að sýna skjástækkun í svæðisvalinu"
 
 #~ msgid "Capture Modes"
 #~ msgstr "Tökustillingar"
