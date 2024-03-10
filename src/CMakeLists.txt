@@ -87,6 +87,9 @@ ki18n_wrap_ui(spectacle
     Gui/SettingsDialog/VideoSaveOptions.ui
 )
 
+# Needed to compile with vips
+target_compile_options (spectacle PRIVATE -fexceptions)
+
 target_link_libraries(spectacle PRIVATE
     Qt::Concurrent
     Qt::DBus
@@ -113,6 +116,7 @@ target_link_libraries(spectacle PRIVATE
     Wayland::Client
     LayerShellQt::Interface
     ZXing::Core
+    PkgConfig::vips
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES

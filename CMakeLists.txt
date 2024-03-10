@@ -79,6 +79,9 @@ find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(ZXing REQUIRED)
+find_package(PkgConfig)
+pkg_check_modules(vips vips>=8.15 REQUIRED IMPORTED_TARGET vips-cpp)
+
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
     TYPE REQUIRED

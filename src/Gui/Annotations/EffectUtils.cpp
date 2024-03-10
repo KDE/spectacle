@@ -5,6 +5,7 @@
  */
 
 #include "EffectUtils.h"
+#include "QtVips.h"
 
 #include <QDebug>
 #include <QPainter>
@@ -97,7 +98,7 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     }
 
     const QRectF &totalRect = geometryTrait->visualRect;
-    QImage shadow(totalRect.size().toSize() * devicePixelRatio, QImage::Format_ARGB32_Premultiplied);
+    QImage shadow((totalRect.size() * devicePixelRatio).toSize(), QImage::Format_ARGB32_Premultiplied);
     shadow.fill(Qt::transparent);
     QPainter p(&shadow);
     p.setRenderHint(QPainter::Antialiasing);
@@ -105,7 +106,10 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     p.setPen(Qt::NoPen);
     p.setBrush(Qt::NoBrush);
     p.scale(devicePixelRatio, devicePixelRatio);
-    p.translate(-totalRect.topLeft() + QPointF{Traits::Shadow::margins.left(), Traits::Shadow::margins.top()});
+    p.translate(-totalRect.topLeft() + QPointF{Traits::Shadow::xOffset, Traits::Shadow::yOffset});
+
+    static constexpr auto alpha = 0.5;
+    static constexpr uint8_t alpha8bit = 127;
 
     auto &fillTrait = std::get<Traits::Fill::Opt>(traits);
     auto &strokeTrait = std::get<Traits::Stroke::Opt>(traits);
@@ -115,15 +119,15 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     bool hasStroke = strokeTrait && Traits::isValidTrait(strokeTrait.value());
     // No need to draw fill and stroke separately if they're both opaque
     if (fillBrush && hasStroke && fillBrush->isOpaque() && strokeTrait->pen.brush().isOpaque()) {
-        p.setBrush(QColor(0, 0, 0, 28));
+        p.setBrush(QColor(0, 0, 0, alpha8bit));
         p.drawPath((strokeTrait->path | geometryTrait->path).simplified());
     } else {
         if (fillBrush) {
-            p.setBrush(QColor(0, 0, 0, std::ceil(28 * fillBrush->color().alphaF())));
+            p.setBrush(QColor(0, 0, 0, std::ceil(alpha8bit * fillBrush->color().alphaF())));
             p.drawPath(geometryTrait->path);
         }
         if (strokeTrait) {
-            p.setBrush(QColor(0, 0, 0, std::ceil(28 * strokeTrait->pen.color().alphaF())));
+            p.setBrush(QColor(0, 0, 0, std::ceil(alpha8bit * strokeTrait->pen.color().alphaF())));
             p.drawPath(strokeTrait->path);
         }
     }
@@ -136,13 +140,13 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
         p.setPen(Qt::black);
         // Color emojis don't get semi-transparent shadows with a semi-transparent pen.
         // setOpacity disables sub-pixel text antialiasing, but we don't need sub-pixel AA here.
-        p.setOpacity(std::ceil(28 * textTrait->brush.color().alphaF()) / 255.0);
+        p.setOpacity(alpha * textTrait->brush.color().alphaF());
         p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
     }
-
     p.end();
+    auto vImage = QtVips::vImageFromMemory(shadow);
+    vImage = vImage.gaussblur(Traits::Shadow::radius * devicePixelRatio);
     // We only want black shadows with opacity, so we only need black and 8 bits of alpha.
     // If we don't do this, color emojis won't have black semi-transparent shadows.
-    shadow.convertTo(QImage::Format_Alpha8);
-    return fastPseudoBlur(shadow, Traits::Shadow::blurRadius, devicePixelRatio);
+    return QtVips::vImageWriteToMemory(vImage).convertToFormat(QImage::Format_Alpha8);
 }

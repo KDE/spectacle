@@ -5,6 +5,7 @@
 
 #include "Traits.h"
 #include "Geometry.h"
+#include "QtVips.h"
 #include <QLocale>
 #include <QUuid>
 
@@ -37,16 +38,6 @@ QString Traits::Text::text() const
 // ImageEffects
 
 static const auto factorKey = u"factor"_s;
-QImage imageCopyHelper(const QImage &image, const QRectF &copyRect)
-{
-    if (copyRect.size() != image.size()) {
-        return image.copy(std::floor<int>(copyRect.x()),
-                          std::floor<int>(copyRect.y()), //
-                          std::ceil<int>(copyRect.width()),
-                          std::ceil<int>(copyRect.height()));
-    }
-    return image;
-}
 
 Traits::ImageEffects::Blur::Blur(uint factor)
     : factor(factor)
@@ -55,7 +46,7 @@ Traits::ImageEffects::Blur::Blur(uint factor)
 
 bool Traits::ImageEffects::Blur::isValid() const
 {
-    return factor > 1;
+    return factor >= minimum;
 }
 
 QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -68,20 +59,23 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
          || backingStoreCache.text(factorKey).toFloat() != factor)
         && getImage) {
         backingStoreCache = getImage();
+        if (backingStoreCache.isNull()) {
+            return backingStoreCache;
+        }
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
         const auto effectFactor = factor * dpr;
-        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
-        // A poor man's blur. It's fast, but not high quality.
-        // It's somewhat blocky, but it's definitely blurry.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
+        auto vImage = QtVips::vImageFromMemory(backingStoreCache);
+        vImage = vImage.gaussblur(effectFactor);
+        backingStoreCache = QtVips::vImageWriteToMemory(vImage);
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != backingStoreCache.size()) {
+        return backingStoreCache.copy(copyRect);
+    }
+    return backingStoreCache;
 }
 
 Traits::ImageEffects::Pixelate::Pixelate(uint factor)
@@ -91,7 +85,7 @@ Traits::ImageEffects::Pixelate::Pixelate(uint factor)
 
 bool Traits::ImageEffects::Pixelate::isValid() const
 {
-    return factor > 1;
+    return factor >= minimum;
 }
 
 QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -104,19 +98,25 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
          || backingStoreCache.text(factorKey).toFloat() != factor)
         && getImage) {
         backingStoreCache = getImage();
+        if (backingStoreCache.isNull()) {
+            return backingStoreCache;
+        }
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
         const auto effectFactor = factor * dpr;
-        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
         // Smooth when scaling down to average out the colors.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::FastTransformation);
+        auto vImage = QtVips::vImageFromMemory(backingStoreCache);
+        vImage = vImage.resize(1 / effectFactor, vips::VImage::option()->set("kernel", VIPS_KERNEL_LANCZOS3));
+        vImage = vImage.resize(effectFactor, vips::VImage::option()->set("kernel", VIPS_KERNEL_NEAREST));
+        backingStoreCache = QtVips::vImageWriteToMemory(vImage);
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != backingStoreCache.size()) {
+        return backingStoreCache.copy(copyRect);
+    }
+    return backingStoreCache;
 }
 
 // Functions
@@ -601,7 +601,6 @@ QDebug operator<<(QDebug debug, const Traits::Shadow &trait)
     debug << ')';
     return debug;
 }
-
 
 // ImageEffects
 
