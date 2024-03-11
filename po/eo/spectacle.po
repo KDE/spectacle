@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-09 00:37+0000\n"
-"PO-Revision-Date: 2024-02-15 06:58+0100\n"
+"PO-Revision-Date: 2024-03-10 10:31+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -414,12 +414,10 @@ msgid "Take a new screenshot"
 msgstr "Preni novan ekrankopion"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Ekrankopioj"
+msgstr "Agordoj de Ekrankopio"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -532,37 +530,31 @@ msgid "Help"
 msgstr "Helpo"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr "Ekrankopioj"
+msgstr "Ekrankopi-Reĝimoj"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr "Registrado"
+msgstr "Registradaj Reĝimoj"
 
 #: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
 msgstr "Registradaj Agordoj"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Registrado"
@@ -923,10 +915,9 @@ msgstr "Montri kaptajn instrukciojn"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Montri lupeon"
+msgstr "Montri lupeon:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -948,7 +939,7 @@ msgstr "Ĉiam"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Tenante Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1865,9 +1856,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Whether to show a magnifier in the region selection"
-#~ msgstr "Ĉu montri pligrandilon en la regionelekto"
-
-#~ msgid "Capture Modes"
-#~ msgstr "Kaptaj Reĝimoj"
