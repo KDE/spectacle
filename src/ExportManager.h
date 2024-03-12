@@ -62,6 +62,7 @@ public:
      * The title used to fill the window title template in formatted file names.
      */
     QString windowTitle() const;
+    void setWindowTitle(const QString &windowTitle);
 
     /**
      * Returns a formatted filename using a template string.
@@ -69,11 +70,21 @@ public:
     QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameTemplate()) const;
 
     /**
+     * The URL to use for an automatically named and saved file.
+     */
+    QUrl getAutosaveFilename() const;
+
+    /**
      * The URL to record a video with before it is exported.
      */
     QUrl tempVideoUrl();
 
     const QTemporaryDir *temporaryDir();
+
+    /**
+     * Save a temporary screenshot file and return its URL.
+     */
+    QUrl tempSave();
 
     struct Placeholder {
         enum Flag {
@@ -112,6 +123,26 @@ public:
 
     static const QList<Placeholder> filenamePlaceholders;
 
+    /**
+     * Export an image with the given actions using the given URL or an automatically generated URL.
+     */
+    void exportImage(ExportManager::Actions actions, QUrl url = {});
+
+    /**
+     * Export an video with the given actions using the given URL or an automatically generated URL.
+     */
+    void exportVideo(ExportManager::Actions actions, const QUrl &inputUrl, QUrl outputUrl = {});
+
+    /**
+     * Scan the current image for a QR code.
+     */
+    void scanQRCode();
+
+    /**
+     * Print the current image with the given printer.
+     */
+    void doPrint(QPrinter *printer);
+
 Q_SIGNALS:
     void imageChanged();
 
@@ -119,17 +150,6 @@ Q_SIGNALS:
     void imageExported(const ExportManager::Actions &actions, const QUrl &url = {});
     void videoExported(const ExportManager::Actions &actions, const QUrl &url = {});
     void qrCodeScanned(const QVariant &content);
-
-public Q_SLOTS:
-
-    QUrl getAutosaveFilename() const;
-    QUrl tempSave();
-
-    void setWindowTitle(const QString &windowTitle);
-    void exportImage(ExportManager::Actions actions, QUrl url = {});
-    void exportVideo(ExportManager::Actions actions, const QUrl &inputUrl, QUrl outputUrl = {});
-    void scanQRCode();
-    void doPrint(QPrinter *printer);
 
 private:
     QString truncatedFilename(const QString &filename) const;
