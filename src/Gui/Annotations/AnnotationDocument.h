@@ -131,7 +131,7 @@ Q_SIGNALS:
     void imageSizeChanged();
     void imageDprChanged();
 
-    void repaintNeeded(RepaintTypes types);
+    void repaintNeeded(AnnotationDocument::RepaintTypes types);
 
 private:
     friend class SelectedItemWrapper;
