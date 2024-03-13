@@ -684,7 +684,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
                 bool isCaptureWindow = !CaptureWindow::instances().isEmpty();
                 SpectacleWindow *window = nullptr;
                 if (isCaptureWindow) {
-                    window = CaptureWindow::instances().front();
+                    window = CaptureWindow::instances().constFirst();
                 } else {
                     window = ViewerWindow::instance();
                 }
