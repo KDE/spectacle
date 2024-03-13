@@ -683,7 +683,7 @@ void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool include
     // All parents are known now, find other transient children.
     // Assume that the lowest window is behind everything else, then if a new
     // transient window is discovered, its children can then also be found.
-    auto winList = KX11Extras::stackingOrder();
+    const auto winList = KX11Extras::stackingOrder();
     for (auto winId : winList) {
         QRect winRect;
         auto parentWindow = getTransientWindowParent(winId, winRect, includeDecorations);
