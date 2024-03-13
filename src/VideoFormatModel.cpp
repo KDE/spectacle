@@ -16,7 +16,6 @@ VideoFormatModel::VideoFormatModel(VideoPlatform::Formats formats, QObject *pare
     m_roleNames[FormatRole] = "format"_ba;
     m_roleNames[ExtensionRole] = "extension"_ba;
 
-    QStringList extensions;
     if (formats.testFlag(VideoPlatform::WebM_VP9)) {
         m_data.append({
             i18nc("@item:inlistbox Container/encoder", "WebM/VP9"),
