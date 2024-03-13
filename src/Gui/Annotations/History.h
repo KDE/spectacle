@@ -165,7 +165,7 @@ public:
     HistoryItem::shared_ptr currentItem() const;
 
     // Get filtered copies of the undo and redo lists using the given function.
-    Lists filteredLists(std::function<bool(History::List::const_reference)> function) const;
+    Lists filteredLists(const std::function<bool(History::List::const_reference)> &function) const;
 
     // Push a new object onto the end of the undo list and clear the redo list.
     // Returns whether the undo and redo lists changed.

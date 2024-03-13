@@ -189,7 +189,7 @@ HistoryItem::shared_ptr History::currentItem() const
     return {};
 }
 
-History::Lists History::filteredLists(std::function<bool(History::List::const_reference)> function) const
+History::Lists History::filteredLists(const std::function<bool(History::List::const_reference)> &function) const
 {
     History::Lists lists;
     for (auto it = m_undoList.cbegin(); it != m_undoList.cend(); ++it) {
