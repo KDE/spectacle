@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-09 00:37+0000\n"
-"PO-Revision-Date: 2024-03-09 04:46\n"
+"POT-Creation-Date: 2024-03-14 00:37+0000\n"
+"PO-Revision-Date: 2024-03-13 20:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -887,10 +887,9 @@ msgstr "显示截图操作方式"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "显示放大镜"
+msgstr "显示放大镜："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -912,7 +911,7 @@ msgstr "总是"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "按住 Shift 时"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1806,17 +1805,14 @@ msgstr "打开"
 msgid "Annotate"
 msgstr "标注"
 
-#: src/VideoFormatModel.cpp:22
+#: src/VideoFormatModel.cpp:21
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:29
+#: src/VideoFormatModel.cpp:28
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Whether to show a magnifier in the region selection"
-#~ msgstr "是否在截图区域上显示放大镜"
