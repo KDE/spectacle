@@ -14,6 +14,7 @@ class QScreen;
 #include <memory>
 
 class ScreenShotSource2;
+class ScreenShotSourceMeta2;
 class ScreenShotSourceWorkspace2;
 
 /**
@@ -56,11 +57,29 @@ private:
     void takeScreenShotArea(const QRect &area, ScreenShotFlags flags);
     void takeScreenShotActiveWindow(ScreenShotFlags flags);
     void takeScreenShotActiveScreen(ScreenShotFlags flags);
+    void takeScreenShotScreens(const QList<QScreen *> &screens, ScreenShotFlags flags);
     void takeScreenShotWorkspace(ScreenShotFlags flags);
     void takeScreenShotCroppable(ScreenShotFlags flags);
 
+    template<typename Source, typename OnFinished, typename OnError>
+    void trackSource(Source *source, std::function<OnFinished> onFinished, std::function<OnError> onError)
+    {
+        connect(source, &Source::finished, this, [source, onFinished](const auto &args... ) {
+            source->deleteLater();
+            if (!onFinished) {
+                return;
+            }
+            onFinished(args);
+        });
+        connect(source, &Source::errorOccurred, this, [source, onError]() {
+            source->deleteLater();
+            if (!onError) {
+                return;
+            }
+            onError();
+        });
+    }
     void trackSource(ScreenShotSource2 *source);
-    void trackCroppableSource(ScreenShotSourceWorkspace2 *source);
 
     int m_apiVersion = 1;
     GrabModes m_grabModes;
@@ -152,6 +171,29 @@ class ScreenShotSourceActiveScreen2 final : public ScreenShotSource2
 
 public:
     ScreenShotSourceActiveScreen2(ImagePlatformKWin::ScreenShotFlags flags);
+};
+
+/**
+ * The ScreenShotSourceMeta2 class represents a screenshot source that is made of several
+ * other sources.
+ */
+class ScreenShotSourceMeta2 final : public QObject
+{
+    Q_OBJECT
+
+public:
+    explicit ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources);
+
+Q_SIGNALS:
+    void finished(const QVector<QImage> &images);
+    void errorOccurred();
+
+private Q_SLOTS:
+    void handleSourceFinished();
+    void handleSourceErrorOccurred();
+
+private:
+    QVector<ScreenShotSource2 *> m_sources;
 };
 
 /**

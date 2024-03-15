@@ -6,6 +6,7 @@
 
 #include "ImagePlatformKWin.h"
 #include "ExportManager.h"
+#include "QtCV.h"
 
 #include <KWindowSystem>
 
@@ -161,6 +162,9 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
                 result.setText(u"windowTitle"_s, windowTitle);
                 ExportManager::instance()->setWindowTitle(windowTitle);
             }
+            auto x = reply.value().value(u"x"_s).toReal();
+            auto y = reply.value().value(u"y"_s).toReal();
+            result.setOffset(QPoint(x, y));
         }
     }
 
@@ -175,9 +179,19 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         result.setDevicePixelRatio(scale);
     }
 
-    const auto screen = metadata.value(u"screen"_s).toString();
-    if (!screen.isEmpty()) {
-        result.setText(u"screen"_s, screen);
+    const auto screenId = metadata.value(u"screen"_s).toString();
+    if (!screenId.isEmpty()) {
+        result.setText(u"screen"_s, screenId);
+        if (result.offset().isNull()) {
+            const auto screens = qGuiApp->screens();
+            for (auto screen : screens) {
+                if (screen->name() == screenId) {
+                    auto pos = screen->geometry().topLeft();
+                    result.setOffset(pos);
+                    break;
+                }
+            }
+        }
     }
 
     QDataStream stream(&file);
@@ -246,6 +260,41 @@ ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(ImagePlatformKWin::
 ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::ScreenShotFlags flags)
     : ScreenShotSource2(u"CaptureWorkspace"_s, screenShotFlagsToVardict(flags))
 {
+}
+
+ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
+    : m_sources(sources)
+{
+    for (ScreenShotSource2 *source : sources) {
+        source->setParent(this);
+
+        connect(source, &ScreenShotSource2::finished, this, &ScreenShotSourceMeta2::handleSourceFinished);
+        connect(source, &ScreenShotSource2::errorOccurred, this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
+    }
+}
+
+void ScreenShotSourceMeta2::handleSourceFinished()
+{
+    const bool isFinished = std::all_of(m_sources.constBegin(), m_sources.constEnd(), [](const ScreenShotSource2 *source) {
+        return !source->result().isNull();
+    });
+    if (!isFinished) {
+        return;
+    }
+
+    QVector<QImage> results;
+    results.reserve(m_sources.count());
+
+    for (const ScreenShotSource2 *source : std::as_const(m_sources)) {
+        results.emplaceBack(source->result());
+    }
+
+    Q_EMIT finished(results);
+}
+
+void ScreenShotSourceMeta2::handleSourceErrorOccurred()
+{
+    Q_EMIT errorOccurred();
 }
 
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
@@ -340,26 +389,13 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
 
 void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 {
-    connect(source, &ScreenShotSource2::finished, this, [this, source](const QImage &image) {
-        source->deleteLater();
+    static const std::function onFinished = [this](const QImage &image) {
         Q_EMIT newScreenshotTaken(image);
-    });
-    connect(source, &ScreenShotSource2::errorOccurred, this, [this, source]() {
-        source->deleteLater();
+    };
+    static const std::function onError = [this]() {
         Q_EMIT newScreenshotFailed();
-    });
-}
-
-void ImagePlatformKWin::trackCroppableSource(ScreenShotSourceWorkspace2 *source)
-{
-    connect(source, &ScreenShotSourceWorkspace2::finished, this, [this, source](const QImage &image) {
-        source->deleteLater();
-        Q_EMIT newCroppableScreenshotTaken(image);
-    });
-    connect(source, &ScreenShotSourceWorkspace2::errorOccurred, this, [this, source]() {
-        source->deleteLater();
-        Q_EMIT newScreenshotFailed();
-    });
+    };
+    trackSource(source, onFinished, onError);
 }
 
 void ImagePlatformKWin::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
@@ -382,14 +418,74 @@ void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
     trackSource(new ScreenShotSourceActiveScreen2(flags));
 }
 
+QImage combinedImage(const QList<QImage> &images)
+{
+    if (images.empty()) {
+        return {};
+    }
+    QRectF imageRect;
+    qreal maxDpr = 0;
+    for (auto &i : images) {
+        maxDpr = std::max(maxDpr, i.devicePixelRatio());
+        imageRect |= QRectF{i.offset(), i.deviceIndependentSize()};
+    }
+    // We ceil to the next integer size up so that integer DPR images are always crisp.
+    const auto finalDpr = std::ceil(maxDpr);
+    // An RGBA8888 based format is needed for compatibility with OpenCV.
+    // If we used an ARGB32 based format, we'd need to swap red and blue.
+    // Not sure what to do if we end up having different formats for different screens.
+    QImage finalImage{imageRect.size().toSize() * finalDpr, QImage::Format_RGBA8888_Premultiplied};
+    finalImage.fill(Qt::transparent);
+    auto mainMat = QtCV::qImageToMat(finalImage);
+    for (auto &image : images) {
+        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(QImage::Format_RGBA8888_Premultiplied);
+        const auto mat = QtCV::qImageToMat(rgbaImage);
+        // Region Of Interest to put the image in the main image.
+        const auto offset = rgbaImage.offset() * finalDpr;
+        const auto size = (rgbaImage.deviceIndependentSize() * finalDpr).toSize();
+        const cv::Rect rect{offset.x(), offset.y(), size.width(), size.height()};
+        const auto imageDpr = image.devicePixelRatio();
+        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+        // Will just copy if there's no difference in size
+        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
+    }
+    finalImage.setDevicePixelRatio(finalDpr);
+    return finalImage;
+}
+
 void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 {
-    trackSource(new ScreenShotSourceWorkspace2(flags));
+    static const std::function onFinished = [this](const QList<QImage> &images) {
+        Q_EMIT newScreenshotTaken(combinedImage(images));
+    };
+    static const std::function onError = [this]() {
+        Q_EMIT newScreenshotFailed();
+    };
+    const auto &screens = qGuiApp->screens();
+    QList<ScreenShotSource2 *> sources;
+    sources.reserve(screens.count());
+    for (auto screen : screens) {
+        sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
+    }
+    trackSource(new ScreenShotSourceMeta2(sources), onFinished, onError);
 }
 
 void ImagePlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
-    trackCroppableSource(new ScreenShotSourceWorkspace2(flags));
+    static const std::function onFinished = [this](const QList<QImage> &images) {
+        Q_EMIT newCroppableScreenshotTaken(combinedImage(images));
+    };
+    static const std::function onError = [this]() {
+        Q_EMIT newScreenshotFailed();
+    };
+    const auto &screens = qGuiApp->screens();
+    QList<ScreenShotSource2 *> sources;
+    sources.reserve(screens.count());
+    for (auto screen : screens) {
+        sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
+    }
+    trackSource(new ScreenShotSourceMeta2(sources), onFinished, onError);
 }
 
 #include "moc_ImagePlatformKWin.cpp"
