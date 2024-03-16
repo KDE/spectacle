@@ -268,8 +268,8 @@ void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
         QRectF forgivingRect{event->position(), QSizeF{0, 0}};
         forgivingRect.adjust(-margin, -margin, margin, margin);
         if (auto item = m_document->itemAt(m_localToDocument.mapRect(forgivingRect))) {
-            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
-            setHoveredMousePath(geometry->mousePath);
+            auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
+            setHoveredMousePath(interactive->path);
         } else {
             setHoveredMousePath({});
         }
@@ -438,7 +438,7 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
 
     auto baseImageNode = node->baseImageNode();
     if (!baseImageNode->texture() || m_repaintBaseImage) {
-        baseImageNode->setTexture(window->createTextureFromImage(m_document->baseImage()));
+        baseImageNode->setTexture(window->createTextureFromImage(m_document->canvasBaseImage()));
         m_repaintBaseImage = false;
     }
 

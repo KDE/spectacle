@@ -56,12 +56,20 @@ struct Geometry {
     COMMON_TRAIT_DEFS(Geometry)
     // The base geometry path for any item that should be drawable.
     QPainterPath path{};
+};
+
+struct Interactive {
+    COMMON_TRAIT_DEFS(Interactive)
     // The the path bounds used for mouse interaction.
-    QPainterPath mousePath{};
+    QPainterPath path{};
+};
+
+struct Visual {
+    COMMON_TRAIT_DEFS(Visual)
     // The rendered area, including all traits.
     // Adequate for rendering the associated item,
     // but not for overwriting the graphics of previous items.
-    QRectF visualRect{};
+    QRectF rect{};
 };
 
 struct Stroke {
@@ -156,15 +164,18 @@ struct Shadow {
     bool enabled = true;
 };
 
-// Group types
-template<typename... Args>
-struct ArgsType {
-    using Tuple = std::tuple<Args...>;
-    using OptTuple = std::tuple<typename Args::Opt...>;
+// Traits that represent a kind of change to the document, but don't do anything directly.
+namespace Meta
+{
+struct Delete {
+    COMMON_TRAIT_DEFS(Delete)
 };
-struct All : ArgsType<Geometry, Stroke, Fill, Highlight, Arrow, Text, Shadow> {
+struct Crop {
+    COMMON_TRAIT_DEFS(Crop)
 };
-using OptTuple = All::OptTuple;
+}
+
+using OptTuple = std::tuple<Geometry::Opt, Interactive::Opt, Visual::Opt, Stroke::Opt, Fill::Opt, Highlight::Opt, Arrow::Opt, Text::Opt, Shadow::Opt, Meta::Delete::Opt, Meta::Crop::Opt>;
 
 struct Translation {
     // QTransform: m31
@@ -204,7 +215,7 @@ QPainterPath createTextPath(const OptTuple &traits);
 QPainterPath createStrokePath(const OptTuple &traits);
 
 // Constructs a mousePath based on the available traits.
-QPainterPath createMousePath(const OptTuple &traits);
+QPainterPath createInteractivePath(const OptTuple &traits);
 
 // Constructs a visualRect based on the available traits.
 QRectF createVisualRect(const OptTuple &traits);
@@ -242,10 +253,19 @@ bool isValid(const OptTuple &traits);
 // Returns whether the set of traits can actually be seen by a user.
 bool isVisible(const OptTuple &traits);
 
-// Returns the Geometry::mousePath or an empty path if not available.
-QPainterPath mousePath(const OptTuple &traits);
+// Returns whether the set of traits can be made visible even if they currently aren't.
+bool canBeVisible(const OptTuple &traits);
 
-// Returns the Geometry::visualRect or an empty rect if not available.
+// Returns the Geometry::path or an empty path if not available.
+QPainterPath geometryPath(const OptTuple &traits);
+
+// Returns the Geometry::path::boundingRect or an empty rect if not available.
+QRectF geometryPathBounds(const OptTuple &traits);
+
+// Returns the Interactive::path or an empty path if not available.
+QPainterPath interactivePath(const OptTuple &traits);
+
+// Returns the Visual::rect or an empty rect if not available.
 QRectF visualRect(const OptTuple &traits);
 
 #undef COMMON_TRAIT_DEFS
@@ -258,23 +278,31 @@ QDebug operator<<(QDebug debug, const ClassName &ref);
 // clang-format on
 
 DEBUG_DEF(Traits::Geometry)
+DEBUG_DEF(Traits::Interactive)
+DEBUG_DEF(Traits::Visual)
 DEBUG_DEF(Traits::Stroke)
 DEBUG_DEF(Traits::Fill)
 DEBUG_DEF(Traits::Highlight)
 DEBUG_DEF(Traits::Arrow)
 DEBUG_DEF(Traits::Text)
 DEBUG_DEF(Traits::Shadow)
+DEBUG_DEF(Traits::Meta::Delete)
+DEBUG_DEF(Traits::Meta::Crop)
 
 DEBUG_DEF(Traits::ImageEffects::Blur)
 DEBUG_DEF(Traits::ImageEffects::Pixelate)
 
 DEBUG_DEF(Traits::Geometry::Opt)
+DEBUG_DEF(Traits::Interactive::Opt)
+DEBUG_DEF(Traits::Visual::Opt)
 DEBUG_DEF(Traits::Stroke::Opt)
 DEBUG_DEF(Traits::Fill::Opt)
 DEBUG_DEF(Traits::Highlight::Opt)
 DEBUG_DEF(Traits::Arrow::Opt)
 DEBUG_DEF(Traits::Text::Opt)
 DEBUG_DEF(Traits::Shadow::Opt)
+DEBUG_DEF(Traits::Meta::Delete::Opt)
+DEBUG_DEF(Traits::Meta::Crop::Opt)
 
 DEBUG_DEF(Traits::OptTuple)
 

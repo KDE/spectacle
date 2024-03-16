@@ -216,7 +216,7 @@ QPainterPath Traits::createStrokePath(const OptTuple &traits)
     }
 }
 
-QPainterPath Traits::createMousePath(const OptTuple &traits)
+QPainterPath Traits::createInteractivePath(const OptTuple &traits)
 {
     auto &geometry = std::get<Geometry::Opt>(traits);
     auto &stroke = std::get<Stroke::Opt>(traits);
@@ -268,9 +268,10 @@ void Traits::fastInitOptTuple(OptTuple &traits)
         if (stroke && stroke->path.isEmpty()) {
             stroke->path = createStrokePath(traits);
         }
-        // Set Geometry::visualRect from Stroke and Geometry if empty.
-        if (geometry->visualRect.isEmpty()) {
-            geometry->visualRect = createVisualRect(traits);
+        // Set Visual::rect from Stroke and Geometry if empty.
+        auto &visual = std::get<Visual::Opt>(traits);
+        if (visual && visual->rect.isEmpty()) {
+            visual->rect = createVisualRect(traits);
         }
     }
 }
@@ -278,12 +279,10 @@ void Traits::fastInitOptTuple(OptTuple &traits)
 void Traits::initOptTuple(OptTuple &traits)
 {
     fastInitOptTuple(traits);
-    auto &geometry = std::get<Geometry::Opt>(traits);
-    if (geometry) {
-        // Set Geometry::mousePath from Stroke and Geometry if empty.
-        if (geometry->mousePath.isEmpty()) {
-            geometry->mousePath = createMousePath(traits);
-        }
+    auto &interactive = std::get<Interactive::Opt>(traits);
+    if (interactive && interactive->path.isEmpty()) {
+        // Set Interactive::path from Stroke and Geometry if empty.
+        interactive->path = createInteractivePath(traits);
     }
 }
 
@@ -295,9 +294,10 @@ void clearForInitHelper(Traits::OptTuple &traits)
         return;
     }
     auto &trait = traitOpt.value();
-    if constexpr (std::same_as<T, Traits::Geometry>) {
-        trait.mousePath.clear();
-        trait.visualRect = {};
+    if constexpr (std::same_as<T, Traits::Interactive>) {
+        trait.path.clear();
+    } else if constexpr (std::same_as<T, Traits::Visual>) {
+        trait.rect = {};
     } else if constexpr (std::same_as<T, Traits::Stroke>) {
         trait.path.clear();
     } else if constexpr (std::same_as<T, Traits::Text>) {
@@ -329,7 +329,8 @@ void clearForInitHelper(Traits::OptTuple &traits)
 
 void Traits::clearForInit(OptTuple &traits)
 {
-    clearForInitHelper<Geometry>(traits);
+    clearForInitHelper<Interactive>(traits);
+    clearForInitHelper<Visual>(traits);
     clearForInitHelper<Stroke>(traits);
     clearForInitHelper<Text>(traits);
 }
@@ -350,16 +351,24 @@ void Traits::transformTraits(const QTransform &transform, OptTuple &traits)
     bool onlyTranslating = transform.type() == QTransform::TxTranslate || text;
     if (geometry && onlyTranslating) {
         geometry->path.translate(transform.dx(), transform.dy());
-        geometry->mousePath.translate(transform.dx(), transform.dy());
-        // This is dependent on other traits, but as long as all traits have,
-        // the same transformations, transforming at this time should be fine.
-        geometry->visualRect.translate(transform.dx(), transform.dy());
     } else if (geometry) {
         geometry->path = transform.map(geometry->path);
-        geometry->mousePath = transform.map(geometry->mousePath);
+    }
+    auto &interactive = std::get<Interactive::Opt>(traits);
+    if (interactive && onlyTranslating) {
+        interactive->path.translate(transform.dx(), transform.dy());
+    } else if (interactive) {
+        interactive->path = transform.map(interactive->path);
+    }
+    auto &visual = std::get<Visual::Opt>(traits);
+    if (visual && onlyTranslating) {
         // This is dependent on other traits, but as long as all traits have,
         // the same transformations, transforming at this time should be fine.
-        geometry->visualRect = transform.mapRect(geometry->visualRect);
+        visual->rect.translate(transform.dx(), transform.dy());
+    } else if (geometry) {
+        // This is dependent on other traits, but as long as all traits have,
+        // the same transformations, transforming at this time should be fine.
+        visual->rect = transform.mapRect(visual->rect);
     }
     auto &stroke = std::get<Stroke::Opt>(traits);
     if (stroke && onlyTranslating) {
@@ -375,12 +384,22 @@ void Traits::transformTraits(const QTransform &transform, OptTuple &traits)
 template<>
 bool Traits::isValidTrait<Traits::Geometry>(const Traits::Geometry &trait)
 {
-    return !trait.visualRect.isEmpty() && !trait.path.isEmpty();
+    return !trait.path.isEmpty();
+}
+template<>
+bool Traits::isValidTrait<Traits::Interactive>(const Traits::Interactive &trait)
+{
+    return !trait.path.isEmpty();
+}
+template<>
+bool Traits::isValidTrait<Traits::Visual>(const Traits::Visual &trait)
+{
+    return !trait.rect.isEmpty();
 }
 template<>
 bool Traits::isValidTrait<Traits::Stroke>(const Traits::Stroke &trait)
 {
-    return !trait.path.isEmpty() && trait.pen.style() != Qt::NoPen;
+    return !trait.path.isEmpty();
 }
 template<>
 bool Traits::isValidTrait<Traits::Fill>(const Traits::Fill &trait)
@@ -417,6 +436,16 @@ bool Traits::isValidTrait<Traits::Shadow>(const Traits::Shadow &)
 {
     return true;
 }
+template<>
+bool Traits::isValidTrait<Traits::Meta::Delete>(const Traits::Meta::Delete &)
+{
+    return true;
+}
+template<>
+bool Traits::isValidTrait<Traits::Meta::Crop>(const Traits::Meta::Crop &)
+{
+    return true;
+}
 
 // Whether the std::optionals are considered valid.
 template<typename T>
@@ -431,6 +460,15 @@ bool Traits::isValidTraitOpt(const Traits::OptTuple &traits, bool isNullValid)
     if constexpr (std::same_as<T, Traits::Geometry>) {
         return Traits::isValidTrait(trait);
     }
+    if constexpr (std::same_as<T, Traits::Interactive>) {
+        return Traits::isValidTrait(trait);
+    }
+    if constexpr (std::same_as<T, Traits::Visual>) {
+        return Traits::isValidTrait(trait);
+    }
+    if constexpr (std::same_as<T, Meta::Delete>) {
+        return Traits::isValidTrait(trait);
+    }
 
     // Traits that depend on geometry
     auto &geometry = std::get<Traits::Geometry::Opt>(traits);
@@ -442,6 +480,9 @@ bool Traits::isValidTraitOpt(const Traits::OptTuple &traits, bool isNullValid)
         return validGeometry && Traits::isValidTrait(trait);
     }
     if constexpr (std::same_as<T, Text>) {
+        return validGeometry && Traits::isValidTrait(trait);
+    }
+    if constexpr (std::same_as<T, Meta::Crop>) {
         return validGeometry && Traits::isValidTrait(trait);
     }
 
@@ -475,27 +516,49 @@ bool isValidHelper(const Traits::OptTuple &traits)
 
 bool Traits::isValid(const OptTuple &traits)
 {
-    return isValidHelper<Geometry, Stroke, Fill, Highlight, Arrow, Text, Shadow>(traits);
+    return isValidHelper<Geometry, Interactive, Visual, Stroke, Fill, Highlight, Arrow, Text, Shadow, Meta::Delete, Meta::Crop>(traits);
 }
 
 bool Traits::isVisible(const OptTuple &traits)
 {
-    return Traits::isValidTraitOpt<Geometry>(traits, false) //
+    return Traits::isValidTraitOpt<Visual>(traits, false) //
+        && Traits::isValidTraitOpt<Geometry>(traits, false) //
         && (Traits::isValidTraitOpt<Stroke>(traits, false) //
             || Traits::isValidTraitOpt<Fill>(traits, false) //
             || Traits::isValidTraitOpt<Text>(traits, false));
 }
 
-QPainterPath Traits::mousePath(const OptTuple &traits)
+bool Traits::canBeVisible(const OptTuple &traits)
+{
+    return std::get<Visual::Opt>(traits) //
+        && std::get<Geometry::Opt>(traits) //
+        && (std::get<Stroke::Opt>(traits) //
+            || std::get<Fill::Opt>(traits) //
+            || std::get<Text::Opt>(traits));
+}
+
+QPainterPath Traits::geometryPath(const OptTuple &traits)
 {
     auto &geometry = std::get<Geometry::Opt>(traits);
-    return geometry ? geometry->mousePath : QPainterPath{};
+    return geometry ? geometry->path : QPainterPath{};
+}
+
+QRectF Traits::geometryPathBounds(const OptTuple &traits)
+{
+    auto &geometry = std::get<Geometry::Opt>(traits);
+    return geometry ? geometry->path.boundingRect() : QRectF{};
+}
+
+QPainterPath Traits::interactivePath(const OptTuple &traits)
+{
+    auto &interactive = std::get<Interactive::Opt>(traits);
+    return interactive ? interactive->path : QPainterPath{};
 }
 
 QRectF Traits::visualRect(const OptTuple &traits)
 {
-    auto &geometry = std::get<Geometry::Opt>(traits);
-    return geometry ? geometry->visualRect : QRectF{};
+    auto &visual = std::get<Visual::Opt>(traits);
+    return visual ? visual->rect : QRectF{};
 }
 
 // QDebug operator<< declarations
@@ -510,8 +573,30 @@ QDebug operator<<(QDebug debug, const Traits::Geometry &trait)
     debug << "Geometry" << '(';
     debug << (const void *)&trait;
     debug << ",\n    path=" << trait.path;
-    debug << ",\n    mousePath=" << trait.mousePath;
-    debug << ",\n    visualRect=" << trait.visualRect;
+    debug << ')';
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const Traits::Interactive &trait)
+{
+    using namespace Traits;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "Interactive" << '(';
+    debug << (const void *)&trait;
+    debug << ",\n    path=" << trait.path;
+    debug << ')';
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const Traits::Visual &trait)
+{
+    using namespace Traits;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "Visual" << '(';
+    debug << (const void *)&trait;
+    debug << ",\n    rect=" << trait.rect;
     debug << ')';
     return debug;
 }
@@ -602,6 +687,27 @@ QDebug operator<<(QDebug debug, const Traits::Shadow &trait)
     return debug;
 }
 
+QDebug operator<<(QDebug debug, const Traits::Meta::Delete &trait)
+{
+    using namespace Traits;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "Delete" << '(';
+    debug << (const void *)&trait;
+    debug << ')';
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const Traits::Meta::Crop &trait)
+{
+    using namespace Traits;
+    QDebugStateSaver stateSaver(debug);
+    debug.nospace();
+    debug << "Crop" << '(';
+    debug << (const void *)&trait;
+    debug << ')';
+    return debug;
+}
 
 // ImageEffects
 
@@ -648,12 +754,16 @@ QDebug operator<<(QDebug debug, const Traits::ClassName::Opt &optional)\
 }
 // clang-format on
 OPTIONAL_DEBUG_DEF(Geometry)
+OPTIONAL_DEBUG_DEF(Interactive)
+OPTIONAL_DEBUG_DEF(Visual)
 OPTIONAL_DEBUG_DEF(Stroke)
 OPTIONAL_DEBUG_DEF(Fill)
 OPTIONAL_DEBUG_DEF(Highlight)
 OPTIONAL_DEBUG_DEF(Arrow)
 OPTIONAL_DEBUG_DEF(Text)
 OPTIONAL_DEBUG_DEF(Shadow)
+OPTIONAL_DEBUG_DEF(Meta::Delete)
+OPTIONAL_DEBUG_DEF(Meta::Crop)
 
 #undef OPTIONAL_DEBUG_DEF
 
@@ -665,12 +775,16 @@ QDebug operator<<(QDebug debug, const Traits::OptTuple &optTuple)
     debug << "OptTuple" << '(';
     debug << (const void *)&optTuple;
     debug << ",\n  " << std::get<Traits::Geometry::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Interactive::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Visual::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Stroke::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Fill::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Highlight::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Arrow::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Text::Opt>(optTuple);
     debug << ",\n  " << std::get<Traits::Shadow::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Meta::Delete::Opt>(optTuple);
+    debug << ",\n  " << std::get<Traits::Meta::Crop::Opt>(optTuple);
     debug << ')';
     return debug;
 }

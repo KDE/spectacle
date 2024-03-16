@@ -90,14 +90,14 @@ QImage fastPseudoBlur(const QImage &src, int radius, qreal devicePixelRatio)
 
 QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
 {
-    auto &geometryTrait = std::get<Traits::Geometry::Opt>(traits);
     auto &shadowTrait = std::get<Traits::Shadow::Opt>(traits);
-    if (!(geometryTrait && Traits::isValidTrait(geometryTrait.value())) || !shadowTrait) {
+    if (!Traits::isVisible(traits) || !shadowTrait) {
         return QImage();
     }
 
-    const QRectF &totalRect = geometryTrait->visualRect;
-    QImage shadow(totalRect.size().toSize() * devicePixelRatio, QImage::Format_ARGB32_Premultiplied);
+    auto &geometryTrait = std::get<Traits::Geometry::Opt>(traits);
+    auto &visualTrait = std::get<Traits::Visual::Opt>(traits);
+    QImage shadow(visualTrait->rect.size().toSize() * devicePixelRatio, QImage::Format_ARGB32_Premultiplied);
     shadow.fill(Qt::transparent);
     QPainter p(&shadow);
     p.setRenderHint(QPainter::Antialiasing);
@@ -105,7 +105,8 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
     p.setPen(Qt::NoPen);
     p.setBrush(Qt::NoBrush);
     p.scale(devicePixelRatio, devicePixelRatio);
-    p.translate(-totalRect.topLeft() + QPointF{Traits::Shadow::margins.left(), Traits::Shadow::margins.top()});
+    p.translate(-visualTrait->rect.topLeft() //
+                + QPointF{Traits::Shadow::margins.left(), Traits::Shadow::margins.top()});
 
     auto &fillTrait = std::get<Traits::Fill::Opt>(traits);
     auto &strokeTrait = std::get<Traits::Stroke::Opt>(traits);
