@@ -3,13 +3,14 @@
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2015, 2016, 2017, 2018.
 # SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matjaž Jeran <matjaz.jeran@amis.net>
+# SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-02 02:24+0000\n"
-"PO-Revision-Date: 2023-12-31 11:08+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-03-15 20:44+0100\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -33,12 +33,12 @@ msgstr "Vsi zasloni"
 #: src/CaptureModeModel.cpp:104
 #, kde-format
 msgid "Full Screen"
-msgstr "Celotni zaslon"
+msgstr "Celoten zaslon"
 
 #: src/CaptureModeModel.cpp:111
 #, kde-format
 msgid "All Screens (Scaled to same size)"
-msgstr "Vsi zasloni (Umerjeni na isto velikost)"
+msgstr "Vsi zasloni (umerjeni na isto velikost)"
 
 #: src/CaptureModeModel.cpp:117
 #, kde-format
@@ -101,15 +101,15 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
-"Zajemi zaslon v danem načinu. Načini:\n"
-"- r, regija\n"
-"- s, zaslon\n"
-"- w, okno"
+"Posnemi video zaslona v danem načinu. Načini:\n"
+"- r, region (območje)\n"
+"- s, screen (zaslon)\n"
+"- w, window (okno)"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Zaženi Spectacle ne da bi zajel sliko"
+msgstr "Zaženi Spectacle ne da bi zajel zaslonsko sliko"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -150,14 +150,14 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
-"Ob delovanju v ozadju kopiraj zaslonsko sliko v odložišče, razen če ni "
-"uporabljena tudi opcija -o."
+"Ob delovanju v ozadju skopiraj zaslonsko sliko na odložišče, razen če ni "
+"uporabljena tudi možnost -o."
 
 #: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
-"Ob delovanju v ozadju kopiraj pot datoteke zaslonske slike na odložišče"
+"Ob delovanju v ozadju skopiraj pot datoteke zaslonske slike na odložišče"
 
 #: src/CommandLineOptions.h:92
 #, kde-format
@@ -173,22 +173,22 @@ msgstr ""
 #: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "Ob delovanju v ozadju vključi kazalko na posnetek zaslona"
+msgstr "Ob delovanju v ozadju vključi kazalko na zaslonsko sliko"
 
 #: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Ob delovanju v ozadju izključi okraske oken iz posnetka zaslona"
+msgstr "Ob delovanju v ozadju izključi okraske oken z zaslonske slike"
 
 #: src/CommandLineOptions.h:106
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Ob delovanju v ozadju izključi sence oken iz posnetka zaslona"
+msgstr "Ob delovanju v ozadju izključi sence oken z zaslonske slike"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr "Odpri in uredi obstoječo datoteko posnetka zaslona"
+msgstr "Odpri in uredi obstoječo datoteko zaslonske slike"
 
 #: src/ExportManager.cpp:357
 #, kde-format
@@ -202,8 +202,8 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Posnetka zaslona ni bilo mogoče shraniti, ker ustvarjanje mape ni uspelo: "
-"<nl/><filename>%1</filename>"
+"Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje mape ni uspelo: <nl/"
+"><filename>%1</filename>"
 
 #: src/ExportManager.cpp:382
 #, kde-format
@@ -217,8 +217,8 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Posnetka zaslona ni bilo mogoče shraniti, ker ustvarjanje oddaljene mape ni "
-"uspelo:nl/><filename>%1</filename>"
+"Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje oddaljene mape ni "
+"uspelo:<nl/><filename>%1</filename>"
 
 #: src/ExportManager.cpp:413 src/ExportManager.cpp:461
 #, kde-format
@@ -268,8 +268,8 @@ msgstr ""
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Posnetka ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na lokacijo: "
-"%1"
+"Posnetega videa ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na "
+"mesto: %1"
 
 #: src/ExportManager.cpp:738
 #, kde-format
@@ -319,7 +319,7 @@ msgstr "Število:"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:292
 #, kde-format
 msgid "Number for number annotations"
-msgstr "Število za številčenje opomb"
+msgstr "Število za številske opombe"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:319
 #, kde-format
@@ -334,7 +334,7 @@ msgstr "Nobeno"
 #: src/Gui/AnnotationsToolBarContents.qml:71
 #, kde-format
 msgid "Select"
-msgstr "Izberi"
+msgstr "izbor"
 
 #: src/Gui/AnnotationsToolBarContents.qml:79
 #, kde-format
@@ -344,7 +344,7 @@ msgstr "Prostoročno"
 #: src/Gui/AnnotationsToolBarContents.qml:86
 #, kde-format
 msgid "Highlighter"
-msgstr "Osvetljevalnik"
+msgstr "Poudarjanje"
 
 #: src/Gui/AnnotationsToolBarContents.qml:93
 #, kde-format
@@ -369,7 +369,7 @@ msgstr "Elipsa"
 #: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Pixelate"
-msgstr "Pokvadratkaj"
+msgstr "Spremeni v kvadratke"
 
 #: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
@@ -390,10 +390,10 @@ msgstr "Število"
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "Prekliči (%1 sekunda)"
-msgstr[1] "Prekliči (%1 sekundi)"
-msgstr[2] "Prekliči (%1 sekunde)"
-msgstr[3] "Prekliči (%1 sekund)"
+msgstr[0] "Prekliči (%1 sekund)"
+msgstr[1] "Prekliči (%1 sekunda)"
+msgstr[2] "Prekliči (%1 sekundi)"
+msgstr[3] "Prekliči (%1 sekunde)"
 
 #: src/Gui/CaptureOptions.qml:17 src/Gui/DialogPage.qml:52
 #, kde-format
@@ -415,7 +415,7 @@ msgstr "Vključi miškino kazalko"
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Pokaži miškino kazalko v zaslonski sliki."
+msgstr "Pokaži miškino kazalko na zaslonski sliki."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
 #, kde-format
@@ -426,8 +426,7 @@ msgstr "Vključi nazivno vrstico in obrobe okna"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
-"Prikaži naslovno vrstico okna in obrobo, ko se zajema slika zaslona okna."
+msgstr "Pokaži naslovno vrstico okna in obrobo, ko se zajema zaslonsko sliko."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
 #, kde-format
@@ -437,7 +436,7 @@ msgstr "Vključi senco okna"
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Prikaži senco okna ob zajemu slike zaslona okna."
+msgstr "Pokaži senco okna, ko se zajema zaslonsko sliko."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -451,8 +450,8 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Zajemi le trenutno pojavno okno (kot npr. meni, orodni namig, itd.), kadar "
-"zajemaš zaslonsko sliko okna.  Če to ni omogočeno, bo pojavno okno zajeto "
+"Zajemi le trenutno pojavno okno (kot npr. meni, orodni namig, itd.), ko se "
+"zajema zaslonsko sliko okna. Če to ni omogočeno, bo pojavno okno zajeto "
 "skupaj z nadrejenim oknom."
 
 #: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
@@ -496,10 +495,10 @@ msgstr "Brez zakasnitve"
 msgctxt "Integer number of seconds"
 msgid " second"
 msgid_plural " seconds"
-msgstr[0] " sekunda"
-msgstr[1] " sekundi"
-msgstr[2] " sekunde"
-msgstr[3] " sekund"
+msgstr[0] " sekund"
+msgstr[1] " sekunda"
+msgstr[2] " sekundi"
+msgstr[3] " sekunde"
 
 #: src/Gui/DelaySpinBox.qml:26 src/Gui/SmartSpinBox.cpp:32
 #, kde-format
@@ -515,7 +514,7 @@ msgstr "Načini zajema"
 #: src/Gui/DialogPage.qml:133
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr "Nastavi Spectacle…"
+msgstr "Nastavi Spectacle …"
 
 #: src/Gui/DialogPage.qml:139 src/Gui/MainToolBarContents.qml:148
 #, kde-format
@@ -525,12 +524,12 @@ msgstr "Pomoč"
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
 msgid "Open Default Screenshots Folder"
-msgstr "Odpri privzeto mapo zaslonskih posnetkov"
+msgstr "Odpri privzeto mapo zaslonskih slik"
 
 #: src/Gui/ExportMenu.cpp:120
 #, kde-format
 msgid "Other Application..."
-msgstr "Drug program..."
+msgstr "Drug program …"
 
 #: src/Gui/ExportMenu.cpp:152
 #, kde-format
@@ -545,29 +544,29 @@ msgstr "Zaslonska slika"
 #: src/Gui/ImageView.qml:151
 #, kde-format
 msgid "Recording"
-msgstr "Snemanje"
+msgstr "Snemanje videa"
 
 #: src/Gui/ImageView.qml:214
 #, kde-format
 msgid "Zoom:"
-msgstr "Zoom:"
+msgstr "Približanje:"
 
 #: src/Gui/ImageView.qml:228
 #, kde-format
 msgid "Image Zoom"
-msgstr "Zoom slike"
+msgstr "Približanje slike"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Lokacija videa je bila prekopirana na odložišče."
+msgstr "Mesto videa je bilo prekopirano na odložišče."
 
 #: src/Gui/LocationCopiedMessage.qml:14
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Lokacija zaslonske slike je bila prekopirana na odložišče."
+msgstr "Mesto zaslonske slike je bilo skopirano na odložišče."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -577,7 +576,7 @@ msgstr "Shrani"
 #: src/Gui/MainToolBarContents.qml:62
 #, kde-format
 msgid "Save As..."
-msgstr "Shrani kot..."
+msgstr "Shrani kot …"
 
 #: src/Gui/MainToolBarContents.qml:71
 #, kde-format
@@ -587,7 +586,7 @@ msgstr "Kopiraj"
 #: src/Gui/MainToolBarContents.qml:79
 #, kde-format
 msgid "Copy Location"
-msgstr "Kopiraj lokacijo"
+msgstr "Kopiraj mesto"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -612,7 +611,7 @@ msgstr "Možnosti"
 #: src/Gui/MainToolBarContents.qml:141
 #, kde-format
 msgid "Configure..."
-msgstr "Nastavi..."
+msgstr "Nastavi …"
 
 #: src/Gui/OptionsMenu.cpp:42
 #, kde-format
@@ -622,7 +621,7 @@ msgstr "Način zajema"
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
-msgstr "Pokaži miškino kazalko v zaslonski sliki"
+msgstr "Pokaži miškino kazalko na zaslonski sliki"
 
 #: src/Gui/OptionsMenu.cpp:85
 #, kde-format
@@ -692,14 +691,14 @@ msgstr "Pokaži miškino kazalko v posnetku zaslona."
 #: src/Gui/RecordOptions.qml:53
 #, kde-format
 msgid "Finish recording"
-msgstr "Končaj snemanje"
+msgstr "Zaključi snemanje"
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
 msgid ""
 "The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
 msgstr ""
-"Zaslonska slika je bila skopirana v odložišče in shranjena kot <a href="
+"Zaslonska slika je bila skopirana na odložišče in shranjena kot <a href="
 "\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
@@ -708,8 +707,8 @@ msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegova lokacija je "
-"bila prekopirana na odložišče"
+"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegovo mesto je bilo "
+"skopirano na odložišče"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -717,8 +716,8 @@ msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Zaslonska slika (<a href=\"%1\">%2</a>) in njena lokacija je bila skopirana "
-"na odložišče"
+"Zaslonska slika je bila shranjena kot (<a href=\"%1\">%2</a>) in njeno mesto "
+"je bilo skopirano na odložišče"
 
 #: src/Gui/SavedMessage.qml:12
 #, kde-format
@@ -741,9 +740,9 @@ msgid ""
 "Could not take a screenshot. Please report this bug here: <a href=\"https://"
 "bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
 msgstr ""
-"Ni bilo mogoče narediti posnetka zaslona. Prosimo, prijavite to napako "
-"tukaj: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle"
-"\">create a spectacle bug</a>"
+"Ni bilo mogoče zajeti zaslonske slike. Prosimo, prijavite to napako tukaj: "
+"<a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">ustvari "
+"poročilo o napaki</a>"
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -767,7 +766,7 @@ msgstr "Uporabi zadnji način zajema"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Do not take a screenshot automatically"
-msgstr "Ne zajemi posnetek zaslona samodejno"
+msgstr "Ne zajemi zaslonske slike samodejno"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:59
@@ -797,7 +796,7 @@ msgstr "Kopiraj sliko v odložišče"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Kopiraj lokacijo datoteke na odložišče"
+msgstr "Kopiraj mesto datoteke na odložišče"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:111
@@ -809,7 +808,7 @@ msgstr "Medtem ko teče Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Pritisni tipko za zajem nove zaslonske slike:"
+msgstr "Ob pritisku tipke za zajem zaslonske slike:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:126
@@ -851,7 +850,7 @@ msgstr "Uporabi svetlo ozadje"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:181
 #, kde-format
 msgid "Show magnifier"
-msgstr "Prikaži povečevalnik"
+msgstr "Pokaži povečevalnik:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:188
@@ -977,7 +976,7 @@ msgstr "Shranjevanje slike"
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr "Shranjevanje video posnetka"
+msgstr "Shranjevanje videa"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1009,20 +1008,20 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
-msgstr "Avtomatsko shrani posnetek zaslona, ko je narejen"
+msgstr "Samodejno shrani zaslonsko sliko, ko je zajeta"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
-msgstr ""
-"Aktivnost odložišča, ki naj se bi izvedla po izvedenem posnetku zaslona"
+msgstr "Dejanje odložišča, ki naj se izvede po zajemu zaslonske slike"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:47
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
-msgstr "Ali naj uporablja svetlo barvno masko na področju izbire"
+msgstr ""
+"Ali naj se uporablja svetlo barvno masko v pogovornem oknu izbire območja"
 
 #. i18n: ectx: label, entry (showMagnifier), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:51
@@ -1036,55 +1035,57 @@ msgstr "Ali naj prikaže povečevalno steklo na področju izbire"
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
-msgstr "Ali je treba se zaslon posname po izbiri regije in po sprostitvi miške"
+msgstr ""
+"Ali naj se zaslonska slika zajame po izbiri območja in po sprostitvi gumba "
+"miške"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:59
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Ali naj prikaže navodila za zajem na področju izbire"
+msgstr "Ali naj prikaže navodila za zajem pri izbiri območja"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:63
 #, kde-format
 msgid "Remember the last rectangular region"
-msgstr "Zapomni si zadnjo pravokotno izbiro"
+msgstr "Zapomni si zadnjo pravokotno območje"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "The last used region the user selected"
-msgstr "Zadnja uporabljena izbira uporabnika"
+msgstr "Zadnje uporabljeno območje, ki ga je izbral uporabnik"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:78
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Izvedi posnetek zaslona ob kliku"
+msgstr "Zajemi zaslonsko sliko ob kliku"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:82
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Ali je miškin kazalec vključen v posnetek zaslona"
+msgstr "Ali je miškina kazalka vključena na zaslonsko sliko"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:86
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Ali je miškin kazalec vključen v posnetek zaslona"
+msgstr "Ali je miškina kazalka vključena v posnetek zaslona"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:90
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
-msgstr "Ali so na posnetku zaslona vključeni okraski oken"
+msgstr "Ali okraski oken vključeni na zaslonsko sliko"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:94
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Ali je senca okna vključena v posnetek zaslona"
+msgstr "Ali je senca okna vključena na zaslonsko sliko"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:98
@@ -1135,7 +1136,7 @@ msgstr "Privzeti format shranjenih slik"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr ""
-"Predloga imena datoteke, ki se uporablja pri shranjevanju posnetkov zaslona"
+"Predloga imena datoteke, ki se uporablja pri shranjevanju zaslonskih slik"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1176,13 +1177,13 @@ msgstr ""
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Zaslonski video posnetki"
+msgstr "Zaslonski videi"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Zaslonski video posnetek"
+msgstr "Zaslonski video"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
@@ -1336,13 +1337,13 @@ msgstr "Ali orodje za pisanje opomb riše tudi senco"
 #: src/Gui/SettingsDialog/spectacle.kcfg:317
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
-msgstr "Ali orodje za pisanje števil riše tudi senco"
+msgstr "Ali orodje za številske opombe riše tudi senco"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
 #, kde-format
 msgid "Save &Location:"
-msgstr "Shrani lokacijo:"
+msgstr "&Mesto shranjevanja:"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
@@ -1363,7 +1364,7 @@ msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Deljena povezava na video (<a href=\"%1\">%1</a>)  je bila prekopirana na "
+"Deljena povezava na video (<a href=\"%1\">%1</a>)  je bila skopirana na "
 "odložišče."
 
 #: src/Gui/SharedMessage.qml:18
@@ -1373,7 +1374,7 @@ msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Deljena povezava na sliko (<a href=\"%1\">%1</a>)  je bila prekopirana na "
+"Deljena povezava na sliko (<a href=\"%1\">%1</a>)  je bila skopirana na "
 "odložišče."
 
 #: src/Gui/ShareErrorMessage.qml:13
@@ -1391,7 +1392,7 @@ msgstr "Med deljenjem slike je prišlo do težave: %1"
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Zajemi novo zaslonsko sliko:"
+msgstr "Zajemi zaslonsko sliko:"
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
@@ -1501,10 +1502,10 @@ msgstr "Escape"
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundi"
-msgstr[2] "%1 sekunde"
-msgstr[3] "%1 sekund"
+msgstr[0] "%1 sekund"
+msgstr[1] "%1 sekunda"
+msgstr[2] "%1 sekundi"
+msgstr[3] "%1 sekunde"
 
 #: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
@@ -1515,7 +1516,7 @@ msgstr "Neshranjeno"
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
-msgstr "Opusti"
+msgstr "Razveljavi"
 
 #: src/Gui/UndoRedoGroup.qml:45
 #, kde-format
@@ -1530,24 +1531,24 @@ msgstr "Spectacle"
 #: src/Main.cpp:43
 #, kde-format
 msgid "KDE Screenshot Utility"
-msgstr "Pripomoček za zajem zaslona za KDE"
+msgstr "KDE-jev pripomoček za zajem zaslona"
 
 #: src/Main.cpp:45
 #, kde-format
 msgid "(C) 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:49
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrej Mernik,Matjaž Jeran"
+msgstr "Jure Repinc,Andrej Mernik,Matjaž Jeran"
 
 #: src/Main.cpp:49
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "andrejm@ubuntu.si,matjaz.jeran@amis.net"
+msgstr "jlp@holodeck1.com,andrejm@ubuntu.si,matjaz.jeran@amis.net"
 
 #: src/Main.cpp:65
 #, kde-format
@@ -1556,45 +1557,45 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Na Waylandu Spectacle potrebuje KDE Plasma's KWin compositor, ki kot kaže ni "
-"na voljo. Uporabljajte Spectacle na KDE Plasma ali uporabljajte drugo orodje "
-"za posnetke zaslonov."
+"Na Waylandu Spectacle potrebuje KDE-jev upravljalnik skladnje KWin, ki kot "
+"kaže ni na voljo. Uporabljajte Spectacle s KWin ali uporabljajte drugo "
+"orodje za zajem zaslonov."
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr "Zajemanje ni uspelo: URL datoteke ni lokalna datoteka"
+msgstr "Snemanje ni uspelo: URL datoteke ni krajevna datoteka"
 
 #: src/Platforms/VideoPlatformWayland.cpp:241
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Zajemanje ni uspelo: ni mogoče ustvariti mape (%1)"
+msgstr "Snemanje ni uspelo: ni mogoče ustvariti mape (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:253
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Zajemanje ni uspelo: URL začasne datoteke ni lokalna datoteka (%1)"
+msgstr "Snemanje ni uspelo: URL začasne datoteke ni krajevna datoteka (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr "Zajemnje ni uspelo: URL izhodne datoteke ni lokalna datoteka (%1)"
+msgstr "Snemanje ni uspelo: URL izhodne datoteke ni krajevna datoteka (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:299
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Zajem zaslona preklican"
+msgstr "Snemanje zaslona preklicano"
 
 #: src/Platforms/VideoPlatformWayland.cpp:301
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr "Zajem okna preklican"
+msgstr "Snemanje okna preklicano"
 
 #: src/Platforms/VideoPlatformWayland.cpp:307
 #, kde-format
@@ -1613,7 +1614,7 @@ msgstr "Neuspela izbira okna: %1"
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
-"Zaslona ni bilo mogoče izbrati: noben zaslon ni vseboval položaja kazalca "
+"Zaslona ni bilo mogoče izbrati: noben zaslon ni vseboval položaja kazalke "
 "miške"
 
 #: src/Platforms/VideoPlatformWayland.cpp:344
@@ -1634,7 +1635,7 @@ msgstr "Pravokotno območje"
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
-msgstr "Celotni zaslon"
+msgstr "Celoten zaslon"
 
 #: src/RecordingModeModel.cpp:34
 #, kde-format
@@ -1665,7 +1666,7 @@ msgstr "Zajemi dejavno okno"
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgid "Capture Rectangular Region"
-msgstr "Zajemi pravokotno območje"
+msgstr "Zajemi sliko pravokotnega območja"
 
 #: src/ShortcutActions.cpp:68
 #, kde-format
@@ -1675,17 +1676,17 @@ msgstr "Zajemi okno pod kazalko"
 #: src/ShortcutActions.cpp:74
 #, kde-format
 msgid "Record Screen"
-msgstr "Zajemi zaslon"
+msgstr "Posnemi video zaslona"
 
 #: src/ShortcutActions.cpp:80
 #, kde-format
 msgid "Record Window"
-msgstr "Zajemi okno"
+msgstr "Posnemi video okna"
 
 #: src/ShortcutActions.cpp:86
 #, kde-format
 msgid "Record Rectangular Region"
-msgstr "Posnemi pravokotno območje"
+msgstr "Posnemi video pravokotnega območja"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1700,7 +1701,7 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 "Spectacle snema: %1\n"
-"Kliknite za konec zajemanja"
+"Kliknite za zaključek snemanja"
 
 #: src/SpectacleCore.cpp:613
 #, kde-format
@@ -1711,7 +1712,7 @@ msgstr "%1 ni veljaven način za --record"
 #: src/SpectacleCore.cpp:815
 #, kde-format
 msgid "Screenshot capture canceled or failed"
-msgstr "Zajem slike je bil preklican ali ni uspel"
+msgstr "Zajem zaslonske slike je bil preklican ali ni uspel"
 
 #: src/SpectacleCore.cpp:867
 #, kde-format
@@ -1719,24 +1720,24 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
-"bilo shranjena na vaše odložišče."
+"Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
+"shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:871
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "V vašo mapo s slikami je bila shranjena zaslonska slika '%1'."
+msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
 
 #: src/SpectacleCore.cpp:874
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "V '%2' je bila shranjena zaslonska slika '%1'."
+msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
 
 #: src/SpectacleCore.cpp:878
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Posnetek zaslona je bil shranjen na vaše odložišče."
+msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:883
 #, kde-format
@@ -1744,19 +1745,19 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
-"bilo shranjena na vaše odložišče."
+"Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
+"shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:885
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "V vašo mapo z videi je bila shranjena zaslonska slika '%1'."
+msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
 
 #: src/SpectacleCore.cpp:887
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Shranjena zaslonska slika je bila kot '%1'. v '%2'."
+msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
 
 #: src/SpectacleCore.cpp:898
 #, kde-format
@@ -1780,6 +1781,89 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "px: pixels"
+#~ msgid "%1px"
+#~ msgid_plural "%1px"
+#~ msgstr[0] "%1 sl. pik"
+#~ msgstr[1] "%1 sl. pika"
+#~ msgstr[2] "%1 sl. piki"
+#~ msgstr[3] "%1 sl. pike"
+
+#~ msgctxt "%2 font family, %3 font style name, %1 font point size"
+#~ msgid "%2 %3 %1pt"
+#~ msgid_plural "%2 %3 %1pts"
+#~ msgstr[0] "%2 %3 %1 pik"
+#~ msgstr[1] "%2 %3 %1 pika"
+#~ msgstr[2] "%2 %3 %1 piki"
+#~ msgstr[3] "%2 %3 %1 pike"
+
+#~ msgctxt "%2 font family %1 font point size"
+#~ msgid "%2 %1pt"
+#~ msgid_plural "%2 %1pts"
+#~ msgstr[0] "%2 %1 pik"
+#~ msgstr[1] "%2 %1 pika"
+#~ msgstr[2] "%2 %1 piki"
+#~ msgstr[3] "%2 %1 pike"
+
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Settings"
+#~ msgstr "Nastavitve zaslonske slike"
+
+#~ msgctxt "Integer number of seconds"
+#~ msgid "%2 second"
+#~ msgid_plural "%2 seconds"
+#~ msgstr[0] "%2 sekund"
+#~ msgstr[1] "%2 sekunda"
+#~ msgstr[2] "%2 sekundi"
+#~ msgstr[3] "%2 sekunde"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%1 seconds"
+#~ msgstr "%1 sekund"
+
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Načini zajema zaslona"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Načini snemanja"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Nastavitve snemanja"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Screenshot"
+#~ msgstr "Zaslonska slika"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Recording"
+#~ msgstr "Snemanje"
+
+#~ msgid "QR Code found: %1"
+#~ msgstr "Najdena koda QR: %1"
+
+#~ msgid "Found QR code with binary content."
+#~ msgstr "Najdena koda QR z binarno vsebino."
+
+#~ msgid "While holding Shift"
+#~ msgstr "Medtem ko držite dvigalko"
+
+#~ msgctxt "show fewer filename placeholder templates"
+#~ msgid "Show Fewer"
+#~ msgstr "Prikaži manj"
+
+#~ msgid "Fill color for number annotation tool"
+#~ msgstr "Barva polnila orodja za opombe števil"
+
+#~ msgid "%1×%2"
+#~ msgstr "%1×%2"
+
+#~ msgctxt "Decimal number of seconds"
+#~ msgid "%2 seconds"
+#~ msgstr "%2 sekund"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
@@ -1943,9 +2027,6 @@ msgstr "MP4/H.264"
 #~ "Kliknite in povlecite, da narišete izbirni pravokotnik,\n"
 #~ "ali pritisnite Esc, da končate"
 
-#~ msgid "%1×%2"
-#~ msgstr "%1×%2"
-
 #~ msgctxt "The entire screen area was captured, heading"
 #~ msgid "Full Screen Captured"
 #~ msgstr "Zajet cel zaslon"
@@ -2019,7 +2100,6 @@ msgstr "MP4/H.264"
 #~ msgid "Do not include window decorations in the screenshot"
 #~ msgstr "Ne vključi okraskov okna v posnetek zaslona"
 
-#, fuzzy
 #~| msgid "Capture Entire Desktop"
 #~ msgctxt "The entire desktop was captured, heading"
 #~ msgid "Entire Desktop Captured"
