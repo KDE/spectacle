@@ -26,6 +26,11 @@ QImage defaultImage(const QSize &size, qreal dpr)
     return image;
 }
 
+constexpr QRectF deviceIndependentRect(const QImage &image)
+{
+    return {{0, 0}, image.deviceIndependentSize()};
+}
+
 AnnotationDocument::AnnotationDocument(QObject *parent)
     : QObject(parent)
     , m_tool(new AnnotationTool(this))
@@ -84,8 +89,25 @@ void AnnotationDocument::setCanvas(const QRectF &rect, qreal dpr)
         m_annotationsImage = defaultImage(m_imageSize, dpr);
         Q_EMIT imageSizeChanged();
     }
+    // Reset cropped image
+    if (!m_baseImage.isNull()) {
+        const auto imageDIRect = deviceIndependentRect(m_baseImage);
+        if (m_canvasRect.contains(imageDIRect)) {
+            m_croppedBaseImage = {};
+        } else {
+            const auto imageRect = G::rectScaled(m_canvasRect.intersected(imageDIRect), m_imageDpr).toRect();
+            m_croppedBaseImage = m_baseImage.copy(imageRect);
+        }
+    } else if (!m_croppedBaseImage.isNull()) {
+        m_croppedBaseImage = {};
+    }
     // Unconditionally repaint the whole canvas area
     setRepaintRegion();
+}
+
+void AnnotationDocument::resetCanvas()
+{
+    setCanvas(deviceIndependentRect(m_baseImage), m_baseImage.devicePixelRatio());
 }
 
 QSizeF AnnotationDocument::imageSize() const
@@ -103,40 +125,55 @@ QImage AnnotationDocument::baseImage() const
     return m_baseImage;
 }
 
+QImage AnnotationDocument::canvasBaseImage() const
+{
+    if (m_baseImage.isNull() || m_croppedBaseImage.isNull()) {
+        return m_baseImage;
+    }
+    return m_croppedBaseImage;
+}
+
 void AnnotationDocument::setBaseImage(const QImage &image)
 {
     if (m_baseImage.cacheKey() == image.cacheKey()) {
         return;
     }
     m_baseImage = image;
-    setCanvas({{0, 0}, image.deviceIndependentSize()}, image.devicePixelRatio());
+    resetCanvas();
 }
 
 void AnnotationDocument::cropCanvas(const QRectF &cropRect)
 {
-    if (cropRect == m_canvasRect) {
+    // Can't crop to nothing
+    if (cropRect.isEmpty()) {
         return;
     }
 
-    auto translate = QTransform::fromTranslate(-cropRect.x(), -cropRect.y());
-    auto intersectsRect = [cropRect](History::List::const_reference item) {
-        return item && item->renderRect().intersects(cropRect);
-    };
-    History::Lists filteredLists = m_history.filteredLists(intersectsRect);
-    auto &filteredUndo = filteredLists.undoList;
-    auto &filteredRedo = filteredLists.redoList;
-    for (auto it = filteredUndo.begin(); it != filteredUndo.end(); ++it) {
-        Traits::transformTraits(translate, it->get()->traits());
+    // In the UI, (0,0) for the crop rect will be the top left of the current canvas rect.
+    // A crop can only make the canvas smaller.
+    auto newCanvasRect = cropRect.translated(m_canvasRect.topLeft()).intersected(m_canvasRect);
+    if (newCanvasRect == m_canvasRect) {
+        return;
     }
-    for (auto it = filteredRedo.begin(); it != filteredRedo.end(); ++it) {
-        Traits::transformTraits(translate, it->get()->traits());
+
+    auto newItem = std::make_shared<HistoryItem>();
+    QPainterPath path;
+    path.addRect(newCanvasRect);
+    std::get<Traits::Geometry::Opt>(newItem->traits()).emplace(path);
+    std::get<Traits::Meta::Crop::Opt>(newItem->traits()).emplace();
+    auto &undoList = m_history.undoList();
+    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
+        auto item = it->get();
+        if (!item) {
+            continue;
+        }
+        if (std::get<Traits::Meta::Crop::Opt>(item->traits()).has_value()) {
+            HistoryItem::setItemRelations(*it, newItem);
+            break;
+        }
     }
-    m_history = {filteredUndo, filteredRedo};
-
-    setBaseImage(m_baseImage.copy(G::rectScaled(cropRect, imageDpr()).toAlignedRect()));
-
-    Q_EMIT undoStackDepthChanged();
-    Q_EMIT redoStackDepthChanged();
+    setCanvas(newCanvasRect, m_imageDpr);
+    addItem(newItem);
 }
 
 void AnnotationDocument::clearAnnotations()
@@ -162,7 +199,7 @@ void AnnotationDocument::clear()
 
 void AnnotationDocument::paintImageView(QPainter *painter, const QImage &image, const QRectF &viewport) const
 {
-    if (!painter) {
+    if (!painter || image.isNull()) {
         return;
     }
     // Enable smooth transform for fractional scales.
@@ -180,6 +217,9 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
         return;
     }
     const auto &undoList = m_history.undoList();
+    if (undoList.empty() || (span && span->empty())) {
+        return;
+    }
     if (!span) {
         span.emplace(undoList);
     }
@@ -190,13 +230,12 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
             continue;
         }
         // Render the temporary item instead if this item is selected.
-        auto selectedItem = m_selectedItemWrapper->selectedItem().lock();
-        auto renderedItem = *it == selectedItem ? m_tempItem.get() : it->get();
+        auto renderedItem = *it == m_selectedItemWrapper->selectedItem() ? m_tempItem.get() : it->get();
         if (!renderedItem) {
             continue;
         }
-        auto &geometry = std::get<Traits::Geometry::Opt>(renderedItem->traits());
-        if (!region.intersects(geometry->visualRect.toAlignedRect())) {
+        auto &visual = std::get<Traits::Visual::Opt>(renderedItem->traits());
+        if (!region.intersects(visual->rect.toAlignedRect())) {
             continue;
         }
 
@@ -212,9 +251,10 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
         if (shadow && shadow->enabled) {
             QImage image = shapeShadow(renderedItem->traits());
             painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter->drawImage(geometry->visualRect, image);
+            painter->drawImage(visual->rect, image);
         }
 
+        auto &geometry = std::get<Traits::Geometry::Opt>(renderedItem->traits());
         if (auto &fillOpt = std::get<Traits::Fill::Opt>(renderedItem->traits())) {
             using namespace Traits;
             auto &fill = fillOpt.value();
@@ -271,6 +311,8 @@ QImage AnnotationDocument::annotationsImage()
     }
     if (!m_repaintRegion.isEmpty()) {
         QPainter painter(&m_annotationsImage);
+        // canvas rect top left should be (0,0) in annotations image
+        painter.translate(-m_canvasRect.topLeft());
         // Set clip region to prevent over-painting shadows or semi-transparent annotations near the region.
         painter.setClipRegion(m_repaintRegion);
         // Clear mode is needed to actually clear the region.
@@ -291,7 +333,7 @@ QImage AnnotationDocument::renderToImage()
     auto image = defaultImage(m_imageSize, m_imageDpr);
     QPainter painter(&image);
     auto viewport = m_canvasRect.translated(-m_canvasRect.topLeft());
-    paintImageView(&painter, m_baseImage, viewport);
+    paintImageView(&painter, canvasBaseImage(), viewport);
     paintImageView(&painter, annotationsImage(), viewport);
     painter.end();
     return image;
@@ -299,10 +341,10 @@ QImage AnnotationDocument::renderToImage()
 
 QImage AnnotationDocument::spanImage(History::ConstSpan span) const
 {
-    auto image = defaultImage(m_imageSize, m_imageDpr);
+    auto image = defaultImage(m_baseImage.size(), m_imageDpr);
     QPainter p(&image);
     paintImageView(&p, m_baseImage);
-    paintAnnotations(&p, m_canvasRect.toAlignedRect(), span);
+    paintAnnotations(&p, deviceIndependentRect(m_baseImage).toAlignedRect(), span);
     p.end();
     return image;
 }
@@ -335,8 +377,8 @@ HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) con
     for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
         auto &item = *it;
         if (m_history.itemVisible(item)) {
-            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
-            if (geometry->mousePath.contains(rect.center())) {
+            auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
+            if (interactive->path.contains(rect.center())) {
                 return item;
             }
         }
@@ -351,8 +393,8 @@ HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) con
         if (m_history.itemVisible(item)) {
             QPainterPath path(rect.topLeft());
             path.addEllipse(rect);
-            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
-            if (geometry->mousePath.intersects(path)) {
+            auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
+            if (interactive->path.intersects(path)) {
                 return item;
             }
         }
@@ -376,6 +418,14 @@ void AnnotationDocument::undo()
     if (auto text = std::get<Traits::Text::Opt>(currentItem->traits())) {
         if (text->index() == Traits::Text::Number) {
             m_tool->setNumber(std::get<Traits::Text::Number>(text.value()));
+        }
+    }
+    if (std::get<Traits::Meta::Crop::Opt>(currentItem->traits()).has_value()) {
+        auto parent = currentItem->parent().lock();
+        if (parent) {
+            setCanvas(Traits::geometryPathBounds(parent->traits()), m_imageDpr);
+        } else if (!m_baseImage.isNull()) {
+            resetCanvas();
         }
     }
     if (currentItem == m_selectedItemWrapper->selectedItem().lock()) {
@@ -407,6 +457,9 @@ void AnnotationDocument::redo()
         if (text->index() == Traits::Text::Number) {
             m_tool->setNumber(std::get<Traits::Text::Number>(text.value()) + 1);
         }
+    }
+    if (std::get<Traits::Meta::Crop::Opt>(nextItem->traits()).has_value()) {
+        setCanvas(Traits::geometryPathBounds(nextItem->traits()), m_imageDpr);
     }
     if (currentItem && currentItem == m_selectedItemWrapper->selectedItem()) {
         if (nextItem == currentItem->child()) {
@@ -444,7 +497,11 @@ void AnnotationDocument::beginItem(const QPointF &point)
     using enum AnnotationTool::Option;
     HistoryItem temp;
     auto &geometry = std::get<Traits::Geometry::Opt>(temp.traits());
-    geometry.emplace(QPainterPath{point}, QPainterPath{point}, QRectF{point, point});
+    geometry.emplace(QPainterPath{point});
+    auto &interactive = std::get<Traits::Interactive::Opt>(temp.traits());
+    interactive.emplace(QPainterPath{point});
+    auto &visual = std::get<Traits::Visual::Opt>(temp.traits());
+    visual.emplace(QRectF{point, point});
 
     auto toolType = m_tool->type();
     auto toolOptions = m_tool->options();
@@ -499,7 +556,7 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
     const auto &currentItem = m_history.currentItem();
     bool isSelected = m_selectedItemWrapper->selectedItem() == currentItem;
     const auto &item = isSelected ? m_tempItem : currentItem;
-    if (!m_tool->isCreationTool() || !item || !std::get<Traits::Geometry::Opt>(item->traits())) {
+    if (!m_tool->isCreationTool() || !item || !Traits::canBeVisible(item->traits())) {
         return;
     }
 
@@ -616,7 +673,7 @@ void AnnotationDocument::finishItem()
     const auto &currentItem = m_history.currentItem();
     bool isSelected = m_selectedItemWrapper->selectedItem() == currentItem;
     const auto &item = isSelected ? m_tempItem : currentItem;
-    if (!m_tool->isCreationTool() || !item || !std::get<Traits::Geometry::Opt>(item->traits())) {
+    if (!m_tool->isCreationTool() || !item || !Traits::canBeVisible(item->traits())) {
         return;
     }
 
@@ -648,6 +705,7 @@ void AnnotationDocument::deleteSelectedItem()
 
     auto newItem = std::make_shared<HistoryItem>();
     HistoryItem::setItemRelations(selectedItem, newItem);
+    std::get<Traits::Meta::Delete::Opt>(newItem->traits()).emplace();
     addItem(newItem);
     deselectItem();
     setRepaintRegion(selectedItem->renderRect());
@@ -666,7 +724,8 @@ void AnnotationDocument::addItem(const HistoryItem::shared_ptr &item)
 
 void AnnotationDocument::setRepaintRegion(const QRectF &rect, RepaintTypes types)
 {
-    if (rect.isNull()) {
+    if (rect.isNull() || !m_canvasRect.intersects(rect)) {
+        // No point in trying to transform or add to the region if not in the canvas rect.
         return;
     }
     // HACK: workaround not always repainting everywhere it should with fractional scaling.
@@ -676,8 +735,8 @@ void AnnotationDocument::setRepaintRegion(const QRectF &rect, RepaintTypes types
      * `region += rect` is not the same as `region = region.united(rect)`. It will try to add the
      * rect directly instead of making a copy of itself with the rect added.
      *
-     * QRegion only works with ints, so we convert the rect to image coordinates. We need image
-     * coordinates for picking the right coordinates to repaint anyway.
+     * QRegion only works with ints, so we need to convert the rect to image coordinates or ensure
+     * The region contains a bit more than the rect with toAlignedRect.
      * We normalize the rect because operator+= will no-op if `rect.isEmpty()`.
      * `QRectF::isEmpty()` is true when the size is 0 or negative.
      */
@@ -723,7 +782,7 @@ HistoryItem::const_weak_ptr SelectedItemWrapper::selectedItem() const
 void SelectedItemWrapper::setSelectedItem(const HistoryItem::const_shared_ptr &historyItem)
 {
     if (m_selectedItem == historyItem //
-        || (historyItem && !std::get<Traits::Geometry::Opt>(historyItem->traits()))) {
+        || (historyItem && !Traits::canBeVisible(historyItem->traits()))) {
         return;
     }
 
@@ -1074,7 +1133,7 @@ QPainterPath SelectedItemWrapper::mousePath() const
     if (!hasSelection()) {
         return {};
     }
-    return Traits::mousePath(temp->traits());
+    return Traits::interactivePath(temp->traits());
 }
 
 QDebug operator<<(QDebug debug, const SelectedItemWrapper *wrapper)

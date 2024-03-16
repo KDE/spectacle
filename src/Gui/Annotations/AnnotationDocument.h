@@ -69,6 +69,7 @@ public:
     // Set the canvas rect, device pixel ratio, image size and reset the annotation image.
     // The image size and image device pixel ratio are also set based on these.
     void setCanvas(const QRectF &rect, qreal dpr);
+    void resetCanvas();
 
     /// Image size in raw pixels
     QSizeF imageSize() const;
@@ -77,13 +78,14 @@ public:
     qreal imageDpr() const;
 
     QImage baseImage() const;
+    // Get the base image section for the current canvas rect.
+    QImage canvasBaseImage() const;
     /// Set the base image. Based on the base image, also set image size, image device pixel ratio
     // and canvas rect. Cannot be undone.
     void setBaseImage(const QImage &image);
 
-    /// Remove annotations that do not intersect with the rectangle and crop the image.
-    /// Cannot be undone.
-    void cropCanvas(const QRectF &cropRect);
+    /// Hide annotations that do not intersect with the rectangle and crop the image.
+    Q_INVOKABLE void cropCanvas(const QRectF &cropRect);
 
     /// Clear all annotations. Cannot be undone.
     void clearAnnotations();
@@ -164,6 +166,8 @@ private:
     QSize m_imageSize{0, 0};
     // The base screenshot image
     QImage m_baseImage;
+    // A cache for a crop of the base image.
+    QImage m_croppedBaseImage;
     // An image containing just the annotations.
     // It is separate so that we don't need to keep repainting the image underneath.
     QImage m_annotationsImage;

@@ -225,13 +225,18 @@ void AnnotationViewport::updateTransforms()
 {
     QMatrix4x4 localToDocument;
     localToDocument.translate(m_viewportRect.x(), m_viewportRect.y());
+    QMatrix4x4 documentToLocal;
+    documentToLocal.translate(-m_viewportRect.x(), -m_viewportRect.y());
+    if (m_document) {
+        const auto canvasPos = m_document->canvasRect().topLeft();
+        localToDocument.translate(canvasPos.x(), canvasPos.y());
+        documentToLocal.translate(-canvasPos.x(), -canvasPos.y());
+    }
 
     if (m_localToDocument != localToDocument) {
         m_localToDocument = localToDocument;
         Q_EMIT localToDocumentChanged();
     }
-    QMatrix4x4 documentToLocal;
-    documentToLocal.translate(-m_viewportRect.x(), -m_viewportRect.y());
     if (m_documentToLocal != documentToLocal) {
         m_documentToLocal = documentToLocal;
         Q_EMIT documentToLocalChanged();
@@ -268,8 +273,8 @@ void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
         QRectF forgivingRect{event->position(), QSizeF{0, 0}};
         forgivingRect.adjust(-margin, -margin, margin, margin);
         if (auto item = m_document->itemAt(m_localToDocument.mapRect(forgivingRect))) {
-            auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
-            setHoveredMousePath(geometry->mousePath);
+            auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
+            setHoveredMousePath(interactive->path);
         } else {
             setHoveredMousePath({});
         }
@@ -438,7 +443,7 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
 
     auto baseImageNode = node->baseImageNode();
     if (!baseImageNode->texture() || m_repaintBaseImage) {
-        baseImageNode->setTexture(window->createTextureFromImage(m_document->baseImage()));
+        baseImageNode->setTexture(window->createTextureFromImage(m_document->canvasBaseImage()));
         m_repaintBaseImage = false;
     }
 
