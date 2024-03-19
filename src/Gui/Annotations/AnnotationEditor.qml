@@ -28,13 +28,13 @@ AnnotationViewport {
             id: textTool
             viewport: root
         }
-        ResizeHandles {
-            id: resizeHandles
+        SelectionTool {
+            id: selectionTool
             viewport: root
         }
         HoverOutline {
             viewport: root
-            enabled: !resizeHandles.dragging
+            enabled: !selectionTool.dragging
         }
     }
 }
