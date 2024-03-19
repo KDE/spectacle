@@ -91,8 +91,13 @@ AnimatedLoader {
             property int edges
             readonly property alias active: dragHandler.active
 
-            implicitWidth: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
-            implicitHeight: Kirigami.Units.gridUnit + Kirigami.Units.gridUnit % 2
+            startAngle: startAngleForEdges(edges)
+            sweepAngle: sweepAngleForEdges(edges)
+            anchors {
+                horizontalCenter: hAnchorForEdges(parent, edges)
+                verticalCenter: vAnchorForEdges(parent, edges)
+            }
+
             visible: root.document.selectedItem.hasSelection
                 && (root.document.selectedItem.options & AnnotationTool.NumberOption) === 0
             enabled: visible
@@ -101,19 +106,7 @@ AnimatedLoader {
                 margin: dragHandler.margin
                 cursorShape: {
                     if (enabled) {
-                        if (handle.edges === (Qt.LeftEdge | Qt.TopEdge)
-                            || handle.edges === (Qt.RightEdge | Qt.BottomEdge)) {
-                            return Qt.SizeFDiagCursor;
-                        } else if (handle.edges === Qt.LeftEdge
-                            || handle.edges === Qt.RightEdge) {
-                            return Qt.SizeHorCursor;
-                        } else if (handle.edges === (Qt.LeftEdge | Qt.BottomEdge)
-                            || handle.edges === (Qt.RightEdge | Qt.TopEdge)) {
-                            return Qt.SizeBDiagCursor;
-                        } else if (handle.edges === Qt.TopEdge
-                            || handle.edges === Qt.BottomEdge) {
-                            return Qt.SizeVerCursor;
-                        }
+                        return handle.cursorShapeForEdges(handle.edges)
                     } else {
                         return undefined
                     }
@@ -136,82 +129,34 @@ AnimatedLoader {
         }
         ResizeHandle {
             id: tlHandle
-            anchors {
-                horizontalCenter: parent.left
-                verticalCenter: parent.top
-            }
-            startAngle: 90
-            sweepAngle: 270
             edges: Qt.TopEdge | Qt.LeftEdge
         }
         ResizeHandle {
-            id: lHandle
-            anchors {
-                horizontalCenter: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            startAngle: 90
-            sweepAngle: 180
-            edges: Qt.LeftEdge
-        }
-        ResizeHandle {
-            id: blHandle
-            anchors {
-                horizontalCenter: parent.left
-                verticalCenter: parent.bottom
-            }
-            startAngle: 0
-            sweepAngle: 270
-            edges: Qt.BottomEdge | Qt.LeftEdge
-        }
-        ResizeHandle {
             id: tHandle
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.top
-            }
-            startAngle: 180
-            sweepAngle: 180
             edges: Qt.TopEdge
         }
         ResizeHandle {
-            id: bHandle
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.bottom
-            }
-            startAngle: 0
-            sweepAngle: 180
-            edges: Qt.BottomEdge
-        }
-        ResizeHandle {
             id: trHandle
-            anchors {
-                horizontalCenter: parent.right
-                verticalCenter: parent.top
-            }
-            startAngle: 180
-            sweepAngle: 270
             edges: Qt.TopEdge | Qt.RightEdge
         }
         ResizeHandle {
+            id: lHandle
+            edges: Qt.LeftEdge
+        }
+        ResizeHandle {
             id: rHandle
-            anchors {
-                horizontalCenter: parent.right
-                verticalCenter: parent.verticalCenter
-            }
-            startAngle: 270
-            sweepAngle: 180
             edges: Qt.RightEdge
         }
         ResizeHandle {
+            id: blHandle
+            edges: Qt.BottomEdge | Qt.LeftEdge
+        }
+        ResizeHandle {
+            id: bHandle
+            edges: Qt.BottomEdge
+        }
+        ResizeHandle {
             id: brHandle
-            anchors {
-                horizontalCenter: parent.right
-                verticalCenter: parent.bottom
-            }
-            startAngle: 270
-            sweepAngle: 270
             edges: Qt.BottomEdge | Qt.RightEdge
         }
         Component.onCompleted: forceActiveFocus()

@@ -17,6 +17,107 @@ Shape {
     containsMode: Shape.FillContains
     preferredRendererType: Shape.CurveRenderer
 
+    // Use a rounded physically even size so that straight edges don't look fuzzy
+    implicitWidth: dprRoundEven(18)
+    implicitHeight: implicitWidth
+
+    // Round to a physically even size
+    function dprRoundEven(value) {
+        value = Math.round(value * Screen.devicePixelRatio)
+        return (value - value % 2) / Screen.devicePixelRatio
+    }
+
+    function startAngleForEdges(edges) {
+        if (edges === (Qt.TopEdge | Qt.LeftEdge)) {
+            return 90
+        } else if (edges === Qt.TopEdge) {
+            return 180
+        } else if (edges === (Qt.TopEdge | Qt.RightEdge)) {
+            return 180
+        } else if (edges === Qt.LeftEdge) {
+            return 90
+        } else if (edges === Qt.RightEdge) {
+            return 270
+        } else if (edges === (Qt.LeftEdge | Qt.BottomEdge)) {
+            return 0
+        } else if (edges === Qt.BottomEdge) {
+            return 0
+        } else if (edges === (Qt.RightEdge | Qt.BottomEdge)) {
+            return 270
+        }
+        return 0
+    }
+
+    function sweepAngleForEdges(edges) {
+        if (edges === (Qt.TopEdge | Qt.LeftEdge)
+            || edges === (Qt.TopEdge | Qt.RightEdge)
+            || edges === (Qt.LeftEdge | Qt.BottomEdge)
+            || edges === (Qt.RightEdge | Qt.BottomEdge)) {
+            return 270
+        } else if (edges === Qt.TopEdge
+            || edges === Qt.LeftEdge
+            || edges === Qt.RightEdge
+            || edges === Qt.BottomEdge) {
+            return 180
+        }
+        return 360
+    }
+
+    function xOffsetForEdges(absOffset, edges) {
+        if (edges & Qt.LeftEdge) {
+            return -absOffset
+        } else if (edges & Qt.RightEdge) {
+            return absOffset
+        }
+        return 0
+    }
+
+    function yOffsetForEdges(absOffset, edges) {
+        if (edges & Qt.TopEdge) {
+            return -absOffset
+        } else if (edges & Qt.BottomEdge) {
+            return absOffset
+        }
+        return 0
+    }
+
+    function cursorShapeForEdges(edges) {
+        if (edges === (Qt.LeftEdge | Qt.TopEdge)
+            || edges === (Qt.RightEdge | Qt.BottomEdge)) {
+            return Qt.SizeFDiagCursor;
+        } else if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
+            return Qt.SizeHorCursor;
+        } else if (edges === (Qt.LeftEdge | Qt.BottomEdge)
+            || edges === (Qt.RightEdge | Qt.TopEdge)) {
+            return Qt.SizeBDiagCursor;
+        } else if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
+            return Qt.SizeVerCursor;
+        }
+        return undefined
+    }
+
+    function hAnchorForEdges(item, edges) {
+        if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
+            return item.horizontalCenter
+        } else if (edges & Qt.LeftEdge) {
+            return item.left
+        } else if (edges & Qt.RightEdge) {
+            return item.right
+        }
+        return undefined
+    }
+
+    function vAnchorForEdges(item, edges) {
+        if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
+            return item.verticalCenter
+        } else if (edges & Qt.TopEdge) {
+            return item.top
+        } else if (edges & Qt.BottomEdge) {
+            return item.bottom
+        }
+        return undefined
+    }
+
     function pointAtAngle(degrees) {
         const radians = degrees * (Math.PI / 180)
         return Qt.point(pathAngleArc.radiusX * Math.cos(radians) + pathAngleArc.centerX,

@@ -126,8 +126,6 @@ MouseArea {
                 && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             shapePath.fillColor: selectionRectangle.border.color
             shapePath.strokeWidth: 0
-            width: Kirigami.Units.gridUnit
-            height: width
         }
 
         SelectionHandle {
