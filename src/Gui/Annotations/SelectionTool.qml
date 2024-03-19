@@ -7,7 +7,6 @@
 import QtQuick
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-import ".."
 
 AnimatedLoader {
     id: root
@@ -70,7 +69,7 @@ AnimatedLoader {
             restoreMode: Binding.RestoreNone
         }
 
-        SelectionBackground {
+        Outline {
             id: outline
             svgPath: root.document.selectedItem.mousePath.svgPath
             zoom: root.viewport.scale
@@ -80,7 +79,7 @@ AnimatedLoader {
             y: -startY - boundingRect.y
             width: boundingRect.width
             height: boundingRect.height
-            containsMode: SelectionBackground.FillContains
+            containsMode: Outline.FillContains
             HoverHandler {
                 cursorShape: Qt.SizeAllCursor
             }

@@ -127,7 +127,6 @@ qt_add_qml_module(spectacle
     Gui/Annotations/AnnotationEditor.qml
     Gui/Annotations/HoverOutline.qml
     Gui/Annotations/SelectionTool.qml
-    Gui/Annotations/SelectionBackground.qml
     Gui/Annotations/TextTool.qml
     Gui/AnnotationsToolBarContents.qml
     Gui/ButtonGrid.qml
@@ -147,8 +146,9 @@ qt_add_qml_module(spectacle
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
     Gui/MainToolBarContents.qml
-    Gui/QmlUtils.qml
+    Gui/Outline.qml
     Gui/QRCodeScannedMessage.qml
+    Gui/QmlUtils.qml
     Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
     Gui/RecordingModeButtonsColumn.qml

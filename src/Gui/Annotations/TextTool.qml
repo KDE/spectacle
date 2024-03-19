@@ -7,7 +7,6 @@ import QtQuick
 import QtQuick.Templates as T
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-import ".."
 
 AnimatedLoader {
     id: root
@@ -172,7 +171,7 @@ AnimatedLoader {
         rightInset: -background.effectiveStrokeWidth
         topInset: -background.effectiveStrokeWidth
         bottomInset: -background.effectiveStrokeWidth
-        background: SelectionBackground {
+        background: Outline {
             zoom: root.viewport.scale
         }
 

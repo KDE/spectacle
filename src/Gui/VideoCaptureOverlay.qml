@@ -72,26 +72,13 @@ MouseArea {
         visible: selectionRectangle.visible && height > 0 && width > 0
     }
 
-    Rectangle {
+    Outline {
         id: selectionRectangle
-        color: "transparent"
-        border.color: palette.active.highlight
-        border.width: contextWindow.dprRound(1)
         visible: !Selection.empty
-            && !VideoPlatform.isRecording
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
-        x: dprFloor(Selection.x - border.width - root.viewportRect.x)
-        y: dprFloor(Selection.y - border.width - root.viewportRect.y)
-        width: dprCeil(Selection.right + border.width - root.viewportRect.x) - x
-        height: dprCeil(Selection.bottom + border.width - root.viewportRect.y) - y
-
-        LayoutMirroring.enabled: false
-        LayoutMirroring.childrenInherit: true
-    }
-
-    SelectionBackground {
-        visible: VideoPlatform.isRecording
-        strokeWidth: selectionRectangle.border.width
+        strokeWidth: dprRound(1)
+        strokeColor1: palette.active.highlight
+        strokeColor2: VideoPlatform.isRecording ? palette.active.base : strokeColor1
         // We need to be a bit careful about staying out of the recorded area
         x: dprFloor(Selection.x - strokeWidth - root.viewportRect.x) - 1 / Screen.devicePixelRatio
         y: dprFloor(Selection.y - strokeWidth - root.viewportRect.y) - 1 / Screen.devicePixelRatio
@@ -109,7 +96,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
-            shapePath.fillColor: selectionRectangle.border.color
+            shapePath.fillColor: selectionRectangle.strokeColor1
             shapePath.strokeWidth: 0
             width: Kirigami.Units.gridUnit
             height: width

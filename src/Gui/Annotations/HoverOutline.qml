@@ -5,7 +5,6 @@
 import QtQuick
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-import ".."
 
 AnimatedLoader {
     id: root
@@ -23,7 +22,7 @@ AnimatedLoader {
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
 
-    sourceComponent: SelectionBackground {
+    sourceComponent: Outline {
         id: outline
         svgPath: root.viewport.hoveredMousePath.svgPath
         zoom: root.viewport.scale
