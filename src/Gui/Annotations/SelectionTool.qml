@@ -90,8 +90,12 @@ AnimatedLoader {
             property int edges
             readonly property alias active: dragHandler.active
 
+            // For visibility when the outline is not very rectangular
+            shapePath.strokeWidth: 1 / Screen.devicePixelRatio / root.viewport.scale
             startAngle: startAngleForEdges(edges)
             sweepAngle: sweepAngleForEdges(edges)
+            xOffset: xOffsetForEdges(shapePath.strokeWidth / 2, edges)
+            yOffset: yOffsetForEdges(shapePath.strokeWidth / 2, edges)
             anchors {
                 horizontalCenter: hAnchorForEdges(parent, edges)
                 verticalCenter: vAnchorForEdges(parent, edges)
