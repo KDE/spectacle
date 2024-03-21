@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-14 00:37+0000\n"
-"PO-Revision-Date: 2024-03-18 16:15-0300\n"
+"PO-Revision-Date: 2024-03-20 17:28-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1028,16 +1028,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:74
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "Você pode usar os seguintes substitutos no nome do arquivo, que serão "
-"substituídos pelo texto real quando o arquivo for salvo:<blockquote>"
+"substituídos pelo texto real quando o arquivo for salvo:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:89
 #, kde-format
@@ -1163,10 +1160,9 @@ msgstr "Se o ponteiro do mouse será incluído na imagem"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Se o ponteiro do mouse será incluído na imagem"
+msgstr "Se o ponteiro do mouse será incluído no vídeo"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1226,17 +1222,15 @@ msgstr "Formato padrão de gravação de imagens"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "O nome de arquivo padrão usado ao salvar"
+msgstr "O modelo a ser usado para nome de arquivo ao salvar capturas de tela"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Capturar imagem"
+msgstr "Captura de imagem"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1262,10 +1256,9 @@ msgstr "Formato padrão de gravação de vídeos"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "O nome de arquivo padrão usado ao salvar"
+msgstr "O modelo a ser usado para nome de arquivo ao salvar gravações da tela"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
@@ -1274,12 +1267,10 @@ msgid "Screencasts"
 msgstr "Capturar  video"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screencasts"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Capturar  video"
+msgstr "Gravar a tela"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1447,15 +1438,13 @@ msgid "Save &Location:"
 msgstr "Salvar no &local:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Imagem compartilhada"
+msgstr "Vídeo compartilhado"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Imagem compartilhada"
