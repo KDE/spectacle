@@ -1,0 +1,876 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Slovenian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>Priročnik za &spectacle;</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+><firstname
+>Peter</firstname
+><surname
+>Žaucer</surname
+><affiliation
+><address
+><email
+>peter.zaucer@gmail.com</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>25.04.2021</date>
+        <releaseinfo
+>Applications 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>&spectacle; je aplikacija za zajemanje in urejanje posnetkov zaslona namizja. Zajame lahko slike celotnega namizja, posameznega monitorja, trenutno aktivnega okna, okna, ki je trenutno pod miško, ali pravokotnega območja zaslona. Slike lahko nato označite, natisnete, pošljete drugim aplikacijam za obdelavo ali jih hitro shranite takšne, kot so.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>KDE</keyword>
+            <keyword
+>spectacle</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>posnetek zaslona</keyword>
+            <keyword
+>zajem zaslona</keyword>
+            <keyword
+>posnetek zaslona</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>Uvod</title>
+
+        <para
+>&spectacle; je aplikacija za zajemanje in urejanje posnetkov zaslona namizja. Zajame lahko slike celotnega namizja, posameznega monitorja, trenutno aktivnega okna, okna, ki je trenutno pod miško, ali pravokotnega območja zaslona. Slike lahko nato označite, natisnete, pošljete drugim aplikacijam za obdelavo ali jih hitro shranite takšne, kot so.</para>
+
+        <para
+>Prijavite morebitne težave ali zahteve po funkcijah na <ulink url="https://bugs.kde.org/"
+>&kde; Sistem za sledenje napakam</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>Zagon &spectacle;</title>
+
+        <para
+>&spectacle; se lahko začne na različne načine, kot je opisano spodaj:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>V meniju zaganjalnika aplikacij &spectacle; najdete v <menuchoice
+><guisubmenu
+>Aplikacije</guisubmenu
+><guisubmenu
+>Pripomočki</guisubmenu
+><guimenuitem
+>Pripomoček za zajem posnetkov zaslona &spectacle;</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>Če pritisnete gumb <keysym
+>Print Screen</keysym
+> na tipkovnici (pogosto označen kot <keycap
+>PrtSc</keycap
+>, <keycap
+>PrtScn</keycap
+> ali podobno), se takoj zažene &spectacle;. Poleg tega so na voljo še tri bližnjice na tipkovnici za snemanje posnetkov zaslona in njihovo shranjevanje v privzeto mapo za shranjevanje brez prikaza &GUI;:</para>
+                <itemizedlist>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Print Screen</keysym
+></keycombo
+> bo naredil posnetek zaslona aktivnega okna</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> posname posnetek zaslona vašega celotnega namizja (vsi monitorji)</para
+></listitem>
+                <listitem
+><para
+><keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> bo naredil posnetek zaslona pravokotne regije</para
+></listitem>
+                </itemizedlist>
+                <para
+>Privzeto mesto shranjevanja in ime datoteke lahko konfigurirate tako, da zaženete &spectacle; in kliknite gumb <guibutton
+>Konfiguriraj...</guibutton
+>, nato pa se pomaknite do razdelka Shrani.</para>
+            </listitem>
+            <listitem>
+                <para
+>Mini ukazna vrstica &krunner; (priklicano s <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) lahko uporabite tudi za zagon &spectacle;.</para>
+            </listitem>
+            <listitem>
+                <para
+>&spectacle; lahko zaženete iz ukazne vrstice. &spectacle; ima obsežen nabor možnosti ukazne vrstice, vključno z načinom v ozadju, ki ga je mogoče uporabiti za skript za zajem posnetkov zaslona brez prikaza &GUI; ali zahteva interakcijo uporabnika.</para>
+
+                <para
+>Za zagon &spectacle; v ukazni vrstici vnesite:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>Če si želite ogledati celoten seznam možnosti ukazne vrstice in njihovo razlago, vnesite:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>Uporaba &spectacle;</title>
+
+        <para
+>Ko zaženete &spectacle;, boste videli takšno okno: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>&spectacle; Glavno okno</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>&spectacle; zajame sliko vašega celotnega namizja takoj po zagonu, vendar preden se prikaže na zaslonu. To vam omogoča hitro ustvarjanje slik zaslona celotnega namizja.</para>
+
+        <para
+>Posnetek, ki ga je posnel &spectacle; se prikaže v oknu za predogled, ki se nahaja na levi strani &spectacle; okna aplikacije.</para>
+
+        <para
+>Sliko lahko shranite na želeno mesto s klikom na gumb <guibutton
+>Shrani kot</guibutton
+> ali tipkanjem <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo 
+>. S tem se odpre standardno pogovorno okno za shranjevanje, kjer lahko izberete ime datoteke, lokacijo mape in obliko, v kateri bo shranjen vaš posnetek zaslona. Ime datoteke lahko spremenite na karkoli si želite, vključno z imenom predhodno shranjenega posnetka zaslona.</para>
+
+        <para
+>Če želite posnetek zaslona shraniti na privzeto mesto, kliknite puščični del gumba <guibutton
+>Shrani kot...</guibutton
+> in pritisnite <guimenuitem
+>Shrani </guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). Nov način shranjevanja si bo zapomnil za naslednjič. Privzeto mesto shranjevanja in ime datoteke je mogoče konfigurirati, kot je opisano kasneje.</para>
+
+        <para
+>Če želite hitro shraniti sliko in zapreti &spectacle;, kliknite potrditveno polje poleg <guilabel
+>Zapri po ročnem shranjevanju ali kopiranju</guilabel
+>, nato kliknite puščični del gumba <guibutton
+>Shrani kot...</guibutton
+> in pritisnite element <guimenuitem
+>Shrani</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). To shrani sliko kot datoteko PNG v vašo privzeto mapo <filename class="directory"
+>Pictures</filename
+> in takoj zapre aplikacijo. Kot zgoraj, bo ta novi način shranjevanja zapomnjen za naslednjič.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>Zajem posnetka zaslona</title>
+
+            <para
+>Ko odprete &spectacle;, zaradi priročnosti takoj naredi posnetek celotnega zaslona, razen če ni drugače nastavljeno v splošnih možnostih, in prikaže predogled v glavnem oknu. Ta posnetek zaslona lahko shranite z gumbi na dnu okna ali posnamete novega s kontrolniki na desni strani predogleda.</para>
+
+            <para
+>Če želite zavreči trenutni posnetek zaslona in narediti nov posnetek zaslona, pritisnite gumb <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>Po zajemu posnetka zaslona vam bo &spectacle; prikazal informacijsko ploščo s povezavo do datoteke posnetka zaslona in vam predlagal, da <guibutton
+>Odprete mapo, ki vsebuje</guibutton
+> te datoteke.</para>
+
+            <para
+>Preden naredite nov posnetek zaslona, lahko konfigurirate določene možnosti na desni strani okna aplikacije. Te možnosti vam omogočajo, da izberete območje zaslona, ki ga želite zajeti, nastavite zakasnitev pred zajemom slike in konfigurirate, ali naj se miškin kazalec in/ali okraski okna zajamejo skupaj s posnetkom zaslona.</para>
+
+            <sect2>
+                <title
+>Način zajemanja</title>
+
+                <para
+>Nastavitve načina zajema vam omogočajo, da nastavite območje zaslona, ki naj bo zajeto, in ali naj pride do zamika med pritiskom <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> (<keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+>) in naredite posnetek zaslona. Omogočite lahko tudi potrditveno polje <guilabel
+>Ob kliku</guilabel
+>, ki onemogoči funkcijo zakasnitve in naredi posnetek zaslona šele, ko kliknete kjer koli na zaslonu po kliku <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>Kombinirano polje <guilabel
+>Območje</guilabel
+> vam omogoča, da nastavite območje zaslona, ki naj bo zajeto. Izbirate lahko med petimi možnostmi, kot je opisano spodaj.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Celozaslonski (vsi monitorji)</guilabel
+> naredi posnetek zaslona vašega celotnega namizja, razporejenega po vseh izhodih, vključno z vsemi monitorji, projektorji itd.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Trenutni zaslon</guilabel
+> naredi posnetek zaslona izhoda, ki trenutno vsebuje kazalec miške.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Pravokotna regija</guilabel
+> vam omogoča, da z miško izberete pravokotno regijo namizja. Ta regija je lahko razpršena po različnih izhodih.</para>
+
+                        <para
+>Ta način ne naredi takoj posnetka zaslona, ampak vam omogoča, da na zaslonu narišete pravokotnik, ki ga lahko po potrebi premikate in spreminjate velikost. Ko je želeni izbirni pravokotnik narisan, dvokliknite kjer koli na zaslonu ali pritisnite na &Enter; gumb na tipkovnici za zajem zaslona.</para>
+                        
+                        <para
+>S puščičnimi tipkami lahko premikate in prilagajate pravokotnik. S pritiskom na puščične tipke premaknete pravokotnik. Držite &Shift; medtem ko pritisnete puščične tipke, bo pravokotnik počasi premikal za natančno nastavitev izbire. Držite &Alt; tipko, medtem ko pritiskate puščične tipke, prilagodite velikost pravokotnika.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Aktivno okno</guilabel
+> naredi posnetek zaslona okna, ki je trenutno v fokusu. Pri tem načinu je priporočljivo uporabiti zakasnitev, da imate čas, da izberete in aktivirate okno, preden se naredi posnetek zaslona.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Okno pod kazalcem</guilabel
+> naredi posnetek zaslona okna, ki je pod kazalcem miške. Če je kazalec na vrhu pojavnega menija, &spectacle; poskuša narediti posnetek zaslona menija in njegovega nadrejenega okna.</para>
+
+                        <para
+>Čeprav to večinoma deluje, v določenih primerih morda ne uspe pridobiti informacij o nadrejenem oknu. V tem primeru se &spectacle; vrne na stari način samodejnega zajemanja slike in zajame samo sliko pojavnega menija. Lahko tudi vsilite stari način zajema slike, tako da označite potrditveno polje <guilabel
+>Zajemi samo trenutno pojavno okno</guilabel
+> pod <guilabel
+>Možnosti</guilabel
+></para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>V vrtilnem polju <guilabel
+>Zakasnitev</guilabel
+> lahko nastavite zamik med pritiskom <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap 
+></keycombo
+>) in naredite posnetek zaslona. To zakasnitev lahko nastavite v korakih po 1 sekundo z uporabo gumbov na zaslonu ali tipkovnice.</para>
+                
+                <para
+>Ko posnamete posnetek zaslona s časovnim zamikom, &spectacle; prikaže preostali čas do posnetka zaslona v naslovu okna in ga naredi vidnega v elementu upravitelja opravil. Gumb upravitelja opravil &spectacle; prikazuje tudi vrstico napredka, tako da lahko spremljate, kdaj bo posnetek posnet.</para>
+                
+                <para
+>Medtem ko čakate na zakasnjeni posnetek zaslona, lahko pomanjšate &spectacle; in gumb <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> se spremeni v gumb <guibutton
+>Prekliči</guibutton
+>. Tukaj bo prikazana tudi vrstica napredka, ki vam bo dala možnost, da ustavite odštevanje.</para>
+
+                <para
+>Omogočanje potrditvenega polja <guilabel
+>Ob kliku</guilabel
+> preglasi zakasnitev. Ko je to potrditveno polje omogočeno, s pritiskom gumba <guibutton
+>Naredi nov posnetek zaslona</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) skrijete &spectacle; okno in spremenite kazalec miške v križec. Posnetek zaslona se zajame, ko kliknete levi gumb na miški, ali prekine, če kliknete kateri koli drug gumb miške. Upoštevajte, da ne morete komunicirati z namizjem z miško, medtem ko je kazalec križec, lahko pa uporabite tipkovnico.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>Možnosti</title>
+
+                <para
+>Nastavitve Možnosti vam omogočajo, da izberete, ali naj bo kazalec miške vključen v posnetke zaslona in ali želite zajeti okraske oken skupaj s sliko okna posamezne aplikacije. V načinu <guilabel
+>Okno pod kazalcem</guilabel
+> omogoča tudi izbiro, če &spectacle; zajame samo sliko trenutnega pojavnega menija pod kazalcem ali vključuje tudi nadrejeno okno. Končno, <guilabel
+>Zapri po shranjevanju ali kopiranju</guilabel
+> zapre &spectacle; po kakršnih koli operacijah shranjevanja ali kopiranja.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>Omogočanje potrditvenega polja <guilabel
+>Vključi kazalec miške</guilabel
+> vključuje sliko kazalca miške na posnetku zaslona.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Vključi naslovno vrstico in obrobe okna</guilabel
+> je omogočena le, če je izbrana možnost <guilabel
+>Aktivno okno</guilabel
+> ali način <guilabel
+>Okno pod kazalcem</guilabel
+> v kombiniranem polju <guilabel
+>Območje</guilabel
+>. Če potrdite to možnost, vključite obrobe okna in dekoracijo na posnetku zaslona, medtem ko jo izklopite, dobite sliko samo vsebine okna.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Vključi senco okna</guilabel
+> je omogočena le, ko je izbran bodisi način <guilabel
+>Aktivno okno</guilabel
+> ali <guilabel
+>Okno pod kazalcem</guilabel
+> v <guilabel
+>Območju</guilabel
+> kombiniranega polja. Potrjena ta možnost vključuje senco okna v posnetek zaslona, nepotrjena pa prikaže sliko okna brez sence.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Zajemi samo trenutno pojavno okno</guilabel
+> je omogočena le, če je v kombiniranem polju <guilabel
+>Območje</guilabel
+> izbran način <guilabel
+>Okno pod kazalcem</guilabel
+>. Če izberete to možnost, zajamete samo pojavni meni pod kazalcem, brez njegovega nadrejenega okna.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>Možnost <guilabel
+>Zapri po ročnem shranjevanju ali kopiranju</guilabel
+> zapre &spectacle; po kakršnem koli shranjevanju ali kopiranju. Upoštevajte, da se bo kopiran posnetek zaslona ohranil le, če uporabljate upravitelja odložišča, ki sprejema slike. KDE Klipper lahko konfigurirate na ta način tako, da z desno miškino tipko kliknete njegovo ikono, izberete <guilabel
+>Konfiguriraj odložišče...</guilabel
+> in počistite polje <guilabel
+>Prezri slike</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>Dodatna funkcionalnost</title>
+
+        <sect1>
+            <title
+>Gumbi</title>
+
+            <para
+>Na dnu okna &spectacle; je nekaj gumbov. Njihove funkcije so opisane spodaj:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>Pomoč</guibutton
+></term>
+                    <listitem>
+                        <para
+>Ponuja običajne elemente menija, opisane v <ulink url="help:/fundamentals/menus.html#menus-help"
+>meniju Pomoč</ulink
+> v &kde; Osnovah.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Konfiguriraj...</guibutton
+></term>
+                    <listitem>
+                        <para
+>Omogoča vam dostop do okna za konfiguracijo &spectacle;, kjer lahko spremenite nastavitve zajema ter privzeto mesto shranjevanja in ime datoteke.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Opombe</guibutton
+></term>
+                    <listitem>
+                        <para
+>Odpre okno urejevalnika opomb, ki ponuja različna orodja za opombe:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>Urejevalnik opomb</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>Preizkusite orodja za označevanje. Tam boste morda našli vse, kar potrebujete za razlago vaših posnetkov zaslona: puščice, pero, oznake, besedilna polja, številke, celo smeške. Možno je spreminjati parametre orodja in dodajati učinke (senca, sivina in obroba). </para>
+                        <para
+>Ko menite, da je komentiranje končano, pritisnite gumb <guibutton
+>Pripis končan</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Orodja</guibutton
+></term>
+                    <listitem>
+                        <para
+>Odpre spustni meni, ki ponuja različna orodja:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+><guimenuitem
+>Odpri privzeto mapo s posnetki zaslona</guimenuitem
+> bo označil zadnji shranjen posnetek zaslona v privzetem upravitelju datotek</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Dostop do pogovornega okna <guimenuitem
+>Natisni</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>Vrsta zunanjih programov za snemanje zaslona</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Izvozi</guibutton
+></term>
+                    <listitem>
+                        <para
+>Odpre spustni meni, ki vam omogoča, da neposredno odprete posnetek zaslona z vsemi programi, ki so povezani s PNG (prenosna omrežna grafika) &MIME; vrsto. Odvisno od nameščenih programov boste lahko odpirali in urejali posnetek v svojih grafičnih aplikacijah ali pregledovalnikih.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Kopiraj sliko v odložišče/Kopiraj lokacijo v odložišče</guibutton
+></term>
+                    <listitem>
+                        <para
+>Kopira trenutni posnetek zaslona ali njegovo lokacijo v odložišče. Za to lahko uporabite tudi bližnjico na tipkovnici <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>Shrani kot</guibutton
+></term>
+                    <listitem>
+                        <para
+>Shrani posnetek zaslona kot sliko PNG v privzeto mapo s slikami in takoj zapre aplikacijo.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>Konfiguriraj</title>
+            <para
+>Uporabite gumb <guibutton
+>Konfiguriraj...</guibutton
+>, da odprete konfiguracijsko pogovorno okno.</para>
+            <sect2>
+            <title
+>Splošno</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Splošno</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Ob zagonu Spectacle</guilabel
+></term>
+                    <listitem>
+                        <para
+>Omogoča <guilabel
+>posnetek celozaslonskega posnetka zaslona</guilabel
+>, uporabo zadnjega uporabljenega načina zajema ali ne naredi samodejno posnetka zaslona. Zadnji uporabljeni način zajemanja je tisti, ki je nastavljen v načinu zajemanja</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Po posnetku zaslona</guilabel
+></term>
+                    <listitem>
+                        <para
+>Omogoča <guilabel
+>Shraniti datoteko v privzeto mapo</guilabel
+>, izklop vseh dejanj v odložišču, kopiranje slike v odložišče ali kopiranje poti posnetka zaslona v odložišče. Privzeto lokacijo je mogoče konfigurirati s konfiguracijsko stranjo <link linkend="save-page"
+>Shrani</link
+>. Možno je <guilabel
+>Kopirati lokacijo datoteke v odložišče</guilabel
+>. Nato ga lahko prilepite kamor koli, ki omogoča vnos besedila. Upoštevajte, da morate zagnati upravitelja odložišča, da ohranite pot v odložišču ko &spectacle; konča.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Pritisnite tipko za posnetek zaslona, da</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ko pritisnete bližnjico za izdelavo posnetka zaslona in &spectacle; že deluje, je mogoče konfigurirati vedenje sistema za snemanje zaslona. Izbirate lahko med ustvarjanjem novega posnetka zaslona, odpiranjem novega &spectacle; okna in vrnitev fokusa na obstoječe &spectacle; okno.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Uporabite svetlo ozadje</guilabel
+></term>
+                    <listitem>
+                        <para
+>Uporabite svetlo barvo ozadja, da zakrijete izrezano območje v izbirniku pravokotne regije. Tako boste lažje videli temne kazalce.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Prikaži lupo</guilabel
+></term>
+                    <listitem>
+                        <para
+>Ko je posnetek zaslona shranjen, kopirajte mesto, kjer je bila datoteka shranjena, v odložišče. Nato ga lahko prilepite kamor koli, kjer je omogočen vnos besedila. Upoštevajte, da morate zagnati upravitelja odložišča, da ohranite pot v odložišču ko &spectacle; konča.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Sprejmi, ko klikneš in spustiš</guilabel
+></term>
+                    <listitem>
+                        <para
+>Če je označeno, sprejme izbrano območje takoj, ko spustite miškino tipko v načinu <guilabel
+>Pravokotna regija</guilabel
+>.</para>
+                        <para
+>Ko izberete novo regijo, brez predhodno shranjene regije, morate s klikom, vlečenjem in sprostitvijo gumba miške takoj zajeti izbrano regijo. Ko je prikazano predhodno shranjeno območje, je s shranjenim območjem mogoče nadalje manipulirati, shranjevanje tega območja pa zahteva ročno potrditev (&Enter; ali dvojni klik z levim klikom miške). Če kliknete in povlečete izven predhodno shranjene regije, takoj zajamete novo izbrano regijo.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Zapomni si izbrano območje</guilabel
+></term>
+                    <listitem>
+                        <para
+>Privzeto si &spectacle; zapomni začetni izbor, ko posnamete posnetek zaslona pravokotnega območja, dokler ne zaprete okna &spectacle;. Izberete lahko tudi da si &spectacle; nikoli ne zapomni izbranega območja ali pa si ga zapomni med sejami snemanja zaslona.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>Shrani</title>
+            <para
+>Ko uporabite funkcijo <guilabel
+>Shrani</guilabel
+>, &spectacle; shrani sliko s privzetim imenom datoteke v mapo Slike (ki je v domači mapi). Privzeto ime datoteke vključuje datum in čas, ko je bila slika posneta.</para>
+
+            <para
+>Stran <guilabel
+>Shrani</guilabel
+> vam omogoča, da nastavite privzeto mesto shranjevanja in ime datoteke. Če kliknete to možnost, se odpre tako pogovorno okno: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>Shrani</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>Shrani lokacijo</guilabel
+></term>
+                    <listitem>
+                    <para
+>V besedilnem polju lokacije nastavite mapo, kamor želite shraniti posnetke zaslona, ko pritisnete <guibutton
+>Shrani</guibutton
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Kakovost stiskanja</guilabel
+></term>
+                    <listitem>
+                        <para
+>Izberite kakovost slike pri shranjevanju s formati slik z izgubo, kot je JPEG. Višje vrednosti dajejo boljšo kakovost, vendar povečajo velikost datoteke. Oglejte si <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>stran Wikipedije</ulink
+> za podrobnosti o formatih slik, ki se uporabljajo v &spectacle;-u.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>Ime datoteke</guilabel
+></term>
+                    <listitem>
+                        <para
+>Nastavite privzeto ime datoteke za shranjene posnetke zaslona.</para>
+                        <para
+>V imenu datoteke lahko uporabite naslednje ogradne oznake, ki bodo zamenjane z dejanskim besedilom, ko bo datoteka shranjena:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>&lt;dd&gt;</userinput
+>: Dan</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;hh&gt;</userinput
+>: Ura</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;MM&gt;</userinput
+>: Mesec</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;ss&gt;</userinput
+>: Sekunda</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;title&gt;</userinput
+>: Naslov okna</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;yyyy&gt;</userinput
+>: Leto (4-mestno)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;#&gt;</userinput
+>: Zaporedna številka</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;mm&gt;</userinput
+>: Minuta</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;yy&gt;</userinput
+>: Leto (2 števki)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>Lahko kliknete ogradne oznake na spodnjem seznamu referenc, da jih vstavite v vrstico <guilabel
+>Ime datoteke</guilabel
+>.</para>
+                        <para
+>Če datoteka s tem imenom že obstaja, bo imenu datoteke dodana serijska številka. Če je na primer ime datoteke <filename
+>Screenshot.png</filename
+> in <filename
+>Screenshot.png</filename
+> že obstaja, bo slika shranjena kot <filename
+>Screenshot-1.png</filename
+>.</para>
+                        <para
+>Uporabite spustno polje poleg besedilnega polja, da izberete privzeti format slike za posnetke zaslona. Oglejte si <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>stran Wikipedije</ulink
+> za podrobnosti o formatih slik, ki se uporabljajo v &spectacle;.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>Bližnjice</title>
+            <para
+>To konfiguracijsko stran lahko uporabite za spreminjanje privzetih bližnjic &spectacle;. Možno je konfigurirati bližnjice za zagon &spectacle; in zajem različnih delov namizja. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>Povleci in spusti</title>
+            <para
+>Zajeto sliko lahko povlečete v drugo aplikacijo ali dokument. Če aplikacija lahko obdeluje slike, se tja vstavi kopija celotne slike.</para>
+
+            <para
+>Če povlečete posnetek zaslona v okno upravitelja datotek, se prikaže pogovorno okno, kjer lahko uredite ime datoteke in izberete obliko slike, datoteka pa bo vstavljena v dejansko mapo.</para>
+
+            <para
+>Če povlečete posnetek zaslona v besedilno polje, se vstavi pot do začasno shranjene datoteke. To je uporabno na primer za nalaganje posnetka zaslona prek spletnih obrazcev ali pripenjanje posnetkov zaslona v poročila o napakah na <ulink url="https://bugs.kde.org/"
+>&kde;-jevem sledilniku hroščev</ulink
+>.</para>
+
+            <para
+>To deluje z vsemi odjemalci, ki ne poberejo slikovnih podatkov, ampak samo iščejo &URL; v vlečenih mime-podatkih.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>Zasluge in licenca</title>
+
+        <para
+>Avtorske pravice programa &copy; 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>Deli kode temeljijo neposredno na kodi iz projekta &ksnapshot;. Avtorske pravice &copy; 1997-2011 &ksnapshot; Razvijalci. Podrobna obvestila o dodelitvi avtorskih pravic so na voljo v naslovih v izvorni kodi.</para>
+
+        <para
+>Deli kode temeljijo neposredno na kodi iz projekta &kwin;. Avtorske pravice &copy; 2008, 2013 &kwin; Razvijalci. Podrobna obvestila o dodelitvi avtorskih pravic so na voljo v naslovih v izvorni kodi.</para>
+
+        <para
+>Dokumentacija temelji na izvirni &ksnapshot; dokumentaciji:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>Avtorske pravice &copy; 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>Avtorske pravice &copy; 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>Prevod: Peter Žaucer<email
+>peter.zaucer@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
