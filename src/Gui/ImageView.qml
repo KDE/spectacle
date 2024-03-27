@@ -92,6 +92,7 @@ EmptyPage {
             displayMode: QQC.AbstractButton.IconOnly
             flow: Grid.TopToBottom
             showUndoRedo: false
+            showNoneButton: true
             rememberToolType: true
         }
         background: Rectangle {
@@ -116,7 +117,15 @@ EmptyPage {
             bottom: footerLoader.top
             topMargin: inlineMessageLoader.active ? Kirigami.Units.mediumSpacing : 0
         }
-        source: SpectacleCore.videoMode ? "RecordingView.qml" : "ScreenshotView.qml"
+        sourceComponent: SpectacleCore.videoMode ? recordingViewComponent : screenshotViewComponent
+        Component {
+            id: recordingViewComponent
+            RecordingView {}
+        }
+        Component {
+            id: screenshotViewComponent
+            ScreenshotView { showCropTool: annotationsToolBarContents.usingCropTool }
+        }
     }
 
     Loader { // parent is contentItem

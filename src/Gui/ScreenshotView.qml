@@ -19,6 +19,7 @@ EmptyPage {
     readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
     readonly property real currentZoom: annotationEditor.scale
+    property bool showCropTool: false
 
     function zoomToPercent(percent, center = flickable.mapToItem(flickable.contentItem,
                                                                  flickable.width / 2,
@@ -160,6 +161,40 @@ EmptyPage {
             visible: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationTool.NoTool
+            Keys.forwardTo: cropTool
+            Keys.priority: Keys.AfterItem
+        }
+
+        CropTool {
+            id: cropTool
+            anchors.fill: annotationEditor
+            transformOrigin: annotationEditor.transformOrigin
+            scale: annotationEditor.scale
+            viewport: annotationEditor
+            active: root.showCropTool && contextWindow.annotating
+        }
+
+        AnimatedLoader {
+            parent: flickable
+            anchors.centerIn: parent
+            state: cropTool.item && !cropTool.item.activeFocus && cropTool.item.opacity === 0 ? "active" : "inactive"
+            sourceComponent: Kirigami.Heading {
+                id: cropToolHelp
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                text: i18nc("@info crop tool explanation", "Click and drag to make a selection.\nDouble click the selection to accept and crop.\nRight click to clear the selection.")
+                padding: cropToolHelpMetrics.height - cropToolHelpMetrics.descent
+                leftPadding: cropToolHelpMetrics.height
+                rightPadding: cropToolHelpMetrics.height
+                background: FloatingBackground {
+                    color: Qt.rgba(palette.window.r, palette.window.g, palette.window.b, 0.9)
+                    radius: cropToolHelpMetrics.height
+                }
+                FontMetrics {
+                    id: cropToolHelpMetrics
+                    font: cropToolHelp.font
+                }
+            }
         }
     }
 
