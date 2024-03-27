@@ -119,6 +119,9 @@ public:
      */
     [[nodiscard]] Q_INVOKABLE static QSize rawSize(const QSizeF &size, qreal dpr);
 
+    [[nodiscard]] Q_INVOKABLE static QRectF rectNormalized(const QRectF &rect);
+    [[nodiscard]] Q_INVOKABLE static QRectF rectNormalized(qreal x, qreal y, qreal w, qreal h);
+
     /// Get the rectangle with adjusted left, top, right and bottom sides.
     [[nodiscard]] Q_INVOKABLE static QRectF rectAdjusted(const QRectF &rect, qreal xp1, qreal yp1, qreal xp2, qreal yp2);
 

@@ -125,6 +125,16 @@ QSize Geometry::rawSize(const QSizeF &size, qreal dpr)
     return (size * dpr).toSize();
 }
 
+QRectF Geometry::rectNormalized(const QRectF &rect)
+{
+    return rect.normalized();
+}
+
+QRectF Geometry::rectNormalized(qreal x, qreal y, qreal w, qreal h)
+{
+    return QRectF(x, y, w, h).normalized();
+}
+
 QRectF Geometry::rectAdjusted(const QRectF &rect, qreal xp1, qreal yp1, qreal xp2, qreal yp2)
 {
     return rect.adjusted(xp1, yp1, xp2, yp2);
