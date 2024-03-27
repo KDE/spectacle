@@ -567,9 +567,11 @@ MouseArea {
                     id: optionsToolBar
                     parent: annotationsToolBar
                     x: {
-                        const targetX = annotationsContents.x
-                            + annotationsContents.checkedButton.x
-                            + (annotationsContents.checkedButton.width - width) / 2
+                        let targetX = annotationsContents.x
+                        const checkedButton = annotationsContents.checkedButton
+                        if (checkedButton) {
+                            targetX += checkedButton.x + (checkedButton.width - width) / 2
+                        }
                         return Math.max(0, // min value
                                Math.min(contextWindow.dprRound(targetX),
                                         parent.width - width)) // max value
