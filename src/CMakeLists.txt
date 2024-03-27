@@ -125,6 +125,7 @@ qt_add_qml_module(spectacle
     Gui/AnimatedLoader.qml
     Gui/AnnotationOptionsToolBarContents.qml
     Gui/Annotations/AnnotationEditor.qml
+    Gui/Annotations/CropTool.qml
     Gui/Annotations/HoverOutline.qml
     Gui/Annotations/SelectionTool.qml
     Gui/Annotations/TextTool.qml

@@ -10,8 +10,10 @@ import "Annotations"
 ButtonGrid {
     id: root
     property bool showUndoRedo: true
+    property bool showNoneButton: false
     property bool rememberToolType: false
     property alias checkedButton: toolGroup.checkedButton
+    readonly property alias usingCropTool: cropToolButton.checked
 
     Loader {
         visible: active
@@ -59,12 +61,31 @@ ButtonGrid {
         }
     }
 
+    // Used in the image viewer where one might want to drag and drop or pan around a viewport
+    Loader {
+        active: root.showNoneButton
+        visible: active
+        sourceComponent: ToolButton {
+            QQC.ButtonGroup.group: toolGroup
+            text: i18n("None")
+            icon.name: "transform-browse"
+            onClicked: AnnotationDocument.tool.type = AnnotationTool.NoTool
+            // Setting checked in onCompleted so clicking the crop tool doesn't check this instead.
+            Component.onCompleted: {
+                checked = AnnotationDocument.tool.type === AnnotationTool.NoTool
+            }
+        }
+    }
     ToolButton {
+        id: cropToolButton
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("None")
-        icon.name: "transform-browse"
-        checked: AnnotationDocument.tool.type === AnnotationTool.NoTool
+        text: i18n("Crop")
+        icon.name: "transform-crop"
         onClicked: AnnotationDocument.tool.type = AnnotationTool.NoTool
+        // Setting checked in onCompleted so that 2 clicks aren't needed to check this.
+        Component.onCompleted: {
+            checked = AnnotationDocument.tool.type === AnnotationTool.NoTool && !root.showNoneButton
+        }
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup

@@ -118,6 +118,28 @@ Shape {
         return undefined
     }
 
+    function relativeXForEdges(itemOrRect, edges) {
+        if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
+            return (itemOrRect.width - width) / 2
+        } else if (edges & Qt.LeftEdge) {
+            return -width / 2
+        } else if (edges & Qt.RightEdge) {
+            return itemOrRect.width - width / 2
+        }
+        return 0
+    }
+
+    function relativeYForEdges(itemOrRect, edges) {
+        if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
+            return (itemOrRect.height - height) / 2
+        } else if (edges & Qt.TopEdge) {
+            return -height / 2
+        } else if (edges & Qt.BottomEdge) {
+            return itemOrRect.height - height / 2
+        }
+        return 0
+    }
+
     function pointAtAngle(degrees) {
         const radians = degrees * (Math.PI / 180)
         return Qt.point(pathAngleArc.radiusX * Math.cos(radians) + pathAngleArc.centerX,

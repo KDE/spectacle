@@ -19,6 +19,7 @@ EmptyPage {
     readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
     readonly property real currentZoom: annotationEditor.scale
+    property bool showCropTool: false
 
     function zoomToPercent(percent, center = flickable.mapToItem(flickable.contentItem,
                                                                  flickable.width / 2,
@@ -160,6 +161,15 @@ EmptyPage {
             visible: true
             enabled: contextWindow.annotating
                 && AnnotationDocument.tool.type !== AnnotationTool.NoTool
+        }
+
+        CropTool {
+            id: cropTool
+            anchors.fill: annotationEditor
+            transformOrigin: annotationEditor.transformOrigin
+            scale: annotationEditor.scale
+            viewport: annotationEditor
+            active: root.showCropTool
         }
     }
 
