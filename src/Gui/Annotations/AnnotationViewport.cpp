@@ -324,15 +324,15 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         return;
     }
 
-    auto toolType = m_document->tool()->type();
+    auto tool = m_document->tool();
     auto mousePos = event->position();
     auto wrapper = m_document->selectedItemWrapper();
-    if (toolType == AnnotationTool::SelectTool && wrapper->hasSelection() && m_allowDraggingSelection) {
+    if (tool->type() == AnnotationTool::SelectTool && wrapper->hasSelection() && m_allowDraggingSelection) {
         auto documentMousePos = m_localToDocument.map(event->position());
         auto dx = documentMousePos.x() - m_lastDocumentPressPos.x();
         auto dy = documentMousePos.y() - m_lastDocumentPressPos.y();
         wrapper->transform(dx, dy);
-    } else if (toolType > AnnotationTool::SelectTool) {
+    } else if (tool->isCreationTool()) {
         using ContinueOptions = AnnotationDocument::ContinueOptions;
         using ContinueOption = AnnotationDocument::ContinueOption;
         ContinueOptions options;
@@ -485,7 +485,7 @@ void AnnotationViewport::itemChange(ItemChange change, const ItemChangeData &val
 
 bool AnnotationViewport::shouldIgnoreInput() const
 {
-    return !isEnabled() || !m_document || m_document->tool()->type() == AnnotationTool::NoTool;
+    return !isEnabled() || !m_document || m_document->tool()->isNoTool();
 }
 
 void AnnotationViewport::setCursorForToolType()
