@@ -18,6 +18,9 @@ class AnnotationTool : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Tool type READ type WRITE setType RESET resetType NOTIFY typeChanged)
+    Q_PROPERTY(bool isNoTool READ isNoTool NOTIFY typeChanged)
+    Q_PROPERTY(bool isMetaTool READ isMetaTool NOTIFY typeChanged)
+    Q_PROPERTY(bool isCreationTool READ isCreationTool NOTIFY typeChanged)
     Q_PROPERTY(Options options READ options NOTIFY optionsChanged)
     Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth RESET resetStrokeWidth NOTIFY strokeWidthChanged)
     Q_PROPERTY(QColor strokeColor READ strokeColor WRITE setStrokeColor RESET resetStrokeColor NOTIFY strokeColorChanged)
@@ -34,7 +37,9 @@ public:
      */
     enum Tool {
         NoTool,
+        // Meta tools
         SelectTool,
+        // Creation tools
         FreehandTool,
         HighlighterTool,
         LineTool,
@@ -45,6 +50,7 @@ public:
         PixelateTool,
         TextTool,
         NumberTool,
+        NTools,
     };
     Q_ENUM(Tool)
 
@@ -71,7 +77,12 @@ public:
     void setType(Tool type);
     void resetType();
 
-    // Whether the current tool type is for creating annotations.
+    bool isNoTool() const;
+
+    // Whether the current tool type is for modifying the document's attributes.
+    bool isMetaTool() const;
+
+    // Whether the current tool type is for creating annotation objects.
     bool isCreationTool() const;
 
     Options options() const;

@@ -115,9 +115,19 @@ void AnnotationTool::resetType()
     setType(AnnotationTool::NoTool);
 }
 
+bool AnnotationTool::isNoTool() const
+{
+    return m_type == NoTool;
+}
+
+bool AnnotationTool::isMetaTool() const
+{
+    return m_type > NoTool && m_type < FreehandTool;
+}
+
 bool AnnotationTool::isCreationTool() const
 {
-    return m_type != NoTool && m_type != SelectTool;
+    return m_type > SelectTool && m_type < NTools;
 }
 
 AnnotationTool::Options AnnotationTool::options() const
