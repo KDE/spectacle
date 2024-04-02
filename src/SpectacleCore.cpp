@@ -19,6 +19,7 @@
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
+#include "Platforms/ImagePlatformXcb.h"
 #include "Platforms/VideoPlatform.h"
 #include "ShortcutActions.h"
 #include "PlasmaVersion.h"
@@ -56,8 +57,8 @@
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QtMath>
+#include <qobject.h>
 #include <qobjectdefs.h>
-#include <utility>
 
 using namespace Qt::StringLiterals;
 
@@ -749,9 +750,11 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
         // settings (and unless the user has set an extremely slow effect), 200
         // milliseconds is a good amount of wait time.
         timeout = qMax(timeout, 200);
-    } else if (m_imagePlatform->inherits("PlatformXcb")) {
-        // Minimum 50ms delay to prevent segfaults from xcb function calls
-        // that don't get replies fast enough.
+    } else if (qobject_cast<ImagePlatformXcb *>(m_imagePlatform.get())) {
+        // X11 compositors (which may or may not be kwin) require small delay for
+        // window to disappear.
+        // Also, minimum 50ms delay is needed to prevent segfaults from xcb function
+        // calls that don't get replies fast enough.
         timeout = qMax(timeout, 50);
     }
 
