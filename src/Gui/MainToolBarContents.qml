@@ -93,7 +93,7 @@ ButtonGrid {
     ToolButton {
         id: annotationsButton
         icon.name: "edit-image"
-        text: i18n("Show Annotation Tools")
+        text: i18nc("@action:button edit screenshot", "Edit…")
         visible: !SpectacleCore.videoMode
         checkable: true
         checked: contextWindow.annotating
