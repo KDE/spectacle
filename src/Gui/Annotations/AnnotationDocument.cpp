@@ -669,6 +669,8 @@ void AnnotationDocument::setRepaintRegion(const QRectF &rect, RepaintTypes types
     if (rect.isNull()) {
         return;
     }
+    // HACK: workaround not always repainting everywhere it should with fractional scaling.
+    auto biggerRect = rect.normalized().adjusted(-1, -1, 0, 0).toAlignedRect();
     /* QRegion has a QRect overload for operator+=, but not for operator|=.
      *
      * `region += rect` is not the same as `region = region.united(rect)`. It will try to add the
@@ -679,12 +681,12 @@ void AnnotationDocument::setRepaintRegion(const QRectF &rect, RepaintTypes types
      * We normalize the rect because operator+= will no-op if `rect.isEmpty()`.
      * `QRectF::isEmpty()` is true when the size is 0 or negative.
      */
-    if (!m_canvasRect.intersects(rect)) {
+    if (!m_canvasRect.intersects(biggerRect)) {
         // No point in trying to transform or add to the region if true.
         return;
     }
     const bool emitRepaintNeeded = m_repaintRegion.isEmpty() || m_lastRepaintTypes != types;
-    m_repaintRegion += rect.normalized().toAlignedRect();
+    m_repaintRegion += biggerRect;
     m_lastRepaintTypes = types;
     if (emitRepaintNeeded) {
         Q_EMIT repaintNeeded(m_lastRepaintTypes);
