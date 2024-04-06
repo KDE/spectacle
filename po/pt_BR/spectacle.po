@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:37+0000\n"
+"POT-Creation-Date: 2024-04-06 00:37+0000\n"
 "PO-Revision-Date: 2024-03-20 17:28-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -353,62 +353,67 @@ msgstr "Número para anotações numéricas"
 msgid "Shadow"
 msgstr "Sombra"
 
-#: src/Gui/AnnotationsToolBarContents.qml:64
+#: src/Gui/AnnotationsToolBarContents.qml:70
 #, kde-format
 msgid "None"
 msgstr "Nenhuma"
 
-#: src/Gui/AnnotationsToolBarContents.qml:71
+#: src/Gui/AnnotationsToolBarContents.qml:82
+#, kde-format
+msgid "Crop"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
 msgid "Select"
 msgstr "Selecionar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:79
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Freehand"
 msgstr "Linha livre"
 
-#: src/Gui/AnnotationsToolBarContents.qml:86
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Highlighter"
 msgstr "Marca-texto"
 
-#: src/Gui/AnnotationsToolBarContents.qml:93
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Line"
 msgstr "Linha"
 
-#: src/Gui/AnnotationsToolBarContents.qml:100
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Arrow"
 msgstr "Seta"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Rectangle"
 msgstr "Retângulo"
 
-#: src/Gui/AnnotationsToolBarContents.qml:114
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Ellipse"
 msgstr "Elipse"
 
-#: src/Gui/AnnotationsToolBarContents.qml:121
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Pixelate"
 msgstr "Pixelar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:128
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Blur"
 msgstr "Desfocar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:135
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Text"
 msgstr "Texto"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Number"
 msgstr "Número"
@@ -601,22 +606,22 @@ msgstr "Outro aplicativo..."
 msgid "Share"
 msgstr "Compartilhar"
 
-#: src/Gui/ImageView.qml:147
+#: src/Gui/ImageView.qml:156
 #, kde-format
 msgid "Screenshot"
 msgstr "Capturar imagem"
 
-#: src/Gui/ImageView.qml:151
+#: src/Gui/ImageView.qml:160
 #, kde-format
 msgid "Recording"
 msgstr "Gravando"
 
-#: src/Gui/ImageView.qml:214
+#: src/Gui/ImageView.qml:223
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:228
+#: src/Gui/ImageView.qml:237
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom da imagem"
@@ -660,8 +665,9 @@ msgstr "Exportar"
 
 #: src/Gui/MainToolBarContents.qml:96
 #, kde-format
-msgid "Show Annotation Tools"
-msgstr "Mostrar ferramentas de anotação"
+msgctxt "@action:button edit screenshot"
+msgid "Edit…"
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -825,6 +831,15 @@ msgstr ""
 "Não foi possível capturar uma imagem. Relate este erro aqui: <a href="
 "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">criar um bug do "
 "Spectacle</a>"
+
+#: src/Gui/ScreenshotView.qml:185
+#, kde-format
+msgctxt "@info crop tool explanation"
+msgid ""
+"Click and drag to make a selection.\n"
+"Double click the selection to accept and crop.\n"
+"Right click to clear the selection."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1821,7 +1836,7 @@ msgstr "Região retangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar o Spectacle sem fazer captura"
 
-#: src/SpectacleCore.cpp:348
+#: src/SpectacleCore.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1831,18 +1846,18 @@ msgstr ""
 "O Spectacle está gravando: %1\n"
 "Clique para finalizar a gravação"
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:627
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 não é um modo válido para --gravar"
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:831
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "A captura da tela foi cancelada ou falhou"
 
-#: src/SpectacleCore.cpp:880
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1851,23 +1866,23 @@ msgstr ""
 "Uma imagem foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
 "área de transferência."
 
-#: src/SpectacleCore.cpp:884
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Foi gravada uma imagem como '%1' na sua pasta de Imagens."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Uma imagem foi salva como '%1' em '%2'."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:894
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "A imagem foi salva na área de transferência."
 
-#: src/SpectacleCore.cpp:896
+#: src/SpectacleCore.cpp:899
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1879,7 +1894,7 @@ msgstr ""
 "Uma imagem foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
 "área de transferência."
 
-#: src/SpectacleCore.cpp:898
+#: src/SpectacleCore.cpp:901
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1887,19 +1902,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Foi gravada uma imagem como '%1' na sua pasta de Imagens."
 
-#: src/SpectacleCore.cpp:900
+#: src/SpectacleCore.cpp:903
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Uma imagem foi salva como '%1' em '%2'."
 
-#: src/SpectacleCore.cpp:911
+#: src/SpectacleCore.cpp:914
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:925
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
@@ -1915,6 +1930,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Show Annotation Tools"
+#~ msgstr "Mostrar ferramentas de anotação"
 
 #~ msgid "Whether to show a magnifier in the region selection"
 #~ msgstr "Se deve mostrar uma lupa na seleção da região"

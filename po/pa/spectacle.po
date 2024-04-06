@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:37+0000\n"
+"POT-Creation-Date: 2024-04-06 00:37+0000\n"
 "PO-Revision-Date: 2024-03-11 07:59-0500\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -328,62 +328,67 @@ msgstr "ਨੰਬਰ ਟਿਪੱਣੀਆਂ ਲਈ ਨੰਬਰ"
 msgid "Shadow"
 msgstr "ਸ਼ੈਡੋ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:64
+#: src/Gui/AnnotationsToolBarContents.qml:70
 #, kde-format
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:71
+#: src/Gui/AnnotationsToolBarContents.qml:82
+#, kde-format
+msgid "Crop"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
 msgid "Select"
 msgstr "ਚੁਣੋ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:79
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Freehand"
 msgstr "ਹੱਥ ਨਾਲ ਵਾਹਉਣਾ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:86
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Highlighter"
 msgstr "ਹਾਈਲਾਈਟਰ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:93
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Line"
 msgstr "ਰੇਖਾ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:100
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Arrow"
 msgstr "ਤੀਰ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Rectangle"
 msgstr "ਆਇਤਾਕਾਰ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:114
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Ellipse"
 msgstr "ਅੰਡਾਕਾਰ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:121
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Pixelate"
 msgstr "ਪਿਕਸਲੇਟ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:128
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Blur"
 msgstr "ਧੁੰਦਲਾ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:135
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Text"
 msgstr "ਲਿਖਤ"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Number"
 msgstr "ਨੰਬਰ"
@@ -556,22 +561,22 @@ msgstr "...ਹੋਰ ਐਪਲੀਕੇਸ਼ਨ"
 msgid "Share"
 msgstr "ਸਾਂਝਾ ਕਰੋ"
 
-#: src/Gui/ImageView.qml:147
+#: src/Gui/ImageView.qml:156
 #, kde-format
 msgid "Screenshot"
 msgstr "ਸਕਰੀਨਸ਼ਾਟ"
 
-#: src/Gui/ImageView.qml:151
+#: src/Gui/ImageView.qml:160
 #, kde-format
 msgid "Recording"
 msgstr "ਰਿਕਾਰਡ ਕਰੋ"
 
-#: src/Gui/ImageView.qml:214
+#: src/Gui/ImageView.qml:223
 #, kde-format
 msgid "Zoom:"
 msgstr "ਜ਼ੂਮ:"
 
-#: src/Gui/ImageView.qml:228
+#: src/Gui/ImageView.qml:237
 #, kde-format
 msgid "Image Zoom"
 msgstr "ਚਿੱਤਰ ਜ਼ੂਮ"
@@ -615,8 +620,9 @@ msgstr "ਐਕਸਪੋਰਟ"
 
 #: src/Gui/MainToolBarContents.qml:96
 #, kde-format
-msgid "Show Annotation Tools"
-msgstr "ਟਿੱਪਣੀ ਕਰਨ ਵਾਲਾ ਟੂਲ ਵੇਖਾਓ"
+msgctxt "@action:button edit screenshot"
+msgid "Edit…"
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -774,6 +780,15 @@ msgid ""
 msgstr ""
 "ਸਕਰੀਨਸ਼ਾਟ ਲਿਆ ਨਹੀ ਜਾ ਸਕਿਆ ਹੈ। ਇਸ ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ: <a href=\"https://bugs.kde."
 "org/enter_bug.cgi?product=Spectacle\">ਸਪੈਕਟਲ ਬੱਗ ਦਿਓ (ਅੰਗਰੇਜ਼ੀ)</a>"
+
+#: src/Gui/ScreenshotView.qml:185
+#, kde-format
+msgctxt "@info crop tool explanation"
+msgid ""
+"Click and drag to make a selection.\n"
+"Double click the selection to accept and crop.\n"
+"Right click to clear the selection."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1733,7 +1748,7 @@ msgstr "ਆਇਤਾਕਾਰ ਖੇਤਰ ਰਿਕਾਰਡ ਕਰੋ"
 msgid "Launch Spectacle without capturing"
 msgstr "ਬਿਨਾਂ ਕੈਪਚਰ ਕੀਤੇ ਸਪੈਕਟਾਕਲ ਨੂੰ ਚਲਾਓ"
 
-#: src/SpectacleCore.cpp:348
+#: src/SpectacleCore.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1743,18 +1758,18 @@ msgstr ""
 "ਸਪੈਕਟਾਕਲ ਰਿਕਾਰਡ ਹੋ ਰਹੀ ਹੈ: %1\n"
 "ਰਿਕਾਰਡਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:627
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record ਲਈ ਵਾਜਬ ਮੋਡ ਨਹੀਂ ਹੈ"
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:831
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਖਿੱਚਣਾ ਰੱਦ ਕੀਤਾ ਜਾਂ ਫੇਲ੍ਹ ਹੋਇਆ"
 
-#: src/SpectacleCore.cpp:880
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1763,23 +1778,23 @@ msgstr ""
 "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਸਕਰੀਨਸ਼ਾਟ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:884
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਤਸਵੀਰਾਂ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:894
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:896
+#: src/SpectacleCore.cpp:899
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1788,24 +1803,24 @@ msgstr ""
 "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਰਿਕਾਰਡਿੰਗ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:898
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਤੁਹਾਡੇ ਵੀਡੀਓ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:900
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:911
+#: src/SpectacleCore.cpp:914
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: src/SpectacleCore.cpp:925
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "Annotate"
 msgstr "ਟਿੱਪਣੀ"
@@ -1821,6 +1836,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Show Annotation Tools"
+#~ msgstr "ਟਿੱਪਣੀ ਕਰਨ ਵਾਲਾ ਟੂਲ ਵੇਖਾਓ"
 
 #~ msgid "Capture Modes"
 #~ msgstr "ਕੈਪਚਰ ਦੇ ਢੰਗ"

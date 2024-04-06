@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:37+0000\n"
+"POT-Creation-Date: 2024-04-06 00:37+0000\n"
 "PO-Revision-Date: 2023-08-12 01:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -344,62 +344,67 @@ msgstr "数字の注釈"
 msgid "Shadow"
 msgstr "影"
 
-#: src/Gui/AnnotationsToolBarContents.qml:64
+#: src/Gui/AnnotationsToolBarContents.qml:70
 #, kde-format
 msgid "None"
 msgstr "なし"
 
-#: src/Gui/AnnotationsToolBarContents.qml:71
+#: src/Gui/AnnotationsToolBarContents.qml:82
+#, kde-format
+msgid "Crop"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
 msgid "Select"
 msgstr "選択"
 
-#: src/Gui/AnnotationsToolBarContents.qml:79
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Freehand"
 msgstr "手書き"
 
-#: src/Gui/AnnotationsToolBarContents.qml:86
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Highlighter"
 msgstr "マーカー"
 
-#: src/Gui/AnnotationsToolBarContents.qml:93
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Line"
 msgstr "直線"
 
-#: src/Gui/AnnotationsToolBarContents.qml:100
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Arrow"
 msgstr "矢印"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Rectangle"
 msgstr "矩形"
 
-#: src/Gui/AnnotationsToolBarContents.qml:114
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Ellipse"
 msgstr "楕円"
 
-#: src/Gui/AnnotationsToolBarContents.qml:121
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Pixelate"
 msgstr "モザイク"
 
-#: src/Gui/AnnotationsToolBarContents.qml:128
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Blur"
 msgstr "ぼかし"
 
-#: src/Gui/AnnotationsToolBarContents.qml:135
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Text"
 msgstr "テキスト"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Number"
 msgstr "数字"
@@ -588,22 +593,22 @@ msgstr "その他のアプリケーション..."
 msgid "Share"
 msgstr "共有"
 
-#: src/Gui/ImageView.qml:147
+#: src/Gui/ImageView.qml:156
 #, kde-format
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/Gui/ImageView.qml:151
+#: src/Gui/ImageView.qml:160
 #, kde-format
 msgid "Recording"
 msgstr "画面録画"
 
-#: src/Gui/ImageView.qml:214
+#: src/Gui/ImageView.qml:223
 #, kde-format
 msgid "Zoom:"
 msgstr "ズーム:"
 
-#: src/Gui/ImageView.qml:228
+#: src/Gui/ImageView.qml:237
 #, kde-format
 msgid "Image Zoom"
 msgstr "画像ズーム"
@@ -650,8 +655,9 @@ msgstr "エクスポート"
 
 #: src/Gui/MainToolBarContents.qml:96
 #, kde-format
-msgid "Show Annotation Tools"
-msgstr "注釈ツールを表示"
+msgctxt "@action:button edit screenshot"
+msgid "Edit…"
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -817,6 +823,15 @@ msgstr ""
 "スクリーンショットを撮影できませんでした。こちらでこのバグを報告してくださ"
 "い: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create "
 "a spectacle bug</a>"
+
+#: src/Gui/ScreenshotView.qml:185
+#, kde-format
+msgctxt "@info crop tool explanation"
+msgid ""
+"Click and drag to make a selection.\n"
+"Double click the selection to accept and crop.\n"
+"Right click to clear the selection."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1821,7 +1836,7 @@ msgstr "矩形領域"
 msgid "Launch Spectacle without capturing"
 msgstr "撮影せずに Spectacle を起動"
 
-#: src/SpectacleCore.cpp:348
+#: src/SpectacleCore.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1829,18 +1844,18 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:627
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:831
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "スクリーンショットの撮影がキャンセルされたか失敗しました"
 
-#: src/SpectacleCore.cpp:880
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1849,23 +1864,23 @@ msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
 "保存されました。"
 
-#: src/SpectacleCore.cpp:884
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "スクリーンショットは '%1' としてピクチャフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:894
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "スクリーンショットはクリップボードに保存されました。"
 
-#: src/SpectacleCore.cpp:896
+#: src/SpectacleCore.cpp:899
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -1877,7 +1892,7 @@ msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
 "保存されました。"
 
-#: src/SpectacleCore.cpp:898
+#: src/SpectacleCore.cpp:901
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1885,19 +1900,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "スクリーンショットは '%1' としてピクチャフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:900
+#: src/SpectacleCore.cpp:903
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:911
+#: src/SpectacleCore.cpp:914
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:925
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "Annotate"
 msgstr "注釈する"
@@ -1913,6 +1928,9 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgid "Show Annotation Tools"
+#~ msgstr "注釈ツールを表示"
 
 #~ msgid "Whether to show a magnifier in the region selection"
 #~ msgstr "拡大鏡を領域選択に表示するか"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:37+0000\n"
+"POT-Creation-Date: 2024-04-06 00:37+0000\n"
 "PO-Revision-Date: 2024-04-04 17:40+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -354,62 +354,67 @@ msgstr "Skaičių anotacijų skaičius"
 msgid "Shadow"
 msgstr "Šešėlis"
 
-#: src/Gui/AnnotationsToolBarContents.qml:64
+#: src/Gui/AnnotationsToolBarContents.qml:70
 #, kde-format
 msgid "None"
 msgstr "Nėra"
 
-#: src/Gui/AnnotationsToolBarContents.qml:71
+#: src/Gui/AnnotationsToolBarContents.qml:82
+#, kde-format
+msgid "Crop"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: src/Gui/AnnotationsToolBarContents.qml:79
+#: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Freehand"
 msgstr "Laisvas piešimas"
 
-#: src/Gui/AnnotationsToolBarContents.qml:86
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Highlighter"
 msgstr "Markeris"
 
-#: src/Gui/AnnotationsToolBarContents.qml:93
+#: src/Gui/AnnotationsToolBarContents.qml:114
 #, kde-format
 msgid "Line"
 msgstr "Linija"
 
-#: src/Gui/AnnotationsToolBarContents.qml:100
+#: src/Gui/AnnotationsToolBarContents.qml:121
 #, kde-format
 msgid "Arrow"
 msgstr "Rodyklė"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Rectangle"
 msgstr "Stačiakampis"
 
-#: src/Gui/AnnotationsToolBarContents.qml:114
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Ellipse"
 msgstr "Elipsė"
 
-#: src/Gui/AnnotationsToolBarContents.qml:121
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Pixelate"
 msgstr "Iškloti pikseliais"
 
-#: src/Gui/AnnotationsToolBarContents.qml:128
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Blur"
 msgstr "Sulieti"
 
-#: src/Gui/AnnotationsToolBarContents.qml:135
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Text"
 msgstr "Tekstas"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Number"
 msgstr "Skaičius"
@@ -589,22 +594,22 @@ msgstr "Kita programa..."
 msgid "Share"
 msgstr "Bendrinti"
 
-#: src/Gui/ImageView.qml:147
+#: src/Gui/ImageView.qml:156
 #, kde-format
 msgid "Screenshot"
 msgstr "Ekrano kopija"
 
-#: src/Gui/ImageView.qml:151
+#: src/Gui/ImageView.qml:160
 #, kde-format
 msgid "Recording"
 msgstr "Filmavimas"
 
-#: src/Gui/ImageView.qml:214
+#: src/Gui/ImageView.qml:223
 #, kde-format
 msgid "Zoom:"
 msgstr "Mastelis:"
 
-#: src/Gui/ImageView.qml:228
+#: src/Gui/ImageView.qml:237
 #, kde-format
 msgid "Image Zoom"
 msgstr "Paveikslo mastelis"
@@ -648,8 +653,9 @@ msgstr "Eksportuoti"
 
 #: src/Gui/MainToolBarContents.qml:96
 #, kde-format
-msgid "Show Annotation Tools"
-msgstr "Rodyti anotacijų įrankį"
+msgctxt "@action:button edit screenshot"
+msgid "Edit…"
+msgstr ""
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -814,6 +820,15 @@ msgstr ""
 "Nepavyko padaryti ekrano kopijos. Praneškite apie šią klaidą čia: <a href="
 "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">sukurti pranešimą "
 "apie spectacle klaidą</a>"
+
+#: src/Gui/ScreenshotView.qml:185
+#, kde-format
+msgctxt "@info crop tool explanation"
+msgid ""
+"Click and drag to make a selection.\n"
+"Double click the selection to accept and crop.\n"
+"Right click to clear the selection."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1789,7 +1804,7 @@ msgstr "Filmuoti stačiakampę sritį"
 msgid "Launch Spectacle without capturing"
 msgstr "Paleisti Spectacle nefotografuojant"
 
-#: src/SpectacleCore.cpp:348
+#: src/SpectacleCore.cpp:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1799,18 +1814,18 @@ msgstr ""
 "Spectacle filmuoja: %1\n"
 "Spustelėkite norėdami užbagti filmavimą"
 
-#: src/SpectacleCore.cpp:626
+#: src/SpectacleCore.cpp:627
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nėra tinkama --record veiksena"
 
-#: src/SpectacleCore.cpp:828
+#: src/SpectacleCore.cpp:831
 #, kde-format
 msgid "Screenshot capture canceled or failed"
 msgstr "Ekrano kopijos darymo atsisakyta arba jis patyrė nesėkmę"
 
-#: src/SpectacleCore.cpp:880
+#: src/SpectacleCore.cpp:883
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1819,23 +1834,23 @@ msgstr ""
 "Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
 "ekrano kopijos failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:884
+#: src/SpectacleCore.cpp:887
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:890
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrano kopija buvo įrašyta į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:891
+#: src/SpectacleCore.cpp:894
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
-#: src/SpectacleCore.cpp:896
+#: src/SpectacleCore.cpp:899
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1844,24 +1859,24 @@ msgstr ""
 "Įrašui buvo suteiktas pavadinimas „%1“ ir jis įrašytas į „%2“, o įrašo failo "
 "kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:898
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Įrašas buvo įrašytas į jūsų Vaizdo įrašų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:900
+#: src/SpectacleCore.cpp:903
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Įrašas buvo įrašytas į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:911
+#: src/SpectacleCore.cpp:914
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atverti"
 
-#: src/SpectacleCore.cpp:925
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "Annotate"
 msgstr "Kurti anotacijas"
@@ -1877,6 +1892,9 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Show Annotation Tools"
+#~ msgstr "Rodyti anotacijų įrankį"
 
 #~ msgid "Whether to show a magnifier in the region selection"
 #~ msgstr "Ar srities žymėjime rodyti didintuvą"
