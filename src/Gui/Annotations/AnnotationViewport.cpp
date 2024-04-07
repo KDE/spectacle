@@ -73,6 +73,8 @@ void AnnotationViewport::setViewportRect(const QRectF &rect)
     m_viewportRect = rect;
     Q_EMIT viewportRectChanged();
     updateTransforms();
+    m_repaintBaseImage = true;
+    m_repaintAnnotations = true;
     update();
 }
 
@@ -441,33 +443,40 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
         node->annotationsNode()->setMipmapFiltering(QSGTexture::Linear);
     }
 
-    auto baseImageNode = node->baseImageNode();
-    if (!baseImageNode->texture() || m_repaintBaseImage) {
-        baseImageNode->setTexture(window->createTextureFromImage(m_document->canvasBaseImage()));
-        m_repaintBaseImage = false;
-    }
-
-    auto annotationsNode = node->annotationsNode();
-    if (!annotationsNode->texture() || m_repaintAnnotations) {
-        annotationsNode->setTexture(window->createTextureFromImage(m_document->annotationsImage()));
-        m_repaintAnnotations = false;
-    }
-
     const auto canvasRect = m_document->canvasRect();
     const auto imageDpr = m_document->imageDpr();
     const auto windowDpr = window->effectiveDevicePixelRatio();
     const auto canvasView = canvasRect.intersected(m_viewportRect.translated(canvasRect.topLeft()));
     const auto imageView = G::rectScaled(canvasView.translated(-canvasRect.topLeft()), imageDpr);
 
+    auto baseImageNode = node->baseImageNode();
+    if (!baseImageNode->texture() || m_repaintBaseImage) {
+        auto image = m_document->canvasBaseImage();
+        QRectF sourceBounds = image.rect();
+        auto sourceRect = imageView.intersected(sourceBounds).toRect();
+        if (sourceRect != sourceBounds) {
+            image = image.copy(sourceRect);
+        }
+        baseImageNode->setTexture(window->createTextureFromImage(image));
+        m_repaintBaseImage = false;
+    }
+
+    auto annotationsNode = node->annotationsNode();
+    if (!annotationsNode->texture() || m_repaintAnnotations) {
+        auto image = m_document->annotationsImage();
+        QRectF sourceBounds = image.rect();
+        auto sourceRect = imageView.intersected(sourceBounds).toRect();
+        if (sourceRect != sourceBounds) {
+            image = image.copy(sourceRect);
+        }
+        annotationsNode->setTexture(window->createTextureFromImage(image));
+        m_repaintAnnotations = false;
+    }
+
     auto setupImageNode = [&](QSGImageNode *node) {
-        QRectF sourceBounds{{0, 0}, node->texture()->textureSize()};
-        auto sourceRect = imageView.intersected(sourceBounds);
-        QRectF targetRect{{0, 0}, sourceRect.size().scaled(this->size(), Qt::KeepAspectRatio)};
+        QRectF targetRect{{0, 0}, node->texture()->textureSize().toSizeF().scaled(this->size(), Qt::KeepAspectRatio)};
         targetRect.moveTo(std::round((width() - targetRect.width()) / 2 * windowDpr) / windowDpr,
                           std::round((height() - targetRect.height()) / 2 * windowDpr) / windowDpr);
-        if (!sourceRect.isEmpty()) {
-            node->setSourceRect(sourceRect);
-        }
         if (!targetRect.isEmpty()) {
             node->setRect(targetRect);
         }
