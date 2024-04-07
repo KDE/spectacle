@@ -79,6 +79,8 @@ find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(ZXing REQUIRED)
+find_package(OpenCV REQUIRED core imgproc)
+
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
     TYPE REQUIRED

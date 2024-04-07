@@ -87,6 +87,11 @@ ki18n_wrap_ui(spectacle
     Gui/SettingsDialog/VideoSaveOptions.ui
 )
 
+# Needed to compile with OpenCV
+target_compile_options (spectacle PRIVATE -fexceptions)
+
+target_include_directories(spectacle PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src ${OpenCV_INCLUDE_DIRS})
+
 target_link_libraries(spectacle PRIVATE
     Qt::Concurrent
     Qt::DBus
@@ -113,6 +118,7 @@ target_link_libraries(spectacle PRIVATE
     Wayland::Client
     LayerShellQt::Interface
     ZXing::Core
+    ${OpenCV_LIBRARIES}
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
