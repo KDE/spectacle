@@ -449,27 +449,24 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
     const auto canvasView = canvasRect.intersected(m_viewportRect.translated(canvasRect.topLeft()));
     const auto imageView = G::rectScaled(canvasView.translated(-canvasRect.topLeft()), imageDpr);
 
+    auto getImage = [&](const QImage &image) -> QImage {
+        const auto sourceBounds = image.rect();
+        const auto sourceRect = imageView.intersected(sourceBounds).toRect();
+        if (sourceRect != sourceBounds) {
+            return image.copy(sourceRect);
+        }
+        return image;
+    };
+
     auto baseImageNode = node->baseImageNode();
     if (!baseImageNode->texture() || m_repaintBaseImage) {
-        auto image = m_document->canvasBaseImage();
-        QRectF sourceBounds = image.rect();
-        auto sourceRect = imageView.intersected(sourceBounds).toRect();
-        if (sourceRect != sourceBounds) {
-            image = image.copy(sourceRect);
-        }
-        baseImageNode->setTexture(window->createTextureFromImage(image));
+        baseImageNode->setTexture(window->createTextureFromImage(getImage(m_document->canvasBaseImage())));
         m_repaintBaseImage = false;
     }
 
     auto annotationsNode = node->annotationsNode();
     if (!annotationsNode->texture() || m_repaintAnnotations) {
-        auto image = m_document->annotationsImage();
-        QRectF sourceBounds = image.rect();
-        auto sourceRect = imageView.intersected(sourceBounds).toRect();
-        if (sourceRect != sourceBounds) {
-            image = image.copy(sourceRect);
-        }
-        annotationsNode->setTexture(window->createTextureFromImage(image));
+        annotationsNode->setTexture(window->createTextureFromImage(getImage(m_document->annotationsImage())));
         m_repaintAnnotations = false;
     }
 
