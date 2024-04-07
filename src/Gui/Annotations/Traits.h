@@ -85,9 +85,10 @@ struct Stroke {
 namespace ImageEffects
 {
 struct Blur {
-    // The factor by which original logical pixel sizes are multiplied.
-    // One or less has no effect.
-    uint factor = 1;
+    // Standard deviation for the blur effect.
+    // Values less than the minimum are invalid.
+    qreal factor = 2;
+    static constexpr qreal minimum = 0;
     Blur(uint factor);
     bool isValid() const;
     // Get an image that can be immediately used for rendering an image effect.
@@ -105,8 +106,9 @@ private:
 
 struct Pixelate {
     // The factor by which original logical pixel sizes are multiplied.
-    // One or less has no effect.
-    uint factor = 1;
+    // Values less than the minimum are invalid.
+    uint factor = 4;
+    static constexpr qreal minimum = 1;
     Pixelate(uint factor);
     bool isValid() const;
     // Get an image that can be immediately used for rendering an image effect.
@@ -152,14 +154,18 @@ struct Text : public std::variant<QString, int> {
 // Scaled to fit Geometry::visualRect
 struct Shadow {
     COMMON_TRAIT_DEFS(Shadow)
-    static constexpr int blurRadius = 2;
-    static constexpr int xOffset = 2;
-    static constexpr int yOffset = 2;
+    // The radius from the edge of the base graphics to where the shadow ends.
+    static constexpr qreal radius = 2;
+    // The X axis offset of the shadow.
+    static constexpr qreal xOffset = 2;
+    // The Y axis offset of the shadow.
+    static constexpr qreal yOffset = 2;
+    // The margins to be added to the visualRect so that it contains the shadow.
     static constexpr QMarginsF margins{
-        blurRadius + 1,
-        blurRadius + 1,
-        blurRadius + xOffset + 1,
-        blurRadius + yOffset + 1,
+        std::max(0.0, radius - xOffset),
+        std::max(0.0, radius - yOffset),
+        std::max(0.0, radius + xOffset),
+        std::max(0.0, radius + xOffset),
     };
     bool enabled = true;
 };

@@ -20,7 +20,8 @@ using G = Geometry;
 
 QImage defaultImage(const QSize &size, qreal dpr)
 {
-    QImage image(size, QImage::Format_ARGB32_Premultiplied);
+    // RGBA is better for use with OpenCV
+    QImage image(size, QImage::Format_RGBA8888_Premultiplied);
     image.setDevicePixelRatio(dpr);
     image.fill(Qt::transparent);
     return image;

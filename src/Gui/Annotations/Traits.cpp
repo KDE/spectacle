@@ -5,6 +5,7 @@
 
 #include "Traits.h"
 #include "Geometry.h"
+#include "QtCV.h"
 #include <QLocale>
 #include <QUuid>
 
@@ -37,16 +38,6 @@ QString Traits::Text::text() const
 // ImageEffects
 
 static const auto factorKey = u"factor"_s;
-QImage imageCopyHelper(const QImage &image, const QRectF &copyRect)
-{
-    if (copyRect.size() != image.size()) {
-        return image.copy(std::floor<int>(copyRect.x()),
-                          std::floor<int>(copyRect.y()), //
-                          std::ceil<int>(copyRect.width()),
-                          std::ceil<int>(copyRect.height()));
-    }
-    return image;
-}
 
 Traits::ImageEffects::Blur::Blur(uint factor)
     : factor(factor)
@@ -55,7 +46,7 @@ Traits::ImageEffects::Blur::Blur(uint factor)
 
 bool Traits::ImageEffects::Blur::isValid() const
 {
-    return factor > 1;
+    return factor >= minimum;
 }
 
 QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -68,20 +59,22 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
          || backingStoreCache.text(factorKey).toFloat() != factor)
         && getImage) {
         backingStoreCache = getImage();
+        if (backingStoreCache.isNull()) {
+            return backingStoreCache;
+        }
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
-        const auto effectFactor = factor * dpr;
-        auto scaleDown = QTransform::fromScale(1 / effectFactor, 1 / effectFactor);
-        auto scaleUp = QTransform::fromScale(effectFactor, effectFactor);
-        // A poor man's blur. It's fast, but not high quality.
-        // It's somewhat blocky, but it's definitely blurry.
-        backingStoreCache = backingStoreCache.transformed(scaleDown, Qt::SmoothTransformation);
-        backingStoreCache = backingStoreCache.transformed(scaleUp, Qt::SmoothTransformation);
+        const qreal sigma = factor * dpr;
+        auto mat = QtCV::qImageToMat(backingStoreCache);
+        cv::GaussianBlur(mat, mat, {}, sigma, sigma);
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != backingStoreCache.size()) {
+        return backingStoreCache.copy(copyRect);
+    }
+    return backingStoreCache;
 }
 
 Traits::ImageEffects::Pixelate::Pixelate(uint factor)
@@ -91,7 +84,7 @@ Traits::ImageEffects::Pixelate::Pixelate(uint factor)
 
 bool Traits::ImageEffects::Pixelate::isValid() const
 {
-    return factor > 1;
+    return factor >= minimum;
 }
 
 QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
@@ -104,6 +97,9 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
          || backingStoreCache.text(factorKey).toFloat() != factor)
         && getImage) {
         backingStoreCache = getImage();
+        if (backingStoreCache.isNull()) {
+            return backingStoreCache;
+        }
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
         const auto effectFactor = factor * dpr;
@@ -115,8 +111,11 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }
-    rect = G::rectScaled(rect, backingStoreCache.devicePixelRatio());
-    return imageCopyHelper(backingStoreCache, rect);
+    QRect copyRect = G::rectScaled(rect, backingStoreCache.devicePixelRatio()).toAlignedRect();
+    if (copyRect.size() != backingStoreCache.size()) {
+        return backingStoreCache.copy(copyRect);
+    }
+    return backingStoreCache;
 }
 
 // Functions
