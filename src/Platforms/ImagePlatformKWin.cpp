@@ -441,9 +441,10 @@ QImage combinedImage(const QList<QImage> &images)
         auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(QImage::Format_RGBA8888_Premultiplied);
         const auto mat = QtCV::qImageToMat(rgbaImage);
         // Region Of Interest to put the image in the main image.
-        const auto offset = rgbaImage.offset() * finalDpr;
-        const auto size = (rgbaImage.deviceIndependentSize() * finalDpr).toSize();
-        const cv::Rect rect{offset.x(), offset.y(), size.width(), size.height()};
+        const auto offset = rgbaImage.offset().toPointF() * finalDpr;
+        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
+        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
+        const cv::Rect rect(offset.x(), offset.y(), size.width(), size.height());
         const auto imageDpr = image.devicePixelRatio();
         const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
         const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
