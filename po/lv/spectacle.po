@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-06 00:37+0000\n"
-"PO-Revision-Date: 2024-02-14 08:35+0200\n"
+"PO-Revision-Date: 2024-04-05 16:56+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -425,12 +425,10 @@ msgid "Take a new screenshot"
 msgstr "Uzņemt jaunu ekrānattēlu"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Ekrānattēli"
+msgstr "Ekrānattēlu iestatījumi"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -525,13 +523,10 @@ msgstr[1] "%2 sekundes"
 msgstr[2] "%2 sekunžu"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 sekunde"
+msgstr "%1 sekundes"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -544,40 +539,34 @@ msgid "Help"
 msgstr "Palīdzība"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr "Ekrānattēli"
+msgstr "Ekrānattēla režīmi"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr "Video"
+msgstr "Ekrāna ieraksta režīmi"
 
 #: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
-msgstr "Ieraksta iestatījumi"
+msgstr "Ekrāna ieraksta iestatījumi"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Ekrānattēls"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
-msgstr "Video"
+msgstr "Ekrāna ieraksts"
 
 #: src/Gui/ExportMenu.cpp:52
 #, kde-format
@@ -943,10 +932,9 @@ msgstr "Parādīt uzņemšanas instrukcijas"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Parādīt pietuvināšanas rīku"
+msgstr "Parādīt pietuvināšanas rīku:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -968,7 +956,7 @@ msgstr "Vienmēr"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Turot „Shift“"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
