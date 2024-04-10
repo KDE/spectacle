@@ -32,7 +32,7 @@ class AnnotationViewport : public QQuickItem
 
 public:
     explicit AnnotationViewport(QQuickItem *parent = nullptr);
-    ~AnnotationViewport() override;
+    ~AnnotationViewport() noexcept override;
 
     QRectF viewportRect() const;
     void setViewportRect(const QRectF &rect);
