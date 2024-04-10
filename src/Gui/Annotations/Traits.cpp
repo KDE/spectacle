@@ -62,11 +62,11 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
         if (backingStoreCache.isNull()) {
             return backingStoreCache;
         }
+        auto mat = QtCV::qImageToMat(backingStoreCache);
         // Scale the factor with the devicePixelRatio.
         // This way high DPI pictures aren't visually affected less than standard DPI pictures.
         const qreal sigma = factor * dpr;
-        auto mat = QtCV::qImageToMat(backingStoreCache);
-        cv::GaussianBlur(mat, mat, {}, sigma, sigma);
+        QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
         backingStoreCache.setDevicePixelRatio(dpr);
         backingStoreCache.setText(factorKey, QString::number(factor));
     }

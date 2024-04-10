@@ -147,12 +147,13 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
         p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
     }
     p.end();
-    // We only want black shadows with opacity, so we only need black and 8 bits of alpha.
-    // If we don't do this, color emojis won't have black semi-transparent shadows.
-    shadow.convertTo(QImage::Format_Alpha8);
     auto mat = QtCV::qImageToMat(shadow);
     const qreal sigma = Traits::Shadow::radius * devicePixelRatio;
     const int ksize = QtCV::sigmaToKSize(sigma);
-    cv::GaussianBlur(mat, mat, {ksize, ksize}, sigma, sigma);
+    // Do this before converting to Alpha8 because stackBlur gets distorted with Alpha8.
+    QtCV::stackOrGaussianBlurCompatibility(mat, mat, {ksize, ksize}, sigma, sigma);
+    // We only want black shadows with opacity, so we only need black and 8 bits of alpha.
+    // If we don't do this, color emojis won't have black semi-transparent shadows.
+    shadow.convertTo(QImage::Format_Alpha8);
     return shadow;
 }

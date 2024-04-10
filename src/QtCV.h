@@ -67,6 +67,26 @@ inline auto sigmaToKSize(Number value)
 {
     return cvRound(value + 1) | 1;
 }
+
+// Stack blur looks like Gaussian blur, but doesn't become as slow with larger kernel sizes.
+// Stack blur is unavailable in OpenCV versions before 4.7.
+// We need this because of the FreeBSD 14 CI pipeline. FreeBSD 14 is only on OpenCV 4.6.
+inline void stackOrGaussianBlurCompatibility(cv::InputArray &in, cv::OutputArray &out, cv::Size ksize, double sigmaX, double sigmaY = 0, [[maybe_unused]] int borderType = cv::BORDER_DEFAULT)
+{
+#if CV_MAJOR_VERSION > 4 || (CV_MAJOR_VERSION == 4 && CV_MINOR_VERSION >= 7)
+    // Replicate the behavior of cv::GaussianBlur with automatic kernel size.
+    const auto gaussianKSizeFactor = (in.depth() == CV_8U ? 3 : 4) * 2;
+    if( ksize.width <= 0 && sigmaX > 0 ) {
+        ksize.width = sigmaToKSize(sigmaX * gaussianKSizeFactor);
+    }
+    if( ksize.height <= 0 && sigmaY > 0 ) {
+        ksize.height = sigmaToKSize(sigmaY * gaussianKSizeFactor);
+    }
+    cv::stackBlur(in, out, ksize);
+#else
+    cv::GaussianBlur(in, out, ksize, sigmaX, sigmaY, borderType);
+#endif
+}
 }
 
 
