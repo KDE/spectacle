@@ -163,8 +163,11 @@ Shape {
         joinStyle: ShapePath.MiterJoin
         capStyle: ShapePath.FlatCap
         // Keep stroke in bounds
-        scale: Qt.size((root.width - strokeWidth) / root.width,
-                       (root.height - strokeWidth) / root.height)
+        scale: Qt.size(
+            // Prevent division by 0
+            root.width !== 0 ? (root.width - strokeWidth) / root.width : 1,
+            root.height !== 0 ? (root.height - strokeWidth) / root.height : 1
+        )
         PathAngleArc {
             id: pathAngleArc
             moveToStart: true // this path should not be affected by startX/startY
