@@ -452,8 +452,15 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
     auto getImage = [&](const QImage &image) -> QImage {
         const auto sourceBounds = image.rect();
         const auto sourceRect = imageView.intersected(sourceBounds).toRect();
-        if (sourceRect != sourceBounds) {
+        const bool useSourceRect = sourceRect != sourceBounds;
+        const auto scale = windowDpr / imageDpr;
+        const bool doScale = scale != 1;
+        if (useSourceRect && doScale) {
+            return image.copy(sourceRect).transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
+        } else if (useSourceRect) {
             return image.copy(sourceRect);
+        } else if (doScale) {
+            return image.transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
         }
         return image;
     };
@@ -488,6 +495,8 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
 void AnnotationViewport::itemChange(ItemChange change, const ItemChangeData &value)
 {
     if (change == ItemDevicePixelRatioHasChanged) {
+        m_repaintBaseImage = true;
+        m_repaintAnnotations = true;
         update();
     }
     QQuickItem::itemChange(change, value);
