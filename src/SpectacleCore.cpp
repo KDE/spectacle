@@ -178,10 +178,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
         setVideoMode(false);
     });
     connect(imagePlatform, &ImagePlatform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
+        setVideoMode(false);
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setBaseImage(image);
         SelectionEditor::instance()->reset();
-
         initCaptureWindows(CaptureWindow::Image);
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
