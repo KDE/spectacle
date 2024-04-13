@@ -40,14 +40,14 @@ AnimatedLoader {
             target: root
             property: "x"
             when: root.shouldShow
-            value: root.document.selectedItem.mousePath.boundingRect.x
+            value: root.document.selectedItem.mousePath.boundingRect.x - root.document.canvasRect.x
             restoreMode: Binding.RestoreNone
         }
         Binding {
             target: root
             property: "y"
             when: root.shouldShow
-            value: root.document.selectedItem.mousePath.boundingRect.y
+            value: root.document.selectedItem.mousePath.boundingRect.y - root.document.canvasRect.y
             restoreMode: Binding.RestoreNone
         }
         property color textColor

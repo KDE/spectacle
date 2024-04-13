@@ -43,14 +43,14 @@ AnimatedLoader {
         Binding {
             target: root
             property: "x"
-            value: root.document.selectedItem.mousePath.boundingRect.x
+            value: root.document.selectedItem.mousePath.boundingRect.x - root.document.canvasRect.x
             when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }
         Binding {
             target: root
             property: "y"
-            value: root.document.selectedItem.mousePath.boundingRect.y
+            value: root.document.selectedItem.mousePath.boundingRect.y - root.document.canvasRect.y
             when: root.shouldShow
             restoreMode: Binding.RestoreNone
         }

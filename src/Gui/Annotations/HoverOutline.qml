@@ -17,8 +17,8 @@ AnimatedLoader {
     active: enabled
     state: shouldShow ? "active" : "inactive"
 
-    x: viewport.hoveredMousePath.boundingRect.x
-    y: viewport.hoveredMousePath.boundingRect.y
+    x: viewport.hoveredMousePath.boundingRect.x - root.document.canvasRect.x
+    y: viewport.hoveredMousePath.boundingRect.y - root.document.canvasRect.y
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
 
