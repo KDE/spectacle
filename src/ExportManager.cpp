@@ -45,7 +45,7 @@ ExportManager::ExportManager(QObject *parent)
     , m_saveImage(QImage())
     , m_tempFile(QUrl())
 {
-    connect(this, &ExportManager::imageExported, [](Actions actions, const QUrl &url) {
+    connect(this, &ExportManager::imageExported, this, [](Actions actions, const QUrl &url) {
         if (actions & AnySave) {
             Settings::setLastImageSaveLocation(url);
             if (actions & SaveAs) {
