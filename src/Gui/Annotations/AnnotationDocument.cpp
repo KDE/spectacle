@@ -27,7 +27,7 @@ QImage defaultImage(const QSize &size, qreal dpr)
     return image;
 }
 
-constexpr QRectF deviceIndependentRect(const QImage &image)
+inline QRectF deviceIndependentRect(const QImage &image)
 {
     return {{0, 0}, image.deviceIndependentSize()};
 }
