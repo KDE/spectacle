@@ -96,8 +96,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
-            shapePath.fillColor: selectionRectangle.strokeColor1
-            shapePath.strokeWidth: 0
+            fillColor: selectionRectangle.strokeColor1
             width: Kirigami.Units.gridUnit
             height: width
         }

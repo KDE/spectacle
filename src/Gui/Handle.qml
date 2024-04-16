@@ -8,18 +8,33 @@ import QtQuick.Shapes
 Shape {
     id: root
 
-    property alias shapePath: shapePath
     property real startAngle: 0 // Zero and 360 are 3 o'clock, positive goes clockwise
     property real sweepAngle: 360 // positive goes clockwise
-    property real xOffset: 0
-    property real yOffset: 0
+    property color fillColor: enabled ? palette.active.highlight : palette.disabled.highlight
+    property color strokeColor: enabled ? palette.active.highlightedText : palette.disabled.highlightedText
+    property real strokeWidth: 0
+    property int strokeStyle: ShapePath.SolidLine
+    property int joinStyle: ShapePath.MiterJoin
+    property int capStyle: ShapePath.SquareCap
+    // Use a rounded physically even size so that straight edges don't look fuzzy
+    // HACK: using visualWidth/visualHeight to work around Qt 6.7 binding loops with handling width
+    // and height in this component. There seems to be some kind of bug in Qt 6.7.
+    property real visualWidth: dprRoundEven(18)
+    property real visualHeight: dprRoundEven(18)
+    readonly property real radiusX: (visualWidth - strokeWidth) / 2
+    readonly property real radiusY: (visualHeight - strokeWidth) / 2
+    readonly property real centerX: visualWidth / 2
+    readonly property real centerY: visualHeight / 2
+    readonly property real arcStartX: xAtAngle(startAngle, radiusX, centerX)
+    readonly property real arcStartY: yAtAngle(startAngle, radiusY, centerY)
+    readonly property real arcEndX: xAtAngle(startAngle + sweepAngle, radiusX, centerX)
+    readonly property real arcEndY: yAtAngle(startAngle + sweepAngle, radiusY, centerY)
 
     containsMode: Shape.FillContains
     preferredRendererType: Shape.CurveRenderer
 
-    // Use a rounded physically even size so that straight edges don't look fuzzy
-    implicitWidth: dprRoundEven(18)
-    implicitHeight: implicitWidth
+    implicitWidth: visualWidth
+    implicitHeight: visualHeight
 
     // Round to a physically even size
     function dprRoundEven(value) {
@@ -96,112 +111,82 @@ Shape {
         return undefined
     }
 
-    function hAnchorForEdges(item, edges) {
-        if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
-            return item.horizontalCenter
-        } else if (edges & Qt.LeftEdge) {
-            return item.left
-        } else if (edges & Qt.RightEdge) {
-            return item.right
-        }
-        return undefined
-    }
-
-    function vAnchorForEdges(item, edges) {
-        if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
-            return item.verticalCenter
-        } else if (edges & Qt.TopEdge) {
-            return item.top
-        } else if (edges & Qt.BottomEdge) {
-            return item.bottom
-        }
-        return undefined
-    }
-
     function relativeXForEdges(itemOrRect, edges) {
         if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
-            return (itemOrRect.width - width) / 2
+            return itemOrRect.width / 2 - centerX
         } else if (edges & Qt.LeftEdge) {
-            return -width / 2
+            return -centerX
         } else if (edges & Qt.RightEdge) {
-            return itemOrRect.width - width / 2
+            return itemOrRect.width - centerX
         }
         return 0
     }
 
     function relativeYForEdges(itemOrRect, edges) {
         if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
-            return (itemOrRect.height - height) / 2
+            return itemOrRect.height / 2 - centerY
         } else if (edges & Qt.TopEdge) {
-            return -height / 2
+            return -centerY
         } else if (edges & Qt.BottomEdge) {
-            return itemOrRect.height - height / 2
+            return itemOrRect.height - centerY
         }
         return 0
     }
 
-    function pointAtAngle(degrees) {
-        const radians = degrees * (Math.PI / 180)
-        return Qt.point(pathAngleArc.radiusX * Math.cos(radians) + pathAngleArc.centerX,
-                        pathAngleArc.radiusY * Math.sin(radians) + pathAngleArc.centerY)
+    function xAtAngle(degrees, radiusX, centerX) {
+        return radiusX * Math.cos(degrees * (Math.PI / 180)) + centerX
     }
 
-    function xAtAngle(degrees) {
-        return pathAngleArc.radiusX * Math.cos(degrees * (Math.PI / 180)) + pathAngleArc.centerX
-    }
-
-    function yAtAngle(degrees) {
-        return pathAngleArc.radiusY * Math.sin(degrees * (Math.PI / 180)) + pathAngleArc.centerY
+    function yAtAngle(degrees, radiusY, centerY) {
+        return radiusY * Math.sin(degrees * (Math.PI / 180)) + centerY
     }
 
     ShapePath {
-        id: shapePath
-        fillColor: root.enabled ? palette.active.highlight : palette.disabled.highlight
-        strokeWidth: 0
-        strokeColor: root.enabled ? palette.active.highlightedText : palette.disabled.highlightedText
-        strokeStyle: ShapePath.SolidLine
-        joinStyle: ShapePath.MiterJoin
-        capStyle: ShapePath.FlatCap
-        // Keep stroke in bounds
-        scale: Qt.size(
-            // Prevent division by 0
-            root.width !== 0 ? (root.width - strokeWidth) / root.width : 1,
-            root.height !== 0 ? (root.height - strokeWidth) / root.height : 1
-        )
+        fillColor: root.fillColor
+        strokeWidth: root.strokeWidth
+        strokeColor: root.strokeColor
+        strokeStyle: root.strokeStyle
+        joinStyle: root.joinStyle
+        capStyle: root.capStyle
         PathAngleArc {
-            id: pathAngleArc
             moveToStart: true // this path should not be affected by startX/startY
-            radiusX: root.width / 2
-            radiusY: root.height / 2
+            radiusX: root.radiusX
+            radiusY: root.radiusY
             // offset with stroke and prevent scale from being applied to the offset
-            centerX: (shapePath.strokeWidth / 2 + root.xOffset) / shapePath.scale.width + radiusX
-            centerY: (shapePath.strokeWidth / 2 + root.yOffset) / shapePath.scale.height + radiusY
+            centerX: root.centerX
+            centerY: root.centerY
             startAngle: root.startAngle // Zero is 3 o'clock, positive goes clockwise
             sweepAngle: root.sweepAngle // positive goes clockwise
         }
         PathLine {
             id: lineFromArcEnd
-            x: if (pathAngleArc.sweepAngle % 360 === 0) {
-                return root.xAtAngle(pathAngleArc.startAngle + pathAngleArc.sweepAngle)
-            } else if (pathAngleArc.sweepAngle % 180 === 0) {
-                return root.xAtAngle(pathAngleArc.startAngle)
+            x: if (root.sweepAngle % 360 === 0) {
+                return root.arcEndX
+            } else if (root.sweepAngle % 180 === 0) {
+                return root.arcStartX
             } else {
-                return pathAngleArc.centerX
+                return root.centerX
             }
-            y: if (pathAngleArc.sweepAngle % 360 === 0) {
-                return root.yAtAngle(pathAngleArc.startAngle + pathAngleArc.sweepAngle)
-            } else if (pathAngleArc.sweepAngle % 180 === 0) {
-                return root.yAtAngle(pathAngleArc.startAngle)
+            y: if (root.sweepAngle % 360 === 0) {
+                return root.arcEndY
+            } else if (root.sweepAngle % 180 === 0) {
+                return root.arcStartY
             } else {
-                return pathAngleArc.centerY
+                return root.centerY
             }
         }
         PathLine {
             id: lineFromCenter
-            x: pathAngleArc.sweepAngle % 180 === 0 ?
-                lineFromArcEnd.x : root.xAtAngle(pathAngleArc.startAngle)
-            y: pathAngleArc.sweepAngle % 180 === 0 ?
-                lineFromArcEnd.y : root.yAtAngle(pathAngleArc.startAngle)
+            x: if (root.sweepAngle % 180 === 0) {
+                return root.arcEndX
+            } else {
+                return root.arcStartX
+            }
+            y: if (root.sweepAngle % 180 === 0) {
+                return root.arcEndY
+            } else {
+                return root.arcStartY
+            }
         }
     }
 }

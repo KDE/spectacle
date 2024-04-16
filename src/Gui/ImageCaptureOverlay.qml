@@ -124,8 +124,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
-            shapePath.fillColor: selectionRectangle.border.color
-            shapePath.strokeWidth: 0
+            fillColor: selectionRectangle.border.color
         }
 
         SelectionHandle {
