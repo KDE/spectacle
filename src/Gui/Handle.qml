@@ -148,6 +148,9 @@ Shape {
         strokeStyle: root.strokeStyle
         joinStyle: root.joinStyle
         capStyle: root.capStyle
+        pathHints: (Math.abs(root.sweepAngle) === 360 || Math.abs(root.sweepAngle) <= 180
+            ? ShapePath.PathConvex : ShapePath.PathSolid)
+            | ShapePath.PathNonOverlappingControlPointTriangles
         PathAngleArc {
             moveToStart: true // this path should not be affected by startX/startY
             radiusX: root.radiusX
