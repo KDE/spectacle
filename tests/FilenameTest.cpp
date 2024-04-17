@@ -87,15 +87,20 @@ void FilenameTest::testNumbering()
     QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<####>"_s), BaseName + u"_0001"_s);
     QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s), BaseName + u"_1_01_001"_s);
 
-    QFile file(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_1.png"_s));
+    QFile file(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_3.png"_s));
     file.open(QIODevice::WriteOnly);
     file.close();
-    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>"_s), BaseName + u"_2"_s);
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>"_s), BaseName + u"_4"_s);
     file.remove();
-    file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_1_01_001"_s));
+    file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_0008"_s));
     file.open(QIODevice::WriteOnly);
     file.close();
-    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s), BaseName + u"_2_02_002"_s);
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<####>"_s), BaseName + u"_0009"_s);
+    file.remove();
+    file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_7_07_007"_s));
+    file.open(QIODevice::WriteOnly);
+    file.close();
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s), BaseName + u"_8_08_008"_s);
     file.remove();
 }
 
