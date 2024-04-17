@@ -87,13 +87,10 @@ AnimatedLoader {
 
         component ResizeHandle: Handle {
             id: handle
-            property int edges
             readonly property alias active: dragHandler.active
 
             // For visibility when the outline is not very rectangular
             strokeWidth: 1 / Screen.devicePixelRatio / root.viewport.scale
-            startAngle: startAngleForEdges(edges)
-            sweepAngle: sweepAngleForEdges(edges)
             x: relativeXForEdges(parent, edges)
                 + xOffsetForEdges(strokeWidth, edges)
             y: relativeYForEdges(parent, edges)

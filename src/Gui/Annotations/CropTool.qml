@@ -190,10 +190,6 @@ Loader {
 
         component ResizeHandle: Handle {
             id: handle
-            property int edges
-
-            startAngle: startAngleForEdges(edges)
-            sweepAngle: sweepAngleForEdges(edges)
             x: selectionRect.x + relativeXForEdges(selectionRect, edges)
                 + xOffsetForEdges(strokeWidth / 2, edges)
             y: selectionRect.y + relativeYForEdges(selectionRect, edges)

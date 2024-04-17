@@ -102,50 +102,42 @@ MouseArea {
         }
 
         SelectionHandle {
-            startAngle: 90
-            sweepAngle: 270
+            edges: Qt.TopEdge | Qt.LeftEdge
             x: dprFloor(SelectionEditor.handlesRect.x)
             y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
-            startAngle: 90
-            sweepAngle: 180
+            edges: Qt.LeftEdge
             x: dprFloor(SelectionEditor.handlesRect.x)
             y: dprRound(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2)
         }
         SelectionHandle {
-            startAngle: 0
-            sweepAngle: 270
+            edges: Qt.LeftEdge | Qt.BottomEdge
             x: dprFloor(SelectionEditor.handlesRect.x)
             y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }
         SelectionHandle {
-            startAngle: 180
-            sweepAngle: 180
+            edges: Qt.TopEdge
             x: dprRound(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2)
             y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
-            startAngle: 0
-            sweepAngle: 180
+            edges: Qt.BottomEdge
             x: dprRound(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2)
             y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }
         SelectionHandle {
-            startAngle: 270
-            sweepAngle: 180
+            edges: Qt.RightEdge
             x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
             y: dprRound(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2)
         }
         SelectionHandle {
-            startAngle: 180
-            sweepAngle: 270
+            edges: Qt.TopEdge | Qt.RightEdge
             x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
             y: dprFloor(SelectionEditor.handlesRect.y)
         }
         SelectionHandle {
-            startAngle: 270
-            sweepAngle: 270
+            edges: Qt.RightEdge | Qt.BottomEdge
             x: dprCeil(SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width)
             y: dprCeil(SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height)
         }

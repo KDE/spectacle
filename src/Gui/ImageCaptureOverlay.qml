@@ -128,50 +128,42 @@ MouseArea {
         }
 
         SelectionHandle {
-            startAngle: 90
-            sweepAngle: 270
+            edges: Qt.TopEdge | Qt.LeftEdge
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y
         }
         SelectionHandle {
-            startAngle: 90
-            sweepAngle: 180
+            edges: Qt.LeftEdge
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
         }
         SelectionHandle {
-            startAngle: 0
-            sweepAngle: 270
+            edges: Qt.LeftEdge | Qt.BottomEdge
             x: SelectionEditor.handlesRect.x
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }
         SelectionHandle {
-            startAngle: 180
-            sweepAngle: 180
+            edges: Qt.TopEdge
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
             y: SelectionEditor.handlesRect.y
         }
         SelectionHandle {
-            startAngle: 0
-            sweepAngle: 180
+            edges: Qt.BottomEdge
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width/2 - width/2
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }
         SelectionHandle {
-            startAngle: 270
-            sweepAngle: 180
+            edges: Qt.RightEdge
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height/2 - height/2
         }
         SelectionHandle {
-            startAngle: 180
-            sweepAngle: 270
+            edges: Qt.TopEdge | Qt.RightEdge
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y
         }
         SelectionHandle {
-            startAngle: 270
-            sweepAngle: 270
+            edges: Qt.RightEdge | Qt.BottomEdge
             x: SelectionEditor.handlesRect.x + SelectionEditor.handlesRect.width - width
             y: SelectionEditor.handlesRect.y + SelectionEditor.handlesRect.height - height
         }

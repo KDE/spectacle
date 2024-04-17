@@ -8,8 +8,9 @@ import QtQuick.Shapes
 Shape {
     id: root
 
-    property real startAngle: 0 // Zero and 360 are 3 o'clock, positive goes clockwise
-    property real sweepAngle: 360 // positive goes clockwise
+    property int edges: 0
+    property real startAngle: startAngleForEdges(edges) // Zero and 360 are 3 o'clock, positive goes clockwise
+    property real sweepAngle: sweepAngleForEdges(edges) // positive goes clockwise
     property color fillColor: enabled ? palette.active.highlight : palette.disabled.highlight
     property color strokeColor: enabled ? palette.active.highlightedText : palette.disabled.highlightedText
     property real strokeWidth: 0
@@ -42,7 +43,7 @@ Shape {
         return (value - value % 2) / Screen.devicePixelRatio
     }
 
-    function startAngleForEdges(edges) {
+    function startAngleForEdges(edges = root.edges) {
         if (edges === (Qt.TopEdge | Qt.LeftEdge)) {
             return 90
         } else if (edges === Qt.TopEdge) {
@@ -63,7 +64,7 @@ Shape {
         return 0
     }
 
-    function sweepAngleForEdges(edges) {
+    function sweepAngleForEdges(edges = root.edges) {
         if (edges === (Qt.TopEdge | Qt.LeftEdge)
             || edges === (Qt.TopEdge | Qt.RightEdge)
             || edges === (Qt.LeftEdge | Qt.BottomEdge)
@@ -78,7 +79,9 @@ Shape {
         return 360
     }
 
-    function xOffsetForEdges(absOffset, edges) {
+    // Visual x axis offset from the original path.
+    // Absolute offset is adjusted relative to how the stroke would stick out from a path.
+    function xOffsetForEdges(absOffset, edges = root.edges) {
         if (edges & Qt.LeftEdge) {
             return -absOffset
         } else if (edges & Qt.RightEdge) {
@@ -87,7 +90,9 @@ Shape {
         return 0
     }
 
-    function yOffsetForEdges(absOffset, edges) {
+    // Visual y axis offset from the original path.
+    // Absolute offset is adjusted relative to how the stroke would stick out from a path.
+    function yOffsetForEdges(absOffset, edges = root.edges) {
         if (edges & Qt.TopEdge) {
             return -absOffset
         } else if (edges & Qt.BottomEdge) {
@@ -96,7 +101,7 @@ Shape {
         return 0
     }
 
-    function cursorShapeForEdges(edges) {
+    function cursorShapeForEdges(edges = root.edges) {
         if (edges === (Qt.LeftEdge | Qt.TopEdge)
             || edges === (Qt.RightEdge | Qt.BottomEdge)) {
             return Qt.SizeFDiagCursor;
@@ -111,7 +116,7 @@ Shape {
         return undefined
     }
 
-    function relativeXForEdges(itemOrRect, edges) {
+    function relativeXForEdges(itemOrRect, edges = root.edges) {
         if (edges === Qt.TopEdge || edges === Qt.BottomEdge) {
             return itemOrRect.width / 2 - centerX
         } else if (edges & Qt.LeftEdge) {
@@ -122,7 +127,7 @@ Shape {
         return 0
     }
 
-    function relativeYForEdges(itemOrRect, edges) {
+    function relativeYForEdges(itemOrRect, edges = root.edges) {
         if (edges === Qt.LeftEdge || edges === Qt.RightEdge) {
             return itemOrRect.height / 2 - centerY
         } else if (edges & Qt.TopEdge) {
