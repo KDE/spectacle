@@ -28,7 +28,6 @@ Shape {
 
     preferredRendererType: Shape.CurveRenderer
 
-    asynchronous: true
 
     ShapePath {
         id: shapePath
