@@ -75,6 +75,7 @@ MouseArea {
 
     DashedOutline {
         id: selectionRectangle
+        readonly property real margin: strokeWidth + 1 / Screen.devicePixelRatio
         dashSvgPath: VideoPlatform.isRecording ? svgPath : ""
         pathHints: ShapePath.PathLinear
         visible: !Selection.empty
@@ -83,10 +84,10 @@ MouseArea {
         strokeColor: palette.active.highlight
         dashColor: VideoPlatform.isRecording ? palette.active.base : strokeColor
         // We need to be a bit careful about staying out of the recorded area
-        x: dprFloor(Selection.x - strokeWidth - root.viewportRect.x) - 1 / Screen.devicePixelRatio
-        y: dprFloor(Selection.y - strokeWidth - root.viewportRect.y) - 1 / Screen.devicePixelRatio
-        width: dprCeil(Selection.right + strokeWidth - root.viewportRect.x) - x + 2 / Screen.devicePixelRatio
-        height: dprCeil(Selection.bottom + strokeWidth - root.viewportRect.y) - y + 2 / Screen.devicePixelRatio
+        x: dprFloor(Selection.x - margin - root.viewportRect.x)
+        y: dprFloor(Selection.y - margin - root.viewportRect.y)
+        width: dprCeil(Selection.right + margin - root.viewportRect.x) - x
+        height: dprCeil(Selection.bottom + margin - root.viewportRect.y) - y
     }
 
     Item {
