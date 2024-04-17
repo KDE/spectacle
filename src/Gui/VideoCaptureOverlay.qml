@@ -97,12 +97,17 @@ MouseArea {
         visible: !VideoPlatform.isRecording
 
         component SelectionHandle: Handle {
+            id: handle
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
             fillColor: selectionRectangle.strokeColor
             width: Kirigami.Units.gridUnit
             height: width
+            transform: Translate {
+                x: handle.xOffsetForEdges(selectionRectangle.strokeWidth)
+                y: handle.yOffsetForEdges(selectionRectangle.strokeWidth)
+            }
         }
 
         SelectionHandle {
