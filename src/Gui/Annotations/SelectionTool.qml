@@ -17,14 +17,18 @@ AnimatedLoader {
         && document.selectedItem.hasSelection
         && (document.selectedItem.options & AnnotationTool.TextOption) === 0
     property bool dragging: false
+    property bool hovered: false
 
     state: shouldShow ? "active" : "inactive"
 
     sourceComponent: Item {
         id: resizeHandles
-        readonly property bool dragging: tlHandle.active || tHandle.active || trHandle.active
-                                    || lHandle.active || rHandle.active
-                                    || blHandle.active || bHandle.active || brHandle.active
+        readonly property bool dragging: tlHandle.dragging || tHandle.dragging || trHandle.dragging
+                                      || lHandle.dragging || rHandle.dragging
+                                      || blHandle.dragging || bHandle.dragging || brHandle.dragging
+        readonly property bool hovered: tlHandle.hovered || tHandle.hovered || trHandle.hovered
+                                     || lHandle.hovered || rHandle.hovered
+                                     || blHandle.hovered || bHandle.hovered || brHandle.hovered
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
@@ -36,7 +40,14 @@ AnimatedLoader {
             property: "dragging"
             value: resizeHandles.dragging
             when: root.shouldShow
-            restoreMode: Binding.RestoreNone
+            restoreMode: Binding.RestoreValue
+        }
+        Binding {
+            target: root
+            property: "hovered"
+            value: resizeHandles.hovered
+            when: root.shouldShow
+            restoreMode: Binding.RestoreValue
         }
 
         // These have to be set here to avoid having a (0,0,0,0) rect.
@@ -87,7 +98,8 @@ AnimatedLoader {
 
         component ResizeHandle: Handle {
             id: handle
-            readonly property alias active: dragHandler.active
+            readonly property alias dragging: dragHandler.active
+            readonly property alias hovered: hoverHandler.hovered
 
             // For visibility when the outline is not very rectangular
             strokeWidth: 1 / Screen.devicePixelRatio / root.viewport.scale
@@ -101,6 +113,7 @@ AnimatedLoader {
             enabled: visible
 
             HoverHandler {
+                id: hoverHandler
                 margin: dragHandler.margin
                 cursorShape: {
                     if (enabled) {
