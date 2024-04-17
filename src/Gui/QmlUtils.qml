@@ -41,6 +41,18 @@ Item {
         return size
     }
 
+    // Basically std::clamp from C++
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(value, max))
+    }
+
+    // Get a clamped pixel value.
+    // The default minimum is 1 physical pixel with an item scale of 1.
+    // The default maximum is positive infinity.
+    function clampPx(value, min = 1 / Screen.devicePixelRatio, max = Number.POSITIVE_INFINITY) {
+        return clamp(value, min, max)
+    }
+
     Component {
         id: toolButtonComponent
         QQC.ToolButton {

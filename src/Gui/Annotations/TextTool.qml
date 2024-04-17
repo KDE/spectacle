@@ -81,7 +81,9 @@ AnimatedLoader {
                 // prevent the cursor from overlapping with the background
                 x: textField.cursorPosition === textField.length && textField.length > 0 ?
                     -width : 0
-                width: Math.max(1, contextWindow.dprRound(fontMetrics.xHeight / 12))
+                // Ensure cursor is at least 1 physical pixel thick
+                width: QmlUtils.clampPx(dprRound(Math.max(1, fontMetrics.xHeight / 12)),
+                                        1 / Screen.devicePixelRatio / root.viewport.scale)
                 height: parent.height
                 color: Qt.rgba(textField.textColor.r, textField.textColor.g, textField.textColor.b, 1)
             }
