@@ -4,6 +4,7 @@
  */
 
 import QtQuick
+import QtQuick.Shapes
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
 
@@ -151,6 +152,7 @@ Loader {
         }
 
         Outline {
+            pathHints: ShapePath.PathLinear
             x: selectionRect.x - effectiveStrokeWidth
             y: selectionRect.y - effectiveStrokeWidth
             width: selectionRect.width + effectiveStrokeWidth * 2

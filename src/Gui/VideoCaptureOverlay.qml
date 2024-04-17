@@ -3,6 +3,7 @@
  */
 
 import QtQuick
+import QtQuick.Shapes
 import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Controls as QQC
@@ -75,6 +76,7 @@ MouseArea {
     DashedOutline {
         id: selectionRectangle
         dashSvgPath: VideoPlatform.isRecording ? svgPath : ""
+        pathHints: ShapePath.PathLinear
         visible: !Selection.empty
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         strokeWidth: dprRound(1)

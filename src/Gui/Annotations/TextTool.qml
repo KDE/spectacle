@@ -173,6 +173,7 @@ AnimatedLoader {
         bottomInset: -background.effectiveStrokeWidth
         background: DashedOutline {
             zoom: root.viewport.scale
+            pathHints: ShapePath.PathLinear
         }
 
         FontMetrics {

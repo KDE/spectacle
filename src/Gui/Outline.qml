@@ -20,6 +20,7 @@ Shape {
     property alias svgPath: pathSvg.path
 
     property alias pathScale: shapePath.scale
+    property alias pathHints: shapePath.pathHints
 
     readonly property alias effectiveStrokeWidth: shapePath.strokeWidth
     readonly property alias startX: shapePath.startX

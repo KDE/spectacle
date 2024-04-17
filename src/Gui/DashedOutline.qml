@@ -39,6 +39,7 @@ Outline {
         capStyle: ShapePath.FlatCap
         joinStyle: ShapePath.MiterJoin
         scale: root.pathScale
+        pathHints: root.pathHints
         PathSvg {
             id: dashPathSvg
             path: root.svgPath
