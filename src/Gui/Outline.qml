@@ -17,6 +17,9 @@ Shape {
     // dash color 2
     property color strokeColor2: palette.base
 
+    property alias strokeStyle: shapePath.strokeStyle
+    property alias capStyle: shapePath.capStyle
+    property alias joinStyle: shapePath.joinStyle
     property alias svgPath: pathSvg.path
 
     property alias pathScale: shapePath.scale

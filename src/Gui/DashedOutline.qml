@@ -37,7 +37,7 @@ Outline {
         // FlatCap ensures that dash and space length are equal.
         // With other cap styles, subtract strokeWidth * 2 from the logical pixel length of dashes.
         capStyle: ShapePath.FlatCap
-        joinStyle: ShapePath.MiterJoin
+        joinStyle: root.joinStyle
         scale: root.pathScale
         pathHints: root.pathHints
         PathSvg {
