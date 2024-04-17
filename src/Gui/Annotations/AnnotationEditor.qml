@@ -34,7 +34,7 @@ AnnotationViewport {
         }
         HoverOutline {
             viewport: root
-            enabled: !selectionTool.hovered && !selectionTool.dragging
+            hidden: selectionTool.hovered || selectionTool.dragging
         }
     }
 }

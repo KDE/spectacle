@@ -83,6 +83,8 @@ AnimatedLoader {
         DashedOutline {
             id: outline
             svgPath: root.document.selectedItem.mousePath.svgPath
+            // Invisible when empty because of scaling/flickering issues when the path becomes empty
+            visible: !root.document.selectedItem.mousePath.empty
             strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
             width: root.width
             height: root.height

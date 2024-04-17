@@ -6,17 +6,15 @@ import QtQuick
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
 
-AnimatedLoader {
+Loader {
     id: root
     required property AnnotationViewport viewport
     readonly property AnnotationDocument document: viewport.document
-    readonly property bool shouldShow: enabled && !viewport.hoveredMousePath.empty
-        && viewport.hoveredMousePath.boundingRect !== root.document.selectedItem.mousePath.boundingRect
-
-    // This item will be frequently activated, so only unload it when it can't be used at all.
-    active: enabled
-    state: shouldShow ? "active" : "inactive"
-
+    // Used when we explicitly want to hide the outline
+    property bool hidden: false
+    // This will be frequently shown and hidden when using the selection tool
+    active: visible && document.tool.type === AnnotationTool.SelectTool
+    visible: enabled
     x: -root.document.canvasRect.x
     y: -root.document.canvasRect.y
     width: viewport.hoveredMousePath.boundingRect.width
@@ -24,6 +22,11 @@ AnimatedLoader {
 
     sourceComponent: DashedOutline {
         id: outline
+        // Not animated because of scaling/flickering issues when the path becomes empty
+        visible: !root.hidden && !viewport.hoveredMousePath.empty
+            && viewport.hoveredMousePath.boundingRect !== root.document.selectedItem.mousePath.boundingRect
+        // These shapes can be complex and don't need to synchronize with any other visuals,
+        // so they don't need to be synchronous.
         svgPath: root.viewport.hoveredMousePath.svgPath
         strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         strokeColor: palette.text
