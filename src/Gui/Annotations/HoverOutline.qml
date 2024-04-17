@@ -27,6 +27,7 @@ Loader {
             && viewport.hoveredMousePath.boundingRect !== root.document.selectedItem.mousePath.boundingRect
         // These shapes can be complex and don't need to synchronize with any other visuals,
         // so they don't need to be synchronous.
+        asynchronous: true
         svgPath: root.viewport.hoveredMousePath.svgPath
         strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         strokeColor: palette.text
