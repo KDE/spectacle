@@ -19,7 +19,6 @@ Loader {
     y: -root.document.canvasRect.y
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
-
     sourceComponent: DashedOutline {
         id: outline
         // Not animated because of scaling/flickering issues when the path becomes empty
@@ -44,5 +43,3 @@ Loader {
         }
     }
 }
-
-
