@@ -35,6 +35,15 @@ Shape {
     }
 
     preferredRendererType: Shape.CurveRenderer
+    // Get a matrix4x4 that moves the stroke outside the bounds of the path
+    function outerStrokeScaleValue(originalValue, strokeWidth = root.strokeWidth) {
+        return QmlUtils.ratio(originalValue + strokeWidth * 2, originalValue + strokeWidth)
+    }
+
+    // Get a matrix4x4 that moves the stroke outside the bounds of the path
+    function outerStrokeTranslateValue(originalValue, scale, strokeWidth = root.strokeWidth) {
+        return QmlUtils.unTranslateScale(originalValue, scale) - strokeWidth / 2
+    }
 
 
     ShapePath {

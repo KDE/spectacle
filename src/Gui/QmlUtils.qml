@@ -41,6 +41,13 @@ Item {
         return size
     }
 
+    // Get the ratio between two values.
+    // If one or both values are not finite, not null, not undefined or zero, returns 0.
+    function ratio(dividend, divisor) {
+        return !Number.isFinite(dividend) || !Number.isFinite(divisor) || !dividend || !divisor ?
+            0 : dividend / divisor
+    }
+
     // Basically std::clamp from C++
     function clamp(value, min, max) {
         return Math.max(min, Math.min(value, max))
@@ -51,6 +58,13 @@ Item {
     // The default maximum is positive infinity.
     function clampPx(value, min = 1 / Screen.devicePixelRatio, max = Number.POSITIVE_INFINITY) {
         return clamp(value, min, max)
+    }
+
+    // When scaling a set of points such as a path, all points are individually multiplied.
+    // This means scaling up translates positively and scaling down translates negatively.
+    // This can be used to get a translation for preventing translation from scaling.
+    function unTranslateScale(oldValue, scale) {
+        return oldValue - oldValue * scale
     }
 
     Component {

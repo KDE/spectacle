@@ -83,13 +83,22 @@ AnimatedLoader {
         DashedOutline {
             id: outline
             svgPath: root.document.selectedItem.mousePath.svgPath
-            width: boundingRect.width
-            height: boundingRect.height
             strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
-            pathScale: Qt.size((root.width + strokeWidth) / root.width,
-                               (root.height + strokeWidth) / root.height)
-            x: -strokeWidth / 2 - boundingRect.x
-            y: -strokeWidth / 2 - boundingRect.y
+            width: root.width
+            height: root.height
+            x: -root.document.selectedItem.mousePath.boundingRect.x
+            y: -root.document.selectedItem.mousePath.boundingRect.y
+            pathScale: {
+                const pathBounds = root.document.selectedItem.mousePath.boundingRect
+                return Qt.size(outerStrokeScaleValue(pathBounds.width, outline.strokeWidth),
+                               outerStrokeScaleValue(pathBounds.height, outline.strokeWidth))
+            }
+            transform: Translate {
+                x: outline.outerStrokeTranslateValue(root.document.selectedItem.mousePath.boundingRect.x,
+                                                     outline.pathScale.width, outline.strokeWidth)
+                y: outline.outerStrokeTranslateValue(root.document.selectedItem.mousePath.boundingRect.y,
+                                                     outline.pathScale.height, outline.strokeWidth)
+            }
             containsMode: Outline.FillContains
             HoverHandler {
                 cursorShape: Qt.SizeAllCursor

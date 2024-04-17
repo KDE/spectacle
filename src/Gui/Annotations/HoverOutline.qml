@@ -17,20 +17,27 @@ AnimatedLoader {
     active: enabled
     state: shouldShow ? "active" : "inactive"
 
-    x: viewport.hoveredMousePath.boundingRect.x - root.document.canvasRect.x
-    y: viewport.hoveredMousePath.boundingRect.y - root.document.canvasRect.y
+    x: -root.document.canvasRect.x
+    y: -root.document.canvasRect.y
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
 
     sourceComponent: DashedOutline {
         id: outline
         svgPath: root.viewport.hoveredMousePath.svgPath
-        pathScale: Qt.size((root.width + strokeWidth) / root.width,
-                           (root.height + strokeWidth) / root.height)
-        x: -strokeWidth / 2 - boundingRect.x
-        y: -strokeWidth / 2 - boundingRect.y
         strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         strokeColor: palette.text
+        pathScale: {
+            const pathBounds = root.viewport.hoveredMousePath.boundingRect
+            return Qt.size(outerStrokeScaleValue(pathBounds.width, strokeWidth),
+                           outerStrokeScaleValue(pathBounds.height, strokeWidth))
+        }
+        transform: Translate {
+            x: outline.outerStrokeTranslateValue(root.viewport.hoveredMousePath.boundingRect.x,
+                                                 outline.pathScale.width, outline.strokeWidth)
+            y: outline.outerStrokeTranslateValue(root.viewport.hoveredMousePath.boundingRect.y,
+                                                 outline.pathScale.height, outline.strokeWidth)
+        }
     }
 }
 
