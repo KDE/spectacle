@@ -79,8 +79,16 @@ AnimatedLoader {
             visible: textField.cursorVisible
             Rectangle {
                 // prevent the cursor from overlapping with the background
-                x: textField.cursorPosition === textField.length && textField.length > 0 ?
-                    -width : 0
+                x: {
+                    const atStart = textField.cursorPosition === 0;
+                    const atEnd = textField.cursorPosition === textField.length;
+                    const atNewLine = !atEnd && textField.text.charAt(textField.cursorPosition) === '\n';
+                    const afterNewLine = !atStart && textField.text.charAt(textField.cursorPosition - 1) === '\n';
+                    if (!atStart && (atEnd || atNewLine) && !afterNewLine) {
+                        return -width;
+                    }
+                    return 0;
+                }
                 // Ensure cursor is at least 1 physical pixel thick
                 width: QmlUtils.clampPx(dprRound(Math.max(1, fontMetrics.xHeight / 12)),
                                         1 / Screen.devicePixelRatio / root.viewport.scale)
