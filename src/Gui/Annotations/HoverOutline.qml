@@ -25,11 +25,11 @@ AnimatedLoader {
     sourceComponent: DashedOutline {
         id: outline
         svgPath: root.viewport.hoveredMousePath.svgPath
-        zoom: root.viewport.scale
-        pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
-                           (root.height + effectiveStrokeWidth) / root.height)
-        x: -effectiveStrokeWidth / 2 - boundingRect.x
-        y: -effectiveStrokeWidth / 2 - boundingRect.y
+        pathScale: Qt.size((root.width + strokeWidth) / root.width,
+                           (root.height + strokeWidth) / root.height)
+        x: -strokeWidth / 2 - boundingRect.x
+        y: -strokeWidth / 2 - boundingRect.y
+        strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         strokeColor: palette.text
     }
 }

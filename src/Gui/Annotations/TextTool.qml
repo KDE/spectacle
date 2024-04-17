@@ -178,13 +178,13 @@ AnimatedLoader {
             }
         }
 
-        leftInset: -background.effectiveStrokeWidth
-        rightInset: -background.effectiveStrokeWidth
-        topInset: -background.effectiveStrokeWidth
-        bottomInset: -background.effectiveStrokeWidth
+        leftInset: -background.strokeWidth
+        rightInset: -background.strokeWidth
+        topInset: -background.strokeWidth
+        bottomInset: -background.strokeWidth
         background: DashedOutline {
-            zoom: root.viewport.scale
             pathHints: ShapePath.PathLinear
+            strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         }
 
         FontMetrics {

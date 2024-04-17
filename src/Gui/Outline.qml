@@ -9,9 +9,7 @@ import org.kde.spectacle.private
 
 Shape {
     id: root
-    // usually the scale will be set elsewhere, so set this to what the scale would be
-    property real zoom: 1
-    property real strokeWidth: 1
+    property alias strokeWidth: shapePath.strokeWidth
     // The stroke color beneath the dash
     property alias strokeColor: shapePath.strokeColor
     property alias strokeStyle: shapePath.strokeStyle
@@ -43,7 +41,7 @@ Shape {
         id: shapePath
         fillColor: "transparent"
         // ensure outline is always thick enough to be visible, but grows with zoom
-        strokeWidth: Math.max(root.strokeWidth / root.zoom, 1 / Screen.devicePixelRatio)
+        strokeWidth: dprRound(1)
         strokeColor: palette.highlight
         // Solid line because it's easier to do the alternating color effect this way.
         strokeStyle: ShapePath.SolidLine

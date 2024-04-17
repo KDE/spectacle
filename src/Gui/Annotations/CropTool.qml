@@ -153,11 +153,11 @@ Loader {
 
         Outline {
             pathHints: ShapePath.PathLinear
-            x: selectionRect.x - effectiveStrokeWidth
-            y: selectionRect.y - effectiveStrokeWidth
-            width: selectionRect.width + effectiveStrokeWidth * 2
-            height: selectionRect.height + effectiveStrokeWidth * 2
-            zoom: root.viewport.scale
+            x: selectionRect.x - strokeWidth
+            y: selectionRect.y - strokeWidth
+            width: selectionRect.width + strokeWidth * 2
+            height: selectionRect.height + strokeWidth * 2
+            strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
             strokeColor: if (enabled) {
                 return palette.active.highlight
             } else if (Settings.useLightMaskColor) {
