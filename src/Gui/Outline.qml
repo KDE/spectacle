@@ -25,6 +25,19 @@ Shape {
     readonly property alias effectiveStrokeWidth: shapePath.strokeWidth
     readonly property alias startX: shapePath.startX
     readonly property alias startY: shapePath.startY
+    // Get a rectangular SVG path
+    function rectanglePath(x, y, w, h) {
+        // absolute start at top-left,
+        // relative line to top-right,
+        // relative line to bottom-right
+        // relative line to bottom-left
+        // close path (automatic line to top-left)
+        return `M ${x},${y}
+                l ${w},0
+                l 0,${h}
+                l ${-w},0
+                z`
+    }
 
     preferredRendererType: Shape.CurveRenderer
 
@@ -42,12 +55,8 @@ Shape {
         startY: startX
         PathSvg {
             id: pathSvg
-            // A rectangle path
-            path: `M ${shapePath.startX},${shapePath.startY}
-                   L ${root.width - shapePath.startX},${shapePath.startY}
-                   L ${root.width - shapePath.startX},${root.height - shapePath.startY}
-                   L ${shapePath.startX},${root.height - shapePath.startY}
-                   L ${shapePath.startX},${shapePath.startY}` // close path
+            path: rectanglePath(strokeWidth / 2, strokeWidth / 2,
+                                width - strokeWidth, height - strokeWidth)
         }
     }
 }
