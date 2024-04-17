@@ -4,6 +4,7 @@
  */
 
 import QtQuick
+import QtQuick.Shapes
 import QtQuick.Templates as T
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
