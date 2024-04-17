@@ -86,10 +86,10 @@ AnimatedLoader {
             zoom: root.viewport.scale
             pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
                                (root.height + effectiveStrokeWidth) / root.height)
-            x: -startX - boundingRect.x
-            y: -startY - boundingRect.y
             width: boundingRect.width
             height: boundingRect.height
+            x: -effectiveStrokeWidth / 2 - boundingRect.x
+            y: -effectiveStrokeWidth / 2 - boundingRect.y
             containsMode: Outline.FillContains
             HoverHandler {
                 cursorShape: Qt.SizeAllCursor

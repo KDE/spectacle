@@ -29,8 +29,8 @@ AnimatedLoader {
         strokeColor1: palette.text
         pathScale: Qt.size((root.width + effectiveStrokeWidth) / root.width,
                            (root.height + effectiveStrokeWidth) / root.height)
-        x: -startX - boundingRect.x
-        y: -startY - boundingRect.y
+        x: -effectiveStrokeWidth / 2 - boundingRect.x
+        y: -effectiveStrokeWidth / 2 - boundingRect.y
     }
 }
 

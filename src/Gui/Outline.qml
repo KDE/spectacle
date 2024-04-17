@@ -26,8 +26,6 @@ Shape {
     property alias pathHints: shapePath.pathHints
 
     readonly property alias effectiveStrokeWidth: shapePath.strokeWidth
-    readonly property alias startX: shapePath.startX
-    readonly property alias startY: shapePath.startY
     // Get a rectangular SVG path
     function rectanglePath(x, y, w, h) {
         // absolute start at top-left,
@@ -54,8 +52,6 @@ Shape {
         // Solid line because it's easier to do the alternating color effect this way.
         strokeStyle: ShapePath.SolidLine
         joinStyle: ShapePath.MiterJoin
-        startX: strokeWidth / 2
-        startY: startX
         PathSvg {
             id: pathSvg
             path: rectanglePath(strokeWidth / 2, strokeWidth / 2,
