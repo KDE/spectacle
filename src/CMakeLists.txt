@@ -141,6 +141,7 @@ qt_add_qml_module(spectacle
     Gui/CaptureOptions.qml
     Gui/CaptureSettingsColumn.qml
     Gui/CopiedMessage.qml
+    Gui/DashedOutline.qml
     Gui/DelaySpinBox.qml
     Gui/DialogPage.qml
     Gui/EmptyPage.qml

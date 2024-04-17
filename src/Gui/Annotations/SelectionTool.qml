@@ -69,7 +69,7 @@ AnimatedLoader {
             restoreMode: Binding.RestoreNone
         }
 
-        Outline {
+        DashedOutline {
             id: outline
             svgPath: root.document.selectedItem.mousePath.svgPath
             zoom: root.viewport.scale

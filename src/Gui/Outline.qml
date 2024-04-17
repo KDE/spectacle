@@ -50,23 +50,4 @@ Shape {
                    L ${shapePath.startX},${shapePath.startY}` // close path
         }
     }
-    ShapePath {
-        scale: shapePath.scale
-        fillColor: shapePath.fillColor
-        strokeWidth: shapePath.strokeWidth
-        strokeColor: root.strokeColor2
-        strokeStyle: ShapePath.DashLine
-        // dashPattern is a list of alternating dash and space lengths.
-        // Length in logical pixels is length * strokeWidth,
-        // so divide by strokeWidth if you want to set length in logical pixels.
-        dashPattern: [Kirigami.Units.mediumSpacing / strokeWidth, Kirigami.Units.mediumSpacing / strokeWidth]
-        dashOffset: 0
-        // FlatCap ensures that dash and space length are equal.
-        // With other cap styles, subtract strokeWidth * 2 from the logical pixel length of dashes.
-        capStyle: ShapePath.FlatCap
-        joinStyle: shapePath.joinStyle
-        startX: shapePath.startX
-        startY: shapePath.startY
-        PathSvg { path: pathSvg.path }
-    }
 }

@@ -72,8 +72,9 @@ MouseArea {
         visible: selectionRectangle.visible && height > 0 && width > 0
     }
 
-    Outline {
+    DashedOutline {
         id: selectionRectangle
+        dashSvgPath: VideoPlatform.isRecording ? svgPath : ""
         visible: !Selection.empty
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         strokeWidth: dprRound(1)

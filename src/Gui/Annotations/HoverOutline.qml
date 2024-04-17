@@ -22,7 +22,7 @@ AnimatedLoader {
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
 
-    sourceComponent: Outline {
+    sourceComponent: DashedOutline {
         id: outline
         svgPath: root.viewport.hoveredMousePath.svgPath
         zoom: root.viewport.scale

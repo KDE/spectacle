@@ -171,7 +171,7 @@ AnimatedLoader {
         rightInset: -background.effectiveStrokeWidth
         topInset: -background.effectiveStrokeWidth
         bottomInset: -background.effectiveStrokeWidth
-        background: Outline {
+        background: DashedOutline {
             zoom: root.viewport.scale
         }
 
