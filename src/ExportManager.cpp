@@ -280,7 +280,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
             if (filteredFiles.length() > 0) {
                 // loop through filtered file names looking for highest number
                 for (const QString &filteredFile : filteredFiles) {
-                    int currentFileNumber = fileNumberRE.match(filteredFile).captured(1).length();
+                    int currentFileNumber = fileNumberRE.match(filteredFile).captured(1).toInt();
                     if (currentFileNumber > highestFileNumber) {
                         highestFileNumber = currentFileNumber;
                     }
