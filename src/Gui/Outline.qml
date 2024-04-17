@@ -12,11 +12,8 @@ Shape {
     // usually the scale will be set elsewhere, so set this to what the scale would be
     property real zoom: 1
     property real strokeWidth: 1
-    // dash color 1
-    property color strokeColor1: palette.highlight
-    // dash color 2
-    property color strokeColor2: palette.base
-
+    // The stroke color beneath the dash
+    property alias strokeColor: shapePath.strokeColor
     property alias strokeStyle: shapePath.strokeStyle
     property alias capStyle: shapePath.capStyle
     property alias joinStyle: shapePath.joinStyle
@@ -25,7 +22,6 @@ Shape {
     property alias pathScale: shapePath.scale
     property alias pathHints: shapePath.pathHints
 
-    readonly property alias effectiveStrokeWidth: shapePath.strokeWidth
     // Get a rectangular SVG path
     function rectanglePath(x, y, w, h) {
         // absolute start at top-left,
@@ -48,7 +44,7 @@ Shape {
         fillColor: "transparent"
         // ensure outline is always thick enough to be visible, but grows with zoom
         strokeWidth: Math.max(root.strokeWidth / root.zoom, 1 / Screen.devicePixelRatio)
-        strokeColor: root.strokeColor1
+        strokeColor: palette.highlight
         // Solid line because it's easier to do the alternating color effect this way.
         strokeStyle: ShapePath.SolidLine
         joinStyle: ShapePath.MiterJoin

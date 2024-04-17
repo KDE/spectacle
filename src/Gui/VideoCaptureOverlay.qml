@@ -80,8 +80,8 @@ MouseArea {
         visible: !Selection.empty
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         strokeWidth: dprRound(1)
-        strokeColor1: palette.active.highlight
-        strokeColor2: VideoPlatform.isRecording ? palette.active.base : strokeColor1
+        strokeColor: palette.active.highlight
+        dashColor: VideoPlatform.isRecording ? palette.active.base : strokeColor
         // We need to be a bit careful about staying out of the recorded area
         x: dprFloor(Selection.x - strokeWidth - root.viewportRect.x) - 1 / Screen.devicePixelRatio
         y: dprFloor(Selection.y - strokeWidth - root.viewportRect.y) - 1 / Screen.devicePixelRatio
@@ -99,7 +99,7 @@ MouseArea {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
                 && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
-            fillColor: selectionRectangle.strokeColor1
+            fillColor: selectionRectangle.strokeColor
             width: Kirigami.Units.gridUnit
             height: width
         }

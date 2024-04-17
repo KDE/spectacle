@@ -158,14 +158,13 @@ Loader {
             width: selectionRect.width + effectiveStrokeWidth * 2
             height: selectionRect.height + effectiveStrokeWidth * 2
             zoom: root.viewport.scale
-            strokeColor1: if (enabled) {
+            strokeColor: if (enabled) {
                 return palette.active.highlight
             } else if (Settings.useLightMaskColor) {
                 return "black"
             } else {
                 return "white"
             }
-            strokeColor2: "transparent"
             HoverHandler {
                 cursorShape: Qt.SizeAllCursor
             }

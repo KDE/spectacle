@@ -30,7 +30,7 @@ Outline {
         id: dashPath
         fillColor: "transparent"
         strokeWidth: root.effectiveStrokeWidth
-        strokeColor: root.strokeColor2
+        strokeColor: palette.base
         strokeStyle: ShapePath.DashLine
         dashPattern: regularDashPattern(Kirigami.Units.mediumSpacing)
         dashOffset: 0
