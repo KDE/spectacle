@@ -19,7 +19,6 @@ Outline {
     property alias dashOffset: dashPath.dashOffset
     property alias dashSvgPath: dashPathSvg.path
     property alias dashPathScale: dashPath.scale
-    property alias dashPathHints: dashPath.pathHints
 
     // A regular alternative pattern with a spacing in logical pixels
     function regularDashPattern(spacing, strokeWidth = root.strokeWidth) {
@@ -39,7 +38,6 @@ Outline {
         capStyle: ShapePath.FlatCap
         joinStyle: root.joinStyle
         scale: root.pathScale
-        pathHints: root.pathHints
         PathSvg {
             id: dashPathSvg
             path: root.svgPath

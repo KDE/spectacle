@@ -77,7 +77,6 @@ MouseArea {
         id: selectionRectangle
         readonly property real margin: strokeWidth + 1 / Screen.devicePixelRatio
         dashSvgPath: VideoPlatform.isRecording ? svgPath : ""
-        pathHints: ShapePath.PathLinear
         visible: !Selection.empty
             && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         strokeWidth: dprRound(1)

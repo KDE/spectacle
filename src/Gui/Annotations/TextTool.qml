@@ -183,7 +183,6 @@ AnimatedLoader {
         topInset: -background.strokeWidth
         bottomInset: -background.strokeWidth
         background: DashedOutline {
-            pathHints: ShapePath.PathLinear
             strokeWidth: QmlUtils.clampPx(dprRound(1) / root.viewport.scale)
         }
 
