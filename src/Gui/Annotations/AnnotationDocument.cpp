@@ -7,6 +7,7 @@
 #include "AnnotationDocument.h"
 #include "EffectUtils.h"
 #include "Geometry.h"
+#include "DebugUtils.h"
 
 #include <QGuiApplication>
 #include <QPainter>
@@ -71,7 +72,13 @@ QRectF AnnotationDocument::canvasRect() const
 void AnnotationDocument::setCanvas(const QRectF &rect, qreal dpr)
 {
     // Don't allow an invalid canvas rect or device pixel ratio.
-    if (rect.isEmpty() || dpr <= 0) {
+    if (rect.isEmpty()) {
+        Log::warning() << std::format("`{}`:\n\t`rect` is empty. This should not happen.",
+                                      std::source_location::current().function_name());
+        return;
+    } else if (dpr <= 0) {
+        Log::warning() << std::format("`{}`:\n\t`dpr` <= 0. This should not happen.",
+                                      std::source_location::current().function_name());
         return;
     }
     const bool posChanged = m_canvasRect.topLeft() != rect.topLeft();
