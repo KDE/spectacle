@@ -147,7 +147,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: strokeLoader.visible && root.options & ~AnnotationTool.StrokeOption > AnnotationTool.StrokeOption
+        visible: strokeLoader.visible && (root.options & ~AnnotationTool.StrokeOption) > AnnotationTool.StrokeOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -197,7 +197,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: fillLoader.visible && root.options & ~AnnotationTool.FillOption > AnnotationTool.FillOption
+        visible: fillLoader.visible && (root.options & ~AnnotationTool.FillOption) > AnnotationTool.FillOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -245,7 +245,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: strengthLoader.visible && root.options & ~AnnotationTool.StrengthOption > AnnotationTool.StrengthOption
+        visible: strengthLoader.visible && (root.options & ~AnnotationTool.StrengthOption) > AnnotationTool.StrengthOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -315,7 +315,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: fontLoader.visible && root.options & ~AnnotationTool.FontOption > AnnotationTool.FontOption
+        visible: fontLoader.visible && (root.options & ~AnnotationTool.FontOption) > AnnotationTool.FontOption
         height: QmlUtils.iconTextButtonHeight
     }
 
@@ -370,7 +370,7 @@ Row {
 
     QQC.ToolSeparator {
         anchors.verticalCenter: parent.verticalCenter
-        visible: numberLoader.visible && root.options & ~AnnotationTool.NumberOption > AnnotationTool.NumberOption
+        visible: numberLoader.visible && (root.options & ~AnnotationTool.NumberOption) > AnnotationTool.NumberOption
         height: QmlUtils.iconTextButtonHeight
     }
 
