@@ -71,7 +71,7 @@ QRectF AnnotationDocument::canvasRect() const
 void AnnotationDocument::setCanvas(const QRectF &rect, qreal dpr)
 {
     // Don't allow an invalid canvas rect or device pixel ratio.
-    if (rect.isEmpty() || dpr < 1) {
+    if (rect.isEmpty() || dpr <= 0) {
         return;
     }
     const bool posChanged = m_canvasRect.topLeft() != rect.topLeft();
