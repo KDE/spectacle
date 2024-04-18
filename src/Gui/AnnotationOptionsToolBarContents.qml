@@ -98,6 +98,20 @@ Row {
                 QQC.ToolTip.visible: hovered
                 QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 // not using onValueModified because of https://bugreports.qt.io/browse/QTBUG-91281
+                /* When we change the value of the control, we set the corresponding property in the
+                 * annotation tool or selected annotation (if we have a selected annotation).
+                 * If we have a selected annotation, we then restart a timer to commit the change as
+                 * a new undoable item.
+                 * We delay the call for doing the things above to prevent the property in the
+                 * selected annotation from being set to the control's value before the control's
+                 * value is set to the value from the selected annotation when changing selected
+                 * annotations.
+                 * If we don't do this, the property for a selected annotation can be unintentionally
+                 * set to the value from the previous selected action.
+                 * In the initial patch porting to Qt Quick, I originally used a Binding object with
+                 * `delayed: true`, but that actually didn't prevent the issue. For some reason,
+                 * using callLater in a signal handler did, so that's what I went with.
+                 */
                 onValueChanged: Qt.callLater(setStrokeWidth)
                 Binding {
                     target: spinBox.contentItem
