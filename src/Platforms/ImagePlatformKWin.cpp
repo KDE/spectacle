@@ -423,22 +423,39 @@ QImage combinedImage(const QList<QImage> &images)
     if (images.empty()) {
         return {};
     }
+    if (images.size() == 1) {
+        return images.constFirst();
+    }
     QRectF imageRect;
     qreal maxDpr = 0;
     for (auto &i : images) {
         maxDpr = std::max(maxDpr, i.devicePixelRatio());
         imageRect |= QRectF{i.offset(), i.deviceIndependentSize()};
     }
+    static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
+    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
+        return i.devicePixelRatio() == maxDpr;
+    });
+    if (allSameDpr) {
+        QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
+        QPainter painter(&finalImage);
+        for (auto &image : images) {
+            painter.drawImage(image.offset().toPointF() * maxDpr, image);
+        }
+        painter.end();
+        finalImage.setDevicePixelRatio(maxDpr);
+        return finalImage;
+    }
     // We ceil to the next integer size up so that integer DPR images are always crisp.
     const auto finalDpr = std::ceil(maxDpr);
     // An RGBA8888 based format is needed for compatibility with OpenCV.
     // If we used an ARGB32 based format, we'd need to swap red and blue.
     // Not sure what to do if we end up having different formats for different screens.
-    QImage finalImage{imageRect.size().toSize() * finalDpr, QImage::Format_RGBA8888_Premultiplied};
+    QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
     finalImage.fill(Qt::transparent);
     auto mainMat = QtCV::qImageToMat(finalImage);
     for (auto &image : images) {
-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(QImage::Format_RGBA8888_Premultiplied);
+        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
         const auto mat = QtCV::qImageToMat(rgbaImage);
         // Region Of Interest to put the image in the main image.
         const auto offset = rgbaImage.offset().toPointF() * finalDpr;
