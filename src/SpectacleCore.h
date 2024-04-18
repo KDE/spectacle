@@ -46,7 +46,7 @@ public:
     };
 
     explicit SpectacleCore(QObject *parent = nullptr);
-    ~SpectacleCore() override;
+    ~SpectacleCore() noexcept override;
 
     static SpectacleCore *instance();
 
