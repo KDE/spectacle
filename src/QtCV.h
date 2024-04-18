@@ -2,6 +2,8 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
+#pragma once
+
 #include <QImage>
 #include <opencv2/opencv.hpp>
 
