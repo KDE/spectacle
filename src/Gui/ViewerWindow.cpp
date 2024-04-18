@@ -10,7 +10,6 @@
 #include "Config.h"
 #include "SpectacleCore.h"
 #include "Gui/ExportMenu.h"
-#include "spectacle_gui_debug.h"
 
 #include <KUrlMimeData>
 #include <Kirigami/Platform/Units>

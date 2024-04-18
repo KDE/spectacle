@@ -8,8 +8,13 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 
 kconfig_add_kcfg_files(SPECTACLE_SRCS GENERATE_MOC Gui/SettingsDialog/settings.kcfgc)
 
-ecm_qt_declare_logging_category(SPECTACLE_SRCS HEADER spectacle_core_debug.h IDENTIFIER SPECTACLE_CORE_LOG CATEGORY_NAME org.kde.spectacle.core DESCRIPTION "spectacle (core)" EXPORT SPECTACLE)
-ecm_qt_declare_logging_category(SPECTACLE_SRCS HEADER spectacle_gui_debug.h IDENTIFIER SPECTACLE_GUI_LOG CATEGORY_NAME org.kde.spectacle.gui DESCRIPTION "spectacle (gui)" EXPORT SPECTACLE)
+ecm_qt_declare_logging_category(SPECTACLE_SRCS
+    HEADER spectacle_debug.h
+    IDENTIFIER SPECTACLE_LOG
+    CATEGORY_NAME spectacle
+    DESCRIPTION "spectacle (general)"
+    EXPORT SPECTACLE
+)
 
 add_executable(spectacle
     ${SPECTACLE_SRCS}

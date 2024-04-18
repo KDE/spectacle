@@ -15,7 +15,6 @@
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
 #include "Gui/WidgetWindowUtils.h"
-#include "spectacle_gui_debug.h"
 
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>

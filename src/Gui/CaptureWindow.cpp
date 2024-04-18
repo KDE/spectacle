@@ -10,7 +10,6 @@
 #include "Config.h"
 #include "SpectacleCore.h"
 #include "Gui/SelectionEditor.h"
-#include "spectacle_gui_debug.h"
 
 #include <QScreen>
 

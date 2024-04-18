@@ -9,7 +9,6 @@
 #include "Selection.h"
 #include "Geometry.h"
 #include "settings.h"
-#include "spectacle_gui_debug.h"
 
 #include <KLocalizedString>
 #include <KWindowSystem>

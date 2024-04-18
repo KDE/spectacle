@@ -26,7 +26,7 @@
 // generated
 #include "Config.h"
 #include "settings.h"
-#include "spectacle_core_debug.h"
+#include "spectacle_debug.h"
 
 #include <KFormat>
 #include <KGlobalAccel>
@@ -801,7 +801,7 @@ void SpectacleCore::cancelScreenshot()
 
 void SpectacleCore::showErrorMessage(const QString &message)
 {
-    qCDebug(SPECTACLE_CORE_LOG) << "ERROR: " << message;
+    qCDebug(SPECTACLE_LOG) << "ERROR: " << message;
 
     if (m_startMode == StartMode::Gui) {
         KMessageBox::error(nullptr, message);

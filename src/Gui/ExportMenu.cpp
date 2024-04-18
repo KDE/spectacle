@@ -8,7 +8,6 @@
 #include "CaptureWindow.h"
 #include "SpectacleCore.h"
 #include "WidgetWindowUtils.h"
-#include "spectacle_gui_debug.h"
 #include "settings.h"
 
 #include <KApplicationTrader>
