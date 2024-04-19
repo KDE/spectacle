@@ -35,5 +35,5 @@ Q_SIGNALS:
     void ScreenshotTaken(const QString &fileName);
     void ScreenshotFailed(const QString &message);
     void RecordingTaken(const QString &fileName);
-    void RecordingFailed();
+    void RecordingFailed(const QString &message);
 };
