@@ -26,7 +26,7 @@
 // generated
 #include "Config.h"
 #include "settings.h"
-#include "spectacle_debug.h"
+#include "DebugUtils.h"
 
 #include <KFormat>
 #include <KGlobalAccel>
@@ -801,7 +801,7 @@ void SpectacleCore::cancelScreenshot()
 
 void SpectacleCore::showErrorMessage(const QString &message)
 {
-    qCDebug(SPECTACLE_LOG) << "ERROR: " << message;
+    Log::warning() << "ERROR: " << message;
 
     if (m_startMode == StartMode::Gui) {
         KMessageBox::error(nullptr, message);
@@ -824,22 +824,24 @@ void SpectacleCore::showViewerIfGuiMode(bool minimized)
     }
 }
 
-void SpectacleCore::onScreenshotFailed()
+void SpectacleCore::onScreenshotFailed(const QString &message)
 {
     switch (m_startMode) {
     case StartMode::Background:
-        showErrorMessage(i18n("Screenshot capture canceled or failed"));
+        if (!message.isEmpty()) {
+            showErrorMessage(message);
+        }
         Q_EMIT allDone();
         return;
     case StartMode::DBus:
-        Q_EMIT dbusScreenshotFailed();
+        Q_EMIT dbusScreenshotFailed(message);
         Q_EMIT allDone();
         return;
     case StartMode::Gui:
         if (!ViewerWindow::instance()) {
             initViewerWindow(ViewerWindow::Dialog);
         }
-        ViewerWindow::instance()->showScreenshotFailedMessage();
+        ViewerWindow::instance()->showScreenshotFailedMessage(message);
         return;
     }
 }

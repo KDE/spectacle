@@ -183,6 +183,11 @@
             </doc:doc>
         </signal>
         <signal name="ScreenshotFailed">
+            <arg name="message" direction="out" type="s">
+                <doc:doc>
+                    <doc:summary>The reason why the screenshot capture failed.</doc:summary>
+                </doc:doc>
+            </arg>
             <doc:doc>
                 <doc:description>
                     <doc:para>Emitted if the screenshot capture failed.</doc:para>

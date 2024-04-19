@@ -175,9 +175,10 @@ void ViewerWindow::showLocationCopiedMessage()
     showInlineMessage("%1/Gui/LocationCopiedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {});
 }
 
-void ViewerWindow::showScreenshotFailedMessage()
+void ViewerWindow::showScreenshotFailedMessage(const QString &messageArgument)
 {
-    showInlineMessage("%1/Gui/ScreenshotFailedMessage.qml"_L1.arg(SPECTACLE_QML_PATH), {});
+    showInlineMessage("%1/Gui/ScreenshotFailedMessage.qml"_L1.arg(SPECTACLE_QML_PATH),
+                      {{"messageArgument"_L1, messageArgument}});
 }
 
 void ViewerWindow::showRecordingFailedMessage(const QString &messageArgument)
