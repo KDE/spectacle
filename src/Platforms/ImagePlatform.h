@@ -52,7 +52,7 @@ Q_SIGNALS:
     void newScreenshotTaken(const QImage &image = {});
     void newCroppableScreenshotTaken(const QImage &image);
 
-    void newScreenshotFailed();
+    void newScreenshotFailed(const QString &message = {});
     void windowTitleChanged(const QString &windowTitle = {});
 };
 

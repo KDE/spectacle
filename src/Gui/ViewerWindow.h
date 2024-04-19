@@ -38,7 +38,7 @@ public:
     void showSavedAndLocationCopiedMessage(const QUrl &messageArgument, bool video = false);
     void showCopiedMessage();
     void showLocationCopiedMessage();
-    void showScreenshotFailedMessage();
+    void showScreenshotFailedMessage(const QString &messageArgument);
     void showRecordingFailedMessage(const QString &messageArgument);
     void showQRCodeScannedMessage(const QVariant &messageArgument);
 

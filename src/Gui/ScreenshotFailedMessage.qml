@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 
 InlineMessage {
     type: Kirigami.MessageType.Error
-    text: i18n("Could not take a screenshot. Please report this bug here: <a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>")
+    text: i18nc("@info", "Could not take a screenshot: %1", messageArgument)
     // Not using showCloseButton because it toggles visible on this item,
     // making it harder to use with loaders.
     actions: Kirigami.Action {

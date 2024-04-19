@@ -92,7 +92,7 @@ public Q_SLOTS:
                            bool includeShadow = Settings::includeShadow());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
-    void onScreenshotFailed();
+    void onScreenshotFailed(const QString &message);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();
@@ -100,8 +100,8 @@ Q_SIGNALS:
     void captureProgressChanged();
 
     void allDone();
-    void dbusScreenshotFailed();
     void dbusRecordingFailed();
+    void dbusScreenshotFailed(const QString &message);
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();

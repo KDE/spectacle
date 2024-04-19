@@ -33,7 +33,7 @@ public Q_SLOTS:
 Q_SIGNALS:
 
     void ScreenshotTaken(const QString &fileName);
-    void ScreenshotFailed();
+    void ScreenshotFailed(const QString &message);
     void RecordingTaken(const QString &fileName);
     void RecordingFailed();
 };
