@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-06 00:37+0000\n"
+"POT-Creation-Date: 2024-04-19 00:37+0000\n"
 "PO-Revision-Date: 2024-04-07 17:03+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -268,7 +268,7 @@ msgstr "நிகழ்படத்தை சேமிக்க முடிய�
 msgid "Printing failed. The printer failed to initialize."
 msgstr "அச்சிடுதல் தோல்வியடைந்தது. அச்சுப்பொறியை துவக்க முடியவில்லை."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:57
+#: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
 msgstr "கோடு:"
@@ -276,7 +276,7 @@ msgstr "கோடு:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:92
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -284,32 +284,44 @@ msgid_plural "%1px"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:97
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "கோட்டின் அகலம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:113
+#: src/Gui/AnnotationOptionsToolBarContents.qml:126
 #, kde-format
 msgid "Stroke Color"
 msgstr "கோட்டின் நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:153
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill:"
 msgstr "நிரப்புவது:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:165
+#: src/Gui/AnnotationOptionsToolBarContents.qml:176
 #, kde-format
 msgid "Fill Color"
 msgstr "நிரப்ப வேண்டிய நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:208
+#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#, kde-format
+msgctxt "@label:slider strength of effect"
+msgid "Strength:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "The strength of the effect."
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
 msgid "Font:"
 msgstr "எழுத்துரு:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:281
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -317,7 +329,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:225
+#: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -325,22 +337,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:237
+#: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
 msgid "Font Color"
 msgstr "எழுத்துருவின் நிறம்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:280
+#: src/Gui/AnnotationOptionsToolBarContents.qml:335
 #, kde-format
 msgid "Number:"
 msgstr "எண்:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:301
+#: src/Gui/AnnotationOptionsToolBarContents.qml:356
 #, kde-format
 msgid "Number for number annotations"
 msgstr "எண்ணிடும் குறிப்புகளுக்கான எண்"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:328
+#: src/Gui/AnnotationOptionsToolBarContents.qml:381
 #, kde-format
 msgid "Shadow"
 msgstr "நிழல்"
@@ -571,17 +583,17 @@ msgctxt "@title:tab"
 msgid "Recording"
 msgstr "திரைப்பதிவு"
 
-#: src/Gui/ExportMenu.cpp:52
+#: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "இயல்பிருப்பு திரைப்பிடிப்பு அடைவை திற"
 
-#: src/Gui/ExportMenu.cpp:120
+#: src/Gui/ExportMenu.cpp:119
 #, kde-format
 msgid "Other Application..."
 msgstr "வேறு செயலி..."
 
-#: src/Gui/ExportMenu.cpp:152
+#: src/Gui/ExportMenu.cpp:151
 #, kde-format
 msgid "Share"
 msgstr "பகிர்"
@@ -1367,64 +1379,77 @@ msgstr "நீள்வட்ட குறிப்புக்கருவி�
 msgid "Fill color for number annotation tool"
 msgstr "எண் குறிப்புக்கருவிக்கான நிரப்பல் நிறம்"
 
-#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
+#, fuzzy, kde-format
+#| msgid "The last used region the user selected"
+msgid "The strength of the blur effect."
+msgstr "பயனர் தேர்ந்தெடுத்த கடைசி பரப்பளவு"
+
+#. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#, kde-format
+msgid "The strength of the pixelate effect."
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:295
 #, kde-format
 msgid "Font for text annotations"
 msgstr "உரை குறிப்புகளுக்கான எழுத்துரு"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Font for number annotations"
 msgstr "எண் குறிப்புகளுக்கான எழுத்துரு"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
-#: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Font color for annotations"
 msgstr "குறிப்புகளுக்கான உரைநிறம்"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:311
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "கைமுறை குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:315
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "கோடு குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:319
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "அம்புக்குறி குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:310
+#: src/Gui/SettingsDialog/spectacle.kcfg:323
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "செவ்வக குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:314
+#: src/Gui/SettingsDialog/spectacle.kcfg:327
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "நீள்வட்ட குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:318
+#: src/Gui/SettingsDialog/spectacle.kcfg:331
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "உரை குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:322
+#: src/Gui/SettingsDialog/spectacle.kcfg:335
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "எண் குறிப்புக்கருவி நிழலைக் கொண்டிருக்குமா"
@@ -1606,7 +1631,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:174
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1614,7 +1639,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:178
+#: src/Gui/SpectacleWindow.cpp:177
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"

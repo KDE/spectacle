@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-06 00:37+0000\n"
+"POT-Creation-Date: 2024-04-19 00:37+0000\n"
 "PO-Revision-Date: 2024-02-17 15:12+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -256,7 +256,7 @@ msgstr "녹화를 저장할 수 없습니다. 파일을 위치로 이동할 수 
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:57
+#: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
 msgstr "획 그리기:"
@@ -264,68 +264,80 @@ msgstr "획 그리기:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:92
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
 msgstr[0] "%1픽셀"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:97
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "획 너비"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:113
+#: src/Gui/AnnotationOptionsToolBarContents.qml:126
 #, kde-format
 msgid "Stroke Color"
 msgstr "획 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:153
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill:"
 msgstr "채우기:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:165
+#: src/Gui/AnnotationOptionsToolBarContents.qml:176
 #, kde-format
 msgid "Fill Color"
 msgstr "채우기 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:208
+#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#, kde-format
+msgctxt "@label:slider strength of effect"
+msgid "Strength:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "The strength of the effect."
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
 msgid "Font:"
 msgstr "글꼴:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:281
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1포인트"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:225
+#: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1포인트"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:237
+#: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
 msgid "Font Color"
 msgstr "글꼴 색상"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:280
+#: src/Gui/AnnotationOptionsToolBarContents.qml:335
 #, kde-format
 msgid "Number:"
 msgstr "번호:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:301
+#: src/Gui/AnnotationOptionsToolBarContents.qml:356
 #, kde-format
 msgid "Number for number annotations"
 msgstr "번호 표기에 사용할 번호"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:328
+#: src/Gui/AnnotationOptionsToolBarContents.qml:381
 #, kde-format
 msgid "Shadow"
 msgstr "그림자"
@@ -556,17 +568,17 @@ msgctxt "@title:tab"
 msgid "Recording"
 msgstr "녹화"
 
-#: src/Gui/ExportMenu.cpp:52
+#: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "기본 스크린샷 폴더 열기"
 
-#: src/Gui/ExportMenu.cpp:120
+#: src/Gui/ExportMenu.cpp:119
 #, kde-format
 msgid "Other Application..."
 msgstr "다른 앱..."
 
-#: src/Gui/ExportMenu.cpp:152
+#: src/Gui/ExportMenu.cpp:151
 #, kde-format
 msgid "Share"
 msgstr "공유"
@@ -1337,64 +1349,77 @@ msgstr "타원 주석 도구에 사용할 채우기 색상"
 msgid "Fill color for number annotation tool"
 msgstr "숫자 주석 도구에 사용할 채우기 색상"
 
-#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
+#, fuzzy, kde-format
+#| msgid "The last used region the user selected"
+msgid "The strength of the blur effect."
+msgstr "사용자가 마지막으로 선택한 영역"
+
+#. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#, kde-format
+msgid "The strength of the pixelate effect."
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:295
 #, kde-format
 msgid "Font for text annotations"
 msgstr "텍스트 주석에 사용할 글꼴"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Font for number annotations"
 msgstr "숫자 주석에 사용할 글꼴"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
-#: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Font color for annotations"
 msgstr "주석 글꼴 색상"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:311
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "자유형 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:315
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "선 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:319
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "화살표 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:310
+#: src/Gui/SettingsDialog/spectacle.kcfg:323
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "직사각형 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:314
+#: src/Gui/SettingsDialog/spectacle.kcfg:327
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "타원 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:318
+#: src/Gui/SettingsDialog/spectacle.kcfg:331
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "텍스트 주석 도구에 그림자 사용 여부"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:322
+#: src/Gui/SettingsDialog/spectacle.kcfg:335
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "숫자 주석 도구에 그림자 사용 여부"
@@ -1571,14 +1596,14 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " 초"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:174
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1초"
 
-#: src/Gui/SpectacleWindow.cpp:178
+#: src/Gui/SpectacleWindow.cpp:177
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"

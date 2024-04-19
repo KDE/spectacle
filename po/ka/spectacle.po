@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-06 00:37+0000\n"
+"POT-Creation-Date: 2024-04-19 00:37+0000\n"
 "PO-Revision-Date: 2024-04-06 05:28+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -265,7 +265,7 @@ msgstr "ჩანაწერის შენახვა შეუძლებ�
 msgid "Printing failed. The printer failed to initialize."
 msgstr "დაბეჭდვის შეცდომა. პრინტერის ინიციალიზაცია შეუძლებელია."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:57
+#: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
 msgstr "გამოძრავება:"
@@ -273,7 +273,7 @@ msgstr "გამოძრავება:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:92
+#: src/Gui/AnnotationOptionsToolBarContents.qml:91
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -281,32 +281,44 @@ msgid_plural "%1px"
 msgstr[0] "%1px"
 msgstr[1] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:97
+#: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
 msgid "Stroke Width"
 msgstr "გამოძრავების სიგანე"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:113
+#: src/Gui/AnnotationOptionsToolBarContents.qml:126
 #, kde-format
 msgid "Stroke Color"
 msgstr "გამოძრავების ფერი"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:153
+#: src/Gui/AnnotationOptionsToolBarContents.qml:164
 #, kde-format
 msgid "Fill:"
 msgstr "შევსება:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:165
+#: src/Gui/AnnotationOptionsToolBarContents.qml:176
 #, kde-format
 msgid "Fill Color"
 msgstr "შემვსები ფერი"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:208
+#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#, kde-format
+msgctxt "@label:slider strength of effect"
+msgid "Strength:"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "The strength of the effect."
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
 msgid "Font:"
 msgstr "ფონტი:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:224
+#: src/Gui/AnnotationOptionsToolBarContents.qml:281
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -314,7 +326,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1წრტ"
 msgstr[1] "%2 %3 %1წრტ"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:225
+#: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -322,22 +334,22 @@ msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1წრტ"
 msgstr[1] "%2 %1წრტ"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:237
+#: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
 msgid "Font Color"
 msgstr "ფონტის ფერი"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:280
+#: src/Gui/AnnotationOptionsToolBarContents.qml:335
 #, kde-format
 msgid "Number:"
 msgstr "რიცხვი:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:301
+#: src/Gui/AnnotationOptionsToolBarContents.qml:356
 #, kde-format
 msgid "Number for number annotations"
 msgstr "რიცხვი რიცხვითი ანოტაციებისთვის"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:328
+#: src/Gui/AnnotationOptionsToolBarContents.qml:381
 #, kde-format
 msgid "Shadow"
 msgstr "ჩრდილი"
@@ -565,17 +577,17 @@ msgctxt "@title:tab"
 msgid "Recording"
 msgstr "ჩაწერა"
 
-#: src/Gui/ExportMenu.cpp:52
+#: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "ეკრანის ანაბეჭდის ფაილების საქაღალდის გახსნა"
 
-#: src/Gui/ExportMenu.cpp:120
+#: src/Gui/ExportMenu.cpp:119
 #, kde-format
 msgid "Other Application..."
 msgstr "სხვა პროგრამა..."
 
-#: src/Gui/ExportMenu.cpp:152
+#: src/Gui/ExportMenu.cpp:151
 #, kde-format
 msgid "Share"
 msgstr "გაზიარება"
@@ -1355,64 +1367,77 @@ msgstr "ოვალის ანოტაციის ხელსაწყო�
 msgid "Fill color for number annotation tool"
 msgstr "რიცხვის ანოტაციის ხელსაწყოს შევსების ფერი"
 
-#. i18n: ectx: label, entry (textFont), group (Annotations)
+#. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
+#, fuzzy, kde-format
+#| msgid "The last used region the user selected"
+msgid "The strength of the blur effect."
+msgstr "მომხმარებლის მიერ ბოლოს გამოყენებული რეგიონი"
+
+#. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#, kde-format
+msgid "The strength of the pixelate effect."
+msgstr ""
+
+#. i18n: ectx: label, entry (textFont), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:295
 #, kde-format
 msgid "Font for text annotations"
 msgstr "ტექსტური ანოტაციების ფონტი"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:298
 #, kde-format
 msgid "Font for number annotations"
 msgstr "რიცხვითი ანოტაციების ფონტი"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
-#: src/Gui/SettingsDialog/spectacle.kcfg:293
+#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Font color for annotations"
 msgstr "ანოტაციების ფონტის ფერი"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:311
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "აქვს თუ არა თავისუფალი ხატვის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
+#: src/Gui/SettingsDialog/spectacle.kcfg:315
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ხაზის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:319
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ისრის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:310
+#: src/Gui/SettingsDialog/spectacle.kcfg:323
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "აქვს თუ არა მართკუთხედის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:314
+#: src/Gui/SettingsDialog/spectacle.kcfg:327
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ოვალის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:318
+#: src/Gui/SettingsDialog/spectacle.kcfg:331
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "აქვს თუ არა ტექსტის ანოტაციის ხელსაწყოს ჩრდილი"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:322
+#: src/Gui/SettingsDialog/spectacle.kcfg:335
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "აქვს თუ არა რიცხვის ანოტაციის ხელსაწყოს ჩრდილი"
@@ -1591,7 +1616,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " წამი"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:174
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1599,7 +1624,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 წამი"
 msgstr[1] "%1 წამი"
 
-#: src/Gui/SpectacleWindow.cpp:178
+#: src/Gui/SpectacleWindow.cpp:177
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
