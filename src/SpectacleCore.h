@@ -100,8 +100,8 @@ Q_SIGNALS:
     void captureProgressChanged();
 
     void allDone();
-    void dbusRecordingFailed();
     void dbusScreenshotFailed(const QString &message);
+    void dbusRecordingFailed(const QString &message);
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();

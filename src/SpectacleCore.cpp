@@ -368,7 +368,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             Q_EMIT allDone();
             return;
         case StartMode::DBus:
-            Q_EMIT dbusRecordingFailed();
+            Q_EMIT dbusRecordingFailed(message);
             Q_EMIT allDone();
             return;
         case StartMode::Gui:

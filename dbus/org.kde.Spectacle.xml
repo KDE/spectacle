@@ -207,6 +207,11 @@
             </doc:doc>
         </signal>
         <signal name="RecordingFailed">
+            <arg name="message" direction="out" type="s">
+                <doc:doc>
+                    <doc:summary>The reason why the recording failed.</doc:summary>
+                </doc:doc>
+            </arg>
             <doc:doc>
                 <doc:description>
                     <doc:para>Emitted if the recording failed.</doc:para>
