@@ -33,13 +33,11 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void updateSupportedGrabModes();
-    void handleKWinScreenshotReply(quint64 drawable);
     void doGrabNow(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow);
     void doGrabOnClick(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow);
 
 private:
     inline void updateWindowTitle(xcb_window_t window);
-    bool isKWinAvailable();
 
     QPoint getCursorPosition();
     QRect getDrawableGeometry(xcb_drawable_t drawable);

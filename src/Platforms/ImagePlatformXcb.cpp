@@ -188,16 +188,6 @@ void ImagePlatformXcb::updateWindowTitle(xcb_window_t window)
     Q_EMIT windowTitleChanged(title);
 }
 
-bool ImagePlatformXcb::isKWinAvailable()
-{
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(u"org.kde.KWin"_s)) {
-        QDBusInterface iface(u"org.kde.KWin"_s, u"/Effects"_s, u"org.kde.kwin.Effects"_s);
-        QDBusReply<bool> reply = iface.call(u"isEffectLoaded"_s, u"screenshot"_s);
-        return reply.value();
-    }
-    return false;
-}
-
 /* -- XCB Utilities ---------------------------------------------------------------------------- */
 
 QPoint ImagePlatformXcb::getCursorPosition()
@@ -493,28 +483,6 @@ QImage ImagePlatformXcb::getWindowImage(xcb_window_t window, bool blendPointer)
     return postProcessImage(image, windowRect, blendPointer);
 }
 
-void ImagePlatformXcb::handleKWinScreenshotReply(quint64 drawable)
-{
-    QDBusConnection::sessionBus().disconnect(u"org.kde.KWin"_s,
-                                             u"/Screenshot"_s,
-                                             u"org.kde.kwin.Screenshot"_s,
-                                             u"screenshotCreated"_s,
-                                             this,
-                                             SLOT(handleKWinScreenshotReply(quint64)));
-
-    // obtain width and height and grab an image (x and y are always zero for drawables)
-    auto xcbDrawable = static_cast<xcb_drawable_t>(drawable);
-    auto rect = getDrawableGeometry(xcbDrawable);
-    auto image = getImageFromDrawable(xcbDrawable, rect);
-
-    if (!image.isNull()) {
-        image.setDevicePixelRatio(qGuiApp->devicePixelRatio());
-        Q_EMIT newScreenshotTaken(image);
-        return;
-    }
-    Q_EMIT newScreenshotFailed();
-}
-
 /* -- Grabber Methods -------------------------------------------------------------------------- */
 
 void ImagePlatformXcb::grabAllScreens(bool includePointer, bool crop)
@@ -588,31 +556,6 @@ void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorat
 {
     auto activeWindow = KX11Extras::activeWindow();
     updateWindowTitle(activeWindow);
-
-    // if KWin is available, use the KWin DBus interfaces
-    if (includeDecorations && isKWinAvailable()) {
-        auto bus = QDBusConnection::sessionBus();
-        bus.connect(u"org.kde.KWin"_s,
-                     u"/Screenshot"_s,
-                     u"org.kde.kwin.Screenshot"_s,
-                     u"screenshotCreated"_s,
-                     this,
-                     SLOT(handleKWinScreenshotReply(quint64)));
-        QDBusInterface iface(u"org.kde.KWin"_s, u"/Screenshot"_s, u"org.kde.kwin.Screenshot"_s);
-
-        int opMask = 1;
-        if (includePointer) {
-            opMask |= 1 << 1;
-        }
-        if (includeShadow) {
-            opMask |= 1 << 2;
-        }
-        iface.call(QStringLiteral("screenshotForWindow"), static_cast<quint64>(activeWindow), opMask);
-
-        return;
-    }
-
-    // otherwise, use the native functionality
     grabApplicationWindow(activeWindow, includePointer, includeDecorations);
 }
 
@@ -620,31 +563,6 @@ void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDe
 {
     auto window = getWindowUnderCursor();
     updateWindowTitle(window);
-
-    // if KWin is available, use the KWin DBus interfaces
-    if (includeDecorations && isKWinAvailable()) {
-        auto bus = QDBusConnection::sessionBus();
-        bus.connect(u"org.kde.KWin"_s,
-                     u"/Screenshot"_s,
-                     u"org.kde.kwin.Screenshot"_s,
-                     u"screenshotCreated"_s,
-                     this,
-                     SLOT(handleKWinScreenshotReply(quint64)));
-        QDBusInterface interface(u"org.kde.KWin"_s, u"/Screenshot"_s, u"org.kde.kwin.Screenshot"_s);
-
-        int opMask = 1;
-        if (includePointer) {
-            opMask |= 1 << 1;
-        }
-        if (includeShadow) {
-            opMask |= 1 << 2;
-        }
-        interface.call(u"screenshotWindowUnderCursor"_s, opMask);
-
-        return;
-    }
-
-    // otherwise, use the native functionality
     grabApplicationWindow(window, includePointer, includeDecorations);
 }
 
