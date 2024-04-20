@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-19 00:37+0000\n"
-"PO-Revision-Date: 2024-04-06 11:15+0200\n"
+"PO-Revision-Date: 2024-04-19 09:08+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -323,13 +323,13 @@ msgstr "Color de farciment"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Intensitat:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "La intensitat de l'efecte."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -506,8 +506,8 @@ msgid ""
 "with the parent window."
 msgstr ""
 "Només captura la finestra emergent actual (com un menú, consell d'eina, "
-"etc.) en prendre una captura de pantalla d'una finestra. Si no se "
-"selecciona, es capturarà l'emergent amb la finestra pare."
+"etc.) en prendre una captura de pantalla d'una finestra. Si no està marcada, "
+"es capturarà l'emergent amb la finestra pare."
 
 #: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
 #, kde-format
@@ -732,7 +732,7 @@ msgid ""
 msgstr ""
 "Només captura la finestra emergent actual (com un menú, consell d'eina, "
 "etc.).\n"
-"Si no se selecciona, es capturarà l'emergent amb la finestra pare"
+"Si no està marcada, es capturarà l'emergent amb la finestra pare"
 
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
@@ -1406,16 +1406,15 @@ msgstr "Color del traç de l'eina d'anotació de números"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "L'última regió utilitzada que l'usuari va seleccionar"
+msgstr "La intensitat de l'efecte de difuminat."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "La intensitat de l'efecte de pixelació."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
