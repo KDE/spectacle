@@ -58,52 +58,6 @@ static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
 static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
 static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
 
-template<typename... ArgType>
-ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
-{
-    // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
-    // that read() will block if there is no any data yet.
-    int pipeFds[2]{-1, -1};
-    if (pipe2(pipeFds, O_CLOEXEC) == -1) {
-        QTimer::singleShot(0, this, &ScreenShotSource2::errorOccurred);
-        qWarning() << "pipe2() failed:" << strerror(errno);
-        return;
-    }
-
-    QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService, s_screenShotObjectPath, s_screenShotInterface, methodName);
-
-    QVariantList dbusArguments{arguments...};
-    dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
-    message.setArguments(dbusArguments);
-
-    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
-    close(pipeFds[1]);
-    m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
-
-    auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
-        watcher->deleteLater();
-        const QDBusPendingReply<QVariantMap> reply = *watcher;
-
-        if (reply.isError()) {
-            qWarning() << "Screenshot request failed:" << reply.error().message();
-            if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
-                // don't show error on user cancellation
-                Q_EMIT finished(m_result);
-            } else {
-                Q_EMIT errorOccurred();
-            }
-        } else {
-            handleMetaDataReceived(reply);
-        }
-    });
-}
-
-QImage ScreenShotSource2::result() const
-{
-    return m_result;
-}
-
 static QImage allocateImage(const QVariantMap &metadata)
 {
     bool ok;
@@ -191,6 +145,52 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
 
     return result;
+}
+
+template<typename... ArgType>
+ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
+{
+    // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
+    // that read() will block if there is no any data yet.
+    int pipeFds[2]{-1, -1};
+    if (pipe2(pipeFds, O_CLOEXEC) == -1) {
+        QTimer::singleShot(0, this, &ScreenShotSource2::errorOccurred);
+        qWarning() << "pipe2() failed:" << strerror(errno);
+        return;
+    }
+
+    QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService, s_screenShotObjectPath, s_screenShotInterface, methodName);
+
+    QVariantList dbusArguments{arguments...};
+    dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
+    message.setArguments(dbusArguments);
+
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+    close(pipeFds[1]);
+    m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
+
+    auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
+        watcher->deleteLater();
+        const QDBusPendingReply<QVariantMap> reply = *watcher;
+
+        if (reply.isError()) {
+            qWarning() << "Screenshot request failed:" << reply.error().message();
+            if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
+                // don't show error on user cancellation
+                Q_EMIT finished(m_result);
+            } else {
+                Q_EMIT errorOccurred();
+            }
+        } else {
+            handleMetaDataReceived(reply);
+        }
+    });
+}
+
+QImage ScreenShotSource2::result() const
+{
+    return m_result;
 }
 
 void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
