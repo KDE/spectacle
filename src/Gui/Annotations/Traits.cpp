@@ -91,8 +91,8 @@ QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRect
         // Above this, glitches with color splotches happen.
         static const qreal max = 60;
         // Scales with DPR to keep the effect looking similar for different image DPRs.
-        static const qreal dynamicMin = 1 * dpr;
-        static const qreal dynamicMax = 16 * dpr;
+        const qreal dynamicMin = 1 * dpr;
+        const qreal dynamicMax = 16 * dpr;
         const qreal sigma = std::clamp(m_strength * (dynamicMax - dynamicMin) + dynamicMin, min, max);
         QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
         m_backingStoreCache.setDevicePixelRatio(dpr);
@@ -138,8 +138,8 @@ QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, Q
         // 1x would have no effect and a fractional scale would look bad, so 2x is the minimum.
         static const qreal min = 2;
         // Scales with DPR to keep the effect looking similar for different image DPRs.
-        static const qreal dynamicMin = min * dpr;
-        static const qreal dynamicMax = 16 * dpr;
+        const qreal dynamicMin = min * dpr;
+        const qreal dynamicMax = 16 * dpr;
         const auto factor = std::max(std::round(m_strength * (dynamicMax - dynamicMin) + dynamicMin), min);
         auto scaleDown = QTransform::fromScale(1 / factor, 1 / factor);
         auto scaleUp = QTransform::fromScale(factor, factor);
