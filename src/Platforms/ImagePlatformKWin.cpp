@@ -63,7 +63,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
 {
     // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
     // that read() will block if there is no any data yet.
-    int pipeFds[2];
+    int pipeFds[2]{-1, -1};
     if (pipe2(pipeFds, O_CLOEXEC) == -1) {
         QTimer::singleShot(0, this, &ScreenShotSource2::errorOccurred);
         qWarning() << "pipe2() failed:" << strerror(errno);
@@ -78,7 +78,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     close(pipeFds[1]);
-    m_pipeFileDescriptor = pipeFds[0];
+    m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
@@ -97,13 +97,6 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
             handleMetaDataReceived(reply);
         }
     });
-}
-
-ScreenShotSource2::~ScreenShotSource2()
-{
-    if (m_pipeFileDescriptor != -1) {
-        close(m_pipeFileDescriptor);
-    }
 }
 
 QImage ScreenShotSource2::result() const
@@ -218,10 +211,7 @@ void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
             Q_EMIT finished(m_result);
         }
     });
-    watcher->setFuture(QtConcurrent::run(readImage, m_pipeFileDescriptor, metadata));
-
-    // The ownership of the pipe file descriptor has been moved to the worker thread.
-    m_pipeFileDescriptor = -1;
+    watcher->setFuture(QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata));
 }
 
 ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)

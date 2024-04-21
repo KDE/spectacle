@@ -9,6 +9,7 @@
 #include "ImagePlatform.h"
 
 #include <QImage>
+#include <QDBusUnixFileDescriptor>
 class QScreen;
 
 #include <memory>
@@ -96,7 +97,6 @@ class ScreenShotSource2 : public QObject
 public:
     template<typename... ArgType>
     explicit ScreenShotSource2(const QString &methodName, ArgType... arguments);
-    ~ScreenShotSource2() override;
 
     QImage result() const;
 
@@ -109,7 +109,7 @@ private Q_SLOTS:
 
 private:
     QImage m_result;
-    int m_pipeFileDescriptor = -1;
+    QDBusUnixFileDescriptor m_pipeFileDescriptor;
 };
 
 /**
