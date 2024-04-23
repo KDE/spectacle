@@ -1113,6 +1113,13 @@ void SpectacleCore::initCaptureWindows(CaptureWindow::Mode mode)
     auto engine = getQmlEngine();
     const auto screens = qApp->screens();
     for (auto *screen : screens) {
+        const auto screenRect = Geometry::mapFromPlatformRect(screen->geometry(), screen->devicePixelRatio());
+        // Don't show windows for screens that don't have an image.
+        if (!m_videoMode
+            && !m_annotationDocument->baseImage().isNull()
+            && !screenRect.intersects(m_annotationDocument->canvasRect())) {
+            continue;
+        }
         m_captureWindows.emplace_back(CaptureWindow::makeUnique(mode, screen, engine));
     }
 }
