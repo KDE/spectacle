@@ -33,6 +33,10 @@
 
 using namespace Qt::StringLiterals;
 
+static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
+static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
+static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
+
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
     QVariantMap options;
@@ -54,9 +58,59 @@ static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags f
     return options;
 }
 
-static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
-static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
-static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
+QImage combinedImage(const QList<QImage> &images)
+{
+    if (images.empty()) {
+        return {};
+    }
+    if (images.size() == 1) {
+        return images.constFirst();
+    }
+    QRectF imageRect;
+    qreal maxDpr = 0;
+    for (auto &i : images) {
+        maxDpr = std::max(maxDpr, i.devicePixelRatio());
+        imageRect |= QRectF{i.offset(), i.deviceIndependentSize()};
+    }
+    static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
+    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
+        return i.devicePixelRatio() == maxDpr;
+    });
+    if (allSameDpr) {
+        QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
+        QPainter painter(&finalImage);
+        for (auto &image : images) {
+            painter.drawImage(image.offset().toPointF() * maxDpr, image);
+        }
+        painter.end();
+        finalImage.setDevicePixelRatio(maxDpr);
+        return finalImage;
+    }
+    // We ceil to the next integer size up so that integer DPR images are always crisp.
+    const auto finalDpr = std::ceil(maxDpr);
+    // An RGBA8888 based format is needed for compatibility with OpenCV.
+    // If we used an ARGB32 based format, we'd need to swap red and blue.
+    // Not sure what to do if we end up having different formats for different screens.
+    QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
+    finalImage.fill(Qt::transparent);
+    auto mainMat = QtCV::qImageToMat(finalImage);
+    for (auto &image : images) {
+        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
+        const auto mat = QtCV::qImageToMat(rgbaImage);
+        // Region Of Interest to put the image in the main image.
+        const auto offset = rgbaImage.offset().toPointF() * finalDpr;
+        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
+        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
+        const cv::Rect rect(offset.x(), offset.y(), size.width(), size.height());
+        const auto imageDpr = image.devicePixelRatio();
+        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+        // Will just copy if there's no difference in size
+        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
+    }
+    finalImage.setDevicePixelRatio(finalDpr);
+    return finalImage;
+}
 
 static QImage allocateImage(const QVariantMap &metadata)
 {
@@ -406,60 +460,6 @@ void ImagePlatformKWin::takeScreenShotActiveWindow(ScreenShotFlags flags)
 void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
 {
     trackSource(new ScreenShotSourceActiveScreen2(flags));
-}
-
-QImage combinedImage(const QList<QImage> &images)
-{
-    if (images.empty()) {
-        return {};
-    }
-    if (images.size() == 1) {
-        return images.constFirst();
-    }
-    QRectF imageRect;
-    qreal maxDpr = 0;
-    for (auto &i : images) {
-        maxDpr = std::max(maxDpr, i.devicePixelRatio());
-        imageRect |= QRectF{i.offset(), i.deviceIndependentSize()};
-    }
-    static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
-    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
-        return i.devicePixelRatio() == maxDpr;
-    });
-    if (allSameDpr) {
-        QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
-        QPainter painter(&finalImage);
-        for (auto &image : images) {
-            painter.drawImage(image.offset().toPointF() * maxDpr, image);
-        }
-        painter.end();
-        finalImage.setDevicePixelRatio(maxDpr);
-        return finalImage;
-    }
-    // We ceil to the next integer size up so that integer DPR images are always crisp.
-    const auto finalDpr = std::ceil(maxDpr);
-    // An RGBA8888 based format is needed for compatibility with OpenCV.
-    // If we used an ARGB32 based format, we'd need to swap red and blue.
-    // Not sure what to do if we end up having different formats for different screens.
-    QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
-    finalImage.fill(Qt::transparent);
-    auto mainMat = QtCV::qImageToMat(finalImage);
-    for (auto &image : images) {
-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
-        const auto mat = QtCV::qImageToMat(rgbaImage);
-        // Region Of Interest to put the image in the main image.
-        const auto offset = rgbaImage.offset().toPointF() * finalDpr;
-        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
-        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
-        const cv::Rect rect(offset.x(), offset.y(), size.width(), size.height());
-        const auto imageDpr = image.devicePixelRatio();
-        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
-        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
-        // Will just copy if there's no difference in size
-        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
-    }
-    finalImage.setDevicePixelRatio(finalDpr);
-    return finalImage;
 }
 
 void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
