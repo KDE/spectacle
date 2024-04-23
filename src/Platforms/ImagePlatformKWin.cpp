@@ -279,7 +279,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 // don't show error on user cancellation
                 Q_EMIT finished(ResultVariant::canceled());
             } else {
-                auto error = i18nc("@info", "KWin screenshot request failed: %1", reply.error().message());
+                auto error = i18nc("@info", "KWin screenshot request failed:\n%1", reply.error().message());
                 if (!relevantInfo.isEmpty()) {
                     error = error % u"\n"_s % i18nc("@info", "Potentially relevant information:\n%1", relevantInfo);
                 }
