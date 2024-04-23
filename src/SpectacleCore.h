@@ -92,7 +92,6 @@ public Q_SLOTS:
                            bool includeShadow = Settings::includeShadow());
     void cancelScreenshot();
     void showErrorMessage(const QString &message);
-    void onScreenshotFailed(const QString &message);
 
 Q_SIGNALS:
     void screenCaptureUrlChanged();

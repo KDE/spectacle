@@ -186,7 +186,45 @@ SpectacleCore::SpectacleCore(QObject *parent)
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     });
-    connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, &SpectacleCore::onScreenshotFailed);
+    connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, [this](const QString message) {
+        auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
+        if (!message.isEmpty()) {
+            uiMessage = uiMessage % u"\n"_s % message;
+        }
+        const auto &windows = qGuiApp->allWindows();
+        const bool hasVisibleWindow = std::any_of(windows.cbegin(), windows.cend(), [](auto *window){
+            return window->isVisible();
+        });
+        switch (m_startMode) {
+        case StartMode::Background:
+            showErrorMessage(uiMessage);
+            if (!hasVisibleWindow) {
+                Q_EMIT allDone();
+            }
+            return;
+        case StartMode::DBus: {
+            showErrorMessage(uiMessage);
+            Q_EMIT dbusScreenshotFailed(message);
+            if (!hasVisibleWindow) {
+                Q_EMIT allDone();
+            }
+            return;
+        }
+        case StartMode::Gui: {
+            if (!ViewerWindow::instance() && hasVisibleWindow) {
+                showErrorMessage(uiMessage);
+                return;
+            } else if (!ViewerWindow::instance()) {
+                initViewerWindow(ViewerWindow::Dialog);
+            }
+            qWarning().noquote() << message;
+            auto viewer = ViewerWindow::instance();
+            viewer->setVisible(true);
+            viewer->showScreenshotFailedMessage(uiMessage);
+            return;
+        }
+        }
+    });
 
     // set up the export manager
     auto exportManager = ExportManager::instance();
@@ -801,9 +839,9 @@ void SpectacleCore::cancelScreenshot()
 
 void SpectacleCore::showErrorMessage(const QString &message)
 {
-    Log::warning() << "ERROR: " << message;
+    qWarning().noquote() << message;
 
-    if (m_startMode == StartMode::Gui) {
+    if (m_startMode == StartMode::Gui || m_startMode == StartMode::DBus) {
         KMessageBox::error(nullptr, message);
     }
 }
@@ -821,28 +859,6 @@ void SpectacleCore::showViewerIfGuiMode(bool minimized)
         ViewerWindow::instance()->showMinimized();
     } else {
         ViewerWindow::instance()->setVisible(true);
-    }
-}
-
-void SpectacleCore::onScreenshotFailed(const QString &message)
-{
-    switch (m_startMode) {
-    case StartMode::Background:
-        if (!message.isEmpty()) {
-            showErrorMessage(message);
-        }
-        Q_EMIT allDone();
-        return;
-    case StartMode::DBus:
-        Q_EMIT dbusScreenshotFailed(message);
-        Q_EMIT allDone();
-        return;
-    case StartMode::Gui:
-        if (!ViewerWindow::instance()) {
-            initViewerWindow(ViewerWindow::Dialog);
-        }
-        ViewerWindow::instance()->showScreenshotFailedMessage(message);
-        return;
     }
 }
 
