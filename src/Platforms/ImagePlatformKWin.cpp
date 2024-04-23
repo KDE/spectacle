@@ -219,7 +219,8 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
     message.setArguments(dbusArguments);
 
-    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+    static constexpr int timeout = 4000;
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, timeout);
     close(pipeFds[1]);
     m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
