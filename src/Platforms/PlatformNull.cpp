@@ -34,7 +34,7 @@ void ImagePlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool 
     Q_UNUSED(includePointer)
     Q_UNUSED(includeDecorations)
     Q_UNUSED(includeShadow)
-    Q_EMIT newScreenshotTaken();
+    Q_EMIT newScreenshotFailed();
 }
 
 VideoPlatformNull::VideoPlatformNull(QObject *parent)
