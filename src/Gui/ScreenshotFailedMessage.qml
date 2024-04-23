@@ -7,6 +7,7 @@ import QtQuick.Controls as QQC
 import org.kde.kirigami as Kirigami
 
 InlineMessage {
+    id: root
     type: Kirigami.MessageType.Error
     text: messageArgument
     // Not using showCloseButton because it toggles visible on this item,
