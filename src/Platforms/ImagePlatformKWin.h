@@ -8,6 +8,7 @@
 
 #include "ImagePlatform.h"
 
+#include <QFuture>
 #include <QImage>
 #include <QDBusUnixFileDescriptor>
 class QScreen;
@@ -17,6 +18,23 @@ class QScreen;
 class ScreenShotSource2;
 class ScreenShotSourceMeta2;
 class ScreenShotSourceWorkspace2;
+
+// Needed for ResultVariant to compile with Qt meta object stuff.
+inline bool operator<(const QImage &lhs, const QImage &rhs) {
+    return lhs.cacheKey() < rhs.cacheKey();
+}
+
+struct ResultVariant : public std::variant<std::monostate, QImage, QString> {
+    enum Type : std::size_t {
+        CanceledState,
+        Image,
+        ErrorString,
+        NPos = std::variant_npos,
+    };
+    static ResultVariant canceled() {
+        return {std::monostate{}};
+    };
+};
 
 /**
  * The PlatformKWin class uses the org.kde.KWin.ScreenShot2 dbus interface
@@ -62,25 +80,9 @@ private:
     void takeScreenShotWorkspace(ScreenShotFlags flags);
     void takeScreenShotCroppable(ScreenShotFlags flags);
 
-    template<typename Source, typename OnFinished, typename OnError>
-    void trackSource(Source *source, std::function<OnFinished> onFinished, std::function<OnError> onError)
-    {
-        connect(source, &Source::finished, this, [source, onFinished](const auto &args... ) {
-            source->deleteLater();
-            if (!onFinished) {
-                return;
-            }
-            onFinished(args);
-        });
-        connect(source, &Source::errorOccurred, this, [source, onError]() {
-            source->deleteLater();
-            if (!onError) {
-                return;
-            }
-            onError();
-        });
-    }
     void trackSource(ScreenShotSource2 *source);
+    template<typename OutputSignal>
+    void trackSource(ScreenShotSourceMeta2 *source, OutputSignal outputSignal);
 
     int m_apiVersion = 1;
     GrabModes m_grabModes;
@@ -98,17 +100,10 @@ public:
     template<typename... ArgType>
     explicit ScreenShotSource2(const QString &methodName, ArgType... arguments);
 
-    QImage result() const;
-
 Q_SIGNALS:
-    void finished(const QImage &image);
-    void errorOccurred();
-
-private Q_SLOTS:
-    void handleMetaDataReceived(const QVariantMap &metadata);
+    void finished(const ResultVariant &result);
 
 private:
-    QImage m_result;
     QDBusUnixFileDescriptor m_pipeFileDescriptor;
 };
 
@@ -182,18 +177,13 @@ class ScreenShotSourceMeta2 final : public QObject
     Q_OBJECT
 
 public:
-    explicit ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources);
+    explicit ScreenShotSourceMeta2(const QList<ScreenShotSource2 *> &sources);
 
 Q_SIGNALS:
-    void finished(const QVector<QImage> &images);
-    void errorOccurred();
-
-private Q_SLOTS:
-    void handleSourceFinished();
-    void handleSourceErrorOccurred();
+    void finished(const QList<ResultVariant> &results);
 
 private:
-    QVector<ScreenShotSource2 *> m_sources;
+    QList<ResultVariant> m_results;
 };
 
 /**

@@ -7,6 +7,7 @@
 #include "ImagePlatformKWin.h"
 #include "ExportManager.h"
 #include "QtCV.h"
+#include "DebugUtils.h"
 
 #include <KWindowSystem>
 
@@ -112,40 +113,56 @@ QImage combinedImage(const QList<QImage> &images)
     return finalImage;
 }
 
-static QImage allocateImage(const QVariantMap &metadata)
+static ResultVariant allocateImage(const QVariantMap &metadata)
 {
+    QString errors;
+
     bool ok;
-
-    const uint width = metadata.value(u"width"_s).toUInt(&ok);
-    if (!ok) {
-        return QImage();
+    // We use int because QImage takes ints for its size
+    const int width = metadata.value(u"width"_s).toInt(&ok);
+    if (!ok || width <= 0) {
+        errors = i18nc("@info", "Bad width for KWin screenshot: %1", QDebug::toString(metadata.value(u"width"_s)));
     }
 
-    const uint height = metadata.value(u"height"_s).toUInt(&ok);
-    if (!ok) {
-        return QImage();
+    const int height = metadata.value(u"height"_s).toInt(&ok);
+    if (!ok || height <= 0) {
+        const auto string = i18nc("@info", "Bad height for KWin screenshot: %1", QDebug::toString(metadata.value(u"height"_s)));
+        if (!errors.isEmpty()) {
+            errors = errors % u"\n"_s % string;
+        } else {
+            errors = string;
+        }
     }
 
+    // We use uint because QImage::Format values are all above 0.
     const uint format = metadata.value(u"format"_s).toUInt(&ok);
-    if (!ok) {
-        return QImage();
+    if (!ok || format <= QImage::Format_Invalid || format >= QImage::NImageFormats) {
+        const auto string = i18nc("@info", "Bad format for KWin screenshot: %1", QDebug::toString(metadata.value(u"format"_s)));
+        if (!errors.isEmpty()) {
+            errors = errors % u"\n"_s % string;
+        } else {
+            errors = string;
+        }
     }
 
-    return QImage(width, height, QImage::Format(format));
+    return errors.isEmpty() //
+        ? ResultVariant{QImage{width, height, static_cast<QImage::Format>(format)}}
+        : ResultVariant{errors};
 }
 
-static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
+static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
 {
     QFile file;
     if (!file.open(fileDescriptor, QFileDevice::ReadOnly, QFileDevice::AutoCloseHandle)) {
         close(fileDescriptor);
-        return QImage();
+        return {i18nc("@info", "Could not open file descriptor for reading KWin screenshot.")};
     }
 
-    QImage result = allocateImage(metadata);
-    if (result.isNull()) {
-        return QImage();
+    ResultVariant result = allocateImage(metadata);
+    if (result.index() != ResultVariant::Image) {
+        return result;
     }
+    QImage &resultImage = std::get<ResultVariant::Image>(result);
 
     const auto windowId = metadata.value(u"windowId"_s).toString();
     // No point in storing the windowId in the image since it means nothing to users
@@ -160,12 +177,12 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         if (reply.isValid()) {
             const auto &windowTitle = reply.value().value(u"caption"_s).toString();
             if (!windowTitle.isEmpty()) {
-                result.setText(u"windowTitle"_s, windowTitle);
+                resultImage.setText(u"windowTitle"_s, windowTitle);
                 ExportManager::instance()->setWindowTitle(windowTitle);
             }
             auto x = reply.value().value(u"x"_s).toReal();
             auto y = reply.value().value(u"y"_s).toReal();
-            result.setOffset(QPoint(x, y));
+            resultImage.setOffset(QPoint(x, y));
         }
     }
 
@@ -177,18 +194,18 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
         if (KWindowSystem::isPlatformX11() && scale == 1) {
             scale = qGuiApp->devicePixelRatio();
         }
-        result.setDevicePixelRatio(scale);
+        resultImage.setDevicePixelRatio(scale);
     }
 
     const auto screenId = metadata.value(u"screen"_s).toString();
     if (!screenId.isEmpty()) {
-        result.setText(u"screen"_s, screenId);
-        if (result.offset().isNull()) {
+        resultImage.setText(u"screen"_s, screenId);
+        if (resultImage.offset().isNull()) {
             const auto screens = qGuiApp->screens();
             for (auto screen : screens) {
                 if (screen->name() == screenId) {
                     auto pos = screen->geometry().topLeft();
-                    result.setOffset(pos);
+                    resultImage.setOffset(pos);
                     break;
                 }
             }
@@ -196,7 +213,7 @@ static QImage readImage(int fileDescriptor, const QVariantMap &metadata)
     }
 
     QDataStream stream(&file);
-    stream.readRawData(reinterpret_cast<char *>(result.bits()), result.sizeInBytes());
+    stream.readRawData(reinterpret_cast<char *>(resultImage.bits()), resultImage.sizeInBytes());
 
     return result;
 }
@@ -208,8 +225,10 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     // that read() will block if there is no any data yet.
     int pipeFds[2]{-1, -1};
     if (pipe2(pipeFds, O_CLOEXEC) == -1) {
-        QTimer::singleShot(0, this, &ScreenShotSource2::errorOccurred);
-        qWarning() << "pipe2() failed:" << strerror(errno);
+        const auto errnum = errno;
+        QTimer::singleShot(0, this, [this, errnum]{
+            Q_EMIT finished({i18nc("@info", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))});
+        });
         return;
     }
 
@@ -224,49 +243,37 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     close(pipeFds[1]);
     m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
+    Log::debug() << message;
+
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, message]() {
         watcher->deleteLater();
         const QDBusPendingReply<QVariantMap> reply = *watcher;
 
         if (reply.isError()) {
-            qWarning() << "Screenshot request failed:" << reply.error().message();
             if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
                 // don't show error on user cancellation
-                Q_EMIT finished(m_result);
+                Q_EMIT finished(ResultVariant::canceled());
             } else {
-                Q_EMIT errorOccurred();
+                Q_EMIT finished({i18nc("@info", "KWin screenshot request failed: %1", reply.error().message())});
+                Log::debug() << "Failed DBus message:\n" << message;
+                Log::debug() << "Failed DBus message arguments:\n" << message.arguments();
             }
         } else {
-            handleMetaDataReceived(reply);
+            const QVariantMap &metadata = reply;
+            const QString type = metadata.value(u"type"_s).toString();
+            if (type != "raw"_L1) {
+                const QString errorString = i18nc("@info", "Unsupported KWin screenshot type metadata: %1", type);
+                Q_EMIT finished({errorString});
+                return;
+            }
+
+            QFuture<ResultVariant> future = QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata);
+            future.then([this](const ResultVariant &result) {
+                Q_EMIT finished(result);
+            });
         }
     });
-}
-
-QImage ScreenShotSource2::result() const
-{
-    return m_result;
-}
-
-void ScreenShotSource2::handleMetaDataReceived(const QVariantMap &metadata)
-{
-    const QString type = metadata.value(u"type"_s).toString();
-    if (type != "raw"_L1) {
-        qWarning() << "Unsupported metadata type:" << type;
-        return;
-    }
-
-    auto watcher = new QFutureWatcher<QImage>(this);
-    connect(watcher, &QFutureWatcher<QImage>::finished, this, [this, watcher]() {
-        watcher->deleteLater();
-        m_result = watcher->result();
-        if (m_result.isNull()) {
-            Q_EMIT errorOccurred();
-        } else {
-            Q_EMIT finished(m_result);
-        }
-    });
-    watcher->setFuture(QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata));
 }
 
 ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
@@ -308,38 +315,18 @@ ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::Screen
 }
 
 ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
-    : m_sources(sources)
 {
+    const auto size = sources.size();
+    m_results.reserve(size); // reserves memory but does not change size
     for (ScreenShotSource2 *source : sources) {
         source->setParent(this);
-
-        connect(source, &ScreenShotSource2::finished, this, &ScreenShotSourceMeta2::handleSourceFinished);
-        connect(source, &ScreenShotSource2::errorOccurred, this, &ScreenShotSourceMeta2::handleSourceErrorOccurred);
+        connect(source, &ScreenShotSource2::finished, this, [this, size](const ResultVariant &result) {
+            m_results.emplaceBack(result);
+            if (m_results.size() == size) {
+                Q_EMIT finished(m_results);
+            }
+        });
     }
-}
-
-void ScreenShotSourceMeta2::handleSourceFinished()
-{
-    const bool isFinished = std::all_of(m_sources.constBegin(), m_sources.constEnd(), [](const ScreenShotSource2 *source) {
-        return !source->result().isNull();
-    });
-    if (!isFinished) {
-        return;
-    }
-
-    QVector<QImage> results;
-    results.reserve(m_sources.count());
-
-    for (const ScreenShotSource2 *source : std::as_const(m_sources)) {
-        results.emplaceBack(source->result());
-    }
-
-    Q_EMIT finished(results);
-}
-
-void ScreenShotSourceMeta2::handleSourceErrorOccurred()
-{
-    Q_EMIT errorOccurred();
 }
 
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
@@ -434,13 +421,40 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
 
 void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 {
-    static const std::function onFinished = [this](const QImage &image) {
-        Q_EMIT newScreenshotTaken(image);
-    };
-    static const std::function onError = [this]() {
-        Q_EMIT newScreenshotFailed();
-    };
-    trackSource(source, onFinished, onError);
+    connect(source, &ScreenShotSource2::finished, this, [this, source](const ResultVariant &result) {
+        source->deleteLater();
+        const auto index = result.index();
+        if (index == ResultVariant::Image) {
+            Q_EMIT newScreenshotTaken(std::get<ResultVariant::Image>(result));
+        } else if (index == ResultVariant::ErrorString) {
+            Q_EMIT newScreenshotFailed(std::get<ResultVariant::ErrorString>(result));
+        }
+    });
+}
+
+template<typename OutputSignal>
+void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal outputSignal)
+{
+    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](const QList<ResultVariant> &results) {
+        source->deleteLater();
+        QList<QImage> images;
+        QString errorString;
+        for (const auto &result : results) {
+            const auto index = result.index();
+            if (index == ResultVariant::Image) {
+                images.push_back(std::get<ResultVariant::Image>(result));
+            } else if (index == ResultVariant::ErrorString) {
+                errorString.append(std::get<ResultVariant::ErrorString>(result) + u"\n"_s);
+            }
+        }
+
+        if (!images.empty()) {
+            Q_EMIT (this->*outputSignal)(combinedImage(images));
+        }
+        if (!errorString.isEmpty()) {
+            Q_EMIT newScreenshotFailed(errorString);
+        }
+    });
 }
 
 void ImagePlatformKWin::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
@@ -465,36 +479,24 @@ void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
 
 void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 {
-    static const std::function onFinished = [this](const QList<QImage> &images) {
-        Q_EMIT newScreenshotTaken(combinedImage(images));
-    };
-    static const std::function onError = [this]() {
-        Q_EMIT newScreenshotFailed();
-    };
     const auto &screens = qGuiApp->screens();
     QList<ScreenShotSource2 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
         sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
     }
-    trackSource(new ScreenShotSourceMeta2(sources), onFinished, onError);
+    trackSource(new ScreenShotSourceMeta2(sources), &ImagePlatform::newScreenshotTaken);
 }
 
 void ImagePlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
-    static const std::function onFinished = [this](const QList<QImage> &images) {
-        Q_EMIT newCroppableScreenshotTaken(combinedImage(images));
-    };
-    static const std::function onError = [this]() {
-        Q_EMIT newScreenshotFailed();
-    };
     const auto &screens = qGuiApp->screens();
     QList<ScreenShotSource2 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
         sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
     }
-    trackSource(new ScreenShotSourceMeta2(sources), onFinished, onError);
+    trackSource(new ScreenShotSourceMeta2(sources), &ImagePlatform::newCroppableScreenshotTaken);
 }
 
 #include "moc_ImagePlatformKWin.cpp"
