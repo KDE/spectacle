@@ -23,3 +23,6 @@ Dependencies:
     'plasma/layer-shell-qt': '@latest-kf6'
     'third-party/wayland': '@latest'
     'third-party/zxing-cpp': '@latest'
+
+Options:
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
