@@ -237,6 +237,16 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     QVariantList dbusArguments{arguments...};
     dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
     message.setArguments(dbusArguments);
+    // For arguments that aren't common to other methods.
+    // These can help differentiate between different method calls.
+    QString specificArguments;
+    int argIndex = 0;
+    auto joinArgs = [&specificArguments, &argIndex](const auto &arg) {
+        specificArguments = specificArguments % QString{(argIndex == 0 ? u"%"_s : u", %"_s) % QString::number(argIndex + 1)}.arg(QDebug::toString(arg));
+        return ++argIndex;
+    };
+    (joinArgs(arguments) || ...);
+    const auto relevantInfo = u"- Method: %1\n- Method specific arguments: %2"_s.arg(methodName, specificArguments);
 
     static constexpr int timeout = 4000;
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, timeout);
@@ -256,7 +266,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     }
 
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, message, timeoutTimer]() {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, relevantInfo, timeoutTimer]() {
         watcher->deleteLater();
         const QDBusPendingReply<QVariantMap> reply = *watcher;
         if (timeoutTimer) {
@@ -269,9 +279,11 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 // don't show error on user cancellation
                 Q_EMIT finished(ResultVariant::canceled());
             } else {
-                Q_EMIT finished({i18nc("@info", "KWin screenshot request failed: %1", reply.error().message())});
-                Log::debug() << "Failed DBus message:\n" << message;
-                Log::debug() << "Failed DBus message arguments:\n" << message.arguments();
+                auto error = i18nc("@info", "KWin screenshot request failed: %1", reply.error().message());
+                if (!relevantInfo.isEmpty()) {
+                    error = error % u"\n"_s % i18nc("@info", "Potentially relevant information:\n%1", relevantInfo);
+                }
+                Q_EMIT finished({error});
             }
         } else {
             const QVariantMap &metadata = reply;
