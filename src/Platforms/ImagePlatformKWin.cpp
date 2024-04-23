@@ -243,12 +243,26 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     close(pipeFds[1]);
     m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
-    Log::debug() << message;
+    QTimer *timeoutTimer = nullptr;
+    if (SPECTACLE_LOG().isDebugEnabled()) {
+        Log::debug() << message;
+        timeoutTimer = new QTimer(this);
+        timeoutTimer->setInterval(timeout / 3.0);
+        timeoutTimer->setSingleShot(true);
+        timeoutTimer->callOnTimeout([] {
+            Log::debug() << "It's taking an unusually long amount of time to get a screenshot...";
+        });
+        timeoutTimer->start();
+    }
 
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, message]() {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, message, timeoutTimer]() {
         watcher->deleteLater();
         const QDBusPendingReply<QVariantMap> reply = *watcher;
+        if (timeoutTimer) {
+            timeoutTimer->stop();
+            timeoutTimer->deleteLater();
+        }
 
         if (reply.isError()) {
             if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
