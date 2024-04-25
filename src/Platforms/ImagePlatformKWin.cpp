@@ -6,6 +6,7 @@
 
 #include "ImagePlatformKWin.h"
 #include "ExportManager.h"
+#include "Geometry.h"
 #include "QtCV.h"
 #include "DebugUtils.h"
 
@@ -37,6 +38,24 @@ using namespace Qt::StringLiterals;
 static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
 static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
 static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
+
+static const QString s_logicalXKey = u"logicalX"_s;
+static const QString s_logicalYKey = u"logicalY"_s;
+
+// QImage::offset is a QPoint, so if we want to keep floating point precision when converting to
+// logical (wayland style) coordinates, we need to either make a new class to bundle a point or
+// store it a different way. We're using QImage::text to get the point, which is a bit weird,
+// but shouldn't require as much code as making a new class.
+inline static void setQImageLogicalXY(QImage &image, qreal x, qreal y)
+{
+    image.setText(s_logicalXKey, QString::number(x));
+    image.setText(s_logicalYKey, QString::number(y));
+}
+
+inline static QPointF qImageLogicalPointF(const QImage &image)
+{
+    return {image.text(s_logicalXKey).toDouble(), image.text(s_logicalYKey).toDouble()};
+}
 
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
@@ -71,7 +90,7 @@ QImage combinedImage(const QList<QImage> &images)
     qreal maxDpr = 0;
     for (auto &i : images) {
         maxDpr = std::max(maxDpr, i.devicePixelRatio());
-        imageRect |= QRectF{i.offset(), i.deviceIndependentSize()};
+        imageRect |= QRectF{qImageLogicalPointF(i), i.deviceIndependentSize()};
     }
     static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
     const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
@@ -81,9 +100,15 @@ QImage combinedImage(const QList<QImage> &images)
         QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
         QPainter painter(&finalImage);
         for (auto &image : images) {
-            painter.drawImage(image.offset().toPointF() * maxDpr, image);
+            // Explicitly setting the position and size so that you don't need to read
+            // QPainter source code to understand how this works.
+            painter.drawImage({qImageLogicalPointF(image) * maxDpr, image.size()}, image);
         }
         painter.end();
+        // Setting DPR after painting prevents it from affecting the coordinates of the QPainter.
+        // During testing, setting final image DPR first and relying on QPainter::drawImage
+        // automatic scaling would occasionally use the wrong target position. I have no idea why.
+        // It might not even be directly related to QPainter, so keep an eye out for bugs like that.
         finalImage.setDevicePixelRatio(maxDpr);
         return finalImage;
     }
@@ -99,10 +124,10 @@ QImage combinedImage(const QList<QImage> &images)
         auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
         const auto mat = QtCV::qImageToMat(rgbaImage);
         // Region Of Interest to put the image in the main image.
-        const auto offset = rgbaImage.offset().toPointF() * finalDpr;
+        const auto pos = qImageLogicalPointF(rgbaImage) * finalDpr;
         const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
         // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
-        const cv::Rect rect(offset.x(), offset.y(), size.width(), size.height());
+        const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
         const auto imageDpr = image.devicePixelRatio();
         const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
         const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
@@ -164,6 +189,17 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
     }
     QImage &resultImage = std::get<ResultVariant::Image>(result);
 
+    bool ok = false;
+    qreal scale = metadata.value(u"scale"_s).toReal(&ok);
+    if (ok) {
+        // NOTE: KWin X11Output DPR is always 1. This is intentional.
+        // https://bugs.kde.org/show_bug.cgi?id=474778
+        if (KWindowSystem::isPlatformX11() && scale == 1) {
+            scale = qGuiApp->devicePixelRatio();
+        }
+        resultImage.setDevicePixelRatio(scale);
+    }
+
     const auto windowId = metadata.value(u"windowId"_s).toString();
     // No point in storing the windowId in the image since it means nothing to users
     // and can't be used if the window is closed.
@@ -180,32 +216,21 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
                 resultImage.setText(u"windowTitle"_s, windowTitle);
                 ExportManager::instance()->setWindowTitle(windowTitle);
             }
-            auto x = reply.value().value(u"x"_s).toReal();
-            auto y = reply.value().value(u"y"_s).toReal();
-            resultImage.setOffset(QPoint(x, y));
+            auto logicalX = Geometry::mapFromPlatformValue(reply.value().value(u"x"_s).toReal(), scale);
+            auto logicalY = Geometry::mapFromPlatformValue(reply.value().value(u"y"_s).toReal(), scale);
+            setQImageLogicalXY(resultImage, logicalX, logicalY);
         }
-    }
-
-    bool ok = false;
-    qreal scale = metadata.value(u"scale"_s).toReal(&ok);
-    if (ok) {
-        // NOTE: KWin X11Output DPR is always 1. This is intentional.
-        // https://bugs.kde.org/show_bug.cgi?id=474778
-        if (KWindowSystem::isPlatformX11() && scale == 1) {
-            scale = qGuiApp->devicePixelRatio();
-        }
-        resultImage.setDevicePixelRatio(scale);
     }
 
     const auto screenId = metadata.value(u"screen"_s).toString();
     if (!screenId.isEmpty()) {
         resultImage.setText(u"screen"_s, screenId);
-        if (resultImage.offset().isNull()) {
+        if (windowId.isEmpty()) {
             const auto screens = qGuiApp->screens();
             for (auto screen : screens) {
                 if (screen->name() == screenId) {
-                    auto pos = screen->geometry().topLeft();
-                    resultImage.setOffset(pos);
+                    auto logicalPos = Geometry::mapFromPlatformPoint(screen->geometry().topLeft(), scale);
+                    setQImageLogicalXY(resultImage, logicalPos.x(), logicalPos.y());
                     break;
                 }
             }
