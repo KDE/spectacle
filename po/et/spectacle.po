@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-19 00:37+0000\n"
+"POT-Creation-Date: 2024-04-25 02:25+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -844,16 +844,6 @@ msgstr "Ekraanipilt salvestati kui <a href=\"%1\">%2</a>"
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Ava sisaldav kataloog"
-
-#: src/Gui/ScreenshotFailedMessage.qml:11
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
-msgstr ""
-"Ekraanipildi tegemine nurjus. Palun anna sellest teada,<a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">luues Spectacle'i kohta "
-"veateate</a>"
 
 #: src/Gui/ScreenshotView.qml:185
 #, kde-format
@@ -1747,6 +1737,59 @@ msgid ""
 "screenshot tool."
 msgstr ""
 
+#: src/Platforms/ImagePlatformKWin.cpp:124
+#, kde-format
+msgctxt "@info"
+msgid "Bad width for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:129
+#, kde-format
+msgctxt "@info"
+msgid "Bad height for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:140
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "Bad format for KWin screenshot: %1"
+msgstr "Pärast ekraanipildi tegemist:"
+
+#: src/Platforms/ImagePlatformKWin.cpp:158
+#, kde-format
+msgctxt "@info"
+msgid "Could not open file descriptor for reading KWin screenshot."
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid "pipe2() failed for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:282
+#, kde-format
+msgctxt "@info"
+msgid ""
+"KWin screenshot request failed:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:284
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Potentially relevant information:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:292
+#, kde-format
+msgctxt "@info"
+msgid "Unsupported KWin screenshot type metadata: %1"
+msgstr ""
+
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
@@ -1886,7 +1929,14 @@ msgstr "Ristkülikukujuline ala"
 msgid "Launch Spectacle without capturing"
 msgstr "Käivita Spectacle"
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:190
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "An error occurred while taking a screenshot."
+msgstr "Pärast ekraanipildi tegemist:"
+
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1894,18 +1944,13 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:627
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:831
-#, kde-format
-msgid "Screenshot capture canceled or failed"
-msgstr "Ekraanipildi tegemine katkestati või nurjus"
-
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:901
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1915,24 +1960,24 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:905
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:894
+#: src/SpectacleCore.cpp:912
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved to your clipboard."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekraanipilt salvestati sinu lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:899
+#: src/SpectacleCore.cpp:917
 #, fuzzy, kde-format
 #| msgid ""
 #| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1942,7 +1987,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr "Jagatud pildi link (<a href=\"%1\">%1</a>) kopeeriti lõikepuhvrisse."
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:919
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -1950,19 +1995,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ekraanipilt salvestati nimega \"%1\" sinu piltide kataloogi."
 
-#: src/SpectacleCore.cpp:903
+#: src/SpectacleCore.cpp:921
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekraanipilt salvestati nimega \"%1\" asukohta \"%2\"."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:932
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ava"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:946
 #, kde-format
 msgid "Annotate"
 msgstr "Annoteeri"
@@ -1978,6 +2023,18 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#~ msgid ""
+#~ "Could not take a screenshot. Please report this bug here: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "spectacle bug</a>"
+#~ msgstr ""
+#~ "Ekraanipildi tegemine nurjus. Palun anna sellest teada,<a href=\"https://"
+#~ "bugs.kde.org/enter_bug.cgi?product=Spectacle\">luues Spectacle'i kohta "
+#~ "veateate</a>"
+
+#~ msgid "Screenshot capture canceled or failed"
+#~ msgstr "Ekraanipildi tegemine katkestati või nurjus"
 
 #, fuzzy
 #~| msgid "Annotation done"

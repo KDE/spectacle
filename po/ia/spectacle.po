@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-19 00:37+0000\n"
+"POT-Creation-Date: 2024-04-25 02:25+0000\n"
 "PO-Revision-Date: 2024-04-19 11:33+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -827,16 +827,6 @@ msgstr "Captura de schermo esseva salveguardate a <a href=\"%1\">%2</a> "
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Aperi dossier continente"
-
-#: src/Gui/ScreenshotFailedMessage.qml:11
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
-msgstr ""
-"Non pote prender un captura de schermo. Pro favor reporta iste bug hic: <a "
-"href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">cre un bug de "
-"spectacle</a>"
 
 #: src/Gui/ScreenshotView.qml:185
 #, kde-format
@@ -1709,6 +1699,59 @@ msgstr ""
 "sembla esser disponibile. Usa Spectacle sur KDE Plasma, o usa un differente "
 "instrumento de captura de schermo."
 
+#: src/Platforms/ImagePlatformKWin.cpp:124
+#, kde-format
+msgctxt "@info"
+msgid "Bad width for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:129
+#, kde-format
+msgctxt "@info"
+msgid "Bad height for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:140
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "Bad format for KWin screenshot: %1"
+msgstr "Postea prender un instantaneo de schermo:"
+
+#: src/Platforms/ImagePlatformKWin.cpp:158
+#, kde-format
+msgctxt "@info"
+msgid "Could not open file descriptor for reading KWin screenshot."
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid "pipe2() failed for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:282
+#, kde-format
+msgctxt "@info"
+msgid ""
+"KWin screenshot request failed:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:284
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Potentially relevant information:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:292
+#, kde-format
+msgctxt "@info"
+msgid "Unsupported KWin screenshot type metadata: %1"
+msgstr ""
+
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
@@ -1839,7 +1882,14 @@ msgstr "Registra region rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancea Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:190
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@info"
+msgid "An error occurred while taking a screenshot."
+msgstr "Lancea Spectacle sin prender un captura de schermo"
+
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1849,18 +1899,13 @@ msgstr ""
 "Spectacle es registrante: %1\n"
 "Clicca per terminar registration"
 
-#: src/SpectacleCore.cpp:627
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non es un valide modo per -record"
 
-#: src/SpectacleCore.cpp:831
-#, kde-format
-msgid "Screenshot capture canceled or failed"
-msgstr "Captura de instantaneo cancellate o fallite"
-
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1869,24 +1914,24 @@ msgstr ""
 "Un captura de schermo ha essite salveguardate como '%1' a '%2' e le percurso "
 "del captura de schermo ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:905
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Un captura de schermo esseva salveguardate como '%1' a tu dossier de Photo."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Un captura de schermo esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:894
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Un captura de schermo esseva salveguardate a tu tabuliero."
 
-#: src/SpectacleCore.cpp:899
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1895,24 +1940,24 @@ msgstr ""
 "Un  registration ha essite salveguardate como '%1' a '%2' e le percurso del "
 "registration ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Un registration esseva salveguardate como '%1' a tu dossier de Videos."
 
-#: src/SpectacleCore.cpp:903
+#: src/SpectacleCore.cpp:921
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Un registration esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:932
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperi"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:946
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
@@ -1928,6 +1973,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid ""
+#~ "Could not take a screenshot. Please report this bug here: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "spectacle bug</a>"
+#~ msgstr ""
+#~ "Non pote prender un captura de schermo. Pro favor reporta iste bug hic: "
+#~ "<a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">cre un "
+#~ "bug de spectacle</a>"
+
+#~ msgid "Screenshot capture canceled or failed"
+#~ msgstr "Captura de instantaneo cancellate o fallite"
 
 #~ msgid "Show Annotation Tools"
 #~ msgstr "Monstra Instrumentos de Annotation"

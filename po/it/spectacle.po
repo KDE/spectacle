@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-19 00:37+0000\n"
+"POT-Creation-Date: 2024-04-25 02:25+0000\n"
 "PO-Revision-Date: 2024-04-19 16:46+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -825,15 +825,6 @@ msgstr "La schermata è stata salvata come <a href=\"%1\">%2</a>"
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Apri cartella contenitore"
-
-#: src/Gui/ScreenshotFailedMessage.qml:11
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
-msgstr ""
-"Impossibile acquisire una schermata. Segnala questo bug: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">crea un bug di Spectacle</a>"
 
 #: src/Gui/ScreenshotView.qml:185
 #, kde-format
@@ -1708,6 +1699,59 @@ msgstr ""
 "sembra essere disponibile. Usa Spectacle con KDE Plasma, o usa un altro "
 "strumento per la cattura di schermate."
 
+#: src/Platforms/ImagePlatformKWin.cpp:124
+#, kde-format
+msgctxt "@info"
+msgid "Bad width for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:129
+#, kde-format
+msgctxt "@info"
+msgid "Bad height for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:140
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "Bad format for KWin screenshot: %1"
+msgstr "Dopo aver acquisito una schermata:"
+
+#: src/Platforms/ImagePlatformKWin.cpp:158
+#, kde-format
+msgctxt "@info"
+msgid "Could not open file descriptor for reading KWin screenshot."
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid "pipe2() failed for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:282
+#, kde-format
+msgctxt "@info"
+msgid ""
+"KWin screenshot request failed:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:284
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Potentially relevant information:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:292
+#, kde-format
+msgctxt "@info"
+msgid "Unsupported KWin screenshot type metadata: %1"
+msgstr ""
+
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
@@ -1842,7 +1886,14 @@ msgstr "Registra una regione rettangolare"
 msgid "Launch Spectacle without capturing"
 msgstr "Esegui Spectacle senza acquisire"
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:190
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@info"
+msgid "An error occurred while taking a screenshot."
+msgstr "Esegui Spectacle senza acquisire una schermata"
+
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1852,18 +1903,13 @@ msgstr ""
 "Spectacle sta registrando: %1\n"
 "Clic per terminare la registrazione"
 
-#: src/SpectacleCore.cpp:627
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "«%1» non una modalità valida per --record"
 
-#: src/SpectacleCore.cpp:831
-#, kde-format
-msgid "Screenshot capture canceled or failed"
-msgstr "Cattura della schermata annullata o non riuscita"
-
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1872,23 +1918,23 @@ msgstr ""
 "La schermata è stata salvata come «%1» in «%2» ed il suo percorso è stata "
 "copiato negli appunti."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:905
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Una schermata è stata salvata come «%1» nella cartella delle immagini."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Una schermata è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:894
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Una schermata è stata salvata negli appunti."
 
-#: src/SpectacleCore.cpp:899
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1897,24 +1943,24 @@ msgstr ""
 "Una registrazione è stata salvata come «%1» in «%2» ed il suo percorso è "
 "stata copiato negli appunti."
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Una registrazione è stata salvata come «%1» nella cartella dei video."
 
-#: src/SpectacleCore.cpp:903
+#: src/SpectacleCore.cpp:921
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Una registrazione è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:932
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Apri"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:946
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"
@@ -1930,6 +1976,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid ""
+#~ "Could not take a screenshot. Please report this bug here: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "spectacle bug</a>"
+#~ msgstr ""
+#~ "Impossibile acquisire una schermata. Segnala questo bug: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">crea un bug di "
+#~ "Spectacle</a>"
+
+#~ msgid "Screenshot capture canceled or failed"
+#~ msgstr "Cattura della schermata annullata o non riuscita"
 
 #~ msgid "Show Annotation Tools"
 #~ msgstr "Mostra strumenti di annotazione"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-19 00:37+0000\n"
+"POT-Creation-Date: 2024-04-25 02:25+0000\n"
 "PO-Revision-Date: 2024-04-19 15:23+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -806,16 +806,6 @@ msgstr "ეკრანის ანაბეჭდი შენახული�
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "შემცველი საქაღალდის გახსნა"
-
-#: src/Gui/ScreenshotFailedMessage.qml:11
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
-msgstr ""
-"ეკრანის ანაბეჭდის გადაღების შეცდომა. ანგარიში შეცდომის შესახებ <a href="
-"\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">შეგიძლიათ აქ "
-"შექმნათ</a>"
 
 #: src/Gui/ScreenshotView.qml:185
 #, kde-format
@@ -1677,6 +1667,59 @@ msgstr ""
 "როგორც ჩანს, ხელმისაწვდომი არაა. გამოიყენეთ Spectacle-ი KDE Plasma-ზე ან "
 "ეკრანის ანაბეჭდის სხვა პროგრამა გამოიყენეთ."
 
+#: src/Platforms/ImagePlatformKWin.cpp:124
+#, kde-format
+msgctxt "@info"
+msgid "Bad width for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:129
+#, kde-format
+msgctxt "@info"
+msgid "Bad height for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:140
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "Bad format for KWin screenshot: %1"
+msgstr "ეკრანის ანაბეჭდის გადაღების შემდეგ:"
+
+#: src/Platforms/ImagePlatformKWin.cpp:158
+#, kde-format
+msgctxt "@info"
+msgid "Could not open file descriptor for reading KWin screenshot."
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid "pipe2() failed for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:282
+#, kde-format
+msgctxt "@info"
+msgid ""
+"KWin screenshot request failed:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:284
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Potentially relevant information:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:292
+#, kde-format
+msgctxt "@info"
+msgid "Unsupported KWin screenshot type metadata: %1"
+msgstr ""
+
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
@@ -1806,7 +1849,14 @@ msgstr "მართკუთხედი რეგიონის ჩაწე�
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:190
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@info"
+msgid "An error occurred while taking a screenshot."
+msgstr "Spectacle-ის ეკრანის ანაბეჭდის გადაღების გარეშე გაშვება"
+
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1816,18 +1866,13 @@ msgstr ""
 "Spectacle იწერს: %1\n"
 "დააწკაპუნეთ ჩაწერის დასასრულებლად"
 
-#: src/SpectacleCore.cpp:627
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:831
-#, kde-format
-msgid "Screenshot capture canceled or failed"
-msgstr "ეკრანის ანაბეჭდს გადაღება გაუქმდა ან შეცდომით დასრულდა"
-
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1836,23 +1881,23 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:905
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:894
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:899
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1861,24 +1906,24 @@ msgstr ""
 "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
 "ბუფერში."
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:903
+#: src/SpectacleCore.cpp:921
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:932
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:946
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"
@@ -1894,6 +1939,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid ""
+#~ "Could not take a screenshot. Please report this bug here: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "spectacle bug</a>"
+#~ msgstr ""
+#~ "ეკრანის ანაბეჭდის გადაღების შეცდომა. ანგარიში შეცდომის შესახებ <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">შეგიძლიათ აქ "
+#~ "შექმნათ</a>"
+
+#~ msgid "Screenshot capture canceled or failed"
+#~ msgstr "ეკრანის ანაბეჭდს გადაღება გაუქმდა ან შეცდომით დასრულდა"
 
 #~ msgid "Show Annotation Tools"
 #~ msgstr "ანოტაციის ხელსაწყოების ჩვენება"

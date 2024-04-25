@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-19 00:37+0000\n"
+"POT-Creation-Date: 2024-04-25 02:25+0000\n"
 "PO-Revision-Date: 2024-04-20 10:35+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -836,16 +836,6 @@ msgstr "Une copie d'écran a été enregistrée sous <a href=\"%1\">%2</a>"
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Ouvrir le dossier contenant"
-
-#: src/Gui/ScreenshotFailedMessage.qml:11
-#, kde-format
-msgid ""
-"Could not take a screenshot. Please report this bug here: <a href=\"https://"
-"bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a spectacle bug</a>"
-msgstr ""
-"Impossible de prendre une copie d'écran. Veuillez signaler ce bogue ici : <a "
-"href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">Créer un bogue "
-"pour « Spectacle »</a>"
 
 #: src/Gui/ScreenshotView.qml:185
 #, kde-format
@@ -1735,6 +1725,59 @@ msgstr ""
 "semble pas être disponible. Veuillez utiliser Spectacle sous KDE Plasma ou "
 "utiliser un autre outil de copie d'écran."
 
+#: src/Platforms/ImagePlatformKWin.cpp:124
+#, kde-format
+msgctxt "@info"
+msgid "Bad width for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:129
+#, kde-format
+msgctxt "@info"
+msgid "Bad height for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:140
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info"
+msgid "Bad format for KWin screenshot: %1"
+msgstr "Après avoir pris une copie d'écran :"
+
+#: src/Platforms/ImagePlatformKWin.cpp:158
+#, kde-format
+msgctxt "@info"
+msgid "Could not open file descriptor for reading KWin screenshot."
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid "pipe2() failed for KWin screenshot: %1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:282
+#, kde-format
+msgctxt "@info"
+msgid ""
+"KWin screenshot request failed:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:284
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Potentially relevant information:\n"
+"%1"
+msgstr ""
+
+#: src/Platforms/ImagePlatformKWin.cpp:292
+#, kde-format
+msgctxt "@info"
+msgid "Unsupported KWin screenshot type metadata: %1"
+msgstr ""
+
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
 msgctxt "@info:shell"
@@ -1870,7 +1913,14 @@ msgstr "Capturer une région rectangulaire"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:190
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@info"
+msgid "An error occurred while taking a screenshot."
+msgstr "Lancer Spectacle sans réaliser de copie d'écran"
+
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1880,18 +1930,13 @@ msgstr ""
 "Le logiciel Spectacle est en cours de copie :%1 \n"
 "Veuillez cliquer pour terminer la copie"
 
-#: src/SpectacleCore.cpp:627
+#: src/SpectacleCore.cpp:665
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 est un mode non valable pour l'option « -record »"
 
-#: src/SpectacleCore.cpp:831
-#, kde-format
-msgid "Screenshot capture canceled or failed"
-msgstr "Annulation ou échec de la copie d'écran"
-
-#: src/SpectacleCore.cpp:883
+#: src/SpectacleCore.cpp:901
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1900,24 +1945,24 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:887
+#: src/SpectacleCore.cpp:905
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Une copie d'écran a été enregistrée sous « %1 » dans votre dossier d'images."
 
-#: src/SpectacleCore.cpp:890
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une copie d'écran a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:894
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une copie d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:899
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1926,24 +1971,24 @@ msgstr ""
 "Une copie a été enregistrée comme « %1 » dans « %2 » et son emplacement a "
 "été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Une copie a été enregistrée sous « %1 » dans votre dossier « Vidéos »."
 
-#: src/SpectacleCore.cpp:903
+#: src/SpectacleCore.cpp:921
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Une copie a été enregistrée sous « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:932
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:946
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"
@@ -1959,6 +2004,18 @@ msgstr "WebM / VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4 / H.264"
+
+#~ msgid ""
+#~ "Could not take a screenshot. Please report this bug here: <a href="
+#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "spectacle bug</a>"
+#~ msgstr ""
+#~ "Impossible de prendre une copie d'écran. Veuillez signaler ce bogue ici : "
+#~ "<a href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">Créer un "
+#~ "bogue pour « Spectacle »</a>"
+
+#~ msgid "Screenshot capture canceled or failed"
+#~ msgstr "Annulation ou échec de la copie d'écran"
 
 #~ msgid "Show Annotation Tools"
 #~ msgstr "Afficher les outils d'annotation"
