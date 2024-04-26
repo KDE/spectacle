@@ -404,6 +404,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(imagePlatform, &ImagePlatform::supportedGrabModesChanged, captureModeModel, [this](){
         m_captureModeModel->setGrabModes(m_imagePlatform->supportedGrabModes());
     });
+    connect(videoPlatform, &VideoPlatform::supportedRecordingModesChanged, m_recordingModeModel.get(), [this](){
+        m_recordingModeModel->setRecordingModes(m_videoPlatform->supportedRecordingModes());
+    });
+    connect(videoPlatform, &VideoPlatform::supportedFormatsChanged, m_videoFormatModel.get(), [this](){
+        m_videoFormatModel->setFormats(m_videoPlatform->supportedFormats());
+    });
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
         // It's dangerous to erase from within a for loop, so we use std::find_if
