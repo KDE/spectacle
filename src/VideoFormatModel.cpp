@@ -15,7 +15,12 @@ VideoFormatModel::VideoFormatModel(VideoPlatform::Formats formats, QObject *pare
     m_roleNames[Qt::DisplayRole] = "display"_ba;
     m_roleNames[FormatRole] = "format"_ba;
     m_roleNames[ExtensionRole] = "extension"_ba;
+    setFormats(formats);
+}
 
+void VideoFormatModel::setFormats(VideoPlatform::Formats formats)
+{
+    m_data.clear();
     if (formats.testFlag(VideoPlatform::WebM_VP9)) {
         m_data.append({
             i18nc("@item:inlistbox Container/encoder", "WebM/VP9"),
@@ -30,6 +35,7 @@ VideoFormatModel::VideoFormatModel(VideoPlatform::Formats formats, QObject *pare
             VideoPlatform::extensionForFormat(VideoPlatform::MP4_H264),
         });
     }
+    Q_EMIT countChanged();
 }
 
 int VideoFormatModel::indexOfFormat(VideoPlatform::Format format) const

@@ -23,16 +23,7 @@ RecordingModeModel::RecordingModeModel(VideoPlatform::RecordingModes modes, QObj
 {
     m_roleNames[RecordingModeRole] = "recordingMode"_ba;
     m_roleNames[Qt::DisplayRole] = "display"_ba;
-
-    if (modes & VideoPlatform::Region) {
-        m_data.append({VideoPlatform::Region, i18nc("@item recording mode", "Rectangular Region")});
-    }
-    if (modes & VideoPlatform::Region) {
-        m_data.append({VideoPlatform::Screen, i18nc("@item recording mode", "Full Screen")});
-    }
-    if (modes & VideoPlatform::Window) {
-        m_data.append({VideoPlatform::Window, i18nc("@item recording mode", "Window")});
-    }
+    setRecordingModes(modes);
 }
 
 QHash<int, QByteArray> RecordingModeModel::roleNames() const
@@ -71,6 +62,21 @@ int RecordingModeModel::indexOfRecordingMode(VideoPlatform::RecordingMode mode) 
         }
     }
     return finalIndex;
+}
+
+void RecordingModeModel::setRecordingModes(VideoPlatform::RecordingModes modes)
+{
+    m_data.clear();
+    if (modes & VideoPlatform::Region) {
+        m_data.append({VideoPlatform::Region, i18nc("@item recording mode", "Rectangular Region")});
+    }
+    if (modes & VideoPlatform::Region) {
+        m_data.append({VideoPlatform::Screen, i18nc("@item recording mode", "Full Screen")});
+    }
+    if (modes & VideoPlatform::Window) {
+        m_data.append({VideoPlatform::Window, i18nc("@item recording mode", "Window")});
+    }
+    Q_EMIT countChanged();
 }
 
 #include "moc_RecordingModeModel.cpp"

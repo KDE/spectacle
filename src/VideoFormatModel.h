@@ -14,7 +14,7 @@
 class VideoFormatModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(int count READ rowCount CONSTANT FINAL)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
     VideoFormatModel(VideoPlatform::Formats formats, QObject *parent = nullptr);
 
@@ -22,6 +22,8 @@ public:
         FormatRole = Qt::UserRole + 1,
         ExtensionRole = Qt::UserRole + 2,
     };
+
+    void setFormats(VideoPlatform::Formats formats);
 
     int indexOfFormat(VideoPlatform::Format format) const;
 

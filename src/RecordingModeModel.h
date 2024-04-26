@@ -25,6 +25,8 @@ public:
 
     int indexOfRecordingMode(VideoPlatform::RecordingMode mode) const;
 
+    void setRecordingModes(VideoPlatform::RecordingModes modes);
+
 Q_SIGNALS:
     void countChanged();
 
