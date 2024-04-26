@@ -186,8 +186,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     });
-    connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, [this](const QString message) {
-        auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
+
+    // The behavior happens to be very similar right now, so we use a shared base function
+    auto onScreenshotOrRecordingFailed = [this](const QString &message,
+                                                QString uiMessage,
+                                                void (SpectacleCore::*dBusFailedSignal)(const QString &),
+                                                void (ViewerWindow::*showViewerMessage)(const QString &)) {
         if (!message.isEmpty()) {
             uiMessage = uiMessage % u"\n"_s % message;
         }
@@ -204,7 +208,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             return;
         case StartMode::DBus: {
             showErrorMessage(uiMessage);
-            Q_EMIT dbusScreenshotFailed(message);
+            Q_EMIT (this->*dBusFailedSignal)(message);
             if (!hasVisibleWindow) {
                 Q_EMIT allDone();
             }
@@ -220,10 +224,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
             qWarning().noquote() << message;
             auto viewer = ViewerWindow::instance();
             viewer->setVisible(true);
-            viewer->showScreenshotFailedMessage(uiMessage);
+            (viewer->*showViewerMessage)(uiMessage);
             return;
         }
         }
+    };
+    connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, [onScreenshotOrRecordingFailed](const QString message) {
+        auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
+        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed, &ViewerWindow::showScreenshotFailedMessage);
     });
 
     s_systemTrayIcon = std::make_unique<QSystemTrayIcon>(QIcon::fromTheme(u"media-record-symbolic"_s));
@@ -257,25 +265,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
     });
-    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this](const QString &message){
-        switch (m_startMode) {
-        case StartMode::Background:
-            if (!message.isEmpty()) {
-                showErrorMessage(message);
-            }
-            Q_EMIT allDone();
-            return;
-        case StartMode::DBus:
-            Q_EMIT dbusRecordingFailed(message);
-            Q_EMIT allDone();
-            return;
-        case StartMode::Gui:
-            if (!ViewerWindow::instance()) {
-                initViewerWindow(ViewerWindow::Dialog);
-            }
-            ViewerWindow::instance()->showRecordingFailedMessage(message);
-            return;
-        }
+    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
+        auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
+        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed, &ViewerWindow::showRecordingFailedMessage);
     });
     connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
         SelectionEditor::instance()->reset();
