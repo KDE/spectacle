@@ -21,9 +21,9 @@ bool VideoPlatform::isRecording() const
 
 void VideoPlatform::setRecording(bool recording)
 {
-    // We are asserting because if we start recording on an already
-    // started session which is bad usage of the API
-    Q_ASSERT(recording != m_basicTimer.isActive());
+    if (m_basicTimer.isActive() == recording) {
+        return;
+    }
 
     if (recording) {
         m_elapsedTimer.start();
