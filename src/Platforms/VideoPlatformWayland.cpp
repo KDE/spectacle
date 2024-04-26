@@ -10,6 +10,7 @@
 #include "screencasting.h"
 #include "settings.h"
 #include <KLocalizedString>
+#include <QFuture>
 #include <QGuiApplication>
 #include <QWindow>
 #include <QScreen>
@@ -22,6 +23,7 @@
 #include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QUrl>
+#include <QtConcurrentRun>
 
 using namespace Qt::StringLiterals;
 
@@ -41,7 +43,7 @@ VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) co
 
 PipeWireBaseEncodedStream::Encoder VideoPlatformWayland::encoderForFormat(Format format) const
 {
-    const auto encoders = m_recorder->suggestedEncoders();
+    const auto encoders = m_recorder ? m_recorder->suggestedEncoders() : QList<Encoder>{};
     if (format == WebM_VP9 && encoders.contains(Encoder::VP9)) {
         return Encoder::VP9;
     }
@@ -75,15 +77,20 @@ static void minimizeIfWindowsIntersect(const QRectF &rect) {
 VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     : VideoPlatform(parent)
     , m_screencasting(new Screencasting(this))
-    , m_recorder(new PipeWireRecord())
 {
-    m_recorder->setActive(false);
-    // m_recorder->setMaxFramerate({30, 1});
+    m_recorderFuture = QtConcurrent::run([] {
+        return new PipeWireRecord();
+    }).then([this](PipeWireRecord *result) {
+        m_recorder.reset(result);
+        m_recorder->setActive(false);
+        Q_EMIT supportedRecordingModesChanged();
+        Q_EMIT supportedFormatsChanged();
+    });
 }
 
 VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() const
 {
-    if (m_screencasting->isAvailable())
+    if (m_screencasting->isAvailable() && m_recorder)
         return Screen | Window | Region;
     else
         return {};
@@ -92,7 +99,7 @@ VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() co
 VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
 {
     Formats formats;
-    if (m_screencasting->isAvailable()) {
+    if (m_screencasting->isAvailable() && m_recorder) {
         const auto encoders = m_recorder->suggestedEncoders();
         for (auto encoder : encoders) {
             formats |= formatForEncoder(encoder);
@@ -125,6 +132,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         Q_EMIT recordingFailed(i18nc("@info", "KWin Screencasting is not available."));
         return;
     }
+    m_recorderFuture.waitForFinished();
     if (isRecording()) {
         qWarning() << "Warning: Tried to start recording while already recording.";
         return;
@@ -231,7 +239,9 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
 
 void VideoPlatformWayland::finishRecording()
 {
-    Q_ASSERT(m_recorder);
+    if (!m_recorder) {
+        return;
+    }
     m_recorder->setActive(false);
     m_recorder->setNodeId(0);
 }
