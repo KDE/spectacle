@@ -417,6 +417,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
             return;
         }
     });
+    connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
+        SelectionEditor::instance()->reset();
+        initCaptureWindows(CaptureWindow::Video);
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+    });
 }
 
 SpectacleCore::~SpectacleCore() noexcept
@@ -1158,15 +1164,8 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
     }
     m_lastRecordingMode = mode;
     setVideoMode(true);
-    if (mode == VideoPlatform::Region) {
-        SelectionEditor::instance()->reset();
-        initCaptureWindows(CaptureWindow::Video);
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
-    } else {
-        const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
-        m_videoPlatform->startRecording(output, mode, {}, withPointer);
-    }
+    const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
+    m_videoPlatform->startRecording(output, mode, {}, withPointer);
 }
 
 void SpectacleCore::finishRecording()
