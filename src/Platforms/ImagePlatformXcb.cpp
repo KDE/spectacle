@@ -91,14 +91,17 @@ public:
                 // decide whether to grab or abort. regrab the mouse on mouse-wheel events
                 {
                     auto secondEvent = static_cast<xcb_button_release_event_t *>(message);
-                    if (secondEvent->detail == 1) {
+                    const xcb_button_t button = secondEvent->detail;
+                    if (button == XCB_BUTTON_INDEX_1) {
                         QTimer::singleShot(0, nullptr, [this]() {
                             m_platformPtr->doGrabNow(m_grabMode, m_includePointer, m_includeDecorations, m_includeShadow);
                         });
-                    } else if (secondEvent->detail == 2 || secondEvent->detail == 3) {
+                    } else if (button == XCB_BUTTON_INDEX_2 || button == XCB_BUTTON_INDEX_3) {
                         // 2: middle click, 3: right click; both cancel
                         Q_EMIT m_platformPtr->newScreenshotTaken();
-                    } else if (secondEvent->detail < 4) {
+                    } else if (button < XCB_BUTTON_INDEX_4) {
+                        // This code makes no sense, but it's replicating the original behavior
+                        // with more descriptive code.
                         Q_EMIT m_platformPtr->newScreenshotFailed();
                     } else {
                         QTimer::singleShot(0, nullptr, [this]() {
