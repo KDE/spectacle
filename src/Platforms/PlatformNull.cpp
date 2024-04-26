@@ -53,11 +53,11 @@ VideoPlatform::Formats VideoPlatformNull::supportedFormats() const
     return {};
 }
 
-void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const QVariant &option, bool withPointer)
+void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const QVariantMap &options, bool withPointer)
 {
     Q_UNUSED(fileUrl)
     Q_UNUSED(mode)
-    Q_UNUSED(option)
+    Q_UNUSED(options)
     Q_UNUSED(withPointer)
     Q_EMIT recordingFailed(m_unavailableMessage);
 }
