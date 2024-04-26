@@ -105,7 +105,7 @@ protected:
 public Q_SLOTS:
     virtual void startRecording(const QUrl &fileUrl,
                                 VideoPlatform::RecordingMode recordingMode,
-                                const QVariant &option,
+                                const QVariantMap &options,
                                 bool includePointer) = 0;
     virtual void finishRecording() = 0;
 

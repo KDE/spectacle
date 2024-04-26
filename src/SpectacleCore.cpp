@@ -153,7 +153,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
             bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
             includePointer |= m_startMode != StartMode::Background && Settings::videoIncludePointer();
             const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
-            m_videoPlatform->startRecording(output, VideoPlatform::Region, rect, includePointer);
+            static const auto rectKey = u"rect"_s;
+            m_videoPlatform->startRecording(output, VideoPlatform::Region, {{rectKey, rect}}, includePointer);
         } else {
             deleteWindows();
             m_annotationDocument->cropCanvas(rect);

@@ -31,6 +31,16 @@ using Format = VideoPlatform::Format;
 using Formats = VideoPlatform::Formats;
 using Encoder = PipeWireBaseEncodedStream::Encoder;
 
+static const auto screenKey = u"screen"_s;
+static const auto windowIdKey = u"uuid"_s;
+static const auto rectKey = u"rect"_s;
+static const auto xKey = u"x"_s;
+static const auto yKey = u"y"_s;
+static const auto widthKey = u"width"_s;
+static const auto heightKey = u"height"_s;
+static const auto captionKey = u"caption"_s;
+static const auto desktopFileKey = u"desktopFile"_s;
+
 VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
 {
     switch (encoder) {
@@ -108,19 +118,7 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
     return formats;
 }
 
-static void setWindowInfo(const QVariantMap &data, QRectF &windowRect, bool &isSpectacle)
-{
-    // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
-    // which may not be the same as QWindow::frameGeometry() on Wayland.
-    // Hopefully this is good enough most of the time.
-    windowRect = {
-        data[u"x"_s].toDouble(), data[u"y"_s].toDouble(),
-        data[u"width"_s].toDouble(), data[u"height"_s].toDouble(),
-    };
-    isSpectacle = data[u"desktopFile"_s].toString() == qGuiApp->desktopFileName();
-}
-
-void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariant &option, bool includePointer)
+void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariantMap &options, bool includePointer)
 {
     if (recordingMode == NoRecordingModes) {
         // We should avoid calling startRecording without a recording mode,
@@ -149,7 +147,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
     case Screen: {
-        auto screen = option.value<QScreen *>();
+        auto screen = options.value(screenKey).value<QScreen *>();
         if (!screen) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
@@ -160,35 +158,29 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         break;
     }
     case Window: {
-        auto window = option.toString();
-        if (window.isEmpty()) {
+        auto windowId = options.value(windowIdKey).toString();
+        if (windowId.isEmpty()) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
         }
-        Q_ASSERT(!window.isEmpty());
-        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                                u"/KWin"_s,
-                                                                u"org.kde.KWin"_s,
-                                                                u"getWindowInfo"_s);
-        message.setArguments({window});
-        const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
-        const auto &data = reply.value();
-
-        QRectF windowRect;
-        bool isSpectacle = false;
-        if (reply.isValid()) {
-            setWindowInfo(data, windowRect, isSpectacle);
-            ExportManager::instance()->setWindowTitle(data[u"caption"_s].toString());
-        }
-
+        Q_ASSERT(!windowId.isEmpty());
+        // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
+        // which may not be the same as QWindow::frameGeometry() on Wayland.
+        // Hopefully this is good enough most of the time.
+        const QRectF windowRect{
+            options[xKey].toDouble(), options[yKey].toDouble(),
+            options[widthKey].toDouble(), options[heightKey].toDouble(),
+        };
+        const bool isSpectacle = options[desktopFileKey].toString() == qGuiApp->desktopFileName();
+        ExportManager::instance()->setWindowTitle(options[captionKey].toString());
         if (!windowRect.isEmpty() && !isSpectacle) {
             minimizeIfWindowsIntersect(windowRect);
         }
-        stream = m_screencasting->createWindowStream(window, mode);
+        stream = m_screencasting->createWindowStream(windowId, mode);
         break;
     }
     case Region: {
-        auto rect = option.toRectF();
+        auto rect = options.value(rectKey).toRectF();
         if (rect.isEmpty()) {
             selectAndRecord(fileUrl, recordingMode, includePointer);
             return;
@@ -327,7 +319,7 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
             return;
         }
         const auto &data = reply.value();
-        QVariant option;
+        QVariantMap options;
         if (recordingMode == Screen) {
             QPoint pos = QCursor::pos();
             // BUG: https://bugs.kde.org/show_bug.cgi?id=480599
@@ -336,8 +328,8 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
             // window is between screens. We'll need to come up with a better solution someday.
             if (pos.isNull()) {
                 pos = {
-                    data[u"x"_s].toInt() + data[u"width"_s].toInt() / 2,
-                    data[u"y"_s].toInt() + data[u"height"_s].toInt() / 2};
+                    data[xKey].toInt() + data[widthKey].toInt() / 2,
+                    data[yKey].toInt() + data[heightKey].toInt() / 2};
             }
             const auto &screens = qGuiApp->screens();
             QScreen *screen = nullptr;
@@ -351,16 +343,16 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
                 Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to select screen: No screen contained the mouse cursor position"));
                 return;
             }
-            option = QVariant::fromValue(screen);
+            options[screenKey] = QVariant::fromValue(screen);
         } else {
-            const auto &windowId = data.value(u"uuid"_s).toString();
+            const auto &windowId = data.value(windowIdKey).toString();
             if (windowId.isEmpty()) {
                 Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to select window: No window found"));
                 return;
             }
-            option = windowId;
+            options = data;
         }
-        startRecording(fileUrl, recordingMode, option, includePointer);
+        startRecording(fileUrl, recordingMode, options, includePointer);
     };
     connect(watcher, &QDBusPendingCallWatcher::finished, this, onFinished);
 }

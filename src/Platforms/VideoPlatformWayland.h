@@ -26,7 +26,7 @@ public:
 
     RecordingModes supportedRecordingModes() const override;
     Formats supportedFormats() const override;
-    void startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariant &option, bool includePointer) override;
+    void startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariantMap &options, bool includePointer) override;
     void finishRecording() override;
 
     Format formatForEncoder(PipeWireBaseEncodedStream::Encoder encoder) const;
