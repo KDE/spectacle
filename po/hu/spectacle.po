@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-25 02:25+0000\n"
-"PO-Revision-Date: 2024-04-23 10:34+0200\n"
+"PO-Revision-Date: 2024-04-25 13:09+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -1668,32 +1668,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Rossz szélesség a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Rossz magasság a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:140
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Képernyőkép készítése után:"
+msgstr "Rossz formátum a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Nem sikerült megnyitni a fájlleírót a KWin képernyőkép olvasásához."
 
 #: src/Platforms/ImagePlatformKWin.cpp:230
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "Sikertelen pipe2() a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:282
 #, kde-format
@@ -1702,6 +1701,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin képernyőkép kérés nem sikerült:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:284
 #, kde-format
@@ -1710,12 +1711,14 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potenciálisan releváns információk:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Nem támogatott KWin képernyőképtípus metaadat: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
@@ -1848,11 +1851,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "A Spectacle indítása rögzítés nélkül"
 
 #: src/SpectacleCore.cpp:190
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "A Spectacle indítása képernyőkép készítése nélkül"
+msgstr "Hiba történt a képernyőkép készítésekor."
 
 #: src/SpectacleCore.cpp:387
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-25 02:25+0000\n"
-"PO-Revision-Date: 2024-04-19 13:56+0300\n"
+"PO-Revision-Date: 2024-04-25 13:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -1671,32 +1671,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin ekran görüntüsü için hatalı genişlik: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin ekran görüntüsü için hatalı yükseklik: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:140
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Bir ekran görüntüsü aldıktan sonra:"
+msgstr "KWin ekran görüntüsü için hatalı biçim: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "KWin ekran görüntüsü için olan dosya açıklayıcısı açılamadı."
 
 #: src/Platforms/ImagePlatformKWin.cpp:230
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin ekran görüntüsü için pipe2() başarısız oldu: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:282
 #, kde-format
@@ -1705,6 +1704,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin ekran görüntüsü isteği başarısız oldu:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:284
 #, kde-format
@@ -1713,12 +1714,14 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potansiyel olarak yararlı bilgi:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Desteklenmeyen KWin ekran görüntüsü türü üst veri: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
@@ -1849,11 +1852,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Spectacle’ı yakalama yapmadan başlat"
 
 #: src/SpectacleCore.cpp:190
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Bir ekran görüntüsü almadan Spectacle’ı başlat"
+msgstr "Ekran görüntüsü alınırken bir hata oluştu."
 
 #: src/SpectacleCore.cpp:387
 #, kde-format

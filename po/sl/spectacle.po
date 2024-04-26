@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-25 02:25+0000\n"
-"PO-Revision-Date: 2024-04-19 06:59+0200\n"
+"PO-Revision-Date: 2024-04-25 16:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1701,32 +1701,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Slaba širina za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Slaba višina za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:140
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Po zajemu zaslonske slike:"
+msgstr "Slab format za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Ni bilo mogoče odpreti deskriptorja datoteke za branje posnetka zaslona KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:230
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() ni uspel za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:282
 #, kde-format
@@ -1735,6 +1735,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Zahteva za posnetek zaslona KWin ni uspela:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:284
 #, kde-format
@@ -1743,12 +1745,14 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potencialno pomembne informacije:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Nepodprti metapodatki vrste posnetka zaslona KWin: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
@@ -1883,11 +1887,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
 #: src/SpectacleCore.cpp:190
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Zaženi Spectacle ne da bi zajel zaslonsko sliko"
+msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
 
 #: src/SpectacleCore.cpp:387
 #, kde-format
