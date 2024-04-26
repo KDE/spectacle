@@ -17,6 +17,7 @@
 #include "ImagePlatformXcb.h"
 #endif
 
+#include <KLocalizedString>
 #include <KWindowSystem>
 
 #include <QDebug>
@@ -91,6 +92,9 @@ VideoPlatformPtr loadVideoPlatform()
     }
     if (KWindowSystem::isPlatformWayland()) {
         return std::make_unique<VideoPlatformWayland>();
+    }
+    if (KWindowSystem::isPlatformX11()) {
+        return std::make_unique<VideoPlatformNull>(i18nc("@info", "Screen recording is not available on X11."));
     }
     return std::make_unique<VideoPlatformNull>();
 }

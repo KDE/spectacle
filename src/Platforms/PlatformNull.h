@@ -28,12 +28,13 @@ public Q_SLOTS:
                 bool includeShadow) override final;
 };
 
+// A default video platform implementation. Can be used for platforms that aren't supported.
 class VideoPlatformNull final : public VideoPlatform
 {
     Q_OBJECT
 
 public:
-    explicit VideoPlatformNull(QObject *parent = nullptr);
+    explicit VideoPlatformNull(const QString &unavailableMessage = {}, QObject *parent = nullptr);
 
     RecordingModes supportedRecordingModes() const override;
     Formats supportedFormats() const override;
@@ -41,5 +42,5 @@ public:
     void finishRecording() override;
 
 private:
-    QUrl m_fileUrl;
+    QString m_unavailableMessage;
 };
