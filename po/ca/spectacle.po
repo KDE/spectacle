@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-25 00:37+0000\n"
-"PO-Revision-Date: 2024-04-19 09:08+0200\n"
+"POT-Creation-Date: 2024-04-26 00:37+0000\n"
+"PO-Revision-Date: 2024-04-25 12:39+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1703,58 +1703,63 @@ msgstr ""
 "que no sembla estar disponible. Useu l'Spectacle en el Plasma de KDE, o useu "
 "una eina diferent de captura de pantalla."
 
-#: src/Platforms/ImagePlatformKWin.cpp:124
+#: src/Platforms/ImagePlatformKWin.cpp:149
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Amplada incorrecta per a la captura de pantalla del KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:129
+#: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Alçada incorrecta per a la captura de pantalla del KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:140
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#: src/Platforms/ImagePlatformKWin.cpp:165
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Després de prendre una captura de pantalla:"
+msgstr "Format incorrecte per a la captura de pantalla del KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:158
+#: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"No s'ha pogut obrir el descriptor de fitxer per a llegir la captura de "
+"pantalla del KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:230
+#: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "Ha fallat «pipe2()» per a la captura de pantalla del KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:282
+#: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
 msgctxt "@info"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"La captura de pantalla sol·licitada del KWin ha fallat:\n"
+"%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:284
+#: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Informació potencialment rellevant:\n"
+"%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Metadades no acceptades del tipus de captura de pantalla del KWin: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:129
 #, kde-format
@@ -1891,11 +1896,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Llança l'Spectacle sense capturar"
 
 #: src/SpectacleCore.cpp:190
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Llança l'Spectacle sense prendre cap captura de pantalla"
+msgstr "Hi ha hagut un error en prendre una captura de pantalla."
 
 #: src/SpectacleCore.cpp:387
 #, kde-format
