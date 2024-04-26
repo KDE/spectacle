@@ -37,8 +37,9 @@ void ImagePlatformNull::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool 
     Q_EMIT newScreenshotFailed();
 }
 
-VideoPlatformNull::VideoPlatformNull(QObject *parent)
+VideoPlatformNull::VideoPlatformNull(const QString &unavailableMessage, QObject *parent)
     : VideoPlatform(parent)
+    , m_unavailableMessage(unavailableMessage)
 {
 }
 
@@ -52,20 +53,18 @@ VideoPlatform::Formats VideoPlatformNull::supportedFormats() const
     return {};
 }
 
-void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const QVariant &, bool withPointer)
+void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const QVariant &option, bool withPointer)
 {
-    setRecording(true);
-    m_fileUrl = fileUrl;
-    qDebug() << "start recording" << mode << "pointer:" << withPointer << "url:" << fileUrl;
+    Q_UNUSED(fileUrl)
+    Q_UNUSED(mode)
+    Q_UNUSED(option)
+    Q_UNUSED(withPointer)
+    Q_EMIT recordingFailed(m_unavailableMessage);
 }
 
 void VideoPlatformNull::finishRecording()
 {
     setRecording(false);
-    qDebug() << "finish recording" << m_fileUrl;
-    Q_EMIT recordingSaved(m_fileUrl);
 }
-
-
 
 #include "moc_PlatformNull.cpp"
