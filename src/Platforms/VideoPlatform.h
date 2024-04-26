@@ -19,8 +19,8 @@ class QScreen;
 class VideoPlatform : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes CONSTANT)
-    Q_PROPERTY(Formats supportedFormats READ supportedFormats CONSTANT)
+    Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes NOTIFY supportedRecordingModesChanged)
+    Q_PROPERTY(Formats supportedFormats READ supportedFormats NOTIFY supportedFormatsChanged)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
     Q_PROPERTY(qint64 recordedTime READ recordedTime NOTIFY recordedTimeChanged)
 
@@ -110,6 +110,8 @@ public Q_SLOTS:
     virtual void finishRecording() = 0;
 
 Q_SIGNALS:
+    void supportedRecordingModesChanged();
+    void supportedFormatsChanged();
     void recordingChanged(bool isRecording);
     void recordingSaved(const QUrl &fileUrl);
     void recordingFailed(const QString &message);

@@ -8,6 +8,7 @@
 
 #include "VideoPlatform.h"
 #include <PipeWireRecord>
+#include <QFuture>
 #include <memory>
 
 class Screencasting;
@@ -38,4 +39,5 @@ private:
 
     Screencasting *const m_screencasting;
     std::unique_ptr<PipeWireRecord> m_recorder;
+    QFuture<void> m_recorderFuture;
 };
