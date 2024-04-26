@@ -165,6 +165,19 @@ void ExportMenu::loadPurposeMenu()
         loadPurposeItems();
         setWidgetTransientParentToWidget(mPurposeMenu.get(), this);
     });
+
+    connect(purposeMenu, &Purpose::Menu::aboutToShare, this, [this]() {
+        // Before starting the share operation, accept to avoid sharing unwanted portions of the screen
+        auto captureWindow = qobject_cast<CaptureWindow *>(getWidgetTransientParent(this));
+        if (captureWindow && !captureWindow->accept()) {
+            return;
+        }
+        const QString dataUri = ExportManager::instance()->tempSave().toString();
+        auto mimeType = QMimeDatabase().mimeTypeForFile(dataUri).name();
+        QJsonObject inputData = {{u"mimeType"_s, mimeType}, {u"urls"_s, QJsonArray({dataUri})}};
+        mPurposeMenu->model()->setInputData(inputData);
+        mPurposeMenu->model()->setPluginType(u"Export"_s);
+    });
 }
 
 void ExportMenu::loadPurposeItems()
@@ -174,6 +187,7 @@ void ExportMenu::loadPurposeItems()
     }
 
     // updated image available, we lazily load it now
+    ExportManager::instance()->updateTimestamp();
     const QString dataUri = ExportManager::instance()->tempSave().toString();
     mUpdatedImageAvailable = false;
 
