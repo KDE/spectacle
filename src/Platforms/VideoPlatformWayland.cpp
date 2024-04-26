@@ -121,7 +121,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         Q_EMIT recordingCanceled(u"Recording canceled: No recording mode"_s);
         return;
     }
-    if (m_screencasting->isAvailable()) {
+    if (!m_screencasting->isAvailable()) {
         Q_EMIT recordingFailed(i18nc("@info", "KWin Screencasting is not available."));
         return;
     }
