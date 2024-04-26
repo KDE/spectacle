@@ -226,6 +226,64 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
     });
 
+    s_systemTrayIcon = std::make_unique<QSystemTrayIcon>(QIcon::fromTheme(u"media-record-symbolic"_s));
+    auto systemTrayIcon = s_systemTrayIcon.get();
+    connect(systemTrayIcon, &QSystemTrayIcon::activated, systemTrayIcon, [](auto reason) {
+        if (reason == QSystemTrayIcon::Trigger) {
+            SpectacleCore::instance()->finishRecording();
+        }
+    });
+
+    auto videoPlatform = m_videoPlatform.get();
+    connect(videoPlatform, &VideoPlatform::recordingChanged,
+            systemTrayIcon, [this](bool isRecording){
+        s_systemTrayIcon->setVisible(isRecording);
+        if (!isRecording) {
+            m_captureWindows.clear();
+        }
+    });
+    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
+        Q_EMIT recordedTimeChanged();
+        s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
+    });
+    connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
+        // Always try to save. Needed to move recordings out of temp dir.
+        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
+    });
+    connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
+        if (m_startMode != StartMode::Gui || isGuiNull()) {
+            Q_EMIT allDone();
+            return;
+        }
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
+    });
+    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this](const QString &message){
+        switch (m_startMode) {
+        case StartMode::Background:
+            if (!message.isEmpty()) {
+                showErrorMessage(message);
+            }
+            Q_EMIT allDone();
+            return;
+        case StartMode::DBus:
+            Q_EMIT dbusRecordingFailed(message);
+            Q_EMIT allDone();
+            return;
+        case StartMode::Gui:
+            if (!ViewerWindow::instance()) {
+                initViewerWindow(ViewerWindow::Dialog);
+            }
+            ViewerWindow::instance()->showRecordingFailedMessage(message);
+            return;
+        }
+    });
+    connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
+        SelectionEditor::instance()->reset();
+        initCaptureWindows(CaptureWindow::Video);
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+    });
+
     // set up the export manager
     auto exportManager = ExportManager::instance();
     auto onImageExported = [this](const ExportManager::Actions &actions, const QUrl &url) {
@@ -364,64 +422,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (it != m_captureWindows.end()) {
             m_captureWindows.erase(it);
         }
-    });
-
-    s_systemTrayIcon = std::make_unique<QSystemTrayIcon>(QIcon::fromTheme(u"media-record-symbolic"_s));
-    auto systemTrayIcon = s_systemTrayIcon.get();
-    connect(systemTrayIcon, &QSystemTrayIcon::activated, systemTrayIcon, [](auto reason) {
-        if (reason == QSystemTrayIcon::Trigger) {
-            SpectacleCore::instance()->finishRecording();
-        }
-    });
-
-    auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged,
-            systemTrayIcon, [this](bool isRecording){
-        s_systemTrayIcon->setVisible(isRecording);
-        if (!isRecording) {
-            m_captureWindows.clear();
-        }
-    });
-    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
-        Q_EMIT recordedTimeChanged();
-        s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
-    });
-    connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
-        // Always try to save. Needed to move recordings out of temp dir.
-        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
-    });
-    connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
-        if (m_startMode != StartMode::Gui || isGuiNull()) {
-            Q_EMIT allDone();
-            return;
-        }
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
-    });
-    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this](const QString &message){
-        switch (m_startMode) {
-        case StartMode::Background:
-            if (!message.isEmpty()) {
-                showErrorMessage(message);
-            }
-            Q_EMIT allDone();
-            return;
-        case StartMode::DBus:
-            Q_EMIT dbusRecordingFailed(message);
-            Q_EMIT allDone();
-            return;
-        case StartMode::Gui:
-            if (!ViewerWindow::instance()) {
-                initViewerWindow(ViewerWindow::Dialog);
-            }
-            ViewerWindow::instance()->showRecordingFailedMessage(message);
-            return;
-        }
-    });
-    connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
-        SelectionEditor::instance()->reset();
-        initCaptureWindows(CaptureWindow::Video);
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
     });
 }
 
