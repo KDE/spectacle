@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 00:37+0000\n"
+"POT-Creation-Date: 2024-04-27 00:37+0000\n"
 "PO-Revision-Date: 2024-02-17 15:12+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1701,79 +1701,117 @@ msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:129
+#: src/Platforms/PlatformLoader.cpp:97
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Screen recording canceled"
+msgctxt "@info"
+msgid "Screen recording is not available on X11."
+msgstr "화면 녹화 취소됨"
+
+#: src/Platforms/VideoPlatformWayland.cpp:130
+#, kde-format
+msgctxt "@info"
+msgid "KWin Screencasting is not available."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "녹화할 수 없음: 파일 URL이 로컬 파일이 아님"
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:226
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because the target screen changed in a way that disrupted "
+"the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:228
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because the target window changed in a way that disrupted "
+"the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because a screen containing the target region changed in a "
+"way that disrupted the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "녹화할 수 없음: 폴더를 만들 수 없음(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:253
+#: src/Platforms/VideoPlatformWayland.cpp:270
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 임시 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:264
+#: src/Platforms/VideoPlatformWayland.cpp:281
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 출력 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:299
+#: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "화면 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:301
+#: src/Platforms/VideoPlatformWayland.cpp:318
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "창 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:307
+#: src/Platforms/VideoPlatformWayland.cpp:324
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "화면을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:309
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "창을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:337
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "화면을 선택할 수 없음: 마우스 커서 위치가 포함된 화면 없음"
 
-#: src/Platforms/VideoPlatformWayland.cpp:344
+#: src/Platforms/VideoPlatformWayland.cpp:361
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "창을 선택할 수 없음: 창을 찾을 수 없음"
 
-#: src/RecordingModeModel.cpp:28
+#: src/RecordingModeModel.cpp:71
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "직사각형 영역"
 
-#: src/RecordingModeModel.cpp:31
+#: src/RecordingModeModel.cpp:74
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "전체 화면"
 
-#: src/RecordingModeModel.cpp:34
+#: src/RecordingModeModel.cpp:77
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
@@ -1829,14 +1867,14 @@ msgstr "직사각형 영역 녹화"
 msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:190
+#: src/SpectacleCore.cpp:234
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "스크린샷을 찍지 않고 Spectacle 실행"
 
-#: src/SpectacleCore.cpp:387
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1846,13 +1884,20 @@ msgstr ""
 "Spectacle에서 녹화 중: %1\n"
 "클릭하면 녹화를 중단합니다"
 
-#: src/SpectacleCore.cpp:665
+#: src/SpectacleCore.cpp:270
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@info"
+msgid "An error occurred while attempting to record the screen."
+msgstr "스크린샷을 찍지 않고 Spectacle 실행"
+
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1은(는) --record에 지정할 수 있는 올바른 모드가 아님"
 
-#: src/SpectacleCore.cpp:901
+#: src/SpectacleCore.cpp:906
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1861,23 +1906,23 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:905
+#: src/SpectacleCore.cpp:910
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:908
+#: src/SpectacleCore.cpp:913
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:912
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 저장했습니다."
 
-#: src/SpectacleCore.cpp:917
+#: src/SpectacleCore.cpp:922
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1886,35 +1931,35 @@ msgstr ""
 "녹화본을 '%2'에 '%1'(으)로 저장했고 녹화본 파일 위치를 클립보드에 복사했습니"
 "다."
 
-#: src/SpectacleCore.cpp:919
+#: src/SpectacleCore.cpp:924
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "녹화본을 내 동영상 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:921
+#: src/SpectacleCore.cpp:926
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "녹화본을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:932
+#: src/SpectacleCore.cpp:937
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:946
+#: src/SpectacleCore.cpp:951
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"
 
-#: src/VideoFormatModel.cpp:21
+#: src/VideoFormatModel.cpp:26
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:28
+#: src/VideoFormatModel.cpp:33
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
