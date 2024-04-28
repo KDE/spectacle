@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 15:54+0200\n"
+"PO-Revision-Date: 2024-04-27 06:52+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1755,18 +1755,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nepodprti metapodatki vrste posnetka zaslona KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Snemanje zaslona preklicano"
+msgstr "Snemanje zaslona ni na voljo na X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin Screencasting ni na voljo."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1781,6 +1779,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Tok se je zaprl, ker se je ciljni zaslon spremenil na način, ki je motil "
+"snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1789,6 +1789,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Tok se je zaprl, ker se je ciljno okno spremenilo na način, ki je motil "
+"snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1797,6 +1799,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Tok se je zaprl, ker se je zaslon s ciljno regijo spremenil na način, ki je "
+"motil snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1941,12 +1945,10 @@ msgstr ""
 "Kliknite za zaključek snemanja"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
+msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

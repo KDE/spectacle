@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 13:15+0200\n"
+"PO-Revision-Date: 2024-04-27 10:02+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1749,18 +1749,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Niet-ondersteund type metagegevens van schermafdruk van KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Opnemen van scherm is geannuleerd"
+msgstr "Opnemen van scherm is niet beschikbaar in X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin screencasting is niet beschikbaar."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1775,6 +1773,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"De stream is gesloten omdat het doelscherm is gewijzigd op een manier die "
+"het opnemen verstoorde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1783,6 +1783,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"De stream is gesloten omdat het doelvenster is gewijzigd op een manier die "
+"het opnemen verstoorde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1791,6 +1793,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"De stream is gesloten omdat een scherm met het doelgebied is gewijzigd op "
+"een manier die het opnemen verstoorde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1934,12 +1938,10 @@ msgstr ""
 "Klik om opnemen te beëindigen"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Er deed zich een fout voor tijdens het nemen van een schermafdruk."
+msgstr "Er deed zich een fout bij een poging het scherm op te nemen."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

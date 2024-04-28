@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 08:04+0300\n"
+"PO-Revision-Date: 2024-04-27 06:40+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1718,18 +1718,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "נתוני־על של צילום מסך של KWin לא נתמכים: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "הקלטת המסך בוטלה"
+msgstr "הקלטת מסך לא זמינה ב־X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "הסרטת מסך של KWin  לא זמינה."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1743,7 +1741,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "התזרים נסגר כיוון שמסך היעד השתנה באופן שקטע את ההקלטה."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1751,7 +1749,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "התזרים נסגר כיוון שחלון היעד השתנה באופן שקטע את ההקלטה."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1759,7 +1757,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
-msgstr ""
+msgstr "התזרים נסגר כיוון שמסך שהכיל את אזור היעד השתנה באופן שקטע את ההקלטה."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1900,12 +1898,10 @@ msgstr ""
 "לחיצה תסיים את ההקלטה"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "אירעה שגיאה בצילום המסך."
+msgstr "אירעה שגיאה בניסיון לצלם את המסך."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format
