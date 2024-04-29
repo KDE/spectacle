@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-05 16:56+0300\n"
+"PO-Revision-Date: 2024-04-24 14:36+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -307,13 +307,13 @@ msgstr "Aizpildījuma krāsa"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Stiprums:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Efekta stiprums."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -366,7 +366,7 @@ msgstr "Nav"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Kadrēt"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -656,7 +656,7 @@ msgstr "Eksportēt"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Rediģēt..."
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -818,6 +818,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Spiediet un velciet, lai atlasītu.\n"
+"Veiciet dubultklikšķi atlasē, lai piekristu un kadrētu.\n"
+"Spiediet peles labo pogu, lai noņemtu atlasi."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1361,16 +1364,15 @@ msgstr "Aizpildījuma krāsa skaitļu anotācijas rīkam"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Pēdējais lietotāja iezīmētais reģions"
+msgstr "Aizmiglošanas efekta stiprums"
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Pikselēšanas efekta stiprums."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1910,11 +1912,10 @@ msgstr ""
 "Klikšķiniet, lai pārtrauktu"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Palaist „Spectacle“, neuzņemot ekrānattēlu"
+msgstr ""
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

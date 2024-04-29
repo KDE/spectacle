@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 12:39+0200\n"
+"PO-Revision-Date: 2024-04-27 11:02+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1767,18 +1767,17 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Metadades no acceptades del tipus de captura de pantalla de KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "S'ha cancel·lat la gravació de pantalla"
+msgstr "La gravació de pantalla no està disponible en X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr ""
+"No està disponible la gravació de vídeos de captura de pantalla de KWin."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1793,6 +1792,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"El flux s'ha tancat perquè la pantalla de destinació ha canviat d'una manera "
+"que ha interromput la gravació."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1801,6 +1802,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"El flux s'ha tancat perquè la finestra de destinació ha canviat d'una manera "
+"que ha interromput la gravació."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1809,6 +1812,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"El flux s'ha tancat perquè una pantalla que contenia la regió de destinació "
+"ha canviat d'una manera que ha interromput la gravació."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1955,12 +1960,10 @@ msgstr ""
 "Feu clic per a finalitzar la gravació"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "S'ha produït un error en prendre una captura de pantalla."
+msgstr "S'ha produït un error en intentar enregistrar la pantalla."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

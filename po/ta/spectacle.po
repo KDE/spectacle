@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-21 21:59+0530\n"
+"PO-Revision-Date: 2024-04-28 17:06+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -1686,32 +1686,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "கேவின் திரைப்பிடிப்புக்கு செல்லுபடியாகாத அகலம்: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "கேவின் திரைப்பிடிப்புக்கு செல்லுபடியாகாத உயரம்: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "திரைப்பிடிப்பை எடுத்த பின்:"
+msgstr "கேவின் திரைப்பிடிப்புக்கு செல்லுபடியாகாத படிவம்: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"கேவின் திரைப்பிடிப்பைப் படிப்பதற்கான கோப்பை (file descriptor-ஐ) படிக்க முடியவில்லை."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "கேவின் திரைப்பிடிப்புக்கான pipe2() தோல்வியடைந்தது: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1720,6 +1720,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"கேவின் திரைப்பிடிப்பு கோரிக்கை தோல்வியடைந்தது:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1728,26 +1730,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"உதவக்கூடிய விவரங்கள்:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "கேவின் திரைப்பிடிப்புக்கான ஆதரிக்கப்படாத 'வகை' மேனிலைத் தரவு: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "திரைப்பதிவு ரத்து செய்யப்பட்டது"
+msgstr "X11-இல் திரைப்பதிவு ஆதரிக்கப்படாது."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "கேவின் திரைப்பகிர்வு கிடைக்கவில்லை."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1762,6 +1764,7 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"திரைப்பதிவை சேதப்படுத்தும் வகையில் திரையின் அமைப்புகள் மாறியதால் பதிவு முறிவடைந்தது"
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1769,7 +1772,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "திரைப்பதிவை சேதப்படுத்தும் வகையில் சாளரம் மாறியதால் பதிவு முறிவடைந்தது"
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1778,6 +1781,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"திரைப்பதிவை சேதப்படுத்தும் வகையில் பதிவு செய்யப்பட்டிருந்த இடத்தைக் கொண்ட திரையின் "
+"அமைப்புகள் மாறியதால் பதிவு முறிவடைந்தது"
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1902,11 +1907,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
 #: src/SpectacleCore.cpp:234
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "திரைப்பிடிப்பை எடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
+msgstr "திரைப்பிடிப்பை எடுப்பதில் சிக்கல் ஏற்பட்டது."
 
 #: src/SpectacleCore.cpp:256
 #, kde-format
@@ -1919,11 +1923,10 @@ msgstr ""
 "பதிவை முடிக்க கிளிக் செய்யவும்"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "திரைப்பிடிப்பை எடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
+msgstr "திரைப்பதிவிட முயற்சிக்கும்போது சிக்கல் ஏற்பட்டது."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

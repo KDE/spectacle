@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-27 10:30+0200\n"
+"PO-Revision-Date: 2024-04-28 09:13+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1750,18 +1750,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Metadatos de tipo de captura de pantalla de KWin incompatíbeis: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Cancelouse a gravación de pantalla"
+msgstr "Non se pode gravar a pantalla en X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "A gravación de pantalla de KWin non está dispoñíbel."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1776,6 +1774,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Pechouse a fluxo porque a pantalla correspondente cambiou dun xeito que "
+"interrompeu a gravación."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1784,6 +1784,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Pechouse a fluxo porque a xanela correspondente cambiou dun xeito que "
+"interrompeu a gravación."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1792,6 +1794,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Pechouse a fluxo porque a pantalla que contén a rexión correspondente "
+"cambiou dun xeito que interrompeu a gravación."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1938,11 +1942,10 @@ msgstr ""
 "Prema para rematar a gravación."
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Iniciar Spectacle sen facer unha captura de pantalla"
+msgstr "Produciuse un erro ao intentar gravar a pantalla."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format
