@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-27 02:20+0000\n"
+"POT-Creation-Date: 2024-04-30 02:25+0000\n"
 "PO-Revision-Date: 2024-04-25 13:09+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1720,55 +1720,93 @@ msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nem támogatott KWin képernyőképtípus metaadat: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:129
+#: src/Platforms/PlatformLoader.cpp:97
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Screen recording canceled"
+msgctxt "@info"
+msgid "Screen recording is not available on X11."
+msgstr "Képernyőfelvétel megszakítva"
+
+#: src/Platforms/VideoPlatformWayland.cpp:130
+#, kde-format
+msgctxt "@info"
+msgid "KWin Screencasting is not available."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Nem sikerült felvenni: a fájl URL-je nem helyi fájl"
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:226
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because the target screen changed in a way that disrupted "
+"the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:228
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because the target window changed in a way that disrupted "
+"the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:230
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The stream closed because a screen containing the target region changed in a "
+"way that disrupted the recording."
+msgstr ""
+
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Nem sikerült felvenni: nem lehet létrehozni a mappát (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:253
+#: src/Platforms/VideoPlatformWayland.cpp:270
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Nem sikerült felvenni: az átmeneti fájl URL-re nem helyi fájl (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:264
+#: src/Platforms/VideoPlatformWayland.cpp:281
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Nem lehet felvenni: a kimeneti fájl URL-je nem helyi fájl (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:299
+#: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Képernyőfelvétel megszakítva"
 
-#: src/Platforms/VideoPlatformWayland.cpp:301
+#: src/Platforms/VideoPlatformWayland.cpp:318
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Ablakfelvétel megszakítva"
 
-#: src/Platforms/VideoPlatformWayland.cpp:307
+#: src/Platforms/VideoPlatformWayland.cpp:324
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Nem sikerült kiválasztani a képernyőt: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:309
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Nem sikerült kiválasztani az ablakot: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:337
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1776,25 +1814,25 @@ msgstr ""
 "Nem sikerült kiválasztani a képernyőt: egy képernyő sem tartalmazta az "
 "egérkurzor pozícióját"
 
-#: src/Platforms/VideoPlatformWayland.cpp:344
+#: src/Platforms/VideoPlatformWayland.cpp:361
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Nem sikerült kiválasztani az ablakot: nem található ablak"
 
-#: src/RecordingModeModel.cpp:28
+#: src/RecordingModeModel.cpp:71
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Téglalap alakú terület"
 
-#: src/RecordingModeModel.cpp:31
+#: src/RecordingModeModel.cpp:74
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Teljes képernyő"
 
-#: src/RecordingModeModel.cpp:34
+#: src/RecordingModeModel.cpp:77
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
@@ -1850,13 +1888,13 @@ msgstr "Téglalap alakú terület felvétele"
 msgid "Launch Spectacle without capturing"
 msgstr "A Spectacle indítása rögzítés nélkül"
 
-#: src/SpectacleCore.cpp:190
+#: src/SpectacleCore.cpp:234
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Hiba történt a képernyőkép készítésekor."
 
-#: src/SpectacleCore.cpp:247
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1866,13 +1904,21 @@ msgstr ""
 "A Spectacle felvesz: %1\n"
 "Kattintson a felvétel befejezéséhez"
 
-#: src/SpectacleCore.cpp:671
+#: src/SpectacleCore.cpp:270
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "An error occurred while taking a screenshot."
+msgctxt "@info"
+msgid "An error occurred while attempting to record the screen."
+msgstr "Hiba történt a képernyőkép készítésekor."
+
+#: src/SpectacleCore.cpp:670
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "A(z) %1 nem érvényes mód a --record kapcsolóhoz"
 
-#: src/SpectacleCore.cpp:907
+#: src/SpectacleCore.cpp:906
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1881,23 +1927,23 @@ msgstr ""
 "A képernyőkép mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:911
+#: src/SpectacleCore.cpp:910
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
-#: src/SpectacleCore.cpp:914
+#: src/SpectacleCore.cpp:913
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:918
+#: src/SpectacleCore.cpp:917
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
-#: src/SpectacleCore.cpp:923
+#: src/SpectacleCore.cpp:922
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1906,35 +1952,35 @@ msgstr ""
 "A felvétel mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:925
+#: src/SpectacleCore.cpp:924
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Felvétel mentve mint „%1” a Videók mappába."
 
-#: src/SpectacleCore.cpp:927
+#: src/SpectacleCore.cpp:926
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Felvétel mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:938
+#: src/SpectacleCore.cpp:937
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/SpectacleCore.cpp:952
+#: src/SpectacleCore.cpp:951
 #, kde-format
 msgid "Annotate"
 msgstr "Feliratozás"
 
-#: src/VideoFormatModel.cpp:21
+#: src/VideoFormatModel.cpp:26
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:28
+#: src/VideoFormatModel.cpp:33
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
