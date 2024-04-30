@@ -198,7 +198,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         }
         const auto &windows = qGuiApp->allWindows();
         const bool hasVisibleWindow = std::any_of(windows.cbegin(), windows.cend(), [](auto *window){
-            return window->isVisible();
+            // Is visible and is a normal window or dialog (no tooltips or menus)
+            const auto typeFlags = window->flags() & Qt::WindowType_Mask;
+            return window->isVisible() && (typeFlags == Qt::Window || typeFlags == Qt::Dialog);
         });
         switch (m_startMode) {
         case StartMode::Background:
