@@ -10,9 +10,10 @@
 
 #include <QApplication>
 #include <QFontDatabase>
-#include <QGuiApplication>
 #include <QLabel>
+#include <QRegularExpression>
 #include <QStyle>
+#include <QToolTip>
 
 using namespace Qt::StringLiterals;
 
@@ -21,7 +22,24 @@ using namespace Qt::StringLiterals;
  * image and video save options pages.
  */
 
-inline void updateFilenamePreview(QLabel *label, const QString &templateFilename)
+namespace Filename
+{
+using QRE = QRegularExpression;
+
+inline QString operator""_esc(const char16_t *str, size_t size) noexcept
+{
+    return QRE::escape(operator""_s(str, size).toHtmlEscaped());
+}
+
+// forward slash (/) is also incompatible, but that is interpreted as a dir separator.
+// more than one forward slash should be considered incompatible.
+static const auto FAT32LFN_exFAT_NTFS_Full_Str = u"/\\:*\"?<>|"_s;
+static const QRegularExpression FAT32LFN_exFAT_NTFS_RegEx{u"((?>%1|[%2])+)"_s.arg(QRE::escape(u"//"_s), QRE::escape(u"\\:*\"?<>|"_s))};
+static const QRegularExpression FAT32LFN_exFAT_NTFS_RegEx_HTML{
+    u"((?>%1|%2|%3|%4|%5|%6|%7|%8|%9)+)"_s
+        .arg(u"//"_esc, u"\\"_esc, u":"_esc, u"*"_esc, u"\""_esc, u"?"_esc, u"<"_esc, u">"_esc, u"|"_esc)};
+
+inline QString previewText(const QString &templateFilename)
 {
     auto exportManager = ExportManager::instance();
     // If there is no window title, we need to change it to have a placeholder.
@@ -35,7 +53,6 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
         exportManager->updateTimestamp();
     }
     const auto filename = exportManager->formattedFilename(templateFilename);
-    label->setText(xi18nc("@info", "<filename>%1</filename>", filename));
 
     // Reset any previously empty values that we had temporarily set.
     if (!timestamp.isValid()) {
@@ -44,6 +61,48 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
     if (usePlaceholder) {
         exportManager->setWindowTitle({});
     }
+
+    return filename;
+}
+
+inline bool showWarning(const QString &text)
+{
+    return text.contains(FAT32LFN_exFAT_NTFS_RegEx);
+}
+
+inline QString highlightedPreviewText(QString text)
+{
+    return text.toHtmlEscaped().replace(FAT32LFN_exFAT_NTFS_RegEx_HTML, u"<u>\\1</u>"_s);
+}
+
+inline void warningToolTip(QWidget *target, bool show)
+{
+    Q_ASSERT(target != nullptr);
+    // Depending on a bit of privately implemented behavior, but it probably won't ever change.
+    QLabel *tooltipLabel = target->findChild<QLabel *>("qtooltip_label"_L1);
+    // If the current tooltip is for the target and there is no warning, hide it immediately.
+    if (!show && tooltipLabel) {
+        tooltipLabel->close();
+        return;
+    }
+    // If the current tooltip is not for the target, hide it immediately.
+    // If we don't do this, the tooltip may not actually move back to the target position.
+    if (!tooltipLabel) {
+        const auto &widgets = qApp->topLevelWidgets();
+        for (auto widget : widgets) {
+            if ((widget->windowFlags() & Qt::WindowType_Mask) == Qt::ToolTip) {
+                widget->close();
+                break;
+            }
+        }
+    }
+    auto pos = target->mapToGlobal(QPoint{0, 0});
+    auto warningText =
+        i18nc("@info:tooltip",
+              "The following characters are incompatible with Windows and removable storage devices file systems (NTFS, FAT32, exFAT):<br><b>%1</b>",
+              FAT32LFN_exFAT_NTFS_Full_Str.toHtmlEscaped());
+    QToolTip::showText(pos, warningText, target, {});
+}
 }
 
 namespace CaptureInstructions
