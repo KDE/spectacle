@@ -46,7 +46,7 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
     }
 }
 
-namespace CaptureInstructionHelpers
+namespace CaptureInstructions
 {
 inline QString tableRow(const QString &href, const QString &label, const QString &description = {})
 {
@@ -57,6 +57,7 @@ inline QString tableRow(const QString &href, const QString &label, const QString
                 <td>%2</td></tr>)"_s.arg(cell1, description);
     // clang-format on
 }
+
 inline QString buttonRow(const QString &href, const QString &label)
 {
     QString cell2 = u"<a href='%1'>%2</a>"_s.arg(href, label);
@@ -66,11 +67,9 @@ inline QString buttonRow(const QString &href, const QString &label)
                 <td>%1</td></tr>)"_s.arg(cell2);
     // clang-format on
 }
-}
 
-inline QString captureInstructions(bool showExtras)
+inline QString text(bool showExtras)
 {
-    using namespace CaptureInstructionHelpers;
     QString intro = i18n("You can use the following placeholders in the filename, which will be replaced with actual text when the file is saved:");
 
     QString tableBody;
@@ -132,4 +131,5 @@ uR"(<html>
     </body>
 </html>)"_s; // clang-format on
     return html.arg(QString::number(hspacing), QString::number(vspacing / 2.0), intro, tableBody);
+}
 }

@@ -67,12 +67,12 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     }());
     connect(m_ui->kcfg_preferredImageFormat, &QComboBox::currentTextChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
 
-    m_ui->captureInstructionLabel->setText(captureInstructions(false));
+    m_ui->captureInstructionLabel->setText(CaptureInstructions::text(false));
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &link) {
         if (link == u"showmore"_s) {
-            m_ui->captureInstructionLabel->setText(captureInstructions(true));
+            m_ui->captureInstructionLabel->setText(CaptureInstructions::text(true));
         } else if (link == u"showfewer"_s) {
-            m_ui->captureInstructionLabel->setText(captureInstructions(false));
+            m_ui->captureInstructionLabel->setText(CaptureInstructions::text(false));
         } else {
             m_ui->kcfg_imageFilenameTemplate->insert(link);
         }

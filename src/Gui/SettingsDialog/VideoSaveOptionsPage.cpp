@@ -54,12 +54,12 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
             this, &VideoSaveOptionsPage::updateFilenamePreview);
     connect(m_videoFormatComboBox.get(), &QComboBox::currentTextChanged, this, &VideoSaveOptionsPage::updateFilenamePreview);
 
-    m_ui->captureInstructionLabel->setText(captureInstructions(false));
+    m_ui->captureInstructionLabel->setText(CaptureInstructions::text(false));
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &link) {
         if (link == u"showmore"_s) {
-            m_ui->captureInstructionLabel->setText(captureInstructions(true));
+            m_ui->captureInstructionLabel->setText(CaptureInstructions::text(true));
         } else if (link == u"showfewer"_s) {
-            m_ui->captureInstructionLabel->setText(captureInstructions(false));
+            m_ui->captureInstructionLabel->setText(CaptureInstructions::text(false));
         } else {
             m_ui->kcfg_videoFilenameTemplate->insert(link);
         }
