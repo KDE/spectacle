@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 13:09+0200\n"
+"PO-Revision-Date: 2024-04-29 11:44+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -1721,18 +1721,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nem támogatott KWin képernyőképtípus metaadat: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Képernyőfelvétel megszakítva"
+msgstr "A képernyőfelvétel nem érhető el X11-en."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "A KWin képernyőátjátszás nem érhető el."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1747,6 +1745,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"A közvetítés azért zárult le, mert a célképernyő olyan módon változott, hogy "
+"megzavarta a a felvételt."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1755,6 +1755,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"A közvetítés azért zárult le, mert a célablak olyan módon változott, hogy "
+"megzavarta a a felvételt."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1763,6 +1765,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"A közvetítés azért zárult le, mert a célterületet tartalmazó képernyő olyan "
+"módon változott, hogy megzavarta a felvétel."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1905,12 +1909,10 @@ msgstr ""
 "Kattintson a felvétel befejezéséhez"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Hiba történt a képernyőkép készítésekor."
+msgstr "Hiba történt a képernyő rögzítésére tett kísérlet során."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format

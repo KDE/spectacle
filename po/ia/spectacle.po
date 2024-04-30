@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-25 19:15+0200\n"
+"PO-Revision-Date: 2024-04-29 15:40+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1757,18 +1757,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Metadata de typo de instantaneo de schermo de KWin non supportate: %1 "
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Registration de Schermo Cancellate"
+msgstr "Registration de Schermo non es disponibile con X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Screencasting de KWin non es disponibile."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1783,6 +1781,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le fluxo claudeva proque le schermo objectivo cambiava in un modo que "
+"conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1791,6 +1791,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le fluxo claudeva proque le fenestra objectivo cambiava in un modo que "
+"conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1799,6 +1801,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Le fluxo claudeva proque un schermo continente le region objectivo cambiava "
+"in un modo que conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1941,12 +1945,10 @@ msgstr ""
 "Clicca per terminar registration"
 
 #: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Un error occurreva durante que prendeva un captura de schermo."
+msgstr "Un error occurreva durante que on essayava registrar le schermo."
 
 #: src/SpectacleCore.cpp:670
 #, kde-format
