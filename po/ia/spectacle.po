@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-30 02:25+0000\n"
-"PO-Revision-Date: 2024-04-19 11:33+0200\n"
+"POT-Creation-Date: 2024-05-01 02:25+0000\n"
+"PO-Revision-Date: 2024-04-30 12:00+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1703,32 +1703,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Mal largessa per instantaneo de schermo de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Mal altessa per instantaneo de schermo de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Postea prender un instantaneo de schermo:"
+msgstr "Mal formato per instantaneo de schermo de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Non poteva aperi descriptorde file per leger instantaneo de schermo de KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() falleva per instantaneo de schermo de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1737,6 +1737,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Requesta de Captura de schermo fallite:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1745,26 +1747,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Information potentialmente relevante:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Metadata de typo de instantaneo de schermo de KWin non supportate: %1 "
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Registration de Schermo Cancellate"
+msgstr "Registration de Schermo non es disponibile con X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Screencasting de KWin non es disponibile."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1779,6 +1781,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le fluxo claudeva proque le schermo objectivo cambiava in un modo que "
+"conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1787,6 +1791,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le fluxo claudeva proque le fenestra objectivo cambiava in un modo que "
+"conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1795,6 +1801,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Le fluxo claudeva proque un schermo continente le region objectivo cambiava "
+"in un modo que conturbava le registration."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1920,14 +1928,13 @@ msgstr "Registra region rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Lancea Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:234
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#: src/SpectacleCore.cpp:236
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Lancea Spectacle sin prender un captura de schermo"
+msgstr "Un error occurreva durante que prendeva un captura de schermo."
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:258
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1937,20 +1944,19 @@ msgstr ""
 "Spectacle es registrante: %1\n"
 "Clicca per terminar registration"
 
-#: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#: src/SpectacleCore.cpp:272
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Lancea Spectacle sin prender un captura de schermo"
+msgstr "Un error occurreva durante que on essayava registrar le schermo."
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non es un valide modo per -record"
 
-#: src/SpectacleCore.cpp:906
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1959,24 +1965,24 @@ msgstr ""
 "Un captura de schermo ha essite salveguardate como '%1' a '%2' e le percurso "
 "del captura de schermo ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:910
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Un captura de schermo esseva salveguardate como '%1' a tu dossier de Photo."
 
-#: src/SpectacleCore.cpp:913
+#: src/SpectacleCore.cpp:915
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Un captura de schermo esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:917
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Un captura de schermo esseva salveguardate a tu tabuliero."
 
-#: src/SpectacleCore.cpp:922
+#: src/SpectacleCore.cpp:924
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1985,24 +1991,24 @@ msgstr ""
 "Un  registration ha essite salveguardate como '%1' a '%2' e le percurso del "
 "registration ha essite salveguardate a tu area de transferentia."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:926
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Un registration esseva salveguardate como '%1' a tu dossier de Videos."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Un registration esseva salveguardate como  '%1' a '%2'."
 
-#: src/SpectacleCore.cpp:937
+#: src/SpectacleCore.cpp:939
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperi"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:953
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-30 02:25+0000\n"
-"PO-Revision-Date: 2024-04-29 20:07+0300\n"
+"POT-Creation-Date: 2024-05-01 02:25+0000\n"
+"PO-Revision-Date: 2024-04-30 14:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -1756,18 +1756,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Непідтримувані метадані типу знімка KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Запис з екрана скасовано"
+msgstr "Запис з екрана є недоступним у X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Запис з екрана у KWin є недоступним."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1782,6 +1780,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Потік даних закрито, оскільки екран призначення було змінено у спосіб, який "
+"призводить до переривання запису."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1790,6 +1790,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Потік даних закрито, оскільки вікно призначення було змінено у спосіб, який "
+"призводить до переривання запису."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1798,6 +1800,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Потік даних закрито, оскільки екран, на якому міститься область призначення "
+"було змінено у спосіб, який призводить до переривання запису."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1922,13 +1926,13 @@ msgstr "Захопити прямокутну область"
 msgid "Launch Spectacle without capturing"
 msgstr "Запустити Spectacle без створення знімка"
 
-#: src/SpectacleCore.cpp:234
+#: src/SpectacleCore.cpp:236
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Під час спроби створення знімка сталася помилка."
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:258
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1938,21 +1942,19 @@ msgstr ""
 "Spectacle записує дані: %1\n"
 "Клацніть, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#: src/SpectacleCore.cpp:272
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Під час спроби створення знімка сталася помилка."
+msgstr "Під час спроби запису з екрана сталася помилка."
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:906
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1961,23 +1963,23 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:910
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:913
+#: src/SpectacleCore.cpp:915
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:917
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:922
+#: src/SpectacleCore.cpp:924
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1986,24 +1988,24 @@ msgstr ""
 "Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
 "у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:926
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:937
+#: src/SpectacleCore.cpp:939
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:953
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"

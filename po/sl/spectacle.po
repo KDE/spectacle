@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the spectacle package.
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2015, 2016, 2017, 2018.
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matjaž Jeran <matjaz.jeran@amis.net>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 # SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-30 02:25+0000\n"
-"PO-Revision-Date: 2024-04-25 16:15+0200\n"
+"POT-Creation-Date: 2024-05-01 02:25+0000\n"
+"PO-Revision-Date: 2024-04-30 06:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -1755,18 +1755,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nepodprti metapodatki vrste posnetka zaslona KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Snemanje zaslona preklicano"
+msgstr "Snemanje zaslona ni na voljo na X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin Screencasting ni na voljo."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1781,6 +1779,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Tok se je zaprl, ker se je ciljni zaslon spremenil na način, ki je motil "
+"snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1789,6 +1789,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Tok se je zaprl, ker se je ciljno okno spremenilo na način, ki je motil "
+"snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1797,6 +1799,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Tok se je zaprl, ker se je zaslon s ciljno regijo spremenil na način, ki je "
+"motil snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1924,13 +1928,13 @@ msgstr "Posnemi video pravokotnega območja"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:234
+#: src/SpectacleCore.cpp:236
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:258
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1940,21 +1944,19 @@ msgstr ""
 "Spectacle snema: %1\n"
 "Kliknite za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:270
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#: src/SpectacleCore.cpp:272
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
+msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:670
+#: src/SpectacleCore.cpp:672
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:906
+#: src/SpectacleCore.cpp:908
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1963,23 +1965,23 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:910
+#: src/SpectacleCore.cpp:912
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
 
-#: src/SpectacleCore.cpp:913
+#: src/SpectacleCore.cpp:915
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
 
-#: src/SpectacleCore.cpp:917
+#: src/SpectacleCore.cpp:919
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:922
+#: src/SpectacleCore.cpp:924
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1988,24 +1990,24 @@ msgstr ""
 "Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:926
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:928
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
 
-#: src/SpectacleCore.cpp:937
+#: src/SpectacleCore.cpp:939
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:953
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"
