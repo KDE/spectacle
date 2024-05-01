@@ -10,6 +10,8 @@
 #include "Config.h"
 #include "SpectacleCore.h"
 #include "Gui/ExportMenu.h"
+#include "Gui/HelpMenu.h"
+#include "Gui/OptionsMenu.h"
 
 #include <KUrlMimeData>
 #include <Kirigami/Platform/Units>
@@ -18,6 +20,7 @@
 #include <QClipboard>
 #include <QDrag>
 #include <QFile>
+#include <QMenuBar>
 #include <QMimeData>
 
 using namespace Qt::StringLiterals;
@@ -34,6 +37,16 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     m_context->setContextObject(this); // Must be before QML is initialized
 
     connect(ExportMenu::instance(), &ExportMenu::imageShared, this, &ViewerWindow::showImageSharedMessage);
+
+    static std::unique_ptr<QMenuBar> globalMenuBar;
+    if (!globalMenuBar) {
+        globalMenuBar = std::make_unique<QMenuBar>();
+        globalMenuBar->setNativeMenuBar(true);
+        globalMenuBar->addMenu(ExportMenu::instance());
+        globalMenuBar->addMenu(ExportMenu::instance());
+        globalMenuBar->addMenu(OptionsMenu::instance());
+        globalMenuBar->addMenu(HelpMenu::instance());
+    }
 
     // set up QML
     setResizeMode(QQuickView::SizeRootObjectToView);
