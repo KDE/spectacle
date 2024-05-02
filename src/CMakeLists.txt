@@ -62,9 +62,6 @@ add_executable(spectacle
     Platforms/screencasting.cpp
 )
 
-# exceptions are needed for code using ZXing
-kde_source_files_enable_exceptions(ExportManager.cpp)
-
 if(XCB_FOUND)
     target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
 
@@ -120,10 +117,10 @@ target_link_libraries(spectacle PRIVATE
     KF6::GuiAddons
     KF6::KirigamiPlatform
     KF6::StatusNotifierItem
+    KF6::PrisonScanner
     K::KPipeWireRecord
     Wayland::Client
     LayerShellQt::Interface
-    ZXing::Core
     ${OpenCV_LIBRARIES}
 )
 

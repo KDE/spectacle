@@ -9,9 +9,6 @@ SET(FILENAME_TEST_SRCS
     ../src/Platforms/VideoPlatform.cpp
 )
 
-# exceptions are needed for code using ZXing
-kde_source_files_enable_exceptions(../src/ExportManager.cpp)
-
 ecm_qt_declare_logging_category(FILENAME_TEST_SRCS
     HEADER spectacle_debug.h
     IDENTIFIER SPECTACLE_LOG
@@ -26,5 +23,5 @@ ecm_add_test(
     ${FILENAME_TEST_SRCS}
     TEST_NAME "filename_test"
     LINK_LIBRARIES  Qt::Test
-        Qt::PrintSupport KF6::I18n KF6::ConfigCore KF6::GlobalAccel KF6::KIOCore KF6::WindowSystem KF6::XmlGui KF6::GuiAddons ZXing::Core
+        Qt::PrintSupport KF6::I18n KF6::ConfigCore KF6::GlobalAccel KF6::KIOCore KF6::WindowSystem KF6::XmlGui KF6::GuiAddons KF6::PrisonScanner
 )

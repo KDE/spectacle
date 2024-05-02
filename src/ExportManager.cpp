@@ -37,7 +37,8 @@
 #include <KRecentDocument>
 #include <KSharedConfig>
 #include <KSystemClipboard>
-#include <ZXing/ReadBarcode.h>
+#include <Prison/ImageScanner>
+#include <Prison/ScanResult>
 
 using namespace Qt::StringLiterals;
 
@@ -715,21 +716,12 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 void ExportManager::scanQRCode()
 {
     auto scan = [this] {
-        const auto image = ExportManager::instance()->image();
-        const auto zximage = ZXing::ImageView(image.constBits(), image.width(), image.height(), ZXing::ImageFormat::XRGB);
-        const auto result = ZXing::ReadBarcode(zximage, {});
+        const auto result = Prison::ImageScanner::scan(ExportManager::instance()->image());
 
-        if (result.isValid()) {
-            QVariant content;
-            if (result.contentType() == ZXing::ContentType::Text) {
-                content = QString::fromStdString(result.text());
-            } else {
-                QByteArray b;
-                b.resize(result.bytes().size());
-                std::copy(result.bytes().begin(), result.bytes().end(), b.begin());
-                content = b;
-            }
-            Q_EMIT qrCodeScanned(content);
+        if (result.hasText()) {
+            Q_EMIT qrCodeScanned(result.text());
+        } else if (result.hasBinaryData()) {
+            Q_EMIT qrCodeScanned(result.binaryData());
         }
     };
     auto future = QtConcurrent::run(scan);

@@ -12,7 +12,7 @@ cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 set(QT_MIN_VERSION "6.6.0")
-set(KF_MIN_VERSION "5.240.0")
+set(KF_MIN_VERSION "6.3.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -73,13 +73,13 @@ find_package(
         GuiAddons
         KirigamiPlatform
         StatusNotifierItem
+        Prison
 )
 
 find_package(Wayland REQUIRED COMPONENTS Client)
 find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
-find_package(ZXing REQUIRED)
 find_package(OpenCV REQUIRED core imgproc)
 
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
