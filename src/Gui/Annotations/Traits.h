@@ -97,7 +97,7 @@ public:
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
-    QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+    QImage image(const std::function<QImage()> &getImage, QRectF rect, qreal dpr) const;
 
     bool operator==(const Blur &other) const = default;
 
@@ -121,7 +121,7 @@ public:
     // `getImage` should be the function used to generate the original image with no effects.
     // `rect` should be the section of the document you want to render over .
     // `dpr` should be the devicePixelRatio of the original image.
-    QImage image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const;
+    QImage image(const std::function<QImage()> &getImage, QRectF rect, qreal dpr) const;
 
     bool operator==(const Pixelate &other) const = default;
 

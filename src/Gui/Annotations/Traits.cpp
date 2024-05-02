@@ -75,7 +75,7 @@ void Traits::ImageEffects::Blur::setStrength(qreal strength)
     m_backingStoreCache = {};
 }
 
-QImage Traits::ImageEffects::Blur::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
+QImage Traits::ImageEffects::Blur::image(const std::function<QImage()> &getImage, QRectF rect, qreal dpr) const
 {
     if ((m_backingStoreCache.isNull() //
          || m_backingStoreCache.devicePixelRatio() != dpr //
@@ -125,7 +125,7 @@ void Traits::ImageEffects::Pixelate::setStrength(qreal strength)
     m_backingStoreCache = {};
 }
 
-QImage Traits::ImageEffects::Pixelate::image(std::function<QImage()> getImage, QRectF rect, qreal dpr) const
+QImage Traits::ImageEffects::Pixelate::image(const std::function<QImage()> &getImage, QRectF rect, qreal dpr) const
 {
     if ((m_backingStoreCache.isNull() //
          || m_backingStoreCache.devicePixelRatio() != dpr //
