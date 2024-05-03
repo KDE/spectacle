@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-01 02:25+0000\n"
-"PO-Revision-Date: 2024-04-25 07:12+0200\n"
+"PO-Revision-Date: 2024-05-03 03:44+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1724,18 +1724,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "მხარდაუჭერელი KWin-ის ეკრანის ანაბეჭდის ტიპის მეტამონაცემები: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "ეკრანის ჩაწერა გაუქმდა"
+msgstr "ეკრანის ჩაწერა ხელმიუწვდომელია X11-ზე."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1750,6 +1748,7 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"ნაკადი დაიხურა, რადგან სამიზნე ეკრანი ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1758,6 +1757,7 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"ნაკადი დაიხურა, რადგან სამიზნე ფანჯარა ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1766,6 +1766,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"ნაკადი დაიხურა, რადგან ეკრანი, რომელიც სამიზნე ალაგს შეიცავს, ისე შეიცვალა, "
+"რომ ჩაწერა შეწყვიტა."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1907,12 +1909,10 @@ msgstr ""
 "დააწკაპუნეთ ჩაწერის დასასრულებლად"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "შეცდომა ეკრანის ანაბეჭდის აღებისას."
+msgstr "შეცდომა ეკრანის ჩაწერის მცდელობისას."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format

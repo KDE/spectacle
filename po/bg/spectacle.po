@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-01 02:25+0000\n"
-"PO-Revision-Date: 2024-04-29 08:30+0200\n"
+"PO-Revision-Date: 2024-05-02 07:53+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1763,18 +1763,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Неподдържан вид на метаданните за екранна снимка на KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Записването на екрана е отменено"
+msgstr "Записването на екрана не е налично за X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Споделянето на екрана на KWin не е налично."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1789,6 +1787,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Поточното предаване се затвори, защото екранът, съдържащ целевата област, се "
+"промени по начин, който наруши записа."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1797,6 +1797,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Поточното предаване се затвори, защото прозорецът, съдържащ целевата област, "
+"се промени по начин, който наруши записа."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1805,6 +1807,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Поточното предаване се затвори, защото екран, съдържащ целевата област, се "
+"промени по начин, който наруши записа."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1949,12 +1953,10 @@ msgstr ""
 "Кликнете, за да завършите записването"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "По време на заснемането възникна грешка."
+msgstr "По време на заснемането на екрана възникна грешка."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format

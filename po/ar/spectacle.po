@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-01 02:25+0000\n"
-"PO-Revision-Date: 2024-04-07 11:55+0400\n"
+"PO-Revision-Date: 2024-05-02 11:04+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -300,13 +300,13 @@ msgstr "لون التعبئة"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "القوّة:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "قوة التأثير."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -1359,16 +1359,15 @@ msgstr "لون الملء لأداة الأرقام"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "أخر منطقة مستعملة حددها المستخدم"
+msgstr "قوة تأثير التمويه."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "قوة تأثير البكسلات."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1679,32 +1678,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "عرض غير صحيح للقطة شاشة كوين: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "ارتفاع غير صحيح للقطة شاشة كوين: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "بعد أخذ لقطة:"
+msgstr "تنسيق غير صحيح للقطة شاشة كوين: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "تعذر فتح واصف الملف لقراءة لقطة شاشة كوين."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "فشل Pipe2() في لقطة شاشة كوين: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1713,6 +1711,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"فشل طلب لقطة شاشة كوين:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1721,26 +1721,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"معلومات ذات صلة محتملة:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "البيانات التعريفية لنوع لقطة شاشة كوين غير مدعومة: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "ألغي تسجيل شاشة"
+msgstr "تسجيل الشاشة غير متاح على أكس11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "بث كوين غير متوفر."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1754,7 +1754,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "أغلق البث لأن الشاشة المستهدفة تغيرت بطريقة أدت إلى تعطيل التسجيل."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1762,7 +1762,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "أغلق البث لأن النافذة المستهدفة تغيرت بطريقة أدت إلى تعطيل التسجيل."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1771,6 +1771,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"أغلق البث لأن الشاشة التي تحوي المنطقة المستهدفة تغيرت بطريقة أدت إلى تعطيل "
+"التسجيل."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1895,11 +1897,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "شغل لاقط الشاشة بدون أخذ صورة"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "شغل لاقط الشاشة بدون أخذ صورة"
+msgstr "حدث خطأ أثناء التقاط لقطة الشاشة."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1912,11 +1913,10 @@ msgstr ""
 "انقر هنا لإنهاء التسجيل"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "شغل لاقط الشاشة بدون أخذ صورة"
+msgstr "حدث خطأ أثناء محاولة تسجيل الشاشة."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
