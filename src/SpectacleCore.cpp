@@ -34,6 +34,7 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
+#include <KStatusNotifierItem>
 #include <KWindowSystem>
 #include <KX11Extras>
 #include <LayerShellQt/Shell>
@@ -54,7 +55,6 @@
 #include <QQmlEngine>
 #include <QScopedPointer>
 #include <QScreen>
-#include <QSystemTrayIcon>
 #include <QTimer>
 #include <QtMath>
 #include <qobject.h>
@@ -63,7 +63,7 @@
 using namespace Qt::StringLiterals;
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
-static std::unique_ptr<QSystemTrayIcon> s_systemTrayIcon;
+static std::unique_ptr<KStatusNotifierItem> s_systemTrayIcon;
 
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
@@ -237,25 +237,87 @@ SpectacleCore::SpectacleCore(QObject *parent)
         onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed, &ViewerWindow::showScreenshotFailedMessage);
     });
 
-    s_systemTrayIcon = std::make_unique<QSystemTrayIcon>(QIcon::fromTheme(u"media-record-symbolic"_s));
-    auto systemTrayIcon = s_systemTrayIcon.get();
-    connect(systemTrayIcon, &QSystemTrayIcon::activated, systemTrayIcon, [](auto reason) {
-        if (reason == QSystemTrayIcon::Trigger) {
-            SpectacleCore::instance()->finishRecording();
-        }
-    });
-
     auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged,
-            systemTrayIcon, [this](bool isRecording){
-        s_systemTrayIcon->setVisible(isRecording);
-        if (!isRecording) {
+    connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording){
+        if (isRecording) {
+            static const auto recordingIconName = u"media-record"_s;
+            static const auto symbolicRecordingIconName = u"media-record-symbolic"_s;
+            s_systemTrayIcon = std::make_unique<KStatusNotifierItem>();
+            s_systemTrayIcon->setStatus(KStatusNotifierItem::Active);
+            s_systemTrayIcon->setCategory(KStatusNotifierItem::SystemServices);
+            s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for recording tray icon", //
+                                                    "Spectacle is Recording"));
+            s_systemTrayIcon->setStandardActionsEnabled(false);
+            connect(s_systemTrayIcon.get(), &KStatusNotifierItem::activateRequested, this, [] {
+                SpectacleCore::instance()->finishRecording();
+            });
+            const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
+            const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
+            s_systemTrayIcon->showMessage(messageTitle, messageBody, recordingIconName, 4000);
+            // We need some kind of size that will probably look good enough in most cases.
+            // Plasma's systray allows scaling icons with the panel thickness.
+            // That makes determining a likely max size a bit difficult, but most people probably
+            // won't need more than 64x64, so let's go with that.
+            const auto iconPixmap = QIcon::fromTheme(symbolicRecordingIconName).pixmap({64, 64}, qGuiApp->devicePixelRatio());
+            static const auto scaledIcon = [](const QPixmap &iconPixmap, qreal scale) {
+                if (scale == 1) {
+                    return QIcon{iconPixmap};
+                }
+                const auto size = iconPixmap.size();
+                QPixmap pixmap(size);
+                pixmap.fill(Qt::transparent);
+                QPainter p(&pixmap);
+                // Should be OK as long as we aren't using less than 0.5x scale.
+                p.setRenderHint(QPainter::SmoothPixmapTransform);
+                const QSizeF scaledSize = size.toSizeF() * scale;
+                const QPointF scaledPos((size.width() - scaledSize.width()) / 2.0, //
+                                        (size.height() - scaledSize.height()) / 2.0);
+                p.drawPixmap({scaledPos, scaledSize}, iconPixmap, iconPixmap.rect());
+                p.end();
+                return QIcon{pixmap};
+            };
+
+            const auto animation = new QVariantAnimation(this);
+            // I'm aware that QAbstractAnimation has API for loops, but I found it simpler to do it
+            // this way since I only have to consider QVariantAnimation::valueChanged.
+            static constexpr qreal loopCount = 5;
+            animation->setStartValue(0.0);
+            animation->setEndValue(loopCount);
+            animation->setDuration(loopCount * 400);
+            animation->setCurrentTime(0);
+            animation->start(QAbstractAnimation::DeleteWhenStopped);
+            auto onValueChanged = [animation, iconPixmap](const QVariant &value) {
+                const auto progress = value.toReal();
+                if (progress < loopCount) {
+                    const int currentLoop = fmod(progress, loopCount);
+                    const auto loopProgress = fmod(progress, 1.0);
+                    static constexpr auto minScale = 0.5;
+                    static constexpr auto maxScale = 1.0;
+                    // I'm aware QAbstractAnimation has API for direction, but this was simpler.
+                    const auto directionProgress = currentLoop % 2 ? 1 - loopProgress : loopProgress;
+                    const auto scale = directionProgress * (maxScale - minScale) + minScale;
+                    s_systemTrayIcon->setIconByPixmap(scaledIcon(iconPixmap, scale));
+                } else {
+                    animation->stop();
+                    s_systemTrayIcon->setIconByName(symbolicRecordingIconName);
+                }
+            };
+            QObject::connect(animation, &QVariantAnimation::valueChanged, this, onValueChanged, Qt::QueuedConnection);
+        } else {
+            s_systemTrayIcon.reset();
             m_captureWindows.clear();
         }
     });
     connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
         Q_EMIT recordedTimeChanged();
-        s_systemTrayIcon->setToolTip(i18nc("@info:tooltip", "Spectacle is recording: %1\nClick to finish recording", recordedTime()));
+        if (!s_systemTrayIcon) {
+            return;
+        }
+        auto subtitle = i18nc("@info:tooltip subtitle for recording tray icon", //
+                               "Time recorded: %1\n" //
+                               "Click to finish recording",
+                              recordedTime());
+        s_systemTrayIcon->setToolTipSubTitle(subtitle);
     });
     connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
         // Always try to save. Needed to move recordings out of temp dir.

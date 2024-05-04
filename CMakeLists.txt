@@ -72,6 +72,7 @@ find_package(
         XmlGui
         GuiAddons
         KirigamiPlatform
+        StatusNotifierItem
 )
 
 find_package(Wayland REQUIRED COMPONENTS Client)
