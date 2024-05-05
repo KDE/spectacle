@@ -15,6 +15,7 @@
 #include <QFileDialog>
 #include <QImageWriter>
 #include <QLocale>
+#include <QLockFile>
 #include <QMimeData>
 #include <QMimeDatabase>
 #include <QPainter>
@@ -177,19 +178,33 @@ QUrl ExportManager::tempVideoUrl()
     return QUrl::fromLocalFile(filepath);
 }
 
+void removeUnlockedDirs(const QStringList &oldDirs)
+{
+    for (const auto &dirStr : oldDirs) {
+        QDir dir(QDir::tempPath() + u'/' + dirStr);
+        QLockFile lockFile(dir.filePath(u"lockfile"_s));
+        if (dir.exists() && lockFile.tryLock()) {
+            lockFile.unlock();
+            dir.removeRecursively();
+        }
+    }
+}
+
 const QTemporaryDir *ExportManager::temporaryDir()
 {
     if (!m_tempDir) {
         // Cleanup Spectacle's temp dirs after startup instead of while quitting.
         const auto filters = QDir::Filter::Dirs | QDir::NoDotAndDotDot | QDir::CaseSensitive | QDir::NoSymLinks;
+        // Get old dirs before the async stuff to avoid race conditions when making the new dir.
         const auto oldDirs = QDir::temp().entryList({u"Spectacle.??????"_s}, filters);
-        QList<QUrl> oldUrls;
-        for (const auto &dir : oldDirs) {
-            oldUrls << QUrl::fromLocalFile(QDir::tempPath() + u'/' + dir);
-        }
-        KIO::del(oldUrls, KIO::HideProgressInfo)->start();
         m_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
         m_tempDir->setAutoRemove(false);
+        if (m_tempDir->isValid()) {
+            m_tempDirLock = std::make_unique<QLockFile>(m_tempDir->filePath(u"lockfile"_s));
+            m_tempDirLock->setStaleLockTime(0);
+            m_tempDirLock->tryLock();
+        }
+        auto future = QtConcurrent::run(removeUnlockedDirs, oldDirs);
     }
     return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
 }

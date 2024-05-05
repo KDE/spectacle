@@ -8,6 +8,7 @@
 #include "settings.h"
 #include <KLocalizedString>
 #include <QDateTime>
+class QLockFile;
 class QIODevice;
 #include <QMap>
 #include <QObject>
@@ -166,6 +167,7 @@ private:
     QImage m_saveImage;
     QDateTime m_timestamp;
     QUrl m_tempFile;
+    std::unique_ptr<QLockFile> m_tempDirLock;
     std::unique_ptr<QTemporaryDir> m_tempDir;
     QList<QUrl> m_usedTempFileNames;
     QString m_windowTitle;
