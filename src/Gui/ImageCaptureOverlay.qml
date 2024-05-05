@@ -598,4 +598,16 @@ MouseArea {
         sequences: [StandardKey.Preferences]
         onActivated: contextWindow.showPreferencesDialog()
     }
+
+    Connections {
+        target: contextWindow
+        function onVisibilityChanged(visibility) {
+            if (visibility !== Window.Hidden && visibility !== Window.Minimized) {
+                contextWindow.raise()
+                if (root.containsMouse) {
+                    contextWindow.requestActivate()
+                }
+            }
+        }
+    }
 }
