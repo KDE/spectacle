@@ -228,4 +228,16 @@ MouseArea {
             }
         }
     }
+
+    Connections {
+        target: contextWindow
+        function onVisibilityChanged(visibility) {
+            if (visibility !== Window.Hidden && visibility !== Minimized) {
+                contextWindow.raise()
+                if (root.containsMouse) {
+                    contextWindow.requestActivate()
+                }
+            }
+        }
+    }
 }
