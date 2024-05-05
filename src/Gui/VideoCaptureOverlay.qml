@@ -232,7 +232,7 @@ MouseArea {
     Connections {
         target: contextWindow
         function onVisibilityChanged(visibility) {
-            if (visibility !== Window.Hidden && visibility !== Minimized) {
+            if (visibility !== Window.Hidden && visibility !== Window.Minimized) {
                 contextWindow.raise()
                 if (root.containsMouse) {
                     contextWindow.requestActivate()
