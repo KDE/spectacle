@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-01 00:37+0000\n"
+"POT-Creation-Date: 2024-05-06 00:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -178,12 +178,12 @@ msgstr "在后台模式下，屏幕截图中不包含窗口阴影"
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:380
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter 无法写入图像：%1"
 
-#: src/ExportManager.cpp:380
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -193,12 +193,12 @@ msgstr ""
 "无法保存截图，因为无法创建目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:390
+#: src/ExportManager.cpp:405
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "无法保存屏幕截图。写入文件时出错。"
 
-#: src/ExportManager.cpp:410
+#: src/ExportManager.cpp:425
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,47 +208,47 @@ msgstr ""
 "无法保存截图，因为无法创建远程目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:421 src/ExportManager.cpp:469
+#: src/ExportManager.cpp:436 src/ExportManager.cpp:484
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "无法保存屏幕截图。写入本地临时文件时出错。"
 
-#: src/ExportManager.cpp:429
+#: src/ExportManager.cpp:444
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "无法保存图像。无法上传至远程地址。"
 
-#: src/ExportManager.cpp:476
+#: src/ExportManager.cpp:491
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "无法保存屏幕截图。该文件名无效。"
 
-#: src/ExportManager.cpp:520
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "无法保存空白截屏图像。"
 
-#: src/ExportManager.cpp:659
+#: src/ExportManager.cpp:674
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "导出视频失败：临时文件 URL 必须是现有的本地文件"
 
-#: src/ExportManager.cpp:666
+#: src/ExportManager.cpp:681
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的有效 URL"
 
-#: src/ExportManager.cpp:741
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "无法保存录像。无法移动文件到位置：%1"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:784
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "无法打印。打印机初始化失败。"

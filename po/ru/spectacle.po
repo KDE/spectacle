@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-01 00:37+0000\n"
+"POT-Creation-Date: 2024-05-06 00:37+0000\n"
 "PO-Revision-Date: 2024-02-27 21:42+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -214,12 +214,12 @@ msgstr "В фоновом режиме, не включая тень окна"
 msgid "Open and edit existing screenshot file"
 msgstr "Открыть и отредактировать существующий файл снимка экрана"
 
-#: src/ExportManager.cpp:365
+#: src/ExportManager.cpp:380
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Ошибка записи изображения с помощью QImageWriter: %1"
 
-#: src/ExportManager.cpp:380
+#: src/ExportManager.cpp:395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -229,12 +229,12 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога: <nl/"
 "><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:390
+#: src/ExportManager.cpp:405
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не удалось сохранить снимок экрана. Ошибка при записи файла."
 
-#: src/ExportManager.cpp:410
+#: src/ExportManager.cpp:425
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -244,30 +244,30 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога в сетевой "
 "файловой системе: <nl/><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:421 src/ExportManager.cpp:469
+#: src/ExportManager.cpp:436 src/ExportManager.cpp:484
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не удалось сохранить снимок экрана. Ошибка при записи временного файла."
 
-#: src/ExportManager.cpp:429
+#: src/ExportManager.cpp:444
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Ошибка при сохранении изображения. Не удалось загрузить файл на удалённый "
 "адрес."
 
-#: src/ExportManager.cpp:476
+#: src/ExportManager.cpp:491
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Не удалось сохранить снимок экрана. Недопустимое имя файла."
 
-#: src/ExportManager.cpp:520
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Невозможно сохранить пустой снимок экрана."
 
-#: src/ExportManager.cpp:659
+#: src/ExportManager.cpp:674
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -276,7 +276,7 @@ msgstr ""
 "Не удалось экспортировать видео: адресом временного файла должен быть "
 "существующий временный файл"
 
-#: src/ExportManager.cpp:666
+#: src/ExportManager.cpp:681
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -285,14 +285,14 @@ msgstr ""
 "Не удалось экспортировать видео: файл вывода должен быть корректным URL-"
 "адресом и содержать имя файла"
 
-#: src/ExportManager.cpp:741
+#: src/ExportManager.cpp:756
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ошибка при сохранении записи: не удалось переместить файл в расположение «%1»"
 
-#: src/ExportManager.cpp:769
+#: src/ExportManager.cpp:784
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ошибка печати: не удалось инициализировать принтер."
