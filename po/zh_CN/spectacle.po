@@ -1641,32 +1641,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 屏幕截图宽度错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 屏幕截图高度错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "截图之后："
+msgstr "KWin 屏幕截图格式错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "无法为读取 KWin 屏幕截图打开文件描述符。"
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 屏幕截图的 pipe2() 执行失败：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1675,6 +1674,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin 屏幕截图请求失败：\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1683,26 +1684,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"可能相关的信息：\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "不支持的 KWin 屏幕截图类型元数据：%1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "屏幕录像已取消"
+msgstr "屏幕录像在 X11 环境下不可用。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin 屏幕录像不可用。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1716,7 +1717,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "视频流已关闭，因为目标屏幕发生的更改干扰了屏幕录像。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1724,7 +1725,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "视频流已关闭，因为目标窗口发生的更改干扰了屏幕录像。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1732,7 +1733,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
-msgstr ""
+msgstr "视频流已关闭，因为目标区域所在屏幕发生的更改中断了屏幕录像。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1857,11 +1858,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "启动 Spectacle，但不截图"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "启动 Spectacle，但不截图"
+msgstr "尝试进行屏幕截图时发生错误。"
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1874,11 +1874,10 @@ msgstr ""
 "点击以结束录像"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "启动 Spectacle，但不截图"
+msgstr "尝试进行屏幕录像时发生错误。"
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
@@ -1949,14 +1948,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid ""
-#~ "Could not take a screenshot. Please report this bug here: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
-#~ "spectacle bug</a>"
-#~ msgstr ""
-#~ "无法进行截图。请 <a href=\"https://bugs.kde.org/enter_bug.cgi?"
-#~ "product=Spectacle\">向 Spectacle 项目报告程序缺陷</a>"
-
-#~ msgid "Screenshot capture canceled or failed"
-#~ msgstr "屏幕截图已取消或失败"
