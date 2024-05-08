@@ -49,12 +49,14 @@
 #include <QDrag>
 #include <QKeySequence>
 #include <QMimeData>
+#include <QMovie>
 #include <QProcess>
 #include <QQmlComponent>
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QScopedPointer>
 #include <QScreen>
+#include <QSystemTrayIcon>
 #include <QTimer>
 #include <QtMath>
 #include <qobject.h>
@@ -238,10 +240,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording){
+    connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording) {
         if (isRecording) {
-            static const auto recordingIconName = u"media-record"_s;
-            static const auto symbolicRecordingIconName = u"media-record-symbolic"_s;
+            static const auto recordingIcon = u":/icons/256-status-media-recording.webp"_s;
+            static const auto recordingStartedIcon = u":/icons/256-status-media-recording-started.webp"_s;
+            static const auto recordingPulseIcon = u":/icons/256-status-media-recording-pulse.webp"_s;
             s_systemTrayIcon = std::make_unique<KStatusNotifierItem>();
             s_systemTrayIcon->setStatus(KStatusNotifierItem::Active);
             s_systemTrayIcon->setCategory(KStatusNotifierItem::SystemServices);
@@ -253,56 +256,37 @@ SpectacleCore::SpectacleCore(QObject *parent)
             });
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
             const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
-            s_systemTrayIcon->showMessage(messageTitle, messageBody, recordingIconName, 4000);
-            // We need some kind of size that will probably look good enough in most cases.
-            // Plasma's systray allows scaling icons with the panel thickness.
-            // That makes determining a likely max size a bit difficult, but most people probably
-            // won't need more than 64x64, so let's go with that.
-            const auto iconPixmap = QIcon::fromTheme(symbolicRecordingIconName).pixmap({64, 64}, qGuiApp->devicePixelRatio());
-            static const auto scaledIcon = [](const QPixmap &iconPixmap, qreal scale) {
-                if (scale == 1) {
-                    return QIcon{iconPixmap};
-                }
-                const auto size = iconPixmap.size();
-                QPixmap pixmap(size);
-                pixmap.fill(Qt::transparent);
-                QPainter p(&pixmap);
-                // Should be OK as long as we aren't using less than 0.5x scale.
-                p.setRenderHint(QPainter::SmoothPixmapTransform);
-                const QSizeF scaledSize = size.toSizeF() * scale;
-                const QPointF scaledPos((size.width() - scaledSize.width()) / 2.0, //
-                                        (size.height() - scaledSize.height()) / 2.0);
-                p.drawPixmap({scaledPos, scaledSize}, iconPixmap, iconPixmap.rect());
-                p.end();
-                return QIcon{pixmap};
-            };
-
-            const auto animation = new QVariantAnimation(this);
-            // I'm aware that QAbstractAnimation has API for loops, but I found it simpler to do it
-            // this way since I only have to consider QVariantAnimation::valueChanged.
-            static constexpr qreal loopCount = 5;
-            animation->setStartValue(0.0);
-            animation->setEndValue(loopCount);
-            animation->setDuration(loopCount * 400);
-            animation->setCurrentTime(0);
-            animation->start(QAbstractAnimation::DeleteWhenStopped);
-            auto onValueChanged = [animation, iconPixmap](const QVariant &value) {
-                const auto progress = value.toReal();
-                if (progress < loopCount) {
-                    const int currentLoop = fmod(progress, loopCount);
-                    const auto loopProgress = fmod(progress, 1.0);
-                    static constexpr auto minScale = 0.5;
-                    static constexpr auto maxScale = 1.0;
-                    // I'm aware QAbstractAnimation has API for direction, but this was simpler.
-                    const auto directionProgress = currentLoop % 2 ? 1 - loopProgress : loopProgress;
-                    const auto scale = directionProgress * (maxScale - minScale) + minScale;
-                    s_systemTrayIcon->setIconByPixmap(scaledIcon(iconPixmap, scale));
-                } else {
+            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media-record"_s, 4000);
+            static const auto initPulseAnimation = [] {
+                auto animation = new QMovie(recordingPulseIcon, {}, s_systemTrayIcon.get());
+                animation->setCacheMode(QMovie::CacheAll);
+                connect(animation, &QMovie::frameChanged, animation, [animation] {
+                    s_systemTrayIcon->setIconByPixmap(animation->currentPixmap());
+                });
+                // We periodically switch to a static image instead of having a period in the
+                // animation where nothing happens to be a bit more efficient.
+                // NOTE: If QMovie::finished isn't working,
+                // you probably edited the icon and forgot to set the loop count.
+                connect(animation, &QMovie::finished, animation, [animation] {
                     animation->stop();
-                    s_systemTrayIcon->setIconByName(symbolicRecordingIconName);
-                }
+                    static const auto recordingPixmap = QPixmap{recordingIcon};
+                    s_systemTrayIcon->setIconByPixmap(recordingPixmap);
+                    const auto animationDuration = animation->nextFrameDelay() * animation->frameCount() / (animation->speed() / 100.0);
+                    QTimer::singleShot(animationDuration / 2, animation, &QMovie::start);
+                });
+                animation->start();
             };
-            QObject::connect(animation, &QVariantAnimation::valueChanged, this, onValueChanged, Qt::QueuedConnection);
+            auto startedAnimation = new QMovie(recordingStartedIcon, {}, s_systemTrayIcon.get());
+            startedAnimation->setCacheMode(QMovie::CacheAll);
+            connect(startedAnimation, &QMovie::frameChanged, startedAnimation, [startedAnimation] {
+                s_systemTrayIcon->setIconByPixmap(startedAnimation->currentPixmap());
+            });
+            connect(startedAnimation, &QMovie::finished, startedAnimation, [startedAnimation] {
+                startedAnimation->stop();
+                startedAnimation->deleteLater();
+                initPulseAnimation();
+            });
+            startedAnimation->start();
         } else {
             s_systemTrayIcon.reset();
             m_captureWindows.clear();
@@ -314,8 +298,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
             return;
         }
         auto subtitle = i18nc("@info:tooltip subtitle for recording tray icon", //
-                               "Time recorded: %1\n" //
-                               "Click to finish recording",
+                              "Time recorded: %1\n" //
+                              "Click to finish recording",
                               recordedTime());
         s_systemTrayIcon->setToolTipSubTitle(subtitle);
     });
