@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-06 00:37+0000\n"
-"PO-Revision-Date: 2024-04-26 12:20+0200\n"
+"PO-Revision-Date: 2024-05-06 16:35+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -845,8 +845,8 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
-"Cliquez et faites glisser pour faire une sélection.  \n"
-"Double-cliquez sur la sélection pour accepter et rogner.  \n"
+"Cliquez et faites glisser pour faire une sélection. \n"
+"Double-cliquez sur la sélection pour accepter et rogner. \n"
 "Faites un clic droit pour effacer la sélection."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
@@ -1729,32 +1729,33 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Largeur incorrecte pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Hauteur incorrecte pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Après avoir pris une copie d'écran :"
+msgstr "Format incorrect pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Impossible d'ouvrir le descripteur de fichier pour lire la copie d'écran de "
+"KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "Échec de la fonction « pipe2() » pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1763,6 +1764,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Échec de la demande de capture d'écran de KWin :\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1771,26 +1774,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Informations potentiellement pertinentes : \n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Métadonnées de type de copie d'écran de KWin non prises en charge : %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Capture d'écran annulée"
+msgstr "L'enregistrement d'écran est non disponible sous X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "La diffusion d'écran avec KWin n'est pas disponible."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1806,6 +1809,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le flux s'est fermé parce que l'écran cible a changé d'une manière qui a "
+"perturbé l'enregistrement."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1814,6 +1819,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Le flux s'est fermé parce que la fenêtre cible a changé d'une manière qui a "
+"perturbé l'enregistrement."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1822,6 +1829,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Le flux s'est fermé car un écran contenant la région cible a changé d'une "
+"manière qui a perturbé l'enregistrement."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1952,11 +1961,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Lancer Spectacle sans copie d'écran"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Lancer Spectacle sans réaliser de copie d'écran"
+msgstr "Une erreur est survenue durant la réalisation d'une copie d'écran."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1969,11 +1977,11 @@ msgstr ""
 "Veuillez cliquer pour terminer la copie"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Lancer Spectacle sans réaliser de copie d'écran"
+msgstr ""
+"Une erreur est survenue lors de la tentative d'enregistrement de l'écran."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format

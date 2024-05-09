@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-06 00:37+0000\n"
-"PO-Revision-Date: 2024-04-23 00:17+0300\n"
+"PO-Revision-Date: 2024-05-08 21:37+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1695,32 +1695,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Blogas KWin ekrano kopijos plotis: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Blogas KWin ekrano kopijos aukštis: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Padarius ekrano kopiją:"
+msgstr "Blogas KWin ekrano kopijos formatas: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Nepavyko atverti failo deskriptoriaus, skirto KWin ekrano kopijos skaitymui."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin ekrano kopijos pipe2() patyrė nesėkmę: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1729,6 +1729,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin ekrano kopijos užklausa patyrė nesėkmę:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1737,26 +1739,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Galimai susijusi informacija:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Nepalaikomi KWin ekrano kopijos tipo metaduomenys: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Ekrano įrašo atsisakyta"
+msgstr "Ekrano filmavimas neprieinamas naudojant X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin ekrano įrašymas yra neprieinamas."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1771,6 +1773,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Srautas užsivėrė, nes paskirties ekranas pasikeitė taip, kad sutrikdė "
+"filmavimą."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1779,6 +1783,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Srautas užsivėrė, nes paskirties langas pasikeitė taip, kad sutrikdė "
+"filmavimą."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1787,6 +1793,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Srautas užsivėrė, nes ekranas, kuriame yra paskirties sritis, pasikeitė "
+"taip, kad sutrikdė filmavimą."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1913,11 +1921,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Paleisti Spectacle nefotografuojant"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Paleisti Spectacle nedarant ekrano kopijos"
+msgstr "Įvyko klaida darant ekrano kopiją."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1930,11 +1937,10 @@ msgstr ""
 "Spustelėkite norėdami užbagti filmavimą"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Paleisti Spectacle nedarant ekrano kopijos"
+msgstr "Įvyko klaida bandant filmuoti ekraną."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
