@@ -455,7 +455,7 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
         || event->matches(QKeySequence::Cancel))
         // We need to check if these were pressed previously or else pressing escape
         // in a dialog will quit spectacle when you release the escape key.
-        && m_pressedKeys == event->key() | event->modifiers()
+        && m_pressedKeys == (event->key() | event->modifiers())
     ) {
         event->accept();
         auto spectacleCore = SpectacleCore::instance();
