@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-06 00:37+0000\n"
+"POT-Creation-Date: 2024-05-10 00:37+0000\n"
 "PO-Revision-Date: 2023-07-26 14:21+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1941,35 +1941,55 @@ msgstr "Rektangulärt område"
 msgid "Launch Spectacle without capturing"
 msgstr "Starta Spectacle utan tagning"
 
-#: src/SpectacleCore.cpp:236
+#: src/SpectacleCore.cpp:238
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Starta Spectacle utan att ta en skärmbild"
 
+#: src/SpectacleCore.cpp:252
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "@info:tooltip title for recording tray icon"
+msgid "Spectacle is Recording"
+msgstr "När Spectacle kör"
+
+#: src/SpectacleCore.cpp:257
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "recording notification title"
+msgid "Spectacle is Recording"
+msgstr "När Spectacle kör"
+
 #: src/SpectacleCore.cpp:258
 #, kde-format
-msgctxt "@info:tooltip"
+msgctxt "recording notification message"
+msgid "Click the system tray icon to finish recording"
+msgstr ""
+
+#: src/SpectacleCore.cpp:301
+#, kde-format
+msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
-"Spectacle is recording: %1\n"
+"Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:318
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Starta Spectacle utan att ta en skärmbild"
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:908
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1978,23 +1998,23 @@ msgstr ""
 "Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:912
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:915
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:919
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har sparats på klippbordet."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:970
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2006,7 +2026,7 @@ msgstr ""
 "Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:972
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2014,19 +2034,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:974
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:939
+#: src/SpectacleCore.cpp:985
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öppna"
 
-#: src/SpectacleCore.cpp:953
+#: src/SpectacleCore.cpp:999
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentera"

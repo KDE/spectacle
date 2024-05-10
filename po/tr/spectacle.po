@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-06 00:37+0000\n"
+"POT-Creation-Date: 2024-05-10 00:37+0000\n"
 "PO-Revision-Date: 2024-04-27 14:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1891,35 +1891,65 @@ msgstr "Dikdörtgen Bölgeyi Kaydet"
 msgid "Launch Spectacle without capturing"
 msgstr "Spectacle’ı yakalama yapmadan başlat"
 
-#: src/SpectacleCore.cpp:236
+#: src/SpectacleCore.cpp:238
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Ekran görüntüsü alınırken bir hata oluştu."
 
+#: src/SpectacleCore.cpp:252
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "@info:tooltip title for recording tray icon"
+msgid "Spectacle is Recording"
+msgstr "Spectacle Çalışırken"
+
+#: src/SpectacleCore.cpp:257
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "recording notification title"
+msgid "Spectacle is Recording"
+msgstr "Spectacle Çalışırken"
+
 #: src/SpectacleCore.cpp:258
-#, kde-format
-msgctxt "@info:tooltip"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "recording notification message"
+msgid "Click the system tray icon to finish recording"
+msgstr ""
+"Spectacle kayıt yapıyor: %1\n"
+"Kaydı bitirmek için tıkla"
+
+#: src/SpectacleCore.cpp:301
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
-"Spectacle is recording: %1\n"
+"Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
 "Spectacle kayıt yapıyor: %1\n"
 "Kaydı bitirmek için tıkla"
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:318
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Ekranı kaydetmeye çalışırken bir hata oluştu."
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1, --record için geçerli bir kip değil"
 
-#: src/SpectacleCore.cpp:908
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1928,23 +1958,23 @@ msgstr ""
 "Bir ekran görüntüsü “%2” konumuna “%1” olarak kaydedildi ve ekran "
 "görüntüsünün dosya yolu panoya kaydedildi."
 
-#: src/SpectacleCore.cpp:912
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Bir ekran görüntüsü Resimler klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:915
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Bir ekran görüntüsü “%2” klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:919
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Bir ekran görüntüsü panoya kopyalandı."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1953,24 +1983,24 @@ msgstr ""
 "Bir kayıt “%2” klasörüne “%1” olarak kaydedildi ve kaydın dosya yolu panoya "
 "kaydedildi."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Bir kayıt Videolar klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:974
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Bir kayıt “%2” klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:939
+#: src/SpectacleCore.cpp:985
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aç"
 
-#: src/SpectacleCore.cpp:953
+#: src/SpectacleCore.cpp:999
 #, kde-format
 msgid "Annotate"
 msgstr "Bilgi Notu"

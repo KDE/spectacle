@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-06 00:37+0000\n"
+"POT-Creation-Date: 2024-05-10 00:37+0000\n"
 "PO-Revision-Date: 2024-04-28 09:13+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1925,35 +1925,65 @@ msgstr "Gravar unha zona rectangular"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle sen capturar"
 
-#: src/SpectacleCore.cpp:236
+#: src/SpectacleCore.cpp:238
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Produciuse un erro ao facer unha captura de pantalla."
 
+#: src/SpectacleCore.cpp:252
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "@info:tooltip title for recording tray icon"
+msgid "Spectacle is Recording"
+msgstr "Mentres Spectacle está en execución"
+
+#: src/SpectacleCore.cpp:257
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "recording notification title"
+msgid "Spectacle is Recording"
+msgstr "Mentres Spectacle está en execución"
+
 #: src/SpectacleCore.cpp:258
-#, kde-format
-msgctxt "@info:tooltip"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "recording notification message"
+msgid "Click the system tray icon to finish recording"
+msgstr ""
+"Spectacle está gravando: %1\n"
+"Prema para rematar a gravación."
+
+#: src/SpectacleCore.cpp:301
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
-"Spectacle is recording: %1\n"
+"Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
 "Spectacle está gravando: %1\n"
 "Prema para rematar a gravación."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:318
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Produciuse un erro ao intentar gravar a pantalla."
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 non é un modo válido para «--record»."
 
-#: src/SpectacleCore.cpp:908
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1962,23 +1992,23 @@ msgstr ""
 "Gardouse unha captura de pantalla como «%1» en «%2» e a ruta de ficheiro da "
 "captura de pantalla gardouse no portapapeis."
 
-#: src/SpectacleCore.cpp:912
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Gardouse a captura co nome «%1» no cartafol persoal de imaxes."
 
-#: src/SpectacleCore.cpp:915
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Gardouse a captura co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:919
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Gardouse unha captura no portapapeis."
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1987,24 +2017,24 @@ msgstr ""
 "Gardouse unha gravación como «%1» en «%2» e a ruta de ficheiro da gravación "
 "gardouse no portapapeis."
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Gardouse a gravación co nome «%1» no cartafol persoal de vídeos."
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:974
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Gardouse a gravación co nome «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:939
+#: src/SpectacleCore.cpp:985
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:953
+#: src/SpectacleCore.cpp:999
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"

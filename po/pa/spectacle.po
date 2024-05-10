@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-06 00:37+0000\n"
+"POT-Creation-Date: 2024-05-10 00:37+0000\n"
 "PO-Revision-Date: 2024-03-11 07:59-0500\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1855,37 +1855,67 @@ msgstr "ਆਇਤਾਕਾਰ ਖੇਤਰ ਰਿਕਾਰਡ ਕਰੋ"
 msgid "Launch Spectacle without capturing"
 msgstr "ਬਿਨਾਂ ਕੈਪਚਰ ਕੀਤੇ ਸਪੈਕਟਾਕਲ ਨੂੰ ਚਲਾਓ"
 
-#: src/SpectacleCore.cpp:236
+#: src/SpectacleCore.cpp:238
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਤੋਂ ਬਿਨਾਂ ਸਪੈਕਟਾਕਲ ਚਲਾਓ"
 
+#: src/SpectacleCore.cpp:252
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "@info:tooltip title for recording tray icon"
+msgid "Spectacle is Recording"
+msgstr "ਜਦੋਂ ਸਪੈਕਟਾਕਲ ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#: src/SpectacleCore.cpp:257
+#, fuzzy, kde-format
+#| msgid "While Spectacle is running"
+msgctxt "recording notification title"
+msgid "Spectacle is Recording"
+msgstr "ਜਦੋਂ ਸਪੈਕਟਾਕਲ ਚੱਲ ਰਿਹਾ ਹੈ"
+
 #: src/SpectacleCore.cpp:258
-#, kde-format
-msgctxt "@info:tooltip"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "recording notification message"
+msgid "Click the system tray icon to finish recording"
+msgstr ""
+"ਸਪੈਕਟਾਕਲ ਰਿਕਾਰਡ ਹੋ ਰਹੀ ਹੈ: %1\n"
+"ਰਿਕਾਰਡਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
+
+#: src/SpectacleCore.cpp:301
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid ""
+#| "Spectacle is recording: %1\n"
+#| "Click to finish recording"
+msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
-"Spectacle is recording: %1\n"
+"Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
 "ਸਪੈਕਟਾਕਲ ਰਿਕਾਰਡ ਹੋ ਰਹੀ ਹੈ: %1\n"
 "ਰਿਕਾਰਡਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:318
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਤੋਂ ਬਿਨਾਂ ਸਪੈਕਟਾਕਲ ਚਲਾਓ"
 
-#: src/SpectacleCore.cpp:672
+#: src/SpectacleCore.cpp:718
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record ਲਈ ਵਾਜਬ ਮੋਡ ਨਹੀਂ ਹੈ"
 
-#: src/SpectacleCore.cpp:908
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1894,23 +1924,23 @@ msgstr ""
 "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਸਕਰੀਨਸ਼ਾਟ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:912
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਤਸਵੀਰਾਂ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:915
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:919
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:924
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1919,24 +1949,24 @@ msgstr ""
 "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਰਿਕਾਰਡਿੰਗ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:926
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਤੁਹਾਡੇ ਵੀਡੀਓ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:928
+#: src/SpectacleCore.cpp:974
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:939
+#: src/SpectacleCore.cpp:985
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: src/SpectacleCore.cpp:953
+#: src/SpectacleCore.cpp:999
 #, kde-format
 msgid "Annotate"
 msgstr "ਟਿੱਪਣੀ"
