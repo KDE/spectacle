@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-10 00:37+0000\n"
-"PO-Revision-Date: 2024-05-01 17:30+0100\n"
+"PO-Revision-Date: 2024-05-10 09:14+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -241,7 +241,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
-"Malsukcesis eksporti filmeton: Provizora dosier-URL devas esti ekzistanta "
+"Malsukcesis elporti filmeton: Provizora dosier-URL devas esti ekzistanta "
 "loka dosiero"
 
 #: src/ExportManager.cpp:681
@@ -250,7 +250,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
-"Malsukcesis eksporti filmeton: Eligdosiera URL devas esti valida URL kun "
+"Malsukcesis elporti filmeton: Eligdosiera URL devas esti valida URL kun "
 "dosiernomo"
 
 #: src/ExportManager.cpp:756
@@ -1558,7 +1558,7 @@ msgstr "Sagoklavoj"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: Movi en 1-pikselaj paŝoj"
+msgstr "+ Shift: Movi en 1-rastrumeraj paŝoj"
 
 #: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
@@ -1576,7 +1576,7 @@ msgstr "Sagoklavoj + Alt"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: Regrandigi en 1-pikselaj paŝoj"
+msgstr "+ Shift: Regrandigi en 1-rastrumeraj paŝoj"
 
 #: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
@@ -1905,43 +1905,31 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Eraro okazis prenante ekrankopion."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Dum Spectacle funkcias"
+msgstr "Spectacle estas Registranta"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Dum Spectacle funkcias"
+msgstr "Spectacle estas Registranta"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"Spectacle estas registranta: %1\n"
-"Klaku por fini registradon"
+msgstr "Alklaku la sistempleton por fini registradon"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Spectacle estas registranta: %1\n"
+"Tempdaŭro registrita: %1\n"
 "Klaku por fini registradon"
 
 #: src/SpectacleCore.cpp:318
