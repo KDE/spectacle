@@ -223,21 +223,21 @@ QString ExportManager::truncatedFilename(QString const &filename) const
 QString ExportManager::formattedFilename(const QString &nameTemplate) const
 {
     const QDateTime timestamp = m_timestamp;
-    QString baseName = nameTemplate;
+    QString result = nameTemplate;
     QString baseDir = defaultSaveLocation();
-    QString title = m_windowTitle;
 
-    if (!title.isEmpty()) {
+    if (!m_windowTitle.isEmpty()) {
+        QString title = m_windowTitle;
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
+        result.replace("<title>"_L1, title);
     } else {
         // Remove <title> with separators around it
         const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
         const auto separator = u"([^%1]+)"_s.arg(wordSymbol);
         const auto re = QRegularExpression(u"(.*?)(%1<title>|<title>%1)(.*?)"_s.arg(separator));
-        baseName.replace(re, uR"(\1\5)"_s);
+        result.replace(re, uR"(\1\5)"_s);
     }
 
-    QString result = baseName;
     const auto &locale = QLocale::system();
     // QDateTime
     for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
@@ -252,7 +252,6 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     result.replace("<h>"_L1, timestamp.toString(u"hAP"_s).chopped(2));
     result.replace("<hh>"_L1, timestamp.toString(u"hhAP"_s).chopped(2));
     result.replace("<UnixTime>"_L1, QString::number(timestamp.toSecsSinceEpoch()));
-    result.replace("<title>"_L1, title);
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
