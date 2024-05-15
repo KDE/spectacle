@@ -11,7 +11,7 @@ using namespace Qt::StringLiterals;
 int main()
 {
     const auto fileName = u"spectaclerc"_s;
-    if (!continueUpdate(fileName, u"2024-02-28T00:00:00Z"_s)) {
+    if (!isFileOlderThanDateTime(fileName, u"2024-02-28T00:00:00Z"_s)) {
         return 0;
     }
 
