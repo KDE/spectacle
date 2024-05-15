@@ -216,11 +216,17 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
         result.replace("<title>"_L1, title);
     } else {
-        // Remove <title> with separators around it
-        const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
-        const auto separator = u"([^%1]+)"_s.arg(wordSymbol);
-        const auto re = QRegularExpression(u"(.*?)(%1<title>|<title>%1)(.*?)"_s.arg(separator));
-        result.replace(re, uR"(\1\5)"_s);
+        // We exclude word characters from being counted as separators.
+        static const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
+        // Match 1 or more separator characters followed by <title>
+        // We exclude potential ends of tokens to protect tokens before <title>.
+        static const auto match1 = u"[^%1>]+<title>"_s.arg(wordSymbol);
+        // Match <title> followed by 0 or more separator characters
+        // We exclude potential beginnings of tokens to protect tokens after <title>.
+        static const auto match2 = u"<title>[^%1<]*"_s.arg(wordSymbol);
+        // If matching %1, then match %1, else match %2
+        static const QRegularExpression re(u"(?(?=%1)%1|%2)"_s.arg(match1, match2));
+        result.remove(re);
     }
 
     const auto &locale = QLocale::system();
