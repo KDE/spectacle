@@ -26,7 +26,9 @@ const ValueMap oldNewMap{
 inline QString changedFormat(QString filenameTemplate)
 {
     for (auto it = oldNewMap.cbegin(); it != oldNewMap.cend(); ++it) {
-        filenameTemplate.replace(it.key(), it.value());
+        if (filenameTemplate.contains(it.key()) && !filenameTemplate.contains(it.value())) {
+            filenameTemplate.replace(it.key(), it.value());
+        }
     }
 
     QRegularExpression sequenceRE(u"%(\\d*)d"_s);
@@ -47,10 +49,6 @@ inline QString changedFormat(QString filenameTemplate)
 int main()
 {
     const auto fileName = u"spectaclerc"_s;
-    if (!continueUpdate(fileName, u"2024-02-28T00:00:00Z"_s)) {
-        return 0;
-    }
-
     // We only need to read spectaclerc, so we use SimpleConfig.
     auto spectaclerc = KSharedConfig::openConfig(fileName, KConfig::SimpleConfig);
 
