@@ -84,7 +84,7 @@ EmptyPage {
             Kirigami.Heading {
                 topPadding: -captureHeadingMetrics.descent
                 bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Screenshot Modes")
+                text: i18nc("@title:group", "Take a Screenshot:")
                 level: 3
                 FontMetrics {
                     id: captureHeadingMetrics
@@ -99,7 +99,7 @@ EmptyPage {
             Kirigami.Heading {
                 topPadding: -captureHeadingMetrics.descent
                 bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Screenshot Settings")
+                text: i18nc("@title:group", "Options")
                 level: 3
             }
 
@@ -125,7 +125,7 @@ EmptyPage {
             Kirigami.Heading {
                 topPadding: -captureHeadingMetrics.descent
                 bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Recording Modes")
+                text: i18nc("@title:group", "Make a Recording:")
                 level: 3
                 FontMetrics {
                     id: captureHeadingMetrics
@@ -140,7 +140,7 @@ EmptyPage {
             Kirigami.Heading {
                 topPadding: -captureHeadingMetrics.descent
                 bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Recording Settings")
+                text: i18nc("@title:group", "Options")
                 level: 3
             }
 
