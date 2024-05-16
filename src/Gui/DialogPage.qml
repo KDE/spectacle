@@ -154,6 +154,26 @@ EmptyPage {
         }
     }
 
+    header: Kirigami.NavigationTabBar {
+        id: tabBar
+
+        visible: VideoPlatform.supportedRecordingModes
+        currentIndex: 0
+
+        actions: [
+            Kirigami.Action {
+                text: i18nc("@title:tab", "Screenshot")
+                icon.name: "camera-photo"
+                checked: tabBar.currentIndex === 0
+            },
+            Kirigami.Action {
+                text: i18nc("@title:tab", "Recording")
+                icon.name: "camera-video"
+                checked: tabBar.currentIndex === 1
+            }
+        ]
+    }
+
     // Not ColumnLayout because layouts don't work well with animations.
     contentItem: Column {
         spacing: Kirigami.Units.mediumSpacing * 2
@@ -171,72 +191,13 @@ EmptyPage {
             }
         }
         Loader {
-            width: Math.max(parent.width, implicitWidth)
-            active: VideoPlatform.supportedRecordingModes
-            visible: active
-            sourceComponent: Row {
-                // We don't want the visuals of a tab because they don't look nice here with
-                // qqc2-desktop-style, but this is functionally a tab.
-                // Maybe use a segmented control style in the future when one becomes available.
-                QQC.ToolButton {
-                    id: screenshotHeadingButton
-                    Accessible.role: Accessible.PageTab
-                    width: Math.max(parent.width / 2, dprRound(implicitWidth), dprRound(recordingHeadingButton.implicitWidth))
-                    height: Math.max(parent.height, dprRound(implicitHeight), dprRound(recordingHeadingButton.implicitHeight))
-                    // Extend the clickable area between the buttons
-                    leftInset: !mirrored ? 0 : Kirigami.Units.mediumSpacing
-                    rightInset: mirrored ? 0 : Kirigami.Units.mediumSpacing
-                    padding: Kirigami.Units.mediumSpacing * 2
-                    // Visually compensate for inset to make it look like spacing
-                    leftPadding: padding + leftInset
-                    rightPadding: padding + rightInset
-                    // Make the padding look more even with Latin-like scripts.
-                    // There should still be more than enough space for other scripts.
-                    topPadding: Math.max(0, padding - headingFontMetrics.descent)
-                    bottomPadding: Math.max(0, padding - headingFontMetrics.descent)
-                    // We do `pointSize * sqrt(2)` because `pointSize * 2` would actually result
-                    // in a font that uses 4x more area than the base font would have.
-                    font.pointSize: Application.font.pointSize * 1.414213562373095
-                    text: i18nc("@title:tab", "Screenshot")
-                    checkable: true
-                    checked: true
-                    autoExclusive: true
-                    FontMetrics {
-                        id: headingFontMetrics
-                        font: screenshotHeadingButton.font
-                    }
-                    onCheckedChanged: if (checked && contentLoader.sourceComponent !== screenshotComponent) {
-                        contentLoader.sourceComponent = screenshotComponent
-                    }
-                }
-
-                QQC.ToolButton {
-                    id: recordingHeadingButton
-                    Accessible.role: screenshotHeadingButton.Accessible.role
-                    width: screenshotHeadingButton.width
-                    height: screenshotHeadingButton.height
-                    leftInset: !mirrored ? Kirigami.Units.mediumSpacing : 0
-                    rightInset: mirrored ? Kirigami.Units.mediumSpacing : 0
-                    padding: screenshotHeadingButton.padding
-                    leftPadding: padding + leftInset
-                    rightPadding: padding + rightInset
-                    topPadding: screenshotHeadingButton.topPadding
-                    bottomPadding: screenshotHeadingButton.bottomPadding
-                    font: screenshotHeadingButton.font
-                    text: i18nc("@title:tab", "Recording")
-                    checkable: true
-                    checked: false
-                    autoExclusive: true
-                    onCheckedChanged: if (checked && contentLoader.sourceComponent !== recordingComponent) {
-                        contentLoader.sourceComponent = recordingComponent
-                    }
-                }
-            }
-        }
-        Loader {
             id: contentLoader
             width: Math.max(parent.width, implicitWidth)
-            sourceComponent: screenshotComponent
+            sourceComponent: switch (tabBar.currentIndex) {
+                case 0: return screenshotComponent
+                case 1: return recordingComponent
+                default: return null
+            }
         }
     }
 

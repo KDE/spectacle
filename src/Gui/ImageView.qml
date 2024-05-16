@@ -147,17 +147,30 @@ EmptyPage {
             topPadding: Kirigami.Units.mediumSpacing * 2
             bottomPadding: Kirigami.Units.mediumSpacing * 2
 
-            header: QQC.TabBar {
-                id: tabBar
-                visible: VideoPlatform.supportedRecordingModes
-                currentIndex: 0
-                QQC.TabButton {
-                    width: tabBar.width / tabBar.count
-                    text: i18n("Screenshot")
+            header: RowLayout {
+                spacing: 0
+                Kirigami.Separator {
+                    Layout.fillHeight: true
                 }
-                QQC.TabButton {
-                    width: tabBar.width / tabBar.count
-                    text: i18n("Recording")
+                Kirigami.NavigationTabBar {
+                    id: tabBar
+                    Layout.fillWidth: true
+                    visible: VideoPlatform.supportedRecordingModes
+                    currentIndex: 0
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
+                    actions: [
+                        Kirigami.Action {
+                            text: i18n("Screenshot")
+                            icon.name: "camera-photo"
+                            checked: tabBar.currentIndex === 0
+                        },
+                        Kirigami.Action {
+                            text: i18n("Recording")
+                            icon.name: "camera-video"
+                            checked: tabBar.currentIndex === 1
+                        }
+                    ]
                 }
             }
 
