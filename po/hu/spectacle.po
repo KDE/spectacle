@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:37+0000\n"
+"POT-Creation-Date: 2024-05-16 00:37+0000\n"
 "PO-Revision-Date: 2024-05-10 10:53+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -181,12 +181,12 @@ msgstr "Árnyékok lehagyása a képernyőképről"
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/ExportManager.cpp:380
+#: src/ExportManager.cpp:385
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:400
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -196,12 +196,12 @@ msgstr ""
 "A képernyőkép nem menthető, mert a mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:405
+#: src/ExportManager.cpp:410
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:425
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,28 +211,28 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:436 src/ExportManager.cpp:484
+#: src/ExportManager.cpp:441 src/ExportManager.cpp:489
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:444
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:491
+#: src/ExportManager.cpp:496
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:535
+#: src/ExportManager.cpp:540
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:674
+#: src/ExportManager.cpp:679
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:681
+#: src/ExportManager.cpp:686
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:756
+#: src/ExportManager.cpp:761
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -258,7 +258,7 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:784
+#: src/ExportManager.cpp:789
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
