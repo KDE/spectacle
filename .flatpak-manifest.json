@@ -7,16 +7,63 @@
     "command": "spectacle",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
-    "finish-args": ["--share=ipc", "--socket=fallback-x11", "--socket=wayland",
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=session-bus",
+        "--device=dri",
+        "--filesystem=host",
+        "--filesystem=home",
+        "--talk-name=org.freedesktop.Notifications",
+        "--talk-name=com.canonical.Unity",
+        "--talk-name=org.kde.StatusNotifierWatcher",
         "--talk-name=org.kde.kglobalaccel",
-        "--talk-name=org.kde.KWin"],
-
+        "--talk-name=org.kde.KWin",
+        "--talk-name=org.kde.KWin.ScreenShot2",
+        "--talk-name=org.kde.plasmashell",
+        "--own-name=org.kde.spectacle"
+    ],
     "modules": [
         {
             "name": "kpipewire",
-            "config-opts": [ "-DBUILD_TESTING=OFF" ],
             "buildsystem": "cmake-ninja",
-            "sources": [ { "type": "git", "url": "https://invent.kde.org/plasma/kpipewire.git", "branch": "master" } ]
+            "config-opts": [ "-DBUILD_TESTING=OFF" ],
+            "sources": [
+                { "type": "git", "url": "https://invent.kde.org/plasma/kpipewire.git", "branch": "master" }
+            ]
+        },
+        {
+            "name": "layer-shell-qt",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                { "type": "git", "url": "https://invent.kde.org/plasma/layer-shell-qt.git", "branch": "master" }
+            ]
+        },
+        {
+            "name": "opencv",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DBUILD_WITH_DEBUG_INFO=ON",
+                "-DBUILD_LIST=core,imgproc",
+                "-DBUILD_JAVA=OFF",
+                "-DBUILD_PERF_TESTS=OFF",
+                "-DBUILD_TESTS=OFF",
+                "-DBUILD_opencv_apps=OFF"
+            ],
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/opencv/opencv.git",
+                    "tag": "4.9.0"
+                }
+            ]
         },
         {
             "name": "spectacle",
