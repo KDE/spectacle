@@ -36,6 +36,10 @@
 #include <KRecentDocument>
 #include <KSharedConfig>
 #include <KSystemClipboard>
+// We need to define this to compile with ZXing versions older than 2.0.
+// Mainly needed for building flatpaks. This must be defined before ZXing/Result.h is included.
+#define ZX_USE_UTF8
+#include <ZXing/Result.h>
 #include <ZXing/ReadBarcode.h>
 
 using namespace Qt::StringLiterals;
