@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-05-10 07:36+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -431,7 +431,7 @@ msgstr[1] "გაუქმება (%1 წამი)"
 msgid "Take a new screenshot"
 msgstr "ახალი ეკრანის ანაბეჭდის გადაღება"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
@@ -548,22 +548,25 @@ msgid "Help"
 msgstr "დახმარება"
 
 #: src/Gui/DialogPage.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "ეკრანის ანაბეჭდის რეჟიმები"
+msgid "Take a Screenshot:"
+msgstr "ეკრანის ანაბეჭდის გადაღება:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "პარამეტრები"
 
 #: src/Gui/DialogPage.qml:128
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "ჩაწერის რეჟიმები"
-
-#: src/Gui/DialogPage.qml:143
-#, kde-format
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "ჩაწერის მორგება"
+msgid "Make a Recording:"
+msgstr "ჩაწერა"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format
@@ -2005,6 +2008,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "ეკრანის ანაბეჭდის რეჟიმები"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "ჩაწერის რეჟიმები"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "ჩაწერის მორგება"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

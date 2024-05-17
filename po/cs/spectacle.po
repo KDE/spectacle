@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-02-29 09:07+0100\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -422,7 +422,7 @@ msgstr[2] "Zrušit (%1 sekund)"
 msgid "Take a new screenshot"
 msgstr "Zachytit nový snímek"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
@@ -535,22 +535,25 @@ msgid "Help"
 msgstr "Nápověda"
 
 #: src/Gui/DialogPage.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr ""
+msgid "Take a Screenshot:"
+msgstr "Zachytit snímek:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Možnosti"
 
 #: src/Gui/DialogPage.qml:128
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr ""
-
-#: src/Gui/DialogPage.qml:143
-#, kde-format
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr ""
+msgid "Make a Recording:"
+msgstr "Nahrávání"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format

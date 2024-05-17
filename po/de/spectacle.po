@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-04-23 23:53+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -443,7 +443,7 @@ msgstr[1] "Abbrechen (%1 Sekunden)"
 msgid "Take a new screenshot"
 msgstr "Ein neues Bildschirmfoto aufnehmen"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
@@ -561,23 +561,24 @@ msgstr "Hilfe"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Bildschirmfoto"
+msgid "Take a Screenshot:"
+msgstr "Bildschirmfoto aufnehmen:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Einstellungen"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "Aufnahme"
-
-#: src/Gui/DialogPage.qml:143
-#, kde-format
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Aufnahmeeinstellungen"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format
@@ -2044,6 +2045,22 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#, fuzzy
+#~| msgid "Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Bildschirmfoto"
+
+#, fuzzy
+#~| msgid "Recording"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Aufnahme"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Aufnahmeeinstellungen"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

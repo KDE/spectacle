@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2023-04-28 20:48+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -436,7 +436,7 @@ msgstr[1] "Batal (%1 detik)"
 msgid "Take a new screenshot"
 msgstr "Ambil tangkapan layar baru"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Screenshot"
 msgctxt "@title:group"
@@ -566,24 +566,24 @@ msgstr "Bantuan"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Tangkapan Layar"
+msgid "Take a Screenshot:"
+msgstr "Ambil Tangkapan Layar:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Opsi"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "Merekam"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Pengaturan Rekam"
 
 #: src/Gui/DialogPage.qml:200
 #, fuzzy, kde-format
@@ -2091,6 +2091,24 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Tangkapan Layar"
+
+#, fuzzy
+#~| msgid "Recording"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Merekam"
+
+#, fuzzy
+#~| msgid "Recording Settings"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Pengaturan Rekam"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

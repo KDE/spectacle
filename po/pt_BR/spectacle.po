@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-04-06 01:56-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -442,7 +442,7 @@ msgstr[1] "Cancelar (%1 segundos)"
 msgid "Take a new screenshot"
 msgstr "Capturar uma nova imagem"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgctxt "translatable folder name"
 #| msgid "Screenshots"
@@ -569,25 +569,24 @@ msgstr "Ajuda"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Capturas de tela"
+msgid "Take a Screenshot:"
+msgstr "Capturar imagem:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Opções"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "Gravando"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Configurações da gravação"
 
 #: src/Gui/DialogPage.qml:200
 #, fuzzy, kde-format
@@ -2072,6 +2071,25 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#, fuzzy
+#~| msgctxt "translatable folder name"
+#~| msgid "Screenshots"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Capturas de tela"
+
+#, fuzzy
+#~| msgid "Recording"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Gravando"
+
+#, fuzzy
+#~| msgid "Recording Settings"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Configurações da gravação"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

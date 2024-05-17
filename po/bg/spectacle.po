@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-05-13 19:17+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -449,7 +449,7 @@ msgstr[1] "Отказ (%1 секунди)"
 msgid "Take a new screenshot"
 msgstr "Нова екранна снимка"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
@@ -568,22 +568,25 @@ msgid "Help"
 msgstr "Помощ"
 
 #: src/Gui/DialogPage.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Режим на заснемане на екрана"
+msgid "Take a Screenshot:"
+msgstr "Екранна снимка:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Настройки"
 
 #: src/Gui/DialogPage.qml:128
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Режим на записване на видео"
-
-#: src/Gui/DialogPage.qml:143
-#, kde-format
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Настройки на видеозапис"
+msgid "Make a Recording:"
+msgstr "Записване на видео"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format
@@ -2049,6 +2052,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Режим на заснемане на екрана"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Режим на записване на видео"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Настройки на видеозапис"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2023-07-29 12:23+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -431,7 +431,7 @@ msgstr[1] "Avbryt (%1 sekund)"
 msgid "Take a new screenshot"
 msgstr "Ta nytt skjermbilete"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Screenshot"
 msgctxt "@title:group"
@@ -562,24 +562,24 @@ msgstr "Hjelp"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Skjermbilete"
+msgid "Take a Screenshot:"
+msgstr "Ta skjermbilete:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Val"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "Opptak"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Opptaksinnstillingar"
 
 #: src/Gui/DialogPage.qml:200
 #, fuzzy, kde-format
@@ -2076,3 +2076,21 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Skjermbilete"
+
+#, fuzzy
+#~| msgid "Recording"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Opptak"
+
+#, fuzzy
+#~| msgid "Recording Settings"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Opptaksinnstillingar"

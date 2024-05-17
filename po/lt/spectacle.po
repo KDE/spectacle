@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
-"PO-Revision-Date: 2024-05-08 21:37+0300\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
+"PO-Revision-Date: 2024-05-16 21:50+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -445,7 +445,7 @@ msgstr[3] "Atsisakyti (%1 sekundė)"
 msgid "Take a new screenshot"
 msgstr "Padaryti naują ekrano kopiją"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
@@ -562,22 +562,25 @@ msgid "Help"
 msgstr "Pagalba"
 
 #: src/Gui/DialogPage.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Ekrano kopijos veiksenos"
+msgid "Take a Screenshot:"
+msgstr "Padaryti ekrano kopiją:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Parinktys"
 
 #: src/Gui/DialogPage.qml:128
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Filmavimo veiksenos"
-
-#: src/Gui/DialogPage.qml:143
-#, kde-format
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Filmavimo nuostatos"
+msgid "Make a Recording:"
+msgstr "Filmavimas"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format
@@ -1927,43 +1930,31 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Įvyko klaida darant ekrano kopiją."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Kol Spectacle yra paleista"
+msgstr "Spectacle filmuoja"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Kol Spectacle yra paleista"
+msgstr "Spectacle filmuoja"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"Spectacle filmuoja: %1\n"
-"Spustelėkite norėdami užbagti filmavimą"
+msgstr "Spustelėkite sistemos dėklo piktogramą norėdami užbagti filmavimą"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Spectacle filmuoja: %1\n"
+"Kiek laiko filmuojama: %1\n"
 "Spustelėkite norėdami užbagti filmavimą"
 
 #: src/SpectacleCore.cpp:318
@@ -2045,6 +2036,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Ekrano kopijos veiksenos"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Filmavimo veiksenos"
+
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Filmavimo nuostatos"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

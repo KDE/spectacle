@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-02-27 21:42+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -471,7 +471,7 @@ msgstr[3] "Отмена (%1 секунда)"
 msgid "Take a new screenshot"
 msgstr "Сделать новый снимок"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgctxt "translatable folder name"
 #| msgid "Screenshots"
@@ -591,25 +591,25 @@ msgstr "Справка"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Снимки экрана"
+msgid "Take a Screenshot:"
+msgstr "Создание снимка экрана:"
+
+# BUGME: please add @title:window; please add ellipsis to the action name --aspotashev
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Параметры"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "Запись экрана"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "Параметры записи"
 
 #: src/Gui/DialogPage.qml:200
 #, fuzzy, kde-format
@@ -2082,6 +2082,25 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#, fuzzy
+#~| msgctxt "translatable folder name"
+#~| msgid "Screenshots"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Снимки экрана"
+
+#, fuzzy
+#~| msgid "Recording"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Запись экрана"
+
+#, fuzzy
+#~| msgid "Recording Settings"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Параметры записи"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

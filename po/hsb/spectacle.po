@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2021-11-20 19:24+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -430,7 +430,7 @@ msgstr[3] "%1 sekundow"
 msgid "Take a new screenshot"
 msgstr "sčini nowe foto"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
@@ -564,23 +564,23 @@ msgstr ""
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Nowe foto wobrazowki"
+msgid "Take a Screenshot:"
+msgstr "Foto wobrazowki sčinić:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "<b>Options</b>"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "<b>Opcije</b>"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Wobrazowku nahrawać"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgctxt "@title:group"
-msgid "Recording Settings"
+msgid "Make a Recording:"
 msgstr "Wobrazowku nahrawać"
 
 #: src/Gui/DialogPage.qml:200
@@ -2060,6 +2060,24 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Take a New Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Nowe foto wobrazowki"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Wobrazowku nahrawać"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Wobrazowku nahrawać"
 
 #~ msgid "Screenshot capture canceled or failed"
 #~ msgstr "Fotografowanje přetorhnjene abo zwrěšćene"

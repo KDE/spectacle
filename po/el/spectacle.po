@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2021-09-04 10:08+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -456,7 +456,7 @@ msgstr[1] "%1 δευτερόλεπτα"
 msgid "Take a new screenshot"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
@@ -590,23 +590,23 @@ msgstr ""
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgid "Take a Screenshot:"
+msgstr "Λήψη στιγμιοτύπου οθόνης:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Επιλογές αποθήκευσης"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Εγγραφή οθόνης"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgctxt "@title:group"
-msgid "Recording Settings"
+msgid "Make a Recording:"
 msgstr "Εγγραφή οθόνης"
 
 #: src/Gui/DialogPage.qml:200
@@ -2124,6 +2124,24 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Take a New Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Εγγραφή οθόνης"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Εγγραφή οθόνης"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

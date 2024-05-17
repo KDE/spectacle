@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -436,7 +436,7 @@ msgstr[1] "%1 sekundit"
 msgid "Take a new screenshot"
 msgstr "Tehakse uus ekraanipilt"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
@@ -568,23 +568,23 @@ msgstr ""
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Tee uus pilt"
+msgid "Take a Screenshot:"
+msgstr "Ekraanipildi tegemine:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Salvestamisvalikud"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Salvesta ekraani"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgctxt "@title:group"
-msgid "Recording Settings"
+msgid "Make a Recording:"
 msgstr "Salvesta ekraani"
 
 #: src/Gui/DialogPage.qml:200
@@ -2086,6 +2086,24 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Take a New Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Tee uus pilt"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Salvesta ekraani"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Salvesta ekraani"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="

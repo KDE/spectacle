@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -454,7 +454,7 @@ msgstr[3] " секунда"
 msgid "Take a new screenshot"
 msgstr "Ухвати нови снимак"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
@@ -588,24 +588,23 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
+msgid "Take a Screenshot:"
 msgstr "Ухвати нови снимак"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "<b>Content Options</b>"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "<b>Опције садржаја</b>"
 
 # >> @item:inlistbox
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Active Window"
 msgctxt "@title:group"
-msgid "Recording Modes"
+msgid "Make a Recording:"
 msgstr "активни прозор"
-
-# >> @item:inlistbox
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Current Screen"
-msgctxt "@title:group"
-msgid "Recording Settings"
-msgstr "тренутни екран"
 
 #: src/Gui/DialogPage.qml:200
 #, fuzzy, kde-format
@@ -2131,6 +2130,26 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Take a New Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Ухвати нови снимак"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Active Window"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "активни прозор"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Current Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "тренутни екран"
 
 #~ msgid "Screenshot capture canceled or failed"
 #~ msgstr "Хватање снимка отказано или пропало"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 00:37+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2020-11-17 19:54+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -435,7 +435,7 @@ msgstr[1] "%1 sekunder"
 msgid "Take a new screenshot"
 msgstr "Tag et nyt skærmbillede"
 
-#: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
+#: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
@@ -567,23 +567,23 @@ msgstr ""
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
+#| msgid "Take Screenshot:"
 msgctxt "@title:group"
-msgid "Screenshot Modes"
-msgstr "Tag et nyt skærmbillede"
+msgid "Take a Screenshot:"
+msgstr "Tag skærmbillede:"
+
+#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#, fuzzy, kde-format
+#| msgid "Save Options"
+msgctxt "@title:group"
+msgid "Options"
+msgstr "Gemmeindstillinger"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:group"
-msgid "Recording Modes"
-msgstr "Optag skærm"
-
-#: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Record Screen"
-msgctxt "@title:group"
-msgid "Recording Settings"
+msgid "Make a Recording:"
 msgstr "Optag skærm"
 
 #: src/Gui/DialogPage.qml:200
@@ -2101,6 +2101,24 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Take a New Screenshot"
+#~ msgctxt "@title:group"
+#~ msgid "Screenshot Modes"
+#~ msgstr "Tag et nyt skærmbillede"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Modes"
+#~ msgstr "Optag skærm"
+
+#, fuzzy
+#~| msgid "Record Screen"
+#~ msgctxt "@title:group"
+#~ msgid "Recording Settings"
+#~ msgstr "Optag skærm"
 
 #~ msgid ""
 #~ "Could not take a screenshot. Please report this bug here: <a href="
