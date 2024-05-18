@@ -1,7 +1,7 @@
 # translation of spectacle.pot to Esperanto
 # Copyright (C) 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the spectacle package.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 # Minuskloj: ĉ ĝ ĵ ĥ ŝ ŭ   Majuskloj: Ĉ Ĝ Ĵ Ĥ Ŝ Ŭ
 #
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-04-27 17:28+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-17 06:24+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -241,7 +241,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
-"Malsukcesis eksporti filmeton: Provizora dosier-URL devas esti ekzistanta "
+"Malsukcesis elporti filmeton: Provizora dosier-URL devas esti ekzistanta "
 "loka dosiero"
 
 #: src/ExportManager.cpp:671
@@ -250,7 +250,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
-"Malsukcesis eksporti filmeton: Eligdosiera URL devas esti valida URL kun "
+"Malsukcesis elporti filmeton: Eligdosiera URL devas esti valida URL kun "
 "dosiernomo"
 
 #: src/ExportManager.cpp:746
@@ -662,7 +662,7 @@ msgstr "Nova Ekrankopio"
 #: src/Gui/MainToolBarContents.qml:133
 #, kde-format
 msgid "Options"
-msgstr "Opcioj"
+msgstr "Elektebloj"
 
 #: src/Gui/MainToolBarContents.qml:141
 #, kde-format
@@ -1558,7 +1558,7 @@ msgstr "Sagoklavoj"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Shift: Movi en 1-pikselaj paŝoj"
+msgstr "+ Shift: Movi en 1-rastrumeraj paŝoj"
 
 #: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
@@ -1576,7 +1576,7 @@ msgstr "Sagoklavoj + Alt"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Shift: Regrandigi en 1-pikselaj paŝoj"
+msgstr "+ Shift: Regrandigi en 1-rastrumeraj paŝoj"
 
 #: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
@@ -1658,7 +1658,7 @@ msgstr "Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "okellogg@users.sourceforge.net"
+msgstr "olivermkellogg@gmail.com"
 
 #: src/Main.cpp:65
 #, kde-format
@@ -1728,18 +1728,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nesubtenata KWin-ekrankopia tip-metadateno: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Ekranregistrado nuligita"
+msgstr "Ekranregistrado ne disponeblas en X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin Screencasting ne haveblas."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1754,6 +1752,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"La fluo fermiĝis ĉar la celekrano ŝanĝiĝis en maniero kiu disrompis la "
+"registradon."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1762,6 +1762,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"La fluo fermiĝis ĉar la celfenestro ŝanĝiĝis en maniero kiu disrompis la "
+"registradon."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1770,6 +1772,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"La fluo fermiĝis ĉar la ekrano enhavanta la celregionon ŝanĝiĝis en maniero "
+"kiu disrompis la registradon."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1898,7 +1902,7 @@ msgstr "Lanĉi Spectacle sen kapti"
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Lanĉi Spectacle sen preni ekrankopion"
+msgstr "Eraro okazis prenante ekrankopion."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1911,12 +1915,10 @@ msgstr ""
 "Klaku por fini registradon"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Lanĉi Spectacle sen preni ekrankopion"
+msgstr "Eraro okazis provante registri la ekranon."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
