@@ -220,6 +220,41 @@ QString ExportManager::truncatedFilename(QString const &filename) const
     return result;
 }
 
+inline static void removeEmptyPlaceholderAndSeparators(const QString &placeholder, QString &string)
+{
+    using QRE = QRegularExpression;
+    // Exclude word characters from being counted as separators.
+    // NOTE: The parentheses are for a raw string literal, not a regex capture group.
+    static constexpr auto wordSymbol = uR"(\p{L}\p{M}\p{N})";
+    // Match 1 or more separator characters.
+    // Exclude dir separators because we don't want to accidentally mess up folder layouts.
+    // Exclude potential ends of tokens to protect tokens before the placeholder.
+    static const auto separatorsBefore = u"[^%1/>]+"_s.arg(wordSymbol);
+    // Exclude potential beginnings of tokens to protect tokens after the placeholder.
+    static const auto separatorsAfter = u"[^%1/<]+"_s.arg(wordSymbol);
+
+    // You can use the same placeholder multiple times with different combinations of dirs,
+    // separator chars, other characters or just text. Because of that, we need to match all of
+    // these. I don't want to make a massive regex because that would be a PITA to read and debug.
+
+    // Remove `beforeAndAfter` if separator chars are the only other chars around the placeholder.
+    const auto beforeAndAfter = separatorsBefore % placeholder % separatorsAfter;
+    if (string.contains(QRE(u"/%1/|^%1$"_s.arg(beforeAndAfter)))) {
+        string.remove(QRE(beforeAndAfter));
+    }
+    // Remove these first so that text before the placeholder is more likely to be preserved.
+    const QRE after(placeholder % separatorsAfter);
+    if (string.contains(after)) {
+        string.remove(after);
+    }
+    const QRE before(separatorsBefore % placeholder);
+    if ( string.contains(before)) {
+        string.remove(before);
+    }
+    // Just remove the placeholder if none of the other matches work.
+    string.remove(placeholder);
+}
+
 QString ExportManager::formattedFilename(const QString &nameTemplate) const
 {
     const QDateTime timestamp = m_timestamp;
@@ -231,17 +266,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
         result.replace("<title>"_L1, title);
     } else {
-        // We exclude word characters from being counted as separators.
-        static const auto wordSymbol = uR"(\p{L}\p{M}\p{N})"_s;
-        // Match 1 or more separator characters followed by <title>
-        // We exclude potential ends of tokens to protect tokens before <title>.
-        static const auto match1 = u"[^%1>]+<title>"_s.arg(wordSymbol);
-        // Match <title> followed by 0 or more separator characters
-        // We exclude potential beginnings of tokens to protect tokens after <title>.
-        static const auto match2 = u"<title>[^%1<]*"_s.arg(wordSymbol);
-        // If matching %1, then match %1, else match %2
-        static const QRegularExpression re(u"(?(?=%1)%1|%2)"_s.arg(match1, match2));
-        result.remove(re);
+        removeEmptyPlaceholderAndSeparators(u"<title>"_s, result);
     }
 
     const auto &locale = QLocale::system();
