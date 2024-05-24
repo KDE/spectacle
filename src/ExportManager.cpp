@@ -269,6 +269,10 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
         removeEmptyPlaceholderAndSeparators(u"<title>"_s, result);
     }
 
+    // Remove duplicate dir separators.
+    // These could come from user mistakes or empty placeholders being removed.
+    result.replace(QRegularExpression(u"/+"_s), u"/"_s);
+
     const auto &locale = QLocale::system();
     // QDateTime
     for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
