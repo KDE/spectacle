@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-04-06 14:16+0000\n"
+"PO-Revision-Date: 2024-05-12 20:08+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
@@ -303,13 +303,13 @@ msgstr "Litur fyllingar"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Styrkur:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Styrkur áhrifanna."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -1361,16 +1361,15 @@ msgstr "Fyllilitur fyrir glósuverkfæri talna"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Síðast notaða svæðið sem notandinn valdi"
+msgstr "Styrkur móðuáhrifanna."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Styrkur pixlunaráhrifanna."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1677,32 +1676,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Slæm breidd fyrir KWin-skjámynd: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Slæm hæð fyrir KWin-skjámynd: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Eftir að skjámynd er tekin:"
+msgstr "Slæmt snið fyrir KWin-skjámynd: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Gat ekki opnað skráalýsi fyrir lestur á KWin-skjámynd."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() mistókst fyrir KWin-skjámynd: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1711,6 +1709,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin-skjámyndabeiðni mistókst:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1719,26 +1719,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Hugsanlega viðeigandi upplýsingar:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Óstudd lýsigögn KWin-skjámyndategundar: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Hætt við skjáupptöku"
+msgstr "Skjáupptaka er ekki í boði í X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin skjávörpun er ekki í boði."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1753,6 +1753,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Straumurinn lokaðist vegna þess að markskjárinn breyttist á þann hátt að það "
+"truflaði upptökuna."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1761,6 +1763,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Straumurinn lokaðist vegna þess að markglugginn breyttist á þann hátt að það "
+"truflaði upptökuna."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1769,6 +1773,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Straumurinn lokaðist vegna þess að skjárinn sem innihélt marksvæðið "
+"breyttist á þann hátt að það truflaði upptökuna."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1893,11 +1899,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Opna Spectacle án þess að taka mynd"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Keyra Spectacle án þess að taka skjámynd"
+msgstr "Villa kom upp við að taka skjámynd."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1910,11 +1915,10 @@ msgstr ""
 "Smelltu til að ljúka upptöku"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Keyra Spectacle án þess að taka skjámynd"
+msgstr "Villa kom upp þegar reynt var að taka upp skjáinn."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
