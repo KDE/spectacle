@@ -75,6 +75,7 @@ void FilenameTest::testWindowTitle()
     };
     static const QMap<QString, std::array<QString, ArraySize>> comparisons{
         {u"<title>"_s, {u"Spectacle"_s, u"Screenshot"_s}}, // Empty String produces Screenshot
+        {u"_<title>_"_s, {u"_Spectacle_"_s, u"_Screenshot_"_s}},
         {u"Before<title>After"_s, {u"BeforeSpectacleAfter"_s, u"BeforeAfter"_s}},
         {u"Before_<title>_After"_s, {u"Before_Spectacle_After"_s, u"Before_After"_s}},
         {u"Before_<title>"_s, {u"Before_Spectacle"_s, u"Before"_s}},
@@ -85,6 +86,9 @@ void FilenameTest::testWindowTitle()
         {u"<mm>_<title>/<title>_<ss>"_s, {u"43_Spectacle/Spectacle_25"_s, u"43/25"_s}},
         {u"<mm>_/<title>/_<ss>"_s, {u"43_/Spectacle/_25"_s, u"43_/_25"_s}},
         {u"<mm>_/_<title>_/_<ss>"_s, {u"43_/_Spectacle_/_25"_s, u"43_/_25"_s}},
+        {u"<mm>_/_<title>/_<ss>"_s, {u"43_/_Spectacle/_25"_s, u"43_/_25"_s}},
+        {u"<mm>_/<title>_/_<ss>"_s, {u"43_/Spectacle_/_25"_s, u"43_/_25"_s}},
+        {u"<mm>_<title>_/_<title>_/_<title>_<ss>"_s, {u"43_Spectacle_/_Spectacle_/_Spectacle_25"_s, u"43_/_25"_s}},
     };
     mExportManager->setWindowTitle(u"Spectacle"_s);
     for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
