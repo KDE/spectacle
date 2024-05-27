@@ -5,7 +5,7 @@
  */
 
 #include "ExportManager.h"
-
+#include "ImageMetaData.h"
 #include "settings.h"
 #include <kio_version.h>
 
@@ -73,16 +73,6 @@ QImage ExportManager::image() const
     return m_saveImage;
 }
 
-void ExportManager::setWindowTitle(const QString &windowTitle)
-{
-    m_windowTitle = windowTitle;
-}
-
-QString ExportManager::windowTitle() const
-{
-    return m_windowTitle;
-}
-
 void ExportManager::setImage(const QImage &image)
 {
     m_saveImage = image;
@@ -130,12 +120,12 @@ static QString ensureDefaultLocationExists(const QUrl &saveUrl)
     return savePath;
 }
 
-QString ExportManager::defaultSaveLocation() const
+QString ExportManager::defaultSaveLocation()
 {
     return ensureDefaultLocationExists(Settings::imageSaveLocation());
 }
 
-QString ExportManager::defaultVideoSaveLocation() const
+QString ExportManager::defaultVideoSaveLocation()
 {
     return ensureDefaultLocationExists(Settings::videoSaveLocation());
 }
@@ -144,7 +134,7 @@ QUrl ExportManager::getAutosaveFilename() const
 {
     const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = formattedFilename();
+    const QString filename = formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
     const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
                                                    Settings::preferredImageFormat().toLower(),
                                                    &ExportManager::isFileExists);
@@ -157,13 +147,12 @@ QUrl ExportManager::getAutosaveFilename() const
     }
 }
 
-QUrl ExportManager::tempVideoUrl()
+QUrl ExportManager::tempVideoUrl(const QString &filename)
 {
     const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
     auto extension = VideoPlatform::extensionForFormat(format);
     QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = formattedFilename(Settings::videoFilenameTemplate());
     QString filepath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
 
     auto tempDir = temporaryDir();
@@ -209,7 +198,7 @@ const QTemporaryDir *ExportManager::temporaryDir()
     return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
 }
 
-QString ExportManager::truncatedFilename(QString const &filename) const
+QString ExportManager::truncatedFilename(QString const &filename)
 {
     QString result = filename;
     constexpr auto maxFilenameLength = 255;
@@ -222,6 +211,9 @@ QString ExportManager::truncatedFilename(QString const &filename) const
 
 inline static void removeEmptyPlaceholderAndSeparators(const QString &placeholder, QString &string)
 {
+    if (string.isEmpty() || placeholder.isEmpty()) {
+        return;
+    }
     using QRE = QRegularExpression;
     // Exclude word characters from being counted as separators.
     // NOTE: The parentheses are for a raw string literal, not a regex capture group.
@@ -256,14 +248,16 @@ inline static void removeEmptyPlaceholderAndSeparators(const QString &placeholde
     string.remove(placeholder);
 }
 
-QString ExportManager::formattedFilename(const QString &nameTemplate) const
+QString ExportManager::formattedFilename(const QString &nameTemplate, const QDateTime &timestamp, const QString &windowTitle, const QUrl &saveLocation)
 {
-    const QDateTime timestamp = m_timestamp;
+    if (nameTemplate.isEmpty()) {
+        return u"Screenshot"_s;
+    }
     QString result = nameTemplate;
-    QString baseDir = defaultSaveLocation();
+    QString baseDir = saveLocation.isValid() ? ensureDefaultLocationExists(saveLocation) : QString{};
 
-    if (!m_windowTitle.isEmpty()) {
-        QString title = m_windowTitle;
+    if (!windowTitle.isEmpty()) {
+        QString title = windowTitle;
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
         result.replace("<title>"_L1, title);
     } else {
@@ -274,20 +268,22 @@ QString ExportManager::formattedFilename(const QString &nameTemplate) const
     // These could come from user mistakes or empty placeholders being removed.
     result.replace(QRegularExpression(u"/+"_s), u"/"_s);
 
-    const auto &locale = QLocale::system();
-    // QDateTime
-    for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
-        if (it->flags.testFlags(Placeholder::QDateTime)) {
-            result.replace(it->plainKey, locale.toString(timestamp, it->baseKey));
+    if (timestamp.isValid()) {
+        const auto &locale = QLocale::system();
+        // QDateTime
+        for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
+            if (it->flags.testFlags(Placeholder::QDateTime)) {
+                result.replace(it->plainKey, locale.toString(timestamp, it->baseKey));
+            }
         }
+        // Manual interpretation
+        // `h` and `hh` in QDateTime::toString or QLocale::toString
+        // are only 12 hour when paired with an AM/PM display in the same toString call,
+        // so we have to get the 12 hour format for `<h>` and `<hh>` manually.
+        result.replace("<h>"_L1, timestamp.toString(u"hAP"_s).chopped(2));
+        result.replace("<hh>"_L1, timestamp.toString(u"hhAP"_s).chopped(2));
+        result.replace("<UnixTime>"_L1, QString::number(timestamp.toSecsSinceEpoch()));
     }
-    // Manual interpretation
-    // `h` and `hh` in QDateTime::toString or QLocale::toString
-    // are only 12 hour when paired with an AM/PM display in the same toString call,
-    // so we have to get the 12 hour format for `<h>` and `<hh>` manually.
-    result.replace("<h>"_L1, timestamp.toString(u"hAP"_s).chopped(2));
-    result.replace("<hh>"_L1, timestamp.toString(u"hhAP"_s).chopped(2));
-    result.replace("<UnixTime>"_L1, QString::number(timestamp.toSecsSinceEpoch()));
 
     // check if basename includes %[N]d token for sequential file numbering
     QRegularExpression paddingRE;
@@ -500,7 +496,8 @@ QUrl ExportManager::tempSave()
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const QString baseFileName = m_tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename()).fileName();
+        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
+        const QString baseFileName = m_tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename).fileName();
 
         QString suffix = imageFileSuffix(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
@@ -593,7 +590,8 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
         }
         dialog.setDirectoryUrl(dirUrl);
-        dialog.selectFile(formattedFilename() + u"."_s + filenameExtension);
+        const auto formattedFilename = this->formattedFilename(Settings::defaultImageFilenameTemplateValue(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
+        dialog.selectFile(formattedFilename + u"."_s + filenameExtension);
         dialog.setDefaultSuffix(u"."_s + filenameExtension);
         dialog.setMimeTypeFilters(supportedFilters);
         dialog.selectMimeTypeFilter(mimetype);

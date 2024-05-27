@@ -49,8 +49,8 @@ public:
     Q_DECLARE_FLAGS(Actions, Action)
     Q_FLAG(Action)
 
-    QString defaultSaveLocation() const;
-    QString defaultVideoSaveLocation() const;
+    static QString defaultSaveLocation();
+    static QString defaultVideoSaveLocation();
     bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
     void setImage(const QImage &image);
@@ -60,15 +60,9 @@ public:
     QDateTime timestamp() const;
 
     /**
-     * The title used to fill the window title template in formatted file names.
-     */
-    QString windowTitle() const;
-    void setWindowTitle(const QString &windowTitle);
-
-    /**
      * Returns a formatted filename using a template string.
      */
-    QString formattedFilename(const QString &nameTemplate = Settings::imageFilenameTemplate()) const;
+    static QString formattedFilename(const QString &nameTemplate, const QDateTime &dateTime = {}, const QString &windowTitle = {}, const QUrl &saveLocation = {});
 
     /**
      * The URL to use for an automatically named and saved file.
@@ -78,7 +72,7 @@ public:
     /**
      * The URL to record a video with before it is exported.
      */
-    QUrl tempVideoUrl();
+    QUrl tempVideoUrl(const QString &filename);
 
     const QTemporaryDir *temporaryDir();
 
@@ -153,7 +147,7 @@ Q_SIGNALS:
     void qrCodeScanned(const QVariant &content);
 
 private:
-    QString truncatedFilename(const QString &filename) const;
+    static QString truncatedFilename(const QString &filename);
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
     QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
     QString imageFileSuffix(const QUrl &url) const;
@@ -170,7 +164,6 @@ private:
     std::unique_ptr<QLockFile> m_tempDirLock;
     std::unique_ptr<QTemporaryDir> m_tempDir;
     QList<QUrl> m_usedTempFileNames;
-    QString m_windowTitle;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ExportManager::Actions)

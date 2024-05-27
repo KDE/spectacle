@@ -85,7 +85,7 @@ void ImageSaveOptionsPage::updateFilenamePreview()
 {
     const auto extension = m_ui->kcfg_preferredImageFormat->currentText().toLower();
     const auto templateBasename = m_ui->kcfg_imageFilenameTemplate->text();
-    ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension);
+    ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension, Settings::imageSaveLocation());
 }
 
 #include "moc_ImageSaveOptionsPage.cpp"

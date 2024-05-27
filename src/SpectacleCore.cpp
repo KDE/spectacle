@@ -415,7 +415,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
 
-    connect(imagePlatform, &ImagePlatform::windowTitleChanged, exportManager, &ExportManager::setWindowTitle);
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, [this] {
         ExportManager::instance()->setImage(m_annotationDocument->renderToImage());
@@ -813,9 +812,6 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
         m_editExistingUrl.clear();
         m_cliOptions[CommandLineOptions::EditExisting] = false;
     }
-
-    // Clear the window title that can be used in file names.
-    ExportManager::instance()->setWindowTitle({});
 
     m_delayAnimation->stop();
 

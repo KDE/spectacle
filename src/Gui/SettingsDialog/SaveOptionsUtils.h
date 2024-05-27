@@ -21,28 +21,26 @@ using namespace Qt::StringLiterals;
  * image and video save options pages.
  */
 
-inline void updateFilenamePreview(QLabel *label, const QString &templateFilename)
+inline void updateFilenamePreview(QLabel *label, const QString &templateFilename, const QUrl saveLocation)
 {
     auto exportManager = ExportManager::instance();
-    // If there is no window title, we need to change it to have a placeholder.
-    const bool usePlaceholder = exportManager->windowTitle().isEmpty();
-    if (usePlaceholder) {
-        exportManager->setWindowTitle(QGuiApplication::applicationDisplayName());
-    }
     // Likewise, if no timestamp was set yet, we'll produce a new one as placeholder.
-    const QDateTime timestamp = exportManager->timestamp();
+    QDateTime timestamp = exportManager->timestamp();
     if (!timestamp.isValid()) {
         exportManager->updateTimestamp();
+        timestamp = exportManager->timestamp();
     }
-    const auto filename = exportManager->formattedFilename(templateFilename);
+    // If there is no window title, we need to change it to have a placeholder.
+    auto title = exportManager->title();
+    if (title.isEmpty()) {
+        title = QGuiApplication::applicationDisplayName();
+    }
+    const auto filename = exportManager->formattedFilename(templateFilename, timestamp, title, saveLocation);
     label->setText(xi18nc("@info", "<filename>%1</filename>", filename));
 
     // Reset any previously empty values that we had temporarily set.
     if (!timestamp.isValid()) {
         exportManager->setTimestamp(timestamp);
-    }
-    if (usePlaceholder) {
-        exportManager->setWindowTitle({});
     }
 }
 

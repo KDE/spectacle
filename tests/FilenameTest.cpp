@@ -20,6 +20,7 @@ class FilenameTest : public QObject
 private:
     ExportManager *mExportManager;
     QDateTime timestamp;
+    QString defaultTitle;
 
 private Q_SLOTS:
 
@@ -36,7 +37,7 @@ void FilenameTest::initTestCase()
     mExportManager = ExportManager::instance();
     timestamp = QDateTime::fromString(u"2019-03-22T20:43:25Z"_s, Qt::ISODate);
     mExportManager->setTimestamp(timestamp);
-    mExportManager->setWindowTitle(u"Spectacle"_s);
+    defaultTitle = u"Spectacle"_s;
 }
 
 void FilenameTest::testStrings()
@@ -58,12 +59,12 @@ void FilenameTest::testDateTokens()
     for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
         using Flag = ExportManager::Placeholder::Flag;
         if (it->flags.testFlag(Flag::QDateTime)) {
-            QCOMPARE(mExportManager->formattedFilename(it->plainKey), locale.toString(timestamp, it->baseKey));
+            QCOMPARE(mExportManager->formattedFilename(it->plainKey, timestamp), locale.toString(timestamp, it->baseKey));
         }
     }
-    QCOMPARE(mExportManager->formattedFilename(u"<h>"_s), u"8"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<hh>"_s), u"08"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<UnixTime>"_s), QString::number(timestamp.toSecsSinceEpoch()));
+    QCOMPARE(mExportManager->formattedFilename(u"<h>"_s, timestamp), u"8"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<hh>"_s, timestamp), u"08"_s);
+    QCOMPARE(mExportManager->formattedFilename(u"<UnixTime>"_s, timestamp), QString::number(timestamp.toSecsSinceEpoch()));
 }
 
 void FilenameTest::testWindowTitle()
@@ -90,13 +91,11 @@ void FilenameTest::testWindowTitle()
         {u"<mm>_/<title>_/_<ss>"_s, {u"43_/Spectacle_/_25"_s, u"43_/_25"_s}},
         {u"<mm>_<title>_/_<title>_/_<title>_<ss>"_s, {u"43_Spectacle_/_Spectacle_/_Spectacle_25"_s, u"43_/_25"_s}},
     };
-    mExportManager->setWindowTitle(u"Spectacle"_s);
     for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
-        QCOMPARE(mExportManager->formattedFilename(it.key()), it.value()[WithTitle]);
+        QCOMPARE(mExportManager->formattedFilename(it.key(), timestamp, defaultTitle), it.value()[WithTitle]);
     }
-    mExportManager->setWindowTitle({});
     for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
-        QCOMPARE(mExportManager->formattedFilename(it.key()), it.value()[WithoutTitle]);
+        QCOMPARE(mExportManager->formattedFilename(it.key(), timestamp), it.value()[WithoutTitle]);
     }
 }
 
@@ -109,31 +108,30 @@ void FilenameTest::testNumbering()
     QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<####>"_s), BaseName + u"_0001"_s);
     QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s), BaseName + u"_1_01_001"_s);
 
+    const auto saveLocation = Settings::imageSaveLocation();
     QFile file(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_3.png"_s));
     file.open(QIODevice::WriteOnly);
     file.close();
-    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>"_s), BaseName + u"_4"_s);
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>"_s, {}, {}, saveLocation), BaseName + u"_4"_s);
     file.remove();
     file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_0008"_s));
     file.open(QIODevice::WriteOnly);
     file.close();
-    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<####>"_s), BaseName + u"_0009"_s);
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<####>"_s, {}, {}, saveLocation), BaseName + u"_0009"_s);
     file.remove();
     file.setFileName(QDir(mExportManager->defaultSaveLocation()).filePath(BaseName + u"_7_07_007"_s));
     file.open(QIODevice::WriteOnly);
     file.close();
-    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s), BaseName + u"_8_08_008"_s);
+    QCOMPARE(mExportManager->formattedFilename(BaseName + u"_<#>_<##>_<###>"_s, {}, {}, saveLocation), BaseName + u"_8_08_008"_s);
     file.remove();
 }
 
 void FilenameTest::testCombined()
 {
-    mExportManager->setWindowTitle(u"Spectacle"_s);
     static const auto filenameTemplate = u"App_<title>/Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s;
-    QCOMPARE(mExportManager->formattedFilename(filenameTemplate),
+    QCOMPARE(mExportManager->formattedFilename(filenameTemplate, timestamp, defaultTitle),
              u"App_Spectacle/Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
-    mExportManager->setWindowTitle({});
-    QCOMPARE(mExportManager->formattedFilename(filenameTemplate),
+    QCOMPARE(mExportManager->formattedFilename(filenameTemplate, timestamp),
              u"App/Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
 }
 
