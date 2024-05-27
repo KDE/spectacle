@@ -53,7 +53,6 @@ Q_SIGNALS:
     void newCroppableScreenshotTaken(const QImage &image);
 
     void newScreenshotFailed(const QString &message = {});
-    void windowTitleChanged(const QString &windowTitle = {});
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatform::GrabModes)

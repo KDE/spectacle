@@ -5,6 +5,7 @@
  */
 
 #include "ImagePlatformXcb.h"
+#include "ImageMetaData.h"
 
 #include <xcb/randr.h>
 #include <xcb/xcb_cursor.h>
@@ -181,14 +182,6 @@ void ImagePlatformXcb::doGrab(ShutterMode shutterMode, GrabMode grabMode, bool i
         return;
     }
     }
-}
-
-/* -- Platform Utilities ----------------------------------------------------------------------- */
-
-void ImagePlatformXcb::updateWindowTitle(xcb_window_t window)
-{
-    auto title = KX11Extras::readNameProperty(window, XA_WM_NAME);
-    Q_EMIT windowTitleChanged(title);
 }
 
 /* -- XCB Utilities ---------------------------------------------------------------------------- */
@@ -457,6 +450,11 @@ QImage ImagePlatformXcb::getToplevelImage(QRect rect, bool blendPointer)
     return postProcessImage(image, rect, blendPointer);
 }
 
+void setWindowTitle(QImage &image, xcb_window_t window)
+{
+    ImageMetaData::setWindowTitle(image, KX11Extras::readNameProperty(window, XA_WM_NAME));
+}
+
 QImage ImagePlatformXcb::getWindowImage(xcb_window_t window, bool blendPointer)
 {
     auto xcbConn = QX11Info::connection();
@@ -468,6 +466,7 @@ QImage ImagePlatformXcb::getWindowImage(xcb_window_t window, bool blendPointer)
 
     // then proceed to get an image
     auto image = getImageFromDrawable(window, windowRect);
+    setWindowTitle(image, window);
 
     // translate window coordinates to global ones.
     auto rootGeoCookie = xcb_get_geometry_unchecked(xcbConn, geoReply->root);
@@ -481,7 +480,9 @@ QImage ImagePlatformXcb::getWindowImage(xcb_window_t window, bool blendPointer)
 
     // if the window capture failed, try to obtain one from the full screen.
     if (image.isNull()) {
-        return getToplevelImage(windowRect, blendPointer);
+        image = getToplevelImage(windowRect, blendPointer);
+        setWindowTitle(image, window);
+        return image;
     }
     return postProcessImage(image, windowRect, blendPointer);
 }
@@ -549,6 +550,7 @@ void ImagePlatformXcb::grabApplicationWindow(xcb_window_t window, bool includePo
     if (windowInfo.valid()) {
         auto frameGeom = windowInfo.frameGeometry();
         image = getToplevelImage(frameGeom, includePointer);
+        setWindowTitle(image, window);
     }
 
     // fallback is window without the frame
@@ -557,22 +559,17 @@ void ImagePlatformXcb::grabApplicationWindow(xcb_window_t window, bool includePo
 
 void ImagePlatformXcb::grabActiveWindow(bool includePointer, bool includeDecorations, bool includeShadow)
 {
-    auto activeWindow = KX11Extras::activeWindow();
-    updateWindowTitle(activeWindow);
-    grabApplicationWindow(activeWindow, includePointer, includeDecorations);
+    grabApplicationWindow(KX11Extras::activeWindow(), includePointer, includeDecorations);
 }
 
 void ImagePlatformXcb::grabWindowUnderCursor(bool includePointer, bool includeDecorations, bool includeShadow)
 {
-    auto window = getWindowUnderCursor();
-    updateWindowTitle(window);
-    grabApplicationWindow(window, includePointer, includeDecorations);
+    grabApplicationWindow(getWindowUnderCursor(), includePointer, includeDecorations);
 }
 
 void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool includeDecorations, bool includeShadow)
 {
     auto window = getWindowUnderCursor();
-    updateWindowTitle(window);
 
     // grab the image early
     auto image = getToplevelImage(QRect(), false);
@@ -643,10 +640,6 @@ void ImagePlatformXcb::grabTransientWithParent(bool includePointer, bool include
 
 void ImagePlatformXcb::doGrabNow(GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
 {
-    if (grabMode & ~(ActiveWindow | WindowUnderCursor | TransientWithParent)) {
-        // Notify that window title is empty since we are not picking a window.
-        Q_EMIT windowTitleChanged();
-    }
     switch (grabMode) {
     case GrabMode::AllScreens:
     case GrabMode::AllScreensScaled:

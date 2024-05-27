@@ -9,6 +9,7 @@
 #include "Geometry.h"
 #include "QtCV.h"
 #include "DebugUtils.h"
+#include "ImageMetaData.h"
 
 #include <KWindowSystem>
 
@@ -211,11 +212,7 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
         message.setArguments({windowId});
         const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
         if (reply.isValid()) {
-            const auto &windowTitle = reply.value().value(u"caption"_s).toString();
-            if (!windowTitle.isEmpty()) {
-                resultImage.setText(u"windowTitle"_s, windowTitle);
-                ExportManager::instance()->setWindowTitle(windowTitle);
-            }
+            ImageMetaData::setWindowTitle(resultImage, reply.value().value(u"caption"_s).toString());
             auto logicalX = Geometry::mapFromPlatformValue(reply.value().value(u"x"_s).toReal(), scale);
             auto logicalY = Geometry::mapFromPlatformValue(reply.value().value(u"y"_s).toReal(), scale);
             setQImageLogicalXY(resultImage, logicalX, logicalY);
@@ -224,7 +221,7 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
 
     const auto screenId = metadata.value(u"screen"_s).toString();
     if (!screenId.isEmpty()) {
-        resultImage.setText(u"screen"_s, screenId);
+        ImageMetaData::setScreen(resultImage, screenId);
         if (windowId.isEmpty()) {
             const auto screens = qGuiApp->screens();
             for (auto screen : screens) {

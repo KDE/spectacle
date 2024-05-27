@@ -172,7 +172,6 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             options[widthKey].toDouble(), options[heightKey].toDouble(),
         };
         const bool isSpectacle = options[desktopFileKey].toString() == qGuiApp->desktopFileName();
-        ExportManager::instance()->setWindowTitle(options[captionKey].toString());
         if (!windowRect.isEmpty() && !isSpectacle) {
             minimizeIfWindowsIntersect(windowRect);
         }
@@ -230,7 +229,38 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             Q_EMIT recordingFailed(i18nc("@info", "The stream closed because a screen containing the target region changed in a way that disrupted the recording."));
         }
     });
-    setupOutput(fileUrl);
+
+    // set up output
+    if (!fileUrl.isValid()) {
+        ExportManager::instance()->updateTimestamp();
+        const auto format = static_cast<Format>(Settings::preferredVideoFormat());
+        const auto filename = ExportManager::formattedFilename(Settings::videoFilenameTemplate(),
+                                                               ExportManager::instance()->timestamp(),
+                                                               options[captionKey].toString(),
+                                                               Settings::videoSaveLocation());
+        auto tempUrl = ExportManager::instance()->tempVideoUrl(filename);
+        if (!tempUrl.isLocalFile()) {
+            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
+            return;
+        }
+        if (!mkDirPath(tempUrl)) {
+            return;
+        }
+        m_recorder->setEncoder(encoderForFormat(format));
+        m_recorder->setOutput(tempUrl.toLocalFile());
+        m_recorder->setActive(m_recorder->nodeId() != 0);
+    } else {
+        if (!fileUrl.isLocalFile()) {
+            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
+            return;
+        }
+        if (!mkDirPath(fileUrl)) {
+            return;
+        }
+        const auto &localFile = fileUrl.toLocalFile();
+        m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
+        m_recorder->setOutput(localFile);
+    }
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
@@ -257,36 +287,6 @@ bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
     } else {
         Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Unable to create folder (%1)", dir.path()));
         return false;
-    }
-}
-
-void VideoPlatformWayland::setupOutput(const QUrl &fileUrl)
-{
-    if (!fileUrl.isValid()) {
-        ExportManager::instance()->updateTimestamp();
-        const auto format = static_cast<Format>(Settings::preferredVideoFormat());
-        auto tempUrl = ExportManager::instance()->tempVideoUrl();
-        if (!tempUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
-            return;
-        }
-        if (!mkDirPath(tempUrl)) {
-            return;
-        }
-        m_recorder->setEncoder(encoderForFormat(format));
-        m_recorder->setOutput(tempUrl.toLocalFile());
-        m_recorder->setActive(m_recorder->nodeId() != 0);
-    } else {
-        if (!fileUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
-            return;
-        }
-        if (!mkDirPath(fileUrl)) {
-            return;
-        }
-        const auto &localFile = fileUrl.toLocalFile();
-        m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
-        m_recorder->setOutput(localFile);
     }
 }
 

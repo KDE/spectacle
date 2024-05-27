@@ -37,8 +37,6 @@ private Q_SLOTS:
     void doGrabOnClick(ImagePlatform::GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow);
 
 private:
-    inline void updateWindowTitle(xcb_window_t window);
-
     QPoint getCursorPosition();
     QRect getDrawableGeometry(xcb_drawable_t drawable);
     xcb_window_t getWindowUnderCursor();

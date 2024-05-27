@@ -34,7 +34,6 @@ public:
 
 private:
     bool mkDirPath(const QUrl &fileUrl);
-    void setupOutput(const QUrl &fileUrl);
     void selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer);
 
     Screencasting *const m_screencasting;

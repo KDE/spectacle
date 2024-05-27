@@ -5,6 +5,7 @@
 #pragma once
 
 #include "ExportManager.h"
+#include "ImageMetaData.h"
 
 #include <KLocalizedString>
 
@@ -31,7 +32,7 @@ inline void updateFilenamePreview(QLabel *label, const QString &templateFilename
         timestamp = exportManager->timestamp();
     }
     // If there is no window title, we need to change it to have a placeholder.
-    auto title = exportManager->title();
+    auto title = ImageMetaData::windowTitle(exportManager->image());
     if (title.isEmpty()) {
         title = QGuiApplication::applicationDisplayName();
     }
