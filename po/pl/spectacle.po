@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-25 00:38+0000\n"
+"POT-Creation-Date: 2024-05-27 00:37+0000\n"
 "PO-Revision-Date: 2024-05-26 12:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
-" || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 23.08.5\n"
 
 #: src/CaptureModeModel.cpp:97
@@ -185,27 +185,27 @@ msgstr "W trybie działania w tle, usuwaj cienie na zrzutach ekranu"
 msgid "Open and edit existing screenshot file"
 msgstr "Otwórz i zmieniaj bieżący plik zrzutu ekranu"
 
-#: src/ExportManager.cpp:414
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter nie może zapisać obrazu: %1"
 
-#: src/ExportManager.cpp:429
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"Cannot save screenshot because creating the directory failed:<nl/><filename>"
-"%1</filename>"
+"Cannot save screenshot because creating the directory failed:<nl/"
+"><filename>%1</filename>"
 msgstr ""
 "Nie można zapisać zrzutu ekranu, bo nie udało się utworzyć katalogu:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:439
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nie można zapisać zrzutu ekranu. Błąd przy zapisie pliku."
 
-#: src/ExportManager.cpp:459
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,30 +215,30 @@ msgstr ""
 "Nie można zapisać zrzutu ekranu, bo nie udało się utworzyć zdalnego katalogu:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:470 src/ExportManager.cpp:518
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nie można zapisać zrzutu ekranu. Błąd przy zapisie tymczasowego, lokalnego "
 "pliku."
 
-#: src/ExportManager.cpp:478
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Nie można zapisać obrazu. Nie można wysłać pliku do położenia zdalnego."
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Nie można zapisać zrzutu ekranu. Nazwa pliku jest nieprawidłowa."
 
-#: src/ExportManager.cpp:569
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nie można zapisać pustego zrzutu ekranu."
 
-#: src/ExportManager.cpp:708
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -247,7 +247,7 @@ msgstr ""
 "Nie udało się wyeksportować nagrania: Adres URL tymczasowego pliku musi "
 "wskazywać na istniejący plik"
 
-#: src/ExportManager.cpp:715
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -256,13 +256,13 @@ msgstr ""
 "Nie udało się wyeksportować nagrania: Adres URL wynikowego pliku musi być "
 "prawidłowym adresem"
 
-#: src/ExportManager.cpp:790
+#: src/ExportManager.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Nie można zapisać nagrania. Nie można przenieść pliku do miejsca: %1"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Nieudane drukowanie. Nie udało się zainicjować drukarki."
@@ -554,21 +554,18 @@ msgstr "Pomoc"
 
 #: src/Gui/DialogPage.qml:87
 #, kde-format
-#| msgid "Take Screenshot:"
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Wykonaj zrzut ekranu:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
 #, kde-format
-#| msgid "Options"
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Ustawienia"
 
 #: src/Gui/DialogPage.qml:128
 #, kde-format
-#| msgid "Recording"
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Nagraj:"
@@ -2041,8 +2038,8 @@ msgstr "MP4/H.264"
 #~ msgstr "Ustawienia nagrania"
 
 #~ msgid ""
-#~ "Could not take a screenshot. Please report this bug here: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
+#~ "Could not take a screenshot. Please report this bug here: <a "
+#~ "href=\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
 #~ "spectacle bug</a>"
 #~ msgstr ""
 #~ "Nie można wykonać zrzutu ekranu. Zgłoś ten błąd tutaj: <a href=\"https://"
@@ -2477,9 +2474,9 @@ msgstr "MP4/H.264"
 #~ "<p>Ustaw domyślną nazwę pliku do zapisywania zrzutów ekranu.</p><p>Możesz "
 #~ "używać następujących pól wieloznacznych w nazwie pliku, które przy "
 #~ "zapisie zostaną zastąpione tekstem:</p><blockquote><b>%Y</b>: Rok (4-"
-#~ "cyfrowy)<br /><b>%y</b>: Rok (2-cyfrowy)<br /><b>%M</b>: Miesiąc<br /><b>"
-#~ "%D</b>: Dzień<br /><b>%H</b>: Godzina<br /><b>%m</b>: Minuta<br /><b>%S</"
-#~ "b>: Sekunda</blockquote><p>Nie musisz podawać rozszerzenia pliku. "
+#~ "cyfrowy)<br /><b>%y</b>: Rok (2-cyfrowy)<br /><b>%M</b>: Miesiąc<br /"
+#~ "><b>%D</b>: Dzień<br /><b>%H</b>: Godzina<br /><b>%m</b>: Minuta<br /"
+#~ "><b>%S</b>: Sekunda</blockquote><p>Nie musisz podawać rozszerzenia pliku. "
 #~ "Domyślnie zrzuty są zapisywane jako obrazy <b>PNG (Portable Network "
 #~ "Graphics)</b> z rozszerzeniem <b>.png</b>.</p><p>Jeśli plik o tej nazwie "
 #~ "już istenieje, to do nazwy zostanie dołaczony numer. Na przykład jeśli "
@@ -2512,4 +2509,3 @@ msgstr "MP4/H.264"
 #~ msgctxt "Untitled Screenshot"
 #~ msgid "Untitled"
 #~ msgstr "Bez tytułu"
-

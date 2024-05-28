@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-27 00:37+0000\n"
-"PO-Revision-Date: 2024-04-24 14:36+0300\n"
+"PO-Revision-Date: 2024-05-24 17:27+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -551,25 +551,22 @@ msgid "Help"
 msgstr "Palīdzība"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Uzņemt ekrānattēlu:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opcijas"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Video"
+msgstr "Ierakstīt video:"
 
 #: src/Gui/DialogPage.qml:165
 #, kde-format
@@ -1682,32 +1679,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Slikts „KWin“ ekrānattēla platums: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Slikts „KWin“ ekrānattēla augstums: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Pēc ekrānattēla uzņemšanas:"
+msgstr "Slikts „KWin“ ekrānattēla formāts: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Nevarēja atvērt datnes aprakstu, lai nolasītu „KWin“ ekrānattēlu."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "„pipe2()“ neizdevās apstrādāt „KWin“ ekrānattēlu: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:307
 #, kde-format
@@ -1716,6 +1712,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"„KWin“ ekrānattēla pieprasījuma neizdevās:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1724,26 +1722,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potenciāli svarīga informācija:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Neatbalstīti „KWin“ ekrānattēla tipa metadati: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Ekrāna ierakstīšana ir atcelta"
+msgstr "Lietojot X11 ekrāna ierakstīšana nav pieejama."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "„KWin“ ekrānierakstīšana nav pieejama."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1758,6 +1756,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Straume aizvērās, jo mērķa ekrāns mainījās tādā veidā, kas izjauca "
+"ierakstīšanu."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1766,6 +1766,7 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Straume aizvērās, jo mērķa logs mainījās tādā veidā, kas izjauca tā ierakstu."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1774,6 +1775,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Straume aizvērās, jo ekrāns, ka satur mērķa reģionu mainījās tādā veidā, kas "
+"izjauca ierakstīšanu."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1898,57 +1901,44 @@ msgid "Launch Spectacle without capturing"
 msgstr "Palaist „Spectacle“ bez uzņemšanas"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Palaist „Spectacle“, neuzņemot ekrānattēlu"
+msgstr "Kļūda, uzņemot ekrānattēlu."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Kamēr „Spectacle“ ir ieslēgts"
+msgstr "„Spectacle“ ieraksta"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Kamēr „Spectacle“ ir ieslēgts"
+msgstr "„Spectacle“ ieraksta"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"„Spectacle“ ieraksta: %1\n"
-"Klikšķiniet, lai pārtrauktu"
+msgstr "Spiediet uz ikonas sistēmas ikonu joslā, lai ierakstu apturētu"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"„Spectacle“ ieraksta: %1\n"
-"Klikšķiniet, lai pārtrauktu"
+"Ieraksta laiks: %1\n"
+"Spiediet, lai ierakstu beigtu"
 
 #: src/SpectacleCore.cpp:318
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr ""
+msgstr "Notika kļūda, mēģinot ierakstīt ekrānu."
 
 #: src/SpectacleCore.cpp:718
 #, kde-format
