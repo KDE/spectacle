@@ -338,20 +338,17 @@ QImage AnnotationDocument::annotationsImage()
 
 QImage AnnotationDocument::renderToImage()
 {
-    auto image = defaultImage(m_imageSize, m_imageDpr);
+    auto image = canvasBaseImage();
     QPainter painter(&image);
-    auto viewport = m_canvasRect.translated(-m_canvasRect.topLeft());
-    paintImageView(&painter, canvasBaseImage(), viewport);
-    paintImageView(&painter, annotationsImage(), viewport);
+    paintImageView(&painter, annotationsImage());
     painter.end();
     return image;
 }
 
 QImage AnnotationDocument::spanImage(History::ConstSpan span) const
 {
-    auto image = defaultImage(m_baseImage.size(), m_imageDpr);
+    auto image = m_baseImage;
     QPainter p(&image);
-    paintImageView(&p, m_baseImage);
     paintAnnotations(&p, deviceIndependentRect(m_baseImage).toAlignedRect(), span);
     p.end();
     return image;
