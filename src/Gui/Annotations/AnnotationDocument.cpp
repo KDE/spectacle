@@ -8,6 +8,7 @@
 #include "EffectUtils.h"
 #include "Geometry.h"
 #include "DebugUtils.h"
+#include "ImageMetaData.h"
 
 #include <QGuiApplication>
 #include <QPainter>
@@ -372,6 +373,7 @@ QImage AnnotationDocument::renderToImage()
     QPainter painter(&image);
     paintImageView(&painter, annotationsImage());
     painter.end();
+    ImageMetaData::setLogicalXY(image, m_canvasRect.x(), m_canvasRect.y());
     return image;
 }
 
