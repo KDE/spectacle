@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-02-27 21:42+0300\n"
+"PO-Revision-Date: 2024-05-28 10:49+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -339,7 +339,7 @@ msgstr "Цвет заливки"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Интенсивность:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
@@ -400,7 +400,7 @@ msgstr "Ничего"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Кадрирование"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -472,12 +472,10 @@ msgid "Take a new screenshot"
 msgstr "Сделать новый снимок"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Снимки экрана"
+msgstr "Параметры снимка экрана"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -612,15 +610,13 @@ msgid "Recording Settings"
 msgstr "Параметры записи"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Снимок экрана"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Запись экрана"
@@ -701,7 +697,7 @@ msgstr "Экспорт"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Комментировать…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -864,6 +860,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Создать область выделения: нажмите кнопку перемещайте указатель мыши.\n"
+"Обрезать по выделению: двойной щелчок по выделенной области.\n"
+"Сбросить выделение: щелчок правой кнопкой."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -981,10 +980,9 @@ msgstr "Показывать инструкции по захвату"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Показывать экранную лупу"
+msgstr "Показывать экранную лупу:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -1006,7 +1004,7 @@ msgstr "Всегда"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "При нажатой клавише Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1407,10 +1405,9 @@ msgstr "Цвет заполнения чисел"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Последняя использованная прямоугольная область"
+msgstr "Насыщенность эффекта размытия."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
@@ -1732,26 +1729,25 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Недопустимая ширина снимка экрана KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Недопустимая высота снимка экрана KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:165
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "После создания снимка экрана:"
+msgstr "Недопустимы формат снимка экрана: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:183
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Не удалось открыть файловый дескриптор при чтении снимка экрана KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:255
 #, kde-format
@@ -1766,6 +1762,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Ошибка запроса создания снимка экрана KWin:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:309
 #, kde-format
@@ -1782,18 +1780,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr ""
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Запись экрана отменена"
+msgstr "Запись экрана недоступна при использовании X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Трансляция экрана KWin недоступна."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1956,11 +1952,10 @@ msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
 
 #: src/SpectacleCore.cpp:236
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Запускать Spectacle без создания снимка экрана"
+msgstr "При создании снимка экрана произошла ошибка."
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1973,11 +1968,10 @@ msgstr ""
 "Нажмите чтобы остановить запись."
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Запускать Spectacle без создания снимка экрана"
+msgstr "При создании записи экрана произошла ошибка."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
