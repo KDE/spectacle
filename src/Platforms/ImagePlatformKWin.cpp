@@ -71,11 +71,13 @@ QImage combinedImage(const QList<QImage> &images)
     }
     QRectF imageRect;
     qreal maxDpr = 0;
+    ImageMetaData::SubGeometryList geometryList;
     for (auto &i : images) {
         const auto dpr = i.devicePixelRatio();
         const auto rect = QRectF{ImageMetaData::logicalXY(i), i.deviceIndependentSize()};
         maxDpr = std::max(maxDpr, dpr);
         imageRect |= rect;
+        geometryList << ImageMetaData::subGeometryPropertyMap(rect, dpr);
     }
     static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
     const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
@@ -95,6 +97,7 @@ QImage combinedImage(const QList<QImage> &images)
         // automatic scaling would occasionally use the wrong target position. I have no idea why.
         // It might not even be directly related to QPainter, so keep an eye out for bugs like that.
         finalImage.setDevicePixelRatio(maxDpr);
+        ImageMetaData::setSubGeometryList(finalImage, geometryList);
         return finalImage;
     }
     // We ceil to the next integer size up so that integer DPR images are always crisp.
@@ -120,6 +123,7 @@ QImage combinedImage(const QList<QImage> &images)
         cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
     }
     finalImage.setDevicePixelRatio(finalDpr);
+    ImageMetaData::setSubGeometryList(finalImage, geometryList);
     return finalImage;
 }
 
