@@ -16,6 +16,9 @@ namespace Keys
 {
 static const auto windowTitle = u"windowTitle"_s;
 static const auto screen = u"screen"_s;
+// Replacement for QImage::offset since that only accepts QPoints
+static const QString logicalX = u"logicalX"_s;
+static const QString logicalY = u"logicalY"_s;
 }
 
 inline QString windowTitle(const QImage &image)
@@ -60,6 +63,17 @@ template<typename Map>
 inline void setScreen(Map &map, const QString &screen)
 {
     map[Keys::screen] = screen;
+}
+
+inline static void setLogicalXY(QImage &image, qreal x, qreal y)
+{
+    image.setText(Keys::logicalX, QString::number(x));
+    image.setText(Keys::logicalY, QString::number(y));
+}
+
+inline static QPointF logicalXY(const QImage &image)
+{
+    return {image.text(Keys::logicalX).toDouble(), image.text(Keys::logicalY).toDouble()};
 }
 
 inline static void copy(QImage &target, const QImage &source)

@@ -40,24 +40,6 @@ static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
 static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
 static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
 
-static const QString s_logicalXKey = u"logicalX"_s;
-static const QString s_logicalYKey = u"logicalY"_s;
-
-// QImage::offset is a QPoint, so if we want to keep floating point precision when converting to
-// logical (wayland style) coordinates, we need to either make a new class to bundle a point or
-// store it a different way. We're using QImage::text to get the point, which is a bit weird,
-// but shouldn't require as much code as making a new class.
-inline static void setQImageLogicalXY(QImage &image, qreal x, qreal y)
-{
-    image.setText(s_logicalXKey, QString::number(x));
-    image.setText(s_logicalYKey, QString::number(y));
-}
-
-inline static QPointF qImageLogicalPointF(const QImage &image)
-{
-    return {image.text(s_logicalXKey).toDouble(), image.text(s_logicalYKey).toDouble()};
-}
-
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
     QVariantMap options;
@@ -90,8 +72,10 @@ QImage combinedImage(const QList<QImage> &images)
     QRectF imageRect;
     qreal maxDpr = 0;
     for (auto &i : images) {
-        maxDpr = std::max(maxDpr, i.devicePixelRatio());
-        imageRect |= QRectF{qImageLogicalPointF(i), i.deviceIndependentSize()};
+        const auto dpr = i.devicePixelRatio();
+        const auto rect = QRectF{ImageMetaData::logicalXY(i), i.deviceIndependentSize()};
+        maxDpr = std::max(maxDpr, dpr);
+        imageRect |= rect;
     }
     static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
     const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
@@ -103,7 +87,7 @@ QImage combinedImage(const QList<QImage> &images)
         for (auto &image : images) {
             // Explicitly setting the position and size so that you don't need to read
             // QPainter source code to understand how this works.
-            painter.drawImage({qImageLogicalPointF(image) * maxDpr, image.size()}, image);
+            painter.drawImage({ImageMetaData::logicalXY(image) * maxDpr, image.size()}, image);
         }
         painter.end();
         // Setting DPR after painting prevents it from affecting the coordinates of the QPainter.
@@ -125,7 +109,7 @@ QImage combinedImage(const QList<QImage> &images)
         auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
         const auto mat = QtCV::qImageToMat(rgbaImage);
         // Region Of Interest to put the image in the main image.
-        const auto pos = qImageLogicalPointF(rgbaImage) * finalDpr;
+        const auto pos = ImageMetaData::logicalXY(rgbaImage) * finalDpr;
         const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
         // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
         const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
@@ -215,7 +199,7 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
             ImageMetaData::setWindowTitle(resultImage, reply.value().value(u"caption"_s).toString());
             auto logicalX = Geometry::mapFromPlatformValue(reply.value().value(u"x"_s).toReal(), scale);
             auto logicalY = Geometry::mapFromPlatformValue(reply.value().value(u"y"_s).toReal(), scale);
-            setQImageLogicalXY(resultImage, logicalX, logicalY);
+            ImageMetaData::setLogicalXY(resultImage, logicalX, logicalY);
         }
     }
 
@@ -227,7 +211,7 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
             for (auto screen : screens) {
                 if (screen->name() == screenId) {
                     auto logicalPos = Geometry::mapFromPlatformPoint(screen->geometry().topLeft(), scale);
-                    setQImageLogicalXY(resultImage, logicalPos.x(), logicalPos.y());
+                    ImageMetaData::setLogicalXY(resultImage, logicalPos.x(), logicalPos.y());
                     break;
                 }
             }
