@@ -391,6 +391,33 @@ QString ExportManager::imageFileSuffix(const QUrl &url) const
     return type;
 }
 
+QImage scaledImageFromSubGeometry(const QImage &image)
+{
+    const auto subGeometryList = ImageMetaData::subGeometryList(image);
+    if (subGeometryList.empty()) {
+        return image;
+    }
+    const auto imageDpr = image.devicePixelRatio();
+    const bool imageIntDpr = fmod(imageDpr, 1) == 0;
+    const QRectF canvasRect{ImageMetaData::logicalXY(image), image.deviceIndependentSize()};
+    bool intersectingIntDpr = imageIntDpr;
+    qreal maxIntersectingDpr = 1;
+    for (auto it = subGeometryList.cbegin(); it != subGeometryList.cend(); ++it) {
+        const auto rect = ImageMetaData::rectFromSubGeometryPropertyMap(*it);
+        const auto dpr = it->value(ImageMetaData::Keys::SubGeometryProperty::DevicePixelRatio);
+        if (!rect.intersects(canvasRect)) {
+            continue;
+        }
+        intersectingIntDpr = intersectingIntDpr && fmod(dpr, 1) == 0;
+        maxIntersectingDpr = std::max(maxIntersectingDpr, dpr);
+    }
+    if (const auto scale = maxIntersectingDpr / imageDpr; scale != 1) {
+        return image.transformed(QTransform::fromScale(scale, scale), //
+                                 fmod(imageDpr, maxIntersectingDpr) == 0 ? Qt::FastTransformation : Qt::SmoothTransformation);
+    }
+    return image;
+}
+
 bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
 {
     // In the documentation for QImageWriter, it is a bit ambiguous what "format" means.
@@ -411,8 +438,9 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
         Q_EMIT errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
     }
-
-    return imageWriter.write(m_saveImage);
+    // Scale image to original scale if possible.
+    // This is done here because we need the highest resolution version in the rest of the app.
+    return imageWriter.write(scaledImageFromSubGeometry(m_saveImage));
 }
 
 bool ExportManager::localSave(const QUrl &url, const QString &suffix)
