@@ -47,7 +47,6 @@ public:
 protected:
     bool event(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
-    void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
     explicit ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent = nullptr);

@@ -44,7 +44,6 @@ Q_SIGNALS:
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
-    void keyReleaseEvent(QKeyEvent *event) override;
     void showEvent(QShowEvent *event) override;
 
 private:
