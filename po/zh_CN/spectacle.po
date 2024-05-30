@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-27 00:37+0000\n"
+"POT-Creation-Date: 2024-05-30 00:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -178,12 +178,12 @@ msgstr "在后台模式下，屏幕截图中不包含窗口阴影"
 msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:411
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter 无法写入图像：%1"
 
-#: src/ExportManager.cpp:430
+#: src/ExportManager.cpp:426
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -193,12 +193,12 @@ msgstr ""
 "无法保存截图，因为无法创建目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:440
+#: src/ExportManager.cpp:436
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "无法保存屏幕截图。写入文件时出错。"
 
-#: src/ExportManager.cpp:460
+#: src/ExportManager.cpp:456
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,47 +208,47 @@ msgstr ""
 "无法保存截图，因为无法创建远程目录：\n"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
+#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "无法保存屏幕截图。写入本地临时文件时出错。"
 
-#: src/ExportManager.cpp:479
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "无法保存图像。无法上传至远程地址。"
 
-#: src/ExportManager.cpp:526
+#: src/ExportManager.cpp:523
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "无法保存屏幕截图。该文件名无效。"
 
-#: src/ExportManager.cpp:570
+#: src/ExportManager.cpp:567
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "无法保存空白截屏图像。"
 
-#: src/ExportManager.cpp:709
+#: src/ExportManager.cpp:707
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "导出视频失败：临时文件 URL 必须是现有的本地文件"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的有效 URL"
 
-#: src/ExportManager.cpp:791
+#: src/ExportManager.cpp:789
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "无法保存录像。无法移动文件到位置：%1"
 
-#: src/ExportManager.cpp:819
+#: src/ExportManager.cpp:817
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "无法打印。打印机初始化失败。"
@@ -986,31 +986,31 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "预览："
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:73
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr "文件名中可以使用下列占位符，它们会在保存文件时被替换为实际的文本："
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:88
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "用于保存到子文件夹"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:91
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "显示更少"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:93
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
@@ -1637,37 +1637,37 @@ msgstr ""
 "在 Wayland 环境下，Spectacle 需要调用 KDE Plasma 的 KWin 显示特效混合器，但它"
 "并不可用。请在 KDE Plasma 中使用 Spectacle，或者换用另一个截图工具。"
 
-#: src/Platforms/ImagePlatformKWin.cpp:149
+#: src/Platforms/ImagePlatformKWin.cpp:150
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin 屏幕截图宽度错误：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:154
+#: src/Platforms/ImagePlatformKWin.cpp:155
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin 屏幕截图高度错误：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:165
+#: src/Platforms/ImagePlatformKWin.cpp:166
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin 屏幕截图格式错误：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:183
+#: src/Platforms/ImagePlatformKWin.cpp:184
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "无法为读取 KWin 屏幕截图打开文件描述符。"
 
-#: src/Platforms/ImagePlatformKWin.cpp:255
+#: src/Platforms/ImagePlatformKWin.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin 屏幕截图的 pipe2() 执行失败：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:307
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1677,7 +1677,7 @@ msgstr ""
 "KWin 屏幕截图请求失败：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:309
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1687,7 +1687,7 @@ msgstr ""
 "可能相关的信息：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:317
+#: src/Platforms/ImagePlatformKWin.cpp:314
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -1711,7 +1711,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "录制失败：文件 URL 不是本地文件"
 
-#: src/Platforms/VideoPlatformWayland.cpp:226
+#: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1719,7 +1719,7 @@ msgid ""
 "the recording."
 msgstr "视频流已关闭，因为目标屏幕发生的更改干扰了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:228
+#: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1727,7 +1727,7 @@ msgid ""
 "the recording."
 msgstr "视频流已关闭，因为目标窗口发生的更改干扰了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:230
+#: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1735,23 +1735,23 @@ msgid ""
 "way that disrupted the recording."
 msgstr "视频流已关闭，因为目标区域所在屏幕发生的更改中断了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:258
-#, kde-format
-msgctxt "@info:shell"
-msgid "Failed to record: Unable to create folder (%1)"
-msgstr "录制失败：无法创建文件夹 (%1)"
-
-#: src/Platforms/VideoPlatformWayland.cpp:270
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "录制失败：临时文件 URL 不是本地文件 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "录制失败：输出文件 URL 不是本地文件 (%1)"
+
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr "录制失败：无法创建文件夹 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
@@ -1897,60 +1897,60 @@ msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "尝试进行屏幕录像时发生错误。"
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 参数的有效模式"
 
-#: src/SpectacleCore.cpp:954
+#: src/SpectacleCore.cpp:950
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:961
+#: src/SpectacleCore.cpp:957
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:965
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:970
+#: src/SpectacleCore.cpp:966
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "屏幕录像已经使用名称“%1”保存到了“%2”，该录像的文件路径已保存到剪贴板。"
 
-#: src/SpectacleCore.cpp:972
+#: src/SpectacleCore.cpp:968
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "录像已保存到你的视频文件夹，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:974
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "录像已保存到文件夹“%2”，文件名为“%1”。"
 
-#: src/SpectacleCore.cpp:985
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "打开"
 
-#: src/SpectacleCore.cpp:999
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "Annotate"
 msgstr "标注"

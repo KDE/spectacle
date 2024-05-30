@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-27 00:37+0000\n"
+"POT-Creation-Date: 2024-05-30 00:37+0000\n"
 "PO-Revision-Date: 2024-05-22 11:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -190,12 +190,12 @@ msgstr "Ob delovanju v ozadju izključi sence oken z zaslonske slike"
 msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko zaslonske slike"
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:411
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne more zapisati slike: %1"
 
-#: src/ExportManager.cpp:430
+#: src/ExportManager.cpp:426
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,12 +205,12 @@ msgstr ""
 "Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje mape ni uspelo: <nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:440
+#: src/ExportManager.cpp:436
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v datoteko."
 
-#: src/ExportManager.cpp:460
+#: src/ExportManager.cpp:456
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -220,32 +220,32 @@ msgstr ""
 "Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje oddaljene mape ni "
 "uspelo:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
+#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v krajevno začasno "
 "datoteko."
 
-#: src/ExportManager.cpp:479
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ni bilo mogoče poslati datoteke na "
 "oddaljeno mesto."
 
-#: src/ExportManager.cpp:526
+#: src/ExportManager.cpp:523
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ime datoteke za shranjevanje ni veljavno."
 
-#: src/ExportManager.cpp:570
+#: src/ExportManager.cpp:567
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ni mogoče shraniti prazne zaslonske slike."
 
-#: src/ExportManager.cpp:709
+#: src/ExportManager.cpp:707
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,7 +254,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL začasne datoteke mora biti obstoječa lokalna "
 "datoteka"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -263,7 +263,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL izhodne datoteke mora biti veljaven URL z imenom "
 "datoteke"
 
-#: src/ExportManager.cpp:791
+#: src/ExportManager.cpp:789
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -271,7 +271,7 @@ msgstr ""
 "Posnetega videa ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na "
 "mesto: %1"
 
-#: src/ExportManager.cpp:819
+#: src/ExportManager.cpp:817
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tiskanje ni uspelo. Tiskalnika ni bilo mogoče zagnati."
@@ -1031,13 +1031,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "Predogled:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:73
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -1046,18 +1046,18 @@ msgstr ""
 "V imenu datoteke, lahko uporabite naslednja polja, ki bodo nadomeščena z "
 "dejanskim besedilom, ko bo datoteka shranjena:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:88
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "Shrani v podmapo"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:91
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "Prikaži manj"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:93
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
@@ -1697,38 +1697,38 @@ msgstr ""
 "kaže ni na voljo. Uporabljajte Spectacle s KWin ali uporabljajte drugo "
 "orodje za zajem zaslonov."
 
-#: src/Platforms/ImagePlatformKWin.cpp:149
+#: src/Platforms/ImagePlatformKWin.cpp:150
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Slaba širina za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:154
+#: src/Platforms/ImagePlatformKWin.cpp:155
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Slaba višina za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:165
+#: src/Platforms/ImagePlatformKWin.cpp:166
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Slab format za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:183
+#: src/Platforms/ImagePlatformKWin.cpp:184
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 "Ni bilo mogoče odpreti deskriptorja datoteke za branje posnetka zaslona KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:255
+#: src/Platforms/ImagePlatformKWin.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() ni uspela za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:307
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1738,7 +1738,7 @@ msgstr ""
 "Zahteva za posnetek zaslona KWin ni uspela:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:309
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1748,7 +1748,7 @@ msgstr ""
 "Potencialno pomembne informacije:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:317
+#: src/Platforms/ImagePlatformKWin.cpp:314
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -1772,7 +1772,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Snemanje ni uspelo: URL datoteke ni krajevna datoteka"
 
-#: src/Platforms/VideoPlatformWayland.cpp:226
+#: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1782,7 +1782,7 @@ msgstr ""
 "Tok se je zaprl, ker se je ciljni zaslon spremenil na način, ki je motil "
 "snemanje."
 
-#: src/Platforms/VideoPlatformWayland.cpp:228
+#: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1792,7 +1792,7 @@ msgstr ""
 "Tok se je zaprl, ker se je ciljno okno spremenilo na način, ki je motil "
 "snemanje."
 
-#: src/Platforms/VideoPlatformWayland.cpp:230
+#: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1802,23 +1802,23 @@ msgstr ""
 "Tok se je zaprl, ker se je zaslon s ciljno regijo spremenil na način, ki je "
 "motil snemanje."
 
-#: src/Platforms/VideoPlatformWayland.cpp:258
-#, kde-format
-msgctxt "@info:shell"
-msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Snemanje ni uspelo: ni mogoče ustvariti mape (%1)"
-
-#: src/Platforms/VideoPlatformWayland.cpp:270
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Snemanje ni uspelo: URL začasne datoteke ni krajevna datoteka (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Snemanje ni uspelo: URL izhodne datoteke ni krajevna datoteka (%1)"
+
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr "Snemanje ni uspelo: ni mogoče ustvariti mape (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
@@ -1968,13 +1968,13 @@ msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:954
+#: src/SpectacleCore.cpp:950
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1983,23 +1983,23 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
 
-#: src/SpectacleCore.cpp:961
+#: src/SpectacleCore.cpp:957
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
 
-#: src/SpectacleCore.cpp:965
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:970
+#: src/SpectacleCore.cpp:966
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2008,24 +2008,24 @@ msgstr ""
 "Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:972
+#: src/SpectacleCore.cpp:968
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
 
-#: src/SpectacleCore.cpp:974
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
 
-#: src/SpectacleCore.cpp:985
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:999
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-27 00:37+0000\n"
+"POT-Creation-Date: 2024-05-30 00:37+0000\n"
 "PO-Revision-Date: 2024-05-17 12:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -182,12 +182,12 @@ msgstr "במצב רקע, לא לכלול את ההצללות בצילום המס
 msgid "Open and edit existing screenshot file"
 msgstr "פתיחת קובץ צילום מסך קיים"
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:411
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter לא יכול לכתוב תמונה: %1"
 
-#: src/ExportManager.cpp:430
+#: src/ExportManager.cpp:426
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -197,12 +197,12 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה נכשלה:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:440
+#: src/ExportManager.cpp:436
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבה."
 
-#: src/ExportManager.cpp:460
+#: src/ExportManager.cpp:456
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,47 +212,47 @@ msgstr ""
 "אי אפשר לשמור את צילום המסך כי יצירת התיקייה המרוחקת נכשלה:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
+#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "לא ניתן לשמור צילום מסך. שגיאה בכתיבת הקובץ המקומי הזמני."
 
-#: src/ExportManager.cpp:479
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "לא ניתן לשמור תמונה. לא ניתן להעלות למקום המרוחק."
 
-#: src/ExportManager.cpp:526
+#: src/ExportManager.cpp:523
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "לא ניתן לשמור צילום מסך. שם הקובץ לשמירה שגויה."
 
-#: src/ExportManager.cpp:570
+#: src/ExportManager.cpp:567
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "לא ניתן לשמור תמונת צילום מסך ריקה."
 
-#: src/ExportManager.cpp:709
+#: src/ExportManager.cpp:707
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "יייצוא הסרטון נכשל: כתובת הקובץ הזמני חייב להיות קובץ מקומי קיים"
 
-#: src/ExportManager.cpp:716
+#: src/ExportManager.cpp:714
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr "ייצוא הסרטון נכשל: כתובת קובץ הפלט חייבת להיות כתובת תקפה עם שם קובץ"
 
-#: src/ExportManager.cpp:791
+#: src/ExportManager.cpp:789
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "לא ניתן לשמור הקלטה. לא ניתן להעביר את הקובץ למקום: %1"
 
-#: src/ExportManager.cpp:819
+#: src/ExportManager.cpp:817
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ההדפסה נכשלה. הפעלת המדפסת נכשלה."
@@ -1006,13 +1006,13 @@ msgctxt "Preview of the user configured filename"
 msgid "Preview:"
 msgstr "תצוגה מקדימה:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:38
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:73
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
@@ -1021,18 +1021,18 @@ msgstr ""
 "אפשר להשתמש בממלאי המקום הבאים בשם הקובץ, הם יוחלפו בטקסט הממשי בעת שמירת "
 "הקובץ:"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:88
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
 msgid "To save to a sub-folder"
 msgstr "כדי לשמור לתת־תיקייה"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:91
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
 msgstr "להציג פחות"
 
-#: src/Gui/SettingsDialog/SaveOptionsUtils.h:93
+#: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
@@ -1661,37 +1661,37 @@ msgstr ""
 "שהוא לא זמין. יש להשתמש ב־Spectacle עם פלזמה מבית KDE או להשתמש בכלי אחר "
 "לצילום המסך."
 
-#: src/Platforms/ImagePlatformKWin.cpp:149
+#: src/Platforms/ImagePlatformKWin.cpp:150
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "רוחב שגוי לצילום מסך של KWin:‏ %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:154
+#: src/Platforms/ImagePlatformKWin.cpp:155
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "גובה שגוי לצילום מסך של KWin:‏ %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:165
+#: src/Platforms/ImagePlatformKWin.cpp:166
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "תסדיר שגוי לצילום מסך של KWin:‏ %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:183
+#: src/Platforms/ImagePlatformKWin.cpp:184
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "לא ניתן לפתוח את מתאר הקובץ לקריאת צילום מסך של KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:255
+#: src/Platforms/ImagePlatformKWin.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "‏pipe2()‎ נכשל לצילום מסך של KWin‏: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:307
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1701,7 +1701,7 @@ msgstr ""
 "בקשת צילום המסך מ־KWin נכשלה:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:309
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1711,7 +1711,7 @@ msgstr ""
 "פרטים שכנראה עשויים לעזור:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:317
+#: src/Platforms/ImagePlatformKWin.cpp:314
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -1735,7 +1735,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "ההקלטה נכשלה: כתובת הקובץ אינה קובץ מקומי"
 
-#: src/Platforms/VideoPlatformWayland.cpp:226
+#: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1743,7 +1743,7 @@ msgid ""
 "the recording."
 msgstr "התזרים נסגר כיוון שמסך היעד השתנה באופן שקטע את ההקלטה."
 
-#: src/Platforms/VideoPlatformWayland.cpp:228
+#: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1751,7 +1751,7 @@ msgid ""
 "the recording."
 msgstr "התזרים נסגר כיוון שחלון היעד השתנה באופן שקטע את ההקלטה."
 
-#: src/Platforms/VideoPlatformWayland.cpp:230
+#: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1759,23 +1759,23 @@ msgid ""
 "way that disrupted the recording."
 msgstr "התזרים נסגר כיוון שמסך שהכיל את אזור היעד השתנה באופן שקטע את ההקלטה."
 
-#: src/Platforms/VideoPlatformWayland.cpp:258
-#, kde-format
-msgctxt "@info:shell"
-msgid "Failed to record: Unable to create folder (%1)"
-msgstr "ההקלטה נכשלה: לא ניתן ליצור תיקייה (%1)"
-
-#: src/Platforms/VideoPlatformWayland.cpp:270
+#: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "ההקלטה נכשלה: כתובת קובץ זמנית אינה קובץ מקומי (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "ההקלטה נכשלה: כתובת פלט הקובץ אינה קובץ מקומי (%1)"
+
+#: src/Platforms/VideoPlatformWayland.cpp:288
+#, kde-format
+msgctxt "@info:shell"
+msgid "Failed to record: Unable to create folder (%1)"
+msgstr "ההקלטה נכשלה: לא ניתן ליצור תיקייה (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
@@ -1921,13 +1921,13 @@ msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "אירעה שגיאה בניסיון לצלם את המסך."
 
-#: src/SpectacleCore.cpp:718
+#: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 אינו מצב תקף עבור ‎--record"
 
-#: src/SpectacleCore.cpp:954
+#: src/SpectacleCore.cpp:950
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1935,23 +1935,23 @@ msgid ""
 msgstr ""
 "צילום המסך נשמר בשם ‚%1’ אל ‚%2’ ונתיב קובץ צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "צילום המסך נשמר בשם ‚%1’ בתיקיית התמונות שלך."
 
-#: src/SpectacleCore.cpp:961
+#: src/SpectacleCore.cpp:957
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "צילום המסך נשמר בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:965
+#: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:970
+#: src/SpectacleCore.cpp:966
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1959,24 +1959,24 @@ msgid ""
 msgstr ""
 "הקלטה נשמרה בתור ‚%1’ אל ‚%2’ והנתיב לקובץ ההקלטה נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:972
+#: src/SpectacleCore.cpp:968
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "הקלטה נשמרה בתור ‚%1’ לתיקיית הסרטונים (Videos) שלך."
 
-#: src/SpectacleCore.cpp:974
+#: src/SpectacleCore.cpp:970
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "הקלטת המסך נשמרה בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:985
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "פתיחה"
 
-#: src/SpectacleCore.cpp:999
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "Annotate"
 msgstr "פירוש"
