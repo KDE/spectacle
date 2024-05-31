@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:37+0000\n"
-"PO-Revision-Date: 2024-05-27 16:33+0200\n"
+"PO-Revision-Date: 2024-05-30 13:40+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -310,18 +310,18 @@ msgstr "Písmo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
+msgstr[2] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
+msgstr[2] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -709,7 +709,7 @@ msgstr "Žádná prodleva"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "Byl nalezen kód QR: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
@@ -939,7 +939,7 @@ msgstr "Vždy"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Během podržení Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1189,7 +1189,7 @@ msgstr "Výchozí formát obrázků pro uložení"
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr ""
+msgstr "Šablona názvu souboru použitého při ukládání snímků obrazovky"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
@@ -1223,7 +1223,7 @@ msgstr "Výchozí formát videa:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr ""
+msgstr "Šablona názvu souboru použitého při ukládání sdílení obrazovky"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
@@ -1699,7 +1699,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "Záznam obrazovky není v X11 dostupný."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
@@ -1870,13 +1870,13 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr ""
+msgstr "Spectacle nahrává"
 
 #: src/SpectacleCore.cpp:257
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr ""
+msgstr "Spectacle nahrává"
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -1891,12 +1891,14 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
+"Délka nahrávání: %1\n"
+"Kliknutím ukončíte nahrávání"
 
 #: src/SpectacleCore.cpp:318
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr ""
+msgstr "Při pokusu o záznam obrazovky se vyskytla chyba."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
