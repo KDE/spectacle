@@ -15,6 +15,7 @@
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
+#include <format>
 #include <memory>
 
 using G = Geometry;
