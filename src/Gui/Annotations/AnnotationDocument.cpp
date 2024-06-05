@@ -234,7 +234,36 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
     }
 
     const auto begin = span->begin();
-    for (auto it = begin; it != span->end(); ++it) {
+    const auto end = span->end();
+    // Only highlighter needs the base image to be rendered underneath itself to function correctly.
+    const bool hasHighlighter = std::any_of(begin, end, [this, &region](History::ConstSpan::const_reference item) {
+        auto renderedItem = item == m_selectedItemWrapper->selectedItem() ? m_tempItem.get() : item.get();
+        if (!renderedItem) {
+            return false;
+        }
+        auto &visual = std::get<Traits::Visual::Opt>(renderedItem->traits());
+        if (!visual) {
+            return false;
+        }
+        return std::get<Traits::Highlight::Opt>(renderedItem->traits()).has_value() //
+            && m_history.itemVisible(item) && region.intersects(visual->rect.toAlignedRect());
+    });
+    if (hasHighlighter) {
+        bool hasDifferentClip = false;
+        QRegion oldRegion;
+        if (painter->hasClipping()) {
+            oldRegion = painter->clipRegion();
+            hasDifferentClip = oldRegion != region;
+            if (hasDifferentClip) {
+                painter->setClipRegion(region);
+            }
+        }
+        paintImageView(painter, m_baseImage);
+        if (hasDifferentClip) {
+            painter->setClipRegion(oldRegion);
+        }
+    }
+    for (auto it = begin; it != end; ++it) {
         if (!m_history.itemVisible(*it)) {
             continue;
         }
