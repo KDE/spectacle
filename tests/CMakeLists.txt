@@ -12,6 +12,14 @@ SET(FILENAME_TEST_SRCS
 # exceptions are needed for code using ZXing
 kde_source_files_enable_exceptions(../src/ExportManager.cpp)
 
+ecm_qt_declare_logging_category(FILENAME_TEST_SRCS
+    HEADER spectacle_debug.h
+    IDENTIFIER SPECTACLE_LOG
+    CATEGORY_NAME spectacle
+    DESCRIPTION "spectacle (general)"
+    EXPORT SPECTACLE
+)
+
 kconfig_add_kcfg_files(FILENAME_TEST_SRCS GENERATE_MOC ${PROJECT_SOURCE_DIR}/src/Gui/SettingsDialog/settings.kcfgc)
 
 ecm_add_test(

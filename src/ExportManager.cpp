@@ -7,6 +7,7 @@
 #include "ExportManager.h"
 #include "ImageMetaData.h"
 #include "settings.h"
+#include "DebugUtils.h"
 #include <kio_version.h>
 
 #include <QApplication>
@@ -398,24 +399,32 @@ QImage scaledImageFromSubGeometry(const QImage &image)
         return image;
     }
     const auto imageDpr = image.devicePixelRatio();
-    const bool imageIntDpr = fmod(imageDpr, 1) == 0;
+    const bool hasIntImageDpr = fmod(imageDpr, 1) == 0;
     const QRectF canvasRect{ImageMetaData::logicalXY(image), image.deviceIndependentSize()};
-    bool intersectingIntDpr = imageIntDpr;
     qreal maxIntersectingDpr = 1;
+    bool allIntIntersectingDprs = hasIntImageDpr;
+    QSet<qreal> dprSet; // set of unique device pixel ratios
     for (auto it = subGeometryList.cbegin(); it != subGeometryList.cend(); ++it) {
         const auto rect = ImageMetaData::rectFromSubGeometryPropertyMap(*it);
         const auto dpr = it->value(ImageMetaData::Keys::SubGeometryProperty::DevicePixelRatio);
         if (!rect.intersects(canvasRect)) {
             continue;
         }
-        intersectingIntDpr = intersectingIntDpr && fmod(dpr, 1) == 0;
+        allIntIntersectingDprs = allIntIntersectingDprs && fmod(dpr, 1) == 0;
         maxIntersectingDpr = std::max(maxIntersectingDpr, dpr);
+        dprSet.insert(dpr);
     }
-    if (const auto scale = maxIntersectingDpr / imageDpr; scale != 1) {
-        return image.transformed(QTransform::fromScale(scale, scale), //
-                                 fmod(imageDpr, maxIntersectingDpr) == 0 ? Qt::FastTransformation : Qt::SmoothTransformation);
+    const bool invalidDpr = maxIntersectingDpr <= 0;
+    const bool fastScale = !invalidDpr && fmod(imageDpr, maxIntersectingDpr) == 0;
+    if (invalidDpr || maxIntersectingDpr == imageDpr //
+        || (dprSet.size() > 1 && !fastScale && !allIntIntersectingDprs)) {
+        Log::debug() << "Unscaled:" << "imageDpr" << imageDpr << "maxIntersectingDpr" << maxIntersectingDpr << "allIntIntersectingDprs" << allIntIntersectingDprs << "fastScale" << fastScale;
+        return image;
     }
-    return image;
+    const qreal scale = maxIntersectingDpr / imageDpr;
+    Log::debug() << "Scaled:" << "imageDpr" << imageDpr << "maxIntersectingDpr" << maxIntersectingDpr << "allIntIntersectingDprs" << allIntIntersectingDprs << "fastScale" << fastScale << "scale" << scale;
+    return image.transformed(QTransform::fromScale(scale, scale), //
+                             fastScale ? Qt::FastTransformation : Qt::SmoothTransformation);
 }
 
 bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
