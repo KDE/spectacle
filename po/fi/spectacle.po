@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-02-14 19:17+0200\n"
+"PO-Revision-Date: 2024-03-20 18:07+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -439,12 +439,10 @@ msgid "Take a new screenshot"
 msgstr "Ota uusi ruutukaappaus"
 
 #: src/Gui/CaptureOptions.qml:39 src/Gui/DialogPage.qml:102
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Kuvakaappaukset"
+msgstr "Kuvakaappausasetukset"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -538,13 +536,10 @@ msgstr[0] "%2 sekunti"
 msgstr[1] "%2 sekuntia"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 sekunti"
+msgstr "%1 sekuntia"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -557,37 +552,31 @@ msgid "Help"
 msgstr "Ohje"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr "Kuvakaappaukset"
+msgstr "Kuvakaappaustilat"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr "Nauhoitus"
+msgstr "Nauhoitustilat"
 
 #: src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
 msgstr "Nauhoitusasetukset"
 
 #: src/Gui/DialogPage.qml:200
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Kuvakaappaus"
 
 #: src/Gui/DialogPage.qml:226
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Nauhoitus"
@@ -950,10 +939,9 @@ msgstr "Näytä ohjeet kaappaukseen"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Näytä suurennuslasi"
+msgstr "Näytä suurennuslasi:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -975,7 +963,7 @@ msgstr "Aina"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Painettaessa vaihtonäppäintä"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
