@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:37+0000\n"
+"POT-Creation-Date: 2024-06-08 00:38+0000\n"
 "PO-Revision-Date: 2024-05-17 10:08+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -195,12 +195,12 @@ msgstr "En mode segon pla, exclou les ombres en la captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Obri i edita un fitxer existent de captura de pantalla"
 
-#: src/ExportManager.cpp:411
+#: src/ExportManager.cpp:447
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter no ha pogut escriure la imatge: %1"
 
-#: src/ExportManager.cpp:426
+#: src/ExportManager.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -210,14 +210,14 @@ msgstr ""
 "No s'ha pogut guardar la captura de pantalla perquè ha fallat la creació del "
 "directori:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:436
+#: src/ExportManager.cpp:473
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. S'ha produït un error en "
 "escriure en el fitxer."
 
-#: src/ExportManager.cpp:456
+#: src/ExportManager.cpp:493
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -227,32 +227,32 @@ msgstr ""
 "No s'ha pogut guardar la captura de pantalla perquè ha fallat la creació del "
 "directori remot:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
+#: src/ExportManager.cpp:504 src/ExportManager.cpp:553
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. S'ha produït un error en "
 "escriure en el fitxer local temporal."
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "No s'ha pogut guardar la imatge. No s'ha pogut pujar a la ubicació remota."
 
-#: src/ExportManager.cpp:523
+#: src/ExportManager.cpp:560
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "No s'ha pogut guardar la captura de pantalla. El nom de fitxer que s'ha de "
 "guardar no és vàlid."
 
-#: src/ExportManager.cpp:567
+#: src/ExportManager.cpp:604
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "No s'ha pogut guardar una imatge de captura de pantalla buida."
 
-#: src/ExportManager.cpp:707
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -261,7 +261,7 @@ msgstr ""
 "No s'ha pogut exportar el vídeo: l'URL del fitxer temporal cal que siga un "
 "fitxer local existent"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:751
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -270,7 +270,7 @@ msgstr ""
 "No s'ha pogut exportar el vídeo: l'URL del fitxer d'eixida cal que siga un "
 "URL vàlid amb un nom de fitxer"
 
-#: src/ExportManager.cpp:789
+#: src/ExportManager.cpp:826
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -278,7 +278,7 @@ msgstr ""
 "No s'ha pogut guardar la gravació. No s'ha pogut moure el fitxer a la "
 "ubicació: %1"
 
-#: src/ExportManager.cpp:817
+#: src/ExportManager.cpp:854
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "No s'ha pogut imprimir. No s'ha pogut restablir la impressora."
@@ -1707,25 +1707,25 @@ msgstr ""
 "no pareix estar disponible. Utilitzeu Spectacle en Plasma de KDE o utilitzeu "
 "una eina diferent de captura de pantalla."
 
-#: src/Platforms/ImagePlatformKWin.cpp:150
+#: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Amplària incorrecta per a la captura de pantalla de KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:155
+#: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Alçària incorrecta per a la captura de pantalla de KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:166
+#: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Format incorrecte per a la captura de pantalla de KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:184
+#: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
@@ -1733,14 +1733,14 @@ msgstr ""
 "No s'ha pogut obrir el descriptor de fitxer per a llegir la captura de "
 "pantalla de KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:252
+#: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr ""
 "No s'ha pogut executar «pipe2()» per a la captura de pantalla de KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1750,7 +1750,7 @@ msgstr ""
 "La captura de pantalla sol·licitada de KWin ha fallat:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:306
+#: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1760,7 +1760,7 @@ msgstr ""
 "Informació potencialment rellevant:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:314
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

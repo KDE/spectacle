@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:37+0000\n"
+"POT-Creation-Date: 2024-06-08 00:38+0000\n"
 "PO-Revision-Date: 2024-05-22 10:56+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -181,12 +181,12 @@ msgstr "Árnyékok lehagyása a képernyőképről"
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/ExportManager.cpp:411
+#: src/ExportManager.cpp:447
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:426
+#: src/ExportManager.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -196,12 +196,12 @@ msgstr ""
 "A képernyőkép nem menthető, mert a mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:436
+#: src/ExportManager.cpp:473
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:456
+#: src/ExportManager.cpp:493
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -211,28 +211,28 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
+#: src/ExportManager.cpp:504 src/ExportManager.cpp:553
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:523
+#: src/ExportManager.cpp:560
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:567
+#: src/ExportManager.cpp:604
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:707
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:751
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:789
+#: src/ExportManager.cpp:826
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -258,7 +258,7 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:817
+#: src/ExportManager.cpp:854
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
@@ -1664,37 +1664,37 @@ msgstr ""
 "tűnik elérhetőnek. Használja a Spectacle-t a KDE Plasma alatt, vagy "
 "használjon egy másik képernyőkép-készítő eszközt."
 
-#: src/Platforms/ImagePlatformKWin.cpp:150
+#: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Rossz szélesség a KWin képernyőképhez: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:155
+#: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Rossz magasság a KWin képernyőképhez: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:166
+#: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Rossz formátum a KWin képernyőképhez: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:184
+#: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Nem sikerült megnyitni a fájlleírót a KWin képernyőkép olvasásához."
 
-#: src/Platforms/ImagePlatformKWin.cpp:252
+#: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "Sikertelen pipe2() a KWin képernyőképhez: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1704,7 +1704,7 @@ msgstr ""
 "KWin képernyőkép kérés nem sikerült:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:306
+#: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1714,7 +1714,7 @@ msgstr ""
 "Potenciálisan releváns információk:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:314
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

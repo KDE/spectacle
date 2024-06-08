@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:37+0000\n"
+"POT-Creation-Date: 2024-06-08 00:38+0000\n"
 "PO-Revision-Date: 2024-03-11 07:59-0500\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -175,12 +175,12 @@ msgstr "ਬੈਕਗਰਾਊਂਡ ਮੋਡ ਵਿੱਚ, ਸਕਰੀਨਸ਼�
 msgid "Open and edit existing screenshot file"
 msgstr "ਮੌਜੂਦਾ ਸਕਰੀਨਸ਼ਾਟ ਫ਼ਾਇਲ ਖੋਲ੍ਹੋ ਅਤੇ ਸੋਧੋ"
 
-#: src/ExportManager.cpp:411
+#: src/ExportManager.cpp:447
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:426
+#: src/ExportManager.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -190,12 +190,12 @@ msgstr ""
 "ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:436
+#: src/ExportManager.cpp:473
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:456
+#: src/ExportManager.cpp:493
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,34 +205,34 @@ msgstr ""
 "ਰਿਮੋਟ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
+#: src/ExportManager.cpp:504 src/ExportManager.cpp:553
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਆਰਜ਼ੀ ਲੋਕਲ ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "ਚਿੱਤਰ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਰਿਮੋਟ ਟਿਕਾਣੇ ਉੱਤੇ ਫ਼ਾਇਲ ਅੱਪਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।"
 
-#: src/ExportManager.cpp:523
+#: src/ExportManager.cpp:560
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਸੰਭਾਲਣ ਲਈ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਗ਼ੈਰ-ਵਾਜਬ ਹੈ।"
 
-#: src/ExportManager.cpp:567
+#: src/ExportManager.cpp:604
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ਖ਼ਾਲੀ ਸਕਰੀਨਸ਼ਾਟ ਚਿੱਤਰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: src/ExportManager.cpp:707
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "ਵੀਡੀਓ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਰਜ਼ੀ ਫਾਇਲ ਦਾ URL ਮੌਜੂਦ ਲੋਕਲ ਫਾਇਲ ਨਹੀਂ ਹੈ "
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:751
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -240,13 +240,13 @@ msgid ""
 msgstr ""
 "ਵੀਡੀਓ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਉਟਪੁੱਟ ਫਾਇਲ ਦਾ URL ਫਾਇਲ ਨਾਂ ਨਾਲ ਵਾਜਬ URL ਚਾਹੀਦਾ ਹੈ"
 
-#: src/ExportManager.cpp:789
+#: src/ExportManager.cpp:826
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ਰਿਕਾਰਡਿੰਗ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਫ਼ਾਇਲ ਨੂੰ ਟਿਕਾਣੇ ਉੱਤੇ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %1"
 
-#: src/ExportManager.cpp:817
+#: src/ExportManager.cpp:854
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ਪਰਿੰਟ ਕਰਨਾ ਅਸਫ਼ਲ ਹੈ। ਪਰਿੰਟਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
@@ -1639,38 +1639,38 @@ msgid ""
 "screenshot tool."
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:150
+#: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:155
+#: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:166
+#: src/Platforms/ImagePlatformKWin.cpp:154
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਦੇ ਬਾਅਦ:"
 
-#: src/Platforms/ImagePlatformKWin.cpp:184
+#: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:252
+#: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1678,7 +1678,7 @@ msgid ""
 "%1"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:306
+#: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1686,7 +1686,7 @@ msgid ""
 "%1"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:314
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

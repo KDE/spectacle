@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:37+0000\n"
+"POT-Creation-Date: 2024-06-08 00:38+0000\n"
 "PO-Revision-Date: 2024-05-01 00:03+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -191,12 +191,12 @@ msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:411
+#: src/ExportManager.cpp:447
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:426
+#: src/ExportManager.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,12 +206,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:436
+#: src/ExportManager.cpp:473
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:456
+#: src/ExportManager.cpp:493
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,30 +221,30 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:467 src/ExportManager.cpp:516
+#: src/ExportManager.cpp:504 src/ExportManager.cpp:553
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:512
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:523
+#: src/ExportManager.cpp:560
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:567
+#: src/ExportManager.cpp:604
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:707
+#: src/ExportManager.cpp:744
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:714
+#: src/ExportManager.cpp:751
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:789
+#: src/ExportManager.cpp:826
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:817
+#: src/ExportManager.cpp:854
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
@@ -1684,38 +1684,38 @@ msgstr ""
 "dirudi instalatuta dagoenik. Erabili «Spectacle» KDE Plasman, edo erabili "
 "pantaila-argazkietarako beste tresna bat."
 
-#: src/Platforms/ImagePlatformKWin.cpp:150
+#: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako zabalera okerra: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:155
+#: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako altuera okerra: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:166
+#: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako formatu okerra: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:184
+#: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 "Ezin izan du KWin pantaila-argazkia irakurtzeko fitxategi-deskriptorea ireki."
 
-#: src/Platforms/ImagePlatformKWin.cpp:252
+#: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "«pipe2()»k KWin pantaila-argazkirako huts egin du: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1725,7 +1725,7 @@ msgstr ""
 "KWin pantaila-argazki eskaerak huts egin du:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:306
+#: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1735,7 +1735,7 @@ msgstr ""
 "Garrantzitsua izan daitekeen informazioa:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:314
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
