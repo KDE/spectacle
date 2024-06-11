@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:38+0000\n"
-"PO-Revision-Date: 2024-03-02 16:19+0000\n"
+"PO-Revision-Date: 2024-06-09 14:49+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -310,13 +310,13 @@ msgstr "Culoare umplere"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Intensitate:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Intensitatea efectului."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -369,7 +369,7 @@ msgstr "Niciuna"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Decupează"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -440,12 +440,10 @@ msgid "Take a new screenshot"
 msgstr "Fă o captură nouă"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Capturi de ecran"
+msgstr "Configurări captură de ecran"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -557,36 +555,31 @@ msgid "Help"
 msgstr "Ajutor"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Fă o captură nouă:"
+msgstr "Face o captură:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opțiuni"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Înregistrare"
+msgstr "Face o înregistrare:"
 
 #: src/Gui/DialogPage.qml:165
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Captură de ecran"
 
 #: src/Gui/DialogPage.qml:170
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Înregistrare"
@@ -667,7 +660,7 @@ msgstr "Exportă"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Modifică…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -831,6 +824,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Apăsați și trageți pentru a efectua selecția.\n"
+"Dublu clic pe selecție pentru a accepta și decupa.\n"
+"Clic drept pentru a anula selecția."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -948,10 +944,9 @@ msgstr "Arată instrucțiuni de capturare"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Arată lupa"
+msgstr "Arată lupa:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -973,7 +968,7 @@ msgstr "Întotdeauna"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Cât e ținută Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1377,16 +1372,15 @@ msgstr "Culoarea de umplere pentru unealta de adnotare cu număr"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Ultima regiune aleasă de utilizator"
+msgstr "Intensitatea efectului de încețoșare."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Intensitatea efectului de pixelizare."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1695,32 +1689,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Lățime eronată pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Înălțime eronată pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "După preluarea capturii:"
+msgstr "Format eronat pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Nu s-a putut deschide descriptorul de fișier pentru citirea capturii KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() a eșuat pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
@@ -1729,6 +1723,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Cererea de captură de la KWin a eșuat:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
@@ -1737,26 +1733,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Informații potențial utile:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Tip nesusținut de metadate pentru captura KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Înregistrare ecran anulată"
+msgstr "Înregistrarea ecranului nu e disponibilă pe X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Difuzarea ecranului KWin nu e disponibilă."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1772,6 +1768,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Fluxul s-a închis deoarece ecranul-țintă s-a modificat într-un mod ce a "
+"deranjat înregistrarea."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1780,6 +1778,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Fluxul s-a închis deoarece fereastra-țintă s-a modificat într-un mod ce a "
+"deranjat înregistrarea."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1788,6 +1788,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Fluxul s-a închis deoarece un ecran ce conținea regiunea-țintă s-a modificat "
+"într-un mod ce a deranjat înregistrarea."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
@@ -1915,58 +1917,44 @@ msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Lansează Spectacle fără a face o captură de ecran"
+msgstr "A intervenit o eroare la preluarea capturii."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "În timp ce Spectacle rulează"
+msgstr "Spectacle înregistrează"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "În timp ce Spectacle rulează"
+msgstr "Spectacle înregistrează"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"Spectacle înregistrează: %1\n"
-"Apăsați pentru a încheia înregistrarea"
+msgstr "Apăsați pictograma din tavă pentru a încheia înregistrarea"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Spectacle înregistrează: %1\n"
+"Durata înregistrată: %1\n"
 "Apăsați pentru a încheia înregistrarea"
 
 #: src/SpectacleCore.cpp:318
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Lansează Spectacle fără a face o captură de ecran"
+msgstr "A intervenit o eroare la încercarea de a înregistra ecranul."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
