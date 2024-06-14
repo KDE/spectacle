@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-02-29 09:07+0100\n"
+"PO-Revision-Date: 2024-05-30 13:40+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -292,13 +292,13 @@ msgstr "Barva výplně"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Síla:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Síla efektu."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -310,18 +310,18 @@ msgstr "Písmo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
+msgstr[2] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
+msgstr[2] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -426,7 +426,7 @@ msgstr "Zachytit nový snímek"
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr ""
+msgstr "Nastavení snímku obrazovky"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -514,15 +514,15 @@ msgstr "Žádná prodleva"
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 sekunda"
+msgstr[1] "%2 sekundy"
+msgstr[2] "%2 sekund"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr ""
+msgstr "%1 sekund"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -538,25 +538,25 @@ msgstr "Nápověda"
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Modes"
-msgstr ""
+msgstr "Režimy snímku obrazovky"
 
 #: src/Gui/DialogPage.qml:128
 #, kde-format
 msgctxt "@title:group"
 msgid "Recording Modes"
-msgstr ""
+msgstr "Režimy nahrávání"
 
 #: src/Gui/DialogPage.qml:143
 #, kde-format
 msgctxt "@title:group"
 msgid "Recording Settings"
-msgstr ""
+msgstr "Nastavení záznamu"
 
 #: src/Gui/DialogPage.qml:200
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
-msgstr ""
+msgstr "Snímek obrazovky"
 
 #: src/Gui/DialogPage.qml:226
 #, kde-format
@@ -640,7 +640,7 @@ msgstr "Exportovat"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Upravit…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -709,7 +709,7 @@ msgstr "Žádná prodleva"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "Byl nalezen kód QR: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
@@ -917,7 +917,7 @@ msgstr "Zobrazit instrukce sejmutí"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, kde-format
 msgid "Show magnifier:"
-msgstr ""
+msgstr "Zobrazit lupu:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -939,7 +939,7 @@ msgstr "Vždy"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Během podržení Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1015,13 +1015,13 @@ msgstr "Pro uložení do podsložky"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Zobrazit méně"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:94
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Zobrazit více"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
@@ -1189,13 +1189,13 @@ msgstr "Výchozí formát obrázků pro uložení"
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr ""
+msgstr "Šablona názvu souboru použitého při ukládání snímků obrazovky"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr ""
+msgstr "Snímek obrazovky"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1223,7 +1223,7 @@ msgstr "Výchozí formát videa:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr ""
+msgstr "Šablona názvu souboru použitého při ukládání sdílení obrazovky"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
@@ -1235,7 +1235,7 @@ msgstr ""
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr ""
+msgstr "Sdílení obrazovky"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1337,13 +1337,13 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
 #, kde-format
 msgid "The strength of the blur effect."
-msgstr ""
+msgstr "Síla efektu rozmazání."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Síla efektu pixelizace."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1699,7 +1699,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "Záznam obrazovky není v X11 dostupný."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
@@ -1880,7 +1880,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr ""
+msgstr "Při pokusu o záznam obrazovky se vyskytla chyba."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
