@@ -4,6 +4,7 @@
 
 #include "History.h"
 #include <QDebug>
+#include <ranges>
 
 using namespace Qt::StringLiterals;
 
@@ -162,18 +163,19 @@ bool History::operator==(const History &other) const
     return m_undoList == other.m_undoList && m_redoList == other.m_redoList;
 }
 
-const History::ConstList &History::undoList() const
+static inline HistoryItem::const_shared_ptr castToImmutable(const HistoryItem::shared_ptr &item)
 {
-    // reinterpret_cast can be dangerous. It's like telling the compiler to
-    // act like this type is another type regardless of whether or not they're really compatible.
-    // List and ConstList should be compatible. ConstList's only difference from List is that
-    // ConstList has a const value type.
-    return reinterpret_cast<const History::ConstList &>(m_undoList);
+    return std::static_pointer_cast<const HistoryItem, HistoryItem>(item);
 }
 
-const History::ConstList &History::redoList() const
+History::ImmutableView History::undoList() const
 {
-    return reinterpret_cast<const History::ConstList &>(m_redoList);
+    return std::ranges::transform_view{RefView{m_undoList}, &castToImmutable};
+}
+
+History::ImmutableView History::redoList() const
+{
+    return std::ranges::transform_view{RefView{m_redoList}, &castToImmutable};
 }
 
 History::List::size_type History::currentIndex() const
@@ -276,7 +278,7 @@ History::ListsChangedResult History::clearLists()
     return {clearUndoList(), clearRedoList()};
 }
 
-bool History::itemVisible(ConstList::const_reference item) const
+bool History::itemVisible(const HistoryItem::const_shared_ptr &item) const
 {
     if (!item || !item->visibleTraits()) {
         return false;

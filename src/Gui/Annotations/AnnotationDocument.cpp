@@ -171,14 +171,14 @@ void AnnotationDocument::cropCanvas(const QRectF &cropRect)
     path.addRect(newCanvasRect);
     std::get<Traits::Geometry::Opt>(newItem->traits()).emplace(path);
     std::get<Traits::Meta::Crop::Opt>(newItem->traits()).emplace();
-    auto &undoList = m_history.undoList();
-    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
-        auto item = it->get();
+    const auto &undoList = m_history.undoList();
+    for (auto it = std::ranges::crbegin(undoList); it != std::ranges::crend(undoList); ++it) {
+        const auto item = *it;
         if (!item) {
             continue;
         }
         if (std::get<Traits::Meta::Crop::Opt>(item->traits()).has_value()) {
-            HistoryItem::setItemRelations(*it, newItem);
+            HistoryItem::setItemRelations(item, newItem);
             break;
         }
     }
@@ -221,24 +221,24 @@ void AnnotationDocument::paintImageView(QPainter *painter, const QImage &image, 
     }
 }
 
-void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &region, std::optional<History::ConstSpan> span) const
+void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &region, std::optional<History::SubRange> range) const
 {
     if (!painter || region.isEmpty()) {
         return;
     }
     const auto &undoList = m_history.undoList();
-    if (undoList.empty() || (span && span->empty())) {
+    if (undoList.empty() || (range && range->empty())) {
         return;
     }
-    if (!span) {
-        span.emplace(undoList);
+    if (!range) {
+        range.emplace(undoList);
     }
 
-    const auto begin = span->begin();
-    const auto end = span->end();
+    const auto begin = range->begin();
+    const auto end = range->end();
     // Only highlighter needs the base image to be rendered underneath itself to function correctly.
-    const bool hasHighlighter = std::any_of(begin, end, [this, &region](History::ConstSpan::const_reference item) {
-        auto renderedItem = item == m_selectedItemWrapper->selectedItem() ? m_tempItem.get() : item.get();
+    const bool hasHighlighter = std::any_of(begin, end, [this, &region](const HistoryItem::const_shared_ptr &item) {
+        const auto &renderedItem = item == m_selectedItemWrapper->selectedItem() ? m_tempItem : item;
         if (!renderedItem) {
             return false;
         }
@@ -265,11 +265,12 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
         }
     }
     for (auto it = begin; it != end; ++it) {
-        if (!m_history.itemVisible(*it)) {
+        const auto item = *it;
+        if (!m_history.itemVisible(item)) {
             continue;
         }
         // Render the temporary item instead if this item is selected.
-        auto renderedItem = *it == m_selectedItemWrapper->selectedItem() ? m_tempItem.get() : it->get();
+        const auto &renderedItem = item == m_selectedItemWrapper->selectedItem() ? m_tempItem : item;
         if (!renderedItem) {
             continue;
         }
@@ -304,9 +305,9 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
                 break;
             case Traits::Fill::Blur: {
                 auto &blur = std::get<Fill::Blur>(fill);
-                auto untilNow = std::span{begin, it};
+                auto untilNow = History::SubRange{begin, it};
                 auto getImage = [this, untilNow] {
-                    return spanImage(untilNow);
+                    return rangeImage(untilNow);
                 };
                 const auto &rect = geometry->path.boundingRect();
                 const auto &image = blur.image(getImage, rect, imageDpr());
@@ -315,9 +316,9 @@ void AnnotationDocument::paintAnnotations(QPainter *painter, const QRegion &regi
             } break;
             case Traits::Fill::Pixelate: {
                 auto &pixelate = std::get<Fill::Pixelate>(fill);
-                auto untilNow = std::span{begin, it};
+                auto untilNow = History::SubRange{begin, it};
                 auto getImage = [this, untilNow] {
-                    return spanImage(untilNow);
+                    return rangeImage(untilNow);
                 };
                 const auto &rect = geometry->path.boundingRect();
                 const auto &image = pixelate.image(getImage, rect, imageDpr());
@@ -377,11 +378,11 @@ QImage AnnotationDocument::renderToImage()
     return image;
 }
 
-QImage AnnotationDocument::spanImage(History::ConstSpan span) const
+QImage AnnotationDocument::rangeImage(History::SubRange range) const
 {
     auto image = m_baseImage;
     QPainter p(&image);
-    paintAnnotations(&p, deviceIndependentRect(m_baseImage).toAlignedRect(), span);
+    paintAnnotations(&p, deviceIndependentRect(m_baseImage).toAlignedRect(), range);
     p.end();
     return image;
 }
@@ -411,8 +412,8 @@ HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) con
 {
     const auto &undoList = m_history.undoList();
     // Precisely the first time so that users can get exactly what they click.
-    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
-        auto &item = *it;
+    for (auto it = std::ranges::crbegin(undoList); it != std::ranges::crend(undoList); ++it) {
+        const auto item = *it;
         if (m_history.itemVisible(item)) {
             auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
             if (interactive->path.contains(rect.center())) {
@@ -425,8 +426,8 @@ HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) con
         return nullptr;
     }
     // Forgiving if that failed so that you don't need to be perfect.
-    for (auto it = undoList.crbegin(); it != undoList.crend(); ++it) {
-        auto &item = *it;
+    for (auto it = std::ranges::crbegin(undoList); it != std::ranges::crend(undoList); ++it) {
+        const auto item = *it;
         if (m_history.itemVisible(item)) {
             QPainterPath path(rect.topLeft());
             path.addEllipse(rect);
@@ -441,13 +442,14 @@ HistoryItem::const_shared_ptr AnnotationDocument::itemAt(const QRectF &rect) con
 
 void AnnotationDocument::undo()
 {
-    const auto undoCount = m_history.undoList().size();
+    const auto &undoList = m_history.undoList();
+    const auto undoCount = undoList.size();
     if (!undoCount) {
         return;
     }
 
     auto currentItem = m_history.currentItem();
-    auto prevItem = undoCount > 1 ? m_history.undoList()[undoCount - 2] : nullptr;
+    auto prevItem = undoCount > 1 ? undoList[undoCount - 2] : nullptr;
     setRepaintRegion(currentItem->renderRect());
     if (prevItem) {
         setRepaintRegion(prevItem->renderRect());
@@ -480,12 +482,13 @@ void AnnotationDocument::undo()
 
 void AnnotationDocument::redo()
 {
-    if (m_history.redoList().empty()) {
+    const auto &redoList = m_history.redoList();
+    if (redoList.empty()) {
         return;
     }
 
     auto currentItem = m_history.currentItem();
-    auto nextItem = *m_history.redoList().crbegin();
+    auto nextItem = *std::ranges::crbegin(redoList);
     setRepaintRegion(nextItem->renderRect());
     if (currentItem) {
         setRepaintRegion(currentItem->renderRect());
