@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-16 02:51+0000\n"
-"PO-Revision-Date: 2024-06-13 00:48+0300\n"
+"PO-Revision-Date: 2024-06-18 00:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1724,18 +1724,16 @@ msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Desteklenmeyen KWin ekran görüntüsü türü üst veri: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Ekran kaydı iptal edildi"
+msgstr "Ekran kaydı X11 üzerinde kullanılamıyor."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin ekran yayını kullanılamıyor."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1750,6 +1748,7 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Akış kapatıldı; çünkü hedef ekran, kaydı bozar bir biçimde değiştirildi."
 
 #: src/Platforms/VideoPlatformWayland.cpp:228
 #, kde-format
@@ -1758,6 +1757,7 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Akış kapatıldı; çünkü hedef pencere, kaydı bozar bir biçimde değiştirildi."
 
 #: src/Platforms/VideoPlatformWayland.cpp:230
 #, kde-format
@@ -1766,6 +1766,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Akış kapatıldı; çünkü hedef bölgeyi içeren bir ekran, kaydı bozar bir "
+"biçimde değiştirildi."
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1906,12 +1908,10 @@ msgstr ""
 "Kaydı bitirmek için tıkla"
 
 #: src/SpectacleCore.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "An error occurred while taking a screenshot."
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Ekran görüntüsü alınırken bir hata oluştu."
+msgstr "Ekranı kaydetmeye çalışırken bir hata oluştu."
 
 #: src/SpectacleCore.cpp:672
 #, kde-format
@@ -1986,137 +1986,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid ""
-#~ "Could not take a screenshot. Please report this bug here: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
-#~ "spectacle bug</a>"
-#~ msgstr ""
-#~ "Bir ekran görüntüsü alınamadı. Lütfen, <a href=\"https://bugs.kde.org/"
-#~ "enter_bug.cgi?product=Spectacle\">adresinden</a> bir hata kaydı açın"
-
-#~ msgid "Screenshot capture canceled or failed"
-#~ msgstr "Ekran görüntüsü iptal edildi veya başarılı olmadı"
-
-#~ msgid "Show Annotation Tools"
-#~ msgstr "Bilgi Notu Araçlarını Göster"
-
-#~ msgid "Whether to show a magnifier in the region selection"
-#~ msgstr "Bölge seçiminde büyüteç gösterilip gösterilmeyeceği"
-
-#~ msgid "Capture Modes"
-#~ msgstr "Yakalama Kipleri"
-
-#~ msgctxt "Decimal number of seconds"
-#~ msgid "%2 seconds"
-#~ msgstr "%2 saniye"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Day"
-#~ msgstr "Gün"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month"
-#~ msgstr "Ay"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized short name)"
-#~ msgstr "Ay (yerelleştirilmiş kısa ad)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized long name)"
-#~ msgstr "Ay (yerelleştirilmiş uzun ad)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (2 digit)"
-#~ msgstr "Yıl (2 basamaklı)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (4 digit)"
-#~ msgstr "Yıl (4 basamaklı)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Hour"
-#~ msgstr "Saat"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Minute"
-#~ msgstr "Dakika"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Second"
-#~ msgstr "saniye"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Timezone"
-#~ msgstr "Zaman dilimi"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Window Title"
-#~ msgstr "Pencere başlığı"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
-#~ msgstr "Ek '#' karakter eklenerek doldurulan sıralı numaralandırma"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering"
-#~ msgstr "Sıralı numaralandırma"
-
-#~ msgid "The default filename used when recording a video"
-#~ msgstr "Bir video kaydederken kullanılan öntanımlı dosya adı"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Region"
-#~ msgstr "Bölge"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Screen"
-#~ msgstr "Ekran"
-
-#~ msgid "Workspace"
-#~ msgstr "Çalışma Alanı"
-
-#~ msgid "Selected Window"
-#~ msgstr "Seçili Pencere"
-
-#~ msgid "Failed to select output"
-#~ msgstr "Çıktı seçilemedi"
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Video format:"
-#~ msgstr "Video biçimi:"
-
-#~| msgid "Save"
-#~ msgctxt "Settings category"
-#~ msgid "Save"
-#~ msgstr "Kaydetme"
-
-#~ msgid "File format for saved screen recordings"
-#~ msgstr "Kaydedilecek ekran kayıtları için dosya biçimi"
