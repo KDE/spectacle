@@ -5,7 +5,7 @@
 #pragma once
 
 #include "Traits.h"
-#include <span>
+#include <ranges>
 
 class HistoryItem;
 class History;
@@ -130,8 +130,9 @@ class History
 {
 public:
     using List = QList<HistoryItem::shared_ptr>;
-    using ConstList = QList<HistoryItem::const_shared_ptr>;
-    using ConstSpan = std::span<const HistoryItem::const_shared_ptr>;
+    using RefView = std::ranges::ref_view<const History::List>;
+    using ImmutableView = const std::ranges::transform_view<RefView, HistoryItem::const_shared_ptr (*)(const HistoryItem::shared_ptr &)>;
+    using SubRange = std::ranges::subrange<decltype(std::declval<ImmutableView>().begin())>;
 
     struct ListsChangedResult {
         bool undoListChanged = false;
@@ -155,8 +156,8 @@ public:
 
     bool operator==(const History &other) const;
 
-    const ConstList &undoList() const;
-    const ConstList &redoList() const;
+    ImmutableView undoList() const;
+    ImmutableView redoList() const;
 
     // The index of the last undo object or -1 if the list is empty.
     List::size_type currentIndex() const;
@@ -193,7 +194,7 @@ public:
     ListsChangedResult clearLists();
 
     // Whether the item is visible, in the undo list and without a child also in the undo list.
-    bool itemVisible(ConstList::const_reference item) const;
+    bool itemVisible(const HistoryItem::const_shared_ptr &item) const;
 
 protected:
     friend QDebug operator<<(QDebug debug, const History &history);

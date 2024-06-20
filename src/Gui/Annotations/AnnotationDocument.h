@@ -141,10 +141,10 @@ private:
     // Paint the annotations intersecting the region.
     // The region is expected to be in image coordinates.
     // If the span is not set, all annotations intersecting the region will be painted.
-    void paintAnnotations(QPainter *painter, const QRegion &imageRegion, std::optional<History::ConstSpan> span = std::nullopt) const;
+    void paintAnnotations(QPainter *painter, const QRegion &imageRegion, std::optional<History::SubRange> range = std::nullopt) const;
 
     // Get an image that only uses a part of the history.
-    QImage spanImage(History::ConstSpan span) const;
+    QImage rangeImage(History::SubRange range) const;
 
     void addItem(const HistoryItem::shared_ptr &item);
 
