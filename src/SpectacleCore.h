@@ -150,9 +150,6 @@ private:
     // so we have to use std::vector. Something about use of a deleted unique_ptr function.
     std::vector<CaptureWindow::UniquePointer> m_captureWindows;
 
-    bool m_copyImageToClipboard = false;
-    bool m_copyLocationToClipboard = false;
-    bool m_saveToOutput = false;
     std::array<bool, CommandLineOptions::TotalOptions> m_cliOptions = {};
 
     QUrl m_editExistingUrl;
