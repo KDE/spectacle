@@ -21,12 +21,12 @@ int main()
     // Preserve old defaults for existing users that didn't already have these set.
     auto imageSaveGroup = spectaclerc->group(QStringLiteral("ImageSave"));
     if (isEntryDefault(imageSaveGroup, "imageFilenameTemplate")) {
-        imageSaveGroup.writeEntry("imageFilenameTemplate", "Screenshot_%Y%M%D_%H%m%S");
+        imageSaveGroup.writeEntry("imageFilenameTemplate", "Screenshot_<yyyy><MM><dd>_<HH><mm><ss>");
     }
 
     auto videoSaveGroup = spectaclerc->group(QStringLiteral("VideoSave"));
     if (isEntryDefault(videoSaveGroup, "videoFilenameTemplate")) {
-        videoSaveGroup.writeEntry("videoFilenameTemplate", "Screencast_%Y%M%D_%H%m%S");
+        videoSaveGroup.writeEntry("videoFilenameTemplate", "Screencast_<yyyy><MM><dd>_<HH><mm><ss>");
     }
 
     return spectaclerc->sync() ? 0 : 1;
