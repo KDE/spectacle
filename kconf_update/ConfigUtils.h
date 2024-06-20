@@ -51,7 +51,7 @@ inline void replaceEntryValues(KConfigGroup &group, const char *key,
     }
 };
 
-inline bool continueUpdate(const QString &fileName, const QString &isoDateTime = {})
+inline bool isFileOlderThanDateTime(const QString &fileName, const QString &isoDateTime = {})
 {
     const auto path = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, fileName);
     // false if there is no existing user config.
