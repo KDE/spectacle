@@ -68,23 +68,28 @@ void FilenameTest::testDateTokens()
 
 void FilenameTest::testWindowTitle()
 {
+    enum : std::size_t {
+        WithTitle,
+        WithoutTitle,
+        ArraySize,
+    };
+    static const QMap<QString, std::array<QString, ArraySize>> comparisons{
+        {u"<title>"_s, {u"Spectacle"_s, u"Screenshot"_s}}, // Empty String produces Screenshot
+        {u"Before<title>After"_s, {u"BeforeSpectacleAfter"_s, u"BeforeAfter"_s}},
+        {u"Before_<title>_After"_s, {u"Before_Spectacle_After"_s, u"Before_After"_s}},
+        {u"Before_<title>"_s, {u"Before_Spectacle"_s, u"Before"_s}},
+        {u"<title>_After"_s, {u"Spectacle_After"_s, u"After"_s}},
+        {u"<mm><title><ss>"_s, {u"43Spectacle25"_s, u"4325"_s}},
+        {u"<mm>_<title>_<ss>"_s, {u"43_Spectacle_25"_s, u"43_25"_s}},
+    };
     mExportManager->setWindowTitle(u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<title>"_s), u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before<title>After"_s), u"BeforeSpectacleAfter"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before_<title>_After"_s), u"Before_Spectacle_After"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before_<title>"_s), u"Before_Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<title>_After"_s), u"Spectacle_After"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<mm><title><ss>"_s), u"43Spectacle25"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<mm>_<title>_<ss>"_s), u"43_Spectacle_25"_s);
+    for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
+        QCOMPARE(mExportManager->formattedFilename(it.key()), it.value()[WithTitle]);
+    }
     mExportManager->setWindowTitle({});
-    // Empty String produces Screenshot
-    QCOMPARE(mExportManager->formattedFilename(u"<title>"_s), u"Screenshot"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before<title>After"_s), u"BeforeAfter"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before_<title>_After"_s), u"Before_After"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"Before_<title>"_s), u"Before"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<title>_After"_s), u"After"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<mm><title><ss>"_s), u"4325"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"<mm>_<title>_<ss>"_s), u"43_25"_s);
+    for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
+        QCOMPARE(mExportManager->formattedFilename(it.key()), it.value()[WithoutTitle]);
+    }
 }
 
 void FilenameTest::testNumbering()
