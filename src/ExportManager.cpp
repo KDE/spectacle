@@ -237,20 +237,21 @@ inline static void removeEmptyPlaceholderAndSeparators(const QString &placeholde
     // separator chars, other characters or just text. Because of that, we need to match all of
     // these. I don't want to make a massive regex because that would be a PITA to read and debug.
 
-    // Remove `beforeAndAfter` if separator chars are the only other chars around the placeholder.
-    const auto beforeAndAfter = separatorsBefore % placeholder % separatorsAfter;
-    if (string.contains(QRE(u"/%1/|^%1$"_s.arg(beforeAndAfter)))) {
-        string.remove(QRE(beforeAndAfter));
+    const auto beforeAndAfter = u"%1?%2%3?"_s.arg(separatorsBefore, placeholder, separatorsAfter);
+    const QRE wholeString(u"^%1$"_s.arg(beforeAndAfter));
+    if (string.contains(wholeString)) {
+        // Replace placeholder with default screenshot name.
+        string.replace(placeholder, u"Screenshot"_s);
+        return; // We parsed the whole string already.
     }
+    const QRE betweenDirs(u"/%1/"_s.arg(beforeAndAfter));
+    string.replace(betweenDirs, u"/"_s);
     // Remove these first so that text before the placeholder is more likely to be preserved.
     const QRE after(placeholder % separatorsAfter);
-    if (string.contains(after)) {
-        string.remove(after);
-    }
+    string.remove(after);
+    // 
     const QRE before(separatorsBefore % placeholder);
-    if ( string.contains(before)) {
-        string.remove(before);
-    }
+    string.remove(before);
     // Just remove the placeholder if none of the other matches work.
     string.remove(placeholder);
 }
