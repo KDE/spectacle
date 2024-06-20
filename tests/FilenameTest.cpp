@@ -81,6 +81,10 @@ void FilenameTest::testWindowTitle()
         {u"<title>_After"_s, {u"Spectacle_After"_s, u"After"_s}},
         {u"<mm><title><ss>"_s, {u"43Spectacle25"_s, u"4325"_s}},
         {u"<mm>_<title>_<ss>"_s, {u"43_Spectacle_25"_s, u"43_25"_s}},
+        {u"<mm>/<title>/<title>/<ss>"_s, {u"43/Spectacle/Spectacle/25"_s, u"43/25"_s}},
+        {u"<mm>_<title>/<title>_<ss>"_s, {u"43_Spectacle/Spectacle_25"_s, u"43/25"_s}},
+        {u"<mm>_/<title>/_<ss>"_s, {u"43_/Spectacle/_25"_s, u"43_/_25"_s}},
+        {u"<mm>_/_<title>_/_<ss>"_s, {u"43_/_Spectacle_/_25"_s, u"43_/_25"_s}},
     };
     mExportManager->setWindowTitle(u"Spectacle"_s);
     for (auto it = comparisons.cbegin(); it != comparisons.cend(); ++it) {
@@ -121,11 +125,12 @@ void FilenameTest::testNumbering()
 void FilenameTest::testCombined()
 {
     mExportManager->setWindowTitle(u"Spectacle"_s);
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s),
-             u"App_Spectacle_Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
+    static const auto filenameTemplate = u"App_<title>/Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s;
+    QCOMPARE(mExportManager->formattedFilename(filenameTemplate),
+             u"App_Spectacle/Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
     mExportManager->setWindowTitle({});
-    QCOMPARE(mExportManager->formattedFilename(u"App_<title>_Date_<yyyy><MM><dd>_Time_<hh>:<mm>:<ss><AP><notaplaceholder>"_s),
-             u"App_Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
+    QCOMPARE(mExportManager->formattedFilename(filenameTemplate),
+             u"App/Date_20190322_Time_08:43:25PM<notaplaceholder>"_s);
 }
 
 QTEST_GUILESS_MAIN(FilenameTest)
