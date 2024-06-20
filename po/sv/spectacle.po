@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-17 00:38+0000\n"
-"PO-Revision-Date: 2023-07-26 14:21+0200\n"
+"PO-Revision-Date: 2024-06-19 17:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -98,6 +98,10 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Spela in skärmen med angivet läge. Lägen:\n"
+"- r, område\n"
+"- s, skärm\n"
+"- w, fönster"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
@@ -173,10 +177,9 @@ msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Exkludera fönsterdekorationer på skärmbilden i bakgrundsläge"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Exkludera fönsterdekorationer på skärmbilden i bakgrundsläge"
+msgstr "Undanta skuggor på skärmbilden i bakgrundsläge"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -239,6 +242,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Misslyckades exportera video: Tillfällig webbadress måste vara en befintlig "
+"lokal fil"
 
 #: src/ExportManager.cpp:743
 #, kde-format
@@ -246,13 +251,14 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Misslyckades exportera video: Utdatafilens webbadress måste vara en giltig "
+"webbadress med ett filnamn"
 
 #: src/ExportManager.cpp:818
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Kan inte spara bild. Kunde inte ladda upp filen till fjärrplats."
+msgstr "Kan inte spara inspelning. Kunde inte flytta filen till platsen: %1"
 
 #: src/ExportManager.cpp:846
 #, kde-format
@@ -272,8 +278,8 @@ msgstr "Streck:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 bildpunkt"
+msgstr[1] "%1 bildpunkter"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -299,13 +305,13 @@ msgstr "Fyllnadsfärg"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Styrka:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Effektens styrka."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -317,16 +323,16 @@ msgstr "Teckensnitt:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1 punkt"
+msgstr[1] "%2 %3 %1 punkter"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1 punkt"
+msgstr[1] "%2 %1 punkter"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -356,7 +362,7 @@ msgstr "Ingen"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Beskär"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -426,11 +432,10 @@ msgid "Take a new screenshot"
 msgstr "Ta en ny skärmbild"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Skärmbild"
+msgstr "Skärmbildsinställningar"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -455,17 +460,14 @@ msgid ""
 msgstr "Visa fönstrets namnlist och kant när en skärmbild av ett fönster tas."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Inkludera fönstrets namnlist och kanter"
+msgstr "Inkludera fönstrets skugga"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Visa fönstrets namnlist och kant när en skärmbild av ett fönster tas."
+msgstr "Visa fönstrets skugga när en skärmbild av ett fönster tas."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -521,24 +523,18 @@ msgid "No Delay"
 msgstr "Ingen fördröjning"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekund"
-msgstr[1] "%1 sekunder"
+msgstr[0] "%2 sekund"
+msgstr[1] "%2 sekunder"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 sekund"
+msgstr "%1 sekunder"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -551,36 +547,31 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Ta skärmbild:"
+msgstr "Ta en skärmbild:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Alternativ"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Inspelning"
+msgstr "Gör en inspelning:"
 
 #: src/Gui/DialogPage.qml:165
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Skärmbild"
 
 #: src/Gui/DialogPage.qml:170
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Inspelning"
@@ -621,18 +612,16 @@ msgid "Image Zoom"
 msgstr "Bildzoomning"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Skärmbilden har kopierats till klippbordet."
+msgstr "Videons plats har kopierats till klippbordet."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Skärmbilden har kopierats till klippbordet."
+msgstr "Skärmbildens plats har kopierats till klippbordet."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -650,10 +639,9 @@ msgid "Copy"
 msgstr "Kopiera"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Kopiera plats till klippbordet"
+msgstr "Kopiera plats"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -664,7 +652,7 @@ msgstr "Exportera"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Redigera…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -707,7 +695,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Visa fönstrets skugga"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -737,12 +725,12 @@ msgstr "Ingen fördröjning"
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR-kod hittades: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:22
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Hittade QR-kod med binärt innehåll."
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
@@ -787,16 +775,13 @@ msgstr ""
 "%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Skärmbilden har sparats som (<a href=\"%1\">%2</a>) och platsen har "
-"kopierats till klippbordet"
+"Videon har sparats som <a href=\"%1\">%2</a> och platsen har kopierats till "
+"klippbordet"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -830,6 +815,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Klicka och dra för att markera.\n"
+"Dubbelklicka på markeringen för att acceptera och beskära.\n"
+"Högerklicka för att avmarkera."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -947,10 +935,9 @@ msgstr "Visa tagningsinstruktioner"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Visa förstoringsglas"
+msgstr "Visa förstoringsglas:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -972,7 +959,7 @@ msgstr "Alltid"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "När Skift hålls nere"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1027,24 +1014,19 @@ msgid "Preview:"
 msgstr "Förhandsgranskning:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
 "Följande platsmarkörer kan användas i filnamnet, som ersätts med verklig "
-"text när filen sparas:<blockquote>"
+"text när filen sparas:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
@@ -1055,17 +1037,16 @@ msgstr "För att spara i en underkatalog"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Visa färre"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Visa fler"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Allmänt"
@@ -1074,17 +1055,16 @@ msgstr "Allmänt"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Spara bilder"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Spara video"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Genvägar"
@@ -1169,10 +1149,9 @@ msgstr "Om muspekaren inkluderas på skärmbilden"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Om muspekaren inkluderas på skärmbilden"
+msgstr "Om muspekaren inkluderas i videon"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1182,10 +1161,9 @@ msgstr "Om fönsterdekorationerna inkluderas på skärmbilden"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Om fönsterdekorationerna inkluderas på skärmbilden"
+msgstr "Om fönsterskuggan inkluderas på skärmbilden"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
@@ -1220,11 +1198,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Komprimeringskvalitet för destruktiva filformat"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:144
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Skärmbild"
+msgstr "Skärmbilder"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
@@ -1234,14 +1211,12 @@ msgstr "Förvalt bildformat att spara med"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Förvalt filnamn som användes när bilden sparades"
+msgstr "Filnamnsmallen som används när skärmbilder sparas"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Skärmbild"
@@ -1264,31 +1239,27 @@ msgstr "Senaste sökväg använd för åtgärden \"spara som\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Förvalt bildformat att spara med"
+msgstr "Förvalt videoformat"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Förvalt filnamn som användes när bilden sparades"
+msgstr "Filnamnsmallen som används när skärmsändningar sparas"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Skärmbild"
+msgstr "Skärmsändningar"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Skärmbild"
+msgstr "Skärmsändning"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1382,23 +1353,21 @@ msgstr "Ifyllnadsfärg för kommentarverktyget ellips"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "Ifyllnadsfärg för kommentarverktyget rektangel"
+msgstr "Ifyllnadsfärg för kommentarverktyget nummer"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Det senast använda området som användaren markerade"
+msgstr "Suddighetseffektens styrka."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Bildpunktseffektens styrka."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1464,43 +1433,34 @@ msgstr "Om kommentarverktyget nummer har en fallskugga"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Plats att spara:"
+msgstr "P&lats att spara:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Bild delades"
+msgstr "Video delades"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Bild delades"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"Länken för den delade bilden (<a href=\"%1\">%1</a>) har kopierats till "
+"Länken för den delade videon (<a href=\"%1\">%1</a>) har kopierats till "
 "klippbordet."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1510,18 +1470,16 @@ msgstr ""
 "klippbordet."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Ett problem uppstod att dela bilden: %1"
+msgstr "Ett problem uppstod när videon skulle delas: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr "Ett problem uppstod att dela bilden: %1"
+msgstr "Ett problem uppstod när bilden skulle delas: %1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
@@ -1716,32 +1674,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Felaktig bredd för Kwin-skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Felaktig höjd för Kwin-skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Efter en skärmbild har tagits:"
+msgstr "Felaktigt format för Kwin-skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Kunde inte öppna fildeskriptor för att läsa Kwin-skärmbild."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() misslyckades för Kwin skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
@@ -1750,6 +1707,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Kwin skärmbildsbegäran misslyckades:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
@@ -1758,30 +1717,32 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potentiellt relevant information:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Kwin skärmbild metadatatyp stöds inte: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "Skärminspelning är inte tillgänglig på X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Kwin skärmsändning är inte tillgänglig."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Misslyckades spela in. Filens webbadress är inte en lokal fil."
 
 #: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
@@ -1790,6 +1751,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Strömmen stängdes eftersom målskärmen ändrades på ett sätt som störde "
+"inspelningen."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1798,6 +1761,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Strömmen stängdes eftersom målfönstret ändrades på ett sätt som störde "
+"inspelningen."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1806,87 +1771,81 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Strömmen stängdes eftersom skärmen som innehåller målregionen ändrades på "
+"ett sätt som störde inspelningen."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "Misslyckades spela in: Tillfällig webbadress är inte en lokal fil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Misslyckades spela in. Utdatafilens webbadress är inte en lokal fil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Misslyckades spela in: Kan inte skapa katalog (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Skärminspelning avbruten"
 
 #: src/Platforms/VideoPlatformWayland.cpp:318
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Fönsterinspelning avbruten"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Misslyckades välja fönster"
+msgstr "Misslyckades välja skärm: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:326
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Misslyckades välja fönster"
+msgstr "Misslyckades välja fönster: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "Misslyckades välja skärm: Ingen skärm innehöll muspekarens position"
 
 #: src/Platforms/VideoPlatformWayland.cpp:361
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Misslyckades välja fönster"
+msgstr "Misslyckades välja fönster: Inget fönster hittades"
 
 #: src/RecordingModeModel.cpp:71
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Rektangulärt område"
 
 #: src/RecordingModeModel.cpp:74
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Fullskärm"
 
 #: src/RecordingModeModel.cpp:77
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Fönsternamn"
+msgstr "Fönster"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1919,22 +1878,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Ta en bild av fönster under markör"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Vald bildskärm"
+msgstr "Spela in skärm"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Inspelning"
+msgstr "Spela in fönster"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Rektangulärt område"
+msgstr "Spela in rektangulärt område"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1942,31 +1898,28 @@ msgid "Launch Spectacle without capturing"
 msgstr "Starta Spectacle utan tagning"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Starta Spectacle utan att ta en skärmbild"
+msgstr "Ett fel uppstod när en skärmbild skulle tas."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "När Spectacle kör"
+msgstr "Spectacle spelar in"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "När Spectacle kör"
+msgstr "Spectacle spelar in"
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
+msgstr "Klicka på ikonen i systembrickan för att avsluta inspelning"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -1975,19 +1928,20 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
+"Inspelad tid: %1\n"
+"Klicka för att avsluta inspelning"
 
 #: src/SpectacleCore.cpp:318
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Starta Spectacle utan att ta en skärmbild"
+msgstr "Ett fel uppstod vid försök att spela in skärmen."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 är inte ett giltigt läge för --record"
 
 #: src/SpectacleCore.cpp:950
 #, kde-format
@@ -2015,30 +1969,24 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har sparats på klippbordet."
 
 #: src/SpectacleCore.cpp:966
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
-"kopierats till klippbordet."
+"En inspelning har sparats som '%1' i '%2' och inspelningens filsökväg har "
+"sparats på klippbordet."
 
 #: src/SpectacleCore.cpp:968
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
+msgstr "En inspelning har sparats som '%1' i videokatalogen."
 
 #: src/SpectacleCore.cpp:970
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "En skärmbild har sparats som '%1' i '%2'."
+msgstr "En inspelning har sparats som '%1' i '%2'."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
@@ -2055,13 +2003,13 @@ msgstr "Kommentera"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:33
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #, fuzzy
 #~| msgid "Screenshot"
