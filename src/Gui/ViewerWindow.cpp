@@ -19,6 +19,7 @@
 #include <QDrag>
 #include <QFile>
 #include <QMimeData>
+#include <QShortcut>
 
 using namespace Qt::StringLiterals;
 
@@ -30,6 +31,24 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
 {
     s_viewerWindowInstance = this;
     s_isAnnotating = false;
+
+    // Set up shortcuts. We won't need to access these again and the memory will be managed by Qt.
+    new QShortcut(QKeySequence::Save, this, this, &ViewerWindow::save);
+    new QShortcut(QKeySequence::SaveAs, this, this, &ViewerWindow::saveAs);
+    new QShortcut(QKeySequence::Copy, this, this, &ViewerWindow::copyImage);
+    new QShortcut(QKeySequence::Print, this, this, &ViewerWindow::showPrintDialog);
+    new QShortcut(QKeySequence::Undo, this, SpectacleCore::instance(), []{
+        auto document = SpectacleCore::instance()->annotationDocument();
+        if (document && document->undoStackDepth() > 0) {
+            document->undo();
+        }
+    });
+    new QShortcut(QKeySequence::Redo, this, SpectacleCore::instance(), []{
+        auto document = SpectacleCore::instance()->annotationDocument();
+        if (document && document->redoStackDepth() > 0) {
+            document->redo();
+        }
+    });
 
     m_context->setContextObject(this); // Must be before QML is initialized
 
@@ -290,37 +309,6 @@ void ViewerWindow::resizeEvent(QResizeEvent *event)
     if (auto rootItem = rootObject()) {
         // sometimes rootObject size doesn't keep up with the window size
         rootItem->setSize(this->size());
-    }
-}
-
-void ViewerWindow::keyReleaseEvent(QKeyEvent *event)
-{
-    SpectacleWindow::keyReleaseEvent(event);
-    if (event->isAccepted() || m_mode == Dialog) {
-        return;
-    }
-    if (event->matches(QKeySequence::Save)) {
-        event->accept();
-        save();
-    } else if (event->matches(QKeySequence::SaveAs)) {
-        event->accept();
-        saveAs();
-    } else if (event->matches(QKeySequence::Copy)) {
-        event->accept();
-        copyImage();
-    } else if (event->matches(QKeySequence::Print)) {
-        event->accept();
-        showPrintDialog();
-    }
-    auto document = SpectacleCore::instance()->annotationDocument();
-    if (!event->isAccepted() && document) {
-        if (document->undoStackDepth() > 0 && event->matches(QKeySequence::Undo)) {
-            event->accept();
-            document->undo();
-        } else if (document->redoStackDepth() > 0 && event->matches(QKeySequence::Redo)) {
-            event->accept();
-            document->redo();
-        }
     }
 }
 

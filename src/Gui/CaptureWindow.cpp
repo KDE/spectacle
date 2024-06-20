@@ -12,6 +12,7 @@
 #include "Gui/SelectionEditor.h"
 
 #include <QScreen>
+#include <QShortcut>
 
 using namespace Qt::StringLiterals;
 
@@ -23,6 +24,24 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 {
     s_captureWindowInstances.append(this);
     s_isAnnotating = true;
+
+    // Set up shortcuts. We won't need to access these again and the memory will be managed by Qt.
+    new QShortcut(QKeySequence::Save, this, this, &CaptureWindow::save);
+    new QShortcut(QKeySequence::SaveAs, this, this, &CaptureWindow::saveAs);
+    new QShortcut(QKeySequence::Copy, this, this, &CaptureWindow::copyImage);
+    new QShortcut(QKeySequence::Print, this, this, &CaptureWindow::showPrintDialog);
+    new QShortcut(QKeySequence::Undo, this, SpectacleCore::instance(), []{
+        auto document = SpectacleCore::instance()->annotationDocument();
+        if (document && document->undoStackDepth() > 0) {
+            document->undo();
+        }
+    });
+    new QShortcut(QKeySequence::Redo, this, SpectacleCore::instance(), []{
+        auto document = SpectacleCore::instance()->annotationDocument();
+        if (document && document->redoStackDepth() > 0) {
+            document->redo();
+        }
+    });
 
     m_context->setContextObject(this); // Must be before QML is initialized
 
@@ -150,37 +169,6 @@ void CaptureWindow::mousePressEvent(QMouseEvent *event)
 {
     requestActivate();
     SpectacleWindow::mousePressEvent(event);
-}
-
-void CaptureWindow::keyReleaseEvent(QKeyEvent *event)
-{
-    SpectacleWindow::keyReleaseEvent(event);
-    if (event->isAccepted()) {
-        return;
-    }
-    if (event->matches(QKeySequence::Save)) {
-        event->accept();
-        save();
-    } else if (event->matches(QKeySequence::SaveAs)) {
-        event->accept();
-        saveAs();
-    } else if (event->matches(QKeySequence::Copy)) {
-        event->accept();
-        copyImage();
-    } else if (event->matches(QKeySequence::Print)) {
-        event->accept();
-        showPrintDialog();
-    }
-    auto document = SpectacleCore::instance()->annotationDocument();
-    if (!event->isAccepted() && document) {
-        if (document->undoStackDepth() > 0 && event->matches(QKeySequence::Undo)) {
-            event->accept();
-            document->undo();
-        } else if (document->redoStackDepth() > 0 && event->matches(QKeySequence::Redo)) {
-            event->accept();
-            document->redo();
-        }
-    }
 }
 
 void CaptureWindow::showEvent(QShowEvent *event)
