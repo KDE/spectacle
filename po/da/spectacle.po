@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 02:51+0000\n"
+"POT-Creation-Date: 2024-06-21 02:27+0000\n"
 "PO-Revision-Date: 2020-11-17 19:54+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -185,12 +185,12 @@ msgstr "Udelad musemarkøren i skærmbilledet i baggrundstilstand"
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/ExportManager.cpp:370
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan ikke skrive billedet: %1"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -200,12 +200,12 @@ msgstr ""
 "Kan ikke gemme skærmbillede fordi oprettelse af mappen mislykkedes:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan ikke gemme skærmbillede. Fejl under skrivning af fil."
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,49 +215,49 @@ msgstr ""
 "Kan ikke gemme skærmbillede fordi oprettelse af den eksterne mappe "
 "mislykkedes:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:426 src/ExportManager.cpp:474
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kan ikke gemme screenshot. Fejl under skrivning af midlertidig lokal fil."
 
-#: src/ExportManager.cpp:434
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Kan ikke gemme billede. Kunne ikke uploade fil til ekstern placering."
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Kan ikke gemme skærmbillede. Filnavnet er ugyldigt."
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan ikke gemme et tomt skærmbillede."
 
-#: src/ExportManager.cpp:664
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:671
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:791
 #, fuzzy, kde-format
 #| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kan ikke gemme billede. Kunne ikke uploade fil til ekstern placering."
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Udskrift mislykkedes. Printeren kunne ikke initialiseres."

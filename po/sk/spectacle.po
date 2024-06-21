@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 02:51+0000\n"
+"POT-Creation-Date: 2024-06-21 02:27+0000\n"
 "PO-Revision-Date: 2024-04-27 16:26+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -184,12 +184,12 @@ msgstr "V režime na pozadí, vynechať tiene zo snímky obrazovky"
 msgid "Open and edit existing screenshot file"
 msgstr "Otvoriť a upraviť existujúci súbor so snímkom obrazovky"
 
-#: src/ExportManager.cpp:370
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Aplikácia QImageWriter nemôže zapísať obrázok: %1"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -199,12 +199,12 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie priečinku: <nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise súboru."
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -214,31 +214,31 @@ msgstr ""
 "Nedá sa uložiť snímka obrazovky, pretože zlyhalo vytváranie vzdialeného "
 "priečinku: <nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:426 src/ExportManager.cpp:474
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise dočasného "
 "miestneho súboru."
 
-#: src/ExportManager.cpp:434
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Nie je možné uložiť obrázok. Nepodarilo sa odovzdať súbor do vzdialeného "
 "umiestnenia."
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Nedá sa uložiť snímka obrazovky. Ukladaný názov súboru nie je platný."
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nedá sa uložiť prázdny obrázok so snímkou obrazovky."
 
-#: src/ExportManager.cpp:664
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -247,7 +247,7 @@ msgstr ""
 "Nepodarilo sa exportovať video: Adresa URL dočasného súboru musí byť "
 "existujúci lokálny súbor"
 
-#: src/ExportManager.cpp:671
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -256,14 +256,14 @@ msgstr ""
 "Nepodarilo sa exportovať video: Výstupný súbor URL musí byť platná adresa "
 "URL s názvom súboru"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Nie je možné uložiť nahrávku. Nepodarilo sa presunúť súbor do umiestnenia: %1"
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tlač zlyhala. Tlačiareň sa nepodarilo inicializovať."

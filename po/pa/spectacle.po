@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 02:51+0000\n"
+"POT-Creation-Date: 2024-06-21 02:27+0000\n"
 "PO-Revision-Date: 2024-03-11 07:59-0500\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -175,12 +175,12 @@ msgstr "ਬੈਕਗਰਾਊਂਡ ਮੋਡ ਵਿੱਚ, ਸਕਰੀਨਸ਼�
 msgid "Open and edit existing screenshot file"
 msgstr "ਮੌਜੂਦਾ ਸਕਰੀਨਸ਼ਾਟ ਫ਼ਾਇਲ ਖੋਲ੍ਹੋ ਅਤੇ ਸੋਧੋ"
 
-#: src/ExportManager.cpp:370
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -190,12 +190,12 @@ msgstr ""
 "ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,34 +205,34 @@ msgstr ""
 "ਰਿਮੋਟ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ ਰਹਿਣ ਕਰਕੇ ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:426 src/ExportManager.cpp:474
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਆਰਜ਼ੀ ਲੋਕਲ ਫ਼ਾਇਲ ਲਿਖਣ ਵਾਲੇ ਗ਼ਲਤੀ ਹੈ।"
 
-#: src/ExportManager.cpp:434
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "ਚਿੱਤਰ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਰਿਮੋਟ ਟਿਕਾਣੇ ਉੱਤੇ ਫ਼ਾਇਲ ਅੱਪਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।"
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਸੰਭਾਲਣ ਲਈ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਗ਼ੈਰ-ਵਾਜਬ ਹੈ।"
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ਖ਼ਾਲੀ ਸਕਰੀਨਸ਼ਾਟ ਚਿੱਤਰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: src/ExportManager.cpp:664
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "ਵੀਡੀਓ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਰਜ਼ੀ ਫਾਇਲ ਦਾ URL ਮੌਜੂਦ ਲੋਕਲ ਫਾਇਲ ਨਹੀਂ ਹੈ "
 
-#: src/ExportManager.cpp:671
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -240,13 +240,13 @@ msgid ""
 msgstr ""
 "ਵੀਡੀਓ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਉਟਪੁੱਟ ਫਾਇਲ ਦਾ URL ਫਾਇਲ ਨਾਂ ਨਾਲ ਵਾਜਬ URL ਚਾਹੀਦਾ ਹੈ"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ਰਿਕਾਰਡਿੰਗ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਫ਼ਾਇਲ ਨੂੰ ਟਿਕਾਣੇ ਉੱਤੇ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %1"
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "ਪਰਿੰਟ ਕਰਨਾ ਅਸਫ਼ਲ ਹੈ। ਪਰਿੰਟਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ।"

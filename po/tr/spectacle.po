@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 02:51+0000\n"
+"POT-Creation-Date: 2024-06-21 02:27+0000\n"
 "PO-Revision-Date: 2024-06-18 00:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -182,12 +182,12 @@ msgstr "Arka plan kipinde, ekran görüntüsünde gölgeleri içerme"
 msgid "Open and edit existing screenshot file"
 msgstr "Var olan ekran görüntüsü dosyasını aç ve düzenle"
 
-#: src/ExportManager.cpp:370
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter görseli yazamıyor: %1"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -197,12 +197,12 @@ msgstr ""
 "Dizin oluşturulamadığı için ekran görüntüsü kaydedilemiyor:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya yazılırken hata."
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,27 +212,27 @@ msgstr ""
 "Uzak dizin oluşturma başarısız olduğu için ekran görüntüsü kaydedilemiyor:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:426 src/ExportManager.cpp:474
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Geçici dosyaya yazılırken hata."
 
-#: src/ExportManager.cpp:434
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Görsel kaydedilemedi. Dosya uzak konuma yüklenemedi."
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya kayıt adı geçersiz."
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Boş ekran görüntüsü görseli kaydedilemez."
 
-#: src/ExportManager.cpp:664
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Video dışa aktarılamadı: Geçici dosya URL’si, var olan bir yerel dosya "
 "olmalıdır"
 
-#: src/ExportManager.cpp:671
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,13 +250,13 @@ msgstr ""
 "Video dışa aktarılamadı: Çıktı dosyası URL’si, bir dosya adı içeren geçerli "
 "bir URL olmalıdır"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kayıt kaydedilemiyor. Dosya, şu konuma taşınamadı: %1"
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Yazdırma başarısız. Yazıcı başlatılamadı."

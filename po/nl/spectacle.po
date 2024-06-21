@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-16 02:51+0000\n"
+"POT-Creation-Date: 2024-06-21 02:27+0000\n"
 "PO-Revision-Date: 2024-04-19 11:57+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -189,12 +189,12 @@ msgstr "In achtergrondmodus, schaduwen niet meenemen in de schermafdruk"
 msgid "Open and edit existing screenshot file"
 msgstr "Bestaand schermafdrukbestand openen en bewerken"
 
-#: src/ExportManager.cpp:370
+#: src/ExportManager.cpp:415
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan geen afbeelding wegschrijven: %1"
 
-#: src/ExportManager.cpp:385
+#: src/ExportManager.cpp:430
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -204,12 +204,12 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map is mislukt:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:395
+#: src/ExportManager.cpp:440
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan schermafdruk niet opslaan. Fout bij schrijven van bestand."
 
-#: src/ExportManager.cpp:415
+#: src/ExportManager.cpp:460
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -219,32 +219,32 @@ msgstr ""
 "Kan schermafdruk niet opslaan omdat het aanmaken van de map op afstand is "
 "mislukt:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:426 src/ExportManager.cpp:474
+#: src/ExportManager.cpp:471 src/ExportManager.cpp:519
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Kan schermafdruk niet opslaan. Fout bij schrijven van tijdelijk lokaal "
 "bestand."
 
-#: src/ExportManager.cpp:434
+#: src/ExportManager.cpp:479
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Afbeelding opslaan lukt niet. Bestand kon niet worden opgestuurd naar "
 "externe locatie."
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:526
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Kan schermafdruk niet opslaan. De bestandsnaam voor opslaan is ongeldig."
 
-#: src/ExportManager.cpp:525
+#: src/ExportManager.cpp:570
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan geen lege schermafdruk opslaan."
 
-#: src/ExportManager.cpp:664
+#: src/ExportManager.cpp:709
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Video exporteren is mislukt: URL van tijdelijk bestand moet een bestaand "
 "lokaal bestand zijn"
 
-#: src/ExportManager.cpp:671
+#: src/ExportManager.cpp:716
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Video exporteren is mislukt: URL van uitvoerbestand moet een geldige URL "
 "zijn met een bestandsnaam"
 
-#: src/ExportManager.cpp:746
+#: src/ExportManager.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Opname opslaan lukt niet. Kon het bestand niet verplaatsen naar locatie: %1"
 
-#: src/ExportManager.cpp:774
+#: src/ExportManager.cpp:819
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Afdrukken is mislukt. Initialiseren van de printer is mislukt"
