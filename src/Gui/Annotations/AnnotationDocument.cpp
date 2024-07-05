@@ -16,8 +16,8 @@
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
-#include <format>
 #include <memory>
+#include <source_location>
 
 using G = Geometry;
 
@@ -75,12 +75,12 @@ void AnnotationDocument::setCanvas(const QRectF &rect, qreal dpr)
 {
     // Don't allow an invalid canvas rect or device pixel ratio.
     if (rect.isEmpty()) {
-        Log::warning() << std::format("`{}`:\n\t`rect` is empty. This should not happen.",
-                                      std::source_location::current().function_name());
+        Log::warning() << '`' << std::source_location::current().function_name()
+            << "`:\n\t`rect` is empty. This should not happen.";
         return;
     } else if (dpr <= 0) {
-        Log::warning() << std::format("`{}`:\n\t`dpr` <= 0. This should not happen.",
-                                      std::source_location::current().function_name());
+        Log::warning() << '`' << std::source_location::current().function_name()
+            << "`:\n\t`dpr` <= 0. This should not happen.";
         return;
     }
     const bool posChanged = m_canvasRect.topLeft() != rect.topLeft();
