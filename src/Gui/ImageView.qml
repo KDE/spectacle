@@ -66,7 +66,6 @@ EmptyPage {
         anchors.left: annotationsToolBar.right
         anchors.right: captureOptionsLoader.left
         anchors.top: parent.top
-        anchors.margins: visible ? Kirigami.Units.mediumSpacing : 0
         state: "inactive"
         height: visible ? implicitHeight : 0
         Behavior on height {
@@ -115,7 +114,6 @@ EmptyPage {
             right: captureOptionsLoader.left
             top: inlineMessageLoader.bottom
             bottom: footerLoader.top
-            topMargin: inlineMessageLoader.active ? Kirigami.Units.mediumSpacing : 0
         }
         sourceComponent: SpectacleCore.videoMode ? recordingViewComponent : screenshotViewComponent
         Component {
