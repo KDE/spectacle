@@ -10,6 +10,14 @@ import org.kde.kirigami 2.19 as Kirigami
 InlineMessage {
     id: root
 
+    function sanitise(text : string) : string {
+        return text.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;');
+    }
+
     function linkify(text) {
         // Thanks to: https://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
         var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -19,7 +27,7 @@ InlineMessage {
     }
 
     type: Kirigami.MessageType.Information
-    text: typeof messageArgument === "string" ? i18n("QR Code found: %1", linkify(messageArgument)) : i18n("Found QR code with binary content.")
+    text: typeof messageArgument === "string" ? i18n("QR Code found: %1", linkify(sanitise(messageArgument))) : i18n("Found QR code with binary content.")
     actions: [
         Kirigami.Action {
             displayComponent: QQC2.ToolButton {
