@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-14 00:37+0000\n"
-"PO-Revision-Date: 2024-04-06 01:56-0300\n"
+"POT-Creation-Date: 2024-07-30 02:33+0000\n"
+"PO-Revision-Date: 2024-07-29 10:43-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -316,13 +316,13 @@ msgstr "Cor de preenchimento"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Força:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "A força do efeito."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -373,7 +373,7 @@ msgstr "Nenhuma"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Recortar"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -443,12 +443,10 @@ msgid "Take a new screenshot"
 msgstr "Capturar uma nova imagem"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Capturas de tela"
+msgstr "configurações da captura de tela"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -538,24 +536,18 @@ msgid "No Delay"
 msgstr "Sem atraso"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 segundo"
-msgstr[1] "%1 segundos"
+msgstr[0] "%2 segundo"
+msgstr[1] "%2 segundos"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 segundo"
+msgstr "%1 segundos"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -568,36 +560,31 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Capturar imagem:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opções"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Gravando"
+msgstr "Fazer um gravação"
 
 #: src/Gui/DialogPage.qml:165
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Capturar imagem"
 
 #: src/Gui/DialogPage.qml:170
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Gravando"
@@ -678,7 +665,7 @@ msgstr "Exportar"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Editar…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -748,15 +735,15 @@ msgstr "Capturar ao clicar"
 msgid "No Delay"
 msgstr "Sem atraso"
 
-#: src/Gui/QRCodeScannedMessage.qml:22
+#: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "Código QR encontrado: %1"
 
-#: src/Gui/QRCodeScannedMessage.qml:22
+#: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Código QR encontrado com conteúdo binário."
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
@@ -958,10 +945,9 @@ msgstr "Mostrar instruções de captura"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Mostrar a lupa"
+msgstr "Mostrar a lupa:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -983,7 +969,7 @@ msgstr "Sempre"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Enquanto segura a tecla Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1061,7 +1047,7 @@ msgstr "Para salvar em uma subpasta"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Mostrar menos"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
