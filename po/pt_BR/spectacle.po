@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-30 02:33+0000\n"
-"PO-Revision-Date: 2024-07-29 10:43-0300\n"
+"PO-Revision-Date: 2024-07-31 21:47-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -289,8 +289,8 @@ msgstr "Traço:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -334,16 +334,16 @@ msgstr "Fonte:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -828,6 +828,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Clique e arraste para fazer uma seleção.\n"
+"Clique duas vezes na seleção para aceitar e cortar.\n"
+"Clique com o botão direito para limpar a seleção."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1366,23 +1369,21 @@ msgstr "Cor de preenchimento para ferramenta de anotação de elipse"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "Cor de preenchimento para ferramenta de anotação de retângulo"
+msgstr "Cor de preenchimento para ferramenta de anotação de número"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "A última região usada selecionada pelo usuário"
+msgstr "A força do efeito desfocar."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "A força do efeito pixelizar."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1465,23 +1466,17 @@ msgid "Image shared"
 msgstr "Imagem compartilhada"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"O link da imagem compartilhada (<a href=\"%1\">%1</a>)  foi copiada para a "
+"O link do vídeo compartilhado (<a href=\"%1\">%1</a>)  foi copiado para a "
 "área de transferência."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1491,15 +1486,13 @@ msgstr ""
 "área de transferência."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Ocorreu um problema ao compartilhar a imagem: %1"
+msgstr "Ocorreu um problema ao compartilhar o vídeo: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Ocorreu um problema ao compartilhar a imagem: %1"
@@ -1697,32 +1690,33 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Largura incorreta para captura de tela do KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Altura incorreta para captura de tela do KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Após capturar uma imagem:"
+msgstr "Formato incorreto para captura de tela do KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Não foi possível abrir o descritor de arquivo para ler a captura de tela do "
+"KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() falhou para captura de tela do KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
@@ -1731,6 +1725,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Falha na solicitação de captura de tela do KWin:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
@@ -1739,26 +1735,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Informações potencialmente relevantes:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Metadados do tipo de captura de tela do KWin não suportados: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Gravação de tela cancelada"
+msgstr "A gravação de tela não está disponível no X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "O KWin Screencasting não está disponível."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1773,6 +1769,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"O stream foi encerrado porque a tela de destino mudou de uma forma que "
+"interrompeu a gravação."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1781,6 +1779,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"O stream foi encerrado porque a janela de destino mudou de uma forma que "
+"interrompeu a gravação."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1789,6 +1789,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"O stream foi encerrado porque uma tela contendo a região de destino mudou de "
+"uma forma que interrompeu a gravação."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
@@ -1822,18 +1824,16 @@ msgid "Window recording canceled"
 msgstr "Gravação de janela cancelada"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Falha ao selecionar a janela"
+msgstr "Falha ao selecionar tela: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:326
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Falha ao selecionar a janela"
+msgstr "Falha ao selecionar a janela: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
@@ -1844,35 +1844,28 @@ msgstr ""
 "mouse"
 
 #: src/Platforms/VideoPlatformWayland.cpp:361
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Falha ao selecionar a janela"
+msgstr "Falha ao selecionar janela: Nenhuma janela encontrada"
 
 #: src/RecordingModeModel.cpp:71
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Região retangular"
 
 #: src/RecordingModeModel.cpp:74
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Tela inteira"
 
 #: src/RecordingModeModel.cpp:77
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Título da janela"
+msgstr "Janela"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1905,22 +1898,19 @@ msgid "Capture Window Under Cursor"
 msgstr "Capturar janela sob o cursor"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Selected Screen"
+#, kde-format
 msgid "Record Screen"
-msgstr "Tela selecionada"
+msgstr "Gravar tela"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Gravando"
+msgstr "Gravar janela"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Região retangular"
+msgstr "Gravar região retangular"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1928,58 +1918,44 @@ msgid "Launch Spectacle without capturing"
 msgstr "Iniciar o Spectacle sem fazer captura"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Iniciar o Spectacle sem capturar uma imagem"
+msgstr "Ocorreu um erro ao fazer uma captura de tela."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Enquanto o Spectacle estiver em execução"
+msgstr "O spectacle está gravando"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Enquanto o Spectacle estiver em execução"
+msgstr "O spectacle está gravando"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"O Spectacle está gravando: %1\n"
-"Clique para finalizar a gravação"
+msgstr "Clique no ícone da bandeja do sistema para finalizar a gravação"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"O Spectacle está gravando: %1\n"
+"Tempo de gravação: %1\n"
 "Clique para finalizar a gravação"
 
 #: src/SpectacleCore.cpp:318
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Iniciar o Spectacle sem capturar uma imagem"
+msgstr "Ocorreu um erro ao tentar gravar a tela."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
@@ -2013,15 +1989,12 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "A imagem foi salva na área de transferência."
 
 #: src/SpectacleCore.cpp:966
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Uma imagem foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
+"Uma gravação foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
 "área de transferência."
 
 #: src/SpectacleCore.cpp:968
