@@ -74,6 +74,7 @@ find_package(
         KirigamiPlatform
         StatusNotifierItem
         Prison
+        Crash
 )
 
 find_package(Wayland REQUIRED COMPONENTS Client)

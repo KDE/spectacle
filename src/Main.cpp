@@ -20,6 +20,7 @@
 #include <QSessionManager>
 
 #include <KAboutData>
+#include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -49,6 +50,8 @@ int main(int argc, char **argv)
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
     app.setWindowIcon(QIcon::fromTheme(u"spectacle"_s));
+
+    KCrash::initialize();
 
     QCommandLineParser commandLineParser;
     aboutData.setupCommandLine(&commandLineParser);
