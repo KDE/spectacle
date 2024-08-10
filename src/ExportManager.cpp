@@ -11,6 +11,7 @@
 #include <kio_version.h>
 
 #include <QApplication>
+#include <QBuffer>
 #include <QClipboard>
 #include <QDir>
 #include <QFileDialog>
@@ -655,28 +656,33 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
     }
 
     if (actions & CopyImage) {
-        auto data = new QMimeData();
-        bool savedLocal = saved && url.isLocalFile();
-        bool canWriteTemp = temporaryDir() != nullptr;
-        if (savedLocal || canWriteTemp) {
-            QString localFilePath;
-            if (savedLocal || (url.isEmpty() && canWriteTemp)) {
-                if (url.isEmpty()) {
-                    url = tempSave();
-                }
-                localFilePath = url.toLocalFile();
-            } else {
-                localFilePath = tempSave().toLocalFile();
-            }
-            QFile imageFile(localFilePath);
-            imageFile.open(QFile::ReadOnly);
-            const auto mimetype = QMimeDatabase().mimeTypeForFile(localFilePath);
-            data->setData(mimetype.name(), imageFile.readAll());
-            imageFile.close();
-        } else {
-            // Fallback to the old way if we can't save a temp file for some reason.
-            data->setImageData(m_saveImage);
+        if (!url.isValid() && m_imageSavedNotInTemp) {
+            url = Settings::self()->lastImageSaveLocation();
         }
+        auto data = new QMimeData();
+        auto preferredFormat = Settings::preferredImageFormat().toLower();
+        // TODO: Maybe copy a temp file URL instead? That way we could reliably
+        // paste as the preferred format without decompression. The issue with
+        // that is that some apps like Discord won't copy temp files when in a
+        // Flatpak even if you use KUrlMimeData::exportUrlsToPortal().
+        QBuffer buffer;
+        buffer.open(QIODevice::ReadWrite);
+        QImageWriter writer(&buffer, preferredFormat.toLatin1());
+        if (preferredFormat != u"png") {
+            writer.setQuality(Settings::imageCompressionQuality());
+        }
+        // We want to reuse this image to waste less CPU.
+        auto image = scaledImageFromSubGeometry(m_saveImage);
+        writer.write(image);
+        buffer.reset();
+        // Set first so that it gets chosen first.
+        data->setData(u"image/" + preferredFormat, buffer.readAll());
+        buffer.close();
+        // Use the standard way to set images to expose all the other formats.
+        // We use the uncompressed image because lossy compressed formats will
+        // decompress when turned into QImages and become 2-8x larger than their
+        // compressed size.
+        data->setImageData(image);
         // "x-kde-force-image-copy" is handled by Klipper.
         // It ensures that the image is copied to Klipper even with the
         // "Non-text selection: Never save in history" setting selected in Klipper.
