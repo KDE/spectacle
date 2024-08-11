@@ -687,6 +687,17 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         // It ensures that the image is copied to Klipper even with the
         // "Non-text selection: Never save in history" setting selected in Klipper.
         data->setData(u"x-kde-force-image-copy"_s, QByteArray());
+        QString fileName = url.fileName();
+        if (fileName.isEmpty()) {
+            fileName = getAutosaveFilename().fileName();
+        }
+        fileName.truncate(fileName.lastIndexOf(u'.'));
+        if (!fileName.isEmpty()) {
+            fileName += u'.' + preferredFormat;
+        }
+        // "application/x-kde-suggestedfilename" is handled by KIO/PasteJob.
+        // It should put a useful default filename in the paste dialog.
+        data->setData(u"application/x-kde-suggestedfilename"_s, QFile::encodeName(fileName));
         KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
         success = true;
     }
