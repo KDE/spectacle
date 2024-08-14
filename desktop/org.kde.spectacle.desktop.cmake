@@ -482,6 +482,7 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 [Desktop Action RecordRegion]
 Name=Record Rectangular Region
 Name[ar]=يسجل منطقة مستطيلة
+Name[az]=Düzbucaqlı sahəni yazmaq
 Name[bg]=Заснемане на правоъгълен регион
 Name[ca]=Enregistra una regió rectangular
 Name[ca@valencia]=Grava una regió rectangular
@@ -525,6 +526,7 @@ X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 [Desktop Action RecordScreen]
 Name=Record Screen
 Name[ar]=سجّل الشاشة
+Name[az]=Ekranı yazmaq
 Name[bg]=Запис на екрана
 Name[ca]=Enregistra la pantalla
 Name[ca@valencia]=Grava la pantalla
@@ -568,6 +570,7 @@ X-KDE-Shortcuts=Meta+Alt+R
 [Desktop Action RecordWindow]
 Name=Record Window
 Name[ar]=سجل النافذة
+Name[az]=Pəncərəni yazmaq
 Name[bg]=Запис на прозорец
 Name[ca]=Enregistra una finestra
 Name[ca@valencia]=Grava una finestra
