@@ -32,6 +32,9 @@ public:
     Format formatForEncoder(PipeWireBaseEncodedStream::Encoder encoder) const;
     PipeWireBaseEncodedStream::Encoder encoderForFormat(Format format) const;
 
+protected:
+    void timerEvent(QTimerEvent *event) override;
+
 private:
     bool mkDirPath(const QUrl &fileUrl);
     void selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer);
@@ -39,4 +42,6 @@ private:
     Screencasting *const m_screencasting;
     std::unique_ptr<PipeWireRecord> m_recorder;
     QFuture<void> m_recorderFuture;
+    int m_frameBytes;
+    QBasicTimer m_memoryTimer;
 };

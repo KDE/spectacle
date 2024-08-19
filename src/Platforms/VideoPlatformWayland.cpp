@@ -10,6 +10,7 @@
 #include "screencasting.h"
 #include "settings.h"
 #include <KLocalizedString>
+#include <KMemoryInfo>
 #include <QFuture>
 #include <QGuiApplication>
 #include <QWindow>
@@ -40,6 +41,27 @@ static const auto widthKey = u"width"_s;
 static const auto heightKey = u"height"_s;
 static const auto captionKey = u"caption"_s;
 static const auto desktopFileKey = u"desktopFile"_s;
+
+static constexpr inline int frameBytes(const QSize &frameSize)
+{
+    // It is currently not possible to do 10 or 12 bit per color channel
+    // recording so we always use 4 bytes (8 bits * 4 channels).
+    return std::max(0, frameSize.width() * frameSize.height() * 4);
+}
+
+static inline int availableFrames(int frameBytes){
+    KMemoryInfo info;
+    if (info.isNull() || frameBytes <= 0) {
+        // The default max frame buffer is 50.
+        return 50;
+    }
+    // Reduce the amount of available memory we try to use to 75% because we
+    // really don't want to freeze the user's computer.
+    // The minimum max frame buffer is 3. It's used automatically when the buffer
+    // is less than 3, but that sends out warning messages, so we explicitly set
+    // 3 to prevent warning spam.
+    return std::max(3.0, 0.75 * info.availablePhysical() / frameBytes);
+}
 
 VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
 {
@@ -152,6 +174,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         }
         Q_ASSERT(screen != nullptr);
         minimizeIfWindowsIntersect(screen->geometry());
+        m_frameBytes = frameBytes(screen->size() * screen->devicePixelRatio());
         stream = m_screencasting->createOutputStream(screen, mode);
         break;
     }
@@ -173,6 +196,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         if (!windowRect.isEmpty() && !isSpectacle) {
             minimizeIfWindowsIntersect(windowRect);
         }
+        auto screen = qGuiApp->screenAt(windowRect.center().toPoint());
+        m_frameBytes = frameBytes(windowRect.size().toSize() * (screen ? screen->devicePixelRatio() : 1));
         stream = m_screencasting->createWindowStream(windowId, mode);
         break;
     }
@@ -198,11 +223,13 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         // shift too much. Ensure size is at least 1x1 to keep the final rect valid.
         int w = std::max<int>(1, std::floor<int>(rect.right()) - x);
         int h = std::max<int>(1, std::floor<int>(rect.bottom()) - y);
+        m_frameBytes = frameBytes(QSize{w, h} * scaling);
         stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
         break;
     }
     default: break; // This shouldn't happen
     }
+    m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
 
     Q_ASSERT(stream);
     connect(stream, &ScreencastingStream::created, this, [this, stream] {
@@ -261,9 +288,14 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     }
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
-        if (m_recorder->state() == PipeWireRecord::Idle && isRecording()) {
-            setRecording(false);
-            Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
+        if (m_recorder->state() == PipeWireRecord::Idle) {
+            m_memoryTimer.stop();
+            if (isRecording()) {
+                setRecording(false);
+                Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
+            }
+        } else {
+            m_memoryTimer.start(5000, Qt::CoarseTimer, this);
         }
     });
 }
@@ -275,6 +307,14 @@ void VideoPlatformWayland::finishRecording()
     }
     m_recorder->setActive(false);
     m_recorder->setNodeId(0);
+}
+
+void VideoPlatformWayland::timerEvent(QTimerEvent *event)
+{
+    VideoPlatform::timerEvent(event);
+    if (event->timerId() == m_memoryTimer.timerId() && m_recorder) {
+        m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
+    }
 }
 
 bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
