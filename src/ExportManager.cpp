@@ -169,10 +169,10 @@ QUrl ExportManager::tempVideoUrl(const QString &filename)
     return QUrl::fromLocalFile(filepath);
 }
 
-void removeUnlockedDirs(const QStringList &oldDirs)
+void removeUnlockedDirs(const QString &parentPath, const QStringList &oldDirs)
 {
     for (const auto &dirStr : oldDirs) {
-        QDir dir(QDir::tempPath() + u'/' + dirStr);
+        QDir dir(parentPath + u'/' + dirStr);
         QLockFile lockFile(dir.filePath(u"lockfile"_s));
         if (dir.exists() && lockFile.tryLock()) {
             lockFile.unlock();
@@ -184,18 +184,25 @@ void removeUnlockedDirs(const QStringList &oldDirs)
 const QTemporaryDir *ExportManager::temporaryDir()
 {
     if (!m_tempDir) {
+        // We use the app data dir because Flatpaks can't access /tmp without explicit permissions.
+        // Not a problem for saving files, but it is a problem for drag-and-drop.
+        const auto basePath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + u"/tmp";
+        QDir baseDir(basePath);
+        // Ensure the dir exists or else the temp dir will not be created.
+        baseDir.mkpath(basePath);
         // Cleanup Spectacle's temp dirs after startup instead of while quitting.
         const auto filters = QDir::Filter::Dirs | QDir::NoDotAndDotDot | QDir::CaseSensitive | QDir::NoSymLinks;
         // Get old dirs before the async stuff to avoid race conditions when making the new dir.
-        const auto oldDirs = QDir::temp().entryList({u"Spectacle.??????"_s}, filters);
-        m_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
+        const auto oldDirs = baseDir.entryList({u"????????_??????_??????"_s}, filters);
+        const auto datetime = QDateTime::currentDateTime().toString(u"yyyyMMdd_HHmmss"_s);
+        m_tempDir = std::make_unique<QTemporaryDir>(basePath + u"/%1_XXXXXX"_s.arg(datetime));
         m_tempDir->setAutoRemove(false);
         if (m_tempDir->isValid()) {
             m_tempDirLock = std::make_unique<QLockFile>(m_tempDir->filePath(u"lockfile"_s));
             m_tempDirLock->setStaleLockTime(0);
             m_tempDirLock->tryLock();
         }
-        auto future = QtConcurrent::run(removeUnlockedDirs, oldDirs);
+        auto future = QtConcurrent::run(removeUnlockedDirs, basePath, oldDirs);
     }
     return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
 }
