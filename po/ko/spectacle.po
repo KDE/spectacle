@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-09 00:38+0000\n"
-"PO-Revision-Date: 2024-02-17 15:12+0100\n"
+"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"PO-Revision-Date: 2024-08-20 00:52+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -295,13 +295,13 @@ msgstr "채우기 색상"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "강도:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "효과의 강도입니다."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -350,7 +350,7 @@ msgstr "없음"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "자르기"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -419,12 +419,10 @@ msgid "Take a new screenshot"
 msgstr "새 스크린샷 찍기"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "스크린샷"
+msgstr "스크린샷 설정"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -533,36 +531,31 @@ msgid "Help"
 msgstr "도움말"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "스크린샷 찍기:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "옵션"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "녹화"
+msgstr "녹화 진행:"
 
 #: src/Gui/DialogPage.qml:165
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "스크린샷"
 
 #: src/Gui/DialogPage.qml:170
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "녹화"
@@ -643,7 +636,7 @@ msgstr "내보내기"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "편집…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -801,6 +794,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"선택하려면 클릭한 후 드래그하십시오.\n"
+"선택을 두 번 클릭하면 수락하고 잘라냅니다.\n"
+"오른쪽 클릭하면 선택을 지웁니다."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -918,10 +914,9 @@ msgstr "캡처 방법 표시"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "돋보기 표시"
+msgstr "돋보기 표시:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -943,7 +938,7 @@ msgstr "항상"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Shift 키를 누를 때"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1341,16 +1336,15 @@ msgstr "숫자 주석 도구에 사용할 채우기 색상"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "사용자가 마지막으로 선택한 영역"
+msgstr "흐림 효과의 강도입니다."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "픽셀화 효과의 강도입니다."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1651,32 +1645,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 스크린샷의 잘못된 너비: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 스크린샷의 잘못된 높이: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "스크린샷을 찍은 후:"
+msgstr "KWin 스크린샷의 잘못된 형식: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "KWin 스크린샷을 읽을 수 있는 파일 설명자를 열 수 없습니다."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin 스크린샷의 pipe2() 실패: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
@@ -1685,6 +1678,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin 스크린샷 요청 실패:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:294
 #, kde-format
@@ -1693,26 +1688,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"중요할 수도 있는 정보:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "지원하지 않는 KWin 스크린샷 형식 메타데이터: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "화면 녹화 취소됨"
+msgstr "X11에서는 화면 녹화를 사용할 수 없습니다.."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin 스크린캐스팅을 사용할 수 없습니다."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
@@ -1720,79 +1715,79 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "녹화할 수 없음: 파일 URL이 로컬 파일이 아님"
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:223
 #, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "녹화를 할 수 없도록 대상 화면이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "녹화를 할 수 없도록 대상 창이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:229
+#: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
-msgstr ""
+msgstr "녹화를 할 수 없도록 대상 영역이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:243
+#: src/Platforms/VideoPlatformWayland.cpp:241
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 임시 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 출력 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:286
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "녹화할 수 없음: 폴더를 만들 수 없음(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:314
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "화면 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:318
+#: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "창 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:322
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "화면을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:324
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "창을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:352
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "화면을 선택할 수 없음: 마우스 커서 위치가 포함된 화면 없음"
 
-#: src/Platforms/VideoPlatformWayland.cpp:361
+#: src/Platforms/VideoPlatformWayland.cpp:359
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -1867,58 +1862,44 @@ msgid "Launch Spectacle without capturing"
 msgstr "캡처하지 않고 Spectacle 실행"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "스크린샷을 찍지 않고 Spectacle 실행"
+msgstr "스크린샷을 찍는 중 오류가 발생했습니다."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Spectacle이 실행 중일 때"
+msgstr "Spectacle이 녹화 중"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Spectacle이 실행 중일 때"
+msgstr "Spectacle이 녹화 중"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"Spectacle에서 녹화 중: %1\n"
-"클릭하면 녹화를 중단합니다"
+msgstr "시스템 트레이 아이콘을 클릭하면 녹화를 중단함"
 
 #: src/SpectacleCore.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Spectacle에서 녹화 중: %1\n"
+"녹화 시간: %1\n"
 "클릭하면 녹화를 중단합니다"
 
 #: src/SpectacleCore.cpp:318
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "스크린샷을 찍지 않고 Spectacle 실행"
+msgstr "화면 녹화를 시도하는 중 오류가 발생했습니다."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
