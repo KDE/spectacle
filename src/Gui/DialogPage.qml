@@ -154,30 +154,31 @@ EmptyPage {
         }
     }
 
-    header: Kirigami.NavigationTabBar {
-        id: tabBar
-
-        visible: VideoPlatform.supportedRecordingModes
-        currentIndex: 0
-
-        actions: [
-            Kirigami.Action {
-                text: i18nc("@title:tab", "Screenshot")
-                icon.name: "camera-photo"
-                checked: tabBar.currentIndex === 0
-            },
-            Kirigami.Action {
-                text: i18nc("@title:tab", "Recording")
-                icon.name: "camera-video"
-                checked: tabBar.currentIndex === 1
-            }
-        ]
-    }
-
     // Not ColumnLayout because layouts don't work well with animations.
-    contentItem: Column {
-        spacing: Kirigami.Units.mediumSpacing * 2
-        // inline message and heading are not in header because we want the same padding as content.
+    header: Column {
+        spacing: 0
+
+        Kirigami.NavigationTabBar {
+            id: tabBar
+
+            width: Math.max(parent.width, implicitWidth)
+            visible: VideoPlatform.supportedRecordingModes
+            currentIndex: 0
+
+            actions: [
+                Kirigami.Action {
+                    text: i18nc("@title:tab", "Screenshot")
+                    icon.name: "camera-photo"
+                    checked: tabBar.currentIndex === 0
+                },
+                Kirigami.Action {
+                    text: i18nc("@title:tab", "Recording")
+                    icon.name: "camera-video"
+                    checked: tabBar.currentIndex === 1
+                }
+            ]
+        }
+
         AnimatedLoader {
             id: inlineMessageLoader
             state: "inactive"
@@ -190,14 +191,14 @@ EmptyPage {
                 }
             }
         }
-        Loader {
-            id: contentLoader
-            width: Math.max(parent.width, implicitWidth)
-            sourceComponent: switch (tabBar.currentIndex) {
-                case 0: return screenshotComponent
-                case 1: return recordingComponent
-                default: return null
-            }
+    }
+
+    contentItem: Loader {
+        id: contentLoader
+        sourceComponent: switch (tabBar.currentIndex) {
+            case 0: return screenshotComponent
+            case 1: return recordingComponent
+            default: return null
         }
     }
 
