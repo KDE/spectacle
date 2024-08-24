@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-08-20 00:52+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -179,12 +179,12 @@ msgstr "배경 모드에서 스크린샷에 그림자 포함 안 함"
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter에서 그림을 작성할 수 없음: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -194,12 +194,12 @@ msgstr ""
 "디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "스크린샷을 저장할 수 없습니다. 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -209,34 +209,34 @@ msgstr ""
 "원격 디렉터리를 만들 수 없어서 스크린샷을 저장할 수 없음:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "스크린샷을 저장할 수 없습니다. 임시 파일에 기록할 수 없습니다."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "그림을 저장할 수 없습니다. 원격 위치로 파일을 업로드할 수 없습니다."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "스크린샷을 저장할 수 없습니다. 파일 이름이 잘못되었습니다."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "빈 스크린샷 그림을 저장할 수 없습니다."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr "동영상을 내보낼 수 없음: 임시 파일 URL은 존재하는 로컬 파일이어야 함"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,13 +245,13 @@ msgstr ""
 "동영상을 내보낼 수 없음: 출력 파일 URL은 파일 이름을 포함하는 올바른 URL이어"
 "야 함"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "녹화를 저장할 수 없습니다. 파일을 위치로 이동할 수 없음: %1"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "인쇄가 실패했습니다. 프린터를 초기화할 수 없습니다."
@@ -1703,19 +1703,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "X11에서는 화면 녹화를 사용할 수 없습니다.."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin 스크린캐스팅을 사용할 수 없습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "녹화할 수 없음: 파일 URL이 로컬 파일이 아님"
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1723,7 +1723,7 @@ msgid ""
 "the recording."
 msgstr "녹화를 할 수 없도록 대상 화면이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1731,7 +1731,7 @@ msgid ""
 "the recording."
 msgstr "녹화를 할 수 없도록 대상 창이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1739,55 +1739,55 @@ msgid ""
 "way that disrupted the recording."
 msgstr "녹화를 할 수 없도록 대상 영역이 변경되어 스트림이 닫혔습니다."
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 임시 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "녹화할 수 없음: 출력 파일 URL이 로컬 파일이 아님(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "녹화할 수 없음: 폴더를 만들 수 없음(%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "화면 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "창 녹화 취소됨"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "화면을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "창을 선택할 수 없음: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "화면을 선택할 수 없음: 마우스 커서 위치가 포함된 화면 없음"
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"

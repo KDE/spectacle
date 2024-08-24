@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-07-09 23:22+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -191,12 +191,12 @@ msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -206,12 +206,12 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia direktorioa sortzea huts egin duelako:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -221,30 +221,30 @@ msgstr ""
 "Ezin da gorde pantaila-argazkia urruneko direktorioa sortzea huts egin "
 "duelako:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Errorea aldi baterako fitxategi lokala "
 "idaztean."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Irudia ezin da gorde. Ezin izan da fitxategia urruneko kokalekura igo."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Ezin da gorde pantaila-argazkia. Gordetzeko fitxategi-izena baliogabea da."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ezin da gorde pantaila-argazki irudi huts bat."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,7 +253,7 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Aldi baterako fitxategiaren URL existitzen "
 "den fitxategi lokal bat izan behar da"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -262,14 +262,14 @@ msgstr ""
 "Bideoa esportatzea huts egin du: Irteerako fitxategiaren URL balioduna izan "
 "behar da eta fitxategi-izen bat izan behar du"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Inprimatzea huts egin du. Inprimagailua hasieratzea huts egin du."
@@ -1744,19 +1744,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Pantaila grabatzea ez dago erabilgarri «X11»n."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Grabatzea huts egin du: Fitxategiaren URL ez da fitxategi lokal bat"
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1766,7 +1766,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako pantaila, grabazioa moztu duen era batean "
 "aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1776,7 +1776,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako leihoa, grabazioa moztu duen era batean "
 "aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1786,7 +1786,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako eskualdea duen pantaila, grabazioa moztu "
 "duen era batean aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -1794,7 +1794,7 @@ msgstr ""
 "Grabatzea huts egin du: Aldi baterako fitxategiaren URL ez da fitxategi "
 "lokal bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -1802,37 +1802,37 @@ msgstr ""
 "Grabatzea huts egin du: Irteerako fitxategiaren URL ez da fitxategi lokal "
 "bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Grabatzea huts egin du: Ez da karpeta sortzeko gai (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Pantaila grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Leihoa grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1840,7 +1840,7 @@ msgstr ""
 "Leihoa hautatzea huts egin du: Ez dago sagu kurtsorearen kokalekua duen "
 "pantailarik"
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"

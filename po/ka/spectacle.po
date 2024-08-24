@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-05-17 04:54+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -185,12 +185,12 @@ msgstr "ფონურ რეჟიმში ეკრანის ანაბ
 msgid "Open and edit existing screenshot file"
 msgstr "ეკრანის ანაბეჭდის არსებული ფაილის გახსნა და ჩასწორება"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter -ის შეცდომა გამოსახულების შენახვისას: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -200,12 +200,12 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. საქაღალდის შექმნის შეცდომა:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის ჩაწერა შეუძლებელია."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -215,29 +215,29 @@ msgstr ""
 "ეკრანის ანაბეჭდის შენახვა შეუძლებელია. დაშორებული საქაღალდის შექმნის შეცდომა:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "ეკრანის ანაბეჭდის შენახვის შეცდომა. დროებითი ლოკალური ფაილის ჩაწერა "
 "შეუძლებელია."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "გამოსახულების შენახვის შეცდომა. დაშორებულ ადგილას ატვირთვის შეცდომა."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "ეკრანის ანაბეჭდის შენახვის შეცდომა. ფაილის სახელი არასწორია."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "ცარიელი ეკრანის ანაბეჭდის გამოსახულების შენახვა შეუძლებელია."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,7 +245,7 @@ msgid ""
 msgstr ""
 "ვიდეოს გატანა ჩავარდა: დროებით ფაილის ბმული არსებული ლოკალური ფაილი უნდა იყოს"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,13 +254,13 @@ msgstr ""
 "ვიდეოს გატანა ჩავარდა: გამოტანის ფაილის ბმული სახელის შემცველ სწორ ბმულს "
 "უნდა წარმოადგენდეს"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ჩანაწერის შენახვა შეუძლებელია. ფაილი ვერ გადავიტანე საქაღალდეში: %1"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "დაბეჭდვის შეცდომა. პრინტერის ინიციალიზაცია შეუძლებელია."
@@ -1729,19 +1729,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "ეკრანის ჩაწერა ხელმიუწვდომელია X11-ზე."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1750,7 +1750,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ეკრანი ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1759,7 +1759,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ფანჯარა ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1769,56 +1769,56 @@ msgstr ""
 "ნაკადი დაიხურა, რადგან ეკრანი, რომელიც სამიზნე ალაგს შეიცავს, ისე შეიცვალა, "
 "რომ ჩაწერა შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: გამოტანის ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "ჩაწერის შეცდომა: საქაღალდის (%1) შექმნა შეუძლებელია"
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "ეკრანის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "ფანჯრის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "ეკრანის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "ფანჯრის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 "ეკრანის არჩევა ჩავარდა: ეკრანი, რომელიც თაგუნას კურსორს შეიცავს, ვერ ვიპოვე"
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"

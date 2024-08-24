@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-05-28 10:49+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -214,12 +214,12 @@ msgstr "В фоновом режиме, не включая тень окна"
 msgid "Open and edit existing screenshot file"
 msgstr "Открыть и отредактировать существующий файл снимка экрана"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "Ошибка записи изображения с помощью QImageWriter: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -229,12 +229,12 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога: <nl/"
 "><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не удалось сохранить снимок экрана. Ошибка при записи файла."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -244,30 +244,30 @@ msgstr ""
 "Не удалось сохранить снимок экрана из-за ошибки создания каталога в сетевой "
 "файловой системе: <nl/><filename>«%1»</filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не удалось сохранить снимок экрана. Ошибка при записи временного файла."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Ошибка при сохранении изображения. Не удалось загрузить файл на удалённый "
 "адрес."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Не удалось сохранить снимок экрана. Недопустимое имя файла."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Невозможно сохранить пустой снимок экрана."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -276,7 +276,7 @@ msgstr ""
 "Не удалось экспортировать видео: адресом временного файла должен быть "
 "существующий временный файл"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -285,14 +285,14 @@ msgstr ""
 "Не удалось экспортировать видео: файл вывода должен быть корректным URL-"
 "адресом и содержать имя файла"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ошибка при сохранении записи: не удалось переместить файл в расположение «%1»"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ошибка печати: не удалось инициализировать принтер."
@@ -1782,20 +1782,20 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Запись экрана недоступна при использовании X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "Трансляция экрана KWin недоступна."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr ""
 "Не удалось выполнить запись: URL-адрес файла не является локальным файлом"
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1803,7 +1803,7 @@ msgid ""
 "the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1811,7 +1811,7 @@ msgid ""
 "the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1819,7 +1819,7 @@ msgid ""
 "way that disrupted the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -1827,7 +1827,7 @@ msgstr ""
 "Не удалось выполнить запись: URL-адрес временного файла не является "
 "локальным файлом («%1»)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -1835,37 +1835,37 @@ msgstr ""
 "Не удалось выполнить запись: URL-адрес файла вывода не является локальным "
 "файлом («%1»)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Не удалось выполнить запись: невозможно создать папку «%1»"
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Запись экрана отменена"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Запись окна отменена"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Не удалось выбрать экран: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Не удалось выбрать окно: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1873,7 +1873,7 @@ msgstr ""
 "Не удалось выбрать экран: ни один экран не содержит информации о "
 "расположении курсора мыши"
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"

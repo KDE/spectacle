@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-05-17 21:04+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -193,12 +193,12 @@ msgstr "No modo en segundo plano, excluír as sombras da captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir e editar o ficheiro de captura de pantalla existente"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pode gardar a imaxe: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,14 +208,14 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -225,32 +225,32 @@ msgstr ""
 "Non é posíbel gardar a captura de pantalla porque a creación do cartafol "
 "remoto fallou:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. Produciuse un erro ao gardar o "
 "ficheiro temporal local."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Non é posíbel gardar a imaxe. Non se puido enviar o ficheiro ao lugar remoto."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Non é posíbel gardar a captura de pantalla. O nome do ficheiro no que "
 "gardala é incorrecto."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Non é posíbel gardar unha captura de pantalla baleira."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -259,7 +259,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro temporal debe ser un "
 "ficheiro local existente."
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 "Non foi posíbel exportar o vídeo: o URL do ficheiro de saída debe ser un URL "
 "válido cun nome de ficheiro."
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -276,7 +276,7 @@ msgstr ""
 "Non é posíbel gardar a gravación. Non se puido mover o ficheiro á "
 "localización: %1"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr ""
@@ -1755,19 +1755,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Non se pode gravar a pantalla en X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "A gravación de pantalla de KWin non está dispoñíbel."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Non foi posíbel gravar: o URL non corresponde a un ficheiro local."
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1777,7 +1777,7 @@ msgstr ""
 "Pechouse a fluxo porque a pantalla correspondente cambiou dun xeito que "
 "interrompeu a gravación."
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1787,7 +1787,7 @@ msgstr ""
 "Pechouse a fluxo porque a xanela correspondente cambiou dun xeito que "
 "interrompeu a gravación."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1797,7 +1797,7 @@ msgstr ""
 "Pechouse a fluxo porque a pantalla que contén a rexión correspondente "
 "cambiou dun xeito que interrompeu a gravación."
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -1805,7 +1805,7 @@ msgstr ""
 "Non foi posíbel gravar: o URL de ficheiro temporal non corresponde a un "
 "ficheiro local (%1)."
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -1813,37 +1813,37 @@ msgstr ""
 "Non foi posíbel gravar: o URL de ficheiro de saída non corresponde a un "
 "ficheiro local (%1)."
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Non foi posíbel gravar: non é posíbel crear o cartafol (%1)."
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Cancelouse a gravación de pantalla"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Cancelouse a gravación de xanela"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Non foi posíbel seleccionar a pantalla: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Non foi posíbel seleccionar a xanela: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1851,7 +1851,7 @@ msgstr ""
 "Non foi posíbel seleccionar a pantalla: ningunha pantalla contiña a posición "
 "do cursor do rato."
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-20 00:39+0000\n"
+"POT-Creation-Date: 2024-08-24 00:38+0000\n"
 "PO-Revision-Date: 2024-05-25 16:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: \n"
@@ -179,12 +179,12 @@ msgstr "في وضع الخلفيّة، استبعد ظلال النافذة من
 msgid "Open and edit existing screenshot file"
 msgstr "افتح و حرر لاقط موجودة مسبقا"
 
-#: src/ExportManager.cpp:448
+#: src/ExportManager.cpp:449
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "تعذّر على QImageWriter كتابة الصّورة: %1"
 
-#: src/ExportManager.cpp:464
+#: src/ExportManager.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -193,12 +193,12 @@ msgid ""
 msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:474
+#: src/ExportManager.cpp:475
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ."
 
-#: src/ExportManager.cpp:494
+#: src/ExportManager.cpp:495
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,27 +208,27 @@ msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل البعيد:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:505 src/ExportManager.cpp:554
+#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ المحليّ المؤقّت."
 
-#: src/ExportManager.cpp:513
+#: src/ExportManager.cpp:514
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "تعذّر حفظ الصّورة بسبب تعذّر رفعها إلى المكان البعيد."
 
-#: src/ExportManager.cpp:561
+#: src/ExportManager.cpp:562
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "تعذّر حفظ اللقطة لأنّ اسم الملفّ غير صالح."
 
-#: src/ExportManager.cpp:605
+#: src/ExportManager.cpp:606
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "لا يمكن حفظ لقطة فارغة."
 
-#: src/ExportManager.cpp:736
+#: src/ExportManager.cpp:753
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -236,7 +236,7 @@ msgid ""
 msgstr ""
 "فشل تصدير الفيديو: يجب أن يكون عنوان الرابط للملف المؤقت ملفًا محليًا موجودًا"
 
-#: src/ExportManager.cpp:743
+#: src/ExportManager.cpp:760
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,13 +245,13 @@ msgstr ""
 "فشل تصدير الفيديو: يجب أن يكون عنوان الرابط لملف الإخراج عنوان رابط صالحًا "
 "يحوي اسم ملف"
 
-#: src/ExportManager.cpp:818
+#: src/ExportManager.cpp:835
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "تعذّر حفظ الصّورة بسبب تعذّر  نقل الملف إلى المكان: %1"
 
-#: src/ExportManager.cpp:846
+#: src/ExportManager.cpp:863
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "فشلت الطّباعة. فشل تمهيد الطّابعة."
@@ -1736,19 +1736,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "تسجيل الشاشة غير متاح على أكس11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:130
+#: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "بث كوين غير متوفر."
 
-#: src/Platforms/VideoPlatformWayland.cpp:139
+#: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "فشل التسجيل: عنوان الرابط للملف ليس ملفًا محليًا"
 
-#: src/Platforms/VideoPlatformWayland.cpp:223
+#: src/Platforms/VideoPlatformWayland.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1756,7 +1756,7 @@ msgid ""
 "the recording."
 msgstr "أغلق البث لأن الشاشة المستهدفة تغيرت بطريقة أدت إلى تعطيل التسجيل."
 
-#: src/Platforms/VideoPlatformWayland.cpp:225
+#: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1764,7 +1764,7 @@ msgid ""
 "the recording."
 msgstr "أغلق البث لأن النافذة المستهدفة تغيرت بطريقة أدت إلى تعطيل التسجيل."
 
-#: src/Platforms/VideoPlatformWayland.cpp:227
+#: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1774,55 +1774,55 @@ msgstr ""
 "أغلق البث لأن الشاشة التي تحوي المنطقة المستهدفة تغيرت بطريقة أدت إلى تعطيل "
 "التسجيل."
 
-#: src/Platforms/VideoPlatformWayland.cpp:241
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "فشل التسجيل: عنوان الرابط للملف المؤقت ليس ملفًا محليًا (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:279
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "فشل التسجيل: عنوان الرابط لملف الإخراج ليس ملفًا محليًا (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:286
+#: src/Platforms/VideoPlatformWayland.cpp:326
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "فشل التسجيل: غير قادر على إنشاء المجلد (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:314
+#: src/Platforms/VideoPlatformWayland.cpp:354
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "ألغي تسجيل شاشة"
 
-#: src/Platforms/VideoPlatformWayland.cpp:316
+#: src/Platforms/VideoPlatformWayland.cpp:356
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "ألغي تسجيل النافذة"
 
-#: src/Platforms/VideoPlatformWayland.cpp:322
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "فشل في تحديد الشاشة: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:324
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "فشل في تحديد نافذة: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:352
+#: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "فشل في تحديد الشاشة: لا توجد شاشة تحتوي على موضع مؤشر الفأرة"
 
-#: src/Platforms/VideoPlatformWayland.cpp:359
+#: src/Platforms/VideoPlatformWayland.cpp:399
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
