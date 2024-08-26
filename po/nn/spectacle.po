@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-24 00:38+0000\n"
+"POT-Creation-Date: 2024-08-26 00:37+0000\n"
 "PO-Revision-Date: 2023-07-29 12:23+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -177,7 +177,6 @@ msgstr "I bakgrunnsmodus, ikkje ta med vindaugspynt i skjermbiletet"
 
 #: src/CommandLineOptions.h:106
 #, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "I bakgrunnsmodus, ikkje ta med vindaugspynt i skjermbiletet"
 
@@ -254,7 +253,6 @@ msgstr ""
 
 #: src/ExportManager.cpp:835
 #, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
@@ -433,7 +431,6 @@ msgstr "Ta nytt skjermbilete"
 
 #: src/Gui/CaptureOptions.qml:39
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Skjermbilete"
@@ -463,14 +460,11 @@ msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
 #, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
 msgid "Include window shadow"
 msgstr "Ta med tittellinje og vindaugsramme"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
 "Ta med tittellinja og ramma rundt vindauge når du trek bilete av vindauge."
@@ -532,9 +526,6 @@ msgstr "Inga forseinking"
 
 #: src/Gui/DelaySpinBox.qml:24
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
@@ -543,9 +534,6 @@ msgstr[1] "%1 sekund"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 sekund"
@@ -562,35 +550,30 @@ msgstr "Hjelp"
 
 #: src/Gui/DialogPage.qml:87
 #, fuzzy, kde-format
-#| msgid "Take Screenshot:"
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Ta skjermbilete:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
 #, fuzzy, kde-format
-#| msgid "Options"
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Val"
 
 #: src/Gui/DialogPage.qml:128
 #, fuzzy, kde-format
-#| msgid "Recording"
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Opptak"
 
-#: src/Gui/DialogPage.qml:165
+#: src/Gui/DialogPage.qml:170
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Skjermbilete"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:175
 #, fuzzy, kde-format
-#| msgid "Recording"
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Opptak"
@@ -632,14 +615,12 @@ msgstr "Biletforstørring"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
 msgstr "Skjermbiletet er no kopiert til utklippstavla."
 
 #: src/Gui/LocationCopiedMessage.qml:14
 #, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
 msgstr "Skjermbiletet er no kopiert til utklippstavla."
@@ -661,7 +642,6 @@ msgstr "Kopier"
 
 #: src/Gui/MainToolBarContents.qml:79
 #, fuzzy, kde-format
-#| msgid "Save Location:"
 msgid "Copy Location"
 msgstr "Lagra i:"
 
@@ -800,9 +780,6 @@ msgstr ""
 
 #: src/Gui/SavedAndLocationCopied.qml:9
 #, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
@@ -960,7 +937,6 @@ msgstr "Vis bruksinstruksjonar"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
 #, fuzzy, kde-format
-#| msgid "Show magnifier"
 msgid "Show magnifier:"
 msgstr "Vis forstørringsrute"
 
@@ -1041,17 +1017,12 @@ msgstr "Eksempel:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
 msgctxt "@info"
 msgid "<filename>%1</filename>"
 msgstr "<filename>%1.%2</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
@@ -1078,7 +1049,6 @@ msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, fuzzy, kde-format
-#| msgid "General"
 msgctxt "Settings category"
 msgid "General"
 msgstr "Generelt"
@@ -1097,7 +1067,6 @@ msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, fuzzy, kde-format
-#| msgid "Shortcuts"
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Snarvegar"
@@ -1185,7 +1154,6 @@ msgstr "Om musepeikaren òg skal takast med i skjermbiletet"
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Om musepeikaren òg skal takast med i skjermbiletet"
 
@@ -1198,7 +1166,6 @@ msgstr "Om vindaugspynt òg skal takast med i skjermbiletet"
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Om vindaugspynt òg skal takast med i skjermbiletet"
 
@@ -1236,7 +1203,6 @@ msgstr "Biletkvalitet ved lagring til filformat med kvalitetstap"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Skjermbilete"
@@ -1250,13 +1216,11 @@ msgstr "Standard biletformat for lagring"
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, fuzzy, kde-format
-#| msgid "The default filename used when saving"
 msgid "The filename template used when saving screenshots"
 msgstr "Standard filnamn som skal brukast ved lagring"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "part of default image filename template"
 msgid "Screenshot"
 msgstr "Skjermbilete"
@@ -1280,27 +1244,23 @@ msgstr "Førre adresse brukt i «Lagra som»-handling"
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, fuzzy, kde-format
-#| msgid "Default save image format"
 msgid "Default video format"
 msgstr "Standard biletformat for lagring"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, fuzzy, kde-format
-#| msgid "The default filename used when saving"
 msgid "The filename template used when saving screencasts"
 msgstr "Standard filnamn som skal brukast ved lagring"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Skjermbilete"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, fuzzy, kde-format
-#| msgid "Screenshot"
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Skjermbilete"
@@ -1398,14 +1358,12 @@ msgstr "Strekfarge for ellipsepåteikningar"
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
 #, fuzzy, kde-format
-#| msgid "Fill color for rectangle annotation tool"
 msgid "Fill color for number annotation tool"
 msgstr "Strekfarge for rektangelpåteikningar"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
 #, fuzzy, kde-format
-#| msgid "The last used region the user selected"
 msgid "The strength of the blur effect."
 msgstr "Området for skjermutsnitt som brukaren valde førre gong"
 
@@ -1480,29 +1438,23 @@ msgstr "Om talpåteikningar skal ha ein skuggeeffekt"
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
 #, fuzzy, kde-format
-#| msgid "Save Location:"
 msgid "Save &Location:"
 msgstr "Lagra i:"
 
 #: src/Gui/SharedMessage.qml:13
 #, fuzzy, kde-format
-#| msgid "Image shared"
 msgctxt "@info"
 msgid "Video shared"
 msgstr "Bilete delt"
 
 #: src/Gui/SharedMessage.qml:13
 #, fuzzy, kde-format
-#| msgid "Image shared"
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Bilete delt"
 
 #: src/Gui/SharedMessage.qml:16
 #, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1513,9 +1465,6 @@ msgstr ""
 
 #: src/Gui/SharedMessage.qml:18
 #, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1526,14 +1475,12 @@ msgstr ""
 
 #: src/Gui/ShareErrorMessage.qml:13
 #, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
 msgstr "Det oppstod ein feil ved deling av biletet: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
 #, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Det oppstod ein feil ved deling av biletet: %1"
@@ -1741,7 +1688,6 @@ msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Etter å ha teke eit skjermbilete:"
@@ -1854,14 +1800,12 @@ msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:362
 #, fuzzy, kde-format
-#| msgid "Failed to select window"
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Klarte ikkje velja vindauge"
 
 #: src/Platforms/VideoPlatformWayland.cpp:364
 #, fuzzy, kde-format
-#| msgid "Failed to select window"
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Klarte ikkje velja vindauge"
@@ -1874,31 +1818,24 @@ msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:399
 #, fuzzy, kde-format
-#| msgid "Failed to select window"
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Klarte ikkje velja vindauge"
 
 #: src/RecordingModeModel.cpp:71
 #, fuzzy, kde-format
-#| msgid "Rectangular Region"
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Skjermutsnitt"
 
 #: src/RecordingModeModel.cpp:74
 #, fuzzy, kde-format
-#| msgid "Full Screen"
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
 #: src/RecordingModeModel.cpp:77
 #, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
 msgctxt "@item recording mode"
 msgid "Window"
 msgstr "Vindaugstittel"
@@ -1940,13 +1877,11 @@ msgstr "Skjermopptak"
 
 #: src/ShortcutActions.cpp:80
 #, fuzzy, kde-format
-#| msgid "Recording"
 msgid "Record Window"
 msgstr "Opptak"
 
 #: src/ShortcutActions.cpp:86
 #, fuzzy, kde-format
-#| msgid "Rectangular Region"
 msgid "Record Rectangular Region"
 msgstr "Skjermutsnitt"
 
@@ -1957,21 +1892,18 @@ msgstr "Start Spectacle utan å ta skjermbilete"
 
 #: src/SpectacleCore.cpp:238
 #, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Start Spectacle utan å ta eit bilete"
 
 #: src/SpectacleCore.cpp:252
 #, fuzzy, kde-format
-#| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Når Spectacle køyrer"
 
 #: src/SpectacleCore.cpp:257
 #, fuzzy, kde-format
-#| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Når Spectacle køyrer"
@@ -1992,7 +1924,6 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:318
 #, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Start Spectacle utan å ta eit bilete"
@@ -2030,9 +1961,6 @@ msgstr "Eit skjermbilete vart lagra til utklippstavla."
 
 #: src/SpectacleCore.cpp:966
 #, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
@@ -2042,15 +1970,12 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:968
 #, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Eit skjermbilete vart lagra som «%1» i biletmappa."
 
 #: src/SpectacleCore.cpp:970
 #, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Eit skjermbilete vart lagra som «%1» i «%2»."
 
