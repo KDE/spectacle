@@ -160,7 +160,6 @@ EmptyPage {
             scale: root.fitZoom
             visible: true
             enabled: contextWindow.annotating
-                && AnnotationDocument.tool.type !== AnnotationTool.NoTool
             Keys.forwardTo: cropTool
             Keys.priority: Keys.AfterItem
         }

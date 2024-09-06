@@ -36,7 +36,7 @@ MouseArea {
         id: annotations
         anchors.fill: parent
         visible: true
-        enabled: contextWindow.annotating && AnnotationDocument.tool.type !== AnnotationTool.NoTool
+        enabled: contextWindow.annotating
         viewportRect: G.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
     }
 
@@ -52,7 +52,7 @@ MouseArea {
         anchors.right: parent.right
         anchors.bottom: selectionRectangle.visible ? selectionRectangle.top : parent.bottom
         opacity: if (Selection.empty
-            && (annotations.enabled || annotations.document.undoStackDepth > 0)) {
+            && (!annotations.document.tool.isNoTool || annotations.document.undoStackDepth > 0)) {
             return 0
         } else if (Selection.empty) {
             return 0.25
@@ -95,7 +95,7 @@ MouseArea {
 
     Rectangle {
         id: selectionRectangle
-        enabled: !annotations.enabled
+        enabled: annotations.document.tool.isNoTool
         color: "transparent"
         border.color: if (enabled) {
             return palette.active.highlight
@@ -180,7 +180,7 @@ MouseArea {
         opacity: root.containsMouse
             && !contains(mapFromItem(root, root.mouseX, root.mouseY))
             && !root.pressed
-            && !annotations.enabled
+            && annotations.document.tool.isNoTool
             && !mtbDragHandler.active
             && !atbDragHandler.active
             && !G.rectIntersects(SelectionEditor.handlesRect, Qt.rect(x, y, width, height))

@@ -510,7 +510,7 @@ bool AnnotationViewport::shouldIgnoreInput() const
 
 void AnnotationViewport::setCursorForToolType()
 {
-    if (m_document && isEnabled()) {
+    if (m_document && !shouldIgnoreInput()) {
         if (m_document->tool()->type() == AnnotationTool::SelectTool) {
             setCursor(Qt::ArrowCursor);
         } else {
