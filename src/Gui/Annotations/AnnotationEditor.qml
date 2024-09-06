@@ -37,4 +37,15 @@ AnnotationViewport {
             hidden: selectionTool.hovered || selectionTool.dragging
         }
     }
+
+    Shortcut {
+        enabled: root.enabled
+        sequences: [StandardKey.Undo]
+        onActivated: root.document.undo()
+    }
+    Shortcut {
+        enabled: root.enabled
+        sequences: [StandardKey.Redo]
+        onActivated: root.document.redo()
+    }
 }

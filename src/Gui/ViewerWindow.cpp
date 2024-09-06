@@ -37,18 +37,6 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     new QShortcut(QKeySequence::SaveAs, this, this, &ViewerWindow::saveAs);
     new QShortcut(QKeySequence::Copy, this, this, &ViewerWindow::copyImage);
     new QShortcut(QKeySequence::Print, this, this, &ViewerWindow::showPrintDialog);
-    new QShortcut(QKeySequence::Undo, this, SpectacleCore::instance(), []{
-        auto document = SpectacleCore::instance()->annotationDocument();
-        if (document && document->undoStackDepth() > 0) {
-            document->undo();
-        }
-    });
-    new QShortcut(QKeySequence::Redo, this, SpectacleCore::instance(), []{
-        auto document = SpectacleCore::instance()->annotationDocument();
-        if (document && document->redoStackDepth() > 0) {
-            document->redo();
-        }
-    });
 
     m_context->setContextObject(this); // Must be before QML is initialized
 
