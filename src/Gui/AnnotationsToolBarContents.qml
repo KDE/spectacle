@@ -41,6 +41,16 @@ ButtonGrid {
         focusPolicy: root.focusPolicy
         display: root.displayMode
         checkable: true
+        containmentMask: Item {
+            parent: button
+            readonly property rect rect: root.flow === Grid.TopToBottom ?
+                Qt.rect(-root.x, -root.spacing / 2, parent.width + root.x * 2, parent.height + root.spacing)
+                : Qt.rect(-root.spacing / 2, -root.y, parent.width + root.spacing, parent.height + root.y * 2)
+            x: rect.x
+            y: rect.y
+            width: rect.width
+            height: rect.height
+        }
         QQC.ToolTip {
             id: tooltip
             text: button.text
