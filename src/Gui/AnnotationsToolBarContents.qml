@@ -3,6 +3,7 @@
  */
 
 import QtQuick
+import QtQuick.Templates as T
 import QtQuick.Controls as QQC
 import org.kde.spectacle.private
 import "Annotations"
@@ -35,6 +36,31 @@ ButtonGrid {
         onClicked: Settings.annotationToolType = AnnotationDocument.tool.type
     }
 
+    QQC.ToolTip {
+        id: tooltip
+        property T.AbstractButton target: null
+        function shouldShow(target: T.AbstractButton) : bool {
+            return target && (target.hovered || target.pressed)
+                && target.display === QQC.ToolButton.IconOnly
+        }
+        parent: target || root
+        text: target?.text ?? ""
+        visible: shouldShow(target)
+        Binding on x {
+            value: root.mirrored ?
+                -root.parent.leftPadding - tooltip.width
+                : (tooltip.target ? tooltip.target.width + root.parent.rightPadding : 0)
+            when: root.flow === Grid.TopToBottom && tooltip.target
+            restoreMode: Binding.RestoreBindingOrValue
+        }
+        Binding on y {
+            value: tooltip.target ? // target check needed to prevent warnings
+                dprRound((tooltip.target.height - tooltip.height) / 2) : 0
+            when: root.flow === Grid.TopToBottom && tooltip.target
+            restoreMode: Binding.RestoreBindingOrValue
+        }
+    }
+
     component ToolButton: QQC.ToolButton {
         id: button
         implicitHeight: QmlUtils.iconTextButtonHeight
@@ -51,23 +77,12 @@ ButtonGrid {
             width: rect.width
             height: rect.height
         }
-        QQC.ToolTip {
-            id: tooltip
-            text: button.text
-            visible: (button.hovered || button.pressed)
-                && button.display === QQC.ToolButton.IconOnly
-            Binding on x {
-                value: root.mirrored ?
-                    -root.parent.leftPadding - tooltip.width
-                    : button.width + root.parent.rightPadding
-                when: root.flow === Grid.TopToBottom
-                restoreMode: Binding.RestoreBindingOrValue
-            }
-            Binding on y {
-                value: contextWindow.dprRound((button.height - tooltip.height) / 2)
-                when: root.flow === Grid.TopToBottom
-                restoreMode: Binding.RestoreBindingOrValue
-            }
+        Binding {
+            target: tooltip
+            property: "target"
+            value: button
+            when: tooltip.shouldShow(button)
+            restoreMode: Binding.RestoreNone
         }
     }
 
