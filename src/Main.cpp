@@ -17,6 +17,7 @@
 #include <QCommandLineParser>
 #include <QDBusConnection>
 #include <QDir>
+#include <QIcon>
 #include <QSessionManager>
 
 #include <KAboutData>
@@ -32,6 +33,7 @@ int main(int argc, char **argv)
     // set up the application
 
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
+    QIcon::setFallbackThemeName(u"breeze"_s);
     QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("spectacle"));
