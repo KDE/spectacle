@@ -153,6 +153,11 @@ qreal SpectacleWindow::dprRound(qreal value) const
     return G::dprRound(value, devicePixelRatio());
 }
 
+QPointF SpectacleWindow::dprRound(const QPointF &point) const
+{
+    return G::dprRound(point, devicePixelRatio());
+}
+
 qreal SpectacleWindow::dprCeil(qreal value) const
 {
     return G::dprCeil(value, devicePixelRatio());

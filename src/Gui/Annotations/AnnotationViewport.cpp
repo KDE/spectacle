@@ -256,7 +256,8 @@ void AnnotationViewport::hoverEnterEvent(QHoverEvent *event)
         QQuickItem::hoverEnterEvent(event);
         return;
     }
-    setHoverPosition(event->position());
+    auto position = G::dprRound(event->position(), window()->devicePixelRatio());
+    setHoverPosition(position);
     setHovered(true);
 }
 
@@ -266,13 +267,14 @@ void AnnotationViewport::hoverMoveEvent(QHoverEvent *event)
         QQuickItem::hoverMoveEvent(event);
         return;
     }
-    setHoverPosition(event->position());
+    auto position = G::dprRound(event->position(), window()->devicePixelRatio());
+    setHoverPosition(position);
 
     if (m_document->tool()->type() == AnnotationTool::SelectTool) {
         // Without as_const, QMatrix4x4 will go to General mode with operator()(row, column).
         // keep margin the same number of pixels regardless of zoom level.
         auto margin = 4 * std::as_const(m_documentToLocal)(0, 0); // m11/x scale
-        QRectF forgivingRect{event->position(), QSizeF{0, 0}};
+        QRectF forgivingRect{position, QSizeF{0, 0}};
         forgivingRect.adjust(-margin, -margin, margin, margin);
         if (auto item = m_document->itemAt(m_localToDocument.mapRect(forgivingRect))) {
             auto &interactive = std::get<Traits::Interactive::Opt>(item->traits());
@@ -303,7 +305,7 @@ void AnnotationViewport::mousePressEvent(QMouseEvent *event)
 
     auto toolType = m_document->tool()->type();
     auto wrapper = m_document->selectedItemWrapper();
-    auto pressPos = event->position();
+    auto pressPos = G::dprRound(event->position(), window()->devicePixelRatio());
     m_lastDocumentPressPos = m_localToDocument.map(pressPos);
 
     if (toolType == AnnotationTool::SelectTool) {
@@ -332,10 +334,10 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
     }
 
     auto tool = m_document->tool();
-    auto mousePos = event->position();
+    auto mousePos = G::dprRound(event->position(), window()->devicePixelRatio());
     auto wrapper = m_document->selectedItemWrapper();
     if (tool->type() == AnnotationTool::SelectTool && wrapper->hasSelection() && m_allowDraggingSelection) {
-        auto documentMousePos = m_localToDocument.map(event->position());
+        auto documentMousePos = m_localToDocument.map(mousePos);
         auto dx = documentMousePos.x() - m_lastDocumentPressPos.x();
         auto dy = documentMousePos.y() - m_lastDocumentPressPos.y();
         wrapper->transform(dx, dy);

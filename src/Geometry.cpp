@@ -40,6 +40,11 @@ qreal Geometry::dprRound(qreal value, qreal dpr)
     return std::round(value * dpr) / dpr;
 }
 
+QPointF Geometry::dprRound(QPointF point, qreal dpr)
+{
+    return {std::round(point.x() * dpr) / dpr, std::round(point.y() * dpr) / dpr};
+}
+
 qreal Geometry::dprCeil(qreal value, qreal dpr)
 {
     return std::ceil(value * dpr) / dpr;
