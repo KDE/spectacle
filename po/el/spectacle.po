@@ -451,8 +451,7 @@ msgstr[0] "%1 δευτερόλεπτο"
 msgstr[1] "%1 δευτερόλεπτα"
 
 #: src/Gui/CaptureOptions.qml:17
-#, fuzzy, kde-format
-#| msgid "Take a new Screenshot"
+#, kde-format
 msgid "Take a new screenshot"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
@@ -470,10 +469,9 @@ msgid "Include mouse pointer"
 msgstr "Να συμπεριληφθεί ο δείκτης του ποντικιού"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου"
+msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου."
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
 #, kde-format
@@ -522,12 +520,11 @@ msgid "Quit after manual Save or Copy"
 msgstr "Έξοδος μετά από χειροκίνητη αποθήκευση ή αντιγραφή"
 
 #: src/Gui/CaptureSettingsColumn.qml:55
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
 "Έξοδος από το Spectacle μετά από χειροκίνητη αποθήκευση ή αντιγραφή της "
-"εικόνας"
+"εικόνας."
 
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, fuzzy, kde-format
@@ -536,10 +533,10 @@ msgid "Capture on click"
 msgstr "Χωρίς κλικ"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
-#, fuzzy, kde-format
-#| msgid "Wait for a mouse click before capturing the screenshot image"
+#, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Αναμονή για κλικ ποντικιού πριν από τη σύλληψη του στιγμιοτύπου οθόνης"
+msgstr ""
+"Αναμονή για κλικ ποντικιού πριν από τη σύλληψη του στιγμιοτύπου οθόνης."
 
 #: src/Gui/CaptureSettingsColumn.qml:76 src/Gui/OptionsMenu.cpp:152
 #, kde-format
@@ -552,8 +549,7 @@ msgid "The screenshot has been copied to the clipboard."
 msgstr "Το στιγμιότυπο οθόνης έχει αντιγραφεί στο πρόχεορο."
 
 #: src/Gui/DelaySpinBox.qml:15
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
 msgstr "Χωρίς καθυστέρηση"
@@ -1002,10 +998,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Εμφάνιση μεγεθυντικού φακού"
+msgstr "Εμφάνιση μεγεθυντικού φακού:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -1120,8 +1115,7 @@ msgid "Show More"
 msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Γενικά"
@@ -1139,8 +1133,7 @@ msgid "Video Saving"
 msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
@@ -1525,10 +1518,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Αποθήκευση Θέσης:"
+msgstr "Απο&θήκευση Θέσης:"
 
 #: src/Gui/SharedMessage.qml:13
 #, fuzzy, kde-format
@@ -1538,8 +1530,7 @@ msgid "Video shared"
 msgstr "Η εικόνα διαμοιράστηκε"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
 msgstr "Η εικόνα διαμοιράστηκε"
@@ -1558,10 +1549,7 @@ msgstr ""
 "πρόχειρο."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
@@ -1578,8 +1566,7 @@ msgid "There was a problem sharing the video: %1"
 msgstr "Υπήρξε πρόβλημα με το διαμοιρασμό της εικόνας: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
 msgstr "Υπήρξε πρόβλημα με το διαμοιρασμό της εικόνας: %1"
@@ -1922,15 +1909,13 @@ msgid "Failed to select window: No window found"
 msgstr ""
 
 #: src/RecordingModeModel.cpp:71
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Ορθογώνια περιοχή"
 
 #: src/RecordingModeModel.cpp:74
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Πλήρης οθόνη"
@@ -1976,8 +1961,7 @@ msgid "Capture Window Under Cursor"
 msgstr "Λήψη παραθύρου υπό τον δρομέα"
 
 #: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgid "Record Screen"
 msgstr "Εγγραφή οθόνης"
 
@@ -2071,8 +2055,7 @@ msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
 #: src/SpectacleCore.cpp:961
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
