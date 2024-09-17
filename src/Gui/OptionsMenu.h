@@ -8,8 +8,8 @@
 #include "SpectacleMenu.h"
 #include "Gui/SmartSpinBox.h"
 
+#include <QCheckBox>
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QQmlEngine>
 #include <QWidgetAction>
 
@@ -46,9 +46,9 @@ protected:
     void delayActionLayoutUpdate();
     const std::unique_ptr<QWidgetAction> m_delayAction;
     const std::unique_ptr<QWidget> m_delayWidget;
-    const std::unique_ptr<QHBoxLayout> m_delayLayout;
-    const std::unique_ptr<QLabel> m_delayLabel;
+    const std::unique_ptr<QCheckBox> m_delayCheckBox;
     const std::unique_ptr<SmartSpinBox> m_delaySpinBox;
+    const std::unique_ptr<QHBoxLayout> m_delayLayout;
     bool m_updatingDelayActionLayout = false;
 };
 

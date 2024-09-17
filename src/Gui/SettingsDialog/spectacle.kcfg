@@ -113,8 +113,12 @@
     </entry>
     <entry name="captureDelay" type="Double">
         <label>Delay</label>
-        <default>0</default>
+        <default>4</default>
         <min>0</min>
+    </entry>
+    <entry name="captureDelayEnabled" type="Bool">
+        <label>Delay enabled</label>
+        <default>false</default>
     </entry>
     <entry name="captureMode" type="Enum">
         <choices name="CaptureModeModel::CaptureMode"></choices>

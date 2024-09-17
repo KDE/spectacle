@@ -29,9 +29,9 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
     , m_delayAction(new QWidgetAction(this))
     , m_delayWidget(new QWidget(this))
-    , m_delayLayout(new QHBoxLayout(m_delayWidget.get()))
-    , m_delayLabel(new QLabel(m_delayWidget.get()))
+    , m_delayCheckBox(new QCheckBox(m_delayWidget.get()))
     , m_delaySpinBox(new SmartSpinBox(m_delayWidget.get()))
+    , m_delayLayout(new QHBoxLayout(m_delayWidget.get()))
 {
     setToolTipsVisible(true);
     // QMenu::addSection just adds an action with text and separator mode enabled
@@ -104,14 +104,21 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     }
 
     // set up delay widget
+    auto checkbox = m_delayCheckBox.get();
+    checkbox->setText(i18nc("@option:check enable capture delay with label for delay spinbox", "Delay:"));
+    checkbox->setChecked(Settings::captureDelayEnabled());
+    connect(checkbox, &QAbstractButton::toggled, Settings::self(), &Settings::setCaptureDelayEnabled);
+    connect(Settings::self(), &Settings::captureDelayEnabledChanged, this, [this] {
+        m_delayCheckBox->setChecked(Settings::captureDelayEnabled());
+        m_delaySpinBox->setEnabled(Settings::captureDelayEnabled());
+    });
+
     auto spinbox = m_delaySpinBox.get();
-    auto label = m_delayLabel.get();
-    label->setText(i18nc("@label:spinbox", "Delay:"));
+    spinbox->setEnabled(Settings::captureDelayEnabled());
     spinbox->setDecimals(1);
     spinbox->setSingleStep(1.0);
-    spinbox->setMinimum(0.0);
+    spinbox->setMinimum(0.1);
     spinbox->setMaximum(999);
-    spinbox->setSpecialValueText(i18nc("@item 0 delay special value", "No Delay"));
     delayActionLayoutUpdate();
     QObject::connect(spinbox, qOverload<double>(&SmartSpinBox::valueChanged), this, [this](){
         if (m_updatingDelayActionLayout) {
@@ -123,7 +130,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         m_delaySpinBox->setValue(Settings::captureDelay());
     });
     m_delayWidget->setLayout(m_delayLayout.get());
-    m_delayLayout->addWidget(label);
+    m_delayLayout->addWidget(checkbox);
     m_delayLayout->addWidget(spinbox);
     m_delayLayout->setAlignment(Qt::AlignLeft);
     m_delayAction->setDefaultWidget(m_delayWidget.get());
@@ -190,14 +197,9 @@ void OptionsMenu::delayActionLayoutUpdate()
     m_delaySpinBox->setValue(Settings::captureDelay());
     m_updatingDelayActionLayout = false;
 
-    int menuHMargin = style()->pixelMetric(QStyle::PM_MenuHMargin);
-    int menuVMargin = style()->pixelMetric(QStyle::PM_MenuVMargin);
-    if (layoutDirection() == Qt::RightToLeft) {
-        m_delayLabel->setContentsMargins(0, 0, menuHMargin + m_delayLabel->fontMetrics().descent(), 0);
-    } else {
-        m_delayLabel->setContentsMargins(menuHMargin + m_delayLabel->fontMetrics().descent(), 0, 0, 0);
-    }
-    m_delayLayout->setContentsMargins(0, menuVMargin, 0, 0);
+    const auto margins = m_delayLayout->contentsMargins();
+    const auto menuVMargin = style()->pixelMetric(QStyle::PM_MenuVMargin, nullptr, this);
+    m_delayLayout->setContentsMargins(margins.left(), menuVMargin, margins.right(), 0);
 }
 
 void OptionsMenu::changeEvent(QEvent *event)

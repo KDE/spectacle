@@ -115,7 +115,7 @@ public:
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
-                           int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000,
+                           int timeout = Settings::captureOnClick() ? -1 : Settings::captureDelay() * 1000 * Settings::captureDelayEnabled(),
                            bool includePointer = Settings::includePointer(),
                            bool includeDecorations = Settings::includeDecorations(),
                            bool includeShadow = Settings::includeShadow());
