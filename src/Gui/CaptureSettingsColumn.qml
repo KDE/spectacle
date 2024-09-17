@@ -72,11 +72,19 @@ ColumnLayout {
     RowLayout {
         id: delayRow
         spacing: parent.spacing
-        QQC.Label {
-            text: i18n("Delay:")
+        enabled: !captureOnClickCheckBox.checked
+        QQC.CheckBox {
+            id: delayCheckBox
+            text: i18nc("@option:check enable capture delay with label for delay spinbox", "Delay:")
+            QQC.ToolTip.text: i18nc("@info:tooltip", "Enable the screen capture delay.")
+            QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC.ToolTip.visible: hovered || pressed
+            checked: Settings.captureDelayEnabled
+            onToggled: Settings.captureDelayEnabled = checked
         }
         DelaySpinBox {
-            enabled: !captureOnClickCheckBox.checked
+            id: delaySpinBox
+            enabled: Settings.captureDelayEnabled
         }
     }
 }

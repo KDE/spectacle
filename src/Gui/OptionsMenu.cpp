@@ -33,7 +33,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     , delayAction(new QWidgetAction(this))
     , delayWidget(new QWidget(this))
     , delayLayout(new QHBoxLayout(delayWidget.get()))
-    , delayLabel(new QLabel(delayWidget.get()))
+    , delayCheckBox(new QCheckBox(delayWidget.get()))
     , delaySpinBox(new SmartSpinBox(delayWidget.get()))
 {
     addAction(KStandardAction::preferences(this, &OptionsMenu::showPreferencesDialog, this));
@@ -147,9 +147,17 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     addAction(captureOnClickAction.get());
 
     // set up delay widget
+    auto checkbox = delayCheckBox.get();
+    checkbox->setText(i18nc("@option:check enable capture delay with label for delay spinbox", "Delay:"));
+    connect(checkbox, &QCheckBox::checkStateChanged, this, [](Qt::CheckState state) {
+        Settings::setCaptureDelayEnabled(state != Qt::Unchecked);
+    });
+    connect(Settings::self(), &Settings::captureDelayEnabledChanged, this, [this] {
+        delayCheckBox->setCheckState(Settings::captureDelayEnabled() ? Qt::Checked : Qt::Unchecked);
+        delaySpinBox->setEnabled(Settings::captureDelayEnabled());
+    });
     auto spinbox = delaySpinBox.get();
-    auto label = delayLabel.get();
-    label->setText(i18n("Delay:"));
+    spinbox->setEnabled(Settings::captureDelayEnabled());
     spinbox->setDecimals(1);
     spinbox->setSingleStep(1.0);
     spinbox->setMinimum(0.0);
@@ -166,7 +174,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         delaySpinBox->setValue(Settings::captureDelay());
     });
     delayWidget->setLayout(delayLayout.get());
-    delayLayout->addWidget(label);
+    delayLayout->addWidget(checkbox);
     delayLayout->addWidget(spinbox);
     delayLayout->setAlignment(Qt::AlignLeft);
     delayAction->setDefaultWidget(delayWidget.get());
@@ -230,14 +238,9 @@ void OptionsMenu::delayActionLayoutUpdate()
     delaySpinBox->setValue(Settings::captureDelay());
     updatingDelayActionLayout = false;
 
-    int menuHMargin = style()->pixelMetric(QStyle::PM_MenuHMargin);
+    auto margins = delayLayout->contentsMargins();
     int menuVMargin = style()->pixelMetric(QStyle::PM_MenuVMargin);
-    if (layoutDirection() == Qt::RightToLeft) {
-        delayLabel->setContentsMargins(0, 0, menuHMargin + delayLabel->fontMetrics().descent(), 0);
-    } else {
-        delayLabel->setContentsMargins(menuHMargin + delayLabel->fontMetrics().descent(), 0, 0, 0);
-    }
-    delayLayout->setContentsMargins(0, menuVMargin, 0, 0);
+    delayLayout->setContentsMargins(margins.left(), menuVMargin, margins.right(), 0);
 }
 
 void OptionsMenu::updateCaptureModes()

@@ -11,7 +11,7 @@
 
 #include <QActionGroup>
 #include <QHBoxLayout>
-#include <QLabel>
+#include <QCheckBox>
 #include <QList>
 #include <QWidgetAction>
 
@@ -53,7 +53,7 @@ private:
     const std::unique_ptr<QWidgetAction> delayAction;
     const std::unique_ptr<QWidget> delayWidget;
     const std::unique_ptr<QHBoxLayout> delayLayout;
-    const std::unique_ptr<QLabel> delayLabel;
+    const std::unique_ptr<QCheckBox> delayCheckBox;
     const std::unique_ptr<SmartSpinBox> delaySpinBox;
 
     bool captureModesInitialized = false;
