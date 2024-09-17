@@ -64,11 +64,12 @@ public:
     static void closeAll();
 
     /**
-     * Round value to be physically pixel perfect, based on the device pixel ratio.
+     * Round values to be physically pixel perfect, based on the device pixel ratio.
      * Meant to be used with coordinates, line widths and shape sizes.
      * This is meant to be used in QML.
      */
     Q_INVOKABLE qreal dprRound(qreal value) const;
+    Q_INVOKABLE QPointF dprRound(const QPointF &point) const;
     Q_INVOKABLE qreal dprCeil(qreal value) const;
     Q_INVOKABLE qreal dprFloor(qreal value) const;
 

@@ -214,8 +214,8 @@ AnimatedLoader {
                 cursorShape: Qt.SizeAllCursor
                 dragThreshold: 0
                 onActiveTranslationChanged: if (active) {
-                    let dx = activeTranslation.x / viewport.scale
-                    let dy = activeTranslation.y / viewport.scale
+                    let dx = dprRound(activeTranslation.x) / viewport.scale
+                    let dy = dprRound(activeTranslation.y) / viewport.scale
                     root.document.selectedItem.transform(dx, dy)
                 }
                 onActiveChanged: if (!active) {

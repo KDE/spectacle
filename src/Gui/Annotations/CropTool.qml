@@ -70,8 +70,9 @@ Loader {
                 maximum: baseItem.height
             }
             onActiveTranslationChanged: if (active) {
-                selectionItem.x = centroid.pressPosition.x
-                selectionItem.y = centroid.pressPosition.y
+                const pressPosition = dprRound(centroid.pressPosition)
+                selectionItem.x = pressPosition.x
+                selectionItem.y = pressPosition.y
                 selectionItem.width = activeTranslation.x / root.viewport.scale
                 selectionItem.height = activeTranslation.y / root.viewport.scale
                 setItemRect(selectionItem, itemRectClipped(selectionItem, maxRect()))
@@ -222,6 +223,7 @@ Loader {
                     maximum: baseItem.height - handle.height / 2
                 }
                 onTranslationChanged: (delta) => {
+                    delta = dprRound(delta)
                     if (active && (delta.x !== 0 || delta.y !== 0)) {
                         delta.x /= root.viewport.scale
                         delta.y /= root.viewport.scale

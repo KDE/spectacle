@@ -50,6 +50,12 @@ public:
     [[nodiscard]] Q_INVOKABLE static qreal dprRound(qreal value, qreal dpr);
 
     /**
+     * This rounds a point to a point that should be aligned to hardware pixels
+     * if the given device pixel ratio is correct.
+     */
+    [[nodiscard]] Q_INVOKABLE static QPointF dprRound(QPointF point, qreal dpr);
+
+    /**
      * This ceils a logical axis value to a value that should be aligned to hardware pixels
      * if the given device pixel ratio is correct.
      */

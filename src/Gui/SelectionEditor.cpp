@@ -562,7 +562,8 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     if (!item->window() || !item->window()->screen()) {
         return;
     }
-    d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
+    auto scenePosition = G::dprRound(event->scenePosition(), item->window()->devicePixelRatio());
+    d->mousePos = mapSceneToLogicalGlobalPoint(scenePosition, item);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
     d->setShowMagnifier(event->modifiers().testFlag(Qt::ShiftModifier));
@@ -585,7 +586,8 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
             d->selection->setRect({});
         }
         item->setFocus(true);
-        d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
+        auto scenePosition = G::dprRound(event->scenePosition(), item->window()->devicePixelRatio());
+        d->mousePos = mapSceneToLogicalGlobalPoint(scenePosition, item);
         Q_EMIT mousePositionChanged();
         d->setDragLocation(d->mouseLocation(d->mousePos));
         d->setMagnifierLocation(d->dragLocation);
@@ -629,7 +631,8 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
         return;
     }
 
-    d->mousePos = mapSceneToLogicalGlobalPoint(event->scenePosition(), item);
+    auto scenePosition = G::dprRound(event->scenePosition(), item->window()->devicePixelRatio());
+    d->mousePos = mapSceneToLogicalGlobalPoint(scenePosition, item);
     Q_EMIT mousePositionChanged();
     d->setMagnifierLocation(d->dragLocation);
     switch (d->dragLocation) {
