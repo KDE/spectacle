@@ -456,13 +456,18 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
         const auto sourceRect = imageView.intersected(sourceBounds).toRect();
         const bool useSourceRect = sourceRect != sourceBounds;
         const auto scale = windowDpr / imageDpr;
-        const bool doScale = scale != 1;
+        const bool doScale = !qFuzzyCompare(scale, 1);
+        auto transformation = [](qreal scale) constexpr {
+            return (scale > 1 && !qFuzzyIsNull(std::fmod(scale, 1))) || (scale < 1 && !qFuzzyIsNull(std::fmod(1 / scale, 1))) //
+                ? Qt::SmoothTransformation
+                : Qt::FastTransformation;
+        };
         if (useSourceRect && doScale) {
-            return image.copy(sourceRect).transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
+            return image.copy(sourceRect).transformed(QTransform::fromScale(scale, scale), transformation(scale));
         } else if (useSourceRect) {
             return image.copy(sourceRect);
         } else if (doScale) {
-            return image.transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
+            return image.transformed(QTransform::fromScale(scale, scale), transformation(scale));
         }
         return image;
     };
@@ -480,11 +485,11 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
     }
 
     auto setupImageNode = [&](QSGImageNode *node) {
-        QRectF targetRect{{0, 0}, node->texture()->textureSize().toSizeF().scaled(this->size(), Qt::KeepAspectRatio)};
-        targetRect.moveTo(std::round((width() - targetRect.width()) / 2 * windowDpr) / windowDpr,
-                          std::round((height() - targetRect.height()) / 2 * windowDpr) / windowDpr);
-        if (!targetRect.isEmpty()) {
-            node->setRect(targetRect);
+        auto size = node->texture()->textureSize().toSizeF() / windowDpr;
+        if (!size.isEmpty()) {
+            QPointF pos(std::round((width() - size.width()) / 2 * windowDpr) / windowDpr, //
+                        std::round((height() - size.height()) / 2 * windowDpr) / windowDpr);
+            node->setRect({pos, size});
         }
     };
 
