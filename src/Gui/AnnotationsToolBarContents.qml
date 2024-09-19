@@ -165,14 +165,14 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Pixelate")
-        icon.name: "pixelart-trace"
+        icon.name: "pixelate"
         checked: AnnotationDocument.tool.type === AnnotationTool.PixelateTool
         onClicked: AnnotationDocument.tool.type = AnnotationTool.PixelateTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Blur")
-        icon.name: "blurfx"
+        icon.name: "blur"
         checked: AnnotationDocument.tool.type === AnnotationTool.BlurTool
         onClicked: AnnotationDocument.tool.type = AnnotationTool.BlurTool
     }
