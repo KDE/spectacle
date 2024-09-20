@@ -276,7 +276,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
         // QDateTime
         for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
             if (it->flags.testFlags(Placeholder::QDateTime)) {
-                result.replace(it->plainKey, locale.toString(timestamp, it->baseKey));
+                result.replace(it->token, locale.toString(timestamp, it->base));
             }
         }
         // Manual interpretation

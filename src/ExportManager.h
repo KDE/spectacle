@@ -93,25 +93,23 @@ public:
         using Flags = QFlags<Flag>;
 
         const Flags flags;
-        const QString baseKey;
-        const QString plainKey;
-        const QString htmlKey;
+        const QString token;
+        const QStringView base;
         // Placeholders with empty descriptions will not be visible in the config UI
         const KLocalizedString description;
 
         Placeholder(const Flags &flags, const QString &key, const KLocalizedString &description)
             : flags(flags)
-            , baseKey(key)
-            , plainKey(u"<" % key % u">")
-            , htmlKey(u"&lt;" % key % u"&gt;") // key -> <key> in HTML
+            , token(u"<" % key % u">")
+            , base(token.cbegin() + 1, key.size())
             , description(description)
         {
         }
 
         Placeholder(const Flags &flags, const QString &key)
             : flags(flags | Hidden)
-            , baseKey(key)
-            , plainKey(u"<" % key % u">")
+            , token(u"<" % key % u">")
+            , base(token.cbegin() + 1, key.size())
         {
         }
     };
