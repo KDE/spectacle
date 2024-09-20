@@ -59,7 +59,7 @@ void FilenameTest::testDateTokens()
     for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
         using Flag = ExportManager::Placeholder::Flag;
         if (it->flags.testFlag(Flag::QDateTime)) {
-            QCOMPARE(mExportManager->formattedFilename(it->plainKey, timestamp), locale.toString(timestamp, it->baseKey));
+            QCOMPARE(mExportManager->formattedFilename(it->token, timestamp), locale.toString(timestamp, it->base));
         }
     }
     QCOMPARE(mExportManager->formattedFilename(u"<h>"_s, timestamp), u"8"_s);

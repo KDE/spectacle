@@ -81,7 +81,7 @@ inline QString text(bool showExtras)
         const bool isExtra = it->flags.testFlag(Flag::Extra);
         hasAnyExtras |= isExtra;
         if (showExtras || !isExtra) {
-            tableBody += tableRow(it->plainKey, it->htmlKey, it->description.toString());
+            tableBody += tableRow(it->token, it->token.toHtmlEscaped(), it->description.toString());
         }
     }
     tableBody += tableRow(u"/"_s, u"/"_s, i18n("To save to a sub-folder"));
