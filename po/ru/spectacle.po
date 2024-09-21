@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-18 02:35+0000\n"
-"PO-Revision-Date: 2024-05-28 10:49+0300\n"
+"PO-Revision-Date: 2024-09-20 11:40+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -345,7 +345,7 @@ msgstr "Интенсивность:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Интенсивность эффекта."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -1410,7 +1410,7 @@ msgstr "Насыщенность эффекта размытия."
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Интенсивность эффекта пикселизации."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1750,7 +1750,7 @@ msgstr "Не удалось открыть файловый дескриптор
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "Ошибка вызова pipe2() для создания снимка экрана KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:292
 #, kde-format
@@ -1769,12 +1769,14 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Сведения, которые, возможно, будут полезны:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Неподдерживаемый тип метаданных снимка экрана KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
@@ -1802,6 +1804,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Трансляция была прекращена, поскольку параметры целевого экрана были "
+"изменены, образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1810,6 +1814,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Трансляция была прекращена, поскольку параметры целевого окна были изменены, "
+"образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1818,6 +1824,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Трансляция была прекращена, поскольку параметры целевой области были "
+"изменены, образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
