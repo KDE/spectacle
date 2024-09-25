@@ -629,7 +629,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
         }
         dialog.setDirectoryUrl(dirUrl);
-        const auto formattedFilename = this->formattedFilename(Settings::defaultImageFilenameTemplateValue(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
+        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), dirUrl);
         dialog.selectFile(formattedFilename + u"."_s + filenameExtension);
         dialog.setDefaultSuffix(u"."_s + filenameExtension);
         dialog.setMimeTypeFilters(supportedFilters);
