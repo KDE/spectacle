@@ -212,7 +212,7 @@ QString ExportManager::truncatedFilename(QString const &filename)
     return result;
 }
 
-inline static void removeEmptyPlaceholderAndSeparators(const QString &placeholder, QString &string)
+inline static void removePlaceholderAndSeparators(const QString &placeholder, QString &string)
 {
     if (string.isEmpty() || placeholder.isEmpty()) {
         return;
@@ -264,7 +264,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
         title.replace(u'/', u'_'); // POSIX doesn't allow "/" in filenames
         result.replace("<title>"_L1, title);
     } else {
-        removeEmptyPlaceholderAndSeparators(u"<title>"_s, result);
+        removePlaceholderAndSeparators(u"<title>"_s, result);
     }
 
     // Remove duplicate dir separators.
