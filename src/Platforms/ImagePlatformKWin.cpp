@@ -258,7 +258,11 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     (joinArgs(arguments) || ...);
     const auto relevantInfo = u"- Method: %1\n- Method specific arguments: %2"_s.arg(methodName, specificArguments);
 
-    static constexpr int timeout = 4000;
+    // We don't know how long the user will take with CaptureInteractive.
+    // -1 generally gives a 25s timeout. Let's pick 60s for CaptureInteractive
+    // and hope it's enough. We also need to avoid a potential situation where
+    // Spectacle might wait indefinitely for a reply that never comes.
+    const int timeout = methodName != u"CaptureInteractive" ? 4000 : 60000;
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, timeout);
     close(pipeFds[1]);
     m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
