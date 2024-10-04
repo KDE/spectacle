@@ -273,10 +273,20 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
 
     if (timestamp.isValid()) {
         const auto &locale = QLocale::system();
-        // QDateTime
+        // QDateTime can still be valid when timezone is invalid.
+        const bool validTimeZone = timestamp.timeZone().isValid();
         for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
             if (it->flags.testFlags(Placeholder::QDateTime)) {
-                result.replace(it->token, locale.toString(timestamp, it->base));
+                int tCount = 0;
+                // KDE BUG: https://bugs.kde.org/show_bug.cgi?id=493191
+                // QT BUG: https://bugreports.qt.io/browse/QTBUG-129696
+                // QCalendarBackend::dateTimeToString crashes when timezone is
+                // unset and we try to use the timezone.
+                if (!validTimeZone && (tCount = it->base.count(u't')) && tCount == it->base.size()) {
+                    removePlaceholderAndSeparators(it->token, result);
+                } else {
+                    result.replace(it->token, locale.toString(timestamp, it->base));
+                }
             }
         }
         // Manual interpretation
