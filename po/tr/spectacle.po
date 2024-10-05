@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:38+0000\n"
+"POT-Creation-Date: 2024-10-05 00:38+0000\n"
 "PO-Revision-Date: 2024-08-06 11:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -182,12 +182,12 @@ msgstr "Arka plan kipinde, ekran görüntüsünde gölgeleri içerme"
 msgid "Open and edit existing screenshot file"
 msgstr "Var olan ekran görüntüsü dosyasını aç ve düzenle"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter görseli yazamıyor: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -197,12 +197,12 @@ msgstr ""
 "Dizin oluşturulamadığı için ekran görüntüsü kaydedilemiyor:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya yazılırken hata."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,27 +212,27 @@ msgstr ""
 "Uzak dizin oluşturma başarısız olduğu için ekran görüntüsü kaydedilemiyor:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Ekran görüntüsü kaydedilemiyor. Geçici dosyaya yazılırken hata."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Görsel kaydedilemedi. Dosya uzak konuma yüklenemedi."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ekran görüntüsü kaydedilemiyor. Dosya kayıt adı geçersiz."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Boş ekran görüntüsü görseli kaydedilemez."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 "Video dışa aktarılamadı: Geçici dosya URL’si, var olan bir yerel dosya "
 "olmalıdır"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -250,13 +250,13 @@ msgstr ""
 "Video dışa aktarılamadı: Çıktı dosyası URL’si, bir dosya adı içeren geçerli "
 "bir URL olmalıdır"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kayıt kaydedilemiyor. Dosya, şu konuma taşınamadı: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Yazdırma başarısız. Yazıcı başlatılamadı."
@@ -1697,7 +1697,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için pipe2() başarısız oldu: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1707,7 +1707,7 @@ msgstr ""
 "KWin ekran görüntüsü isteği başarısız oldu:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1717,7 +1717,7 @@ msgstr ""
 "Potansiyel olarak yararlı bilgi:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

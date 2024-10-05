@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:38+0000\n"
+"POT-Creation-Date: 2024-10-05 00:38+0000\n"
 "PO-Revision-Date: 2024-05-25 16:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: \n"
@@ -179,12 +179,12 @@ msgstr "في وضع الخلفيّة، استبعد ظلال النافذة من
 msgid "Open and edit existing screenshot file"
 msgstr "افتح و حرر لاقط موجودة مسبقا"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "تعذّر على QImageWriter كتابة الصّورة: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -193,12 +193,12 @@ msgid ""
 msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -208,27 +208,27 @@ msgstr ""
 "لا يمكن حفظ لقطة الشاشة بسبب فشل إنشاء الدليل البعيد:<nl/><filename>%1</"
 "filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "تعذّر حفظ اللقطة بسبب خطأ أثناء كتابة الملفّ المحليّ المؤقّت."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "تعذّر حفظ الصّورة بسبب تعذّر رفعها إلى المكان البعيد."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "تعذّر حفظ اللقطة لأنّ اسم الملفّ غير صالح."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "لا يمكن حفظ لقطة فارغة."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -236,7 +236,7 @@ msgid ""
 msgstr ""
 "فشل تصدير الفيديو: يجب أن يكون عنوان الرابط للملف المؤقت ملفًا محليًا موجودًا"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,13 +245,13 @@ msgstr ""
 "فشل تصدير الفيديو: يجب أن يكون عنوان الرابط لملف الإخراج عنوان رابط صالحًا "
 "يحوي اسم ملف"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "تعذّر حفظ الصّورة بسبب تعذّر  نقل الملف إلى المكان: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "فشلت الطّباعة. فشل تمهيد الطّابعة."
@@ -1704,7 +1704,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "فشل Pipe2() في لقطة شاشة كوين: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1714,7 +1714,7 @@ msgstr ""
 "فشل طلب لقطة شاشة كوين:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1724,7 +1724,7 @@ msgstr ""
 "معلومات ذات صلة محتملة:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

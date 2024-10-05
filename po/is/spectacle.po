@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:38+0000\n"
+"POT-Creation-Date: 2024-10-05 00:38+0000\n"
 "PO-Revision-Date: 2024-05-23 14:55+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -184,12 +184,12 @@ msgstr "Keyra í bakgrunni, undanskilja skugga í skjámyndinni"
 msgid "Open and edit existing screenshot file"
 msgstr "Opna og breyta fyrirliggjandi skjámyndarskrá"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter getur ekki skrifað mynd: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -199,12 +199,12 @@ msgstr ""
 "Get ekki vistað skjámyndina því ekki tókst að búa til möppuna:<nl/><filename>"
 "%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Get ekki vistað skjámyndina. Villa við að skrifa skrána."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -214,27 +214,27 @@ msgstr ""
 "Get ekki vistað skjámyndina því ekki tókst að búa til fjartengda möppu:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Get ekki vistað skjámyndina. Villa við að skrifa bráðabirgðaskrá."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Gat ekki vistað myndina. Gat ekki hlaðið skránni á fjartengdan stað."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Get ekki vistað skjámyndina. Skrárheitið sem á að nota er ógilt."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ekki er hægt að vista tóma skjámynd."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -243,7 +243,7 @@ msgstr ""
 "Mistókst að flytja út myndskeið: Slóð á bráðabirgðaskrá verður að vera "
 "staðbundin skrá sem er til"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -252,13 +252,13 @@ msgstr ""
 "Mistókst að flytja út myndskeið: Slóð á úttaksskrá verður að vera gild slóð "
 "með skrárheiti"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Gat ekki vistað upptökuna. Gat ekki fært skrána á staðinn: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Prentun mistókst. Mistókst að frumstilla prentarann."
@@ -1702,7 +1702,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() mistókst fyrir KWin-skjámynd: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1712,7 +1712,7 @@ msgstr ""
 "KWin-skjámyndabeiðni mistókst:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1722,7 +1722,7 @@ msgstr ""
 "Hugsanlega viðeigandi upplýsingar:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
