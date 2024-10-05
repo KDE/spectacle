@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 02:35+0000\n"
+"POT-Creation-Date: 2024-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-05-17 06:24+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -184,12 +184,12 @@ msgstr "En fona reĝimo, ekskludi ombrojn en la ekrankopio"
 msgid "Open and edit existing screenshot file"
 msgstr "Malfermi kaj redakti ekzistantan ekrankopian dosieron"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne povas skribi bildon: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -199,12 +199,12 @@ msgstr ""
 "Ne povas konservi ekrankopion ĉar kreado de la dosierujo malsukcesis:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Ne povas konservi ekrankopion. Eraro dum skribado de dosiero."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -214,28 +214,28 @@ msgstr ""
 "Ne povas konservi ekrankopion ĉar kreado de la fora dosierujo malsukcesis:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Ne povas konservi ekrankopion. Eraro dum skribado de provizora loka dosiero."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Ne eblas konservi bildon. Ne eblis alŝuti dosieron al fora loko."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Ne povas konservi ekrankopion. La konserva dosiernomo estas nevalida."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ne povas konservi malplenan ekrankopion."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -244,7 +244,7 @@ msgstr ""
 "Malsukcesis elporti filmeton: Provizora dosier-URL devas esti ekzistanta "
 "loka dosiero"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -253,13 +253,13 @@ msgstr ""
 "Malsukcesis elporti filmeton: Eligdosiera URL devas esti valida URL kun "
 "dosiernomo"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Ne eblas konservi bildon. Ne eblis movi dosieron al loko: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Presado malsukcesis. La presilo malsukcesis pravalorigi."
@@ -1701,7 +1701,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() malsukcesis por KWin-ekrankopio: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1711,7 +1711,7 @@ msgstr ""
 "Alpeto pri KWin-ekrankopio malsukcesis:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1721,7 +1721,7 @@ msgstr ""
 "Eble koncerna informo\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

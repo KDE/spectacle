@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 02:35+0000\n"
+"POT-Creation-Date: 2024-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-05-24 17:27+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -186,12 +186,12 @@ msgstr "Darbojoties fona režīmā, ekrānattēlā neiekļaut logu ēnas"
 msgid "Open and edit existing screenshot file"
 msgstr "Atvērt un rediģēt esošo ekrānattēla datni"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "„QImageWriter“ neizdodas saglabāt attēlu: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -201,12 +201,12 @@ msgstr ""
 "Neizdodas saglabāt ekrānattēlu, jo nav izdevies izveidot direktoriju:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Neizdodas saglabāt ekrānattēlu. Kļūda, saglabājot datni."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -216,28 +216,28 @@ msgstr ""
 "Neizdevās saglabāt ekrānattēlu, jo neizdevās izveidot attālinātu direktoriju:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Neizdevās saglabāt ekrānattēlu. Kļūda saglabājot pagaidu lokālo datni."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Neizdevās saglabāt attēlu. Neizdevās datnes augšupielāde uz attālinātu vietu."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Neizdevās saglabāt ekrānattēlu. Datnes nosaukums ir nederīgs."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Neizdevās saglabāt tukšu ekrānattēlu."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -246,7 +246,7 @@ msgstr ""
 "Neizdevās eksportēt video: pagaidu datnes URL ir jābūt eksistējošai lokālai "
 "datnei"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -255,13 +255,13 @@ msgstr ""
 "Neizdevās eksportēt video: izvades datnes URL jābūt derīgam URL ar datnes "
 "nosaukumu"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Neizdevās saglabāt ierakstu. Nevar pārvietot datni uz: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Drukāšanas kļūda. Neizdevās inicializēt printeri."
@@ -1705,7 +1705,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "„pipe2()“ neizdevās apstrādāt „KWin“ ekrānattēlu: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1715,7 +1715,7 @@ msgstr ""
 "„KWin“ ekrānattēla pieprasījuma neizdevās:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1725,7 +1725,7 @@ msgstr ""
 "Potenciāli svarīga informācija:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

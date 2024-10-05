@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 02:35+0000\n"
+"POT-Creation-Date: 2024-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-06-19 17:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -186,12 +186,12 @@ msgstr "Undanta skuggor på skärmbilden i bakgrundsläge"
 msgid "Open and edit existing screenshot file"
 msgstr "Öppna och redigera befintlig skärmbildsfil"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan inte skriva bilden: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -201,12 +201,12 @@ msgstr ""
 "Kan inte spara skärmbild eftersom att skapa katalogen misslyckades:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Kan inte spara skärmbild. Fel när filen skulle skrivas."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -216,27 +216,27 @@ msgstr ""
 "Kan inte spara skärmbild eftersom att skapa fjärrkatalogen misslyckades:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "Kan inte spara skärmbild. Fel när tillfällig lokal fil skulle skrivas."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Kan inte spara bild. Kunde inte ladda upp filen till fjärrplats."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Kan inte spara skärmbild. Filnamnet att spara som är ogiltigt."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Kan inte spara en tom skärmbild."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -245,7 +245,7 @@ msgstr ""
 "Misslyckades exportera video: Tillfällig webbadress måste vara en befintlig "
 "lokal fil"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,13 +254,13 @@ msgstr ""
 "Misslyckades exportera video: Utdatafilens webbadress måste vara en giltig "
 "webbadress med ett filnamn"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kan inte spara inspelning. Kunde inte flytta filen till platsen: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Utskrift misslyckades. Skrivaren kunde inte initieras."
@@ -1700,7 +1700,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() misslyckades för Kwin skärmbild: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1710,7 +1710,7 @@ msgstr ""
 "Kwin skärmbildsbegäran misslyckades:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1720,7 +1720,7 @@ msgstr ""
 "Potentiellt relevant information:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

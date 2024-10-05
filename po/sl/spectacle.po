@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 02:35+0000\n"
+"POT-Creation-Date: 2024-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-05-22 11:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -190,12 +190,12 @@ msgstr "Ob delovanju v ozadju izključi sence oken z zaslonske slike"
 msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko zaslonske slike"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne more zapisati slike: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -205,12 +205,12 @@ msgstr ""
 "Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje mape ni uspelo: <nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v datoteko."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -220,32 +220,32 @@ msgstr ""
 "Zaslonske slike ni bilo mogoče shraniti, ker ustvarjanje oddaljene mape ni "
 "uspelo:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Napaka med pisanjem v krajevno začasno "
 "datoteko."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ni bilo mogoče poslati datoteke na "
 "oddaljeno mesto."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Zaslonske slike ni mogoče shraniti. Ime datoteke za shranjevanje ni veljavno."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Ni mogoče shraniti prazne zaslonske slike."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -254,7 +254,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL začasne datoteke mora biti obstoječa lokalna "
 "datoteka"
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -263,7 +263,7 @@ msgstr ""
 "Izvoz videa ni uspel: URL izhodne datoteke mora biti veljaven URL z imenom "
 "datoteke"
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -271,7 +271,7 @@ msgstr ""
 "Posnetega videa ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na "
 "mesto: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tiskanje ni uspelo. Tiskalnika ni bilo mogoče zagnati."
@@ -1728,7 +1728,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() ni uspela za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1738,7 +1738,7 @@ msgstr ""
 "Zahteva za posnetek zaslona KWin ni uspela:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1748,7 +1748,7 @@ msgstr ""
 "Potencialno pomembne informacije:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

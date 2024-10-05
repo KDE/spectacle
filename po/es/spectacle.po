@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 02:35+0000\n"
+"POT-Creation-Date: 2024-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-05-18 01:16+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -197,12 +197,12 @@ msgstr ""
 msgid "Open and edit existing screenshot file"
 msgstr "Abrir y editar un archivo de captura de pantalla existente"
 
-#: src/ExportManager.cpp:449
+#: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter no puede escribir la imagen: %1"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -212,14 +212,14 @@ msgstr ""
 "No se ha podido guardar la captura de pantalla porque ha fallado la creación "
 "del directorio:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "No se puede guardar la captura de pantalla. Ha ocurrido un error al escribir "
 "en el archivo."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:505
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -229,33 +229,33 @@ msgstr ""
 "No se ha podido guardar la captura de pantalla porque ha fallado la creación "
 "del directorio remoto:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:506 src/ExportManager.cpp:555
+#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "No se puede guardar la captura de pantalla. Ha ocurrido un error al escribir "
 "en un archivo local temporal."
 
-#: src/ExportManager.cpp:514
+#: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "No se ha podido guardar la imagen. No se ha podido enviar el archivo a la "
 "ubicación remota."
 
-#: src/ExportManager.cpp:562
+#: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "No se puede guardar la captura de pantalla. El nombre del archivo a guardar "
 "no es válido."
 
-#: src/ExportManager.cpp:606
+#: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "No se puede guardar una captura de pantalla vacía."
 
-#: src/ExportManager.cpp:753
+#: src/ExportManager.cpp:763
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -264,7 +264,7 @@ msgstr ""
 "No se ha podido exportar el vídeo. La URL temporal del archivo debe ser un "
 "archivo local que exista."
 
-#: src/ExportManager.cpp:760
+#: src/ExportManager.cpp:770
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -273,7 +273,7 @@ msgstr ""
 "No se ha podido exportar el vídeo. La URL del archivo de salida debe ser una "
 "URL válida con un nombre de archivo."
 
-#: src/ExportManager.cpp:835
+#: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -281,7 +281,7 @@ msgstr ""
 "No se ha podido guardar la grabación. No se ha podido mover el archivo a la "
 "ubicación: %1"
 
-#: src/ExportManager.cpp:863
+#: src/ExportManager.cpp:873
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr ""
@@ -1743,7 +1743,7 @@ msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "El proceso pipe2() ha fallado para la captura de pantalla de KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:292
+#: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1753,7 +1753,7 @@ msgstr ""
 "La solicitud de captura de pantalla de KWin ha fallado:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:294
+#: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1763,7 +1763,7 @@ msgstr ""
 "Información potencialmente relevante:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
