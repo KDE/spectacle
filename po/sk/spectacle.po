@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 02:29+0000\n"
-"PO-Revision-Date: 2024-03-24 11:39+0100\n"
+"PO-Revision-Date: 2024-10-06 11:59+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/CaptureModeModel.cpp:97
@@ -281,9 +281,9 @@ msgstr "Ťah:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
+msgstr[2] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -309,13 +309,13 @@ msgstr "Farba výplne"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Sila:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Sila efektu."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -327,18 +327,18 @@ msgstr "Písmo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1bod"
+msgstr[1] "%2 %3 %1body"
+msgstr[2] "%2 %3 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1bod"
+msgstr[1] "%2 %1body"
+msgstr[2] "%2 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -368,7 +368,7 @@ msgstr "Žiadne"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Orezať"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -439,12 +439,10 @@ msgid "Take a new screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Snímky obrazovky"
+msgstr "Nastavenia snímok obrazovky"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -532,16 +530,13 @@ msgid "No Delay"
 msgstr "Bez oneskorenia"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekúnd"
+msgstr[0] "%2 sekunda"
+msgstr[1] "%2 sekundy"
+msgstr[2] "%2 sekúnd"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
@@ -560,25 +555,22 @@ msgid "Help"
 msgstr "Pomocník"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Zachytenie snímky obrazovky:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Možnosti"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Nahrávka"
+msgstr "Vytvoriť nahrávku:"
 
 #: src/Gui/DialogPage.qml:170
 #, kde-format
@@ -668,7 +660,7 @@ msgstr "Exportovať"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Upraviť..."
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -743,12 +735,12 @@ msgstr "Bez oneskorenia"
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "Našiel sa QR kód: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Našiel sa QR kód s binárnymi údajmi."
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
@@ -950,10 +942,9 @@ msgstr "Zobraziť inštrukcie pri výbere"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Zobraziť lupu"
+msgstr "Zobraziť lupu:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -975,7 +966,7 @@ msgstr "Vždy"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Počas držania Shiftu"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1685,31 +1676,34 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Na systéme Wayland vyžaduje Spectacle kompozitor KWin z prostredia KDE "
+"Plasmaktorý sa nezdá byť k dispozícii. Použite Spectacle s KDE Plasma alebo "
+"použite iný nástroj na snímanie obrazovky."
 
 #: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Zlá šírka pre snímku obrazovky KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Zlá výška pre snímku obrazovky KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Po vytvorení snímky obrazovky:"
+msgstr "Zlý formát snímky obrazovky KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Nepodarilo sa otvoriť deskriptor súboru na čítanie snímky obrazovky KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
@@ -1751,13 +1745,13 @@ msgstr "Nahrávanie obrazovky zrušené"
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin Screencasting nie je k dispozícii."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Nepodarilo sa zaznamenať: Adresa URL súboru nie je miestny súbor"
 
 #: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
@@ -1766,6 +1760,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Prúd sa uzavrel, pretože cieľová obrazovka sa zmenila spôsobom, ktorý "
+"narušil nahrávanie."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1774,6 +1770,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Prúd sa uzavrel, pretože cieľové okno sa zmenilo spôsobom, ktorý narušil "
+"nahrávanie."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1782,18 +1780,22 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Prúd sa uzavrel, pretože obrazovka obsahujúca cieľovú oblasť sa zmenila "
+"spôsobom, ktorý prerušil nahrávanie."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Nepodarilo sa zaznamenať: URL dočasného súboru nie je miestny súbor (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Nepodarilo sa zaznamenať: URL výstupného súboru nie je miestny súbor (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
 #, kde-format
@@ -1908,31 +1910,28 @@ msgid "Launch Spectacle without capturing"
 msgstr "Spustiť aplikáciu Spectacle bez zachytenia"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Spustiť aplikáciu Spectacle bez vytvorenia snímky obrazovky"
+msgstr "Pri snímaní snímky obrazovky došlo k chybe."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Keď je spustená aplikácia Spectacle"
+msgstr "Spectacle nahráva"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Keď je spustená aplikácia Spectacle"
+msgstr "Spectacle nahráva"
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
+msgstr "Kliknutím na ikonu systémovej lišty dokončíte nahrávanie"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
