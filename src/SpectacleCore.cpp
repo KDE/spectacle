@@ -260,8 +260,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording) {
-        if (isRecording) {
+    connect(videoPlatform, &VideoPlatform::recordingStateChanged, this, [this](VideoPlatform::RecordingState state) {
+        if (state == VideoPlatform::RecordingState::Recording) {
             static const auto recordingIcon = u":/icons/256-status-media-recording.webp"_s;
             static const auto recordingStartedIcon = u":/icons/256-status-media-recording-started.webp"_s;
             static const auto recordingPulseIcon = u":/icons/256-status-media-recording-pulse.webp"_s;
@@ -314,6 +314,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
                 initPulseAnimation();
             });
             startedAnimation->start();
+        } else if (state == VideoPlatform::RecordingState::Rendering) {
+            const auto messageTitle = i18nc("recording notification title", "Spectacle is Finishing the Recording");
+            const auto messageBody = i18nc("recording notification message", "Please wait");
+            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media_record"_s);
         } else {
             s_systemTrayIcon.reset();
             m_captureWindows.clear();
