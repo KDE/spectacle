@@ -118,14 +118,14 @@ VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     : VideoPlatform(parent)
     , m_screencasting(new Screencasting(this))
 {
-    m_recorderFuture = QtConcurrent::run([] {
-        return new PipeWireRecord();
-    }).then([this](PipeWireRecord *result) {
-        m_recorder.reset(result);
-        m_recorder->setActive(false);
-        Q_EMIT supportedRecordingModesChanged();
-        Q_EMIT supportedFormatsChanged();
-    });
+    QMetaObject::invokeMethod(this, &VideoPlatformWayland::initialize, Qt::QueuedConnection);
+}
+
+void VideoPlatformWayland::initialize()
+{
+    m_recorder = std::make_unique<PipeWireRecord>();
+    Q_EMIT supportedRecordingModesChanged();
+    Q_EMIT supportedFormatsChanged();
 }
 
 VideoPlatform::RecordingModes VideoPlatformWayland::supportedRecordingModes() const
