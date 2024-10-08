@@ -26,9 +26,11 @@ void VideoPlatform::setRecording(bool recording)
     }
 
     if (recording) {
+        setRecordingState(RecordingState::Recording);
         m_elapsedTimer.start();
         m_basicTimer.start(1000, Qt::PreciseTimer, this);
     } else {
+        setRecordingState(RecordingState::Finished);
         m_elapsedTimer.invalidate();
         m_basicTimer.stop();
     }
@@ -78,6 +80,21 @@ VideoPlatform::Format VideoPlatform::formatForExtension(const QString &extension
 VideoPlatform::Format VideoPlatform::formatForPath(const QString &path)
 {
     return formatForExtension(path.mid(path.lastIndexOf(u'.') + 1));
+}
+
+VideoPlatform::RecordingState VideoPlatform::recordingState() const
+{
+    return m_recordingState;
+}
+
+void VideoPlatform::setRecordingState(RecordingState state)
+{
+    if (state == m_recordingState) {
+        return;
+    }
+
+    m_recordingState = state;
+    Q_EMIT recordingStateChanged(state);
 }
 
 #include "moc_VideoPlatform.cpp"
