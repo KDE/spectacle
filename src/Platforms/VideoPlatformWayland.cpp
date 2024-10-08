@@ -170,7 +170,6 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         return;
     }
 
-    m_recorder->setActive(false);
     Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Embedded : Screencasting::Hidden;
     ScreencastingStream *stream = nullptr;
     switch (recordingMode) {
@@ -244,7 +243,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     connect(stream, &ScreencastingStream::created, this, [this, stream] {
         m_recorder->setNodeId(stream->nodeId());
         if (!m_recorder->output().isEmpty()) {
-            m_recorder->setActive(true);
+            m_recorder->start();
         }
         setRecording(true);
     });
@@ -282,7 +281,6 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         }
         m_recorder->setEncoder(encoderForFormat(format));
         m_recorder->setOutput(tempUrl.toLocalFile());
-        m_recorder->setActive(m_recorder->nodeId() != 0);
     } else {
         if (!fileUrl.isLocalFile()) {
             Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
@@ -295,6 +293,9 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
         m_recorder->setOutput(localFile);
     }
+    if (m_recorder->nodeId() != 0) {
+        m_recorder->start();
+    }
 
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle) {
@@ -303,6 +304,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
                 setRecording(false);
                 Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
             }
+        } else if (m_recorder->state() == PipeWireRecord::Rendering) {
+            setRecordingState(VideoPlatform::RecordingState::Rendering);
         } else {
             m_memoryTimer.start(5000, Qt::CoarseTimer, this);
         }
@@ -314,8 +317,7 @@ void VideoPlatformWayland::finishRecording()
     if (!m_recorder) {
         return;
     }
-    m_recorder->setActive(false);
-    m_recorder->setNodeId(0);
+    m_recorder->stop();
 }
 
 void VideoPlatformWayland::timerEvent(QTimerEvent *event)
