@@ -23,6 +23,7 @@ class VideoPlatform : public QObject
     Q_PROPERTY(Formats supportedFormats READ supportedFormats NOTIFY supportedFormatsChanged)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
     Q_PROPERTY(qint64 recordedTime READ recordedTime NOTIFY recordedTimeChanged)
+    Q_PROPERTY(RecordingState recordingState READ recordingState NOTIFY recordingStateChanged)
 
 public:
     explicit VideoPlatform(QObject *parent = nullptr);
@@ -36,6 +37,14 @@ public:
     };
     Q_FLAG(RecordingMode)
     Q_DECLARE_FLAGS(RecordingModes, RecordingMode)
+
+    enum class RecordingState : char {
+        NotRecording, //< Not recording anything
+        Recording, //< Actively recording
+        Rendering, //< Finishing the recording, no longer actively receiving frames but still processing to do.
+        Finished //< Recording finished completely.
+    };
+    Q_ENUM(RecordingState)
 
     /**
      * Video formats supported by this class's APIs.
@@ -98,8 +107,11 @@ public:
     bool isRecording() const;
     qint64 recordedTime() const;
 
+    RecordingState recordingState() const;
+
 protected:
     void setRecording(bool recording);
+    void setRecordingState(RecordingState state);
     void timerEvent(QTimerEvent *event) override;
 
 public Q_SLOTS:
@@ -117,6 +129,7 @@ Q_SIGNALS:
     void recordingFailed(const QString &message);
     void recordingCanceled(const QString &message);
     void recordedTimeChanged();
+    void recordingStateChanged(RecordingState state);
 
     /// Request a region from the platform agnostic selection editor
     void regionRequested();
@@ -124,6 +137,7 @@ Q_SIGNALS:
 private:
     QElapsedTimer m_elapsedTimer;
     QBasicTimer m_basicTimer;
+    RecordingState m_recordingState = RecordingState::NotRecording;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::RecordingModes)
