@@ -36,6 +36,7 @@ protected:
     void timerEvent(QTimerEvent *event) override;
 
 private:
+    void initialize();
     bool mkDirPath(const QUrl &fileUrl);
     void selectAndRecord(const QUrl &fileUrl, RecordingMode recordingMode, bool includePointer);
 
