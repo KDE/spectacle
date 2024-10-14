@@ -445,26 +445,23 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
         node->annotationsNode()->setMipmapFiltering(QSGTexture::Linear);
     }
 
-    const auto canvasRect = m_document->canvasRect();
     const auto imageDpr = m_document->imageDpr();
     const auto windowDpr = window->effectiveDevicePixelRatio();
+    const auto imageScale = windowDpr / imageDpr;
+    const auto canvasRect = m_document->canvasRect();
     const auto canvasView = canvasRect.intersected(m_viewportRect.translated(canvasRect.topLeft()));
-    const auto imageView = G::rectScaled(canvasView.translated(-canvasRect.topLeft()), imageDpr);
+    const auto logicalImageView = canvasView.translated(-canvasRect.topLeft());
+    auto windowImageSize = (logicalImageView.size() * windowDpr).toSize();
+    const auto imageView = QRectF(logicalImageView.topLeft() * imageDpr, windowImageSize.toSizeF() / imageScale).toRect();
+    windowImageSize = {imageView.size() * imageScale};
 
-    auto getImage = [&](const QImage &image) -> QImage {
-        const auto sourceBounds = image.rect();
-        const auto sourceRect = imageView.intersected(sourceBounds).toRect();
-        const bool useSourceRect = sourceRect != sourceBounds;
-        const auto scale = windowDpr / imageDpr;
-        const bool doScale = scale != 1;
-        if (useSourceRect && doScale) {
-            return image.copy(sourceRect).transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
-        } else if (useSourceRect) {
-            return image.copy(sourceRect);
-        } else if (doScale) {
-            return image.transformed(QTransform::fromScale(scale, scale), Qt::SmoothTransformation);
+    auto getImage = [&](const QImage &source) -> QImage {
+        const auto sourceBounds = source.rect();
+        auto image = imageView == sourceBounds ? source : source.copy(imageView);
+        if (qFuzzyCompare(imageScale, 1)) {
+            return image;
         }
-        return image;
+        return image.scaled(windowImageSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     };
 
     auto baseImageNode = node->baseImageNode();
@@ -480,11 +477,11 @@ QSGNode *AnnotationViewport::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeDa
     }
 
     auto setupImageNode = [&](QSGImageNode *node) {
-        QRectF targetRect{{0, 0}, node->texture()->textureSize().toSizeF().scaled(this->size(), Qt::KeepAspectRatio)};
-        targetRect.moveTo(std::round((width() - targetRect.width()) / 2 * windowDpr) / windowDpr,
-                          std::round((height() - targetRect.height()) / 2 * windowDpr) / windowDpr);
-        if (!targetRect.isEmpty()) {
-            node->setRect(targetRect);
+        auto size = node->texture()->textureSize().toSizeF() / windowDpr;
+        if (!size.isEmpty()) {
+            QPointF pos(std::round((width() - size.width()) / 2 * windowDpr) / windowDpr, //
+                        std::round((height() - size.height()) / 2 * windowDpr) / windowDpr);
+            node->setRect({pos, size});
         }
     };
 
