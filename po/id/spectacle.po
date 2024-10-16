@@ -310,39 +310,39 @@ msgstr "Warna Isi"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Kekuatan:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Kekuatan efek."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
 msgid "Font:"
-msgstr "Font:"
+msgstr "Fon:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:281
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
 msgid "Font Color"
-msgstr "Warna Font"
+msgstr "Warna Fon"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:335
 #, kde-format
@@ -367,7 +367,7 @@ msgstr "Nihil"
 #: src/Gui/AnnotationsToolBarContents.qml:82
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Paskan"
 
 #: src/Gui/AnnotationsToolBarContents.qml:92
 #, kde-format
@@ -377,7 +377,7 @@ msgstr "Pilih"
 #: src/Gui/AnnotationsToolBarContents.qml:100
 #, kde-format
 msgid "Freehand"
-msgstr "Coreng"
+msgstr "Bebas"
 
 #: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
@@ -678,7 +678,7 @@ msgstr "Ekspor"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Edit…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -722,7 +722,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:97
 #, kde-format
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Tampilkan bayangan jendela"
 
 #: src/Gui/OptionsMenu.cpp:110
 #, kde-format
@@ -751,12 +751,12 @@ msgstr "Tidak ada Tunda"
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "Kode QR ditemukan: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Kode QR ditemukan dengan konten biner."
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
@@ -891,7 +891,7 @@ msgstr "Jangan salin apa pun"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:82
 #, kde-format
 msgid "Copy image to clipboard"
-msgstr "Salin citra ke papan klip"
+msgstr "Salin gambar ke papan klip"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
@@ -909,7 +909,7 @@ msgstr "Ketika Spectacle sedang berjalan"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Tekan tuts tangkapan layar untuk:"
+msgstr "Tekan tombol tangkapan layar untuk:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:126
@@ -986,7 +986,7 @@ msgstr "Selalu"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:213
 #, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Saat menahan Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:221
@@ -1041,12 +1041,10 @@ msgid "Preview:"
 msgstr "Pratinjau:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1.%2</filename>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, fuzzy, kde-format
@@ -1069,13 +1067,13 @@ msgstr "Untuk menyimpan ke sebuah sub-folder"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Tutup"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Buka"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, fuzzy, kde-format
@@ -1088,13 +1086,13 @@ msgstr "Umum"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Penyimpanan Gambar"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Penyimpanan Video"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, fuzzy, kde-format
@@ -1424,7 +1422,7 @@ msgstr "Bidang yang dipakai pengguna terakhir kali"
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Kekuatan efek pikselasi."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1446,7 +1444,7 @@ msgstr "Font untuk anotasi"
 #: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Font color for annotations"
-msgstr "Warna font untuk anotasi"
+msgstr "Warna fon untuk anotasi"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:311
@@ -1492,17 +1490,15 @@ msgstr "Apakah alat anotasi angka memiliki bayangan"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgid "Save &Location:"
-msgstr "Lokasi Simpanan:"
+msgstr "Lokasi &Simpanan:"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr "Citra dibagikan"
+msgstr "Video dibagikan"
 
 #: src/Gui/SharedMessage.qml:13
 #, fuzzy, kde-format
@@ -1512,30 +1508,20 @@ msgid "Image shared"
 msgstr "Citra dibagikan"
 
 #: src/Gui/SharedMessage.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr ""
-"Tautan citra  (<a href=\"%1\">%1</a>) yang dibagikan telah disalin ke papan "
-"klip."
+msgstr "Tautan video (<a href=\"%1\">%1</a>) telah disalin ke papan klip."
 
 #: src/Gui/SharedMessage.qml:18
-#, fuzzy, kde-format
-#| msgid ""
-#| "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#| "clipboard."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr ""
-"Tautan citra  (<a href=\"%1\">%1</a>) yang dibagikan telah disalin ke papan "
-"klip."
+msgstr "Tautan gambar (<a href=\"%1\">%1</a>) telah disalin ke papan klip."
 
 #: src/Gui/ShareErrorMessage.qml:13
 #, fuzzy, kde-format
@@ -1585,13 +1571,13 @@ msgstr "Batal:"
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
-msgstr "Lepas klik-kiri"
+msgstr "Lepas klik kiri"
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
-msgstr "Klik-ganda"
+msgstr "Klik ganda"
 
 #: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
@@ -1639,7 +1625,7 @@ msgstr "Pegangan seret"
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
-msgstr "Tuts panah + Alt"
+msgstr "Tombol panah + Alt"
 
 #: src/Gui/ShortcutsTextBox.qml:45
 #, kde-format
@@ -1651,7 +1637,7 @@ msgstr "+ Shift: Ubah ukuran dalam langkah 1 piksel"
 #, kde-format
 msgctxt "Mouse action"
 msgid "Right-click"
-msgstr "Klik-kanan"
+msgstr "Klik kanan"
 
 #: src/Gui/ShortcutsTextBox.qml:48
 #, kde-format
@@ -1721,13 +1707,13 @@ msgstr "(C) 2015 Boudhayan Gupta"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wantoyo"
+msgstr "Wantoyo,Linerly"
 
 #: src/Main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wantoyek@gmail.com"
+msgstr "wantoyek@gmail.com,linerly@protonmail.com"
 
 #: src/Main.cpp:67
 #, kde-format
@@ -1744,32 +1730,32 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Lebar buruk untuk tangkapan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Tinggi buruk untuk tangkapan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Setelah mengambil tangkapan layar"
+msgstr "Format buruk untuk tangkapan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Tidak dapat membuka deskripsi berkas untuk membaca tangkapan layar KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() gagal untuk tangkapan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
@@ -1778,6 +1764,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Permintaan tangkapan layar KWin gagal:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
@@ -1786,30 +1774,32 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Informasi kemungkinan relevan:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Metadata jenis tangkapan layar KWin tidak didukung: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "Perekaman layar tidak tersedia di X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:130
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Rekaman layar KWin tidak tersedia."
 
 #: src/Platforms/VideoPlatformWayland.cpp:139
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "Gagal merekam: URL berkas bukan berkas lokal"
 
 #: src/Platforms/VideoPlatformWayland.cpp:225
 #, kde-format
@@ -1817,7 +1807,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "Saluran ditutup karena layar target berubah dan mengganggu perekaman."
 
 #: src/Platforms/VideoPlatformWayland.cpp:227
 #, kde-format
@@ -1826,6 +1816,7 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Saluran ditutup karena jendela target berubah dan mengganggu perekaman."
 
 #: src/Platforms/VideoPlatformWayland.cpp:229
 #, kde-format
@@ -1834,36 +1825,38 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Saluran ditutup karena layar berisi area target berubah dan mengganggu "
+"perekaman."
 
 #: src/Platforms/VideoPlatformWayland.cpp:243
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "Gagal merekam: URL berkas sementara bukan berkas lokal (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "Gagal merekam: URL berkas keluaran bukan berkas lokal (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:288
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Gagal merekam: Tidak dapat membuat folder (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:316
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Perekaman layar dibatalkan"
 
 #: src/Platforms/VideoPlatformWayland.cpp:318
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Perekaman jendela dibatalkan"
 
 #: src/Platforms/VideoPlatformWayland.cpp:324
 #, fuzzy, kde-format
@@ -1883,7 +1876,7 @@ msgstr "Gagal memilih jendela"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "Gagal memilih layar: Tidak ada layar yang berisi posisi kursor tetikus"
 
 #: src/Platforms/VideoPlatformWayland.cpp:361
 #, fuzzy, kde-format
@@ -1993,7 +1986,7 @@ msgstr "Ketika Spectacle sedang berjalan"
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
+msgstr "Klik ikon baki sistem untuk selesai merekam"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2002,19 +1995,20 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
+"Waktu rekam: %1\n"
+"Klik untuk menyelesaikan rekaman"
 
 #: src/SpectacleCore.cpp:318
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Luncurkan Spectacle tanpa mengambil tangkapan layar"
+msgstr "Terjadi kesalahan saat mencoba merekam layar."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 bukan mode valid untuk --record"
 
 #: src/SpectacleCore.cpp:950
 #, kde-format
@@ -2084,13 +2078,13 @@ msgstr "Anotasi"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:33
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #, fuzzy
 #~| msgid "Screenshot"
