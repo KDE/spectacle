@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:38+0000\n"
-"PO-Revision-Date: 2024-10-03 20:40+0700\n"
+"PO-Revision-Date: 2024-10-17 01:51+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
 "Language: id\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -100,11 +100,15 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Rekam layar menggunakan mode yang diberikan. Mode-mode:\n"
+"- r, region \"bidang wilayah\"\n"
+"- s, screen \"layar\"\n"
+"- w, window \"jendela\""
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Luncurkan Spectacle tanpa mengambil tangkapan layar"
+msgstr "Luncurkan Spectacle tanpa mengambil jepretan layar"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -114,7 +118,7 @@ msgstr "Mulai dalam mode GUI (baku)"
 #: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Ambil sebuah tangkapan layar dan keluar tanpa menampilkan GUI"
+msgstr "Ambil sebuah jepretan layar dan keluar tanpa menampilkan GUI"
 
 #: src/CommandLineOptions.h:66
 #, kde-format
@@ -126,13 +130,13 @@ msgstr "Mulai dalam mode DBus-Activation"
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
-"Dalam mode latarbelakang, jangan sembulkan notifikasi ketika tangkapan layar "
+"Dalam mode latarbelakang, jangan sembulkan notifikasi ketika jepretan layar "
 "diambil"
 
 #: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
-msgstr "Dalam mode latarbelakang, simpan citra ke file yang ditentukan"
+msgstr "Dalam mode latarbelakang, simpan gambar ke file yang ditentukan"
 
 #: src/CommandLineOptions.h:79
 #, kde-format
@@ -146,20 +150,19 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
-"Dalam mode latarbelakang, salin tangkapan layar ke papan klip, kecuali -o "
+"Dalam mode latarbelakang, salin jepretan layar ke papan klip, kecuali -o "
 "juga digunakan"
 
 #: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
-msgstr ""
-"Dalam mode latarbelakang, salin alur file tangkapan layar ke papan klip"
+msgstr "Dalam mode latarbelakang, salin alur file jepretan layar ke papan klip"
 
 #: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
-"Tunggu sebuah klik sebelum mengambil tangkapan layar. Membuat tidak absahnya "
+"Tunggu sebuah klik sebelum mengambil jepretan layar. Membuat tidak absahnya "
 "tundaan"
 
 #: src/CommandLineOptions.h:96
@@ -170,28 +173,27 @@ msgstr "Mulai instance GUI baru dari spectacle tanpa mendaftar ke DBus"
 #: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "Dalam mode latarbelakang, sertakan pointer di tangkapan layar"
+msgstr "Dalam mode latarbelakang, sertakan pointer di jepretan layar"
 
 #: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Dalam mode latarbelakang, kecualikan dekorasi di tangkapan layar"
+msgstr "Dalam mode latarbelakang, kecualikan dekorasi di jepretan layar"
 
 #: src/CommandLineOptions.h:106
-#, fuzzy, kde-format
-#| msgid "In background mode, exclude decorations in the screenshot"
+#, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Dalam mode latarbelakang, kecualikan dekorasi di tangkapan layar"
+msgstr "Dalam mode latar belakang, kecualikan bayangan dalam jepretan layar"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr "Buka dan edit file tangkapan layar yang ada"
+msgstr "Buka dan edit file jepretan layar yang ada"
 
 #: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
-msgstr "QCitraWriter tak bisa menulis citra: %1"
+msgstr "QCitraWriter tak bisa menulis gambar: %1"
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -200,13 +202,13 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Tidak bisa menyimpan tangkapan layar karena penciptaan direktori, gagal:<nl/"
+"Tidak bisa menyimpan jepretan layar karena penciptaan direktori, gagal:<nl/"
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
-msgstr "Tidak bisa menyimpan tangkapan layar. Galat ketika menulis file."
+msgstr "Tidak bisa menyimpan jepretan layar. Galat ketika menulis file."
 
 #: src/ExportManager.cpp:505
 #, kde-kuit-format
@@ -215,32 +217,32 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Tidak bisa menyimpan tangkapan layar karena penciptaan direktori jarak jauh, "
+"Tidak bisa menyimpan jepretan layar karena penciptaan direktori jarak jauh, "
 "gagal:<nl/><filename>%1</filename>"
 
 #: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
-"Tidak bisa menyimpan tangkapan layar. Galat ketika menulis file lokal "
+"Tidak bisa menyimpan jepretan layar. Galat ketika menulis file lokal "
 "temporer."
 
 #: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
-"Tak mampu menyimpan citra. Tidak dapat mengunggah file untuk lokasi jarak "
+"Tak mampu menyimpan gambar. Tidak dapat mengunggah file untuk lokasi jarak "
 "jauh."
 
 #: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
-msgstr "Tak bisa simpan tangkapan layar. Simpanan nama file tidak absah."
+msgstr "Tak bisa simpan jepretan layar. Simpanan nama file tidak absah."
 
 #: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
-msgstr "Tak bisa simpan sebuah citra tangkapan layar kosong."
+msgstr "Tak bisa simpan sebuah gambar jepretan layar kosong."
 
 #: src/ExportManager.cpp:763
 #, kde-format
@@ -248,6 +250,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Gagal mengekspor video: URL file temporer harus sebuah file lokal yang ada"
 
 #: src/ExportManager.cpp:770
 #, kde-format
@@ -255,15 +258,14 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Gagal mengekspor video: URL file keluaran harus sebuah URL yang valid dengan "
+"nama file"
 
 #: src/ExportManager.cpp:845
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
-"Tak mampu menyimpan citra. Tidak dapat mengunggah file untuk lokasi jarak "
-"jauh."
+msgstr "Tidak dapat menyimpan rekaman. Tidak bisa memindah file ke lokasi: %1"
 
 #: src/ExportManager.cpp:873
 #, kde-format
@@ -283,8 +285,8 @@ msgstr "Coretan:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -367,7 +369,7 @@ msgstr "Nihil"
 #: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Crop"
-msgstr "Paskan"
+msgstr "Pangkas"
 
 #: src/Gui/AnnotationsToolBarContents.qml:117
 #, kde-format
@@ -434,14 +436,13 @@ msgstr[1] "Batal (%1 detik)"
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
-msgstr "Ambil tangkapan layar baru"
+msgstr "Ambil jepretan layar baru"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Tangkapan Layar"
+msgstr "Pengaturan Jepretan Layar"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -452,7 +453,7 @@ msgstr "Sertakan titik mouse"
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Tampilkan kursor mouse di dalam gambar tangkapan layar"
+msgstr "Tampilkan kursor mouse di dalam gambar jepretan layar"
 
 #: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
 #, kde-format
@@ -464,23 +465,18 @@ msgstr "Sertakan bilah judul dan bingkai jendela"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
-"Tampilkan bilah judul jendela dan bingkai ketika mengambil tangkapan layar "
+"Tampilkan bilah judul jendela dan bingkai ketika mengambil jepretan layar "
 "sebuah jendela."
 
 #: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgid "Include window shadow"
-msgstr "Sertakan bilah judul dan bingkai jendela"
+msgstr "Sertakan bayangan jendela"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar and border when taking a screenshot of a window."
+#, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
-"Tampilkan bilah judul jendela dan bingkai ketika mengambil tangkapan layar "
-"sebuah jendela."
+msgstr "Tampilkan bayangan jendela ketika mengambil jepretan-layar jendela."
 
 #: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
 #, kde-format
@@ -495,7 +491,7 @@ msgid ""
 "with the parent window."
 msgstr ""
 "Hanya tangkap jendela sembul saat ini (seperti menu, tooltip dll) ketika "
-"mengambil sebuah tangkapan layar jendela. Jika dinonfungsikan, sembulan "
+"mengambil sebuah jepretan layar jendela. Jika dinonfungsikan, sembulan "
 "ditangkap sepanjang induk jendela."
 
 #: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
@@ -516,7 +512,7 @@ msgstr "Tangkap saat klik"
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Menunggu klik mouse sebelum menangkap gambar tangkapan layar."
+msgstr "Menunggu klik mouse sebelum menangkap gambar jepretan layar."
 
 #: src/Gui/CaptureSettingsColumn.qml:76 src/Gui/OptionsMenu.cpp:152
 #, kde-format
@@ -526,7 +522,7 @@ msgstr "Tunda:"
 #: src/Gui/CopiedMessage.qml:12
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
-msgstr "Tangkapan layar telah disalin ke papan klip."
+msgstr "Jepretan layar telah disalin ke papan klip."
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -535,21 +531,15 @@ msgid "No Delay"
 msgstr "Tanpa Tunda"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 detik"
-msgstr[1] "%1 detik"
+msgstr[0] "%2 detik"
+msgstr[1] "%2 detik"
 
 #: src/Gui/DelaySpinBox.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 detik"
@@ -565,36 +555,31 @@ msgid "Help"
 msgstr "Bantuan"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Ambil Tangkapan Layar:"
+msgstr "Ambil Jepretan Layar:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opsi"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Merekam"
+msgstr "Buat sebuah Rekaman:"
 
 #: src/Gui/DialogPage.qml:170
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
-msgstr "Tangkapan Layar"
+msgstr "Jepretan Layar"
 
 #: src/Gui/DialogPage.qml:175
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
 msgstr "Merekam"
@@ -602,7 +587,7 @@ msgstr "Merekam"
 #: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgid "Open Default Screenshots Folder"
-msgstr "Buka Folder Tangkapan Layar"
+msgstr "Buka Folder Jepretan Layar"
 
 #: src/Gui/ExportMenu.cpp:119
 #, kde-format
@@ -617,7 +602,7 @@ msgstr "Bagikan"
 #: src/Gui/ImageView.qml:162
 #, kde-format
 msgid "Screenshot"
-msgstr "Tangkapan Layar"
+msgstr "Jepretan Layar"
 
 #: src/Gui/ImageView.qml:167
 #, kde-format
@@ -635,18 +620,16 @@ msgid "Image Zoom"
 msgstr "Zoom Gambar"
 
 #: src/Gui/LocationCopiedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Tangkapan layar telah disalin ke papan klip."
+msgstr "Lokasi video sudah disalin ke papan klip."
 
 #: src/Gui/LocationCopiedMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr "Tangkapan layar telah disalin ke papan klip."
+msgstr "Lokasi jepretan layar sudah disalin ke papan klip."
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -664,10 +647,9 @@ msgid "Copy"
 msgstr "Salin"
 
 #: src/Gui/MainToolBarContents.qml:79
-#, fuzzy, kde-format
-#| msgid "Copy Location to Clipboard"
+#, kde-format
 msgid "Copy Location"
-msgstr "Salin Lokasi Simpanan ke Papan Klip"
+msgstr "Salin Lokasi"
 
 #: src/Gui/MainToolBarContents.qml:87
 #, kde-format
@@ -683,7 +665,7 @@ msgstr "Edit…"
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
 msgid "New Screenshot"
-msgstr "Tangkapan Layar Baru"
+msgstr "Jepretan Layar Baru"
 
 #: src/Gui/MainToolBarContents.qml:133
 #, kde-format
@@ -693,22 +675,22 @@ msgstr "Opsi"
 #: src/Gui/MainToolBarContents.qml:141
 #, kde-format
 msgid "Configure..."
-msgstr "Konfigurasikan..."
+msgstr "Konfigurasi..."
 
 #: src/Gui/OptionsMenu.cpp:42
 #, kde-format
 msgid "Capture Mode"
-msgstr "Mode Tangkap"
+msgstr "Mode Tangkapan"
 
 #: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgid "Capture Settings"
-msgstr "Pengaturan Tangkap"
+msgstr "Pengaturan Tangkapan"
 
 #: src/Gui/OptionsMenu.cpp:73
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image"
-msgstr "Tampilkan kursor mouse di dalam citra tangkapan layar"
+msgstr "Tampilkan kursor mouse di dalam gambar jepretan layar"
 
 #: src/Gui/OptionsMenu.cpp:85
 #, kde-format
@@ -736,7 +718,7 @@ msgstr ""
 #: src/Gui/OptionsMenu.cpp:123
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "Tutup Spectacle setelah secara manual menyimpan atau menyalin citra"
+msgstr "Tutup Spectacle setelah secara manual menyimpan atau menyalin gambar"
 
 #: src/Gui/OptionsMenu.cpp:137
 #, kde-format
@@ -797,20 +779,17 @@ msgstr "Selesaikan perekaman"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
 msgstr ""
-"Tangkapan layar telah disalin ke papan klip dan disimpan sebagai <a href="
+"Jepretan layar telah disalin ke papan klip dan disimpan sebagai <a href="
 "\"%1\">%2</a>"
 
 #: src/Gui/SavedAndLocationCopied.qml:9
-#, fuzzy, kde-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-format
 msgid ""
 "The video has been saved as <a href=\"%1\">%2</a> and its location has been "
 "copied to clipboard"
 msgstr ""
-"Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya "
-"telah disalin ke papan klip."
+"Video sudah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya sudah "
+"disalin ke papan klip"
 
 #: src/Gui/SavedAndLocationCopied.qml:12
 #, kde-format
@@ -818,7 +797,7 @@ msgid ""
 "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya "
+"Jepretan layar telah disimpan sebagai <a href=\"%1\">%2</a> dan lokasinya "
 "telah disalin ke papan klip."
 
 #: src/Gui/SavedMessage.qml:12
@@ -829,7 +808,7 @@ msgstr "Video akan disimpan sebagai <a href=\"%1\">%2</a>"
 #: src/Gui/SavedMessage.qml:14
 #, kde-format
 msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Tangkapan layar telah disimpan sebagai <a href=\"%1\">%2</a>"
+msgstr "Jepretan layar telah disimpan sebagai <a href=\"%1\">%2</a>"
 
 #: src/Gui/SavedMessage.qml:20
 #, kde-format
@@ -844,6 +823,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Klik dan sèrèt untuk membuat pemilihan\n"
+"Klik ganda pemilihan untuk menyetujui dan memangkas.\n"
+"Klik kanan untuk membersihkan pemilihan."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -855,7 +837,7 @@ msgstr "Ketika meluncurkan Spectacle:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr "Ambil tangkapan layar secara penuh"
+msgstr "Ambil jepretan layar secara penuh"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
@@ -873,7 +855,7 @@ msgstr "Jangan menangkap layar secara otomatis"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:59
 #, kde-format
 msgid "After taking a screenshot:"
-msgstr "Setelah mengambil tangkapan layar"
+msgstr "Setelah mengambil jepretan layar"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:66
@@ -909,13 +891,13 @@ msgstr "Ketika Spectacle sedang berjalan"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:118
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Tekan tombol tangkapan layar untuk:"
+msgstr "Tekan tombol jepretan layar untuk:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:126
 #, kde-format
 msgid "Take a new Screenshot"
-msgstr "Ambil tangkapan layar baru"
+msgstr "Ambil jepretan layar baru"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
@@ -961,10 +943,9 @@ msgstr "Tampilkan instruksi penangkapan"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Tampilkan suryakanta"
+msgstr "Tampilkan suryakanta:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -1016,7 +997,7 @@ msgstr "Kualitas Kompresi:"
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
 #, kde-format
 msgid "For lossy image formats like JPEG"
-msgstr "Untuk format citra lossy seperti JPEG"
+msgstr "Untuk format gambar lossy seperti JPEG"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:62
@@ -1047,16 +1028,13 @@ msgid "<filename>%1</filename>"
 msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can use the following placeholders in the filename, which will be "
-#| "replaced with actual text when the file is saved:<blockquote>"
+#, kde-format
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
-"Anda dapat menggunakan penggantian berikut ini di dalam nama berkas, yang "
-"akan digantikan dengan teks sebenarnya ketika berkas disimpan:<blockquote>"
+"Anda bisa menggunakan placeholder berikut ini di dalam nama file , yang akan "
+"digantikan dengan teks sebenarnya ketika file disimpan:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
@@ -1076,8 +1054,7 @@ msgid "Show More"
 msgstr "Buka"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Umum"
@@ -1095,8 +1072,7 @@ msgid "Video Saving"
 msgstr "Penyimpanan Video"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
-#, fuzzy, kde-format
-#| msgid "Shortcuts"
+#, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Pintasan"
@@ -1125,7 +1101,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
-msgstr "Simpan tangkapan layar secara otomatis setelah ditangkap"
+msgstr "Simpan jepretan layar secara otomatis setelah ditangkap"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
@@ -1134,7 +1110,7 @@ msgstr "Simpan tangkapan layar secara otomatis setelah ditangkap"
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
-"Aksi papan klip yang seharusnya dilakukan setelah tangkapan layar ditangkap"
+"Aksi papan klip yang seharusnya dilakukan setelah jepretan layar ditangkap"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:47
@@ -1150,7 +1126,7 @@ msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
 msgstr ""
-"Apakah tangkapan layar harus diambil setelah memilih bidang dan melepaskan "
+"Apakah jepretan layar harus diambil setelah memilih bidang dan melepaskan "
 "mouse"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
@@ -1175,33 +1151,31 @@ msgstr "Bidang yang dipakai pengguna terakhir kali"
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Ambil tangkapan layar saat klik"
+msgstr "Ambil jepretan layar saat klik"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Apakah kursor mouse disertakan dalam tangkapan layar"
+msgstr "Apakah kursor mouse disertakan dalam jepretan layar"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the screenshot"
+#, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Apakah kursor mouse disertakan dalam tangkapan layar"
+msgstr "Apakah kursor mouse disertakan dalam video"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
-msgstr "Apakah dekorasi jendela disertakan dalam tangkapan layar"
+msgstr "Apakah dekorasi jendela disertakan dalam jepretan layar"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the window decorations are included in the screenshot"
+#, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Apakah dekorasi jendela disertakan dalam tangkapan layar"
+msgstr "Apakah bayangan jendela disertakan dalam jepretan layar"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
@@ -1213,7 +1187,7 @@ msgstr "Tangkap menu pop up saat ini saja"
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
-msgstr "Tutup setelah menyimpan atau menyalin citra"
+msgstr "Tutup setelah menyimpan atau menyalin gambar"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:111
@@ -1236,11 +1210,10 @@ msgid "Compression quality for lossy file formats"
 msgstr "Kualitas kompresi untuk format file lossy"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:144
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Tangkapan Layar"
+msgstr "Jepretan layar"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
@@ -1250,17 +1223,15 @@ msgstr "Format gambar simpanan baku"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Nama file baku yang digunakan saat menyimpan"
+msgstr "Template nama file yang digunakan ketika menyimpan jepretan layar"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Tangkapan Layar"
+msgstr "Jepretan layar"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1280,31 +1251,27 @@ msgstr "Jalur terakhir yang digunakan untuk tindakan \"simpan sebagai\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
-#, fuzzy, kde-format
-#| msgid "Default save image format"
+#, kde-format
 msgid "Default video format"
-msgstr "Format gambar simpanan baku"
+msgstr "Format video baku"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "The default filename used when saving"
+#, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Nama file baku yang digunakan saat menyimpan"
+msgstr "Template nama file yang digunakan ketika menyimpan rekaman layar"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Tangkapan Layar"
+msgstr "Rekaman layar"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Tangkapan Layar"
+msgstr "Rekaman layar"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1350,73 +1317,63 @@ msgstr "Lebar coretan untuk alat anotasi bulatan"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:244
-#, fuzzy, kde-format
-#| msgid "Stroke width for freehand annotation tool"
+#, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr "Lebar coretan untuk alat anotasi coreng"
+msgstr "Warna coretan untuk alat anotasi coreng"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Stroke width for highlighter annotation tool"
+#, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr "Lebar coretan untuk alat anotasi penyorot"
+msgstr "Warna coretan untuk alat anotasi penyorot"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Stroke width for line annotation tool"
+#, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr "Lebar coretan untuk alat anotasi garis"
+msgstr "Warna coretan untuk alat anotasi garis"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:256
-#, fuzzy, kde-format
-#| msgid "Stroke width for arrow annotation tool"
+#, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr "Lebar coretan untuk alat anotasi panah"
+msgstr "Warna coretan untuk alat anotasi panah"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:260
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr "Lebar coretan untuk alat anotasi persegi"
+msgstr "Warna coretan untuk alat anotasi persegi"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:264
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr "Lebar coretan untuk alat anotasi bulatan"
+msgstr "Warna coretan untuk alat anotasi bulatan"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:269
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr "Lebar coretan untuk alat anotasi persegi"
+msgstr "Warna coretan untuk alat anotasi persegi"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:273
-#, fuzzy, kde-format
-#| msgid "Stroke width for ellipse annotation tool"
+#, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr "Lebar coretan untuk alat anotasi bulatan"
+msgstr "Warna coretan untuk alat anotasi bulatan"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Stroke width for rectangle annotation tool"
+#, kde-format
 msgid "Fill color for number annotation tool"
-msgstr "Lebar coretan untuk alat anotasi persegi"
+msgstr "Warna isian untuk alat anotasi angka"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Bidang yang dipakai pengguna terakhir kali"
+msgstr "Kekuatan efek buram."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
@@ -1426,17 +1383,15 @@ msgstr "Kekuatan efek pikselasi."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for text annotations"
-msgstr "Font untuk anotasi"
+msgstr "Font untuk anotasi teks"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:298
-#, fuzzy, kde-format
-#| msgid "Font for annotations"
+#, kde-format
 msgid "Font for number annotations"
-msgstr "Font untuk anotasi"
+msgstr "Font untuk anotasi angka"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1444,7 +1399,7 @@ msgstr "Font untuk anotasi"
 #: src/Gui/SettingsDialog/spectacle.kcfg:306
 #, kde-format
 msgid "Font color for annotations"
-msgstr "Warna fon untuk anotasi"
+msgstr "Warna font untuk anotasi"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:311
@@ -1501,11 +1456,10 @@ msgid "Video shared"
 msgstr "Video dibagikan"
 
 #: src/Gui/SharedMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "Image shared"
+#, kde-format
 msgctxt "@info"
 msgid "Image shared"
-msgstr "Citra dibagikan"
+msgstr "Gambar yang dibagikan"
 
 #: src/Gui/SharedMessage.qml:16
 #, kde-format
@@ -1524,23 +1478,21 @@ msgid ""
 msgstr "Tautan gambar (<a href=\"%1\">%1</a>) telah disalin ke papan klip."
 
 #: src/Gui/ShareErrorMessage.qml:13
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr "Ada yang tidak beres dengan berbagi citra: %1"
+msgstr "Ada yang tidak beres dengan berbagi video: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
-#, fuzzy, kde-format
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr "Ada yang tidak beres dengan berbagi citra: %1"
+msgstr "Ada yang tidak beres dengan berbagi gambar: %1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Ambil Tangkapan Layar:"
+msgstr "Ambil Jepretan Layar:"
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
@@ -1724,38 +1676,38 @@ msgid ""
 msgstr ""
 "Di Wayland, Spectacle memerlukan kompositor KWin pada KDE Plasma, yang sama "
 "sekali belum tersedia. Gunakanlah Spectacle pada KDE Plasma, atau gunakanlah "
-"alat tangkapan layar yang berbeda."
+"alat jepretan layar yang berbeda."
 
 #: src/Platforms/ImagePlatformKWin.cpp:138
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Lebar buruk untuk tangkapan layar KWin: %1"
+msgstr "Lebar buruk untuk jepretan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Tinggi buruk untuk tangkapan layar KWin: %1"
+msgstr "Tinggi buruk untuk jepretan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Format buruk untuk tangkapan layar KWin: %1"
+msgstr "Format buruk untuk jepretan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
-"Tidak dapat membuka deskripsi berkas untuk membaca tangkapan layar KWin."
+"Tidak dapat membuka deskripsi berkas untuk membaca jepretan layar KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "pipe2() gagal untuk tangkapan layar KWin: %1"
+msgstr "pipe2() gagal untuk jepretan layar KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
@@ -1764,7 +1716,7 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
-"Permintaan tangkapan layar KWin gagal:\n"
+"Permintaan jepretan layar KWin gagal:\n"
 "%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:298
@@ -1781,7 +1733,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr "Metadata jenis tangkapan layar KWin tidak didukung: %1"
+msgstr "Metadata jenis jepretan layar KWin tidak didukung: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
@@ -1859,18 +1811,16 @@ msgid "Window recording canceled"
 msgstr "Perekaman jendela dibatalkan"
 
 #: src/Platforms/VideoPlatformWayland.cpp:362
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr "Gagal memilih jendela"
+msgstr "Gagal memilih layar: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:364
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr "Gagal memilih jendela"
+msgstr "Gagal memilih jendela: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:392
 #, kde-format
@@ -1879,35 +1829,28 @@ msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "Gagal memilih layar: Tidak ada layar yang berisi posisi kursor tetikus"
 
 #: src/Platforms/VideoPlatformWayland.cpp:399
-#, fuzzy, kde-format
-#| msgid "Failed to select window"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Gagal memilih jendela"
+msgstr "Gagal memilih jendela: Tidak ada jendela yang ditemukan"
 
 #: src/RecordingModeModel.cpp:71
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Bidang Persegi"
 
 #: src/RecordingModeModel.cpp:74
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Layar Penuh"
 
 #: src/RecordingModeModel.cpp:77
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Judul Jendela"
+msgstr "Jendela"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1945,16 +1888,14 @@ msgid "Record Screen"
 msgstr "Rekam Layar"
 
 #: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgid "Record Window"
-msgstr "Merekam"
+msgstr "Rekam Jendela"
 
 #: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgid "Record Rectangular Region"
-msgstr "Bidang Persegi"
+msgstr "Rekam Bidang Persegi"
 
 #: src/ShortcutActions.cpp:92
 #, kde-format
@@ -1962,25 +1903,22 @@ msgid "Launch Spectacle without capturing"
 msgstr "Luncurkan Spectacle tanpa menangkap layar"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Luncurkan Spectacle tanpa mengambil tangkapan layar"
+msgstr "Sebuah galat terjadi ketika mengambil jepretan layar."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Ketika Spectacle sedang berjalan"
+msgstr "Spectacle sedang Merekam"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Ketika Spectacle sedang berjalan"
+msgstr "Spectacle sedang Merekam"
 
 #: src/SpectacleCore.cpp:258
 #, kde-format
@@ -2016,7 +1954,7 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
+"Sebuah jepretan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
 "tangkapan layarnya telah disalin ke papan klip Anda."
 
 #: src/SpectacleCore.cpp:954
@@ -2024,44 +1962,37 @@ msgstr ""
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
-"Sebuah tangkapan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
+"Sebuah jepretan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
 
 #: src/SpectacleCore.cpp:957
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2'."
+msgstr "Sebuah jepretan layar telah disimpan sebagai '%1' ke '%2'."
 
 #: src/SpectacleCore.cpp:961
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Sebuah tangkapan layar telah disimpan ke papan klip Anda."
+msgstr "Sebuah jepretan layar telah disimpan ke papan klip Anda."
 
 #: src/SpectacleCore.cpp:966
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2' dan alur file "
-"tangkapan layarnya telah disalin ke papan klip Anda."
+"Sebuah rekaman telah disimpan sebagai '%1' ke '%2' dan alur file rekaman "
+"sudah disimpan ke papan klip Anda."
 
 #: src/SpectacleCore.cpp:968
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr ""
-"Sebuah tangkapan layar telah disimpan sebagai '%1' ke folder Gambar Anda."
+msgstr "Sebuah rekaman telah disimpan sebagai '%1' ke folder Video Anda."
 
 #: src/SpectacleCore.cpp:970
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Sebuah tangkapan layar telah disimpan sebagai '%1' ke '%2'."
+msgstr "Sebuah rekaman telah disimpan sebagai '%1' ke '%2'."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
