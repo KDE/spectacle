@@ -828,6 +828,7 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
         return;
     }
 
+    timeout = qMax(0, timeout);
     const bool noDelay = timeout == 0;
 
     if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 4) && KX11Extras::compositingActive()) {
