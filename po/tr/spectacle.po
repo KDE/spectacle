@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-27 00:39+0000\n"
-"PO-Revision-Date: 2024-08-06 11:47+0300\n"
+"PO-Revision-Date: 2024-10-27 20:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: src/CaptureModeModel.cpp:97
 #, kde-format
@@ -74,14 +74,14 @@ msgstr "Etkin pencereyi yakala"
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
-msgstr "Açılan menülerin üstleri de dahil, imleç altındaki pencereyi yakala"
+msgstr "Açılır menülerin üstlerini içerip imleç altındaki pencereyi yakala"
 
 #: src/CommandLineOptions.h:38
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
-msgstr "Açılan menülerin üstleri dışında, imleç altındaki pencereyi yakala"
+msgstr "Açılır menülerin üstleri dışında, imleç altındaki pencereyi yakala"
 
 #: src/CommandLineOptions.h:42
 #, kde-format
@@ -119,23 +119,23 @@ msgstr "Ekran görüntüsü al ve arayüzü göstermeden çık"
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
-msgstr "DBus Etkinleştirme kipinde başla"
+msgstr "DBus etkinleştirme kipinde başla"
 
 #: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
-msgstr "Arka plan kipinde, ekran görüntüsü alındığında bir bildirim gösterme"
+msgstr "Arka plan kipinde ekran görüntüsü alındığında bir bildirim gösterme"
 
 #: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
-msgstr "Arka plan kipinde, görseli belirtilen dosyaya kaydet"
+msgstr "Arka plan kipinde görseli belirtilen dosyaya kaydet"
 
 #: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr "Arka plan kipinde, görüntüyü almadan önce bekle (milisaniye türünden)"
+msgstr "Arka plan kipinde görüntüyü almadan önce bekle (milisaniye türünden)"
 
 #: src/CommandLineOptions.h:84
 #, kde-format
@@ -143,18 +143,18 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
-"Arka plan kipinde, -o da kullanılmışsa ekran görüntüsünü panoya kopyala."
+"Arka plan kipinde “-o” da kullanılmışsa ekran görüntüsünü panoya kopyala"
 
 #: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "Arka plan kipinde, ekran görüntüsü dosyası yolunu panoya kopyala"
+msgstr "Arka plan kipinde ekran görüntüsü dosyası yolunu panoya kopyala"
 
 #: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
-"Ekran görüntüsü almadan önce tıklanılmasını bekle. Gecikmeyi iptal eder"
+"Ekran görüntüsü almadan önce tıklanılmasını bekle (gecikmeyi iptal eder)"
 
 #: src/CommandLineOptions.h:96
 #, kde-format
@@ -165,17 +165,17 @@ msgstr ""
 #: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "Arka plan kipinde, ekran görüntüsünde imleci içer"
+msgstr "Arka plan kipinde ekran görüntüsünde imleci içer"
 
 #: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Arka plan kipinde, ekran görüntüsünde dekorasyonları içerme"
+msgstr "Arka plan kipinde ekran görüntüsünde dekorasyonları içerme"
 
 #: src/CommandLineOptions.h:106
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Arka plan kipinde, ekran görüntüsünde gölgeleri içerme"
+msgstr "Arka plan kipinde ekran görüntüsünde gölgeleri içerme"
 
 #: src/CommandLineOptions.h:109
 #, kde-format
@@ -319,15 +319,15 @@ msgstr "Yazıtipi:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] "%2 %3 %1 pt"
-msgstr[1] "%2 %3 %1 pt"
+msgstr[0] "%2 %3 %1 pnt"
+msgstr[1] "%2 %3 %1 pnt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] "%2 %1 pt"
+msgstr[0] "%2 %1 pnt"
 msgstr[1] "%2 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
@@ -1235,7 +1235,7 @@ msgstr "En son kaydedilen dosyanın yolu"
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
-msgstr "‘Farklı Kaydet’ eylemi için kullanılan son yol"
+msgstr "“Farklı Kaydet” eylemi için kullanılan son yol"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
@@ -2004,149 +2004,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgctxt "@title:group"
-#~ msgid "Screenshot Modes"
-#~ msgstr "Ekran Görüntüsü Kipleri"
-
-#~ msgctxt "@title:group"
-#~ msgid "Recording Modes"
-#~ msgstr "Kayıt Kipleri"
-
-#~ msgctxt "@title:group"
-#~ msgid "Recording Settings"
-#~ msgstr "Kayıt Ayarları"
-
-#~ msgid ""
-#~ "Could not take a screenshot. Please report this bug here: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
-#~ "spectacle bug</a>"
-#~ msgstr ""
-#~ "Bir ekran görüntüsü alınamadı. Lütfen, <a href=\"https://bugs.kde.org/"
-#~ "enter_bug.cgi?product=Spectacle\">adresinden</a> bir hata kaydı açın"
-
-#~ msgid "Screenshot capture canceled or failed"
-#~ msgstr "Ekran görüntüsü iptal edildi veya başarılı olmadı"
-
-#~ msgid "Show Annotation Tools"
-#~ msgstr "Bilgi Notu Araçlarını Göster"
-
-#~ msgid "Whether to show a magnifier in the region selection"
-#~ msgstr "Bölge seçiminde büyüteç gösterilip gösterilmeyeceği"
-
-#~ msgid "Capture Modes"
-#~ msgstr "Yakalama Kipleri"
-
-#~ msgctxt "Decimal number of seconds"
-#~ msgid "%2 seconds"
-#~ msgstr "%2 saniye"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Day"
-#~ msgstr "Gün"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month"
-#~ msgstr "Ay"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized short name)"
-#~ msgstr "Ay (yerelleştirilmiş kısa ad)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized long name)"
-#~ msgstr "Ay (yerelleştirilmiş uzun ad)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (2 digit)"
-#~ msgstr "Yıl (2 basamaklı)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (4 digit)"
-#~ msgstr "Yıl (4 basamaklı)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Hour"
-#~ msgstr "Saat"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Minute"
-#~ msgstr "Dakika"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Second"
-#~ msgstr "saniye"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Timezone"
-#~ msgstr "Zaman dilimi"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Window Title"
-#~ msgstr "Pencere başlığı"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
-#~ msgstr "Ek '#' karakter eklenerek doldurulan sıralı numaralandırma"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering"
-#~ msgstr "Sıralı numaralandırma"
-
-#~ msgid "The default filename used when recording a video"
-#~ msgstr "Bir video kaydederken kullanılan öntanımlı dosya adı"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Region"
-#~ msgstr "Bölge"
-
-#~ msgctxt "@item recording mode"
-#~ msgid "Screen"
-#~ msgstr "Ekran"
-
-#~ msgid "Workspace"
-#~ msgstr "Çalışma Alanı"
-
-#~ msgid "Selected Window"
-#~ msgstr "Seçili Pencere"
-
-#~ msgid "Failed to select output"
-#~ msgstr "Çıktı seçilemedi"
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Video format:"
-#~ msgstr "Video biçimi:"
-
-#~| msgid "Save"
-#~ msgctxt "Settings category"
-#~ msgid "Save"
-#~ msgstr "Kaydetme"
-
-#~ msgid "File format for saved screen recordings"
-#~ msgstr "Kaydedilecek ekran kayıtları için dosya biçimi"
