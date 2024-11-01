@@ -12,14 +12,14 @@
 
 #include <KApplicationTrader>
 #include <KIO/ApplicationLauncherJob>
-#include <kio_version.h>
 #include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
-#include <KStandardAction>
+#include <KStandardActions>
 #include <KStandardShortcut>
+#include <kio_version.h>
 
 #include <QJsonArray>
 #include <QMimeDatabase>
@@ -50,7 +50,7 @@ ExportMenu::ExportMenu(QWidget *parent)
     addAction(QIcon::fromTheme(u"document-open-folder"_s),
               i18n("Open Default Screenshots Folder"),
               this, &ExportMenu::openScreenshotsFolder);
-    addAction(KStandardAction::print(this, &ExportMenu::openPrintDialog, this));
+    addAction(KStandardActions::print(this, &ExportMenu::openPrintDialog, this));
 
 #ifdef PURPOSE_FOUND
     loadPurposeMenu();

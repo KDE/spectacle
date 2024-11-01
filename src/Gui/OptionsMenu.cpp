@@ -11,7 +11,7 @@
 #include "settings.h"
 
 #include <KLocalizedString>
-#include <KStandardAction>
+#include <KStandardActions>
 
 #include <QStyle>
 
@@ -36,7 +36,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     , delayLabel(new QLabel(delayWidget.get()))
     , delaySpinBox(new SmartSpinBox(delayWidget.get()))
 {
-    addAction(KStandardAction::preferences(this, &OptionsMenu::showPreferencesDialog, this));
+    addAction(KStandardActions::preferences(this, &OptionsMenu::showPreferencesDialog, this));
 
     // QMenu::addSection just adds an action with text and separator mode enabled
     captureModeSection->setText(i18n("Capture Mode"));
