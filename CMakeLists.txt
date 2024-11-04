@@ -58,6 +58,12 @@ find_package(
 )
 qt_policy(SET QTP0001 NEW)
 
+if(Qt6_VERSION VERSION_EQUAL 6.8.0)
+    # https://bugreports.qt.io/browse/QTBUG-129797
+    message(NOTICE "Qt6_VERSION: ${Qt6_VERSION} detected. Enabling CAST_FROM_ASCII")
+    remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+endif()
+
 find_package(
     KF6 ${KF_MIN_VERSION} REQUIRED
         CoreAddons
