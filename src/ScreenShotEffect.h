@@ -6,7 +6,9 @@
 
 #include <QtGlobal>
 
-class ScreenShotEffect
+#include "spectaclecore_export.h"
+
+class SPECTACLECORE_EXPORT ScreenShotEffect
 {
 public:
     static bool isLoaded();

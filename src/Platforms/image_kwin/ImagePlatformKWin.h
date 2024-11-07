@@ -8,9 +8,9 @@
 
 #include "ImagePlatform.h"
 
+#include <QDBusUnixFileDescriptor>
 #include <QFuture>
 #include <QImage>
-#include <QDBusUnixFileDescriptor>
 class QScreen;
 
 #include <memory>
@@ -20,7 +20,8 @@ class ScreenShotSourceMeta2;
 class ScreenShotSourceWorkspace2;
 
 // Needed for ResultVariant to compile with Qt meta object stuff.
-inline bool operator<(const QImage &lhs, const QImage &rhs) {
+inline bool operator<(const QImage &lhs, const QImage &rhs)
+{
     return lhs.cacheKey() < rhs.cacheKey();
 }
 
@@ -31,7 +32,8 @@ struct ResultVariant : public std::variant<std::monostate, QImage, QString> {
         ErrorString,
         NPos = std::variant_npos,
     };
-    static ResultVariant canceled() {
+    static ResultVariant canceled()
+    {
         return {std::monostate{}};
     };
 };
@@ -43,6 +45,8 @@ struct ResultVariant : public std::variant<std::monostate, QImage, QString> {
 class ImagePlatformKWin final : public ImagePlatform
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.spectacle.ImagePlatform" FILE "metadata.json")
+    Q_INTERFACES(ImagePlatform)
 
 public:
     explicit ImagePlatformKWin(QObject *parent = nullptr);

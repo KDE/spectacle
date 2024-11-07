@@ -197,6 +197,8 @@ EmptyPage {
         }
     }
 
+    Component.onCompleted: print("completed")
+
     state: "normal"
     states: [
         State {

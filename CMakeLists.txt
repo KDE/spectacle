@@ -38,6 +38,7 @@ include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 include(ECMFindQmlModule)
+include(ECMGenerateExportHeader)
 
 # find dependencies
 

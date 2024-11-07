@@ -25,7 +25,9 @@
 #include <array>
 #include <memory>
 
-class SpectacleCore : public QObject
+#include "spectaclecore_export.h"
+
+class SPECTACLECORE_EXPORT SpectacleCore : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(ImagePlatform *imagePlatform READ imagePlatform CONSTANT FINAL)

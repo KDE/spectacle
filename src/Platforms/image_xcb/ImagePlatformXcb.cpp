@@ -28,8 +28,8 @@
 #include <QSet>
 #include <QStack>
 #include <QTimer>
-#include <private/qtx11extras_p.h>
 #include <QtMath>
+#include <private/qtx11extras_p.h>
 
 #include <KWindowInfo>
 #include <KWindowSystem>
@@ -149,11 +149,11 @@ ImagePlatform::GrabModes ImagePlatformXcb::supportedGrabModes() const
 
 void ImagePlatformXcb::updateSupportedGrabModes()
 {
-    ImagePlatform::GrabModes grabModes = {
-        GrabMode::AllScreens, GrabMode::ActiveWindow,
-        GrabMode::WindowUnderCursor, GrabMode::TransientWithParent,
-        GrabMode::PerScreenImageNative
-    };
+    ImagePlatform::GrabModes grabModes = {GrabMode::AllScreens,
+                                          GrabMode::ActiveWindow,
+                                          GrabMode::WindowUnderCursor,
+                                          GrabMode::TransientWithParent,
+                                          GrabMode::PerScreenImageNative};
 
     if (QApplication::screens().count() > 1) {
         grabModes |= ImagePlatform::GrabMode::CurrentScreen;
@@ -440,7 +440,7 @@ QImage ImagePlatformXcb::getToplevelImage(QRect rect, bool blendPointer)
     } else {
         QRegion screenRegion;
         const auto screenRects = getScreenRects();
-        for (auto &screenRect :screenRects) {
+        for (auto &screenRect : screenRects) {
             screenRegion += screenRect;
         }
         rect = (screenRegion & rect).boundingRect();

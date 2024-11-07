@@ -9,35 +9,37 @@
 #include "PlasmaVersion.h"
 #include "ScreenShotEffect.h"
 
-#include "ImagePlatformKWin.h"
-#include "PlatformNull.h"
-#include "VideoPlatformWayland.h"
-
-#ifdef XCB_FOUND
-#include "ImagePlatformXcb.h"
-#endif
-
 #include <KLocalizedString>
 #include <KWindowSystem>
 
+#include <QCoreApplication>
 #include <QDebug>
+#include <QPluginLoader>
 
-ImagePlatformPtr getForcedImagePlatform()
+#include <filesystem>
+
+#include "spectacle_debug.h"
+
+using namespace Qt::StringLiterals;
+
+template<typename T>
+T *loadPlatform(const QString &name)
 {
-    // This environment variable is only for testing purposes.
-    auto platformName = qgetenv("SPECTACLE_IMAGE_PLATFORM");
-    if (platformName.isEmpty()) {
-        return nullptr;
-    }
+    const auto pluginDirs = QCoreApplication::libraryPaths();
+    for (const auto &dir : pluginDirs) {
+        const auto path = std::filesystem::path(dir.toStdString()) / "spectacle";
 
-    if (platformName == ImagePlatformKWin::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformKWin>();
-    } else if (platformName == ImagePlatformXcb::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformXcb>();
-    } else if (platformName == ImagePlatformNull::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformNull>();
-    } else if (!platformName.isEmpty()) {
-        qWarning() << "SPECTACLE_IMAGE_PLATFORM:" << platformName << "is invalid";
+        if (!std::filesystem::exists(path) || !std::filesystem::is_directory(path)) {
+            continue;
+        }
+
+        for (const auto &entry : std::filesystem::directory_iterator(path)) {
+            QPluginLoader loader(QString::fromStdString(entry.path()));
+            const auto metaData = loader.metaData().value(u"MetaData").toObject();
+            if (metaData.value("platform").toString() == name) {
+                return qobject_cast<T *>(loader.instance());
+            }
+        }
     }
 
     return nullptr;
@@ -45,56 +47,59 @@ ImagePlatformPtr getForcedImagePlatform()
 
 ImagePlatformPtr loadImagePlatform()
 {
-    if (auto platform = getForcedImagePlatform()) {
-        return platform;
-    }
-
-    // Check XDG_SESSION_TYPE because Spectacle might be using the XCB platform via XWayland
-    const bool isReallyX11 = KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0;
-    // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
-    // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
-    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
-        && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
-        return std::make_unique<ImagePlatformKWin>();
-    }
-#ifdef XCB_FOUND
-    else if (isReallyX11) {
-        return std::make_unique<ImagePlatformXcb>();
-    }
-#endif
-    // If nothing else worked, return the null platform
-    return std::make_unique<ImagePlatformNull>();
-}
-
-VideoPlatformPtr getForcedVideoPlatform()
-{
-    // This environment variable is only for testing purposes.
-    auto platformName = qgetenv("SPECTACLE_VIDEO_PLATFORM");
+    auto platformName = qgetenv("SPECTACLE_IMAGE_PLATFORM");
     if (platformName.isEmpty()) {
-        return nullptr;
+        // Check XDG_SESSION_TYPE because Spectacle might be using the XCB platform via XWayland
+        const bool isReallyX11 = KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0;
+        if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
+            && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
+            platformName = "image_kwin";
+        } else if (isReallyX11) {
+            platformName = "image_xcb";
+        }
     }
 
-    if (platformName == VideoPlatformWayland::staticMetaObject.className()) {
-        return std::make_unique<VideoPlatformWayland>();
-    } else if (platformName == VideoPlatformNull::staticMetaObject.className()) {
-        return std::make_unique<VideoPlatformNull>();
-    } else if (!platformName.isEmpty()) {
-        qWarning() << "SPECTACLE_VIDEO_PLATFORM:" << platformName << "is invalid";
+    auto object = loadPlatform<ImagePlatform>(platformName);
+    if (object) {
+        qCInfo(SPECTACLE_LOG) << "Loaded image platform" << platformName;
+        return ImagePlatformPtr(object);
+    } else {
+        qCWarning(SPECTACLE_LOG) << "Could not load image platform" << platformName;
     }
 
-    return nullptr;
+    auto nullPlatform = loadPlatform<ImagePlatform>(u"image_null"_s);
+    if (!nullPlatform) {
+        qCFatal(SPECTACLE_LOG) << "Failed to load platform" << platformName << "and failed to load null platform fallback!";
+    }
+
+    return ImagePlatformPtr(nullPlatform);
 }
 
 VideoPlatformPtr loadVideoPlatform()
 {
-    if (auto platform = getForcedVideoPlatform()) {
-        return platform;
+    auto platformName = qgetenv("SPECTACLE_VIDEO_PLATFORM");
+    if (platformName.isEmpty()) {
+        if (KWindowSystem::isPlatformWayland()) {
+            platformName = "video_wayland";
+        }
     }
-    if (KWindowSystem::isPlatformWayland()) {
-        return std::make_unique<VideoPlatformWayland>();
-    }
+
     if (KWindowSystem::isPlatformX11()) {
-        return std::make_unique<VideoPlatformNull>(i18nc("@info", "Screen recording is not available on X11."));
+        qCWarning(SPECTACLE_LOG) << "Screen recording is not availabe on X11";
+        platformName = "video_null";
     }
-    return std::make_unique<VideoPlatformNull>();
+
+    auto object = loadPlatform<VideoPlatform>(platformName);
+    if (object) {
+        qCInfo(SPECTACLE_LOG) << "Loaded video platform" << platformName;
+        return VideoPlatformPtr(object);
+    } else {
+        qCWarning(SPECTACLE_LOG) << "Could not load video platform" << platformName;
+    }
+
+    auto nullPlatform = loadPlatform<VideoPlatform>(u"video_null"_s);
+    if (!nullPlatform) {
+        qCFatal(SPECTACLE_LOG) << "Failed to load platform" << platformName << "and failed to load null platform fallback!";
+    }
+    return VideoPlatformPtr(nullPlatform);
 }

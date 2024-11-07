@@ -5,33 +5,14 @@
 
 #pragma once
 
-#include "ImagePlatform.h"
 #include "VideoPlatform.h"
-
-class ImagePlatformNull final : public ImagePlatform
-{
-    Q_OBJECT
-
-public:
-    explicit ImagePlatformNull(QObject *parent = nullptr);
-    ~ImagePlatformNull() override = default;
-
-    GrabModes supportedGrabModes() const override final;
-    ShutterModes supportedShutterModes() const override final;
-
-public Q_SLOTS:
-
-    void doGrab(ImagePlatform::ShutterMode shutterMode,
-                ImagePlatform::GrabMode grabMode,
-                bool includePointer,
-                bool includeDecorations,
-                bool includeShadow) override final;
-};
 
 // A default video platform implementation. Can be used for platforms that aren't supported.
 class VideoPlatformNull final : public VideoPlatform
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.spectacle.VideoPlatform" FILE "metadata.json")
+    Q_INTERFACES(VideoPlatform)
 
 public:
     explicit VideoPlatformNull(const QString &unavailableMessage = {}, QObject *parent = nullptr);

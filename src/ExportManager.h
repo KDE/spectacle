@@ -15,9 +15,11 @@ class QIODevice;
 class QPrinter;
 #include <QUrl>
 
+#include "spectaclecore_export.h"
+
 class QTemporaryDir;
 
-class ExportManager : public QObject
+class SPECTACLECORE_EXPORT ExportManager : public QObject
 {
     Q_OBJECT
 

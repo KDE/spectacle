@@ -7,7 +7,7 @@
 #include "ImagePlatformKWin.h"
 #include "ExportManager.h"
 #include "Geometry.h"
-#include "QtCV.h"
+// #include "QtCV.h"
 #include "DebugUtils.h"
 #include "ImageMetaData.h"
 
@@ -33,6 +33,8 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
+
+#include "imageplatform_kwin_debug.h"
 
 using namespace Qt::StringLiterals;
 
@@ -80,7 +82,7 @@ QImage combinedImage(const QList<QImage> &images)
         geometryList << ImageMetaData::subGeometryPropertyMap(rect, dpr);
     }
     static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
-    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
+    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i) {
         return i.devicePixelRatio() == maxDpr;
     });
     if (allSameDpr) {
@@ -107,21 +109,21 @@ QImage combinedImage(const QList<QImage> &images)
     // Not sure what to do if we end up having different formats for different screens.
     QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
     finalImage.fill(Qt::transparent);
-    auto mainMat = QtCV::qImageToMat(finalImage);
-    for (auto &image : images) {
-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
-        const auto mat = QtCV::qImageToMat(rgbaImage);
-        // Region Of Interest to put the image in the main image.
-        const auto pos = ImageMetaData::logicalXY(rgbaImage) * finalDpr;
-        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
-        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
-        const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
-        const auto imageDpr = image.devicePixelRatio();
-        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
-        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
-        // Will just copy if there's no difference in size
-        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
-    }
+    // auto mainMat = QtCV::qImageToMat(finalImage);
+    // for (auto &image : images) {
+    //     auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
+    //     const auto mat = QtCV::qImageToMat(rgbaImage);
+    //     // Region Of Interest to put the image in the main image.
+    //     const auto pos = ImageMetaData::logicalXY(rgbaImage) * finalDpr;
+    //     const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
+    //     // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
+    //     const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
+    //     const auto imageDpr = image.devicePixelRatio();
+    //     const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+    //     const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+    //     // Will just copy if there's no difference in size
+    //     cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
+    // }
     finalImage.setDevicePixelRatio(finalDpr);
     ImageMetaData::setSubGeometryList(finalImage, geometryList);
     return finalImage;
@@ -193,10 +195,7 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
     // No point in storing the windowId in the image since it means nothing to users
     // and can't be used if the window is closed.
     if (!windowId.isEmpty()) {
-        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                              u"/KWin"_s,
-                                                              u"org.kde.KWin"_s,
-                                                              u"getWindowInfo"_s);
+        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s, u"/KWin"_s, u"org.kde.KWin"_s, u"getWindowInfo"_s);
         message.setArguments({windowId});
         const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
         if (reply.isValid()) {
@@ -236,7 +235,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     int pipeFds[2]{-1, -1};
     if (pipe2(pipeFds, O_CLOEXEC) == -1) {
         const auto errnum = errno;
-        QTimer::singleShot(0, this, [this, errnum]{
+        QTimer::singleShot(0, this, [this, errnum] {
             Q_EMIT finished({i18nc("@info", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))});
         });
         return;
@@ -268,13 +267,13 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
     QTimer *timeoutTimer = nullptr;
-    if (SPECTACLE_LOG().isDebugEnabled()) {
-        Log::debug() << message;
+    if (SPECTACLE_IMAGEPLATFORM_KWIN().isDebugEnabled()) {
+        Log::debug(SPECTACLE_IMAGEPLATFORM_KWIN) << message;
         timeoutTimer = new QTimer(this);
         timeoutTimer->setInterval(timeout / 3.0);
         timeoutTimer->setSingleShot(true);
         timeoutTimer->callOnTimeout([] {
-            Log::debug() << "It's taking an unusually long amount of time to get a screenshot...";
+            Log::debug(SPECTACLE_IMAGEPLATFORM_KWIN) << "It's taking an unusually long amount of time to get a screenshot...";
         });
         timeoutTimer->start();
     }
@@ -317,12 +316,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
 }
 
 ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureArea"_s,
-                        qint32(area.x()),
-                        qint32(area.y()),
-                        quint32(area.width()),
-                        quint32(area.height()),
-                        screenShotFlagsToVardict(flags))
+    : ScreenShotSource2(u"CaptureArea"_s, qint32(area.x()), qint32(area.y()), quint32(area.width()), quint32(area.height()), screenShotFlagsToVardict(flags))
 {
 }
 
@@ -332,9 +326,9 @@ ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(ImagePlatformKWin::In
 }
 
 ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags)
-// NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
-// It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
-// KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
+    // NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
+    // It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
+    // KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
     : ScreenShotSource2(u"CaptureScreen"_s, screen->name(), screenShotFlagsToVardict(flags))
 {
 }
@@ -372,10 +366,8 @@ ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> 
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
     : ImagePlatform(parent)
 {
-    auto message = QDBusMessage::createMethodCall(u"org.kde.KWin.ScreenShot2"_s,
-                                                  u"/org/kde/KWin/ScreenShot2"_s,
-                                                  u"org.freedesktop.DBus.Properties"_s,
-                                                  u"Get"_s);
+    auto message =
+        QDBusMessage::createMethodCall(u"org.kde.KWin.ScreenShot2"_s, u"/org/kde/KWin/ScreenShot2"_s, u"org.freedesktop.DBus.Properties"_s, u"Get"_s);
     message.setArguments({u"org.kde.KWin.ScreenShot2"_s, u"Version"_s});
 
     const QDBusMessage reply = QDBusConnection::sessionBus().call(message);
@@ -489,7 +481,7 @@ void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal 
         }
 
         if (!images.empty()) {
-            Q_EMIT (this->*outputSignal)(combinedImage(images));
+            Q_EMIT(this->*outputSignal)(combinedImage(images));
         }
         if (!errorString.isEmpty()) {
             Q_EMIT newScreenshotFailed(errorString);

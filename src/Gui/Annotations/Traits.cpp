@@ -5,7 +5,7 @@
 
 #include "Traits.h"
 #include "Geometry.h"
-#include "QtCV.h"
+// #include "QtCV.h"
 #include "settings.h"
 #include <QLocale>
 #include <QUuid>
@@ -87,7 +87,7 @@ QImage Traits::ImageEffects::Blur::image(const std::function<QImage()> &getImage
         }
         // RGBA is better for use with OpenCV
         m_backingStoreCache.convertTo(QImage::Format_RGBA8888_Premultiplied);
-        auto mat = QtCV::qImageToMat(m_backingStoreCache);
+        // auto mat = QtCV::qImageToMat(m_backingStoreCache);
         // Below this, the effect is nearly invisible.
         static const qreal min = 0.5;
         // Above this, glitches with color splotches happen.
@@ -96,7 +96,7 @@ QImage Traits::ImageEffects::Blur::image(const std::function<QImage()> &getImage
         const qreal dynamicMin = 1 * dpr;
         const qreal dynamicMax = 16 * dpr;
         const qreal sigma = std::clamp(m_strength * (dynamicMax - dynamicMin) + dynamicMin, min, max);
-        QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
+        // QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
         m_backingStoreCache.setDevicePixelRatio(dpr);
         m_backingStoreCache.setText(strengthKey, strengthString(m_strength));
     }

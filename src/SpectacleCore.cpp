@@ -13,16 +13,16 @@
 #include "Gui/Annotations/AnnotationViewport.h"
 #include "Gui/Annotations/QmlPainterPath.h"
 #include "Gui/CaptureWindow.h"
-#include "Gui/Selection.h"
-#include "Gui/SelectionEditor.h"
-#include "Gui/SpectacleWindow.h"
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
-#include "Platforms/ImagePlatformXcb.h"
+#include "Gui/Selection.h"
+#include "Gui/SelectionEditor.h"
+#include "Gui/SpectacleWindow.h"
+#include "PlasmaVersion.h"
+#include "Platforms/ImagePlatform.h"
 #include "Platforms/VideoPlatform.h"
 #include "ShortcutActions.h"
-#include "PlasmaVersion.h"
 // generated
 #include "Config.h"
 #include "settings.h"
@@ -121,7 +121,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                      this, onFinished, Qt::QueuedConnection);
 
     m_imagePlatform = loadImagePlatform();
-    m_videoPlatform = loadVideoPlatform();
+    // m_videoPlatform = loadVideoPlatform();
     auto imagePlatform = m_imagePlatform.get();
     m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
 
@@ -239,91 +239,91 @@ SpectacleCore::SpectacleCore(QObject *parent)
         onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed, &ViewerWindow::showScreenshotFailedMessage);
     });
 
-    auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording) {
-        if (isRecording) {
-            static const auto recordingIcon = u":/icons/256-status-media-recording.webp"_s;
-            static const auto recordingStartedIcon = u":/icons/256-status-media-recording-started.webp"_s;
-            static const auto recordingPulseIcon = u":/icons/256-status-media-recording-pulse.webp"_s;
-            s_systemTrayIcon = std::make_unique<KStatusNotifierItem>();
-            s_systemTrayIcon->setStatus(KStatusNotifierItem::Active);
-            s_systemTrayIcon->setCategory(KStatusNotifierItem::SystemServices);
-            s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for recording tray icon", //
-                                                    "Spectacle is Recording"));
-            s_systemTrayIcon->setStandardActionsEnabled(false);
-            connect(s_systemTrayIcon.get(), &KStatusNotifierItem::activateRequested, this, [] {
-                SpectacleCore::instance()->finishRecording();
-            });
-            const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
-            const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
-            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media-record"_s, 4000);
-            static const auto initPulseAnimation = [] {
-                auto animation = new QMovie(recordingPulseIcon, {}, s_systemTrayIcon.get());
-                animation->setCacheMode(QMovie::CacheAll);
-                connect(animation, &QMovie::frameChanged, animation, [animation] {
-                    s_systemTrayIcon->setIconByPixmap(animation->currentPixmap());
-                });
-                // We periodically switch to a static image instead of having a period in the
-                // animation where nothing happens to be a bit more efficient.
-                // NOTE: If QMovie::finished isn't working,
-                // you probably edited the icon and forgot to set the loop count.
-                connect(animation, &QMovie::finished, animation, [animation] {
-                    animation->stop();
-                    static const auto recordingPixmap = QPixmap{recordingIcon};
-                    s_systemTrayIcon->setIconByPixmap(recordingPixmap);
-                    const auto animationDuration = animation->nextFrameDelay() * animation->frameCount() / (animation->speed() / 100.0);
-                    QTimer::singleShot(animationDuration / 2, animation, &QMovie::start);
-                });
-                animation->start();
-            };
-            auto startedAnimation = new QMovie(recordingStartedIcon, {}, s_systemTrayIcon.get());
-            startedAnimation->setCacheMode(QMovie::CacheAll);
-            connect(startedAnimation, &QMovie::frameChanged, startedAnimation, [startedAnimation] {
-                s_systemTrayIcon->setIconByPixmap(startedAnimation->currentPixmap());
-            });
-            connect(startedAnimation, &QMovie::finished, startedAnimation, [startedAnimation] {
-                startedAnimation->stop();
-                startedAnimation->deleteLater();
-                initPulseAnimation();
-            });
-            startedAnimation->start();
-        } else {
-            s_systemTrayIcon.reset();
-            m_captureWindows.clear();
-        }
-    });
-    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
-        Q_EMIT recordedTimeChanged();
-        if (!s_systemTrayIcon) {
-            return;
-        }
-        auto subtitle = i18nc("@info:tooltip subtitle for recording tray icon", //
-                              "Time recorded: %1\n" //
-                              "Click to finish recording",
-                              recordedTime());
-        s_systemTrayIcon->setToolTipSubTitle(subtitle);
-    });
-    connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
-        // Always try to save. Needed to move recordings out of temp dir.
-        ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
-    });
-    connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
-        if (m_startMode != StartMode::Gui || isGuiNull()) {
-            Q_EMIT allDone();
-            return;
-        }
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
-    });
-    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
-        auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
-        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed, &ViewerWindow::showRecordingFailedMessage);
-    });
-    connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
-        SelectionEditor::instance()->reset();
-        initCaptureWindows(CaptureWindow::Video);
-        SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-        SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
-    });
+    // auto videoPlatform = m_videoPlatform.get();
+    // connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording) {
+    //     if (isRecording) {
+    //         static const auto recordingIcon = u":/icons/256-status-media-recording.webp"_s;
+    //         static const auto recordingStartedIcon = u":/icons/256-status-media-recording-started.webp"_s;
+    //         static const auto recordingPulseIcon = u":/icons/256-status-media-recording-pulse.webp"_s;
+    //         s_systemTrayIcon = std::make_unique<KStatusNotifierItem>();
+    //         s_systemTrayIcon->setStatus(KStatusNotifierItem::Active);
+    //         s_systemTrayIcon->setCategory(KStatusNotifierItem::SystemServices);
+    //         s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for recording tray icon", //
+    //                                                 "Spectacle is Recording"));
+    //         s_systemTrayIcon->setStandardActionsEnabled(false);
+    //         connect(s_systemTrayIcon.get(), &KStatusNotifierItem::activateRequested, this, [] {
+    //             SpectacleCore::instance()->finishRecording();
+    //         });
+    //         const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
+    //         const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
+    //         s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media-record"_s, 4000);
+    //         static const auto initPulseAnimation = [] {
+    //             auto animation = new QMovie(recordingPulseIcon, {}, s_systemTrayIcon.get());
+    //             animation->setCacheMode(QMovie::CacheAll);
+    //             connect(animation, &QMovie::frameChanged, animation, [animation] {
+    //                 s_systemTrayIcon->setIconByPixmap(animation->currentPixmap());
+    //             });
+    //             // We periodically switch to a static image instead of having a period in the
+    //             // animation where nothing happens to be a bit more efficient.
+    //             // NOTE: If QMovie::finished isn't working,
+    //             // you probably edited the icon and forgot to set the loop count.
+    //             connect(animation, &QMovie::finished, animation, [animation] {
+    //                 animation->stop();
+    //                 static const auto recordingPixmap = QPixmap{recordingIcon};
+    //                 s_systemTrayIcon->setIconByPixmap(recordingPixmap);
+    //                 const auto animationDuration = animation->nextFrameDelay() * animation->frameCount() / (animation->speed() / 100.0);
+    //                 QTimer::singleShot(animationDuration / 2, animation, &QMovie::start);
+    //             });
+    //             animation->start();
+    //         };
+    //         auto startedAnimation = new QMovie(recordingStartedIcon, {}, s_systemTrayIcon.get());
+    //         startedAnimation->setCacheMode(QMovie::CacheAll);
+    //         connect(startedAnimation, &QMovie::frameChanged, startedAnimation, [startedAnimation] {
+    //             s_systemTrayIcon->setIconByPixmap(startedAnimation->currentPixmap());
+    //         });
+    //         connect(startedAnimation, &QMovie::finished, startedAnimation, [startedAnimation] {
+    //             startedAnimation->stop();
+    //             startedAnimation->deleteLater();
+    //             initPulseAnimation();
+    //         });
+    //         startedAnimation->start();
+    //     } else {
+    //         s_systemTrayIcon.reset();
+    //         m_captureWindows.clear();
+    //     }
+    // });
+    // connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
+    //     Q_EMIT recordedTimeChanged();
+    //     if (!s_systemTrayIcon) {
+    //         return;
+    //     }
+    //     auto subtitle = i18nc("@info:tooltip subtitle for recording tray icon", //
+    //                           "Time recorded: %1\n" //
+    //                           "Click to finish recording",
+    //                           recordedTime());
+    //     s_systemTrayIcon->setToolTipSubTitle(subtitle);
+    // });
+    // connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
+    //     // Always try to save. Needed to move recordings out of temp dir.
+    //     ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
+    // });
+    // connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
+    //     if (m_startMode != StartMode::Gui || isGuiNull()) {
+    //         Q_EMIT allDone();
+    //         return;
+    //     }
+    //     SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
+    // });
+    // connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
+    //     auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
+    //     onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed, &ViewerWindow::showRecordingFailedMessage);
+    // });
+    // connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
+    //     SelectionEditor::instance()->reset();
+    //     initCaptureWindows(CaptureWindow::Video);
+    //     SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
+    //     SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+    // });
 
     // set up the export manager
     auto exportManager = ExportManager::instance();
@@ -446,18 +446,18 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     // set up CaptureMode model
     m_captureModeModel = std::make_unique<CaptureModeModel>(imagePlatform->supportedGrabModes(), this);
-    m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
-    m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
+    // m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
+    // m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
     auto captureModeModel = m_captureModeModel.get();
     connect(imagePlatform, &ImagePlatform::supportedGrabModesChanged, captureModeModel, [this](){
         m_captureModeModel->setGrabModes(m_imagePlatform->supportedGrabModes());
     });
-    connect(videoPlatform, &VideoPlatform::supportedRecordingModesChanged, m_recordingModeModel.get(), [this](){
-        m_recordingModeModel->setRecordingModes(m_videoPlatform->supportedRecordingModes());
-    });
-    connect(videoPlatform, &VideoPlatform::supportedFormatsChanged, m_videoFormatModel.get(), [this](){
-        m_videoFormatModel->setFormats(m_videoPlatform->supportedFormats());
-    });
+    // connect(videoPlatform, &VideoPlatform::supportedRecordingModesChanged, m_recordingModeModel.get(), [this](){
+    //     m_recordingModeModel->setRecordingModes(m_videoPlatform->supportedRecordingModes());
+    // });
+    // connect(videoPlatform, &VideoPlatform::supportedFormatsChanged, m_videoFormatModel.get(), [this](){
+    //     m_videoFormatModel->setFormats(m_videoPlatform->supportedFormats());
+    // });
 
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
         // It's dangerous to erase from within a for loop, so we use std::find_if
@@ -551,7 +551,7 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
-    if (m_videoPlatform->isRecording()) {
+    if (m_videoPlatform && m_videoPlatform->isRecording()) {
         // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
         // TODO: find a way to support screenshot shortcuts while recording?
         finishRecording();
@@ -838,13 +838,13 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
         // settings (and unless the user has set an extremely slow effect), 200
         // milliseconds is a good amount of wait time.
         timeout = qMax(timeout, 200);
-    } else if (qobject_cast<ImagePlatformXcb *>(m_imagePlatform.get())) {
+    } /*else if (qobject_cast<ImagePlatformXcb *>(m_imagePlatform.get())) {
         // X11 compositors (which may or may not be kwin) require small delay for
         // window to disappear.
         // Also, minimum 50ms delay is needed to prevent segfaults from xcb function
         // calls that don't get replies fast enough.
         timeout = qMax(timeout, 50);
-    }
+    }*/
 
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);

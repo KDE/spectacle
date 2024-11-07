@@ -38,8 +38,8 @@
 #include <KRecentDocument>
 #include <KSharedConfig>
 #include <KSystemClipboard>
-#include <Prison/ImageScanner>
-#include <Prison/ScanResult>
+// #include <Prison/ImageScanner>
+// #include <Prison/ScanResult>
 
 using namespace Qt::StringLiterals;
 
@@ -743,13 +743,13 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 void ExportManager::scanQRCode()
 {
     auto scan = [this] {
-        const auto result = Prison::ImageScanner::scan(ExportManager::instance()->image());
-
-        if (result.hasText()) {
-            Q_EMIT qrCodeScanned(result.text());
-        } else if (result.hasBinaryData()) {
-            Q_EMIT qrCodeScanned(result.binaryData());
-        }
+        // const auto result = Prison::ImageScanner::scan(ExportManager::instance()->image());
+        //
+        // if (result.hasText()) {
+        //     Q_EMIT qrCodeScanned(result.text());
+        // } else if (result.hasBinaryData()) {
+        //     Q_EMIT qrCodeScanned(result.binaryData());
+        // }
     };
     auto future = QtConcurrent::run(scan);
 }

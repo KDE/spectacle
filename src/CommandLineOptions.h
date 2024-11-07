@@ -8,9 +8,11 @@
 #include <QCommandLineOption>
 #include <QList>
 
+#include "spectaclecore_export.h"
+
 using namespace Qt::StringLiterals;
 
-struct CommandLineOptions {
+struct SPECTACLECORE_EXPORT CommandLineOptions {
     static CommandLineOptions *self();
     static QString toArgument(const QCommandLineOption &option) {
         return u"--" + option.names().constLast();

@@ -27,11 +27,14 @@
 #include <KMessageBox>
 #include <KWindowSystem>
 
+#include <iostream>
+
 using namespace Qt::StringLiterals;
 
 int main(int argc, char **argv)
 {
     // set up the application
+    std::cerr << "Starting at " << std::chrono::system_clock::now() << std::endl;
 
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     QIcon::setFallbackThemeName(u"breeze"_s);

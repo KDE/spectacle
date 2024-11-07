@@ -11,19 +11,19 @@
 #include "settings.h"
 #include <KLocalizedString>
 #include <KMemoryInfo>
-#include <QFuture>
-#include <QGuiApplication>
-#include <QWindow>
-#include <QScreen>
-#include <QDebug>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
 #include <QDBusPendingReply>
 #include <QDBusReply>
+#include <QDebug>
+#include <QFuture>
+#include <QGuiApplication>
+#include <QScreen>
 #include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QUrl>
+#include <QWindow>
 #include <QtConcurrentRun>
 
 using namespace Qt::StringLiterals;
@@ -49,7 +49,8 @@ static constexpr inline int frameBytes(const QSize &frameSize)
     return std::max(0, frameSize.width() * frameSize.height() * 4);
 }
 
-static inline int availableFrames(int frameBytes){
+static inline int availableFrames(int frameBytes)
+{
     KMemoryInfo info;
     if (info.isNull() || frameBytes <= 0) {
         // The default max frame buffer is 50.
@@ -66,10 +67,14 @@ static inline int availableFrames(int frameBytes){
 VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) const
 {
     switch (encoder) {
-    case Encoder::VP9: return WebM_VP9;
-    case Encoder::H264Main: return MP4_H264;
-    case Encoder::H264Baseline: return MP4_H264;
-    default: return NoFormat;
+    case Encoder::VP9:
+        return WebM_VP9;
+    case Encoder::H264Main:
+        return MP4_H264;
+    case Encoder::H264Baseline:
+        return MP4_H264;
+    default:
+        return NoFormat;
     }
 }
 
@@ -90,14 +95,14 @@ PipeWireBaseEncodedStream::Encoder VideoPlatformWayland::encoderForFormat(Format
     return Encoder::NoEncoder;
 }
 
-static void minimizeIfWindowsIntersect(const QRectF &rect) {
+static void minimizeIfWindowsIntersect(const QRectF &rect)
+{
     if (rect.isEmpty()) {
         return;
     }
     const auto &windows = qGuiApp->allWindows();
     for (auto window : windows) {
-        if (rect.intersects(window->frameGeometry())
-            && window->isVisible() && window->visibility() != QWindow::Minimized) {
+        if (rect.intersects(window->frameGeometry()) && window->isVisible() && window->visibility() != QWindow::Minimized) {
             if (window->visibility() == QWindow::FullScreen) {
                 window->setVisible(false);
             }
@@ -111,8 +116,8 @@ VideoPlatformWayland::VideoPlatformWayland(QObject *parent)
     , m_screencasting(new Screencasting(this))
 {
     m_recorderFuture = QtConcurrent::run([] {
-        return new PipeWireRecord();
-    }).then([this](PipeWireRecord *result) {
+                           return new PipeWireRecord();
+                       }).then([this](PipeWireRecord *result) {
         m_recorder.reset(result);
         m_recorder->setActive(false);
         Q_EMIT supportedRecordingModesChanged();
@@ -189,8 +194,10 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         // which may not be the same as QWindow::frameGeometry() on Wayland.
         // Hopefully this is good enough most of the time.
         const QRectF windowRect{
-            options[xKey].toDouble(), options[yKey].toDouble(),
-            options[widthKey].toDouble(), options[heightKey].toDouble(),
+            options[xKey].toDouble(),
+            options[yKey].toDouble(),
+            options[widthKey].toDouble(),
+            options[heightKey].toDouble(),
         };
         const bool isSpectacle = options[desktopFileKey].toString() == qGuiApp->desktopFileName();
         if (!windowRect.isEmpty() && !isSpectacle) {
@@ -227,7 +234,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
         break;
     }
-    default: break; // This shouldn't happen
+    default:
+        break; // This shouldn't happen
     }
     m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
 
@@ -251,7 +259,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         } else if (recordingMode == Window) {
             Q_EMIT recordingFailed(i18nc("@info", "The stream closed because the target window changed in a way that disrupted the recording."));
         } else if (recordingMode == Region) {
-            Q_EMIT recordingFailed(i18nc("@info", "The stream closed because a screen containing the target region changed in a way that disrupted the recording."));
+            Q_EMIT recordingFailed(
+                i18nc("@info", "The stream closed because a screen containing the target region changed in a way that disrupted the recording."));
         }
     });
 
@@ -336,10 +345,7 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
     }
 
     // We should probably come up with a better way of choosing outputs. This should be okay for now. #FLW
-    QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                          u"/KWin"_s,
-                                                          u"org.kde.KWin"_s,
-                                                          u"queryWindowInfo"_s);
+    QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s, u"/KWin"_s, u"org.kde.KWin"_s, u"queryWindowInfo"_s);
 
     QDBusPendingReply<QVariantMap> asyncReply = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncReply, this);
@@ -376,9 +382,7 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
             // However, using selected window geometry can sometimes select the wrong screen if the
             // window is between screens. We'll need to come up with a better solution someday.
             if (pos.isNull()) {
-                pos = {
-                    data[xKey].toInt() + data[widthKey].toInt() / 2,
-                    data[yKey].toInt() + data[heightKey].toInt() / 2};
+                pos = {data[xKey].toInt() + data[widthKey].toInt() / 2, data[yKey].toInt() + data[heightKey].toInt() / 2};
             }
             const auto &screens = qGuiApp->screens();
             QScreen *screen = nullptr;

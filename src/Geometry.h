@@ -8,6 +8,8 @@
 
 #include <memory>
 
+#include "spectaclecore_export.h"
+
 class QPointF;
 class QRectF;
 class QSizeF;
@@ -31,7 +33,7 @@ class QSizeF;
  * match the raw size, especially when fractional scale factors are used or the
  * resolution has an odd width/height.
  */
-class Geometry : public QObject
+class SPECTACLECORE_EXPORT Geometry : public QObject
 {
     Q_OBJECT
 public:

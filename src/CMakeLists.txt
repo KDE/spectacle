@@ -6,27 +6,17 @@ configure_file(Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h)
 
 # target
 
-kconfig_add_kcfg_files(SPECTACLE_SRCS GENERATE_MOC Gui/SettingsDialog/settings.kcfgc)
+add_library(SpectacleCore)
 
-ecm_qt_declare_logging_category(SPECTACLE_SRCS
-    HEADER spectacle_debug.h
-    IDENTIFIER SPECTACLE_LOG
-    CATEGORY_NAME spectacle
-    DESCRIPTION "spectacle (general)"
-    EXPORT SPECTACLE
-)
-
-add_executable(spectacle
-    ${SPECTACLE_SRCS}
-    Main.cpp
+target_sources(SpectacleCore PRIVATE
+    SpectacleCore.cpp
+    ExportManager.cpp
     CaptureModeModel.cpp
     CommandLineOptions.cpp
     RecordingModeModel.cpp
-    ExportManager.cpp
     Geometry.cpp
     PlasmaVersion.cpp
     ScreenShotEffect.cpp
-    SpectacleCore.cpp
     SpectacleDBusAdapter.cpp
     ShortcutActions.cpp
     VideoFormatModel.cpp
@@ -53,85 +43,157 @@ add_executable(spectacle
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
-    Platforms/PlatformLoader.cpp
-    Platforms/ImagePlatform.cpp
-    Platforms/PlatformNull.cpp
-    Platforms/ImagePlatformKWin.cpp
-    Platforms/VideoPlatform.cpp
-    Platforms/VideoPlatformWayland.cpp
-    Platforms/screencasting.cpp
 )
 
-if(XCB_FOUND)
-    target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
+kconfig_add_kcfg_files(SpectacleCore GENERATE_MOC Gui/SettingsDialog/settings.kcfgc)
 
-    target_link_libraries(spectacle PRIVATE
-        XCB::XFIXES
-        XCB::IMAGE
-        XCB::CURSOR
-        XCB::UTIL
-        XCB::RANDR
-    )
-    target_link_libraries(spectacle PRIVATE Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
-endif()
-
-if (Qt6_VERSION VERSION_GREATER_EQUAL "6.8.0")
-    set(private_code_option  "PRIVATE_CODE")
-endif()
-qt6_generate_wayland_protocol_client_sources(spectacle FILES
-    ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
-    ${private_code_option}
+ecm_qt_declare_logging_category(SpectacleCore
+    HEADER spectacle_debug.h
+    IDENTIFIER SPECTACLE_LOG
+    CATEGORY_NAME spectacle
+    DESCRIPTION "spectacle (general)"
+    EXPORT SPECTACLE
 )
 
+ecm_generate_export_header(SpectacleCore
+    BASE_NAME SpectacleCore
+    VERSION ${PROJECT_VERSION}
+    DEPRECATED_BASE_VERSION 0
+    EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
+)
+
+target_link_libraries(SpectacleCore PUBLIC
+    Qt6::DBus
+    Qt6::Qml
+    Qt6::Quick
+    Qt6::QuickControls2
+    Qt6::QuickTemplates2
+
+    Qt6::Widgets
+    Qt6::PrintSupport
+
+    KF6::CoreAddons
+    KF6::GuiAddons
+    KF6::DBusAddons
+    KF6::WidgetsAddons
+    KF6::I18n
+    KF6::WindowSystem
+    KF6::ConfigGui
+    KF6::GlobalAccel
+    KF6::KirigamiPlatform
+    KF6::StatusNotifierItem
+    KF6::Notifications
+
+    KF6::KIOWidgets
+    # KF6::PrisonScanner
+    KF6::XmlGui
+
+    LayerShellQt::Interface
+
+        # Qt::Concurrent
+    # Qt::DBus
+    # Qt::Qml
+    # Qt::Quick
+    # Qt::QuickControls2
+    # Qt::QuickTemplates2
+    # Qt::GuiPrivate
+    # Qt::WaylandClient
+    # Qt6::QWebpPlugin
+    # KF6::XmlGui
+    # KF6::Crash
+)
+
+add_subdirectory(Platforms)
 
 if(PURPOSE_FOUND)
-    target_link_libraries(spectacle PRIVATE KF6::PurposeWidgets)
+    target_link_libraries(SpectacleCore PRIVATE KF6::PurposeWidgets)
 endif()
+
+add_executable(spectacle
+    ${SPECTACLE_SRCS}
+    Main.cpp
+
+    # Platforms/PlatformLoader.cpp
+    # Platforms/ImagePlatform.cpp
+    # Platforms/PlatformNull.cpp
+    # Platforms/VideoPlatform.cpp
+    # Platforms/ImagePlatformKWin.cpp
+    # Platforms/VideoPlatformWayland.cpp
+    # Platforms/screencasting.cpp
+)
+
+# if(XCB_FOUND)
+#     target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
+#
+#     target_link_libraries(spectacle PRIVATE
+#         XCB::XFIXES
+#         XCB::IMAGE
+#         XCB::CURSOR
+#         XCB::UTIL
+#         XCB::RANDR
+#     )
+#     target_link_libraries(spectacle PRIVATE Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
+# endif()
+
+# if (Qt6_VERSION VERSION_GREATER_EQUAL "6.8.0")
+#     set(private_code_option  "PRIVATE_CODE")
+# endif()
+# qt6_generate_wayland_protocol_client_sources(spectacle FILES
+#     ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
+#     ${private_code_option}
+# )
+
+#[[
+# if(PURPOSE_FOUND)
+#     target_link_libraries(spectacle PRIVATE KF6::PurposeWidgets)
+# endif()
 
 ki18n_wrap_ui(spectacle
     Gui/SettingsDialog/GeneralOptions.ui
     Gui/SettingsDialog/ImageSaveOptions.ui
     Gui/SettingsDialog/VideoSaveOptions.ui
-)
+)]]
 
 # Needed to compile with OpenCV
 target_compile_options (spectacle PRIVATE -fexceptions)
 
-target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS})
+# target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS})
 
 target_link_libraries(spectacle PRIVATE
-    Qt::Concurrent
-    Qt::DBus
-    Qt::PrintSupport
-    Qt::Qml
-    Qt::Quick
-    Qt::QuickControls2
-    Qt::QuickTemplates2
-    Qt::GuiPrivate
-    Qt::WaylandClient
-    KF6::CoreAddons
-    KF6::DBusAddons
-    KF6::WidgetsAddons
-    KF6::Notifications
-    KF6::ConfigCore
-    KF6::I18n
-    KF6::KIOWidgets
-    KF6::WindowSystem
-    KF6::GlobalAccel
-    KF6::XmlGui
-    KF6::GuiAddons
-    KF6::KirigamiPlatform
-    KF6::StatusNotifierItem
-    KF6::PrisonScanner
+    SpectacleCore
+    # Qt::Concurrent
+    # Qt::DBus
+    # Qt::PrintSupport
+    # Qt::Qml
+    # Qt::Quick
+    # Qt::QuickControls2
+    # Qt::QuickTemplates2
+    # Qt::GuiPrivate
+    # Qt::WaylandClient
+    # Qt6::QWebpPlugin
+    # KF6::CoreAddons
+    # KF6::DBusAddons
+    # KF6::WidgetsAddons
+    # KF6::Notifications
+    # KF6::ConfigCore
+    # KF6::I18n
+    # KF6::KIOWidgets
+    # KF6::WindowSystem
+    # KF6::GlobalAccel
+    # KF6::XmlGui
+    # KF6::GuiAddons
+    # KF6::KirigamiPlatform
+    # KF6::StatusNotifierItem
+    # KF6::PrisonScanner
     KF6::Crash
-    K::KPipeWireRecord
-    Wayland::Client
-    LayerShellQt::Interface
-    ${OpenCV_LIBRARIES}
+    # K::KPipeWireRecord
+    # Wayland::Client
+    # LayerShellQt::Interface
+    # ${OpenCV_LIBRARIES}
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
-  QT_QML_SINGLETON_TYPE TRUE
+    QT_QML_SINGLETON_TYPE TRUE
 )
 
 qt_add_qml_module(spectacle
@@ -184,4 +246,5 @@ qt_add_qml_module(spectacle
     Gui/VideoCaptureOverlay.qml
 )
 
+install(TARGETS SpectacleCore ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

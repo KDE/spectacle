@@ -14,9 +14,11 @@
 #include <QUrl>
 #include <variant>
 
+#include "spectaclecore_export.h"
+
 class QScreen;
 
-class VideoPlatform : public QObject
+class SPECTACLECORE_EXPORT VideoPlatform : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes NOTIFY supportedRecordingModesChanged)
@@ -128,3 +130,6 @@ private:
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::RecordingModes)
 Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::Formats)
+
+Q_DECLARE_INTERFACE(VideoPlatform, "org.kde.spectacle.VideoPlatform")
+Q_DECLARE_METATYPE(VideoPlatform)

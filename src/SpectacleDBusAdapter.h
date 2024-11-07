@@ -8,7 +8,9 @@
 #include "SpectacleCore.h"
 #include <QDBusAbstractAdaptor>
 
-class SpectacleDBusAdapter : public QDBusAbstractAdaptor
+#include "spectaclecore_export.h"
+
+class SPECTACLECORE_EXPORT SpectacleDBusAdapter : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.Spectacle")

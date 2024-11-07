@@ -10,7 +10,9 @@
 #include <QImage>
 #include <QObject>
 
-class ImagePlatform : public QObject
+#include "spectaclecore_export.h"
+
+class SPECTACLECORE_EXPORT ImagePlatform : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(GrabModes supportedGrabModes READ supportedGrabModes NOTIFY supportedGrabModesChanged)
@@ -57,3 +59,6 @@ Q_SIGNALS:
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatform::GrabModes)
 Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatform::ShutterModes)
+
+Q_DECLARE_INTERFACE(ImagePlatform, "org.kde.spectacle.ImagePlatform")
+Q_DECLARE_METATYPE(ImagePlatform)

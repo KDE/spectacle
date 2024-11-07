@@ -20,6 +20,8 @@ class Screencasting;
 class VideoPlatformWayland final : public VideoPlatform
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.spectacle.VideoPlatform" FILE "metadata.json")
+    Q_INTERFACES(VideoPlatform)
 
 public:
     VideoPlatformWayland(QObject *parent = nullptr);
