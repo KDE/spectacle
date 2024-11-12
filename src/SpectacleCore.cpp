@@ -443,11 +443,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                                 Qt::META | Qt::Key_R,
                                             });
 
-    m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
     m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
-    connect(videoPlatform, &VideoPlatform::supportedRecordingModesChanged, m_recordingModeModel.get(), [this](){
-        m_recordingModeModel->setRecordingModes(m_videoPlatform->supportedRecordingModes());
-    });
     connect(videoPlatform, &VideoPlatform::supportedFormatsChanged, m_videoFormatModel.get(), [this](){
         m_videoFormatModel->setFormats(m_videoPlatform->supportedFormats());
     });
@@ -486,11 +482,6 @@ ImagePlatform *SpectacleCore::imagePlatform() const
 VideoPlatform *SpectacleCore::videoPlatform() const
 {
     return m_videoPlatform.get();
-}
-
-RecordingModeModel *SpectacleCore::recordingModeModel() const
-{
-    return m_recordingModeModel.get();
 }
 
 VideoFormatModel *SpectacleCore::videoFormatModel() const
@@ -929,8 +920,7 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
         title = CaptureModeModel::captureModeLabel(toCaptureMode(m_lastGrabMode));
     } else {
         notification = new KNotification(u"recordingSaved"_s, KNotification::CloseOnTimeout, this);
-        int index = m_recordingModeModel->indexOfRecordingMode(m_lastRecordingMode);
-        title = m_recordingModeModel->data(m_recordingModeModel->index(index), Qt::DisplayRole).toString();
+        title = RecordingModeModel::recordingModeLabel(m_lastRecordingMode);
     }
     notification->setTitle(title);
 

@@ -3,6 +3,7 @@
  */
 
 #include "RecordingModeModel.h"
+#include "SpectacleCore.h"
 
 #include <KGlobalAccel>
 #include <KLocalizedString>
@@ -17,13 +18,17 @@
 
 using namespace Qt::StringLiterals;
 
-RecordingModeModel::RecordingModeModel(VideoPlatform::RecordingModes modes, QObject *parent)
+RecordingModeModel::RecordingModeModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_modes(modes)
 {
     m_roleNames[RecordingModeRole] = "recordingMode"_ba;
     m_roleNames[Qt::DisplayRole] = "display"_ba;
-    setRecordingModes(modes);
+
+    auto platform = SpectacleCore::instance()->videoPlatform();
+    connect(platform, &VideoPlatform::supportedRecordingModesChanged, this, [this, platform]() {
+        setRecordingModes(platform->supportedRecordingModes());
+    });
+    setRecordingModes(platform->supportedRecordingModes());
 }
 
 QHash<int, QByteArray> RecordingModeModel::roleNames() const
@@ -68,15 +73,30 @@ void RecordingModeModel::setRecordingModes(VideoPlatform::RecordingModes modes)
 {
     m_data.clear();
     if (modes & VideoPlatform::Region) {
-        m_data.append({VideoPlatform::Region, i18nc("@item recording mode", "Rectangular Region")});
+        m_data.append({VideoPlatform::Region, recordingModeLabel(VideoPlatform::Region)});
     }
-    if (modes & VideoPlatform::Region) {
-        m_data.append({VideoPlatform::Screen, i18nc("@item recording mode", "Full Screen")});
+    if (modes & VideoPlatform::Screen) {
+        m_data.append({VideoPlatform::Screen, recordingModeLabel(VideoPlatform::Screen)});
     }
     if (modes & VideoPlatform::Window) {
-        m_data.append({VideoPlatform::Window, i18nc("@item recording mode", "Window")});
+        m_data.append({VideoPlatform::Window, recordingModeLabel(VideoPlatform::Window)});
     }
     Q_EMIT countChanged();
+}
+
+QString RecordingModeModel::recordingModeLabel(VideoPlatform::RecordingMode mode)
+{
+    switch (mode) {
+    case VideoPlatform::RecordingMode::Region:
+        return i18nc("@item recording mode", "Rectangular Region");
+    case VideoPlatform::RecordingMode::Window:
+        return i18nc("@item recording mode", "Window");
+    case VideoPlatform::RecordingMode::Screen:
+        return i18nc("@item recording mode", "Full Screen");
+    case VideoPlatform::RecordingMode::NoRecordingModes:
+        break;
+    }
+    return QString{};
 }
 
 #include "moc_RecordingModeModel.cpp"

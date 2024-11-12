@@ -11,9 +11,10 @@
 class RecordingModeModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
-    RecordingModeModel(VideoPlatform::RecordingModes modes, QObject *parent = nullptr);
+    explicit RecordingModeModel(QObject *parent = nullptr);
 
     enum {
         RecordingModeRole = Qt::UserRole + 1,
@@ -26,6 +27,8 @@ public:
     int indexOfRecordingMode(VideoPlatform::RecordingMode mode) const;
 
     void setRecordingModes(VideoPlatform::RecordingModes modes);
+
+    static QString recordingModeLabel(VideoPlatform::RecordingMode mode);
 
 Q_SIGNALS:
     void countChanged();

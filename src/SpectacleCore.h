@@ -33,7 +33,6 @@ class SpectacleCore : public QObject
 
     Q_PROPERTY(ImagePlatform *imagePlatform READ imagePlatform CONSTANT FINAL)
     Q_PROPERTY(VideoPlatform *videoPlatform READ videoPlatform CONSTANT FINAL)
-    Q_PROPERTY(RecordingModeModel *recordingModeModel READ recordingModeModel CONSTANT FINAL)
     Q_PROPERTY(QUrl screenCaptureUrl READ screenCaptureUrl NOTIFY screenCaptureUrlChanged FINAL)
     Q_PROPERTY(int captureTimeRemaining READ captureTimeRemaining NOTIFY captureTimeRemainingChanged FINAL)
     Q_PROPERTY(qreal captureProgress READ captureProgress NOTIFY captureProgressChanged FINAL)
@@ -56,7 +55,6 @@ public:
     ImagePlatform *imagePlatform() const;
     VideoPlatform *videoPlatform() const;
 
-    RecordingModeModel *recordingModeModel() const;
     VideoFormatModel *videoFormatModel() const;
 
     AnnotationDocument *annotationDocument() const;
@@ -154,7 +152,6 @@ private:
     QUrl m_screenCaptureUrl;
     std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;
-    std::unique_ptr<RecordingModeModel> m_recordingModeModel;
     std::unique_ptr<VideoFormatModel> m_videoFormatModel;
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
