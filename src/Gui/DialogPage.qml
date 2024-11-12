@@ -162,7 +162,7 @@ EmptyPage {
             id: tabBar
 
             width: Math.max(parent.width, implicitWidth)
-            visible: VideoPlatform.supportedRecordingModes
+            visible: SpectacleCore.videoPlatform.supportedRecordingModes
             currentIndex: 0
 
             actions: [

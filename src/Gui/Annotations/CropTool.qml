@@ -36,10 +36,10 @@ Loader {
             item.height = rect.height
         }
         function itemRectNormalized(item) {
-            return G.rectNormalized(item.x, item.y, item.width, item.height)
+            return Geometry.rectNormalized(item.x, item.y, item.width, item.height)
         }
         function itemRectClipped(item, clipRect) {
-            return G.rectClipped(itemRect(item), clipRect)
+            return Geometry.rectClipped(itemRect(item), clipRect)
         }
         function maxRect() {
             return Qt.rect(0, 0, width, height)

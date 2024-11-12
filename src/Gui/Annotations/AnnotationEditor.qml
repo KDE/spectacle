@@ -11,7 +11,7 @@ import org.kde.spectacle.private
 AnnotationViewport {
     id: root
 
-    document: AnnotationDocument
+    document: SpectacleCore.annotationDocument
     viewportRect: Qt.rect(0, 0, width, height)
 
     onPressedChanged: if (pressed) {

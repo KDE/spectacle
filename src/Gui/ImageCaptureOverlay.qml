@@ -32,12 +32,14 @@ MouseArea {
     LayoutMirroring.childrenInherit: true
     anchors.fill: parent
 
+    readonly property Selection selection: SelectionEditor.selection
+
     AnnotationEditor {
         id: annotations
         anchors.fill: parent
         visible: true
         enabled: contextWindow.annotating
-        viewportRect: G.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
+        viewportRect: Geometry.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
     }
 
     component Overlay: Rectangle {
@@ -51,10 +53,10 @@ MouseArea {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: selectionRectangle.visible ? selectionRectangle.top : parent.bottom
-        opacity: if (Selection.empty
+        opacity: if (root.selection.empty
             && (!annotations.document.tool.isNoTool || annotations.document.undoStackDepth > 0)) {
             return 0
-        } else if (Selection.empty) {
+        } else if (root.selection.empty) {
             return 0.25
         } else {
             return 0.5
@@ -105,12 +107,11 @@ MouseArea {
             return "white"
         }
         border.width: contextWindow.dprRound(1)
-        visible: !Selection.empty && G.rectIntersects(Qt.rect(x,y,width,height),
-                                                      Qt.rect(0,0,parent.width, parent.height))
-        x: Selection.x - border.width - annotations.viewportRect.x
-        y: Selection.y - border.width - annotations.viewportRect.y
-        width: Selection.width + border.width * 2
-        height: Selection.height + border.width * 2
+        visible: !root.selection.empty && Geometry.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
+        x: root.selection.x - border.width - annotations.viewportRect.x
+        y: root.selection.y - border.width - annotations.viewportRect.y
+        width: root.selection.width + border.width * 2
+        height: root.selection.height + border.width * 2
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
@@ -123,7 +124,7 @@ MouseArea {
         component SelectionHandle: Handle {
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
-                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
+                && Geometry.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             fillColor: selectionRectangle.border.color
         }
 
@@ -183,7 +184,7 @@ MouseArea {
             && annotations.document.tool.isNoTool
             && !mtbDragHandler.active
             && !atbDragHandler.active
-            && !G.rectIntersects(SelectionEditor.handlesRect, Qt.rect(x, y, width, height))
+            && !Geometry.rectIntersects(SelectionEditor.handlesRect, Qt.rect(x, y, width, height))
         Behavior on opacity {
             NumberAnimation {
                 duration: Kirigami.Units.longDuration
@@ -210,33 +211,33 @@ MouseArea {
                     if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Left
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft) {
-                        x = Selection.left
+                        x = root.selection.left
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.TopRight
                         || SelectionEditor.magnifierLocation === SelectionEditor.Right
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
-                        x = Selection.right
+                        x = root.selection.right
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.Top
                         || SelectionEditor.magnifierLocation === SelectionEditor.Bottom) {
                         if (SelectionEditor.dragLocation !== SelectionEditor.None) {
                             x = SelectionEditor.mousePosition.x
                         } else {
-                            x = Selection.horizontalCenter
+                            x = root.selection.horizontalCenter
                         }
                     }
                     if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Top
                         || SelectionEditor.magnifierLocation === SelectionEditor.TopRight) {
-                        y = Selection.top
+                        y = root.selection.top
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Bottom
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
-                        y = Selection.bottom
+                        y = root.selection.bottom
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.Left
                         || SelectionEditor.magnifierLocation === SelectionEditor.Right) {
                         if (SelectionEditor.dragLocation !== SelectionEditor.None) {
                             y = SelectionEditor.mousePosition.y
                         } else {
-                            y = Selection.verticalCenter
+                            y = root.selection.verticalCenter
                         }
                     }
                     return Qt.point(x, y)
@@ -273,14 +274,14 @@ MouseArea {
                         y = targetPoint.y - height / 2
                     }
                 }
-                return G.rectBounded(dprRound(x), dprRound(y), width, height, SelectionEditor.screensRect)
+                return Geometry.rectBounded(dprRound(x), dprRound(y), width, height, SelectionEditor.screensRect)
             }
             x: rect.x
             y: rect.y
             z: 100
             visible: SelectionEditor.showMagnifier
                 && SelectionEditor.magnifierLocation !== SelectionEditor.None
-                && G.rectIntersects(rect, annotations.viewportRect)
+                && Geometry.rectIntersects(rect, annotations.viewportRect)
             active: Settings.showMagnifier !== Settings.ShowMagnifierNever
             sourceComponent: Magnifier {
                 viewport: annotations
@@ -292,7 +293,7 @@ MouseArea {
         SizeLabel {
             id: ssToolTip
             readonly property int valignment: {
-                if (Selection.empty) {
+                if (root.selection.empty) {
                     return Qt.AlignVCenter
                 }
                 const margin = Kirigami.Units.mediumSpacing * 2
@@ -307,9 +308,9 @@ MouseArea {
                     return Qt.AlignBaseline
                 }
             }
-            readonly property bool normallyVisible: !Selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
+            readonly property bool normallyVisible: !root.selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
             Binding on x {
-                value: contextWindow.dprRound(Selection.horizontalCenter - ssToolTip.width / 2)
+                value: contextWindow.dprRound(root.selection.horizontalCenter - ssToolTip.width / 2)
                 when: ssToolTip.normallyVisible
                 restoreMode: Binding.RestoreNone
             }
@@ -317,7 +318,7 @@ MouseArea {
                 value: {
                     let v = 0
                     if (ssToolTip.valignment & Qt.AlignBaseline) {
-                        v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                        v = Math.min(root.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
                     } else if (ssToolTip.valignment & Qt.AlignTop) {
                         v = SelectionEditor.handlesRect.top
@@ -334,14 +335,14 @@ MouseArea {
             }
             visible: opacity > 0
             opacity: ssToolTip.normallyVisible
-                && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
+                && Geometry.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
                     easing.type: Easing.OutCubic
                 }
             }
-            size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio)
+            size: Geometry.rawSize(root.selection.size, SelectionEditor.devicePixelRatio)
             padding: Kirigami.Units.mediumSpacing * 2
             topPadding: padding - QmlUtils.fontMetrics.descent
             bottomPadding: topPadding
@@ -359,9 +360,9 @@ MouseArea {
         }
 
         Connections {
-            target: Selection
+            target: root.selection
             function onEmptyChanged() {
-                if (!Selection.empty
+                if (!root.selection.empty
                     && (mainToolBar.rememberPosition || atbLoader.rememberPosition)) {
                     mainToolBar.rememberPosition = false
                     atbLoader.rememberPosition = false
@@ -374,7 +375,7 @@ MouseArea {
             id: mainToolBar
             property bool rememberPosition: false
             readonly property int valignment: {
-                if (Selection.empty) {
+                if (root.selection.empty) {
                     return 0
                 }
                 if (3 * height + topPadding + Kirigami.Units.mediumSpacing
@@ -391,18 +392,17 @@ MouseArea {
                 }
             }
             readonly property bool normallyVisible: {
-                let emptyHovered = (root.containsMouse || annotations.hovered) && Selection.empty
+                let emptyHovered = (root.containsMouse || annotations.hovered) && root.selection.empty
                 let menuVisible = ExportMenu.visible
                 menuVisible |= OptionsMenu.visible
                 menuVisible |= HelpMenu.visible
                 let pressed = SelectionEditor.dragLocation || annotations.anyPressed
-                return (emptyHovered || !Selection.empty || menuVisible) && !pressed
+                return (emptyHovered || !root.selection.empty || menuVisible) && !pressed
             }
             Binding on x {
                 value: {
-                    const v = Selection.empty ?
-                        (root.width - mainToolBar.width) / 2 + annotations.viewportRect.x
-                        : Selection.horizontalCenter - mainToolBar.width / 2
+                    const v = root.selection.empty ? (root.width - mainToolBar.width) / 2 + annotations.viewportRect.x
+                                                   : root.selection.horizontalCenter - mainToolBar.width / 2
                     return Math.max(mainToolBar.leftPadding, // min value
                            Math.min(contextWindow.dprRound(v),
                                     SelectionEditor.screensRect.width - mainToolBar.width - mainToolBar.rightPadding)) // max value
@@ -420,7 +420,7 @@ MouseArea {
                     } else if (mainToolBar.valignment & Qt.AlignBottom) {
                         v = SelectionEditor.handlesRect.bottom + mainToolBar.topPadding
                     } else if (mainToolBar.valignment & Qt.AlignBaseline) {
-                        v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                        v = Math.min(root.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - mainToolBar.height - mainToolBar.bottomPadding
                     } else {
                         v = (mainToolBar.height / 2) - mainToolBar.parent.y
@@ -431,7 +431,7 @@ MouseArea {
                 restoreMode: Binding.RestoreNone
             }
             visible: opacity > 0
-            opacity: normallyVisible && G.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
+            opacity: normallyVisible && Geometry.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
@@ -445,12 +445,12 @@ MouseArea {
                 focusPolicy: Qt.NoFocus
                 displayMode: QQC.AbstractButton.TextBesideIcon
                 showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
-                imageSize: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio)
+                imageSize: Geometry.rawSize(root.selection.size, SelectionEditor.devicePixelRatio)
             }
 
             DragHandler { // parent is contentItem and parent is a read-only property
                 id: mtbDragHandler
-                enabled: Selection.empty
+                enabled: root.selection.empty
                 target: mainToolBar
                 acceptedButtons: Qt.LeftButton
                 margin: mainToolBar.padding
@@ -500,7 +500,7 @@ MouseArea {
 
             DragHandler { // parented to contentItem
                 id: atbDragHandler
-                enabled: Selection.empty
+                enabled: root.selection.empty
                 acceptedButtons: Qt.LeftButton
                 xAxis.minimum: annotations.viewportRect.x
                 xAxis.maximum: annotations.viewportRect.x + root.width - atbLoader.width
@@ -568,9 +568,9 @@ MouseArea {
                     y: atbLoader.valignment & Qt.AlignTop ?
                         -optionsToolBar.height + borderBg.height
                         : optionsToolBar.height - borderBg.height
-                    state: if (AnnotationDocument.tool.options !== AnnotationTool.NoOptions
-                        || (AnnotationDocument.tool.type === AnnotationTool.SelectTool
-                            && AnnotationDocument.selectedItem.options !== AnnotationTool.NoOptions)
+                    state: if (SpectacleCore.annotationDocument.tool.options !== AnnotationTool.NoOptions
+                              || (SpectacleCore.annotationDocument.tool.type === AnnotationTool.SelectTool
+                                 && SpectacleCore.annotationDocument.selectedItem.options !== AnnotationTool.NoOptions)
                     ) {
                         return "active"
                     } else {

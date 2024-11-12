@@ -24,7 +24,7 @@ Grid {
 
     QQC.ToolButton {
         id: undoButton
-        enabled: AnnotationDocument.undoStackDepth > 0
+        enabled: SpectacleCore.annotationDocument.undoStackDepth > 0
         height: root.buttonHeight
         focusPolicy: root.focusPolicy
         display: QQC.ToolButton.IconOnly
@@ -34,11 +34,11 @@ Grid {
         QQC.ToolTip.text: text
         QQC.ToolTip.visible: hovered || pressed
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        onClicked: AnnotationDocument.undo()
+        onClicked: SpectacleCore.annotationDocument.undo()
     }
 
     QQC.ToolButton {
-        enabled: AnnotationDocument.redoStackDepth > 0
+        enabled: SpectacleCore.annotationDocument.redoStackDepth > 0
         height: root.buttonHeight
         focusPolicy: root.focusPolicy
         display: QQC.ToolButton.IconOnly
@@ -48,7 +48,7 @@ Grid {
         QQC.ToolTip.text: text
         QQC.ToolTip.visible: hovered || pressed
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        onClicked: AnnotationDocument.redo()
+        onClicked: SpectacleCore.annotationDocument.redo()
     }
 
     QQC.ToolSeparator {

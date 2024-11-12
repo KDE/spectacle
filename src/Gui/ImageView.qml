@@ -153,7 +153,7 @@ EmptyPage {
                 Kirigami.NavigationTabBar {
                     id: tabBar
                     Layout.fillWidth: true
-                    visible: VideoPlatform.supportedRecordingModes
+                    visible: SpectacleCore.videoPlatform.supportedRecordingModes
                     currentIndex: 0
                     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
@@ -211,9 +211,9 @@ EmptyPage {
                     Layout.fillWidth: true
                     active: opacity > 0
                     visible: true
-                    state: if (AnnotationDocument.tool.options !== AnnotationTool.NoOptions
-                        || (AnnotationDocument.tool.type === AnnotationTool.SelectTool
-                            && AnnotationDocument.selectedItem.options !== AnnotationTool.NoOptions)
+                    state: if (SpectacleCore.annotationDocument.tool.options !== AnnotationTool.NoOptions
+                              || (SpectacleCore.annotationDocument.tool.type === AnnotationTool.SelectTool
+                                 && SpectacleCore.annotationDocument.selectedItem.options !== AnnotationTool.NoOptions)
                     ) {
                         return "active"
                     } else {

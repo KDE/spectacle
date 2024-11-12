@@ -16,6 +16,7 @@ ButtonGrid {
     property alias checkedButton: toolGroup.checkedButton
     readonly property alias usingCropTool: cropToolButton.checked
 
+    readonly property AnnotationTool tool: SpectacleCore.annotationDocument.tool
     Loader {
         visible: active
         active: root.showUndoRedo
@@ -33,7 +34,7 @@ ButtonGrid {
     QQC.ButtonGroup {
         id: toolGroup
         exclusive: true
-        onClicked: Settings.annotationToolType = AnnotationDocument.tool.type
+        onClicked: Settings.annotationToolType = root.tool.type
     }
 
     QQC.ToolTip {
@@ -94,10 +95,10 @@ ButtonGrid {
             QQC.ButtonGroup.group: toolGroup
             text: i18n("None")
             icon.name: "transform-browse"
-            onClicked: AnnotationDocument.tool.type = AnnotationTool.NoTool
+            onClicked: root.tool.type = AnnotationTool.NoTool
             // Setting checked in onCompleted so clicking the crop tool doesn't check this instead.
             Component.onCompleted: {
-                checked = AnnotationDocument.tool.type === AnnotationTool.NoTool
+                checked = root.tool.type === AnnotationTool.NoTool
             }
         }
     }
@@ -106,10 +107,10 @@ ButtonGrid {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Crop")
         icon.name: "transform-crop"
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.NoTool
+        onClicked: root.tool.type = AnnotationTool.NoTool
         // Setting checked in onCompleted so that 2 clicks aren't needed to check this.
         Component.onCompleted: {
-            checked = AnnotationDocument.tool.type === AnnotationTool.NoTool && !root.showNoneButton
+            checked = root.tool.type === AnnotationTool.NoTool && !root.showNoneButton
         }
     }
     ToolButton {
@@ -117,81 +118,81 @@ ButtonGrid {
         text: i18n("Select")
         icon.name: "edit-select"
         enabled: AnnotationDocument.undoStackDepth > 0
-        checked: AnnotationDocument.tool.type === AnnotationTool.SelectTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.SelectTool
+        checked: root.tool.type === AnnotationTool.SelectTool
+        onClicked: root.tool.type = AnnotationTool.SelectTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Freehand")
         icon.name: "draw-freehand"
-        checked: AnnotationDocument.tool.type === AnnotationTool.FreehandTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.FreehandTool
+        checked: root.tool.type === AnnotationTool.FreehandTool
+        onClicked: root.tool.type = AnnotationTool.FreehandTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Highlighter")
         icon.name: "draw-highlight"
-        checked: AnnotationDocument.tool.type === AnnotationTool.HighlighterTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.HighlighterTool
+        checked: root.tool.type === AnnotationTool.HighlighterTool
+        onClicked: root.tool.type = AnnotationTool.HighlighterTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Line")
         icon.name: "draw-line"
-        checked: AnnotationDocument.tool.type === AnnotationTool.LineTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.LineTool
+        checked: root.tool.type === AnnotationTool.LineTool
+        onClicked: root.tool.type = AnnotationTool.LineTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Arrow")
         icon.name: "draw-arrow"
-        checked: AnnotationDocument.tool.type === AnnotationTool.ArrowTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.ArrowTool
+        checked: root.tool.type === AnnotationTool.ArrowTool
+        onClicked: root.tool.type = AnnotationTool.ArrowTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Rectangle")
         icon.name: "draw-rectangle"
-        checked: AnnotationDocument.tool.type === AnnotationTool.RectangleTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.RectangleTool
+        checked: root.tool.type === AnnotationTool.RectangleTool
+        onClicked: root.tool.type = AnnotationTool.RectangleTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Ellipse")
         icon.name: "draw-ellipse"
-        checked: AnnotationDocument.tool.type === AnnotationTool.EllipseTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.EllipseTool
+        checked: root.tool.type === AnnotationTool.EllipseTool
+        onClicked: root.tool.type = AnnotationTool.EllipseTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Pixelate")
         icon.name: "pixelate"
-        checked: AnnotationDocument.tool.type === AnnotationTool.PixelateTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.PixelateTool
+        checked: root.tool.type === AnnotationTool.PixelateTool
+        onClicked: root.tool.type = AnnotationTool.PixelateTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Blur")
         icon.name: "blur"
-        checked: AnnotationDocument.tool.type === AnnotationTool.BlurTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.BlurTool
+        checked: root.tool.type === AnnotationTool.BlurTool
+        onClicked: root.tool.type = AnnotationTool.BlurTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Text")
         icon.name: "draw-text"
-        checked: AnnotationDocument.tool.type === AnnotationTool.TextTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.TextTool
+        checked: root.tool.type === AnnotationTool.TextTool
+        onClicked: root.tool.type = AnnotationTool.TextTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Number")
         icon.name: "draw-number"
-        checked: AnnotationDocument.tool.type === AnnotationTool.NumberTool
-        onClicked: AnnotationDocument.tool.type = AnnotationTool.NumberTool
+        checked: root.tool.type === AnnotationTool.NumberTool
+        onClicked: root.tool.type = AnnotationTool.NumberTool
     }
 
     Component.onCompleted: if (rememberToolType) {
-        AnnotationDocument.tool.type = Settings.annotationToolType
+        root.tool.type = Settings.annotationToolType
     }
 }

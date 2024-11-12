@@ -11,8 +11,13 @@ import "Annotations"
 
 Row {
     id: root
-    readonly property bool useSelectionOptions: AnnotationDocument.tool.type === AnnotationTool.SelectTool || (AnnotationDocument.tool.type === AnnotationTool.TextTool && AnnotationDocument.selectedItem.options & AnnotationTool.TextOption)
-    readonly property int options: useSelectionOptions ? AnnotationDocument.selectedItem.options : AnnotationDocument.tool.options
+
+    readonly property AnnotationDocument document: SpectacleCore.annotationDocument
+    readonly property AnnotationTool tool: document.tool
+    readonly property SelectedItemWrapper selectedItem: document.selectedItem
+
+    readonly property bool useSelectionOptions: tool.type === AnnotationTool.SelectTool || (tool.type === AnnotationTool.TextTool && selectedItem.options & AnnotationTool.TextOption)
+    readonly property int options: useSelectionOptions ? selectedItem.options : tool.options
     property int displayMode: QQC.AbstractButton.TextBesideIcon
     property int focusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
@@ -23,11 +28,11 @@ Row {
     Timer {
         id: commitChangesTimer
         interval: 250
-        onTriggered: AnnotationDocument.selectedItem.commitChanges()
+        onTriggered: root.selectedItem.commitChanges()
     }
 
     Connections {
-        target: AnnotationDocument
+        target: root.document
         function onSelectedItemWrapperChanged() {
             commitChangesTimer.stop()
         }
@@ -56,30 +61,27 @@ Row {
                 text: i18n("Stroke:")
                 checked: colorRect.color.a > 0
                 onToggled: if (root.useSelectionOptions) {
-                    AnnotationDocument.selectedItem.strokeColor.a = checked
+                    root.selectedItem.strokeColor.a = checked
                 } else {
-                    AnnotationDocument.tool.strokeColor.a = checked
+                    root.tool.strokeColor.a = checked
                 }
             }
 
             QQC.SpinBox {
                 id: spinBox
                 function setStrokeWidth() {
-                    if (root.useSelectionOptions
-                        && AnnotationDocument.selectedItem.strokeWidth !== spinBox.value) {
-                        AnnotationDocument.selectedItem.strokeWidth = spinBox.value
+                    if (root.useSelectionOptions && root.selectedItem.strokeWidth !== spinBox.value) {
+                        root.selectedItem.strokeWidth = spinBox.value
                         commitChangesTimer.restart()
                     } else {
-                        AnnotationDocument.tool.strokeWidth = spinBox.value
+                        root.tool.strokeWidth = spinBox.value
                     }
                 }
                 anchors.verticalCenter: parent.verticalCenter
                 from: fillLoader.active ? 0 : 1
                 to: 99
                 stepSize: 1
-                value: root.useSelectionOptions ?
-                    AnnotationDocument.selectedItem.strokeWidth
-                    : AnnotationDocument.tool.strokeWidth
+                value: root.useSelectionOptions ? root.selectedItem.strokeWidth : root.tool.strokeWidth
                 textFromValue: (value, locale) => {
                     // we don't use the locale here because the px suffix
                     // needs to be treated as a translatable string, which
@@ -130,9 +132,7 @@ Row {
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
                     radius: height / 2
-                    color: root.useSelectionOptions ?
-                        AnnotationDocument.selectedItem.strokeColor
-                        : AnnotationDocument.tool.strokeColor
+                    color: root.useSelectionOptions ? root.selectedItem.strokeColor : root.tool.strokeColor
                     border.color: Qt.rgba(parent.palette.windowText.r,
                                           parent.palette.windowText.g,
                                           parent.palette.windowText.b, 0.5)
@@ -164,9 +164,9 @@ Row {
                 text: i18n("Fill:")
                 checked: colorRect.color.a > 0
                 onToggled: if (root.useSelectionOptions) {
-                    AnnotationDocument.selectedItem.fillColor.a = checked
+                    root.selectedItem.fillColor.a = checked
                 } else {
-                    AnnotationDocument.tool.fillColor.a = checked
+                    root.tool.fillColor.a = checked
                 }
             }
 
@@ -180,9 +180,7 @@ Row {
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
                     radius: height / 2
-                    color: root.useSelectionOptions ?
-                        AnnotationDocument.selectedItem.fillColor
-                        : AnnotationDocument.tool.fillColor
+                    color: root.useSelectionOptions ? root.selectedItem.fillColor : root.tool.fillColor
                     border.color: Qt.rgba(parent.palette.windowText.r,
                                           parent.palette.windowText.g,
                                           parent.palette.windowText.b, 0.5)
@@ -219,16 +217,14 @@ Row {
 
             QQC.Slider {
                 id: slider
-                readonly property real strength: root.useSelectionOptions ?
-                    AnnotationDocument.selectedItem.strength : AnnotationDocument.tool.strength
+                readonly property real strength: root.useSelectionOptions ? root.selectedItem.strength : root.tool.strength
                 anchors.verticalCenter: parent.verticalCenter
                 function setStrength() {
-                    if (root.useSelectionOptions
-                        && AnnotationDocument.selectedItem.strength !== slider.value) {
-                        AnnotationDocument.selectedItem.strength = slider.value
+                    if (root.useSelectionOptions && root.selectedItem.strength !== slider.value) {
+                        root.selectedItem.strength = slider.value
                         commitChangesTimer.restart()
                     } else {
-                        AnnotationDocument.tool.strength = slider.value
+                        root.tool.strength = slider.value
                     }
                 }
                 height: QmlUtils.iconTextButtonHeight
@@ -270,9 +266,7 @@ Row {
                 implicitWidth: contextWindow.dprRound(implicitContentWidth)
                 display: QQC.ToolButton.TextOnly
                 contentItem: QQC.Label {
-                    readonly property font currentFont: root.useSelectionOptions ?
-                        AnnotationDocument.selectedItem.font
-                        : AnnotationDocument.tool.font
+                    readonly property font currentFont: root.useSelectionOptions ? root.selectedItem.font : root.tool.font
                     leftPadding: Kirigami.Units.mediumSpacing
                     rightPadding: leftPadding
                     font.family: currentFont.family
@@ -298,9 +292,7 @@ Row {
                     width: Kirigami.Units.gridUnit
                     height: Kirigami.Units.gridUnit
                     radius: height / 2
-                    color: root.useSelectionOptions ?
-                        AnnotationDocument.selectedItem.fontColor
-                        : AnnotationDocument.tool.fontColor
+                    color: root.useSelectionOptions ? root.selectedItem.fontColor : root.tool.fontColor
                     border.color: Qt.rgba(parent.palette.windowText.r,
                                           parent.palette.windowText.g,
                                           parent.palette.windowText.b, 0.5)
@@ -337,16 +329,14 @@ Row {
 
             QQC.SpinBox {
                 id: spinBox
-                readonly property int number: root.useSelectionOptions ?
-                    AnnotationDocument.selectedItem.number : AnnotationDocument.tool.number
+                readonly property int number: root.useSelectionOptions ? root.selectedItem.number : root.tool.number
                 anchors.verticalCenter: parent.verticalCenter
                 function setNumber() {
-                    if (root.useSelectionOptions
-                        && AnnotationDocument.selectedItem.number !== spinBox.value) {
-                        AnnotationDocument.selectedItem.number = spinBox.value
+                    if (root.useSelectionOptions && root.selectedItem.number !== spinBox.value) {
+                        root.selectedItem.number = spinBox.value
                         commitChangesTimer.restart()
                     } else {
-                        AnnotationDocument.tool.number = spinBox.value
+                        root.tool.number = spinBox.value
                     }
                 }
                 from: -99
@@ -380,25 +370,25 @@ Row {
         visible: root.options & AnnotationTool.ShadowOption
         text: i18n("Shadow")
         checked: {
-            if (AnnotationDocument.tool.type === AnnotationTool.TextTool && AnnotationDocument.selectedItem.options & AnnotationTool.TextOption) {
-                return AnnotationDocument.tool.shadow;
+            if (root.tool.type === AnnotationTool.TextTool && root.selectedItem.options & AnnotationTool.TextOption) {
+                return root.tool.shadow;
             } else if (root.useSelectionOptions) {
-                return AnnotationDocument.selectedItem.shadow;
+                return root.selectedItem.shadow;
             } else {
-                return AnnotationDocument.tool.shadow;
+                return root.tool.shadow;
             }
         }
         onToggled: {
             let changed = false
-            if (AnnotationDocument.tool.type === AnnotationTool.TextTool && AnnotationDocument.selectedItem.options & AnnotationTool.TextOption) {
-                changed = AnnotationDocument.selectedItem.shadow !== checked
-                AnnotationDocument.selectedItem.shadow = checked;
-                AnnotationDocument.tool.shadow = checked;
+            if (root.tool.type === AnnotationTool.TextTool && root.selectedItem.options & AnnotationTool.TextOption) {
+                changed = root.selectedItem.shadow !== checked
+                root.selectedItem.shadow = checked;
+                root.tool.shadow = checked;
             } else if (root.useSelectionOptions) {
-                changed = AnnotationDocument.selectedItem.shadow !== checked
-                AnnotationDocument.selectedItem.shadow = checked;
+                changed = root.selectedItem.shadow !== checked
+                root.selectedItem.shadow = checked;
             } else {
-                AnnotationDocument.tool.shadow = checked;
+                root.tool.shadow = checked;
             }
             if (changed) {
                 commitChangesTimer.restart();

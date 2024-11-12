@@ -14,8 +14,8 @@ import "Annotations"
 EmptyPage {
     id: root
 
-    readonly property real fitZoom: Math.min(flickable.width / AnnotationDocument.canvasRect.width,
-                                             flickable.height / AnnotationDocument.canvasRect.height)
+    readonly property real fitZoom: Math.min(flickable.width / SpectacleCore.annotationDocument.canvasRect.width,
+                                             flickable.height / SpectacleCore.annotationDocument.canvasRect.height)
     readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
     readonly property real currentZoom: annotationEditor.scale
@@ -24,11 +24,11 @@ EmptyPage {
     function zoomToPercent(percent, center = flickable.mapToItem(flickable.contentItem,
                                                                  flickable.width / 2,
                                                                  flickable.height / 2)) {
-        const oldW = AnnotationDocument.canvasRect.width * annotationEditor.scale
-        const oldH = AnnotationDocument.canvasRect.height * annotationEditor.scale
+        const oldW = SpectacleCore.annotationDocument.canvasRect.width * annotationEditor.scale
+        const oldH = SpectacleCore.annotationDocument.canvasRect.height * annotationEditor.scale
         annotationEditor.scale = Math.max(root.minZoom, Math.min(percent, root.maxZoom))
-        const w = AnnotationDocument.canvasRect.width * annotationEditor.scale
-        const h = AnnotationDocument.canvasRect.height * annotationEditor.scale
+        const w = SpectacleCore.annotationDocument.canvasRect.width * annotationEditor.scale
+        const h = SpectacleCore.annotationDocument.canvasRect.height * annotationEditor.scale
 
         if (center.x !== 0) {
             const min = flickable.width - Math.max(w, flickable.contentItem.width)
@@ -77,11 +77,11 @@ EmptyPage {
 
         clip: contextWindow.annotating
         interactive: contextWindow.annotating
-            && AnnotationDocument.tool.type === AnnotationTool.NoTool
+            && SpectacleCore.annotationDocument.tool.type === AnnotationTool.NoTool
         boundsBehavior: Flickable.StopAtBounds
         rebound: Transition {} // Instant transition. Null doesn't do this.
-        contentWidth: Math.max(width, AnnotationDocument.canvasRect.width * annotationEditor.scale)
-        contentHeight: Math.max(height, AnnotationDocument.canvasRect.height * annotationEditor.scale)
+        contentWidth: Math.max(width, SpectacleCore.annotationDocument.canvasRect.width * annotationEditor.scale)
+        contentHeight: Math.max(height, SpectacleCore.annotationDocument.canvasRect.height * annotationEditor.scale)
 
         Kirigami.WheelHandler {
             property point angleDelta: Qt.point(0,0)
@@ -152,10 +152,10 @@ EmptyPage {
 
         AnnotationEditor {
             id: annotationEditor
-            x: dprRound((flickable.contentItem.width - AnnotationDocument.canvasRect.width * scale) / 2)
-            y: dprRound((flickable.contentItem.height - AnnotationDocument.canvasRect.height * scale) / 2)
-            implicitWidth: AnnotationDocument.canvasRect.width
-            implicitHeight: AnnotationDocument.canvasRect.height
+            x: dprRound((flickable.contentItem.width - SpectacleCore.annotationDocument.canvasRect.width * scale) / 2)
+            y: dprRound((flickable.contentItem.height - SpectacleCore.annotationDocument.canvasRect.height * scale) / 2)
+            implicitWidth: SpectacleCore.annotationDocument.canvasRect.width
+            implicitHeight: SpectacleCore.annotationDocument.canvasRect.height
             transformOrigin: Item.TopLeft
             scale: root.fitZoom
             visible: true

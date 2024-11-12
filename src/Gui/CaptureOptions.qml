@@ -20,7 +20,7 @@ Column {
         level: 3
         // If recording is supported, there would be a tab bar right above this
         // label with largely the same text, creating redundancy.
-        visible: !VideoPlatform.supportedRecordingModes
+        visible: !SpectacleCore.videoPlatform.supportedRecordingModes
         FontMetrics {
             id: captureHeadingMetrics
         }

@@ -12,7 +12,7 @@ import org.kde.spectacle.private
 
 MouseArea {
     id: root
-    readonly property rect viewportRect: G.mapFromPlatformRect(screenToFollow.geometry,
+    readonly property rect viewportRect: Geometry.mapFromPlatformRect(screenToFollow.geometry,
                                                                screenToFollow.devicePixelRatio)
     focus: true
     acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -20,13 +20,13 @@ MouseArea {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     anchors.fill: parent
-    enabled: !VideoPlatform.isRecording
+    enabled: !SpectacleCore.videoPlatform.isRecording
 
     component Overlay: Rectangle {
         color: Settings.useLightMaskColor ? "white" : "black"
-        opacity: if (VideoPlatform.isRecording) {
+        opacity: if (SpectacleCore.videoPlatform.isRecording) {
             return 0
-        } else if (Selection.empty) {
+        } else if (SelectionEditor.selection.empty) {
             return 0.25
         } else {
             return 0.5
@@ -76,30 +76,30 @@ MouseArea {
     DashedOutline {
         id: selectionRectangle
         readonly property real margin: strokeWidth + 1 / Screen.devicePixelRatio
-        dashSvgPath: VideoPlatform.isRecording ? svgPath : ""
-        visible: !Selection.empty
-            && G.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
+        dashSvgPath: SpectacleCore.videoPlatform.isRecording ? svgPath : ""
+        visible: !SelectionEditor.selection.empty
+            && Geometry.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
         strokeWidth: dprRound(1)
         strokeColor: palette.active.highlight
-        dashColor: VideoPlatform.isRecording ? palette.active.base : strokeColor
+        dashColor: SpectacleCore.videoPlatform.isRecording ? palette.active.base : strokeColor
         // We need to be a bit careful about staying out of the recorded area
-        x: dprFloor(Selection.x - margin - root.viewportRect.x)
-        y: dprFloor(Selection.y - margin - root.viewportRect.y)
-        width: dprCeil(Selection.right + margin - root.viewportRect.x) - x
-        height: dprCeil(Selection.bottom + margin - root.viewportRect.y) - y
+        x: dprFloor(SelectionEditor.selection.x - margin - root.viewportRect.x)
+        y: dprFloor(SelectionEditor.selection.y - margin - root.viewportRect.y)
+        width: dprCeil(SelectionEditor.selection.right + margin - root.viewportRect.x) - x
+        height: dprCeil(SelectionEditor.selection.bottom + margin - root.viewportRect.y) - y
     }
 
     Item {
         x: -root.viewportRect.x
         y: -root.viewportRect.y
         enabled: selectionRectangle.enabled
-        visible: !VideoPlatform.isRecording
+        visible: !SpectacleCore.videoPlatform.isRecording
 
         component SelectionHandle: Handle {
             id: handle
             visible: enabled && selectionRectangle.visible
                 && SelectionEditor.dragLocation === SelectionEditor.None
-                && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
+                && Geometry.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
             fillColor: selectionRectangle.strokeColor
             width: Kirigami.Units.gridUnit
             height: width
@@ -152,7 +152,7 @@ MouseArea {
     }
 
     Item { // separate item because it needs to be above the stuff defined above
-        visible: !VideoPlatform.isRecording
+        visible: !SpectacleCore.videoPlatform.isRecording
         width: SelectionEditor.screensRect.width
         height: SelectionEditor.screensRect.height
         x: -root.viewportRect.x
@@ -162,7 +162,7 @@ MouseArea {
         SizeLabel {
             id: ssToolTip
             readonly property int valignment: {
-                if (Selection.empty) {
+                if (SelectionEditor.selection.empty) {
                     return Qt.AlignVCenter
                 }
                 const margin = Kirigami.Units.mediumSpacing * 2
@@ -177,9 +177,9 @@ MouseArea {
                     return Qt.AlignBaseline
                 }
             }
-            readonly property bool normallyVisible: !Selection.empty
+            readonly property bool normallyVisible: !SelectionEditor.selection.empty
             Binding on x {
-                value: contextWindow.dprRound(Selection.horizontalCenter - ssToolTip.width / 2)
+                value: contextWindow.dprRound(SelectionEditor.selection.horizontalCenter - ssToolTip.width / 2)
                 when: ssToolTip.normallyVisible
                 restoreMode: Binding.RestoreNone
             }
@@ -187,7 +187,7 @@ MouseArea {
                 value: {
                     let v = 0
                     if (ssToolTip.valignment & Qt.AlignBaseline) {
-                        v = Math.min(Selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                        v = Math.min(SelectionEditor.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
                     } else if (ssToolTip.valignment & Qt.AlignTop) {
                         v = SelectionEditor.handlesRect.top
@@ -204,14 +204,14 @@ MouseArea {
             }
             visible: opacity > 0
             opacity: ssToolTip.normallyVisible
-                && G.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
+                && Geometry.rectIntersects(Qt.rect(x,y,width,height), root.viewportRect)
             Behavior on opacity {
                 NumberAnimation {
                     duration: Kirigami.Units.longDuration
                     easing.type: Easing.OutCubic
                 }
             }
-            size: G.rawSize(Selection.size, SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
+            size: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio) // TODO: real pixel size on wayland
             padding: Kirigami.Units.mediumSpacing * 2
             topPadding: padding - QmlUtils.fontMetrics.descent
             bottomPadding: topPadding
