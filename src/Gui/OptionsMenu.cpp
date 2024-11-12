@@ -252,15 +252,15 @@ void OptionsMenu::updateCaptureModes()
         captureModeActions.clear();
         return;
     }
-    auto captureModeModel = SpectacleCore::instance()->captureModeModel();
-    if (captureModeModel == nullptr) {
-        qWarning() << Q_FUNC_INFO << "captureModeModel is null, not updating actions";
-        return;
+
+    if (!captureModeModel) {
+        captureModeModel = std::make_unique<CaptureModeModel>();
     }
+
     // Only make this conneciton once.
     // Can't be done in the constructor because captureModeModel is null at that time.
     if (!captureModesInitialized) {
-        connect(captureModeModel, &CaptureModeModel::captureModesChanged, this, [this](){
+        connect(captureModeModel.get(), &CaptureModeModel::captureModesChanged, this, [this]() {
             shouldUpdateCaptureModes = true;
         });
         captureModesInitialized = true;

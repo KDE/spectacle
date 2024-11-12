@@ -14,9 +14,11 @@
 class CaptureModeModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
+
 public:
-    CaptureModeModel(ImagePlatform::GrabModes grabModes, QObject *parent = nullptr);
+    CaptureModeModel(QObject *parent = nullptr);
 
     enum CaptureMode {
         RectangularRegion,
@@ -25,7 +27,8 @@ public:
         AllScreensScaled,
         CurrentScreen,
         ActiveWindow,
-        WindowUnderCursor
+        WindowUnderCursor,
+        FullScreen,
     };
     Q_ENUM(CaptureMode)
 
@@ -41,6 +44,8 @@ public:
     int indexOfCaptureMode(CaptureMode captureMode) const;
 
     void setGrabModes(ImagePlatform::GrabModes modes);
+
+    static QString captureModeLabel(CaptureMode mode);
 
 Q_SIGNALS:
     void captureModesChanged();

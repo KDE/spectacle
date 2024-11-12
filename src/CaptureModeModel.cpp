@@ -4,6 +4,7 @@
 
 #include "CaptureModeModel.h"
 #include "ShortcutActions.h"
+#include "SpectacleCore.h"
 
 #include <KGlobalAccel>
 #include <KLocalizedString>
@@ -31,13 +32,18 @@ static QString actionShortcutsToString(QAction *action)
     return value;
 }
 
-CaptureModeModel::CaptureModeModel(ImagePlatform::GrabModes grabModes, QObject *parent)
+CaptureModeModel::CaptureModeModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     m_roleNames[CaptureModeRole] = "captureMode"_ba;
     m_roleNames[Qt::DisplayRole] = "display"_ba;
     m_roleNames[ShortcutsRole] = "shortcuts"_ba;
-    setGrabModes(grabModes);
+
+    auto platform = SpectacleCore::instance()->imagePlatform();
+    connect(platform, &ImagePlatform::supportedGrabModesChanged, this, [this, platform]() {
+        setGrabModes(platform->supportedGrabModes());
+    });
+    setGrabModes(platform->supportedGrabModes());
 }
 
 QHash<int, QByteArray> CaptureModeModel::roleNames() const
@@ -94,41 +100,41 @@ void CaptureModeModel::setGrabModes(ImagePlatform::GrabModes modes)
     if (m_grabModes.testFlag(ImagePlatform::GrabMode::PerScreenImageNative)) {
         m_data.append({
             CaptureModeModel::RectangularRegion,
-            i18n("Rectangular Region"),
+            captureModeLabel(CaptureMode::RectangularRegion),
             actionShortcutsToString(ShortcutActions::self()->regionAction()),
         });
     }
     if (m_grabModes.testFlag(ImagePlatform::GrabMode::AllScreens)) {
         m_data.append({
             CaptureModeModel::AllScreens,
-            hasCurrentScreen ? i18n("All Screens") : i18n("Full Screen"),
+            captureModeLabel(hasCurrentScreen ? CaptureMode::AllScreens : CaptureMode::FullScreen),
             actionShortcutsToString(ShortcutActions::self()->fullScreenAction()),
         });
     }
     if (m_grabModes.testFlag(ImagePlatform::GrabMode::AllScreensScaled)) {
         m_data.append({
             CaptureModeModel::AllScreensScaled,
-            i18n("All Screens (Scaled to same size)"),
+            captureModeLabel(CaptureMode::AllScreensScaled),
         });
     }
     if (hasCurrentScreen) {
         m_data.append({
             CaptureModeModel::CurrentScreen,
-            i18n("Current Screen"),
+            captureModeLabel(CaptureModeModel::CurrentScreen),
             actionShortcutsToString(ShortcutActions::self()->currentScreenAction()),
         });
     }
     if (m_grabModes.testFlag(ImagePlatform::GrabMode::ActiveWindow)) {
         m_data.append({
             CaptureModeModel::ActiveWindow,
-            i18n("Active Window"),
+            captureModeLabel(CaptureMode::ActiveWindow),
             actionShortcutsToString(ShortcutActions::self()->activeWindowAction()),
         });
     }
     if (m_grabModes.testFlag(ImagePlatform::GrabMode::WindowUnderCursor)) {
         m_data.append({
             CaptureModeModel::WindowUnderCursor,
-            i18n("Window Under Cursor"),
+            captureModeLabel(CaptureMode::WindowUnderCursor),
             actionShortcutsToString(ShortcutActions::self()->windowUnderCursorAction()),
         });
     }
@@ -137,6 +143,27 @@ void CaptureModeModel::setGrabModes(ImagePlatform::GrabModes modes)
     if (oldCount != m_data.size()) {
         Q_EMIT countChanged();
     }
+}
+
+QString CaptureModeModel::captureModeLabel(CaptureMode mode)
+{
+    switch (mode) {
+    case CaptureMode::RectangularRegion:
+        return i18n("Rectangular Region");
+    case CaptureMode::AllScreensScaled:
+        return i18n("All Screens (Scaled to same size)");
+    case CaptureMode::CurrentScreen:
+        return i18n("Current Screen");
+    case CaptureMode::ActiveWindow:
+        return i18n("Active Window");
+    case CaptureMode::WindowUnderCursor:
+        return i18n("Window Under Cursor");
+    case CaptureMode::AllScreens:
+        return i18n("All Screens");
+    case CaptureMode::FullScreen:
+        return i18n("Full Screen");
+    }
+    return QString{};
 }
 
 #include "moc_CaptureModeModel.cpp"

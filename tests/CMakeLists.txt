@@ -2,7 +2,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 
 SET(FILENAME_TEST_SRCS
     FilenameTest.cpp
-    ../src/CaptureModeModel.cpp
     ../src/ShortcutActions.cpp
     ../src/ExportManager.cpp
     ../src/Platforms/ImagePlatform.cpp

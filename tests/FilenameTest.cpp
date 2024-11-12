@@ -9,7 +9,6 @@
 #include <QUuid>
 
 #include "ExportManager.h"
-#include "CaptureModeModel.h"
 
 using namespace Qt::StringLiterals;
 

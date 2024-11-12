@@ -18,6 +18,8 @@
 
 #include <memory>
 
+class CaptureModeModel;
+
 /**
  * A menu that allows choosing capture modes and related options.
  */
@@ -67,6 +69,8 @@ private:
     const std::unique_ptr<QHBoxLayout> delayLayout;
     const std::unique_ptr<QLabel> delayLabel;
     const std::unique_ptr<SmartSpinBox> delaySpinBox;
+
+    std::unique_ptr<CaptureModeModel> captureModeModel;
 
     bool captureModesInitialized = false;
     bool shouldUpdateCaptureModes = true;

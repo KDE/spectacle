@@ -443,14 +443,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                                 Qt::META | Qt::Key_R,
                                             });
 
-    // set up CaptureMode model
-    m_captureModeModel = std::make_unique<CaptureModeModel>(imagePlatform->supportedGrabModes(), this);
     m_recordingModeModel = std::make_unique<RecordingModeModel>(m_videoPlatform->supportedRecordingModes(), this);
     m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
-    auto captureModeModel = m_captureModeModel.get();
-    connect(imagePlatform, &ImagePlatform::supportedGrabModesChanged, captureModeModel, [this](){
-        m_captureModeModel->setGrabModes(m_imagePlatform->supportedGrabModes());
-    });
     connect(videoPlatform, &VideoPlatform::supportedRecordingModesChanged, m_recordingModeModel.get(), [this](){
         m_recordingModeModel->setRecordingModes(m_videoPlatform->supportedRecordingModes());
     });
@@ -492,11 +486,6 @@ ImagePlatform *SpectacleCore::imagePlatform() const
 VideoPlatform *SpectacleCore::videoPlatform() const
 {
     return m_videoPlatform.get();
-}
-
-CaptureModeModel *SpectacleCore::captureModeModel() const
-{
-    return m_captureModeModel.get();
 }
 
 RecordingModeModel *SpectacleCore::recordingModeModel() const
@@ -937,8 +926,7 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
     QString title;
     if (type == ScreenCapture::Screenshot) {
         notification = new KNotification(u"newScreenshotSaved"_s, KNotification::CloseOnTimeout, this);
-        int index = captureModeModel()->indexOfCaptureMode(toCaptureMode(m_lastGrabMode));
-        title = captureModeModel()->data(captureModeModel()->index(index), Qt::DisplayRole).toString();
+        title = CaptureModeModel::captureModeLabel(toCaptureMode(m_lastGrabMode));
     } else {
         notification = new KNotification(u"recordingSaved"_s, KNotification::CloseOnTimeout, this);
         int index = m_recordingModeModel->indexOfRecordingMode(m_lastRecordingMode);
@@ -1091,7 +1079,11 @@ CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(ImagePlatform::GrabMo
     } else if (grabMode == GrabMode::AllScreensScaled) {
         return CaptureMode::AllScreensScaled;
     } else {
-        return CaptureMode::AllScreens;
+        if (m_imagePlatform->supportedGrabModes().testFlag(ImagePlatform::CurrentScreen)) {
+            return CaptureMode::AllScreens;
+        } else {
+            return CaptureMode::FullScreen;
+        }
     }
 }
 
