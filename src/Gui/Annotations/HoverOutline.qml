@@ -15,8 +15,8 @@ Loader {
     // This will be frequently shown and hidden when using the selection tool
     active: visible && document.tool.type === AnnotationTool.SelectTool
     visible: enabled
-    x: -root.document.canvasRect.x
-    y: -root.document.canvasRect.y
+    x: -root.document?.canvasRect.x ?? 0
+    y: -root.document?.canvasRect.y ?? 0
     width: viewport.hoveredMousePath.boundingRect.width
     height: viewport.hoveredMousePath.boundingRect.height
     sourceComponent: DashedOutline {
