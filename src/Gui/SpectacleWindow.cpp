@@ -58,7 +58,6 @@ SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
 
     // set up QML
     setResizeMode(QQuickView::SizeRootObjectToView);
-    m_context->setContextProperty(u"contextWindow"_s, this);
 }
 
 SpectacleWindow::~SpectacleWindow()
@@ -203,6 +202,8 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
         QQuickView::setSource(source);
         return;
     }
+
+    m_context->setContextProperty(u"contextWindow"_s, this);
 
     m_component.reset(new QQmlComponent(engine(), source, this));
     auto *component = m_component.get();
