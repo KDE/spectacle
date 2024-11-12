@@ -16,7 +16,10 @@ ecm_qt_declare_logging_category(SPECTACLE_SRCS
     EXPORT SPECTACLE
 )
 
-add_executable(spectacle
+add_executable(spectacle)
+qt_add_qml_module(spectacle URI ${SPECTACLE_QML_URI})
+
+target_sources(spectacle PRIVATE
     ${SPECTACLE_SRCS}
     Main.cpp
     CaptureModeModel.cpp
@@ -130,12 +133,18 @@ target_link_libraries(spectacle PRIVATE
     ${OpenCV_LIBRARIES}
 )
 
+# qt_add_qml_module doesn't know how to deal with headers in subdirectories so
+# make sure to add those so the headers can be found.
+target_include_directories(spectacle PRIVATE
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui/Annotations>"
+)
+
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
   QT_QML_SINGLETON_TYPE TRUE
 )
 
-qt_add_qml_module(spectacle
-    URI ${SPECTACLE_QML_URI}
+qt_target_qml_sources(spectacle
     QML_FILES
     Gui/AnimatedLoader.qml
     Gui/AnnotationOptionsToolBarContents.qml
