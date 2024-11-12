@@ -28,6 +28,9 @@
 class SpectacleCore : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(ImagePlatform *imagePlatform READ imagePlatform CONSTANT FINAL)
     Q_PROPERTY(VideoPlatform *videoPlatform READ videoPlatform CONSTANT FINAL)
     Q_PROPERTY(CaptureModeModel *captureModeModel READ captureModeModel CONSTANT FINAL)
@@ -47,7 +50,6 @@ public:
         Background = 2,
     };
 
-    explicit SpectacleCore(QObject *parent = nullptr);
     ~SpectacleCore() noexcept override;
 
     static SpectacleCore *instance();
@@ -86,6 +88,22 @@ public:
 
     void activateAction(const QString &actionName, const QVariant &parameter);
 
+    static SpectacleCore *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+
+        if (s_qmlEngine) {
+            Q_ASSERT(engine == s_qmlEngine);
+        } else {
+            s_qmlEngine = engine;
+        }
+
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
+
 public Q_SLOTS:
     void activate(const QStringList &arguments, const QString &workingDirectory);
     void takeNewScreenshot(int captureMode = Settings::captureMode(),
@@ -109,6 +127,8 @@ Q_SIGNALS:
     void recordedTimeChanged();
 
 private:
+    explicit SpectacleCore(QObject *parent = nullptr);
+
     enum class ScreenCapture {
         Screenshot,
         Recording,
@@ -165,4 +185,6 @@ private:
     VideoPlatform::RecordingMode m_lastRecordingMode = VideoPlatform::NoRecordingModes;
     bool m_videoMode = false;
     QUrl m_currentVideo;
+
+    static inline QQmlEngine *s_qmlEngine = nullptr;
 };

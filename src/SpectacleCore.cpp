@@ -70,7 +70,6 @@ static std::unique_ptr<KStatusNotifierItem> s_systemTrayIcon;
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
 {
-    s_self = this;
     // Timer to prevent lots of extra rendering to images
     m_annotationSyncTimer = std::make_unique<QTimer>(new QTimer(this));
     m_annotationSyncTimer->setInterval(400);
@@ -478,6 +477,10 @@ SpectacleCore::~SpectacleCore() noexcept
 
 SpectacleCore *SpectacleCore::instance()
 {
+    if (!s_self) {
+        s_self = new SpectacleCore();
+    }
+
     return s_self;
 }
 

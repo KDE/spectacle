@@ -89,13 +89,13 @@ int main(int argc, char **argv)
     // If the new instance command line option has been specified,
     // use this alternative path for executing Spectacle.
     if (commandLineParser.isSet(CommandLineOptions::self()->newInstance)) {
-        SpectacleCore spectacleCore;
+        auto spectacleCore = SpectacleCore::instance();
 
         QObject::connect(qApp, &QApplication::aboutToQuit, Settings::self(), &Settings::save);
-        QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
+        QObject::connect(spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
         // fire it up
-        spectacleCore.activate(app.arguments(), QDir::currentPath());
+        spectacleCore->activate(app.arguments(), QDir::currentPath());
 
         return app.exec();
     }
@@ -105,33 +105,37 @@ int main(int argc, char **argv)
     // This object does not need a parent since it will be deleted when it falls out of scope.
     KDBusService service(KDBusService::Unique);
 
-    SpectacleCore spectacleCore;
+    auto spectacleCore = SpectacleCore::instance();
 
-    QObject::connect(&service, &KDBusService::activateRequested, &spectacleCore, &SpectacleCore::activate);
-    QObject::connect(&service, &KDBusService::activateActionRequested, &spectacleCore, &SpectacleCore::activateAction);
+    QObject::connect(&service, &KDBusService::activateRequested, spectacleCore, &SpectacleCore::activate);
+    QObject::connect(&service, &KDBusService::activateActionRequested, spectacleCore, &SpectacleCore::activateAction);
 
     QObject::connect(&app, &QCoreApplication::aboutToQuit, Settings::self(), &Settings::save);
-    QObject::connect(&spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
+    QObject::connect(spectacleCore, &SpectacleCore::allDone, &app, &QCoreApplication::quit, Qt::QueuedConnection);
 
     // create the dbus connections
-    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(&spectacleCore);
-    QObject::connect(&spectacleCore, &SpectacleCore::dbusScreenshotFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
-    QObject::connect(&spectacleCore, &SpectacleCore::dbusRecordingFailed, dbusAdapter, &SpectacleDBusAdapter::RecordingFailed);
-    QObject::connect(ExportManager::instance(), &ExportManager::imageExported,
-                     &spectacleCore, [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
-        Q_UNUSED(actions)
-        Q_EMIT dbusAdapter->ScreenshotTaken(url.toLocalFile());
-    });
-    QObject::connect(ExportManager::instance(), &ExportManager::videoExported,
-                     &spectacleCore, [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
-        Q_UNUSED(actions)
-        Q_EMIT dbusAdapter->RecordingTaken(url.toLocalFile());
-    });
-    QDBusConnection::sessionBus().registerObject(u"/"_s, &spectacleCore);
+    SpectacleDBusAdapter *dbusAdapter = new SpectacleDBusAdapter(spectacleCore);
+    QObject::connect(spectacleCore, &SpectacleCore::dbusScreenshotFailed, dbusAdapter, &SpectacleDBusAdapter::ScreenshotFailed);
+    QObject::connect(spectacleCore, &SpectacleCore::dbusRecordingFailed, dbusAdapter, &SpectacleDBusAdapter::RecordingFailed);
+    QObject::connect(ExportManager::instance(),
+                     &ExportManager::imageExported,
+                     spectacleCore,
+                     [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
+                         Q_UNUSED(actions)
+                         Q_EMIT dbusAdapter->ScreenshotTaken(url.toLocalFile());
+                     });
+    QObject::connect(ExportManager::instance(),
+                     &ExportManager::videoExported,
+                     spectacleCore,
+                     [dbusAdapter](const ExportManager::Actions &actions, const QUrl &url) {
+                         Q_UNUSED(actions)
+                         Q_EMIT dbusAdapter->RecordingTaken(url.toLocalFile());
+                     });
+    QDBusConnection::sessionBus().registerObject(u"/"_s, spectacleCore);
     QDBusConnection::sessionBus().registerService(u"org.kde.Spectacle"_s);
 
     // fire it up
-    spectacleCore.activate(app.arguments(), QDir::currentPath());
+    spectacleCore->activate(app.arguments(), QDir::currentPath());
 
     return app.exec();
 }
