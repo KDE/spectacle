@@ -55,8 +55,6 @@ public:
     ImagePlatform *imagePlatform() const;
     VideoPlatform *videoPlatform() const;
 
-    VideoFormatModel *videoFormatModel() const;
-
     AnnotationDocument *annotationDocument() const;
 
     QUrl screenCaptureUrl() const;
@@ -152,7 +150,6 @@ private:
     QUrl m_screenCaptureUrl;
     std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;
-    std::unique_ptr<VideoFormatModel> m_videoFormatModel;
     std::unique_ptr<QQmlEngine> m_engine;
     std::unique_ptr<QTimer> m_annotationSyncTimer;
     std::unique_ptr<QVariantAnimation> m_delayAnimation;

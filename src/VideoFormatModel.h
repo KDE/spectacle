@@ -14,9 +14,10 @@
 class VideoFormatModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
-    VideoFormatModel(VideoPlatform::Formats formats, QObject *parent = nullptr);
+    explicit VideoFormatModel(QObject *parent = nullptr);
 
     enum {
         FormatRole = Qt::UserRole + 1,

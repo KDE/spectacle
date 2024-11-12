@@ -443,11 +443,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                                 Qt::META | Qt::Key_R,
                                             });
 
-    m_videoFormatModel = std::make_unique<VideoFormatModel>(m_videoPlatform->supportedFormats(), this);
-    connect(videoPlatform, &VideoPlatform::supportedFormatsChanged, m_videoFormatModel.get(), [this](){
-        m_videoFormatModel->setFormats(m_videoPlatform->supportedFormats());
-    });
-
     connect(qApp, &QApplication::screenRemoved, this, [this](QScreen *screen) {
         // It's dangerous to erase from within a for loop, so we use std::find_if
         auto hasScreen = [screen](const CaptureWindow::UniquePointer &window) {
@@ -482,11 +477,6 @@ ImagePlatform *SpectacleCore::imagePlatform() const
 VideoPlatform *SpectacleCore::videoPlatform() const
 {
     return m_videoPlatform.get();
-}
-
-VideoFormatModel *SpectacleCore::videoFormatModel() const
-{
-    return m_videoFormatModel.get();
 }
 
 AnnotationDocument *SpectacleCore::annotationDocument() const

@@ -34,15 +34,15 @@ VideoSaveOptionsPage::VideoSaveOptionsPage(QWidget *parent)
 
     m_ui->preview->setFixedHeight(m_ui->kcfg_videoFilenameTemplate->height());
 
-    const auto videoFormatModel = SpectacleCore::instance()->videoFormatModel();
-    m_videoFormatComboBox = std::make_unique<VideoFormatComboBox>(videoFormatModel, this);
+    m_videoFormatModel = std::make_unique<VideoFormatModel>();
+    m_videoFormatComboBox = std::make_unique<VideoFormatComboBox>(m_videoFormatModel.get(), this);
     m_ui->saveLayout->addWidget(m_videoFormatComboBox.get());
 
     // Auto select the correct format if the user types an extension in the filename template.
-    connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textEdited, this, [this, videoFormatModel](const QString &text) {
-        const auto count = videoFormatModel->rowCount();
+    connect(m_ui->kcfg_videoFilenameTemplate, &QLineEdit::textEdited, this, [this](const QString &text) {
+        const auto count = m_videoFormatModel->rowCount();
         for (auto i = 0; i < count; ++i) {
-            auto index = videoFormatModel->index(i);
+            auto index = m_videoFormatModel->index(i);
             auto extension = index.data(VideoFormatModel::ExtensionRole).toString();
             if (text.endsWith(u'.' + extension, Qt::CaseInsensitive)) {
                 m_ui->kcfg_videoFilenameTemplate->setText(text.chopped(extension.length() + 1));

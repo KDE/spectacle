@@ -3,19 +3,24 @@
  */
 
 #include "VideoFormatModel.h"
-#include "Platforms/VideoPlatform.h"
+#include "SpectacleCore.h"
 
 #include <KLocalizedString>
 
 using namespace Qt::StringLiterals;
 
-VideoFormatModel::VideoFormatModel(VideoPlatform::Formats formats, QObject *parent)
+VideoFormatModel::VideoFormatModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     m_roleNames[Qt::DisplayRole] = "display"_ba;
     m_roleNames[FormatRole] = "format"_ba;
     m_roleNames[ExtensionRole] = "extension"_ba;
-    setFormats(formats);
+
+    auto platform = SpectacleCore::instance()->videoPlatform();
+    connect(platform, &VideoPlatform::supportedFormatsChanged, this, [this, platform]() {
+        setFormats(platform->supportedFormats());
+    });
+    setFormats(platform->supportedFormats());
 }
 
 void VideoFormatModel::setFormats(VideoPlatform::Formats formats)
