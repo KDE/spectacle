@@ -122,7 +122,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     m_imagePlatform = loadImagePlatform();
     m_videoPlatform = loadVideoPlatform();
     auto imagePlatform = m_imagePlatform.get();
-    m_annotationDocument = std::make_unique<AnnotationDocument>(new AnnotationDocument(this));
+    m_annotationDocument = std::make_unique<AnnotationDocument>();
 
     // essential connections
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
