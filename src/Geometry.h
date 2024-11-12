@@ -5,6 +5,7 @@
 #pragma once
 
 #include <QObject>
+#include <QQmlEngine>
 
 #include <memory>
 
@@ -34,8 +35,11 @@ class QSizeF;
 class Geometry : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
 public:
-    static Geometry *instance();
+    explicit Geometry(QObject *parent = nullptr);
 
     /**
      * This returns the logical size of a raw device pixel based on the given device pixel ratio.
@@ -196,7 +200,6 @@ public:
     [[nodiscard]] Q_INVOKABLE static bool isNull(const QRectF &rect);
 
 private:
-    explicit Geometry(QObject *parent = nullptr);
     Geometry(const Geometry &) = delete;
     Geometry(Geometry &&) = delete;
     Geometry &operator=(const Geometry &) = delete;

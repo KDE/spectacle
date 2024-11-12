@@ -8,6 +8,7 @@
 #include "AnnotationDocument.h"
 #include <QMatrix4x4>
 #include <QQuickItem>
+#include <qqmlregistration.h>
 
 class QPainter;
 
@@ -19,6 +20,8 @@ class QPainter;
 class AnnotationViewport : public QQuickItem
 {
     Q_OBJECT
+    QML_ELEMENT
+
     Q_PROPERTY(QRectF viewportRect READ viewportRect WRITE setViewportRect NOTIFY viewportRectChanged)
     Q_PROPERTY(AnnotationDocument *document READ document WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(QPointF hoverPosition READ hoverPosition NOTIFY hoverPositionChanged)

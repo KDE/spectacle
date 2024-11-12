@@ -8,6 +8,7 @@
 #include <QColor>
 #include <QFont>
 #include <QObject>
+#include <qqmlregistration.h>
 
 /**
  * This is the data structure that controls the creation of the next item. From qml its paramenter
@@ -17,6 +18,9 @@
 class AnnotationTool : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by AnnotationDocument")
+
     Q_PROPERTY(Tool type READ type WRITE setType RESET resetType NOTIFY typeChanged)
     Q_PROPERTY(bool isNoTool READ isNoTool NOTIFY typeChanged)
     Q_PROPERTY(bool isMetaTool READ isMetaTool NOTIFY typeChanged)

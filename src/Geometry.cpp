@@ -13,22 +13,9 @@
 
 #include <cmath>
 
-class GeometrySingleton
-{
-public:
-    Geometry self;
-};
-
-Q_GLOBAL_STATIC(GeometrySingleton, privateGeometrySelf)
-
 Geometry::Geometry(QObject *parent)
     : QObject(parent)
 {}
-
-Geometry *Geometry::instance()
-{
-    return &privateGeometrySelf->self;
-}
 
 qreal Geometry::dpx(qreal dpr)
 {

@@ -9,6 +9,8 @@
 
 #include "SpectacleMenu.h"
 
+#include <QQmlEngine>
+
 #include "Config.h"
 #include "ExportManager.h"
 
@@ -21,9 +23,20 @@
 class ExportMenu : public SpectacleMenu
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     static ExportMenu *instance();
+
+    static ExportMenu *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
 
 public Q_SLOTS:
     void openPrintDialog();

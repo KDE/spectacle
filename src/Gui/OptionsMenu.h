@@ -13,6 +13,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QList>
+#include <QQmlEngine>
 #include <QWidgetAction>
 
 #include <memory>
@@ -23,6 +24,8 @@
 class OptionsMenu : public SpectacleMenu
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     static OptionsMenu *instance();
@@ -30,6 +33,15 @@ public:
     Q_SLOT void showPreferencesDialog();
 
     void setCaptureModeOptionsEnabled(bool enabled);
+
+    static OptionsMenu *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
 
 protected:
     void changeEvent(QEvent *event) override;

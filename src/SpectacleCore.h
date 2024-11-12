@@ -29,6 +29,7 @@ class SpectacleCore : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(ImagePlatform *imagePlatform READ imagePlatform CONSTANT FINAL)
+    Q_PROPERTY(VideoPlatform *videoPlatform READ videoPlatform CONSTANT FINAL)
     Q_PROPERTY(CaptureModeModel *captureModeModel READ captureModeModel CONSTANT FINAL)
     Q_PROPERTY(RecordingModeModel *recordingModeModel READ recordingModeModel CONSTANT FINAL)
     Q_PROPERTY(QUrl screenCaptureUrl READ screenCaptureUrl NOTIFY screenCaptureUrlChanged FINAL)
@@ -37,6 +38,7 @@ class SpectacleCore : public QObject
     Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
     Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
+    Q_PROPERTY(AnnotationDocument *annotationDocument READ annotationDocument CONSTANT FINAL)
 
 public:
     enum class StartMode {
@@ -51,6 +53,7 @@ public:
     static SpectacleCore *instance();
 
     ImagePlatform *imagePlatform() const;
+    VideoPlatform *videoPlatform() const;
 
     CaptureModeModel *captureModeModel() const;
     RecordingModeModel *recordingModeModel() const;

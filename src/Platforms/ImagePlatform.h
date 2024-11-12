@@ -9,10 +9,14 @@
 #include <QFlags>
 #include <QImage>
 #include <QObject>
+#include <qqmlregistration.h>
 
 class ImagePlatform : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by SpectacleCore")
+
     Q_PROPERTY(GrabModes supportedGrabModes READ supportedGrabModes NOTIFY supportedGrabModesChanged)
     // Currently, supportedShutterModes never changes.
     // Be sure to add a changed signal if it is ever able to change.

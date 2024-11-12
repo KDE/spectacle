@@ -486,6 +486,11 @@ ImagePlatform *SpectacleCore::imagePlatform() const
     return m_imagePlatform.get();
 }
 
+VideoPlatform *SpectacleCore::videoPlatform() const
+{
+    return m_videoPlatform.get();
+}
+
 CaptureModeModel *SpectacleCore::captureModeModel() const
 {
     return m_captureModeModel.get();
@@ -1119,31 +1124,6 @@ QQmlEngine *SpectacleCore::getQmlEngine()
     if (m_engine == nullptr) {
         m_engine = std::make_unique<QQmlEngine>(this);
         m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine.get()));
-
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SpectacleCore", this);
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "ImagePlatform", m_imagePlatform.get());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "VideoPlatform", m_videoPlatform.get());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Settings", Settings::self());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "CaptureModeModel", m_captureModeModel.get());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "SelectionEditor", SelectionEditor::instance());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Selection", SelectionEditor::instance()->selection());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "Geometry", Geometry::instance());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "G", Geometry::instance());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "ExportMenu", ExportMenu::instance());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "HelpMenu", HelpMenu::instance());
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "OptionsMenu", OptionsMenu::instance());
-
-        qmlRegisterSingletonInstance(SPECTACLE_QML_URI, 1, 0, "AnnotationDocument", m_annotationDocument.get());
-        qmlRegisterUncreatableType<AnnotationTool>(SPECTACLE_QML_URI, 1, 0, "AnnotationTool",
-                                                   u"Use AnnotationDocument.tool"_s);
-        qmlRegisterUncreatableType<SelectedItemWrapper>(SPECTACLE_QML_URI, 1, 0, "SelectedItem",
-                                                          u"Use AnnotationDocument.selectedItem"_s);
-        qmlRegisterType<AnnotationViewport>(SPECTACLE_QML_URI, 1, 0, "AnnotationViewport");
-        qmlRegisterUncreatableType<QScreen>(SPECTACLE_QML_URI, 1, 0, "QScreen",
-                                            u"Only created by Qt"_s);
-        qmlRegisterExtendedUncreatableType<QPainterPath, QmlPainterPath>(SPECTACLE_QML_URI, 1, 0,
-                                                                         "QmlPainterPath",
-                                                                         u"Only created from C++"_s);
     }
     return m_engine.get();
 }

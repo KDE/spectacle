@@ -11,6 +11,10 @@
 
 #include <memory>
 
+#include <QQmlEngine>
+
+#include "Selection.h"
+
 class QHoverEvent;
 class QKeyEvent;
 class QMouseEvent;
@@ -25,6 +29,9 @@ class SelectionEditorPrivate;
 class SelectionEditor : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(Selection *selection READ selection CONSTANT FINAL)
     Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio NOTIFY devicePixelRatioChanged FINAL)
     Q_PROPERTY(QRectF screensRect READ screensRect NOTIFY screensRectChanged FINAL)
@@ -51,8 +58,6 @@ public:
     };
     Q_ENUM(Location)
 
-    explicit SelectionEditor(QObject *parent = nullptr);
-
     static SelectionEditor *instance();
 
     Selection *selection() const;
@@ -78,6 +83,15 @@ public:
 
     void reset();
 
+    static SelectionEditor *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
+
 Q_SIGNALS:
     void devicePixelRatioChanged();
     void screensRectChanged();
@@ -100,6 +114,8 @@ protected:
     void mouseDoubleClickEvent(QQuickItem *item, QMouseEvent *event);
 
 private:
+    friend class SelectionEditorSingleton;
+    explicit SelectionEditor(QObject *parent = nullptr);
     const std::unique_ptr<SelectionEditorPrivate> d;
 };
 

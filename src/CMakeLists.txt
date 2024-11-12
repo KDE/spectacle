@@ -138,6 +138,7 @@ target_link_libraries(spectacle PRIVATE
 target_include_directories(spectacle PRIVATE
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui/Annotations>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Platforms>"
 )
 
 set_source_files_properties(Gui/QmlUtils.qml PROPERTIES

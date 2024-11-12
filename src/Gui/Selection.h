@@ -18,6 +18,9 @@ class SelectionEditor;
 class Selection : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by SelectionEditor")
+
     // TODO: make it impossible to misuse combinations of x/y/width/height,
     // left/top/right/bottom and horizontalCenter/verticalCenter bindings?
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged FINAL)

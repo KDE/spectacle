@@ -12,13 +12,17 @@
 #include <QObject>
 #include <QRect>
 #include <QUrl>
-#include <variant>
+#include <QVariant>
+#include <qqmlregistration.h>
 
 class QScreen;
 
 class VideoPlatform : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by SpectacleCore")
+
     Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes NOTIFY supportedRecordingModesChanged)
     Q_PROPERTY(Formats supportedFormats READ supportedFormats NOTIFY supportedFormatsChanged)
     Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)

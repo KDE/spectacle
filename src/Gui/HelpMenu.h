@@ -8,16 +8,29 @@
 
 #include <KHelpMenu>
 
+#include <QQmlEngine>
+
 #include <memory>
 
 class HelpMenu : public SpectacleMenu
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     static HelpMenu *instance();
 
     Q_SLOT void showAppHelp();
+
+    static HelpMenu *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
 
 private:
     explicit HelpMenu(QWidget *parent = nullptr);

@@ -15,6 +15,7 @@
 #include <QMatrix4x4>
 #include <QObject>
 #include <QVariant>
+#include <qqmlregistration.h>
 
 class AnnotationTool;
 class SelectedItemWrapper;
@@ -29,6 +30,9 @@ class QPainter;
 class AnnotationDocument : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by SpectacleCore")
+
     Q_PROPERTY(AnnotationTool *tool READ tool CONSTANT)
     Q_PROPERTY(SelectedItemWrapper *selectedItem READ selectedItemWrapper NOTIFY selectedItemWrapperChanged)
 
@@ -189,6 +193,9 @@ private:
 class SelectedItemWrapper : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Created by AnnotationDocument")
+
     Q_PROPERTY(bool hasSelection READ hasSelection CONSTANT)
     Q_PROPERTY(AnnotationTool::Options options READ options CONSTANT)
     Q_PROPERTY(int strokeWidth READ strokeWidth WRITE setStrokeWidth NOTIFY strokeWidthChanged)

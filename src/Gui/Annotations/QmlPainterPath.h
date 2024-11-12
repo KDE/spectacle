@@ -26,6 +26,7 @@ class QmlPainterPath
     Q_PROPERTY(QPointF end READ end FINAL)
     Q_PROPERTY(QRectF boundingRect READ boundingRect FINAL)
 
+    QML_ELEMENT
     QML_FOREIGN(QPainterPath)
     QML_EXTENDED(QmlPainterPath)
 
