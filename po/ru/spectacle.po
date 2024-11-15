@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2024-11-15 00:39+0000\n"
 "PO-Revision-Date: 2024-09-20 11:40+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -39,41 +39,41 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: src/CaptureModeModel.cpp:97
+#: src/CaptureModeModel.cpp:152
 #, kde-format
 msgid "Rectangular Region"
 msgstr "Прямоугольная область"
 
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "All Screens"
-msgstr "Все экраны"
-
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "Full Screen"
-msgstr "Весь экран"
-
-#: src/CaptureModeModel.cpp:111
+#: src/CaptureModeModel.cpp:154
 #, kde-format
 msgid "All Screens (Scaled to same size)"
 msgstr "Все экраны (одинаковый масштаб)"
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
-#: src/CaptureModeModel.cpp:117
+#: src/CaptureModeModel.cpp:156
 #, kde-format
 msgid "Current Screen"
 msgstr "Текущий экран"
 
-#: src/CaptureModeModel.cpp:124
+#: src/CaptureModeModel.cpp:158
 #, kde-format
 msgid "Active Window"
 msgstr "Активное окно"
 
-#: src/CaptureModeModel.cpp:131
+#: src/CaptureModeModel.cpp:160
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Окно под курсором мыши"
+
+#: src/CaptureModeModel.cpp:162
+#, kde-format
+msgid "All Screens"
+msgstr "Все экраны"
+
+#: src/CaptureModeModel.cpp:164
+#, kde-format
+msgid "Full Screen"
+msgstr "Весь экран"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ошибка печати: не удалось инициализировать принтер."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:56
+#: src/Gui/AnnotationOptionsToolBarContents.qml:61
 #, kde-format
 msgid "Stroke:"
 msgstr "Обводка"
@@ -305,7 +305,7 @@ msgstr "Обводка"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -315,12 +315,12 @@ msgstr[1] "%1 пикс."
 msgstr[2] "%1 пикс."
 msgstr[3] "%1 пикс."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:98
 #, kde-format
 msgid "Stroke Width"
 msgstr "Ширина обводки"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:126
+#: src/Gui/AnnotationOptionsToolBarContents.qml:128
 #, kde-format
 msgid "Stroke Color"
 msgstr "Цвет обводки"
@@ -335,24 +335,24 @@ msgstr "Заливка:"
 msgid "Fill Color"
 msgstr "Цвет заливки"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#: src/Gui/AnnotationOptionsToolBarContents.qml:215
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
 msgstr "Интенсивность:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#: src/Gui/AnnotationOptionsToolBarContents.qml:234
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
 msgstr "Интенсивность эффекта."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:265
+#: src/Gui/AnnotationOptionsToolBarContents.qml:261
 #, kde-format
 msgid "Font:"
 msgstr "Шрифт:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:281
+#: src/Gui/AnnotationOptionsToolBarContents.qml:275
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -362,7 +362,7 @@ msgstr[1] "%2 %3 %1 пт"
 msgstr[2] "%2 %3 %1 пт"
 msgstr[3] "%2 %3 %1 пт"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:282
+#: src/Gui/AnnotationOptionsToolBarContents.qml:276
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -372,87 +372,87 @@ msgstr[1] "%2 %1 пт"
 msgstr[2] "%2 %1 пт"
 msgstr[3] "%2 %1 пт"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:294
+#: src/Gui/AnnotationOptionsToolBarContents.qml:288
 #, kde-format
 msgid "Font Color"
 msgstr "Цвет шрифта"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:335
+#: src/Gui/AnnotationOptionsToolBarContents.qml:327
 #, kde-format
 msgid "Number:"
 msgstr "Число:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:356
+#: src/Gui/AnnotationOptionsToolBarContents.qml:346
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Число для числовых аннотаций"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:381
+#: src/Gui/AnnotationOptionsToolBarContents.qml:371
 #, kde-format
 msgid "Shadow"
 msgstr "Тень"
 
-#: src/Gui/AnnotationsToolBarContents.qml:95
+#: src/Gui/AnnotationsToolBarContents.qml:98
 #, kde-format
 msgid "None"
 msgstr "Ничего"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:110
 #, kde-format
 msgid "Crop"
 msgstr "Кадрирование"
 
-#: src/Gui/AnnotationsToolBarContents.qml:117
+#: src/Gui/AnnotationsToolBarContents.qml:120
 #, kde-format
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/Gui/AnnotationsToolBarContents.qml:125
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Freehand"
 msgstr "Произвольная линия"
 
-#: src/Gui/AnnotationsToolBarContents.qml:132
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Highlighter"
 msgstr "Выделение"
 
-#: src/Gui/AnnotationsToolBarContents.qml:139
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Line"
 msgstr "Линия"
 
-#: src/Gui/AnnotationsToolBarContents.qml:146
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Arrow"
 msgstr "Стрелка"
 
-#: src/Gui/AnnotationsToolBarContents.qml:153
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Rectangle"
 msgstr "Прямоугольник"
 
-#: src/Gui/AnnotationsToolBarContents.qml:160
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Ellipse"
 msgstr "Эллипс"
 
-#: src/Gui/AnnotationsToolBarContents.qml:167
+#: src/Gui/AnnotationsToolBarContents.qml:170
 #, kde-format
 msgid "Pixelate"
 msgstr "Пикселизация"
 
-#: src/Gui/AnnotationsToolBarContents.qml:174
+#: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
 msgid "Blur"
 msgstr "Размытие"
 
-#: src/Gui/AnnotationsToolBarContents.qml:181
+#: src/Gui/AnnotationsToolBarContents.qml:184
 #, kde-format
 msgid "Text"
 msgstr "Текст"
 
-#: src/Gui/AnnotationsToolBarContents.qml:188
+#: src/Gui/AnnotationsToolBarContents.qml:191
 #, kde-format
 msgid "Number"
 msgstr "Число"
@@ -1887,23 +1887,23 @@ msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Не удалось выбрать окно: не найдено ни одного окна"
 
-#: src/RecordingModeModel.cpp:71
+#: src/RecordingModeModel.cpp:91
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Прямоугольная область"
 
-#: src/RecordingModeModel.cpp:74
-#, kde-format
-msgctxt "@item recording mode"
-msgid "Full Screen"
-msgstr "Весь экран"
-
-#: src/RecordingModeModel.cpp:77
+#: src/RecordingModeModel.cpp:93
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
 msgstr "Окно"
+
+#: src/RecordingModeModel.cpp:95
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Full Screen"
+msgstr "Весь экран"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1956,31 +1956,31 @@ msgstr "Запись прямоугольной области"
 msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
 
-#: src/SpectacleCore.cpp:238
+#: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "При создании снимка экрана произошла ошибка."
 
-#: src/SpectacleCore.cpp:252
+#: src/SpectacleCore.cpp:251
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Приложение Spectacle выполняет запись"
 
-#: src/SpectacleCore.cpp:257
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Приложение Spectacle выполняет запись"
 
-#: src/SpectacleCore.cpp:258
+#: src/SpectacleCore.cpp:257
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Чтобы остановить запись нажмите на значок в системном лотке"
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -1990,19 +1990,19 @@ msgstr ""
 "Продолжительность записи: %1\n"
 "Нажмите, чтобы остановить запись"
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "При создании записи экрана произошла ошибка."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:695
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не является допустимым режимом при указании ключа -- record"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:927
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2011,23 +2011,23 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:955
+#: src/SpectacleCore.cpp:931
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:934
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:962
+#: src/SpectacleCore.cpp:938
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:967
+#: src/SpectacleCore.cpp:943
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2036,35 +2036,35 @@ msgstr ""
 "Запись экрана сохранена как «%1» в «%2», полный путь к неё скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:969
+#: src/SpectacleCore.cpp:945
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
-#: src/SpectacleCore.cpp:971
+#: src/SpectacleCore.cpp:947
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:982
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
 
-#: src/VideoFormatModel.cpp:26
+#: src/VideoFormatModel.cpp:31
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:33
+#: src/VideoFormatModel.cpp:38
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2024-11-15 00:39+0000\n"
 "PO-Revision-Date: 2024-08-15 05:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -19,40 +19,40 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.04.70\n"
 
-#: src/CaptureModeModel.cpp:97
+#: src/CaptureModeModel.cpp:152
 #, kde-format
 msgid "Rectangular Region"
 msgstr "矩形區域"
 
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "All Screens"
-msgstr "所有螢幕"
-
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "Full Screen"
-msgstr "全螢幕"
-
-#: src/CaptureModeModel.cpp:111
+#: src/CaptureModeModel.cpp:154
 #, kde-format
 msgid "All Screens (Scaled to same size)"
 msgstr "所有螢幕（縮放至同樣尺寸）"
 
-#: src/CaptureModeModel.cpp:117
+#: src/CaptureModeModel.cpp:156
 #, kde-format
 msgid "Current Screen"
 msgstr "目前的螢幕"
 
-#: src/CaptureModeModel.cpp:124
+#: src/CaptureModeModel.cpp:158
 #, kde-format
 msgid "Active Window"
 msgstr "作用中視窗"
 
-#: src/CaptureModeModel.cpp:131
+#: src/CaptureModeModel.cpp:160
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "游標下的視窗"
+
+#: src/CaptureModeModel.cpp:162
+#, kde-format
+msgid "All Screens"
+msgstr "所有螢幕"
+
+#: src/CaptureModeModel.cpp:164
+#, kde-format
+msgid "Full Screen"
+msgstr "全螢幕"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -250,7 +250,7 @@ msgstr "無法儲存錄製。無法移動檔案到位置：%1"
 msgid "Printing failed. The printer failed to initialize."
 msgstr "列印失敗。列印機初始化失敗。"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:56
+#: src/Gui/AnnotationOptionsToolBarContents.qml:61
 #, kde-format
 msgid "Stroke:"
 msgstr "筆畫："
@@ -258,19 +258,19 @@ msgstr "筆畫："
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
 msgstr[0] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:98
 #, kde-format
 msgid "Stroke Width"
 msgstr "筆畫寬度"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:126
+#: src/Gui/AnnotationOptionsToolBarContents.qml:128
 #, kde-format
 msgid "Stroke Color"
 msgstr "筆畫顏色"
@@ -285,118 +285,118 @@ msgstr "填充："
 msgid "Fill Color"
 msgstr "填充顏色"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#: src/Gui/AnnotationOptionsToolBarContents.qml:215
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
 msgstr "強度："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#: src/Gui/AnnotationOptionsToolBarContents.qml:234
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
 msgstr "效果的強度。"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:265
+#: src/Gui/AnnotationOptionsToolBarContents.qml:261
 #, kde-format
 msgid "Font:"
 msgstr "文字："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:281
+#: src/Gui/AnnotationOptionsToolBarContents.qml:275
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:282
+#: src/Gui/AnnotationOptionsToolBarContents.qml:276
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1pt"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:294
+#: src/Gui/AnnotationOptionsToolBarContents.qml:288
 #, kde-format
 msgid "Font Color"
 msgstr "文字顏色"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:335
+#: src/Gui/AnnotationOptionsToolBarContents.qml:327
 #, kde-format
 msgid "Number:"
 msgstr "編號："
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:356
+#: src/Gui/AnnotationOptionsToolBarContents.qml:346
 #, kde-format
 msgid "Number for number annotations"
 msgstr "數字註記的數字"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:381
+#: src/Gui/AnnotationOptionsToolBarContents.qml:371
 #, kde-format
 msgid "Shadow"
 msgstr "陰影"
 
-#: src/Gui/AnnotationsToolBarContents.qml:95
+#: src/Gui/AnnotationsToolBarContents.qml:98
 #, kde-format
 msgid "None"
 msgstr "無"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:110
 #, kde-format
 msgid "Crop"
 msgstr "裁切"
 
-#: src/Gui/AnnotationsToolBarContents.qml:117
+#: src/Gui/AnnotationsToolBarContents.qml:120
 #, kde-format
 msgid "Select"
 msgstr "選取"
 
-#: src/Gui/AnnotationsToolBarContents.qml:125
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Freehand"
 msgstr "手繪"
 
-#: src/Gui/AnnotationsToolBarContents.qml:132
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Highlighter"
 msgstr "螢光筆"
 
-#: src/Gui/AnnotationsToolBarContents.qml:139
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Line"
 msgstr "線段"
 
-#: src/Gui/AnnotationsToolBarContents.qml:146
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Arrow"
 msgstr "箭頭"
 
-#: src/Gui/AnnotationsToolBarContents.qml:153
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Rectangle"
 msgstr "矩形"
 
-#: src/Gui/AnnotationsToolBarContents.qml:160
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Ellipse"
 msgstr "橢圓"
 
-#: src/Gui/AnnotationsToolBarContents.qml:167
+#: src/Gui/AnnotationsToolBarContents.qml:170
 #, kde-format
 msgid "Pixelate"
 msgstr "像素化"
 
-#: src/Gui/AnnotationsToolBarContents.qml:174
+#: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
 msgid "Blur"
 msgstr "模糊化"
 
-#: src/Gui/AnnotationsToolBarContents.qml:181
+#: src/Gui/AnnotationsToolBarContents.qml:184
 #, kde-format
 msgid "Text"
 msgstr "文字"
 
-#: src/Gui/AnnotationsToolBarContents.qml:188
+#: src/Gui/AnnotationsToolBarContents.qml:191
 #, kde-format
 msgid "Number"
 msgstr "編號"
@@ -1782,23 +1782,23 @@ msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "選取視窗失敗：找不到視窗"
 
-#: src/RecordingModeModel.cpp:71
+#: src/RecordingModeModel.cpp:91
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "矩形區域"
 
-#: src/RecordingModeModel.cpp:74
-#, kde-format
-msgctxt "@item recording mode"
-msgid "Full Screen"
-msgstr "全螢幕"
-
-#: src/RecordingModeModel.cpp:77
+#: src/RecordingModeModel.cpp:93
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
 msgstr "視窗"
+
+#: src/RecordingModeModel.cpp:95
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Full Screen"
+msgstr "全螢幕"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1850,31 +1850,31 @@ msgstr "錄製矩形區域"
 msgid "Launch Spectacle without capturing"
 msgstr "啟動 Spectacle 但不擷取"
 
-#: src/SpectacleCore.cpp:238
+#: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "進行螢幕截圖時發生錯誤。"
 
-#: src/SpectacleCore.cpp:252
+#: src/SpectacleCore.cpp:251
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle 錄製中"
 
-#: src/SpectacleCore.cpp:257
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle 錄製中"
 
-#: src/SpectacleCore.cpp:258
+#: src/SpectacleCore.cpp:257
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "點擊系統匣圖示以完成錄製"
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -1884,77 +1884,77 @@ msgstr ""
 "錄製時間：%1\n"
 "點擊以完成錄製"
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "嘗試進行螢幕錄製時發生錯誤。"
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:695
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 的有效模式"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:927
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:955
+#: src/SpectacleCore.cpp:931
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:934
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:962
+#: src/SpectacleCore.cpp:938
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "螢幕截圖已儲存至您的剪貼簿。"
 
-#: src/SpectacleCore.cpp:967
+#: src/SpectacleCore.cpp:943
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:969
+#: src/SpectacleCore.cpp:945
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "螢幕錄製已儲存為您的影片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:971
+#: src/SpectacleCore.cpp:947
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:982
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開啟"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgid "Annotate"
 msgstr "註記"
 
-#: src/VideoFormatModel.cpp:26
+#: src/VideoFormatModel.cpp:31
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:33
+#: src/VideoFormatModel.cpp:38
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"

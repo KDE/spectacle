@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2024-11-15 00:39+0000\n"
 "PO-Revision-Date: 2024-05-22 11:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -20,40 +20,40 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Lokalize 24.02.2\n"
 
-#: src/CaptureModeModel.cpp:97
+#: src/CaptureModeModel.cpp:152
 #, kde-format
 msgid "Rectangular Region"
 msgstr "Pravokotno območje"
 
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "All Screens"
-msgstr "Vsi zasloni"
-
-#: src/CaptureModeModel.cpp:104
-#, kde-format
-msgid "Full Screen"
-msgstr "Celoten zaslon"
-
-#: src/CaptureModeModel.cpp:111
+#: src/CaptureModeModel.cpp:154
 #, kde-format
 msgid "All Screens (Scaled to same size)"
 msgstr "Vsi zasloni (umerjeni na isto velikost)"
 
-#: src/CaptureModeModel.cpp:117
+#: src/CaptureModeModel.cpp:156
 #, kde-format
 msgid "Current Screen"
 msgstr "Trenutni zaslon"
 
-#: src/CaptureModeModel.cpp:124
+#: src/CaptureModeModel.cpp:158
 #, kde-format
 msgid "Active Window"
 msgstr "Dejavno okno"
 
-#: src/CaptureModeModel.cpp:131
+#: src/CaptureModeModel.cpp:160
 #, kde-format
 msgid "Window Under Cursor"
 msgstr "Okno pod kazalko"
+
+#: src/CaptureModeModel.cpp:162
+#, kde-format
+msgid "All Screens"
+msgstr "Vsi zasloni"
+
+#: src/CaptureModeModel.cpp:164
+#, kde-format
+msgid "Full Screen"
+msgstr "Celoten zaslon"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -276,7 +276,7 @@ msgstr ""
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Tiskanje ni uspelo. Tiskalnika ni bilo mogoče zagnati."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:56
+#: src/Gui/AnnotationOptionsToolBarContents.qml:61
 #, kde-format
 msgid "Stroke:"
 msgstr "Zapis:"
@@ -284,7 +284,7 @@ msgstr "Zapis:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:91
+#: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -294,12 +294,12 @@ msgstr[1] "%1 sl. pika"
 msgstr[2] "%1 sl. piki"
 msgstr[3] "%1 sl. pike"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:96
+#: src/Gui/AnnotationOptionsToolBarContents.qml:98
 #, kde-format
 msgid "Stroke Width"
 msgstr "Širina zapisa"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:126
+#: src/Gui/AnnotationOptionsToolBarContents.qml:128
 #, kde-format
 msgid "Stroke Color"
 msgstr "Barva zapisa"
@@ -314,24 +314,24 @@ msgstr "Polnilo:"
 msgid "Fill Color"
 msgstr "Barva polnila"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:217
+#: src/Gui/AnnotationOptionsToolBarContents.qml:215
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
 msgstr "Moč:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:238
+#: src/Gui/AnnotationOptionsToolBarContents.qml:234
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
 msgstr "Moč učinka."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:265
+#: src/Gui/AnnotationOptionsToolBarContents.qml:261
 #, kde-format
 msgid "Font:"
 msgstr "Pisava:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:281
+#: src/Gui/AnnotationOptionsToolBarContents.qml:275
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -341,7 +341,7 @@ msgstr[1] "%2 %3 %1 pika"
 msgstr[2] "%2 %3 %1 piki"
 msgstr[3] "%2 %3 %1 pike"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:282
+#: src/Gui/AnnotationOptionsToolBarContents.qml:276
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -351,87 +351,87 @@ msgstr[1] "%2 %1 pika"
 msgstr[2] "%2 %1 piki"
 msgstr[3] "%2 %1 pike"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:294
+#: src/Gui/AnnotationOptionsToolBarContents.qml:288
 #, kde-format
 msgid "Font Color"
 msgstr "Barva pisave"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:335
+#: src/Gui/AnnotationOptionsToolBarContents.qml:327
 #, kde-format
 msgid "Number:"
 msgstr "Število:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:356
+#: src/Gui/AnnotationOptionsToolBarContents.qml:346
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Število za številske opombe"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:381
+#: src/Gui/AnnotationOptionsToolBarContents.qml:371
 #, kde-format
 msgid "Shadow"
 msgstr "Senca"
 
-#: src/Gui/AnnotationsToolBarContents.qml:95
+#: src/Gui/AnnotationsToolBarContents.qml:98
 #, kde-format
 msgid "None"
 msgstr "Nobeno"
 
-#: src/Gui/AnnotationsToolBarContents.qml:107
+#: src/Gui/AnnotationsToolBarContents.qml:110
 #, kde-format
 msgid "Crop"
 msgstr "Obreži"
 
-#: src/Gui/AnnotationsToolBarContents.qml:117
+#: src/Gui/AnnotationsToolBarContents.qml:120
 #, kde-format
 msgid "Select"
 msgstr "Izberi"
 
-#: src/Gui/AnnotationsToolBarContents.qml:125
+#: src/Gui/AnnotationsToolBarContents.qml:128
 #, kde-format
 msgid "Freehand"
 msgstr "Prostoročno"
 
-#: src/Gui/AnnotationsToolBarContents.qml:132
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgid "Highlighter"
 msgstr "Poudarjanje"
 
-#: src/Gui/AnnotationsToolBarContents.qml:139
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgid "Line"
 msgstr "Črta"
 
-#: src/Gui/AnnotationsToolBarContents.qml:146
+#: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgid "Arrow"
 msgstr "Puščica"
 
-#: src/Gui/AnnotationsToolBarContents.qml:153
+#: src/Gui/AnnotationsToolBarContents.qml:156
 #, kde-format
 msgid "Rectangle"
 msgstr "Pravokotnik"
 
-#: src/Gui/AnnotationsToolBarContents.qml:160
+#: src/Gui/AnnotationsToolBarContents.qml:163
 #, kde-format
 msgid "Ellipse"
 msgstr "Elipsa"
 
-#: src/Gui/AnnotationsToolBarContents.qml:167
+#: src/Gui/AnnotationsToolBarContents.qml:170
 #, kde-format
 msgid "Pixelate"
 msgstr "Spremeni v kvadratke"
 
-#: src/Gui/AnnotationsToolBarContents.qml:174
+#: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
 msgid "Blur"
 msgstr "Zamegli"
 
-#: src/Gui/AnnotationsToolBarContents.qml:181
+#: src/Gui/AnnotationsToolBarContents.qml:184
 #, kde-format
 msgid "Text"
 msgstr "Besedilo"
 
-#: src/Gui/AnnotationsToolBarContents.qml:188
+#: src/Gui/AnnotationsToolBarContents.qml:191
 #, kde-format
 msgid "Number"
 msgstr "Število"
@@ -1860,23 +1860,23 @@ msgstr ""
 "Okna ni bilo mogoče izbrati: nobenega okna bilo najdenega\n"
 "​"
 
-#: src/RecordingModeModel.cpp:71
+#: src/RecordingModeModel.cpp:91
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Pravokotno območje"
 
-#: src/RecordingModeModel.cpp:74
-#, kde-format
-msgctxt "@item recording mode"
-msgid "Full Screen"
-msgstr "Celoten zaslon"
-
-#: src/RecordingModeModel.cpp:77
+#: src/RecordingModeModel.cpp:93
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
 msgstr "Okno"
+
+#: src/RecordingModeModel.cpp:95
+#, kde-format
+msgctxt "@item recording mode"
+msgid "Full Screen"
+msgstr "Celoten zaslon"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
@@ -1928,31 +1928,31 @@ msgstr "Posnemi video pravokotnega območja"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
-#: src/SpectacleCore.cpp:238
+#: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:252
+#: src/SpectacleCore.cpp:251
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:257
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:258
+#: src/SpectacleCore.cpp:257
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Kliknite na sistemski pladenj za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -1962,19 +1962,19 @@ msgstr ""
 "Čas snemanja: %1\n"
 "Kliknite za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:317
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:695
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:927
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1983,23 +1983,23 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:955
+#: src/SpectacleCore.cpp:931
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:934
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
 
-#: src/SpectacleCore.cpp:962
+#: src/SpectacleCore.cpp:938
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:967
+#: src/SpectacleCore.cpp:943
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2008,35 +2008,35 @@ msgstr ""
 "Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:969
+#: src/SpectacleCore.cpp:945
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
 
-#: src/SpectacleCore.cpp:971
+#: src/SpectacleCore.cpp:947
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
 
-#: src/SpectacleCore.cpp:982
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:972
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"
 
-#: src/VideoFormatModel.cpp:26
+#: src/VideoFormatModel.cpp:31
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
 msgstr "WebM/VP9"
 
-#: src/VideoFormatModel.cpp:33
+#: src/VideoFormatModel.cpp:38
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
