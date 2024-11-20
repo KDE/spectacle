@@ -64,10 +64,6 @@ if(Qt6_VERSION VERSION_EQUAL 6.8.0)
     remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 endif()
 
-if (NOT TARGET Qt6::QWebpPlugin)
-    message(SEND_ERROR "Qt6::QWebpPlugin from QtImageFormats is missing. QWebpPlugin is needed for system tray icons when recording.")
-endif()
-
 find_package(
     KF6 ${KF_MIN_VERSION} REQUIRED
         CoreAddons
