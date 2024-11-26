@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:39+0000\n"
+"POT-Creation-Date: 2024-11-26 00:39+0000\n"
 "PO-Revision-Date: 2024-03-20 18:07+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1938,7 +1938,21 @@ msgstr ""
 "Spectacle nauhoittaa: %1\n"
 "Lopeta tallennus napsauttamalla"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:260
+#, kde-format
+msgctxt "missing webp support notification title"
+msgid "WebP support is missing."
+msgstr ""
+
+#: src/SpectacleCore.cpp:261
+#, kde-format
+msgctxt "missing webp support notification message"
+msgid ""
+"Please install Qt Image Formats to get animated system tray icons for "
+"Spectacle, and then report this packaging issue to your distributor."
+msgstr ""
+
+#: src/SpectacleCore.cpp:307
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid ""
@@ -1952,20 +1966,20 @@ msgstr ""
 "Spectacle nauhoittaa: %1\n"
 "Lopeta tallennus napsauttamalla"
 
-#: src/SpectacleCore.cpp:317
+#: src/SpectacleCore.cpp:324
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
-#: src/SpectacleCore.cpp:695
+#: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ei ole kelvollinen moodi --record"
 
-#: src/SpectacleCore.cpp:927
+#: src/SpectacleCore.cpp:934
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1974,23 +1988,23 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:931
+#: src/SpectacleCore.cpp:938
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:934
+#: src/SpectacleCore.cpp:941
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:938
+#: src/SpectacleCore.cpp:945
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:943
+#: src/SpectacleCore.cpp:950
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1999,24 +2013,24 @@ msgstr ""
 "Nauhoitus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston sijainti "
 "kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:945
+#: src/SpectacleCore.cpp:952
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Nauhoitus tallennettiin Videot-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:947
+#: src/SpectacleCore.cpp:954
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Nauhoitus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:972
+#: src/SpectacleCore.cpp:979
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"
