@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2024-11-26 02:29+0000\n"
 "PO-Revision-Date: 2024-05-30 13:40+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1884,7 +1884,21 @@ msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:261
+#, kde-format
+msgctxt "missing webp support notification title"
+msgid "WebP support is missing."
+msgstr ""
+
+#: src/SpectacleCore.cpp:262
+#, kde-format
+msgctxt "missing webp support notification message"
+msgid ""
+"Please install Qt Image Formats to get animated system tray icons for "
+"Spectacle, and then report this packaging issue to your distributor."
+msgstr ""
+
+#: src/SpectacleCore.cpp:308
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -1894,19 +1908,19 @@ msgstr ""
 "Délka nahrávání: %1\n"
 "Kliknutím ukončíte nahrávání"
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:325
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Při pokusu o záznam obrazovky se vyskytla chyba."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 není platný režim pro --record"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1915,23 +1929,23 @@ msgstr ""
 "Snímek obrazovky byl uložen jako  '%1' do '%2' cesta k jeho umístění byla "
 "uložena do schránky."
 
-#: src/SpectacleCore.cpp:955
+#: src/SpectacleCore.cpp:962
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snímek obrazovky byl uložen jako '%1' do vaší složky Obrázky."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímek obrazovky byl uložen jako '%1' do '%2'."
 
-#: src/SpectacleCore.cpp:962
+#: src/SpectacleCore.cpp:969
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snímek obrazovky byl uložen do schránky."
 
-#: src/SpectacleCore.cpp:967
+#: src/SpectacleCore.cpp:974
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -1940,24 +1954,24 @@ msgstr ""
 "Záznam byl uložen jako  '%1' do '%2' cesta k jeho umístění byla uložena do "
 "schránky."
 
-#: src/SpectacleCore.cpp:969
+#: src/SpectacleCore.cpp:976
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Záznam byl uložen jako '%1' do vaší složky Videa."
 
-#: src/SpectacleCore.cpp:971
+#: src/SpectacleCore.cpp:978
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Záznam byl uložen jako '%1' do '%2'."
 
-#: src/SpectacleCore.cpp:982
+#: src/SpectacleCore.cpp:989
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1003
 #, kde-format
 msgid "Annotate"
 msgstr "Anotace"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-27 00:39+0000\n"
+"POT-Creation-Date: 2024-11-26 02:29+0000\n"
 "PO-Revision-Date: 2024-05-17 10:33+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1945,7 +1945,21 @@ msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Op systeemvak klikken om opnemen te beëindigen"
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:261
+#, kde-format
+msgctxt "missing webp support notification title"
+msgid "WebP support is missing."
+msgstr ""
+
+#: src/SpectacleCore.cpp:262
+#, kde-format
+msgctxt "missing webp support notification message"
+msgid ""
+"Please install Qt Image Formats to get animated system tray icons for "
+"Spectacle, and then report this packaging issue to your distributor."
+msgstr ""
+
+#: src/SpectacleCore.cpp:308
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -1955,19 +1969,19 @@ msgstr ""
 "Opnametijd: %1\n"
 "Klik om opnemen te beëindigen"
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:325
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Er deed zich een fout bij een poging het scherm op te nemen."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:724
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 is geen geldige modus voor --record"
 
-#: src/SpectacleCore.cpp:951
+#: src/SpectacleCore.cpp:958
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -1976,24 +1990,24 @@ msgstr ""
 "De schermafdruk is opgeslagen als '%1'naar '%2' en het bestandspad van de "
 "schermafdruk is in het klembord opgeslagen."
 
-#: src/SpectacleCore.cpp:955
+#: src/SpectacleCore.cpp:962
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Een schermafdruk is opgenomen en opgeslagen als '%1' in uw map Afbeeldingen."
 
-#: src/SpectacleCore.cpp:958
+#: src/SpectacleCore.cpp:965
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Een schermafdruk is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:962
+#: src/SpectacleCore.cpp:969
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Een schermafdruk is opgeslagen naar uw klembord."
 
-#: src/SpectacleCore.cpp:967
+#: src/SpectacleCore.cpp:974
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2002,24 +2016,24 @@ msgstr ""
 "De opname is opgeslagen als '%1' naar '%2' en het bestandspad van de opname "
 "is in het klembord opgeslagen."
 
-#: src/SpectacleCore.cpp:969
+#: src/SpectacleCore.cpp:976
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Een opname is opgeslagen als '%1' in uw map Video's."
 
-#: src/SpectacleCore.cpp:971
+#: src/SpectacleCore.cpp:978
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Een opname is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:982
+#: src/SpectacleCore.cpp:989
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Openen"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1003
 #, kde-format
 msgid "Annotate"
 msgstr "Annotatie maken"
