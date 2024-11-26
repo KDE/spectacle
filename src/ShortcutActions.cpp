@@ -65,7 +65,9 @@ ShortcutActions::ShortcutActions()
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18n("Capture Window Under Cursor"), &mActions);
+        auto wayland = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>();
+        auto text = wayland ? i18nc("@action global shortcut", "Capture Selected Window") : i18nc("@action global shortcut", "Capture Window Under Cursor");
+        QAction *action = new QAction(text, &mActions);
         action->setObjectName(u"WindowUnderCursorScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
