@@ -256,7 +256,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
             const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
             s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media-record"_s, 4000);
-            if (!QMovie::supportedFormats().contains("WEBP"_ba)) {
+            if (!QMovie::supportedFormats().contains("webp"_ba)) {
                 const auto messageTitle = i18nc("missing webp support notification title", "WebP support is missing.");
                 const auto messageBody = i18nc("missing webp support notification message", "Please install Qt Image Formats to get animated system tray icons for Spectacle, and then report this packaging issue to your distributor.");
                 s_systemTrayIcon->showMessage(messageTitle, messageBody, u"dialog-warning"_s, 4000);
