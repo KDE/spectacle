@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 11:58+0200\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"PO-Revision-Date: 2024-11-26 22:19+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,42 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 24.02.2\n"
-
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "Pravokotno območje"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr "Vsi zasloni (umerjeni na isto velikost)"
-
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "Trenutni zaslon"
-
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "Dejavno okno"
-
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "Okno pod kazalko"
-
-#: src/CaptureModeModel.cpp:162
-#, kde-format
-msgid "All Screens"
-msgstr "Vsi zasloni"
-
-#: src/CaptureModeModel.cpp:164
-#, kde-format
-msgid "Full Screen"
-msgstr "Celoten zaslon"
+"X-Generator: Poedit 3.5\n"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1878,56 +1843,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Celoten zaslon"
 
-#: src/ShortcutActions.cpp:38
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "Zaženi Spectacle"
-
-#: src/ShortcutActions.cpp:44
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "Zajemi celotno namizje"
-
-#: src/ShortcutActions.cpp:50
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "Zajemi trenutni zaslon"
-
-#: src/ShortcutActions.cpp:56
-#, kde-format
-msgid "Capture Active Window"
-msgstr "Zajemi dejavno okno"
-
-#: src/ShortcutActions.cpp:62
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "Zajemi sliko pravokotnega območja"
-
-#: src/ShortcutActions.cpp:68
-#, kde-format
-msgid "Capture Window Under Cursor"
-msgstr "Zajemi okno pod kazalko"
-
-#: src/ShortcutActions.cpp:74
-#, kde-format
-msgid "Record Screen"
-msgstr "Posnemi video zaslona"
-
-#: src/ShortcutActions.cpp:80
-#, kde-format
-msgid "Record Window"
-msgstr "Posnemi video okna"
-
-#: src/ShortcutActions.cpp:86
-#, kde-format
-msgid "Record Rectangular Region"
-msgstr "Posnemi video pravokotnega območja"
-
-#: src/ShortcutActions.cpp:92
-#, kde-format
-msgid "Launch Spectacle without capturing"
-msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
-
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1956,7 +1871,7 @@ msgstr "Kliknite na sistemski pladenj za zaključek snemanja"
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Podpora za WebP manjka."
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1965,6 +1880,9 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Prosimo, namestite Qt Image Formats, da dobite animirane ikone v sistemski "
+"vrstici za Spectacle, nato pa to težavo s pakiranjem programja prijavite "
+"svojemu distributerju."
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -2055,6 +1973,57 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Rectangular Region"
+#~ msgstr "Pravokotno območje"
+
+#~ msgid "All Screens (Scaled to same size)"
+#~ msgstr "Vsi zasloni (umerjeni na isto velikost)"
+
+#~ msgid "Current Screen"
+#~ msgstr "Trenutni zaslon"
+
+#~ msgid "Active Window"
+#~ msgstr "Dejavno okno"
+
+#~ msgid "Window Under Cursor"
+#~ msgstr "Okno pod kazalko"
+
+#~ msgid "All Screens"
+#~ msgstr "Vsi zasloni"
+
+#~ msgid "Full Screen"
+#~ msgstr "Celoten zaslon"
+
+#~ msgid "Launch Spectacle"
+#~ msgstr "Zaženi Spectacle"
+
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "Zajemi celotno namizje"
+
+#~ msgid "Capture Current Monitor"
+#~ msgstr "Zajemi trenutni zaslon"
+
+#~ msgid "Capture Active Window"
+#~ msgstr "Zajemi dejavno okno"
+
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "Zajemi sliko pravokotnega območja"
+
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "Zajemi okno pod kazalko"
+
+#~ msgid "Record Screen"
+#~ msgstr "Posnemi video zaslona"
+
+#~ msgid "Record Window"
+#~ msgstr "Posnemi video okna"
+
+#~ msgid "Record Rectangular Region"
+#~ msgstr "Posnemi video pravokotnega območja"
+
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "Zaženi Spectacle ne da bi česarkoli zajel"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

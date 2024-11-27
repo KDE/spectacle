@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
 "PO-Revision-Date: 2024-05-17 12:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -19,41 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 24.02.2\n"
-
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "אזור מרובע"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr "כל המסכים (מותאמים לגודל זהה)"
-
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "מסך נוכחי"
-
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "חלון פעיל"
-
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "החלון שמתחת לעכבר"
-
-#: src/CaptureModeModel.cpp:162
-#, kde-format
-msgid "All Screens"
-msgstr "כל המסכים"
-
-#: src/CaptureModeModel.cpp:164
-#, kde-format
-msgid "Full Screen"
-msgstr "מסך מלא"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1831,56 +1796,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "מסך מלא"
 
-#: src/ShortcutActions.cpp:38
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "הפעלת Spectacle"
-
-#: src/ShortcutActions.cpp:44
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "צילום כל שולחן העבודה"
-
-#: src/ShortcutActions.cpp:50
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "צילום המסך הנוכחי"
-
-#: src/ShortcutActions.cpp:56
-#, kde-format
-msgid "Capture Active Window"
-msgstr "צילום החלון הפעיל"
-
-#: src/ShortcutActions.cpp:62
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "צילום אזור מרובע"
-
-#: src/ShortcutActions.cpp:68
-#, kde-format
-msgid "Capture Window Under Cursor"
-msgstr "צילום החלון שמתחת לסמן העכבר"
-
-#: src/ShortcutActions.cpp:74
-#, kde-format
-msgid "Record Screen"
-msgstr "הקלטת מסך"
-
-#: src/ShortcutActions.cpp:80
-#, kde-format
-msgid "Record Window"
-msgstr "הקלטת חלון"
-
-#: src/ShortcutActions.cpp:86
-#, kde-format
-msgid "Record Rectangular Region"
-msgstr "הקלטת אזור מרובע"
-
-#: src/ShortcutActions.cpp:92
-#, kde-format
-msgid "Launch Spectacle without capturing"
-msgstr "להפעיל את Spectacle מבלי לצלם"
-
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -2006,6 +1921,57 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Rectangular Region"
+#~ msgstr "אזור מרובע"
+
+#~ msgid "All Screens (Scaled to same size)"
+#~ msgstr "כל המסכים (מותאמים לגודל זהה)"
+
+#~ msgid "Current Screen"
+#~ msgstr "מסך נוכחי"
+
+#~ msgid "Active Window"
+#~ msgstr "חלון פעיל"
+
+#~ msgid "Window Under Cursor"
+#~ msgstr "החלון שמתחת לעכבר"
+
+#~ msgid "All Screens"
+#~ msgstr "כל המסכים"
+
+#~ msgid "Full Screen"
+#~ msgstr "מסך מלא"
+
+#~ msgid "Launch Spectacle"
+#~ msgstr "הפעלת Spectacle"
+
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "צילום כל שולחן העבודה"
+
+#~ msgid "Capture Current Monitor"
+#~ msgstr "צילום המסך הנוכחי"
+
+#~ msgid "Capture Active Window"
+#~ msgstr "צילום החלון הפעיל"
+
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "צילום אזור מרובע"
+
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "צילום החלון שמתחת לסמן העכבר"
+
+#~ msgid "Record Screen"
+#~ msgstr "הקלטת מסך"
+
+#~ msgid "Record Window"
+#~ msgstr "הקלטת חלון"
+
+#~ msgid "Record Rectangular Region"
+#~ msgstr "הקלטת אזור מרובע"
+
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "להפעיל את Spectacle מבלי לצלם"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

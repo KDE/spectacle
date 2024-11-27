@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
-"PO-Revision-Date: 2024-05-17 04:54+0200\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"PO-Revision-Date: 2024-11-26 05:22+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,42 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "მართკუთხედი რეგიონი"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr "ყველა ეკრანი (გადიდდება ერთ ზომამდე)"
-
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "მიმდინარე ეკრანი"
-
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "აქტიური ფანჯარა"
-
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "კურსორის ქვეშ მდებარე ფანჯარა"
-
-#: src/CaptureModeModel.cpp:162
-#, kde-format
-msgid "All Screens"
-msgstr "ყველა ეკრანი"
-
-#: src/CaptureModeModel.cpp:164
-#, kde-format
-msgid "Full Screen"
-msgstr "სრულეკრანიანი რეჟიმი"
+"X-Generator: Poedit 3.5\n"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1842,56 +1807,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "სრულეკრანიანი რეჟიმი"
 
-#: src/ShortcutActions.cpp:38
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "Spectacle-ის გაშვება"
-
-#: src/ShortcutActions.cpp:44
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "მთელი სამუშაო მაგიდის ჩაჭერა"
-
-#: src/ShortcutActions.cpp:50
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "მიმდინარე ეკრანის ჩაჭერა"
-
-#: src/ShortcutActions.cpp:56
-#, kde-format
-msgid "Capture Active Window"
-msgstr "აქტიური ფანჯრის ჩაჭერა"
-
-#: src/ShortcutActions.cpp:62
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "ოთხკუთხედი რეგიონის ჩაჭერა"
-
-#: src/ShortcutActions.cpp:68
-#, kde-format
-msgid "Capture Window Under Cursor"
-msgstr "კურსორის ქვეშ მყოფი კურსორის ჩაჭერა"
-
-#: src/ShortcutActions.cpp:74
-#, kde-format
-msgid "Record Screen"
-msgstr "ეკრანის ჩასწერა"
-
-#: src/ShortcutActions.cpp:80
-#, kde-format
-msgid "Record Window"
-msgstr "ფანჯრის ჩაწერა"
-
-#: src/ShortcutActions.cpp:86
-#, kde-format
-msgid "Record Rectangular Region"
-msgstr "მართკუთხედი რეგიონის ჩაწერა"
-
-#: src/ShortcutActions.cpp:92
-#, kde-format
-msgid "Launch Spectacle without capturing"
-msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
-
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1920,7 +1835,7 @@ msgstr "დააწკაპუნეთ ხატულას საათთ�
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "WebP-ის მხარდაჭერა აღმოჩენილი არაა."
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1929,6 +1844,9 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"დააყენეთ Qt-ის გამოსახულების ფორმატები, რომ Spectacle-სთვის ანიმაციის მქონე "
+"სისტემურ საათთან არსებულ ხატულა მიიღოთ. შემდეგ კი მისწერეთ ამ პაკეტის "
+"პრობლემის შესახებ თქვენ დისტრიბუტორს."
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -2019,6 +1937,57 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Rectangular Region"
+#~ msgstr "მართკუთხედი რეგიონი"
+
+#~ msgid "All Screens (Scaled to same size)"
+#~ msgstr "ყველა ეკრანი (გადიდდება ერთ ზომამდე)"
+
+#~ msgid "Current Screen"
+#~ msgstr "მიმდინარე ეკრანი"
+
+#~ msgid "Active Window"
+#~ msgstr "აქტიური ფანჯარა"
+
+#~ msgid "Window Under Cursor"
+#~ msgstr "კურსორის ქვეშ მდებარე ფანჯარა"
+
+#~ msgid "All Screens"
+#~ msgstr "ყველა ეკრანი"
+
+#~ msgid "Full Screen"
+#~ msgstr "სრულეკრანიანი რეჟიმი"
+
+#~ msgid "Launch Spectacle"
+#~ msgstr "Spectacle-ის გაშვება"
+
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "მთელი სამუშაო მაგიდის ჩაჭერა"
+
+#~ msgid "Capture Current Monitor"
+#~ msgstr "მიმდინარე ეკრანის ჩაჭერა"
+
+#~ msgid "Capture Active Window"
+#~ msgstr "აქტიური ფანჯრის ჩაჭერა"
+
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "ოთხკუთხედი რეგიონის ჩაჭერა"
+
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "კურსორის ქვეშ მყოფი კურსორის ჩაჭერა"
+
+#~ msgid "Record Screen"
+#~ msgstr "ეკრანის ჩასწერა"
+
+#~ msgid "Record Window"
+#~ msgstr "ფანჯრის ჩაწერა"
+
+#~ msgid "Record Rectangular Region"
+#~ msgstr "მართკუთხედი რეგიონის ჩაწერა"
+
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

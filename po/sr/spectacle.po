@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -18,50 +18,6 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
 "X-Associated-UI-Catalogs: kwidgetsaddons5_qt\n"
-
-# >> @item:inlistbox
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "правоугаона зона"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr ""
-
-# >> @item:inlistbox
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "тренутни екран"
-
-# >> @item:inlistbox
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "активни прозор"
-
-# >> @item:inlistbox
-# switch-rule: t-cursor > t-pointer
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "прозор под показивачем"
-
-#: src/CaptureModeModel.cpp:162
-#, fuzzy, kde-format
-#| msgctxt "The entire screen area was captured, heading"
-#| msgid "Full Screen Captured"
-msgid "All Screens"
-msgstr "Снимљен цео екран"
-
-#: src/CaptureModeModel.cpp:164
-#, fuzzy, kde-format
-#| msgctxt "The entire screen area was captured, heading"
-#| msgid "Full Screen Captured"
-msgid "Full Screen"
-msgstr "Снимљен цео екран"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1944,74 +1900,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Снимљен цео екран"
 
-# >> @item
-#: src/ShortcutActions.cpp:38
-#, fuzzy, kde-format
-#| msgid "Taken with Spectacle"
-msgid "Launch Spectacle"
-msgstr "снимљено Спектаклом"
-
-#: src/ShortcutActions.cpp:44
-#, fuzzy, kde-format
-#| msgid "Capture the entire desktop (default)"
-msgid "Capture Entire Desktop"
-msgstr "Сними целу површ (подразумевано)"
-
-#: src/ShortcutActions.cpp:50
-#, fuzzy, kde-format
-#| msgid "Capture the current monitor"
-msgid "Capture Current Monitor"
-msgstr "Сними тренутни монитор"
-
-#: src/ShortcutActions.cpp:56
-#, fuzzy, kde-format
-#| msgid "Capture the active window"
-msgid "Capture Active Window"
-msgstr "Сними активни прозор"
-
-# >> @item:inlistbox
-#: src/ShortcutActions.cpp:62
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
-msgid "Capture Rectangular Region"
-msgstr "правоугаона зона"
-
-# >> @item:inlistbox
-# switch-rule: t-cursor > t-pointer
-#: src/ShortcutActions.cpp:68
-#, fuzzy, kde-format
-#| msgid "Window Under Cursor"
-msgid "Capture Window Under Cursor"
-msgstr "прозор под показивачем"
-
-# >> @item:inlistbox
-#: src/ShortcutActions.cpp:74
-#, fuzzy, kde-format
-#| msgid "Current Screen"
-msgid "Record Screen"
-msgstr "тренутни екран"
-
-# >> @item:inlistbox
-#: src/ShortcutActions.cpp:80
-#, fuzzy, kde-format
-#| msgid "Active Window"
-msgid "Record Window"
-msgstr "активни прозор"
-
-# >> @item:inlistbox
-#: src/ShortcutActions.cpp:86
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
-msgid "Record Rectangular Region"
-msgstr "правоугаона зона"
-
-# >> @item
-#: src/ShortcutActions.cpp:92
-#, fuzzy, kde-format
-#| msgid "Taken with Spectacle"
-msgid "Launch Spectacle without capturing"
-msgstr "снимљено Спектаклом"
-
 #: src/SpectacleCore.cpp:237
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
@@ -2144,6 +2032,93 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
+
+# >> @item:inlistbox
+#~ msgid "Rectangular Region"
+#~ msgstr "правоугаона зона"
+
+# >> @item:inlistbox
+#~ msgid "Current Screen"
+#~ msgstr "тренутни екран"
+
+# >> @item:inlistbox
+#~ msgid "Active Window"
+#~ msgstr "активни прозор"
+
+# >> @item:inlistbox
+# switch-rule: t-cursor > t-pointer
+#~ msgid "Window Under Cursor"
+#~ msgstr "прозор под показивачем"
+
+#, fuzzy
+#~| msgctxt "The entire screen area was captured, heading"
+#~| msgid "Full Screen Captured"
+#~ msgid "All Screens"
+#~ msgstr "Снимљен цео екран"
+
+#, fuzzy
+#~| msgctxt "The entire screen area was captured, heading"
+#~| msgid "Full Screen Captured"
+#~ msgid "Full Screen"
+#~ msgstr "Снимљен цео екран"
+
+# >> @item
+#, fuzzy
+#~| msgid "Taken with Spectacle"
+#~ msgid "Launch Spectacle"
+#~ msgstr "снимљено Спектаклом"
+
+#, fuzzy
+#~| msgid "Capture the entire desktop (default)"
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "Сними целу површ (подразумевано)"
+
+#, fuzzy
+#~| msgid "Capture the current monitor"
+#~ msgid "Capture Current Monitor"
+#~ msgstr "Сними тренутни монитор"
+
+#, fuzzy
+#~| msgid "Capture the active window"
+#~ msgid "Capture Active Window"
+#~ msgstr "Сними активни прозор"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Rectangular Region"
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "правоугаона зона"
+
+# >> @item:inlistbox
+# switch-rule: t-cursor > t-pointer
+#, fuzzy
+#~| msgid "Window Under Cursor"
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "прозор под показивачем"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Current Screen"
+#~ msgid "Record Screen"
+#~ msgstr "тренутни екран"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Active Window"
+#~ msgid "Record Window"
+#~ msgstr "активни прозор"
+
+# >> @item:inlistbox
+#, fuzzy
+#~| msgid "Rectangular Region"
+#~ msgid "Record Rectangular Region"
+#~ msgstr "правоугаона зона"
+
+# >> @item
+#, fuzzy
+#~| msgid "Taken with Spectacle"
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "снимљено Спектаклом"
 
 #, fuzzy
 #~| msgid "Take a New Screenshot"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
-"PO-Revision-Date: 2024-05-18 01:16+0200\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"PO-Revision-Date: 2024-11-26 19:39+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,42 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
-
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "Región rectangular"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr "Todas las pantallas (escaladas al mismo tamaño)"
-
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "Pantalla actual"
-
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "Ventana activa"
-
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "Ventana bajo el cursor"
-
-#: src/CaptureModeModel.cpp:162
-#, kde-format
-msgid "All Screens"
-msgstr "Todas las pantallas"
-
-#: src/CaptureModeModel.cpp:164
-#, kde-format
-msgid "Full Screen"
-msgstr "Pantalla completa"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1896,56 +1861,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/ShortcutActions.cpp:38
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "Iniciar Spectacle"
-
-#: src/ShortcutActions.cpp:44
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "Capturar todo el escritorio"
-
-#: src/ShortcutActions.cpp:50
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "Capturar el monitor actual"
-
-#: src/ShortcutActions.cpp:56
-#, kde-format
-msgid "Capture Active Window"
-msgstr "Capturar la ventana activa"
-
-#: src/ShortcutActions.cpp:62
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "Capturar una región rectangular"
-
-#: src/ShortcutActions.cpp:68
-#, kde-format
-msgid "Capture Window Under Cursor"
-msgstr "Capturar la ventana bajo el cursor"
-
-#: src/ShortcutActions.cpp:74
-#, kde-format
-msgid "Record Screen"
-msgstr "Grabar pantalla"
-
-#: src/ShortcutActions.cpp:80
-#, kde-format
-msgid "Record Window"
-msgstr "Grabar ventana"
-
-#: src/ShortcutActions.cpp:86
-#, kde-format
-msgid "Record Rectangular Region"
-msgstr "Grabar región rectangular"
-
-#: src/ShortcutActions.cpp:92
-#, kde-format
-msgid "Launch Spectacle without capturing"
-msgstr "Iniciar Spectacle sin capturar"
-
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1974,7 +1889,7 @@ msgstr "Clic en el icono de la bandeja del sistema para terminar la grabación"
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Falta la compatibilidad con WebP."
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1983,6 +1898,9 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Instale los formatos de imagen de Qt para disponer de iconos animados en la "
+"bandeja del sistema para Spectacle e informe de este problema de empaquetado "
+"a su distribuidor."
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -2073,6 +1991,57 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Rectangular Region"
+#~ msgstr "Región rectangular"
+
+#~ msgid "All Screens (Scaled to same size)"
+#~ msgstr "Todas las pantallas (escaladas al mismo tamaño)"
+
+#~ msgid "Current Screen"
+#~ msgstr "Pantalla actual"
+
+#~ msgid "Active Window"
+#~ msgstr "Ventana activa"
+
+#~ msgid "Window Under Cursor"
+#~ msgstr "Ventana bajo el cursor"
+
+#~ msgid "All Screens"
+#~ msgstr "Todas las pantallas"
+
+#~ msgid "Full Screen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "Launch Spectacle"
+#~ msgstr "Iniciar Spectacle"
+
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "Capturar todo el escritorio"
+
+#~ msgid "Capture Current Monitor"
+#~ msgstr "Capturar el monitor actual"
+
+#~ msgid "Capture Active Window"
+#~ msgstr "Capturar la ventana activa"
+
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "Capturar una región rectangular"
+
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "Capturar la ventana bajo el cursor"
+
+#~ msgid "Record Screen"
+#~ msgstr "Grabar pantalla"
+
+#~ msgid "Record Window"
+#~ msgstr "Grabar ventana"
+
+#~ msgid "Record Rectangular Region"
+#~ msgstr "Grabar región rectangular"
+
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "Iniciar Spectacle sin capturar"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

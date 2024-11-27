@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:39+0000\n"
-"PO-Revision-Date: 2024-08-15 05:53+0900\n"
+"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"PO-Revision-Date: 2024-11-26 21:50+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -17,42 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
-
-#: src/CaptureModeModel.cpp:152
-#, kde-format
-msgid "Rectangular Region"
-msgstr "矩形區域"
-
-#: src/CaptureModeModel.cpp:154
-#, kde-format
-msgid "All Screens (Scaled to same size)"
-msgstr "所有螢幕（縮放至同樣尺寸）"
-
-#: src/CaptureModeModel.cpp:156
-#, kde-format
-msgid "Current Screen"
-msgstr "目前的螢幕"
-
-#: src/CaptureModeModel.cpp:158
-#, kde-format
-msgid "Active Window"
-msgstr "作用中視窗"
-
-#: src/CaptureModeModel.cpp:160
-#, kde-format
-msgid "Window Under Cursor"
-msgstr "游標下的視窗"
-
-#: src/CaptureModeModel.cpp:162
-#, kde-format
-msgid "All Screens"
-msgstr "所有螢幕"
-
-#: src/CaptureModeModel.cpp:164
-#, kde-format
-msgid "Full Screen"
-msgstr "全螢幕"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1800,56 +1765,6 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "全螢幕"
 
-#: src/ShortcutActions.cpp:38
-#, kde-format
-msgid "Launch Spectacle"
-msgstr "啟動 Spectacle"
-
-#: src/ShortcutActions.cpp:44
-#, kde-format
-msgid "Capture Entire Desktop"
-msgstr "擷取整個桌面"
-
-#: src/ShortcutActions.cpp:50
-#, kde-format
-msgid "Capture Current Monitor"
-msgstr "擷取目前顯示器"
-
-#: src/ShortcutActions.cpp:56
-#, kde-format
-msgid "Capture Active Window"
-msgstr "擷取作用中視窗"
-
-#: src/ShortcutActions.cpp:62
-#, kde-format
-msgid "Capture Rectangular Region"
-msgstr "擷取矩形區域"
-
-#: src/ShortcutActions.cpp:68
-#, kde-format
-msgid "Capture Window Under Cursor"
-msgstr "擷取游標下的視窗"
-
-#: src/ShortcutActions.cpp:74
-#, kde-format
-msgid "Record Screen"
-msgstr "錄製螢幕"
-
-#: src/ShortcutActions.cpp:80
-#, kde-format
-msgid "Record Window"
-msgstr "錄製視窗"
-
-#: src/ShortcutActions.cpp:86
-#, kde-format
-msgid "Record Rectangular Region"
-msgstr "錄製矩形區域"
-
-#: src/ShortcutActions.cpp:92
-#, kde-format
-msgid "Launch Spectacle without capturing"
-msgstr "啟動 Spectacle 但不擷取"
-
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1878,7 +1793,7 @@ msgstr "點擊系統匣圖示以完成錄製"
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "缺乏 WebP 支援。"
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1887,6 +1802,8 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"請安裝「Qt 影像格式 (Qt Image Formats)」來讓 Spectacle 的系統匣圖示有動態效"
+"果，並請與您的發行版或軟體包打包者回報此問題。"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -1973,6 +1890,57 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#~ msgid "Rectangular Region"
+#~ msgstr "矩形區域"
+
+#~ msgid "All Screens (Scaled to same size)"
+#~ msgstr "所有螢幕（縮放至同樣尺寸）"
+
+#~ msgid "Current Screen"
+#~ msgstr "目前的螢幕"
+
+#~ msgid "Active Window"
+#~ msgstr "作用中視窗"
+
+#~ msgid "Window Under Cursor"
+#~ msgstr "游標下的視窗"
+
+#~ msgid "All Screens"
+#~ msgstr "所有螢幕"
+
+#~ msgid "Full Screen"
+#~ msgstr "全螢幕"
+
+#~ msgid "Launch Spectacle"
+#~ msgstr "啟動 Spectacle"
+
+#~ msgid "Capture Entire Desktop"
+#~ msgstr "擷取整個桌面"
+
+#~ msgid "Capture Current Monitor"
+#~ msgstr "擷取目前顯示器"
+
+#~ msgid "Capture Active Window"
+#~ msgstr "擷取作用中視窗"
+
+#~ msgid "Capture Rectangular Region"
+#~ msgstr "擷取矩形區域"
+
+#~ msgid "Capture Window Under Cursor"
+#~ msgstr "擷取游標下的視窗"
+
+#~ msgid "Record Screen"
+#~ msgstr "錄製螢幕"
+
+#~ msgid "Record Window"
+#~ msgstr "錄製視窗"
+
+#~ msgid "Record Rectangular Region"
+#~ msgstr "錄製矩形區域"
+
+#~ msgid "Launch Spectacle without capturing"
+#~ msgstr "啟動 Spectacle 但不擷取"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
