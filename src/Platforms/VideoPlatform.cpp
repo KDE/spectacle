@@ -54,6 +54,7 @@ QString VideoPlatform::extensionForFormat(Format format)
     case WebM_VP9: return "webm"_L1;
     case MP4_H264: return "mp4"_L1;
     case WebP: return "webp"_L1;
+    case Gif: return "gif"_L1;
     default: return {};
     }
 }
@@ -67,6 +68,8 @@ VideoPlatform::Format VideoPlatform::formatForExtension(const QString &extension
         return MP4_H264;
     } else if (lowercaseExtension == "webp"_L1) {
         return WebP;
+    } else if (lowercaseExtension == "gif"_L1) {
+        return Gif;
     } else {
         return NoFormat;
     }

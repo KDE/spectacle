@@ -47,6 +47,13 @@ void VideoFormatModel::setFormats(VideoPlatform::Formats formats)
             VideoPlatform::extensionForFormat(VideoPlatform::WebP),
         });
     }
+    if (formats.testFlag(VideoPlatform::Gif)) {
+        m_data.append({
+            i18nc("@item:inlistbox Container/encoder", "GIF (compatible, but inefficient)"),
+            VideoPlatform::Gif,
+            VideoPlatform::extensionForFormat(VideoPlatform::Gif),
+        });
+    }
     Q_EMIT countChanged();
 }
 

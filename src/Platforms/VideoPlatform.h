@@ -92,6 +92,14 @@ public:
          * Disadvantages: No accelerated encoding support and no audio.
          */
         WebP = 1 << 2,
+        /**
+         * GIF container with the best available GIF encoder.
+         *
+         * Advantages: Works OOTB on most Linux distros and well supported by web browsers.
+         *
+         * Disadvantages: Terrible compression, no accelerated encoding support, no audio.
+         */
+        Gif = 1 << 3,
         /// Used to define the default format for settings
         DefaultFormat = WebM_VP9,
     };
