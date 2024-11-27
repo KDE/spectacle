@@ -14,29 +14,58 @@ import "Annotations"
 
 FocusScope {
     id: root
-    // BUG with mediaPlayer.playing: https://bugreports.qt.io/browse/QTBUG-117006
-    readonly property bool playing: mediaPlayer.playbackState === MediaPlayer.PlayingState
+    readonly property bool hasAnimatedImage: animatedImage.status === Image.Ready
+    readonly property bool hasContent: hasAnimatedImage || mediaPlayer.hasVideo
+    readonly property bool playing: hasAnimatedImage ? animatedImage.playing : mediaPlayer.playing
+
+    function togglePlay() {
+        if (root.playing) {
+            if (root.hasAnimatedImage) {
+                animatedImage.playing = false
+                return
+            }
+            mediaPlayer.pause()
+        } else {
+            if (root.hasAnimatedImage) {
+                animatedImage.playing = true
+                return
+            }
+            mediaPlayer.play()
+        }
+    }
 
     MouseArea {
-        anchors.fill: videoOutput
+        anchors.fill: parent
         cursorShape: enabled ?
             (pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
             : undefined
-        enabled: mediaPlayer.hasVideo
+        enabled: root.hasContent
         onPositionChanged: {
             contextWindow.startDrag()
         }
+        onClicked: root.togglePlay()
+    }
+
+    // When QtMultimedia uses the FFmpeg backend, it can't play certain animated
+    // image formats such as WebP.
+    AnimatedImage {
+        id: animatedImage
+        anchors.fill: parent
+        source: SpectacleCore.currentVideo
+        visible: status === Image.Ready
+        fillMode: Image.PreserveAspectFit
     }
 
     VideoOutput {
         id: videoOutput
+        visible: mediaPlayer.hasVideo
         anchors.fill: parent
         fillMode: VideoOutput.PreserveAspectFit
     }
 
     MediaPlayer {
         id: mediaPlayer
-        source: SpectacleCore.currentVideo
+        source: root.hasAnimatedImage ? "" : SpectacleCore.currentVideo
         videoOutput: videoOutput
         onHasVideoChanged: if (hasVideo) {
             pause();
@@ -68,37 +97,63 @@ FocusScope {
     FloatingToolBar {
         id: toolBar
         anchors.left: parent.left
-        anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: padding * 2
+        width: root.hasAnimatedImage ? implicitWidth : parent.width - anchors.margins * 2
         visible: false
         opacity: 0
-        enabled: mediaPlayer.hasVideo
+        enabled: root.hasContent
         contentItem: RowLayout {
             spacing: parent.spacing
             ToolButton {
                 id: playPauseButton
+                containmentMask: Item {
+                    parent: playPauseButton
+                    anchors {
+                        fill: parent
+                        leftMargin: toolBar.mirrored ? -toolBar.rightPadding : -toolBar.leftPadding
+                        rightMargin: {
+                            if (root.hasAnimatedImage) {
+                                return toolBar.mirrored ? -toolBar.leftPadding : -toolBar.rightPadding
+                            }
+                            return -toolBar.spacing / 2
+                        }
+                        topMargin: -toolBar.topPadding
+                        bottomMargin: -toolBar.bottomPadding
+                    }
+                }
                 icon.name: root.playing ?
                     "media-playback-pause" : "media-playback-start"
                 text: root.playing ? i18n("Pause") : i18n("Play")
                 display: QQC.ToolButton.IconOnly
-                onClicked: if (root.playing) {
-                    mediaPlayer.pause()
-                } else {
-                    mediaPlayer.play()
-                }
+                onClicked: root.togglePlay()
             }
             QQC.Slider {
                 id: seekBar
+                containmentMask: Item {
+                    parent: seekBar
+                    anchors {
+                        fill: parent
+                        leftMargin: -toolBar.spacing / 2
+                        rightMargin: -toolBar.spacing / 2
+                        topMargin: -toolBar.topPadding
+                        bottomMargin: -toolBar.bottomPadding
+                    }
+                }
+                visible: !root.hasAnimatedImage
                 Layout.fillWidth: true
                 enabled: mediaPlayer.seekable
                 wheelEnabled: false
                 from: 0
                 to: Math.max(1, mediaPlayer.duration)
                 value: mediaPlayer.position
-                onMoved: mediaPlayer.setPosition(Math.round(value))
+                onMoved: {
+                    const pos = Math.round(value)
+                    mediaPlayer.setPosition(pos)
+                }
             }
             QQC.Label {
+                visible: !root.hasAnimatedImage
                 leftPadding: parent.spacing
                 rightPadding: parent.spacing
                 horizontalAlignment: Text.AlignHCenter
@@ -117,7 +172,7 @@ FocusScope {
         states: [
             State {
                 name: "hovered"
-                when: tbHoverHandler.hovered && mediaPlayer.hasVideo
+                when: tbHoverHandler.hovered && root.hasContent
                 PropertyChanges {
                     target: toolBar
                     opacity: 1
@@ -125,7 +180,7 @@ FocusScope {
             },
             State {
                 name: "normal"
-                when: !tbHoverHandler.hovered
+                when: !tbHoverHandler.hovered || !root.hasContent
                 PropertyChanges {
                     target: toolBar
                     opacity: 0
