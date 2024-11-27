@@ -61,7 +61,7 @@ public:
      */
     enum Format {
         /// A value for when no encoders are available.
-        NoFormat = 0b00,
+        NoFormat = 0,
         /**
          * WebM container with the best available VP9 encoder.
          *
@@ -71,7 +71,7 @@ public:
          *
          * If we add audio support, this should use Opus.
          */
-        WebM_VP9 = 0b01,
+        WebM_VP9 = 1,
         /**
          * MP4 container with the best available H.264 encoder.
          *
@@ -83,7 +83,15 @@ public:
          *
          * If we add audio support, this should use AAC.
          */
-        MP4_H264 = 0b10,
+        MP4_H264 = 1 << 1,
+        /**
+         * WebP container with the best available WebP encoder.
+         *
+         * Advantages: Works OOTB on most Linux distros and well supported by web browsers.
+         *
+         * Disadvantages: No accelerated encoding support and no audio.
+         */
+        WebP = 1 << 2,
         /// Used to define the default format for settings
         DefaultFormat = WebM_VP9,
     };

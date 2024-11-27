@@ -69,6 +69,7 @@ VideoPlatform::Format VideoPlatformWayland::formatForEncoder(Encoder encoder) co
     case Encoder::VP9: return WebM_VP9;
     case Encoder::H264Main: return MP4_H264;
     case Encoder::H264Baseline: return MP4_H264;
+    case Encoder::WebP: return WebP;
     default: return NoFormat;
     }
 }
@@ -86,6 +87,9 @@ PipeWireBaseEncodedStream::Encoder VideoPlatformWayland::encoderForFormat(Format
         if (encoders.contains(Encoder::H264Baseline)) {
             return Encoder::H264Baseline;
         }
+    }
+    if (format == WebP && encoders.contains(Encoder::WebP)) {
+        return Encoder::WebP;
     }
     return Encoder::NoEncoder;
 }

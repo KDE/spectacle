@@ -40,6 +40,13 @@ void VideoFormatModel::setFormats(VideoPlatform::Formats formats)
             VideoPlatform::extensionForFormat(VideoPlatform::MP4_H264),
         });
     }
+    if (formats.testFlag(VideoPlatform::WebP)) {
+        m_data.append({
+            i18nc("@item:inlistbox Container/encoder", "Animated WebP"),
+            VideoPlatform::WebP,
+            VideoPlatform::extensionForFormat(VideoPlatform::WebP),
+        });
+    }
     Q_EMIT countChanged();
 }
 
