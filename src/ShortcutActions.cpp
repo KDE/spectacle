@@ -34,65 +34,64 @@ ShortcutActions::ShortcutActions()
     // RecordWindow
     // RecordRegion
     // _launch
-    static const auto i18nContext = "@action global shortcut";
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Launch Spectacle"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Launch Spectacle"), &mActions);
         action->setObjectName(u"_launch"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Capture Entire Desktop"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Capture Entire Desktop"), &mActions);
         action->setObjectName(u"FullScreenScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Capture Current Monitor"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Capture Current Monitor"), &mActions);
         action->setObjectName(u"CurrentMonitorScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Capture Active Window"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Capture Active Window"), &mActions);
         action->setObjectName(u"ActiveWindowScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Capture Rectangular Region"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Capture Rectangular Region"), &mActions);
         action->setObjectName(u"RectangularRegionScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
         auto wayland = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>();
-        auto text = wayland ? i18nc(i18nContext, "Capture Selected Window") : i18nc(i18nContext, "Capture Window Under Cursor");
+        auto text = wayland ? i18nc("@action global shortcut", "Capture Selected Window") : i18nc("@action global shortcut", "Capture Window Under Cursor");
         QAction *action = new QAction(text, &mActions);
         action->setObjectName(u"WindowUnderCursorScreenShot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Record Screen"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Record Screen"), &mActions);
         action->setObjectName(u"RecordScreen"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Record Window"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Record Window"), &mActions);
         action->setObjectName(u"RecordWindow"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Record Rectangular Region"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Record Rectangular Region"), &mActions);
         action->setObjectName(u"RecordRegion"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc(i18nContext, "Launch Spectacle without capturing"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Launch Spectacle without capturing"), &mActions);
         action->setObjectName(u"OpenWithoutScreenshot"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);

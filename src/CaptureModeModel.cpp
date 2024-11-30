@@ -147,24 +147,23 @@ void CaptureModeModel::setGrabModes(ImagePlatform::GrabModes modes)
 
 QString CaptureModeModel::captureModeLabel(CaptureMode mode)
 {
-    static const auto i18nContext = "@action in capture mode section";
     switch (mode) {
     case CaptureMode::RectangularRegion:
-        return i18nc(i18nContext, "Rectangular Region");
+        return i18nc("@action in capture mode section", "Rectangular Region");
     case CaptureMode::AllScreensScaled:
-        return i18nc(i18nContext, "All Screens (Scaled to same size)");
+        return i18nc("@action in capture mode section", "All Screens (Scaled to same size)");
     case CaptureMode::CurrentScreen:
-        return i18nc(i18nContext, "Current Screen");
+        return i18nc("@action in capture mode section", "Current Screen");
     case CaptureMode::ActiveWindow:
-        return i18nc(i18nContext, "Active Window");
+        return i18nc("@action in capture mode section", "Active Window");
     case CaptureMode::WindowUnderCursor: {
         auto wayland = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>();
-        return wayland ? i18nc(i18nContext, "Select Window") : i18nc(i18nContext, "Window Under Cursor");
+        return wayland ? i18nc("@action in capture mode section", "Select Window") : i18nc("@action in capture mode section", "Window Under Cursor");
     }
     case CaptureMode::AllScreens:
-        return i18nc(i18nContext, "All Screens");
+        return i18nc("@action in capture mode section", "All Screens");
     case CaptureMode::FullScreen:
-        return i18nc(i18nContext, "Full Screen");
+        return i18nc("@action in capture mode section", "Full Screen");
     }
     return QString{};
 }
