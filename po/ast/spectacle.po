@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-03-14 23:18+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -16,6 +16,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.0\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Rexón rectangular"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:158
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:161
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:161
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Toles pantalles"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Toles pantalles"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1750,6 +1801,74 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr ""
 
+#: src/ShortcutActions.cpp:38
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr ""
+
+#: src/ShortcutActions.cpp:44
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr ""
+
+#: src/ShortcutActions.cpp:50
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr ""
+
+#: src/ShortcutActions.cpp:56
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr ""
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Rexón rectangular"
+
+#: src/ShortcutActions.cpp:69
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr ""
+
+#: src/ShortcutActions.cpp:69
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr ""
+
+#: src/ShortcutActions.cpp:76
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr ""
+
+#: src/ShortcutActions.cpp:82
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr ""
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Rexón rectangular"
+
+#: src/ShortcutActions.cpp:94
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr ""
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1871,12 +1990,6 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Rexón rectangular"
-
-#~ msgid "All Screens"
-#~ msgstr "Toles pantalles"
 
 #, fuzzy
 #~| msgctxt "Decimal number of seconds"

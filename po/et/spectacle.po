@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2020-10-25 22:13+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -17,6 +17,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.08.2\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Ristkülikukujuline ala"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Aktiivne ekraan"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Aktiivne aken"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Aktiivne aken"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Aken kursori all"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Täisekraan"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Täisekraan"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1874,6 +1929,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Täisekraan"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Käivita Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Kogu ekraani pildistamine"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Aktiivse monitori pildistamine"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Aktiivse akna pildistamine"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Ristkülikukujulise ala pildistamine"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Aktiivse akna pildistamine"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Aken kursori all"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Salvesta ekraani"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Salvesta ekraani"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Ristkülikukujuline ala"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Käivita Spectacle"
+
 #: src/SpectacleCore.cpp:237
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
@@ -2010,66 +2142,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
 
-#~ msgid "Rectangular Region"
-#~ msgstr "Ristkülikukujuline ala"
-
-#~ msgid "Current Screen"
-#~ msgstr "Aktiivne ekraan"
-
-#~ msgid "Active Window"
-#~ msgstr "Aktiivne aken"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Aken kursori all"
-
-#, fuzzy
-#~| msgid "Full Screen"
-#~ msgid "All Screens"
-#~ msgstr "Täisekraan"
-
-#~ msgid "Full Screen"
-#~ msgstr "Täisekraan"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Käivita Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Kogu ekraani pildistamine"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Aktiivse monitori pildistamine"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Aktiivse akna pildistamine"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Ristkülikukujulise ala pildistamine"
-
-#, fuzzy
-#~| msgid "Window Under Cursor"
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Aken kursori all"
-
-#, fuzzy
-#~| msgid "Record Screen"
-#~ msgid "Record Screen"
-#~ msgstr "Salvesta ekraani"
-
-#, fuzzy
-#~| msgid "Record Screen"
-#~ msgid "Record Window"
-#~ msgstr "Salvesta ekraani"
-
-#, fuzzy
-#~| msgid "Rectangular Region"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Ristkülikukujuline ala"
-
-#, fuzzy
-#~| msgid "Launch Spectacle"
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Käivita Spectacle"
-
 #, fuzzy
 #~| msgid "Take a New Screenshot"
 #~ msgctxt "@title:group"
@@ -2195,11 +2267,6 @@ msgstr ""
 #~ msgctxt "@item recording mode"
 #~ msgid "Screen"
 #~ msgstr "Tee uus pilt"
-
-#, fuzzy
-#~| msgid "Active Window"
-#~ msgid "Selected Window"
-#~ msgstr "Aktiivne aken"
 
 #, fuzzy
 #~| msgid "Save"

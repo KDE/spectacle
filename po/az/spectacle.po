@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-08-13 16:04+0400\n"
 "Last-Translator: Khayyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.05.2\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Dördbucaqlı sahə"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Bütün ekranlar (Eyni ölçüyə miqyaslanıb)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Cari ekran"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Aktiv Pəncərə"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Aktiv Pəncərə"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Kursor altındakı pəncərə"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Tam ekranlar"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Tam ekran"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1823,6 +1879,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Tam ekran"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Spectacle başladın"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Bütün İş Masalarını çəkmək"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Cari monitoru çəkmək"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Aktiv pəncərəni çəkmək"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Dördbucaqlı bölməni çəkmək"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Aktiv pəncərəni çəkmək"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Kursor altındakı pəncərəni çəkmək"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Ekranı yazmaq"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Pəncərəni yazmaq"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Dördbucaqlı sahəni yazmaq"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Spectacle-ı şəkil çəkmədən başlatmaq"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1950,57 +2083,6 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Dördbucaqlı sahə"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Bütün ekranlar (Eyni ölçüyə miqyaslanıb)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Cari ekran"
-
-#~ msgid "Active Window"
-#~ msgstr "Aktiv Pəncərə"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Kursor altındakı pəncərə"
-
-#~ msgid "All Screens"
-#~ msgstr "Tam ekranlar"
-
-#~ msgid "Full Screen"
-#~ msgstr "Tam ekran"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Spectacle başladın"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Bütün İş Masalarını çəkmək"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Cari monitoru çəkmək"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Aktiv pəncərəni çəkmək"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Dördbucaqlı bölməni çəkmək"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Kursor altındakı pəncərəni çəkmək"
-
-#~ msgid "Record Screen"
-#~ msgstr "Ekranı yazmaq"
-
-#~ msgid "Record Window"
-#~ msgstr "Pəncərəni yazmaq"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Dördbucaqlı sahəni yazmaq"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Spectacle-ı şəkil çəkmədən başlatmaq"
 
 #, fuzzy
 #~| msgid "Take a New Screenshot"
@@ -2134,11 +2216,6 @@ msgstr "MP4/H.264"
 #~ msgctxt "@item recording mode"
 #~ msgid "Screen"
 #~ msgstr "Yeni ekran şəkli çəkmək"
-
-#, fuzzy
-#~| msgid "Active Window"
-#~ msgid "Selected Window"
-#~ msgstr "Aktiv Pəncərə"
 
 #, fuzzy
 #~| msgid "Save"

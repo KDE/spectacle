@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-05-30 13:40+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 24.02.2\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Obdélníková oblast"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Všechny obrazovky (škálované na stejnou velikost)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Aktuální obrazovka"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Aktivní okno"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Aktivní okno"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Okno pod kurzorem"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Všechny obrazovky"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Celá obrazovka"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1775,6 +1831,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Celá obrazovka"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Spustit Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Sejmout celou plochu"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Sejmout současný monitor"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Sejmout aktivní okno"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Sejmout obdélníkovou oblast"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Sejmout aktivní okno"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Sejmout okno pod kurzorem"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Nahrávat obrazovku"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Zaznamenat okno"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Zaznamenat obdélníkovou oblast"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Spustit Spectacle bez sejmutí"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1902,54 +2035,3 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Obdélníková oblast"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Všechny obrazovky (škálované na stejnou velikost)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Aktuální obrazovka"
-
-#~ msgid "Active Window"
-#~ msgstr "Aktivní okno"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Okno pod kurzorem"
-
-#~ msgid "All Screens"
-#~ msgstr "Všechny obrazovky"
-
-#~ msgid "Full Screen"
-#~ msgstr "Celá obrazovka"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Spustit Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Sejmout celou plochu"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Sejmout současný monitor"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Sejmout aktivní okno"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Sejmout obdélníkovou oblast"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Sejmout okno pod kurzorem"
-
-#~ msgid "Record Screen"
-#~ msgstr "Nahrávat obrazovku"
-
-#~ msgid "Record Window"
-#~ msgstr "Zaznamenat okno"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Zaznamenat obdélníkovou oblast"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Spustit Spectacle bez sejmutí"

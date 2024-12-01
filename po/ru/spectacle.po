@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-09-20 11:40+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -38,6 +38,63 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Прямоугольная область"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Все экраны (одинаковый масштаб)"
+
+# BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Текущий экран"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Активное окно"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Выбранное окно"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Окно под курсором мыши"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Все экраны"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Весь экран"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1869,6 +1926,84 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Весь экран"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Запустить Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Сделать снимок всех экранов"
+
+# BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Сделать снимок текущего экрана"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Сделать снимок активного окна"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Сделать снимок прямоугольной области экрана"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Сделать снимок активного окна"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Создать снимок окна под курсором мыши"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Запись экрана"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Запись окна"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Запись прямоугольной области"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Запускать Spectacle без создания снимка"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1996,59 +2131,6 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Прямоугольная область"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Все экраны (одинаковый масштаб)"
-
-# BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
-#~ msgid "Current Screen"
-#~ msgstr "Текущий экран"
-
-#~ msgid "Active Window"
-#~ msgstr "Активное окно"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Окно под курсором мыши"
-
-#~ msgid "All Screens"
-#~ msgstr "Все экраны"
-
-#~ msgid "Full Screen"
-#~ msgstr "Весь экран"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Запустить Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Сделать снимок всех экранов"
-
-# BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Сделать снимок текущего экрана"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Сделать снимок активного окна"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Сделать снимок прямоугольной области экрана"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Создать снимок окна под курсором мыши"
-
-#~ msgid "Record Screen"
-#~ msgstr "Запись экрана"
-
-#~ msgid "Record Window"
-#~ msgstr "Запись окна"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Запись прямоугольной области"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Запускать Spectacle без создания снимка"
 
 #, fuzzy
 #~| msgctxt "translatable folder name"
@@ -2190,9 +2272,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "Область окна"
-
-#~ msgid "Selected Window"
-#~ msgstr "Выбранное окно"
 
 #~ msgid "Failed to select output"
 #~ msgstr "Не удалось выбрать окно вывода"

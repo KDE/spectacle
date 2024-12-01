@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-26 08:57+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -20,6 +20,65 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Generator: Lokalize 22.12.3\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Regió rectangular"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Pantalla completa"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Finestra"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Select"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Selecció"
+
+#: src/CaptureModeModel.cpp:161
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Pantalla completa"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Pantalla completa"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1857,6 +1916,84 @@ msgstr "Finestra"
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Pantalla completa"
+
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "When launching Spectacle:"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "En iniciar Spectacle:"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture the entire desktop (default)"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Captura l'escriptori sencer (predeterminat)"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture the current monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Captura el monitor actual"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture the active window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Captura finestra activa"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Regió rectangular"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture the active window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Captura finestra activa"
+
+#: src/ShortcutActions.cpp:69
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr ""
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Configureu la gravació"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Gravació"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Regió rectangular"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Inicia Spectacle sense prendre cap captura de pantalla"
 
 #: src/SpectacleCore.cpp:237
 #, kde-format

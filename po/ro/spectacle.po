@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-06-09 14:49+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -17,6 +17,62 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 "X-Generator: Lokalize 21.12.3\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Regiune dreptunghiulară"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Toate ecranele (scalate la aceeași mărime)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Ecranul actual"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Fereastra activă"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Fereastra aleasă"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Fereastra de sub cursor"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Toate ecranele"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Ecran complet"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1831,6 +1887,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Ecran complet"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Lansează Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Capturează întregul birou"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Capturează monitorul actual"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Capturează fereastra activă"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Capturează o regiune dreptunghiulară"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Capturează fereastra activă"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Capturează fereastra de sub cursor"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Înregistrează ecran"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Înregistrează fereastră"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Înregistrează regiune dreptunghiulară"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Lansează Spectacle fără a captura"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1958,57 +2091,6 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Regiune dreptunghiulară"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Toate ecranele (scalate la aceeași mărime)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Ecranul actual"
-
-#~ msgid "Active Window"
-#~ msgstr "Fereastra activă"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Fereastra de sub cursor"
-
-#~ msgid "All Screens"
-#~ msgstr "Toate ecranele"
-
-#~ msgid "Full Screen"
-#~ msgstr "Ecran complet"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Lansează Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Capturează întregul birou"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Capturează monitorul actual"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Capturează fereastra activă"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Capturează o regiune dreptunghiulară"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Capturează fereastra de sub cursor"
-
-#~ msgid "Record Screen"
-#~ msgstr "Înregistrează ecran"
-
-#~ msgid "Record Window"
-#~ msgstr "Înregistrează fereastră"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Înregistrează regiune dreptunghiulară"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Lansează Spectacle fără a captura"
 
 #, fuzzy
 #~| msgctxt "translatable folder name"
@@ -2139,9 +2221,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "Spațiu de lucru"
-
-#~ msgid "Selected Window"
-#~ msgstr "Fereastra aleasă"
 
 #~ msgid "Failed to select output"
 #~ msgstr "Alegerea ecranului a eșuat"

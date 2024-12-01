@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-26 16:20+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.08.3\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Rektangulärt område"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Alla skärmar (skalade till samma storlek)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Aktuell skärm"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Aktivt fönster"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Valt fönster"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Fönster under pekaren"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Alla skärmar"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Fullskärm"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1812,6 +1868,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Fullskärm"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Starta Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Ta en bild av hela skrivbordet"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Ta en bild av aktuell bildskärm"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Ta en bild av aktivt fönster"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Ta en bild av rektangulärt område"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Ta en bild av aktivt fönster"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Ta en bild av fönster under markör"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Spela in skärm"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Spela in fönster"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Spela in rektangulärt område"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Starta Spectacle utan tagning"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1942,57 +2075,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
-#~ msgid "Rectangular Region"
-#~ msgstr "Rektangulärt område"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Alla skärmar (skalade till samma storlek)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Aktuell skärm"
-
-#~ msgid "Active Window"
-#~ msgstr "Aktivt fönster"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Fönster under pekaren"
-
-#~ msgid "All Screens"
-#~ msgstr "Alla skärmar"
-
-#~ msgid "Full Screen"
-#~ msgstr "Fullskärm"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Starta Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Ta en bild av hela skrivbordet"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Ta en bild av aktuell bildskärm"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Ta en bild av aktivt fönster"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Ta en bild av rektangulärt område"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Ta en bild av fönster under markör"
-
-#~ msgid "Record Screen"
-#~ msgstr "Spela in skärm"
-
-#~ msgid "Record Window"
-#~ msgstr "Spela in fönster"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Spela in rektangulärt område"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Starta Spectacle utan tagning"
-
 #, fuzzy
 #~| msgid "Screenshot"
 #~ msgctxt "@title:group"
@@ -2120,9 +2202,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "Arbetsyta"
-
-#~ msgid "Selected Window"
-#~ msgstr "Valt fönster"
 
 #~ msgid "Failed to select output"
 #~ msgstr "Misslyckades välja utmatning"

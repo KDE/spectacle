@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2021-11-20 19:24+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Praworóžk"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Aktualna wobrazowka"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Aktiwne wokno"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Aktiwne wokno"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Wokno pod myšku"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Cyła wobrazowka"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Cyła wobrazowka"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1856,6 +1911,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Cyła wobrazowka"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Spectacle startować"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Cyły dźěłowy powjerch fotografować"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Aktualnu wobrazowku fotografować"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Aktiwne wokno fotografować"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Praworóžk fotografować"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Aktiwne wokno fotografować"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Wokno pod myšu fotografować"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Wobrazowku nahrawać"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Wobrazowku nahrawać"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Praworóžk"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Spectacle startować bjez fotografowanja"
+
 #: src/SpectacleCore.cpp:237
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle without taking a screenshot"
@@ -1986,62 +2118,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
 
-#~ msgid "Rectangular Region"
-#~ msgstr "Praworóžk"
-
-#~ msgid "Current Screen"
-#~ msgstr "Aktualna wobrazowka"
-
-#~ msgid "Active Window"
-#~ msgstr "Aktiwne wokno"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Wokno pod myšku"
-
-#, fuzzy
-#~| msgid "Full Screen"
-#~ msgid "All Screens"
-#~ msgstr "Cyła wobrazowka"
-
-#~ msgid "Full Screen"
-#~ msgstr "Cyła wobrazowka"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Spectacle startować"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Cyły dźěłowy powjerch fotografować"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Aktualnu wobrazowku fotografować"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Aktiwne wokno fotografować"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Praworóžk fotografować"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Wokno pod myšu fotografować"
-
-#, fuzzy
-#~| msgid "Record Screen"
-#~ msgid "Record Screen"
-#~ msgstr "Wobrazowku nahrawać"
-
-#, fuzzy
-#~| msgid "Record Screen"
-#~ msgid "Record Window"
-#~ msgstr "Wobrazowku nahrawać"
-
-#, fuzzy
-#~| msgid "Rectangular Region"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Praworóžk"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Spectacle startować bjez fotografowanja"
-
 #, fuzzy
 #~| msgid "Take a New Screenshot"
 #~ msgctxt "@title:group"
@@ -2133,11 +2209,6 @@ msgstr ""
 #~ msgctxt "@item recording mode"
 #~ msgid "Screen"
 #~ msgstr "Nowe foto wobrazowki"
-
-#, fuzzy
-#~| msgid "Active Window"
-#~ msgid "Selected Window"
-#~ msgstr "Aktiwne wokno"
 
 #, fuzzy
 #~| msgid "Save"

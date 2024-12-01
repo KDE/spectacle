@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -16,6 +16,65 @@ msgstr ""
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /kf6-trunk/messages/spectacle/spectacle.pot\n"
 "X-Crowdin-File-ID: 44735\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "绘制矩形区域"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "全屏"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "窗口"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Select"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "选择"
+
+#: src/CaptureModeModel.cpp:161
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "全屏"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "全屏"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1771,6 +1830,84 @@ msgstr "窗口"
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "全屏"
+
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "When launching Spectacle:"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Spectacle 启动时："
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture the entire desktop (default)"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "截取整个桌面 (默认)"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture the current monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "截取当前屏幕"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture the active window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "截取活动窗口"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "绘制矩形区域"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture the active window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "截取活动窗口"
+
+#: src/ShortcutActions.cpp:69
+#, kde-format
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr ""
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "屏幕录像设置"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "屏幕录像"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgctxt "@item recording mode"
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "绘制矩形区域"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without taking a screenshot"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "启动 Spectacle，但不截图"
 
 #: src/SpectacleCore.cpp:237
 #, kde-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-07-31 21:47-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -19,6 +19,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 24.05.2\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Região retangular"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Todas as telas (dimensionadas para o mesmo tamanho)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Tela atual"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Janela ativa"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Janela selecionada"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Janela sob o cursor"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Todas as telas"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Tela inteira"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1832,6 +1888,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Tela inteira"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Executar o Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Capturar toda a área de trabalho"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Capturar do monitor atual"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Capturar a janela ativa"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Capturar região retangular"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Capturar a janela ativa"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Capturar janela sob o cursor"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Gravar tela"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Gravar janela"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Gravar região retangular"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Iniciar o Spectacle sem fazer captura"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1959,57 +2092,6 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "Região retangular"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Todas as telas (dimensionadas para o mesmo tamanho)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Tela atual"
-
-#~ msgid "Active Window"
-#~ msgstr "Janela ativa"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Janela sob o cursor"
-
-#~ msgid "All Screens"
-#~ msgstr "Todas as telas"
-
-#~ msgid "Full Screen"
-#~ msgstr "Tela inteira"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Executar o Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Capturar toda a área de trabalho"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Capturar do monitor atual"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Capturar a janela ativa"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Capturar região retangular"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Capturar janela sob o cursor"
-
-#~ msgid "Record Screen"
-#~ msgstr "Gravar tela"
-
-#~ msgid "Record Window"
-#~ msgstr "Gravar janela"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Gravar região retangular"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Iniciar o Spectacle sem fazer captura"
 
 #, fuzzy
 #~| msgctxt "translatable folder name"
@@ -2152,9 +2234,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "Espaço de trabalho"
-
-#~ msgid "Selected Window"
-#~ msgstr "Janela selecionada"
 
 #~ msgid "Failed to select output"
 #~ msgstr "Falha ao selecionar a saída"

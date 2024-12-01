@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-28 12:07+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -19,6 +19,62 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "منطقة مستطيلة"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "كلّ الشّاشات (مصغرة لحجم واحد)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "الشّاشة الحاليّة"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "النّافذة النّشطة"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "نافذة محددة"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "النّافذة تحت المؤشّر"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "كلّ الشّاشات"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "ملء الشاشة"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1812,6 +1868,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "ملء الشاشة"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "شغل لاقط الشاشة"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "التقط كامل سطح المكتب"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "التقط الشاشة الحالية"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "التقط النّافذة النّشطة"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "التقط منطقة مستطيلة"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "التقط النّافذة النّشطة"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "التقط النافذة التي تحت المؤشر"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "سجّل الشاشة"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "سجل النافذة"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "يسجل منطقة مستطيلة"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "شغل لاقط الشاشة بدون أخذ صورة"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1938,57 +2071,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
-#~ msgid "Rectangular Region"
-#~ msgstr "منطقة مستطيلة"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "كلّ الشّاشات (مصغرة لحجم واحد)"
-
-#~ msgid "Current Screen"
-#~ msgstr "الشّاشة الحاليّة"
-
-#~ msgid "Active Window"
-#~ msgstr "النّافذة النّشطة"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "النّافذة تحت المؤشّر"
-
-#~ msgid "All Screens"
-#~ msgstr "كلّ الشّاشات"
-
-#~ msgid "Full Screen"
-#~ msgstr "ملء الشاشة"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "شغل لاقط الشاشة"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "التقط كامل سطح المكتب"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "التقط الشاشة الحالية"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "التقط النّافذة النّشطة"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "التقط منطقة مستطيلة"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "التقط النافذة التي تحت المؤشر"
-
-#~ msgid "Record Screen"
-#~ msgstr "سجّل الشاشة"
-
-#~ msgid "Record Window"
-#~ msgstr "سجل النافذة"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "يسجل منطقة مستطيلة"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "شغل لاقط الشاشة بدون أخذ صورة"
-
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
 #~ msgstr "أوضاع اللقطات"
@@ -2107,9 +2189,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "مساحة العمل"
-
-#~ msgid "Selected Window"
-#~ msgstr "نافذة محددة"
 
 #~ msgid "Failed to select output"
 #~ msgstr "فشل في تحديد الخرج"

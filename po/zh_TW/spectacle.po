@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-26 21:50+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -18,6 +18,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.08.3\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "矩形區域"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "所有螢幕（縮放至同樣尺寸）"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "目前的螢幕"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "作用中視窗"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "已選視窗"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "游標下的視窗"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "所有螢幕"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "全螢幕"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1765,6 +1821,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "全螢幕"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "啟動 Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "擷取整個桌面"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "擷取目前顯示器"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "擷取作用中視窗"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "擷取矩形區域"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "擷取作用中視窗"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "擷取游標下的視窗"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "錄製螢幕"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "錄製視窗"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "錄製矩形區域"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "啟動 Spectacle 但不擷取"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1891,57 +2024,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
-#~ msgid "Rectangular Region"
-#~ msgstr "矩形區域"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "所有螢幕（縮放至同樣尺寸）"
-
-#~ msgid "Current Screen"
-#~ msgstr "目前的螢幕"
-
-#~ msgid "Active Window"
-#~ msgstr "作用中視窗"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "游標下的視窗"
-
-#~ msgid "All Screens"
-#~ msgstr "所有螢幕"
-
-#~ msgid "Full Screen"
-#~ msgstr "全螢幕"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "啟動 Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "擷取整個桌面"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "擷取目前顯示器"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "擷取作用中視窗"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "擷取矩形區域"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "擷取游標下的視窗"
-
-#~ msgid "Record Screen"
-#~ msgstr "錄製螢幕"
-
-#~ msgid "Record Window"
-#~ msgstr "錄製視窗"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "錄製矩形區域"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "啟動 Spectacle 但不擷取"
-
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
 #~ msgstr "截圖模式"
@@ -2060,9 +2142,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "作業空間"
-
-#~ msgid "Selected Window"
-#~ msgstr "已選視窗"
 
 #~ msgid "Failed to select output"
 #~ msgstr "選取輸出失敗"

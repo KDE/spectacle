@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-28 20:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -19,6 +19,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.08.3\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Eskualde laukizuzena"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "Pantaila guztiak (neurri berdinera eskalatuta)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Uneko pantaila"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Leiho aktiboa"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Hautatutako leihoa"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Kurtsorearen azpiko leihoa"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Pantaila guztiak"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Pantaila-betea"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1829,6 +1885,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Pantaila-betea"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Abiarazi «Spectacle»"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Atzeman mahaigain osoa"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Atzeman uneko monitorea"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Atzeman leiho aktiboa"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Atzeman eskualde laukizuzena"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Atzeman leiho aktiboa"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Atzeman kurtsorearen azpiko leihoa"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Grabatu pantaila"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Grabatu leihoa"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Grabatu eskualde laukizuzena"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Abiarazi Spectacle atzeman gabe"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1960,57 +2093,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
-#~ msgid "Rectangular Region"
-#~ msgstr "Eskualde laukizuzena"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "Pantaila guztiak (neurri berdinera eskalatuta)"
-
-#~ msgid "Current Screen"
-#~ msgstr "Uneko pantaila"
-
-#~ msgid "Active Window"
-#~ msgstr "Leiho aktiboa"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Kurtsorearen azpiko leihoa"
-
-#~ msgid "All Screens"
-#~ msgstr "Pantaila guztiak"
-
-#~ msgid "Full Screen"
-#~ msgstr "Pantaila-betea"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Abiarazi «Spectacle»"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Atzeman mahaigain osoa"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Atzeman uneko monitorea"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Atzeman leiho aktiboa"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Atzeman eskualde laukizuzena"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Atzeman kurtsorearen azpiko leihoa"
-
-#~ msgid "Record Screen"
-#~ msgstr "Grabatu pantaila"
-
-#~ msgid "Record Window"
-#~ msgstr "Grabatu leihoa"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Grabatu eskualde laukizuzena"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Abiarazi Spectacle atzeman gabe"
-
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
 #~ msgstr "Pantaila-argazki moduak"
@@ -2139,9 +2221,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "Langunea"
-
-#~ msgid "Selected Window"
-#~ msgstr "Hautatutako leihoa"
 
 #~ msgid "Failed to select output"
 #~ msgstr "Irteerakoa hautatzea huts egin du"

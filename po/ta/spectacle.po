@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-05-19 16:49+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.2\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "செவ்வக பரப்பளவு"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "அனைத்து திரைகளும் (ஒரே அளவாக மாற்றி)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "தற்போதைய காட்சிக் கருவி"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "செயலில் உள்ள சாளரம்"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "தேர்ந்தெடுத்துள்ள சாளரம்"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரம்"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "அனைத்துத் திரைகளும்"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "முழுத்திரை"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1821,6 +1877,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "முழுத்திரை"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "ஸ்பெக்டக்குலை திற"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "முழு பணிமேடையின் படமெடு"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "தற்போதைய திரையின் படமெடு"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "செயலில் உள்ள சாளரத்தின் படமெடு"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "செவ்வக பரப்பளவை படமெடு"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "செயலில் உள்ள சாளரத்தின் படமெடு"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடு"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "திரையை பதிவு செய்"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "சாளரத்தை பதிவுசெய்"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "செவ்வக பரப்பளவை பதிவுசெய்"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1948,57 +2081,6 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
-
-#~ msgid "Rectangular Region"
-#~ msgstr "செவ்வக பரப்பளவு"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "அனைத்து திரைகளும் (ஒரே அளவாக மாற்றி)"
-
-#~ msgid "Current Screen"
-#~ msgstr "தற்போதைய காட்சிக் கருவி"
-
-#~ msgid "Active Window"
-#~ msgstr "செயலில் உள்ள சாளரம்"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரம்"
-
-#~ msgid "All Screens"
-#~ msgstr "அனைத்துத் திரைகளும்"
-
-#~ msgid "Full Screen"
-#~ msgstr "முழுத்திரை"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "ஸ்பெக்டக்குலை திற"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "முழு பணிமேடையின் படமெடு"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "தற்போதைய திரையின் படமெடு"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "செயலில் உள்ள சாளரத்தின் படமெடு"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "செவ்வக பரப்பளவை படமெடு"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடு"
-
-#~ msgid "Record Screen"
-#~ msgstr "திரையை பதிவு செய்"
-
-#~ msgid "Record Window"
-#~ msgstr "சாளரத்தை பதிவுசெய்"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "செவ்வக பரப்பளவை பதிவுசெய்"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
@@ -2134,9 +2216,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "பணிமேடை"
-
-#~ msgid "Selected Window"
-#~ msgstr "தேர்ந்தெடுத்துள்ள சாளரம்"
 
 #~ msgid "Failed to select output"
 #~ msgstr "வெளியீட்டை தேர்ந்தெடுப்பது தோல்வியடைந்தது"

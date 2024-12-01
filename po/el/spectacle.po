@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -19,6 +19,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.08.1\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "Ορθογώνια περιοχή"
+
+#: src/CaptureModeModel.cpp:154
+#, kde-format
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr ""
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "Τρέχουσα οθόνη"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "Ενεργό παράθυρο"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "Ενεργό παράθυρο"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "Παράθυρο κάτω από το δρομέα"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "Πλήρης οθόνη"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "Πλήρης οθόνη"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1892,6 +1947,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Πλήρης οθόνη"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Εκτέλεση του Spectacle"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "Σύλληψη όλης της επιφάνειας εργασίας"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "Σύλληψη τρέχουσας οθόνης"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "Σύλληψη ενεργού παραθύρου"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "Σύλληψη ορθογώνιας περιοχής"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "Σύλληψη ενεργού παραθύρου"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "Λήψη παραθύρου υπό τον δρομέα"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "Εγγραφή οθόνης"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "Εγγραφή οθόνης"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "Ορθογώνια περιοχή"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Εκτέλεση του Spectacle"
+
 #: src/SpectacleCore.cpp:237
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
@@ -2031,62 +2163,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr ""
 
-#~ msgid "Rectangular Region"
-#~ msgstr "Ορθογώνια περιοχή"
-
-#~ msgid "Current Screen"
-#~ msgstr "Τρέχουσα οθόνη"
-
-#~ msgid "Active Window"
-#~ msgstr "Ενεργό παράθυρο"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "Παράθυρο κάτω από το δρομέα"
-
-#, fuzzy
-#~| msgid "Full Screen"
-#~ msgid "All Screens"
-#~ msgstr "Πλήρης οθόνη"
-
-#~ msgid "Full Screen"
-#~ msgstr "Πλήρης οθόνη"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Εκτέλεση του Spectacle"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "Σύλληψη όλης της επιφάνειας εργασίας"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "Σύλληψη τρέχουσας οθόνης"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "Σύλληψη ενεργού παραθύρου"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "Σύλληψη ορθογώνιας περιοχής"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "Λήψη παραθύρου υπό τον δρομέα"
-
-#~ msgid "Record Screen"
-#~ msgstr "Εγγραφή οθόνης"
-
-#, fuzzy
-#~| msgid "Record Screen"
-#~ msgid "Record Window"
-#~ msgstr "Εγγραφή οθόνης"
-
-#, fuzzy
-#~| msgid "Rectangular Region"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Ορθογώνια περιοχή"
-
-#, fuzzy
-#~| msgid "Launch Spectacle"
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Εκτέλεση του Spectacle"
-
 #, fuzzy
 #~| msgid "Take a New Screenshot"
 #~ msgctxt "@title:group"
@@ -2212,11 +2288,6 @@ msgstr ""
 #~ msgctxt "@item recording mode"
 #~ msgid "Screen"
 #~ msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
-
-#, fuzzy
-#~| msgid "Active Window"
-#~ msgid "Selected Window"
-#~ msgstr "Ενεργό παράθυρο"
 
 #, fuzzy
 #~| msgid "Save"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 00:39+0000\n"
+"POT-Creation-Date: 2024-12-01 00:39+0000\n"
 "PO-Revision-Date: 2024-11-26 05:22+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
+
+#: src/CaptureModeModel.cpp:152
+#, fuzzy, kde-format
+#| msgid "Rectangular Region"
+msgctxt "@action in capture mode section"
+msgid "Rectangular Region"
+msgstr "მართკუთხედი რეგიონი"
+
+#: src/CaptureModeModel.cpp:154
+#, fuzzy, kde-format
+#| msgid "All Screens (Scaled to same size)"
+msgctxt "@action in capture mode section"
+msgid "All Screens (Scaled to same size)"
+msgstr "ყველა ეკრანი (გადიდდება ერთ ზომამდე)"
+
+#: src/CaptureModeModel.cpp:156
+#, fuzzy, kde-format
+#| msgid "Current Screen"
+msgctxt "@action in capture mode section"
+msgid "Current Screen"
+msgstr "მიმდინარე ეკრანი"
+
+#: src/CaptureModeModel.cpp:158
+#, fuzzy, kde-format
+#| msgid "Active Window"
+msgctxt "@action in capture mode section"
+msgid "Active Window"
+msgstr "აქტიური ფანჯარა"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Selected Window"
+msgctxt "@action in capture mode section"
+msgid "Select Window"
+msgstr "მონიშნული ფანჯარა"
+
+#: src/CaptureModeModel.cpp:161
+#, fuzzy, kde-format
+#| msgid "Window Under Cursor"
+msgctxt "@action in capture mode section"
+msgid "Window Under Cursor"
+msgstr "კურსორის ქვეშ მდებარე ფანჯარა"
+
+#: src/CaptureModeModel.cpp:164
+#, fuzzy, kde-format
+#| msgid "All Screens"
+msgctxt "@action in capture mode section"
+msgid "All Screens"
+msgstr "ყველა ეკრანი"
+
+#: src/CaptureModeModel.cpp:166
+#, fuzzy, kde-format
+#| msgid "Full Screen"
+msgctxt "@action in capture mode section"
+msgid "Full Screen"
+msgstr "სრულეკრანიანი რეჟიმი"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -1807,6 +1863,83 @@ msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "სრულეკრანიანი რეჟიმი"
 
+#: src/ShortcutActions.cpp:38
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle"
+msgstr "Spectacle-ის გაშვება"
+
+#: src/ShortcutActions.cpp:44
+#, fuzzy, kde-format
+#| msgid "Capture Entire Desktop"
+msgctxt "@action global shortcut"
+msgid "Capture Entire Desktop"
+msgstr "მთელი სამუშაო მაგიდის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:50
+#, fuzzy, kde-format
+#| msgid "Capture Current Monitor"
+msgctxt "@action global shortcut"
+msgid "Capture Current Monitor"
+msgstr "მიმდინარე ეკრანის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:56
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Active Window"
+msgstr "აქტიური ფანჯრის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:62
+#, fuzzy, kde-format
+#| msgid "Capture Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Capture Rectangular Region"
+msgstr "ოთხკუთხედი რეგიონის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Active Window"
+msgctxt "@action global shortcut"
+msgid "Capture Selected Window"
+msgstr "აქტიური ფანჯრის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture Window Under Cursor"
+msgctxt "@action global shortcut"
+msgid "Capture Window Under Cursor"
+msgstr "კურსორის ქვეშ მყოფი კურსორის ჩაჭერა"
+
+#: src/ShortcutActions.cpp:76
+#, fuzzy, kde-format
+#| msgid "Record Screen"
+msgctxt "@action global shortcut"
+msgid "Record Screen"
+msgstr "ეკრანის ჩასწერა"
+
+#: src/ShortcutActions.cpp:82
+#, fuzzy, kde-format
+#| msgid "Record Window"
+msgctxt "@action global shortcut"
+msgid "Record Window"
+msgstr "ფანჯრის ჩაწერა"
+
+#: src/ShortcutActions.cpp:88
+#, fuzzy, kde-format
+#| msgid "Record Rectangular Region"
+msgctxt "@action global shortcut"
+msgid "Record Rectangular Region"
+msgstr "მართკუთხედი რეგიონის ჩაწერა"
+
+#: src/ShortcutActions.cpp:94
+#, fuzzy, kde-format
+#| msgid "Launch Spectacle without capturing"
+msgctxt "@action global shortcut"
+msgid "Launch Spectacle without capturing"
+msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
+
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
@@ -1938,57 +2071,6 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
 
-#~ msgid "Rectangular Region"
-#~ msgstr "მართკუთხედი რეგიონი"
-
-#~ msgid "All Screens (Scaled to same size)"
-#~ msgstr "ყველა ეკრანი (გადიდდება ერთ ზომამდე)"
-
-#~ msgid "Current Screen"
-#~ msgstr "მიმდინარე ეკრანი"
-
-#~ msgid "Active Window"
-#~ msgstr "აქტიური ფანჯარა"
-
-#~ msgid "Window Under Cursor"
-#~ msgstr "კურსორის ქვეშ მდებარე ფანჯარა"
-
-#~ msgid "All Screens"
-#~ msgstr "ყველა ეკრანი"
-
-#~ msgid "Full Screen"
-#~ msgstr "სრულეკრანიანი რეჟიმი"
-
-#~ msgid "Launch Spectacle"
-#~ msgstr "Spectacle-ის გაშვება"
-
-#~ msgid "Capture Entire Desktop"
-#~ msgstr "მთელი სამუშაო მაგიდის ჩაჭერა"
-
-#~ msgid "Capture Current Monitor"
-#~ msgstr "მიმდინარე ეკრანის ჩაჭერა"
-
-#~ msgid "Capture Active Window"
-#~ msgstr "აქტიური ფანჯრის ჩაჭერა"
-
-#~ msgid "Capture Rectangular Region"
-#~ msgstr "ოთხკუთხედი რეგიონის ჩაჭერა"
-
-#~ msgid "Capture Window Under Cursor"
-#~ msgstr "კურსორის ქვეშ მყოფი კურსორის ჩაჭერა"
-
-#~ msgid "Record Screen"
-#~ msgstr "ეკრანის ჩასწერა"
-
-#~ msgid "Record Window"
-#~ msgstr "ფანჯრის ჩაწერა"
-
-#~ msgid "Record Rectangular Region"
-#~ msgstr "მართკუთხედი რეგიონის ჩაწერა"
-
-#~ msgid "Launch Spectacle without capturing"
-#~ msgstr "Spectacle-ის გაშვება გადაღების გარეშე"
-
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
 #~ msgstr "ეკრანის ანაბეჭდის რეჟიმები"
@@ -2117,9 +2199,6 @@ msgstr "MP4/H.264"
 
 #~ msgid "Workspace"
 #~ msgstr "სამუშაო ადგილი"
-
-#~ msgid "Selected Window"
-#~ msgstr "მონიშნული ფანჯარა"
 
 #~ msgid "Failed to select output"
 #~ msgstr "გამოტანის არჩევის შეცდომა"
