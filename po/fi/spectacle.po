@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2015, 2016, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
 # SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
-# Tommi Nieminen <translator@legisign.org>, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 #
 #
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 02:29+0000\n"
-"PO-Revision-Date: 2024-03-20 18:07+0200\n"
+"PO-Revision-Date: 2024-10-22 13:48+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 # HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/CaptureModeModel.cpp:97
@@ -311,13 +311,13 @@ msgstr "Täyttöväri"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Voimakkuus:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Tehosteen voimakkuus."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -368,7 +368,7 @@ msgstr "Ei mitään"
 #: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Rajaa"
 
 #: src/Gui/AnnotationsToolBarContents.qml:117
 #, kde-format
@@ -552,25 +552,22 @@ msgid "Help"
 msgstr "Ohje"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Ota kuvakaappaus:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Valinnat"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Nauhoitus"
+msgstr "Tee nauhoitus:"
 
 #: src/Gui/DialogPage.qml:170
 #, kde-format
@@ -660,7 +657,7 @@ msgstr "Vie"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Muokkaa…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -823,6 +820,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Valitse napsauttamalla ja vetämällä.\n"
+"Hyväksy ja rajaa valinta kaksoisnapsauttamalla.\n"
+"Tyhjennä valinta oikealla painikkeella."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1368,16 +1368,15 @@ msgstr "Lukumerkintätyökalun täyttöväri"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:282
-#, fuzzy, kde-format
-#| msgid "The last used region the user selected"
+#, kde-format
 msgid "The strength of the blur effect."
-msgstr "Viimeisin käyttäjän valitsema alue"
+msgstr "Sumennustehosteen voimakkuus."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:288
 #, kde-format
 msgid "The strength of the pixelate effect."
-msgstr ""
+msgstr "Pikselöintitehosteen voimakkuus."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:295
@@ -1682,32 +1681,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Virheellinen leveys KWin-kuvakaappaukselle: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Virheellinen korkeus KWin-kuvakaappaukselle: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Kuvakaappauksen jälkeen:"
+msgstr "Virheellinen muoto KWin-kuvakaappaukselle: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Ei voitu avata tiedostokuvainta KWin-kuvakaappauksen lukemiseksi."
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() epäonnistui KWin-kuvakaappaukselle: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
@@ -1716,6 +1714,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Kwin-kuvakaappauspyyntö epäonnistui:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
@@ -1724,26 +1724,26 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Mahdollisesti asiaan liittyvää tietoa:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Ei-tuettu Kwin-kuvakaappaustyypin metatieto: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Screen recording canceled"
+#, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Näytön nauhoitus on peruutettu"
+msgstr "Näyttönauhoitus ei ole käytettävissä X11:ssä."
 
 #: src/Platforms/VideoPlatformWayland.cpp:152
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin-näytöntoisto ei ole käytettävissä."
 
 #: src/Platforms/VideoPlatformWayland.cpp:161
 #, kde-format
@@ -1758,6 +1758,7 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Virta sulkeutui, koska kohdenäyttö muuttui nauhoitusta häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:252
 #, kde-format
@@ -1766,6 +1767,7 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Virta sulkeutui, koska kohdeikkuna muuttui nauhoitusta häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:254
 #, kde-format
@@ -1774,6 +1776,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Virta sulkeutui, koska kohdealueen sisältävä näyttö muuttui nauhoitusta "
+"häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
@@ -1906,37 +1910,28 @@ msgid "Launch Spectacle without capturing"
 msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
 
 #: src/SpectacleCore.cpp:238
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
+msgstr "Kuvakaappausta otettaessa tapahtui virhe."
 
 #: src/SpectacleCore.cpp:252
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Spectaclen ollessa käynnissä"
+msgstr "Spectacle nauhoittaa"
 
 #: src/SpectacleCore.cpp:257
-#, fuzzy, kde-format
-#| msgid "While Spectacle is running"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Spectaclen ollessa käynnissä"
+msgstr "Spectacle nauhoittaa"
 
 #: src/SpectacleCore.cpp:258
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
-"Spectacle nauhoittaa: %1\n"
-"Lopeta tallennus napsauttamalla"
+msgstr "Lopeta nauhoitus napsauttamalla ilmoitusaluekuvaketta"
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1953,25 +1948,20 @@ msgid ""
 msgstr ""
 
 #: src/SpectacleCore.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Spectacle is recording: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Spectacle nauhoittaa: %1\n"
-"Lopeta tallennus napsauttamalla"
+"Nauhoituksen kesto: %1\n"
+"Lopeta nauhoitus napsauttamalla"
 
 #: src/SpectacleCore.cpp:325
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without taking a screenshot"
+#, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
+msgstr "Yritettäessä nauhoittaa näyttöä tapahtui virhe."
 
 #: src/SpectacleCore.cpp:724
 #, kde-format
