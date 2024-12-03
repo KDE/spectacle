@@ -119,7 +119,7 @@ ButtonGrid {
         QQC.ButtonGroup.group: toolGroup
         text: i18n("Select")
         icon.name: "edit-select"
-        enabled: AnnotationDocument.undoStackDepth > 0
+        enabled: SpectacleCore.annotationDocument.undoStackDepth > 0
         checked: root.toolType === AnnotationTool.SelectTool
         onClicked: root.tool.type = AnnotationTool.SelectTool
     }
