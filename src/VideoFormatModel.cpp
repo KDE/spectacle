@@ -42,7 +42,7 @@ void VideoFormatModel::setFormats(VideoPlatform::Formats formats)
     }
     if (formats.testFlag(VideoPlatform::WebP)) {
         m_data.append({
-            i18nc("@item:inlistbox Container/encoder", "Animated WebP"),
+            i18nc("@item:inlistbox Container/encoder", "Animated WebP (better than GIF)"),
             VideoPlatform::WebP,
             VideoPlatform::extensionForFormat(VideoPlatform::WebP),
         });
