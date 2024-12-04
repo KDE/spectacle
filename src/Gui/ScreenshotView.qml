@@ -114,6 +114,18 @@ EmptyPage {
             }
         }
 
+        PinchHandler {
+            id: pinchHandler
+            acceptedButtons: Qt.LeftButton
+            target: null
+            // No 2 finger drag because it's difficult to make without the
+            // viewport moving in janky ways. The viewport still moves in janky
+            // ways near edges, but it's not as bad as with 2 finger drag.
+            onScaleChanged: (delta) => {
+                root.zoomToPercent(root.currentZoom * delta)
+            }
+        }
+
         QQC.ScrollBar.vertical: QQC.ScrollBar {
             id: verticalScrollBar
             parent: root
