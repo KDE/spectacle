@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
 "PO-Revision-Date: 2024-03-24 11:39+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -776,7 +776,7 @@ msgstr ""
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Zobraziť kurzor myši v zázname obrazovky."
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -785,12 +785,12 @@ msgstr ""
 "Nahrávanie:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "Pozastaviť"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "Prehrať"
@@ -1768,19 +1768,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Nahrávanie obrazovky zrušené"
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1788,7 +1788,7 @@ msgid ""
 "the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1796,7 +1796,7 @@ msgid ""
 "the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1804,49 +1804,49 @@ msgid ""
 "way that disrupted the recording."
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Nepodarilo sa zaznamenať: Nepodarilo sa vytvoriť priečinok (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Nahrávanie obrazovky zrušené"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Záznam okna zrušený"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Nepodarilo sa vybrať obrazovku: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Nepodarilo sa vybrať okno: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1854,7 +1854,7 @@ msgstr ""
 "Nepodarilo sa vybrať obrazovku: Žiadna obrazovka neobsahovala pozíciu "
 "kurzora myši"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2085,6 +2085,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""
 
 #, fuzzy
 #~| msgctxt "translatable folder name"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
 "PO-Revision-Date: 2024-12-01 06:22+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -751,7 +751,7 @@ msgstr "აღმოჩენილია QR კოდი ბინარულ�
 msgid "Show the mouse cursor in the screen recording."
 msgstr "ეკრანის ჩანაწერზე თაგუნას კურსორის ჩვენება."
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -760,12 +760,12 @@ msgstr ""
 "ჩაწერა:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "პაუზა"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "დაკვრა"
@@ -1742,19 +1742,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "ეკრანის ჩაწერა ხელმიუწვდომელია X11-ზე."
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1763,7 +1763,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ეკრანი ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1772,7 +1772,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ფანჯარა ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1782,56 +1782,56 @@ msgstr ""
 "ნაკადი დაიხურა, რადგან ეკრანი, რომელიც სამიზნე ალაგს შეიცავს, ისე შეიცვალა, "
 "რომ ჩაწერა შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: გამოტანის ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "ჩაწერის შეცდომა: საქაღალდის (%1) შექმნა შეუძლებელია"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "ეკრანის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "ფანჯრის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "ეკრანის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "ფანჯრის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 "ეკრანის არჩევა ჩავარდა: ეკრანი, რომელიც თაგუნას კურსორს შეიცავს, ვერ ვიპოვე"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2051,6 +2051,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

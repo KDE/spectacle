@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -729,7 +729,7 @@ msgstr "识别到包含二进制内容的二维码。"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "屏幕录像包含鼠标光标。"
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -738,12 +738,12 @@ msgstr ""
 "正在录制：\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "暂停"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "播放"
@@ -1712,19 +1712,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "屏幕录像在 X11 环境下不可用。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin 屏幕录像不可用。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "录制失败：文件 URL 不是本地文件"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1732,7 +1732,7 @@ msgid ""
 "the recording."
 msgstr "视频流已关闭，因为目标屏幕发生的更改干扰了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1740,7 +1740,7 @@ msgid ""
 "the recording."
 msgstr "视频流已关闭，因为目标窗口发生的更改干扰了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1748,55 +1748,55 @@ msgid ""
 "way that disrupted the recording."
 msgstr "视频流已关闭，因为目标区域所在屏幕发生的更改中断了屏幕录像。"
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "录制失败：临时文件 URL 不是本地文件 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "录制失败：输出文件 URL 不是本地文件 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "录制失败：无法创建文件夹 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "屏幕录像已取消"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "窗口录像已取消"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "选择屏幕失败：%1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "选择窗口失败：%1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "选择屏幕失败：没有包含鼠标光标位置的屏幕"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2011,3 +2011,15 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""

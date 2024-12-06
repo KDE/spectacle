@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
 "PO-Revision-Date: 2024-12-01 14:49+0200\n"
 "Last-Translator: Fracture dept <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -767,7 +767,7 @@ msgstr "Виявлено QR-код із двійковим вмістом."
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Показувати вказівник миші на записі з екрана."
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -776,12 +776,12 @@ msgstr ""
 "Запис:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "Пуск"
@@ -1774,19 +1774,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Запис з екрана є недоступним у X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "Запис з екрана у KWin є недоступним."
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Не вдалося записати: адреса файла не є локальною"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1796,7 +1796,7 @@ msgstr ""
 "Потік даних закрито, оскільки екран призначення було змінено у спосіб, який "
 "призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1806,7 +1806,7 @@ msgstr ""
 "Потік даних закрито, оскільки вікно призначення було змінено у спосіб, який "
 "призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1816,56 +1816,56 @@ msgstr ""
 "Потік даних закрито, оскільки екран, на якому міститься область призначення "
 "було змінено у спосіб, який призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса тимчасового файла не є локальною (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса файла виведення даних не є локальною (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Не вдалося записати: не вдалося створити теку (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Запис з екрана скасовано"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Запис з вікна скасовано"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Не вдалося вибрати екран: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Не вдалося вибрати вікно: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 "Не вдалося вибрати екран: немає екрана, що містить позицію вказівника миші"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2085,6 +2085,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""
 
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"

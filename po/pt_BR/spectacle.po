@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
 "PO-Revision-Date: 2024-07-31 21:47-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -771,7 +771,7 @@ msgstr "Código QR encontrado com conteúdo binário."
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostra o ponteiro do mouse na gravação da tela."
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -780,12 +780,12 @@ msgstr ""
 "Gravando:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "Pausar"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "Reproduzir"
@@ -1771,19 +1771,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "A gravação de tela não está disponível no X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "O KWin Screencasting não está disponível."
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Falha ao gravar: o URL do arquivo não é um arquivo local"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1793,7 +1793,7 @@ msgstr ""
 "O stream foi encerrado porque a tela de destino mudou de uma forma que "
 "interrompeu a gravação."
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1803,7 +1803,7 @@ msgstr ""
 "O stream foi encerrado porque a janela de destino mudou de uma forma que "
 "interrompeu a gravação."
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1813,50 +1813,50 @@ msgstr ""
 "O stream foi encerrado porque uma tela contendo a região de destino mudou de "
 "uma forma que interrompeu a gravação."
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Falha ao gravar: o URL do arquivo temporário não é um arquivo local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Falha ao gravar: o URL do arquivo de saída não é um arquivo local (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Falha ao gravar: não foi possível criar a pasta (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Gravação de tela cancelada"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Gravação de janela cancelada"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Falha ao selecionar tela: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Falha ao selecionar a janela: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1864,7 +1864,7 @@ msgstr ""
 "Falha ao selecionar a tela: nenhuma tela continha a posição do cursor do "
 "mouse"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2092,6 +2092,18 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""
 
 #, fuzzy
 #~| msgctxt "translatable folder name"

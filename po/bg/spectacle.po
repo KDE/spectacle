@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-01 00:39+0000\n"
-"PO-Revision-Date: 2024-11-28 19:50+0100\n"
+"POT-Creation-Date: 2024-12-06 00:39+0000\n"
+"PO-Revision-Date: 2024-12-05 22:12+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -19,57 +19,49 @@ msgstr ""
 "X-Generator: Lokalize 25.03.70\n"
 
 #: src/CaptureModeModel.cpp:152
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
 msgstr "Правоъгълна област"
 
 #: src/CaptureModeModel.cpp:154
-#, fuzzy, kde-format
-#| msgid "All Screens (Scaled to same size)"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
 msgstr "Всички екрани(Мащабирани в еднакъв размер)"
 
 #: src/CaptureModeModel.cpp:156
-#, fuzzy, kde-format
-#| msgid "Current Screen"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
 msgstr "Текущ екран"
 
 #: src/CaptureModeModel.cpp:158
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
 msgstr "Активен прозорец"
 
 #: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr "Активен прозорец"
+msgstr "Избиране на  прозорец"
 
 #: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
-#| msgid "Window Under Cursor"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
 msgstr "Прозорец под курсор"
 
 #: src/CaptureModeModel.cpp:164
-#, fuzzy, kde-format
-#| msgid "All Screens"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
 msgstr "Всички екрани"
 
 #: src/CaptureModeModel.cpp:166
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
 msgstr "Цял екран"
@@ -782,7 +774,7 @@ msgstr "Намерен е QR код с двоично съдържание."
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Показване на курсора на мишката по време на записване на екрана."
 
-#: src/Gui/RecordingView.qml:52
+#: src/Gui/RecordingView.qml:81
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -791,12 +783,12 @@ msgstr ""
 "Записване на видео\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/Gui/RecordingView.qml:83
+#: src/Gui/RecordingView.qml:127
 #, kde-format
 msgid "Play"
 msgstr "Изпълнение"
@@ -1789,19 +1781,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Записването на екрана не е налично за X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:152
+#: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "Споделянето на екрана на KWin не е налично."
 
-#: src/Platforms/VideoPlatformWayland.cpp:161
+#: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Неуспешно записване: URL адресът на файла не е локален файл"
 
-#: src/Platforms/VideoPlatformWayland.cpp:250
+#: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1811,7 +1803,7 @@ msgstr ""
 "Поточното предаване се затвори, защото екранът, съдържащ целевата област, се "
 "промени по начин, който наруши записа."
 
-#: src/Platforms/VideoPlatformWayland.cpp:252
+#: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1821,7 +1813,7 @@ msgstr ""
 "Поточното предаване се затвори, защото прозорецът, съдържащ целевата област, "
 "се промени по начин, който наруши записа."
 
-#: src/Platforms/VideoPlatformWayland.cpp:254
+#: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1831,51 +1823,51 @@ msgstr ""
 "Поточното предаване се затвори, защото екран, съдържащ целевата област, се "
 "промени по начин, който наруши записа."
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Неуспешно записване: URL адресът на временния файл не е локален файл (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:279
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Неуспешно записване: URL адресът на изходния файл не е локален файл (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:326
+#: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Неуспешно записване: Не може да се създаде папка (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:354
+#: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Записването на екрана е отменено"
 
-#: src/Platforms/VideoPlatformWayland.cpp:356
+#: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Записването на прозореца е отменено"
 
-#: src/Platforms/VideoPlatformWayland.cpp:362
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Неуспех при селекция на екрана: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:364
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Неуспех при селекция на прозорец: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:392
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -1883,7 +1875,7 @@ msgstr ""
 "Не успя да се избере екран: Няма екран, който да съдържа позицията на "
 "курсора на мишката"
 
-#: src/Platforms/VideoPlatformWayland.cpp:399
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -1908,78 +1900,67 @@ msgid "Full Screen"
 msgstr "Цял екран"
 
 #: src/ShortcutActions.cpp:38
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
 msgstr "Стартиране на Spectacle"
 
 #: src/ShortcutActions.cpp:44
-#, fuzzy, kde-format
-#| msgid "Capture Entire Desktop"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
 msgstr "Заснемане на целия работен плот"
 
 #: src/ShortcutActions.cpp:50
-#, fuzzy, kde-format
-#| msgid "Capture Current Monitor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
 msgstr "Заснемане на текущия монитор"
 
 #: src/ShortcutActions.cpp:56
-#, fuzzy, kde-format
-#| msgid "Capture Active Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
 msgstr "Заснемане на активен прозорец"
 
 #: src/ShortcutActions.cpp:62
-#, fuzzy, kde-format
-#| msgid "Capture Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
 msgstr "Заснемане на правоъгълен регион"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture Active Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Заснемане на активен прозорец"
+msgstr "Заснемане на избран прозорец"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture Window Under Cursor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
 msgstr "Заснемане на прозорец под курсора"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
 msgstr "Записване на екрана"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgid "Record Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
 msgstr "Записване на прозорец"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgid "Record Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
 msgstr "Записване на правоъгълна област"
 
 #: src/ShortcutActions.cpp:94
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without capturing"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Стартиране на Spectacle без заснемане"
@@ -2114,3 +2095,15 @@ msgstr "WebM/VP9"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
 msgstr "MP4/H.264"
+
+#: src/VideoFormatModel.cpp:45
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "Animated WebP (better than GIF)"
+msgstr ""
+
+#: src/VideoFormatModel.cpp:52
+#, kde-format
+msgctxt "@item:inlistbox Container/encoder"
+msgid "GIF (compatible, but inefficient)"
+msgstr ""
