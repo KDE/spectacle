@@ -3,68 +3,69 @@
 # This file is distributed under the same license as the spectacle package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-06 00:39+0000\n"
-"PO-Revision-Date: 2024-12-13 20:04+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-14 01:44+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: src/CaptureModeModel.cpp:152
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
-msgstr ""
+msgstr "आयताकार क्षेत्र"
 
 #: src/CaptureModeModel.cpp:154
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "सर्वाणि पटलानि (समान आकारे स्केल कृताः)"
 
 #: src/CaptureModeModel.cpp:156
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
-msgstr ""
+msgstr "वर्तमान स्क्रीन"
 
 #: src/CaptureModeModel.cpp:158
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
-msgstr ""
+msgstr "सक्रिय विण्डो"
 
 #: src/CaptureModeModel.cpp:161
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr ""
+msgstr "विण्डो इति चिनोतु"
 
 #: src/CaptureModeModel.cpp:161
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
-msgstr ""
+msgstr "कर्सरस्य अधः विण्डो"
 
 #: src/CaptureModeModel.cpp:164
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
-msgstr ""
+msgstr "सर्वाणि पटलानि"
 
 #: src/CaptureModeModel.cpp:166
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
-msgstr ""
+msgstr "पूर्णपर्दे"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
@@ -205,6 +206,8 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
+"स्क्रीनशॉट् रक्षितुम् न शक्यते यतः निर्देशिकायाः निर्माणं विफलम् अभवत्:<nl/><filename>%1</"
+"filename>"
 
 #: src/ExportManager.cpp:485
 #, kde-format
@@ -218,6 +221,8 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
+"स्क्रीनशॉट् रक्षितुं न शक्यते यतः दूरस्थनिर्देशिकायाः निर्माणं विफलम् अभवत्:<nl/><filename>"
+"%1</filename>"
 
 #: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
@@ -245,6 +250,7 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"विडियो निर्यातयितुं असफलम्: अस्थायी सञ्चिका URL विद्यमानस्थानीयसञ्चिका भवितुमर्हति"
 
 #: src/ExportManager.cpp:770
 #, kde-format
@@ -252,12 +258,13 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"विडियो निर्यातयितुं असफलम्: आउटपुट् सञ्चिका URL सञ्चिकानाम्ना सह वैधः URL भवितुमर्हति"
 
 #: src/ExportManager.cpp:845
 #, kde-format
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
+msgstr "रिकार्डिङ्ग् रक्षितुं असमर्थः। सञ्चिकां स्थानं प्रति स्थानान्तरयितुं न शक्तम्: %1"
 
 #: src/ExportManager.cpp:873
 #, kde-format
@@ -277,8 +284,8 @@ msgstr "प्रहार:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:98
 #, kde-format
@@ -304,13 +311,13 @@ msgstr "Fill Color इति"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "बलः:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:234
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "प्रभावस्य बलम् ।"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:261
 #, kde-format
@@ -322,16 +329,16 @@ msgstr "फन्ट् : १."
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:276
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:288
 #, kde-format
@@ -422,8 +429,8 @@ msgstr "संख्या"
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "रद्दं कुरुत (%1 सेकण्ड्)"
+msgstr[1] "रद्दं कुरुत (%1 सेकण्ड्)"
 
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
@@ -434,7 +441,7 @@ msgstr "नूतनं स्क्रीनशॉट् गृह्यता�
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr ""
+msgstr "स्क्रीनशॉट सेटिंग्स्"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -524,14 +531,14 @@ msgstr "न विलम्बः"
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 द्वितीयम्"
+msgstr[1] "%2 सेकण्ड्"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr ""
+msgstr "%1 सेकण्ड्"
 
 #: src/Gui/DialogPage.qml:60
 #, kde-format
@@ -547,7 +554,7 @@ msgstr "साहाय्यम्‌"
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr ""
+msgstr "एकं स्क्रीनशॉट् गृह्यताम्:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
 #, kde-format
@@ -559,7 +566,7 @@ msgstr "विकल्पाः"
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr ""
+msgstr "रिकार्डिङ्गं कुर्वन्तु : १."
 
 #: src/Gui/DialogPage.qml:170
 #, kde-format
@@ -612,13 +619,13 @@ msgstr "इमेज ज़ूम"
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr ""
+msgstr "विडियो स्थानं क्लिप्बोर्ड् प्रति प्रतिलिखितम् अस्ति।"
 
 #: src/Gui/LocationCopiedMessage.qml:14
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
-msgstr ""
+msgstr "स्क्रीनशॉट् स्थानं क्लिप्बोर्ड् प्रति प्रतिलिखितम् अस्ति ।"
 
 #: src/Gui/MainToolBarContents.qml:56
 #, kde-format
@@ -649,7 +656,7 @@ msgstr "निर्यात"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "सम्पादन…"
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -808,6 +815,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"चयनं कर्तुं क्लिक् कृत्वा कर्षयन्तु ।\n"
+"स्वीकृत्य क्रॉप् कर्तुं चयनं द्विवारं क्लिक् कुर्वन्तु ।\n"
+"चयनं स्वच्छं कर्तुं राइट् क्लिक् कुर्वन्तु ।"
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1001,13 +1011,13 @@ msgstr "सञ्चिकानाम : १."
 #, kde-format
 msgctxt "Preview of the user configured filename"
 msgid "Preview:"
-msgstr ""
+msgstr "पूर्वावलोकनम् : १."
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr ""
+msgstr "<सञ्चिकानाम>%1</सञ्चिकानाम>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, kde-format
@@ -1027,31 +1037,31 @@ msgstr "उपपुटे रक्षितुं"
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "न्यूनानि दर्शयतु"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "अधिकं दर्शयतु"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:34
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:35
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "इमेज सेविंग्"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "विडियो सेविंग्"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1189,7 +1199,7 @@ msgstr "हानियुक्तसञ्चिकास्वरूपेष
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr ""
+msgstr "स्क्रीनशॉट्"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
@@ -1241,13 +1251,13 @@ msgstr "स्क्रीनकास्ट् रक्षन्ते सत�
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr ""
+msgstr "स्क्रीनकास्ट्"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr ""
+msgstr "पटकथा"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:207
@@ -1429,13 +1439,13 @@ msgstr "रक्षितुम् &स्थानम् : १."
 #, kde-format
 msgctxt "@info"
 msgid "Video shared"
-msgstr ""
+msgstr "विडियो साझा"
 
 #: src/Gui/SharedMessage.qml:13
 #, kde-format
 msgctxt "@info"
 msgid "Image shared"
-msgstr ""
+msgstr "चित्रं साझां कृतम्"
 
 #: src/Gui/SharedMessage.qml:16
 #, kde-format
@@ -1444,6 +1454,7 @@ msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
+"साझां विडियो लिङ्क् ( <a href=\"%1\">%1</a> ) क्लिप्बोर्ड् प्रति प्रतिलिखितम् अस्ति ।"
 
 #: src/Gui/SharedMessage.qml:18
 #, kde-format
@@ -1452,18 +1463,19 @@ msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
+"साझाप्रतिबिम्बलिङ्क् ( <a href=\"%1\">%1</a> ) क्लिप्बोर्ड् प्रति प्रतिलिपितः अस्ति ।"
 
 #: src/Gui/ShareErrorMessage.qml:13
 #, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the video: %1"
-msgstr ""
+msgstr "विडियो साझाकरणे समस्या आसीत्: %1"
 
 #: src/Gui/ShareErrorMessage.qml:14
 #, kde-format
 msgctxt "@info"
 msgid "There was a problem sharing the image: %1"
-msgstr ""
+msgstr "चित्रस्य साझेदारीयां समस्या आसीत्: %1"
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
@@ -1499,79 +1511,79 @@ msgstr "निरसयतु:"
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
-msgstr ""
+msgstr "वाम-क्लिक् मुक्तं कुर्वन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
-msgstr ""
+msgstr "द्विवारं क्लिक् कुर्वन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
-msgstr ""
+msgstr "प्रवेश"
 
 #: src/Gui/ShortcutsTextBox.qml:35
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag outside selection rectangle"
-msgstr ""
+msgstr "चयन आयतं बहिः कर्षन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:37
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
-msgstr ""
+msgstr "+ शिफ्टः आवर्धकः"
 
 #: src/Gui/ShortcutsTextBox.qml:40
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag inside selection rectangle"
-msgstr ""
+msgstr "चयन आयतस्य अन्तः कर्षन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:41
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys"
-msgstr ""
+msgstr "बाणकुंजी"
 
 #: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr ""
+msgstr "+ Shift: 1 पिक्सेल चरणेषु गच्छन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
-msgstr ""
+msgstr "हन्डलं कर्षयन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:44
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
-msgstr ""
+msgstr "बाणकुंजी + Alt"
 
 #: src/Gui/ShortcutsTextBox.qml:45
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr ""
+msgstr "+ Shift: 1 पिक्सेल-चरणयोः आकारं परिवर्तयन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
 msgctxt "Mouse action"
 msgid "Right-click"
-msgstr ""
+msgstr "राइट्-क्लिक् कुर्वन्तु"
 
 #: src/Gui/ShortcutsTextBox.qml:48
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Escape"
-msgstr ""
+msgstr "परिभ्रंशति"
 
 #: src/Gui/SizeLabel.qml:13
 #, kde-format
@@ -1583,28 +1595,28 @@ msgstr "%1×%2"
 msgctxt "Integer number of seconds"
 msgid " second"
 msgid_plural " seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " क्षण"
+msgstr[1] " सेकण्ड्"
 
 #: src/Gui/SmartSpinBox.cpp:32
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
-msgstr ""
+msgstr " सेकण्ड्"
 
 #: src/Gui/SpectacleWindow.cpp:179
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 द्वितीयम्"
+msgstr[1] "%1 सेकण्ड्"
 
 #: src/Gui/SpectacleWindow.cpp:182
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr ""
+msgstr "अरक्षितम्"
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
@@ -1635,13 +1647,13 @@ msgstr "(ग) 2015 बौधायन गुप्त"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #: src/Main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #: src/Main.cpp:70
 #, kde-format
@@ -1658,31 +1670,31 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin स्क्रीनशॉट् कृते दुर्विस्तारः: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin स्क्रीनशॉट् कृते दुर्गतिः: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:154
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr ""
+msgstr "KWin स्क्रीनशॉट् कृते दुष्टस्वरूपम्: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:172
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "KWin स्क्रीनशॉट् पठितुं सञ्चिकावर्णकं उद्घाटयितुं न शक्तवान् ।"
 
 #: src/Platforms/ImagePlatformKWin.cpp:240
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() KWin स्क्रीनशॉट् कृते विफलम्: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:296
 #, kde-format
@@ -1691,6 +1703,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"KWin स्क्रीनशॉट् अनुरोधः विफलः अभवत्:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:298
 #, kde-format
@@ -1699,30 +1713,32 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"सम्भाव्य प्रासंगिकसूचना : १.\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "असमर्थितः KWin स्क्रीनशॉट् प्रकारः मेटाडाटा: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "X11 इत्यत्र स्क्रीन रिकार्डिङ्ग् उपलब्धं नास्ति ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "KWin Screencasting इति उपलब्धं नास्ति ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:169
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr ""
+msgstr "अभिलेखनं कर्तुं असफलम्: सञ्चिकायाः URL स्थानीयसञ्चिका नास्ति"
 
 #: src/Platforms/VideoPlatformWayland.cpp:258
 #, kde-format
@@ -1730,7 +1746,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "लक्ष्यपर्दे परिवर्तनं कृत्वा रिकार्डिङ्ग् बाधितं भवति इति कारणेन धारा निमीलिता ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:260
 #, kde-format
@@ -1738,7 +1754,7 @@ msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
-msgstr ""
+msgstr "लक्ष्यविण्डो परिवर्तनं कृत्वा रिकार्डिङ्ग् बाधितं भवति इति कारणेन धारा निमीलिता ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:262
 #, kde-format
@@ -1747,174 +1763,176 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"लक्ष्यप्रदेशयुक्तः पटलः एतादृशरीत्या परिवर्तितः यत् रिकार्डिङ्ग् बाधितं भवति इति कारणेन "
+"धारा निमीलिता ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:276
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "अभिलेखनं कर्तुं असफलम्: अस्थायी सञ्चिका URL स्थानीयसञ्चिका नास्ति (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "अभिलेखनं कर्तुं असफलम्: निर्गमसञ्चिका URL स्थानीयसञ्चिका नास्ति (%1) ।"
 
 #: src/Platforms/VideoPlatformWayland.cpp:334
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "अभिलेखनं कर्तुं असफलम्: पुटं निर्मातुं असमर्थम् (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:362
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "स्क्रीन रिकार्डिङ्ग् रद्दम्"
 
 #: src/Platforms/VideoPlatformWayland.cpp:364
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "विण्डो रिकार्डिङ्ग् रद्दम्"
 
 #: src/Platforms/VideoPlatformWayland.cpp:370
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "स्क्रीन चयनं कर्तुं असफलम्: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
-msgstr ""
+msgstr "विण्डो चिन्वितुं असफलम्: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
+msgstr "स्क्रीन चयनं कर्तुं असफलम्: कस्यापि पटले मूषकस्य कर्सरस्थानं नासीत्"
 
 #: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr ""
+msgstr "विण्डो चयनं कर्तुं असफलम्: विण्डो न प्राप्तम्"
 
 #: src/RecordingModeModel.cpp:91
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
-msgstr ""
+msgstr "आयताकार क्षेत्र"
 
 #: src/RecordingModeModel.cpp:93
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr ""
+msgstr "कोष्ठ"
 
 #: src/RecordingModeModel.cpp:95
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
-msgstr ""
+msgstr "पूर्णपर्दे"
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
-msgstr ""
+msgstr "लॉन्च स्पेक्टेकल"
 
 #: src/ShortcutActions.cpp:44
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr ""
+msgstr "सम्पूर्णं डेस्कटॉपं गृह्यताम्"
 
 #: src/ShortcutActions.cpp:50
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
-msgstr ""
+msgstr "वर्तमान निरीक्षक कैप्चर करें"
 
 #: src/ShortcutActions.cpp:56
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
-msgstr ""
+msgstr "सक्रिय विण्डो कैप्चर करें"
 
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr ""
+msgstr "आयताकार क्षेत्र कैप्चर करें"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr ""
+msgstr "चयनितविण्डो कैप्चर करें"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr ""
+msgstr "कर्सरस्य अधः विण्डो कैप्चर कुर्वन्तु"
 
 #: src/ShortcutActions.cpp:76
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
-msgstr ""
+msgstr "रिकार्ड स्क्रीन"
 
 #: src/ShortcutActions.cpp:82
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
-msgstr ""
+msgstr "अभिलेख विण्डो"
 
 #: src/ShortcutActions.cpp:88
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
-msgstr ""
+msgstr "अभिलेख आयताकार क्षेत्र"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr ""
+msgstr "कैप्चरिंग विना Spectacle प्रारम्भं कुर्वन्तु"
 
 #: src/SpectacleCore.cpp:237
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr ""
+msgstr "स्क्रीनशॉट् गृह्णन् त्रुटिः अभवत् ।"
 
 #: src/SpectacleCore.cpp:251
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr ""
+msgstr "तमाशा Recording अस्ति"
 
 #: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr ""
+msgstr "तमाशा Recording अस्ति"
 
 #: src/SpectacleCore.cpp:257
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
-msgstr ""
+msgstr "रिकार्डिङ्ग् समाप्तुं सिस्टम् ट्रे चिह्नं नुदन्तु"
 
 #: src/SpectacleCore.cpp:260
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "WebP समर्थनम् अभावितम् अस्ति।"
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -1923,6 +1941,8 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"कृपया Spectacle कृते एनिमेटेड् सिस्टम् ट्रे चिह्नानि प्राप्तुं Qt Image Formats संस्थापयन्तु, "
+"ततः एतत् पैकेजिंग् समस्यां स्ववितरकं प्रति सूचयन्तु ।"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -1931,18 +1951,20 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
+"अभिलेखितः समयः : %1\n"
+"रिकार्डिङ्ग् समाप्तुं क्लिक् कुर्वन्तु"
 
 #: src/SpectacleCore.cpp:324
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr ""
+msgstr "पटलस्य अभिलेखनार्थं प्रयतमाने त्रुटिः अभवत् ।"
 
 #: src/SpectacleCore.cpp:702
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 --record कृते वैधविधिः नास्ति"
 
 #: src/SpectacleCore.cpp:934
 #, kde-format
@@ -1957,7 +1979,7 @@ msgstr ""
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr ""
+msgstr "भवतः चित्रपुटे '%1' इति रूपेण स्क्रीनशॉट् रक्षितम् ।"
 
 #: src/SpectacleCore.cpp:941
 #, kde-format
@@ -1982,7 +2004,7 @@ msgstr ""
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr ""
+msgstr "एकं रिकार्डिङ्ग् भवतः Videos फोल्डर् मध्ये '%1' इति रूपेण रक्षितम् आसीत् ।"
 
 #: src/SpectacleCore.cpp:954
 #, kde-format
@@ -1993,7 +2015,7 @@ msgstr "एकं अभिलेखनं '%1' तः '%2' पर्यन्�
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
-msgstr ""
+msgstr "उद्घाटित"
 
 #: src/SpectacleCore.cpp:979
 #, kde-format
@@ -2004,22 +2026,22 @@ msgstr "टिप्पणीं कुरुत"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:38
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #: src/VideoFormatModel.cpp:45
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr ""
+msgstr "एनिमेटेड् WebP (GIF इत्यस्मात् उत्तमम्)"
 
 #: src/VideoFormatModel.cpp:52
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr ""
+msgstr "GIF (सङ्गतम्, परन्तु अकुशलम्) २."
