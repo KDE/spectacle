@@ -21,8 +21,6 @@ public:
     ~GeneralOptionsPage() override;
 
 private:
-    void updateAutomaticActions();
-
     QScopedPointer<Ui_GeneralOptions> m_ui;
 };
 
