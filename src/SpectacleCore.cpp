@@ -672,14 +672,16 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     // Determine grab mode
     using CaptureMode = CaptureModeModel::CaptureMode;
     using GrabMode = ImagePlatform::GrabMode;
-    GrabMode grabMode = GrabMode::AllScreens; // Default to all screens
+    // The default value doesn't matter that much since the correct mode will be picked.
+    GrabMode grabMode = GrabMode::AllScreens;
     if (m_cliOptions[Option::Fullscreen]) {
         grabMode = GrabMode::AllScreens;
     } else if (m_cliOptions[Option::Current]) {
         grabMode = GrabMode::CurrentScreen;
     } else if (m_cliOptions[Option::ActiveWindow]) {
         grabMode = GrabMode::ActiveWindow;
-    } else if (m_cliOptions[Option::Region]) {
+    } else if (m_cliOptions[Option::Region] //
+        || Settings::launchAction() == Settings::TakeRectangularScreenshot) {
         grabMode = GrabMode::PerScreenImageNative;
     } else if (m_cliOptions[Option::WindowUnderCursor]) {
         grabMode = GrabMode::WindowUnderCursor;
