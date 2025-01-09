@@ -18,6 +18,7 @@
 #include <QDBusConnection>
 #include <QDir>
 #include <QIcon>
+#include <QRegularExpression>
 #include <QSessionManager>
 
 #include <KAboutData>
@@ -63,14 +64,43 @@ int main(int argc, char **argv)
     commandLineParser.process(app.arguments());
     aboutData.processCommandLine(&commandLineParser);
 
+    const bool isBackgroundSet = commandLineParser.isSet(CommandLineOptions::self()->background);
+    const bool isDbusSet = commandLineParser.isSet(CommandLineOptions::self()->dbus);
+    auto explainIncompatibility = [&](const QCommandLineOption &lhs, const QCommandLineOption &rhs) {
+        const auto lhsOptions = u'^' % lhs.names().join("$|^"_L1) % u'$';
+        const auto lhsArg = commandLineParser.optionNames().filter(QRegularExpression(lhsOptions)).value(0);
+        const auto rhsOptions = u'^' % rhs.names().join("$|^"_L1) % u'$';
+        const auto rhsArg = commandLineParser.optionNames().filter(QRegularExpression(lhsOptions)).value(0);
+        qWarning().noquote() << i18nc("@info:shell option cannot be used with other option", "%1 cannot be used with %2", lhsArg, rhsArg);
+    };
+    auto explainBackgroundDbusIncompatibiltiy = [&](const QCommandLineOption &incompatibleOption) {
+        if (!commandLineParser.isSet(incompatibleOption)) {
+            return false;
+        }
+        if (isBackgroundSet) {
+            explainIncompatibility(CommandLineOptions::self()->background, incompatibleOption);
+            return true;
+        } else if (isDbusSet) {
+            explainIncompatibility(CommandLineOptions::self()->dbus, incompatibleOption);
+            return true;
+        }
+        return false;
+    };
+    // Can't use launchonly or editexisting with background or dbus
+    if (explainBackgroundDbusIncompatibiltiy(CommandLineOptions::self()->launchOnly)) {
+        return 1;
+    }
+    if (explainBackgroundDbusIncompatibiltiy(CommandLineOptions::self()->editExisting)) {
+        return 1;
+    }
+
     // BUG: https://bugs.kde.org/show_bug.cgi?id=451842
     // We currently don't support desktop environments besides KDE Plasma on Wayland
     // because we have to rely on KWin's DBus API.
     if (KWindowSystem::isPlatformWayland() && !ScreenShotEffect::isLoaded()) {
         auto message = i18n("On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not seem to be available. Use Spectacle on KDE Plasma, or use a different screenshot tool.");
         qWarning().noquote() << message;
-        if (commandLineParser.isSet(CommandLineOptions::self()->background)
-            || commandLineParser.isSet(CommandLineOptions::self()->dbus)) {
+        if (isBackgroundSet || isDbusSet) {
             // Return early if not in GUI mode.
             return 1;
         } else {

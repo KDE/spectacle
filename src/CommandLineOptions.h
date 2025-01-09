@@ -53,10 +53,6 @@ struct CommandLineOptions {
         {u"l"_s, u"launchonly"_s},
         i18n("Launch Spectacle without taking a screenshot")
     };
-    const QCommandLineOption gui = {
-        {u"g"_s, u"gui"_s},
-        i18n("Start in GUI mode (default)")
-    };
     const QCommandLineOption background = {
         {u"b"_s, u"background"_s},
         i18n("Take a screenshot and exit without showing the GUI")
@@ -111,8 +107,8 @@ struct CommandLineOptions {
     };
 
     const QList<QCommandLineOption> allOptions = {
-        fullscreen, current, activeWindow, windowUnderCursor, transientOnly, region,  record,      launchOnly, gui,          background, dbus,
-        noNotify,   output,  delay,        copyImage,         copyPath,      onClick, newInstance, pointer,    noDecoration, noShadow,   editExisting,
+        fullscreen, current, activeWindow, windowUnderCursor, transientOnly, region,      record,  launchOnly,   background, dbus,         noNotify,
+        output,     delay,   copyImage,    copyPath,          onClick,       newInstance, pointer, noDecoration, noShadow,   editExisting,
     };
 
     // Keep order in sync with allOptions
@@ -125,7 +121,6 @@ struct CommandLineOptions {
         Region,
         Record,
         LaunchOnly,
-        Gui,
         Background,
         DBus,
         NoNotify,

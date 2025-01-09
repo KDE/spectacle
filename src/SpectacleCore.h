@@ -42,12 +42,6 @@ class SpectacleCore : public QObject
     Q_PROPERTY(AnnotationDocument *annotationDocument READ annotationDocument CONSTANT FINAL)
 
 public:
-    enum class StartMode {
-        Gui = 0,
-        DBus = 1,
-        Background = 2,
-    };
-
     ~SpectacleCore() noexcept override;
 
     static SpectacleCore *instance();
@@ -135,6 +129,8 @@ private:
     ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
     CaptureModeModel::CaptureMode toCaptureMode(ImagePlatform::GrabMode grabMode) const;
     bool isGuiNull() const;
+    bool isDbusService() const;
+    bool isBackgroundProcess() const;
     QQmlEngine *getQmlEngine();
     void initCaptureWindows(CaptureWindow::Mode mode);
     void initViewerWindow(ViewerWindow::Mode mode);
@@ -146,7 +142,6 @@ private:
 
     static SpectacleCore *s_self;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
-    StartMode m_startMode = StartMode::Gui;
     QUrl m_screenCaptureUrl;
     std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;

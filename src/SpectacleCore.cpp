@@ -203,26 +203,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
             const auto typeFlags = window->flags() & Qt::WindowType_Mask;
             return window->isVisible() && (typeFlags == Qt::Window || typeFlags == Qt::Dialog);
         });
-        switch (m_startMode) {
-        case StartMode::Background:
-            showErrorMessage(uiMessage);
-            if (!hasVisibleWindow) {
-                Q_EMIT allDone();
-            }
-            return;
-        case StartMode::DBus: {
-            showErrorMessage(uiMessage);
-            Q_EMIT (this->*dBusFailedSignal)(message);
-            if (!hasVisibleWindow) {
-                Q_EMIT allDone();
-            }
-            return;
-        }
-        case StartMode::Gui: {
-            if (!ViewerWindow::instance() && hasVisibleWindow) {
-                showErrorMessage(uiMessage);
-                return;
-            } else if (!ViewerWindow::instance()) {
+        if (hasVisibleWindow) {
+            if (!ViewerWindow::instance()) {
                 initViewerWindow(ViewerWindow::Dialog);
             }
             qWarning().noquote() << message;
@@ -231,7 +213,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
             (viewer->*showViewerMessage)(uiMessage);
             return;
         }
-        }
+        showErrorMessage(uiMessage);
+        Q_EMIT (this->*dBusFailedSignal)(message);
+        Q_EMIT allDone();
     };
     connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, [onScreenshotOrRecordingFailed](const QString message) {
         auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
@@ -562,23 +546,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     }
 
-    // Determine start mode
-    m_startMode = StartMode::Gui; // Default to Gui
-    // Gui is an option that's normally useless since it's the default mode.
-    // Make it override the other modes if explicitly set, using the launchonly option,
-    // or editing an existing image. Editing an existing image requires a viewer window.
-    if (!m_cliOptions[Option::Gui]
-        && !m_cliOptions[Option::LaunchOnly]
-        && !m_cliOptions[Option::EditExisting]) {
-        // Background gets precidence over DBus
-        if (m_cliOptions[Option::Background]) {
-            m_startMode = StartMode::Background;
-        } else if (m_cliOptions[Option::DBus]) {
-            m_startMode = StartMode::DBus;
-        }
-    }
-
-    if (parser.optionNames().size() > 0 || m_startMode != StartMode::Gui) {
+    if (parser.optionNames().size() > 0 || !hasGui) {
         // Delete windows if we have CLI options or not in GUI mode.
         // We don't want to delete them otherwise because that will mess with the
         // settings for PrintScreen key behavior.
@@ -610,7 +578,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     bool includeDecorations;
     bool includePointer;
     bool includeShadow;
-    if (m_startMode == StartMode::Background) {
+    if (m_cliOptions[CommandLineOptions::Background]) {
         transientOnly = m_cliOptions[Option::TransientOnly];
         onClick = m_cliOptions[Option::OnClick];
         includeDecorations = !m_cliOptions[Option::NoDecoration];
@@ -705,7 +673,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
         setVideoMode(true);
 
-        if (m_startMode != StartMode::Background) {
+        if (!isBackgroundProcess) {
             includePointer = Settings::videoIncludePointer() || m_cliOptions[Option::Pointer];
         }
     } else {
@@ -876,7 +844,7 @@ void SpectacleCore::showErrorMessage(const QString &message)
 {
     qWarning().noquote() << message;
 
-    if (m_startMode == StartMode::Gui || m_startMode == StartMode::DBus) {
+    if (!m_cliOptions[CommandLineOptions::Background]) {
         KMessageBox::error(nullptr, message);
     }
 }
@@ -1077,6 +1045,16 @@ CaptureModeModel::CaptureMode SpectacleCore::toCaptureMode(ImagePlatform::GrabMo
 bool SpectacleCore::isGuiNull() const
 {
     return SpectacleWindow::instances().isEmpty();
+}
+
+bool SpectacleCore::isDbusService() const
+{
+    return m_cliOptions[CommandLineOptions::DBus];
+}
+
+bool SpectacleCore::isBackgroundProcess() const
+{
+    return m_cliOptions[CommandLineOptions::Background];
 }
 
 void SpectacleCore::initGuiNoScreenshot()
