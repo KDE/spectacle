@@ -27,7 +27,7 @@ InlineMessage {
     }
 
     type: Kirigami.MessageType.Information
-    text: typeof messageArgument === "string" ? i18n("QR Code found: %1", linkify(sanitise(messageArgument))) : i18n("Found QR code with binary content.")
+    text: `<html>${typeof messageArgument === "string" ? i18n("QR Code found: %1", linkify(sanitise(messageArgument))) : i18n("Found QR code with binary content.")}</html>`
     actions: [
         Kirigami.Action {
             displayComponent: QQC2.ToolButton {
