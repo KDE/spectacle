@@ -147,6 +147,7 @@ private:
     static SpectacleCore *s_self;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
     StartMode m_startMode = StartMode::Gui;
+    bool m_returnToViewer = false;
     QUrl m_screenCaptureUrl;
     std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;
