@@ -536,20 +536,31 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
+    // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
+    QCommandLineParser parser;
+    parser.addOptions(CommandLineOptions::self()->allOptions);
+    parser.parse(arguments);
+
     if (m_videoPlatform->isRecording()) {
-        // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
-        // TODO: find a way to support screenshot shortcuts while recording?
-        finishRecording();
+        if (!parser.isSet(CommandLineOptions::self()->record)) {
+            QProcess newInstance;
+            newInstance.setProgram(QCoreApplication::applicationFilePath());
+            QStringList newArguments = arguments;
+            if (!parser.isSet(CommandLineOptions::self()->newInstance)) {
+                newArguments << CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance);
+            }
+            newInstance.setArguments(newArguments);
+            newInstance.setWorkingDirectory(workingDirectory);
+            newInstance.startDetached();
+        } else {
+            // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
+            finishRecording();
+        }
         return;
     }
     if (!workingDirectory.isEmpty()) {
         QDir::setCurrent(workingDirectory);
     }
-
-    // We can't re-use QCommandLineParser instances, it preserves earlier parsed values
-    QCommandLineParser parser;
-    parser.addOptions(CommandLineOptions::self()->allOptions);
-    parser.parse(arguments);
 
     // Collect parsed command line options
     using Option = CommandLineOptions::Option;
@@ -1231,20 +1242,50 @@ void SpectacleCore::activateAction(const QString &actionName, const QVariant &pa
 {
     Q_UNUSED(parameter)
     m_startMode = StartMode::DBus;
+    const auto captureMode = [&]() -> std::optional<CaptureModeModel::CaptureMode> {
+        if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
+            return CaptureModeModel::AllScreens;
+        } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
+            return CaptureModeModel::CurrentScreen;
+        } else if (actionName == ShortcutActions::self()->activeWindowAction()->objectName()) {
+            return CaptureModeModel::ActiveWindow;
+        } else if (actionName == ShortcutActions::self()->windowUnderCursorAction()->objectName()) {
+            return CaptureModeModel::WindowUnderCursor;
+        } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
+            return CaptureModeModel::RectangularRegion;
+        }
+        return std::nullopt;
+    }();
     if (m_videoPlatform->isRecording()) {
-        // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
-        // TODO: find a way to support screenshot shortcuts while recording?
-        finishRecording();
-    } else if (actionName == ShortcutActions::self()->fullScreenAction()->objectName()) {
-        takeNewScreenshot(CaptureModeModel::AllScreens, 0);
-    } else if (actionName == ShortcutActions::self()->currentScreenAction()->objectName()) {
-        takeNewScreenshot(CaptureModeModel::CurrentScreen, 0);
-    } else if (actionName == ShortcutActions::self()->activeWindowAction()->objectName()) {
-        takeNewScreenshot(CaptureModeModel::ActiveWindow, 0);
-    } else if (actionName == ShortcutActions::self()->windowUnderCursorAction()->objectName()) {
-        takeNewScreenshot(CaptureModeModel::WindowUnderCursor, 0);
-    } else if (actionName == ShortcutActions::self()->regionAction()->objectName()) {
-        takeNewScreenshot(CaptureModeModel::RectangularRegion, 0);
+        if (captureMode) {
+            const auto captureOption = [&]() -> const QCommandLineOption * {
+                if (captureMode == CaptureModeModel::AllScreens) {
+                    return &CommandLineOptions::self()->fullscreen;
+                } else if (captureMode == CaptureModeModel::CurrentScreen) {
+                    return &CommandLineOptions::self()->current;
+                } else if (captureMode == CaptureModeModel::ActiveWindow) {
+                    return &CommandLineOptions::self()->activeWindow;
+                } else if (captureMode == CaptureModeModel::WindowUnderCursor) {
+                    return &CommandLineOptions::self()->windowUnderCursor;
+                } else if (captureMode == CaptureModeModel::RectangularRegion) {
+                    return &CommandLineOptions::self()->region;
+                }
+                return nullptr;
+            }();
+            if (captureOption) {
+                QProcess newInstance;
+                newInstance.setProgram(QCoreApplication::applicationFilePath());
+                newInstance.setArguments({
+                    CommandLineOptions::toArgument(CommandLineOptions::self()->newInstance),
+                    CommandLineOptions::toArgument(*captureOption),
+                });
+                newInstance.startDetached();
+            }
+        } else {
+            finishRecording(); // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
+        }
+    } else if (captureMode) {
+        takeNewScreenshot(captureMode.value(), 0);
     } else if (actionName == ShortcutActions::self()->recordRegionAction()->objectName()) {
         startRecording(VideoPlatform::Region);
     } else if (actionName == ShortcutActions::self()->recordScreenAction()->objectName()) {
