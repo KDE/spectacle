@@ -32,8 +32,6 @@ MouseArea {
     LayoutMirroring.childrenInherit: true
     anchors.fill: parent
 
-    readonly property Selection selection: SelectionEditor.selection
-
     AnnotationEditor {
         id: annotations
         anchors.fill: parent
@@ -53,10 +51,10 @@ MouseArea {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: selectionRectangle.visible ? selectionRectangle.top : parent.bottom
-        opacity: if (root.selection.empty
+        opacity: if (SelectionEditor.selection.empty
             && (!annotations.document.tool.isNoTool || annotations.document.undoStackDepth > 0)) {
             return 0
-        } else if (root.selection.empty) {
+        } else if (SelectionEditor.selection.empty) {
             return 0.25
         } else {
             return 0.5
@@ -107,11 +105,11 @@ MouseArea {
             return "white"
         }
         border.width: contextWindow.dprRound(1)
-        visible: !root.selection.empty && Geometry.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
-        x: root.selection.x - border.width - annotations.viewportRect.x
-        y: root.selection.y - border.width - annotations.viewportRect.y
-        width: root.selection.width + border.width * 2
-        height: root.selection.height + border.width * 2
+        visible: !SelectionEditor.selection.empty && Geometry.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))
+        x: SelectionEditor.selection.x - border.width - annotations.viewportRect.x
+        y: SelectionEditor.selection.y - border.width - annotations.viewportRect.y
+        width: SelectionEditor.selection.width + border.width * 2
+        height: SelectionEditor.selection.height + border.width * 2
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
@@ -211,33 +209,33 @@ MouseArea {
                     if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Left
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft) {
-                        x = root.selection.left
+                        x = SelectionEditor.selection.left
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.TopRight
                         || SelectionEditor.magnifierLocation === SelectionEditor.Right
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
-                        x = root.selection.right
+                        x = SelectionEditor.selection.right
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.Top
                         || SelectionEditor.magnifierLocation === SelectionEditor.Bottom) {
                         if (SelectionEditor.dragLocation !== SelectionEditor.None) {
                             x = SelectionEditor.mousePosition.x
                         } else {
-                            x = root.selection.horizontalCenter
+                            x = SelectionEditor.selection.horizontalCenter
                         }
                     }
                     if (SelectionEditor.magnifierLocation === SelectionEditor.TopLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Top
                         || SelectionEditor.magnifierLocation === SelectionEditor.TopRight) {
-                        y = root.selection.top
+                        y = SelectionEditor.selection.top
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.BottomLeft
                         || SelectionEditor.magnifierLocation === SelectionEditor.Bottom
                         || SelectionEditor.magnifierLocation === SelectionEditor.BottomRight) {
-                        y = root.selection.bottom
+                        y = SelectionEditor.selection.bottom
                     } else if (SelectionEditor.magnifierLocation === SelectionEditor.Left
                         || SelectionEditor.magnifierLocation === SelectionEditor.Right) {
                         if (SelectionEditor.dragLocation !== SelectionEditor.None) {
                             y = SelectionEditor.mousePosition.y
                         } else {
-                            y = root.selection.verticalCenter
+                            y = SelectionEditor.selection.verticalCenter
                         }
                     }
                     return Qt.point(x, y)
@@ -293,7 +291,7 @@ MouseArea {
         SizeLabel {
             id: ssToolTip
             readonly property int valignment: {
-                if (root.selection.empty) {
+                if (SelectionEditor.selection.empty) {
                     return Qt.AlignVCenter
                 }
                 const margin = Kirigami.Units.mediumSpacing * 2
@@ -308,9 +306,9 @@ MouseArea {
                     return Qt.AlignBaseline
                 }
             }
-            readonly property bool normallyVisible: !root.selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
+            readonly property bool normallyVisible: !SelectionEditor.selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
             Binding on x {
-                value: contextWindow.dprRound(root.selection.horizontalCenter - ssToolTip.width / 2)
+                value: contextWindow.dprRound(SelectionEditor.selection.horizontalCenter - ssToolTip.width / 2)
                 when: ssToolTip.normallyVisible
                 restoreMode: Binding.RestoreNone
             }
@@ -318,7 +316,7 @@ MouseArea {
                 value: {
                     let v = 0
                     if (ssToolTip.valignment & Qt.AlignBaseline) {
-                        v = Math.min(root.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                        v = Math.min(SelectionEditor.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
                     } else if (ssToolTip.valignment & Qt.AlignTop) {
                         v = SelectionEditor.handlesRect.top
@@ -342,7 +340,7 @@ MouseArea {
                     easing.type: Easing.OutCubic
                 }
             }
-            size: Geometry.rawSize(root.selection.size, SelectionEditor.devicePixelRatio)
+            size: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
             padding: Kirigami.Units.mediumSpacing * 2
             topPadding: padding - QmlUtils.fontMetrics.descent
             bottomPadding: topPadding
@@ -360,9 +358,9 @@ MouseArea {
         }
 
         Connections {
-            target: root.selection
+            target: SelectionEditor.selection
             function onEmptyChanged() {
-                if (!root.selection.empty
+                if (!SelectionEditor.selection.empty
                     && (mainToolBar.rememberPosition || atbLoader.rememberPosition)) {
                     mainToolBar.rememberPosition = false
                     atbLoader.rememberPosition = false
@@ -375,7 +373,7 @@ MouseArea {
             id: mainToolBar
             property bool rememberPosition: false
             readonly property int valignment: {
-                if (root.selection.empty) {
+                if (SelectionEditor.selection.empty) {
                     return 0
                 }
                 if (3 * height + topPadding + Kirigami.Units.mediumSpacing
@@ -392,17 +390,17 @@ MouseArea {
                 }
             }
             readonly property bool normallyVisible: {
-                let emptyHovered = (root.containsMouse || annotations.hovered) && root.selection.empty
+                let emptyHovered = (root.containsMouse || annotations.hovered) && SelectionEditor.selection.empty
                 let menuVisible = ExportMenu.visible
                 menuVisible |= OptionsMenu.visible
                 menuVisible |= HelpMenu.visible
                 let pressed = SelectionEditor.dragLocation || annotations.anyPressed
-                return (emptyHovered || !root.selection.empty || menuVisible) && !pressed
+                return (emptyHovered || !SelectionEditor.selection.empty || menuVisible) && !pressed
             }
             Binding on x {
                 value: {
-                    const v = root.selection.empty ? (root.width - mainToolBar.width) / 2 + annotations.viewportRect.x
-                                                   : root.selection.horizontalCenter - mainToolBar.width / 2
+                    const v = SelectionEditor.selection.empty ? (root.width - mainToolBar.width) / 2 + annotations.viewportRect.x
+                                                   : SelectionEditor.selection.horizontalCenter - mainToolBar.width / 2
                     return Math.max(mainToolBar.leftPadding, // min value
                            Math.min(contextWindow.dprRound(v),
                                     SelectionEditor.screensRect.width - mainToolBar.width - mainToolBar.rightPadding)) // max value
@@ -420,7 +418,7 @@ MouseArea {
                     } else if (mainToolBar.valignment & Qt.AlignBottom) {
                         v = SelectionEditor.handlesRect.bottom + mainToolBar.topPadding
                     } else if (mainToolBar.valignment & Qt.AlignBaseline) {
-                        v = Math.min(root.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
+                        v = Math.min(SelectionEditor.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
                             - mainToolBar.height - mainToolBar.bottomPadding
                     } else {
                         v = (mainToolBar.height / 2) - mainToolBar.parent.y
@@ -445,12 +443,12 @@ MouseArea {
                 focusPolicy: Qt.NoFocus
                 displayMode: QQC.AbstractButton.TextBesideIcon
                 showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
-                imageSize: Geometry.rawSize(root.selection.size, SelectionEditor.devicePixelRatio)
+                imageSize: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
             }
 
             DragHandler { // parent is contentItem and parent is a read-only property
                 id: mtbDragHandler
-                enabled: root.selection.empty
+                enabled: SelectionEditor.selection.empty
                 target: mainToolBar
                 acceptedButtons: Qt.LeftButton
                 margin: mainToolBar.padding
@@ -500,7 +498,7 @@ MouseArea {
 
             DragHandler { // parented to contentItem
                 id: atbDragHandler
-                enabled: root.selection.empty
+                enabled: SelectionEditor.selection.empty
                 acceptedButtons: Qt.LeftButton
                 xAxis.minimum: annotations.viewportRect.x
                 xAxis.maximum: annotations.viewportRect.x + root.width - atbLoader.width
