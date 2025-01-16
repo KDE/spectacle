@@ -606,16 +606,25 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
     switch (m_tool->type()) {
     case AnnotationTool::FreehandTool:
     case AnnotationTool::HighlighterTool: {
-        auto prev = path.currentPosition();
-        // smooth path as we go.
-        path.quadTo(prev, (prev + point) / 2);
+        const auto lastIndex = path.elementCount() - 1;
+        const auto lastElement = path.elementAt(lastIndex);
+        if (options & ContinueOption::Snap) {
+            if (!lastElement.isLineTo()) {
+                // Make a line if we don't have one
+                path.lineTo(point);
+            }
+            path.setElementPositionAt(lastIndex, point.x(), point.y());
+        } else {
+            // smooth path as we go.
+            path.quadTo(lastElement, (lastElement + point) / 2);
+        }
     } break;
     case AnnotationTool::LineTool:
     case AnnotationTool::ArrowTool: {
         auto count = path.elementCount();
         auto lastElement = path.elementAt(count - 1);
         QPointF endPoint = point;
-        if (options & ContinueOption::SnapAngle) {
+        if (options & ContinueOption::Snap) {
             const auto &prevElement = count > 1 ? path.elementAt(count - 2) : lastElement;
             QPointF posDiff = point - prevElement;
             if (qAbs(posDiff.x()) / 1.5 > qAbs(posDiff.y())) {
@@ -649,7 +658,7 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
         auto start = path.currentPosition();
         // Can have a negative size with bottom right being visually top left.
         QRectF rect(start, point);
-        if (options & ContinueOption::SnapAngle) {
+        if (options & ContinueOption::Snap) {
             auto wSign = std::copysign(1.0, rect.width());
             auto hSign = std::copysign(1.0, rect.height());
             qreal max = qMax(qAbs(rect.width()), qAbs(rect.height()));

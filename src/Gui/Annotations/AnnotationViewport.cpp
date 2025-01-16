@@ -346,7 +346,7 @@ void AnnotationViewport::mouseMoveEvent(QMouseEvent *event)
         using ContinueOption = AnnotationDocument::ContinueOption;
         ContinueOptions options;
         if (event->modifiers() & Qt::ShiftModifier) {
-            options |= ContinueOption::SnapAngle;
+            options |= ContinueOption::Snap;
         }
         if (event->modifiers() & Qt::ControlModifier) {
             options |= ContinueOption::CenterResize;

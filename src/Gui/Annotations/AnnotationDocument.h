@@ -45,7 +45,7 @@ class AnnotationDocument : public QObject
 public:
     enum class ContinueOption {
         NoOptions    = 0b00,
-        SnapAngle    = 0b01,
+        Snap    = 0b01,
         CenterResize = 0b10
     };
     Q_DECLARE_FLAGS(ContinueOptions, ContinueOption)
