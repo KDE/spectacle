@@ -128,6 +128,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
         ExportManager::instance()->updateTimestamp();
+        m_returnToViewer = m_startMode == StartMode::Gui;
         if (m_videoMode) {
             const auto captureWindows = CaptureWindow::instances();
             SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
@@ -173,6 +174,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         m_annotationDocument->setBaseImage(image);
         setExportImage(image);
         ExportManager::instance()->updateTimestamp();
+        m_returnToViewer = true;
         showViewerIfGuiMode();
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         ExportManager::instance()->scanQRCode();
@@ -314,7 +316,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
     });
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
-        if (m_startMode != StartMode::Gui || isGuiNull()) {
+        if (m_startMode != StartMode::Gui || !m_returnToViewer || isGuiNull()) {
             Q_EMIT allDone();
             return;
         }
@@ -578,7 +580,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     }
 
-    if (parser.optionNames().size() > 0 || m_startMode != StartMode::Gui) {
+    if (parser.optionNames().size() > 0 || m_startMode != StartMode::Gui || !m_returnToViewer) {
         // Delete windows if we have CLI options or not in GUI mode.
         // We don't want to delete them otherwise because that will mess with the
         // settings for PrintScreen key behavior.
@@ -672,22 +674,33 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     // Determine grab mode
     using CaptureMode = CaptureModeModel::CaptureMode;
     using GrabMode = ImagePlatform::GrabMode;
-    // The default value doesn't matter that much since the correct mode will be picked.
-    GrabMode grabMode = GrabMode::AllScreens;
-    if (m_cliOptions[Option::Fullscreen]) {
-        grabMode = GrabMode::AllScreens;
-    } else if (m_cliOptions[Option::Current]) {
-        grabMode = GrabMode::CurrentScreen;
-    } else if (m_cliOptions[Option::ActiveWindow]) {
-        grabMode = GrabMode::ActiveWindow;
-    } else if (m_cliOptions[Option::Region] //
-        || Settings::launchAction() == Settings::TakeRectangularScreenshot) {
-        grabMode = GrabMode::PerScreenImageNative;
-    } else if (m_cliOptions[Option::WindowUnderCursor]) {
-        grabMode = GrabMode::WindowUnderCursor;
-    } else if (Settings::launchAction() == Settings::UseLastUsedCapturemode) {
-        grabMode = toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
-    }
+    auto cliGrabMode = [&]() -> std::optional<GrabMode> {
+        if (m_cliOptions[Option::Fullscreen]) {
+            return GrabMode::AllScreens;
+        } else if (m_cliOptions[Option::Current]) {
+            return GrabMode::CurrentScreen;
+        } else if (m_cliOptions[Option::ActiveWindow]) {
+            return GrabMode::ActiveWindow;
+        } else if (m_cliOptions[Option::Region]) {
+            return GrabMode::PerScreenImageNative;
+        } else if (m_cliOptions[Option::WindowUnderCursor]) {
+            return GrabMode::WindowUnderCursor;
+        }
+        return std::nullopt;
+    };
+    auto launchActionGrabMode = [&] {
+        switch (Settings::launchAction()) {
+        case Settings::TakeRectangularScreenshot:
+            return GrabMode::PerScreenImageNative;
+        case Settings::TakeFullscreenScreenshot:
+            return GrabMode::AllScreens;
+        case Settings::UseLastUsedCapturemode:
+            return toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
+        default:
+            return GrabMode::NoGrabModes;
+        }
+    };
+    auto grabMode = cliGrabMode().value_or(m_startMode == StartMode::Background ? GrabMode::AllScreens : launchActionGrabMode());
 
     using RecordingMode = VideoPlatform::RecordingMode;
     RecordingMode recordingMode = RecordingMode::NoRecordingModes;
@@ -857,7 +870,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
 
 void SpectacleCore::cancelScreenshot()
 {
-    if (m_startMode != StartMode::Gui) {
+    if (m_startMode != StartMode::Gui || !m_returnToViewer) {
         Q_EMIT allDone();
         return;
     }
@@ -885,7 +898,7 @@ void SpectacleCore::showErrorMessage(const QString &message)
 
 void SpectacleCore::showViewerIfGuiMode(bool minimized)
 {
-    if (m_startMode != StartMode::Gui) {
+    if (m_startMode != StartMode::Gui || !m_returnToViewer) {
         return;
     }
     initViewerWindow(ViewerWindow::Image);
@@ -1142,6 +1155,7 @@ void SpectacleCore::initViewerWindow(ViewerWindow::Mode mode)
 {
     // always switch to gui mode when a viewer window is used.
     m_startMode = SpectacleCore::StartMode::Gui;
+    m_returnToViewer = true;
     deleteWindows();
 
     // Transparency isn't needed for this window.
