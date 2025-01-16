@@ -603,7 +603,8 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
     setRepaintRegion(item->renderRect());
     auto &geometry = std::get<Traits::Geometry::Opt>(item->traits());
     auto &path = geometry->path;
-    switch (m_tool->type()) {
+    const auto toolType = m_tool->type();
+    switch (toolType) {
     case AnnotationTool::FreehandTool:
     case AnnotationTool::HighlighterTool: {
         const auto lastIndex = path.elementCount() - 1;
@@ -617,6 +618,11 @@ void AnnotationDocument::continueItem(const QPointF &point, ContinueOptions opti
         } else {
             // smooth path as we go.
             path.quadTo(lastElement, (lastElement + point) / 2);
+        }
+        if (auto &stroke = std::get<Traits::Stroke::Opt>(item->traits()); //
+            stroke && toolType == AnnotationTool::HighlighterTool) {
+            bool flatCap = options & ContinueOption::Snap && path.elementCount() == 2;
+            stroke->pen.setCapStyle(flatCap ? Qt::FlatCap : Qt::RoundCap);
         }
     } break;
     case AnnotationTool::LineTool:
