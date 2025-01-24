@@ -47,7 +47,18 @@ ButtonGrid {
                 && target.display === QQC.ToolButton.IconOnly
         }
         parent: target || root
-        text: target?.text ?? ""
+        text: {
+            let name = target?.text ?? ""
+            let extraHelp = target?.extraHelp ?? ""
+            if (!extraHelp) {
+                return name
+            }
+            extraHelp = extraHelp.replace(/\n/g, "<br>")
+            // NOTE: We can't use CSS here because it's pretty broken in Qt Quick.
+            // You either get the CSS as plain text in your output or rich text
+            // formatting is just completely stopped.
+            return `<html>${name}<br><font size="-1">${extraHelp}</font></html>`
+        }
         visible: shouldShow(target)
         Binding on x {
             value: root.mirrored ?
@@ -66,6 +77,7 @@ ButtonGrid {
 
     component ToolButton: QQC.ToolButton {
         id: button
+        property string extraHelp: ""
         implicitHeight: QmlUtils.iconTextButtonHeight
         focusPolicy: root.focusPolicy
         display: root.displayMode
@@ -124,8 +136,10 @@ ButtonGrid {
         onClicked: root.tool.type = AnnotationTool.SelectTool
     }
     ToolButton {
+        id: freehandButton
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar freehand line tool", "Freehand")
+        extraHelp: i18nc("@info:tooltip", "Shift: Snap to straight lines")
         icon.name: "draw-freehand"
         checked: root.toolType === AnnotationTool.FreehandTool
         onClicked: root.tool.type = AnnotationTool.FreehandTool
@@ -133,13 +147,16 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar highlighter line tool", "Highlighter")
+        extraHelp: freehandButton.extraHelp
         icon.name: "draw-highlight"
         checked: root.toolType === AnnotationTool.HighlighterTool
         onClicked: root.tool.type = AnnotationTool.HighlighterTool
     }
     ToolButton {
+        id: lineButton
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar straight line tool", "Line")
+        extraHelp: i18nc("@info:tooltip", "Shift: Snap to 45 degree increments")
         icon.name: "draw-line"
         checked: root.toolType === AnnotationTool.LineTool
         onClicked: root.tool.type = AnnotationTool.LineTool
@@ -147,13 +164,18 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar arrow line tool", "Arrow")
+        extraHelp: lineButton.extraHelp
         icon.name: "draw-arrow"
         checked: root.toolType === AnnotationTool.ArrowTool
         onClicked: root.tool.type = AnnotationTool.ArrowTool
     }
     ToolButton {
+        id: rectangleButton
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar rectangle tool", "Rectangle")
+        extraHelp: i18nc("@info:tooltip",
+                         "Shift: Snap to diagonal movements\n" +
+                         "Control: Resize from center")
         icon.name: "draw-rectangle"
         checked: root.toolType === AnnotationTool.RectangleTool
         onClicked: root.tool.type = AnnotationTool.RectangleTool
@@ -161,6 +183,7 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar ellipse tool", "Ellipse")
+        extraHelp: rectangleButton.extraHelp
         icon.name: "draw-ellipse"
         checked: root.toolType === AnnotationTool.EllipseTool
         onClicked: root.tool.type = AnnotationTool.EllipseTool
@@ -168,6 +191,7 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar pixelate tool", "Pixelate")
+        extraHelp: rectangleButton.extraHelp
         icon.name: "pixelate"
         checked: root.toolType === AnnotationTool.PixelateTool
         onClicked: root.tool.type = AnnotationTool.PixelateTool
@@ -175,6 +199,7 @@ ButtonGrid {
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar blur tool", "Blur")
+        extraHelp: rectangleButton.extraHelp
         icon.name: "blur"
         checked: root.toolType === AnnotationTool.BlurTool
         onClicked: root.tool.type = AnnotationTool.BlurTool
