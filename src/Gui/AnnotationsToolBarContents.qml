@@ -95,7 +95,7 @@ ButtonGrid {
         visible: active
         sourceComponent: ToolButton {
             QQC.ButtonGroup.group: toolGroup
-            text: i18n("None")
+            text: i18nc("@action:intoolbar no tool, to allow dragging", "None")
             icon.name: "transform-browse"
             onClicked: root.tool.type = AnnotationTool.NoTool
             // Setting checked in onCompleted so clicking the crop tool doesn't check this instead.
@@ -107,7 +107,7 @@ ButtonGrid {
     ToolButton {
         id: cropToolButton
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Crop")
+        text: i18nc("@action:intoolbar crop image tool", "Crop")
         icon.name: "transform-crop"
         onClicked: root.tool.type = AnnotationTool.NoTool
         // Setting checked in onCompleted so that 2 clicks aren't needed to check this.
@@ -117,7 +117,7 @@ ButtonGrid {
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Select")
+        text: i18nc("@action:intoolbar select annotation tool", "Select")
         icon.name: "edit-select"
         enabled: SpectacleCore.annotationDocument.undoStackDepth > 0
         checked: root.toolType === AnnotationTool.SelectTool
@@ -125,70 +125,70 @@ ButtonGrid {
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Freehand")
+        text: i18nc("@action:intoolbar freehand line tool", "Freehand")
         icon.name: "draw-freehand"
         checked: root.toolType === AnnotationTool.FreehandTool
         onClicked: root.tool.type = AnnotationTool.FreehandTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Highlighter")
+        text: i18nc("@action:intoolbar highlighter line tool", "Highlighter")
         icon.name: "draw-highlight"
         checked: root.toolType === AnnotationTool.HighlighterTool
         onClicked: root.tool.type = AnnotationTool.HighlighterTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Line")
+        text: i18nc("@action:intoolbar straight line tool", "Line")
         icon.name: "draw-line"
         checked: root.toolType === AnnotationTool.LineTool
         onClicked: root.tool.type = AnnotationTool.LineTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Arrow")
+        text: i18nc("@action:intoolbar arrow line tool", "Arrow")
         icon.name: "draw-arrow"
         checked: root.toolType === AnnotationTool.ArrowTool
         onClicked: root.tool.type = AnnotationTool.ArrowTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Rectangle")
+        text: i18nc("@action:intoolbar rectangle tool", "Rectangle")
         icon.name: "draw-rectangle"
         checked: root.toolType === AnnotationTool.RectangleTool
         onClicked: root.tool.type = AnnotationTool.RectangleTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Ellipse")
+        text: i18nc("@action:intoolbar ellipse tool", "Ellipse")
         icon.name: "draw-ellipse"
         checked: root.toolType === AnnotationTool.EllipseTool
         onClicked: root.tool.type = AnnotationTool.EllipseTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Pixelate")
+        text: i18nc("@action:intoolbar pixelate tool", "Pixelate")
         icon.name: "pixelate"
         checked: root.toolType === AnnotationTool.PixelateTool
         onClicked: root.tool.type = AnnotationTool.PixelateTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Blur")
+        text: i18nc("@action:intoolbar blur tool", "Blur")
         icon.name: "blur"
         checked: root.toolType === AnnotationTool.BlurTool
         onClicked: root.tool.type = AnnotationTool.BlurTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Text")
+        text: i18nc("@action:intoolbar text tool", "Text")
         icon.name: "draw-text"
         checked: root.toolType === AnnotationTool.TextTool
         onClicked: root.tool.type = AnnotationTool.TextTool
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
-        text: i18n("Number")
+        text: i18nc("@action:intoolbar number stamp tool", "Number")
         icon.name: "draw-number"
         checked: root.toolType === AnnotationTool.NumberTool
         onClicked: root.tool.type = AnnotationTool.NumberTool
