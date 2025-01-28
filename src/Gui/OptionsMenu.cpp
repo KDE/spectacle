@@ -281,12 +281,15 @@ void OptionsMenu::updateCaptureModes()
         auto action = new QAction(this);
         captureModeActions.append(action);
         action->setText(captureModeModel->data(index, Qt::DisplayRole).toString());
-        action->setData(captureModeModel->data(index, CaptureModeModel::CaptureModeRole));
+        const auto mode = captureModeModel->data(index, CaptureModeModel::CaptureModeRole).toInt();
+        action->setData(mode);
         action->setCheckable(true);
-        captureModeGroup->addAction(action);
-        if (action->data().toInt() == Settings::captureMode()) {
+        if (!CaptureWindow::instances().empty() && !SpectacleCore::instance()->videoMode()) {
+            action->setChecked(mode == CaptureModeModel::RectangularRegion);
+        } else if (mode == Settings::captureMode()) {
             action->setChecked(true);
         }
+        captureModeGroup->addAction(action);
         insertAction(captureSettingsSection.get(), action);
     }
 }
