@@ -438,12 +438,51 @@ MouseArea {
             }
             layer.enabled: true // improves the visuals of the opacity animation
             focusPolicy: Qt.NoFocus
-            contentItem: MainToolBarContents {
+            contentItem: ButtonGrid {
                 id: mainToolBarContents
-                focusPolicy: Qt.NoFocus
-                displayMode: QQC.AbstractButton.TextBesideIcon
-                showSizeLabel: mainToolBar.valignment === ssToolTip.valignment
-                imageSize: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
+                AnimatedLoader {
+                    id: sizeLabelLoader
+                    readonly property size imageSize: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
+                    state: mainToolBar.valignment === ssToolTip.valignment && imageSize.width > 0 && imageSize.height > 0 ?
+                        "active" : "inactive"
+                    sourceComponent: SizeLabel {
+                        height: QmlUtils.iconTextButtonHeight
+                        size: sizeLabelLoader.imageSize
+                        leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
+                        rightPadding: leftPadding
+                    }
+                }
+                TtToolButton {
+                    focusPolicy: Qt.NoFocus
+                    visible: action.enabled
+                    action: SaveAction {}
+                }
+                TtToolButton {
+                    focusPolicy: Qt.NoFocus
+                    action: SaveAsAction {}
+                }
+                TtToolButton {
+                    focusPolicy: Qt.NoFocus
+                    visible: action.enabled
+                    action: CopyImageAction {}
+                }
+                ExportMenuButton {
+                    focusPolicy: Qt.NoFocus
+                }
+                TtToolButton {
+                    focusPolicy: Qt.NoFocus
+                    visible: action.enabled
+                    action: EditAction {}
+                }
+                NewScreenshotToolButton {
+                    focusPolicy: Qt.NoFocus
+                }
+                OptionsMenuButton {
+                    focusPolicy: Qt.NoFocus
+                }
+                HelpMenuButton {
+                    focusPolicy: Qt.NoFocus
+                }
             }
 
             DragHandler { // parent is contentItem and parent is a read-only property
