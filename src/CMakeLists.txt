@@ -148,6 +148,7 @@ set_source_files_properties(Gui/QmlUtils.qml PROPERTIES
 
 qt_target_qml_sources(spectacle
     QML_FILES
+    Gui/AcceptAction.qml
     Gui/AnimatedLoader.qml
     Gui/AnnotationOptionsToolBarContents.qml
     Gui/Annotations/AnnotationEditor.qml
@@ -161,19 +162,26 @@ qt_target_qml_sources(spectacle
     Gui/CaptureOptions.qml
     Gui/CaptureSettingsColumn.qml
     Gui/CopiedMessage.qml
+    Gui/CopyImageAction.qml
+    Gui/CopyLocationAction.qml
     Gui/DashedOutline.qml
     Gui/DelaySpinBox.qml
     Gui/DialogPage.qml
+    Gui/EditAction.qml
     Gui/EmptyPage.qml
+    Gui/ExportMenuButton.qml
     Gui/FloatingBackground.qml
     Gui/FloatingToolBar.qml
     Gui/Handle.qml
+    Gui/HelpMenuButton.qml
     Gui/ImageCaptureOverlay.qml
     Gui/ImageView.qml
     Gui/InlineMessage.qml
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
     Gui/MainToolBarContents.qml
+    Gui/NewScreenshotToolButton.qml
+    Gui/OptionsMenuButton.qml
     Gui/Outline.qml
     Gui/QRCodeScannedMessage.qml
     Gui/QmlUtils.qml
@@ -182,6 +190,8 @@ qt_target_qml_sources(spectacle
     Gui/RecordingModeButtonsColumn.qml
     Gui/RecordingSettingsColumn.qml
     Gui/RecordingView.qml
+    Gui/SaveAction.qml
+    Gui/SaveAsAction.qml
     Gui/SavedAndCopiedMessage.qml
     Gui/SavedAndLocationCopied.qml
     Gui/SavedMessage.qml
