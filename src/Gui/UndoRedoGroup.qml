@@ -22,7 +22,7 @@ Grid {
         NumberAnimation { properties: "x,y"; duration: Kirigami.Units.longDuration; easing.type: Easing.OutCubic }
     }
 
-    QQC.ToolButton {
+    TtToolButton {
         id: undoButton
         enabled: SpectacleCore.annotationDocument.undoStackDepth > 0
         height: root.buttonHeight
@@ -31,13 +31,10 @@ Grid {
         text: i18n("Undo")
         icon.name: "edit-undo"
         autoRepeat: true
-        QQC.ToolTip.text: text
-        QQC.ToolTip.visible: hovered || pressed
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
         onClicked: SpectacleCore.annotationDocument.undo()
     }
 
-    QQC.ToolButton {
+    TtToolButton {
         enabled: SpectacleCore.annotationDocument.redoStackDepth > 0
         height: root.buttonHeight
         focusPolicy: root.focusPolicy
@@ -45,9 +42,6 @@ Grid {
         text: i18n("Redo")
         icon.name: "edit-redo"
         autoRepeat: true
-        QQC.ToolTip.text: text
-        QQC.ToolTip.visible: hovered || pressed
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
         onClicked: SpectacleCore.annotationDocument.redo()
     }
 

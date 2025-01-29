@@ -38,14 +38,9 @@ Row {
         }
     }
 
-    component ToolButton: QQC.ToolButton {
-        implicitHeight: QmlUtils.iconTextButtonHeight
-        width: display === QQC.ToolButton.IconOnly ? height : implicitWidth
+    component ToolButton: TtToolButton {
         focusPolicy: root.focusPolicy
         display: root.displayMode
-        QQC.ToolTip.text: text
-        QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
     }
 
     Loader { // stroke
