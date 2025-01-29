@@ -47,6 +47,8 @@ ExportMenu::ExportMenu(QWidget *parent)
     , mPurposeMenu(new Purpose::Menu)
 #endif
 {
+    setTitle(i18nc("@title:menu", "Export"));
+    setIcon(QIcon::fromTheme(u"document-share"_s));
     addAction(QIcon::fromTheme(u"document-open-folder"_s),
               i18n("Open Default Screenshots Folder"),
               this, &ExportMenu::openScreenshotsFolder);

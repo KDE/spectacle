@@ -3,12 +3,14 @@
  */
 
 import QtQuick
+import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
 
 TtToolButton {
-    icon.name: "help-contents"
-    text: i18nc("@action", "Help")
-    down: pressed || (HelpMenu.visible && !FullMenu.visible)
+    icon.name: "application-menu"
+    text: i18nc("@action", "Menu")
+    display: TtToolButton.IconOnly
+    down: pressed || FullMenu.visible
     Accessible.role: Accessible.ButtonMenu
-    onPressed: HelpMenu.popup(this)
+    onPressed: FullMenu.popup(this)
 }

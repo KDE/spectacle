@@ -11,7 +11,7 @@ TtToolButton {
     visible: !SpectacleCore.videoMode
     icon.name: "document-share"
     text: i18nc("@action", "Export")
-    down: pressed || ExportMenu.visible
+    down: pressed || (ExportMenu.visible && !FullMenu.visible)
     Accessible.role: Accessible.ButtonMenu
     onPressed: ExportMenu.popup(this)
 }
