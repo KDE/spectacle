@@ -477,10 +477,7 @@ MouseArea {
                 NewScreenshotToolButton {
                     focusPolicy: Qt.NoFocus
                 }
-                OptionsMenuButton {
-                    focusPolicy: Qt.NoFocus
-                }
-                HelpMenuButton {
+                FullMenuButton {
                     focusPolicy: Qt.NoFocus
                 }
             }

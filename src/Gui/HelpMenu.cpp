@@ -6,12 +6,15 @@
 #include "WidgetWindowUtils.h"
 
 #include <KAboutData>
+#include <KLocalizedString>
 
 #include <QApplication>
 #include <QDialog>
 #include <QWindow>
 
 #include <cstring>
+
+using namespace Qt::StringLiterals;
 
 class HelpMenuSingleton
 {
@@ -39,6 +42,8 @@ HelpMenu::HelpMenu(QWidget* parent)
     : SpectacleMenu(parent)
     , kHelpMenu(new KHelpMenu(parent, KAboutData::applicationData(), true))
 {
+    setTitle(i18nc("@title:menu", "Help"));
+    setIcon(QIcon::fromTheme(u"help-contents"_s));
     addActions(kHelpMenu->menu()->actions());
     connect(this, &QMenu::triggered, this, &HelpMenu::onTriggered);
 }
