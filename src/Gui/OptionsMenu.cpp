@@ -134,9 +134,12 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     addSeparator();
 
     // add capture on click
+    const bool hasOnClick = SpectacleCore::instance()->imagePlatform()->supportedShutterModes().testFlag(ImagePlatform::OnClick);
+    addSeparator()->setVisible(hasOnClick);
     captureOnClickAction->setText(i18n("Capture On Click"));
     captureOnClickAction->setCheckable(true);
     captureOnClickAction->setChecked(Settings::captureOnClick());
+    captureOnClickAction->setVisible(hasOnClick);
     connect(captureOnClickAction.get(), &QAction::toggled, this, [this](bool checked){
         Settings::setCaptureOnClick(checked);
         delayAction->setEnabled(!checked);
