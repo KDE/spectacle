@@ -131,8 +131,6 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     });
     addAction(quitAfterSaveAction.get());
 
-    addSeparator();
-
     // add capture on click
     const bool hasOnClick = SpectacleCore::instance()->imagePlatform()->supportedShutterModes().testFlag(ImagePlatform::OnClick);
     addSeparator()->setVisible(hasOnClick);
