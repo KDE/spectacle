@@ -192,6 +192,7 @@ qt_target_qml_sources(spectacle
     Gui/ShortcutsTextBox.qml
     Gui/SizeLabel.qml
     Gui/TextContextMenuConnection.qml
+    Gui/TtToolButton.qml
     Gui/UndoRedoGroup.qml
     Gui/VideoCaptureOverlay.qml
 )

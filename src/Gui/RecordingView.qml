@@ -87,13 +87,6 @@ FocusScope {
         id: tbHoverHandler
     }
 
-    component ToolButton: QQC.ToolButton {
-        display: QQC.ToolButton.IconOnly
-        QQC.ToolTip.text: text
-        QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-    }
-
     FloatingToolBar {
         id: toolBar
         anchors.left: parent.left
@@ -105,7 +98,7 @@ FocusScope {
         enabled: root.hasContent
         contentItem: RowLayout {
             spacing: parent.spacing
-            ToolButton {
+            TtToolButton {
                 id: playPauseButton
                 containmentMask: Item {
                     parent: playPauseButton
