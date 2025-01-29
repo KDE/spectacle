@@ -48,9 +48,9 @@ public:
 protected:
     void changeEvent(QEvent *event) override;
 
-private:
     explicit OptionsMenu(QWidget *parent = nullptr);
 
+private:
     void delayActionLayoutUpdate();
     Q_SLOT void updateCaptureModes();
 
