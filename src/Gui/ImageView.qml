@@ -47,12 +47,42 @@ EmptyPage {
 
     header: QQC.ToolBar {
         id: header
-        contentItem: MainToolBarContents {
+        contentItem: ButtonGrid {
             id: mainToolBarContents
-            showNewScreenshotButton: false
-            showOptionsMenu: false
-            showUndoRedo: contextWindow.annotating
-            displayMode: QQC.AbstractButton.TextBesideIcon
+            AnimatedLoader {
+                state: contextWindow.annotating ? "active" : "inactive"
+                sourceComponent: UndoRedoGroup {
+                    buttonHeight: QmlUtils.iconTextButtonHeight
+                    spacing: mainToolBarContents.spacing
+                }
+            }
+            TtToolButton {
+                visible: action.enabled
+                action: SaveAction {}
+            }
+            TtToolButton {
+                action: SaveAsAction {}
+            }
+            TtToolButton {
+                visible: action.enabled
+                action: CopyImageAction {}
+            }
+            // We only show this in video mode to save space in screenshot mode
+            TtToolButton {
+                visible: SpectacleCore.videoMode
+                action: CopyLocationAction {}
+            }
+            ExportMenuButton {}
+            TtToolButton {
+                visible: action.enabled
+                action: EditAction {}
+            }
+            TtToolButton {
+                icon.name: "configure"
+                text: i18nc("@action", "Configure...")
+                onClicked: OptionsMenu.showPreferencesDialog();
+            }
+            HelpMenuButton {}
         }
     }
 
