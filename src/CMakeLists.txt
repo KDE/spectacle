@@ -179,7 +179,6 @@ qt_target_qml_sources(spectacle
     Gui/InlineMessage.qml
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
-    Gui/MainToolBarContents.qml
     Gui/NewScreenshotToolButton.qml
     Gui/OptionsMenuButton.qml
     Gui/Outline.qml
