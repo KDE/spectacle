@@ -287,76 +287,6 @@ MouseArea {
             }
         }
 
-        // Size ToolTip
-        SizeLabel {
-            id: ssToolTip
-            readonly property int valignment: {
-                if (SelectionEditor.selection.empty) {
-                    return Qt.AlignVCenter
-                }
-                const margin = Kirigami.Units.mediumSpacing * 2
-                const w = width + margin
-                const h = height + margin
-                if (SelectionEditor.handlesRect.top >= h) {
-                    return Qt.AlignTop
-                } else if (SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom >= h) {
-                    return Qt.AlignBottom
-                } else {
-                    // At the bottom of the inside of the selection rect.
-                    return Qt.AlignBaseline
-                }
-            }
-            readonly property bool normallyVisible: !SelectionEditor.selection.empty && !(mainToolBar.visible && mainToolBar.valignment === ssToolTip.valignment)
-            Binding on x {
-                value: contextWindow.dprRound(SelectionEditor.selection.horizontalCenter - ssToolTip.width / 2)
-                when: ssToolTip.normallyVisible
-                restoreMode: Binding.RestoreNone
-            }
-            Binding on y {
-                value: {
-                    let v = 0
-                    if (ssToolTip.valignment & Qt.AlignBaseline) {
-                        v = Math.min(SelectionEditor.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
-                            - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
-                    } else if (ssToolTip.valignment & Qt.AlignTop) {
-                        v = SelectionEditor.handlesRect.top
-                            - ssToolTip.height - Kirigami.Units.mediumSpacing * 2
-                    } else if (ssToolTip.valignment & Qt.AlignBottom) {
-                        v = SelectionEditor.handlesRect.bottom + Kirigami.Units.mediumSpacing * 2
-                    } else {
-                        v = (root.height - ssToolTip.height) / 2 - parent.y
-                    }
-                    return contextWindow.dprRound(v)
-                }
-                when: ssToolTip.normallyVisible
-                restoreMode: Binding.RestoreNone
-            }
-            visible: opacity > 0
-            opacity: ssToolTip.normallyVisible
-                && Geometry.rectIntersects(Qt.rect(x,y,width,height), annotations.viewportRect)
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: Kirigami.Units.longDuration
-                    easing.type: Easing.OutCubic
-                }
-            }
-            size: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
-            padding: Kirigami.Units.mediumSpacing * 2
-            topPadding: padding - QmlUtils.fontMetrics.descent
-            bottomPadding: topPadding
-            background: FloatingBackground {
-                implicitWidth: Math.ceil(parent.contentWidth) + parent.leftPadding + parent.rightPadding
-                implicitHeight: Math.ceil(parent.contentHeight) + parent.topPadding + parent.bottomPadding
-                color: Qt.rgba(parent.palette.window.r,
-                            parent.palette.window.g,
-                            parent.palette.window.b, 0.85)
-                border.color: Qt.rgba(parent.palette.windowText.r,
-                                    parent.palette.windowText.g,
-                                    parent.palette.windowText.b, 0.2)
-                border.width: contextWindow.dprRound(1)
-            }
-        }
-
         Connections {
             target: SelectionEditor.selection
             function onEmptyChanged() {
@@ -440,17 +370,17 @@ MouseArea {
             focusPolicy: Qt.NoFocus
             contentItem: ButtonGrid {
                 id: mainToolBarContents
-                AnimatedLoader {
-                    id: sizeLabelLoader
-                    readonly property size imageSize: Geometry.rawSize(SelectionEditor.selection.size, SelectionEditor.devicePixelRatio)
-                    state: mainToolBar.valignment === ssToolTip.valignment && imageSize.width > 0 && imageSize.height > 0 ?
-                        "active" : "inactive"
-                    sourceComponent: SizeLabel {
-                        height: QmlUtils.iconTextButtonHeight
-                        size: sizeLabelLoader.imageSize
-                        leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
-                        rightPadding: leftPadding
+                SizeLabel {
+                    height: QmlUtils.iconTextButtonHeight
+                    size: {
+                        const sz = SelectionEditor.selection.empty
+                            ? Qt.size(SelectionEditor.screensRect.width,
+                                        SelectionEditor.screensRect.height)
+                            : SelectionEditor.selection.size
+                        return Geometry.rawSize(sz, SelectionEditor.devicePixelRatio)
                     }
+                    leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
+                    rightPadding: leftPadding
                 }
                 TtToolButton {
                     focusPolicy: Qt.NoFocus
