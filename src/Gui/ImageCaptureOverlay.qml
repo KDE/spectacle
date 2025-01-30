@@ -399,11 +399,6 @@ MouseArea {
                 ExportMenuButton {
                     focusPolicy: Qt.NoFocus
                 }
-                TtToolButton {
-                    focusPolicy: Qt.NoFocus
-                    visible: action.enabled
-                    action: EditAction {}
-                }
                 NewScreenshotToolButton {
                     focusPolicy: Qt.NoFocus
                 }
