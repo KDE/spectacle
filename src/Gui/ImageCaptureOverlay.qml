@@ -567,14 +567,14 @@ MouseArea {
                 }
 
                 HoverHandler {
-                    enabled: SelectionEditor.selection.empty
+                    enabled: dragHandler.enabled
                     target: annotationsToolBar
                     margin: annotationsToolBar.padding
                     cursorShape: enabled && !dragHandler.active && hovered ? Qt.OpenHandCursor : undefined
                 }
                 DragHandler { // parented to contentItem
                     id: dragHandler
-                    enabled: SelectionEditor.selection.empty
+                    enabled: SelectionEditor.selection.empty || !selectionRectangle.enabled
                     target: atbLoader
                     acceptedButtons: Qt.LeftButton
                     margin: annotationsToolBar.padding
@@ -703,14 +703,14 @@ MouseArea {
                 }
 
                 HoverHandler {
-                    enabled: SelectionEditor.selection.empty
+                    enabled: dragHandler.enabled
                     target: toolBar
                     margin: toolBar.padding
                     cursorShape: enabled && !dragHandler.active && hovered ? Qt.OpenHandCursor : undefined
                 }
                 DragHandler { // parent is contentItem and parent is a read-only property
                     id: dragHandler
-                    enabled: SelectionEditor.selection.empty
+                    enabled: SelectionEditor.selection.empty || !selectionRectangle.enabled
                     target: ftbLoader
                     acceptedButtons: Qt.LeftButton
                     margin: toolBar.padding
