@@ -107,25 +107,14 @@ QScreen *CaptureWindow::screenToFollow() const
 
 void CaptureWindow::setMode(CaptureWindow::Mode mode)
 {
-    if (mode == Image) {
-        syncGeometryWithScreen();
-        QVariantMap initialProperties = {
-            // Set the parent in initialProperties to avoid having
-            // the parent and window be null in Component.onCompleted
-            {u"parent"_s, QVariant::fromValue(contentItem())}
-        };
-        setSource(QUrl("%1/Gui/ImageCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
-                  initialProperties);
-    } else if (mode == Video) {
-        syncGeometryWithScreen();
-        QVariantMap initialProperties = {
-            // Set the parent in initialProperties to avoid having
-            // the parent and window be null in Component.onCompleted
-            {u"parent"_s, QVariant::fromValue(contentItem())}
-        };
-        setSource(QUrl("%1/Gui/VideoCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
-                  initialProperties);
-    }
+    syncGeometryWithScreen();
+    QVariantMap initialProperties = {
+        // Set the parent in initialProperties to avoid having
+        // the parent and window be null in Component.onCompleted
+        {u"parent"_s, QVariant::fromValue(contentItem())}
+    };
+    setSource(QUrl("%1/Gui/ImageCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
+              initialProperties);
 }
 
 bool CaptureWindow::accept()
