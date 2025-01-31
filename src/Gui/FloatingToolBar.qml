@@ -14,6 +14,7 @@ T.Pane {
     property real topRightRadius: radius
     property real bottomLeftRadius: radius
     property real bottomRightRadius: radius
+    property real backgroundColorOpacity: 0.85
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentWidth + leftPadding + rightPadding)
@@ -26,7 +27,7 @@ T.Pane {
     background: FloatingBackground {
         color: Qt.rgba(root.palette.window.r,
                        root.palette.window.g,
-                       root.palette.window.b, 0.85)
+                       root.palette.window.b, root.backgroundColorOpacity)
         border.color: Qt.rgba(root.palette.windowText.r,
                               root.palette.windowText.g,
                               root.palette.windowText.b, 0.2)
