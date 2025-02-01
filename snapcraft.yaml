@@ -97,4 +97,3 @@ parts:
       for snap in "core22" "kf6-core22" "qt-common-themes"; do
           cd "/snap/$snap/current" && find . -type f,l -exec rm -rf "${CRAFT_PRIME}/{}" \;
       done
-
