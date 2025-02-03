@@ -203,7 +203,6 @@ qt_target_qml_sources(spectacle
     Gui/SizeLabel.qml
     Gui/TtToolButton.qml
     Gui/UndoRedoGroup.qml
-    Gui/VideoCaptureOverlay.qml
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
