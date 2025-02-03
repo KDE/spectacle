@@ -205,7 +205,6 @@ qt_target_qml_sources(spectacle
     Gui/TextContextMenuConnection.qml
     Gui/TtToolButton.qml
     Gui/UndoRedoGroup.qml
-    Gui/VideoCaptureOverlay.qml
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
