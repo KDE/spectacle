@@ -202,30 +202,6 @@ MouseArea {
         }
     }
 
-    ShortcutsTextBox {
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-        }
-        visible: opacity > 0 && Settings.showCaptureInstructions
-        // Assume SelectionEditor covers all screens.
-        // Use parent's coordinate system.
-        opacity: root.containsMouse
-            && !contains(mapFromItem(root, root.mouseX, root.mouseY))
-            && !root.pressed
-            && (root.document?.tool.isNoTool ?? false)
-            && !mainToolBar.dragging
-            && !(ftbLoader.item?.dragging ?? false)
-            && !(atbLoader.item?.dragging ?? false)
-            && !Geometry.rectIntersects(SelectionEditor.handlesRect, Qt.rect(x, y, width, height))
-        Behavior on opacity {
-            NumberAnimation {
-                duration: Kirigami.Units.longDuration
-                easing.type: Easing.OutCubic
-            }
-        }
-    }
-
     Item { // separate item because it needs to be above the stuff defined above
         id: screensRectItem
         readonly property bool allowToolbars: {
