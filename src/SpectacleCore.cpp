@@ -1207,6 +1207,10 @@ void SpectacleCore::setVideoMode(bool videoMode)
         return;
     }
     m_videoMode = videoMode;
+    if (!videoMode && m_annotationDocument->baseImage().isNull()) {
+        // Change this if there ends up being a way to toggle video mode outside of rectangle capture mode.
+        takeNewScreenshot(ImagePlatform::PerScreenImageNative, 0, Settings::includePointer(), Settings::includeDecorations(), Settings::includeShadow());
+    }
     Q_EMIT videoModeChanged(videoMode);
 }
 
