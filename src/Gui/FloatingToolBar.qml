@@ -14,7 +14,7 @@ T.Pane {
     property real topRightRadius: radius
     property real bottomLeftRadius: radius
     property real bottomRightRadius: radius
-    property real backgroundColorOpacity: 0.85
+    property real backgroundColorOpacity: 0.95
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentWidth + leftPadding + rightPadding)

@@ -384,7 +384,6 @@ MouseArea {
                 }
             }
             layer.enabled: true // improves the visuals of the opacity animation
-            backgroundColorOpacity: SelectionEditor.selection.empty ? 0.95 : 0.85
             focusPolicy: Qt.NoFocus
             contentItem: Row {
                 spacing: parent.spacing
@@ -736,7 +735,6 @@ MouseArea {
                     }
                 }
                 layer.enabled: true // improves the visuals of the opacity animation
-                backgroundColorOpacity: valignment & Qt.AlignTop || SelectionEditor.selection.empty ? 0.95 : 0.85
                 focusPolicy: Qt.NoFocus
                 contentItem: Loader {
                     sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageToolBarComponent
