@@ -188,14 +188,10 @@ EmptyPage {
                     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
                     actions: [
-                        Kirigami.Action {
-                            text: i18n("Screenshot")
-                            icon.name: "camera-photo"
+                        ScreenshotModeAction {
                             checked: tabBar.currentIndex === 0
                         },
-                        Kirigami.Action {
-                            text: i18n("Recording")
-                            icon.name: "camera-video"
+                        RecordingModeAction {
                             checked: tabBar.currentIndex === 1
                         }
                     ]

@@ -37,7 +37,7 @@ class SpectacleCore : public QObject
     Q_PROPERTY(int captureTimeRemaining READ captureTimeRemaining NOTIFY captureTimeRemainingChanged FINAL)
     Q_PROPERTY(qreal captureProgress READ captureProgress NOTIFY captureProgressChanged FINAL)
     Q_PROPERTY(QString recordedTime READ recordedTime NOTIFY recordedTimeChanged)
-    Q_PROPERTY(bool videoMode READ videoMode NOTIFY videoModeChanged)
+    Q_PROPERTY(bool videoMode READ videoMode WRITE setVideoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
     Q_PROPERTY(AnnotationDocument *annotationDocument READ annotationDocument CONSTANT FINAL)
 
@@ -67,15 +67,21 @@ public:
     int captureTimeRemaining() const;
     qreal captureProgress() const;
 
+    QString recordedTime() const;
+
+    bool videoMode() const;
+    void setVideoMode(bool enabled);
+
+    QUrl currentVideo() const;
+
+
     void initGuiNoScreenshot();
 
     void syncExportImage();
 
     Q_INVOKABLE void startRecording(VideoPlatform::RecordingMode mode, bool withPointer = Settings::videoIncludePointer());
     Q_INVOKABLE void finishRecording();
-    bool videoMode() const;
-    QUrl currentVideo() const;
-    QString recordedTime() const;
+
     Q_INVOKABLE QString timeFromMilliseconds(qint64 milliseconds) const;
 
     ExportManager::Actions autoExportActions() const;
@@ -140,7 +146,6 @@ private:
     void initViewerWindow(ViewerWindow::Mode mode);
     void deleteWindows();
     void unityLauncherUpdate(const QVariantMap &properties) const;
-    void setVideoMode(bool enabled);
     void setCurrentVideo(const QUrl &currentVideo);
     QUrl videoOutputUrl() const;
 

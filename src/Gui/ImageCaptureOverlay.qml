@@ -39,8 +39,8 @@ MouseArea {
     Loader {
         id: annotationsLoader
         anchors.fill: parent
-        visible: active
-        active: !SpectacleCore.videoMode
+        visible: !SpectacleCore.videoMode
+        active: visible
         sourceComponent: AnnotationEditor {
             enabled: contextWindow.annotating
             viewportRect: root.viewportRect
@@ -386,32 +386,47 @@ MouseArea {
             layer.enabled: true // improves the visuals of the opacity animation
             backgroundColorOpacity: SelectionEditor.selection.empty ? 0.95 : 0.85
             focusPolicy: Qt.NoFocus
-            contentItem: ButtonGrid {
-                QQC.Label {
-                    text: "Screenshot"
-                }
-                QQC.Switch {
-                    id: imageVideoSwitch
-                    checked: SpectacleCore.videoMode
-                    focusPolicy: Qt.NoFocus
-                }
-                QQC.Label {
-                    text: "Record"
-                }
+            contentItem: Row {
+                spacing: parent.spacing
                 Loader {
+                    id: mtbImageVideoContentLoader
                     visible: SelectionEditor.selection.empty
                     active: visible
                     sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageToolBarComponent
                 }
+                QQC.ToolSeparator {
+                    visible: mtbImageVideoContentLoader.visible
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: QmlUtils.iconTextButtonHeight
+                }
+                QQC.ButtonGroup {
+                    id: modeGroup
+                    exclusive: true
+                }
+                ToolButton {
+                    QQC.ButtonGroup.group: modeGroup
+                    action: ScreenshotModeAction {}
+                    checkable: true
+                    checked: !SpectacleCore.videoMode
+                    onToggled: SpectacleCore.videoMode = !checked
+                }
+                ToolButton {
+                    QQC.ButtonGroup.group: modeGroup
+                    action: RecordingModeAction {}
+                    checkable: true
+                    checked: SpectacleCore.videoMode
+                    onToggled: SpectacleCore.videoMode = checked
+                }
+                QQC.ToolSeparator {
+                    height: QmlUtils.iconTextButtonHeight
+                }
                 NewScreenshotToolButton {
                     focusPolicy: Qt.NoFocus
+                    visible: !SpectacleCore.videoMode
                 }
                 FullMenuButton {
                     focusPolicy: Qt.NoFocus
                 }
-                // OptionsMenuButton {
-                //     focusPolicy: Qt.NoFocus
-                // }
             }
 
             HoverHandler {
@@ -444,35 +459,57 @@ MouseArea {
 
         Component {
             id: imageToolBarComponent
-            ButtonGrid {
-                ToolBarSizeLabel {}
+            Row {
+                spacing: parent.parent.spacing
+                ToolBarSizeLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: action.enabled
+                    action: AcceptAction {}
+                }
+                ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAction {}
                 }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAsAction {}
                 }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: CopyImageAction {}
                 }
                 ExportMenuButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                 }
             }
         }
         Component {
             id: videoToolBarComponent
-            ToolBarSizeLabel {}
+            Row {
+                spacing: parent.parent.spacing
+                ToolBarSizeLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: action.enabled
+                    action: AcceptAction {}
+                }
+            }
         }
 
         Loader {
             id: atbLoader
             readonly property rect rect: Qt.rect(x, y, width, height)
             visible: annotationsLoader.visible
-            active: annotationsLoader.active
+            active: visible
             z: 2
             sourceComponent: FloatingToolBar {
                 id: annotationsToolBar
@@ -497,10 +534,10 @@ MouseArea {
                     }
                 }
                 layer.enabled: true // improves the visuals of the opacity animation
-                backgroundColorOpacity: valignment & Qt.AlignBottom || SelectionEditor.selection.empty ? 0.95 : 0.85
                 focusPolicy: Qt.NoFocus
                 contentItem: AnnotationsToolBarContents {
                     id: annotationsContents
+                    spacing: parent.spacing
                     displayMode: QQC.AbstractButton.IconOnly
                     focusPolicy: Qt.NoFocus
                 }
@@ -613,9 +650,9 @@ MouseArea {
                     y: annotationsToolBar.valignment & Qt.AlignTop ?
                         -otbLoader.height + borderBg.height
                         : otbLoader.height - borderBg.height
-                    state: if (root.document.tool.options !== AnnotationTool.NoOptions
-                                || (root.document.tool.type === AnnotationTool.SelectTool
-                                    && root.document.selectedItem.options !== AnnotationTool.NoOptions)
+                    state: if (root.document?.tool.options !== AnnotationTool.NoOptions
+                                || (root.document?.tool.type === AnnotationTool.SelectTool
+                                    && root.document?.selectedItem.options !== AnnotationTool.NoOptions)
                     ) {
                         return "active"
                     } else {
@@ -624,6 +661,7 @@ MouseArea {
                     sourceComponent: FloatingToolBar {
                         focusPolicy: Qt.NoFocus
                         contentItem: AnnotationOptionsToolBarContents {
+                            spacing: parent.spacing
                             displayMode: QQC.AbstractButton.IconOnly
                             focusPolicy: Qt.NoFocus
                         }
