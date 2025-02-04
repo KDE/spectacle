@@ -334,7 +334,7 @@ MouseArea {
             id: mainToolBar
             readonly property rect rect: Qt.rect(x, y, width, height)
             property bool rememberPosition: false
-            property alias dragging: dragHandler.active
+            property alias dragging: mtbDragHandler.active
             Binding on x {
                 value: Math.max(root.viewportRect.x + mainToolBar.leftPadding, // min value
                         Math.min(dprRound(root.viewportRect.x + (root.width - mainToolBar.width) / 2),
@@ -407,10 +407,12 @@ MouseArea {
             HoverHandler {
                 target: mainToolBar
                 margin: mainToolBar.padding
-                cursorShape: enabled && !dragHandler.active && hovered ? Qt.OpenHandCursor : undefined
+                cursorShape: enabled ?
+                    (mtbDragHandler.active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                    : undefined
             }
             DragHandler { // parent is contentItem and parent is a read-only property
-                id: dragHandler
+                id: mtbDragHandler
                 target: mainToolBar
                 acceptedButtons: Qt.LeftButton
                 margin: mainToolBar.padding
@@ -418,9 +420,6 @@ MouseArea {
                 xAxis.maximum: root.viewportRect.x + root.width - mainToolBar.width
                 yAxis.minimum: root.viewportRect.y
                 yAxis.maximum: root.viewportRect.y + root.height - mainToolBar.height
-                cursorShape: enabled ?
-                    (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                    : undefined
                 onActiveChanged: if (active) {
                     mainToolBar.z = 2
                     atbLoader.z = atbLoader.z > ftbLoader.z ? 1 : 0
@@ -584,7 +583,9 @@ MouseArea {
                     enabled: dragHandler.enabled
                     target: annotationsToolBar
                     margin: annotationsToolBar.padding
-                    cursorShape: enabled && !dragHandler.active && hovered ? Qt.OpenHandCursor : undefined
+                    cursorShape: enabled ?
+                        (dragHandler.active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                        : undefined
                 }
                 DragHandler { // parented to contentItem
                     id: dragHandler
@@ -596,9 +597,6 @@ MouseArea {
                     xAxis.maximum: root.viewportRect.x + root.width - annotationsToolBar.width
                     yAxis.minimum: root.viewportRect.y
                     yAxis.maximum: root.viewportRect.y + root.height - annotationsToolBar.height
-                    cursorShape: enabled ?
-                        (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                        : undefined
                     onActiveChanged: if (active) {
                         mainToolBar.z = mainToolBar.z > ftbLoader.z ? 1 : 0
                         atbLoader.z = 2
@@ -720,7 +718,9 @@ MouseArea {
                     enabled: dragHandler.enabled
                     target: toolBar
                     margin: toolBar.padding
-                    cursorShape: enabled && !dragHandler.active && hovered ? Qt.OpenHandCursor : undefined
+                    cursorShape: enabled ?
+                        (dragHandler.active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
+                        : undefined
                 }
                 DragHandler { // parent is contentItem and parent is a read-only property
                     id: dragHandler
@@ -732,9 +732,6 @@ MouseArea {
                     xAxis.maximum: root.viewportRect.x + root.width - toolBar.width
                     yAxis.minimum: root.viewportRect.y
                     yAxis.maximum: root.viewportRect.y + root.height - toolBar.height
-                    cursorShape: enabled ?
-                        (active ? Qt.ClosedHandCursor : Qt.OpenHandCursor)
-                        : undefined
                     onActiveChanged: if (active) {
                         mainToolBar.z = mainToolBar.z > atbLoader.z ? 1 : 0
                         atbLoader.z = mainToolBar.z < atbLoader.z ? 1 : 0
