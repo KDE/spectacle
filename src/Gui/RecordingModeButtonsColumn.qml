@@ -12,7 +12,7 @@ import org.kde.spectacle.private
 ColumnLayout {
     spacing: Kirigami.Units.mediumSpacing
     Repeater {
-        model: RecordingModeModel { }
+        model: RecordingModeModel
         delegate: QQC.Button {
             id: button
             Layout.fillWidth: true

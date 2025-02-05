@@ -7,6 +7,7 @@
 #include "Platforms/ImagePlatform.h"
 
 #include <QAbstractListModel>
+#include <QQmlEngine>
 
 /**
  * This is a model containing the current supported capture modes and their labels and shortcuts.
@@ -15,10 +16,22 @@ class CaptureModeModel : public QAbstractListModel
 {
     Q_OBJECT
     QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 
 public:
     CaptureModeModel(QObject *parent = nullptr);
+
+    static CaptureModeModel *instance();
+
+    static CaptureModeModel *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
 
     enum CaptureMode {
         RectangularRegion,

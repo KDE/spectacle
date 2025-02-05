@@ -18,6 +18,16 @@
 
 using namespace Qt::StringLiterals;
 
+static std::unique_ptr<RecordingModeModel> s_instance;
+
+RecordingModeModel *RecordingModeModel::instance()
+{
+    if (!s_instance) {
+        s_instance = std::make_unique<RecordingModeModel>();
+    }
+    return s_instance.get();
+}
+
 RecordingModeModel::RecordingModeModel(QObject *parent)
     : QAbstractListModel(parent)
 {

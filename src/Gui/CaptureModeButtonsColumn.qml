@@ -11,7 +11,7 @@ import org.kde.spectacle.private
 ColumnLayout {
     spacing: Kirigami.Units.mediumSpacing
     Repeater {
-        model: CaptureModeModel { }
+        model: CaptureModeModel
         delegate: QQC.DelayButton {
             id: button
             readonly property bool showCancel: Settings.captureMode === model.captureMode && SpectacleCore.captureTimeRemaining > 0

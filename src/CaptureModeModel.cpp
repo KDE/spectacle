@@ -15,6 +15,16 @@
 
 using namespace Qt::StringLiterals;
 
+static std::unique_ptr<CaptureModeModel> s_instance;
+
+CaptureModeModel *CaptureModeModel::instance()
+{
+    if (!s_instance) {
+        s_instance = std::make_unique<CaptureModeModel>();
+    }
+    return s_instance.get();
+}
+
 static QString actionShortcutsToString(QAction *action)
 {
     QString value;
