@@ -36,11 +36,11 @@ MouseArea {
     anchors.fill: parent
     enabled: !SpectacleCore.videoPlatform.isRecording
 
-    Loader {
+    AnimatedLoader {
         id: annotationsLoader
         anchors.fill: parent
-        visible: !SpectacleCore.videoMode
-        active: visible
+        state: !SpectacleCore.videoMode ? "active" : "inactive"
+        animationDuration: Kirigami.Units.veryLongDuration
         sourceComponent: AnnotationEditor {
             enabled: contextWindow.annotating
             viewportRect: root.viewportRect
