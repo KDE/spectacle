@@ -444,26 +444,31 @@ MouseArea {
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ToolButton {
+                    display: TtToolButton.TextBesideIcon
                     anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: AcceptAction {}
                 }
                 ToolButton {
+                    display: TtToolButton.IconOnly
                     anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAction {}
                 }
                 ToolButton {
+                    display: TtToolButton.IconOnly
                     anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAsAction {}
                 }
                 ToolButton {
+                    display: TtToolButton.IconOnly
                     anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: CopyImageAction {}
                 }
                 ExportMenuButton {
+                    display: TtToolButton.IconOnly
                     anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                 }
@@ -477,6 +482,7 @@ MouseArea {
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 ToolButton {
+                    display: TtToolButton.TextBesideIcon
                     anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: AcceptAction {}
