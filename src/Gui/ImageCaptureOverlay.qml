@@ -398,11 +398,6 @@ MouseArea {
                     anchors.verticalCenter: parent.verticalCenter
                     height: QmlUtils.iconTextButtonHeight
                 }
-                NewScreenshotToolButton {
-                    anchors.verticalCenter: parent.verticalCenter
-                    focusPolicy: Qt.NoFocus
-                    visible: !SpectacleCore.videoMode
-                }
                 FullMenuButton {
                     anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
