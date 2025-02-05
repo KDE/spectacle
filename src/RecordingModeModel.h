@@ -45,6 +45,7 @@ public:
 
 Q_SIGNALS:
     void countChanged();
+    void recordingModesChanged();
 
 private:
     struct Item {
