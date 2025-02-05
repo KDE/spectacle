@@ -7,14 +7,27 @@
 #include "Platforms/VideoPlatform.h"
 
 #include <QAbstractListModel>
+#include <QQmlEngine>
 
 class RecordingModeModel : public QAbstractListModel
 {
     Q_OBJECT
     QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
 public:
     explicit RecordingModeModel(QObject *parent = nullptr);
+
+    static RecordingModeModel *instance();
+
+    static RecordingModeModel *create(QQmlEngine *engine, QJSEngine *)
+    {
+        auto inst = instance();
+        Q_ASSERT(inst);
+        Q_ASSERT(inst->thread() == engine->thread());
+        QJSEngine::setObjectOwnership(inst, QJSEngine::CppOwnership);
+        return inst;
+    }
 
     enum {
         RecordingModeRole = Qt::UserRole + 1,
