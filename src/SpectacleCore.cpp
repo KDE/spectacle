@@ -1207,6 +1207,12 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
     if (m_videoPlatform->isRecording() || mode == VideoPlatform::NoRecordingModes) {
         return;
     }
+    if (!CaptureWindow::instances().empty()) {
+        SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
+        if (mode != VideoPlatform::Region) {
+            m_returnToViewer = true;
+        }
+    }
     m_lastRecordingMode = mode;
     setVideoMode(true);
     const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
