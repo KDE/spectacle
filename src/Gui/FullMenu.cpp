@@ -22,7 +22,6 @@ FullMenu::FullMenu(QWidget *parent)
                 setWidgetTransientParentToWidget(HelpMenu::instance(), this);
             });
 
-    addSeparator();
     addMenu(ExportMenu::instance());
     addMenu(HelpMenu::instance());
 }
