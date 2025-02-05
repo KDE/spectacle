@@ -468,6 +468,8 @@ void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
             Q_EMIT newScreenshotTaken(std::get<ResultVariant::Image>(result));
         } else if (index == ResultVariant::ErrorString) {
             Q_EMIT newScreenshotFailed(std::get<ResultVariant::ErrorString>(result));
+        } else if (index == ResultVariant::CanceledState) {
+            Q_EMIT newScreenshotCanceled();
         }
     });
 }

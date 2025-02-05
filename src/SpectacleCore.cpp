@@ -239,6 +239,21 @@ SpectacleCore::SpectacleCore(QObject *parent)
         auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
         onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed, &ViewerWindow::showScreenshotFailedMessage);
     });
+    connect(imagePlatform, &ImagePlatform::newScreenshotCanceled, this, [this]() {
+        if (m_startMode != StartMode::Gui || !m_returnToViewer || isGuiNull()) {
+            Q_EMIT allDone();
+            return;
+        }
+        SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
+        const auto windows = SpectacleWindow::instances();
+        if (windows.empty()) {
+            initViewerWindow(ViewerWindow::Image);
+            return;
+        }
+        for (auto w : windows) {
+            w->setVisible(true);
+        }
+    });
 
     auto videoPlatform = m_videoPlatform.get();
     connect(videoPlatform, &VideoPlatform::recordingChanged, this, [this](bool isRecording) {
