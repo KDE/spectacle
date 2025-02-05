@@ -336,6 +336,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
             return;
         }
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
+        const auto windows = SpectacleWindow::instances();
+        if (windows.empty()) {
+            initViewerWindow(ViewerWindow::Image);
+            return;
+        }
+        for (auto w : windows) {
+            w->setVisible(true);
+        }
     });
     connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
         auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
