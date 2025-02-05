@@ -379,6 +379,7 @@ MouseArea {
                     exclusive: true
                 }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     QQC.ButtonGroup.group: modeGroup
                     action: ScreenshotModeAction {}
                     checkable: true
@@ -386,6 +387,7 @@ MouseArea {
                     onToggled: SpectacleCore.videoMode = !checked
                 }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     QQC.ButtonGroup.group: modeGroup
                     action: RecordingModeAction {}
                     checkable: true
@@ -393,13 +395,16 @@ MouseArea {
                     onToggled: SpectacleCore.videoMode = checked
                 }
                 QQC.ToolSeparator {
+                    anchors.verticalCenter: parent.verticalCenter
                     height: QmlUtils.iconTextButtonHeight
                 }
                 NewScreenshotToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                     visible: !SpectacleCore.videoMode
                 }
                 FullMenuButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                 }
             }
