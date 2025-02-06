@@ -885,47 +885,42 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.end();
 }
 
-KLocalizedString placeholderDescription(const char *string)
-{
-    return ki18nc("A placeholder in the user configurable filename will replaced by the specified value", string);
-}
-
 using enum ExportManager::Placeholder::Flag;
 const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
-    {Date | Extra | QDateTime, u"d"_s, placeholderDescription("Day (1–31)")},
-    {Date | QDateTime, u"dd"_s, placeholderDescription("Day (01–31)")},
-    {Date | Extra | QDateTime, u"ddd"_s, placeholderDescription("Day (short name)")},
-    {Date | Extra | QDateTime, u"dddd"_s, placeholderDescription("Day (long name)")},
-    {Date | Extra | QDateTime, u"M"_s, placeholderDescription("Month (1–12)")},
-    {Date | QDateTime, u"MM"_s, placeholderDescription("Month (01–12)")},
-    {Date | QDateTime, u"MMM"_s, placeholderDescription("Month (short name)")},
-    {Date | QDateTime, u"MMMM"_s, placeholderDescription("Month (long name)")},
-    {Date | QDateTime, u"yy"_s, placeholderDescription("Year (2 digit)")},
-    {Date | QDateTime, u"yyyy"_s, placeholderDescription("Year (4 digit)")},
-    {Time | Extra | QDateTime, u"H"_s, placeholderDescription("Hour (0–23)")},
-    {Time | QDateTime, u"HH"_s, placeholderDescription("Hour (00–23)")},
-    {Time | Extra, u"h"_s, placeholderDescription("Hour (1–12)")},
-    {Time, u"hh"_s, placeholderDescription("Hour (01–12)")},
-    {Time | Extra | QDateTime, u"m"_s, placeholderDescription("Minute (0–59)")},
-    {Time | QDateTime, u"mm"_s, placeholderDescription("Minute (00–59)")},
-    {Time | Extra | QDateTime, u"s"_s, placeholderDescription("Second (0–59)")},
-    {Time | QDateTime, u"ss"_s, placeholderDescription("Second (00–59)")},
-    {Time | Extra | QDateTime, u"z"_s, placeholderDescription("Millisecond (0–999)")},
+    {Date | Extra | QDateTime, u"d"_s, ki18nc("filename placeholder description", "Day (1–31)")},
+    {Date | QDateTime, u"dd"_s, ki18nc("filename placeholder description", "Day (01–31)")},
+    {Date | Extra | QDateTime, u"ddd"_s, ki18nc("filename placeholder description", "Day (short name)")},
+    {Date | Extra | QDateTime, u"dddd"_s, ki18nc("filename placeholder description", "Day (long name)")},
+    {Date | Extra | QDateTime, u"M"_s, ki18nc("filename placeholder description", "Month (1–12)")},
+    {Date | QDateTime, u"MM"_s, ki18nc("filename placeholder description", "Month (01–12)")},
+    {Date | QDateTime, u"MMM"_s, ki18nc("filename placeholder description", "Month (short name)")},
+    {Date | QDateTime, u"MMMM"_s, ki18nc("filename placeholder description", "Month (long name)")},
+    {Date | QDateTime, u"yy"_s, ki18nc("filename placeholder description", "Year (2 digit)")},
+    {Date | QDateTime, u"yyyy"_s, ki18nc("filename placeholder description", "Year (4 digit)")},
+    {Time | Extra | QDateTime, u"H"_s, ki18nc("filename placeholder description", "Hour (0–23)")},
+    {Time | QDateTime, u"HH"_s, ki18nc("filename placeholder description", "Hour (00–23)")},
+    {Time | Extra, u"h"_s, ki18nc("filename placeholder description", "Hour (1–12)")},
+    {Time, u"hh"_s, ki18nc("filename placeholder description", "Hour (01–12)")},
+    {Time | Extra | QDateTime, u"m"_s, ki18nc("filename placeholder description", "Minute (0–59)")},
+    {Time | QDateTime, u"mm"_s, ki18nc("filename placeholder description", "Minute (00–59)")},
+    {Time | Extra | QDateTime, u"s"_s, ki18nc("filename placeholder description", "Second (0–59)")},
+    {Time | QDateTime, u"ss"_s, ki18nc("filename placeholder description", "Second (00–59)")},
+    {Time | Extra | QDateTime, u"z"_s, ki18nc("filename placeholder description", "Millisecond (0–999)")},
     {Time | Extra | QDateTime, u"zz"_s}, // same as `z`
-    {Time | Extra | QDateTime, u"zzz"_s, placeholderDescription("Millisecond (000–999)")},
-    {Time | Extra | QDateTime, u"AP"_s, placeholderDescription("AM/PM")},
+    {Time | Extra | QDateTime, u"zzz"_s, ki18nc("filename placeholder description", "Millisecond (000–999)")},
+    {Time | Extra | QDateTime, u"AP"_s, ki18nc("filename placeholder description", "AM/PM")},
     {Time | Extra | QDateTime, u"A"_s}, // same as `AP`
-    {Time | Extra | QDateTime, u"ap"_s, placeholderDescription("am/pm")},
+    {Time | Extra | QDateTime, u"ap"_s, ki18nc("filename placeholder description", "am/pm")},
     {Time | Extra | QDateTime, u"a"_s}, // same as `ap`
-    {Time | QDateTime, u"Ap"_s, placeholderDescription("AM/PM or am/pm (localized)")},
+    {Time | QDateTime, u"Ap"_s, ki18nc("filename placeholder description", "AM/PM or am/pm (localized)")},
     {Time | Extra | QDateTime, u"aP"_s}, // same as `Ap`
-    {Time | Extra | QDateTime, u"t"_s, placeholderDescription("Timezone (short name)")},
-    {Time | QDateTime, u"tt"_s, placeholderDescription("Timezone offset (±0000)")},
-    {Time | Extra | QDateTime, u"ttt"_s, placeholderDescription("Timezone offset (±00:00)")},
-    {Time | Extra | QDateTime, u"tttt"_s, placeholderDescription("Timezone (long name)")},
-    {Time | Extra, u"UnixTime"_s, placeholderDescription("Seconds since the Unix epoch")},
-    {Other, u"title"_s, placeholderDescription("Window Title")},
-    {Other, u"#"_s, placeholderDescription("Sequential numbering, padded by inserting additional '#' characters")},
+    {Time | Extra | QDateTime, u"t"_s, ki18nc("filename placeholder description", "Timezone (short name)")},
+    {Time | QDateTime, u"tt"_s, ki18nc("filename placeholder description", "Timezone offset (±0000)")},
+    {Time | Extra | QDateTime, u"ttt"_s, ki18nc("filename placeholder description", "Timezone offset (±00:00)")},
+    {Time | Extra | QDateTime, u"tttt"_s, ki18nc("filename placeholder description", "Timezone (long name)")},
+    {Time | Extra, u"UnixTime"_s, ki18nc("filename placeholder description", "Seconds since the Unix epoch")},
+    {Other, u"title"_s, ki18nc("filename placeholder description", "Window Title")},
+    {Other, u"#"_s, ki18nc("filename placeholder description", "Sequential numbering, padded by inserting additional '#' characters")},
 };
 
 #include "moc_ExportManager.cpp"
