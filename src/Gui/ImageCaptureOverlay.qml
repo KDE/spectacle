@@ -361,7 +361,7 @@ MouseArea {
             }
             layer.enabled: true // improves the visuals of the opacity animation
             focusPolicy: Qt.NoFocus
-            contentItem: Row {
+            contentItem: ButtonGrid {
                 spacing: parent.spacing
                 Loader {
                     id: mtbImageVideoContentLoader
@@ -371,7 +371,6 @@ MouseArea {
                 }
                 QQC.ToolSeparator {
                     visible: mtbImageVideoContentLoader.visible
-                    anchors.verticalCenter: parent.verticalCenter
                     height: QmlUtils.iconTextButtonHeight
                 }
                 QQC.ButtonGroup {
@@ -379,7 +378,6 @@ MouseArea {
                     exclusive: true
                 }
                 ToolButton {
-                    anchors.verticalCenter: parent.verticalCenter
                     QQC.ButtonGroup.group: modeGroup
                     action: ScreenshotModeAction {}
                     checkable: true
@@ -387,7 +385,6 @@ MouseArea {
                     onToggled: SpectacleCore.videoMode = !checked
                 }
                 ToolButton {
-                    anchors.verticalCenter: parent.verticalCenter
                     QQC.ButtonGroup.group: modeGroup
                     action: RecordingModeAction {}
                     checkable: true
@@ -395,11 +392,9 @@ MouseArea {
                     onToggled: SpectacleCore.videoMode = checked
                 }
                 QQC.ToolSeparator {
-                    anchors.verticalCenter: parent.verticalCenter
                     height: QmlUtils.iconTextButtonHeight
                 }
                 FullMenuButton {
-                    anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                 }
             }
@@ -433,52 +428,42 @@ MouseArea {
 
         Component {
             id: imageToolBarComponent
-            Row {
+            ButtonGrid {
                 spacing: parent.parent.spacing
-                ToolBarSizeLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                ToolBarSizeLabel {}
                 ToolButton {
                     display: TtToolButton.TextBesideIcon
-                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: AcceptAction {}
                 }
                 ToolButton {
                     display: TtToolButton.IconOnly
-                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAction {}
                 }
                 ToolButton {
                     display: TtToolButton.IconOnly
-                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: SaveAsAction {}
                 }
                 ToolButton {
                     display: TtToolButton.IconOnly
-                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: CopyImageAction {}
                 }
                 ExportMenuButton {
                     display: TtToolButton.IconOnly
-                    anchors.verticalCenter: parent.verticalCenter
                     focusPolicy: Qt.NoFocus
                 }
             }
         }
         Component {
             id: videoToolBarComponent
-            Row {
+            ButtonGrid {
                 spacing: parent.parent.spacing
-                ToolBarSizeLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                ToolBarSizeLabel {}
                 ToolButton {
                     display: TtToolButton.TextBesideIcon
-                    anchors.verticalCenter: parent.verticalCenter
                     visible: action.enabled
                     action: AcceptAction {}
                 }
