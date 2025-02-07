@@ -61,6 +61,10 @@ if(Qt6_VERSION VERSION_EQUAL 6.8.0)
     remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 endif()
 
+if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
+    find_package(Qt6GuiPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
+endif()
+
 find_package(
     KF6 ${KF6_MIN_VERSION} REQUIRED
         CoreAddons
