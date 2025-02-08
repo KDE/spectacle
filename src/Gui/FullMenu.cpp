@@ -18,11 +18,9 @@ FullMenu::FullMenu(QWidget *parent)
 {
     connect(this, &FullMenu::aboutToShow,
             this, [this] {
-                setWidgetTransientParentToWidget(ExportMenu::instance(), this);
                 setWidgetTransientParentToWidget(HelpMenu::instance(), this);
             });
 
-    addMenu(ExportMenu::instance());
     addMenu(HelpMenu::instance());
 }
 
