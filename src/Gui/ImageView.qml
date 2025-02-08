@@ -49,6 +49,7 @@ EmptyPage {
         id: header
         contentItem: ButtonGrid {
             id: mainToolBarContents
+            animationsEnabled: true
             AnimatedLoader {
                 state: contextWindow.annotating ? "active" : "inactive"
                 sourceComponent: UndoRedoGroup {
