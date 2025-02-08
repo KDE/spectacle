@@ -12,7 +12,7 @@ Grid {
     property int displayMode: QQC.AbstractButton.TextBesideIcon
     property int focusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
-    property bool animationsEnabled: true
+    property bool animationsEnabled: false
 
     clip: childrenRect.width > width || childrenRect.height > height
     horizontalItemAlignment: Grid.AlignHCenter
