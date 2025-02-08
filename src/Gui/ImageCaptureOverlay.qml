@@ -496,7 +496,8 @@ MouseArea {
                         easing.type: Easing.OutCubic
                     }
                 }
-                layer.enabled: true // improves the visuals of the opacity animation
+                // Can't use layer.enabled to improve opacity animation because
+                // that makes the options toolbar invisible
                 focusPolicy: Qt.NoFocus
                 contentItem: AnnotationsToolBarContents {
                     id: annotationsContents
@@ -507,16 +508,20 @@ MouseArea {
 
                 topLeftRadius: otbLoader.visible
                     && otbLoader.x === 0
-                    && annotationsToolBar.valignment & Qt.AlignTop ? 0 : radius
+                    && (annotationsToolBar.valignment & Qt.AlignTop)
+                    && !SelectionEditor.selection.empty ? 0 : radius
                 topRightRadius: otbLoader.visible
                     && otbLoader.x === width - otbLoader.width
-                    && annotationsToolBar.valignment & Qt.AlignTop ? 0 : radius
+                    && (annotationsToolBar.valignment & Qt.AlignTop)
+                    && !SelectionEditor.selection.empty? 0 : radius
                 bottomLeftRadius: otbLoader.visible
                     && otbLoader.x === 0
-                    && annotationsToolBar.valignment & Qt.AlignBottom ? 0 : radius
+                    && ((annotationsToolBar.valignment & Qt.AlignBottom)
+                    || SelectionEditor.selection.empty) ? 0 : radius
                 bottomRightRadius: otbLoader.visible
                     && otbLoader.x === width - otbLoader.width
-                    && annotationsToolBar.valignment & Qt.AlignBottom ? 0 : radius
+                    && ((annotationsToolBar.valignment & Qt.AlignBottom)
+                    || SelectionEditor.selection.empty) ? 0 : radius
 
                 Binding {
                     property: "x"
@@ -561,8 +566,9 @@ MouseArea {
                     opacity: otbLoader.opacity
                     parent: annotationsToolBar
                     x: otbLoader.x + annotationsToolBar.background.border.width
-                    y: annotationsToolBar.valignment & Qt.AlignTop ?
-                        otbLoader.y + otbLoader.height : otbLoader.y
+                    y: (annotationsToolBar.valignment & Qt.AlignTop)
+                        && !SelectionEditor.selection.empty
+                        ? otbLoader.y + otbLoader.height : otbLoader.y
                     width: otbLoader.width - annotationsToolBar.background.border.width * 2
                     height: dprRound(1)
                     color: annotationsToolBar.background.color
@@ -609,8 +615,9 @@ MouseArea {
                                 Math.min(contextWindow.dprRound(targetX),
                                         parent.width - width)) // max value
                     }
-                    y: annotationsToolBar.valignment & Qt.AlignTop ?
-                        -otbLoader.height + borderBg.height
+                    y: (annotationsToolBar.valignment & Qt.AlignTop)
+                        && !SelectionEditor.selection.empty
+                        ? -otbLoader.height + borderBg.height
                         : otbLoader.height - borderBg.height
                     state: if (root.document?.tool.options !== AnnotationTool.NoOptions
                                 || (root.document?.tool.type === AnnotationTool.SelectTool
@@ -627,10 +634,10 @@ MouseArea {
                             displayMode: QQC.AbstractButton.IconOnly
                             focusPolicy: Qt.NoFocus
                         }
-                        topLeftRadius: annotationsToolBar.valignment & Qt.AlignBottom && otbLoader.x >= 0 ? 0 : radius
-                        topRightRadius: annotationsToolBar.valignment & Qt.AlignBottom && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
-                        bottomLeftRadius: annotationsToolBar.valignment & Qt.AlignTop && otbLoader.x >= 0 ? 0 : radius
-                        bottomRightRadius: annotationsToolBar.valignment & Qt.AlignTop && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
+                        topLeftRadius: ((annotationsToolBar.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x >= 0 ? 0 : radius
+                        topRightRadius: ((annotationsToolBar.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
+                        bottomLeftRadius: (annotationsToolBar.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x >= 0 ? 0 : radius
+                        bottomRightRadius: (annotationsToolBar.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
                     }
                 }
             }
