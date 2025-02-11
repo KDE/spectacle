@@ -76,6 +76,7 @@ MouseArea {
     DashedOutline {
         id: selectionRectangle
         readonly property real margin: strokeWidth + 1 / Screen.devicePixelRatio
+        pathHints: ShapePath.PathLinear
         dashSvgPath: SpectacleCore.videoPlatform.isRecording ? svgPath : ""
         visible: !SelectionEditor.selection.empty
             && Geometry.rectIntersects(Qt.rect(x,y,width,height), Qt.rect(0,0,parent.width, parent.height))

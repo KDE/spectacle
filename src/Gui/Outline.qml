@@ -17,6 +17,7 @@ Shape {
     property alias joinStyle: shapePath.joinStyle
     property alias svgPath: pathSvg.path
     property alias pathScale: shapePath.scale
+    property alias pathHints: shapePath.pathHints
 
     // Get a rectangular SVG path
     function rectanglePath(x, y, w, h) {

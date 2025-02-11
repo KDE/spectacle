@@ -153,6 +153,7 @@ Loader {
         }
 
         Outline {
+            pathHints: ShapePath.PathLinear
             x: selectionRect.x - strokeWidth
             y: selectionRect.y - strokeWidth
             width: selectionRect.width + strokeWidth * 2
