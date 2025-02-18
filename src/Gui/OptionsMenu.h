@@ -8,15 +8,10 @@
 #include "SpectacleMenu.h"
 #include "Gui/SmartSpinBox.h"
 
-#include <QActionGroup>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QList>
 #include <QQmlEngine>
 #include <QWidgetAction>
-
-class OptionsMenuScreenshotActions;
-class OptionsMenuRecordingActions;
 
 /**
  * A menu that allows choosing capture modes and related options.
@@ -46,39 +41,13 @@ protected:
 
     explicit OptionsMenu(QWidget *parent = nullptr);
 
-    struct ScreenshotActions {
-        OptionsMenu *const q = nullptr;
-        QList<std::shared_ptr<QAction>> captureModeActions;
-        const std::unique_ptr<QAction> captureModeSection;
-        const std::unique_ptr<QAction> captureSettingsSection;
-        const std::unique_ptr<QAction> includeMousePointerAction;
-        const std::unique_ptr<QAction> includeWindowDecorationsAction;
-        const std::unique_ptr<QAction> includeWindowShadowAction;
-        const std::unique_ptr<QAction> onlyCapturePopupAction;
-        const std::unique_ptr<QAction> quitAfterSaveAction;
-        const std::unique_ptr<QAction> captureOnClickSeparator;
-        const std::unique_ptr<QAction> captureOnClickAction;
-        const std::unique_ptr<QWidgetAction> delayAction;
-        const std::unique_ptr<QWidget> delayWidget;
-        const std::unique_ptr<QHBoxLayout> delayLayout;
-        const std::unique_ptr<QLabel> delayLabel;
-        const std::unique_ptr<SmartSpinBox> delaySpinBox;
-        bool updatingDelayActionLayout = false;
-        void delayActionLayoutUpdate();
-        void updateModes(QAction *before);
-        ScreenshotActions(QAction *before, OptionsMenu *q);
-    };
-    struct RecordingActions {
-        OptionsMenu *const q = nullptr;
-        QList<std::shared_ptr<QAction>> recordingModeActions;
-        const std::unique_ptr<QAction> recordingModeSection;
-        const std::unique_ptr<QAction> recordingSettingsSection;
-        const std::unique_ptr<QAction> includeMousePointerAction;
-        void updateModes(QAction *before);
-        RecordingActions(QAction *before, OptionsMenu *q);
-    };
-    std::unique_ptr<ScreenshotActions> m_screenshotActions = nullptr;
-    std::unique_ptr<RecordingActions> m_recordingActions = nullptr;
+    void delayActionLayoutUpdate();
+    const std::unique_ptr<QWidgetAction> m_delayAction;
+    const std::unique_ptr<QWidget> m_delayWidget;
+    const std::unique_ptr<QHBoxLayout> m_delayLayout;
+    const std::unique_ptr<QLabel> m_delayLabel;
+    const std::unique_ptr<SmartSpinBox> m_delaySpinBox;
+    bool m_updatingDelayActionLayout = false;
 };
 
 #endif // OPTIONSMENU_H

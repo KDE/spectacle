@@ -209,7 +209,6 @@ MouseArea {
             let menuVisible = ExportMenu.visible
             menuVisible |= OptionsMenu.visible
             menuVisible |= HelpMenu.visible
-            menuVisible |= FullMenu.visible
             let pressed = SelectionEditor.dragLocation || annotationsLoader.item?.anyPressed
             return !SpectacleCore.videoPlatform.isRecording && !pressed
                 && (emptyHovered || !SelectionEditor.selection.empty || menuVisible)
@@ -394,7 +393,7 @@ MouseArea {
                 QQC.ToolSeparator {
                     height: QmlUtils.iconTextButtonHeight
                 }
-                FullMenuButton {
+                OptionsMenuButton {
                     focusPolicy: Qt.NoFocus
                 }
             }
