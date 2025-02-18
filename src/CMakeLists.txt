@@ -35,7 +35,6 @@ target_sources(spectacle PRIVATE
     VideoFormatModel.cpp
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
-    Gui/FullMenu.cpp
     Gui/HelpMenu.cpp
     Gui/OptionsMenu.cpp
     Gui/TextContextMenu.cpp
@@ -173,7 +172,6 @@ qt_target_qml_sources(spectacle
     Gui/ExportMenuButton.qml
     Gui/FloatingBackground.qml
     Gui/FloatingToolBar.qml
-    Gui/FullMenuButton.qml
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
     Gui/ImageCaptureOverlay.qml

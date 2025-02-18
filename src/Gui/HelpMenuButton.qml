@@ -8,7 +8,7 @@ import org.kde.spectacle.private
 TtToolButton {
     icon.name: "help-contents"
     text: i18nc("@action", "Help")
-    down: pressed || (HelpMenu.visible && !FullMenu.visible)
+    down: pressed || HelpMenu.visible
     Accessible.role: Accessible.ButtonMenu
     onPressed: HelpMenu.popup(this)
 }
