@@ -63,16 +63,19 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         includeWindowShadowAction->setChecked(Settings::includeShadow());
     });
 
-    auto onlyCapturePopupAction = addAction(i18nc("@option:check", "Capture the current pop-up only"));
-    onlyCapturePopupAction->setToolTip(
-        i18nc("@info:tooltip", "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-              "If disabled, the pop-up is captured along with the parent window"));
-    onlyCapturePopupAction->setCheckable(true);
-    onlyCapturePopupAction->setChecked(Settings::transientOnly());
-    QObject::connect(onlyCapturePopupAction, &QAction::toggled, Settings::self(), &Settings::setTransientOnly);
-    QObject::connect(Settings::self(), &Settings::transientOnlyChanged, onlyCapturePopupAction, [onlyCapturePopupAction](){
+    const bool hasTransientWithParent = SpectacleCore::instance()->imagePlatform()->supportedGrabModes().testFlag(ImagePlatform::TransientWithParent);
+    if (hasTransientWithParent) {
+        auto onlyCapturePopupAction = addAction(i18nc("@option:check", "Capture the current pop-up only"));
+        onlyCapturePopupAction->setToolTip(
+            i18nc("@info:tooltip", "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+                "If disabled, the pop-up is captured along with the parent window"));
+        onlyCapturePopupAction->setCheckable(true);
         onlyCapturePopupAction->setChecked(Settings::transientOnly());
-    });
+        QObject::connect(onlyCapturePopupAction, &QAction::toggled, Settings::self(), &Settings::setTransientOnly);
+        QObject::connect(Settings::self(), &Settings::transientOnlyChanged, onlyCapturePopupAction, [onlyCapturePopupAction](){
+            onlyCapturePopupAction->setChecked(Settings::transientOnly());
+        });
+    }
 
     auto quitAfterSaveAction = addAction(i18nc("@option:check", "Quit after manual Save or Copy"));
     quitAfterSaveAction->setToolTip(i18nc("@info:tooltip", "Quit Spectacle after manually saving or copying the image"));
@@ -85,19 +88,19 @@ OptionsMenu::OptionsMenu(QWidget *parent)
 
     // add capture on click
     const bool hasOnClick = SpectacleCore::instance()->imagePlatform()->supportedShutterModes().testFlag(ImagePlatform::OnClick);
-    auto captureOnClickSeparator = addSeparator();
-    captureOnClickSeparator->setVisible(hasOnClick);
-    auto captureOnClickAction = addAction(i18nc("@option:check", "Capture On Click"));
-    captureOnClickAction->setCheckable(true);
-    captureOnClickAction->setChecked(Settings::captureOnClick() && hasOnClick);
-    captureOnClickAction->setVisible(hasOnClick);
-    QObject::connect(captureOnClickAction, &QAction::toggled, this, [this](bool checked){
-        Settings::setCaptureOnClick(checked);
-        m_delayAction->setEnabled(!checked);
-    });
-    QObject::connect(Settings::self(), &Settings::captureOnClickChanged, captureOnClickAction, [captureOnClickAction](){
+    if (hasOnClick) {
+        addSeparator();
+        auto captureOnClickAction = addAction(i18nc("@option:check", "Capture On Click"));
+        captureOnClickAction->setCheckable(true);
         captureOnClickAction->setChecked(Settings::captureOnClick());
-    });
+        QObject::connect(captureOnClickAction, &QAction::toggled, this, [this](bool checked){
+            Settings::setCaptureOnClick(checked);
+            m_delayAction->setEnabled(!checked);
+        });
+        QObject::connect(Settings::self(), &Settings::captureOnClickChanged, captureOnClickAction, [captureOnClickAction](){
+            captureOnClickAction->setChecked(Settings::captureOnClick());
+        });
+    }
 
     // set up delay widget
     auto spinbox = m_delaySpinBox.get();
@@ -123,7 +126,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     m_delayLayout->addWidget(spinbox);
     m_delayLayout->setAlignment(Qt::AlignLeft);
     m_delayAction->setDefaultWidget(m_delayWidget.get());
-    m_delayAction->setEnabled(!captureOnClickAction->isChecked());
+    m_delayAction->setEnabled(!hasOnClick || !Settings::captureOnClick());
     addAction(m_delayAction.get());
 
     addSection(i18nc("@title:menu", "Recording Settings"));
