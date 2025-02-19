@@ -464,7 +464,7 @@ MouseArea {
                 ToolButton {
                     display: TtToolButton.TextBesideIcon
                     visible: action.enabled
-                    action: AcceptAction {}
+                    action: RecordAction {}
                 }
             }
         }
