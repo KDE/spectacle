@@ -26,12 +26,11 @@ EmptyPage {
     readonly property real minimumWidth: Math.max(
         header.implicitWidth,
         annotationsToolBar.implicitWidth + separator.implicitWidth + footerLoader.implicitWidth,
-        captureOptionsLoader.implicitWidth + 480 // leave some room for content if necessary
+        480 // leave some room for content if necessary
     )
     readonly property real minimumHeight: header.implicitHeight
         + Math.max(annotationsToolBar.implicitHeight,
-                   footerLoader.implicitHeight,
-                   captureOptionsLoader.implicitHeight)
+                   footerLoader.implicitHeight)
 
     property var inlineMessageData: {}
     property string inlineMessageSource: ""
@@ -78,12 +77,9 @@ EmptyPage {
                 visible: action.enabled
                 action: EditAction {}
             }
-            TtToolButton {
-                icon.name: "configure"
-                text: i18nc("@action", "Configure...")
-                onClicked: OptionsMenu.showPreferencesDialog();
-            }
-            HelpMenuButton {}
+            ScreenshotModeMenuButton {}
+            RecordingModeMenuButton {}
+            OptionsMenuButton {}
         }
     }
 
@@ -95,7 +91,7 @@ EmptyPage {
     AnimatedLoader { // parent is contentItem
         id: inlineMessageLoader
         anchors.left: annotationsToolBar.right
-        anchors.right: captureOptionsLoader.left
+        anchors.right: parent.right
         anchors.top: parent.top
         state: "inactive"
         height: visible ? implicitHeight : 0
@@ -142,7 +138,7 @@ EmptyPage {
         id: contentLoader
         anchors {
             left: footerLoader.left
-            right: captureOptionsLoader.left
+            right: parent.right
             top: inlineMessageLoader.bottom
             bottom: footerLoader.top
         }
@@ -157,74 +153,10 @@ EmptyPage {
         }
     }
 
-    Loader { // parent is contentItem
-        id: captureOptionsLoader
-        visible: true
-        active: visible
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            right: parent.right
-        }
-        width: Math.max(implicitWidth, Kirigami.Units.gridUnit * 15)
-        sourceComponent: QQC.Page {
-
-            leftPadding: Kirigami.Units.mediumSpacing * 2
-                + (!mirrored ? sideBarSeparator.implicitWidth : 0)
-            rightPadding: Kirigami.Units.mediumSpacing * 2
-                + (mirrored ? sideBarSeparator.implicitWidth : 0)
-            topPadding: Kirigami.Units.mediumSpacing * 2
-            bottomPadding: Kirigami.Units.mediumSpacing * 2
-
-            header: RowLayout {
-                spacing: 0
-                Kirigami.Separator {
-                    Layout.fillHeight: true
-                }
-                Kirigami.NavigationTabBar {
-                    id: tabBar
-                    Layout.fillWidth: true
-                    visible: SpectacleCore.videoPlatform.supportedRecordingModes
-                    currentIndex: 0
-                    Kirigami.Theme.colorSet: Kirigami.Theme.Window
-
-                    actions: [
-                        ScreenshotModeAction {
-                            checked: tabBar.currentIndex === 0
-                        },
-                        RecordingModeAction {
-                            checked: tabBar.currentIndex === 1
-                        }
-                    ]
-                }
-            }
-
-            contentItem: Loader {
-                source: switch (tabBar.currentIndex) {
-                    case 0: return "CaptureOptions.qml"
-                    case 1: return "RecordOptions.qml"
-                    default: return ""
-                }
-            }
-
-            background: Rectangle {
-                color: Kirigami.Theme.backgroundColor
-                Kirigami.Separator {
-                    id: sideBarSeparator
-                    anchors {
-                        left: parent.left
-                        top: parent.top
-                        bottom: parent.bottom
-                    }
-                }
-            }
-        }
-    }
-
     Loader {
         id: footerLoader
         anchors.left: separator.right
-        anchors.right: captureOptionsLoader.left
+        anchors.right: parent.right
         anchors.top: parent.bottom
         visible: false
         active: visible
@@ -324,11 +256,6 @@ EmptyPage {
                 anchors.bottom: parent.bottom
                 anchors.top: undefined
             }
-            AnchorChanges {
-                target: captureOptionsLoader
-                anchors.left: parent.right
-                anchors.right: undefined
-            }
         },
         State {
             name: "normal"
@@ -345,11 +272,6 @@ EmptyPage {
                 anchors.bottom: undefined
                 anchors.top: parent.bottom
             }
-            AnchorChanges {
-                target: captureOptionsLoader
-                anchors.left: undefined
-                anchors.right: parent.right
-            }
         }
     ]
     transitions: [
@@ -365,21 +287,11 @@ EmptyPage {
                     duration: Kirigami.Units.longDuration
                     easing.type: Easing.OutCubic
                 }
-                PropertyAction {
-                    targets: captureOptionsLoader
-                    property: "visible"
-                    value: false
-                }
             }
         },
         Transition {
             to: "normal"
             SequentialAnimation {
-                PropertyAction {
-                    targets: captureOptionsLoader
-                    property: "visible"
-                    value: true
-                }
                 AnchorAnimation {
                     duration: Kirigami.Units.longDuration
                     easing.type: Easing.OutCubic
