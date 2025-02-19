@@ -186,6 +186,7 @@ qt_target_qml_sources(spectacle
     Gui/Outline.qml
     Gui/QRCodeScannedMessage.qml
     Gui/QmlUtils.qml
+    Gui/RecordAction.qml
     Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
     Gui/RecordingModeAction.qml
