@@ -372,26 +372,11 @@ MouseArea {
                     visible: mtbImageVideoContentLoader.visible
                     height: QmlUtils.iconTextButtonHeight
                 }
-                QQC.ButtonGroup {
-                    id: modeGroup
-                    exclusive: true
+                ScreenshotModeMenuButton {
+                    focusPolicy: Qt.NoFocus
                 }
-                ToolButton {
-                    QQC.ButtonGroup.group: modeGroup
-                    action: ScreenshotModeAction {}
-                    checkable: true
-                    checked: !SpectacleCore.videoMode
-                    onToggled: SpectacleCore.videoMode = !checked
-                }
-                ToolButton {
-                    QQC.ButtonGroup.group: modeGroup
-                    action: RecordingModeAction {}
-                    checkable: true
-                    checked: SpectacleCore.videoMode
-                    onToggled: SpectacleCore.videoMode = checked
-                }
-                QQC.ToolSeparator {
-                    height: QmlUtils.iconTextButtonHeight
+                RecordingModeMenuButton {
+                    focusPolicy: Qt.NoFocus
                 }
                 OptionsMenuButton {
                     focusPolicy: Qt.NoFocus
