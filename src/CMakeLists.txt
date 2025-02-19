@@ -37,6 +37,8 @@ target_sources(spectacle PRIVATE
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
     Gui/OptionsMenu.cpp
+    Gui/RecordingModeMenu.cpp
+    Gui/ScreenshotModeMenu.cpp
     Gui/SmartSpinBox.cpp
     Gui/Selection.cpp
     Gui/SelectionEditor.cpp
@@ -187,6 +189,7 @@ qt_target_qml_sources(spectacle
     Gui/RecordingFailedMessage.qml
     Gui/RecordingModeAction.qml
     Gui/RecordingModeButtonsColumn.qml
+    Gui/RecordingModeMenuButton.qml
     Gui/RecordingSettingsColumn.qml
     Gui/RecordingView.qml
     Gui/SaveAction.qml
@@ -196,6 +199,7 @@ qt_target_qml_sources(spectacle
     Gui/SavedMessage.qml
     Gui/ScreenshotFailedMessage.qml
     Gui/ScreenshotModeAction.qml
+    Gui/ScreenshotModeMenuButton.qml
     Gui/ScreenshotView.qml
     Gui/ShareErrorMessage.qml
     Gui/SharedMessage.qml
