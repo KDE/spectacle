@@ -5,6 +5,8 @@
 #include "ScreenshotModeMenu.h"
 #include "CaptureModeModel.h"
 #include "SpectacleCore.h"
+#include "ShortcutActions.h"
+#include <KGlobalAccel>
 
 using namespace Qt::StringLiterals;
 
@@ -17,11 +19,44 @@ ScreenshotModeMenu::ScreenshotModeMenu(QWidget *parent)
         clear();
         auto model = CaptureModeModel::instance();
         for (auto idx = model->index(0); idx.isValid(); idx = idx.siblingAtRow(idx.row() + 1)) {
-            const auto label = idx.data(Qt::DisplayRole).toString();
+            const auto action = addAction(idx.data(Qt::DisplayRole).toString());
             const auto mode = idx.data(CaptureModeModel::CaptureModeRole).value<CaptureModeModel::CaptureMode>();
-            addAction(label, [mode] {
+            QAction *globalAction = nullptr;
+            auto globalShortcuts = [](QAction *globalAction) {
+                if (!globalAction) {
+                    return QList<QKeySequence>{};
+                }
+                auto component = ShortcutActions::self()->componentName();
+                auto id = globalAction->objectName();
+                return KGlobalAccel::self()->globalShortcut(component, id);
+            };
+            switch (mode) {
+            case CaptureModeModel::RectangularRegion:
+                globalAction = ShortcutActions::self()->regionAction();
+                break;
+            case CaptureModeModel::AllScreens:
+                globalAction = ShortcutActions::self()->fullScreenAction();
+                break;
+            case CaptureModeModel::CurrentScreen:
+                globalAction = ShortcutActions::self()->currentScreenAction();
+                break;
+            case CaptureModeModel::ActiveWindow:
+                globalAction = ShortcutActions::self()->activeWindowAction();
+                break;
+            case CaptureModeModel::WindowUnderCursor:
+                globalAction = ShortcutActions::self()->windowUnderCursorAction();
+                break;
+            case CaptureModeModel::FullScreen:
+                globalAction = ShortcutActions::self()->fullScreenAction();
+                break;
+            default:
+                break;
+            }
+            action->setShortcuts(globalShortcuts(globalAction));
+            auto onTriggered = [mode] {
                 SpectacleCore::instance()->takeNewScreenshot(mode);
-            });
+            };
+            connect(action, &QAction::triggered, action, onTriggered);
         }
     };
     addModes();

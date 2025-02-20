@@ -5,6 +5,8 @@
 #include "RecordingModeMenu.h"
 #include "RecordingModeModel.h"
 #include "SpectacleCore.h"
+#include "ShortcutActions.h"
+#include <KGlobalAccel>
 
 using namespace Qt::StringLiterals;
 
@@ -17,11 +19,35 @@ RecordingModeMenu::RecordingModeMenu(QWidget *parent)
         clear();
         auto model = RecordingModeModel::instance();
         for (auto idx = model->index(0); idx.isValid(); idx = idx.siblingAtRow(idx.row() + 1)) {
-            const auto label = idx.data(Qt::DisplayRole).toString();
+            const auto action = addAction(idx.data(Qt::DisplayRole).toString());
             const auto mode = idx.data(RecordingModeModel::RecordingModeRole).value<VideoPlatform::RecordingMode>();
-            addAction(label, [mode] {
+            QAction *globalAction = nullptr;
+            auto globalShortcuts = [](QAction *globalAction) {
+                if (!globalAction) {
+                    return QList<QKeySequence>{};
+                }
+                auto component = ShortcutActions::self()->componentName();
+                auto id = globalAction->objectName();
+                return KGlobalAccel::self()->globalShortcut(component, id);
+            };
+            switch (mode) {
+            case VideoPlatform::Region:
+                globalAction = ShortcutActions::self()->recordRegionAction();
+                break;
+            case VideoPlatform::Screen:
+                globalAction = ShortcutActions::self()->recordScreenAction();
+                break;
+            case VideoPlatform::Window:
+                globalAction = ShortcutActions::self()->recordWindowAction();
+                break;
+            default:
+                break;
+            }
+            action->setShortcuts(globalShortcuts(globalAction));
+            auto onTriggered = [mode] {
                 SpectacleCore::instance()->startRecording(mode);
-            });
+            };
+            connect(action, &QAction::triggered, action, onTriggered);
         }
     };
     addModes();
