@@ -33,6 +33,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     , m_delayLabel(new QLabel(m_delayWidget.get()))
     , m_delaySpinBox(new SmartSpinBox(m_delayWidget.get()))
 {
+    setToolTipsVisible(true);
     // QMenu::addSection just adds an action with text and separator mode enabled
     addSection(i18nc("@title:menu", "Screenshot Settings"));
 
