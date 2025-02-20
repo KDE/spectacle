@@ -213,4 +213,30 @@ void OptionsMenu::changeEvent(QEvent *event)
     QWidget::changeEvent(event);
 }
 
+void OptionsMenu::keyPressEvent(QKeyEvent *event)
+{
+    // Try to keep menu open when triggering checkable actions
+    const auto key = event->key();
+    const auto action = activeAction();
+    if (action && action->isEnabled() && action->isCheckable() //
+        && (key == Qt::Key_Return || key == Qt::Key_Enter //
+            || (key == Qt::Key_Space && style()->styleHint(QStyle::SH_Menu_SpaceActivatesItem, nullptr, this)))) {
+        action->trigger();
+        event->accept();
+        return;
+    }
+    SpectacleMenu::keyPressEvent(event);
+}
+
+void OptionsMenu::mouseReleaseEvent(QMouseEvent *event)
+{
+    // Try to keep menu open when triggering checkable actions
+    const auto action = activeAction() == actionAt(event->position().toPoint()) ? activeAction() : nullptr;
+    if (action && action->isEnabled() && action->isCheckable()) {
+        action->trigger();
+        return;
+    }
+    SpectacleMenu::mouseReleaseEvent(event);
+}
+
 #include "moc_OptionsMenu.cpp"
