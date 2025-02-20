@@ -366,7 +366,7 @@ MouseArea {
                     id: mtbImageVideoContentLoader
                     visible: SelectionEditor.selection.empty
                     active: visible
-                    sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageToolBarComponent
+                    sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageMainToolBarComponent
                 }
                 QQC.ToolSeparator {
                     visible: mtbImageVideoContentLoader.visible
@@ -411,7 +411,7 @@ MouseArea {
         }
 
         Component {
-            id: imageToolBarComponent
+            id: imageMainToolBarComponent
             ButtonGrid {
                 spacing: parent.parent.spacing
                 ToolBarSizeLabel {}
@@ -437,6 +437,37 @@ MouseArea {
                 }
                 ExportMenuButton {
                     display: TtToolButton.IconOnly
+                    focusPolicy: Qt.NoFocus
+                }
+            }
+        }
+        Component {
+            id: imageFinalizerToolBarComponent
+            ButtonGrid {
+                spacing: parent.parent.spacing
+                ToolBarSizeLabel {}
+                ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: AcceptAction {}
+                }
+                ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: SaveAction {}
+                }
+                ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: SaveAsAction {}
+                }
+                ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: CopyImageAction {}
+                }
+                ExportMenuButton {
+                    display: TtToolButton.TextBesideIcon
                     focusPolicy: Qt.NoFocus
                 }
             }
@@ -693,7 +724,7 @@ MouseArea {
                 layer.enabled: true // improves the visuals of the opacity animation
                 focusPolicy: Qt.NoFocus
                 contentItem: Loader {
-                    sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageToolBarComponent
+                    sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageFinalizerToolBarComponent
                 }
 
                 HoverHandler {
