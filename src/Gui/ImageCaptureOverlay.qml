@@ -436,7 +436,6 @@ MouseArea {
                     action: CopyImageAction {}
                 }
                 ExportMenuButton {
-                    display: TtToolButton.IconOnly
                     focusPolicy: Qt.NoFocus
                 }
             }
@@ -447,27 +446,22 @@ MouseArea {
                 spacing: parent.parent.spacing
                 ToolBarSizeLabel {}
                 ToolButton {
-                    display: TtToolButton.TextBesideIcon
                     visible: action.enabled
                     action: AcceptAction {}
                 }
                 ToolButton {
-                    display: TtToolButton.TextBesideIcon
                     visible: action.enabled
                     action: SaveAction {}
                 }
                 ToolButton {
-                    display: TtToolButton.TextBesideIcon
                     visible: action.enabled
                     action: SaveAsAction {}
                 }
                 ToolButton {
-                    display: TtToolButton.TextBesideIcon
                     visible: action.enabled
                     action: CopyImageAction {}
                 }
                 ExportMenuButton {
-                    display: TtToolButton.TextBesideIcon
                     focusPolicy: Qt.NoFocus
                 }
             }
