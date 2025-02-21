@@ -80,6 +80,9 @@ EmptyPage {
                 visible: action.enabled
                 action: EditAction {}
             }
+            QQC.ToolSeparator {
+                height: QmlUtils.iconTextButtonHeight
+            }
             ScreenshotModeMenuButton {}
             RecordingModeMenuButton {}
             OptionsMenuButton {}
