@@ -57,13 +57,16 @@ EmptyPage {
                 }
             }
             TtToolButton {
+                display: TtToolButton.IconOnly
                 visible: action.enabled
                 action: SaveAction {}
             }
             TtToolButton {
+                display: SpectacleCore.videoMode ? TtToolButton.TextBesideIcon : TtToolButton.IconOnly
                 action: SaveAsAction {}
             }
             TtToolButton {
+                display: TtToolButton.IconOnly
                 visible: action.enabled
                 action: CopyImageAction {}
             }
