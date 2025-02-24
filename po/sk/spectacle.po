@@ -2,19 +2,20 @@
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2022, 2023 Roman Paholik <wizzardsk@gmail.com>
 # SPDX-FileCopyrightText: 2019, 2020, 2021, 2023, 2024 Matej Mrenica <matejm98mthw@gmail.com>
 # Dusan Kazik <prescott66@gmail.com>, 2020.
+# SPDX-FileCopyrightText: 2025 Lucia Mrenica <lucia.mrenica@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-30 02:31+0000\n"
-"PO-Revision-Date: 2024-03-24 11:39+0100\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"PO-Revision-Date: 2025-02-23 11:44+0100\n"
+"Last-Translator: Lucia Mrenica <lucia.mrenica@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.12.2\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/CaptureModeModel.cpp:97
@@ -281,9 +282,9 @@ msgstr "Ťah:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
+msgstr[2] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:96
 #, kde-format
@@ -309,13 +310,13 @@ msgstr "Farba výplne"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Sila:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:238
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Sila efektu."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:265
 #, kde-format
@@ -327,18 +328,18 @@ msgstr "Písmo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1bod"
+msgstr[1] "%2 %3 %1body"
+msgstr[2] "%2 %3 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:282
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1bod"
+msgstr[1] "%2 %1body"
+msgstr[2] "%2 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:294
 #, kde-format
@@ -368,7 +369,7 @@ msgstr "Žiadne"
 #: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgid "Crop"
-msgstr ""
+msgstr "Orezať"
 
 #: src/Gui/AnnotationsToolBarContents.qml:117
 #, kde-format
@@ -439,12 +440,10 @@ msgid "Take a new screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Snímky obrazovky"
+msgstr "Nastavenia snímky obrazovky"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
 #: src/Gui/RecordingSettingsColumn.qml:16
@@ -532,16 +531,13 @@ msgid "No Delay"
 msgstr "Bez oneskorenia"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekúnd"
+msgstr[0] "%2 sekunda"
+msgstr[1] "%2 sekundy"
+msgstr[2] "%2 sekúnd"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
@@ -560,25 +556,22 @@ msgid "Help"
 msgstr "Pomocník"
 
 #: src/Gui/DialogPage.qml:87
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Zachytenie snímky obrazovky:"
+msgstr "Zachytiť novú snímku obrazovky:"
 
 #: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Možnosti"
 
 #: src/Gui/DialogPage.qml:128
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Nahrávka"
+msgstr "Nahrať obrazovku:"
 
 #: src/Gui/DialogPage.qml:170
 #, kde-format
@@ -668,7 +661,7 @@ msgstr "Exportovať"
 #, kde-format
 msgctxt "@action:button edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Upraviť..."
 
 #: src/Gui/MainToolBarContents.qml:122
 #, kde-format
@@ -743,7 +736,7 @@ msgstr "Bez oneskorenia"
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR kód nájdený: %1"
 
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
@@ -950,10 +943,9 @@ msgstr "Zobraziť inštrukcie pri výbere"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:195
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Zobraziť lupu"
+msgstr "Zobraziť lupu:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
