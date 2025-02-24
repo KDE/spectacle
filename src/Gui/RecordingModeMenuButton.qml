@@ -8,7 +8,7 @@ import org.kde.spectacle.private
 
 TtToolButton {
     icon.name: "camera-video"
-    text: i18nc("@action select recording mode", "Recording")
+    text: i18nc("@action select new recording mode", "New Recording")
     down: pressed || RecordingModeMenu.visible
     Accessible.role: Accessible.ButtonMenu
     onPressed: RecordingModeMenu.popup(this)
