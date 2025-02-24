@@ -161,10 +161,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
             deleteWindows();
             m_annotationDocument->cropCanvas(rect);
             syncExportImage();
+            const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
+            const bool willQuit = exportActions.testFlag(ExportManager::AnyAction) //
+                && exportActions.testFlag(ExportManager::UserAction) //
+                && Settings::quitAfterSaveCopyExport();
+            m_returnToViewer &= !willQuit;
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
             ExportManager::instance()->scanQRCode();
-            const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
             ExportManager::instance()->exportImage(exportActions, outputUrl());
         }
     });
