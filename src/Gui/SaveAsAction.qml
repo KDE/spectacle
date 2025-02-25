@@ -6,6 +6,6 @@ import QtQuick.Templates as T
 
 T.Action {
     icon.name: "document-save-as"
-    text: i18nc("@action", "Save As...")
+    text: i18nc("@action", "Save As…")
     onTriggered: contextWindow.saveAs()
 }
