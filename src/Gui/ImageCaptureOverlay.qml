@@ -233,6 +233,8 @@ MouseArea {
             let menuVisible = ExportMenu.visible
             menuVisible |= OptionsMenu.visible
             menuVisible |= HelpMenu.visible
+            menuVisible |= ScreenshotModeMenu.visible
+            menuVisible |= RecordingModeMenu.visible
             let pressed = SelectionEditor.dragLocation || annotationsLoader.item?.anyPressed
             return !SpectacleCore.videoPlatform.isRecording && !pressed
                 && (emptyHovered || !SelectionEditor.selection.empty || menuVisible)
