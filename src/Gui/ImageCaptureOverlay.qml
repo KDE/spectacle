@@ -132,8 +132,8 @@ MouseArea {
             leftPadding: cropToolHelpMetrics.height
             rightPadding: cropToolHelpMetrics.height
             background: FloatingBackground {
-                color: Qt.rgba(palette.window.r, palette.window.g, palette.window.b, 0.9)
                 radius: cropToolHelpMetrics.height
+                color: Qt.alpha(palette.window, 0.9)
             }
             FontMetrics {
                 id: cropToolHelpMetrics
