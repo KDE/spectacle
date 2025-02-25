@@ -189,7 +189,6 @@ qt_target_qml_sources(spectacle
     Gui/RecordAction.qml
     Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
-    Gui/RecordingModeAction.qml
     Gui/RecordingModeButtonsColumn.qml
     Gui/RecordingModeMenuButton.qml
     Gui/RecordingSettingsColumn.qml
@@ -200,7 +199,6 @@ qt_target_qml_sources(spectacle
     Gui/SavedAndLocationCopied.qml
     Gui/SavedMessage.qml
     Gui/ScreenshotFailedMessage.qml
-    Gui/ScreenshotModeAction.qml
     Gui/ScreenshotModeMenuButton.qml
     Gui/ScreenshotView.qml
     Gui/ShareErrorMessage.qml
