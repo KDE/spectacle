@@ -119,6 +119,30 @@ MouseArea {
         visible: selectionRectangle.visible && height > 0 && width > 0
     }
 
+    AnimatedLoader {
+        anchors.centerIn: parent
+        visible: opacity > 0 && !SpectacleCore.videoPlatform.isRecording
+        state: topOverlay.opacity === 0.25 ? "active" : "inactive"
+        sourceComponent: Kirigami.Heading {
+            id: cropToolHelp
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            text: i18nc("@info basic crop tool explanation", "Click and drag to make a selection.")
+            padding: cropToolHelpMetrics.height - cropToolHelpMetrics.descent
+            leftPadding: cropToolHelpMetrics.height
+            rightPadding: cropToolHelpMetrics.height
+            background: FloatingBackground {
+                color: Qt.rgba(palette.window.r, palette.window.g, palette.window.b, 0.9)
+                radius: cropToolHelpMetrics.height
+            }
+            FontMetrics {
+                id: cropToolHelpMetrics
+                font: cropToolHelp.font
+            }
+        }
+    }
+
+
     DashedOutline {
         id: selectionRectangle
         // We need to be a bit careful about staying out of the recorded area
