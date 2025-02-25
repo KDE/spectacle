@@ -55,8 +55,8 @@ MouseArea {
         height: QmlUtils.iconTextButtonHeight
         size: {
             const sz = SelectionEditor.selection.empty
-                ? Qt.size(SelectionEditor.screensRect.width,
-                            SelectionEditor.screensRect.height)
+                ? Qt.size(SelectionEditor.screensPath.boundingRect.width,
+                            SelectionEditor.screensPath.boundingRect.height)
                 : SelectionEditor.selection.size
             return Geometry.rawSize(sz, SelectionEditor.devicePixelRatio)
         }
@@ -239,8 +239,8 @@ MouseArea {
             return !SpectacleCore.videoPlatform.isRecording && !pressed
                 && (emptyHovered || !SelectionEditor.selection.empty || menuVisible)
         }
-        width: SelectionEditor.screensRect.width
-        height: SelectionEditor.screensRect.height
+        width: SelectionEditor.screensPath.boundingRect.width
+        height: SelectionEditor.screensPath.boundingRect.height
         x: -root.viewportRect.x
         y: -root.viewportRect.y
 
@@ -319,7 +319,7 @@ MouseArea {
                         y = targetPoint.y - height / 2
                     }
                 }
-                return Geometry.rectBounded(dprRound(x), dprRound(y), width, height, SelectionEditor.screensRect)
+                return Geometry.rectBounded(dprRound(x), dprRound(y), width, height, SelectionEditor.screensPath.boundingRect)
             }
             x: rect.x
             y: rect.y
@@ -568,7 +568,7 @@ MouseArea {
                                                     : SelectionEditor.selection.horizontalCenter - annotationsToolBar.width / 2
                         return Math.max(annotationsToolBar.leftPadding, // min value
                             Math.min(dprRound(v),
-                                        SelectionEditor.screensRect.width - annotationsToolBar.width - annotationsToolBar.rightPadding)) // max value
+                                        SelectionEditor.screensPath.boundingRect.width - annotationsToolBar.width - annotationsToolBar.rightPadding)) // max value
                     }
                     when: screensRectItem.allowToolbars && !annotationsToolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
@@ -690,46 +690,36 @@ MouseArea {
                 id: toolBar
                 property bool rememberPosition: false
                 property alias dragging: dragHandler.active
-                readonly property int valignment: {
-                    if (SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom >= height + toolBar.topPadding || SelectionEditor.selection.empty) {
-                        // the bottom of the bottom side of the selection
-                        // or the bottom of the screen
-                        return Qt.AlignBottom
-                    } else {
-                        // the top of the bottom side of the selection
-                        return Qt.AlignTop
+                property point targetPoint: {
+                    const x = SelectionEditor.selection.empty
+                        ? (root.width - width) / 2 + root.viewportRect.x
+                        : SelectionEditor.selection.horizontalCenter - width / 2
+                    const getY = () => {
+                        if (SelectionEditor.selection.empty) {
+                            return root.viewportRect.y + root.height - height - bottomPadding
+                        } else if (SelectionEditor.screensPath.boundingRect.height - SelectionEditor.handlesRect.bottom >= height + toolBar.topPadding || SelectionEditor.selection.empty) {
+                            return SelectionEditor.handlesRect.bottom + topPadding
+                        }
+                        return Math.min(SelectionEditor.selection.bottom,
+                                        SelectionEditor.handlesRect.bottom
+                                        - Kirigami.Units.gridUnit)
+                                        - height - bottomPadding
                     }
+                    const y = getY()
+                    const rect = Geometry.rectBounded(Qt.rect(x, y, width, height), SelectionEditor.screensPath)
+                    return Qt.point(rect.x, rect.y)
                 }
                 Binding {
                     property: "x"
                     target: ftbLoader
-                    value: {
-                        const v = SelectionEditor.selection.empty ? (root.width - toolBar.width) / 2 + root.viewportRect.x
-                                                    : SelectionEditor.selection.horizontalCenter - toolBar.width / 2
-                        return Math.max(toolBar.leftPadding, // min value
-                            Math.min(dprRound(v),
-                                        SelectionEditor.screensRect.width - toolBar.width - toolBar.rightPadding)) // max value
-                    }
+                    value: dprRound(toolBar.targetPoint.x)
                     when: screensRectItem.allowToolbars && !toolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
                 }
                 Binding {
                     property: "y"
                     target: ftbLoader
-                    value: {
-                        let v = 0
-                        if (SelectionEditor.selection.empty) {
-                            v = root.viewportRect.y + root.height - toolBar.height - toolBar.bottomPadding
-                        } else if (toolBar.valignment & Qt.AlignBottom) {
-                            v = SelectionEditor.handlesRect.bottom + toolBar.topPadding
-                        } else if (toolBar.valignment & Qt.AlignTop) {
-                            v = Math.min(SelectionEditor.selection.bottom, SelectionEditor.handlesRect.bottom - Kirigami.Units.gridUnit)
-                                - toolBar.height - toolBar.bottomPadding
-                        } else {
-                            v = (toolBar.height / 2) - toolBar.parent.y
-                        }
-                        return dprRound(v)
-                    }
+                    value: dprRound(toolBar.targetPoint.y)
                     when: screensRectItem.allowToolbars && !toolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
                 }

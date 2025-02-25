@@ -132,7 +132,7 @@ public:
     Location magnifierLocation = Location::FollowMouse;
     bool disableArrowKeys = false;
     QSet<Qt::Key> pressedKeys;
-    QRectF screensRect;
+    QPainterPath screensPath;
     // Midpoints of handles
     QList<QPointF> handlePositions = QList<QPointF>{8};
     QRectF handlesRect;
@@ -169,6 +169,7 @@ void SelectionEditorPrivate::updateHandlePositions()
     if (minEdgeLength < minDragHandleSpace) {
         offset = (minDragHandleSpace - minEdgeLength) / 2.0;
     } else {
+        const auto screensRect = screensPath.boundingRect();
         const auto translatedScreensRect = screensRect.translated(-screensRect.topLeft());
 
         offsetTop = top - translatedScreensRect.top() - handleRadius;
@@ -282,7 +283,7 @@ void SelectionEditorPrivate::handleArrowKey(QKeyEvent *event)
         }
     }
     setMagnifierLocation(brMag ? Location::BottomRight : magLocation);
-    selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensRect));
+    selection->setRect(modifySize ? selectionRect : G::rectBounded(selectionRect, screensPath.boundingRect()));
 }
 
 // TODO: change cursor with pointerhandlers in qml?
@@ -386,19 +387,9 @@ qreal SelectionEditor::devicePixelRatio() const
     return d->devicePixelRatio;
 }
 
-QRectF SelectionEditor::screensRect() const
+QPainterPath SelectionEditor::screensPath() const
 {
-    return d->screensRect;
-}
-
-qreal SelectionEditor::screensWidth() const
-{
-    return d->screensRect.width();
-}
-
-qreal SelectionEditor::screensHeight() const
-{
-    return d->screensRect.height();
+    return d->screensPath;
 }
 
 Location SelectionEditor::dragLocation() const
@@ -428,7 +419,7 @@ Location SelectionEditor::magnifierLocation() const
 
 bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 {
-    if (d->screensRect.isEmpty()) {
+    if (d->screensPath.isEmpty()) {
         return false;
     }
 
@@ -438,7 +429,7 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
     }
 
     if (selectionRect.isEmpty()) {
-        selectionRect = d->screensRect;
+        selectionRect = d->screensPath.boundingRect();
     }
 
     Q_EMIT accepted(selectionRect, actions);
@@ -454,10 +445,15 @@ void SelectionEditor::reset()
         Q_EMIT devicePixelRatioChanged();
     }
 
-    auto rect = G::logicalScreensRect();
-    if (d->screensRect != rect) {
-        d->screensRect = rect;
-        Q_EMIT screensRectChanged();
+    QPainterPath path;
+    const auto &screens = qGuiApp->screens();
+    for (int i = 0; i < screens.size(); ++i) {
+        path.addRect(Geometry::mapFromPlatformRect(screens[i]->geometry(), qGuiApp->devicePixelRatio()));
+    }
+    path = path.simplified();
+    if (d->screensPath != path) {
+        d->screensPath = path;
+        Q_EMIT screensPathChanged();
     }
 
     auto remember = Settings::rememberSelectionRect();
@@ -680,7 +676,7 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
     case Location::Inside: {
         // We use some math here to figure out if the diff with which we move the rectangle
         QRectF newRect(d->mousePos - d->startPos + d->initialTopLeft, d->selection->sizeF());
-        d->selection->setRect(G::rectBounded(newRect, d->screensRect));
+        d->selection->setRect(G::rectBounded(newRect, d->screensPath.boundingRect()));
         break;
     }
     default:

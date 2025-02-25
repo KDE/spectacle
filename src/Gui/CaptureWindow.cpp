@@ -68,7 +68,7 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     // setup selectionEditor
     auto selectionEditor = SelectionEditor::instance();
-    connect(selectionEditor, &SelectionEditor::screensRectChanged, this, [this]() {
+    connect(selectionEditor, &SelectionEditor::screensPathChanged, this, [this]() {
         syncGeometryWithScreen();
     });
 

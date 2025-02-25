@@ -34,7 +34,7 @@ class SelectionEditor : public QObject
 
     Q_PROPERTY(Selection *selection READ selection CONSTANT FINAL)
     Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio NOTIFY devicePixelRatioChanged FINAL)
-    Q_PROPERTY(QRectF screensRect READ screensRect NOTIFY screensRectChanged FINAL)
+    Q_PROPERTY(QPainterPath screensPath READ screensPath NOTIFY screensPathChanged FINAL)
     Q_PROPERTY(Location dragLocation READ dragLocation NOTIFY dragLocationChanged FINAL)
     Q_PROPERTY(QRectF handlesRect READ handlesRect NOTIFY handlesRectChanged FINAL)
     Q_PROPERTY(QPointF mousePosition READ mousePosition NOTIFY mousePositionChanged)
@@ -64,10 +64,7 @@ public:
 
     qreal devicePixelRatio() const;
 
-    QRectF screensRect() const;
-
-    qreal screensWidth() const;
-    qreal screensHeight() const;
+    QPainterPath screensPath() const;
 
     Location dragLocation() const;
 
@@ -94,7 +91,7 @@ public:
 
 Q_SIGNALS:
     void devicePixelRatioChanged();
-    void screensRectChanged();
+    void screensPathChanged();
     void dragLocationChanged();
     void handlesRectChanged();
     void mousePositionChanged();

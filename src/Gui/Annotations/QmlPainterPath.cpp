@@ -15,6 +15,11 @@ bool QmlPainterPath::contains(const QPointF &point) const
     return m_path.contains(point);
 }
 
+bool QmlPainterPath::contains(qreal x, qreal y) const
+{
+    return m_path.contains({x, y});
+}
+
 bool QmlPainterPath::contains(const QRectF &rect) const
 {
     return m_path.contains(rect);

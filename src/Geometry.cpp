@@ -8,6 +8,7 @@
 
 #include <QDebug>
 #include <QGuiApplication>
+#include <QPainterPath>
 #include <QScreen>
 #include <QWindow>
 
@@ -185,6 +186,76 @@ QRectF Geometry::rectBounded(qreal x, qreal y, qreal width, qreal height, const 
                              Qt::Orientations orientations)
 {
     return rectBounded({x, y, width, height}, boundsRect, orientations);
+}
+
+void translateXFromIntersection(QRectF &rect, QPointF &point, qreal side, auto setter)
+{
+    if (point.x() < rect.center().x()) {
+        rect.*setter(side + point.x());
+    } else {
+        rect.*setter(side + point.x());
+    }
+}
+
+void translateYFromIntersection(QRectF &rect, QPointF &point)
+{
+    if (point.y() < rect.center().y()) {
+        rect.moveLeft(rect.left() - point.y());
+    } else {
+        rect.moveRight(rect.right() - point.y());
+    }
+}
+
+QRectF Geometry::rectBounded(const QRect &rect, const QPainterPath &boundsPath)
+{
+    if (boundsPath.contains(rect) && boundsPath.intersects(rect)) {
+        return rect;
+    }
+    auto newRect = rect;
+    QPainterPath::Element last = boundsPath.elementAt(0);
+    for (int i = 1; i < boundsPath.elementCount(); ++i) {
+        auto e = boundsPath.elementAt(i);
+        // straight line closed shapes only
+        QLineF line{last, e};
+        QLineF left{newRect.topLeft(), newRect.bottomLeft()};
+        QPointF leftIntersection;
+        QLineF top{newRect.topLeft(), newRect.topRight()};
+        QPointF topIntersection;
+        QLineF right{newRect.topRight(), newRect.bottomRight()};
+        QPointF rightIntersection;
+        QLineF bottom{newRect.bottomLeft(), newRect.bottomLeft()};
+        QPointF bottomIntersection;
+        if (line.intersects(left, &leftIntersection)) {
+            if (newRect.left() < leftIntersection.x()) {
+                newRect.moveLeft(leftIntersection.x());
+            } else {
+                newRect.moveLeft(leftIntersection.x());
+            }
+        }
+        if (line.intersects(top, &topIntersection)) {
+            if (newRect.top() < topIntersection.y()) {
+                newRect.moveTop(topIntersection.y());
+            } else {
+                newRect.moveTop(topIntersection.y());
+            }
+        }
+        if (line.intersects(right, &rightIntersection)) {
+            if (newRect.right() < leftIntersection.x()) {
+                newRect.moveRight(leftIntersection.x());
+            } else {
+                newRect.moveRight(leftIntersection.x());
+            }
+        }
+        if (line.intersects(bottom, &bottomIntersection)) {
+            if (newRect.bottom() < topIntersection.y()) {
+                newRect.moveBottom(topIntersection.y());
+            } else {
+                newRect.moveBottom(topIntersection.y());
+            }
+        }
+        last = e;
+    }
+    return newRect;
 }
 
 QRectF Geometry::rectClipped(const QRectF &rect, const QRectF &clipRect,

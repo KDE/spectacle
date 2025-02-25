@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE bool contains(const QPointF &point) const;
 
+    Q_INVOKABLE bool contains(qreal x, qreal y) const;
+
     Q_INVOKABLE bool contains(const QRectF &rect) const;
 
     Q_INVOKABLE bool intersects(const QRectF &rect) const;

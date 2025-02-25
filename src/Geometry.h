@@ -9,6 +9,7 @@
 
 #include <memory>
 
+class QPainterPath;
 class QPointF;
 class QRectF;
 class QSizeF;
@@ -157,6 +158,13 @@ public:
                                                         Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
     [[nodiscard]] Q_INVOKABLE static QRectF rectBounded(qreal x, qreal y, qreal width, qreal height, const QRectF &boundsRect, //
                                                         Qt::Orientations orientations = Qt::Horizontal | Qt::Vertical);
+
+    /**
+     * Try to make the rect positioned fully inside the boundsPath without clipping.
+     * The rect may still be out of bounds if the size is too large.
+     * If the rect is invalid, that will be preserved.
+     */
+    [[nodiscard]] Q_INVOKABLE static QRectF rectBounded(const QRect &rect, const QPainterPath &boundsPath);
 
     /**
      * Clip the rect to the clipRect on the given axes.

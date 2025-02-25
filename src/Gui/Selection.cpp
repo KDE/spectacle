@@ -170,7 +170,7 @@ void Selection::setRect(qreal x, qreal y, qreal w, qreal h)
 void Selection::setRect(const QRectF &newRect, Qt::Orientations orientations)
 {
     const QRectF oldRect = selection;
-    const auto &bounds = editor->screensRect();
+    const auto &bounds = editor->screensPath().boundingRect();
     selection = G::rectClipped(newRect, bounds, orientations);
     // Using this instead of just comparing rects to take advantage
     // of the qFuzzyCompare calculations we're doing anyway.
