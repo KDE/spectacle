@@ -390,7 +390,7 @@ MouseArea {
                 spacing: parent.spacing
                 Loader {
                     id: mtbImageVideoContentLoader
-                    visible: SelectionEditor.selection.empty
+                    visible: SelectionEditor.selection.empty || !Geometry.rectContains(ftbLoader.rect, root.viewportRect)
                     active: visible
                     sourceComponent: SpectacleCore.videoMode ? videoToolBarComponent : imageMainToolBarComponent
                 }
@@ -691,13 +691,9 @@ MouseArea {
                 property bool rememberPosition: false
                 property alias dragging: dragHandler.active
                 property point targetPoint: {
-                    const x = SelectionEditor.selection.empty
-                        ? (root.width - width) / 2 + root.viewportRect.x
-                        : SelectionEditor.selection.horizontalCenter - width / 2
+                    const x = SelectionEditor.selection.horizontalCenter - width / 2
                     const getY = () => {
-                        if (SelectionEditor.selection.empty) {
-                            return root.viewportRect.y + root.height - height - bottomPadding
-                        } else if (SelectionEditor.screensPath.boundingRect.height - SelectionEditor.handlesRect.bottom >= height + toolBar.topPadding || SelectionEditor.selection.empty) {
+                        if (SelectionEditor.screensPath.boundingRect.height - SelectionEditor.handlesRect.bottom >= height + toolBar.topPadding || SelectionEditor.selection.empty) {
                             return SelectionEditor.handlesRect.bottom + topPadding
                         }
                         return Math.min(SelectionEditor.selection.bottom,
