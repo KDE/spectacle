@@ -18,10 +18,15 @@ Grid {
     horizontalItemAlignment: Grid.AlignHCenter
     verticalItemAlignment: Grid.AlignVCenter
     spacing: Kirigami.Units.mediumSpacing
-    // Rows and columns are set to defaults like this:
-    // if (rows <= 0 && columns <= 0) { columns = 4; rows = (numVisible+3)/4; }
-    // else if (rows <= 0) { rows = (numVisible+(columns-1))/columns; }
-    // else if (columns <= 0) { columns = (numVisible+(rows-1))/rows; }
+    /* Using -1 for either rows or columns sets the amount to unlimited,
+     * but not if you set both to -1. Using `visibleChildren.length` to set
+     * unlimited rows or columns can generate errors about not having enough
+     * rows/columns when a child item's `visible` property is toggled.
+     * Internally, rows and columns are set to defaults like this:
+     * if (rows <= 0 && columns <= 0) { columns = 4; rows = (numVisible+3)/4; }
+     * else if (rows <= 0) { rows = (numVisible+(columns-1))/columns; }
+     * else if (columns <= 0) { columns = (numVisible+(rows-1))/rows; }
+     */
     columns: flow === Grid.LeftToRight ? -1 : 1
     rows: flow === Grid.TopToBottom ? -1 : 1
     move: Transition {
