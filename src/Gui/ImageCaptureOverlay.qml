@@ -336,7 +336,7 @@ MouseArea {
 
         Connections {
             target: SelectionEditor.selection
-            function onEmptyChanged() {
+            function onRectChanged() {
                 if (!SelectionEditor.selection.empty) {
                     if (mainToolBar.rememberPosition) {
                         mainToolBar.z = 0
@@ -621,7 +621,6 @@ MouseArea {
                 }
                 DragHandler { // parented to contentItem
                     id: dragHandler
-                    enabled: SelectionEditor.selection.empty || !selectionRectangle.enabled
                     target: atbLoader
                     acceptedButtons: Qt.LeftButton
                     margin: annotationsToolBar.padding
@@ -757,7 +756,6 @@ MouseArea {
                 }
                 DragHandler { // parent is contentItem and parent is a read-only property
                     id: dragHandler
-                    enabled: SelectionEditor.selection.empty || !selectionRectangle.enabled
                     target: ftbLoader
                     acceptedButtons: Qt.LeftButton
                     margin: toolBar.padding
