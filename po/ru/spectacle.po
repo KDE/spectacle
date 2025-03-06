@@ -18,21 +18,21 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018.
 # Andrew <kissmeoutbeforeugo@gmail.com>, 2016.
-# Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
+# SPDX-FileCopyrightText: 2022, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 # Alexander Yavorsky <kekcuha@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-30 00:40+0000\n"
-"PO-Revision-Date: 2024-09-20 11:40+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2025-03-05 16:24+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -41,14 +41,12 @@ msgstr ""
 
 #: src/CaptureModeModel.cpp:152
 #, fuzzy, kde-format
-#| msgid "Rectangular Region"
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
 msgstr "Прямоугольная область"
 
 #: src/CaptureModeModel.cpp:154
 #, fuzzy, kde-format
-#| msgid "All Screens (Scaled to same size)"
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
 msgstr "Все экраны (одинаковый масштаб)"
@@ -56,42 +54,36 @@ msgstr "Все экраны (одинаковый масштаб)"
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #: src/CaptureModeModel.cpp:156
 #, fuzzy, kde-format
-#| msgid "Current Screen"
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
 msgstr "Текущий экран"
 
 #: src/CaptureModeModel.cpp:158
 #, fuzzy, kde-format
-#| msgid "Active Window"
 msgctxt "@action in capture mode section"
 msgid "Active Window"
 msgstr "Активное окно"
 
 #: src/CaptureModeModel.cpp:161
 #, fuzzy, kde-format
-#| msgid "Selected Window"
 msgctxt "@action in capture mode section"
 msgid "Select Window"
 msgstr "Выбранное окно"
 
 #: src/CaptureModeModel.cpp:161
 #, fuzzy, kde-format
-#| msgid "Window Under Cursor"
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
 msgstr "Окно под курсором мыши"
 
 #: src/CaptureModeModel.cpp:164
 #, fuzzy, kde-format
-#| msgid "All Screens"
 msgctxt "@action in capture mode section"
 msgid "All Screens"
 msgstr "Все экраны"
 
 #: src/CaptureModeModel.cpp:166
 #, fuzzy, kde-format
-#| msgid "Full Screen"
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
 msgstr "Весь экран"
@@ -1928,14 +1920,12 @@ msgstr "Весь экран"
 
 #: src/ShortcutActions.cpp:38
 #, fuzzy, kde-format
-#| msgid "Launch Spectacle"
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
 msgstr "Запустить Spectacle"
 
 #: src/ShortcutActions.cpp:44
 #, fuzzy, kde-format
-#| msgid "Capture Entire Desktop"
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
 msgstr "Сделать снимок всех экранов"
@@ -1943,63 +1933,54 @@ msgstr "Сделать снимок всех экранов"
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #: src/ShortcutActions.cpp:50
 #, fuzzy, kde-format
-#| msgid "Capture Current Monitor"
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
 msgstr "Сделать снимок текущего экрана"
 
 #: src/ShortcutActions.cpp:56
 #, fuzzy, kde-format
-#| msgid "Capture Active Window"
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
 msgstr "Сделать снимок активного окна"
 
 #: src/ShortcutActions.cpp:62
 #, fuzzy, kde-format
-#| msgid "Capture Rectangular Region"
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
 msgstr "Сделать снимок прямоугольной области экрана"
 
 #: src/ShortcutActions.cpp:69
 #, fuzzy, kde-format
-#| msgid "Capture Active Window"
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
 msgstr "Сделать снимок активного окна"
 
 #: src/ShortcutActions.cpp:69
 #, fuzzy, kde-format
-#| msgid "Capture Window Under Cursor"
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
 msgstr "Создать снимок окна под курсором мыши"
 
 #: src/ShortcutActions.cpp:76
 #, fuzzy, kde-format
-#| msgid "Record Screen"
 msgctxt "@action global shortcut"
 msgid "Record Screen"
 msgstr "Запись экрана"
 
 #: src/ShortcutActions.cpp:82
 #, fuzzy, kde-format
-#| msgid "Record Window"
 msgctxt "@action global shortcut"
 msgid "Record Window"
 msgstr "Запись окна"
 
 #: src/ShortcutActions.cpp:88
 #, fuzzy, kde-format
-#| msgid "Record Rectangular Region"
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
 msgstr "Запись прямоугольной области"
 
 #: src/ShortcutActions.cpp:94
 #, fuzzy, kde-format
-#| msgid "Launch Spectacle without capturing"
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Запускать Spectacle без создания снимка"
@@ -2032,7 +2013,7 @@ msgstr "Чтобы остановить запись нажмите на зна�
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Отсутствует поддержка WebP."
 
 #: src/SpectacleCore.cpp:261
 #, kde-format
@@ -2041,6 +2022,9 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Чтобы в системном лотке появились анимированные значки для Spectacle, "
+"установите модуль Qt Image Formats, а затем сообщите о его нехватке в пакете "
+"разработчикам дистрибутива."
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -2145,20 +2129,16 @@ msgid "GIF (compatible, but inefficient)"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "translatable folder name"
-#~| msgid "Screenshots"
 #~ msgctxt "@title:group"
 #~ msgid "Screenshot Modes"
 #~ msgstr "Снимки экрана"
 
 #, fuzzy
-#~| msgid "Recording"
 #~ msgctxt "@title:group"
 #~ msgid "Recording Modes"
 #~ msgstr "Запись экрана"
 
 #, fuzzy
-#~| msgid "Recording Settings"
 #~ msgctxt "@title:group"
 #~ msgid "Recording Settings"
 #~ msgstr "Параметры записи"
@@ -2271,13 +2251,11 @@ msgstr ""
 #~ msgstr "Имя файла по умолчанию для записи видео"
 
 #, fuzzy
-#~| msgid "Region"
 #~ msgctxt "@item recording mode"
 #~ msgid "Region"
 #~ msgstr "Область экрана"
 
 #, fuzzy
-#~| msgid "Screenshot"
 #~ msgctxt "@item recording mode"
 #~ msgid "Screen"
 #~ msgstr "Снимок экрана"
@@ -2289,13 +2267,11 @@ msgstr ""
 #~ msgstr "Не удалось выбрать окно вывода"
 
 #, fuzzy
-#~| msgid "Save"
 #~ msgctxt "Settings category"
 #~ msgid "Save"
 #~ msgstr "Сохранить"
 
 #, fuzzy
-#~| msgid "New screen recording"
 #~ msgid "File format for saved screen recordings"
 #~ msgstr "Новая запись экрана"
 
