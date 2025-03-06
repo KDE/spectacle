@@ -624,6 +624,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         includeShadow = Settings::includeShadow() && !m_cliOptions[Option::NoShadow];
         includePointer = Settings::includePointer() || m_cliOptions[Option::Pointer];
     }
+    onClick &= m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick);
 
     int delayMsec = 0; // default to 0 if cli value parse fails
     if (onClick) {
@@ -850,6 +851,9 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
 void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow)
 {
     using CaptureMode = CaptureModeModel::CaptureMode;
+    if (timeout < 0 && !m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick)) {
+        timeout = Settings::captureDelay() * 1000;
+    }
     takeNewScreenshot(toGrabMode(CaptureMode(captureMode), Settings::transientOnly()), timeout, includePointer, includeDecorations, includeShadow);
 }
 
