@@ -2,76 +2,69 @@
 # Copyright (C) 2015-2020 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2015, 2016, 2018, 2019, 2020.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-06 00:39+0000\n"
-"PO-Revision-Date: 2024-07-31 21:47-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"POT-Creation-Date: 2025-03-09 00:39+0000\n"
+"PO-Revision-Date: 2025-02-27 19:59-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
-#: src/CaptureModeModel.cpp:152
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#: src/CaptureModeModel.cpp:162
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
 msgstr "Região retangular"
 
-#: src/CaptureModeModel.cpp:154
-#, fuzzy, kde-format
-#| msgid "All Screens (Scaled to same size)"
+#: src/CaptureModeModel.cpp:164
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
 msgstr "Todas as telas (dimensionadas para o mesmo tamanho)"
 
-#: src/CaptureModeModel.cpp:156
-#, fuzzy, kde-format
-#| msgid "Current Screen"
+#: src/CaptureModeModel.cpp:166
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
 msgstr "Tela atual"
 
-#: src/CaptureModeModel.cpp:158
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#: src/CaptureModeModel.cpp:168
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
 msgstr "Janela ativa"
 
-#: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
-#| msgid "Selected Window"
+#: src/CaptureModeModel.cpp:171
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr "Janela selecionada"
+msgstr "Selecionar janela"
 
-#: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
-#| msgid "Window Under Cursor"
+#: src/CaptureModeModel.cpp:171
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
 msgstr "Janela sob o cursor"
 
-#: src/CaptureModeModel.cpp:164
-#, fuzzy, kde-format
-#| msgid "All Screens"
+#: src/CaptureModeModel.cpp:174
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
 msgstr "Todas as telas"
 
-#: src/CaptureModeModel.cpp:166
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#: src/CaptureModeModel.cpp:176
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
 msgstr "Tela inteira"
@@ -215,7 +208,7 @@ msgstr "Abrir e editar o arquivo da imagem existente"
 #: src/ExportManager.cpp:459
 #, kde-format
 msgid "QImageWriter cannot write image: %1"
-msgstr "O QImageWriter não pode salvar a imagem:  %1"
+msgstr "O QImageWriter não pode salvar a imagem: %1"
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -297,7 +290,221 @@ msgstr ""
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Falha na impressão. Não foi possível inicializar a impressora."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:61
+#: src/ExportManager.cpp:890
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Day (1–31)"
+msgstr ""
+
+#: src/ExportManager.cpp:891
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Day (01–31)"
+msgstr ""
+
+#: src/ExportManager.cpp:892
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Day (short name)"
+msgstr ""
+
+#: src/ExportManager.cpp:893
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Day (long name)"
+msgstr ""
+
+#: src/ExportManager.cpp:894
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Month (1–12)"
+msgstr ""
+
+#: src/ExportManager.cpp:895
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Month (01–12)"
+msgstr ""
+
+#: src/ExportManager.cpp:896
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized short name)"
+msgctxt "filename placeholder description"
+msgid "Month (short name)"
+msgstr "Mês (nome abreviado)"
+
+#: src/ExportManager.cpp:897
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized long name)"
+msgctxt "filename placeholder description"
+msgid "Month (long name)"
+msgstr "Mês (nome completo)"
+
+#: src/ExportManager.cpp:898
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Year (2 digit)"
+msgctxt "filename placeholder description"
+msgid "Year (2 digit)"
+msgstr "Ano (2 dígitos)"
+
+#: src/ExportManager.cpp:899
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Year (4 digit)"
+msgctxt "filename placeholder description"
+msgid "Year (4 digit)"
+msgstr "Ano (4 dígitos)"
+
+#: src/ExportManager.cpp:900
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Hour (0–23)"
+msgstr ""
+
+#: src/ExportManager.cpp:901
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Hour (00–23)"
+msgstr ""
+
+#: src/ExportManager.cpp:902
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Hour (1–12)"
+msgstr ""
+
+#: src/ExportManager.cpp:903
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Hour (01–12)"
+msgstr ""
+
+#: src/ExportManager.cpp:904
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Minute (0–59)"
+msgstr ""
+
+#: src/ExportManager.cpp:905
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Minute (00–59)"
+msgstr ""
+
+#: src/ExportManager.cpp:906
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Second (0–59)"
+msgstr ""
+
+#: src/ExportManager.cpp:907
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Second (00–59)"
+msgstr ""
+
+#: src/ExportManager.cpp:908
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Millisecond (0–999)"
+msgstr ""
+
+#: src/ExportManager.cpp:910
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Millisecond (000–999)"
+msgstr ""
+
+#: src/ExportManager.cpp:911
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "AM/PM"
+msgstr ""
+
+#: src/ExportManager.cpp:913
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "am/pm"
+msgstr ""
+
+#: src/ExportManager.cpp:915
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "AM/PM or am/pm (localized)"
+msgstr ""
+
+#: src/ExportManager.cpp:917
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized short name)"
+msgctxt "filename placeholder description"
+msgid "Timezone (short name)"
+msgstr "Mês (nome abreviado)"
+
+#: src/ExportManager.cpp:918
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone offset (±0000)"
+msgstr ""
+
+#: src/ExportManager.cpp:919
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone offset (±00:00)"
+msgstr ""
+
+#: src/ExportManager.cpp:920
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone (long name)"
+msgstr ""
+
+#: src/ExportManager.cpp:921
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Seconds since the Unix epoch"
+msgstr ""
+
+#: src/ExportManager.cpp:922
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
+msgctxt "filename placeholder description"
+msgid "Window Title"
+msgstr "Título da janela"
+
+#: src/ExportManager.cpp:923
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
+msgctxt "filename placeholder description"
+msgid "Sequential numbering, padded by inserting additional '#' characters"
+msgstr "Numeração sequencial, preenchida com N dígitos"
+
+#: src/Gui/AcceptAction.qml:9
+#, kde-format
+msgctxt "@action accept selection"
+msgid "Accept"
+msgstr ""
+
+#: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
 msgstr "Traço:"
@@ -305,7 +512,7 @@ msgstr "Traço:"
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
-#: src/Gui/AnnotationOptionsToolBarContents.qml:93
+#: src/Gui/AnnotationOptionsToolBarContents.qml:88
 #, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
@@ -313,44 +520,44 @@ msgid_plural "%1px"
 msgstr[0] "%1px"
 msgstr[1] "%1px"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:98
+#: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
 msgid "Stroke Width"
 msgstr "Largura do traço"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:128
+#: src/Gui/AnnotationOptionsToolBarContents.qml:126
 #, kde-format
 msgid "Stroke Color"
 msgstr "Cor do traço"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:164
+#: src/Gui/AnnotationOptionsToolBarContents.qml:162
 #, kde-format
 msgid "Fill:"
 msgstr "Preenchimento:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:176
+#: src/Gui/AnnotationOptionsToolBarContents.qml:174
 #, kde-format
 msgid "Fill Color"
 msgstr "Cor de preenchimento"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:215
+#: src/Gui/AnnotationOptionsToolBarContents.qml:213
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
 msgstr "Força:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:234
+#: src/Gui/AnnotationOptionsToolBarContents.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
 msgstr "A força do efeito."
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:261
+#: src/Gui/AnnotationOptionsToolBarContents.qml:259
 #, kde-format
 msgid "Font:"
 msgstr "Fonte:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:275
+#: src/Gui/AnnotationOptionsToolBarContents.qml:273
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
@@ -358,7 +565,7 @@ msgid_plural "%2 %3 %1pts"
 msgstr[0] "%2 %3 %1pt"
 msgstr[1] "%2 %3 %1pts"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:276
+#: src/Gui/AnnotationOptionsToolBarContents.qml:274
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
@@ -366,92 +573,137 @@ msgid_plural "%2 %1pts"
 msgstr[0] "%2 %1pt"
 msgstr[1] "%2 %1pts"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:288
+#: src/Gui/AnnotationOptionsToolBarContents.qml:286
 #, kde-format
 msgid "Font Color"
 msgstr "Cor da fonte"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:327
+#: src/Gui/AnnotationOptionsToolBarContents.qml:325
 #, kde-format
 msgid "Number:"
 msgstr "Número:"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:346
+#: src/Gui/AnnotationOptionsToolBarContents.qml:344
 #, kde-format
 msgid "Number for number annotations"
 msgstr "Número para anotações numéricas"
 
-#: src/Gui/AnnotationOptionsToolBarContents.qml:371
+#: src/Gui/AnnotationOptionsToolBarContents.qml:372
 #, kde-format
 msgid "Shadow"
 msgstr "Sombra"
 
-#: src/Gui/AnnotationsToolBarContents.qml:98
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:110
+#, fuzzy, kde-format
+#| msgid "None"
+msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
 msgstr "Nenhuma"
 
-#: src/Gui/AnnotationsToolBarContents.qml:110
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:122
+#, fuzzy, kde-format
+#| msgid "Crop"
+msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
 msgstr "Recortar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:120
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:132
+#, fuzzy, kde-format
+#| msgid "Select"
+msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
 msgstr "Selecionar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:128
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:141
+#, fuzzy, kde-format
+#| msgid "Freehand"
+msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "Linha livre"
 
-#: src/Gui/AnnotationsToolBarContents.qml:135
+#: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Shift: Snap to straight lines"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:149
+#, fuzzy, kde-format
+#| msgid "Highlighter"
+msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
 msgstr "Marca-texto"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:158
+#, fuzzy, kde-format
+#| msgid "Line"
+msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
 msgstr "Linha"
 
-#: src/Gui/AnnotationsToolBarContents.qml:149
+#: src/Gui/AnnotationsToolBarContents.qml:159
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Shift: Snap to 45 degree increments"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:166
+#, fuzzy, kde-format
+#| msgid "Arrow"
+msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
 msgstr "Seta"
 
-#: src/Gui/AnnotationsToolBarContents.qml:156
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:175
+#, fuzzy, kde-format
+#| msgid "Rectangle"
+msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Retângulo"
 
-#: src/Gui/AnnotationsToolBarContents.qml:163
+#: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Shift: Snap to diagonal movements\n"
+msgstr ""
+
+#: src/Gui/AnnotationsToolBarContents.qml:185
+#, fuzzy, kde-format
+#| msgid "Ellipse"
+msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "Elipse"
 
-#: src/Gui/AnnotationsToolBarContents.qml:170
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:193
+#, fuzzy, kde-format
+#| msgid "Pixelate"
+msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "Pixelar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:177
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:201
+#, fuzzy, kde-format
+#| msgid "Blur"
+msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
 msgstr "Desfocar"
 
-#: src/Gui/AnnotationsToolBarContents.qml:184
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:209
+#, fuzzy, kde-format
+#| msgid "Text"
+msgctxt "@action:intoolbar text tool"
 msgid "Text"
 msgstr "Texto"
 
-#: src/Gui/AnnotationsToolBarContents.qml:191
-#, kde-format
+#: src/Gui/AnnotationsToolBarContents.qml:216
+#, fuzzy, kde-format
+#| msgid "Number"
+msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
 msgstr "Número"
 
-#: src/Gui/CaptureModeButtonsColumn.qml:31 src/Gui/MainToolBarContents.qml:109
+#: src/Gui/CaptureModeButtonsColumn.qml:31
+#: src/Gui/NewScreenshotToolButton.qml:15
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
@@ -467,10 +719,9 @@ msgstr "Capturar uma nova imagem"
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "configurações da captura de tela"
+msgstr "Configurações da captura de tela"
 
-#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/OptionsMenu.cpp:72
-#: src/Gui/RecordingSettingsColumn.qml:16
+#: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
 msgstr "Incluir ponteiro do mouse"
@@ -480,7 +731,7 @@ msgstr "Incluir ponteiro do mouse"
 msgid "Show the mouse cursor in the screenshot image."
 msgstr "Mostra o ponteiro do mouse na imagem capturada."
 
-#: src/Gui/CaptureSettingsColumn.qml:25 src/Gui/OptionsMenu.cpp:84
+#: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
 msgid "Include window titlebar and borders"
 msgstr "Incluir as bordas e a barra de título da janela"
@@ -493,7 +744,7 @@ msgstr ""
 "Mostrar a barra de título e a borda da janela ao fazer uma captura de imagem "
 "de uma janela."
 
-#: src/Gui/CaptureSettingsColumn.qml:34 src/Gui/OptionsMenu.cpp:96
+#: src/Gui/CaptureSettingsColumn.qml:34
 #, kde-format
 msgid "Include window shadow"
 msgstr "Incluir sombras da janela"
@@ -504,7 +755,7 @@ msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
 "Mostrar a sombra da janela ao fazer uma captura de imagem de uma janela."
 
-#: src/Gui/CaptureSettingsColumn.qml:44 src/Gui/OptionsMenu.cpp:108
+#: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Capture the current pop-up only"
 msgstr "Capturar apenas a mensagem atual"
@@ -520,7 +771,7 @@ msgstr ""
 "capturar uma imagem de uma janela. Se desabilitado, a mensagem é capturada "
 "junto com a janela de origem."
 
-#: src/Gui/CaptureSettingsColumn.qml:54 src/Gui/OptionsMenu.cpp:122
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Sair após salvar ou copiar manualmente"
@@ -540,7 +791,7 @@ msgstr "Capturar ao clicar"
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Aguarda um clique do mouse antes de capturar a imagem."
 
-#: src/Gui/CaptureSettingsColumn.qml:76 src/Gui/OptionsMenu.cpp:152
+#: src/Gui/CaptureSettingsColumn.qml:76
 #, kde-format
 msgid "Delay:"
 msgstr "Atraso:"
@@ -549,6 +800,20 @@ msgstr "Atraso:"
 #, kde-format
 msgid "The screenshot has been copied to the clipboard."
 msgstr "A imagem foi copiada para a área de transferência."
+
+#: src/Gui/CopyImageAction.qml:13
+#, fuzzy, kde-format
+#| msgid "Copy"
+msgctxt "@action"
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/Gui/CopyLocationAction.qml:9
+#, fuzzy, kde-format
+#| msgid "Copy Location"
+msgctxt "@action"
+msgid "Copy Location"
+msgstr "Copiar a localização"
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -575,7 +840,7 @@ msgstr "%1 segundos"
 msgid "Configure Spectacle…"
 msgstr "Configurar Spectacle…"
 
-#: src/Gui/DialogPage.qml:68 src/Gui/MainToolBarContents.qml:148
+#: src/Gui/DialogPage.qml:68
 #, kde-format
 msgid "Help"
 msgstr "Ajuda"
@@ -596,7 +861,7 @@ msgstr "Opções"
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Fazer um gravação"
+msgstr "Fazer uma gravação:"
 
 #: src/Gui/DialogPage.qml:170
 #, kde-format
@@ -608,39 +873,76 @@ msgstr "Capturar imagem"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
-msgstr "Gravando"
+msgstr "Gravar"
 
-#: src/Gui/ExportMenu.cpp:51
+#: src/Gui/EditAction.qml:11
+#, fuzzy, kde-format
+#| msgctxt "@action:button edit screenshot"
+#| msgid "Edit…"
+msgctxt "@action edit screenshot"
+msgid "Edit…"
+msgstr "Editar…"
+
+#: src/Gui/ExportMenu.cpp:50
+#, fuzzy, kde-format
+#| msgid "Export"
+msgctxt "@title:menu"
+msgid "Export"
+msgstr "Exportar"
+
+#: src/Gui/ExportMenu.cpp:53
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Abrir pasta de imagens padrão"
 
-#: src/Gui/ExportMenu.cpp:119
+#: src/Gui/ExportMenu.cpp:121
 #, kde-format
 msgid "Other Application..."
 msgstr "Outro aplicativo..."
 
-#: src/Gui/ExportMenu.cpp:151
+#: src/Gui/ExportMenu.cpp:153
 #, kde-format
 msgid "Share"
 msgstr "Compartilhar"
 
-#: src/Gui/ImageView.qml:162
-#, kde-format
-msgid "Screenshot"
-msgstr "Capturar imagem"
+#: src/Gui/ExportMenuButton.qml:13
+#, fuzzy, kde-format
+#| msgid "Export"
+msgctxt "@action"
+msgid "Export"
+msgstr "Exportar"
 
-#: src/Gui/ImageView.qml:167
-#, kde-format
-msgid "Recording"
-msgstr "Gravando"
+#: src/Gui/HelpMenu.cpp:45
+#, fuzzy, kde-format
+#| msgid "Help"
+msgctxt "@title:menu"
+msgid "Help"
+msgstr "Ajuda"
 
-#: src/Gui/ImageView.qml:234
+#: src/Gui/HelpMenuButton.qml:10
+#, fuzzy, kde-format
+#| msgid "Help"
+msgctxt "@action"
+msgid "Help"
+msgstr "Ajuda"
+
+#: src/Gui/ImageCaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Clique e arrate para desenhar um retângulo de seleção,\n"
+"ou pressione Esc para cancelar"
+
+#: src/Gui/ImageView.qml:199
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ImageView.qml:248
+#: src/Gui/ImageView.qml:213
 #, kde-format
 msgid "Image Zoom"
 msgstr "Zoom da imagem"
@@ -657,69 +959,46 @@ msgctxt "@info"
 msgid "The screenshot location has been copied to the clipboard."
 msgstr "O local da captura de tela foi copiado para a área de transferência."
 
-#: src/Gui/MainToolBarContents.qml:56
-#, kde-format
-msgid "Save"
-msgstr "Salvar"
-
-#: src/Gui/MainToolBarContents.qml:62
-#, kde-format
-msgid "Save As..."
-msgstr "Salvar como..."
-
-#: src/Gui/MainToolBarContents.qml:71
-#, kde-format
-msgid "Copy"
-msgstr "Copiar"
-
-#: src/Gui/MainToolBarContents.qml:79
-#, kde-format
-msgid "Copy Location"
-msgstr "Copie a localização"
-
-#: src/Gui/MainToolBarContents.qml:87
-#, kde-format
-msgid "Export"
-msgstr "Exportar"
-
-#: src/Gui/MainToolBarContents.qml:96
-#, kde-format
-msgctxt "@action:button edit screenshot"
-msgid "Edit…"
-msgstr "Editar…"
-
-#: src/Gui/MainToolBarContents.qml:122
+#: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
 msgid "New Screenshot"
 msgstr "Nova captura de imagem"
 
-#: src/Gui/MainToolBarContents.qml:133
-#, kde-format
-msgid "Options"
-msgstr "Opções"
+#: src/Gui/OptionsMenu.cpp:38
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Screenshot Settings"
+msgctxt "@title:menu"
+msgid "Screenshot Settings"
+msgstr "Configurações da captura de tela"
 
-#: src/Gui/MainToolBarContents.qml:141
-#, kde-format
-msgid "Configure..."
-msgstr "Configurar..."
+#: src/Gui/OptionsMenu.cpp:40
+#, fuzzy, kde-format
+#| msgid "Include mouse pointer"
+msgctxt "@option:check for screenshots"
+msgid "Include mouse pointer"
+msgstr "Incluir ponteiro do mouse"
 
-#: src/Gui/OptionsMenu.cpp:42
-#, kde-format
-msgid "Capture Mode"
-msgstr "Modo de captura"
-
-#: src/Gui/OptionsMenu.cpp:68
-#, kde-format
-msgid "Capture Settings"
-msgstr "Configurações da captura"
-
-#: src/Gui/OptionsMenu.cpp:73
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:41
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
+msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Mostra o ponteiro do mouse na imagem capturada"
 
-#: src/Gui/OptionsMenu.cpp:85
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:49
+#, fuzzy, kde-format
+#| msgid "Include window titlebar and borders"
+msgctxt "@option:check"
+msgid "Include window titlebar and borders"
+msgstr "Incluir as bordas e a barra de título da janela"
+
+#: src/Gui/OptionsMenu.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Show the window title bar, the minimize/maximize/close buttons, and the "
+#| "window border"
+msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
@@ -727,13 +1006,33 @@ msgstr ""
 "Mostra a barra de título da janela, os botões minimizar/maximizar/fechar e a "
 "borda da janela"
 
-#: src/Gui/OptionsMenu.cpp:97
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:58
+#, fuzzy, kde-format
+#| msgid "Include window shadow"
+msgctxt "@option:check"
+msgid "Include window shadow"
+msgstr "Incluir sombras da janela"
+
+#: src/Gui/OptionsMenu.cpp:59
+#, fuzzy, kde-format
+#| msgid "Show the window shadow"
+msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Mostrar a sombra da janela"
 
-#: src/Gui/OptionsMenu.cpp:110
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:69
+#, fuzzy, kde-format
+#| msgid "Capture the current pop-up only"
+msgctxt "@option:check"
+msgid "Capture the current pop-up only"
+msgstr "Capturar apenas a mensagem atual"
+
+#: src/Gui/OptionsMenu.cpp:71
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
+msgctxt "@info:tooltip"
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
@@ -741,20 +1040,68 @@ msgstr ""
 "Captura apenas a janela de mensagem atual (como um menu, dica, etc).\n"
 "Se desabilitado, a mensagem é capturada junto com a janela de origem"
 
-#: src/Gui/OptionsMenu.cpp:123
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:81
+#, fuzzy, kde-format
+#| msgid "Quit after manual Save or Copy"
+msgctxt "@option:check"
+msgid "Quit after manual Save or Copy"
+msgstr "Sair após salvar ou copiar manualmente"
+
+#: src/Gui/OptionsMenu.cpp:82
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
+msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Sai do Spectacle após salvar ou copiar a imagem manualmente"
 
-#: src/Gui/OptionsMenu.cpp:137
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:94
+#, fuzzy, kde-format
+#| msgid "Capture On Click"
+msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Capturar ao clicar"
 
-#: src/Gui/OptionsMenu.cpp:157
-#, kde-format
+#: src/Gui/OptionsMenu.cpp:109
+#, fuzzy, kde-format
+#| msgid "Delay:"
+msgctxt "@label:spinbox"
+msgid "Delay:"
+msgstr "Atraso:"
+
+#: src/Gui/OptionsMenu.cpp:114
+#, fuzzy, kde-format
+#| msgid "No Delay"
+msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Sem atraso"
+
+#: src/Gui/OptionsMenu.cpp:133
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
+msgctxt "@title:menu"
+msgid "Recording Settings"
+msgstr "Configurações da gravação"
+
+#: src/Gui/OptionsMenu.cpp:135
+#, fuzzy, kde-format
+#| msgid "Include mouse pointer"
+msgctxt "@option:check for recordings"
+msgid "Include mouse pointer"
+msgstr "Incluir ponteiro do mouse"
+
+#: src/Gui/OptionsMenu.cpp:136
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screen recording."
+msgctxt "@info:tooltip"
+msgid "Show the mouse cursor in the recording"
+msgstr "Mostra o ponteiro do mouse na gravação da tela."
+
+#: src/Gui/OptionsMenuButton.qml:10
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@action"
+msgid "Options"
+msgstr "Opções"
 
 #: src/Gui/QRCodeScannedMessage.qml:30
 #, kde-format
@@ -765,6 +1112,27 @@ msgstr "Código QR encontrado: %1"
 #, kde-format
 msgid "Found QR code with binary content."
 msgstr "Código QR encontrado com conteúdo binário."
+
+#: src/Gui/RecordAction.qml:11
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@action start recording"
+msgid "Record"
+msgstr "Gravar"
+
+#: src/Gui/RecordingModeMenu.cpp:16
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@title:menu"
+msgid "Recording Modes"
+msgstr "Gravando"
+
+#: src/Gui/RecordingModeMenuButton.qml:11
+#, fuzzy, kde-format
+#| msgid "Recording"
+msgctxt "@action select new recording mode"
+msgid "New Recording"
+msgstr "Gravar"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
@@ -780,12 +1148,12 @@ msgstr ""
 "Gravando:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:127
+#: src/Gui/RecordingView.qml:120
 #, kde-format
 msgid "Pause"
 msgstr "Pausar"
 
-#: src/Gui/RecordingView.qml:127
+#: src/Gui/RecordingView.qml:120
 #, kde-format
 msgid "Play"
 msgstr "Reproduzir"
@@ -799,6 +1167,20 @@ msgstr "Configurações da gravação"
 #, kde-format
 msgid "Finish recording"
 msgstr "Finalizar gravação"
+
+#: src/Gui/SaveAction.qml:13
+#, fuzzy, kde-format
+#| msgid "Save"
+msgctxt "@action"
+msgid "Save"
+msgstr "Salvar"
+
+#: src/Gui/SaveAsAction.qml:9
+#, fuzzy, kde-format
+#| msgid "Save As..."
+msgctxt "@action"
+msgid "Save As…"
+msgstr "Salvar como..."
 
 #: src/Gui/SavedAndCopiedMessage.qml:8
 #, kde-format
@@ -841,7 +1223,22 @@ msgstr "A imagem foi salva como <a href=\"%1\">%2</a>"
 msgid "Open Containing Folder"
 msgstr "Abrir pasta de destino"
 
-#: src/Gui/ScreenshotView.qml:184
+#: src/Gui/ScreenshotModeMenu.cpp:16
+#, fuzzy, kde-format
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
+msgctxt "@title:menu"
+msgid "Screenshot Modes"
+msgstr "Capturas de tela"
+
+#: src/Gui/ScreenshotModeMenuButton.qml:11
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
+msgctxt "@action select new screenshot mode"
+msgid "New Screenshot"
+msgstr "Nova captura de imagem"
+
+#: src/Gui/ScreenshotView.qml:196
 #, kde-format
 msgctxt "@info crop tool explanation"
 msgid ""
@@ -861,148 +1258,155 @@ msgstr "Ao iniciar o Spectacle:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
+#, fuzzy, kde-format
+#| msgid "Take a new screenshot"
+msgid "Take rectangular screenshot"
+msgstr "Capturar uma nova imagem"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Take full screen screenshot"
 msgstr "Capturar uma imagem da tela cheia"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:30
+#: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Use last-used capture mode"
 msgstr "Usar o modo de captura usado pela última vez"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:35
+#: src/Gui/SettingsDialog/GeneralOptions.ui:40
 #, kde-format
 msgid "Do not take a screenshot automatically"
 msgstr "Não capturar imagem automaticamente"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:59
+#: src/Gui/SettingsDialog/GeneralOptions.ui:64
 #, kde-format
 msgid "After taking a screenshot:"
 msgstr "Após capturar uma imagem:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:66
+#: src/Gui/SettingsDialog/GeneralOptions.ui:71
 #, kde-format
 msgid "Save file to default folder"
 msgstr "Salvar arquivo para a pasta padrão"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:77
+#: src/Gui/SettingsDialog/GeneralOptions.ui:82
 #, kde-format
 msgid "Do not copy anything"
 msgstr "Não copiar nada"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:82
+#: src/Gui/SettingsDialog/GeneralOptions.ui:87
 #, kde-format
 msgid "Copy image to clipboard"
 msgstr "Copiar imagem para a área de transferência"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:87
+#: src/Gui/SettingsDialog/GeneralOptions.ui:92
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Copie a localização do arquivo para a área de transferência"
+msgstr "Copiar a localização do arquivo para a área de transferência"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:111
+#: src/Gui/SettingsDialog/GeneralOptions.ui:116
 #, kde-format
 msgid "While Spectacle is running"
 msgstr "Enquanto o Spectacle estiver em execução"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:118
+#: src/Gui/SettingsDialog/GeneralOptions.ui:123
 #, kde-format
 msgid "Press screenshot key to:"
 msgstr "Pressionar tecla de captura de tela para:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:126
+#: src/Gui/SettingsDialog/GeneralOptions.ui:131
 #, kde-format
 msgid "Take a new Screenshot"
 msgstr "Capturar uma nova imagem"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:131
+#: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Open a new Spectacle window"
 msgstr "Abrir uma nova janela do Spectacle"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:136
+#: src/Gui/SettingsDialog/GeneralOptions.ui:141
 #, kde-format
 msgid "Return focus to Spectacle"
 msgstr "Retornar o foco para o Spectacle"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:160
+#: src/Gui/SettingsDialog/GeneralOptions.ui:165
 #, kde-format
 msgid "Rectangular Region Selection"
 msgstr "Seleção de região retangular"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:167
+#: src/Gui/SettingsDialog/GeneralOptions.ui:172
 #, kde-format
 msgid "General:"
 msgstr "Geral:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColor)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:174
+#: src/Gui/SettingsDialog/GeneralOptions.ui:179
 #, kde-format
 msgid "Use light background"
 msgstr "Usar fundo claro"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:181
+#: src/Gui/SettingsDialog/GeneralOptions.ui:186
 #, kde-format
 msgid "Accept on click-and-release"
 msgstr "Aceitar ao clicar e soltar"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:188
+#: src/Gui/SettingsDialog/GeneralOptions.ui:193
 #, kde-format
 msgid "Show capture instructions"
 msgstr "Mostrar instruções de captura"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:195
+#: src/Gui/SettingsDialog/GeneralOptions.ui:200
 #, kde-format
 msgid "Show magnifier:"
 msgstr "Mostrar a lupa:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:203
-#: src/Gui/SettingsDialog/GeneralOptions.ui:229
+#: src/Gui/SettingsDialog/GeneralOptions.ui:208
+#: src/Gui/SettingsDialog/GeneralOptions.ui:234
 #, kde-format
 msgid "Never"
 msgstr "Nunca"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:208
-#: src/Gui/SettingsDialog/GeneralOptions.ui:234
+#: src/Gui/SettingsDialog/GeneralOptions.ui:213
+#: src/Gui/SettingsDialog/GeneralOptions.ui:239
 #, kde-format
 msgid "Always"
 msgstr "Sempre"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:213
+#: src/Gui/SettingsDialog/GeneralOptions.ui:218
 #, kde-format
 msgid "While holding Shift"
 msgstr "Enquanto segura a tecla Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:221
+#: src/Gui/SettingsDialog/GeneralOptions.ui:226
 #, kde-format
 msgid "Remember selected area:"
 msgstr "Lembrar área selecionada:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:239
+#: src/Gui/SettingsDialog/GeneralOptions.ui:244
 #, kde-format
 msgid "Until Spectacle is closed"
 msgstr "Até o Spectacle ser fechado"
@@ -1045,7 +1449,7 @@ msgstr "Nome do arquivo:"
 #, kde-format
 msgctxt "Preview of the user configured filename"
 msgid "Preview:"
-msgstr "Visualização:"
+msgstr "Prévia:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
@@ -1089,13 +1493,13 @@ msgstr "Geral"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr "Salvando imagem"
+msgstr "Salvamento de imagem"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr "Salvando vídeo"
+msgstr "Salvamento de vídeo"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1115,7 +1519,7 @@ msgid "What to do when Spectacle is launched"
 msgstr "O que fazer quando o Spectacle for iniciado"
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:25
+#: src/Gui/SettingsDialog/spectacle.kcfg:26
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -1124,28 +1528,28 @@ msgstr ""
 "em execução"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:34
+#: src/Gui/SettingsDialog/spectacle.kcfg:35
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Salvar a imagem automaticamente após ser tirada"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:38
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:39
+#: src/Gui/SettingsDialog/spectacle.kcfg:52
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
 "Ação da área de transferência que deve ser executada após a imagem ser tirada"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:48
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "Se deve usar uma máscara de cor clara na janela de seleção da região"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:60
+#: src/Gui/SettingsDialog/spectacle.kcfg:61
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1155,104 +1559,104 @@ msgstr ""
 "mouse"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:64
+#: src/Gui/SettingsDialog/spectacle.kcfg:65
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
 msgstr "Se deve mostrar instruções de captura na seleção da região"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:68
+#: src/Gui/SettingsDialog/spectacle.kcfg:69
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Lembrar da última região retangular"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:79
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "A última região usada selecionada pelo usuário"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:83
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Capturar imagem ao clicar"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:87
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Se o ponteiro do mouse será incluído na imagem"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:91
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Se o ponteiro do mouse será incluído no vídeo"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:95
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Se as decorações da janela serão incluídas na imagem"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:99
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Se as sombras da janela serão incluídas na imagem"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:103
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Capturar apenas o menu de contexto atual"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:107
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Sai após salvar ou copiar uma imagem"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:111
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Delay"
 msgstr "Atraso"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:169
 #, kde-format
 msgid "Default filename"
 msgstr "Nome de arquivo padrão"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Qualidade da compressão em formatos de arquivo com perdas"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
+#: src/Gui/SettingsDialog/spectacle.kcfg:145
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Capturas de tela"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:147
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "Default save image format"
 msgstr "Formato padrão de gravação de imagens"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "O modelo a ser usado para nome de arquivo ao salvar capturas de tela"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
+#: src/Gui/SettingsDialog/spectacle.kcfg:157
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1260,210 +1664,210 @@ msgstr "Captura de imagem"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "O caminho do último arquivo salvo"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:202
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Último caminho usado na ação \"salvar como\""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
 #, kde-format
 msgid "Default video format"
 msgstr "Formato padrão de gravação de vídeos"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "O modelo a ser usado para nome de arquivo ao salvar gravações da tela"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Capturar  video"
+msgstr "Capturar video"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
+#: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Gravar a tela"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:207
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "O último tipo de ferramenta de anotação usado"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Largura do traço para ferramenta de anotação à mão livre"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:218
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Largura do traço para ferramenta de anotação marca-texto"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:223
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Largura do traço para ferramenta de anotação de linha"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:228
+#: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Largura do traço para ferramenta de anotação de seta"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:233
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Largura do traço para ferramenta de anotação de retângulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:238
+#: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Largura do traço para ferramenta de anotação de elipse"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:244
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação à mão livre"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:248
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação marca-texto"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:252
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação de linha"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:256
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação de seta"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:260
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação de retângulo"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:264
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Cor do traço para a ferramenta de anotação de elipse"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:269
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Cor de preenchimento para ferramenta de anotação de retângulo"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:273
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Cor de preenchimento para ferramenta de anotação de elipse"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:277
+#: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "Cor de preenchimento para ferramenta de anotação de número"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:282
+#: src/Gui/SettingsDialog/spectacle.kcfg:283
 #, kde-format
 msgid "The strength of the blur effect."
 msgstr "A força do efeito desfocar."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:288
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr "A força do efeito pixelizar."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:295
+#: src/Gui/SettingsDialog/spectacle.kcfg:296
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Fonte para anotações de texto"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:298
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Fonte para anotações de números"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:302
-#: src/Gui/SettingsDialog/spectacle.kcfg:306
+#: src/Gui/SettingsDialog/spectacle.kcfg:303
+#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Cor da fonte das anotações"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:311
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação à mão livre tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:315
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de linha tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:319
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de seta tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:323
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de retângulo tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:327
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de elipse tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:331
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de texto tem uma sombra projetada"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:335
+#: src/Gui/SettingsDialog/spectacle.kcfg:336
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Se a ferramenta de anotação de número tem uma sombra projetada"
@@ -1493,7 +1897,7 @@ msgid ""
 "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"O link do vídeo compartilhado (<a href=\"%1\">%1</a>)  foi copiado para a "
+"O link do vídeo compartilhado (<a href=\"%1\">%1</a>) foi copiado para a "
 "área de transferência."
 
 #: src/Gui/SharedMessage.qml:18
@@ -1503,7 +1907,7 @@ msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
 msgstr ""
-"O link da imagem compartilhada (<a href=\"%1\">%1</a>)  foi copiada para a "
+"O link da imagem compartilhada (<a href=\"%1\">%1</a>) foi copiada para a "
 "área de transferência."
 
 #: src/Gui/ShareErrorMessage.qml:13
@@ -1664,7 +2068,7 @@ msgstr "Não salva"
 msgid "Undo"
 msgstr "Desfazer"
 
-#: src/Gui/UndoRedoGroup.qml:45
+#: src/Gui/UndoRedoGroup.qml:42
 #, kde-format
 msgid "Redo"
 msgstr "Refazer"
@@ -1870,140 +2274,132 @@ msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
 msgstr "Falha ao selecionar janela: Nenhuma janela encontrada"
 
-#: src/RecordingModeModel.cpp:91
+#: src/RecordingModeModel.cpp:105
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
 msgstr "Região retangular"
 
-#: src/RecordingModeModel.cpp:93
+#: src/RecordingModeModel.cpp:107
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
 msgstr "Janela"
 
-#: src/RecordingModeModel.cpp:95
+#: src/RecordingModeModel.cpp:109
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
 msgstr "Tela inteira"
 
 #: src/ShortcutActions.cpp:38
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
 msgstr "Executar o Spectacle"
 
 #: src/ShortcutActions.cpp:44
-#, fuzzy, kde-format
-#| msgid "Capture Entire Desktop"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
 msgstr "Capturar toda a área de trabalho"
 
 #: src/ShortcutActions.cpp:50
-#, fuzzy, kde-format
-#| msgid "Capture Current Monitor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
 msgstr "Capturar do monitor atual"
 
 #: src/ShortcutActions.cpp:56
-#, fuzzy, kde-format
-#| msgid "Capture Active Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
 msgstr "Capturar a janela ativa"
 
 #: src/ShortcutActions.cpp:62
-#, fuzzy, kde-format
-#| msgid "Capture Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
 msgstr "Capturar região retangular"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture Active Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Capturar a janela ativa"
+msgstr "Capturar a janela selecionada"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture Window Under Cursor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
 msgstr "Capturar janela sob o cursor"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
 msgstr "Gravar tela"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgid "Record Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
 msgstr "Gravar janela"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgid "Record Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
 msgstr "Gravar região retangular"
 
 #: src/ShortcutActions.cpp:94
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without capturing"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar o Spectacle sem fazer captura"
 
-#: src/SpectacleCore.cpp:237
+#: src/SpectacleCore.cpp:243
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Ocorreu um erro ao fazer uma captura de tela."
 
-#: src/SpectacleCore.cpp:251
+#: src/SpectacleCore.cpp:272
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "O spectacle está gravando"
+msgstr "O Spectacle está gravando"
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "O spectacle está gravando"
+msgstr "O Spectacle está gravando"
 
-#: src/SpectacleCore.cpp:257
+#: src/SpectacleCore.cpp:278
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Clique no ícone da bandeja do sistema para finalizar a gravação"
 
-#: src/SpectacleCore.cpp:260
+#: src/SpectacleCore.cpp:281
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Está faltando o suporte a WebP."
 
-#: src/SpectacleCore.cpp:261
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Instale o Qt Image Formats para obter ícones animados na bandeja do sistema "
+"para o Spectacle e, em seguida, informe esse problema de empacotamento à sua "
+"distro."
 
-#: src/SpectacleCore.cpp:307
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2013,19 +2409,19 @@ msgstr ""
 "Tempo de gravação: %1\n"
 "Clique para finalizar a gravação"
 
-#: src/SpectacleCore.cpp:324
+#: src/SpectacleCore.cpp:353
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Ocorreu um erro ao tentar gravar a tela."
 
-#: src/SpectacleCore.cpp:702
+#: src/SpectacleCore.cpp:745
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 não é um modo válido para --gravar"
 
-#: src/SpectacleCore.cpp:934
+#: src/SpectacleCore.cpp:980
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2034,23 +2430,23 @@ msgstr ""
 "Uma imagem foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
 "área de transferência."
 
-#: src/SpectacleCore.cpp:938
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Foi gravada uma imagem como '%1' na sua pasta de Imagens."
 
-#: src/SpectacleCore.cpp:941
+#: src/SpectacleCore.cpp:987
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Uma imagem foi salva como '%1' em '%2'."
 
-#: src/SpectacleCore.cpp:945
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "A imagem foi salva na área de transferência."
 
-#: src/SpectacleCore.cpp:950
+#: src/SpectacleCore.cpp:996
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2059,24 +2455,24 @@ msgstr ""
 "Uma gravação foi salva como '%1' em '%2' e o caminho da imagem foi salvo na "
 "área de transferência."
 
-#: src/SpectacleCore.cpp:952
+#: src/SpectacleCore.cpp:998
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Uma gravação foi salva como '%1' na sua pasta de vídeos."
 
-#: src/SpectacleCore.cpp:954
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Uma gravação foi salva como '%1' em '%2'."
 
-#: src/SpectacleCore.cpp:965
+#: src/SpectacleCore.cpp:1011
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:979
+#: src/SpectacleCore.cpp:1025
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
@@ -2097,26 +2493,25 @@ msgstr "MP4/H.264"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr ""
+msgstr "WebP animados (melhores que GIF)"
 
 #: src/VideoFormatModel.cpp:52
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr ""
+msgstr "GIF (compatível porém ineficiente)"
 
-#, fuzzy
-#~| msgctxt "translatable folder name"
-#~| msgid "Screenshots"
-#~ msgctxt "@title:group"
-#~ msgid "Screenshot Modes"
-#~ msgstr "Capturas de tela"
+#~ msgid "Screenshot"
+#~ msgstr "Capturar imagem"
 
-#, fuzzy
-#~| msgid "Recording"
-#~ msgctxt "@title:group"
-#~ msgid "Recording Modes"
-#~ msgstr "Gravando"
+#~ msgid "Configure..."
+#~ msgstr "Configurar..."
+
+#~ msgid "Capture Mode"
+#~ msgstr "Modo de captura"
+
+#~ msgid "Capture Settings"
+#~ msgstr "Configurações da captura"
 
 #, fuzzy
 #~| msgid "Recording Settings"
@@ -2167,30 +2562,6 @@ msgstr ""
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
 #~ "specified value"
-#~ msgid "Month (localized short name)"
-#~ msgstr "Mês (nome abreviado)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month (localized long name)"
-#~ msgstr "Mês (nome completo)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (2 digit)"
-#~ msgstr "Ano (2 dígitos)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Year (4 digit)"
-#~ msgstr "Ano (4 dígitos)"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
 #~ msgid "Hour"
 #~ msgstr "Hora"
 
@@ -2211,23 +2582,6 @@ msgstr ""
 #~ "specified value"
 #~ msgid "Timezone"
 #~ msgstr "Fuso horário"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Window Title"
-#~ msgstr "Título da janela"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "A placeholder in the user configurable filename will replaced by the "
-#~| "specified value"
-#~| msgid "Sequential numbering, padded out to N digits"
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering, padded by inserting additional '#' characters"
-#~ msgstr "Numeração sequencial, preenchida com N dígitos"
 
 #~ msgctxt ""
 #~ "A placeholder in the user configurable filename will replaced by the "
@@ -2313,13 +2667,6 @@ msgstr ""
 
 #~ msgid "The last used copy mode"
 #~ msgstr "O último modo de cópia usado"
-
-#~ msgid ""
-#~ "Click and drag to draw a selection rectangle,\n"
-#~ "or press Esc to quit"
-#~ msgstr ""
-#~ "Clique e arrate para desenhar um retângulo de seleção,\n"
-#~ "ou pressione Esc para cancelar"
 
 #~ msgctxt "The entire screen area was captured, heading"
 #~ msgid "Full Screen Captured"
