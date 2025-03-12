@@ -225,12 +225,12 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         }
         // Round to pixels that fit within the original rect.
         // We do this to make it easier to keep the selection outline outside of the recording.
-        int x = std::ceil<int>(rect.x());
-        int y = std::ceil<int>(rect.y());
+        int x = std::ceil(rect.x());
+        int y = std::ceil(rect.y());
         // We calculate size using floor(right) - x and floor(bottom) - y so that the rect doesn't
         // shift too much. Ensure size is at least 1x1 to keep the final rect valid.
-        int w = std::max<int>(1, std::floor<int>(rect.right()) - x);
-        int h = std::max<int>(1, std::floor<int>(rect.bottom()) - y);
+        int w = std::max(1.0, std::floor(rect.right()) - x);
+        int h = std::max(1.0, std::floor(rect.bottom()) - y);
         m_frameBytes = frameBytes(QSize{w, h} * scaling);
         stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
         break;
