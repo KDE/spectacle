@@ -174,8 +174,7 @@ ButtonGrid {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar rectangle tool", "Rectangle")
         extraHelp: i18nc("@info:tooltip",
-                         "Shift: Snap to diagonal movements\n" +
-                         "Control: Resize from center")
+            "Shift: Snap to diagonal movements\nControl: Resize from center")
         icon.name: "draw-rectangle"
         checked: root.toolType === AnnotationTool.RectangleTool
         onClicked: root.tool.type = AnnotationTool.RectangleTool
