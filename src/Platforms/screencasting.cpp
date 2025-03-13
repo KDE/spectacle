@@ -69,7 +69,7 @@ class ScreencastingPrivate : public QWaylandClientExtensionTemplate<Screencastin
 {
 public:
     ScreencastingPrivate(Screencasting *q)
-        : QWaylandClientExtensionTemplate<ScreencastingPrivate>(ZKDE_SCREENCAST_UNSTABLE_V1_STREAM_REGION_SINCE_VERSION)
+        : QWaylandClientExtensionTemplate<ScreencastingPrivate>(5)
         , q(q)
     {
         initialize();
@@ -135,6 +135,11 @@ ScreencastingStream *Screencasting::createVirtualMonitorStream(const QString &na
 bool Screencasting::isAvailable() const
 {
     return d->isInitialized();
+}
+
+bool Screencasting::isRegionAutoScaleSupported() const
+{
+    return d->QWaylandClientExtension::version() >= 5;
 }
 
 void Screencasting::destroy()

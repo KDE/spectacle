@@ -232,6 +232,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         int w = std::max(1.0, std::floor(rect.right()) - x);
         int h = std::max(1.0, std::floor(rect.bottom()) - y);
         m_frameBytes = frameBytes(QSize{w, h} * scaling);
+        scaling = m_screencasting->isRegionAutoScaleSupported() ? 0 : scaling;
         stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
         break;
     }

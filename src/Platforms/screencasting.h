@@ -50,6 +50,7 @@ public:
     };
     Q_ENUM(CursorMode)
     bool isAvailable() const;
+    bool isRegionAutoScaleSupported() const;
 
     ScreencastingStream *createOutputStream(QScreen *screen, CursorMode mode);
     ScreencastingStream *createRegionStream(const QRect &region, qreal scaling, CursorMode mode);
