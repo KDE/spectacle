@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-07 00:40+0000\n"
-"PO-Revision-Date: 2025-03-05 16:24+0300\n"
+"PO-Revision-Date: 2025-03-17 17:15+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -40,50 +40,50 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 
 #: src/CaptureModeModel.cpp:152
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
 msgstr "Прямоугольная область"
 
 #: src/CaptureModeModel.cpp:154
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
 msgstr "Все экраны (одинаковый масштаб)"
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #: src/CaptureModeModel.cpp:156
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
 msgstr "Текущий экран"
 
 #: src/CaptureModeModel.cpp:158
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
 msgstr "Активное окно"
 
 #: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
 msgstr "Выбранное окно"
 
 #: src/CaptureModeModel.cpp:161
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
 msgstr "Окно под курсором мыши"
 
 #: src/CaptureModeModel.cpp:164
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
 msgstr "Все экраны"
 
 #: src/CaptureModeModel.cpp:166
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
 msgstr "Весь экран"
@@ -91,7 +91,7 @@ msgstr "Весь экран"
 #: src/CommandLineOptions.h:22
 #, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Сделать снимок всех экранов (по умолчанию)."
+msgstr "Сделать снимок всего рабочего стола (по умолчанию)."
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #: src/CommandLineOptions.h:26
@@ -137,13 +137,13 @@ msgid ""
 msgstr ""
 "Выполнить запись экрана в заданном режиме. Возможные режимы:\n"
 "- r, область;\n"
-"-s, экран;\n"
-"-w, окно."
+"- s, экран;\n"
+"- w, окно."
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Запускать Spectacle без создания снимка экрана"
+msgstr "Запустить Spectacle без создания снимка экрана"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -1919,71 +1919,71 @@ msgid "Full Screen"
 msgstr "Весь экран"
 
 #: src/ShortcutActions.cpp:38
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
 msgstr "Запустить Spectacle"
 
 #: src/ShortcutActions.cpp:44
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr "Сделать снимок всех экранов"
+msgstr "Сделать снимок всего рабочего стола"
 
 # BUGME: term inconsistency: "monitor" vs "screen" --aspotashev
 #: src/ShortcutActions.cpp:50
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
 msgstr "Сделать снимок текущего экрана"
 
 #: src/ShortcutActions.cpp:56
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
 msgstr "Сделать снимок активного окна"
 
 #: src/ShortcutActions.cpp:62
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr "Сделать снимок прямоугольной области экрана"
+msgstr "Сделать снимок прямоугольной области"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Сделать снимок активного окна"
+msgstr "Сделать снимок выбранного окна"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr "Создать снимок окна под курсором мыши"
+msgstr "Сделать снимок окна под курсором мыши"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
 msgstr "Запись экрана"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
 msgstr "Запись окна"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
 msgstr "Запись прямоугольной области"
 
 #: src/ShortcutActions.cpp:94
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr "Запускать Spectacle без создания снимка"
+msgstr "Запустить Spectacle без создания снимка"
 
 #: src/SpectacleCore.cpp:237
 #, kde-format
@@ -2120,13 +2120,13 @@ msgstr "MP4/H.264"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr ""
+msgstr "Анимированный WebP (лучше, чем GIF)"
 
 #: src/VideoFormatModel.cpp:52
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr ""
+msgstr "GIF (совместимый, но неэффективный)"
 
 #, fuzzy
 #~ msgctxt "@title:group"
