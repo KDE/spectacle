@@ -238,6 +238,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     default: break; // This shouldn't happen
     }
     m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
+    m_recorder->setNodeId(0);
 
     Q_ASSERT(stream);
     connect(stream, &ScreencastingStream::created, this, [this, stream] {
