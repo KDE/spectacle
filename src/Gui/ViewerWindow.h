@@ -23,8 +23,7 @@ class ViewerWindow : public SpectacleWindow
 public:
     enum Mode {
         Dialog,
-        Image,
-        Video,
+        Viewer,
     };
 
     using UniquePointer = std::unique_ptr<ViewerWindow, void (*)(ViewerWindow *)>;

@@ -251,7 +251,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
         const auto windows = SpectacleWindow::instances();
         if (windows.empty()) {
-            initViewerWindow(ViewerWindow::Image);
+            initViewerWindow(ViewerWindow::Viewer);
             return;
         }
         for (auto w : windows) {
@@ -342,7 +342,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
         const auto windows = SpectacleWindow::instances();
         if (windows.empty()) {
-            initViewerWindow(ViewerWindow::Image);
+            initViewerWindow(ViewerWindow::Viewer);
             return;
         }
         for (auto w : windows) {
@@ -911,7 +911,7 @@ void SpectacleCore::cancelScreenshot()
     if (currentTime > 0) {
         SpectacleWindow::setTitleForAll(SpectacleWindow::Previous);
     } else if (!ViewerWindow::instance()) {
-        initViewerWindow(ViewerWindow::Image);
+        initViewerWindow(ViewerWindow::Viewer);
         ViewerWindow::instance()->setVisible(true);
     } else if (ViewerWindow::instance()) {
         Q_EMIT allDone();
@@ -932,7 +932,7 @@ void SpectacleCore::showViewerIfGuiMode(bool minimized)
     if (m_startMode != StartMode::Gui || !m_returnToViewer) {
         return;
     }
-    initViewerWindow(ViewerWindow::Image);
+    initViewerWindow(ViewerWindow::Viewer);
     if (!m_videoMode && m_cliOptions[CommandLineOptions::EditExisting]) {
         ViewerWindow::instance()->setAnnotating(true);
     }

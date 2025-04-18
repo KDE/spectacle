@@ -96,7 +96,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
             setMinimumHeight(implicitHeight);
             setMaximumHeight(implicitHeight);
         });
-    } else if (mode == Image) {
+    } else if (mode == Viewer) {
         setBackgroundColorRole(QPalette::Base);
         QVariantMap initialProperties = {
             // Set the parent in initialProperties to avoid having
@@ -111,8 +111,6 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
         updateMinimumSize();
         connect(rootItem, SIGNAL(minimumWidthChanged()), this, SLOT(updateMinimumSize()));
         connect(rootItem, SIGNAL(minimumHeightChanged()), this, SLOT(updateMinimumSize()));
-    } else if (mode == Video) {
-        
     }
 }
 
