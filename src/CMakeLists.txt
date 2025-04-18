@@ -21,31 +21,10 @@ qt_add_qml_module(spectacle URI ${SPECTACLE_QML_URI} DEPENDENCIES QtCore QtQuick
 
 target_sources(spectacle PRIVATE
     ${SPECTACLE_SRCS}
-    Main.cpp
     CaptureModeModel.cpp
     CommandLineOptions.cpp
-    RecordingModeModel.cpp
     ExportManager.cpp
     Geometry.cpp
-    PlasmaVersion.cpp
-    ScreenShotEffect.cpp
-    SpectacleCore.cpp
-    SpectacleDBusAdapter.cpp
-    ShortcutActions.cpp
-    VideoFormatModel.cpp
-    Gui/CaptureWindow.cpp
-    Gui/ExportMenu.cpp
-    Gui/HelpMenu.cpp
-    Gui/OptionsMenu.cpp
-    Gui/RecordingModeMenu.cpp
-    Gui/ScreenshotModeMenu.cpp
-    Gui/SmartSpinBox.cpp
-    Gui/Selection.cpp
-    Gui/SelectionEditor.cpp
-    Gui/SpectacleWindow.cpp
-    Gui/SpectacleMenu.cpp
-    Gui/TextContextMenu.cpp
-    Gui/ViewerWindow.cpp
     Gui/Annotations/AnnotationDocument.cpp
     Gui/Annotations/AnnotationTool.cpp
     Gui/Annotations/AnnotationViewport.cpp
@@ -53,19 +32,40 @@ target_sources(spectacle PRIVATE
     Gui/Annotations/History.cpp
     Gui/Annotations/QmlPainterPath.cpp
     Gui/Annotations/Traits.cpp
+    Gui/CaptureWindow.cpp
+    Gui/ExportMenu.cpp
+    Gui/HelpMenu.cpp
+    Gui/OptionsMenu.cpp
+    Gui/RecordingModeMenu.cpp
+    Gui/ScreenshotModeMenu.cpp
+    Gui/Selection.cpp
+    Gui/SelectionEditor.cpp
+    Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ImageSaveOptionsPage.cpp
+    Gui/SettingsDialog/SettingsDialog.cpp
+    Gui/SettingsDialog/ShortcutsOptionsPage.cpp
     Gui/SettingsDialog/VideoFormatComboBox.cpp
     Gui/SettingsDialog/VideoSaveOptionsPage.cpp
-    Gui/SettingsDialog/SettingsDialog.cpp
-    Gui/SettingsDialog/GeneralOptionsPage.cpp
-    Gui/SettingsDialog/ShortcutsOptionsPage.cpp
-    Platforms/PlatformLoader.cpp
+    Gui/SmartSpinBox.cpp
+    Gui/SpectacleMenu.cpp
+    Gui/SpectacleWindow.cpp
+    Gui/TextContextMenu.cpp
+    Gui/ViewerWindow.cpp
+    Main.cpp
+    PlasmaVersion.cpp
     Platforms/ImagePlatform.cpp
-    Platforms/PlatformNull.cpp
     Platforms/ImagePlatformKWin.cpp
+    Platforms/PlatformLoader.cpp
+    Platforms/PlatformNull.cpp
+    Platforms/screencasting.cpp
     Platforms/VideoPlatform.cpp
     Platforms/VideoPlatformWayland.cpp
-    Platforms/screencasting.cpp
+    RecordingModeModel.cpp
+    ScreenShotEffect.cpp
+    ShortcutActions.cpp
+    SpectacleCore.cpp
+    SpectacleDBusAdapter.cpp
+    VideoFormatModel.cpp
 )
 
 if(XCB_FOUND)
@@ -162,6 +162,7 @@ qt_target_qml_sources(spectacle
     Gui/ButtonGrid.qml
     Gui/CaptureModeButtonsColumn.qml
     Gui/CaptureOptions.qml
+    Gui/CaptureOverlay.qml
     Gui/CaptureSettingsColumn.qml
     Gui/CopiedMessage.qml
     Gui/CopyImageAction.qml
@@ -176,23 +177,21 @@ qt_target_qml_sources(spectacle
     Gui/FloatingToolBar.qml
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
-    Gui/CaptureOverlay.qml
-    Gui/ViewerPage.qml
     Gui/InlineMessage.qml
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
     Gui/NewScreenshotToolButton.qml
     Gui/OptionsMenuButton.qml
     Gui/Outline.qml
-    Gui/QRCodeScannedMessage.qml
     Gui/QmlUtils.qml
+    Gui/QRCodeScannedMessage.qml
     Gui/RecordAction.qml
-    Gui/RecordOptions.qml
     Gui/RecordingFailedMessage.qml
     Gui/RecordingModeButtonsColumn.qml
     Gui/RecordingModeMenuButton.qml
     Gui/RecordingSettingsColumn.qml
     Gui/RecordingView.qml
+    Gui/RecordOptions.qml
     Gui/SaveAction.qml
     Gui/SaveAsAction.qml
     Gui/SavedAndCopiedMessage.qml
@@ -201,13 +200,14 @@ qt_target_qml_sources(spectacle
     Gui/ScreenshotFailedMessage.qml
     Gui/ScreenshotModeMenuButton.qml
     Gui/ScreenshotView.qml
-    Gui/ShareErrorMessage.qml
     Gui/SharedMessage.qml
+    Gui/ShareErrorMessage.qml
     Gui/ShortcutsTextBox.qml
     Gui/SizeLabel.qml
     Gui/TextContextMenuConnection.qml
     Gui/TtToolButton.qml
     Gui/UndoRedoGroup.qml
+    Gui/ViewerPage.qml
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
