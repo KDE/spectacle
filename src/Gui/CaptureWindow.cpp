@@ -113,7 +113,7 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
         // the parent and window be null in Component.onCompleted
         {u"parent"_s, QVariant::fromValue(contentItem())}
     };
-    setSource(QUrl("%1/Gui/ImageCaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
+    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
               initialProperties);
 }
 

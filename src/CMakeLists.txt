@@ -176,7 +176,7 @@ qt_target_qml_sources(spectacle
     Gui/FloatingToolBar.qml
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
-    Gui/ImageCaptureOverlay.qml
+    Gui/CaptureOverlay.qml
     Gui/ImageView.qml
     Gui/InlineMessage.qml
     Gui/LocationCopiedMessage.qml
