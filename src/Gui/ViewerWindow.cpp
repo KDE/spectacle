@@ -103,7 +103,7 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
             // the parent and window be null in Component.onCompleted
             {u"parent"_s, QVariant::fromValue(contentItem())}
         };
-        setSource(QUrl("%1/Gui/ImageView.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
+        setSource(QUrl("%1/Gui/ViewerPage.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
         if (!rootItem) {
             return;

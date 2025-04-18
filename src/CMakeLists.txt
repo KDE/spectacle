@@ -177,7 +177,7 @@ qt_target_qml_sources(spectacle
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
     Gui/CaptureOverlay.qml
-    Gui/ImageView.qml
+    Gui/ViewerPage.qml
     Gui/InlineMessage.qml
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
