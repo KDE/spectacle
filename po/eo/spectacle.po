@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -671,6 +671,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Agordoj de Ekrankopio"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr "Alklaki kaj treni por fari elekton."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -866,22 +872,6 @@ msgstr "Helpo"
 msgctxt "@action"
 msgid "Help"
 msgstr "Helpo"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr "Alklaki kaj treni por fari elekton."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Zomi:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Bildo Zoom"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -1974,6 +1964,16 @@ msgstr "Malfari"
 #, kde-format
 msgid "Redo"
 msgstr "Refari"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Zomi:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Bildo Zoom"
 
 #: src/Main.cpp:44
 #, kde-format

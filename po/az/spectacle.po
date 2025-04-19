@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2024-08-13 16:04+0400\n"
 "Last-Translator: Khayyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -716,6 +716,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Ekran şəkli ayarları"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Düzbucaqlı sahəni klikləyib dartmaqla çəkmək\n"
+"və ya Esc vuraraq şıxmaq"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -918,27 +929,6 @@ msgstr "Kömək"
 msgctxt "@action"
 msgid "Help"
 msgstr "Kömək"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click and drag to draw a selection rectangle,\n"
-#| "or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Düzbucaqlı sahəni klikləyib dartmaqla çəkmək\n"
-"və ya Esc vuraraq şıxmaq"
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Miqyas:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Şəkilin miqyası"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2064,6 +2054,16 @@ msgstr "Geri qaytarmaq"
 #, kde-format
 msgid "Redo"
 msgstr "Təkrar etmək"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Miqyas:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Şəkilin miqyası"
 
 #: src/Main.cpp:44
 #, kde-format

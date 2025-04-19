@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-03-14 09:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -690,6 +690,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Configureu la captura de pantalla"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr "Cliqueu i arrossegueu per a fer una selecció."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -891,22 +897,6 @@ msgstr "Ajuda"
 msgctxt "@action"
 msgid "Help"
 msgstr "Ajuda"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr "Cliqueu i arrossegueu per a fer una selecció."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Zoom:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Zoom de la imatge"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2010,6 +2000,16 @@ msgstr "Desfés"
 #, kde-format
 msgid "Redo"
 msgstr "Refés"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Zoom:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Zoom de la imatge"
 
 #: src/Main.cpp:44
 #, kde-format

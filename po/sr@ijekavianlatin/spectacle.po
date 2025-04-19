@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -704,6 +704,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Uhvati novi snimak"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click anywhere on the screen (including here) to start drawing a "
+#| "selection rectangle, or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Kliknite bilo gde na ekranu (uključujući ovde) za crtanje pravougaonika, ili "
+"pritisnite Esc za napuštanje."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -921,27 +932,6 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Help"
-msgstr ""
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click anywhere on the screen (including here) to start drawing a "
-#| "selection rectangle, or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Kliknite bilo gde na ekranu (uključujući ovde) za crtanje pravougaonika, ili "
-"pritisnite Esc za napuštanje."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr ""
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
 msgstr ""
 
 #: src/Gui/LocationCopiedMessage.qml:13
@@ -2112,6 +2102,16 @@ msgstr ""
 #: src/Gui/UndoRedoGroup.qml:42
 #, kde-format
 msgid "Redo"
+msgstr ""
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr ""
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
 msgstr ""
 
 #: src/Main.cpp:44

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2023-07-29 12:23+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -668,6 +668,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Skjermbilete"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -866,22 +872,6 @@ msgstr "Hjelp"
 msgctxt "@action"
 msgid "Help"
 msgstr "Hjelp"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Forstørring:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Biletforstørring"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, fuzzy, kde-format
@@ -1976,6 +1966,16 @@ msgstr "Angra"
 #, kde-format
 msgid "Redo"
 msgstr "Gjer om"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Forstørring:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Biletforstørring"
 
 #: src/Main.cpp:44
 #, kde-format

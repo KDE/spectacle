@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2024-08-04 16:55+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -682,6 +682,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Capturar li ecran:"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -880,22 +886,6 @@ msgstr "Auxilie"
 msgctxt "@action"
 msgid "Help"
 msgstr "Auxilie"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Scale:"
-
-#: src/Gui/ImageView.qml:213
-#, fuzzy, kde-format
-msgid "Image Zoom"
-msgstr "Scale:"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, fuzzy, kde-format
@@ -1986,6 +1976,16 @@ msgstr "Defar"
 #, kde-format
 msgid "Redo"
 msgstr "Refar"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Scale:"
+
+#: src/Gui/ViewerPage.qml:213
+#, fuzzy, kde-format
+msgid "Image Zoom"
+msgstr "Scale:"
 
 #: src/Main.cpp:44
 #, kde-format

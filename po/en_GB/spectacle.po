@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2024-05-24 16:57+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -704,6 +704,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Screenshot Settings"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Click and drag to draw a selection rectangle,\n"
+"or press Esc to quit"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -906,27 +917,6 @@ msgstr "Help"
 msgctxt "@action"
 msgid "Help"
 msgstr "Help"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click and drag to draw a selection rectangle,\n"
-#| "or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Click and drag to draw a selection rectangle,\n"
-"or press Esc to quit"
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Zoom:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Image Zoom"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2050,6 +2040,16 @@ msgstr "Undo"
 #, kde-format
 msgid "Redo"
 msgstr "Redo"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Zoom:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Image Zoom"
 
 #: src/Main.cpp:44
 #, kde-format

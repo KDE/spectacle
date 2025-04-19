@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2024-06-09 14:49+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -715,6 +715,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Configurări captură de ecran"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Apăsați și trageți pentru a desena un dreptunghi de selecție,\n"
+"sau apăsați Esc pentru a ieși"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -917,27 +928,6 @@ msgstr "Ajutor"
 msgctxt "@action"
 msgid "Help"
 msgstr "Ajutor"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click and drag to draw a selection rectangle,\n"
-#| "or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Apăsați și trageți pentru a desena un dreptunghi de selecție,\n"
-"sau apăsați Esc pentru a ieși"
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Apropiere:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Apropiere imagine"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2068,6 +2058,16 @@ msgstr "Desfă"
 #, kde-format
 msgid "Redo"
 msgstr "Refă"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Apropiere:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Apropiere imagine"
 
 #: src/Main.cpp:44
 #, kde-format

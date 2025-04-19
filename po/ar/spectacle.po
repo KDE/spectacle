@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-03-20 09:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -680,6 +680,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "إعدادات اللقطات"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr "انقر واسحب لإجراء تحديد."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -876,22 +882,6 @@ msgstr "مساعدة"
 msgctxt "@action"
 msgid "Help"
 msgstr "مساعدة"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr "انقر واسحب لإجراء تحديد."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "التّكبير:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "تكبير الصورة"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -1978,6 +1968,16 @@ msgstr "تراجع"
 #, kde-format
 msgid "Redo"
 msgstr "كرّر"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "التّكبير:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "تكبير الصورة"
 
 #: src/Main.cpp:44
 #, kde-format

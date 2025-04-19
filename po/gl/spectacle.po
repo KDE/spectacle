@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-03-02 09:43+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -729,6 +729,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Configuración de capturas de pantalla"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Prema e arrastre para debuxar un rectángulo de selección,\n"
+"ou prema Esc para saír"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -932,27 +943,6 @@ msgstr "Axuda"
 msgctxt "@action"
 msgid "Help"
 msgstr "Axuda"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click and drag to draw a selection rectangle,\n"
-#| "or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Prema e arrastre para debuxar un rectángulo de selección,\n"
-"ou prema Esc para saír"
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Ampliación:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Ampliación da imaxe"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2079,6 +2069,16 @@ msgstr "Desfacer"
 #, kde-format
 msgid "Redo"
 msgstr "Refacer"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Ampliación:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Ampliación da imaxe"
 
 #: src/Main.cpp:44
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-03-16 14:49+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -675,6 +675,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "திரைப்பிடிப்பு அமைப்புகள்"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr "தேர்வு செய்ய க்ளிக் செய்தபடியே இழுக்கவும்."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -873,22 +879,6 @@ msgstr "உதவி"
 msgctxt "@action"
 msgid "Help"
 msgstr "உதவி"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr "தேர்வு செய்ய க்ளிக் செய்தபடியே இழுக்கவும்."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "உருப்பெருக்கம்:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "படத்தின் உருப்பெருக்கம்"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -1985,6 +1975,16 @@ msgstr "செயல்நீக்கு"
 #, kde-format
 msgid "Redo"
 msgstr "மீளச்செய்"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "உருப்பெருக்கம்:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "படத்தின் உருப்பெருக்கம்"
 
 #: src/Main.cpp:44
 #, kde-format

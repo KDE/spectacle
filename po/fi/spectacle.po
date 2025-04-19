@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2024-12-11 22:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -719,6 +719,17 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Kuvakaappausasetukset"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click and drag to draw a selection rectangle,\n"
+#| "or press Esc to quit"
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr ""
+"Piirrä valintanelikulmio napsauttamalla ja vetämällä.\n"
+"Lopetus Esc-näppäimellä"
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -919,27 +930,6 @@ msgstr "Ohje"
 msgctxt "@action"
 msgid "Help"
 msgstr "Ohje"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click and drag to draw a selection rectangle,\n"
-#| "or press Esc to quit"
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr ""
-"Piirrä valintanelikulmio napsauttamalla ja vetämällä.\n"
-"Lopetus Esc-näppäimellä"
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "Lähennys:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "Kuvan lähennys"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -2063,6 +2053,16 @@ msgstr "Kumoa"
 #, kde-format
 msgid "Redo"
 msgstr "Tee uudelleen"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "Lähennys:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "Kuvan lähennys"
 
 # pmap: =:gen=Spectaclen:
 # pmap: =:elat=Spectaclesta:

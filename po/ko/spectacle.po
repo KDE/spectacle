@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:40+0000\n"
 "PO-Revision-Date: 2025-04-07 01:08+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -659,6 +659,12 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "스크린샷 설정"
 
+#: src/Gui/CaptureOverlay.qml:130
+#, kde-format
+msgctxt "@info basic crop tool explanation"
+msgid "Click and drag to make a selection."
+msgstr "클릭한 후 드래그로 선택 영역을 지정하십시오."
+
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
@@ -850,22 +856,6 @@ msgstr "도움말"
 msgctxt "@action"
 msgid "Help"
 msgstr "도움말"
-
-#: src/Gui/ImageCaptureOverlay.qml:130
-#, kde-format
-msgctxt "@info basic crop tool explanation"
-msgid "Click and drag to make a selection."
-msgstr "클릭한 후 드래그로 선택 영역을 지정하십시오."
-
-#: src/Gui/ImageView.qml:199
-#, kde-format
-msgid "Zoom:"
-msgstr "확대/축소:"
-
-#: src/Gui/ImageView.qml:213
-#, kde-format
-msgid "Image Zoom"
-msgstr "그림 확대/축소"
 
 #: src/Gui/LocationCopiedMessage.qml:13
 #, kde-format
@@ -1944,6 +1934,16 @@ msgstr "실행 취소"
 #, kde-format
 msgid "Redo"
 msgstr "다시 실행"
+
+#: src/Gui/ViewerPage.qml:199
+#, kde-format
+msgid "Zoom:"
+msgstr "확대/축소:"
+
+#: src/Gui/ViewerPage.qml:213
+#, kde-format
+msgid "Image Zoom"
+msgstr "그림 확대/축소"
 
 #: src/Main.cpp:44
 #, kde-format
