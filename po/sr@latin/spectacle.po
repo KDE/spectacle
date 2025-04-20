@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2017-12-03 22:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2250,49 +2250,49 @@ msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2450,7 +2450,22 @@ msgid ""
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
 
-#: src/SpectacleCore.cpp:328
+# >> @item
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgid "Taken with Spectacle"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "snimljeno Spectacleom"
+
+#: src/SpectacleCore.cpp:319
+#, fuzzy, kde-format
+#| msgid "Please wait..."
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr "Sačekajte..."
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2458,52 +2473,52 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Uhvati novi snimak"
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2511,19 +2526,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvori"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr ""
@@ -2615,9 +2630,6 @@ msgstr ""
 
 #~ msgid "More Online Services"
 #~ msgstr "Više servisa na vezi"
-
-#~ msgid "Please wait..."
-#~ msgstr "Sačekajte..."
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "KIPI priključak iz biblioteke %1 ne može da se učita."

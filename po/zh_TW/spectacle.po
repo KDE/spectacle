@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2025-04-07 13:27+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -2078,49 +2078,49 @@ msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "錄製失敗：暫存檔 URL 不是本機檔案 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "錄製失敗：輸出檔案 URL 不是本機檔案 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "錄製失敗：無法建立資料夾 (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "螢幕錄製已取消"
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "視窗錄製已取消"
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "選取螢幕失敗：%1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "選取視窗失敗：%1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "選取螢幕失敗：沒有任何螢幕包含目前滑鼠游標位置"
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2250,7 +2250,22 @@ msgstr ""
 "請安裝「Qt 影像格式 (Qt Image Formats)」來讓 Spectacle 的系統匣圖示有動態效"
 "果，並請與您的發行版或軟體包打包者回報此問題。"
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle 錄製中"
+
+#: src/SpectacleCore.cpp:319
+#, fuzzy, kde-format
+#| msgid "Please wait..."
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr "請稍候..."
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2260,66 +2275,66 @@ msgstr ""
 "錄製時間：%1\n"
 "點擊以完成錄製"
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "嘗試進行螢幕錄製時發生錯誤。"
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 的有效模式"
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "螢幕截圖已儲存至您的剪貼簿。"
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "螢幕錄製已儲存為您的影片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開啟"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr "註記"
@@ -2534,9 +2549,6 @@ msgstr "GIF（相容性高但較浪費空間）"
 
 #~ msgid "More Online Services"
 #~ msgstr "更多線上服務"
-
-#~ msgid "Please wait..."
-#~ msgstr "請稍候..."
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "函式庫 %1 的 KIPI 外掛程式載入失敗"

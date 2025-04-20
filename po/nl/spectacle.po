@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2025-03-14 12:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2145,43 +2145,43 @@ msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Opnemen is mislukt: URL van tijdelijk bestand is geen lokaal bestand (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Opnemen is mislukt: URL van uitvoerbestand is geen lokaal bestand (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Opnemen is mislukt: map (%1) aanmaken lukt niet"
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Opnemen van scherm is geannuleerd"
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Opnemen van venster is geannuleerd"
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Scherm selecteren is mislukt: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Venster selecteren is mislukt: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -2189,7 +2189,7 @@ msgstr ""
 "Scherm selecteren is mislukt: geen scherm bevatte de positie van de "
 "muiscursor"
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2320,7 +2320,22 @@ msgstr ""
 "Spectacle te krijgen en rapporteer daarna dit pakketprobleem aan uw "
 "distributie."
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle maakt opname"
+
+#: src/SpectacleCore.cpp:319
+#, fuzzy, kde-format
+#| msgid "Please wait..."
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr "Even geduld..."
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2330,19 +2345,19 @@ msgstr ""
 "Opnametijd: %1\n"
 "Klik om opnemen te beëindigen"
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Er deed zich een fout bij een poging het scherm op te nemen."
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 is geen geldige modus voor --record"
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2351,24 +2366,24 @@ msgstr ""
 "De schermafdruk is opgeslagen als '%1'naar '%2' en het bestandspad van de "
 "schermafdruk is in het klembord opgeslagen."
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Een schermafdruk is opgenomen en opgeslagen als '%1' in uw map Afbeeldingen."
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Een schermafdruk is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Een schermafdruk is opgeslagen naar uw klembord."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2377,24 +2392,24 @@ msgstr ""
 "De opname is opgeslagen als '%1' naar '%2' en het bestandspad van de opname "
 "is in het klembord opgeslagen."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Een opname is opgeslagen als '%1' in uw map Video's."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Een opname is opgeslagen als '%1' in '%2'."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Openen"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr "Annotatie maken"
@@ -2608,9 +2623,6 @@ msgstr "GIF (compatibel, maar inefficiënt)"
 
 #~ msgid "More Online Services"
 #~ msgstr "Meer online-services"
-
-#~ msgid "Please wait..."
-#~ msgstr "Even geduld..."
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "Laden van KIPI-plug-in uit bibliotheek %1 is mislukt"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2024-12-11 22:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2214,7 +2214,7 @@ msgstr ""
 "Nauhoitus epäonnistui: Väliaikaisen tiedoston URL ei ole paikallinen "
 "tiedosto (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -2222,37 +2222,37 @@ msgstr ""
 "Nauhoitus epäonnistui: Kirjoitettavan tiedoston URL ei ole paikallinen "
 "tiedosto (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Nauhoitus epäonnistui: kansiota (%1) ei voi luoda"
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Näytön nauhoitus on peruutettu"
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Ikkunan nauhoitus on peruutettu"
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Näyttöä ei voitu valita: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Ikkunaa ei voitu valita: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -2260,7 +2260,7 @@ msgstr ""
 "Näytön valinta epäonnistui: Mikään näyttö ei sisältänyt hiiriosoittimen "
 "sijaintia"
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2392,7 +2392,22 @@ msgstr ""
 "Asenna Qt:n kuvatiedostomuodot saadaksesi Spectaclen animoidun "
 "ilmoitusaluekuvakkeen ja ilmoita tämä sitten jakelullesi paketointiongelmana."
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle nauhoittaa"
+
+#: src/SpectacleCore.cpp:319
+#, fuzzy, kde-format
+#| msgid "Please wait..."
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr "Odota hetki…"
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2402,19 +2417,19 @@ msgstr ""
 "Nauhoituksen kesto: %1\n"
 "Lopeta nauhoitus napsauttamalla"
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Yritettäessä nauhoittaa näyttöä tapahtui virhe."
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ei ole kelvollinen moodi --record"
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2423,23 +2438,23 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2448,24 +2463,24 @@ msgstr ""
 "Nauhoitus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston sijainti "
 "kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Nauhoitus tallennettiin Videot-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Nauhoitus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"
@@ -2684,9 +2699,6 @@ msgstr "GIF (yhteensopiva mutta tehoton)"
 
 #~ msgid "More Online Services"
 #~ msgstr "Lisää verkkopalveluita"
-
-#~ msgid "Please wait..."
-#~ msgstr "Odota hetki…"
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "Kirjaston %1 KIPI-liitännäisen lataus epäonnistui"

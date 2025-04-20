@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2025-03-28 21:38+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2137,7 +2137,7 @@ msgstr ""
 "Grabatzea huts egin du: Aldi baterako fitxategiaren URL ez da fitxategi "
 "lokal bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -2145,37 +2145,37 @@ msgstr ""
 "Grabatzea huts egin du: Irteerako fitxategiaren URL ez da fitxategi lokal "
 "bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Grabatzea huts egin du: Ez da karpeta sortzeko gai (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Pantaila grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Leihoa grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -2183,7 +2183,7 @@ msgstr ""
 "Leihoa hautatzea huts egin du: Ez dago sagu kurtsorearen kokalekua duen "
 "pantailarik"
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2314,7 +2314,22 @@ msgstr ""
 "erretiluko ikono animatuak lortzeko, eta ondoren, eman paketatze arazo "
 "horren berri zure banatzaileari."
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle grabatzen ari da"
+
+#: src/SpectacleCore.cpp:319
+#, fuzzy, kde-format
+#| msgid "Please wait..."
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr "Itxaron mesedez..."
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2324,19 +2339,19 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik grabazioa bukatzeko"
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Errore bat gertatu da pantaila grabatzen saiatzean."
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2345,23 +2360,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2370,24 +2385,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
@@ -2598,9 +2613,6 @@ msgstr "GIF (bateragarria, baina ez eraginkorra)"
 
 #~ msgid "More Online Services"
 #~ msgstr "Lerroko zerbitzu gehiago"
-
-#~ msgid "Please wait..."
-#~ msgstr "Itxaron mesedez..."
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "%1 liburutegiko KIPI plugina zamatzea huts egin du"

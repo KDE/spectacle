@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:40+0000\n"
+"POT-Creation-Date: 2025-04-20 00:40+0000\n"
 "PO-Revision-Date: 2025-03-14 16:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2117,49 +2117,49 @@ msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Kaydedilemedi: Geçici dosya URL’si yerel bir dosya değil (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:288
+#: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Kaydedilemedi: Çıktı dosyası URL’si yerel bir dosya değil (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:335
+#: src/Platforms/VideoPlatformWayland.cpp:338
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Kaydedilemedi: Klasör oluşturulamıyor (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:363
+#: src/Platforms/VideoPlatformWayland.cpp:366
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Ekran kaydı iptal edildi"
 
-#: src/Platforms/VideoPlatformWayland.cpp:365
+#: src/Platforms/VideoPlatformWayland.cpp:368
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Pencere kaydı iptal edildi"
 
-#: src/Platforms/VideoPlatformWayland.cpp:371
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Ekran seçilemedi: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:373
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Pencere seçilemedi: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:401
+#: src/Platforms/VideoPlatformWayland.cpp:404
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "Ekran seçilemedi: Hiçbir ekran, fare imleci konumunu içermiyordu"
 
-#: src/Platforms/VideoPlatformWayland.cpp:408
+#: src/Platforms/VideoPlatformWayland.cpp:411
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2290,7 +2290,21 @@ msgstr ""
 "Image Formats’ı kurun ve ardından bu paketleme sorununu dağıtımınıza "
 "bildirin."
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:318
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle Kaydediyor"
+
+#: src/SpectacleCore.cpp:319
+#, kde-format
+msgctxt "recording notification message"
+msgid "Please wait"
+msgstr ""
+
+#: src/SpectacleCore.cpp:332
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2300,19 +2314,19 @@ msgstr ""
 "Kaydedilen zaman: %1\n"
 "Kaydı bitirmek için tıkla"
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Ekranı kaydetmeye çalışırken bir hata oluştu."
 
-#: src/SpectacleCore.cpp:745
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1, --record için geçerli bir kip değil"
 
-#: src/SpectacleCore.cpp:980
+#: src/SpectacleCore.cpp:984
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2321,23 +2335,23 @@ msgstr ""
 "Bir ekran görüntüsü “%2” konumuna “%1” olarak kaydedildi ve ekran "
 "görüntüsünün dosya yolu panoya kaydedildi."
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:988
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Bir ekran görüntüsü Resimler klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:987
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Bir ekran görüntüsü “%2” klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Bir ekran görüntüsü panoya kopyalandı."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1000
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2346,24 +2360,24 @@ msgstr ""
 "Bir kayıt “%2” klasörüne “%1” olarak kaydedildi ve kaydın dosya yolu panoya "
 "kaydedildi."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Bir kayıt Videolar klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1004
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Bir kayıt “%2” klasörüne “%1” olarak kaydedildi."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1015
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aç"
 
-#: src/SpectacleCore.cpp:1025
+#: src/SpectacleCore.cpp:1029
 #, kde-format
 msgid "Annotate"
 msgstr "Bilgi Notu"
