@@ -6,7 +6,7 @@
 # Translators listed below for year 2013 and earlier worked on translation of
 # KSnapshot.
 #
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Alexander Yavorsky <kekcuha@gmail.com>
 # Denis Pershin <dyp@perchine.com>, 1998, 1999.
 # Andrey Cherepanov <sibskull@mail.ru>, 2001-2005.
 # Nickolai Shaforostoff <shafff@ukr.net>, 2004.
@@ -32,7 +32,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -314,13 +314,13 @@ msgstr "Ошибка печати: не удалось инициализиро�
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
-msgstr ""
+msgstr "День (1–31)"
 
 #: src/ExportManager.cpp:891
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
-msgstr ""
+msgstr "День (01–31)"
 
 #: src/ExportManager.cpp:892
 #, kde-format
@@ -335,16 +335,16 @@ msgid "Day (long name)"
 msgstr ""
 
 #: src/ExportManager.cpp:894
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr ""
+msgstr "Месяц"
 
 #: src/ExportManager.cpp:895
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr ""
+msgstr "Месяц"
 
 #: src/ExportManager.cpp:896
 #, fuzzy, kde-format
@@ -359,88 +359,88 @@ msgid "Month (long name)"
 msgstr "Месяц (региональная длинная форма)"
 
 #: src/ExportManager.cpp:898
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Год (2 цифры)"
 
 #: src/ExportManager.cpp:899
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Год (4 цифры)"
 
 #: src/ExportManager.cpp:900
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
-msgstr ""
+msgstr "%1 час"
 
 #: src/ExportManager.cpp:901
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr ""
+msgstr "%1 час"
 
 #: src/ExportManager.cpp:902
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr ""
+msgstr "%1 час"
 
 #: src/ExportManager.cpp:903
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr ""
+msgstr "%1 час"
 
 #: src/ExportManager.cpp:904
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr ""
+msgstr " минута"
 
 #: src/ExportManager.cpp:905
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr ""
+msgstr " минута"
 
 #: src/ExportManager.cpp:906
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr ""
+msgstr " секунда"
 
 #: src/ExportManager.cpp:907
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr ""
+msgstr " секунда"
 
 #: src/ExportManager.cpp:908
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
-msgstr ""
+msgstr "%1 миллисекунда"
 
 #: src/ExportManager.cpp:910
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
-msgstr ""
+msgstr "%1 миллисекунда"
 
 #: src/ExportManager.cpp:911
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
-msgstr ""
+msgstr "AM/PM"
 
 #: src/ExportManager.cpp:913
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
-msgstr ""
+msgstr "am/pm"
 
 #: src/ExportManager.cpp:915
 #, kde-format
@@ -455,16 +455,16 @@ msgid "Timezone (short name)"
 msgstr "Месяц (региональная короткая форма)"
 
 #: src/ExportManager.cpp:918
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
-msgstr ""
+msgstr "Смещение часового пояса:"
 
 #: src/ExportManager.cpp:919
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr ""
+msgstr "Смещение часового пояса:"
 
 #: src/ExportManager.cpp:920
 #, kde-format
@@ -479,7 +479,7 @@ msgid "Seconds since the Unix epoch"
 msgstr ""
 
 #: src/ExportManager.cpp:922
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Заголовок окна"
@@ -491,10 +491,10 @@ msgid "Sequential numbering, padded by inserting additional '#' characters"
 msgstr "Последовательная нумерация, дополненная символами «#»"
 
 #: src/Gui/AcceptAction.qml:9
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr ""
+msgstr "Принять"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
@@ -610,7 +610,7 @@ msgid "Select"
 msgstr "Выбрать"
 
 #: src/Gui/AnnotationsToolBarContents.qml:141
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "Произвольная линия"
@@ -622,7 +622,7 @@ msgid "Shift: Snap to straight lines"
 msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:149
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
 msgstr "Выделение"
@@ -646,7 +646,7 @@ msgid "Arrow"
 msgstr "Стрелка"
 
 #: src/Gui/AnnotationsToolBarContents.qml:175
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Прямоугольник"
@@ -660,13 +660,13 @@ msgid ""
 msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:184
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "Эллипс"
 
 #: src/Gui/AnnotationsToolBarContents.qml:192
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "Пикселизация"
@@ -934,31 +934,31 @@ msgid "New Screenshot"
 msgstr "Сделать новый снимок"
 
 #: src/Gui/OptionsMenu.cpp:38
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
 msgstr "Параметры снимка экрана"
 
 #: src/Gui/OptionsMenu.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check for screenshots"
 msgid "Include mouse pointer"
 msgstr "Включая курсор мыши"
 
 #: src/Gui/OptionsMenu.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "Добавить указатель мыши на снимок экрана"
 
 #: src/Gui/OptionsMenu.cpp:49
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
 msgstr "Включая заголовок и границы окна"
 
 #: src/Gui/OptionsMenu.cpp:50
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -968,25 +968,25 @@ msgstr ""
 "«распахнуть», «закрыть» и другие) и границы окна"
 
 #: src/Gui/OptionsMenu.cpp:58
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Include window shadow"
 msgstr "Включая тень окна"
 
 #: src/Gui/OptionsMenu.cpp:59
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Включить в снимок экрана тень окна"
 
 #: src/Gui/OptionsMenu.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
 msgstr "Захватить только текущее всплывающее окно"
 
 #: src/Gui/OptionsMenu.cpp:71
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -997,43 +997,43 @@ msgstr ""
 "Если выключено, то в снимок будет также включено родительское окно."
 
 #: src/Gui/OptionsMenu.cpp:81
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Выйти после сохранения или копирования"
 
 #: src/Gui/OptionsMenu.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
 
 #: src/Gui/OptionsMenu.cpp:94
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "По щелчку"
 
 #: src/Gui/OptionsMenu.cpp:109
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Задержка:"
 
 #: src/Gui/OptionsMenu.cpp:114
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Без задержки"
 
 #: src/Gui/OptionsMenu.cpp:133
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Параметры записи"
 
 #: src/Gui/OptionsMenu.cpp:135
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Включая курсор мыши"
@@ -1065,7 +1065,7 @@ msgstr "Найден QR-код, содержащий двоичные данны
 #, fuzzy, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Запись экрана"
+msgstr "Запись"
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, fuzzy, kde-format
@@ -2001,7 +2001,7 @@ msgstr[3] "%1 секунда"
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "Несохраненный снимок экрана"
+msgstr "Несохранённый снимок экрана"
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
