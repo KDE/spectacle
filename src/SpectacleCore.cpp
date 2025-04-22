@@ -314,18 +314,25 @@ SpectacleCore::SpectacleCore(QObject *parent)
                 initPulseAnimation();
             });
             startedAnimation->start();
-        } else if (state == VideoPlatform::RecordingState::Rendering) {
+        } else if (state == VideoPlatform::RecordingState::Rendering && s_systemTrayIcon) {
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Finishing the Recording");
             const auto messageBody = i18nc("recording notification message", "Please wait");
             s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media_record"_s);
+            s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for rendering tray icon", //
+                                                    "Spectacle is Finishing the Recording"));
+            auto subtitle = i18nc("@info:tooltip subtitle for rendering tray icon", //
+                                  "Time recorded: %1\n" //
+                                  "Click to stop rendering early (this will lose data)",
+                                  recordedTime());
+            s_systemTrayIcon->setToolTipSubTitle(subtitle);
         } else {
             s_systemTrayIcon.reset();
             m_captureWindows.clear();
         }
     });
-    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this] {
+    connect(videoPlatform, &VideoPlatform::recordedTimeChanged, this, [this, videoPlatform] {
         Q_EMIT recordedTimeChanged();
-        if (!s_systemTrayIcon) {
+        if (!s_systemTrayIcon || videoPlatform->recordingState() != VideoPlatform::RecordingState::Recording) {
             return;
         }
         auto subtitle = i18nc("@info:tooltip subtitle for recording tray icon", //
