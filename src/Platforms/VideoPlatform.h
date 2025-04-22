@@ -25,8 +25,8 @@ class VideoPlatform : public QObject
 
     Q_PROPERTY(RecordingModes supportedRecordingModes READ supportedRecordingModes NOTIFY supportedRecordingModesChanged)
     Q_PROPERTY(Formats supportedFormats READ supportedFormats NOTIFY supportedFormatsChanged)
-    Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingChanged)
     Q_PROPERTY(qint64 recordedTime READ recordedTime NOTIFY recordedTimeChanged)
+    Q_PROPERTY(bool isRecording READ isRecording NOTIFY recordingStateChanged)
     Q_PROPERTY(RecordingState recordingState READ recordingState NOTIFY recordingStateChanged)
 
 public:
@@ -130,7 +130,6 @@ public:
     RecordingState recordingState() const;
 
 protected:
-    void setRecording(bool recording);
     void setRecordingState(RecordingState state);
     void timerEvent(QTimerEvent *event) override;
 
@@ -144,7 +143,6 @@ public Q_SLOTS:
 Q_SIGNALS:
     void supportedRecordingModesChanged();
     void supportedFormatsChanged();
-    void recordingChanged(bool isRecording);
     void recordingSaved(const QUrl &fileUrl);
     void recordingFailed(const QString &message);
     void recordingCanceled(const QString &message);
@@ -157,6 +155,7 @@ Q_SIGNALS:
 private:
     QElapsedTimer m_elapsedTimer;
     QBasicTimer m_basicTimer;
+    qint64 m_recordedTime = 0;
     RecordingState m_recordingState = RecordingState::NotRecording;
 };
 

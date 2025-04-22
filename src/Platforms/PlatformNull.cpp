@@ -64,7 +64,6 @@ void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, 
 
 void VideoPlatformNull::finishRecording()
 {
-    setRecording(false);
 }
 
 #include "moc_PlatformNull.cpp"

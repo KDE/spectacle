@@ -16,36 +16,18 @@ VideoPlatform::VideoPlatform(QObject *parent)
 
 bool VideoPlatform::isRecording() const
 {
-    return m_basicTimer.isActive();
-}
-
-void VideoPlatform::setRecording(bool recording)
-{
-    if (m_basicTimer.isActive() == recording) {
-        return;
-    }
-
-    if (recording) {
-        setRecordingState(RecordingState::Recording);
-        m_elapsedTimer.start();
-        m_basicTimer.start(1000, Qt::PreciseTimer, this);
-    } else {
-        setRecordingState(RecordingState::Finished);
-        m_elapsedTimer.invalidate();
-        m_basicTimer.stop();
-    }
-    Q_EMIT recordingChanged(recording);
-    Q_EMIT recordedTimeChanged();
+    return m_recordingState == RecordingState::Recording;
 }
 
 qint64 VideoPlatform::recordedTime() const
 {
-    return m_elapsedTimer.isValid() ? m_elapsedTimer.elapsed() : 0;
+    return m_recordedTime;
 }
 
 void VideoPlatform::timerEvent(QTimerEvent *event)
 {
     if (event->timerId() == m_basicTimer.timerId()) {
+        m_recordedTime = m_elapsedTimer.isValid() ? m_elapsedTimer.elapsed() : 0;
         Q_EMIT recordedTimeChanged();
     }
 }
@@ -94,7 +76,24 @@ void VideoPlatform::setRecordingState(RecordingState state)
     }
 
     m_recordingState = state;
+    if (state == RecordingState::NotRecording) {
+        m_recordedTime = 0;
+        m_elapsedTimer.invalidate();
+        m_basicTimer.stop();
+    } else if (state == RecordingState::Recording) {
+        m_recordedTime = 0;
+        m_elapsedTimer.start();
+        m_basicTimer.start(1000, Qt::PreciseTimer, this);
+    } else {
+        if (m_elapsedTimer.isValid()) {
+            m_recordedTime = m_elapsedTimer.elapsed();
+        }
+        m_elapsedTimer.invalidate();
+        m_basicTimer.stop();
+    }
+    m_recordingState = state;
     Q_EMIT recordingStateChanged(state);
+    Q_EMIT recordedTimeChanged();
 }
 
 #include "moc_VideoPlatform.cpp"

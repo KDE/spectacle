@@ -161,8 +161,12 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         return;
     }
     m_recorderFuture.waitForFinished();
-    if (isRecording()) {
+    if (recordingState() == RecordingState::Recording) {
         qWarning() << "Warning: Tried to start recording while already recording.";
+        return;
+    }
+    if (recordingState() == RecordingState::Rendering) {
+        qWarning() << "Warning: Tried to start recording while already rendering.";
         return;
     }
     if (!fileUrl.isEmpty() && !fileUrl.isLocalFile()) {
@@ -246,15 +250,15 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         if (!m_recorder->output().isEmpty()) {
             m_recorder->start();
         }
-        setRecording(true);
+        setRecordingState(VideoPlatform::RecordingState::Recording);
     });
     connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
-        setRecording(false);
+        setRecordingState(VideoPlatform::RecordingState::NotRecording);
         Q_EMIT recordingFailed(error);
     });
     connect(stream, &ScreencastingStream::closed, this, [this, recordingMode]() {
         finishRecording();
-        setRecording(false);
+        setRecordingState(VideoPlatform::RecordingState::Finished);
         if (recordingMode == Screen) {
             Q_EMIT recordingFailed(i18nc("@info", "The stream closed because the target screen changed in a way that disrupted the recording."));
         } else if (recordingMode == Window) {
@@ -301,14 +305,16 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle) {
             m_memoryTimer.stop();
-            if (isRecording()) {
-                setRecording(false);
+            if (recordingState() != RecordingState::NotRecording) {
+                setRecordingState(VideoPlatform::RecordingState::Finished);
                 Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
             }
-        } else if (m_recorder->state() == PipeWireRecord::Rendering) {
-            setRecordingState(VideoPlatform::RecordingState::Rendering);
-        } else {
+        } else if (m_recorder->state() == PipeWireRecord::Recording) {
             m_memoryTimer.start(5000, Qt::CoarseTimer, this);
+            setRecordingState(VideoPlatform::RecordingState::Recording);
+        } else if (m_recorder->state() == PipeWireRecord::Rendering) {
+            m_memoryTimer.stop();
+            setRecordingState(VideoPlatform::RecordingState::Rendering);
         }
     });
 }
