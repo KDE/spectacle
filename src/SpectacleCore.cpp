@@ -317,7 +317,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
         } else if (state == VideoPlatform::RecordingState::Rendering && s_systemTrayIcon) {
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Finishing the Recording");
             const auto messageBody = i18nc("recording notification message", "Please wait");
-            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media_record"_s);
             s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for rendering tray icon", //
                                                     "Spectacle is Finishing the Recording"));
             auto subtitle = i18nc("@info:tooltip subtitle for rendering tray icon", //
@@ -325,6 +324,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                   "Click to stop rendering early (this will lose data)",
                                   recordedTime());
             s_systemTrayIcon->setToolTipSubTitle(subtitle);
+            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"process-working-symbolic"_s);
         } else {
             s_systemTrayIcon.reset();
             m_captureWindows.clear();
