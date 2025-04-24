@@ -35,6 +35,7 @@ target_sources(spectacle PRIVATE
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
+    Gui/InlineMessageModel.cpp
     Gui/OptionsMenu.cpp
     Gui/RecordingModeMenu.cpp
     Gui/ScreenshotModeMenu.cpp
@@ -178,6 +179,7 @@ qt_target_qml_sources(spectacle
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
     Gui/InlineMessage.qml
+    Gui/InlineMessageList.qml
     Gui/LocationCopiedMessage.qml
     Gui/Magnifier.qml
     Gui/NewScreenshotToolButton.qml

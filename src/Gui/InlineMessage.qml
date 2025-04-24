@@ -10,6 +10,7 @@ Kirigami.InlineMessage {
     readonly property AnimatedLoader loader: parent
     property var messageArgument: ""
     property bool video: false
+    signal closed()
     icon.name: switch (type) {
     case Kirigami.MessageType.Error: return "dialog-error"
     case Kirigami.MessageType.Warning: return "dialog-warning"

@@ -32,15 +32,6 @@ EmptyPage {
         + Math.max(annotationsToolBar.implicitHeight,
                    footerLoader.implicitHeight)
 
-    property var inlineMessageData: {}
-    property string inlineMessageSource: ""
-    onInlineMessageDataChanged: {
-        if (inlineMessageSource) {
-            inlineMessageLoader.setSource(inlineMessageSource, inlineMessageData)
-            inlineMessageLoader.state = "active"
-        }
-    }
-
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
@@ -94,19 +85,12 @@ EmptyPage {
     Keys.enabled: !SpectacleCore.videoMode && contentLoader.item !== null
     Keys.forwardTo: contentLoader.item
 
-    AnimatedLoader { // parent is contentItem
-        id: inlineMessageLoader
+    InlineMessageList {
+        id: inlineMessageList
+        // parent is contentItem
         anchors.left: annotationsToolBar.right
         anchors.right: parent.right
         anchors.top: parent.top
-        state: "inactive"
-        height: visible ? implicitHeight : 0
-        Behavior on height {
-            NumberAnimation {
-                duration: inlineMessageLoader.animationDuration
-                easing.type: Easing.OutCubic
-            }
-        }
     }
 
     QQC.Pane { // parent is contentItem
@@ -145,7 +129,7 @@ EmptyPage {
         anchors {
             left: footerLoader.left
             right: parent.right
-            top: inlineMessageLoader.bottom
+            top: inlineMessageList.bottom
             bottom: footerLoader.top
         }
         sourceComponent: SpectacleCore.videoMode ? recordingViewComponent : screenshotViewComponent

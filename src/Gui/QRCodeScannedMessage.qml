@@ -40,7 +40,7 @@ InlineMessage {
         Kirigami.Action {
             displayComponent: QQC2.ToolButton {
                 icon.name: "dialog-close"
-                onClicked: root.loader.state = "inactive"
+                onClicked: root.closed()
             }
         }
     ]

@@ -20,13 +20,6 @@ import org.kde.spectacle.private
 EmptyPage {
     id: root
 
-    property var inlineMessageData: {}
-    property string inlineMessageSource: ""
-    onInlineMessageDataChanged: if (inlineMessageSource) {
-        inlineMessageLoader.setSource(inlineMessageSource, inlineMessageData)
-        inlineMessageLoader.state = "active"
-    }
-
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
@@ -179,17 +172,9 @@ EmptyPage {
             ]
         }
 
-        AnimatedLoader {
-            id: inlineMessageLoader
-            state: "inactive"
+        InlineMessageList {
+            id: inlineMessageList
             width: parent.width
-            height: visible ? implicitHeight : 0
-            Behavior on height {
-                NumberAnimation {
-                    duration: inlineMessageLoader.animationDuration
-                    easing.type: Easing.OutCubic
-                }
-            }
         }
     }
 
