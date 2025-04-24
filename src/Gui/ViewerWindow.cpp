@@ -10,6 +10,7 @@
 #include "Config.h"
 #include "SpectacleCore.h"
 #include "Gui/ExportMenu.h"
+#include "InlineMessageModel.h"
 
 #include <KUrlMimeData>
 #include <Kirigami/Platform/Units>
@@ -148,8 +149,7 @@ void ViewerWindow::showInlineMessage(const QString &qmlFile, const QVariantMap &
     if (!rootItem) {
         return;
     }
-    rootItem->setProperty("inlineMessageSource", qmlFile);
-    rootItem->setProperty("inlineMessageData", properties);
+    InlineMessageModel::instance()->setItemData({}, {{InlineMessageModel::QmlFileRole, qmlFile},{InlineMessageModel::PropertiesRole, properties}});
 }
 
 void ViewerWindow::showSavedMessage(const QUrl &messageArgument, bool video)
