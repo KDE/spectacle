@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-20 00:40+0000\n"
+"POT-Creation-Date: 2025-04-24 00:40+0000\n"
 "PO-Revision-Date: 2025-04-20 04:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2077,13 +2077,13 @@ msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:169
+#: src/Platforms/VideoPlatformWayland.cpp:173
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:259
+#: src/Platforms/VideoPlatformWayland.cpp:263
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2092,7 +2092,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ეკრანი ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:261
+#: src/Platforms/VideoPlatformWayland.cpp:265
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2101,7 +2101,7 @@ msgid ""
 msgstr ""
 "ნაკადი დაიხურა, რადგან სამიზნე ფანჯარა ისე შეიცვალა, რომ ჩანაწერი შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:263
+#: src/Platforms/VideoPlatformWayland.cpp:267
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2111,56 +2111,56 @@ msgstr ""
 "ნაკადი დაიხურა, რადგან ეკრანი, რომელიც სამიზნე ალაგს შეიცავს, ისე შეიცვალა, "
 "რომ ჩაწერა შეწყვიტა."
 
-#: src/Platforms/VideoPlatformWayland.cpp:277
+#: src/Platforms/VideoPlatformWayland.cpp:281
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:287
+#: src/Platforms/VideoPlatformWayland.cpp:291
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "ჩაწერის შეცდომა: გამოტანის ფაილის ბმული ლოკალური ფაილი (%1) არაა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:338
+#: src/Platforms/VideoPlatformWayland.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "ჩაწერის შეცდომა: საქაღალდის (%1) შექმნა შეუძლებელია"
 
-#: src/Platforms/VideoPlatformWayland.cpp:366
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "ეკრანის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:368
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "ფანჯრის ჩაწერა გაუქმდა"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:380
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "ეკრანის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:376
+#: src/Platforms/VideoPlatformWayland.cpp:382
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "ფანჯრის არჩევა ჩავარდა: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:404
+#: src/Platforms/VideoPlatformWayland.cpp:410
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 "ეკრანის არჩევა ჩავარდა: ეკრანი, რომელიც თაგუნას კურსორს შეიცავს, ვერ ვიპოვე"
 
-#: src/Platforms/VideoPlatformWayland.cpp:411
+#: src/Platforms/VideoPlatformWayland.cpp:417
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2303,7 +2303,29 @@ msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "გთხოვთ, მოითმინოთ"
 
-#: src/SpectacleCore.cpp:332
+#: src/SpectacleCore.cpp:321
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Finishing the Recording"
+msgctxt "@info:tooltip title for rendering tray icon"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle ასრულებს ჩაწერას"
+
+#: src/SpectacleCore.cpp:323
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip subtitle for recording tray icon"
+#| msgid ""
+#| "Time recorded: %1\n"
+#| "Click to finish recording"
+msgctxt "@info:tooltip subtitle for rendering tray icon"
+msgid ""
+"Time recorded: %1\n"
+"Click to stop rendering early (this will lose data)"
+msgstr ""
+"ჩაწერის დრო: %1\n"
+"დააწკაპუნეთ ჩაწერის დასასრულებლად"
+
+#: src/SpectacleCore.cpp:339
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2313,19 +2335,19 @@ msgstr ""
 "ჩაწერის დრო: %1\n"
 "დააწკაპუნეთ ჩაწერის დასასრულებლად"
 
-#: src/SpectacleCore.cpp:357
+#: src/SpectacleCore.cpp:364
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "შეცდომა ეკრანის ჩაწერის მცდელობისას."
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:756
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:991
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2334,23 +2356,23 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:988
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:998
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1007
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2359,24 +2381,24 @@ msgstr ""
 "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
 "ბუფერში."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1009
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:1004
+#: src/SpectacleCore.cpp:1011
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:1015
+#: src/SpectacleCore.cpp:1022
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:1029
+#: src/SpectacleCore.cpp:1036
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-20 00:40+0000\n"
+"POT-Creation-Date: 2025-04-24 00:40+0000\n"
 "PO-Revision-Date: 2024-08-04 16:55+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -2099,13 +2099,13 @@ msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "Null descrition"
 
-#: src/Platforms/VideoPlatformWayland.cpp:169
+#: src/Platforms/VideoPlatformWayland.cpp:173
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Gardar it al fólder predefinit"
 
-#: src/Platforms/VideoPlatformWayland.cpp:259
+#: src/Platforms/VideoPlatformWayland.cpp:263
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -2115,7 +2115,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/VideoPlatformWayland.cpp:261
+#: src/Platforms/VideoPlatformWayland.cpp:265
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -2125,7 +2125,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/VideoPlatformWayland.cpp:263
+#: src/Platforms/VideoPlatformWayland.cpp:267
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -2135,55 +2135,55 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/VideoPlatformWayland.cpp:277
+#: src/Platforms/VideoPlatformWayland.cpp:281
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Gardar it al fólder predefinit"
 
-#: src/Platforms/VideoPlatformWayland.cpp:287
+#: src/Platforms/VideoPlatformWayland.cpp:291
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Gardar it al fólder predefinit"
 
-#: src/Platforms/VideoPlatformWayland.cpp:338
+#: src/Platforms/VideoPlatformWayland.cpp:344
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Aperter li contenent fólder"
 
-#: src/Platforms/VideoPlatformWayland.cpp:366
+#: src/Platforms/VideoPlatformWayland.cpp:372
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Ne successat selecter un ecran: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:368
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Ne successat selecter un fenestre: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:380
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Ne successat selecter un ecran: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:376
+#: src/Platforms/VideoPlatformWayland.cpp:382
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Ne successat selecter un fenestre: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:404
+#: src/Platforms/VideoPlatformWayland.cpp:410
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "Ne successat selecter un ecran: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:411
+#: src/Platforms/VideoPlatformWayland.cpp:417
 #, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2338,7 +2338,27 @@ msgctxt "recording notification message"
 msgid "Please wait"
 msgstr ""
 
-#: src/SpectacleCore.cpp:332
+#: src/SpectacleCore.cpp:321
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "@info:tooltip title for rendering tray icon"
+msgid "Spectacle is Finishing the Recording"
+msgstr "Spectacle registra"
+
+#: src/SpectacleCore.cpp:323
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip subtitle for recording tray icon"
+#| msgid ""
+#| "Time recorded: %1\n"
+#| "Click to finish recording"
+msgctxt "@info:tooltip subtitle for rendering tray icon"
+msgid ""
+"Time recorded: %1\n"
+"Click to stop rendering early (this will lose data)"
+msgstr "Ja registrat: %1 Fa un clic por finir"
+
+#: src/SpectacleCore.cpp:339
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2346,19 +2366,19 @@ msgid ""
 "Click to finish recording"
 msgstr "Ja registrat: %1 Fa un clic por finir"
 
-#: src/SpectacleCore.cpp:357
+#: src/SpectacleCore.cpp:364
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Registrar li ecran"
 
-#: src/SpectacleCore.cpp:749
+#: src/SpectacleCore.cpp:756
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ne es un valid mode por --record"
 
-#: src/SpectacleCore.cpp:984
+#: src/SpectacleCore.cpp:991
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2368,23 +2388,23 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:988
+#: src/SpectacleCore.cpp:995
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Li captura sta gardat quam «%1» a vor fólder de images."
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:998
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1002
 #, fuzzy, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:1000
+#: src/SpectacleCore.cpp:1007
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2394,24 +2414,24 @@ msgid ""
 "been saved to your clipboard."
 msgstr "mistresssilvara@hotmail.com"
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1009
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Li registration sta gardat quam «%1» a vor fólder Videos."
 
-#: src/SpectacleCore.cpp:1004
+#: src/SpectacleCore.cpp:1011
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1015
+#: src/SpectacleCore.cpp:1022
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperter"
 
-#: src/SpectacleCore.cpp:1029
+#: src/SpectacleCore.cpp:1036
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
