@@ -285,6 +285,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
             // Can't set notification duration with KNotification directly.
             // Also see https://bugs.kde.org/show_bug.cgi?id=503838
             QTimer::singleShot(4000, notification, &KNotification::close);
+            connect(m_videoPlatform.get(), &VideoPlatform::recordingStateChanged, notification, [notification](VideoPlatform::RecordingState state) {
+                if (state != VideoPlatform::RecordingState::Recording) {
+                    notification->close();
+                }
+            });
             notification->sendEvent();
             if (!QMovie::supportedFormats().contains("webp"_ba)) {
                 const auto messageTitle = i18nc("missing webp support notification title", "WebP support is missing.");
@@ -337,6 +342,11 @@ SpectacleCore::SpectacleCore(QObject *parent)
             notification->setText(messageBody);
             notification->setIconName(u"process-working-symbolic"_s);
             notification->setHint(u"transient"_s, true);
+            connect(m_videoPlatform.get(), &VideoPlatform::recordingStateChanged, notification, [notification](VideoPlatform::RecordingState state) {
+                if (state != VideoPlatform::RecordingState::Rendering) {
+                    notification->close();
+                }
+            });
             notification->sendEvent();
             s_systemTrayIcon->setToolTipSubTitle(subtitle);
         } else {
