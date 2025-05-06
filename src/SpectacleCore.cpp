@@ -1038,15 +1038,20 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
         }
     }
 
-    connect(notification, &QObject::destroyed, this, [this](QObject *notification) {
+    auto onExpired = [this, notification] {
         notifications.removeOne(static_cast<KNotification *>(notification));
         // When there are no more notifications running, we can remove the loop locker.
-        if (notifications.empty()) {
+        if (notifications.empty() && m_eventLoopLocker) {
             QTimer::singleShot(250, this, [this] {
                 m_eventLoopLocker.reset();
             });
         }
-    });
+    };
+    connect(notification, &QObject::destroyed, this, onExpired);
+    // BUG: https://bugs.kde.org/show_bug.cgi?id=503838
+    // We can't call KNotification::close or else the notifications will be removed from history.
+    // 10 seconds is roughly the expected default duration.
+    QTimer::singleShot(10000, notification, onExpired);
 
     notification->sendEvent();
 }
