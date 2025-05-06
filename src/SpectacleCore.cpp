@@ -276,7 +276,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
             });
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
             const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
-            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"media-record"_s, 4000);
+            auto notification = new KNotification(u"notification"_s, KNotification::CloseOnTimeout | KNotification::DefaultEvent, this);
+            notification->setTitle(messageTitle);
+            notification->setText(messageBody);
+            notification->setIconName(u"media-record"_s);
+            // Whether the notification is transient and should not be kept in history.
+            notification->setHint(u"transient"_s, true);
+            // Can't set notification duration with KNotification directly.
+            // Also see https://bugs.kde.org/show_bug.cgi?id=503838
+            QTimer::singleShot(4000, notification, &KNotification::close);
+            notification->sendEvent();
             if (!QMovie::supportedFormats().contains("webp"_ba)) {
                 const auto messageTitle = i18nc("missing webp support notification title", "WebP support is missing.");
                 const auto messageBody = i18nc("missing webp support notification message", "Please install Qt Image Formats to get animated system tray icons for Spectacle, and then report this packaging issue to your distributor.");
@@ -323,8 +332,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                   "Time recorded: %1\n" //
                                   "Click to stop rendering early (this will lose data)",
                                   recordedTime());
+            auto notification = new KNotification(u"notification"_s, KNotification::CloseOnTimeout | KNotification::DefaultEvent, this);
+            notification->setTitle(messageTitle);
+            notification->setText(messageBody);
+            notification->setIconName(u"process-working-symbolic"_s);
+            notification->setHint(u"transient"_s, true);
+            notification->sendEvent();
             s_systemTrayIcon->setToolTipSubTitle(subtitle);
-            s_systemTrayIcon->showMessage(messageTitle, messageBody, u"process-working-symbolic"_s);
         } else {
             s_systemTrayIcon.reset();
             m_captureWindows.clear();
