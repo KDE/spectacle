@@ -109,16 +109,20 @@ QImage combinedImage(const QList<QImage> &images)
     finalImage.fill(Qt::transparent);
     auto mainMat = QtCV::qImageToMat(finalImage);
     for (auto &image : images) {
-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
-        const auto mat = QtCV::qImageToMat(rgbaImage);
         // Region Of Interest to put the image in the main image.
-        const auto pos = ImageMetaData::logicalXY(rgbaImage) * finalDpr;
-        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
-        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
-        const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
+        // Prevent ROI from going out of bounds or having negative size.
+        const auto rect = [finalDpr, &image, &finalImage] {
+            auto pos = ImageMetaData::logicalXY(image) * finalDpr;
+            auto size = image.deviceIndependentSize() * finalDpr;
+            auto rect = Geometry::rectClipped(QRectF(pos, size).toRect(), //
+                                              finalImage.rect());
+            return cv::Rect(rect.x(), rect.y(), rect.width(), rect.height());
+        }();
         const auto imageDpr = image.devicePixelRatio();
         const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
         const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
+        const auto mat = QtCV::qImageToMat(rgbaImage);
         // Will just copy if there's no difference in size
         cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
     }
