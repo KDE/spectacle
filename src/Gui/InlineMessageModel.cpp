@@ -18,7 +18,11 @@ InlineMessageModel *InlineMessageModel::instance()
 
 InlineMessageModel::InlineMessageModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_roleNames({{QmlFileRole, "qmlFile"_ba}, {PropertiesRole, "properties"_ba}})
+    , m_roleNames({
+          {TypeRole, "type"_ba},
+          {Qt::DisplayRole, "text"_ba},
+          {DataRole, "data"_ba},
+      })
 {
 }
 
@@ -34,48 +38,12 @@ QVariant InlineMessageModel::data(const QModelIndex &index, int role) const
     if (!checkIndex(index, CheckIndexOption::IndexIsValid)) {
         return ret;
     }
-    if (role == QmlFileRole) {
-        ret = m_data.at(row).qmlFile;
-    } else if (role == PropertiesRole) {
-        ret = m_data.at(row).properties;
+    if (role == TypeRole) {
+        ret = m_data.at(row).type;
+    } else if (role == Qt::DisplayRole) {
+        ret = m_data.at(row).text;
     }
     return ret;
-}
-
-bool InlineMessageModel::setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles)
-{
-    const int count = m_data.size();
-    const int row = index.isValid() ? std::min(index.row(), count) : count;
-    const auto keys = roles.keys();
-    if (row == count) {
-        if (keys != QList<int>{QmlFileRole, PropertiesRole}) {
-            return false;
-        }
-        beginInsertRows(index.parent(), row, row);
-        m_data.push_back({roles[QmlFileRole].toString(), roles[PropertiesRole].toMap()});
-        endInsertRows();
-        Q_EMIT dataChanged(index, index, keys);
-        Q_EMIT countChanged();
-        return true;
-    }
-
-    for (auto it = roles.constKeyValueBegin(); it != roles.constKeyValueEnd(); ++it) {
-        if (it->first == QmlFileRole) {
-            auto value = it->second.toString();
-            if (m_data[row].qmlFile == value) {
-                return false;
-            }
-            m_data[row].qmlFile = value;
-        } else if (it->first == PropertiesRole) {
-            auto value = it->second.toMap();
-            if (m_data[row].properties == value) {
-                return false;
-            }
-            m_data[row].properties = value;
-        }
-    }
-    Q_EMIT dataChanged(index, index, keys);
-    return true;
 }
 
 int InlineMessageModel::rowCount(const QModelIndex &parent) const
@@ -84,16 +52,58 @@ int InlineMessageModel::rowCount(const QModelIndex &parent) const
     return m_data.size();
 }
 
-bool InlineMessageModel::removeRows(int row, int count, const QModelIndex &parent)
+void InlineMessageModel::push(InlineMessageType type, const QString &text, const QVariant &data)
 {
-    Q_UNUSED(parent)
-    if (row < 0 || row + count - 1 >= m_data.size()) {
-        return false;
+    const int oldCount = m_data.size();
+    QModelIndex removed;
+    if (type >= InformationalType) {
+        for (int i = 0; i < oldCount; ++i) {
+            if (m_data[i].type == type) {
+                removed = index(i);
+                beginRemoveRows({}, i, i);
+                m_data.removeAt(i);
+                endRemoveRows();
+                break;
+            }
+        }
     }
-    beginRemoveRows(parent, row, row + count - 1);
-    m_data.remove(row, count);
+    const int i = m_data.size();
+    beginInsertRows({}, i, i);
+    m_data.push_back({type, text, data});
+    endInsertRows();
+    auto last = index(i);
+    Q_EMIT dataChanged(removed.isValid() ? removed : last, last, {TypeRole, Qt::DisplayRole, DataRole});
+    if (oldCount != m_data.size()) {
+        Q_EMIT countChanged();
+    }
+}
+
+void InlineMessageModel::pop(int row)
+{
+    if (row == -1) {
+        row = m_data.size() - 1;
+    }
+    auto modelIndex = index(row);
+    if (!modelIndex.isValid()) {
+        return;
+    }
+
+    beginRemoveRows({}, row, row);
+    m_data.removeAt(row);
     endRemoveRows();
-    return true;
+    Q_EMIT countChanged();
+}
+
+void InlineMessageModel::clear()
+{
+    if (m_data.empty()) {
+        return;
+    }
+
+    beginRemoveRows({}, 0, m_data.size() - 1);
+    m_data = {};
+    endRemoveRows();
+    Q_EMIT countChanged();
 }
 
 #include "moc_InlineMessageModel.cpp"

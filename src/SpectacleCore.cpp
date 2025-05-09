@@ -19,6 +19,7 @@
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
+#include "Gui/InlineMessageModel.h"
 #include "Platforms/ImagePlatformXcb.h"
 #include "Platforms/VideoPlatform.h"
 #include "ShortcutActions.h"
@@ -66,6 +67,12 @@ using namespace Qt::StringLiterals;
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
 static std::unique_ptr<KStatusNotifierItem> s_systemTrayIcon;
+
+// Used to ensure that text containing HTML is treated as HTML by Qt Quick objects.
+QString htmlWrap(const QString &string)
+{
+    return u"<html>" % string % u"</html>";
+}
 
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
@@ -198,8 +205,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // The behavior happens to be very similar right now, so we use a shared base function
     auto onScreenshotOrRecordingFailed = [this](const QString &message,
                                                 QString uiMessage,
-                                                void (SpectacleCore::*dBusFailedSignal)(const QString &),
-                                                void (ViewerWindow::*showViewerMessage)(const QString &)) {
+                                                void (SpectacleCore::*dBusFailedSignal)(const QString &)) {
         if (!message.isEmpty()) {
             uiMessage = uiMessage % u"\n"_s % message;
         }
@@ -234,14 +240,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
             qWarning().noquote() << message;
             auto viewer = ViewerWindow::instance();
             viewer->setVisible(true);
-            (viewer->*showViewerMessage)(uiMessage);
+            InlineMessageModel::instance()->push(InlineMessageModel::Error, uiMessage);
             return;
         }
         }
     };
     connect(imagePlatform, &ImagePlatform::newScreenshotFailed, this, [onScreenshotOrRecordingFailed](const QString message) {
         auto uiMessage = i18nc("@info", "An error occurred while taking a screenshot.");
-        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed, &ViewerWindow::showScreenshotFailedMessage);
+        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusScreenshotFailed);
     });
     connect(imagePlatform, &ImagePlatform::newScreenshotCanceled, this, [this]() {
         if (m_startMode != StartMode::Gui || !m_returnToViewer || isGuiNull()) {
@@ -362,7 +368,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
     connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
         auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
-        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed, &ViewerWindow::showRecordingFailedMessage);
+        onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed);
     });
     connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
         SelectionEditor::instance()->reset();
@@ -403,14 +409,18 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (actions & ExportManager::AnySave) {
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
             if (actions & ExportManager::CopyImage) {
-                viewerWindow->showSavedAndCopiedMessage(url);
+                auto text = i18nc("@info", "The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                InlineMessageModel::instance()->push(InlineMessageModel::Saved, htmlWrap(text), url);
             } else if (actions & ExportManager::CopyPath) {
-                viewerWindow->showSavedAndLocationCopiedMessage(url);
+                auto text = i18nc("@info", "The screenshot has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                InlineMessageModel::instance()->push(InlineMessageModel::Saved, htmlWrap(text), url);
             } else {
-                viewerWindow->showSavedMessage(url);
+                auto text = i18nc("@info", "The screenshot was saved as <a href=\"%1\">%2</a>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                InlineMessageModel::instance()->push(InlineMessageModel::Saved, htmlWrap(text), url);
             }
         } else if (actions & ExportManager::CopyImage) {
-            viewerWindow->showCopiedMessage();
+            auto text = i18nc("@info", "The screenshot has been copied to the clipboard.");
+            InlineMessageModel::instance()->push(InlineMessageModel::Copied, text, url);
         }
     };
     connect(exportManager, &ExportManager::imageExported, this, onImageExported);
@@ -440,12 +450,15 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (actions & ExportManager::AnySave) {
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
             if (actions & ExportManager::CopyPath) {
-                viewerWindow->showSavedAndLocationCopiedMessage(url, true);
+                auto text = i18nc("@info", "The video has been saved as <a href=\"%1\">%2</a> and its location has been copied to clipboard", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                InlineMessageModel::instance()->push(InlineMessageModel::Saved, htmlWrap(text), url);
             } else {
-                viewerWindow->showSavedMessage(url, true);
+                auto text = i18nc("@info", "The video was saved as <a href=\"%1\">%2</a>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                InlineMessageModel::instance()->push(InlineMessageModel::Saved, htmlWrap(text), url);
             }
         } else if (actions & ExportManager::CopyPath) {
-            viewerWindow->showLocationCopiedMessage();
+            auto text = i18nc("@info", "The video location has been copied to the clipboard.");
+            InlineMessageModel::instance()->push(InlineMessageModel::Copied, text, url);
         }
     };
     connect(exportManager, &ExportManager::videoExported, this, onVideoExported);
@@ -455,7 +468,18 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (!viewerWindow) {
             return;
         }
-        viewerWindow->showQRCodeScannedMessage(result);
+        // Thanks to: https://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
+        static const QRegularExpression urlRegex(u"(\\b(https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])"_s);
+        static const auto linkifier = u"<a href=\"\\1\">\\1</a>"_s;
+        auto text = [](const QVariant &result) {
+            if (result.typeId() == QMetaType::QString) {
+                return htmlWrap(i18nc("@info", //
+                                      "QR Code found: %1",
+                                      result.toString().toHtmlEscaped().replace(urlRegex, linkifier)));
+            }
+            return i18nc("@info", "Found QR code with binary content.");
+        }(result);
+        InlineMessageModel::instance()->push(InlineMessageModel::Scanned, text, result);
     };
     connect(exportManager, &ExportManager::qrCodeScanned, this, onQRCodeScanned);
 

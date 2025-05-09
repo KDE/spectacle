@@ -7,6 +7,8 @@
 #include <QAbstractListModel>
 #include <QQmlEngine>
 
+class InlineMessageData;
+
 /**
  * This is a model containing the current supported capture modes and their labels and shortcuts.
  */
@@ -31,24 +33,43 @@ public:
         return inst;
     }
 
-    enum {
-        QmlFileRole = Qt::UserRole + 1,
-        PropertiesRole = Qt::UserRole + 2,
+    enum CustomRoles {
+        TypeRole = Qt::UserRole + 1,
+        DataRole = Qt::UserRole + 2,
     };
+    Q_ENUM(CustomRoles)
+
+    enum InlineMessageType {
+        // Warnings and errors don't replace others of the same enum value.
+        Error,
+        Warning,
+        // Informational types replace others of the same enum value.
+        InformationalType,
+        Copied = InformationalType,
+        Saved = InformationalType + 1,
+        Shared = InformationalType + 2,
+        Scanned = InformationalType + 3,
+    };
+    Q_ENUM(InlineMessageType)
 
     QHash<int, QByteArray> roleNames() const override;
+
     QVariant data(const QModelIndex &index, int role) const override;
-    bool setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles) override;
+
     int rowCount(const QModelIndex &parent = {}) const override;
-    bool removeRows(int row, int count, const QModelIndex &parent = {}) override;
+
+    Q_INVOKABLE void push(InlineMessageType type, const QString &text, const QVariant &data = {});
+    Q_INVOKABLE void pop(int row = -1);
+    Q_INVOKABLE void clear();
 
 Q_SIGNALS:
     void countChanged();
 
 private:
     struct Item {
-        QString qmlFile;
-        QVariantMap properties;
+        InlineMessageType type;
+        QString text;
+        QVariant data;
     };
 
     QList<Item> m_data;
