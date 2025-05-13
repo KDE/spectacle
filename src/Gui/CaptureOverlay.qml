@@ -334,6 +334,47 @@ MouseArea {
             }
         }
 
+        AnimatedLoader {
+            z: 100
+            state: SelectionEditor.dragLocation ? "active" : "inactive"
+            sourceComponent: SizeLabel {
+                height: {
+                    let h = dprRound(implicitHeight)
+                    return h + h % 2
+                }
+                width: dprCeil(implicitWidth)
+                x: {
+                    let x = SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit
+                    if (x + width > root.viewportRect.right) {
+                        x -= Kirigami.Units.gridUnit * 2 + width
+                    }
+                    return dprRound(x)
+                }
+                y: {
+                    let y = SelectionEditor.mousePosition.y - height / 2
+                    if (y < root.viewportRect.top) {
+                        y += height / 2
+                    } else if (y + height > root.viewportRect.bottom) {
+                        y -= height / 2
+                    }
+                    return dprRound(y)
+                }
+                size: {
+                    const sz = SelectionEditor.selection.empty
+                        ? Qt.size(SelectionEditor.screensRect.width,
+                                    SelectionEditor.screensRect.height)
+                        : SelectionEditor.selection.size
+                    return Geometry.rawSize(sz, SelectionEditor.devicePixelRatio)
+                }
+                padding: Kirigami.Units.smallSpacing
+                leftPadding: QmlUtils.fontMetrics.descent + padding
+                rightPadding: leftPadding
+                background: FloatingBackground {
+                    color: Qt.alpha(palette.window, 0.9)
+                }
+            }
+        }
+
         Connections {
             target: SelectionEditor.selection
             function onRectChanged() {
