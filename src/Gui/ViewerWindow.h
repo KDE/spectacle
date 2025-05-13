@@ -32,15 +32,6 @@ public:
 
     static ViewerWindow *instance();
 
-    void showSavedMessage(const QUrl &messageArgument, bool video = false);
-    void showSavedAndCopiedMessage(const QUrl &messageArgument);
-    void showSavedAndLocationCopiedMessage(const QUrl &messageArgument, bool video = false);
-    void showCopiedMessage();
-    void showLocationCopiedMessage();
-    void showScreenshotFailedMessage(const QString &messageArgument);
-    void showRecordingFailedMessage(const QString &messageArgument);
-    void showQRCodeScannedMessage(const QVariant &messageArgument);
-
     Q_INVOKABLE void startDrag();
 
 protected:
@@ -54,9 +45,6 @@ private:
     void setMode(ViewerWindow::Mode mode);
     Q_SLOT void updateColor();
     Q_SLOT void updateMinimumSize();
-    Q_SLOT void showInlineMessage(const QString &source, const QVariantMap &properties);
-    Q_SLOT void showImageSharedMessage(int errorCode, const QString &messageArgument);
-    void showVideoSharedMessage(int errorCode, const QString &messageArgument);
 
     void setBackgroundColorRole(QPalette::ColorRole role);
 

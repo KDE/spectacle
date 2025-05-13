@@ -84,12 +84,11 @@ public Q_SLOTS:
     virtual void saveAs();
     virtual void copyImage();
     virtual void copyLocation();
-    virtual void copyToClipboard(const QVariant &content);
+
     void showPrintDialog();
     void showPreferencesDialog();
     void showFontDialog();
     void showColorDialog(int option);
-    void openContainingFolder(const QUrl &url);
 
 Q_SIGNALS:
     void annotatingChanged();

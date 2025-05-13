@@ -35,6 +35,7 @@ target_sources(spectacle PRIVATE
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
+    Gui/InlineMessageModel.cpp
     Gui/OptionsMenu.cpp
     Gui/RecordingModeMenu.cpp
     Gui/ScreenshotModeMenu.cpp
@@ -164,7 +165,6 @@ qt_target_qml_sources(spectacle
     Gui/CaptureOptions.qml
     Gui/CaptureOverlay.qml
     Gui/CaptureSettingsColumn.qml
-    Gui/CopiedMessage.qml
     Gui/CopyImageAction.qml
     Gui/CopyLocationAction.qml
     Gui/DashedOutline.qml
@@ -177,16 +177,13 @@ qt_target_qml_sources(spectacle
     Gui/FloatingToolBar.qml
     Gui/Handle.qml
     Gui/HelpMenuButton.qml
-    Gui/InlineMessage.qml
-    Gui/LocationCopiedMessage.qml
+    Gui/InlineMessageList.qml
     Gui/Magnifier.qml
     Gui/NewScreenshotToolButton.qml
     Gui/OptionsMenuButton.qml
     Gui/Outline.qml
     Gui/QmlUtils.qml
-    Gui/QRCodeScannedMessage.qml
     Gui/RecordAction.qml
-    Gui/RecordingFailedMessage.qml
     Gui/RecordingModeButtonsColumn.qml
     Gui/RecordingModeMenuButton.qml
     Gui/RecordingSettingsColumn.qml
@@ -194,14 +191,8 @@ qt_target_qml_sources(spectacle
     Gui/RecordOptions.qml
     Gui/SaveAction.qml
     Gui/SaveAsAction.qml
-    Gui/SavedAndCopiedMessage.qml
-    Gui/SavedAndLocationCopied.qml
-    Gui/SavedMessage.qml
-    Gui/ScreenshotFailedMessage.qml
     Gui/ScreenshotModeMenuButton.qml
     Gui/ScreenshotView.qml
-    Gui/SharedMessage.qml
-    Gui/ShareErrorMessage.qml
     Gui/ShortcutsTextBox.qml
     Gui/SizeLabel.qml
     Gui/TextContextMenuConnection.qml

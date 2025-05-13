@@ -16,12 +16,6 @@
 #include "Gui/OptionsMenu.h"
 #include "Gui/WidgetWindowUtils.h"
 
-#include <KIO/JobUiDelegateFactory>
-#include <KIO/OpenFileManagerWindowJob>
-#include <KSystemClipboard>
-#include <KWindowSystem>
-#include <QMimeData>
-
 #include <QApplication>
 #include <QColorDialog>
 #include <QFontDialog>
@@ -269,17 +263,6 @@ void SpectacleWindow::copyLocation()
     ExportManager::instance()->exportImage(ExportManager::CopyPath | ExportManager::UserAction);
 }
 
-void SpectacleWindow::copyToClipboard(const QVariant &content)
-{
-    auto data = new QMimeData();
-    if (content.typeId() == QMetaType::QString) {
-        data->setText(content.toString());
-    } else if (content.typeId() == QMetaType::QByteArray) {
-        data->setData(QStringLiteral("application/octet-stream"), content.toByteArray());
-    }
-    KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-}
-
 void SpectacleWindow::showPrintDialog()
 {
     SpectacleCore::instance()->syncExportImage();
@@ -418,11 +401,6 @@ void SpectacleWindow::showColorDialog(int option)
     });
 
     dialog->open();
-}
-
-void SpectacleWindow::openContainingFolder(const QUrl &url)
-{
-    KIO::highlightInFileManager({url});
 }
 
 void SpectacleWindow::mousePressEvent(QMouseEvent *event)
