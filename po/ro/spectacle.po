@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2024-06-09 14:49+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -798,11 +798,6 @@ msgstr "Așteaptă un clic de maus înainte de a captura imaginea."
 msgid "Delay:"
 msgstr "Întârziere:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "Captura de ecran a fost copiată în clipboard."
-
 #: src/Gui/CopyImageAction.qml:13
 #, fuzzy, kde-format
 #| msgid "Copy"
@@ -838,41 +833,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 secunde"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Configurează Spectacle…"
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "Ajutor"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Face o captură:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opțiuni"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Face o înregistrare:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Captură de ecran"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -929,17 +924,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Ajutor"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "Amplasarea fișierului video a fost copiată în clipboard."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "Deschide dosarul conținător"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy Image to Clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "Copiază imaginea în clipboard"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
-msgstr "Amplasarea capturii de ecran a fost copiată în clipboard."
+msgctxt "@action:button close inline notification"
+msgid "Close"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1086,16 +1089,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "Opțiuni"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "Cod QR găsit: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "A fost găsit QR cu conținut binar."
-
 #: src/Gui/RecordAction.qml:11
 #, fuzzy, kde-format
 #| msgid "Recording"
@@ -1164,47 +1157,6 @@ msgstr "Salvează"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "Salvare ca..."
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"Captura de ecran a fost copiată în clipboard și salvată ca <a href=\"%1\">"
-"%2</a>"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"Filmul a fost salvat ca <a href=\"%1\">%2</a> și amplasarea acestuia a fost "
-"copiată în clipboard"
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"Captura de ecran a fost salvată ca <a href=\"%1\">%2</a> și amplasarea "
-"acesteia a fost copiată în clipboard"
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Videoclipul a fost salvat ca <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Captura de ecran a fost salvată ca <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Deschide dosarul conținător"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, fuzzy, kde-format
@@ -1862,50 +1814,6 @@ msgstr "Dacă unealta de adnotare cu număr lasă o umbră"
 msgid "Save &Location:"
 msgstr "&Locul salvării:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "Video partajat"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "Imagine partajată"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Legătura spre filmul partajat (<a href=\"%1\">%1</a>) a fost copiată în "
-"clipboard."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Legătura spre imaginea partajată (<a href=\"%1\">%1</a>) a fost copiată în "
-"clipboard."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "A intervenit o problemă cu partajarea filmului: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "A intervenit o problemă cu partajarea imaginii: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -2034,7 +1942,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " secunde"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -2043,7 +1951,7 @@ msgstr[0] "%1 secundă"
 msgstr[1] "%1 secunde"
 msgstr[2] "%1 de secunde"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -2059,15 +1967,31 @@ msgstr "Desfă"
 msgid "Redo"
 msgstr "Refă"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "Apropiere:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "Apropiere imagine"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "A intervenit o problemă cu partajarea imaginii: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Legătura spre imaginea partajată (<a href=\"%1\">%1</a>) a fost copiată în "
+"clipboard."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2365,37 +2289,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "A intervenit o eroare la preluarea capturii."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Apăsați pictograma din tavă pentru a încheia înregistrarea"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr ""
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2403,7 +2327,7 @@ msgid ""
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2411,14 +2335,14 @@ msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, fuzzy, kde-format
 #| msgid "Please wait..."
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Așteptați..."
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2426,7 +2350,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2440,7 +2364,7 @@ msgstr ""
 "Durata înregistrată: %1\n"
 "Apăsați pentru a încheia înregistrarea"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2450,19 +2374,102 @@ msgstr ""
 "Durata înregistrată: %1\n"
 "Apăsați pentru a încheia înregistrarea"
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "A intervenit o eroare la încercarea de a înregistra ecranul."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"Captura de ecran a fost copiată în clipboard și salvată ca <a href=\"%1\">"
+"%2</a>"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"Captura de ecran a fost salvată ca <a href=\"%1\">%2</a> și amplasarea "
+"acesteia a fost copiată în clipboard"
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "Captura de ecran a fost salvată ca <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Captura de ecran a fost copiată în clipboard."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Filmul a fost salvat ca <a href=\"%1\">%2</a> și amplasarea acestuia a fost "
+"copiată în clipboard"
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "Videoclipul a fost salvat ca <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Amplasarea fișierului video a fost copiată în clipboard."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "Cod QR găsit: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "A fost găsit QR cu conținut binar."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nu e un regim valid pentru --record"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2471,23 +2478,23 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2496,24 +2503,24 @@ msgstr ""
 "O înregistrare a fost salvată ca „%1” în „%2” și amplasarea acesteia a fost "
 "copiată în clipboard."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "O înregistrare a fost salvată ca „%1” în dosarul Video."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "O înregistrare a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Deschide"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "Adnotează"
@@ -2541,6 +2548,30 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr ""
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr "Amplasarea capturii de ecran a fost copiată în clipboard."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "Video partajat"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "Imagine partajată"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "Legătura spre filmul partajat (<a href=\"%1\">%1</a>) a fost copiată în "
+#~ "clipboard."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "A intervenit o problemă cu partajarea filmului: %1"
 
 #~ msgid "Screenshot"
 #~ msgstr "Captură de ecran"
@@ -2691,9 +2722,6 @@ msgstr ""
 
 #~ msgid "Tools"
 #~ msgstr "Unelte"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Copiază imaginea în clipboard"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "Gata de capturat ecranul"

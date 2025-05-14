@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2025-04-24 11:53+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -766,11 +766,6 @@ msgstr "Зачекати зі створенням знімка на клаца�
 msgid "Delay:"
 msgstr "Затримка:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "Знімок вікна було скопійовано до буфера обміну даними."
-
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
@@ -805,41 +800,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 секунд"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Налаштувати Spectacle…"
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "Довідка"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Створення знімка вікна:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Параметри"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Запис відео:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Знімок вікна"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -890,17 +885,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Довідка"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "Розташування відео було скопійовано до буфера обміну даними."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "Відкрити теку зі знімками"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy to Clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "Копіювати до буфера"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
-msgstr "Розташування знімка вікна було скопійовано до буфера обміну даними."
+msgctxt "@action:button close inline notification"
+msgid "Close"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1024,16 +1027,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "Параметри"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "Виявлено QR-код: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "Виявлено QR-код із двійковим вмістом."
-
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
@@ -1097,47 +1090,6 @@ msgstr "Зберегти"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "Зберегти як…"
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"Знімок було скопійовано до буфера обміну даними і збережено як <a href="
-"\"%1\">%2</a>"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"Відео було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск and "
-"its location has been copied to clipboard"
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"Знімок вікна було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск "
-"and its location has been copied to clipboard"
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Відео було збережено як <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Знімок було збережено як <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Відкрити теку зі знімками"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1795,50 +1747,6 @@ msgstr "Чи слід використовувати у засобі аноту�
 msgid "Save &Location:"
 msgstr "Місце з&берігання:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "Відео оприлюднено"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "Зображення оприлюднено"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Посилання на відео (<a href=\"%1\">%1</a>) було скопійовано до буфера обміну "
-"даними."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Посилання на зображення (<a href=\"%1\">%1</a>) було скопійовано до буфера "
-"обміну даними."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "Під час спроби оприлюднити відео виникли проблеми: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "Під час спроби оприлюднити зображення виникли проблеми: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -1968,7 +1876,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " секунд"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1978,7 +1886,7 @@ msgstr[1] "%1 секунди"
 msgstr[2] "%1 секунд"
 msgstr[3] "%1 секунда"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1994,15 +1902,31 @@ msgstr "Скасувати"
 msgid "Redo"
 msgstr "Повторити"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "Масштаб:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "Масштаб зображення"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "Під час спроби оприлюднити зображення виникли проблеми: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Посилання на зображення (<a href=\"%1\">%1</a>) було скопійовано до буфера "
+"обміну даними."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2285,37 +2209,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Запустити Spectacle без створення знімка"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Під час спроби створення знімка сталася помилка."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записує відео"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записує відео"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Клацніть на піктограмі системного лотка, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Немає підтримки WebP."
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2326,25 +2250,25 @@ msgstr ""
 "анімовані піктограми у системному лотку для Spectacle, а потім повідомте про "
 "цю проблему пакування авторам вашого дистрибутива."
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Будь ласка, зачекайте"
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2354,7 +2278,7 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити обробку передчасно (із втратою даних)"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2364,19 +2288,102 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Під час спроби запису з екрана сталася помилка."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"Знімок було скопійовано до буфера обміну даними і збережено як <a href="
+"\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"Знімок вікна було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск "
+"and its location has been copied to clipboard"
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "Знімок було збережено як <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Знімок вікна було скопійовано до буфера обміну даними."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Відео було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск and "
+"its location has been copied to clipboard"
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "Відео було збережено як <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Розташування відео було скопійовано до буфера обміну даними."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "Виявлено QR-код: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "Виявлено QR-код із двійковим вмістом."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2385,23 +2392,23 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2410,24 +2417,24 @@ msgstr ""
 "Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
 "у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"
@@ -2455,6 +2462,30 @@ msgstr "анімований WebP (краще за GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (сумісний, але неефективний)"
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr "Розташування знімка вікна було скопійовано до буфера обміну даними."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "Відео оприлюднено"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "Зображення оприлюднено"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "Посилання на відео (<a href=\"%1\">%1</a>) було скопійовано до буфера "
+#~ "обміну даними."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "Під час спроби оприлюднити відео виникли проблеми: %1"
 
 #~ msgid "Screenshot"
 #~ msgstr "Знімок вікна"
@@ -2681,9 +2712,6 @@ msgstr "GIF (сумісний, але неефективний)"
 #~ msgstr ""
 #~ "Визначає, чи слід копіювати до буфера обміну даними шлях до файла знімка "
 #~ "після його створення"
-
-#~ msgid "Copy to Clipboard"
-#~ msgstr "Копіювати до буфера"
 
 #~ msgid "Copy the current screenshot image to the clipboard."
 #~ msgstr "Копіювати поточний знімок вікна до буфера обміну інформацією"

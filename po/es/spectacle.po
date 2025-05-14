@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2025-04-24 16:22+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -775,11 +775,6 @@ msgstr "Esperar un clic de ratón antes de capturar la imagen de la pantalla."
 msgid "Delay:"
 msgstr "Demora:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "La captura de pantalla se ha copiado en el portapapeles."
-
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
@@ -812,41 +807,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 segundos"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Configurar Spectacle…"
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Hacer una captura de pantalla:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Opciones"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Hacer una grabación:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -897,18 +892,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "La ubicación del vídeo se ha copiado en el portapapeles."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "Abrir la carpeta contenedora"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "Copiar imagen en el portapapeles"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
+msgctxt "@action:button close inline notification"
+msgid "Close"
 msgstr ""
-"La ubicación de la captura de pantalla se ha copiado en el portapapeles."
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1033,16 +1035,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "Opciones"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "Código QR encontrado: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "Se ha encontrado un código QR con contenido binario."
-
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
@@ -1106,47 +1098,6 @@ msgstr "Guardar"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "Guardar como…"
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"La captura de pantalla se ha copiado en el portapapeles y se ha guardado "
-"como <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"El vídeo se ha guardado como <a href=\"%1\">%2</a> y su ubicación se ha "
-"copiado en el portapapeles."
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"La captura de pantalla se ha guardado como <a href=\"%1\">%2</a> y su "
-"ubicación se ha copiado en el portapapeles."
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "El vídeo se ha guardado como <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "La captura de pantalla se ha guardado como <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Abrir la carpeta contenedora"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1811,50 +1762,6 @@ msgstr "Controla si la herramienta de anotación de número arroja una sombra"
 msgid "Save &Location:"
 msgstr "&Ubicación para guardar:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "Vídeo compartido"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "Imagen compartida"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"El enlace del vídeo compartido (<a href=\"%1\">%1</a>) se ha copiado en el "
-"portapapeles."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"El enlace de la imagen compartida (<a href=\"%1\">%1</a>) se ha copiado en "
-"el portapapeles."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "Ha habido un problema al compartir el vídeo: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "Ha habido un problema al compartir la imagen: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -1982,7 +1889,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segundos"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1990,7 +1897,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 segundo"
 msgstr[1] "%1 segundos"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -2006,15 +1913,31 @@ msgstr "Deshacer"
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "Ampliación:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "Ampliación de la imagen"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "Ha habido un problema al compartir la imagen: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"El enlace de la imagen compartida (<a href=\"%1\">%1</a>) se ha copiado en "
+"el portapapeles."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2305,37 +2228,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Iniciar Spectacle sin capturar"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Ha ocurrido un error al hacer la captura de pantalla."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle está grabando"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle está grabando"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Clic en el icono de la bandeja del sistema para terminar la grabación"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Falta la compatibilidad con WebP."
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2346,25 +2269,25 @@ msgstr ""
 "bandeja del sistema para Spectacle e informe de este problema de empaquetado "
 "a su distribuidor."
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle está terminando la grabación"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Espere un momento"
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle está terminando la grabación"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2374,7 +2297,7 @@ msgstr ""
 "Tiempo grabado: %1\n"
 "Clic para detener la renderización antes de tiempo (se perderán datos)"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2384,19 +2307,102 @@ msgstr ""
 "Tiempo grabado: %1\n"
 "Clic para terminar la grabación."
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Ha ocurrido un error cuando se intentaba grabar la pantalla."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"La captura de pantalla se ha copiado en el portapapeles y se ha guardado "
+"como <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"La captura de pantalla se ha guardado como <a href=\"%1\">%2</a> y su "
+"ubicación se ha copiado en el portapapeles."
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "La captura de pantalla se ha guardado como <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "La captura de pantalla se ha copiado en el portapapeles."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"El vídeo se ha guardado como <a href=\"%1\">%2</a> y su ubicación se ha "
+"copiado en el portapapeles."
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "El vídeo se ha guardado como <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "La ubicación del vídeo se ha copiado en el portapapeles."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "Código QR encontrado: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "Se ha encontrado un código QR con contenido binario."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 no es un modo válido para --record"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2405,23 +2411,23 @@ msgstr ""
 "Se ha guardado una captura de pantalla como «%1» en «%2» y su ruta de "
 "archivo se ha guardado en el portapapeles."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Se ha guardado la captura de pantalla «%1» en la carpeta «Imágenes»."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Se ha guardado la captura de pantalla «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Se ha guardado una captura de pantalla en el portapapeles."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2430,24 +2436,24 @@ msgstr ""
 "Se ha guardado una grabación como «%1» en «%2» y su ruta de archivo se ha "
 "guardado en el portapapeles."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Se ha guardado la grabación «%1» en la carpeta «Vídeos»."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Se ha guardado la grabación «%1» en «%2»."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
@@ -2475,3 +2481,28 @@ msgstr "WebP animado (mejor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, pero ineficiente)"
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr ""
+#~ "La ubicación de la captura de pantalla se ha copiado en el portapapeles."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "Vídeo compartido"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "Imagen compartida"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "El enlace del vídeo compartido (<a href=\"%1\">%1</a>) se ha copiado en "
+#~ "el portapapeles."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "Ha habido un problema al compartir el vídeo: %1"

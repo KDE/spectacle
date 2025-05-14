@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2025-04-24 07:19+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -769,11 +769,6 @@ msgstr "Počakaj na klik miške pred zajemom zaslonske slike."
 msgid "Delay:"
 msgstr "Zakasnitev:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "Zaslonska slika je bila kopirana v odložišče."
-
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
@@ -808,41 +803,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 sekund"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Nastavi Spectacle …"
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Zajemi zaslonsko sliko:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Možnosti"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Posnemi video zaslona:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Zaslonska slika"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -893,17 +888,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "Mesto videa je bilo prekopirano na odložišče."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "Odpri vsebovano mapo"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy Image to Clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "Kopiraj sliko na odložišče"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
-msgstr "Mesto zaslonske slike je bilo skopirano na odložišče."
+msgctxt "@action:button close inline notification"
+msgid "Close"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1024,16 +1027,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "Možnosti"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "Najdena koda QR: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "Najdena koda QR z binarno vsebino."
-
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
@@ -1097,47 +1090,6 @@ msgstr "Shrani"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "Shrani kot…"
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"Zaslonska slika je bila skopirana na odložišče in shranjena kot <a href="
-"\"%1\">%2</a>"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegovo mesto je bilo "
-"skopirano na odložišče"
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"Zaslonska slika je bila shranjena kot (<a href=\"%1\">%2</a>) in njeno mesto "
-"je bilo skopirano na odložišče"
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Video je bil shranjen kot <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Zaslonska slika je bila shranjena kot <a href=\"%1\">%2</a>"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Odpri vsebovano mapo"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1792,50 +1744,6 @@ msgstr "Ali orodje za številske opombe riše tudi senco"
 msgid "Save &Location:"
 msgstr "&Mesto shranjevanja:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "Video deljen z drugimi"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "Slika deljena z drugimi"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Deljena povezava na video (<a href=\"%1\">%1</a>)  je bila skopirana na "
-"odložišče."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Deljena povezava na sliko (<a href=\"%1\">%1</a>)  je bila skopirana na "
-"odložišče."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "Med deljenjem videa je prišlo do težave: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "Med deljenjem slike je prišlo do težave: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -1965,7 +1873,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekund"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1975,7 +1883,7 @@ msgstr[1] "%1 sekunda"
 msgstr[2] "%1 sekundi"
 msgstr[3] "%1 sekunde"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1991,15 +1899,31 @@ msgstr "Razveljavi"
 msgid "Redo"
 msgstr "Uveljavi"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "Približanje:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "Približanje slike"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "Med deljenjem slike je prišlo do težave: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Deljena povezava na sliko (<a href=\"%1\">%1</a>)  je bila skopirana na "
+"odložišče."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2286,37 +2210,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle brez zajemanja"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Kliknite na sistemski pladenj za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Podpora za WebP manjka."
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2327,25 +2251,25 @@ msgstr ""
 "vrstici za Spectacle, nato pa to težavo s pakiranjem programja prijavite "
 "svojemu distributerju."
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle končuje snemanje"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Prosim, počakajte"
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle končuje snemanje"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2356,7 +2280,7 @@ msgstr ""
 "Kliknite, za predčasno zaustavitvijo upodabljanja (s tem boste izgubili "
 "podatke)"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2366,19 +2290,102 @@ msgstr ""
 "Čas snemanja: %1\n"
 "Kliknite za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"Zaslonska slika je bila skopirana na odložišče in shranjena kot <a href="
+"\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"Zaslonska slika je bila shranjena kot (<a href=\"%1\">%2</a>) in njeno mesto "
+"je bilo skopirano na odložišče"
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "Zaslonska slika je bila shranjena kot <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Zaslonska slika je bila kopirana v odložišče."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegovo mesto je bilo "
+"skopirano na odložišče"
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "Video je bil shranjen kot <a href=\"%1\">%2</a>"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Mesto videa je bilo prekopirano na odložišče."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "Najdena koda QR: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "Najdena koda QR z binarno vsebino."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2387,23 +2394,23 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2412,24 +2419,24 @@ msgstr ""
 "Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"
@@ -2457,6 +2464,30 @@ msgstr "Animiran WebP (bolje kot GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (združljivo a neučinkovito)"
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr "Mesto zaslonske slike je bilo skopirano na odložišče."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "Video deljen z drugimi"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "Slika deljena z drugimi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "Deljena povezava na video (<a href=\"%1\">%1</a>)  je bila skopirana na "
+#~ "odložišče."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "Med deljenjem videa je prišlo do težave: %1"
 
 #~ msgid "Screenshot"
 #~ msgstr "Zaslonska slika"
@@ -2595,9 +2626,6 @@ msgstr "GIF (združljivo a neučinkovito)"
 
 #~ msgid "Tools"
 #~ msgstr "Orodja"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Kopiraj sliko na odložišče"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "Pripravljen na zajem zaslonske slike"

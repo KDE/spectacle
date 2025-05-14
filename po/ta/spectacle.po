@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2025-04-20 18:09+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -758,11 +758,6 @@ msgstr "சுட்டியைக் கிளிக் செய்த பி
 msgid "Delay:"
 msgstr "தாமதம்:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
-
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
@@ -795,41 +790,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 நொடி"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "ஸ்பெக்டக்குலை அமை…"
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "உதவி"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "திரைப்பிடிப்பை எடு:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "திரைப்பதிவு எடு:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "திரைப்பிடிப்பு"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -880,17 +875,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "உதவி"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "நிகழ்படத்தின் இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "கொண்டுள்ள அடைவை திற"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy Image to Clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "படத்தை பிடிப்புப்பலகைக்கு நகலெடு"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
-msgstr "திரைப்பிடிப்பின் இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+msgctxt "@action:button close inline notification"
+msgid "Close"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1015,16 +1018,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "QR குறி கண்டறியப்பட்டது: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
-
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
@@ -1088,47 +1081,6 @@ msgstr "சேமி"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "இவ்வாறு சேமி..."
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <a href=\"%1\">%2</a> என "
-"சேமிக்கப்பட்டது"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"நிகழ்படம் <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
-"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
-"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "திரைப்பதிவு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டது"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "கொண்டுள்ள அடைவை திற"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1781,50 +1733,6 @@ msgstr "எண் குறிப்புக்கருவி நிழலை�
 msgid "Save &Location:"
 msgstr "&சேமிக்கப்படும் இடம்:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "நிகழ்படம் பகிரப்பட்டது"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "படம் பகிரப்பட்டது"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"பகிரப்பட்ட நிகழ்படத்தின் முகவரி (<a href=\"%1\">%1</a>) பிடிப்புப்பலகைக்கு "
-"நகலெடுக்கப்பட்டுள்ளது."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"பகிரப்பட்ட படத்தின் முகவரி (<a href=\"%1\">%1</a>) பிடிப்புப்பலகைக்கு "
-"நகலெடுக்கப்பட்டுள்ளது."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "நிகழ்படத்தை பகிர்வதில் சிக்கல் ஏற்பட்டது: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "படத்தை பகிர்வதில் சிக்கல் ஏற்பட்டது: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -1952,7 +1860,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1960,7 +1868,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 நொடி"
 msgstr[1] "%1 நொடிகள்"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1976,15 +1884,31 @@ msgstr "செயல்நீக்கு"
 msgid "Redo"
 msgstr "மீளச்செய்"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "உருப்பெருக்கம்:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "படத்தின் உருப்பெருக்கம்"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "படத்தை பகிர்வதில் சிக்கல் ஏற்பட்டது: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"பகிரப்பட்ட படத்தின் முகவரி (<a href=\"%1\">%1</a>) பிடிப்புப்பலகைக்கு "
+"நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2264,37 +2188,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "படமெடுக்காமல் ஸ்பெக்டக்குலை துவக்கு"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "திரைப்பிடிப்பை எடுப்பதில் சிக்கல் ஏற்பட்டது."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "திரைப்பதிவை நிறுத்த கணினித் தட்டிலுள்ள சின்னத்தை கிளிக் செய்யவும்"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "WebP ஆதரவு கிடைக்கவில்லை."
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2304,19 +2228,19 @@ msgstr ""
 "கணினித் தட்டிலுள்ள ஸ்பெக்டக்குலின் சின்னத்திற்கு அசைவூட்ட Qt Image Formats என்பதை "
 "நிறுவவும். மேலும், இச்சிக்கலை உங்கள் இயக்குதள வழங்குநருக்கு தெரிவிக்கவும்."
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "ஸ்பெக்டக்குல் திரைப்பதிவை சேமிக்கிறது"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "காத்திருக்கவும்"
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Finishing the Recording"
@@ -2324,7 +2248,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "ஸ்பெக்டக்குல் திரைப்பதிவை சேமிக்கிறது"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2338,7 +2262,7 @@ msgstr ""
 "திரைப்பதிவின் கால நீட்சி: %1\n"
 "திரைப்பதிவை நிறுத்த கிளிக் செய்யவும்"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2348,19 +2272,102 @@ msgstr ""
 "திரைப்பதிவின் கால நீட்சி: %1\n"
 "திரைப்பதிவை நிறுத்த கிளிக் செய்யவும்"
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "திரைப்பதிவிட முயற்சிக்கும்போது சிக்கல் ஏற்பட்டது."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <a href=\"%1\">%2</a> என "
+"சேமிக்கப்பட்டது"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
+"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டது"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"நிகழ்படம் <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
+"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "திரைப்பதிவு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "நிகழ்படத்தின் இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "QR குறி கண்டறியப்பட்டது: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "--record என்பதற்கு %1 ஒரு செல்லுபடியாகும் பயன்முறை இல்லை"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2369,23 +2376,23 @@ msgstr ""
 "ஓர் திரைப்பிடிப்பு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "திரைப்பிடிப்பு '%1' என உங்கள் படங்களுக்கான அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "திரைப்பிடிப்பு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "பிடிப்புப்பலகையில் திரைப்பிடிப்பு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2394,24 +2401,24 @@ msgstr ""
 "ஓர் திரைப்பதிவு '%1' என்ற பெயரில் '%2' என்ற இடத்தில் சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
 "இருப்பிடம் பிடிப்புப்பலகையில் சேமிக்கப்பட்டுள்ளது."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ஓர் திரைப்பதிவு '%1' என உங்கள் நிகழ்பட அடைவில் சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ஓர் திரைப்பதிவு '%1' என '%2' என்ற இடத்திற்கு சேமிக்கப்பட்டது."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "திற"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "குறிப்பிடு"
@@ -2439,6 +2446,30 @@ msgstr "நிகழ்பட WebP (GIF-ஐவிட சிறந்தது)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (பலவற்றில் இயங்கும், ஆனால் பெரிய கோப்புகளை உருவாக்கும்)"
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr "திரைப்பிடிப்பின் இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "நிகழ்படம் பகிரப்பட்டது"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "படம் பகிரப்பட்டது"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "பகிரப்பட்ட நிகழ்படத்தின் முகவரி (<a href=\"%1\">%1</a>) பிடிப்புப்பலகைக்கு "
+#~ "நகலெடுக்கப்பட்டுள்ளது."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "நிகழ்படத்தை பகிர்வதில் சிக்கல் ஏற்பட்டது: %1"
 
 #~ msgid "Screenshot"
 #~ msgstr "திரைப்பிடிப்பு"
@@ -2582,9 +2613,6 @@ msgstr "GIF (பலவற்றில் இயங்கும், ஆனால�
 
 #~ msgid "Tools"
 #~ msgstr "கருவிகள்"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "படத்தை பிடிப்புப்பலகைக்கு நகலெடு"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "திரைப்பிடிப்பை எடுப்பதற்கு தயார்"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-12 00:40+0000\n"
+"POT-Creation-Date: 2025-05-14 00:42+0000\n"
 "PO-Revision-Date: 2025-04-24 08:41+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -761,11 +761,6 @@ msgstr "Itxaron saguaren klik bati pantaila-argazkia atzemateko."
 msgid "Delay:"
 msgstr "Atzerapena:"
 
-#: src/Gui/CopiedMessage.qml:12
-#, kde-format
-msgid "The screenshot has been copied to the clipboard."
-msgstr "Pantaila-argazkia arbelera kopiatu da."
-
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
@@ -798,41 +793,41 @@ msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
 msgstr "%1 segundo"
 
-#: src/Gui/DialogPage.qml:60
+#: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
 msgstr "Konfiguratu Spectacle..."
 
-#: src/Gui/DialogPage.qml:68
+#: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/Gui/DialogPage.qml:87
+#: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
 msgstr "Hartu pantaila-argazki bat:"
 
-#: src/Gui/DialogPage.qml:102 src/Gui/DialogPage.qml:143
+#: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Aukerak"
 
-#: src/Gui/DialogPage.qml:128
+#: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
 msgstr "Egin grabazio bat:"
 
-#: src/Gui/DialogPage.qml:170
+#: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
 msgstr "Pantaila-argazkia"
 
-#: src/Gui/DialogPage.qml:175
+#: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
@@ -883,17 +878,25 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/Gui/LocationCopiedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "The video location has been copied to the clipboard."
-msgstr "Bideoaren kokalekua arbelera kopiatu da."
+#: src/Gui/InlineMessageList.qml:129
+#, fuzzy, kde-format
+#| msgid "Open Containing Folder"
+msgctxt "@action:button"
+msgid "Open Containing Folder"
+msgstr "Ireki hau barnean duen karpeta"
 
-#: src/Gui/LocationCopiedMessage.qml:14
+#: src/Gui/InlineMessageList.qml:139
+#, fuzzy, kde-format
+#| msgid "Copy Image to Clipboard"
+msgctxt "@action:button"
+msgid "Copy to Clipboard"
+msgstr "Kopiatu irudia arbelera"
+
+#: src/Gui/InlineMessageList.qml:149
 #, kde-format
-msgctxt "@info"
-msgid "The screenshot location has been copied to the clipboard."
-msgstr "Pantaila-argazkiaren kokalekua arbelera kopiatu da."
+msgctxt "@action:button close inline notification"
+msgid "Close"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1017,16 +1020,6 @@ msgctxt "@action"
 msgid "Options"
 msgstr "Aukerak"
 
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "QR Code found: %1"
-msgstr "QR kodea aurkitu da: %1"
-
-#: src/Gui/QRCodeScannedMessage.qml:30
-#, kde-format
-msgid "Found QR code with binary content."
-msgstr "Eduki bitarra duen QR kode bat aurkitu da."
-
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
@@ -1090,46 +1083,6 @@ msgstr "Gorde"
 msgctxt "@action"
 msgid "Save As…"
 msgstr "Gorde honela..."
-
-#: src/Gui/SavedAndCopiedMessage.qml:8
-#, kde-format
-msgid ""
-"The screenshot was copied to the clipboard and saved as <a href=\"%1\">%2</a>"
-msgstr ""
-"Pantaila-argazkia arbelera kopiatu eta <a href=\"%1\">%2</a> gisa gorde da"
-
-#: src/Gui/SavedAndLocationCopied.qml:9
-#, kde-format
-msgid ""
-"The video has been saved as <a href=\"%1\">%2</a> and its location has been "
-"copied to clipboard"
-msgstr ""
-"Bideoa <a href=\"%1\">%2</a> gisa gorde da eta bere kokalekua arbelera "
-"kopiatu da"
-
-#: src/Gui/SavedAndLocationCopied.qml:12
-#, kde-format
-msgid ""
-"The screenshot has been saved as <a href=\"%1\">%2</a> and its location has "
-"been copied to clipboard"
-msgstr ""
-"Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da eta bere kokalekua "
-"arbelera kopiatu da"
-
-#: src/Gui/SavedMessage.qml:12
-#, kde-format
-msgid "The video was saved as <a href=\"%1\">%2</a>"
-msgstr "Bideoa <a href=\"%1\">%2</a> gisa gorde da"
-
-#: src/Gui/SavedMessage.qml:14
-#, kde-format
-msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
-msgstr "Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da"
-
-#: src/Gui/SavedMessage.qml:20
-#, kde-format
-msgid "Open Containing Folder"
-msgstr "Ireki hau barnean duen karpeta"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1783,48 +1736,6 @@ msgstr "Zenbaki-idatzohar tresnak itzala duen edo ez"
 msgid "Save &Location:"
 msgstr "Gorde koka&lekua:"
 
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Video shared"
-msgstr "Bideoa partekatu da"
-
-#: src/Gui/SharedMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "Image shared"
-msgstr "Irudia partekatu da"
-
-#: src/Gui/SharedMessage.qml:16
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Partekatutako bideoaren esteka (<a href=\"%1\">%1</a>) arbelera kopiatu da."
-
-#: src/Gui/SharedMessage.qml:18
-#, kde-format
-msgctxt "@info"
-msgid ""
-"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-"clipboard."
-msgstr ""
-"Partekatutako irudiaren esteka (<a href=\"%1\">%1</a>) arbelera kopiatu da."
-
-#: src/Gui/ShareErrorMessage.qml:13
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the video: %1"
-msgstr "Bideoa partekatzeko arazo bat sortu da: %1"
-
-#: src/Gui/ShareErrorMessage.qml:14
-#, kde-format
-msgctxt "@info"
-msgid "There was a problem sharing the image: %1"
-msgstr "Irudia partekatzeko arazo bat sortu da: %1"
-
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
@@ -1952,7 +1863,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " segundo"
 
-#: src/Gui/SpectacleWindow.cpp:179
+#: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1960,7 +1871,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "segundo %1"
 msgstr[1] "%1 segundo"
 
-#: src/Gui/SpectacleWindow.cpp:182
+#: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1976,15 +1887,30 @@ msgstr "Desegin"
 msgid "Redo"
 msgstr "Berregin"
 
-#: src/Gui/ViewerPage.qml:199
+#: src/Gui/ViewerPage.qml:183
 #, kde-format
 msgid "Zoom:"
 msgstr "Zoom:"
 
-#: src/Gui/ViewerPage.qml:213
+#: src/Gui/ViewerPage.qml:197
 #, kde-format
 msgid "Image Zoom"
 msgstr "Irudiaren zoom"
+
+#: src/Gui/ViewerWindow.cpp:51
+#, kde-format
+msgctxt "@info"
+msgid "There was a problem sharing the image: %1"
+msgstr "Irudia partekatzeko arazo bat sortu da: %1"
+
+#: src/Gui/ViewerWindow.cpp:54
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
+"clipboard."
+msgstr ""
+"Partekatutako irudiaren esteka (<a href=\"%1\">%1</a>) arbelera kopiatu da."
 
 #: src/Main.cpp:44
 #, kde-format
@@ -2273,37 +2199,37 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:243
+#: src/SpectacleCore.cpp:248
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Errore bat gertatu da pantaila-argazki bat hartu bitartean."
 
-#: src/SpectacleCore.cpp:272
+#: src/SpectacleCore.cpp:277
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
-#: src/SpectacleCore.cpp:277
+#: src/SpectacleCore.cpp:282
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
-#: src/SpectacleCore.cpp:278
+#: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr "Egin klik sistema-erretiluko ikonoan grabazioa bukatzeko"
 
-#: src/SpectacleCore.cpp:281
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "«WebP»ren euskarria falta da."
 
-#: src/SpectacleCore.cpp:282
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2314,25 +2240,25 @@ msgstr ""
 "erretiluko ikono animatuak lortzeko, eta ondoren, eman paketatze arazo "
 "horren berri zure banatzaileari."
 
-#: src/SpectacleCore.cpp:318
+#: src/SpectacleCore.cpp:337
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:319
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Itxaron mesedez"
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:340
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2342,7 +2268,7 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik errendatzea azkar gelditzeko (datuak galduko dira)"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2352,19 +2278,101 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik grabazioa bukatzeko"
 
-#: src/SpectacleCore.cpp:364
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Errore bat gertatu da pantaila grabatzen saiatzean."
 
-#: src/SpectacleCore.cpp:756
+#: src/SpectacleCore.cpp:435
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
+#| "%2</a>"
+msgctxt "@info"
+msgid ""
+"The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
+"link>"
+msgstr ""
+"Pantaila-argazkia arbelera kopiatu eta <a href=\"%1\">%2</a> gisa gorde da"
+
+#: src/SpectacleCore.cpp:438
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
+#| "has been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
+"has been copied to clipboard"
+msgstr ""
+"Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da eta bere kokalekua "
+"arbelera kopiatu da"
+
+#: src/SpectacleCore.cpp:441
+#, fuzzy, kde-kuit-format
+#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
+msgstr "Pantaila-argazkia <a href=\"%1\">%2</a> gisa gorde da"
+
+#: src/SpectacleCore.cpp:445
+#, fuzzy, kde-format
+#| msgid "The screenshot has been copied to the clipboard."
+msgctxt "@info"
+msgid "The screenshot has been copied to the clipboard."
+msgstr "Pantaila-argazkia arbelera kopiatu da."
+
+#: src/SpectacleCore.cpp:476
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
+#| "been copied to clipboard"
+msgctxt "@info"
+msgid ""
+"The video has been saved as <link url=\"%1\">%2</link> and its location has "
+"been copied to clipboard"
+msgstr ""
+"Bideoa <a href=\"%1\">%2</a> gisa gorde da eta bere kokalekua arbelera "
+"kopiatu da"
+
+#: src/SpectacleCore.cpp:479
+#, fuzzy, kde-kuit-format
+#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+msgctxt "@info"
+msgid "The video was saved as <link url=\"%1\">%2</link>"
+msgstr "Bideoa <a href=\"%1\">%2</a> gisa gorde da"
+
+#: src/SpectacleCore.cpp:483
+#, kde-format
+msgctxt "@info"
+msgid "The video location has been copied to the clipboard."
+msgstr "Bideoaren kokalekua arbelera kopiatu da."
+
+#. i18nc because it doesn't work with the link replacement logic.
+#. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
+#.
+#: src/SpectacleCore.cpp:503
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
+msgctxt "@info"
+msgid "QR Code found: %1"
+msgstr "QR kodea aurkitu da: %1"
+
+#: src/SpectacleCore.cpp:507
+#, fuzzy, kde-format
+#| msgid "Found QR code with binary content."
+msgctxt "@info"
+msgid "Found QR code with binary content."
+msgstr "Eduki bitarra duen QR kode bat aurkitu da."
+
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:991
+#: src/SpectacleCore.cpp:1043
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2373,23 +2381,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:995
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:998
+#: src/SpectacleCore.cpp:1050
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:1007
+#: src/SpectacleCore.cpp:1059
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2398,24 +2406,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1009
+#: src/SpectacleCore.cpp:1061
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1011
+#: src/SpectacleCore.cpp:1063
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1022
+#: src/SpectacleCore.cpp:1074
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1088
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
@@ -2443,6 +2451,30 @@ msgstr "WebP animatua (GIF baino hobea)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (bateragarria, baina ez eraginkorra)"
+
+#~ msgctxt "@info"
+#~ msgid "The screenshot location has been copied to the clipboard."
+#~ msgstr "Pantaila-argazkiaren kokalekua arbelera kopiatu da."
+
+#~ msgctxt "@info"
+#~ msgid "Video shared"
+#~ msgstr "Bideoa partekatu da"
+
+#~ msgctxt "@info"
+#~ msgid "Image shared"
+#~ msgstr "Irudia partekatu da"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
+#~ "clipboard."
+#~ msgstr ""
+#~ "Partekatutako bideoaren esteka (<a href=\"%1\">%1</a>) arbelera kopiatu "
+#~ "da."
+
+#~ msgctxt "@info"
+#~ msgid "There was a problem sharing the video: %1"
+#~ msgstr "Bideoa partekatzeko arazo bat sortu da: %1"
 
 #~ msgid "Screenshot"
 #~ msgstr "Pantaila-argazkia"
@@ -2584,9 +2616,6 @@ msgstr "GIF (bateragarria, baina ez eraginkorra)"
 
 #~ msgid "Tools"
 #~ msgstr "Tresnak"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Kopiatu irudia arbelera"
 
 #~ msgid "Ready to take a screenshot"
 #~ msgstr "Pantaila-argazki bat hartzeko prest"
