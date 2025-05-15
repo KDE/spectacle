@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-04-24 11:53+0300\n"
+"PO-Revision-Date: 2025-05-14 09:14+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -886,24 +886,22 @@ msgid "Help"
 msgstr "Довідка"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "Відкрити теку зі знімками"
+msgstr "Відкрити теку з даними"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Копіювати до буфера"
+msgstr "Скопіювати до буфера"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Закрити"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2295,64 +2293,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Під час спроби запису з екрана сталася помилка."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Знімок було скопійовано до буфера обміну даними і збережено як <a href="
-"\"%1\">%2</a>"
+"Знімок було скопійовано до буфера обміну даними і збережено як <link url="
+"\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Знімок вікна було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск "
-"and its location has been copied to clipboard"
+"Знімок вікна було збережено як <link url=\"%1\">%2</link>, а адресу файла "
+"було ск and its location has been copied to clipboard"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Знімок було збережено як <a href=\"%1\">%2</a>"
+msgstr "Знімок було збережено як <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Знімок вікна було скопійовано до буфера обміну даними."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Відео було збережено як <a href=\"%1\">%2</a>, а адресу файла було ск and "
-"its location has been copied to clipboard"
+"Відео було збережено як <link url=\"%1\">%2</link>, а адресу файла було ск "
+"and its location has been copied to clipboard"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Відео було збережено як <a href=\"%1\">%2</a>"
+msgstr "Відео було збережено як <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2364,15 +2350,13 @@ msgstr "Розташування відео було скопійовано до
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Виявлено QR-код: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Виявлено QR-код із двійковим вмістом."

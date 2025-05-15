@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-04-24 07:19+0200\n"
+"PO-Revision-Date: 2025-05-14 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -889,24 +889,22 @@ msgid "Help"
 msgstr "Pomoč"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Odpri vsebovano mapo"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy Image to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Kopiraj sliko na odložišče"
+msgstr "Kopiraj na odložišče"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2297,64 +2295,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Zaslonska slika je bila skopirana na odložišče in shranjena kot <a href="
-"\"%1\">%2</a>"
+"Zaslonska slika je bila skopirana na odložišče in shranjena kot <link url="
+"\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Zaslonska slika je bila shranjena kot (<a href=\"%1\">%2</a>) in njeno mesto "
-"je bilo skopirano na odložišče"
+"Zaslonska slika je bila shranjena kot <link url=\"%1\">%2</link> in njeno "
+"mesto je bilo skopirano na odložišče"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Zaslonska slika je bila shranjena kot <a href=\"%1\">%2</a>"
+msgstr "Zaslonska slika je bila shranjena kot <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "Zaslonska slika je bila kopirana v odložišče."
+msgstr "Zaslonska slika je bila skopirana na odložišče."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Video je bil shranjen kot (<a href=\"%1\">%2</a>) in njegovo mesto je bilo "
-"skopirano na odložišče"
+"Video je bil shranjen kot <link url=\"%1\">%2</link> in njegovo mesto je "
+"bilo skopirano na odložišče"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Video je bil shranjen kot <a href=\"%1\">%2</a>"
+msgstr "Video je bil shranjen kot <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2366,15 +2352,13 @@ msgstr "Mesto videa je bilo prekopirano na odložišče."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Najdena koda QR: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Najdena koda QR z binarno vsebino."

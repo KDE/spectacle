@@ -850,18 +850,16 @@ msgid "Help"
 msgstr "帮助"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "打开所在文件夹"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "复制截图到剪贴板"
+msgstr ""
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
@@ -2232,58 +2230,46 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "尝试进行屏幕录像时发生错误。"
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
-msgstr "屏幕截图已复制到剪贴板并保存为 <a href=\"%1\">%2</a>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
-msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>，且该位置已被复制到剪贴板"
+msgstr ""
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "屏幕截图已保存为 <a href=\"%1\">%2</a>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "截图已复制到剪贴板。"
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
-msgstr "视频已保存为 <a href=\"%1\">%2</a>，且该位置已被复制到剪贴板"
+msgstr ""
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "视频已保存为 <a href=\"%1\">%2</a>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2295,18 +2281,16 @@ msgstr "视频的位置已复制到剪贴板。"
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
-msgstr "识别到二维码：%1"
+msgstr ""
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr "识别到包含二进制内容的二维码。"
+msgstr ""
 
 #: src/SpectacleCore.cpp:808
 #, kde-format
@@ -2389,25 +2373,3 @@ msgstr "动态 WebP (优于 GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (兼容性好但低效)"
-
-#~ msgctxt "@info"
-#~ msgid "The screenshot location has been copied to the clipboard."
-#~ msgstr "截图的位置已复制到剪贴板。"
-
-#~ msgctxt "@info"
-#~ msgid "Video shared"
-#~ msgstr "视频已分享"
-
-#~ msgctxt "@info"
-#~ msgid "Image shared"
-#~ msgstr "图像已分享"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr "视频分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板。"
-
-#~ msgctxt "@info"
-#~ msgid "There was a problem sharing the video: %1"
-#~ msgstr "分享视频出错：%1"

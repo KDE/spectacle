@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-04-24 04:31+0200\n"
+"PO-Revision-Date: 2025-05-14 03:30+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -870,24 +870,22 @@ msgid "Help"
 msgstr "დახმარება"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "შემცველი საქაღალდის გახსნა"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "გამოსახულების ბუფერში კოპირება"
+msgstr "ბუფერში კოპირება"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2263,63 +2261,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "შეცდომა ეკრანის ჩაწერის მცდელობისას."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"ეკრანის ანაბეჭდი დაკოპირდა ბუფერში და შენახულია, როგორც <a href=\"%1\">%2</a>"
+"ეკრანის ანაბეჭდი დაკოპირდა ბუფერში და შენახულია, როგორც <link url=\"%1\">%2</"
+"link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a> და მისი მდებარეობა "
-"ბუფერში დაკოპირდა"
+"ეკრანის ანაბეჭდი შენახულია, როგორც <link url=\"%1\">%2</link> და მისი "
+"მდებარეობა ბუფერში დაკოპირდა"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც <a href=\"%1\">%2</a>"
+msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "ეკრანის ანაბეჭდი ბუფერში დაკოპირდა."
+msgstr "ეკრანის ანაბეჭდი დაკოპირდა ბუფერში."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"ვიდეო შენახულია, როგორც <a href=\"%1\">%2</a> და მისი მდებარეობა ბუფერში "
-"დაკოპირდა"
+"ვიდეო შენახულია, როგორც <link url=\"%1\">%2</link> და მისი მდებარეობა "
+"ბუფერში დაკოპირდა"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "ვიდეო შენახულია, როგორც <a href=\"%1\">%2</a>"
+msgstr "ვიდეო შენახულია, როგორც <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2331,15 +2318,13 @@ msgstr "ვიდეოს მდებარეობა ბუფერში 
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "ნაპოვნია QR კოდი: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "აღმოჩენილია QR კოდი ბინარული შემცველობით."
