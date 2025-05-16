@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-04-25 09:55+0300\n"
+"PO-Revision-Date: 2025-05-15 13:51+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -867,24 +867,22 @@ msgid "Help"
 msgstr "Yardım"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "İçeren Klasörü Aç"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Görseli panoya kopyala"
+msgstr "Panoya Kopyala"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2263,62 +2261,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Ekranı kaydetmeye çalışırken bir hata oluştu."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Ekran görüntüsü panoya kopyalandı ve <a href=\"%1\">%2</a> olarak kaydedildi."
+"Ekran görüntüsü panoya kopyalandı ve <link url=\"%1\">%2</link> olarak "
+"kaydedildi."
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Ekran görüntüsü <a href=\"%1\">%2</a> olarak kaydedildi ve konumu panoya "
-"kopyalandı."
+"Ekran görüntüsü <link url=\"%1\">%2</link> olarak kaydedildi ve konumu "
+"panoya kopyalandı."
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Ekran görüntüsü <a href=\"%1\">%2</a> olarak kaydedildi."
+msgstr "Ekran görüntüsü <link url=\"%1\">%2</link> olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekran görüntüsü panoya kopyalandı."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Video <a href=\"%1\">%2</a> olarak kaydedildi ve konumu panoya kopyalandı."
+"Video <link url=\"%1\">%2</link> olarak kaydedildi ve konumu panoya "
+"kopyalandı."
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Video <a href=\"%1\">%2</a> olarak kaydedildi."
+msgstr "Video <link url=\"%1\">%2</link> olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2330,15 +2318,13 @@ msgstr "Video konumu panoya kopyalandı."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Kare kod bulundu: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "İkili içerik içeren bir Kare Kod bulundu."
