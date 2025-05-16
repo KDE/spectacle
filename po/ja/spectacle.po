@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-14 00:42+0000\n"
+"POT-Creation-Date: 2025-05-16 02:41+0000\n"
 "PO-Revision-Date: 2025-03-08 19:33+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -452,13 +452,11 @@ msgstr ""
 
 #: src/ExportManager.cpp:922
 #, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#| msgctxt "@item recording mode"
+#| msgid "Window"
 msgctxt "filename placeholder description"
 msgid "Window Title"
-msgstr "ウィンドウのタイトル"
+msgstr "ウィンドウ"
 
 #: src/ExportManager.cpp:923
 #, kde-format
@@ -566,10 +564,11 @@ msgid "None"
 msgstr "なし"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Crop"
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr ""
+msgstr "切り抜き"
 
 #: src/Gui/AnnotationsToolBarContents.qml:132
 #, fuzzy, kde-format
@@ -773,10 +772,10 @@ msgstr "コピー"
 
 #: src/Gui/CopyLocationAction.qml:9
 #, fuzzy, kde-format
-#| msgid "Save Location:"
+#| msgid "Copy Location"
 msgctxt "@action"
 msgid "Copy Location"
-msgstr "保存場所:"
+msgstr "場所をコピー"
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -838,10 +837,12 @@ msgid "Recording"
 msgstr "画面録画"
 
 #: src/Gui/EditAction.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button edit screenshot"
+#| msgid "Edit…"
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "編集..."
 
 #: src/Gui/ExportMenu.cpp:50
 #, fuzzy, kde-format
@@ -913,10 +914,11 @@ msgstr "新しいスクリーンショット"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, fuzzy, kde-format
-#| msgid "Screenshot"
+#| msgctxt "@title:group"
+#| msgid "Screenshot Settings"
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "スクリーンショット"
+msgstr "スクリーンショット設定"
 
 #: src/Gui/OptionsMenu.cpp:40
 #, fuzzy, kde-format
@@ -953,17 +955,17 @@ msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:58
 #, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#| msgid "Include window shadow"
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr "ウィンドウのタイトルバーと縁を含める"
+msgstr "ウィンドウの影を含める"
 
 #: src/Gui/OptionsMenu.cpp:59
 #, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#| msgid "Show the window shadow"
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
-msgstr "ウィンドウのタイトルバーと縁を含める"
+msgstr "ウィンドウの影を表示"
 
 #: src/Gui/OptionsMenu.cpp:69
 #, fuzzy, kde-format
@@ -1119,7 +1121,8 @@ msgstr "名前を付けて保存..."
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, fuzzy, kde-format
-#| msgid "Screenshot"
+#| msgctxt "translatable folder name"
+#| msgid "Screenshots"
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
 msgstr "スクリーンショット"
@@ -2268,7 +2271,7 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:340
 #, fuzzy, kde-format
-#| msgctxt "recording notification title"
+#| msgctxt "@info:tooltip title for recording tray icon"
 #| msgid "Spectacle is Recording"
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
@@ -2473,9 +2476,21 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (互換性優先、非効率的)"
 
+#~ msgid "Screenshot"
+#~ msgstr "スクリーンショット"
+
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."
 #~ msgstr "スクリーンショットの場所がクリップボードにコピーされました。"
+
+#~ msgid "Configure..."
+#~ msgstr "設定..."
+
+#~ msgid "Capture Mode"
+#~ msgstr "撮影モード"
+
+#~ msgid "Capture Settings"
+#~ msgstr "撮影設定"
 
 #~ msgctxt "@info"
 #~ msgid "Video shared"

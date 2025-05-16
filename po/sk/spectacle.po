@@ -2,45 +2,42 @@
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2022, 2023 Roman Paholik <wizzardsk@gmail.com>
 # SPDX-FileCopyrightText: 2019, 2020, 2021, 2023, 2024 Matej Mrenica <matejm98mthw@gmail.com>
 # Dusan Kazik <prescott66@gmail.com>, 2020.
+# SPDX-FileCopyrightText: 2025 Lucia Mrenica <lucia.mrenica@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2024-03-24 11:39+0100\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"POT-Creation-Date: 2025-05-16 02:41+0000\n"
+"PO-Revision-Date: 2025-05-03 13:04+0200\n"
+"Last-Translator: Lucia Mrenica <lucia.mrenica@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/CaptureModeModel.cpp:162
-#, fuzzy, kde-format
-#| msgid "Rectangular Region"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
 msgstr "Pravouhlá oblasť"
 
 #: src/CaptureModeModel.cpp:164
-#, fuzzy, kde-format
-#| msgid "All Screens (Scaled to same size)"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
 msgstr "Všetky obrazovky (zmenšené na rovnakú veľkosť)"
 
 #: src/CaptureModeModel.cpp:166
-#, fuzzy, kde-format
-#| msgid "Current Screen"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
 msgstr "Aktuálna obrazovka"
 
 #: src/CaptureModeModel.cpp:168
-#, fuzzy, kde-format
-#| msgid "Active Window"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
 msgstr "Aktívne okno"
@@ -53,22 +50,19 @@ msgid "Select Window"
 msgstr "Aktívne okno"
 
 #: src/CaptureModeModel.cpp:171
-#, fuzzy, kde-format
-#| msgid "Window Under Cursor"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
 msgstr "Okno pod kurzorom"
 
 #: src/CaptureModeModel.cpp:174
-#, fuzzy, kde-format
-#| msgid "All Screens"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
 msgstr "Všetky obrazovky"
 
 #: src/CaptureModeModel.cpp:176
-#, fuzzy, kde-format
-#| msgid "Full Screen"
+#, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
 msgstr "Celá obrazovka"
@@ -516,9 +510,9 @@ msgstr "Ťah:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
+msgstr[2] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
@@ -544,13 +538,13 @@ msgstr "Farba výplne"
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Sila:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Sila efektu."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:259
 #, kde-format
@@ -562,18 +556,18 @@ msgstr "Písmo:"
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %3 %1bod"
+msgstr[1] "%2 %3 %1body"
+msgstr[2] "%2 %3 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:274
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 %1bod"
+msgstr[1] "%2 %1body"
+msgstr[2] "%2 %1bodov"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:286
 #, kde-format
@@ -603,10 +597,11 @@ msgid "None"
 msgstr "Žiadne"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Crop"
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr ""
+msgstr "Orezať"
 
 #: src/Gui/AnnotationsToolBarContents.qml:132
 #, fuzzy, kde-format
@@ -720,12 +715,10 @@ msgid "Take a new screenshot"
 msgstr "Zachytiť novú snímku obrazovky"
 
 #: src/Gui/CaptureOptions.qml:39
-#, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Snímky obrazovky"
+msgstr "Nastavenia snímky obrazovky"
 
 #: src/Gui/CaptureOverlay.qml:130
 #, fuzzy, kde-format
@@ -832,16 +825,13 @@ msgid "No Delay"
 msgstr "Bez oneskorenia"
 
 #: src/Gui/DelaySpinBox.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "%1 second"
-#| msgid_plural "%1 seconds"
+#, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekúnd"
+msgstr[0] "%2 sekunda"
+msgstr[1] "%2 sekundy"
+msgstr[2] "%2 sekúnd"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
@@ -860,25 +850,22 @@ msgid "Help"
 msgstr "Pomocník"
 
 #: src/Gui/DialogPage.qml:80
-#, fuzzy, kde-format
-#| msgid "Take Screenshot:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Zachytenie snímky obrazovky:"
+msgstr "Zachytiť novú snímku obrazovky:"
 
 #: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:group"
 msgid "Options"
 msgstr "Možnosti"
 
 #: src/Gui/DialogPage.qml:121
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Nahrávka"
+msgstr "Nahrať obrazovku:"
 
 #: src/Gui/DialogPage.qml:163
 #, kde-format
@@ -893,10 +880,12 @@ msgid "Recording"
 msgstr "Nahrávanie"
 
 #: src/Gui/EditAction.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button edit screenshot"
+#| msgid "Edit…"
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Upraviť..."
 
 #: src/Gui/ExportMenu.cpp:50
 #, fuzzy, kde-format
@@ -968,11 +957,11 @@ msgstr "Nová snímka obrazovky"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, fuzzy, kde-format
-#| msgctxt "translatable folder name"
-#| msgid "Screenshots"
+#| msgctxt "@title:group"
+#| msgid "Screenshot Settings"
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "Snímky obrazovky"
+msgstr "Nastavenia snímky obrazovky"
 
 #: src/Gui/OptionsMenu.cpp:40
 #, fuzzy, kde-format
@@ -1167,7 +1156,7 @@ msgstr "Dokončiť nahrávku"
 #| msgid "Save"
 msgctxt "@action"
 msgid "Save"
-msgstr "Uloženie"
+msgstr "Uložiť"
 
 #: src/Gui/SaveAsAction.qml:9
 #, fuzzy, kde-format
@@ -1323,10 +1312,9 @@ msgstr "Zobraziť inštrukcie pri výbere"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:200
-#, fuzzy, kde-format
-#| msgid "Show magnifier"
+#, kde-format
 msgid "Show magnifier:"
-msgstr "Zobraziť lupu"
+msgstr "Zobraziť lupu:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -2214,36 +2202,31 @@ msgid "Full Screen"
 msgstr "Celá obrazovka"
 
 #: src/ShortcutActions.cpp:38
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
 msgstr "Spustiť aplikáciu Spectacle"
 
 #: src/ShortcutActions.cpp:44
-#, fuzzy, kde-format
-#| msgid "Capture Entire Desktop"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
 msgstr "Zachytiť celú plochu"
 
 #: src/ShortcutActions.cpp:50
-#, fuzzy, kde-format
-#| msgid "Capture Current Monitor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
 msgstr "Zachytiť aktuálny monitor"
 
 #: src/ShortcutActions.cpp:56
-#, fuzzy, kde-format
-#| msgid "Capture Active Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
 msgstr "Zachytiť aktívne okno"
 
 #: src/ShortcutActions.cpp:62
-#, fuzzy, kde-format
-#| msgid "Capture Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
 msgstr "Zachytiť pravouhlú oblasť"
@@ -2256,36 +2239,31 @@ msgid "Capture Selected Window"
 msgstr "Zachytiť aktívne okno"
 
 #: src/ShortcutActions.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture Window Under Cursor"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
 msgstr "Zaznamenať okno pod kurzorom"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
-msgstr "Nahrať obrazovku"
+msgstr "Nahrávať obrazovku"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgid "Record Window"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
-msgstr "Nahrať obrazovku"
+msgstr "Nahrávať okno"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgid "Record Rectangular Region"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
 msgstr "Nahrať pravouhlú oblasť"
 
 #: src/ShortcutActions.cpp:94
-#, fuzzy, kde-format
-#| msgid "Launch Spectacle without capturing"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Spustiť aplikáciu Spectacle bez zachytenia"
@@ -2445,10 +2423,11 @@ msgstr "Umiestnenie videa bolo skopírované do schránky."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QR Code found: %1"
 msgctxt "@info"
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR kód nájdený: %1"
 
 #: src/SpectacleCore.cpp:507
 #, kde-format
@@ -2543,9 +2522,21 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr ""
 
+#~ msgid "Screenshot"
+#~ msgstr "Snímka obrazovky"
+
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."
 #~ msgstr "Umiestnenie snímky obrazovky bola skopírovaná do schránky."
+
+#~ msgid "Configure..."
+#~ msgstr "Nastaviť..."
+
+#~ msgid "Capture Mode"
+#~ msgstr "Režim záznamu"
+
+#~ msgid "Capture Settings"
+#~ msgstr "Nastavenia záznamu"
 
 #~ msgctxt "@info"
 #~ msgid "Video shared"
@@ -2566,18 +2557,6 @@ msgstr ""
 #~ msgctxt "@info"
 #~ msgid "There was a problem sharing the video: %1"
 #~ msgstr "Vyskytol sa problém so zdieľaním videa: %1"
-
-#~ msgid "Screenshot"
-#~ msgstr "Snímka obrazovky"
-
-#~ msgid "Configure..."
-#~ msgstr "Nastaviť..."
-
-#~ msgid "Capture Mode"
-#~ msgstr "Režim záznamu"
-
-#~ msgid "Capture Settings"
-#~ msgstr "Nastavenia záznamu"
 
 #~ msgctxt "@title:group"
 #~ msgid "Recording Settings"

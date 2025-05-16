@@ -1,14 +1,14 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2023, 2024 Toms Trasuns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-03-26 17:03+0200\n"
+"POT-Creation-Date: 2025-05-16 02:41+0000\n"
+"PO-Revision-Date: 2024-12-16 17:36+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -53,7 +53,7 @@ msgstr "Atlasītais logu"
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
-msgstr "Logs zem rādītāja"
+msgstr "Logs zem kursora"
 
 #: src/CaptureModeModel.cpp:174
 #, kde-format
@@ -88,7 +88,7 @@ msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Uzņemt logu, kas šobrīd ir zem rādītāja, tostarp izlecošo izvēļņu pamatlogus"
+"Uzņemt logu, kas šobrīd ir zem kursora, tostarp uzlecošo izvēļņu pamatlogus"
 
 #: src/CommandLineOptions.h:38
 #, kde-format
@@ -96,7 +96,7 @@ msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr ""
-"Uzņemt logu, kas atrodas zem rādītāja, izņemot izlecošo izvēļņu pamatlogus"
+"Uzņemt logu, kas atrodas zem kursora, izņemot uzlecošo izvēļņu pamatlogus"
 
 #: src/CommandLineOptions.h:42
 #, kde-format
@@ -182,7 +182,7 @@ msgstr "Sākt jaunu „Spectacle“ saskarnes instanci, to nereģistrējot „DB
 #: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "Darbojoties fona režīmā, ekrānattēlā iekļaut rādītāju"
+msgstr "Darbojoties fona režīmā, ekrānattēlā iekļaut kursoru"
 
 #: src/CommandLineOptions.h:104
 #, kde-format
@@ -283,58 +283,74 @@ msgstr "Drukāšanas kļūda. Neizdevās inicializēt printeri."
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
-msgstr "Diena (1—31)"
+msgstr ""
 
 #: src/ExportManager.cpp:891
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
-msgstr "Diena (01—31)"
+msgstr ""
 
 #: src/ExportManager.cpp:892
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
-msgstr "Diena (saīsināts nosaukums)"
+msgstr ""
 
 #: src/ExportManager.cpp:893
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
-msgstr "Diena (pilns nosaukums)"
+msgstr ""
 
 #: src/ExportManager.cpp:894
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr "Mēnesis (1—12)"
+msgstr ""
 
 #: src/ExportManager.cpp:895
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr "Mēnesis (01—12)"
+msgstr ""
 
 #: src/ExportManager.cpp:896
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized short name)"
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
-msgstr "Mēnesis (saīsināts nosaukums)"
+msgstr "Mēnesis (lokalizēts saīsināts nosaukums)"
 
 #: src/ExportManager.cpp:897
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized long name)"
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
-msgstr "Mēnesis (pilns nosaukums)"
+msgstr "Mēnesis (lokalizēts pilns nosaukums)"
 
 #: src/ExportManager.cpp:898
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Year (2 digit)"
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Gads (divu ciparu formātā)"
 
 #: src/ExportManager.cpp:899
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Year (4 digit)"
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Gads (četru ciparu formātā)"
@@ -343,127 +359,139 @@ msgstr "Gads (četru ciparu formātā)"
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
-msgstr "Stunda (0—23)"
+msgstr ""
 
 #: src/ExportManager.cpp:901
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr "Stunda (00—23)"
+msgstr ""
 
 #: src/ExportManager.cpp:902
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr "Stunda (1—12)"
+msgstr ""
 
 #: src/ExportManager.cpp:903
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr "Stunda (01—12)"
+msgstr ""
 
 #: src/ExportManager.cpp:904
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr "Minūte (0—59)"
+msgstr ""
 
 #: src/ExportManager.cpp:905
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr "Minūte (00—59)"
+msgstr ""
 
 #: src/ExportManager.cpp:906
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr "Sekunde (0—59)"
+msgstr ""
 
 #: src/ExportManager.cpp:907
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr "Sekunde (00—59)"
+msgstr ""
 
 #: src/ExportManager.cpp:908
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
-msgstr "Milisekunde (0—999)"
+msgstr ""
 
 #: src/ExportManager.cpp:910
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
-msgstr "Milisekunde (000—999)"
+msgstr ""
 
 #: src/ExportManager.cpp:911
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
-msgstr "AM/PM"
+msgstr ""
 
 #: src/ExportManager.cpp:913
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
-msgstr "am/pm"
+msgstr ""
 
 #: src/ExportManager.cpp:915
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
-msgstr "AM/PM vai am/pm (lokalizēti)"
+msgstr ""
 
 #: src/ExportManager.cpp:917
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Month (localized short name)"
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
-msgstr "Laika josla (saīsināts nosaukums)"
+msgstr "Mēnesis (lokalizēts saīsināts nosaukums)"
 
 #: src/ExportManager.cpp:918
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
-msgstr "Laika joslas nobīde (±0000)"
+msgstr ""
 
 #: src/ExportManager.cpp:919
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr "Laika joslas nobīde (±00:00)"
+msgstr ""
 
 #: src/ExportManager.cpp:920
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
-msgstr "Laika josla (pilns nosaukums)"
+msgstr ""
 
 #: src/ExportManager.cpp:921
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
-msgstr "Sekundes kopš UNIX laika"
+msgstr ""
 
 #: src/ExportManager.cpp:922
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Window Title"
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Loga virsraksts"
 
 #: src/ExportManager.cpp:923
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "A placeholder in the user configurable filename will replaced by the "
+#| "specified value"
+#| msgid "Sequential numbering, padded out to N digits"
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Secīga numurēšana, kas atdalīta, ievietojot papildu '#' rakstzīmes"
+msgstr "Secīga numurēšana līdz N cipariem"
 
 #: src/Gui/AcceptAction.qml:9
 #, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr "Pieņemt"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
@@ -558,25 +586,29 @@ msgid "Shadow"
 msgstr "Ēna"
 
 #: src/Gui/AnnotationsToolBarContents.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "None"
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
 msgstr "Nav"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Crop"
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
 msgstr "Kadrēt"
 
 #: src/Gui/AnnotationsToolBarContents.qml:132
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select"
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
 msgstr "Atlasīt"
 
 #: src/Gui/AnnotationsToolBarContents.qml:141
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Freehand"
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "Brīva roka"
@@ -585,34 +617,38 @@ msgstr "Brīva roka"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr "„Shift“ taustiņš: pielipt pie taisnām līnijām"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:149
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Highlighter"
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
-msgstr "Izcelšanas rīks"
+msgstr "Iezīmētājs"
 
 #: src/Gui/AnnotationsToolBarContents.qml:158
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Line"
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
-msgstr "Līnija"
+msgstr "Taisna līnija"
 
 #: src/Gui/AnnotationsToolBarContents.qml:159
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr "„Shift“ taustiņš: apstāties ik pēc 45 grādiem"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:166
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Arrow"
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
 msgstr "Bulta"
 
 #: src/Gui/AnnotationsToolBarContents.qml:175
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rectangle"
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Taisnstūris"
@@ -624,35 +660,38 @@ msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
-"„Shift“ taustiņš: pielipt pie diagonālām kustībām\n"
-"„Ctrl“ taustiņš: mainīt izmēru no centra"
 
 #: src/Gui/AnnotationsToolBarContents.qml:184
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Ellipse"
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "Elipse"
 
 #: src/Gui/AnnotationsToolBarContents.qml:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pixelate"
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "Pikselēt"
 
 #: src/Gui/AnnotationsToolBarContents.qml:200
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Blur"
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
 msgstr "Aizmiglot"
 
 #: src/Gui/AnnotationsToolBarContents.qml:208
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Text"
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
 msgstr "Teksts"
 
 #: src/Gui/AnnotationsToolBarContents.qml:215
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Number"
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
 msgstr "Skaitļi"
@@ -681,17 +720,17 @@ msgstr "Ekrānattēlu iestatījumi"
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr "Klikšķiniet un velciet, lai atlasītu."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
-msgstr "Iekļaut peles rādītāju"
+msgstr "Iekļaut peles kursoru"
 
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Ekrānattēlā parādīt peles rādītāju."
+msgstr "Ekrānattēlā parādīt peles kursoru."
 
 #: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
@@ -717,7 +756,7 @@ msgstr "Rādīt logu ēnas, kad tiek uzņemts loga ekrānattēls."
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Capture the current pop-up only"
-msgstr "Uzņemt tikai pašreizējo izlecošo logu"
+msgstr "Uzņemt tikai pašreizējo uzlecološo logu"
 
 #: src/Gui/CaptureSettingsColumn.qml:46
 #, kde-format
@@ -726,8 +765,8 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Uzņemt tikai loga izlecošo lodziņu (piemēram, izvēlni, paskaidri utt.). Ja "
-"izslēgts, izlecošais lodziņš tiks uzņemts kopā ar tā pamatlogu."
+"Uzņemt tikai loga uzlecošo lodziņu (piemēram, izvēlni, paskaidri utt.). Ja "
+"izslēgts, uzlecošais lodziņš tiks uzņemts kopā ar tā pamatlogu."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
@@ -755,13 +794,15 @@ msgid "Delay:"
 msgstr "Aizture:"
 
 #: src/Gui/CopyImageAction.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copy"
 msgctxt "@action"
 msgid "Copy"
 msgstr "Kopēt"
 
 #: src/Gui/CopyLocationAction.qml:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copy Location"
 msgctxt "@action"
 msgid "Copy Location"
 msgstr "Kopēt atrašanās vietu"
@@ -828,13 +869,16 @@ msgid "Recording"
 msgstr "Ekrāna ieraksts"
 
 #: src/Gui/EditAction.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button edit screenshot"
+#| msgid "Edit…"
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr "Rediģēt…"
+msgstr "Rediģēt..."
 
 #: src/Gui/ExportMenu.cpp:50
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export"
 msgctxt "@title:menu"
 msgid "Export"
 msgstr "Eksportēt"
@@ -855,19 +899,22 @@ msgid "Share"
 msgstr "Kopīgot"
 
 #: src/Gui/ExportMenuButton.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Export"
 msgctxt "@action"
 msgid "Export"
 msgstr "Eksportēt"
 
 #: src/Gui/HelpMenu.cpp:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Help"
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "Palīdzība"
 
 #: src/Gui/HelpMenuButton.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Help"
 msgctxt "@action"
 msgid "Help"
 msgstr "Palīdzība"
@@ -898,143 +945,170 @@ msgid "New Screenshot"
 msgstr "Jauns ekrānattēls"
 
 #: src/Gui/OptionsMenu.cpp:38
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Screenshot Settings"
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
 msgstr "Ekrānattēlu iestatījumi"
 
 #: src/Gui/OptionsMenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include mouse pointer"
 msgctxt "@option:check for screenshots"
 msgid "Include mouse pointer"
-msgstr "Iekļaut peles rādītāju"
+msgstr "Iekļaut peles kursoru"
 
 #: src/Gui/OptionsMenu.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screenshot image"
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
-msgstr "Ekrānattēlā parādīt peles rādītāju"
+msgstr "Ekrānattēlā parādīt peles kursoru"
 
 #: src/Gui/OptionsMenu.cpp:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include window titlebar and borders"
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
-msgstr "Iekļaut logu virsrakstjoslas un apmales"
+msgstr "Iekļaut logu virsrakstus un apmales"
 
 #: src/Gui/OptionsMenu.cpp:50
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Show the window title bar, the minimize/maximize/close buttons, and the "
+#| "window border"
 msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr ""
-"Parādīt loga virsrakstjoslu, minimizēšanas/maksimizēšanas/aizvēršanas pogas "
-"un loga apmali"
+"Parādīt loga virsraksta joslu, minimizēšanas/maksimizēšanas/aizvēršanas "
+"pogas un loga apmali"
 
 #: src/Gui/OptionsMenu.cpp:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include window shadow"
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr "Iekļaut loga ēnu"
+msgstr "Iekļaut logu ēnas"
 
 #: src/Gui/OptionsMenu.cpp:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show the window shadow"
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Rādīt loga ēnu"
 
 #: src/Gui/OptionsMenu.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Capture the current pop-up only"
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
-msgstr "Uzņemt tikai pašreizējo izlecošo logu"
+msgstr "Uzņemt tikai pašreizējo uzlecološo logu"
 
 #: src/Gui/OptionsMenu.cpp:71
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#| "If disabled, the pop-up is captured along with the parent window"
 msgctxt "@info:tooltip"
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
-"Uzņemt tikai pašreizējo izlecošo logu (piemēram, izvēlni, paskaidri utt.).\n"
-"Ja izslēgts, izlecošais logs tiks uzņemts kopā ar pamatlogu"
+"Parādīt tikai pašreizējo uzlecošo logu (piemēram, izvēlni, paskaidri utt.).\n"
+"Ja izslēgts, izvēlne tiek uzņemta kopā ar pamatlogu"
 
 #: src/Gui/OptionsMenu.cpp:81
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Quit after manual Save or Copy"
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Iziet pēc manuālas saglabāšanas vai nokopēšanas"
 
 #: src/Gui/OptionsMenu.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Quit Spectacle after manually saving or copying the image"
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Iziet no „Spectacle“ pēc attēla manuālas saglabāšanas vai nokopēšanas"
 
 #: src/Gui/OptionsMenu.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Capture On Click"
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Uzņemt pēc noklikšķināšanas"
 
 #: src/Gui/OptionsMenu.cpp:109
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Delay:"
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Aizture:"
 
 #: src/Gui/OptionsMenu.cpp:114
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "No Delay"
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Bez aiztures"
 
 #: src/Gui/OptionsMenu.cpp:133
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording Settings"
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Ieraksta iestatījumi"
 
 #: src/Gui/OptionsMenu.cpp:135
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Include mouse pointer"
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
-msgstr "Iekļaut peles rādītāju"
+msgstr "Iekļaut peles kursoru"
 
 #: src/Gui/OptionsMenu.cpp:136
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show the mouse cursor in the screen recording."
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr "Ekrāna ierakstā parādīt peles rādītāju"
+msgstr "Ekrāna ierakstā parādīt peles kursoru."
 
 #: src/Gui/OptionsMenuButton.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
 msgctxt "@action"
 msgid "Options"
 msgstr "Opcijas"
 
 #: src/Gui/RecordAction.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Ierakstīt"
+msgstr "Video"
 
 #: src/Gui/RecordingModeMenu.cpp:16
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Recording Modes"
 msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "Ekrāna ieraksta režīmi"
 
 #: src/Gui/RecordingModeMenuButton.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Recording"
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "Jauns ieraksts"
+msgstr "Video"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Ekrāna ierakstā parādīt peles rādītāju."
+msgstr "Ekrāna ierakstā parādīt peles kursoru."
 
 #: src/Gui/RecordingView.qml:81
 #, kde-format
@@ -1066,25 +1140,30 @@ msgid "Finish recording"
 msgstr "Pabeigt ierakstu"
 
 #: src/Gui/SaveAction.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save"
 msgctxt "@action"
 msgid "Save"
 msgstr "Saglabāt"
 
 #: src/Gui/SaveAsAction.qml:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save As..."
 msgctxt "@action"
 msgid "Save As…"
-msgstr "Saglabāt kā…"
+msgstr "Saglabāt kā..."
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Screenshot Modes"
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
 msgstr "Ekrānattēla režīmi"
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Screenshot"
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
 msgstr "Jauns ekrānattēls"
@@ -1109,9 +1188,10 @@ msgstr "Ieslēdzot „Spectacle“:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Take a new screenshot"
 msgid "Take rectangular screenshot"
-msgstr "Uzņemt taisnstūra ekrānattēlu"
+msgstr "Uzņemt jaunu ekrānattēlu"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
@@ -1435,13 +1515,13 @@ msgstr "Uzņemt ekrānattēlu pēc noklikšķināšanas"
 #: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Vai ekrānattēlā ir jāparāda peles rādītājs"
+msgstr "Vai ekrānattēlā ir jāparāda peles kursors"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Vai video ir jāparāda peles rādītājs"
+msgstr "Vai video ir jāparāda peles kursors"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:96
@@ -2092,7 +2172,7 @@ msgstr "Neizdevās atlasīt logu: %1"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr "Neizdevās atlasīt ekrānu: neviens ekrāns nesaturēja peles rādītāju"
+msgstr "Neizdevās atlasīt ekrānu: neviens ekrāns nesaturēja peles kursoru"
 
 #: src/Platforms/VideoPlatformWayland.cpp:417
 #, kde-format
@@ -2158,7 +2238,7 @@ msgstr "Uzņemt atlasīto logu"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr "Uzņemt logu zem rādītāja"
+msgstr "Uzņemt logu zem kursora"
 
 #: src/ShortcutActions.cpp:76
 #, kde-format
@@ -2241,7 +2321,7 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:340
 #, fuzzy, kde-format
-#| msgctxt "recording notification title"
+#| msgctxt "@info:tooltip title for recording tray icon"
 #| msgid "Spectacle is Recording"
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
@@ -2445,9 +2525,21 @@ msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (augsta saderība, bet neefektīvs)"
 
+#~ msgid "Screenshot"
+#~ msgstr "Ekrānattēls"
+
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."
 #~ msgstr "Ekrānattēla atrašanās vieta ir nokopēta."
+
+#~ msgid "Configure..."
+#~ msgstr "Konfigurēt..."
+
+#~ msgid "Capture Mode"
+#~ msgstr "Uzņemšanas režīms"
+
+#~ msgid "Capture Settings"
+#~ msgstr "Uzņemšanas iestatījumi"
 
 #~ msgctxt "@info"
 #~ msgid "Video shared"
@@ -2467,18 +2559,6 @@ msgstr "GIF (augsta saderība, bet neefektīvs)"
 #~ msgctxt "@info"
 #~ msgid "There was a problem sharing the video: %1"
 #~ msgstr "Kopīgojot video, radās problēma: %1"
-
-#~ msgid "Screenshot"
-#~ msgstr "Ekrānattēls"
-
-#~ msgid "Configure..."
-#~ msgstr "Konfigurēt..."
-
-#~ msgid "Capture Mode"
-#~ msgstr "Uzņemšanas režīms"
-
-#~ msgid "Capture Settings"
-#~ msgstr "Uzņemšanas iestatījumi"
 
 #~ msgctxt "@title:group"
 #~ msgid "Recording Settings"
