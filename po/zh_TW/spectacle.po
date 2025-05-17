@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:42+0000\n"
-"PO-Revision-Date: 2025-04-30 01:57+0900\n"
+"PO-Revision-Date: 2025-05-16 15:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -849,24 +849,24 @@ msgid "Help"
 msgstr "說明"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Open Containing Folder"
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "開啟所在資料夾"
+msgstr "開啟包含資料夾"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Copy Image to Clipboard"
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "複製影像到剪貼簿"
+msgstr "複製到剪貼簿"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1286,8 +1286,7 @@ msgstr "<filename>%1</filename>"
 msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
-msgstr ""
-"您能在檔案名稱使用以下的佔位符，這些佔位符將在檔案儲存時替換成實際文字："
+msgstr "您能在檔案名稱使用以下的佔位符，這些佔位符將在檔案儲存時替換成實際文字："
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
@@ -2227,7 +2226,7 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "嘗試進行螢幕錄製時發生錯誤。"
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 #| msgid ""
 #| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
 #| "%2</a>"
@@ -2235,10 +2234,10 @@ msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
-msgstr "螢幕截圖已複製至剪貼簿，且已存為 <a href=\"%1\">%2</a>"
+msgstr "螢幕截圖已複製至剪貼簿，且已存為 <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
 #| "has been copied to clipboard"
@@ -2246,24 +2245,24 @@ msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
-msgstr "此螢幕截圖已存為 <a href=\"%1\">%2</a>，其網址已複製到剪貼簿"
+msgstr "此螢幕截圖已存為 <link url=\"%1\">%2</link>，其位置已複製到剪貼簿"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "螢幕截圖已儲存為 <a href=\"%1\">%2</a>"
+msgstr "螢幕截圖已儲存為 <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "螢幕截圖已複製到剪貼簿。"
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 #| msgid ""
 #| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
 #| "been copied to clipboard"
@@ -2271,14 +2270,14 @@ msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
-msgstr "影片已存為 <a href=\"%1\">%2</a>，其位置已複製到剪貼簿"
+msgstr "影片已存為 <link url=\"%1\">%2</link>，其位置已複製到剪貼簿"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 #| msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "影片已儲存為 <a href=\"%1\">%2</a>"
+msgstr "影片已儲存為 <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2290,18 +2289,18 @@ msgstr "影片位置已複製到剪貼簿。"
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "QR Code found: %1"
 msgctxt "@info"
 msgid "QR Code found: %1"
-msgstr "找到 QR 碼：%1"
+msgstr "找到 QR code：%1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Found QR code with binary content."
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr "找到內容為二進位資料的 QR 碼。"
+msgstr "找到內容為二進位資料的 QR code。"
 
 #: src/SpectacleCore.cpp:808
 #, kde-format
