@@ -740,6 +740,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             QImage existingImage(existingLocalFile);
             m_annotationDocument->clearAnnotations();
             m_annotationDocument->setBaseImage(existingImage);
+            m_returnToViewer = true;
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
             return;
