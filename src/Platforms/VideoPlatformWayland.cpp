@@ -305,7 +305,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
         if (m_recorder->state() == PipeWireRecord::Idle) {
             m_memoryTimer.stop();
-            if (recordingState() != RecordingState::NotRecording) {
+            if (recordingState() != RecordingState::NotRecording && recordingState() != RecordingState::Finished) {
                 setRecordingState(VideoPlatform::RecordingState::Finished);
                 Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
             }
