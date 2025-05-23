@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:41+0000\n"
-"PO-Revision-Date: 2025-04-24 12:34+0200\n"
+"PO-Revision-Date: 2025-05-14 09:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -762,7 +762,7 @@ msgstr "Ix de Spectacle després de guardar o copiar manualment la imatge."
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
-msgstr "Captura en fer clic"
+msgstr "Captura quan es clique"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
@@ -894,24 +894,22 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Obri la carpeta contenidora"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Copia la imatge a dins del porta-retalls"
+msgstr "Copia a dins del porta-retalls"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -997,7 +995,7 @@ msgstr "Ix de Spectacle després de guardar o copiar manualment la imatge"
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "Captura en fer clic"
+msgstr "Captura quan es clique"
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
@@ -1051,12 +1049,12 @@ msgstr "Modes de gravació"
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "Gravació nou"
+msgstr "Gravació nova"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Mostra el cursor del ratolí en la gravació de pantalla."
+msgstr "Mostra el cursor del ratolí en la gravació de la pantalla."
 
 #: src/Gui/RecordingView.qml:81
 #, kde-format
@@ -1119,8 +1117,8 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
-"Feu clic i arrossegueu per a fer una selecció.\n"
-"Feu doble clic en la selecció per a acceptar i escapçar.\n"
+"Cliqueu i arrossegueu per a fer una selecció.\n"
+"Feu doble clic damunt de la selecció per a acceptar i escapçar.\n"
 "Feu clic dret per a netejar la selecció."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
@@ -1456,7 +1454,7 @@ msgstr "L'última regió utilitzada que l'usuari va seleccionar"
 #: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Pren una captura de pantalla en fer clic"
+msgstr "Pren una captura de pantalla quan es clique"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:88
@@ -2035,7 +2033,7 @@ msgstr "Metadades no acceptades del tipus de captura de pantalla de KWin: %1"
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "La gravació de pantalla no està disponible en X11."
+msgstr "La gravació de la pantalla no està disponible en X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
@@ -2048,7 +2046,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr "No s'ha pogut enregistrar: l'URL del fitxer no és un fitxer local"
+msgstr "No s'ha pogut gravar: l'URL del fitxer no és un fitxer local"
 
 #: src/Platforms/VideoPlatformWayland.cpp:263
 #, kde-format
@@ -2085,28 +2083,26 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
-"No s'ha pogut enregistrar: l'URL del fitxer temporal no és cap fitxer local "
-"(%1)"
+"No s'ha pogut gravar: l'URL del fitxer temporal no és cap fitxer local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:291
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
-"No s'ha pogut enregistrar: l'URL del fitxer d'eixida no és cap fitxer local "
-"(%1)"
+"No s'ha pogut gravar: l'URL del fitxer d'eixida no és cap fitxer local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "No s'ha pogut enregistrar: no s'ha pogut crear la carpeta (%1)"
+msgstr "No s'ha pogut gravar: no s'ha pogut crear la carpeta (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "S'ha cancel·lat la gravació de pantalla"
+msgstr "S'ha cancel·lat la gravació de la pantalla"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
@@ -2247,7 +2243,7 @@ msgstr "Spectacle està gravant"
 msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr ""
-"Feu clic damunt de la icona de la safata del sistema per a finalitzar la "
+"Cliqueu damunt de la icona de la safata del sistema per a finalitzar la "
 "gravació"
 
 #: src/SpectacleCore.cpp:300
@@ -2292,8 +2288,8 @@ msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
-"Temps enregistrat: %1\n"
-"Feu clic per a parar abans la gravació (açò farà perdre dades)"
+"Temps gravat: %1\n"
+"Cliqueu per a parar abans la gravació (açò farà perdre dades)"
 
 #: src/SpectacleCore.cpp:368
 #, kde-format
@@ -2302,74 +2298,62 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Temps enregistrat: %1\n"
-"Feu clic per a finalitzar la gravació"
+"Temps gravat: %1\n"
+"Cliqueu per a finalitzar la gravació"
 
 #: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "S'ha produït un error en intentar enregistrar la pantalla."
+msgstr "S'ha produït un error en intentar gravar la pantalla."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
 "La captura de pantalla s'ha copiat a dins del porta-retalls i guardat com a "
-"<a href=\"%1\">%2</a>"
+"<link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"La captura de pantalla s'ha guardat com a <a href=\"%1\">%2</a> i la seua "
-"ubicació s'ha copiat a dins del porta-retalls"
+"La captura de pantalla s'ha guardat com a <link url=\"%1\">%2</link> i la "
+"seua ubicació s'ha copiat a dins del porta-retalls"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "La captura de pantalla s'ha guardat com a <a href=\"%1\">%2</a>"
+msgstr "La captura de pantalla s'ha guardat com a <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "La captura de pantalla s'ha copiat a dins del porta-retalls."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"El vídeo s'ha guardat com a <a href=\"%1\">%2</a> i la seua ubicació s'ha "
-"copiat a dins del porta-retalls"
+"El vídeo s'ha guardat com a <link url=\"%1\">%2</link> i la seua ubicació "
+"s'ha copiat a dins del porta-retalls"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "El vídeo s'ha guardat com a <a href=\"%1\">%2</a>"
+msgstr "El vídeo s'ha guardat com a <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2381,15 +2365,13 @@ msgstr "La ubicació del vídeo s'ha copiat a dins del porta-retalls."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "S'ha trobat el codi QR: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "S'ha trobat un codi QR amb contingut binari."
@@ -2479,29 +2461,3 @@ msgstr "WebP animat (millor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, però ineficient)"
-
-#~ msgctxt "@info"
-#~ msgid "The screenshot location has been copied to the clipboard."
-#~ msgstr ""
-#~ "La ubicació de la captura de pantalla s'ha copiat a dins del porta-"
-#~ "retalls."
-
-#~ msgctxt "@info"
-#~ msgid "Video shared"
-#~ msgstr "S'ha compartit el vídeo"
-
-#~ msgctxt "@info"
-#~ msgid "Image shared"
-#~ msgstr "S'ha compartit la imatge"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr ""
-#~ "L'enllaç cap al vídeo compartit (<a href=\"%1\">%1</a>) s'ha copiat a "
-#~ "dins del porta-retalls."
-
-#~ msgctxt "@info"
-#~ msgid "There was a problem sharing the video: %1"
-#~ msgstr "S'ha produït un problema en compartir el vídeo: %1"
