@@ -51,7 +51,13 @@ FocusScope {
     AnimatedImage {
         id: animatedImage
         anchors.fill: parent
-        source: SpectacleCore.currentVideo
+        source: {
+            const format = SpectacleCore.videoPlatform.formatForPath(SpectacleCore.currentVideo.toString())
+            if (format === VideoPlatform.WebP || format === VideoPlatform.Gif) {
+                return SpectacleCore.currentVideo
+            }
+            return ""
+        }
         visible: status === Image.Ready
         fillMode: Image.PreserveAspectFit
     }
