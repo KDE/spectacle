@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-21 02:39+0000\n"
-"PO-Revision-Date: 2025-04-08 09:19+0300\n"
+"POT-Creation-Date: 2025-05-28 02:37+0000\n"
+"PO-Revision-Date: 2025-05-25 11:29+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -877,15 +877,14 @@ msgstr "Ohje"
 
 # Tässä "yläkansio” on hassu, kun tarkoitus on avata ei ylempää vaan juuri tiedoston sisältävä kansio.
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "Avaa sisältävä kansio"
+msgstr "Avaa yläkansio"
 
+# *** TARKISTA: Oletan, että tämä jatkaa otsikkoa ”Press screenshot key to:”
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "Kopioi leikepöydälle"
@@ -894,7 +893,7 @@ msgstr "Kopioi leikepöydälle"
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1039,7 +1038,7 @@ msgstr "Uusi nauhoitus"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Näytä hiiriosoitin näytön nauhoituksessa."
 
-#: src/Gui/RecordingView.qml:81
+#: src/Gui/RecordingView.qml:87
 #, kde-format
 msgid ""
 "Recording:\n"
@@ -1048,12 +1047,12 @@ msgstr ""
 "Nauhoitetaan:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:120
+#: src/Gui/RecordingView.qml:126
 #, kde-format
 msgid "Pause"
 msgstr "Tauko"
 
-#: src/Gui/RecordingView.qml:120
+#: src/Gui/RecordingView.qml:126
 #, kde-format
 msgid "Play"
 msgstr "Toista"
@@ -2236,41 +2235,32 @@ msgstr ""
 "ilmoitusaluekuvakkeen ja ilmoita tämä sitten jakelullesi paketointiongelmana."
 
 #: src/SpectacleCore.cpp:337
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr "Spectacle viimeistelee nauhoitusta"
 
 #: src/SpectacleCore.cpp:338
-#, fuzzy, kde-format
-#| msgid "Please wait..."
+#, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Odota hetki…"
+msgstr "Odota"
 
 #: src/SpectacleCore.cpp:340
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr "Spectacle viimeistelee nauhoitusta"
 
 #: src/SpectacleCore.cpp:342
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "Nauhoituksen kesto: %1\n"
-"Lopeta nauhoitus napsauttamalla"
+"Lopeta nauhoitus etuajassa napsauttamalla (tietoa menetetään)"
 
 #: src/SpectacleCore.cpp:368
 #, kde-format
@@ -2289,64 +2279,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Yritettäessä nauhoittaa näyttöä tapahtui virhe."
 
 #: src/SpectacleCore.cpp:435
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Kuvakaappaus kopioitiin leikepöydälle ja tallennettiin nimellä <a href="
-"\"%1\">%2</a>"
+"Kuvakaappaus kopioitiin leikepöydälle ja tallennettiin nimellä <link href="
+"\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:438
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Kuvakaappaus on tallennettu nimelle <a href=\"%1\">%2</a>, ja sen sijainti "
-"on kopioitu leikepöydälle"
+"Kuvakaappaus tallennettiin nimelle <link href=\"%1\">%2</link>, ja sen "
+"sijainti kopioitiin leikepöydälle"
 
 #: src/SpectacleCore.cpp:441
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Kuvakaappaus tallennettiin nimellä <a href=\"%1\">%2</a>"
+msgstr "Kuvakaappaus tallennettiin nimelle <link href=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:445
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "Kuvakaappaus on kopioitu leikepöydälle."
+msgstr "Kuvakaappaus kopioitiin leikepöydälle."
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Video on tallennettu nimelle <a href=\"%1\">%2</a>, ja sen sijainti on "
-"kopioitu leikepöydälle"
+"Video tallennettiin nimelle <link href=\"%1\">%2</link>, ja sen sijainti "
+"kopioitiin leikepöydälle"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Video on tallennettu nimellä <a href=\"%1\">%2</a>"
+msgstr "Video tallennettiin nimelle <link href=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:483
 #, kde-format
@@ -2358,15 +2336,13 @@ msgstr "Videon sijainti on kopioitu leikepöydälle."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Löytyi QR-koodi: %1"
 
 #: src/SpectacleCore.cpp:507
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Löytyi binaaria sisältävä QR-koodi."
