@@ -172,7 +172,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             ExportManager::instance()->scanQRCode();
             ExportManager::instance()->exportImage(exportActions, outputUrl());
         }
-    });
+    }, Qt::QueuedConnection);
 
     connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
         InlineMessageModel::instance()->clear();
