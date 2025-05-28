@@ -159,6 +159,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             static const auto rectKey = u"rect"_s;
             m_videoPlatform->startRecording(output, VideoPlatform::Region, {{rectKey, rect}}, includePointer);
         } else {
+            SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
             deleteWindows();
             m_annotationDocument->cropCanvas(rect);
             syncExportImage();
