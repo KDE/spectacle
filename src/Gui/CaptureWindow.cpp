@@ -50,6 +50,11 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
             this, &CaptureWindow::syncGeometryWithScreen);
     syncGeometryWithScreen();
     Q_EMIT screenToFollowChanged();
+    // BUG: https://bugs.kde.org/show_bug.cgi?id=502047
+    // Workaround window choosing wrong screen with some fractional DPR screen layout combinations.
+    connect(this, &QWindow::screenChanged, this, [this] {
+        syncGeometryWithScreen();
+    });
 
     // sync visibility
     connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){
