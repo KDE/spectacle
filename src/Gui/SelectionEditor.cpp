@@ -569,6 +569,8 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     d->setShowMagnifier(event->modifiers().testFlag(Qt::ShiftModifier));
 }
 
+#include "SpectacleCore.h"
+#include "ImageMetaData.h"
 void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
 {
     if (!item->window() || !item->window()->screen()) {
@@ -592,6 +594,19 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         d->setDragLocation(d->mouseLocation(d->mousePos));
         d->setMagnifierLocation(d->dragLocation);
         d->disableArrowKeys = true;
+
+        auto globalPos = item->mapToGlobal(event->position());
+        qDebug() << "mouse pos:";
+        if (globalPos != d->mousePos) {
+            qDebug().nospace() << " [" << d->mousePos << ',' << globalPos << ']';
+        } else {
+            qDebug() << d->mousePos;
+        }
+        qDebug() << "window:" << item->window()->geometry();
+        qDebug() << "screen:" << item->window()->screen()->geometry();
+        qDebug() << "screensRect:" << d->screensRect;
+        qDebug() << "canvasRect:" << SpectacleCore::instance()->annotationDocument()->canvasRect();
+        qDebug() << "subgeometry:" << ImageMetaData::subGeometryList(SpectacleCore::instance()->annotationDocument()->baseImage());
 
         switch (d->dragLocation) {
         case Location::Outside:
