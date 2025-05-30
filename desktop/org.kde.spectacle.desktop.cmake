@@ -119,6 +119,7 @@ Comment[he]=צילום והקלטת המסך
 Comment[ia]=Prende capturas de schermo e registrationes de schermo
 Comment[it]=Cattura schermate e registra lo schermo
 Comment[ka]=აიღეთ ეკრანის ანაბეჭდები და ჩაიწერეთ ეკრანი
+Comment[lv]=Uzņemiet ekrānattēlus un ierakstiet ekrānā notiekošo video celiņā
 Comment[nl]=Neem schermafdrukken en schermvideo-opnamen
 Comment[sl]=Zajemajte posnetke zaslona in snemajte zaslon
 Comment[tr]=Ekran görüntüleri alın ve ekran kaydı yapın
