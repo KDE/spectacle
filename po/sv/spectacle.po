@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-29 00:41+0000\n"
-"PO-Revision-Date: 2025-04-06 14:36+0200\n"
+"PO-Revision-Date: 2025-05-31 15:23+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -869,24 +869,22 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Öppna katalog med innehåll"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Kopiera till klippbord"
+msgstr "Kopiera till klippbordet"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2220,41 +2218,32 @@ msgstr ""
 "Spectacle och rapportera sedan paketeringsproblemet till din distributör."
 
 #: src/SpectacleCore.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle spelar in"
+msgstr "Spectacle slutför inspelningen"
 
 #: src/SpectacleCore.cpp:339
-#, fuzzy, kde-format
-#| msgid "Please wait..."
+#, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Vänta..."
+msgstr "Vänta"
 
 #: src/SpectacleCore.cpp:341
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle spelar in"
+msgstr "Spectacle slutför inspelningen"
 
 #: src/SpectacleCore.cpp:343
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "Inspelad tid: %1\n"
-"Klicka för att avsluta inspelning"
+"Klicka för att stoppa återgivningen i förtid (det gör att data går förlorad)"
 
 #: src/SpectacleCore.cpp:369
 #, kde-format
@@ -2273,64 +2262,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Ett fel uppstod vid försök att spela in skärmen."
 
 #: src/SpectacleCore.cpp:436
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Skärmbilden har kopierats till klippbordet och sparats som <a href=\"%1\">"
-"%2</a>"
+"Skärmbilden har kopierats till klippbordet och sparats som <link url=\"%1\">"
+"%2</link>"
 
 #: src/SpectacleCore.cpp:439
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Skärmbilden har sparats som (<a href=\"%1\">%2</a>) och platsen har "
+"Skärmbilden har sparats som <link url=\"%1\">%2</link> och platsen har "
 "kopierats till klippbordet"
 
 #: src/SpectacleCore.cpp:442
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Skärmbilden har sparats som <a href=\"%1\">%2</a>"
+msgstr "Skärmbilden har sparats som <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:446
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Skärmbilden har kopierats till klippbordet."
 
 #: src/SpectacleCore.cpp:477
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Videon har sparats som <a href=\"%1\">%2</a> och platsen har kopierats till "
-"klippbordet"
+"Videon har sparats som <link url=\"%1\">%2</link> och platsen har kopierats "
+"till klippbordet"
 
 #: src/SpectacleCore.cpp:480
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Videon har sparats som <a href=\"%1\">%2</a>"
+msgstr "Videon har sparats som <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:484
 #, kde-format
@@ -2342,15 +2319,13 @@ msgstr "Videons plats har kopierats till klippbordet."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:504
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR-kod hittades: %1"
 
 #: src/SpectacleCore.cpp:508
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Hittade QR-kod med binärt innehåll."
