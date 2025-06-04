@@ -129,8 +129,11 @@ public:
 
     RecordingState recordingState() const;
 
+    RecordingMode recordingMode() const;
+
 protected:
     void setRecordingState(RecordingState state);
+    void setRecordingMode(RecordingMode mode);
     void timerEvent(QTimerEvent *event) override;
 
 public Q_SLOTS:
@@ -157,6 +160,7 @@ private:
     QBasicTimer m_basicTimer;
     qint64 m_recordedTime = 0;
     RecordingState m_recordingState = RecordingState::NotRecording;
+    RecordingMode m_recordingMode = RecordingMode::NoRecordingModes;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(VideoPlatform::RecordingModes)

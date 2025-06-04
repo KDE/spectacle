@@ -281,7 +281,33 @@ SpectacleCore::SpectacleCore(QObject *parent)
                 SpectacleCore::instance()->finishRecording();
             });
             const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
-            const auto messageBody = i18nc("recording notification message", "Click the system tray icon to finish recording");
+            auto getSimpleDefaultShortcut = [] {
+                const auto shortcuts = KGlobalAccel::self()->shortcut(ShortcutActions::self()->recordRegionAction());
+                if (shortcuts.contains(QKeySequence{Qt::META | Qt::Key_R})) {
+                    return QKeySequence{Qt::META | Qt::Key_R};
+                }
+                return QKeySequence{};
+            };
+            auto getShortcut = [](const auto &list) {
+                auto it = std::find_if(list.cbegin(), list.cend(), [](const QKeySequence &shortcut) {
+                    return !shortcut.isEmpty();
+                });
+                return it != list.cend() ? *it : QKeySequence{};
+            };
+            QKeySequence stopShortcut = getSimpleDefaultShortcut();
+            if (stopShortcut.isEmpty()) {
+                auto mode = m_videoPlatform->recordingMode();
+                if (mode == VideoPlatform::Screen) {
+                    stopShortcut = getShortcut(KGlobalAccel::self()->shortcut(ShortcutActions::self()->recordScreenAction()));
+                } else if (mode == VideoPlatform::Window) {
+                    stopShortcut = getShortcut(KGlobalAccel::self()->shortcut(ShortcutActions::self()->recordWindowAction()));
+                } else if (mode == VideoPlatform::Region) {
+                    stopShortcut = getShortcut(KGlobalAccel::self()->shortcut(ShortcutActions::self()->recordRegionAction()));
+                }
+            }
+            const auto messageBody = stopShortcut.isEmpty()
+                ? i18nc("recording notification message without shortcut", "To finish the recording, click the pulsing red System Tray icon.")
+                : xi18nc("recording notification message with shortcut", "To finish the recording, click the pulsing red System Tray icon or press <shortcut>%1</shortcut>.", stopShortcut.toString(QKeySequence::NativeText));
             auto notification = new KNotification(u"notification"_s, KNotification::CloseOnTimeout | KNotification::DefaultEvent, this);
             notification->setTitle(messageTitle);
             notification->setText(messageBody);
