@@ -245,11 +245,12 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
     m_recorder->setNodeId(0);
 
     Q_ASSERT(stream);
-    connect(stream, &ScreencastingStream::created, this, [this, stream] {
+    connect(stream, &ScreencastingStream::created, this, [this, stream, recordingMode] {
         m_recorder->setNodeId(stream->nodeId());
         if (!m_recorder->output().isEmpty()) {
             m_recorder->start();
         }
+        setRecordingMode(recordingMode);
         setRecordingState(VideoPlatform::RecordingState::Recording);
     });
     connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
@@ -302,7 +303,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         m_recorder->start();
     }
 
-    connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this] {
+    connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this, recordingMode] {
         if (m_recorder->state() == PipeWireRecord::Idle) {
             m_memoryTimer.stop();
             if (recordingState() != RecordingState::NotRecording && recordingState() != RecordingState::Finished) {
@@ -311,6 +312,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             }
         } else if (m_recorder->state() == PipeWireRecord::Recording) {
             m_memoryTimer.start(5000, Qt::CoarseTimer, this);
+            setRecordingMode(recordingMode);
             setRecordingState(VideoPlatform::RecordingState::Recording);
         } else if (m_recorder->state() == PipeWireRecord::Rendering) {
             m_memoryTimer.stop();

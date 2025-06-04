@@ -69,6 +69,11 @@ VideoPlatform::RecordingState VideoPlatform::recordingState() const
     return m_recordingState;
 }
 
+VideoPlatform::RecordingMode VideoPlatform::recordingMode() const
+{
+    return m_recordingMode;
+}
+
 void VideoPlatform::setRecordingState(RecordingState state)
 {
     if (state == m_recordingState) {
@@ -91,9 +96,20 @@ void VideoPlatform::setRecordingState(RecordingState state)
         m_elapsedTimer.invalidate();
         m_basicTimer.stop();
     }
+    if (state != RecordingState::Recording) {
+        setRecordingMode(NoRecordingModes);
+    }
     m_recordingState = state;
     Q_EMIT recordingStateChanged(state);
     Q_EMIT recordedTimeChanged();
+}
+
+void VideoPlatform::setRecordingMode(RecordingMode mode)
+{
+    if (m_recordingMode == mode) {
+        return;
+    }
+    m_recordingMode = mode;
 }
 
 #include "moc_VideoPlatform.cpp"
