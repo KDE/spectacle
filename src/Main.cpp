@@ -45,7 +45,7 @@ int main(int argc, char **argv)
                          QStringLiteral(SPECTACLE_VERSION),
                          i18n("KDE Screenshot Utility"),
                          KAboutLicense::GPL_V2,
-                         i18n("(C) 2015 Boudhayan Gupta"));
+                         i18n("© 2015 Boudhayan Gupta"));
     aboutData.addAuthor(u"Boudhayan Gupta"_s, {}, u"bgupta@kde.org"_s);
     aboutData.addAuthor(u"David Redondo"_s, {}, u"kde@david-redondo.de"_s);
     aboutData.addAuthor(u"Noah Davis"_s, {}, u"noahadvs@gmail.com"_s);

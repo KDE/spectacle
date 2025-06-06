@@ -118,7 +118,7 @@ void ExportMenu::getKServiceItems()
 
     addSeparator();
 
-    QAction *openWith = new QAction(i18n("Other Application..."), this);
+    QAction *openWith = new QAction(i18nc("@action:button open screenshot in other application", "Other Application…"), this);
     openWith->setShortcuts(KStandardShortcut::open());
 
     connect(openWith, &QAction::triggered, this, [this]() {
