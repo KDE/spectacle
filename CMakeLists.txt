@@ -89,9 +89,16 @@ find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(OpenCV 4.7 REQUIRED core imgproc)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(TESSERACT REQUIRED tesseract)
 
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
+    TYPE REQUIRED
+)
+
+set_package_properties(TESSERACT PROPERTIES DESCRIPTION
+    "OCR (Optical Character Recognition) engine for text recognition in images"
     TYPE REQUIRED
 )
 

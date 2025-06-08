@@ -25,6 +25,7 @@ target_sources(spectacle PRIVATE
     CommandLineOptions.cpp
     ExportManager.cpp
     Geometry.cpp
+    OcrManager.cpp
     Gui/Annotations/AnnotationDocument.cpp
     Gui/Annotations/AnnotationTool.cpp
     Gui/Annotations/AnnotationViewport.cpp
@@ -104,7 +105,7 @@ ki18n_wrap_ui(spectacle
 # Needed to compile with OpenCV
 target_compile_options (spectacle PRIVATE -fexceptions)
 
-target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS})
+target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS} ${TESSERACT_INCLUDE_DIRS})
 
 target_link_libraries(spectacle PRIVATE
     Qt::Concurrent
@@ -135,6 +136,7 @@ target_link_libraries(spectacle PRIVATE
     Wayland::Client
     LayerShellQt::Interface
     ${OpenCV_LIBRARIES}
+    ${TESSERACT_LIBRARIES}
 )
 
 # qt_add_qml_module doesn't know how to deal with headers in subdirectories so
@@ -180,6 +182,7 @@ qt_target_qml_sources(spectacle
     Gui/InlineMessageList.qml
     Gui/Magnifier.qml
     Gui/NewScreenshotToolButton.qml
+    Gui/OcrAction.qml
     Gui/OptionsMenuButton.qml
     Gui/Outline.qml
     Gui/QmlUtils.qml
