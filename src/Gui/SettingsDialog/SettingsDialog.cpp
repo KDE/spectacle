@@ -64,6 +64,9 @@ void SettingsDialog::showEvent(QShowEvent *event)
     auto parent = parentWidget();
     bool onTop = parent && parent->windowHandle()->flags().testFlag(Qt::WindowStaysOnTopHint);
     windowHandle()->setFlag(Qt::WindowStaysOnTopHint, onTop);
+    
+    m_generalPage->refreshOcrLanguageSettings();
+    
     KConfigDialog::showEvent(event);
 }
 
@@ -87,6 +90,8 @@ void SettingsDialog::updateWidgets()
 {
     KConfigDialog::updateWidgets();
     m_shortcutsPage->resetChanges();
+
+    m_generalPage->refreshOcrLanguageSettings();
 }
 
 void SettingsDialog::updateWidgetsDefault()

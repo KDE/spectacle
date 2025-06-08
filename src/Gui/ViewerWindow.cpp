@@ -8,9 +8,9 @@
 #include "ViewerWindow.h"
 
 #include "Config.h"
-#include "SpectacleCore.h"
 #include "Gui/ExportMenu.h"
 #include "InlineMessageModel.h"
+#include "SpectacleCore.h"
 
 #include <KUrlMimeData>
 #include <Kirigami/Platform/Units>

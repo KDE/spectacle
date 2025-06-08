@@ -8,11 +8,13 @@
 #include "CaptureWindow.h"
 
 #include "Config.h"
-#include "SpectacleCore.h"
 #include "Gui/SelectionEditor.h"
+#include "SpectacleCore.h"
 
 #include <QScreen>
 #include <QShortcut>
+#include <QApplication>
+#include <QClipboard>
 
 using namespace Qt::StringLiterals;
 

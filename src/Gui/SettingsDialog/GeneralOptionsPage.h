@@ -19,8 +19,12 @@ class GeneralOptionsPage : public QWidget
 public:
     explicit GeneralOptionsPage(QWidget *parent = nullptr);
     ~GeneralOptionsPage() override;
+    
+    void refreshOcrLanguageSettings();
 
 private:
+    void setupOcrLanguageComboBox();
+    
     QScopedPointer<Ui_GeneralOptions> m_ui;
 };
 

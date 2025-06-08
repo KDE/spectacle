@@ -105,7 +105,7 @@ ki18n_wrap_ui(spectacle
 # Needed to compile with OpenCV
 target_compile_options (spectacle PRIVATE -fexceptions)
 
-target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS} ${TESSERACT_INCLUDE_DIRS})
+target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS})
 
 target_link_libraries(spectacle PRIVATE
     Qt::Concurrent
@@ -136,8 +136,13 @@ target_link_libraries(spectacle PRIVATE
     Wayland::Client
     LayerShellQt::Interface
     ${OpenCV_LIBRARIES}
-    ${TESSERACT_LIBRARIES}
 )
+
+# Link against Tesseract when OCR support is enabled
+if(HAVE_TESSERACT_OCR)
+    target_include_directories(spectacle PRIVATE ${TESSERACT_INCLUDE_DIRS})
+    target_link_libraries(spectacle PRIVATE ${TESSERACT_LIBRARIES})
+endif()
 
 # qt_add_qml_module doesn't know how to deal with headers in subdirectories so
 # make sure to add those so the headers can be found.

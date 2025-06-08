@@ -1,6 +1,7 @@
 /*
  *  SPDX-FileCopyrightText: 2019 David Redondo <kde@david-redondo.de>
  *  SPDX-FileCopyrightText: 2015 Boudhayan Gupta <bgupta@kde.org>
+ *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -20,6 +21,7 @@
 #include "Gui/HelpMenu.h"
 #include "Gui/OptionsMenu.h"
 #include "Gui/InlineMessageModel.h"
+#include "OcrManager.h"
 #include "Platforms/ImagePlatformXcb.h"
 #include "Platforms/VideoPlatform.h"
 #include "ShortcutActions.h"
@@ -49,6 +51,7 @@
 #include <QDir>
 #include <QDrag>
 #include <QKeySequence>
+#include <QMetaObject>
 #include <QMimeData>
 #include <QMovie>
 #include <QObject>
@@ -59,6 +62,8 @@
 #include <QScopedPointer>
 #include <QScreen>
 #include <QSystemTrayIcon>
+#include <QTemporaryFile>
+#include <QTextStream>
 #include <QTimer>
 #include <QtMath>
 #include <qobjectdefs.h>
@@ -538,6 +543,63 @@ SpectacleCore::SpectacleCore(QObject *parent)
         InlineMessageModel::instance()->push(InlineMessageModel::Scanned, text, result);
     };
     connect(exportManager, &ExportManager::qrCodeScanned, this, onQRCodeScanned);
+    
+    auto onOcrTextRecognized = [this](const QString &text, bool success) {
+        if (!success) {
+            InlineMessageModel::instance()->push(InlineMessageModel::Error, 
+                i18nc("@info", "Text extraction failed"));
+            return;
+        }
+        
+        if (text.isEmpty()) {
+            InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
+                i18nc("@info", "No text found in the image"));
+            return;
+        }
+        
+        InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
+            i18nc("@info", "Text extraction completed"));
+        
+        auto notification = new KNotification(u"ocrTextExtracted"_s, KNotification::CloseOnTimeout, this);
+        notification->setTitle(i18nc("@info:notification title", "Text Extracted"));
+        
+        notification->setText(i18nc("@info:notification", "Text copied to clipboard"));
+        notification->setIconName(u"document-scan"_s);
+        
+        if (!text.isEmpty()) {
+            auto openEditorAction = notification->addAction(i18nc("@action:button", "Open in Text Editor"));
+            connect(openEditorAction, &KNotificationAction::activated, this, [text]() {
+                // Create temporary file with extracted text 
+                auto exportManager = ExportManager::instance();
+                exportManager->updateTimestamp();
+                auto timestamp = exportManager->timestamp();
+                
+                QString filename = QStringLiteral("spectacle_ocr_%1.txt").arg(timestamp.toString(QStringLiteral("yyyyMMdd_HHmmss")));
+                QString templatePath = QDir::tempPath() + QStringLiteral("/") + filename;
+                
+                QTemporaryFile tempFile;
+                tempFile.setFileTemplate(templatePath);
+                tempFile.setAutoRemove(false);
+                
+                if (tempFile.open()) {
+                    QTextStream stream(&tempFile);
+                    stream << text;
+                    tempFile.close();
+                    
+                    auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(tempFile.fileName()));
+                    job->start();
+                }
+            });
+        }
+        
+        notification->sendEvent();
+    };
+    
+    // Connect to OCR manager
+    connect(OcrManager::instance(), &OcrManager::textRecognized, this, onOcrTextRecognized);
+    connect(OcrManager::instance(), &OcrManager::statusChanged, this, [this](OcrManager::OcrStatus) {
+        Q_EMIT ocrStatusChanged();
+    });
 
     connect(exportManager, &ExportManager::errorMessage, this, &SpectacleCore::showErrorMessage);
 
@@ -580,6 +642,87 @@ SpectacleCore::SpectacleCore(QObject *parent)
             m_captureWindows.erase(it);
         }
     });
+}
+
+bool SpectacleCore::ocrAvailable() const
+{
+    return OcrManager::instance()->isAvailable();
+}
+
+OcrManager::OcrStatus SpectacleCore::ocrStatus() const
+{
+    return OcrManager::instance()->status();
+}
+
+QVariantMap SpectacleCore::ocrAvailableLanguages() const
+{
+    auto ocrManager = OcrManager::instance();
+    if (!ocrManager->isAvailable()) {
+        return QVariantMap();
+    }
+
+    auto languageMap = ocrManager->availableLanguagesWithNames();
+    QVariantMap result;
+    for (auto it = languageMap.constBegin(); it != languageMap.constEnd(); ++it) {
+        result[it.key()] = it.value();
+    }
+    return result;
+}
+
+bool SpectacleCore::startOcrExtraction(const QString &languageCode)
+{
+    if (m_videoMode) {
+        return false;
+    }
+
+    const bool hasCaptureWindows = !CaptureWindow::instances().isEmpty();
+
+    if (hasCaptureWindows) {
+        auto selectionEditor = SelectionEditor::instance();
+        auto inlineMessages = InlineMessageModel::instance();
+
+        if (!selectionEditor->acceptSelection(ExportManager::UserAction)) {
+            inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "Please select a region before extracting text"));
+            return false;
+        }
+
+        QMetaObject::invokeMethod(
+            this,
+            [this, languageCode]() {
+                performOcrExtraction(languageCode);
+            },
+            Qt::QueuedConnection);
+        return true;
+    }
+
+    return performOcrExtraction(languageCode);
+}
+
+bool SpectacleCore::performOcrExtraction(const QString &languageCode)
+{
+    auto ocrManager = OcrManager::instance();
+    auto inlineMessages = InlineMessageModel::instance();
+
+    if (!ocrManager->isAvailable()) {
+        inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "OCR is not available."));
+        return false;
+    }
+
+    const QImage image = m_annotationDocument->renderToImage();
+    if (image.isNull()) {
+        inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "No screenshot available."));
+        return false;
+    }
+
+    inlineMessages->push(InlineMessageModel::Copied, i18nc("@info", "Extracting text from image..."));
+
+    if (languageCode.isEmpty()) {
+        ocrManager->recognizeText(image);
+    } else {
+        ocrManager->recognizeTextWithLanguage(image, languageCode);
+    }
+
+    return true;
 }
 
 SpectacleCore::~SpectacleCore() noexcept

@@ -17,6 +17,7 @@
 #include "Gui/Annotations/AnnotationDocument.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/ViewerWindow.h"
+#include "OcrManager.h"
 #include "Platforms/PlatformLoader.h"
 #include "RecordingModeModel.h"
 #include "VideoFormatModel.h"
@@ -40,6 +41,8 @@ class SpectacleCore : public QObject
     Q_PROPERTY(bool videoMode READ videoMode WRITE setVideoMode NOTIFY videoModeChanged)
     Q_PROPERTY(QUrl currentVideo READ currentVideo NOTIFY currentVideoChanged)
     Q_PROPERTY(AnnotationDocument *annotationDocument READ annotationDocument CONSTANT FINAL)
+    Q_PROPERTY(bool ocrAvailable READ ocrAvailable NOTIFY ocrStatusChanged FINAL)
+    Q_PROPERTY(OcrManager::OcrStatus ocrStatus READ ocrStatus NOTIFY ocrStatusChanged FINAL)
 
 public:
     enum class StartMode {
@@ -74,6 +77,10 @@ public:
 
     QUrl currentVideo() const;
 
+    bool ocrAvailable() const;
+    OcrManager::OcrStatus ocrStatus() const;
+    Q_INVOKABLE QVariantMap ocrAvailableLanguages() const;
+    Q_INVOKABLE bool startOcrExtraction(const QString &languageCode = QString());
 
     void initGuiNoScreenshot();
 
@@ -125,6 +132,7 @@ Q_SIGNALS:
     void videoModeChanged(bool videoMode);
     void currentVideoChanged(const QUrl &currentVideo);
     void recordedTimeChanged();
+    void ocrStatusChanged();
 
 private:
     explicit SpectacleCore(QObject *parent = nullptr);
@@ -148,6 +156,7 @@ private:
     void unityLauncherUpdate(const QVariantMap &properties) const;
     void setCurrentVideo(const QUrl &currentVideo);
     QUrl videoOutputUrl() const;
+    bool performOcrExtraction(const QString &languageCode);
 
     static SpectacleCore *s_self;
     std::unique_ptr<AnnotationDocument> m_annotationDocument = nullptr;
