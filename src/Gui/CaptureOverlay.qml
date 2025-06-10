@@ -324,10 +324,14 @@ MouseArea {
             x: rect.x
             y: rect.y
             z: 100
-            visible: SelectionEditor.showMagnifier
+            visible: active
+                && SelectionEditor.showMagnifier
                 && SelectionEditor.magnifierLocation !== SelectionEditor.None
                 && Geometry.rectIntersects(rect, root.viewportRect)
-            active: Settings.showMagnifier !== Settings.ShowMagnifierNever && annotationsLoader.item !== null
+            active: !SpectacleCore.videoMode
+                && SelectionEditor.showMagnifier !== Settings.ShowMagnifierNever
+                && annotationsLoader.item !== null
+                && (root.document?.tool.isNoTool ?? false)
             sourceComponent: Magnifier {
                 viewport: annotationsLoader.item
                 targetPoint: magnifierLoader.targetPoint
