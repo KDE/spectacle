@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-07 00:44+0000\n"
-"PO-Revision-Date: 2025-04-22 01:30+0200\n"
+"PO-Revision-Date: 2025-06-10 21:54+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -825,11 +825,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "기본 스크린샷 폴더 열기"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "다른 앱..."
+msgstr "다른 앱…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -855,15 +854,13 @@ msgid "Help"
 msgstr "도움말"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "포함하는 폴더 열기"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
@@ -872,7 +869,7 @@ msgstr "클립보드에 복사"
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1887,10 +1884,9 @@ msgid "KDE Screenshot Utility"
 msgstr "KDE 스크린샷 프로그램"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2204,26 +2200,20 @@ msgid "Please wait"
 msgstr "기다려 주십시오"
 
 #: src/SpectacleCore.cpp:341
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Finishing the Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle에서 녹화 완료 중"
 
 #: src/SpectacleCore.cpp:343
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "녹화 시간: %1\n"
-"클릭하면 녹화를 중단합니다"
+"클릭하면 렌더링을 조기에 중단합니다(데이터가 손실될 수 있음"
 
 #: src/SpectacleCore.cpp:369
 #, kde-format
@@ -2242,61 +2232,50 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "화면 녹화를 시도하는 중 오류가 발생했습니다."
 
 #: src/SpectacleCore.cpp:436
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"스크린샷을 클립보드에 복사했고 <a href=\"%1\">%2</a>(으)로 저장했습니다."
+"스크린샷을 클립보드에 복사했고 <link url=\"%1\">%2</link>(으)로 저장했습니다."
 
 #: src/SpectacleCore.cpp:439
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"스크린샷을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
+"스크린샷을 <link url=\"%1\">%2</link>에 저장했고 위치를 클립보드에 복사했습니"
+"다"
 
 #: src/SpectacleCore.cpp:442
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "스크린샷을 <a href=\"%1\">%2</a>(으)로 저장했습니다"
+msgstr "스크린샷을 <link url=\"%1\">%2</link>(으)로 저장했습니다"
 
 #: src/SpectacleCore.cpp:446
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "스크린샷을 클립보드에 복사했습니다."
 
 #: src/SpectacleCore.cpp:477
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"동영상을 <a href=\"%1\">%2</a>에 저장했고 위치를 클립보드에 복사했습니다"
+"동영상을 <link url=\"%1\">%2</link>에 저장했고 위치를 클립보드에 복사했습니다"
 
 #: src/SpectacleCore.cpp:480
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "동영상을 <a href=\"%1\">%2</a>(으)로 저장했습니다"
+msgstr "동영상을 <link url=\"%1\">%2</link>(으)로 저장했습니다"
 
 #: src/SpectacleCore.cpp:484
 #, kde-format
@@ -2308,15 +2287,13 @@ msgstr "동영상 위치를 클립보드에 복사했습니다."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:504
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR 코드 발견됨: %1"
 
 #: src/SpectacleCore.cpp:508
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "바이너리 내용이 있는 QR 코드를 발견했습니다."
