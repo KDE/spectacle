@@ -474,7 +474,7 @@ Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -u
 X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action RecordRegion]
-Name=Record Rectangular Region
+Name=Start/Stop Region Recording
 Name[ar]=يسجل منطقة مستطيلة
 Name[az]=Düzbucaqlı sahəni yazmaq
 Name[bg]=Заснемане на правоъгълен регион
@@ -522,7 +522,7 @@ Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R region
 X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
 [Desktop Action RecordScreen]
-Name=Record Screen
+Name=Start/Stop Screen Recording
 Name[ar]=سجّل الشاشة
 Name[az]=Ekranı yazmaq
 Name[bg]=Запис на екрана
@@ -570,7 +570,7 @@ Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R screen
 X-KDE-Shortcuts=Meta+Alt+R
 
 [Desktop Action RecordWindow]
-Name=Record Window
+Name=Start/Stop Window Recording
 Name[ar]=سجل النافذة
 Name[az]=Pəncərəni yazmaq
 Name[bg]=Запис на прозорец

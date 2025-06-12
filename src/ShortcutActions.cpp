@@ -73,19 +73,19 @@ ShortcutActions::ShortcutActions()
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc("@action global shortcut", "Record Screen"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Start/Stop Screen Recording"), &mActions);
         action->setObjectName(u"RecordScreen"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc("@action global shortcut", "Record Window"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Start/Stop Window Recording"), &mActions);
         action->setObjectName(u"RecordWindow"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
     }
     {
-        QAction *action = new QAction(i18nc("@action global shortcut", "Record Rectangular Region"), &mActions);
+        QAction *action = new QAction(i18nc("@action global shortcut", "Start/Stop Region Recording"), &mActions);
         action->setObjectName(u"RecordRegion"_s);
         action->setProperty("isConfigurationAction", true);
         mActions.addAction(action->objectName(), action);
