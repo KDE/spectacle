@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-07 00:44+0000\n"
+"POT-Creation-Date: 2025-06-14 00:44+0000\n"
 "PO-Revision-Date: 2025-06-07 11:33+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2009,7 +2009,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Misslyckades spela in. Filens webbadress är inte en lokal fil."
 
-#: src/Platforms/VideoPlatformWayland.cpp:263
+#: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2019,7 +2019,7 @@ msgstr ""
 "Strömmen stängdes eftersom målskärmen ändrades på ett sätt som störde "
 "inspelningen."
 
-#: src/Platforms/VideoPlatformWayland.cpp:265
+#: src/Platforms/VideoPlatformWayland.cpp:266
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2029,7 +2029,7 @@ msgstr ""
 "Strömmen stängdes eftersom målfönstret ändrades på ett sätt som störde "
 "inspelningen."
 
-#: src/Platforms/VideoPlatformWayland.cpp:267
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2039,56 +2039,56 @@ msgstr ""
 "Strömmen stängdes eftersom skärmen som innehåller målregionen ändrades på "
 "ett sätt som störde inspelningen."
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Misslyckades spela in: Tillfällig webbadress är inte en lokal fil (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:291
+#: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Misslyckades spela in. Utdatafilens webbadress är inte en lokal fil (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:344
+#: src/Platforms/VideoPlatformWayland.cpp:346
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Misslyckades spela in: Kan inte skapa katalog (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:372
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Skärminspelning avbruten"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Fönsterinspelning avbruten"
 
-#: src/Platforms/VideoPlatformWayland.cpp:380
+#: src/Platforms/VideoPlatformWayland.cpp:382
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Misslyckades välja skärm: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:382
+#: src/Platforms/VideoPlatformWayland.cpp:384
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Misslyckades välja fönster: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:410
+#: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "Misslyckades välja skärm: Ingen skärm innehöll muspekarens position"
 
-#: src/Platforms/VideoPlatformWayland.cpp:417
+#: src/Platforms/VideoPlatformWayland.cpp:419
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2155,22 +2155,28 @@ msgid "Capture Window Under Cursor"
 msgstr "Ta en bild av fönster under markör"
 
 #: src/ShortcutActions.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Screen"
-msgstr "Spela in skärm"
+msgid "Start/Stop Screen Recording"
+msgstr "Spectacle spelar in"
 
 #: src/ShortcutActions.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Window"
-msgstr "Spela in fönster"
+msgid "Start/Stop Window Recording"
+msgstr "Spectacle spelar in"
 
 #: src/ShortcutActions.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Rectangular Region"
-msgstr "Spela in rektangulärt område"
+msgid "Start/Stop Region Recording"
+msgstr "Spectacle spelar in"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2196,19 +2202,27 @@ msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle spelar in"
 
-#: src/SpectacleCore.cpp:284
+#: src/SpectacleCore.cpp:309
 #, kde-format
-msgctxt "recording notification message"
-msgid "Click the system tray icon to finish recording"
-msgstr "Klicka på ikonen i systembrickan för att avsluta inspelning"
+msgctxt "recording notification message without shortcut"
+msgid "To finish the recording, click the pulsing red System Tray icon."
+msgstr ""
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:310
+#, kde-kuit-format
+msgctxt "recording notification message with shortcut"
+msgid ""
+"To finish the recording, click the pulsing red System Tray icon or press "
+"<shortcut>%1</shortcut>."
+msgstr ""
+
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "WebP-stöd saknas."
 
-#: src/SpectacleCore.cpp:302
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2218,25 +2232,25 @@ msgstr ""
 "Installera Qt Image Formats för att få animerade ikoner i systembrickan för "
 "Spectacle och rapportera sedan paketeringsproblemet till din distributör."
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:364
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle slutför inspelningen"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Vänta"
 
-#: src/SpectacleCore.cpp:341
+#: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle slutför inspelningen"
 
-#: src/SpectacleCore.cpp:343
+#: src/SpectacleCore.cpp:369
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2246,7 +2260,7 @@ msgstr ""
 "Inspelad tid: %1\n"
 "Klicka för att stoppa återgivningen i förtid (det gör att data går förlorad)"
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:395
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2256,13 +2270,13 @@ msgstr ""
 "Inspelad tid: %1\n"
 "Klicka för att avsluta inspelning"
 
-#: src/SpectacleCore.cpp:394
+#: src/SpectacleCore.cpp:420
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Ett fel uppstod vid försök att spela in skärmen."
 
-#: src/SpectacleCore.cpp:436
+#: src/SpectacleCore.cpp:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2272,7 +2286,7 @@ msgstr ""
 "Skärmbilden har kopierats till klippbordet och sparats som <link url=\"%1\">"
 "%2</link>"
 
-#: src/SpectacleCore.cpp:439
+#: src/SpectacleCore.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2282,19 +2296,19 @@ msgstr ""
 "Skärmbilden har sparats som <link url=\"%1\">%2</link> och platsen har "
 "kopierats till klippbordet"
 
-#: src/SpectacleCore.cpp:442
+#: src/SpectacleCore.cpp:468
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Skärmbilden har sparats som <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:446
+#: src/SpectacleCore.cpp:472
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Skärmbilden har kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:477
+#: src/SpectacleCore.cpp:503
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2304,13 +2318,13 @@ msgstr ""
 "Videon har sparats som <link url=\"%1\">%2</link> och platsen har kopierats "
 "till klippbordet"
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:506
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Videon har sparats som <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:484
+#: src/SpectacleCore.cpp:510
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2319,25 +2333,25 @@ msgstr "Videons plats har kopierats till klippbordet."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:504
+#: src/SpectacleCore.cpp:530
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR-kod hittades: %1"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:534
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Hittade QR-kod med binärt innehåll."
 
-#: src/SpectacleCore.cpp:810
+#: src/SpectacleCore.cpp:836
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 är inte ett giltigt läge för --record"
 
-#: src/SpectacleCore.cpp:1045
+#: src/SpectacleCore.cpp:1071
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2346,23 +2360,23 @@ msgstr ""
 "Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:1049
+#: src/SpectacleCore.cpp:1075
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:1052
+#: src/SpectacleCore.cpp:1078
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:1056
+#: src/SpectacleCore.cpp:1082
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har sparats på klippbordet."
 
-#: src/SpectacleCore.cpp:1061
+#: src/SpectacleCore.cpp:1087
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2371,24 +2385,24 @@ msgstr ""
 "En inspelning har sparats som '%1' i '%2' och inspelningens filsökväg har "
 "sparats på klippbordet."
 
-#: src/SpectacleCore.cpp:1063
+#: src/SpectacleCore.cpp:1089
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "En inspelning har sparats som '%1' i videokatalogen."
 
-#: src/SpectacleCore.cpp:1065
+#: src/SpectacleCore.cpp:1091
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "En inspelning har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:1076
+#: src/SpectacleCore.cpp:1102
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öppna"
 
-#: src/SpectacleCore.cpp:1090
+#: src/SpectacleCore.cpp:1116
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentera"
@@ -2416,6 +2430,22 @@ msgstr "Animerad WebP (bättre än GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (kompatibel, men ineffektiv)"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Screen"
+#~ msgstr "Spela in skärm"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Window"
+#~ msgstr "Spela in fönster"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Rectangular Region"
+#~ msgstr "Spela in rektangulärt område"
+
+#~ msgctxt "recording notification message"
+#~ msgid "Click the system tray icon to finish recording"
+#~ msgstr "Klicka på ikonen i systembrickan för att avsluta inspelning"
 
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."

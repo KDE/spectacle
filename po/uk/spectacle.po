@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-07 00:44+0000\n"
+"POT-Creation-Date: 2025-06-14 00:44+0000\n"
 "PO-Revision-Date: 2025-06-07 18:09+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2039,7 +2039,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Не вдалося записати: адреса файла не є локальною"
 
-#: src/Platforms/VideoPlatformWayland.cpp:263
+#: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2049,7 +2049,7 @@ msgstr ""
 "Потік даних закрито, оскільки екран призначення було змінено у спосіб, який "
 "призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:265
+#: src/Platforms/VideoPlatformWayland.cpp:266
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2059,7 +2059,7 @@ msgstr ""
 "Потік даних закрито, оскільки вікно призначення було змінено у спосіб, який "
 "призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:267
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2069,56 +2069,56 @@ msgstr ""
 "Потік даних закрито, оскільки екран, на якому міститься область призначення "
 "було змінено у спосіб, який призводить до переривання запису."
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса тимчасового файла не є локальною (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:291
+#: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса файла виведення даних не є локальною (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:344
+#: src/Platforms/VideoPlatformWayland.cpp:346
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Не вдалося записати: не вдалося створити теку (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:372
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Запис з екрана скасовано"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Запис з вікна скасовано"
 
-#: src/Platforms/VideoPlatformWayland.cpp:380
+#: src/Platforms/VideoPlatformWayland.cpp:382
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Не вдалося вибрати екран: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:382
+#: src/Platforms/VideoPlatformWayland.cpp:384
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Не вдалося вибрати вікно: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:410
+#: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
 "Не вдалося вибрати екран: немає екрана, що містить позицію вказівника миші"
 
-#: src/Platforms/VideoPlatformWayland.cpp:417
+#: src/Platforms/VideoPlatformWayland.cpp:419
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2185,22 +2185,28 @@ msgid "Capture Window Under Cursor"
 msgstr "Захопити зображення вікна під вказівником миші"
 
 #: src/ShortcutActions.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Screen"
-msgstr "Записати відео з екрана"
+msgid "Start/Stop Screen Recording"
+msgstr "Spectacle записує відео"
 
 #: src/ShortcutActions.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Window"
-msgstr "Записати з вікна"
+msgid "Start/Stop Window Recording"
+msgstr "Spectacle записує відео"
 
 #: src/ShortcutActions.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Rectangular Region"
-msgstr "Записати прямокутну область"
+msgid "Start/Stop Region Recording"
+msgstr "Spectacle записує відео"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2226,19 +2232,27 @@ msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записує відео"
 
-#: src/SpectacleCore.cpp:284
+#: src/SpectacleCore.cpp:309
 #, kde-format
-msgctxt "recording notification message"
-msgid "Click the system tray icon to finish recording"
-msgstr "Клацніть на піктограмі системного лотка, щоб завершити записування"
+msgctxt "recording notification message without shortcut"
+msgid "To finish the recording, click the pulsing red System Tray icon."
+msgstr ""
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:310
+#, kde-kuit-format
+msgctxt "recording notification message with shortcut"
+msgid ""
+"To finish the recording, click the pulsing red System Tray icon or press "
+"<shortcut>%1</shortcut>."
+msgstr ""
+
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Немає підтримки WebP."
 
-#: src/SpectacleCore.cpp:302
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2249,25 +2263,25 @@ msgstr ""
 "анімовані піктограми у системному лотку для Spectacle, а потім повідомте про "
 "цю проблему пакування авторам вашого дистрибутива."
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:364
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Будь ласка, зачекайте"
 
-#: src/SpectacleCore.cpp:341
+#: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:343
+#: src/SpectacleCore.cpp:369
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2277,7 +2291,7 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити обробку передчасно (із втратою даних)"
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:395
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2287,13 +2301,13 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:394
+#: src/SpectacleCore.cpp:420
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Під час спроби запису з екрана сталася помилка."
 
-#: src/SpectacleCore.cpp:436
+#: src/SpectacleCore.cpp:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2303,7 +2317,7 @@ msgstr ""
 "Знімок було скопійовано до буфера обміну даними і збережено як <link url="
 "\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:439
+#: src/SpectacleCore.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2313,19 +2327,19 @@ msgstr ""
 "Знімок вікна було збережено як <link url=\"%1\">%2</link>, а адресу файла "
 "було ск and its location has been copied to clipboard"
 
-#: src/SpectacleCore.cpp:442
+#: src/SpectacleCore.cpp:468
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Знімок було збережено як <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:446
+#: src/SpectacleCore.cpp:472
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Знімок вікна було скопійовано до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:477
+#: src/SpectacleCore.cpp:503
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2335,13 +2349,13 @@ msgstr ""
 "Відео було збережено як <link url=\"%1\">%2</link>, а адресу файла було ск "
 "and its location has been copied to clipboard"
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:506
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Відео було збережено як <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:484
+#: src/SpectacleCore.cpp:510
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2350,25 +2364,25 @@ msgstr "Розташування відео було скопійовано до
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:504
+#: src/SpectacleCore.cpp:530
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Виявлено QR-код: %1"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:534
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Виявлено QR-код із двійковим вмістом."
 
-#: src/SpectacleCore.cpp:810
+#: src/SpectacleCore.cpp:836
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:1045
+#: src/SpectacleCore.cpp:1071
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2377,23 +2391,23 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:1049
+#: src/SpectacleCore.cpp:1075
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:1052
+#: src/SpectacleCore.cpp:1078
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1056
+#: src/SpectacleCore.cpp:1082
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:1061
+#: src/SpectacleCore.cpp:1087
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2402,24 +2416,24 @@ msgstr ""
 "Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
 "у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:1063
+#: src/SpectacleCore.cpp:1089
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:1065
+#: src/SpectacleCore.cpp:1091
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1076
+#: src/SpectacleCore.cpp:1102
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:1090
+#: src/SpectacleCore.cpp:1116
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"
@@ -2447,6 +2461,22 @@ msgstr "анімований WebP (краще за GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (сумісний, але неефективний)"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Screen"
+#~ msgstr "Записати відео з екрана"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Window"
+#~ msgstr "Записати з вікна"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Rectangular Region"
+#~ msgstr "Записати прямокутну область"
+
+#~ msgctxt "recording notification message"
+#~ msgid "Click the system tray icon to finish recording"
+#~ msgstr "Клацніть на піктограмі системного лотка, щоб завершити записування"
 
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."

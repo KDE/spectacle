@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-07 00:44+0000\n"
+"POT-Creation-Date: 2025-06-14 00:44+0000\n"
 "PO-Revision-Date: 2025-06-07 20:15+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2024,7 +2024,7 @@ msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Grabatzea huts egin du: Fitxategiaren URL ez da fitxategi lokal bat"
 
-#: src/Platforms/VideoPlatformWayland.cpp:263
+#: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2034,7 +2034,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako pantaila, grabazioa moztu duen era batean "
 "aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:265
+#: src/Platforms/VideoPlatformWayland.cpp:266
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2044,7 +2044,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako leihoa, grabazioa moztu duen era batean "
 "aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:267
+#: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2054,7 +2054,7 @@ msgstr ""
 "Korrontea itxi egin da jomukako eskualdea duen pantaila, grabazioa moztu "
 "duen era batean aldatu delako."
 
-#: src/Platforms/VideoPlatformWayland.cpp:281
+#: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -2062,7 +2062,7 @@ msgstr ""
 "Grabatzea huts egin du: Aldi baterako fitxategiaren URL ez da fitxategi "
 "lokal bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:291
+#: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -2070,37 +2070,37 @@ msgstr ""
 "Grabatzea huts egin du: Irteerako fitxategiaren URL ez da fitxategi lokal "
 "bat (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:344
+#: src/Platforms/VideoPlatformWayland.cpp:346
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Grabatzea huts egin du: Ez da karpeta sortzeko gai (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:372
+#: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Pantaila grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Leihoa grabatzea bertan behera utzi da"
 
-#: src/Platforms/VideoPlatformWayland.cpp:380
+#: src/Platforms/VideoPlatformWayland.cpp:382
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:382
+#: src/Platforms/VideoPlatformWayland.cpp:384
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:410
+#: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -2108,7 +2108,7 @@ msgstr ""
 "Leihoa hautatzea huts egin du: Ez dago sagu kurtsorearen kokalekua duen "
 "pantailarik"
 
-#: src/Platforms/VideoPlatformWayland.cpp:417
+#: src/Platforms/VideoPlatformWayland.cpp:419
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2175,22 +2175,28 @@ msgid "Capture Window Under Cursor"
 msgstr "Atzeman kurtsorearen azpiko leihoa"
 
 #: src/ShortcutActions.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Screen"
-msgstr "Grabatu pantaila"
+msgid "Start/Stop Screen Recording"
+msgstr "Spectacle grabatzen ari da"
 
 #: src/ShortcutActions.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Window"
-msgstr "Grabatu leihoa"
+msgid "Start/Stop Window Recording"
+msgstr "Spectacle grabatzen ari da"
 
 #: src/ShortcutActions.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
 msgctxt "@action global shortcut"
-msgid "Record Rectangular Region"
-msgstr "Grabatu eskualde laukizuzena"
+msgid "Start/Stop Region Recording"
+msgstr "Spectacle grabatzen ari da"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2216,19 +2222,27 @@ msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
-#: src/SpectacleCore.cpp:284
+#: src/SpectacleCore.cpp:309
 #, kde-format
-msgctxt "recording notification message"
-msgid "Click the system tray icon to finish recording"
-msgstr "Egin klik sistema-erretiluko ikonoan grabazioa bukatzeko"
+msgctxt "recording notification message without shortcut"
+msgid "To finish the recording, click the pulsing red System Tray icon."
+msgstr ""
 
-#: src/SpectacleCore.cpp:301
+#: src/SpectacleCore.cpp:310
+#, kde-kuit-format
+msgctxt "recording notification message with shortcut"
+msgid ""
+"To finish the recording, click the pulsing red System Tray icon or press "
+"<shortcut>%1</shortcut>."
+msgstr ""
+
+#: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "«WebP»ren euskarria falta da."
 
-#: src/SpectacleCore.cpp:302
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2239,25 +2253,25 @@ msgstr ""
 "erretiluko ikono animatuak lortzeko, eta ondoren, eman paketatze arazo "
 "horren berri zure banatzaileari."
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:364
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Itxaron mesedez"
 
-#: src/SpectacleCore.cpp:341
+#: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:343
+#: src/SpectacleCore.cpp:369
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2267,7 +2281,7 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik errendatzea azkar gelditzeko (datuak galduko dira)"
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:395
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2277,13 +2291,13 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik grabazioa bukatzeko"
 
-#: src/SpectacleCore.cpp:394
+#: src/SpectacleCore.cpp:420
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Errore bat gertatu da pantaila grabatzen saiatzean."
 
-#: src/SpectacleCore.cpp:436
+#: src/SpectacleCore.cpp:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2293,7 +2307,7 @@ msgstr ""
 "Pantaila-argazkia arbelean kopiatu da eta <link url=\"%1\">%2</link> gisa "
 "gorde da"
 
-#: src/SpectacleCore.cpp:439
+#: src/SpectacleCore.cpp:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2303,19 +2317,19 @@ msgstr ""
 "Pantaila-argazkia <link url=\"%1\">%2</link> gisa gorde da eta bere "
 "kokalekua arbelean kopiatu da"
 
-#: src/SpectacleCore.cpp:442
+#: src/SpectacleCore.cpp:468
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Pantaila-argazkia <link url=\"%1\">%2</link> gisa gorde da"
 
-#: src/SpectacleCore.cpp:446
+#: src/SpectacleCore.cpp:472
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Pantaila-argazkia arbelean kopiatu da."
 
-#: src/SpectacleCore.cpp:477
+#: src/SpectacleCore.cpp:503
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2325,13 +2339,13 @@ msgstr ""
 "Bideoa <link url=\"%1\">%2</link> gisa gorde da eta bere kokalekua arbelean "
 "kopiatu da"
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:506
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Bideoa <link url=\"%1\">%2</link> gisa gorde da"
 
-#: src/SpectacleCore.cpp:484
+#: src/SpectacleCore.cpp:510
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2340,25 +2354,25 @@ msgstr "Bideoaren kokalekua arbelera kopiatu da."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:504
+#: src/SpectacleCore.cpp:530
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR kodea aurkitu da: %1"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:534
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Eduki bitarra duen QR kode bat aurkitu da."
 
-#: src/SpectacleCore.cpp:810
+#: src/SpectacleCore.cpp:836
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:1045
+#: src/SpectacleCore.cpp:1071
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2367,23 +2381,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1049
+#: src/SpectacleCore.cpp:1075
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:1052
+#: src/SpectacleCore.cpp:1078
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1056
+#: src/SpectacleCore.cpp:1082
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:1061
+#: src/SpectacleCore.cpp:1087
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2392,24 +2406,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1063
+#: src/SpectacleCore.cpp:1089
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1065
+#: src/SpectacleCore.cpp:1091
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1076
+#: src/SpectacleCore.cpp:1102
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1090
+#: src/SpectacleCore.cpp:1116
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
@@ -2437,6 +2451,22 @@ msgstr "WebP animatua (GIF baino hobea)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (bateragarria, baina ez eraginkorra)"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Screen"
+#~ msgstr "Grabatu pantaila"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Window"
+#~ msgstr "Grabatu leihoa"
+
+#~ msgctxt "@action global shortcut"
+#~ msgid "Record Rectangular Region"
+#~ msgstr "Grabatu eskualde laukizuzena"
+
+#~ msgctxt "recording notification message"
+#~ msgid "Click the system tray icon to finish recording"
+#~ msgstr "Egin klik sistema-erretiluko ikonoan grabazioa bukatzeko"
 
 #~ msgctxt "@info"
 #~ msgid "The screenshot location has been copied to the clipboard."
