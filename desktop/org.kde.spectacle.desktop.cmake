@@ -475,16 +475,46 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action RecordRegion]
 Name=Start/Stop Region Recording
+Name[ca]=Inicia/atura l'enregistrament de regió
+Name[ca@valencia]=Inicia/para la gravació de regió
+Name[es]=Iniciar/detener grabación de región
+Name[he]=התחלת/עצירת הקלטת אזור
+Name[ka]=რეგიონის ჩაწერის დაწყება/გაჩერება
+Name[sl]=Začni/Ustavi snemanje območja
+Name[sv]=Starta eller stoppa områdesinspelning
+Name[tr]=Bölge Kaydını Başlat/Durdur
+Name[uk]=Почати або зупинити записування ділянки
+Name[x-test]=xxStart/Stop Region Recordingxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R region
 X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
 [Desktop Action RecordScreen]
 Name=Start/Stop Screen Recording
+Name[ca]=Inicia/atura l'enregistrament de pantalla
+Name[ca@valencia]=Inicia/para la gravació de la pantalla
+Name[es]=Iniciar/detener grabación de pantalla
+Name[he]=התחלת/עצירת הקלטת מסך
+Name[ka]=ეკრანის ჩაწერის დაწყება/გაჩერება
+Name[sl]=Začni/Ustavi snemanje zaslona
+Name[sv]=Starta eller stoppa skärminspelning
+Name[tr]=Ekran Kaydını Başlat/Durdur
+Name[uk]=Почати або зупинити записування з екрана
+Name[x-test]=xxStart/Stop Screen Recordingxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R screen
 X-KDE-Shortcuts=Meta+Alt+R
 
 [Desktop Action RecordWindow]
 Name=Start/Stop Window Recording
+Name[ca]=Inicia/atura l'enregistrament de finestra
+Name[ca@valencia]=Inicia/para la gravació de la finestra
+Name[es]=Iniciar/detener grabación de ventana
+Name[he]=התחלת/עצירת הקלטת חלון
+Name[ka]=ფანჯრის ჩაწერის დაწყება/გაჩერება
+Name[sl]=Začni/Ustavi snemanje okna
+Name[sv]=Starta eller stoppa fönsterinspelning
+Name[tr]=Pencere Kaydını Başlat/Durdur
+Name[uk]=Почати або зупинити записування з вікна
+Name[x-test]=xxStart/Stop Window Recordingxx
 Exec=${KDE_INSTALL_FULL_BINDIR}/spectacle -R window
 X-KDE-Shortcuts=Meta+Ctrl+R
 
