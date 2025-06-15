@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-06-07 12:12+0100\n"
+"PO-Revision-Date: 2025-06-15 00:46+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -2204,28 +2204,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Capturar la ventana bajo el cursor"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle está grabando"
+msgstr "Iniciar/detener grabación de pantalla"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle está grabando"
+msgstr "Iniciar/detener grabación de ventana"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle está grabando"
+msgstr "Iniciar/detener grabación de región"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2256,6 +2250,8 @@ msgstr "Spectacle está grabando"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Para terminar la grabación, haga clic en el icono rojo pulsante de la "
+"bandeja del sistema."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2264,6 +2260,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Para terminar la grabación, haga clic en el icono rojo pulsante de la "
+"bandeja del sistema o pulse <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
@@ -2480,20 +2478,3 @@ msgstr "WebP animado (mejor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, pero ineficiente)"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Screen"
-#~ msgstr "Grabar pantalla"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Window"
-#~ msgstr "Grabar ventana"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Grabar región rectangular"
-
-#~ msgctxt "recording notification message"
-#~ msgid "Click the system tray icon to finish recording"
-#~ msgstr ""
-#~ "Clic en el icono de la bandeja del sistema para terminar la grabación"
