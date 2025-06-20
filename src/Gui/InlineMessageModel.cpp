@@ -65,7 +65,19 @@ void InlineMessageModel::push(InlineMessageType type, const QString &text, const
     QModelIndex removed;
     if (type >= InformationalType) {
         for (int i = 0; i < oldCount; ++i) {
+            // Replace info messages of the same type since info messages are more common and more likely to become irrelevant after new user actions.
             if (m_data[i].type == type) {
+                removed = index(i);
+                beginRemoveRows({}, i, i);
+                m_data.removeAt(i);
+                endRemoveRows();
+                break;
+            }
+        }
+    } else {
+        for (int i = 0; i < oldCount; ++i) {
+            // Replace other messages that are exactly the same to prevent spam.
+            if (m_data[i].type == type && m_data[i].text == text && m_data[i].data == data) {
                 removed = index(i);
                 beginRemoveRows({}, i, i);
                 m_data.removeAt(i);
