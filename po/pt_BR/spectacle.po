@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-03-21 23:43-0300\n"
+"PO-Revision-Date: 2025-06-19 22:45-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -855,11 +855,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "Abrir pasta de imagens padrão"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Outro aplicativo..."
+msgstr "Outro aplicativo…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -885,24 +884,22 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Abrir pasta de destino"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy Image to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Copiar imagem para a área de transferência"
+msgstr "Copiar para a área de transferência"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1928,10 +1925,9 @@ msgid "KDE Screenshot Utility"
 msgstr "Utilitário de captura de tela do KDE"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2180,28 +2176,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Capturar janela sob o cursor"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "O Spectacle está gravando"
+msgstr "Iniciar/Parar a gravação de tela"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "O Spectacle está gravando"
+msgstr "Iniciar/Parar a gravação de janela"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "O Spectacle está gravando"
+msgstr "Iniciar/Parar a gravação de região"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2232,6 +2222,8 @@ msgstr "O Spectacle está gravando"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Para finalizar a gravação, clique no ícone vermelho pulsante na área de "
+"notificações do sistema."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2240,6 +2232,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Para finalizar a gravação, clique no ícone vermelho pulsante na área de "
+"notificações do sistema ou pressione <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
@@ -2259,41 +2253,32 @@ msgstr ""
 "distro."
 
 #: src/SpectacleCore.cpp:364
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "O Spectacle está gravando"
+msgstr "O Spectacle está finalizando a gravação"
 
 #: src/SpectacleCore.cpp:365
-#, fuzzy, kde-format
-#| msgid "Please wait..."
+#, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Aguarde..."
+msgstr "Aguarde"
 
 #: src/SpectacleCore.cpp:367
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "O Spectacle está gravando"
+msgstr "O Spectacle está finalizando a gravação"
 
 #: src/SpectacleCore.cpp:369
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "Tempo de gravação: %1\n"
-"Clique para finalizar a gravação"
+"Clique para interromper a renderização (isso causará a perda de dados)"
 
 #: src/SpectacleCore.cpp:395
 #, kde-format
@@ -2312,64 +2297,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Ocorreu um erro ao tentar gravar a tela."
 
 #: src/SpectacleCore.cpp:462
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"A imagem foi copiada para a área de transferência e salva como <a href="
-"\"%1\">%2</a>"
+"A captura de tela foi copiada para a área de transferência e salva como "
+"<link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:465
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"A imagem foi salva como <a href=\"%1\">%2</a> e sua localização foi copiada "
-"para a área de transferência."
+"A captura de tela foi salva como <link url=\"%1\">%2</link> e sua "
+"localização foi copiada para a área de transferência"
 
 #: src/SpectacleCore.cpp:468
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "A imagem foi salva como <a href=\"%1\">%2</a>"
+msgstr "A captura de tela foi salva como <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:472
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "A imagem foi copiada para a área de transferência."
+msgstr "A captura de tela foi copiada para a área de transferência"
 
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"O vídeo foi salvo como <a href=\"%1\">%2</a> e sua localização foi copiada "
-"para a área de transferência."
+"O vídeo foi salvo como <link url=\"%1\">%2</link> e sua localização foi "
+"copiada para a área de transferência"
 
 #: src/SpectacleCore.cpp:506
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "O vídeo foi salvo como <a href=\"%1\">%2</a>"
+msgstr "O vídeo foi salvo como <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:510
 #, kde-format
@@ -2381,18 +2354,16 @@ msgstr "O local do vídeo foi copiado para a área de transferência."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:530
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Código QR encontrado: %1"
 
 #: src/SpectacleCore.cpp:534
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr "Código QR encontrado com conteúdo binário."
+msgstr "Código QR encontrado com conteúdo binário"
 
 #: src/SpectacleCore.cpp:836
 #, kde-format

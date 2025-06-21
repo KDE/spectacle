@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-05-26 17:45+0300\n"
+"PO-Revision-Date: 2025-06-19 19:06+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -845,11 +845,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "Atvērt noklusējuma ekrānattēlu mapi"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Cita programma..."
+msgstr "Cita programma…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -1916,10 +1915,9 @@ msgid "KDE Screenshot Utility"
 msgstr "KDE ekrānattēlu rīks"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2162,28 +2160,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Uzņemt logu zem rādītāja"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "„Spectacle“ ieraksta"
+msgstr "Sākt/apturēt ekrāna ierakstīšanu"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "„Spectacle“ ieraksta"
+msgstr "Sākt/apturēt loga ierakstīšanu"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "„Spectacle“ ieraksta"
+msgstr "Sākt/apturēt reģiona ierakstīšanu"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2214,6 +2206,8 @@ msgstr "„Spectacle“ ieraksta"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Lai pabeigtu ierakstīšanu, klikšķiniet uz pulsējošo sarkanu ikonu sistēmas "
+"ikonu joslā."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2222,6 +2216,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Lai pabeigtu ierakstīšanu, klikšķiniet uz pulsējošo sarkanu ikonu sistēmas "
+"ikonu joslā vai spiediet <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
