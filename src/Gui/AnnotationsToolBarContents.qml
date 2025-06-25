@@ -6,7 +6,7 @@ import QtQuick
 import QtQuick.Templates as T
 import QtQuick.Controls as QQC
 import org.kde.spectacle.private
-import "Annotations"
+import org.kde.kquickimageeditor
 
 ButtonGrid {
     id: root

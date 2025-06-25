@@ -8,8 +8,7 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-
-import "Annotations"
+import org.kde.kquickimageeditor
 
 /**
  * This page is shown when a screenshot has been taken

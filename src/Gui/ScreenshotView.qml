@@ -7,8 +7,7 @@ import QtQuick
 import QtQuick.Controls as QQC
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-
-import "Annotations"
+import org.kde.kquickimageeditor
 
 // Can't use ScrollView because ScrollView prevents mice from being able to drag the view
 EmptyPage {

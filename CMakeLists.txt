@@ -138,6 +138,15 @@ set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     TYPE REQUIRED
 )
 
+ecm_find_qmlmodule(org.kde.kquickimageeditor)
+find_package(KQuickImageEditor COMPONENTS)
+set_package_properties(KQuickImageEditor PROPERTIES
+    TYPE REQUIRED
+    DESCRIPTION "Simple image editor for QtQuick applications"
+    URL "https://invent.kde.org/libraries/kquickimageeditor/"
+    PURPOSE "Add image editing capability to the screenshots"
+)
+
 # optional components
 find_package(KF6DocTools ${KF6_MIN_VERSION})
 set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
