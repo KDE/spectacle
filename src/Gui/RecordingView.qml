@@ -10,8 +10,6 @@ import QtMultimedia
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
 
-import "Annotations"
-
 FocusScope {
     id: root
     readonly property bool hasAnimatedImage: animatedImage.status === Image.Ready
