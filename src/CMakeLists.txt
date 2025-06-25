@@ -26,13 +26,6 @@ target_sources(spectacle PRIVATE
     ExportManager.cpp
     Geometry.cpp
     OcrManager.cpp
-    Gui/Annotations/AnnotationDocument.cpp
-    Gui/Annotations/AnnotationTool.cpp
-    Gui/Annotations/AnnotationViewport.cpp
-    Gui/Annotations/EffectUtils.cpp
-    Gui/Annotations/History.cpp
-    Gui/Annotations/QmlPainterPath.cpp
-    Gui/Annotations/Traits.cpp
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
@@ -136,6 +129,7 @@ target_link_libraries(spectacle PRIVATE
     K::KPipeWireRecord
     Wayland::Client
     LayerShellQt::Interface
+    KQuickImageEditor
     ${OpenCV_LIBRARIES}
 )
 
@@ -149,7 +143,6 @@ endif()
 # make sure to add those so the headers can be found.
 target_include_directories(spectacle PRIVATE
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui>"
-    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Gui/Annotations>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Platforms>"
 )
 
@@ -162,11 +155,6 @@ qt_target_qml_sources(spectacle
     Gui/AcceptAction.qml
     Gui/AnimatedLoader.qml
     Gui/AnnotationOptionsToolBarContents.qml
-    Gui/Annotations/AnnotationEditor.qml
-    Gui/Annotations/CropTool.qml
-    Gui/Annotations/HoverOutline.qml
-    Gui/Annotations/SelectionTool.qml
-    Gui/Annotations/TextTool.qml
     Gui/AnnotationsToolBarContents.qml
     Gui/ButtonGrid.qml
     Gui/CaptureModeButtonsColumn.qml

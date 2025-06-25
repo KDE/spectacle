@@ -11,25 +11,19 @@
 #include "CommandLineOptions.h"
 #include "ExportManager.h"
 #include "Geometry.h"
-#include "Gui/Annotations/AnnotationViewport.h"
-#include "Gui/Annotations/QmlPainterPath.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/Selection.h"
 #include "Gui/SelectionEditor.h"
 #include "Gui/SpectacleWindow.h"
-#include "Gui/ExportMenu.h"
-#include "Gui/HelpMenu.h"
-#include "Gui/OptionsMenu.h"
 #include "Gui/InlineMessageModel.h"
 #include "OcrManager.h"
 #include "Platforms/ImagePlatformXcb.h"
-#include "Platforms/VideoPlatform.h"
+#include "Platforms/PlatformLoader.h"
+#include "RecordingModeModel.h"
 #include "ShortcutActions.h"
 #include "PlasmaVersion.h"
 // generated
-#include "Config.h"
 #include "settings.h"
-#include "DebugUtils.h"
 
 #include <KFormat>
 #include <KGlobalAccel>

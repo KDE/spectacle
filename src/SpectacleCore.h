@@ -14,7 +14,6 @@
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "ExportManager.h"
-#include "Gui/Annotations/AnnotationDocument.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/ViewerWindow.h"
 #include "OcrManager.h"
@@ -22,6 +21,8 @@
 #include "RecordingModeModel.h"
 #include "VideoFormatModel.h"
 #include "settings.h"
+
+#include <KQuickImageEditor/AnnotationDocument>
 
 #include <array>
 #include <memory>

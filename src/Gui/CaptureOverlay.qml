@@ -10,8 +10,7 @@ import QtQuick.Shapes
 import QtQuick.Controls as QQC
 import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
-
-import "Annotations"
+import org.kde.kquickimageeditor
 
 /**
  * This page is shown when using the rectangular region capture mode.

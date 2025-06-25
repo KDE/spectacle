@@ -24,6 +24,7 @@
 #include <QFuture>
 #include <QFutureWatcher>
 #include <QGuiApplication>
+#include <QPainter>
 #include <QPixmap>
 #include <QScreen>
 #include <QTimer>
