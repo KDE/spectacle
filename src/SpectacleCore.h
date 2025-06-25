@@ -14,13 +14,13 @@
 #include "CaptureModeModel.h"
 #include "CommandLineOptions.h"
 #include "ExportManager.h"
-#include "Gui/Annotations/AnnotationDocument.h"
 #include "Gui/CaptureWindow.h"
 #include "Gui/ViewerWindow.h"
-#include "Platforms/PlatformLoader.h"
-#include "RecordingModeModel.h"
-#include "VideoFormatModel.h"
+#include "Platforms/ImagePlatform.h"
+#include "Platforms/VideoPlatform.h"
 #include "settings.h"
+
+#include <KQuickImageEditor/AnnotationDocument>
 
 #include <array>
 #include <memory>
