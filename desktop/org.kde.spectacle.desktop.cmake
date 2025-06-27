@@ -476,6 +476,7 @@ X-KDE-Shortcuts=Meta+Ctrl+Print
 
 [Desktop Action RecordRegion]
 Name=Start/Stop Region Recording
+Name[ar]=بدء/إيقاف تسجيل منطقة
 Name[bg]=Започване/спиране на записа на областта
 Name[ca]=Inicia/atura l'enregistrament de regió
 Name[ca@valencia]=Inicia/para la gravació de regió
@@ -501,6 +502,7 @@ X-KDE-Shortcuts=Meta+Shift+R,Meta+R
 
 [Desktop Action RecordScreen]
 Name=Start/Stop Screen Recording
+Name[ar]=بدء/إيقاف تسجيل شاشة
 Name[bg]=Започване/спиране на записа на екрана
 Name[ca]=Inicia/atura l'enregistrament de pantalla
 Name[ca@valencia]=Inicia/para la gravació de la pantalla
@@ -526,6 +528,7 @@ X-KDE-Shortcuts=Meta+Alt+R
 
 [Desktop Action RecordWindow]
 Name=Start/Stop Window Recording
+Name[ar]=بدء/إيقاف تسجيل نافذة
 Name[bg]=Започване/спиране на записа на прозореца
 Name[ca]=Inicia/atura l'enregistrament de finestra
 Name[ca@valencia]=Inicia/para la gravació de la finestra
