@@ -6,6 +6,7 @@
 
 import QtQuick
 import QtQuick.Layouts
+import org.kde.kquickimageeditor
 import org.kde.spectacle.private
 
 AnnotationViewport {
@@ -28,7 +29,7 @@ AnnotationViewport {
             id: textTool
             viewport: root
         }
-        SelectionTool {
+        AnnotationSelectionTool {
             id: selectionTool
             viewport: root
         }
