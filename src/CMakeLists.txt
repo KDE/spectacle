@@ -154,6 +154,7 @@ qt_target_qml_sources(spectacle
     QML_FILES
     Gui/AcceptAction.qml
     Gui/AnimatedLoader.qml
+    Gui/AnnotationEditor.qml
     Gui/AnnotationOptionsToolBarContents.qml
     Gui/AnnotationsToolBarContents.qml
     Gui/ButtonGrid.qml
