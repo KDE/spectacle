@@ -6,12 +6,12 @@
 
 import QtQuick
 import QtQuick.Layouts
-import org.kde.spectacle.private
+import org.kde.kquickimageeditor
 
 AnnotationViewport {
     id: root
 
-    document: SpectacleCore.annotationDocument
+    document: AnnotationDocument {}
     viewportRect: Qt.rect(0, 0, width, height)
 
     onPressedChanged: if (pressed) {
@@ -28,7 +28,7 @@ AnnotationViewport {
             id: textTool
             viewport: root
         }
-        SelectionTool {
+        AnnotationSelectionTool {
             id: selectionTool
             viewport: root
         }
