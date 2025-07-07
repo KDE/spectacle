@@ -12,7 +12,6 @@ ButtonGrid {
     id: root
     property bool showUndoRedo: true
     property bool showNoneButton: false
-    property bool rememberToolType: false
     property alias checkedButton: toolGroup.checkedButton
     readonly property alias usingCropTool: cropToolButton.checked
 
@@ -36,7 +35,6 @@ ButtonGrid {
     QQC.ButtonGroup {
         id: toolGroup
         exclusive: true
-        onClicked: Settings.annotationToolType = root.tool.type
     }
 
     QQC.ToolTip {
@@ -216,9 +214,5 @@ ButtonGrid {
         icon.name: "draw-number"
         checked: root.toolType === AnnotationTool.NumberTool
         onClicked: root.tool.type = AnnotationTool.NumberTool
-    }
-
-    Component.onCompleted: if (rememberToolType) {
-        root.tool.type = Settings.annotationToolType
     }
 }
