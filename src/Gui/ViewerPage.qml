@@ -115,7 +115,6 @@ EmptyPage {
             flow: Grid.TopToBottom
             showUndoRedo: false
             showNoneButton: true
-            rememberToolType: true
         }
         background: Rectangle {
             color: parent.palette.window
