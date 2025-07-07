@@ -748,7 +748,7 @@ SpectacleCore::~SpectacleCore() noexcept
 SpectacleCore *SpectacleCore::instance()
 {
     if (!s_self) {
-        s_self = new SpectacleCore();
+        s_self = new SpectacleCore(qApp);
     }
 
     return s_self;
