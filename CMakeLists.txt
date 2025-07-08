@@ -7,7 +7,7 @@ set(SPECTACLE_VERSION ${PROJECT_VERSION})
 project(Spectacle VERSION ${SPECTACLE_VERSION})
 
 # minimum requirements
-set(PROJECT_DEP_VERSION "6.3.5")
+set(PROJECT_DEP_VERSION "6.3.6")
 set(QT_MIN_VERSION "6.7.0")
 set(KF6_MIN_VERSION "6.10.0")
 
