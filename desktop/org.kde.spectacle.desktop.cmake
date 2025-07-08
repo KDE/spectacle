@@ -111,6 +111,7 @@ Comment[ar]=خذ لقطات الشاشة وتسجيلات الشاشة
 Comment[bg]=Заснемане на снимки и видео на екрана
 Comment[ca]=Fa captures de pantalla i enregistraments de pantalla
 Comment[ca@valencia]=Fa captures de pantalla i gravacions de pantalla
+Comment[de]=Bildschirmfotos und Bildschirmaufnahmen erstellen
 Comment[es]=Obtener capturas y grabaciones de la pantalla
 Comment[eu]=Atera pantaila-argazkiak eta pantailaren grabazioak
 Comment[fi]=Tee ruutukaappauksia ja näyttötallenteita
