@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-05-21 01:41+0200\n"
+"PO-Revision-Date: 2025-06-06 23:32+0200\n"
 "Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -497,8 +497,8 @@ msgstr "Strich:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] "%1 px"
-msgstr[1] "%1 px"
+msgstr[0] "%1 px"
+msgstr[1] "%1 px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
@@ -550,7 +550,7 @@ msgstr[1] "%2 %3 %1 pt"
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] "%2 %1 Pkt"
+msgstr[0] "%2 %1 pt"
 msgstr[1] "%2 %1 pt"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:286
@@ -601,7 +601,7 @@ msgstr "Freihand"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr ""
+msgstr "Umschalttaste: An gerade Linien einrasten"
 
 #: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
@@ -619,7 +619,7 @@ msgstr "Linie"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr ""
+msgstr "Umschalttaste: In 45°–Schritten einrasten"
 
 #: src/Gui/AnnotationsToolBarContents.qml:166
 #, kde-format
@@ -633,6 +633,7 @@ msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Rechteck"
 
+# Bei Drücken der Umschalttaste wird aus dem Rechteck ein Quadrat und die Größenänderung geschieht immer seitengleich.
 #: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
 msgctxt "@info:tooltip"
@@ -640,6 +641,8 @@ msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
+"Umschalttaste: Seitengleich vergrößern (Quadrat)\n"
+"Strg: Aus der Mitte heraus vergrößern"
 
 #: src/Gui/AnnotationsToolBarContents.qml:184
 #, kde-format
@@ -1138,13 +1141,13 @@ msgstr "Ein rechteckiges Bildschirmfoto aufnehmen"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr "Bildschirmfoto von Vollbildansicht aufnehmen"
+msgstr "Vollbild-Bildschirmfoto aufnehmen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Use last-used capture mode"
-msgstr "Der zuletzt verwendete Aufnahmemodus"
+msgstr "Den zuletzt verwendeten Aufnahmemodus verwenden"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:40
@@ -1168,7 +1171,7 @@ msgstr "Datei in den Standardort speichern"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:82
 #, kde-format
 msgid "Do not copy anything"
-msgstr "Nicht kopieren"
+msgstr "Nichts kopieren"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
@@ -1180,19 +1183,19 @@ msgstr "Bild in die Zwischenablage kopieren"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:92
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Speicherort der Datei in Zwischenablage kopieren"
+msgstr "Speicherort der Datei in die Zwischenablage kopieren"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:116
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "Wenn Spectacle ausgeführt wird"
+msgstr "Während Spectacle ausgeführt wird"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:123
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Bei Drücken der Taste Bildschirmfoto:"
+msgstr "Bei Drücken der Bildschirmfoto-Taste:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
@@ -1204,13 +1207,13 @@ msgstr "Ein neues Bildschirmfoto aufnehmen"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Open a new Spectacle window"
-msgstr "Neues Spectacle-Fenster öffnen"
+msgstr "Ein neues Spectacle-Fenster öffnen"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:141
 #, kde-format
 msgid "Return focus to Spectacle"
-msgstr "Spectacle-Fenster aktivieren"
+msgstr "Den Fokus auf das Spectacle-Fenster legen"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:165
@@ -1292,7 +1295,7 @@ msgstr "Speicherort:"
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:26
 #, kde-format
 msgid "Compression Quality:"
-msgstr "Komprimierungs-Qualität:"
+msgstr "Komprimierungsqualität:"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
@@ -1334,13 +1337,13 @@ msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
-"Sie können im Dateinamen die folgenden Platzhalter verwenden, die beim "
-"Speichern durch den eigentlichen Text ersetzt werden:"
+"Sie können im Dateinamen die folgenden Platzhalter verwenden. Sie werden "
+"beim Speichern durch den eigentlichen Text ersetzt:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
 msgid "To save to a sub-folder"
-msgstr "Speichern in einen Unterordner"
+msgstr "Um in einen Unterordner zu speichern"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
 #, kde-format
@@ -1364,13 +1367,13 @@ msgstr "Allgemein"
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr "Bildspeicherung"
+msgstr "Bilder speichern"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr "Videospeicherung"
+msgstr "Videos speichern"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1394,7 +1397,7 @@ msgstr "Was tun, wenn Spectacle gestartet wird"
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
-msgstr "Funktion der Taste Druck wenn Spectacle bereits ausgeführt wird"
+msgstr "Funktion der Taste „Druck“,  wenn Spectacle bereits ausgeführt wird"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:35
@@ -1409,7 +1412,8 @@ msgstr "Bildschirmfoto automatisch nach der Aufnahme speichern"
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
-"Zwischenablage-Aktion, der nach einem Bildschirmfoto ausgeführt werden soll"
+"Zwischenablage-Aktion, die nach der Aufnahme eines Bildschirmfotos "
+"ausgeführt werden soll"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:48
@@ -1502,13 +1506,13 @@ msgstr "Verzögerung"
 #: src/Gui/SettingsDialog/spectacle.kcfg:169
 #, kde-format
 msgid "Default filename"
-msgstr "Standardname"
+msgstr "Standarddateiname"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
-msgstr "Komprimierungs-Qualität für verlustbehaftete Dateiformate"
+msgstr "Komprimierungsqualität für verlustbehaftete Dateiformate"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:145
 #, kde-format
@@ -1974,7 +1978,7 @@ msgid ""
 "screenshot tool."
 msgstr ""
 "Unter Wayland benötigt Spectacle KDE Plasmas KWin-Compositor, welcher nicht "
-"Verfügbar sein zu scheint. Nutzen Sie Spectacle unter KDE Plasma oder "
+"verfügbar zu sein scheint. Nutzen Sie Spectacle unter KDE Plasma oder "
 "verwenden Sie ein anderes Programm für Bildschirmfotos."
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
@@ -2318,7 +2322,7 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 "Dauer der Aufnahme: %1\n"
-"Anklicken um Aufnahme abzuschließen"
+"Klicken, um Aufnahme zu beenden"
 
 #: src/SpectacleCore.cpp:420
 #, kde-format
@@ -2378,7 +2382,7 @@ msgstr "Das Video wurde als <link url=\"%1\">%2</link> gespeichert"
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Das Adresse des Videos wurde in die Zwischenablage kopiert."
+msgstr "Der Ort des Videos wurde in die Zwischenablage kopiert."
 
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
@@ -2407,24 +2411,24 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Das Bildschirmfoto wurde als „%1“ nach „%2“ gespeichert und der Speicherort "
+"Ein Bildschirmfoto wurde als „%1“ in „%2“ gespeichert und der Speicherort "
 "der Datei wurde in die Zwischenablage kopiert."
 
 #: src/SpectacleCore.cpp:1075
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Ein Bildschirmfoto wurde als %1 in Ihrem Bilder-Ordner gespeichert."
+msgstr "Ein Bildschirmfoto wurde als „%1“ in Ihrem Bilder-Ordner gespeichert."
 
 #: src/SpectacleCore.cpp:1078
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Ein Bildschirmfoto wurde als %1 in „%2“ gespeichert."
+msgstr "Ein Bildschirmfoto wurde als „%1“ in „%2“ gespeichert."
 
 #: src/SpectacleCore.cpp:1082
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Ein Bildschirmfoto wurde in der Zwischenablage gespeichert."
+msgstr "Ein Bildschirmfoto wurde in die Zwischenablage gespeichert."
 
 #: src/SpectacleCore.cpp:1087
 #, kde-format
@@ -2432,7 +2436,7 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Die Aufnahme wurde als „%1“ in „%2“ gespeichert und der Speicherort der "
+"Eine Aufnahme wurde als „%1“ in „%2“ gespeichert und der Speicherort der "
 "Aufnahme wurde in die Zwischenablage kopiert."
 
 #: src/SpectacleCore.cpp:1089
