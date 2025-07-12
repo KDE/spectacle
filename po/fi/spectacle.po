@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-05-25 11:29+0300\n"
+"PO-Revision-Date: 2025-07-10 19:51+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -848,8 +848,7 @@ msgid "Open Default Screenshots Folder"
 msgstr "Avaa kaappaukseen oletuskansio"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Muu sovellus…"
@@ -1921,8 +1920,7 @@ msgid "KDE Screenshot Utility"
 msgstr "KDE:n kuvakaappaustyökalu"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
 msgstr "© 2015 Boudhayan Gupta"
 
@@ -2173,28 +2171,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Kaappaa osoittimen alla oleva ikkuna"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr "Aloita tai lopeta näytön nauhoitus"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr "Aloita tai lopeta ikkunan nauhoitus"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr "Aloita tai lopeta alueen nauhoitus"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2225,6 +2217,7 @@ msgstr "Spectacle nauhoittaa"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Lopeta nauhoitus napsauttamalla sykkivää punaista ilmoitusaluekuvaketta."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2233,6 +2226,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Lopeta nauhoitus napsauttamalla sykkivää punaista ilmoitusaluekuvaketta tai "
+"painamalla <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
