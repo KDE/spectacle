@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-29 02:42+0000\n"
-"PO-Revision-Date: 2025-03-09 18:21+0530\n"
+"PO-Revision-Date: 2025-07-19 14:42+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -927,15 +927,13 @@ msgid "Help"
 msgstr "உதவி"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "கொண்டுள்ள அடைவை திற"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy Image to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "படத்தை பிடிப்புப்பலகைக்கு நகலெடு"
@@ -944,7 +942,7 @@ msgstr "படத்தை பிடிப்புப்பலகைக்க�
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "மூடு"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -2336,18 +2334,14 @@ msgid "Spectacle is Finishing the Recording"
 msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
 
 #: src/SpectacleCore.cpp:343
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "திரைப்பதிவின் கால நீட்சி: %1\n"
-"திரைப்பதிவை நிறுத்த கிளிக் செய்யவும்"
+"சேமிப்பதை உடனே நிறுத்த கிளிக் செய்யவும் (இதனால் தரவு இழக்கப்படலாம்)"
 
 #: src/SpectacleCore.cpp:369
 #, kde-format
@@ -2366,64 +2360,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "திரைப்பதிவிட முயற்சிக்கும்போது சிக்கல் ஏற்பட்டது."
 
 #: src/SpectacleCore.cpp:436
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <a href=\"%1\">%2</a> என "
+"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <link url=\"%1\">%2</link> என "
 "சேமிக்கப்பட்டது"
 
 #: src/SpectacleCore.cpp:439
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
-"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
+"திரைப்பிடிப்பு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
+"இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:442
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டது"
+msgstr "திரைப்பிடிப்பு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டது"
 
 #: src/SpectacleCore.cpp:446
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:477
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"நிகழ்படம் <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
+"நிகழ்படம் <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
 "பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:480
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "திரைப்பதிவு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது"
+msgstr "திரைப்பதிவு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது"
 
 #: src/SpectacleCore.cpp:484
 #, kde-format
@@ -2435,15 +2417,13 @@ msgstr "நிகழ்படத்தின் இருப்பிடம் �
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:504
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR குறி கண்டறியப்பட்டது: %1"
 
 #: src/SpectacleCore.cpp:508
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
