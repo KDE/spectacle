@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2025-04-20 18:09+0530\n"
+"PO-Revision-Date: 2025-07-19 14:42+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -848,11 +848,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "இயல்பிருப்பு திரைப்பிடிப்பு அடைவை திற"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "வேறு செயலி..."
+msgstr "வேறு செயலி…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -878,15 +877,13 @@ msgid "Help"
 msgstr "உதவி"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "கொண்டுள்ள அடைவை திற"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy Image to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "படத்தை பிடிப்புப்பலகைக்கு நகலெடு"
@@ -895,7 +892,7 @@ msgstr "படத்தை பிடிப்புப்பலகைக்க�
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "மூடு"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1923,10 +1920,9 @@ msgid "KDE Screenshot Utility"
 msgstr "கே.டீ.யீ. திரைப்பிடிப்பு செயலி"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 பௌதாயன் குப்தா"
+msgstr "© 2015 பௌதாயன் குப்தா"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2168,28 +2164,22 @@ msgid "Capture Window Under Cursor"
 msgstr "சுட்டிக்குறிக்கு கீழுள்ள சாளரத்தை படமெடு"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
+msgstr "திரையை பதிவு செய்வதை துவக்கு/நிறுத்து"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
+msgstr "சாளரத்தை பதிவு செய்வதை துவக்கு/நிறுத்து"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
+msgstr "திரையின் பகுதியை பதிவு செய்வதை துவக்கு/நிறுத்து"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2220,6 +2210,8 @@ msgstr "ஸ்பெக்டக்குல் பதிவு செய்க�
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"திரைப்பதிவை நிறுத்த, கணினித்தட்டில் காட்டப்படும் துடிக்கும் சிவப்பு சின்னத்தை கிளிக் "
+"செய்யவும்."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2228,6 +2220,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"திரைப்பதிவை நிறுத்த, கணினித்தட்டில் காட்டப்படும் துடிக்கும் சிவப்பு சின்னத்தை கிளிக் "
+"செய்யலாம், அல்லது <shortcut>%1</shortcut> தனை அழுத்தலாம்."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
@@ -2258,26 +2252,20 @@ msgid "Please wait"
 msgstr "காத்திருக்கவும்"
 
 #: src/SpectacleCore.cpp:367
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Finishing the Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "ஸ்பெக்டக்குல் திரைப்பதிவை சேமிக்கிறது"
 
 #: src/SpectacleCore.cpp:369
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "திரைப்பதிவின் கால நீட்சி: %1\n"
-"திரைப்பதிவை நிறுத்த கிளிக் செய்யவும்"
+"சேமிப்பதை உடனே நிறுத்த கிளிக் செய்யவும் (இதனால் தரவு இழக்கப்படலாம்)"
 
 #: src/SpectacleCore.cpp:395
 #, kde-format
@@ -2296,64 +2284,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "திரைப்பதிவிட முயற்சிக்கும்போது சிக்கல் ஏற்பட்டது."
 
 #: src/SpectacleCore.cpp:462
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <a href=\"%1\">%2</a> என "
+"திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டு <link url=\"%1\">%2</link> என "
 "சேமிக்கப்பட்டது"
 
 #: src/SpectacleCore.cpp:465
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
-"பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
+"திரைப்பிடிப்பு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் "
+"இருப்பிடம் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:468
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "திரைப்பிடிப்பு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டது"
+msgstr "திரைப்பிடிப்பு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டது"
 
 #: src/SpectacleCore.cpp:472
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது."
+msgstr "திரைப்பிடிப்பு பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"நிகழ்படம் <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
+"நிகழ்படம் <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது, மேலும் அதன் இருப்பிடம் "
 "பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது."
 
 #: src/SpectacleCore.cpp:506
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "திரைப்பதிவு <a href=\"%1\">%2</a> என சேமிக்கப்பட்டுள்ளது"
+msgstr "திரைப்பதிவு <link url=\"%1\">%2</link> என சேமிக்கப்பட்டுள்ளது"
 
 #: src/SpectacleCore.cpp:510
 #, kde-format
@@ -2365,15 +2341,13 @@ msgstr "நிகழ்படத்தின் இருப்பிடம் �
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:530
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR குறி கண்டறியப்பட்டது: %1"
 
 #: src/SpectacleCore.cpp:534
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "இரும உள்ளடக்கமுடைய QR குறி கண்டறியப்பட்டது."
