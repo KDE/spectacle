@@ -5,20 +5,21 @@
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
 # SPDX-FileCopyrightText: 2024, 2025 Flori G <Renner03@protonmail.com>
 # SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-29 02:42+0000\n"
-"PO-Revision-Date: 2025-06-06 23:32+0200\n"
-"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
+"PO-Revision-Date: 2025-07-02 23:57+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -71,17 +72,17 @@ msgstr "Vollbild"
 #: src/CommandLineOptions.h:22
 #, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Die gesamte Arbeitsfläche aufnehmen (Voreinstellung)"
+msgstr "Schnappschuss der gesamten Arbeitsfläche (Voreinstellung)"
 
 #: src/CommandLineOptions.h:26
 #, kde-format
 msgid "Capture the current monitor"
-msgstr "Den aktuellen Bildschirm aufnehmen"
+msgstr "Schnappschuss des aktuellen Bildschirms"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
 msgid "Capture the active window"
-msgstr "Das aktive Fenster aufnehmen"
+msgstr "Schnappschuss des aktiven Fensters"
 
 #: src/CommandLineOptions.h:34
 #, kde-format
@@ -89,9 +90,8 @@ msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-"
-"Elemente (Menüs, Kurzinfos usw.) werden mit dem übergeordneten Fenster "
-"aufgenommen."
+"Schnappschuss des Fensters unter dem Mauszeiger inklusive der "
+"Aufklappelemente (Menüs, Kurzinfos usw.)"
 
 #: src/CommandLineOptions.h:38
 #, kde-format
@@ -99,14 +99,13 @@ msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr ""
-"Das Fenster aufnehmen, über dem sich der Mauszeiger befindet. Pop-Up-"
-"Elemente (Menüs, Kurzinfos usw.) werden ohne das übergeordnete Fenster "
-"aufgenommen."
+"Schnappschuss des Fensters unter dem Mauszeiger ohne Aufklappelemente "
+"(Menüs, Kurzinfos usw.)"
 
 #: src/CommandLineOptions.h:42
 #, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Einen rechteckigen Bereich aufnehmen"
+msgstr "Schnappschuss eines rechteckigen Bereichs"
 
 #: src/CommandLineOptions.h:46
 #, kde-format
@@ -116,7 +115,7 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
-"Den Bildschirm mit dem angegebenem Modus aufnehmen. Modi:\n"
+"Den Bildschirm im angegebenen Modus aufzeichnen. Modi:\n"
 "- r, Bereich\n"
 "- s, Bildschirm\n"
 "- w, Fenster"
@@ -124,7 +123,7 @@ msgstr ""
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Ohne Aufnahme eines Bildschirmfotos starten"
+msgstr "Spectacle ohne Erstellung eines Schnappschusses starten"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -135,13 +134,13 @@ msgstr "Mit grafischer Oberfläche starten (Standard)"
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
-"Ein Bildschirmfoto aufnehmen und ohne Anzeige der grafischen Oberfläche "
+"Einen Schnappschuss erstellen und ohne Anzeige der grafischen Oberfläche "
 "beenden"
 
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
-msgstr "Im DBus-Aktivierungsmodus starten"
+msgstr "Im D-Bus-Aktivierungsmodus starten"
 
 #: src/CommandLineOptions.h:70
 #, kde-format
@@ -187,7 +186,8 @@ msgstr ""
 #: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr "Startet eine neue GUI-Instanz von Spectacle ohne Registrierung am DBus"
+msgstr ""
+"Startet eine neue GUI-Instanz von Spectacle ohne Registrierung am D-Bus"
 
 #: src/CommandLineOptions.h:100
 #, kde-format
@@ -289,7 +289,7 @@ msgstr ""
 msgctxt "@info"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Die Aufnahme kann nicht gespeichert werden. Die Datei kann nicht an "
+"Die Aufzeichnung kann nicht gespeichert werden. Die Datei kann nicht an "
 "folgenden Ort verschoben werden: %1"
 
 #: src/ExportManager.cpp:873
@@ -685,19 +685,19 @@ msgstr[1] "Abbrechen (%1 Sekunden)"
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
-msgstr "Ein neues Bildschirmfoto aufnehmen"
+msgstr "Einen neuen Schnappschuss erstellen"
 
 #: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Bildschirmfoto-Einstellungen"
+msgstr "Schnappschuss-Einstellungen"
 
 #: src/Gui/CaptureOverlay.qml:130
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr "Klicken und Ziehen Sie, um eine Auswahl zu treffen."
+msgstr "Klicken und ziehen Sie, um eine Auswahl zu treffen."
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
@@ -707,7 +707,7 @@ msgstr "Mauszeiger einbeziehen"
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Zeigt den Mauszeiger im Bildschirmfoto."
+msgstr "Den Mauszeiger in den Schnappschuss miteinbeziehen."
 
 #: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
@@ -719,8 +719,8 @@ msgstr "Titelleiste und Ränder des Fensters einschließen"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
-"Die Titelleiste und Fensterränder beim Aufnehmen eines Bildschirmfotos von "
-"einem Fenster anzeigen."
+"Die Titelleiste und Fensterränder beim Schnappschuss eines Fensters "
+"miteinbeziehen."
 
 #: src/Gui/CaptureSettingsColumn.qml:34
 #, kde-format
@@ -731,13 +731,12 @@ msgstr "Schatten des Fensters einschließen"
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
-"Den Schatten des Fensters beim Aufnehmen eines Bildschirmfotos von einem "
-"Fenster anzeigen."
+"Den Schatten des Fensters beim Schnappschuss eines Fensters miteinbeziehen."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Capture the current pop-up only"
-msgstr "Nur das aktuelle Aufklappmenü aufnehmen"
+msgstr "Schnappschuss nur vom aktuellen Aufklappelement"
 
 #: src/Gui/CaptureSettingsColumn.qml:46
 #, kde-format
@@ -746,10 +745,9 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Nur das aktuelle Pop-Up-Element (z. B. Menü, Kurzinfo usw.) aufnehmen, wenn "
-"ein Bild eines Fensters gemacht wird.\n"
-"Ist dies deaktiviert, wird das Pop-Up-Element zusammen mit dem\n"
-"übergeordneten Fenster aufgenommen."
+"Schnappschuss nur des aktuellen Aufklappelements (z. B. Menü, Kurzinfo usw.) "
+"eines Fensters. Ist dies deaktiviert, wird das Aufklappelement zusammen mit "
+"dem übergeordneten Fenster erfasst."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
@@ -765,12 +763,12 @@ msgstr ""
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
-msgstr "Aufnahme bei Klick"
+msgstr "Schnappschuss bei Klick"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Wartet auf einen Mausklick vor der Aufnahme des Bildschirmfotos."
+msgstr "Vor dem Schnappschuss auf einen Mausklick warten."
 
 #: src/Gui/CaptureSettingsColumn.qml:76
 #, kde-format
@@ -835,7 +833,7 @@ msgstr "Einstellungen"
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Eine Aufnahme anfertigen:"
+msgstr "Eine Aufzeichnung anfertigen:"
 
 #: src/Gui/DialogPage.qml:163
 #, kde-format
@@ -847,7 +845,7 @@ msgstr "Bildschirmfoto"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
-msgstr "Aufnahme"
+msgstr "Aufzeichnung"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -967,7 +965,7 @@ msgstr "Den Schatten des Fensters anzeigen"
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
-msgstr "Nur das aktuelle Aufklappmenü aufnehmen"
+msgstr "Schnappschuss nur vom aktuellen Aufklappelement"
 
 #: src/Gui/OptionsMenu.cpp:71
 #, kde-format
@@ -976,9 +974,10 @@ msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
-"Nur das aktuelle Pop-Up-Element (z. B. Menü, Kurzinfo usw.) aufnehmen.\n"
-"Ist dies deaktiviert, wird das Pop-Up-Element zusammen mit dem\n"
-"übergeordneten Fenster aufgenommen."
+"Schnappschuss nur vom aktuellen Aufklappelement (z. B. Menü, Kurzinfo "
+"usw.).\n"
+"Ist dies deaktiviert, wird das Aufklappelement zusammen mit dem\n"
+"übergeordneten Fenster erfasst."
 
 #: src/Gui/OptionsMenu.cpp:81
 #, kde-format
@@ -997,7 +996,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "Aufnahme bei Klick"
+msgstr "Schnappschuss bei Klick"
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
@@ -1015,7 +1014,7 @@ msgstr "Keine Verzögerung"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
-msgstr "Aufnahmeeinstellungen"
+msgstr "Aufzeichnungseinstellungen"
 
 #: src/Gui/OptionsMenu.cpp:135
 #, kde-format
@@ -1027,7 +1026,7 @@ msgstr "Mauszeiger einbeziehen"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr "Den Mauszeiger in der Aufnahme anzeigen"
+msgstr "Den Mauszeiger in der Aufzeichnung anzeigen"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1039,24 +1038,24 @@ msgstr "Einstellungen"
 #, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Aufnehmen"
+msgstr "Aufzeichnen"
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Modes"
-msgstr "Aufnahmemodi"
+msgstr "Aufzeichnungsmodi"
 
 #: src/Gui/RecordingModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "Neue Aufnahme"
+msgstr "Neue Aufzeichnung"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Den Mauszeiger in der Bildschirmaufnahme anzeigen."
+msgstr "Den Mauszeiger in der Bildschirmaufzeichnung anzeigen."
 
 #: src/Gui/RecordingView.qml:87
 #, kde-format
@@ -1064,7 +1063,7 @@ msgid ""
 "Recording:\n"
 "%1"
 msgstr ""
-"Aufnahme:\n"
+"Aufzeichnung:\n"
 "%1"
 
 #: src/Gui/RecordingView.qml:126
@@ -1080,12 +1079,12 @@ msgstr "Wiedergabe"
 #: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
-msgstr "Aufnahmeeinstellungen"
+msgstr "Aufzeichnungseinstellungen"
 
 #: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
-msgstr "Aufnahme abschließen"
+msgstr "Aufzeichnung abschließen"
 
 #: src/Gui/SaveAction.qml:13
 #, kde-format
@@ -1241,7 +1240,7 @@ msgstr "Mit Klicken und Loslassen übernehmen"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:193
 #, kde-format
 msgid "Show capture instructions"
-msgstr "Aufnahmeanleitung anzeigen"
+msgstr "Schnappschussanleitung anzeigen"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:200
@@ -1395,7 +1394,7 @@ msgstr "Was tun, wenn Spectacle gestartet wird"
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
-msgstr "Funktion der Taste „Druck“,  wenn Spectacle bereits ausgeführt wird"
+msgstr "Funktion der Taste „Druck“, wenn Spectacle bereits ausgeführt wird"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:35
@@ -1425,15 +1424,13 @@ msgstr "Verwendet eine helle Farbmaske im Dialog Bereichsauswahl"
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
-msgstr ""
-"Aufnahme des Bildschirmfotos nach Auswahl des Bereichs und lösen der "
-"Maustaste"
+msgstr "Schnappschuss nach Auswahl des Bereichs und Loslassen der Maustaste"
 
 #. i18n: ectx: label, entry (showCaptureInstructions), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:65
 #, kde-format
 msgid "Whether to show capture instructions in the region selection"
-msgstr "Anzeige der Aufnahmeanleitung bei der Auswahl eines Bereichs"
+msgstr "Anzeige der Schnappschussanleitung bei der Auswahl eines Bereichs"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:69
@@ -1484,7 +1481,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Nur das aktuelle Aufklappmenü aufnehmen"
+msgstr "Schnappschuss nur vom aktuellen Aufklappelement"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:108
@@ -2040,7 +2037,7 @@ msgstr "Metadaten für nicht unterstützten KWin-Bildschirmfoto-Typen: %1"
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Bildschirmaufnahme ist unter X11 nicht verfügbar."
+msgstr "Bildschirmaufzeichnung ist unter X11 nicht verfügbar."
 
 #: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
@@ -2052,7 +2049,7 @@ msgstr "KWin-Bildschirmaufnahmen sind nicht verfügbar."
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr "Aufnahme fehlgeschlagen: die Dateiadresse ist keine lokale Datei"
+msgstr "Aufzeichnung fehlgeschlagen: die Dateiadresse ist keine lokale Datei"
 
 #: src/Platforms/VideoPlatformWayland.cpp:263
 #, kde-format
@@ -2062,7 +2059,7 @@ msgid ""
 "the recording."
 msgstr ""
 "Der Stream wurde geschlossen, weil der Zielbildschirm so verändert wurde, "
-"dass die Aufnahme unterbrochen wurde."
+"dass die Aufzeichnung unterbrochen wurde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:265
 #, kde-format
@@ -2072,7 +2069,7 @@ msgid ""
 "the recording."
 msgstr ""
 "Der Stream wurde geschlossen, weil das Zielfenster so verändert wurde, dass "
-"die Aufnahme unterbrochen wurde."
+"die Aufzeichnung unterbrochen wurde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:267
 #, kde-format
@@ -2082,41 +2079,42 @@ msgid ""
 "way that disrupted the recording."
 msgstr ""
 "Der Stream wurde geschlossen, weil ein Bildschirm, der sich im Zielbereich "
-"befand, so verändert wurde, dass die Aufnahme unterbrochen wurde."
+"befand, so verändert wurde, dass die Aufzeichnung unterbrochen wurde."
 
 #: src/Platforms/VideoPlatformWayland.cpp:281
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
-"Aufnahme fehlgeschlagen: die Adresse der temporären Datei ist keine lokale "
-"Datei (%1)"
+"Aufzeichnung fehlgeschlagen: die Adresse der temporären Datei ist keine "
+"lokale Datei (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:291
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
-"Aufnahme fehlgeschlagen: die Adresse der Ausgabedatei ist keine lokale Datei "
-"(%1)"
+"Aufzeichnung fehlgeschlagen: die Adresse der Ausgabedatei ist keine lokale "
+"Datei (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:344
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Aufnahme fehlgeschlagen: der Ordner lässt sich nicht erstellen (%1)"
+msgstr ""
+"Aufzeichnung fehlgeschlagen: der Ordner lässt sich nicht erstellen (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:372
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Bildschirmaufnahme wurde abgebrochen"
+msgstr "Bildschirmaufzeichnung wurde abgebrochen"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr "Fensteraufnahme wurde abgebrochen"
+msgstr "Fensteraufzeichnung wurde abgebrochen"
 
 #: src/Platforms/VideoPlatformWayland.cpp:380
 #, kde-format
@@ -2172,61 +2170,61 @@ msgstr "Spectacle starten"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr "Gesamte Arbeitsfläche aufnehmen"
+msgstr "Schnappschuss der gesamten Arbeitsfläche"
 
 #: src/ShortcutActions.cpp:50
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
-msgstr "Aktuellen Bildschirm aufnehmen"
+msgstr "Schnappschuss des aktuellen Bildschirms"
 
 #: src/ShortcutActions.cpp:56
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
-msgstr "Aktives Fenster aufnehmen"
+msgstr "Schnappschuss des aktiven Fensters"
 
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr "Rechteckigen Bereich aufnehmen"
+msgstr "Schnappschuss eines rechteckigen Bereichs"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Ausgewähltes Fenster aufnehmen"
+msgstr "Schnappschuss des ausgewählten Fensters"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr "Fenster unter dem Mauszeiger aufnehmen"
+msgstr "Schnappschuss des Fensters unter dem Mauszeiger"
 
 #: src/ShortcutActions.cpp:76
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Screen"
-msgstr "Bildschirm aufnehmen"
+msgstr "Bildschirm aufzeichnen"
 
 #: src/ShortcutActions.cpp:82
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Window"
-msgstr "Fenster aufnehmen"
+msgstr "Fenster aufzeichnen"
 
 #: src/ShortcutActions.cpp:88
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Record Rectangular Region"
-msgstr "Rechteckigen Bereich aufnehmen"
+msgstr "Rechteckigen Bereich aufzeichnen"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr "Spectacle ohne Aufnahme starten"
+msgstr "Spectacle ohne Erstellung eines Schnappschusses starten"
 
 #: src/SpectacleCore.cpp:249
 #, kde-format
@@ -2238,13 +2236,13 @@ msgstr "Beim Erstellen eines Bildschirmfotos ist ein Fehler aufgetreten."
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Spectacle nimmt auf"
+msgstr "Spectacle zeichnet auf"
 
 #: src/SpectacleCore.cpp:283
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Spectacle nimmt auf"
+msgstr "Spectacle zeichnet auf"
 
 #: src/SpectacleCore.cpp:284
 #, kde-format
@@ -2252,7 +2250,7 @@ msgctxt "recording notification message"
 msgid "Click the system tray icon to finish recording"
 msgstr ""
 "Klicken Sie auf das Symbol im Systemabschnitt der Kontrollleiste, um die "
-"Aufnahme abzuschließen"
+"Aufzeichnung abzuschließen"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2275,19 +2273,19 @@ msgstr ""
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle beendet die Aufnahme"
+msgstr "Spectacle beendet die Aufzeichnung"
 
 #: src/SpectacleCore.cpp:339
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Bitte warten"
+msgstr "Bitte warten Sie"
 
 #: src/SpectacleCore.cpp:341
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle beendet die Aufnahme"
+msgstr "Spectacle beendet die Aufzeichnung"
 
 #: src/SpectacleCore.cpp:343
 #, kde-format
@@ -2296,7 +2294,7 @@ msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
-"Dauer der Aufnahme: %1\n"
+"Dauer der Aufzeichnung: %1\n"
 "Klicken, um das Rendering vorzeitig zu beenden (führt zu Datenverlust)"
 
 #: src/SpectacleCore.cpp:369
@@ -2306,14 +2304,15 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Dauer der Aufnahme: %1\n"
-"Klicken, um Aufnahme zu beenden"
+"Dauer der Aufzeichnung: %1\n"
+"Klicken, um Aufzeichnung zu beenden"
 
 #: src/SpectacleCore.cpp:394
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Beim Versuch, den Bildschirm aufzunehmen, ist ein Fehler aufgetreten."
+msgstr ""
+"Beim Versuch, den Bildschirm aufzuzeichnen, ist ein Fehler aufgetreten."
 
 #: src/SpectacleCore.cpp:436
 #, kde-kuit-format
@@ -2421,19 +2420,19 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Eine Aufnahme wurde als „%1“ in „%2“ gespeichert und der Speicherort der "
-"Aufnahme wurde in die Zwischenablage kopiert."
+"Eine Aufzeichnung wurde als „%1“ in „%2“ gespeichert und ihr Speicherort "
+"wurde in die Zwischenablage kopiert."
 
 #: src/SpectacleCore.cpp:1063
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Eine Aufnahme wurde als „%1“ in Ihrem Video-Ordner gespeichert."
+msgstr "Eine Aufzeichnung wurde als „%1“ in Ihrem Video-Ordner gespeichert."
 
 #: src/SpectacleCore.cpp:1065
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Eine Aufnahme wurde als „%1“ in „%2“ gespeichert."
+msgstr "Eine Aufzeichnung wurde als „%1“ in „%2“ gespeichert."
 
 #: src/SpectacleCore.cpp:1076
 #, kde-format
