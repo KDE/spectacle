@@ -643,7 +643,7 @@ X-KDE-Shortcuts=Meta+Ctrl+R
 
 [Desktop Action OpenWithoutScreenshot]
 Name=Launch without taking a screenshot
-Name[ar]=البدء بدون أخذ صورة
+Name[ar]=البدء دون أخذ صورة
 Name[az]=Ekran şəkli çəkmədən başladın
 Name[bg]=Стартиране без заснемане на екрана
 Name[ca]=Llança sense prendre cap captura de pantalla
