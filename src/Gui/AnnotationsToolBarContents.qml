@@ -215,4 +215,33 @@ ButtonGrid {
         checked: root.toolType === AnnotationTool.NumberTool
         onClicked: root.tool.type = AnnotationTool.NumberTool
     }
+    ToolButton {
+        text: "Scale 1->0.5->2->1"
+        icon.name: "transform-scale-symbolic"
+        checkable: false
+        onClicked: {
+            let m = SpectacleCore.annotationDocument.transform
+            let matrix = Qt.matrix4x4()
+            let xScale = Math.sqrt(m.m11**2 + m.m21**2 + m.m31**2)
+            if (Math.abs(xScale) === 1) {
+                matrix.scale(0.5,0.5,1)
+            } else if (Math.abs(xScale) === 0.5) {
+                matrix.scale(4,4,1)
+            } else if (Math.abs(xScale) === 2) {
+                matrix.scale(0.5,0.5,1)
+            }
+            SpectacleCore.annotationDocument.applyTransform(matrix)
+        }
+    }
+
+    ToolButton {
+        text: "Rotate +90"
+        icon.name: "object-rotate-right-symbolic"
+        checkable: false
+        onClicked: {
+            let matrix = Qt.matrix4x4()
+            matrix.rotate(90, Qt.vector3d(0,0,1))
+            SpectacleCore.annotationDocument.applyTransform(matrix)
+        }
+    }
 }
