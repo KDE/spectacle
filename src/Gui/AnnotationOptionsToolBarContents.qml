@@ -43,6 +43,34 @@ Row {
         display: root.displayMode
     }
 
+    Loader {
+        id: transformLoader
+        anchors.verticalCenter: parent.verticalCenter
+        visible: active
+        active: root.useSelectionOptions
+        sourceComponent: Row {
+            spacing: root.spacing
+            ToolButton {
+                anchors.verticalCenter: parent.verticalCenter
+                display: QQC.ToolButton.IconOnly
+                text: "Rotate +45"
+                icon.name: "object-rotate-right-symbolic"
+                onClicked: {
+                    let matrix = Qt.matrix4x4()
+                    matrix.rotate(45, Qt.vector3d(0,0,1))
+                    root.selectedItem.applyTransform(matrix)
+                    root.selectedItem.commitChanges()
+                }
+            }
+        }
+    }
+
+    QQC.ToolSeparator {
+        anchors.verticalCenter: parent.verticalCenter
+        visible: transformLoader.visible && strokeLoader.visible
+        height: QmlUtils.iconTextButtonHeight
+    }
+
     Loader { // stroke
         id: strokeLoader
         anchors.verticalCenter: parent.verticalCenter
