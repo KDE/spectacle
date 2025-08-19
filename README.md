@@ -8,7 +8,7 @@ can also be used in non-KDE X11 desktop environments.
 Spectacle is developed under the KDE umbrella and uses KDE infrastructure
 for development.
 
-Please see the file CONTRIBUTING for details on coding style and how
+Please see the file [`CONTRIBUTING`](./CONTRIBUTING) for details on coding style and how
 to contribute patches. Please note that pull requests on GitHub aren't
 supported. The recommended way of contributing patches is via KDE's
 instance of GitLab at https://invent.kde.org/graphics/spectacle.
@@ -23,8 +23,7 @@ release service version.
 
 ## Reporting Bugs
 
-Please report bugs at KDE's Bugzilla, available at https://bugs.kde.org/
+Please report bugs at KDE's Bugzilla, available at https://bugs.kde.org/.
 
-For discussions, the #kde-devel IRC channel and the kde-devel mailing list
+For discussions, the `#kde-devel` IRC channel and the kde-devel mailing list
 are good places to post.
-
