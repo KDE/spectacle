@@ -29,7 +29,7 @@ Spectacle follows the KDELibs coding style, with a few exceptions:
       member declarations, i.e., at one level right. E.g.:
 
       ```cpp
-       class Hello : public QObject
+      class Hello : public QObject
       {
           Q_OBJECT
 
