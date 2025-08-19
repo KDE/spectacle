@@ -11,7 +11,7 @@ for development.
 Please see the file [`CONTRIBUTING`](./CONTRIBUTING) for details on coding style and how
 to contribute patches. Please note that pull requests on GitHub aren't
 supported. The recommended way of contributing patches is via KDE's
-instance of GitLab at https://invent.kde.org/graphics/spectacle.
+instance of GitLab at https://invent.kde.org/plasma/spectacle.
 
 ## Release Schedule
 
