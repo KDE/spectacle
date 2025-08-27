@@ -22,20 +22,11 @@ static const auto s_screenShot2Service = u"org.kde.KWin.ScreenShot2"_s;
 static const auto s_screenShot2ObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
 static const auto s_screenShot2Interface = u"org.kde.KWin.ScreenShot2"_s;
 
-static bool s_isLoaded = false;
 static quint32 s_version = ScreenShotEffect::NullVersion;
 
 bool ScreenShotEffect::isLoaded()
 {
-    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered(s_kwinService)) {
-        s_isLoaded = false;
-    } else if (!s_isLoaded) {
-        QDBusInterface interface(s_kwinService, s_effectsObjectPath, s_effectsInterface);
-        QDBusReply<bool> reply = interface.call(u"isEffectLoaded"_s,
-                                                u"screenshot"_s);
-        s_isLoaded = reply.value();
-    }
-    return s_isLoaded;
+    return QDBusConnection::sessionBus().interface()->isServiceRegistered(s_screenShot2Service);
 }
 
 quint32 ScreenShotEffect::version()
