@@ -826,11 +826,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "Otevřít výchozí složku se snímky"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Jiná aplikace..."
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -1884,10 +1883,9 @@ msgid "KDE Screenshot Utility"
 msgstr "Nástroj na snímání obrazovky pro KDE"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr ""
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2119,28 +2117,22 @@ msgid "Capture Window Under Cursor"
 msgstr ""
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle nahrává"
+msgstr ""
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle nahrává"
+msgstr ""
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle nahrává"
+msgstr ""
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2237,63 +2229,46 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Při pokusu o záznam obrazovky se vyskytla chyba."
 
 #: src/SpectacleCore.cpp:462
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Snímek obrazovky byl zkopírován do schránky uložen jako <a href=\"%1\">%2</a>"
 
 #: src/SpectacleCore.cpp:465
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Snímek obrazovky byl uložen jako <a href=\"%1\">%2</a> a jeho umístění bylo "
-"zkopírováno do schránky"
 
 #: src/SpectacleCore.cpp:468
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Snímek obrazovky byl uložen jako <a href=\"%1\">%2</a>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:472
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "Snímek byl zkopírován do schránky."
+msgstr ""
 
 #: src/SpectacleCore.cpp:503
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Video bylo uloženo jako <a href=\"%1\">%2</a> a jeho umístění bylo "
-"zkopírováno do schránky"
 
 #: src/SpectacleCore.cpp:506
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Snímek obrazovky byl uložen jako <a href=\"%1\">%2</a>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:510
 #, kde-format
@@ -2305,11 +2280,10 @@ msgstr "Pozice videa byla zkopírována do schránky."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:530
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
-msgstr "Byl nalezen kód QR: %1"
+msgstr ""
 
 #: src/SpectacleCore.cpp:534
 #, kde-format
@@ -2402,26 +2376,3 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr ""
-
-#~ msgctxt "@info"
-#~ msgid "The screenshot location has been copied to the clipboard."
-#~ msgstr "Pozice snímku byla zkopírována do schránky."
-
-#~ msgctxt "@info"
-#~ msgid "Video shared"
-#~ msgstr "Video bylo sdíleno"
-
-#~ msgctxt "@info"
-#~ msgid "Image shared"
-#~ msgstr "Obrázek byl sdílen"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr ""
-#~ "Odkaz na sdílené video (<a href=\"%1\">%1</a>) byl zkopírován do schránky."
-
-#~ msgctxt "@info"
-#~ msgid "There was a problem sharing the video: %1"
-#~ msgstr "Při sdílení videa došlo k problému: %1"
