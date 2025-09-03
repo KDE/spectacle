@@ -39,7 +39,7 @@ bool operator==(const ClassName &other) const = default;
  * > format for the platform you were running on. There is only one case I can think of where
  * > QPixmap is not a QImage and that is when you are using the DirectFB platform plugin (which is
  * > probably busted at this point, and definitely legacy code). There QPixmap is a bona fide native
- * > surface (DFBSurface), but asside from that there is no real reason to use QPixmap over QImage
+ * > surface (DFBSurface), but aside from that there is no real reason to use QPixmap over QImage
  * > in Qt 5, aside from signaling to the user of an API that they shouldn't modify the pixel data
  * > directly.
  */

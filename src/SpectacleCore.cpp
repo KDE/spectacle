@@ -688,7 +688,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     if (!m_cliOptions[Option::Gui]
         && !m_cliOptions[Option::LaunchOnly]
         && !m_cliOptions[Option::EditExisting]) {
-        // Background gets precidence over DBus
+        // Background gets precedence over DBus
         if (m_cliOptions[Option::Background]) {
             m_startMode = StartMode::Background;
         } else if (m_cliOptions[Option::DBus]) {

@@ -11,7 +11,7 @@
 #include <qqmlregistration.h>
 
 /**
- * This is the data structure that controls the creation of the next item. From qml its paramenter
+ * This is the data structure that controls the creation of the next item. From qml its parameter
  * will be set by the app toolbars, and then drawing on the screen with the mouse will lead to the
  * creation of a new item based on those parameters
  */
