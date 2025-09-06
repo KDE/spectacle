@@ -1,8 +1,15 @@
-# Spectacle - The KDE Screenshot Utility
+# <img src="logo.png" width="48"/> Spectacle - The KDE Screenshot Utility
 
 Spectacle is a screenshot taking utility for the KDE desktop. Spectacle
 can also be used in non-KDE X11 desktop environments.
 
+![Screenshot of Spectacle](https://cdn.kde.org/screenshots/spectacle/spectacle.png)
+
+## Get help
+You can get help in :
+* Forum: https://discuss.kde.org/tag/spectacle
+* Matrix: https://matrix.to/#/#kde:kde.org
+* IRC: irc://irc.libera.chat/kde
 ## Contributing
 
 Spectacle is developed under the KDE umbrella and uses KDE infrastructure
