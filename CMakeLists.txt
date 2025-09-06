@@ -88,7 +88,7 @@ find_package(Wayland REQUIRED COMPONENTS Client)
 find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
-find_package(OpenCV REQUIRED core imgproc)
+find_package(OpenCV 4.7 REQUIRED core imgproc)
 
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
