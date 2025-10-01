@@ -1054,6 +1054,10 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         setVideoMode(false);
     }
 
+    if (m_cliOptions[Option::ReleaseCapture]) {
+        SelectionEditor::instance()->forceReleaseCapture(true);
+    }
+
     // If any capture mode is given in the cli options, let it override
     // the setting to not take a screenshot on launch
     // clang-format off

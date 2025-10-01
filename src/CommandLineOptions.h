@@ -109,10 +109,12 @@ struct CommandLineOptions {
         i18n("Open and edit existing screenshot file"),
         u"existingFileName"_s
     };
+    const QCommandLineOption releaseCapture = {{u"k"_s, u"release-capture"_s}, i18n("Accept region selection on click-and-release")};
 
     const QList<QCommandLineOption> allOptions = {
-        fullscreen, current, activeWindow, windowUnderCursor, transientOnly, region,  record,      launchOnly, gui,          background, dbus,
-        noNotify,   output,  delay,        copyImage,         copyPath,      onClick, newInstance, pointer,    noDecoration, noShadow,   editExisting,
+        fullscreen, current,     activeWindow, windowUnderCursor, transientOnly, region,       record,         launchOnly,
+        gui,        background,  dbus,         noNotify,          output,        delay,        copyImage,      copyPath,
+        onClick,    newInstance, pointer,      noDecoration,      noShadow,      editExisting, releaseCapture,
     };
 
     // Keep order in sync with allOptions
@@ -139,6 +141,7 @@ struct CommandLineOptions {
         NoDecoration,
         NoShadow,
         EditExisting,
+        ReleaseCapture,
         TotalOptions
     };
 };

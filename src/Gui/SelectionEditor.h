@@ -79,6 +79,8 @@ public:
 
     Location magnifierLocation() const;
 
+    void forceReleaseCapture(bool) const;
+
     Q_SLOT bool acceptSelection(ExportManager::Actions actions = {});
 
     void reset();
