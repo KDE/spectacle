@@ -1,85 +1,85 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2023 Vít Pelčák <vit@pelcak.org>
-# SPDX-FileCopyrightText: 2021, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2021, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-14 00:44+0000\n"
-"PO-Revision-Date: 2024-05-30 13:40+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2025-10-01 17:59+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
-msgstr ""
+msgstr "Obdélníková oblast"
 
 #: src/CaptureModeModel.cpp:164
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Všechny obrazovky (zmenšené na stejnou velikost)"
 
 #: src/CaptureModeModel.cpp:166
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
-msgstr ""
+msgstr "Aktuální obrazovka"
 
 #: src/CaptureModeModel.cpp:168
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
-msgstr ""
+msgstr "Aktivní okno"
 
 #: src/CaptureModeModel.cpp:171
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr ""
+msgstr "Vybrané okno"
 
 #: src/CaptureModeModel.cpp:171
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
-msgstr ""
+msgstr "Okno pod kurzorem"
 
 #: src/CaptureModeModel.cpp:174
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
-msgstr ""
+msgstr "Všechny obrazovky"
 
 #: src/CaptureModeModel.cpp:176
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
-msgstr ""
+msgstr "Celá obrazovka"
 
 #: src/CommandLineOptions.h:22
 #, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Sejmout celou plochu (výchozí)"
+msgstr "Zachytit celou plochu (výchozí)"
 
 #: src/CommandLineOptions.h:26
 #, kde-format
 msgid "Capture the current monitor"
-msgstr "Sejmout současný monitor"
+msgstr "Zachytit současný monitor"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
 msgid "Capture the active window"
-msgstr "Sejmout aktivní okno"
+msgstr "Zachytit aktivní okno"
 
 #: src/CommandLineOptions.h:34
 #, kde-format
@@ -87,7 +87,7 @@ msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Sejmout okno pod kurzorem včetně rodičovských oken a vyskakovacích nabídek"
+"Zachytit okno pod kurzorem včetně rodičovských oken a vyskakovacích nabídek"
 
 #: src/CommandLineOptions.h:38
 #, kde-format
@@ -95,12 +95,12 @@ msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr ""
-"Sejmout okno pod kurzorem bez rodičovských oken a vyskakovacích nabídek."
+"Zachytit okno pod kurzorem bez rodičovských oken a vyskakovacích nabídek."
 
 #: src/CommandLineOptions.h:42
 #, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Sejmout obdélníkový výběr na obrazovce"
+msgstr "Zachytit obdélníkový výběr na obrazovce"
 
 #: src/CommandLineOptions.h:46
 #, kde-format
@@ -110,11 +110,15 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Záznam obrazovky pomocí daného režimu. Režimy:\n"
+"- r, oblast\n"
+"- s, obrazovka\n"
+"- w, okno"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Spustit Spectacle bez sejmutí obrazovky"
+msgstr "Spustit Spectacle bez zachycování obrazovky"
 
 #: src/CommandLineOptions.h:58
 #, kde-format
@@ -124,28 +128,30 @@ msgstr "Spustit v režimu GUI (výchozí)"
 #: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Zachytit snímek a ukončit bz zobrazení GUI"
+msgstr "Zachytit snímek a ukončit bez zobrazení GUI"
 
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
-msgstr ""
+msgstr "Spustit v režimu DBus-Activation"
 
 #: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
+"Při režimu na pozadí, nezobrazovat oznámení při pořizování snímku obrazovky."
 
 #: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
-msgstr ""
+msgstr "Při režimu na pozadí, uložit snímek do daného souboru."
 
 #: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
+"Při režimu na pozadí, se zpožděním před pořízením snímku (v milisekundách)."
 
 #: src/CommandLineOptions.h:84
 #, kde-format
@@ -153,6 +159,8 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
+"Při režimu na pozadí, zkopírovat snímek obrazovky do schránky, pokud není "
+"také použito -o."
 
 #: src/CommandLineOptions.h:88
 #, kde-format
@@ -162,12 +170,13 @@ msgstr "Při režimu na pozadí, zkopírovat cestu ke snímku do schránky"
 #: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr ""
+msgstr "Před pořizování snímku obrazovky počkat na kliknutí. Zruší zpoždění."
 
 #: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
+"Spustí novou instanci grafického rozhraní spectacle bez registrace do DBus."
 
 #: src/CommandLineOptions.h:100
 #, kde-format
@@ -245,6 +254,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Export videa se nezdařil: URL dočasného souboru musí být existující místní "
+"soubor."
 
 #: src/ExportManager.cpp:770
 #, kde-format
@@ -252,6 +263,8 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Export videa se nezdařil: URL výstupního souboru musí být platná URL s "
+"názvem souboru."
 
 #: src/ExportManager.cpp:845
 #, kde-format
@@ -268,187 +281,187 @@ msgstr "Tisk selhal. Selhala inicializace tiskárny."
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
-msgstr ""
+msgstr "Den (1–31)"
 
 #: src/ExportManager.cpp:891
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
-msgstr ""
+msgstr "Den (01–31)"
 
 #: src/ExportManager.cpp:892
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
-msgstr ""
+msgstr "Den (zkratka)"
 
 #: src/ExportManager.cpp:893
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
-msgstr ""
+msgstr "Den (celý název)"
 
 #: src/ExportManager.cpp:894
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr ""
+msgstr "Měsíc (1–12)"
 
 #: src/ExportManager.cpp:895
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr ""
+msgstr "Měsíc (01–12)"
 
 #: src/ExportManager.cpp:896
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
-msgstr ""
+msgstr "Měsíc (zkratka)"
 
 #: src/ExportManager.cpp:897
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
-msgstr ""
+msgstr "Měsíc (celý název)"
 
 #: src/ExportManager.cpp:898
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
-msgstr ""
+msgstr "Rok (dvě číslice)"
 
 #: src/ExportManager.cpp:899
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
-msgstr ""
+msgstr "Rok (čtyři číslice)"
 
 #: src/ExportManager.cpp:900
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
-msgstr ""
+msgstr "Hodina (0–23)"
 
 #: src/ExportManager.cpp:901
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr ""
+msgstr "Hodina (00–23)"
 
 #: src/ExportManager.cpp:902
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr ""
+msgstr "Hodina (1–12)"
 
 #: src/ExportManager.cpp:903
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr ""
+msgstr "Hodina (01–12)"
 
 #: src/ExportManager.cpp:904
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr ""
+msgstr "Minuta (0–59)"
 
 #: src/ExportManager.cpp:905
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr ""
+msgstr "Minuta (00–59)"
 
 #: src/ExportManager.cpp:906
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr ""
+msgstr "Sekunda (0–59)"
 
 #: src/ExportManager.cpp:907
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr ""
+msgstr "Sekunda (00–59)"
 
 #: src/ExportManager.cpp:908
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
-msgstr ""
+msgstr "Milisekunda (0–999)"
 
 #: src/ExportManager.cpp:910
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
-msgstr ""
+msgstr "Milisekunda (000–999)"
 
 #: src/ExportManager.cpp:911
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
-msgstr ""
+msgstr "ODP./DOP."
 
 #: src/ExportManager.cpp:913
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
-msgstr ""
+msgstr "dop./odp."
 
 #: src/ExportManager.cpp:915
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
-msgstr ""
+msgstr "DOP./ODP. nebo dop./odp. (přeloženo)"
 
 #: src/ExportManager.cpp:917
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
-msgstr ""
+msgstr "Časové pásmo (zkratka)"
 
 #: src/ExportManager.cpp:918
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
-msgstr ""
+msgstr "Časový posun (±0000)"
 
 #: src/ExportManager.cpp:919
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr ""
+msgstr "Časový posun (±00:00)"
 
 #: src/ExportManager.cpp:920
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
-msgstr ""
+msgstr "Časové pásmo (celý název)"
 
 #: src/ExportManager.cpp:921
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
-msgstr ""
+msgstr "Sekundy od počátku unixového času"
 
 #: src/ExportManager.cpp:922
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
-msgstr ""
+msgstr "Název okna"
 
 #: src/ExportManager.cpp:923
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr ""
+msgstr "Pořadové číslování s doplněním nulami na délku danou počtem znaků „#“"
 
 #: src/Gui/AcceptAction.qml:9
 #, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr ""
+msgstr "Použít"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
@@ -463,9 +476,9 @@ msgstr "Tah:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
+msgstr[2] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
@@ -530,77 +543,78 @@ msgstr "Barva"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:325
 #, kde-format
 msgid "Number:"
-msgstr "Číslo:"
+msgstr "Číslice:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:344
 #, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "Číslice pro číselné anotace"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:372
 #, kde-format
 msgid "Shadow"
 msgstr "Stín"
 
+# žádné parametry funkce v inspektoru funkcí
 #: src/Gui/AnnotationsToolBarContents.qml:110
 #, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #: src/Gui/AnnotationsToolBarContents.qml:122
 #, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr ""
+msgstr "Oříznout"
 
 #: src/Gui/AnnotationsToolBarContents.qml:132
 #, kde-format
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #: src/Gui/AnnotationsToolBarContents.qml:141
 #, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
-msgstr ""
+msgstr "Volná ruka"
 
 #: src/Gui/AnnotationsToolBarContents.qml:142
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr ""
+msgstr "Shift: Přichytit k přímkám"
 
 #: src/Gui/AnnotationsToolBarContents.qml:149
 #, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
-msgstr ""
+msgstr "Zvýrazňovač"
 
 #: src/Gui/AnnotationsToolBarContents.qml:158
 #, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
-msgstr ""
+msgstr "Čára"
 
 #: src/Gui/AnnotationsToolBarContents.qml:159
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr ""
+msgstr "Shift: Přichytit po 45 stupních"
 
 #: src/Gui/AnnotationsToolBarContents.qml:166
 #, kde-format
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
-msgstr ""
+msgstr "Šipka"
 
 #: src/Gui/AnnotationsToolBarContents.qml:175
 #, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
-msgstr ""
+msgstr "Obdélník"
 
 #: src/Gui/AnnotationsToolBarContents.qml:177
 #, kde-format
@@ -609,36 +623,38 @@ msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
+"Shift: Přichytit k diagonálám\n"
+"Control: Změnit velikost ze středu"
 
 #: src/Gui/AnnotationsToolBarContents.qml:184
 #, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
-msgstr ""
+msgstr "Elipsa"
 
 #: src/Gui/AnnotationsToolBarContents.qml:192
 #, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelizovat"
 
 #: src/Gui/AnnotationsToolBarContents.qml:200
 #, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
-msgstr ""
+msgstr "Rozmazat"
 
 #: src/Gui/AnnotationsToolBarContents.qml:208
 #, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: src/Gui/AnnotationsToolBarContents.qml:215
 #, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
-msgstr ""
+msgstr "Číslice"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -664,7 +680,7 @@ msgstr "Nastavení snímku obrazovky"
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr ""
+msgstr "Výběr proveďte kliknutím a tažením."
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
@@ -685,7 +701,7 @@ msgstr "Zahrnout popisky a okraje okna"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr ""
+msgstr "Při pořizování snímku okna zahrnout titulkový pruh a rám."
 
 #: src/Gui/CaptureSettingsColumn.qml:34
 #, kde-format
@@ -695,12 +711,12 @@ msgstr "Zahrnout stín oken"
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr ""
+msgstr "Při pořizování snímku okna zahrnout stín okna."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Capture the current pop-up only"
-msgstr "Sejmout pouze současné vyskakovací okno"
+msgstr "Zachytit pouze současné vyskakovací okno"
 
 #: src/Gui/CaptureSettingsColumn.qml:46
 #, kde-format
@@ -709,6 +725,9 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
+"Při pořizování snímku okna zachytit pouze aktuální vyskakovací okno (např. "
+"menu, tooltip). Pokud je zakázáno, vyskakovací okno je zachyceno spolu s "
+"rodičovským oknem."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
@@ -723,7 +742,7 @@ msgstr "Ukončit Spectacle po uložení nebo zkopírování obrázku."
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
-msgstr "Sejmout při kliknutí"
+msgstr "Zachytit při kliknutí"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
@@ -745,7 +764,7 @@ msgstr "Kopírovat"
 #, kde-format
 msgctxt "@action"
 msgid "Copy Location"
-msgstr ""
+msgstr "Kopírovat umístění"
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -812,7 +831,7 @@ msgstr "Nahrávání"
 #, kde-format
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Upravit…"
 
 #: src/Gui/ExportMenu.cpp:50
 #, kde-format
@@ -829,7 +848,7 @@ msgstr "Otevřít výchozí složku se snímky"
 #, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr ""
+msgstr "Jiná aplikace…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -870,7 +889,7 @@ msgstr "Zkopírovat do schránky"
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -881,25 +900,25 @@ msgstr "Nový snímek obrazovky"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr ""
+msgstr "Nastavení snímku obrazovky"
 
 #: src/Gui/OptionsMenu.cpp:40
 #, kde-format
 msgctxt "@option:check for screenshots"
 msgid "Include mouse pointer"
-msgstr ""
+msgstr "Zahrnout ukazatel myši"
 
 #: src/Gui/OptionsMenu.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
-msgstr ""
+msgstr "Zobrazit kurzor myši na snímku obrazovky"
 
 #: src/Gui/OptionsMenu.cpp:49
 #, kde-format
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
-msgstr ""
+msgstr "Zahrnout titulkový pruh a okraj okna."
 
 #: src/Gui/OptionsMenu.cpp:50
 #, kde-format
@@ -908,24 +927,26 @@ msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
 msgstr ""
+"Zobrazit titulkový pruh okna, tlačítka minimalizace, maximalizace a zavření "
+"a okraj okna."
 
 #: src/Gui/OptionsMenu.cpp:58
 #, kde-format
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr ""
+msgstr "Zahrnout stín okna"
 
 #: src/Gui/OptionsMenu.cpp:59
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
-msgstr ""
+msgstr "Zobrazit stín okna"
 
 #: src/Gui/OptionsMenu.cpp:69
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
-msgstr ""
+msgstr "Zachytit pouze aktuální vyskakovací okno."
 
 #: src/Gui/OptionsMenu.cpp:71
 #, kde-format
@@ -934,24 +955,27 @@ msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
+"Při pořizování snímku okna zachytit pouze aktuální vyskakovací okno (např. "
+"menu, tooltip).\n"
+"Pokud je zakázáno, vyskakovací okno je zachyceno spolu s rodičovským oknem."
 
 #: src/Gui/OptionsMenu.cpp:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
-msgstr ""
+msgstr "Ukončit po manuálním uložení nebo zkopírování"
 
 #: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
-msgstr ""
+msgstr "Ukončit Spectacle po uložení nebo zkopírování obrázku"
 
 #: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr ""
+msgstr "Zachytit při kliknutí"
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
@@ -963,54 +987,54 @@ msgstr "Prodleva:"
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
-msgstr ""
+msgstr "Žádná prodleva"
 
 #: src/Gui/OptionsMenu.cpp:133
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
-msgstr ""
+msgstr "Nastavení nahrávání"
 
 #: src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
-msgstr ""
+msgstr "Zahrnout ukazatel myši"
 
 #: src/Gui/OptionsMenu.cpp:136
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr ""
+msgstr "Zobrazit kurzor myši při nahrávání obrazovky"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
 msgctxt "@action"
 msgid "Options"
-msgstr ""
+msgstr "Možnosti"
 
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr ""
+msgstr "Nahrávat"
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Modes"
-msgstr ""
+msgstr "Možnosti nahrávání"
 
 #: src/Gui/RecordingModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr ""
+msgstr "Nové nahrávání"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr ""
+msgstr "Zobrazit kurzor myši při nahrávání obrazovky."
 
 #: src/Gui/RecordingView.qml:87
 #, kde-format
@@ -1051,19 +1075,19 @@ msgstr "Uložit"
 #, kde-format
 msgctxt "@action"
 msgid "Save As…"
-msgstr ""
+msgstr "Uložit jako…"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
-msgstr ""
+msgstr "Možnosti snímku obrazovky"
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
-msgstr ""
+msgstr "Nový snímek obrazovky"
 
 #: src/Gui/ScreenshotView.qml:196
 #, kde-format
@@ -1073,6 +1097,9 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Výběr proveďte kliknutím a tažením.\n"
+"Ořezání dle výběru schválíte dvojitým poklepáním.\n"
+"Zrušení výběru provedete pravým kliknutí myši."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
@@ -1084,7 +1111,7 @@ msgstr "Při spuštění Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take rectangular screenshot"
-msgstr ""
+msgstr "Zachytit obdélníkový snímek"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
@@ -1186,7 +1213,7 @@ msgstr "Použít světlé pozadí"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:186
 #, kde-format
 msgid "Accept on click-and-release"
-msgstr "Přijmout při kliknutí-a-uvolnění"
+msgstr "Použít při kliknutí-a-uvolnění"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:193
@@ -1286,6 +1313,8 @@ msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
+"V názvu souboru můžete použít následující zástupné znaky, které budou "
+"nahrazeny při jeho ukládání skutečným  hodnotou:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
@@ -1426,7 +1455,7 @@ msgstr "Zda bude stín okna zahrnut ve snímku obrazovky"
 #: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Sejmout pouze současnou vyskakovací nabídku"
+msgstr "Zachytit pouze současnou vyskakovací nabídku"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:108
@@ -1492,7 +1521,7 @@ msgstr "Cesta k naposledy uloženému souboru"
 #: src/Gui/SettingsDialog/spectacle.kcfg:202
 #, kde-format
 msgid "Last path used for \"save as\" action"
-msgstr "Poslední cesta použitá v činnosti \"Uložit jako\""
+msgstr "Poslední cesta použitá v činnosti „Uložit jako”"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:186
@@ -1510,7 +1539,7 @@ msgstr "Šablona názvu souboru použitého při ukládání sdílení obrazovky
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr ""
+msgstr "Sdílet obrazovku"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, kde-format
@@ -1528,91 +1557,91 @@ msgstr "Naposled použitý nástroj pro vytváření poznámek"
 #: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Volná ruka"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Zvýrazňování"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for line annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Čára"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Šipka"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Obdélník"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
-msgstr ""
+msgstr "Šířka tahu při použití nástroje pro poznámky Elipsa"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Volná ruka"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Zvýrazňování"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for line annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Čára"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Šipka"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Obdélník"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
-msgstr ""
+msgstr "Barva tahu při použití nástroje pro poznámky Elipsa"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
-msgstr ""
+msgstr "Barva oblasti při použití nástroje pro poznámky Obdélník"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
-msgstr ""
+msgstr "Barva oblasti při použití nástroje pro poznámky Elipsa"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Fill color for number annotation tool"
-msgstr ""
+msgstr "Barva při použití nástroje pro poznámky Čílice"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:283
@@ -1630,13 +1659,13 @@ msgstr "Síla efektu pixelizace."
 #: src/Gui/SettingsDialog/spectacle.kcfg:296
 #, kde-format
 msgid "Font for text annotations"
-msgstr ""
+msgstr "Písmo pro textové poznámky"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:299
 #, kde-format
 msgid "Font for number annotations"
-msgstr ""
+msgstr "Písmo pro číselné poznámky"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
@@ -1651,42 +1680,47 @@ msgstr "Barva písma pro poznámky"
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr ""
+"Zda se má při použití nástroje pro poznámky Volná ruka vykreslovat její stín"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
-msgstr ""
+msgstr "Zda se má při použití nástroje pro poznámky Čára vykreslovat její stín"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr ""
+"Zda se má při použití nástroje pro poznámky Šipka vykreslovat její stín"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr ""
+"Zda se má při použití nástroje pro poznámky Obdélník vykreslovat jeho stín"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr ""
+"Zda se má při použití nástroje pro poznámky Elipsa vykreslovat její stín"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
-msgstr ""
+msgstr "Zda se má při použití nástroje pro poznámky Text vykreslovat jeho stín"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
 #: src/Gui/SettingsDialog/spectacle.kcfg:336
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr ""
+"Zda se má při použití nástroje pro poznámky Číslice vykreslovat její stín"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
@@ -1885,7 +1919,7 @@ msgstr "Nástroj na snímání obrazovky pro KDE"
 #: src/Main.cpp:48
 #, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr ""
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -1906,36 +1940,39 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Na Waylandu Spectacle vyžaduje kompozitor KWin, který se ale nezdá být "
+"dostupný.Použijte Spectacle na KDE Plasma nebo využijte jiný program na "
+"vytváření snímkůobrazovky."
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
 msgctxt "@info"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Neplatná šířka pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgctxt "@info"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Neplatná výška pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, kde-format
 msgctxt "@info"
 msgid "Bad format for KWin screenshot: %1"
-msgstr ""
+msgstr "Neplatný formát pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:176
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr ""
+msgstr "Nepodařilo se otevřít souborový descriptor pro KWin snímek obrazovky."
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
 #, kde-format
 msgctxt "@info"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() selhal pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
 #, kde-format
@@ -1944,6 +1981,8 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Požadavek na KWin snímek obrazovky selhal:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
@@ -1952,12 +1991,14 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Potenciálně relevantní informace:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:310
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Nepodporovaná metadata pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
@@ -1969,7 +2010,7 @@ msgstr "Záznam obrazovky není v X11 dostupný."
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Nahrávání obrazovky KWin není dostupné."
 
 #: src/Platforms/VideoPlatformWayland.cpp:173
 #, kde-format
@@ -1984,6 +2025,8 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Záznam byl zrušen, protože se cílová obrazovka změnila způsobem, kterým "
+"narušila nahrávání."
 
 #: src/Platforms/VideoPlatformWayland.cpp:266
 #, kde-format
@@ -1992,6 +2035,8 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Záznam byl zrušen, protože se cílové okno změnilo způsobem, kterým narušilo "
+"nahrávání."
 
 #: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
@@ -2000,6 +2045,8 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Záznam byl zrušen, protože se obrazovka, která obsahovala cílovou oblast, "
+"změnila způsobem, kterým narušila nahrávání."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
@@ -2078,73 +2125,73 @@ msgstr "Celá obrazovka"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
-msgstr ""
+msgstr "Spustit Spectacle"
 
 #: src/ShortcutActions.cpp:44
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr ""
+msgstr "Zachytit celou plochu"
 
 #: src/ShortcutActions.cpp:50
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
-msgstr ""
+msgstr "Zachytit aktuální monitor"
 
 #: src/ShortcutActions.cpp:56
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
-msgstr ""
+msgstr "Zachytit aktivní okno"
 
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr ""
+msgstr "Zachytit obdélníkovou oblast"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr ""
+msgstr "Zachytit vybrané okno"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr ""
+msgstr "Zachytit okno pod kurzorem"
 
 #: src/ShortcutActions.cpp:76
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr ""
+msgstr "Spustit/ukončit nahrávání obrazovky"
 
 #: src/ShortcutActions.cpp:82
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr ""
+msgstr "Spustit/ukončit nahrávání okna"
 
 #: src/ShortcutActions.cpp:88
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr ""
+msgstr "Spustit/ukončit nahrávání oblasti"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr ""
+msgstr "Spustit Spectacle bez zachycování obrazovky"
 
 #: src/SpectacleCore.cpp:249
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr ""
+msgstr "Při zachycování obrazovky se vyskytla chyba."
 
 #: src/SpectacleCore.cpp:278
 #, kde-format
@@ -2163,6 +2210,8 @@ msgstr "Spectacle nahrává"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"K ukončení nahrávání klikněte na blikající červenou ikonu v Systémové části "
+"panelu."
 
 #: src/SpectacleCore.cpp:310
 #, kde-kuit-format
@@ -2171,12 +2220,14 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"K ukončení nahrávání klikněte na blikající červenou ikonu v Systémové části "
+"panelu nebo stiskněte <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:327
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Podpora pro WebP chybí."
 
 #: src/SpectacleCore.cpp:328
 #, kde-format
@@ -2185,24 +2236,27 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Pro zobrazení animovaných ikon programu Spectacle v systémové části panelu "
+"je potřebná podpora Qt Image Formats. Proto tuto chybu baličku nahlaste jeho "
+"distributorovi."
 
 #: src/SpectacleCore.cpp:364
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr ""
+msgstr "Spectacle ukončuje nahrávání"
 
 #: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr ""
+msgstr "Počkejte prosím"
 
 #: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr ""
+msgstr "Spectacle ukončuje nahrávání"
 
 #: src/SpectacleCore.cpp:369
 #, kde-format
@@ -2211,6 +2265,8 @@ msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
+"Délka nahrávání: %1\n"
+"Kliknutím ukončíte nahrávání předčasně (tím se ztratí data)"
 
 #: src/SpectacleCore.cpp:395
 #, kde-format
@@ -2235,6 +2291,8 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
+"Snímek obrazovky byl zkopírován do schránky a uložen jako <link url=\"%1\">"
+"%2</link>"
 
 #: src/SpectacleCore.cpp:465
 #, kde-kuit-format
@@ -2243,18 +2301,20 @@ msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
+"Snímek obrazovky byl uložen jako <link url=\"%1\">%2</link> a jeho umístění "
+"bylo zkopírováno do schránky"
 
 #: src/SpectacleCore.cpp:468
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr ""
+msgstr "Snímek obrazovky byl uložen jako <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:472
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr ""
+msgstr "Snímek obrazovky byl zkopírován do schránky."
 
 #: src/SpectacleCore.cpp:503
 #, kde-kuit-format
@@ -2263,12 +2323,14 @@ msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
+"Video bylo uloženo jako <link url=\"%1\">%2</link> a jeho umístění bylo "
+"zkopírováno do schránky"
 
 #: src/SpectacleCore.cpp:506
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr ""
+msgstr "Video bylo uloženo jako <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:510
 #, kde-format
@@ -2283,13 +2345,13 @@ msgstr "Pozice videa byla zkopírována do schránky."
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
-msgstr ""
+msgstr "QR kód nalezen: %1"
 
 #: src/SpectacleCore.cpp:534
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Nalezen QR kód s binární obsahem."
 
 #: src/SpectacleCore.cpp:836
 #, kde-format
@@ -2369,10 +2431,10 @@ msgstr "MP4/H.264"
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr ""
+msgstr "Animovaný WebP (lepší než GIF)"
 
 #: src/VideoFormatModel.cpp:52
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr ""
+msgstr "GIF (kompatibilní, ale málo efektivní)"
