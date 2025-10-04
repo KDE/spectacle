@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:44+0000\n"
+"POT-Creation-Date: 2025-10-04 00:45+0000\n"
 "PO-Revision-Date: 2025-06-14 17:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1210,48 +1210,42 @@ msgstr "Açık renkli arka plan kullan"
 msgid "Accept on click-and-release"
 msgstr "Tıkla ve bırak yapınca kabul et"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:193
-#, kde-format
-msgid "Show capture instructions"
-msgstr "Yakalama yönergelerini göster"
-
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:200
+#: src/Gui/SettingsDialog/GeneralOptions.ui:193
 #, kde-format
 msgid "Show magnifier:"
 msgstr "Büyüteci göster:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:208
-#: src/Gui/SettingsDialog/GeneralOptions.ui:234
+#: src/Gui/SettingsDialog/GeneralOptions.ui:201
+#: src/Gui/SettingsDialog/GeneralOptions.ui:227
 #, kde-format
 msgid "Never"
 msgstr "Asla"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:213
-#: src/Gui/SettingsDialog/GeneralOptions.ui:239
+#: src/Gui/SettingsDialog/GeneralOptions.ui:206
+#: src/Gui/SettingsDialog/GeneralOptions.ui:232
 #, kde-format
 msgid "Always"
 msgstr "Her zaman"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#: src/Gui/SettingsDialog/GeneralOptions.ui:211
 #, kde-format
 msgid "While holding Shift"
 msgstr "Üst Karakter düğmesini basılı tutarken"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:226
+#: src/Gui/SettingsDialog/GeneralOptions.ui:219
 #, kde-format
 msgid "Remember selected area:"
 msgstr "Seçili alanı anımsa:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:244
+#: src/Gui/SettingsDialog/GeneralOptions.ui:237
 #, kde-format
 msgid "Until Spectacle is closed"
 msgstr "Spectacle kapanana dek"
@@ -1402,105 +1396,99 @@ msgstr ""
 "Bölgeyi seçip fareyi bıraktıktan sonra ekran görüntüsünün yakalanıp "
 "yakalanmayacağı"
 
-#. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:65
-#, kde-format
-msgid "Whether to show capture instructions in the region selection"
-msgstr "Bölge seçiminde yakalama yönergelerinin gösterilip gösterilmeyeceği"
-
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:69
+#: src/Gui/SettingsDialog/spectacle.kcfg:65
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Son dikdörtgen bölgeyi anımsa"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:76
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Kullanıcının seçtiği son kullanılan bölge"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Tıklayınca ekran görüntüsü al"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Fare imlecinin ekran görüntüsünde içerilip içerilmeyeceği"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Fare imlecinin videoda içerilip içerilmeyeceği"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Pencere dekorasyonlarının ekran görüntüsünde içerilip içerilmediği"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Pencere gölgesinin ekran görüntüsünde içerilip içerilmediği"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Yalnızca geçerli açılır menüyü yakala"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Bir görüntüyü kaydettikten veya kopyaladıktan sonra çık"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Delay"
 msgstr "Gecikme"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
-#: src/Gui/SettingsDialog/spectacle.kcfg:169
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:165
 #, kde-format
 msgid "Default filename"
 msgstr "Öntanımlı dosya adı"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:140
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Kayıplı dosya formatları için sıkıştırma kalitesi"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#: src/Gui/SettingsDialog/spectacle.kcfg:141
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Ekran Görüntüleri"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgid "Default save image format"
 msgstr "Öntanımlı görsel kaydetme biçimi"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Ekran görüntüleri kaydedilirken kullanılan dosya adı şablonu"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1508,210 +1496,210 @@ msgstr "Ekran Görüntüsü"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "En son kaydedilen dosyanın yolu"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "“Farklı Kaydet” eylemi için kullanılan son yol"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:182
 #, kde-format
 msgid "Default video format"
 msgstr "Öntanımlı video biçimi"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Ekran yayınları kaydedilirken kullanılan dosya adı şablonu"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Ekran Yayınları"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:192
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Ekran Yayını"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Son kullanılan bilgi notu türü"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:214
+#: src/Gui/SettingsDialog/spectacle.kcfg:210
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Serbest çizim bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
+#: src/Gui/SettingsDialog/spectacle.kcfg:215
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Vurgulayıcı bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Çizgi bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:229
+#: src/Gui/SettingsDialog/spectacle.kcfg:225
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Ok bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Dörtgen bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
+#: src/Gui/SettingsDialog/spectacle.kcfg:235
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Elips bilgi notu aracı için vuruş genişliği"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Serbest çizim bilgi notu aracı için vuruş rengi"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Vurgulayıcı bilgi notu aracı için vuruş rengi"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Çizgi bilgi notu aracı için vuruş rengi"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Ok bilgi notu aracı için vuruş rengi"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Dörtgen bilgi notu aracı için vuruş rengi"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Elips bilgi notu aracı için vuruş genişliği rengi"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
+#: src/Gui/SettingsDialog/spectacle.kcfg:266
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Dörtgen bilgi notu aracı için dolgu rengi"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Elips bilgi notu aracı için dolgu rengi"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:278
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "Sayı bilgi notu aracı için dolgu rengi"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:283
+#: src/Gui/SettingsDialog/spectacle.kcfg:279
 #, kde-format
 msgid "The strength of the blur effect."
 msgstr "Bulanıklaştırma efektinin sertliği."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr "Pikselleştirme efektinin sertliği."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:296
+#: src/Gui/SettingsDialog/spectacle.kcfg:292
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Metin bilgi notu yazıtipi"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
+#: src/Gui/SettingsDialog/spectacle.kcfg:295
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Sayı bilgi notu yazıtipi"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #: src/Gui/SettingsDialog/spectacle.kcfg:303
-#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Bilgi notu yazıtipi rengi"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
+#: src/Gui/SettingsDialog/spectacle.kcfg:308
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Serbest çizim bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Çizgi bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Ok bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Dörtgen bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Elips bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Metin bilgi notu aracının bir arka gölgesinin olup olmadığı"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:336
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Sayı bilgi notu aracının bir arka gölgesinin olup olmadığı"
@@ -2426,6 +2414,12 @@ msgstr "Hareketli WebP (GIF’ten daha iyi)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (uyumlu; ancak verimli değil)"
+
+#~ msgid "Show capture instructions"
+#~ msgstr "Yakalama yönergelerini göster"
+
+#~ msgid "Whether to show capture instructions in the region selection"
+#~ msgstr "Bölge seçiminde yakalama yönergelerinin gösterilip gösterilmeyeceği"
 
 #~ msgctxt "@action global shortcut"
 #~ msgid "Record Screen"
