@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-14 00:44+0000\n"
+"POT-Creation-Date: 2025-10-05 02:30+0000\n"
 "PO-Revision-Date: 2025-06-15 18:15+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1188,48 +1188,42 @@ msgstr "使用較亮的背景"
 msgid "Accept on click-and-release"
 msgstr "點選並釋放時接受"
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_showCaptureInstructions)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:193
-#, kde-format
-msgid "Show capture instructions"
-msgstr "顯示擷取說明"
-
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:200
+#: src/Gui/SettingsDialog/GeneralOptions.ui:193
 #, kde-format
 msgid "Show magnifier:"
 msgstr "顯示放大鏡："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:208
-#: src/Gui/SettingsDialog/GeneralOptions.ui:234
+#: src/Gui/SettingsDialog/GeneralOptions.ui:201
+#: src/Gui/SettingsDialog/GeneralOptions.ui:227
 #, kde-format
 msgid "Never"
 msgstr "永不記住"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:213
-#: src/Gui/SettingsDialog/GeneralOptions.ui:239
+#: src/Gui/SettingsDialog/GeneralOptions.ui:206
+#: src/Gui/SettingsDialog/GeneralOptions.ui:232
 #, kde-format
 msgid "Always"
 msgstr "永遠記住"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:218
+#: src/Gui/SettingsDialog/GeneralOptions.ui:211
 #, kde-format
 msgid "While holding Shift"
 msgstr "按住 Shift 時"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:226
+#: src/Gui/SettingsDialog/GeneralOptions.ui:219
 #, kde-format
 msgid "Remember selected area:"
 msgstr "記住選取區域："
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:244
+#: src/Gui/SettingsDialog/GeneralOptions.ui:237
 #, kde-format
 msgid "Until Spectacle is closed"
 msgstr "記住到 Spectacle 關閉"
@@ -1375,105 +1369,99 @@ msgid ""
 "releasing the mouse"
 msgstr "是否在選取好區域，放開滑鼠後擷取螢幕截圖"
 
-#. i18n: ectx: label, entry (showCaptureInstructions), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:65
-#, kde-format
-msgid "Whether to show capture instructions in the region selection"
-msgstr "是否在區域選取區顯示擷取說明"
-
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:69
+#: src/Gui/SettingsDialog/spectacle.kcfg:65
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "記住上一次的長方形區域"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:76
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "使用者先前選取的區域"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "按一下擷取螢幕"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "是否將滑鼠游標加入螢幕截圖"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "影片中是否要包含滑鼠游標"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "是否要將視窗裝飾加入螢幕截圖"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "螢幕截圖是否要包含視窗裝飾"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "只擷取目前的彈出式選單"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "儲存或複製圖片後離開"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Delay"
 msgstr "延遲"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
-#: src/Gui/SettingsDialog/spectacle.kcfg:169
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:165
 #, kde-format
 msgid "Default filename"
 msgstr "預設檔名"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:140
+#: src/Gui/SettingsDialog/spectacle.kcfg:136
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "有損檔案格式的壓縮品質"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#: src/Gui/SettingsDialog/spectacle.kcfg:141
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "螢幕截圖"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgid "Default save image format"
 msgstr "預設儲存圖片格式"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "儲存螢幕截圖時用的檔案名稱樣本"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
+#: src/Gui/SettingsDialog/spectacle.kcfg:153
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1481,210 +1469,210 @@ msgstr "螢幕截圖"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "上次儲存的檔案路徑"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "要為「儲存為」動作使用的上個路徑"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:182
 #, kde-format
 msgid "Default video format"
 msgstr "預設影片格式"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "儲存螢幕錄製時用的檔案名稱樣本"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "螢幕錄製"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:192
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "螢幕錄製"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
+#: src/Gui/SettingsDialog/spectacle.kcfg:204
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "上次使用的註記工具類型"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:214
+#: src/Gui/SettingsDialog/spectacle.kcfg:210
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "手繪註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
+#: src/Gui/SettingsDialog/spectacle.kcfg:215
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "螢光筆註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
+#: src/Gui/SettingsDialog/spectacle.kcfg:220
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "線段註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:229
+#: src/Gui/SettingsDialog/spectacle.kcfg:225
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "箭頭註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
+#: src/Gui/SettingsDialog/spectacle.kcfg:230
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "長方形註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
+#: src/Gui/SettingsDialog/spectacle.kcfg:235
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "橢圓註記工具的筆畫寬度"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:241
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "手繪註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "螢光筆註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "線段註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "箭頭註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "長方形註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "橢圓註記工具的筆畫顏色"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
+#: src/Gui/SettingsDialog/spectacle.kcfg:266
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "長方形註記工具的填滿顏色"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "橢圓註記工具的填滿顏色"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:278
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "數字註記工具的填滿顏色"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:283
+#: src/Gui/SettingsDialog/spectacle.kcfg:279
 #, kde-format
 msgid "The strength of the blur effect."
 msgstr "模糊效果的強度。"
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
+#: src/Gui/SettingsDialog/spectacle.kcfg:285
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr "馬賽克效果的強度。"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:296
+#: src/Gui/SettingsDialog/spectacle.kcfg:292
 #, kde-format
 msgid "Font for text annotations"
 msgstr "文字註記的字型"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
+#: src/Gui/SettingsDialog/spectacle.kcfg:295
 #, kde-format
 msgid "Font for number annotations"
 msgstr "數字註記的字型"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #: src/Gui/SettingsDialog/spectacle.kcfg:303
-#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr "註記字型顏色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
+#: src/Gui/SettingsDialog/spectacle.kcfg:308
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "手繪註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "線段註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "箭頭註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "長方形註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "橢圓註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "文字註記工具是否有陰影"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:336
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "數字註記工具是否有陰影"
@@ -2378,6 +2366,12 @@ msgstr "動態 WebP（比 GIF 好）"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF（相容性高但較浪費空間）"
+
+#~ msgid "Show capture instructions"
+#~ msgstr "顯示擷取說明"
+
+#~ msgid "Whether to show capture instructions in the region selection"
+#~ msgstr "是否在區域選取區顯示擷取說明"
 
 #~ msgctxt "@action global shortcut"
 #~ msgid "Record Screen"
