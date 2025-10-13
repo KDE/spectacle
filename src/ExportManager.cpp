@@ -631,26 +631,37 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         // construct the file name
         const QString filenameExtension = Settings::self()->preferredImageFormat().toLower();
         const QString mimetype = QMimeDatabase().mimeTypeForFile(u"~/fakefile."_s + filenameExtension, QMimeDatabase::MatchExtension).name();
-        QFileDialog dialog;
-        dialog.setAcceptMode(QFileDialog::AcceptSave);
-        dialog.setFileMode(QFileDialog::AnyFile);
+        auto dialog = new QFileDialog();
+        dialog->setAcceptMode(QFileDialog::AcceptSave);
+        dialog->setFileMode(QFileDialog::AnyFile);
         QUrl dirUrl = url.adjusted(QUrl::RemoveFilename);
         if (!dirUrl.isValid()) {
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
         }
-        dialog.setDirectoryUrl(dirUrl);
+        dialog->setDirectoryUrl(dirUrl);
         const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), dirUrl);
-        dialog.selectFile(formattedFilename + u"."_s + filenameExtension);
-        dialog.setDefaultSuffix(u"."_s + filenameExtension);
-        dialog.setMimeTypeFilters(supportedFilters);
-        dialog.selectMimeTypeFilter(mimetype);
+        dialog->selectFile(formattedFilename + u"."_s + filenameExtension);
+        dialog->setDefaultSuffix(u"."_s + filenameExtension);
+        dialog->setMimeTypeFilters(supportedFilters);
+        dialog->selectMimeTypeFilter(mimetype);
 
-        // launch the dialog
-        const bool accepted = dialog.exec() == QDialog::Accepted;
-        if (accepted && !dialog.selectedUrls().isEmpty()) {
-            url = dialog.selectedUrls().constFirst();
-        }
-        actions.setFlag(SaveAs, accepted && url.isValid());
+        // Don't use exec() like the QFileDialog docs show.
+        // It can cause a race condition that leads to a crash when the QML environment is being destroyed.
+        connect(dialog, &QFileDialog::finished, this, [actions, url, dialog](int result) mutable {
+            dialog->deleteLater();
+            const bool accepted = result == QDialog::Accepted;
+            const auto &selectedUrl = dialog->selectedUrls().value(0, QUrl());
+            if (accepted && !selectedUrl.fileName().isEmpty()) {
+                url = selectedUrl;
+            }
+            // Replace SaveAs with Save since we will definitely be using this URL.
+            actions.setFlag(SaveAs, false);
+            actions.setFlag(Save, accepted);
+            // restart the export now that we've done the save as action
+            ExportManager::instance()->exportImage(actions, url);
+        });
+        dialog->open();
+        return;
     }
 
     bool saved = actions & AnySave;
@@ -776,27 +787,37 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         // construct the file name
         const auto &extension = inputName.mid(inputName.lastIndexOf(u'.'));
         const auto &mimetype = mimeDatabase.mimeTypeForFile(inputName, QMimeDatabase::MatchExtension).name();
-        QFileDialog dialog;
-        dialog.setAcceptMode(QFileDialog::AcceptSave);
-        dialog.setFileMode(QFileDialog::AnyFile);
+        auto dialog = new QFileDialog();
+        dialog->setAcceptMode(QFileDialog::AcceptSave);
+        dialog->setFileMode(QFileDialog::AnyFile);
         const auto outputDir = outputUrl.adjusted(QUrl::RemoveFilename);
         if (!outputDir.isValid()) {
-            dialog.setDirectoryUrl(Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename));
+            dialog->setDirectoryUrl(Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename));
         } else {
-            dialog.setDirectoryUrl(outputUrl);
+            dialog->setDirectoryUrl(outputUrl);
         }
-        dialog.setDefaultSuffix(extension);
-        dialog.selectFile(!outputName.isEmpty() ? outputName : inputName);
-        dialog.setMimeTypeFilters({mimetype});
-        dialog.selectMimeTypeFilter(mimetype);
+        dialog->setDefaultSuffix(extension);
+        dialog->selectFile(!outputName.isEmpty() ? outputName : inputName);
+        dialog->setMimeTypeFilters({mimetype});
+        dialog->selectMimeTypeFilter(mimetype);
 
-        // launch the dialog
-        const bool accepted = dialog.exec() == QDialog::Accepted;
-        const auto &selectedUrl = dialog.selectedUrls().value(0, QUrl());
-        if (accepted && !selectedUrl.fileName().isEmpty()) {
-            outputUrl = selectedUrl;
-        }
-        actions.setFlag(SaveAs, accepted && outputUrl.isValid());
+        // Don't use exec() like the QFileDialog docs show.
+        // It can cause a race condition that leads to a crash when the QML environment is being destroyed.
+        connect(dialog, &QFileDialog::finished, this, [actions, inputUrl, outputUrl, dialog](int result) mutable {
+            dialog->deleteLater();
+            const bool accepted = result == QDialog::Accepted;
+            const auto &selectedUrl = dialog->selectedUrls().value(0, QUrl());
+            if (accepted && !selectedUrl.fileName().isEmpty()) {
+                outputUrl = selectedUrl;
+            }
+            // Replace SaveAs with Save since we will definitely be using this URL.
+            actions.setFlag(SaveAs, false);
+            actions.setFlag(Save, accepted);
+            // restart the export now that we've done the save as action
+            ExportManager::instance()->exportVideo(actions, inputUrl, outputUrl);
+        });
+        dialog->open();
+        return;
     }
 
     bool inputFromTemp = temporaryDir() && inputFile.startsWith(m_tempDir->path());
