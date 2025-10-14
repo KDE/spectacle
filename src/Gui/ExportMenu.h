@@ -9,6 +9,7 @@
 
 #include "SpectacleMenu.h"
 
+#include <QMenu>
 #include <QQmlEngine>
 
 #include "Config.h"
@@ -49,8 +50,11 @@ private:
 
     Q_SLOT void onImageChanged();
     Q_SLOT void openScreenshotsFolder();
+    Q_SLOT void buildOcrLanguageSubmenu();
+    Q_SLOT void triggerExtraction(const QString &languageCode);
 
     void getKServiceItems();
+    void createOcrLanguageSubmenu();
 
 #ifdef PURPOSE_FOUND
     void loadPurposeMenu();
@@ -59,6 +63,7 @@ private:
     bool mUpdatedImageAvailable;
     std::unique_ptr<Purpose::Menu> mPurposeMenu;
 #endif
+    QMenu *m_ocrLanguageMenu = nullptr;
     friend class ExportMenuSingleton;
 };
 

@@ -44,6 +44,7 @@ target_sources(spectacle PRIVATE
     Gui/SelectionEditor.cpp
     Gui/SettingsDialog/GeneralOptionsPage.cpp
     Gui/SettingsDialog/ImageSaveOptionsPage.cpp
+    Gui/SettingsDialog/OcrLanguageSelector.cpp
     Gui/SettingsDialog/SettingsDialog.cpp
     Gui/SettingsDialog/ShortcutsOptionsPage.cpp
     Gui/SettingsDialog/VideoFormatComboBox.cpp

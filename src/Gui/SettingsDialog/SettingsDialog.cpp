@@ -1,4 +1,5 @@
 /*
+ *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
  *  SPDX-FileCopyrightText: 2019 David Redondo <kde@david-redondo.de>
  *  SPDX-FileCopyrightText: 2015 Boudhayan Gupta <bgupta@kde.org>
  *
@@ -9,8 +10,9 @@
 
 #include "GeneralOptionsPage.h"
 #include "ImageSaveOptionsPage.h"
-#include "VideoSaveOptionsPage.h"
+#include "OcrLanguageSelector.h"
 #include "ShortcutsOptionsPage.h"
+#include "VideoSaveOptionsPage.h"
 #include "settings.h"
 
 #include <QFontDatabase>
@@ -36,6 +38,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     addPage(m_videosPage, Settings::self(), i18nc("Settings category", "Video Saving"), "video-x-generic"_L1);
     addPage(m_shortcutsPage, i18nc("Settings category", "Shortcuts"), "preferences-desktop-keyboard"_L1);
     connect(m_shortcutsPage, &ShortcutsOptionsPage::shortCutsChanged, this, [this] {
+        updateButtons();
+    });
+    connect(m_generalPage, &GeneralOptionsPage::ocrLanguageChanged, this, [this] {
         updateButtons();
     });
     connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
@@ -72,18 +77,20 @@ void SettingsDialog::showEvent(QShowEvent *event)
 
 bool SettingsDialog::hasChanged()
 {
-    return m_shortcutsPage->isModified() || KConfigDialog::hasChanged();
+    return m_shortcutsPage->isModified() || m_generalPage->ocrLanguageSelector()->hasChanges() || KConfigDialog::hasChanged();
 }
 
 bool SettingsDialog::isDefault()
 {
-    return currentPage()->name() != i18n("Shortcuts") && KConfigDialog::isDefault();
+    return currentPage()->name() != i18n("Shortcuts") && m_generalPage->ocrLanguageSelector()->isDefault() && KConfigDialog::isDefault();
 }
 
 void SettingsDialog::updateSettings()
 {
     KConfigDialog::updateSettings();
     m_shortcutsPage->saveChanges();
+
+    m_generalPage->ocrLanguageSelector()->saveSettings();
 }
 
 void SettingsDialog::updateWidgets()
@@ -91,6 +98,7 @@ void SettingsDialog::updateWidgets()
     KConfigDialog::updateWidgets();
     m_shortcutsPage->resetChanges();
 
+    m_generalPage->ocrLanguageSelector()->updateWidgets();
     m_generalPage->refreshOcrLanguageSettings();
 }
 
@@ -98,6 +106,9 @@ void SettingsDialog::updateWidgetsDefault()
 {
     KConfigDialog::updateWidgetsDefault();
     m_shortcutsPage->defaults();
+
+    m_generalPage->ocrLanguageSelector()->applyDefaults();
+    m_generalPage->refreshOcrLanguageSettings();
 }
 
 #include "moc_SettingsDialog.cpp"

@@ -265,21 +265,39 @@
    <item row="16" column="0">
     <widget class="QLabel" name="ocrLanguageLabel">
      <property name="text">
-      <string>Language:</string>
+      <string>Languages for OCR:</string>
      </property>
     </widget>
    </item>
    <item row="16" column="1">
-    <widget class="QComboBox" name="kcfg_ocrLanguage">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <widget class="QScrollArea" name="ocrLanguageScrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
      </property>
-     <property name="kcfg_property" stdset="0">
-      <string notr="true">currentData</string>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
+     <property name="maximumHeight">
+      <number>120</number>
+     </property>
+     <property name="minimumHeight">
+      <number>60</number>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <widget class="QWidget" name="ocrLanguageContainer">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>69</width>
+        <height>69</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="ocrLanguageLayout">
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="17" column="0" colspan="2">
@@ -383,7 +401,7 @@
   <tabstop>kcfg_useReleaseToCapture</tabstop>
   <tabstop>kcfg_showCaptureInstructions</tabstop>
   <tabstop>kcfg_rememberSelectionRect</tabstop>
-  <tabstop>kcfg_ocrLanguage</tabstop>
+  <tabstop>ocrLanguageScrollArea</tabstop>
  </tabstops>
  <resources/>
  <connections/>

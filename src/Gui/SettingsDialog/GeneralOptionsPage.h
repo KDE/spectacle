@@ -11,6 +11,7 @@
 #include <QWidget>
 
 class Ui_GeneralOptions;
+class OcrLanguageSelector;
 
 class GeneralOptionsPage : public QWidget
 {
@@ -22,10 +23,21 @@ public:
     
     void refreshOcrLanguageSettings();
 
+    /**
+     * @brief Get direct access to the OCR language selector widget
+     * @return Pointer to the OcrLanguageSelector widget for direct manipulation
+     */
+    OcrLanguageSelector *ocrLanguageSelector() const
+    {
+        return m_ocrLanguageSelector;
+    }
+
+Q_SIGNALS:
+    void ocrLanguageChanged();
+
 private:
-    void setupOcrLanguageComboBox();
-    
     QScopedPointer<Ui_GeneralOptions> m_ui;
+    OcrLanguageSelector *m_ocrLanguageSelector;
 };
 
 #endif // GENERALOPTIONSPAGE_H

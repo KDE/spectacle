@@ -6,9 +6,10 @@ import QtQuick.Templates as T
 import org.kde.spectacle.private
 
 T.Action {
-    // OCR is only available for screenshots, not videos, and only when OCR is properly available
-    enabled: !SpectacleCore.videoMode && SpectacleCore.ocrAvailable
+    enabled: !SpectacleCore.videoMode && 
+             SpectacleCore.ocrAvailable && 
+             SpectacleCore.ocrStatus !== 1
     icon.name: "document-scan"
     text: i18nc("@action", "Extract Text")
-    onTriggered: contextWindow.extractText()
+    onTriggered: SpectacleCore.startOcrExtraction()
 }

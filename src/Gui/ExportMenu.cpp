@@ -6,6 +6,7 @@
 
 #include "ExportMenu.h"
 #include "CaptureWindow.h"
+#include "OcrManager.h"
 #include "SpectacleCore.h"
 #include "WidgetWindowUtils.h"
 #include "settings.h"
@@ -53,6 +54,8 @@ ExportMenu::ExportMenu(QWidget *parent)
               i18n("Open Default Screenshots Folder"),
               this, &ExportMenu::openScreenshotsFolder);
     addAction(KStandardActions::print(this, &ExportMenu::openPrintDialog, this));
+
+    createOcrLanguageSubmenu();
 
 #ifdef PURPOSE_FOUND
     loadPurposeMenu();
@@ -231,6 +234,87 @@ void ExportMenu::openPrintDialog()
     });
 
     dialog->setVisible(true);
+}
+
+void ExportMenu::createOcrLanguageSubmenu()
+{
+    Q_ASSERT(!m_ocrLanguageMenu);
+
+    auto ocrManager = OcrManager::instance();
+
+    if (!ocrManager || !ocrManager->isAvailable()) {
+        return;
+    }
+
+    m_ocrLanguageMenu = addMenu(i18nc("@action:menu", "Extract Text by Language"));
+    m_ocrLanguageMenu->setIcon(QIcon::fromTheme(u"document-scan"_s));
+
+    // Keep the submenu in sync with OCR status changes
+    if (ocrManager) {
+        connect(ocrManager, &OcrManager::statusChanged, this, &ExportMenu::buildOcrLanguageSubmenu);
+    }
+
+    if (auto settings = Settings::self()) {
+        connect(settings, &Settings::ocrLanguagesChanged, this, &ExportMenu::buildOcrLanguageSubmenu);
+    }
+
+    connect(m_ocrLanguageMenu, &QMenu::aboutToShow, this, &ExportMenu::buildOcrLanguageSubmenu);
+
+    buildOcrLanguageSubmenu();
+}
+
+void ExportMenu::buildOcrLanguageSubmenu()
+{
+    if (!m_ocrLanguageMenu) {
+        return;
+    }
+
+    m_ocrLanguageMenu->clear();
+
+    auto ocrManager = OcrManager::instance();
+
+    if (!ocrManager) {
+        QAction *action = m_ocrLanguageMenu->addAction(i18n("OCR engine is not available."));
+        action->setEnabled(false);
+        return;
+    }
+
+    const bool initializationFailed = ocrManager->status() == OcrManager::OcrStatus::Error;
+    if (!ocrManager->isAvailable()) {
+        QAction *action = m_ocrLanguageMenu->addAction(initializationFailed ? i18n("OCR is not available. Please install Tesseract OCR.")
+                                                                            : i18n("OCR engine is initializing…"));
+        action->setEnabled(false);
+        return;
+    }
+
+    const bool busy = ocrManager->status() == OcrManager::OcrStatus::Processing;
+    const QMap<QString, QString> languages = ocrManager->availableLanguagesWithNames();
+
+    if (languages.isEmpty()) {
+        QAction *action = m_ocrLanguageMenu->addAction(i18n("No OCR language data available."));
+        action->setEnabled(false);
+        return;
+    }
+
+    for (auto it = languages.cbegin(); it != languages.cend(); ++it) {
+        const QString &code = it.key();
+
+        if (code == u"osd"_s) {
+            continue;
+        }
+
+        QAction *languageAction = m_ocrLanguageMenu->addAction(it.value());
+        languageAction->setEnabled(!busy);
+
+        connect(languageAction, &QAction::triggered, this, [this, code]() {
+            triggerExtraction(code);
+        });
+    }
+}
+
+void ExportMenu::triggerExtraction(const QString &languageCode)
+{
+    SpectacleCore::instance()->startOcrExtraction(languageCode);
 }
 
 #include "moc_ExportMenu.cpp"
