@@ -177,6 +177,7 @@ void ExportMenu::loadPurposeMenu()
         const QString dataUri = ExportManager::instance()->tempSave().toString();
         auto mimeType = QMimeDatabase().mimeTypeForFile(dataUri).name();
         QJsonObject inputData = {{u"mimeType"_s, mimeType}, {u"urls"_s, QJsonArray({dataUri})}};
+        qDebug() << inputData << QFile::exists(dataUri) << ExportManager::instance()->image();
         mPurposeMenu->model()->setInputData(inputData);
         mPurposeMenu->model()->setPluginType(u"Export"_s);
     });

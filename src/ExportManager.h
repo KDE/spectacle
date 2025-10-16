@@ -51,7 +51,6 @@ public:
 
     static QString defaultSaveLocation();
     static QString defaultVideoSaveLocation();
-    bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
     void setImage(const QImage &image);
     QImage image() const;
@@ -145,15 +144,11 @@ Q_SIGNALS:
     void qrCodeScanned(const QVariant &content);
 
 private:
-    static QString truncatedFilename(const QString &filename);
-    using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
-    QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
     QString imageFileSuffix(const QUrl &url) const;
     bool writeImage(QIODevice *device, const QByteArray &suffix);
     bool save(const QUrl &url);
     bool localSave(const QUrl &url, const QString &suffix);
     bool remoteSave(const QUrl &url, const QString &suffix);
-    bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     bool m_imageSavedNotInTemp;
     QImage m_saveImage;

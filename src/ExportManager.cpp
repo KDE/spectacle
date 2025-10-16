@@ -43,6 +43,64 @@
 
 using namespace Qt::StringLiterals;
 
+static inline QString truncatedFilename(const QString &fileName)
+{
+    constexpr auto maxFilenameLength = 255;
+    constexpr auto maxExtensionLength = 5; // For example, ".jpeg"
+    constexpr auto maxCounterLength = 20; // std::numeric_limits<quint64>::max() == 18446744073709551615
+    constexpr auto maxLength = maxFilenameLength - maxCounterLength - maxExtensionLength;
+    return fileName.first(maxLength);
+}
+
+static inline QString autoIncrementFilename(const QUrl &dirUrl, const QString &fileNameArg, const QString &extension = {})
+{
+    const auto dotExtension = extension.isEmpty() ? u""_s : u'.' % extension;
+    const auto truncatedBaseName = truncatedFilename(fileNameArg.chopped(extension.size()));
+    auto getFileName = [&](quint64 i = 0) -> QString {
+        if (i == 0) {
+            return truncatedBaseName % dotExtension;
+        }
+        return truncatedBaseName % u"-%1"_s.arg(i) % dotExtension;
+    };
+    auto fileName = getFileName();
+    if (dirUrl.isLocalFile()) {
+        if (!QFileInfo::exists(fileName)) {
+            return fileName;
+        }
+        for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
+            fileName = getFileName(i);
+            if (!QFileInfo::exists(fileName)) {
+                return fileName;
+            }
+        }
+    } else { // remote dir logic
+        // Get the whole dir so that we only need to go over the network once
+        // when iterating through all the increments in remote dirs.
+        auto listJob = KIO::listDir(dirUrl);
+        KIO::UDSEntryList fileList;
+        QObject::connect(listJob, &KIO::ListJob::entries, listJob, [&fileList]([[maybe_unused]] KIO::Job *job, const KIO::UDSEntryList &list) {
+            fileList = list;
+        });
+        listJob->exec();
+        auto exists = [&fileName](const KIO::UDSEntry &entry) {
+            return fileName == entry.stringValue(KIO::UDSEntry::UDS_NAME);
+        };
+        if (!std::any_of(fileList.cbegin(), fileList.cend(), exists)) {
+            return fileName;
+        }
+        for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
+            fileName = getFileName(i);
+            if (!std::any_of(fileList.cbegin(), fileList.cend(), exists)) {
+                return fileName;
+            }
+        }
+    }
+
+    // unlikely this will ever happen, but just in case we've run
+    // out of numbers
+    return truncatedBaseName % u"-%1."_s.arg(u"OVERFLOW-" + QString::number(QRandomGenerator::global()->bounded(10000))) % extension;
+}
+
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
     , m_imageSavedNotInTemp(false)
@@ -135,12 +193,10 @@ QString ExportManager::defaultVideoSaveLocation()
 
 QUrl ExportManager::getAutosaveFilename() const
 {
-    const QString baseDir = defaultSaveLocation();
-    const QDir baseDirPath(baseDir);
+    const QString baseDirPath = defaultSaveLocation();
     const QString filename = formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
-                                                   Settings::preferredImageFormat().toLower(),
-                                                   &ExportManager::isFileExists);
+    const QString fullpath = autoIncrementFilename(QUrl::fromLocalFile(baseDirPath), filename,
+                                                   Settings::preferredImageFormat().toLower());
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -154,19 +210,18 @@ QUrl ExportManager::tempVideoUrl(const QString &filename)
 {
     const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
     auto extension = VideoPlatform::extensionForFormat(format);
-    QString baseDir = defaultVideoSaveLocation();
-    const QDir baseDirPath(baseDir);
-    QString filepath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
+    QString baseDirPath = defaultVideoSaveLocation();
+    QString filepath = autoIncrementFilename(QUrl::fromLocalFile(baseDirPath), filename, extension);
 
     auto tempDir = temporaryDir();
     if (!tempDir) {
         return {};
     }
 
-    if (!baseDir.isEmpty() && !baseDir.endsWith(u'/')) {
-        baseDir += u'/';
+    if (!baseDirPath.isEmpty() && !baseDirPath.endsWith(u'/')) {
+        baseDirPath += u'/';
     }
-    filepath = tempDir->path() + u'/' + filepath.right(filepath.size() - baseDir.size());
+    filepath = tempDir->path() + u'/' + filepath.right(filepath.size() - baseDirPath.size());
     return QUrl::fromLocalFile(filepath);
 }
 
@@ -199,17 +254,6 @@ const QTemporaryDir *ExportManager::temporaryDir()
         auto future = QtConcurrent::run(removeUnlockedDirs, oldDirs);
     }
     return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
-}
-
-QString ExportManager::truncatedFilename(QString const &filename)
-{
-    QString result = filename;
-    constexpr auto maxFilenameLength = 255;
-    constexpr auto maxExtensionLength = 5; // For example, ".jpeg"
-    constexpr auto maxCounterLength = 20; // std::numeric_limits<quint64>::max() == 18446744073709551615
-    constexpr auto maxLength = maxFilenameLength - maxCounterLength - maxExtensionLength;
-    result.truncate(maxLength);
-    return result;
 }
 
 inline static void removePlaceholderAndSeparators(const QString &placeholder, QString &string)
@@ -368,29 +412,8 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
     if (result.isEmpty()) {
         result = u"Screenshot"_s;
     }
+    qDebug() <<result;
     return truncatedFilename(result);
-}
-
-QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const
-{
-    QString result = truncatedFilename(baseName) + u'.' + extension;
-    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
-        return result;
-    }
-
-    QString fileNameFmt = truncatedFilename(baseName) + u"-%1.";
-    for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
-        result = fileNameFmt.arg(i) + extension;
-        if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
-            return result;
-        }
-    }
-
-    // unlikely this will ever happen, but just in case we've run
-    // out of numbers
-
-    result = fileNameFmt.arg(u"OVERFLOW-" + QString::number(QRandomGenerator::global()->bounded(10000)));
-    return truncatedFilename(result) + extension;
 }
 
 QString ExportManager::imageFileSuffix(const QUrl &url) const
@@ -534,7 +557,7 @@ QUrl ExportManager::tempSave()
 {
     // if we already have a temp file saved, use that
     if (m_tempFile.isValid()) {
-        if (QFile(m_tempFile.toLocalFile()).exists()) {
+        if (QFileInfo::exists(m_tempFile.toLocalFile())) {
             return m_tempFile;
         }
     }
@@ -546,10 +569,11 @@ QUrl ExportManager::tempSave()
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
         const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
-        const QString baseFileName = m_tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename).fileName();
+        const QString baseFileName = QUrl::fromLocalFile(formattedFilename).fileName();
+        QString fileName = m_tempDir->path() + u'/' + baseFileName;
 
-        QString suffix = imageFileSuffix(QUrl(baseFileName));
-        const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
+        QString suffix = imageFileSuffix(QUrl::fromLocalFile(fileName));
+        fileName = autoIncrementFilename(QUrl::fromLocalFile(m_tempDir->path()), baseFileName, suffix);
         QFile tmpFile(fileName);
         if (tmpFile.open(QFile::WriteOnly)) {
             if (writeImage(&tmpFile, suffix.toLatin1())) {
@@ -587,27 +611,9 @@ bool ExportManager::save(const QUrl &url)
     return saveSucceded;
 }
 
-bool ExportManager::isFileExists(const QUrl &url) const
-{
-    if (!(url.isValid())) {
-        return false;
-    }
-    // Using StatJob instead of QFileInfo::exists() is necessary for checking non-local URLs.
-    KIO::StatJob *existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails, KIO::HideProgressInfo);
-
-    existsJob->exec();
-
-    return (existsJob->error() == KJob::NoError);
-}
-
 bool ExportManager::isImageSavedNotInTemp() const
 {
     return m_imageSavedNotInTemp;
-}
-
-bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
-{
-    return m_usedTempFileNames.contains(url);
 }
 
 void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
