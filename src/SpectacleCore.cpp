@@ -128,7 +128,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // essential connections
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
-        ExportManager::instance()->updateTimestamp();
         m_returnToViewer = m_startMode == StartMode::Gui;
         if (m_videoMode) {
             const auto captureWindows = CaptureWindow::instances();
@@ -155,6 +154,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             // showViewerIfGuiMode(true);
             bool includePointer = m_cliOptions[CommandLineOptions::Pointer];
             includePointer |= m_startMode != StartMode::Background && Settings::videoIncludePointer();
+            ExportManager::instance()->updateTimestamp();
             const auto &output = m_outputUrl.isLocalFile() ? videoOutputUrl() : QUrl();
             static const auto rectKey = u"rect"_s;
             m_videoPlatform->startRecording(output, VideoPlatform::Region, {{rectKey, rect}}, includePointer);
@@ -193,6 +193,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
         setVideoMode(false);
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setBaseImage(image);
+        setExportImage(image);
+        ExportManager::instance()->updateTimestamp();
         SelectionEditor::instance()->reset();
         initCaptureWindows(CaptureWindow::Image);
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
