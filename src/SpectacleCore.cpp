@@ -51,6 +51,7 @@
 #include <QKeySequence>
 #include <QMimeData>
 #include <QMovie>
+#include <QObject>
 #include <QProcess>
 #include <QQmlComponent>
 #include <QQmlContext>
@@ -60,7 +61,6 @@
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QtMath>
-#include <qobject.h>
 #include <qobjectdefs.h>
 
 using namespace Qt::StringLiterals;
