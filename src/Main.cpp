@@ -18,7 +18,6 @@
 #include <QDBusConnection>
 #include <QDir>
 #include <QIcon>
-#include <QSessionManager>
 
 #include <KAboutData>
 #include <KCrash>
@@ -32,6 +31,10 @@ using namespace Qt::StringLiterals;
 int main(int argc, char **argv)
 {
     // set up the application
+
+    // Prevent session manager from restoring the app on start up.
+    // https://bugs.kde.org/show_bug.cgi?id=430411
+    QCoreApplication::setAttribute(Qt::AA_DisableSessionManager);
 
     QCoreApplication::setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     QIcon::setFallbackThemeName(u"breeze"_s);
@@ -77,14 +80,6 @@ int main(int argc, char **argv)
             KMessageBox::error(nullptr, message);
         }
     }
-
-    // Prevent session manager from restoring the app on start up.
-    // https://bugs.kde.org/show_bug.cgi?id=430411
-    auto disableSessionManagement = [](QSessionManager &sm) {
-        sm.setRestartHint(QSessionManager::RestartNever);
-    };
-    QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
-    QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
     // If the new instance command line option has been specified,
     // use this alternative path for executing Spectacle.
