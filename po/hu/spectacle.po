@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-23 02:33+0000\n"
-"PO-Revision-Date: 2025-06-02 23:26+0200\n"
+"PO-Revision-Date: 2025-11-07 21:04+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -840,8 +840,7 @@ msgid "Open Default Screenshots Folder"
 msgstr "Alapértelmezett képernyőképmappa megnyitása"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Egyéb alkalmazás…"
@@ -1894,8 +1893,7 @@ msgid "KDE Screenshot Utility"
 msgstr "A KDE képernyőkép-készítő eszköze"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
 msgstr "© Boudhayan Gupta, 2015."
 
@@ -2143,28 +2141,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Kurzor alatti ablak rögzítése"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "A Spectacle felvesz"
+msgstr "Képernyő rögzítésének indítása/leállítása"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "A Spectacle felvesz"
+msgstr "Ablak rögzítésének indítása/leállítása"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "A Spectacle felvesz"
+msgstr "Terület rögzítésének indítása/leállítása"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2195,6 +2187,7 @@ msgstr "A Spectacle felvesz"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"A felvétel befejezéséhez kattints a villogó piros ikonra a rendszertálcán."
 
 #: src/SpectacleCore.cpp:312
 #, kde-kuit-format
@@ -2203,6 +2196,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"A felvétel befejezéséhez kattints a villogó piros ikonra a rendszertálcán "
+"vagy nyomja meg a(z) <shortcut>%1</shortcut> gyorsbillentyűt."
 
 #: src/SpectacleCore.cpp:329
 #, kde-format
