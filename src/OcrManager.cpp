@@ -56,6 +56,9 @@ OcrManager::OcrManager(QObject *parent)
     m_workerThread->start();
 
     connect(Settings::self(), &Settings::ocrLanguagesChanged, this, [this]() {
+        if (m_configSyncSuspended) {
+            return;
+        }
         const QStringList newLanguages = Settings::ocrLanguages();
         const QString combinedLanguages = newLanguages.join(u"+"_s);
         if (combinedLanguages != m_currentLanguageCode) {
@@ -148,6 +151,28 @@ void OcrManager::setLanguagesByCode(const QStringList &languageCodes)
 QString OcrManager::currentLanguageCode() const
 {
     return m_currentLanguageCode;
+}
+
+void OcrManager::setConfigSyncSuspended(bool suspended)
+{
+    if (m_configSyncSuspended == suspended) {
+        return;
+    }
+
+    m_configSyncSuspended = suspended;
+
+    // On resume, apply any changes made to Settings
+    if (!m_configSyncSuspended) {
+        const QStringList settingsLanguages = Settings::ocrLanguages();
+        if (settingsLanguages != m_configuredLanguages) {
+            setLanguagesByCode(settingsLanguages);
+        }
+    }
+}
+
+bool OcrManager::isConfigSyncSuspended() const
+{
+    return m_configSyncSuspended;
 }
 
 void OcrManager::recognizeText(const QImage &image)

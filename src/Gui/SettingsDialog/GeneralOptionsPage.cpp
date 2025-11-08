@@ -10,7 +10,6 @@
 
 #include "OcrLanguageSelector.h"
 #include "OcrManager.h"
-#include "settings.h"
 #include "ui_GeneralOptions.h"
 
 #include <KLocalizedString>
@@ -49,7 +48,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
 
 GeneralOptionsPage::~GeneralOptionsPage() = default;
 
-void GeneralOptionsPage::refreshOcrLanguageSettings()
+void GeneralOptionsPage::refreshOcrLanguageSettings(bool rebuildSelector)
 {
     OcrManager *ocrManager = OcrManager::instance();
     
@@ -62,7 +61,9 @@ void GeneralOptionsPage::refreshOcrLanguageSettings()
         m_ui->ocrLanguageScrollArea->setVisible(true);
         m_ui->ocrUnavailableWidget->setVisible(false);
 
-        m_ocrLanguageSelector->refresh();
+        if (rebuildSelector) {
+            m_ocrLanguageSelector->refresh();
+        }
     }
 }
 

@@ -20,6 +20,7 @@ class SettingsDialog : public KConfigDialog
 
 public:
     explicit SettingsDialog(QWidget *parent = nullptr);
+    ~SettingsDialog() override;
 
 protected:
     QSize sizeHint() const override;

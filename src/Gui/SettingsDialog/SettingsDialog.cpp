@@ -11,6 +11,7 @@
 #include "GeneralOptionsPage.h"
 #include "ImageSaveOptionsPage.h"
 #include "OcrLanguageSelector.h"
+#include "OcrManager.h"
 #include "ShortcutsOptionsPage.h"
 #include "VideoSaveOptionsPage.h"
 #include "settings.h"
@@ -44,6 +45,16 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         updateButtons();
     });
     connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
+}
+
+SettingsDialog::~SettingsDialog()
+{
+    // Ensure OCR config sync is resumed
+    if (OcrManager *ocrManager = OcrManager::instance()) {
+        if (ocrManager->isConfigSyncSuspended()) {
+            ocrManager->setConfigSyncSuspended(false);
+        }
+    }
 }
 
 QSize SettingsDialog::sizeHint() const
@@ -91,6 +102,10 @@ void SettingsDialog::updateSettings()
     m_shortcutsPage->saveChanges();
 
     m_generalPage->ocrLanguageSelector()->saveSettings();
+
+    if (OcrManager *ocrManager = OcrManager::instance()) {
+        ocrManager->setConfigSyncSuspended(false);
+    }
 }
 
 void SettingsDialog::updateWidgets()
@@ -100,15 +115,23 @@ void SettingsDialog::updateWidgets()
 
     m_generalPage->ocrLanguageSelector()->updateWidgets();
     m_generalPage->refreshOcrLanguageSettings();
+
+    if (OcrManager *ocrManager = OcrManager::instance()) {
+        ocrManager->setConfigSyncSuspended(false);
+    }
 }
 
 void SettingsDialog::updateWidgetsDefault()
 {
+    if (OcrManager *ocrManager = OcrManager::instance()) {
+        ocrManager->setConfigSyncSuspended(true);
+    }
+
     KConfigDialog::updateWidgetsDefault();
     m_shortcutsPage->defaults();
 
     m_generalPage->ocrLanguageSelector()->applyDefaults();
-    m_generalPage->refreshOcrLanguageSettings();
+    m_generalPage->refreshOcrLanguageSettings(false);
 }
 
 #include "moc_SettingsDialog.cpp"

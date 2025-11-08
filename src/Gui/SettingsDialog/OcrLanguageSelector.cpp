@@ -12,6 +12,7 @@
 #include <KLocalizedString>
 
 #include <QCheckBox>
+#include <QSignalBlocker>
 #include <QVBoxLayout>
 
 using namespace Qt::Literals::StringLiterals;
@@ -19,7 +20,6 @@ using namespace Qt::Literals::StringLiterals;
 OcrLanguageSelector::OcrLanguageSelector(QWidget *parent)
     : QWidget(parent)
     , m_layout(new QVBoxLayout(this))
-    , m_blockSignals(false)
     , m_ocrManager(OcrManager::instance())
 {
     m_layout->setContentsMargins(0, 0, 0, 0);
@@ -46,14 +46,13 @@ QStringList OcrLanguageSelector::selectedLanguages() const
 
 void OcrLanguageSelector::setSelectedLanguages(const QStringList &languages)
 {
-    m_blockSignals = true;
+    QSignalBlocker blocker(this);
 
     for (QCheckBox *checkbox : m_languageCheckboxes) {
         const QString langCode = checkbox->property("languageCode").toString();
+        QSignalBlocker checkboxBlocker(checkbox);
         checkbox->setChecked(languages.contains(langCode));
     }
-
-    m_blockSignals = false;
 
     enforceSelectionLimits();
 }
@@ -67,18 +66,11 @@ bool OcrLanguageSelector::isDefault() const
         return false;
     }
 
-    // Check if it's English (preferred default)
-    for (const QCheckBox *checkbox : m_languageCheckboxes) {
-        if (checkbox->property("languageCode").toString() == u"eng"_s) {
-            // English is available, so default is English
-            return current.contains(u"eng"_s);
-        }
-    }
+    QCheckBox *defaultCheckbox = findDefaultCheckbox();
 
-    // English not available, default is the first available language
-    if (!m_languageCheckboxes.isEmpty()) {
-        QString firstLangCode = m_languageCheckboxes.first()->property("languageCode").toString();
-        return current.contains(firstLangCode);
+    if (defaultCheckbox) {
+        QString defaultLangCode = defaultCheckbox->property("languageCode").toString();
+        return current.contains(defaultLangCode);
     }
 
     return false;
@@ -91,36 +83,28 @@ bool OcrLanguageSelector::hasChanges() const
 
 void OcrLanguageSelector::applyDefaults()
 {
-    if (!m_languageCheckboxes.isEmpty()) {
-        m_blockSignals = true;
-
-        for (QCheckBox *checkbox : m_languageCheckboxes) {
-            checkbox->setChecked(false);
-        }
-
-        // Try to select English first
-        bool foundDefault = false;
-        for (QCheckBox *checkbox : m_languageCheckboxes) {
-            if (checkbox->property("languageCode").toString() == u"eng"_s) {
-                checkbox->setChecked(true);
-                foundDefault = true;
-                break;
-            }
-        }
-
-        // If English not available, select first language
-        if (!foundDefault) {
-            m_languageCheckboxes.first()->setChecked(true);
-        }
-
-        m_blockSignals = false;
-
-        const QStringList selected = selectedLanguages();
-        Settings::setOcrLanguages(selected);
-
-        // Emit signal to notify changes
-        Q_EMIT selectedLanguagesChanged(selected);
+    if (m_languageCheckboxes.isEmpty()) {
+        return;
     }
+
+    QSignalBlocker blocker(this);
+
+    QCheckBox *defaultCheckbox = findDefaultCheckbox();
+
+    for (QCheckBox *checkbox : m_languageCheckboxes) {
+        QSignalBlocker checkboxBlocker(checkbox);
+        checkbox->setChecked(checkbox == defaultCheckbox);
+    }
+
+    const int selectedCount = defaultCheckbox ? 1 : 0;
+    updateCheckboxEnabledStates(selectedCount);
+
+    QStringList selected;
+    if (defaultCheckbox) {
+        selected.append(defaultCheckbox->property("languageCode").toString());
+    }
+
+    Q_EMIT selectedLanguagesChanged(selected);
 }
 
 void OcrLanguageSelector::refresh()
@@ -142,13 +126,17 @@ void OcrLanguageSelector::updateWidgets()
 
 void OcrLanguageSelector::onLanguageCheckboxChanged()
 {
-    if (m_blockSignals) {
-        return;
-    }
-
     enforceSelectionLimits();
 
-    const QStringList selected = selectedLanguages();
+    QStringList selected;
+    selected.reserve(OcrManager::MAX_OCR_LANGUAGES);
+
+    for (QCheckBox *checkbox : m_languageCheckboxes) {
+        if (checkbox->isChecked()) {
+            selected.append(checkbox->property("languageCode").toString());
+        }
+    }
+
     Q_EMIT selectedLanguagesChanged(selected);
 }
 
@@ -167,21 +155,20 @@ void OcrLanguageSelector::setupLanguageCheckboxes()
     }
 
     m_languageCheckboxes.clear();
-    m_availableLanguages.clear();
 
     if (!m_ocrManager || !m_ocrManager->isAvailable()) {
         qCWarning(SPECTACLE_LOG) << "OCR is not available; language selector will remain empty.";
         return;
     }
 
-    m_availableLanguages = m_ocrManager->availableLanguagesWithNames();
+    const QMap<QString, QString> availableLanguages = m_ocrManager->availableLanguagesWithNames();
 
-    if (m_availableLanguages.isEmpty()) {
+    if (availableLanguages.isEmpty()) {
         qCWarning(SPECTACLE_LOG) << "No OCR language data available.";
         return;
     }
 
-    for (auto it = m_availableLanguages.cbegin(); it != m_availableLanguages.cend(); ++it) {
+    for (auto it = availableLanguages.cbegin(); it != availableLanguages.cend(); ++it) {
         const QString &langCode = it.key();
         if (langCode == u"osd"_s) {
             continue;
@@ -208,64 +195,57 @@ void OcrLanguageSelector::setupLanguageCheckboxes()
 
 void OcrLanguageSelector::enforceSelectionLimits()
 {
-    const QStringList selected = selectedLanguages();
-    const int count = selected.size();
+    int selectedCount = 0;
 
-    if (count > OcrManager::MAX_OCR_LANGUAGES) { // Max languages for performance
+    for (QCheckBox *checkbox : m_languageCheckboxes) {
+        if (checkbox->isChecked()) {
+            ++selectedCount;
+        }
+    }
+
+    if (selectedCount > OcrManager::MAX_OCR_LANGUAGES) {
         for (int i = m_languageCheckboxes.size() - 1; i >= 0; --i) {
             QCheckBox *checkbox = m_languageCheckboxes[i];
             if (checkbox->isChecked()) {
-                blockSignalsAndSetChecked(checkbox, false);
+                QSignalBlocker blocker(checkbox);
+                checkbox->setChecked(false);
+                --selectedCount;
                 break;
             }
         }
     }
 
-    updateCheckboxEnabledStates();
+    updateCheckboxEnabledStates(selectedCount);
 
-    if (selectedLanguages().size() == 0 && !m_languageCheckboxes.isEmpty()) {
+    if (selectedCount == 0 && !m_languageCheckboxes.isEmpty()) {
         applyDefaults();
     }
 }
 
-QString OcrLanguageSelector::getDefaultLanguageCode() const
+QCheckBox *OcrLanguageSelector::findDefaultCheckbox() const
 {
     if (m_languageCheckboxes.isEmpty()) {
-        return QString();
+        return nullptr;
     }
 
     // Try English first
-    for (const QCheckBox *checkbox : m_languageCheckboxes) {
+    for (QCheckBox *checkbox : m_languageCheckboxes) {
         if (checkbox->property("languageCode").toString() == u"eng"_s) {
-            return u"eng"_s;
+            return checkbox;
         }
     }
 
     // Fallback to first available
-    return m_languageCheckboxes.first()->property("languageCode").toString();
+    return m_languageCheckboxes.first();
 }
 
-void OcrLanguageSelector::updateCheckboxEnabledStates()
+void OcrLanguageSelector::updateCheckboxEnabledStates(int selectedCount)
 {
-    const QStringList selected = selectedLanguages();
-    const int count = selected.size();
+    const bool enableUnchecked = selectedCount < OcrManager::MAX_OCR_LANGUAGES;
 
-    // If we have max languages selected, disable all unchecked checkboxes
-    // If we have less than max, enable all checkboxes
     for (QCheckBox *checkbox : m_languageCheckboxes) {
-        if (checkbox->isChecked()) {
-            checkbox->setEnabled(true);
-        } else {
-            checkbox->setEnabled(count < OcrManager::MAX_OCR_LANGUAGES);
-        }
+        checkbox->setEnabled(checkbox->isChecked() || enableUnchecked);
     }
-}
-
-void OcrLanguageSelector::blockSignalsAndSetChecked(QCheckBox *checkbox, bool checked)
-{
-    m_blockSignals = true;
-    checkbox->setChecked(checked);
-    m_blockSignals = false;
 }
 
 #include "moc_OcrLanguageSelector.cpp"

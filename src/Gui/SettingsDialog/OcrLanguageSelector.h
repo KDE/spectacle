@@ -96,14 +96,11 @@ private Q_SLOTS:
 private:
     void setupLanguageCheckboxes();
     void enforceSelectionLimits();
-    void updateCheckboxEnabledStates();
-    QString getDefaultLanguageCode() const;
-    void blockSignalsAndSetChecked(QCheckBox *checkbox, bool checked);
+    void updateCheckboxEnabledStates(int selectedCount);
+    QCheckBox *findDefaultCheckbox() const;
 
     QVBoxLayout *m_layout;
     QList<QCheckBox *> m_languageCheckboxes;
-    QMap<QString, QString> m_availableLanguages; // code -> display name
-    bool m_blockSignals;
 
     OcrManager *m_ocrManager;
 };

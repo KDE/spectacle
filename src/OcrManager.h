@@ -98,6 +98,8 @@ public:
      * @return Current language code (e.g., "eng", "spa")
      */
     QString currentLanguageCode() const;
+    void setConfigSyncSuspended(bool suspended);
+    bool isConfigSyncSuspended() const;
 
 public Q_SLOTS:
     /**
@@ -170,6 +172,7 @@ private:
     bool m_shouldRestoreToConfigured;
     QStringList m_availableLanguages;
     QMap<QString, QString> m_languageNames;
+    bool m_configSyncSuspended = false;
     bool m_initialized;
 
 private:
