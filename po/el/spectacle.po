@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-23 00:44+0000\n"
+"POT-Creation-Date: 2025-11-08 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -894,29 +894,56 @@ msgctxt "@action edit screenshot"
 msgid "Edit…"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:50
+#: src/Gui/ExportMenu.cpp:51
 #, fuzzy, kde-format
 #| msgid "Export"
 msgctxt "@title:menu"
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: src/Gui/ExportMenu.cpp:53
+#: src/Gui/ExportMenu.cpp:54
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Άνοιγμα προκαθορισμένου φακέλου στιγμιοτύπων οθόνης"
 
-#: src/Gui/ExportMenu.cpp:121
+#: src/Gui/ExportMenu.cpp:124
 #, fuzzy, kde-format
 #| msgid "Other Application..."
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Άλλη εφαρμογή..."
 
-#: src/Gui/ExportMenu.cpp:153
+#: src/Gui/ExportMenu.cpp:156
 #, kde-format
 msgid "Share"
 msgstr "Διαμοιρασμός"
+
+#: src/Gui/ExportMenu.cpp:249
+#, kde-format
+msgctxt "@action:menu"
+msgid "Extract Text by Language"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:277
+#, kde-format
+msgid "OCR engine is not available."
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:284
+#, kde-format
+msgid "OCR is not available. Please install Tesseract OCR."
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:285
+#, kde-format
+msgid "OCR engine is initializing…"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:294
+#, fuzzy, kde-format
+#| msgid "No KIPI plugins available"
+msgid "No OCR language data available."
+msgstr "Δεν υπάρχουν διαθέσιμα πρόσθετα KIPI"
 
 #: src/Gui/ExportMenuButton.qml:13
 #, fuzzy, kde-format
@@ -962,6 +989,12 @@ msgstr ""
 #| msgid "Take a New Screenshot"
 msgid "New Screenshot"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+
+#: src/Gui/OcrAction.qml:13
+#, kde-format
+msgctxt "@action"
+msgid "Extract Text"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:38
 #, fuzzy, kde-format
@@ -1358,6 +1391,33 @@ msgstr "Απομνημόνευση επιλεγμένης περιοχής:"
 msgid "Until Spectacle is closed"
 msgstr "Μέχρι να κλείσει το Spectacle"
 
+#. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:261
+#, kde-format
+msgid "Text Recognition (OCR)"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:268
+#, kde-format
+msgid "Languages for OCR:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:324
+#, kde-format
+msgid "OCR functionality is not available"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:342
+#, kde-format
+msgid ""
+"Please install the required packages:\n"
+"• tesseract\n"
+"• tesseract language data (e.g., tesseract-ocr-eng for English)"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
@@ -1436,31 +1496,31 @@ msgctxt "show more filename placeholder templates"
 msgid "Show More"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Γενικά"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:35
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
 msgstr ""
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:77
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:85
 #, kde-format
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
@@ -1518,77 +1578,83 @@ msgstr ""
 msgid "Remember the last rectangular region"
 msgstr "Να γίνει απομνημόνευση της τελευταίας ορθογώνιας περιοχής"
 
+#. i18n: ectx: label, entry (ocrLanguages), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#, kde-format
+msgid "Default languages for OCR text recognition"
+msgstr ""
+
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:76
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Η τελευταία περιοχή που επιλέχθηκε από τον χρήστη"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Λήψη στιγμιότυπου οθόνης με κλικ"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, fuzzy, kde-format
 #| msgid "Whether the mouse cursor is included in the screenshot"
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Αν η διακόσμηση του παραθύρου θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, fuzzy, kde-format
 #| msgid "Whether the window decorations are included in the screenshot"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Αν η διακόσμηση του παραθύρου θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Σύλληψη μόνο του τρέχοντος αιωρούμενου πλαισίου"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Έξοδος μετά από αποθήκευση ή αντιγραφή μιας εικόνας"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Delay"
 msgstr "Καθυστέρηση"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
-#: src/Gui/SettingsDialog/spectacle.kcfg:165
+#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:169
 #, kde-format
 msgid "Default filename"
 msgstr "Προκαθορισμένο όνομα αρχείου"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Ποιότητα συμπίεσης για τύπους αποθήκευσης αρχείων με απώλειες"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:141
+#: src/Gui/SettingsDialog/spectacle.kcfg:145
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "translatable folder name"
@@ -1596,19 +1662,19 @@ msgid "Screenshots"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "Default save image format"
 msgstr "Προκαθορισμένος τύπος αποθήκευσης εικόνας"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screenshots"
 msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:157
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "part of default image filename template"
@@ -1617,42 +1683,42 @@ msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:155
-#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Η διαδρομή του αρχείου που αποθηκεύθηκε τελευταίο"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:202
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Η τελευταία διαδρομή που χρησιμοποιήθηκε στην ενέργεια «αποθήκευση ως»"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
 #, fuzzy, kde-format
 #| msgid "Default save image format"
 msgid "Default video format"
 msgstr "Προκαθορισμένος τύπος αποθήκευσης εικόνας"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screencasts"
 msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:192
+#: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "part of default video filename template"
@@ -1660,173 +1726,173 @@ msgid "Screencast"
 msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
 #, fuzzy, kde-format
 #| msgid "The last used save mode"
 msgid "The last used annotation tool type"
 msgstr "Η πιο πρόσφατης λειτουργία αποθήκευσης"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:210
+#: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:215
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:225
+#: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:230
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:266
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
+#: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr ""
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:279
+#: src/Gui/SettingsDialog/spectacle.kcfg:283
 #, fuzzy, kde-format
 #| msgid "The last used region the user selected"
 msgid "The strength of the blur effect."
 msgstr "Η τελευταία περιοχή που επιλέχθηκε από τον χρήστη"
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr ""
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:292
+#: src/Gui/SettingsDialog/spectacle.kcfg:296
 #, kde-format
 msgid "Font for text annotations"
 msgstr ""
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:295
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #, kde-format
 msgid "Font for number annotations"
 msgstr ""
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #: src/Gui/SettingsDialog/spectacle.kcfg:303
+#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr ""
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:308
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr ""
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
+#: src/Gui/SettingsDialog/spectacle.kcfg:336
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr ""
@@ -1988,12 +2054,12 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-#: src/Gui/ViewerPage.qml:183
+#: src/Gui/ViewerPage.qml:190
 #, kde-format
 msgid "Zoom:"
 msgstr ""
 
-#: src/Gui/ViewerPage.qml:197
+#: src/Gui/ViewerPage.qml:204
 #, kde-format
 msgid "Image Zoom"
 msgstr ""
@@ -2048,6 +2114,22 @@ msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
+msgstr ""
+
+#: src/OcrManager.cpp:594
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Orientation and Script Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:638
+#, kde-format
+msgid "Math/Equation Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:641
+#, kde-format
+msgid "Orientation and Script Detection"
 msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
@@ -2292,34 +2374,34 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Εκτέλεση του Spectacle"
 
-#: src/SpectacleCore.cpp:251
+#: src/SpectacleCore.cpp:256
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Μετά τη λήψη στιγμιοτύπου:"
 
-#: src/SpectacleCore.cpp:280
+#: src/SpectacleCore.cpp:285
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Όταν εκτελείται το Spectacle"
 
-#: src/SpectacleCore.cpp:285
+#: src/SpectacleCore.cpp:290
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Όταν εκτελείται το Spectacle"
 
-#: src/SpectacleCore.cpp:311
+#: src/SpectacleCore.cpp:316
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 
-#: src/SpectacleCore.cpp:312
+#: src/SpectacleCore.cpp:317
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2327,13 +2409,13 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 
-#: src/SpectacleCore.cpp:329
+#: src/SpectacleCore.cpp:334
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr ""
 
-#: src/SpectacleCore.cpp:330
+#: src/SpectacleCore.cpp:335
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2341,28 +2423,28 @@ msgid ""
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
 
-#: src/SpectacleCore.cpp:366
+#: src/SpectacleCore.cpp:371
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Όταν εκτελείται το Spectacle"
 
-#: src/SpectacleCore.cpp:367
+#: src/SpectacleCore.cpp:372
 #, fuzzy, kde-format
 #| msgid "Please wait..."
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Αναμονή..."
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:374
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Όταν εκτελείται το Spectacle"
 
-#: src/SpectacleCore.cpp:371
+#: src/SpectacleCore.cpp:376
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2370,7 +2452,7 @@ msgid ""
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 
-#: src/SpectacleCore.cpp:397
+#: src/SpectacleCore.cpp:402
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2378,14 +2460,14 @@ msgid ""
 "Click to finish recording"
 msgstr ""
 
-#: src/SpectacleCore.cpp:422
+#: src/SpectacleCore.cpp:427
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Μετά τη λήψη στιγμιοτύπου:"
 
-#: src/SpectacleCore.cpp:464
+#: src/SpectacleCore.cpp:469
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
@@ -2398,7 +2480,7 @@ msgstr ""
 "Το στιγμιότυπο οθόνης αντιγράφτηκε στο πρόχειρο και αποθηκεύθηκε ως <a href="
 "\"%1\">%2</a>"
 
-#: src/SpectacleCore.cpp:467
+#: src/SpectacleCore.cpp:472
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2411,21 +2493,21 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:470
+#: src/SpectacleCore.cpp:475
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Το στιγμιότυπο οθόνης αποθηκεύτηκε ως <a href=\"%1\">%2</a>"
 
-#: src/SpectacleCore.cpp:474
+#: src/SpectacleCore.cpp:479
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Το στιγμιότυπο οθόνης έχει αντιγραφεί στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:505
+#: src/SpectacleCore.cpp:510
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2438,14 +2520,14 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:513
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Το στιγμιότυπο οθόνης αποθηκεύτηκε ως <a href=\"%1\">%2</a>"
 
-#: src/SpectacleCore.cpp:512
+#: src/SpectacleCore.cpp:517
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
@@ -2455,25 +2537,87 @@ msgstr "Το στιγμιότυπο οθόνης έχει αντιγραφεί �
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:537
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr ""
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:541
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr ""
 
-#: src/SpectacleCore.cpp:838
+#: src/SpectacleCore.cpp:550
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction failed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:556
+#, kde-format
+msgctxt "@info"
+msgid "No text found in the image"
+msgstr ""
+
+#: src/SpectacleCore.cpp:561
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction completed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:564
+#, kde-format
+msgctxt "@info:notification title"
+msgid "Text Extracted"
+msgstr ""
+
+#: src/SpectacleCore.cpp:566
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@info:notification"
+msgid "Text copied to clipboard"
+msgstr "Αντιγραφή εικόνας στο πρόχειρο"
+
+#: src/SpectacleCore.cpp:570
+#, kde-format
+msgctxt "@action:button"
+msgid "Open in Text Editor"
+msgstr ""
+
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgctxt "@info"
+msgid "Please select a region before extracting text"
+msgstr ""
+
+#: src/SpectacleCore.cpp:707
+#, kde-format
+msgctxt "@info"
+msgid "OCR is not available."
+msgstr ""
+
+#: src/SpectacleCore.cpp:713
+#, fuzzy, kde-format
+#| msgid "No KIPI plugins available"
+msgctxt "@info"
+msgid "No screenshot available."
+msgstr "Δεν υπάρχουν διαθέσιμα πρόσθετα KIPI"
+
+#: src/SpectacleCore.cpp:717
+#, kde-format
+msgctxt "@info"
+msgid "Extracting text from image..."
+msgstr ""
+
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1073
+#: src/SpectacleCore.cpp:1216
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2485,23 +2629,23 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1220
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1080
+#: src/SpectacleCore.cpp:1223
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1084
+#: src/SpectacleCore.cpp:1227
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:1089
+#: src/SpectacleCore.cpp:1232
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2513,7 +2657,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1091
+#: src/SpectacleCore.cpp:1234
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2521,19 +2665,19 @@ msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1093
+#: src/SpectacleCore.cpp:1236
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1104
+#: src/SpectacleCore.cpp:1247
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:1118
+#: src/SpectacleCore.cpp:1261
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"
@@ -2807,9 +2951,6 @@ msgstr ""
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "Αποτυχία φόρτωσης του KIPI προσθέτου από τη βιβλιοθήκη %1"
-
-#~ msgid "No KIPI plugins available"
-#~ msgstr "Δεν υπάρχουν διαθέσιμα πρόσθετα KIPI"
 
 #~ msgctxt "%1 is collection name, %2 is image count in collection"
 #~ msgid "%1 (%2 image)"

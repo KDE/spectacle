@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-23 00:44+0000\n"
+"POT-Creation-Date: 2025-11-08 00:44+0000\n"
 "PO-Revision-Date: 2025-03-08 19:33+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -843,29 +843,57 @@ msgctxt "@action edit screenshot"
 msgid "Edit…"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:50
+#: src/Gui/ExportMenu.cpp:51
 #, fuzzy, kde-format
 #| msgid "Export"
 msgctxt "@title:menu"
 msgid "Export"
 msgstr "エクスポート"
 
-#: src/Gui/ExportMenu.cpp:53
+#: src/Gui/ExportMenu.cpp:54
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "既定のスクリーンショットフォルダを開く"
 
-#: src/Gui/ExportMenu.cpp:121
+#: src/Gui/ExportMenu.cpp:124
 #, fuzzy, kde-format
 #| msgid "Other Application..."
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "その他のアプリケーション..."
 
-#: src/Gui/ExportMenu.cpp:153
+#: src/Gui/ExportMenu.cpp:156
 #, kde-format
 msgid "Share"
 msgstr "共有"
+
+#: src/Gui/ExportMenu.cpp:249
+#, kde-format
+msgctxt "@action:menu"
+msgid "Extract Text by Language"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:277
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgid "OCR engine is not available."
+msgstr "KWin 画面録画は利用できません。"
+
+#: src/Gui/ExportMenu.cpp:284
+#, kde-format
+msgid "OCR is not available. Please install Tesseract OCR."
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:285
+#, kde-format
+msgid "OCR engine is initializing…"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:294
+#, kde-format
+msgid "No OCR language data available."
+msgstr ""
 
 #: src/Gui/ExportMenuButton.qml:13
 #, fuzzy, kde-format
@@ -912,6 +940,12 @@ msgstr ""
 #, kde-format
 msgid "New Screenshot"
 msgstr "新しいスクリーンショット"
+
+#: src/Gui/OcrAction.qml:13
+#, kde-format
+msgctxt "@action"
+msgid "Extract Text"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:38
 #, fuzzy, kde-format
@@ -1300,6 +1334,35 @@ msgstr "選択したエリアを記憶:"
 msgid "Until Spectacle is closed"
 msgstr "Spectacle が閉じられるまで"
 
+#. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:261
+#, kde-format
+msgid "Text Recognition (OCR)"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:268
+#, kde-format
+msgid "Languages for OCR:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:324
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgid "OCR functionality is not available"
+msgstr "KWin 画面録画は利用できません。"
+
+#. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:342
+#, kde-format
+msgid ""
+"Please install the required packages:\n"
+"• tesseract\n"
+"• tesseract language data (e.g., tesseract-ocr-eng for English)"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
@@ -1372,31 +1435,31 @@ msgctxt "show more filename placeholder templates"
 msgid "Show More"
 msgstr "さらに表示"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "全般"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:35
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
 msgstr "画像の保存"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
 msgstr "動画の保存"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:77
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:85
 #, kde-format
 msgid "Shortcuts"
 msgstr "ショートカット"
@@ -1448,93 +1511,99 @@ msgstr "領域を選択してマウスを離した後にスクリーンショッ
 msgid "Remember the last rectangular region"
 msgstr "最後に使用した矩形領域を記憶する"
 
+#. i18n: ectx: label, entry (ocrLanguages), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#, kde-format
+msgid "Default languages for OCR text recognition"
+msgstr ""
+
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:76
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "最後に使用されたユーザ選択の領域"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "クリックでスクリーンショットを撮影"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "マウスカーソルをスクリーンショットに含むか"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "マウスカーソルを動画に含むか"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "ウィンドウの飾りをスクリーンショットに含むか"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "ウィンドウの影をスクリーンショットに含むか"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "現在のポップアップのみを撮影"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "画像を保存かコピーしたあとに終了"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Delay"
 msgstr "遅延"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
-#: src/Gui/SettingsDialog/spectacle.kcfg:165
+#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:169
 #, kde-format
 msgid "Default filename"
 msgstr "既定のファイル名"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "非可逆圧縮フォーマットの圧縮品質"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:141
+#: src/Gui/SettingsDialog/spectacle.kcfg:145
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "スクリーンショット"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "Default save image format"
 msgstr "既定の保存画像フォーマット"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "スクリーンショット保存時に使用されるファイル名のテンプレート"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:157
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1542,210 +1611,210 @@ msgstr "スクリーンショット"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:155
-#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "最後に保存されたファイルのパス"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:202
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "「名前をつけて保存」で使用されるパス"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
 #, kde-format
 msgid "Default video format"
 msgstr "既定の動画フォーマット"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "画面録画保存時に使用されるファイル名のテンプレート"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "画面録画"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:192
+#: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "画面録画"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "最後に使用された注釈ツール"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:210
+#: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "手書き注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:215
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "マーカー注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "直線注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:225
+#: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "矢印注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:230
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "矩形注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "楕円注釈ツールの線の太さ"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "手書き注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "マーカー注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "直線注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "矢印注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "矩形注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "楕円注釈ツールの線の色"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:266
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "矩形注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "楕円注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
+#: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "数字注釈ツールの塗りつぶしの色"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:279
+#: src/Gui/SettingsDialog/spectacle.kcfg:283
 #, kde-format
 msgid "The strength of the blur effect."
 msgstr "ぼかし効果の強さ。"
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr "モザイク効果の強さ。"
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:292
+#: src/Gui/SettingsDialog/spectacle.kcfg:296
 #, kde-format
 msgid "Font for text annotations"
 msgstr "テキスト注釈フォント"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:295
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #, kde-format
 msgid "Font for number annotations"
 msgstr "数字注釈フォント"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #: src/Gui/SettingsDialog/spectacle.kcfg:303
+#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr "注釈フォントの色"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:308
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "手書き注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "直線注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "矢印注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "矩形注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "楕円注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "テキスト注釈ツールでドロップシャドウを使用するか"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
+#: src/Gui/SettingsDialog/spectacle.kcfg:336
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "数字注釈ツールでドロップシャドウを使用するか"
@@ -1905,12 +1974,12 @@ msgstr "元に戻す"
 msgid "Redo"
 msgstr "やり直す"
 
-#: src/Gui/ViewerPage.qml:183
+#: src/Gui/ViewerPage.qml:190
 #, kde-format
 msgid "Zoom:"
 msgstr "ズーム:"
 
-#: src/Gui/ViewerPage.qml:197
+#: src/Gui/ViewerPage.qml:204
 #, kde-format
 msgid "Image Zoom"
 msgstr "画像ズーム"
@@ -1969,6 +2038,22 @@ msgstr ""
 "Wayland 上では、Spectacle は KDE Plasma の KWin コンポジタを必要とします。"
 "KDE Plasma 上で Spectacle を使用するか、別のスクリーンショット撮影ツールを使"
 "用してください。"
+
+#: src/OcrManager.cpp:594
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Orientation and Script Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:638
+#, kde-format
+msgid "Math/Equation Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:641
+#, kde-format
+msgid "Orientation and Script Detection"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2209,31 +2294,31 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "撮影せずに Spectacle を起動"
 
-#: src/SpectacleCore.cpp:251
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "スクリーンショットの撮影中にエラーが発生しました。"
 
-#: src/SpectacleCore.cpp:280
+#: src/SpectacleCore.cpp:285
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle は録画中です"
 
-#: src/SpectacleCore.cpp:285
+#: src/SpectacleCore.cpp:290
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle は録画中です"
 
-#: src/SpectacleCore.cpp:311
+#: src/SpectacleCore.cpp:316
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 
-#: src/SpectacleCore.cpp:312
+#: src/SpectacleCore.cpp:317
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2241,13 +2326,13 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 
-#: src/SpectacleCore.cpp:329
+#: src/SpectacleCore.cpp:334
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "WebP サポートが不足しています"
 
-#: src/SpectacleCore.cpp:330
+#: src/SpectacleCore.cpp:335
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2257,7 +2342,7 @@ msgstr ""
 "アニメーションシステムトレイアイコンを使用するには、Qt Image Formats をインス"
 "トールしてください。このパッケージの問題を配布元に報告してください。"
 
-#: src/SpectacleCore.cpp:366
+#: src/SpectacleCore.cpp:371
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2265,13 +2350,13 @@ msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle は録画中です"
 
-#: src/SpectacleCore.cpp:367
+#: src/SpectacleCore.cpp:372
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr ""
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:374
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2279,7 +2364,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle は録画中です"
 
-#: src/SpectacleCore.cpp:371
+#: src/SpectacleCore.cpp:376
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2293,7 +2378,7 @@ msgstr ""
 "録画時間: %1\n"
 "クリックして録画を終了"
 
-#: src/SpectacleCore.cpp:397
+#: src/SpectacleCore.cpp:402
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2303,13 +2388,13 @@ msgstr ""
 "録画時間: %1\n"
 "クリックして録画を終了"
 
-#: src/SpectacleCore.cpp:422
+#: src/SpectacleCore.cpp:427
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "画面録画を開始する際にエラーが発生しました。"
 
-#: src/SpectacleCore.cpp:464
+#: src/SpectacleCore.cpp:469
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
@@ -2322,7 +2407,7 @@ msgstr ""
 "スクリーンショットはクリップボードにコピーされ、<a href=\"%1\">%2</a> として"
 "保存されました"
 
-#: src/SpectacleCore.cpp:467
+#: src/SpectacleCore.cpp:472
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2335,21 +2420,21 @@ msgstr ""
 "スクリーンショットは (<a href=\"%1\">%2</a>) として保存されその場所がクリップ"
 "ボードにコピーされました"
 
-#: src/SpectacleCore.cpp:470
+#: src/SpectacleCore.cpp:475
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "スクリーンショットは <a href=\"%1\">%2</a> として保存されました。"
 
-#: src/SpectacleCore.cpp:474
+#: src/SpectacleCore.cpp:479
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "スクリーンショットがクリップボードにコピーされました。"
 
-#: src/SpectacleCore.cpp:505
+#: src/SpectacleCore.cpp:510
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -2362,14 +2447,14 @@ msgstr ""
 "動画は (<a href=\"%1\">%2</a>) として保存されその場所がクリップボードにコピー"
 "されました"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:513
 #, fuzzy, kde-kuit-format
 #| msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "動画は <a href=\"%1\">%2</a> として保存されました。"
 
-#: src/SpectacleCore.cpp:512
+#: src/SpectacleCore.cpp:517
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2378,27 +2463,92 @@ msgstr "動画の場所がクリップボードにコピーされました。"
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:537
 #, fuzzy, kde-format
 #| msgid "QR Code found: %1"
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR コードが見つかりました: %1"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:541
 #, fuzzy, kde-format
 #| msgid "Found QR code with binary content."
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "バイナリデータを含む QR コードを発見しました。"
 
-#: src/SpectacleCore.cpp:838
+#: src/SpectacleCore.cpp:550
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction failed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:556
+#, kde-format
+msgctxt "@info"
+msgid "No text found in the image"
+msgstr ""
+
+#: src/SpectacleCore.cpp:561
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction completed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:564
+#, kde-format
+msgctxt "@info:notification title"
+msgid "Text Extracted"
+msgstr ""
+
+#: src/SpectacleCore.cpp:566
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@info:notification"
+msgid "Text copied to clipboard"
+msgstr "画像をクリップボードにコピー"
+
+#: src/SpectacleCore.cpp:570
+#, kde-format
+msgctxt "@action:button"
+msgid "Open in Text Editor"
+msgstr ""
+
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgctxt "@info"
+msgid "Please select a region before extracting text"
+msgstr ""
+
+#: src/SpectacleCore.cpp:707
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgctxt "@info"
+msgid "OCR is not available."
+msgstr "KWin 画面録画は利用できません。"
+
+#: src/SpectacleCore.cpp:713
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgctxt "@info"
+msgid "No screenshot available."
+msgstr "KWin 画面録画は利用できません。"
+
+#: src/SpectacleCore.cpp:717
+#, kde-format
+msgctxt "@info"
+msgid "Extracting text from image..."
+msgstr ""
+
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 は --record の有効なモードではありません"
 
-#: src/SpectacleCore.cpp:1073
+#: src/SpectacleCore.cpp:1216
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2407,23 +2557,23 @@ msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
 "保存されました。"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1220
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "スクリーンショットは '%1' としてピクチャフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:1080
+#: src/SpectacleCore.cpp:1223
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:1084
+#: src/SpectacleCore.cpp:1227
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "スクリーンショットはクリップボードに保存されました。"
 
-#: src/SpectacleCore.cpp:1089
+#: src/SpectacleCore.cpp:1232
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2432,24 +2582,24 @@ msgstr ""
 "画面録画が '%2' に '%1' として保存され、そのパスがクリップボードに保存されま"
 "した。"
 
-#: src/SpectacleCore.cpp:1091
+#: src/SpectacleCore.cpp:1234
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "画面録画は '%1' としてビデオフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:1093
+#: src/SpectacleCore.cpp:1236
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "画面録画は '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:1104
+#: src/SpectacleCore.cpp:1247
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:1118
+#: src/SpectacleCore.cpp:1261
 #, kde-format
 msgid "Annotate"
 msgstr "注釈する"

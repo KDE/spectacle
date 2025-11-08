@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-23 00:44+0000\n"
+"POT-Creation-Date: 2025-11-08 00:44+0000\n"
 "PO-Revision-Date: 2025-08-16 13:32+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -848,27 +848,56 @@ msgctxt "@action edit screenshot"
 msgid "Edit…"
 msgstr "Taisyti…"
 
-#: src/Gui/ExportMenu.cpp:50
+#: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgctxt "@title:menu"
 msgid "Export"
 msgstr "Eksportuoti"
 
-#: src/Gui/ExportMenu.cpp:53
+#: src/Gui/ExportMenu.cpp:54
 #, kde-format
 msgid "Open Default Screenshots Folder"
 msgstr "Atverti numatytąjį ekrano kopijų aplanką"
 
-#: src/Gui/ExportMenu.cpp:121
+#: src/Gui/ExportMenu.cpp:124
 #, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Kita programa…"
 
-#: src/Gui/ExportMenu.cpp:153
+#: src/Gui/ExportMenu.cpp:156
 #, kde-format
 msgid "Share"
 msgstr "Bendrinti"
+
+#: src/Gui/ExportMenu.cpp:249
+#, kde-format
+msgctxt "@action:menu"
+msgid "Extract Text by Language"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:277
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgid "OCR engine is not available."
+msgstr "KWin ekrano įrašymas yra neprieinamas."
+
+#: src/Gui/ExportMenu.cpp:284
+#, kde-format
+msgid "OCR is not available. Please install Tesseract OCR."
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:285
+#, kde-format
+msgid "OCR engine is initializing…"
+msgstr ""
+
+#: src/Gui/ExportMenu.cpp:294
+#, fuzzy, kde-format
+#| msgid "No KIPI plugins available"
+msgid "No OCR language data available."
+msgstr "Nėra jokių prieinamų KIPI priedų"
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -910,6 +939,12 @@ msgstr "Užverti"
 #, kde-format
 msgid "New Screenshot"
 msgstr "Nauja ekrano kopija"
+
+#: src/Gui/OcrAction.qml:13
+#, kde-format
+msgctxt "@action"
+msgid "Extract Text"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1272,6 +1307,35 @@ msgstr "Įsiminti pažymėtą sritį:"
 msgid "Until Spectacle is closed"
 msgstr "Kol Spectacle bus užverta"
 
+#. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:261
+#, kde-format
+msgid "Text Recognition (OCR)"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:268
+#, kde-format
+msgid "Languages for OCR:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:324
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgid "OCR functionality is not available"
+msgstr "KWin ekrano įrašymas yra neprieinamas."
+
+#. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:342
+#, kde-format
+msgid ""
+"Please install the required packages:\n"
+"• tesseract\n"
+"• tesseract language data (e.g., tesseract-ocr-eng for English)"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
@@ -1344,31 +1408,31 @@ msgctxt "show more filename placeholder templates"
 msgid "Show More"
 msgstr "Rodyti daugiau"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:34
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Bendra"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:35
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
 msgstr "Paveikslų įrašymas"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
 msgstr "Vaizdo įrašų įrašymas"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Spartieji klavišai"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:77
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:85
 #, kde-format
 msgid "Shortcuts"
 msgstr "Spartieji klavišai"
@@ -1424,93 +1488,99 @@ msgstr ""
 msgid "Remember the last rectangular region"
 msgstr "Įsiminti paskutinę stačiakampę sritį"
 
+#. i18n: ectx: label, entry (ocrLanguages), group (General)
+#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#, kde-format
+msgid "Default languages for OCR text recognition"
+msgstr ""
+
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:76
+#: src/Gui/SettingsDialog/spectacle.kcfg:80
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Paskutinė naudotojo naudota pažymėta sritis"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:84
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Padaryti ekrano kopiją spustelėjus"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:88
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Ar pelės žymeklis bus įtrauktas į ekrano kopiją"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:92
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Ar pelės žymeklis bus įtrauktas į vaizdo įrašą"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:96
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Ar lango dekoracijos bus įtrauktos į ekrano kopiją"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:100
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Ar lango šešėlis bus įtrauktas į ekrano kopiją"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:104
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Fotografuoti tik esamą iškylantįjį meniu"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:108
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Įrašius ar nukopijavus paveikslą, išeiti iš Spectacle"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:112
 #, kde-format
 msgid "Delay"
 msgstr "Delsa"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
-#: src/Gui/SettingsDialog/spectacle.kcfg:165
+#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:169
 #, kde-format
 msgid "Default filename"
 msgstr "Numatytasis failo pavadinimas"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:136
+#: src/Gui/SettingsDialog/spectacle.kcfg:140
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Nuostolingųjų failo formatų glaudinimo kokybė"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:141
+#: src/Gui/SettingsDialog/spectacle.kcfg:145
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Ekrano kopijos"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "Default save image format"
 msgstr "Numatytasis įrašomo paveikslo formatas"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:152
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Failo pavadinimo šablonas, naudojamas įrašant ekrano kopijas"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:153
+#: src/Gui/SettingsDialog/spectacle.kcfg:157
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1518,210 +1588,210 @@ msgstr "Ekrano kopija"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:155
-#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Paskutinio įrašyto failo kelias"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:202
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Paskutinis \"Įrašyti kaip\" veiksmui naudotas kelias"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:182
+#: src/Gui/SettingsDialog/spectacle.kcfg:186
 #, kde-format
 msgid "Default video format"
 msgstr "Numatytasis vaizdo įrašo formatas"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Failo pavadinimo šablonas, naudojamas įrašant ekrano įrašus"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:187
+#: src/Gui/SettingsDialog/spectacle.kcfg:191
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Ekrano įrašai"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:192
+#: src/Gui/SettingsDialog/spectacle.kcfg:196
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Ekrano įrašas"
 
 #. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:204
+#: src/Gui/SettingsDialog/spectacle.kcfg:208
 #, kde-format
 msgid "The last used annotation tool type"
 msgstr "Paskutinis naudotas anotacijų įrankio tipas"
 
 #. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:210
+#: src/Gui/SettingsDialog/spectacle.kcfg:214
 #, kde-format
 msgid "Stroke width for freehand annotation tool"
 msgstr "Laisvo piešimo anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:215
+#: src/Gui/SettingsDialog/spectacle.kcfg:219
 #, kde-format
 msgid "Stroke width for highlighter annotation tool"
 msgstr "Markerio anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:220
+#: src/Gui/SettingsDialog/spectacle.kcfg:224
 #, kde-format
 msgid "Stroke width for line annotation tool"
 msgstr "Linijos anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:225
+#: src/Gui/SettingsDialog/spectacle.kcfg:229
 #, kde-format
 msgid "Stroke width for arrow annotation tool"
 msgstr "Rodyklės anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:230
+#: src/Gui/SettingsDialog/spectacle.kcfg:234
 #, kde-format
 msgid "Stroke width for rectangle annotation tool"
 msgstr "Stačiakampio anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:235
+#: src/Gui/SettingsDialog/spectacle.kcfg:239
 #, kde-format
 msgid "Stroke width for ellipse annotation tool"
 msgstr "Elipsės anotacijų įrankio brūkštelėjimo plotis"
 
 #. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:241
+#: src/Gui/SettingsDialog/spectacle.kcfg:245
 #, kde-format
 msgid "Stroke color for freehand annotation tool"
 msgstr "Laisvo piešimo anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
+#: src/Gui/SettingsDialog/spectacle.kcfg:249
 #, kde-format
 msgid "Stroke color for highlighter annotation tool"
 msgstr "Markerio anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
+#: src/Gui/SettingsDialog/spectacle.kcfg:253
 #, kde-format
 msgid "Stroke color for line annotation tool"
 msgstr "Linijos anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
+#: src/Gui/SettingsDialog/spectacle.kcfg:257
 #, kde-format
 msgid "Stroke color for arrow annotation tool"
 msgstr "Rodyklės anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
+#: src/Gui/SettingsDialog/spectacle.kcfg:261
 #, kde-format
 msgid "Stroke color for rectangle annotation tool"
 msgstr "Stačiakampio anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
+#: src/Gui/SettingsDialog/spectacle.kcfg:265
 #, kde-format
 msgid "Stroke color for ellipse annotation tool"
 msgstr "Elipsės anotacijų įrankio brūkštelėjimo spalva"
 
 #. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:266
+#: src/Gui/SettingsDialog/spectacle.kcfg:270
 #, kde-format
 msgid "Fill color for rectangle annotation tool"
 msgstr "Stačiakampio anotacijų įrankio užpildo spalva"
 
 #. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
+#: src/Gui/SettingsDialog/spectacle.kcfg:274
 #, kde-format
 msgid "Fill color for ellipse annotation tool"
 msgstr "Elipsės anotacijų įrankio užpildo spalva"
 
 #. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
+#: src/Gui/SettingsDialog/spectacle.kcfg:278
 #, kde-format
 msgid "Fill color for number annotation tool"
 msgstr "Skaičių anotacijų įrankio užpildo spalva"
 
 #. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:279
+#: src/Gui/SettingsDialog/spectacle.kcfg:283
 #, kde-format
 msgid "The strength of the blur effect."
 msgstr "Suliejimo efekto stiprumas."
 
 #. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:285
+#: src/Gui/SettingsDialog/spectacle.kcfg:289
 #, kde-format
 msgid "The strength of the pixelate effect."
 msgstr "Išklojimo pikseliais efekto stiprumas."
 
 #. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:292
+#: src/Gui/SettingsDialog/spectacle.kcfg:296
 #, kde-format
 msgid "Font for text annotations"
 msgstr "Tekstinių anotacijų šriftas"
 
 #. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:295
+#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #, kde-format
 msgid "Font for number annotations"
 msgstr "Skaičių anotacijų šriftas"
 
 #. i18n: ectx: label, entry (textFontColor), group (Annotations)
 #. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
 #: src/Gui/SettingsDialog/spectacle.kcfg:303
+#: src/Gui/SettingsDialog/spectacle.kcfg:307
 #, kde-format
 msgid "Font color for annotations"
 msgstr "Anotacijų šrifto spalva"
 
 #. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:308
+#: src/Gui/SettingsDialog/spectacle.kcfg:312
 #, kde-format
 msgid "Whether freehand annotation tool has a drop shadow"
 msgstr "Ar laisvo piešimo anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
+#: src/Gui/SettingsDialog/spectacle.kcfg:316
 #, kde-format
 msgid "Whether line annotation tool has a drop shadow"
 msgstr "Ar linijos anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
+#: src/Gui/SettingsDialog/spectacle.kcfg:320
 #, kde-format
 msgid "Whether arrow annotation tool has a drop shadow"
 msgstr "Ar rodyklės anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
+#: src/Gui/SettingsDialog/spectacle.kcfg:324
 #, kde-format
 msgid "Whether rectangle annotation tool has a drop shadow"
 msgstr "Ar stačiakampio anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
+#: src/Gui/SettingsDialog/spectacle.kcfg:328
 #, kde-format
 msgid "Whether ellipse annotation tool has a drop shadow"
 msgstr "Ar elipsės anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
+#: src/Gui/SettingsDialog/spectacle.kcfg:332
 #, kde-format
 msgid "Whether text annotation tool has a drop shadow"
 msgstr "Ar teksto anotacijų įrankis mes šešėlį"
 
 #. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
+#: src/Gui/SettingsDialog/spectacle.kcfg:336
 #, kde-format
 msgid "Whether number annotation tool has a drop shadow"
 msgstr "Ar skaičių anotacijų įrankis mes šešėlį"
@@ -1887,12 +1957,12 @@ msgstr "Atšaukti"
 msgid "Redo"
 msgstr "Grąžinti"
 
-#: src/Gui/ViewerPage.qml:183
+#: src/Gui/ViewerPage.qml:190
 #, kde-format
 msgid "Zoom:"
 msgstr "Mastelis:"
 
-#: src/Gui/ViewerPage.qml:197
+#: src/Gui/ViewerPage.qml:204
 #, kde-format
 msgid "Image Zoom"
 msgstr "Paveikslo mastelis"
@@ -1949,6 +2019,22 @@ msgstr ""
 "Wayland aplinkoje, Spectacle reikalauja KDE Plasma KWin kompozitoriaus, "
 "kuris, atrodo, nėra prieinamas. Naudokite Spectacle programą KDE Plasma "
 "aplinkoje arba naudokite kitą ekrano kopijos įrankį."
+
+#: src/OcrManager.cpp:594
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Orientation and Script Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:638
+#, kde-format
+msgid "Math/Equation Detection"
+msgstr ""
+
+#: src/OcrManager.cpp:641
+#, kde-format
+msgid "Orientation and Script Detection"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2195,25 +2281,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Paleisti Spectacle nefotografuojant"
 
-#: src/SpectacleCore.cpp:251
+#: src/SpectacleCore.cpp:256
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Įvyko klaida darant ekrano kopiją."
 
-#: src/SpectacleCore.cpp:280
+#: src/SpectacleCore.cpp:285
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle filmuoja"
 
-#: src/SpectacleCore.cpp:285
+#: src/SpectacleCore.cpp:290
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle filmuoja"
 
-#: src/SpectacleCore.cpp:311
+#: src/SpectacleCore.cpp:316
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2221,7 +2307,7 @@ msgstr ""
 "Norėdami užbaigti filmavimą spustelėkite sistemos dėkle raudoną pulsuojančią "
 "piktogramą."
 
-#: src/SpectacleCore.cpp:312
+#: src/SpectacleCore.cpp:317
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2231,13 +2317,13 @@ msgstr ""
 "Norėdami užbaigti filmavimą spustelėkite sistemos dėkle raudoną pulsuojančią "
 "piktogramą arba paspauskite <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:329
+#: src/SpectacleCore.cpp:334
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Trūksta WebP palaikymo."
 
-#: src/SpectacleCore.cpp:330
+#: src/SpectacleCore.cpp:335
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2248,25 +2334,25 @@ msgstr ""
 "sistemos dėklo piktogramas, o tuomet praneškite apie šią pakavimo problemą "
 "savo platinamojo paketo platintojui."
 
-#: src/SpectacleCore.cpp:366
+#: src/SpectacleCore.cpp:371
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle užbaigia ekrano įrašą"
 
-#: src/SpectacleCore.cpp:367
+#: src/SpectacleCore.cpp:372
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Palaukite"
 
-#: src/SpectacleCore.cpp:369
+#: src/SpectacleCore.cpp:374
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle užbaigia ekrano įrašą"
 
-#: src/SpectacleCore.cpp:371
+#: src/SpectacleCore.cpp:376
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2276,7 +2362,7 @@ msgstr ""
 "Kiek laiko filmuojama: %1\n"
 "Spustelėkite norėdami pirma laiko stabdyti perteikimą (bus prarasti duomenys)"
 
-#: src/SpectacleCore.cpp:397
+#: src/SpectacleCore.cpp:402
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2286,13 +2372,13 @@ msgstr ""
 "Kiek laiko filmuojama: %1\n"
 "Spustelėkite norėdami užbagti filmavimą"
 
-#: src/SpectacleCore.cpp:422
+#: src/SpectacleCore.cpp:427
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Įvyko klaida bandant filmuoti ekraną."
 
-#: src/SpectacleCore.cpp:464
+#: src/SpectacleCore.cpp:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2302,7 +2388,7 @@ msgstr ""
 "Ekrano kopija buvo nukopijuota į iškarpinę ir įrašyta kaip <link url=\"%1\">"
 "%2</link>"
 
-#: src/SpectacleCore.cpp:467
+#: src/SpectacleCore.cpp:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2312,19 +2398,19 @@ msgstr ""
 "Ekrano kopija įrašyta kaip <link url=\"%1\">%2</link>, o jos vieta "
 "nukopijuota į iškarpinę"
 
-#: src/SpectacleCore.cpp:470
+#: src/SpectacleCore.cpp:475
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Ekrano kopija buvo įrašyta kaip <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:474
+#: src/SpectacleCore.cpp:479
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekrano kopija nukopijuota į iškarpinę."
 
-#: src/SpectacleCore.cpp:505
+#: src/SpectacleCore.cpp:510
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2334,13 +2420,13 @@ msgstr ""
 "Vaizdo įrašas įrašytas kaip <link url=\"%1\">%2</link>, o jo vieta "
 "nukopijuota į iškarpinę"
 
-#: src/SpectacleCore.cpp:508
+#: src/SpectacleCore.cpp:513
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Vaizdo įrašas buvo įrašytas kaip <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:512
+#: src/SpectacleCore.cpp:517
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2349,25 +2435,90 @@ msgstr "Vaizdo įrašo vieta nukopijuota į iškarpinę."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:537
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Rastas QR kodas: %1"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:541
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Rastas QR kodas su dvejetainiu turiniu."
 
-#: src/SpectacleCore.cpp:838
+#: src/SpectacleCore.cpp:550
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction failed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:556
+#, kde-format
+msgctxt "@info"
+msgid "No text found in the image"
+msgstr ""
+
+#: src/SpectacleCore.cpp:561
+#, kde-format
+msgctxt "@info"
+msgid "Text extraction completed"
+msgstr ""
+
+#: src/SpectacleCore.cpp:564
+#, kde-format
+msgctxt "@info:notification title"
+msgid "Text Extracted"
+msgstr ""
+
+#: src/SpectacleCore.cpp:566
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@info:notification"
+msgid "Text copied to clipboard"
+msgstr "Kopijuoti paveikslą į iškarpinę"
+
+#: src/SpectacleCore.cpp:570
+#, kde-format
+msgctxt "@action:button"
+msgid "Open in Text Editor"
+msgstr ""
+
+#: src/SpectacleCore.cpp:685
+#, kde-format
+msgctxt "@info"
+msgid "Please select a region before extracting text"
+msgstr ""
+
+#: src/SpectacleCore.cpp:707
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgctxt "@info"
+msgid "OCR is not available."
+msgstr "KWin ekrano įrašymas yra neprieinamas."
+
+#: src/SpectacleCore.cpp:713
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "KWin Screencasting is not available."
+msgctxt "@info"
+msgid "No screenshot available."
+msgstr "KWin ekrano įrašymas yra neprieinamas."
+
+#: src/SpectacleCore.cpp:717
+#, kde-format
+msgctxt "@info"
+msgid "Extracting text from image..."
+msgstr ""
+
+#: src/SpectacleCore.cpp:981
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nėra tinkama --record veiksena"
 
-#: src/SpectacleCore.cpp:1073
+#: src/SpectacleCore.cpp:1216
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2376,23 +2527,23 @@ msgstr ""
 "Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
 "ekrano kopijos failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1220
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:1080
+#: src/SpectacleCore.cpp:1223
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrano kopija buvo įrašyta į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:1084
+#: src/SpectacleCore.cpp:1227
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
-#: src/SpectacleCore.cpp:1089
+#: src/SpectacleCore.cpp:1232
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2401,24 +2552,24 @@ msgstr ""
 "Įrašui buvo suteiktas pavadinimas „%1“ ir jis įrašytas į „%2“, o įrašo failo "
 "kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:1091
+#: src/SpectacleCore.cpp:1234
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Įrašas buvo įrašytas į jūsų Vaizdo įrašų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:1093
+#: src/SpectacleCore.cpp:1236
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Įrašas buvo įrašytas į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:1104
+#: src/SpectacleCore.cpp:1247
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atverti"
 
-#: src/SpectacleCore.cpp:1118
+#: src/SpectacleCore.cpp:1261
 #, kde-format
 msgid "Annotate"
 msgstr "Kurti anotacijas"
@@ -2686,9 +2837,6 @@ msgstr "GIF (suderinamas, bet neefektyvus)"
 
 #~ msgid "KIPI plugin from library %1 failed to load"
 #~ msgstr "Nepavyko įkelti KIPI priedo iš %1 bibliotekos"
-
-#~ msgid "No KIPI plugins available"
-#~ msgstr "Nėra jokių prieinamų KIPI priedų"
 
 #~ msgctxt "%1 is collection name, %2 is image count in collection"
 #~ msgid "%1 (%2 image)"
