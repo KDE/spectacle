@@ -38,7 +38,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
 
     connect(m_ocrLanguageSelector, &OcrLanguageSelector::selectedLanguagesChanged, this, &GeneralOptionsPage::ocrLanguageChanged);
 
-    refreshOcrLanguageSettings();
+    refreshOcrLanguageSettings(false);
 
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
     if (KWindowSystem::isPlatformWayland() || qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") == 0) {
@@ -51,8 +51,9 @@ GeneralOptionsPage::~GeneralOptionsPage() = default;
 void GeneralOptionsPage::refreshOcrLanguageSettings(bool rebuildSelector)
 {
     OcrManager *ocrManager = OcrManager::instance();
-    
-    if (!ocrManager->isAvailable()) {
+    const bool ocrAvailable = ocrManager->isAvailable();
+
+    if (!ocrAvailable) {
         m_ui->ocrLanguageLabel->setVisible(false);
         m_ui->ocrLanguageScrollArea->setVisible(false);
         m_ui->ocrUnavailableWidget->setVisible(true);
@@ -60,10 +61,10 @@ void GeneralOptionsPage::refreshOcrLanguageSettings(bool rebuildSelector)
         m_ui->ocrLanguageLabel->setVisible(true);
         m_ui->ocrLanguageScrollArea->setVisible(true);
         m_ui->ocrUnavailableWidget->setVisible(false);
+    }
 
-        if (rebuildSelector) {
-            m_ocrLanguageSelector->refresh();
-        }
+    if (ocrAvailable && rebuildSelector) {
+        m_ocrLanguageSelector->refresh();
     }
 }
 
