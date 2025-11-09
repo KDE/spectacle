@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-08 00:44+0000\n"
-"PO-Revision-Date: 2025-06-14 05:16+0200\n"
+"PO-Revision-Date: 2025-11-08 07:20+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -856,29 +856,27 @@ msgstr "გაზიარება"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "ტექსტის ამოღება ენის მიხედვით"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
+msgstr "OCR-ის ძრავა ხელმისაწვდომი არაა."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR ხელმისაწვდომი არაა. დააყენეთ Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "მიმდინარეობს OCR-ის ძრავის ინიციალიზაცია…"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "OCR ენის მონაცემები ხელმისაწვდომი არაა."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -925,7 +923,7 @@ msgstr "ახალი ეკრანის ანაბეჭდი"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "ტექსტის ამოღება"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1289,21 +1287,19 @@ msgstr "სანამ Spectacle დაიხურება"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "ტექსტის ამოცნობა (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "ენა OCR-ისთვის:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
+msgstr "OCR-ის ფუნქციონალი ხელმისაწვდომი არაა"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1313,6 +1309,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"დააყენეთ აუცილებელი პაკეტები:\n"
+"• tesseract\n"
+"• tesseract-ის ენის მონაცემები (მაგ: tesseract-ocr-eng ინგლისურისთვის)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1468,7 +1467,7 @@ msgstr "ბოლო მართკუთხედი რეგიონის 
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "ნაგულისხმევი ენა OCR ტექსტის ამოსაცნობად"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -1996,17 +1995,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "ორიენტაცია და სკრიპტის ამოცნობა"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "მათემატიკის/ტოლობის ამოცნობა"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "ორიენტაცია და სკრიპტის ამოცნობა"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2418,66 +2417,61 @@ msgstr "აღმოჩენილია QR კოდი ბინარულ�
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "ტექსტის ამოღება ჩავარდა"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "გამოსახულებაში ტექსტი აღმოჩენილი არაა"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "ტექსტის ამოღება დასრულდა"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "ტექსტი ამოღებულია"
 
 #: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard"
-msgstr "გამოსახულების ბუფერში კოპირება"
+msgstr "ტექსტი დაკოპირდა ბუფერში"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "ტექსტურ რედაქტორში გახსნა"
 
 #: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "აირჩიეთ რეგიონი ტექსტის ამოღებამდე"
 
 #: src/SpectacleCore.cpp:707
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
+msgstr "OCR ხელმისაწვდომი არაა."
 
 #: src/SpectacleCore.cpp:713
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "KWin-ის ეკრანის გადაცემა ხელმისაწვდომი არაა."
+msgstr "ეკრანის ანაბეჭდი ხელმისაწვდომი არაა."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "მიმდინარეობს ტექსტის ამოღება გამოსახულებიდან..."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
