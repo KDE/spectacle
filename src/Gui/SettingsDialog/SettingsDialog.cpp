@@ -88,12 +88,20 @@ void SettingsDialog::showEvent(QShowEvent *event)
 
 bool SettingsDialog::hasChanged()
 {
-    return m_shortcutsPage->isModified() || m_generalPage->ocrLanguageSelector()->hasChanges() || KConfigDialog::hasChanged();
+    bool ocrHasChanges = false;
+    if (OcrManager::instance()->isAvailable()) {
+        ocrHasChanges = m_generalPage->ocrLanguageSelector()->hasChanges();
+    }
+    return m_shortcutsPage->isModified() || ocrHasChanges || KConfigDialog::hasChanged();
 }
 
 bool SettingsDialog::isDefault()
 {
-    return currentPage()->name() != i18n("Shortcuts") && m_generalPage->ocrLanguageSelector()->isDefault() && KConfigDialog::isDefault();
+    bool ocrIsDefault = true;
+    if (OcrManager::instance()->isAvailable()) {
+        ocrIsDefault = m_generalPage->ocrLanguageSelector()->isDefault();
+    }
+    return currentPage()->name() != i18n("Shortcuts") && ocrIsDefault && KConfigDialog::isDefault();
 }
 
 void SettingsDialog::updateSettings()
@@ -101,7 +109,9 @@ void SettingsDialog::updateSettings()
     KConfigDialog::updateSettings();
     m_shortcutsPage->saveChanges();
 
-    m_generalPage->ocrLanguageSelector()->saveSettings();
+    if (OcrManager::instance()->isAvailable()) {
+        m_generalPage->ocrLanguageSelector()->saveSettings();
+    }
 
     if (OcrManager *ocrManager = OcrManager::instance()) {
         ocrManager->setConfigSyncSuspended(false);
@@ -113,7 +123,9 @@ void SettingsDialog::updateWidgets()
     KConfigDialog::updateWidgets();
     m_shortcutsPage->resetChanges();
 
-    m_generalPage->ocrLanguageSelector()->updateWidgets();
+    if (OcrManager::instance()->isAvailable()) {
+        m_generalPage->ocrLanguageSelector()->updateWidgets();
+    }
     m_generalPage->refreshOcrLanguageSettings();
 
     if (OcrManager *ocrManager = OcrManager::instance()) {
@@ -130,7 +142,9 @@ void SettingsDialog::updateWidgetsDefault()
     KConfigDialog::updateWidgetsDefault();
     m_shortcutsPage->defaults();
 
-    m_generalPage->ocrLanguageSelector()->applyDefaults();
+    if (OcrManager::instance()->isAvailable()) {
+        m_generalPage->ocrLanguageSelector()->applyDefaults();
+    }
     m_generalPage->refreshOcrLanguageSettings(false);
 }
 
