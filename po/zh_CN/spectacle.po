@@ -836,27 +836,27 @@ msgstr "分享"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "按语言提取文本"
 
 #: src/Gui/ExportMenu.cpp:277
 #, kde-format
 msgid "OCR engine is not available."
-msgstr ""
+msgstr "OCR 引擎不可用。"
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR 不可用。请安装 Tesseract OCR 。"
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "OCR 引擎正在初始化…"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "没有可用的 OCR 语言数据。"
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -903,7 +903,7 @@ msgstr "新建截图..."
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "提取文本"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1265,19 +1265,19 @@ msgstr "直到 Spectacle 关闭"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "文本识别 (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "OCR 语言："
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
 #, kde-format
 msgid "OCR functionality is not available"
-msgstr ""
+msgstr "OCR 功能不可用"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1287,6 +1287,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"请安装所需的软件包：\n"
+"• tesseract\n"
+"• tesseract 语言数据 (例如英语数据是 tesseract-ocr-eng)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1438,7 +1441,7 @@ msgstr "记住最后一个矩形截图区域"
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "OCR 文本识别的默认语言"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -1967,17 +1970,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "方向和书写检测"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "数学/方程检测"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "方向和书写检测"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2375,61 +2378,61 @@ msgstr "识别到包含二进制内容的二维码。"
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "文本提取失败"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "图像中没有找到文本"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "文本提取完成"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "文本已提取"
 
 #: src/SpectacleCore.cpp:566
 #, kde-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard"
-msgstr ""
+msgstr "文本已复制到剪贴板"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "用文本编辑器打开"
 
 #: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "请先选择要提取文本的区域"
 
 #: src/SpectacleCore.cpp:707
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr ""
+msgstr "OCR 不可用。"
 
 #: src/SpectacleCore.cpp:713
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr ""
+msgstr "没有可用的屏幕截图。"
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "正在从图像中提取文本..."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format

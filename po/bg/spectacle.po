@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-08 00:44+0000\n"
-"PO-Revision-Date: 2025-10-28 15:29+0100\n"
+"PO-Revision-Date: 2025-11-09 16:42+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -877,29 +877,28 @@ msgstr "Споделяне"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Извличане на текст според езика"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "Споделянето на екрана на KWin не е налично."
+msgstr "Модулът за оптично разпознаване на символи не е наличен."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
+"Няма модул за оптично разпознаване на символи. Моля инсталирайте Tesseract."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Инициализиране на модула за ОРС…"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "Няма налични езици за ОРС."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -946,7 +945,7 @@ msgstr "Нова екранна снимка"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Извличане на текст"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1313,21 +1312,19 @@ msgstr "Докато Spectacle не бъде затворен"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Разпознаване на текст(ОРС)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Езици за ОРС:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "Споделянето на екрана на KWin не е налично."
+msgstr "Няма възможност за оптично разпознаване на символи"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1337,6 +1334,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Моля, инсталирайте необходимите пакети:\n"
+"• tesseract\n"
+"• tesseract language data (e.g., tesseract-ocr-bul за български)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1498,7 +1498,7 @@ msgstr "Запомняне на последния правоъгълен рег
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Подразбиращи се езици за оптично разпознаване на текст"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -2030,17 +2030,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Ориентация и откриване на скрипт"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Разпознаване на математически уравнения"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Ориентация и откриване на скрипт"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2461,66 +2461,61 @@ msgstr "Намерен е QR код с двоично съдържание."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Неуспешно извличане"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Не е намерен текст в изображението"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Извличането на текста е завършено"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Текстът е извлечен"
 
 #: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard"
-msgstr "Копиране на изображението в клипборда"
+msgstr "Текстът е копиран в клипборда"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Отваряне в текстов редактор"
 
 #: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Моля, изберете регион, преди да извлечете текст"
 
 #: src/SpectacleCore.cpp:707
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "Споделянето на екрана на KWin не е налично."
+msgstr "Няма оптично разпознаване на символи"
 
 #: src/SpectacleCore.cpp:713
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Споделянето на екрана на KWin не е налично."
+msgstr "Няма налична снимка на екрана"
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Извличане на текст от изображение..."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
@@ -2607,11 +2602,3 @@ msgstr "Animated WebP (по-добро от GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (съвместимо, но неефективно)"
-
-#~ msgid "Show capture instructions"
-#~ msgstr "Показване на инструкции за заснемане"
-
-#~ msgid "Whether to show capture instructions in the region selection"
-#~ msgstr ""
-#~ "Определя дали да се показват инструкции за заснемане в диалоговия "
-#~ "прозорец за избор на регион"
