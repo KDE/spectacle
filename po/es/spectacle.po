@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-08 00:44+0000\n"
-"PO-Revision-Date: 2025-06-15 00:46+0100\n"
+"PO-Revision-Date: 2025-11-10 02:40+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -879,29 +879,27 @@ msgstr "Compartir"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extraer texto por idioma"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "La videocaptura de pantalla de KWin no está disponible."
+msgstr "El motor OCR no está disponible."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "El OCR no está disponible. Instale Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "El motor OCR se está inicializando…"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "No hay datos de idiomas de OCR disponibles."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -948,7 +946,7 @@ msgstr "Nueva captura de pantalla"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Extraer texto"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1314,21 +1312,19 @@ msgstr "Hasta que se cierre Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Reconocimiento de texto (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Idiomas para OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "La videocaptura de pantalla de KWin no está disponible."
+msgstr "La función OCR no está disponible"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1338,6 +1334,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Instale los paquetes necesarios:\n"
+"• tesseract\n"
+"• datos de idioma de tesseract (como tesseract-ocr-spa para español)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1497,7 +1496,7 @@ msgstr "Recordar la última región rectangular"
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Idiomas predeterminados para el reconocimiento de texto OCR"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -2035,17 +2034,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Detección de orientación y escritura"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Detección matemática/ecuaciones"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Detección de orientación y escritura"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2468,66 +2467,61 @@ msgstr "Se ha encontrado un código QR con contenido binario."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "La extracción de texto ha fallado"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "No se ha encontrado texto en la imagen"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Extracción de texto terminada"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Texto extraído"
 
 #: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard"
-msgstr "Copiar imagen en el portapapeles"
+msgstr "Texto copiado al portapapeles"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Abrir en editor de texto"
 
 #: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Seleccione una región antes de extraer texto"
 
 #: src/SpectacleCore.cpp:707
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "La videocaptura de pantalla de KWin no está disponible."
+msgstr "El OCR no está disponible."
 
 #: src/SpectacleCore.cpp:713
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "La videocaptura de pantalla de KWin no está disponible."
+msgstr "No hay ninguna captura disponible."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Extrayendo texto de la imagen…"
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
@@ -2614,11 +2608,3 @@ msgstr "WebP animado (mejor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, pero ineficiente)"
-
-#~ msgid "Show capture instructions"
-#~ msgstr "Mostrar las instrucciones de captura"
-
-#~ msgid "Whether to show capture instructions in the region selection"
-#~ msgstr ""
-#~ "Controla si se muestran las instrucciones de captura en la selección de "
-#~ "la región"

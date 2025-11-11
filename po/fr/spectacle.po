@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-08 00:44+0000\n"
-"PO-Revision-Date: 2025-07-25 09:31+0200\n"
+"PO-Revision-Date: 2025-11-09 17:01+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.07.80\n"
+"X-Generator: Lokalize 25.08.3\n"
 "X-Text-Markup: kde4\n"
 
 #: src/CaptureModeModel.cpp:162
@@ -886,30 +886,27 @@ msgstr "Partager"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extraire le texte par langue"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "La diffusion d'écran avec KWin n'est pas disponible."
+msgstr "Le moteur du logiciel OCR est indisponible."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "Le logiciel OCR est indisponible. Veuillez installer Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Le moteur du logiciel OCR est en cours d'initialisation..."
 
 #: src/Gui/ExportMenu.cpp:294
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "Aucun module externe KIPI disponible"
+msgstr "Aucune donnée de langue pour le logiciel OCR disponible."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -956,7 +953,7 @@ msgstr "Nouvelle copie d'écran"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Extraire du texte"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1326,21 +1323,19 @@ msgstr "Jusqu'à ce que Spectacle soit fermé"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Reconnaissance de texte (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Langues pour le logiciel OCR :"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "La diffusion d'écran avec KWin n'est pas disponible."
+msgstr "La fonctionnalité OCR est indisponible"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1350,6 +1345,10 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Veuillez installer les paquets requis :\n"
+"• tesseract\n"
+"• données linguistiques pour tesseract (Par exemple, tesseract-ocr-eng pour "
+"l'Anglais)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1514,6 +1513,7 @@ msgstr "Mémoriser la dernière zone rectangulaire"
 #, kde-format
 msgid "Default languages for OCR text recognition"
 msgstr ""
+"Langues par défaut pour la reconnaissance de texte avec le logiciel OCR"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -2057,17 +2057,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientation et détection de scripts"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Détection d'éléments de mathématique / d'équations"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientation et détection de scripts"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2502,66 +2502,61 @@ msgstr "Un code « QR » a été trouvé avec un contenu binaire."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Impossible de réaliser l'extraction de texte"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Aucun texte trouvé dans l'image"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Extraction de texte terminée"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Texte extrait"
 
 #: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard"
-msgstr "Copier l'image dans le presse-papiers"
+msgstr "Texte copié dans le presse-papier"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Ouvrir dans l'éditeur de texte"
 
 #: src/SpectacleCore.cpp:685
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Veuillez sélectionner une région avant d'extraire du texte"
 
 #: src/SpectacleCore.cpp:707
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "La diffusion d'écran avec KWin n'est pas disponible."
+msgstr "La reconnaissance optique de caractères est indisponible."
 
 #: src/SpectacleCore.cpp:713
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "La diffusion d'écran avec KWin n'est pas disponible."
+msgstr "Aucune copie d'écran disponible."
 
 #: src/SpectacleCore.cpp:717
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Extraction du texte de l'image en cours..."
 
 #: src/SpectacleCore.cpp:981
 #, kde-format
