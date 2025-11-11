@@ -89,8 +89,6 @@ find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(OpenCV 4.7 REQUIRED core imgproc)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(TESSERACT REQUIRED tesseract)
 
 # Find Tesseract for OCR functionality
 find_package(PkgConfig QUIET)
