@@ -96,28 +96,8 @@ if(PkgConfig_FOUND)
     pkg_check_modules(TESSERACT tesseract)
 
     if(TESSERACT_FOUND)
-        # Test if Tesseract has usable language packs
-        try_run(
-            TESSERACT_TEST_RUN_RESULT
-            TESSERACT_TEST_COMPILE_RESULT
-            ${CMAKE_CURRENT_BINARY_DIR}
-            ${CMAKE_CURRENT_SOURCE_DIR}/cmake/tesseract_test.cpp
-            LINK_LIBRARIES ${TESSERACT_LIBRARIES}
-            CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${TESSERACT_INCLUDE_DIRS}"
-            COMPILE_OUTPUT_VARIABLE TESSERACT_COMPILE_OUTPUT
-            RUN_OUTPUT_VARIABLE TESSERACT_RUN_OUTPUT
-        )
-
-        if(TESSERACT_TEST_COMPILE_RESULT AND TESSERACT_TEST_RUN_RESULT EQUAL 0)
-            message(STATUS "Tesseract OCR support enabled")
-            message(STATUS "${TESSERACT_RUN_OUTPUT}")
-            set(HAVE_TESSERACT_OCR TRUE)
-        else()
-            message(WARNING "Tesseract library found but no usable language packs detected")
-            message(WARNING "${TESSERACT_RUN_OUTPUT}")
-            message(WARNING "OCR functionality will be disabled. Install language data packages (e.g., tesseract-ocr-eng)")
-            set(HAVE_TESSERACT_OCR FALSE)
-        endif()
+        message(STATUS "Tesseract OCR support enabled")
+        set(HAVE_TESSERACT_OCR TRUE)
     else()
         message(STATUS "Tesseract not found - OCR functionality disabled")
         set(HAVE_TESSERACT_OCR FALSE)
