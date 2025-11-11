@@ -123,9 +123,10 @@ Q_SIGNALS:
     /**
      * @brief Emitted when text recognition is complete
      * @param text The recognized text
+     * @param languageCodes List of language codes used for recognition (e.g., ["eng", "spa"])
      * @param success true if recognition was successful
      */
-    void textRecognized(const QString &text, bool success);
+    void textRecognized(const QString &text, const QStringList &languageCodes, bool success);
 
     /**
      * @brief Emitted when OCR status changes

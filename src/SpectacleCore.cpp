@@ -543,8 +543,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
         InlineMessageModel::instance()->push(InlineMessageModel::Scanned, text, result);
     };
     connect(exportManager, &ExportManager::qrCodeScanned, this, onQRCodeScanned);
-    
-    auto onOcrTextRecognized = [this](const QString &text, bool success) {
+
+    auto onOcrTextRecognized = [this](const QString &text, const QStringList &languageCodes, bool success) {
         if (!success) {
             InlineMessageModel::instance()->push(InlineMessageModel::Error, 
                 i18nc("@info", "Text extraction failed"));
@@ -562,8 +562,29 @@ SpectacleCore::SpectacleCore(QObject *parent)
         
         auto notification = new KNotification(u"ocrTextExtracted"_s, KNotification::CloseOnTimeout, this);
         notification->setTitle(i18nc("@info:notification title", "Text Extracted"));
-        
-        notification->setText(i18nc("@info:notification", "Text copied to clipboard"));
+
+        auto ocrManager = OcrManager::instance();
+        auto languageNames = ocrManager->availableLanguagesWithNames();
+
+        QStringList displayLanguages;
+        for (const QString &code : languageCodes) {
+            QString displayName = languageNames.value(code, code);
+            if (!displayLanguages.contains(displayName)) {
+                displayLanguages.append(displayName);
+            }
+        }
+
+        QString languagesText;
+        if (displayLanguages.size() == 1) {
+            languagesText = displayLanguages.first();
+        } else if (displayLanguages.size() == 2) {
+            languagesText = i18nc("@info", "%1 and %2", displayLanguages.at(0), displayLanguages.at(1));
+        } else {
+            languagesText = displayLanguages.join(u", "_s);
+        }
+
+        auto notificationText = xi18nc("@info:notification", "Text copied to clipboard.<nl/>Languages detected: %1", languagesText);
+        notification->setText(notificationText);
         notification->setIconName(u"document-scan"_s);
         
         if (!text.isEmpty()) {
@@ -594,7 +615,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         
         notification->sendEvent();
     };
-    
+
     // Connect to OCR manager
     connect(OcrManager::instance(), &OcrManager::textRecognized, this, onOcrTextRecognized);
     connect(OcrManager::instance(), &OcrManager::statusChanged, this, [this](OcrManager::OcrStatus) {

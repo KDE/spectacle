@@ -155,19 +155,19 @@ void OcrManager::recognizeText(const QImage &image)
 #ifdef HAVE_TESSERACT_OCR
     if (!isAvailable()) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR: engine is not available";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
     if (m_status == OcrStatus::Processing) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR: text extraction already running";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
     if (image.isNull() || image.size().isEmpty()) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR: invalid image provided";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
@@ -175,7 +175,7 @@ void OcrManager::recognizeText(const QImage &image)
     if (m_configuredLanguages.isEmpty() || m_activeLanguages != m_configuredLanguages) {
         if (!validateAndApplyLanguages(m_configuredLanguages)) {
             qCWarning(SPECTACLE_LOG) << "Cannot start OCR: failed to activate configured languages";
-            Q_EMIT textRecognized(QString(), false);
+            Q_EMIT textRecognized(QString(), QStringList(), false);
             return;
         }
     }
@@ -184,7 +184,7 @@ void OcrManager::recognizeText(const QImage &image)
 #else
     Q_UNUSED(image);
     qCWarning(SPECTACLE_LOG) << "Cannot start OCR: Spectacle built without Tesseract support";
-    Q_EMIT textRecognized(QString(), false);
+    Q_EMIT textRecognized(QString(), QStringList(), false);
 #endif
 }
 
@@ -198,26 +198,26 @@ void OcrManager::recognizeTextWithLanguage(const QImage &image, const QString &l
 
     if (!isAvailable()) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR with language" << languageCode << ": engine is not available";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
     if (m_status == OcrStatus::Processing) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR with language" << languageCode << ": text extraction already running";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
     if (image.isNull() || image.size().isEmpty()) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR with language" << languageCode << ": invalid image provided";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
     const QStringList tempLanguages{languageCode};
     if (!validateAndApplyLanguages(tempLanguages)) {
         qCWarning(SPECTACLE_LOG) << "Cannot start OCR with language" << languageCode << ": failed to activate language";
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         return;
     }
 
@@ -229,7 +229,7 @@ void OcrManager::recognizeTextWithLanguage(const QImage &image, const QString &l
     Q_UNUSED(image);
     Q_UNUSED(languageCode);
     qCWarning(SPECTACLE_LOG) << "Cannot start OCR: Spectacle built without Tesseract support";
-    Q_EMIT textRecognized(QString(), false);
+    Q_EMIT textRecognized(QString(), QStringList(), false);
 #endif
 }
 
@@ -244,11 +244,11 @@ void OcrManager::handleRecognitionComplete(const QString &text, bool success)
             QApplication::clipboard()->setText(text);
         }
 
-        Q_EMIT textRecognized(text, true);
+        Q_EMIT textRecognized(text, m_activeLanguages, true);
         qCDebug(SPECTACLE_LOG) << "OCR recognition completed successfully";
     } else {
         setStatus(OcrStatus::Error);
-        Q_EMIT textRecognized(QString(), false);
+        Q_EMIT textRecognized(QString(), QStringList(), false);
         qCWarning(SPECTACLE_LOG) << "OCR recognition failed";
     }
 
