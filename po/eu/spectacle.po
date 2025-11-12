@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-08 00:44+0000\n"
+"POT-Creation-Date: 2025-11-12 00:46+0000\n"
 "PO-Revision-Date: 2025-06-24 18:16+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2461,26 +2461,32 @@ msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
+#: src/SpectacleCore.cpp:581
+#, kde-format
+msgctxt "@info"
+msgid "%1 and %2"
+msgstr ""
+
+#: src/SpectacleCore.cpp:586
+#, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard"
+msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Kopiatu irudia arbelera"
 
-#: src/SpectacleCore.cpp:570
+#: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:728
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2488,7 +2494,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:734
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2496,19 +2502,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:981
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:1216
+#: src/SpectacleCore.cpp:1237
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2517,23 +2523,23 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1220
+#: src/SpectacleCore.cpp:1241
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:1223
+#: src/SpectacleCore.cpp:1244
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1227
+#: src/SpectacleCore.cpp:1248
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1253
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2542,24 +2548,24 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1234
+#: src/SpectacleCore.cpp:1255
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1257
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 
-#: src/SpectacleCore.cpp:1247
+#: src/SpectacleCore.cpp:1268
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1261
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"

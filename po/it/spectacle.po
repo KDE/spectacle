@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-08 00:44+0000\n"
+"POT-Creation-Date: 2025-11-12 00:46+0000\n"
 "PO-Revision-Date: 2025-11-09 23:48+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2479,49 +2479,57 @@ msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Testo estratto"
 
-#: src/SpectacleCore.cpp:566
+#: src/SpectacleCore.cpp:581
 #, kde-format
+msgctxt "@info"
+msgid "%1 and %2"
+msgstr ""
+
+#: src/SpectacleCore.cpp:586
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:notification"
+#| msgid "Text copied to clipboard"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard"
+msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Testo copiato negli appunti"
 
-#: src/SpectacleCore.cpp:570
+#: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Apri nell'editor di testo"
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Seleziona una regione prima di estrarre il testo"
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Il riconoscimento dei caratteri (OCR) non è disponibile."
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:734
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Nessuna schermata disponibile."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Estrazione del testo dall'immagine..."
 
-#: src/SpectacleCore.cpp:981
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "«%1» non una modalità valida per --record"
 
-#: src/SpectacleCore.cpp:1216
+#: src/SpectacleCore.cpp:1237
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2530,23 +2538,23 @@ msgstr ""
 "La schermata è stata salvata come «%1» in «%2» ed il suo percorso è stata "
 "copiato negli appunti."
 
-#: src/SpectacleCore.cpp:1220
+#: src/SpectacleCore.cpp:1241
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Una schermata è stata salvata come «%1» nella cartella delle immagini."
 
-#: src/SpectacleCore.cpp:1223
+#: src/SpectacleCore.cpp:1244
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Una schermata è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:1227
+#: src/SpectacleCore.cpp:1248
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Una schermata è stata salvata negli appunti."
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1253
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2555,24 +2563,24 @@ msgstr ""
 "Una registrazione è stata salvata come «%1» in «%2» ed il suo percorso è "
 "stata copiato negli appunti."
 
-#: src/SpectacleCore.cpp:1234
+#: src/SpectacleCore.cpp:1255
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Una registrazione è stata salvata come «%1» nella cartella dei video."
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1257
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Una registrazione è stata salvata come «%1» in «%2»."
 
-#: src/SpectacleCore.cpp:1247
+#: src/SpectacleCore.cpp:1268
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Apri"
 
-#: src/SpectacleCore.cpp:1261
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgid "Annotate"
 msgstr "Annota"

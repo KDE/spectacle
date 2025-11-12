@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-08 00:44+0000\n"
+"POT-Creation-Date: 2025-11-12 00:46+0000\n"
 "PO-Revision-Date: 2025-07-10 19:51+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2456,27 +2456,33 @@ msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
+#: src/SpectacleCore.cpp:581
+#, kde-format
+msgctxt "@info"
+msgid "%1 and %2"
+msgstr ""
+
 # *** TARKISTA: Oletan, että tämä jatkaa otsikkoa ”Press screenshot key to:”
-#: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
+#: src/SpectacleCore.cpp:586
+#, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard"
+msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Kopioi kuva leikepöydälle"
 
-#: src/SpectacleCore.cpp:570
+#: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:728
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2484,7 +2490,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "KWin-näytöntoisto ei ole käytettävissä."
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:734
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2492,19 +2498,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "KWin-näytöntoisto ei ole käytettävissä."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:981
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ei ole kelvollinen moodi --record"
 
-#: src/SpectacleCore.cpp:1216
+#: src/SpectacleCore.cpp:1237
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2513,23 +2519,23 @@ msgstr ""
 "Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
 "sijainti kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:1220
+#: src/SpectacleCore.cpp:1241
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1223
+#: src/SpectacleCore.cpp:1244
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1227
+#: src/SpectacleCore.cpp:1248
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Kuvakaappaus tallennettiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1253
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2538,24 +2544,24 @@ msgstr ""
 "Nauhoitus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston sijainti "
 "kopioitiin leikepöydälle."
 
-#: src/SpectacleCore.cpp:1234
+#: src/SpectacleCore.cpp:1255
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Nauhoitus tallennettiin Videot-kansioon nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1257
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Nauhoitus tallennettiin kansioon ”%2” nimellä ”%1”."
 
-#: src/SpectacleCore.cpp:1247
+#: src/SpectacleCore.cpp:1268
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/SpectacleCore.cpp:1261
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgid "Annotate"
 msgstr "Merkitse"

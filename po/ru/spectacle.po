@@ -24,15 +24,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-08 00:44+0000\n"
-"PO-Revision-Date: 2025-06-26 11:35+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
-"Language-Team: Basealt Translation Team\n"
+"POT-Creation-Date: 2025-11-12 00:46+0000\n"
+"PO-Revision-Date: 2025-10-30 20:48+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.08.2\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -883,7 +883,7 @@ msgid "Open Default Screenshots Folder"
 msgstr "Открыть папку со снимками экрана, заданную по умолчанию"
 
 #: src/Gui/ExportMenu.cpp:124
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Другое приложение..."
@@ -2017,7 +2017,7 @@ msgid "KDE Screenshot Utility"
 msgstr "Утилита для создания снимков экрана от KDE"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
 msgstr "© Boudhayan Gupta, 2015"
 
@@ -2291,22 +2291,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Сделать снимок окна под указателем мыши"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Приложение Spectacle выполняет запись"
+msgstr "Запустить или остановить запись экрана"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Приложение Spectacle выполняет запись"
+msgstr "Запустить или остановить запись окна"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Приложение Spectacle выполняет запись"
+msgstr "Запустить или остановить запись"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2337,6 +2337,8 @@ msgstr "Приложение Spectacle выполняет запись"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Для остановки записи нажмите на пульсирующий красный значок в системном "
+"лотке."
 
 #: src/SpectacleCore.cpp:317
 #, kde-kuit-format
@@ -2345,6 +2347,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Для остановки записи нажмите на пульсирующий красный значок в системном "
+"лотке или нажмите <shortcut>%1</shortcut>. "
 
 #: src/SpectacleCore.cpp:334
 #, kde-format
@@ -2499,26 +2503,32 @@ msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:566
-#, fuzzy, kde-format
+#: src/SpectacleCore.cpp:581
+#, kde-format
+msgctxt "@info"
+msgid "%1 and %2"
+msgstr ""
+
+#: src/SpectacleCore.cpp:586
+#, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard"
+msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Копировать изображение в буфер обмена"
 
-#: src/SpectacleCore.cpp:570
+#: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:685
+#: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:707
+#: src/SpectacleCore.cpp:728
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2526,7 +2536,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Трансляция экрана KWin недоступна."
 
-#: src/SpectacleCore.cpp:713
+#: src/SpectacleCore.cpp:734
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2534,19 +2544,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Трансляция экрана KWin недоступна."
 
-#: src/SpectacleCore.cpp:717
+#: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:981
+#: src/SpectacleCore.cpp:1002
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не является допустимым режимом при указании ключа -- record"
 
-#: src/SpectacleCore.cpp:1216
+#: src/SpectacleCore.cpp:1237
 #, kde-format
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2555,23 +2565,23 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1220
+#: src/SpectacleCore.cpp:1241
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:1223
+#: src/SpectacleCore.cpp:1244
 #, kde-format
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1227
+#: src/SpectacleCore.cpp:1248
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1253
 #, kde-format
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2580,24 +2590,24 @@ msgstr ""
 "Запись экрана сохранена как «%1» в «%2», полный путь к неё скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1234
+#: src/SpectacleCore.cpp:1255
 #, kde-format
 msgctxt "Placeholder is filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1257
 #, kde-format
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1247
+#: src/SpectacleCore.cpp:1268
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:1261
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
