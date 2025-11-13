@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-12 00:46+0000\n"
-"PO-Revision-Date: 2025-08-09 19:44+0400\n"
+"PO-Revision-Date: 2025-11-12 20:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -865,30 +865,27 @@ msgstr "شارك"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "استخرج النص حسب اللغة"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "بث كوين غير متوفر."
+msgstr "محرك التعرف الضوئي على الحروف غير متوفر."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "التعرف الضوئي على الحروف غير متاح. يرجى تثبيت Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "محرك التعرف الضوئي على الحروف (OCR) قيد التهيئة..."
 
 #: src/Gui/ExportMenu.cpp:294
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "لا يوجد ملحقات KIPI"
+msgstr "لا توجد بيانات لغة التعرف الضوئي على الحروف (OCR) متاحة."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -935,7 +932,7 @@ msgstr "لقطة جديدة"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "استخرج النص"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1297,21 +1294,19 @@ msgstr "حتى يغلق لاقط الشاشة"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "التعرف على النص"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "لغات للتعرف على النص:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "بث كوين غير متوفر."
+msgstr "وظيفة التعرف الضوئي على الحروف غير متوفرة"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1321,6 +1316,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"يرجى تثبيت الحزم المطلوبة:\n"
+"• tesseract\n"
+"• بيانات لغة tesseract (على سبيل المثال، tesseract-ocr-eng للغة الإنجليزية)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1475,7 +1473,7 @@ msgstr "تذكّر أخر منطقة مستطيلة"
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "اللغات المبدئية للتعرف على النص"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -2010,17 +2008,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "اكتشاف الاتجاه والنص"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "اكتشاف الرياضيات/المعادلات"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "اكتشاف الاتجاه والنص"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2421,72 +2419,67 @@ msgstr "عثر على رمز استجابة سريعة QR بمحتوى ثنائ�
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "فشل استخراج النص"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "لم يعثر على نص في الصورة"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "اكتمل استخراج النص"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "اسُتخرج النص"
 
 #: src/SpectacleCore.cpp:581
 #, kde-format
 msgctxt "@info"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 و %2"
 
 #: src/SpectacleCore.cpp:586
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "انسخ الصورة إلى الحافظة"
+msgstr "نُسِخ النص إلى الحافظة.<nl/>اللغات المكتشفة: %1"
 
 #: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "افتح في محرر النصوص"
 
 #: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "يرجى تحديد المنطقة قبل استخراج النص"
 
 #: src/SpectacleCore.cpp:728
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "بث كوين غير متوفر."
+msgstr "التعرف الضوئي على الحروف غير متاح."
 
 #: src/SpectacleCore.cpp:734
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "بث كوين غير متوفر."
+msgstr "لا توجد لقطة شاشة متاحة."
 
 #: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "يستخرج النص من الصورة..."
 
 #: src/SpectacleCore.cpp:1002
 #, kde-format
