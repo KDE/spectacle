@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-12 00:46+0000\n"
-"PO-Revision-Date: 2025-06-15 18:15+0900\n"
+"PO-Revision-Date: 2025-11-13 23:05+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -835,30 +835,27 @@ msgstr "分享"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "依語言取出文字"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "KWin 螢幕錄製功能無法使用。"
+msgstr "文字辨識引擎無法使用。"
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "文字辨識不可用。請安裝 Tesseract OCR。"
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "文字辨識引擎正在初始化…"
 
 #: src/Gui/ExportMenu.cpp:294
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "沒有可用的 KIPI 外掛程式"
+msgstr "沒有可用的文字辨識語言資料。"
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -905,7 +902,7 @@ msgstr "新的螢幕截圖"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "取出文字"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1267,21 +1264,19 @@ msgstr "記住到 Spectacle 關閉"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "文字辨識 (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "文字辨識的語言："
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "KWin 螢幕錄製功能無法使用。"
+msgstr "文字辨識功能無法使用。"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1291,6 +1286,10 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"請安裝需要的軟體包：\n"
+"• tesseract\n"
+"• tesseract 語言資料（像是繁體中文的 tesseract-ocr-chi-tra 或是英文的 "
+"tesseract-ocr-eng）"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1443,7 +1442,7 @@ msgstr "記住上一次的長方形區域"
 #: src/Gui/SettingsDialog/spectacle.kcfg:74
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "文字辨識的預設語言"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:80
@@ -1967,17 +1966,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "方向與書寫系統偵測"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "數學式偵測"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "方向與書寫系統偵測"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -2375,72 +2374,67 @@ msgstr "找到內容為二進位資料的 QR code。"
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "文字取出失敗"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "影像中沒有找到文字"
 
 #: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "文字取出完成"
 
 #: src/SpectacleCore.cpp:564
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "文字已取出"
 
 #: src/SpectacleCore.cpp:581
 #, kde-format
 msgctxt "@info"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 與 %2"
 
 #: src/SpectacleCore.cpp:586
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "複製影像到剪貼簿"
+msgstr "文字已複製到剪貼簿。<nl/>偵測到的語言：%1"
 
 #: src/SpectacleCore.cpp:591
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "用編輯器開啟"
 
 #: src/SpectacleCore.cpp:706
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "請先選取區域再來取出文字"
 
 #: src/SpectacleCore.cpp:728
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "KWin 螢幕錄製功能無法使用。"
+msgstr "文字辨識無法使用。"
 
 #: src/SpectacleCore.cpp:734
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "KWin 螢幕錄製功能無法使用。"
+msgstr "沒有可用的螢幕截圖。"
 
 #: src/SpectacleCore.cpp:738
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "正在從影像取出文字…"
 
 #: src/SpectacleCore.cpp:1002
 #, kde-format
