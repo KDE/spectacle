@@ -456,7 +456,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
         imageWriter.setCompression(50);
     }
     if (!(imageWriter.canWrite())) {
-        Q_EMIT errorMessage(i18n("QImageWriter cannot write image: %1", imageWriter.errorString()));
+        Q_EMIT errorMessage(i18nc("%1 is an error message", "QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
     }
     // Scale image to original scale if possible.
@@ -863,7 +863,7 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         }
         if (!saved) {
             actions.setFlag(AnySave, false);
-            Q_EMIT errorMessage(i18nc("@info", "Unable to save recording. Could not move file to location: %1", outputUrl.toString()));
+            Q_EMIT errorMessage(i18nc("@info, %1 is a file path", "Unable to save recording. Could not move file to location: %1", outputUrl.toString()));
             return;
         }
     }

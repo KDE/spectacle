@@ -578,7 +578,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (displayLanguages.size() == 1) {
             languagesText = displayLanguages.first();
         } else if (displayLanguages.size() == 2) {
-            languagesText = i18nc("@info", "%1 and %2", displayLanguages.at(0), displayLanguages.at(1));
+            languagesText = i18nc("@info The variables are language names, e.g. 'English and German'", "%1 and %2", displayLanguages.at(0), displayLanguages.at(1));
         } else {
             languagesText = displayLanguages.join(u", "_s);
         }
@@ -1234,14 +1234,14 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
     if (type == ScreenCapture::Screenshot) {
         if (actions & Action::AnySave && !saveFileName.isEmpty()) {
             if (actions & Action::CopyPath) {
-                notification->setText(i18n("A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
+                notification->setText(i18nc("%1 is the filename, %2 the path to the save location", "A screenshot was saved as '%1' to '%2' and the file path of the screenshot has been saved to your clipboard.",
                                         saveFileName, saveDirPath));
             } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
-                notification->setText(i18nc("Placeholder is filename",
+                notification->setText(i18nc("%1 is the filename",
                                             "A screenshot was saved as '%1' to your Pictures folder.",
                                             saveFileName));
             } else {
-                notification->setText(i18n("A screenshot was saved as '%1' to '%2'.",
+                notification->setText(i18nc("%1 is the filename, %2 the path to the save location", "A screenshot was saved as '%1' to '%2'.",
                                         saveFileName, saveDirPath));
             }
         } else if (actions & Action::CopyImage) {
@@ -1250,11 +1250,11 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
     } else if (type == ScreenCapture::Recording && actions & Action::AnySave && !saveFileName.isEmpty()) {
         if (actions & Action::CopyPath) {
             notification->setText(
-                i18n("A recording was saved as '%1' to '%2' and the file path of the recording has been saved to your clipboard.", saveFileName, saveDirPath));
+                i18nc("%1 is the filename, %2 the path to the save location", "A recording was saved as '%1' to '%2' and the file path of the recording has been saved to your clipboard.", saveFileName, saveDirPath));
         } else if (saveDirPath == QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)) {
-            notification->setText(i18nc("Placeholder is filename", "A recording was saved as '%1' to your Videos folder.", saveFileName));
+            notification->setText(i18nc("%1 is the filename", "A recording was saved as '%1' to your Videos folder.", saveFileName));
         } else {
-            notification->setText(i18n("A recording was saved as '%1' to '%2'.", saveFileName, saveDirPath));
+            notification->setText(i18nc("%1 is the filename, %2 the path to the save location", "A recording was saved as '%1' to '%2'.", saveFileName, saveDirPath));
         }
     }
 

@@ -279,7 +279,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
                                                                Settings::videoSaveLocation());
         auto tempUrl = ExportManager::instance()->tempVideoUrl(filename);
         if (!tempUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
+            Q_EMIT recordingFailed(i18nc("@info:shell, %1 is the temporary URL", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
             return;
         }
         if (!mkDirPath(tempUrl)) {
@@ -289,7 +289,7 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         m_recorder->setOutput(tempUrl.toLocalFile());
     } else {
         if (!fileUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
+            Q_EMIT recordingFailed(i18nc("@info:shell, %1 is the output file URL", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
             return;
         }
         if (!mkDirPath(fileUrl)) {
@@ -343,7 +343,7 @@ bool VideoPlatformWayland::mkDirPath(const QUrl &fileUrl)
     if (dir.exists() || dir.mkpath(u"."_s)) {
         return true;
     } else {
-        Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: Unable to create folder (%1)", dir.path()));
+        Q_EMIT recordingFailed(i18nc("@info:shell, %1 is a directory path", "Failed to record: Unable to create folder (%1)", dir.path()));
         return false;
     }
 }
@@ -379,9 +379,9 @@ void VideoPlatformWayland::selectAndRecord(const QUrl &fileUrl, RecordingMode re
             } else {
                 QString message;
                 if (recordingMode == Screen) {
-                    message = i18nc("@info:shell", "Failed to select screen: %1", error.message());
+                    message = i18nc("@info:shell, %1 is an error message", "Failed to select screen: %1", error.message());
                 } else {
-                    message = i18nc("@info:shell", "Failed to select window: %1", error.message());
+                    message = i18nc("@info:shell, %1 is an error message", "Failed to select window: %1", error.message());
                 }
                 Q_EMIT recordingFailed(message);
             }

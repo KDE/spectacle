@@ -84,7 +84,7 @@ FocusScope {
     Kirigami.Heading {
         anchors.fill: parent
         visible: SpectacleCore.videoPlatform.isRecording
-        text: i18n("Recording:\n%1", SpectacleCore.recordedTime)
+        text: i18nc("Recording in progress, %1 is the length of the recording so far", "Recording:\n%1", SpectacleCore.recordedTime)
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }

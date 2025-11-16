@@ -139,12 +139,12 @@ static ResultVariant allocateImage(const QVariantMap &metadata)
     // We use int because QImage takes ints for its size
     const int width = metadata.value(u"width"_s).toInt(&ok);
     if (!ok || width <= 0) {
-        errors = i18nc("@info", "Bad width for KWin screenshot: %1", QDebug::toString(metadata.value(u"width"_s)));
+        errors = i18nc("@info, %1 is the width", "Bad width for KWin screenshot: %1", QDebug::toString(metadata.value(u"width"_s)));
     }
 
     const int height = metadata.value(u"height"_s).toInt(&ok);
     if (!ok || height <= 0) {
-        const auto string = i18nc("@info", "Bad height for KWin screenshot: %1", QDebug::toString(metadata.value(u"height"_s)));
+        const auto string = i18nc("@info, %1 is the height", "Bad height for KWin screenshot: %1", QDebug::toString(metadata.value(u"height"_s)));
         if (!errors.isEmpty()) {
             errors = errors % u"\n"_s % string;
         } else {
@@ -155,7 +155,7 @@ static ResultVariant allocateImage(const QVariantMap &metadata)
     // We use uint because QImage::Format values are all above 0.
     const uint format = metadata.value(u"format"_s).toUInt(&ok);
     if (!ok || format <= QImage::Format_Invalid || format >= QImage::NImageFormats) {
-        const auto string = i18nc("@info", "Bad format for KWin screenshot: %1", QDebug::toString(metadata.value(u"format"_s)));
+        const auto string = i18nc("@info, %1 is a file format like 'png', 'jpg'", "Bad format for KWin screenshot: %1", QDebug::toString(metadata.value(u"format"_s)));
         if (!errors.isEmpty()) {
             errors = errors % u"\n"_s % string;
         } else {
@@ -241,7 +241,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     if (pipe2(pipeFds, O_CLOEXEC) == -1) {
         const auto errnum = errno;
         QTimer::singleShot(0, this, [this, errnum]{
-            Q_EMIT finished({i18nc("@info", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))});
+            Q_EMIT finished({i18nc("@info, %1 is an error code", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))});
         });
         return;
     }
@@ -297,7 +297,7 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 // don't show error on user cancellation
                 Q_EMIT finished(ResultVariant::canceled());
             } else {
-                auto error = i18nc("@info", "KWin screenshot request failed:\n%1", reply.error().message());
+                auto error = i18nc("@info, %1 is an error message", "KWin screenshot request failed:\n%1", reply.error().message());
                 if (!relevantInfo.isEmpty()) {
                     error = error % u"\n"_s % i18nc("@info", "Potentially relevant information:\n%1", relevantInfo);
                 }
