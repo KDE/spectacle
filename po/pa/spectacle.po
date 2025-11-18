@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-18 00:45+0000\n"
 "PO-Revision-Date: 2024-07-21 21:34-0500\n"
 "Last-Translator: aalam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -197,7 +197,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "ਮੌਜੂਦਾ ਸਕਰੀਨਸ਼ਾਟ ਫ਼ਾਇਲ ਖੋਲ੍ਹੋ ਅਤੇ ਸੋਧੋ"
 
 #: src/ExportManager.cpp:459
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QImageWriter cannot write image: %1"
+msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ਚਿੱਤਰ ਨੂੰ ਲਿਖ ਨਹੀਂ ਸਕਦਾ ਹੈ: %1"
 
@@ -262,8 +264,10 @@ msgstr ""
 "ਵੀਡੀਓ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਉਟਪੁੱਟ ਫਾਇਲ ਦਾ URL ਫਾਇਲ ਨਾਂ ਨਾਲ ਵਾਜਬ URL ਚਾਹੀਦਾ ਹੈ"
 
 #: src/ExportManager.cpp:866
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Unable to save recording. Could not move file to location: %1"
+msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "ਰਿਕਾਰਡਿੰਗ ਸੰਭਾਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ। ਫ਼ਾਇਲ ਨੂੰ ਟਿਕਾਣੇ ਉੱਤੇ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %1"
 
@@ -1130,7 +1134,11 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "ਸਕਰੀਨ ਰਿਕਾਰਡ ਕਰਨ ਵਿੱਚ ਮਾਊਸ ਕਰਸਰ ਵੇਖਾਓ"
 
 #: src/Gui/RecordingView.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Recording:\n"
+#| "%1"
+msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
@@ -1947,7 +1955,9 @@ msgid "Escape"
 msgstr "Esc"
 
 #: src/Gui/SizeLabel.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1×%2"
+msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
 
@@ -2000,8 +2010,10 @@ msgid "Image Zoom"
 msgstr "ਚਿੱਤਰ ਜ਼ੂਮ"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "ਚਿੱਤਰ ਸਾਂਝਾ ਕਰਨ ਦੌਰਾਨ ਸਮੱਸਿਆ ਸੀ: %1"
 
@@ -2067,21 +2079,23 @@ msgid "Orientation and Script Detection"
 msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਦੇ ਬਾਅਦ:"
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਦੇ ਬਾਅਦ:"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
-msgctxt "@info"
+msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਦੇ ਬਾਅਦ:"
 
@@ -2092,14 +2106,15 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgid "After taking a screenshot:"
+msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "ਸਕਰੀਨਸ਼ਾਟ ਲੈਣ ਦੇ ਬਾਅਦ:"
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
 #, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
@@ -2164,20 +2179,26 @@ msgid ""
 msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਰਜ਼ੀ ਫਾਇਲ ਦਾ URL ਲੋਕਲ ਫਾਇਲ (%1) ਨਹੀਂ ਹੈ "
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Output file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਆਉਟਪੁੱਟ ਫਾਇਲ ਦਾ URL ਲੋਕਲ ਫਾਇਲ (%1) ਨਹੀਂ ਹੈ "
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Unable to create folder (%1)"
+msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: ਫੋਲਡਰ (%1) ਬਣਾਉਣ ਲਈ ਅਸਮਰੱਥ "
 
@@ -2194,14 +2215,18 @@ msgid "Window recording canceled"
 msgstr "ਵਿੰਡੋ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਰੱਦ ਕੀਤਾ"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select screen: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "ਸਕਰੀਨ ਚੁਣਨ ਲਈ ਅਸਫ਼ਲ ਹੈ: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select window: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "ਵਿੰਡੋ ਚੁਣਨ ਲਈ ਫੇਲ੍ਹ ਹੈ: %1"
 
@@ -2522,7 +2547,7 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:581
 #, kde-format
-msgctxt "@info"
+msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
@@ -2571,7 +2596,11 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record ਲਈ ਵਾਜਬ ਮੋਡ ਨਹੀਂ ਹੈ"
 
 #: src/SpectacleCore.cpp:1237
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
@@ -2580,13 +2609,17 @@ msgstr ""
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
 #: src/SpectacleCore.cpp:1241
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਤਸਵੀਰਾਂ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
 #: src/SpectacleCore.cpp:1244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
@@ -2596,7 +2629,11 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
 #: src/SpectacleCore.cpp:1253
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A recording was saved as '%1' to '%2' and the file path of the recording "
+#| "has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
@@ -2605,13 +2642,17 @@ msgstr ""
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
 #: src/SpectacleCore.cpp:1255
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A recording was saved as '%1' to your Videos folder."
+msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਤੁਹਾਡੇ ਵੀਡੀਓ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
 #: src/SpectacleCore.cpp:1257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A recording was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 

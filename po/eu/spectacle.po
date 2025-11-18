@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-18 00:45+0000\n"
 "PO-Revision-Date: 2025-06-24 18:16+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -205,7 +205,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
 #: src/ExportManager.cpp:459
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QImageWriter cannot write image: %1"
+msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
 
@@ -276,8 +278,10 @@ msgstr ""
 "behar da eta fitxategi-izen bat izan behar du"
 
 #: src/ExportManager.cpp:866
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Unable to save recording. Could not move file to location: %1"
+msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
@@ -1078,7 +1082,11 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
 
 #: src/Gui/RecordingView.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Recording:\n"
+#| "%1"
+msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
@@ -1902,7 +1910,9 @@ msgid "Escape"
 msgstr "Ihes"
 
 #: src/Gui/SizeLabel.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1×%2"
+msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
 
@@ -1955,8 +1965,10 @@ msgid "Image Zoom"
 msgstr "Irudiaren zoom"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Irudia partekatzeko arazo bat sortu da: %1"
 
@@ -2024,20 +2036,26 @@ msgid "Orientation and Script Detection"
 msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako zabalera okerra: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad height for KWin screenshot: %1"
+msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako altuera okerra: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad format for KWin screenshot: %1"
+msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako formatu okerra: %1"
 
@@ -2049,14 +2067,20 @@ msgstr ""
 "Ezin izan du KWin pantaila-argazkia irakurtzeko fitxategi-deskriptorea ireki."
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "pipe2() failed for KWin screenshot: %1"
+msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "«pipe2()»k KWin pantaila-argazkirako huts egin du: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid ""
+#| "KWin screenshot request failed:\n"
+#| "%1"
+msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
@@ -2129,24 +2153,30 @@ msgstr ""
 "duen era batean aldatu delako."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Grabatzea huts egin du: Aldi baterako fitxategiaren URL ez da fitxategi "
 "lokal bat (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Output file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Grabatzea huts egin du: Irteerako fitxategiaren URL ez da fitxategi lokal "
 "bat (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Unable to create folder (%1)"
+msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Grabatzea huts egin du: Ez da karpeta sortzeko gai (%1)"
 
@@ -2163,14 +2193,18 @@ msgid "Window recording canceled"
 msgstr "Leihoa grabatzea bertan behera utzi da"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select screen: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select window: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
 
@@ -2463,7 +2497,7 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:581
 #, kde-format
-msgctxt "@info"
+msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
@@ -2515,7 +2549,11 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
 #: src/SpectacleCore.cpp:1237
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
@@ -2524,13 +2562,17 @@ msgstr ""
 "bide-izena zure arbelean gorde da."
 
 #: src/SpectacleCore.cpp:1241
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
 #: src/SpectacleCore.cpp:1244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
 
@@ -2540,7 +2582,11 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
 #: src/SpectacleCore.cpp:1253
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A recording was saved as '%1' to '%2' and the file path of the recording "
+#| "has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
@@ -2549,13 +2595,17 @@ msgstr ""
 "zure arbelean gorde da."
 
 #: src/SpectacleCore.cpp:1255
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A recording was saved as '%1' to your Videos folder."
+msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
 #: src/SpectacleCore.cpp:1257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A recording was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
 

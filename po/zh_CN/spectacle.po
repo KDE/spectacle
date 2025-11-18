@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-18 00:45+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -192,7 +192,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "打开并编辑已有截图文件"
 
 #: src/ExportManager.cpp:459
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QImageWriter cannot write image: %1"
+msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter 无法写入图像：%1"
 
@@ -256,8 +258,10 @@ msgid ""
 msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的有效 URL"
 
 #: src/ExportManager.cpp:866
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Unable to save recording. Could not move file to location: %1"
+msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "无法保存录像。无法移动文件到位置：%1"
 
@@ -1043,7 +1047,11 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "屏幕录像包含鼠标光标。"
 
 #: src/Gui/RecordingView.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Recording:\n"
+#| "%1"
+msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
@@ -1860,7 +1868,9 @@ msgid "Escape"
 msgstr "ESC 键"
 
 #: src/Gui/SizeLabel.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1×%2"
+msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
 
@@ -1911,8 +1921,10 @@ msgid "Image Zoom"
 msgstr "图像缩放"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "分享图像出错：%1"
 
@@ -1983,20 +1995,26 @@ msgid "Orientation and Script Detection"
 msgstr "方向和书写检测"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin 屏幕截图宽度错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad height for KWin screenshot: %1"
+msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin 屏幕截图高度错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad format for KWin screenshot: %1"
+msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin 屏幕截图格式错误：%1"
 
@@ -2007,14 +2025,20 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "无法为读取 KWin 屏幕截图打开文件描述符。"
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "pipe2() failed for KWin screenshot: %1"
+msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin 屏幕截图的 pipe2() 执行失败：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid ""
+#| "KWin screenshot request failed:\n"
+#| "%1"
+msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
@@ -2081,20 +2105,26 @@ msgid ""
 msgstr "视频流已关闭，因为目标区域所在屏幕发生的更改中断了屏幕录像。"
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "录制失败：临时文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Output file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "录制失败：输出文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Unable to create folder (%1)"
+msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "录制失败：无法创建文件夹 (%1)"
 
@@ -2111,14 +2141,18 @@ msgid "Window recording canceled"
 msgstr "窗口录像已取消"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select screen: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "选择屏幕失败：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select window: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "选择窗口失败：%1"
 
@@ -2399,8 +2433,10 @@ msgid "Text Extracted"
 msgstr "文本已提取"
 
 #: src/SpectacleCore.cpp:581
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "%1 and %2"
+msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 和 %2"
 
@@ -2447,20 +2483,28 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 参数的有效模式"
 
 #: src/SpectacleCore.cpp:1237
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:1241
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "截图已保存到你的图片文件夹，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "截图已保存到文件夹“%2”，文件名为“%1”。"
 
@@ -2470,20 +2514,28 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "屏幕截图已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:1253
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A recording was saved as '%1' to '%2' and the file path of the recording "
+#| "has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "屏幕录像已经使用名称“%1”保存到了“%2”，该录像的文件路径已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:1255
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A recording was saved as '%1' to your Videos folder."
+msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "录像已保存到你的视频文件夹，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A recording was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "录像已保存到文件夹“%2”，文件名为“%1”。"
 

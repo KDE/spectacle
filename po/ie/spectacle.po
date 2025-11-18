@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-18 00:45+0000\n"
 "PO-Revision-Date: 2024-08-04 16:55+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -194,7 +194,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "Aperter li contenent fólder"
 
 #: src/ExportManager.cpp:459
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QImageWriter cannot write image: %1"
+msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter ne successat scrir un image: %1"
 
@@ -259,7 +261,7 @@ msgstr "Copiar li localisation de file al Paperiere"
 
 #: src/ExportManager.cpp:866
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Gardar"
 
@@ -1093,7 +1095,11 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Capturar un fenestre sub li apuntator"
 
 #: src/Gui/RecordingView.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Recording:\n"
+#| "%1"
+msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
@@ -1906,7 +1912,9 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1×%2"
+msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
 
@@ -1960,7 +1968,7 @@ msgstr "Scale:"
 
 #: src/Gui/ViewerWindow.cpp:51
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Image sta partit"
 
@@ -2026,7 +2034,7 @@ msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
@@ -2034,7 +2042,7 @@ msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
@@ -2043,7 +2051,7 @@ msgstr ""
 #: src/Platforms/ImagePlatformKWin.cpp:158
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
-msgctxt "@info"
+msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
@@ -2057,7 +2065,7 @@ msgstr "Aperter li contenent fólder"
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr ""
 "Ne successat gardar li captura pro que li creation del lontan fólder ne "
@@ -2065,7 +2073,7 @@ msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
 #, fuzzy, kde-format
-msgctxt "@info"
+msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
@@ -2139,19 +2147,19 @@ msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
 #, fuzzy, kde-format
-msgctxt "@info:shell"
+msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Gardar it al fólder predefinit"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
 #, fuzzy, kde-format
-msgctxt "@info:shell"
+msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Gardar it al fólder predefinit"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
 #, fuzzy, kde-format
-msgctxt "@info:shell"
+msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Aperter li contenent fólder"
 
@@ -2168,14 +2176,18 @@ msgid "Window recording canceled"
 msgstr "Ne successat selecter un fenestre: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select screen: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Ne successat selecter un ecran: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select window: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Ne successat selecter un fenestre: %1"
 
@@ -2474,7 +2486,7 @@ msgstr ""
 
 #: src/SpectacleCore.cpp:581
 #, kde-format
-msgctxt "@info"
+msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
@@ -2526,19 +2538,24 @@ msgstr "%1 ne es un valid mode por --record"
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
 #| "screenshot has been copied to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr "OIS"
 
 #: src/SpectacleCore.cpp:1241
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Li captura sta gardat quam «%1» a vor fólder de images."
 
 #: src/SpectacleCore.cpp:1244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
@@ -2552,19 +2569,24 @@ msgstr "OIS"
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
 #| "screenshot has been copied to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr "mistresssilvara@hotmail.com"
 
 #: src/SpectacleCore.cpp:1255
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A recording was saved as '%1' to your Videos folder."
+msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Li registration sta gardat quam «%1» a vor fólder Videos."
 
 #: src/SpectacleCore.cpp:1257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A recording was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 

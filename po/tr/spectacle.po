@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-18 00:45+0000\n"
 "PO-Revision-Date: 2025-11-12 17:33+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -196,7 +196,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "Var olan ekran görüntüsü dosyasını aç ve düzenle"
 
 #: src/ExportManager.cpp:459
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "QImageWriter cannot write image: %1"
+msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter görseli yazamıyor: %1"
 
@@ -264,8 +266,10 @@ msgstr ""
 "bir URL olmalıdır"
 
 #: src/ExportManager.cpp:866
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Unable to save recording. Could not move file to location: %1"
+msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kayıt kaydedilemiyor. Dosya, şu konuma taşınamadı: %1"
 
@@ -1064,7 +1068,11 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Ekran kaydında fare imlecini göster"
 
 #: src/Gui/RecordingView.qml:87
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Recording:\n"
+#| "%1"
+msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
@@ -1887,7 +1895,9 @@ msgid "Escape"
 msgstr "Kaçış"
 
 #: src/Gui/SizeLabel.qml:13
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1×%2"
+msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1 × %2"
 
@@ -1940,8 +1950,10 @@ msgid "Image Zoom"
 msgstr "Görsele Yakınlaştır"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "There was a problem sharing the image: %1"
+msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Görsel paylaşılırken bir sorun oluştu: %1"
 
@@ -2009,20 +2021,26 @@ msgid "Orientation and Script Detection"
 msgstr "Yönelim ve yazı algılaması"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için hatalı genişlik: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:147
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad height for KWin screenshot: %1"
+msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için hatalı yükseklik: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:158
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Bad format for KWin screenshot: %1"
+msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için hatalı biçim: %1"
 
@@ -2033,14 +2051,20 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "KWin ekran görüntüsü için olan dosya açıklayıcısı açılamadı."
 
 #: src/Platforms/ImagePlatformKWin.cpp:244
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "pipe2() failed for KWin screenshot: %1"
+msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için pipe2() başarısız oldu: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:300
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid ""
+#| "KWin screenshot request failed:\n"
+#| "%1"
+msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
@@ -2111,20 +2135,26 @@ msgstr ""
 "biçimde değiştirildi."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Kaydedilemedi: Geçici dosya URL’si yerel bir dosya değil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Output file URL is not a local file (%1)"
+msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Kaydedilemedi: Çıktı dosyası URL’si yerel bir dosya değil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to record: Unable to create folder (%1)"
+msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Kaydedilemedi: Klasör oluşturulamıyor (%1)"
 
@@ -2141,14 +2171,18 @@ msgid "Window recording canceled"
 msgstr "Pencere kaydı iptal edildi"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select screen: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Ekran seçilemedi: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, kde-format
-msgctxt "@info:shell"
+#, fuzzy, kde-format
+#| msgctxt "@info:shell"
+#| msgid "Failed to select window: %1"
+msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Pencere seçilemedi: %1"
 
@@ -2438,8 +2472,10 @@ msgid "Text Extracted"
 msgstr "Metin Çıkarıldı"
 
 #: src/SpectacleCore.cpp:581
-#, kde-format
-msgctxt "@info"
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "%1 and %2"
+msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 ve %2"
 
@@ -2486,7 +2522,11 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1, --record için geçerli bir kip değil"
 
 #: src/SpectacleCore.cpp:1237
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A screenshot was saved as '%1' to '%2' and the file path of the "
+#| "screenshot has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
@@ -2495,13 +2535,17 @@ msgstr ""
 "görüntüsünün dosya yolu panoya kaydedildi."
 
 #: src/SpectacleCore.cpp:1241
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Bir ekran görüntüsü Resimler klasörüne “%1” olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:1244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A screenshot was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Bir ekran görüntüsü “%2” klasörüne “%1” olarak kaydedildi."
 
@@ -2511,7 +2555,11 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Bir ekran görüntüsü panoya kopyalandı."
 
 #: src/SpectacleCore.cpp:1253
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "A recording was saved as '%1' to '%2' and the file path of the recording "
+#| "has been saved to your clipboard."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
@@ -2520,13 +2568,17 @@ msgstr ""
 "kaydedildi."
 
 #: src/SpectacleCore.cpp:1255
-#, kde-format
-msgctxt "Placeholder is filename"
+#, fuzzy, kde-format
+#| msgctxt "Placeholder is filename"
+#| msgid "A recording was saved as '%1' to your Videos folder."
+msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Bir kayıt Videolar klasörüne “%1” olarak kaydedildi."
 
 #: src/SpectacleCore.cpp:1257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A recording was saved as '%1' to '%2'."
+msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Bir kayıt “%2” klasörüne “%1” olarak kaydedildi."
 
