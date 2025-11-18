@@ -144,7 +144,7 @@ EmptyPage {
         }
         Component {
             id: screenshotViewComponent
-            ScreenshotView { showCropTool: annotationsToolBarContents.usingCropTool }
+            ScreenshotView {}
         }
     }
 

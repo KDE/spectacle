@@ -18,7 +18,6 @@ EmptyPage {
     readonly property real minZoom: Math.min(fitZoom, 1)
     readonly property real maxZoom: Math.max(minZoom, 8)
     readonly property real currentZoom: annotationEditor.scale
-    property bool showCropTool: false
 
     function zoomToPercent(percent, center = flickable.mapToItem(flickable.contentItem,
                                                                  flickable.width / 2,
@@ -182,7 +181,8 @@ EmptyPage {
             transformOrigin: annotationEditor.transformOrigin
             scale: annotationEditor.scale
             viewport: annotationEditor
-            active: root.showCropTool && contextWindow.annotating
+            active: contextWindow.annotating
+                && SpectacleCore.annotationDocument.tool.type === AnnotationTool.CropTool
         }
 
         AnimatedLoader {
