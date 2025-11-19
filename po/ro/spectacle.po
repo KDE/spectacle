@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-18 00:45+0000\n"
+"POT-Creation-Date: 2025-11-19 00:45+0000\n"
 "PO-Revision-Date: 2025-10-05 02:37+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -566,67 +566,67 @@ msgstr "Numărul pentru adnotări cu număr"
 msgid "Shadow"
 msgstr "Umbră"
 
-#: src/Gui/AnnotationsToolBarContents.qml:110
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
 msgstr "Niciuna"
 
-#: src/Gui/AnnotationsToolBarContents.qml:122
+#: src/Gui/AnnotationsToolBarContents.qml:119
 #, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
 msgstr "Decupează"
 
-#: src/Gui/AnnotationsToolBarContents.qml:132
+#: src/Gui/AnnotationsToolBarContents.qml:126
 #, kde-format
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
 msgstr "Alege"
 
-#: src/Gui/AnnotationsToolBarContents.qml:141
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "Linie liberă"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
 msgstr "Shift: Limitează la linii drepte"
 
-#: src/Gui/AnnotationsToolBarContents.qml:149
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
 msgstr "Evidențiator"
 
-#: src/Gui/AnnotationsToolBarContents.qml:158
+#: src/Gui/AnnotationsToolBarContents.qml:152
 #, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
 msgstr "Linie"
 
-#: src/Gui/AnnotationsToolBarContents.qml:159
+#: src/Gui/AnnotationsToolBarContents.qml:153
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
 msgstr "Shift: Limitează la pas de 45 de grade"
 
-#: src/Gui/AnnotationsToolBarContents.qml:166
+#: src/Gui/AnnotationsToolBarContents.qml:160
 #, kde-format
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
 msgstr "Săgeată"
 
-#: src/Gui/AnnotationsToolBarContents.qml:175
+#: src/Gui/AnnotationsToolBarContents.qml:169
 #, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Dreptunghi"
 
-#: src/Gui/AnnotationsToolBarContents.qml:177
+#: src/Gui/AnnotationsToolBarContents.qml:171
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -636,31 +636,31 @@ msgstr ""
 "Shift: Limitează la mișcări diagonale\n"
 "Control: Redimensionează de la centru"
 
-#: src/Gui/AnnotationsToolBarContents.qml:184
+#: src/Gui/AnnotationsToolBarContents.qml:178
 #, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "Elipsă"
 
-#: src/Gui/AnnotationsToolBarContents.qml:192
+#: src/Gui/AnnotationsToolBarContents.qml:186
 #, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "Pixelează"
 
-#: src/Gui/AnnotationsToolBarContents.qml:200
+#: src/Gui/AnnotationsToolBarContents.qml:194
 #, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
 msgstr "Încețoșează"
 
-#: src/Gui/AnnotationsToolBarContents.qml:208
+#: src/Gui/AnnotationsToolBarContents.qml:202
 #, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
 msgstr "Text"
 
-#: src/Gui/AnnotationsToolBarContents.qml:215
+#: src/Gui/AnnotationsToolBarContents.qml:209
 #, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
@@ -1081,7 +1081,7 @@ msgstr "Înregistrare nouă"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Arată cursorul mausului în înregistrarea ecranului."
 
-#: src/Gui/RecordingView.qml:87
+#: src/Gui/RecordingView.qml:85
 #, fuzzy, kde-format
 #| msgid ""
 #| "Recording:\n"
@@ -1094,12 +1094,12 @@ msgstr ""
 "Înregistrare:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:126
+#: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Pause"
 msgstr "Întrerupe"
 
-#: src/Gui/RecordingView.qml:126
+#: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Play"
 msgstr "Redă"
@@ -1435,13 +1435,13 @@ msgid "Shortcuts"
 msgstr "Scurtături"
 
 #. i18n: ectx: label, entry (launchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:16
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Ce să se întâmple la lansarea Spectacle"
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:26
+#: src/Gui/SettingsDialog/spectacle.kcfg:25
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -1450,21 +1450,21 @@ msgstr ""
 "deja"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:35
+#: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Salvează automat captura după ce e făcută"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:39
-#: src/Gui/SettingsDialog/spectacle.kcfg:52
+#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Acțiunea de clipboard ce trebuie executată după captură"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:48
+#: src/Gui/SettingsDialog/spectacle.kcfg:47
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr ""
@@ -1472,7 +1472,7 @@ msgstr ""
 "regiunii"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:61
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1482,104 +1482,104 @@ msgstr ""
 "mausului"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:65
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Ține minte ultima regiune dreptunghiulară"
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
 msgstr ""
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:79
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Ultima regiune aleasă de utilizator"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Fă o captură la clic"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Dacă cursorul mausului să fie inclus în instantaneu"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Dacă cursorul mausului să fie inclus în video"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Dacă decorațiile ferestrei să fie incluse în instantaneu"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Dacă umbra ferestrei să fie incluse în instantaneu"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Capturează doar meniul contextual actual"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Termină după salvarea sau copierea unei imagini"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
 msgstr "Întârziere"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
-#: src/Gui/SettingsDialog/spectacle.kcfg:169
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
 #, kde-format
 msgid "Default filename"
 msgstr "Denumire fișier implicită"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:140
+#: src/Gui/SettingsDialog/spectacle.kcfg:139
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Calitatea compresiei pentru formate de fișier cu pierderi"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Capturi de ecran"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Default save image format"
 msgstr "Format implicit de salvare a imaginii"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Șablon pentru denumirea de fișier folosită la salvarea capturilor"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1587,213 +1587,43 @@ msgstr "Captură de ecran"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Calea ultimului fișier salvat"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Ultima cale folosită pentru acțiunea „salvează ca”"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
 msgid "Default video format"
 msgstr "Format video implicit"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Șablon pentru denumirea de fișier folosită la salvarea înregistrărilor"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Înregistrări de ecran"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Înregistrare de ecran"
-
-#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
-#, kde-format
-msgid "The last used annotation tool type"
-msgstr "Ultimul tip de unealtă de adnotare folosit"
-
-#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:214
-#, kde-format
-msgid "Stroke width for freehand annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu desen"
-
-#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
-#, kde-format
-msgid "Stroke width for highlighter annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu evidențiator"
-
-#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
-#, kde-format
-msgid "Stroke width for line annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu linie"
-
-#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:229
-#, kde-format
-msgid "Stroke width for arrow annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu săgeată"
-
-#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
-#, kde-format
-msgid "Stroke width for rectangle annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu dreptunghi"
-
-#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
-#, kde-format
-msgid "Stroke width for ellipse annotation tool"
-msgstr "Lățimea cursei pentru unealta de adnotare cu elipsă"
-
-#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
-#, kde-format
-msgid "Stroke color for freehand annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu desen"
-
-#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
-#, kde-format
-msgid "Stroke color for highlighter annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu evidențiator"
-
-#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
-#, kde-format
-msgid "Stroke color for line annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu linie"
-
-#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
-#, kde-format
-msgid "Stroke color for arrow annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu săgeată"
-
-#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
-#, kde-format
-msgid "Stroke color for rectangle annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu dreptunghi"
-
-#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
-#, kde-format
-msgid "Stroke color for ellipse annotation tool"
-msgstr "Culoarea cursei pentru unealta de adnotare cu elipsă"
-
-#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
-#, kde-format
-msgid "Fill color for rectangle annotation tool"
-msgstr "Culoarea de umplere pentru unealta de adnotare cu dreptunghi"
-
-#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
-#, kde-format
-msgid "Fill color for ellipse annotation tool"
-msgstr "Culoarea de umplere pentru unealta de adnotare cu elipsă"
-
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:278
-#, kde-format
-msgid "Fill color for number annotation tool"
-msgstr "Culoarea de umplere pentru unealta de adnotare cu număr"
-
-#. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:283
-#, kde-format
-msgid "The strength of the blur effect."
-msgstr "Intensitatea efectului de încețoșare."
-
-#. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
-#, kde-format
-msgid "The strength of the pixelate effect."
-msgstr "Intensitatea efectului de pixelizare."
-
-#. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:296
-#, kde-format
-msgid "Font for text annotations"
-msgstr "Font pentru adnotări textuale"
-
-#. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
-#, kde-format
-msgid "Font for number annotations"
-msgstr "Font pentru adnotări numerice"
-
-#. i18n: ectx: label, entry (textFontColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:303
-#: src/Gui/SettingsDialog/spectacle.kcfg:307
-#, kde-format
-msgid "Font color for annotations"
-msgstr "Culoarea fontului pentru adnotări"
-
-#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
-#, kde-format
-msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu desen lasă o umbră"
-
-#. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
-#, kde-format
-msgid "Whether line annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu linie lasă o umbră"
-
-#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
-#, kde-format
-msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu săgeată lasă o umbră"
-
-#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
-#, kde-format
-msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu dreptunghi lasă o umbră"
-
-#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
-#, kde-format
-msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu elipsă lasă o umbră"
-
-#. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
-#, kde-format
-msgid "Whether text annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu text lasă o umbră"
-
-#. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:336
-#, kde-format
-msgid "Whether number annotation tool has a drop shadow"
-msgstr "Dacă unealta de adnotare cu număr lasă o umbră"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
@@ -1956,12 +1786,12 @@ msgstr "Desfă"
 msgid "Redo"
 msgstr "Refă"
 
-#: src/Gui/ViewerPage.qml:190
+#: src/Gui/ViewerPage.qml:188
 #, kde-format
 msgid "Zoom:"
 msgstr "Apropiere:"
 
-#: src/Gui/ViewerPage.qml:204
+#: src/Gui/ViewerPage.qml:202
 #, kde-format
 msgid "Image Zoom"
 msgstr "Apropiere imagine"
@@ -2038,7 +1868,7 @@ msgstr ""
 msgid "Orientation and Script Detection"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:142
+#: src/Platforms/ImagePlatformKWin.cpp:143
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Bad width for KWin screenshot: %1"
@@ -2046,7 +1876,7 @@ msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Lățime eronată pentru captura KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:147
+#: src/Platforms/ImagePlatformKWin.cpp:148
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Bad height for KWin screenshot: %1"
@@ -2054,7 +1884,7 @@ msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Înălțime eronată pentru captura KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:158
+#: src/Platforms/ImagePlatformKWin.cpp:159
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Bad format for KWin screenshot: %1"
@@ -2062,14 +1892,14 @@ msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Format eronat pentru captura KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:176
+#: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 "Nu s-a putut deschide descriptorul de fișier pentru citirea capturii KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:244
+#: src/Platforms/ImagePlatformKWin.cpp:245
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "pipe2() failed for KWin screenshot: %1"
@@ -2077,7 +1907,7 @@ msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() a eșuat pentru captura KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:300
+#: src/Platforms/ImagePlatformKWin.cpp:301
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -2091,7 +1921,7 @@ msgstr ""
 "Cererea de captură de la KWin a eșuat:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:303
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2101,7 +1931,7 @@ msgstr ""
 "Informații potențial utile:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:310
+#: src/Platforms/ImagePlatformKWin.cpp:311
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -2307,25 +2137,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansează Spectacle fără a captura"
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "A intervenit o eroare la preluarea capturii."
 
-#: src/SpectacleCore.cpp:285
+#: src/SpectacleCore.cpp:279
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:290
+#: src/SpectacleCore.cpp:284
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle înregistrează"
 
-#: src/SpectacleCore.cpp:316
+#: src/SpectacleCore.cpp:310
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2333,7 +2163,7 @@ msgstr ""
 "Pentru a finaliza înregistrarea, apăsați pictograma roșie ce pulsează în "
 "tava de sistem."
 
-#: src/SpectacleCore.cpp:317
+#: src/SpectacleCore.cpp:311
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2343,13 +2173,13 @@ msgstr ""
 "Pentru a finaliza înregistrarea, apăsați pictograma roșie ce pulsează în "
 "tava de sistem sau apăsați <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:334
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Lipsește suportul pentru WebP."
 
-#: src/SpectacleCore.cpp:335
+#: src/SpectacleCore.cpp:329
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2360,25 +2190,25 @@ msgstr ""
 "sistem pentru Spectacle, apoi raportați acest defect de împachetare "
 "distribuitorului dumneavoastră."
 
-#: src/SpectacleCore.cpp:371
+#: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle finalizează înregistrarea"
 
-#: src/SpectacleCore.cpp:372
+#: src/SpectacleCore.cpp:366
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Așteptați"
 
-#: src/SpectacleCore.cpp:374
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle finalizează înregistrarea"
 
-#: src/SpectacleCore.cpp:376
+#: src/SpectacleCore.cpp:370
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2388,7 +2218,7 @@ msgstr ""
 "Durata înregistrată: %1\n"
 "Apăsați pentru a opri randarea prematur (se vor pierde date)"
 
-#: src/SpectacleCore.cpp:402
+#: src/SpectacleCore.cpp:396
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2398,13 +2228,13 @@ msgstr ""
 "Durata înregistrată: %1\n"
 "Apăsați pentru a încheia înregistrarea"
 
-#: src/SpectacleCore.cpp:427
+#: src/SpectacleCore.cpp:421
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "A intervenit o eroare la încercarea de a înregistra ecranul."
 
-#: src/SpectacleCore.cpp:469
+#: src/SpectacleCore.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2414,7 +2244,7 @@ msgstr ""
 "Captura de ecran a fost copiată în clipboard și salvată ca <link url=\"%1\">"
 "%2</link>"
 
-#: src/SpectacleCore.cpp:472
+#: src/SpectacleCore.cpp:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2424,19 +2254,19 @@ msgstr ""
 "Captura de ecran a fost salvată ca <link url=\"%1\">%2</link> și amplasarea "
 "acesteia a fost copiată în clipboard"
 
-#: src/SpectacleCore.cpp:475
+#: src/SpectacleCore.cpp:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Captura de ecran a fost salvată ca <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:473
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Captura de ecran a fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:510
+#: src/SpectacleCore.cpp:504
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2446,13 +2276,13 @@ msgstr ""
 "Videoclipul a fost salvat ca <link url=\"%1\">%2</link> și amplasarea "
 "acestuia a fost copiată în clipboard"
 
-#: src/SpectacleCore.cpp:513
+#: src/SpectacleCore.cpp:507
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Videoclipul a fost salvat ca <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:517
+#: src/SpectacleCore.cpp:511
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2461,68 +2291,68 @@ msgstr "Amplasarea fișierului video a fost copiată în clipboard."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:531
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Cod QR găsit: %1"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "A fost găsit cod QR cu conținut binar."
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:544
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:556
+#: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr ""
 
-#: src/SpectacleCore.cpp:561
+#: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:564
+#: src/SpectacleCore.cpp:558
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:581
+#: src/SpectacleCore.cpp:575
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
-#: src/SpectacleCore.cpp:586
+#: src/SpectacleCore.cpp:580
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Copiază imaginea în clipboard"
 
-#: src/SpectacleCore.cpp:591
+#: src/SpectacleCore.cpp:585
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:722
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2530,7 +2360,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Difuzarea ecranului KWin nu e disponibilă."
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:728
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2538,19 +2368,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Difuzarea ecranului KWin nu e disponibilă."
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:996
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nu e un regim valid pentru --record"
 
-#: src/SpectacleCore.cpp:1237
+#: src/SpectacleCore.cpp:1231
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2563,7 +2393,7 @@ msgstr ""
 "Captura de ecran a fost salvată ca „%1” în „%2” și amplasarea acesteia a "
 "fost copiată în clipboard."
 
-#: src/SpectacleCore.cpp:1241
+#: src/SpectacleCore.cpp:1235
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2571,19 +2401,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
-#: src/SpectacleCore.cpp:1244
+#: src/SpectacleCore.cpp:1238
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:1248
+#: src/SpectacleCore.cpp:1242
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
-#: src/SpectacleCore.cpp:1253
+#: src/SpectacleCore.cpp:1247
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2596,7 +2426,7 @@ msgstr ""
 "O înregistrare a fost salvată ca „%1” în „%2” și amplasarea acesteia a fost "
 "copiată în clipboard."
 
-#: src/SpectacleCore.cpp:1255
+#: src/SpectacleCore.cpp:1249
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2604,20 +2434,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "O înregistrare a fost salvată ca „%1” în dosarul Video."
 
-#: src/SpectacleCore.cpp:1257
+#: src/SpectacleCore.cpp:1251
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "O înregistrare a fost salvată ca „%1” în „%2”."
 
-#: src/SpectacleCore.cpp:1268
+#: src/SpectacleCore.cpp:1262
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Deschide"
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1276
 #, kde-format
 msgid "Annotate"
 msgstr "Adnotează"
@@ -2645,6 +2475,90 @@ msgstr "WebP animat (mai bun decât GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatibil dar ineficient)"
+
+#~ msgid "The last used annotation tool type"
+#~ msgstr "Ultimul tip de unealtă de adnotare folosit"
+
+#~ msgid "Stroke width for freehand annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu desen"
+
+#~ msgid "Stroke width for highlighter annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu evidențiator"
+
+#~ msgid "Stroke width for line annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu linie"
+
+#~ msgid "Stroke width for arrow annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu săgeată"
+
+#~ msgid "Stroke width for rectangle annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu dreptunghi"
+
+#~ msgid "Stroke width for ellipse annotation tool"
+#~ msgstr "Lățimea cursei pentru unealta de adnotare cu elipsă"
+
+#~ msgid "Stroke color for freehand annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu desen"
+
+#~ msgid "Stroke color for highlighter annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu evidențiator"
+
+#~ msgid "Stroke color for line annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu linie"
+
+#~ msgid "Stroke color for arrow annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu săgeată"
+
+#~ msgid "Stroke color for rectangle annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu dreptunghi"
+
+#~ msgid "Stroke color for ellipse annotation tool"
+#~ msgstr "Culoarea cursei pentru unealta de adnotare cu elipsă"
+
+#~ msgid "Fill color for rectangle annotation tool"
+#~ msgstr "Culoarea de umplere pentru unealta de adnotare cu dreptunghi"
+
+#~ msgid "Fill color for ellipse annotation tool"
+#~ msgstr "Culoarea de umplere pentru unealta de adnotare cu elipsă"
+
+#~ msgid "Fill color for number annotation tool"
+#~ msgstr "Culoarea de umplere pentru unealta de adnotare cu număr"
+
+#~ msgid "The strength of the blur effect."
+#~ msgstr "Intensitatea efectului de încețoșare."
+
+#~ msgid "The strength of the pixelate effect."
+#~ msgstr "Intensitatea efectului de pixelizare."
+
+#~ msgid "Font for text annotations"
+#~ msgstr "Font pentru adnotări textuale"
+
+#~ msgid "Font for number annotations"
+#~ msgstr "Font pentru adnotări numerice"
+
+#~ msgid "Font color for annotations"
+#~ msgstr "Culoarea fontului pentru adnotări"
+
+#~ msgid "Whether freehand annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu desen lasă o umbră"
+
+#~ msgid "Whether line annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu linie lasă o umbră"
+
+#~ msgid "Whether arrow annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu săgeată lasă o umbră"
+
+#~ msgid "Whether rectangle annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu dreptunghi lasă o umbră"
+
+#~ msgid "Whether ellipse annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu elipsă lasă o umbră"
+
+#~ msgid "Whether text annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu text lasă o umbră"
+
+#~ msgid "Whether number annotation tool has a drop shadow"
+#~ msgstr "Dacă unealta de adnotare cu număr lasă o umbră"
 
 #~ msgid "Show capture instructions"
 #~ msgstr "Arată instrucțiuni de capturare"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-18 00:45+0000\n"
-"PO-Revision-Date: 2025-11-12 18:21+0200\n"
+"POT-Creation-Date: 2025-11-19 00:45+0000\n"
+"PO-Revision-Date: 2025-11-18 09:57+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -202,8 +202,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Відкрити і редагувати наявний файл знімка вікна"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter не вдалося записати зображення: %1"
@@ -276,9 +275,7 @@ msgstr ""
 "коректною адресою з назвою файла"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
@@ -570,67 +567,67 @@ msgstr "Кількість нумерованих анотацій"
 msgid "Shadow"
 msgstr "Тінь"
 
-#: src/Gui/AnnotationsToolBarContents.qml:110
+#: src/Gui/AnnotationsToolBarContents.qml:107
 #, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
 msgstr "Немає"
 
-#: src/Gui/AnnotationsToolBarContents.qml:122
+#: src/Gui/AnnotationsToolBarContents.qml:119
 #, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
 msgstr "Обрізання"
 
-#: src/Gui/AnnotationsToolBarContents.qml:132
+#: src/Gui/AnnotationsToolBarContents.qml:126
 #, kde-format
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
 msgstr "Позначення"
 
-#: src/Gui/AnnotationsToolBarContents.qml:141
+#: src/Gui/AnnotationsToolBarContents.qml:135
 #, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "Довільний контур"
 
-#: src/Gui/AnnotationsToolBarContents.qml:142
+#: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
 msgstr "Shift: прилипання до прямих"
 
-#: src/Gui/AnnotationsToolBarContents.qml:149
+#: src/Gui/AnnotationsToolBarContents.qml:143
 #, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
-#: src/Gui/AnnotationsToolBarContents.qml:158
+#: src/Gui/AnnotationsToolBarContents.qml:152
 #, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
 msgstr "Пряма"
 
-#: src/Gui/AnnotationsToolBarContents.qml:159
+#: src/Gui/AnnotationsToolBarContents.qml:153
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
 msgstr "Shift: прилипання до напрямків з кроком у 45 градусів"
 
-#: src/Gui/AnnotationsToolBarContents.qml:166
+#: src/Gui/AnnotationsToolBarContents.qml:160
 #, kde-format
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
 msgstr "Стрілка"
 
-#: src/Gui/AnnotationsToolBarContents.qml:175
+#: src/Gui/AnnotationsToolBarContents.qml:169
 #, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "Прямокутник"
 
-#: src/Gui/AnnotationsToolBarContents.qml:177
+#: src/Gui/AnnotationsToolBarContents.qml:171
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -641,31 +638,31 @@ msgstr ""
 "\n"
 "Ctrl: змінити розміри від центра"
 
-#: src/Gui/AnnotationsToolBarContents.qml:184
+#: src/Gui/AnnotationsToolBarContents.qml:178
 #, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "Еліпс"
 
-#: src/Gui/AnnotationsToolBarContents.qml:192
+#: src/Gui/AnnotationsToolBarContents.qml:186
 #, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "Пікселізація"
 
-#: src/Gui/AnnotationsToolBarContents.qml:200
+#: src/Gui/AnnotationsToolBarContents.qml:194
 #, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
 msgstr "Розмивання"
 
-#: src/Gui/AnnotationsToolBarContents.qml:208
+#: src/Gui/AnnotationsToolBarContents.qml:202
 #, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
 msgstr "Текст"
 
-#: src/Gui/AnnotationsToolBarContents.qml:215
+#: src/Gui/AnnotationsToolBarContents.qml:209
 #, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
@@ -1087,11 +1084,8 @@ msgstr "Новий запис"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Показувати вказівник миші на записі з екрана."
 
-#: src/Gui/RecordingView.qml:87
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#: src/Gui/RecordingView.qml:85
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1100,12 +1094,12 @@ msgstr ""
 "Запис:\n"
 "%1"
 
-#: src/Gui/RecordingView.qml:126
+#: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/Gui/RecordingView.qml:126
+#: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Play"
 msgstr "Пуск"
@@ -1442,13 +1436,13 @@ msgid "Shortcuts"
 msgstr "Скорочення"
 
 #. i18n: ectx: label, entry (launchAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:16
+#: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
 msgstr "Дія, яку слід виконати після запуску Spectacle"
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:26
+#: src/Gui/SettingsDialog/spectacle.kcfg:25
 #, kde-format
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
@@ -1457,21 +1451,21 @@ msgstr ""
 "Spectacle вже запущено"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:35
+#: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
 msgstr "Автоматичне збереження знімка після його створення"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:39
-#: src/Gui/SettingsDialog/spectacle.kcfg:52
+#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Дія з буфером обміну, яку слід виконати після створення знімка"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:48
+#: src/Gui/SettingsDialog/spectacle.kcfg:47
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr ""
@@ -1479,7 +1473,7 @@ msgstr ""
 "ділянки"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:61
+#: src/Gui/SettingsDialog/spectacle.kcfg:60
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1489,105 +1483,105 @@ msgstr ""
 "відпускання кнопки миші"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:65
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Чи слід запам'ятовувати останню прямокутну ділянку"
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:74
+#: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
 msgstr "Типова мова для розпізнавання тексту"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:80
+#: src/Gui/SettingsDialog/spectacle.kcfg:79
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Остання використаний користувачем ділянка"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:84
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Чи слід робити знімок вікна у відповідь на клацання кнопкою миші"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:88
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Чи слід включати вказівник миші до знімка"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:92
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Чи слід включати вказівник миші до відео"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:96
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Визначає, чи слід включати до знімка вікна його обрамлення"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:100
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Визначає, чи слід включати до знімка вікна його тінь"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:104
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Чи слід захоплювати лише поточне контекстне вікно"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:108
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr ""
 "Чи слід виходити зі Spectacle після збереження або копіювання зображення"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:112
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
 msgstr "Затримка"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
-#: src/Gui/SettingsDialog/spectacle.kcfg:169
+#: src/Gui/SettingsDialog/spectacle.kcfg:122
+#: src/Gui/SettingsDialog/spectacle.kcfg:168
 #, kde-format
 msgid "Default filename"
 msgstr "Типова назва файла"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:140
+#: src/Gui/SettingsDialog/spectacle.kcfg:139
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Якість стискання файлів у форматах із втратою даних"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:145
+#: src/Gui/SettingsDialog/spectacle.kcfg:144
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
 msgstr "Знімки вікон"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Default save image format"
 msgstr "Типовий формат зберігання зображень"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:152
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Шаблон назви файла, який буде використано під час зберігання знімків"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:157
+#: src/Gui/SettingsDialog/spectacle.kcfg:156
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
@@ -1595,214 +1589,44 @@ msgstr "Знімок"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
-#: src/Gui/SettingsDialog/spectacle.kcfg:198
+#: src/Gui/SettingsDialog/spectacle.kcfg:158
+#: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Шлях до останнього збереженого файла"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Останній шлях, який було використано для дії «Зберегти як»"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:186
+#: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
 msgid "Default video format"
 msgstr "Типовий формат відео"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr ""
 "Шаблон назви файла, який буде використано під час зберігання записі з екрана"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:191
+#: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
 msgstr "Трансляції з екрана"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:196
+#: src/Gui/SettingsDialog/spectacle.kcfg:195
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
 msgstr "Трансляція"
-
-#. i18n: ectx: label, entry (annotationToolType), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:208
-#, kde-format
-msgid "The last used annotation tool type"
-msgstr "Тип останнього використаного засобу анотування"
-
-#. i18n: ectx: label, entry (freehandStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:214
-#, kde-format
-msgid "Stroke width for freehand annotation tool"
-msgstr "Товщина штриха для засобу анотування довільною лінією"
-
-#. i18n: ectx: label, entry (highlighterStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:219
-#, kde-format
-msgid "Stroke width for highlighter annotation tool"
-msgstr "Товщина штриха для засобу анотування підсвічуванням"
-
-#. i18n: ectx: label, entry (lineStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:224
-#, kde-format
-msgid "Stroke width for line annotation tool"
-msgstr "Товщина штриха для засобу анотування прямою лінією"
-
-#. i18n: ectx: label, entry (arrowStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:229
-#, kde-format
-msgid "Stroke width for arrow annotation tool"
-msgstr "Товщина штриха для засобу анотування стрілочкою"
-
-#. i18n: ectx: label, entry (rectangleStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:234
-#, kde-format
-msgid "Stroke width for rectangle annotation tool"
-msgstr "Товщина штриха для засобу анотування прямокутником"
-
-#. i18n: ectx: label, entry (ellipseStrokeWidth), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:239
-#, kde-format
-msgid "Stroke width for ellipse annotation tool"
-msgstr "Товщина штриха для засобу анотування еліпсом"
-
-#. i18n: ectx: label, entry (freehandStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:245
-#, kde-format
-msgid "Stroke color for freehand annotation tool"
-msgstr "Колір штриха для засобу анотування довільною лінією"
-
-#. i18n: ectx: label, entry (highlighterStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:249
-#, kde-format
-msgid "Stroke color for highlighter annotation tool"
-msgstr "Колір штриха для засобу анотування підсвічуванням"
-
-#. i18n: ectx: label, entry (lineStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:253
-#, kde-format
-msgid "Stroke color for line annotation tool"
-msgstr "Колір штриха для засобу анотування прямою лінією"
-
-#. i18n: ectx: label, entry (arrowStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:257
-#, kde-format
-msgid "Stroke color for arrow annotation tool"
-msgstr "Колір штриха для засобу анотування стрілочкою"
-
-#. i18n: ectx: label, entry (rectangleStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:261
-#, kde-format
-msgid "Stroke color for rectangle annotation tool"
-msgstr "Колір штриха для засобу анотування прямокутником"
-
-#. i18n: ectx: label, entry (ellipseStrokeColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:265
-#, kde-format
-msgid "Stroke color for ellipse annotation tool"
-msgstr "Колір штриха для засобу анотування еліпсом"
-
-#. i18n: ectx: label, entry (rectangleFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:270
-#, kde-format
-msgid "Fill color for rectangle annotation tool"
-msgstr "Колір заповнення для засобу анотування прямокутником"
-
-#. i18n: ectx: label, entry (ellipseFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:274
-#, kde-format
-msgid "Fill color for ellipse annotation tool"
-msgstr "Колір заповнення для засобу анотування еліпсом"
-
-#. i18n: ectx: label, entry (numberFillColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:278
-#, kde-format
-msgid "Fill color for number annotation tool"
-msgstr "Колір заповнення для засобу анотування числами"
-
-#. i18n: ectx: label, entry (blurStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:283
-#, kde-format
-msgid "The strength of the blur effect."
-msgstr "Потужність ефекту розмивання."
-
-#. i18n: ectx: label, entry (pixelateStrength), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:289
-#, kde-format
-msgid "The strength of the pixelate effect."
-msgstr "Потужність ефекту пікселізації."
-
-#. i18n: ectx: label, entry (textFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:296
-#, kde-format
-msgid "Font for text annotations"
-msgstr "Шрифт для текстових анотацій"
-
-#. i18n: ectx: label, entry (numberFont), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:299
-#, kde-format
-msgid "Font for number annotations"
-msgstr "Шрифт для числових анотацій"
-
-#. i18n: ectx: label, entry (textFontColor), group (Annotations)
-#. i18n: ectx: label, entry (numberFontColor), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:303
-#: src/Gui/SettingsDialog/spectacle.kcfg:307
-#, kde-format
-msgid "Font color for annotations"
-msgstr "Колір шрифту для анотацій"
-
-#. i18n: ectx: label, entry (freehandShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:312
-#, kde-format
-msgid "Whether freehand annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування довільною лінією тіні"
-
-#. i18n: ectx: label, entry (lineShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:316
-#, kde-format
-msgid "Whether line annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування прямою тіні"
-
-#. i18n: ectx: label, entry (arrowShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:320
-#, kde-format
-msgid "Whether arrow annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування стрілкою тіні"
-
-#. i18n: ectx: label, entry (rectangleShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:324
-#, kde-format
-msgid "Whether rectangle annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування прямокутником тіні"
-
-#. i18n: ectx: label, entry (ellipseShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:328
-#, kde-format
-msgid "Whether ellipse annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування еліпсом тіні"
-
-#. i18n: ectx: label, entry (textShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:332
-#, kde-format
-msgid "Whether text annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування текстом тіні від символів"
-
-#. i18n: ectx: label, entry (numberShadow), group (Annotations)
-#: src/Gui/SettingsDialog/spectacle.kcfg:336
-#, kde-format
-msgid "Whether number annotation tool has a drop shadow"
-msgstr "Чи слід використовувати у засобі анотування номерами тіні"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
@@ -1919,8 +1743,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1967,20 +1790,18 @@ msgstr "Скасувати"
 msgid "Redo"
 msgstr "Повторити"
 
-#: src/Gui/ViewerPage.qml:190
+#: src/Gui/ViewerPage.qml:188
 #, kde-format
 msgid "Zoom:"
 msgstr "Масштаб:"
 
-#: src/Gui/ViewerPage.qml:204
+#: src/Gui/ViewerPage.qml:202
 #, kde-format
 msgid "Image Zoom"
 msgstr "Масштаб зображення"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Під час спроби оприлюднити зображення виникли проблеми: %1"
@@ -2049,50 +1870,38 @@ msgstr "Виявлення формул"
 msgid "Orientation and Script Detection"
 msgstr "Виявлення орієнтації та писемності"
 
-#: src/Platforms/ImagePlatformKWin.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:143
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Помилкова ширина знімка KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:147
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:148
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Помилкова висота знімка KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:158
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:159
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Помилковий формат знімка KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:176
+#: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Не вдалося відкрити дескриптор файла для читання знімка KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:244
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:245
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "Помилка pipe2() для знімка KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:300
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#: src/Platforms/ImagePlatformKWin.cpp:301
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -2101,7 +1910,7 @@ msgstr ""
 "Спроба запиту щодо знімка KWin зазнала невдачі:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:303
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2111,7 +1920,7 @@ msgstr ""
 "Потенційно пов'язані дані:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:310
+#: src/Platforms/ImagePlatformKWin.cpp:311
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -2166,25 +1975,19 @@ msgstr ""
 "було змінено у спосіб, який призводить до переривання запису."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса тимчасового файла не є локальною (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Не вдалося записати: адреса файла виведення даних не є локальною (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Не вдалося записати: не вдалося створити теку (%1)"
@@ -2202,17 +2005,13 @@ msgid "Window recording canceled"
 msgstr "Запис з вікна скасовано"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Не вдалося вибрати екран: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Не вдалося вибрати вікно: %1"
@@ -2314,25 +2113,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Запустити Spectacle без створення знімка"
 
-#: src/SpectacleCore.cpp:256
+#: src/SpectacleCore.cpp:250
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Під час спроби створення знімка сталася помилка."
 
-#: src/SpectacleCore.cpp:285
+#: src/SpectacleCore.cpp:279
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записує відео"
 
-#: src/SpectacleCore.cpp:290
+#: src/SpectacleCore.cpp:284
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записує відео"
 
-#: src/SpectacleCore.cpp:316
+#: src/SpectacleCore.cpp:310
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2340,7 +2139,7 @@ msgstr ""
 "Щоб завершити записування, натисніть у системному лотку червону піктограму, "
 "що блимає"
 
-#: src/SpectacleCore.cpp:317
+#: src/SpectacleCore.cpp:311
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2350,13 +2149,13 @@ msgstr ""
 "Щоб завершити записування, натисніть у системному лотку червону піктограму, "
 "що блимає, або натисніть <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:334
+#: src/SpectacleCore.cpp:328
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Немає підтримки WebP."
 
-#: src/SpectacleCore.cpp:335
+#: src/SpectacleCore.cpp:329
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2367,25 +2166,25 @@ msgstr ""
 "анімовані піктограми у системному лотку для Spectacle, а потім повідомте про "
 "цю проблему пакування авторам вашого дистрибутива."
 
-#: src/SpectacleCore.cpp:371
+#: src/SpectacleCore.cpp:365
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:372
+#: src/SpectacleCore.cpp:366
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Будь ласка, зачекайте"
 
-#: src/SpectacleCore.cpp:374
+#: src/SpectacleCore.cpp:368
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завершує записування відео"
 
-#: src/SpectacleCore.cpp:376
+#: src/SpectacleCore.cpp:370
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2395,7 +2194,7 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити обробку передчасно (із втратою даних)"
 
-#: src/SpectacleCore.cpp:402
+#: src/SpectacleCore.cpp:396
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2405,13 +2204,13 @@ msgstr ""
 "Тривалість запису: %1\n"
 "Клацніть, щоб завершити записування"
 
-#: src/SpectacleCore.cpp:427
+#: src/SpectacleCore.cpp:421
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Під час спроби запису з екрана сталася помилка."
 
-#: src/SpectacleCore.cpp:469
+#: src/SpectacleCore.cpp:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2421,7 +2220,7 @@ msgstr ""
 "Знімок було скопійовано до буфера обміну даними і збережено як <link url="
 "\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:472
+#: src/SpectacleCore.cpp:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2431,19 +2230,19 @@ msgstr ""
 "Знімок вікна було збережено як <link url=\"%1\">%2</link>, а адресу файла "
 "було ск and its location has been copied to clipboard"
 
-#: src/SpectacleCore.cpp:475
+#: src/SpectacleCore.cpp:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Знімок було збережено як <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:473
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Знімок вікна було скопійовано до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:510
+#: src/SpectacleCore.cpp:504
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2453,13 +2252,13 @@ msgstr ""
 "Відео було збережено як <link url=\"%1\">%2</link>, а адресу файла було ск "
 "and its location has been copied to clipboard"
 
-#: src/SpectacleCore.cpp:513
+#: src/SpectacleCore.cpp:507
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Відео було збережено як <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:517
+#: src/SpectacleCore.cpp:511
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2468,97 +2267,92 @@ msgstr "Розташування відео було скопійовано до
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:531
 #, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "Виявлено QR-код: %1"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Виявлено QR-код із двійковим вмістом."
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:544
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Не вдалося видобути текст"
 
-#: src/SpectacleCore.cpp:556
+#: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "На зображенні не знайдено тексту"
 
-#: src/SpectacleCore.cpp:561
+#: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Видобування тексту завершено"
 
-#: src/SpectacleCore.cpp:564
+#: src/SpectacleCore.cpp:558
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Текст видобуто"
 
-#: src/SpectacleCore.cpp:581
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "%1 and %2"
+#: src/SpectacleCore.cpp:575
+#, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 і %2"
 
-#: src/SpectacleCore.cpp:586
+#: src/SpectacleCore.cpp:580
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgstr "Текст скопійовано до буфера обміну.<nl/>Виявлені мови: %1"
 
-#: src/SpectacleCore.cpp:591
+#: src/SpectacleCore.cpp:585
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Відкрити у текстовому редакторі"
 
-#: src/SpectacleCore.cpp:706
+#: src/SpectacleCore.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Будь ласка, позначте ділянку, перш ніж видобувати текстові дані"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:722
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Розпізнавання тексту недоступне."
 
-#: src/SpectacleCore.cpp:734
+#: src/SpectacleCore.cpp:728
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Немає знімка екрана."
 
-#: src/SpectacleCore.cpp:738
+#: src/SpectacleCore.cpp:732
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Видобування тексту з зображення…"
 
-#: src/SpectacleCore.cpp:1002
+#: src/SpectacleCore.cpp:996
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не є коректним режимом для --record"
 
-#: src/SpectacleCore.cpp:1237
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#: src/SpectacleCore.cpp:1231
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2567,31 +2361,25 @@ msgstr ""
 "Знімок вікна було збережено як «%1» до «%2», а шлях до файла знімка вікна "
 "було збережено у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:1241
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#: src/SpectacleCore.cpp:1235
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Знімок було збережено як «%1» до вашої теки «Картинки»."
 
-#: src/SpectacleCore.cpp:1244
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#: src/SpectacleCore.cpp:1238
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Знімок було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1248
+#: src/SpectacleCore.cpp:1242
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Знімок було збережено до буфера обміну даними."
 
-#: src/SpectacleCore.cpp:1253
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#: src/SpectacleCore.cpp:1247
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2600,28 +2388,25 @@ msgstr ""
 "Запис було збережено як «%1» до «%2», а шлях до файла запису було збережено "
 "у буфері обміну даними системи."
 
-#: src/SpectacleCore.cpp:1255
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#: src/SpectacleCore.cpp:1249
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запис було збережено як «%1» до вашої теки «Відео»."
 
-#: src/SpectacleCore.cpp:1257
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#: src/SpectacleCore.cpp:1251
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запис було збережено як «%1» до «%2»."
 
-#: src/SpectacleCore.cpp:1268
+#: src/SpectacleCore.cpp:1262
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1276
 #, kde-format
 msgid "Annotate"
 msgstr "Анотувати"
@@ -2649,6 +2434,91 @@ msgstr "анімований WebP (краще за GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (сумісний, але неефективний)"
+
+#~ msgid "The last used annotation tool type"
+#~ msgstr "Тип останнього використаного засобу анотування"
+
+#~ msgid "Stroke width for freehand annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування довільною лінією"
+
+#~ msgid "Stroke width for highlighter annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування підсвічуванням"
+
+#~ msgid "Stroke width for line annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування прямою лінією"
+
+#~ msgid "Stroke width for arrow annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування стрілочкою"
+
+#~ msgid "Stroke width for rectangle annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування прямокутником"
+
+#~ msgid "Stroke width for ellipse annotation tool"
+#~ msgstr "Товщина штриха для засобу анотування еліпсом"
+
+#~ msgid "Stroke color for freehand annotation tool"
+#~ msgstr "Колір штриха для засобу анотування довільною лінією"
+
+#~ msgid "Stroke color for highlighter annotation tool"
+#~ msgstr "Колір штриха для засобу анотування підсвічуванням"
+
+#~ msgid "Stroke color for line annotation tool"
+#~ msgstr "Колір штриха для засобу анотування прямою лінією"
+
+#~ msgid "Stroke color for arrow annotation tool"
+#~ msgstr "Колір штриха для засобу анотування стрілочкою"
+
+#~ msgid "Stroke color for rectangle annotation tool"
+#~ msgstr "Колір штриха для засобу анотування прямокутником"
+
+#~ msgid "Stroke color for ellipse annotation tool"
+#~ msgstr "Колір штриха для засобу анотування еліпсом"
+
+#~ msgid "Fill color for rectangle annotation tool"
+#~ msgstr "Колір заповнення для засобу анотування прямокутником"
+
+#~ msgid "Fill color for ellipse annotation tool"
+#~ msgstr "Колір заповнення для засобу анотування еліпсом"
+
+#~ msgid "Fill color for number annotation tool"
+#~ msgstr "Колір заповнення для засобу анотування числами"
+
+#~ msgid "The strength of the blur effect."
+#~ msgstr "Потужність ефекту розмивання."
+
+#~ msgid "The strength of the pixelate effect."
+#~ msgstr "Потужність ефекту пікселізації."
+
+#~ msgid "Font for text annotations"
+#~ msgstr "Шрифт для текстових анотацій"
+
+#~ msgid "Font for number annotations"
+#~ msgstr "Шрифт для числових анотацій"
+
+#~ msgid "Font color for annotations"
+#~ msgstr "Колір шрифту для анотацій"
+
+#~ msgid "Whether freehand annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування довільною лінією тіні"
+
+#~ msgid "Whether line annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування прямою тіні"
+
+#~ msgid "Whether arrow annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування стрілкою тіні"
+
+#~ msgid "Whether rectangle annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування прямокутником тіні"
+
+#~ msgid "Whether ellipse annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування еліпсом тіні"
+
+#~ msgid "Whether text annotation tool has a drop shadow"
+#~ msgstr ""
+#~ "Чи слід використовувати у засобі анотування текстом тіні від символів"
+
+#~ msgid "Whether number annotation tool has a drop shadow"
+#~ msgstr "Чи слід використовувати у засобі анотування номерами тіні"
 
 #~ msgid "Show capture instructions"
 #~ msgstr "Показувати настанови щодо створення знімків"
