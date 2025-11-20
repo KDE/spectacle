@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-19 00:45+0000\n"
-"PO-Revision-Date: 2025-06-19 19:06+0300\n"
+"PO-Revision-Date: 2025-11-18 19:30+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -200,8 +200,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Atvērt un rediģēt esošo ekrānattēla datni"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "„QImageWriter“ neizdodas saglabāt attēlu: %1"
@@ -271,12 +270,10 @@ msgstr ""
 "nosaukumu"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Neizdevās saglabāt ierakstu. Nevar pārvietot datni uz: %1"
+msgstr "Neizdevās saglabāt ierakstu. Nevar pārvietot datni uz vietu: %1"
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -863,29 +860,27 @@ msgstr "Kopīgot"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Izvilkt tekstu pēc valodas"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "„KWin“ ekrānierakstīšana nav pieejama."
+msgstr "OCR apakšsistēma nav pieejama."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR nav pieejams. Ieinstalējiet „Tesseract OCR“."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Tiek ieslēgta OCR apakšsistēma…"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "Nav pieejami OCR valodas dati."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -932,7 +927,7 @@ msgstr "Jauns ekrānattēls"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Atpazīt tekstu"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1074,10 +1069,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Ekrāna ierakstā parādīt peles rādītāju."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1300,21 +1292,19 @@ msgstr "Kamēr „Spectacle“ nav aizvērts"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Teksta atpazīšana (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "OCR valodas:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "„KWin“ ekrānierakstīšana nav pieejama."
+msgstr "OCR funkcijas nav pieejamas"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1324,6 +1314,10 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Ieinstalējiet nepieciešamās pakotnes:\n"
+"• tesseract\n"
+"• tesseract valodas datus (piemēram, „tesseract-ocr-lat“ vai „tesseract-"
+"langpack-lat“ latviešu valodai)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1481,7 +1475,7 @@ msgstr "Atcerēties pēdējo iezīmēto reģionu"
 #: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Noklusējuma valoda OCR teksta atpazīšanai"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:79
@@ -1730,8 +1724,7 @@ msgid "Escape"
 msgstr "Iziet"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1787,9 +1780,7 @@ msgid "Image Zoom"
 msgstr "Attēla tālummaiņa"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Kopīgojot attēlu, radās problēma: %1"
@@ -1845,41 +1836,35 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientācijas un alfabēta noteikšana"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Matemātisko izteiksmju noteikšana"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientācijas un alfabēta noteikšana"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Slikts „KWin“ ekrānattēla platums: %1"
+msgstr "Nekorekts „KWin“ ekrānattēla platums: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Slikts „KWin“ ekrānattēla augstums: %1"
+msgstr "Nekorekts „KWin“ ekrānattēla augstums: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Slikts „KWin“ ekrānattēla formāts: %1"
+msgstr "Nekorekts „KWin“ ekrānattēla formāts: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
@@ -1888,25 +1873,19 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Nevarēja atvērt datnes aprakstu, lai nolasītu „KWin“ ekrānattēlu."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "„pipe2()“ neizdevās apstrādāt „KWin“ ekrānattēlu: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
-"„KWin“ ekrānattēla pieprasījuma neizdevās:\n"
+"„KWin“ ekrānattēla pieprasījums neizdevās:\n"
 "%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
@@ -1973,25 +1952,19 @@ msgstr ""
 "izjauca ierakstīšanu."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Neizdevās ierakstīt: pagaidu datnes URL nav lokāla datne (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Neizdevās ierakstīt: izvades datnes URL nav lokāla datne (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Neizdevās ierakstīt: neizdevās izveidot mapi (%1)"
@@ -2009,17 +1982,13 @@ msgid "Window recording canceled"
 msgstr "Loga ierakstīšana ir atcelta"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Neizdevās atlasīt ekrānu: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Neizdevās atlasīt logu: %1"
@@ -2290,72 +2259,67 @@ msgstr "Atrasts kvadrātkods ar bināru saturu."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Teksta atpazīšana neizdevās"
 
 #: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Attēlā teksts nav atrasts"
 
 #: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Teksts ir atpazīšana veikta"
 
 #: src/SpectacleCore.cpp:558
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Teksts ir atpazīts"
 
 #: src/SpectacleCore.cpp:575
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 un %2"
 
 #: src/SpectacleCore.cpp:580
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "Attēlu kopēt starpliktuvē"
+msgstr "Teksts ir nokopēts starpliktuvē.<nl/>Atpazītās valodas: %1"
 
 #: src/SpectacleCore.cpp:585
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Atvērt teksta redaktorā"
 
 #: src/SpectacleCore.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Pirms teksta atpazīšanas norādiet teksta reģionu"
 
 #: src/SpectacleCore.cpp:722
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "„KWin“ ekrānierakstīšana nav pieejama."
+msgstr "OCR nav pieejams"
 
 #: src/SpectacleCore.cpp:728
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "„KWin“ ekrānierakstīšana nav pieejama."
+msgstr "Nav neviena ekrānattēla."
 
 #: src/SpectacleCore.cpp:732
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Atpazīst tekstu attēlā..."
 
 #: src/SpectacleCore.cpp:996
 #, kde-format
@@ -2364,10 +2328,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "„%1“ nav derīgs „--record“ režīms"
 
 #: src/SpectacleCore.cpp:1231
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2377,16 +2338,13 @@ msgstr ""
 "saglabāts starpliktuvē."
 
 #: src/SpectacleCore.cpp:1235
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrānattēls ir saglabāts attēlu mapē ar nosaukumu „%1“."
 
 #: src/SpectacleCore.cpp:1238
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“."
@@ -2397,10 +2355,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrānattēls ir saglabāts starpliktuvē"
 
 #: src/SpectacleCore.cpp:1247
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2410,16 +2365,13 @@ msgstr ""
 "saglabāts starpliktuvē."
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ieraksts ir saglabāts video mapē ar nosaukumu „%1“."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ieraksts ir saglabāts „%2“ ar nosaukumu „%1“."

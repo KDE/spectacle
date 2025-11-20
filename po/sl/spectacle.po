@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-19 00:45+0000\n"
-"PO-Revision-Date: 2025-11-12 07:41+0100\n"
+"PO-Revision-Date: 2025-11-19 07:00+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -204,11 +204,10 @@ msgid "Open and edit existing screenshot file"
 msgstr "Odpri in uredi obstoječo datoteko zaslonske slike"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
-msgstr "QImageWriter ne more zapisati slike: %1"
+msgstr "QImageWriter ne more pisati slike: %1"
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -279,14 +278,11 @@ msgstr ""
 "datoteke"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Posnetega videa ni mogoče shraniti. Datoteke ni bilo mogoče premakniti na "
-"mesto: %1"
+"Ni mogoče shraniti posnetka. Datoteke ni bilo mogoče premakniti na mesto: %1"
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -1087,10 +1083,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Pokaži miškino kazalko v posnetku zaslona."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1747,8 +1740,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1806,9 +1798,7 @@ msgid "Image Zoom"
 msgstr "Približanje slike"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Med deljenjem slike je prišlo do težave: %1"
@@ -1878,25 +1868,19 @@ msgid "Orientation and Script Detection"
 msgstr "Orientacija in zaznavanje pisave"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Slaba širina za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Slaba višina za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Slab format za posnetek zaslona KWin: %1"
@@ -1909,25 +1893,19 @@ msgstr ""
 "Ni bilo mogoče odpreti deskriptorja datoteke za branje posnetka zaslona KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() ni uspela za posnetek zaslona KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
-"Zahteva za posnetek zaslona KWin ni uspela:\n"
+"Zahtevek za posnetek zaslona KWin ni uspel:\n"
 "%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
@@ -1995,25 +1973,19 @@ msgstr ""
 "motil snemanje."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Snemanje ni uspelo: URL začasne datoteke ni krajevna datoteka (%1)"
+msgstr "Snemanje ni uspelo: URL začasne datoteke ni lokalna datoteka (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr "Snemanje ni uspelo: URL izhodne datoteke ni krajevna datoteka (%1)"
+msgstr "Snemanje ni uspelo: URL izhodne datoteke ni lokalna datoteka (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Snemanje ni uspelo: ni mogoče ustvariti mape (%1)"
@@ -2031,17 +2003,13 @@ msgid "Window recording canceled"
 msgstr "Snemanje okna preklicano"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Neuspela izbira zaslona: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Neuspela izbira okna: %1"
@@ -2337,9 +2305,7 @@ msgid "Text Extracted"
 msgstr "Besedilo izvlečeno"
 
 #: src/SpectacleCore.cpp:575
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "%1 and %2"
+#, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 in %2"
@@ -2387,32 +2353,26 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
 #: src/SpectacleCore.cpp:1231
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Zaslonska slika je bila shranjena kot »%1« v »%2« in pot te datoteke je bila "
-"shranjena na vaše odložišče."
+"Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
+"bila shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:1235
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Zaslonska slika je bila kot »%1« shranjena v vašo mapo s slikami."
+msgstr "Zaslonska slika je bila kot '%1' shranjena v vašo mapo Slike."
 
 #: src/SpectacleCore.cpp:1238
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Zaslonska slikaje bila kot »%1« shranjena v »%2«."
+msgstr "Zaslonska slika je bila shranjena kot '%1' na '%2'."
 
 #: src/SpectacleCore.cpp:1242
 #, kde-format
@@ -2420,32 +2380,26 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:1247
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Video posnetek je bil shranjen kot »%1« v »%2« in pot te datoteke je bila "
+"Video posnetek je bil shranjen kot '%1' na '%2' in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Video posnetek je bil kot »%1« shranjen v vašo mapo z videi."
+msgstr "Video posnetek je bil kot '%1' shranjen v vašo mapo z videi."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Video posnetek je bil kot »%1« shranjen v »%2«."
+msgstr "Video posnetek je bil shranjen kot '%1' na '%2'."
 
 #: src/SpectacleCore.cpp:1262
 #, kde-format
