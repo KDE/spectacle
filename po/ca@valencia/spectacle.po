@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-19 00:45+0000\n"
-"PO-Revision-Date: 2025-11-12 09:46+0100\n"
+"PO-Revision-Date: 2025-11-18 18:01+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -209,8 +209,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Obri i edita un fitxer existent de captura de pantalla"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter no ha pogut escriure la imatge: %1"
@@ -286,9 +285,7 @@ msgstr ""
 "URL vàlid amb un nom de fitxer"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
@@ -1094,10 +1091,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Mostra el cursor del ratolí en la gravació de la pantalla."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1758,8 +1752,7 @@ msgid "Escape"
 msgstr "Escapada"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1813,9 +1806,7 @@ msgid "Image Zoom"
 msgstr "Zoom de la imatge"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "S'ha produït un problema en compartir la imatge: %1"
@@ -1885,25 +1876,19 @@ msgid "Orientation and Script Detection"
 msgstr "Detecció de l'orientació i del sistema d'escriptura"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Amplària incorrecta per a la captura de pantalla de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Alçària incorrecta per a la captura de pantalla de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Format incorrecte per a la captura de pantalla de KWin: %1"
@@ -1917,20 +1902,13 @@ msgstr ""
 "pantalla de KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
-"No s'ha pogut executar «pipe2()» per a la captura de pantalla de KWin: %1"
+msgstr "No s'ha pogut executar «pipe2()» a la captura de pantalla de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -2005,27 +1983,21 @@ msgstr ""
 "ha canviat d'una manera que ha interromput la gravació."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "No s'ha pogut gravar: l'URL del fitxer temporal no és cap fitxer local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "No s'ha pogut gravar: l'URL del fitxer d'eixida no és cap fitxer local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "No s'ha pogut gravar: no s'ha pogut crear la carpeta (%1)"
@@ -2043,17 +2015,13 @@ msgid "Window recording canceled"
 msgstr "S'ha cancel·lat la gravació de la finestra"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "No s'ha pogut seleccionar la pantalla: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "No s'ha pogut seleccionar la finestra: %1"
@@ -2347,9 +2315,7 @@ msgid "Text Extracted"
 msgstr "Text extret"
 
 #: src/SpectacleCore.cpp:575
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "%1 and %2"
+#, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 i %2"
@@ -2397,10 +2363,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 no és un mode vàlid per a --record"
 
 #: src/SpectacleCore.cpp:1231
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2410,16 +2373,13 @@ msgstr ""
 "fitxer s'ha copiat a dins del porta-retalls."
 
 #: src/SpectacleCore.cpp:1235
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha guardat una captura de pantalla com a «%1» en la carpeta Imatges."
 
 #: src/SpectacleCore.cpp:1238
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha guardat una captura de pantalla com a «%1» a «%2»."
@@ -2430,10 +2390,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha guardat una captura de pantalla en el porta-retalls."
 
 #: src/SpectacleCore.cpp:1247
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2443,16 +2400,13 @@ msgstr ""
 "s'ha guardat a dins del porta-retalls."
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "S'ha guardat una gravació com a «%1» a la carpeta Vídeos."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "S'ha guardat una gravació com a «%1» a «%2»."
@@ -2491,87 +2445,3 @@ msgstr "WebP animat (millor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, però ineficient)"
-
-#~ msgid "The last used annotation tool type"
-#~ msgstr "L'últim tipus d'eina d'anotació emprat"
-
-#~ msgid "Stroke width for freehand annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació de mà alçada"
-
-#~ msgid "Stroke width for highlighter annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació de marcador fluorescent"
-
-#~ msgid "Stroke width for line annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació de línia"
-
-#~ msgid "Stroke width for arrow annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació de fletxa"
-
-#~ msgid "Stroke width for rectangle annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació de rectangle"
-
-#~ msgid "Stroke width for ellipse annotation tool"
-#~ msgstr "Amplària del traç de l'eina d'anotació d'el·lipse"
-
-#~ msgid "Stroke color for freehand annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de mà alçada"
-
-#~ msgid "Stroke color for highlighter annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de marcador fluorescent"
-
-#~ msgid "Stroke color for line annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de línia"
-
-#~ msgid "Stroke color for arrow annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de fletxa"
-
-#~ msgid "Stroke color for rectangle annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de rectangle"
-
-#~ msgid "Stroke color for ellipse annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació d'el·lipse"
-
-#~ msgid "Fill color for rectangle annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de rectangle"
-
-#~ msgid "Fill color for ellipse annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació d'el·lipse"
-
-#~ msgid "Fill color for number annotation tool"
-#~ msgstr "Color del traç de l'eina d'anotació de números"
-
-#~ msgid "The strength of the blur effect."
-#~ msgstr "La intensitat de l'efecte de difuminat."
-
-#~ msgid "The strength of the pixelate effect."
-#~ msgstr "La intensitat de l'efecte de pixelació."
-
-#~ msgid "Font for text annotations"
-#~ msgstr "Lletra de les anotacions de text"
-
-#~ msgid "Font for number annotations"
-#~ msgstr "Lletra de les anotacions numèriques"
-
-#~ msgid "Font color for annotations"
-#~ msgstr "Color de la lletra de les anotacions"
-
-#~ msgid "Whether freehand annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de mà alçada té una ombra caiguda"
-
-#~ msgid "Whether line annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de línia té una ombra caiguda"
-
-#~ msgid "Whether arrow annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de fletxa té una ombra caiguda"
-
-#~ msgid "Whether rectangle annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de rectangle té una ombra caiguda"
-
-#~ msgid "Whether ellipse annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació d'el·lipse té una ombra caiguda"
-
-#~ msgid "Whether text annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de text té una ombra caiguda"
-
-#~ msgid "Whether number annotation tool has a drop shadow"
-#~ msgstr "Si l'eina d'anotació de número té una ombra caiguda"
