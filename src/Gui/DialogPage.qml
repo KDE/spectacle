@@ -67,40 +67,40 @@ EmptyPage {
 
     Component {
         id: screenshotComponent
-        GridLayout {
-            rowSpacing: Kirigami.Units.mediumSpacing
-            columnSpacing: Kirigami.Units.mediumSpacing * 4
-            columns: 2
-            rows: 2
-            flow: GridLayout.TopToBottom
+        RowLayout {
+            spacing: Kirigami.Units.mediumSpacing * 4
 
-            Kirigami.Heading {
-                topPadding: -captureHeadingMetrics.descent
-                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Take a Screenshot:")
-                level: 3
-                FontMetrics {
-                    id: captureHeadingMetrics
+            ColumnLayout {
+                spacing: Kirigami.Units.mediumSpacing * 2
+
+                Kirigami.Heading {
+                    text: i18nc("@title:group", "Take a Screenshot")
+                }
+
+                CaptureModeButtonsColumn {
+                    id: buttonsColumn
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                 }
             }
 
-            CaptureModeButtonsColumn {
-                id: buttonsColumn
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Kirigami.Separator {
+                Layout.fillHeight: true
             }
 
-            Kirigami.Heading {
-                topPadding: -captureHeadingMetrics.descent
-                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Options")
-                level: 3
-            }
+            ColumnLayout {
+                spacing: Kirigami.Units.mediumSpacing
 
-            CaptureSettingsColumn {
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                Layout.preferredWidth: buttonRow.implicitWidth
-                ConfigHelpButtonRow {
-                    id: buttonRow
+                Kirigami.Heading {
+                    text: i18nc("@title:group", "Options")
+                    level: 3
+                }
+
+                CaptureSettingsColumn {
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    Layout.preferredWidth: buttonRow.implicitWidth
+                    ConfigHelpButtonRow {
+                        id: buttonRow
+                    }
                 }
             }
         }
@@ -108,40 +108,40 @@ EmptyPage {
 
     Component {
         id: recordingComponent
-        GridLayout {
-            rowSpacing: Kirigami.Units.mediumSpacing
-            columnSpacing: Kirigami.Units.mediumSpacing * 4
-            columns: 2
-            rows: 2
-            flow: GridLayout.TopToBottom
+        RowLayout {
+            spacing: Kirigami.Units.mediumSpacing * 4
 
-            Kirigami.Heading {
-                topPadding: -captureHeadingMetrics.descent
-                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Make a Recording:")
-                level: 3
-                FontMetrics {
-                    id: captureHeadingMetrics
+            ColumnLayout {
+                spacing: Kirigami.Units.mediumSpacing * 2
+
+                Kirigami.Heading {
+                    text: i18nc("@title:group", "Make a Recording")
+                }
+
+                RecordingModeButtonsColumn {
+                    id: buttonsColumn
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                 }
             }
 
-            RecordingModeButtonsColumn {
-                id: buttonsColumn
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Kirigami.Separator {
+                Layout.fillHeight: true
             }
 
-            Kirigami.Heading {
-                topPadding: -captureHeadingMetrics.descent
-                bottomPadding: -captureHeadingMetrics.descent + parent.rowSpacing
-                text: i18nc("@title:group", "Options")
-                level: 3
-            }
+            ColumnLayout {
+                spacing: Kirigami.Units.mediumSpacing
 
-            RecordingSettingsColumn {
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                Layout.preferredWidth: buttonRow.implicitWidth
-                ConfigHelpButtonRow {
-                    id: buttonRow
+                Kirigami.Heading {
+                    text: i18nc("@title:group", "Options")
+                    level: 3
+                }
+
+                RecordingSettingsColumn {
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    Layout.preferredWidth: buttonRow.implicitWidth
+                    ConfigHelpButtonRow {
+                        id: buttonRow
+                    }
                 }
             }
         }
