@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-19 00:45+0000\n"
+"POT-Creation-Date: 2025-11-28 00:44+0000\n"
 "PO-Revision-Date: 2021-11-20 19:24+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "Nowe foto wobrazowki"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "Nowe foto wobrazowki"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "Nowe foto wobrazowki"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "Nowe foto wobrazowki"
 
 #: src/CaptureModeModel.cpp:162
 #, fuzzy, kde-format
@@ -1618,13 +1642,6 @@ msgstr ""
 msgid "Compression quality for lossy file formats"
 msgstr ""
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "Nowe foto wobrazowki"
-
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
@@ -1636,13 +1653,6 @@ msgstr ""
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr ""
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "Nowe foto wobrazowki"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1671,20 +1681,6 @@ msgstr ""
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr ""
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "Nowe foto wobrazowki"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "Nowe foto wobrazowki"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

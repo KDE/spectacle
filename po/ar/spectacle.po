@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-19 00:45+0000\n"
+"POT-Creation-Date: 2025-11-28 00:44+0000\n"
 "PO-Revision-Date: 2025-11-19 20:33+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
+
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "اللقطات"
+
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "لقطة شاشة"
+
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "فيديوهات شاشة"
+
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "تسجيل الشاشة"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1545,12 +1565,6 @@ msgstr "اسم الملفّ المبدئي"
 msgid "Compression quality for lossy file formats"
 msgstr "جودة الضغط لتنسيقات الملفات الفاقدة"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "اللقطات"
-
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
@@ -1562,12 +1576,6 @@ msgstr "تنسيق حفظ الصورة المبدئي"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "قالب اسم الملف المستخدم عند حفظ لقطات الشاشة"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "لقطة شاشة"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1596,18 +1604,6 @@ msgstr "تنسيق الفيديو المبدئي"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "قالب اسم الملف المستخدم عند حفظ التسجيلات الرقمية للشاشة"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "فيديوهات شاشة"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "تسجيل الشاشة"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

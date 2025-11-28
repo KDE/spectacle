@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-19 00:45+0000\n"
+"POT-Creation-Date: 2025-11-28 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -19,6 +19,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.08.1\n"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+
+#, fuzzy, kde-format
+#| msgid "Take a New Screenshot"
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1657,13 +1681,6 @@ msgstr "Προκαθορισμένο όνομα αρχείου"
 msgid "Compression quality for lossy file formats"
 msgstr "Ποιότητα συμπίεσης για τύπους αποθήκευσης αρχείων με απώλειες"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:144
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
-
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
@@ -1676,13 +1693,6 @@ msgstr "Προκαθορισμένος τύπος αποθήκευσης εικ�
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screenshots"
 msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1713,20 +1723,6 @@ msgstr "Προκαθορισμένος τύπος αποθήκευσης εικ�
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screencasts"
 msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Take a New Screenshot"
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
