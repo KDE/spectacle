@@ -528,7 +528,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                 // Not using xi18nc because it doesn't work with the link replacement logic.
                 // Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
                 auto text = i18nc("@info", //
-                                  "QR Code found: %1",
+                                  "Code found: %1",
                                   result.toString().toHtmlEscaped().replace(urlRegex, linkifier));
                 return u"<html>" % text % u"</html>";
             }
