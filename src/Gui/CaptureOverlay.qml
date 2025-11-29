@@ -492,6 +492,11 @@ MouseArea {
                     action: AcceptAction {}
                 }
                 ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: CancelAction {}
+                }
+                ToolButton {
                     display: TtToolButton.IconOnly
                     visible: action.enabled
                     action: SaveAction {}
@@ -529,6 +534,10 @@ MouseArea {
                 }
                 ToolButton {
                     visible: action.enabled
+                    action: CancelAction {}
+                }
+                ToolButton {
+                    visible: action.enabled
                     action: SaveAction {}
                 }
                 ToolButton {
@@ -559,6 +568,11 @@ MouseArea {
                     display: TtToolButton.TextBesideIcon
                     visible: action.enabled
                     action: RecordAction {}
+                }
+                ToolButton {
+                    display: TtToolButton.TextBesideIcon
+                    visible: action.enabled
+                    action: CancelAction {}
                 }
             }
         }

@@ -158,6 +158,7 @@ qt_target_qml_sources(spectacle
     Gui/AnnotationOptionsToolBarContents.qml
     Gui/AnnotationsToolBarContents.qml
     Gui/ButtonGrid.qml
+    Gui/CancelAction.qml
     Gui/CaptureModeButtonsColumn.qml
     Gui/CaptureOptions.qml
     Gui/CaptureOverlay.qml

@@ -129,6 +129,11 @@ bool CaptureWindow::accept()
     return SelectionEditor::instance()->acceptSelection();
 }
 
+void CaptureWindow::cancel()
+{
+    SpectacleCore::instance()->cancelScreenshot();
+}
+
 void CaptureWindow::save()
 {
     SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::UserAction);

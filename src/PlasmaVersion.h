@@ -15,7 +15,7 @@ public:
     static quint32 get();
 
     /**
-     * Use this for plasama versions the same way you'd use QT_VERSION_CHECK()
+     * Use this for plasma versions the same way you'd use QT_VERSION_CHECK()
      */
     static quint32 check(quint8 major, quint8 minor, quint8 patch);
 

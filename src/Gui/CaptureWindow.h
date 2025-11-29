@@ -34,6 +34,7 @@ public:
 
 public Q_SLOTS:
     bool accept();
+    void cancel();
     void save() override;
     void saveAs() override;
     void copyImage() override;
