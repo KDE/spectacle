@@ -83,6 +83,9 @@ find_package(
         Prison
         Crash
 )
+if (NOT TARGET KF6::PrisonScanner ) 
+    message(SEND_ERROR "Prison built without required PrisonScanner component")
+endif()
 
 find_package(Wayland REQUIRED COMPONENTS Client)
 find_package(PlasmaWaylandProtocols REQUIRED)
