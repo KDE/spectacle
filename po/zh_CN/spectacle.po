@@ -215,7 +215,7 @@ msgstr "打开并编辑已有截图文件"
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
-msgstr ""
+msgstr "QImageWriter 无法写入图像：%1"
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -280,7 +280,7 @@ msgstr "导出视频失败：输出文件 URL 必须是一个具有文件名的�
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
+msgstr "无法保存录像。无法移动文件到位置：%1"
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -663,7 +663,7 @@ msgstr "数字"
 #, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -1076,6 +1076,8 @@ msgid ""
 "Recording:\n"
 "%1"
 msgstr ""
+"正在录制：\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:124
 #, kde-format
@@ -1695,7 +1697,7 @@ msgstr "ESC 键"
 #, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
-msgstr ""
+msgstr "%1×%2"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -1747,7 +1749,7 @@ msgstr "图像缩放"
 #, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
-msgstr ""
+msgstr "分享图像时出错：%1"
 
 #: src/Gui/ViewerWindow.cpp:54
 #, kde-format
@@ -1917,19 +1919,19 @@ msgstr "视频流已关闭，因为目标区域所在屏幕发生的更改中断
 #, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr ""
+msgstr "录制失败：临时文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
 #, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr ""
+msgstr "录制失败：输出文件 URL 不是本地文件 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
 #, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "录制失败：无法创建文件夹 (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
@@ -1947,13 +1949,13 @@ msgstr "窗口录像已取消"
 #, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "选择屏幕失败：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
 #, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr ""
+msgstr "选择窗口失败：%1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
@@ -2235,7 +2237,7 @@ msgstr "文本已提取"
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 和 %2"
 
 #: src/SpectacleCore.cpp:580
 #, kde-kuit-format
@@ -2285,19 +2287,19 @@ msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
-msgstr ""
+msgstr "屏幕截图已经使用名称“%1”保存到了“%2”，该截图的文件路径已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:1235
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr ""
+msgstr "屏幕截图已保存到你的图片文件夹，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1238
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr ""
+msgstr "屏幕截图已保存到文件夹“%2”，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1242
 #, kde-format
@@ -2310,19 +2312,19 @@ msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
-msgstr ""
+msgstr "屏幕录像已经使用名称“%1”保存到了“%2”，该录像的文件路径已保存到剪贴板。"
 
 #: src/SpectacleCore.cpp:1249
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr ""
+msgstr "屏幕录像已保存到你的视频文件夹，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1251
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr ""
+msgstr "屏幕录像已保存到文件夹“%2”，文件名为“%1”。"
 
 #: src/SpectacleCore.cpp:1262
 #, kde-format
