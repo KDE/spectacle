@@ -15,7 +15,7 @@ You can get help in :
 Spectacle is developed under the KDE umbrella and uses KDE infrastructure
 for development.
 
-Please see the file [`CONTRIBUTING`](./CONTRIBUTING) for details on coding style and how
+Please see the file [`CONTRIBUTING`](./CONTRIBUTING.md) for details on coding style and how
 to contribute patches. Please note that pull requests on GitHub aren't
 supported. The recommended way of contributing patches is via KDE's
 instance of GitLab at https://invent.kde.org/plasma/spectacle.
