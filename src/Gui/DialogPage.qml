@@ -87,20 +87,11 @@ EmptyPage {
                 Layout.fillHeight: true
             }
 
-            ColumnLayout {
-                spacing: Kirigami.Units.mediumSpacing
-
-                Kirigami.Heading {
-                    text: i18nc("@title:group", "Options")
-                    level: 3
-                }
-
-                CaptureSettingsColumn {
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                    Layout.preferredWidth: buttonRow.implicitWidth
-                    ConfigHelpButtonRow {
-                        id: buttonRow
-                    }
+            CaptureSettingsColumn {
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                Layout.preferredWidth: buttonRow.implicitWidth
+                ConfigHelpButtonRow {
+                    id: buttonRow
                 }
             }
         }
@@ -128,20 +119,11 @@ EmptyPage {
                 Layout.fillHeight: true
             }
 
-            ColumnLayout {
-                spacing: Kirigami.Units.mediumSpacing
-
-                Kirigami.Heading {
-                    text: i18nc("@title:group", "Options")
-                    level: 3
-                }
-
-                RecordingSettingsColumn {
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                    Layout.preferredWidth: buttonRow.implicitWidth
-                    ConfigHelpButtonRow {
-                        id: buttonRow
-                    }
+            RecordingSettingsColumn {
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                Layout.preferredWidth: buttonRow.implicitWidth
+                ConfigHelpButtonRow {
+                    id: buttonRow
                 }
             }
         }
