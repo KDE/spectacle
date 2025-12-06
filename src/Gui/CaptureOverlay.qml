@@ -613,6 +613,7 @@ MouseArea {
                     spacing: parent.spacing
                     displayMode: QQC.AbstractButton.IconOnly
                     focusPolicy: Qt.NoFocus
+                    isFullscreenCapture: true
                 }
 
                 topLeftRadius: otbLoader.visible

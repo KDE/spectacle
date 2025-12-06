@@ -13,6 +13,7 @@ ButtonGrid {
     property bool showUndoRedo: true
     property bool showNoneButton: false
     property alias checkedButton: toolGroup.checkedButton
+    property bool isFullscreenCapture: false
 
     readonly property AnnotationTool tool: SpectacleCore.annotationDocument.tool
     readonly property int toolType: tool?.type ?? AnnotationTool.NoTool
@@ -118,8 +119,8 @@ ButtonGrid {
         QQC.ButtonGroup.group: toolGroup
         text: i18nc("@action:intoolbar crop image tool", "Crop")
         icon.name: "transform-crop"
-        checked: root.toolType === AnnotationTool.CropTool
-        onClicked: root.tool.type = AnnotationTool.CropTool
+        checked: root.toolType === (root.isFullscreenCapture ? AnnotationTool.NoTool : AnnotationTool.CropTool)
+        onClicked: root.tool.type = (root.isFullscreenCapture ? AnnotationTool.NoTool : AnnotationTool.CropTool)
     }
     ToolButton {
         QQC.ButtonGroup.group: toolGroup
