@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the spectacle package.
 #
 # SPDX-FileCopyrightText: 2023, 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# Sveinn í Felli <sv1@fellsnet.is>, 2022, 2024.
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:42+0000\n"
-"PO-Revision-Date: 2025-04-18 14:13+0000\n"
-"Last-Translator: Gummi <gudmundure@gmail.com>\n"
-"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2025-12-06 18:28+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -240,7 +240,7 @@ msgstr "Gat ekki vistað myndina. Gat ekki hlaðið skránni á fjartengdan sta�
 #: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
-msgstr "Get ekki vistað skjámyndina. Skrárheitið sem á að nota er ógilt."
+msgstr "Get ekki vistað skjámyndina. Skráarheitið sem á að vista er ógilt."
 
 #: src/ExportManager.cpp:616
 #, kde-format
@@ -263,7 +263,7 @@ msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 "Mistókst að flytja út myndskeið: Slóð á úttaksskrá verður að vera gild slóð "
-"með skrárheiti"
+"með skráarheiti"
 
 #: src/ExportManager.cpp:866
 #, kde-format
@@ -840,11 +840,10 @@ msgid "Open Default Screenshots Folder"
 msgstr "Opna sjálfgefna möppu fyrir skjámyndir"
 
 #: src/Gui/ExportMenu.cpp:121
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Annað forrit..."
+msgstr "Annað forrit…"
 
 #: src/Gui/ExportMenu.cpp:153
 #, kde-format
@@ -870,24 +869,22 @@ msgid "Help"
 msgstr "Hjálp"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "Opna möppu sem skráin er í"
+msgstr "Opna umlykjandi möppu"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy Image to Clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Afrita mynd á klippispjald"
+msgstr "Afrita á klippispjald"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Loka"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -1283,7 +1280,7 @@ msgstr "%"
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:26
 #, kde-format
 msgid "Filename:"
-msgstr "Skrárheiti:"
+msgstr "Skráarheiti:"
 
 #. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
 #. i18n: ectx: property (text), widget (QLabel, previewLabel)
@@ -1306,7 +1303,7 @@ msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
-"Þú getur notað eftirfarandi staðgengla í skrárheitinu sem verður skipt út "
+"Þú getur notað eftirfarandi staðgengla í skráarheitinu sem verður skipt út "
 "fyrir raunverulegan texta þegar skráin er vistuð:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
@@ -1466,7 +1463,7 @@ msgstr "Töf"
 #: src/Gui/SettingsDialog/spectacle.kcfg:165
 #, kde-format
 msgid "Default filename"
-msgstr "Sjálfgefið skrárheiti"
+msgstr "Sjálfgefið skráarheiti"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:136
@@ -1490,7 +1487,7 @@ msgstr "Sjálfgefið myndsnið við vistun"
 #: src/Gui/SettingsDialog/spectacle.kcfg:148
 #, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Skrárheiti sniðmáts fyrir vistun skjámynda"
+msgstr "Skráarheiti sniðmáts fyrir vistun skjámynda"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:153
 #, kde-format
@@ -1524,7 +1521,7 @@ msgstr "Sjálfgefið myndskeiðssnið"
 #: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Skrárheiti sniðmáts þegar skjáupptaka er vistuð"
+msgstr "Skráarheiti sniðmáts þegar skjáupptaka er vistuð"
 
 #: src/Gui/SettingsDialog/spectacle.kcfg:187
 #, kde-format
@@ -1902,10 +1899,9 @@ msgid "KDE Screenshot Utility"
 msgstr "KDE skjámyndaforrit"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2149,28 +2145,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Taka mynd af glugga undir bendli"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle er að taka upp"
+msgstr "Hefja/Stöðva upptöku á skjá"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle er að taka upp"
+msgstr "Hefja/Stöðva upptöku á glugga"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle er að taka upp"
+msgstr "Hefja/Stöðva upptöku á svæði"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2201,6 +2191,8 @@ msgstr "Spectacle er að taka upp"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Til að ljúka upptökunni skaltu smella á rauðu blikkandi táknmyndina í "
+"kerfisbakkanum."
 
 #: src/SpectacleCore.cpp:312
 #, kde-kuit-format
@@ -2209,6 +2201,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Til að ljúka upptökunni skaltu smella á rauðu blikkandi táknmyndina í "
+"kerfisbakkanum eða ýta á <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:329
 #, kde-format
@@ -2227,40 +2221,32 @@ msgstr ""
 "Spectacle og tilkynntu svo þetta vandamál til dreifingaraðila þíns."
 
 #: src/SpectacleCore.cpp:366
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle er að taka upp"
+msgstr "Spectacle er að ljúka upptökunni"
 
 #: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr ""
+msgstr "Bíddu aðeins"
 
 #: src/SpectacleCore.cpp:369
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle er að taka upp"
+msgstr "Spectacle er að ljúka upptökunni"
 
 #: src/SpectacleCore.cpp:371
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "Tími upptöku: %1\n"
-"Smelltu til að ljúka upptöku"
+"Smelltu til að ljúka upptöku snemma (sem þýðir tap gagna)"
 
 #: src/SpectacleCore.cpp:397
 #, kde-format
@@ -2279,63 +2265,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "Villa kom upp þegar reynt var að taka upp skjáinn."
 
 #: src/SpectacleCore.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Skjámyndin var afrituð á klippispjaldið og vistuð sem <a href=\"%1\">%2</a>"
+"Skjámyndin var afrituð á klippispjaldið og vistuð sem <link url=\"%1\">%2</"
+"link>"
 
 #: src/SpectacleCore.cpp:467
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Skjámyndin var vistuð sem <a href=\"%1\">%2</a> og staðsetning hennar hefur "
-"verið vistuð á klippispjaldið"
+"Skjámyndin var vistuð sem <link url=\"%1\">%2</link> og staðsetning hennar "
+"hefur verið vistuð á klippispjaldið"
 
 #: src/SpectacleCore.cpp:470
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Skjámyndin var vistuð sem <a href=\"%1\">%2</a>"
+msgstr "Skjámyndin var vistuð sem <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:474
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Skjámyndin var afrituð á klippispjaldið."
 
 #: src/SpectacleCore.cpp:505
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Myndskeiðið var vistað sem <a href=\"%1\">%2</a> og staðsetning þess hefur "
-"verið vistuð á klippispjaldið"
+"Myndskeiðið var vistað sem <link url=\"%1\">%2</link> og staðsetning þess "
+"hefur verið vistuð á klippispjaldið"
 
 #: src/SpectacleCore.cpp:508
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Myndskeiðið var vistað sem <a href=\"%1\">%2</a>"
+msgstr "Myndskeiðið var vistað sem <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:512
 #, kde-format
@@ -2347,18 +2322,16 @@ msgstr "Staðsetning myndskeiðsins var afritað á klippispjaldið."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:532
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "QR Code found: %1"
 msgstr "QR-kóði fannst: %1"
 
 #: src/SpectacleCore.cpp:536
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr "Fann QR-kóða með tvíundarkerfis efni."
+msgstr "Fann QR-kóða með tvíundarkerfisefni."
 
 #: src/SpectacleCore.cpp:838
 #, kde-format
