@@ -162,7 +162,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
             deleteWindows();
             m_annotationDocument->cropCanvas(rect);
             syncExportImage();
-            const auto &exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
+            auto exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
+            if (m_ocrExportInProgress) {
+                if (Settings::disableSaveOnOcr()) {
+                    exportActions.setFlag(ExportManager::Action::Save, false);
+                    exportActions.setFlag(ExportManager::Action::CopyPath, false);
+                }
+                m_ocrExportInProgress = false;
+            }
             const bool willQuit = exportActions.testFlag(ExportManager::AnyAction) //
                 && exportActions.testFlag(ExportManager::UserAction) //
                 && Settings::quitAfterSaveCopyExport();
@@ -696,7 +703,9 @@ bool SpectacleCore::startOcrExtraction(const QString &languageCode)
         auto selectionEditor = SelectionEditor::instance();
         auto inlineMessages = InlineMessageModel::instance();
 
+        m_ocrExportInProgress = true;
         if (!selectionEditor->acceptSelection(ExportManager::UserAction)) {
+            m_ocrExportInProgress = false;
             inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "Please select a region before extracting text"));
             return false;
         }

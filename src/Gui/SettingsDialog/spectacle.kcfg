@@ -34,6 +34,10 @@
         <label>Save screenshot automatically after it is taken</label>
         <default>false</default>
     </entry>
+    <entry name="disableSaveOnOcr" type="Bool">
+        <label>Skip automatic saving when extracting text</label>
+        <default>false</default>
+    </entry>
     <entry name="clipboardGroup" type="Enum">
         <label>Clipboard action which should be executed after the screenshot is taken</label>
         <choices>
