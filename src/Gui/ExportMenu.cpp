@@ -269,6 +269,14 @@ void ExportMenu::buildOcrLanguageSubmenu()
         return;
     }
 
+    auto *menuAction = m_ocrLanguageMenu->menuAction();
+    const auto setMenuEnabled = [this, menuAction](bool enabled) {
+        m_ocrLanguageMenu->setEnabled(enabled);
+        if (menuAction) {
+            menuAction->setEnabled(enabled);
+        }
+    };
+
     m_ocrLanguageMenu->clear();
 
     auto ocrManager = OcrManager::instance();
@@ -276,6 +284,7 @@ void ExportMenu::buildOcrLanguageSubmenu()
     if (!ocrManager) {
         QAction *action = m_ocrLanguageMenu->addAction(i18n("OCR engine is not available."));
         action->setEnabled(false);
+        setMenuEnabled(false);
         return;
     }
 
@@ -284,6 +293,7 @@ void ExportMenu::buildOcrLanguageSubmenu()
         QAction *action = m_ocrLanguageMenu->addAction(initializationFailed ? i18n("OCR is not available. Please install Tesseract OCR.")
                                                                             : i18n("OCR engine is initializing…"));
         action->setEnabled(false);
+        setMenuEnabled(false);
         return;
     }
 
@@ -293,8 +303,11 @@ void ExportMenu::buildOcrLanguageSubmenu()
     if (languages.isEmpty()) {
         QAction *action = m_ocrLanguageMenu->addAction(i18n("No OCR language data available."));
         action->setEnabled(false);
+        setMenuEnabled(false);
         return;
     }
+
+    setMenuEnabled(!busy);
 
     for (auto it = languages.cbegin(); it != languages.cend(); ++it) {
         const QString &code = it.key();
