@@ -90,29 +90,6 @@ find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(OpenCV 4.7 REQUIRED core imgproc)
 
-# Find Tesseract for OCR functionality
-find_package(PkgConfig QUIET)
-if(PkgConfig_FOUND)
-    pkg_check_modules(TESSERACT tesseract)
-
-    if(TESSERACT_FOUND)
-        message(STATUS "Tesseract OCR support enabled")
-        set(HAVE_TESSERACT_OCR TRUE)
-    else()
-        message(STATUS "Tesseract not found - OCR functionality disabled")
-        set(HAVE_TESSERACT_OCR FALSE)
-    endif()
-
-    set_package_properties(TESSERACT PROPERTIES
-        DESCRIPTION "OCR engine for text recognition in screenshots"
-        TYPE OPTIONAL
-        PURPOSE "Enables optical character recognition functionality"
-    )
-else()
-    message(STATUS "PkgConfig not found - Tesseract detection disabled")
-    set(HAVE_TESSERACT_OCR FALSE)
-endif()
-
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
     TYPE REQUIRED

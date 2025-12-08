@@ -1,5 +1,7 @@
-/* SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
- * SPDX-License-Identifier: LGPL-2.0-or-later
+/* 
+ *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
+ *
+ *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
 import QtQuick.Templates as T

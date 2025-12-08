@@ -1,20 +1,14 @@
-/* This file is part of Spectacle, the KDE screenshot utility
- * SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
- * SPDX-License-Identifier: LGPL-2.0-or-later
+/*
+ *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
+ *
+ *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
 #pragma once
 
 #include "Config.h"
 
-#ifdef HAVE_TESSERACT_OCR
-#include <tesseract/baseapi.h>
-#else
-namespace tesseract
-{
-class TessBaseAPI;
-}
-#endif
+#include "TesseractRuntimeLoader.h"
 
 #include <QImage>
 #include <QMap>
@@ -37,7 +31,7 @@ public:
     explicit OcrWorker(QObject *parent = nullptr);
 
 public Q_SLOTS:
-    void processImage(const QImage &image, tesseract::TessBaseAPI *tesseract);
+    void processImage(const QImage &image, TessBaseAPI *tesseract, const TesseractRuntimeApi *runtimeApi);
 
 Q_SIGNALS:
     void imageProcessed(const QString &text, bool success);
@@ -158,10 +152,9 @@ private:
 
     static OcrManager *s_instance;
 
-#ifdef HAVE_TESSERACT_OCR
-    tesseract::TessBaseAPI *m_tesseract;
+    TessBaseAPI *m_tesseract;
+    const TesseractRuntimeApi *m_runtimeApi;
     OcrWorker *m_worker;
-#endif
     std::unique_ptr<QThread> m_workerThread;
     QTimer *m_timeoutTimer;
 
