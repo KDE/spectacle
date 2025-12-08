@@ -29,6 +29,12 @@ OcrLanguageSelector::OcrLanguageSelector(QWidget *parent)
     setupLanguageCheckboxes();
 
     connect(m_ocrManager, &OcrManager::statusChanged, this, &OcrLanguageSelector::onOcrManagerStatusChanged);
+
+    if (m_ocrManager) {
+        m_lastStatus = m_ocrManager->status();
+        setProcessingState(m_lastStatus == OcrManager::OcrStatus::Processing);
+        updateCheckboxEnabledStates(selectedLanguages().size());
+    }
 }
 
 OcrLanguageSelector::~OcrLanguageSelector() = default;
@@ -83,6 +89,11 @@ bool OcrLanguageSelector::hasChanges() const
 
 void OcrLanguageSelector::applyDefaults()
 {
+    if (isProcessing()) {
+        qCDebug(SPECTACLE_LOG) << "Ignoring OCR defaults while recognition is running";
+        return;
+    }
+
     if (m_languageCheckboxes.isEmpty()) {
         return;
     }
@@ -109,12 +120,26 @@ void OcrLanguageSelector::applyDefaults()
 
 void OcrLanguageSelector::refresh()
 {
+    if (isProcessing()) {
+        qCDebug(SPECTACLE_LOG) << "Skipping OCR language refresh while recognition is running";
+        return;
+    }
+
     setupLanguageCheckboxes();
 }
 
 void OcrLanguageSelector::saveSettings()
 {
+    if (isProcessing()) {
+        qCDebug(SPECTACLE_LOG) << "Ignoring OCR language save while recognition is running";
+        return;
+    }
+
     const QStringList selected = selectedLanguages();
+    if (selected == Settings::ocrLanguages()) {
+        return;
+    }
+
     Settings::setOcrLanguages(selected);
 }
 
@@ -126,6 +151,13 @@ void OcrLanguageSelector::updateWidgets()
 
 void OcrLanguageSelector::onLanguageCheckboxChanged()
 {
+    if (isProcessing()) {
+        QSignalBlocker blocker(this);
+        qCDebug(SPECTACLE_LOG) << "Discarding OCR language toggle while recognition is running";
+        setSelectedLanguages(Settings::ocrLanguages());
+        return;
+    }
+
     enforceSelectionLimits();
 
     QStringList selected;
@@ -140,13 +172,32 @@ void OcrLanguageSelector::onLanguageCheckboxChanged()
     Q_EMIT selectedLanguagesChanged(selected);
 }
 
-void OcrLanguageSelector::onOcrManagerStatusChanged()
+void OcrLanguageSelector::onOcrManagerStatusChanged(OcrManager::OcrStatus status)
 {
-    refresh();
+    const bool processing = status == OcrManager::OcrStatus::Processing;
+    const bool processingChanged = processing != m_isProcessing;
+    const bool statusChanged = status != m_lastStatus;
+
+    setProcessingState(processing);
+
+    if (!processing && (processingChanged || statusChanged)) {
+        refresh();
+    }
+
+    if (!processing) {
+        updateCheckboxEnabledStates(selectedLanguages().size());
+    }
+
+    m_lastStatus = status;
 }
 
 void OcrLanguageSelector::setupLanguageCheckboxes()
 {
+    if (isProcessing()) {
+        qCDebug(SPECTACLE_LOG) << "Deferring OCR language checkbox rebuild while recognition is active";
+        return;
+    }
+
     while (QLayoutItem *item = m_layout->takeAt(0)) {
         if (auto widget = item->widget()) {
             widget->deleteLater();
@@ -191,6 +242,8 @@ void OcrLanguageSelector::setupLanguageCheckboxes()
     if (savedLanguages.isEmpty() && !m_languageCheckboxes.isEmpty()) {
         applyDefaults();
     }
+
+    updateCheckboxEnabledStates(selectedLanguages().size());
 }
 
 void OcrLanguageSelector::enforceSelectionLimits()
@@ -217,7 +270,7 @@ void OcrLanguageSelector::enforceSelectionLimits()
 
     updateCheckboxEnabledStates(selectedCount);
 
-    if (selectedCount == 0 && !m_languageCheckboxes.isEmpty()) {
+    if (selectedCount == 0 && !m_languageCheckboxes.isEmpty() && !isProcessing()) {
         applyDefaults();
     }
 }
@@ -239,8 +292,36 @@ QCheckBox *OcrLanguageSelector::findDefaultCheckbox() const
     return m_languageCheckboxes.first();
 }
 
+bool OcrLanguageSelector::isProcessing() const
+{
+    return m_isProcessing;
+}
+
+void OcrLanguageSelector::setProcessingState(bool processing)
+{
+    if (m_isProcessing == processing) {
+        return;
+    }
+
+    m_isProcessing = processing;
+    setEnabled(!processing);
+
+    if (processing) {
+        for (QCheckBox *checkbox : m_languageCheckboxes) {
+            checkbox->setEnabled(false);
+        }
+    }
+}
+
 void OcrLanguageSelector::updateCheckboxEnabledStates(int selectedCount)
 {
+    if (isProcessing()) {
+        for (QCheckBox *checkbox : m_languageCheckboxes) {
+            checkbox->setEnabled(false);
+        }
+        return;
+    }
+
     const bool enableUnchecked = selectedCount < OcrManager::MAX_OCR_LANGUAGES;
 
     for (QCheckBox *checkbox : m_languageCheckboxes) {

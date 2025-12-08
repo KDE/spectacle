@@ -7,11 +7,11 @@
 #ifndef OCRLANGUAGESELECTOR_H
 #define OCRLANGUAGESELECTOR_H
 
+#include "OcrManager.h"
+
 #include <QCheckBox>
 #include <QVBoxLayout>
 #include <QWidget>
-
-class OcrManager;
 
 /**
  * @brief Specialized widget for OCR language selection with multi-language support
@@ -91,18 +91,22 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void onLanguageCheckboxChanged();
-    void onOcrManagerStatusChanged();
+    void onOcrManagerStatusChanged(OcrManager::OcrStatus status);
 
 private:
     void setupLanguageCheckboxes();
     void enforceSelectionLimits();
     void updateCheckboxEnabledStates(int selectedCount);
     QCheckBox *findDefaultCheckbox() const;
+    bool isProcessing() const;
+    void setProcessingState(bool processing);
 
     QVBoxLayout *m_layout;
     QList<QCheckBox *> m_languageCheckboxes;
 
     OcrManager *m_ocrManager;
+    bool m_isProcessing = false;
+    OcrManager::OcrStatus m_lastStatus = OcrManager::OcrStatus::Ready;
 };
 
-#endif // OCRLANGUAGESELECTOR_H
+#endif

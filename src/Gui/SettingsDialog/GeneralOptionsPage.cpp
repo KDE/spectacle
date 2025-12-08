@@ -38,6 +38,17 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
 
     connect(m_ocrLanguageSelector, &OcrLanguageSelector::selectedLanguagesChanged, this, &GeneralOptionsPage::ocrLanguageChanged);
 
+    if (OcrManager *ocrManager = OcrManager::instance()) {
+        auto updateProcessingUiState = [this](OcrManager::OcrStatus status) {
+            const bool busy = status == OcrManager::OcrStatus::Processing;
+            m_ui->ocrLanguageLabel->setEnabled(!busy);
+            m_ui->ocrLanguageScrollArea->setEnabled(!busy);
+        };
+
+        connect(ocrManager, &OcrManager::statusChanged, this, updateProcessingUiState);
+        updateProcessingUiState(ocrManager->status());
+    }
+
     refreshOcrLanguageSettings(false);
 
     //On Wayland  we can't programmatically raise and focus the window so we have to hide the option
