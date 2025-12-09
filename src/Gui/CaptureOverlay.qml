@@ -762,7 +762,9 @@ MouseArea {
                 property bool rememberPosition: false
                 property alias dragging: dragHandler.active
                 readonly property int valignment: {
-                    if (SelectionEditor.screensRect.height - SelectionEditor.handlesRect.bottom >= height + toolBar.topPadding || SelectionEditor.selection.empty) {
+		    const spaceBelow = root.viewportRect.bottom - SelectionEditor.handlesRect.bottom
+                    const neededSpace = height + toolBar.topPadding
+                    if (SelectionEditor.selection.empty || spaceBelow >= neededSpace) {
                         // the bottom of the bottom side of the selection
                         // or the bottom of the screen
                         return Qt.AlignBottom
