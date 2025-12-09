@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-01 00:45+0000\n"
-"PO-Revision-Date: 2025-06-24 18:16+0200\n"
+"PO-Revision-Date: 2025-12-08 09:14+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -225,8 +225,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter-rek ezin du irudia idatzi: %1"
@@ -298,13 +297,10 @@ msgstr ""
 "behar da eta fitxategi-izen bat izan behar du"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr ""
-"Ez da grabaketa gordetzeko gai. Ezin izan da fitxategia kokalekura mugitu: %1"
+msgstr "Ezin da grabaketa gorde. Ezin izan da fitxategia kokalekura mugitu: %1"
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -687,8 +683,7 @@ msgid "Number"
 msgstr "Zenbakia"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
 msgstr "Utzi"
@@ -896,30 +891,27 @@ msgstr "Partekatu"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Erauzi testua hizkuntzaren arabera"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
+msgstr "OCR motorra ez dago erabilgarri."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR ez dago erabilgarri. Mesedez instalatu Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "OCR motorra hasieratzen ari da…"
 
 #: src/Gui/ExportMenu.cpp:294
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "Ez dago KIPI plugin erabilgarririk"
+msgstr "Ez dago OCR hizkuntzen daturik erabilgarririk."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -966,7 +958,7 @@ msgstr "Pantaila-argazki berria"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Erauzi testua"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1109,10 +1101,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1335,21 +1324,19 @@ msgstr "Spectacle itxi den arte"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Testu-ezagutza (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "OCRrako hizkuntzak:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
+msgstr "OCR funtzionaltasuna ez dago erabilgarri"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1359,6 +1346,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Mesedez, instalatu beharrezko paketeak:\n"
+"• tesseract\n"
+"• tesseract hizkuntza datuak (adib., tesseract-ocr-eng ingeleserako)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1518,7 +1508,7 @@ msgstr "Oroitu azken eskualde laukizuzena"
 #: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "OCR testua ezagutzeko hizkuntza lehenetsiak"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:79
@@ -1743,8 +1733,7 @@ msgid "Escape"
 msgstr "Ihes"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1798,9 +1787,7 @@ msgid "Image Zoom"
 msgstr "Irudiaren zoom"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Irudia partekatzeko arazo bat sortu da: %1"
@@ -1856,38 +1843,32 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientazioa eta idazkera hautematea"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Matematika/Ekuazioak hautematea"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientazioa eta idazkera hautematea"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako zabalera okerra: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako altuera okerra: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin pantaila-argazkirako formatu okerra: %1"
@@ -1900,19 +1881,13 @@ msgstr ""
 "Ezin izan du KWin pantaila-argazkia irakurtzeko fitxategi-deskriptorea ireki."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "«pipe2()»k KWin pantaila-argazkirako huts egin du: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -1986,32 +1961,26 @@ msgstr ""
 "duen era batean aldatu delako."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
-"Grabatzea huts egin du: Aldi baterako fitxategiaren URL ez da fitxategi "
+"Grabatzea huts egin du: Aldi baterako fitxategiaren URLa ez da fitxategi "
 "lokal bat (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
-"Grabatzea huts egin du: Irteerako fitxategiaren URL ez da fitxategi lokal "
+"Grabatzea huts egin du: Irteerako fitxategiaren URLa ez da fitxategi lokal "
 "bat (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Grabatzea huts egin du: Ez da karpeta sortzeko gai (%1)"
+msgstr "Grabatzea huts egin du: Ezin da karpeta sortu (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
@@ -2026,17 +1995,13 @@ msgid "Window recording canceled"
 msgstr "Leihoa grabatzea bertan behera utzi da"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr "Leihoa hautatzea huts egin du: %1"
+msgstr "Pantaila hautatzea huts egin du: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Leihoa hautatzea huts egin du: %1"
@@ -2308,72 +2273,67 @@ msgstr "Eduki bitarra duen QR kode bat aurkitu da."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Testua erauztea huts egin du"
 
 #: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Irudian ez da testurik aurkitu"
 
 #: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Testu erauzketa osatu da"
 
 #: src/SpectacleCore.cpp:558
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Testua erauzi da"
 
 #: src/SpectacleCore.cpp:575
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 eta %2"
 
 #: src/SpectacleCore.cpp:580
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "Kopiatu irudia arbelera"
+msgstr "Testua arbelean kopiatu da.<nl/>Antzemandako hizkuntzak: %1"
 
 #: src/SpectacleCore.cpp:585
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Ireki testu-editorean"
 
 #: src/SpectacleCore.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Mesedez hautatu eremu bat testua erauzi aurretik"
 
 #: src/SpectacleCore.cpp:722
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
+msgstr "OCR ez dago erabilgarri."
 
 #: src/SpectacleCore.cpp:728
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "KWin pantaila-grabatzea ez dago erabilgarri."
+msgstr "Ez dago pantaila-argazkirik erabilgarri."
 
 #: src/SpectacleCore.cpp:732
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Iruditik testua erauzten..."
 
 #: src/SpectacleCore.cpp:996
 #, kde-format
@@ -2382,10 +2342,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
 #: src/SpectacleCore.cpp:1231
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2395,19 +2352,16 @@ msgstr ""
 "bide-izena zure arbelean gorde da."
 
 #: src/SpectacleCore.cpp:1235
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
 #: src/SpectacleCore.cpp:1238
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'-(a)n."
+msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n."
 
 #: src/SpectacleCore.cpp:1242
 #, kde-format
@@ -2415,10 +2369,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
 #: src/SpectacleCore.cpp:1247
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2428,19 +2379,16 @@ msgstr ""
 "zure arbelean gorde da."
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Grabaketa bat gorde da '%1' gisa '%2'-(a)n."
+msgstr "Grabaketa bat gorde da '%1' gisa '%2'(e)(a)n."
 
 #: src/SpectacleCore.cpp:1262
 #, kde-format
