@@ -219,11 +219,10 @@ msgid "Open and edit existing screenshot file"
 msgstr "Otevřít a upravit existující soubor snímku"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
-msgstr "QImageWriter nemůže zapsat obrázek: %1"
+msgstr ""
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -290,11 +289,10 @@ msgstr ""
 
 #: src/ExportManager.cpp:866
 #, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#| msgid "Unable to save image. Could not upload file to remote location."
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Záznam nelze uložit. Soubor nelze přesunout do: %1"
+msgstr "Snímek nelze uložit. Nelze jej odeslat na vzdálené úložiště."
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -1101,16 +1099,13 @@ msgstr "Zobrazit kurzor myši při nahrávání obrazovky."
 
 #: src/Gui/RecordingView.qml:85
 #, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#| msgctxt "@title:tab"
+#| msgid "Recording"
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
-msgstr ""
-"Nahrávání:\n"
-"%1"
+msgstr "Nahrávání"
 
 #: src/Gui/RecordingView.qml:124
 #, kde-format
@@ -1726,11 +1721,10 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
-msgstr "%1×%2"
+msgstr ""
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -1783,12 +1777,10 @@ msgid "Image Zoom"
 msgstr "Přiblížení obrázku"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
-msgstr "Při sdílení obrázku došlo k problému: %1"
+msgstr ""
 
 #: src/Gui/ViewerWindow.cpp:54
 #, kde-format
@@ -1854,28 +1846,23 @@ msgid "Orientation and Script Detection"
 msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Neplatná šířka pro KWin snímek obrazovky: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Neplatná výška pro KWin snímek obrazovky: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
 #, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Neplatný formát pro KWin snímek obrazovky: %1"
+msgstr "Po sejmutí obrazovky:"
 
 #: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
@@ -1884,26 +1871,20 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Nepodařilo se otevřít souborový descriptor pro KWin snímek obrazovky."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "pipe2() selhal pro KWin snímek obrazovky: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
 #, fuzzy, kde-format
 #| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#| msgid "Unsupported KWin screenshot type metadata: %1"
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
-msgstr ""
-"Požadavek na KWin snímek obrazovky selhal:\n"
-"%1"
+msgstr "Nepodporovaná metadata pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
 #, kde-format
@@ -1972,26 +1953,26 @@ msgstr ""
 #: src/Platforms/VideoPlatformWayland.cpp:282
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#| msgid "Failed to record: File URL is not a local file"
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Záznam selhal: URL k dočasnému souboru není místní soubor (%1)"
+msgstr "Záznam selhal: Zadaná URL není místní soubor"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#| msgid "Failed to record: File URL is not a local file"
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr "Záznam selhal: URL k výstupnímu souboru není místní soubor (%1)"
+msgstr "Záznam selhal: Zadaná URL není místní soubor"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#| msgid "Failed to record: File URL is not a local file"
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Záznam selhal: Nelze vytvořit složku (%1)"
+msgstr "Záznam selhal: Zadaná URL není místní soubor"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
@@ -2006,20 +1987,18 @@ msgid "Window recording canceled"
 msgstr "Záznam okna byl zrušen"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr "Selhal výběr obrazovky: %1"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#| msgid "Failed to select window: No window found"
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr "Selhal výběr okna: %1"
+msgstr "Selhal výběr okna: Nebylo nalezeno žádné okno"
 
 #: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
@@ -2273,12 +2252,10 @@ msgstr "Pozice videa byla zkopírována do schránky."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:531
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR kód nalezen: %1"
+msgstr ""
 
 #: src/SpectacleCore.cpp:535
 #, kde-format
@@ -2360,31 +2337,31 @@ msgstr "%1 není platný režim pro --record"
 
 #: src/SpectacleCore.cpp:1231
 #, fuzzy, kde-format
+#| msgctxt "@info"
 #| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#| "The screenshot has been saved as <link url=\"%1\">%2</link> and its "
+#| "location has been copied to clipboard"
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Snímek obrazovky byl uložen jako  '%1' do '%2' cesta k jeho umístění byla "
-"uložena do schránky."
+"Snímek obrazovky byl uložen jako <link url=\"%1\">%2</link> a jeho umístění "
+"bylo zkopírováno do schránky"
 
 #: src/SpectacleCore.cpp:1235
 #, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#| msgid "A screenshot was saved to your clipboard."
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Snímek obrazovky byl uložen jako '%1' do vaší složky Obrázky."
+msgstr "Snímek obrazovky byl uložen do schránky."
 
 #: src/SpectacleCore.cpp:1238
 #, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#| msgid "A screenshot was saved to your clipboard."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Snímek obrazovky byl uložen jako '%1' do '%2'."
+msgstr "Snímek obrazovky byl uložen do schránky."
 
 #: src/SpectacleCore.cpp:1242
 #, kde-format
@@ -2392,32 +2369,25 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Snímek obrazovky byl uložen do schránky."
 
 #: src/SpectacleCore.cpp:1247
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Záznam byl uložen jako  '%1' do '%2' cesta k jeho umístění byla uložena do "
-"schránky."
 
 #: src/SpectacleCore.cpp:1249
 #, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#| msgid "A screenshot was saved to your clipboard."
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Záznam byl uložen jako '%1' do vaší složky Videa."
+msgstr "Snímek obrazovky byl uložen do schránky."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Záznam byl uložen jako '%1' do '%2'."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1262
 #, kde-format
@@ -2453,95 +2423,3 @@ msgstr "Animovaný WebP (lepší než GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (kompatibilní, ale málo efektivní)"
-
-#~ msgid "The last used annotation tool type"
-#~ msgstr "Naposled použitý nástroj pro vytváření poznámek"
-
-#~ msgid "Stroke width for freehand annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Volná ruka"
-
-#~ msgid "Stroke width for highlighter annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Zvýrazňování"
-
-#~ msgid "Stroke width for line annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Čára"
-
-#~ msgid "Stroke width for arrow annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Šipka"
-
-#~ msgid "Stroke width for rectangle annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Obdélník"
-
-#~ msgid "Stroke width for ellipse annotation tool"
-#~ msgstr "Šířka tahu při použití nástroje pro poznámky Elipsa"
-
-#~ msgid "Stroke color for freehand annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Volná ruka"
-
-#~ msgid "Stroke color for highlighter annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Zvýrazňování"
-
-#~ msgid "Stroke color for line annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Čára"
-
-#~ msgid "Stroke color for arrow annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Šipka"
-
-#~ msgid "Stroke color for rectangle annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Obdélník"
-
-#~ msgid "Stroke color for ellipse annotation tool"
-#~ msgstr "Barva tahu při použití nástroje pro poznámky Elipsa"
-
-#~ msgid "Fill color for rectangle annotation tool"
-#~ msgstr "Barva oblasti při použití nástroje pro poznámky Obdélník"
-
-#~ msgid "Fill color for ellipse annotation tool"
-#~ msgstr "Barva oblasti při použití nástroje pro poznámky Elipsa"
-
-#~ msgid "Fill color for number annotation tool"
-#~ msgstr "Barva při použití nástroje pro poznámky Čílice"
-
-#~ msgid "The strength of the blur effect."
-#~ msgstr "Síla efektu rozmazání."
-
-#~ msgid "The strength of the pixelate effect."
-#~ msgstr "Síla efektu pixelizace."
-
-#~ msgid "Font for text annotations"
-#~ msgstr "Písmo pro textové poznámky"
-
-#~ msgid "Font for number annotations"
-#~ msgstr "Písmo pro číselné poznámky"
-
-#~ msgid "Font color for annotations"
-#~ msgstr "Barva písma pro poznámky"
-
-#~ msgid "Whether freehand annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Volná ruka vykreslovat její "
-#~ "stín"
-
-#~ msgid "Whether line annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Čára vykreslovat její stín"
-
-#~ msgid "Whether arrow annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Šipka vykreslovat její stín"
-
-#~ msgid "Whether rectangle annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Obdélník vykreslovat jeho stín"
-
-#~ msgid "Whether ellipse annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Elipsa vykreslovat její stín"
-
-#~ msgid "Whether text annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Text vykreslovat jeho stín"
-
-#~ msgid "Whether number annotation tool has a drop shadow"
-#~ msgstr ""
-#~ "Zda se má při použití nástroje pro poznámky Číslice vykreslovat její stín"
