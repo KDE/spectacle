@@ -584,7 +584,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             languagesText = displayLanguages.join(u", "_s);
         }
 
-        auto notificationText = xi18nc("@info:notification", "Text copied to clipboard.<nl/>Languages detected: %1", languagesText);
+        auto notificationText = xi18nc("@info:notification", "Text copied to clipboard.<nl/>Languages used: %1", languagesText);
         notification->setText(notificationText);
         notification->setIconName(u"document-scan"_s);
         
