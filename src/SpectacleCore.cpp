@@ -555,7 +555,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
             i18nc("@info", "Text extraction completed"));
         
-        auto notification = new KNotification(u"ocrTextExtracted"_s, KNotification::CloseOnTimeout, this);
+        auto notification = new KNotification(u"ocrTextExtracted"_s, KNotification::CloseOnTimeout, nullptr);
         notification->setTitle(i18nc("@info:notification title", "Text Extracted"));
 
         auto ocrManager = OcrManager::instance();
@@ -1210,11 +1210,12 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
 
     KNotification *notification = nullptr;
     QString title;
+    // Use nullptr as the notification parent to prevent them from disappearing from history.
     if (type == ScreenCapture::Screenshot) {
-        notification = new KNotification(u"newScreenshotSaved"_s, KNotification::CloseOnTimeout, this);
+        notification = new KNotification(u"newScreenshotSaved"_s, KNotification::CloseOnTimeout, nullptr);
         title = CaptureModeModel::captureModeLabel(toCaptureMode(m_lastGrabMode));
     } else {
-        notification = new KNotification(u"recordingSaved"_s, KNotification::CloseOnTimeout, this);
+        notification = new KNotification(u"recordingSaved"_s, KNotification::CloseOnTimeout, nullptr);
         title = RecordingModeModel::recordingModeLabel(m_lastRecordingMode);
     }
     notification->setTitle(title);
