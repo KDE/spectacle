@@ -587,7 +587,9 @@ MouseArea {
                 id: annotationsToolBar
                 property bool rememberPosition: false
                 readonly property int valignment: {
-                    if (SelectionEditor.handlesRect.top >= height + annotationsToolBar.bottomPadding || SelectionEditor.selection.empty) {
+                    const spaceAbove = SelectionEditor.handlesRect.top - root.viewportRect.top
+                    const neededSpace = height + annotationsToolBar.bottomPadding
+                    if (spaceAbove >= neededSpace || SelectionEditor.selection.empty) {
                         // the top of the top side of the selection
                         // or the top of the screen
                         return Qt.AlignTop
@@ -763,7 +765,7 @@ MouseArea {
                 property bool rememberPosition: false
                 property alias dragging: dragHandler.active
                 readonly property int valignment: {
-		    const spaceBelow = root.viewportRect.bottom - SelectionEditor.handlesRect.bottom
+                    const spaceBelow = root.viewportRect.bottom - SelectionEditor.handlesRect.bottom
                     const neededSpace = height + toolBar.topPadding
                     if (SelectionEditor.selection.empty || spaceBelow >= neededSpace) {
                         // the bottom of the bottom side of the selection
