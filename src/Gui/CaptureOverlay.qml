@@ -244,6 +244,70 @@ MouseArea {
         x: -root.viewportRect.x
         y: -root.viewportRect.y
 
+        function getScreenForEdge(yEdge) {
+            const centerX = SelectionEditor.selection.empty 
+                ? root.viewportRect.x + root.width / 2 
+                : SelectionEditor.selection.horizontalCenter;
+
+            
+            for (let i = 0; i < Qt.application.screens.length; ++i) {
+                const screen = Qt.application.screens[i];
+                if (centerX >= screen.virtualX && centerX < screen.virtualX + screen.width &&
+                    yEdge >= screen.virtualY && yEdge < screen.virtualY + screen.height) {
+                    return Qt.rect(screen.virtualX, screen.virtualY, screen.width, screen.height);
+                }
+            }
+            
+            return getDominantScreenRect();
+        }
+        function getDominantScreenRect() {
+            // No Selection -> Fallback to Center
+            if (SelectionEditor.selection.empty) {
+                const centerX = root.viewportRect.x + root.width / 2;
+                const centerY = root.viewportRect.y + root.height / 2;
+                for (let i = 0; i < Qt.application.screens.length; ++i) {
+                    const screen = Qt.application.screens[i];
+                    if (centerX >= screen.virtualX && centerX < screen.virtualX + screen.width &&
+                        centerY >= screen.virtualY && centerY < screen.virtualY + screen.height) {
+                        return Qt.rect(screen.virtualX, screen.virtualY, screen.width, screen.height);
+                    }
+                }
+                return root.viewportRect;
+            }
+
+            // Selection exists -> Find the screen with maximum overlap area
+            let maxArea = 0;
+            let bestScreenRect = root.viewportRect; // Fallback
+            
+            const sel = SelectionEditor.selection;
+
+            for (let i = 0; i < Qt.application.screens.length; ++i) {
+                const screen = Qt.application.screens[i];
+                
+                // Calculate intersection
+                const x1 = Math.max(sel.x, screen.virtualX);
+                const y1 = Math.max(sel.y, screen.virtualY);
+                const x2 = Math.min(sel.x + sel.width, screen.virtualX + screen.width);
+                const y2 = Math.min(sel.y + sel.height, screen.virtualY + screen.height);
+
+                if (x2 > x1 && y2 > y1) {
+                    const area = (x2 - x1) * (y2 - y1);
+                    if (area > maxArea) {
+                        maxArea = area;
+                        bestScreenRect = Qt.rect(screen.virtualX, screen.virtualY, screen.width, screen.height);
+                    }
+                }
+            }
+            return bestScreenRect;
+        }
+
+        function constrainToRect(proposedX, itemWidth, boundaryRect, padding) {
+            const minX = boundaryRect.x + padding;
+            const maxX = boundaryRect.x + boundaryRect.width - itemWidth - padding;
+            return Math.max(minX, Math.min(proposedX, maxX));
+        }
+            
+
         // Magnifier
         Loader {
             id: magnifierLoader
@@ -586,15 +650,18 @@ MouseArea {
             sourceComponent: FloatingToolBar {
                 id: annotationsToolBar
                 property bool rememberPosition: false
+
+                readonly property rect bounds: SelectionEditor.selection.empty 
+                    ? screensRectItem.getDominantScreenRect()
+                    : screensRectItem.getScreenForEdge(SelectionEditor.selection.top)
+
                 readonly property int valignment: {
-                    const spaceAbove = SelectionEditor.handlesRect.top - root.viewportRect.top
+                    const spaceAbove = SelectionEditor.handlesRect.top - bounds.top
                     const neededSpace = height + annotationsToolBar.bottomPadding
+
                     if (spaceAbove >= neededSpace || SelectionEditor.selection.empty) {
-                        // the top of the top side of the selection
-                        // or the top of the screen
                         return Qt.AlignTop
                     } else {
-                        // the bottom of the top side of the selection
                         return Qt.AlignBottom
                     }
                 }
@@ -641,9 +708,12 @@ MouseArea {
                     value: {
                         const v = SelectionEditor.selection.empty ? (root.width - annotationsToolBar.width) / 2 + root.viewportRect.x
                                                     : SelectionEditor.selection.horizontalCenter - annotationsToolBar.width / 2
-                        return Math.max(annotationsToolBar.leftPadding, // min value
-                            Math.min(dprRound(v),
-                                        SelectionEditor.screensRect.width - annotationsToolBar.width - annotationsToolBar.rightPadding)) // max value
+                        return screensRectItem.constrainToRect(
+                            dprRound(v), 
+                            annotationsToolBar.width, 
+                            annotationsToolBar.bounds, 
+                            annotationsToolBar.leftPadding
+                        );
                     }
                     when: screensRectItem.allowToolbars && !annotationsToolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
@@ -653,6 +723,7 @@ MouseArea {
                     target: atbLoader
                     value: {
                         let v = 0
+
                         if (SelectionEditor.selection.empty) {
                             v = root.viewportRect.y + annotationsToolBar.topPadding
                         } else if (annotationsToolBar.valignment & Qt.AlignTop) {
@@ -663,7 +734,10 @@ MouseArea {
                         } else {
                             v = (root.height - annotationsToolBar.height) / 2 - parent.y
                         }
-                        return dprRound(v)
+                        const minY = annotationsToolBar.bounds.top + annotationsToolBar.topPadding;
+                        const maxY = annotationsToolBar.bounds.bottom - annotationsToolBar.height - annotationsToolBar.bottomPadding;
+                        
+                        return Math.max(minY, Math.min(dprRound(v), maxY));
                     }
                     when: screensRectItem.allowToolbars && !annotationsToolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
@@ -764,15 +838,18 @@ MouseArea {
                 id: toolBar
                 property bool rememberPosition: false
                 property alias dragging: dragHandler.active
+
+                readonly property rect bounds: SelectionEditor.selection.empty 
+                    ? screensRectItem.getDominantScreenRect()
+                    : screensRectItem.getScreenForEdge(SelectionEditor.selection.bottom)
+
                 readonly property int valignment: {
-                    const spaceBelow = root.viewportRect.bottom - SelectionEditor.handlesRect.bottom
+                    const spaceBelow = bounds.bottom - SelectionEditor.handlesRect.bottom
                     const neededSpace = height + toolBar.topPadding
+                    
                     if (SelectionEditor.selection.empty || spaceBelow >= neededSpace) {
-                        // the bottom of the bottom side of the selection
-                        // or the bottom of the screen
                         return Qt.AlignBottom
                     } else {
-                        // the top of the bottom side of the selection
                         return Qt.AlignTop
                     }
                 }
@@ -782,9 +859,12 @@ MouseArea {
                     value: {
                         const v = SelectionEditor.selection.empty ? (root.width - toolBar.width) / 2 + root.viewportRect.x
                                                     : SelectionEditor.selection.horizontalCenter - toolBar.width / 2
-                        return Math.max(toolBar.leftPadding, // min value
-                            Math.min(dprRound(v),
-                                        SelectionEditor.screensRect.width - toolBar.width - toolBar.rightPadding)) // max value
+                        return screensRectItem.constrainToRect(
+                            dprRound(v), 
+                            toolBar.width, 
+                            toolBar.bounds, 
+                            toolBar.leftPadding
+                        );
                     }
                     when: screensRectItem.allowToolbars && !toolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
@@ -794,6 +874,7 @@ MouseArea {
                     target: ftbLoader
                     value: {
                         let v = 0
+                         
                         if (SelectionEditor.selection.empty) {
                             v = root.viewportRect.y + root.height - toolBar.height - toolBar.bottomPadding
                         } else if (toolBar.valignment & Qt.AlignBottom) {
@@ -804,7 +885,10 @@ MouseArea {
                         } else {
                             v = (toolBar.height / 2) - toolBar.parent.y
                         }
-                        return dprRound(v)
+
+                        const minY = toolBar.bounds.top + toolBar.topPadding;
+                        const maxY = toolBar.bounds.bottom - toolBar.height - toolBar.bottomPadding;
+                        return Math.max(minY, Math.min(dprRound(v), maxY));
                     }
                     when: screensRectItem.allowToolbars && !toolBar.rememberPosition
                     restoreMode: Binding.RestoreNone
