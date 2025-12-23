@@ -146,6 +146,7 @@ Keywords[az]=ekran şəkli;çəkmək;çap;kəsmək;kəsmə aləti;kəs;
 Keywords[bg]=екранна снимка;заснемане;отпечатване;моментна снимка;изрязване;
 Keywords[ca]=captura de pantalla;captura;imprimeix;impressió;retallat;eina de retall;retall;
 Keywords[ca@valencia]=captura de pantalla;captura;imprimix;impressió;retallat;eina de retall;retall;
+Keywords[cs]=snímek;zachytit;tisk;snímek obrazovky;zachycení;nástroj pro zachycení;zachytit;
 Keywords[da]=snapshot;skærmbillede;capture;print;screenshot;snipping;snipping-værktøj;snip;
 Keywords[de]=Schnappschuss;Aufnahme;Drucken;Bildschirmfoto;
 Keywords[en_GB]=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
