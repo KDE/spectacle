@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2023 Vít Pelčák <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2023, 2025 Vít Pelčák <vit@pelcak.org>
 # SPDX-FileCopyrightText: 2021, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:45+0000\n"
-"PO-Revision-Date: 2025-10-01 17:59+0200\n"
+"PO-Revision-Date: 2025-12-19 16:45+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -222,7 +222,7 @@ msgstr "Otevřít a upravit existující soubor snímku"
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
-msgstr ""
+msgstr "QImageWriter nemůže zapsat obrázek: %1"
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -288,11 +288,10 @@ msgstr ""
 "názvem souboru."
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgid "Unable to save image. Could not upload file to remote location."
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Snímek nelze uložit. Nelze jej odeslat na vzdálené úložiště."
+msgstr "Záznam nelze uložit. Soubor nelze přesunout do: %1"
 
 #: src/ExportManager.cpp:894
 #, kde-format
@@ -679,11 +678,10 @@ msgid "Number"
 msgstr "Číslice"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel:"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr "Zrušit:"
+msgstr "Zrušit"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -888,27 +886,27 @@ msgstr "Sdílet"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extrahovat Text podle jazyka"
 
 #: src/Gui/ExportMenu.cpp:277
 #, kde-format
 msgid "OCR engine is not available."
-msgstr ""
+msgstr "Nástroj OCR není dostupný."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR není k dispozici. Prosím, nainstalujte Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Probíhá inicializace nástroje OCR..."
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "Nejsou dostupná žádná data jazyka pro OCR"
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -955,7 +953,7 @@ msgstr "Nový snímek obrazovky"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Extrahovat text"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1098,14 +1096,14 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Zobrazit kurzor myši při nahrávání obrazovky."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Recording"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Nahrávání"
+msgstr ""
+"Nahrávání:\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:124
 #, kde-format
@@ -1321,19 +1319,19 @@ msgstr "Pokud není Spectacle ukončeno"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Rozpoznávání textu (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Jazyk pro OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
 #, kde-format
 msgid "OCR functionality is not available"
-msgstr ""
+msgstr "Funkce OCR jsou nedostupné"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1343,6 +1341,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Prosím, nainstalujte potřebné balíčky:\n"
+"• tesseract\n"
+"• jazyková data tesseract (např., tesseract-ocr-eng pro angličtinu)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1496,7 +1497,7 @@ msgstr "Zapamatovat si poslední obdélníkovou oblast"
 #: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Výchozí jazyk pro rozpoznání textu v OCR"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:79
@@ -1724,7 +1725,7 @@ msgstr "Escape"
 #, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
-msgstr ""
+msgstr "%1×%2"
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
@@ -1780,7 +1781,7 @@ msgstr "Přiblížení obrázku"
 #, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
-msgstr ""
+msgstr "Při sdílení obrázku došlo k problému: %1"
 
 #: src/Gui/ViewerWindow.cpp:54
 #, kde-format
@@ -1838,7 +1839,7 @@ msgstr ""
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Detekce matematiky/rovnic"
 
 #: src/OcrManager.cpp:641
 #, kde-format
@@ -1849,20 +1850,19 @@ msgstr ""
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr ""
+msgstr "Neplatná šířka pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr ""
+msgstr "Neplatná výška pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgid "After taking a screenshot:"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Po sejmutí obrazovky:"
+msgstr "Neplatný formát pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
@@ -1874,17 +1874,17 @@ msgstr "Nepodařilo se otevřít souborový descriptor pro KWin snímek obrazovk
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr ""
+msgstr "pipe2() selhal pro KWin snímek obrazovky: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unsupported KWin screenshot type metadata: %1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
-msgstr "Nepodporovaná metadata pro KWin snímek obrazovky: %1"
+msgstr ""
+"Požadavek na KWin snímek obrazovky selhal:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
 #, kde-format
@@ -1951,28 +1951,22 @@ msgstr ""
 "změnila způsobem, kterým narušila nahrávání."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: File URL is not a local file"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Záznam selhal: Zadaná URL není místní soubor"
+msgstr "Záznam selhal: URL k dočasnému souboru není místní soubor (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: File URL is not a local file"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
-msgstr "Záznam selhal: Zadaná URL není místní soubor"
+msgstr "Záznam selhal: URL k výstupnímu souboru není místní soubor (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: File URL is not a local file"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Záznam selhal: Zadaná URL není místní soubor"
+msgstr "Záznam selhal: Nelze vytvořit složku (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
@@ -1990,15 +1984,13 @@ msgstr "Záznam okna byl zrušen"
 #, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "Selhal výběr obrazovky: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: No window found"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr "Selhal výběr okna: Nebylo nalezeno žádné okno"
+msgstr "Selhal výběr okna: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
@@ -2255,7 +2247,7 @@ msgstr "Pozice videa byla zkopírována do schránky."
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr ""
+msgstr "Kód nalezen: %1"
 
 #: src/SpectacleCore.cpp:536
 #, kde-format
@@ -2267,67 +2259,67 @@ msgstr "Nalezen QR kód s binární obsahem."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Získání textu selhalo"
 
 #: src/SpectacleCore.cpp:551
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "V obrázku nebyl nalezen žádný text"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Získání textu bylo dokončeno"
 
 #: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Text byl získán"
 
 #: src/SpectacleCore.cpp:576
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 a %2"
 
 #: src/SpectacleCore.cpp:581
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr ""
+msgstr "Text byl zkopírován do schránky.<nl/>Rozpoznané jazyky: %1"
 
 #: src/SpectacleCore.cpp:586
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Otevřít v textovém editoru"
 
 #: src/SpectacleCore.cpp:701
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Prosím, vyberte oblast před zahájením získávání textu"
 
 #: src/SpectacleCore.cpp:723
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr ""
+msgstr "OCR není k dispozici."
 
 #: src/SpectacleCore.cpp:729
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr ""
+msgstr "Není dostupný žádný snímek obrazovky."
 
 #: src/SpectacleCore.cpp:733
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Získávám text z obrázku..."
 
 #: src/SpectacleCore.cpp:997
 #, kde-format
@@ -2336,32 +2328,26 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 není platný režim pro --record"
 
 #: src/SpectacleCore.cpp:1233
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "The screenshot has been saved as <link url=\"%1\">%2</link> and its "
-#| "location has been copied to clipboard"
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Snímek obrazovky byl uložen jako <link url=\"%1\">%2</link> a jeho umístění "
-"bylo zkopírováno do schránky"
+"Snímek obrazovky byl uložen jako '%1' do '%2' cesta k jeho umístění byla "
+"uložena do schránky."
 
 #: src/SpectacleCore.cpp:1237
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Snímek obrazovky byl uložen do schránky."
+msgstr "Snímek obrazovky byl uložen jako '%1' do vaší složky Obrázky."
 
 #: src/SpectacleCore.cpp:1240
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Snímek obrazovky byl uložen do schránky."
+msgstr "Snímek obrazovky byl uložen jako '%1' do '%2'."
 
 #: src/SpectacleCore.cpp:1244
 #, kde-format
@@ -2375,19 +2361,20 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
+"Záznam byl uložen jako  '%1' do '%2' cesta k jeho umístění byla uložena do "
+"schránky."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Snímek obrazovky byl uložen do schránky."
+msgstr "Záznam byl uložen jako '%1' do vaší složky Videa."
 
 #: src/SpectacleCore.cpp:1253
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr ""
+msgstr "Záznam byl uložen jako '%1' do '%2'."
 
 #: src/SpectacleCore.cpp:1264
 #, kde-format
@@ -2396,9 +2383,7 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: src/SpectacleCore.cpp:1270
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action"
 msgid "Open Containing Folder"
 msgstr "Otevřít odpovídající složku"
