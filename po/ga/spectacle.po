@@ -1,109 +1,106 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2016, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
-# SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
-# SPDX-FileCopyrightText: 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
-# Tommi Nieminen <translator@legisign.org>, 2024.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the spectacle package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:45+0000\n"
-"PO-Revision-Date: 2025-12-05 18:41+0200\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
-"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
-"Language: fi\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
 
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Kuvakaappaukset"
+msgstr ""
 
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Kuvakaappaus"
+msgstr ""
 
 #, kde-format
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Nauhoitukset"
+msgstr ""
 
 #, kde-format
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Nauhoitus"
+msgstr ""
 
-# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/CaptureModeModel.cpp:162
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
-msgstr "Suorakulmainen alue"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:164
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
-msgstr "Kaikki näytöt (skaalattuna samaan kokoon)"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:166
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Current Screen"
-msgstr "Nykyinen näyttö"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:168
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Active Window"
-msgstr "Aktiivinen ikkuna"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:171
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr "Valitse ikkuna"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:171
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
-msgstr "Osoittimen alla oleva ikkuna"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:174
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens"
-msgstr "Kaikki näytöt"
+msgstr ""
 
 #: src/CaptureModeModel.cpp:176
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Full Screen"
-msgstr "Koko näyttö"
+msgstr ""
 
 #: src/CommandLineOptions.h:22
 #, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Kaappaa koko työpöytä (oletus)"
+msgstr ""
 
 #: src/CommandLineOptions.h:26
 #, kde-format
 msgid "Capture the current monitor"
-msgstr "Kaappaa nykyinen näyttö"
+msgstr ""
 
 #: src/CommandLineOptions.h:30
 #, kde-format
 msgid "Capture the active window"
-msgstr "Kaappaa aktiivinen ikkuna"
+msgstr ""
 
 #: src/CommandLineOptions.h:34
 #, kde-format
@@ -111,8 +108,6 @@ msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Kaappaa osoittimen alla oleva ikkuna mukaan lukien ikkunat, joihin "
-"ponnahdusvalikot kuuluvat"
 
 #: src/CommandLineOptions.h:38
 #, kde-format
@@ -120,13 +115,11 @@ msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr ""
-"Kaappaa osoittimen alla oleva ikkuna pois lukien ikkunat, joihin "
-"ponnahdusvalikot kuuluvat"
 
 #: src/CommandLineOptions.h:42
 #, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Kaappaa suorakulmainen alue näytöstä"
+msgstr ""
 
 #: src/CommandLineOptions.h:46
 #, kde-format
@@ -136,46 +129,42 @@ msgid ""
 "- s, screen\n"
 "- w, window"
 msgstr ""
-"Nauhoita näyttöä valitussa tilassa. Tilat:\n"
-"- r, alue\n"
-"- s, näyttö\n"
-"- w, ikkuna"
 
 #: src/CommandLineOptions.h:54
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
+msgstr ""
 
 #: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Start in GUI mode (default)"
-msgstr "Käynnistä graafiseen käyttöliittymään (oletus)"
+msgstr ""
 
 #: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Kaappaa kuva ja lopeta ikkunaa avaamatta"
+msgstr ""
 
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Start in DBus-Activation mode"
-msgstr "Käynnistä DBus-Activation-tilassa"
+msgstr ""
 
 #: src/CommandLineOptions.h:70
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
-msgstr "Tausta-ajossa älä näytä ilmoitusta, kun kaappaus otetaan"
+msgstr ""
 
 #: src/CommandLineOptions.h:74
 #, kde-format
 msgid "In background mode, save image to specified file"
-msgstr "Tallenna tausta-ajossa kuva annettuun tiedostoon"
+msgstr ""
 
 #: src/CommandLineOptions.h:79
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
-msgstr "Viivytä tausta-ajossa kuvan kaappaamista (aika millisekunteina)"
+msgstr ""
 
 #: src/CommandLineOptions.h:84
 #, kde-format
@@ -183,50 +172,47 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
-"Kopioi tausta-ajossa ruutukaappaus leikepöydälle, ellei -o-valitsinta ole "
-"annettu."
 
 #: src/CommandLineOptions.h:88
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "Kopioi tausta-ajossa ruutukaappaustiedoston sijainti leikepöydälle"
+msgstr ""
 
 #: src/CommandLineOptions.h:92
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
-msgstr "Odota napsautusta ennen kuvan kaappaamista. Viivettä ei huomioida"
+msgstr ""
 
 #: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
-msgstr "Käynnistää uuden käyttöliittymäinstanssin rekisteröimättä DBusiin"
+msgstr ""
 
 #: src/CommandLineOptions.h:100
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "Sisällytä tausta-ajossa kuvakaappaukseen osoitin"
+msgstr ""
 
 #: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
-msgstr "Sisällytä tausta-ajossa kuvakaappaukseen ikkunakoristeet"
+msgstr ""
 
 #: src/CommandLineOptions.h:106
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "Jätä tausta-ajossa varjot pois kuvakaappauksesta"
+msgstr ""
 
 #: src/CommandLineOptions.h:109
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr "Avaa ruutukaappaustiedosto ja muokkaa sitä"
+msgstr ""
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
-msgstr "QImageWriter ei voi kirjoittaa kuvaa: %1"
+msgstr ""
 
 #: src/ExportManager.cpp:475
 #, kde-kuit-format
@@ -235,15 +221,11 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Ruutukaappausta ei voitu tallentaa, koska kansion luonti epäonnistui:<nl/"
-"><filename>%1</filename>"
 
 #: src/ExportManager.cpp:485
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
-"Kuvakaappauksen tallentaminen epäonnistui. Tiedostoa tallennettaessa sattui "
-"virhe."
 
 #: src/ExportManager.cpp:505
 #, kde-kuit-format
@@ -252,31 +234,26 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Ruutukaappausta ei voitu tallentaa, koska etäkansion luonti epäonnistui:<nl/"
-"><filename>%1</filename>"
 
 #: src/ExportManager.cpp:516 src/ExportManager.cpp:565
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
-"Kuvakaappauksen tallentaminen epäonnistui. Paikalliseen väliaikaistiedostoon "
-"kirjoitettaessa sattui virhe."
 
 #: src/ExportManager.cpp:524
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
-"Kuvan tallennus epäonnistui. Tiedostoa ei voitu lähettää verkkokohteeseen."
 
 #: src/ExportManager.cpp:572
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
-msgstr "Kuvakaappauksen tallennus epäonnistui. Tiedostonimi on virheellinen."
+msgstr ""
 
 #: src/ExportManager.cpp:616
 #, kde-format
 msgid "Cannot save an empty screenshot image."
-msgstr "Tyhjää kuvakaappausta ei voi tallentaa."
+msgstr ""
 
 #: src/ExportManager.cpp:774
 #, kde-format
@@ -284,8 +261,6 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
-"Videon vienti epäonnistui: Väliaikaisen tiedoston URL on oltava paikallinen "
-"olemassa oleva tiedosto"
 
 #: src/ExportManager.cpp:781
 #, kde-format
@@ -293,212 +268,208 @@ msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
-"Videon vienti epäonnistui: Tiedoston on oltava kelvollinen URL-osoite ja "
-"tiedostonimi"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
-msgstr "Nauhoituksen tallennus epäonnistui. Tiedostoa ei voitu siirtää: %1"
+msgstr ""
 
 #: src/ExportManager.cpp:894
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
-msgstr "Tulostus epäonnistui tulostimen alustuksen epäonnistuttua."
+msgstr ""
 
 #: src/ExportManager.cpp:911
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
-msgstr "Päivä (1–31)"
+msgstr ""
 
 #: src/ExportManager.cpp:912
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
-msgstr "Päivä (01–31)"
+msgstr ""
 
 #: src/ExportManager.cpp:913
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
-msgstr "Päivä (lyhyt nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:914
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
-msgstr "Päivä (pitkä nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:915
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr "Kuukausi (1–12)"
+msgstr ""
 
 #: src/ExportManager.cpp:916
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr "Kuukausi (01–12)"
+msgstr ""
 
 #: src/ExportManager.cpp:917
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
-msgstr "Kuukausi (lyhyt nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:918
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
-msgstr "Kuukausi (pitkä nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:919
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
-msgstr "Vuosi (kaksinumeroinen)"
+msgstr ""
 
 #: src/ExportManager.cpp:920
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
-msgstr "Vuosi (nelinumeroinen)"
+msgstr ""
 
 #: src/ExportManager.cpp:921
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
-msgstr "Tunti (0–23)"
+msgstr ""
 
 #: src/ExportManager.cpp:922
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr "Tunti (00–23)"
+msgstr ""
 
 #: src/ExportManager.cpp:923
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr "Tunti (1–12)"
+msgstr ""
 
 #: src/ExportManager.cpp:924
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr "Tunti (01–12)"
+msgstr ""
 
 #: src/ExportManager.cpp:925
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr "Minuutti (0–59)"
+msgstr ""
 
 #: src/ExportManager.cpp:926
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr "Minuutti (00–59)"
+msgstr ""
 
 #: src/ExportManager.cpp:927
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr "Sekunti (0–59)"
+msgstr ""
 
 #: src/ExportManager.cpp:928
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr "Sekunti (00–59)"
+msgstr ""
 
 #: src/ExportManager.cpp:929
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
-msgstr "Millisekunti (0–999)"
+msgstr ""
 
 #: src/ExportManager.cpp:931
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
-msgstr "Millisekunti (000–999)"
+msgstr ""
 
 #: src/ExportManager.cpp:932
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
-msgstr "ap/ip"
+msgstr ""
 
 #: src/ExportManager.cpp:934
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
-msgstr "ap/ip"
+msgstr ""
 
 #: src/ExportManager.cpp:936
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
-msgstr "AP/IP vai ap/ip (kotoistettu)"
+msgstr ""
 
 #: src/ExportManager.cpp:938
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
-msgstr "Aikavyöhyke (lyhyt nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:939
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
-msgstr "Aikavyöhykkeen korjaus (±0000)"
+msgstr ""
 
 #: src/ExportManager.cpp:940
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr "Aikavyöhykkeen korjaus (±00:00)"
+msgstr ""
 
 #: src/ExportManager.cpp:941
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
-msgstr "Aikavyöhyke (pitkä nimi)"
+msgstr ""
 
 #: src/ExportManager.cpp:942
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
-msgstr "Sekuntia Unix-ajan alusta"
+msgstr ""
 
 #: src/ExportManager.cpp:943
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
-msgstr "Ikkunan otsikko"
+msgstr ""
 
 #: src/ExportManager.cpp:944
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Juokseva numerointi (täytetty lisäämällä ”#”-merkkejä)"
+msgstr ""
 
 #: src/Gui/AcceptAction.qml:9
 #, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr "Hyväksy"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
-msgstr "Viiva:"
+msgstr ""
 
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
@@ -508,142 +479,141 @@ msgstr "Viiva:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] "%1 px"
-msgstr[1] "%1 px"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
 msgid "Stroke Width"
-msgstr "Viivan paksuus"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:126
 #, kde-format
 msgid "Stroke Color"
-msgstr "Viivan väri"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:162
 #, kde-format
 msgid "Fill:"
-msgstr "Täyttö:"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:174
 #, kde-format
 msgid "Fill Color"
-msgstr "Täyttöväri"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:213
 #, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr "Voimakkuus:"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr "Tehosteen voimakkuus."
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:259
 #, kde-format
 msgid "Font:"
-msgstr "Fontti:"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:273
 #, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] "%2 %3 %1 pt"
-msgstr[1] "%2 %3 %1 pt"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:274
 #, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] "%2 %1 pt"
-msgstr[1] "%2 %1 pt"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:286
 #, kde-format
 msgid "Font Color"
-msgstr "Fonttiväri"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:325
 #, kde-format
 msgid "Number:"
-msgstr "Numero:"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:344
 #, kde-format
 msgid "Number for number annotations"
-msgstr "Numeeristen merkintöjen numero"
+msgstr ""
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:372
 #, kde-format
 msgid "Shadow"
-msgstr "Varjo"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
 #, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
-msgstr "Ei mitään"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:120
 #, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr "Rajaa"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:127
 #, kde-format
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
-msgstr "Valitse"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:136
 #, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
-msgstr "Vapaa käsi"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:137
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr "Vaihto: kiinnity suoriin viivoihin"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:144
 #, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
-msgstr "Korostus"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:153
 #, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
-msgstr "Viiva"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr "Vaihto: kiinnity 45° askelin"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:161
 #, kde-format
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
-msgstr "Nuoli"
+msgstr ""
 
-# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/Gui/AnnotationsToolBarContents.qml:170
 #, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
-msgstr "Nelikulmio"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:172
 #, kde-format
@@ -652,107 +622,103 @@ msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
-"Vaihto: kiinnity poikittaisliikkeisiin\n"
-"\n"
-"Ctrl: muuta kokoa keskeltä"
 
 #: src/Gui/AnnotationsToolBarContents.qml:179
 #, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
-msgstr "Soikio"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:187
 #, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
-msgstr "Pikselöi"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:195
 #, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
-msgstr "Sumenna"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:203
 #, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
-msgstr "Teksti"
+msgstr ""
 
 #: src/Gui/AnnotationsToolBarContents.qml:210
 #, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
-msgstr "Numero"
+msgstr ""
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr "Peru"
+msgstr ""
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
 #, kde-format
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "Peru (%1 sekunti)"
-msgstr[1] "Peru (%1 sekuntia)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
-msgstr "Ota uusi ruutukaappaus"
+msgstr ""
 
 #: src/Gui/CaptureOptions.qml:39
 #, kde-format
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Kuvakaappausasetukset"
+msgstr ""
 
 #: src/Gui/CaptureOverlay.qml:130
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr "Valitse napsauttamalla ja vetämällä."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
 msgid "Include mouse pointer"
-msgstr "Kaappaa myös hiiriosoitin"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Näytä kaappauskuvassa hiiriosoitin."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
 msgid "Include window titlebar and borders"
-msgstr "Kaappaa myös otsikkopalkki ja reunat"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:26
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr "Näytä ikkunaa kaapattaessa ikkunan otsikkopalkki ja reuna."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:34
 #, kde-format
 msgid "Include window shadow"
-msgstr "Kaappaa myös ikkunan varjo"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:35
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
-msgstr "Näytä ikkunan varjo, kun otat ikkunasta kuvakaappauksen."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
 msgid "Capture the current pop-up only"
-msgstr "Kaappaa vain nykyinen ponnahdusikkuna"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:46
 #, kde-format
@@ -761,259 +727,254 @@ msgid ""
 "taking a screenshot of a window. If disabled, the pop-up is captured along "
 "with the parent window."
 msgstr ""
-"Kaappaa ikkunaa kaapattaessa vain nykyinen ponnahdusikkuna (kuten valikko "
-"tai työkaluvihje). Ellei asetus ole käytössä, kaapataan myös emoikkuna."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Quit after manual Save or Copy"
-msgstr "Lopeta tallennuksen tai kopioinnin jälkeen"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:55
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "Lopeta Spectacle kuvan tallentamisen tai kopioimisen jälkeen."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
-msgstr "Napsautusviive"
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Odota hiiren napsautusta ennen kuvan kaappausta."
+msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:76
 #, kde-format
 msgid "Delay:"
-msgstr "Viive:"
+msgstr ""
 
 #: src/Gui/CopyImageAction.qml:13
 #, kde-format
 msgctxt "@action"
 msgid "Copy"
-msgstr "Kopioi"
+msgstr ""
 
 #: src/Gui/CopyLocationAction.qml:9
 #, kde-format
 msgctxt "@action"
 msgid "Copy Location"
-msgstr "Kopioi sijainti"
+msgstr ""
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
 msgctxt "0 second delay"
 msgid "No Delay"
-msgstr "Ei viivettä"
+msgstr ""
 
 #: src/Gui/DelaySpinBox.qml:24
 #, kde-format
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%2 sekunti"
-msgstr[1] "%2 sekuntia"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/DelaySpinBox.qml:26
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 sekuntia"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:53
 #, kde-format
 msgid "Configure Spectacle…"
-msgstr "Spectaclen asetukset…"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:61
 #, kde-format
 msgid "Help"
-msgstr "Ohje"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:80
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Ota kuvakaappaus:"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
 msgctxt "@title:group"
 msgid "Options"
-msgstr "Valinnat"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Tee nauhoitus:"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:163
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
-msgstr "Kuvakaappaus"
+msgstr ""
 
 #: src/Gui/DialogPage.qml:168
 #, kde-format
 msgctxt "@title:tab"
 msgid "Recording"
-msgstr "Nauhoitus"
+msgstr ""
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr "Muokkaa…"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:51
 #, kde-format
 msgctxt "@title:menu"
 msgid "Export"
-msgstr "Vie"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:54
 #, kde-format
 msgid "Open Default Screenshots Folder"
-msgstr "Avaa kaappaukseen oletuskansio"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:124
 #, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Muu sovellus…"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:156
 #, kde-format
 msgid "Share"
-msgstr "Jaa"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:249
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr "Lue teksti kielen mukaan"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:277
 #, kde-format
 msgid "OCR engine is not available."
-msgstr "Tekstintunnistusmoottori ei ole käytettävissä."
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr "Tekstintunnistus ei ole käytettävissä. Asenna Tesseract OCR."
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr "Tekstintunnistusmoottoria alustetaan…"
+msgstr ""
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "No OCR language data available."
-msgstr "Tekstintunnistuksen kielitietoa ei ole saatavilla."
+msgstr ""
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
 msgctxt "@action"
 msgid "Export"
-msgstr "Vie"
+msgstr ""
 
 #: src/Gui/HelpMenu.cpp:45
 #, kde-format
 msgctxt "@title:menu"
 msgid "Help"
-msgstr "Ohje"
+msgstr ""
 
 #: src/Gui/HelpMenuButton.qml:10
 #, kde-format
 msgctxt "@action"
 msgid "Help"
-msgstr "Ohje"
+msgstr ""
 
-# Tässä "yläkansio” on hassu, kun tarkoitus on avata ei ylempää vaan juuri tiedoston sisältävä kansio.
 #: src/Gui/InlineMessageList.qml:129
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "Avaa yläkansio"
+msgstr ""
 
-# *** TARKISTA: Oletan, että tämä jatkaa otsikkoa ”Press screenshot key to:”
 #: src/Gui/InlineMessageList.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "Kopioi leikepöydälle"
+msgstr ""
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr "Sulje"
+msgstr ""
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
 msgid "New Screenshot"
-msgstr "Uusi kuvakaappaus"
+msgstr ""
 
 #: src/Gui/OcrAction.qml:13
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr "Lue teksti"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "Kuvakaappausasetukset"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:40
 #, kde-format
 msgctxt "@option:check for screenshots"
 msgid "Include mouse pointer"
-msgstr "Kaappaa myös hiiriosoitin"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
-msgstr "Näytä kaapatussa kuvassa hiiriosoitin"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:49
 #, kde-format
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
-msgstr "Kaappaa myös otsikkopalkki ja reunat"
+msgstr ""
 
-# On turha luetella painikkeita tässä, kun Plasma antaa käyttäjän vaihtaa niitä!
 #: src/Gui/OptionsMenu.cpp:50
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
-msgstr "Näytä ikkunan otsikkopalkki, sen painikkeet ja reunus"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:58
 #, kde-format
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr "Kaappaa ikkunan varjo"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:59
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
-msgstr "Näytä ikkunan varjostus"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:69
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
-msgstr "Kaappaa vain nykyinen ponnahdusikkuna"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:71
 #, kde-format
@@ -1022,142 +983,135 @@ msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
-"Kaappaa vain nykyinen ponnahdusikkuna (kuten valikko tai työkaluvihje).\n"
-"Ellei ole käytössä, ponnahdusikkuna tallennetaan pääikkunan kanssa"
 
 #: src/Gui/OptionsMenu.cpp:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
-msgstr "Lopeta tallennuksen tai kopioinnin jälkeen"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:82
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
-msgstr "Lopeta Spectacle kuvan tallentamisen tai kopioimisen jälkeen"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "Kaappaa napsautettaessa"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
-msgstr "Viive:"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:114
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
-msgstr "Ei viivettä"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:133
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
-msgstr "Nauhoitusasetukset"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:135
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
-msgstr "Kaappaa myös hiiriosoitin"
+msgstr ""
 
 #: src/Gui/OptionsMenu.cpp:136
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr "Näytä näyttönauhoituksessa hiiriosoitin"
+msgstr ""
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
 msgctxt "@action"
 msgid "Options"
-msgstr "Valinnat"
+msgstr ""
 
 #: src/Gui/RecordAction.qml:11
 #, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Nauhoita"
+msgstr ""
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Modes"
-msgstr "Nauhoitustilat"
+msgstr ""
 
 #: src/Gui/RecordingModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "Uusi nauhoitus"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Näytä hiiriosoitin näytön nauhoituksessa."
+msgstr ""
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
 msgstr ""
-"Nauhoitetaan:\n"
-"%1"
 
 #: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Pause"
-msgstr "Tauko"
+msgstr ""
 
 #: src/Gui/RecordingView.qml:124
 #, kde-format
 msgid "Play"
-msgstr "Toista"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:23
 #, kde-format
 msgid "Recording Settings"
-msgstr "Nauhoitusasetukset"
+msgstr ""
 
 #: src/Gui/RecordOptions.qml:37
 #, kde-format
 msgid "Finish recording"
-msgstr "Lopeta nauhoitus"
+msgstr ""
 
 #: src/Gui/SaveAction.qml:13
 #, kde-format
 msgctxt "@action"
 msgid "Save"
-msgstr "Tallenna"
+msgstr ""
 
 #: src/Gui/SaveAsAction.qml:9
 #, kde-format
 msgctxt "@action"
 msgid "Save As…"
-msgstr "Tallenna nimellä…"
+msgstr ""
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
-msgstr "Kuvakaappaustilat"
+msgstr ""
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
-msgstr "Uusi kuvakaappaus"
+msgstr ""
 
 #: src/Gui/ScreenshotView.qml:196
 #, kde-format
@@ -1167,131 +1121,126 @@ msgid ""
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
-"Valitse napsauttamalla ja vetämällä.\n"
-"Hyväksy ja rajaa valinta kaksoisnapsauttamalla.\n"
-"Tyhjennä valinta oikealla painikkeella."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, kde-format
 msgid "When launching Spectacle:"
-msgstr "Kun Spectacle käynnistyy:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take rectangular screenshot"
-msgstr "Ota nelikulmainen ruutukaappaus"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr "Ota koko ruudun kuvakaappaus"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Use last-used capture mode"
-msgstr "Käytä viimeisintä kaappaustapaa"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:40
 #, kde-format
 msgid "Do not take a screenshot automatically"
-msgstr "Älä kaappaa automaattisesti"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:64
 #, kde-format
 msgid "After taking a screenshot:"
-msgstr "Kuvakaappauksen jälkeen:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:71
 #, kde-format
 msgid "Save file to default folder"
-msgstr "Tallenna tiedosto oletuskansioon"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:82
 #, kde-format
 msgid "Do not copy anything"
-msgstr "Älä kopioi mitään"
+msgstr ""
 
-# *** TARKISTA: Oletan, että tämä jatkaa otsikkoa ”Press screenshot key to:”
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:87
 #, kde-format
 msgid "Copy image to clipboard"
-msgstr "Kopioi kuva leikepöydälle"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:92
 #, kde-format
 msgid "Copy file location to clipboard"
-msgstr "Kopioi tiedoston sijainti leikepöydälle"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (KTitleWidget, runningTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:116
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "Spectaclen ollessa käynnissä"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:123
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Pikanäppäimen painallus:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
 #, kde-format
 msgid "Take a new Screenshot"
-msgstr "Kaappaa uuden kuvan"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
 #, kde-format
 msgid "Open a new Spectacle window"
-msgstr "Spectacle avaa uuden ikkunan"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:141
 #, kde-format
 msgid "Return focus to Spectacle"
-msgstr "Palauttaa kohdistuksen Spectacleen"
+msgstr ""
 
-# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #. i18n: ectx: property (text), widget (KTitleWidget, regionTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:165
 #, kde-format
 msgid "Rectangular Region Selection"
-msgstr "Suorakulmaisen alueen valinta"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:172
 #, kde-format
 msgid "General:"
-msgstr "Perusasetukset:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useLightMaskColor)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:179
 #, kde-format
 msgid "Use light background"
-msgstr "Käytä vaaleaa taustaväriä"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_useReleaseToCapture)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:186
 #, kde-format
 msgid "Accept on click-and-release"
-msgstr "Painamalla ja vapauttaminen hyväksyy"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:193
 #, kde-format
 msgid "Show magnifier:"
-msgstr "Näytä suurennuslasi:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -1299,7 +1248,7 @@ msgstr "Näytä suurennuslasi:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:227
 #, kde-format
 msgid "Never"
-msgstr "Ei koskaan"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
@@ -1307,43 +1256,43 @@ msgstr "Ei koskaan"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:232
 #, kde-format
 msgid "Always"
-msgstr "Aina"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:211
 #, kde-format
 msgid "While holding Shift"
-msgstr "Painettaessa vaihtonäppäintä"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:219
 #, kde-format
 msgid "Remember selected area:"
-msgstr "Muista valittu alue:"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:237
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr "Spectaclen sulkemiseen asti"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr "Tekstintunnistus (OCR)"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr "Tekstintunnistuskielet:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
 #, kde-format
 msgid "OCR functionality is not available"
-msgstr "Tekstintunnistustoiminto ei ole käytettävissä"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1353,40 +1302,37 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
-"Asenna vaaditut paketit:\n"
-"– Tesseract\n"
-"– Tesseractin kielitieto (esim. suomelle tesseract-ocr-fin)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
 #, kde-format
 msgid "Save Location:"
-msgstr "Tallennuspaikka:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:26
 #, kde-format
 msgid "Compression Quality:"
-msgstr "Pakkauksen laatu:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
 #, kde-format
 msgid "For lossy image formats like JPEG"
-msgstr "Häviöllisille kuvamuodoille (kuten JPEG)"
+msgstr ""
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, qualitySpinner)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:62
 #, no-c-format, kde-format
 msgid "%"
-msgstr "%"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, filenameLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:74
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:26
 #, kde-format
 msgid "Filename:"
-msgstr "Tiedostonimi:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, PreviewLabel)
 #. i18n: ectx: property (text), widget (QLabel, previewLabel)
@@ -1395,13 +1341,13 @@ msgstr "Tiedostonimi:"
 #, kde-format
 msgctxt "Preview of the user configured filename"
 msgid "Preview:"
-msgstr "Esikatselu:"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:40
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1</filename>"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, kde-format
@@ -1409,60 +1355,58 @@ msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
-"Tiedostonimessä voi käyttää seuraavia muuttujia. Ne korvataan varsinaisella "
-"tekstillä, kun tiedosto tallennetaan:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
 msgid "To save to a sub-folder"
-msgstr "Tallenna alikansioon"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
 #, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr "Näytä vähemmän"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
 #, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr "Näytä enemmän"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:36
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
-msgstr "Yleiset"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr "Kuvan tallennus"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr "Videon tallennus"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
-msgstr "Pikanäppäimet"
+msgstr ""
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:85
 #, kde-format
 msgid "Shortcuts"
-msgstr "Pikanäppäimet"
+msgstr ""
 
 #. i18n: ectx: label, entry (launchAction), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:15
 #, kde-format
 msgid "What to do when Spectacle is launched"
-msgstr "Mitä tehdään kun Spectacle käynnistyy"
+msgstr ""
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:25
@@ -1470,13 +1414,12 @@ msgstr "Mitä tehdään kun Spectacle käynnistyy"
 msgid ""
 "What should happen if print key is pressed when Spectacle is already running"
 msgstr ""
-"Mitä tapahtuu, jos kaappausnäppäintä painetaan ja Spectacle on jo käynnissä"
 
 #. i18n: ectx: label, entry (autoSaveImage), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
-msgstr "Tallenna otettu kuva automaattisesti"
+msgstr ""
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
@@ -1485,13 +1428,12 @@ msgstr "Tallenna otettu kuva automaattisesti"
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
-"Leikepöydän toiminto, joka suoritetaan kuvakaappauksen ottamisen jälkeen"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:47
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
-msgstr "Käytetäänkö alueen valintaikkunassa vaaleaa värimaskia"
+msgstr ""
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:60
@@ -1500,74 +1442,72 @@ msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
 msgstr ""
-"Otetaanko kuvakaappaus heti alueen valinnan jälkeen, kun hiiren painike on "
-"vapautettu"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid "Remember the last rectangular region"
-msgstr "Muista viimeisin suorakulmainen alue"
+msgstr ""
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr "Tekstintunnistuksen oletuskielet"
+msgstr ""
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:79
 #, kde-format
 msgid "The last used region the user selected"
-msgstr "Viimeisin käyttäjän valitsema alue"
+msgstr ""
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Ota kuvakaappaus napsauttamalla"
+msgstr ""
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Sisällytetäänkö hiiriosoitin kaappaukseen"
+msgstr ""
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Sisällytetäänkö hiiriosoitin videon nauhoitukseen"
+msgstr ""
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
-msgstr "Sisällytetäänkö ikkunakoristeet kaappaukseen"
+msgstr ""
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Sisällytetäänkö ikkunan varjo osana kaappausta"
+msgstr ""
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Kaappaa vain nykyinen ponnahdusikkuna"
+msgstr ""
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Quit after saving or copying an image"
-msgstr "Lopeta, kun kuva on tallennettu tai kopioitu"
+msgstr ""
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Delay"
-msgstr "Viive"
+msgstr ""
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
@@ -1575,25 +1515,25 @@ msgstr "Viive"
 #: src/Gui/SettingsDialog/spectacle.kcfg:168
 #, kde-format
 msgid "Default filename"
-msgstr "Oletustiedostonimi"
+msgstr ""
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:139
 #, kde-format
 msgid "Compression quality for lossy file formats"
-msgstr "Häviöllisten tiedostomuotojen pakkauslaatu"
+msgstr ""
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Default save image format"
-msgstr "Oletustiedostomuoto"
+msgstr ""
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "The filename template used when saving screenshots"
-msgstr "Tiedoston nimimalli, jota käytetään kuvakaappauksia tallennettaessa"
+msgstr ""
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1601,7 +1541,7 @@ msgstr "Tiedoston nimimalli, jota käytetään kuvakaappauksia tallennettaessa"
 #: src/Gui/SettingsDialog/spectacle.kcfg:197
 #, kde-format
 msgid "The path of the file saved last"
-msgstr "Viimeksi tallennetun tiedoston sijainti"
+msgstr ""
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
@@ -1609,196 +1549,193 @@ msgstr "Viimeksi tallennetun tiedoston sijainti"
 #: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "Last path used for \"save as\" action"
-msgstr "Viimeisin ”Tallenna nimellä” sijainti"
+msgstr ""
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:185
 #, kde-format
 msgid "Default video format"
-msgstr "Oletus videomuoto"
+msgstr ""
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:190
 #, kde-format
 msgid "The filename template used when saving screencasts"
-msgstr "Oletus tiedostonimimalli, jota käytetään tallennettaessa nauhoitusta"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
 #, kde-format
 msgid "Save &Location:"
-msgstr "&Tallennuspaikka:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Ota kuvakaappaus:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
 msgid "Create new selection rectangle:"
-msgstr "Luo uusi valintakulmio:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:20
 #, kde-format
 msgid "Move selection rectangle:"
-msgstr "Siirrä valintakulmiota:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:23
 #, kde-format
 msgid "Resize selection rectangle:"
-msgstr "Muuta valintakulmion kokoa:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:26
 #, kde-format
 msgid "Reset selection:"
-msgstr "Tyhjennä valinta:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:28
 #, kde-format
 msgid "Cancel:"
-msgstr "Peru:"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Release left-click"
-msgstr "Vapauta vasen napsautus"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:33
 #, kde-format
 msgctxt "Mouse action"
 msgid "Double-click"
-msgstr "Kaksoisnapsautus"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:34
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Enter"
-msgstr "Enter"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:35
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag outside selection rectangle"
-msgstr "Vedä valintakulmion ulkopuolella"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:37
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Magnifier"
-msgstr "+ Vaihto: Suurennuslasi"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:40
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag inside selection rectangle"
-msgstr "Vedä valintakulmion sisällä"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:41
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys"
-msgstr "Nuolinäppäimet"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:42
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Move in 1 pixel steps"
-msgstr "+ Vaihto: Siirry 1 kuvapisteen askelin"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:43
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
-msgstr "Vetokahvat"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:44
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Arrow keys + Alt"
-msgstr "Nuolinäppäimet + Alt"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:45
 #, kde-format
 msgctxt "Keyboard action"
 msgid "+ Shift: Resize in 1 pixel steps"
-msgstr "+ Vaihto: Muuta kokoa 1 kuvapisteen askelin"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:46
 #, kde-format
 msgctxt "Mouse action"
 msgid "Right-click"
-msgstr "Oikea napsautus"
+msgstr ""
 
 #: src/Gui/ShortcutsTextBox.qml:48
 #, kde-format
 msgctxt "Keyboard action"
 msgid "Escape"
-msgstr "Seuraavan merkin erikoismerkityksen poisto"
+msgstr ""
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
-msgstr "%1 × %2"
+msgstr ""
 
 #: src/Gui/SmartSpinBox.cpp:30
 #, kde-format
 msgctxt "Integer number of seconds"
 msgid " second"
 msgid_plural " seconds"
-msgstr[0] " sekunti"
-msgstr[1] " sekunti"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/SmartSpinBox.cpp:32
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
-msgstr " sekuntia"
+msgstr ""
 
 #: src/Gui/SpectacleWindow.cpp:173
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunti"
-msgstr[1] "%1 sekuntia"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Gui/SpectacleWindow.cpp:176
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
-msgstr "Ei tallennettu"
+msgstr ""
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
 msgid "Undo"
-msgstr "Kumoa"
+msgstr ""
 
 #: src/Gui/UndoRedoGroup.qml:42
 #, kde-format
 msgid "Redo"
-msgstr "Tee uudelleen"
+msgstr ""
 
 #: src/Gui/ViewerPage.qml:188
 #, kde-format
 msgid "Zoom:"
-msgstr "Lähennys:"
+msgstr ""
 
 #: src/Gui/ViewerPage.qml:202
 #, kde-format
 msgid "Image Zoom"
-msgstr "Kuvan lähennys"
+msgstr ""
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
-msgstr "Kuvaa jaettaessa tapahtui virhe: %1"
+msgstr ""
 
 #: src/Gui/ViewerWindow.cpp:54
 #, kde-format
@@ -1806,36 +1743,34 @@ msgctxt "@info"
 msgid ""
 "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
 "clipboard."
-msgstr "Jaettu kuvalinkki (<a href=\"%1\">%1</a>) on kopioitu leikepöydälle."
+msgstr ""
 
-# pmap: =:gen=Spectaclen:
-# pmap: =:elat=Spectaclesta:
 #: src/Main.cpp:44
 #, kde-format
 msgid "Spectacle"
-msgstr "Spectacle"
+msgstr ""
 
 #: src/Main.cpp:46
 #, kde-format
 msgid "KDE Screenshot Utility"
-msgstr "KDE:n kuvakaappaustyökalu"
+msgstr ""
 
 #: src/Main.cpp:48
 #, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "© 2015 Boudhayan Gupta"
+msgstr ""
 
 #: src/Main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Lasse Liehu, Tommi Nieminen, Kimmo Kujansuu"
+msgstr ""
 
 #: src/Main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "lasse.liehu@gmail.com, translator@legisign.org, mrkujansuu@gmail.com"
+msgstr ""
 
 #: src/Main.cpp:70
 #, kde-format
@@ -1844,77 +1779,60 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Waylandissä Spectacle vaatii KDE Plasman KWin-koostimen, joka ei näyttäisi "
-"olevan käytettävissä. Käytä Spectaclea KDE Plasmassa tai valitse toinen "
-"ruutukaappaustyökalu."
 
 #: src/OcrManager.cpp:594
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr "Suunta ja kirjoitusjärjestelmän tunnistus"
+msgstr ""
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr "Matematiikan tunnistus"
+msgstr ""
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr "Suunta ja kirjoitusjärjestelmän tunnistus"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Virheellinen leveys KWin-kuvakaappaukselle: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Virheellinen korkeus KWin-kuvakaappaukselle: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Virheellinen muoto KWin-kuvakaappaukselle: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr "Ei voitu avata tiedostokuvainta KWin-kuvakaappauksen lukemiseksi."
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "pipe2() epäonnistui KWin-kuvakaappaukselle: %1"
+msgstr ""
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
-"Kwin-kuvakaappauspyyntö epäonnistui:\n"
-"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
 #, kde-format
@@ -1923,32 +1841,30 @@ msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
-"Mahdollisesti asiaan liittyvää tietoa:\n"
-"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:311
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr "Ei-tuettu Kwin-kuvakaappaustyypin metatieto: %1"
+msgstr ""
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr "Näyttönauhoitus ei ole käytettävissä X11:ssä."
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:160
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr "KWin-näytöntoisto ei ole käytettävissä."
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:173
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
-msgstr "Nauhoitus epäonnistui: Tiedoston URL ei ole paikallinen tiedosto"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:264
 #, kde-format
@@ -1957,7 +1873,6 @@ msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
-"Virta sulkeutui, koska kohdenäyttö muuttui nauhoitusta häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:266
 #, kde-format
@@ -1966,7 +1881,6 @@ msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
-"Virta sulkeutui, koska kohdeikkuna muuttui nauhoitusta häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:268
 #, kde-format
@@ -1975,188 +1889,168 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
-"Virta sulkeutui, koska kohdealueen sisältävä näyttö muuttui nauhoitusta "
-"häiritsevällä tavalla."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
-"Nauhoitus epäonnistui: Väliaikaisen tiedoston URL ei ole paikallinen "
-"tiedosto (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
-"Nauhoitus epäonnistui: Kirjoitettavan tiedoston URL ei ole paikallinen "
-"tiedosto (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Nauhoitus epäonnistui: kansiota (%1) ei voi luoda"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:374
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr "Näytön nauhoitus on peruutettu"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:376
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr "Ikkunan nauhoitus on peruutettu"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr "Näyttöä ei voitu valita: %1"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr "Ikkunaa ei voitu valita: %1"
+msgstr ""
 
 #: src/Platforms/VideoPlatformWayland.cpp:412
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
-"Näytön valinta epäonnistui: Mikään näyttö ei sisältänyt hiiriosoittimen "
-"sijaintia"
 
 #: src/Platforms/VideoPlatformWayland.cpp:419
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr "Ikkunaa ei voitu valita: Ikkunaa ei löytynyt"
+msgstr ""
 
-# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/RecordingModeModel.cpp:105
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
-msgstr "Suorakulmainen alue"
+msgstr ""
 
 #: src/RecordingModeModel.cpp:107
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Aktiivinen ikkuna"
+msgstr ""
 
 #: src/RecordingModeModel.cpp:109
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Full Screen"
-msgstr "Koko näyttö"
+msgstr ""
 
 #: src/ShortcutActions.cpp:38
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle"
-msgstr "Käynnistä Spectacle"
+msgstr ""
 
 #: src/ShortcutActions.cpp:44
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr "Kaappaa koko työpöytä"
+msgstr ""
 
 #: src/ShortcutActions.cpp:50
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
-msgstr "Kaappaa nykyinen näyttö"
+msgstr ""
 
 #: src/ShortcutActions.cpp:56
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
-msgstr "Kaappaa aktiivinen ikkuna"
+msgstr ""
 
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr "Kaappaa suorakulmainen alue"
+msgstr ""
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Kaappaa valittu ikkuna"
+msgstr ""
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr "Kaappaa osoittimen alla oleva ikkuna"
+msgstr ""
 
 #: src/ShortcutActions.cpp:76
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Aloita tai lopeta näytön nauhoitus"
+msgstr ""
 
 #: src/ShortcutActions.cpp:82
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Aloita tai lopeta ikkunan nauhoitus"
+msgstr ""
 
 #: src/ShortcutActions.cpp:88
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Aloita tai lopeta alueen nauhoitus"
+msgstr ""
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr "Käynnistä Spectacle kaappaamatta kuvaa"
+msgstr ""
 
 #: src/SpectacleCore.cpp:251
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Kuvakaappausta otettaessa tapahtui virhe."
+msgstr ""
 
 #: src/SpectacleCore.cpp:280
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr ""
 
 #: src/SpectacleCore.cpp:285
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Spectacle nauhoittaa"
+msgstr ""
 
 #: src/SpectacleCore.cpp:311
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
-"Lopeta nauhoitus napsauttamalla sykkivää punaista ilmoitusaluekuvaketta."
 
 #: src/SpectacleCore.cpp:312
 #, kde-kuit-format
@@ -2165,14 +2059,12 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
-"Lopeta nauhoitus napsauttamalla sykkivää punaista ilmoitusaluekuvaketta tai "
-"painamalla <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:329
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr "WebP-tuki puuttuu."
+msgstr ""
 
 #: src/SpectacleCore.cpp:330
 #, kde-format
@@ -2181,26 +2073,24 @@ msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
-"Asenna Qt:n kuvatiedostomuodot saadaksesi Spectaclen animoidun "
-"ilmoitusaluekuvakkeen ja ilmoita tämä sitten jakelullesi paketointiongelmana."
 
 #: src/SpectacleCore.cpp:366
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle viimeistelee nauhoitusta"
+msgstr ""
 
 #: src/SpectacleCore.cpp:367
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Odota"
+msgstr ""
 
 #: src/SpectacleCore.cpp:369
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle viimeistelee nauhoitusta"
+msgstr ""
 
 #: src/SpectacleCore.cpp:371
 #, kde-format
@@ -2209,8 +2099,6 @@ msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
-"Nauhoituksen kesto: %1\n"
-"Lopeta nauhoitus etuajassa napsauttamalla (tietoa menetetään)"
 
 #: src/SpectacleCore.cpp:397
 #, kde-format
@@ -2219,14 +2107,12 @@ msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
-"Nauhoituksen kesto: %1\n"
-"Lopeta nauhoitus napsauttamalla"
 
 #: src/SpectacleCore.cpp:422
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Yritettäessä nauhoittaa näyttöä tapahtui virhe."
+msgstr ""
 
 #: src/SpectacleCore.cpp:464
 #, kde-kuit-format
@@ -2235,8 +2121,6 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Kuvakaappaus kopioitiin leikepöydälle ja tallennettiin nimellä <link href="
-"\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:467
 #, kde-kuit-format
@@ -2245,20 +2129,18 @@ msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Kuvakaappaus tallennettiin nimelle <link href=\"%1\">%2</link>, ja sen "
-"sijainti kopioitiin leikepöydälle"
 
 #: src/SpectacleCore.cpp:470
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Kuvakaappaus tallennettiin nimelle <link href=\"%1\">%2</link>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:474
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "Kuvakaappaus kopioitiin leikepöydälle."
+msgstr ""
 
 #: src/SpectacleCore.cpp:505
 #, kde-kuit-format
@@ -2267,61 +2149,57 @@ msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Video tallennettiin nimelle <link href=\"%1\">%2</link>, ja sen sijainti "
-"kopioitiin leikepöydälle"
 
 #: src/SpectacleCore.cpp:508
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Video tallennettiin nimelle <link href=\"%1\">%2</link>"
+msgstr ""
 
 #: src/SpectacleCore.cpp:512
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Videon sijainti on kopioitu leikepöydälle."
+msgstr ""
 
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:532
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "Löytyi QR-koodi: %1"
+msgstr ""
 
 #: src/SpectacleCore.cpp:536
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr "Löytyi binaaria sisältävä QR-koodi."
+msgstr ""
 
 #: src/SpectacleCore.cpp:545
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr "Tekstin luku epäonnistui"
+msgstr ""
 
 #: src/SpectacleCore.cpp:551
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr "Kuvasta ei löytynyt tekstiä"
+msgstr ""
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr "Tekstin luku valmistui"
+msgstr ""
 
 #: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr "Teksti luettu"
+msgstr ""
 
 #: src/SpectacleCore.cpp:576
 #, kde-format
@@ -2333,732 +2211,126 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "Teksti kopioitiin leikepöydälle.<nl/>Tunnistetut kielet: %1"
+msgstr ""
 
 #: src/SpectacleCore.cpp:586
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr "Avaa tekstimuokkaimeen"
+msgstr ""
 
 #: src/SpectacleCore.cpp:701
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr "Valitse alue ennen tekstin lukua"
+msgstr ""
 
 #: src/SpectacleCore.cpp:723
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "Tekstintunnistus ei ole käytettävissä."
+msgstr ""
 
 #: src/SpectacleCore.cpp:729
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Ruutukaappausta ei ole saatavilla."
+msgstr ""
 
 #: src/SpectacleCore.cpp:733
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr "Luetaan kuvasta tekstiä…"
+msgstr ""
 
 #: src/SpectacleCore.cpp:997
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr "%1 ei ole kelvollinen moodi --record"
+msgstr ""
 
 #: src/SpectacleCore.cpp:1233
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Ruutukaappaus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston "
-"sijainti kopioitiin leikepöydälle."
 
 #: src/SpectacleCore.cpp:1237
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Kuvakaappaus tallennettiin Kuvat-kansioon nimellä ”%1”."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1240
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Kuvakaappaus tallennettiin kansioon ”%2” nimellä ”%1”."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1244
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Kuvakaappaus tallennettiin leikepöydälle."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Nauhoitus on tallennettu nimellä ”%1” kansioon ”%2” ja tiedoston sijainti "
-"kopioitiin leikepöydälle."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Nauhoitus tallennettiin Videot-kansioon nimellä ”%1”."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1253
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Nauhoitus tallennettiin kansioon ”%2” nimellä ”%1”."
+msgstr ""
 
 #: src/SpectacleCore.cpp:1264
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
-msgstr "Avaa"
+msgstr ""
 
-# Tässä "yläkansio” on hassu, kun tarkoitus on avata ei ylempää vaan juuri tiedoston sisältävä kansio.
 #: src/SpectacleCore.cpp:1270
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action"
 msgid "Open Containing Folder"
-msgstr "Avaa yläkansio"
+msgstr ""
 
 #: src/SpectacleCore.cpp:1284
 #, kde-format
 msgid "Annotate"
-msgstr "Merkitse"
+msgstr ""
 
 #: src/VideoFormatModel.cpp:31
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr "WebM/VP9"
+msgstr ""
 
 #: src/VideoFormatModel.cpp:38
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr "MP4/H.264"
+msgstr ""
 
 #: src/VideoFormatModel.cpp:45
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr "Animoitu WebP (parempi kuin GIF)"
+msgstr ""
 
 #: src/VideoFormatModel.cpp:52
 #, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr "GIF (yhteensopiva mutta tehoton)"
-
-#~ msgid "The last used annotation tool type"
-#~ msgstr "Viimeisin merkintätyökalu"
-
-#~ msgid "Stroke width for freehand annotation tool"
-#~ msgstr "Vapaan käden merkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke width for highlighter annotation tool"
-#~ msgstr "Korostusmerkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke width for line annotation tool"
-#~ msgstr "Viivamerkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke width for arrow annotation tool"
-#~ msgstr "Nuolimerkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke width for rectangle annotation tool"
-#~ msgstr "Nelikulmiomerkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke width for ellipse annotation tool"
-#~ msgstr "Soikiomerkintätyökalun viivan paksuus"
-
-#~ msgid "Stroke color for freehand annotation tool"
-#~ msgstr "Vapaan käden merkintätyökalun viivan väri"
-
-#~ msgid "Stroke color for highlighter annotation tool"
-#~ msgstr "Korostusmerkintätyökalun viivan väri"
-
-#~ msgid "Stroke color for line annotation tool"
-#~ msgstr "Viivamerkintätyökalun viivan väri"
-
-#~ msgid "Stroke color for arrow annotation tool"
-#~ msgstr "Nuolimerkintätyökalun viivan väri"
-
-#~ msgid "Stroke color for rectangle annotation tool"
-#~ msgstr "Nelikulmiomerkintätyökalun viivan väri"
-
-#~ msgid "Stroke color for ellipse annotation tool"
-#~ msgstr "Soikiomerkintätyökalun viivan väri"
-
-#~ msgid "Fill color for rectangle annotation tool"
-#~ msgstr "Nelikulmiomerkintätyökalun täyttöväri"
-
-#~ msgid "Fill color for ellipse annotation tool"
-#~ msgstr "Soikiomerkintätyökalun täyttöväri"
-
-#~ msgid "Fill color for number annotation tool"
-#~ msgstr "Lukumerkintätyökalun täyttöväri"
-
-#~ msgid "The strength of the blur effect."
-#~ msgstr "Sumennustehosteen voimakkuus."
-
-#~ msgid "The strength of the pixelate effect."
-#~ msgstr "Pikselöintitehosteen voimakkuus."
-
-#~ msgid "Font for text annotations"
-#~ msgstr "Tekstimerkintöjen fontti"
-
-#~ msgid "Font for number annotations"
-#~ msgstr "Numeromerkintöjen fontti"
-
-#~ msgid "Font color for annotations"
-#~ msgstr "Merkintöjen fonttiväri"
-
-#~ msgid "Whether freehand annotation tool has a drop shadow"
-#~ msgstr "Onko vapaan käden merkintätyökalulla varjoa"
-
-#~ msgid "Whether line annotation tool has a drop shadow"
-#~ msgstr "Onko viivamerkintätyökalulla varjoa"
-
-#~ msgid "Whether arrow annotation tool has a drop shadow"
-#~ msgstr "Onko nuolimerkintätyökalulla varjoa"
-
-#~ msgid "Whether rectangle annotation tool has a drop shadow"
-#~ msgstr "Onko nelikulmiomerkintätyökalulla varjoa"
-
-#~ msgid "Whether ellipse annotation tool has a drop shadow"
-#~ msgstr "Onko soikiomerkintätyökalulla varjoa"
-
-#~ msgid "Whether text annotation tool has a drop shadow"
-#~ msgstr "Onko tekstimerkintätyökalulla varjoa"
-
-#~ msgid "Whether number annotation tool has a drop shadow"
-#~ msgstr "Onko numeromerkintätyökalulla varjoa"
-
-#~ msgid "Show capture instructions"
-#~ msgstr "Näytä ohjeet kaappaukseen"
-
-#~ msgid "Whether to show capture instructions in the region selection"
-#~ msgstr "Näytetäänkö aluetta valittaessa ohjeet kaappamiseen"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Screen"
-#~ msgstr "Nauhoita näyttöä"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Window"
-#~ msgstr "Nauhoita ikkunaa"
-
-# HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "Nauhoita suorakulmaista aluetta"
-
-#~ msgctxt "recording notification message"
-#~ msgid "Click the system tray icon to finish recording"
-#~ msgstr "Lopeta nauhoitus napsauttamalla ilmoitusaluekuvaketta"
-
-#~ msgctxt "@info"
-#~ msgid "The screenshot location has been copied to the clipboard."
-#~ msgstr "Kuvakaappaukseen sijainti on kopioitu leikepöydälle."
-
-#~ msgctxt "@info"
-#~ msgid "Video shared"
-#~ msgstr "Jaettu video"
-
-#~ msgctxt "@info"
-#~ msgid "Image shared"
-#~ msgstr "Jaettu kuva"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr ""
-#~ "Jaettu videolinkki (<a href=\"%1\">%1</a>) on kopioitu leikepöydälle."
-
-#~ msgctxt "@info"
-#~ msgid "There was a problem sharing the video: %1"
-#~ msgstr "Videoa jaettaessa tapahtui virhe: %1"
-
-#~ msgid "Screenshot"
-#~ msgstr "Kuvakaappaus"
-
-#~ msgid "Configure..."
-#~ msgstr "Asetukset…"
-
-#~ msgid "Capture Mode"
-#~ msgstr "Kaappaustapa"
-
-#~ msgid "Capture Settings"
-#~ msgstr "Kaappausasetukset"
-
-#, fuzzy
-#~| msgid "Recording Settings"
-#~ msgctxt "@title:group"
-#~ msgid "Recording Settings"
-#~ msgstr "Nauhoitusasetukset"
-
-#~ msgid ""
-#~ "Could not take a screenshot. Please report this bug here: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">create a "
-#~ "spectacle bug</a>"
-#~ msgstr ""
-#~ "Kuvakaappausta ei voitu ottaa. Ilmoita ohjelmavirheestä: <a href="
-#~ "\"https://bugs.kde.org/enter_bug.cgi?product=Spectacle\">luo Spectaclen "
-#~ "vikailmoitus</a>"
-
-#~ msgid "Screenshot capture canceled or failed"
-#~ msgstr "Kuvan kaappaaminen peruttiin tai se epäonnistui"
-
-#~ msgid "Show Annotation Tools"
-#~ msgstr "Näytä merkintätyökalut"
-
-#~ msgid "Whether to show a magnifier in the region selection"
-#~ msgstr "Käytetäänkö alueen valinnassa suurennuslasia"
-
-#~ msgid "Capture Modes"
-#~ msgstr "Kaappaustavat"
-
-#~ msgctxt "Decimal number of seconds"
-#~ msgid "%2 seconds"
-#~ msgstr "%2 sekuntia"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Day"
-#~ msgstr "päivä"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Month"
-#~ msgstr "kuukausi"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Hour"
-#~ msgstr "tunti"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Minute"
-#~ msgstr "minuutit"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Second"
-#~ msgstr "sekunnit"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Timezone"
-#~ msgstr "Aikavyöhyke"
-
-#~ msgctxt ""
-#~ "A placeholder in the user configurable filename will replaced by the "
-#~ "specified value"
-#~ msgid "Sequential numbering"
-#~ msgstr "juokseva numero"
-
-#~ msgid "The default filename used when recording a video"
-#~ msgstr "Oletustiedostonimi videota nauhoitettaessa"
-
-#, fuzzy
-#~| msgid "Screenshot"
-#~ msgctxt "@item recording mode"
-#~ msgid "Screen"
-#~ msgstr "Ruutukaappaus"
-
-#~ msgid "Workspace"
-#~ msgstr "Työtila"
-
-#~ msgid "Failed to select output"
-#~ msgstr "Ulostuloa ei voitu valita"
-
-#~ msgctxt "@label:listbox"
-#~ msgid "Video format:"
-#~ msgstr "Videomuoto:"
-
-#, fuzzy
-#~| msgid "Save"
-#~ msgctxt "Settings category"
-#~ msgid "Save"
-#~ msgstr "Tallenna"
-
-#~ msgid "File format for saved screen recordings"
-#~ msgstr "Ruutunauhoituksen tiedostomuoto"
-
-#~ msgid "On Click"
-#~ msgstr "Napsautettaessa"
-
-#~ msgid "Take a New Screenshot"
-#~ msgstr "Kaappaa uusi kuva"
-
-#, fuzzy
-#~| msgid ""
-#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~| "If disabled, the pop-up is captured along with the parent window"
-#~ msgid "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ msgstr ""
-#~ "Kaappaa vain nykyinen ponnahdusikkuna (kuten valikko tai työkaluvihje).\n"
-#~ "Ellei asetus ole käytössä, kaapataan myös emoikkuna."
-
-#~ msgid "Full Screen (All Monitors)"
-#~ msgstr "Kaikki näytöt"
-
-#~ msgid "Full Screen (All Monitors, scaled)"
-#~ msgstr "Koko näyttö (kaikki näytöt, skaalattu)"
-
-#~ msgid "Image Size: %1x%2 pixels"
-#~ msgstr "Kuvan koko: %1 × %2 kuvapistettä"
-
-#~ msgid "Change Spectacle's settings."
-#~ msgstr "Muuta Spectaclen asetuksia."
-
-#~ msgid "Add annotation to the screenshot"
-#~ msgstr "Lisää kuvakaappaukseen merkintä"
-
-#~ msgid "Tools"
-#~ msgstr "Työkalut"
-
-#~ msgid "Copy Image to Clipboard"
-#~ msgstr "Kopioi kuva leikepöydälle"
-
-#~ msgid "Ready to take a screenshot"
-#~ msgstr "Valmiina kuvakaappaukseen"
-
-#~ msgctxt "@action:button"
-#~ msgid "Annotate"
-#~ msgstr "Merkitse"
-
-#~ msgid "Area:"
-#~ msgstr "Alue:"
-
-#~ msgid "<b>Options</b>"
-#~ msgstr "<b>Valinnat</b>"
-
-#~ msgid "The last used copy mode"
-#~ msgstr "Viimeisin kopiointitapa"
-
-#~ msgctxt "The entire screen area was captured, heading"
-#~ msgid "Full Screen Captured"
-#~ msgstr "Kaikki näytöt kaapattu"
-
-#~ msgctxt "The current screen was captured, heading"
-#~ msgid "Current Screen Captured"
-#~ msgstr "Nykyinen näyttö kaapattu"
-
-#~ msgctxt "The active window was captured, heading"
-#~ msgid "Active Window Captured"
-#~ msgstr "Aktiivinen ikkuna kaapattu"
-
-#~ msgctxt "The window under the mouse was captured, heading"
-#~ msgid "Window Under Cursor Captured"
-#~ msgstr "Osoittimen alla oleva ikkuna kaapattu"
-
-#~ msgctxt "A rectangular region was captured, heading"
-#~ msgid "Rectangular Region Captured"
-#~ msgstr "Suorakulmainen alue kaapattu"
-
-#~ msgid "More Online Services"
-#~ msgstr "Lisää verkkopalveluita"
-
-#~ msgid "KIPI plugin from library %1 failed to load"
-#~ msgstr "Kirjaston %1 KIPI-liitännäisen lataus epäonnistui"
-
-#~ msgctxt "%1 is collection name, %2 is image count in collection"
-#~ msgid "%1 (%2 image)"
-#~ msgid_plural "%1 (%2 images)"
-#~ msgstr[0] "%1 (%2 kuva)"
-#~ msgstr[1] "%1 (%2 kuvaa)"
-
-#~ msgid "Taken with Spectacle"
-#~ msgstr "Otettu Spectaclella"
-
-#~ msgid "Remember the region across restarts"
-#~ msgstr "Muista alue käynnistyksestä toiseen"
-
-#~ msgid ""
-#~ "Choose the image quality when saving with lossy image formats like JPEG"
-#~ msgstr ""
-#~ "Valitse kuvan laatu häviölliseen kuvamuotoon (esim. JPEG) tallennettaessa"
-
-#~ msgid "Copy file location to clipboard after saving"
-#~ msgstr "Kopioi tiedoston sijainti tallennuksen jälkeen leikepöydälle"
-
-#~ msgid "Copy screenshot automatically to the clipboard after it is taken"
-#~ msgstr "Kopioi otettu kuva automaattisesti leikepöydälle"
-
-#~ msgid "Whether to copy the file path after saving to the clipboard"
-#~ msgstr "Kopioidaanko tiedoston sijainti leikepöydälle tallentamisen jälkeen"
-
-#~ msgid "Copy the current screenshot image to the clipboard."
-#~ msgstr "Kopioi nykyinen kuvakaappaus leikepöydälle"
-
-#~ msgid "currentText"
-#~ msgstr "nykyinenTeksti"
-
-#, fuzzy
-#~| msgid "After taking a screenshot:"
-#~ msgid "Include pointer in the screenshot"
-#~ msgstr "Kuvakaappauksen jälkeen:"
-
-#, fuzzy
-#~| msgid "Whether the window decorations are included in the screenshot"
-#~ msgid "Do not include window decorations in the screenshot"
-#~ msgstr "Sisällytetäänkö ikkunakoristeet ruutukaappaukseen"
-
-#, fuzzy
-#~| msgid "Capture Entire Desktop"
-#~ msgctxt "The entire desktop was captured, heading"
-#~ msgid "Entire Desktop Captured"
-#~ msgstr "Kaappaa koko työpöytä"
-
-#~ msgctxt "@title:window"
-#~ msgid "Configure"
-#~ msgstr "Asetukset"
-
-#~ msgid "Apply Unsaved Changes"
-#~ msgstr "Tallentamattomien muutosten käyttäminen"
-
-#~ msgid ""
-#~ "You have made changes to the settings in this tab. Do you want to apply "
-#~ "those changes?"
-#~ msgstr ""
-#~ "Tässä asetusten välilehdessä on tallentamattomia muutoksia. Haluatko "
-#~ "käyttää niitä?"
-
-#~ msgctxt "Mouse action"
-#~ msgid "Click and drag,"
-#~ msgstr "Napsauta ja vedä,"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgctxt "Keyboard action"
-#~ msgid "Shift:"
-#~ msgstr "Vaihtonäppäin:"
-
-#~ msgctxt "Shift key action second half"
-#~ msgid "while dragging selection handles"
-#~ msgstr "vedettäessä valintakahvoja"
-
-#~ msgctxt "Shift key action second line"
-#~ msgid "Hold Alt to resize, Shift to fine‑tune"
-#~ msgstr "Muuta kokoa painamalla Alt, hienosäädä vaihtonäppäimellä"
-
-#~ msgctxt "Keyboard action"
-#~ msgid "Esc:"
-#~ msgstr "Esc:"
-
-#, fuzzy
-#~| msgctxt "%1 is the default filename of a screenshot"
-#~| msgid ""
-#~| "<p>You can use the following placeholders in the filename, which will be "
-#~| "replaced with actual text when the file is saved:</p><blockquote><b>%Y</"
-#~| "b>: Year (4 digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: "
-#~| "Month<br /><b>%D</b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: "
-#~| "Minute<br /><b>%S</b>: Second<br /><b>%T</b>: Window title</"
-#~| "blockquote><p>To save to a sub-folder, use slashes to describe the "
-#~| "desired path, e.g.:</p><blockquote><b>%Y</b>/<b>%M</b>/%1</blockquote>"
-#~ msgctxt "%1 is the default filename of a screenshot"
-#~ msgid ""
-#~ "<p>You can use the following placeholders in the filename, which will be "
-#~ "replaced with actual text when the file is saved:</p><blockquote><b>%Y</"
-#~ "b>: Year (4 digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: "
-#~ "Month<br /><b>%D</b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /"
-#~ "><b>%S</b>: Second<br /><b>%T</b>: Window title<br /><b>%d</b>: "
-#~ "Sequential numbering<br /><b>%Nd</b>: Sequential numbering, padded out to "
-#~ "N digits</blockquote><p>To save to a sub-folder, use slashes, e.g.:</"
-#~ "p><blockquote><b>%Y</b>/<b>%M</b>/%1</blockquote>"
-#~ msgstr ""
-#~ "<p>Tiedostonimessä voi käyttää seuraavia paikkamerkkejä, jotka korvataan "
-#~ "oikealla tekstillä tiedostoa tallennettaessa:</p><blockquote><b>%Y</b>: "
-#~ "vuosi (nelinumeroisena)<br /><b>%y</b>: vuosi (kaksinumeroisena)<br /><b>"
-#~ "%M</b>: kuukausi<br /><b>%D</b>: päivä<br /><b>%H</b>: tunnit<br /><b>%m</"
-#~ "b>: minuutit<br /><b>%S</b>: sekunnit<br /><b>%T</b>: ikkunan otsikko</"
-#~ "blockquote><p>Tee alikansioita lisäämällä sijaintiin vinoviivoja, esim.</"
-#~ "p><blockquote><b>%Y</b>/<b>%M</b>/%1</blockquote>"
-
-#, fuzzy
-#~| msgid "Rectangular Region"
-#~ msgid "Rectangular Region:"
-#~ msgstr "Suorakulmainen alue"
-
-#~ msgid "Default Save Location"
-#~ msgstr "Oletustallennuspaikka"
-
-#~ msgid "You can find the shared image at: <a href=\"%1\">%1</a>"
-#~ msgstr "Jaettu kuva on osoitteessa <a href=\"%1\">%1</a>"
-
-#~ msgid ""
-#~ "To take the screenshot, double-click or press Enter. Right-click to reset "
-#~ "the selection, or press Esc to quit"
-#~ msgstr ""
-#~ "Kaappaa kuva kaksoisnapsauttamalla tai painamalla Enter. Voit poistaa "
-#~ "valinnan napsauttamalla hiiren oikealla tai lopettaa painamalla Esc."
-
-#~ msgid "Save &&& Exit"
-#~ msgstr "Tallenna ja lopeta"
-
-#~ msgid "Save screenshot in your Pictures directory and exit"
-#~ msgstr "Tallenna kuvakaappaus Kuvat-kansioon ja lopeta"
-
-#~ msgid "Export Image..."
-#~ msgstr "Vie kuva…"
-
-#~ msgid "Preferences"
-#~ msgstr "Asetukset"
-
-#~ msgid "Dynamic Save Button"
-#~ msgstr "Dynaaminen tallennuspainike"
-
-#~ msgid ""
-#~ "The default behavior of the save button is to <b>Save & Exit</b>. Enable "
-#~ "this option to change the save button to either <b>Save</b>, <b>Save As</"
-#~ "b> or <b>Save & Exit</b>, according to the save action you perform, every "
-#~ "time you save an image."
-#~ msgstr ""
-#~ "Tallennuspainikkeen oletustoiminta on <b>Tallenna ja lopeta</b>. Tämä "
-#~ "asetus muuttaa painikkeen toiminnaksi joko <b>Tallenna</b>, <b>Tallenna "
-#~ "nimellä</b> tai <b>Tallenna ja lopeta</b> aina tallentaessasi kuvaa. "
-#~ "Valinta määräytyy sen mukaan, miten kuva tallennetaan."
-
-#~ msgid "Set save button action to last used save method"
-#~ msgstr "Aseta tallennuspainike viimeksi käytettyyn tallennustapaan"
-
-#~ msgid ""
-#~ "When a screenshot is saved, copy the location at which the file was saved "
-#~ "to the clipboard. You can then paste it anywhere that accepts text input. "
-#~ "Note that you must be running a clipboard manager in order to keep the "
-#~ "path in the clipboard after Spectacle quits."
-#~ msgstr ""
-#~ "Kopioi kuvakaappausta tallennettaessa leikepöydälle tiedoston "
-#~ "tallennuspaikka. Sen voi sitten liittää mihin tahansa tekstikenttään. "
-#~ "Huomaa, että leikepöydän hallinnan on oltava käytössä, jotta sijainti "
-#~ "säilyy leikepöydällä Spectaclen lopettamisen jälkeen."
-
-#~ msgid "Light Background For Rectangular Region"
-#~ msgstr "Vaalea tausta suorakulmaiselle alueelle"
-
-#~ msgid ""
-#~ "Use a light background color to mask the cropped-out area in the "
-#~ "rectangular region selector. This may make dark cursors easier to see."
-#~ msgstr ""
-#~ "Käytä vaaleaa taustaväriä erottamaan kuvan ulkopuolelle rajattu alue "
-#~ "suorakulmaista aluetta valittaessa; tämä auttaa näkemään tumman "
-#~ "osoittimen paremmin."
-
-#~ msgid ""
-#~ "By default, Spectacle does not show an initial selection when you take a "
-#~ "screenshot of a rectangular region. Enable this option to remember the "
-#~ "last selected region of the screen, and set it as the initial selection "
-#~ "when you use the rectangular region selector the next time."
-#~ msgstr ""
-#~ "Spectacle ei oletusarvoisesti valitse aluetta etukäteen kaapatessasi "
-#~ "kuvaa suorakulmaisesta alueesta. Tällä asetuksella Spectacle muistaa "
-#~ "viimeksi valitun alueen ja valitsee sen valmiiksi, kun tuonnempana "
-#~ "kaappaat kuvaa suorakulmaisesta alueesta."
-
-#~ msgid ""
-#~ "Set the directory where you'd like to save your screenshots when you "
-#~ "press <b>Save</b> or <b>Save & Exit</b>."
-#~ msgstr ""
-#~ "Aseta kansio, johon kuvankaappaukset tallennetaan painettaessa "
-#~ "<b>Tallenna</b> tai <b>Tallenna ja lopeta</b>."
-
-#, fuzzy
-#~| msgid ""
-#~| "<p>Set a default filename for saved screenshots.</p><p>You can use the "
-#~| "following placeholders in the filename, which will be replaced with "
-#~| "actual text when the file is saved:</p><blockquote><b>%Y</b>: Year (4 "
-#~| "digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: Month<br /><b>%D</"
-#~| "b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /><b>%S</b>: "
-#~| "Second</blockquote><p>You don't need to enter a filetype extension. By "
-#~| "default, screenshots are always saved as a <b>PNG (Portable Network "
-#~| "Graphics)</b> image with a <b>.png</b> extension.</p><p>If a file with "
-#~| "this name already exists, a serial number will be appended to the "
-#~| "filename. For example, if the filename is \"Screenshot\", and "
-#~| "\"Screenshot.png\" already exists, the image will be saved as "
-#~| "\"Screenshot-1.png\".</p>"
-#~ msgid ""
-#~ "<p>Set a default filename for saved screenshots.</p><p>You can use the "
-#~ "following placeholders in the filename, which will be replaced with "
-#~ "actual text when the file is saved:</p><blockquote><b>%Y</b>: Year (4 "
-#~ "digit)<br /><b>%y</b>: Year (2 digit)<br /><b>%M</b>: Month<br /><b>%D</"
-#~ "b>: Day<br /><b>%H</b>: Hour<br /><b>%m</b>: Minute<br /><b>%S</b>: "
-#~ "Second</blockquote><p>If a file with this name already exists, a serial "
-#~ "number will be appended to the filename. For example, if the filename is "
-#~ "\"Screenshot\", and \"Screenshot.png\" already exists, the image will be "
-#~ "saved as \"Screenshot-1.png\".</p><p>Typing an extension into the "
-#~ "filename will automatically set the image format correctly and remove the "
-#~ "extension from the filename field.</p>"
-#~ msgstr ""
-#~ "<p>Aseta oletustiedostonimi tallennettaville kuvankaappauksille.</"
-#~ "p><p>Voit käyttää tiedostonimessä seuraavia muuttujia, jotka korvataan "
-#~ "tallennuksen aikaisilla arvoilla:</p><blockquote><b>%Y</b>: Vuosi (4 "
-#~ "numeroa)<br /><b>%y</b>: Vuosi (2 numeroa)<br /><b>%M</b>: Kuukausi<br /"
-#~ "><b>%D</b>: Päivä<br /><b>%H</b>: Tunti<br /><b>%m</b>: Minuutti<br /><b>"
-#~ "%S</b>: Sekunti</blockquote><p>Tiedostotyypin päätettä ei tarvitse antaa. "
-#~ "Oletusarvoisesti kuvankaappaukset tallennetaan <b>PNG</b>-kuvana käyttäen "
-#~ "<b>.png</b>-päätettä.</p><p>Jos samanniminen tiedosto on jo olemassa, "
-#~ "tiedostonimeen lisätään sarjanumero. Jos tiedostonimi on esimerkiksi "
-#~ "”Kuvankaappaus” ja ”Kuvankaappaus.png” on jo olemassa, kuva tallennetaan "
-#~ "nimellä ”Kuvankaappaus-1.png”.</p>"
-
-#~ msgid "Application Preferences"
-#~ msgstr "Sovelluksen asetukset"
-
-#~ msgid "Open With..."
-#~ msgstr "Avaa ohjelmalla…"
-
-#~ msgid "Cannot send screenshot to the application"
-#~ msgstr "Kuvankaappausta ei voida lähettää ohjelmalle"
-
-#~ msgid "Cannot save screenshot. The file already exists."
-#~ msgstr ""
-#~ "Kuvankaappauksen tallentaminen epäonnistui. Tiedosto on jo olemassa."
-
-#~ msgid "Kapture"
-#~ msgstr "Kapture"
-
-#~ msgid "KScreenGenie"
-#~ msgstr "KScreenGenie"
-
-#~ msgid "Send To..."
-#~ msgstr "Lähetä…"
-
-#~ msgctxt "Untitled Screenshot"
-#~ msgid "Untitled"
-#~ msgstr "Nimetön"
+msgstr ""
