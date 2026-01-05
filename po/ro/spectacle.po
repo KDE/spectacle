@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:45+0000\n"
-"PO-Revision-Date: 2025-10-05 02:37+0100\n"
+"PO-Revision-Date: 2026-01-03 14:26+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -219,8 +219,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Deschide și redactează un fișier existent cu captură"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter nu poate scrie imaginea: %1"
@@ -292,9 +291,7 @@ msgstr ""
 "valid cu denumire de fișier"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
@@ -687,8 +684,7 @@ msgid "Number"
 msgstr "Număr"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
 msgstr "Renunță"
@@ -896,30 +892,29 @@ msgstr "Partajează"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extrage text după limbă"
 
 #: src/Gui/ExportMenu.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "Difuzarea ecranului KWin nu e disponibilă."
+msgstr "Motorul de recunoaștere optică nu e disponibil."
 
 #: src/Gui/ExportMenu.cpp:284
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
+"OCR nu e disponibil. Instalați motorul de recunoaștere optică a caracterelor "
+"Tesseract."
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Motorul de recunoaștere optică se inițializează…"
 
 #: src/Gui/ExportMenu.cpp:294
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "Nicio extensie KIPI disponibilă"
+msgstr "Nu sunt disponibile date lingvistice pentru recunoaștere optică."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -966,7 +961,7 @@ msgstr "Captură nouă"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Extrage text"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1109,10 +1104,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Arată cursorul mausului în înregistrarea ecranului."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1335,21 +1327,19 @@ msgstr "Până la închiderea Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Recunoașterea textului (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Limbi pentru OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:324
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "Difuzarea ecranului KWin nu e disponibilă."
+msgstr "Funcționalitatea de recunoaștere optică a textului nu e disponibilă"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:342
@@ -1359,6 +1349,10 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Instalați pachetele necesare:\n"
+"• tesseract\n"
+"• pachetele lingvistice tesseract (de exemplu, tesseract-ocr-ron pentru "
+"română)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1518,7 +1512,7 @@ msgstr "Ține minte ultima regiune dreptunghiulară"
 #: src/Gui/SettingsDialog/spectacle.kcfg:73
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Limbi implicite pentru recunoașterea optică a textului"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:79
@@ -1743,8 +1737,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1800,9 +1793,7 @@ msgid "Image Zoom"
 msgstr "Apropiere imagine"
 
 #: src/Gui/ViewerWindow.cpp:51
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "A intervenit o problemă cu partajarea imaginii: %1"
@@ -1859,38 +1850,32 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Detecția orientării și scrierii"
 
 #: src/OcrManager.cpp:638
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Detecția matematicii/ecuațiilor"
 
 #: src/OcrManager.cpp:641
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Detecția orientării și scrierii"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Lățime eronată pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Înălțime eronată pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Format eronat pentru captura KWin: %1"
@@ -1903,19 +1888,13 @@ msgstr ""
 "Nu s-a putut deschide descriptorul de fișier pentru citirea capturii KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() a eșuat pentru captura KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -1990,27 +1969,21 @@ msgstr ""
 "într-un mod ce a deranjat înregistrarea."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Înregistrarea a eșuat: URL-ul pentru fișier temporar nu e fișier local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Înregistrarea a eșuat: URL-ul pentru fișier de ieșire nu e fișier local (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Înregistrarea a eșuat: Dosarul nu poate fi creat (%1)"
@@ -2028,17 +2001,13 @@ msgid "Window recording canceled"
 msgstr "Înregistrare fereastră anulată"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Alegerea ecranului a eșuat: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Alegerea ferestrei a eșuat: %1"
@@ -2295,12 +2264,10 @@ msgstr "Amplasarea fișierului video a fost copiată în clipboard."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:532
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "Cod QR găsit: %1"
+msgstr "Cod găsit: %1"
 
 #: src/SpectacleCore.cpp:536
 #, kde-format
@@ -2312,72 +2279,67 @@ msgstr "A fost găsit cod QR cu conținut binar."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Extragerea textului a eșuat"
 
 #: src/SpectacleCore.cpp:551
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Nu a fost găsit text în imagine"
 
 #: src/SpectacleCore.cpp:556
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Extragerea textului s-a încheiat"
 
 #: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Text extras"
 
 #: src/SpectacleCore.cpp:576
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 și %2"
 
 #: src/SpectacleCore.cpp:581
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages detected: %1"
-msgstr "Copiază imaginea în clipboard"
+msgstr "Text copiat în clipboard.<nl/>Limbi detectate: %1"
 
 #: src/SpectacleCore.cpp:586
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Deschide în redactorul de text"
 
 #: src/SpectacleCore.cpp:701
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Alegeți o regiune înainte de a extrage textul"
 
 #: src/SpectacleCore.cpp:723
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "Difuzarea ecranului KWin nu e disponibilă."
+msgstr "Recunoașterea optică a textului nu e disponibilă."
 
 #: src/SpectacleCore.cpp:729
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Difuzarea ecranului KWin nu e disponibilă."
+msgstr "Nicio captură de ecran disponibilă."
 
 #: src/SpectacleCore.cpp:733
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Se extrage textul din imagine…"
 
 #: src/SpectacleCore.cpp:997
 #, kde-format
@@ -2386,10 +2348,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 nu e un regim valid pentru --record"
 
 #: src/SpectacleCore.cpp:1233
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2399,16 +2358,13 @@ msgstr ""
 "fost copiată în clipboard."
 
 #: src/SpectacleCore.cpp:1237
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "O captură a fost salvată ca „%1” în dosarul Poze."
 
 #: src/SpectacleCore.cpp:1240
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "O captură a fost salvată ca „%1” în „%2”."
@@ -2419,10 +2375,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "O captură a fost salvată în clipboard."
 
 #: src/SpectacleCore.cpp:1249
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2432,16 +2385,13 @@ msgstr ""
 "copiată în clipboard."
 
 #: src/SpectacleCore.cpp:1251
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "O înregistrare a fost salvată ca „%1” în dosarul Video."
 
 #: src/SpectacleCore.cpp:1253
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "O înregistrare a fost salvată ca „%1” în „%2”."
@@ -2453,9 +2403,7 @@ msgid "Open"
 msgstr "Deschide"
 
 #: src/SpectacleCore.cpp:1270
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action"
 msgid "Open Containing Folder"
 msgstr "Deschide dosarul conținător"
