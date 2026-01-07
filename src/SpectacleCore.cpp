@@ -28,7 +28,6 @@
 #include <KFormat>
 #include <KGlobalAccel>
 #include <KIO/OpenUrlJob>
-#include <KIO/OpenFileManagerWindowJob>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KNotification>
@@ -1263,12 +1262,6 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
         };
         auto defaultAction = notification->addDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
         connect(defaultAction, &KNotificationAction::activated, this, open);
-
-        auto openFolder = [saveUrl]() {
-            KIO::highlightInFileManager({saveUrl});
-        };
-        auto openFolderAction = notification->addAction(i18nc("@action", "Open Containing Folder"));
-        connect(openFolderAction, &KNotificationAction::activated, this, openFolder);
 
         if (type == ScreenCapture::Screenshot) {
             auto annotate = [saveUrl]() {
