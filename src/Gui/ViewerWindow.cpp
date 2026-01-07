@@ -12,7 +12,9 @@
 #include "InlineMessageModel.h"
 #include "SpectacleCore.h"
 
+#include <KSharedConfig>
 #include <KUrlMimeData>
+#include <KWindowConfig>
 #include <Kirigami/Platform/Units>
 
 #include <QApplication>
@@ -63,6 +65,12 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
     setResizeMode(QQuickView::SizeRootObjectToView);
     setMode(mode); // sets source and other stuff based on mode.
     m_oldWindowStates = windowStates();
+
+    // Restore window state from config (only for Viewer mode - the screenshot viewer window)
+    if (mode == Viewer) {
+        KConfigGroup configGroup(KSharedConfig::openConfig(), u"ViewerWindow"_s);
+        KWindowConfig::restoreWindowSize(this, configGroup);
+    }
 }
 
 ViewerWindow::~ViewerWindow()
@@ -204,6 +212,11 @@ bool ViewerWindow::event(QEvent *event)
 {
     if (event->type() == QEvent::ApplicationPaletteChange) {
         updateColor();
+    }
+    // Save window state when the window closes
+    if (m_mode == Viewer && (event->type() == QEvent::Hide || event->type() == QEvent::Close)) {
+        KConfigGroup configGroup(KSharedConfig::openConfig(), u"ViewerWindow"_s);
+        KWindowConfig::saveWindowSize(this, configGroup);
     }
     return SpectacleWindow::event(event);
 }
