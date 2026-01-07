@@ -13,10 +13,10 @@
 
 #include <KWaylandExtras>
 
-#include <QScreen>
-#include <QShortcut>
 #include <QApplication>
 #include <QClipboard>
+#include <QScreen>
+#include <QShortcut>
 
 using namespace Qt::StringLiterals;
 
@@ -52,8 +52,7 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
 
     // follow a screen
     connect(screen, &QScreen::geometryChanged, this, &CaptureWindow::syncGeometryWithScreen);
-    connect(screen, &QScreen::physicalDotsPerInchChanged,
-            this, &CaptureWindow::syncGeometryWithScreen);
+    connect(screen, &QScreen::physicalDotsPerInchChanged, this, &CaptureWindow::syncGeometryWithScreen);
     syncGeometryWithScreen();
     Q_EMIT screenToFollowChanged();
     // BUG: https://bugs.kde.org/show_bug.cgi?id=502047
@@ -63,7 +62,7 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     });
 
     // sync visibility
-    connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility){
+    connect(this, &QWindow::visibilityChanged, this, [this](QWindow::Visibility visibility) {
         if (s_synchronizingVisibility || s_captureWindowInstances.size() <= 1) {
             return;
         }
@@ -100,7 +99,7 @@ CaptureWindow::~CaptureWindow()
 
 CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
 {
-    return UniquePointer(new CaptureWindow(mode, screen, engine, parent), [](CaptureWindow *window){
+    return UniquePointer(new CaptureWindow(mode, screen, engine, parent), [](CaptureWindow *window) {
         s_captureWindowInstances.removeOne(window);
         deleter(window);
     });
@@ -119,13 +118,10 @@ QScreen *CaptureWindow::screenToFollow() const
 void CaptureWindow::setMode(CaptureWindow::Mode mode)
 {
     syncGeometryWithScreen();
-    QVariantMap initialProperties = {
-        // Set the parent in initialProperties to avoid having
-        // the parent and window be null in Component.onCompleted
-        {u"parent"_s, QVariant::fromValue(contentItem())}
-    };
-    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)),
-              initialProperties);
+    QVariantMap initialProperties = {// Set the parent in initialProperties to avoid having
+                                     // the parent and window be null in Component.onCompleted
+                                     {u"parent"_s, QVariant::fromValue(contentItem())}};
+    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
 }
 
 bool CaptureWindow::accept()

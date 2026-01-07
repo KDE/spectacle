@@ -75,7 +75,7 @@ ViewerWindow::~ViewerWindow()
 
 ViewerWindow::UniquePointer ViewerWindow::makeUnique(Mode mode, QQmlEngine *engine, QWindow *parent)
 {
-    return UniquePointer(new ViewerWindow(mode, engine, parent), [](ViewerWindow *window){
+    return UniquePointer(new ViewerWindow(mode, engine, parent), [](ViewerWindow *window) {
         s_viewerWindowInstance = nullptr;
         deleter(window);
     });
@@ -90,37 +90,32 @@ void ViewerWindow::setMode(ViewerWindow::Mode mode)
 {
     if (mode == Dialog) {
         setBackgroundColorRole(QPalette::Window);
-        QVariantMap initialProperties = {
-            // Set the parent in initialProperties to avoid having
-            // the parent and window be null in Component.onCompleted
-            {u"parent"_s, QVariant::fromValue(contentItem())}
-        };
+        QVariantMap initialProperties = {// Set the parent in initialProperties to avoid having
+                                         // the parent and window be null in Component.onCompleted
+                                         {u"parent"_s, QVariant::fromValue(contentItem())}};
         setSource(QUrl("%1/Gui/DialogPage.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
         if (!rootItem) {
             return;
         }
-        const QSize implicitSize = {qRound(rootItem->implicitWidth()),
-                                    qRound(rootItem->implicitHeight())};
+        const QSize implicitSize = {qRound(rootItem->implicitWidth()), qRound(rootItem->implicitHeight())};
         setMinimumSize(implicitSize);
         setMaximumSize(implicitSize);
-        connect(rootItem, &QQuickItem::implicitWidthChanged, this, [this](){
+        connect(rootItem, &QQuickItem::implicitWidthChanged, this, [this]() {
             int implicitWidth = qRound(rootObject()->implicitWidth());
             setMinimumWidth(implicitWidth);
             setMaximumWidth(implicitWidth);
         });
-        connect(rootItem, &QQuickItem::implicitHeightChanged, this, [this](){
+        connect(rootItem, &QQuickItem::implicitHeightChanged, this, [this]() {
             int implicitHeight = qRound(rootObject()->implicitHeight());
             setMinimumHeight(implicitHeight);
             setMaximumHeight(implicitHeight);
         });
     } else if (mode == Viewer) {
         setBackgroundColorRole(QPalette::Base);
-        QVariantMap initialProperties = {
-            // Set the parent in initialProperties to avoid having
-            // the parent and window be null in Component.onCompleted
-            {u"parent"_s, QVariant::fromValue(contentItem())}
-        };
+        QVariantMap initialProperties = {// Set the parent in initialProperties to avoid having
+                                         // the parent and window be null in Component.onCompleted
+                                         {u"parent"_s, QVariant::fromValue(contentItem())}};
         setSource(QUrl("%1/Gui/ViewerPage.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
         auto rootItem = rootObject();
         if (!rootItem) {
@@ -146,8 +141,7 @@ void ViewerWindow::setBackgroundColorRole(QPalette::ColorRole role)
 void ViewerWindow::updateMinimumSize()
 {
     if (auto rootItem = rootObject()) {
-        const QSize size = {qRound(rootItem->property("minimumWidth").toReal()),
-                            qRound(rootItem->property("minimumHeight").toReal())};
+        const QSize size = {qRound(rootItem->property("minimumWidth").toReal()), qRound(rootItem->property("minimumHeight").toReal())};
         // Resizing should be automatic, but sometimes a manual resizing is needed
         // to fix window sizing/graphical glitches after a minimum size change.
         if (size.width() > width()) {
