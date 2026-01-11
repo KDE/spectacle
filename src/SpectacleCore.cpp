@@ -67,6 +67,8 @@ using namespace Qt::StringLiterals;
 SpectacleCore *SpectacleCore::s_self = nullptr;
 static std::unique_ptr<KStatusNotifierItem> s_systemTrayIcon;
 
+static QList<KNotification *> notifications;
+
 SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
 {
@@ -164,9 +166,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
             syncExportImage();
             auto exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
             if (m_ocrExportInProgress) {
-                if (Settings::disableSaveOnOcr()) {
+                if (Settings::closeAfterOcr()) {
                     exportActions.setFlag(ExportManager::Action::Save, false);
                     exportActions.setFlag(ExportManager::Action::CopyPath, false);
+                    m_quitAfterOcr = true;
                 }
                 m_ocrExportInProgress = false;
             }
@@ -560,9 +563,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
         
         InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
             i18nc("@info", "Text extraction completed"));
-        
+
+        // ensure program stays alive until the notification finishes.
+        if (!m_eventLoopLocker) {
+            m_eventLoopLocker = std::make_unique<QEventLoopLocker>();
+        }
+
         auto notification = new KNotification(u"ocrTextExtracted"_s, KNotification::CloseOnTimeout, nullptr);
         notification->setTitle(i18nc("@info:notification title", "Text Extracted"));
+
+        notifications.append(notification);
 
         auto ocrManager = OcrManager::instance();
         auto languageNames = ocrManager->availableLanguagesWithNames();
@@ -590,7 +600,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
         
         if (!text.isEmpty()) {
             auto openEditorAction = notification->addAction(i18nc("@action:button", "Open in Text Editor"));
-            connect(openEditorAction, &KNotificationAction::activated, this, [text]() {
+            connect(openEditorAction, &KNotificationAction::activated, this, [text, notification]() {
                 // Create temporary file with extracted text 
                 auto exportManager = ExportManager::instance();
                 exportManager->updateTimestamp();
@@ -611,10 +621,31 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(tempFile.fileName()));
                     job->start();
                 }
+
+                notification->close();
             });
         }
-        
+
+        auto onExpired = [this, notification] {
+            notifications.removeOne(static_cast<KNotification *>(notification));
+
+            if (notifications.empty() && m_eventLoopLocker) {
+                QTimer::singleShot(250, this, [this] {
+                    m_eventLoopLocker.reset();
+                });
+            }
+        };
+        connect(notification, &QObject::destroyed, this, onExpired);
+        // We keep the application running for a while to ensure the notification action remains available in the history.
+        // See: https://bugs.kde.org/show_bug.cgi?id=514434
+        QTimer::singleShot(180000, notification, onExpired);
+
         notification->sendEvent();
+
+        if (m_quitAfterOcr) {
+            m_quitAfterOcr = false;
+            deleteWindows();
+        }
     };
 
     // Connect to OCR manager
@@ -1202,8 +1233,6 @@ void SpectacleCore::showViewerIfGuiMode(bool minimized)
         ViewerWindow::instance()->setVisible(true);
     }
 }
-
-static QList<KNotification *> notifications;
 
 void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &actions, const QUrl &saveUrl)
 {

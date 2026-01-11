@@ -301,14 +301,14 @@
     </widget>
    </item>
    <item row="17" column="0">
-    <widget class="QLabel" name="ocrDisableSaveLabel">
+    <widget class="QLabel" name="closeAfterOcrLabel">
      <property name="text">
       <string>Text extraction:</string>
      </property>
     </widget>
    </item>
    <item row="17" column="1">
-    <layout class="QHBoxLayout" name="disableSaveOnOcrLayout">
+    <layout class="QHBoxLayout" name="closeAfterOcrLayout">
      <property name="leftMargin">
       <number>0</number>
      </property>
@@ -322,16 +322,16 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QCheckBox" name="kcfg_disableSaveOnOcr">
+      <widget class="QCheckBox" name="kcfg_closeAfterOcr">
        <property name="text">
-        <string>Do not auto-save</string>
+        <string>Close after extraction (skips auto-save)</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="disableSaveOnOcrInfo">
+      <widget class="QLabel" name="closeAfterOcrInfo">
        <property name="toolTip">
-        <string>When enabled, automatic saving is skipped for OCR extractions even if automatic saving is turned on.</string>
+        <string>Spectacle will close after text extraction and automatic saving will be skipped.</string>
        </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -357,7 +357,7 @@
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_ocr_save">
+      <spacer name="horizontalSpacer_close_ocr">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

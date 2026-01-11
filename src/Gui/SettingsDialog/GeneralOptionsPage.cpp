@@ -29,8 +29,8 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent)
     m_ui->ocrInfoIcon->setPixmap(QIcon::fromTheme(QStringLiteral("help-hint")).pixmap(16, 16));
     m_ui->ocrInfoIcon->setCursor(Qt::WhatsThisCursor);
 
-    m_ui->disableSaveOnOcrInfo->setPixmap(QIcon::fromTheme(QStringLiteral("help-hint")).pixmap(16, 16));
-    m_ui->disableSaveOnOcrInfo->setCursor(Qt::WhatsThisCursor);
+    m_ui->closeAfterOcrInfo->setPixmap(QIcon::fromTheme(QStringLiteral("help-hint")).pixmap(16, 16));
+    m_ui->closeAfterOcrInfo->setCursor(Qt::WhatsThisCursor);
 
     m_ui->runningTitle->setLevel(2);
     m_ui->regionTitle->setLevel(2);
@@ -70,16 +70,16 @@ void GeneralOptionsPage::refreshOcrLanguageSettings(bool rebuildSelector)
     if (!ocrAvailable) {
         m_ui->ocrLanguageLabel->setVisible(false);
         m_ui->ocrLanguageScrollArea->setVisible(false);
-        m_ui->ocrDisableSaveLabel->setVisible(false);
-        m_ui->kcfg_disableSaveOnOcr->setVisible(false);
-        m_ui->disableSaveOnOcrInfo->setVisible(false);
+        m_ui->closeAfterOcrLabel->setVisible(false);
+        m_ui->kcfg_closeAfterOcr->setVisible(false);
+        m_ui->closeAfterOcrInfo->setVisible(false);
         m_ui->ocrUnavailableWidget->setVisible(true);
     } else {
         m_ui->ocrLanguageLabel->setVisible(true);
         m_ui->ocrLanguageScrollArea->setVisible(true);
-        m_ui->ocrDisableSaveLabel->setVisible(true);
-        m_ui->kcfg_disableSaveOnOcr->setVisible(true);
-        m_ui->disableSaveOnOcrInfo->setVisible(true);
+        m_ui->closeAfterOcrLabel->setVisible(true);
+        m_ui->kcfg_closeAfterOcr->setVisible(true);
+        m_ui->closeAfterOcrInfo->setVisible(true);
         m_ui->ocrUnavailableWidget->setVisible(false);
     }
 

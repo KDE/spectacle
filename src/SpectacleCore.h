@@ -164,6 +164,7 @@ private:
     StartMode m_startMode = StartMode::Gui;
     bool m_returnToViewer = false;
     bool m_ocrExportInProgress = false;
+    bool m_quitAfterOcr = false;
     QUrl m_screenCaptureUrl;
     std::unique_ptr<ImagePlatform> m_imagePlatform;
     std::unique_ptr<VideoPlatform> m_videoPlatform;
