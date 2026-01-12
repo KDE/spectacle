@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-11 00:45+0000\n"
+"POT-Creation-Date: 2026-01-12 00:46+0000\n"
 "PO-Revision-Date: 2025-12-19 21:23+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -893,22 +893,22 @@ msgctxt "@action:menu"
 msgid "Extract Text by Language"
 msgstr "Erauzi testua hizkuntzaren arabera"
 
-#: src/Gui/ExportMenu.cpp:277
+#: src/Gui/ExportMenu.cpp:285
 #, kde-format
 msgid "OCR engine is not available."
 msgstr "OCR motorra ez dago erabilgarri."
 
-#: src/Gui/ExportMenu.cpp:284
+#: src/Gui/ExportMenu.cpp:293
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr "OCR ez dago erabilgarri. Mesedez instalatu Tesseract OCR."
 
-#: src/Gui/ExportMenu.cpp:285
+#: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is initializing…"
 msgstr "OCR motorra hasieratzen ari da…"
 
-#: src/Gui/ExportMenu.cpp:294
+#: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "No OCR language data available."
 msgstr "Ez dago OCR hizkuntzen daturik erabilgarririk."
@@ -954,7 +954,7 @@ msgstr "Itxi"
 msgid "New Screenshot"
 msgstr "Pantaila-argazki berria"
 
-#: src/Gui/OcrAction.qml:13
+#: src/Gui/OcrAction.qml:15
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
@@ -1332,14 +1332,38 @@ msgstr "Testu-ezagutza (OCR)"
 msgid "Languages for OCR:"
 msgstr "OCRrako hizkuntzak:"
 
+#. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:306
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Text extraction failed"
+msgid "Text extraction:"
+msgstr "Testua erauztea huts egin du"
+
+#. i18n: ectx: label, entry (closeAfterOcr), group (General)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:327
+#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#, kde-format
+msgid "Close after extraction (skips auto-save)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:334
+#, kde-format
+msgid ""
+"Spectacle will close after text extraction and automatic saving will be "
+"skipped."
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:324
+#: src/Gui/SettingsDialog/GeneralOptions.ui:395
 #, kde-format
 msgid "OCR functionality is not available"
 msgstr "OCR funtzionaltasuna ez dago erabilgarri"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:342
+#: src/Gui/SettingsDialog/GeneralOptions.ui:413
 #, kde-format
 msgid ""
 "Please install the required packages:\n"
@@ -1422,31 +1446,31 @@ msgctxt "show more filename placeholder templates"
 msgid "Show More"
 msgstr "Erakutsi gehiago"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "Orokorra"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
 msgstr "Irudia gordetzea"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
 msgstr "Bideoa gordetzea"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:40
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "Lasterbideak"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:85
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:104
 #, kde-format
 msgid "Shortcuts"
 msgstr "Lasterbideak"
@@ -1474,14 +1498,14 @@ msgstr "Gorde pantaila-argazkia automatikoki hura hartu ondoren"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:38
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:42
+#: src/Gui/SettingsDialog/spectacle.kcfg:55
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "Pantaila-argazkia atzeman ondoren exekutatu beharreko arbeleko ekintza"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr ""
@@ -1489,7 +1513,7 @@ msgstr ""
 "behar den"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:60
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1499,121 +1523,121 @@ msgstr ""
 "den"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:64
+#: src/Gui/SettingsDialog/spectacle.kcfg:68
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "Oroitu azken eskualde laukizuzena"
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:73
+#: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
 msgstr "OCR testua ezagutzeko hizkuntza lehenetsiak"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:79
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "Erabiltzaileak hautatu zuen erabilitako azken eskualdea"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:83
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "Hartu pantaila-argazkia klik egitean"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:87
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "Saguaren kurtsorea pantaila-argazkian jasoko den edo ez"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:91
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "Saguaren kurtsorea bideoan jasoko den edo ez"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:95
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "Leihoaren apaingarriak pantaila-argazkian sartuko diren"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:99
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Leihoaren itzala pantaila-argazkian jasoko den edo ez"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:103
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "Atzeman soilik uneko menu-gainerakorra"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:107
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Irten irudi bat gorde edo kopiatu ondoren"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:111
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Delay"
 msgstr "Atzerapena"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:172
 #, kde-format
 msgid "Default filename"
 msgstr "Lehenetsitako fitxategi-izena"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:143
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Galeradun fitxategi formatuen konpresio kalitatea"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:147
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "Default save image format"
 msgstr "Irudia gordetzeko formatu lehenetsia"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Pantaila-argazkiak gordetzeko erabilitako fitxategi-izen txantiloia"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Gordetako azken fitxategiaren bide-izena"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"Gorde honela\" ekintzarekin erabilitako azken bide-izena"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:189
 #, kde-format
 msgid "Default video format"
 msgstr "Bideo formatu lehenetsia"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Pantaila-grabazioak gordetzeko erabilitako fitxategi-izen txantiloia"
@@ -1839,18 +1863,18 @@ msgstr ""
 "dirudi instalatuta dagoenik. Erabili «Spectacle» KDE Plasman, edo erabili "
 "pantaila-argazkietarako beste tresna bat."
 
-#: src/OcrManager.cpp:594
+#: src/OcrManager.cpp:609
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "Orientazioa eta idazkera hautematea"
 
-#: src/OcrManager.cpp:638
+#: src/OcrManager.cpp:650
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "Matematika/Ekuazioak hautematea"
 
-#: src/OcrManager.cpp:641
+#: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "Orientazioa eta idazkera hautematea"
@@ -2104,32 +2128,32 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Abiarazi Spectacle atzeman gabe"
 
-#: src/SpectacleCore.cpp:250
+#: src/SpectacleCore.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Errore bat gertatu da pantaila-argazki bat hartu bitartean."
 
-#: src/SpectacleCore.cpp:279
+#: src/SpectacleCore.cpp:289
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
-#: src/SpectacleCore.cpp:284
+#: src/SpectacleCore.cpp:294
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
-#: src/SpectacleCore.cpp:310
+#: src/SpectacleCore.cpp:320
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 "Grabazioa bukatzeko, egin klik sistemaren erretiluko ikono gorri keinukarian."
 
-#: src/SpectacleCore.cpp:311
+#: src/SpectacleCore.cpp:321
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2139,13 +2163,13 @@ msgstr ""
 "Grabazioa bukatzeko, egin klik sistemaren erretiluko ikono gorri keinukarian "
 "edo sakatu <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "«WebP»ren euskarria falta da."
 
-#: src/SpectacleCore.cpp:329
+#: src/SpectacleCore.cpp:339
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2156,25 +2180,25 @@ msgstr ""
 "erretiluko ikono animatuak lortzeko, eta ondoren, eman paketatze arazo "
 "horren berri zure banatzaileari."
 
-#: src/SpectacleCore.cpp:365
+#: src/SpectacleCore.cpp:375
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:366
+#: src/SpectacleCore.cpp:376
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Itxaron mesedez"
 
-#: src/SpectacleCore.cpp:368
+#: src/SpectacleCore.cpp:378
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle grabazioa bukatzen ari da"
 
-#: src/SpectacleCore.cpp:370
+#: src/SpectacleCore.cpp:380
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2184,7 +2208,7 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik errendatzea azkar gelditzeko (datuak galduko dira)"
 
-#: src/SpectacleCore.cpp:396
+#: src/SpectacleCore.cpp:406
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2194,13 +2218,13 @@ msgstr ""
 "Grabatutako denbora: %1\n"
 "Egin klik grabazioa bukatzeko"
 
-#: src/SpectacleCore.cpp:421
+#: src/SpectacleCore.cpp:431
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Errore bat gertatu da pantaila grabatzen saiatzean."
 
-#: src/SpectacleCore.cpp:463
+#: src/SpectacleCore.cpp:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2210,7 +2234,7 @@ msgstr ""
 "Pantaila-argazkia arbelean kopiatu da eta <link url=\"%1\">%2</link> gisa "
 "gorde da"
 
-#: src/SpectacleCore.cpp:466
+#: src/SpectacleCore.cpp:476
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2220,19 +2244,19 @@ msgstr ""
 "Pantaila-argazkia <link url=\"%1\">%2</link> gisa gorde da eta bere "
 "kokalekua arbelean kopiatu da"
 
-#: src/SpectacleCore.cpp:469
+#: src/SpectacleCore.cpp:479
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Pantaila-argazkia <link url=\"%1\">%2</link> gisa gorde da"
 
-#: src/SpectacleCore.cpp:473
+#: src/SpectacleCore.cpp:483
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Pantaila-argazkia arbelean kopiatu da."
 
-#: src/SpectacleCore.cpp:504
+#: src/SpectacleCore.cpp:514
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2242,13 +2266,13 @@ msgstr ""
 "Bideoa <link url=\"%1\">%2</link> gisa gorde da eta bere kokalekua arbelean "
 "kopiatu da"
 
-#: src/SpectacleCore.cpp:507
+#: src/SpectacleCore.cpp:517
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Bideoa <link url=\"%1\">%2</link> gisa gorde da"
 
-#: src/SpectacleCore.cpp:511
+#: src/SpectacleCore.cpp:521
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2257,91 +2281,93 @@ msgstr "Bideoaren kokalekua arbelera kopiatu da."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:541
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Kodea aurkitu da: %1"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:545
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Eduki bitarra duen QR kode bat aurkitu da."
 
-#: src/SpectacleCore.cpp:544
+#: src/SpectacleCore.cpp:554
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Testua erauztea huts egin du"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:560
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Irudian ez da testurik aurkitu"
 
-#: src/SpectacleCore.cpp:555
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Testu erauzketa osatu da"
 
-#: src/SpectacleCore.cpp:558
+#: src/SpectacleCore.cpp:573
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Testua erauzi da"
 
-#: src/SpectacleCore.cpp:575
+#: src/SpectacleCore.cpp:592
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 eta %2"
 
-#: src/SpectacleCore.cpp:580
-#, kde-kuit-format
+#: src/SpectacleCore.cpp:597
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:notification"
+#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Testua arbelean kopiatu da.<nl/>Antzemandako hizkuntzak: %1"
 
-#: src/SpectacleCore.cpp:585
+#: src/SpectacleCore.cpp:602
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Ireki testu-editorean"
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Mesedez hautatu eremu bat testua erauzi aurretik"
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:762
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "OCR ez dago erabilgarri."
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:768
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Ez dago pantaila-argazkirik erabilgarri."
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:772
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Iruditik testua erauzten..."
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1036
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1270
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2351,24 +2377,24 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1274
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:1239
+#: src/SpectacleCore.cpp:1277
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n."
 
-#: src/SpectacleCore.cpp:1243
+#: src/SpectacleCore.cpp:1281
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:1248
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2378,25 +2404,25 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1250
+#: src/SpectacleCore.cpp:1288
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1252
+#: src/SpectacleCore.cpp:1290
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'(e)(a)n."
 
-#: src/SpectacleCore.cpp:1263
+#: src/SpectacleCore.cpp:1301
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1277
+#: src/SpectacleCore.cpp:1315
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"

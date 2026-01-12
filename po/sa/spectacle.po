@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-11 00:45+0000\n"
+"POT-Creation-Date: 2026-01-12 00:46+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -898,24 +898,24 @@ msgctxt "@action:menu"
 msgid "Extract Text by Language"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:277
+#: src/Gui/ExportMenu.cpp:285
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
 msgid "OCR engine is not available."
 msgstr "KWin Screencasting इति उपलब्धं नास्ति ।"
 
-#: src/Gui/ExportMenu.cpp:284
+#: src/Gui/ExportMenu.cpp:293
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:285
+#: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is initializing…"
 msgstr ""
 
-#: src/Gui/ExportMenu.cpp:294
+#: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "No OCR language data available."
 msgstr ""
@@ -966,7 +966,7 @@ msgstr ""
 msgid "New Screenshot"
 msgstr "नवीन स्क्रीनशॉट"
 
-#: src/Gui/OcrAction.qml:13
+#: src/Gui/OcrAction.qml:15
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
@@ -1376,8 +1376,31 @@ msgstr ""
 msgid "Languages for OCR:"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:306
+#, fuzzy, kde-format
+#| msgid "Reset selection:"
+msgid "Text extraction:"
+msgstr "चयनं पुनः सेट् कुर्वन्तु :"
+
+#. i18n: ectx: label, entry (closeAfterOcr), group (General)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:327
+#: src/Gui/SettingsDialog/spectacle.kcfg:38
+#, kde-format
+msgid "Close after extraction (skips auto-save)"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
+#: src/Gui/SettingsDialog/GeneralOptions.ui:334
+#, kde-format
+msgid ""
+"Spectacle will close after text extraction and automatic saving will be "
+"skipped."
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:324
+#: src/Gui/SettingsDialog/GeneralOptions.ui:395
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -1385,7 +1408,7 @@ msgid "OCR functionality is not available"
 msgstr "KWin Screencasting इति उपलब्धं नास्ति ।"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
-#: src/Gui/SettingsDialog/GeneralOptions.ui:342
+#: src/Gui/SettingsDialog/GeneralOptions.ui:413
 #, kde-format
 msgid ""
 "Please install the required packages:\n"
@@ -1465,31 +1488,31 @@ msgctxt "show more filename placeholder templates"
 msgid "Show More"
 msgstr "अधिकं दर्शयतु"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:36
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
 msgctxt "Settings category"
 msgid "General"
 msgstr "सामान्य"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:37
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
 #, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
 msgstr "इमेज सेविंग्"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:38
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
 #, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
 msgstr "विडियो सेविंग्"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:39
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:40
 #, kde-format
 msgctxt "Settings category"
 msgid "Shortcuts"
 msgstr "शॉर्टकट"
 
-#: src/Gui/SettingsDialog/SettingsDialog.cpp:85
+#: src/Gui/SettingsDialog/SettingsDialog.cpp:104
 #, kde-format
 msgid "Shortcuts"
 msgstr "शॉर्टकट"
@@ -1515,20 +1538,20 @@ msgstr "स्क्रीनशॉट् गृहीतस्य अनन्�
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:38
-#: src/Gui/SettingsDialog/spectacle.kcfg:51
+#: src/Gui/SettingsDialog/spectacle.kcfg:42
+#: src/Gui/SettingsDialog/spectacle.kcfg:55
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr "क्लिप्बोर्ड क्रिया या स्क्रीनशॉट् गृहीतस्य अनन्तरं निष्पादनीया"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:47
+#: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
 msgstr "क्षेत्रचयनसंवादे लघुवर्णमास्कस्य उपयोगः करणीयः वा इति"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:60
+#: src/Gui/SettingsDialog/spectacle.kcfg:64
 #, kde-format
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
@@ -1536,121 +1559,121 @@ msgid ""
 msgstr "प्रदेशं चयनं कृत्वा मूषकं मुक्तं कृत्वा स्क्रीनशॉट् गृहीतव्यः वा इति"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:64
+#: src/Gui/SettingsDialog/spectacle.kcfg:68
 #, kde-format
 msgid "Remember the last rectangular region"
 msgstr "अन्तिमः आयताकारः प्रदेशः स्मर्यताम्"
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
-#: src/Gui/SettingsDialog/spectacle.kcfg:73
+#: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
 msgstr ""
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:79
+#: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "The last used region the user selected"
 msgstr "अन्तिमः प्रयुक्तः प्रदेशः उपयोक्त्रा चयनितः"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:83
+#: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Take screenshot on click"
 msgstr "क्लिक् कृत्वा स्क्रीनशॉट् गृह्यताम्"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:87
+#: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
 msgstr "मूषकस्य कर्सरः स्क्रीनशॉट् मध्ये समाविष्टः अस्ति वा"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:91
+#: src/Gui/SettingsDialog/spectacle.kcfg:95
 #, kde-format
 msgid "Whether the mouse cursor is included in the video"
 msgstr "मूषकस्य कर्सरः विडियोमध्ये समाविष्टः अस्ति वा"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:95
+#: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr "स्क्रीनशॉट् मध्ये विण्डो अलङ्काराः समाविष्टाः सन्ति वा"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:99
+#: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "स्क्रीनशॉट् मध्ये विण्डो छाया समाविष्टा अस्ति वा"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:103
+#: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Only capture the current pop up menu"
 msgstr "केवलं वर्तमानं पॉप अप मेन्यू गृह्यताम्"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:107
+#: src/Gui/SettingsDialog/spectacle.kcfg:111
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "चित्रं रक्षित्वा प्रतिलिपि कृत्वा वा त्यजन्तु"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:111
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Delay"
 msgstr "विलम्बः"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:122
-#: src/Gui/SettingsDialog/spectacle.kcfg:168
+#: src/Gui/SettingsDialog/spectacle.kcfg:126
+#: src/Gui/SettingsDialog/spectacle.kcfg:172
 #, kde-format
 msgid "Default filename"
 msgstr "पूर्वनिर्धारितं सञ्चिकानाम"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:139
+#: src/Gui/SettingsDialog/spectacle.kcfg:143
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "हानियुक्तसञ्चिकास्वरूपेषु संपीडनगुणवत्ता"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:147
+#: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "Default save image format"
 msgstr "पूर्वनिर्धारितं चित्रस्वरूपं रक्षन्तु"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "स्क्रीनशॉट् रक्षन्ते सति प्रयुक्तः सञ्चिकानाम टेम्पलेट्"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:158
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:162
+#: src/Gui/SettingsDialog/spectacle.kcfg:201
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "अन्तिमे रक्षितस्य सञ्चिकायाः मार्गः"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:162
-#: src/Gui/SettingsDialog/spectacle.kcfg:201
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"save as\" क्रियायाः कृते प्रयुक्तः अन्तिमः मार्गः"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:185
+#: src/Gui/SettingsDialog/spectacle.kcfg:189
 #, kde-format
 msgid "Default video format"
 msgstr "पूर्वनिर्धारितं विडियो प्रारूपम्"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:190
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "स्क्रीनकास्ट् रक्षन्ते सति प्रयुक्तः सञ्चिकानाम टेम्पलेट्"
@@ -1880,18 +1903,18 @@ msgstr ""
 "वर्तते, यत् उपलब्धं न दृश्यते । KDE Plasma इत्यत्र Spectacle इत्यस्य उपयोगं कुर्वन्तु, अथवा "
 "भिन्नं स्क्रीनशॉट् साधनं उपयुज्यताम् ।"
 
-#: src/OcrManager.cpp:594
+#: src/OcrManager.cpp:609
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr ""
 
-#: src/OcrManager.cpp:638
+#: src/OcrManager.cpp:650
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr ""
 
-#: src/OcrManager.cpp:641
+#: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr ""
@@ -2162,31 +2185,31 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "कैप्चरिंग विना Spectacle प्रारम्भं कुर्वन्तु"
 
-#: src/SpectacleCore.cpp:250
+#: src/SpectacleCore.cpp:260
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "स्क्रीनशॉट् गृह्णन् त्रुटिः अभवत् ।"
 
-#: src/SpectacleCore.cpp:279
+#: src/SpectacleCore.cpp:289
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "तमाशा Recording अस्ति"
 
-#: src/SpectacleCore.cpp:284
+#: src/SpectacleCore.cpp:294
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "तमाशा Recording अस्ति"
 
-#: src/SpectacleCore.cpp:310
+#: src/SpectacleCore.cpp:320
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 
-#: src/SpectacleCore.cpp:311
+#: src/SpectacleCore.cpp:321
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2194,13 +2217,13 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 
-#: src/SpectacleCore.cpp:328
+#: src/SpectacleCore.cpp:338
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "WebP समर्थनम् अभावितम् अस्ति।"
 
-#: src/SpectacleCore.cpp:329
+#: src/SpectacleCore.cpp:339
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2210,7 +2233,7 @@ msgstr ""
 "कृपया Spectacle कृते एनिमेटेड् सिस्टम् ट्रे चिह्नानि प्राप्तुं Qt Image Formats संस्थापयन्तु, "
 "ततः एतत् पैकेजिंग् समस्यां स्ववितरकं प्रति सूचयन्तु ।"
 
-#: src/SpectacleCore.cpp:365
+#: src/SpectacleCore.cpp:375
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2218,13 +2241,13 @@ msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "तमाशा Recording अस्ति"
 
-#: src/SpectacleCore.cpp:366
+#: src/SpectacleCore.cpp:376
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr ""
 
-#: src/SpectacleCore.cpp:368
+#: src/SpectacleCore.cpp:378
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2232,7 +2255,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "तमाशा Recording अस्ति"
 
-#: src/SpectacleCore.cpp:370
+#: src/SpectacleCore.cpp:380
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2246,7 +2269,7 @@ msgstr ""
 "अभिलेखितः समयः : %1\n"
 "रिकार्डिङ्ग् समाप्तुं क्लिक् कुर्वन्तु"
 
-#: src/SpectacleCore.cpp:396
+#: src/SpectacleCore.cpp:406
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2256,13 +2279,13 @@ msgstr ""
 "अभिलेखितः समयः : %1\n"
 "रिकार्डिङ्ग् समाप्तुं क्लिक् कुर्वन्तु"
 
-#: src/SpectacleCore.cpp:421
+#: src/SpectacleCore.cpp:431
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "पटलस्य अभिलेखनार्थं प्रयतमाने त्रुटिः अभवत् ।"
 
-#: src/SpectacleCore.cpp:463
+#: src/SpectacleCore.cpp:473
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
@@ -2273,7 +2296,7 @@ msgid ""
 "link>"
 msgstr "स्क्रीनशॉट् क्लिप्बोर्ड् मध्ये प्रतिलिपितः <a href=\"%1\">%2</a> इति रूपेण रक्षितः"
 
-#: src/SpectacleCore.cpp:466
+#: src/SpectacleCore.cpp:476
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2286,21 +2309,21 @@ msgstr ""
 "स्क्रीनशॉट् <a href=\"%1\">%2</a> इति रक्षितः अस्ति तस्य स्थानं च क्लिप्बोर्ड् प्रति "
 "प्रतिलिखितम् अस्ति"
 
-#: src/SpectacleCore.cpp:469
+#: src/SpectacleCore.cpp:479
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "स्क्रीनशॉट् <a href=\"%1\">%2</a> इति रूपेण रक्षितम्"
 
-#: src/SpectacleCore.cpp:473
+#: src/SpectacleCore.cpp:483
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "स्क्रीनशॉट् क्लिप्बोर्ड् मध्ये प्रतिलिपितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:504
+#: src/SpectacleCore.cpp:514
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -2313,14 +2336,14 @@ msgstr ""
 "विडियो <a href=\"%1\">%2</a> इति रक्षितः अस्ति तस्य स्थानं च क्लिप्बोर्ड् प्रति "
 "प्रतिलिखितम् अस्ति"
 
-#: src/SpectacleCore.cpp:507
+#: src/SpectacleCore.cpp:517
 #, fuzzy, kde-kuit-format
 #| msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "विडियो <a href=\"%1\">%2</a> इति रूपेण रक्षितः आसीत्"
 
-#: src/SpectacleCore.cpp:511
+#: src/SpectacleCore.cpp:521
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2329,70 +2352,70 @@ msgstr "विडियो स्थानं क्लिप्बोर्ड�
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:531
+#: src/SpectacleCore.cpp:541
 #, fuzzy, kde-format
 #| msgid "QR Code found: %1"
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "QR कोडः प्राप्तः: %1"
 
-#: src/SpectacleCore.cpp:535
+#: src/SpectacleCore.cpp:545
 #, fuzzy, kde-format
 #| msgid "Found QR code with binary content."
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "द्विचक्रीयसामग्रीयुक्तः QR कोडः प्राप्तः।"
 
-#: src/SpectacleCore.cpp:544
+#: src/SpectacleCore.cpp:554
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:560
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr ""
 
-#: src/SpectacleCore.cpp:555
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:558
+#: src/SpectacleCore.cpp:573
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:575
+#: src/SpectacleCore.cpp:592
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
-#: src/SpectacleCore.cpp:580
+#: src/SpectacleCore.cpp:597
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
-msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "चित्रं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्"
 
-#: src/SpectacleCore.cpp:585
+#: src/SpectacleCore.cpp:602
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:700
+#: src/SpectacleCore.cpp:740
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:722
+#: src/SpectacleCore.cpp:762
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2400,7 +2423,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "KWin Screencasting इति उपलब्धं नास्ति ।"
 
-#: src/SpectacleCore.cpp:728
+#: src/SpectacleCore.cpp:768
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2408,19 +2431,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "KWin Screencasting इति उपलब्धं नास्ति ।"
 
-#: src/SpectacleCore.cpp:732
+#: src/SpectacleCore.cpp:772
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:996
+#: src/SpectacleCore.cpp:1036
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record कृते वैधविधिः नास्ति"
 
-#: src/SpectacleCore.cpp:1232
+#: src/SpectacleCore.cpp:1270
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2433,7 +2456,7 @@ msgstr ""
 "एकः स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितः आसीत् तथा च स्क्रीनशॉट् इत्यस्य सञ्चिकामार्गः "
 "भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1236
+#: src/SpectacleCore.cpp:1274
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2441,19 +2464,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "भवतः चित्रपुटे '%1' इति रूपेण स्क्रीनशॉट् रक्षितम् ।"
 
-#: src/SpectacleCore.cpp:1239
+#: src/SpectacleCore.cpp:1277
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "एकं स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1243
+#: src/SpectacleCore.cpp:1281
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "भवतः क्लिप्बोर्ड् मध्ये एकः स्क्रीनशॉट् रक्षितः आसीत् ।"
 
-#: src/SpectacleCore.cpp:1248
+#: src/SpectacleCore.cpp:1286
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2466,7 +2489,7 @@ msgstr ""
 "एकं रिकार्डिङ्ग् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् तथा च रिकार्डिङ्ग् इत्यस्य "
 "सञ्चिकामार्गः भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1250
+#: src/SpectacleCore.cpp:1288
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2474,20 +2497,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "एकं रिकार्डिङ्ग् भवतः Videos समुच्चय मध्ये '%1' इति रूपेण रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1252
+#: src/SpectacleCore.cpp:1290
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "एकं अभिलेखनं '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1263
+#: src/SpectacleCore.cpp:1301
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "उद्घाटित"
 
-#: src/SpectacleCore.cpp:1277
+#: src/SpectacleCore.cpp:1315
 #, kde-format
 msgid "Annotate"
 msgstr "टिप्पणीं कुरुत"
