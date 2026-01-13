@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-12 00:46+0000\n"
-"PO-Revision-Date: 2025-12-18 07:37+0100\n"
+"PO-Revision-Date: 2026-01-12 09:48+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1342,11 +1342,9 @@ msgstr "Jeziki za OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Izvlečenje besedila ni uspelo"
+msgstr "Izvlečenje besedila:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1354,7 +1352,7 @@ msgstr "Izvlečenje besedila ni uspelo"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Zapri po izvlečenju (preskoči samodejno shranjevanje)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1363,6 +1361,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle se bo zaprl po izvlečenju besedila in samodejno shranjevanje bo "
+"preskočeno."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2337,12 +2337,10 @@ msgid "%1 and %2"
 msgstr "%1 in %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Besedilo prekopirano na odložišče.<nl/>Zaznani jeziki: %1"
+msgstr "Besedilo prekopirano na odložišče.<nl/>Uporabljeni jeziki: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format

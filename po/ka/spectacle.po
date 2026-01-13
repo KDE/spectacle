@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-12 00:46+0000\n"
-"PO-Revision-Date: 2025-12-18 04:24+0100\n"
+"PO-Revision-Date: 2026-01-12 03:12+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1325,11 +1325,9 @@ msgstr "ენა OCR-ისთვის:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "ტექსტის ამოღება ჩავარდა"
+msgstr "ტექსტის ამოღება:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1337,7 +1335,7 @@ msgstr "ტექსტის ამოღება ჩავარდა"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "დახურვა ამოღების შემდეგ (ავტოშენახვის გამოტოვება)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1346,6 +1344,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle დაიხურება ტექსტის ამოღების შემდეგ და ავტომატური შენახვა "
+"გამოტოვებული იქნება."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2303,12 +2303,10 @@ msgid "%1 and %2"
 msgstr "%1 და %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "ტექსტი დაკოპირდა ბუფერში.<nl/>აღმოჩენილი ენები: %1"
+msgstr "ტექსტი დაკოპირდა ბუფერში.<nl/>გამოყენებული ენები: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format

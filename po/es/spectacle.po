@@ -1,15 +1,15 @@
 # Spanish translations for spectacle.po package.
-# Copyright (C) 2015-2025 This file is copyright:
+# Copyright (C) 2015-2026 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 # Automatically generated, 2015.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-12 00:46+0000\n"
-"PO-Revision-Date: 2025-12-18 12:07+0100\n"
+"PO-Revision-Date: 2026-01-13 00:26+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1350,11 +1350,9 @@ msgstr "Idiomas para OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "La extracción de texto ha fallado"
+msgstr "Extracción de texto:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1362,7 +1360,7 @@ msgstr "La extracción de texto ha fallado"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Cerrar tras la extracción (omite guardar automáticamente)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1371,6 +1369,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle se cerrará tras la extracción del texto y no se guardará "
+"automáticamente."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2351,12 +2351,10 @@ msgid "%1 and %2"
 msgstr "%1 y %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Texto copiado al portapapeles.<nl/>Idiomas detectados: %1"
+msgstr "Texto copiado al portapapeles.<nl/>Idiomas usados: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format
@@ -2477,7 +2475,3 @@ msgstr "WebP animado (mejor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, pero ineficiente)"
-
-#~ msgctxt "@action"
-#~ msgid "Open Containing Folder"
-#~ msgstr "Abrir la carpeta contenedora"

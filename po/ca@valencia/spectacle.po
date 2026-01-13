@@ -1,16 +1,16 @@
 # Translation of spectacle.po to Catalan (Valencian)
-# Copyright (C) 2015-2025 This_file_is_part_of_KDE
+# Copyright (C) 2015-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2015, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-12 00:46+0000\n"
-"PO-Revision-Date: 2025-12-18 10:09+0100\n"
+"PO-Revision-Date: 2026-01-12 10:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1350,11 +1350,9 @@ msgstr "Idiomes d'OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "No s'ha pogut fer l'extracció de text"
+msgstr "Extracció de text:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1362,7 +1360,7 @@ msgstr "No s'ha pogut fer l'extracció de text"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Tanca després de l'extracció (omet la guardada automàtica)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1371,6 +1369,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle es tancarà després de l'extracció de text i s'ometrà la guardada "
+"automàtica."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2349,12 +2349,10 @@ msgid "%1 and %2"
 msgstr "%1 i %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Text copiat a dins del porta-retalls.<nl/>Idiomes detectats: %1"
+msgstr "Text copiat a dins del porta-retalls.<nl/>Idiomes utilitzats: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format

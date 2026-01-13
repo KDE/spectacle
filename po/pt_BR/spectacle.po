@@ -6,13 +6,13 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2015, 2016, 2018, 2019, 2020.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
-# SPDX-FileCopyrightText: 2025 Marcus Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Marcus Gama <marcus.gama@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-12 00:46+0000\n"
-"PO-Revision-Date: 2025-12-18 06:15-0300\n"
+"PO-Revision-Date: 2026-01-12 08:37-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1339,11 +1339,9 @@ msgstr "Idiomas para OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "A extração de texto falhou"
+msgstr "Extração de texto:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1351,7 +1349,7 @@ msgstr "A extração de texto falhou"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Fechar após a extração (ignora o salvamento automático)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1360,6 +1358,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"O Spectacle será fechado após a extração do texto e o salvamento automático "
+"será ignorado."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2329,12 +2329,10 @@ msgid "%1 and %2"
 msgstr "%1 e %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Texto copiado para a área de transferência.<nl/>Idiomas detectados: %1"
+msgstr "Texto copiado para a área de transferência.<nl/>Idiomas usados: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format
