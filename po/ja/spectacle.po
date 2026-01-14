@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2025-03-08 19:33+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -17,26 +17,6 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 24.12.2\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "スクリーンショット"
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "スクリーンショット"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "画面録画"
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "画面録画"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1643,6 +1623,12 @@ msgstr "既定のファイル名"
 msgid "Compression quality for lossy file formats"
 msgstr "非可逆圧縮フォーマットの圧縮品質"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "スクリーンショット"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1654,6 +1640,12 @@ msgstr "既定の保存画像フォーマット"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "スクリーンショット保存時に使用されるファイル名のテンプレート"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "スクリーンショット"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1682,6 +1674,18 @@ msgstr "既定の動画フォーマット"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "画面録画保存時に使用されるファイル名のテンプレート"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "画面録画"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "画面録画"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2025-12-20 20:30+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -19,26 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 3.8\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "Ekrano kopijos"
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "Ekrano kopija"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "Ekrano įrašai"
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "Ekrano įrašas"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1615,6 +1595,12 @@ msgstr "Numatytasis failo pavadinimas"
 msgid "Compression quality for lossy file formats"
 msgstr "Nuostolingųjų failo formatų glaudinimo kokybė"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "Ekrano kopijos"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1626,6 +1612,12 @@ msgstr "Numatytasis įrašomo paveikslo formatas"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Failo pavadinimo šablonas, naudojamas įrašant ekrano kopijas"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "Ekrano kopija"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1654,6 +1646,18 @@ msgstr "Numatytasis vaizdo įrašo formatas"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Failo pavadinimo šablonas, naudojamas įrašant ekrano įrašus"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "Ekrano įrašai"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "Ekrano įrašas"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

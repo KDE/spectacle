@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2019-12-12 21:06+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -17,26 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr ""
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr ""
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr ""
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr ""
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1544,6 +1524,12 @@ msgstr ""
 msgid "Compression quality for lossy file formats"
 msgstr ""
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr ""
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1554,6 +1540,12 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "The filename template used when saving screenshots"
+msgstr ""
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
 msgstr ""
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
@@ -1582,6 +1574,18 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:194
 #, kde-format
 msgid "The filename template used when saving screencasts"
+msgstr ""
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr ""
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)

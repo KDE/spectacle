@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -16,26 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "स्क्रीनशॉट"
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "स्क्रीनशॉट"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "स्क्रीनकास्ट"
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "स्क्रीनकास्ट"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1637,6 +1617,12 @@ msgstr "डिफ़ॉल्ट फ़ाइल नाम"
 msgid "Compression quality for lossy file formats"
 msgstr "हानिपूर्ण फ़ाइल स्वरूपों के लिए संपीड़न गुणवत्ता"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "स्क्रीनशॉट"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1648,6 +1634,12 @@ msgstr "डिफ़ॉल्ट सहेजने योग्य छवि �
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "स्क्रीनशॉट सहेजते समय उपयोग किया जाने वाला फ़ाइल नाम टेम्प्लेट"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "स्क्रीनशॉट"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1676,6 +1668,18 @@ msgstr "डिफ़ॉल्ट वीडियो प्रारूप"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "स्क्रीनकास्ट सहेजते समय उपयोग किया जाने वाला फ़ाइल नाम टेम्प्लेट"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "स्क्रीनकास्ट"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "स्क्रीनकास्ट"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

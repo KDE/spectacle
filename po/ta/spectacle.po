@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2026-01-04 15:54+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -16,26 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.12.0\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "திரைப்பிடிப்புகள்"
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "திரைப்பிடிப்பு"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "திரைப்பதிவுகள்"
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "திரைப்பதிவு"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1598,6 +1578,12 @@ msgstr "இயல்பிருப்பு கோப்புப்பெய�
 msgid "Compression quality for lossy file formats"
 msgstr "இழப்புடை படிவங்களுக்கான சுருக்க தரம்"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "திரைப்பிடிப்புகள்"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1610,6 +1596,12 @@ msgstr "இயல்பிருப்பு சேமிப்புவடி�
 msgid "The filename template used when saving screenshots"
 msgstr ""
 "திரைப்பிடிப்புகளை சேமிக்கும்போது பயன்படுத்த வேண்டிய கோப்புப்பெயர்களுக்கான வார்ப்புரு"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "திரைப்பிடிப்பு"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1638,6 +1630,18 @@ msgstr "இயல்பிருப்பு நிகழ்பட கோப்�
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "திரைப்பதிவுகளை சேமிக்கும்போது பயன்படுத்த வேண்டிய கோப்புப்பெயர்களுக்கான வார்ப்புரு"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "திரைப்பதிவுகள்"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "திரைப்பதிவு"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9

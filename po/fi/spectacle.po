@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-12 00:46+0000\n"
+"POT-Creation-Date: 2026-01-14 02:39+0000\n"
 "PO-Revision-Date: 2025-12-05 18:41+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -20,26 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.04.0\n"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "Kuvakaappaukset"
-
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "Kuvakaappaus"
-
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "Nauhoitukset"
-
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "Nauhoitus"
 
 # HUOM! Tätä jonoa käytetään otsikkona kahdessa paikassa, pääikkunan ja perusasetusten osion selitteenä, vaikka jälkimmäisen olisi järkevämpää olla jotain muuta
 #: src/CaptureModeModel.cpp:162
@@ -1607,6 +1587,12 @@ msgstr "Oletustiedostonimi"
 msgid "Compression quality for lossy file formats"
 msgstr "Häviöllisten tiedostomuotojen pakkauslaatu"
 
+#: src/Gui/SettingsDialog/spectacle.kcfg:148
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "Kuvakaappaukset"
+
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1618,6 +1604,12 @@ msgstr "Oletustiedostomuoto"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Tiedoston nimimalli, jota käytetään kuvakaappauksia tallennettaessa"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:160
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "Kuvakaappaus"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1646,6 +1638,18 @@ msgstr "Oletus videomuoto"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Oletus tiedostonimimalli, jota käytetään tallennettaessa nauhoitusta"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:194
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "Nauhoitukset"
+
+#: src/Gui/SettingsDialog/spectacle.kcfg:199
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "Nauhoitus"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
