@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-14 02:39+0000\n"
-"PO-Revision-Date: 2025-06-14 07:22+0200\n"
+"PO-Revision-Date: 2026-01-18 16:01+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -200,8 +200,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Öppna och redigera befintlig skärmbildsfil"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter kan inte skriva bilden: %1"
@@ -270,9 +269,7 @@ msgstr ""
 "webbadress med ett filnamn"
 
 #: src/ExportManager.cpp:866
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Kan inte spara inspelning. Kunde inte flytta filen till platsen: %1"
@@ -658,8 +655,7 @@ msgid "Number"
 msgstr "Nummer"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
 msgstr "Avbryt"
@@ -866,30 +862,29 @@ msgstr "Dela"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extrahera text enligt språk"
 
 #: src/Gui/ExportMenu.cpp:285
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "Kwin skärmsändning är inte tillgänglig."
+msgstr "Gränssnitt för optisk teckentydning är inte tillgängligt."
 
 #: src/Gui/ExportMenu.cpp:293
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
+"Optisk teckentydning är inte tillgänglig. Installera Tesseract optisk "
+"teckentydning."
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Gränssnitt för optisk teckentydning initieras…"
 
 #: src/Gui/ExportMenu.cpp:304
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "Inga KIPI-insticksprogram tillgängliga"
+msgstr "Ingen språkdata för optisk teckentydning tillgänglig."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -936,7 +931,7 @@ msgstr "Ny skärmbild"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Extrahera text"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1078,16 +1073,13 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Visa muspekaren på skärminspelningen."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
 msgstr ""
-"Inspelning:\n"
+"Spelar in:\n"
 "%1"
 
 #: src/Gui/RecordingView.qml:124
@@ -1304,20 +1296,19 @@ msgstr "Tills Spectacle stängs"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Textigenkänning (optisk teckentydning)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Språk för optisk teckentydning:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgid "Reset selection:"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Nollställ markering:"
+msgstr "Textextrahering:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1325,7 +1316,7 @@ msgstr "Nollställ markering:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Avsluta efter extrahering (hoppa över spara automatiskt)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1334,14 +1325,13 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle avslutas efter textextrahering och spara automatiskt hoppas över."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "Kwin skärmsändning är inte tillgänglig."
+msgstr "Funktion för optisk teckentydning är inte tillgänglig"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1351,6 +1341,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Installera nödvändiga paket:\n"
+"• tesseract\n"
+"• tesseract språkdata (t.ex., tesseract-ocr-eng för engelska)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1506,7 +1499,7 @@ msgstr "Kom ihåg det senaste rektangulära området"
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Standardspråk för optisk teckenigenkänning"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
@@ -1755,8 +1748,7 @@ msgid "Escape"
 msgstr "Esc"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1 × %2"
@@ -1810,9 +1802,7 @@ msgid "Image Zoom"
 msgstr "Bildzoomning"
 
 #: src/Gui/ViewerWindow.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Ett problem uppstod när bilden skulle delas: %1"
@@ -1869,38 +1859,32 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientering och skriptdetektering"
 
 #: src/OcrManager.cpp:650
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Matematik- och ekvationsdetektering"
 
 #: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientering och skriptdetektering"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Felaktig bredd för Kwin-skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Felaktig höjd för Kwin-skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Felaktigt format för Kwin-skärmbild: %1"
@@ -1912,19 +1896,13 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Kunde inte öppna fildeskriptor för att läsa Kwin-skärmbild."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() misslyckades för Kwin skärmbild: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -1998,26 +1976,20 @@ msgstr ""
 "ett sätt som störde inspelningen."
 
 #: src/Platforms/VideoPlatformWayland.cpp:282
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "Misslyckades spela in: Tillfällig webbadress är inte en lokal fil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:292
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Misslyckades spela in. Utdatafilens webbadress är inte en lokal fil (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Misslyckades spela in: Kan inte skapa katalog (%1)"
@@ -2035,17 +2007,13 @@ msgid "Window recording canceled"
 msgstr "Fönsterinspelning avbruten"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Misslyckades välja skärm: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Misslyckades välja fönster: %1"
@@ -2300,12 +2268,10 @@ msgstr "Videons plats har kopierats till klippbordet."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:541
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR-kod hittades: %1"
+msgstr "Kod hittades: %1"
 
 #: src/SpectacleCore.cpp:545
 #, kde-format
@@ -2317,72 +2283,67 @@ msgstr "Hittade QR-kod med binärt innehåll."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Textextrahering misslyckades"
 
 #: src/SpectacleCore.cpp:560
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Ingen text hittades på bilden"
 
 #: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Textextrahering slutförd"
 
 #: src/SpectacleCore.cpp:573
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Text extraherad"
 
 #: src/SpectacleCore.cpp:592
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 och %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Kopiera bild till klippbordet"
+msgstr "Text kopierad till klippbordet:<nl/>Använda språk: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Öppna i texteditor"
 
 #: src/SpectacleCore.cpp:740
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Markera ett område innan text extraheras"
 
 #: src/SpectacleCore.cpp:762
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "Kwin skärmsändning är inte tillgänglig."
+msgstr "Optisk teckentydning är inte tillgänglig."
 
 #: src/SpectacleCore.cpp:768
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Kwin skärmsändning är inte tillgänglig."
+msgstr "Inga skärmbilder tillgängliga."
 
 #: src/SpectacleCore.cpp:772
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Extraherar text från bild..."
 
 #: src/SpectacleCore.cpp:1036
 #, kde-format
@@ -2391,29 +2352,23 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 är inte ett giltigt läge för --record"
 
 #: src/SpectacleCore.cpp:1270
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
-"kopierats till klippbordet."
+"En skärmbild har sparats som '%1' i '%2' och skärmbildens filsökväg har "
+"sparats på klippbordet."
 
 #: src/SpectacleCore.cpp:1274
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
 #: src/SpectacleCore.cpp:1277
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
@@ -2424,10 +2379,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har sparats på klippbordet."
 
 #: src/SpectacleCore.cpp:1286
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2437,16 +2389,13 @@ msgstr ""
 "sparats på klippbordet."
 
 #: src/SpectacleCore.cpp:1288
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "En inspelning har sparats som '%1' i videokatalogen."
 
 #: src/SpectacleCore.cpp:1290
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "En inspelning har sparats som '%1' i '%2'."
