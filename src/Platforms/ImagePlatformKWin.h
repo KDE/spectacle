@@ -53,6 +53,7 @@ public:
         IncludeDecoration = 0x2,
         NativeSize = 0x4,
         IncludeShadow = 0x8,
+        IncludeDesktopZoom = 0x10,
     };
     Q_DECLARE_FLAGS(ScreenShotFlags, ScreenShotFlag)
 

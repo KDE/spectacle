@@ -51,6 +51,9 @@ static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags f
     if (flags & ImagePlatformKWin::ScreenShotFlag::IncludeDecoration) {
         options.insert(u"include-decoration"_s, true);
     }
+    if (!(flags & ImagePlatformKWin::ScreenShotFlag::IncludeDesktopZoom)) {
+        options.insert(u"exclude-zoom"_s, true);
+    }
 
     bool includeShadow = flags & ImagePlatformKWin::ScreenShotFlag::IncludeShadow;
     options.insert(u"include-shadow"_s, includeShadow);
