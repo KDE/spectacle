@@ -88,7 +88,7 @@ public:
             Time = 1 << 1,
             Extra = 1 << 28, //< Placeholders that are extras are hidden by default.
             Hidden = 1 << 29, //< Placeholders that won't be shown
-            QDateTime = 1 << 30, //< Can be put directly into QDateTime::toString.
+            IsQDateTime = 1 << 30, //< Can be put directly into QDateTime::toString.
         };
         using Flags = QFlags<Flag>;
 

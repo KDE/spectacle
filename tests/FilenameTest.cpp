@@ -57,7 +57,7 @@ void FilenameTest::testDateTokens()
     const auto &locale = QLocale::system();
     for (auto it = placeholders.cbegin(); it != placeholders.cend(); ++it) {
         using Flag = ExportManager::Placeholder::Flag;
-        if (it->flags.testFlag(Flag::QDateTime)) {
+        if (it->flags.testFlag(Flag::IsQDateTime)) {
             QCOMPARE(mExportManager->formattedFilename(it->token, timestamp), locale.toString(timestamp, it->base));
         }
     }

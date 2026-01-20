@@ -276,7 +276,7 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
         // QDateTime can still be valid when timezone is invalid.
         const bool validTimeZone = timestamp.timeZone().isValid();
         for (auto it = filenamePlaceholders.cbegin(); it != filenamePlaceholders.cend(); ++it) {
-            if (it->flags.testFlags(Placeholder::QDateTime)) {
+            if (it->flags.testFlags(Placeholder::IsQDateTime)) {
                 int tCount = 0;
                 // KDE BUG: https://bugs.kde.org/show_bug.cgi?id=493191
                 // QT BUG: https://bugreports.qt.io/browse/QTBUG-129696
@@ -910,37 +910,37 @@ void ExportManager::doPrint(QPrinter *printer)
 
 using enum ExportManager::Placeholder::Flag;
 const QList<ExportManager::Placeholder> ExportManager::filenamePlaceholders{
-    {Date | Extra | QDateTime, u"d"_s, ki18nc("filename placeholder description", "Day (1–31)")},
-    {Date | QDateTime, u"dd"_s, ki18nc("filename placeholder description", "Day (01–31)")},
-    {Date | Extra | QDateTime, u"ddd"_s, ki18nc("filename placeholder description", "Day (short name)")},
-    {Date | Extra | QDateTime, u"dddd"_s, ki18nc("filename placeholder description", "Day (long name)")},
-    {Date | Extra | QDateTime, u"M"_s, ki18nc("filename placeholder description", "Month (1–12)")},
-    {Date | QDateTime, u"MM"_s, ki18nc("filename placeholder description", "Month (01–12)")},
-    {Date | QDateTime, u"MMM"_s, ki18nc("filename placeholder description", "Month (short name)")},
-    {Date | QDateTime, u"MMMM"_s, ki18nc("filename placeholder description", "Month (long name)")},
-    {Date | QDateTime, u"yy"_s, ki18nc("filename placeholder description", "Year (2 digit)")},
-    {Date | QDateTime, u"yyyy"_s, ki18nc("filename placeholder description", "Year (4 digit)")},
-    {Time | Extra | QDateTime, u"H"_s, ki18nc("filename placeholder description", "Hour (0–23)")},
-    {Time | QDateTime, u"HH"_s, ki18nc("filename placeholder description", "Hour (00–23)")},
+    {Date | Extra | IsQDateTime, u"d"_s, ki18nc("filename placeholder description", "Day (1–31)")},
+    {Date | IsQDateTime, u"dd"_s, ki18nc("filename placeholder description", "Day (01–31)")},
+    {Date | Extra | IsQDateTime, u"ddd"_s, ki18nc("filename placeholder description", "Day (short name)")},
+    {Date | Extra | IsQDateTime, u"dddd"_s, ki18nc("filename placeholder description", "Day (long name)")},
+    {Date | Extra | IsQDateTime, u"M"_s, ki18nc("filename placeholder description", "Month (1–12)")},
+    {Date | IsQDateTime, u"MM"_s, ki18nc("filename placeholder description", "Month (01–12)")},
+    {Date | IsQDateTime, u"MMM"_s, ki18nc("filename placeholder description", "Month (short name)")},
+    {Date | IsQDateTime, u"MMMM"_s, ki18nc("filename placeholder description", "Month (long name)")},
+    {Date | IsQDateTime, u"yy"_s, ki18nc("filename placeholder description", "Year (2 digit)")},
+    {Date | IsQDateTime, u"yyyy"_s, ki18nc("filename placeholder description", "Year (4 digit)")},
+    {Time | Extra | IsQDateTime, u"H"_s, ki18nc("filename placeholder description", "Hour (0–23)")},
+    {Time | IsQDateTime, u"HH"_s, ki18nc("filename placeholder description", "Hour (00–23)")},
     {Time | Extra, u"h"_s, ki18nc("filename placeholder description", "Hour (1–12)")},
     {Time, u"hh"_s, ki18nc("filename placeholder description", "Hour (01–12)")},
-    {Time | Extra | QDateTime, u"m"_s, ki18nc("filename placeholder description", "Minute (0–59)")},
-    {Time | QDateTime, u"mm"_s, ki18nc("filename placeholder description", "Minute (00–59)")},
-    {Time | Extra | QDateTime, u"s"_s, ki18nc("filename placeholder description", "Second (0–59)")},
-    {Time | QDateTime, u"ss"_s, ki18nc("filename placeholder description", "Second (00–59)")},
-    {Time | Extra | QDateTime, u"z"_s, ki18nc("filename placeholder description", "Millisecond (0–999)")},
-    {Time | Extra | QDateTime, u"zz"_s}, // same as `z`
-    {Time | Extra | QDateTime, u"zzz"_s, ki18nc("filename placeholder description", "Millisecond (000–999)")},
-    {Time | Extra | QDateTime, u"AP"_s, ki18nc("filename placeholder description", "AM/PM")},
-    {Time | Extra | QDateTime, u"A"_s}, // same as `AP`
-    {Time | Extra | QDateTime, u"ap"_s, ki18nc("filename placeholder description", "am/pm")},
-    {Time | Extra | QDateTime, u"a"_s}, // same as `ap`
-    {Time | QDateTime, u"Ap"_s, ki18nc("filename placeholder description", "AM/PM or am/pm (localized)")},
-    {Time | Extra | QDateTime, u"aP"_s}, // same as `Ap`
-    {Time | Extra | QDateTime, u"t"_s, ki18nc("filename placeholder description", "Timezone (short name)")},
-    {Time | QDateTime, u"tt"_s, ki18nc("filename placeholder description", "Timezone offset (±0000)")},
-    {Time | Extra | QDateTime, u"ttt"_s, ki18nc("filename placeholder description", "Timezone offset (±00:00)")},
-    {Time | Extra | QDateTime, u"tttt"_s, ki18nc("filename placeholder description", "Timezone (long name)")},
+    {Time | Extra | IsQDateTime, u"m"_s, ki18nc("filename placeholder description", "Minute (0–59)")},
+    {Time | IsQDateTime, u"mm"_s, ki18nc("filename placeholder description", "Minute (00–59)")},
+    {Time | Extra | IsQDateTime, u"s"_s, ki18nc("filename placeholder description", "Second (0–59)")},
+    {Time | IsQDateTime, u"ss"_s, ki18nc("filename placeholder description", "Second (00–59)")},
+    {Time | Extra | IsQDateTime, u"z"_s, ki18nc("filename placeholder description", "Millisecond (0–999)")},
+    {Time | Extra | IsQDateTime, u"zz"_s}, // same as `z`
+    {Time | Extra | IsQDateTime, u"zzz"_s, ki18nc("filename placeholder description", "Millisecond (000–999)")},
+    {Time | Extra | IsQDateTime, u"AP"_s, ki18nc("filename placeholder description", "AM/PM")},
+    {Time | Extra | IsQDateTime, u"A"_s}, // same as `AP`
+    {Time | Extra | IsQDateTime, u"ap"_s, ki18nc("filename placeholder description", "am/pm")},
+    {Time | Extra | IsQDateTime, u"a"_s}, // same as `ap`
+    {Time | IsQDateTime, u"Ap"_s, ki18nc("filename placeholder description", "AM/PM or am/pm (localized)")},
+    {Time | Extra | IsQDateTime, u"aP"_s}, // same as `Ap`
+    {Time | Extra | IsQDateTime, u"t"_s, ki18nc("filename placeholder description", "Timezone (short name)")},
+    {Time | IsQDateTime, u"tt"_s, ki18nc("filename placeholder description", "Timezone offset (±0000)")},
+    {Time | Extra | IsQDateTime, u"ttt"_s, ki18nc("filename placeholder description", "Timezone offset (±00:00)")},
+    {Time | Extra | IsQDateTime, u"tttt"_s, ki18nc("filename placeholder description", "Timezone (long name)")},
     {Time | Extra, u"UnixTime"_s, ki18nc("filename placeholder description", "Seconds since the Unix epoch")},
     {Other, u"title"_s, ki18nc("filename placeholder description", "Window Title")},
     {Other, u"#"_s, ki18nc("filename placeholder description", "Sequential numbering, padded by inserting additional '#' characters")},
