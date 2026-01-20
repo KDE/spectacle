@@ -657,6 +657,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             // Replace SaveAs with Save since we will definitely be using this URL.
             actions.setFlag(SaveAs, false);
             actions.setFlag(Save, accepted);
+            Settings::setLastImageSaveAsLocation(url);
             // restart the export now that we've done the save as action
             ExportManager::instance()->exportImage(actions, url);
         });
@@ -813,6 +814,7 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
             // Replace SaveAs with Save since we will definitely be using this URL.
             actions.setFlag(SaveAs, false);
             actions.setFlag(Save, accepted);
+            Settings::setLastVideoSaveAsLocation(outputUrl);
             // restart the export now that we've done the save as action
             ExportManager::instance()->exportVideo(actions, inputUrl, outputUrl);
         });
