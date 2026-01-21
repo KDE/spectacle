@@ -436,6 +436,9 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
     if (includePointer) {
         flags |= ScreenShotFlag::IncludeCursor;
     }
+    if (Settings::includeZoom()) {
+        flags |= ScreenShotFlag::IncludeDesktopZoom;
+    }
 
     switch (grabMode) {
     case GrabMode::AllScreens:
