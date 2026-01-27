@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 02:47+0000\n"
-"PO-Revision-Date: 2026-01-22 17:52+0100\n"
+"PO-Revision-Date: 2026-01-26 19:18+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -209,8 +209,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "Aperi e modifica file de captura de schermo existente"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pote scriber image: %1"
@@ -672,8 +671,7 @@ msgid "Number"
 msgstr "Numero"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
 msgstr "Cancella"
@@ -870,8 +868,7 @@ msgid "Open Default Screenshots Folder"
 msgstr "Aperi dossier predefinite de captura de schermo"
 
 #: src/Gui/ExportMenu.cpp:124
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Altere application..."
@@ -888,21 +885,19 @@ msgid "Extract Text by Language"
 msgstr ""
 
 #: src/Gui/ExportMenu.cpp:285
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "Screencasting de KWin non es disponibile."
+msgstr "Motor de OCR non es disponibile."
 
 #: src/Gui/ExportMenu.cpp:293
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR non es disponibile. Per favor tu installa Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Initialisante motor de OCR..."
 
 #: src/Gui/ExportMenu.cpp:304
 #, kde-format
@@ -1330,10 +1325,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgid "Reset selection:"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Refixa selection:"
+msgstr "Extraction de texto:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1353,11 +1347,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "Screencasting de KWin non es disponibile."
+msgstr "Functionalitate de OCR non es disponibile."
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1778,8 +1770,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1859,10 +1850,9 @@ msgid "KDE Screenshot Utility"
 msgstr "Utilitate de Capturar Schermo de KDE"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2125,28 +2115,22 @@ msgid "Capture Window Under Cursor"
 msgstr "Captura Fenestra sub Cursor"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle es Registrante"
+msgstr "Starta/Stoppa Registration de Schermo"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle es Registrante"
+msgstr "Starta/Stoppa Registration de Fenestra"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle es Registrante"
+msgstr "Starta/Stoppa Registration de Region"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2305,12 +2289,10 @@ msgstr "Le locationde video ha essite copiate al tabuliero."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:541
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR Code (Codice QR) trovate: %1"
+msgstr "Codice trovate: %1"
 
 #: src/SpectacleCore.cpp:545
 #, kde-format
@@ -2349,11 +2331,10 @@ msgid "%1 and %2"
 msgstr "%1 e %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Copia image in area de transferentia"
+msgstr "Texto copiate in area de transferentia.<nl/>Linguages usate: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format
@@ -2368,20 +2349,16 @@ msgid "Please select a region before extracting text"
 msgstr ""
 
 #: src/SpectacleCore.cpp:762
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "Screencasting de KWin non es disponibile."
+msgstr "OCR non es disponibile."
 
 #: src/SpectacleCore.cpp:768
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Screencasting de KWin non es disponibile."
+msgstr "Nulle captura de schermo disponibile."
 
 #: src/SpectacleCore.cpp:772
 #, kde-format
