@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2022, 2023, 2025 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
+# SPDX-FileCopyrightText: 2022, 2023, 2025, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022.
 msgid ""
@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:47+0000\n"
-"PO-Revision-Date: 2025-03-08 19:33+0900\n"
+"PO-Revision-Date: 2026-01-26 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -222,8 +222,7 @@ msgid "Open and edit existing screenshot file"
 msgstr "既存のスクリーンショットファイルを開き、編集する"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter は画像を書き込めません: %1"
@@ -294,9 +293,7 @@ msgid ""
 msgstr ""
 
 #: src/ExportManager.cpp:868
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "録画を保存できません。保存先にファイルを移動できませんでした: %1"
@@ -358,13 +355,13 @@ msgstr ""
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
-msgstr ""
+msgstr "年 (2桁)"
 
 #: src/ExportManager.cpp:922
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
-msgstr ""
+msgstr "年 (4桁)"
 
 #: src/ExportManager.cpp:923
 #, kde-format
@@ -475,11 +472,7 @@ msgid "Seconds since the Unix epoch"
 msgstr ""
 
 #: src/ExportManager.cpp:945
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "A placeholder in the user configurable filename will replaced by the "
-#| "specified value"
-#| msgid "Window Title"
+#, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "ウィンドウのタイトル"
@@ -494,7 +487,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr ""
+msgstr "決定"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
@@ -583,8 +576,7 @@ msgid "Shadow"
 msgstr "影"
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
-#, fuzzy, kde-format
-#| msgid "None"
+#, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
 msgstr "なし"
@@ -593,18 +585,16 @@ msgstr "なし"
 #, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr ""
+msgstr "切り抜き"
 
 #: src/Gui/AnnotationsToolBarContents.qml:127
-#, fuzzy, kde-format
-#| msgid "Select"
+#, kde-format
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
 msgstr "選択"
 
 #: src/Gui/AnnotationsToolBarContents.qml:136
-#, fuzzy, kde-format
-#| msgid "Freehand"
+#, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
 msgstr "手書き"
@@ -613,18 +603,16 @@ msgstr "手書き"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr ""
+msgstr "Shift: 直線を描画"
 
 #: src/Gui/AnnotationsToolBarContents.qml:144
-#, fuzzy, kde-format
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
 msgstr "マーカー"
 
 #: src/Gui/AnnotationsToolBarContents.qml:153
-#, fuzzy, kde-format
-#| msgid "Line"
+#, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
 msgstr "直線"
@@ -633,18 +621,16 @@ msgstr "直線"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr ""
+msgstr "Shift: 45度ずつ回転"
 
 #: src/Gui/AnnotationsToolBarContents.qml:161
-#, fuzzy, kde-format
-#| msgid "Arrow"
+#, kde-format
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
 msgstr "矢印"
 
 #: src/Gui/AnnotationsToolBarContents.qml:170
-#, fuzzy, kde-format
-#| msgid "Rectangle"
+#, kde-format
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
 msgstr "矩形"
@@ -656,48 +642,44 @@ msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
+"Shift: 縦横比を同一化\n"
+"Control: 中心からリサイズ"
 
 #: src/Gui/AnnotationsToolBarContents.qml:179
-#, fuzzy, kde-format
-#| msgid "Ellipse"
+#, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
 msgstr "楕円"
 
 #: src/Gui/AnnotationsToolBarContents.qml:187
-#, fuzzy, kde-format
-#| msgid "Pixelate"
+#, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
 msgstr "モザイク"
 
 #: src/Gui/AnnotationsToolBarContents.qml:195
-#, fuzzy, kde-format
-#| msgid "Blur"
+#, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
 msgstr "ぼかし"
 
 #: src/Gui/AnnotationsToolBarContents.qml:203
-#, fuzzy, kde-format
-#| msgid "Text"
+#, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
 msgstr "テキスト"
 
 #: src/Gui/AnnotationsToolBarContents.qml:210
-#, fuzzy, kde-format
-#| msgid "Number"
+#, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
 msgstr "数字"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel:"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr "キャンセル:"
+msgstr "キャンセル"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -721,7 +703,7 @@ msgstr "スクリーンショット設定"
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr ""
+msgstr "クリックとドラッグで選択してください。"
 
 #: src/Gui/CaptureSettingsColumn.qml:16 src/Gui/RecordingSettingsColumn.qml:16
 #, kde-format
@@ -796,18 +778,16 @@ msgid "Delay:"
 msgstr "遅延:"
 
 #: src/Gui/CopyImageAction.qml:13
-#, fuzzy, kde-format
-#| msgid "Copy"
+#, kde-format
 msgctxt "@action"
 msgid "Copy"
 msgstr "コピー"
 
 #: src/Gui/CopyLocationAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Save Location:"
+#, kde-format
 msgctxt "@action"
 msgid "Copy Location"
-msgstr "保存場所:"
+msgstr "場所をコピー"
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -872,11 +852,10 @@ msgstr "画面録画"
 #, kde-format
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "編集..."
 
 #: src/Gui/ExportMenu.cpp:51
-#, fuzzy, kde-format
-#| msgid "Export"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Export"
 msgstr "エクスポート"
@@ -887,8 +866,7 @@ msgid "Open Default Screenshots Folder"
 msgstr "既定のスクリーンショットフォルダを開く"
 
 #: src/Gui/ExportMenu.cpp:124
-#, fuzzy, kde-format
-#| msgid "Other Application..."
+#, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "その他のアプリケーション..."
@@ -905,67 +883,61 @@ msgid "Extract Text by Language"
 msgstr ""
 
 #: src/Gui/ExportMenu.cpp:285
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "KWin 画面録画は利用できません。"
+msgstr "OCR エンジンが利用できません。"
 
 #: src/Gui/ExportMenu.cpp:293
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
+"OCR エンジンが利用できません。Tesseract OCR をインストールしてください。"
 
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "OCR エンジンは初期化中です..."
 
 #: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "利用可能な OCR 言語データがありません。"
 
 #: src/Gui/ExportMenuButton.qml:13
-#, fuzzy, kde-format
-#| msgid "Export"
+#, kde-format
 msgctxt "@action"
 msgid "Export"
 msgstr "エクスポート"
 
 #: src/Gui/HelpMenu.cpp:45
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "ヘルプ"
 
 #: src/Gui/HelpMenuButton.qml:10
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action"
 msgid "Help"
 msgstr "ヘルプ"
 
 #: src/Gui/InlineMessageList.qml:129
-#, fuzzy, kde-format
-#| msgid "Open Containing Folder"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "保存フォルダを開く"
 
 #: src/Gui/InlineMessageList.qml:139
-#, fuzzy, kde-format
-#| msgid "Copy image to clipboard"
+#, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
-msgstr "画像をクリップボードにコピー"
+msgstr "クリップボードにコピー"
 
 #: src/Gui/InlineMessageList.qml:149
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
@@ -976,41 +948,34 @@ msgstr "新しいスクリーンショット"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "テキストを抽出"
 
 #: src/Gui/OptionsMenu.cpp:38
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "スクリーンショット"
+msgstr "スクリーンショット設定"
 
 #: src/Gui/OptionsMenu.cpp:40
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check for screenshots"
 msgid "Include mouse pointer"
 msgstr "マウスポインターを含める"
 
 #: src/Gui/OptionsMenu.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screenshot image"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
 msgstr "スクリーンショット画像にマウスカーソルを表示"
 
 #: src/Gui/OptionsMenu.cpp:49
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
 msgstr "ウィンドウのタイトルバーと縁を含める"
 
 #: src/Gui/OptionsMenu.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Show the window title bar, the minimize/maximize/close buttons, and the "
-#| "window border"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
@@ -1019,31 +984,25 @@ msgstr ""
 "ウィンドウタイトルバー、最小化/最大化/閉じる/ ボタン、ウィンドウの縁を表示"
 
 #: src/Gui/OptionsMenu.cpp:58
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr "ウィンドウのタイトルバーと縁を含める"
+msgstr "ウィンドウの影を含める"
 
 #: src/Gui/OptionsMenu.cpp:59
-#, fuzzy, kde-format
-#| msgid "Include window titlebar and borders"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
-msgstr "ウィンドウのタイトルバーと縁を含める"
+msgstr "ウィンドウの影を表示"
 
 #: src/Gui/OptionsMenu.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture the current pop-up only"
+#, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
 msgstr "現在のポップアップのみを撮影"
 
 #: src/Gui/OptionsMenu.cpp:71
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
@@ -1053,99 +1012,84 @@ msgstr ""
 "無効化された場合、ポップアップは親ウィンドウとともに撮影されます"
 
 #: src/Gui/OptionsMenu.cpp:81
-#, fuzzy, kde-format
-#| msgid "Quit after manual Save or Copy"
+#, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "保存かコピーしたあとに終了"
 
 #: src/Gui/OptionsMenu.cpp:82
-#, fuzzy, kde-format
-#| msgid "Quit Spectacle after manually saving or copying the image"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "画像を保存かコピーしたあとに Spectacle を終了"
 
 #: src/Gui/OptionsMenu.cpp:94
-#, fuzzy, kde-format
-#| msgid "Capture On Click"
+#, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "クリックして撮影"
 
 #: src/Gui/OptionsMenu.cpp:109
-#, fuzzy, kde-format
-#| msgid "Delay:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "遅延:"
 
 #: src/Gui/OptionsMenu.cpp:114
-#, fuzzy, kde-format
-#| msgid "No Delay"
+#, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "遅延なし"
 
 #: src/Gui/OptionsMenu.cpp:133
-#, fuzzy, kde-format
-#| msgid "Recording Settings"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "録画設定"
 
 #: src/Gui/OptionsMenu.cpp:135
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "マウスポインターを含める"
 
 #: src/Gui/OptionsMenu.cpp:136
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr "スクリーン録画にマウスカーソルを表示します。"
+msgstr "画面録画にマウスカーソルを表示します"
 
 #: src/Gui/OptionsMenuButton.qml:10
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@action"
 msgid "Options"
 msgstr "オプション"
 
 #: src/Gui/RecordAction.qml:11
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "画面録画"
+msgstr "録画"
 
 #: src/Gui/RecordingModeMenu.cpp:16
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Recording Modes"
-msgstr "画面録画"
+msgstr "録画モード"
 
 #: src/Gui/RecordingModeMenuButton.qml:11
-#, fuzzy, kde-format
-#| msgid "Recording"
+#, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "画面録画"
+msgstr "新しい画面録画"
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screen recording."
-msgstr "スクリーン録画にマウスカーソルを表示します。"
+msgstr "画面録画にマウスカーソルを表示します。"
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1175,29 +1119,25 @@ msgid "Finish recording"
 msgstr "録画完了"
 
 #: src/Gui/SaveAction.qml:13
-#, fuzzy, kde-format
-#| msgid "Save"
+#, kde-format
 msgctxt "@action"
 msgid "Save"
 msgstr "保存"
 
 #: src/Gui/SaveAsAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Save As..."
+#, kde-format
 msgctxt "@action"
 msgid "Save As…"
 msgstr "名前を付けて保存..."
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
-#, fuzzy, kde-format
-#| msgid "Screenshot"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
-msgstr "スクリーンショット"
+msgstr "スクリーンショットモード"
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
-#, fuzzy, kde-format
-#| msgid "New Screenshot"
+#, kde-format
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
 msgstr "新しいスクリーンショット"
@@ -1222,16 +1162,15 @@ msgstr "Spectacle が起動されたとき:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
-#, fuzzy, kde-format
-#| msgid "Take a new screenshot"
+#, kde-format
 msgid "Take rectangular screenshot"
-msgstr "新しいスクリーンショットを撮影"
+msgstr "矩形領域を撮影"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr "新しいフルスクリーンのスクリーンショットを撮影"
+msgstr "フルスクリーンを撮影"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
@@ -1361,7 +1300,7 @@ msgstr "Shift キーを押している間"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:219
 #, kde-format
 msgid "Remember selected area:"
-msgstr "選択したエリアを記憶:"
+msgstr "選択した領域を記憶:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:237
@@ -1383,10 +1322,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgid "Reset selection:"
+#, kde-format
 msgid "Text extraction:"
-msgstr "選択をリセット:"
+msgstr "テキスト抽出:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1406,11 +1344,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "KWin 画面録画は利用できません。"
+msgstr "OCR 機能は利用できません"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1420,6 +1356,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"必要なパッケージをインストールしてください:\n"
+"• tesseract\n"
+"• tesseract 言語データ (例: 英語の場合は tesseract-ocr-eng)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1798,8 +1737,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1x%2"
@@ -1809,7 +1747,7 @@ msgstr "%1x%2"
 msgctxt "Integer number of seconds"
 msgid " second"
 msgid_plural " seconds"
-msgstr[0] "秒"
+msgstr[0] " 秒"
 
 #: src/Gui/SmartSpinBox.cpp:32
 #, kde-format
@@ -1851,9 +1789,7 @@ msgid "Image Zoom"
 msgstr "画像ズーム"
 
 #: src/Gui/ViewerWindow.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "画像の共有中に問題が発生しました: %1"
@@ -1879,10 +1815,9 @@ msgid "KDE Screenshot Utility"
 msgstr "KDE スクリーンショット撮影ユーティリティ"
 
 #: src/Main.cpp:48
-#, fuzzy, kde-format
-#| msgid "(C) 2015 Boudhayan Gupta"
+#, kde-format
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
 #, kde-format
@@ -2058,17 +1993,13 @@ msgid "Window recording canceled"
 msgstr "ウィンドウの録画がキャンセルされました"
 
 #: src/Platforms/VideoPlatformWayland.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "スクリーンの選択に失敗しました: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "ウィンドウの選択に失敗しました: %1"
@@ -2147,28 +2078,22 @@ msgid "Capture Window Under Cursor"
 msgstr "カーソル下のウィンドウを撮影"
 
 #: src/ShortcutActions.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Spectacle は録画中です"
+msgstr "画面録画を開始/終了"
 
 #: src/ShortcutActions.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Spectacle は録画中です"
+msgstr "ウィンドウの録画を開始/終了"
 
 #: src/ShortcutActions.cpp:88
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Spectacle は録画中です"
+msgstr "領域の録画を開始/終了"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2225,40 +2150,32 @@ msgstr ""
 "トールしてください。このパッケージの問題を配布元に報告してください。"
 
 #: src/SpectacleCore.cpp:375
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle は録画中です"
+msgstr "Spectacle は録画を終了しています"
 
 #: src/SpectacleCore.cpp:376
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr ""
+msgstr "お待ちください"
 
 #: src/SpectacleCore.cpp:378
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Spectacle は録画中です"
+msgstr "Spectacle は録画を終了しています"
 
 #: src/SpectacleCore.cpp:380
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip subtitle for recording tray icon"
-#| msgid ""
-#| "Time recorded: %1\n"
-#| "Click to finish recording"
+#, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
 "録画時間: %1\n"
-"クリックして録画を終了"
+"クリックしてレンダリングを中断 (データが失われます)"
 
 #: src/SpectacleCore.cpp:406
 #, kde-format
@@ -2277,64 +2194,52 @@ msgid "An error occurred while attempting to record the screen."
 msgstr "画面録画を開始する際にエラーが発生しました。"
 
 #: src/SpectacleCore.cpp:473
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
-#| "%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"スクリーンショットはクリップボードにコピーされ、<a href=\"%1\">%2</a> として"
-"保存されました"
+"スクリーンショットはクリップボードにコピーされ、<link url=\"%1\">%2</link> と"
+"して保存されました"
 
 #: src/SpectacleCore.cpp:476
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
-#| "has been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"スクリーンショットは (<a href=\"%1\">%2</a>) として保存されその場所がクリップ"
-"ボードにコピーされました"
+"スクリーンショットは <link url=\"%1\">%2</link> として保存され、その場所がク"
+"リップボードにコピーされました"
 
 #: src/SpectacleCore.cpp:479
-#, fuzzy, kde-kuit-format
-#| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "スクリーンショットは <a href=\"%1\">%2</a> として保存されました。"
+msgstr "スクリーンショットは <link url=\"%1\">%2</link> として保存されました"
 
 #: src/SpectacleCore.cpp:483
-#, fuzzy, kde-format
-#| msgid "The screenshot has been copied to the clipboard."
+#, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "スクリーンショットがクリップボードにコピーされました。"
+msgstr "スクリーンショットはクリップボードにコピーされました。"
 
 #: src/SpectacleCore.cpp:514
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
-#| "been copied to clipboard"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"動画は (<a href=\"%1\">%2</a>) として保存されその場所がクリップボードにコピー"
-"されました"
+"動画は <link url=\"%1\">%2</link> として保存され、その場所がクリップボードに"
+"コピーされました"
 
 #: src/SpectacleCore.cpp:517
-#, fuzzy, kde-kuit-format
-#| msgid "The video was saved as <a href=\"%1\">%2</a>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "動画は <a href=\"%1\">%2</a> として保存されました。"
+msgstr "動画は <link url=\"%1\">%2</link> として保存されました"
 
 #: src/SpectacleCore.cpp:521
 #, kde-format
@@ -2346,15 +2251,13 @@ msgstr "動画の場所がクリップボードにコピーされました。"
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:541
-#, fuzzy, kde-format
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR コードが見つかりました: %1"
+msgstr "コードが見つかりました: %1"
 
 #: src/SpectacleCore.cpp:545
-#, fuzzy, kde-format
-#| msgid "Found QR code with binary content."
+#, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "バイナリデータを含む QR コードを発見しました。"
@@ -2400,7 +2303,7 @@ msgstr "画像をクリップボードにコピー"
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "テキストエディタで開く"
 
 #: src/SpectacleCore.cpp:740
 #, kde-format
@@ -2437,10 +2340,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 は --record の有効なモードではありません"
 
 #: src/SpectacleCore.cpp:1270
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2450,16 +2350,13 @@ msgstr ""
 "保存されました。"
 
 #: src/SpectacleCore.cpp:1274
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "スクリーンショットは '%1' としてピクチャフォルダに保存されました。"
+msgstr "スクリーンショットは '%1' として画像フォルダに保存されました。"
 
 #: src/SpectacleCore.cpp:1277
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
@@ -2470,10 +2367,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "スクリーンショットはクリップボードに保存されました。"
 
 #: src/SpectacleCore.cpp:1286
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2483,16 +2377,13 @@ msgstr ""
 "した。"
 
 #: src/SpectacleCore.cpp:1288
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "画面録画は '%1' としてビデオフォルダに保存されました。"
 
 #: src/SpectacleCore.cpp:1290
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "画面録画は '%1' として '%2' へ保存されました。"
@@ -2531,139 +2422,3 @@ msgstr "WebP アニメーション (推奨)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (互換性優先、非効率的)"
-
-#, fuzzy
-#~| msgid "Open Containing Folder"
-#~ msgctxt "@action"
-#~ msgid "Open Containing Folder"
-#~ msgstr "保存フォルダを開く"
-
-#~ msgid "The last used annotation tool type"
-#~ msgstr "最後に使用された注釈ツール"
-
-#~ msgid "Stroke width for freehand annotation tool"
-#~ msgstr "手書き注釈ツールの線の太さ"
-
-#~ msgid "Stroke width for highlighter annotation tool"
-#~ msgstr "マーカー注釈ツールの線の太さ"
-
-#~ msgid "Stroke width for line annotation tool"
-#~ msgstr "直線注釈ツールの線の太さ"
-
-#~ msgid "Stroke width for arrow annotation tool"
-#~ msgstr "矢印注釈ツールの線の太さ"
-
-#~ msgid "Stroke width for rectangle annotation tool"
-#~ msgstr "矩形注釈ツールの線の太さ"
-
-#~ msgid "Stroke width for ellipse annotation tool"
-#~ msgstr "楕円注釈ツールの線の太さ"
-
-#~ msgid "Stroke color for freehand annotation tool"
-#~ msgstr "手書き注釈ツールの線の色"
-
-#~ msgid "Stroke color for highlighter annotation tool"
-#~ msgstr "マーカー注釈ツールの線の色"
-
-#~ msgid "Stroke color for line annotation tool"
-#~ msgstr "直線注釈ツールの線の色"
-
-#~ msgid "Stroke color for arrow annotation tool"
-#~ msgstr "矢印注釈ツールの線の色"
-
-#~ msgid "Stroke color for rectangle annotation tool"
-#~ msgstr "矩形注釈ツールの線の色"
-
-#~ msgid "Stroke color for ellipse annotation tool"
-#~ msgstr "楕円注釈ツールの線の色"
-
-#~ msgid "Fill color for rectangle annotation tool"
-#~ msgstr "矩形注釈ツールの塗りつぶしの色"
-
-#~ msgid "Fill color for ellipse annotation tool"
-#~ msgstr "楕円注釈ツールの塗りつぶしの色"
-
-#~ msgid "Fill color for number annotation tool"
-#~ msgstr "数字注釈ツールの塗りつぶしの色"
-
-#~ msgid "The strength of the blur effect."
-#~ msgstr "ぼかし効果の強さ。"
-
-#~ msgid "The strength of the pixelate effect."
-#~ msgstr "モザイク効果の強さ。"
-
-#~ msgid "Font for text annotations"
-#~ msgstr "テキスト注釈フォント"
-
-#~ msgid "Font for number annotations"
-#~ msgstr "数字注釈フォント"
-
-#~ msgid "Font color for annotations"
-#~ msgstr "注釈フォントの色"
-
-#~ msgid "Whether freehand annotation tool has a drop shadow"
-#~ msgstr "手書き注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether line annotation tool has a drop shadow"
-#~ msgstr "直線注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether arrow annotation tool has a drop shadow"
-#~ msgstr "矢印注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether rectangle annotation tool has a drop shadow"
-#~ msgstr "矩形注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether ellipse annotation tool has a drop shadow"
-#~ msgstr "楕円注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether text annotation tool has a drop shadow"
-#~ msgstr "テキスト注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Whether number annotation tool has a drop shadow"
-#~ msgstr "数字注釈ツールでドロップシャドウを使用するか"
-
-#~ msgid "Show capture instructions"
-#~ msgstr "撮影方法の説明を表示する"
-
-#~ msgid "Whether to show capture instructions in the region selection"
-#~ msgstr "撮影方法の説明を領域選択画面に表示するか"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Screen"
-#~ msgstr "スクリーンを録画"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Window"
-#~ msgstr "ウィンドウを録画"
-
-#~ msgctxt "@action global shortcut"
-#~ msgid "Record Rectangular Region"
-#~ msgstr "矩形領域を録画"
-
-#~ msgctxt "recording notification message"
-#~ msgid "Click the system tray icon to finish recording"
-#~ msgstr "録画を終了するにはシステムトレイアイコンをクリックしてください"
-
-#~ msgctxt "@info"
-#~ msgid "The screenshot location has been copied to the clipboard."
-#~ msgstr "スクリーンショットの場所がクリップボードにコピーされました。"
-
-#~ msgctxt "@info"
-#~ msgid "Video shared"
-#~ msgstr "動画が共有されました"
-
-#~ msgctxt "@info"
-#~ msgid "Image shared"
-#~ msgstr "画像が共有されました"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared video link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr ""
-#~ "共有された動画のリンク (<a href=\"%1\">%1</a>) がクリップボードにコピーさ"
-#~ "れました"
-
-#~ msgctxt "@info"
-#~ msgid "There was a problem sharing the video: %1"
-#~ msgstr "動画の共有中に問題が発生しました: %1"
