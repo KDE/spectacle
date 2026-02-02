@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-21 00:47+0000\n"
-"PO-Revision-Date: 2026-01-04 15:54+0530\n"
+"PO-Revision-Date: 2026-02-01 18:51+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -1333,11 +1333,9 @@ msgstr "OCR-க்கான மொழிகள்:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "உரையைக் கண்டறிவது தோல்வியடைந்தது"
+msgstr "உரையைக் கண்டறிவது:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1345,7 +1343,7 @@ msgstr "உரையைக் கண்டறிவது தோல்விய�
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "கண்டறிந்தபின் மூடு (தானாக சேமிக்காது)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1354,6 +1352,7 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"உரையைக் கண்டறிந்தபின் ஸ்பெக்டக்குள் தானாக மூடப்படும், மேலும் தானியக்க சேமிப்பு இயங்காது."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -2313,12 +2312,10 @@ msgid "%1 and %2"
 msgstr "%1 மற்றும் %2"
 
 #: src/SpectacleCore.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "உரை பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது.<nl/> கண்டறிந்து மொழிகள்: %1"
+msgstr "உரை பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டுள்ளது.<nl/> பயன்படுத்தியுள்ள மொழிகள்: %1"
 
 #: src/SpectacleCore.cpp:602
 #, kde-format
