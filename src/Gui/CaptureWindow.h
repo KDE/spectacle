@@ -17,6 +17,7 @@ class CaptureWindow : public SpectacleWindow
 {
     Q_OBJECT
     Q_PROPERTY(QScreen *screenToFollow READ screenToFollow NOTIFY screenToFollowChanged FINAL)
+    Q_PROPERTY(qreal maxDevicePixelRatio READ maxDevicePixelRatio NOTIFY maxDevicePixelRatioChanged FINAL)
 
 public:
     enum Mode {
@@ -32,6 +33,8 @@ public:
 
     QScreen *screenToFollow() const;
 
+    static qreal maxDevicePixelRatio();
+
 public Q_SLOTS:
     bool accept();
     void cancel();
@@ -42,8 +45,11 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void screenToFollowChanged();
+    void maxDevicePixelRatioChanged();
+    void allExposed();
 
 protected:
+    void exposeEvent(QExposeEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void showEvent(QShowEvent *event) override;
 
@@ -56,4 +62,5 @@ private:
 
     QPointer<QScreen> m_screenToFollow;
     static QList<CaptureWindow *> s_captureWindowInstances;
+    static qreal s_maxDevicePixelRatio;
 };
