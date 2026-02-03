@@ -6,9 +6,11 @@
 
 #include "SelectionEditor.h"
 
+#include "CaptureWindow.h"
 #include "Selection.h"
 #include "Geometry.h"
 #include "settings.h"
+#include "DebugUtils.h"
 
 #include <KLocalizedString>
 #include <KWindowSystem>
@@ -447,14 +449,22 @@ bool SelectionEditor::acceptSelection(ExportManager::Actions actions)
 
 void SelectionEditor::reset()
 {
-    qreal dpr = qGuiApp->devicePixelRatio();
+    const auto windows = CaptureWindow::instances();
+    if (windows.empty()) [[unlikely]] {
+        Log::warning() << "CaptureWindows were not created before calling SelectionEditor::reset(). This should not happen.";
+        return;
+    }
+    qreal dpr = CaptureWindow::maxDevicePixelRatio();
     if (d->devicePixelRatio != dpr) {
         d->devicePixelRatio = dpr;
         d->devicePixel = 1 / dpr;
         Q_EMIT devicePixelRatioChanged();
     }
 
-    auto rect = G::logicalScreensRect();
+    QRectF rect;
+    for (auto window : windows) {
+        rect |= Geometry::mapFromPlatformRect(window->geometry(), dpr);
+    }
     if (d->screensRect != rect) {
         d->screensRect = rect;
         Q_EMIT screensRectChanged();
