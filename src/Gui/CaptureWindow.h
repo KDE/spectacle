@@ -18,6 +18,7 @@ class CaptureWindow : public SpectacleWindow
     Q_OBJECT
     Q_PROPERTY(QScreen *screenToFollow READ screenToFollow NOTIFY screenToFollowChanged FINAL)
     Q_PROPERTY(qreal maxDevicePixelRatio READ maxDevicePixelRatio NOTIFY maxDevicePixelRatioChanged FINAL)
+    Q_PROPERTY(QList<CaptureWindow *> captureWindows READ instances CONSTANT FINAL)
 
 public:
     enum Mode {
