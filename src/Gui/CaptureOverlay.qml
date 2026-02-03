@@ -27,6 +27,30 @@ MouseArea {
     id: root
     readonly property rect viewportRect: Geometry.mapFromPlatformRect(screenToFollow.geometry, screenToFollow.devicePixelRatio)
     readonly property AnnotationDocument document: annotationsLoader.item?.document ?? null
+    readonly property size rawSelectionSize: {
+        const logicalSize = SelectionEditor.selection.empty
+            ? Qt.size(SelectionEditor.screensRect.width, SelectionEditor.screensRect.height)
+            : SelectionEditor.selection.size
+        const scale = () => {
+            if (Geometry.rectContains(root.viewportRect, SelectionEditor.selection.rect)) {
+                return contextWindow.devicePixelRatio
+            } else if (!SpectacleCore.videoMode) {
+                return SpectacleCore.annotationDocument.imageDpr
+            }
+            // The scale for KWin's region screencasting raw size is the largest of the overlapped screen scales.
+            // If you have 3 screens (125%, 100%, 175% scales) and the region overlaps the 125% and 100% screens,
+            // the recording will use the logical selection size times 1.25 for its raw size.
+            let dpr = 0
+            for (let window of contextWindow.captureWindows) {
+                if (Geometry.rectIntersects(SelectionEditor.selection.rect, window.logicalX, window.logicalY, window.width, window.height)) {
+                    dpr = Math.max(dpr, window.devicePixelRatio)
+                }
+            }
+            return dpr
+        }
+        return Geometry.rawSize(logicalSize, scale())
+    }
+
     focus: true
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     hoverEnabled: true
@@ -53,13 +77,7 @@ MouseArea {
 
     component ToolBarSizeLabel: SizeLabel {
         height: QmlUtils.iconTextButtonHeight
-        size: {
-            const sz = SelectionEditor.selection.empty
-                ? Qt.size(SelectionEditor.screensRect.width,
-                            SelectionEditor.screensRect.height)
-                : SelectionEditor.selection.size
-            return Geometry.rawSize(sz, SelectionEditor.devicePixelRatio)
-        }
+        size: root.rawSelectionSize
         leftPadding: Kirigami.Units.mediumSpacing + QmlUtils.fontMetrics.descent
         rightPadding: leftPadding
     }
@@ -404,36 +422,33 @@ MouseArea {
 
         AnimatedLoader {
             z: 100
-            state: SelectionEditor.dragLocation ? "active" : "inactive"
+            state: SelectionEditor.dragLocation && Geometry.rectIntersects(root.viewportRect, SelectionEditor.selection.rect)
+                && Geometry.rectContains(root.viewportRect, x, y, width, height)
+                ? "active" : "inactive"
+            active: SelectionEditor.dragLocation || visible
+            height: {
+                let h = dprRound(implicitHeight)
+                return h + h % 2
+            }
+            width: dprCeil(implicitWidth)
+            x: {
+                let x = SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit
+                if (x + width > root.viewportRect.right) {
+                    x -= Kirigami.Units.gridUnit * 2 + width
+                }
+                return dprRound(x)
+            }
+            y: {
+                let y = SelectionEditor.mousePosition.y - height / 2
+                if (y < root.viewportRect.top) {
+                    y += height / 2
+                } else if (y + height > root.viewportRect.bottom) {
+                    y -= height / 2
+                }
+                return dprRound(y)
+            }
             sourceComponent: SizeLabel {
-                height: {
-                    let h = dprRound(implicitHeight)
-                    return h + h % 2
-                }
-                width: dprCeil(implicitWidth)
-                x: {
-                    let x = SelectionEditor.mousePosition.x + Kirigami.Units.gridUnit
-                    if (x + width > root.viewportRect.right) {
-                        x -= Kirigami.Units.gridUnit * 2 + width
-                    }
-                    return dprRound(x)
-                }
-                y: {
-                    let y = SelectionEditor.mousePosition.y - height / 2
-                    if (y < root.viewportRect.top) {
-                        y += height / 2
-                    } else if (y + height > root.viewportRect.bottom) {
-                        y -= height / 2
-                    }
-                    return dprRound(y)
-                }
-                size: {
-                    const sz = SelectionEditor.selection.empty
-                        ? Qt.size(SelectionEditor.screensRect.width,
-                                    SelectionEditor.screensRect.height)
-                        : SelectionEditor.selection.size
-                    return Geometry.rawSize(sz, SelectionEditor.devicePixelRatio)
-                }
+                size: root.rawSelectionSize
                 padding: Kirigami.Units.smallSpacing
                 leftPadding: QmlUtils.fontMetrics.descent + padding
                 rightPadding: leftPadding
