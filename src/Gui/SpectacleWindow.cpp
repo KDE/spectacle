@@ -456,4 +456,12 @@ void SpectacleWindow::keyReleaseEvent(QKeyEvent *event)
     m_pressedKeys = {};
 }
 
+bool SpectacleWindow::event(QEvent *event)
+{
+    if (event->type() == QEvent::DevicePixelRatioChange) {
+        Q_EMIT devicePixelRatioChanged();
+    }
+    return QQuickView::event(event);
+}
+
 #include "moc_SpectacleWindow.cpp"
