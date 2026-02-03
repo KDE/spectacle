@@ -147,10 +147,10 @@ MouseArea {
         id: selectionRectangle
         // We need to be a bit careful about staying out of the recorded area
         function roundPos(value: real) : real {
-            return SpectacleCore.videoPlatform.isRecording ? dprFloor(value - (strokeWidth + 1 / Screen.devicePixelRatio)) : dprRound(value - strokeWidth)
+            return SpectacleCore.videoPlatform.isRecording ? dprFloor(value - (strokeWidth + 1 / contextWindow.devicePixelRatio)) : dprRound(value - strokeWidth)
         }
         function roundSize(value: real) : real {
-            return SpectacleCore.videoPlatform.isRecording ? dprCeil(value + (strokeWidth + 1 / Screen.devicePixelRatio)) : dprRound(value + strokeWidth)
+            return SpectacleCore.videoPlatform.isRecording ? dprCeil(value + (strokeWidth + 1 / contextWindow.devicePixelRatio)) : dprRound(value + strokeWidth)
         }
         pathHints: ShapePath.PathLinear
         dashSvgPath: SpectacleCore.videoPlatform.isRecording ? svgPath : ""
