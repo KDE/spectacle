@@ -205,10 +205,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
         m_annotationDocument->setBaseImage(image);
         setExportImage(image);
         ExportManager::instance()->updateTimestamp();
-        SelectionEditor::instance()->reset();
         initCaptureWindows(CaptureWindow::Image);
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+        // SelectionEditor::reset has to be delayed until after all the DPRs are correct on Wayland.
+        connect(m_captureWindows.front().get(), &CaptureWindow::allExposed, //
+                SelectionEditor::instance(), &SelectionEditor::reset, Qt::SingleShotConnection);
     });
 
     // The behavior happens to be very similar right now, so we use a shared base function
@@ -433,10 +435,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
         onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed);
     });
     connect(videoPlatform, &VideoPlatform::regionRequested, this, [this] {
-        SelectionEditor::instance()->reset();
         initCaptureWindows(CaptureWindow::Video);
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
         SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
+        // SelectionEditor::reset has to be delayed until after all the DPRs are correct on Wayland.
+        connect(m_captureWindows.front().get(), &CaptureWindow::allExposed, //
+                SelectionEditor::instance(), &SelectionEditor::reset, Qt::SingleShotConnection);
     });
 
     // set up the export manager
