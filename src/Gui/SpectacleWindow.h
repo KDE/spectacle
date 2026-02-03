@@ -21,6 +21,8 @@ class SpectacleWindow : public QQuickView
     Q_PROPERTY(bool annotating READ isAnnotating WRITE setAnnotating NOTIFY annotatingChanged FINAL)
     Q_PROPERTY(qreal logicalX READ logicalX NOTIFY logicalXChanged)
     Q_PROPERTY(qreal logicalY READ logicalY NOTIFY logicalYChanged)
+    // TODO: Remove after Qt 6.11, which makes the same property available in QQuickWindow
+    Q_PROPERTY(qreal devicePixelRatio READ effectiveDevicePixelRatio NOTIFY devicePixelRatioChanged FINAL)
 
 public:
     enum TitlePreset {
@@ -94,6 +96,7 @@ Q_SIGNALS:
     void annotatingChanged();
     void logicalXChanged();
     void logicalYChanged();
+    void devicePixelRatioChanged();
 
 protected:
     explicit SpectacleWindow(QQmlEngine *engine, QWindow *parent = nullptr);
@@ -110,6 +113,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
+    bool event(QEvent *) override;
 
     static QList<SpectacleWindow *> s_spectacleWindowInstances;
     static bool s_synchronizingVisibility;
