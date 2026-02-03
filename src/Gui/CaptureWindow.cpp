@@ -21,6 +21,7 @@
 using namespace Qt::StringLiterals;
 
 QList<CaptureWindow *> CaptureWindow::s_captureWindowInstances = {};
+qreal CaptureWindow::s_maxDevicePixelRatio = 1;
 
 CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
     : SpectacleWindow(engine, parent)
@@ -115,6 +116,11 @@ QScreen *CaptureWindow::screenToFollow() const
     return m_screenToFollow;
 }
 
+qreal CaptureWindow::maxDevicePixelRatio()
+{
+    return s_maxDevicePixelRatio;
+}
+
 void CaptureWindow::setMode(CaptureWindow::Mode mode)
 {
     syncGeometryWithScreen();
@@ -152,6 +158,34 @@ void CaptureWindow::copyImage()
 void CaptureWindow::copyLocation()
 {
     SelectionEditor::instance()->acceptSelection(ExportManager::Save | ExportManager::CopyPath | ExportManager::UserAction);
+}
+
+void CaptureWindow::exposeEvent(QExposeEvent *event)
+{
+    SpectacleWindow::exposeEvent(event);
+    if (!isExposed()) {
+        return;
+    }
+    qreal maxDpr = 0;
+    int windowsExposed = 0;
+    const auto windows = CaptureWindow::instances();
+    for (auto window : windows) {
+        if (!window->isExposed()) {
+            return;
+        }
+        ++windowsExposed;
+        maxDpr = std::max(maxDpr, window->devicePixelRatio());
+    }
+    if (windowsExposed == windows.size()) {
+        const bool maxDprChanged = s_maxDevicePixelRatio != maxDpr;
+        s_maxDevicePixelRatio = maxDpr;
+        for (auto window : windows) {
+            if (maxDprChanged) {
+                Q_EMIT window->maxDevicePixelRatioChanged();
+            }
+            Q_EMIT window->allExposed();
+        }
+    }
 }
 
 void CaptureWindow::mousePressEvent(QMouseEvent *event)
