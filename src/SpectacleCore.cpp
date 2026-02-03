@@ -16,6 +16,7 @@
 #include "Gui/SelectionEditor.h"
 #include "Gui/SpectacleWindow.h"
 #include "Gui/InlineMessageModel.h"
+#include "ImageMetaData.h"
 #include "OcrManager.h"
 #include "Platforms/ImagePlatformXcb.h"
 #include "Platforms/PlatformLoader.h"
@@ -658,7 +659,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(m_annotationDocument.get(), &AnnotationDocument::repaintNeeded, m_annotationSyncTimer.get(), qOverload<>(&QTimer::start));
     connect(m_annotationSyncTimer.get(), &QTimer::timeout, this, [this] {
-        ExportManager::instance()->setImage(m_annotationDocument->renderToImage());
+        auto image = m_annotationDocument->renderToImage();
+        auto canvasPos = m_annotationDocument->canvasRect().topLeft();
+        ImageMetaData::setLogicalXY(image, canvasPos.x(), canvasPos.y());
+        ExportManager::instance()->setImage(image);
     }, Qt::QueuedConnection); // QueuedConnection to help prevent making the visible render lag.
 
     // set up shortcuts
@@ -1432,7 +1436,10 @@ void SpectacleCore::syncExportImage()
     if (!m_annotationSyncTimer->isActive()) {
         return;
     }
-    setExportImage(m_annotationDocument->renderToImage());
+    auto image = m_annotationDocument->renderToImage();
+    auto canvasPos = m_annotationDocument->canvasRect().topLeft();
+    ImageMetaData::setLogicalXY(image, canvasPos.x(), canvasPos.y());
+    setExportImage(image);
 }
 
 // A convenient way to stop the sync timer and set the export image.
