@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 02:47+0000\n"
+"POT-Creation-Date: 2026-02-04 03:03+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -687,7 +687,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "स्क्रीनशॉट सेटिंग्स"
 
-#: src/Gui/CaptureOverlay.qml:130
+#: src/Gui/CaptureOverlay.qml:148
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -2191,31 +2191,31 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "कैप्चर किए बिना स्पेक्टेकल लॉन्च करें"
 
-#: src/SpectacleCore.cpp:260
+#: src/SpectacleCore.cpp:263
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "स्क्रीनशॉट लेते समय एक त्रुटि हुई."
 
-#: src/SpectacleCore.cpp:289
+#: src/SpectacleCore.cpp:292
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "तमाशा रिकॉर्डिंग है"
 
-#: src/SpectacleCore.cpp:294
+#: src/SpectacleCore.cpp:297
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "तमाशा रिकॉर्डिंग है"
 
-#: src/SpectacleCore.cpp:320
+#: src/SpectacleCore.cpp:323
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:324
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2223,13 +2223,13 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:341
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "WebP समर्थन अनुपलब्ध है."
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2239,7 +2239,7 @@ msgstr ""
 "कृपया Spectacle के लिए एनिमेटेड सिस्टम ट्रे आइकन प्राप्त करने के लिए Qt इमेज फॉर्मेट "
 "स्थापित करें, और फिर अपने वितरक को इस पैकेजिंग समस्या की रिपोर्ट करें।"
 
-#: src/SpectacleCore.cpp:375
+#: src/SpectacleCore.cpp:378
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2247,13 +2247,13 @@ msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "तमाशा रिकॉर्डिंग है"
 
-#: src/SpectacleCore.cpp:376
+#: src/SpectacleCore.cpp:379
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr ""
 
-#: src/SpectacleCore.cpp:378
+#: src/SpectacleCore.cpp:381
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2261,7 +2261,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "तमाशा रिकॉर्डिंग है"
 
-#: src/SpectacleCore.cpp:380
+#: src/SpectacleCore.cpp:383
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2275,7 +2275,7 @@ msgstr ""
 "रिकॉर्ड किया गया समय: %1\n"
 "रिकॉर्डिंग समाप्त करने के लिए क्लिक करें"
 
-#: src/SpectacleCore.cpp:406
+#: src/SpectacleCore.cpp:409
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2285,13 +2285,13 @@ msgstr ""
 "रिकॉर्ड किया गया समय: %1\n"
 "रिकॉर्डिंग समाप्त करने के लिए क्लिक करें"
 
-#: src/SpectacleCore.cpp:431
+#: src/SpectacleCore.cpp:434
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "स्क्रीन रिकॉर्ड करने का प्रयास करते समय एक त्रुटि हुई."
 
-#: src/SpectacleCore.cpp:473
+#: src/SpectacleCore.cpp:478
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot was copied to the clipboard and saved as <a href=\"%1\">"
@@ -2304,7 +2304,7 @@ msgstr ""
 "स्क्रीनशॉट को क्लिपबोर्ड पर कॉपी किया गया और <a href=\"%1\">%2</a> के रूप में सहेजा "
 "गया"
 
-#: src/SpectacleCore.cpp:476
+#: src/SpectacleCore.cpp:481
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2317,21 +2317,21 @@ msgstr ""
 "स्क्रीनशॉट को <a href=\"%1\">%2</a> के रूप में सहेज लिया गया है और इसका स्थान "
 "क्लिपबोर्ड पर कॉपी कर दिया गया है"
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:484
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "स्क्रीनशॉट <a href=\"%1\">%2</a> के रूप में सहेजा गया"
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:488
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "स्क्रीनशॉट को क्लिपबोर्ड पर कॉपी कर दिया गया है।"
 
-#: src/SpectacleCore.cpp:514
+#: src/SpectacleCore.cpp:519
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The video has been saved as <a href=\"%1\">%2</a> and its location has "
@@ -2344,14 +2344,14 @@ msgstr ""
 "वीडियो को <a href=\"%1\">%2</a> के रूप में सहेजा गया है और इसका स्थान क्लिपबोर्ड पर "
 "कॉपी कर दिया गया है"
 
-#: src/SpectacleCore.cpp:517
+#: src/SpectacleCore.cpp:522
 #, fuzzy, kde-kuit-format
 #| msgid "The video was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "वीडियो को <a href=\"%1\">%2</a> के रूप में सहेजा गया"
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2360,70 +2360,70 @@ msgstr "वीडियो स्थान को क्लिपबोर्ड
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:546
 #, fuzzy, kde-format
 #| msgid "QR Code found: %1"
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "क्यूआर कोड मिला: %1"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:550
 #, fuzzy, kde-format
 #| msgid "Found QR code with binary content."
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "बाइनरी सामग्री वाला QR कोड मिला."
 
-#: src/SpectacleCore.cpp:554
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr ""
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:573
+#: src/SpectacleCore.cpp:578
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:592
+#: src/SpectacleCore.cpp:597
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
-#: src/SpectacleCore.cpp:597
+#: src/SpectacleCore.cpp:602
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "छवि को क्लिपबोर्ड पर कॉपी करें"
 
-#: src/SpectacleCore.cpp:602
+#: src/SpectacleCore.cpp:607
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:762
+#: src/SpectacleCore.cpp:770
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2431,7 +2431,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "KWin स्क्रीनकास्टिंग उपलब्ध नहीं है."
 
-#: src/SpectacleCore.cpp:768
+#: src/SpectacleCore.cpp:776
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2439,19 +2439,19 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "KWin स्क्रीनकास्टिंग उपलब्ध नहीं है."
 
-#: src/SpectacleCore.cpp:772
+#: src/SpectacleCore.cpp:780
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1044
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --रिकॉर्ड के लिए वैध मोड नहीं है"
 
-#: src/SpectacleCore.cpp:1270
+#: src/SpectacleCore.cpp:1278
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2464,7 +2464,7 @@ msgstr ""
 "एक स्क्रीनशॉट '%1' से '%2' के रूप में सहेजा गया था और स्क्रीनशॉट का फ़ाइल पथ आपके "
 "क्लिपबोर्ड पर सहेजा गया है।"
 
-#: src/SpectacleCore.cpp:1274
+#: src/SpectacleCore.cpp:1282
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2472,19 +2472,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "एक स्क्रीनशॉट आपके चित्र फ़ोल्डर में '%1' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1277
+#: src/SpectacleCore.cpp:1285
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "एक स्क्रीनशॉट '%1' से '%2' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "एक स्क्रीनशॉट आपके क्लिपबोर्ड पर सहेजा गया है."
 
-#: src/SpectacleCore.cpp:1286
+#: src/SpectacleCore.cpp:1294
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2497,7 +2497,7 @@ msgstr ""
 "एक रिकॉर्डिंग को '%1' से '%2' के रूप में सहेजा गया है और रिकॉर्डिंग का फ़ाइल पथ आपके "
 "क्लिपबोर्ड पर सहेजा गया है।"
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1296
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2505,20 +2505,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "एक रिकॉर्डिंग आपके वीडियो फ़ोल्डर में '%1' के रूप में सहेजी गई थी."
 
-#: src/SpectacleCore.cpp:1290
+#: src/SpectacleCore.cpp:1298
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "एक रिकॉर्डिंग को '%1' से '%2' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "खुला"
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgid "Annotate"
 msgstr "एन्नोटेट"

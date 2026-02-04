@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 02:47+0000\n"
+"POT-Creation-Date: 2026-02-04 03:03+0000\n"
 "PO-Revision-Date: 2025-11-18 19:30+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -685,7 +685,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Ekrānattēlu iestatījumi"
 
-#: src/Gui/CaptureOverlay.qml:130
+#: src/Gui/CaptureOverlay.qml:148
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -2120,25 +2120,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Palaist „Spectacle“ bez uzņemšanas"
 
-#: src/SpectacleCore.cpp:260
+#: src/SpectacleCore.cpp:263
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Kļūda, uzņemot ekrānattēlu."
 
-#: src/SpectacleCore.cpp:289
+#: src/SpectacleCore.cpp:292
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "„Spectacle“ ieraksta"
 
-#: src/SpectacleCore.cpp:294
+#: src/SpectacleCore.cpp:297
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "„Spectacle“ ieraksta"
 
-#: src/SpectacleCore.cpp:320
+#: src/SpectacleCore.cpp:323
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2146,7 +2146,7 @@ msgstr ""
 "Lai pabeigtu ierakstīšanu, klikšķiniet uz pulsējošo sarkanu ikonu sistēmas "
 "ikonu joslā."
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:324
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2156,13 +2156,13 @@ msgstr ""
 "Lai pabeigtu ierakstīšanu, klikšķiniet uz pulsējošo sarkanu ikonu sistēmas "
 "ikonu joslā vai spiediet <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:341
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Trūkst „WebP“ atbalsta."
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2173,25 +2173,25 @@ msgstr ""
 "ikonu joslas ikonas, bet pēc tam informējiet sistēmas izplatītāju par šo "
 "problēmu."
 
-#: src/SpectacleCore.cpp:375
+#: src/SpectacleCore.cpp:378
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "„Spectacle“ pabeidz ierakstīšanu"
 
-#: src/SpectacleCore.cpp:376
+#: src/SpectacleCore.cpp:379
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Uzgaidiet"
 
-#: src/SpectacleCore.cpp:378
+#: src/SpectacleCore.cpp:381
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "„Spectacle“ pabeidz ierakstīšanu"
 
-#: src/SpectacleCore.cpp:380
+#: src/SpectacleCore.cpp:383
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2201,7 +2201,7 @@ msgstr ""
 "Ieraksta laiks: %1\n"
 "Spiediet, lai apturēt renderēšanu priekšlaicīgi (zaudēsiet daļu datu)"
 
-#: src/SpectacleCore.cpp:406
+#: src/SpectacleCore.cpp:409
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2211,13 +2211,13 @@ msgstr ""
 "Ieraksta laiks: %1\n"
 "Spiediet, lai ierakstu beigtu"
 
-#: src/SpectacleCore.cpp:431
+#: src/SpectacleCore.cpp:434
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Notika kļūda, mēģinot ierakstīt ekrānu."
 
-#: src/SpectacleCore.cpp:473
+#: src/SpectacleCore.cpp:478
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2227,7 +2227,7 @@ msgstr ""
 "Ekrānattēls ir nokopēts starpliktuvē un saglabāts kā <link url=\"%1\">%2</"
 "link>"
 
-#: src/SpectacleCore.cpp:476
+#: src/SpectacleCore.cpp:481
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2237,19 +2237,19 @@ msgstr ""
 "Ekrānattēls ir saglabāts kā <link url=\"%1\">%2</link>. Tā atrašanās vieta "
 "ir nokopēta starpliktuvē"
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Ekrānattēls ir saglabāts kā <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:488
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekrānattēls ir nokopēts starpliktuvē."
 
-#: src/SpectacleCore.cpp:514
+#: src/SpectacleCore.cpp:519
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2259,13 +2259,13 @@ msgstr ""
 "Video ir saglabāts kā <link url=\"%1\">%2</link>. Tā atrašanās vieta ir "
 "nokopēta starpliktuvē"
 
-#: src/SpectacleCore.cpp:517
+#: src/SpectacleCore.cpp:522
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Video ir saglabāts kā <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2274,7 +2274,7 @@ msgstr "Video atrašanās vieta ir nokopēta."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:546
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "QR Code found: %1"
@@ -2282,43 +2282,43 @@ msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Atrasts kvadrātkods: %1"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Atrasts kvadrātkods ar bināru saturu."
 
-#: src/SpectacleCore.cpp:554
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Teksta atpazīšana neizdevās"
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Attēlā teksts nav atrasts"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Teksts ir atpazīšana veikta"
 
-#: src/SpectacleCore.cpp:573
+#: src/SpectacleCore.cpp:578
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Teksts ir atpazīts"
 
-#: src/SpectacleCore.cpp:592
+#: src/SpectacleCore.cpp:597
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 un %2"
 
-#: src/SpectacleCore.cpp:597
+#: src/SpectacleCore.cpp:602
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info:notification"
 #| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
@@ -2326,43 +2326,43 @@ msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Teksts ir nokopēts starpliktuvē.<nl/>Atpazītās valodas: %1"
 
-#: src/SpectacleCore.cpp:602
+#: src/SpectacleCore.cpp:607
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Atvērt teksta redaktorā"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Pirms teksta atpazīšanas norādiet teksta reģionu"
 
-#: src/SpectacleCore.cpp:762
+#: src/SpectacleCore.cpp:770
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "OCR nav pieejams"
 
-#: src/SpectacleCore.cpp:768
+#: src/SpectacleCore.cpp:776
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Nav neviena ekrānattēla."
 
-#: src/SpectacleCore.cpp:772
+#: src/SpectacleCore.cpp:780
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Atpazīst tekstu attēlā..."
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1044
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "„%1“ nav derīgs „--record“ režīms"
 
-#: src/SpectacleCore.cpp:1270
+#: src/SpectacleCore.cpp:1278
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2372,24 +2372,24 @@ msgstr ""
 "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“, bet ceļš uz ekrānattēlu ir "
 "saglabāts starpliktuvē."
 
-#: src/SpectacleCore.cpp:1274
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrānattēls ir saglabāts attēlu mapē ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:1277
+#: src/SpectacleCore.cpp:1285
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrānattēls ir saglabāts „%2“ ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrānattēls ir saglabāts starpliktuvē"
 
-#: src/SpectacleCore.cpp:1286
+#: src/SpectacleCore.cpp:1294
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2399,25 +2399,25 @@ msgstr ""
 "Ieraksts ir saglabāts „%2“ ar nosaukumu „%1“, bet ceļš uz ierakstu ir "
 "saglabāts starpliktuvē."
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ieraksts ir saglabāts video mapē ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:1290
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ieraksts ir saglabāts „%2“ ar nosaukumu „%1“."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atvērt"
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgid "Annotate"
 msgstr "Anotēt"
