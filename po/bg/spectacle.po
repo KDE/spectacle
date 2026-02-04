@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:47+0000\n"
+"POT-Creation-Date: 2026-02-04 00:46+0000\n"
 "PO-Revision-Date: 2026-01-19 19:05+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -718,7 +718,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Настройки на заснемане на екрана"
 
-#: src/Gui/CaptureOverlay.qml:130
+#: src/Gui/CaptureOverlay.qml:148
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -2149,25 +2149,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Стартиране на Spectacle без заснемане"
 
-#: src/SpectacleCore.cpp:260
+#: src/SpectacleCore.cpp:263
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "По време на заснемането възникна грешка."
 
-#: src/SpectacleCore.cpp:289
+#: src/SpectacleCore.cpp:292
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записва"
 
-#: src/SpectacleCore.cpp:294
+#: src/SpectacleCore.cpp:297
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle записва"
 
-#: src/SpectacleCore.cpp:320
+#: src/SpectacleCore.cpp:323
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2175,7 +2175,7 @@ msgstr ""
 "За да завършите записа, кликнете върху пулсиращата червена икона в "
 "системната област."
 
-#: src/SpectacleCore.cpp:321
+#: src/SpectacleCore.cpp:324
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2185,13 +2185,13 @@ msgstr ""
 "За да завършите записа, кликнете върху пулсиращата червена икона в "
 "системната област или натиснете <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:338
+#: src/SpectacleCore.cpp:341
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Липсва поддръжка на WebP."
 
-#: src/SpectacleCore.cpp:339
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2202,25 +2202,25 @@ msgstr ""
 "икони за Spectacle в системната област. Докладвайте този пропуск на екипа за "
 "пакетиране на вашата дистрибуция."
 
-#: src/SpectacleCore.cpp:375
+#: src/SpectacleCore.cpp:378
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завършва записването"
 
-#: src/SpectacleCore.cpp:376
+#: src/SpectacleCore.cpp:379
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Моля, изчакайте"
 
-#: src/SpectacleCore.cpp:378
+#: src/SpectacleCore.cpp:381
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle завършва записването"
 
-#: src/SpectacleCore.cpp:380
+#: src/SpectacleCore.cpp:383
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2231,7 +2231,7 @@ msgstr ""
 "Кликнете, за да завършите записването по-рано (това ще доведе до загуба на "
 "данни)"
 
-#: src/SpectacleCore.cpp:406
+#: src/SpectacleCore.cpp:409
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2241,13 +2241,13 @@ msgstr ""
 "Продължителност на записа: %1\n"
 "Кликнете, за да завършите записването"
 
-#: src/SpectacleCore.cpp:431
+#: src/SpectacleCore.cpp:434
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "По време на заснемането на екрана възникна грешка."
 
-#: src/SpectacleCore.cpp:473
+#: src/SpectacleCore.cpp:478
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2257,7 +2257,7 @@ msgstr ""
 "Екранната снимка беше копирана в клипборда и запазена като <link url=\"%1\">"
 "%2</link>"
 
-#: src/SpectacleCore.cpp:476
+#: src/SpectacleCore.cpp:481
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2267,19 +2267,19 @@ msgstr ""
 "Екранната снимка е запазена като <link url=\"%1\">%2</link> и "
 "местоположението е копирано в клипборда"
 
-#: src/SpectacleCore.cpp:479
+#: src/SpectacleCore.cpp:484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Екранната снимка беше запазена като <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:488
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Екранната снимка е копирана в клипборда."
 
-#: src/SpectacleCore.cpp:514
+#: src/SpectacleCore.cpp:519
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2289,13 +2289,13 @@ msgstr ""
 "Видеото е запазено като <link url=\"%1\">%2</link> и местоположението е "
 "копирано в клипборда"
 
-#: src/SpectacleCore.cpp:517
+#: src/SpectacleCore.cpp:522
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Видеото беше запазено като <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2304,91 +2304,91 @@ msgstr "Местоположението на видеото е копирано
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:546
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Намерен код: %1"
 
-#: src/SpectacleCore.cpp:545
+#: src/SpectacleCore.cpp:550
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Намерен е QR код с двоично съдържание."
 
-#: src/SpectacleCore.cpp:554
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Неуспешно извличане"
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Не е намерен текст в изображението"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Извличането на текста е завършено"
 
-#: src/SpectacleCore.cpp:573
+#: src/SpectacleCore.cpp:578
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Текстът е извлечен"
 
-#: src/SpectacleCore.cpp:592
+#: src/SpectacleCore.cpp:597
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 и %2"
 
-#: src/SpectacleCore.cpp:597
+#: src/SpectacleCore.cpp:602
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Текстът е копиран в клипборда. <nl/>Използвани езици: %1"
 
-#: src/SpectacleCore.cpp:602
+#: src/SpectacleCore.cpp:607
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Отваряне в текстов редактор"
 
-#: src/SpectacleCore.cpp:740
+#: src/SpectacleCore.cpp:748
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Моля, изберете регион, преди да извлечете текст"
 
-#: src/SpectacleCore.cpp:762
+#: src/SpectacleCore.cpp:770
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Няма оптично разпознаване на символи"
 
-#: src/SpectacleCore.cpp:768
+#: src/SpectacleCore.cpp:776
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Няма налична снимка на екрана"
 
-#: src/SpectacleCore.cpp:772
+#: src/SpectacleCore.cpp:780
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Извличане на текст от изображение..."
 
-#: src/SpectacleCore.cpp:1036
+#: src/SpectacleCore.cpp:1044
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не е валиден режим за --record"
 
-#: src/SpectacleCore.cpp:1270
+#: src/SpectacleCore.cpp:1278
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2398,24 +2398,24 @@ msgstr ""
 "Екранната снимка беше запазена като „%1“ в „%2“ и пътя на файла е запазен в "
 "клипборда."
 
-#: src/SpectacleCore.cpp:1274
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимката на екрана беше запазена като „%1“ в папката Изображения."
 
-#: src/SpectacleCore.cpp:1277
+#: src/SpectacleCore.cpp:1285
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Екранната снимка беше запазена като „%1“ в „%2“."
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Екранната снимка беше запазена в клипборда."
 
-#: src/SpectacleCore.cpp:1286
+#: src/SpectacleCore.cpp:1294
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2425,25 +2425,25 @@ msgstr ""
 "Записването беше запазено като „%1“ в „%2“ и пътят на файла е запазен в "
 "клипборда."
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Записването беше запазено като „%1“ в папката Видео."
 
-#: src/SpectacleCore.cpp:1290
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Записването беше запазено като „%1“ в „%2“."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Отваряне"
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgid "Annotate"
 msgstr "Бележка"
