@@ -13,6 +13,14 @@
 
 #include <cmath>
 
+// Behaves like qBound, which behaves differently from std::clamp,
+// but uses the same argument order as std::clamp.
+// We don't use qBound or std::clamp because we don't want asserts.
+constexpr static inline qreal clamp(qreal value, qreal min, qreal max) noexcept
+{
+    return std::max(min, std::min(value, max));
+}
+
 Geometry::Geometry(QObject *parent)
     : QObject(parent)
 {}
@@ -166,16 +174,16 @@ QRectF Geometry::rectBounded(const QRectF &rect, const QRectF &boundsRect,
     const auto &nBoundsRect = boundsRect.normalized(); // normalize to make math easier
     if (orientations & Qt::Horizontal) {
         if (rect.width() >= 0) {
-            newRect.moveLeft(std::clamp(rect.x(), nBoundsRect.x(), nBoundsRect.right() - rect.width()));
+            newRect.moveLeft(clamp(rect.x(), nBoundsRect.x(), nBoundsRect.right() - rect.width()));
         } else {
-            newRect.moveRight(std::clamp(rect.right(), nBoundsRect.x(), nBoundsRect.right() - std::abs(rect.width())));
+            newRect.moveRight(clamp(rect.right(), nBoundsRect.x(), nBoundsRect.right() - std::abs(rect.width())));
         }
     }
     if (orientations & Qt::Vertical) {
         if (rect.height() >= 0) {
-            newRect.moveTop(std::clamp(rect.y(), nBoundsRect.y(), nBoundsRect.bottom() - std::abs(rect.height())));
+            newRect.moveTop(clamp(rect.y(), nBoundsRect.y(), nBoundsRect.bottom() - std::abs(rect.height())));
         } else {
-            newRect.moveBottom(std::clamp(rect.bottom(), nBoundsRect.y(), nBoundsRect.bottom() - std::abs(rect.height())));
+            newRect.moveBottom(clamp(rect.bottom(), nBoundsRect.y(), nBoundsRect.bottom() - std::abs(rect.height())));
         }
     }
     return newRect;
