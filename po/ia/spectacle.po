@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-04 03:03+0000\n"
-"PO-Revision-Date: 2026-01-30 16:53+0100\n"
+"PO-Revision-Date: 2026-02-09 12:19+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -882,7 +882,7 @@ msgstr "Comparti"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Extrahe Texto per Linguage"
 
 #: src/Gui/ExportMenu.cpp:285
 #, kde-format
@@ -902,7 +902,7 @@ msgstr "Initialisante motor de OCR..."
 #: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "Nulle datos de Linguage de OCR disponibile. "
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -1315,13 +1315,13 @@ msgstr "Usque Spectacle es claudite"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Recognition de Texto (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Linguages per OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
@@ -1335,7 +1335,7 @@ msgstr "Extraction de texto:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Claude post extraction (Saltaauto-salveguardar)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1344,6 +1344,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle claudera post extraction de texto e salveguardar automatic essera "
+"saltate."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -1359,6 +1361,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Pro favor installa le pacchettos requirite:\n"
+"• tesseract\n"
+"• datos de linguage de tesseract (e.g., tesseract-ocr-eng per Anglese)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1520,7 +1525,7 @@ msgstr "Memora le ultime region rectangular"
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Linguages predefinite perrecognition de texto de OCR"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
@@ -1881,17 +1886,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientation e Discoperta de Script"
 
 #: src/OcrManager.cpp:650
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Discoperta de MAth/Equation"
 
 #: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientation e Discoperta de Script"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
@@ -2161,6 +2166,8 @@ msgstr "Spectacle es Registrante"
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Per terminar le registration,clicca le icone pulsante rubie de Tabuliero de "
+"Systema."
 
 #: src/SpectacleCore.cpp:324
 #, kde-kuit-format
@@ -2169,6 +2176,8 @@ msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Per terminar le registration, clicca le icone pulsante rubie de Tabuliero de "
+"Systema o pressa <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:341
 #, kde-format
@@ -2304,25 +2313,25 @@ msgstr "Trovato codice QR con contento binari."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Extraction de texto falleva"
 
 #: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Nulle texto trovate in le imagine"
 
 #: src/SpectacleCore.cpp:570
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Extraction de texto completate"
 
 #: src/SpectacleCore.cpp:578
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Texto extrahite"
 
 #: src/SpectacleCore.cpp:597
 #, kde-format
@@ -2346,7 +2355,7 @@ msgstr "Aperi in Editor  de Texto"
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Pro favor selige le region ante extraher texto"
 
 #: src/SpectacleCore.cpp:770
 #, kde-format
@@ -2364,7 +2373,7 @@ msgstr "Nulle captura de schermo disponibile."
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Extrahente texto ex imagine..."
 
 #: src/SpectacleCore.cpp:1044
 #, kde-format
