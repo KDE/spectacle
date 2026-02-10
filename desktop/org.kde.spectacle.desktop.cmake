@@ -493,6 +493,7 @@ Name[fr]=Démarrer / Arrêter l'enregistrement d'une zone
 Name[gl]=Conmutar a gravación de rexión
 Name[he]=התחלת/עצירת הקלטת אזור
 Name[hu]=Terület rögzítésének indítása/leállítása
+Name[ia]=Starta/Stoppa Registration de Region
 Name[is]=Hefja/Stöðva upptöku á svæði
 Name[it]=Inizia/termina la registrazione della regione
 Name[ka]=რეგიონის ჩაწერის დაწყება/გაჩერება
