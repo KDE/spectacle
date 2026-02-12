@@ -16,10 +16,15 @@ class SmartSpinBox : public QDoubleSpinBox
 public:
     explicit SmartSpinBox(QWidget *parent = nullptr);
     QString textFromValue(double val) const override;
+    void stepBy(int steps) override;
+    const std::function<int(int)> &stepFunction() const;
+    void setStepFunction(const std::function<int(int)> &lambda);
 
 private Q_SLOTS:
-
     void suffixChangeHandler(double val);
+
+private:
+    std::function<int(int)> m_stepFunction;
 };
 
 #endif // SMARTSPINBOX_H

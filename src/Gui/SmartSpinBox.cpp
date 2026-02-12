@@ -33,4 +33,22 @@ void SmartSpinBox::suffixChangeHandler(double val)
     }
 }
 
+void SmartSpinBox::stepBy(int steps)
+{
+    if (m_stepFunction) {
+        steps = m_stepFunction(steps);
+    }
+    QDoubleSpinBox::stepBy(steps);
+}
+
+const std::function<int(int)> &SmartSpinBox::stepFunction() const
+{
+    return m_stepFunction;
+}
+
+void SmartSpinBox::setStepFunction(const std::function<int(int)> &lambda)
+{
+    m_stepFunction = lambda;
+}
+
 #include "moc_SmartSpinBox.cpp"

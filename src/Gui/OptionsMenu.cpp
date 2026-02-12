@@ -116,9 +116,30 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     auto spinbox = m_delaySpinBox.get();
     spinbox->setEnabled(Settings::captureDelayEnabled());
     spinbox->setDecimals(1);
-    spinbox->setSingleStep(1.0);
     spinbox->setMinimum(0.1);
     spinbox->setMaximum(999);
+    spinbox->setSingleStep(0.1);
+    spinbox->setStepFunction([this](int steps) -> int {
+        const auto v = m_delaySpinBox->value();
+        // The normal step quantity is 1. Our base step size is singleStep.
+        // When holding Ctrl, the step quantity is 10.
+        if (v == 0.1 && steps == 10) {
+            return 9; // value: 0.1 -> 1
+        }
+        if (v == 1 && steps == 10) {
+            return 90; // value: 1 -> 10
+        }
+        if (v == 10 && steps == -10) {
+            return -90; // value: 10 -> 1
+        }
+        if (v == 999 && steps == -10) {
+            return -90; // value: 999 -> 990
+        }
+        if (v < 1 || (v == 1 && steps < 0)) {
+            return steps; // step size of 0.1
+        }
+        return steps * 10; // step size of 1
+    });
     delayActionLayoutUpdate();
     QObject::connect(spinbox, qOverload<double>(&SmartSpinBox::valueChanged), this, [this](){
         if (m_updatingDelayActionLayout) {
