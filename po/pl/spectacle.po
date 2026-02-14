@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2026-01-18 15:48+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -217,6 +217,12 @@ msgstr "W trybie działania w tle, usuwaj cienie na zrzutach ekranu"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Otwórz i zmieniaj bieżący plik zrzutu ekranu"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "Zatwierdź po naciśnięciu i zwolnieniu klawisza myszy"
 
 #: src/ExportManager.cpp:459
 #, kde-format
@@ -2359,7 +2365,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nie jest prawidłowym trybem do --record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2368,24 +2374,24 @@ msgid ""
 msgstr ""
 "Zapisano zrzut ekranu jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu Zdjęcia."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zrzut ekranu zapisano pod nazwą '%1' w katalogu '%2'."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zrzut zapisano w twoim schowku."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2394,25 +2400,25 @@ msgid ""
 msgstr ""
 "Zapisano nagranie jako '%1' w '%2' i umieszczono jego ścieżkę w schowku."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Nagranie zapisano pod nazwą '%1' w katalogu Filmów."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Nagranie zapisano pod nazwą '%1' w katalogu '%2'."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "Opisz"

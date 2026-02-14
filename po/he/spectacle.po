@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2026-01-13 10:03+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -214,6 +214,12 @@ msgstr "במצב רקע, לא לכלול את ההצללות בצילום המס
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "פתיחת קובץ צילום מסך קיים"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "לקבל בלחיצה ושחרור"
 
 #: src/ExportManager.cpp:459
 #, kde-format
@@ -2329,7 +2335,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 אינו מצב תקף עבור ‎--record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2338,24 +2344,24 @@ msgid ""
 msgstr ""
 "צילום המסך נשמר בשם ‚%1’ אל ‚%2’ ונתיב קובץ צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "צילום המסך נשמר בשם ‚%1’ בתיקיית התמונות שלך."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "צילום המסך נשמר בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "צילום המסך נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2364,25 +2370,25 @@ msgid ""
 msgstr ""
 "הקלטה נשמרה בתור ‚%1’ אל ‚%2’ והנתיב לקובץ ההקלטה נשמר ללוח הגזירים שלך."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "הקלטה נשמרה בתור ‚%1’ לתיקיית הסרטונים (Videos) שלך."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "הקלטת המסך נשמרה בשם ‚%1’ אל ‚%2’."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "פתיחה"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "פירוש"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2025-12-19 16:45+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -217,6 +217,12 @@ msgstr "Při režimu na pozadí, vyjmou ze snímku obrazovky stíny"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Otevřít a upravit existující soubor snímku"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "Použít při kliknutí-a-uvolnění"
 
 #: src/ExportManager.cpp:459
 #, kde-format
@@ -2351,7 +2357,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 není platný režim pro --record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2361,24 +2367,24 @@ msgstr ""
 "Snímek obrazovky byl uložen jako '%1' do '%2' cesta k jeho umístění byla "
 "uložena do schránky."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snímek obrazovky byl uložen jako '%1' do vaší složky Obrázky."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snímek obrazovky byl uložen jako '%1' do '%2'."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snímek obrazovky byl uložen do schránky."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2388,25 +2394,25 @@ msgstr ""
 "Záznam byl uložen jako  '%1' do '%2' cesta k jeho umístění byla uložena do "
 "schránky."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Záznam byl uložen jako '%1' do vaší složky Videa."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Záznam byl uložen jako '%1' do '%2'."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "Anotace"

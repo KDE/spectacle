@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2026-02-03 22:56+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -211,6 +211,12 @@ msgstr "배경 모드에서 스크린샷에 그림자 포함 안 함"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "클릭했다 놓을 때 수락"
 
 #: src/ExportManager.cpp:459
 #, kde-format
@@ -2310,7 +2316,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1은(는) --record에 지정할 수 있는 올바른 모드가 아님"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2320,24 +2326,24 @@ msgstr ""
 "스크린샷을 '%2'에 '%1'(으)로 저장했고 스크린샷 파일 위치를 클립보드에 복사했"
 "습니다."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "스크린샷을 내 그림 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "스크린샷을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "스크린샷을 클립보드에 저장했습니다."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2347,25 +2353,25 @@ msgstr ""
 "녹화본을 '%2'에 '%1'(으)로 저장했고 녹화본 파일 위치를 클립보드에 복사했습니"
 "다."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "녹화본을 내 동영상 폴더에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "녹화본을 '%2'에 '%1'(으)로 저장했습니다."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "열기"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "주석 달기"

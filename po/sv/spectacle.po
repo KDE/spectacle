@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2025-06-14 07:22+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -218,6 +218,12 @@ msgstr "Undanta skuggor på skärmbilden i bakgrundsläge"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Öppna och redigera befintlig skärmbildsfil"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "Acceptera vid klick och släpp"
 
 #: src/ExportManager.cpp:459
 #, fuzzy, kde-format
@@ -2386,7 +2392,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 är inte ett giltigt läge för --record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2399,7 +2405,7 @@ msgstr ""
 "Skärmbilden har sparats som '%1' i '%2' och skärmbildens filsökväg har "
 "kopierats till klippbordet."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2407,19 +2413,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "En skärmbild har sparats som '%1' i bildkatalogen."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "En skärmbild har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "En skärmbild har sparats på klippbordet."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2432,7 +2438,7 @@ msgstr ""
 "En inspelning har sparats som '%1' i '%2' och inspelningens filsökväg har "
 "sparats på klippbordet."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2440,20 +2446,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "En inspelning har sparats som '%1' i videokatalogen."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "En inspelning har sparats som '%1' i '%2'."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öppna"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "Kommentera"

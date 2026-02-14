@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -236,6 +236,12 @@ msgstr ""
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "Αποδοχή με κλικ-κι-ελευθέρωση"
 
 #: src/ExportManager.cpp:459
 #, fuzzy, kde-format
@@ -2487,7 +2493,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2500,7 +2506,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2508,19 +2514,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2533,7 +2539,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2541,20 +2547,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"

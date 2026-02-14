@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -216,6 +216,12 @@ msgstr "En fona reĝimo, ekskludi ombrojn en la ekrankopio"
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Malfermi kaj redakti ekzistantan ekrankopian dosieron"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "Akcepti je klako-kaj-malteno"
 
 #: src/ExportManager.cpp:459
 #, fuzzy, kde-format
@@ -2414,7 +2420,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ne stas valida reĝimo por --record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2427,7 +2433,7 @@ msgstr ""
 "Ekrankopio estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
 "ekrankopio estis konservita al via tondujo."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2435,19 +2441,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrankopio estis konservita kiel '%1' al via dosierujo de Bildoj."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrankopio estis konservita kiel '%1' al '%2'."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrankopio estis konservita en via tondujo."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2460,7 +2466,7 @@ msgstr ""
 "Registraĵo estis konservita kiel '%1' al '%2' kaj la dosiervojo de la "
 "registraĵo estis konservita al via tondujo."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2468,20 +2474,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Registraĵo estis konservita kiel '%1' al via dosierujo de Filmetoj."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekrankopio estis konservita kiel '%1' al '%2'."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Malfermi"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "Komenti"

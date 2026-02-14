@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-04 00:46+0000\n"
+"POT-Creation-Date: 2026-02-14 00:45+0000\n"
 "PO-Revision-Date: 2024-07-21 21:34-0500\n"
 "Last-Translator: aalam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -215,6 +215,12 @@ msgstr "ਬੈਕਗਰਾਊਂਡ ਮੋਡ ਵਿੱਚ, ਸਕਰੀਨਸ਼�
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ਮੌਜੂਦਾ ਸਕਰੀਨਸ਼ਾਟ ਫ਼ਾਇਲ ਖੋਲ੍ਹੋ ਅਤੇ ਸੋਧੋ"
+
+#: src/CommandLineOptions.h:112
+#, fuzzy, kde-format
+#| msgid "Accept on click-and-release"
+msgid "Accept region selection on click-and-release"
+msgstr "ਕਲਿੱਕ-ਤੇ-ਰੀਲਿਜ਼ ਉੱਤੇ ਮਨਜ਼ੂਰ"
 
 #: src/ExportManager.cpp:459
 #, fuzzy, kde-format
@@ -2451,7 +2457,7 @@ msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record ਲਈ ਵਾਜਬ ਮੋਡ ਨਹੀਂ ਹੈ"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1282
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2464,7 +2470,7 @@ msgstr ""
 "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਸਕਰੀਨਸ਼ਾਟ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1286
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2472,19 +2478,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਤਸਵੀਰਾਂ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1293
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ਸਕਰੀਨਸ਼ਾਟ ਨੂੰ ਤੁਹਾਡੇ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1298
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2497,7 +2503,7 @@ msgstr ""
 "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਅਤੇ ਰਿਕਾਰਡਿੰਗ ਦੇ ਫਾਇਲ ਦੇ ਪਾਥ ਨੂੰ ਤੁਹਾਡੇ "
 "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1300
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2505,20 +2511,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਤੁਹਾਡੇ ਵੀਡੀਓ ਫੋਲਡਰ ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1302
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ਰਿਕਾਰਡਿੰਗ ਨੂੰ '%2' ਵਿੱਚ '%1' ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ।"
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgid "Annotate"
 msgstr "ਟਿੱਪਣੀ"
