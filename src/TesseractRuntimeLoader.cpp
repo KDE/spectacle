@@ -50,6 +50,10 @@ bool TesseractRuntimeLoader::loadLocked()
 {
     const auto candidates = candidateLibraryNames();
     for (const QString &candidate : candidates) {
+        // From https://doc.qt.io/qt-6/qlibrary.html :
+        // QLibrary tries the name with different platform-specific file prefixes,
+        // like "lib" on Unix and Mac, and suffixes, like ".so" on Unix,
+        // ".dylib" on the Mac, or ".dll" on Windows.
         m_library.setFileName(candidate);
         m_library.setLoadHints(QLibrary::ExportExternalSymbolsHint | QLibrary::PreventUnloadHint);
 
@@ -181,5 +185,5 @@ bool TesseractRuntimeLoader::validateLoadedVersion()
 
 QStringList TesseractRuntimeLoader::candidateLibraryNames() const
 {
-    return {QStringLiteral("libtesseract.so.5"), QStringLiteral("libtesseract.so.4"), QStringLiteral("libtesseract.so")};
+    return {QStringLiteral("tesseract")};
 }
