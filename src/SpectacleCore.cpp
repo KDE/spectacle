@@ -149,6 +149,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     // -1 means this window should not make way for other surfaces such as panels.
                     window->setExclusiveZone(-1);
                     window->setKeyboardInteractivity(Window::KeyboardInteractivityNone);
+                    window->setScreen(captureWindow->screenToFollow());
                 }
             }
             SpectacleWindow::setVisibilityForAll(QWindow::FullScreen);
