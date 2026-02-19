@@ -555,19 +555,16 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     auto onOcrTextRecognized = [this](const QString &text, const QStringList &languageCodes, bool success) {
         if (!success) {
-            InlineMessageModel::instance()->push(InlineMessageModel::Error, 
-                i18nc("@info", "Text extraction failed"));
+            InlineMessageModel::instance()->push(InlineMessageModel::Error, i18nc("@info", "Text extraction failed"));
             return;
         }
-        
+
         if (text.isEmpty()) {
-            InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
-                i18nc("@info", "No text found in the image"));
+            InlineMessageModel::instance()->push(InlineMessageModel::Copied, i18nc("@info", "No text found in the image"));
             return;
         }
-        
-        InlineMessageModel::instance()->push(InlineMessageModel::Copied, 
-            i18nc("@info", "Text extraction completed"));
+
+        InlineMessageModel::instance()->push(InlineMessageModel::Copied, i18nc("@info", "Text extraction completed"));
 
         // ensure program stays alive until the notification finishes.
         if (!m_eventLoopLocker) {
@@ -602,27 +599,27 @@ SpectacleCore::SpectacleCore(QObject *parent)
         auto notificationText = xi18nc("@info:notification", "Text copied to clipboard.<nl/>Languages used: %1", languagesText);
         notification->setText(notificationText);
         notification->setIconName(u"document-scan"_s);
-        
+
         if (!text.isEmpty()) {
             auto openEditorAction = notification->addAction(i18nc("@action:button", "Open in Text Editor"));
             connect(openEditorAction, &KNotificationAction::activated, this, [text, notification]() {
-                // Create temporary file with extracted text 
+                // Create temporary file with extracted text
                 auto exportManager = ExportManager::instance();
                 exportManager->updateTimestamp();
                 auto timestamp = exportManager->timestamp();
-                
+
                 QString filename = QStringLiteral("spectacle_ocr_%1.txt").arg(timestamp.toString(QStringLiteral("yyyyMMdd_HHmmss")));
                 QString templatePath = QDir::tempPath() + QStringLiteral("/") + filename;
-                
+
                 QTemporaryFile tempFile;
                 tempFile.setFileTemplate(templatePath);
                 tempFile.setAutoRemove(false);
-                
+
                 if (tempFile.open()) {
                     QTextStream stream(&tempFile);
                     stream << text;
                     tempFile.close();
-                    
+
                     auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(tempFile.fileName()));
                     job->start();
                 }
