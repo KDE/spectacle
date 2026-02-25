@@ -64,7 +64,6 @@ private:
     std::unique_ptr<Purpose::Menu> mPurposeMenu;
 #endif
     QMenu *m_ocrLanguageMenu = nullptr;
-    friend class ExportMenuSingleton;
 };
 
 #endif // EXPORTMENU_H
