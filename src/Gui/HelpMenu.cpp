@@ -3,6 +3,7 @@
  */
 
 #include "HelpMenu.h"
+#include "SpectacleCore.h"
 #include "WidgetWindowUtils.h"
 
 #include <KAboutData>
@@ -16,13 +17,7 @@
 
 using namespace Qt::StringLiterals;
 
-class HelpMenuSingleton
-{
-public:
-    HelpMenu self;
-};
-
-Q_GLOBAL_STATIC(HelpMenuSingleton, privateHelpMenuSelf)
+static std::unique_ptr<HelpMenu> s_instance = nullptr;
 
 static QObject *findWidgetOfType(const char *className)
 {
@@ -50,7 +45,14 @@ HelpMenu::HelpMenu(QWidget* parent)
 
 HelpMenu *HelpMenu::instance()
 {
-    return &privateHelpMenuSelf->self;
+    if (!s_instance && SpectacleCore::instance()) {
+        s_instance = std::unique_ptr<HelpMenu>(new HelpMenu);
+        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
+        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
+            s_instance.reset();
+        });
+    }
+    return s_instance.get();
 }
 
 void HelpMenu::showAppHelp()
