@@ -2,21 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2023, 2025 Vít Pelčák <vit@pelcak.org>
 # SPDX-FileCopyrightText: 2021, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <filipek.libor@protonmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-04 03:03+0000\n"
-"PO-Revision-Date: 2025-12-19 16:45+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
-"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2026-02-15 00:11+0100\n"
+"Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
+"Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1309,11 +1310,9 @@ msgstr "Jazyk pro OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Získání textu selhalo"
+msgstr "Extrakce textu:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1321,7 +1320,7 @@ msgstr "Získání textu selhalo"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Zavřít po extrakci (přeskočí automatické ukládání)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1330,6 +1329,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Po extrahování textu se aplikace Spectacle zavře a automatické ukládání bude "
+"přeskočeno."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -1855,14 +1856,14 @@ msgid ""
 "screenshot tool."
 msgstr ""
 "Na Waylandu Spectacle vyžaduje kompozitor KWin, který se ale nezdá být "
-"dostupný.Použijte Spectacle na KDE Plasma nebo využijte jiný program na "
-"vytváření snímkůobrazovky."
+"dostupný. Použijte Spectacle na KDE Plasma nebo využijte jiný program na "
+"vytváření snímků obrazovky."
 
 #: src/OcrManager.cpp:609
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientace a detekce skriptu"
 
 #: src/OcrManager.cpp:650
 #, kde-format
@@ -1872,7 +1873,7 @@ msgstr "Detekce matematiky/rovnic"
 #: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Orientace a detekce skriptu"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
@@ -2314,12 +2315,10 @@ msgid "%1 and %2"
 msgstr "%1 a %2"
 
 #: src/SpectacleCore.cpp:602
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Text byl zkopírován do schránky.<nl/>Rozpoznané jazyky: %1"
+msgstr "Text byl zkopírován do schránky.<nl/>Použité jazyky: %1"
 
 #: src/SpectacleCore.cpp:607
 #, kde-format
