@@ -78,14 +78,11 @@ if(XCB_FOUND)
     target_link_libraries(spectacle PRIVATE Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
 endif()
 
-if (Qt6_VERSION VERSION_GREATER_EQUAL "6.8.0")
-    set(private_code_option  "PRIVATE_CODE")
-endif()
-qt6_generate_wayland_protocol_client_sources(spectacle FILES
-    ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
-    ${private_code_option}
+qt6_generate_wayland_protocol_client_sources(spectacle
+    PRIVATE_CODE
+    FILES
+        ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
 )
-
 
 if(PURPOSE_FOUND)
     target_link_libraries(spectacle PRIVATE KF6::PurposeWidgets)
