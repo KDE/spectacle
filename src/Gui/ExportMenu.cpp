@@ -33,13 +33,7 @@
 using namespace std::chrono_literals;
 using namespace Qt::StringLiterals;
 
-class ExportMenuSingleton
-{
-public:
-    ExportMenu self;
-};
-
-Q_GLOBAL_STATIC(ExportMenuSingleton, privateExportMenuSelf)
+static QPointer<ExportMenu> s_instance = nullptr;
 
 ExportMenu::ExportMenu(QWidget *parent)
     : SpectacleMenu(parent)
@@ -68,7 +62,12 @@ ExportMenu::ExportMenu(QWidget *parent)
 
 ExportMenu *ExportMenu::instance()
 {
-    return &privateExportMenuSelf->self;
+    // We need to create it here instead of using Q_GLOBAL_STATIC like the other menus
+    // to prevent a segfault.
+    if (!s_instance) {
+        s_instance = new ExportMenu;
+    }
+    return s_instance;
 }
 
 void ExportMenu::onImageChanged()
