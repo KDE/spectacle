@@ -23,7 +23,7 @@
 
 using namespace Qt::StringLiterals;
 
-static QPointer<OptionsMenu> s_instance = nullptr;
+static std::unique_ptr<OptionsMenu> s_instance = nullptr;
 
 OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
@@ -154,12 +154,14 @@ OptionsMenu::OptionsMenu(QWidget *parent)
 
 OptionsMenu *OptionsMenu::instance()
 {
-    // We need to create it here instead of using Q_GLOBAL_STATIC like the other menus
-    // to prevent a segfault.
-    if (!s_instance) {
-        s_instance = new OptionsMenu;
+    if (!s_instance && SpectacleCore::instance()) {
+        s_instance = std::unique_ptr<OptionsMenu>(new OptionsMenu);
+        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
+        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
+            s_instance.reset();
+        });
     }
-    return s_instance;
+    return s_instance.get();
 }
 
 void OptionsMenu::showPreferencesDialog()

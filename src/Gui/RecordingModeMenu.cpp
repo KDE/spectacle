@@ -10,7 +10,7 @@
 
 using namespace Qt::StringLiterals;
 
-static QPointer<RecordingModeMenu> s_instance = nullptr;
+static std::unique_ptr<RecordingModeMenu> s_instance = nullptr;
 
 RecordingModeMenu::RecordingModeMenu(QWidget *parent)
     : SpectacleMenu(i18nc("@title:menu", "Recording Modes"), parent)
@@ -56,10 +56,14 @@ RecordingModeMenu::RecordingModeMenu(QWidget *parent)
 
 RecordingModeMenu *RecordingModeMenu::instance()
 {
-    if (!s_instance) {
-        s_instance = new RecordingModeMenu;
+    if (!s_instance && SpectacleCore::instance()) {
+        s_instance = std::unique_ptr<RecordingModeMenu>(new RecordingModeMenu);
+        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
+        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
+            s_instance.reset();
+        });
     }
-    return s_instance;
+    return s_instance.get();
 }
 
 #include "moc_RecordingModeMenu.cpp"

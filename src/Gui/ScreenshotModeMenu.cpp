@@ -10,7 +10,7 @@
 
 using namespace Qt::StringLiterals;
 
-static QPointer<ScreenshotModeMenu> s_instance = nullptr;
+static std::unique_ptr<ScreenshotModeMenu> s_instance = nullptr;
 
 ScreenshotModeMenu::ScreenshotModeMenu(QWidget *parent)
     : SpectacleMenu(i18nc("@title:menu", "Screenshot Modes"), parent)
@@ -65,10 +65,14 @@ ScreenshotModeMenu::ScreenshotModeMenu(QWidget *parent)
 
 ScreenshotModeMenu *ScreenshotModeMenu::instance()
 {
-    if (!s_instance) {
-        s_instance = new ScreenshotModeMenu;
+    if (!s_instance && SpectacleCore::instance()) {
+        s_instance = std::unique_ptr<ScreenshotModeMenu>(new ScreenshotModeMenu);
+        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
+        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
+            s_instance.reset();
+        });
     }
-    return s_instance;
+    return s_instance.get();
 }
 
 #include "moc_ScreenshotModeMenu.cpp"
