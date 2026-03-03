@@ -721,3 +721,5 @@ void OcrWorker::processImage(const QImage &image, TessBaseAPI *tesseract, const 
         Q_EMIT imageProcessed(QString(), false);
     }
 }
+
+#include "moc_OcrManager.cpp"

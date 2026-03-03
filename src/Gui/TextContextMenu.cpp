@@ -136,3 +136,5 @@ void TextContextMenu::popup(QQuickItem *editor)
     const bool useParentPosition = editor->parentItem() && editor->parentItem()->inherits("QQuickSpinBox");
     SpectacleMenu::popup(useParentPosition ? editor->parentItem() : editor);
 }
+
+#include "moc_TextContextMenu.cpp"
