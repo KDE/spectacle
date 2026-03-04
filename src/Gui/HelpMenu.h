@@ -34,6 +34,7 @@ public:
 
 private:
     explicit HelpMenu(QWidget *parent = nullptr);
+    ~HelpMenu();
     Q_SLOT void onTriggered(QAction *action);
     const std::unique_ptr<KHelpMenu> kHelpMenu;
     friend class HelpMenuSingleton;

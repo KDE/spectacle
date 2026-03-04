@@ -23,7 +23,7 @@
 
 using namespace Qt::StringLiterals;
 
-static std::unique_ptr<OptionsMenu> s_instance = nullptr;
+static OptionsMenu *s_instance = nullptr;
 
 OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
@@ -152,16 +152,25 @@ OptionsMenu::OptionsMenu(QWidget *parent)
             });
 }
 
+OptionsMenu::~OptionsMenu()
+{
+    s_instance = nullptr;
+}
+
 OptionsMenu *OptionsMenu::instance()
 {
     if (!s_instance && SpectacleCore::instance()) {
-        s_instance = std::unique_ptr<OptionsMenu>(new OptionsMenu);
-        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
-        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
-            s_instance.reset();
+        s_instance = new OptionsMenu;
+        // We have to destroy this after SpectacleCore to ensure that destructors
+        // are called. We don't just rely on smart pointers because they won't delete
+        // the menus at the right time and cause a crash while quitting.
+        connect(SpectacleCore::instance(), &QObject::destroyed, qApp, [] {
+            if (s_instance) {
+                delete s_instance;
+            }
         });
     }
-    return s_instance.get();
+    return s_instance;
 }
 
 void OptionsMenu::showPreferencesDialog()

@@ -42,6 +42,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
 
     explicit OptionsMenu(QWidget *parent = nullptr);
+    ~OptionsMenu();
 
     void delayActionLayoutUpdate();
     const std::unique_ptr<QWidgetAction> m_delayAction;

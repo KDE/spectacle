@@ -47,6 +47,7 @@ Q_SIGNALS:
 
 private:
     explicit ExportMenu(QWidget *parent = nullptr);
+    ~ExportMenu();
 
     Q_SLOT void onImageChanged();
     Q_SLOT void openScreenshotsFolder();
