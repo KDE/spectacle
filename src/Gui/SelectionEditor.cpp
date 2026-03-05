@@ -70,6 +70,8 @@ public:
 
     void handleArrowKey(QKeyEvent *event);
 
+    QPointF determineInitialMouseOffset() const;
+
     void setMouseCursor(QQuickItem *item, const QPointF &pos);
     Location mouseLocation(const QPointF &pos) const;
 
@@ -125,6 +127,7 @@ public:
 
     QPointF startPos;
     QPointF initialTopLeft;
+    QPointF initialMouseOffset;
     Location dragLocation = Location::None;
     Location lastDragLocation = Location::None;
     qreal devicePixelRatio = 1;
@@ -358,6 +361,30 @@ SelectionEditor::Location SelectionEditorPrivate::mouseLocation(const QPointF &p
         return Location::Inside;
     }
     return Location::Outside;
+}
+
+QPointF SelectionEditorPrivate::determineInitialMouseOffset() const
+{
+    switch (dragLocation) {
+    case Location::TopLeft:
+        return mousePos - selection->rectF().topLeft();
+    case Location::TopRight:
+        return mousePos - selection->rectF().topRight();
+    case Location::BottomRight:
+        return mousePos - selection->rectF().bottomRight();
+    case Location::BottomLeft:
+        return mousePos - selection->rectF().bottomLeft();
+    case Location::Top:
+        return mousePos - QPointF(0, selection->rectF().top());
+    case Location::Bottom:
+        return mousePos - QPointF(0, selection->rectF().bottom());
+    case Location::Left:
+        return mousePos - QPointF(selection->rectF().left(), 0);
+    case Location::Right:
+        return mousePos - QPointF(selection->rectF().right(), 0);
+    default:
+        return {};
+    }
 }
 
 // SelectionEditor =================================
@@ -601,6 +628,7 @@ void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
         Q_EMIT mousePositionChanged();
         d->setDragLocation(d->mouseLocation(d->mousePos));
         d->setMagnifierLocation(d->dragLocation);
+        d->initialMouseOffset = d->determineInitialMouseOffset();
         d->disableArrowKeys = true;
 
         switch (d->dragLocation) {
@@ -654,12 +682,13 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
     case Location::TopRight:
     case Location::BottomRight:
     case Location::BottomLeft: {
-        const bool afterX = d->mousePos.x() >= d->startPos.x();
-        const bool afterY = d->mousePos.y() >= d->startPos.y();
-        d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
-                              afterY ? d->startPos.y() : d->mousePos.y(),
-                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
-                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
+        const auto adjustedMousePos = d->mousePos - d->initialMouseOffset;
+        const bool afterX = adjustedMousePos.x() >= d->startPos.x();
+        const bool afterY = adjustedMousePos.y() >= d->startPos.y();
+        d->selection->setRect(afterX ? d->startPos.x() : adjustedMousePos.x(),
+                              afterY ? d->startPos.y() : adjustedMousePos.y(),
+                              qAbs(adjustedMousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
+                              qAbs(adjustedMousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
     case Location::Outside: {
@@ -671,19 +700,21 @@ void SelectionEditor::mouseMoveEvent(QQuickItem *item, QMouseEvent *event)
     }
     case Location::Top:
     case Location::Bottom: {
-        const bool afterY = d->mousePos.y() >= d->startPos.y();
+        const auto adjustedMousePos = d->mousePos - d->initialMouseOffset;
+        const bool afterY = adjustedMousePos.y() >= d->startPos.y();
         d->selection->setRect(d->selection->x(),
-                              afterY ? d->startPos.y() : d->mousePos.y(),
+                              afterY ? d->startPos.y() : adjustedMousePos.y(),
                               d->selection->width(),
-                              qAbs(d->mousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
+                              qAbs(adjustedMousePos.y() - d->startPos.y()) + (afterY ? d->devicePixel : 0));
         break;
     }
     case Location::Right:
     case Location::Left: {
-        const bool afterX = d->mousePos.x() >= d->startPos.x();
-        d->selection->setRect(afterX ? d->startPos.x() : d->mousePos.x(),
+        const auto adjustedMousePos = d->mousePos - d->initialMouseOffset;
+        const bool afterX = adjustedMousePos.x() >= d->startPos.x();
+        d->selection->setRect(afterX ? d->startPos.x() : adjustedMousePos.x(),
                               d->selection->y(),
-                              qAbs(d->mousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
+                              qAbs(adjustedMousePos.x() - d->startPos.x()) + (afterX ? d->devicePixel : 0),
                               d->selection->height());
         break;
     }
@@ -719,6 +750,7 @@ void SelectionEditor::mouseReleaseEvent(QQuickItem *item, QMouseEvent *event)
     }
     d->setDragLocation(Location::None);
     d->setMagnifierLocation(Location::FollowMouse);
+    d->initialMouseOffset = {};
     event->accept();
 }
 
