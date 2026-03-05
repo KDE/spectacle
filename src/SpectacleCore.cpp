@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  SPDX-FileCopyrightText: 2019 David Redondo <kde@david-redondo.de>
  *  SPDX-FileCopyrightText: 2015 Boudhayan Gupta <bgupta@kde.org>
  *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
@@ -38,6 +38,7 @@
 #include <LayerShellQt/Shell>
 #include <LayerShellQt/Window>
 
+#include <KLocalizedQmlContext>
 #include <QApplication>
 #include <QClipboard>
 #include <QCommandLineParser>
@@ -1459,7 +1460,7 @@ QQmlEngine *SpectacleCore::getQmlEngine()
 {
     if (m_engine == nullptr) {
         m_engine = std::make_unique<QQmlEngine>(this);
-        m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine.get()));
+        m_engine->rootContext()->setContextObject(new KLocalizedQmlContext(m_engine.get()));
     }
     return m_engine.get();
 }

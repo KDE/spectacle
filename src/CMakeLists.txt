@@ -124,6 +124,7 @@ target_link_libraries(spectacle PRIVATE
     KF6::StatusNotifierItem
     KF6::PrisonScanner
     KF6::Crash
+    KF6::I18nQml
     K::KPipeWireRecord
     Wayland::Client
     LayerShellQt::Interface

@@ -33,9 +33,9 @@ static QObject *findWidgetOfType(const char *className)
     return nullptr;
 }
 
-HelpMenu::HelpMenu(QWidget* parent)
+HelpMenu::HelpMenu(QWidget *parent)
     : SpectacleMenu(parent)
-    , kHelpMenu(new KHelpMenu(parent, KAboutData::applicationData(), true))
+    , kHelpMenu(new KHelpMenu(parent, KAboutData::applicationData()))
 {
     setTitle(i18nc("@title:menu", "Help"));
     setIcon(QIcon::fromTheme(u"help-contents"_s));
