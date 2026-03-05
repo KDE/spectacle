@@ -27,4 +27,5 @@ public:
 
 private:
     explicit ScreenshotModeMenu(QWidget *parent = nullptr);
+    ~ScreenshotModeMenu();
 };

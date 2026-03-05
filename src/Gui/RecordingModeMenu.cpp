@@ -10,7 +10,7 @@
 
 using namespace Qt::StringLiterals;
 
-static std::unique_ptr<RecordingModeMenu> s_instance = nullptr;
+static RecordingModeMenu *s_instance = nullptr;
 
 RecordingModeMenu::RecordingModeMenu(QWidget *parent)
     : SpectacleMenu(i18nc("@title:menu", "Recording Modes"), parent)
@@ -54,16 +54,25 @@ RecordingModeMenu::RecordingModeMenu(QWidget *parent)
     connect(RecordingModeModel::instance(), &RecordingModeModel::recordingModesChanged, this, addModes);
 }
 
+RecordingModeMenu::~RecordingModeMenu()
+{
+    s_instance = nullptr;
+}
+
 RecordingModeMenu *RecordingModeMenu::instance()
 {
     if (!s_instance && SpectacleCore::instance()) {
-        s_instance = std::unique_ptr<RecordingModeMenu>(new RecordingModeMenu);
-        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
-        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
-            s_instance.reset();
+        s_instance = new RecordingModeMenu;
+        // We have to destroy this after SpectacleCore to ensure that destructors
+        // are called. We don't just rely on smart pointers because they won't delete
+        // the menus at the right time and cause a crash while quitting.
+        connect(SpectacleCore::instance(), &QObject::destroyed, qApp, [] {
+            if (s_instance) {
+                delete s_instance;
+            }
         });
     }
-    return s_instance.get();
+    return s_instance;
 }
 
 #include "moc_RecordingModeMenu.cpp"

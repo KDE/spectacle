@@ -27,4 +27,5 @@ public:
 
 private:
     explicit RecordingModeMenu(QWidget *parent = nullptr);
+    ~RecordingModeMenu();
 };

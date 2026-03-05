@@ -33,7 +33,7 @@
 using namespace std::chrono_literals;
 using namespace Qt::StringLiterals;
 
-static std::unique_ptr<ExportMenu> s_instance = nullptr;
+static ExportMenu *s_instance = nullptr;
 
 ExportMenu::ExportMenu(QWidget *parent)
     : SpectacleMenu(parent)
@@ -60,16 +60,25 @@ ExportMenu::ExportMenu(QWidget *parent)
     getKServiceItems();
 }
 
+ExportMenu::~ExportMenu()
+{
+    s_instance = nullptr;
+}
+
 ExportMenu *ExportMenu::instance()
 {
     if (!s_instance && SpectacleCore::instance()) {
-        s_instance = std::unique_ptr<ExportMenu>(new ExportMenu);
-        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
-        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
-            s_instance.reset();
+        s_instance = new ExportMenu;
+        // We have to destroy this after SpectacleCore to ensure that destructors
+        // are called. We don't just rely on smart pointers because they won't delete
+        // the menus at the right time and cause a crash while quitting.
+        connect(SpectacleCore::instance(), &QObject::destroyed, qApp, [] {
+            if (s_instance) {
+                delete s_instance;
+            }
         });
     }
-    return s_instance.get();
+    return s_instance;
 }
 
 void ExportMenu::onImageChanged()

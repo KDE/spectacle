@@ -17,7 +17,7 @@
 
 using namespace Qt::StringLiterals;
 
-static std::unique_ptr<HelpMenu> s_instance = nullptr;
+static HelpMenu *s_instance = nullptr;
 
 static QObject *findWidgetOfType(const char *className)
 {
@@ -43,16 +43,25 @@ HelpMenu::HelpMenu(QWidget* parent)
     connect(this, &QMenu::triggered, this, &HelpMenu::onTriggered);
 }
 
+HelpMenu::~HelpMenu()
+{
+    s_instance = nullptr;
+}
+
 HelpMenu *HelpMenu::instance()
 {
     if (!s_instance && SpectacleCore::instance()) {
-        s_instance = std::unique_ptr<HelpMenu>(new HelpMenu);
-        // We have to destroy this after SpectacleCore to prevent a crash from the Qt Quick UI.
-        connect(SpectacleCore::instance(), &QObject::destroyed, s_instance.get(), [] {
-            s_instance.reset();
+        s_instance = new HelpMenu;
+        // We have to destroy this after SpectacleCore to ensure that destructors
+        // are called. We don't just rely on smart pointers because they won't delete
+        // the menus at the right time and cause a crash while quitting.
+        connect(SpectacleCore::instance(), &QObject::destroyed, qApp, [] {
+            if (s_instance) {
+                delete s_instance;
+            }
         });
     }
-    return s_instance.get();
+    return s_instance;
 }
 
 void HelpMenu::showAppHelp()
