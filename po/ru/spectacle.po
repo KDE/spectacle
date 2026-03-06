@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 02:58+0000\n"
+"POT-Creation-Date: 2026-03-06 02:43+0000\n"
 "PO-Revision-Date: 2026-01-28 13:13+0300\n"
 "Last-Translator: Mariya Shikunova <maremarie@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -890,41 +890,41 @@ msgstr "Экспорт"
 msgid "Open Default Screenshots Folder"
 msgstr "Открыть папку со снимками экрана, заданную по умолчанию"
 
-#: src/Gui/ExportMenu.cpp:125
+#: src/Gui/ExportMenu.cpp:134
 #, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
 msgstr "Другое приложение..."
 
-#: src/Gui/ExportMenu.cpp:157
+#: src/Gui/ExportMenu.cpp:166
 #, kde-format
 msgid "Share"
 msgstr "Опубликовать"
 
-#: src/Gui/ExportMenu.cpp:250
+#: src/Gui/ExportMenu.cpp:259
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
 msgstr "Извлечение текста по языку"
 
-#: src/Gui/ExportMenu.cpp:286
+#: src/Gui/ExportMenu.cpp:295
 #, kde-format
 msgid "OCR engine is not available."
 msgstr "Движок распознавания текста недоступен."
 
-#: src/Gui/ExportMenu.cpp:294
+#: src/Gui/ExportMenu.cpp:303
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
 msgstr ""
 "Средство распознавания текста недоступно. Установите средство распознавания "
 "текста Tesseract."
 
-#: src/Gui/ExportMenu.cpp:295
+#: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "OCR engine is initializing…"
 msgstr "Инициализация движка распознавания текста..."
 
-#: src/Gui/ExportMenu.cpp:305
+#: src/Gui/ExportMenu.cpp:314
 #, kde-format
 msgid "No OCR language data available."
 msgstr "Нет доступных данных для распознавания на указанном языке."
@@ -2178,25 +2178,25 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Запустить Spectacle без создания снимка"
 
-#: src/SpectacleCore.cpp:263
+#: src/SpectacleCore.cpp:264
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "При создании снимка экрана произошла ошибка."
 
-#: src/SpectacleCore.cpp:292
+#: src/SpectacleCore.cpp:293
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Приложение Spectacle выполняет запись"
 
-#: src/SpectacleCore.cpp:297
+#: src/SpectacleCore.cpp:298
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Приложение Spectacle выполняет запись"
 
-#: src/SpectacleCore.cpp:323
+#: src/SpectacleCore.cpp:324
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2204,7 +2204,7 @@ msgstr ""
 "Для остановки записи нажмите на пульсирующий красный значок в системном "
 "лотке."
 
-#: src/SpectacleCore.cpp:324
+#: src/SpectacleCore.cpp:325
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2214,13 +2214,13 @@ msgstr ""
 "Для остановки записи нажмите на пульсирующий красный значок в системном "
 "лотке или нажмите <shortcut>%1</shortcut>. "
 
-#: src/SpectacleCore.cpp:341
+#: src/SpectacleCore.cpp:342
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Отсутствует поддержка WebP."
 
-#: src/SpectacleCore.cpp:342
+#: src/SpectacleCore.cpp:343
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2231,25 +2231,25 @@ msgstr ""
 "установите модуль Qt Image Formats, а затем сообщите о его нехватке в пакете "
 "разработчикам дистрибутива."
 
-#: src/SpectacleCore.cpp:378
+#: src/SpectacleCore.cpp:379
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Приложение Spectacle завершает запись"
 
-#: src/SpectacleCore.cpp:379
+#: src/SpectacleCore.cpp:380
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Подождите"
 
-#: src/SpectacleCore.cpp:381
+#: src/SpectacleCore.cpp:382
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Приложение Spectacle завершает запись"
 
-#: src/SpectacleCore.cpp:383
+#: src/SpectacleCore.cpp:384
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2259,7 +2259,7 @@ msgstr ""
 "Продолжительность записи: %1\n"
 "Нажмите, чтобы прервать обработку (это приведёт к потере данных)"
 
-#: src/SpectacleCore.cpp:409
+#: src/SpectacleCore.cpp:410
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2269,13 +2269,13 @@ msgstr ""
 "Продолжительность записи: %1\n"
 "Нажмите, чтобы остановить запись"
 
-#: src/SpectacleCore.cpp:434
+#: src/SpectacleCore.cpp:435
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "При создании записи экрана произошла ошибка."
 
-#: src/SpectacleCore.cpp:478
+#: src/SpectacleCore.cpp:479
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2284,7 +2284,7 @@ msgid ""
 msgstr ""
 "Снимок экрана скопирован в буфер обмена и в файл <link url=\"%1\">%2</link>."
 
-#: src/SpectacleCore.cpp:481
+#: src/SpectacleCore.cpp:482
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2294,19 +2294,19 @@ msgstr ""
 "Снимок экрана сохранён в файл <link url=\"%1\">%2</link>, полный путь к нему "
 "скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:484
+#: src/SpectacleCore.cpp:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Снимок экрана сохранён в файл <link url=\"%1\">%2</link>."
 
-#: src/SpectacleCore.cpp:488
+#: src/SpectacleCore.cpp:489
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:519
+#: src/SpectacleCore.cpp:520
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2316,13 +2316,13 @@ msgstr ""
 "Видео сохранено в файл (<link url=\"%1\">%2</link>) и полный путь к нему "
 "скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:522
+#: src/SpectacleCore.cpp:523
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Запись экрана сохранена в файл <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:526
+#: src/SpectacleCore.cpp:527
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2331,91 +2331,91 @@ msgstr "Путь к файлу видео скопирован в буфер о�
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:546
+#: src/SpectacleCore.cpp:547
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Найден код: %1"
 
-#: src/SpectacleCore.cpp:550
+#: src/SpectacleCore.cpp:551
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Найден QR-код, содержащий двоичные данные."
 
-#: src/SpectacleCore.cpp:559
+#: src/SpectacleCore.cpp:560
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Ошибка извлечения текста"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:566
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Текст на изображении не найден"
 
-#: src/SpectacleCore.cpp:570
+#: src/SpectacleCore.cpp:571
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Извлечение текста завершено"
 
-#: src/SpectacleCore.cpp:578
+#: src/SpectacleCore.cpp:579
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Текст извлечён"
 
-#: src/SpectacleCore.cpp:597
+#: src/SpectacleCore.cpp:598
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 и %2"
 
-#: src/SpectacleCore.cpp:602
+#: src/SpectacleCore.cpp:603
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Текст скопирован в буфер обмена.<nl/>Использованные языки: %1"
 
-#: src/SpectacleCore.cpp:607
+#: src/SpectacleCore.cpp:608
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Открыть в текстовом редакторе"
 
-#: src/SpectacleCore.cpp:748
+#: src/SpectacleCore.cpp:749
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Укажите участок, прежде чем извлекать текст"
 
-#: src/SpectacleCore.cpp:770
+#: src/SpectacleCore.cpp:771
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Средство распознавания текста недоступно."
 
-#: src/SpectacleCore.cpp:776
+#: src/SpectacleCore.cpp:777
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Снимок экрана недоступен."
 
-#: src/SpectacleCore.cpp:780
+#: src/SpectacleCore.cpp:781
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Извлечение текста из изображения..."
 
-#: src/SpectacleCore.cpp:1044
+#: src/SpectacleCore.cpp:1045
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не является допустимым режимом при указании ключа -- record"
 
-#: src/SpectacleCore.cpp:1278
+#: src/SpectacleCore.cpp:1279
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2425,24 +2425,24 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1282
+#: src/SpectacleCore.cpp:1283
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1286
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1290
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:1294
+#: src/SpectacleCore.cpp:1295
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2452,25 +2452,25 @@ msgstr ""
 "Запись экрана сохранена как «%1» в «%2», полный путь к ней скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1297
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
-#: src/SpectacleCore.cpp:1298
+#: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:1323
+#: src/SpectacleCore.cpp:1324
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
