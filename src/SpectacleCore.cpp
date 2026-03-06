@@ -1002,7 +1002,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
     using GrabMode = ImagePlatform::GrabMode;
     auto cliGrabMode = [&]() -> std::optional<GrabMode> {
         if (m_cliOptions[Option::Fullscreen]) {
-            return GrabMode::AllScreens;
+            return m_cliOptions[Option::Scaled] ? GrabMode::AllScreensScaled : GrabMode::AllScreens;
         } else if (m_cliOptions[Option::Current]) {
             return GrabMode::CurrentScreen;
         } else if (m_cliOptions[Option::ActiveWindow]) {
@@ -1027,6 +1027,10 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         }
     };
     auto grabMode = cliGrabMode().value_or(m_startMode == StartMode::Background ? GrabMode::AllScreens : launchActionGrabMode());
+
+    if (m_cliOptions[Option::Scaled] && !m_cliOptions[Option::Fullscreen]) {
+        qWarning().noquote() << i18nc("@info:shell", "--scaled is only allowed together with -f/--fullscreen and will be ignored");
+    }
 
     using RecordingMode = VideoPlatform::RecordingMode;
     RecordingMode recordingMode = RecordingMode::NoRecordingModes;
