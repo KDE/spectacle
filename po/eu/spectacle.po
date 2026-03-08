@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-06 02:43+0000\n"
+"POT-Creation-Date: 2026-03-08 02:54+0000\n"
 "PO-Revision-Date: 2026-01-24 17:17+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.12.1\n"
+
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screenshots"
+msgstr "Pantaila-argazkiak"
+
+#, kde-format
+msgctxt "part of default image filename template"
+msgid "Screenshot"
+msgstr "Pantaila-argazkia"
+
+#, kde-format
+msgctxt "translatable folder name"
+msgid "Screencasts"
+msgstr "Pantaila-grabazioak"
+
+#, kde-format
+msgctxt "part of default video filename template"
+msgid "Screencast"
+msgstr "Pantaila-grabazioa"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -1581,12 +1601,6 @@ msgstr "Lehenetsitako fitxategi-izena"
 msgid "Compression quality for lossy file formats"
 msgstr "Galeradun fitxategi formatuen konpresio kalitatea"
 
-#: src/Gui/SettingsDialog/spectacle.kcfg:148
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screenshots"
-msgstr "Pantaila-argazkiak"
-
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
@@ -1598,12 +1612,6 @@ msgstr "Irudia gordetzeko formatu lehenetsia"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Pantaila-argazkiak gordetzeko erabilitako fitxategi-izen txantiloia"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:160
-#, kde-format
-msgctxt "part of default image filename template"
-msgid "Screenshot"
-msgstr "Pantaila-argazkia"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1632,18 +1640,6 @@ msgstr "Bideo formatu lehenetsia"
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Pantaila-grabazioak gordetzeko erabilitako fitxategi-izen txantiloia"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:194
-#, kde-format
-msgctxt "translatable folder name"
-msgid "Screencasts"
-msgstr "Pantaila-grabazioak"
-
-#: src/Gui/SettingsDialog/spectacle.kcfg:199
-#, kde-format
-msgctxt "part of default video filename template"
-msgid "Screencast"
-msgstr "Pantaila-grabazioa"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
