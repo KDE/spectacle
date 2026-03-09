@@ -16,15 +16,14 @@ ShaderEffectSource {
     required property point targetPoint
     property int factor: 3
 
-    implicitWidth: {
-        const w = Kirigami.Units.gridUnit * 10
-        return w - w % factor - factor
-    }
-    implicitHeight: implicitWidth
+    implicitWidth: sourceRect.width * factor
+    implicitHeight: sourceRect.height * factor
     sourceItem: viewport
-    sourceRect: Qt.rect((targetPoint.x - viewport.viewportRect.x) - implicitWidth / (factor * 2),
-                        (targetPoint.y - viewport.viewportRect.y) - implicitHeight / (factor * 2),
-                        implicitWidth / factor, implicitHeight / factor)
+    // We need a size that multiplies by the factor to an odd size to keep the graphics crisp.
+    // The position needs an additional offset equal to half the size minus half a logical pixel.
+    sourceRect: Qt.rect((targetPoint.x - viewport.viewportRect.x) - 33,
+                        (targetPoint.y - viewport.viewportRect.y) - 33,
+                        67, 67)
     smooth: false
 
     Item {
