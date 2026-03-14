@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the spectacle package.
 #
 # SPDX-FileCopyrightText: 2023, 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Sveinn í Felli <sv1@fellsnet.is>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 00:48+0000\n"
-"PO-Revision-Date: 2025-12-06 18:28+0000\n"
+"PO-Revision-Date: 2026-03-13 11:58+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -224,8 +224,7 @@ msgid "Accept region selection on click-and-release"
 msgstr "Samþykkja þegar músarhnappi er sleppt"
 
 #: src/ExportManager.cpp:459
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter getur ekki skrifað mynd: %1"
@@ -680,8 +679,7 @@ msgid "Number"
 msgstr "Tala"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
 msgstr "Hætta við"
@@ -889,29 +887,27 @@ msgstr "Deila"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Ná í texta eftir tungumálum"
 
 #: src/Gui/ExportMenu.cpp:295
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "KWin skjáupptaka er ekki í boði."
+msgstr "OCR-ljóslestrarkerfið er ekki tiltækt."
 
 #: src/Gui/ExportMenu.cpp:303
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "OCR-ljóslestur er ekki tiltækur. Settu upp Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "OCR-ljóslestrarkerfið er að frumstillast…"
 
 #: src/Gui/ExportMenu.cpp:314
 #, kde-format
 msgid "No OCR language data available."
-msgstr ""
+msgstr "Engin OCR-tungumálagögn tiltæk."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -958,7 +954,7 @@ msgstr "Ný skjámynd"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Ná í texta"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1325,20 +1321,19 @@ msgstr "þar til Spectacle er lokað"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Textakennsl (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Tungumál fyrir OCR-ljóslestur:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgid "Reset selection:"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Endurstilla valið:"
+msgstr "Útdráttur texta:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1346,7 +1341,7 @@ msgstr "Endurstilla valið:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Loka eftir útdrátt texta (sleppir sjálfvirkri vistun)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1355,14 +1350,13 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Spectacle mun lokast eftir útdrátt texta og sjálfvirkri vistun verður sleppt."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "KWin skjáupptaka er ekki í boði."
+msgstr "Aðgerðir OCR-ljóslestrar eru ekki tiltækar"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1372,6 +1366,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Settu upp nauðsynlega pakka:\n"
+"• tesseract\n"
+"• tesseract tungumálagögn (t.d. tesseract-ocr-eng fyrir ensku)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1529,7 +1526,7 @@ msgstr "Muna síðasta rétthyrnda svæðið"
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Sjálfgefið tungumál OCR-textakennsla"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
@@ -1865,17 +1862,17 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Greining á stefnu og stafrófi"
 
 #: src/OcrManager.cpp:650
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Greining á stærðfræði/jöfnum"
 
 #: src/OcrManager.cpp:653
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Greining á stefnu og stafrófi"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
 #, kde-format
@@ -2018,9 +2015,7 @@ msgid "Failed to select screen: %1"
 msgstr "Mistókst að velja glugga: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Mistókst að velja glugga: %1"
@@ -2275,12 +2270,10 @@ msgstr "Staðsetning myndskeiðsins var afritað á klippispjaldið."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:548
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR-kóði fannst: %1"
+msgstr "Kóði fannst: %1"
 
 #: src/SpectacleCore.cpp:552
 #, kde-format
@@ -2292,72 +2285,67 @@ msgstr "Fann QR-kóða með tvíundarkerfisefni."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Útdráttur texta mistókst"
 
 #: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Enginn texti fannst í myndinni"
 
 #: src/SpectacleCore.cpp:569
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Útdrætti texta er lokið"
 
 #: src/SpectacleCore.cpp:577
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Sótti texta"
 
 #: src/SpectacleCore.cpp:596
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 og %2"
 
 #: src/SpectacleCore.cpp:601
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "afrita mynd á klippispjald"
+msgstr "Texti afritaður á klippispjaldið.<nl/>Tungumál notuð: %1"
 
 #: src/SpectacleCore.cpp:606
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Opna í textaritli"
 
 #: src/SpectacleCore.cpp:747
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Veldu svæði áður en texti er sóttur úr mynd"
 
 #: src/SpectacleCore.cpp:769
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "KWin skjáupptaka er ekki í boði."
+msgstr "OCR-ljóslestur er ekki tiltækur."
 
 #: src/SpectacleCore.cpp:775
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "KWin skjáupptaka er ekki í boði."
+msgstr "Engin skjámynd tiltæk."
 
 #: src/SpectacleCore.cpp:779
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Sæki texta úr mynd..."
 
 #: src/SpectacleCore.cpp:1043
 #, kde-format
@@ -2366,10 +2354,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "%1 er ekki gilt snið fyrir --record"
 
 #: src/SpectacleCore.cpp:1281
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2379,16 +2364,13 @@ msgstr ""
 "klippispjaldið."
 
 #: src/SpectacleCore.cpp:1285
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Skjámynd var vistuð sem '%1' í myndamöppunni þína."
+msgstr "Skjámynd var vistuð sem '%1' í myndamöppuna þína."
 
 #: src/SpectacleCore.cpp:1288
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Skjámynd var vistuð sem '%1' í '%2'."
@@ -2399,32 +2381,26 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Skjámynd var vistuð á klippispjaldið þitt."
 
 #: src/SpectacleCore.cpp:1297
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Upptakan var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
+"Upptaka var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
 "klippispjaldið."
 
 #: src/SpectacleCore.cpp:1299
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Upptakan var vistuð sem '%1' í myndskeiðamöppunni þína."
+msgstr "Upptaka var vistuð sem '%1' í myndskeiðamöppuna þína."
 
 #: src/SpectacleCore.cpp:1301
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Upptaka var vistuð sem '%1' í '%2'."
+msgstr "Upptaka var vistuð sem '%1'  í '%2'."
 
 #: src/SpectacleCore.cpp:1312
 #, kde-format
