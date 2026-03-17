@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:48+0000\n"
+"POT-Creation-Date: 2026-03-17 00:46+0000\n"
 "PO-Revision-Date: 2026-01-25 21:50+0100\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -96,15 +96,21 @@ msgstr "Schnappschuss der gesamten Arbeitsfläche (Voreinstellung)"
 
 #: src/CommandLineOptions.h:26
 #, kde-format
+msgid ""
+"When used with -f/--fullscreen, capture all screens scaled to the same size"
+msgstr ""
+
+#: src/CommandLineOptions.h:30
+#, kde-format
 msgid "Capture the current monitor"
 msgstr "Schnappschuss des aktuellen Bildschirms"
 
-#: src/CommandLineOptions.h:30
+#: src/CommandLineOptions.h:34
 #, kde-format
 msgid "Capture the active window"
 msgstr "Schnappschuss des aktiven Fensters"
 
-#: src/CommandLineOptions.h:34
+#: src/CommandLineOptions.h:38
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -113,7 +119,7 @@ msgstr ""
 "Schnappschuss des Fensters unter dem Mauszeiger inklusive der "
 "Aufklappelemente (Menüs, Kurzinfos usw.)"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:42
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -122,12 +128,12 @@ msgstr ""
 "Schnappschuss des Fensters unter dem Mauszeiger ohne Aufklappelemente "
 "(Menüs, Kurzinfos usw.)"
 
-#: src/CommandLineOptions.h:42
+#: src/CommandLineOptions.h:46
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Schnappschuss eines rechteckigen Bereichs"
 
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:50
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -140,29 +146,29 @@ msgstr ""
 "- s, Bildschirm\n"
 "- w, Fenster"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spectacle ohne Erstellung eines Schnappschusses starten"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Mit grafischer Oberfläche starten (Standard)"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Einen Schnappschuss erstellen und ohne Anzeige der grafischen Oberfläche "
 "beenden"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Im D-Bus-Aktivierungsmodus starten"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -170,17 +176,17 @@ msgstr ""
 "Im Hintergrundmodus keine Benachrichtigung anzeigen, wenn das Bildschirmfoto "
 "aufgenommen wurde"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:78
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Im Hintergrundmodus das Bild in die angegebene Datei speichern"
 
-#: src/CommandLineOptions.h:79
+#: src/CommandLineOptions.h:83
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Verzögerung in Millisekunden vor der Aufnahme im Hintergrundmodus"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -189,47 +195,47 @@ msgstr ""
 "Im Hintergrundmodus das Bildschirmfoto in die Zwischenablage kopieren, es "
 "sei denn, -o wird verwendet."
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Im Hintergrundmodus den Pfad zum Bildschirmfoto in die Zwischenablage "
 "kopieren"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Das Bildschirmfoto bei Mausklick aufnehmen. Die Verzögerung wird so nicht "
 "beachtet."
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Startet eine neue GUI-Instanz von Spectacle ohne Registrierung am D-Bus"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Im Hintergrundmodus Mauszeiger im Bildschirmfoto anzeigen"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Im Hintergrundmodus Mauszeiger im Bildschirmfoto nicht anzeigen"
 
-#: src/CommandLineOptions.h:106
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "Im Hintergrundmodus Schatten im Bildschirmfoto weglassen"
 
-#: src/CommandLineOptions.h:109
+#: src/CommandLineOptions.h:113
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Ein existierendes Bildschirmfoto öffnen und bearbeiten"
 
-#: src/CommandLineOptions.h:112
+#: src/CommandLineOptions.h:116
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -2391,13 +2397,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Text wird aus Bild extrahiert …"
 
-#: src/SpectacleCore.cpp:1043
+#: src/SpectacleCore.cpp:1032
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"--scaled is only allowed together with -f/--fullscreen and will be ignored"
+msgstr ""
+
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ist kein gültiger Modus für --record"
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1285
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2407,24 +2420,24 @@ msgstr ""
 "Ein Bildschirmfoto wurde als „%1“ in „%2“ gespeichert und der Speicherort "
 "der Datei wurde in die Zwischenablage kopiert."
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ein Bildschirmfoto wurde als „%1“ in Ihrem Bilder-Ordner gespeichert."
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1292
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ein Bildschirmfoto wurde als „%1“ in „%2“ gespeichert."
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ein Bildschirmfoto wurde in die Zwischenablage gespeichert."
 
-#: src/SpectacleCore.cpp:1297
+#: src/SpectacleCore.cpp:1301
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2434,25 +2447,25 @@ msgstr ""
 "Eine Aufzeichnung wurde als „%1“ in „%2“ gespeichert und ihr Speicherort "
 "wurde in die Zwischenablage kopiert."
 
-#: src/SpectacleCore.cpp:1299
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Eine Aufzeichnung wurde als „%1“ in Ihrem Video-Ordner gespeichert."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1305
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Eine Aufzeichnung wurde als „%1“ in „%2“ gespeichert."
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1330
 #, kde-format
 msgid "Annotate"
 msgstr "Anmerkungen"

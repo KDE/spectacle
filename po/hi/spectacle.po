@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:48+0000\n"
+"POT-Creation-Date: 2026-03-17 00:46+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -92,34 +92,40 @@ msgstr "संपूर्ण डेस्कटॉप कैप्चर कर
 
 #: src/CommandLineOptions.h:26
 #, kde-format
+msgid ""
+"When used with -f/--fullscreen, capture all screens scaled to the same size"
+msgstr ""
+
+#: src/CommandLineOptions.h:30
+#, kde-format
 msgid "Capture the current monitor"
 msgstr "वर्तमान मॉनिटर कैप्चर करें"
 
-#: src/CommandLineOptions.h:30
+#: src/CommandLineOptions.h:34
 #, kde-format
 msgid "Capture the active window"
 msgstr "सक्रिय विंडो कैप्चर करें"
 
-#: src/CommandLineOptions.h:34
+#: src/CommandLineOptions.h:38
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "पॉप-अप मेनू के पैरेंट सहित वर्तमान में कर्सर के नीचे स्थित विंडो को कैप्चर करें"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:42
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "पॉप-अप मेनू के पैरेंट को छोड़कर, वर्तमान में कर्सर के नीचे स्थित विंडो को कैप्चर करें"
 
-#: src/CommandLineOptions.h:42
+#: src/CommandLineOptions.h:46
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "स्क्रीन के आयताकार क्षेत्र को कैप्चर करें"
 
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:50
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -132,43 +138,43 @@ msgstr ""
 "- s, स्क्रीन\n"
 "- w, विंडो"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "स्क्रीनशॉट लिए बिना स्पेक्टेकल लॉन्च करें"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI मोड में प्रारंभ करें (डिफ़ॉल्ट)"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "स्क्रीनशॉट लें और GUI दिखाए बिना बाहर निकलें"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-एक्टिवेशन मोड में प्रारंभ करें"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "बैकग्राउंड मोड में, स्क्रीनशॉट लेने पर कोई नोटिफिकेशन पॉप अप न करें"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:78
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "पृष्ठभूमि मोड में, छवि को निर्दिष्ट फ़ाइल में सहेजें"
 
-#: src/CommandLineOptions.h:79
+#: src/CommandLineOptions.h:83
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "पृष्ठभूमि मोड में, शॉट लेने से पहले विलंब (मिलीसेकंड में)"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -177,42 +183,42 @@ msgstr ""
 "पृष्ठभूमि मोड में, स्क्रीनशॉट छवि को क्लिपबोर्ड पर कॉपी करें, जब तक कि -o का भी उपयोग न "
 "किया जाए।"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "बैकग्राउंड मोड में, स्क्रीनशॉट फ़ाइल पथ को क्लिपबोर्ड पर कॉपी करें"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "स्क्रीनशॉट लेने से पहले क्लिक का इंतज़ार करें। देरी अमान्य हो जाती है"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus में पंजीकरण किए बिना स्पेक्टेकल का नया GUI इंस्टेंस प्रारंभ करता है"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "बैकग्राउंड मोड में, स्क्रीनशॉट में पॉइंटर शामिल करें"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "बैकग्राउंड मोड में, स्क्रीनशॉट में सजावट को बाहर रखें"
 
-#: src/CommandLineOptions.h:106
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "बैकग्राउंड मोड में, स्क्रीनशॉट में छाया को बाहर रखें"
 
-#: src/CommandLineOptions.h:109
+#: src/CommandLineOptions.h:113
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "मौजूदा स्क्रीनशॉट फ़ाइल खोलें और संपादित करें"
 
-#: src/CommandLineOptions.h:112
+#: src/CommandLineOptions.h:116
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -2447,13 +2453,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1043
+#: src/SpectacleCore.cpp:1032
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"--scaled is only allowed together with -f/--fullscreen and will be ignored"
+msgstr ""
+
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --रिकॉर्ड के लिए वैध मोड नहीं है"
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1285
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2466,7 +2479,7 @@ msgstr ""
 "एक स्क्रीनशॉट '%1' से '%2' के रूप में सहेजा गया था और स्क्रीनशॉट का फ़ाइल पथ आपके "
 "क्लिपबोर्ड पर सहेजा गया है।"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2474,19 +2487,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "एक स्क्रीनशॉट आपके चित्र फ़ोल्डर में '%1' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1292
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "एक स्क्रीनशॉट '%1' से '%2' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "एक स्क्रीनशॉट आपके क्लिपबोर्ड पर सहेजा गया है."
 
-#: src/SpectacleCore.cpp:1297
+#: src/SpectacleCore.cpp:1301
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2499,7 +2512,7 @@ msgstr ""
 "एक रिकॉर्डिंग को '%1' से '%2' के रूप में सहेजा गया है और रिकॉर्डिंग का फ़ाइल पथ आपके "
 "क्लिपबोर्ड पर सहेजा गया है।"
 
-#: src/SpectacleCore.cpp:1299
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2507,20 +2520,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "एक रिकॉर्डिंग आपके वीडियो फ़ोल्डर में '%1' के रूप में सहेजी गई थी."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1305
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "एक रिकॉर्डिंग को '%1' से '%2' के रूप में सहेजा गया था।"
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "खुला"
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1330
 #, kde-format
 msgid "Annotate"
 msgstr "एन्नोटेट"

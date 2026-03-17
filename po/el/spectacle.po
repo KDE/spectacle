@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:48+0000\n"
+"POT-Creation-Date: 2026-03-17 00:46+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -101,15 +101,21 @@ msgstr "Σύλληψη όλου του γραφικού περιβάλλοντο
 
 #: src/CommandLineOptions.h:26
 #, kde-format
+msgid ""
+"When used with -f/--fullscreen, capture all screens scaled to the same size"
+msgstr ""
+
+#: src/CommandLineOptions.h:30
+#, kde-format
 msgid "Capture the current monitor"
 msgstr "Σύλληψη της τρέχουσας οθόνης"
 
-#: src/CommandLineOptions.h:30
+#: src/CommandLineOptions.h:34
 #, kde-format
 msgid "Capture the active window"
 msgstr "Σύλληψη του ενεργού παραθύρου"
 
-#: src/CommandLineOptions.h:34
+#: src/CommandLineOptions.h:38
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -118,7 +124,7 @@ msgstr ""
 "Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, μαζί με τους "
 "γονείς των αιωρουμένων μενού"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:42
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
@@ -127,12 +133,12 @@ msgstr ""
 "Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, χωρίς τους "
 "γονείς των αιωρουμένων μενού"
 
-#: src/CommandLineOptions.h:42
+#: src/CommandLineOptions.h:46
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Σύλληψη μιας ορθογώνιας περιοχής της οθόνης"
 
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:50
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -141,28 +147,28 @@ msgid ""
 "- w, window"
 msgstr ""
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:58
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Μετά τη λήψη στιγμιοτύπου:"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Εκκίνηση σε λειτουργία GUI (προκαθορισμένο)"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Λήψη στιγμιότυπου οθόνης και έξοδος χωρίς εμφάνιση του GUI"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Εκκίνηση σε λειτουργία DBus-Activation"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -170,20 +176,20 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να μην αιωρείται ειδοποίηση κατά τη λήψη του "
 "στιγμιοτύπων"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:78
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποθηκεύεται η εικόνα στο επιλεγμένο αρχείο"
 
-#: src/CommandLineOptions.h:79
+#: src/CommandLineOptions.h:83
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να υπάρχει καθυστέρηση πριν τη λήψη (σε χιλιοστά "
 "δευτερολέπτου)"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:88
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot image to clipboard"
 msgid ""
@@ -193,38 +199,38 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται το στιγμιότυπο της εικόνας στο "
 "πρόχειρο"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται η διαδρομή του αρχείου "
 "στιγμιότυπου στο πρόχειρο"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Αναμονή για κλικ πριν τη λήψη στιγμιότυπου. Ακυρώνει την καθυστέρηση."
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Εκκινεί μια νέα διεργασία γραφικού περιβάλλοντος του spectacle χωρίς "
 "καταχώρηση στο DBus"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Σε λειτουργία παρασκηνίου, να περιλαμβάνεται δείκτης στο στιγμιότυπο"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:106
+#: src/CommandLineOptions.h:110
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
@@ -232,12 +238,12 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:109
+#: src/CommandLineOptions.h:113
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/CommandLineOptions.h:112
+#: src/CommandLineOptions.h:116
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -2487,13 +2493,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1043
+#: src/SpectacleCore.cpp:1032
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"--scaled is only allowed together with -f/--fullscreen and will be ignored"
+msgstr ""
+
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1285
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2506,7 +2519,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2514,19 +2527,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1292
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:1297
+#: src/SpectacleCore.cpp:1301
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2539,7 +2552,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1299
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2547,20 +2560,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1305
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1330
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"

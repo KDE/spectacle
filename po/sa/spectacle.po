@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:48+0000\n"
+"POT-Creation-Date: 2026-03-17 00:46+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -94,34 +94,40 @@ msgstr "सम्पूर्णं डेस्कटॉपं (पूर्व
 
 #: src/CommandLineOptions.h:26
 #, kde-format
+msgid ""
+"When used with -f/--fullscreen, capture all screens scaled to the same size"
+msgstr ""
+
+#: src/CommandLineOptions.h:30
+#, kde-format
 msgid "Capture the current monitor"
 msgstr "वर्तमाननिरीक्षकं गृह्यताम्"
 
-#: src/CommandLineOptions.h:30
+#: src/CommandLineOptions.h:34
 #, kde-format
 msgid "Capture the active window"
 msgstr "सक्रियविण्डो गृह्यताम्"
 
-#: src/CommandLineOptions.h:34
+#: src/CommandLineOptions.h:38
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "कर्सरस्य अधः वर्तमानं विण्डो गृह्यताम्, यत्र पॉप-अप-मेनू-मातापितरौ अपि सन्ति"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:42
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, excluding parents of pop-up "
 "menus"
 msgstr "कर्सरस्य अधः वर्तमानं विण्डो गृह्यताम्, पॉप-अप-मेनू-मातापितरौ विहाय"
 
-#: src/CommandLineOptions.h:42
+#: src/CommandLineOptions.h:46
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "स्क्रीनस्य आयताकारप्रदेशं गृह्यताम्"
 
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:50
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -134,43 +140,43 @@ msgstr ""
 "- s, screen\n"
 "- व, खिडकी"
 
-#: src/CommandLineOptions.h:54
+#: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "स्क्रीनशॉट् न गृहीत्वा Spectacle प्रारम्भं कुर्वन्तु"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:62
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI मोड् (पूर्वनिर्धारितम्) आरभ्यताम् ।"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "स्क्रीनशॉट् गृहीत्वा GUI न दर्शयित्वा निर्गच्छन्तु"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:70
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-Activation मोड् मध्ये आरभत"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:74
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् गृहीते सूचनां न पोप् अप कुर्वन्तु"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:78
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "पृष्ठभूमिविधाने चित्रं निर्दिष्टसञ्चिकायां रक्षन्तु"
 
-#: src/CommandLineOptions.h:79
+#: src/CommandLineOptions.h:83
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "पृष्ठभूमिविधाने शॉट् ग्रहीतुं पूर्वं विलम्बं कुर्वन्तु (मिलिसेकेण्ड् मध्ये) ।"
 
-#: src/CommandLineOptions.h:84
+#: src/CommandLineOptions.h:88
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -179,42 +185,42 @@ msgstr ""
 "पृष्ठभूमिविधाने, स्क्रीनशॉट् चित्रं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्, यावत् -o इत्यस्य अपि "
 "उपयोगः न भवति ।"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:92
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "पृष्ठभूमिविधाने, स्क्रीनशॉट् सञ्चिकामार्गं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "स्क्रीनशॉट् ग्रहीतुं पूर्वं क्लिक् प्रतीक्ष्यताम्। विलम्बं अमान्यं करोति"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:100
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus मध्ये पञ्जीकरणं विना तमाशायाः नूतनं GUI उदाहरणं आरभते"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये सूचकं समावेशयन्तु"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये अलङ्काराः बहिष्कृताः"
 
-#: src/CommandLineOptions.h:106
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये छायाः बहिष्कृताः कुर्वन्तु"
 
-#: src/CommandLineOptions.h:109
+#: src/CommandLineOptions.h:113
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "विद्यमानं स्क्रीनशॉट् सञ्चिकां उद्घाट्य सम्पादयन्तु"
 
-#: src/CommandLineOptions.h:112
+#: src/CommandLineOptions.h:116
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -2443,13 +2449,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1043
+#: src/SpectacleCore.cpp:1032
+#, kde-format
+msgctxt "@info:shell"
+msgid ""
+"--scaled is only allowed together with -f/--fullscreen and will be ignored"
+msgstr ""
+
+#: src/SpectacleCore.cpp:1047
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record कृते वैधविधिः नास्ति"
 
-#: src/SpectacleCore.cpp:1281
+#: src/SpectacleCore.cpp:1285
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2462,7 +2475,7 @@ msgstr ""
 "एकः स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितः आसीत् तथा च स्क्रीनशॉट् इत्यस्य सञ्चिकामार्गः "
 "भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1289
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2470,19 +2483,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "भवतः चित्रपुटे '%1' इति रूपेण स्क्रीनशॉट् रक्षितम् ।"
 
-#: src/SpectacleCore.cpp:1288
+#: src/SpectacleCore.cpp:1292
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "एकं स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "भवतः क्लिप्बोर्ड् मध्ये एकः स्क्रीनशॉट् रक्षितः आसीत् ।"
 
-#: src/SpectacleCore.cpp:1297
+#: src/SpectacleCore.cpp:1301
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2495,7 +2508,7 @@ msgstr ""
 "एकं रिकार्डिङ्ग् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् तथा च रिकार्डिङ्ग् इत्यस्य "
 "सञ्चिकामार्गः भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1299
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2503,20 +2516,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "एकं रिकार्डिङ्ग् भवतः Videos समुच्चय मध्ये '%1' इति रूपेण रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1305
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "एकं अभिलेखनं '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "उद्घाटित"
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1330
 #, kde-format
 msgid "Annotate"
 msgstr "टिप्पणीं कुरुत"
