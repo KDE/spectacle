@@ -160,165 +160,189 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
         Q_EMIT recordingFailed(i18nc("@info", "KWin Screencasting is not available."));
         return;
     }
-    m_recorderFuture.waitForFinished();
-    if (recordingState() == RecordingState::Recording) {
-        qWarning() << "Warning: Tried to start recording while already recording.";
-        return;
-    }
-    if (recordingState() == RecordingState::Rendering) {
-        qWarning() << "Warning: Tried to start recording while already rendering.";
-        return;
-    }
-    if (!fileUrl.isEmpty() && !fileUrl.isLocalFile()) {
-        Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: File URL is not a local file"));
-        return;
-    }
 
-    Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Embedded : Screencasting::Hidden;
-    ScreencastingStream *stream = nullptr;
-    switch (recordingMode) {
-    case Screen: {
-        auto screen = options.value(screenKey).value<QScreen *>();
-        if (!screen) {
-            selectAndRecord(fileUrl, recordingMode, includePointer);
+    auto startRecordingTask = [this, fileUrl, recordingMode, options, includePointer]() {
+        if (recordingState() == RecordingState::Recording) {
+            qWarning() << "Warning: Tried to start recording while already recording.";
             return;
         }
-        Q_ASSERT(screen != nullptr);
-        minimizeIfWindowsIntersect(screen->geometry());
-        m_frameBytes = frameBytes(screen->size() * screen->devicePixelRatio());
-        stream = m_screencasting->createOutputStream(screen, mode);
-        break;
-    }
-    case Window: {
-        auto windowId = options.value(windowIdKey).toString();
-        if (windowId.isEmpty()) {
-            selectAndRecord(fileUrl, recordingMode, includePointer);
+        if (recordingState() == RecordingState::Rendering) {
+            qWarning() << "Warning: Tried to start recording while already rendering.";
             return;
         }
-        Q_ASSERT(!windowId.isEmpty());
-        // HACK: Window geometry from queryWindowInfo is from KWin's Window::frameGeometry(),
-        // which may not be the same as QWindow::frameGeometry() on Wayland.
-        // Hopefully this is good enough most of the time.
-        const QRectF windowRect{
-            options[xKey].toDouble(), options[yKey].toDouble(),
-            options[widthKey].toDouble(), options[heightKey].toDouble(),
-        };
-        const bool isSpectacle = options[desktopFileKey].toString() == qGuiApp->desktopFileName();
-        if (!windowRect.isEmpty() && !isSpectacle) {
-            minimizeIfWindowsIntersect(windowRect);
-        }
-        auto screen = qGuiApp->screenAt(windowRect.center().toPoint());
-        m_frameBytes = frameBytes(windowRect.size().toSize() * (screen ? screen->devicePixelRatio() : 1));
-        stream = m_screencasting->createWindowStream(windowId, mode);
-        break;
-    }
-    case Region: {
-        auto rect = options.value(rectKey).toRectF();
-        if (rect.isEmpty()) {
-            selectAndRecord(fileUrl, recordingMode, includePointer);
+        if (!fileUrl.isEmpty() && !fileUrl.isLocalFile()) {
+            Q_EMIT recordingFailed(i18nc("@info:shell", "Failed to record: File URL is not a local file"));
             return;
         }
-        qreal scaling = 1;
-        const auto screens = qGuiApp->screens();
-        // Don't make the resolution larger than it needs to be.
-        for (auto screen : screens) {
-            if (rect.intersects(screen->geometry())) {
-                scaling = std::max(scaling, screen->devicePixelRatio());
+
+        Screencasting::CursorMode mode = includePointer ? Screencasting::CursorMode::Embedded : Screencasting::Hidden;
+        ScreencastingStream *stream = nullptr;
+
+        switch (recordingMode) {
+        case Screen: {
+            auto screen = options.value(screenKey).value<QScreen *>();
+            if (!screen) {
+                selectAndRecord(fileUrl, recordingMode, includePointer);
+                return;
             }
+            Q_ASSERT(screen != nullptr);
+            minimizeIfWindowsIntersect(screen->geometry());
+            m_frameBytes = frameBytes(screen->size() * screen->devicePixelRatio());
+            stream = m_screencasting->createOutputStream(screen, mode);
+            break;
         }
-        // Round to pixels that fit within the original rect.
-        // We do this to make it easier to keep the selection outline outside of the recording.
-        int x = std::ceil(rect.x());
-        int y = std::ceil(rect.y());
-        // We calculate size using floor(right) - x and floor(bottom) - y so that the rect doesn't
-        // shift too much. Ensure size is at least 1x1 to keep the final rect valid.
-        int w = std::max(1.0, std::floor(rect.right()) - x);
-        int h = std::max(1.0, std::floor(rect.bottom()) - y);
-        m_frameBytes = frameBytes(QSize{w, h} * scaling);
-        scaling = m_screencasting->isRegionAutoScaleSupported() ? 0 : scaling;
-        stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
-        break;
-    }
-    default: break; // This shouldn't happen
-    }
-    m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
-    m_recorder->setNodeId(0);
-
-    Q_ASSERT(stream);
-    connect(stream, &ScreencastingStream::created, this, [this, stream, recordingMode] {
-        m_recorder->setNodeId(stream->nodeId());
-        if (!m_recorder->output().isEmpty()) {
-            m_recorder->start();
-        }
-        setRecordingMode(recordingMode);
-        setRecordingState(VideoPlatform::RecordingState::Recording);
-    });
-    connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
-        setRecordingState(VideoPlatform::RecordingState::NotRecording);
-        Q_EMIT recordingFailed(error);
-    });
-    connect(stream, &ScreencastingStream::closed, this, [this, recordingMode]() {
-        finishRecording();
-        setRecordingState(VideoPlatform::RecordingState::Finished);
-        if (recordingMode == Screen) {
-            Q_EMIT recordingFailed(i18nc("@info", "The stream closed because the target screen changed in a way that disrupted the recording."));
-        } else if (recordingMode == Window) {
-            Q_EMIT recordingFailed(i18nc("@info", "The stream closed because the target window changed in a way that disrupted the recording."));
-        } else if (recordingMode == Region) {
-            Q_EMIT recordingFailed(i18nc("@info", "The stream closed because a screen containing the target region changed in a way that disrupted the recording."));
-        }
-    });
-
-    // set up output
-    if (!fileUrl.isValid()) {
-        ExportManager::instance()->updateTimestamp();
-        const auto format = static_cast<Format>(Settings::preferredVideoFormat());
-        const auto filename = ExportManager::formattedFilename(Settings::videoFilenameTemplate(),
-                                                               ExportManager::instance()->timestamp(),
-                                                               options[captionKey].toString(),
-                                                               Settings::videoSaveLocation());
-        auto tempUrl = ExportManager::instance()->tempVideoUrl(filename);
-        if (!tempUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell, %1 is the temporary URL", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
-            return;
-        }
-        if (!mkDirPath(tempUrl)) {
-            return;
-        }
-        m_recorder->setEncoder(encoderForFormat(format));
-        m_recorder->setOutput(tempUrl.toLocalFile());
-    } else {
-        if (!fileUrl.isLocalFile()) {
-            Q_EMIT recordingFailed(i18nc("@info:shell, %1 is the output file URL", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
-            return;
-        }
-        if (!mkDirPath(fileUrl)) {
-            return;
-        }
-        const auto &localFile = fileUrl.toLocalFile();
-        m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
-        m_recorder->setOutput(localFile);
-    }
-    if (m_recorder->nodeId() != 0) {
-        m_recorder->start();
-    }
-
-    connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this, recordingMode] {
-        if (m_recorder->state() == PipeWireRecord::Idle) {
-            m_memoryTimer.stop();
-            if (recordingState() != RecordingState::NotRecording && recordingState() != RecordingState::Finished) {
-                setRecordingState(VideoPlatform::RecordingState::Finished);
-                Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
+        case Window: {
+            auto windowId = options.value(windowIdKey).toString();
+            if (windowId.isEmpty()) {
+                selectAndRecord(fileUrl, recordingMode, includePointer);
+                return;
             }
-        } else if (m_recorder->state() == PipeWireRecord::Recording) {
-            m_memoryTimer.start(5000, Qt::CoarseTimer, this);
+            Q_ASSERT(!windowId.isEmpty());
+            // HACK: Window geometry from queryWindowInfo is from KWin's
+            // Window::frameGeometry(), which may not be the same as
+            // QWindow::frameGeometry() on Wayland. Hopefully this is good enough most
+            // of the time.
+            const QRectF windowRect{
+                options[xKey].toDouble(),
+                options[yKey].toDouble(),
+                options[widthKey].toDouble(),
+                options[heightKey].toDouble(),
+            };
+            const bool isSpectacle = options[desktopFileKey].toString() == qGuiApp->desktopFileName();
+            if (!windowRect.isEmpty() && !isSpectacle) {
+                minimizeIfWindowsIntersect(windowRect);
+            }
+            auto screen = qGuiApp->screenAt(windowRect.center().toPoint());
+            m_frameBytes = frameBytes(windowRect.size().toSize() * (screen ? screen->devicePixelRatio() : 1));
+            stream = m_screencasting->createWindowStream(windowId, mode);
+            break;
+        }
+        case Region: {
+            auto rect = options.value(rectKey).toRectF();
+            if (rect.isEmpty()) {
+                selectAndRecord(fileUrl, recordingMode, includePointer);
+                return;
+            }
+            qreal scaling = 1;
+            const auto screens = qGuiApp->screens();
+            // Don't make the resolution larger than it needs to be.
+            for (auto screen : screens) {
+                if (rect.intersects(screen->geometry())) {
+                    scaling = std::max(scaling, screen->devicePixelRatio());
+                }
+            }
+            // Round to pixels that fit within the original rect.
+            // We do this to make it easier to keep the selection outline outside of
+            // the recording.
+            int x = std::ceil(rect.x());
+            int y = std::ceil(rect.y());
+            // We calculate size using floor(right) - x and floor(bottom) - y so that
+            // the rect doesn't shift too much. Ensure size is at least 1x1 to keep
+            // the final rect valid.
+            int w = std::max(1.0, std::floor(rect.right()) - x);
+            int h = std::max(1.0, std::floor(rect.bottom()) - y);
+            m_frameBytes = frameBytes(QSize{w, h} * scaling);
+            scaling = m_screencasting->isRegionAutoScaleSupported() ? 0 : scaling;
+            stream = m_screencasting->createRegionStream({x, y, w, h}, scaling, mode);
+            break;
+        }
+        default:
+            break; // This shouldn't happen
+        }
+
+        m_recorder->setMaxPendingFrames(availableFrames(m_frameBytes));
+        m_recorder->setNodeId(0);
+
+        Q_ASSERT(stream);
+        connect(stream, &ScreencastingStream::created, this, [this, stream, recordingMode] {
+            m_recorder->setNodeId(stream->nodeId());
+            if (!m_recorder->output().isEmpty()) {
+                m_recorder->start();
+            }
             setRecordingMode(recordingMode);
             setRecordingState(VideoPlatform::RecordingState::Recording);
-        } else if (m_recorder->state() == PipeWireRecord::Rendering) {
-            m_memoryTimer.stop();
-            setRecordingState(VideoPlatform::RecordingState::Rendering);
+        });
+        connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
+            setRecordingState(VideoPlatform::RecordingState::NotRecording);
+            Q_EMIT recordingFailed(error);
+        });
+        connect(stream, &ScreencastingStream::closed, this, [this, recordingMode]() {
+            finishRecording();
+            setRecordingState(VideoPlatform::RecordingState::Finished);
+            if (recordingMode == Screen) {
+                Q_EMIT recordingFailed(i18nc("@info",
+                                             "The stream closed because the target screen "
+                                             "changed in a way that disrupted the recording."));
+            } else if (recordingMode == Window) {
+                Q_EMIT recordingFailed(i18nc("@info",
+                                             "The stream closed because the target window "
+                                             "changed in a way that disrupted the recording."));
+            } else if (recordingMode == Region) {
+                Q_EMIT recordingFailed(i18nc("@info",
+                                             "The stream closed because a screen containing the target "
+                                             "region changed in a way that disrupted the recording."));
+            }
+        });
+
+        // set up output
+        if (!fileUrl.isValid()) {
+            ExportManager::instance()->updateTimestamp();
+            const auto format = static_cast<Format>(Settings::preferredVideoFormat());
+            const auto filename = ExportManager::formattedFilename(Settings::videoFilenameTemplate(),
+                                                                   ExportManager::instance()->timestamp(),
+                                                                   options[captionKey].toString(),
+                                                                   Settings::videoSaveLocation());
+            auto tempUrl = ExportManager::instance()->tempVideoUrl(filename);
+            if (!tempUrl.isLocalFile()) {
+                Q_EMIT recordingFailed(
+                    i18nc("@info:shell, %1 is the temporary URL", "Failed to record: Temporary file URL is not a local file (%1)", tempUrl.toString()));
+                return;
+            }
+            if (!mkDirPath(tempUrl)) {
+                return;
+            }
+            m_recorder->setEncoder(encoderForFormat(format));
+            m_recorder->setOutput(tempUrl.toLocalFile());
+        } else {
+            if (!fileUrl.isLocalFile()) {
+                Q_EMIT recordingFailed(
+                    i18nc("@info:shell, %1 is the output file URL", "Failed to record: Output file URL is not a local file (%1)", fileUrl.toString()));
+                return;
+            }
+            if (!mkDirPath(fileUrl)) {
+                return;
+            }
+            const auto localFile = fileUrl.toLocalFile();
+            m_recorder->setEncoder(encoderForFormat(formatForPath(localFile)));
+            m_recorder->setOutput(localFile);
         }
-    });
+        if (m_recorder->nodeId() != 0) {
+            m_recorder->start();
+        }
+
+        connect(m_recorder.get(), &PipeWireRecord::stateChanged, this, [this, recordingMode] {
+            if (m_recorder->state() == PipeWireRecord::Idle) {
+                m_memoryTimer.stop();
+                if (recordingState() != RecordingState::NotRecording && recordingState() != RecordingState::Finished) {
+                    setRecordingState(VideoPlatform::RecordingState::Finished);
+                    Q_EMIT recordingSaved(QUrl::fromLocalFile(m_recorder->output()));
+                }
+            } else if (m_recorder->state() == PipeWireRecord::Recording) {
+                m_memoryTimer.start(5000, Qt::CoarseTimer, this);
+                setRecordingMode(recordingMode);
+                setRecordingState(VideoPlatform::RecordingState::Recording);
+            } else if (m_recorder->state() == PipeWireRecord::Rendering) {
+                m_memoryTimer.stop();
+                setRecordingState(VideoPlatform::RecordingState::Rendering);
+            }
+        });
+    };
+
+    if (m_recorderFuture.isValid() && !m_recorderFuture.isFinished()) {
+        m_recorderFuture = m_recorderFuture.then(this, startRecordingTask);
+    } else {
+        startRecordingTask();
+    }
 }
 
 void VideoPlatformWayland::finishRecording()
