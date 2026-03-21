@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:46+0000\n"
+"POT-Creation-Date: 2026-03-21 00:47+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -2010,13 +2010,13 @@ msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin स्क्रीनकास्टिंग उपलब्ध नहीं है."
 
-#: src/Platforms/VideoPlatformWayland.cpp:173
+#: src/Platforms/VideoPlatformWayland.cpp:174
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "रिकॉर्ड करने में विफल: फ़ाइल URL स्थानीय फ़ाइल नहीं है"
 
-#: src/Platforms/VideoPlatformWayland.cpp:264
+#: src/Platforms/VideoPlatformWayland.cpp:274
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2025,7 +2025,7 @@ msgid ""
 msgstr ""
 "स्ट्रीम बंद हो गई क्योंकि लक्ष्य स्क्रीन इस तरह बदल गई जिससे रिकॉर्डिंग बाधित हो गई।"
 
-#: src/Platforms/VideoPlatformWayland.cpp:266
+#: src/Platforms/VideoPlatformWayland.cpp:278
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2035,7 +2035,7 @@ msgstr ""
 "स्ट्रीम बंद हो गई क्योंकि लक्ष्य विंडो में इस तरह परिवर्तन हो गया जिससे रिकॉर्डिंग बाधित "
 "हो गई।"
 
-#: src/Platforms/VideoPlatformWayland.cpp:268
+#: src/Platforms/VideoPlatformWayland.cpp:282
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2045,7 +2045,7 @@ msgstr ""
 "स्ट्रीम बंद हो गई क्योंकि लक्ष्य क्षेत्र वाली स्क्रीन इस तरह बदल गई जिससे रिकॉर्डिंग बाधित "
 "हो गई।"
 
-#: src/Platforms/VideoPlatformWayland.cpp:282
+#: src/Platforms/VideoPlatformWayland.cpp:298
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
 #| msgid "Failed to record: Temporary file URL is not a local file (%1)"
@@ -2053,7 +2053,7 @@ msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr "रिकॉर्ड करने में विफल: अस्थायी फ़ाइल URL स्थानीय फ़ाइल नहीं है (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:292
+#: src/Platforms/VideoPlatformWayland.cpp:309
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
 #| msgid "Failed to record: Output file URL is not a local file (%1)"
@@ -2061,7 +2061,7 @@ msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "रिकॉर्ड करने में विफल: आउटपुट फ़ाइल URL स्थानीय फ़ाइल नहीं है (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:346
+#: src/Platforms/VideoPlatformWayland.cpp:370
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
 #| msgid "Failed to record: Unable to create folder (%1)"
@@ -2069,19 +2069,19 @@ msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "रिकॉर्ड करने में विफल: फ़ोल्डर बनाने में असमर्थ (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:374
+#: src/Platforms/VideoPlatformWayland.cpp:398
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "स्क्रीन रिकॉर्डिंग रद्द की गई"
 
-#: src/Platforms/VideoPlatformWayland.cpp:376
+#: src/Platforms/VideoPlatformWayland.cpp:400
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "विंडो रिकॉर्डिंग रद्द की गई"
 
-#: src/Platforms/VideoPlatformWayland.cpp:382
+#: src/Platforms/VideoPlatformWayland.cpp:406
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
 #| msgid "Failed to select screen: %1"
@@ -2089,7 +2089,7 @@ msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "स्क्रीन का चयन करने में विफल: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:384
+#: src/Platforms/VideoPlatformWayland.cpp:408
 #, fuzzy, kde-format
 #| msgctxt "@info:shell"
 #| msgid "Failed to select window: %1"
@@ -2097,13 +2097,13 @@ msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "विंडो का चयन करने में विफल: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:412
+#: src/Platforms/VideoPlatformWayland.cpp:436
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr "स्क्रीन का चयन करने में विफल: किसी भी स्क्रीन में माउस कर्सर की स्थिति नहीं थी"
 
-#: src/Platforms/VideoPlatformWayland.cpp:419
+#: src/Platforms/VideoPlatformWayland.cpp:443
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
