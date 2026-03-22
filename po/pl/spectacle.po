@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-21 00:47+0000\n"
-"PO-Revision-Date: 2026-01-18 15:48+0100\n"
+"PO-Revision-Date: 2026-03-21 06:57+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -96,6 +96,8 @@ msgstr "Zrzuć cały pulpit (domyślnie)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"Gdy użyte z -f/--fullscreen, to zrzuci wszystkie ekrany przeskalowane do "
+"tego samego rozmiaru"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -225,10 +227,10 @@ msgid "Open and edit existing screenshot file"
 msgstr "Otwórz i zmieniaj bieżący plik zrzutu ekranu"
 
 #: src/CommandLineOptions.h:116
-#, fuzzy, kde-format
-#| msgid "Accept on click-and-release"
+#, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "Zatwierdź po naciśnięciu i zwolnieniu klawisza myszy"
+msgstr ""
+"Zatwierdź wybór obszaru, naciskając, a następnie zwalniając klawisz myszy"
 
 #: src/ExportManager.cpp:459
 #, kde-format
@@ -2371,6 +2373,7 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"--scaled można użyć tylko wraz z -f/--fullscreen więc zostanie pominięte"
 
 #: src/SpectacleCore.cpp:1047
 #, kde-format
