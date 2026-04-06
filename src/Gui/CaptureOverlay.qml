@@ -802,6 +802,23 @@ MouseArea {
                     }
                 }
 
+                // HACK: Ugly fix for BUG: 515304 as Qt attempts to optimise —
+                // if there are no children outside the bounds of the item, then
+                // it won't handle any input outside its bounds, but this is
+                // determined once only and does not update if say, a loader
+                // child loaded, such as our otbLoader.
+                // Might be be dropped if QTBUG-145591 is accepted & resolved.
+                MouseArea {
+                    parent: annotationsToolBar
+                    // Be outside the parents bounds
+                    x: -10
+                    y: -10
+                    width: 1
+                    height: 1
+                    // Meet the condition for handling pointer events
+                    acceptedButtons: Qt.ExtraButton24
+                }
+
                 AnimatedLoader {
                     id: otbLoader
                     parent: annotationsToolBar
