@@ -20,6 +20,12 @@ to contribute patches. Please note that pull requests on GitHub aren't
 supported. The recommended way of contributing patches is via KDE's
 instance of GitLab at https://invent.kde.org/plasma/spectacle.
 
+When building Spectacle yourself (including when using kde-builder), you may
+find that Spectacle is not authorized to take screenshots or recordings with
+your system's installed KWin. To work around this, you can either also build
+KWin from source, or use the `KWIN_SCREENSHOT_NO_PERMISSION_CHECKS=1`/\
+`KWIN_WAYLAND_NO_PERMISSION_CHECKS=1` environment variables in your session.
+
 ## Release Schedule
 
 Spectacle is released by KDE's release service and has three
