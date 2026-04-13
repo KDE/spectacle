@@ -175,7 +175,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                 }
                 m_ocrExportInProgress = false;
             }
-            const bool willQuit = exportActions.testFlag(ExportManager::AnyAction) //
+            const bool willQuit = exportActions.testAnyFlags(ExportManager::AnyAction) //
                 && exportActions.testFlag(ExportManager::UserAction) //
                 && Settings::quitAfterSaveCopyExport();
             m_returnToViewer &= !willQuit;
