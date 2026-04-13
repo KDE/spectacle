@@ -8,8 +8,6 @@
 
 #include "Config.h"
 
-#include "TesseractRuntimeLoader.h"
-
 #include <QImage>
 #include <QMap>
 #include <QMutex>
@@ -19,6 +17,8 @@
 #include <QTimer>
 
 #include <memory>
+
+#include <tesseract/capi.h>
 
 /**
  * @brief Worker class for OCR processing in background thread
@@ -31,7 +31,7 @@ public:
     explicit OcrWorker(QObject *parent = nullptr);
 
 public Q_SLOTS:
-    void processImage(const QImage &image, TessBaseAPI *tesseract, const TesseractRuntimeApi *runtimeApi);
+    void processImage(const QImage &image, TessBaseAPI *tesseract);
 
 Q_SIGNALS:
     void imageProcessed(const QString &text, bool success);
@@ -153,7 +153,6 @@ private:
     static OcrManager *s_instance;
 
     TessBaseAPI *m_tesseract;
-    const TesseractRuntimeApi *m_runtimeApi;
     OcrWorker *m_worker;
     std::unique_ptr<QThread> m_workerThread;
     QTimer *m_timeoutTimer;

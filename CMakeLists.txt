@@ -92,6 +92,7 @@ find_package(PlasmaWaylandProtocols REQUIRED)
 find_package(LayerShellQt REQUIRED)
 find_package(KPipeWire)
 find_package(OpenCV 4.7 REQUIRED core imgproc)
+find_package(PkgConfig REQUIRED)
 
 set_package_properties(KPipeWire PROPERTIES DESCRIPTION
     "Used to record pipewire streams into a file"
@@ -106,6 +107,8 @@ set_package_properties(KQuickImageEditor PROPERTIES
     URL "https://invent.kde.org/libraries/kquickimageeditor/"
     PURPOSE "Add image editing capability to the screenshots"
 )
+
+pkg_check_modules(TESSERACT REQUIRED IMPORTED_TARGET tesseract)
 
 # optional components
 find_package(KF6DocTools ${KF6_MIN_VERSION})

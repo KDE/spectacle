@@ -26,7 +26,6 @@ target_sources(spectacle PRIVATE
     ExportManager.cpp
     Geometry.cpp
     OcrManager.cpp
-    TesseractRuntimeLoader.cpp
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
@@ -130,6 +129,7 @@ target_link_libraries(spectacle PRIVATE
     LayerShellQt::Interface
     KQuickImageEditor
     ${OpenCV_LIBRARIES}
+    PkgConfig::TESSERACT
 )
 
 # qt_add_qml_module doesn't know how to deal with headers in subdirectories so
