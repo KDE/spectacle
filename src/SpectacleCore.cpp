@@ -477,13 +477,17 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (actions & ExportManager::AnySave) {
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
             if (actions & ExportManager::CopyImage) {
-                auto text = xi18nc("@info", "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</link>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                auto text =
+                    xi18nc("@info", "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
                 InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
             } else if (actions & ExportManager::CopyPath) {
-                auto text = xi18nc("@info", "The screenshot has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                auto text = xi18nc("@info",
+                                   "The screenshot has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard",
+                                   url.toString(),
+                                   url.fileName());
                 InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
             } else {
-                auto text = xi18nc("@info", "The screenshot was saved as <link url=\"%1\">%2</link>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                auto text = xi18nc("@info", "The screenshot was saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
                 InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
             }
         } else if (actions & ExportManager::CopyImage) {
@@ -518,10 +522,13 @@ SpectacleCore::SpectacleCore(QObject *parent)
         if (actions & ExportManager::AnySave) {
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, url.fileName());
             if (actions & ExportManager::CopyPath) {
-                auto text = xi18nc("@info", "The video has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                auto text = xi18nc("@info",
+                                   "The video has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard",
+                                   url.toString(),
+                                   url.fileName());
                 InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
             } else {
-                auto text = xi18nc("@info", "The video was saved as <link url=\"%1\">%2</link>", url.toString().toHtmlEscaped(), url.fileName().toHtmlEscaped());
+                auto text = xi18nc("@info", "The video was saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
                 InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
             }
         } else if (actions & ExportManager::CopyPath) {
