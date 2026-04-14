@@ -411,7 +411,7 @@ MouseArea {
                 && SelectionEditor.magnifierLocation !== SelectionEditor.None
                 && Geometry.rectIntersects(rect, root.viewportRect)
             active: !SpectacleCore.videoMode
-                && SelectionEditor.showMagnifier !== Settings.ShowMagnifierNever
+                && Settings.showMagnifier !== Settings.ShowMagnifierNever
                 && annotationsLoader.item !== null
                 && (root.document?.tool.isNoTool ?? false)
             sourceComponent: Magnifier {
