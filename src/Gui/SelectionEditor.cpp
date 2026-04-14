@@ -609,7 +609,6 @@ void SelectionEditor::hoverMoveEvent(QQuickItem *item, QHoverEvent *event)
     d->mousePos = mapSceneToLogicalGlobalPoint(scenePosition, item);
     Q_EMIT mousePositionChanged();
     d->setMouseCursor(item, d->mousePos);
-    d->setShowMagnifier(event->modifiers().testFlag(Qt::ShiftModifier));
 }
 
 void SelectionEditor::mousePressEvent(QQuickItem *item, QMouseEvent *event)
