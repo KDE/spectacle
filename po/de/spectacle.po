@@ -1,18 +1,18 @@
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
-# SPDX-FileCopyrightText: 2015, 2016, 2018, 2020, 2022, 2023 Frederik Schwarzer <schwarzer@kde.org>
-# SPDX-FileCopyrightText: 2022, 2026 Frank Steinmetzger <dev-kde@felsenfleischer.de>
+# SPDX-FileCopyrightText: 2015-2016, 2018, 2020, 2022-2023 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2015-2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2022, 2025 Alois Spitzbart <spitz234@hotmail.com>
+# SPDX-FileCopyrightText: 2022, 2026 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# SPDX-FileCopyrightText: 2024, 2025 Flori G <Renner03@protonmail.com>
-# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
-# SPDX-FileCopyrightText: 2025, 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2024-2025 Flori G <Renner03@protonmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
+# SPDX-FileCopyrightText: 2025-2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-21 00:47+0000\n"
-"PO-Revision-Date: 2026-03-20 18:49+0100\n"
-"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
+"POT-Creation-Date: 2026-04-17 00:46+0000\n"
+"PO-Revision-Date: 2026-04-12 13:43+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -99,6 +99,8 @@ msgstr "Schnappschuss der gesamten Arbeitsfläche (Voreinstellung)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"Bei Verwendung mit -f/--fullscreen werden alle Bildschirme beim Erstellen "
+"eines Schnappschusses auf dieselbe Größe skaliert"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -1895,18 +1897,18 @@ msgstr ""
 "verfügbar zu sein scheint. Nutzen Sie Spectacle unter KDE Plasma oder "
 "verwenden Sie ein anderes Programm für Bildschirmfotos."
 
-#: src/OcrManager.cpp:609
+#: src/OcrManager.cpp:578
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "Orientierungs- und Schriftsystem-Erkennung"
 
-#: src/OcrManager.cpp:650
+#: src/OcrManager.cpp:619
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "Mathematik-/Gleichungserkennung"
 
-#: src/OcrManager.cpp:653
+#: src/OcrManager.cpp:622
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "Orientierungs- und Schriftsystem-Erkennung"
@@ -2402,6 +2404,8 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"--scaled darf nur zusammen mit -f/--fullscreen verwendet werden und wird "
+"ignoriert"
 
 #: src/SpectacleCore.cpp:1047
 #, kde-format
