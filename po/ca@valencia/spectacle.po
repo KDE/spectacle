@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-17 00:46+0000\n"
+"POT-Creation-Date: 2026-04-18 00:47+0000\n"
 "PO-Revision-Date: 2026-03-29 13:29+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2262,7 +2262,7 @@ msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "S'ha produït un error mentre s'intentava gravar la pantalla."
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:481
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2272,7 +2272,7 @@ msgstr ""
 "La captura de pantalla s'ha copiat a dins del porta-retalls i guardat com a "
 "<link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2282,19 +2282,19 @@ msgstr ""
 "La captura de pantalla s'ha guardat com a <link url=\"%1\">%2</link> i la "
 "seua ubicació s'ha copiat a dins del porta-retalls"
 
-#: src/SpectacleCore.cpp:486
+#: src/SpectacleCore.cpp:490
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "La captura de pantalla s'ha guardat com a <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:494
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "La captura de pantalla s'ha copiat a dins del porta-retalls."
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2304,13 +2304,13 @@ msgstr ""
 "El vídeo s'ha guardat com a <link url=\"%1\">%2</link> i la seua ubicació "
 "s'ha copiat a dins del porta-retalls"
 
-#: src/SpectacleCore.cpp:524
+#: src/SpectacleCore.cpp:531
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "El vídeo s'ha guardat com a <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:528
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2319,98 +2319,98 @@ msgstr "La ubicació del vídeo s'ha copiat a dins del porta-retalls."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Codi trobat: %1"
 
-#: src/SpectacleCore.cpp:552
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "S'ha trobat un codi QR amb contingut binari."
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:567
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "No s'ha pogut fer l'extracció de text"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:572
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "No s'ha trobat cap text a la imatge"
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:576
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "S'ha completat l'extracció de text"
 
-#: src/SpectacleCore.cpp:577
+#: src/SpectacleCore.cpp:584
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Text extret"
 
-#: src/SpectacleCore.cpp:596
+#: src/SpectacleCore.cpp:603
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 i %2"
 
-#: src/SpectacleCore.cpp:601
+#: src/SpectacleCore.cpp:608
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Text copiat a dins del porta-retalls.<nl/>Idiomes utilitzats: %1"
 
-#: src/SpectacleCore.cpp:606
+#: src/SpectacleCore.cpp:613
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Obri en l'editor de text"
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:754
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Trieu una regió abans d'extraure text"
 
-#: src/SpectacleCore.cpp:769
+#: src/SpectacleCore.cpp:776
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "OCR no està disponible."
 
-#: src/SpectacleCore.cpp:775
+#: src/SpectacleCore.cpp:782
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "No hi ha disponible cap captura de pantalla."
 
-#: src/SpectacleCore.cpp:779
+#: src/SpectacleCore.cpp:786
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "S'està extraent text de la imatge…"
 
-#: src/SpectacleCore.cpp:1032
+#: src/SpectacleCore.cpp:1039
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr "--scaled només es permet conjuntament amb -f/--fullscreen i s'ignorarà"
 
-#: src/SpectacleCore.cpp:1047
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 no és un mode vàlid per a --record"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1292
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2420,24 +2420,24 @@ msgstr ""
 "La captura de pantalla s'ha guardat com a «%1» a «%2» i el camí cap al seu "
 "fitxer s'ha copiat a dins del porta-retalls."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "S'ha guardat una captura de pantalla com a «%1» en la carpeta Imatges."
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "S'ha guardat una captura de pantalla com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "S'ha guardat una captura de pantalla en el porta-retalls."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1308
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2447,25 +2447,25 @@ msgstr ""
 "La gravació s'ha guardat com a «%1» a «%2» i el camí del fitxer de gravació "
 "s'ha guardat a dins del porta-retalls."
 
-#: src/SpectacleCore.cpp:1303
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "S'ha guardat una gravació com a «%1» a la carpeta Vídeos."
 
-#: src/SpectacleCore.cpp:1305
+#: src/SpectacleCore.cpp:1312
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "S'ha guardat una gravació com a «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1316
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Obri"
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1337
 #, kde-format
 msgid "Annotate"
 msgstr "Anotació"

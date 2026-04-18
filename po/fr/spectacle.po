@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-17 00:46+0000\n"
+"POT-Creation-Date: 2026-04-18 00:47+0000\n"
 "PO-Revision-Date: 2026-04-05 17:17+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -2292,7 +2292,7 @@ msgid "An error occurred while attempting to record the screen."
 msgstr ""
 "Une erreur est survenue lors de la tentative d'enregistrement de l'écran."
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:481
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2302,7 +2302,7 @@ msgstr ""
 "Une copie d'écran a été copiée dans le presse-papier et enregistrée sous <a "
 "href=\"%1\">%2</a>."
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2312,19 +2312,19 @@ msgstr ""
 "La copie d'écran a été enregistrée comme <link url=\"%1\">%2</link> et son "
 "emplacement a été copié dans le presse-papier."
 
-#: src/SpectacleCore.cpp:486
+#: src/SpectacleCore.cpp:490
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Une copie d'écran a été enregistrée comme <a href=\"%1\">%2</a>."
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:494
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "La copie d'écran a été copiée dans le presse-papier."
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2334,14 +2334,14 @@ msgstr ""
 "La vidéo a été enregistrée comme <a href=\"%1\">%2</a> et son emplacement a "
 "été copié dans le presse-papier."
 
-#: src/SpectacleCore.cpp:524
+#: src/SpectacleCore.cpp:531
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr ""
 "L'enregistrement vidéo a été enregistré comme <link url=\"%1\">%2</link>."
 
-#: src/SpectacleCore.cpp:528
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2350,85 +2350,85 @@ msgstr "L'emplacement de la vidéo a été copiée dans le presse-papier."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Code trouvé : %1"
 
-#: src/SpectacleCore.cpp:552
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Un code « QR » a été trouvé avec un contenu binaire."
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:567
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Impossible de réaliser l'extraction de texte"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:572
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Aucun texte trouvé dans l'image"
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:576
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Extraction de texte terminée"
 
-#: src/SpectacleCore.cpp:577
+#: src/SpectacleCore.cpp:584
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Texte extrait"
 
-#: src/SpectacleCore.cpp:596
+#: src/SpectacleCore.cpp:603
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 et %2"
 
-#: src/SpectacleCore.cpp:601
+#: src/SpectacleCore.cpp:608
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Texte copié dans le presse-papier. <nl/> Langues utilisées : %1"
 
-#: src/SpectacleCore.cpp:606
+#: src/SpectacleCore.cpp:613
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Ouvrir dans l'éditeur de texte"
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:754
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Veuillez sélectionner une région avant d'extraire du texte"
 
-#: src/SpectacleCore.cpp:769
+#: src/SpectacleCore.cpp:776
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "La reconnaissance optique de caractères est indisponible."
 
-#: src/SpectacleCore.cpp:775
+#: src/SpectacleCore.cpp:782
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Aucune copie d'écran disponible."
 
-#: src/SpectacleCore.cpp:779
+#: src/SpectacleCore.cpp:786
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Extraction du texte de l'image en cours..."
 
-#: src/SpectacleCore.cpp:1032
+#: src/SpectacleCore.cpp:1039
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2437,13 +2437,13 @@ msgstr ""
 "L'option « --scaled » n'est autorisée qu'avec l'option « -f / --fullscreen » "
 "et sera ignorée sinon"
 
-#: src/SpectacleCore.cpp:1047
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 est un mode non valable pour l'option « -record »"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1292
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2453,25 +2453,25 @@ msgstr ""
 "La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
 "Une copie d'écran a été enregistrée sous « %1 » dans votre dossier d'images."
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Une copie d'écran a été enregistrée comme « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Une copie d'écran a été enregistrée dans votre presse-papiers."
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1308
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2481,7 +2481,7 @@ msgstr ""
 "Une copie a été enregistrée comme « %1 » dans « %2 » et son emplacement a "
 "été enregistré dans votre presse-papier."
 
-#: src/SpectacleCore.cpp:1303
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
@@ -2489,19 +2489,19 @@ msgstr ""
 "Un enregistrement a été sauvegardé comme « %1 » dans votre dossier "
 "« Vidéos »."
 
-#: src/SpectacleCore.cpp:1305
+#: src/SpectacleCore.cpp:1312
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Un enregistrement a été sauvegardé comme « %1 » dans « %2 »."
 
-#: src/SpectacleCore.cpp:1316
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1337
 #, kde-format
 msgid "Annotate"
 msgstr "Annoter"

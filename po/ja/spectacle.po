@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-17 00:46+0000\n"
+"POT-Creation-Date: 2026-04-18 00:47+0000\n"
 "PO-Revision-Date: 2026-01-26 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2205,7 +2205,7 @@ msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "画面録画を開始する際にエラーが発生しました。"
 
-#: src/SpectacleCore.cpp:480
+#: src/SpectacleCore.cpp:481
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2215,7 +2215,7 @@ msgstr ""
 "スクリーンショットはクリップボードにコピーされ、<link url=\"%1\">%2</link> と"
 "して保存されました"
 
-#: src/SpectacleCore.cpp:483
+#: src/SpectacleCore.cpp:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2225,19 +2225,19 @@ msgstr ""
 "スクリーンショットは <link url=\"%1\">%2</link> として保存され、その場所がク"
 "リップボードにコピーされました"
 
-#: src/SpectacleCore.cpp:486
+#: src/SpectacleCore.cpp:490
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "スクリーンショットは <link url=\"%1\">%2</link> として保存されました"
 
-#: src/SpectacleCore.cpp:490
+#: src/SpectacleCore.cpp:494
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "スクリーンショットはクリップボードにコピーされました。"
 
-#: src/SpectacleCore.cpp:521
+#: src/SpectacleCore.cpp:526
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2247,13 +2247,13 @@ msgstr ""
 "動画は <link url=\"%1\">%2</link> として保存され、その場所がクリップボードに"
 "コピーされました"
 
-#: src/SpectacleCore.cpp:524
+#: src/SpectacleCore.cpp:531
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "動画は <link url=\"%1\">%2</link> として保存されました"
 
-#: src/SpectacleCore.cpp:528
+#: src/SpectacleCore.cpp:535
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2262,68 +2262,68 @@ msgstr "動画の場所がクリップボードにコピーされました。"
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:548
+#: src/SpectacleCore.cpp:555
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "コードが見つかりました: %1"
 
-#: src/SpectacleCore.cpp:552
+#: src/SpectacleCore.cpp:559
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "バイナリデータを含む QR コードを発見しました。"
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:567
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:572
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr ""
 
-#: src/SpectacleCore.cpp:569
+#: src/SpectacleCore.cpp:576
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:577
+#: src/SpectacleCore.cpp:584
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:596
+#: src/SpectacleCore.cpp:603
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
-#: src/SpectacleCore.cpp:601
+#: src/SpectacleCore.cpp:608
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "画像をクリップボードにコピー"
 
-#: src/SpectacleCore.cpp:606
+#: src/SpectacleCore.cpp:613
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "テキストエディタで開く"
 
-#: src/SpectacleCore.cpp:747
+#: src/SpectacleCore.cpp:754
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:769
+#: src/SpectacleCore.cpp:776
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2331,7 +2331,7 @@ msgctxt "@info"
 msgid "OCR is not available."
 msgstr "KWin 画面録画は利用できません。"
 
-#: src/SpectacleCore.cpp:775
+#: src/SpectacleCore.cpp:782
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "KWin Screencasting is not available."
@@ -2339,26 +2339,26 @@ msgctxt "@info"
 msgid "No screenshot available."
 msgstr "KWin 画面録画は利用できません。"
 
-#: src/SpectacleCore.cpp:779
+#: src/SpectacleCore.cpp:786
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1032
+#: src/SpectacleCore.cpp:1039
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1047
+#: src/SpectacleCore.cpp:1054
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 は --record の有効なモードではありません"
 
-#: src/SpectacleCore.cpp:1285
+#: src/SpectacleCore.cpp:1292
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2368,24 +2368,24 @@ msgstr ""
 "スクリーンショットが '%2' に '%1' として保存され、そのパスがクリップボードに"
 "保存されました。"
 
-#: src/SpectacleCore.cpp:1289
+#: src/SpectacleCore.cpp:1296
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "スクリーンショットは '%1' として画像フォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:1292
+#: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "スクリーンショットは '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:1296
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "スクリーンショットはクリップボードに保存されました。"
 
-#: src/SpectacleCore.cpp:1301
+#: src/SpectacleCore.cpp:1308
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2395,25 +2395,25 @@ msgstr ""
 "画面録画が '%2' に '%1' として保存され、そのパスがクリップボードに保存されま"
 "した。"
 
-#: src/SpectacleCore.cpp:1303
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "画面録画は '%1' としてビデオフォルダに保存されました。"
 
-#: src/SpectacleCore.cpp:1305
+#: src/SpectacleCore.cpp:1312
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "画面録画は '%1' として '%2' へ保存されました。"
 
-#: src/SpectacleCore.cpp:1316
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開く"
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1337
 #, kde-format
 msgid "Annotate"
 msgstr "注釈する"
