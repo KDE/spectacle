@@ -29,6 +29,7 @@
 #include <QTemporaryDir>
 #include <QTemporaryFile>
 #include <QtConcurrent/QtConcurrentRun>
+#include <QTimer>
 
 #include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
@@ -748,6 +749,10 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
     }
 
     if (success) {
+        // when copying to the clipboard, make sure the process stays long enough for transfer to be seen by klipper and start
+        QSharedPointer<QEventLoopLocker> lock(new QEventLoopLocker);
+        QTimer::singleShot(2000, [lock](){});
+
         Q_EMIT imageExported(actions, url);
     }
 }
