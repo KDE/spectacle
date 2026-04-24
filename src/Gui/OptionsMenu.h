@@ -45,11 +45,11 @@ protected:
     ~OptionsMenu();
 
     void delayActionLayoutUpdate();
-    const std::unique_ptr<QWidgetAction> m_delayAction;
-    const std::unique_ptr<QWidget> m_delayWidget;
-    const std::unique_ptr<QHBoxLayout> m_delayLayout;
-    const std::unique_ptr<QLabel> m_delayLabel;
-    const std::unique_ptr<SmartSpinBox> m_delaySpinBox;
+    QWidgetAction *const m_delayAction;
+    QWidget *const m_delayWidget;
+    QHBoxLayout *const m_delayLayout;
+    QLabel *const m_delayLabel;
+    SmartSpinBox *const m_delaySpinBox;
     bool m_updatingDelayActionLayout = false;
 };
 
