@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 02:54+0000\n"
+"POT-Creation-Date: 2026-04-25 02:46+0000\n"
 "PO-Revision-Date: 2026-03-29 13:29+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -227,13 +227,13 @@ msgstr "En mode segon pla, exclou les ombres a la captura de pantalla"
 msgid "Open and edit existing screenshot file"
 msgstr "Obre i edita un fitxer existent de captura de pantalla"
 
-#: src/ExportManager.cpp:459
+#: src/ExportManager.cpp:460
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "El QImageWriter no ha pogut escriure la imatge: %1"
 
-#: src/ExportManager.cpp:475
+#: src/ExportManager.cpp:476
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -243,13 +243,13 @@ msgstr ""
 "No s'ha pogut desar la captura de pantalla perquè ha fallat la creació del "
 "directori:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:485
+#: src/ExportManager.cpp:486
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. Error en escriure al fitxer."
 
-#: src/ExportManager.cpp:505
+#: src/ExportManager.cpp:506
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -259,32 +259,32 @@ msgstr ""
 "No s'ha pogut desar la captura de pantalla perquè ha fallat la creació del "
 "directori remot:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:516 src/ExportManager.cpp:565
+#: src/ExportManager.cpp:517 src/ExportManager.cpp:566
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. Error en escriure al fitxer "
 "local temporal."
 
-#: src/ExportManager.cpp:524
+#: src/ExportManager.cpp:525
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "No s'ha pogut desar la imatge. No s'ha pogut pujar a la ubicació remota."
 
-#: src/ExportManager.cpp:572
+#: src/ExportManager.cpp:573
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "No s'ha pogut desar la captura de pantalla. El nom de fitxer a desar no és "
 "vàlid."
 
-#: src/ExportManager.cpp:616
+#: src/ExportManager.cpp:617
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "No s'ha pogut desar una imatge de captura de pantalla buida."
 
-#: src/ExportManager.cpp:775
+#: src/ExportManager.cpp:780
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -293,7 +293,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer temporal cal que sigui un "
 "fitxer local existent"
 
-#: src/ExportManager.cpp:782
+#: src/ExportManager.cpp:787
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -302,7 +302,7 @@ msgstr ""
 "Ha fallat en exportar el vídeo: l'URL del fitxer de sortida cal que sigui un "
 "URL vàlid amb un nom de fitxer"
 
-#: src/ExportManager.cpp:868
+#: src/ExportManager.cpp:873
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -310,186 +310,186 @@ msgstr ""
 "No s'ha pogut desar l'enregistrament. No s'ha pogut moure el fitxer a la "
 "ubicació: %1"
 
-#: src/ExportManager.cpp:896
+#: src/ExportManager.cpp:901
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Ha fallat la impressió. Ha fallat en inicialitzar la impressora."
 
-#: src/ExportManager.cpp:913
+#: src/ExportManager.cpp:918
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
 msgstr "Dia (1–31)"
 
-#: src/ExportManager.cpp:914
+#: src/ExportManager.cpp:919
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
 msgstr "Dia (01–31)"
 
-#: src/ExportManager.cpp:915
+#: src/ExportManager.cpp:920
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
 msgstr "Dia (nom curt)"
 
-#: src/ExportManager.cpp:916
+#: src/ExportManager.cpp:921
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
 msgstr "Dia (nom llarg)"
 
-#: src/ExportManager.cpp:917
+#: src/ExportManager.cpp:922
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
 msgstr "Mes (1–12)"
 
-#: src/ExportManager.cpp:918
+#: src/ExportManager.cpp:923
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
 msgstr "Mes (01–12)"
 
-#: src/ExportManager.cpp:919
+#: src/ExportManager.cpp:924
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
 msgstr "Mes (nom curt)"
 
-#: src/ExportManager.cpp:920
+#: src/ExportManager.cpp:925
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
 msgstr "Mes (nom llarg)"
 
-#: src/ExportManager.cpp:921
+#: src/ExportManager.cpp:926
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Any (2 dígits)"
 
-#: src/ExportManager.cpp:922
+#: src/ExportManager.cpp:927
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Any (4 dígits)"
 
-#: src/ExportManager.cpp:923
+#: src/ExportManager.cpp:928
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
 msgstr "Hora (0–23)"
 
-#: src/ExportManager.cpp:924
+#: src/ExportManager.cpp:929
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
 msgstr "Hora (00–23)"
 
-#: src/ExportManager.cpp:925
+#: src/ExportManager.cpp:930
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
 msgstr "Hora (1–12)"
 
-#: src/ExportManager.cpp:926
+#: src/ExportManager.cpp:931
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
 msgstr "Hora (01–12)"
 
-#: src/ExportManager.cpp:927
+#: src/ExportManager.cpp:932
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
 msgstr "Minut (0–59)"
 
-#: src/ExportManager.cpp:928
+#: src/ExportManager.cpp:933
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
 msgstr "Minut (00–59)"
 
-#: src/ExportManager.cpp:929
+#: src/ExportManager.cpp:934
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
 msgstr "Segon (0–59)"
 
-#: src/ExportManager.cpp:930
+#: src/ExportManager.cpp:935
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
 msgstr "Segon (00–59)"
 
-#: src/ExportManager.cpp:931
+#: src/ExportManager.cpp:936
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
 msgstr "Mil·lisegon (0–999)"
 
-#: src/ExportManager.cpp:933
+#: src/ExportManager.cpp:938
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
 msgstr "Mil·lisegon (000–999)"
 
-#: src/ExportManager.cpp:934
+#: src/ExportManager.cpp:939
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
 msgstr "AM/PM"
 
-#: src/ExportManager.cpp:936
+#: src/ExportManager.cpp:941
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
 msgstr "am/pm"
 
-#: src/ExportManager.cpp:938
+#: src/ExportManager.cpp:943
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
 msgstr "AM/PM o am/pm (localitzat)"
 
-#: src/ExportManager.cpp:940
+#: src/ExportManager.cpp:945
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
 msgstr "Fus horari (nom curt)"
 
-#: src/ExportManager.cpp:941
+#: src/ExportManager.cpp:946
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
 msgstr "Desplaçament del fus horari (±0000)"
 
-#: src/ExportManager.cpp:942
+#: src/ExportManager.cpp:947
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
 msgstr "Desplaçament del fus horari (±00:00)"
 
-#: src/ExportManager.cpp:943
+#: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
 msgstr "Fus horari (nom llarg)"
 
-#: src/ExportManager.cpp:944
+#: src/ExportManager.cpp:949
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
 msgstr "Segons des de l'època Unix"
 
-#: src/ExportManager.cpp:945
+#: src/ExportManager.cpp:950
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Títol de la finestra"
 
-#: src/ExportManager.cpp:946
+#: src/ExportManager.cpp:951
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
