@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-24 00:46+0000\n"
-"PO-Revision-Date: 2026-02-03 22:56+0100\n"
+"PO-Revision-Date: 2026-04-26 22:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -95,6 +95,8 @@ msgstr "전체 바탕 화면 찍기(기본값)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"-f/--fullscreen 옵션과 함께 사용하면 모든 화면의 크기를 같은 비율로 조정하여 "
+"캡처함"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -219,10 +221,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "기존 스크린샷 파일 열고 편집"
 
 #: src/CommandLineOptions.h:116
-#, fuzzy, kde-format
-#| msgid "Accept on click-and-release"
+#, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "클릭했다 놓을 때 수락"
+msgstr "클릭했다 놓을 때 영역 선택 수락"
 
 #: src/ExportManager.cpp:460
 #, kde-format
@@ -717,7 +718,7 @@ msgstr "스크린샷 그림에 마우스 커서를 표시합니다."
 #: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
 msgid "Include window titlebar and borders"
-msgstr "창 제목 표시줄과 경계선 포함"
+msgstr "창 제목 표시줄과 테두리 포함"
 
 #: src/Gui/CaptureSettingsColumn.qml:26
 #, kde-format
@@ -969,7 +970,7 @@ msgstr "스크린샷 그림에 마우스 커서 표시"
 #, kde-format
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
-msgstr "창 제목 표시줄과 경계선 포함"
+msgstr "창 제목 표시줄과 테두리 포함"
 
 #: src/Gui/OptionsMenu.cpp:50
 #, kde-format
@@ -977,7 +978,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Show the window title bar, the minimize/maximize/close buttons, and the "
 "window border"
-msgstr "창 제목 표시줄, 조절 단추와 창 경계선 표시"
+msgstr "창 제목 표시줄, 조절 단추와 창 테두리 표시"
 
 #: src/Gui/OptionsMenu.cpp:58
 #, kde-format
@@ -2321,7 +2322,7 @@ msgstr "그림에서 텍스트 추출 중..."
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
-msgstr ""
+msgstr "--scaled 옵션은 -f/--fullscreen 옵션과만 사용할 수 있으므로 무시됨"
 
 #: src/SpectacleCore.cpp:1054
 #, kde-format
