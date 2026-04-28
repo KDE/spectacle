@@ -29,9 +29,9 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     : SpectacleMenu(parent)
     , m_delayAction(new QWidgetAction(this))
     , m_delayWidget(new QWidget(this))
-    , m_delayLayout(new QHBoxLayout(m_delayWidget.get()))
-    , m_delayLabel(new QLabel(m_delayWidget.get()))
-    , m_delaySpinBox(new SmartSpinBox(m_delayWidget.get()))
+    , m_delayLayout(new QHBoxLayout(m_delayWidget))
+    , m_delayLabel(new QLabel(m_delayWidget))
+    , m_delaySpinBox(new SmartSpinBox(m_delayWidget))
 {
     setToolTipsVisible(true);
     // QMenu::addSection just adds an action with text and separator mode enabled
@@ -104,8 +104,8 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     }
 
     // set up delay widget
-    auto spinbox = m_delaySpinBox.get();
-    auto label = m_delayLabel.get();
+    auto spinbox = m_delaySpinBox;
+    auto label = m_delayLabel;
     label->setText(i18nc("@label:spinbox", "Delay:"));
     spinbox->setDecimals(1);
     spinbox->setSingleStep(1.0);
@@ -122,13 +122,13 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     QObject::connect(Settings::self(), &Settings::captureDelayChanged, spinbox, [this](){
         m_delaySpinBox->setValue(Settings::captureDelay());
     });
-    m_delayWidget->setLayout(m_delayLayout.get());
+    m_delayWidget->setLayout(m_delayLayout);
     m_delayLayout->addWidget(label);
     m_delayLayout->addWidget(spinbox);
     m_delayLayout->setAlignment(Qt::AlignLeft);
-    m_delayAction->setDefaultWidget(m_delayWidget.get());
+    m_delayAction->setDefaultWidget(m_delayWidget);
     m_delayAction->setEnabled(!hasOnClick || !Settings::captureOnClick());
-    addAction(m_delayAction.get());
+    addAction(m_delayAction);
 
     addSection(i18nc("@title:menu", "Recording Settings"));
 
