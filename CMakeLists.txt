@@ -148,7 +148,7 @@ endif()
 
 # setup handling of deprecated Qt & KF API
 
-ecm_set_disabled_deprecation_versions(QT 6.11.0  KF 6.23.0)
+ecm_set_disabled_deprecation_versions(QT 6.11.0  KF 6.26.0)
 
 # hand off to subdirectories
 
